@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e8a91647d7532a9904901c247bb0b4096ffa0a1c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: MT
+ms.openlocfilehash: 9b3af6a6cee4375a110c894b6b72655605ad077d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161702"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372237"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Usługa Azure Event Hubs — platforma przesyłania strumieniowego danych big data i usługa pozyskiwania zdarzeń
 Usługa Azure Event Hubs to platforma przesyłania strumieniowego danych big data i usługa pozyskiwania zdarzeń. Może odbierać i przetwarzać miliony zdarzeń na sekundę. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania.
@@ -61,7 +61,7 @@ Korzystając z usługi Event Hubs, możesz zacząć od strumieni danych liczonyc
 
 Usługa [Event Hubs dla ekosystemów platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) umożliwia klientom i aplikacjom platformy [Apache Kafka (w wersji 1.0 lub nowszej)](https://kafka.apache.org/) komunikowanie się z usługą Event Hubs. Nie trzeba przy tym instalować i konfigurować własnych klastrów platformy Kafka ani zarządzać nimi.
 
-W przypadku szerokiego ekosystemu dostępnego w różnych [językach (.NET, Java, Python, go i JavaScript)](https://github.com/Azure/azure-event-hubs)można łatwo rozpocząć przetwarzanie strumieni od Event Hubs. Wszystkie obsługiwane języki klienta zapewniają integrację niskiego poziomu. Ten ekosystem umożliwia również bezproblemową integrację z usługami platformy Azure, takimi jak Azure Stream Analytics i Azure Functions, umożliwiając w ten sposób tworzenie architektur bezserwerowych.
+Dzięki szerokiemu ekosystemowi dostępnemu w różnych [językach (.NET, Java, Python, Go, JavaScript)](https://github.com/Azure/azure-event-hubs)możesz łatwo rozpocząć przetwarzanie strumieni z Centrów zdarzeń. Wszystkie obsługiwane języki klienta zapewniają integrację niskiego poziomu. Ten ekosystem umożliwia również bezproblemową integrację z usługami platformy Azure, takimi jak Azure Stream Analytics i Azure Functions, umożliwiając w ten sposób tworzenie architektur bezserwerowych.
 
 ## <a name="key-architecture-components"></a>Główne składniki architektury
 Usługa Event Hubs zawiera następujące [kluczowe składniki](event-hubs-features.md):
@@ -74,18 +74,18 @@ Usługa Event Hubs zawiera następujące [kluczowe składniki](event-hubs-featur
 
 Na poniższym rysunku przedstawiono architekturę przetwarzania strumienia usługi Event Hubs:
 
-![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
+![Usługa Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby rozpocząć korzystanie z Event Hubs, zobacz samouczki **wysyłania i odbierania zdarzeń** :
+Aby rozpocząć korzystanie z Centrum zdarzeń, zobacz wysyłanie **i odbieranie zdarzeń** samouczki:
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-java-send-v2.md)
-- [Go](event-hubs-go-get-started-send.md)
+- [Javascript](get-started-node-send-v2.md)
+- [Przejdź](event-hubs-go-get-started-send.md)
 - [C (tylko wysyłanie)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (tylko odbieranie)](event-hubs-storm-getstarted-receive.md)
 

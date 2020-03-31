@@ -1,6 +1,6 @@
 ---
-title: Używanie Microsoft Graph interfejsów API do konfigurowania aprowizacji — Azure Active Directory | Microsoft Docs
-description: Potrzebujesz skonfigurować Inicjowanie obsługi dla wielu wystąpień aplikacji? Dowiedz się, jak zaoszczędzić czas przy użyciu interfejsów API Microsoft Graph, aby zautomatyzować konfigurację automatycznej aprowizacji.
+title: Konfigurowanie obsługi administracyjnej za pomocą interfejsów API programu Microsoft Graph — usługa Azure Active Directory | Dokumenty firmy Microsoft
+description: Chcesz skonfigurować inicjowanie obsługi administracyjnej dla wielu wystąpień aplikacji? Dowiedz się, jak zaoszczędzić czas, korzystając z interfejsów API programu Microsoft Graph w celu zautomatyzowania konfiguracji automatycznego inicjowania obsługi administracyjnej.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,44 +16,44 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50b59bceb07facd944d7159eeb416c7e9e91557c
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: c72217a565071f9531281af1862ba3681e353a4d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522734"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481470"
 ---
-# <a name="configure-provisioning-using-microsoft-graph-apis"></a>Konfigurowanie aprowizacji przy użyciu Microsoft Graph interfejsów API
+# <a name="configure-provisioning-using-microsoft-graph-apis"></a>Konfigurowanie inicjowania obsługi administracyjnej przy użyciu interfejsów API programu Microsoft Graph
 
-Azure Portal to wygodny sposób konfigurowania aprowizacji pojedynczych aplikacji pojedynczo. Ale jeśli tworzysz kilka, a nawet setki — wystąpienia aplikacji, łatwiejsze może być Automatyzacja tworzenia i konfigurowania aplikacji przy użyciu Microsoft Graph interfejsów API. W tym artykule opisano sposób automatyzacji konfigurowania aprowizacji za poorednictwem interfejsów API. Ta metoda jest często używana dla aplikacji, takich jak [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
+Portal Azure to wygodny sposób konfigurowania inicjowania obsługi administracyjnej dla poszczególnych aplikacji pojedynczo. Jeśli jednak tworzysz kilka, a nawet setki wystąpień aplikacji, automatyzacja tworzenia i konfigurowania aplikacji za pomocą interfejsów API programu Microsoft Graph może być łatwiejsza. W tym artykule opisano, jak zautomatyzować konfigurację inicjowania obsługi administracyjnej za pośrednictwem interfejsów API. Ta metoda jest powszechnie używana dla aplikacji, takich jak [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
 
-**Przegląd kroków dotyczących używania Microsoft Graph interfejsów API do automatyzowania konfigurowania aprowizacji**
+**Omówienie kroków dotyczących automatyzacji konfiguracji inicjowania obsługi administracyjnej za pomocą interfejsów API programu Microsoft Graph**
 
 
 |Krok  |Szczegóły  |
 |---------|---------|
-|[Krok 1. Tworzenie aplikacji galerii](#step-1-create-the-gallery-application)     |Logowanie do klienta interfejsu API <br> Pobierz szablon aplikacji galerii <br> Tworzenie aplikacji galerii         |
-|[Krok 2. Utwórz zadanie aprowizacji na podstawie szablonu](#step-2-create-the-provisioning-job-based-on-the-template)     |Pobieranie szablonu łącznika aprowizacji <br> Tworzenie zadania aprowizacji         |
-|[Krok 3. Autoryzuj dostęp](#step-3-authorize-access)     |Testowanie połączenia z aplikacją <br> Zapisz poświadczenia         |
-|[Krok 4. Uruchom zadanie aprowizacji](#step-4-start-the-provisioning-job)     |Uruchamianie zadania         |
-|[Krok 5. Monitorowanie aprowizacji](#step-5-monitor-provisioning)     |Sprawdź stan zadania aprowizacji <br> Pobierz dzienniki aprowizacji         |
+|[Krok 1. Tworzenie aplikacji galerii](#step-1-create-the-gallery-application)     |Logowanie do klienta interfejsu API <br> Pobieranie szablonu aplikacji galerii <br> Tworzenie aplikacji galerii         |
+|[Krok 2. Tworzenie zadania inicjowania obsługi administracyjnej na podstawie szablonu](#step-2-create-the-provisioning-job-based-on-the-template)     |Pobieranie szablonu łącznika inicjowania obsługi administracyjnej <br> Tworzenie zadania inicjowania obsługi administracyjnej         |
+|[Krok 3. Autoryzowanie dostępu](#step-3-authorize-access)     |Testowanie połączenia z aplikacją <br> Zapisywanie poświadczeń         |
+|[Krok 4. Rozpoczynanie inicjowania obsługi administracyjnej zadania](#step-4-start-the-provisioning-job)     |Uruchamianie zadania         |
+|[Krok 5. Monitorowanie inicjowania obsługi administracyjnej](#step-5-monitor-provisioning)     |Sprawdź stan zadania inicjowania obsługi administracyjnej <br> Pobieranie dzienników inicjowania obsługi administracyjnej         |
 
 > [!NOTE]
-> Obiekty odpowiedzi pokazane w tym artykule mogą zostać skrócone w celu zapewnienia czytelności. Wszystkie właściwości zostaną zwrócone z rzeczywistego wywołania.
+> Obiekty odpowiedzi pokazane w tym artykule mogą zostać skrócone w celu uzyskania czytelności. Wszystkie właściwości zostaną zwrócone z rzeczywistego wywołania.
 
-## <a name="step-1-create-the-gallery-application"></a>Krok 1. Tworzenie aplikacji galerii
+## <a name="step-1-create-the-gallery-application"></a>Krok 1: Tworzenie aplikacji galerii
 
-### <a name="sign-in-to-microsoft-graph-explorer-recommended-postman-or-any-other-api-client-you-use"></a>Zaloguj się do Microsoft Graph Explorer (zalecane), programu Poster lub dowolnego innego klienta interfejsu API, którego używasz
+### <a name="sign-in-to-microsoft-graph-explorer-recommended-postman-or-any-other-api-client-you-use"></a>Zaloguj się do programu Microsoft Graph Explorer (zalecane), Listonosza lub innego klienta interfejsu API, którego używasz
 
-1. Uruchom [eksploratora Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer)
-1. Wybierz przycisk "Zaloguj się za pomocą firmy Microsoft" i zaloguj się przy użyciu poświadczeń administratora globalnego lub administratora aplikacji usługi Azure AD.
+1. Uruchamianie [Eksploratora wykresów firmy Microsoft](https://developer.microsoft.com/graph/graph-explorer)
+1. Wybierz przycisk "Zaloguj się za pomocą firmy Microsoft" i zaloguj się przy użyciu poświadczeń administratora globalnego usługi Azure AD lub administratora aplikacji.
 
-    ![Logowanie grafu](./media/application-provisioning-configure-api/wd_export_02.png)
+    ![Logowanie do wykresu](./media/application-provisioning-configure-api/wd_export_02.png)
 
-1. Po pomyślnym zalogowaniu zobaczysz szczegóły konta użytkownika w okienku po lewej stronie.
+1. Po pomyślnym zalogowaniu zobaczysz szczegóły konta użytkownika w lewym okienku.
 
-### <a name="retrieve-the-gallery-application-template-identifier"></a>Pobierz identyfikator szablonu aplikacji galerii
-Aplikacje w galerii aplikacji usługi Azure AD zawierają [szablon aplikacji](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http) opisujący metadane dla tej aplikacji. Za pomocą tego szablonu można utworzyć wystąpienie aplikacji i nazwy głównej usługi w dzierżawie na potrzeby zarządzania.
+### <a name="retrieve-the-gallery-application-template-identifier"></a>Pobieranie identyfikatora szablonu aplikacji galerii
+Aplikacje w galerii aplikacji usługi Azure AD mają [szablon aplikacji,](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http) który opisuje metadane dla tej aplikacji. Za pomocą tego szablonu można utworzyć wystąpienie jednostki aplikacji i usługi w dzierżawie do zarządzania.
 
 #### <a name="request"></a>*Żądanie*
 
@@ -66,7 +66,7 @@ Aplikacje w galerii aplikacji usługi Azure AD zawierają [szablon aplikacji](ht
 GET https://graph.microsoft.com/beta/applicationTemplates
 ```
 
-#### <a name="response"></a>*Odpowiedź*
+#### <a name="response"></a>*Odpowiedzi*
 
 <!-- {
   "blockType": "response",
@@ -105,7 +105,7 @@ Content-type: application/json
 
 ### <a name="create-the-gallery-application"></a>Tworzenie aplikacji galerii
 
-Użyj identyfikatora szablonu pobranego dla aplikacji w ostatnim kroku, aby [utworzyć wystąpienie](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http) aplikacji i nazwy głównej usługi w dzierżawie.
+Użyj identyfikatora szablonu pobranego dla aplikacji w ostatnim kroku, aby [utworzyć wystąpienie](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http) jednostki aplikacji i usługi w dzierżawie.
 
 #### <a name="request"></a>*Żądanie*
 
@@ -123,7 +123,7 @@ Content-type: application/json
 }
 ```
 
-#### <a name="response"></a>*Odpowiedź*
+#### <a name="response"></a>*Odpowiedzi*
 
 
 <!-- {
@@ -170,11 +170,11 @@ Content-type: application/json
 }
 ```
 
-## <a name="step-2-create-the-provisioning-job-based-on-the-template"></a>Krok 2. Tworzenie zadania aprowizacji na podstawie szablonu
+## <a name="step-2-create-the-provisioning-job-based-on-the-template"></a>Krok 2: Tworzenie zadania inicjowania obsługi administracyjnej na podstawie szablonu
 
-### <a name="retrieve-the-template-for-the-provisioning-connector"></a>Pobieranie szablonu łącznika aprowizacji
+### <a name="retrieve-the-template-for-the-provisioning-connector"></a>Pobieranie szablonu łącznika inicjowania obsługi administracyjnej
 
-Aplikacje w galerii, w których włączono obsługę aprowizacji, mają szablony usprawniające konfigurację. Użyj poniższego żądania, aby [pobrać szablon konfiguracji aprowizacji](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http).
+Aplikacje w galerii, które są włączone do inicjowania obsługi administracyjnej mają szablony, aby usprawnić konfigurację. Użyj poniższego żądania, aby [pobrać szablon dla konfiguracji inicjowania obsługi administracyjnej](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http). Należy pamiętać, że należy podać identyfikator. Identyfikator odnosi się do poprzedniego zasobu, który w tym przypadku jest ServicePrincipal. 
 
 #### <a name="request"></a>*Żądanie*
 
@@ -187,7 +187,7 @@ GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/temp
 ```
 
 
-#### <a name="response"></a>*Odpowiedź*
+#### <a name="response"></a>*Odpowiedzi*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -211,8 +211,8 @@ HTTP/1.1 200 OK
 }
 ```
 
-### <a name="create-the-provisioning-job"></a>Tworzenie zadania aprowizacji
-Aby włączyć obsługę administracyjną, należy najpierw [utworzyć zadanie](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http). Użyj poniższego żądania, aby utworzyć zadanie aprowizacji. Użyj templateId z poprzedniego kroku, aby określić szablon, który ma być używany dla tego zadania.
+### <a name="create-the-provisioning-job"></a>Tworzenie zadania inicjowania obsługi administracyjnej
+Aby włączyć inicjowanie obsługi [administracyjnej,](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http)musisz najpierw utworzyć zadanie . Użyj poniższego żądania, aby utworzyć zadanie inicjowania obsługi administracyjnej. Użyj templateId z poprzedniego kroku podczas określania szablonu, który ma być używany dla zadania.
 
 #### <a name="request"></a>*Żądanie*
 <!-- {
@@ -228,7 +228,7 @@ Content-type: application/json
 }
 ```
 
-#### <a name="response"></a>*Odpowiedź*
+#### <a name="response"></a>*Odpowiedzi*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -262,14 +262,14 @@ Content-type: application/json
 }
 ```
 
-## <a name="step-3-authorize-access"></a>Krok 3. autoryzowanie dostępu
+## <a name="step-3-authorize-access"></a>Krok 3: Autoryzuj dostęp
 
 ### <a name="test-the-connection-to-the-application"></a>Testowanie połączenia z aplikacją
 
-Przetestuj połączenie z aplikacją innej firmy. Poniższy przykład dotyczy aplikacji wymagającej clientSecret i secretToken. Każda aplikacja ma swoje wymagania. Zapoznaj się z [dokumentacją interfejsu API](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http) , aby wyświetlić dostępne opcje. 
+Przetestuj połączenie z aplikacją innej firmy. Poniższy przykład dotyczy aplikacji, która wymaga clientSecret i secretToken. Każda aplikacja ma swoje wymagania. Aplikacje często używają BaseAddress zamiast ClientSecret. Aby określić, jakie poświadczenia aplikacja wymaga, przejdź do strony konfiguracji inicjowania obsługi administracyjnej dla aplikacji i w trybie dewelopera kliknij przycisk testu połączenia. Ruch sieciowy pokaże parametry używane dla poświadczeń. Pełną listę poświadczeń można znaleźć [tutaj](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http). 
 
 #### <a name="request"></a>*Żądanie*
-```http
+```msgraph-interactive
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{id}/validateCredentials
 { 
     credentials: [ 
@@ -278,7 +278,7 @@ POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/job
     ]
 }
 ```
-#### <a name="response"></a>*Odpowiedź*
+#### <a name="response"></a>*Odpowiedzi*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -288,12 +288,12 @@ POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/job
 HTTP/1.1 204 No Content
 ```
 
-### <a name="save-your-credentials"></a>Zapisz swoje poświadczenia
+### <a name="save-your-credentials"></a>Zapisywanie poświadczeń
 
-Konfigurowanie aprowizacji wymaga ustanowienia relacji zaufania między usługą Azure AD a aplikacją. Autoryzuj dostęp do aplikacji innych firm. Poniższy przykład dotyczy aplikacji wymagającej clientSecret i secretToken. Każda aplikacja ma swoje wymagania. Zapoznaj się z [dokumentacją interfejsu API](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http) , aby wyświetlić dostępne opcje. 
+Konfigurowanie inicjowania obsługi administracyjnej wymaga ustanowienia zaufania między usługą Azure AD a aplikacją. Autoryzować dostęp do aplikacji innej firmy. Poniższy przykład dotyczy aplikacji, która wymaga clientSecret i secretToken. Każda aplikacja ma swoje wymagania. Przejrzyj [dokumentację interfejsu API,](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http) aby wyświetlić dostępne opcje. 
 
 #### <a name="request"></a>*Żądanie*
-```json
+```msgraph-interactive
 PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secrets 
  
 { 
@@ -304,7 +304,7 @@ PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secr
 }
 ```
 
-#### <a name="response"></a>*Odpowiedź*
+#### <a name="response"></a>*Odpowiedzi*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -314,8 +314,8 @@ PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secr
 HTTP/1.1 204 No Content
 ```
 
-## <a name="step-4-start-the-provisioning-job"></a>Krok 4. uruchomienie zadania aprowizacji
-Teraz, gdy zadanie aprowizacji jest skonfigurowane, użyj następującego polecenia, aby [uruchomić zadanie](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http). 
+## <a name="step-4-start-the-provisioning-job"></a>Krok 4: Rozpocznij zadanie inicjowania obsługi administracyjnej
+Teraz, gdy zadanie inicjowania obsługi administracyjnej jest skonfigurowane, użyj następującego polecenia, aby [uruchomić zadanie](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http). 
 
 
 #### <a name="request"></a>*Żądanie*
@@ -327,7 +327,7 @@ Teraz, gdy zadanie aprowizacji jest skonfigurowane, użyj następującego polece
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/start
 ```
 
-#### <a name="response"></a>*Odpowiedź*
+#### <a name="response"></a>*Odpowiedzi*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -338,11 +338,11 @@ HTTP/1.1 204 No Content
 ```
 
 
-## <a name="step-5-monitor-provisioning"></a>Krok 5. monitorowanie aprowizacji
+## <a name="step-5-monitor-provisioning"></a>Krok 5: Monitorowanie inicjowania obsługi administracyjnej
 
-### <a name="monitor-the-provisioning-job-status"></a>Monitorowanie stanu zadania aprowizacji
+### <a name="monitor-the-provisioning-job-status"></a>Monitorowanie stanu zadania inicjowania obsługi administracyjnej
 
-Teraz, gdy zadanie aprowizacji jest uruchomione, użyj następującego polecenia, aby śledzić postęp bieżącego cyklu aprowizacji, a także dane statystyczne, takie jak liczba użytkowników i grup utworzonych w systemie docelowym. 
+Teraz, gdy zadanie inicjowania obsługi administracyjnej jest uruchomione, użyj następującego polecenia, aby śledzić postęp bieżącego cyklu inicjowania obsługi administracyjnej, a także statystyki do tej pory, takie jak liczba użytkowników i grup, które zostały utworzone w systemie docelowym. 
 
 #### <a name="request"></a>*Żądanie*
 <!-- {
@@ -353,7 +353,7 @@ Teraz, gdy zadanie aprowizacji jest uruchomione, użyj następującego polecenia
 GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/
 ```
 
-#### <a name="response"></a>*Odpowiedź*
+#### <a name="response"></a>*Odpowiedzi*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -396,14 +396,14 @@ Content-length: 2577
 ```
 
 
-### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>Monitorowanie zdarzeń aprowizacji przy użyciu dzienników aprowizacji
-Oprócz monitorowania stanu zadania aprowizacji można użyć [dzienników aprowizacji](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http) do wykonywania zapytań dotyczących wszystkich zdarzeń, które są wykonywane (np. zapytanie dla określonego użytkownika i określić, czy zostały one pomyślnie zainicjowane).
+### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>Monitorowanie zdarzeń inicjowania obsługi administracyjnej przy użyciu dzienników inicjowania obsługi administracyjnej
+Oprócz monitorowania stanu zadania inicjowania obsługi administracyjnej, można użyć [dzienników inicjowania obsługi administracyjnej](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http) do kwerendy dla wszystkich zdarzeń, które występują (np. kwerendy dla określonego użytkownika i określić, czy zostały pomyślnie zainicjowane).
 
 #### <a name="request"></a>*Żądanie*
 ```msgraph-interactive
 GET https://graph.microsoft.com/beta/auditLogs/provisioning
 ```
-#### <a name="response"></a>*Odpowiedź*
+#### <a name="response"></a>*Odpowiedzi*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -529,7 +529,7 @@ Content-type: application/json
 }
 
 ```
-## <a name="related-articles"></a>Pokrewne artykuły
+## <a name="related-articles"></a>Pokrewne artykuły:
 
-- [Zapoznaj się z dokumentacją Microsoft Graph synchronizacji](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
-- [Integrowanie niestandardowej aplikacji Standard scim z usługą Azure AD](use-scim-to-provision-users-and-groups.md)
+- [Przejrzyj dokumentację dotyczącą synchronizacji programu Microsoft Graph](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Integrowanie niestandardowej aplikacji SCIM z usługą Azure AD](use-scim-to-provision-users-and-groups.md)

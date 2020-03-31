@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 4d92bd3709c5f56db0095ca1be2caa0e9c78b42f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.openlocfilehash: e475c1bc1878c6b5a0efbbe41f2a3a0fe86bcff2
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336831"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389379"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Osadzanie widżetów indeksatora wideo w aplikacjach
 
@@ -48,7 +48,7 @@ Za pomocą widżetu Odtwarzacz można przesyłać strumieniowo wideo za pomocą 
 |`showCaptions` | Wartość logiczna | Powoduje załadowanie już włączonych napisów.<br/> Przykład: `showCaptions=true`. |
 |`type`| | Aktywuje skórkę odtwarzacza audio (część wideo zostanie usunięta).<br/> Przykład: `type=audio`. |
 |`autoplay` | Wartość logiczna | Wskazuje, czy odtwarzacz powinien rozpocząć odtwarzanie wideo po załadowaniu. Wartością domyślną jest `true`.<br/> Przykład: `autoplay=false`. |
-|`language` | Kod języka | Steruje językiem gracza. Wartością domyślną jest `en-US`.<br/>Przykład: `language=de-DE`.|
+|`language`/`locale` | Kod języka | Steruje językiem gracza. Wartością domyślną jest `en-US`.<br/>Przykład: `language=de-DE`.|
 
 ### <a name="editor-widget"></a>Widżet Edytor
 
@@ -233,14 +233,14 @@ Jeśli osadzasz szczegółowe informacje indeksatora wideo za pomocą `GetVttUrl
 
 Można wybrać typy szczegółowych informacji, które chcesz. Aby to zrobić, należy określić je jako wartość do następującego parametru adresu URL, który jest dodawany `&widgets=<list of wanted widgets>`do kodu osadzania, który otrzymujesz (z interfejsu API lub z aplikacji sieci web): .
 
-Możliwe wartości to: **ludzie**, **słowa kluczowe**, **uczucia**, **transkrypcja**i **wyszukiwanie**.
+Możliwe wartości `people`to: `animatedCharacters` `keywords`, `labels` `sentiments`, `emotions` `topics`, `keyframes` `transcript`, `ocr` `speakers`, `scenes`, `namedEntities`, , , , , , i .
 
-Jeśli na przykład chcesz osadzić widżet zawierający tylko osoby i statystyki wyszukiwania, adres URL osadzania elementu iframe będzie wyglądał następująco:
+Jeśli na przykład chcesz osadzić widżet zawierający tylko statystyki osób i słów kluczowych, adres URL osadzania elementu iframe będzie wyglądał następująco:
 
-`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
+`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-Tytuł okna elementu iframe można również dostosować, podając `&title=<YourTitle>` adres URL elementu iframe. (Dostosowuje tytuł HTML \<> wartość).
-
+Tytuł okna elementu iframe można również dostosować, podając `&title=<YourTitle>` adres URL elementu iframe. (Dostosowuje wartość HTML). <title>
+   
 Jeśli na przykład chcesz nadać okno iframe tytuł "MyInsights", adres URL będzie wyglądał następująco:
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights`
@@ -257,15 +257,14 @@ Przykład:
 
 Domyślnie odtwarzacz indeksatora wideo ma automatycznie generowane napisy, które są oparte na transkrypcji wideo. Transkrypcja jest wyodrębniona z filmu z językiem źródłowym wybranym podczas przesyłania filmu.
 
-Jeśli chcesz osadzić w innym języku, `&captions=< Language | "all" | "false" >` możesz dodać go do adresu URL osadzania gracza. Jeśli chcesz podpisy we wszystkich dostępnych językach, użyj wartości `all`. Jeśli chcesz, aby napisy były wyświetlane domyślnie, możesz przekazać program `&showCaptions=true`.
+Jeśli chcesz osadzić w innym języku, możesz dodać &captions=< Language Code > do adresu URL osadzania gracza. Jeśli chcesz, aby podpisy były wyświetlane domyślnie, możesz przekazać &showCaptions=true.
 
 Adres URL osadzania będzie wyglądał następująco:
 
-`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
-
-Jeśli chcesz wyłączyć podpisy, możesz `captions` przekazać wartość `false`parametru jako .
+`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=en-us`
 
 #### <a name="autoplay"></a>Autoodtwarzanie
+
 Domyślnie odtwarzacz rozpocznie odtwarzanie wideo. Możesz nie przechodzić `&autoplay=false` do poprzedniego adresu URL osadzania.
 
 ## <a name="code-samples"></a>Przykłady kodu

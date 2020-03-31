@@ -1,6 +1,6 @@
 ---
 title: Uwierzytelnianie danych wychodzących
-description: Dowiedz się, jak skonfigurować lub usunąć uwierzytelnianie wychodzące dla usługi Azure Scheduler
+description: Dowiedz się, jak skonfigurować lub usunąć uwierzytelnianie wychodzące dla harmonogramu platformy Azure
 services: scheduler
 ms.service: scheduler
 author: derek1ee
@@ -9,61 +9,61 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898510"
 ---
-# <a name="outbound-authentication-for-azure-scheduler"></a>Uwierzytelnianie wychodzące dla usługi Azure Scheduler
+# <a name="outbound-authentication-for-azure-scheduler"></a>Uwierzytelnianie wychodzące dla harmonogramu platformy Azure
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, [Przeprowadź migrację do Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) najszybciej, jak to możliwe. 
+> [Usługa Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje harmonogram platformy Azure, który jest [wycofywany.](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) Aby kontynuować pracę z zadaniami skonfigurowane w harmonogramie, należy jak [najszybciej przeprowadzić migrację do usługi Azure Logic Apps.](../scheduler/migrate-from-scheduler-to-logic-apps.md) 
 >
-> Usługa Scheduler nie jest już dostępna w Azure Portal, ale polecenia cmdlet programu PowerShell dla [interfejsu API REST](/rest/api/scheduler) i [usługi Azure Scheduler](scheduler-powershell-reference.md) pozostają dostępne w tym momencie, aby można było zarządzać zadaniami i kolekcjami zadań.
+> Harmonogram nie jest już dostępny w witrynie Azure portal, ale [interfejsy CMDLET interfejsu REST](/rest/api/scheduler) i [narzędzia cmdlet programu Azure Scheduler PowerShell](scheduler-powershell-reference.md) pozostają dostępne w tej chwili, dzięki czemu można zarządzać zadaniami i kolekcjami zadań.
 
-Zadania usługi Azure Scheduler mogą wymagać wywołania usług, które wymagają uwierzytelniania, takich jak inne usługi platformy Azure, Salesforce.com, Facebook i Secure Custom websites. Wywołana usługa może określić, czy zadanie usługi Scheduler ma dostęp do żądanych zasobów. 
+Zadania harmonogramu platformy Azure mogą wymagać wywoływania usług wymagających uwierzytelniania, takich jak inne usługi platformy Azure, Salesforce.com, Facebook i bezpiecznych niestandardowych witryn sieci Web. Wywoływana usługa może określić, czy zadanie harmonogramu może uzyskać dostęp do żądanych zasobów. 
 
-Usługa Scheduler obsługuje te modele uwierzytelniania: 
+Harmonogram obsługuje następujące modele uwierzytelniania: 
 
-* Uwierzytelnianie *certyfikatu klienta* w przypadku korzystania z certyfikatów klienta SSL/TLS
-* Uwierzytelnianie *podstawowe*
-* *Active Directory uwierzytelniania OAuth*
+* Uwierzytelnianie *certyfikatu klienta* podczas korzystania z certyfikatów klienta SSL/TLS
+* *Uwierzytelnianie podstawowe*
+* *Uwierzytelnianie OAuth usługi Active Directory*
 
-## <a name="add-or-remove-authentication"></a>Dodaj lub Usuń uwierzytelnianie
+## <a name="add-or-remove-authentication"></a>Dodawanie lub usuwanie uwierzytelniania
 
-* Aby dodać uwierzytelnianie do zadania usługi Scheduler, podczas tworzenia lub aktualizowania zadania Dodaj element podrzędny `authentication` JavaScript Object Notation (JSON) do elementu `request`. 
+* Aby dodać uwierzytelnianie do zadania harmonogramu, podczas tworzenia `authentication` lub aktualizowania zadania należy dodać element `request` podrzędny notacji obiektu JavaScript (JSON) do elementu. 
 
-  Odpowiedzi nigdy nie zwracają wpisów tajnych, które są przesyłane do usługi Scheduler przez żądanie PUT, PATCH lub POST w obiekcie `authentication`. 
-  Odpowiedzi ustawiają informacje o kluczach tajnych na wartość null lub mogą korzystać z tokenu publicznego reprezentującego uwierzytelnioną jednostkę. 
+  Odpowiedzi nigdy nie zwracają wpisów tajnych, które są przekazywane do usługi `authentication` harmonogramu za pośrednictwem put, patch lub post żądania w obiekcie. 
+  Odpowiedzi ustawić tajne informacje na wartość null lub może używać tokenu publicznego, który reprezentuje uwierzytelnioną jednostkę. 
 
-* Aby usunąć uwierzytelnianie z zadania usługi Scheduler, jawnie Uruchom żądanie PUT lub PATCH w zadaniu, a następnie ustaw dla obiektu `authentication` wartość null. Odpowiedź nie będzie zawierać żadnych właściwości uwierzytelniania.
+* Aby usunąć uwierzytelnianie z zadania harmonogramu, jawnie uruchom żądanie PUT `authentication` lub PATCH w zadaniu i ustaw obiekt na wartość null. Odpowiedź nie będzie zawierać żadnych właściwości uwierzytelniania.
 
 ## <a name="client-certificate"></a>Certyfikat klienta
 
 ### <a name="request-body---client-certificate"></a>Treść żądania — certyfikat klienta
 
-Podczas dodawania uwierzytelniania przy użyciu modelu `ClientCertificate` należy określić te dodatkowe elementy w treści żądania.  
+Podczas dodawania `ClientCertificate` uwierzytelniania przy użyciu modelu, należy określić te dodatkowe elementy w treści żądania.  
 
 | Element | Wymagany | Opis |
 |---------|----------|-------------|
-| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania używany przez certyfikat klienta SSL |
-| **type** | Yes | Typ uwierzytelnienia. W przypadku certyfikatów klienta SSL wartość jest `ClientCertificate`. |
-| **PFX** | Yes | Zawartość pliku PFX zakodowana algorytmem Base64 |
-| **hasło** | Yes | Hasło do uzyskiwania dostępu do pliku PFX |
+| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania przy użyciu certyfikatu klienta SSL |
+| **Typu** | Tak | Typ uwierzytelniania. W przypadku certyfikatów klientów SSL wartość to `ClientCertificate`. |
+| **Pfx** | Tak | Zakodowana w base64 zawartość pliku PFX |
+| **hasło** | Tak | Hasło dostępu do pliku PFX |
 ||| 
 
 ### <a name="response-body---client-certificate"></a>Treść odpowiedzi — certyfikat klienta 
 
-Gdy żądanie jest wysyłane z informacjami o uwierzytelnianiu, odpowiedź zawiera te elementy uwierzytelniania.
+Gdy żądanie jest wysyłane z informacjami uwierzytelniania, odpowiedź zawiera te elementy uwierzytelniania.
 
 | Element | Opis | 
 |---------|-------------| 
-| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania używany przez certyfikat klienta SSL |
-| **type** | Typ uwierzytelnienia. W przypadku certyfikatów klienta SSL wartość jest `ClientCertificate`. |
+| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania przy użyciu certyfikatu klienta SSL |
+| **Typu** | Typ uwierzytelniania. W przypadku certyfikatów klientów SSL wartość to `ClientCertificate`. |
 | **certificateThumbprint** |Odcisk palca certyfikatu |
 | **certificateSubjectName** |Nazwa wyróżniająca podmiotu certyfikatu |
-| **certificateExpiration** | Data wygaśnięcia certyfikatu |
+| **certyfikatExpiration** | Data ważności certyfikatu |
 ||| 
 
 ### <a name="sample-rest-request---client-certificate"></a>Przykładowe żądanie REST — certyfikat klienta
@@ -159,29 +159,29 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 }
 ```
 
-## <a name="basic"></a>Podstawowa
+## <a name="basic"></a>Podstawowa (Basic)
 
 ### <a name="request-body---basic"></a>Treść żądania — podstawowa
 
-Podczas dodawania uwierzytelniania przy użyciu modelu `Basic` należy określić te dodatkowe elementy w treści żądania.
+Podczas dodawania `Basic` uwierzytelniania przy użyciu modelu, należy określić te dodatkowe elementy w treści żądania.
 
 | Element | Wymagany | Opis |
 |---------|----------|-------------|
-| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania używany do uwierzytelniania podstawowego | 
-| **type** | Yes | Typ uwierzytelnienia. W przypadku uwierzytelniania podstawowego wartość jest `Basic`. | 
-| **uż** | Yes | Nazwa użytkownika do uwierzytelnienia | 
-| **hasło** | Yes | Hasło do uwierzytelnienia |
+| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania do korzystania z uwierzytelniania podstawowego | 
+| **Typu** | Tak | Typ uwierzytelniania. W przypadku uwierzytelniania `Basic`podstawowego wartość to . | 
+| **Nazwę użytkownika** | Tak | Nazwa użytkownika do uwierzytelnienia | 
+| **hasło** | Tak | Hasło do uwierzytelnienia |
 |||| 
 
-### <a name="response-body---basic"></a>Treść odpowiedzi — podstawowa
+### <a name="response-body---basic"></a>Organ odpowiedzi - Podstawowy
 
-Gdy żądanie jest wysyłane z informacjami o uwierzytelnianiu, odpowiedź zawiera te elementy uwierzytelniania.
+Gdy żądanie jest wysyłane z informacjami uwierzytelniania, odpowiedź zawiera te elementy uwierzytelniania.
 
 | Element | Opis | 
 |---------|-------------|
-| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania używany do uwierzytelniania podstawowego |
-| **type** | Typ uwierzytelnienia. W przypadku uwierzytelniania podstawowego wartość jest `Basic`. |
-| **uż** | Uwierzytelniona nazwa użytkownika |
+| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania do korzystania z uwierzytelniania podstawowego |
+| **Typu** | Typ uwierzytelniania. W przypadku uwierzytelniania `Basic`podstawowego wartość to . |
+| **Nazwę użytkownika** | Uwierzytelniona nazwa użytkownika |
 ||| 
 
 ### <a name="sample-rest-request---basic"></a>Przykładowe żądanie REST — podstawowe
@@ -222,7 +222,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### <a name="sample-rest-response---basic"></a>Przykładowa odpowiedź REST — podstawowa
+### <a name="sample-rest-response---basic"></a>Przykładowa odpowiedź REST - Podstawowa
 
 ```json
 HTTP/1.1 200 OK
@@ -279,34 +279,34 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 ## <a name="active-directory-oauth"></a>Active Directory OAuth
 
-### <a name="request-body---active-directory-oauth"></a>Treść żądania — Active Directory uwierzytelniania OAuth 
+### <a name="request-body---active-directory-oauth"></a>Treść żądania — OAuth usługi Active Directory 
 
-Podczas dodawania uwierzytelniania przy użyciu modelu `ActiveDirectoryOAuth` należy określić te dodatkowe elementy w treści żądania.
+Podczas dodawania `ActiveDirectoryOAuth` uwierzytelniania przy użyciu modelu, należy określić te dodatkowe elementy w treści żądania.
 
 | Element | Wymagany | Opis |
 |---------|----------|-------------|
-| **uwierzytelnianie** (element nadrzędny) | Yes | Obiekt uwierzytelniania używany do uwierzytelniania ActiveDirectoryOAuth |
-| **type** | Yes | Typ uwierzytelnienia. W przypadku uwierzytelniania ActiveDirectoryOAuth wartość jest `ActiveDirectoryOAuth`. |
-| **dzierżaw** | Yes | Identyfikator dzierżawy dzierżawy usługi Azure AD. Aby znaleźć identyfikator dzierżawy dzierżawy usługi Azure AD, uruchom `Get-AzureAccount` w Azure PowerShell. |
-| **publiczn** | Yes | Ta wartość jest ustawiona na `https://management.core.windows.net/`. | 
-| **clientId** | Yes | Identyfikator klienta aplikacji usługi Azure AD | 
-| **wpisu** | Yes | Wpis tajny klienta żądającego tokenu | 
+| **uwierzytelnianie** (element nadrzędny) | Tak | Obiekt uwierzytelniania do korzystania z uwierzytelniania ActiveDirectoryOAuth |
+| **Typu** | Tak | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartość to `ActiveDirectoryOAuth`. |
+| **Dzierżawy** | Tak | Identyfikator dzierżawy dzierżawy dzierżawy usługi Azure AD. Aby znaleźć identyfikator dzierżawy dzierżawy dzierżawy usługi Azure AD, uruchom `Get-AzureAccount` w programie Azure PowerShell. |
+| **Publiczności** | Tak | Ta wartość jest `https://management.core.windows.net/`ustawiona na . | 
+| **Clientid** | Tak | Identyfikator klienta dla aplikacji usługi Azure AD | 
+| **Tajne** | Tak | Klucz tajny dla klienta, który żąda tokenu | 
 |||| 
 
-### <a name="response-body---active-directory-oauth"></a>Treść odpowiedzi — Active Directory uwierzytelniania OAuth
+### <a name="response-body---active-directory-oauth"></a>Treść odpowiedzi - OAuth usługi Active Directory
 
-Gdy żądanie jest wysyłane z informacjami o uwierzytelnianiu, odpowiedź zawiera te elementy uwierzytelniania.
+Gdy żądanie jest wysyłane z informacjami uwierzytelniania, odpowiedź zawiera te elementy uwierzytelniania.
 
 | Element | Opis |
 |---------|-------------|
-| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania używany do uwierzytelniania ActiveDirectoryOAuth |
-| **type** | Typ uwierzytelnienia. W przypadku uwierzytelniania ActiveDirectoryOAuth wartość jest `ActiveDirectoryOAuth`. | 
-| **dzierżaw** | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
-| **publiczn** | Ta wartość jest ustawiona na `https://management.core.windows.net/`. |
-| **clientId** | Identyfikator klienta aplikacji usługi Azure AD |
+| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania do korzystania z uwierzytelniania ActiveDirectoryOAuth |
+| **Typu** | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartość to `ActiveDirectoryOAuth`. | 
+| **Dzierżawy** | Identyfikator dzierżawy dzierżawy dzierżawy usługi Azure AD |
+| **Publiczności** | Ta wartość jest `https://management.core.windows.net/`ustawiona na . |
+| **Clientid** | Identyfikator klienta dla aplikacji usługi Azure AD |
 ||| 
 
-### <a name="sample-rest-request---active-directory-oauth"></a>Przykładowe żądanie REST — Active Directory uwierzytelniania OAuth
+### <a name="sample-rest-request---active-directory-oauth"></a>Przykładowe żądanie REST — OAuth usługi Active Directory
 
 ```json
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
@@ -346,7 +346,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### <a name="sample-rest-response---active-directory-oauth"></a>Przykładowa odpowiedź REST — Active Directory uwierzytelniania OAuth
+### <a name="sample-rest-response---active-directory-oauth"></a>Przykładowa odpowiedź REST — OAuth usługi Active Directory
 
 ```json
 HTTP/1.1 200 OK

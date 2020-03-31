@@ -1,8 +1,8 @@
 ---
-title: Co to jest geograficzna sztuczna inteligencja Data Science Virtual Machine
+title: Czym jest maszyna wirtualna nauki o danych geo sztucznej inteligencji
 titleSuffix: Azure Data Science Virtual Machine
-description: Geograficznie sztuczna inteligencja Data Science Virtual Machine zapewnia ArcGIS Pro do pracy z danymi geograficznymi, a także narzędzi Python, R i Data Science do pracy z ML i AI.
-keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, geoprzestrzenna analiza
+description: Maszyna wirtualna do nauki o danych geosmity inteligencji udostępnia system ArcGIS Pro do pracy z danymi geograficznymi, a także z zestawami narzędzi do nauki o językach Python, R i data science do pracy z ml i sztuczną inteligencją.
+keywords: głębokie uczenie się, sztuczna inteligencja, narzędzia do nauki o danych, maszyna wirtualna do nauki o danych, analiza geoprzestrzenna
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -10,39 +10,39 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: f5a094613b8722f96fccd1d1a6df359fa9b0ebd4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 2cefd3c7f85e043497084e2cd2b906bd546ca10d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526065"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282277"
 ---
-# <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Co to jest geograficzna sztuczna inteligencja Data Science Virtual Machine?
+# <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Co to jest maszyna wirtualna nauki o danych geo sztucznej inteligencji?
 
-Geograficznie sztuczna inteligencja Data Science Virtual Machine (nazywana również geograficzną Data Science VM AI lub geograficznie DSVM) oferuje funkcje analityczne geoprzestrzenne z Data Science Virtual Machine platformy Azure (DSVM). Ta maszyna wirtualna rozszerza zestaw narzędzi AI i analizy danych [DSVM](overview.md) , dodając wiodący w rynku system informacji geograficznej [ARCGIS Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) z ERSI.
+Maszyna wirtualna do nauki o danych geoprzestrzeni (znana również jako maszyna wirtualna do nauki o danych geoi lub technologia Geo-DSVM) zapewnia funkcje analizy geoprzestrzennej z maszyny wirtualnej do nauki o danych platformy Azure (DSVM). W szczególności ta maszyna wirtualna rozszerza zestawy narzędzi do nauki o ai i danych w [systemie DSVM,](overview.md) dodając wiodący na rynku system informacji geograficznej [ArcGIS Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) firmy ESRI.
 
- Geograficzna Data Science VM AI to oferta produktu, która powstała w wyniku współpracy między ESRI i firmą Microsoft. W wyniku powstaje zaawansowane środowisko, które zapewnia możliwość:
+ Geo AI Data Science VM to oferta produktów, która powstała w wyniku współpracy między ESRI i Microsoft. Rezultatem jest potężne środowisko, które zapewnia możliwość:
 
-- Eksplorowanie danych za pomocą najpopularniejszych narzędzi do nauki i danych
-- Zastosuj analizę statystyczną do danych z aspektami geograficznymi lub przestrzennymi
-- Szkolenie modeli do analizy predykcyjnej przy użyciu algorytmów uczenia maszynowego i uczenia głębokiego
-- Tworzenie rozbudowanych wizualizacji
+- Eksploruj dane za pomocą najpopularniejszych narzędzi do nauki o si i danych
+- Stosowanie analizy statystycznej do danych o aspektach geograficznych lub przestrzennych
+- Trenuj modele analizy predykcyjnej przy użyciu algorytmów uczenia maszynowego i uczenia głębokiego
+- Tworzenie bogatych wizualizacji
 
-Geograficzna Data Science VM AI jest obsługiwana w systemie Windows 2016 DSVM. Interfejsy Python i R do ArcGIS są również wstępnie skonfigurowane w lokalizacji geograficznej DSVM, co umożliwia programistyczny dostęp do analizy geograficznej w aplikacjach AI. Ponadto udostępniono przykłady Jupyter Notebook, które ułatwiają rozpoczęcie tworzenia aplikacji AI z niektórymi analizami geograficznymi.
+Maszyna wirtualna do nauki o danych geoa jest obsługiwana w systemie Windows 2016 DSVM. Interfejsy Pythona i Języka R do systemu ArcGIS są również wstępnie skonfigurowane w systemie Geo-DSVM, umożliwiając programowy dostęp do analizy geoprzestrzennej w aplikacjach sztucznej inteligencji. Ponadto dostępne są przykłady notebooka Jupyter, które ułatwiają rozpoczęcie tworzenia aplikacji sztucznej inteligencji z analizą geoprzestrzenną.
 
 
-## <a name="why-geo-ai-data-science-vm"></a>Dlaczego maszyny Wirtualnej analizy danych sztucznej Inteligencji geograficznych? 
+## <a name="why-geo-ai-data-science-vm"></a>Dlaczego Geo AI Data Science VM? 
 
-Integracja informacji o geografii i lokalizacji z danymi wiąże się z zaawansowanym nowym wymiarem, aby zrozumieć świat coraz bardziej instrumentację z urządzeniami IoT. Jest teraz szeroki zakres aplikacji praktycznie każdy segment społeczeństwa obywatelskiego, w którym komercyjnym, rządowym, akademickim lub niedochodowym. Analiza geograficzna oferuje niezawodne narzędzia do zbierania i analizowania danych geograficznych i opartych na lokalizacji oraz zarządzania nimi. Oferują one również zaawansowane wizualizacje, które umożliwiają unikatowe wgląd w znaczenie takich danych.
+Integracja informacji o lokalizacji i lokalizacji z danymi nadaje nowy, potężny wymiar zrozumienia świata coraz bardziej oprzyrządowanego za pomocą urządzeń IoT. Obecnie w praktycznie każdym segmencie społeczeństwa obywatelskiego, zarówno komercyjnym, rządowym, akademickim, jak i nienastawionym na zysk, istnieje szeroki zakres zastosowań. Analiza geoprzestrzenna zapewnia niezawodne narzędzia do gromadzenia danych geograficznych i opartych na lokalizacji, zarządzania nimi i ich analizowania. Oferują one również zaawansowana wizualizacja, która umożliwia unikatowy wgląd w znaczenie takich danych.
 
-[Data Science Virtual Machine (DSVM)](overview.md) firmy Microsoft to popularne środowisko eksperymentowania i modelowania na platformie Azure, które udostępnia hosty narzędzi AI, Machine Learning i analizy danych. Te platformy i narzędzia są wygodnie wstępnie skonfigurowane, aby ułatwić natychmiastowe przygotowanie wydajności.
+[Maszyna wirtualna do nauki o danych (DSVM)](overview.md) firmy Microsoft jest popularnym środowiskiem eksperymentowania i modelowania na platformie Azure, które udostępnia wiele narzędzi do nauki o sztucznej inteligencji, uczeniu maszynowym i danych. Te platformy i narzędzia są wygodnie wstępnie skonfigurowane, aby pomóc Ci natychmiast uzyskać produktywność.
 
-Geograficzna Data Science VM AI łączy funkcje predykcyjne DSVM z skalowalnością chmury platformy Azure i oprogramowaniem do analizy geograficznej z [Esri](https://www.esri.com). Ta integracja pionierskie zapewnia naukowcom danych i analitykom geograficznym podejmowanie produktywnej platformy, z której można uzyskać nową analizę danych i zidentyfikować nowe możliwości.
+Maszyna wirtualna geoalogicznego ai data science łączy predykcyjne możliwości dsvm ze skalowalnością chmury platformy Azure i oprogramowaniem do analizy geoprzestrzennej firmy [ESRI.](https://www.esri.com) Ta pionierska integracja zapewnia analitykom danych i analitykom geoprzestrzennym wydajną platformę, dzięki której można uzyskać nowe dane wywiadowcze i zidentyfikować nowe możliwości.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zainicjuj obsługę geograficzną Data Science VM AI i Rozpocznij korzystanie z niej ze wskazówkami dotyczącymi następujących zasobów:
+Aprowizuj maszynę wirtualną do nauki o danych geoa i rozpocznij korzystanie z niej, korzystając ze wskazówek z następujących zasobów:
 
-* [Zainicjuj obsługę geograficzną Data Science VM AI](provision-geo-ai-dsvm.md)
-* [Użyj Data Science VM geograficznej AI](use-geo-ai-dsvm.md)
+* [Aprowizuj maszynę wirtualną do nauki o danych geoalogicznej](provision-geo-ai-dsvm.md)
+* [Korzystanie z maszyny wirtualnej do nauki o danych geoalogicznej](use-geo-ai-dsvm.md)

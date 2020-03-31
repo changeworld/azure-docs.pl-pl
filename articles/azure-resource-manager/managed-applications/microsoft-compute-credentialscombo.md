@@ -1,38 +1,38 @@
 ---
-title: CredentialsCombo — element interfejsu użytkownika
-description: Opisuje element interfejsu użytkownika Microsoft. COMPUTE. CredentialsCombo dla Azure Portal.
+title: CredentialsCombo UI element
+description: Zawiera opis elementu interfejsu użytkownika microsoft.compute.credentialsCombo dla witryny Azure portal.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: baee83e08505ddabb4680b5bbb4101479010ea47
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652140"
 ---
-# <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI element
+# <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsPołącznik interfejsu użytkownika
 
-Grupa kontrolek z wbudowaną walidacją haseł systemu Windows i Linux oraz kluczy publicznych SSH.
+Grupa formantów z wbudowaną weryfikacją haseł systemu Windows i Linux oraz kluczy publicznych SSH.
 
-## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
+## <a name="ui-sample"></a>Próbka interfejsu użytkownika
 
-W przypadku systemu Windows użytkownicy widzą następujące tematy:
+W przypadku systemu Windows użytkownicy zobaczą:
 
 ![Microsoft.Compute.CredentialsCombo Windows](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
 
-Dla systemu Linux z wybranym hasłem użytkownicy zobaczą:
+W przypadku systemu Linux z wybranym hasłem użytkownicy zobaczą:
 
-![Hasło Microsoft. COMPUTE. CredentialsCombo Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
+![Hasło systemu Microsoft.Compute.CredentialsCombo Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
 
-Dla systemu Linux z wybranym kluczem publicznym SSH użytkownicy zobaczą:
+W przypadku systemu Linux z wybranym kluczem publicznym SSH użytkownicy zobaczą:
 
-![Microsoft. COMPUTE. CredentialsCombo — klucz systemu Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
+![Microsoft.Compute.CredentialsCombo Klucz Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>Schemat
 
-W przypadku systemu Windows należy użyć następującego schematu:
+W systemie Windows użyj następującego schematu:
 
 ```json
 {
@@ -58,7 +58,7 @@ W przypadku systemu Windows należy użyć następującego schematu:
 }
 ```
 
-W przypadku systemu **Linux**należy użyć następującego schematu:
+W przypadku **systemu Linux**użyj następującego schematu:
 
 ```json
 {
@@ -91,7 +91,7 @@ W przypadku systemu **Linux**należy użyć następującego schematu:
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 
-Jeśli `osPlatform` jest **Windows**lub `osPlatform` jest systemem **Linux** , a użytkownik podał hasło zamiast klucza publicznego SSH, kontrolka zwróci następujące dane wyjściowe:
+Jeśli `osPlatform` **Windows**jest windows `osPlatform` , lub **linux** i użytkownik pod warunkiem hasła zamiast klucza publicznego SSH, formant zwraca następujące dane wyjściowe:
 
 ```json
 {
@@ -100,7 +100,7 @@ Jeśli `osPlatform` jest **Windows**lub `osPlatform` jest systemem **Linux** , a
 }
 ```
 
-Jeśli `osPlatform` jest system **Linux** , a użytkownik podał klucz publiczny SSH, kontrolka zwróci następujące dane wyjściowe:
+Jeśli `osPlatform` jest **Linux** i użytkownik pod warunkiem klucza publicznego SSH, formant zwraca następujące dane wyjściowe:
 
 ```json
 {
@@ -111,13 +111,13 @@ Jeśli `osPlatform` jest system **Linux** , a użytkownik podał klucz publiczny
 
 ## <a name="remarks"></a>Uwagi
 
-- należy określić `osPlatform` i może to być **system Windows** lub **Linux**.
-- Jeśli `constraints.required` ma **wartość true**, pola tekstowe hasła lub klucza publicznego SSH muszą mieć wartości, aby pomyślnie sprawdzić poprawność. Wartość domyślna to **true**.
-- Jeśli `options.hideConfirmation` ma **wartość true**, drugie pole tekstowe potwierdzające hasło użytkownika jest ukryte. Wartość domyślna to **false**.
-- Jeśli `options.hidePassword` ma **wartość true**, opcja używania uwierzytelniania hasła jest ukryta. Może być używana tylko wtedy, gdy `osPlatform` jest **Linux**. Wartość domyślna to **false**.
-- Dodatkowe ograniczenia dotyczące dozwolonych haseł można zaimplementować przy użyciu właściwości `customPasswordRegex`. Ciąg w `customValidationMessage` jest wyświetlany w przypadku niepowodzenia niestandardowej walidacji hasła. Wartość domyślna dla obu właściwości jest **równa null**.
+- `osPlatform`musi być określony i może być albo **Windows** lub **Linux**.
+- Jeśli `constraints.required` jest ustawiona na **true**, a następnie hasło lub SSH klucz publiczny pola tekstowe muszą mieć wartości, aby pomyślnie sprawdzić poprawność. Wartość domyślna to **true**.
+- Jeśli `options.hideConfirmation` jest ustawiona na **true**, to drugie pole tekstowe do potwierdzenia hasła użytkownika jest ukryte. Wartość domyślna to **fałsz**.
+- Jeśli `options.hidePassword` jest ustawiona na **true**, opcja korzystania z uwierzytelniania hasłem jest ukryta. Może być używany `osPlatform` tylko wtedy, gdy jest **Linux**. Wartość domyślna to **fałsz**.
+- Dodatkowe ograniczenia dotyczące dozwolonych haseł można zaimplementować przy użyciu `customPasswordRegex` właściwości. Ciąg w `customValidationMessage` jest wyświetlany, gdy hasło nie będzie sprawdzania poprawności niestandardowej. Wartość domyślna dla obu właściwości to **null**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
-* Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).
+* Aby zapoznać się z wprowadzeniem do tworzenia definicji interfejsu użytkownika, zobacz [Wprowadzenie do createuidefinition](create-uidefinition-overview.md).
+* Aby uzyskać opis wspólnych właściwości w elementach interfejsu użytkownika, zobacz [CreateUiDefinition elementów](create-uidefinition-elements.md).

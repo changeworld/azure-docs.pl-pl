@@ -1,6 +1,6 @@
 ---
-title: Równoległy zbiorczy import danych w tabeli partycji SQL - zespołu danych dla celów naukowych
-description: Twórz partycjonowane tabele, szybkie równoległy zbiorczy importowania danych do bazy danych programu SQL Server.
+title: Równoległy zbiorczy import danych w tabelach partycji SQL — proces nauki o danych zespołowych
+description: Tworzenie tabel podzielonych na partycje w celu szybkiego równoległego masowego importowania danych do bazy danych programu SQL Server.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,28 +12,28 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 673a801e218d055bf482dc97972e36584cddd402
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721340"
 ---
-# <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Tworzenia i optymalizowania tabele, szybkie równoległe importowania danych do programu SQL Server na Maszynie wirtualnej platformy Azure
+# <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Tworzenie i optymalizowanie tabel pod kątem szybkiego równoległego importu danych do programu SQL Server na maszynie Wirtualnej platformy Azure
 
-W tym artykule opisano sposób tworzenia partycjonowane tabele, szybkie równoległy zbiorczy importowania danych do bazy danych programu SQL Server. W celu ładowania i przesyłania danych Big Data do bazy danych SQL można ulepszyć Importowanie danych do usługi SQL DB i kolejnych zapytań przy użyciu *partycjonowanych tabel i widoków*. 
+W tym artykule opisano sposób tworzenia tabel podzielonych na partycje do szybkiego równoległego zbiorczego importowania danych do bazy danych programu SQL Server. W przypadku ładowania/przesyłania dużych zbiorów danych do bazy danych SQL importowanie danych do bazy danych SQL i kolejnych zapytań można poprawić za pomocą *tabel i widoków podzielonych na partycje.* 
 
-## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Utwórz nową bazę danych i zestaw grup plików
+## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Tworzenie nowej bazy danych i zestawu grup plików
 * [Utwórz nową bazę danych](https://technet.microsoft.com/library/ms176061.aspx), jeśli jeszcze nie istnieje.
-* Dodawanie grup plików bazy danych do bazy danych, która przechowuje pliki fizyczne podzielonym na partycje. 
-* Można to zrobić przy użyciu [polecenia](https://msdn.microsoft.com/library/bb522682.aspx) [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) , jeśli baza danych już istnieje.
-* Dodaj jeden lub więcej plików (stosownie do potrzeb) do każdej grupy plików bazy danych.
+* Dodaj grupy plików bazy danych do bazy danych, która przechowuje pliki fizyczne na partycje. 
+* Można to zrobić za pomocą [create bazy danych,](https://technet.microsoft.com/library/ms176061.aspx) jeśli nowe lub [alter bazy danych,](https://msdn.microsoft.com/library/bb522682.aspx) jeśli baza danych już istnieje.
+* Dodaj jeden lub więcej plików (w razie potrzeby) do każdej grupy plików bazy danych.
   
   > [!NOTE]
-  > Określ docelowy grupy plików, która przechowuje dane dla tej partycji i nazwy plików fizycznej bazy danych, przechowywania danych plików.
+  > Określ docelową grupę plików, która przechowuje dane dla tej partycji i nazwy plików bazy danych, w których są przechowywane dane grupy plików.
   > 
   > 
 
-Poniższy przykład tworzy nową bazę danych z trzech grup plików innych niż podstawowy i grupy dzienników, zawierający jednym fizycznym pliku, w każdym. Pliki bazy danych są tworzone w domyślnym folderze danych programu SQL Server, zgodnie z konfiguracją w wystąpieniu programu SQL Server. Aby uzyskać więcej informacji na temat domyślnych lokalizacji plików, zapoznaj się z tematem [lokalizacje plików dla domyślnych i nazwanych wystąpień SQL Server](https://msdn.microsoft.com/library/ms143547.aspx).
+Poniższy przykład tworzy nową bazę danych z trzema grupami plików innymi niż grupy podstawowe i dzienniki, zawierającą jeden plik fizyczny w każdej. Pliki bazy danych są tworzone w domyślnym folderze Sql Server Data, skonfigurowanym w wystąpieniu programu SQL Server. Aby uzyskać więcej informacji na temat domyślnych lokalizacji plików, zobacz [Lokalizacje plików dla domyślnych i nazwanych wystąpień programu SQL Server](https://msdn.microsoft.com/library/ms143547.aspx).
 
     DECLARE @data_path nvarchar(256);
     SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
@@ -54,11 +54,11 @@ Poniższy przykład tworzy nową bazę danych z trzech grup plików innych niż 
         ( NAME = ''LogFileGroup'', FILENAME = ''' + @data_path + '<log_file_name>.ldf'' , SIZE = 1024KB , FILEGROWTH = 10%)
     ')
 
-## <a name="create-a-partitioned-table"></a>Tworzenie tabeli partycjonowanej
-Aby utworzyć partycjonowane tabele według schematu danych mapowany do grupy plików bazy danych utworzone w poprzednim kroku, należy najpierw utworzyć funkcji partycji i schematu. Jeśli dane są zbiorczego importowania do tabel podzielonym na partycje, rekordy są rozłożone grup plików według schematu partycji, zgodnie z poniższym opisem.
+## <a name="create-a-partitioned-table"></a>Tworzenie tabeli podzielonej na partycje
+Aby utworzyć tabele podzielone na partycje zgodnie ze schematem danych, mapowane na grupy plików bazy danych utworzone w poprzednim kroku, należy najpierw utworzyć funkcję partycji i schemat. Gdy dane są importowane zbiorczo do tabel podzielonych na partycje, rekordy są dystrybuowane między grupy plików zgodnie ze schematem partycji, jak opisano poniżej.
 
-### <a name="1-create-a-partition-function"></a>1. Utwórz funkcję partycji
-[Tworzenie funkcji partycji](https://msdn.microsoft.com/library/ms187802.aspx) Ta funkcja definiuje zakres wartości/granic do uwzględnienia w każdej tabeli partycji pojedynczej, na przykład w celu ograniczenia partycji według miesiąca (niektóre\_pole DateTime\_) w roku 2013:
+### <a name="1-create-a-partition-function"></a>1. Tworzenie funkcji partycji
+[Tworzenie funkcji partycji](https://msdn.microsoft.com/library/ms187802.aspx) Ta funkcja definiuje zakres wartości/granic, które mają być uwzględnione w każdej tabeli poszczególnych partycji, na przykład w celu ograniczenia partycji według miesiąca (niektóre\_pole datetime)\_w roku 2013:
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
         AS RANGE RIGHT FOR VALUES (
@@ -66,8 +66,8 @@ Aby utworzyć partycjonowane tabele według schematu danych mapowany do grupy pl
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
 
-### <a name="2-create-a-partition-scheme"></a>2. Utwórz schemat partycji
-[Utwórz schemat partycji](https://msdn.microsoft.com/library/ms179854.aspx). Ten schemat mapuje każdy zakres partycji w funkcji partycji fizycznych grupy plików, na przykład:
+### <a name="2-create-a-partition-scheme"></a>2. Tworzenie schematu partycji
+[Tworzenie schematu partycji](https://msdn.microsoft.com/library/ms179854.aspx). Ten schemat mapuje każdy zakres partycji w funkcji partycji na fizyczną grupę plików, na przykład:
   
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
         PARTITION <DatetimeFieldPFN> TO (
@@ -75,7 +75,7 @@ Aby utworzyć partycjonowane tabele według schematu danych mapowany do grupy pl
         <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
         <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
   
-  Aby sprawdzić zakresy obowiązuje w poszczególnych partycjach, zgodnie z funkcji/schematu, uruchom następujące zapytanie:
+  Aby sprawdzić zakresy obowiązujące w każdej partycji zgodnie z funkcją/schematem, uruchom następującą kwerendę:
   
         SELECT psch.name as PartitionScheme,
             prng.value AS PartitionValue,
@@ -86,22 +86,22 @@ Aby utworzyć partycjonowane tabele według schematu danych mapowany do grupy pl
         WHERE pfun.name = <DatetimeFieldPFN>
 
 ### <a name="3-create-a-partition-table"></a>3. Tworzenie tabeli partycji
-[Utwórz partycjonowane tabele](https://msdn.microsoft.com/library/ms174979.aspx)zgodnie ze schematem danych i określ schemat partycji oraz pole ograniczenia używane do partycjonowania tabeli, na przykład:
+[Utwórz tabelę podzieloną na partycje](https://msdn.microsoft.com/library/ms174979.aspx)zgodnie ze schematem danych i określ schemat partycji i pole ograniczenia używane do partycjonowania tabeli, na przykład:
   
         CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
 
-Aby uzyskać więcej informacji, zobacz [Tworzenie partycjonowanych tabel i indeksów](https://msdn.microsoft.com/library/ms188730.aspx).
+Aby uzyskać więcej informacji, zobacz [Tworzenie tabel i indeksów podzielonych na partycje](https://msdn.microsoft.com/library/ms188730.aspx).
 
 ## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>Zbiorcze importowanie danych dla każdej tabeli poszczególnych partycji
 
-* Można użyć narzędzia BCP, BULK INSERT lub innych metod, takich jak [SQL Server Kreatora migracji](https://sqlazuremw.codeplex.com/). Podany przykład używa metody BCP.
-* Zmień [bazę danych](https://msdn.microsoft.com/library/bb522682.aspx) , aby zmienić schemat rejestrowania transakcji na BULK_LOGGED, aby zminimalizować obciążenie rejestrowania, na przykład:
+* Można użyć BCP, BULK INSERT lub innych metod, takich jak [Kreator migracji programu SQL Server](https://sqlazuremw.codeplex.com/). Podany przykład używa metody BCP.
+* [Zmień bazę danych,](https://msdn.microsoft.com/library/bb522682.aspx) aby zmienić schemat rejestrowania transakcji, aby BULK_LOGGED, aby zminimalizować obciążenie związane z rejestrowaniem, na przykład:
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* Aby przyspieszyć ładowanie danych, należy uruchomić operacji importu zbiorczego równolegle. Aby uzyskać porady dotyczące przyspieszania importowania zbiorczego danych Big Data do baz danych SQL Server, zobacz [obciążenie 1 TB w czasie krótszym niż 1 godzina](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
+* Aby przyspieszyć ładowanie danych, uruchom równolegle operacje importu zbiorczego. Aby uzyskać wskazówki dotyczące przyspieszania masowego importowania dużych zbiorów danych do baz danych programu SQL Server, zobacz [Ładowanie 1 TB w czasie krótszym niż 1 godzina](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
 
-Poniższy skrypt programu PowerShell znajduje się przykład danych równoległe ładowanie przy użyciu narzędzia BCP.
+Poniższy skrypt programu PowerShell jest przykładem równoległego ładowania danych przy użyciu protokołu BCP.
 
     # Set database name, input data directory, and output log directory
     # This example loads comma-separated input data files
@@ -165,22 +165,22 @@ Poniższy skrypt programu PowerShell znajduje się przykład danych równoległe
     date
 
 
-## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>Tworzenie indeksów, aby zoptymalizować sprzężenia i wydajności zapytań
-* Jeśli dane dotyczące modelowania są wyodrębniane z wielu tabel, indeksy należy utworzyć w klucze sprzężenia, aby zwiększyć wydajność sprzężenia.
+## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>Tworzenie indeksów w celu optymalizacji sprzężeń i wydajności zapytań
+* Jeśli wyodrębnić dane do modelowania z wielu tabel, należy utworzyć indeksy na klucze sprzężenia, aby poprawić wydajność sprzężenia.
 * [Utwórz indeksy](https://technet.microsoft.com/library/ms188783.aspx) (klastrowane lub nieklastrowane) przeznaczone dla tej samej grupy plików dla każdej partycji, na przykład:
   
         CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
-  Ewentualnie
+  Lub
   
         CREATE INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
   
   > [!NOTE]
-  > Istnieje możliwość tworzenia indeksów przed zbiorcze importowanie danych. Tworzenie indeksu, przed zaimportowaniem zbiorcze spowalnia ładowania danych.
+  > Przed zbiorczym importowaniem danych można utworzyć indeksy. Tworzenie indeksu przed importowaniem zbiorczym spowalnia ładowanie danych.
   > 
   > 
 
-## <a name="advanced-analytics-process-and-technology-in-action-example"></a>Proces zaawansowane funkcje analityczne i technologii w przykładzie akcji
-Aby zapoznać się z kompleksowym przykładem, korzystając z procesu nauki o danych zespołowych z publicznym zestawem danych, zobacz [zespołowe przetwarzanie danych w ramach działania: używanie SQL Server](sql-walkthrough.md).
+## <a name="advanced-analytics-process-and-technology-in-action-example"></a>Zaawansowany proces analityczny i technologia w przykładzie działania
+W przykładzie przewodnika end-to-end przy użyciu procesu nauki o danych zespołu z publicznym zestawem danych zobacz [Proces nauki o danych zespołu w działaniu: przy użyciu programu SQL Server](sql-walkthrough.md).
 

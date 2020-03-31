@@ -1,6 +1,6 @@
 ---
-title: Użyj Log Analytics platformy Azure do sprawdzenia dzienników zapory aplikacji sieci Web Application Gateway
-description: W tym artykule pokazano, jak za pomocą usługi Azure Log Analytics przeanalizować Application Gateway Dzienniki zapory aplikacji sieci Web
+title: Sprawdzanie dzienników zapory aplikacji bramy aplikacji usługi Azure za pomocą usługi Azure Log Analytics
+description: W tym artykule pokazano, jak za pomocą usługi Azure Log Analytics można sprawdzać dzienniki zapory aplikacji bramy aplikacji
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,36 +8,36 @@ ms.topic: article
 ms.date: 09/06/2019
 ms.author: victorh
 ms.openlocfilehash: e1bc3b58f425b374e4cae1da6e9800579e503f0d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73516593"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>Używanie usługi Log Analytics do badania dzienników zapory aplikacji internetowej usługi Application Gateway
 
-Po uruchomieniu Application Gateway WAF można włączyć dzienniki, aby sprawdzić, co dzieje się z każdym żądaniem. Dzienniki zapory dają wgląd w to, co WAF ocenia, dopasowuje i blokuje. Za pomocą Log Analytics można przeanalizować dane znajdujące się w dziennikach zapory, aby dać jeszcze więcej szczegółowych informacji. Aby uzyskać więcej informacji na temat tworzenia obszaru roboczego Log Analytics, zobacz [tworzenie log Analytics obszaru roboczego w Azure Portal](../../azure-monitor/learn/quick-create-workspace.md). Aby uzyskać więcej informacji o zapytaniach dziennika, zobacz [Omówienie zapytań dzienników w Azure monitor](../../azure-monitor/log-query/log-query-overview.md).
+Gdy brama aplikacji WAF działa, można włączyć dzienniki, aby sprawdzić, co dzieje się z każdym żądaniem. Dzienniki zapory dają wgląd w to, co WAF ocenia, dopasowuje i blokuje. Za pomocą usługi Log Analytics można sprawdzić dane wewnątrz dzienników zapory, aby uzyskać jeszcze więcej szczegółowych informacji. Aby uzyskać więcej informacji na temat tworzenia obszaru roboczego usługi Log Analytics, zobacz [Tworzenie obszaru roboczego usługi Log Analytics w witrynie Azure portal](../../azure-monitor/learn/quick-create-workspace.md). Aby uzyskać więcej informacji na temat zapytań dziennika, zobacz [Omówienie zapytań dziennika w usłudze Azure Monitor](../../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="import-waf-logs"></a>Importowanie dzienników WAF
 
-Aby zaimportować Dzienniki zapory do Log Analytics, zobacz temat [kondycja zaplecza, dzienniki diagnostyczne i metryki dla Application Gateway](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging). Gdy masz Dzienniki zapory w obszarze roboczym Log Analytics, możesz wyświetlać dane, zapisywać zapytania, tworzyć wizualizacje i dodawać je do pulpitu nawigacyjnego portalu.
+Aby zaimportować dzienniki zapory do usługi Log Analytics, zobacz [Kondycja zaplecza, dzienniki diagnostyczne i metryki bramy aplikacji](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging). Jeśli masz dzienniki zapory w obszarze roboczym usługi Log Analytics, możesz wyświetlać dane, zapisywać zapytania, tworzyć wizualizacje i dodawać je do pulpitu nawigacyjnego portalu.
 
-## <a name="explore-data-with-examples"></a>Eksplorowanie danych za pomocą przykładów
+## <a name="explore-data-with-examples"></a>Eksploruj dane za pomocą przykładów
 
-Aby wyświetlić dane pierwotne w dzienniku zapory, można uruchomić następujące zapytanie:
+Aby wyświetlić nieprzetworzone dane w dzienniku zapory, można uruchomić następującą kwerendę:
 
 ```
 AzureDiagnostics 
 | where ResourceProvider == "MICROSOFT.NETWORK" and Category == "ApplicationGatewayFirewallLog"
 ```
 
-Będzie to wyglądać podobnie do poniższego zapytania:
+Będzie to wyglądać podobnie do następującej kwerendy:
 
-![Zapytanie Log Analytics](../media/log-analytics/log-query.png)
+![Zapytanie usługi Log Analytics](../media/log-analytics/log-query.png)
 
-Możesz przejść do szczegółów danych i wykreolić wykresy lub utworzyć wizualizacje w tym miejscu. Zobacz następujące zapytania jako punkt początkowy:
+Można przejść do szczegółów danych, wykreślić wykresy lub utworzyć wizualizacje w tym miejscu. Zobacz następujące zapytania jako punkt wyjścia:
 
-### <a name="matchedblocked-requests-by-ip"></a>Dopasowane/zablokowane żądania według adresu IP
+### <a name="matchedblocked-requests-by-ip"></a>Dopasowane/zablokowane żądania ip
 
 ```
 AzureDiagnostics
@@ -46,7 +46,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="matchedblocked-requests-by-uri"></a>Dopasowane/zablokowane żądania według identyfikatora URI
+### <a name="matchedblocked-requests-by-uri"></a>Dopasowane/zablokowane żądania identyfikatora URI
 
 ```
 AzureDiagnostics
@@ -55,7 +55,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="top-matched-rules"></a>Najważniejsze dopasowane reguły
+### <a name="top-matched-rules"></a>Reguły o najwyższej dopasowywce
 
 ```
 AzureDiagnostics
@@ -65,7 +65,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="top-five-matched-rule-groups"></a>Pięć najważniejszych pasujących grup reguł
+### <a name="top-five-matched-rule-groups"></a>Pięć najlepszych dopasowanych grup reguł
 
 ```
 AzureDiagnostics
@@ -77,10 +77,10 @@ AzureDiagnostics
 
 ## <a name="add-to-your-dashboard"></a>Dodawanie do pulpitu nawigacyjnego
 
-Po utworzeniu zapytania można je dodać do pulpitu nawigacyjnego.  Wybierz pozycję **Przypnij do pulpitu nawigacyjnego** w prawym górnym rogu obszaru roboczego usługi log Analytics. Dzięki powyższym czteremu zapytaniom przypiętym do przykładowego pulpitu nawigacyjnego są to dane, które można wyświetlić w skrócie:
+Po utworzeniu kwerendy można ją dodać do pulpitu nawigacyjnego.  Wybierz **przypnij do pulpitu nawigacyjnego** w prawym górnym rogu obszaru roboczego analizy dzienników. W przypadku czterech poprzednich zapytań przypiętych do przykładowego pulpitu nawigacyjnego są to dane, które można wyświetlić na pierwszy rzut oka:
 
 ![Pulpit nawigacyjny](../media/log-analytics/dashboard.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Kondycja zaplecza, dzienniki diagnostyczne i metryki dla Application Gateway](../../application-gateway/application-gateway-diagnostics.md)
+[Kondycja zaplecza, dzienniki diagnostyczne i metryki dla usługi Application Gateway](../../application-gateway/application-gateway-diagnostics.md)

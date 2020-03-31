@@ -1,6 +1,6 @@
 ---
-title: 'Program Azure AD Connect: Dokumentacja programu PowerShell ADSyncConfig | Dokumentacja firmy Microsoft'
-description: Ten dokument zawiera informacje dotyczące modułu programu ADSyncConfig.psm1 PowerShell.
+title: 'Usługa Azure AD Connect: odwołanie programu AdSyncConfig powershell | Dokumenty firmy Microsoft'
+description: Ten dokument zawiera informacje referencyjne dla modułu programu PowerShell programu ADSyncConfig.psm1.
 author: billmath
 manager: daveba
 ms.service: active-directory
@@ -11,29 +11,29 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381199"
 ---
-# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Program Azure AD Connect:  Dokumentacja programu PowerShell ADSyncConfig
-Poniższa dokumentacja zawiera informacje dotyczące modułu programu PowerShell ADSyncConfig.psm1, dostępnej w programie Azure AD Connect.
+# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Usługa Azure AD Connect: odwołanie programu ADSyncConfig powershell
+Poniższa dokumentacja zawiera informacje referencyjne dla modułu programu PowerShell programu ADSyncConfig.psm1 dołączonego do usługi Azure AD Connect.
 
 
-## <a name="get-adsyncadconnectoraccount"></a>Get-ADSyncADConnectorAccount
+## <a name="get-adsyncadconnectoraccount"></a>Konto Get-ADSyncADConnectorAccount
 
-### <a name="synopsis"></a>SYNOPSIS
-Pobiera nazwę konta i domeny, która jest skonfigurowana w każdym łączniku AD
+### <a name="synopsis"></a>STRESZCZENIE
+Pobiera nazwę konta i domenę skonfigurowany w każdym łączniku usługi AD
 
-### <a name="syntax"></a>SYNTAX
+### <a name="syntax"></a>SKŁADNIA
 
 ```
 Get-ADSyncADConnectorAccount
 ```
 
 ### <a name="description"></a>OPIS
-Ta funkcja korzysta z polecenia cmdlet "Get-ADSyncConnector", który znajduje się w AAD Connect można pobrać z parametrów połączenia tabelę przedstawiającą konta złącza AD.
+Ta funkcja używa polecenia cmdlet "Get-ADSyncConnector", które jest obecne w UID Connect, aby pobrać z parametrów łączności tabelę przedstawiającą konto łączników usług AD.
 
 ### <a name="examples"></a>PRZYKŁADY
 
@@ -44,17 +44,17 @@ Get-ADSyncADConnectorAccount
 
 ## <a name="get-adsyncobjectswithinheritancedisabled"></a>Get-ADSyncObjectsWithInheritanceDisabled
 
-### <a name="synopsis"></a>SYNOPSIS
-Pobiera obiekty usługi AD za pomocą dziedziczenia uprawnień wyłączone
+### <a name="synopsis"></a>STRESZCZENIE
+Pobiera obiekty usługi AD z wyłączonym dziedziczeniem uprawnień
 
-### <a name="syntax"></a>SYNTAX
+### <a name="syntax"></a>SKŁADNIA
 
 ```
 Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] <String>] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>OPIS
-Wyszukuje w AD od parametru SearchBase i zwraca wszystkich obiektów, przefiltrowane przez parametr ObjectClass dziedziczenie list ACL aktualnie wyłączone.
+Wyszukiwanie w u. w uł.01, począwszy od parametru SearchBase i zwraca wszystkie obiekty filtrowane według parametru ObjectClass, które mają obecnie wyłączone dziedziczenie listy ACL.
 
 ### <a name="examples"></a>PRZYKŁADY
 
@@ -77,12 +77,12 @@ Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso' -ObjectClass 'use
 Find all types of objects with disabled inheritance in a OU
 ```
 
-Get ADSyncObjectsWithInheritanceDisabled - SearchBase jednostki Organizacyjnej usługi Azure AD, DC = Contoso, DC = com - ObjectClass = "*"
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
 
 ### <a name="parameters"></a>PARAMETRY
 
 #### <a name="-searchbase"></a>-SearchBase
-SearchBase dla kwerendy LDAP, która może być elementem DistinguishedName domeny usługi AD lub nazwy FQDN
+Baza wyszukiwania kwerendy LDAP, która może być domeną AD DistinguishedName lub FQDN
 
 ```yaml
 Type: String
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-objectclass"></a>-ObjectClass
-Klasa obiektów do wyszukiwania, który może być "*" (dla każdej klasy obiektu), "user", "group", "kontener" itd. Domyślnie ta funkcja wyszuka klasę obiektu "organizationalUnit".
+Klasa obiektów do wyszukiwania, które mogą być "*" (dla dowolnej klasy obiektu), "user", "group", "container" itp. Domyślnie ta funkcja wyszuka klasę obiektu "organizationalUnit".
 
 ```yaml
 Type: String
@@ -113,46 +113,46 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobaczhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
-### <a name="synopsis"></a>SYNOPSIS
-Zainicjuj lasu usługi Active Directory i domeny dla podstawowych uprawnień do odczytu.
+### <a name="synopsis"></a>STRESZCZENIE
+Inicjowanie lasu i domeny usługi Active Directory w celu uzyskania podstawowych uprawnień do odczytu.
 
-### <a name="syntax"></a>SYNTAX
+### <a name="syntax"></a>SKŁADNIA
 
-#### <a name="userdomain"></a>UserDomain
+#### <a name="userdomain"></a>Domena użytkowników
 ```
 Set-ADSyncBasicReadPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String>
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>DistinguishedName
+#### <a name="distinguishedname"></a>Distinguishedname
 ```
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [-SkipAdminSdHolders]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>OPIS
-Funkcja Set ADSyncBasicReadPermissions zapewni wymaganych uprawnień kontu synchronizacja usługi AD, takich jak:
+Funkcja Set-ADSyncBasicReadPermissions daje wymagane uprawnienia do konta synchronizacji usługi AD, które obejmują następujące elementy:
 1.
-Dostęp do właściwości odczytu wszystkie atrybuty dla wszystkich obiektów podrzędnych komputera
+Odczyt dostępu do właściwości dla wszystkich atrybutów dla wszystkich obiektów komputera podrzędnego
 2.
-Dostęp do właściwości odczytu wszystkie atrybuty dla wszystkich obiektów podrzędnych urządzenia
+Odczyt dostępu do właściwości we wszystkich atrybutach dla wszystkich obiektów urządzenia podrzędnego
 3.
-Dostęp do właściwości odczytu wszystkie atrybuty dla wszystkich obiektów podrzędnych foreignsecurityprincipal
+Odczyt dostępu do właściwości dla wszystkich atrybutów dla wszystkich obiektów podrzędnych obcych bezpieczeństwa
 5.
-Dostęp do właściwości odczytu wszystkie atrybuty dla wszystkich obiektów podrzędnych użytkownika
+Odczyt dostępu do właściwości dla wszystkich atrybutów dla wszystkich obiektów użytkownika podrzędnego
 6.
-Dostęp do właściwości odczytu wszystkie atrybuty dla wszystkich obiektów podrzędnych inetorgperson
+Odczytu dostępu do właściwości dla wszystkich atrybutów dla wszystkich obiektów inetorgperson podrzędnych
 7.
-Dostęp do właściwości odczytu wszystkie atrybuty dla wszystkich obiektów podrzędnych grupy
+Odczyt dostępu do właściwości dla wszystkich atrybutów dla wszystkich obiektów grupy podrzędnej
 8.
-Dostęp do właściwości odczytu wszystkie atrybuty dla wszystkich elementów podrzędnych obiektów kontaktu
+Odczyt dostępu do właściwości dla wszystkich atrybutów dla wszystkich obiektów kontaktu podrzędnego
 
-Te uprawnienia są stosowane do wszystkich domen w lesie.
-Opcjonalnie możesz podać DistinguishedName w parametrze ADobjectDN, aby ustawić te uprawnienia dla tego obiektu AD tylko (z uwzględnieniem dziedziczenia z obiektami sub).
+Uprawnienia te są stosowane do wszystkich domen w lesie.
+Opcjonalnie można podać parametr DistinguishedName w pliku ADobjectDN, aby ustawić te uprawnienia tylko dla tego obiektu usługi AD (w tym dziedziczenie do obiektów podrzędnych).
 
 ### <a name="examples"></a>PRZYKŁADY
 
@@ -178,8 +178,8 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountName 'ADConnector' -ADConnecto
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-Nazwa konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorNajnak
+Nazwa konta usługi Active Directory, które jest lub będzie używane przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Domena konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+Domena konta usługi Active Directory, która jest lub będzie używana przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+Nazwa wyróżniająca konta usługi Active Directory, które jest lub będzie używane przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -224,7 +224,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName obiektu docelowego usługi AD, aby ustawić uprawnienia (opcjonalnie)
+DistinguishedName docelowego obiektu AD, aby ustawić uprawnienia (opcjonalnie)
 
 ```yaml
 Type: String
@@ -239,7 +239,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Opcjonalny parametr, aby wskazać, jeśli nie można zaktualizować kontenera AdminSDHolder z odpowiednimi uprawnieniami
+Opcjonalny parametr wskazujący, czy kontener AdminSDHolder nie powinien być aktualizowany o te uprawnienia
 
 ```yaml
 Type: SwitchParameter
@@ -253,9 +253,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-WhatIf
+#### <a name="-whatif"></a>-CoIf
 Pokazuje, co się stanie po uruchomieniu polecenia cmdlet.
-Polecenie cmdlet nie jest uruchomione.
+Polecenie cmdlet nie zostało uruchomione.
 
 ```yaml
 Type: SwitchParameter
@@ -269,7 +269,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Upewnij się
+#### <a name="-confirm"></a>-Confirm
 Monituje o potwierdzenie przed uruchomieniem polecenia cmdlet.
 
 ```yaml
@@ -286,40 +286,40 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobaczhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
-### <a name="synopsis"></a>SYNOPSIS
-Zainicjuj lasu usługi Active Directory i domeny dla funkcji hybrydowego programu Exchange.
+### <a name="synopsis"></a>STRESZCZENIE
+Inicjowanie lasu i domeny usługi Active Directory dla funkcji hybrydowej programu Exchange.
 
-### <a name="syntax"></a>SYNTAX
+### <a name="syntax"></a>SKŁADNIA
 
-#### <a name="userdomain"></a>UserDomain
+#### <a name="userdomain"></a>Domena użytkowników
 ```
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String>
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>DistinguishedName
+#### <a name="distinguishedname"></a>Distinguishedname
 ```
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [-SkipAdminSdHolders]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>OPIS
-Funkcja Set ADSyncExchangeHybridPermissions zapewni wymaganych uprawnień kontu synchronizacja usługi AD, takich jak:
+Funkcja Set-ADSyncExchangeHybridPermissions daje wymagane uprawnienia do konta synchronizacji usługi AD, które obejmują następujące elementy:
 1.
-Dostęp do właściwości odczytu/zapisu dla wszystkich atrybutów dla wszystkich obiektów podrzędnych użytkownika
+Dostęp do właściwości odczytu/zapisu we wszystkich atrybutach dla wszystkich obiektów użytkownika podrzędnego
 2.
-Dostęp do właściwości odczytu/zapisu dla wszystkich atrybutów dla wszystkich obiektów podrzędnych inetorgperson
+Dostęp do właściwości odczytu/zapisu we wszystkich atrybutach dla wszystkich obiektów inetorgperson podrzędnych
 3.
-Dostęp do właściwości odczytu/zapisu dla wszystkich atrybutów dla wszystkich obiektów podrzędnych grupy
+Dostęp do właściwości odczytu/zapisu we wszystkich atrybutach dla wszystkich obiektów grupy podrzędnej
 4.
-Dostęp do właściwości odczytu/zapisu dla wszystkich atrybutów dla wszystkich elementów podrzędnych obiektów kontaktu
+Dostęp do właściwości odczytu/zapisu dla wszystkich atrybutów dla wszystkich obiektów kontaktu podrzędnego
 
-Te uprawnienia są stosowane do wszystkich domen w lesie.
-Opcjonalnie możesz podać DistinguishedName w parametrze ADobjectDN, aby ustawić te uprawnienia dla tego obiektu AD tylko (z uwzględnieniem dziedziczenia z obiektami sub).
+Uprawnienia te są stosowane do wszystkich domen w lesie.
+Opcjonalnie można podać parametr DistinguishedName w pliku ADobjectDN, aby ustawić te uprawnienia tylko dla tego obiektu usługi AD (w tym dziedziczenie do obiektów podrzędnych).
 
 ### <a name="examples"></a>PRZYKŁADY
 
@@ -345,8 +345,8 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName 'ADConnector' -ADCon
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-Nazwa konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorNajnak
+Nazwa konta usługi Active Directory, które jest lub będzie używane przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -361,7 +361,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Domena konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+Domena konta usługi Active Directory, która jest lub będzie używana przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -376,7 +376,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+Nazwa wyróżniająca konta usługi Active Directory, które jest lub będzie używane przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -391,7 +391,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName obiektu docelowego usługi AD, aby ustawić uprawnienia (opcjonalnie)
+DistinguishedName docelowego obiektu AD, aby ustawić uprawnienia (opcjonalnie)
 
 ```yaml
 Type: String
@@ -406,7 +406,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Opcjonalny parametr, aby wskazać, jeśli nie można zaktualizować kontenera AdminSDHolder z odpowiednimi uprawnieniami
+Opcjonalny parametr wskazujący, czy kontener AdminSDHolder nie powinien być aktualizowany o te uprawnienia
 
 ```yaml
 Type: SwitchParameter
@@ -420,9 +420,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-WhatIf
+#### <a name="-whatif"></a>-CoIf
 Pokazuje, co się stanie po uruchomieniu polecenia cmdlet.
-Polecenie cmdlet nie jest uruchomione.
+Polecenie cmdlet nie zostało uruchomione.
 
 ```yaml
 Type: SwitchParameter
@@ -436,7 +436,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Upewnij się
+#### <a name="-confirm"></a>-Confirm
 Monituje o potwierdzenie przed uruchomieniem polecenia cmdlet.
 
 ```yaml
@@ -453,35 +453,35 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobaczhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
-### <a name="synopsis"></a>SYNOPSIS
-Zainicjuj lasu usługi Active Directory i domeny dla funkcji folderu publiczne poczty programu Exchange.
+### <a name="synopsis"></a>STRESZCZENIE
+Zaakwuj funkcję lasu i domeny usługi Active Directory dla folderu publicznego poczty programu Exchange.
 
-### <a name="syntax"></a>SYNTAX
+### <a name="syntax"></a>SKŁADNIA
 
-#### <a name="userdomain"></a>UserDomain
+#### <a name="userdomain"></a>Domena użytkowników
 ```
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName <String>
  -ADConnectorAccountDomain <String> [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>DistinguishedName
+#### <a name="distinguishedname"></a>Distinguishedname
 ```
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>OPIS
-Funkcja Set ADSyncExchangeMailPublicFolderPermissions zapewni wymaganych uprawnień kontu synchronizacja usługi AD, takich jak:
+Funkcja Set-ADSyncExchangeMailPublicFolderPermissions daje wymagane uprawnienia do konta synchronizacji usługi AD, które obejmują następujące elementy:
 1.
-Dostęp do właściwości odczytu wszystkie atrybuty dla wszystkich obiektów podrzędnych publicfolder
+Odczyt dostępu do właściwości dla wszystkich atrybutów dla wszystkich obiektów podrzędnego publicfolder
 
-Te uprawnienia są stosowane do wszystkich domen w lesie.
-Opcjonalnie możesz podać DistinguishedName w parametrze ADobjectDN, aby ustawić te uprawnienia dla tego obiektu AD tylko (z uwzględnieniem dziedziczenia z obiektami sub).
+Uprawnienia te są stosowane do wszystkich domen w lesie.
+Opcjonalnie można podać parametr DistinguishedName w pliku ADobjectDN, aby ustawić te uprawnienia tylko dla tego obiektu usługi AD (w tym dziedziczenie do obiektów podrzędnych).
 
 ### <a name="examples"></a>PRZYKŁADY
 
@@ -507,8 +507,8 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName 'ADConnect
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-Nazwa konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorNajnak
+Nazwa konta usługi Active Directory, które jest lub będzie używane przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -523,7 +523,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Domena konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+Domena konta usługi Active Directory, która jest lub będzie używana przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -538,7 +538,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+Nazwa wyróżniająca konta usługi Active Directory, które jest lub będzie używane przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -553,7 +553,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName obiektu docelowego usługi AD, aby ustawić uprawnienia (opcjonalnie)
+DistinguishedName docelowego obiektu AD, aby ustawić uprawnienia (opcjonalnie)
 
 ```yaml
 Type: String
@@ -568,7 +568,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Opcjonalny parametr, aby wskazać, jeśli nie można zaktualizować kontenera AdminSDHolder z odpowiednimi uprawnieniami
+Opcjonalny parametr wskazujący, czy kontener AdminSDHolder nie powinien być aktualizowany o te uprawnienia
 
 ```yaml
 Type: SwitchParameter
@@ -582,9 +582,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-WhatIf
+#### <a name="-whatif"></a>-CoIf
 Pokazuje, co się stanie po uruchomieniu polecenia cmdlet.
-Polecenie cmdlet nie jest uruchomione.
+Polecenie cmdlet nie zostało uruchomione.
 
 ```yaml
 Type: SwitchParameter
@@ -598,7 +598,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Upewnij się
+#### <a name="-confirm"></a>-Confirm
 Monituje o potwierdzenie przed uruchomieniem polecenia cmdlet.
 
 ```yaml
@@ -615,34 +615,34 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobaczhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
-### <a name="synopsis"></a>SYNOPSIS
-Inicjowanie usługi Active Directory lasu i domeny, mS-DS-ConsistencyGuid funkcji.
+### <a name="synopsis"></a>STRESZCZENIE
+Inicjowanie lasu i domeny usługi Active Directory dla funkcji mS-DS-ConsistencyGuid.
 
-### <a name="syntax"></a>SYNTAX
+### <a name="syntax"></a>SKŁADNIA
 
-#### <a name="userdomain"></a>UserDomain
+#### <a name="userdomain"></a>Domena użytkowników
 ```
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String>
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>DistinguishedName
+#### <a name="distinguishedname"></a>Distinguishedname
 ```
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>OPIS
-Funkcja Set ADSyncMsDsConsistencyGuidPermissions zapewni wymaganych uprawnień kontu synchronizacja usługi AD, takich jak:
+Funkcja Set-ADSyncMsDsConsistencyGuidPermissions daje wymagane uprawnienia do konta synchronizacji usługi AD, które obejmują następujące elementy:
 1.
-Dostęp do właściwości odczytu/zapisu atrybutu mS-DS-ConsistencyGuid dla wszystkich obiektów podrzędnych użytkownika
+Dostęp do właściwości odczytu/zapisu w atrybutie mS-DS-ConsistencyGuid dla wszystkich obiektów użytkownika podrzędnego
 
-Te uprawnienia są stosowane do wszystkich domen w lesie.
-Opcjonalnie możesz podać DistinguishedName w parametrze ADobjectDN, aby ustawić te uprawnienia dla tego obiektu AD tylko (z uwzględnieniem dziedziczenia z obiektami sub).
+Uprawnienia te są stosowane do wszystkich domen w lesie.
+Opcjonalnie można podać parametr DistinguishedName w pliku ADobjectDN, aby ustawić te uprawnienia tylko dla tego obiektu usługi AD (w tym dziedziczenie do obiektów podrzędnych).
 
 ### <a name="examples"></a>PRZYKŁADY
 
@@ -668,8 +668,8 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName 'ADConnector' -
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-Nazwa konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorNajnak
+Nazwa konta usługi Active Directory, które jest lub będzie używane przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -684,7 +684,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Domena konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+Domena konta usługi Active Directory, która jest lub będzie używana przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -699,7 +699,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+Nazwa wyróżniająca konta usługi Active Directory, które jest lub będzie używane przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -714,7 +714,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName obiektu docelowego usługi AD, aby ustawić uprawnienia (opcjonalnie)
+DistinguishedName docelowego obiektu AD, aby ustawić uprawnienia (opcjonalnie)
 
 ```yaml
 Type: String
@@ -729,7 +729,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Opcjonalny parametr, aby wskazać, jeśli nie można zaktualizować kontenera AdminSDHolder z odpowiednimi uprawnieniami
+Opcjonalny parametr wskazujący, czy kontener AdminSDHolder nie powinien być aktualizowany o te uprawnienia
 
 ```yaml
 Type: SwitchParameter
@@ -743,9 +743,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-WhatIf
+#### <a name="-whatif"></a>-CoIf
 Pokazuje, co się stanie po uruchomieniu polecenia cmdlet.
-Polecenie cmdlet nie jest uruchomione.
+Polecenie cmdlet nie zostało uruchomione.
 
 ```yaml
 Type: SwitchParameter
@@ -759,7 +759,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Upewnij się
+#### <a name="-confirm"></a>-Confirm
 Monituje o potwierdzenie przed uruchomieniem polecenia cmdlet.
 
 ```yaml
@@ -776,34 +776,34 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobaczhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
-### <a name="synopsis"></a>SYNOPSIS
-Zainicjuj lasu usługi Active Directory i domeny do synchronizacji skrótów haseł.
+### <a name="synopsis"></a>STRESZCZENIE
+Inicjowanie lasu i domeny usługi Active Directory w celu synchronizacji skrótów haseł.
 
-### <a name="syntax"></a>SYNTAX
+### <a name="syntax"></a>SKŁADNIA
 
-#### <a name="userdomain"></a>UserDomain
+#### <a name="userdomain"></a>Domena użytkowników
 ```
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String>
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>DistinguishedName
+#### <a name="distinguishedname"></a>Distinguishedname
 ```
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>OPIS
-Funkcja Set ADSyncPasswordHashSyncPermissions zapewni wymaganych uprawnień kontu synchronizacja usługi AD, takich jak:
+Funkcja Set-ADSyncPasswordHashSyncPermissions daje wymagane uprawnienia do konta synchronizacji usługi AD, które obejmują następujące elementy:
 1.
-Replikowanie zmian katalogów
+Replikowanie zmian w katalogu
 2.
-Replikowanie zmian katalogów wszystkie
+Replikowanie katalogu zmienia wszystko
 
-Te uprawnienia są podane dla wszystkich domen w lesie.
+Uprawnienia te są przyznawane wszystkim domenom w lesie.
 
 ### <a name="examples"></a>PRZYKŁADY
 
@@ -819,8 +819,8 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=A
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-Nazwa konta usługi Active Directory, który będzie używany przez usługi Azure AD Connect Sync zarządzania obiektami w katalogu.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorNajnak
+Nazwa konta usługi Active Directory, które będzie używane przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -835,7 +835,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Domena konta usługi Active Directory, który będzie używany przez usługi Azure AD Connect Sync zarządzania obiektami w katalogu.
+Domena konta usługi Active Directory, która będzie używana przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -850,7 +850,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName konta usługi Active Directory, który będzie używany przez usługi Azure AD Connect Sync zarządzania obiektami w katalogu.
+Nazwa wyróżniająca konta usługi Active Directory, które będzie używane przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -864,9 +864,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-WhatIf
+#### <a name="-whatif"></a>-CoIf
 Pokazuje, co się stanie po uruchomieniu polecenia cmdlet.
-Polecenie cmdlet nie jest uruchomione.
+Polecenie cmdlet nie zostało uruchomione.
 
 ```yaml
 Type: SwitchParameter
@@ -880,7 +880,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Upewnij się
+#### <a name="-confirm"></a>-Confirm
 Monituje o potwierdzenie przed uruchomieniem polecenia cmdlet.
 
 ```yaml
@@ -897,38 +897,38 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobaczhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
-### <a name="synopsis"></a>SYNOPSIS
-Zainicjuj lasu usługi Active Directory i domeny do zapisywania zwrotnego haseł z usługi Azure AD.
+### <a name="synopsis"></a>STRESZCZENIE
+Inicjowanie lasu i domeny usługi Active Directory w celu uzyskania odpisu hasła z usługi Azure AD.
 
-### <a name="syntax"></a>SYNTAX
+### <a name="syntax"></a>SKŁADNIA
 
-#### <a name="userdomain"></a>UserDomain
+#### <a name="userdomain"></a>Domena użytkowników
 ```
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String>
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>DistinguishedName
+#### <a name="distinguishedname"></a>Distinguishedname
 ```
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>OPIS
-Funkcja Set ADSyncPasswordWritebackPermissions zapewni wymaganych uprawnień kontu synchronizacja usługi AD, takich jak:
+Funkcja Set-ADSyncPasswordWritebackPermissions daje wymagane uprawnienia do konta synchronizacji usługi AD, które obejmują następujące elementy:
 1.
-Resetuj hasło na obiekty podrzędne użytkownika
+Resetowanie hasła w obiektach użytkownika podrzędnego
 2.
-Zapis dostęp do właściwości w atrybucie lockoutTime dla wszystkich obiektów podrzędnych użytkownika
+Zapisz dostęp do właściwości w lockoutTime atrybut dla wszystkich obiektów użytkownika podrzędnego
 3.
-Zapis dostęp do właściwości w atrybucie pwdLastSet dla wszystkich obiektów podrzędnych użytkownika
+Write Property access on pwdLastSet attribute for all descendant user objects Write Property access on pwdLastSet attribute for all descendant user objects Write Property access on pwdLastSet attribute for all descendant user objects Write Property
 
-Te uprawnienia są stosowane do wszystkich domen w lesie.
-Opcjonalnie możesz podać DistinguishedName w parametrze ADobjectDN, aby ustawić te uprawnienia dla tego obiektu AD tylko (z uwzględnieniem dziedziczenia z obiektami sub).
+Uprawnienia te są stosowane do wszystkich domen w lesie.
+Opcjonalnie można podać parametr DistinguishedName w pliku ADobjectDN, aby ustawić te uprawnienia tylko dla tego obiektu usługi AD (w tym dziedziczenie do obiektów podrzędnych).
 
 ### <a name="examples"></a>PRZYKŁADY
 
@@ -954,8 +954,8 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName 'ADConnector' -AD
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-Nazwa konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorNajnak
+Nazwa konta usługi Active Directory, które jest lub będzie używane przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -970,7 +970,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Domena konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+Domena konta usługi Active Directory, która jest lub będzie używana przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -985,7 +985,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+Nazwa wyróżniająca konta usługi Active Directory, które jest lub będzie używane przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -1000,7 +1000,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName obiektu docelowego usługi AD, aby ustawić uprawnienia (opcjonalnie)
+DistinguishedName docelowego obiektu AD, aby ustawić uprawnienia (opcjonalnie)
 
 ```yaml
 Type: String
@@ -1015,7 +1015,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Opcjonalny parametr, aby wskazać, jeśli nie można zaktualizować kontenera AdminSDHolder z odpowiednimi uprawnieniami
+Opcjonalny parametr wskazujący, czy kontener AdminSDHolder nie powinien być aktualizowany o te uprawnienia
 
 ```yaml
 Type: SwitchParameter
@@ -1029,9 +1029,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-WhatIf
+#### <a name="-whatif"></a>-CoIf
 Pokazuje, co się stanie po uruchomieniu polecenia cmdlet.
-Polecenie cmdlet nie jest uruchomione.
+Polecenie cmdlet nie zostało uruchomione.
 
 ```yaml
 Type: SwitchParameter
@@ -1045,7 +1045,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Upewnij się
+#### <a name="-confirm"></a>-Confirm
 Monituje o potwierdzenie przed uruchomieniem polecenia cmdlet.
 
 ```yaml
@@ -1062,16 +1062,16 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobaczhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
 
-### <a name="synopsis"></a>SYNOPSIS
-Podwyższenie poziomu uprawnień do obiektu usługi AD, w przeciwnym razie nieuwzględnione w dowolnej grupie chronionych zabezpieczeń AD.
-Typowym przykładem jest automatycznie tworzone przez usługę AAD Connect konta AD Connect (MSOL).
-To konto ma uprawnienia replikacji na wszystkich domen, jednak można zabezpieczenia można łatwo złamać, ponieważ nie jest chroniony.
+### <a name="synopsis"></a>STRESZCZENIE
+Dokręć uprawnienia do obiektu usługi AD, który w przeciwnym razie nie jest uwzględniony w żadnej chronionej grupie zabezpieczeń usługi AD.
+Typowym przykładem jest konto AD Connect (MSOL) utworzone automatycznie przez AAD Connect.
+To konto ma uprawnienia replikacji dla wszystkich domen, jednak można łatwo zniego, ponieważ nie jest chroniony.
 
-### <a name="syntax"></a>SYNTAX
+### <a name="syntax"></a>SKŁADNIA
 
 ```
 Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential>
@@ -1079,13 +1079,13 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ```
 
 ### <a name="description"></a>OPIS
-Funkcja Set ADSyncRestrictedPermissions będzie podwyższenie poziomu uprawnień wprowadzaniem podane konto.
-Obostrzenie uprawnień obejmuje następujące czynności:
+Funkcja Set-ADSyncRestrictedPermissions zaostrzy uprawnienia oo podanego konta.
+Dokręcanie uprawnień obejmuje następujące kroki:
 1.
-Wyłącz dziedziczenie dla określonego obiektu
+Wyłącz dziedziczenie określonego obiektu
 2.
-Usuń wszystkie wpisy kontroli dostępu dla określonego obiektu, z wyjątkiem ACE specyficzne dla siebie.
-Chcemy zachować uprawnienia domyślne, jeśli chodzi o SAMODZIELNIE.
+Usuń wszystkie wpisy ACE na określonym obiekcie, z wyjątkiem obiektów ACE specyficznych dla SELF.
+Chcemy zachować domyślne uprawnienia nienaruszone, jeśli chodzi o SELF.
 3.
 Przypisz te określone uprawnienia:
 
@@ -1114,8 +1114,8 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN "CN=TestAccount1,CN=Users,
 ### <a name="parameters"></a>PARAMETRY
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName konta usługi Active Directory, w której uprawnienia muszą być ściągane.
-Zazwyczaj jest to konto MSOL_nnnnnnnnnn lub konta domeny niestandardowej, który jest skonfigurowany w łączniku usługi AD.
+DistinguishedName konta usługi Active Directory, którego uprawnienia muszą zostać zaostrzone.
+Zazwyczaj jest to konto MSOL_nnnnnnnnnn lub konto domeny niestandardowej skonfigurowane w łączniku usługi AD.
 
 ```yaml
 Type: String
@@ -1130,7 +1130,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-credential"></a>-Credential
-Poświadczenia administratora, który ma niezbędne uprawnienia, aby ograniczyć uprawnienia na koncie ADConnectorAccountDN. Zazwyczaj jest to administrator przedsiębiorstwa lub domeny. Użyj w pełni kwalifikowana nazwa domeny konta administratora, aby uniknąć niepowodzenia wyszukiwania kont.
+Poświadczenia administratora, które mają uprawnienia niezbędne do ograniczenia uprawnień na koncie ADConnectorAccountDN. Zazwyczaj jest to administrator przedsiębiorstwa lub domeny. Użyj w pełni kwalifikowanej nazwy domeny konta administratora, aby uniknąć błędów wyszukiwania kont.
 Przykład: CONTOSO\admin
 
 ```yaml
@@ -1145,8 +1145,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-disablecredentialvalidation"></a>-DisableCredentialValidation
-W przypadku DisableCredentialValidation funkcja nie będzie sprawdzać, jeśli poświadczenia podane — poświadczenia są prawidłowe w AD, a jeśli podane konto ma niezbędne uprawnienia, aby ograniczyć uprawnienia na koncie ADConnectorAccountDN.
+#### <a name="-disablecredentialvalidation"></a>-DisableCredentialWalidation
+Gdy jest używana funkcja DisableCredentialValidation, funkcja nie sprawdza, czy poświadczenia podane w programie -Credential są prawidłowe w udaniu AD i czy podane konto ma uprawnienia niezbędne do ograniczenia uprawnień na koncie ADConnectorAccountDN.
 
 ```yaml
 Type: SwitchParameter
@@ -1160,9 +1160,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-WhatIf
+#### <a name="-whatif"></a>-CoIf
 Pokazuje, co się stanie po uruchomieniu polecenia cmdlet.
-Polecenie cmdlet nie jest uruchomione.
+Polecenie cmdlet nie zostało uruchomione.
 
 ```yaml
 Type: SwitchParameter
@@ -1176,7 +1176,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Upewnij się
+#### <a name="-confirm"></a>-Confirm
 Monituje o potwierdzenie przed uruchomieniem polecenia cmdlet.
 
 ```yaml
@@ -1193,35 +1193,35 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobaczhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
-### <a name="synopsis"></a>SYNOPSIS
-Zainicjuj lasu usługi Active Directory i domeny dla zapisu zwrotnego grup z usługi Azure AD.
+### <a name="synopsis"></a>STRESZCZENIE
+Inicjowanie lasu i domeny usługi Active Directory w celu zapisania storamentu grupy z usługi Azure AD.
 
-### <a name="syntax"></a>SYNTAX
+### <a name="syntax"></a>SKŁADNIA
 
-#### <a name="userdomain"></a>UserDomain
+#### <a name="userdomain"></a>Domena użytkowników
 ```
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String>
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>DistinguishedName
+#### <a name="distinguishedname"></a>Distinguishedname
 ```
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>OPIS
-Funkcja Set ADSyncUnifiedGroupWritebackPermissions zapewni wymaganych uprawnień kontu synchronizacja usługi AD, takich jak:
+Funkcja Set-ADSyncUnifiedGroupWritebackPermissions daje wymagane uprawnienia do konta synchronizacji usługi AD, które obejmują następujące elementy:
 1.
-Ogólny odczytu/zapisu, Delete, usuwania drzewa i Create\Delete podrzędnych dla wszystkich grup typów obiektów i podobiektów
+Ogólne odczytywanie/pisanie, usuwanie, usuwanie drzewa i tworzenie\usuń element podrzędny dla wszystkich typów obiektów grupy i podobjectów
 
-Te uprawnienia są stosowane do wszystkich domen w lesie.
-Opcjonalnie możesz podać DistinguishedName w parametrze ADobjectDN, aby ustawić te uprawnienia dla tego obiektu AD tylko (z uwzględnieniem dziedziczenia z obiektami sub).
-W tym przypadku ADobjectDN będzie nazwę wyróżniającą kontenera, który chcesz połączyć z funkcją GroupWriteback.
+Uprawnienia te są stosowane do wszystkich domen w lesie.
+Opcjonalnie można podać parametr DistinguishedName w pliku ADobjectDN, aby ustawić te uprawnienia tylko dla tego obiektu usługi AD (w tym dziedziczenie do obiektów podrzędnych).
+W takim przypadku ADobjectDN będzie Distinguished Name kontenera, który chcesz połączyć z GroupWriteback funkcji.
 
 ### <a name="examples"></a>PRZYKŁADY
 
@@ -1247,8 +1247,8 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName 'ADConnector'
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-Nazwa konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorNajnak
+Nazwa konta usługi Active Directory, które jest lub będzie używane przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -1263,7 +1263,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Domena konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+Domena konta usługi Active Directory, która jest lub będzie używana przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -1278,7 +1278,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName konta usługi Active Directory lub Azure AD Connect Sync posłuży do zarządzania obiektami w katalogu.
+Nazwa wyróżniająca konta usługi Active Directory, które jest lub będzie używane przez usługę Azure AD Connect Sync do zarządzania obiektami w katalogu.
 
 ```yaml
 Type: String
@@ -1293,7 +1293,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName obiektu docelowego usługi AD, aby ustawić uprawnienia (opcjonalnie)
+DistinguishedName docelowego obiektu AD, aby ustawić uprawnienia (opcjonalnie)
 
 ```yaml
 Type: String
@@ -1308,7 +1308,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Opcjonalny parametr, aby wskazać, jeśli nie można zaktualizować kontenera AdminSDHolder z odpowiednimi uprawnieniami
+Opcjonalny parametr wskazujący, czy kontener AdminSDHolder nie powinien być aktualizowany o te uprawnienia
 
 ```yaml
 Type: SwitchParameter
@@ -1322,9 +1322,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-WhatIf
+#### <a name="-whatif"></a>-CoIf
 Pokazuje, co się stanie po uruchomieniu polecenia cmdlet.
-Polecenie cmdlet nie jest uruchomione.
+Polecenie cmdlet nie zostało uruchomione.
 
 ```yaml
 Type: SwitchParameter
@@ -1338,7 +1338,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Upewnij się
+#### <a name="-confirm"></a>-Confirm
 Monituje o potwierdzenie przed uruchomieniem polecenia cmdlet.
 
 ```yaml
@@ -1355,21 +1355,21 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobaczhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="show-adsyncadobjectpermissions"></a>Show-ADSyncADObjectPermissions
+## <a name="show-adsyncadobjectpermissions"></a>Pokaż-ADSyncADObjectPermissions
 
-### <a name="synopsis"></a>SYNOPSIS
-Zawiera uprawnienia określonego obiektu usługi AD.
+### <a name="synopsis"></a>STRESZCZENIE
+Pokazuje uprawnienia określonego obiektu USŁUGI AD.
 
-### <a name="syntax"></a>SYNTAX
+### <a name="syntax"></a>SKŁADNIA
 
 ```
 Show-ADSyncADObjectPermissions [-ADobjectDN] <String> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>OPIS
-Ta funkcja zwraca wszystkie uprawnienia AD aktualnie ustawione dla danego obiektu AD podany w parametrze - ADobjectDN.
+Ta funkcja zwraca wszystkie uprawnienia usługi AD aktualnie ustawione dla danego obiektu AD podane w parametrze -ADobjectDN.
 ADobjectDN musi być podana w formacie DistinguishedName.
 
 ### <a name="examples"></a>PRZYKŁADY
@@ -1382,7 +1382,7 @@ Show-ADSyncADObjectPermissions -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ### <a name="parameters"></a>PARAMETRY
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-{{Fill ADobjectDN Description}}
+{{Wpisz opis ADobjectDN}}
 
 ```yaml
 Type: String
@@ -1398,4 +1398,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobaczhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .

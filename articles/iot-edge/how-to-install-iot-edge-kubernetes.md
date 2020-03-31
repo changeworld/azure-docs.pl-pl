@@ -1,6 +1,6 @@
 ---
-title: Jak zainstalować IoT Edge na Kubernetes | Microsoft Docs
-description: Informacje na temat instalowania IoT Edge na Kubernetes przy użyciu lokalnego środowiska klastra projektowego
+title: Jak zainstalować usługę IoT Edge na Kubernetes | Dokumenty firmy Microsoft
+description: Dowiedz się, jak zainstalować usługę IoT Edge w uprzeglądarce Kubernetes przy użyciu lokalnego środowiska klastra programistycznego
 author: kgremban
 manager: philmea
 ms.author: veyalla
@@ -8,92 +8,36 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d11d23cf7d96482028a9d3738196fc5a787fec91
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 4b2068c3944f9e7616b0666c7bafcafc68ee0cd9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510213"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471289"
 ---
-# <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Jak zainstalować IoT Edge w Kubernetes (wersja zapoznawcza)
+# <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Jak zainstalować usługę IoT Edge w uprzeglądarce Kubernetes (wersja zapoznawcza)
 
-IoT Edge można zintegrować z usługą Kubernetes przy użyciu jej jako odpornej warstwy infrastruktury o wysokiej dostępności. Rejestruje IoT Edge *niestandardowe definicje zasobów* (CRD) z serwerem interfejsu API Kubernetes. Ponadto zapewnia *operatorowi* (IoT Edge Agent), który uzgadnia żądany stan zarządzany przez chmurę ze stanem lokalnego klastra.
+Usługa IoT Edge może integrować się z umięktami, używając jej jako odpornej, wysoce dostępnej warstwy infrastruktury. Oto, gdzie ta obsługa pasuje do rozwiązania wysokiej klasy IoT Edge:
 
-Okres istnienia modułu jest zarządzany przez usługę Kubernetes Scheduler, która zachowuje dostępność modułu i wybiera ich rozmieszczenie. IoT Edge zarządza platformą aplikacji brzegowej działającą na górze, nieustannie uzgadniając żądany stan określony w IoT Hub ze stanem w klastrze brzegowym. Model aplikacji brzegowych nadal jest znanym modelem opartym na IoT Edge modułach i trasach. Operator agenta IoT Edge wykonuje *Automatyczne* tłumaczenie na konstrukcje natywne Kubernetes, takie jak zasobniki, wdrożenia, usługi itd.
+![k8s intro](./media/how-to-install-iot-edge-kubernetes/kubernetes-model.png)
+
+>[!TIP]
+>Dobrym modelem mentalnym dla tej integracji jest myślenie o Kubernetes jako innym środowisku operacyjnym aplikacje IoT Edge mogą działać oprócz linuksa i systemu Windows.
+
+## <a name="architecture"></a>Architektura 
+W uękierze Kubernetes usługa IoT Edge udostępnia *niestandardową definicję zasobów* (CRD) dla wdrożeń obciążenia brzegowej. Agent usługi IoT Edge przejmuje rolę *kontrolera CRD,* który uzgadnia żądany stan zarządzany w chmurze ze stanem klastra lokalnego.
+
+Okres istnienia modułu jest zarządzany przez harmonogram Kubernetes, który zachowuje dostępność modułu i wybiera ich rozmieszczenie. Usługa IoT Edge zarządza platformą aplikacji brzegowej działającą na górze, stale uzgadniając żądany stan określony w U portalu IoT Hub ze stanem klastra brzegowego. Model aplikacji jest nadal znanym modelem opartym na modułach i trasach usługi IoT Edge. Kontroler usługi IoT Edge Agent wykonuje *automatyczne* tłumaczenie modelu aplikacji usługi IoT Edge do natywnych konstrukcji Kubernetes, takich jak zasobników, wdrożeń, usług itp.
 
 Oto diagram architektury wysokiego poziomu:
 
-![Kubernetes Arch](./media/how-to-install-iot-edge-kubernetes/k8s-arch.png)
+![łuk kubernetes](./media/how-to-install-iot-edge-kubernetes/publicpreview-refresh-kubernetes.png)
 
-Każdy składnik wdrożenia brzegowego jest objęty zakresem przestrzeni nazw Kubernetes specyficzne dla urządzenia, dzięki czemu możliwe jest udostępnianie tych samych zasobów klastra między wieloma urządzeniami brzegowymi i ich wdrożeniami.
+Każdy składnik wdrożenia brzegowego jest objęty zakresem obszaru nazw Usługi Kubernetes specyficznego dla urządzenia, dzięki czemu można udostępniać te same zasoby klastra między wieloma urządzeniami brzegowymi i ich wdrożeniami.
 
 >[!NOTE]
->IoT Edge w Kubernetes jest w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Usługa IoT Edge w uprzeglądarce Kubernetes jest w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="install-locally-for-a-quick-test-environment"></a>Zainstaluj lokalnie dla szybkiego środowiska testowego
+## <a name="tutorials-and-references"></a>Samouczki i odwołania 
 
-### <a name="prerequisites"></a>Wymagania wstępne
-
-* Kubernetes 1,10 lub nowszy. Jeśli nie masz istniejącej konfiguracji klastra, możesz użyć [Minikube](https://kubernetes.io/docs/setup/minikube/) do lokalnego środowiska klastra.
-
-* [Helm](https://helm.sh/docs/using_helm/#quickstart-guide), Menedżer pakietów Kubernetes.
-
-* [polecenia kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) do wyświetlania klastra i korzystania z niego.
-
-### <a name="setup-steps"></a>Procedura konfiguracji
-
-1. Uruchom **Minikube**
-
-    ``` shell
-    minikube start
-    ```
-
-1. Inicjowanie składnika serwera **Helm** *(er*) w klastrze
-
-    ``` shell
-    helm init
-    ```
-
-1. Dodawanie IoT Edge repozytorium i aktualizowanie instalacji Helm
-
-    ``` shell
-    helm repo add edgek8s https://edgek8s.blob.core.windows.net/helm/
-    helm repo update
-    ```
-
-1. [Utwórz IoT Hub](../iot-hub/iot-hub-create-through-portal.md), [Zarejestruj urządzenie IoT Edge](how-to-register-device.md)i zanotuj jego parametry połączenia.
-
-1. Instalowanie iotedged i agenta IoT Edge w klastrze
-
-    ```shell
-    helm install \
-    --name k8s-edge1 \
-    --set "deviceConnectionString=replace-with-device-connection-string" \
-    edgek8s/edge-kubernetes
-    ```
-
-1. Otwórz pulpit nawigacyjny Kubernetes w przeglądarce
-
-    ```shell
-    minikube dashboard
-    ```
-
-    W obszarze przestrzenie nazw klastra zobaczysz jeden dla IoT Edgego urządzenia po Konwencji *msiot-\<iothub >-\<edgedevice-name >* . Agent IoT Edge i iotedgedy są uruchamiane w tej przestrzeni nazw.
-
-1. Dodaj moduł symulowanego czujnika temperatury przy użyciu kroków z sekcji [wdrażanie modułu](quickstart-linux.md#deploy-a-module) przewodnika Szybki Start. IoT Edge zarządzanie modułami odbywa się z poziomu portalu IoT Hub podobnie jak w przypadku każdego innego urządzenia IoT Edge. Wprowadzanie lokalnych zmian konfiguracji modułu za pomocą narzędzi Kubernetes nie jest zalecane, ponieważ mogą one zostać nadpisywane.
-
-1. W ciągu kilku sekund odświeżanie strony **z** obszarem nazw urządzenia brzegowego na pulpicie nawigacyjnym spowoduje wyświetlenie listy centrów IoT Edge i symulowanych modułów czujnika jako uruchomionych z Centrum IoT Edge w celu pozyskiwania danych w IoT Hub.
-
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-
-Aby usunąć wszystkie zasoby utworzone przez wdrożenie brzegowe, użyj następującego polecenia z nazwą użytą w kroku 5 poprzedniej sekcji.
-
-``` shell
-helm delete --purge k8s-edge1
-```
-
-## <a name="next-steps"></a>Następne kroki
-
-### <a name="deploy-as-a-highly-available-edge-gateway"></a>Wdróż jako bramę brzegową o wysokiej dostępności
-
-Urządzenie brzegowe w klastrze Kubernetes może być używane jako brama IoT dla urządzeń podrzędnych. Można ją skonfigurować tak, aby była odporna na awarie węzła w taki sposób, zapewniając wysoką dostępność wdrożeń brzegowych. Ten [szczegółowy przewodnik](https://github.com/Azure-Samples/iotedge-gateway-on-kubernetes) zawiera IoT Edge w tym scenariuszu.
+Zobacz [IoT Edge na kubernetes podglądu docs mini-site,](https://aka.ms/edgek8sdoc) aby uzyskać więcej informacji, w tym szczegółowe samouczki i odwołania.

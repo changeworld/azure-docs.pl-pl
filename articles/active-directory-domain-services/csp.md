@@ -1,6 +1,6 @@
 ---
-title: Azure AD Domain Services dla dostawców rozwiązań w chmurze | Microsoft Docs
-description: Azure Active Directory Domain Services dla dostawców rozwiązań w chmurze platformy Azure.
+title: Usługi domenowe usługi Azure AD dla dostawców rozwiązań w chmurze | Dokumenty firmy Microsoft
+description: Usługi domenowe usługi Active Directory platformy Azure dla dostawców rozwiązań w chmurze platformy Azure.
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -16,78 +16,78 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: iainfou
 ms.openlocfilehash: 1134c078ee36a146cb1e1cbf8ca46f6cd9f8d775
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72754437"
 ---
-# <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Usługi domenowe w usłudze Azure Active Directory (AD) dla dostawców rozwiązań w chmurze platformy Azure (CSP)
-W tym artykule wyjaśniono, jak można użyć Azure AD Domain Services w ramach subskrypcji dostawcy usług kryptograficznych platformy Azure.
+# <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Usługi domenowe usługi w usłudze Azure Active Directory (AD) dla dostawców rozwiązań w chmurze (CSP)
+W tym artykule wyjaśniono, jak można używać usług domenowych usługi Azure AD w ramach subskrypcji usługi Azure CSP.
 
-## <a name="overview-of-azure-csp"></a>Omówienie usług Azure CSP
-Dostawca CSP platformy Azure jest programem dla partnerów firmy Microsoft i udostępnia kanał licencji dla różnych usług w chmurze firmy Microsoft. Dostawca CSP platformy Azure umożliwia partnerom Zarządzanie sprzedażą, własną relacją rozliczeń, obsługę techniczną i rozliczeniami oraz stanowić pojedynczy punkt kontaktu klienta. Ponadto dostawca CSP platformy Azure oferuje pełny zestaw narzędzi, w tym Portal samoobsługowy i dołączone interfejsy API. Te narzędzia umożliwiają partnerom programu CSP łatwe inicjowanie obsługi zasobów platformy Azure i zarządzanie nimi oraz zapewnianie rozliczeń dla klientów i ich subskrypcji.
+## <a name="overview-of-azure-csp"></a>Omówienie usługi Azure CSP
+Usługa CSP platformy Azure jest programem dla partnerów firmy Microsoft i zapewnia kanał licencji dla różnych usług w chmurze firmy Microsoft. Usługa CSP platformy Azure umożliwia partnerom zarządzanie sprzedażą, posiadanie relacji rozliczeniowych, zapewnianie pomocy technicznej i obsługi rozliczeń oraz być pojedynczym punktem kontaktowym klienta. Ponadto usługa Azure CSP udostępnia pełny zestaw narzędzi, w tym portal samoobsługowy i towarzyszące interfejsy API. Te narzędzia umożliwiają partnerom usługi CSP łatwe udostępnianie zasobów platformy Azure i zarządzanie nimi oraz zapewnianie rozliczeń klientom i ich subskrypcjom.
 
-[Portal Centrum partnerskiego](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview) pełni rolę punktu wejścia dla wszystkich partnerów CSP platformy Azure. Zapewnia ona rozbudowane możliwości zarządzania klientami, automatyczne przetwarzanie i nie tylko. Partnerzy CSP platformy Azure mogą korzystać z funkcji Centrum partnerskiego za pomocą interfejsu użytkownika opartego na sieci Web lub programu PowerShell i różnych wywołań interfejsu API.
+Portal [Centrum partnerów](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview) działa jako punkt wejścia dla wszystkich partnerów usługi Azure CSP. Zapewnia bogate możliwości zarządzania klientami, zautomatyzowane przetwarzanie i wiele więcej. Partnerzy usługi Azure CSP mogą korzystać z funkcji Centrum partnerów przy użyciu interfejsu użytkownika opartego na sieci Web lub przy użyciu programu PowerShell i różnych wywołań interfejsu API.
 
-Na poniższym diagramie przedstawiono, jak model CSP działa na wysokim poziomie. Firma Contoso ma Active Directory usługi Azure AD. Mają one partnerstwo z dostawcą usług kryptograficznych, który wdraża zasoby i zarządza nimi w ramach subskrypcji dostawcy CSP platformy Azure. Firma Contoso może również mieć regularne (bezpośrednie) subskrypcje platformy Azure, które są rozliczane bezpośrednio do firmy Contoso.
+Na poniższym diagramie przedstawiono, jak model CSP działa na wysokim poziomie. Contoso ma usługę Azure AD Active Directory. Mają partnerstwo z usługą CSP, która wdraża zasoby w ramach subskrypcji usługi Azure CSP i zarządza nimi. Contoso może również mieć regularne (bezpośrednie) subskrypcje platformy Azure, które są rozliczane bezpośrednio do contoso.
 
 ![Omówienie modelu CSP](./media/csp/csp_model_overview.png)
 
-Dzierżawca partnera CSP ma trzy specjalne grupy agentów — agentów administracyjnych, agentów pomocy technicznej i agentów sprzedaży. Grupa agenci administracyjni jest przypisana do roli Administrator dzierżawy w katalogu usługi Azure AD firmy Contoso. W związku z tym użytkownik należący do grupy agentów administracyjnych partnera CSP ma uprawnienia administratora dzierżawy w katalogu usługi Azure AD firmy Contoso. Gdy Partner CSP inicjuje subskrypcję dostawcy usług kryptograficznych platformy Azure dla firmy Contoso, jej grupy agentów administracyjnych są przypisywane do roli właściciela tej subskrypcji. W związku z tym agenci administracyjni dostawcy usług kryptograficznych mają uprawnienia wymagane do udostępniania zasobów platformy Azure, takich jak maszyny wirtualne, sieci wirtualne i Azure AD Domain Services w imieniu firmy Contoso.
+Dzierżawa partnera CSP ma trzy grupy agentów specjalnych - agentów administracyjnych, agentów Helpdesk i agentów sprzedaży. Grupa Agenci administracyjni jest przypisana do roli administratora dzierżawy w katalogu usługi Azure AD firmy Contoso. W rezultacie użytkownik należący do grupy agentów administracyjnych partnera CSP ma uprawnienia administratora dzierżawy w katalogu usługi Azure AD firmy Contoso. Gdy partner usług kryptograficzny apowionuje subskrypcję usługi Azure CSP dla firmy Contoso, ich grupa agentów administracyjnych jest przypisana do roli właściciela dla tej subskrypcji. W rezultacie agenci administratorzy partnera usług kryptograficznych mają wymagane uprawnienia do aprowizowania zasobów platformy Azure, takich jak maszyny wirtualne, sieci wirtualne i usługi domenowe usługi azure ad w imieniu firmy Contoso.
 
-Aby uzyskać więcej informacji, zobacz [Omówienie usług kryptograficznych platformy Azure](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)
+Aby uzyskać więcej informacji, zobacz [omówienie usługi Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)
 
-## <a name="benefits-of-using-azure-ad-domain-services-in-an-azure-csp-subscription"></a>Zalety korzystania z Azure AD Domain Services w ramach subskrypcji dostawcy usług kryptograficznych platformy Azure
-Azure AD Domain Services udostępnia usługi AD zgodne z systemem Windows Server na platformie Azure, takie jak LDAP, uwierzytelnianie Kerberos/NTLM, przyłączanie do domeny, zasady grupy i system DNS. W ciągu dekad wiele aplikacji zostało skompilowanych do pracy z usługą AD przy użyciu tych funkcji. Wielu niezależnych dostawców oprogramowania (ISV) ma aplikacje skompilowane i wdrożone w siedzibie klientów. Te aplikacje są uciążliwe do obsługi, ponieważ często wymagają dostępu do różnych środowisk, w których te aplikacje są wdrażane. Subskrypcje dostawcy CSP platformy Azure pozwalają uprościć alternatywę od skalowalności i elastyczności platformy Azure.
+## <a name="benefits-of-using-azure-ad-domain-services-in-an-azure-csp-subscription"></a>Korzyści z korzystania z usług domenowych usługi Azure AD w ramach subskrypcji usługi CSP platformy Azure
+Usługi domenowe usługi Azure AD zapewniają usługi zgodne z usługami Windows Server AD na platformie Azure, takie jak uwierzytelnianie LDAP, Kerberos/NTLM, dołączanie do domeny, zasady grupy i system DNS. Przez dziesięciolecia wiele aplikacji zostało zbudowanych do pracy z usługą AD przy użyciu tych funkcji. Wielu niezależnych dostawców oprogramowania (ISV) zbudowało i wdrożyło aplikacje w siedzibie swoich klientów. Te aplikacje są uciążliwe do obsługi, ponieważ często wymaga dostępu do różnych środowisk, w których te aplikacje są wdrażane. Dzięki subskrypcji usługi Azure CSP masz prostszą alternatywę ze skalą i elastycznością platformy Azure.
 
-Azure AD Domain Services teraz obsługuje subskrypcje dostawcy CSP platformy Azure. Teraz możesz wdrożyć aplikację w ramach subskrypcji dostawcy CSP platformy Azure powiązanej z katalogiem usługi Azure AD klienta. W związku z tym pracownicy (personel pomocy technicznej) mogą zarządzać maszynami wirtualnymi, na których wdrożono aplikację i obsługiwać je, korzystając z poświadczeń firmowych w organizacji. Dodatkowo można zainicjować obsługę administracyjną Azure AD Domain Services domeny zarządzanej dla katalogu usługi Azure AD klienta. Aplikacja jest połączona z domeną zarządzaną przez klienta. W związku z tym funkcje w aplikacji korzystające z protokołu Kerberos/NTLM, LDAP lub [interfejsu API System. DirectoryServices](/dotnet/api/system.directoryservices) bezproblemowo pracują z katalogiem klienta. Klienci końcowi korzystają znacznie z używania aplikacji jako usługi, nie trzeba martwić się o utrzymanie infrastruktury, w której aplikacja jest wdrażana.
+Usługi domenowe usługi Azure AD domain services obsługują teraz subskrypcje usługi Azure CSP. Teraz można wdrożyć aplikację w subskrypcji usługi Azure CSP powiązanej z katalogiem usługi Azure AD klienta. W rezultacie pracownicy (pracownicy pomocy technicznej) mogą zarządzać maszynami wirtualnymi, na których jest wdrażana aplikacja, zarządzać nimi i obsługiwać je przy użyciu poświadczeń firmowych organizacji. Ponadto można aprowizować domenę zarządzaną usług ad azure dla katalogu usługi Azure AD klienta. Aplikacja jest połączona z domeną zarządzana przez klienta. W związku z tym możliwości w aplikacji, które opierają się na Kerberos/NTLM, LDAP lub [System.DirectoryServices INTERFEJSU API](/dotnet/api/system.directoryservices) działają bezproblemowo w katalogu klienta. Klienci końcowi korzystają znacznie z korzystania z aplikacji jako usługi, bez konieczności martwienia się o utrzymanie infrastruktury, w której aplikacja jest wdrażana.
 
-Wszystkie opłaty za zasoby platformy Azure zużywane w ramach tej subskrypcji, w tym Azure AD Domain Services, są naliczane z powrotem. Zapewniasz pełną kontrolę nad relacją z klientem, gdy chodzi o sprzedaż, rozliczenia, pomoc techniczną itp. Dzięki elastyczności platformy CSP platformy Azure niewielki zespół agentów pomocy technicznej może obsługiwać wielu klientów, którzy mają wdrożone wystąpienia aplikacji.
+Wszystkie rozliczenia za zasoby platformy Azure zużywane w tej subskrypcji, w tym usługi domenowe usługi Azure AD, są naliczane z powrotem do Ciebie. Zachowujesz pełną kontrolę nad relacjami z klientem, jeśli chodzi o sprzedaż, rozliczenia, wsparcie techniczne itp. Dzięki elastyczności platformy Azure CSP mały zespół agentów pomocy technicznej może obsługiwać wielu takich klientów, którzy mają wdrożone wystąpienia aplikacji.
 
 
-## <a name="csp-deployment-models-for-azure-ad-domain-services"></a>Modele wdrażania CSP dla usług domenowych Azure AD
-Istnieją dwa sposoby użycia Azure AD Domain Services z subskrypcją dostawcy usług kryptograficznych platformy Azure. Wybierz jedną z nich na podstawie zagadnień związanych z bezpieczeństwem i prostotą posiadanych przez klientów.
+## <a name="csp-deployment-models-for-azure-ad-domain-services"></a>Modele wdrażania usługi CSP dla usług domen usługi Ad Azure
+Istnieją dwa sposoby korzystania z usług domenowych usługi Azure AD domain services z subskrypcją usługi Azure CSP. Wybierz odpowiedni na podstawie bezpieczeństwa i prostoty, jakie mają twoi klienci.
 
 ### <a name="direct-deployment-model"></a>Model wdrażania bezpośredniego
-W tym modelu wdrażania Azure AD Domain Services jest włączona w ramach sieci wirtualnej należącej do subskrypcji CSP platformy Azure. Agenci administracyjni dostawcy usług kryptograficznych mają następujące uprawnienia:
+W tym modelu wdrażania usługi domenowe usługi ad usługi azure ad jest włączona w sieci wirtualnej należącej do subskrypcji usługi Azure CSP. Agenci administracyjni partnera CSP mają następujące uprawnienia:
 * Uprawnienia administratora globalnego w katalogu usługi Azure AD klienta.
-* Uprawnienia właściciela subskrypcji w ramach subskrypcji dostawcy CSP platformy Azure.
+* Uprawnienia właściciela subskrypcji w ramach subskrypcji usługi Azure CSP.
 
 ![Model wdrażania bezpośredniego](./media/csp/csp_direct_deployment_model.png)
 
-W tym modelu wdrożenia agenci administracyjni dostawcy usług kryptograficznych mogą administrować tożsamościami dla klienta. Ci agenci administracyjni mogą inicjować obsługę nowych użytkowników, grup, dodawać aplikacje w katalogu usługi Azure AD klienta itd. Ten model wdrażania może być dostosowany do mniejszych organizacji, które nie mają dedykowanego administratora tożsamości ani woli, aby partner CSP mogli administrować tożsamościami w ich imieniu.
+W tym modelu wdrażania agenci administracyjni dostawcy dostawcy usług kryptograficznych mogą administrować tożsamościami klienta. Ci agenci administracyjni mają możliwość inicjowania obsługi administracyjnej nowych użytkowników, grup, dodawania aplikacji w katalogu usługi Azure AD klienta itp. Ten model wdrażania może być odpowiedni dla mniejszych organizacji, które nie mają dedykowanego administratora tożsamości lub wolą, aby partner dostawcy usług kryptograficznych administrował tożsamościami w ich imieniu.
 
 
-### <a name="peered-deployment-model"></a>Model wdrażania równorzędnego
-W tym modelu wdrażania Azure AD Domain Services jest włączona w ramach sieci wirtualnej należącej do klienta — oznacza to bezpośrednią subskrypcję platformy Azure płatną przez klienta. Partner programu CSP może następnie wdrożyć aplikacje w ramach sieci wirtualnej należącej do subskrypcji dostawcy CSP klienta. Sieci wirtualne można następnie połączyć za pomocą komunikacji równorzędnej sieci wirtualnej platformy Azure. W związku z tym obciążenia/aplikacje wdrożone przez partnera CSP w ramach subskrypcji dostawcy usług kryptograficznych platformy Azure mogą łączyć się z domeną zarządzaną klienta, która została zainicjowana w bezpośredniej subskrypcji klienta platformy Azure.
+### <a name="peered-deployment-model"></a>Model wdrażania w elementach równorzędnych
+W tym modelu wdrażania usługi domenowe usługi ad usługi azure ad jest włączona w sieci wirtualnej należącej do klienta — czyli bezpośredniej subskrypcji platformy Azure opłacane przez klienta. Partner usługi CSP można następnie wdrożyć aplikacje w sieci wirtualnej należącej do subskrypcji CSP klienta. Sieci wirtualne można następnie połączyć za pomocą komunikacji równorzędnej sieci wirtualnej platformy Azure. W rezultacie obciążeń/aplikacji wdrożonych przez partnera dostawcy usług kryptograficznych w subskrypcji usługi Azure CSP można połączyć się z domeny zarządzanej klienta aprowizowanych w bezpośredniej subskrypcji platformy Azure klienta.
 
-![Model wdrażania równorzędnego](./media/csp/csp_peered_deployment_model.png)
+![Model wdrażania w elementach równorzędnych](./media/csp/csp_peered_deployment_model.png)
 
-Ten model wdrażania umożliwia rozdzielenie uprawnień i umożliwia agentom pomocy technicznej partnera usług kryptograficznych administrowanie subskrypcją platformy Azure oraz wdrażanie zasobów i zarządzanie nimi. Jednak agenci działu pomocy technicznej partnera CSP nie muszą mieć uprawnień administratora globalnego w katalogu usługi Azure AD klienta. Administratorzy tożsamości klienta mogą nadal zarządzać tożsamościami dla swojej organizacji.
+Ten model wdrażania zapewnia oddzielenie uprawnień i umożliwia agentom pomocy technicznej partnera usługi CSP administrowanie subskrypcją platformy Azure oraz wdrażanie i zarządzanie zasobami w niej. Jednak agenci pomocy technicznej partnera CSP nie muszą mieć uprawnień administratora globalnego w katalogu usługi Azure AD klienta. Administratorzy tożsamości klienta mogą nadal zarządzać tożsamościami w swojej organizacji.
 
-Ten model wdrażania może być dostosowany do scenariuszy, w których dostawca ISV (niezależny dostawca oprogramowania) udostępnia hostowaną wersję aplikacji lokalnej, która również musi połączyć się z usługą AD klienta.
+Ten model wdrażania może być dostosowany do scenariuszy, w których niezależny dostawca oprogramowania (niezależny dostawca oprogramowania) udostępnia hostowanej wersji aplikacji lokalnej, która również musi połączyć się z usługą AD klienta.
 
 
-## <a name="administering-azure-ad-domain-services-managed-domains-in-csp-subscriptions"></a>Administrowanie Azure AD Domain Services domenami zarządzanymi w subskrypcjach CSP
-W przypadku administrowania domeną zarządzaną w ramach subskrypcji dostawcy CSP platformy Azure obowiązują następujące ważne zagadnienia:
+## <a name="administering-azure-ad-domain-services-managed-domains-in-csp-subscriptions"></a>Administrowanie domenami zarządzanymi usługami domenowymi usługi AD azure w subskrypcjach dostawcy usług kryptograficznych
+Podczas administrowania domeną zarządzaną w ramach subskrypcji usługi Azure CSP obowiązują następujące ważne zagadnienia:
 
-* **Agenci administracyjni dostawcy usług kryptograficznych mogą udostępniać domenę zarządzaną przy użyciu swoich poświadczeń:** Azure AD Domain Services obsługuje subskrypcje dostawcy CSP platformy Azure. W związku z tym użytkownicy należący do grupy agenci administracyjni dostawcy usług kryptograficznych mogą zainicjować obsługę administracyjną nowej Azure AD Domain Services domenie zarządzanej.
+* **Agenci administracyjni dostawcy usług kryptograficznych mogą aprowizować domenę zarządzaną przy użyciu ich poświadczeń:** Usługi domenowe usługi Azure AD obsługuje subskrypcje usługi Azure CSP. W związku z tym użytkownicy należący do grupy agentów administracyjnych partnera dostawcy usług kryptograficznych mogą aprowizować nową domenę zarządzaną usług domenowych usługi azure ad.
 
-* **Dostawcy usług kryptograficznych mogą tworzyć skrypty tworzenia nowych domen zarządzanych dla swoich klientów przy użyciu programu PowerShell:** Aby uzyskać szczegółowe informacje [, zobacz Jak włączyć Azure AD Domain Services przy użyciu programu PowerShell](powershell-create-instance.md) .
+* **Dostawcy usług internetowych mogą skryptować tworzenie nowych domen zarządzanych dla swoich klientów przy użyciu programu PowerShell:** Zobacz, [jak włączyć usługi domenowe usługi Azure AD przy użyciu programu PowerShell,](powershell-create-instance.md) aby uzyskać szczegółowe informacje.
 
-* **Agenci administracyjni dostawcy usług kryptograficznych nie mogą wykonywać bieżących zadań zarządzania w domenie zarządzanej przy użyciu ich poświadczeń:** Użytkownicy administracyjni dostawcy CSP nie mogą wykonywać rutynowych zadań zarządzania w domenie zarządzanej przy użyciu ich poświadczeń. Ci użytkownicy znajdują się poza katalogiem usługi Azure AD klienta, a ich poświadczenia nie są dostępne w katalogu usługi Azure AD klienta. W związku z tym Azure AD Domain Services nie ma dostępu do skrótów hasła protokołu Kerberos i NTLM dla tych użytkowników. W związku z tym użytkownicy nie mogą być uwierzytelniani w Azure AD Domain Services domenach zarządzanych.
+* **Agenci administracyjni dostawcy usług kryptograficznych nie mogą wykonywać bieżących zadań zarządzania w domenie zarządzanej przy użyciu poświadczeń:** Użytkownicy administratorów dostawcy usług kryptograficznych nie mogą wykonywać rutynowych zadań zarządzania w domenie zarządzanej przy użyciu poświadczeń. Ci użytkownicy są zewnętrzni w katalogu usługi Azure AD klienta, a ich poświadczenia nie są dostępne w katalogu usługi Azure AD klienta. W związku z tym usługi domenowe usługi azure ad nie ma dostępu do skrótów haseł Kerberos i NTLM dla tych użytkowników. W rezultacie takich użytkowników nie można uwierzytelnić w domenach zarządzanych usług ad.azure.
 
   > [!WARNING]
-  > **Musisz utworzyć konto użytkownika w katalogu klienta, aby wykonywać bieżące zadania administracyjne w domenie zarządzanej.**
-  > Nie można zalogować się do domeny zarządzanej przy użyciu poświadczeń użytkownika administratora dostawcy usług kryptograficznych. Aby to zrobić, Użyj poświadczeń konta użytkownika należącego do katalogu usługi Azure AD klienta. Te poświadczenia są wymagane do wykonywania zadań, takich jak przyłączanie maszyn wirtualnych do domeny zarządzanej, administrowanie systemem DNS, administrowanie zasady grupy itd.
+  > **Aby wykonywać bieżące zadania administracyjne w domenie zarządzanej, należy utworzyć konto użytkownika w katalogu klienta.**
+  > Nie można zalogować się do domeny zarządzanej przy użyciu poświadczeń administratora dostawcy usług kryptograficznych. Użyj poświadczeń konta użytkownika należącego do katalogu usługi Azure AD klienta, aby to zrobić. Te poświadczenia są potrzebne do zadań, takich jak dołączanie maszyn wirtualnych do domeny zarządzanej, administrowanie systemem DNS, administrowanie zasadami grupy itp.
   >
 
-* **Konto użytkownika utworzone na potrzeby ciągłej administracji należy dodać do grupy "Administratorzy usługi AAD DC":** Grupa "Administratorzy usługi AAD DC" ma uprawnienia do wykonywania niektórych delegowanych zadań administracyjnych w domenie zarządzanej. Te zadania obejmują Konfigurowanie systemu DNS, tworzenie jednostek organizacyjnych, administrowanie zasadami grupy itp. Aby partner programu CSP wykonywał takie zadania w domenie zarządzanej, należy utworzyć konto użytkownika w katalogu usługi Azure AD klienta. Poświadczenia dla tego konta muszą być udostępniane agentom administracyjnym partnera programu CSP. Ponadto to konto użytkownika należy dodać do grupy "Administratorzy domeny usługi AAD", aby umożliwić wykonywanie zadań konfiguracyjnych w domenie zarządzanej za pomocą tego konta użytkownika.
+* **Konto użytkownika utworzone dla bieżącej administracji musi zostać dodane do grupy "Administratorzy kontrolera domeny usługi AAD":** Grupa "Administratorzy kontrolera domeny usługi AAD" ma uprawnienia do wykonywania niektórych delegowanych zadań administracyjnych w domenie zarządzanej. Zadania te obejmują konfigurowanie systemu DNS, tworzenie jednostek organizacyjnych, administrowanie zasadami grupy itp. Aby partner dostawcy usług kryptograficznych wykonywał takie zadania w domenie zarządzanej, konto użytkownika musi zostać utworzone w katalogu usługi Azure AD klienta. Poświadczenia dla tego konta muszą być współużytkowane agentom administracyjnym partnera CSP. Ponadto to konto użytkownika musi zostać dodane do grupy "Administratorzy kontrolera domeny usługi AAD", aby umożliwić wykonywanie zadań konfiguracyjnych w domenie zarządzanej przy użyciu tego konta użytkownika.
 
 
 ## <a name="next-steps"></a>Następne kroki
-* [Zarejestruj się w programie CSP platformy Azure](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program) i zacznij tworzyć firmę za pomocą dostawcy usług Azure.
-* Zapoznaj się z listą [usług platformy Azure dostępnych w programie CSP platformy Azure](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
+* [Zarejestruj się w programie Azure CSP](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program) i rozpocznij tworzenie firmy za pośrednictwem usługi Azure CSP.
+* Przejrzyj listę [usług platformy Azure dostępnych w usłudze Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
 * [Włączanie usługi Azure AD Domain Services przy użyciu programu PowerShell](powershell-create-instance.md)
-* [Wprowadzenie do Azure AD Domain Services](tutorial-create-instance.md)
+* [Wprowadzenie do usług Azure AD Domain Services](tutorial-create-instance.md)

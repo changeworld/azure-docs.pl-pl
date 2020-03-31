@@ -1,97 +1,97 @@
 ---
-title: Przegląd konsolidatora
-description: Uzyskaj przegląd konsolidatora
+title: Omówienie strony Linkerd
+description: Uzyskiwanie przeglądu aplikacji Linkerd
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 3181be62a14ec1b3450bd181172b5323ca176427
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593771"
 ---
-# <a name="linkerd"></a>Z konsolidatorem
+# <a name="linkerd"></a>Linkerd ( Linkerd )
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-[Konsolidator][linkerd] jest łatwy w użyciu i uproszczona siatka usług.
+[Linkerd][linkerd] to łatwa w użyciu i lekka siatka serwisowa.
 
 ## <a name="architecture"></a>Architektura
 
-Konsolidator udostępnia płaszczyznę danych, która składa się z [ultralightych][linkerd-proxy] przyczep z wyspecjalizowanym serwerem proxy. Te inteligentne serwery proxy kontrolują cały ruch sieciowy do i z sieci i obciążeń z siatką. Serwery proxy ujawniają także metryki za pośrednictwem punktów końcowych metryk [Prometheus][prometheus] .
+Linkerd zapewnia płaszczyznę danych, która składa się z ultralekkich [linkerd][linkerd-proxy] specjalistycznych samochodów bocznych proxy. Te inteligentne serwery proxy kontrolują cały ruch sieciowy w aplikacjach i obciążeniach z siatki. Serwery proxy również uwidaczniać metryki za pośrednictwem punktów końcowych metryk [Prometheus.][prometheus]
 
-Płaszczyzna kontroli zarządza konfiguracją i agregowaną telemetrię za pośrednictwem następujących [składników][linkerd-architecture]:
+Płaszczyzna sterowania zarządza konfiguracją i zagregowanymi danymi telemetrycznymi za pomocą następujących [komponentów:][linkerd-architecture]
 
-- **Controller** — udostępnia interfejs API, który umożliwia łączenie wbudowanego interfejsu wiersza polecenia i pulpitu nawigacyjnego. Zapewnia konfigurację dla serwerów proxy.
+- **Kontroler** — udostępnia interfejs API, który napędza interfejs wiersza polecenia i pulpitu nawigacyjnego Linkerd. Zapewnia konfigurację serwerów proxy.
 
-- **Naciśnij kolejno** pozycje — przeczuj w czasie rzeczywistym na żądania i odpowiedzi.
+- **Dotknij** — sa ułatnij zegarki w czasie rzeczywistym na prośbach i odpowiedziach.
 
 - **Tożsamość** — zapewnia funkcje tożsamości i zabezpieczeń, które umożliwiają mTLS między usługami.
 
-- **Sieć Web** — udostępnia wbudowany pulpit nawigacyjny.
+- **Sieć Web** — udostępnia pulpit nawigacyjny linkerd.
 
 
-Na poniższym diagramie architektury pokazano, jak działa różne składniki w płaszczyźnie danych i płaszczyzny kontroli.
+Na poniższym diagramie architektury pokazano, jak różne składniki w płaszczyźnie danych i płaszczyzny sterującej współdziałają.
 
 
-![Przegląd składników i architektury konsolidatora.](media/servicemesh/linkerd/about-architecture.png)
+![Omówienie składników i architektury linkerd.](media/servicemesh/linkerd/about-architecture.png)
 
 
 ## <a name="selection-criteria"></a>Kryteria wyboru
 
-Ważne jest zrozumienie i rozważenie następujących zagadnień podczas oceniania konsolidatora dla obciążeń:
+Podczas oceny programu Linkerd dla obciążeń należy zrozumieć i wziąć pod uwagę następujące obszary:
 
 - [Zasady projektowania](#design-principles)
-- [Możliwość](#capabilities)
-- [Scenariusze](#scenarios)
+- [Możliwości](#capabilities)
+- [Scenariuszy](#scenarios)
 
 
 ### <a name="design-principles"></a>Zasady projektowania
 
-W następujących zasadach projektowania [Przewodnik][design-principles] po projekcie konsolidatora:
+Projekt Linkerd [kieruje][design-principles] następującymi zasadami projektowania:
 
-- **Zachowanie** prostoty — musi być łatwe w użyciu i zrozumiałe.
+- **Keep it Simple** - Musi być łatwy w użyciu i zrozumieniu.
 
-- **Minimalizacja wymagań dotyczących zasobów** — nakładanie minimalnego kosztu wydajności i zasobów.
+- **Minimalizowanie wymagań dotyczących zasobów** — nakładanie minimalnych kosztów wydajności i zasobów.
 
-- **Tylko Pracuj** — nie przerywaj istniejących aplikacji i nie wymagaj skomplikowanej konfiguracji.
+- **Just Work** — nie przerywaj istniejących aplikacji i nie wymaga złożonej konfiguracji.
 
 
 ### <a name="capabilities"></a>Możliwości
 
-Konsolidator udostępnia następujący zestaw możliwości:
+Linkerd udostępnia następujący zestaw funkcji:
 
-- **Siatka** — opcja debugowania wbudowana
+- **Siatka** – wbudowana opcja debugowania
 
-- **Zarządzanie ruchem** — dzielenie, limity czasu, ponowne próby, ruch przychodzący
+- **Zarządzanie ruchem** – podział, przekrojowe limity czasu, ponownych prób, ruch przychodzący
 
-- **Zabezpieczenia** — szyfrowanie (mTLS), certyfikaty są obracane co 24 godziny
+- **Bezpieczeństwo** – szyfrowanie (mTLS), certyfikaty autorotowane co 24 godziny
 
-- **Zauważalność** — agregowanie metryk, wybieranie, śledzenie, profile usług i metryki na trasie, pulpit nawigacyjny sieci Web z wykresami topologii, Prometheus, grafana
+- **Observability** – złote metryki, dotknij, śledzenie, profile usług i metryki trasy, pulpit nawigacyjny z wykresami topologii, prometeusz, grafana
 
 
 ### <a name="scenarios"></a>Scenariusze
 
-Konsolidator jest dobrze dostosowany do i sugerowany dla następujących scenariuszy:
+Linkerd jest dobrze nadaje się do i sugerowane dla następujących scenariuszy:
 
-- Prosta do użycia z tylko istotnym zestawem wymagań dotyczących możliwości
+- Prosty w użyciu z niezbędnym zestawem wymagań dotyczących możliwości
 
-- Małe opóźnienia, niskie obciążenie, z fokusem w celu zaobserwowania i prostego zarządzania ruchem
+- Niskie opóźnienia, niskie obciążenie, z naciskiem na przestrzeganie i proste zarządzanie ruchem
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-W poniższej dokumentacji opisano, jak można zainstalować konsolidator w usłudze Azure Kubernetes Service (AKS):
+W poniższej dokumentacji opisano sposób instalowania usługi Linkerd w usłudze Azure Kubernetes Service (AKS):
 
 > [!div class="nextstepaction"]
-> [Instalowanie konsolidatora w usłudze Azure Kubernetes Service (AKS)][linkerd-install]
+> [Instalowanie usługi Linkerd w usłudze Azure Kubernetes (AKS)][linkerd-install]
 
-Możesz również dodatkowo poznać funkcje i architekturę konsolidatora:
+Można również dalej badać funkcje i architekturę Linkerd:
 
-- [Funkcje konsolidatora][linkerd-features]
-- [Architektura konsolidatora][linkerd-architecture]
+- [Funkcje Linkerd][linkerd-features]
+- [Architektura linkerd][linkerd-architecture]
 
 <!-- LINKS - external -->
 [linkerd]: https://linkerd.io/2/overview/

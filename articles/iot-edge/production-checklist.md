@@ -1,6 +1,6 @@
 ---
-title: Przygotowanie do wdrożenia rozwiązania w środowisku produkcyjnym — Azure IoT Edge
-description: Dowiedz się, jak wdrożyć rozwiązanie Azure IoT Edge od projektowania w środowisku produkcyjnym, w tym konfigurowania urządzeń przy użyciu odpowiednich certyfikatów i sporządzania planu wdrożenia w przyszłości.
+title: Przygotowanie do wdrożenia rozwiązania w produkcji — usługa Azure IoT Edge
+description: Dowiedz się, jak zabrać swoje rozwiązanie usługi Azure IoT Edge z rozwoju do produkcji, w tym konfigurowanie urządzeń z odpowiednimi certyfikatami i tworzenie planu wdrożenia dla przyszłych aktualizacji kodu.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,125 +8,125 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bb31a10623bd5e8ea9a406b37acf84995774045c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 5320c9d7f1ea5ae882c67ee631f5bbafbf97b039
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772304"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530873"
 ---
-# <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Przygotowanie do wdrożenia rozwiązania usługi IoT Edge w środowisku produkcyjnym
+# <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Przygotowanie do wdrożenia rozwiązania IoT Edge w produkcji
 
-Gdy wszystko będzie gotowe móc rozwiązania usługi IoT Edge, od projektowania do produkcji, upewnij się, że została ona skonfigurowana do wydajność.
+Gdy wszystko będzie gotowe do wprowadzenia rozwiązania IoT Edge z programu dewelopera do produkcji, upewnij się, że jest ono skonfigurowane pod kątem ciągłej wydajności.
 
-Informacje zawarte w tym artykule nie są równe. Aby określić priorytety, każda sekcja rozpoczyna się od list, które najlepiej podzielić na dwie sekcje: **ważne** do wykonania przed przejściem do produkcji, lub **przydatne** można dowiedzieć.
+Informacje zawarte w tym artykule nie są równe. Aby ułatwić ustalanie priorytetów, każda sekcja zaczyna się od list, które dzielą pracę na dwie sekcje: **ważne** do ukończenia przed przejściem do produkcji lub **pomocne,** aby wiedzieć.
 
 ## <a name="device-configuration"></a>Konfiguracja urządzenia
 
-Urządzenia usługi IoT Edge mogą być cokolwiek — od urządzeń Raspberry Pi laptopa do maszyny wirtualnej na serwerze. Masz dostęp do urządzenia fizycznie lub za pośrednictwem połączeń wirtualnych lub mogą być izolowane dłuższy czas. W obu przypadkach trzeba upewnić się, że jest odpowiednio skonfigurowany do pracy.
+Urządzenia IoT Edge mogą być czymś, od Raspberry Pi do laptopa do maszyny wirtualnej uruchomionej na serwerze. Możesz mieć dostęp do urządzenia fizycznie lub za pośrednictwem połączenia wirtualnego lub może być izolowane przez dłuższy czas. Tak czy inaczej, chcesz upewnić się, że jest skonfigurowany do pracy odpowiednio.
 
 * **Ważne**
   * Instalowanie certyfikatów produkcyjnych
-  * Plan zarządzania urządzeniami
-  * Użyj Moby jako aparat kontenera
+  * Mieć plan zarządzania urządzeniami
+  * Użyj Moby jako silnika kontenera
 
 * **Przydatne**
-  * Wybierz protokół nadrzędnego
+  * Wybieranie protokołu nadrzędnego
 
 ### <a name="install-production-certificates"></a>Instalowanie certyfikatów produkcyjnych
 
-Każde urządzenie usługi IoT Edge w środowisku produkcyjnym, musi na nim zainstalowany certyfikat urzędu certyfikacji certyfikatu urządzenia. Następnie zadeklarowano ten certyfikat urzędu certyfikacji do środowiska uruchomieniowego usługi IoT Edge w pliku config.yaml. W przypadku scenariuszy projektowania i testowania środowisko uruchomieniowe IoT Edge tworzy certyfikaty tymczasowe, jeśli w pliku config. YAML nie zadeklarowano żadnych certyfikatów. Jednak te certyfikaty tymczasowe wygasają po upływie trzech miesięcy, a nie są bezpieczne dla scenariuszy produkcyjnych.
+Każde urządzenie IoT Edge w produkcji potrzebuje certyfikatu urzędu certyfikacji urządzenia (CA). Ten certyfikat urzędu certyfikacji jest następnie deklarowany do środowiska wykonawczego usługi IoT Edge w pliku config.yaml. W scenariuszach programowania i testowania środowisko uruchomieniowe usługi IoT Edge tworzy tymczasowe certyfikaty, jeśli w pliku config.yaml nie są deklarowane żadne certyfikaty. Jednak te tymczasowe certyfikaty wygasają po trzech miesiącach i nie są bezpieczne dla scenariuszy produkcyjnych.
 
-Aby poznać roli certyfikatu urządzenia urzędu certyfikacji, zobacz [jak usługi Azure IoT Edge korzysta z certyfikatów](iot-edge-certs.md).
+Aby zrozumieć rolę certyfikatu urzędu certyfikacji urządzenia, zobacz [Jak usługa Azure IoT Edge używa certyfikatów](iot-edge-certs.md).
 
-Aby uzyskać więcej informacji na temat sposobu instalowania certyfikatów na urządzeniu IoT Edge i odwoływania się do nich z pliku config. YAML, zobacz [Instalowanie certyfikatów produkcyjnych na urządzeniu IoT Edge](how-to-install-production-certificates.md).
+Aby uzyskać więcej informacji na temat instalowania certyfikatów na urządzeniu usługi IoT Edge i odwoływania się do nich z pliku config.yaml, zobacz [Instalowanie certyfikatów produkcyjnych na urządzeniu usługi IoT Edge](how-to-manage-device-certificates.md).
 
-### <a name="have-a-device-management-plan"></a>Plan zarządzania urządzeniami
+### <a name="have-a-device-management-plan"></a>Mieć plan zarządzania urządzeniami
 
-Przed wprowadzeniem dowolnego urządzenia w środowisku produkcyjnym należy wiedzieć, jak zamierzasz zarządzać przyszłych aktualizacji. Urządzenia usługi IoT Edge, aby uzyskać listę składników do aktualizacji może obejmować:
+Przed umieszczeniem dowolnego urządzenia w produkcji powinieneś wiedzieć, jak zamierzasz zarządzać przyszłymi aktualizacjami. W przypadku urządzenia Usługi IoT Edge lista składników do aktualizacji może zawierać:
 
-* Oprogramowania układowego urządzenia
-* Biblioteki systemu operacyjnego
-* Aparat kontenera, takich jak Moby
-* Demon usługi IoT Edge
-* Certyfikaty urzędu certyfikacji
+* Oprogramowanie układowe urządzenia
+* Biblioteki systemów operacyjnych
+* Silnik kontenerowy, jak Moby
+* Demon IoT Edge
+* Certyfikaty urzędów certyfikacji
 
-Aby uzyskać więcej informacji, zobacz [aktualizacja środowiska uruchomieniowego IoT Edge](how-to-update-iot-edge.md). Aktualizowanie demon usługi IoT Edge bieżącej metody wymagają fizycznej lub dostępu SSH na urządzeniu usługi IoT Edge. Jeśli masz wiele urządzeń do zaktualizowania, rozważ dodanie kroków aktualizacji do skryptu lub użyj narzędzia automatyzacji, takiego jak rozwiązania ansible.
+Aby uzyskać więcej informacji, zobacz [Aktualizowanie środowiska wykonawczego usługi IoT Edge](how-to-update-iot-edge.md). Bieżące metody aktualizowania demona IoT Edge wymagają fizycznego lub SSH dostępu do urządzenia IoT Edge. Jeśli masz wiele urządzeń do aktualizacji, należy rozważyć dodanie kroków aktualizacji do skryptu lub użyć narzędzia automatyzacji, takich jak Ansible.
 
-### <a name="use-moby-as-the-container-engine"></a>Użyj Moby jako aparat kontenera
+### <a name="use-moby-as-the-container-engine"></a>Użyj Moby jako silnika kontenera
 
-Aparat kontenerów jest wymaganiem wstępnym dla dowolnego IoT Edge urządzenia. Tylko moby aparat jest obsługiwana w środowisku produkcyjnym. Jest ok, aby użyć tych aparatów do tworzenia aplikacji i innych silników kontenera, takich jak Docker, pracy z usługą IoT Edge. Aparat moby mogą być rozpowszechniane w przypadku korzystania z usługi Azure IoT Edge, a firma Microsoft zapewnia obsługę dla tego aparatu.
+Aparat kontenera jest warunkiem wstępnym dla każdego urządzenia usługi IoT Edge. Tylko moby-engine jest obsługiwany w produkcji. Inne aparaty kontenerów, takie jak docker, współpracują z aplikacją IoT Edge i można używać tych silników do tworzenia. Aparat moby może być ponownie rozdzielony, gdy jest używany z usługą Azure IoT Edge, a firma Microsoft zapewnia obsługę dla tego aparatu.
 
-### <a name="choose-upstream-protocol"></a>Wybierz protokół nadrzędnego
+### <a name="choose-upstream-protocol"></a>Wybieranie protokołu nadrzędnego
 
-Można skonfigurować protokół (który określa używany port) do komunikacji nadrzędnej IoT Hub zarówno dla agenta IoT Edge, jak i do centrum IoT Edge. Protokół domyślny to AMQP, ale możesz chcieć zmienić w zależności od konfiguracji sieci.
+Można skonfigurować protokół (który określa używany port) do komunikacji nadrzędnej do usługi IoT Hub dla agenta usługi IoT Edge i centrum usługi IoT Edge. Domyślnym protokołem jest protokół AMQP, ale można to zmienić w zależności od konfiguracji sieci.
 
-Masz dwa środowiska uruchomieniowego moduły zarówno **UpstreamProtocol** zmiennej środowiskowej. Prawidłowe wartości dla zmiennej to:
+Dwa moduły środowiska wykonawczego oba mają zmienną środowiskową **UpstreamProtocol.** Prawidłowe wartości zmiennej to:
 
 * MQTT
 * AMQP
-* MQTTWS
-* AMQPWS
+* MQTTWS ( MQTTWS )
+* Z OKS
 
-Skonfiguruj zmienną UpstreamProtocol dla agenta IoT Edge w pliku config. YAML na samym urządzeniu. Na przykład jeśli urządzenie IoT Edge znajduje się za serwerem proxy, który blokuje porty AMQP, może być konieczne skonfigurowanie agenta IoT Edge do używania AMQP przez protokół WebSocket (AMQPWS) w celu nawiązania początkowego połączenia z IoT Hub.
+Skonfiguruj zmienną UpstreamProtocol dla agenta usługi IoT Edge w pliku config.yaml na samym urządzeniu. Jeśli na przykład urządzenie usługi IoT Edge znajduje się za serwerem proxy, który blokuje porty USŁUGI AMQP, może być konieczne skonfigurowanie agenta usługi IoT Edge do używania usługi AMQP przez usługę WebSocket (AMQPWS) w celu nawiązania początkowego połączenia z centrum IoT Hub.
 
-Po łączy urządzenia usługi IoT Edge, pamiętaj kontynuować konfigurowanie zmiennej UpstreamProtocol dla obu modułów środowiska uruchomieniowego w przyszłych wdrożeniach. Przykładem tego procesu znajduje się w [Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md).
+Po nawiązaniu połączenia urządzenia Usługi IoT Edge należy kontynuować konfigurowanie zmiennej UpstreamProtocol dla obu modułów środowiska uruchomieniowego w przyszłych wdrożeniach. Przykład tego procesu znajduje się w [temacie Konfigurowanie urządzenia usługi IoT Edge do komunikacji za pośrednictwem serwera proxy](how-to-configure-proxy-support.md).
 
-## <a name="deployment"></a>Wdrażanie
+## <a name="deployment"></a>wdrażania
 
 * **Przydatne**
-  * Być zgodne z protokołem nadrzędnego
+  * Bądź zgodny z protokołem nadrzędnym
   * Konfigurowanie magazynu hosta dla modułów systemowych
-  * Zmniejszanie ilości miejsca w pamięci używanej przez Centrum IoT Edge
-  * Nie należy używać wersji debugowania obrazów modułu
+  * Zmniejsz ilość miejsca w pamięci używanej przez koncentrator IoT Edge
+  * Nie używaj wersji debugowania obrazów modułów
 
-### <a name="be-consistent-with-upstream-protocol"></a>Być zgodne z protokołem nadrzędnego
+### <a name="be-consistent-with-upstream-protocol"></a>Bądź zgodny z protokołem nadrzędnym
 
-W przypadku skonfigurowania agenta IoT Edge na urządzeniu IoT Edge w celu użycia innego protokołu niż domyślny AMQP należy zadeklarować ten sam protokół we wszystkich przyszłych wdrożeniach. Na przykład w przypadku urządzenia usługi IoT Edge za serwerem proxy, która blokuje porty protokołu AMQP, prawdopodobnie skonfigurowano urządzenia, aby połączyć za pośrednictwem protokołu AMQP przez WebSocket (AMQPWS). Podczas wdrażania modułów na urządzeniu Skonfiguruj ten sam protokół AMQPWS dla agenta IoT Edge i IoT Edge Hub, a w przeciwnym razie domyślne AMQP przesłonią ustawienia i uniemożliwią ponowne nawiązanie połączenia.
+Jeśli agent usługi IoT Edge został skonfigurowany na urządzeniu usługi IoT Edge do używania innego protokołu niż domyślny protokół AMQP, należy zadeklarować ten sam protokół we wszystkich przyszłych wdrożeniach. Jeśli na przykład urządzenie usługi IoT Edge znajduje się za serwerem proxy, który blokuje porty AMQP, prawdopodobnie skonfigurowano urządzenie do łączenia się za pośrednictwem usługi AMQP za pośrednictwem usługi WebSocket (AMQPWS). Podczas wdrażania modułów na urządzeniu należy skonfigurować ten sam protokół AMQPWS dla agenta usługi IoT Edge i centrum Usługi IoT Edge, w przeciwnym razie domyślny protokół AMQP zastąpi ustawienia i uniemożliwi ponowne nawiązanie połączenia.
 
-Należy tylko skonfigurować zmienną środowiskową UpstreamProtocol dla agentów IoT Edge i IoT Edge modułów centrum. Wszelkie dodatkowe moduły przyjąć, niezależnie od protokołu jest ustawiana w moduły środowiska uruchomieniowego.
+Należy skonfigurować tylko zmienną środowiskową UpstreamProtocol dla agenta usługi IoT Edge i modułów koncentratora usługi IoT Edge. Wszelkie dodatkowe moduły przyjmują dowolny protokół ustawiony w modułach środowiska wykonawczego.
 
-Przykładem tego procesu znajduje się w [Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md).
+Przykład tego procesu znajduje się w [temacie Konfigurowanie urządzenia usługi IoT Edge do komunikacji za pośrednictwem serwera proxy](how-to-configure-proxy-support.md).
 
 ### <a name="set-up-host-storage-for-system-modules"></a>Konfigurowanie magazynu hosta dla modułów systemowych
 
-Moduły IoT Edge Hub i Agent używają magazynu lokalnego do utrzymania stanu i włączania obsługi komunikatów między modułami, urządzeniami i chmurą. Aby zapewnić lepszą niezawodność i wydajność, należy skonfigurować moduły systemowe do korzystania z magazynu w systemie plików hosta.
+Moduły usługi IoT Edge i agent używają magazynu lokalnego do obsługi stanu i włączania obsługi wiadomości między modułami, urządzeniami i chmurą. Aby uzyskać większą niezawodność i wydajność, skonfiguruj moduły systemowe do używania pamięci masowej w systemie plików hosta.
 
-Aby uzyskać więcej informacji, zobacz [host Storage for System modules](how-to-access-host-storage-from-module.md).
+Aby uzyskać więcej informacji, zobacz [Magazyn hosta dla modułów systemowych](how-to-access-host-storage-from-module.md).
 
-### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>Zmniejszanie ilości miejsca w pamięci używanej przez Centrum IoT Edge
+### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>Zmniejsz ilość miejsca w pamięci używanej przez centrum Usługi IoT Edge
 
-W przypadku wdrażania urządzeń z ograniczeniami z ograniczoną ilością dostępnej pamięci można skonfigurować IoT Edge Hub do uruchamiania w bardziej usprawnionej pojemności i zmniejszyć ilość miejsca na dysku. Te konfiguracje ograniczają wydajność centrum IoT Edge, jednak można znaleźć odpowiednie saldo, które działa dla danego rozwiązania.
+Jeśli wdrażasz ograniczone urządzenia z ograniczoną ilością dostępnej pamięci, możesz skonfigurować centrum Usługi IoT Edge tak, aby działało w bardziej usprawnionych pojemnościach i zużywało mniej miejsca na dysku. Te konfiguracje ograniczają jednak wydajność centrum usługi IoT Edge, więc znajdź właściwą równowagę, która działa dla twojego rozwiązania.
 
-#### <a name="dont-optimize-for-performance-on-constrained-devices"></a>Nie Optymalizuj wydajność na urządzeniach z ograniczeniami
+#### <a name="dont-optimize-for-performance-on-constrained-devices"></a>Nie optymalizuj pod kątem wydajności na urządzeniach o ograniczonym zasięgu
 
-Centrum IoT Edge jest zoptymalizowane pod kątem wydajności domyślnie, dlatego próbuje przydzielić duże fragmenty pamięci. Ta konfiguracja może spowodować problemów ze stabilnością w mniejszych urządzeniach, takich jak Raspberry Pi. Jeśli wdrażasz urządzenia z ograniczonymi zasobami, możesz chcieć ustawić dla zmiennej środowiskowej **OptimizeForPerformance** **wartość false** w centrum IoT Edge.
+Centrum usługi IoT Edge jest domyślnie zoptymalizowane pod kątem wydajności, więc próbuje przydzielić duże fragmenty pamięci. Ta konfiguracja może powodować problemy ze stabilnością na mniejszych urządzeniach, takich jak Raspberry Pi. Jeśli wdrażasz urządzenia z ograniczonymi zasobami, możesz ustawić zmienną środowiskową **OptimizeForPerformance** na **false** w centrum usługi IoT Edge.
 
-Gdy **OptimizeForPerformance** ma **wartość true**, kierownik protokołu MQTT używa PooledByteBufferAllocator, co zapewnia lepszą wydajność, ale przydziela więcej pamięci. Program przydzielający nie działa poprawnie z 32-bitowymi systemami operacyjnymi ani na urządzeniach z małą ilością pamięci. Ponadto w przypadku optymalizacji pod kątem wydajności program RocksDb przydziela więcej pamięci dla roli jako dostawcy magazynu lokalnego.
+Gdy **OptimizeForPerformance** jest ustawiona na **true,** głowica protokołu MQTT używa PooledByteBufferAllocator, który ma lepszą wydajność, ale przydziela więcej pamięci. Alokator nie działa dobrze na 32-bitowych systemach operacyjnych lub na urządzeniach o małej ilości pamięci. Ponadto po zoptymalizowaniu pod kątem wydajności, RocksDb przydziela więcej pamięci do swojej roli jako dostawcy magazynu lokalnego.
 
-Aby uzyskać więcej informacji, zobacz [problemów ze stabilnością zasobu ograniczonego urządzeń](troubleshoot.md#stability-issues-on-resource-constrained-devices).
+Aby uzyskać więcej informacji, zobacz [Problemy ze stabilnością urządzeń z ograniczeniami zasobów](troubleshoot.md#stability-issues-on-resource-constrained-devices).
 
-#### <a name="disable-unused-protocols"></a>Wyłącz protokoły nieużywane
+#### <a name="disable-unused-protocols"></a>Wyłączanie nieużywanych protokołów
 
-Innym sposobem na zoptymalizowanie wydajności Centrum IoT Edge i zmniejszenie użycia pamięci jest wyłączenie głowic protokołu dla protokołów, które nie są używane w rozwiązaniu.
+Innym sposobem optymalizacji wydajności centrum Usługi IoT Edge i zmniejszenia jego użycia pamięci jest wyłączenie głowic protokołów dla protokołów, których nie używasz w rozwiązaniu.
 
-Głowice protokołów są konfigurowane przez ustawienie logicznych zmiennych środowiskowych dla modułu IoT Edge Hub w manifestach wdrożenia. Dostępne są następujące trzy zmienne:
+Głowice protokołów są konfigurowane przez ustawienie zmiennych środowiskowych logicznych dla modułu centrum usługi IoT Edge w manifestach wdrażania. Trzy zmienne to:
 
 * **amqpSettings__enabled**
 * **mqttSettings__enabled**
 * **httpSettings__enabled**
 
-Wszystkie trzy zmienne mają *dwoma podkreśleniami* i można go ustawić na wartość true lub false.
+Wszystkie trzy zmienne mają *dwa podkreślenia* i można ustawić na true lub false.
 
-#### <a name="reduce-storage-time-for-messages"></a>Zmniejsz czas przechowywania wiadomości
+#### <a name="reduce-storage-time-for-messages"></a>Skrócenie czasu przechowywania wiadomości
 
-Moduł IoT Edge Hub przechowuje komunikaty tymczasowo, jeśli nie można ich dostarczyć do IoT Hub z dowolnego powodu. Można skonfigurować, jak długo Centrum IoT Edge będzie przechowywane do niedostarczonych komunikatów przed ich wygaśnięciem. Jeśli masz problemy z pamięcią na urządzeniu, możesz obniżyć wartość **timeToLiveSecs** w postaci sznurka modułu IoT Edge Hub.
+Moduł centrum usługi IoT Edge przechowuje wiadomości tymczasowo, jeśli nie mogą być dostarczone do Usługi IoT Hub z jakiegokolwiek powodu. Można skonfigurować, jak długo centrum Usługi IoT Edge przechowuje na niedostarczone wiadomości przed pozwoleniem ich wygaśnięcia. Jeśli masz problemy z pamięcią na urządzeniu, można obniżyć **timeToLiveSecs** wartość w bliźniaczej reprezentacji modułu ioT Edge koncentratora.
 
-Wartość domyślna parametru timeToLiveSecs jest 7200 sekund, czyli dwie godziny.
+Domyślna wartość parametru timeToLiveSecs wynosi 7200 sekund, czyli dwie godziny.
 
-### <a name="do-not-use-debug-versions-of-module-images"></a>Nie należy używać wersji debugowania obrazów modułu
+### <a name="do-not-use-debug-versions-of-module-images"></a>Nie używaj wersji debugowania obrazów modułów
 
-Podczas przenoszenia ze scenariuszy testowania scenariuszy produkcyjnych, pamiętaj, aby usunąć konfiguracje debugowania z manifesty wdrożenia. Sprawdź, czy żaden z obrazów modułu w manifesty wdrożenia mają  **\.debugowania** sufiks. Jeśli dodano tworzenie opcji, aby udostępniać porty modułów do debugowania, Usuń tworzenia tych opcji oraz.
+Podczas przechodzenia ze scenariuszy testowych do scenariuszy produkcyjnych należy pamiętać o usunięciu konfiguracji debugowania z manifestów wdrażania. Sprawdź, czy żaden z obrazów modułu w manifestach wdrażania nie ma sufiksu ** \.debugowania.** Jeśli dodano opcje tworzenia, aby udostępnić porty w modułach do debugowania, usuń te opcje tworzenia, jak również.
 
 ## <a name="container-management"></a>Zarządzanie kontenerami
 
@@ -136,81 +136,81 @@ Podczas przenoszenia ze scenariuszy testowania scenariuszy produkcyjnych, pamię
 
 ### <a name="manage-access-to-your-container-registry"></a>Zarządzanie dostępem do rejestru kontenerów
 
-Przed wdrożeniem modułów do urządzenia usługi IoT Edge w środowisku produkcyjnym, upewnij się, kontrolowania dostępu do rejestru kontenerów, tak aby nieszablonowo nie może uzyskać dostęp lub zmieniania obrazów kontenerów. Za pomocą rejestru nie jest publiczny, prywatny kontenerów do zarządzania obrazami kontenerów.
+Przed wdrożeniem modułów na urządzeniach produkcyjnych usługi IoT Edge należy kontrolować dostęp do rejestru kontenerów, aby osoby postronne nie mogły uzyskać dostępu do obrazów kontenerów ani ich wprowadzać. Do zarządzania obrazami kontenerów należy używać prywatnego, nie publicznego rejestru kontenerów.
 
-W samouczkach i innej dokumentacji firma Microsoft poinstruować przy użyciu tych samych poświadczeń rejestru kontenerów na urządzeniu usługi IoT Edge, jak używasz na komputerze deweloperskim. Te instrukcje są przeznaczone wyłącznie do ułatwia konfigurowanie środowisk testowania i programowania łatwiej i nie powinien być używany w scenariuszu produkcyjnym. Usługa Azure Container Registry zaleca [uwierzytelniania za pomocą jednostki usługi](../container-registry/container-registry-auth-service-principal.md) po aplikacje lub usługi Wypychaj obrazy kontenerów w automatycznych lub w inny sposób sposób, jak urządzenia usługi IoT Edge. Tworzenie jednostki usługi z dostępem tylko do odczytu do usługi container registry, a następnie podaj nazwę tego użytkownika i hasło w pliku manifestu wdrożenia.
+W samouczkach i innej dokumentacji firma Westruujemy użytkownika, aby używać tych samych poświadczeń rejestru kontenerów na urządzeniu usługi IoT Edge, które są używane na komputerze deweloperskim. Te instrukcje są przeznaczone tylko do konfigurowania środowisk testowania i programowania łatwiej i nie powinny być przestrzegane w scenariuszu produkcyjnym. Usługa Azure Container Registry zaleca [uwierzytelnianie z jednostkami usługi,](../container-registry/container-registry-auth-service-principal.md) gdy aplikacje lub usługi ściągają obrazy kontenerów w sposób zautomatyzowany lub w inny sposób nienadzorowany, tak jak robią to urządzenia usługi IoT Edge. Utwórz jednostkę usługi z dostępem tylko do odczytu do rejestru kontenerów i podaj tę nazwę użytkownika i hasło w manifeście wdrożenia.
 
 ### <a name="use-tags-to-manage-versions"></a>Zarządzanie wersjami za pomocą tagów
 
-Tag to koncepcja platformy Docker, której można użyć do rozróżnienia między wersjami kontenerów platformy Docker. Tagi są sufiksy, takich jak **1.0** , przejdź na koniec repozytorium kontenerów. Na przykład **mcr.microsoft.com/azureiotedge-agent:1.0**. Tagi są modyfikowalne i można ją zmienić na punkt do innego kontenera w dowolnym momencie, aby Twój zespół powinien zgody na Konwencji do wykonania podczas aktualizowania obrazów modułu przenoszenie do przodu.
+Tag to koncepcja platformy docker, której można użyć do rozróżniania wersji kontenerów docker. Tagi są sufiksy jak **1.0,** które go na końcu repozytorium kontenera. Na przykład **mcr.microsoft.com/azureiotedge-agent:1.0**. Tagi są modyfikowalne i można je zmienić, aby wskazać inny kontener w dowolnym momencie, więc zespół powinien uzgodnić konwencję do naśladowania podczas aktualizowania obrazów modułu do przodu.
 
-Tagi ułatwiają też wymusić aktualizacje na urządzeniach usługi IoT Edge. Po wypchnięciu zaktualizowaną wersję modułu do rejestru kontenerów, jego wartość tagu. Następnie wypchnąć nowe wdrożenie na urządzeniach z systemem z tagiem zwiększany. Aparat kontenera rozpozna zwiększona tag jako nową wersję i będzie pobierać najnowszą wersję modułu swoje urządzenie.
+Tagi ułatwiają również wymuszanie aktualizacji na urządzeniach IoT Edge. Po wypchnięciu zaktualizowanej wersji modułu do rejestru kontenerów należy zwiększyć tag. Następnie wypchnij nowe wdrożenie do swoich urządzeń z przyrostem tagu. Aparat kontenera rozpozna przyrostowy tag jako nową wersję i pociągnie najnowszą wersję modułu w dół do urządzenia.
 
-Na przykład tag Konwencji zobacz [aktualizacji środowiska uruchomieniowego usługi IoT Edge](how-to-update-iot-edge.md#understand-iot-edge-tags) Aby dowiedzieć się, jak usługi IoT Edge korzysta stopniowe tagów i określonymi tagami śledzenia wersji.
+Na przykład konwencji tagów zobacz [Aktualizowanie środowiska wykonawczego usługi IoT Edge,](how-to-update-iot-edge.md#understand-iot-edge-tags) aby dowiedzieć się, jak usługa IoT Edge używa tagów rolowanych i określonych tagów do śledzenia wersji.
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Obsługa sieci
 
 * **Przydatne**
-  * Przejrzyj konfigurację wychodzące/przychodzące
-  * Zezwalaj na połączenia z urządzeń IoT Edge
+  * Przeglądanie konfiguracji ruchu wychodzącego/przychodzącego
+  * Zezwalaj na połączenia z urządzeń Usługi IoT Edge
   * Konfigurowanie komunikacji za pośrednictwem serwera proxy
 
-### <a name="review-outboundinbound-configuration"></a>Przejrzyj konfigurację wychodzące/przychodzące
+### <a name="review-outboundinbound-configuration"></a>Przeglądanie konfiguracji ruchu wychodzącego/przychodzącego
 
-Kanałów komunikacji między Azure IoT Hub i IoT Edge zawsze są skonfigurowane jako ruchu wychodzącego. W przypadku większości scenariuszy IoT Edge tylko dla trzech połączenia są niezbędne. Aparat kontenera musi połączyć się z rejestru kontenerów (lub rejestrów), które zawiera obrazy modułu. Środowisko uruchomieniowe usługi IoT Edge musi połączyć się z usługą IoT Hub można pobrać informacji o konfiguracji urządzenia, a także do wysyłania wiadomości i danych telemetrycznych. I korzystając z automatyczną aprowizację, demon usługi IoT Edge należy nawiązać połączenie z usługą Device Provisioning. Aby uzyskać więcej informacji, zobacz [Zapora i reguły konfiguracji portów](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment).
+Kanały komunikacji między usługą Azure IoT Hub i usługą IoT Edge są zawsze skonfigurowane do ruchu wychodzącego. W większości scenariuszy usługi IoT Edge konieczne są tylko trzy połączenia. Aparat kontenerów musi połączyć się z rejestru kontenerów (lub rejestrów), który przechowuje obrazy modułu. Środowisko wykonawcze usługi IoT Edge musi połączyć się z Centrum IoT Hub, aby pobrać informacje o konfiguracji urządzenia oraz wysłać wiadomości i dane telemetryczne. A jeśli korzystasz z automatycznego inicjowania obsługi administracyjnej, demon usługi IoT Edge musi połączyć się z usługą inicjowania obsługi administracyjnej urządzeń. Aby uzyskać więcej informacji, zobacz [Reguły konfiguracji zapory i portu](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment).
 
-### <a name="allow-connections-from-iot-edge-devices"></a>Zezwalaj na połączenia z urządzeń IoT Edge
+### <a name="allow-connections-from-iot-edge-devices"></a>Zezwalaj na połączenia z urządzeń Usługi IoT Edge
 
-Jeśli konfiguracja sieci wymaga jawnie zezwolenia na połączenia wykonane z urządzeń IoT Edge, Przejrzyj następującą listę składników IoT Edge:
+Jeśli konfiguracja sieci wymaga jawnego zezwolenia na połączenia wykonane z urządzeń Usługi IoT Edge, przejrzyj następującą listę składników usługi IoT Edge:
 
-* **Agent usługi IoT Edge** otwiera trwałe połączenie AMQP/MQTT Centrum IoT, prawdopodobnie przez protokół WebSockets.
-* **Centrum usługi IoT Edge** otwiera przez pojedyncze połączenie AMQP trwałego lub wiele połączeń protokołu MQTT do usługi IoT Hub prawdopodobnie przez protokół WebSockets.
-* **Demon usługi IoT Edge** wywołań sporadyczne HTTPS do usługi IoT Hub.
+* **Agent usługi IoT Edge** otwiera trwałe połączenie AMQP/MQTT z centrum IoT Hub, prawdopodobnie za pośrednictwem websockets.
+* **Centrum usługi IoT Edge** otwiera pojedyncze trwałe połączenie AMQP lub wiele połączeń MQTT z Centrum IoT Hub, prawdopodobnie za pośrednictwem websockets.
+* **Demon IoT Edge** wykonuje sporadyczne wywołania HTTPS do Centrum IoT Hub.
 
-We wszystkich trzech przypadkach nazwy DNS będzie pasuje do wzorca \*.azure-devices.net.
+We wszystkich trzech przypadkach nazwa DNS \*będzie zgodna ze wzorcem .azure-devices.net.
 
-Ponadto **kontenera aparatu** wykonywania wywołań do rejestrów kontenerów przy użyciu protokołu HTTPS. Aby pobrać obrazy kontenera środowisko uruchomieniowe usługi IoT Edge, nazwa DNS jest mcr.microsoft.com. Aparat container łączy do innych rejestrów, zgodnie z konfiguracją we wdrożeniu.
+Ponadto aparat **kontenera** wykonuje wywołania rejestrów kontenerów za pośrednictwem protokołu HTTPS. Aby pobrać obrazy kontenerów środowiska uruchomieniowego usługi IoT Edge, nazwa DNS jest mcr.microsoft.com. Aparat kontenera łączy się z innymi rejestrami skonfigurowany w wdrożeniu.
 
-Ta lista kontrolna jest punktem początkowym dla reguł zapory:
+Ta lista kontrolna jest punktem wyjścia dla reguł zapory:
 
-   | Adres URL (\* = symbol wieloznaczny) | Wychodzące porty TCP | Użycie |
+   | ADRES\* URL ( = symbol wieloznaczny) | Wychodzące porty TCP | Sposób użycia |
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Rejestr kontenerów firmy Microsoft |
-   | global.azure-devices-provisioning.net  | 443 | Dostęp do punktu dystrybucji (opcjonalnie) |
-   | \*. azurecr.io | 443 | Rejestry kontenerów osobistych i innych firm |
-   | \*.blob.core.windows.net | 443 | Pobieranie Azure Container Registry różnic obrazu z magazynu obiektów BLOB |
-   | \*.azure-devices.net | 5671, 8883, 443 | Dostęp IoT Hub |
-   | \*. docker.io  | 443 | Dostęp do centrum platformy Docker (opcjonalnie) |
+   | global.azure-devices-provisioning.net  | 443 | Dostęp DPS (opcjonalnie) |
+   | \*azurecr.io .azurecr.io | 443 | Rejestry kontenerów osobistych i rejestrów kontenerów innych firm |
+   | \*.blob.core.windows.net | 443 | Pobieranie różnic obrazu rejestru kontenerów platformy Azure z magazynu obiektów blob |
+   | \*azure-devices.net .azure-devices.net | 5671, 8883, 443 | Dostęp do centrum IoT |
+   | \*docker.io .  | 443 | Dostęp do centrum platformy Docker (opcjonalnie) |
 
-Niektóre z tych reguł zapory są dziedziczone z Azure Container Registry. Aby uzyskać więcej informacji, zobacz [Konfigurowanie reguł dostępu do usługi Azure Container Registry za zaporą](../container-registry/container-registry-firewall-access-rules.md).
+Niektóre z tych reguł zapory są dziedziczone z rejestru kontenerów platformy Azure. Aby uzyskać więcej informacji, zobacz [Konfigurowanie reguł dostępu do rejestru kontenerów platformy Azure za zaporą](../container-registry/container-registry-firewall-access-rules.md).
 
 ### <a name="configure-communication-through-a-proxy"></a>Konfigurowanie komunikacji za pośrednictwem serwera proxy
 
-Urządzenia mają zostać wdrożone w sieci, która korzysta z serwera proxy, muszą mieć możliwość komunikacji za pośrednictwem serwera proxy, aby dotrzeć do Centrum IoT i rejestry kontenerów. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md).
+Jeśli urządzenia mają być wdrożone w sieci, która używa serwera proxy, muszą być w stanie komunikować się za pośrednictwem serwera proxy, aby uzyskać dostęp do usługi IoT Hub i rejestrów kontenerów. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md).
 
-## <a name="solution-management"></a>Rozwiązanie Zarządzanie
+## <a name="solution-management"></a>Zarządzanie rozwiązaniami
 
 * **Przydatne**
-  * Konfigurowanie dzienników i Diagnostyka
-  * Należy wziąć pod uwagę testy i potoków ciągłej integracji/ciągłego Dostarczania
+  * Konfigurowanie dzienników i diagnostyki
+  * Rozważ testy i potoki ciągłej integracji/ciągłej integracji/dysków CD
 
-### <a name="set-up-logs-and-diagnostics"></a>Konfigurowanie dzienników i Diagnostyka
+### <a name="set-up-logs-and-diagnostics"></a>Konfigurowanie dzienników i diagnostyki
 
-W systemie Linux demon IoT Edge używa dzienników jako domyślnego sterownika rejestrowania. Można użyć narzędzia wiersza polecenia `journalctl` kwerendy demona dzienniki. Demon usługi IoT Edge na Windows, korzysta z diagnostyki programu PowerShell. Użyj `Get-IoTEdgeLog` dzienniki zapytania z demona. Moduły IoT Edge używają sterownika JSON do rejestrowania, co jest ustawieniem domyślnym.  
+W systemie Linux demon IoT Edge używa dzienników jako domyślnego sterownika rejestrowania. Za pomocą narzędzia `journalctl` wiersza polecenia można wysyłać zapytania do dzienników demonów. W systemie Windows demon IoT Edge używa diagnostyki programu PowerShell. Służy `Get-IoTEdgeLog` do wykonywania zapytań o dzienniki z demona. Moduły usługi IoT Edge używają sterownika JSON do rejestrowania, co jest wartością domyślną.  
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Podczas testowania wdrożenia usługi IoT Edge, zwykle dostęp urządzenia do pobierania dzienników i rozwiązywanie problemów. W scenariuszu wdrażania możesz nie mieć tej opcji. Należy wziąć pod uwagę, jak możesz zacząć zbierać informacje dotyczące urządzeń w środowisku produkcyjnym. Jedną z opcji jest używać moduł rejestrowania, który zbiera informacje z innymi modułami i wysyła je do chmury. Jednym z przykładów moduł rejestrowania jest [logspout loganalytics](https://github.com/veyalla/logspout-loganalytics), lub projektować własne.
+Podczas testowania wdrożenia usługi IoT Edge, zazwyczaj można uzyskać dostęp do urządzeń, aby pobrać dzienniki i rozwiązywać problemy. W scenariuszu wdrażania może nie mieć tej opcji. Zastanów się, jak zamierzasz zbierać informacje o swoich urządzeniach w produkcji. Jedną z opcji jest użycie modułu rejestrowania, który zbiera informacje z innych modułów i wysyła je do chmury. Jednym z przykładów modułu rejestrowania jest [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics), lub można zaprojektować własne.
 
-### <a name="place-limits-on-log-size"></a>Limity umieszczenia rozmiaru dziennika
+### <a name="place-limits-on-log-size"></a>Umieść limity rozmiaru dziennika
 
-Domyślnie aparat kontenera Moby nie ustawia limitów rozmiaru dziennika kontenera. W miarę upływu czasu może to prowadzić do wypełniania urządzenia przy użyciu dzienników i uruchamiania miejsca na dysku. Aby tego uniknąć, należy wziąć pod uwagę następujące opcje:
+Domyślnie aparat kontenera Moby nie ustawia limitów rozmiaru dziennika kontenera. Z biegiem czasu może to prowadzić do urządzenia napełniania dzienników i wyczerpania miejsca na dysku. Należy wziąć pod uwagę następujące opcje, aby temu zapobiec:
 
-#### <a name="option-set-global-limits-that-apply-to-all-container-modules"></a>Opcja: Ustaw limity globalne, które mają zastosowanie do wszystkich modułów kontenera
+#### <a name="option-set-global-limits-that-apply-to-all-container-modules"></a>Opcja: Ustawianie limitów globalnych, które mają zastosowanie do wszystkich modułów kontenerów
 
-Można ograniczyć rozmiar wszystkich plików dziennika kontenerów w opcjach dziennika aparatu kontenera. Poniższy przykład ustawia sterownik dziennika do `json-file` (zalecane) z limitami rozmiaru i liczby plików:
+Można ograniczyć rozmiar wszystkich plików dziennika kontenera w opcjach dziennika aparatu kontenera. W poniższym przykładzie `json-file` ustawia sterownik dziennika na (zalecane) z ograniczeniami rozmiaru i liczby plików:
 
 ```JSON
 {
@@ -222,18 +222,18 @@ Można ograniczyć rozmiar wszystkich plików dziennika kontenerów w opcjach dz
 }
 ```
 
-Dodaj (lub Dołącz) te informacje do pliku o nazwie `daemon.json` i umieść go w odpowiedniej lokalizacji dla platformy urządzeń.
+Dodaj (lub dołącz) te informacje `daemon.json` do pliku o nazwie i umieść je w odpowiedniej lokalizacji dla platformy urządzenia.
 
 | Platforma | Lokalizacja |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |
 
-Aby zmiany zaczęły obowiązywać, należy ponownie uruchomić silnik kontenera.
+Aby zmiany zostały wprowadzone, należy ponownie uruchomić aparat kontenera.
 
-#### <a name="option-adjust-log-settings-for-each-container-module"></a>Opcja: Dopasuj ustawienia dziennika dla każdego modułu kontenera
+#### <a name="option-adjust-log-settings-for-each-container-module"></a>Opcja: Dostosuj ustawienia dziennika dla każdego modułu kontenera
 
-Można to zrobić w **opcjach** dla każdego modułu. Przykład:
+Można to zrobić w **createOptions** każdego modułu. Przykład:
 
 ```yml
 "createOptions": {
@@ -251,9 +251,9 @@ Można to zrobić w **opcjach** dla każdego modułu. Przykład:
 
 #### <a name="additional-options-on-linux-systems"></a>Dodatkowe opcje w systemach Linux
 
-* Skonfiguruj aparat kontenera do wysyłania dzienników do `systemd` [dziennika](https://docs.docker.com/config/containers/logging/journald/) przez ustawienie `journald` jako domyślnego sterownika rejestrowania.
+* Skonfiguruj aparat kontenerów `systemd` do `journald` wysyłania dzienników do [dziennika,](https://docs.docker.com/config/containers/logging/journald/) ustawiając jako domyślny sterownik rejestrowania.
 
-* Okresowo Usuwaj stare dzienniki z urządzenia, instalując narzędzie logrotate. Użyj następujących specyfikacji pliku:
+* Okresowo usuwaj stare dzienniki z urządzenia, instalując narzędzie logrotate. Użyj następującej specyfikacji pliku:
 
    ```txt
    /var/lib/docker/containers/*/*-json.log{
@@ -267,11 +267,11 @@ Można to zrobić w **opcjach** dla każdego modułu. Przykład:
    }
    ```
 
-### <a name="consider-tests-and-cicd-pipelines"></a>Należy wziąć pod uwagę testy i potoków ciągłej integracji/ciągłego Dostarczania
+### <a name="consider-tests-and-cicd-pipelines"></a>Rozważ testy i potoki ciągłej integracji/ciągłej integracji/dysków CD
 
-Najbardziej efektywny sposób scenariusza wdrożenia usługi IoT Edge należy rozważyć włączenie wdrożeniu produkcyjnym do testowania i potoków ciągłej integracji/ciągłego Dostarczania. Usługa Azure IoT Edge obsługuje wiele platform ciągłej integracji/ciągłego wdrażania, w tym DevOps platformy Azure. Aby uzyskać więcej informacji, zobacz [ciągłą integrację i ciągłe wdrażanie w usłudze Azure IoT Edge](how-to-ci-cd.md).
+Aby uzyskać najbardziej efektywny scenariusz wdrażania usługi IoT Edge, należy rozważyć zintegrowanie wdrożenia produkcyjnego z potokami testowania i ciągłej integracji/ciągłego wdrażania. Usługa Azure IoT Edge obsługuje wiele platform ciągłej integracji/ciągłego wdrażania, w tym usługi Azure DevOps. Aby uzyskać więcej informacji, zobacz [Ciągła integracja i ciągłe wdrażanie usługi Azure IoT Edge](how-to-ci-cd.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [automatycznego wdrażania usługi IoT Edge](module-deployment-monitoring.md).
-* Zobacz, jak usługi IoT Edge obsługuje [ciągłej integracji i ciągłego wdrażania](how-to-ci-cd.md).
+* Dowiedz się więcej o [automatycznym wdrażaniu usługi IoT Edge](module-deployment-monitoring.md).
+* Zobacz, jak IoT Edge obsługuje [ciągłą integrację i ciągłe wdrażanie.](how-to-ci-cd.md)

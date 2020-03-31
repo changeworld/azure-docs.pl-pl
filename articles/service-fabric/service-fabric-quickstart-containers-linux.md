@@ -1,15 +1,15 @@
 ---
-title: Tworzenie aplikacji kontenera systemu Linux na Service Fabric na platformie Azure
+title: Tworzenie aplikacji kontenera systemu Linux na sieci szkieletowej usług na platformie Azure
 description: W tym przewodniku Szybki start skompilujesz obraz Docker za pomocą własnej aplikacji, wypchniesz obraz do rejestru kontenerów, a następnie wdrożysz kontener do klastra usługi Service Fabric.
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75372690"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Szybki start: wdrażanie kontenerów systemu Linux w usłudze Service Fabric
@@ -26,11 +26,11 @@ Aby ukończyć ten przewodnik Szybki start:
 
 1. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
-2. Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
+2. Instalowanie [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
 
 3. Zainstaluj [interfejs wiersza polecenia i zestaw SDK usługi Service Fabric](service-fabric-get-started-linux.md#installation-methods).
 
-4. Zainstaluj oprogramowanie [Git](https://git-scm.com/).
+4. Zainstaluj [Git](https://git-scm.com/)
 
 
 ## <a name="get-the-application-package"></a>Pobieranie pakietu aplikacji
@@ -108,9 +108,9 @@ domyślną przeglądarką w systemie Ubuntu 16.04 jest Mozilla Firefox. Aby zaim
     ./install.sh
     ```
 
-3. Otwórz przeglądarkę internetową i przejdź do punktu końcowego narzędzia Service Fabric Explorer dla Twojego klastra. Punkt końcowy ma następujący format: **https://\<adres-URL-mojego-klastra-usługi-azure-service-fabric>:19080/Explorer**, na przykład `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
+3. Otwórz przeglądarkę internetową i przejdź do punktu końcowego narzędzia Service Fabric Explorer dla Twojego klastra. Punkt końcowy ma następujący format: **https://\<my-azure-service-fabric-cluster-url>:19080/Explorer;** na przykład `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
 
-4. Rozwiń węzeł **Aplikacje**, aby sprawdzić, czy istnieje teraz wpis dla typu aplikacji do głosowania i utworzonego wystąpienia.
+4. Rozwiń **węzeł Aplikacje,** aby zobaczyć, że jest teraz wpis dla typu aplikacji głosowania i utworzonego wystąpienia.
 
     ![Service Fabric Explorer][sfx]
 
@@ -169,7 +169,7 @@ Użyj skryptu odinstalowywania (uninstall.sh) udostępnionego w szablonie, aby u
 
 Najprostszym sposobem na usunięcie klastra i wszystkich wykorzystywanych przez niego zasobów jest usunięcie grupy zasobów.
 
-Zaloguj się do platformy Azure i wybierz identyfikator subskrypcji, z którym chcesz usunąć klaster. Identyfikator subskrypcji można znaleźć po zalogowaniu się w witrynie Azure Portal. Usuń grupę zasobów i wszystkie zasoby klastra, korzystając z polecenia [az group delete](/cli/azure/group?view=azure-cli-latest).
+Zaloguj się na platformie Azure i wybierz identyfikator subskrypcji, za pomocą którego chcesz usunąć klaster. Identyfikator subskrypcji można znaleźć po zalogowaniu się w witrynie Azure Portal. Usuń grupę zasobów i wszystkie zasoby klastra za pomocą [polecenia usuń grupę az](/cli/azure/group?view=azure-cli-latest).
 
 ```azurecli
 az login

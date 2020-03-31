@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: danlep
 ms.openlocfilehash: 8444a2a99977f0e8f6324423ea676c7763481a53
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67508286"
 ---
-Aby określić, miesięcy i dni można użyć wartości liczbowych, nazwy lub skróty nazw:
+Aby określić miesiące lub dni, można użyć wartości liczbowych, nazw lub skrótów nazw:
 
-* Dni wartości numeryczne są 0 – 6, w którym 0 zaczyna się od niedzieli.
+* W przypadku dni wartości liczbowe to od 0 do 6, gdzie 0 rozpoczyna się w niedzielę.
 * Nazwy są w języku angielskim. Przykład: `Monday`, `January`.
-* Nazwy jest rozróżniana wielkość liter.
-* Można stosować skrót nazwy. Trzy litery jest to zalecane — skrót.  Przykład: `Mon`, `Jan`. 
+* Nazwy są bez uwzględniania wielkości liter.
+* Nazwy można skracać. Trzy litery to zalecana długość skrótu.  Przykład: `Mon`, `Jan`. 

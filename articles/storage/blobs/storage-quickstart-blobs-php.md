@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68726389"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Transferowanie obiektów do i z usługi Azure Blob Storage za pomocą języka PHP
@@ -42,14 +42,14 @@ To polecenie klonuje repozytorium do lokalnego folderu git. Aby otworzyć przyk�
 ## <a name="configure-your-storage-connection-string"></a>Konfigurowanie parametrów połączenia magazynu
 W aplikacji należy podać nazwę konta magazynu i klucz konta, aby utworzyć wystąpienie obiektu **BlobRestProxy** na potrzeby aplikacji. Zaleca się do przechowywanie tych identyfikatorów w zmiennej środowiskowej na maszynie lokalnej, na której uruchomiona jest aplikacja. Użyj jednego z poniższych przykładów w zależności od używanego systemu operacyjnego, aby utworzyć zmienną środowiskową. Zastąp wartości **youraccountname** i **youraccountkey** własną nazwą konta i własnym kluczem.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export ACCOUNT_NAME=<youraccountname>
 export ACCOUNT_KEY=<youraccountkey>
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```cmd
 setx ACCOUNT_NAME=<youraccountname>
@@ -122,7 +122,7 @@ Ta sekcja poświęcona jest konfigurowaniu wystąpienia klienta usługi Azure St
 
 Usługa Blob Storage obsługuje blokowe, uzupełnialne i stronicowe obiekty blob. Blokowe obiekty blob są używane najczęściej i dlatego zostały użyte w tym przewodniku Szybki start.  
 
-Aby przekazać plik do obiektu blob, uzyskaj pełną ścieżkę pliku, łącząc nazwę katalogu i nazwę pliku na dysku lokalnym. Następnie możesz przekazać plik do określonej ścieżki przy użyciu metody **createBlockBlob()** . 
+Aby przekazać plik do obiektu blob, uzyskaj pełną ścieżkę pliku, łącząc nazwę katalogu i nazwę pliku na dysku lokalnym. Następnie możesz przekazać plik do określonej ścieżki przy użyciu metody **createBlockBlob()**. 
 
 Przykładowy kod pobiera lokalny plik i przekazuje go do platformy Azure. W tym kodzie plik jest przechowywany pod nazwą **myfile**, a nazwa obiektu blob to **fileToUpload**. Następujący kod przykładowy przekazuje plik do kontenera o nazwie **quickstartblobs**.
 
@@ -141,11 +141,11 @@ Przykładowy kod pobiera lokalny plik i przekazuje go do platformy Azure. W tym 
     $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 ```
 
-Aby wykonać częściową aktualizację zawartości blokowego obiektu blob, użyj metody **createblocklist()** . Blokowe obiekty blob mogą mieć rozmiar nawet do 4,7 TB i mogą to być dowolne pliki, od arkuszy kalkulacyjnych programu Excel po duże pliki wideo. Stronicowe obiekty blob są używane głównie do tworzenia plików VHD służących do obsługi maszyn wirtualnych IaaS. Uzupełnialne obiekty blob są używane do rejestrowania, na przykład w sytuacji, w której konieczny jest zapis do pliku, a następnie dodawanie kolejnych informacji. Uzupełnianego obiektu blob należy używać w ramach pojedynczego modelu zapisywania. Większość obiektów przechowywanych w usłudze Blob Storage to blokowe obiekty blob.
+Aby wykonać częściową aktualizację zawartości blokowego obiektu blob, użyj metody **createblocklist()**. Blokowe obiekty blob mogą mieć rozmiar nawet do 4,7 TB i mogą to być dowolne pliki, od arkuszy kalkulacyjnych programu Excel po duże pliki wideo. Stronicowe obiekty blob są używane głównie do tworzenia plików VHD służących do obsługi maszyn wirtualnych IaaS. Uzupełnialne obiekty blob są używane do rejestrowania, na przykład w sytuacji, w której konieczny jest zapis do pliku, a następnie dodawanie kolejnych informacji. Uzupełnianego obiektu blob należy używać w ramach pojedynczego modelu zapisywania. Większość obiektów przechowywanych w usłudze Blob Storage to blokowe obiekty blob.
 
 ### <a name="list-the-blobs-in-a-container"></a>Wyświetlanie listy obiektów blob w kontenerze
 
-Pobierz listę plików w kontenerze, używając metody **listBlobs()** . Poniższy kod umożliwia pobranie listy obiektów blob, a następnie przetwarza je w pętli, wyświetlając nazwy obiektów blob odnalezionych w kontenerze.  
+Pobierz listę plików w kontenerze, używając metody **listBlobs()**. Poniższy kod umożliwia pobranie listy obiektów blob, a następnie przetwarza je w pętli, wyświetlając nazwy obiektów blob odnalezionych w kontenerze.  
 
 ```PHP
     $listBlobsOptions = new ListBlobsOptions();
@@ -174,7 +174,7 @@ Metoda **getBlob()** umożliwia pobranie zawartości obiektów blob. Poniższy k
 ```
 
 ### <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Jeśli nie potrzebujesz już obiektów blob przekazanych podczas pracy z tym przewodnikiem Szybki start, możesz usunąć cały kontener, korzystając z metody **deleteContainer()** . Jeśli utworzone pliki nie są już potrzebne, możesz użyć metody **deleteBlob()** , aby je usunąć.
+Jeśli nie potrzebujesz już obiektów blob przekazanych podczas pracy z tym przewodnikiem Szybki start, możesz usunąć cały kontener, korzystając z metody **deleteContainer()**. Jeśli utworzone pliki nie są już potrzebne, możesz użyć metody **deleteBlob()**, aby je usunąć.
 
 ```PHP
     // Delete blob.

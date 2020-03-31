@@ -15,6 +15,8 @@
       href: web-query-data.md
 - name: Samouczki
   items:
+    - name: Pisanie zapytań
+      href: write-queries.md
     - name: Kompleksowe programistyczne pozyskiwanie obiektów blob
       items:
         - name: 'C#'
@@ -32,14 +34,22 @@
         - name: Omówienie pozyskiwania danych
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+        - name: Właściwości pozyskiwania danych
+          href: ingestion-properties.md
+        - name: Formaty pozyskiwania danych
+          href: ingestion-supported-formats.md
     - name: Język zapytań Kusto
       items:
         - name: Skrócony przewodnik informacyjny
           href: kql-quick-reference.md
     - name: Omówienie wizualizacji danych
       href: viz-overview.md
-    - name: Omówienie zabezpieczeń
-      href: security.md
+    - name: Zabezpieczenia
+      items:
+        - name: Omówienie zabezpieczeń
+          href: security.md
+        - name: Punkt odniesienia zabezpieczeń
+          href: security-baseline.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie klastra i bazy danych
@@ -60,6 +70,8 @@
           href: ingest-data-one-click.md
         - name: Pozyskiwanie danych za pośrednictwem przesyłania strumieniowego
           href: ingest-data-streaming.md
+        - name: Używanie programu LightIngest
+          href: lightingest.md
         - name: Centrum zdarzeń
           items:
             - name: Azure Portal
@@ -106,8 +118,6 @@
           href: ingest-json-formats.md
     - name: Zapytania o dane
       items:
-        - name: Pisanie zapytań
-          href: write-queries.md
         - name: Wykonywanie zapytań o dane w usłudze Azure Data Lake
           href: data-lake-query-data.md
         - name: Wykonywanie zapytań dotyczących danych w usłudze Azure Monitor
@@ -158,12 +168,22 @@
           href: k2bridge.md
     - name: Bezpieczeństwo
       items:
+        - name: Izolacja sieciowa (sieć wirtualna)
+          items:
+            - name: Tworzenie klastra w sieci wirtualnej — portal
+              href: vnet-create-cluster-portal.md
+            - name: Wdrażanie klastra w sieci wirtualnej
+              href: vnet-deployment.md
+            - name: 'Rozwiązywanie problemów z tworzeniem, łącznością i działaniem klastra sieci wirtualnej'
+              href: vnet-deploy-troubleshoot.md
         - name: Zarządzanie zabezpieczeniami klastra
           href: manage-cluster-security.md
         - name: Konfigurowanie tożsamości zarządzanych
           href: managed-identities.md
         - name: Konfigurowanie kluczy zarządzanych przez klienta
           items:
+            - name: Portal
+              href: customer-managed-keys-portal.md
             - name: 'C#'
               href: customer-managed-keys-csharp.md
             - name: Szablon usługi Azure Resource Manager
@@ -214,10 +234,6 @@
               href: delete-data.md
             - name: Obsługa zduplikowanych danych
               href: dealing-with-duplicates.md
-    - name: Wdrażanie
-      items:
-        - name: Wdrażanie klastra w sieci wirtualnej
-          href: vnet-deployment.md
     - name: Monitorowanie
       items:
         - name: Monitorowanie pozyskiwania przy użyciu dzienników diagnostycznych
@@ -236,6 +252,12 @@
               href: data-factory-template.md
             - name: Uruchamianie poleceń sterujących przy użyciu usługi Azure Data Factory
               href: data-factory-command-activity.md
+        - name: Łącznik usługi Microsoft Flow
+          items:
+            - name: Łącznik usługi Microsoft Flow
+              href: flow.md
+            - name: Przykłady użycia łącznika usługi Microsoft Flow
+              href: flow-usage.md
         - name: Łącznik Apache Spark
           href: spark-connector.md
         - name: Łączenie z usługi Databricks za pomocą języka Python

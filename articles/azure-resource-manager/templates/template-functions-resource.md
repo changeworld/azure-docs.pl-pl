@@ -1,30 +1,30 @@
 ---
 title: Funkcje szablonu — zasoby
-description: Opisuje funkcje, aby użyć w szablonie usługi Azure Resource Manager można pobrać wartości dotyczące zasobów.
+description: W tym artykule opisano funkcje używane w szablonie usługi Azure Resource Manager do pobierania wartości dotyczących zasobów.
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 10476f5a29c12d7437beb9a9f707feda815d7ba1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e9e1d700282652304f0bede5e697ba8625f5a5d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248673"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156297"
 ---
-# <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
+# <a name="resource-functions-for-arm-templates"></a>Funkcje zasobów dla szablonów ARM
 
-Usługa Resource Manager zapewnia następujące funkcje w celu uzyskania wartości zasobu:
+Menedżer zasobów udostępnia następujące funkcje uzyskiwania wartości zasobów w szablonie usługi Azure Resource Manager (ARM):
 
 * [extensionResourceId](#extensionresourceid)
-* [staw](#list)
-* [udostępnia](#providers)
-* [odwoła](#reference)
-* [resourceGroup](#resourcegroup)
-* [Identyfikator](#resourceid)
-* [Subskrypcja](#subscription)
-* [subscriptionResourceId](#subscriptionresourceid)
-* [tenantResourceId](#tenantresourceid)
+* [lista*](#list)
+* [Dostawców](#providers)
+* [Odwołanie](#reference)
+* [grupa zasobów](#resourcegroup)
+* [Resourceid](#resourceid)
+* [Subskrypcji](#subscription)
+* [identyfikator zasobów subskrypcji](#subscriptionresourceid)
+* [identyfikator źródłu zewnętrznego tenant](#tenantresourceid)
 
-Aby uzyskać wartości z parametrów, zmiennych lub bieżącego wdrożenia, zobacz [funkcje wartości wdrożenia](template-functions-deployment.md).
+Aby uzyskać wartości z parametrów, zmiennych lub bieżącego wdrożenia, zobacz [Funkcje wartości wdrażania](template-functions-deployment.md).
 
 ## <a name="extensionresourceid"></a>extensionResourceId
 
@@ -32,22 +32,22 @@ Aby uzyskać wartości z parametrów, zmiennych lub bieżącego wdrożenia, zoba
 extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
 ```
 
-Zwraca identyfikator zasobu dla [zasobu rozszerzenia](../management/extension-resource-types.md), który jest typem zasobu, który jest stosowany do innego zasobu, aby można go było dodać do jego możliwości.
+Zwraca identyfikator zasobu dla [zasobu rozszerzenia,](../management/extension-resource-types.md)który jest typem zasobu zastosowanym do innego zasobu w celu dodania go do jego możliwości.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| resourceId |Yes |ciąg |Identyfikator zasobu dla zasobu, do którego zastosowano zasób rozszerzenia. |
-| resourceType |Yes |ciąg |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
-| resourceName1 |Yes |ciąg |Nazwa zasobu. |
-| resourceName2 |Nie |ciąg |Następny segment nazwy zasobu, w razie konieczności. |
+| resourceId |Tak |ciąg |Identyfikator zasobu, do który zasób rozszerzenia jest stosowany. |
+| resourceType |Tak |ciąg |Typ zasobu, w tym obszar nazw dostawcy zasobów. |
+| nazwa zasobu1 |Tak |ciąg |Nazwa zasobu. |
+| nazwa zasobu2 |Nie |ciąg |Następny segment nazwy zasobu, w razie potrzeby. |
 
 Kontynuuj dodawanie nazw zasobów jako parametrów, gdy typ zasobu zawiera więcej segmentów.
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Podstawowy format identyfikatora zasobu zwracanego przez tę funkcję to:
+Podstawowym formatem identyfikatora zasobu zwróconego przez tę funkcję jest:
 
 ```json
 {scope}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
@@ -55,31 +55,31 @@ Podstawowy format identyfikatora zasobu zwracanego przez tę funkcję to:
 
 Segment zakresu zależy od rozszerzonego zasobu.
 
-Gdy zasób rozszerzenia zostanie zastosowany do **zasobu**, identyfikator zasobu jest zwracany w następującym formacie:
+Gdy zasób rozszerzenia jest stosowany do **zasobu,** identyfikator zasobu jest zwracany w następującym formacie:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseResourceProviderNamespace}/{baseResourceType}/{baseResourceName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Gdy zasób rozszerzenia zostanie zastosowany do **grupy zasobów**, format jest:
+Gdy zasób rozszerzenia jest stosowany do **grupy zasobów,** format jest:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Gdy zasób rozszerzenia zostanie zastosowany do **subskrypcji**, format jest:
+Gdy zasób rozszerzenia jest stosowany do **subskrypcji,** format jest:
 
 ```json
 /subscriptions/{subscriptionId}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Gdy zasób rozszerzenia zostanie zastosowany do **grupy zarządzania**, format jest:
+Gdy zasób rozszerzenia jest stosowany do **grupy zarządzania,** format jest:
 
 ```json
 /providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-### <a name="extensionresourceid-example"></a>przykład extensionResourceId
+### <a name="extensionresourceid-example"></a>extensionResourceId przykład
 
 Poniższy przykład zwraca identyfikator zasobu dla blokady grupy zasobów.
 
@@ -106,151 +106,151 @@ Poniższy przykład zwraca identyfikator zasobu dla blokady grupy zasobów.
 <a id="listkeys" />
 <a id="list" />
 
-## <a name="list"></a>staw
+## <a name="list"></a>lista*
 
 ```json
 list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 ```
 
-Składnia tej funkcji różni się od nazwy operacji na liście. Każda implementacja zwraca wartości dla typu zasobu, który obsługuje operację listy. Nazwa operacji musi rozpoczynać się od `list`. Niektóre typowe zastosowania są `listKeys` i `listSecrets`.
+Składnia tej funkcji różni się w zależności od nazwy operacji listy. Każda implementacja zwraca wartości dla typu zasobu, który obsługuje operację listy. Nazwa operacji musi `list`zaczynać się od . Niektóre typowe zwyczaje są `listKeys` i `listSecrets`.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| resourceName lub resourceIdentifier |Yes |ciąg |Unikatowy identyfikator dla zasobu. |
-| apiVersion |Yes |ciąg |Wersja interfejsu API stanu środowiska uruchomieniowego zasobu. Zwykle w formacie **rrrr-mm-dd**. |
-| functionValues |Nie |obiekt | Obiekt, który zawiera wartości dla funkcji. Podaj tylko ten obiekt dla funkcji, które obsługują otrzymywanie obiektów z wartościami parametrów, takimi jak **listAccountSas** na koncie magazynu. Przykład przekazywania wartości funkcji przedstawiono w tym artykule. |
+| nazwa zasobu lub zasóbIdentyfikator |Tak |ciąg |Unikatowy identyfikator zasobu. |
+| apiVersion |Tak |ciąg |Wersja interfejsu API stanu środowiska wykonawczego zasobu. Zazwyczaj w formacie **yyyy-mm-dd**. |
+| functionWartues |Nie |obiekt | Obiekt, który ma wartości dla funkcji. Podaj ten obiekt tylko dla funkcji, które obsługują odbieranie obiektu z wartościami parametrów, takich jak **listAccountSas** na koncie magazynu. Przykład przekazywania wartości funkcji jest pokazany w tym artykule. |
 
 ### <a name="valid-uses"></a>Prawidłowe zastosowania
 
-Funkcji list można używać tylko we właściwościach definicji zasobu i w sekcji dane wyjściowe szablonu lub wdrożenia. Gdy jest używany z [iteracją właściwości](copy-properties.md), można użyć funkcji listy dla `input`, ponieważ wyrażenie jest przypisane do właściwości zasobów. Nie można ich używać z `count`, ponieważ liczba musi być określona przed rozliczeniem funkcji list.
+Funkcje listy mogą być używane tylko we właściwościach definicji zasobu i sekcji dane wyjściowe szablonu lub wdrożenia. W przypadku użycia z [iteracją właściwości](copy-properties.md)można `input` użyć funkcji listy, ponieważ wyrażenie jest przypisane do właściwości zasobu. Nie można ich używać, `count` ponieważ liczba musi być określona przed rozpoznawaniem funkcji listy.
 
 ### <a name="implementations"></a>Implementacje
 
-W poniższej tabeli przedstawiono możliwe zastosowania list *.
+Możliwe zastosowania listy* przedstawiono w poniższej tabeli.
 
 | Typ zasobu | Nazwa funkcji |
 | ------------- | ------------- |
-| Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| Microsoft.AppConfiguration/configurationStores | ListKeys |
-| Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
-| Microsoft.Batch/batchAccounts | [listkeys](/rest/api/batchmanagement/batchaccount/getkeys) |
-| Microsoft. Batchai Job/obszary robocze/eksperymenty/zadania | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
-| Microsoft. łańcucha bloków/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
-| Microsoft. łańcucha bloków/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
-| Microsoft.Cache/redis | [listKeys](/rest/api/redis/redis/listkeys) |
-| Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
-| Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
-| Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
-| Microsoft.ContainerRegistry/registries | [listUsages](/rest/api/containerregistry/registries/listusages) |
-| Microsoft. ContainerRegistry/rejestry/elementy webhook | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
-| Microsoft.ContainerRegistry/registries/runs | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
-| Microsoft.ContainerRegistry/registries/tasks | [listDetails](/rest/api/containerregistry/tasks/getdetails) |
-| Microsoft.ContainerService/managedClusters | [listClusterAdminCredential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
+| Microsoft.AnalysisSługa/serwery | [listaGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
+| Microsoft.AppConfiguration/configurationStores | Klawisze list |
+| Microsoft.Automation/automationKontacje | [klawisze list](/rest/api/automation/keys/listbyautomationaccount) |
+| Microsoft.Batch/batchKonkludy | [klawisze listkey](/rest/api/batchmanagement/batchaccount/getkeys) |
+| Microsoft.BatchAI/obszary robocze/eksperymenty/zadania | [pliki listoutput](/rest/api/batchai/jobs/listoutputfiles) |
+| Microsoft.Blockchain/blockchainCzłonek | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
+| Microsoft.Blockchain/blockchainCzłonek/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
+| Pamięć podręczna/redis firmy Microsoft.Cache | [klawisze list](/rest/api/redis/redis/listkeys) |
+| Microsoft.CognitiveServices/accounts | [klawisze list](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
+| Microsoft.ContainerRegistry/rejestry | [listaBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
+| Microsoft.ContainerRegistry/rejestry | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
+| Microsoft.ContainerRegistry/rejestry | [listaUży](/rest/api/containerregistry/registries/listusages) |
+| Microsoft.ContainerRegistry/registries/webhooks | [listaAwentyny](/rest/api/containerregistry/webhooks/listevents) |
+| Microsoft.ContainerRegistry/registries/runs | [listaLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
+| Microsoft.ContainerRegistry/registries/tasks | [listaSzczegóły](/rest/api/containerregistry/tasks/getdetails) |
+| Microsoft.ContainerService/managedClusters | [listClusterAdminDedential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
 | Microsoft.ContainerService/managedClusters | [listClusterUserCredential](/rest/api/aks/managedclusters/listclusterusercredentials) |
-| Microsoft.ContainerService/managedClusters/accessProfiles | [listCredential](/rest/api/aks/managedclusters/getaccessprofile) |
-| Microsoft. DataBox/zadania | listCredentials |
-| Microsoft.DataFactory/datafactories/gateways | listauthkeys |
-| Microsoft. DataFactory/Factors/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
-| Microsoft.DataLakeAnalytics/accounts/storageAccounts/Containers | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
-| Microsoft. dataudział/konta/udziały | [listSynchronizations](/rest/api/datashare/shares/listsynchronizations) |
-| Microsoft. datashare/accounts/shareSubscriptions | [listSourceShareSynchronizationSettings](/rest/api/datashare/sharesubscriptions/listsourcesharesynchronizationsettings) |
-| Microsoft. datashare/accounts/shareSubscriptions | [listSynchronizationDetails](/rest/api/datashare/sharesubscriptions/listsynchronizationdetails) |
-| Microsoft. datashare/accounts/shareSubscriptions | [listSynchronizations](/rest/api/datashare/sharesubscriptions/listsynchronizations) |
-| Microsoft.Devices/iotHubs | [listkeys](/rest/api/iothub/iothubresource/listkeys) |
-| Microsoft.Devices/iotHubs/iotHubKeys | [listkeys](/rest/api/iothub/iothubresource/getkeysforkeyname) |
-| Microsoft.Devices/provisioningServices/keys | [listkeys](/rest/api/iot-dps/iotdpsresource/listkeysforkeyname) |
-| Microsoft.Devices/provisioningServices | [listkeys](/rest/api/iot-dps/iotdpsresource/listkeys) |
-| Microsoft.DevTestLab/labs | [ListVhds](/rest/api/dtl/labs/listvhds) |
-| Microsoft.DevTestLab/labs/schedules | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
-| Microsoft.DevTestLab/labs/users/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
-| Microsoft.DevTestLab/labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
-| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
-| Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
-| Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
-| Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft. EventGrid/domeny | [listKeys](/rest/api/eventgrid/domains/listsharedaccesskeys) |
-| Microsoft. EventGrid/tematy | [listKeys](/rest/api/eventgrid/topics/listsharedaccesskeys) |
-| Microsoft. EventHub/przestrzenie nazw/reguł autoryzacji | [listkeys](/rest/api/eventhub/namespaces/listkeys) |
-| Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
-| Microsoft. EventHub/przestrzenie nazw/eventhubs/reguł autoryzacji | [listkeys](/rest/api/eventhub/eventhubs/listkeys) |
-| Microsoft.ImportExport/jobs | [listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
-| Microsoft. Kusto/klastry/bazy danych | [ListPrincipals](/rest/api/azurerekusto/databases/listprincipals) |
-| Microsoft.LabServices/users | [ListEnvironments](/rest/api/labservices/globalusers/listenvironments) |
-| Microsoft.LabServices/users | [ListLabs](/rest/api/labservices/globalusers/listlabs) |
-| Microsoft.Logic/integrationAccounts/agreements | [listContentCallbackUrl](/rest/api/logic/agreements/listcontentcallbackurl) |
-| Microsoft.Logic/integrationAccounts/assemblies | [listContentCallbackUrl](/rest/api/logic/integrationaccountassemblies/listcontentcallbackurl) |
-| Microsoft.Logic/integrationAccounts | [listCallbackUrl](/rest/api/logic/integrationaccounts/getcallbackurl) |
-| Microsoft.Logic/integrationAccounts | [listKeyVaultKeys](/rest/api/logic/integrationaccounts/listkeyvaultkeys) |
-| Microsoft.Logic/integrationAccounts/maps | [listContentCallbackUrl](/rest/api/logic/maps/listcontentcallbackurl) |
-| Microsoft.Logic/integrationAccounts/partners | [listContentCallbackUrl](/rest/api/logic/partners/listcontentcallbackurl) |
-| Microsoft. Logic/integrationAccounts/schematy | [listContentCallbackUrl](/rest/api/logic/schemas/listcontentcallbackurl) |
-| Microsoft.Logic/workflows | [listCallbackUrl](/rest/api/logic/workflows/listcallbackurl) |
-| Microsoft.Logic/workflows | [listSwagger](/rest/api/logic/workflows/listswagger) |
-| Microsoft. Logic/przepływy pracy/uruchomienia/akcje | [listExpressionTraces](/rest/api/logic/workflowrunactions/listexpressiontraces) |
-| Microsoft. Logic/przepływy pracy/uruchomienia/akcje/powtórzenia | [listExpressionTraces](/rest/api/logic/workflowrunactionrepetitions/listexpressiontraces) |
-| Microsoft. Logic/przepływy pracy/wyzwalacze | [listCallbackUrl](/rest/api/logic/workflowtriggers/listcallbackurl) |
-| Microsoft. Logic/przepływy pracy/wersje/wyzwalacze | [listCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
-| Microsoft. MachineLearning/WebServices | [listkeys](/rest/api/machinelearning/webservices/listkeys) |
-| Microsoft. MachineLearning/obszary robocze | listworkspacekeys |
-| Microsoft. MachineLearningServices/obszary robocze/obliczenia | [listKeys](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listkeys) |
-| Microsoft. MachineLearningServices/obszary robocze/obliczenia | [listNodes](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listnodes) |
-| Microsoft.MachineLearningServices/workspaces | [listKeys](/rest/api/azureml/workspacesandcomputes/workspaces/listkeys) |
-| Microsoft. Maps/konta | [listKeys](/rest/api/maps-management/accounts/listkeys) |
-| Microsoft. Media/MediaServices/zasoby | [listContainerSas](/rest/api/media/assets/listcontainersas) |
-| Microsoft. Media/MediaServices/zasoby | [listStreamingLocators](/rest/api/media/assets/liststreaminglocators) |
-| Microsoft. Media/MediaServices/streamingLocators | [listContentKeys](/rest/api/media/streaminglocators/listcontentkeys) |
-| Microsoft. Media/MediaServices/streamingLocators | [listPaths](/rest/api/media/streaminglocators/listpaths) |
-| Microsoft.Network/applicationSecurityGroups | listIpConfigurations |
-| Microsoft.NotificationHubs/Namespaces/authorizationRules | [listkeys](/rest/api/notificationhubs/namespaces/listkeys) |
-| Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | [listkeys](/rest/api/notificationhubs/notificationhubs/listkeys) |
-| Microsoft.OperationalInsights/workspaces | [listKeys](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
-| Microsoft.PolicyInsights/remediations | [listDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
-| Microsoft. Relay/przestrzenie nazw/reguł autoryzacji | [listkeys](/rest/api/relay/namespaces/listkeys) |
-| Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | listkeys |
-| Microsoft. Relay/przestrzenie nazw/HybridConnections/reguł autoryzacji | [listkeys](/rest/api/relay/hybridconnections/listkeys) |
-| Microsoft. Relay/przestrzenie nazw/WcfRelays/reguł autoryzacji | [listkeys](/rest/api/relay/wcfrelays/listkeys) |
-| Microsoft.Search/searchServices | [listAdminKeys](/rest/api/searchmanagement/adminkeys/get) |
-| Microsoft.Search/searchServices | [listQueryKeys](/rest/api/searchmanagement/querykeys/listbysearchservice) |
-| Microsoft. ServiceBus/przestrzenie nazw/reguł autoryzacji | [listkeys](/rest/api/servicebus/namespaces/listkeys) |
-| Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/servicebus/disasterrecoveryconfigs/listkeys) |
-| Microsoft. ServiceBus/przestrzenie nazw/kolejki/reguł autoryzacji | [listkeys](/rest/api/servicebus/queues/listkeys) |
-| Microsoft. ServiceBus/przestrzenie nazw/tematy/reguł autoryzacji | [listkeys](/rest/api/servicebus/topics/listkeys) |
-| Microsoft.SignalRService/SignalR | [listkeys](/rest/api/signalr/signalr/listkeys) |
-| Microsoft.Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
-| Microsoft.Storage/storageAccounts | [listkeys](/rest/api/storagerp/storageaccounts/listkeys) |
-| Microsoft.Storage/storageAccounts | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
-| Microsoft.StorSimple/managers/devices | [listFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
-| Microsoft.StorSimple/managers/devices | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
-| Microsoft. StorSimple/menedżerowie | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
-| Microsoft. StorSimple/menedżerowie | [listPublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
-| Microsoft. Web/connectionGateways | ListStatus |
-| Microsoft. Web/Connections | listconsentlinks |
-| Microsoft. Web/customApis | listWsdlInterfaces |
-| Microsoft. Web/lokalizacje | listwsdlinterfaces |
-| Microsoft. Web/apimanagementaccounts/interfejsy API/połączenia | listconnectionkeys |
-| Microsoft. Web/apimanagementaccounts/interfejsy API/połączenia | listsecrets |
-| Microsoft. Web/Sites/kopie zapasowe | [list](/rest/api/appservice/webapps/listbackups) |
-| Microsoft. Web/Sites/config | [list](/rest/api/appservice/webapps/listconfigurations) |
-| Microsoft. Web/Sites/Functions | [listkeys](/rest/api/appservice/webapps/listfunctionkeys)
-| Microsoft. Web/Sites/Functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
-| Microsoft. Web/Sites/hybridconnectionnamespaces/Przekaźniki | [listkeys](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
-| Microsoft. Web/witryny | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
-| Microsoft. Web/Sites/Slots/Functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
-| Microsoft. Web/Sites/gniazda/kopie zapasowe | [list](/rest/api/appservice/webapps/listbackupsslot) |
-| Microsoft. Web/Sites/szczeliny/konfiguracja | [list](/rest/api/appservice/webapps/listconfigurationsslot) |
-| Microsoft. Web/Sites/Slots/Functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
+| Microsoft.ContainerService/managedClusters/accessProfiles | [listaCredential](/rest/api/aks/managedclusters/getaccessprofile) |
+| Microsoft.DataBox/zadania | listCredentials |
+| Microsoft.DataFactory/datafactories/gateways | przyciski listauthkeys |
+| Microsoft.DataFactory/fabryki/integracjarunruntimes | [przyciski listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
+| Microsoft.DataLakeAnalytics/accounts/storageAccounts/Containers | [listaSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
+| Microsoft.DataShare/konta/udziały | [Synchronizacje list](/rest/api/datashare/shares/listsynchronizations) |
+| Microsoft.DataShare/accounts/shareSubscriptions Microsoft.DataShare/accounts/shareSubscriptions Microsoft.DataShare/accounts/shareSubscriptions Microsoft. | [listaSourceShareSynchronizationSettings listSourceShareSynchronizations](/rest/api/datashare/sharesubscriptions/listsourcesharesynchronizationsettings) |
+| Microsoft.DataShare/accounts/shareSubscriptions Microsoft.DataShare/accounts/shareSubscriptions Microsoft.DataShare/accounts/shareSubscriptions Microsoft. | [szczegóły synchronizowania list](/rest/api/datashare/sharesubscriptions/listsynchronizationdetails) |
+| Microsoft.DataShare/accounts/shareSubscriptions Microsoft.DataShare/accounts/shareSubscriptions Microsoft.DataShare/accounts/shareSubscriptions Microsoft. | [Synchronizacje list](/rest/api/datashare/sharesubscriptions/listsynchronizations) |
+| Microsoft.Devices/iotHubs | [klawisze listkey](/rest/api/iothub/iothubresource/listkeys) |
+| Microsoft.Devices/iotHubs/iotHubKeys | [klawisze listkey](/rest/api/iothub/iothubresource/getkeysforkeyname) |
+| Urządzenia firmy Microsoft.Devices/inicjowanie obsługi administracyjnejUsługi/kluczy | [klawisze listkey](/rest/api/iot-dps/iotdpsresource/listkeysforkeyname) |
+| Urządzenia firmy Microsoft.Devices/inicjowanie obsługi administracyjnejUsługi | [klawisze listkey](/rest/api/iot-dps/iotdpsresource/listkeys) |
+| Microsoft.DevTestLab/laboratoria | [ListVhds ( ListVhds )](/rest/api/dtl/labs/listvhds) |
+| Microsoft.DevTestLab/labs/harmonograms | [ListaZastosowalne](/rest/api/dtl/schedules/listapplicable) |
+| Microsoft.DevTestLab/labs/users/serviceFabrics | [ListaApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
+| Microsoft.DevTestLab/labs/virtualMachines | [ListaApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
+| Microsoft.DocumentDB/databaseKonta kont | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
+| Microsoft.DocumentDB/databaseKonta kont | [klawisze list](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
+| Microsoft.DomainRegistration | [listaDosainRecommendations](/rest/api/appservice/domains/listrecommendations) |
+| Microsoft.DomainRegistration/topLevelDomains | [listaPozycje](/rest/api/appservice/topleveldomains/listagreements) |
+| Microsoft.EventGrid/domeny | [klawisze list](/rest/api/eventgrid/domains/listsharedaccesskeys) |
+| Microsoft.EventGrid/tematy | [klawisze list](/rest/api/eventgrid/topics/listsharedaccesskeys) |
+| Microsoft.EventHub/przestrzenie nazw/autoryzacjaRule | [klawisze listkey](/rest/api/eventhub/namespaces/listkeys) |
+| Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [klawisze listkey](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
+| Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [klawisze listkey](/rest/api/eventhub/eventhubs/listkeys) |
+| Microsoft.ImportExport/zadania | [klawisze listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
+| Microsoft.Kusto/Klastry/Bazy danych | [ListPrincipals](/rest/api/azurerekusto/databases/listprincipals) |
+| Microsoft.LabServices/użytkownicy | [ListaŚrodowiska](/rest/api/labservices/globalusers/listenvironments) |
+| Microsoft.LabServices/użytkownicy | [ListLabs ( ListLabs )](/rest/api/labservices/globalusers/listlabs) |
+| Microsoft.Logic/integrationKontacje/umowy | [listaContentCallbackUrl](/rest/api/logic/agreements/listcontentcallbackurl) |
+| Microsoft.Logic/integrationKontacje/zestawy | [listaContentCallbackUrl](/rest/api/logic/integrationaccountassemblies/listcontentcallbackurl) |
+| Microsoft.Logic/integrationKontacje | [listaCallbackUrl](/rest/api/logic/integrationaccounts/getcallbackurl) |
+| Microsoft.Logic/integrationKontacje | [listKeyVaultKeys](/rest/api/logic/integrationaccounts/listkeyvaultkeys) |
+| Microsoft.Logic/integrationKontacje/mapy | [listaContentCallbackUrl](/rest/api/logic/maps/listcontentcallbackurl) |
+| Microsoft.Logic/integrationKonta/partnerzy | [listaContentCallbackUrl](/rest/api/logic/partners/listcontentcallbackurl) |
+| Microsoft.Logic/integrationKontacje/schematy | [listaContentCallbackUrl](/rest/api/logic/schemas/listcontentcallbackurl) |
+| Microsoft.Logic/przepływy pracy | [listaCallbackUrl](/rest/api/logic/workflows/listcallbackurl) |
+| Microsoft.Logic/przepływy pracy | [listaWygoda](/rest/api/logic/workflows/listswagger) |
+| Microsoft.Logic/workflows/runs/actions | [listaWyjaśniacze](/rest/api/logic/workflowrunactions/listexpressiontraces) |
+| Microsoft.Logic/workflows/runs/actions/powtórzenia | [listaWyjaśniacze](/rest/api/logic/workflowrunactionrepetitions/listexpressiontraces) |
+| Microsoft.Logic/przepływy pracy/wyzwalacze | [listaCallbackUrl](/rest/api/logic/workflowtriggers/listcallbackurl) |
+| Microsoft.Logic/workflows/versions/triggers | [listaCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
+| Microsoft.MachineLearning/webServices | [klawisze listkey](/rest/api/machinelearning/webservices/listkeys) |
+| Microsoft.MachineLearning/Obszary robocze | klawisze przestrzeni listwork |
+| Microsoft.MachineLearningServices/workspaces/computes | [klawisze list](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listkeys) |
+| Microsoft.MachineLearningServices/workspaces/computes | [listaNodes](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listnodes) |
+| Microsoft.MachineLearningUsługi/obszary robocze | [klawisze list](/rest/api/azureml/workspacesandcomputes/workspaces/listkeys) |
+| Microsoft.Maps/accounts Microsoft.Maps/accounts Microsoft.Maps/accounts Microsoft. | [klawisze list](/rest/api/maps-management/accounts/listkeys) |
+| Microsoft.Media/mediaservices/assets | [listaKontainerSas](/rest/api/media/assets/listcontainersas) |
+| Microsoft.Media/mediaservices/assets | [listSlodatory lokalizatorów](/rest/api/media/assets/liststreaminglocators) |
+| Microsoft.Media/mediaservices/streamingLokalizatory | [listContentKeys](/rest/api/media/streaminglocators/listcontentkeys) |
+| Microsoft.Media/mediaservices/streamingLokalizatory | [ścieżka list](/rest/api/media/streaminglocators/listpaths) |
+| Microsoft.Network/applicationSecurityGroups | konfiguracje listIpCon |
+| Microsoft.NotificationHubs/Namespaces/authorizationRules | [klawisze listkey](/rest/api/notificationhubs/namespaces/listkeys) |
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | [klawisze listkey](/rest/api/notificationhubs/notificationhubs/listkeys) |
+| Microsoft.OperationalInsights/obszary robocze | [klawisze list](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
+| Microsoft.PolicyInsights/koryguje | [listaDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
+| Microsoft.Relay/namespaces/authorizationRules | [klawisze listkey](/rest/api/relay/namespaces/listkeys) |
+| Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | klawisze listkey |
+| Microsoft.Relay/namespaces/HybridConnections/authorizationRules | [klawisze listkey](/rest/api/relay/hybridconnections/listkeys) |
+| Microsoft.Relay/namespaces/WcfRelays/authorizationRules | [klawisze listkey](/rest/api/relay/wcfrelays/listkeys) |
+| Microsoft.Search/searchSługs | [klawisze listAdminKeys](/rest/api/searchmanagement/adminkeys/get) |
+| Microsoft.Search/searchSługs | [klawisze listQueryKeys](/rest/api/searchmanagement/querykeys/listbysearchservice) |
+| Microsoft.ServiceBus/namespaces/authorizationRules | [klawisze listkey](/rest/api/servicebus/namespaces/listkeys) |
+| Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules | [klawisze listkey](/rest/api/servicebus/disasterrecoveryconfigs/listkeys) |
+| Microsoft.ServiceBus/namespaces/queues/authorizationRules | [klawisze listkey](/rest/api/servicebus/queues/listkeys) |
+| Microsoft.ServiceBus/namespaces/topics/authorizationRules | [klawisze listkey](/rest/api/servicebus/topics/listkeys) |
+| Microsoft.SignalRService/SignalrService/Signalr | [klawisze listkey](/rest/api/signalr/signalr/listkeys) |
+| Microsoft.Storage/storageKondyje | [listaKontakonsa](/rest/api/storagerp/storageaccounts/listaccountsas) |
+| Microsoft.Storage/storageKondyje | [klawisze listkey](/rest/api/storagerp/storageaccounts/listkeys) |
+| Microsoft.Storage/storageKondyje | [lista UsługiSas](/rest/api/storagerp/storageaccounts/listservicesas) |
+| Microsoft.StorSimple/menedżerów/urządzeń | [listaFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
+| Microsoft.StorSimple/menedżerów/urządzeń | [listaFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
+| Microsoft.StorSimple/menedżerowie | [klawisz listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
+| Microsoft.StorSimple/menedżerowie | [listaPublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
+| Microsoft.Web/connectionGateways | Stan list |
+| microsoft.web/połączenia | linki do listconsents |
+| Microsoft.Web/customApis | listWsdlInterfaces |
+| microsoft.web/lokalizacje | listwsdlinterfaces |
+| microsoft.web/apimanagementaccounts/apis/connections | klawisze listconnection |
+| microsoft.web/apimanagementaccounts/apis/connections | sekretarze list |
+| microsoft.web/sites/kopia zapasowa | [list](/rest/api/appservice/webapps/listbackups) |
+| Microsoft.Web/sites/config Microsoft.Web/sites/config Microsoft.Web/sites/config Microsoft. | [list](/rest/api/appservice/webapps/listconfigurations) |
+| microsoft.web/witryny/funkcje | [klawisze listkey](/rest/api/appservice/webapps/listfunctionkeys)
+| microsoft.web/witryny/funkcje | [sekretarze list](/rest/api/appservice/webapps/listfunctionsecrets) |
+| microsoft.web/sites/hybridconnectionnamespaces/relays | [klawisze listkey](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
+| microsoft.web/witryny | [listyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
+| microsoft.web/sites/slots/functions microsoft.web/sites/slots/functions microsoft.web/sites/slots/functions microsoft. | [sekretarze list](/rest/api/appservice/webapps/listfunctionsecretsslot) |
+| microsoft.web/sites/slots/backups microsoft.web/sites/slots/backups microsoft.web/sites/slots/backups microsoft. | [list](/rest/api/appservice/webapps/listbackupsslot) |
+| Microsoft.Web/sites/slots/config Microsoft.Web/sites/slots/config Microsoft.Web/sites/slots/config Microsoft. | [list](/rest/api/appservice/webapps/listconfigurationsslot) |
+| microsoft.web/sites/slots/functions microsoft.web/sites/slots/functions microsoft.web/sites/slots/functions microsoft. | [sekretarze list](/rest/api/appservice/webapps/listfunctionsecretsslot) |
 
-Aby ustalić, typów zasobów, które mają operacja listy, dostępne są następujące opcje:
+Aby określić, które typy zasobów mają operację listy, dostępne są następujące opcje:
 
-* Wyświetlanie [operacji interfejsu API REST](/rest/api/) dla dostawcy zasobów i wyszukiwanie list operacji. Na przykład konta magazynu mają [operację listKeys](/rest/api/storagerp/storageaccounts).
-* Użyj polecenia cmdlet programu PowerShell [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) . Poniższy przykład pobiera wszystkie operacje dotyczące list dla kont magazynu:
+* Wyświetl [operacje interfejsu API REST](/rest/api/) dla dostawcy zasobów i poszukaj operacji listy. Na przykład konta magazynu mają [operację listKeys](/rest/api/storagerp/storageaccounts).
+* Użyj polecenia cmdlet [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) PowerShell. W poniższym przykładzie pobiera wszystkie operacje listy dla kont magazynu:
 
   ```powershell
   Get-AzProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
   ```
-* Użyj następującego polecenia wiersza polecenia platformy Azure, aby filtrować Wyświetl listę operacji:
+* Użyj następującego polecenia interfejsu wiersza polecenia platformy Azure, aby filtrować tylko operacje listy:
 
   ```azurecli
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
@@ -258,7 +258,7 @@ Aby ustalić, typów zasobów, które mają operacja listy, dostępne są nastę
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Zwrócony obiekt różni się w zależności od używanej funkcji list. Na przykład listKeys dla konta magazynu zwraca następujący format:
+Zwrócony obiekt zależy od używanej funkcji listy. Na przykład klawisze list dla konta magazynu zwraca następujący format:
 
 ```json
 {
@@ -277,19 +277,19 @@ Zwrócony obiekt różni się w zależności od używanej funkcji list. Na przyk
 }
 ```
 
-Inne funkcje listy mają różne formaty zwrotu. Aby wyświetlić format funkcji, dołączyć sekcję danych wyjściowych przedstawiony przykładowy szablon.
+Inne funkcje listy mają różne formaty zwracane. Aby wyświetlić format funkcji, dołącz ją do sekcji danych wyjściowych, jak pokazano w przykładowym szablonie.
 
 ### <a name="remarks"></a>Uwagi
 
-Określ zasób przy użyciu nazwy zasobu lub [funkcji ResourceID](#resourceid). W przypadku używania funkcji list w tym samym szablonie, który wdraża przywoływany zasób, należy użyć nazwy zasobu.
+Określ zasób przy użyciu nazwy zasobu lub [funkcji resourceId](#resourceid). W przypadku korzystania z funkcji listy w tym samym szablonie, który wdraża zasób, do którego istnieje odwołanie, należy użyć nazwy zasobu.
 
-Jeśli używasz funkcji **list** w zasobie, który jest wdrażany warunkowo, funkcja zostanie oceniona, nawet jeśli zasób nie zostanie wdrożony. Występuje błąd, jeśli funkcja **list** odwołuje się do zasobu, który nie istnieje. Użyj funkcji **if** , aby upewnić się, że funkcja jest obliczana tylko wtedy, gdy zasób jest wdrażany. Zobacz [funkcję if](template-functions-logical.md#if) , aby zapoznać się z przykładowym szablonem, który używa elementu if i z użyciem warunkowo wdrożonego zasobu.
+Jeśli używasz funkcji **listy** w zasobie, który jest warunkowo wdrożony, funkcja jest oceniana, nawet jeśli zasób nie jest wdrażany. Zostanie wyświetlony błąd, jeśli funkcja **listy** odwołuje się do zasobu, który nie istnieje. Użyj if **funkcji,** aby upewnić się, że funkcja jest oceniana tylko wtedy, gdy zasób jest wdrażany. Zobacz [if funkcji](template-functions-logical.md#if) dla przykładowego szablonu, który używa if i listy z warunkowo wdrożony zasób.
 
 ### <a name="list-example"></a>Przykład listy
 
-Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) pokazuje, jak zwrócić klucze podstawowe i pomocnicze z konta magazynu w sekcji dane wyjściowe. Zwraca token sygnatury dostępu Współdzielonego dla konta magazynu.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) pokazuje, jak zwrócić klucze podstawowe i pomocnicze z konta magazynu w sekcji dane wyjściowe. Zwraca również token sygnatury dostępu Współdzielonego dla konta magazynu.
 
-Aby uzyskać token SAS, należy przekazać obiekt przez czas wygaśnięcia. Czas wygaśnięcia musi przypadać w przyszłości. W tym przykładzie jest przeznaczona do korzystania z funkcji listy. Zazwyczaj można będzie użyć tokenu sygnatury dostępu Współdzielonego w wartości zasobów zamiast zwracanie go jako wartość wyjściową. Wartości wyjściowe są zapisywane w historii wdrożenia i nie są bezpieczne.
+Aby uzyskać token sygnatury dostępu Współdzielonego, przekazać obiekt na czas wygaśnięcia. Czas wygaśnięcia musi być w przyszłości. W tym przykładzie jest przeznaczony do pokazania, jak używać funkcji listy. Zazwyczaj należy użyć tokenu sygnatury dostępu Współdzielonego w wartości zasobu, a nie zwracać go jako wartość wyjściową. Wartości danych wyjściowych są przechowywane w historii wdrażania i nie są bezpieczne.
 
 ```json
 {
@@ -354,24 +354,24 @@ Aby uzyskać token SAS, należy przekazać obiekt przez czas wygaśnięcia. Czas
 }
 ```
 
-## <a name="providers"></a>dostawcy
+## <a name="providers"></a>dostawców
 
 ```json
 providers(providerNamespace, [resourceType])
 ```
 
-Zwraca informacje o dostawcy zasobów i jego obsługiwane typy zasobów. Jeśli nie podasz zasobu o typie, funkcja zwraca obsługiwane typy dla dostawcy zasobów.
+Zwraca informacje o dostawcy zasobów i obsługiwanych przez nie typach zasobów. Jeśli nie podasz typu zasobu, funkcja zwraca wszystkie obsługiwane typy dla dostawcy zasobów.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Yes |ciąg |Namespace dostawcy |
-| resourceType |Nie |ciąg |Typ zasobu w ramach określonego obszaru nazw. |
+| providerNamespace |Tak |ciąg |Przestrzeń nazw dostawcy |
+| resourceType |Nie |ciąg |Typ zasobu w określonym obszarze nazw. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Każdego obsługiwanego typu, jest zwracany w następującym formacie:
+Każdy obsługiwany typ jest zwracany w następującym formacie:
 
 ```json
 {
@@ -381,11 +381,11 @@ Każdego obsługiwanego typu, jest zwracany w następującym formacie:
 }
 ```
 
-Kolejność zwracanych wartości tablicy nie jest gwarantowana.
+Kolejność tablic zwracanych wartości nie jest gwarantowana.
 
-### <a name="providers-example"></a>Przykład dostawcy
+### <a name="providers-example"></a>Przykład dostawców
 
-Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) pokazuje, jak używać funkcji dostawcy:
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) pokazuje, jak korzystać z funkcji dostawcy:
 
 ```json
 {
@@ -409,7 +409,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-W przypadku zasobu dostawcy zasobów **Microsoft. Web** i typu **witryny** powyższy przykład zwraca obiekt w następującym formacie:
+W przypadku dostawcy zasobów **firmy Microsoft.Web** i typu zasobu **witryn** w poprzednim przykładzie zwraca obiekt w następującym formacie:
 
 ```json
 {
@@ -431,31 +431,31 @@ W przypadku zasobu dostawcy zasobów **Microsoft. Web** i typu **witryny** powy�
 }
 ```
 
-## <a name="reference"></a>Odwołanie
+## <a name="reference"></a>reference
 
 ```json
 reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 ```
 
-Zwraca obiekt reprezentujący stan czasu wykonywania zasobu.
+Zwraca obiekt reprezentujący stan środowiska wykonawczego zasobu.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| resourceName lub resourceIdentifier |Yes |ciąg |Nazwa lub identyfikator zasobu. Podczas odwoływania się do zasobów w bieżącym szablonie, podaj nazwę zasobu jako parametr. W przypadku odwoływania się do wcześniej wdrożonego zasobu lub gdy nazwa zasobu jest niejednoznaczna, podaj identyfikator zasobu. |
-| apiVersion |Nie |ciąg |Wersja interfejsu API określonego zasobu. Ten parametr należy uwzględnić, jeśli zasób nie jest zainicjowana obsługa administracyjna w obrębie tego samego szablonu. Zwykle w formacie **rrrr-mm-dd**. Aby uzyskać prawidłowe wersje interfejsu API dla zasobu, zobacz [Dokumentacja szablonu](/azure/templates/). |
-| "Full" |Nie |ciąg |Wartość określająca, czy należy zwrócić obiekt wszystkich zasobów. Jeśli nie określisz `'Full'`, zwracany jest tylko obiekt właściwości zasobu. Pełny obiekt zawiera wartości, takie jak identyfikator zasobu i lokalizacji. |
+| nazwa zasobu lub zasóbIdentyfikator |Tak |ciąg |Nazwa lub unikatowy identyfikator zasobu. Podczas odwoływania się do zasobu w bieżącym szablonie podaj tylko nazwę zasobu jako parametr. Podczas odwoływania się do wcześniej wdrożonego zasobu lub gdy nazwa zasobu jest niejednoznaczna, podaj identyfikator zasobu. |
+| apiVersion |Nie |ciąg |Wersja interfejsu API określonego zasobu. Uwzględnij ten parametr, gdy zasób nie jest aprowizowany w ramach tego samego szablonu. Zazwyczaj w formacie **yyyy-mm-dd**. Aby uzyskać prawidłowe wersje interfejsu API dla zasobu, zobacz [odwołanie do szablonu](/azure/templates/). |
+| "Pełna" |Nie |ciąg |Wartość określająca, czy ma zwrócić pełny obiekt zasobu. Jeśli nie określisz, `'Full'`zwracany jest tylko obiekt właściwości zasobu. Pełny obiekt zawiera wartości, takie jak identyfikator zasobu i lokalizacja. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Każdy typ zasobu zwraca różne właściwości odwołanie funkcji. Funkcja nie zwraca jednego, wstępnie zdefiniowany format. Ponadto zwrócona wartość różni się zależnie od tego, czy określony obiekt pełne. Aby wyświetlić właściwości dla typu zasobu, należy przywrócić obiektu w sekcji danych wyjściowych, jak pokazano w przykładzie.
+Każdy typ zasobu zwraca różne właściwości funkcji referencyjnej. Funkcja nie zwraca pojedynczego, wstępnie zdefiniowanego formatu. Ponadto zwracana wartość różni się w zależności od tego, czy określono pełny obiekt. Aby wyświetlić właściwości typu zasobu, zwróć obiekt w sekcji dane wyjściowe, jak pokazano w przykładzie.
 
 ### <a name="remarks"></a>Uwagi
 
-Funkcja odwołanie pobiera stan środowiska uruchomieniowego wdrożonej wcześniej zasobów lub zasobu, wdrożonych w bieżącym szablonie. W tym artykule przedstawiono przykłady oba scenariusze.
+Funkcja referencyjna pobiera stan środowiska uruchomieniowego wcześniej wdrożonego zasobu lub zasobu wdrożonego w bieżącym szablonie. W tym artykule przedstawiono przykłady dla obu scenariuszy.
 
-Zwykle funkcja **Reference** służy do zwracania określonej wartości z obiektu, takiego jak identyfikator URI punktu końcowego obiektu BLOB lub w pełni kwalifikowana nazwa domeny.
+Zazwyczaj funkcja **odwołania** służy do zwracania określonej wartości z obiektu, takiego jak identyfikator URI punktu końcowego obiektu blob lub w pełni kwalifikowana nazwa domeny.
 
 ```json
 "outputs": {
@@ -470,7 +470,7 @@ Zwykle funkcja **Reference** służy do zwracania określonej wartości z obiekt
 }
 ```
 
-Użyj `'Full'`, gdy potrzebujesz wartości zasobów, które nie są częścią schematu właściwości. Na przykład aby ustawić zasady dostępu magazynu kluczy, pobieranie właściwości tożsamości dla maszyny wirtualnej.
+Użyj, `'Full'` gdy potrzebujesz wartości zasobów, które nie są częścią schematu właściwości. Na przykład, aby ustawić zasady dostępu magazynu kluczy, pobierz właściwości tożsamości dla maszyny wirtualnej.
 
 ```json
 {
@@ -496,57 +496,57 @@ Użyj `'Full'`, gdy potrzebujesz wartości zasobów, które nie są częścią s
 
 ### <a name="valid-uses"></a>Prawidłowe zastosowania
 
-Odwołanie funkcji należy używać tylko w właściwości definicji zasobu i sekcję danych wyjściowych szablonu lub wdrożenia. Gdy jest używany z [iteracją właściwości](copy-properties.md), można użyć funkcji reference dla `input`, ponieważ wyrażenie jest przypisane do właściwości Resource. Nie można użyć go z `count`, ponieważ liczba musi być określona przed rozwiązanym funkcją referencyjną.
+Funkcja odwołania może być używana tylko we właściwościach definicji zasobu i sekcji dane wyjściowe szablonu lub wdrożenia. W przypadku użycia z [iteracją właściwości](copy-properties.md)można `input` użyć funkcji odwołania, ponieważ wyrażenie jest przypisane do właściwości zasobu. Nie można go używać, `count` ponieważ liczba musi być określona przed rozpoznawaniem funkcji odwołania.
 
-Nie można użyć funkcji Reference w danych wyjściowych [szablonu zagnieżdżonego](linked-templates.md#nested-template) , aby zwrócić zasób wdrożony w szablonie zagnieżdżonym. Zamiast tego należy użyć [połączonego szablonu](linked-templates.md#linked-template).
+Nie można użyć funkcji odwołania w danych wyjściowych [szablonu zagnieżdżonego,](linked-templates.md#nested-template) aby zwrócić zasób wdrożony w szablonie zagnieżdżonego. Zamiast tego użyj [połączonego szablonu](linked-templates.md#linked-template).
 
-Jeśli używasz funkcji **Reference** w zasobie, który jest wdrażany warunkowo, funkcja jest oceniana, nawet jeśli zasób nie zostanie wdrożony.  Występuje błąd, jeśli funkcja **referencyjna** odwołuje się do zasobu, który nie istnieje. Użyj funkcji **if** , aby upewnić się, że funkcja jest obliczana tylko wtedy, gdy zasób jest wdrażany. Zobacz [funkcję if](template-functions-logical.md#if) , aby zapoznać się z przykładowym szablonem, który używa if i Reference z wdrożonym warunkowo zasobem.
+Jeśli używasz funkcji **odwołania** w zasobie, który jest warunkowo wdrożony, funkcja jest oceniana, nawet jeśli zasób nie jest wdrażany.  Zostanie wyświetlony błąd, jeśli funkcja **odwołania** odwołuje się do zasobu, który nie istnieje. Użyj if **funkcji,** aby upewnić się, że funkcja jest oceniana tylko wtedy, gdy zasób jest wdrażany. Zobacz [if funkcji](template-functions-logical.md#if) dla przykładowego szablonu, który używa if i odwołania z warunkowo wdrożony zasób.
 
-### <a name="implicit-dependency"></a>Niejawna zależność
+### <a name="implicit-dependency"></a>Zależność niejawna
 
-Za pomocą funkcji odwołania, niejawnie Deklarujesz, jeden zasób jest zależny od innego zasobu, jeśli przywoływany zasób jest obsługiwana w ramach tego samego szablonu i odwołania do zasobu według jego nazwy (a nie identyfikator zasobu). Nie musisz również użyć właściwości dependsOn. Funkcja nie jest obliczane, dopóki nie zakończy się przywoływany zasób wdrożenia.
+Za pomocą funkcji odwołania, niejawnie zadeklarować, że jeden zasób zależy od innego zasobu, jeśli zasób, do którego istnieje odwołanie jest aprowizowana w ramach tego samego szablonu i odwołać się do zasobu przez jego nazwę (nie identyfikator zasobu). Nie trzeba również używać dependsOn właściwości. Funkcja nie jest oceniana, dopóki zasób, do którego istnieje odwołanie, nie zakończy wdrożenia.
 
 ### <a name="resource-name-or-identifier"></a>Nazwa lub identyfikator zasobu
 
-W przypadku odwoływania się do zasobu, który jest wdrożony w tym samym szablonie, podaj nazwę zasobu.
+Podczas odwoływania się do zasobu, który jest wdrażany w tym samym szablonie, podaj nazwę zasobu.
 
 ```json
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-W przypadku odwoływania się do zasobu, który nie jest wdrożony w tym samym szablonie, podaj identyfikator zasobu.
+Podczas odwoływania się do zasobu, który nie jest wdrożony w tym samym szablonie, podaj identyfikator zasobu.
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
 ```
 
-Aby uniknąć niejednoznaczności, do której odwołuje się zasób, można podać w pełni kwalifikowany identyfikator zasobu.
+Aby uniknąć niejednoznaczności co do zasobu, do którego odwołujesz się, można podać w pełni kwalifikowany identyfikator zasobu.
 
 ```json
 "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')))]"
 ```
 
-W przypadku konstruowania w pełni kwalifikowanego odwołania do zasobu kolejność łączenia segmentów z typu i nazwy nie jest po prostu połączeniem obu. Zamiast tego, po przestrzeni nazw, należy użyć sekwencji par *typu/nazwa* od najmniej określonych do najbardziej szczegółowych:
+Podczas konstruowania w pełni kwalifikowane odwołanie do zasobu, kolejność łączenia segmentów z typu i nazwy nie jest po prostu łączenie dwóch. Zamiast tego po obszarze nazw należy użyć sekwencji par *typu/nazwy* od najmniej specyficznych do najbardziej specyficznych:
 
-**{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-resource-name}]**
+**{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]**
 
-Na przykład:
+Przykład:
 
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` jest prawidłowy `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` jest niepoprawny
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`jest `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` poprawna nie jest poprawna
 
-Aby uprościć tworzenie dowolnego identyfikatora zasobu, użyj funkcji `resourceId()` opisanych w tym dokumencie zamiast funkcji `concat()`.
+Aby uprościć tworzenie dowolnego identyfikatora zasobu, `resourceId()` należy użyć `concat()` funkcji opisanych w tym dokumencie zamiast funkcji.
 
-### <a name="get-managed-identity"></a>Pobierz tożsamość zarządzaną
+### <a name="get-managed-identity"></a>Uzyskaj tożsamość zarządzana
 
-[Zarządzane tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md) to [typy zasobów rozszerzeń](../management/extension-resource-types.md) , które są tworzone niejawnie dla niektórych zasobów. Ponieważ zarządzana tożsamość nie jest jawnie zdefiniowana w szablonie, należy odwołać się do zasobu, do którego jest stosowana tożsamość. Użyj `Full`, aby pobrać wszystkie właściwości, w tym niejawnie utworzoną tożsamość.
+[Tożsamości zarządzane dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md) są [typy zasobów rozszerzenia,](../management/extension-resource-types.md) które są tworzone niejawnie dla niektórych zasobów. Ponieważ tożsamość zarządzana nie jest jawnie zdefiniowana w szablonie, należy odwołać się do zasobu, do którego jest stosowana tożsamość. Służy `Full` do uzyskania wszystkich właściwości, w tym niejawnie utworzonej tożsamości.
 
-Na przykład aby uzyskać identyfikator dzierżawy dla tożsamości zarządzanej, która została zastosowana do zestawu skalowania maszyn wirtualnych, użyj:
+Na przykład, aby uzyskać identyfikator dzierżawy dla tożsamości zarządzanej, która jest stosowana do zestawu skalowania maszyny wirtualnej, należy użyć:
 
 ```json
 "tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), '2019-03-01', 'Full').Identity.tenantId]"
 ```
 
-### <a name="reference-example"></a>Przykład odwołania
+### <a name="reference-example"></a>Przykład referencyjny
 
 Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) wdraża zasób i odwołuje się do tego zasobu.
 
@@ -587,7 +587,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Powyższy przykład zwraca dwa obiekty. Obiekt właściwości znajduje się w następującym formacie:
+W poprzednim przykładzie zwraca dwa obiekty. Obiekt właściwości jest w następującym formacie:
 
 ```json
 {
@@ -605,7 +605,7 @@ Powyższy przykład zwraca dwa obiekty. Obiekt właściwości znajduje się w na
 }
 ```
 
-Pełny obiekt znajduje się w następującym formacie:
+Pełny obiekt jest w następującym formacie:
 
 ```json
 {
@@ -642,7 +642,7 @@ Pełny obiekt znajduje się w następującym formacie:
 }
 ```
 
-Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) odwołuje się do konta magazynu, które nie zostało wdrożone w tym szablonie. Konto magazynu już istnieje w ramach tej samej subskrypcji.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) odwołuje się do konta magazynu, które nie jest wdrażane w tym szablonie. Konto magazynu już istnieje w ramach tej samej subskrypcji.
 
 ```json
 {
@@ -672,7 +672,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 resourceGroup()
 ```
 
-Zwraca obiekt, który reprezentuje bieżącą grupę zasobów.
+Zwraca obiekt reprezentujący bieżącą grupę zasobów.
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -693,13 +693,13 @@ Zwrócony obiekt jest w następującym formacie:
 }
 ```
 
-Właściwość **zarządzane** jest zwracana tylko dla grup zasobów zawierających zasoby, które są zarządzane przez inną usługę. W przypadku aplikacji zarządzanych, datakostki i AKS wartość właściwości jest identyfikator zasobu zasobu zarządzania.
+Właściwość **managedBy** jest zwracana tylko dla grup zasobów, które zawierają zasoby zarządzane przez inną usługę. W przypadku aplikacji zarządzanych, databricks i AKS wartość właściwości jest identyfikatorem zasobu zasobu zarządzającego.
 
 ### <a name="remarks"></a>Uwagi
 
-Funkcji `resourceGroup()` nie można użyć w szablonie, który został [wdrożony na poziomie subskrypcji](deploy-to-subscription.md). Może być używany tylko w szablonach wdrożonych w grupie zasobów. Możesz użyć funkcji `resourceGroup()` w [połączonym lub zagnieżdżonym szablonie (z zakresem wewnętrznym)](linked-templates.md) , który jest przeznaczony dla grupy zasobów, nawet jeśli szablon nadrzędny został wdrożony w subskrypcji. W tym scenariuszu szablon połączony lub zagnieżdżony jest wdrażany na poziomie grupy zasobów. Aby uzyskać więcej informacji na temat określania docelowych grup zasobów w ramach wdrożenia na poziomie subskrypcji, zobacz [wdrażanie zasobów platformy Azure w więcej niż jednej subskrypcji lub grupie zasobów](cross-resource-group-deployment.md).
+Funkcji `resourceGroup()` nie można używać w szablonie [wdrożonym na poziomie subskrypcji](deploy-to-subscription.md). Może być używany tylko w szablonach, które są wdrażane w grupie zasobów. Funkcji można `resourceGroup()` użyć w [szablonie połączonym lub zagnieżdżonym (z zakresem wewnętrznym),](linked-templates.md) który jest przeznaczony dla grupy zasobów, nawet wtedy, gdy szablon nadrzędny jest wdrażany w ramach subskrypcji. W tym scenariuszu połączony lub zagnieżdżony szablon jest wdrażany na poziomie grupy zasobów. Aby uzyskać więcej informacji dotyczących kierowania na grupę zasobów we wdrożeniu na poziomie subskrypcji, zobacz [Wdrażanie zasobów platformy Azure w więcej niż jednej subskrypcji lub grupie zasobów](cross-resource-group-deployment.md).
 
-Typowym zastosowaniem funkcji resourceGroup jest do tworzenia zasobów w tej samej lokalizacji co grupa zasobów. Poniższy przykład używa lokalizacji grupy zasobów dla domyślnej wartości parametru.
+Typowym zastosowaniem resourceGroup funkcja jest tworzenie zasobów w tej samej lokalizacji co grupa zasobów. W poniższym przykładzie użyto lokalizacji grupy zasobów dla domyślnej wartości parametru.
 
 ```json
 "parameters": {
@@ -710,9 +710,9 @@ Typowym zastosowaniem funkcji resourceGroup jest do tworzenia zasobów w tej sam
 }
 ```
 
-Można również użyć funkcji grupy zasobów, aby zastosować do zasobu Tagi ze źródła danych. Aby uzyskać więcej informacji, zobacz [stosowanie tagów z grupy zasobów](../management/tag-resources.md#apply-tags-from-resource-group).
+Za pomocą funkcji resourceGroup można również zastosować znaczniki z grupy zasobów do zasobu. Aby uzyskać więcej informacji, zobacz [Stosowanie znaczników z grupy zasobów](../management/tag-resources.md#apply-tags-from-resource-group).
 
-W przypadku użycia szablonów zagnieżdżonych do wdrożenia w wielu grupach zasobów można określić zakres oceniania funkcji ResourceManager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów platformy Azure w więcej niż jednej subskrypcji lub grupie zasobów](cross-resource-group-deployment.md).
+Korzystając z szablonów zagnieżdżonych do wdrażania w wielu grupach zasobów, można określić zakres oceny funkcji resourceGroup. Aby uzyskać więcej informacji, zobacz [Wdrażanie zasobów platformy Azure w więcej niż jednej subskrypcji lub grupie zasobów](cross-resource-group-deployment.md).
 
 ### <a name="resource-group-example"></a>Przykład grupy zasobów
 
@@ -732,7 +732,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Powyższy przykład zwraca obiekt, w następującym formacie:
+W poprzednim przykładzie zwraca obiekt w następującym formacie:
 
 ```json
 {
@@ -752,35 +752,35 @@ Powyższy przykład zwraca obiekt, w następującym formacie:
 resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
 ```
 
-Zwraca unikatowy identyfikator zasobu. Aby użyć tej funkcji, jeśli nazwa zasobu jest niejednoznaczny lub nie jest aprowizowany w ramach tego samego szablonu. Format zwróconego identyfikatora różni się w zależności od tego, czy wdrożenie występuje w zakresie grupy zasobów, subskrypcji, grupy zarządzania czy dzierżawcy.
+Zwraca unikatowy identyfikator zasobu. Tej funkcji należy użyć, gdy nazwa zasobu jest niejednoznaczna lub nie jest aprowizowana w ramach tego samego szablonu. Format zwróconego identyfikatora różni się w zależności od tego, czy wdrożenie odbywa się w zakresie grupy zasobów, subskrypcji, grupy zarządzania lub dzierżawy.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Nie |ciąg (format identyfikatora GUID w) |Wartością domyślną jest bieżąca subskrypcja. Należy określić tę wartość, gdy jest potrzebne do pobierania zasobów w innej subskrypcji. Podaj tę wartość tylko podczas wdrażania w zakresie grupy zasobów lub subskrypcji. |
-| resourceGroupName |Nie |ciąg |Wartość domyślna to bieżącej grupie zasobów. Należy określić tę wartość, gdy jest potrzebne do pobierania zasobów w innej grupie zasobów. Podaj tę wartość tylko w przypadku wdrażania w zakresie grupy zasobów. |
-| resourceType |Yes |ciąg |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
-| resourceName1 |Yes |ciąg |Nazwa zasobu. |
-| resourceName2 |Nie |ciąg |Następny segment nazwy zasobu, w razie konieczności. |
+| subscriptionId |Nie |(w formacie GUID) |Wartość domyślna to bieżąca subskrypcja. Określ tę wartość, gdy trzeba pobrać zasób w innej subskrypcji. Podaj tę wartość tylko podczas wdrażania w zakresie grupy zasobów lub subskrypcji. |
+| resourceGroupName |Nie |ciąg |Wartością domyślną jest bieżąca grupa zasobów. Określ tę wartość, gdy trzeba pobrać zasób w innej grupie zasobów. Podaj tę wartość tylko podczas wdrażania w zakresie grupy zasobów. |
+| resourceType |Tak |ciąg |Typ zasobu, w tym obszar nazw dostawcy zasobów. |
+| nazwa zasobu1 |Tak |ciąg |Nazwa zasobu. |
+| nazwa zasobu2 |Nie |ciąg |Następny segment nazwy zasobu, w razie potrzeby. |
 
 Kontynuuj dodawanie nazw zasobów jako parametrów, gdy typ zasobu zawiera więcej segmentów.
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Gdy szablon zostanie wdrożony w zakresie grupy zasobów, identyfikator zasobu jest zwracany w następującym formacie:
+Gdy szablon jest wdrażany w zakresie grupy zasobów, identyfikator zasobu jest zwracany w następującym formacie:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-W przypadku użycia w ramach [wdrożenia na poziomie subskrypcji](deploy-to-subscription.md)identyfikator zasobu jest zwracany w następującym formacie:
+W przypadku użycia we [wdrożeniu na poziomie subskrypcji](deploy-to-subscription.md)identyfikator zasobu jest zwracany w następującym formacie:
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-W przypadku użycia we [wdrożeniu na poziomie grupy zarządzania](deploy-to-management-group.md) lub na poziomie dzierżawy identyfikator zasobu jest zwracany w następującym formacie:
+W przypadku użycia we [wdrożeniu na poziomie grupy zarządzania](deploy-to-management-group.md) lub wdrożenia na poziomie dzierżawy identyfikator zasobu jest zwracany w następującym formacie:
 
 ```json
 /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -789,20 +789,20 @@ W przypadku użycia we [wdrożeniu na poziomie grupy zarządzania](deploy-to-man
 Aby uzyskać identyfikator w innych formatach, zobacz:
 
 * [extensionResourceId](#extensionresourceid)
-* [subscriptionResourceId](#subscriptionresourceid)
-* [tenantResourceId](#tenantresourceid)
+* [identyfikator zasobów subskrypcji](#subscriptionresourceid)
+* [identyfikator źródłu zewnętrznego tenant](#tenantresourceid)
 
 ### <a name="remarks"></a>Uwagi
 
-Liczba parametrów, które należy podać, zależy od tego, czy zasób jest zasobem nadrzędnym, czy podrzędnym, oraz czy zasób znajduje się w tej samej subskrypcji lub grupie zasobów.
+Liczba parametrów, które można podać zależy od tego, czy zasób jest zasobem nadrzędnym lub podrzędnym i czy zasób znajduje się w tej samej subskrypcji lub grupie zasobów.
 
-Aby uzyskać identyfikator zasobu dla zasobu nadrzędnego w tej samej subskrypcji i grupie zasobów, podaj typ i nazwę zasobu.
+Aby uzyskać identyfikator zasobu nadrzędnego dla zasobu nadrzędnego w tej samej subskrypcji i grupie zasobów, podaj typ i nazwę zasobu.
 
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
-Aby uzyskać identyfikator zasobu dla zasobu podrzędnego, należy zwrócić uwagę na liczbę segmentów w typie zasobu. Podaj nazwę zasobu dla każdego segmentu typu zasobu. Nazwa segmentu odpowiada zasobowi, który istnieje dla tej części hierarchii.
+Aby uzyskać identyfikator zasobu podrzędnego, należy zwrócić uwagę na liczbę segmentów w typie zasobu. Podaj nazwę zasobu dla każdego segmentu typu zasobu. Nazwa segmentu odpowiada zasobowi, który istnieje dla tej części hierarchii.
 
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
@@ -814,13 +814,13 @@ Aby uzyskać identyfikator zasobu dla zasobu w tej samej subskrypcji, ale w inne
 "[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
 ```
 
-Aby uzyskać identyfikator zasobu dla zasobu w innej subskrypcji i grupie zasobów, podaj identyfikator subskrypcji i nazwę grupy zasobów.
+Aby uzyskać identyfikator zasobu dla zasobu w innej grupie subskrypcji i zasobów, podaj identyfikator subskrypcji i nazwę grupy zasobów.
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Często należy użyć tej funkcji, korzystając z konta magazynu lub sieci wirtualnej w grupie zasobów alternatywne. Poniższy przykład pokazuje, jak łatwo można używać zasobów z grupy zasobów zewnętrznych:
+Często należy użyć tej funkcji podczas korzystania z konta magazynu lub sieci wirtualnej w alternatywnej grupie zasobów. W poniższym przykładzie pokazano, jak można łatwo używać zasobu z zewnętrznej grupy zasobów:
 
 ```json
 {
@@ -894,16 +894,16 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Name (Nazwa) | Typ | Wartość |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| sameRGOutput | Ciąg | /Subscriptions/{Current-Sub-ID}/resourceGroups/examplegroup/Providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | Ciąg | /Subscriptions/{Current-Sub-ID}/resourceGroups/otherResourceGroup/Providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | Ciąg | /Subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/Providers/Microsoft.Storage/storageAccounts/examplestorage |
+| sameRGOutput | Ciąg | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | Ciąg | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | Ciąg | /subscriptions/1111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | nestedResourceOutput | Ciąg | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
-## <a name="subscription"></a>subskrypcję
+## <a name="subscription"></a>subskrypcja
 
 ```json
 subscription()
@@ -926,11 +926,11 @@ Funkcja zwraca następujący format:
 
 ### <a name="remarks"></a>Uwagi
 
-W przypadku używania szablonów zagnieżdżonych do wdrażania w wielu subskrypcjach można określić zakres oceniania funkcji subskrypcji. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów platformy Azure w więcej niż jednej subskrypcji lub grupie zasobów](cross-resource-group-deployment.md).
+Podczas korzystania z szablonów zagnieżdżonych do wdrażania w wielu subskrypcjach, można określić zakres oceny funkcji subskrypcji. Aby uzyskać więcej informacji, zobacz [Wdrażanie zasobów platformy Azure w więcej niż jednej subskrypcji lub grupie zasobów](cross-resource-group-deployment.md).
 
 ### <a name="subscription-example"></a>Przykład subskrypcji
 
-Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) pokazuje funkcję subskrypcji o nazwie w sekcji dane wyjściowe.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) przedstawia funkcję subskrypcji wywoływana w sekcji dane wyjściowe.
 
 ```json
 {
@@ -946,7 +946,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-## <a name="subscriptionresourceid"></a>subscriptionResourceId
+## <a name="subscriptionresourceid"></a>identyfikator zasobów subskrypcji
 
 ```json
 subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)
@@ -958,10 +958,10 @@ Zwraca unikatowy identyfikator zasobu wdrożonego na poziomie subskrypcji.
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Nie |ciąg (w formacie identyfikatora GUID) |Wartością domyślną jest bieżąca subskrypcja. Należy określić tę wartość, gdy jest potrzebne do pobierania zasobów w innej subskrypcji. |
-| resourceType |Yes |ciąg |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
-| resourceName1 |Yes |ciąg |Nazwa zasobu. |
-| resourceName2 |Nie |ciąg |Następny segment nazwy zasobu, w razie konieczności. |
+| subscriptionId |Nie |(w formacie GUID) |Wartość domyślna to bieżąca subskrypcja. Określ tę wartość, gdy trzeba pobrać zasób w innej subskrypcji. |
+| resourceType |Tak |ciąg |Typ zasobu, w tym obszar nazw dostawcy zasobów. |
+| nazwa zasobu1 |Tak |ciąg |Nazwa zasobu. |
+| nazwa zasobu2 |Nie |ciąg |Następny segment nazwy zasobu, w razie potrzeby. |
 
 Kontynuuj dodawanie nazw zasobów jako parametrów, gdy typ zasobu zawiera więcej segmentów.
 
@@ -975,11 +975,11 @@ Identyfikator jest zwracany w następującym formacie:
 
 ### <a name="remarks"></a>Uwagi
 
-Ta funkcja służy do pobierania identyfikatora zasobu dla zasobów [wdrożonych w subskrypcji](deploy-to-subscription.md) , a nie w grupie zasobów. Zwrócony identyfikator różni się od wartości zwracanej przez funkcję [ResourceID](#resourceid) przez nie uwzględniając wartości grupy zasobów.
+Ta funkcja służy do uzyskania identyfikatora zasobu dla zasobów, które są [wdrażane w ramach subskrypcji,](deploy-to-subscription.md) a nie grupy zasobów. Zwrócony identyfikator różni się od wartości zwracane przez [resourceId](#resourceid) funkcji, nie wliczając wartości grupy zasobów.
 
 ### <a name="subscriptionresourceid-example"></a>przykład subscriptionResourceID
 
-Poniższy szablon przypisuje wbudowaną rolę. Można wdrożyć je w grupie zasobów lub w ramach subskrypcji. Używa funkcji subscriptionResourceId, aby uzyskać identyfikator zasobu dla ról wbudowanych.
+Poniższy szablon przypisuje wbudowaną rolę. Można go wdrożyć w grupie zasobów lub subskrypcji. Używa subscriptionResourceId funkcji, aby uzyskać identyfikator zasobu dla ról wbudowanych.
 
 ```json
 {
@@ -1030,7 +1030,7 @@ Poniższy szablon przypisuje wbudowaną rolę. Można wdrożyć je w grupie zaso
 }
 ```
 
-## <a name="tenantresourceid"></a>tenantResourceId
+## <a name="tenantresourceid"></a>identyfikator źródłu zewnętrznego tenant
 
 ```json
 tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
@@ -1042,9 +1042,9 @@ Zwraca unikatowy identyfikator zasobu wdrożonego na poziomie dzierżawy.
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| resourceType |Yes |ciąg |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
-| resourceName1 |Yes |ciąg |Nazwa zasobu. |
-| resourceName2 |Nie |ciąg |Następny segment nazwy zasobu, w razie konieczności. |
+| resourceType |Tak |ciąg |Typ zasobu, w tym obszar nazw dostawcy zasobów. |
+| nazwa zasobu1 |Tak |ciąg |Nazwa zasobu. |
+| nazwa zasobu2 |Nie |ciąg |Następny segment nazwy zasobu, w razie potrzeby. |
 
 Kontynuuj dodawanie nazw zasobów jako parametrów, gdy typ zasobu zawiera więcej segmentów.
 
@@ -1058,12 +1058,12 @@ Identyfikator jest zwracany w następującym formacie:
 
 ### <a name="remarks"></a>Uwagi
 
-Ta funkcja służy do pobierania identyfikatora zasobu dla zasobu, który jest wdrażany w dzierżawie. Zwrócony identyfikator różni się od wartości zwracanych przez inne funkcje identyfikatora zasobu, nie uwzględniając wartości grup zasobów lub subskrypcji.
+Ta funkcja służy do uzyskania identyfikatora zasobu dla zasobu, który jest wdrażany w dzierżawcy. Zwrócony identyfikator różni się od wartości zwracanych przez inne funkcje identyfikatora zasobu, nie uwzględniając wartości grupy zasobów lub subskrypcji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Opis sekcji w szablonie Azure Resource Manager można znaleźć w temacie [tworzenie Azure Resource Manager szablonów](template-syntax.md).
-* Aby scalić wiele szablonów, zobacz [Używanie połączonych szablonów z Azure Resource Manager](linked-templates.md).
-* Aby powtórzyć określoną liczbę razy podczas tworzenia typu zasobu, zobacz [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](copy-resources.md).
-* Aby dowiedzieć się, jak wdrożyć utworzony szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](deploy-powershell.md).
+* Aby uzyskać opis sekcji w szablonie usługi Azure Resource Manager, zobacz [Tworzenie szablonów usługi Azure Resource Manager](template-syntax.md).
+* Aby scalić wiele szablonów, zobacz [Używanie połączonych szablonów z usługą Azure Resource Manager](linked-templates.md).
+* Aby iterować określoną liczbę razy podczas tworzenia typu zasobu, zobacz [Tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](copy-resources.md).
+* Aby zobaczyć, jak wdrożyć utworzony szablon, zobacz [Wdrażanie aplikacji za pomocą szablonu usługi Azure Resource Manager](deploy-powershell.md).
 

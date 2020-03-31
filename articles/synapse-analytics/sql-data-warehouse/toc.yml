@@ -16,12 +16,12 @@
       href: sql-data-warehouse-service-capacity-limits.md
     - name: Często zadawane pytania
       href: sql-data-warehouse-overview-faq.md
-- name: Informacje o wersji
-  items:
-    - name: Najnowsza wersja
-      href: release-notes-10-0-10106-0.md
-    - name: Harmonogram uaktualniania regionów 2. generacji
-      href: gen2-migration-schedule.md
+    - name: Informacje o wersji
+      items:
+        - name: Najnowsza wersja
+          href: release-notes-10-0-10106-0.md
+        - name: Harmonogram uaktualniania regionów 2. generacji
+          href: gen2-migration-schedule.md
 - name: Przewodniki Szybki start
   expanded: true
   items:

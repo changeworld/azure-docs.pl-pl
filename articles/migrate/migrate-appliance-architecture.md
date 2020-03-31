@@ -3,16 +3,16 @@ title: Architektura urządzenia migracji platformy Azure
 description: Zawiera omówienie urządzenia migracji platformy Azure używanego w ocenie i migracji serwera.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 25dc530199cde3408ce3bd6641aeb9bb8595465d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d55d123bb056b46b5e78dd8ac836eeaf9b42fe70
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337599"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389022"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Architektura urządzenia migracji platformy Azure
 
-W tym artykule opisano architekturę i procesy urządzenia usługi Azure Migrate. Urządzenie migracji platformy Azure to lekkie urządzenie wdrożone lokalnie w celu odnajdywanie maszyn wirtualnych i serwerów fizycznych, które chcesz ocenić pod kątem migracji na platformę Azure. 
+W tym artykule opisano architekturę i procesy urządzenia usługi Azure Migrate. Urządzenie migracji platformy Azure to lekkie urządzenie wdrożone lokalnie w celu odnajdywanie maszyn wirtualnych i serwerów fizycznych w celu migracji na platformę Azure. 
 
 ## <a name="deployment-scenarios"></a>Scenariusze wdrażania
 
@@ -20,10 +20,10 @@ Urządzenie migracji platformy Azure jest używane w następujących scenariusza
 
 **Scenariusz** | **Narzędzie** | **Używana do** 
 --- | --- | ---
-**Ocena maszyn wirtualnych VMware** | Migracja platformy Azure: ocena serwera | Odnajduj maszyny wirtualne VMware.<br/><br/> Odnajduj aplikacje maszynowe i zależności.<br/><br/> Zbieranie metadanych i metadanych wydajności maszyny i wysyłanie ich na platformę Azure.
-**Migracja maszyn wirtualnych VMware (bez agenta)** | Migracja platformy Azure: migracja serwera | Odkryj maszyny wirtualne VMware<br/><br/>  Replikowanie maszyn wirtualnych VMware z [migracją bez agenta](server-migrate-overview.md).
-**Ocena maszyny wirtualnej funkcji Hyper-V** | Migracja platformy Azure: ocena serwera | Odnajduj maszyny wirtualne z programem Hyper V.<br/><br/> Zbieranie metadanych i metadanych wydajności maszyny i wysyłanie ich na platformę Azure.
-**Maszyna fizyczna** |  Migracja platformy Azure: ocena serwera |  Odkryj serwery fizyczne.<br/><br/> Zbieranie metadanych i metadanych wydajności maszyny i wysyłanie ich na platformę Azure.
+**Ocena maszyn wirtualnych VMware** | Migracja platformy Azure:Ocena serwera | Odnajduj maszyny wirtualne VMware.<br/><br/> Odnajduj aplikacje maszynowe i zależności.<br/><br/> Zbieranie metadanych i metadanych wydajności maszyny i wysyłanie ich na platformę Azure.
+**Migracja maszyn wirtualnych VMware (bez agenta)** | Migracja platformy Azure:migracja serwera | Odkryj maszyny wirtualne VMware<br/><br/>  Replikowanie maszyn wirtualnych VMware z [migracją bez agenta](server-migrate-overview.md).
+**Ocena maszyny wirtualnej funkcji Hyper-V** | Migracja platformy Azure:Ocena serwera | Odnajduj maszyny wirtualne z programem Hyper V.<br/><br/> Zbieranie metadanych i metadanych wydajności maszyny i wysyłanie ich na platformę Azure.
+**Maszyna fizyczna** |  Migracja platformy Azure:Ocena serwera |  Odkryj serwery fizyczne.<br/><br/> Zbieranie metadanych i metadanych wydajności maszyny i wysyłanie ich na platformę Azure.
 
 ## <a name="appliance-components"></a>Elementy urządzenia
 
@@ -40,25 +40,25 @@ Urządzenie posiada szereg komponentów.
 
 ## <a name="appliance-deployment"></a>Wdrażanie urządzeń
 
-- Urządzenia migracji platformy Azure można skonfigurować przy użyciu szablonu (tylko funkcji Hyper-V lub VMware) lub instalatora skryptów programu PowerShell. [Dowiedz się więcej](deploy-appliance.md#deployment-options) o opcjach. 
+- Urządzenie migracji platformy Azure można skonfigurować przy użyciu szablonu dla [funkcji Hyper-V](how-to-set-up-appliance-hyper-v.md) lub [VMware](how-to-set-up-appliance-vmware.md) lub przy użyciu instalatora skryptów programu PowerShell dla [VMware/Hyper-V](deploy-appliance-script.md)oraz [dla serwerów fizycznych.](how-to-set-up-appliance-physical.md) 
 - Wymagania dotyczące obsługi urządzeń i wymagania wstępne dotyczące wdrażania są podsumowane w [macierzy obsługi urządzeń](migrate-appliance.md).
 
 
 ## <a name="appliance-registration"></a>Rejestracja urządzenia
 
-Podczas konfigurowania urządzenia, można zarejestrować urządzenie z usługi Azure Migrate.Podczas instalacji i rejestracji akcje podsumowane w tabeli występują.
+Podczas konfigurowania urządzenia można zarejestrować urządzenie za pomocą usługi Azure Migrate, a akcje podsumowane w tabeli występują.
 
 **Akcja** | **Szczegóły** | **Uprawnienia**
 --- | --- | ---
 **Rejestrowanie dostawców źródeł** | Dostawcy tych zasobów są zarejestrowani w subskrypcji, którą wybierzesz podczas instalacji urządzenia: Microsoft.OffAzure, Microsoft.Migrate i Microsoft.KeyVault.<br/><br/> Rejestrowanie dostawcy zasobów konfiguruje subskrypcję do pracy z dostawcą zasobów. | Aby zarejestrować dostawców zasobów, potrzebujesz roli współautora lub właściciela w ramach subskrypcji.
-**Tworzenie komunikacji z aplikacjami usługi Azure AD** | Usługa Azure Migrate tworzy aplikację usługi Azure Active Directory (Azure AD) do komunikacji (uwierzytelnianie i autoryzacja) między agentami działającymi na urządzeniu a ich odpowiednimi usługami uruchomionymi na platformie Azure.<br/><br/> Ta aplikacja nie ma uprawnień do wykonywania wywołań usługi Azure resource manager lub dostępu RBAC na dowolnym zasobie. | Aby utworzyć aplikację, potrzebujesz [tych uprawnień](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) do migracji platformy Azure.
+**Tworzenie komunikacji z aplikacjami usługi Azure AD** | Usługa Azure Migrate tworzy aplikację usługi Azure Active Directory (Azure AD) do komunikacji (uwierzytelnianie i autoryzacja) między agentami działającymi na urządzeniu a ich odpowiednimi usługami uruchomionymi na platformie Azure.<br/><br/> Ta aplikacja nie ma uprawnień do wykonywania wywołań usługi Azure Resource Manager lub dostępu RBAC na dowolnym zasobie. | Aby utworzyć aplikację, potrzebujesz [tych uprawnień](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) do migracji platformy Azure.
 **Tworzenie magazynu aplikacji usługi Azure AD - klucz** | Ta aplikacja jest tworzona tylko dla bezagentowej migracji maszyn wirtualnych VMware na platformę Azure.<br/><br/> Jest on używany wyłącznie do uzyskiwania dostępu do magazynu kluczy utworzonego w subskrypcji użytkownika dla migracji bez agenta.<br/><br/> Ma dostęp RBAC w magazynie kluczy platformy Azure (utworzony w dzierżawie klienta), gdy odnajdowanie jest inicjowane z urządzenia. | Aby utworzyć aplikację, potrzebujesz [tych uprawnień](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) do migracji platformy Azure.
 
 
 
 ## <a name="collected-data"></a>Zebrane dane
 
-Dane zebrane przez klienta dla wszystkich scenariuszy wdrażania są przechwytywane w pełni w [macierzy obsługi urządzeń](migrate-appliance.md).
+Dane zebrane przez klienta dla wszystkich scenariuszy wdrażania są podsumowane w [macierzy obsługi urządzeń](migrate-appliance.md).
 
 ## <a name="discovery-and-collection-process"></a>Proces odnajdywania i zbierania
 
@@ -89,7 +89,8 @@ Urządzenie komunikuje się z serwerami vCenter i hostami/klastrem funkcji Hyper
 
 Urządzenie jest uaktualniane, jak agenci migracji platformy Azure uruchomione na urządzeniu są aktualizowane. Dzieje się tak automatycznie, ponieważ automatyczna aktualizacja jest domyślnie włączona na urządzeniu. To ustawienie domyślne można zmienić, aby ręcznie zaktualizować agentów.
 
-Możesz wyłączyć automatyczną aktualizację w rejestrze, ustawiając HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance "AutoUpdate" klucz do 0 (DWORD). Jeśli zdecydujesz się użyć ręcznych aktualizacji, ważne jest, aby zaktualizować wszystkich agentów na urządzeniu w tym samym czasie, za pomocą przycisku **Aktualizuj** dla każdego przestarzałego agenta na urządzeniu.
+Możesz wyłączyć automatyczną aktualizację w rejestrze, ustawiając klucz HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance "AutoUpdate" na 0 (DWORD).
+
  
 
 ## <a name="next-steps"></a>Następne kroki

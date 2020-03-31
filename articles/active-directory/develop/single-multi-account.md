@@ -1,6 +1,6 @@
 ---
-title: Aplikacje klienckie o pojedynczym i wielu kontach Azure
-description: Omówienie jednej i wielu publicznych aplikacji klienta.
+title: Publiczne aplikacje klienckie z jednym i wieloma kontami | Azure
+description: Omówienie publicznych aplikacji klienckich jedno- i wielu kont.
 services: active-directory
 documentationcenter: ''
 author: shoatman
@@ -17,42 +17,42 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: f2ce993b8fbf2a1b04ea4ad9d992ba278dbc964e
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701420"
 ---
-# <a name="single-and-multiple-account-public-client-apps"></a>Aplikacje publiczne klienta z jednym i wieloma kontami
+# <a name="single-and-multiple-account-public-client-apps"></a>Publiczne aplikacje klienckie z jednym i wieloma kontami
 
-Ten artykuł ułatwi zapoznanie się z typami używanymi w publicznych aplikacjach klienckich z jednym kontem i wieloma kontami z fokusem na jednym koncie. 
+Ten artykuł pomoże Ci zrozumieć typy używane w publicznych aplikacjach klienckich jedno- i wielu kont, z naciskiem na publiczne aplikacje klienckie z jednym kontem. 
 
-Biblioteka Azure Active Directory Authentication Library (ADAL) modeluje serwer.  Biblioteka Microsoft Authentication Library (MSAL) modeluje aplikację kliencką.  Większość aplikacji systemu Android jest traktowana jako klienci publiczni. Klient publiczny to aplikacja, która nie może bezpiecznie zachować klucza tajnego.  
+Biblioteka uwierzytelniania usługi Azure Active Directory (ADAL) modeluje serwer.  Zamiast tego biblioteka uwierzytelniania firmy Microsoft (MSAL) modeluje aplikację kliencką.  Większość aplikacji na Androida jest uważana za klientów publicznych. Klient publiczny to aplikacja, która nie może bezpiecznie zachować tajemnicy.  
 
-MSAL określa powierzchnię interfejsu API `PublicClientApplication`, aby uprościć i wyjaśnić środowisko programistyczne dla aplikacji, które zezwalają na użycie tylko jednego konta jednocześnie. `PublicClientApplication` jest podklasą `SingleAccountPublicClientApplication` i `MultipleAccountPublicClientApplication`.  Na poniższym diagramie przedstawiono relację między tymi klasami.
+MSAL specjalizuje się w `PublicClientApplication` powierzchni interfejsu API, aby uprościć i wyjaśnić środowisko programistyczne dla aplikacji, które umożliwiają użycie tylko jednego konta w czasie. `PublicClientApplication`jest podklasyfikowany przez `SingleAccountPublicClientApplication` i `MultipleAccountPublicClientApplication`.  Na poniższym diagramie przedstawiono relację między tymi klasami.
 
-![Diagram klas UML SingleAccountPublicClientApplication](./media/single-multi-account/single-and-multiple-account.png)
+![Diagram klasy UML aplikacji SingleAccountPublicClientApplication](./media/single-multi-account/single-and-multiple-account.png)
 
-## <a name="single-account-public-client-application"></a>Publiczna aplikacja kliencka z jednym kontem
+## <a name="single-account-public-client-application"></a>Publiczna aplikacja klienta pojedynczego konta
 
-Klasa `SingleAccountPublicClientApplication` umożliwia utworzenie aplikacji opartej na MSAL, która umożliwia tylko Logowanie jednokrotne w danym momencie. `SingleAccountPublicClientApplication` różni się od `PublicClientApplication` w następujący sposób:
+Klasa `SingleAccountPublicClientApplication` umożliwia utworzenie aplikacji opartej na msal, która umożliwia tylko jedno konto, które mają być zalogowane w czasie. `SingleAccountPublicClientApplication`różni się `PublicClientApplication` w następujący sposób:
 
-- MSAL śledzi obecnie zalogowane konto.
-  - Jeśli aplikacja korzysta z brokera (domyślnego podczas Azure Portal rejestracji aplikacji) i jest zainstalowana na urządzeniu, na którym znajduje się Broker, MSAL sprawdzi, czy konto jest nadal dostępne na urządzeniu.
-- `signIn` umożliwia logowanie konto jawnie i oddzielnie od zakresów żądania.
-- `acquireTokenSilent` nie wymaga parametru konta.  Jeśli podasz konto, a wprowadzone konto nie jest zgodne z bieżącym kontem śledzonym przez MSAL, zostanie zgłoszony `MsalClientException`.
-- `acquireToken` nie zezwala użytkownikowi na przełączanie kont. Jeśli użytkownik próbuje przełączyć się na inne konto, zostanie zgłoszony wyjątek.
-- `getCurrentAccount` zwraca obiekt wynikowy, który zawiera następujące elementy:
-  - Wartość logiczna wskazująca, czy konto zostało zmienione. Konto może zostać zmienione w wyniku usunięcia z urządzenia, na przykład.
-  - Poprzednie konto. Jest to przydatne, jeśli trzeba wykonać wszystkie lokalne czyszczenie danych, gdy konto zostanie usunięte z urządzenia lub gdy nowe konto jest zalogowane.
+- MSAL śledzi aktualnie zalogowane konto.
+  - Jeśli aplikacja korzysta z brokera (domyślnie podczas rejestracji aplikacji portalu Azure) i jest zainstalowany na urządzeniu, na którym znajduje się broker, MSAL sprawdzi, czy konto jest nadal dostępne na urządzeniu.
+- `signIn`umożliwia logowanie się do konta jawnie i oddzielnie od żądania zakresów.
+- `acquireTokenSilent`nie wymaga parametru konta.  Jeśli podasz konto, a konto, które podasz, nie będzie zgodne z `MsalClientException` bieżącym kontem śledzonym przez msal, zostanie ono odrzucone.
+- `acquireToken`nie zezwala użytkownikowi na przełączanie kont. Jeśli użytkownik próbuje przełączyć się na inne konto, zostanie zgłoszony wyjątek.
+- `getCurrentAccount`zwraca obiekt wynikowy, który zapewnia następujące funkcje:
+  - Wartość logiczna wskazująca, czy konto uległo zmianie. Konto może zostać zmienione w wyniku usunięcia z urządzenia, na przykład.
+  - Poprzednie konto. Jest to przydatne, jeśli trzeba zrobić wszelkie lokalne oczyszczanie danych, gdy konto jest usuwane z urządzenia lub gdy nowe konto jest zalogowany.
   - CurrentAccount.
-- `signOut` usuwa z urządzenia wszystkie tokeny skojarzone z klientem.  
+- `signOut`usuwa wszystkie tokeny skojarzone z klientem z urządzenia.  
 
-Gdy na urządzeniu jest zainstalowany Broker uwierzytelniania systemu Android, taki jak Microsoft Authenticator lub Intune — Portal firmy, a Twoja aplikacja jest skonfigurowana do korzystania z brokera, `signOut` nie usunąć tego konta z urządzenia.
+Gdy broker uwierzytelniania systemu Android, taki jak Microsoft Authenticator lub Portal firmy usługi Intune, jest zainstalowany na urządzeniu, a aplikacja jest skonfigurowana do korzystania z brokera, `signOut` nie usunie konta z urządzenia.
 
 ## <a name="single-account-scenario"></a>Scenariusz pojedynczego konta
 
-Poniższy pseudo kod ilustruje użycie `SingleAccountPublicClientApplication`.
+Poniższy pseudo kod `SingleAccountPublicClientApplication`ilustruje użycie .
 
 ```java
 // Construct Single Account Public Client Application
@@ -109,30 +109,30 @@ if (app.signOut())
 }
 ```
 
-## <a name="multiple-account-public-client-application"></a>Publiczna aplikacja kliencka z wieloma kontami
+## <a name="multiple-account-public-client-application"></a>Aplikacja klienta publicznego wielu kont
 
-Klasa `MultipleAccountPublicClientApplication` służy do tworzenia aplikacji opartych na MSAL, które zezwalają na logowanie wielu kont w tym samym czasie. Umożliwia to pobieranie, Dodawanie i usuwanie kont w następujący sposób:
+Klasa `MultipleAccountPublicClientApplication` jest używana do tworzenia aplikacji opartych na msal, które umożliwiają logowanie wielu kont w tym samym czasie. To pozwala na uzyskanie, dodanie i usunięcie kont w następujący sposób:
 
 ### <a name="add-an-account"></a>Dodaj konto
 
-Użyj co najmniej jednego konta w aplikacji, wywołując `acquireToken` jeden lub więcej razy.  
+Użyj jednego lub więcej kont `acquireToken` w aplikacji, dzwoniąc co najmniej jeden razy.  
 
 ### <a name="get-accounts"></a>Pobierz konta
 
-- Wywołaj `getAccount`, aby uzyskać określone konto.
-- Wywołaj `getAccounts`, aby uzyskać listę kont, które są obecnie znane dla aplikacji.
+- Zadzwoń, `getAccount` aby uzyskać określone konto.
+- Zadzwoń, `getAccounts`aby uzyskać listę kont aktualnie znanych aplikacji.
 
-Aplikacja nie będzie mogła wyliczyć wszystkich kont platformy tożsamości firmy Microsoft na urządzeniu znanym przez aplikację brokera. Można tylko wyliczać konta, które były używane przez aplikację.  Te funkcje nie będą zwracały kont, które zostały usunięte z urządzenia.
+Aplikacja nie będzie mogła wyliczyć wszystkich kont platformy tożsamości firmy Microsoft na urządzeniu znanym aplikacji brokera. Można wyliczyć tylko konta, które zostały użyte przez aplikację.  Konta, które zostały usunięte z urządzenia, nie zostaną zwrócone przez te funkcje.
 
 ### <a name="remove-an-account"></a>Usuwanie konta
 
-Usuń konto, wywołując `removeAccount` z identyfikatorem konta.
+Usuń konto, `removeAccount` dzwoniąc z identyfikatorem konta.
 
-Jeśli aplikacja jest skonfigurowana do korzystania z brokera, a na urządzeniu jest zainstalowany Broker, konto nie zostanie usunięte z brokera podczas wywoływania `removeAccount`.  Tylko tokeny skojarzone z klientem są usuwane.
+Jeśli aplikacja jest skonfigurowana do korzystania z brokera, a broker jest zainstalowany na urządzeniu, konto `removeAccount`nie zostanie usunięte z brokera podczas wywoływania .  Usuwane są tylko tokeny skojarzone z klientem.
 
-## <a name="multiple-account-scenario"></a>Scenariusz z wieloma kontami
+## <a name="multiple-account-scenario"></a>Scenariusz wielu kont
 
-Następujący pseudo kod pokazuje, jak utworzyć aplikację z wieloma kontami, wyświetlić listę kont na urządzeniu i uzyskać tokeny.
+Poniższy pseudokod pokazuje, jak utworzyć aplikację wielu kont, listy kont na urządzeniu i uzyskać tokeny.
 
 ```java
 // Construct Multiple Account Public Client Application
