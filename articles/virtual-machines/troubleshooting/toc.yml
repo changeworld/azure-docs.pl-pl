@@ -3,7 +3,7 @@
   href: index.yml
 - name: Rozwiązywanie problemów z wdrożeniem
   items:
-    - name: System Windows
+    - name: Windows
       href: troubleshoot-deploy-vm-windows.md
     - name: Linux
       href: troubleshoot-deploy-vm-linux.md
@@ -15,17 +15,17 @@
       items:
         - name: Linux
           href: troubleshoot-deployment-new-vm-linux.md
-        - name: System Windows
+        - name: Windows
           href: troubleshoot-deployment-new-vm-windows.md
     - name: Ponowne wdrażanie maszyny wirtualnej
       items:
         - name: Linux
           href: redeploy-to-new-node-linux.md
-        - name: System Windows
+        - name: Windows
           href: redeploy-to-new-node-windows.md
     - name: Resetowanie karty sieciowej
       href: reset-network-interface.md
-- name: "Rozwiązywanie problemów z\_błędami alokacji"
+- name: Rozwiązywanie problemów z błędami alokacji
   items:
     - name: Błędy alokacji
       href: allocation-failure.md
@@ -62,25 +62,31 @@
       items:
         - name: Ratunkowy tryb GRUB
           href: troubleshoot-vm-boot-error.md
-    - name: System Windows
+    - name: Windows
       href: boot-error-troubleshoot.md
       items:
         - name: Diagnostyka rozruchu
           href: boot-diagnostics.md
         - name: Błędy funkcji BitLocker
           href: troubleshoot-bitlocker-boot-error.md
-        - name: Sprawdzanie błędów systemu plików
-          href: troubleshoot-check-disk-boot-error.md
         - name: Błędy z błękitnym ekranem
           href: troubleshoot-common-blue-screen-error.md
-        - name: Proces uruchamiania maszyny wirtualnej zablokował się
-          href: troubleshoot-vm-boot-configure-update.md
+        - name: Sprawdzanie błędów systemu plików
+          href: troubleshoot-check-disk-boot-error.md
+        - name: Proces krytyczny jest wyłączony
+          href: troubleshoot-guide-critical-process-died.md
         - name: Niepowodzenie usługi o znaczeniu krytycznym
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: To nie jest dysk rozruchowy
+          href: troubleshoot-guide-not-bootable-disk.md
         - name: Ponowne uruchamianie pętli
           href: troubleshoot-reboot-loop.md
         - name: Blokada w trakcie aktualizacji systemu Windows
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: Proces uruchamiania maszyny wirtualnej zablokował się
+          href: troubleshoot-vm-boot-configure-update.md
+        - name: Nie można uruchomić maszyny wirtualnej ze względu na menedżera rozruchu systemu Windows
+          href: troubleshoot-guide-windows-boot-manager-menu.md
 - name: Nie można nawiązać połączenia z maszyną wirtualną
   items:
     - name: RDP
@@ -146,23 +152,23 @@
       href: troubleshoot-app-connection.md
 - name: Pomoc dotycząca resetowania hasła maszyny wirtualnej
   items:
-    - name: System Windows
+    - name: Windows
       href: reset-local-password-without-agent.md
     - name: Linux
       href: reset-password.md
     - name: Dostęp do odzyskiwania maszyny wirtualnej
       items:
-        - name: System Windows
+        - name: Windows
           items:
-            - name: Program PowerShell
+            - name: PowerShell
               href: troubleshoot-recovery-disks-windows.md
-            - name: Portalu Azure
+            - name: Azure Portal
               href: troubleshoot-recovery-disks-portal-windows.md
         - name: Linux
           items:
             - name: Interfejs wiersza polecenia
               href: troubleshoot-recovery-disks-linux.md
-            - name: Portalu Azure
+            - name: Azure Portal
               href: troubleshoot-recovery-disks-portal-linux.md
         - name: Nazwy urządzeń ulegają zmianie
           href: troubleshoot-device-names-problems.md
@@ -188,7 +194,7 @@
           href: performance-diagnostics.md
     - name: PerfInsights
       items:
-        - name: System Windows
+        - name: Windows
           items:
             - name: Korzystanie z narzędzia PerfInsights
               href: how-to-use-perfinsights.md
@@ -212,7 +218,7 @@
       href: ../../backup/backup-azure-vms-troubleshoot.md
 - name: Naprawianie maszyny wirtualnej przy użyciu poleceń
   items:
-    - name: System Windows
+    - name: Windows
       href: repair-windows-vm-using-azure-virtual-machine-repair-commands.md
     - name: Linux
       href: repair-linux-vm-using-azure-virtual-machine-repair-commands.md
@@ -251,7 +257,7 @@
           href: serial-console-errors.md
 - name: Problemy z usługą Azure Disk Encryption
   items:
-    - name: System Windows
+    - name: Windows
       items:
         - name: Omówienie
           href: ../windows/disk-encryption-overview.md

@@ -8,7 +8,7 @@
     - name: Porównanie interfejsów API wyszukiwania Bing
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Interfejs API REST — przewodniki Szybki start
+- name: Przewodniki Szybki start
   expanded: true
   items:
     - name: Interfejs API REST
@@ -27,19 +27,13 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'Przy użyciu języka C#'
-          href: quickstarts/sdk-csharp-quickstart.md
-        - name: Używanie środowiska Node.js
-          href: quickstarts/sdk-node-quickstart.md
-        - name: Korzystanie z języka Python
-          href: quickstarts/sdk-python-quickstart.md
-        - name: Korzystanie z języka Java
-          href: quickstarts/sdk-java-quickstart.md
+        - name: Biblioteki klienckie wyszukiwania wideo Bing
+          href: ./quickstarts/client-libraries.md
 - name: Samouczki
   items:
     - name: Tworzenie jednostronicowej aplikacji internetowej
       href: tutorial-bing-video-search-single-page-app.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Video+Search'
@@ -86,7 +80,7 @@
       maintainContext: true
 - name: Zasoby
   items:
-    - name: Ceny
+    - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/video/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/911452-bing-video-search-api'

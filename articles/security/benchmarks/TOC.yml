@@ -32,11 +32,23 @@
   items:
     - name: Omówienie punktów odniesienia zabezpieczeń platformy Azure
       href: security-baselines-overview.md
+    - name: Linia bazowa zabezpieczeń usługi Azure Cache for Redis
+      href: ../../azure-cache-for-redis/security-baseline.md
     - name: Punkt odniesienia zabezpieczeń usługi Batch
       href: ../../batch/security-baseline.md
-    - name: Punkt odniesienia zabezpieczeń usługi Key Vault
-      href: ../../key-vault/security-baseline.md
+    - name: Linia bazowa zabezpieczeń usługi Container Registry
+      href: ../../container-registry/security-baseline.md
+    - name: Linia bazowa zabezpieczeń usługi Cosmos DB
+      href: ../../cosmos-db/security-baseline.md
     - name: Punkt odniesienia zabezpieczeń usługi HDInsight
       href: ../../hdinsight/security-baseline.md
+    - name: Punkt odniesienia zabezpieczeń usługi Key Vault
+      href: ../../key-vault/security-baseline.md
+    - name: Punkt odniesienia zabezpieczeń bazy danych MariaDB
+      href: ../../mariadb/security-baseline.md
+    - name: Punkt odniesienia zabezpieczeń bazy danych MySQL
+      href: ../../mysql/security-baseline.md
+    - name: Punkt odniesienia zabezpieczeń bazy danych PostgreSQL
+      href: ../../postgresql/security-baseline.md
     - name: Punkt odniesienia zabezpieczeń usługi SQL Database
       href: ../../sql-database/security-baseline.md

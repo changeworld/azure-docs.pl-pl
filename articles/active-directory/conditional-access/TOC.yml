@@ -54,26 +54,28 @@
   items:
     - name: Planowanie wdrażania dostępu warunkowego
       href: plan-conditional-access.md
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       href: best-practices.md
     - name: Typowe zasady dostępu warunkowego
       items:
+        - name: Blokowanie starszego uwierzytelniania
+          href: howto-conditional-access-policy-block-legacy.md
         - name: Wymaganie uwierzytelniania wieloskładnikowego dla administratorów
           href: howto-conditional-access-policy-admin-mfa.md
         - name: Wymaganie uwierzytelniania wieloskładnikowego do zarządzania platformą Azure
           href: howto-conditional-access-policy-azure-management.md
         - name: Wymaganie uwierzytelniania wieloskładnikowego dla wszystkich użytkowników
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: Blokowanie starszego uwierzytelniania
-          href: howto-conditional-access-policy-block-legacy.md
         - name: Dostęp warunkowy oparty na ryzyku
           href: howto-conditional-access-policy-risk.md
-        - name: Wymaganie zaufanej lokalizacji na potrzeby rejestracji uwierzytelniania wieloskładnikowego
+        - name: Zabezpieczanie rejestracji informacji zabezpieczających
           href: howto-conditional-access-policy-registration.md
         - name: Blokowanie dostępu według lokalizacji
           href: howto-conditional-access-policy-location.md
         - name: Wymaganie zgodnych urządzeń
           href: howto-conditional-access-policy-compliant-device.md
+        - name: Blokowanie dostępu
+          href: howto-conditional-access-policy-block-access.md
     - name: Blokowanie starszego uwierzytelniania
       href: block-legacy-authentication.md
     - name: Wymaganie zatwierdzonych aplikacji klienckich
@@ -94,6 +96,8 @@
       href: policy-migration-mfa.md
     - name: Rozwiązywanie problemów
       items:
+        - name: Rozwiązywanie problemów z logowaniem
+          href: troubleshoot-conditional-access.md
         - name: Rozwiązywanie problemów przy użyciu narzędzia What If
           href: troubleshoot-conditional-access-what-if.md
 - name: Zasoby
@@ -102,7 +106,7 @@
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Forum MSDN
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
-    - name: Ceny
+    - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Aktualizacje usług
       href: ../fundamentals/whats-new.md

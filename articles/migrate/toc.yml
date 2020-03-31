@@ -8,13 +8,13 @@
       href: whats-new.md
     - name: Często zadawane pytania
       items:
-        - name: Pytania dotyczące usługi Azure Migrate
+        - name: Ogólne
           href: resources-faq.md
-        - name: Pytania dotyczące urządzenia usługi Azure Migrate
+        - name: Urządzenie usługi Azure Migrate
           href: common-questions-appliance.md
-        - name: 'Pytania dotyczące odnajdywania, oceny/wizualizacji zależności'
+        - name: Narzędzie do oceny serwera/analiza zależności
           href: common-questions-discovery-assessment.md
-        - name: Pytania dotyczące migracji serwera
+        - name: Narzędzie do migracji serwera
           href: common-questions-server-migration.md
 - name: Samouczki
   items:
@@ -74,34 +74,40 @@
           href: migrate-appliance.md
         - name: Wymagania urządzenia replikacji
           href: migrate-replication-appliance.md
+    - name: Architektura urządzenia usługi Azure Migrate
+      href: migrate-appliance-architecture.md
     - name: Architektura migracji funkcji Hyper-V
       href: hyper-v-migration-architecture.md
-    - name: Architektura migracji z użyciem agentów
+    - name: Architektura migracji z użyciem agentów programu VMware
       href: agent-based-migration-architecture.md
-    - name: Najlepsze rozwiązania dotyczące ocen
-      href: best-practices-assessment.md
     - name: Omówienie ocen
       href: concepts-assessment-calculation.md
-    - name: Wizualizacja zależności
+    - name: Najlepsze rozwiązania dotyczące ocen
+      href: best-practices-assessment.md
+    - name: Omówienie analizy zależności
       href: concepts-dependency-visualization.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Praca z poprzednią wersją
-      href: migrate-v1.md
     - name: Tworzenie projektów usługi Azure Migrate i zarządzanie nimi
       href: create-manage-projects.md
-    - name: Wdrażanie urządzenia VMware
-      href: how-to-set-up-appliance-vmware.md
-    - name: Wdrażanie urządzenia funkcji Hyper-V
-      href: how-to-set-up-appliance-hyper-v.md
-    - name: Wdrażanie urządzenia serwera fizycznego
-      href: how-to-set-up-appliance-physical.md
-    - name: Odnajdywanie aplikacji/ról/funkcji
-      href: how-to-discover-applications.md
     - name: Dodawanie narzędzia po raz pierwszy
       href: how-to-add-tool-first-time.md
     - name: Dodawanie narzędzi oceny
       href: how-to-assess.md
+    - name: Wdrażanie urządzenia usługi Azure Migrate
+      items:
+        - name: Wdrażanie urządzenia dla oprogramowania VMware (OVA)
+          href: how-to-set-up-appliance-vmware.md
+        - name: Wdrażanie urządzenia dla funkcji Hyper-V (VHD)
+          href: how-to-set-up-appliance-hyper-v.md
+        - name: Wdrażanie urządzenia dla oprogramowania VMware / funkcji Hyper-V (skrypt)
+          href: deploy-appliance-script.md
+        - name: Wdrażanie urządzenia dla serwerów fizycznych
+          href: how-to-set-up-appliance-physical.md
+    - name: Ograniczanie zakresu odnajdywania dla maszyn wirtualnych VMware
+      href: set-discovery-scope.md
+    - name: Odnajdywanie aplikacji/ról/funkcji
+      href: how-to-discover-applications.md
     - name: Grupowanie maszyn do oceny
       href: how-to-create-a-group.md
     - name: Analizowanie zależności maszyny (opartych na agentach)
@@ -122,6 +128,8 @@
       href: prepare-for-migration.md
     - name: Usuwanie projektu usługi Azure Migrate
       href: how-to-delete-project.md
+    - name: Praca z poprzednią wersją
+      href: migrate-v1.md
     - name: Ocena i migracja skali
       items:
         - name: Ocena dużej liczby maszyn wirtualnych VMware

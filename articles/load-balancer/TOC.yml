@@ -28,7 +28,7 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Konfigurowanie przekierowywania portów w usłudze Load Balancer
       href: tutorial-load-balancer-port-forwarding-portal.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: cli-samples.md
@@ -64,6 +64,14 @@
       href: load-balancer-security-controls.md
 - name: Instrukcje
   items:
+    - name: Zestawy skalowania maszyn wirtualnych
+      items:
+        - name: Używanie z istniejącym modułem Azure Load Balancer — portal
+          href: configure-vm-scale-set-portal.md
+        - name: Używanie z istniejącym modułem Azure Load Balancer — PowerShell
+          href: configure-vm-scale-set-powershell.md
+        - name: Używanie z istniejącym modułem Azure Load Balancer — interfejs wiersza polecenia
+          href: configure-vm-scale-set-cli.md
     - name: Uaktualnianie modułu równoważenia obciążenia w warstwie Podstawowa do modułu równoważenia obciążenia w warstwie Standardowa
       items:
         - name: Uaktualnianie publicznego modułu równoważenia obciążenia w warstwie Podstawowa
@@ -74,7 +82,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Konfigurowanie reguł dla ruchu wychodzącego
       items:
-        - name: Portalu Azure
+        - name: Azure Portal
           href: configure-load-balancer-outbound-portal.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: configure-load-balancer-outbound-cli.md
@@ -150,13 +158,13 @@
       displayName: ARM
 - name: Zasoby
   items:
-    - name: Rozwijanie umiejętności dzięki Microsoft Learn
+    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
       href: /learn/browse/?products=azure-load-balancer
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Opinie dotyczące usługi Azure Load Balancer
       href: 'https://feedback.azure.com/forums/217313-networking/category/77467-load-balancing'
-    - name: Ceny
+    - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/load-balancer/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

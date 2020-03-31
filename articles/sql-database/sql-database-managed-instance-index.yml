@@ -3,7 +3,7 @@ documentType: LandingData
 title: Wystąpienie zarządzane SQL
 metadata:
   title: 'Dokumentacja wystąpień zarządzanych — samouczki, dokumentacja interfejsu API'
-  meta.description: Learn how to use a managed instance in Azure SQL Database.
+  description: 'Znajdź przewodniki Szybki start, samouczki i przykłady dla wystąpienia zarządzanego usługi Azure SQL Database, w pełni zarządzanego wystąpienia aparatu bazy danych programu SQL Server hostowanego w chmurze.'
   services: sql-database
   author: jovanpop-msft
   ms.reviewer: carlrab
@@ -52,7 +52,7 @@ sections:
           - title: Migracja bez przestojów
             href: /azure/dms/tutorial-sql-server-to-managed-instance
             html: <p>Migracja floty baz danych przy minimalnym przestoju przy użyciu usługi Database Migration Service.</p>
-          - title: Ceny
+          - title: Cennik
             href: 'https://azure.microsoft.com/pricing/hybrid-benefit/'
             html: <p>Zaoszczędź do 40% dzięki korzyści użycia hybrydowego platformy Azure (AHB) za pomocą istniejących licencji lokalnych.</p>
           - title: Możliwości usługi PaaS
@@ -76,7 +76,7 @@ sections:
             title: Interfejs wiersza polecenia platformy Azure
           - image:
               src: media/index/logo_powershell.svg
-            title: Program PowerShell
+            title: PowerShell
           - image:
               src: media/index/logo_arm.svg
             title: Szablon usługi Azure Resource Manager

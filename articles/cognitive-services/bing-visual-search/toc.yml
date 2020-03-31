@@ -41,7 +41,11 @@
       href: tutorial-visual-search-image-upload.md
     - name: Przycinanie i wyszukiwanie obszaru obrazu
       href: tutorial-visual-search-crop-area-results.md
-- name: Przykłady
+    - name: Znajdowanie podobnych obrazów z poprzednich wyszukiwań
+      href: tutorial-visual-search-insights-token.md
+    - name: Tworzenie jednostronicowej aplikacji internetowej
+      href: tutorial-bing-visual-search-single-page-app.md
+- name: Samples
   items:
     - name: Przykłady kodu
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Visual+Search'
@@ -63,10 +67,6 @@
     - name: Zmiana rozmiaru i przycinanie miniatur
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md
-    - name: Wyszukiwanie obrazu za pomocą tokenów szczegółowych informacji o obrazie
-      href: tutorial-visual-search-insights-token.md
-    - name: Tworzenie jednostronicowej aplikacji internetowej
-      href: tutorial-bing-visual-search-single-page-app.md
 - name: Dokumentacja
   items:
     - name: Interfejs API REST v7

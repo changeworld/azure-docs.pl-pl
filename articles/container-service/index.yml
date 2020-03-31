@@ -3,7 +3,8 @@ documentType: LandingData
 title: Dokumentacja usługi Container Service
 metadata:
   title: Dokumentacja usługi Azure Container Service — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  meta.description: 'Azure Container Service allows you to deploy production ready Kubernetes, DC/OS, or Docker Swarm clusters. Learn how with quickstarts, tutorials, and samples.'
+  meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
+  description: 'Usługa Azure Container Service pozwala na wdrażanie gotowych do użycia w warunkach produkcyjnych klastrów Kubernetes, DC/OS lub Docker Swarm. Dowiedz się, jak to zrobić, za pomocą przewodników Szybki start, samouczków i przykładów.'
   services: container-service
   author: georgewallace
   manager: gwallace
@@ -30,7 +31,7 @@ sections:
             image:
               src: media/index/get-started.svg
               href: /azure/container-service/dcos-swarm
-  - title: Rozwijanie umiejętności dzięki Microsoft Learn
+  - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
     items:
       - type: list
         style: cards
@@ -52,4 +53,4 @@ sections:
               src: /learn/achievements/build-and-store-container-images.svg
               href: /learn/modules/build-and-store-container-images/
       - type: paragraph
-        text: <a href="/learn/browse/?products=azure-container-registry%2Cazure-container-instances">Więcej interaktywnych zasobów szkoleniowych...</a>
+        text: <a href="/learn/browse/?products=azure-container-registry%2Cazure-container-instances">Więcej interakcyjnych zasobów szkoleniowych...</a>

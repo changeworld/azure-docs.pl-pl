@@ -5,8 +5,12 @@
   items:
     - name: Co to jest usługa Azure Active Directory?
       href: active-directory-whatis.md
+    - name: Porównanie usług Azure AD i ADDS
+      href: active-directory-compare-azure-ad-to-ad.md
     - name: Co nowego w usłudze Azure Active Directory
       href: whats-new.md
+    - name: Co nowego na platformie Microsoft 365 Government
+      href: whats-new-microsoft-365-government.md
 - name: Przewodniki Szybki start
   expanded: true
   items:
@@ -17,8 +21,6 @@
 - name: Pojęcia
   expanded: true
   items:
-    - name: Wskaźnik bezpieczeństwa tożsamości
-      href: identity-secure-score.md
     - name: Zabezpieczenia
       items:
         - name: Włączanie usługi MFA
@@ -27,24 +29,30 @@
           href: concept-fundamentals-security-defaults.md
         - name: Blokowanie starszego uwierzytelniania
           href: concept-fundamentals-block-legacy-authentication.md
-    - name: Zarządzanie grupami i dostępem
-      href: active-directory-manage-groups.md
-    - name: Licencjonowanie oparte na grupach
-      href: active-directory-licensing-whatis-azure-portal.md
-    - name: Architektura usługi Azure AD
-      href: active-directory-architecture.md
-    - name: Domyślne uprawnienia użytkowników
-      href: users-default-permissions.md
-    - name: 'Wdrożenie 30, 90 i dalej'
+        - name: Wskaźnik bezpieczeństwa tożsamości
+          href: identity-secure-score.md
+    - name: Grupy i użytkownicy
+      items:
+        - name: Zarządzanie grupami i dostępem
+          href: active-directory-manage-groups.md
+        - name: Licencjonowanie oparte na grupach
+          href: active-directory-licensing-whatis-azure-portal.md
+        - name: Domyślne uprawnienia użytkowników
+          href: users-default-permissions.md
+    - name: Architektura
+      items:
+        - name: Architektura usługi Azure AD
+          href: active-directory-architecture.md
+    - name: Podręcznik wdrażania
+      items:
+        - name: 'Wdrożenie 30, 90 i dalej'
       href: active-directory-deployment-checklist-p2.md
-    - name: Przechowywanie danych tożsamości na potrzeby UE
-      href: active-directory-data-storage-eu.md
-    - name: Przechowywanie danych tożsamości na potrzeby Australii i Nowej Zelandii
-      href: active-directory-data-storage-australia-newzealand.md
-    - name: Co nowego na platformie Microsoft 365 Government
-      href: whats-new-microsoft-365-government.md
-    - name: Porównanie usług Azure AD i ADDS
-      href: active-directory-compare-azure-ad-to-ad.md
+    - name: Magazyn danych
+      items:
+        - name: Przechowywanie danych tożsamości na potrzeby Europy
+          href: active-directory-data-storage-eu.md
+        - name: Przechowywanie danych tożsamości na potrzeby Australii i Nowej Zelandii
+          href: active-directory-data-storage-australia-newzealand.md
     - name: Dokumentacja operacji usługi Azure AD
       items:
         - name: Wprowadzenie

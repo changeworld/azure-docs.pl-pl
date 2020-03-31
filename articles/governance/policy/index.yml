@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 11/04/2019
-  ms.openlocfilehash: 1a91f7fe63753ddc7c8b88d487064b15206fcfe3
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: d4ebb4dbc8fb2bc71ac9f061ef6d4500b86831ff
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73494336"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80289196"
 landingContent:
 - title: Informacje o usłudze Azure Policy
   linkLists:
@@ -33,7 +33,7 @@ landingContent:
     links:
     - text: Usługa Azure Policy podczas wydarzenia Build 2018
       url: https://channel9.msdn.com/events/Build/2018/THR2030
-- title: Wprowadzenie
+- title: Rozpoczęcie pracy
   linkLists:
   - linkListType: quickstart
     links:
@@ -109,10 +109,6 @@ landingContent:
       url: /powershell/module/az.resources/#policies
     - text: Azure PowerShell (szczegółowe informacje o zasadach)
       url: /powershell/module/az.policyinsights#policy_insights
-    - text: Zestaw Azure SDK dla platformy .NET (przypisania)
-      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
-    - text: Zestaw Azure SDK dla platformy .NET (definicje zasad)
-      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
     - text: REST (szczegółowe informacje o zasadach)
       url: /rest/api/policy-insights/
     - text: REST (przypisania)
@@ -123,3 +119,21 @@ landingContent:
       url: /rest/api/resources/policysetdefinitions
     - text: Szablony usługi Resource Manager
       url: /azure/templates/microsoft.authorization/allversions
+- title: Dokumentacja (więcej)
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Zestaw Azure SDK dla platformy .NET (przypisania)
+      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+    - text: Zestaw Azure SDK dla platformy .NET (definicje zasad)
+      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - text: Zestaw Azure SDK dla platformy Node (zasady)
+      url: /javascript/api/@azure/arm-policy
+    - text: Zestaw Azure SDK dla platformy Node (szczegółowe dane zasad)
+      url: /javascript/api/@azure/arm-policyinsights
+    - text: Zestaw Azure SDK dla środowiska Python (zasady)
+      url: /python/api/azure-mgmt-resource/azure.mgmt.resource.policy
+    - text: Zestaw Azure SDK dla środowiska Python (klient zasad)
+      url: /python/api/azure-mgmt-resource/azure.mgmt.resource.policyclient
+    - text: Zestaw Azure SDK dla platformy Python (szczegółowe dane zasad)
+      url: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights

@@ -3,7 +3,7 @@ title: Monitorowanie i dostrajanie wydajności usługi Azure SQL Database
 summary: Usługa Azure SQL Database udostępnia narzędzia ułatwiające zbieranie metryk i informacji diagnostycznych w celu monitorowania bazy danych i zwiększania jej wydajności.
 metadata:
   title: Dokumentacja monitorowania i dostrajania usługi Azure SQL Database
-  description: Usługa Azure SQL Database udostępnia narzędzia ułatwiające zbieranie metryk i informacji diagnostycznych w celu monitorowania bazy danych i zwiększania jej wydajności.
+  description: Dowiedz się więcej o narzędziach do strojenia wydajności i monitorowania usługi Azure SQL Database, które ułatwiają zbieranie metryk i danych diagnostycznych oraz zwiększanie wydajności bazy danych.
   ms.service: sql-database
   ms.subservice: performance
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: CarlRabeler
   ms.author: carlrab
   ms.date: 03/10/2020
-  ms.openlocfilehash: 43f74ea126ab7e028b39a86e2eb1edad4cae41a2
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: bc2c2a64cfce8bde6f04835bf090b632b8839a6f
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "79208911"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80373116"
 landingContent:
 - title: Informacje o monitorowaniu i dostrajaniu wydajności
   linkLists:

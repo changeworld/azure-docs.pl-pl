@@ -95,6 +95,9 @@
     - name: Trenowanie modelu
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
+    - name: Trenowanie rozproszone
+      displayName: 'parallellization, deep learning, deep neural network, dnn'
+      href: concept-distributed-training.md
     - name: Zarządzanie modelami (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
@@ -111,6 +114,9 @@
     - name: Zautomatyzowane uczenie maszynowe
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
+    - name: Zarządzanie pułapkami związanymi z uczeniem maszynowym
+      displayName: 'automl, auto ml, risks'
+      href: concept-manage-ml-pitfalls.md
     - name: Wystąpienie obliczeniowe
       displayName: 'resource, dsvm, Data Science Virtual Machine'
       href: concept-compute-instance.md
@@ -184,39 +190,47 @@
           href: concept-train-model-git-integration.md
     - name: Praca z danymi
       items:
-        - name: Łączenie z danymi w usłudze Azure Storage
-          displayName: 'blob, get, fileshare, access storage, mount, download'
-          href: how-to-access-data.md
-        - name: Pobieranie danych z magazynu danych
-          displayName: 'data, data set, register, access data'
-          href: how-to-create-register-datasets.md
-        - name: Szkolenie przy użyciu zestawów danych
-          displayName: 'data, dataset, mount'
-          href: how-to-train-with-datasets.md
-        - name: Importowanie danych w projektancie
-          displayName: 'designer, data, import, dataset, datastore'
-          href: how-to-designer-import-data.md
-        - name: Wykrywanie dryfu w zestawach danych
-          displayName: 'data, dataset'
-          href: how-to-monitor-datasets.md
-        - name: Wersja i śledzenie zestawów danych
-          displayName: 'data, data set'
-          href: how-to-version-track-datasets.md
-        - name: Etykietowanie danych
-          displayName: 'data, dataset, labeling'
-          href: how-to-create-labeling-projects.md
-        - name: Etykietowanie obrazów
-          displayName: 'data, dataset, labeling'
-          href: how-to-label-images.md
-        - name: Tworzenie zestawów danych z etykietami
-          displayName: 'data, labels, torchvision'
-          href: how-to-use-labeled-dataset.md
-        - name: Pozyskiwanie danych przy użyciu usługi Azure Data Factory
-          displayName: 'data, ingestion, adf'
-          href: how-to-data-ingest-adf.md
-        - name: Metodyka DevOps w zakresie pozyskiwania danych
-          displayName: 'data, ingestion, devops'
-          href: how-to-cicd-data-ingestion.md
+        - name: Dane etykiety
+          items:
+            - name: Etykietowanie danych
+              displayName: 'data, dataset, labeling'
+              href: how-to-create-labeling-projects.md
+            - name: Etykietowanie obrazów
+              displayName: 'data, dataset, labeling'
+              href: how-to-label-images.md
+            - name: Tworzenie zestawów danych z etykietami
+              displayName: 'data, labels, torchvision'
+              href: how-to-use-labeled-dataset.md
+        - name: Pobieranie danych
+          items:
+            - name: Pozyskiwanie danych przy użyciu usługi Azure Data Factory
+              displayName: 'data, ingestion, adf'
+              href: how-to-data-ingest-adf.md
+            - name: Metodyka DevOps w zakresie pozyskiwania danych
+              displayName: 'data, ingestion, devops'
+              href: how-to-cicd-data-ingestion.md
+            - name: Importowanie danych w projektancie
+              displayName: 'designer, data, import, dataset, datastore'
+              href: how-to-designer-import-data.md
+        - name: Uzyskiwanie dostępu do danych
+          items:
+            - name: Łączenie z usługą Azure Storage
+              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              href: how-to-access-data.md
+            - name: Pobieranie danych z magazynu danych
+              displayName: 'data, data set, register, access data'
+              href: how-to-create-register-datasets.md
+        - name: Korzystanie z danych i zarządzanie nimi
+          items:
+            - name: Szkolenie przy użyciu zestawów danych
+              displayName: 'data, dataset, mount'
+              href: how-to-train-with-datasets.md
+            - name: Wykrywanie dryfu w zestawach danych
+              displayName: 'data, dataset'
+              href: how-to-monitor-datasets.md
+            - name: Wersja i śledzenie zestawów danych
+              displayName: 'data, data set'
+              href: how-to-version-track-datasets.md
     - name: Szkolenie modeli
       items:
         - name: Używanie narzędzi do szacowania w uczeniu maszynowym
@@ -337,6 +351,7 @@
         - name: Wyzwalanie potoku
           href: how-to-trigger-published-pipeline.md
         - name: Debugowanie potoków i rozwiązywanie związanych z nimi problemów
+          displayName: designer
           href: how-to-debug-pipelines.md
         - name: Debugowanie potoków w usłudze Application Insights
           displayname: 'pipelines, log, monitor'

@@ -15,7 +15,7 @@
       href: tutorial-firewall-dnat.md
     - name: Monitorowanie dzienników diagnostycznych
       href: tutorial-diagnostics.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Azure PowerShell
       href: sample-powershell.md
@@ -23,7 +23,7 @@
       href: log-analytics-samples.md
 - name: Pojęcia
   items:
-    - name: Tagi FQDN
+    - name: Tagi w pełni kwalifikowanych nazw domen
       href: fqdn-tags.md
     - name: Infrastrukturalne nazwy FQDN
       href: infrastructure-fqdns.md
@@ -43,6 +43,8 @@
       href: compliance-certifications.md
     - name: Zarządzanie centralne
       href: central-management.md
+    - name: Obsługa pracy zdalnej
+      href: remote-work-support.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Wdrażanie przy użyciu programu Azure PowerShell
@@ -93,7 +95,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Szablony społeczności
       href: 'https://azure.microsoft.com/documentation/templates'
-    - name: Ceny
+    - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/azure-firewall/'
     - name: Dostępność regionalna
       href: 'https://azure.microsoft.com/regions/services/'

@@ -21,6 +21,8 @@
           href: cognitive-search-quickstart-blob.md
         - name: Tworzenie magazynu wiedzy
           href: knowledge-store-create-portal.md
+        - name: Wykonywanie zapytań przy użyciu Eksploratora wyszukiwania
+          href: search-explorer.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -231,10 +233,10 @@
           href: search-query-simple-examples.md
         - name: Używanie pełnej składni Lucene
           href: search-query-lucene-examples.md
-        - name: Używanie Eksploratora wyszukiwania (portal)
-          href: search-explorer.md
         - name: Znaki specjalne i częściowe terminy
           href: search-query-partial-matching.md
+        - name: Wykonywanie zapytań z poziomu usługi Power Apps
+          href: search-howto-powerapps.md
         - name: Dokumentacja składni
           items:
             - name: Prosta składnia zapytań

@@ -14,6 +14,8 @@
       href: ./servers/onboard-service-principal.md
     - name: Łączenie maszyn z usługą Azure Arc przy użyciu rozszerzenia DSC programu PowerShell
       href: ./servers/onboard-dsc.md
+- name: Zarządzanie agentem
+  href: ./servers/manage-agent.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia agenta komputera połączonego z platformą Azure

@@ -3,7 +3,7 @@ documentType: LandingData
 title: Funkcje
 metadata:
   title: Azure SQL Database — funkcje
-  meta.description: Learn about the features in Azure SQL Database.
+  description: 'Odkryj funkcje bazodanowe w usłudze Azure SQL Database, które pozwalają wykonywać bardziej rozbudowane operacje i implementować zaawansowane scenariusze.'
   services: sql-database
   author: jovanpop-msft
   manager: craigg
@@ -12,7 +12,7 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   ms.date: 02/06/2019
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
 sections:
   - items:
       - type: paragraph

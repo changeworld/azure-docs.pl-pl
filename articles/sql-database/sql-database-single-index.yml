@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: 'Usługa Azure SQL Database: Pojedyncza baza danych'
+title: Azure SQL Database
 metadata:
-  title: Dokumentacja — pojedyncza baza danych
-  meta.description: Learn how to use Azure SQL databases.
+  title: 'Dokumentacja — pojedyncza baza danych, serwer bazy danych, elastyczna pula'
+  description: 'Znajdź przewodniki Szybki start, samouczki i przykłady dla pojedynczych baz danych, elastycznych pul i serwerów baz danych usługi Azure SQL Database.'
   services: sql-database
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.subservice: single-database
   ms.topic: overview
   author: jovanpop-msft
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
   ms.reviewer: carlrab
   manager: craigg
   ms.date: 04/26/2019

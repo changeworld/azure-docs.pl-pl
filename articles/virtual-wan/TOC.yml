@@ -10,6 +10,8 @@
           href: migrate-from-hub-spoke-topology.md
         - name: Architektura globalnej sieci tranzytowej
           href: virtual-wan-global-transit-network-architecture.md
+        - name: Wzajemne połączenia z Chinami
+          href: interconnect-china.md
 - name: Samouczki
   items:
     - name: Tworzenie połączenia typu lokacja-lokacja
@@ -20,6 +22,8 @@
       href: virtual-wan-expressroute-portal.md
 - name: Pojęcia
   items:
+    - name: Praca zdalna
+      href: work-remotely-support.md
     - name: Lokalizacje i partnerzy
       items:
         - name: Lokalizacje centrów i partnerzy
@@ -28,8 +32,6 @@
           href: virtual-wan-configure-automation-providers.md
     - name: Zasady protokołu IPsec
       href: virtual-wan-ipsec.md
-    - name: Omówienie sieci VPN punkt-lokacja
-      href: ../vpn-gateway/point-to-site-about.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
 - name: Przewodniki z instrukcjami
   items:
     - name: Łączenie bramy sieci wirtualnej z usługą Virtual WAN
@@ -52,25 +54,31 @@
           href: virtual-wan-site-to-site-portal.md
     - name: Sieć VPN użytkownika (punkt-lokacja)
       items:
-        - name: Tworzenie połączeń sieci VPN użytkownika (punkt-lokacja)
+        - name: Tworzenie połączenia sieci VPN użytkownika
           href: virtual-wan-point-to-site-portal.md
-        - name: Konfigurowanie certyfikatów dla sieci VPN użytkownika
+        - name: Generowanie certyfikatów klienta
           href: certificates-point-to-site.md
-        - name: Konfigurowanie dzierżawy usługi Azure AD dla sieci VPN użytkownika
+        - name: Konfigurowanie dzierżawy usługi Azure AD
           href: openvpn-azure-ad-tenant.md
-        - name: Konfigurowanie tunelu użytkownika dla zawsze włączonej sieci VPN
-          href: ../vpn-gateway/vpn-gateway-howto-always-on-user-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
-        - name: Konfigurowanie tunelu urządzenia dla zawsze włączonej sieci VPN
-          href: ../vpn-gateway/vpn-gateway-howto-always-on-device-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
-        - name: Włączanie uwierzytelniania wieloskładnikowego dla sieci VPN użytkownika
-          href: openvpn-azure-ad-mfa.md
-        - name: Konfigurowanie uwierzytelniania w usłudze Azure AD na potrzeby sieci VPN użytkownika
-          href: virtual-wan-point-to-site-azure-ad.md
-        - name: Konfigurowanie uwierzytelniania w usłudze Azure AD dla wielu aplikacji na potrzeby sieci VPN użytkownika
-          href: openvpn-azure-ad-tenant-multi-app.md
-        - name: Pobieranie profili sieci VPN użytkownika — globalnych i opartych na koncentratorach
+        - name: Profil klienta
+          href: about-vpn-profile-download.md
+        - name: Profil globalny i oparty na centrum
           href: global-hub-profile.md
-    - name: Configure routing (Konfigurowanie routingu)
+        - name: Konfigurowanie klientów OpenVPN
+          href: howto-openvpn-clients.md?
+        - name: Konfigurowanie tunelu użytkownika dla zawsze włączonej sieci VPN
+          href: howto-always-on-user-tunnel.md
+        - name: Konfigurowanie tunelu urządzenia dla zawsze włączonej sieci VPN
+          href: howto-always-on-device-tunnel.md
+        - name: Włączanie uwierzytelniania wieloskładnikowego
+          href: openvpn-azure-ad-mfa.md
+        - name: Konfigurowanie uwierzytelniania w usłudze Azure AD
+          href: virtual-wan-point-to-site-azure-ad.md
+        - name: Konfigurowanie usługi Azure VPN Client dla systemu Windows 10
+          href: openvpn-azure-ad-client.md
+        - name: Konfigurowanie uwierzytelniania w usłudze Azure AD dla wielu aplikacji
+          href: openvpn-azure-ad-tenant-multi-app.md
+    - name: Routing
       items:
         - name: Kierowanie ruchem z koncentratora wirtualnego do wirtualnego urządzenia sieciowego
           items:
