@@ -7,27 +7,29 @@
     - name: Porównanie interfejsów API wyszukiwania Bing
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Interfejs API REST — przewodniki Szybki start
+- name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
-- name: Biblioteka kliencka
-  items:
-    - name: 'C#'
-      href: quickstarts/csharp-sdk.md
-    - name: Przejdź
-      href: quickstarts/go-sdk.md
+    - name: Interfejs API REST
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp.md
+        - name: Java
+          href: quickstarts/java.md
+        - name: Node.js
+          href: quickstarts/nodejs.md
+        - name: PHP
+          href: quickstarts/php.md
+        - name: Python
+          href: quickstarts/python.md
+        - name: Ruby
+          href: quickstarts/ruby.md
+    - name: Biblioteka kliencka
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp-sdk.md
+        - name: Przejdź
+          href: quickstarts/go-sdk.md
 - name: Samouczki
   items:
     - name: Jednostronicowa aplikacja internetowa
@@ -63,7 +65,7 @@
       maintainContext: true
 - name: Zasoby
   items:
-    - name: Ceny
+    - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/autosuggest-api/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598198-bing-autosuggest'

@@ -7,7 +7,7 @@
     - name: Porównanie interfejsów API wyszukiwania Bing
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Interfejs API REST — przewodniki Szybki start
+- name: Przewodniki Szybki start
   expanded: true
   items:
     - name: Interfejs API REST
@@ -32,7 +32,7 @@
   items:
     - name: Tworzenie jednostronicowej aplikacji internetowej
       href: tutorial-bing-entities-search-single-page-app.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search'
@@ -68,7 +68,7 @@
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch'
 - name: Zasoby
   items:
-    - name: Ceny
+    - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-entity-search-api/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/601036-bing-entity-search-api'

@@ -1,6 +1,6 @@
 ---
-title: Informacje o szablonach zestawu skalowania maszyn wirtualnych
-description: Dowiedz się, jak utworzyć podstawowy szablon zestawu skalowania dla zestawów skalowania maszyn wirtualnych platformy Azure za pomocą kilku prostych kroków.
+title: Dowiedz się więcej o szablonach zestawów skalowania maszyny wirtualnej
+description: Dowiedz się, jak utworzyć szablon zestawu podstawowych skalowania dla zestawów skalowania maszyny wirtualnej platformy Azure w kilku prostych krokach.
 author: mayanknayar
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: manayar
 ms.openlocfilehash: 24db9b2d39771c481a8c43e2b55f12cef381b4d6
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76271906"
 ---
-# <a name="learn-about-virtual-machine-scale-set-templates"></a>Informacje o szablonach zestawu skalowania maszyn wirtualnych
-[Szablony usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) to doskonały sposób wdrażania grup powiązanych zasobów. W tej serii samouczków pokazano, jak utworzyć podstawowy szablon zestawu skalowania i jak zmodyfikować ten szablon w celu dopasowania do różnych scenariuszy. Wszystkie przykłady pochodzą z tego [repozytorium GitHub](https://github.com/gatneil/mvss).
+# <a name="learn-about-virtual-machine-scale-set-templates"></a>Dowiedz się więcej o szablonach zestawów skalowania maszyny wirtualnej
+[Szablony usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) to doskonały sposób wdrażania grup powiązanych zasobów. W tej serii samouczków pokazano, jak utworzyć szablon zestawu skalowania podstawowego i jak zmodyfikować ten szablon w zależności od różnych scenariuszy. Wszystkie przykłady pochodzą z tego [repozytorium GitHub](https://github.com/gatneil/mvss).
 
-Ten szablon jest przeznaczony do prostej. Aby zapoznać się z bardziej kompletnymi przykładami szablonów zestawu skalowania, zobacz [repozytorium szablonów szybkiego startu platformy Azure](https://github.com/Azure/azure-quickstart-templates) i wyszukiwanie folderów zawierających ciąg `vmss`.
+Ten szablon ma być prosty. Aby uzyskać bardziej kompletne przykłady szablonów zestawów skalowania, zobacz [repozytorium GitHub szablonów szybki startu platformy Azure](https://github.com/Azure/azure-quickstart-templates) i wyszukaj foldery zawierające ciąg `vmss`.
 
-Jeśli masz już doświadczenie w tworzeniu szablonów, możesz przejść do sekcji "następne kroki", aby dowiedzieć się, jak zmodyfikować ten szablon.
+Jeśli znasz już tworzenie szablonów, możesz przejść do sekcji "Następne kroki", aby zobaczyć, jak zmodyfikować ten szablon.
 
-## <a name="define-schema-and-contentversion"></a>Zdefiniuj $schema i Contentversion —
-Najpierw Zdefiniuj `$schema` i `contentVersion` w szablonie. Element `$schema` definiuje wersję języka szablonów i służy do wyróżniania składni programu Visual Studio i podobnych funkcji walidacji. Element `contentVersion` nie jest używany przez platformę Azure. Zamiast tego pomaga śledzić wersję szablonu.
+## <a name="define-schema-and-contentversion"></a>Definiowanie $schema i contentVersion
+Najpierw zdefiniuj `$schema` i `contentVersion` w szablonie. Element `$schema` definiuje wersję języka szablonu i jest używany do wyróżniania składni programu Visual Studio i podobnych funkcji sprawdzania poprawności. Element `contentVersion` nie jest używany przez platformę Azure. Zamiast tego pomaga śledzić wersję szablonu.
 
 ```json
 {
@@ -32,7 +32,7 @@ Najpierw Zdefiniuj `$schema` i `contentVersion` w szablonie. Element `$schema` d
 ```
 
 ## <a name="define-parameters"></a>Definiowanie parametrów
-Następnie zdefiniuj dwa parametry, `adminUsername` i `adminPassword`. Parametry są wartościami określonymi w momencie wdrożenia. Parametr `adminUsername` jest po prostu typem `string`, ale ponieważ `adminPassword` jest tajny, nadaj typ `securestring`. Później te parametry są przesyłane do konfiguracji zestawu skalowania.
+Następnie zdefiniuj dwa parametry `adminUsername` i `adminPassword`. Parametry są wartościami określonymi w czasie wdrażania. Parametr `adminUsername` jest po `string` prostu typem, ale ponieważ `adminPassword` `securestring`jest tajny, nadać mu typ . Później te parametry są przekazywane do konfiguracji zestawu skalowania.
 
 ```json
   "parameters": {
@@ -45,20 +45,20 @@ Następnie zdefiniuj dwa parametry, `adminUsername` i `adminPassword`. Parametry
   },
 ```
 ## <a name="define-variables"></a>Definiowanie zmiennych
-Szablony Menedżer zasobów pozwalają również definiować zmienne, które będą używane później w szablonie. W przykładzie nie są używane żadne zmienne, więc obiekt JSON jest pusty.
+Szablony Menedżera zasobów umożliwiają również definiowanie zmiennych, które mają być używane w dalszej części szablonu. W przykładzie nie używa żadnych zmiennych, więc obiekt JSON jest pusty.
 
 ```json
   "variables": {},
 ```
 
 ## <a name="define-resources"></a>Definiowanie zasobów
-Dalej to sekcja zasobów szablonu. Tutaj możesz zdefiniować, co chcesz wdrożyć. W przeciwieństwie do `parameters` i `variables` (które są obiektami JSON), `resources` jest listą JSON obiektów JSON.
+Dalej jest sekcja zasobów szablonu. W tym miejscu można zdefiniować, co faktycznie chcesz wdrożyć. W `parameters` `variables` przeciwieństwie do i (które są obiektami JSON), `resources` jest lista JSON obiektów JSON.
 
 ```json
    "resources": [
 ```
 
-Wszystkie zasoby wymagają `type`, `name`, `apiVersion`i `location` właściwości. Pierwszy zasób tego przykładu ma typ [Microsoft. Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks), Name `myVnet`i apiVersion `2018-11-01`. (Aby znaleźć najnowszą wersję interfejsu API dla typu zasobu, zobacz odwołanie do [szablonu Azure Resource Manager](/azure/templates/).)
+Wszystkie zasoby `type` `name`wymagają `apiVersion`, `location` , i właściwości. W tym przykładzie pierwszy zasób ma typ `myVnet` [Microsoft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks), name i apiVersion `2018-11-01`. (Aby znaleźć najnowszą wersję interfejsu API dla typu zasobu, zobacz [odwołanie do szablonu usługi Azure Resource Manager).](/azure/templates/)
 
 ```json
      {
@@ -68,14 +68,14 @@ Wszystkie zasoby wymagają `type`, `name`, `apiVersion`i `location` właściwoś
 ```
 
 ## <a name="specify-location"></a>Określ lokalizację
-Aby określić lokalizację sieci wirtualnej, użyj [funkcji Menedżer zasobów Template](../azure-resource-manager/templates/template-functions.md). Ta funkcja musi być ujęta w cudzysłów i nawiasy kwadratowe, takie jak: `"[<template-function>]"`. W takim przypadku należy użyć funkcji `resourceGroup`. Nie przyjmuje żadnych argumentów i zwraca obiekt JSON z metadanymi o grupie zasobów, do której to wdrożenie jest wdrażane. Grupa zasobów jest ustawiana przez użytkownika w czasie wdrażania. Ta wartość jest następnie indeksowana do tego obiektu JSON przy użyciu `.location`, aby pobrać lokalizację z obiektu JSON.
+Aby określić lokalizację sieci wirtualnej, użyj [funkcji szablonu Menedżera zasobów](../azure-resource-manager/templates/template-functions.md). Ta funkcja musi być ujęta w cudzysłowie i nawiasy kwadratowe w ten sposób: `"[<template-function>]"`. W takim przypadku `resourceGroup` należy użyć funkcji. Przyjmuje żadnych argumentów i zwraca obiekt JSON z metadanymi o grupie zasobów, do jakiej jest wdrażane to wdrożenie. Grupa zasobów jest ustawiana przez użytkownika w momencie wdrażania. Ta wartość jest następnie indeksowane do `.location` tego obiektu JSON z aby uzyskać lokalizację z obiektu JSON.
 
 ```json
        "location": "[resourceGroup().location]",
 ```
 
-## <a name="specify-virtual-network-properties"></a>Określ właściwości sieci wirtualnej
-Każdy zasób Menedżer zasobów ma własną sekcję `properties` dla konfiguracji specyficznych dla zasobu. W takim przypadku należy określić, że sieć wirtualna powinna mieć jedną podsieć używaną przez zakres prywatnych adresów IP `10.0.0.0/16`. Zestaw skalowania jest zawsze zawarty w jednej podsieci. Nie może obejmować podsieci.
+## <a name="specify-virtual-network-properties"></a>Określanie właściwości sieci wirtualnej
+Każdy zasób Menedżera `properties` zasobów ma własną sekcję dla konfiguracji specyficznych dla zasobu. W takim przypadku należy określić, że sieć wirtualna powinna `10.0.0.0/16`mieć jedną podsieć przy użyciu zakresu prywatnych adresów IP . Zestaw skalowania jest zawsze zawarty w jednej podsieci. Nie może obejmować podsieci.
 
 ```json
        "properties": {
@@ -96,10 +96,10 @@ Każdy zasób Menedżer zasobów ma własną sekcję `properties` dla konfigurac
      },
 ```
 
-## <a name="add-dependson-list"></a>Dodaj listę dependsOn
-Oprócz wymaganych `type`, `name`, `apiVersion`i `location` właściwości, każdy zasób może zawierać opcjonalne `dependsOn` listę ciągów. Ta lista określa, które inne zasoby z tego wdrożenia muszą zostać zakończone przed wdrożeniem tego zasobu.
+## <a name="add-dependson-list"></a>Dodaj dependsOn lista
+`type`Oprócz wymaganego `name`, , `apiVersion`i `location` właściwości, każdy zasób `dependsOn` może mieć opcjonalną listę ciągów. Ta lista określa, które inne zasoby z tego wdrożenia muszą zostać zakończono przed wdrożeniem tego zasobu.
 
-W takim przypadku na liście znajduje się tylko jeden element sieci wirtualnej z poprzedniego przykładu. Ta zależność jest określana, ponieważ zestaw skalowania potrzebuje sieci przed utworzeniem jakichkolwiek maszyn wirtualnych. W ten sposób zestaw skalowania może udostępnić te prywatne adresy IP z zakresu adresów IP wcześniej określonych we właściwościach sieci. Format każdego ciągu na liście dependsOn jest `<type>/<name>`. Użyj tych samych `type` i `name` używanych wcześniej w definicji zasobu sieci wirtualnej.
+W takim przypadku istnieje tylko jeden element na liście, sieci wirtualnej z poprzedniego przykładu. Należy określić tę zależność, ponieważ zestaw skalowania potrzebuje sieci istnieć przed utworzeniem żadnych maszyn wirtualnych. W ten sposób zestaw skalowania może nadać tym wirtualnym prywatnym adresom IP z zakresu adresów IP określonego wcześniej we właściwościach sieci. Format każdego ciągu na liście dependsOn to `<type>/<name>`. Użyj tego `type` `name` samego i używane wcześniej w definicji zasobów sieci wirtualnej.
 
 ```json
      {
@@ -111,10 +111,10 @@ W takim przypadku na liście znajduje się tylko jeden element sieci wirtualnej 
          "Microsoft.Network/virtualNetworks/myVnet"
        ],
 ```
-## <a name="specify-scale-set-properties"></a>Określ właściwości zestawu skalowania
-Zestawy skalowania mają wiele właściwości do dostosowywania maszyn wirtualnych w zestawie skalowania. Aby zapoznać się z pełną listą tych właściwości, zobacz [odwołanie do szablonu](/azure/templates/microsoft.compute/virtualmachinescalesets). Na potrzeby tego samouczka są ustawiane tylko kilka najczęściej używanych właściwości.
-### <a name="supply-vm-size-and-capacity"></a>Określanie rozmiaru i pojemności maszyny wirtualnej
-Zestaw skalowania musi wiedzieć, jaki rozmiar maszyny wirtualnej utworzyć ("Nazwa jednostki SKU") oraz liczbę takich maszyn wirtualnych do utworzenia ("pojemność jednostki SKU"). Aby sprawdzić, które rozmiary maszyn wirtualnych są dostępne, zobacz [dokumentację dotyczącą rozmiarów maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes).
+## <a name="specify-scale-set-properties"></a>Określanie właściwości zestawu skali
+Zestawy skalowania mają wiele właściwości dostosowywania maszyn wirtualnych w zestawie skalowania. Aby uzyskać pełną listę tych właściwości, zobacz [odwołanie do szablonu](/azure/templates/microsoft.compute/virtualmachinescalesets). W tym samouczku ustawiono tylko kilka często używanych właściwości.
+### <a name="supply-vm-size-and-capacity"></a>Rozmiar i pojemność maszyny wirtualnej
+Zestaw skalowania musi wiedzieć, jaki rozmiar maszyny Wirtualnej do utworzenia ("nazwa sku") i ile takich maszyn wirtualnych do utworzenia ("sku capacity"). Aby zobaczyć, które rozmiary maszyn wirtualnych są dostępne, zobacz [dokumentację Rozmiary maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes).
 
 ```json
        "sku": {
@@ -123,8 +123,8 @@ Zestaw skalowania musi wiedzieć, jaki rozmiar maszyny wirtualnej utworzyć ("Na
        },
 ```
 
-### <a name="choose-type-of-updates"></a>Wybierz typ aktualizacji
-Zestaw skalowania musi również wiedzieć, jak obsługiwać aktualizacje w zestawie skalowania. Obecnie dostępne są trzy opcje, `Manual`, `Rolling` i `Automatic`. Aby uzyskać więcej informacji o różnicach między tymi dwoma, zapoznaj się z dokumentacją dotyczącą [uaktualniania zestawu skalowania](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
+### <a name="choose-type-of-updates"></a>Wybieranie typu aktualizacji
+Zestaw skalowania musi również wiedzieć, jak obsługiwać aktualizacje w zestawie skalowania. Obecnie istnieją trzy opcje, `Manual` `Rolling` i `Automatic`. Aby uzyskać więcej informacji na temat różnic między nimi, zobacz dokumentację [dotyczącą uaktualniania zestawu skalowania](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
 
 ```json
        "properties": {
@@ -133,8 +133,8 @@ Zestaw skalowania musi również wiedzieć, jak obsługiwać aktualizacje w zest
          },
 ```
 
-### <a name="choose-vm-operating-system"></a>Wybierz system operacyjny maszyny wirtualnej
-Zestaw skalowania musi wiedzieć, jaki system operacyjny umieścić na maszynach wirtualnych. W tym miejscu można utworzyć maszyny wirtualne za pomocą w pełni poprawionego obrazu Ubuntu 16,04-LTS.
+### <a name="choose-vm-operating-system"></a>Wybierz system operacyjny maszyny Wirtualnej
+Zestaw skalowania musi wiedzieć, jaki system operacyjny należy umieścić na maszynach wirtualnych. Tutaj utwórz maszyny wirtualne z w pełni połatanym obrazem Ubuntu 16.04-LTS.
 
 ```json
          "virtualMachineProfile": {
@@ -148,10 +148,10 @@ Zestaw skalowania musi wiedzieć, jaki system operacyjny umieścić na maszynach
            },
 ```
 
-### <a name="specify-computernameprefix"></a>Określ computerNamePrefix
-Zestaw skalowania służy do wdrażania wielu maszyn wirtualnych. Zamiast określać nazwę każdej maszyny wirtualnej, określ `computerNamePrefix`. Zestaw skalowania dołącza indeks do prefiksu dla każdej maszyny wirtualnej, więc nazwy maszyn wirtualnych mają postać `<computerNamePrefix>_<auto-generated-index>`.
+### <a name="specify-computernameprefix"></a>Określanie przycisku ComputerNamePrefix
+Zestaw skalowania wdraża wiele maszyn wirtualnych. Zamiast określać każdą nazwę maszyny `computerNamePrefix`Wirtualnej, należy określić . Zestaw skalowania dołącza indeks do prefiksu dla każdej maszyny Wirtualnej, więc nazwy maszyn wirtualnych mają formularz `<computerNamePrefix>_<auto-generated-index>`.
 
-W poniższym fragmencie kodu Użyj parametrów z przed, aby ustawić nazwę użytkownika i hasło administratora dla wszystkich maszyn wirtualnych w zestawie skalowania. Ten proces używa funkcji szablonu `parameters`. Ta funkcja przyjmuje ciąg, który określa, do którego parametru odwołuje się i wyprowadza wartość dla tego parametru.
+We wtorkowym urywku użyj parametrów sprzed, aby ustawić nazwę użytkownika i hasło administratora dla wszystkich maszyn wirtualnych w zestawie skalowania. Ten proces używa `parameters` funkcji szablonu. Ta funkcja przyjmuje ciąg, który określa, który parametr ma się odwoływać i wyprowadza wartość dla tego parametru.
 
 ```json
            "osProfile": {
@@ -161,12 +161,12 @@ W poniższym fragmencie kodu Użyj parametrów z przed, aby ustawić nazwę uży
            },
 ```
 
-### <a name="specify-vm-network-configuration"></a>Określ konfigurację sieci VMNETWORK
-Na koniec Określ konfigurację sieci dla maszyn wirtualnych w zestawie skalowania. W takim przypadku wystarczy określić identyfikator utworzonej wcześniej podsieci. Oznacza to, że zestaw skalowania umieszcza interfejsy sieciowe w tej podsieci.
+### <a name="specify-vm-network-configuration"></a>Określanie konfiguracji sieci maszyn wirtualnych
+Na koniec określ konfigurację sieci dla maszyn wirtualnych w zestawie skalowania. W takim przypadku wystarczy tylko określić identyfikator podsieci utworzonej wcześniej. To informuje zestaw skalowania, aby umieścić interfejsy sieciowe w tej podsieci.
 
-Identyfikator sieci wirtualnej zawierającej podsieć można uzyskać, korzystając z funkcji `resourceId` Template. Ta funkcja przyjmuje typ i nazwę zasobu i zwraca w pełni kwalifikowany identyfikator tego zasobu. Ten identyfikator ma postać: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
+Identyfikator sieci wirtualnej zawierającej podsieć można uzyskać `resourceId` za pomocą funkcji szablonu. Ta funkcja przyjmuje typ i nazwę zasobu i zwraca w pełni kwalifikowany identyfikator tego zasobu. Ten identyfikator ma formularz:`/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
 
-Jednak identyfikator sieci wirtualnej jest zbyt mały. Podaj określoną podsieć, w której powinny znajdować się maszyny wirtualne zestawu skalowania. W tym celu Połącz `/subnets/mySubnet` z IDENTYFIKATORem sieci wirtualnej. Wynikiem jest w pełni kwalifikowany identyfikator podsieci. Wykonaj tę kombinację przy użyciu funkcji `concat`, która wykonuje serię ciągów i zwraca ich połączenie.
+Jednak identyfikator sieci wirtualnej nie wystarczy. Podaj określoną podsieć, w których powinny znajdować się maszyny wirtualne zestawu skalowania. Aby to zrobić, `/subnets/mySubnet` połącz się z identyfikatorem sieci wirtualnej. Wynikiem jest w pełni kwalifikowany identyfikator podsieci. Wykonaj to łączenia `concat` z funkcją, która przyjmuje w serii ciągów i zwraca ich łączenia.
 
 ```json
            "networkProfile": {

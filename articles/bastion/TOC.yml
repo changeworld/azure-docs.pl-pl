@@ -8,6 +8,10 @@
   items:
     - name: Tworzenie hosta-bastionu na podstawie ustawień maszyny wirtualnej
       href: quickstart-host-portal.md
+- name: Pojęcia
+  items:
+    - name: Praca zdalna
+      href: work-remotely-support.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie hosta bastionu
@@ -16,6 +20,8 @@
           href: bastion-create-host-portal.md
         - name: Azure PowerShell
           href: bastion-create-host-powershell.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: create-host-cli.md
     - name: Nawiązywanie połączenia z maszyną wirtualną
       items:
         - name: SSH (Linux)
@@ -40,6 +46,14 @@
       href: session-monitoring.md
     - name: Rozwiązywanie problemów
       href: troubleshoot.md
+- name: Dokumentacja
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.network
+    - name: REST
+      href: /rest/api/virtualnetwork/bastionhosts
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: /cli/azure/network/bastion
 - name: Zasoby
   items:
     - name: Często zadawane pytania dotyczące usługi Bastion

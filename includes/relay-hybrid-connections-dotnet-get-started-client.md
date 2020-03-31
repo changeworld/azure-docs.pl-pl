@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: 2d6836b2bf667e4170e67a95dc1daad72a769eb9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183465"
 ---
 ### <a name="create-a-console-application"></a>Tworzenie aplikacji konsolowej
 
-W programie Visual Studio utwórz nowy projekt **Aplikacja konsoli (.NET Framework)** .
+W programie Visual Studio utwórz nowy projekt **Aplikacja konsoli (.NET Framework)**.
 
 ### <a name="add-the-relay-nuget-package"></a>Dodawanie pakietu NuGet usługi Relay
 

@@ -5,20 +5,20 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 69dc0e1c14bc88cdbf0aa48700f95058ba759cc0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183737"
 ---
-1. W widoku Solution (lub **Eksploratora rozwiązań** w programie Visual Studio), kliknij prawym przyciskiem myszy **składniki** folderu, kliknij przycisk **Uzyskaj więcej składników...** , wyszukaj **Google Cloud Messaging Client** składników i dodaj go do projektu.
-2. Otwórz plik projektu o nazwie ToDoActivity.cs i dodaj następujące za pomocą instrukcji do klasy:
+1. W widoku Rozwiązanie (lub **Eksplorator rozwiązania** w programie Visual Studio) kliknij prawym przyciskiem myszy folder **Składniki,** kliknij polecenie **Uzyskaj więcej składników...**, wyszukaj składnik Klienta usługi Google Cloud **Messaging** i dodaj go do projektu.
+2. Otwórz plik projektu ToDoActivity.cs i dodaj do klasy następującą instrukcję za pomocą instrukcji:
 
     ```csharp
     using Gcm.Client;
     ```
 
-3. W **ToDoActivity** klasy, Dodaj następujący kod, nowe: 
+3. W klasie **ToDoActivity** dodaj następujący nowy kod: 
 
     ```csharp
     // Create a new instance field for this activity.
@@ -42,8 +42,8 @@ ms.locfileid: "67183737"
     }
     ```
 
-    Dzięki temu można uzyskać dostęp do wystąpienia klienta mobilnego z procesu wypychania obsługi usługi.
-4. Dodaj następujący kod do **OnCreate** metoda po **MobileServiceClient** zostanie utworzony:
+    Dzięki temu można uzyskać dostęp do wystąpienia klienta mobilnego z procesu obsługi wypychania.
+4. Dodaj następujący kod do **OnCreate** metody, po **MobileServiceClient** jest tworzony:
 
     ```csharp
     // Set the current instance of TodoActivity.
@@ -57,4 +57,4 @@ ms.locfileid: "67183737"
     GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
     ```
 
-Twoje **ToDoActivity** jest teraz gotowy do dodawania powiadomień wypychanych.
+Twoja **ToDoActivity** jest teraz przygotowana do dodawania powiadomień wypychanych.

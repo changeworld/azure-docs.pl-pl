@@ -9,16 +9,21 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4a1952f5ece4c021834fb98f8a09f1a2738e6469
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 929bc0695bda2e64f77f7e9286e06cee787822ba
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72789387"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388971"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrowanie maszyn wirtualnych usług Amazon Web Services (AWS) na platformę Azure
 
-W tym samouczku pokazano, jak przeprowadzić migrację maszyn wirtualnych usługi Amazon Web Services (AWS) do maszyn wirtualnych platformy Azure za pomocą usługi Azure Site Recovery. Podczas migrowania wystąpień usługi EC2 usług AWS na platformę Azure maszyny wirtualne są traktowane tak, jakby były fizycznymi komputerami lokalnymi. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku pokazano, jak migrować maszyny wirtualne amazon web services (AWS) na maszyny wirtualne platformy Azure przy użyciu usługi Azure Site Recovery. Podczas migrowania wystąpień usługi EC2 usług AWS na platformę Azure maszyny wirtualne są traktowane tak, jakby były fizycznymi komputerami lokalnymi. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+
+
+> [!TIP]
+> Teraz należy użyć usługi Migracji platformy Azure do migracji maszyn wirtualnych AWS na platformę Azure, zamiast usługi Azure Site Recovery. [Dowiedz się więcej](../migrate/tutorial-migrate-physical-virtual-machines.md).
+
 
 > [!div class="checklist"]
 > * Weryfikowanie wymagań wstępnych
@@ -31,9 +36,6 @@ W tym samouczku pokazano, jak przeprowadzić migrację maszyn wirtualnych usług
 
 Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) przed rozpoczęciem.
 
-
-> [!NOTE]
-> Teraz można użyć usługi Azure Migrate do migracji wystąpień usługi AWS na platformę Azure. [Dowiedz się więcej](../migrate/tutorial-migrate-physical-virtual-machines.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - Upewnij się, że na maszynach wirtualnych, które mają zostać zmigrowane, jest uruchomiona obsługiwana wersja systemu operacyjnego. Obsługiwane wersje to: 

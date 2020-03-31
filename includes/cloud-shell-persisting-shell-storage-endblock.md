@@ -5,28 +5,28 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: c2ed33aea77b5478e8d17f6bd0213ef3e778b806
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183568"
 ---
-## <a name="transfer-local-files-to-cloud-shell"></a>Transfer plików lokalnych do usługi Cloud Shell
-`clouddrive` Directory synchronizuje się z bloku usługi Azure storage w portalu. Użyj tego bloku do przenoszenia lokalnych plików do / z udziału plików. Aktualizowanie pliki w usłudze Cloud Shell jest widoczne w usłudze file storage graficznego interfejsu użytkownika podczas odświeżania bloku.
+## <a name="transfer-local-files-to-cloud-shell"></a>Przenoszenie plików lokalnych do powłoki chmury
+Katalog `clouddrive` jest synchronizowany z blokiem magazynu witryny Azure portal. Użyj tego bloku, aby przenieść pliki lokalne do lub z udziału plików. Aktualizowanie plików z poziomu powłoki cloud jest odzwierciedlane w interfejsie gui magazynu plików podczas odświeżania bloku.
 
 ### <a name="download-files"></a>Pobieranie plików
 
 ![Lista plików lokalnych](../articles/cloud-shell/media/persisting-shell-storage/download.png)
-1. W witrynie Azure portal przejdź do udziału zainstalowanego pliku.
+1. W witrynie Azure portal przejdź do zainstalowanego udziału plików.
 2. Wybierz plik docelowy.
-3. Wybierz **Pobierz** przycisku.
+3. Wybierz przycisk **Pobierz.**
 
 ### <a name="upload-files"></a>Przekazywanie plików
 
-![Lokalne pliki do przekazania](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
-1. Przejdź do udziału zainstalowanego pliku.
+![Pliki lokalne do przesłania](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
+1. Przejdź do zainstalowanego udziału plików.
 2. Wybierz przycisk **Przekaż**.
 3. Wybierz plik lub pliki, które chcesz przekazać.
-4. Upewnij się, przekazywania.
+4. Potwierdź przesłanie.
 
-Teraz można zobaczyć pliki, które są dostępne w Twojej `clouddrive` katalogu w usłudze Cloud Shell.
+Teraz powinny być widoczne pliki, `clouddrive` które są dostępne w katalogu w aplikacji Cloud Shell.

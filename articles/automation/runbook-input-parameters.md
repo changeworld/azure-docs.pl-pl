@@ -1,44 +1,44 @@
 ---
 title: Parametry wejściowe elementu Runbook
-description: Parametry wejściowe elementu Runbook zwiększają elastyczność elementów Runbook, umożliwiając przekazywanie danych do elementu Runbook po jego uruchomieniu. W tym artykule opisano różne scenariusze, w których parametry wejściowe są używane w elementach Runbook.
+description: Parametry wejściowe zestawu runbook zwiększają elastyczność śliwi, umożliwiając przekazywanie danych do egonatu po uruchomieniu. W tym artykule opisano różne scenariusze, w których parametry wejściowe są używane w żyłaczkach.
 services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: 17be351d4af3d277242af70ea96e8735a5f68bc9
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78329089"
 ---
 # <a name="runbook-input-parameters"></a>Parametry wejściowe elementu Runbook
 
-Parametry wejściowe elementu Runbook zwiększają elastyczność elementu Runbook, umożliwiając przekazywanie danych do niego po jego uruchomieniu. Te parametry umożliwiają działanie elementu Runbook dla określonych scenariuszy i środowisk. W tym artykule opisano konfigurację i użycie parametrów wejściowych w elementach Runbook.
+Parametry wejściowe zestawu runbook zwiększają elastyczność uruchomieniu, umożliwiając przekazywanie do niego danych po uruchomieniu. Te parametry umożliwiają akcje uruchomieniu mają być kierowane do określonych scenariuszy i środowisk. W tym artykule opisano konfigurację i użycie parametrów wejściowych w ystawach runbook.
 
 >[!NOTE]
->Ten artykuł został zaktualizowany o korzystanie z nowego modułu Azure PowerShell Az. Nadal możesz używać modułu AzureRM, który będzie nadal otrzymywać poprawki błędów do co najmniej grudnia 2020 r. Aby dowiedzieć się więcej na temat nowego modułu Az i zgodności z modułem AzureRM, zobacz [Wprowadzenie do nowego modułu Az programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Instrukcje dotyczące instalacji polecenia AZ module w hybrydowym procesie roboczym elementu Runbook znajdują się w temacie [Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). W przypadku konta usługi Automation można zaktualizować moduły do najnowszej wersji przy użyciu [sposobu aktualizowania modułów Azure PowerShell w programie Azure Automation](automation-update-azure-modules.md).
+>Ten artykuł został zaktualizowany o korzystanie z nowego modułu Azure PowerShell Az. Nadal możesz używać modułu AzureRM, który będzie nadal otrzymywać poprawki błędów do co najmniej grudnia 2020 r. Aby dowiedzieć się więcej na temat nowego modułu Az i zgodności z modułem AzureRM, zobacz [Wprowadzenie do nowego modułu Az programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Aby uzyskać instrukcje instalacji modułu Az w hybrydowym usłudze Runbook Worker, zobacz [Instalowanie modułu programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Dla konta automatyzacji można zaktualizować moduły do najnowszej wersji przy użyciu [jak zaktualizować moduły programu Azure PowerShell w usłudze Azure Automation.](automation-update-azure-modules.md)
 
 ## <a name="configuring-input-parameters"></a>Konfigurowanie parametrów wejściowych
 
-Można skonfigurować parametry wejściowe dla programu PowerShell, przepływu pracy programu PowerShell, grafiki i elementów Runbook w języku Python. Element Runbook może mieć wiele parametrów z różnymi typami danych lub nie ma żadnych parametrów. Parametry wejściowe mogą być obowiązkowe lub opcjonalne i można użyć wartości domyślnych dla parametrów opcjonalnych.
+Można skonfigurować parametry wejściowe dla programów PowerShell, Przepływ pracy programu PowerShell, grafiki i python. Grupa runbook może mieć wiele parametrów z różnymi typami danych lub bez parametrów. Parametry wejściowe mogą być obowiązkowe lub opcjonalne i można użyć wartości domyślnych dla parametrów opcjonalnych.
 
-Po uruchomieniu można przypisać wartości do parametrów wejściowych dla elementu Runbook. Element Runbook można uruchomić z poziomu Azure Portal, usługi sieci Web lub programu PowerShell. Możesz również uruchomić jeden jako podrzędny element Runbook, który jest wywoływany w innym elemencie Runbook.
+Przystawieniu wartości do parametrów wejściowych dla wiązka uruchomieniu po jego uruchomieniu. Podręcznik runbook można uruchomić z witryny Azure portal, usługi sieci web lub programu PowerShell. Można również uruchomić jeden jako podrzędny runbook, który jest nazywany wbudowany w innym uruchomieniu. ścielicz.
 
-### <a name="configure-input-parameters-in-powershell-runbooks"></a>Konfigurowanie parametrów wejściowych w elementach Runbook programu PowerShell
+### <a name="configure-input-parameters-in-powershell-runbooks"></a>Konfigurowanie parametrów wejściowych w łacinie programu PowerShell
 
-Elementy Runbook programu PowerShell i programu PowerShell w programie Azure Automation obsługują parametry wejściowe, które są zdefiniowane za pomocą następujących właściwości. 
+Elementy runbooki przepływu pracy programu PowerShell i programu PowerShell w usłudze Azure Automation obsługują parametry wejściowe zdefiniowane za pomocą następujących właściwości. 
 
 | **Właściwość** | **Opis** |
 |:--- |:--- |
-| Typ |Wymagany. Oczekiwano typu danych dla wartości parametru. Dowolny typ .NET jest prawidłowy. |
-| Name (Nazwa) |Wymagany. Nazwa parametru. Ta nazwa musi być unikatowa w elemencie Runbook, musi zaczynać się od litery i może zawierać tylko litery, cyfry lub znaki podkreślenia. |
-| Obowiązkowy |Opcjonalny. Wartość logiczna określająca, czy parametr wymaga wartości. W przypadku wybrania tej opcji na **wartość true**należy podać wartość, gdy element Runbook zostanie uruchomiony. W przypadku ustawienia tej opcji na **wartość false**wartość jest opcjonalna. Jeśli nie określisz wartości właściwości **obowiązkowej** , program PowerShell traktuje parametr wejściowy opcjonalny domyślnie. |
-| Wartość domyślna |Opcjonalny. Wartość, która jest używana dla parametru, jeśli podczas uruchamiania elementu Runbook nie zostanie przeniesiona żadna wartość wejściowa. Element Runbook może ustawić wartość domyślną dla każdego parametru. |
+| Typ |Wymagany. Typ danych oczekiwany dla wartości parametru. Każdy typ .NET jest prawidłowy. |
+| Nazwa |Wymagany. Nazwa parametru. Ta nazwa musi być unikatowa w elemicie runbooka, musi zaczynać się od litery i może zawierać tylko litery, cyfry lub znaki podkreślenia. |
+| Obowiązkowy |Element opcjonalny. Wartość logiczna określająca, czy parametr wymaga wartości. Jeśli ustawisz tę wartość **true,** wartość musi być podana podczas uruchamiania śmięcie. Jeśli ustawisz to na **false,** wartość jest opcjonalna. Jeśli nie określisz wartości dla **Mandatory** właściwości, program PowerShell uważa parametr wejściowy za opcjonalny domyślnie. |
+| Wartość domyślna |Element opcjonalny. Wartość, która jest używana dla parametru, jeśli nie wartość wejściowa jest przekazywana podczas uruchamiania runbook. Element runbook może ustawić wartość domyślną dla dowolnego parametru. |
 
-Program Windows PowerShell obsługuje więcej atrybutów parametrów wejściowych niż wymienione powyżej, takich jak Walidacja, aliasy i zestawy parametrów. Jednak Azure Automation obecnie obsługuje tylko wymienione właściwości parametru wejściowego.
+Program Windows PowerShell obsługuje więcej atrybutów parametrów wejściowych niż wymienione powyżej, takich jak sprawdzanie poprawności, aliasy i zestawy parametrów. Jednak usługa Azure Automation obsługuje obecnie tylko wymienione właściwości parametru wejściowego.
 
-Na przykład przyjrzyjmy się definicji parametrów w elemencie Runbook przepływu pracy programu PowerShell. Ta definicja ma następujący ogólny formularz, w którym wiele parametrów jest oddzielonych przecinkami.
+Na przykład przyjrzyjmy się definicji parametrów w uruchomieniu łań szkoleniu programu PowerShell. Ta definicja ma następujący formularz ogólny, gdzie wiele parametrów są oddzielone przecinkami.
 
 ```powershell
 Param
@@ -51,13 +51,13 @@ Param
 )
 ```
 
-Teraz Skonfigurujmy parametry wejściowe dla elementu Runbook przepływu pracy programu PowerShell, który wyprowadza szczegóły dotyczące maszyn wirtualnych, pojedynczej maszyny wirtualnej lub wszystkich maszyn wirtualnych w grupie zasobów. Ten element Runbook ma dwa parametry, jak pokazano na poniższym zrzucie ekranu: Nazwa maszyny wirtualnej (*VMName*) i nazwa grupy zasobów (*resourceGroupName*).
+Teraz skonfigurujmy parametry wejściowe dla wiązka przepływu pracy programu PowerShell, która wyprowadza szczegółowe informacje o maszynach wirtualnych, pojedynczej maszynie wirtualnej lub wszystkich maszynach wirtualnych w grupie zasobów. Ten projekt runbook ma dwa parametry, jak pokazano na poniższym zrzucie ekranu: nazwa maszyny wirtualnej (*VMName*) i nazwa grupy zasobów (*resourceGroupName*).
 
 ![Przepływ pracy programu PowerShell automatyzacji](media/automation-runbook-input-parameters/automation-01-powershellworkflow.png)
 
-W tej definicji parametru parametry wejściowe są prostymi parametrami typu String.
+W tej definicji parametrów wejściowych są proste parametry ciągu typu.
 
-Należy pamiętać, że elementy Runbook programu PowerShell i programu PowerShell obsługują wszystkie typy proste i typy złożone, takie jak **Object** lub **PSCredential** dla parametrów wejściowych. Jeśli element Runbook ma parametr wejściowy obiektu, musisz użyć elementu Hashtable programu PowerShell z parami nazwa-wartość, aby przekazać wartość. Na przykład w elemencie Runbook znajduje się następujący parametr.
+Należy zauważyć, że programy PowerShell i PowerShell Workflow runbooks obsługują wszystkie proste typy i typy złożone, takie jak **obiekt** lub **PSCredential** dla parametrów wejściowych. Jeśli element runbook ma parametr wejściowy obiektu, należy użyć skrótu programu PowerShell z parami nazwa-wartość, aby przekazać w wartości. Na przykład masz następujący parametr w elementów runbook.
 
 ```powershell
 [Parameter (Mandatory = $true)]
@@ -71,81 +71,81 @@ W takim przypadku można przekazać następującą wartość do parametru.
 ```
 
 > [!NOTE]
-> Jeśli nie przekażesz wartości do opcjonalnego parametru ciągu z wartością domyślną NULL, wartość parametru jest pustym ciągiem zamiast **wartością null**.
+> Jeśli wartość nie zostanie przekazyta do opcjonalnego parametru String z wartością domyślną null, wartość parametru jest pustym ciągiem zamiast **Null**.
 
-### <a name="configure-input-parameters-in-graphical-runbooks"></a>Konfigurowanie parametrów wejściowych w graficznych elementach Runbook
+### <a name="configure-input-parameters-in-graphical-runbooks"></a>Konfigurowanie parametrów wejściowych w elementach runbook graficznych
 
-Aby zilustrować konfigurację parametrów wejściowych dla graficznego elementu Runbook, Utwórzmy element Runbook, który będzie wyprowadzał szczegółowe informacje o maszynach wirtualnych, pojedynczą maszynę wirtualną lub wszystkie maszyny wirtualne w grupie zasobów. Aby uzyskać szczegółowe informacje, zobacz [mój pierwszy graficzny element Runbook](automation-first-runbook-graphical.md).
+Aby zilustrować konfigurację parametrów wejściowych dla graficznego zestawu runbook, utwórzmy element runbook, który wyprowadza szczegóły dotyczące maszyn wirtualnych, pojedynczej maszyny wirtualnej lub wszystkich maszyn wirtualnych w ramach grupy zasobów. Aby uzyskać szczegółowe informacje, zobacz [Mój pierwszy graficzny element runbook](automation-first-runbook-graphical.md).
 
-Graficzny element Runbook używa tych głównych działań elementu Runbook:
+Graficzny element runbook używa tych głównych działań żyła:
 
-* Konfiguracja konta Uruchom jako platformy Azure do uwierzytelniania na platformie Azure. 
-* Definicja polecenia cmdlet [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) , aby uzyskać właściwości maszyny wirtualnej.
-* Użycie działania [Write-Output](/powershell/module/microsoft.powershell.utility/write-output) do wyprowadzania nazw maszyn wirtualnych. 
+* Konfiguracja konta Azure Run As do uwierzytelniania za pomocą platformy Azure. 
+* Definicja polecenia cmdlet [Get-AzVM,](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) aby uzyskać właściwości maszyny Wirtualnej.
+* Użyj [działania zapisu i wyjścia](/powershell/module/microsoft.powershell.utility/write-output) do wyprowadzania nazw maszyn wirtualnych. 
 
-Działanie **Get-AzVM** definiuje dwa dane wejściowe, nazwę maszyny wirtualnej i nazwę grupy zasobów. Ponieważ te nazwy mogą być różne przy każdym uruchomieniu elementu Runbook, należy dodać parametry wejściowe do elementu Runbook, aby akceptowały te dane wejściowe. Zapoznaj się z tematem [Tworzenie graficzne w Azure Automation](automation-graphical-authoring-intro.md).
+Działanie **Get-AzVM** definiuje dwa dane wejściowe: nazwę maszyny Wirtualnej i nazwę grupy zasobów. Ponieważ te nazwy mogą być różne przy każdym uruchomieniu zestawu runbook, należy dodać parametry wejściowe do egobratu, aby zaakceptować te dane wejściowe. Zapoznaj się [z tworzeniem graficznym w usłudze Azure Automation](automation-graphical-authoring-intro.md).
 
 Wykonaj następujące kroki, aby skonfigurować parametry wejściowe.
 
-1. Na stronie **elementy Runbook** wybierz graficzny element Runbook, a następnie kliknij przycisk **Edytuj**.
-2. W edytorze graficznym kliknij przycisk **dane wejściowe i wyjściowe** , a następnie **Dodaj dane wejściowe** , aby otworzyć okienko parametru wejściowego elementu Runbook.
+1. Wybierz element runbook graficzny ze strony **Runbooks,** a następnie kliknij pozycję **Edytuj**.
+2. W edytorze graficznym kliknij przycisk **Wejście i wyjście,** a następnie **dodaj dane wejściowe,** aby otworzyć okienko Parametr wejściowy księgi umień.
 
-   ![Graficzny element Runbook automatyzacji](media/automation-runbook-input-parameters/automation-02-graphical-runbok-editor.png)
+   ![Graficzny projekt graficzny automatyzacji](media/automation-runbook-input-parameters/automation-02-graphical-runbok-editor.png)
 
-3. Kontrolka dane wejściowe i wyjściowe wyświetla listę parametrów wejściowych, które są zdefiniowane dla elementu Runbook. W tym miejscu możesz dodać nowy parametr wejściowy lub edytować konfigurację istniejącego parametru wejściowego. Aby dodać nowy parametr dla elementu Runbook, kliknij przycisk **Dodaj dane wejściowe** , aby otworzyć blok **parametrów wejściowych elementu Runbook** , w którym można skonfigurować parametry przy użyciu właściwości zdefiniowanych w temacie [Tworzenie graficzne w Azure Automation](automation-graphical-authoring-intro.md).
+3. Formant Wejście i Wyjście wyświetla listę parametrów wejściowych zdefiniowanych dla ego księgi runbook. W tym miejscu można dodać nowy parametr wejściowy lub edytować konfigurację istniejącego parametru wejściowego. Aby dodać nowy parametr dla elementu runbook, kliknij przycisk **Dodaj dane wejściowe,** aby otworzyć blok **parametrów wejściowych elementu Runbook,** w którym można skonfigurować parametry przy użyciu właściwości zdefiniowanych w [obszarze Tworzenie graficzne w usłudze Azure Automation](automation-graphical-authoring-intro.md).
 
-    ![Dodaj nowe dane wejściowe](media/automation-runbook-input-parameters/automation-runbook-input-parameter-new.png)
-4. Utwórz dwa parametry o następujących właściwościach, które mają być używane przez działanie **Get-AzVM** , a następnie kliknij przycisk **OK**.
+    ![Dodawanie nowych danych wejściowych](media/automation-runbook-input-parameters/automation-runbook-input-parameter-new.png)
+4. Utwórz dwa parametry z następującymi właściwościami, które mają być używane przez działanie **Get-AzVM,** a następnie kliknij przycisk **OK**.
 
    * Parametr 1:
         * **Nazwa** -- **VMName**
-        * **Typ** — ciąg
-        * **Obowiązkowy** -- **nie**
+        * **Typ** -- Ciąg
+        * **Obowiązkowy** -- **nr**
 
    * Parametr 2:
-        * **Nazwa** -- **resourceGroupName**
-        * **Typ** — ciąg
-        * **Obowiązkowy** -- **nie**
-        * **Wartość domyślna** -- **niestandardowa**
+        * **Nazwa** -- **zasobuGroupName**
+        * **Typ** -- Ciąg
+        * **Obowiązkowy** -- **nr**
+        * **Wartość domyślna** -- **Niestandardowa**
         * Niestandardowa wartość domyślna — nazwa grupy zasobów zawierającej maszyny wirtualne
 
-5. Wyświetl parametry w kontrolce dane wejściowe i wyjściowe. 
-6. Kliknij ponownie przycisk **OK** , a następnie kliknij przycisk **Zapisz**.
-7. Kliknij przycisk **Opublikuj** , aby opublikować element Runbook.
+5. Służy do wyświetlania parametrów w formancie Wejście i Wyjście. 
+6. Kliknij ponownie **przycisk OK,** a następnie kliknij pozycję **Zapisz**.
+7. Kliknij **pozycję Publikuj,** aby opublikować swój podręcznik.
 
-### <a name="configure-input-parameters-in-python-runbooks"></a>Konfigurowanie parametrów wejściowych w elementach Runbook języka Python
+### <a name="configure-input-parameters-in-python-runbooks"></a>Konfigurowanie parametrów wejściowych w łańce runbook python
 
-W przeciwieństwie do programu PowerShell, przepływu pracy programu PowerShell i graficznych elementów Runbook, elementy Runbook języka Python nie pobierają parametrów nazwanych. Edytor elementów Runbook analizuje wszystkie parametry wejściowe jako tablicę wartości argumentów. Możesz uzyskać dostęp do tablicy przez zaimportowanie modułu **sys** do skryptu języka Python, a następnie użycie tablicy **sys. argv** . Należy zauważyć, że pierwszy element tablicy, `sys.argv[0]`, to nazwa skryptu. W związku z tym pierwszy rzeczywisty parametr wejściowy to *sys. argv [1]* .
+W przeciwieństwie do programu PowerShell, przepływu pracy programu PowerShell i uruchomieniu grafików, podręczniki python nie przyjmują nazwanych parametrów. Edytor wiązki uruchomieniu analizuje wszystkie parametry wejściowe jako tablicę wartości argumentów. Dostęp do tablicy można uzyskać, importując moduł **sys** do skryptu języka Python, a następnie używając **tablicy sys.argv.** Należy pamiętać, że pierwszy element tablicy `sys.argv[0]`, jest nazwą skryptu. Dlatego pierwszym rzeczywistym parametrem wejściowym jest *sys.argv[1]*.
 
-Aby zapoznać się z przykładem użycia parametrów wejściowych w elemencie Runbook w języku Python, zobacz [mój pierwszy element Runbook w języku Python w Azure Automation](automation-first-runbook-textual-python2.md).
+Na przykład, jak używać parametrów wejściowych w uruchomieniu pythonie, zobacz [Mój pierwszy element runbook Python w usłudze Azure Automation](automation-first-runbook-textual-python2.md).
 
-## <a name="assigning-values-to-input-parameters-in-runbooks"></a>Przypisywanie wartości do parametrów wejściowych w elementach Runbook
+## <a name="assigning-values-to-input-parameters-in-runbooks"></a>Przypisywanie wartości do parametrów wejściowych w ystawach runbook
 
-W tej sekcji opisano kilka sposobów przekazywania wartości do parametrów wejściowych w elementach Runbook. Można przypisać wartości parametrów, gdy:
+W tej sekcji opisano kilka sposobów przekazywania wartości do parametrów wejściowych w yjsce. Wartości parametrów można przypisać podczas:
 
 * [Uruchamianie elementu Runbook](#start-a-runbook-and-assign-parameters)
 * [Testowanie elementu Runbook](#test-a-runbook-and-assign-parameters)
-* [Łączenie harmonogramu dla elementu Runbook](#link-a-schedule-to-a-runbook-and-assign-parameters)
-* [Utwórz element webhook dla elementu Runbook](#create-a-webhook-for-a-runbook-and-assign-parameters)
+* [Łączenie harmonogramu dla runbooka](#link-a-schedule-to-a-runbook-and-assign-parameters)
+* [Tworzenie elementu webhook dla elementu runbook](#create-a-webhook-for-a-runbook-and-assign-parameters)
 
-### <a name="start-a-runbook-and-assign-parameters"></a>Uruchamianie elementu Runbook i przypisywanie parametrów
+### <a name="start-a-runbook-and-assign-parameters"></a>Uruchamianie wiązka eksty i przypisywanie parametrów
 
-Element Runbook można uruchomić na wiele sposobów: za pomocą Azure Portal, z elementem webhook, za pomocą poleceń cmdlet programu PowerShell, z interfejsem API REST lub z zestawem SDK. 
+Element runbook można uruchomić na wiele sposobów: za pośrednictwem witryny Azure portal, za pomocą elementu webhook, z poleceniami cmdlet programu PowerShell, z interfejsem API REST lub przy czym zestaw SDK. 
 
-#### <a name="start-a-published-runbook-using-the-azure-portal-and-assign-parameters"></a>Uruchom opublikowany element Runbook przy użyciu Azure Portal i przypisz parametry
+#### <a name="start-a-published-runbook-using-the-azure-portal-and-assign-parameters"></a>Uruchamianie opublikowanego zestawu runbook przy użyciu portalu Azure i przypisywanie parametrów
 
-Po [uruchomieniu elementu Runbook](start-runbooks.md#start-a-runbook-with-the-azure-portal) w Azure Portal zostanie otwarty blok **Uruchamianie elementu Runbook** , w którym można wprowadzić wartości parametrów, które zostały utworzone.
+Po [uruchomieniu zestawu runbook](start-runbooks.md#start-a-runbook-with-the-azure-portal) w witrynie Azure portal otwiera się blok **Uruchom księgę uruchomień** i można wprowadzić wartości dla parametrów, które zostały utworzone.
 
-![Zacznij korzystać z portalu](media/automation-runbook-input-parameters/automation-04-startrunbookusingportal.png)
+![Rozpoczynanie korzystania z portalu](media/automation-runbook-input-parameters/automation-04-startrunbookusingportal.png)
 
-W etykiecie poniżej pola wejściowego można zobaczyć właściwości, które zostały ustawione do definiowania atrybutów parametrów, na przykład obowiązkowe lub opcjonalne, typ, wartość domyślna. Dymek pomocy obok nazwy parametru definiuje również informacje o kluczach, które są konieczne, aby podejmować decyzje dotyczące wartości wejściowych parametrów. 
+W etykiecie pod polem wejściowym można zobaczyć właściwości, które zostały ustawione w celu zdefiniowania atrybutów parametrów, na przykład obowiązkowe lub opcjonalne, typ, wartość domyślna. Dymek pomocy obok nazwy parametru definiuje również kluczowe informacje potrzebne do podejmowania decyzji dotyczących wartości wejściowych parametrów. 
 
 > [!NOTE]
-> Parametry ciągu obsługują puste wartości typu String. Wprowadzenie elementu **[EmptyString]** w polu parametru wejściowego powoduje przekazanie pustego ciągu do parametru. Ponadto parametry ciągu nie obsługują wartości null. Jeśli żadna wartość nie zostanie przekazana do parametru ciągu, program PowerShell interpretuje ją jako wartość null.
+> Parametry ciągu obsługują puste wartości typu String. Wprowadzenie **[EmptyString]** w polu parametru wejściowego powoduje przekroczenie pustego ciągu do parametru. Ponadto parametry ciągu nie obsługują null. Jeśli nie przekażesz żadnej wartości do parametru ciągu, program PowerShell interpretuje ją jako Null.
 
-#### <a name="start-a-published-runbook-using-powershell-cmdlets-and-assign-parameters"></a>Uruchom opublikowany element Runbook za pomocą poleceń cmdlet programu PowerShell i przypisz parametry
+#### <a name="start-a-published-runbook-using-powershell-cmdlets-and-assign-parameters"></a>Uruchamianie opublikowanego zestawu runbook przy użyciu poleceń cmdlet programu PowerShell i przypisywanie parametrów
 
-* **Polecenia cmdlet Azure Resource Manager:** Można uruchomić element Runbook usługi Automation, który został utworzony w grupie zasobów za pomocą polecenia [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0
+* **Polecenia cmdlet usługi Azure Resource Manager:** Element runbook automatyzacji, który został utworzony w grupie zasobów przy użyciu [start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0
 ).
 
    ```powershell
@@ -154,7 +154,7 @@ W etykiecie poniżej pola wejściowego można zobaczyć właściwości, które z
      Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
    ```
 
-* **Polecenia cmdlet klasycznego modelu wdrażania platformy Azure:** Można uruchomić element Runbook usługi Automation, który został utworzony w domyślnej grupie zasobów za pomocą polecenia [Start-AzureAutomationRunbook](/powershell/module/servicemanagement/azure/start-azureautomationrunbook).
+* **Polecenia cmdlet modelu wdrażania klasycznego platformy Azure:** Można uruchomić element runbook automatyzacji, który został utworzony w domyślnej grupie zasobów przy użyciu [Start-AzureAutomationRunbook](/powershell/module/servicemanagement/azure/start-azureautomationrunbook).
   
    ```powershell
      $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
@@ -163,11 +163,11 @@ W etykiecie poniżej pola wejściowego można zobaczyć właściwości, które z
    ```
 
 > [!NOTE]
-> Po uruchomieniu elementu Runbook za pomocą poleceń cmdlet programu PowerShell, domyślny parametr, *MicrosoftApplicationManagementStartedBy*, jest tworzony przy użyciu wartości **PowerShell**. Ten parametr można wyświetlić w okienku Szczegóły zadania.  
+> Po uruchomieniu systemu runbook przy użyciu poleceń cmdlet programu PowerShell tworzony jest parametr domyślny, *MicrosoftApplicationManagementStartedBy*o wartości **programu PowerShell**. Ten parametr można wyświetlić w okienku Szczegóły zadania.  
 
-#### <a name="start-a-runbook-using-an-sdk-and-assign-parameters"></a>Uruchamianie elementu Runbook przy użyciu zestawu SDK i przypisywanie parametrów
+#### <a name="start-a-runbook-using-an-sdk-and-assign-parameters"></a>Uruchamianie wiązka wiązkowego przy użyciu zestawu SDK i przypisywanie parametrów
 
-* **Metoda Azure Resource Manager:** Element Runbook można uruchomić przy użyciu zestawu SDK języka programowania. Poniżej znajduje się C# fragment kodu służący do uruchamiania elementu Runbook na koncie usługi Automation. Możesz wyświetlić cały kod w naszym [repozytorium GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).  
+* **Metoda usługi Azure Resource Manager:** Można uruchomić program runbook przy użyciu sdk języka programowania. Poniżej znajduje się fragment kodu języka C# do uruchamiania systemu runbook na koncie automatyzacji. Możesz zobaczyć cały kod w naszym [repozytorium GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).  
 
    ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -187,7 +187,7 @@ W etykiecie poniżej pola wejściowego można zobaczyć właściwości, które z
       }
    ```
 
-* **Metoda klasycznego modelu wdrażania platformy Azure:** Element Runbook można uruchomić za pomocą zestawu SDK języka programowania. Poniżej znajduje się C# fragment kodu służący do uruchamiania elementu Runbook na koncie usługi Automation. Możesz wyświetlić cały kod w naszym [repozytorium GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).
+* **Klasyczna metoda modelu wdrażania platformy Azure:** Podręcznik runbook można uruchomić przy użyciu sdk języka programowania. Poniżej znajduje się fragment kodu języka C# do uruchamiania systemu runbook na koncie automatyzacji. Możesz zobaczyć cały kod w naszym [repozytorium GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).
 
    ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -207,7 +207,7 @@ W etykiecie poniżej pola wejściowego można zobaczyć właściwości, które z
     }
    ```
 
-   Aby rozpocząć tę metodę, Utwórz słownik do przechowywania parametrów elementu Runbook *VMName* i *resourceGroupName* oraz ich wartości. Następnie Uruchom element Runbook. Poniżej znajduje się C# fragment kodu dotyczący wywoływania metody, która została zdefiniowana powyżej.
+   Aby uruchomić tę metodę, należy utworzyć słownik do przechowywania parametrów zestawu runbook *VMName* i *resourceGroupName* i ich wartości. Następnie uruchom projekt runbooka. Poniżej znajduje się fragment kodu języka C# do wywoływania metody, która jest zdefiniowana powyżej.
 
    ```csharp
    IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
@@ -220,23 +220,23 @@ W etykiecie poniżej pola wejściowego można zobaczyć właściwości, które z
    StartRunbook("Get-AzureVMGraphical", RunbookParameters);
    ```
 
-#### <a name="start-a-runbook-using-the-rest-api-and-assign-parameters"></a>Uruchamianie elementu Runbook przy użyciu interfejsu API REST i przypisywanie parametrów
+#### <a name="start-a-runbook-using-the-rest-api-and-assign-parameters"></a>Uruchamianie wiązka wiązkowego przy użyciu interfejsu API REST i przypisywanie parametrów
 
-Można utworzyć i uruchomić zadanie elementu Runbook za pomocą interfejsu API REST Azure Automation przy użyciu metody **Put** z następującym identyfikatorem URI żądania: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}?api-version=2017-05-15-preview`
+Zadanie uruchamiania i uruchamianie go za pomocą interfejsu API REST usługi Azure Automation przy użyciu metody **PUT** przy użyciu następującego identyfikatora URI żądania:`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}?api-version=2017-05-15-preview`
 
-W identyfikatorze URI żądania Zastąp następujące parametry:
+W identyfikatorze URI żądania zastąp następujące parametry:
 
-* subskrypcja *: Identyfikator*subskrypcji platformy Azure.  
-* *resourceGroupName*: Nazwa grupy zasobów dla konta usługi Automation.
-* *automationAccountName*: nazwa konta usługi Automation hostowanego w ramach określonej usługi w chmurze.  
-* *jobName*: identyfikator GUID zadania. Identyfikatory GUID w programie PowerShell można tworzyć przy użyciu `[GUID]::NewGuid().ToString()*`.
+* *identyfikator subskrypcji:* identyfikator subskrypcji platformy Azure.  
+* *resourceGroupName*: Nazwa grupy zasobów dla konta Automatyzacja.
+* *automationAccountName*: Nazwa konta automatyzacji, które jest hostowane w ramach określonej usługi w chmurze.  
+* *jobName*: Identyfikator GUID dla zadania. Identyfikatory GUID w programie PowerShell można tworzyć za pomocą programu `[GUID]::NewGuid().ToString()*`.
 
-Aby przekazać parametry do zadania elementu Runbook, użyj treści żądania. W formacie JSON dostępne są następujące informacje:
+Aby przekazać parametry do zadania runbook, należy użyć treści żądania. Zawiera następujące informacje, dostarczone w formacie JSON:
 
-* Nazwa elementu Runbook: wymagane. Nazwa elementu Runbook do uruchomienia zadania.  
-* Parametry elementu Runbook: opcjonalne. Słownik listy parametrów w formacie (nazwa, wartość), gdzie nazwa jest typu ciąg, a wartość może być dowolną prawidłową wartością JSON.
+* Nazwa ekwidu: Wymagane. Nazwa systemu runbook dla zadania do uruchomienia.  
+* Parametry eksmisji: Opcjonalnie. Słownik listy parametrów w formacie (nazwa, wartość), gdzie nazwa jest typu String i wartość może być dowolną prawidłową wartością JSON.
 
-Jeśli chcesz uruchomić element Runbook **Get-AzureVMTextual** utworzony wcześniej przy użyciu *VMName* i *resourceGroupName* jako parametry, użyj następującego formatu JSON dla treści żądania.
+Jeśli chcesz uruchomić element runbook **Get-AzureVMTextual** utworzony wcześniej z *VMName* i *resourceGroupName* jako parametry, użyj następującego formatu JSON dla treści żądania.
 
 ```json
     {
@@ -250,39 +250,39 @@ Jeśli chcesz uruchomić element Runbook **Get-AzureVMTextual** utworzony wcześ
     }
 ```
 
-Kod stanu HTTP 201 jest zwracany, jeśli zadanie zostało pomyślnie utworzone. Aby uzyskać więcej informacji na temat nagłówków odpowiedzi i treści odpowiedzi, zobacz [Tworzenie zadania elementu Runbook za pomocą interfejsu API REST](/rest/api/automation/job/create).
+Kod stanu HTTP 201 jest zwracany, jeśli zadanie zostanie pomyślnie utworzone. Aby uzyskać więcej informacji na temat nagłówków odpowiedzi i treści odpowiedzi, zobacz [tworzenie zadania uruchomieniu przy użyciu interfejsu API REST](/rest/api/automation/job/create).
 
-### <a name="test-a-runbook-and-assign-parameters"></a>Testowanie elementu Runbook i przypisywanie parametrów
+### <a name="test-a-runbook-and-assign-parameters"></a>Testowanie wiązka umie i przypisywanie parametrów
 
-W przypadku [testowania wersji roboczej elementu Runbook](automation-testing-runbook.md) przy użyciu opcji test zostanie otwarta strona **test** . Ta strona służy do konfigurowania wartości parametrów, które zostały utworzone.
+Podczas [testowania wersji roboczej roboczej roboczej roboczej](automation-testing-runbook.md) przy użyciu opcji testu zostanie otwarta strona **testowa.** Ta strona służy do konfigurowania wartości utworzonych parametrów.
 
 ![Testowanie i przypisywanie parametrów](media/automation-runbook-input-parameters/automation-06-testandassignparameters.png)
 
-### <a name="link-a-schedule-to-a-runbook-and-assign-parameters"></a>Łączenie harmonogramu z elementem Runbook i przypisywanie parametrów
+### <a name="link-a-schedule-to-a-runbook-and-assign-parameters"></a>Łączenie harmonogramu z schematem śmiwalna i przypisywanie parametrów
 
-Możesz [połączyć harmonogram z elementem](automation-schedules.md) Runbook, aby element Runbook uruchamiał się o określonej godzinie. Parametry wejściowe są przypisywane podczas tworzenia harmonogramu, a element Runbook używa tych wartości, gdy jest uruchamiany zgodnie z harmonogramem. Nie można zapisać harmonogramu, dopóki nie zostaną podane wszystkie obowiązkowe wartości parametrów.
+Harmonogram można [połączyć z zestawem](automation-schedules.md) runbook, tak aby projekt runbook został uruchomiony o określonej godzinie. Parametry wejściowe są przypisywane podczas tworzenia harmonogramu, a projekt runbook używa tych wartości, gdy jest on uruchamiany przez harmonogram. Nie można zapisać harmonogramu, dopóki nie zostaną podane wszystkie obowiązkowe wartości parametrów.
 
 ![Planowanie i przypisywanie parametrów](media/automation-runbook-input-parameters/automation-07-scheduleandassignparameters.png)
 
-### <a name="create-a-webhook-for-a-runbook-and-assign-parameters"></a>Tworzenie elementu webhook dla elementu Runbook i przypisywanie parametrów
+### <a name="create-a-webhook-for-a-runbook-and-assign-parameters"></a>Tworzenie elementu webhook dla elementu runbook i przypisywanie parametrów
 
-Można utworzyć element [webhook](automation-webhooks.md) dla elementu Runbook i skonfigurować parametry wejściowe elementu Runbook. Nie można zapisać elementu webhook, dopóki nie zostaną podane wszystkie obowiązkowe wartości parametrów.
+Można utworzyć [element webhook](automation-webhooks.md) dla elementu runbook i skonfigurować parametry wejściowe elementu runbook. Nie można zapisać elementu webhook, dopóki nie zostaną podane wszystkie obowiązkowe wartości parametrów.
 
-![Utwórz element webhook i przypisz parametry](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
+![Tworzenie elementu webhook i przypisywanie parametrów](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
 
-Po wykonaniu elementu Runbook za pomocą elementu webhook jest wysyłany wstępnie zdefiniowany parametr wejściowy *[WebhookData](automation-webhooks.md)* wraz z parametrami wejściowymi definiowanymi przez użytkownika. 
+Podczas wykonywania elementu runbook przy użyciu elementu webhook, wstępnie zdefiniowany parametr wejściowy *[WebhookData](automation-webhooks.md)* jest wysyłany wraz z parametrami wejściowymi, które można zdefiniować. 
 
-![WebhookData — parametr](media/automation-runbook-input-parameters/automation-09-webhook-data-parameters.png)
+![Parametr WebhookData](media/automation-runbook-input-parameters/automation-09-webhook-data-parameters.png)
 
-## <a name="passing-a-json-object-to-a-runbook"></a>Przekazywanie obiektu JSON do elementu Runbook
+## <a name="passing-a-json-object-to-a-runbook"></a>Przekazywanie obiektu JSON do śmigła
 
-Może być przydatne do przechowywania danych, które mają zostać przekazane do elementu Runbook w pliku JSON. Można na przykład utworzyć plik JSON zawierający wszystkie parametry, które mają zostać przekazane do elementu Runbook. W tym celu należy przekonwertować kod JSON na ciąg, a następnie przekonwertować ciąg na obiekt programu PowerShell przed przekazaniem go do elementu Runbook.
+Może być przydatne do przechowywania danych, które mają być przekazać do żyrówki w pliku JSON. Na przykład można utworzyć plik JSON, który zawiera wszystkie parametry, które mają być przedysy, które mają być przedysy, które mają zostać przedysze do wiązki kreślenia. Aby to zrobić, należy przekonwertować kod JSON na ciąg, a następnie przekonwertować ciąg na obiekt programu PowerShell przed przekazaniem go do śmiga.
 
-W tej sekcji jest używany przykład, w którym skrypt programu PowerShell wywołuje polecenie [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) , aby uruchomić element Runbook programu PowerShell, przekazując zawartość pliku JSON do elementu Runbook. Element Runbook programu PowerShell uruchamia maszynę wirtualną platformy Azure przez pobranie parametrów dla maszyny wirtualnej z obiektu JSON.
+W tej sekcji użyto przykładu, w którym skrypt programu PowerShell wywołuje [start-AzAutomationRunbook,](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) aby uruchomić element runbook programu PowerShell, przekazując zawartość pliku JSON do żyjącego. Element runbook programu PowerShell uruchamia maszynę wirtualną platformy Azure, pobierając parametry maszyny Wirtualnej z obiektu JSON.
 
-### <a name="create-the-json-file"></a>Utwórz plik JSON
+### <a name="create-the-json-file"></a>Tworzenie pliku JSON
 
-Wpisz następujący kod w pliku tekstowym i Zapisz go jako `test.json` gdzieś na komputerze lokalnym.
+Wpisz następujący kod w pliku tekstowym `test.json` i zapisz go jako miejsce na komputerze lokalnym.
 
 ```json
 {
@@ -291,11 +291,11 @@ Wpisz następujący kod w pliku tekstowym i Zapisz go jako `test.json` gdzieś n
 }
 ```
 
-### <a name="create-the-runbook"></a>Tworzenie elementu Runbook
+### <a name="create-the-runbook"></a>Tworzenie śmiętu
 
-Utwórz nowy element Runbook programu PowerShell o nazwie **test-JSON** w Azure Automation. Zobacz [mój pierwszy element Runbook programu PowerShell](automation-first-runbook-textual-powershell.md).
+Utwórz nowy projekt umownie programu PowerShell o nazwie **Test-Json** w usłudze Azure Automation. Zobacz [Mój pierwszy program runbook programu PowerShell](automation-first-runbook-textual-powershell.md).
 
-Aby zaakceptować dane JSON, element Runbook musi przyjmować obiekt jako parametr wejściowy. Element Runbook może następnie użyć właściwości zdefiniowanych w pliku JSON.
+Aby zaakceptować dane JSON, element runbook musi wziąć obiekt jako parametr wejściowy. Elementu runbook można następnie użyć właściwości zdefiniowanych w pliku JSON.
 
 ```powershell
 Param(
@@ -315,34 +315,34 @@ $json = $json | ConvertFrom-Json
 Start-AzVM -Name $json.VMName -ResourceGroupName $json.ResourceGroup
 ```
 
-Zapisz i Opublikuj ten element Runbook na koncie usługi Automation.
+Zapisz i opublikuj ten projekt runbook na koncie automatyzacji.
 
-### <a name="call-the-runbook-from-powershell"></a>Wywoływanie elementu Runbook z programu PowerShell
+### <a name="call-the-runbook-from-powershell"></a>Wywoływanie uruchomieniu z programu PowerShell
 
-Teraz można wywołać element Runbook z komputera lokalnego przy użyciu Azure PowerShell. 
+Teraz można wywołać runbook z komputera lokalnego przy użyciu programu Azure PowerShell. 
 
-1. Zaloguj się do platformy Azure, jak pokazano. Następnie zostanie wyświetlony monit o wprowadzenie poświadczeń platformy Azure.
+1. Zaloguj się na platformie Azure, jak pokazano. Następnie zostanie wyświetlony monit o wprowadzenie poświadczeń platformy Azure.
 
    ```powershell
    Connect-AzAccount
    ```
 
     >[!NOTE]
-    >W przypadku elementów Runbook programu PowerShell polecenia **Add-AzAccount** i **Add-AzureRMAccount** są aliasami dla polecenia **Connect-AzAccount**. Należy zauważyć, że te aliasy nie są dostępne dla graficznych elementów Runbook. Graficzny element Runbook może korzystać tylko **z programu Connect-AzAccount** .
+    >W przypadku ummierów programu PowerShell **add-AzAccount** i **Add-AzureRMAccount** są aliasami **connect-AzAccount**. Należy zauważyć, że te aliasy nie są dostępne dla cząstek graficznych. Graficzny element runbook może używać tylko **samego connect-azaccount.**
 
-1. Pobierz zawartość zapisanego pliku JSON i przekonwertuj go na ciąg. `JsonPath` to ścieżka, w której zapisano plik JSON.
+1. Pobierz zawartość zapisanego pliku JSON i przekonwertuj go na ciąg. `JsonPath`to ścieżka, w której zapisano plik JSON.
 
    ```powershell
    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
    ```
 
-1. Przekonwertuj zawartość ciągu `$json` na obiekt programu PowerShell.
+1. Konwertuj `$json` zawartość ciągu na obiekt programu PowerShell.
 
    ```powershell
    $JsonParams = @{"json"=$json}
    ```
 
-1. Utwórz tablicę skrótów dla parametrów **Start-AzAutomationRunbook**. 
+1. Utwórz tabelę mieszania dla parametrów **start-AzAutomationRunbook**. 
 
    ```powershell
    $RBParams = @{
@@ -353,8 +353,8 @@ Teraz można wywołać element Runbook z komputera lokalnego przy użyciu Azure 
    }
    ```
 
-   Zwróć uwagę, że ustawiasz wartość *parametrów* w obiekcie programu PowerShell, który zawiera wartości z pliku JSON.
-1. Uruchom element Runbook.
+   Należy zauważyć, że ustawiasz wartość *parametrów* do obiektu Programu PowerShell, który zawiera wartości z pliku JSON.
+1. Uruchom program runbook.
 
    ```powershell
    $job = Start-AzAutomationRunbook @RBParams
@@ -362,6 +362,6 @@ Teraz można wywołać element Runbook z komputera lokalnego przy użyciu Azure 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać szczegółowe informacje o różnych sposobach uruchamiania elementu Runbook, zobacz [Uruchamianie elementu Runbook](automation-starting-a-runbook.md).
-* Aby edytować tekstowy element Runbook, zobacz [Edytowanie tekstowych elementów Runbook](automation-edit-textual-runbook.md).
-* Aby edytować graficzny element Runbook, zapoznaj się z tematem [Tworzenie graficzne w Azure Automation](automation-graphical-authoring-intro.md).
+* Aby uzyskać szczegółowe informacje na temat różnych sposobów uruchamiania śmiętu, zobacz [Uruchamianie ekstysu](automation-starting-a-runbook.md).
+* Aby edytować tekstowy projekt runbook, zobacz [Edytowanie tekstów eksmisjalnych](automation-edit-textual-runbook.md).
+* Aby edytować element runbook graficzny, zobacz [Tworzenie graficzne w usłudze Azure Automation](automation-graphical-authoring-intro.md).

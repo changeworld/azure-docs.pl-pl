@@ -1,6 +1,6 @@
 ---
-title: Certyfikaty zapory platformy Azure
-description: Lista certyfikatów zapory platformy Azure dla usług PCI, SOC, ISO i ICSA Labs
+title: Certyfikaty Zapory platformy Azure
+description: Lista certyfikatów zapory platformy Azure dla laboratoriów PCI, SOC, ISO i ICSA
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,114 +8,114 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: victorh
 ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77482188"
 ---
-# <a name="azure-firewall-certifications"></a>Certyfikaty zapory platformy Azure
+# <a name="azure-firewall-certifications"></a>Certyfikaty Zapory platformy Azure
 
-Zapora platformy Azure to branżowa karta płatnicza (PCI), kontrolki organizacji usług (SOC), Międzynarodowa Organizacja Normalizacyjna (ISO), ICSA Labs i HITRUST.
+Zapora Azure jest zgodna z zasadami przemysłu kart płatniczych (PCI), service organization controls (SOC), International Organization for Standardization (ISO), ICSA Labs i HITRUST.
 
-Poniższe certyfikaty dotyczą globalnych platform Azure i Azure Government.
+Poniższe certyfikaty są dla globalnej platformy Azure i platformy Azure dla instytucji rządowych.
 
 ## <a name="global-azure-certifications"></a>Globalne certyfikaty platformy Azure
 
-Następujące certyfikaty zapory platformy Azure dotyczą globalnej platformy Azure:
+Następujące certyfikaty Zapory platformy Azure są przeznaczone dla globalnej platformy Azure:
 
-- 23 NYCRR 500
+- 23 500 nycrr
 - AFM i DNB (Holandia)
 - AMF i ACPR (Francja)
-- APRA (Australia)
-- PDPA Argentyna
+- APRA(Australia)
+- Argentyna PDPA
 - Australia IRAP
-- CDSA
+- Cdsa
 - CFTC 1,31
-- CSA STAR zaświadczania
-- Certyfikacja STAR CSA
-- Automatyczna Ocena w witrynie CSA STAR
-- Kanadyjskie prawa do ochrony prywatności
-- DPP (ZJEDNOCZONE KRÓLESTWO)
-- IAF ENISA UE
-- Klauzule modelowe UE
-- Europejski Urząd banku
-- FCA i PRA (Zjednoczone Królestwo)
-- USTAWA FERPA (US)
-- FFIEC (US)
+- Zaświadczenie CSA STAR
+- Certyfikacja CSA STAR
+- Csa STAR Samoocena
+- Kanadyjskie przepisy dotyczące prywatności
+- DPP(Wielka Brytania)
+- ENISA IAF UE
+- Wzorcowe klauzule UE
+- Europejski Urząd Nadzoru Bankowego
+- FCA i PRA (Wielka Brytania)
+- FERPA (Stany Zjednoczone)
+- FFIEC(STANY ZJEDNOCZONE)
 - FINMA (Szwajcaria)
 - FSA (Dania)
-- GLBA (US)
+- GLBA (Stany Zjednoczone)
 - Niemcy C5
-- GxP (FDA 21 CFR część 11)
-- HITRUST
+- GxP (FDA 21 CFR Część 11)
+- HITRUST (HITRUST)
 - ISO 20000-1:2011
 - ISO 22301:2012
 - ISO 27001:2013
 - ISO 27017:2015
 - ISO 27018:2014
 - ISO 9001:2015
-- Japonia My Number — Act
-- K — ISMS
-- KNF (Polska)
+- Japonia Moja liczba Ustawy
+- K-YMS
+- KNF(Polska)
 - MAS i ABS (Singapur)
-- MPAA (US)
+- MPAA(Stany Zjednoczone)
 - NBB i FSMA (Belgia)
 - NEN 7510:2011 (Holandia)
-- Zestaw narzędzi NHS IG (UK)
+- NHS IG Toolkit (Wielka Brytania)
 - Holandia BIR 2012
 - OSFI (Kanada)
-- Poziom PCI DSS 1
-- Oprócz i IRDAI (Indie)
-- SOC 1, typ 2
-- SOC 2 typu 2
-- SOC 3
-- SOX (US)
-- DPA (Hiszpania)
-- TISAX
-- TruSight
-- UK G-Cloud
-- WCAG 2,0
+- PCI DSS poziom 1
+- RBI i IRDAI (Indie)
+- SOC 1 Typ 2
+- SOC 2 Typ 2
+- SOC 3 (WŁAŚC)
+- SOX (Stany Zjednoczone)
+- Hiszpania DPA
+- TISAX ( TISAX )
+- Trusight (trusight)
+- Wielka Brytania G-Cloud
+- WCAG 2.0
 
 
-## <a name="azure-government-certifications"></a>Certyfikaty Azure Government
+## <a name="azure-government-certifications"></a>Certyfikaty platformy Azure dla instytucji rządowych
 
-Następujące certyfikaty zapory platformy Azure są przeznaczone dla Azure Government:
+Następujące certyfikaty Zapory platformy Azure są przeznaczone dla platformy Azure dla instytucji rządowych:
 
-- CJIS
-- CNSSI 1253
-- CSA STAR zaświadczania
-- DFARS
-- DoD DISA SRG Level 2
-- Nowak 10 CFR część 810
-- USZACH
+- CJIS (właso.
+- Cnssi 1253
+- Zaświadczenie CSA STAR
+- DFARS ( DFARS )
+- DoD DISA SRG Poziom 2
+- Doe 10 CFR Część 810
+- Ucha
 - FIPS 140-2
 - FedRAMP High
-- HITRUST
+- HITRUST (HITRUST)
 - IRS 1075
 - ITAR
-- MARS — E (US)
-- NERC
-- Struktura cyberbezpieczeństwa NIST
+- MARS-E (Stany Zjednoczone)
+- Nerc ( NERC )
+- NIST Cybersecurity Framework
 - NIST SP 800-171
-- SOC 1, typ 2
-- SOC 2 typu 2
-- SOC 3
-- SOX (US)
-- Sekcja 508 dokumenty VPAT
+- SOC 1 Typ 2
+- SOC 2 Typ 2
+- SOC 3 (WŁAŚC)
+- SOX (Stany Zjednoczone)
+- Sekcja 508 VPATs
 
-## <a name="icsa-labs-corporate-firewall-certification"></a>Certyfikacja zapory firmy ICSA Labs
+## <a name="icsa-labs-corporate-firewall-certification"></a>Certyfikacja zapory korporacyjnej ICSA Labs
 
-![Certyfikat ICSA](media/overview/icsa-cert-firewall-small.png)
+![Certyfikacja ICSA](media/overview/icsa-cert-firewall-small.png)
 
-ICSA Labs to wiodący dostawca w zakresie testowania i certyfikacji innych firm, a także urządzeń podłączonych do sieci. Mierzą one zgodność produktu, niezawodność i wydajność w przypadku większości najlepszych dostawców technologii.
+ICSA Labs jest wiodącym dostawcą w testowaniu i certyfikacji produktów informatycznych bezpieczeństwa i zdrowia, a także urządzeń podłączonych do sieci. Mierzą zgodność, niezawodność i wydajność produktów dla większości najlepszych dostawców technologii na świecie.
 
-Zapora systemu Azure to pierwsza usługa zapory w chmurze, która umożliwia uzyskanie certyfikacji zapory ICSA Labs firmy. Raport dotyczący certyfikacji zapory platformy Azure znajduje się w raporcie dotyczącym [testowania i inspekcji certyfikacji ICSA Labs](https://aka.ms/ICSALabsCertification). Aby uzyskać więcej informacji, zobacz stronę [programu certyfikacji zapory ICSA Labs](https://www.icsalabs.com/technology-program/firewalls) .
+Zapora azure to pierwsza usługa zapory w chmurze, która uzyskała certyfikat zapory korporacyjnej ICSA Labs. Aby zapoznać się z raportem certyfikacji zapory platformy Azure, zobacz [raport testowania certyfikacji i inspekcji laboratoriów ICSA](https://aka.ms/ICSALabsCertification). Aby uzyskać więcej informacji, zobacz stronę [programu certyfikacji zapory zapory ICSA Labs.](https://www.icsalabs.com/technology-program/firewalls)
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat zgodności firmy Microsoft, zobacz poniższe informacje.
+Aby uzyskać więcej informacji na temat zgodności firmy Microsoft, zobacz następujące informacje.
 
 - [Przewodnik zgodności firmy Microsoft](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide)
 - [Przegląd zgodności platformy Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)

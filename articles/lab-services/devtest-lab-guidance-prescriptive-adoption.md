@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie usługi Azure DevTest Labs w firmie.
-description: Ten artykuł zawiera wskazówki dotyczące korzystania z usługi Azure DevTest Labs w przedsiębiorstwie.
+title: Przyjęcie laboratoriów devtest platformy Azure dla swojego przedsiębiorstwa
+description: Ten artykuł zawiera nakazowe wskazówki dotyczące korzystania z platformy Azure DevTest Labs w przedsiębiorstwie.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,31 +14,31 @@ ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 32e828f420d41d7a67e4f41ac8a4a0698711ce2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64916406"
 ---
 # <a name="devtest-labs-in-the-enterprise"></a>Laboratoria DevTest Lab w przedsiębiorstwie
-Przedsiębiorstwom szybko adaptują chmurę z powodu [korzyści](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) zawierające elastyczności, elastyczności i oszczędnościami, jakie daje. Pierwsze kroki są często programowania i testowania obciążenia. Usługa Azure DevTest Labs oferuje [funkcji](devtest-lab-concepts.md) korzyści, enterprise i pomoc techniczna [klucza scenariuszy deweloperskich lub testowych](devtest-lab-guidance-get-started.md).
+Przedsiębiorstwa szybko wdrażają chmurę ze względu na [korzyści,](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) które obejmują elastyczność, elastyczność i ekonomię. Pierwsze kroki są często rozwoju i testowania obciążeń. Usługa Azure DevTest Labs udostępnia [funkcje,](devtest-lab-concepts.md) które przynoszą korzyści przedsiębiorstwu i obsługują [kluczowe scenariusze deweloperów/testów.](devtest-lab-guidance-get-started.md)
 
-Typowe zagadnienia dla przedsiębiorstw, które migrację obciążeń do chmury, obejmują:
+Typowe obawy przedsiębiorstw, które migrują obciążenia do chmury, obejmują:
 
-- [Zabezpieczanie zasobów w środowiskach tworzenia i testowania](devtest-lab-guidance-governance-policy-compliance.md)
-- [Informacje o kosztach i zarządzanie nimi](devtest-lab-guidance-governance-cost-ownership.md)
-- Włączanie samoobsługi dla deweloperów, bez uszczerbku dla zabezpieczeń przedsiębiorstwa i zgodność
-- Automatyzacji i rozszerzania usługi DevTest Labs, aby uwzględnić dodatkowe scenariusze
-- [Skalowanie do tysięcy zasoby rozwiązania oparte na usłudze DevTest Labs](devtest-lab-guidance-scale.md)
-- [Wdrożeń na dużą skalę usługi DevTest Labs](devtest-lab-guidance-orchestrate-implementation.md)
-- [Wprowadzenie do weryfikacji koncepcji](devtest-lab-guidance-orchestrate-implementation.md)
+- [Zabezpieczanie zasobów programistów/testowania](devtest-lab-guidance-governance-policy-compliance.md)
+- [Zarządzanie kosztami i ich rozumienie](devtest-lab-guidance-governance-cost-ownership.md)
+- Umożliwienie samoobsługi dla programistów bez uszczerbku dla bezpieczeństwa i zgodności z przepisami w przedsiębiorstwie
+- Automatyzacja i rozszerzanie DevTest Labs na dodatkowe scenariusze
+- [Skalowanie rozwiązania opartego na laboratorium DevTest do tysięcy zasobów](devtest-lab-guidance-scale.md)
+- [Wdrożenia na dużą skalę laboratoriów DevTest](devtest-lab-guidance-orchestrate-implementation.md)
+- [Pierwsze kroki z potwierdzeniem koncepcji](devtest-lab-guidance-orchestrate-implementation.md)
 
 ## <a name="intended-audience"></a>Docelowi odbiorcy
-Ta dokumentacja dotyczy IT przedsiębiorstwa oceniający, architektów i kierowników, którzy są odpowiedzialni za ustanowienie i przeglądając wdrożeń i nadzorowanie operacji. Te artykuły podkreślić zasady projektowania ogólny proces i zalecane. Celem jest wspieranie środowiska bezpiecznych i stabilnych projektowania i testowania, ostatecznie zależy wdrożenie usługi Azure DevTest Labs w organizacji.
+Niniejsza dokumentacja jest dostępna dla planistów IT dla przedsiębiorstw, architektów i menedżerów, którzy są odpowiedzialni za tworzenie i przeglądanie wdrożeń oraz nadzorowanie operacji. Artykuły te podkreślają ogólny proces i zalecane zasady projektowania. Celem jest promowanie bezpiecznego i stabilnego środowiska deweloperskiego/testowego, które ostatecznie napędza przyjęcie laboratorium Azure DevTest w organizacji.
 
 ## <a name="enterprise-customers"></a>Klienci korporacyjni
 
-Wielu klientów korporacyjnych DevTest Labs bieżącego pomyślnie użyć usługi DevTest Labs, opracowywania i testowania obciążenia w organizacji. [Dowiedz się więcej](https://azure.microsoft.com/case-studies/?term=DevTest+labs).
+Wielu obecnych klientów korporacyjnych DevTest Labs z powodzeniem używa DevTest Labs do tworzenia i testowania obciążeń w swoich organizacjach. [Dowiedz się więcej](https://azure.microsoft.com/case-studies/?term=DevTest+labs).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Architektura referencyjna dla przedsiębiorstwa](devtest-lab-reference-architecture.md)

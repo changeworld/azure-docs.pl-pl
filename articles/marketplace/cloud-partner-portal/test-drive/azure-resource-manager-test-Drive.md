@@ -1,70 +1,68 @@
 ---
-title: Azure Resource Manager dysk testowy | Portal Azure Marketplace
-description: Tworzenie dysku testowego Marketplace przy użyciu Azure Resource Manager
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Patrick .Butler
+title: Dysk testowy usługi Azure Resource Manager | Azure Marketplace
+description: Tworzenie dysku testowego w portalu Marketplace przy użyciu usługi Azure Resource Manager
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 8b2a24b6f2d7df92f1c8ea1b22432471aa432011
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.author: dsindona
+ms.openlocfilehash: 6125aa010d8676518b84f866343b01f95246160f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644906"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275938"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Wersja testowa usługi Azure Resource Manager
 
-Ten artykuł jest dla wydawców, którzy mają swoją ofertę w portalu Azure Marketplace lub korzystający z usługi AppSource, ale chcesz tworzyć ich wersji testowej przy użyciu tylko zasobów platformy Azure.
+Ten artykuł jest przeznaczony dla wydawców, którzy mają swoją ofertę w portalu Azure Marketplace lub którzy korzystają z usługi AppSource, ale chcą tworzyć ich testową jazdę tylko z zasobami platformy Azure.
 
-Szablon Azure Resource Manager (Menedżer zasobów) jest zakodowanym kontenerem zasobów platformy Azure, które są projektowane w celu najlepszego reprezentowania rozwiązania. Jeśli nie znasz Menedżer zasobów szablonu, zapoznaj się z informacjami na temat [Menedżer zasobów szablonów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) i szablonów [Menedżer zasobów tworzenia](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) , aby upewnić się, jak tworzyć i testować własne szablony.
+Szablon usługi Azure Resource Manager (Resource Manager) to zakodowany kontener zasobów platformy Azure, który projektujesz, aby jak najlepiej reprezentować twoje rozwiązanie. Jeśli nie znasz szablonu Menedżera zasobów, przeczytaj [opis szablonów Menedżera zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) i [szablonów Menedżera zasobów,](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) aby upewnić się, że wiesz, jak tworzyć i testować własne szablony.
 
-Co to jest wersja testowa jest przyjmuje podany szablon usługi Resource Manager i sprawia, że wdrożenie programu wszystkie zasoby, które są wymagane z tego szablonu usługi Resource Manager w grupie zasobów.
+Testowa dysku jest to, że ma dostarczony szablon Menedżera zasobów i sprawia, że wdrożenie wszystkich zasobów wymaganych z tego szablonu Menedżera zasobów do grupy zasobów.
 
-W przypadku tworzenia dysku z systemem Azure Resource Manager Test wymagań jest umożliwia:
+Jeśli zdecydujesz się na tworzenie dysku testowego usługi Azure Resource Manager, wymagania są dla Ciebie:
 
-- Tworzenia, testowania i następnie Przekaż szablon Menedżer zasobów testowych dysku.
-- Skonfiguruj wszystkie wymagane metadane i ustawienia, aby umożliwić wersji testowej.
-- Za pomocą wersji testowej włączone, należy ponownie opublikować ofertę.
+- Skompiluj, przetestuj, a następnie przekaż szablon Menedżera zasobów dysku testowego.
+- Skonfiguruj wszystkie wymagane metadane i ustawienia, aby włączyć jazdę testną.
+- Ponownie opublikuj swoją ofertę z włączoną jazdą próbną.
 
-## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Jak utworzyć testowej usługi Azure Resource Manager
+## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Jak utworzyć dysk testowy usługi Azure Resource Manager
 
-Oto proces tworzenia Azure Resource Manager dysku testowego:
+Oto proces tworzenia dysku testowego usługi Azure Resource Manager:
 
-1. Projektuj elementy, które mają być wykonywane przez klientów na diagramie przepływu.
-1. Zdefiniuj środowiska, które mają być kompilowane przez klientów.
-1. Zgodnie z powyższymi definicjami Zdecyduj, jakie elementy i zasoby są potrzebne klientom do osiągnięcia takich czynności: na przykład wystąpienie D365 lub witryna sieci Web z bazą danych.
-1. Utwórz projekt lokalnie i przetestuj środowisko pracy.
-1. Pakowanie środowiska we wdrożeniu szablonu ARM i z tego miejsca:
+1. Zaprojektuj, co mają zrobić klienci na diagramie przepływu.
+1. Zdefiniuj, jakie środowiska chcesz zbudować twoi klienci.
+1. Na podstawie powyższych definicji zdecyduj, jakie elementy i zasoby są potrzebne klientom do osiągnięcia takiego doświadczenia: na przykład wystąpienie D365 lub witryna sieci Web z bazą danych.
+1. Skompiluj projekt lokalnie i przetestuj środowisko.
+1. Pakiet środowiska we wdrożeniu szablonu ARM, a stamtąd:
     1. Zdefiniuj, jakie części zasobów są parametrami wejściowymi;
-    1. Jakie zmienne są;
-    1. Jakie dane wyjściowe są przekazywane do środowiska klienta.
-1. Publikuj, Testuj i przejdź na żywo.
+    1. Jakie są zmienne;
+    1. Jakie produkty są podane do doświadczenia klienta.
+1. Publikowanie, testowanie i publikowanie na żywo.
 
-To najważniejszy element o tworzeniu usługi Azure Resource Manager testowej do zdefiniowania, jakie scenario(s) użytkownicy powinni się. Czy program zapory i chcesz pokaz, jak obsługiwać ataki przez iniekcję kodu skryptu? Czy można produktu magazynu i chcesz pokaz, jak szybko i łatwo, rozwiązania kompresuje pliki?
+Najważniejszą częścią tworzenia dysku testowego usługi Azure Resource Manager jest zdefiniowanie, jaki scenariuszy mają wystąpić klienci. Czy jesteś produktem zapory i chcesz demonstrować, jak dobrze radzisz sobie z atakami iniekcji skryptu? Czy jesteś produktem pamięci masowej i chcesz demonstrować, jak szybko i łatwo twoje rozwiązanie kompresuje pliki?
 
-Upewnij się, że poświęcasz wystarczającą ilość czasu na ocenę najlepszego sposobu wyświetlania produktu. W odniesieniu do wszystkich wymaganych zasobów, które są potrzebne, ponieważ sprawia, że pakowanie szablonu Menedżer zasobów jest wystarczająco prostsze.
+Pamiętaj, aby poświęcić wystarczająco dużo czasu na ocenę, jakie są najlepsze sposoby, aby pokazać swój produkt. W szczególności wokół wszystkich wymaganych zasobów, które byłyby potrzebne, ponieważ sprawia, że pakowanie szablonu Menedżera zasobów jest wystarczająco łatwiejsze.
 
-Aby kontynuować z naszego przykładu zapory, architektury może być konieczne publiczny adres IP URL usługi i inny publiczny adres IP URL dla witryny sieci Web, która chroni zapora. Każdego adresu IP jest wdrożone na maszynie wirtualnej i połączone razem z grupy zabezpieczeń sieci i interfejsu sieciowego.
+Aby kontynuować nasz przykład zapory, architektura może być, że potrzebujesz publicznego adresu URL IP dla usługi i innego publicznego adresu URL IP dla witryny sieci Web, że zapora jest chronina. Każdy adres IP jest wdrażany na maszynie wirtualnej i połączony z sieciową grupą zabezpieczeń + interfejsem sieciowym.
 
-Po zaprojektowaniu żądanego pakietu zasobów program będzie teraz mógł pisać i kompilować szablon Menedżer zasobów na dysku testowym.
+Po zaprojektcie żądanego pakietu zasobów, teraz przychodzi zapisu i tworzenia szablonu Menedżera zasobów dysku testowego.
 
-## <a name="writing-test-drive-resource-manager-templates"></a>Pisanie testów dysków szablonów usługi Resource Manager
+## <a name="writing-test-drive-resource-manager-templates"></a>Pisanie szablonów Menedżera zasobów dysku testowego
 
-Wersja testowa uruchamia wdrożeń w trybie w pełni zautomatyzowane i z tego powodu, szablony wersji testowej mają pewne ograniczenia opisane poniżej.
+Test Drive uruchamia wdrożenia w trybie w pełni zautomatyzowanym i z tego powodu szablony dysku testowego mają pewne ograniczenia opisane poniżej.
 
 ### <a name="parameters"></a>Parametry
 
-Większość szablony mają zestaw parametrów. Parametry definiują nazwy zasobów, rozmiarów zasobów (na przykład typy kont magazynu lub rozmiarów maszyn wirtualnych), nazwy użytkownika i hasła, nazw DNS i tak dalej. Podczas wdrażania rozwiązania przy użyciu witryny Azure portal, można ręcznie wypełnić te parametry, wybierz dostępne nazwy DNS lub nazwy kont magazynu i tak dalej.
+Większość szablonów ma zestaw parametrów. Parametry definiują nazwy zasobów, rozmiary zasobów (na przykład typy kont magazynu lub rozmiary maszyn wirtualnych), nazwy użytkowników i hasła, nazwy DNS i tak dalej. Podczas wdrażania rozwiązań przy użyciu witryny Azure portal, można ręcznie wypełnić wszystkie te parametry, wybrać dostępne nazwy DNS lub nazwy kont magazynu i tak dalej.
 
 ![Lista parametrów w usłudze Azure Resource Manager](./media/azure-resource-manager-test-drive/param1.png)
 
-Wersja testowa działa jednak w trybie pełni automatyczna, bez interakcji z człowiekiem, obsługuje tylko ograniczony zestaw kategorii parametru. Jeśli parametr w szablonie Menedżera zasobów testowych z dysku nie należą do jednego z obsługiwanych kategorii, musisz najpierw **zastąpienie tego parametru z wartością zmiennej czy stałej.**
+Jednak test drive działa w trybie w pełni automatycznym, bez interakcji z człowiekiem, więc obsługuje tylko ograniczony zestaw kategorii parametrów. Jeśli parametr w szablonie Menedżera zasobów dysku testowego nie należy do jednej z obsługiwanych kategorii, należy **zastąpić ten parametr wartością zmienną lub stałą.**
 
-Można użyć dowolnego prawidłową nazwę parametry, wersji testowej rozpoznaje kategoria parametru przy użyciu wartości typ metadanych. Możesz **należy określić typ metadanych dla każdego parametru szablonu**, w przeciwnym razie szablon nie zostanie pomyślnie weryfikacji:
+Można użyć dowolnej prawidłowej nazwy parametrów, Test Drive rozpoznaje kategorię parametrów przy użyciu wartości typu metadanych. **Należy określić typ metadanych dla każdego parametru szablonu,** w przeciwnym razie szablon nie przejdzie sprawdzania poprawności:
 
 ```json
 "parameters": {
@@ -79,20 +77,20 @@ Można użyć dowolnego prawidłową nazwę parametry, wersji testowej rozpoznaj
 }
 ```
 
-Jest również pamiętać, że **wszystkie parametry są opcjonalne**, więc jeśli nie\'t chcesz używać żadnych, komputer\'było.
+Ważne jest również, aby pamiętać, że **wszystkie parametry są opcjonalne,** więc jeśli\'nie chcesz używać żadnych, nie\'musisz.
 
-### <a name="accepted-parameter-metadata-types"></a>Parametr akceptowane typy metadanych
+### <a name="accepted-parameter-metadata-types"></a>Akceptowane typy metadanych parametrów
 
-| Typ metadanych   | Typ parametru  | Opis     | Przykładowa wartość    |
+| Typ metadanych   | Typ parametru  | Opis     | Wartość próbki    |
 |---|---|---|---|
-| **BaseUri**     | string          | Podstawowy identyfikator URI pakietu wdrażania| https:\//\<\..\>. blob.core.windows.net/\<\..\> |
-| **Nazwa użytkownika**    | string          | Nowa nazwa użytkownika losowych.| admin68876      |
-| **Hasło**    | bezpieczny ciąg    | Losowe hasło. | LP! ACS\^2kh     |
-| **Identyfikator sesji**   | string          | Unikatowe sesji testowej identyfikator (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
+| **Baseuri**     | ciąg          | Podstawowy identyfikator URI pakietu wdrożeniowego| https:\//\<\.. \>.blob.core.windows.net/\<\..\> |
+| **Nazwę użytkownika**    | ciąg          | Nowa losowa nazwa użytkownika.| administrator68876      |
+| **hasło**    | bezpieczny ciąg znaków    | Nowe hasło losowe | Lp!ACS\^2kh     |
+| **identyfikator sesji**   | ciąg          | Unikatowy identyfikator sesji dysku testowego (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
-#### <a name="username"></a>nazwa użytkownika
+#### <a name="baseuri"></a>Baseuri
 
-Wersja testowa inicjuje tego parametru z **podstawowy identyfikator Uri** z pakietu wdrożeniowego, więc ten parametr służy do konstruowania identyfikatorów Uri pliku dołączone do pakietu.
+Test Drive inicjuje ten parametr za pomocą **identyfikatora Uri pakietu** wdrażania, dzięki czemu można użyć tego parametru do konstruowania identyfikatora Uri dowolnego pliku dołączonego do pakietu.
 
 ```json
 "parameters": {
@@ -108,7 +106,7 @@ Wersja testowa inicjuje tego parametru z **podstawowy identyfikator Uri** z paki
 }
 ```
 
-Wewnątrz szablonu ten parametr służy do utworzenia identyfikatora Uri dowolny plik z pakietu wdrażania wersji testowej. W poniższym przykładzie pokazano sposób tworzenia identyfikatora Uri połączonego szablonu:
+Wewnątrz szablonu można użyć tego parametru do skonstruowania identyfikatora Uri dowolnego pliku z pakietu wdrażania dysku testowego. W poniższym przykładzie pokazano, jak skonstruować identyfikator Uri połączonego szablonu:
 
 ```json
 "templateLink": {
@@ -119,7 +117,7 @@ Wewnątrz szablonu ten parametr służy do utworzenia identyfikatora Uri dowolny
 
 #### <a name="username"></a>nazwa użytkownika
 
-Wersja testowa inicjuje tego parametru z nową nazwą użytkownika losowego:
+Test Drive inicjuje ten parametr przy nowej losowej nazwie użytkownika:
 
 ```json
 "parameters": {
@@ -135,15 +133,15 @@ Wersja testowa inicjuje tego parametru z nową nazwą użytkownika losowego:
 }
 ```
 
-Wartość próbek:
+Wartość próbki:
 
     admin68876
 
-Za pomocą losowych lub stała nazw użytkowników dla Twojego rozwiązania.
+Możesz użyć losowych lub stałych nazw użytkowników dla rozwiązania.
 
 #### <a name="password"></a>hasło
 
-Wersja testowa inicjuje parametru za pomocą nowego hasła losowego:
+Test Drive inicjuje ten parametr przy pomocą nowego hasła losowego:
 
 ```json
 "parameters": {
@@ -159,15 +157,15 @@ Wersja testowa inicjuje parametru za pomocą nowego hasła losowego:
 }
 ```
 
-Wartość próbek:
+Wartość próbki:
 
     Lp!ACS^2kh
 
-Dla danego rozwiązania, można użyć hasła losowego lub stałą.
+Do rozwiązania można użyć haseł losowych lub stałych.
 
 #### <a name="session-id"></a>Identyfikator sesji
 
-Wersja testowa zainicjować tego parametru z Unikatowy identyfikator GUID reprezentujący identyfikator sesji testowej:
+Dysk testowy inicjuje ten parametr za pomocą unikatowego identyfikatora GUID reprezentującego identyfikator sesji dysku testowego:
 
 ```json
 "parameters": {
@@ -183,17 +181,17 @@ Wersja testowa zainicjować tego parametru z Unikatowy identyfikator GUID reprez
 }
 ```
 
-Wartość próbek:
+Wartość próbki:
 
     b8c8693e-5673-449c-badd-257a405a6dee
 
-Ten parametr służy do jednoznacznego identyfikowania sesji testowej w razie potrzeby.
+Ten parametr służy do jednoznacznej identyfikacji sesji dysku testowego, jeśli jest to konieczne.
 
 ### <a name="unique-names"></a>Unikatowe nazwy
 
-Zasoby platformy Azure, takich jak konta magazynu lub nazwy DNS wymaga globalnie unikatowe nazwy.
+Niektóre zasoby platformy Azure, takie jak konta magazynu lub nazwy DNS, wymagają unikatowych nazw globalnie.
 
-Oznacza to, że za każdym razem, gdy wersja testowa służy do wdrażania szablonu usługi Resource Manager, tworzy ono **nową grupę zasobów o unikatowej nazwie** dla wszystkich jego\' zasobów. W związku z tym jest wymagany do użycia [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) funkcja połączona z Twojej nazwy zmiennych w grupie zasobów identyfikatorów do wygenerowania losowych unikatowe wartości:
+Oznacza to, że za każdym razem, gdy testowa jazda wdraża szablon Menedżera\' zasobów, tworzy **nową grupę zasobów o unikatowej nazwie** dla wszystkich swoich zasobów. W związku z tym jest wymagane, aby użyć [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) funkcji łączone z nazwami zmiennych na identyfikatory grupy zasobów do generowania losowych unikatowych wartości:
 
 ```json
 "variables": {
@@ -204,17 +202,17 @@ Oznacza to, że za każdym razem, gdy wersja testowa służy do wdrażania szabl
 }
 ```
 
-Upewnij się, ciągów z parametrem/zmiennej (\'contosovm\') z danymi wyjściowymi unikatowy ciąg (\'resourceGroup () .id\'), ponieważ jest to gwarancją unikatowości i niezawodność każdej zmiennej.
+Upewnij się, że łączysz parametry/zmienne ciągi (contosovm)\'z unikatowym wyjściem\'ciągu (resourceGroup().id),\'\'ponieważ gwarantuje to unikatowość i niezawodność każdej zmiennej.
 
-Na przykład większość nazwy zasobów nie może zaczynać się od cyfry, ale funkcję unikatowego ciągu może zwrócić ciąg, który rozpoczyna się od cyfry. Tak Jeśli używasz pierwotne unikatowy ciąg w danych wyjściowych, wdrożenia zakończy się niepowodzeniem. 
+Na przykład większość nazw zasobów nie może zaczynać się od cyfry, ale funkcja unikatowego ciągu może zwracać ciąg, który rozpoczyna się od cyfry. Tak jeśli używasz nieprzetworzonych unikatowy ciąg danych wyjściowych, wdrożenia zakończy się niepowodzeniem. 
 
-Można znaleźć dodatkowe informacje na temat reguł nazewnictwa zasobów i ograniczenia w [w tym artykule](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+Dodatkowe informacje na temat reguł i ograniczeń nazewnictwa zasobów można znaleźć w [tym artykule](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 ### <a name="deployment-location"></a>Lokalizacja wdrożenia
 
-Możesz udostępnić możesz wersji testowej w różnych regionach platformy Azure. Chodzi o to, aby zezwolić użytkownikowi na pobranie najbliższego regionu, aby zapewnić komfort beast.
+Możesz udostępnić jazdę testową w różnych regionach platformy Azure. Chodzi o to, aby umożliwić użytkownikowi wybrać najbliższy region, aby zapewnić środowisko użytkownika bestii.
 
-Gdy wersji testowej tworzy wystąpienie laboratorium, zawsze tworzy grupę zasobów w wybranego regionu przez użytkownika, a następnie wykonuje Szablon wdrożenia, w tym kontekście grupy. Tak szablon powinien wybierz lokalizację wdrażania z grupy zasobów:
+Gdy testowa firma tworzy wystąpienie laboratorium, zawsze tworzy grupę zasobów w regionie wybranym przez użytkownika, a następnie wykonuje szablon wdrożenia w tym kontekście grupy. Dlatego szablon powinien wybrać lokalizację wdrożenia z grupy zasobów:
 
 ```json
 "variables": {
@@ -224,7 +222,7 @@ Gdy wersji testowej tworzy wystąpienie laboratorium, zawsze tworzy grupę zasob
 }
 ```
 
-A następnie użyć tej lokalizacji dla każdego zasobu dla konkretnego wystąpienia laboratorium:
+A następnie użyj tej lokalizacji dla każdego zasobu dla określonego wystąpienia laboratorium:
 
 ```json
 "resources": [
@@ -256,15 +254,15 @@ A następnie użyć tej lokalizacji dla każdego zasobu dla konkretnego wystąpi
 ]
 ```
 
-Należy się upewnić, że Twoja subskrypcja będzie mógł wdrożyć wszystkie zasoby, które mają zostać wdrożone w każdym z regionów, który wybierasz. Również należy upewnić się, że obrazów maszyn wirtualnych są dostępne we wszystkich regionach, którą chcesz włączyć, w przeciwnym razie szablonu wdrożenia nie będą działać w niektórych regionach.
+Należy upewnić się, że subskrypcja może wdrożyć wszystkie zasoby, które chcesz wdrożyć w każdym z regionów, które wybierasz. Ponadto należy upewnić się, że obrazy maszyny wirtualnej są dostępne we wszystkich regionach, które mają być włącznie, w przeciwnym razie szablon wdrożenia nie będzie działać w niektórych regionach.
 
 ### <a name="outputs"></a>Dane wyjściowe
 
-Zwykle przy użyciu szablonów usługi Resource Manager, można wdrożyć bez wytwarzania żadnych danych wyjściowych. Jest to spowodowane znasz wartości używanych do wypełniania parametrów szablonu i możesz zawsze ręcznie sprawdzić właściwości dowolnego zasobu.
+Zwykle za pomocą szablonów Menedżera zasobów można wdrożyć bez tworzenia żadnych danych wyjściowych. Dzieje się tak, ponieważ znasz wszystkie wartości używane do wypełniania parametrów szablonu i zawsze można ręcznie sprawdzić właściwości dowolnego zasobu.
 
-Dla szablonów Menedżera zasobów testowych z dysku, jego\'ważne powrócić do wersji testowej wszystkie informacje, który jest wymagany w celu uzyskania dostępu do laboratorium (identyfikatory URI witryny sieci Web, maszyny wirtualnej nazwy hosta, nazwy użytkownika i hasła). Upewnij się, że wszystkie nazwy wyjściowego można odczytać, ponieważ te zmienne są prezentowane z klientem.
+W przypadku szablonów Menedżera zasobów\'dysku testowego ważne jest jednak zwrócenie do dysku testowego wszystkich informacji, które są wymagane do uzyskania dostępu do laboratorium (identyfikatory URI witryny sieci Web, nazwy hostów maszyn wirtualnych, nazwy użytkowników i hasła). Upewnij się, że wszystkie nazwy danych wyjściowych są czytelne, ponieważ te zmienne są prezentowane klientowi.
 
-Nie ma ograniczeń wszelkie związane z danych wyjściowych szablonu. Po prostu należy pamiętać, że wersja testowa konwertuje wszystkie wartości w danych wyjściowych **ciągi**, więc Jeśli wyślesz obiekt danych wyjściowych, użytkownik będzie widział JSON ciąg.
+Nie ma żadnych ograniczeń związanych z wyjściami szablonu. Pamiętaj tylko, że test konwertuje wszystkie wartości wyjściowe na **ciągi,** więc jeśli wyślesz obiekt do danych wyjściowych, użytkownik zobaczy ciąg JSON.
 
 Przykład:
 
@@ -287,143 +285,143 @@ Przykład:
 
 ### <a name="subscription-limits"></a>Limity subskrypcji
 
-I jeszcze jedno należy wziąć pod uwagę to subskrypcja oraz limity usługi. Na przykład jeśli chcesz wdrożyć maszyny wirtualne z maksymalnie dziesięć 4-rdzeniową, musisz upewnij się, że subskrypcja używać dla swojego laboratorium umożliwia 40 rdzeni.
+Jeszcze jedna rzecz, którą należy wziąć pod uwagę, to limity subskrypcji i usług. Na przykład jeśli chcesz wdrożyć maksymalnie dziesięć 4-rdzeniowych maszyn wirtualnych, musisz upewnić się, że subskrypcja używana w laboratorium umożliwia użycie 40 rdzeni.
 
-Można znaleźć więcej informacji na temat subskrypcji platformy Azure i limity usługi w [w tym artykule](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Jak wiele wersji testowych mogą być podejmowane w tym samym czasie, sprawdź, czy Twoja subskrypcja może obsługiwać \# rdzeni pomnożoną przez łączną liczbę równoczesnych testu dyski, które mogą być podejmowane.
+Więcej informacji na temat limitów subskrypcji i usług platformy Azure można znaleźć w [tym artykule](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Ponieważ można podjąć wiele dysków testowych w tym samym \# czasie, sprawdź, czy subskrypcja może obsłużyć rdzenie pomnożone przez całkowitą liczbę równoczesnych dysków testowych, które mogą być podjęte.
 
-### <a name="what-to-upload"></a>Co do przekazania
+### <a name="what-to-upload"></a>Co przesłać
 
-Testuj dysku usługi Resource Manager szablon jest przekazywany jako plik zip, który może zawierać różne artefaktów wdrożenia, ale musi mieć jeden plik o nazwie **main template.json**. Ten plik znajduje się szablon wdrożenia usługi Azure Resource Manager i używa go do utworzenia wystąpienia laboratorium wersji testowej.
+Szablon Menedżera zasobów dysku testowego jest przekazyany jako plik zip, który może zawierać różne artefakty wdrażania, ale musi mieć jeden plik o nazwie **main-template.json**. Ten plik jest szablonem wdrażania usługi Azure Resource Manager, a testowa dysk używa go do tworzenia wystąpienia laboratorium.
 
-Jeśli masz dodatkowe zasoby poza ten plik jako zasób zewnętrzny wewnątrz szablonu można do niego odwołują, lub może zawierać zasobu w pliku zip.
+Jeśli masz dodatkowe zasoby poza tym plikiem, można odwoływać się do niego jako zasób zewnętrzny wewnątrz szablonu lub można dołączyć zasób w pliku zip.
 
-Podczas publikowania certyfikacji wersji testowej unzips pakietu wdrożenia i umieszcza jego zawartość z wewnętrznego kontenera obiektów blob wersji testowej. Struktury kontenerów uwzględnić strukturę pakietu wdrażania:
+Podczas certyfikacji publikowania testowa dysk rozpina pakiet wdrażania i umieszcza jego zawartość w wewnętrznym kontenerze obiektów blob na dysku testowym. Struktura kontenera odzwierciedla strukturę pakietu wdrażania:
 
-| Package.zip                       | Kontener obiektów blob dysku testu         |
+| package.zip                       | Kontener obiektów blob dysku testowego         |
 |---|---|
-| main-template.json                | https:\//\<\..\>. blob.core.windows.net/\<\..\>/Main-Template.JSON  |
-| Templates/Solution.JSON           | https:\//\<\..\>. blob.core.windows.net/\<\..\>/templates/Solution.JSON |
-| scripts/warmup.ps1                | https:\//\<\..\>. blob.core.windows.net/\<\..\>/scripts/warmup.ps1  |
+| główny szablon.json                | https:\//\<\... \>.blob.core.windows.net/\<\... \>/main-template.json  |
+| szablony/solution.json           | https:\//\<\... \>.blob.core.windows.net/\<\... \>/templates/solution.json |
+| skrypty/rozgrzewka.ps1                | https:\//\<\... \>.blob.core.windows.net/\<\... \>/scripts/warmup.ps1  |
 
 
-Nazywamy identyfikatora Uri ten kontener obiektów blob podstawowy identyfikator Uri. Każdej wersji środowiska laboratoryjnego ma swój własny kontener obiektów blob, a w związku z tym, co wersja środowiska laboratoryjnego ma własny podstawowy identyfikator Uri. Wersja testowa można przekazać podstawowy identyfikator Uri zestawu pakietu wdrażania rozpakowany do szablonu za pomocą parametrów szablonu.
+Nazywamy uri tego kontenera obiektów blob Base Uri. Każda wersja laboratorium ma swój własny kontener obiektów blob, a zatem każda wersja laboratorium ma swój własny podstawowy identyfikator Uri. Test drive można przekazać uri podstawowy rozpakowanego pakietu wdrażania do szablonu za pomocą parametrów szablonu.
 
-## <a name="transforming-template-examples-for-test-drive"></a>Przekształcanie przykłady szablonów dla wersji testowej
+## <a name="transforming-template-examples-for-test-drive"></a>Przekształcanie przykładów szablonów dla dysku testowego
 
-Proces włączenie architekturę zasobów do szablonu Menedżera zasobów testowych z dysku może być czasochłonnym zadaniem. Aby ułatwić ten proces, firma Microsoft\'wprowadzono przykłady do optymalnego [Przekształcanie bieżące szablony wdrożenia w tym miejscu](./transforming-examples-for-test-drive.md).
+Proces przekształcania architektury zasobów w szablon Menedżera zasobów dysku testowego może być trudny. Aby ułatwić ten proces, zrobiliśmy\'przykłady, jak najlepiej [przekształcić obecne szablony wdrażania tutaj](./transforming-examples-for-test-drive.md).
 
-## <a name="how-to-publish-a-test-drive"></a>Jak opublikować wersję testową
+## <a name="how-to-publish-a-test-drive"></a>Jak opublikować jazdę próbną
 
-Teraz, gdy masz utworzone wersji testowej, w tej sekcji przedstawiono wszystkie pola wymagane opublikowanie wersji testowej.
+Teraz, gdy masz wbudowany testowy, w tej sekcji przechodzi przez każde z pól wymaganych do pomyślnego opublikowania dysku testowego.
 
-![Włączanie wersji testowej w interfejsie użytkownika](./media/azure-resource-manager-test-drive/howtopub1.png)
+![Włączanie dysku testowego w interfejsie użytkownika](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-Pole pierwszy i najważniejszy jest do wyświetlania i ukrywania ma wersję testową włączony oferty, czy nie. Po wybraniu **opcji tak** pozostała część formularza ze wszystkimi wymaganymi polami zostanie wypełniona. Po wybraniu opcji **nie** formularz zostanie wyłączony, a w przypadku ponownego opublikowania z wyłączonym dyskiem testowym dysk testowy zostanie usunięty z produkcji.
+Pierwszym i najważniejszym polem jest przełączanie, czy chcesz włączyć jazdę testową dla oferty, czy nie. Po **wybraniu opcji Tak,** pozostała część formularza ze wszystkimi wymaganymi polami zostanie wyświetlona do wypełnienia. Po wybraniu opcji Nie formularz zostanie **wyłączony,** a ponowne opublikowanie dysku testowego zostanie wyłączone, dysk testowy zostanie usunięty z produkcji.
 
-Uwaga: Jeśli istnieją, wszystkie testy dyski są aktywnie używane przez użytkowników, tych wersji testowych będzie kontynuował działanie aż do wygaśnięcia ich sesji.
+Uwaga: Jeśli istnieją dyski testowe aktywnie używane przez użytkowników, te dyski testowe będą nadal działać do czasu wygaśnięcia ich sesji.
 
 ### <a name="details"></a>Szczegóły
 
-Następnej sekcji, aby wypełnić to oferują szczegółowe informacje o wersji testowej.
+Następna sekcja do wypełnienia to szczegóły dotyczące oferty testowej.
 
-![Wersja testowa szczegółowe informacje](./media/azure-resource-manager-test-drive/howtopub2.png)
+![Test Drive szczegółowe informacje](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Opis —** *wymagane* jest to, gdzie wpisać opis główny o nowościach w wersji testowej. Klient będzie przejdź tutaj, aby odczytać scenariusze, jakie wersji testowej będzie obejmował dotyczących produktu. 
+**Opis —** *wymagane* Jest to, gdzie piszesz główny opis tego, co znajduje się na dysku testowym. Klient przyjdzie tutaj, aby przeczytać, jakie scenariusze test drive będzie pokrycie o produkcie. 
 
-**Podręcznik użytkownika -** *wymagane* to szczegółowe wskazówki dotyczące środowiska wersji testowej. Spowoduje to otwarcie siedziba klienta i zapoznać się z dokładnie co chcesz zrobić w całym ich wersji testowej. Jest ważne, że ta zawartość jest łatwy do zrozumienia i postępuj zgodnie z! (Musi być plikiem PDF)
+**Instrukcja obsługi —** *wymagane* Jest to szczegółowy przewodnik po doświadczeniu dysku testowego. Klient otworzy to i może przejść przez dokładnie to, co chcesz, aby zrobić w całej ich jazdy testowej. Ważne jest, aby ta treść była łatwa do zrozumienia i naśladowania! (Musi to być plik .pdf)
 
-**Testowanie dysku demonstracyjny materiał wideo —** *zalecane* podobny do podręcznika użytkownika, najlepiej jest uwzględnienie Samouczek wideo dla środowiska wersji testowej. Klient będzie oczekiwał w tym wcześniejsze lub w trakcie ich wersji testowej i zapoznać się z dokładnie co chcesz zrobić w całym ich wersji testowej. Jest ważne, że ta zawartość jest łatwy do zrozumienia i postępuj zgodnie z!
+**Test Drive Demo Video -** *Zalecane* Podobne do instrukcji obsługi, najlepiej jest dołączyć film instruktażowy doświadczenia z jazdy testowej. Klient będzie oglądać to przed lub podczas jazdy testowej i może przejść przez dokładnie to, co chcesz, aby zrobić w całej ich jazdy testowej. Ważne jest, aby ta treść była łatwa do zrozumienia i naśladowania!
 
-- **Nazwa** — tytuł filmu wideo
-- **Link** -musi być osadzony adres URL z rury lub wideo. Przykład wprowadzenie adresu url osadzonego znajduje się poniżej:
-- **Miniatura** -musi być obrazem o wysokiej jakości pikseli (533 x 324). Zalecane jest wykonanie zrzutu część środowiska wersji testowej w tym miejscu.
+- **Nazwa** — tytuł filmu
+- **Link** — musi być osadzonym adresem URL z twojej rury lub filmu. Przykład, jak uzyskać osadzony adres URL, znajduje się poniżej:
+- **Miniatura** — musi być obrazem wysokiej jakości (533x324) pikseli. Zaleca się wykonanie zrzutu ekranu przedstawiającego część środowiska z jazdy próbnej tutaj.
 
-Poniżej przedstawiono, jak te pola wyświetlane dla klientów podczas ich wersji testowej.
+Poniżej opisano, jak te pola są wyświetlane dla klienta podczas korzystania z jazdy testowej.
 
-![Lokalizacja pola wersji testowej w ramach oferty z portalu Marketplace](./media/azure-resource-manager-test-drive/howtopub4.png)
+![Lokalizacja pól Dysku testowego w ofercie Marketplace](./media/azure-resource-manager-test-drive/howtopub4.png)
 
-### <a name="technical-configuration"></a>Pomoc konfiguracji
+### <a name="technical-configuration"></a>Konfiguracja techniczna
 
-Następnej sekcji, aby wypełnić jest którym Przekaż szablon Menedżera zasobów testowych z dysku i określ sposób specjalnie wersji testowej wystąpienia pracy.
+Następna sekcja do wypełnienia jest miejsce, w którym przekazać szablon Menedżera zasobów dysku testowego i określić, jak konkretnie działają wystąpienia dysku testowego.
 
 ![](./media/azure-resource-manager-test-drive/howtopub5.png)
 
-**Wystąpienia —** *wymagane* jest to, gdzie skonfiguruj liczbę wystąpień ma, w jakie regiony i jak szybko klienci mogą uzyskać wersję testową.
+**Wystąpienia —** *wymagane* Jest to, gdzie można skonfigurować, ile wystąpień chcesz, w jakim regionie i jak szybko klienci mogą uzyskać jazdę testową.
 
-- **Wystąpienia** — wybierz regionach jest, gdzie możesz wybrać wdrożonym szablonu Menedżera zasobów testowych z dysku w. Zalecane jest wystarczy wybrać jeden region, w których najczęściej spodziewasz się klientom znajdować się w lokalizacji.
-- **Gorąca** -wystąpień z numer dysku testów, które są już wdrożone i Oczekiwanie na dostęp do wybranego regionu. Klienci mogą uzyskać dostęp natychmiast wersji testowych, a nie musisz czekać, aż do wdrożenia. Jego wadą jest to, że te wystąpienia są zawsze uruchamiane na Twojej subskrypcji platformy Azure, spowoduje naliczenie opłaty za większych przestojów, koszt. Zdecydowanie zaleca się mieć **co najmniej jedno wystąpienie gorąca**, większość klientów nie chcesz czekać na pełną wdrożeń zakończyć i dlatego nadania w użycia przez klientów.
-- **Ciepło** — numer dysku testu wystąpień na regiony, które zostały wdrożone, a następnie maszyna wirtualna została zatrzymana i przechowywane w usłudze Azure storage. Czas oczekiwania na ciepło wystąpień jest mniejsza niż gorąca wystąpień, ale koszt magazynu na czas działania jest również mniej kosztowne.
-- **Zimnych** — numer dysku testu wystąpień na region, który prawdopodobnie może być wdrożony. Wystąpienia zimnych wymagają całego szablonu Menedżera zasobów testowych z dysku przechodzić przez wdrożenie w tym czasie klient żąda wersji testowej, więc jest wolniejszy niż gorąca lub dostępu do ciepłych wystąpień. Kosztem jest jednak, że masz płacisz za czas trwania wersji testowej.
+- **Wystąpienia** — w wybranych regionach można wybrać miejsce wdrażania szablonu Menedżera zasobów dysku testowego. Zaleca się, aby wybrać tylko jeden region, w którym najbardziej oczekujesz, że twoi klienci będą się znajdować.
+- **Hot** — liczba wystąpień dysku testowego, które są już wdrożone i oczekują na dostęp dla wybranego regionu. Klienci mogą natychmiast uzyskać dostęp do tych dysków testowych, zamiast czekać na wdrożenie. Kompromisem jest to, że te wystąpienia są zawsze uruchomione w ramach subskrypcji platformy Azure, więc poniosą one większy koszt czasu pracy bez przestojów. Zdecydowanie zaleca się mieć **co najmniej jedno wystąpienie Hot,** ponieważ większość klientów nie chce czekać na zakończenie pełnych wdrożeń, a więc jest drop-off w użyciu klienta.
+- **Ogrzać** — liczba wystąpień dysku testowego na region, który został wdrożony, a następnie maszyna wirtualna została zatrzymana i przechowywana w magazynie platformy Azure. Czas oczekiwania na warm wystąpień jest wolniejszy niż Hot wystąpień, ale czas pracy jest również tańsze.
+- **Zimno** — liczba wystąpień dysku testowego na region, który może być wdrożony. Zimne wystąpienia wymagają całego szablonu Menedżera zasobów dysku testowego, aby przejść przez wdrożenie w czasie, gdy klient żąda dysku testowego, więc jest wolniejszy niż wystąpienia gorące lub ciepłe. Jednak kompromisem jest to, że trzeba zapłacić tylko za czas trwania jazdy testowej.
 
-W tej chwili oblicza łączną liczbę potencjalnych współbieżnych wersji testowych ma udostępnić i sprawdzić, czy limit przydziału dla Twojej subskrypcji mogą obsługiwać współbieżnych takimi problemami znacznie mniej:
+W tej chwili oblicza całkowitą liczbę potencjalnych równoczesnych dysków testowych, które zamierzasz udostępnić, i sprawdź, czy limit przydziału dla subskrypcji może obsłużyć tę równoczesną kwotę:
 
-**(Liczba regionów wybrane x wystąpień gorąca) + (liczba z regionów wybrane x wystąpień bez wyłączania zasilania) + (liczba z regionów wybrane x zimnych wystąpień)**
+**(Liczba regionów wybranych x Gorące wystąpienia) + (Liczba regionów wybranych x Ciepłe wystąpienia) + (Liczba regionów wybranych x Zimne wystąpienia)**
 
-**Dysk czas trwania testu (godziny) —** *wymagane* czas trwania ile wersji testowej pozostaną aktywne w \# godzin. Wersji testowej kończy się automatycznie po zakończeniu tego okresu.
+**Czas trwania dysku testowego (w godzinach) -** *Wymagany* czas \# trwania, przez jaki czas jazdy testowej pozostanie aktywny, w godzinach. Dysk testowy kończy się automatycznie po zakończeniu tego okresu.
 
-**Test szablonu dysku usługi Resource Manager —** *wymagane* przekazywanie szablonie usługi Resource Manager. Jest to plik utworzony w poprzedniej sekcji powyżej. Nadaj nazwę pliku głównego szablonu: "main-template.json" i upewnij się, że szablon usługi Resource Manager zawiera parametry wyjściowe klucza zmiennych, które są wymagane. (Musi być plikiem .zip)
+**Szablon Menedżera zasobów dysku testowego —** *wymagane* przekazanie szablonu Menedżera zasobów tutaj. Jest to plik zbudowany w poprzedniej sekcji powyżej. Nazwij główny plik szablonu: "main-template.json" i upewnij się, że szablon Menedżera zasobów zawiera parametry wyjściowe dla potrzebnych zmiennych kluczowych. (Musi to być plik zip)
 
-**Dostęp do informacji -** *wymagane* po klient pobiera ich wersji testowej, uzyskiwanie dostępu do informacji są prezentowane do nich. Te instrukcje są przeznaczone do udostępniania parametry wyjściowe przydatne szablonu Menedżera zasobów testowych z dysku. Aby uwzględnić parametry wyjściowe, należy użyć podwójnego nawiasów klamrowych (na przykład **{{outputname}}** ), a ich zostanie wstawiony poprawnie w lokalizacji. (Formatowanie ciągu HTML zaleca się tutaj do renderowania frontonu).
+**Informacje o dostępie —** *wymagane* po tym, jak klient otrzyma testową jazdę, informacje o dostępie są im prezentowane. Te instrukcje są przeznaczone do udostępniania przydatnych parametrów wyjściowych z szablonu Menedżera zasobów dysku testowego. Aby uwzględnić parametry wyjściowe, należy użyć podwójnych nawiasów klamrowych (na przykład **{{outputname}}**) i zostaną one poprawnie wstawione w lokalizacji. (Formatowanie ciągów HTML jest zalecane w tym miejscu do renderowania w frontonie).
 
-### <a name="test-drive-deployment-subscription-details"></a>Szczegóły subskrypcji wdrożenia dysku testu
+### <a name="test-drive-deployment-subscription-details"></a>Szczegóły subskrypcji wdrożenia dysku testowego
 
-Sekcji końcowej, aby wypełnić ma mieć możliwość wdrażania wersji testowych automatycznie, łącząc subskrypcji platformy Azure i usługi Azure Active Directory (AD).
+Ostatnią sekcją do wypełnienia jest możliwość automatycznego wdrażania dysków testowych przez połączenie subskrypcji platformy Azure i usługi Azure Active Directory (AD).
 
-![Szczegóły subskrypcji wdrożenia dysku testu](./media/azure-resource-manager-test-drive/subdetails1.png)
+![Szczegóły subskrypcji wdrożenia dysku testowego](./media/azure-resource-manager-test-drive/subdetails1.png)
 
-**Identyfikator subskrypcji platformy Azure —** *wymagane* spowoduje to przydzielenie dostępu do usług platformy Azure i witryny Azure portal. Subskrypcja jest, gdzie raportowania użycia zasobów i usługi są rozliczane. Jeśli nie masz jeszcze **oddzielnych** subskrypcji platformy Azure dla wersji testowych, tylko Przejdź dalej i utworzyć. Identyfikatory subskrypcji platformy Azure można znaleźć, logując się do witryny Azure portal i przechodząc do subskrypcji, w menu po lewej stronie. (Przykład: "a83645ac-1234-5ab6-6789-1h234g764ghty")
+**Identyfikator subskrypcji platformy Azure —** *wymagane* Zapewnia dostęp do usług platformy Azure i witryny Azure portal. Subskrypcja jest, gdzie użycie zasobów jest zgłaszane i usługi są rozliczane. Jeśli nie masz jeszcze **tylko oddzielnej** subskrypcji platformy Azure tylko dla dysków testowych, śmiało i ją wykonaj. Identyfikatory subskrypcji platformy Azure można znaleźć, logując się do witryny Azure portal i przechodząc do subskrypcji w menu po lewej stronie. (Przykład: "a83645ac-1234-5ab6-6789-1h234g764ghty")
 
 ![Subskrypcje platformy Azure](./media/azure-resource-manager-test-drive/subdetails2.png)
 
-**Identyfikator dzierżawy usługi Azure AD —** *wymagane* Jeśli masz już dostępną identyfikator dzierżawy go poniżej można znaleźć we właściwościach -\> identyfikator katalogu.
+**Identyfikator dzierżawy usługi Azure AD —** *wymagane* Jeśli masz identyfikator dzierżawy już dostępny, możesz go znaleźć poniżej w identyfikatorze właściwości —\> katalog.
 
-![Właściwości usługi Active Directory platformy Azure](./media/azure-resource-manager-test-drive/subdetails3.png)
+![Właściwości usługi Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails3.png)
 
-W przeciwnym razie należy utworzyć nową dzierżawę usługi Azure Active Directory.
+W przeciwnym razie utwórz nową dzierżawę w usłudze Azure Active Directory.
 
-![Wykaz usługi Azure Active Directory dzierżawy](./media/azure-resource-manager-test-drive/subdetails4.png)
+![Lista dzierżaw usługi Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-![Zdefiniuj organizację, domenę i kraj/region dla dzierżawy usługi Azure AD](./media/azure-resource-manager-test-drive/subdetails5.png)
+![Definiowanie organizacji, domeny i kraju/regionu dla dzierżawy usługi Azure AD](./media/azure-resource-manager-test-drive/subdetails5.png)
 
 ![Potwierdź wybór](./media/azure-resource-manager-test-drive/subdetails6.png)
 
-**Identyfikator aplikacji w usłudze Azure AD —** *wymagane* następnym krokiem jest tworzenie i rejestrowanie nowej aplikacji. Ta aplikacja będzie służy do wykonywania operacji w ramach wystąpienia wersji testowej.
+**Identyfikator aplikacji usługi Azure AD —** *wymagane* Następnym krokiem jest utworzenie i zarejestrowanie nowej aplikacji. Użyjemy tej aplikacji do wykonywania operacji w wystąpieniu dysku testowego.
 
-1. Przejdź do katalogu nowo utworzonego lub już istniejących w katalogu, a następnie wybierz pozycję usługi Azure Active directory w okienku filtrów.
-2. Wyszukaj "Rejestracje aplikacji" i kliknij przycisk "Dodaj"
+1. Przejdź do nowo utworzonego katalogu lub już istniejącego katalogu i wybierz pozycję Usługa Azure Active directory w okienku filtrów.
+2. Wyszukaj "Rejestracje aplikacji" i kliknij "Dodaj"
 3. Podaj nazwę aplikacji.
-4. Wybierz typ jako "aplikacja sieci Web / interfejs API"
-5. Wprowadzić dowolną wartość w polu adres URL logowania, zdobyliśmy\'t można za pomocą tego pola.
-6. Kliknij przycisk Utwórz.
-7. Po utworzeniu aplikacji przejdź do właściwości -\> ustaw ją jako wielodostępne, a następnie kliknij przycisk Zapisz.
+4. Wybierz typ jako "Aplikacja internetowa / API"
+5. Podaj dowolną wartość w adresie URL logowania, nie będziemy\'używać tego pola.
+6. Kliknij pozycję Utwórz.
+7. Po utworzeniu aplikacji przejdź do właściwości\> — ustaw aplikację jako wielodostępną i naciśnij zapisz.
 
-Kliknij pozycję Zapisz. Ostatnim krokiem jest identyfikator aplikacji dla tej aplikacji zarejestrowanych i wklej go w tym polu wersji testowej.
+Kliknij pozycję Zapisz. Ostatnim krokiem jest, aby pobrać identyfikator aplikacji dla tej zarejestrowanej aplikacji i wkleić go w polu Test Drive tutaj.
 
-![Szczegółów identyfikator aplikacji w usłudze Azure AD](./media/azure-resource-manager-test-drive/subdetails7.png)
+![Szczegóły identyfikatora aplikacji usługi Azure AD](./media/azure-resource-manager-test-drive/subdetails7.png)
 
-Biorąc pod uwagę używamy aplikacji do wdrożenia do subskrypcji, musimy dodać aplikację jako współautora w subskrypcji. Instrukcje te są jak poniżej:
+Biorąc pod uwagę, że używamy aplikacji do wdrożenia w ramach subskrypcji, musimy dodać aplikację jako współautora subskrypcji. Instrukcje dla tych są jak poniżej:
 
-1. Przejdź do bloku subskrypcje i wybierz odpowiednią subskrypcję, którego używasz do testowej.
-1. Kliknij pozycję **Kontrola dostępu (IAM)** .
-1. Kliknij kartę **przypisania ról** .  ![dodać nowego Access Control głównej](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-1. Kliknij przycisk **Dodaj przypisanie roli**.
-1. Ustaw rolę **Współautor**.
-1. Wpisz nazwę aplikacji usługi Azure AD, a następnie wybierz aplikację, aby przypisać rolę.
-    ![Dodaj uprawnienia](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
-1. Kliknij pozycję **Zapisz**.
+1. Przejdź do bloku Subskrypcje i wybierz odpowiednią subskrypcję, która jest używany tylko dla dysku testowego.
+1. Kliknij pozycję **Kontrola dostępu (IAM)**.
+1. Kliknij kartę **Przypisania ról.**  ![Dodawanie nowego podmiotu kontroli dostępu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Kliknij **pozycję Dodaj przypisanie roli**.
+1. Ustaw rolę **współautora**.
+1. Wpisz nazwę aplikacji usługi Azure AD i wybierz aplikację, aby przypisać rolę.
+    ![Dodawanie uprawnień](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Kliknij przycisk **Zapisz**.
 
-**Klucz aplikacji w usłudze Azure AD —** *wymagane* końcowego pole jest do generowania klucza uwierzytelniania. W obszarze klucze Dodaj opis klucza, ustaw czas nigdy nie wygasa, następnie wybierz pozycję Zapisz. Jest **ważne** pozwala uniknąć wygasłe klucza, co spowoduje przerwanie wersji testowej w środowisku produkcyjnym. Skopiuj tę wartość i wklej go do wymagane pole wersji testowej.
+**Klucz aplikacji usługi Azure AD —** *wymagane* Ostatecznym polem jest wygenerowanie klucza uwierzytelniania. W obszarze klawisze dodaj opis klucza, ustaw czas trwania, aby nigdy nie wygaśnie, a następnie wybierz pozycję Zapisz. Ważne **jest,** aby uniknąć posiadania wygasłego klucza, który spowoduje przerwanie jazdy testowej w produkcji. Skopiuj tę wartość i wklej ją do wymaganego pola Dysku testowego.
 
-![Pokazuje kluczy dla aplikacji usługi Azure AD](./media/azure-resource-manager-test-drive/subdetails8.png)
+![Pokazuje klucze dla aplikacji usługi Azure AD](./media/azure-resource-manager-test-drive/subdetails8.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wszystkich pól wersji testowej wypełnione przejść i **ponownie opublikować** oferty. Po upływie wersji testowej certyfikacji powinien przeprowadzić dokładnie przetestować środowiska klienta w **(wersja zapoznawcza)** oferty. Uruchom wersję testową w interfejsie użytkownika, a następnie otwórz Twojej subskrypcji platformy Azure w witrynie Azure portal i sprawdź, czy wersji testowych są w pełni wdrażany prawidłowo.
+Teraz, gdy masz wszystkie pola jazdy testowej wypełnione, przejdź i **ponownie opublikować** swoją ofertę. Po przejściu certyfikacji na dysku testowym należy przetestować doświadczenie klienta w **wersji zapoznawczej** oferty. Uruchom dysk testowy w interfejsie użytkownika, a następnie otwórz subskrypcję platformy Azure w witrynie Azure portal i sprawdź, czy dyski testowe są w pełni wdrażane poprawnie.
 
 ![Portal Azure](./media/azure-resource-manager-test-drive/subdetails9.png)
 
-Jest to należy pamiętać, że nie zostaną usunięte wszystkie wystąpienia wersji testowej jako są udostępnione dla klientów, więc wersji testowej usługi będzie automatycznie wyczyścić te grupy zasobów po zakończeniu z nim pracy klienta.
+Należy pamiętać, że nie należy usuwać żadnych wystąpień dysku testowego, ponieważ są one aprowidzone dla klientów, więc usługa testowej automatycznie wyczyści te grupy zasobów po zakończeniu z nim przez klienta.
 
-Gdy masz doświadczenie z ofertą użytkownika (wersja zapoznawcza), nadszedł czas na **emisji na żywo**! Gdy oferta została publikowanych w podwójnego wyboru całe środowisko typu end to end jest proces ostateczny Przegląd, od firmy Microsoft. Jeśli z jakiegoś powodu odrzucenia pobiera oferty firma Microsoft będzie wysyłał powiadomienie do inżynierów skontaktuj się z ofertą wyjaśniający, co będzie potrzebne do rozwiązania.
+Gdy poczujesz się komfortowo z ofertą podglądu, teraz nadszedł czas, aby **przejść na żywo!** Istnieje proces ostatecznego przeglądu od firmy Microsoft po opublikowaniu oferty, aby dokładnie sprawdzić całe doświadczenie od końca do końca. Jeśli z jakiegoś powodu oferta zostanie odrzucona, wyślemy powiadomienie do kontaktu inżyniera dla Twojej oferty, wyjaśniając, co będzie trzeba naprawić.
 
-Jeśli masz więcej pytań, czego szukasz poradę dotyczącą rozwiązywania problemów lub mają być łatwiejsza, wersji testowej, przejdź do [— często zadawane pytania, rozwiązywanie problemów i najlepsze rozwiązania](./marketing-and-best-practices.md).
+Jeśli masz więcej pytań, szukasz porad dotyczących rozwiązywania problemów lub chcesz zwiększyć sukces na dysku testowym, przejdź do [faq, rozwiązywania problemów & najlepszych praktyk.](./marketing-and-best-practices.md)

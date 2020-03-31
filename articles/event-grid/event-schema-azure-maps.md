@@ -1,6 +1,6 @@
 ---
-title: Schemat zdarzenia Azure Maps Azure Event Grid
-description: Opisuje właściwości i schemat udostępnione dla zdarzeń Azure Maps z Azure Event Grid
+title: Schemat zdarzenia usługi Azure Maps w usłudze Azure
+description: Zawiera opis właściwości i schematu dla zdarzeń usługi Azure Maps za pomocą usługi Azure Event Grid
 services: event-grid
 author: femila
 ms.service: event-grid
@@ -8,29 +8,29 @@ ms.topic: reference
 ms.date: 02/08/2019
 ms.author: femila
 ms.openlocfilehash: 9acef524521e8fac6ce6f8f61e5ff3fbbb81d18d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77486363"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Schemat zdarzeń Azure Event Grid dla Azure Maps
+# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Schemat zdarzeń usługi Azure Event Grid dla usługi Azure Maps
 
-Ten artykuł zawiera właściwości i schemat zdarzeń Azure Maps. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [Azure Event Grid schemacie zdarzeń](https://docs.microsoft.com/azure/event-grid/event-schema).
+Ten artykuł zawiera właściwości i schemat zdarzeń usługi Azure Maps. Aby zapoznać się ze schematem zdarzeń, zobacz [Schemat zdarzeń usługi Azure Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema).
 
 ## <a name="available-event-types"></a>Dostępne typy zdarzeń
 
-Konto Azure Maps emituje następujące typy zdarzeń:
+Konto usługi Azure Maps emituje następujące typy zdarzeń:
 
 | Typ zdarzenia | Opis |
 | ---------- | ----------- |
-| Microsoft.Maps.GeofenceEntered | Wywoływane, gdy otrzymane współrzędne zostały przeniesione z zewnątrz danego elementu geołożonego do wewnątrz |
-| Microsoft.Maps.GeofenceExited | Wywoływane, gdy odebrane współrzędne przeniesiono z wewnątrz danego elementu geołożonego do zewnątrz |
-| Microsoft.Maps.GeofenceResult | Wywoływane za każdym razem, gdy zapytanie geofencingu zwraca wynik, niezależnie od stanu |
+| Microsoft.Maps.GeofenceWprowadzone | Podniesione, gdy otrzymane współrzędne zostały przeniesione z zewnątrz danego obszaru geograficznego do |
+| Microsoft.Maps.GeofenceNieoczesło | Wywoływane, gdy współrzędne zostały przeniesione z danej geofence na zewnątrz |
+| Microsoft.Maps.GeofenceResult | Wywoływana za każdym razem, gdy kwerenda geofencingowa zwraca wynik, niezależnie od stanu |
 
 ## <a name="event-examples"></a>Przykłady zdarzeń
 
-Poniższy przykład przedstawia schemat zdarzenia **GeofenceEntered**
+W poniższym przykładzie przedstawiono schemat zdarzenia **GeofenceEntered**
 
 ```JSON
 {   
@@ -60,7 +60,7 @@ Poniższy przykład przedstawia schemat zdarzenia **GeofenceEntered**
 }
 ```
 
-Poniższy przykład przedstawia schemat dla **GeofenceResult** 
+W poniższym przykładzie pokazano schemat **geofenceResult** 
 
 ```JSON
 {   
@@ -104,66 +104,66 @@ Zdarzenie ma następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| temat | ciąg | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
-| subject | ciąg | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
-| eventType | ciąg | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
-| eventTime | ciąg | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
+| temat | ciąg | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie jest zapisywalne. Ta wartość jest podawana przez usługę Event Grid. |
+| Temat | ciąg | Zdefiniowana przez wydawcę ścieżka do tematu zdarzenia. |
+| Eventtype | ciąg | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
+| eventTime | ciąg | Czas, w której zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
-| data | obiekt | Dane zdarzenia geofencingu. |
+| dane | obiekt | Dane zdarzeń geofencingu. |
 | dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
-| metadataVersion | ciąg | Wersja schematu metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
+| metadataVersion | ciąg | Wersja schematu metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Ta wartość jest podawana przez usługę Event Grid. |
 
 Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| apiCategory | ciąg | Kategoria interfejsu API zdarzenia. |
-| apiName | ciąg | Nazwa interfejsu API zdarzenia. |
-| problemy | obiekt | Wyświetla listę problemów napotkanych podczas przetwarzania. W przypadku zwrócenia jakichkolwiek problemów nie będzie żadnych geometrie zwracanych z odpowiedzią. |
+| kategoria api | ciąg | kategorii interfejsu API zdarzenia. |
+| nazwa api | ciąg | Nazwa interfejsu API zdarzenia. |
+| issues | obiekt | Wyświetla listę problemów napotkanych podczas przetwarzania. Jeśli zostaną zwrócone jakiekolwiek problemy, nie będzie żadnych geometrii zwrócone z odpowiedzi. |
 | responseCode | numer | Kod odpowiedzi HTTP |
-| geometrie | obiekt | Wyświetla listę ograniczników geometrie, które zawierają położenie współrzędnych lub nakładają się na searchBuffer wokół pozycji. |
+| Geometrii | obiekt | Wyświetla listę geometrii ogrodzenia, które zawierają położenie współrzędnych lub nakładają się na wyszukiwanieBuffer wokół pozycji. |
 
-Obiekt Error jest zwracany, gdy w interfejsie API Maps wystąpi błąd. Obiekt Error ma następujące właściwości:
-
-| Właściwość | Typ | Opis |
-| -------- | ---- | ----------- |
-| error | ErrorDetails |Ten obiekt jest zwracany w przypadku wystąpienia błędu w interfejsie API Maps  |
-
-Obiekt ErrorDetails jest zwracany, gdy w interfejsie API Maps wystąpi błąd. ErrorDetails lub obiekt ma następujące właściwości:
+Obiekt błędu jest zwracany, gdy wystąpi błąd w interfejsie API map. Obiekt błędu ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| code | ciąg | Kod stanu HTTP. |
+| error | ErrorDetails |Ten obiekt jest zwracany, gdy wystąpi błąd w interfejsie API mapy  |
+
+Obiekt ErrorDetails jest zwracany, gdy wystąpi błąd w interfejsie API map. Szczegóły lub obiekt ErrorDetails ma następujące właściwości:
+
+| Właściwość | Typ | Opis |
+| -------- | ---- | ----------- |
+| kod | ciąg | Kod stanu HTTP. |
 | message | ciąg | Jeśli jest dostępny, czytelny dla człowieka opis błędu. |
-| innererror | InnerError | Jeśli jest dostępny, obiekt zawierający informacje specyficzne dla usługi o błędzie. |
+| innererror | InnerError ( InnerError ) | Jeśli jest dostępny, obiekt zawierający informacje specyficzne dla usługi o błędzie. |
 
-InnerError jest obiektem zawierającym informacje specyficzne dla usługi o błędzie. Obiekt InnerError ma następujące właściwości: 
+InnerError jest obiektem zawierającym informacje specyficzne dla usługi o błędzie. InnerError obiekt ma następujące właściwości: 
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| code | ciąg | Komunikat o błędzie. |
+| kod | ciąg | Komunikat o błędzie. |
 
-Obiekt geometrie wyświetla listę identyfikatorów geometrii, które wygasły względem czasu użytkownika w żądaniu. Obiekt geometrie ma elementy geometrii o następujących właściwościach: 
+Obiekt geometrii, wyświetla identyfikatory geometrii geofences, które wygasły w stosunku do czasu użytkownika w żądaniu. Obiekt geometrii ma elementy geometrii o następujących właściwościach: 
 
 | Właściwość | Typ | Opis |
 |:-------- |:---- |:----------- |
-| deviceid | ciąg | Identyfikator urządzenia. |
-| odległość | ciąg | <p>Odległość od współrzędnej do najbliższej krawędzi geoogrodzenia. Pozytywna oznacza, że Współrzędna znajduje się poza ogrodzeniem. Jeśli Współrzędna znajduje się poza ogrodzeniem, ale więcej niż wartość searchBuffer z najbliższej granicy geoogrodzenia, wartość to 999. Wartość ujemna oznacza, że Współrzędna jest wewnątrz ogrodzenia. Jeśli Współrzędna znajduje się wewnątrz wielokąta, ale więcej niż wartość searchBuffer z najbliższego obramowania geoogrodzenia, wartość to-999. Wartość 999 oznacza, że istnieje doskonały stopień pewności, że Współrzędna jest poza ogrodzeniem geograficznym. Wartość-999 oznacza, że istnieje doskonały stopień pewności, że Współrzędna jest również w obrębie geofencingu.<p> |
-| geometryid |ciąg | Unikatowy identyfikator identyfikuje geometrię geoogrodzenia. |
-| nearestlat | numer | Szerokość geograficzna najbliższego punktu geometrii. |
-| nearestlon | numer | Długość geograficzna najbliższego punktu geometrii. |
-| udId | ciąg | Unikatowy identyfikator zwrócony przez usługę przekazywania przez użytkownika podczas przekazywania geoogrodzenia. Nie zostanie uwzględniony w interfejsie API po geoogrodzeniu. |
+| Deviceid | ciąg | Identyfikator urządzenia. |
+| odległość | ciąg | <p>Odległość od współrzędnej do najbliższej granicy geofence. Dodatni oznacza, że współrzędna znajduje się poza geofence. Jeśli współrzędna znajduje się poza geograficznym, ale więcej niż wartość searchBuffer od najbliższej granicy geograficznej, a następnie wartość jest 999. Ujemny oznacza, że współrzędna znajduje się wewnątrz geofence. Jeśli współrzędna znajduje się wewnątrz wielokąta, ale więcej niż wartość searchBuffer od najbliższej granicy geofencingu, wartość wynosi -999. Wartość 999 oznacza, że istnieje duża pewność, że współrzędna znajduje się poza geofence. Wartość -999 oznacza, że istnieje duża pewność, że współrzędna znajduje się dobrze w granicach geograficznej.<p> |
+| geometria |ciąg | Unikatowy identyfikator identyfikuje geometrię geofence. |
+| nearestlat (najbliższylat) | numer | Szerokość geograficzna najbliższego punktu geometrii. |
+| nearestlon (najbliższylon) | numer | Długość geograficzna najbliższego punktu geometrii. |
+| Udid | ciąg | Unikatowy identyfikator zwrócony z usługi przesyłania użytkownika podczas przesyłania geofence. Nie zostaną uwzględnione w interfejsie API wpisu geofencingu. |
 
 Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| expiredGeofenceGeometryId | string[] | Listy o IDENTYFIKATORze geometrii geofencingu, które wygasły względem czasu użytkownika w żądaniu. |
-| geometrie | geometrie [] |Wyświetla listę ograniczników geometrie, które zawierają położenie współrzędnych lub nakładają się na searchBuffer wokół pozycji. |
-| invalidPeriodGeofenceGeometryId | string[]  | Listy identyfikatorów geometrycznych geoogrodzenia, które znajdują się w nieprawidłowym okresie względem czasu użytkownika w żądaniu. |
-| isEventPublished | wartość logiczna | Wartość true, jeśli co najmniej jedno zdarzenie jest publikowane na subskrybencie zdarzenia Azure Maps, wartość false, jeśli żadne zdarzenie nie jest publikowane na subskrybencie zdarzenia Azure Maps. |
+| expiredGeofenceGeometryId | ciąg[] | Wyświetla listę identyfikatora geometrii geograficznego, który wygasł w stosunku do czasu użytkownika w żądaniu. |
+| Geometrii | geometrie[] |Wyświetla listę geometrii ogrodzenia, które zawierają położenie współrzędnych lub nakładają się na wyszukiwanieBuffer wokół pozycji. |
+| invalidPeriodGeofenceGeometryId | ciąg[]  | Wyświetla listę identyfikatora geometrii geograficznego, który jest w nieprawidłowym okresie w stosunku do czasu użytkownika w żądaniu. |
+| isEventPublikowane | wartość logiczna | Wartość true, jeśli co najmniej jedno zdarzenie jest publikowane do subskrybenta zdarzeń usługi Azure Maps, false, jeśli żadne zdarzenie nie jest publikowane do subskrybenta zdarzeń usługi Azure Maps. |
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby zapoznać się z wprowadzeniem do Azure Event Grid, zobacz [co to jest Event Grid?](overview.md)
-* Aby uzyskać więcej informacji na temat tworzenia subskrypcji Azure Event Grid, zobacz [Event Grid schematu subskrypcji](subscription-creation-schema.md).
+* Aby uzyskać wprowadzenie do usługi Azure Event Grid, zobacz [Co to jest siatka zdarzeń?](overview.md)
+* Aby uzyskać więcej informacji na temat tworzenia subskrypcji usługi Azure Event Grid, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).

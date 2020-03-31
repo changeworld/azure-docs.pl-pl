@@ -16,7 +16,7 @@
       href: high-availability.md
     - name: Monitorowanie
       href: monitoring.md
-    - name: Sieć
+    - name: Networking
       href: Networking.md
     - name: Zabezpieczenia fizyczne
       href: physical-security.md
@@ -26,6 +26,8 @@
   items:
     - name: Wybieranie architektury wdrożenia
       href: deployment-architecture.md
+    - name: Rozwiązywanie problemów
+      href: troubleshoot.md
 - name: Zasoby
   items:
     - name: Często zadawane pytania

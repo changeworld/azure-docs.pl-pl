@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: korzystanie z usługi Azure Storage v11 dla platformy .NET do zarządzania kolejką'
+title: 'Szybki start: zarządzanie kolejką za pomocą usługi Azure Storage w wersji 11 dla platformy .NET'
 description: Z tego przewodnika Szybki start dowiesz się, jak używać biblioteki klienta usługi Azure Storage dla platformy .NET do tworzenia kolejki i dodawania do niej komunikatów. Następnie dowiesz się, jak odczytywać i przetwarzać komunikaty z kolejki.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,15 +9,15 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
 ms.openlocfilehash: c327629f0c5e88520a8bb0b9c4ff68e6edc00c35
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79137343"
 ---
-# <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Szybki Start: korzystanie z usługi Azure Storage SDK v11 for .NET do zarządzania kolejką
+# <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Szybki start: zarządzanie kolejką za pomocą narzędzia Azure Storage SDK w wersji 11 dla platformy .NET
 
-W tym przewodniku szybki start dowiesz się, jak utworzyć kolejkę i dodać do niej komunikaty przy użyciu biblioteki klienta usługi Azure Storage w wersji 11. Następnie dowiesz się, jak odczytywać i przetwarzać komunikaty z kolejki. 
+W tym przewodniku Szybki start dowiesz się, jak utworzyć kolejkę i dodać do niej bibliotekę klienta usługi Azure Storage w wersji 11 dla platformy .NET. Następnie dowiesz się, jak odczytywać i przetwarzać komunikaty z kolejki. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -25,7 +25,7 @@ W tym przewodniku szybki start dowiesz się, jak utworzyć kolejkę i dodać do 
 
 Następnie pobierz i zainstaluj program .NET Core 2.0 dla swojego systemu operacyjnego. Jeśli korzystasz z systemu Windows, możesz również zainstalować program Visual Studio i używać środowiska .NET Framework. Możesz również zainstalować edytor do korzystania w systemie operacyjnym.
 
-### <a name="windows"></a>System Windows
+### <a name="windows"></a>Windows
 
 - Zainstaluj program[.NET Core dla systemu Windows](https://www.microsoft.com/net/download/windows) lub program [.NET Framework](https://www.microsoft.com/net/download/windows) (dołączony do programu Visual Studio dla systemu Windows)
 - Zainstaluj program [Visual Studio dla systemu Windows](https://www.visualstudio.com/). Jeśli używasz programu .NET Core, instalacja programu Visual Studio jest opcjonalna.  
@@ -62,7 +62,7 @@ Aby uruchomić aplikację, należy wprowadzić parametry połączenia konta maga
 
 Po skopiowaniu parametrów połączenia zapisz je w nowej zmiennej środowiskowej na komputerze, na którym uruchomiona jest aplikacja. Aby ustawić zmienną środowiskową, otwórz okno konsoli i postępuj zgodnie z instrukcjami dla systemu operacyjnego. Zastąp wartość `<yourconnectionstring>` rzeczywistymi parametrami połączenia:
 
-### <a name="windows"></a>System Windows
+### <a name="windows"></a>Windows
 
 ```cmd
 setx storageconnectionstring "<yourconnectionstring>"
@@ -92,7 +92,7 @@ Po dodaniu zmiennej środowiskowej uruchom polecenie `source .bash_profile` z ok
 
 Przykładowa aplikacja tworzy kolejkę i dodaje do niej komunikat. Aplikacja najpierw sprawdza komunikat bez usuwania go z kolejki, a następnie pobiera komunikat i usuwa go z kolejki.
 
-### <a name="windows"></a>System Windows
+### <a name="windows"></a>Windows
 
 Jeśli używasz programu Visual Studio jako edytora, możesz go uruchomić, naciskając klawisz **F5**. 
 
@@ -186,9 +186,9 @@ Console.WriteLine();
 
 Następnie przykładowy kod dodaje komunikat na końcu kolejki. 
 
-Wiadomość musi być w formacie, który można uwzględnić w żądaniu XML z kodowaniem UTF-8, a jego maksymalny rozmiar może wynosić maksymalnie 64 KB. Jeśli komunikat zawiera dane binarne, zalecamy kodowanie Base64 wiadomości.
+Wiadomość musi być w formacie, który można uwzględnić w żądaniu XML z kodowaniem UTF-8, a jego maksymalny rozmiar może wynosić maksymalnie 64 KB. Jeśli wiadomość zawiera dane binarne, zaleca się kodowanie wiadomości przez base64.
 
-Domyślnie maksymalny czas wygaśnięcia komunikatu wynosi 7 dni. Można określić dowolną liczbę dodatnią dla komunikatu czas wygaśnięcia.
+Domyślnie maksymalny czas wygaśnięcia komunikatu wynosi 7 dni. Można określić dowolną liczbę dodatnią dla czasu wiadomości do żywo.
 
 ```csharp
 // Create a message and add it to the queue. Set expiration time to 14 days.
@@ -200,7 +200,7 @@ Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToStrin
 Console.WriteLine();
 ```
 
-Aby dodać komunikat, który nie wygasa, użyj `Timespan.FromSeconds(-1)` w wywołaniu [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
+Aby dodać wiadomość, która nie `Timespan.FromSeconds(-1)` wygasa, użyj połączenia [z AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
 
 ```csharp
 await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
@@ -263,7 +263,7 @@ Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji .NET przy użyciu k
 ### <a name="binaries-and-source-code"></a>Pliki binarne i kod źródłowy
 
 - Pobierz pakiety NuGet dla najnowszej wersji [biblioteki klienta usługi Azure Storage dla platformy .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet)
-    - [Wspólna](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+    - [Wspólne](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
     - [Kolejki](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - Wyświetl [kod źródłowy biblioteki klienta .NET](https://github.com/Azure/azure-storage-net) w usłudze GitHub.
 

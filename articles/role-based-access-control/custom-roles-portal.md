@@ -1,6 +1,6 @@
 ---
-title: Tworzenie lub aktualizowanie ról niestandardowych platformy Azure przy użyciu Azure Portal (wersja zapoznawcza) — RBAC
-description: Dowiedz się, jak tworzyć role niestandardowe platformy Azure na potrzeby kontroli dostępu opartej na rolach (RBAC) na platformie Azure przy użyciu Azure Portal. Obejmuje to wyświetlanie, tworzenie, aktualizowanie i usuwanie ról niestandardowych.
+title: Tworzenie lub aktualizowanie ról niestandardowych platformy Azure przy użyciu portalu Azure (Preview) — Azure RBAC
+description: Dowiedz się, jak utworzyć role niestandardowe platformy Azure dla kontroli dostępu opartej na rolach platformy Azure (Azure RBAC) przy użyciu witryny Azure portal. Obejmuje to sposób tworzenia, tworzenia, aktualizowania i usuwania ról niestandardowych.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,81 +13,81 @@ ms.workload: identity
 ms.date: 02/26/2020
 ms.author: rolyon
 ms.openlocfilehash: 3204cdf51f3f37588f684f801a811f569b337d13
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77674872"
 ---
-# <a name="create-or-update-azure-custom-roles-using-the-azure-portal-preview"></a>Tworzenie lub aktualizowanie ról niestandardowych platformy Azure przy użyciu Azure Portal (wersja zapoznawcza)
+# <a name="create-or-update-azure-custom-roles-using-the-azure-portal-preview"></a>Tworzenie lub aktualizowanie ról niestandardowych platformy Azure przy użyciu witryny Azure Portal (Wersja zapoznawcza)
 
 > [!IMPORTANT]
-> Role niestandardowe platformy Azure korzystające z Azure Portal są obecnie dostępne w publicznej wersji zapoznawczej.
+> Role niestandardowe platformy Azure przy użyciu witryny Azure portal jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Jeśli [wbudowane role platformy Azure](built-in-roles.md) nie są zgodne z konkretnymi potrzebami organizacji, możesz utworzyć własne role niestandardowe platformy Azure. Podobnie jak wbudowane role można przypisywać niestandardowe role do użytkowników, grup i jednostek usługi w ramach subskrypcji i zakresów grup zasobów. Role niestandardowe są przechowywane w katalogu Azure Active Directory (Azure AD) i mogą być współużytkowane przez subskrypcje. Każdy katalog może mieć maksymalnie 5000 ról niestandardowych. Role niestandardowe można tworzyć przy użyciu Azure Portal, Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub API REST. W tym artykule opisano sposób tworzenia ról niestandardowych przy użyciu Azure Portal (obecnie w wersji zapoznawczej).
+Jeśli [wbudowane role platformy Azure](built-in-roles.md) nie spełniają określonych potrzeb organizacji, możesz utworzyć własne role niestandardowe platformy Azure. Podobnie jak wbudowane role, można przypisać role niestandardowe do użytkowników, grup i podmiotów usługi w zakresach subskrypcji i grup zasobów. Role niestandardowe są przechowywane w katalogu usługi Azure Active Directory (Azure AD) i mogą być współużytkowane w ramach subskrypcji. Każdy katalog może mieć maksymalnie 5000 ról niestandardowych. Role niestandardowe można tworzyć za pomocą witryny Azure Portal, Azure PowerShell, Interfejsu wiersza polecenia platformy Azure lub interfejsu API REST. W tym artykule opisano sposób tworzenia ról niestandardowych przy użyciu witryny Azure portal (obecnie w wersji zapoznawczej).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do tworzenia ról niestandardowych wymagane są:
+Aby utworzyć role niestandardowe, potrzebujesz:
 
 - Uprawnienia do tworzenia ról niestandardowych, takie jak [Właściciel](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator)
 
-## <a name="step-1-determine-the-permissions-you-need"></a>Krok 1. Określanie potrzebnych uprawnień
+## <a name="step-1-determine-the-permissions-you-need"></a>Krok 1: Określ uprawnienia, których potrzebujesz
 
-Platforma Azure ma tysiące uprawnień, które można dołączyć do roli niestandardowej. Poniżej przedstawiono cztery sposoby określania uprawnień, które mają zostać dodane do roli niestandardowej:
+Platforma Azure ma tysiące uprawnień, które potencjalnie można uwzględnić w roli niestandardowej. Oto cztery sposoby określania uprawnień, które chcesz dodać do roli niestandardowej:
 
 | Metoda | Opis |
 | --- | --- |
-| Obejrzyj istniejące role | Możesz sprawdzić istniejące role, aby zobaczyć, jakie uprawnienia są używane. Aby uzyskać więcej informacji, zobacz [role wbudowane platformy Azure](built-in-roles.md). |
-| Wyszukaj uprawnienia według słowa kluczowego | Podczas tworzenia roli niestandardowej przy użyciu Azure Portal można wyszukać uprawnienia według słowa kluczowego. Można na przykład wyszukać *maszynę wirtualną* lub uprawnienia do *rozliczeń* . Ta funkcja wyszukiwania została opisana w dalszej części [sekcji Krok 4. uprawnienia](#step-4-permissions). |
-| Pobierz wszystkie uprawnienia | Podczas tworzenia roli niestandardowej przy użyciu Azure Portal można pobrać wszystkie uprawnienia jako plik CSV, a następnie przeszukać ten plik. W okienku **Dodaj uprawnienia** kliknij przycisk **Pobierz wszystkie uprawnienia** , aby pobrać wszystkie uprawnienia. Aby uzyskać więcej informacji na temat okienka Dodawanie uprawnień, zobacz [krok 4. uprawnienia](#step-4-permissions). |
-| Wyświetl uprawnienia w witrynie docs | Dostępne uprawnienia można wyświetlić w [Azure Resource Manager operacji dostawcy zasobów](resource-provider-operations.md). |
+| Przyjrzyj się istniejącym rolom | Możesz przyjrzeć się istniejącym rolom, aby zobaczyć, jakie uprawnienia są używane. Aby uzyskać więcej informacji, zobacz [wbudowane role platformy Azure](built-in-roles.md). |
+| Wyszukiwanie uprawnień według słów kluczowych | Podczas tworzenia roli niestandardowej przy użyciu witryny Azure portal, można wyszukiwać uprawnienia według słów kluczowych. Na przykład można wyszukać *uprawnienia maszyny wirtualnej* lub *rozliczeń.* Ta funkcja wyszukiwania jest opisana w dalszej części [kroku 4: Uprawnienia](#step-4-permissions). |
+| Pobierz wszystkie uprawnienia | Podczas tworzenia roli niestandardowej przy użyciu witryny Azure portal, można pobrać wszystkie uprawnienia jako plik CSV, a następnie przeszukać ten plik. W okienku **Dodawanie uprawnień** kliknij przycisk **Pobierz wszystkie uprawnienia,** aby pobrać wszystkie uprawnienia. Aby uzyskać więcej informacji na temat okienka Dodawanie uprawnień, zobacz [Krok 4: Uprawnienia](#step-4-permissions). |
+| Wyświetlanie uprawnień w docs | Dostępne uprawnienia można wyświetlić w [operacjach dostawcy zasobów usługi Azure Resource Manager](resource-provider-operations.md). |
 
-## <a name="step-2-choose-how-to-start"></a>Krok 2. Wybieranie sposobu uruchamiania
+## <a name="step-2-choose-how-to-start"></a>Krok 2: Wybierz sposób uruchamiania
 
-Istnieją trzy sposoby tworzenia roli niestandardowej. Można sklonować istniejącą rolę, zacząć od podstaw lub zacząć od pliku JSON. Najprostszym sposobem jest znalezienie istniejącej roli, która ma większość potrzebnych uprawnień, a następnie klonowanie i zmodyfikowanie go dla danego scenariusza. 
+Istnieją trzy sposoby, które można rozpocząć tworzenie roli niestandardowej. Można sklonować istniejącą rolę, rozpocząć od zera lub rozpocząć od pliku JSON. Najprostszym sposobem jest znalezienie istniejącej roli, która ma większość uprawnień, których potrzebujesz, a następnie sklonować i zmodyfikować ją dla twojego scenariusza. 
 
 ### <a name="clone-a-role"></a>Klonowanie roli
 
-Jeśli istniejąca rola nie ma żadnych potrzebnych uprawnień, można sklonować ją, a następnie zmodyfikować uprawnienia. Wykonaj następujące kroki, aby rozpocząć klonowanie roli.
+Jeśli istniejąca rola nie ma uprawnień, których potrzebujesz, można ją sklonować, a następnie zmodyfikować uprawnienia. Wykonaj następujące kroki, aby rozpocząć klonowanie roli.
 
-1. W Azure Portal Otwórz subskrypcję lub grupę zasobów, w której chcesz przypisać rolę niestandardową, a następnie otwórz pozycję **Kontrola dostępu (IAM)** .
+1. W witrynie Azure portal otwórz subskrypcję lub grupę zasobów, w której chcesz, aby rola niestandardowa była przypisywana, a następnie otwórz **formę kontroli dostępu (IAM)**.
 
     Poniższy zrzut ekranu przedstawia stronę kontroli dostępu (IAM) otwartą dla subskrypcji.
 
     ![Strona kontroli dostępu (IAM) dla subskrypcji](./media/custom-roles-portal/access-control-subscription.png)
 
-1. Kliknij kartę **role** , aby wyświetlić listę wszystkich ról wbudowanych i niestandardowych.
+1. Kliknij kartę **Role,** aby wyświetlić listę wszystkich ról wbudowanych i niestandardowych.
 
-1. Wyszukaj rolę, którą chcesz sklonować, taką jak rola czytnika rozliczeń.
+1. Wyszukaj rolę, którą chcesz sklonować, taką jak rola Czytnik rozliczeń.
 
-1. Na końcu wiersza kliknij przycisk wielokropka ( **...** ), a następnie kliknij przycisk **Klonuj**.
+1. Na końcu wiersza kliknij wielokropek (**...**), a następnie kliknij przycisk **Klonuj**.
 
-    ![Menu kontekstowe klonowania](./media/custom-roles-portal/clone-menu.png)
+    ![Menu kontekstowe Klonuj](./media/custom-roles-portal/clone-menu.png)
 
-    Spowoduje to otwarcie edytora ról niestandardowych z wybraną opcją **Klonuj rolę** .
+    Spowoduje to otwarcie edytora ról niestandardowych z wybraną opcją **Klonuj rolę.**
 
-1. Przejdź do [kroku 3: podstawy](#step-3-basics).
+1. Przejdź do [kroku 3: Podstawy](#step-3-basics).
 
 ### <a name="start-from-scratch"></a>Rozpoczynanie od zera
 
-Jeśli wolisz, możesz wykonać następujące kroki, aby uruchomić rolę niestandardową od podstaw.
+Jeśli wolisz, możesz wykonać następujące kroki, aby rozpocząć rolę niestandardową od podstaw.
 
-1. W Azure Portal Otwórz subskrypcję lub grupę zasobów, w której chcesz przypisać rolę niestandardową, a następnie otwórz pozycję **Kontrola dostępu (IAM)** .
+1. W witrynie Azure portal otwórz subskrypcję lub grupę zasobów, w której chcesz, aby rola niestandardowa była przypisywana, a następnie otwórz **formę kontroli dostępu (IAM)**.
 
-1. Kliknij przycisk **Dodaj** , a następnie kliknij pozycję **Dodaj rolę niestandardową (wersja zapoznawcza)** .
+1. Kliknij **pozycję Dodaj,** a następnie kliknij pozycję **Dodaj rolę niestandardową (wersja zapoznawcza)**.
 
     ![Dodawanie niestandardowego menu roli](./media/custom-roles-portal/add-custom-role-menu.png)
 
-    Spowoduje to otwarcie edytora ról niestandardowych z wybraną opcją **Rozpocznij od podstaw** .
+    Spowoduje to otwarcie edytora ról niestandardowych z wybraną opcją **Start od zera.**
 
-1. Przejdź do [kroku 3: podstawy](#step-3-basics).
+1. Przejdź do [kroku 3: Podstawy](#step-3-basics).
 
-### <a name="start-from-json"></a>Rozpocznij od formatu JSON
+### <a name="start-from-json"></a>Zacznij od JSON
 
-Jeśli wolisz, możesz określić większość niestandardowych wartości ról w pliku JSON. Plik można otworzyć w edytorze ról niestandardowych, wprowadzić dodatkowe zmiany, a następnie utworzyć rolę niestandardową. Wykonaj następujące kroki, aby rozpocząć pracę z plikiem JSON.
+Jeśli wolisz, możesz określić większość wartości roli niestandardowej w pliku JSON. Można otworzyć plik w edytorze ról niestandardowych, wprowadzić dodatkowe zmiany, a następnie utworzyć rolę niestandardową. Wykonaj następujące kroki, aby rozpocząć od pliku JSON.
 
 1. Utwórz plik JSON o następującym formacie:
 
@@ -109,7 +109,7 @@ Jeśli wolisz, możesz określić większość niestandardowych wartości ról w
     }
     ```
 
-1. W pliku JSON Określ wartości dla różnych właściwości. Oto przykład z dodanymi wartościami. Informacje o różnych właściwościach znajdują się w temacie [Omówienie definicji ról](role-definitions.md).
+1. W pliku JSON określ wartości dla różnych właściwości. Oto przykład z niektórych wartości dodanych. Aby uzyskać informacje o różnych właściwościach, zobacz [Rozumienie definicji ról](role-definitions.md).
 
     ```json
     {
@@ -139,77 +139,77 @@ Jeśli wolisz, możesz określić większość niestandardowych wartości ról w
     }
     ```
     
-1. W Azure Portal Otwórz stronę **Kontrola dostępu (IAM)** .
+1. W witrynie Azure portal otwórz stronę **kontroli dostępu (IAM).**
 
-1. Kliknij przycisk **Dodaj** , a następnie kliknij pozycję **Dodaj rolę niestandardową (wersja zapoznawcza)** .
+1. Kliknij **pozycję Dodaj,** a następnie kliknij pozycję **Dodaj rolę niestandardową (wersja zapoznawcza)**.
 
     ![Dodawanie niestandardowego menu roli](./media/custom-roles-portal/add-custom-role-menu.png)
 
     Spowoduje to otwarcie edytora ról niestandardowych.
 
-1. Na karcie podstawowe w obszarze **uprawnienia linii bazowej**wybierz pozycję **Rozpocznij od formatu JSON**.
+1. Na karcie Podstawy w obszarze **Uprawnienia Według planu bazowego**wybierz pozycję **Start z JSON**.
 
-1. Obok pola wybierz plik kliknij przycisk folder, aby otworzyć okno dialogowe Otwórz.
+1. Obok pola Wybierz plik kliknij przycisk folderu, aby otworzyć okno dialogowe Otwieranie.
 
 1. Wybierz plik JSON, a następnie kliknij przycisk **Otwórz**.
 
-1. Przejdź do [kroku 3: podstawy](#step-3-basics).
+1. Przejdź do [kroku 3: Podstawy](#step-3-basics).
 
-## <a name="step-3-basics"></a>Krok 3. podstawy
+## <a name="step-3-basics"></a>Krok 3: Podstawy
 
-Na karcie **podstawowe** należy określić nazwę, opis i uprawnienia linii bazowej dla roli niestandardowej.
+Na karcie **Podstawy** można określić nazwę, opis i uprawnienia linii bazowej dla roli niestandardowej.
 
-1. W polu **Nazwa roli niestandardowej** Podaj nazwę roli niestandardowej. Nazwa musi być unikatowa dla katalogu usługi Azure AD. Nazwa może zawierać litery, cyfry, spacje i znaki specjalne.
+1. W polu **Nazwa roli niestandardowej** określ nazwę roli niestandardowej. Nazwa musi być unikatowa dla katalogu usługi Azure AD. Nazwa może zawierać litery, cyfry, spacje i znaki specjalne.
 
-1. W polu **Opis** wprowadź opcjonalny opis roli niestandardowej. Stanie się to etykietka narzędzia dla roli niestandardowej.
+1. W polu **Opis** określ opcjonalny opis roli niestandardowej. Stanie się to etykietką narzędzia dla roli niestandardowej.
 
-    Opcja **uprawnienia linii bazowej** powinna być już ustawiona na podstawie poprzedniego kroku, ale można ją zmienić.
+    Opcja **Uprawnienia według planu bazowego** powinna być już ustawiona na podstawie poprzedniego kroku, ale można ją zmienić.
 
-    ![Karta podstawy z określonymi wartościami](./media/custom-roles-portal/basics-values.png)
+    ![Karta Podstawowe z określonymi wartościami](./media/custom-roles-portal/basics-values.png)
 
-## <a name="step-4-permissions"></a>Krok 4. uprawnienia
+## <a name="step-4-permissions"></a>Krok 4: Uprawnienia
 
-Na karcie **uprawnienia** należy określić uprawnienia dla roli niestandardowej. W zależności od tego, czy Sklonowano rolę, czy po rozpoczęciu pracy z notacją JSON, na karcie uprawnienia może być już wymieniona część uprawnień.
+Na karcie **Uprawnienia** można określić uprawnienia dla roli niestandardowej. W zależności od tego, czy sklonowano rolę, czy też rozpoczęto korzystanie z usługi JSON, karta Uprawnienia może już wyświetlić listę niektórych uprawnień.
 
-![Karta uprawnienia w obszarze Utwórz rolę niestandardową](./media/custom-roles-portal/permissions.png)
+![Karta Uprawnienia tworzenia roli niestandardowej](./media/custom-roles-portal/permissions.png)
 
 ### <a name="add-or-remove-permissions"></a>Dodawanie lub usuwanie uprawnień
 
-Wykonaj następujące kroki, aby dodać lub usunąć uprawnienia dla roli niestandardowej.
+Wykonaj następujące kroki, aby dodać lub usunąć uprawnienia do roli niestandardowej.
 
-1. Aby dodać uprawnienia, kliknij przycisk **Dodaj uprawnienia** , aby otworzyć okienko Dodawanie uprawnień.
+1. Aby dodać uprawnienia, kliknij pozycję **Dodaj uprawnienia,** aby otworzyć okienko Dodaj uprawnienia.
 
-    W tym okienku są wyświetlane wszystkie dostępne uprawnienia pogrupowane w różne kategorie w formacie karty. Każda kategoria reprezentuje *dostawcę zasobów*, który jest usługą dostarczającą zasoby platformy Azure.
+    To okienko zawiera listę wszystkich dostępnych uprawnień pogrupowanych w różne kategorie w formacie karty. Każda kategoria reprezentuje *dostawcę zasobów*, który jest usługą, która dostarcza zasoby platformy Azure.
 
-1. W polu **Wyszukaj uprawnienia** wpisz ciąg, aby wyszukać uprawnienia. Na przykład wyszukaj *fakturę* , aby znaleźć uprawnienia powiązane z fakturą.
+1. W polu **Wyszukaj uprawnienia** wpisz ciąg, aby wyszukać uprawnienia. Na przykład wyszukaj *fakturę,* aby znaleźć uprawnienia związane z fakturą.
 
-    Lista kart dostawcy zasobów zostanie wyświetlona na podstawie ciągu wyszukiwania. Aby uzyskać listę, jak dostawcy zasobów mapują usługi platformy Azure, zobacz [dostawcy zasobów dla usług platformy Azure](../azure-resource-manager/management/azure-services-resource-providers.md).
+    Lista kart dostawcy zasobów będzie wyświetlana na podstawie ciągu wyszukiwania. Aby uzyskać listę sposobu mapowania dostawców zasobów do usług platformy Azure, zobacz [Dostawcy zasobów dla usług platformy Azure.](../azure-resource-manager/management/azure-services-resource-providers.md)
 
-    ![Dodawanie okienka uprawnień przy użyciu dostawcy zasobów](./media/custom-roles-portal/add-permissions-provider.png)
+    ![Okienko Dodawanie uprawnień z dostawcą zasobów](./media/custom-roles-portal/add-permissions-provider.png)
 
-1. Kliknij kartę dostawcy zasobów, która może mieć uprawnienia, które chcesz dodać do roli niestandardowej, np. **rozliczenia firmy Microsoft**.
+1. Kliknij kartę dostawcy zasobów, która może mieć uprawnienia, które chcesz dodać do roli niestandardowej, na przykład **Microsoft Billing**.
 
-    Lista uprawnień zarządzania dla tego dostawcy zasobów jest wyświetlana na podstawie ciągu wyszukiwania.
+    Lista uprawnień do zarządzania dla tego dostawcy zasobów jest wyświetlana na podstawie ciągu wyszukiwania.
 
     ![Dodaj listę uprawnień](./media/custom-roles-portal/add-permissions-list.png)
 
-1. Jeśli szukasz uprawnień odnoszących się do płaszczyzny danych, kliknij pozycję **Akcje danych**. W przeciwnym razie pozostaw akcje przełącz ustawienie na **Akcje** , aby wyświetlić listę uprawnień dotyczących płaszczyzny zarządzania. Aby uzyskać więcej informacji o różnicach między płaszczyzną zarządzania i płaszczyzną danych, zobacz [Zarządzanie i operacje na danych](role-definitions.md#management-and-data-operations).
+1. Jeśli szukasz uprawnień, które mają zastosowanie do płaszczyzny danych, kliknij pozycję **Akcje danych**. W przeciwnym razie pozostaw akcje przełącze się ustawione na **Akcje,** aby wyświetlić listę uprawnień, które mają zastosowanie do płaszczyzny zarządzania. Aby uzyskać więcej informacji na temat różnic między płaszczyzną zarządzania a płaszczyzną danych, zobacz [Zarządzanie i operacje danych](role-definitions.md#management-and-data-operations).
 
-1. W razie potrzeby zaktualizuj ciąg wyszukiwania, aby uściślić wyszukiwanie.
+1. W razie potrzeby zaktualizuj ciąg wyszukiwania, aby jeszcze bardziej zawęzić wyszukiwanie.
 
-1. Po znalezieniu co najmniej jednego uprawnienia, które chcesz dodać do roli niestandardowej, należy dodać znacznik wyboru obok uprawnienia. Na przykład Dodaj znacznik wyboru obok pozycji **inne: Pobierz fakturę** , aby dodać uprawnienie do pobierania faktur.
+1. Po znalezieniu jednego lub więcej uprawnień, które chcesz dodać do roli niestandardowej, dodaj znacznik wyboru obok uprawnień. Na przykład dodaj znacznik wyboru obok **pozycji Inne : Pobierz fakturę,** aby dodać uprawnienie do pobierania faktur.
 
-1. Kliknij przycisk **Dodaj** , aby dodać uprawnienie do listy uprawnień.
+1. Kliknij **przycisk Dodaj,** aby dodać uprawnienia do listy uprawnień.
 
-    Uprawnienie zostanie dodane jako `Actions` lub `DataActions`.
+    Uprawnienie zostanie dodane `Actions` jako `DataActions`lub .
 
     ![Dodano uprawnienie](./media/custom-roles-portal/permissions-list-add.png)
 
-1. Aby usunąć uprawnienia, kliknij ikonę Usuń na końcu wiersza. W tym przykładzie, ponieważ użytkownik nie będzie potrzebować możliwości tworzenia biletów pomocy technicznej, można usunąć uprawnienie `Microsoft.Support/*`.
+1. Aby usunąć uprawnienia, kliknij ikonę usuwania na końcu wiersza. W tym przykładzie, ponieważ użytkownik nie będzie potrzebował `Microsoft.Support/*` możliwości tworzenia biletów pomocy technicznej, uprawnienie można usunąć.
 
 ### <a name="add-wildcard-permissions"></a>Dodawanie uprawnień symboli wieloznacznych
 
-W zależności od wybranego sposobu uruchamiania możesz mieć uprawnienia z symbolami wieloznacznymi (\*) na liście uprawnień. Symbol wieloznaczny (\*) rozszerza uprawnienia do wszystkich elementów, które pasują do podanego ciągu. Załóżmy na przykład, że chcesz dodać wszystkie uprawnienia związane z Azure Cost Management i eksportami. Można dodać wszystkie te uprawnienia:
+W zależności od sposobu rozpoczęcia może znajdować się uprawnienia\*z symbolami wieloznaczymi ( ) na liście uprawnień. Symbol wieloznaczny (\*) rozszerza uprawnienie na wszystko, co pasuje do ciągu, który podajesz. Załóżmy na przykład, że chcesz dodać wszystkie uprawnienia związane z usługą Azure Cost Management i eksportuje. Można dodać wszystkie te uprawnienia:
 
 ```
 Microsoft.CostManagement/exports/action
@@ -219,139 +219,139 @@ Microsoft.CostManagement/exports/delete
 Microsoft.CostManagement/exports/run/action
 ```
 
-Zamiast dodawać wszystkie te uprawnienia, można po prostu dodać uprawnienia do symboli wieloznacznych. Na przykład następujące uprawnienie symboli wieloznacznych jest równoważne z pięcioma poprzednimi uprawnieniami. Obejmuje to również wszelkie przyszłe uprawnienia eksportu, które mogą zostać dodane.
+Zamiast dodawać wszystkie te uprawnienia, można po prostu dodać uprawnienia symboli wieloznacznych. Na przykład następujące uprawnienie symboli wieloznacznych jest równoważne z poprzednimi pięcioma uprawnieniami. Obejmowałoby to również wszelkie przyszłe uprawnienia eksportu, które mogą zostać dodane.
 
 ```
 Microsoft.CostManagement/exports/*
 ```
 
-Jeśli chcesz dodać nowe uprawnienie do symbolu wieloznacznego, nie możesz dodać go za pomocą okienka **Dodawanie uprawnień** . Aby dodać uprawnienie symboli wieloznacznych, należy dodać je ręcznie przy użyciu karty **JSON** . Aby uzyskać więcej informacji, zobacz [krok 6: JSON](#step-6-json).
+Jeśli chcesz dodać nowe uprawnienie symboli wieloznacznych, nie możesz go dodać za pomocą okienka **Dodaj uprawnienia.** Aby dodać uprawnienie symboli wieloznacznych, należy dodać je ręcznie za pomocą karty **JSON.** Aby uzyskać więcej informacji, zobacz [krok 6: JSON](#step-6-json).
 
-### <a name="exclude-permissions"></a>Wyklucz uprawnienia
+### <a name="exclude-permissions"></a>Wykluczanie uprawnień
 
-Jeśli rola ma uprawnienie do wieloznacznego (\*) i chcesz wykluczyć lub odjęciu określonych uprawnień z tego uprawnienia, można je wykluczyć. Załóżmy na przykład, że masz następujące uprawnienia do symboli wieloznacznych:
+Jeśli twoja rola ma\*uprawnienie symboli wieloznacznych ( ) i chcesz wykluczyć lub odjąć określone uprawnienia z tego uprawnienia symboli wieloznacznych, można je wykluczyć. Załóżmy na przykład, że masz następujące uprawnienia symboli wieloznacznych:
 
 ```
 Microsoft.CostManagement/exports/*
 ```
 
-Jeśli nie chcesz zezwolić na usunięcie eksportu, możesz wykluczyć następujące uprawnienie do usuwania:
+Jeśli nie chcesz zezwalać na usunięcie eksportu, możesz wykluczyć następujące uprawnienie do usuwania:
 
 ```
 Microsoft.CostManagement/exports/delete
 ```
 
-Po wykluczeniu uprawnienia zostanie ono dodane jako `NotActions` lub `NotDataActions`. Efektywne uprawnienia zarządzania są obliczane przez dodanie wszystkich `Actions` a następnie odjęcie wszystkich `NotActions`. Obowiązujące uprawnienia do danych są obliczane przez dodanie wszystkich `DataActions` a następnie odjęcie wszystkich `NotDataActions`.
+Po wykluczeniu uprawnienia jest ono `NotActions` `NotDataActions`dodawane jako lub . Efektywne uprawnienia do zarządzania są `Actions` obliczane przez dodanie wszystkich, a następnie odjęcie `NotActions`wszystkich . Uprawnienia do danych efektywnych są obliczane przez dodanie `DataActions` wszystkich, `NotDataActions`a następnie odjęcie wszystkich .
 
 > [!NOTE]
-> Wykluczenie uprawnienia nie jest takie samo jak odmowa. Wyłączenie uprawnień jest po prostu wygodnym sposobem odejmowania uprawnień z poziomu uprawnień z symboli wieloznacznych.
+> Wykluczanie uprawnienia nie jest tym samym, co odmowa. Wykluczanie uprawnień jest po prostu wygodnym sposobem odejmowania uprawnień od uprawnień symboli wieloznacznych.
 
-1. Aby wykluczyć lub odjąć uprawnienia z dozwolonego uprawnienia do symbolu wieloznacznego, kliknij pozycję **Wyklucz uprawnienia** , aby otworzyć okienko Wyklucz uprawnienia.
+1. Aby wykluczyć lub odjąć uprawnienie od dozwolonego uprawnienia symboli wieloznacznych, kliknij pozycję **Wyklucz uprawnienia,** aby otworzyć okienko Wyklucz uprawnienia.
 
-    W tym okienku należy określić uprawnienia do zarządzania lub danych, które są wykluczone lub odejmowane.
+    W tym okienku należy określić uprawnienia do zarządzania lub danych, które są wykluczone lub odjęte.
 
-1. Po znalezieniu co najmniej jednego uprawnienia, które chcesz wykluczyć, Dodaj znacznik wyboru obok pozycji uprawnienia, a następnie kliknij przycisk **Dodaj** .
+1. Po znalezieniu jednego lub kilku uprawnień, które chcesz wykluczyć, dodaj znacznik wyboru obok uprawnień, a następnie kliknij przycisk **Dodaj.**
 
-    ![Okno Wyklucz uprawnienia — wybrane uprawnienie](./media/custom-roles-portal/exclude-permissions-select.png)
+    ![Okienko Wyklucz uprawnienia - zaznaczone uprawnienie](./media/custom-roles-portal/exclude-permissions-select.png)
 
-    Uprawnienie zostanie dodane jako `NotActions` lub `NotDataActions`.
+    Uprawnienie zostanie dodane `NotActions` `NotDataActions`jako lub .
 
-    ![Wykluczone uprawnienia](./media/custom-roles-portal/exclude-permissions-list-add.png)
+    ![Wyłączone uprawnienia](./media/custom-roles-portal/exclude-permissions-list-add.png)
 
-## <a name="step-5-assignable-scopes"></a>Krok 5. zakresy, które można przypisać
+## <a name="step-5-assignable-scopes"></a>Krok 5: Zakresy podlegające możliwości przypisania
 
-Na karcie **zakresy** możliwe do przypisania Określ lokalizację, w której rola niestandardowa ma być dostępna do przypisania, na przykład subskrypcja lub Grupa zasobów. W zależności od wybranej opcji Rozpocznij na tej karcie można wyświetlić listę zakresów, w których otwarto stronę kontroli dostępu (IAM). Ustawienie zakresu możliwego do przypisania do zakresu głównego ("/") nie jest obsługiwane. W tej wersji zapoznawczej nie można dodać grupy zarządzania jako zakresu możliwego do przypisania.
+Na karcie **Zakresy podlegające możliwości przypisania** można określić, gdzie rola niestandardowa jest dostępna dla przypisania, na przykład subskrypcji lub grupy zasobów. W zależności od sposobu rozpoczęcia tej karty może być wyświetlona lista zakresu, w którym otwarto stronę kontroli dostępu (IAM). Ustawienie zakresu przypisywanego do zakresu głównego ("/") nie jest obsługiwane. W tej wersji zapoznawczej nie można dodać grupy zarządzania jako zakresu podlegania cesji.
 
-1. Kliknij pozycję **Dodaj zakresy** , które można przypisać, aby otworzyć okienko Dodaj zakresy z możliwością przypisania.
+1. Kliknij **pozycję Dodaj zakresy podlegające możliwości przypisania,** aby otworzyć okienko Dodaj zakresy, które można przypisać.
 
-    ![Karta zakresy przypisane](./media/custom-roles-portal/assignable-scopes.png)
+    ![Karta Zakresy podlegające możliwości przypisania](./media/custom-roles-portal/assignable-scopes.png)
 
-1. Kliknij co najmniej jeden zakres, który ma być używany, zazwyczaj subskrypcją.
+1. Kliknij co najmniej jeden zakres, którego chcesz użyć, zazwyczaj subskrypcję.
 
-    ![Dodaj zakresy, które można przypisać](./media/custom-roles-portal/add-assignable-scopes.png)
+    ![Dodawanie zakresów podlegania cesji](./media/custom-roles-portal/add-assignable-scopes.png)
 
-1. Kliknij przycisk **Dodaj** , aby dodać swój zakres możliwy do przypisania.
+1. Kliknij przycisk **Dodaj,** aby dodać zakres, który można przypisać.
 
-## <a name="step-6-json"></a>Krok 6. kod JSON
+## <a name="step-6-json"></a>Krok 6: JSON
 
-Na karcie **JSON** zobaczysz niestandardową rolę sformatowaną w formacie JSON. Jeśli chcesz, możesz bezpośrednio edytować kod JSON. Jeśli chcesz dodać uprawnienie do wieloznacznego (\*), musisz użyć tej karty.
+Na karcie **JSON** zobaczysz rolę niestandardową sformatowaną w u. JSON. Jeśli chcesz, możesz bezpośrednio edytować JSON. Aby dodać symbol wieloznaczny\*( ) , należy użyć tej karty.
 
-1. Aby edytować kod JSON, kliknij przycisk **Edytuj**.
+1. Aby edytować JSON, kliknij przycisk **Edytuj**.
 
-    ![Karta JSON przedstawiająca rolę niestandardową](./media/custom-roles-portal/json.png)
+    ![Karta JSON z rolą niestandardową](./media/custom-roles-portal/json.png)
 
-1. Wprowadź zmiany w formacie JSON.
+1. Wprowadzanie zmian w JSON.
 
-    Jeśli kod JSON nie jest prawidłowo sformatowany, zobaczysz czerwoną linię i wskaźnik w pionie.
+    Jeśli JSON nie jest poprawnie sformatowany, na pionowej rynnie pojawi się czerwona postrzępiona linia i wskaźnik.
 
 1. Po zakończeniu edycji kliknij przycisk **Zapisz**.
 
-## <a name="step-7-review--create"></a>Krok 7. przegląd + tworzenie
+## <a name="step-7-review--create"></a>Krok 7: Recenzja + tworzenie
 
-Na karcie **Przegląd i tworzenie** możesz przejrzeć ustawienia roli niestandardowej.
+Na karcie **Recenzja + tworzenie** możesz przejrzeć ustawienia ról niestandardowych.
 
-1. Przejrzyj ustawienia roli niestandardowej.
+1. Przejrzyj niestandardowe ustawienia ról.
 
-    ![Przejrzyj i Utwórz kartę](./media/custom-roles-portal/review-create.png)
+    ![Karta Recenzja + tworzenie](./media/custom-roles-portal/review-create.png)
 
-1. Kliknij przycisk **Utwórz** , aby utworzyć rolę niestandardową.
+1. Kliknij **przycisk Utwórz,** aby utworzyć rolę niestandardową.
 
-    Po kilku chwilach zostanie wyświetlone okno komunikatu z informacją o tym, że rola niestandardowa została pomyślnie utworzona.
+    Po kilku chwilach pojawi się okno komunikatu informujące o pomyślnym utworzeniu roli niestandardowej.
 
-    ![Utwórz komunikat roli niestandardowej](./media/custom-roles-portal/custom-role-success.png)
+    ![Tworzenie niestandardowego komunikatu roli](./media/custom-roles-portal/custom-role-success.png)
 
-    W przypadku wykrycia błędów zostanie wyświetlony komunikat.
+    Jeśli zostaną wykryte błędy, zostanie wyświetlony komunikat.
 
-    ![Przegląd + Tworzenie błędu](./media/custom-roles-portal/review-create-error.png)
+    ![Recenzja + błąd tworzenia](./media/custom-roles-portal/review-create-error.png)
 
-1. Wyświetl nową rolę niestandardową na liście **role** . Jeśli nie widzisz roli niestandardowej, kliknij przycisk **Odśwież**.
+1. Wyświetl nową rolę niestandardową na liście **Role.** Jeśli nie widzisz roli niestandardowej, kliknij przycisk **Odśwież**.
 
-     Niestandardowa rola użytkownika może potrwać kilka minut.
+     Może upłynąć kilka minut, aby twoja rola niestandardowa pojawiła się wszędzie.
 
 ## <a name="list-custom-roles"></a>Wyświetlanie ról niestandardowych
 
 Wykonaj następujące kroki, aby wyświetlić role niestandardowe.
 
-1. Otwórz subskrypcję lub grupę zasobów, a następnie otwórz pozycję **Kontrola dostępu (IAM)** .
+1. Otwórz subskrypcję lub grupę zasobów, a następnie otwórz **formę kontroli dostępu (IAM).**
 
-1. Kliknij kartę **role** , aby wyświetlić listę wszystkich ról wbudowanych i niestandardowych.
+1. Kliknij kartę **Role,** aby wyświetlić listę wszystkich ról wbudowanych i niestandardowych.
 
-1. Na liście **Typ** wybierz pozycję **CustomRole** , aby po prostu zobaczyć role niestandardowe.
+1. Na liście **Typ** wybierz **pozycję Niestandardowerole,** aby wyświetlić swoje role niestandardowe.
 
-    Jeśli masz właśnie utworzoną rolę niestandardową i nie widzisz jej na liście, kliknij przycisk **Odśwież**.
+    Jeśli właśnie utworzono rolę niestandardową i nie widzisz jej na liście, kliknij przycisk **Odśwież**.
 
-    ![Lista ról niestandardowych](./media/custom-roles-portal/custom-role-list.png)
+    ![Niestandardowa lista ról](./media/custom-roles-portal/custom-role-list.png)
 
 ## <a name="update-a-custom-role"></a>Aktualizacja roli niestandardowej
 
-1. Zgodnie z opisem we wcześniejszej części tego artykułu, należy otworzyć listę ról niestandardowych.
+1. Jak opisano wcześniej w tym artykule, otwórz listę ról niestandardowych.
 
-1. Kliknij przycisk wielokropka ( **...** ) dla roli niestandardowej, którą chcesz zaktualizować, a następnie kliknij przycisk **Edytuj**. Należy pamiętać, że nie można aktualizować wbudowanych ról.
+1. Kliknij wielokropek (**...**) dla roli niestandardowej, którą chcesz zaktualizować, a następnie kliknij przycisk **Edytuj**. Należy pamiętać, że nie można zaktualizować wbudowanych ról.
 
-    Rola niestandardowa zostanie otwarta w edytorze.
+    Rola niestandardowa jest otwierana w edytorze.
 
-    ![Niestandardowe menu roli](./media/custom-roles-portal/edit-menu.png)
+    ![Menu roli niestandardowej](./media/custom-roles-portal/edit-menu.png)
 
 1. Użyj różnych kart, aby zaktualizować rolę niestandardową.
 
-1. Po zakończeniu wprowadzania zmian kliknij kartę **Recenzja + tworzenie** , aby przejrzeć zmiany.
+1. Po zakończeniu zmian kliknij kartę **Przejrzyj + utwórz,** aby przejrzeć zmiany.
 
-1. Kliknij przycisk **Aktualizuj** , aby zaktualizować rolę niestandardową.
+1. Kliknij przycisk **Aktualizuj,** aby zaktualizować rolę niestandardową.
 
 ## <a name="delete-a-custom-role"></a>Usuwanie roli niestandardowej
 
-1. Zgodnie z opisem we wcześniejszej części tego artykułu, należy otworzyć listę ról niestandardowych.
+1. Jak opisano wcześniej w tym artykule, otwórz listę ról niestandardowych.
 
-1. Usuń wszystkie przypisania ról, które korzystają z roli niestandardowej.
+1. Usuń wszystkie przypisania ról przy użyciu roli niestandardowej.
 
-1. Kliknij przycisk wielokropka ( **...** ) dla roli niestandardowej, którą chcesz usunąć, a następnie kliknij pozycję **Usuń**.
+1. Kliknij wielokropek (**...**) dla roli niestandardowej, którą chcesz usunąć, a następnie kliknij przycisk **Usuń**.
 
-    ![Niestandardowe menu roli](./media/custom-roles-portal/delete-menu.png)
+    ![Menu roli niestandardowej](./media/custom-roles-portal/delete-menu.png)
 
     Całkowite usunięcie roli niestandardowej może potrwać kilka minut.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Samouczek: tworzenie roli niestandardowej przy użyciu Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Samouczek: tworzenie roli niestandardowej przy użyciu programu Azure PowerShell](tutorial-custom-role-powershell.md)
 - [Role niestandardowe na platformie Azure](custom-roles.md)
-- [Operacje dostawcy zasobów Azure Resource Manager](resource-provider-operations.md)
+- [Operacje dostawcy zasobów usługi Azure Resource Manager](resource-provider-operations.md)
