@@ -3,12 +3,12 @@ title: Tabela obsługi dla maszyn wirtualnych platformy Azure
 description: Zawiera podsumowanie ustawień pomocy technicznej i ograniczeń podczas tworzenia kopii zapasowej maszyn wirtualnych platformy Azure za pomocą usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: c30a1d1b30fcc7a12449b44d35704b3b43daa385
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d86ce94c62ec9f25b364e9fdc963e3043b274722
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247906"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389294"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Tabela obsługi dla maszyn wirtualnych platformy Azure
 
@@ -115,7 +115,6 @@ Punkty odzyskiwania na dysku programu DPM/usługi MABS | 64 dla serwerów plikó
 **Przywracanie** | **Obsługiwane**
 --- | ---
 Przywracanie plików w systemach operacyjnych | Pliki można przywrócić na dowolnym komputerze, który ma ten sam (lub zgodny) system operacyjny jako kopia zapasowa maszyny Wirtualnej. Zobacz [tabelę Kompatybilny system operacyjny](backup-azure-restore-files-from-vm.md#system-requirements).
-Przywracanie plików na klasycznych maszynach wirtualnych | Bez pomocy technicznej.
 Przywracanie plików z zaszyfrowanych maszyn wirtualnych | Bez pomocy technicznej.
 Przywracanie plików z kont magazynu z ograniczeniami sieciowymi | Bez pomocy technicznej.
 Przywracanie plików na maszynach wirtualnych przy użyciu miejsc do magazynowania systemu Windows | Przywracanie nie jest obsługiwane na tej samej maszynie wirtualnej.<br/><br/> Zamiast tego przywróć pliki na zgodnej maszynie Wirtualnej.

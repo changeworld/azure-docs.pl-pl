@@ -11,14 +11,14 @@ metadata:
   manager: nitinme
   ms.service: speech-service
   ms.topic: hub-page
-  ms.date: 03/04/2020
+  ms.date: 03/24/2020
   ms.author: dapine
-  ms.openlocfilehash: 0071d4da31e4739ccf53e9570bc7d0ed61c01bc4
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: f047af5d14ed6b18c559f814b35d730ba7ce0f6a
+  ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943318"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80244328"
 highlightedContent:
   items:
   - title: Czym jest usługa rozpoznawania mowy?
@@ -37,15 +37,15 @@ conceptualContent:
   items:
   - title: Zamiana mowy na tekst
     links:
+    - itemType: how-to-guide
+      text: Podstawy rozpoznawania mowy
+      url: speech-to-text-basics.md
     - itemType: quickstart
       text: Rozpoznawanie mowy przy użyciu mikrofonu
       url: quickstarts/speech-to-text-from-microphone.md
     - itemType: quickstart
-      text: Rozpoznawanie mowy w trybie wsadowym
-      url: batch-transcription.md
-    - itemType: how-to-guide
-      text: Dostosowywanie rozpoznawania mowy na potrzeby aplikacji
-      url: how-to-custom-speech.md
+      text: Rozpoznawanie mowy z pliku dźwiękowego
+      url: quickstarts/speech-to-text-from-file.md
     footerLink:
       text: Zobacz więcej
       url: index-speech-to-text.yml
@@ -94,10 +94,10 @@ conceptualContent:
   - title: Scenariusze konwersacji
     links:
     - itemType: overview
-      text: Informacje o transkrypcji konwersacji
+      text: Informacje o transkrypcji konwersacji (spotkania)
       url: conversation-transcription.md
     - itemType: overview
-      text: Informacje o konwersacji między wieloma urządzeniami
+      text: Informacje o konwersacji między wieloma urządzeniami (spotkania)
       url: multi-device-conversation.md
     - itemType: how-to-guide
       text: Przekształcanie nagrań w centrach telefonicznej obsługi klienta
@@ -152,9 +152,6 @@ conceptualContent:
     - itemType: how-to-guide
       text: Migrowanie z rozpoznawania mowy Bing
       url: how-to-migrate-from-bing-speech.md
-    - itemType: how-to-guide
-      text: Migrowanie z usługi Custom Speech Service
-      url: how-to-migrate-from-custom-speech-service.md
     - itemType: how-to-guide
       text: Migrowanie z interfejsu API tłumaczenia mowy w usłudze Translator
       url: how-to-migrate-from-translator-speech-api.md

@@ -1,7 +1,7 @@
 ---
-title: Ponowne uczenie usługi sieci Web
+title: Ponowne szkolenie usługi sieci web
 titleSuffix: ML Studio (classic) - Azure
-description: Dowiedz się, jak zaktualizować usługę sieci Web, aby korzystała z nowo przeszkolonego modelu uczenia maszynowego w Azure Machine Learning Studio (klasyczny).
+description: Dowiedz się, jak zaktualizować usługę sieci web, aby użyć nowo przeszkolonego modelu uczenia maszynowego w usłudze Azure Machine Learning Studio (klasyczny).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,90 +11,90 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/14/2019
 ms.openlocfilehash: 218c1c98a2ed775ae86c1657156991879708cc7a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217936"
 ---
-# <a name="retrain-and-deploy-a-machine-learning-model"></a>Ponowne uczenie i wdrażanie modelu uczenia maszynowego
+# <a name="retrain-and-deploy-a-machine-learning-model"></a>Ponowne szkolenie i wdrażanie modelu uczenia maszynowego
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Przeszkolenie jest jednym ze sposobów zapewnienia, że modele uczenia maszynowego są dokładne i oparte na najbardziej przydatnych dostępnych danych. W tym artykule pokazano, jak ponownie nauczyć i wdrożyć model uczenia maszynowego jako nową usługę sieci Web w programie Studio (klasyczna). Jeśli chcesz ponownie przeprowadzić uczenie klasycznej usługi sieci Web, [zapoznaj się z tym artykułem.](retrain-classic-web-service.md)
+Przekwalifikowanie jest jednym ze sposobów zapewnienia, że modele uczenia maszynowego pozostają dokładne i oparte na najbardziej odpowiednich dostępnych danych. W tym artykule pokazano, jak przeszkolić i wdrożyć model uczenia maszynowego jako nową usługę sieci web w Studio (klasyczny). Jeśli chcesz przeszkolić klasyczną usługę sieci web, [zobacz ten artykuł in jak to zrobić.](retrain-classic-web-service.md)
 
-W tym artykule przyjęto założenie, że masz już wdrożoną predykcyjną usługę sieci Web. Jeśli nie masz jeszcze predykcyjnej usługi sieci Web, [Dowiedz się, jak wdrożyć w tym miejscu usługę sieci Web programu Studio (klasyczną).](deploy-a-machine-learning-web-service.md)
+W tym artykule przyjęto założenie, że wdrożono już predykcyjną usługę sieci web. Jeśli nie masz jeszcze predykcyjnej usługi sieci web, [dowiedz się, jak wdrożyć usługę sieci web Studio (klasyczną) tutaj.](deploy-a-machine-learning-web-service.md)
 
-Wykonaj następujące kroki, aby ponownie przeprowadzić uczenie i wdrożyć nową usługę sieci Web uczenia maszynowego:
+Wykonaj następujące kroki, aby przeszkolić i wdrożyć nową usługę sieci web uczenia maszynowego:
 
-1. Wdróż **usługę sieci Web do przeszkolenia**
-1. Uczenie nowego modelu przy użyciu **usługi sieci Web reszkoleniowej**
-1. Zaktualizuj istniejący **eksperyment predykcyjny** , aby użyć nowego modelu
+1. Wdrażanie **usługi sieci web przekwalifikowania**
+1. Trenuj nowy model za pomocą **usługi przekwalifikowania sieci Web**
+1. Zaktualizuj istniejący **eksperyment predykcyjny,** aby użyć nowego modelu
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="deploy-the-retraining-web-service"></a>Wdrażanie ponownego trenowania usługi sieci web
+## <a name="deploy-the-retraining-web-service"></a>Wdrażanie usługi przekwalifikowania sieci web
 
-Usługa sieci Web do przeszkolenia umożliwia ponowne uczenie modelu z nowym zestawem parametrów, takimi jak nowe dane, i zapisywanie go w przyszłości. Po podłączeniu **danych wyjściowych usługi sieci Web** do **modelu uczenia**eksperyment szkoleniowy wysyła nowy model do użycia.
+Przekwalifikowanie usługi sieci web umożliwia ponowne przeszkolenie modelu przy nowym zestawie parametrów, takich jak nowe dane, i zapisanie go na później. Po podłączeniu **danych wyjściowych usługi sieci Web** do modelu **pociągu,** eksperyment szkoleniowy wyprowadza nowy model do użycia.
 
-Wykonaj następujące kroki, aby wdrożyć usługę sieci Web z ponownym uczeniem:
+Aby wdrożyć usługę sieci web ponownego szkolenia, należy wykonać następujące czynności:
 
-1. Połącz moduł **wejściowy usługi sieci Web** z danymi wejściowymi. Zazwyczaj chcesz mieć pewność, że dane wejściowe są przetwarzane w taki sam sposób jak oryginalne dane szkoleniowe.
-1. Połącz moduł **wyjściowy usługi sieci Web** z danymi wyjściowymi **modelu szkolenia**.
-1. Jeśli masz moduł **oceny modelu** , możesz połączyć moduł **wyjściowy usługi sieci Web** , aby uzyskać wyniki oceny
+1. Podłącz moduł **wprowadzania danych usługi sieci Web** do danych. Zazwyczaj chcesz upewnić się, że dane wejściowe są przetwarzane w taki sam sposób, jak oryginalne dane szkoleniowe.
+1. Podłącz moduł **wyjścia usługi sieci Web** do danych wyjściowych modelu **pociągu**.
+1. Jeśli masz moduł **Oceniaj model,** możesz podłączyć moduł **wyjścia usługi sieci Web,** aby wysuwać wyniki oceny
 1. Uruchom eksperyment.
 
-    Po uruchomieniu eksperymentu utworzony przepływ pracy powinien wyglądać podobnie jak na poniższym obrazie:
+    Po uruchomieniu eksperymentu wynikowy przepływ pracy powinien być podobny do następującego obrazu:
 
-    ![Wynikający przepływ pracy](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE04.png)
+    ![Wynikowy przepływ pracy](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE04.png)
 
-    Teraz należy wdrożyć eksperyment szkoleniowy jako usługę sieci Web służącą do reszkoleniowania, która umożliwia generowanie szkoleń modelu i oceny modelu.
+    Teraz można wdrożyć eksperyment szkolenia jako przekwalifikowanie usługi sieci web, która wyprowadza wyniki oceny uczony model i model.
 
-1. W dolnej części kanwy eksperymentu kliknij pozycję **Skonfiguruj usługę sieci Web** .
-1. Wybierz pozycję **Wdróż usługę sieci Web [New]** . Portal usług sieci Web Azure Machine Learning zostanie otwarty na stronie **wdrażanie usługi sieci Web** .
-1. Wpisz nazwę usługi sieci Web i wybierz plan płatności.
+1. U dołu obszaru roboczego eksperymentu kliknij pozycję **Konfiguruj usługę sieci Web**
+1. Wybierz **pozycję Wdrażanie usługi sieci Web [Nowy]**. Portal usług Azure Machine Learning Web Services zostanie otwarty na stronie **Wdrażanie usługi sieci Web.**
+1. Wpisz nazwę usługi sieci web i wybierz plan płatności.
 1. Wybierz pozycję **Wdróż**.
 
-## <a name="retrain-the-model"></a>Ponowne uczenie modelu
+## <a name="retrain-the-model"></a>Ponowne szkolenie modelu
 
-W tym przykładzie używamy C# do tworzenia aplikacji do ponownego szkolenia. Aby wykonać to zadanie, można także użyć przykładowego kodu Python lub R.
+W tym przykładzie używamy języka C# do utworzenia aplikacji ponownego trenowania. Można również użyć przykładowego kodu języka Python lub R, aby wykonać to zadanie.
 
-Wykonaj następujące kroki, aby wywołać interfejsy API ponownego uczenia:
+Aby wywołać interfejsy API ponownego szkolenia, należy wykonać następujące czynności:
 
-1. Tworzenie aplikacji C# konsolowej w programie Visual Studio: **New** > **Project** > **Visual C#**  > **Windows Classic Desktop** > **Aplikacja konsolowa (.NET Framework)** .
-1. Zaloguj się do portalu usług sieci Web Machine Learning.
-1. Kliknij usługę sieci Web, z którą pracujesz.
-1. Kliknij **pozycję**Użyj.
-1. W dolnej części strony **Zużywaj** w sekcji **przykładowy kod** kliknij pozycję **Batch**.
-1. Skopiuj przykładowy C# kod do wykonania wsadowego i wklej go do pliku program.cs. Upewnij się, że przestrzeń nazw pozostaje nienaruszona.
+1. Tworzenie aplikacji konsoli języka C# w programie Visual Studio: **Nowa** > aplikacja klasycznej konsoli**klasycznej**systemu Windows > **(.NET Framework)****w programie Project** > **Visual C#** > Windows Classic .
+1. Zaloguj się do portalu usług sieci Web uczenia maszynowego.
+1. Kliknij usługę sieci web, z którą pracujesz.
+1. Kliknij **pozycję Pochówotwórz**.
+1. U dołu strony **Zużycie** w sekcji **Przykładowy kod** kliknij pozycję **Partia**.
+1. Skopiuj przykładowy kod języka C# do wykonania partii i wklej go do pliku Program.cs. Upewnij się, że obszar nazw pozostaje nienaruszony.
 
-Dodaj pakiet NuGet Microsoft. AspNet. WebApi. Client, zgodnie z opisem w komentarzach. Aby dodać odwołanie do pliku Microsoft. WindowsAzure. Storage. dll, może być konieczne zainstalowanie [biblioteki klienckiej dla usług Azure Storage](https://www.nuget.org/packages/WindowsAzure.Storage).
+Dodaj pakiet NuGet Microsoft.AspNet.WebApi.Client, jak określono w komentarzach. Aby dodać odwołanie do pliku Microsoft.WindowsAzure.Storage.dll, może być konieczne [zainstalowanie biblioteki klienta dla usług Usługi Azure Storage](https://www.nuget.org/packages/WindowsAzure.Storage).
 
-Poniższy zrzut ekranu przedstawia stronę **Korzystanie** z portalu usług sieci Web Azure Machine Learning.
+Poniższy zrzut ekranu przedstawia **zużycie** strony w portalu usług Azure Machine Learning Web Services.
 
-![Użyj strony](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
+![Strona zużywają](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
-### <a name="update-the-apikey-declaration"></a>Aktualizacja deklaracji apikey
+### <a name="update-the-apikey-declaration"></a>Aktualizowanie deklaracji apikey
 
-Znajdź deklarację **apikey** :
+Znajdź deklarację **apikey:**
 
     const string apiKey = "abc123"; // Replace this with the API key for the web service
 
-W sekcji **podstawowe informacje o zużyciu** na stronie **Używanie** Znajdź klucz podstawowy i skopiuj go do deklaracji **apikey** .
+W sekcji **Informacje o zużyciu podstawowym** na stronie **Zużycie** znajdź klucz podstawowy i skopiuj go do deklaracji **apikey.**
 
-### <a name="update-the-azure-storage-information"></a>Zaktualizuj informacje o usłudze Azure Storage
+### <a name="update-the-azure-storage-information"></a>Aktualizowanie informacji usługi Azure Storage
 
 Przykładowy kod BES przekazuje plik z dysku lokalnego (na przykład "C:\temp\CensusInput.csv") do usługi Azure Storage, przetwarza go i zapisuje wyniki z powrotem do usługi Azure Storage.
 
 1. Logowanie do witryny Azure Portal
-1. W lewej kolumnie nawigacji kliknij pozycję **więcej usług**, Wyszukaj pozycję **konta magazynu**i wybierz ją.
-1. Z listy kont magazynu wybierz jeden do przechowywania retrained modelu.
-1. W lewej kolumnie nawigacji kliknij pozycję **klucze dostępu**.
-1. Skopiuj i Zapisz **podstawowy klucz dostępu**.
-1. W lewej kolumnie nawigacji kliknij pozycję **obiekty blob**.
-1. Wybierz istniejący kontener lub Utwórz nowy, a następnie Zapisz nazwę.
+1. W lewej kolumnie nawigacji kliknij pozycję **Więcej usług**, wyszukaj **konta magazynu**i wybierz je.
+1. Z listy kont magazynu wybierz jeden z nich, aby przechowywać ponownie przeszkolony model.
+1. W lewej kolumnie nawigacji kliknij pozycję **Klawisze programu Access**.
+1. Skopiuj i zapisz **podstawowy klucz dostępu**.
+1. W lewej kolumnie nawigacji kliknij pozycję **Obiekty Blob**.
+1. Wybierz istniejący kontener lub utwórz nowy i zapisz nazwę.
 
-Znajdź deklaracje *StorageAccountName*, *StorageAccountKey*i *StorageContainerName* , a następnie zaktualizuj wartości zapisane w portalu.
+Znajdź oświadczenia *StorageAccountName*, *StorageAccountKey*i *StorageContainerName* i zaktualizuj wartości zapisane w portalu.
 
     const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
     const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key
@@ -102,9 +102,9 @@ Znajdź deklaracje *StorageAccountName*, *StorageAccountKey*i *StorageContainerN
 
 Należy również upewnić się, że plik wejściowy jest dostępny w lokalizacji określonej w kodzie.
 
-### <a name="specify-the-output-location"></a>Określanie lokalizacji wyjściowej
+### <a name="specify-the-output-location"></a>Określ lokalizację wyjściową
 
-Gdy określisz lokalizację wyjściową w ładunku żądania, rozszerzenie pliku, który jest określony w *RelativeLocation* , musi być określone jako `ilearner`.
+Po określeniu lokalizacji wyjściowej w ładunku żądania rozszerzenie pliku, który jest określony `ilearner`w *RelativeLocation* musi być określony jako .
 
     Outputs = new Dictionary<string, AzureBlobDataReference>() {
         {
@@ -116,33 +116,33 @@ Gdy określisz lokalizację wyjściową w ładunku żądania, rozszerzenie pliku
             }
         },
 
-Oto przykład reszkoleniowych danych wyjściowych:
+Oto przykład przekwalifikowania danych wyjściowych:
 
-![Ponowne szkolenie danych wyjściowych](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE06.png)
+![Przekwalifikowanie danych wyjściowych](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE06.png)
 
-### <a name="evaluate-the-retraining-results"></a>Oceń wyniki ponownego szkolenia
+### <a name="evaluate-the-retraining-results"></a>Oceń wyniki przekwalifikowania
 
-Po uruchomieniu aplikacji dane wyjściowe obejmują adres URL i token sygnatur dostępu współdzielonego, które są niezbędne do uzyskania dostępu do wyników oceny.
+Po uruchomieniu aplikacji dane wyjściowe zawiera adres URL i token podpisów dostępu współdzielonego, które są niezbędne do uzyskania dostępu do wyników oceny.
 
-Wyniki wydajności przeprowadzonego przez siebie modelu można zobaczyć, łącząc *BaseLocation*, *RelativeLocation*i *SasBlobToken* z wyników wyjściowych na potrzeby *output2* i wklejając pełny adres URL na pasku adresu przeglądarki.
+Wyniki wydajności przekwalifikowanego modelu można wyświetlić, łącząc *baselocation*, *RelativeLocation*i *SasBlobToken* z wyników wyjściowych dla *output2* i wklejając pełny adres URL na pasku adresu przeglądarki.
 
-Sprawdź wyniki, aby określić, czy nowo szkolony model wykonuje lepsze niż już istniejące.
+Sprawdź wyniki, aby ustalić, czy nowo przeszkolony model działa lepiej niż istniejący.
 
-Zapisz *BaseLocation*, *RelativeLocation*i *SasBlobToken* z wyników danych wyjściowych.
+Zapisz *BaseLocation*, *RelativeLocation*i *SasBlobToken* z wyników wyjściowych.
 
 ## <a name="update-the-predictive-experiment"></a>Aktualizowanie eksperymentu predykcyjnego
 
-### <a name="sign-in-to-azure-resource-manager"></a>Zaloguj się do Azure Resource Manager
+### <a name="sign-in-to-azure-resource-manager"></a>Logowanie się do usługi Azure Resource Manager
 
-Najpierw Zaloguj się do konta platformy Azure z poziomu środowiska programu PowerShell przy użyciu polecenia cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
+Najpierw zaloguj się do konta platformy Azure z poziomu środowiska programu PowerShell przy użyciu polecenia cmdlet [Connect-AzAccount.](/powershell/module/az.accounts/connect-azaccount)
 
 ### <a name="get-the-web-service-definition-object"></a>Pobierz obiekt definicji usługi sieci Web
 
-Następnie Pobierz obiekt definicji usługi sieci Web, wywołując polecenie cmdlet [Get-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) .
+Następnie pobierz obiekt definicji usługi sieci Web, wywołując polecenie cmdlet [Get-AzMlWebService.](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice)
 
     $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-Aby określić nazwę grupy zasobów istniejącej usługi sieci Web, uruchom polecenie cmdlet Get-AzMlWebService bez żadnych parametrów, aby wyświetlić usługi sieci Web w Twojej subskrypcji. Znajdź usługę sieci web, a następnie Przyjrzyj się jego identyfikatora usługi internetowej. Nazwa grupy zasobów to czwarty element w IDENTYFIKATORze, po prostu po elemencie *resourceGroups* . W poniższym przykładzie nazwa grupy zasobów jest domyślna-MachineLearning-SouthCentralUS.
+Aby określić nazwę grupy zasobów istniejącej usługi sieci web, uruchom polecenie cmdlet Get-AzMlWebService bez żadnych parametrów, aby wyświetlić usługi sieci web w ramach subskrypcji. Znajdź usługę sieci web, a następnie spójrz na jej identyfikator usługi sieci web. Nazwa grupy zasobów jest czwartym elementem w identyfikatorze, tuż po *resourceGroups* element. W poniższym przykładzie nazwa grupy zasobów jest Default-MachineLearning-SouthCentralUS.
 
     Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
     Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
@@ -151,19 +151,19 @@ Aby określić nazwę grupy zasobów istniejącej usługi sieci Web, uruchom pol
     Type : Microsoft.MachineLearning/webServices
     Tags : {}
 
-Alternatywnie, aby określić nazwę grupy zasobów istniejącej usługi sieci Web, zaloguj się do portalu usług sieci Web Azure Machine Learning. Wybierz usługę sieci web. Nazwa grupy zasobów jest piątym elementem adresu URL usługi sieci Web, po prostu po elemencie *resourceGroups* . W poniższym przykładzie nazwa grupy zasobów jest domyślna-MachineLearning-SouthCentralUS.
+Alternatywnie, aby określić nazwę grupy zasobów istniejącej usługi sieci web, zaloguj się do portalu usług Azure Machine Learning Web Services. Wybierz usługę sieci web. Nazwa grupy zasobów jest piątym elementem adresu URL usługi sieci web, tuż po *resourceGroups* element. W poniższym przykładzie nazwa grupy zasobów jest Default-MachineLearning-SouthCentralUS.
 
     https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
 
-### <a name="export-the-web-service-definition-object-as-json"></a>Eksportowanie obiektu definicji usługi sieci Web jako pliku JSON
+### <a name="export-the-web-service-definition-object-as-json"></a>Eksportowanie obiektu definicji usługi sieci Web jako JSON
 
-Aby zmodyfikować definicję modelu przeszkolonego w celu użycia nowo przeszkolonego modelu, należy najpierw użyć polecenia cmdlet [Export-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) w celu wyeksportowania go do pliku w formacie JSON.
+Aby zmodyfikować definicję modelu uczonego w celu użycia nowo uczonego modelu, należy najpierw użyć polecenia cmdlet [Export-AzMlWebService,](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) aby wyeksportować go do pliku w formacie JSON.
 
     Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
 
-### <a name="update-the-reference-to-the-ilearner-blob"></a>Aktualizowanie odwołania do obiektu BLOB ilearner
+### <a name="update-the-reference-to-the-ilearner-blob"></a>Zaktualizuj odwołanie do obiektu blob ilearner
 
-W obszarze zasoby Znajdź [przeszkolony model], zaktualizuj wartość *identyfikatora URI* w węźle *locationInfo* za pomocą identyfikatora URI obiektu BLOB ilearner. Identyfikator URI jest generowany przez połączenie *BaseLocation* i *RelativeLocation* z danych wyjściowych wywołania reszkoleniowego BES.
+W zasobach zlokalizuj [przeszkolony model], zaktualizuj wartość *uri* w węźle *locationInfo* za pomocą identyfikatora URI obiektu blob ilearner. Identyfikator URI jest generowany przez połączenie *BaseLocation* i *RelativeLocation* z danych wyjściowych wywołania ponownego trenowania BES.
 
      "asset3": {
         "name": "Retrain Sample [trained model]",
@@ -178,21 +178,21 @@ W obszarze zasoby Znajdź [przeszkolony model], zaktualizuj wartość *identyfik
         }
       },
 
-### <a name="import-the-json-into-a-web-service-definition-object"></a>Zaimportuj kod JSON do obiektu definicji usługi sieci Web
+### <a name="import-the-json-into-a-web-service-definition-object"></a>Importowanie usługi JSON do obiektu definicji usługi sieci Web
 
-Użyj polecenia cmdlet [Import-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) , aby przekonwertować zmodyfikowany plik JSON z powrotem do obiektu definicji usługi sieci Web, którego można użyć do zaktualizowania eksperymentu predicative.
+Polecenie cmdlet [Import-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) służy do konwersji zmodyfikowanego pliku JSON z powrotem do obiektu definicji usługi sieci Web, za pomocą którego można zaktualizować eksperyment predykcyjny.
 
     $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
-### <a name="update-the-web-service"></a>Aktualizacja usługi sieci web
+### <a name="update-the-web-service"></a>Aktualizowanie usługi sieci Web
 
-Na koniec użyj polecenia cmdlet [Update-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) , aby zaktualizować eksperyment predykcyjny.
+Na koniec użyj polecenia cmdlet [Update-AzMlWebService,](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) aby zaktualizować eksperyment predykcyjny.
 
     Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat zarządzania usługami sieci Web lub śledzenia wielu przebiegów eksperymentów, zobacz następujące artykuły:
+Aby dowiedzieć się więcej o zarządzaniu usługami sieci Web lub śledzeniu wielu przebiegów eksperymentów, zobacz następujące artykuły:
 
-* [Eksplorowanie portalu usług sieci Web](manage-new-webservice.md)
+* [Poznaw portalu usług sieci Web](manage-new-webservice.md)
 * [Zarządzanie iteracjami eksperymentów](manage-experiment-iterations.md)
