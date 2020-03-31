@@ -1,7 +1,7 @@
 ---
-title: Predykaty i PredicateValidations
+title: Predykaty i predicateValidations
 titleSuffix: Azure AD B2C
-description: Zapobiegaj dodawaniu nieprawidłowo sformułowanych danych do dzierżawy Azure AD B2C przy użyciu zasad niestandardowych w Azure Active Directory B2C.
+description: Zapobiegaj dodaniu nieprawidłowo sformułowanych danych do dzierżawy usługi Azure AD B2C przy użyciu zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,62 +12,62 @@ ms.date: 02/24/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187240"
 ---
-# <a name="predicates-and-predicatevalidations"></a>Predykaty i PredicateValidations
+# <a name="predicates-and-predicatevalidations"></a>Predykaty i predicateValidations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**Predykaty** i elementy **PredicateValidations** umożliwiają wykonanie procesu walidacji w celu upewnienia się, że w dzierżawie Azure Active Directory B2C (Azure AD B2C) są wprowadzane tylko prawidłowo uformowane dane.
+**Predykates** i **PredicateValidations** elementów umożliwiają wykonywanie procesu sprawdzania poprawności, aby upewnić się, że tylko poprawnie utworzone dane są wprowadzane do dzierżawy usługi Azure Active Directory B2C (Azure AD B2C).
 
 Na poniższym diagramie przedstawiono relację między elementami:
 
-![Diagram przedstawiający predykaty i relacje walidacji predykatu](./media/predicates/predicates.png)
+![Diagram przedstawiający relację Predykaty i Predykat sprawdzania poprawności](./media/predicates/predicates.png)
 
 ## <a name="predicates"></a>Predykaty
 
-Element **predykatu** definiuje podstawową walidację w celu sprawdzenia wartości typu i zwraca `true` lub `false`. Walidacja jest wykonywana przy użyciu określonego elementu **metody** i zestawu elementów **parametrów** odpowiednich dla metody. Na przykład predykat może sprawdzić, czy długość wartości żądania ciągu mieści się w zakresie minimalnym i maksymalnym określonym parametrem lub czy wartość żądania ciągu zawiera zestaw znaków. Element **UserHelpText** zawiera komunikat o błędzie dla użytkowników, jeśli sprawdzenie zakończy się niepowodzeniem. Wartość elementu **UserHelpText** można lokalizować przy użyciu [dostosowywania języka](localization.md).
+**Predykat** element definiuje podstawowe sprawdzanie poprawności, aby sprawdzić wartość `true` `false`typu oświadczenia i zwraca lub . Sprawdzanie poprawności odbywa się przy użyciu określonego **elementu Metody** i zestaw **parameter** elementów istotnych dla metody. Na przykład predykat może sprawdzić, czy długość wartości oświadczenia ciągu mieści się w zakresie określonych parametrów minimalnych i maksymalnych, czy też wartość oświadczenia ciągu zawiera zestaw znaków. **UserHelpText** element zawiera komunikat o błędzie dla użytkowników, jeśli sprawdzanie nie powiedzie się. Wartość **elementu UserHelpText** można zlokalizować przy użyciu [dostosowywania języka](localization.md).
 
-Element **predykatów** musi występować bezpośrednio po elemencie **ClaimsSchema** w elemencie [BuildingBlocks](buildingblocks.md) .
+**Predykates** element musi pojawić się bezpośrednio po **ClaimsSchema** elementu w [BuildingBlocks](buildingblocks.md) elementu.
 
-Element **predykatów** zawiera następujący element:
+**Predykates** element zawiera następujący element:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| Predykatu | 1: n | Lista predykatów. |
+| Predykat | 1:n | Lista predykatów. |
 
-Element **predykatu** zawiera następujące atrybuty:
+**Predykat** element zawiera następujące atrybuty:
 
 | Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Yes | Identyfikator, który jest używany dla predykatu. Inne elementy mogą używać tego identyfikatora w zasadach. |
-| Metoda | Yes | Typ metody do użycia na potrzeby walidacji. Możliwe wartości: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**lub **IsDateRange**. Wartość **IsLengthRange** sprawdza, czy długość wartości żądania ciągu mieści się w zakresie określonych parametrów minimum i maksimum. Wartość **MatchesRegex** sprawdza, czy wartość żądania ciągu pasuje do wyrażenia regularnego. Wartość **IncludesCharacters** sprawdza, czy wartość żądania ciągu zawiera zestaw znaków. Wartość **IsDateRange** sprawdza, czy wartość żądania daty należy do zakresu od określonych parametrów minimum i maksimum. |
-| HelpText | Nie | Komunikat o błędzie dla użytkowników, jeśli sprawdzenie zakończy się niepowodzeniem. Ten ciąg może być lokalizowany przy użyciu [dostosowania języka](localization.md) |
+| Identyfikator | Tak | Identyfikator, który jest używany dla predykatu. Inne elementy można użyć tego identyfikatora w zasadach. |
+| Metoda | Tak | Typ metody do użycia do sprawdzania poprawności. Możliwe wartości: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**lub **IsDateRange**. **Wartość IsLengthRange** sprawdza, czy długość wartości oświadczenia ciągu mieści się w zakresie określonych parametrów minimalnych i maksymalnych. **MatchRegex** wartość sprawdza, czy wartość oświadczenia ciągu pasuje do wyrażenia regularnego. **Wartość IncludesCharacters** sprawdza, czy wartość oświadczenia ciągu zawiera zestaw znaków. Wartość **IsDateRange** sprawdza, czy wartość oświadczenia daty mieści się między określonym zakresem parametrów minimalnych i maksymalnych. |
+| Helptext | Nie | Komunikat o błędzie dla użytkowników, jeśli sprawdzanie nie powiedzie się. Ten ciąg można zlokalizować przy użyciu [dostosowania języka](localization.md) |
 
-Element **predykatu** zawiera następujące elementy:
-
-| Element | Wystąpień | Opis |
-| ------- | ----------- | ----------- |
-| UserHelpText | 0:1 | Przestarzałe Komunikat o błędzie dla użytkowników, jeśli sprawdzenie zakończy się niepowodzeniem. |
-| Parametry | 1:1 | Parametry typu metody weryfikacji ciągu. |
-
-Element **Parameters** zawiera następujące elementy:
+**Predykat** element zawiera następujące elementy:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| Parametr | 1: n | Parametry typu metody weryfikacji ciągu. |
+| UserHelpText (Tekst pomocy użytkownika) | 0:1 | (Przestarzałe) Komunikat o błędzie dla użytkowników, jeśli sprawdzanie nie powiedzie się. |
+| Parametry | 1:1 | Parametry dla typu metody sprawdzania poprawności ciągu. |
 
-Element **Parameter** zawiera następujące atrybuty:
+Element **Parametry** zawiera następujące elementy:
+
+| Element | Wystąpień | Opis |
+| ------- | ----------- | ----------- |
+| Parametr | 1:n | Parametry dla typu metody sprawdzania poprawności ciągu. |
+
+Element **Parametr** zawiera następujące atrybuty:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
 | Identyfikator | 1:1 | Identyfikator parametru. |
 
-Poniższy przykład przedstawia metodę `IsLengthRange` z parametrami `Minimum` i `Maximum` określającymi zakres długości ciągu:
+Poniższy przykład `IsLengthRange` przedstawia metodę `Minimum` z `Maximum` parametrami i które określają zakres długości ciągu:
 
 ```XML
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
@@ -78,7 +78,7 @@ Poniższy przykład przedstawia metodę `IsLengthRange` z parametrami `Minimum` 
 </Predicate>
 ```
 
-Poniższy przykład przedstawia metodę `MatchesRegex` z parametrem `RegularExpression`, który określa wyrażenie regularne:
+Poniższy przykład `MatchesRegex` przedstawia metodę `RegularExpression` z parametrem określającym wyrażenie regularne:
 
 ```XML
 <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
@@ -88,7 +88,7 @@ Poniższy przykład przedstawia metodę `MatchesRegex` z parametrem `RegularExpr
 </Predicate>
 ```
 
-Poniższy przykład przedstawia metodę `IncludesCharacters` z parametrem `CharacterSet`, który określa zestaw znaków:
+Poniższy przykład `IncludesCharacters` przedstawia metodę `CharacterSet` z parametrem określającym zestaw znaków:
 
 ```XML
 <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
@@ -98,7 +98,7 @@ Poniższy przykład przedstawia metodę `IncludesCharacters` z parametrem `Chara
 </Predicate>
 ```
 
-Poniższy przykład przedstawia metodę `IsDateRange` z parametrami `Minimum` i `Maximum`, które określają zakres dat z formatem `yyyy-MM-dd` i `Today`.
+Poniższy przykład `IsDateRange` przedstawia metodę `Minimum` z `Maximum` parametrami i które określają `yyyy-MM-dd` `Today`zakres dat w formacie i .
 
 ```XML
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
@@ -111,9 +111,9 @@ Poniższy przykład przedstawia metodę `IsDateRange` z parametrami `Minimum` i 
 
 ## <a name="predicatevalidations"></a>PredicateValidations
 
-Podczas gdy predykaty definiują walidację w celu sprawdzenia typu, Grupa **PredicateValidations** zestawu predykatów do tworzenia walidacji danych wejściowych użytkownika, które można zastosować do typu zgłoszenia. Każdy element **PredicateValidation** zawiera zestaw elementów **predykatu** , które zawierają zestaw elementów **PredicateReference** , które wskazują **predykat**. Aby przekazać weryfikację, wartość żądania powinna przekazać wszystkie testy dowolnego predykatu w ramach całej grupy **predykatów** z ich zestawem elementów **PredicateReference** .
+Podczas predykatów zdefiniować sprawdzania poprawności względem typu oświadczenia, **PredicateValidations** grupy zestaw predykatów do utworzenia sprawdzania poprawności danych wejściowych użytkownika, które mogą być stosowane do typu oświadczenia. Każdy element **PredicateValidation** zawiera zestaw elementów **PredicateGroup,** które zawierają zestaw elementów **PredicateReference,** który wskazuje **predykat**. Aby przekazać sprawdzanie poprawności, wartość oświadczenia należy przejść wszystkie testy dowolnego predykatu w ramach wszystkich **PredicateGroup** z ich zestaw **PredicateReference** elementów.
 
-Element **PredicateValidations** musi występować bezpośrednio po elemencie **predykatów** w elemencie [BuildingBlocks](buildingblocks.md) .
+**PredicateValidations** element musi pojawić się bezpośrednio po **Predicates** elementu w [BuildingBlocks](buildingblocks.md) elementu.
 
 ```XML
 <PredicateValidations>
@@ -133,74 +133,74 @@ Element **PredicateValidations** musi występować bezpośrednio po elemencie **
 </PredicateValidations>
 ```
 
-Element **PredicateValidations** zawiera następujący element:
+**PredicateValidations** element zawiera następujący element:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| PredicateValidation | 1: n | Lista walidacji predykatu. |
+| PredicateValidation (PredicateValidation) | 1:n | Lista sprawdzania poprawności predykatu. |
 
-Element **PredicateValidation** zawiera następujący atrybut:
+**Element PredicateValidation** zawiera następujący atrybut:
 
 | Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Yes | Identyfikator, który jest używany na potrzeby walidacji predykatu. Element **ClaimType** może używać tego identyfikatora w zasadach. |
+| Identyfikator | Tak | Identyfikator, który jest używany do sprawdzania poprawności predykatu. **Element ClaimType** można użyć tego identyfikatora w zasadach. |
 
-Element **PredicateValidation** zawiera następujący element:
-
-| Element | Wystąpień | Opis |
-| ------- | ----------- | ----------- |
-| PredicateGroups | 1: n | Lista grup predykatów. |
-
-Element **PredicateGroups** zawiera następujący element:
+**PredicateValidation** element zawiera następujący element:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| Predykat | 1: n | Lista predykatów. |
+| PredicateGroups | 1:n | Lista grup predykatów. |
 
-Element grupy **predykatów** zawiera następujący atrybut:
+**PredicateGroups** element zawiera następujący element:
+
+| Element | Wystąpień | Opis |
+| ------- | ----------- | ----------- |
+| Grupa predykatów | 1:n | Lista predykatów. |
+
+**PredicateGroup** element zawiera następujący atrybut:
 
 | Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Yes | Identyfikator, który jest używany dla grupy predykatu.  |
+| Identyfikator | Tak | Identyfikator, który jest używany dla grupy predykatu.  |
 
-Element grupy **predykatów** zawiera następujące elementy:
-
-| Element | Wystąpień | Opis |
-| ------- | ----------- | ----------- |
-| UserHelpText | 0:1 |  Opis predykatu, który może być przydatny dla użytkowników, aby wiedzieć, jaka wartość powinna być typu. |
-| PredicateReferences | 1: n | Lista odwołań predykatu. |
-
-Element **PredicateReferences** zawiera następujące atrybuty:
-
-| Atrybut | Wymagany | Opis |
-| --------- | -------- | ----------- |
-| MatchAtLeast | Nie | Określa, że wartość musi być zgodna co najmniej z wieloma definicjami predykatów dla danych wejściowych, które mają zostać zaakceptowane. Jeśli nie zostanie określony, wartość musi być zgodna ze wszystkimi definicjami predykatu. |
-
-Element **PredicateReferences** zawiera następujące elementy:
+**PredicateGroup** element zawiera następujące elementy:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| PredicateReference | 1: n | Odwołanie do predykatu. |
+| UserHelpText (Tekst pomocy użytkownika) | 0:1 |  Opis predykatu, który może być pomocny dla użytkowników, aby wiedzieć, jaką wartość powinni wpisać. |
+| PredicateReferences | 1:n | Lista odwołań predykatu. |
 
-Element **PredicateReference** zawiera następujące atrybuty:
+**PredicateReferences** element zawiera następujące atrybuty:
 
 | Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Yes | Identyfikator, który jest używany na potrzeby walidacji predykatu.  |
+| MatchAtNajlesz | Nie | Określa, że wartość musi być zgodna co najmniej tyle definicji predykatu dla danych wejściowych, które mają być akceptowane. Jeśli nie zostanie określona, wartość musi być zgodna ze wszystkimi definicjami predykatu. |
+
+**PredicateReferences** element zawiera następujące elementy:
+
+| Element | Wystąpień | Opis |
+| ------- | ----------- | ----------- |
+| PredicateReference (Wniosek predykatu) | 1:n | Odwołanie do predykatu. |
+
+**PredicateReference** element zawiera następujące atrybuty:
+
+| Atrybut | Wymagany | Opis |
+| --------- | -------- | ----------- |
+| Identyfikator | Tak | Identyfikator, który jest używany do sprawdzania poprawności predykatu.  |
 
 
 ## <a name="configure-password-complexity"></a>Konfigurowanie złożoności hasła
 
-Przy użyciu **predykatów** i **PredicateValidationsInput** można kontrolować wymagania dotyczące złożoności dla haseł dostarczonych przez użytkownika podczas tworzenia konta. Domyślnie Azure AD B2C używa silnych haseł. Azure AD B2C obsługuje również opcje konfiguracji w celu kontrolowania złożoności haseł, które mogą być używane przez klientów. Złożoność hasła można zdefiniować przy użyciu następujących elementów predykatu:
+Z **predicates** i **PredicateValidationsInput** można kontrolować wymagania dotyczące złożoności haseł dostarczonych przez użytkownika podczas tworzenia konta. Domyślnie usługa Azure AD B2C używa silnych haseł. Usługa Azure AD B2C obsługuje również opcje konfiguracji, aby kontrolować złożoność haseł, których klienci mogą używać. Złożoność hasła można zdefiniować przy użyciu następujących elementów predykatu:
 
-- **IsLengthBetween8And64** przy użyciu metody `IsLengthRange` sprawdza, czy hasło musi zawierać od 8 do 64 znaków.
-- **Małe litery** przy użyciu metody `IncludesCharacters` sprawdza, czy hasło zawiera małą literę.
-- **Wielkie litery** przy użyciu metody `IncludesCharacters` sprawdza, czy hasło zawiera wielką literę.
-- **Liczba** przy użyciu metody `IncludesCharacters` sprawdza, czy hasło zawiera cyfrę.
-- **Symbol** przy użyciu metody `IncludesCharacters`, sprawdza, czy hasło zawiera jeden z kilku znaków symbolicznych.
-- **Przypnij** przy użyciu metody `MatchesRegex`, sprawdza, czy hasło zawiera tylko cyfry.
-- **AllowedAADCharacters** przy użyciu metody `MatchesRegex` sprawdza, czy podano tylko nieprawidłowy znak.
-- **DisallowedWhitespace** przy użyciu metody `MatchesRegex` sprawdza, czy hasło nie zaczyna się ani nie kończy znakiem odstępu.
+- **IsLengthBetween8And64** przy `IsLengthRange` użyciu metody, sprawdza, czy hasło musi być między 8 i 64 znaków.
+- **Małe litery** `IncludesCharacters` przy użyciu metody, sprawdza, czy hasło zawiera małe litery.
+- **Wielkie litery** `IncludesCharacters` przy użyciu metody, sprawdza, czy hasło zawiera wielką literę.
+- **Numer** przy `IncludesCharacters` użyciu metody, sprawdza, czy hasło zawiera cyfrę.
+- **Symbol** przy `IncludesCharacters` użyciu metody, sprawdza, czy hasło zawiera jeden z kilku znaków symbolu.
+- **Przy** użyciu `MatchesRegex` tej metody sprawdza, czy hasło zawiera tylko numery.
+- **AllowedAADCharacters** przy `MatchesRegex` użyciu metody, sprawdza, czy hasło tylko nieprawidłowy znak został dostarczony.
+- **NiedozwoloneWhitespace** przy użyciu `MatchesRegex` metody, sprawdza, czy hasło nie rozpoczyna się lub kończy znak odstępu.
 
 ```XML
 <Predicates>
@@ -254,11 +254,11 @@ Przy użyciu **predykatów** i **PredicateValidationsInput** można kontrolować
   </Predicate>
 ```
 
-Po zdefiniowaniu podstawowych walidacji można połączyć je ze sobą i utworzyć zestaw zasad haseł, których można użyć w ramach zasad:
+Po zdefiniowaniu podstawowych weryfikacji można je połączyć i utworzyć zestaw zasad haseł, których można używać w zasadach:
 
-- **SimplePassword** sprawdza poprawność DisallowedWhitespace, AllowedAADCharacters i IsLengthBetween8And64
-- **Strongpassword** sprawdza poprawność DisallowedWhitespace, AllowedAADCharacters, IsLengthBetween8And64. Ostatnia Grupa `CharacterClasses` uruchamia dodatkowy zestaw predykatów z `MatchAtLeast` ustawioną na 3. Hasło użytkownika musi mieć długość od 8 do 16 znaków i trzy z następujących znaków: małe litery, wielkie litery, cyfry lub symbole.
-- **CustomPassword** weryfikuje tylko DisallowedWhitespace, AllowedAADCharacters. W takim przypadku użytkownik może podać dowolne hasło o dowolnej długości, o ile znaki są prawidłowe.
+- **SimplePassword** sprawdza poprawność niedozwolonychwhitespace, AllowedAADCharacters i IsLengthBetween8And64
+- **StrongPassword** sprawdza poprawność DisallowedWhitespace, AllowedAADCharacters, IsLengthBetween8And64. Ostatnia `CharacterClasses` grupa uruchamia dodatkowy zestaw predykatów z `MatchAtLeast` zestawem 3. Hasło użytkownika musi zawierać od 8 do 16 znaków i trzy z następujących znaków: Małe litery, Wielkie litery, Liczba lub Symbol.
+- **CustomPassword** sprawdza poprawność tylko NiedozwoloneWhitespace, AllowedAADCharacters. Tak, użytkownik może podać dowolne hasło o dowolnej długości, tak długo, jak znaki są prawidłowe.
 
 ```XML
 <PredicateValidations>
@@ -328,7 +328,7 @@ Po zdefiniowaniu podstawowych walidacji można połączyć je ze sobą i utworzy
 </PredicateValidations>
 ```
 
-W polu Typ zgłoszenia Dodaj element **PredicateValidationReference** i określ identyfikator jako jedną z walidacji predykatów, takich jak SimplePassword, strongpassword lub CustomPassword.
+W typie oświadczenia dodaj **predykatValidationReference** element i określ identyfikator jako jeden z sprawdzania predykatu, takich jak SimplePassword, StrongPassword lub CustomPassword.
 
 ```XML
 <ClaimType Id="password">
@@ -341,13 +341,13 @@ W polu Typ zgłoszenia Dodaj element **PredicateValidationReference** i określ 
 </ClaimType>
 ```
 
-Poniżej pokazano, jak elementy są zorganizowane, gdy Azure AD B2C wyświetla komunikat o błędzie:
+Poniżej przedstawiono sposób organizowania elementów, gdy usługa Azure AD B2C wyświetla komunikat o błędzie:
 
-![Diagram przykładu złożoności hasła predykatu i predykatu](./media/predicates/predicates-pass.png)
+![Przykład złożoności hasła predykatu i grupy predykatów](./media/predicates/predicates-pass.png)
 
 ## <a name="configure-a-date-range"></a>Konfigurowanie zakresu dat
 
-Za pomocą **predykatów** i elementów **PredicateValidations** można kontrolować minimalną i maksymalną wartość daty **UserInputType** przy użyciu `DateTimeDropdown`. W tym celu należy utworzyć **predykat** z metodą `IsDateRange` i podać parametry minimalne i maksymalne.
+Za pomocą **predykatów** i **predykatuZawieranie** można kontrolować minimalne i maksymalne wartości `DateTimeDropdown`daty **UserInputType** za pomocą . Aby to zrobić, należy utworzyć `IsDateRange` **predykat** z metodą i podać minimalne i maksymalne parametry.
 
 ```XML
 <Predicates>
@@ -360,7 +360,7 @@ Za pomocą **predykatów** i elementów **PredicateValidations** można kontrolo
 </Predicates>
 ```
 
-Dodaj element **PredicateValidation** z odwołaniem do predykatu `DateRange`.
+Dodaj **PredicateValidation** z odwołaniem `DateRange` do predykatu.
 
 ```XML
 <PredicateValidations>
@@ -376,7 +376,7 @@ Dodaj element **PredicateValidation** z odwołaniem do predykatu `DateRange`.
 </PredicateValidations>
 ```
 
-W polu Typ zgłoszenia Dodaj element **PredicateValidationReference** i określ identyfikator jako `CustomDateRange`.
+W typie oświadczenia dodaj element **PredicateValidationReference** i `CustomDateRange`określ identyfikator jako .
 
 ```XML
 <ClaimType Id="dateOfBirth">

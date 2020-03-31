@@ -1,56 +1,71 @@
 ---
-title: Dostęp warunkowy — połączone informacje o zabezpieczeniach — Azure Active Directory
-description: Utwórz niestandardowe zasady dostępu warunkowego, aby wymagać zaufanej lokalizacji rejestracji informacji zabezpieczających
+title: Dostęp warunkowy — połączone informacje o zabezpieczeniach — usługa Azure Active Directory
+description: Tworzenie niestandardowej zasady dostępu warunkowego do rejestracji informacji zabezpieczających
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c9b01cc06b3d0ef8f47b34e9ef86bec9adac03f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f69a94e17155ff93510d09f666bce12f628274f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424850"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295175"
 ---
-# <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Dostęp warunkowy: Wymagaj zaufanej lokalizacji rejestracji usługi MFA
+# <a name="conditional-access-securing-security-info-registration"></a>Dostęp warunkowy: zabezpieczanie rejestracji informacji zabezpieczających
 
-Zabezpieczanie, kiedy i jak użytkownicy rejestrują się w usłudze Azure Multi-Factor Authentication i samoobsługowego resetowania hasła jest teraz możliwe z działaniami użytkowników w zasadach dostępu warunkowego. Ta funkcja w wersji zapoznawczej jest dostępna dla organizacji, które włączyły [Podgląd rejestracji połączonej](../authentication/concept-registration-mfa-sspr-combined.md). Ta funkcjonalność może być włączona w organizacjach, w których chcą korzystać z takich warunków, jak w przypadku zaufanej lokalizacji sieciowej, aby ograniczyć dostęp do rejestracji w usłudze Azure Multi-Factor Authentication i SSPR. Aby uzyskać więcej informacji na temat tworzenia zaufanych lokalizacji w dostępie warunkowym, zobacz artykuł [jaki jest warunek lokalizacji w Azure Active Directory dostęp warunkowy?](../conditional-access/location-condition.md#named-locations)
+Zabezpieczanie, kiedy i jak użytkownicy rejestrują się w celu autoryzacji wieloskładnikowej platformy Azure i samoobsługowego resetowania hasła jest teraz możliwe dzięki działaniom użytkownika w zasadach dostępu warunkowego. Ta funkcja podglądu jest dostępna dla organizacji, które włączyły [połączoną wersję zapoznawczą rejestracji](../authentication/concept-registration-mfa-sspr-combined.md). Ta funkcja może być włączona w organizacjach, w których chcą używać warunków, takich jak zaufana lokalizacja sieciowa, aby ograniczyć dostęp do rejestracji w celu rejestrowania uwierzytelniania wieloskładnikowego platformy Azure i samoobsługowego resetowania haseł (SSPR). Aby uzyskać więcej informacji na temat warunków użytkowych, zobacz artykuł [Dostęp warunkowy: Warunki](concept-conditional-access-conditions.md).
 
-## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Utwórz zasady, aby wymagać rejestracji z zaufanej lokalizacji
+## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Tworzenie zasad wymagających rejestracji z zaufanej lokalizacji
 
-Poniższe zasady mają zastosowanie do wszystkich wybranych użytkowników, którzy próbują zarejestrować się przy użyciu połączonego środowiska rejestracji i blokują dostęp, chyba że nawiązują połączenie z lokalizacji oznaczonej jako zaufane sieci.
+Poniższe zasady mają zastosowanie do wszystkich wybranych użytkowników, którzy próbują zarejestrować się przy użyciu połączonego środowiska rejestracji i blokują dostęp, chyba że łączą się z lokalizacji oznaczonej jako zaufana sieć.
 
-1. W **Azure Portal**przejdź do **Azure Active Directory** > **zabezpieczenia** > **dostęp warunkowy**.
-1. Wybierz pozycję **nowe zasady**.
-1. W polu Nazwa wprowadź nazwę dla tych zasad. Na przykład **połączona informacja dotycząca zabezpieczeń Rejestracja w zaufanych sieciach**.
-1. W obszarze **przypisania**kliknij pozycję **Użytkownicy i grupy**, a następnie wybierz użytkowników i grupy, do których te zasady mają być stosowane.
+1. W **witrynie Azure portal**przejdź do **usługi Azure Active Directory** > **Security** > **Conditional Access**.
+1. Wybierz **pozycję Nowa zasada**.
+1. W nazwie wprowadź nazwę dla tej zasady. Na przykład **połączone informacje o bezpieczeństwie rejestracja w zaufanych sieciach**.
+1. W obszarze **Przydziały**wybierz **pozycję Użytkownicy i grupy**i wybierz użytkowników i grupy, do których ma zostać zastosowane ta zasada.
 
    > [!WARNING]
-   > Użytkownicy muszą mieć włączoną funkcję [Podgląd rejestracji połączonej](../authentication/howto-registration-mfa-sspr-combined.md).
+   > Użytkownicy muszą być włączeni dla [połączonej wersji zapoznawczej rejestracji](../authentication/howto-registration-mfa-sspr-combined.md).
 
-1. W obszarze **aplikacje lub akcje w chmurze**wybierz pozycję **akcje użytkownika**, a następnie sprawdź pozycję **zarejestruj informacje zabezpieczające (wersja zapoznawcza)** .
-1. W obszarze **warunki** > **lokalizacje**.
-   1. Skonfiguruj **tak**.
+1. W obszarze **Aplikacje lub akcje w chmurze**wybierz pozycję **Akcje użytkownika**, zaznacz pozycję **Zarejestruj informacje zabezpieczające (wersja zapoznawcza)**.
+1. W **warunkach** > **Lokalizacje**.
+   1. Skonfiguruj **Tak**.
    1. Uwzględnij **dowolną lokalizację**.
-   1. Wyklucz **wszystkie Zaufane lokalizacje**.
-   1. Kliknij przycisk **gotowe** w bloku lokalizacje.
-   1. Kliknij przycisk **gotowe** w bloku warunki.
-1. W obszarze **kontroli dostępu** > **Udziel**.
-   1. Kliknij przycisk **Blokuj dostęp**.
+   1. Wyklucz **wszystkie zaufane lokalizacje**.
+   1. Wybierz **opcję Gotowe** na bloku Lokalizacje.
+   1. Wybierz **Gotowe** na ostrze Warunki.
+1. W **obszarze Warunki** > **aplikacje klienckie (Wersja zapoznawcza)** ustaw **pozycję Konfiguruj** na **Tak**i wybierz opcję **Gotowe**.
+1. W obszarze **Kontrola** > dostępu**Grant**.
+   1. Wybierz **pozycję Blokuj dostęp**.
    1. Następnie kliknij pozycję **Wybierz**.
-1. Ustaw przełącznik **Włącz zasady** na wartość **Włączone**.
-1. Następnie kliknij przycisk **Save** (Zapisz).
+1. Ustaw pozycję **Włącz zasady** na wartość **Włączone**.
+1. Następnie wybierz pozycję **Zapisz**.
+
+W kroku 6 w tej polityce organizacje mają wybór, jaki mogą dokonać. Powyższe zasady wymagają rejestracji z zaufanej lokalizacji sieciowej. Organizacje mogą zdecydować się na wykorzystanie wszelkich dostępnych warunków zamiast **lokalizacji**. Pamiętaj, że ta zasada jest zasadą blokowania, więc wszystko, co zostało uwzględnione, jest zablokowane, a wszystko, co nie pasuje do include, jest dozwolone. 
+
+Niektórzy mogą zdecydować się na użycie stanu urządzenia zamiast lokalizacji w kroku 6 powyżej:
+
+6. W **obszarze Stan** > urządzenia warunków **(podgląd)**.
+   1. Skonfiguruj **Tak**.
+   1. Uwzględnij **cały stan urządzenia**.
+   1. Wyklucz **sprzężenie** i/lub urządzenie z hybrydową **usługą** Azure AD oznaczone jako zgodne
+   1. Wybierz **opcję Gotowe** na bloku Lokalizacje.
+   1. Wybierz **Gotowe** na ostrze Warunki.
+
+> [!WARNING]
+> Jeśli używasz stanu urządzenia jako warunku w zasadach, może to mieć wpływ na użytkowników-gościa w katalogu. [Tryb tylko do raportu](concept-conditional-access-report-only.md) może pomóc w określeniu wpływu decyzji dotyczących zasad.
 
 ## <a name="next-steps"></a>Następne kroki
 
 [Wspólne zasady dostępu warunkowego](concept-conditional-access-policy-common.md)
 
-[Określanie wpływu przy użyciu trybu tylko Raport z dostępem warunkowym](howto-conditional-access-report-only.md)
+[Określanie wpływu przy użyciu trybu tylko dla dostępu warunkowego](howto-conditional-access-report-only.md)
 
-[Symulowanie zachowania logowania za pomocą narzędzia What If dostępu warunkowego](troubleshoot-conditional-access-what-if.md)
+[Symulowanie zachowania logowania za pomocą narzędzia Co jeśli dostęp warunkowy](troubleshoot-conditional-access-what-if.md)

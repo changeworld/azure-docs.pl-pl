@@ -1,17 +1,17 @@
 ---
-title: Samouczek — Konfigurowanie tematów w Azure Service Bus przy użyciu rozwiązania ansible
-description: Informacje dotyczące tworzenia Azure Service Bus tematu przy użyciu programu rozwiązania ansible
-keywords: rozwiązania ansible, Azure, DevOps, bash, element PlayBook, Service Bus, tematy, subskrypcje
+title: Samouczek — konfigurowanie tematów w usłudze Azure Service Bus przy użyciu ansible
+description: Dowiedz się, jak utworzyć temat usługi Azure Service Bus za pomocą ansible
+keywords: ansible, azure, devops, bash, playbook, service bus, tematy, subskrypcje
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: d07c7622043353a79d5a82994c2fab4f0835b453
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155797"
 ---
-# <a name="tutorial-configure-topics-in-azure-service-bus-using-ansible"></a>Samouczek: Konfigurowanie tematów w Azure Service Bus przy użyciu rozwiązania ansible
+# <a name="tutorial-configure-topics-in-azure-service-bus-using-ansible"></a>Samouczek: Konfigurowanie tematów w usłudze Azure Service Bus przy użyciu ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
@@ -23,22 +23,22 @@ ms.locfileid: "74155797"
 >
 > * Tworzenie tematu
 > * Tworzenie subskrypcji
-> * Tworzenie zasad sygnatury dostępu współdzielonego
-> * Pobierz informacje o przestrzeni nazw
-> * Pobierz informacje o temacie i subskrypcji
-> * Odwoływanie zasad SAS
+> * Tworzenie zasad sygnatury dostępu Współdzielonego
+> * Pobieranie informacji o obszarze nazw
+> * Pobieranie informacji o temacie i subskrypcji
+> * Odwoływanie zasad sygnatury dostępu Współdzielonego
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-the-service-bus-topic"></a>Tworzenie tematu Service Bus
+## <a name="create-the-service-bus-topic"></a>Tworzenie tematu Usługi Service Bus
 
-Przykładowy kod element PlayBook tworzy następujące zasoby:
+Przykładowy kod podręcznika tworzy następujące zasoby:
 - Grupa zasobów platformy Azure
-- Service Bus przestrzeni nazw w grupie zasobów
-- Service Bus tematu z przestrzenią nazw
+- Obszar nazw usługi Service Bus w grupie zasobów
+- Temat Usługi Service Bus z obszarem nazw
 
 Zapisz następujący podręcznik jako `servicebus_topic.yml`:
 
@@ -69,15 +69,15 @@ Zapisz następujący podręcznik jako `servicebus_topic.yml`:
           var: topic
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook servicebus_topic.yml
 ```
 
-## <a name="create-the-subscription"></a>Utwórz subskrypcję
+## <a name="create-the-subscription"></a>Tworzenie subskrypcji
 
-Przykładowy kod element PlayBook tworzy subskrypcję w temacie Service Bus. Tematy Azure Service Bus mogą mieć wiele subskrypcji. Subskrybent tematu może odbierać kopię każdej wiadomości wysyłanej do tematu. Subskrypcje są nazwanymi jednostkami, które zostały utworzone przez trwale, ale mogą opcjonalnie wygasnąć.
+Przykładowy kod podręcznika tworzy subskrypcję w temacie usługi Service Bus. Tematy usługi Azure Service Bus mogą mieć wiele subskrypcji. Subskrybent tematu może odbierać kopię każdej wiadomości wysłanej do tematu. Subskrypcje są nazwane jednostki, które są trwale tworzone, ale opcjonalnie może wygasnąć.
 
 ```yml
 ---
@@ -102,17 +102,17 @@ Przykładowy kod element PlayBook tworzy subskrypcję w temacie Service Bus. Tem
 
 Zapisz następujący podręcznik jako `servicebus_subscription.yml`:
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook servicebus_subscription.yml
 ```
 
-## <a name="create-the-sas-policy"></a>Tworzenie zasad SAS
+## <a name="create-the-sas-policy"></a>Tworzenie zasad sygnatury dostępu Współdzielonego
 
-[Sygnatura dostępu współdzielonego (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) jest mechanizmem autoryzacji opartym na oświadczeniach przy użyciu tokenów. 
+[Sygnatura dostępu współdzielonego (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) to mechanizm autoryzacji oparty na oświadczeniach przy użyciu tokenów. 
 
-Przykładowy kod element PlayBook tworzy dwie zasady sygnatury dostępu współdzielonego dla kolejki Service Bus z różnymi uprawnieniami.
+Przykładowy kod podręcznika tworzy dwie zasady sygnatury dostępu Współdzielonego dla kolejki usługi Service Bus z różnymi uprawnieniami.
 
 Zapisz następujący podręcznik jako `servicebus_topic_policy.yml`:
 
@@ -139,15 +139,15 @@ Zapisz następujący podręcznik jako `servicebus_topic_policy.yml`:
           var: policy
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook servicebus_topic_policy.yml
 ```
 
-## <a name="retrieve-namespace-information"></a>Pobierz informacje o przestrzeni nazw
+## <a name="retrieve-namespace-information"></a>Pobieranie informacji o obszarze nazw
 
-Przykładowy kod element PlayBook wysyła zapytanie do informacji o przestrzeni nazw.
+Przykładowy kod podręcznika wysyła zapytanie do informacji o obszarze nazw.
 
 Zapisz następujący podręcznik jako `servicebus_namespace_info.yml`:
 
@@ -169,20 +169,20 @@ Zapisz następujący podręcznik jako `servicebus_namespace_info.yml`:
           var: ns
 ```
 
-Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
-- Wartość `show_sas_policies` wskazuje, czy mają być wyświetlane zasady sygnatury dostępu współdzielonego w ramach określonego obszaru nazw. Domyślnie wartość jest `False`, aby uniknąć dodatkowych obciążeń sieci.
+Przed uruchomieniem podręcznika zapoznaj się z następującymi uwagami:
+- Wartość `show_sas_policies` wskazuje, czy mają być wyświetlane zasady sygnatury dostępu Współdzielonego w określonym obszarze nazw. Domyślnie wartość jest `False` uniknięcie dodatkowych narzutów sieciowych.
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook servicebus_namespace_info.yml
 ```
 
-## <a name="retrieve-topic-and-subscription-information"></a>Pobierz informacje o temacie i subskrypcji
+## <a name="retrieve-topic-and-subscription-information"></a>Pobieranie informacji o temacie i subskrypcji
 
-Przykładowy kod element PlayBook zapytania dla następujących informacji:
-- Informacje dotyczące Service Bus tematu
-- Lista szczegółów subskrypcji tematu
+Przykładowy kod podręcznika pyta o następujące informacje:
+- Informacje o temacie usługi Service Bus
+- Lista szczegółów subskrypcji dla tematu
  
 Zapisz następujący podręcznik jako `servicebus_list.yml`:
 
@@ -216,18 +216,18 @@ Zapisz następujący podręcznik jako `servicebus_list.yml`:
         - subs_fact.servicebuses
 ```
 
-Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
-- Wartość `show_sas_policies` wskazuje, czy mają być wyświetlane zasady sygnatury dostępu współdzielonego w ramach określonej kolejki. Domyślnie ta wartość jest ustawiana na `False`, aby uniknąć dodatkowych obciążeń sieci.
+Przed uruchomieniem podręcznika zapoznaj się z następującymi uwagami:
+- Wartość `show_sas_policies` wskazuje, czy mają być wyświetlane zasady sygnatury dostępu Współdzielonego w określonej kolejce. Domyślnie ta wartość jest `False` ustawiona, aby uniknąć dodatkowych narzutów sieciowych.
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook servicebus_list.yml
 ```
 
-## <a name="revoke-the-queue-sas-policy"></a>Odwołaj zasady dotyczące kolejki SAS
+## <a name="revoke-the-queue-sas-policy"></a>Odwoływanie zasad kolejki sygnatury dostępu Współdzielonego
 
-Przykładowy kod element PlayBook usuwa zasady sygnatury dostępu współdzielonego kolejki.
+Przykładowy kod podręcznika usuwa zasady sygnatury dostępu Współdzielonego kolejki.
 
 Zapisz następujący podręcznik jako `servicebus_queue_policy_delete.yml`:
 
@@ -248,7 +248,7 @@ Zapisz następujący podręcznik jako `servicebus_queue_policy_delete.yml`:
           state: absent
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook servicebus_topic_policy_delete.yml
@@ -256,9 +256,9 @@ ansible-playbook servicebus_topic_policy_delete.yml
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebne, Usuń zasoby utworzone w tym artykule. 
+Gdy nie są już potrzebne, usuń zasoby utworzone w tym artykule. 
 
-Zapisz następujący kod jako `cleanup.yml`:
+Zapisz następujący kod `cleanup.yml`jako:
 
 ```yml
 ---
@@ -294,7 +294,7 @@ Zapisz następujący kod jako `cleanup.yml`:
           force_delete_nonempty: yes
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook cleanup.yml

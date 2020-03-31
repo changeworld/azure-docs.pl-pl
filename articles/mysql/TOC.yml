@@ -97,6 +97,8 @@
           href: concepts-data-encryption-mysql.md
         - name: Uwierzytelnianie w usłudze Azure AD
           href: concepts-azure-ad-authentication.md
+        - name: Punkt odniesienia zabezpieczeń
+          href: security-baseline.md
     - name: Ciągłość działalności biznesowej
       items:
         - name: Wprowadzenie do ciągłości działalności biznesowej
@@ -176,6 +178,8 @@
           href: howto-configure-ssl.md
         - name: Aplikacje internetowe
           href: howto-connect-webapp.md
+        - name: Łączenie z użyciem przekierowania
+          href: howto-redirection.md
     - name: Konfigurowanie parametrów serwera
       items:
         - name: Azure Portal
@@ -246,6 +250,10 @@
       items:
         - name: Konfigurowanie integracji z usługą Azure AD
           href: howto-configure-sign-in-azure-ad-authentication.md
+    - name: Odmowa dostępu do sieci publicznej
+      items:
+        - name: Azure Portal
+          href: howto-deny-public-network-access.md
     - name: Ponowne uruchamianie serwera
       items:
         - name: Azure Portal

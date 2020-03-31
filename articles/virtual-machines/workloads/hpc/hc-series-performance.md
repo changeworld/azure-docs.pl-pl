@@ -1,6 +1,6 @@
 ---
-title: Wydajność rozmiar maszyny Wirtualnej serii HC — usługi Azure Virtual Machines | Dokumentacja firmy Microsoft
-description: Więcej informacji o wydajności, wyniki rozmiary maszyn wirtualnych serii HC testowania na platformie Azure.
+title: Wydajność rozmiaru maszyny wirtualnej z serii HC — maszyny wirtualne platformy Azure | Dokumenty firmy Microsoft
+description: Dowiedz się więcej o wynikach testów wydajności dla rozmiarów maszyn wirtualnych z serii HC na platformie Azure.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,25 +13,25 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: cea772f03d5e2838b44d50f3cf5e926d740be5f0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67707680"
 ---
-# <a name="hc-series-virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych serii połączenia Hybrydowego
+# <a name="hc-series-virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych serii HC
 
-Kilka testów wydajności zostały uruchomione na rozmiary serii połączenia Hybrydowego. Poniżej przedstawiono niektóre wyniki testowania wydajnościowego.
+Przeprowadzono kilka testów wydajności na rozmiarach serii HC. Poniżej przedstawiono niektóre z wyników tego badania wydajności.
 
 | Obciążenie                                        | HB                    |
 |-------------------------------------------------|-----------------------|
-| Triada strumienia                                    | ~190 GB/s (Intel MLC AVX-512)  |
-| Linpack obejmują o wysokiej wydajności (HPL)                  | ~ 3520 GigaFLOPS (Rpeak) ~ 2970 GigaFLOPS (Rmax) |
-| RDMA opóźnienia i przepustowości                        | 1.80 mikrosekundach, 96.3 Gb/s   |
-| FIO na lokalny dysk SSD NVMe                           | Odczyty GB/s ~1.3, ~ 900 MB/s zapisuje |  
-| IOR na 4 usługi Azure Premium SSD (P30 usługi Managed Disks, RAID0) **  | ~ 780 MB/s odczytuje ~ 780 MB/zapisu |
+| Triada STREAM                                    | ~190 GB/s (Intel MLC AVX-512)  |
+| Wysokowydajny linpack (HPL)                  | ~3520 GigaFLOPS (Rpeak), ~2970 GigaFLOPS (Rmax) |
+| Przepustowość & opóźnienia RDMA                        | 1,80 mikrosekund, 96,3 Gb/s   |
+| FIO na lokalnym NVMe SSD                           | ~1,3 GB/s odczytów, zapis ~900 MB/s |  
+| IOR na 4 dyskach SSD premium platformy Azure (dyski zarządzane P30, RAID0)**  | ~780 MB/s odczytów, ~780 MB/zapis |
 
-## <a name="infiniband-send-latency"></a>Opóźnienie wysyłania InfiniBand
+## <a name="infiniband-send-latency"></a>Opóźnienie wysyłania zespołu InfiniBand
 
 Mellanox Perftest.
 
@@ -39,30 +39,30 @@ Mellanox Perftest.
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 
-|  #bytes         | #iterations     | t_min [mikrosekundowych]     | t_max[microsecond]     | t_typical [mikrosekundowych] | t_avg [mikrosekundowych]     | t_stdev[microsecond]   |
+|  #bytes         | #iterations     | t_min[mikrosekunda]     | t_max[mikrosekunda]     | t_typical[mikrosekunda] | t_avg[mikrosekunda]     | t_stdev[mikrosekunda]   |
 |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-| 2               | 1000            | 1.80            | 7.50            | 1.85            | 1.86            | 0.20            |
-| 4               | 1000            | 1.79            | 6.06            | 1.83            | 1.84            | 0.20            |
+| 2               | 1000            | 1.80            | 7.50            | 1.85            | 1.86            | 0,20            |
+| 4               | 1000            | 1.79            | 6.06            | 1.83            | 1.84            | 0,20            |
 | 8               | 1000            | 1.78            | 5.26            | 1.83            | 1.84            | 0.19            |
-| 16              | 1000            | 1.79            | 6.21            | 1.83            | 1.84            | 0.22            |
-| 32              | 1000            | 1.80            | 6.82            | 1.84            | 1.85            | 0,24            |
-| 64              | 1000            | 1.85            | 5.47            | 1.88            | 1.86            | 0.12            |
-| 128             | 1000            | 1.88            | 5.61            | 1.93            | 1.89            | 0.25            |
+| 16              | 1000            | 1.79            | 6.21            | 1.83            | 1.84            | 0,22            |
+| 32              | 1000            | 1.80            | 6.82            | 1.84            | 1.85            | 0.24            |
+| 64              | 1000            | 1.85            | 5.47            | 1.88            | 1.86            | 0,12            |
+| 128             | 1000            | 1.88            | 5.61            | 1.93            | 1.89            | 0,25            |
 | 256             | 1000            | 2.24            | 6.39            | 2.28            | 2.02            | 0.18            |
 | 512             | 1000            | 2.32            | 5.42            | 2.36            | 2.30            | 0.17            |
 | 1024            | 1000            | 2.43            | 6.22            | 2.48            | 2.38            | 0.21            |
-| 2048            | 1000            | 2.68            | 6.14            | 2.75            | 2.52            | 0.20            |
-| 4096            | 1000            | 3.17            | 7.02            | 3.26            | 2.81            | 0,24            |
+| 2048            | 1000            | 2.68            | 6.14            | 2.75            | 2.52            | 0,20            |
+| 4096            | 1000            | 3.17            | 7.02            | 3.26            | 2.81            | 0.24            |
 
-## <a name="osu-mpi-latency-test"></a>Test opóźnienia OSU MPI
+## <a name="osu-mpi-latency-test"></a>Test opóźnienia MPI OSU
 
-Opóźnieniami OSU MPI testu v5.4.3.
+Test opóźnienia OSU MPI v5.4.3.
 
 ```azure-cli
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
 ```
 
-| #bytes  | Opóźnienie [mikrosekundowych] (MPICH 3.3 + CH4) | Opóźnienie [mikrosekundowych] (OpenMPI 4.0.0) | Opóźnienie [mikrosekundowych] (MVAPICH2 2.3) |
+| #bytes  | Opóźnienie [mikrosekunda] (MPICH 3.3 + CH4) | Opóźnienie [mikrosekunda] (OpenMPI 4.0.0) | Opóźnienie [mikrosekunda] (MVAPICH2 2.3) |
 |------|----------|----------|----------|
 | 2    | 1.84     | 1.78     | 2.08     |
 | 4    | 1.84     | 1.79     | 2.08     |
@@ -79,7 +79,7 @@ Opóźnieniami OSU MPI testu v5.4.3.
 
 ## <a name="mpi-bandwidth"></a>Przepustowość MPI
 
-Przepustowość OSU MPI testu v5.4.3.
+Test przepustowości OSU MPI v5.4.3.
 
 ```azure-cli
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw

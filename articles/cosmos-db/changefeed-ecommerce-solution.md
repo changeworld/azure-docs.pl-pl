@@ -1,6 +1,6 @@
 ---
-title: Użyj usługi Azure Cosmos DB Zmień źródło danych do analizy danych w czasie rzeczywistym wizualizować
-description: W tym artykule opisano, jak źródło danych zmian może być używane przez firmę handlową do zrozumienia wzorców użytkowników, wykonywania analiz i wizualizacji w czasie rzeczywistym
+title: Wizualizacja analizy danych w czasie rzeczywistym za pomocą kanału informacyjnego usługi Azure Cosmos DB
+description: W tym artykule opisano, jak firma prowadząca handel detaliczny może używać pliku danych zmian do zrozumienia wzorców użytkowników, przeprowadzania analizy i wizualizacji danych w czasie rzeczywistym
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
@@ -8,29 +8,29 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
 ms.openlocfilehash: c0c1a28dc399d3f176f92e656621fec1bc92dbfc
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513513"
 ---
-# <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Użyj usługi Azure Cosmos DB Zmień źródło danych do analizy danych w czasie rzeczywistym wizualizować
+# <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Wizualizacja analizy danych w czasie rzeczywistym za pomocą kanału informacyjnego usługi Azure Cosmos DB
 
-Kanał informacyjny zmiany Azure Cosmos DB jest mechanizmem do uzyskiwania ciągłego i przyrostowego źródła rekordów z kontenera usługi Azure Cosmos, ponieważ te rekordy są tworzone lub modyfikowane. Kanału informacyjnego zmian działania pomocy technicznej przez nasłuchiwanie w kontenerze żadnych zmian. Następnie tworzone są dane wyjściowe w postaci posortowanej listy zmienionych dokumentów w kolejności, w której zostały zmodyfikowane. Aby dowiedzieć się więcej na temat zmian, zobacz [pracy za pomocą zestawienia zmian](change-feed.md) artykułu. 
+Źródło danych usługi Azure Cosmos DB to mechanizm umożliwiający uzyskanie ciągłego i przyrostowego źródła danych rekordów z kontenera usługi Azure Cosmos podczas tworzenia lub modyfikowania tych rekordów. Obsługa kanału informacyjnego zmian działa, nasłuchiwając kontenera dla wszelkich zmian. Następnie tworzone są dane wyjściowe w postaci posortowanej listy zmienionych dokumentów w kolejności, w której zostały zmodyfikowane. Aby dowiedzieć się więcej o pliku danych o zmianach, zobacz [artykuł praca z nadajnikiem zmian.](change-feed.md) 
 
-W tym artykule opisano, jak zmiany Kanał informacyjny może służyć przez firmę handlu elektronicznego, aby zrozumieć wzorce użytkownika, wykonywania analiz danych w czasie rzeczywistym i wizualizacji. Będzie analizować zdarzenia, takie jak wyświetlenie elementu, dodanie elementu do koszyka ich lub zakupu elementu użytkownika. Gdy wystąpi jedno z tych zdarzeń, zostanie utworzony nowy rekord, a zmiany źródła danych dzienników, służące do rejestrowania. Kanału informacyjnego zmian następnie wyzwalaczy szereg kroków skutkuje wizualizacji metryk, które Analizuj wydajność firmy i działania. Przykładowe metryki, które można wizualizować obejmują przychodu, unikatowych odwiedzających witrynę, najpopularniejszych elementów i średnia cena elementów, które są wyświetlane w porównaniu z dodana do koszyka i zakupu. Te przykładowe metryki może pomóc firmie handlu elektronicznego, oceniać swoją popularność lokacji, tworzyć jego reklamy i strategii cenowych i podjęcia decyzji dotyczących spisu, jakie o wartości inwestycji w.
+W tym artykule opisano, jak firma zajmująca się zmianami może używać danych źródłowych do zrozumienia wzorców użytkowników, przeprowadzania analizy i wizualizacji danych w czasie rzeczywistym. Będziesz analizować zdarzenia, takie jak wyświetlanie elementu przez użytkownika, dodawanie elementu do koszyka lub kupowanie towaru. Gdy wystąpi jedno z tych zdarzeń, tworzony jest nowy rekord, a plik danych o zmianie rejestruje ten rekord. Następnie wyłowi szereg kroków, co powoduje wizualizację metryk analizujących wydajność i działanie firmy. Przykładowe dane, które można wizualizować, obejmują przychody, unikatowe osoby odwiedzające witrynę, najpopularniejsze produkty i średnią cenę elementów, które są wyświetlane w porównaniu z dodaniem do koszyka w porównaniu z zakupami. Te przykładowe dane mogą pomóc firmie handlu elektronicznego ocenić popularność witryny, opracować strategie reklamowe i cenowe oraz podjąć decyzje dotyczące zapasów, w które warto zainwestować.
 
-Zainteresowani oglądania wideo o rozwiązaniu przed rozpoczęciem pracy, zobacz poniższy film wideo:
+Chcesz obejrzeć film o rozwiązaniu przed rozpoczęciem pracy, zobacz następujący film:
 
 > [!VIDEO https://www.youtube.com/embed/AYOiMkvxlzo]
 >
 
 ## <a name="solution-components"></a>Składniki rozwiązania
-Poniższy diagram przedstawia przepływ danych i składniki zaangażowane w rozwiązaniu:
+Poniższy diagram przedstawia przepływ danych i składniki zaangażowane w rozwiązanie:
 
-![Projekt wizualizacji](./media/changefeed-ecommerce-solution/project-visual.png)
+![Wizualizacja projektu](./media/changefeed-ecommerce-solution/project-visual.png)
  
-1. **Generowanie danych:** symulator danych służy do generowania danych sprzedaży detalicznej, które reprezentuje zdarzenia, takie jak użytkownikowi wyświetlenie elementu, dodanie elementu do koszyka ich i zakup elementu. Duży zestaw przykładowych danych można wygenerować za pomocą generatora danych. Wygenerowanych przykładowych danych zawiera dokumenty w następującym formacie:
+1. **Generowanie danych:** Symulator danych służy do generowania danych detalicznych, które reprezentują zdarzenia, takie jak użytkownik wyświetlający element, dodający element do koszyka i kupując element. Można wygenerować duży zestaw przykładowych danych przy użyciu generatora danych. Wygenerowane przykładowe dane zawierają dokumenty w następującym formacie:
    
    ```json
    {      
@@ -41,189 +41,189 @@ Poniższy diagram przedstawia przepływ danych i składniki zaangażowane w rozw
    }
    ```
 
-2. **Cosmos DB:** Wygenerowane dane są przechowywane w kontenerze usługi Azure Cosmos.  
+2. **Baza danych Cosmos:** Wygenerowane dane są przechowywane w kontenerze usługi Azure Cosmos.  
 
-3. **Źródło zmian:** Źródło zmian będzie nasłuchiwać zmian w kontenerze usługi Azure Cosmos. Każdorazowo nowy dokument zostanie dodany do kolekcji (to znaczy po wystąpieniu zdarzenia, od takich użytkowników, wyświetlanie elementu Dodawanie elementu do koszyka ich lub zakupu element), zmiana źródła danych będą wyzwalać [funkcji platformy Azure](../azure-functions/functions-overview.md).  
+3. **Zmień kanał informacyjny:** Źródło danych zmiany będzie nasłuchiwać zmian w kontenerze usługi Azure Cosmos. Za każdym razem, gdy nowy dokument jest dodawany do kolekcji (czyli gdy wystąpi zdarzenie, takiemu użytkownikowi wyświetlające element, dodające element do koszyka lub kupujące element), źródło danych o zmianach wyzwoli [funkcję platformy Azure.](../azure-functions/functions-overview.md)  
 
-4. **Funkcja platformy Azure:** funkcji platformy Azure przetwarza nowe dane i wysyła je do [usługi Azure Event Hub](../event-hubs/event-hubs-about.md).  
+4. **Funkcja platformy Azure:** Funkcja platformy Azure przetwarza nowe dane i wysyła je do [usługi Azure Event Hub](../event-hubs/event-hubs-about.md).  
 
-5. **Centrum zdarzeń:** usługi Azure Event Hub przechowuje te zdarzenia i wysyła je do [usługi Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) podczas dalszej analizy.  
+5. **Centrum zdarzeń:** Usługa Azure Event Hub przechowuje te zdarzenia i wysyła je do [usługi Azure Stream Analytics w](../stream-analytics/stream-analytics-introduction.md) celu przeprowadzenia dalszej analizy.  
 
-6. **Usługa Azure Stream Analytics:** usługa Azure Stream Analytics definiuje zapytania, aby przetwarzać zdarzenia i przeprowadzać analizy danych w czasie rzeczywistym. Te dane są następnie wysyłane do [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
+6. **Usługa Azure Stream Analytics:** Usługa Azure Stream Analytics definiuje zapytania do przetwarzania zdarzeń i wykonywania analizy danych w czasie rzeczywistym. Te dane są następnie wysyłane do usługi [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
 
-7. **Usługa Power BI:** usługi Power BI umożliwia wizualizowanie danych wysłanych przez usługę Azure Stream Analytics. Możesz utworzyć pulpit nawigacyjny, aby zobaczyć, jak zmienić metryki w czasie rzeczywistym.  
+7. **Usługa Power BI:** Usługa Power BI służy do wizualizacji danych wysyłanych przez usługę Azure Stream Analytics. Możesz utworzyć pulpit nawigacyjny, aby zobaczyć, jak zmieniają się metryki w czasie rzeczywistym.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Microsoft .NET Framework 4.7.1 lub nowszej
+* Microsoft .NET Framework 4.7.1 lub nowsza
 
-* Microsoft .NET Core 2.1 (lub nowszej)
+* Microsoft .NET Core 2.1 (lub wyższy)
 
-* Program Visual Studio z programowania na platformę uniwersalną Windows, programowanie aplikacji klasycznych dla platformy .NET i obciążeń deweloperskich platformy ASP.NET i sieci web
+* Program Visual Studio z programem Universal Windows Platform development, programami .NET dla tworzenia pulpitu oraz ASP.NET i obciążeń programistów sieci Web
 
 * Subskrypcja platformy Microsoft Azure
 
-* Konta Microsoft Power BI
+* Konto usługi Microsoft Power BI
 
-* Pobierz [zmian usługi Azure Cosmos DB kanału informacyjnego laboratorium](https://github.com/Azure-Samples/azure-cosmos-db-change-feed-dotnet-retail-sample) z usługi GitHub. 
+* Pobierz [laboratorium kanału informacyjnego usługi Azure Cosmos DB](https://github.com/Azure-Samples/azure-cosmos-db-change-feed-dotnet-retail-sample) z usługi GitHub. 
 
 ## <a name="create-azure-resources"></a>Tworzenie zasobów platformy Azure 
 
-Tworzenie zasobów platformy Azure — usłudze Azure Cosmos DB, konto magazynu, Centrum zdarzeń usługi Stream Analytics, wymaganego przez rozwiązanie. Wdroży te zasoby za pomocą szablonu usługi Azure Resource Manager. Do wdrażania tych zasobów, wykonaj następujące kroki: 
+Tworzenie zasobów platformy Azure — konto usługi Azure Cosmos DB, konto magazynu, centrum zdarzeń, usługa Stream Analytics wymagana przez rozwiązanie. Te zasoby zostaną wdrożone za pomocą szablonu usługi Azure Resource Manager. Aby wdrożyć te zasoby, wykonaj następujące czynności: 
 
-1. Ustaw zasady wykonywania programu Windows PowerShell **Unrestricted**. Aby to zrobić, otwórz **program Windows PowerShell jako Administrator** i uruchom następujące polecenia:
+1. Ustaw zasady wykonywania programu Windows PowerShell na **Nieograniczone**. Aby to zrobić, otwórz **program Windows PowerShell jako administrator** i uruchom następujące polecenia:
 
    ```powershell
    Get-ExecutionPolicy
    Set-ExecutionPolicy Unrestricted 
    ```
 
-2. Z repozytorium GitHub został pobrany w poprzednim kroku, przejdź do **usługi Azure Resource Manager** folder i Otwórz plik o nazwie **parameters.json** pliku.  
+2. Z repozytorium GitHub pobranego w poprzednim kroku przejdź do folderu **Usługi Azure Resource Manager** i otwórz plik o nazwie **parameters.json.**  
 
-3. Podaj wartości dla cosmosdbaccount_name, eventhubnamespace_name, storageaccount_name, parametrów, zgodnie z instrukcjami w **parameters.json** pliku. Należy użyć nazwy, które zapewniają do każdego z zasobów później.  
+3. Podaj wartości parametrów cosmosdbaccount_name, eventhubnamespace_name, storageaccount_name, wskazanych w pliku **parameters.json.** Musisz użyć nazw, które nadasz do każdego z zasobów później.  
 
-4. Z **programu Windows PowerShell**, przejdź do **usługi Azure Resource Manager** folderu i uruchom następujące polecenie:
+4. Z **programu Windows PowerShell**przejdź do folderu **Usługi Azure Resource Manager** i uruchom następujące polecenie:
 
    ```powershell
    .\deploy.ps1
    ```
-5. Po wyświetleniu monitu wprowadź Azure **identyfikator subskrypcji**, **changefeedlab** jako nazwę grupy zasobów, a **wpisz run1** dla nazwy wdrożenia. Po zasoby rozpocząć wdrażanie, może upłynąć do 10 minut na jej zakończenie.
+5. Po wyświetleniu monitu wprowadź **identyfikator subskrypcji**platformy Azure , **changefeedlab** dla nazwy grupy zasobów i **uruchom1** dla nazwy wdrożenia. Gdy zasoby zaczną wdrażać, może upłynąć do 10 minut, aby zakończyć.
 
-## <a name="create-a-database-and-the-collection"></a>Utwórz bazę danych i kolekcji
+## <a name="create-a-database-and-the-collection"></a>Tworzenie bazy danych i kolekcji
 
-Teraz utworzysz kolekcję zawierającą zdarzeń witryny handlu elektronicznego. Gdy użytkownik przegląda elementu, dodaje element do koszyka ich lub zakupów elementu, kolekcji zostanie wyświetlony rekord, który zawiera akcję ("wyświetlane", "dodaje" lub "zakupione"), nazwa elementu zaangażowane cena elementu występującego i numer identyfikacyjny użytkownika koszyka i nvolved.
+Teraz utworzysz kolekcję do przechowywania wydarzeń w witrynie e-commerce. Gdy użytkownik wyświetli element, doda element do koszyka lub kupi przedmiot, kolekcja otrzyma rekord zawierający akcję ("wyświetlone", "dodane" lub "zakupione"), nazwę danego przedmiotu, cenę danego przedmiotu i numer identyfikatora koszyka użytkownika Zaangażowane.
 
-1. Przejdź do [Azure Portal](https://portal.azure.com/) i znajdź **konto Azure Cosmos DB** utworzone w ramach wdrożenia szablonu.  
+1. Przejdź do [witryny Azure portal](https://portal.azure.com/) i znajdź **konto usługi Azure Cosmos DB** utworzone przez wdrożenie szablonu.  
 
-2. Z **Eksplorator danych** okienku wybierz **Nowa kolekcja** i wypełnij formularz z następującymi szczegółami:  
+2. W okienku **Eksplorator danych** wybierz pozycję **Nowa kolekcja** i wypełnij formularz następującymi szczegółami:  
 
-   * Aby uzyskać **bazy danych o identyfikatorze** pól, zaznacz **Utwórz nową**, wprowadź **changefeedlabdatabase**. Pozostaw **Aprowizowanie przepływności bazy danych** pole niezaznaczone.  
-   * Aby uzyskać **kolekcji** identyfikator wprowadź **changefeedlabcollection**.  
-   * Aby uzyskać **klucza partycji** wprowadź **/Item**. Jest rozróżniana wielkość liter, więc upewnij się, że jej prawidłowo wpisana.  
-   * Aby uzyskać **przepływności** wprowadź **10000**.  
+   * W polu **Identyfikator bazy danych** wybierz pozycję **Utwórz nowy**, a następnie wprowadź przycisk **zmiany.** Pozostaw pole **przepływność bazy danych aprowizuj** niezaznaczone.  
+   * W polu **Identyfikator kolekcji** wprowadź **plik dopływu zmian**.  
+   * W polu **Klucz partycji** wprowadź **/Item**. Wielkość liter jest rozróżniana, więc upewnij się, że wprowadzono go poprawnie.  
+   * W polu **Przepływność** wprowadź **10000**.  
    * Wybierz przycisk **OK**.  
 
-3. Następnie utworzyć inną kolekcję o nazwie **dzierżawy** dla przetwarzania kanału informacyjnego zmian. Współrzędne kolekcji dzierżaw przetwarzania zestawienia zmian na wielu procesów roboczych. Oddzielne kolekcji służy do przechowywania dzierżaw przy użyciu jednej dzierżawy dla każdej partycji.  
+3. Następnie utwórz inną kolekcję o nazwie dzierżawy do przetwarzania pliku danych o **zmianach.** Współrzędne kolekcji dzierżaw przetwarzania pliku danych o zmianach przez wielu pracowników. Oddzielna kolekcja jest używana do przechowywania dzierżaw z jedną dzierżawą na partycję.  
 
-4. Wróć do **Eksplorator danych** okienka, a następnie wybierz **Nowa kolekcja** i wypełnij formularz z następującymi szczegółami:
+4. Wróć do okienka **Eksploratora danych** i wybierz pozycję **Nowa kolekcja** i wypełnij formularz następującymi szczegółami:
 
-   * Aby uzyskać **bazy danych o identyfikatorze** pól, zaznacz **Użyj istniejącej**, wprowadź **changefeedlabdatabase**.  
-   * Aby uzyskać **identyfikator kolekcji** wprowadź **dzierżawy**.  
-   * Aby uzyskać **pojemność magazynu**, wybierz opcję **stałe**.  
-   * Pozostaw **przepływności** pole jest ustawione na wartość domyślną.  
+   * W polu **Identyfikator bazy danych** wybierz pozycję Użyj **istniejącego**, a następnie wprowadź **przycisk zmiany.**  
+   * W polu **Identyfikator kolekcji** wprowadź **dzierżawy**.  
+   * W obszarze **Pojemność magazynu**wybierz opcję **Stała**.  
+   * Pozostaw pole **Przepływność** ustawione na wartość domyślną.  
    * Wybierz przycisk **OK**.
 
-## <a name="get-the-connection-string-and-keys"></a>Pobierz parametry połączenia i klucze
+## <a name="get-the-connection-string-and-keys"></a>Pobierz ciąg połączenia i klucze
 
-### <a name="get-the-azure-cosmos-db-connection-string"></a>Pobieranie parametrów połączenia usługi Azure Cosmos DB
+### <a name="get-the-azure-cosmos-db-connection-string"></a>Pobierz ciąg połączenia usługi Azure Cosmos DB
 
-1. Przejdź do [Azure Portal](https://portal.azure.com/) i znajdź **konto Azure Cosmos DB** utworzone w ramach wdrożenia szablonu.  
+1. Przejdź do [witryny Azure portal](https://portal.azure.com/) i znajdź **konto usługi Azure Cosmos DB** utworzone przez wdrożenie szablonu.  
 
-2. Przejdź do **klucze** okienko, skopiuj podstawowe parametry połączenia i skopiować go do Notatnika lub innego dokumentu, które mają dostęp do w całym środowisku laboratoryjnym. Należy je oznaczyć **parametry połączenia usługi Cosmos DB**. Konieczne będzie później skopiuj ciąg do kodu, więc Zwróć uwagę i Zapamiętaj, gdzie przechowujesz go.
+2. Przejdź do **okienka Klawisze,** skopiuj CIĄG POŁĄCZENIA PODSTAWOWEGO i skopiuj go do notatnika lub innego dokumentu, do którego będziesz mieć dostęp w całym laboratorium. Należy oznaczyć go **ciągiem połączenia usługi Cosmos DB**. Musisz skopiować ciąg do kodu później, więc zanotuj i zapamiętaj, gdzie go przechowujesz.
 
-### <a name="get-the-storage-account-key-and-connection-string"></a>Pobierz parametry połączenia i klucz konta magazynu
+### <a name="get-the-storage-account-key-and-connection-string"></a>Pobierz klucz konta magazynu i parametry połączenia
 
-Konta usługi Azure Storage umożliwiają przechowywanie danych. W tym środowisku laboratoryjnym użyjesz konta magazynu do przechowywania danych, który jest używany przez funkcję platformy Azure. Funkcja platformy Azure jest wyzwalana po każdej zmianie kolekcji.
+Konta usługi Azure Storage umożliwiają użytkownikom przechowywanie danych. W tym laboratorium użyjesz konta magazynu do przechowywania danych, które są używane przez funkcję platformy Azure. Funkcja platformy Azure jest wyzwalana, gdy zostanie dokonana jakakolwiek modyfikacja kolekcji.
 
-1. Wróć do grupy zasobów i otworzyć konto magazynu, która została utworzona wcześniej  
+1. Powrót do grupy zasobów i otwarcie utworzonego wcześniej konta magazynu  
 
-2. Wybierz **klucze dostępu** z menu po lewej stronie.  
+2. Wybierz **klawisze dostępu** z menu po lewej stronie.  
 
-3. Skopiuj wartości w obszarze **klucz 1** do Notatnika lub innego dokumentu, które mają dostęp do w całym środowisku laboratoryjnym. Należy oznaczyć **klucz** jako **klucza magazynu** i **parametry połączenia** jako **parametry połączenia magazynu**. Konieczne będzie później skopiuj te ciągi do kodu, więc Zwróć uwagę i Zapamiętaj, gdzie przechowujesz je.  
+3. Skopiuj wartości pod **kluczem 1** do notatnika lub innego dokumentu, do którego będziesz mieć dostęp w całym laboratorium. **Klucz** należy oznaczyć jako **klucz magazynu,** a **ciąg połączenia** jako ciąg **połączenia magazynu**. Musisz skopiować te ciągi do kodu później, więc zanotuj i zapamiętaj, gdzie je przechowujesz.  
 
-### <a name="get-the-event-hub-namespace-connection-string"></a>Pobierz parametry połączenia przestrzeni nazw Centrum zdarzeń
+### <a name="get-the-event-hub-namespace-connection-string"></a>Pobierz ciąg połączenia obszaru nazw centrum zdarzeń
 
-Usługi Azure Event Hub odbiera dane zdarzenia, magazyny, procesy i przekazuje dane. W tym środowisku laboratoryjnym, Azure Event Hub otrzyma dokumentu za każdym razem, gdy wystąpi zdarzenie nowe (czyli element jest wyświetlany przez użytkownika, dodane do koszyka użytkownika lub zakupione przez użytkownika) i następnie przekaże tego dokumentu do usługi Azure Stream Analytics.
+Usługa Azure Event Hub odbiera dane zdarzenia, przechowuje, przetwarza i przekazuje dane. W tym laboratorium usługa Azure Event Hub otrzyma dokument za każdym razem, gdy wystąpi nowe zdarzenie (tj. element jest oglądany przez użytkownika, dodany do koszyka użytkownika lub zakupiony przez użytkownika), a następnie przekaże ten dokument do usługi Azure Stream Analytics.
 
-1. Wróć do grupy zasobów, a następnie otwórz **Namespace Centrum zdarzeń** uprzednio utworzony i o nazwie w prelab.  
+1. Wróć do grupy zasobów i otwórz utworzony i nazwany **obszar nazw Centrum zdarzeń** w przedłabiu.  
 
-2. Wybierz **zasady dostępu współdzielonego** z menu po lewej stronie.  
+2. Z menu po lewej stronie wybierz polecenie **Zasady dostępu współdzielonego.**  
 
-3. Wybierz **RootManageSharedAccessKey**. Kopiuj **parametry połączenia — klucz podstawowy** do Notatnika lub innego dokumentu, które mają dostęp do w całym środowisku laboratoryjnym. Należy je oznaczyć **Namespace Centrum zdarzeń** parametry połączenia. Konieczne będzie później skopiuj ciąg do kodu, więc Zwróć uwagę i Zapamiętaj, gdzie przechowujesz go.
+3. Wybierz pozycję **RootManageSharedAccessKey**. Skopiuj **klucz podstawowy ciągu połączenia** do notatnika lub innego dokumentu, do którego będziesz mieć dostęp w całym laboratorium. Należy oznaczyć go ciągiem połączenia **Centrum nazw centrum zdarzeń.** Musisz skopiować ciąg do kodu później, więc zanotuj i zapamiętaj, gdzie go przechowujesz.
 
-## <a name="set-up-azure-function-to-read-the-change-feed"></a>Konfigurowanie funkcji platformy Azure na odczytywanie zestawienia zmian
+## <a name="set-up-azure-function-to-read-the-change-feed"></a>Konfigurowanie funkcji platformy Azure w celu odczytu kanału informacyjnego zmian
 
-Po utworzeniu nowego dokumentu lub zmodyfikowaniu bieżącego dokumentu w kontenerze Cosmos, Źródło zmian automatycznie dodaje zmodyfikowany dokument do historii zmian kolekcji. Teraz utworzysz i uruchom funkcję platformy Azure, która przetwarza zestawienia zmian. Gdy dokument zostanie utworzony lub zmodyfikowany w utworzonej kolekcji, funkcja platformy Azure zostanie wyzwolone przez zestawienia zmian. Następnie funkcja platformy Azure będzie wysyłać zmodyfikowanego dokumentu do Centrum zdarzeń.
+Po utworzeniu nowego dokumentu lub bieżący dokument jest modyfikowany w kontenerze usługi Cosmos, źródło danych zmiany automatycznie dodaje ten zmodyfikowany dokument do jego historii zmian kolekcji. Teraz skompilujesz i uruchomisz funkcję platformy Azure, która przetwarza źródło danych o zmianach. Gdy dokument jest tworzony lub modyfikowany w utworzonej kolekcji, funkcja platformy Azure zostanie wyzwolona przez źródło danych zmian. Następnie funkcja platformy Azure wyśle zmodyfikowany dokument do Centrum zdarzeń.
 
-1. Wróć do repozytorium, z którego zostało sklonowane na urządzeniu.  
+1. Wróć do repozytorium sklonowanego na urządzeniu.  
 
-2. Kliknij prawym przyciskiem myszy plik o nazwie **ChangeFeedLabSolution.sln** i wybierz **Otwórz za pomocą programu Visual Studio**.  
+2. Kliknij prawym przyciskiem myszy plik o nazwie **ChangeFeedLabSolution.sln** i wybierz polecenie **Otwórz za pomocą programu Visual Studio**.  
 
-3. Przejdź do **local.settings.json** w programie Visual Studio. Następnie należy użyć wartości, które zapisaną wcześniej, aby wypełnić puste miejsca.  
+3. Przejdź do **local.settings.json** w programie Visual Studio. Następnie użyj wartości nagranych wcześniej, aby wypełnić puste miejsca.  
 
-4. Przejdź do **ChangeFeedProcessor.cs**. W parametrach **Uruchom** funkcji, wykonaj następujące czynności:  
+4. Przejdź do **ChangeFeedProcessor.cs**. W parametrach funkcji **Uruchom** wykonaj następujące czynności:  
 
-   * Zastąp tekst **tutaj nazwę KOLEKCJI YOUR** nazwą kolekcji. Jeśli wykonano instrukcje wcześniej nazwę kolekcji jest changefeedlabcollection.  
-   * Zastąp tekst **Twojej dzierżawy KOLEKCJI nazwa tutaj** nazwą kolekcji dzierżaw. Jeśli wykonano instrukcje wcześniej jest nazwa kolekcji dzierżaw **dzierżawy**.  
-   * W górnej części programu Visual Studio, upewnij się, że pole projektu startowego na zieloną strzałkę po lewej stronie jest wyświetlany komunikat **ChangeFeedFunction**.  
-   * Wybierz **Start** w górnej części strony Aby uruchomić program  
-   * Aby potwierdzić, że funkcja działa, gdy aplikacja konsoli jest wyświetlany komunikat "uruchomione zadanie hosta".
+   * Zastąp tutaj tekst **NAZWA KOLEKCJI** nazwą swojej kolekcji. Jeśli po wcześniejszych instrukcji, nazwa kolekcji jest changefeedlabcollection.  
+   * Zastąp tutaj tekst **NAZWA KOLEKCJI DZIERŻAWY** nazwą kolekcji dzierżaw. Jeśli po wcześniejszych instrukcjach, nazwa kolekcji dzierżawy jest **dzierżawy**.  
+   * U góry programu Visual Studio upewnij się, że pole Projekt startowy po lewej stronie zielonej strzałki jest wyświetlane **ChangeFeedFunction**.  
+   * Wybierz **pozycję Start** u góry strony, aby uruchomić program  
+   * Możesz potwierdzić, że funkcja jest uruchomiona, gdy aplikacja konsoli mówi "Uruchomiono hosta zadań".
 
 ## <a name="insert-data-into-azure-cosmos-db"></a>Wstawianie danych do usługi Azure Cosmos DB 
 
-Aby wyświetlić kanał informacyjny zmian przetwarzaniu nowe akcje w witrynie handlu elektronicznego, trzeba symulacji dane, które przedstawiają użytkownikom wyświetlanie elementów z katalogu produktów, dodanie tych elementów do ich koszyki i elementy w swoich koszyki zakupów. Dane te są dowolnego i na potrzeby replikacji danych w handlu elektronicznego witryna będzie wyglądać.
+Aby zobaczyć, jak plik danych o zmianach przetwarza nowe akcje w witrynie handlu elektronicznego, należy symulować dane, które reprezentują użytkowników wyświetlających elementy z katalogu produktów, dodając te elementy do swoich koszyków i kupując towary w koszykach. Dane te są dowolne i w celu replikowania danych w witrynie e-commerce.
 
-1. Przejdź z powrotem do repozytorium w Eksploratorze plików, a następnie kliknij prawym przyciskiem myszy **ChangeFeedFunction.sln** ponownie otworzyć nowe okno programu Visual Studio.  
+1. Przejdź z powrotem do repozytorium w Eksploratorze plików i kliknij prawym przyciskiem myszy **pozycję ChangeFeedFunction.sln,** aby ponownie otworzyć je w nowym oknie programu Visual Studio.  
 
-2. Przejdź do pliku **App. config** . W bloku `<appSettings>` Dodaj punkt końcowy i unikatowy **klucz podstawowy** , który został wcześniej pobrany z konta Azure Cosmos DB.  
+2. Przejdź do pliku **App.config.** W `<appSettings>` bloku dodaj punkt końcowy i **unikatowy klucz podstawowy,** który jest pobieranym wcześniej kontem usługi Azure Cosmos DB.  
 
-3. Dodaj w **kolekcji** i **bazy danych** nazwy. (Te nazwy powinny być **changefeedlabcollection** i **changefeedlabdatabase** dopóki nie zdecydujesz się nazwę należy do Ciebie inaczej.)
+3. Dodaj w **kolekcji** i nazwy **bazy danych.** (Nazwy te powinny być **changefeedlabcollection** i **changefeedlabdatabase,** chyba że zdecydujesz się nazwać swoje inaczej.)
 
-   ![Zaktualizuj parametry połączenia](./media/changefeed-ecommerce-solution/update-connection-string.png)
+   ![Aktualizowanie ciągów połączeń](./media/changefeed-ecommerce-solution/update-connection-string.png)
  
-4. Zapisz zmiany we wszystkich plikach, które są edytowane.  
+4. Zapisz zmiany we wszystkich edytowanych plikach.  
 
-5. Upewnij się, że w górnej części programu Visual Studio **projekt startowy** pole na zieloną strzałkę po lewej stronie jest wyświetlany komunikat **DataGenerator**. Następnie wybierz pozycję **Start** w górnej części strony Aby uruchomić program.  
+5. U góry programu Visual Studio upewnij się, że pole **Projekt startowy** po lewej stronie zielonej strzałki jest o treści **DataGenerator**. Następnie wybierz **przycisk Start** u góry strony, aby uruchomić program.  
  
-6. Poczekaj, aż program do uruchomienia. Gwiazdki oznaczają, że pochodzą dane! Zachowaj uruchomiony program — jest ważne, zbierane dużą ilość danych.  
+6. Poczekaj na uruchomienie programu. Gwiazdy oznaczają, że dane nadchodzą! Utrzymuj program w pracy - ważne jest, aby zbierać dużo danych.  
 
-7. Jeśli przejdziesz do [Azure Portal](https://portal.azure.com/) , do konta Cosmos DB w grupie zasobów, a następnie do **Eksplorator danych**, zostaną wyświetlone losowo zaimportowane dane w **changefeedlabcollection** .
+7. Jeśli przejdziesz do [witryny Azure portal](https://portal.azure.com/) , a następnie do konta usługi Cosmos DB w grupie zasobów, a następnie do **Eksploratora danych,** zobaczysz losowo zaimportowane dane zaimportowane w **pliku changefeedlabcollection** .
  
    ![Dane wygenerowane w portalu](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
 
-## <a name="set-up-a-stream-analytics-job"></a>Konfigurowanie zadania usługi stream analytics
+## <a name="set-up-a-stream-analytics-job"></a>Konfigurowanie zadania analizy strumienia
 
-Usługa Azure Stream Analytics jest w pełni zarządzana usługa w chmurze do przetwarzania w czasie rzeczywistym danych przesyłanych strumieniowo. W tym środowisku laboratoryjnym użyjesz usługi stream analytics można przetwarzać nowych zdarzeń z Centrum zdarzeń (tj. gdy element jest wyświetlane, dodane do koszyka lub kupić), włączenie tych zdarzeń do analizy danych w czasie rzeczywistym i wysyłać je do usługi Power BI dla wizualizacji.
+Usługa Azure Stream Analytics to w pełni zarządzana usługa w chmurze do przetwarzania danych strumieniowych w czasie rzeczywistym. W tym laboratorium będziesz używać analizy strumienia do przetwarzania nowych zdarzeń z Centrum zdarzeń (tj. gdy element jest oglądany, dodawany do koszyka lub zakupiony), włączanie tych zdarzeń do analizy danych w czasie rzeczywistym i wysyłanie ich do usługi Power BI w celu wizualizacji.
 
-1. W [Azure Portal](https://portal.azure.com/)przejdź do grupy zasobów, a następnie **streamjob1** (zadanie usługi Stream Analytics utworzone w prelab).  
+1. Z [witryny Azure portal](https://portal.azure.com/)przejdź do grupy zasobów, a następnie do **streamjob1** (zadanie analizy strumienia utworzone w przedładzie).  
 
-2. Wybierz **dane wejściowe** jak pokazano poniżej.  
+2. Wybierz **dane wejściowe,** jak pokazano poniżej.  
 
-   ![Tworzenie wejściowych](./media/changefeed-ecommerce-solution/create-input.png)
+   ![Tworzenie danych wejściowych](./media/changefeed-ecommerce-solution/create-input.png)
 
-3. Wybierz **+ Dodaj wejście strumienia**. Następnie wybierz pozycję **Centrum zdarzeń** z menu rozwijanego.  
+3. Wybierz **+ Dodaj dane wejściowe strumienia**. Następnie wybierz **centrum zdarzeń** z menu rozwijanego.  
 
-4. Wprowadź nowy formularz danych wejściowych z następującymi szczegółami:
+4. Wypełnij nowy formularz wejściowy następującymi szczegółami:
 
-   * W **wejściowych** alias pole, wprowadź **wejściowych**.  
-   * Wybierz opcję dla **wybierz Centrum zdarzeń z subskrypcji**.  
-   * Ustaw **subskrypcji** pola do Twojej subskrypcji.  
-   * W **przestrzeń nazw Centrum zdarzeń** wprowadź nazwę swojej Namespace Centrum zdarzeń, został utworzony podczas prelab.  
-   * W **nazwy Centrum zdarzeń** wybierz opcję **Użyj istniejącej** i wybierz polecenie **hub1 zdarzeń** z menu rozwijanego.  
-   * Pozostaw **zasad Centrum zdarzeń** pole nazwy jest ustawiona na wartość domyślną.  
+   * W polu **Alias wejściowy** wprowadź **dane wejściowe**.  
+   * Wybierz opcję **Wybierz Centrum zdarzeń z subskrypcji**.  
+   * Ustaw pole **Subskrypcja** na subskrypcję.  
+   * W polu **Obszar nazw Centrum zdarzeń** wprowadź nazwę obszaru nazw centrum zdarzeń utworzonego podczas przednałaka.  
+   * W polu **Nazwa Centrum zdarzeń** wybierz opcję Użyj **istniejącego** i wybierz z menu rozwijanego **Centrum zdarzeń1.**  
+   * Pozostaw pole nazwy **zasad Centrum zdarzeń** ustawione na wartość domyślną.  
    * Pozostaw **format serializacji zdarzeń** jako **JSON**.  
-   * Pozostaw **pola Encoding** równa **UTF-8**.  
-   * Pozostaw **typ kompresji zdarzenia** pola **Brak**.  
+   * Pozostaw **pole kodowania** ustawione na **UTF-8**.  
+   * Pozostaw pole **typu kompresji zdarzenia** ustawione na **Brak**.  
    * Wybierz ikonę **Zapisz**.
 
-5. Przejdź z powrotem do strony zadania usługi stream analytics, a następnie wybierz pozycję **dane wyjściowe**.  
+5. Przejdź z powrotem do strony zadania analizy strumienia i wybierz pozycję **Dane wyjściowe**.  
 
-6. Wybierz pozycję **+ Dodaj**. Następnie wybierz pozycję **usługi Power BI** z menu rozwijanego.  
+6. Wybierz pozycję **+ Dodaj**. Następnie wybierz pozycję **Power BI** z menu rozwijanego.  
 
-7. Aby utworzyć nowe dane wyjściowe usługi Power BI można wizualizować średnią cenę, wykonaj następujące czynności:
+7. Aby utworzyć nowe dane wyjściowe usługi Power BI w celu wizualizacji średniej ceny, wykonaj następujące czynności:
 
-   * W **alias wyjściowy** wprowadź **averagePriceOutput**.  
-   * Pozostaw **obszaru roboczego grupy** pola **Autoryzuj połączenie, aby załadować obszarów roboczych**.  
-   * W **Nazwa zestawu danych** wprowadź **averagePrice**.  
-   * W **nazwy tabeli** wprowadź **averagePrice**.  
-   * Wybierz **Autoryzuj** przycisk, a następnie postępuj zgodnie z instrukcjami, aby autoryzować połączenie do usługi Power BI.  
+   * W polu **Alias wyjście** wprowadź **średniąCenę Naprzejazd**.  
+   * Pozostaw pole **Grupuj obszar roboczy** ustawiony na **Autoryzuj połączenie, aby załadować obszary robocze**.  
+   * W polu **Nazwa zestawu danych** wprowadź **średniącena .**  
+   * W polu **Nazwa tabeli** wprowadź **średniącenastawę**.  
+   * Wybierz przycisk **Autoryzuj,** a następnie postępuj zgodnie z instrukcjami, aby autoryzować połączenie z usługą Power BI.  
    * Wybierz ikonę **Zapisz**.  
 
-8. Następnie wróć do **streamjob1** i wybierz **Edytuj zapytanie**.
+8. Następnie wróć do **streamjob1** i wybierz pozycję **Edytuj kwerendę**.
 
    ![Edytuj zapytanie](./media/changefeed-ecommerce-solution/edit-query.png)
  
-9. Wklej poniższe zapytanie w oknie zapytania. **Średnia cena** zapytanie oblicza średnią cenę wszystkie elementy, które są wyświetlane przez użytkowników, średnia cena wszystkie elementy, które są dodawane do użytkowników, koszyki i średnia cena wszystkie elementy, które zostały nabyte przez użytkowników. Ta metryka może pomóc firmom handlu elektronicznego, zdecyduj, jakie ceny na sprzedaż elementów w i co spisu o wartości inwestycji w. Na przykład jeśli średnia cena elementy wyświetlane jest znacznie wyższa niż średnia cena zakupu elementów, firma może wybrać do dodawania elementów mniej kosztowne do jego magazynu.
+9. Wklej następującą kwerendę do okna kwerendy. Zapytanie **ŚREDNIA CENA** oblicza średnią cenę wszystkich towarów, które są wyświetlane przez użytkowników, średnią cenę wszystkich towarów, które są dodawane do koszyków użytkowników, a średnia cena wszystkich towarów, które są kupowane przez użytkowników. Ten wskaźnik może pomóc firmom handlu elektronicznego w podjęciu decyzji, po jakich cenach sprzedawać przedmioty i w jakie zapasy inwestować. Na przykład jeśli średnia cena oglądanych towarów jest znacznie wyższa niż średnia cena zakupionych towarów, firma może zdecydować się na dodanie tańszych towarów do swoich zapasów.
 
    ```sql
    /*AVERAGE PRICE*/      
@@ -232,33 +232,33 @@ Usługa Azure Stream Analytics jest w pełni zarządzana usługa w chmurze do pr
     FROM input  
     GROUP BY Action, TumblingWindow(second,5) 
    ```
-10. Następnie wybierz pozycję **Zapisz** w lewym górnym rogu.  
+10. Następnie wybierz **pozycję Zapisz** w lewym górnym rogu.  
 
-11. Teraz wróć do **streamjob1** i wybierz **Start** znajdujący się u góry strony. Usługa Azure Stream Analytics może potrwać kilka minut, aby uruchomić, ale ostatecznie zobaczysz go zmienić z "Uruchamianie" na "Uruchomiona".
+11. Teraz wróć do **streamjob1** i wybierz przycisk **Start** u góry strony. Azure Stream Analytics może potrwać kilka minut, aby uruchomić, ale po pewnym czasie zobaczysz, że zmieni się z "Uruchamianie" na "Uruchamianie".
 
 ## <a name="connect-to-power-bi"></a>Łączenie z usługą Power BI
 
-Usługa Power BI to pakiet narzędzi do analizy biznesowej do analizowania danych i udostępniania szczegółowych informacji. To doskonałe przykładem sposobu strategicznie wizualizować analizowanych danych.
+Power BI to pakiet narzędzi do analityki biznesowej, który pozwala analizować dane i dzielić się szczegółowymi informacjami. Jest to świetny przykład na to, jak można strategicznie wizualizować analizowane dane.
 
-1. Zaloguj się do usługi Power BI i przejdź do **Mój obszar roboczy** , otwierając menu po lewej stronie strony.  
+1. Zaloguj się do usługi Power BI i przejdź do **obszaru roboczego,** otwierając menu po lewej stronie.  
 
-2. Wybierz **+ Utwórz** w prawym górnym rogu, a następnie wybierz **pulpit nawigacyjny** tworzenia pulpitu nawigacyjnego.  
+2. Wybierz **pozycję + Utwórz** w prawym górnym rogu, a następnie wybierz pozycję **Pulpit nawigacyjny,** aby utworzyć pulpit nawigacyjny.  
 
-3. Wybierz **+ Dodaj Kafelek** w prawym górnym rogu.  
+3. Wybierz **+ Dodaj kafelek** w prawym górnym rogu.  
 
-4. Wybierz **niestandardowe dane przesyłane strumieniowo**, a następnie wybierz **dalej** przycisku.  
+4. Wybierz **pozycję Niestandardowe dane przesyłania strumieniowego**, a następnie wybierz przycisk **Dalej.**  
  
-5. Wybierz **averagePrice** z **YOUR zestawów danych**, a następnie wybierz **dalej**.  
+5. Wybierz **średniącenastawę** z **zestawów danych,** a następnie wybierz **pozycję Dalej**.  
 
-6. W **typ wizualizacji** wybierz opcję **wykres słupkowy grupowany** z menu rozwijanego. W obszarze **osi**, Dodaj akcję. Pomiń **legendy** bez dodawania niczego. Następnie w następnej sekcji o nazwie **wartość**Dodaj **średnią**. Wybierz pozycję **dalej**, a następnie tytuł wykresu i wybierz pozycję **Zastosuj**. Powinien zostać wyświetlony nowy wykres na pulpicie nawigacyjnym!  
+6. W polu **Typ wizualizacji** wybierz z menu rozwijanego pozycję **Wykres słupkowy klastrowany.** W **obszarze Oś**dodaj akcję. Pomiń **legendę** bez dodawania czegokolwiek. Następnie w następnej sekcji o nazwie **Wartość**dodaj **avg**. Wybierz **pozycję Dalej**, a następnie tytuł wykresu i wybierz pozycję **Zastosuj**. Powinieneś zobaczyć nowy wykres na pulpicie nawigacyjnym!  
 
-7. Teraz, jeśli chcesz zwizualizować więcej metryk, możesz przejść wstecz do **streamjob1** i Utwórz trzy więcej danych wyjściowych z następującymi polami.
+7. Teraz, jeśli chcesz wizualizować więcej metryk, możesz wrócić do **streamjob1** i utworzyć trzy kolejne dane wyjściowe z następującymi polami.
 
-   a. **Alias wyjściowy:** incomingRevenueOutput, nazwa zestawu danych: incomingRevenue, nazwa tabeli: incomingRevenue  
-   b. **Alias wyjściowy:** top5Output, nazwa zestawu danych: top5, nazwa tabeli: top5  
-   d. **Alias wyjściowy:** uniqueVisitorCountOutput, nazwa zestawu danych: uniqueVisitorCount, nazwa tabeli: uniqueVisitorCount
+   a. **Alias wyjściowy:** incomingRevenueOutput, Nazwa zestawu danych: incomingRevenue, Nazwa tabeli: incomingRevenue  
+   b. **Alias wyjściowy:** top5Output, Nazwa zestawu danych: top5, Nazwa tabeli: top5  
+   d. **Alias wyjściowy:** uniqueVisitorCountOutput, Nazwa zestawu danych: uniqueVisitorCount, Nazwa tabeli: uniqueVisitorCount
 
-   Następnie wybierz pozycję **Edytuj zapytanie** i wklej następujące zapytania **powyżej** ten, który już powstała z jednego.
+   Następnie wybierz **pozycję Edytuj kwerendę** i wklej następujące zapytania **nad** tym, który już napisałeś.
 
    ```sql
     /*TOP 5*/
@@ -300,52 +300,52 @@ Usługa Power BI to pakiet narzędzi do analizy biznesowej do analizowania danyc
     GROUP BY TumblingWindow(second, 5)
    ```
    
-   Zapytanie 5 PIERWSZYCH oblicza 5 pierwszych elementów, uporządkowanych według liczby, które zostały zakupione. Ta metryka może pomóc firmom handlu elektronicznego, ocenić elementy, które są najbardziej popularne i może mieć wpływ na reklamy w firmie, cen i tworzenie spisu decyzji.
+   Zapytanie TOP 5 oblicza 5 pierwszych elementów według liczby zakupionych przedmiotów. Ten wskaźnik może pomóc firmom handlu elektronicznego ocenić, które produkty są najbardziej popularne i może mieć wpływ na decyzje firmy dotyczące reklam, cen i zapasów.
 
-   Zapytanie przychód oblicza przychodów przez zsumowanie ceny wszystkich elementów, które zakupione co minutę. Ta metryka może pomóc firmom handlu elektronicznego, ocenić jej wyniki finansowe i zrozumieć, jakie porach dnia Współtworzenie największe przychody. Może to mieć wpływ na ogólnej strategii firmy, w szczególności marketingowych.
+   Zapytanie PRZYCHODY oblicza przychody, sumując ceny wszystkich towarów zakupionych co minutę. Ta metryka może pomóc firmom handlu elektronicznego ocenić jego wyniki finansowe, a także zrozumieć, o jakich porach dnia przyczyniają się do większości przychodów. Może to mieć wpływ na ogólną strategię firmy, w szczególności marketing.
 
-   Zapytanie unikatowych osób ODWIEDZAJĄCYCH oblicza liczbę unikatowych osób odwiedzających znajdują się w lokacji co 5 sekund, przez wykrycie koszyka unikatowe identyfikatory Ta metryka może pomóc firmom handlu elektronicznego, ocenić ich działania lokacji i ułożeniu dla niego strategii sposób w celu uzyskania większej liczby klientów.
+   Kwerenda UNIQUE VISITORS oblicza, ilu unikalnych użytkowników znajduje się na stronie co 5 sekund, wykrywając unikatowe identyfikatory koszyka. Ten wskaźnik może pomóc firmom handlu elektronicznego ocenić ich aktywność w witrynie i opracować strategię zdobywania większej liczby klientów.
 
-8. Teraz możesz dodać Kafelki także te zestawy danych.
+8. Teraz można również dodawać kafelki dla tych zestawów danych.
 
-   * Dla 5 pierwszych sensowne będzie celu wykres kolumnowy grupowany z elementów jako oś oraz liczbę jako wartość.  
-   * Dla przychodu sensowne będzie celu wykres liniowy z godziną jako osi i sumę cen jako wartość. Okno czasowe do wyświetlenia powinna być największa możliwa do zapewnienia możliwie najwięcej informacji.  
-   * Dla unikatowych osób odwiedzających sensowne będzie celu Wizualizacja w postaci karty przy użyciu liczby unikatowych osób odwiedzających jako wartość.
+   * W przypadku 5 najlepszych warto zrobić wykres kolumnowy grupowany z elementami jako osią i liczbą jako wartością.  
+   * W przypadku przychodów sensowne byłoby zrobienie wykresu liniowego z czasem jako osią i sumą cen jako wartości. Przedział czasu wyświetlania powinien być jak największy, aby dostarczyć jak najwięcej informacji.  
+   * Dla unikalnych użytkowników, byłoby sensu zrobić wizualizację karty z liczbą unikalnych użytkowników jako wartość.
 
-   Jest to, jak wygląda przykładowy pulpit nawigacyjny za pomocą tych wykresów:
+   Oto jak przykładowy pulpit nawigacyjny wygląda z tymi wykresami:
 
    ![wizualizacje](./media/changefeed-ecommerce-solution/visualizations.png)
 
-## <a name="optional-visualize-with-an-e-commerce-site"></a>Opcjonalnie: Wizualizowanie przy użyciu witryny handlu elektronicznego
+## <a name="optional-visualize-with-an-e-commerce-site"></a>Opcjonalnie: Wizualizuj za pomocą witryny e-commerce
 
-Teraz odbywa się w sposób korzystania z nowego narzędzia analizy danych nawiązać połączenia z lokacją rzeczywistych handlu elektronicznego. Aby zbudować witrynę handlu elektronicznego, należy użyć bazy danych usługi Azure Cosmos do przechowywania listy kategorii produktów (kobiety, mężczyźni, Unisex), katalogu produktów i listy najpopularniejszych elementów.
+Będziesz teraz obserwować, jak możesz korzystać z nowego narzędzia do analizy danych, aby połączyć się z prawdziwą witryną e-commerce. Aby utworzyć witrynę handlu elektronicznego, użyj bazy danych usługi Azure Cosmos do przechowywania listy kategorii produktów (damskie, męskie, unisex), katalogu produktów i listy najpopularniejszych elementów.
 
-1. Przejdź z powrotem do [Azure Portal](https://portal.azure.com/), a następnie do **konta Cosmos DB**, aby **Eksplorator danych**.  
+1. Przejdź z powrotem do [portalu Azure,](https://portal.azure.com/)a następnie do **konta usługi Cosmos DB,** a następnie do **Eksploratora danych.**  
 
-   Dodaj dwie kolekcje w obszarze **changefeedlabdatabase** - **produktów** i **kategorie** z pojemnością magazynu stałych.
+   Dodaj dwie kolekcje w obszarze**produktów** i **kategorii** **changefeedlabdatabase** - ze stałą pojemnością magazynową.
 
-   Dodaj inną kolekcję w węźle **changefeedlabdatabase** o nazwie **topItems** i **/Item** jako klucza partycji.
+   Dodaj inną kolekcję w obszarze **changefeedlabdatabase** o nazwie **topItems** i **/Item** jako klucz partycji.
 
-2. Wybierz **topItems** kolekcji, a następnie w obszarze **skalowanie i ustawienia** ustaw **czas wygaśnięcia** jako **30 sekund** tak topItems tej aktualizacji co 30 sekund.
+2. Wybierz **kolekcję topItems,** a następnie w obszarze **Skala i Ustawienia** ustaw **czas na żywo** na **30 sekund,** aby aktualizacje topItems co 30 sekund.
 
    ![Czas wygaśnięcia](./media/changefeed-ecommerce-solution/time-to-live.png)
 
-3. Aby można było wypełnić **topItems** kolekcji z najczęściej zakupione elementy, przejdź z powrotem do **streamjob1** i Dodaj nowy **dane wyjściowe**. Wybierz **usługi Cosmos DB**.
+3. Aby wypełnić kolekcję **topItems** najczęściej kupowanymi przedmiotami, przejdź z powrotem do **streamjob1** i dodaj nowe **dane wyjściowe.** Wybierz **Cosmos DB**.
 
-4. Wypełnij wymagane pola, jak pokazano poniżej.
+4. Wypełnij wymagane pola, jak na zdjęciu poniżej.
 
-   ![Dane wyjściowe cosmos](./media/changefeed-ecommerce-solution/cosmos-output.png)
+   ![Wyjście cosmosu](./media/changefeed-ecommerce-solution/cosmos-output.png)
  
-5. Opcjonalne zapytanie 5 PIERWSZYCH został dodany w poprzedniej części laboratorium, należy przejść do części 5a. W przeciwnym razie przejdź do części 5b.
+5. Jeśli dodano opcjonalne zapytanie TOP 5 w poprzedniej części laboratorium, przejdź do części 5a. Jeśli nie, przejdź do części 5b.
 
-   5a. W **streamjob1**, wybierz opcję **Edytuj zapytanie** i wklej poniższe zapytanie w edytorze zapytań usługi Azure Stream Analytics poniżej zapytania 5 PIERWSZYCH, ale powyżej pozostałej części zapytania.
+   5a. W **streamjob1**wybierz **pozycję Edytuj kwerendę** i wklej następującą kwerendę w edytorze zapytań usługi Azure Stream Analytics poniżej kwerendy TOP 5, ale powyżej pozostałych zapytań.
 
    ```sql
    SELECT arrayvalue.value.item AS Item, arrayvalue.value.price, arrayvalue.value.countEvents
    INTO topItems
    FROM arrayselect
    ```
-   5b. W **streamjob1**, wybierz opcję **Edytuj zapytanie** i wklej poniższe zapytanie w edytorze zapytań usługi Azure Stream Analytics przede wszystkim inne zapytania.
+   5b. W **streamjob1**wybierz **pozycję Edytuj kwerendę** i wklej następującą kwerendę w edytorze zapytań usługi Azure Stream Analytics ponad wszystkie inne zapytania.
 
    ```sql
    /*TOP 5*/
@@ -374,24 +374,24 @@ Teraz odbywa się w sposób korzystania z nowego narzędzia analizy danych nawi�
    FROM arrayselect
    ```
 
-6. Otwórz **EcommerceWebApp.sln** i przejdź do **Web.config** w pliku **Eksploratora rozwiązań**.  
+6. Otwórz **witrynę EcommerceWebApp.sln** i przejdź do pliku **Web.config** w **Eksploratorze rozwiązań**.  
 
-7. W ramach `<appSettings>` zablokować, Dodaj **URI** i **klucza podstawowego** zapisany wcześniej gdzie jest wyświetlany komunikat **URI w tym miejscu** i **tutaj klucz podstawowy**. Następnie dodaj w swojej **Nazwa bazy danych** i **Nazwa kolekcji** wskazane. (Te nazwy powinny być **changefeedlabdatabase** i **changefeedlabcollection** , chyba że zdecydujesz się na nazwę należy do Ciebie inaczej.)
+7. W `<appSettings>` bloku dodaj identyfikator **URI** i **klucz podstawowy** zapisany wcześniej, w którym znajduje się **identyfikator URI** w tym miejscu i klucz podstawowy w **tym miejscu.** Następnie dodaj **nazwę bazy danych** i **nazwę kolekcji,** jak wskazano. (Te nazwy powinny być **changefeedlabdatabase** i **changefeedlabcollection,** chyba że wybrano nazwę swojego inaczej.)
 
-   Wypełnij swoje **Nazwa kolekcji produktów**, **Nazwa kolekcji kategorie**, i **Nazwa kolekcji pierwszych elementów** wskazane. (Te nazwy powinny być **produktów, kategorie i topItems** , chyba że zdecydujesz się na nazwę należy do Ciebie inaczej.)  
+   Wpisz **nazwę kolekcji produktów,** **nazwę kolekcji kategorii**i nazwę **kolekcji najpopularniejszych elementów,** jak wskazano. (Te nazwy powinny być **produkty, kategorie i topItems** chyba że zdecydujesz się nazwać swoje inaczej.)  
 
-8. Przejdź do, a następnie otwórz **folder wyewidencjonowania** w ramach **EcommerceWebApp.sln.** Następnie otwórz **Web.config** plik w tym folderze.  
+8. Przejdź do **folderu Realizacji transakcji** i otwórz go w witrynie **E-commerceWebApp.sln.** Następnie otwórz plik **Web.config** w tym folderze.  
 
-9. W ramach `<appSettings>` zablokować, Dodaj **URI** i **klucz podstawowy** zapisaną wcześniej w przypadku, gdy wskazane. Następnie dodaj w swojej **Nazwa bazy danych** i **Nazwa kolekcji** wskazane. (Te nazwy powinny być **changefeedlabdatabase** i **changefeedlabcollection** , chyba że zdecydujesz się na nazwę należy do Ciebie inaczej.)  
+9. W `<appSettings>` bloku dodaj identyfikator **URI** i **klucz podstawowy** zapisany wcześniej, jeśli jest to wskazane. Następnie dodaj **nazwę bazy danych** i **nazwę kolekcji,** jak wskazano. (Te nazwy powinny być **changefeedlabdatabase** i **changefeedlabcollection,** chyba że wybrano nazwę swojego inaczej.)  
 
-10. Naciśnij klawisz **Start** w górnej części strony Aby uruchomić program.  
+10. Naciśnij **przycisk Start** u góry strony, aby uruchomić program.  
 
-11. Można teraz odtworzyć, w witrynie handlu elektronicznego. Podczas wyświetlania elementu, dodać element do koszyka, zmień liczbę elementów w koszyku lub zakupu element te zdarzenia zostaną przekazane za pośrednictwem usługi Cosmos DB zmiany źródła danych do Centrum zdarzeń, ASA i następnie usługa Power BI. Zaleca się kontynuowania działania DataGenerator do generowania danych ruchu znaczące sieci web i zapewniają realistyczne zestaw produktów"gorąca" w witrynie handlu elektronicznego.
+11. Teraz możesz bawić się na stronie e-commerce. Podczas wyświetlania elementu, dodawania elementu do koszyka, zmiany ilości towaru w koszyku lub zakupu towaru zdarzenia te będą przekazywane za pośrednictwem kanału informacyjnego usługi Cosmos DB do centrum zdarzeń, asa, a następnie usługi Power BI. Zalecamy dalsze uruchamianie DataGenerator w celu wygenerowania znaczących danych o ruchu internetowym i zapewnienia realistycznego zestawu "Gorących produktów" na stronie e-commerce.
 
-## <a name="delete-the-resources"></a>Usuń zasoby
+## <a name="delete-the-resources"></a>Usuwanie zasobów
 
-Aby usunąć zasoby utworzone w ramach tego laboratorium, przejdź do grupy zasobów na [Azure Portal](https://portal.azure.com/), a następnie wybierz pozycję **Usuń grupę zasobów** z menu w górnej części strony i postępuj zgodnie z podanymi instrukcjami.
+Aby usunąć zasoby utworzone w tym laboratorium, przejdź do grupy zasobów w [witrynie Azure Portal](https://portal.azure.com/), a następnie wybierz **polecenie Usuń grupę zasobów** z menu u góry strony i postępuj zgodnie z podanymi instrukcjami.
 
 ## <a name="next-steps"></a>Następne kroki 
   
-* Aby dowiedzieć się więcej na temat zmian, zobacz [pracy ze zmianą Obsługa kanału informacyjnego w usłudze Azure Cosmos DB](change-feed.md) 
+* Aby dowiedzieć się więcej o pliku danych o [zmianach, zobacz praca z obsługą kanału informacyjnego zmian w usłudze Azure Cosmos DB](change-feed.md) 

@@ -1,34 +1,34 @@
 ---
-title: Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin. iOS
-description: Dowiedz się, jak za pomocą Azure App Service wysyłać powiadomienia wypychane do aplikacji platformy Xamarin. iOS.
+title: Dodawanie powiadomień wypychanych do aplikacji Xamarin.iOS
+description: Dowiedz się, jak używać usługi Azure App Service do wysyłania powiadomień wypychanych do aplikacji Xamarin.iOS.
 ms.assetid: 2921214a-49f8-45e1-a306-a85ce21defca
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: f9c70491d06f61931ebabda859ff3a86ed035b44
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249284"
 ---
-# <a name="add-push-notifications-to-your-xamarinios-app"></a>Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin. iOS
+# <a name="add-push-notifications-to-your-xamarinios-app"></a>Dodawanie powiadomień wypychanych do aplikacji Xamarin.iOS
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Omówienie
 
-W tym samouczku dodasz powiadomienia wypychane do projektu [szybkiego startu Xamarin. iOS](app-service-mobile-xamarin-ios-get-started.md) , aby Powiadomienie wypychane było wysyłane do urządzenia za każdym razem, gdy rekord zostanie wstawiony.
+W tym samouczku dodasz powiadomienia wypychane do projektu [szybkiego startu platformy Xamarin.iOS,](app-service-mobile-xamarin-ios-get-started.md) aby powiadomienie wypychane było wysyłane do urządzenia za każdym razem, gdy zostanie wstawiony rekord.
 
-Jeśli nie używasz pobranego projektu szybkiego startu serwera, będzie potrzebny pakiet rozszerzenia powiadomień wypychanych. Aby uzyskać więcej informacji, zobacz temat [współpraca z zestawem SDK serwera zaplecza platformy .NET dla platformy Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) .
+Jeśli nie korzystasz z pobranego projektu serwera szybkiego startu, potrzebny będzie pakiet rozszerzenia powiadomień wypychanych. Aby uzyskać więcej informacji, zobacz [Praca z zestawem SDK serwera wewnętrznej bazy danych .NET dla aplikacji mobilnych platformy Azure.](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Ukończ samouczek [szybkiego startu platformy Xamarin. iOS](app-service-mobile-xamarin-ios-get-started.md) .
+* Ukończ samouczek [szybki start platformy Xamarin.iOS.](app-service-mobile-xamarin-ios-get-started.md)
 * Fizyczne urządzenie z systemem iOS. Powiadomienia wypychane nie są obsługiwane przez symulator systemu iOS.
 
-## <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Rejestrowanie aplikacji do powiadomień wypychanych w portalu dla deweloperów firmy Apple
+## <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Zarejestruj aplikację do otrzymywani powiadomień push w portalu deweloperskim firmy Apple
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
@@ -40,13 +40,13 @@ Jeśli nie używasz pobranego projektu szybkiego startu serwera, będzie potrzeb
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="configure-your-xamarinios-project"></a>Konfigurowanie projektu Xamarin. iOS
+## <a name="configure-your-xamarinios-project"></a>Konfigurowanie projektu platformy Xamarin.iOS
 
 [!INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
 ## <a name="add-push-notifications-to-your-app"></a>Dodawanie powiadomień wypychanych do aplikacji
 
-1. W **QSTodoService**, Dodaj następującą właściwość, aby **AppDelegate** mógł uzyskać klienta mobilnego:
+1. W **QSTodoService**dodaj następującą właściwość, aby **aplikacja AppDelegate** mogła nabyć klienta mobilnego:
 
     ```csharp
     public MobileServiceClient GetClient {
@@ -61,14 +61,14 @@ Jeśli nie używasz pobranego projektu szybkiego startu serwera, będzie potrzeb
     }
     ```
 
-2. Dodaj następującą instrukcję `using` na początku pliku **AppDelegate.cs** .
+2. Dodaj następującą `using` instrukcję do górnej części pliku **AppDelegate.cs.**
 
     ```csharp
     using Microsoft.WindowsAzure.MobileServices;
     using Newtonsoft.Json.Linq;
     ```
 
-3. W **AppDelegate**Zastąp zdarzenie **FinishedLaunching** :
+3. W **aplikacji AppDelegate**, zastąpić **FinishedLaunching** zdarzenia:
 
    ```csharp
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
@@ -87,9 +87,9 @@ Jeśli nie używasz pobranego projektu szybkiego startu serwera, będzie potrzeb
     }
     ```
 
-4. W tym samym pliku Zastąp zdarzenie `RegisteredForRemoteNotifications`. W tym kodzie rejestrujesz dla prostego powiadomienia szablonu, który zostanie wysłany na wszystkich obsługiwanych platformach przez serwer.
+4. W tym samym pliku zastąp `RegisteredForRemoteNotifications` zdarzenie. W tym kodzie rejestrujesz się w celu uzyskania prostego szablonu powiadomienia, które zostanie wysłane przez serwer na wszystkich obsługiwanych platformach.
 
-    Aby uzyskać więcej informacji na temat szablonów mających Notification Hubs, zobacz [templates](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
+    Aby uzyskać więcej informacji na temat szablonów za pomocą Centrów powiadomień, zobacz [Szablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
     ```csharp
     public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
@@ -110,7 +110,7 @@ Jeśli nie używasz pobranego projektu szybkiego startu serwera, będzie potrzeb
     }
     ```
 
-5. Następnie zastąp zdarzenie **DidReceivedRemoteNotification** :
+5. Następnie należy zastąpić **zdarzenie DidReceivedRemoteNotification:**
 
    ```csharp
     public override void DidReceiveRemoteNotification (UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
@@ -130,17 +130,17 @@ Jeśli nie używasz pobranego projektu szybkiego startu serwera, będzie potrzeb
     }
     ```
 
-Twoja aplikacja została zaktualizowana w celu obsługi powiadomień wypychanych.
+Aplikacja jest teraz aktualizowana w celu obsługi powiadomień wypychanych.
 
-## <a name="test"></a>Testowanie powiadomień wypychanych w aplikacji
+## <a name="test-push-notifications-in-your-app"></a><a name="test"></a>Testowanie powiadomień wypychanych w aplikacji
 
-1. Naciśnij przycisk **Run (Uruchom** ), aby skompilować projekt i uruchomić aplikację na urządzeniu obsługującym system iOS, a następnie kliknij przycisk **OK** , aby zaakceptować powiadomienia wypychane.
+1. Naciśnij przycisk **Uruchom,** aby utworzyć projekt i uruchomić aplikację na urządzeniu obsługującym iOS, a następnie kliknij przycisk **OK,** aby zaakceptować powiadomienia wypychane.
 
    > [!NOTE]
-   > Musisz jawnie zaakceptować powiadomienia wypychane z aplikacji. To żądanie występuje tylko podczas pierwszego uruchomienia aplikacji.
+   > Musisz jawnie akceptować powiadomienia wypychane z aplikacji. To żądanie występuje tylko przy pierwszym uruchomieniu aplikacji.
 
-2. W aplikacji wpisz zadanie, a następnie kliknij ikonę plus ( **+** ).
-3. Sprawdź, czy odebrano powiadomienie, a następnie kliknij przycisk **OK** , aby odrzucić powiadomienie.
-4. Powtórz krok 2 i natychmiast Zamknij aplikację, a następnie sprawdź, czy jest wyświetlana powiadomienie.
+2. W aplikacji wpisz zadanie, a następnie kliknij**+** ikonę plus ( ).
+3. Sprawdź, czy powiadomienie zostało odebrane, a następnie kliknij przycisk **OK,** aby odrzucić powiadomienie.
+4. Powtórz krok 2 i natychmiast zamknij aplikację, a następnie sprawdź, czy jest wyświetlane powiadomienie.
 
-Ten samouczek został pomyślnie ukończony.
+Pomyślnie ukończono ten samouczek.

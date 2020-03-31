@@ -1,6 +1,6 @@
 ---
-title: Dodaj diagnostykę & monitorowania do maszyny wirtualnej platformy Azure
-description: Użyj szablonu Azure Resource Manager, aby utworzyć nową maszynę wirtualną z systemem Windows przy użyciu rozszerzenia usługi Azure Diagnostics.
+title: Dodawanie diagnostyki & monitorowania do maszyny wirtualnej platformy Azure
+description: Użyj szablonu Usługi Azure Resource Manager, aby utworzyć nową maszynę wirtualną systemu Windows z rozszerzeniem diagnostyki platformy Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: sbtron
@@ -16,19 +16,19 @@ ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2490c3de60e0deac6a1a4ddc5abc95cb46e240b2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073838"
 ---
-# <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Używanie monitorowania i diagnostyki z MASZYNami wirtualnymi z systemem Windows i szablonami Azure Resource Manager
-Rozszerzenie Diagnostyka Azure zapewnia możliwości monitorowania i diagnostyki na maszynie wirtualnej platformy Azure opartej na systemie Windows. Te możliwości można włączyć na maszynie wirtualnej, dołączając rozszerzenie jako część szablonu Azure Resource Manager. Zobacz [Tworzenie szablonów Azure Resource Manager z rozszerzeniami maszyn wirtualnych](../windows/template-description.md#extensions) , aby uzyskać więcej informacji na temat dołączania dowolnego rozszerzenia w ramach szablonu maszyny wirtualnej. W tym artykule opisano sposób dodawania rozszerzenia Diagnostyka Azure do szablonu maszyny wirtualnej z systemem Windows.  
+# <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Używanie monitorowania i diagnostyki za pomocą szablonów maszyny Wirtualnej systemu Windows i usługi Azure Resource Manager
+Rozszerzenie diagnostyki platformy Azure zapewnia funkcje monitorowania i diagnostyki na maszynie wirtualnej platformy Azure opartej na systemie Windows. Można włączyć te możliwości na maszynie wirtualnej, dołączając rozszerzenie jako część szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji na temat dołączania dowolnego rozszerzenia jako części szablonu maszyny wirtualnej, zobacz [Tworzenie szablonów usługi Azure Resource Manager z rozszerzeniami maszyn wirtualnych.](../windows/template-description.md#extensions) W tym artykule opisano, jak można dodać rozszerzenie diagnostyki platformy Azure do szablonu maszyny wirtualnej systemu Windows.  
 
-## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>Dodawanie rozszerzenia Diagnostyka Azure do definicji zasobu maszyny wirtualnej
-Aby włączyć rozszerzenie diagnostyki na maszynie wirtualnej z systemem Windows, należy dodać rozszerzenie jako zasób maszyny wirtualnej w szablonie Menedżer zasobów.
+## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>Dodawanie rozszerzenia diagnostyki platformy Azure do definicji zasobu maszyny Wirtualnej
+Aby włączyć rozszerzenie diagnostyki na maszynie wirtualnej systemu Windows, należy dodać rozszerzenie jako zasób maszyny Wirtualnej w szablonie Menedżera zasobów.
 
-W przypadku prostej maszyny wirtualnej opartej na Menedżer zasobów Dodaj konfigurację rozszerzenia do tablicy *zasobów* maszyny wirtualnej: 
+W przypadku prostej maszyny wirtualnej opartej na Menedżerze zasobów dodaj konfigurację rozszerzenia do *tablicy zasobów* dla maszyny wirtualnej: 
 
 ```json
 "resources": [
@@ -62,29 +62,29 @@ W przypadku prostej maszyny wirtualnej opartej na Menedżer zasobów Dodaj konfi
 ]
 ```
 
-Inną wspólną Konwencją jest dodanie konfiguracji rozszerzenia w węźle zasobów głównych szablonu zamiast definiowania go w węźle zasoby maszyny wirtualnej. W tym podejściu należy jawnie określić hierarchiczną relację między rozszerzeniem i maszyną wirtualną z wartościami *nazw* i *typów* . Na przykład: 
+Inną powszechną konwencją jest dodanie konfiguracji rozszerzenia w węźle zasobów głównych szablonu zamiast definiowania go w węźle zasobów maszyny wirtualnej. Dzięki takiemu podejściu należy jawnie określić hierarchiczną relację między rozszerzeniem a maszyną wirtualną z wartościami *nazwy* i *typu.* Przykład: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
 "type": "Microsoft.Compute/virtualMachines/extensions",
 ```
 
-Rozszerzenie jest zawsze skojarzone z maszyną wirtualną, można je bezpośrednio zdefiniować w węźle zasobów maszyny wirtualnej lub zdefiniować na poziomie podstawowym, a następnie użyć hierarchicznej konwencji nazewnictwa, aby skojarzyć ją z maszyną wirtualną.
+Rozszerzenie jest zawsze skojarzone z maszyną wirtualną, można bezpośrednio zdefiniować go w węźle zasobu maszyny wirtualnej bezpośrednio lub zdefiniować go na poziomie podstawowym i użyć hierarchicznej konwencji nazewnictwa, aby skojarzyć ją z maszyną wirtualną.
 
-W przypadku Virtual Machine Scale Sets konfiguracja rozszerzeń jest określona we właściwości *ExtensionProfile* *VirtualMachineProfile*.
+Dla virtual machine scale Sets konfiguracja rozszerzeń jest określona w *extensionProfile* właściwości *VirtualMachineProfile*.
 
-Właściwość *wydawcy* z wartością **Microsoft. Azure. Diagnostics** oraz Właściwość *Type* z wartością **IaaSDiagnostics** jednoznacznie identyfikuje rozszerzenie Diagnostyka Azure.
+Właściwość *wydawcy* o wartości **Microsoft.Azure.Diagnostics** i właściwość *typu* o wartości **IaaSDiagnostics** jednoznacznie identyfikuje rozszerzenie diagnostyki platformy Azure.
 
-Wartość właściwości *Nazwa* może służyć do odwoływania się do rozszerzenia w grupie zasobów. Ustawienie go dla usługi **Microsoft. Insights. VMDiagnosticsSettings** umożliwia łatwą identyfikację przy użyciu Azure Portal, dzięki czemu wykresy monitorowania są prawidłowo wyświetlane w Azure Portal.
+Wartość właściwości *name* może służyć do odwoływania się do rozszerzenia w grupie zasobów. Ustawienie go specjalnie na **Microsoft.Insights.VMDiagnosticsSettings** umożliwia łatwo zidentyfikować przez portal Azure, zapewniając, że wykresy monitorowania są wyświetlane poprawnie w witrynie Azure portal.
 
-*TypeHandlerVersion* określa wersję rozszerzenia, którego chcesz użyć. Ustawienie wersji pomocniczej *włączoną flagą autoupgrademinorversion* na **true** gwarantuje, że otrzymasz najnowszą wersję pomocniczą rozszerzenia, które jest dostępne. Zdecydowanie zaleca się, aby zawsze ustawić *włączoną flagą autoupgrademinorversion* na **wartość true** , aby zawsze używać najnowszego rozszerzenia diagnostyki ze wszystkimi nowymi funkcjami i poprawkami błędów. 
+*TypeHandlerVersion* określa wersję rozszerzenia, którego chcesz użyć. Ustawienie *autoUpgradeMinorVersion* wersji pomocniczej do **true** zapewnia, że masz najnowszą wersję pomocniczą rozszerzenia, które jest dostępne. Zdecydowanie zaleca się, aby zawsze ustawić *autoUpgradeMinorVersion* zawsze **być prawdziwe,** dzięki czemu zawsze można uzyskać do korzystania z najnowszych dostępnych rozszerzenie diagnostyki ze wszystkimi nowymi funkcjami i poprawki błędów. 
 
-Element *Settings* zawiera właściwości konfiguracji dla rozszerzenia, które można ustawić i odczytywać z rozszerzenia (czasami nazywanego konfiguracją publiczną). Właściwość *xmlcfg* zawiera konfigurację opartą na języku XML dla dzienników diagnostycznych, liczników wydajności itp., które są zbierane przez agenta diagnostyki. Aby uzyskać więcej informacji na temat schematu XML, zobacz [Schemat konfiguracji diagnostyki](https://msdn.microsoft.com/library/azure/dn782207.aspx) . Typowym celem jest przechowywanie rzeczywistej konfiguracji XML jako zmiennej w szablonie Azure Resource Manager, a następnie łączenie i kodowanie Base64 w celu ustawienia wartości dla *xmlcfg*. Zapoznaj się z sekcją dotyczącą [zmiennych konfiguracyjnych diagnostyki](#diagnostics-configuration-variables) , aby dowiedzieć się więcej o sposobie przechowywania kodu XML w zmiennych. Właściwość *storageAccount* określa nazwę konta magazynu, do którego są przesyłane dane diagnostyczne. 
+Element *ustawień* zawiera właściwości konfiguracji dla rozszerzenia, które można ustawić i odczytać z rozszerzenia (czasami nazywane konfiguracją publiczną). Właściwość *xmlcfg* zawiera konfigurację opartą na xml dla dzienników diagnostycznych, liczników wydajności itp., które są zbierane przez agenta diagnostycznego. Zobacz [Schemat konfiguracji diagnostyki, aby](https://msdn.microsoft.com/library/azure/dn782207.aspx) uzyskać więcej informacji na temat samego schematu xml. Powszechną praktyką jest przechowywanie rzeczywistej konfiguracji xml jako zmiennej w szablonie usługi Azure Resource Manager, a następnie łączenie i kodowanie base64 w celu ustawienia wartości *xmlcfg*. Zobacz sekcję [dotyczącą zmiennych konfiguracji diagnostyki,](#diagnostics-configuration-variables) aby dowiedzieć się więcej o sposobie przechowywania xml w zmiennych. *Właściwość storageAccount* określa nazwę konta magazynu, na które są przesyłane dane diagnostyczne. 
 
-Można ustawić właściwości w *protectedSettings* (czasami określane jako Konfiguracja prywatna), ale nie można ich odczytywać po ustawieniu. Charakter tylko do zapisu *protectedSettings* ułatwia przechowywanie wpisów tajnych, takich jak klucz konta magazynu, w którym zapisywane są dane diagnostyczne.    
+Właściwości w *protectedSettings* (czasami określane jako konfiguracja prywatna) można ustawić, ale nie można odczytać z powrotem po ustawieniu. Charakter tylko do zapisu *protectedSettings* sprawia, że przydatne do przechowywania wpisów tajnych, takich jak klucz konta magazynu, gdzie są zapisywane dane diagnostyczne.    
 
 ## <a name="specifying-diagnostics-storage-account-as-parameters"></a>Określanie konta magazynu diagnostyki jako parametrów
-W powyższym fragmencie kodu JSON rozszerzenia diagnostyki przyjęto założenie, że dwa parametry *existingdiagnosticsStorageAccountName* i *existingdiagnosticsStorageResourceGroup* określają konto magazynu diagnostyki, w którym są przechowywane dane diagnostyczne. Określenie konta magazynu diagnostyki jako parametru ułatwia zmianę konta magazynu diagnostyki w różnych środowiskach, na przykład możesz chcieć użyć innego konta magazynu diagnostyki do testowania i innego dla wdrożenie produkcyjne.  
+Fragment kodu rozszerzenia diagnostyki przyjmuje dwa parametry *existingdiagnosticsStorageAccountName* i *existingdiagnosticsStorageResourceGroup,* aby określić konto magazynu diagnostyki, na którym przechowywane są dane diagnostyczne. Określenie konta magazynu diagnostyki jako parametru ułatwia zmianę konta magazynu diagnostyki w różnych środowiskach, na przykład można użyć innego konta magazynu diagnostyki do testowania i innego dla wdrożenia produkcji.  
 
 ```json
 "existingdiagnosticsStorageAccountName": {
@@ -101,23 +101,23 @@ W powyższym fragmencie kodu JSON rozszerzenia diagnostyki przyjęto założenie
 }
 ```
 
-Najlepszym rozwiązaniem jest określenie konta magazynu diagnostyki w innej grupie zasobów niż grupa zasobów maszyny wirtualnej. Grupa zasobów może być traktowana jako jednostka wdrożenia z własnym okresem istnienia, dlatego można wdrożyć i ponownie wdrożyć maszynę wirtualną w miarę dokonywania nowych konfiguracji, ale warto kontynuować przechowywanie danych diagnostycznych na tym samym koncie magazynu w ramach Te wdrożenia maszyny wirtualnej. Konto magazynu w innym zasobie umożliwia konto magazynu akceptujące dane z różnych wdrożeń maszyn wirtualnych, co ułatwia rozwiązywanie problemów w różnych wersjach.
+Najlepszym rozwiązaniem jest określenie konta magazynu diagnostyki w innej grupie zasobów niż grupa zasobów dla maszyny wirtualnej. Grupę zasobów można uznać za jednostkę wdrożeniową z własnym okresem istnienia, maszynę wirtualną można wdrożyć i ponownie wdrożyć, gdy zostaną wprowadzone do niej nowe aktualizacje konfiguracji, ale można kontynuować przechowywanie danych diagnostycznych na tym samym koncie magazynu w całej tych wdrożeń maszyn wirtualnych. Posiadanie konta magazynu w innym zasobie umożliwia kontu magazynu akceptowanie danych z różnych wdrożeń maszyn wirtualnych, co ułatwia rozwiązywanie problemów w różnych wersjach.
 
 > [!NOTE]
-> W przypadku tworzenia szablonu maszyny wirtualnej z systemem Windows z poziomu programu Visual Studio domyślne konto magazynu może być ustawione tak, aby korzystało z tego samego konta magazynu, do którego zostanie przekazany wirtualny dysk twardy maszyny wirtualnej. Jest to uproszczenie początkowej konfiguracji maszyny wirtualnej. Aby użyć innego konta magazynu, które można przekazywać jako parametr, należy go przywrócić. 
+> Jeśli utworzysz szablon maszyny wirtualnej systemu Windows z programu Visual Studio, domyślne konto magazynu może być ustawione na użycie tego samego konta magazynu, na którym jest przekazywana maszyna wirtualna VHD. Ma to na celu uproszczenie początkowej konfiguracji maszyny Wirtualnej. Ponownie współczynnik szablonu, aby użyć innego konta magazynu, które mogą być przekazywane jako parametr. 
 > 
 > 
 
 ## <a name="diagnostics-configuration-variables"></a>Zmienne konfiguracji diagnostyki
-Poprzedni fragment kodu JSON rozszerzenia diagnostyki definiuje zmienną *AccountId* , aby uprościć Pobieranie klucza konta magazynu dla magazynu diagnostyki:   
+Poprzedni fragment kodu json rozszerzenia diagnostyki definiuje zmienną *accountid,* aby uprościć uzyskiwanie klucza konta magazynu dla magazynu diagnostycznego:   
 
 ```json
 "accountid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',parameters('existingdiagnosticsStorageResourceGroup'), '/providers/','Microsoft.Storage/storageAccounts/', parameters('existingdiagnosticsStorageAccountName'))]"
 ```
 
-Właściwość *xmlcfg* rozszerzenia diagnostyki jest definiowana przy użyciu wielu zmiennych połączonych ze sobą. Wartości tych zmiennych są w formacie XML, aby podczas ustawiania zmiennych JSON musiały zostać prawidłowo zmienione.
+Właściwość *xmlcfg* dla rozszerzenia diagnostyki jest definiowana przy użyciu wielu zmiennych, które są połączone ze sobą. Wartości tych zmiennych są w formacie xml, więc muszą być poprawnie zmienione podczas ustawiania zmiennych json.
 
-W poniższym przykładzie opisano kod XML konfiguracji diagnostyki, który zbiera standardowe liczniki wydajności na poziomie systemu wraz z niektórymi dziennikami zdarzeń systemu Windows i dzienników infrastruktury diagnostyki. Został on zmieniony i poprawnie sformatowany, aby można było bezpośrednio wkleić konfigurację do sekcji zmiennych szablonu. Zobacz [Schemat konfiguracji diagnostyki](https://msdn.microsoft.com/library/azure/dn782207.aspx) , aby uzyskać bardziej czytelny przykład pliku XML konfiguracji.
+W poniższym przykładzie opisano xml konfiguracji diagnostyki, która zbiera standardowe liczniki wydajności na poziomie systemu wraz z niektórymi dziennikami zdarzeń systemu Windows i dziennikami infrastruktury diagnostycznej. Został on zmieniony i sformatowany poprawnie, dzięki czemu konfiguracja może być bezpośrednio wklejona do sekcji zmiennych szablonu. Zobacz [schemat konfiguracji diagnostyki,](https://msdn.microsoft.com/library/azure/dn782207.aspx) aby uzyskać bardziej czytelny dla człowieka przykład xml konfiguracji.
 
 ```json
 "wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB=\"4096\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration\"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter=\"Error\"/> <WindowsEventLog scheduledTransferPeriod=\"PT1M\" > <DataSource name=\"Application!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"Security!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"System!*[System[(Level = 1 or Level = 2)]]\" /></WindowsEventLog>",
@@ -128,14 +128,14 @@ W poniższym przykładzie opisano kod XML konfiguracji diagnostyki, który zbier
 "wadcfgxend": "\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>"
 ```
 
-Węzeł XML definicji metryk w powyższej konfiguracji jest ważnym elementem konfiguracji, ponieważ definiuje sposób agregowania i przechowywania liczników wydajności zdefiniowanych wcześniej w kodzie XML w węźle *PerformanceCounter* . 
+Węzeł XML definicji metryki w powyższej konfiguracji jest ważnym elementem konfiguracji, ponieważ definiuje sposób agregowania i przechowywania liczników wydajności zdefiniowanych wcześniej w xml w węźle *PerformanceCounter.* 
 
 > [!IMPORTANT]
-> Te metryki umożliwiają monitorowanie wykresów i alertów w Azure Portal.  Węzeł **metryk** z identyfikatorem *ResourceID* i **MetricAggregation** musi być uwzględniony w konfiguracji diagnostyki dla maszyny wirtualnej, jeśli chcesz zobaczyć dane monitorowania maszyny wirtualnej w Azure Portal. 
+> Te metryki napędzają wykresy monitorowania i alerty w witrynie Azure portal.  Węzeł **Metryki** z *resourceID* i **MetricAggregation** musi być uwzględniony w konfiguracji diagnostyki maszyny Wirtualnej, jeśli chcesz zobaczyć dane monitorowania maszyny Wirtualnej w witrynie Azure portal. 
 > 
 > 
 
-W poniższym przykładzie przedstawiono XML dla definicji metryk: 
+W poniższym przykładzie przedstawiono xml dla definicji metryk: 
 
 ```xml
 <Metrics resourceId="/subscriptions/subscription().subscriptionId/resourceGroups/resourceGroup().name/providers/Microsoft.Compute/virtualMachines/vmName">
@@ -144,39 +144,39 @@ W poniższym przykładzie przedstawiono XML dla definicji metryk:
 </Metrics>
 ```
 
-Atrybut *ResourceID* jednoznacznie identyfikuje maszynę wirtualną w subskrypcji. Upewnij się, że korzystasz z funkcji subskrypcja () i Grupa zasobów (), dzięki czemu szablon automatycznie zaktualizuje te wartości na podstawie subskrypcji i grupy zasobu, do których jest wdrażana.
+Atrybut *resourceID* jednoznacznie identyfikuje maszynę wirtualną w ramach subskrypcji. Upewnij się, że używasz funkcji subscription() i resourceGroup(), aby szablon automatycznie aktualizacje tych wartości na podstawie subskrypcji i grupy zasobów, które wdrażane do.
 
-Jeśli tworzysz wiele Virtual Machines w pętli, musisz wypełnić wartość *ResourceID* przy użyciu funkcji funkcji copyindex (), aby prawidłowo odróżnić poszczególne maszyny wirtualne. Wartość *xmlCfg* można zaktualizować, aby obsługiwać ją w następujący sposób:  
+Jeśli tworzysz wiele maszyn wirtualnych w pętli, musisz wypełnić wartość *resourceID* funkcją copyIndex(), aby poprawnie odróżnić każdą pojedynczą maszynę wirtualną. Wartość *xmlCfg* można zaktualizować, aby obsługiwać tę wartość w następujący sposób:  
 
 ```json
 "xmlCfg": "[base64(concat(variables('wadcfgxstart'), variables('wadmetricsresourceid'), concat(parameters('vmNamePrefix'), copyindex()), variables('wadcfgxend')))]", 
 ```
 
-Wartość MetricAggregation *PT1M* i *PT1H* oznacza agregację na minutę i agregację odpowiednio w ciągu godziny.
+Wartość MetricAggregation *PT1M* i *PT1H* oznacza agregację w ciągu minuty i agregację w ciągu godziny, odpowiednio.
 
-## <a name="wadmetrics-tables-in-storage"></a>WADMetrics tabel w magazynie
-Powyższa konfiguracja metryk generuje tabele na koncie magazynu diagnostyki przy użyciu następujących konwencji nazewnictwa:
+## <a name="wadmetrics-tables-in-storage"></a>Tabele WADMetrics w magazynie
+Powyższa konfiguracja metryki generuje tabele na koncie magazynu diagnostyki z następującymi konwencjami nazewnictwa:
 
-* **WADMetrics**: prefiks standardowy dla wszystkich tabel WADMetrics
-* **PT1H** lub **PT1M**: oznacza, że tabela zawiera zagregowane dane przez 1 godzinę lub 1 minutę
-* **P10D**: oznacza, że tabela będzie zawierać dane przez 10 dni od momentu rozpoczęcia zbierania danych przez tabelę
-* **V2S**: ciąg stałej
-* **RRRRMMDD**: Data rozpoczęcia zbierania danych przez tabelę
+* **WADMetrics**: Standardowy prefiks dla wszystkich tabel WADMetrics
+* **PT1H** lub **PT1M**: Oznacza, że tabela zawiera dane zagregowane w ciągu 1 godziny lub 1 minuty
+* **P10D**: Oznacza, że tabela będzie zawierać dane przez 10 dni od momentu rozpoczęcia zbierania danych przez tabelę
+* **V2S**: Stała ciągu
+* **yyyymmdd**: Data rozpoczęcia zbierania danych przez tabelę
 
-Przykład: *WADMetricsPT1HP10DV2S20151108* zawiera dane metryk zagregowane w ciągu godziny przez 10 dni, począwszy od 11-lis-2015    
+Przykład: *WADMetricsPT1HP10DV2S20151108* zawiera dane metryczne zagregowane przez godzinę przez 10 dni, począwszy od 11-nov-2015    
 
 Każda tabela WADMetrics zawiera następujące kolumny:
 
-* **PartitionKey**: klucz partycji jest zbudowany na podstawie wartości *ResourceID* w celu jednoznacznego zidentyfikowania zasobu maszyny wirtualnej. Na przykład: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
-* **RowKey**: Postępuj zgodnie z formatem `<Descending time tick>:<Performance Counter Name>`. Malejące obliczenie cykl czasu to maksymalne cykle czasu minus czas rozpoczęcia okresu agregacji. Na przykład jeśli okres próbny rozpoczęty 10-lis-2015 i 00:00Hrs UTC, obliczenia byłyby następujące: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. W przypadku licznika wydajności liczba bajtów dostępnej pamięci zostanie wyświetlona wartość klucza wiersza: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
-* **CounterName**: jest nazwą licznika wydajności. Pasuje do *counterSpecifier* zdefiniowanego w konfiguracji XML.
-* **Maksimum**: maksymalna wartość licznika wydajności w okresie agregacji.
-* **Minimum**: wartość minimalna licznika wydajności w okresie agregacji.
-* **Łącznie**: suma wszystkich wartości licznika wydajności raportowanego w okresie agregowania.
-* **Liczba**: całkowita liczba wartości zgłoszonych dla licznika wydajności.
-* **Średnia**: wartość średnia (całkowita/liczba) licznika wydajności w okresie agregacji.
+* **PartitionKey**: Klucz partycji jest skonstruowany na podstawie wartości *resourceID,* aby jednoznacznie zidentyfikować zasób maszyny Wirtualnej. Na przykład: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
+* **RowKey**: Jest `<Descending time tick>:<Performance Counter Name>`zgodny z formatem . Obliczanie znacznika czasu malejącego jest maksymalnym znacznikiem czasu minus czas początku okresu agregacji. Na przykład, jeśli okres próbny rozpoczął się 10-Nov-2015 i 00:00Hrs UTC następnie obliczenia będą: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. W przypadku licznika wydajności dostępne bajty dostępnej będzie wyglądał następująco:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **Nazwa przeciwstawna:** Jest to nazwa licznika wydajności. To pasuje *do counterSpecifier* zdefiniowane w konfiguracji xml.
+* **Maksymalna**: Maksymalna wartość licznika wydajności w okresie agregacji.
+* **Minimum**: Minimalna wartość licznika wydajności w okresie agregacji.
+* **Suma**: Suma wszystkich wartości licznika wydajności zgłoszonych w okresie agregacji.
+* **Liczba:** Całkowita liczba wartości zgłoszonych dla licznika wydajności.
+* **Średnia**: Średnia wartość (całkowita/liczba) licznika wydajności w okresie agregacji.
 
 ## <a name="next-steps"></a>Następne kroki
-* Aby zapoznać się z kompletnym przykładowym szablonem maszyny wirtualnej z systemem Windows z rozszerzeniem Diagnostics, zobacz [201-VM-monitoring-Diagnostics-Extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
-* Wdrażanie szablonu Azure Resource Manager przy użyciu [Azure PowerShell](../windows/ps-template.md) lub [wiersza polecenia platformy Azure](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* Dowiedz się więcej na temat [tworzenia szablonów Azure Resource Manager](../../resource-group-authoring-templates.md)
+* Aby uzyskać kompletny przykładowy szablon maszyny wirtualnej systemu Windows z rozszerzeniem diagnostyki, zobacz [rozszerzenie 201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
+* Wdrażanie szablonu usługi Azure Resource Manager przy użyciu [usługi Azure PowerShell](../windows/ps-template.md) lub [wiersza polecenia platformy Azure](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* Dowiedz się więcej o [tworzenie szablonów usługi Azure Resource Manager](../../resource-group-authoring-templates.md)

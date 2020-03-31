@@ -28,7 +28,7 @@
           href: infrastructure-network.md
         - name: Sieć produkcyjna
           href: production-network.md
-        - name: SQL Database
+        - name: Baza danych SQL
           href: infrastructure-sql.md
         - name: Operacje
           href: infrastructure-operations.md
@@ -44,17 +44,17 @@
   items:
     - name: Omówienie zabezpieczeń
       href: identity-management-overview.md
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       href: identity-management-best-practices.md
     - name: Lista kontrolna zabezpieczeń
       href: steps-secure-identity.md
-    - name: Wybieranie uwierzytelniania w usłudze Azure AD
-      href: choose-ad-authn.md
+    - name: Wybieranie logowania bez hasła
+      href: ad-passwordless.md
 - name: Bezpieczeństwo sieci
   items:
     - name: Omówienie zabezpieczeń
       href: network-overview.md
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       href: network-best-practices.md
     - name: DDoS Protection
       href: ddos-best-practices.md
@@ -76,7 +76,7 @@
       href: encryption-overview.md
     - name: Szyfrowanie dysków
       items:
-        - name: Najlepsze praktyki
+        - name: Najlepsze rozwiązania
           href: data-encryption-best-practices.md
         - name: Szyfrowanie danych w spoczynku
           href: encryption-atrest.md
@@ -86,7 +86,7 @@
       items:
         - name: Omówienie
           href: database-security-overview.md
-        - name: Najlepsze praktyki
+        - name: Najlepsze rozwiązania
           href: database-best-practices.md
         - name: Lista kontrolna zabezpieczeń
           href: database-security-checklist.md
@@ -119,7 +119,7 @@
       items:
         - name: Omówienie
           href: operational-overview.md
-        - name: Najlepsze praktyki
+        - name: Najlepsze rozwiązania
           href: operational-best-practices.md
         - name: Lista kontrolna zabezpieczeń
           href: operational-checklist.md
@@ -129,7 +129,7 @@
       href: services-technologies.md
     - name: Oficjalne dokumenty dotyczące zabezpieczeń
       href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       href: best-practices-and-patterns.md
     - name: Doradztwo z zakresu cyberbezpieczeństwa
       href: cyber-services.md

@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy za pomocą usługi Azure Storage | Microsoft Docs
-description: Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy.
+title: Konfigurowanie, optymalizowanie i rozwiązywanie problemów z usługą AzCopy za pomocą usługi Azure Storage | Dokumenty firmy Microsoft
+description: Konfigurowanie, optymalizowanie i rozwiązywanie problemów z programem AzCopy.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,129 +9,129 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: d2cb40d7510e46539db46bdb61ec2d64c0fd1ec7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77526499"
 ---
-# <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy
+# <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurowanie, optymalizowanie i rozwiązywanie problemów z programem AzCopy
 
-AzCopy to narzędzie wiersza polecenia, które służy do kopiowania obiektów blob lub plików do lub z konta magazynu. Ten artykuł ułatwia wykonywanie zaawansowanych zadań konfiguracyjnych i pomaga w rozwiązywaniu problemów, które mogą wystąpić podczas korzystania z AzCopy.
+AzCopy to narzędzie wiersza polecenia, za pomocą którego można kopiować obiekty BLOB lub pliki do lub z konta magazynu. Ten artykuł ułatwia wykonywanie zaawansowanych zadań konfiguracyjnych i pomaga rozwiązywać problemy, które mogą pojawić się podczas korzystania z programu AzCopy.
 
 > [!NOTE]
-> Jeśli szukasz zawartości ułatwiającej rozpoczęcie pracy z usługą AzCopy, zobacz dowolny z następujących artykułów:
-> - [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
-> - [Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB](storage-use-azcopy-blobs.md)
-> - [Transferowanie danych za pomocą AzCopy i magazynu plików](storage-use-azcopy-files.md)
-> - [Transferowanie danych za pomocą zasobników AzCopy i Amazon S3](storage-use-azcopy-s3.md)
+> Jeśli szukasz zawartości ułatwiającej rozpoczęcie pracy z AzCopy, zapoznaj się z następującymi artykułami:
+> - [Wprowadzenie do narzędzia AzCopy](storage-use-azcopy-v10.md)
+> - [Przesyłanie danych za pomocą pamięci masowej AzCopy i obiektów blob](storage-use-azcopy-blobs.md)
+> - [Przesyłanie danych za pomocą AzCopy i przechowywania plików](storage-use-azcopy-files.md)
+> - [Przesyłanie danych za pomocą wiader AzCopy i Amazon S3](storage-use-azcopy-s3.md)
 
 ## <a name="configure-proxy-settings"></a>Konfigurowanie ustawień serwera proxy
 
-Aby skonfigurować ustawienia serwera proxy dla AzCopy, należy ustawić zmienną środowiskową `https_proxy`. Jeśli uruchomisz program AzCopy w systemie Windows, AzCopy automatycznie wykryje ustawienia proxy, więc nie trzeba używać tego ustawienia w systemie Windows. Jeśli zdecydujesz się używać tego ustawienia w systemie Windows, spowoduje to przesłonięcie automatycznego wykrywania.
+Aby skonfigurować ustawienia serwera proxy dla AzCopy, należy ustawić zmienną środowiskową. `https_proxy` Jeśli uruchomisz AzCopy w systemie Windows, AzCopy automatycznie wykryje ustawienia serwera proxy, więc nie musisz używać tego ustawienia w systemie Windows. Jeśli zdecydujesz się użyć tego ustawienia w systemie Windows, zastąpi automatyczne wykrywanie.
 
 | System operacyjny | Polecenie  |
 |--------|-----------|
-| **Windows** | W wierszu polecenia Użyj: `set https_proxy=<proxy IP>:<proxy port>`<br> W programie PowerShell Użyj: `$env:https_proxy="<proxy IP>:<proxy port>"`|
+| **Windows** | W wierszu polecenia użyj:`set https_proxy=<proxy IP>:<proxy port>`<br> W programie PowerShell użyj:`$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **Macos** | `export https_proxy=<proxy IP>:<proxy port>` |
 
-Obecnie AzCopy nie obsługuje serwerów proxy, które wymagają uwierzytelniania przy użyciu protokołu NTLM lub Kerberos.
+Obecnie AzCopy nie obsługuje serwerów proxy, które wymagają uwierzytelniania za pomocą ntlm lub protokołu Kerberos.
 
 ## <a name="optimize-performance"></a>Optymalizowanie wydajności
 
-Możesz przeprowadzić test wydajności, a następnie użyć poleceń i zmiennych środowiskowych, aby znaleźć optymalną kompromis między wydajnością i użyciem zasobów.
+Można porównać wydajność, a następnie użyć poleceń i zmiennych środowiskowych, aby znaleźć optymalny kompromis między wydajnością a zużyciem zasobów.
 
 Ta sekcja ułatwia wykonywanie następujących zadań optymalizacji:
 
 > [!div class="checklist"]
-> * Uruchamianie testów porównawczych
-> * Optymalizowanie przepływności
-> * Optymalizuj użycie pamięci 
-> * Optymalizowanie synchronizacji plików
+> * Przeprowadzaj testy porównawcze
+> * Optymalizacja przepływności
+> * Optymalizacja wykorzystania pamięci 
+> * Optymalizacja synchronizacji plików
 
-### <a name="run-benchmark-tests"></a>Uruchamianie testów porównawczych
+### <a name="run-benchmark-tests"></a>Przeprowadzaj testy porównawcze
 
-Test testu porównawczego wydajności dla określonych kontenerów obiektów BLOB można uruchomić w celu wyświetlenia ogólnych statystyk wydajności i problemów z wąskimi gardłami wydajności. 
+Można uruchomić test porównawczy wydajności na określonych kontenerów obiektów blob, aby wyświetlić ogólne statystyki wydajności i wąskich gardeł wydajności tożsamości. 
 
 > [!NOTE]
-> W bieżącej wersji ta funkcja jest dostępna tylko dla kontenerów Blob Storage.
+> W bieżącej wersji ta funkcja jest dostępna tylko dla kontenerów magazynu obiektów Blob.
 
-Użyj poniższego polecenia, aby uruchomić test porównawczy wydajności.
+Użyj następującego polecenia, aby uruchomić test testu porównawczego wydajności.
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Składni** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Przykład** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
-> Ten przykład obejmuje argumenty ścieżki z pojedynczym cudzysłowem (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
+> W tym przykładzie załącza argumenty ścieżki pojedynczymi cudzysłowami (''). Użyj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd.exe). Jeśli używasz powłoki poleceń systemu Windows (cmd.exe), należy ująć argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczych cudzysłowów (').
 
-To polecenie uruchamia wzorzec wydajności przez przekazywanie danych testowych do określonego miejsca docelowego. Dane testowe są generowane w pamięci, przekazane do miejsca docelowego, a następnie usuwane z lokalizacji docelowej po zakończeniu testu. Można określić, ile plików ma być generowanych i jakie rozmiary mają być używane przez opcjonalne parametry polecenia.
+To polecenie uruchamia wskaźnik wydajności, przekazując dane testowe do określonego miejsca docelowego. Dane testowe są generowane w pamięci, przekazywane do miejsca docelowego, a następnie usuwane z miejsca docelowego po zakończeniu testu. Można określić, ile plików ma zostać wygenerowanych i jaki ma być rozmiar, korzystając z opcjonalnych parametrów polecenia.
 
-Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy kanapie](storage-ref-azcopy-bench.md).
+Szczegółowe dokumenty referencyjne można znaleźć [na ławce azcopy](storage-ref-azcopy-bench.md).
 
-Aby wyświetlić szczegółowe wskazówki dotyczące pomocy dla tego polecenia, wpisz `azcopy bench -h` a następnie naciśnij klawisz ENTER.
+Aby wyświetlić szczegółowe wskazówki `azcopy bench -h` dotyczące pomocy dla tego polecenia, wpisz, a następnie naciśnij klawisz ENTER.
 
-### <a name="optimize-throughput"></a>Optymalizowanie przepływności
+### <a name="optimize-throughput"></a>Optymalizacja przepływności
 
-Możesz użyć flagi `cap-mbps` w poleceniach, aby umieścić górny limit szybkości danych przepływności. Na przykład następujące polecenie wznawia przepływność zadań i `10` megabitów (MB) na sekundę. 
+Flagę `cap-mbps` w poleceniach można użyć, aby umieścić pułap szybkości transmisji danych. Na przykład następujące polecenie wznawia zadanie i `10` ogranicza przepływność do megabitów (MB) na sekundę. 
 
 ```azcopy
 azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
-Przepływność może ulec zmniejszeniu podczas przesyłania małych plików. Przepustowość można zwiększyć, ustawiając zmienną środowiskową `AZCOPY_CONCURRENCY_VALUE`. Ta zmienna określa liczbę równoczesnych żądań, które mogą wystąpić.  
+Przepływność może zmniejszyć się podczas przesyłania małych plików. Można zwiększyć przepływność, ustawiając `AZCOPY_CONCURRENCY_VALUE` zmienną środowiskową. Ta zmienna określa liczbę równoczesnych żądań, które mogą wystąpić.  
 
-Jeśli komputer ma mniej niż 5 procesorów CPU, wartość tej zmiennej jest ustawiana na `32`. W przeciwnym razie wartość domyślna jest równa 16 pomnożona przez liczbę procesorów CPU. Maksymalna wartość domyślna tej zmiennej to `3000`, ale można ręcznie ustawić tę wartość na wyższą lub niższą. 
+Jeśli komputer ma mniej niż 5 procesorów, wartość tej `32`zmiennej jest ustawiona na . W przeciwnym razie wartość domyślna jest równa 16 pomnożona przez liczbę procesorów. Maksymalna wartość domyślna `3000`tej zmiennej to , ale można ręcznie ustawić tę wartość wyższą lub niższą. 
 
 | System operacyjny | Polecenie  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
-| **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
+| **Macos** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-Użyj `azcopy env`, aby sprawdzić bieżącą wartość tej zmiennej. Jeśli wartość jest pusta, można odczytać, która wartość jest używana, przeglądając początek dowolnego pliku dziennika AzCopy. W tym miejscu są raportowane wybrane wartości i powód, w którym została wybrana.
+Służy `azcopy env` do sprawdzania bieżącej wartości tej zmiennej. Jeśli wartość jest pusta, można odczytać, która wartość jest używana, patrząc na początku dowolnego pliku dziennika AzCopy. Wybrana wartość i przyczyna, dla którego została wybrana, są tam zgłaszane.
 
-Przed ustawieniem tej zmiennej zalecamy uruchomienie testu porównawczego. Proces testu porównawczego zgłosi zalecaną wartość współbieżności. Alternatywnie, jeśli warunki i ładunki sieciowe różnią się, należy ustawić tę zmienną na słowo `AUTO` zamiast na określoną liczbę. Spowoduje to, że AzCopy będzie zawsze uruchamiać ten sam proces dostrajania automatycznego, którego używa w testach porównawczych.
+Przed ustawieniem tej zmiennej zaleca się uruchomienie testu porównawczego. Proces testu porównawczego zgłosi zalecaną wartość współbieżności. Alternatywnie, jeśli warunki sieciowe i ładunki różnią się, ustaw tę zmienną na słowo `AUTO` zamiast na określoną liczbę. Spowoduje to, że AzCopy zawsze będzie działać ten sam proces automatycznego strojenia, który używa w testach porównawczych.
 
-### <a name="optimize-memory-use"></a>Optymalizuj użycie pamięci
+### <a name="optimize-memory-use"></a>Optymalizacja wykorzystania pamięci
 
-Ustaw zmienną środowiskową `AZCOPY_BUFFER_GB`, aby określić maksymalną ilość pamięci systemowej, która ma być używana podczas pobierania i przekazywania plików.
-Ta wartość jest wyrażana w gigabajtach (GB).
+Ustaw `AZCOPY_BUFFER_GB` zmienną środowiskową, aby określić maksymalną ilość pamięci systemowej, której program AzCopy ma być używany podczas pobierania i przekazywania plików.
+Wyrazić tę wartość w gigabajtach (GB).
 
 | System operacyjny | Polecenie  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
-| **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+| **Macos** | `export AZCOPY_BUFFER_GB=<value>` |
 
-### <a name="optimize-file-synchronization"></a>Optymalizowanie synchronizacji plików
+### <a name="optimize-file-synchronization"></a>Optymalizacja synchronizacji plików
 
-Polecenie [Sync](storage-ref-azcopy-sync.md) identyfikuje wszystkie pliki w miejscu docelowym, a następnie porównuje nazwy plików i ostatnio modyfikowane sygnatury czasowe przed rozpoczęciem operacji synchronizacji. W przypadku dużej liczby plików można poprawić wydajność, eliminując to przetwarzanie z góry. 
+Polecenie [synchronizacja](storage-ref-azcopy-sync.md) identyfikuje wszystkie pliki w miejscu docelowym, a następnie porównuje nazwy plików i ostatnio zmodyfikowane sygnatury czasowe przed rozpoczęciem operacji synchronizacji. Jeśli masz dużą liczbę plików, możesz zwiększyć wydajność, eliminując to przetwarzanie z góry. 
 
-Aby to osiągnąć, zamiast tego użyj polecenia [copy AzCopy](storage-ref-azcopy-copy.md) i Ustaw flagę `--overwrite`, aby `ifSourceNewer`. AzCopy będzie porównywać pliki, gdy są one kopiowane bez wykonywania żadnych skanów i porównań z góry. Zapewnia to krawędź wydajności w przypadkach, gdy istnieje duża liczba plików do porównania.
+Aby to osiągnąć, użyj polecenia [kopia azcopy](storage-ref-azcopy-copy.md) `--overwrite` zamiast `ifSourceNewer`i ustawić flagę na . AzCopy będzie porównywać pliki, ponieważ są one kopiowane bez wykonywania jakichkolwiek skanów z góry i porównań. Zapewnia to przewagę wydajności w przypadkach, gdy istnieje duża liczba plików do porównania.
 
-Polecenie [copy AzCopy](storage-ref-azcopy-copy.md) nie usuwa plików z lokalizacji docelowej, dlatego jeśli chcesz usunąć pliki w miejscu docelowym, gdy nie istnieją już w źródle, użyj polecenia [Sync AzCopy](storage-ref-azcopy-sync.md) z flagą `--delete-destination` ustawioną na wartość `true` lub `prompt`. 
+Polecenie [kopiowania azkopii](storage-ref-azcopy-copy.md) nie usuwa plików z miejsca docelowego, więc jeśli chcesz usunąć pliki w miejscu docelowym, gdy nie `--delete-destination` istnieją już u `true` `prompt`źródła, użyj polecenia [synchronizacji azcopy](storage-ref-azcopy-sync.md) z flagą ustawioną na wartość lub . . 
 
 ## <a name="troubleshoot-issues"></a>Rozwiązywanie problemów
 
-AzCopy tworzy dziennik i planowanie plików dla każdego zadania. Możesz użyć dzienników, aby zbadać i rozwiązać ewentualne potencjalne problemy. 
+AzCopy tworzy pliki dziennika i planowania dla każdego zadania. Dzienniki można używać do badania i rozwiązywania ewentualnych problemów. 
 
-Dzienniki będą zawierać stan niepowodzeń (`UPLOADFAILED`, `COPYFAILED`i `DOWNLOADFAILED`), pełną ścieżkę i przyczynę niepowodzenia.
+Dzienniki będą zawierać stan awarii`UPLOADFAILED` `COPYFAILED`( `DOWNLOADFAILED`, i ), pełną ścieżkę i przyczynę błędu.
 
-Domyślnie pliki dzienników i planów znajdują się w katalogu `%USERPROFILE%\.azcopy` w katalogu systemu Windows lub `$HOME$\.azcopy` na komputerach Mac i Linux, ale można je zmienić w razie potrzeby.
+Domyślnie pliki dziennika i planu znajdują `%USERPROFILE%\.azcopy` się w `$HOME$\.azcopy` katalogu w systemie Windows lub katalogu na komputerach Mac i Linux, ale w razie potrzeby można zmienić tę lokalizację.
 
-Odpowiedni błąd nie musi być pierwszym błędem, który pojawia się w pliku. W przypadku błędów, takich jak błędy sieci, limity czasu i błędy zajętości serwera, AzCopy będzie ponawiać próbę do 20 razy, a zazwyczaj proces ponawiania prób zostanie zakończony pomyślnie.  Pierwszy błąd, który widzisz, może być niegroźny, który został pomyślnie ponowiony.  Zamiast wyszukać pierwszego błędu w pliku, poszukaj błędów znajdujących się blisko `UPLOADFAILED`, `COPYFAILED`lub `DOWNLOADFAILED`. 
+Odpowiedni błąd nie musi być pierwszym błędem pojawia się w pliku. W przypadku błędów, takich jak błędy sieciowe, limity czasu i błędy zajęty serwer, AzCopy ponowi próbę do 20 razy i zwykle proces ponawiania zakończy się pomyślnie.  Pierwszy błąd, który widzisz może być coś nieszkodliwego, który został pomyślnie ponowiony.  Więc zamiast patrzeć na pierwszy błąd w pliku, poszukaj `UPLOADFAILED` `COPYFAILED`błędów, które są w pobliżu , lub `DOWNLOADFAILED`. 
 
 > [!IMPORTANT]
-> Podczas przesyłania żądania do pomoc techniczna firmy Microsoft (lub rozwiązywania problemu związanego z jakąkolwiek osobą trzecią) należy udostępnić redagowane wersję polecenia, które chcesz wykonać. Gwarantuje to, że SYGNATURa dostępu współdzielonego nie zostanie przypadkowo udostępniona z każdy. Wersję redagowane można znaleźć na początku pliku dziennika.
+> Podczas przesyłania żądania do pomocy technicznej firmy Microsoft (lub rozwiązywania problemu z udziałem jakiejkolwiek strony trzeciej) udostępnij zredagowanej wersji polecenia, które chcesz wykonać. Dzięki temu sygnatura dostępu Współdzielonego nie jest przypadkowo udostępniana nikomu. Zredagowanej wersji można znaleźć na początku pliku dziennika.
 
 ### <a name="review-the-logs-for-errors"></a>Przejrzyj dzienniki pod kątem błędów
 
-Następujące polecenie spowoduje wyświetlenie wszystkich błędów o stanie `UPLOADFAILED` w dzienniku `04dc9ca9-158f-7945-5933-564021086c79`:
+Następujące polecenie spowoduje uzyskanie wszystkich `UPLOADFAILED` błędów `04dc9ca9-158f-7945-5933-564021086c79` o stanie z dziennika:
 
-**Windows (program PowerShell)**
+**Windows (PowerShell)**
 
 ```
 Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
@@ -145,25 +145,25 @@ grep UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
 
 ### <a name="view-and-resume-jobs"></a>Wyświetlanie i wznawianie zadań
 
-Każda operacja transferu spowoduje utworzenie zadania AzCopy. Aby wyświetlić historię zadań, użyj następującego polecenia:
+Każda operacja transferu utworzy zadanie AzCopy. Aby wyświetlić historię zadań, użyj następującego polecenia:
 
 ```
 azcopy jobs list
 ```
 
-Aby wyświetlić statystyki zadań, użyj następującego polecenia:
+Aby wyświetlić statystyki zadania, użyj następującego polecenia:
 
 ```
 azcopy jobs show <job-id>
 ```
 
-Aby przefiltrować transfer według stanu, użyj następującego polecenia:
+Aby filtrować transfery według stanu, użyj następującego polecenia:
 
 ```
 azcopy jobs show <job-id> --with-status=Failed
 ```
 
-Użyj poniższego polecenia, aby wznowić zadanie zakończone niepowodzeniem lub anulowane. To polecenie używa jego identyfikatora wraz z tokenem SAS, ponieważ nie jest on trwały ze względów bezpieczeństwa:
+Użyj następującego polecenia, aby wznowić zadanie, które nie powiodło się/anulowało. To polecenie używa jego identyfikatora wraz z tokenem sygnatury dostępu Współdzielonego, ponieważ nie jest trwały ze względów bezpieczeństwa:
 
 ```
 azcopy jobs resume <job-id> --source-sas="<sas-token>"
@@ -171,15 +171,15 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
 
 > [!TIP]
-> Argumenty ścieżki otaczającej, takie jak token SAS, z pojedynczym cudzysłowem (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
+> Ująć argumenty ścieżki, takie jak token sygnatury dostępu Współdzielonego, za pomocą pojedynczych cudzysłowów (''). Użyj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd.exe). Jeśli używasz powłoki poleceń systemu Windows (cmd.exe), należy ująć argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczych cudzysłowów (').
 
-Po wznowieniu zadania AzCopy przegląda plik planu zadań. Plik planu zawiera listę wszystkich plików, które zostały zidentyfikowane do przetwarzania podczas pierwszego utworzenia zadania. Po wznowieniu zadania AzCopy podejmie próbę przetransferowania wszystkich plików wymienionych w pliku planu, który nie został jeszcze przeniesiony.
+Po wznowieniu zadania AzCopy przyjrzy się plikowi planu pracy. Plik planu zawiera listę wszystkich plików, które zostały zidentyfikowane do przetworzenia podczas pierwszego utworzenia zadania. Po wznowieniu zadania AzCopy spróbuje przenieść wszystkie pliki wymienione w pliku planu, które nie zostały jeszcze przeniesione.
 
-## <a name="change-the-location-of-the-plan-and-log-files"></a>Zmień lokalizację planu i plików dziennika
+## <a name="change-the-location-of-the-plan-and-log-files"></a>Zmienianie lokalizacji plików planu i dziennika
 
-Domyślnie pliki planu i dziennika znajdują się w katalogu `%USERPROFILE%\.azcopy` w systemie Windows lub w katalogu `$HOME$\.azcopy` na komputerach Mac i Linux. Można zmienić tę lokalizację.
+Domyślnie pliki planów i dzienników znajdują się w `%USERPROFILE%\.azcopy` `$HOME$\.azcopy` katalogu w systemie Windows lub w katalogu na komputerach Mac i Linux. Możesz zmienić tę lokalizację.
 
-### <a name="change-the-location-of-plan-files"></a>Zmień lokalizację plików planu
+### <a name="change-the-location-of-plan-files"></a>Zmienianie lokalizacji plików planu
 
 Użyj dowolnego z tych poleceń.
 
@@ -187,11 +187,11 @@ Użyj dowolnego z tych poleceń.
 |--------|-----------|
 | **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Macos** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
-Użyj `azcopy env`, aby sprawdzić bieżącą wartość tej zmiennej. Jeśli wartość jest pusta, Zaplanuj pliki są zapisywane w domyślnej lokalizacji.
+Służy `azcopy env` do sprawdzania bieżącej wartości tej zmiennej. Jeśli wartość jest pusta, zaplanuj pliki są zapisywane w lokalizacji domyślnej.
 
-### <a name="change-the-location-of-log-files"></a>Zmień lokalizację plików dziennika
+### <a name="change-the-location-of-log-files"></a>Zmienianie lokalizacji plików dziennika
 
 Użyj dowolnego z tych poleceń.
 
@@ -199,20 +199,20 @@ Użyj dowolnego z tych poleceń.
 |--------|-----------|
 | **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **Macos** | `export AZCOPY_LOG_LOCATION=<value>` |
 
-Użyj `azcopy env`, aby sprawdzić bieżącą wartość tej zmiennej. Jeśli wartość jest pusta, dzienniki są zapisywane w domyślnej lokalizacji.
+Służy `azcopy env` do sprawdzania bieżącej wartości tej zmiennej. Jeśli wartość jest pusta, dzienniki są zapisywane w lokalizacji domyślnej.
 
-## <a name="change-the-default-log-level"></a>Zmień domyślny poziom dziennika
+## <a name="change-the-default-log-level"></a>Zmienianie domyślnego poziomu dziennika
 
-Domyślnie poziom dziennika AzCopy jest ustawiony na `INFO`. Jeśli chcesz zmniejszyć szczegółowość dziennika w celu zaoszczędzenia miejsca na dysku, Zastąp to ustawienie przy użyciu opcji ``--log-level``. 
+Domyślnie poziom dziennika AzCopy `INFO`jest ustawiony na . Jeśli chcesz zmniejszyć szczegółowość dziennika, aby zaoszczędzić miejsce na dysku, należy ``--log-level`` zastąpić to ustawienie za pomocą tej opcji. 
 
-Dostępne poziomy dzienników to: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC`i `FATAL`.
+Dostępne poziomy dziennika `NONE` `DEBUG`to: , `PANIC`, `FATAL` `INFO`, `WARNING`, `ERROR`, , i .
 
-## <a name="remove-plan-and-log-files"></a>Usuń pliki planu i dziennika
+## <a name="remove-plan-and-log-files"></a>Usuwanie plików planu i dziennika
 
-Jeśli chcesz usunąć wszystkie pliki planu i dziennika z komputera lokalnego, aby zaoszczędzić miejsce na dysku, użyj polecenia `azcopy jobs clean`.
+Jeśli chcesz usunąć wszystkie pliki planu i dziennika z komputera lokalnego, aby zaoszczędzić miejsce na `azcopy jobs clean` dysku, użyj polecenia.
 
-Aby usunąć pliki planu i dziennika skojarzone tylko z jednym zadaniem, użyj `azcopy jobs rm <job-id>`. Zastąp symbol zastępczy `<job-id>` w tym przykładzie identyfikatorem zadania zadania.
+Aby usunąć pliki planu i dziennika skojarzone `azcopy jobs rm <job-id>`tylko z jednym zadaniem, użyj programu . Zastąp symbol zastępczy `<job-id>` w tym przykładzie identyfikatorem zadania.
 
 

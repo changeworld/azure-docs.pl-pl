@@ -11,7 +11,9 @@
   items:
     - name: Tworzenie centrum powiadomień — Azure Portal
       href: create-notification-hub-portal.md
-    - name: Konfigurowanie centrum powiadomień — Azure Portal
+    - name: Tworzenie centrum powiadomień — interfejs wiersza polecenia platformy Azure
+      href: create-notification-hub-azure-cli.md
+    - name: Konfigurowanie centrum powiadomień
       href: configure-notification-hub-portal-pns-settings.md
 - name: Samouczki
   items:
@@ -140,6 +142,8 @@
       href: notification-hubs-push-notification-fixer.md
     - name: Wypychanie powiadomień przy użyciu powiadomień push w chmurze Baidu
       href: notification-hubs-baidu-china-android-notifications-get-started.md
+    - name: Używanie protokołu VOIP w usłudze APNS za pośrednictwem usługi Notification Hubs
+      href: voip-apns.md
 - name: Dokumentacja
   items:
     - name: .NET

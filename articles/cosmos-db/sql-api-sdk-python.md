@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Cosmos DB Interfejs API języka SQL Python, zasoby & zestawu SDK
-description: Dowiedz się więcej o interfejsie API języka SQL Python i zestawie SDK, w tym o datach wydania, datach wycofania i zmianach między poszczególnymi wersjami Azure Cosmos DB Python SDK.
+title: 'Usługa Azure Cosmos DB: interfejs API języka SQL Python, zestaw SDK & zasoby'
+description: Dowiedz się wszystkiego o interfejsie API i SDK języka SQL Python, w tym datach wydania, datach wycofania i zmianach wprowadzonych między każdą wersją zestawu SDK języka Azure Cosmos DB Python.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,187 +9,187 @@ ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
 ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70137336"
 ---
-# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK dla interfejsu API SQL: Informacje o wersji i zasoby
+# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Zestaw Azure Cosmos DB Python SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [Kanał informacyjny zmian .NET](sql-api-sdk-dotnet-changefeed.md)
+> * [Plik danych o zmianach w sieci .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java (asynchroniczny)](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [Reszta](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Wykonawca zbiorczy — .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Moduł wykonawczy zbiorczej — Java](sql-api-sdk-bulk-executor-java.md)
+> * [Wykonawca zbiorczy - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Wykonawca luzem - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
-|**Pobierz zestaw SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**Dokumentacja interfejsu API**|[Dokumentacja interfejsu API języka Python](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
-|**Instrukcje dotyczące instalacji zestawu SDK**|[Instrukcje dotyczące instalacji zestawu SDK języka Python](https://github.com/Azure/azure-cosmos-python)|
-|**Przyczynia się do zestawu SDK**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
-|**Wprowadzenie**|[Wprowadzenie do zestawu SDK języka Python](sql-api-python-application.md)|
-|**Bieżąca obsługiwana platforma**|[Python 2,7](https://www.python.org/downloads/) i [Python 3,5](https://www.python.org/downloads/)|
+|**Pobierz SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
+|**Dokumentacja interfejsu API**|[Dokumentacja referencyjna interfejsu API języka Python](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
+|**Instrukcje instalacji SDK**|[Instrukcje instalacji zestawów SDK języka Python](https://github.com/Azure/azure-cosmos-python)|
+|**Współtworzenie sdk**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
+|**Wprowadzenie**|[Wprowadzenie do sdk języka Python](sql-api-python-application.md)|
+|**Aktualnie obsługiwana platforma**|[Python 2.7](https://www.python.org/downloads/) i [Python 3.5](https://www.python.org/downloads/)|
 
 ## <a name="release-notes"></a>Informacje o wersji
 
-### <a name="a-name302302"></a><a name="3.0.2"/>3.0.2
-* Dodano obsługę elementu DataType MultiPolygon
-* Poprawka błędu w zasadach ponawiania próby odczytu sesji
-* Poprawka usterki dla nieprawidłowych problemów z uzupełnianiem podczas dekodowania podstawowych 64 ciągów
+### <a name="302"></a><a name="3.0.2"/>3.0.2
+* Dodano obsługę typu danych MultiPolygon
+* Poprawka błędu w zasadach ponawiania poprawek odczytu sesji
+* Poprawka problemu z nieprawidłowymi problemami z dopełnieniem podczas dekodowania podstawowych ciągów 64
 
-### <a name="a-name301301"></a><a name="3.0.1"/>3.0.1
-* Poprawka błędu w LocationCache
-* Usterka logiki ponawiania punktu końcowego
+### <a name="301"></a><a name="3.0.1"/>3.0.1
+* Poprawka błędu w locationcache
+* Logika ponawiania ponawiania punktu końcowego poprawki błędu
 * Stała dokumentacja
 
-### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0
-* Obsługa zapisu w ramach wieloregionu.
-* Przestrzeń nazw została zmieniona na Azure. Cosmos.
+### <a name="300"></a><a name="3.0.0"/>3.0.0
+* Obsługa zapisów wieloregionowych.
+* Obszar nazw został zmieniony na azure.cosmos.
 * Pojęcia dotyczące kolekcji i dokumentów zostały zmienione na kontener i element, document_client zmieniono nazwę na cosmos_client. 
 
-### <a name="a-name233233"></a><a name="2.3.3"/>2.3.3
+### <a name="233"></a><a name="2.3.3"/>2.3.3
 * Dodano obsługę serwera proxy
-* Dodano obsługę kanału informacyjnego zmiany odczytu
-* Dodano obsługę nagłówków przydziału kolekcji
-* Poprawka dla problemu z tokenami dużej sesji
-* Poprawka dla interfejsu API ReadMedia
-* Poprawka w pamięci podręcznej zakresów kluczy partycji
+* Dodano obsługę odczytu kanału zmian
+* Dodano obsługę nagłówków przydziałów kolekcji
+* Poprawka błędu dla problemu z tokenami dużych sesji
+* Poprawka błędu dla interfejsu API ReadMedia
+* Poprawka błędu w pamięci podręcznej zakresu kluczy partycji
 
-### <a name="a-name232232"></a><a name="2.3.2"/>2.3.2
+### <a name="232"></a><a name="2.3.2"/>2.3.2
 * Dodano obsługę domyślnych ponownych prób w przypadku problemów z połączeniem.
 
-### <a name="a-name231231"></a><a name="2.3.1"/>2.3.1
-* Zaktualizowana dokumentacja dotycząca referencyjnego Azure Cosmos DB zamiast platformy Azure DocumentDB.
+### <a name="231"></a><a name="2.3.1"/>2.3.1
+* Zaktualizowano dokumentację, aby odwoływać się do usługi Azure Cosmos DB zamiast usługi Azure DocumentDB.
 
-### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
-* Ta wersja zestawu SDK wymaga najnowszej wersji emulatora usługi Azure Cosmos dostępne do pobrania z https://aka.ms/cosmosdb-emulator.
+### <a name="230"></a><a name="2.3.0"/>2.3.0
+* Ta wersja SDK wymaga najnowszej wersji emulatora usługi https://aka.ms/cosmosdb-emulatorAzure Cosmos DB dostępnej do pobrania z .
 
-### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
-* Poprawka usterki dla słownika agregacji.
-* Poprawka usterki dla przycinania ukośników w łączu zasobów.
-* Dodano testy dla kodowania Unicode.
+### <a name="221"></a><a name="2.2.1"/>2.2.1
+* Poprawka błędu dla słownika agregacji.
+* Poprawka błędu przycinania ukośników w łączu zasobu.
+* Dodano testy kodowania Unicode.
 
-### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
-* Dodano obsługę nowego poziomu spójności, nazywana ConsistentPrefix.
+### <a name="220"></a><a name="2.2.0"/>2.2.0
+* Dodano obsługę nowego poziomu spójności o nazwie ConsistentPrefix.
 
 
-### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
-* Dodano obsługę zapytań agregacji (COUNT, MIN, MAX, Suma i średnia).
-* Dodano opcję wyłączania weryfikacji SSL podczas uruchamiania w oparciu o emulator Cosmos DB.
-* Usunięto ograniczenie zależnego modułu żądań, aby dokładnie 2.10.0.
-* Obniżona minimalna przepływność na kolekcji podzielonych na partycje z 10,100 jednostek RU/s 2500 jednostek RU/s.
+### <a name="210"></a><a name="2.1.0"/>2.1.0
+* Dodano obsługę zapytań agregacji (COUNT, MIN, MAX, SUM i AVG).
+* Dodano opcję wyłączania weryfikacji SSL podczas uruchamiania emulatora usługi Cosmos DB.
+* Usunięto ograniczenie modułu żądań zależnych, aby mieć dokładnie 2.10.0.
+* Obniżono minimalną przepustowość w kolekcjach podzielonych na partycje z 10 100 RU/s do 2500 RU/s.
 * Dodano obsługę włączania rejestrowania skryptów podczas wykonywania procedury składowanej.
-* Wersja interfejsu API REST dotrzymana do "2017-01-19" w tej wersji.
+* Wersja interfejsu API REST wpadła na '2017-01-19' w tej wersji.
 
-### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
-* Wprowadzono zmiany redakcyjne w komentarzach dokumentacji.
+### <a name="201"></a><a name="2.0.1"/>2.0.1
+* Wprowadzono zmiany redakcyjne w komentarzach do dokumentacji.
 
-### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
-* Dodano obsługę języka Python 3,5.
-* Dodano obsługę puli połączeń przy użyciu modułu żądania.
+### <a name="200"></a><a name="2.0.0"/>2.0.0
+* Dodano obsługę Pythona 3.5.
+* Dodano obsługę buforowania połączeń przy użyciu modułu żądań.
 * Dodano obsługę spójności sesji.
-* Dodano obsługę zapytań TOP/ORDERBY dla kolekcji partycjonowanych.
+* Dodano obsługę zapytań TOP/ORDERBY dla kolekcji podzielonych na partycje.
 
-### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
-* Dodano obsługę zasad ponawiania dla żądań z ograniczeniami. (Żądania ograniczające żądania odbierają zbyt duży wyjątek, kod błędu 429). Domyślnie program Azure Cosmos DB ponownych prób w przypadku każdego żądania, gdy zostanie napotkany kod błędu 429, a w nagłówku odpowiedzi zostanie osiągnięty czas retryAfter. Ustalony czas interwału ponowienia próby można teraz ustawić jako część właściwości RetryOptions obiektu ConnectionPolicy, jeśli chcesz zignorować czas retryAfter zwrócony przez serwer między ponownymi próbami. Azure Cosmos DB teraz czeka przez maksymalnie 30 sekund dla każdego żądania, które jest ograniczane (niezależnie od liczby ponownych prób) i zwraca odpowiedź z kodem błędu 429. Ten czas można również zastąpić we właściwości RetryOptions obiektu ConnectionPolicy.
-* Cosmos DB teraz zwraca wartość x-MS-dławienia-retry i licznik x-MS-dławienia-retry-Time-MS jako nagłówki odpowiedzi w każdym żądaniu, aby zauważyć licznik ponownych prób ograniczenia i skumulowany czas oczekiwania żądania między ponownymi próbami.
-* Usunięto klasę RetryPolicy i odpowiadającą jej właściwość (retry_policy) uwidocznioną dla klasy document_client, a zamiast tego wprowadzamy klasę RetryOptions, która uwidacznia Właściwość RetryOptions klasy ConnectionPolicy, która może służyć do przesłonięcia niektórych domyślne opcje ponowień.
+### <a name="190"></a><a name="1.9.0"/>1.9.0
+* Dodano obsługę zasad ponawiania dla żądań ograniczonych. (Żądania ograniczone otrzymują zbyt duży wyjątek, kod błędu 429). Domyślnie usługa Azure Cosmos DB ponawia dziewięć razy dla każdego żądania, gdy zostanie napotkany kod błędu 429, honorując ponawianie czasu po wierszu w nagłówku odpowiedzi. Czas stałego interwału ponawiania próby można teraz ustawić jako część właściwości RetryOptions w obiekcie ConnectionPolicy, jeśli chcesz zignorować ponowny ponawianieczasu zwróconego przez serwer między ponownych prób. Usługa Azure Cosmos DB czeka teraz maksymalnie 30 sekund dla każdego żądania, które jest ograniczane (niezależnie od liczby ponownych prób) i zwraca odpowiedź z kodem błędu 429. Ten czas można również zastąpić we właściwości RetryOptions na ConnectionPolicy obiektu.
+* Usługa Cosmos DB zwraca teraz x-ms-throttle-retry-count i x-ms-throttle-retry-wait-time-ms jako nagłówki odpowiedzi w każdym żądaniu, aby oznaczyć liczbę ponownych prób przepustnicy i skumulowany czas oczekiwania między ponownych prób.
+* Usunięto RetryPolicy klasy i odpowiedniej właściwości (retry_policy) narażone na document_client klasy i zamiast tego wprowadzono RetryOptions klasy odsłaniając RetryOptions właściwości connectionpolicy klasy, które mogą służyć do zastąpienia niektórych z nich domyślne opcje ponawiania próby.
 
-### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
-* Dodano obsługę multiregionalne konta baz danych.
+### <a name="180"></a><a name="1.8.0"/>1.8.0
+* Dodano obsługę kont bazy danych w wielu regionach.
 
-### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
-* Dodano obsługę funkcji Time to Live (TTL) dla dokumentów.
+### <a name="170"></a><a name="1.7.0"/>1.7.0
+* Dodano obsługę funkcji Time To Live (TTL) dla dokumentów.
 
-### <a name="a-name161161"></a><a name="1.6.1"/>1.6.1
-* Poprawki błędów powiązane z partycjonowaniem po stronie serwera, aby zezwolić na znaki specjalne w ścieżce klucza partycji.
+### <a name="161"></a><a name="1.6.1"/>1.6.1
+* Poprawki błędów związane z partycjonowanie po stronie serwera, aby umożliwić znaki specjalne w ścieżce klucza partycji.
 
-### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
-* Zaimplementowane [podzielona na partycje kolekcje](partition-data.md) i [poziomów wydajności zdefiniowanych przez użytkownika](performance-levels.md). 
+### <a name="160"></a><a name="1.6.0"/>1.6.0
+* Zaimplementowano [kolekcje podzielone na partycje](partition-data.md) i [poziomy wydajności zdefiniowane przez użytkownika](performance-levels.md). 
 
-### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
-* Dodaj skrót zak & res partycji rozwiązujący uzyskanymi fragmentowania aplikacje na wielu partycjach.
+### <a name="150"></a><a name="1.5.0"/>1.5.0
+* Dodaj program rozpoznawania partycji Hash & Range, aby pomóc w aplikacji dzielenia na fragmenty na wielu partycjach.
 
-### <a name="a-name142142"></a><a name="1.4.2"/>1.4.2
-* Implementowanie Upsert. Nowe metody UpsertXXX dodane do obsługi funkcji upsert.
-* Routing oparty na identyfikator implementacji. Brak publicznego zmian interfejsu API, wszystkie zmiany wewnętrznego.
+### <a name="142"></a><a name="1.4.2"/>1.4.2
+* Zaimplementuj upsert. Nowe metody UpsertXXX dodane do obsługi funkcji Upsert.
+* Implementowanie routingu opartego na identyfikatorze. Brak zmian w publicznym interfejsie API, wszystkie zmiany wewnętrzne.
 
-### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Obsługuje indeks geoprzestrzenny.
-* Sprawdza poprawność właściwość identyfikatora dla wszystkich zasobów. Identyfikatory zasobów nie może zawierać?, /, #, \, znaków ani kończyć się spacją.
-* Dodaje nowy nagłówek "indeks przekształcania progress" ResourceResponse.
+### <a name="120"></a><a name="1.2.0"/>1.2.0
+* Obsługuje indeks GeoSpatial.
+* Sprawdza poprawność właściwości identyfikatora dla wszystkich zasobów. Identyfikatory zasobów nie mogą zawierać ?, \, /, #, znaków ani kończyć spacją.
+* Dodaje nowy nagłówek "postęp transformacji indeksu" do ResourceResponse.
 
-### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Implementuje zasady indeksowania w wersji 2.
+### <a name="110"></a><a name="1.1.0"/>1.1.0
+* Implementuje zasady indeksowania V2.
 
-### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
-* Obsługuje połączenie z serwerem proxy.
+### <a name="101"></a><a name="1.0.1"/>1.0.1
+* Obsługuje połączenie proxy.
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* ZESTAW SDK.
+### <a name="100"></a><a name="1.0.0"/>1.0.0
+* GA SDK.
 
-## <a name="release--retirement-dates"></a>Data wycofania &
-Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** przed WYCOFANIEM zestawu SDK w celu zapewnienia sprawnego przejścia do nowszej/obsługiwanej wersji.
+## <a name="release--retirement-dates"></a>Zwolnij & daty przejścia na emeryturę
+Firma Microsoft powiadamia o wycofaniu sdk sdk z co najmniej **12-miesięcznym** wyprzedzeniem w celu usprawnienia przejścia do nowszej/obsługiwanej wersji.
 
-Nowe funkcje i funkcje i optymalizacje są dodawane tylko do bieżącego zestawu SDK, dlatego zaleca się, aby zawsze uaktualnić do najnowszej wersji zestawu SDK tak szybko, jak to możliwe. 
+Nowe funkcje i funkcje i optymalizacje są dodawane tylko do bieżącego sdk, jako takie zaleca się, aby zawsze uaktualnić do najnowszej wersji SDK tak wcześnie, jak to możliwe. 
 
-Wszystkie żądania Cosmos DB korzystania z wycofanego zestawu SDK są odrzucane przez usługę.
+Każde żądanie do usługi Cosmos DB przy użyciu wycofanego SDK są odrzucane przez usługę.
 
 > [!WARNING]
-> Wszystkie wersje zestawu SDK języka Python dla interfejsu API SQL w wersji starszej niż **1.0.0** zostały wycofane **29 lutego 2016**. 
+> Wszystkie wersje interfejsu API języka Python dla SQL przed wersją **1.0.0** zostały wycofane **29 lutego 2016**r. 
 > 
 > 
 
 > [!WARNING]
-> Wszystkie wersje 1. x i 2. x zestawu SDK języka Python dla interfejsu API SQL zostaną wycofane **30 sierpnia 2020**. 
+> Wszystkie wersje 1.x i 2.x interfejsu API języka Python dla SQL zostaną wycofane **30 sierpnia 2020**r. 
 > 
 > 
 
 <br/>
 
-| Version | Data wydania | Data wygaśnięcia |
+| Wersja | Data wydania | Data przejścia na emeryturę |
 | --- | --- | --- |
-| [3.0.2](#3.0.2) |LIS 15, 2018 |--- |
-| [3.0.1](#3.0.1) |04, 2018 |--- |
-| [2.3.3](#2.3.3) |Września 08, 2018 |30 sierpnia 2020 |
-| [2.3.2](#2.3.2) |Maja 08, 2018 |30 sierpnia 2020 |
-| [2.3.1](#2.3.1) |21 grudnia 2017 |30 sierpnia 2020 |
-| [2.3.0](#2.3.0) |10 listopada 2017 r. |30 sierpnia 2020 |
-| [2.2.1](#2.2.1) |29 wrz 2017 |30 sierpnia 2020 |
-| [2.2.0](#2.2.0) |10 maja 2017 |30 sierpnia 2020 |
-| [2.1.0](#2.1.0) |01 maja, 2017 |30 sierpnia 2020 |
-| [2.0.1](#2.0.1) |30 października 2016 r. |30 sierpnia 2020 |
-| [2.0.0](#2.0.0) |29 września, 2016 |30 sierpnia 2020 |
-| [1.9.0](#1.9.0) |07 lipca 2016 |30 sierpnia 2020 |
-| [1.8.0](#1.8.0) |14 czerwca 2016 r. |30 sierpnia 2020 |
-| [1.7.0](#1.7.0) |26 kwietnia 2016 |30 sierpnia 2020 |
-| [1.6.1](#1.6.1) |08 kwietnia, 2016 |30 sierpnia 2020 |
-| [1.6.0](#1.6.0) |29 marca 2016 r. |30 sierpnia 2020 |
-| [1.5.0](#1.5.0) |03, 2016 |30 sierpnia 2020 |
-| [1.4.2](#1.4.2) |06, 2015 |30 sierpnia 2020 |
-| 1.4.1 |06, 2015 |30 sierpnia 2020 |
-| [1.2.0](#1.2.0) |06 sierpnia 2015 |30 sierpnia 2020 |
-| [1.1.0](#1.1.0) |09 lipca 2015 r. |30 sierpnia 2020 |
-| [1.0.1](#1.0.1) |25 maja 2015 |30 sierpnia 2020 |
-| [1.0.0](#1.0.0) |07 kwietnia 2015 r. |30 sierpnia 2020 |
-| 0.9.4-prelease |14 stycznia 2015 |29 lutego 2016 r. |
-| 0.9.3-prelease |09, 2014 |29 lutego 2016 r. |
-| 0.9.2-prelease |25 listopada 2014 |29 lutego 2016 r. |
-| 0.9.1-prelease |23 września, 2014 |29 lutego 2016 r. |
-| 0.9.0-prelease |21 sierpnia 2014 |29 lutego 2016 r. |
+| [3.0.2](#3.0.2) |15 listopada 2018 r. |--- |
+| [3.0.1](#3.0.1) |4 października 2018 r. |--- |
+| [2.3.3](#2.3.3) |8 września 2018 r. |30 sierpnia 2020 r. |
+| [2.3.2](#2.3.2) |8 maja 2018 r. |30 sierpnia 2020 r. |
+| [2.3.1](#2.3.1) |21 grudnia 2017 r. |30 sierpnia 2020 r. |
+| [2.3.0](#2.3.0) |10 listopada 2017 r. |30 sierpnia 2020 r. |
+| [2.2.1](#2.2.1) |29 września 2017 r. |30 sierpnia 2020 r. |
+| [2.2.0](#2.2.0) |10 maja 2017 |30 sierpnia 2020 r. |
+| [2.1.0](#2.1.0) |1 maja 2017 r. |30 sierpnia 2020 r. |
+| [2.0.1](#2.0.1) |30 października 2016 r. |30 sierpnia 2020 r. |
+| [2.0.0](#2.0.0) |29 września 2016 r. |30 sierpnia 2020 r. |
+| [1.9.0](#1.9.0) |7 lipca 2016 r. |30 sierpnia 2020 r. |
+| [1.8.0](#1.8.0) |14 czerwca 2016 r. |30 sierpnia 2020 r. |
+| [1.7.0](#1.7.0) |26 kwietnia 2016 |30 sierpnia 2020 r. |
+| [1.6.1](#1.6.1) |8 kwietnia 2016 r. |30 sierpnia 2020 r. |
+| [1.6.0](#1.6.0) |29 marca 2016 r. |30 sierpnia 2020 r. |
+| [1.5.0](#1.5.0) |3 stycznia 2016 r. |30 sierpnia 2020 r. |
+| [1.4.2](#1.4.2) |6 października 2015 r. |30 sierpnia 2020 r. |
+| 1.4.1 |6 października 2015 r. |30 sierpnia 2020 r. |
+| [1.2.0](#1.2.0) |6 sierpnia 2015 r. |30 sierpnia 2020 r. |
+| [1.1.0](#1.1.0) |9 lipca 2015 r. |30 sierpnia 2020 r. |
+| [1.0.1](#1.0.1) |25 maja 2015 r. |30 sierpnia 2020 r. |
+| [1.0.0](#1.0.0) |7 kwietnia 2015 r. |30 sierpnia 2020 r. |
+| 0.9.4-prelease |14 stycznia 2015 r. |29 lutego 2016 r. |
+| 0.9.3-prelease |9 grudnia 2014 r. |29 lutego 2016 r. |
+| 0.9.2-prelease |25 listopada 2014 r. |29 lutego 2016 r. |
+| 0.9.1-prelease |23 września 2014 r. |29 lutego 2016 r. |
+| 0.9.0-prelease |21 sierpnia 2014 r. |29 lutego 2016 r. |
 
-## <a name="faq"></a>Często zadawane pytania
+## <a name="faq"></a>Najczęściej zadawane pytania
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zobacz także
-Aby dowiedzieć się więcej na temat usługi Cosmos DB, zobacz [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stronę usługi. 
+## <a name="see-also"></a>Zobacz też
+Aby dowiedzieć się więcej o usłudze Cosmos DB, zobacz stronę usługi [Microsoft Azure Cosmos DB.](https://azure.microsoft.com/services/cosmos-db/) 
 

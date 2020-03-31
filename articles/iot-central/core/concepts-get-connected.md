@@ -1,6 +1,6 @@
 ---
-title: Łączność urządzeń w usłudze Azure IoT Central | Microsoft Docs
-description: W tym artykule przedstawiono kluczowe pojęcia związane z łącznością urządzeń w usłudze Azure IoT Central
+title: Łączność z urządzeniem w usłudze Azure IoT Central | Dokumenty firmy Microsoft
+description: W tym artykule przedstawiono kluczowe pojęcia dotyczące łączności z urządzeniami w usłudze Azure IoT Central
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/09/2019
@@ -8,241 +8,264 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: e67a8f6b9cc175932b09e6f576148656dd9da9ba
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: 8178e585ecb7b1cdfd5e530f3d3406b7397f0968
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79298822"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476053"
 ---
-# <a name="get-connected-to-azure-iot-central"></a>Połącz z usługą Azure IoT Central
+# <a name="get-connected-to-azure-iot-central"></a>Nawiązywać połączenia z usługą Azure IoT Central
 
-W tym artykule przedstawiono kluczowe pojęcia związane z łącznością urządzeń w Microsoft Azure IoT Central.
+W tym artykule opisano opcje łączenia urządzeń z aplikacją Azure IoT Central.
 
-Usługa Azure IoT Central używa [usługi azure IoT Hub Device Provisioning Service (DPS)](../../iot-dps/about-iot-dps.md) do zarządzania wszystkimi rejestracjami i połączeniem urządzeń.
+Zazwyczaj należy zarejestrować urządzenie w aplikacji, zanim będzie można połączyć. Jednak IoT Central obsługuje scenariusze, w których [urządzenia mogą łączyć się bez uprzedniego zarejestrowania](#connect-without-registering-devices).
 
-Korzystanie z usługi DPS umożliwia:
+Usługa IoT Central używa [usługi inicjowania obsługi administracyjnej urządzeń usługi Azure IoT Hub (DPS)](../../iot-dps/about-iot-dps.md) do zarządzania procesem połączenia. Urządzenie najpierw łączy się z punktem końcowym DPS, aby pobrać informacje potrzebne do połączenia z aplikacją. Wewnętrznie aplikacja IoT Central używa centrum IoT hub do obsługi łączności z urządzeniem. Korzystanie z DPS umożliwia:
 
-- IoT Central do obsługi dołączania i łączenia urządzeń w odpowiedniej skali.
-- Można generować poświadczenia urządzenia i konfigurować urządzenia w trybie offline bez rejestrowania urządzeń za pomocą interfejsu użytkownika IoT Central.
-- Urządzenia, które mają być połączone za pomocą sygnatur dostępu współdzielonego (SAS).
-- Urządzenia, które mają być połączone przy użyciu standardowych certyfikatów X. 509.
-- Aby zarejestrować urządzenia w IoT Central, należy użyć własnych identyfikatorów urządzeń. Korzystanie z własnych identyfikatorów urządzeń upraszcza integrację z istniejącymi systemami zaplecza.
-- Jeden spójny sposób łączenia urządzeń z IoT Central.
+- IoT Central do obsługi urządzeń dołączających i łączących na dużą skalę.
+- Aby wygenerować poświadczenia urządzenia i skonfigurować urządzenia w trybie offline bez rejestrowania urządzeń za pośrednictwem interfejsu użytkownika ioT Central.
+- Aby używać własnych identyfikatorów urządzeń do rejestrowania urządzeń w centrum IoT. Korzystanie z własnych identyfikatorów urządzeń upraszcza integrację z istniejącymi systemami zaplecza.
+- Jeden, spójny sposób łączenia urządzeń z IoT Central.
+
+Aby zabezpieczyć komunikację między urządzeniem a aplikacją, usługa IoT Central obsługuje zarówno certyfikaty shared access signatures (SAS), jak i X.509. Certyfikaty X.509 są zalecane w środowiskach produkcyjnych.
 
 W tym artykule opisano następujące przypadki użycia:
 
-- [Szybkie łączenie jednego urządzenia przy użyciu sygnatury dostępu współdzielonego](#connect-a-single-device)
-- [Łączenie urządzeń na dużą skalę przy użyciu sygnatury dostępu współdzielonego](#connect-devices-at-scale-using-sas)
-- [Łączenie urządzeń na dużą skalę za pomocą certyfikatów X. 509](#connect-devices-using-x509-certificates) jest to zalecane podejście dla środowisk produkcyjnych.
-- [Nawiązywanie połączenia bez wcześniejszego rejestrowania urządzeń](#connect-without-registering-devices)
-- [Łączenie urządzeń za pomocą funkcji usługi IoT Plug and Play (wersja zapoznawcza)](#connect-devices-with-iot-plug-and-play-preview)
+- [Podłączanie pojedynczego urządzenia za pomocą usługi SAS](#connect-a-single-device)
+- [Łączenie urządzeń na dużą skalę za pomocą sas](#connect-devices-at-scale-using-sas)
+- [Podłącz urządzenia na dużą skalę przy użyciu certyfikatów X.509](#connect-devices-using-x509-certificates) — zalecane podejście dla środowisk produkcyjnych.
+- [Podłączanie urządzeń bez uprzedniej rejestracji](#connect-without-registering-devices)
+- [Łączenie urządzeń korzystających z pojedynczych rejestracji DPS](#individual-enrollment-based-device-connectivity)
+- [Łączenie urządzeń przy użyciu funkcji IoT Plug and Play (podgląd)](#connect-devices-with-iot-plug-and-play-preview)
 
-## <a name="connect-a-single-device"></a>Podłącz pojedyncze urządzenie
+## <a name="connect-a-single-device"></a>Podłączanie jednego urządzenia
 
-Takie podejście jest przydatne w przypadku eksperymentowania z IoT Central lub testowaniem urządzeń. Możesz użyć informacji o połączeniu urządzenia z aplikacji IoT Central, aby podłączyć urządzenie do aplikacji IoT Central za pomocą usługi Device Provisioning (DPS). Przykładowy kod klienta usługi DPS można znaleźć dla następujących języków:
+Takie podejście jest przydatne podczas eksperymentowania z IoT Central lub urządzeń testowych. Za pomocą kluczy SAS połączenia urządzenia z aplikacji IoT Central można podłączyć urządzenie do aplikacji IoT Central. Skopiuj _klucz SYGNATURY DOSTĘPU WSPÓŁDZIELONEGO urządzenia_ z informacji o połączeniu zarejestrowanego urządzenia:
 
-- [C\#](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device)
-- [Node.js](https://github.com/Azure-Samples/azure-iot-samples-node/tree/master/provisioning/Samples/device)
+![Klawisze SAS dla pojedynczego urządzenia](./media/concepts-get-connected/single-device-sas.png)
 
-## <a name="connect-devices-at-scale-using-sas"></a>Łączenie urządzeń na dużą skalę przy użyciu sygnatury dostępu współdzielonego
+Aby dowiedzieć się więcej, zobacz [Tworzenie i łączenie aplikacji klienckiej Node.js z samouczkiem aplikacji Azure IoT Central.](./tutorial-connect-device.md)
 
-Aby podłączyć urządzenia do IoT Central na dużą skalę przy użyciu sygnatury dostępu współdzielonego, należy zarejestrować i skonfigurować urządzenia:
+## <a name="connect-devices-at-scale-using-sas"></a>Łączenie urządzeń na dużą skalę za pomocą sas
 
-### <a name="register-devices-in-bulk"></a>Rejestruj urządzenia luzem
+Aby połączyć urządzenia z IoT Central na dużą skalę przy użyciu kluczy SAS, należy zarejestrować, a następnie skonfigurować urządzenia:
 
-Aby zarejestrować dużą liczbę urządzeń w aplikacji IoT Central, należy [zaimportować identyfikatory urządzeń i nazwy](howto-manage-devices.md#import-devices)urządzeń przy użyciu pliku CSV.
+### <a name="register-devices-in-bulk"></a>Rejestrowanie urządzeń zbiorczo
 
-Aby pobrać informacje o połączeniu dla zaimportowanych urządzeń, [wyeksportuj plik CSV z aplikacji IoT Central](howto-manage-devices.md#export-devices).
+Aby zarejestrować dużą liczbę urządzeń w aplikacji IoT Central, użyj pliku CSV, aby [zaimportować identyfikatory urządzeń i nazwy urządzeń.](howto-manage-devices.md#import-devices)
 
-> [!NOTE]
-> Aby dowiedzieć się, jak można podłączyć urządzenia bez wcześniejszego rejestrowania ich w IoT Central, zobacz [Connecting bez wcześniejszego rejestrowania urządzeń](#connect-without-registering-devices).
+Aby pobrać informacje o połączeniu dla importowanych urządzeń, [wyeksportuj plik CSV z aplikacji IoT Central](howto-manage-devices.md#export-devices). Wyeksportowany plik CSV zawiera identyfikatory urządzeń i klucze SAS.
 
 ### <a name="set-up-your-devices"></a>Konfigurowanie urządzeń
 
-Użyj informacji o połączeniu z pliku eksportu w kodzie urządzenia, aby umożliwić urządzeniom łączenie i wysyłanie danych do usługi IoT do aplikacji IoT Central. Aby uzyskać więcej informacji na temat łączenia urządzeń, zobacz [następne kroki](#next-steps).
+Użyj informacji o połączeniu z pliku eksportu w kodzie urządzenia, aby umożliwić urządzeniom łączenie i wysyłanie danych do aplikacji IoT Central. Potrzebujesz również zakresu **identyfikatora** DPS dla aplikacji. Tę wartość można znaleźć w **administracji > połączenie urządzenia**.
 
-## <a name="connect-devices-using-x509-certificates"></a>Łączenie urządzeń za pomocą certyfikatów X. 509
+> [!NOTE]
+> Aby dowiedzieć się, jak łączyć urządzenia bez uprzedniej rejestracji w Urzędzie IoT, zobacz [Łączenie bez uprzedniej rejestracji urządzeń](#connect-without-registering-devices).
 
-W środowisku produkcyjnym używanie certyfikatów X. 509 jest zalecanym mechanizmem uwierzytelniania urządzeń dla IoT Central. Aby dowiedzieć się więcej, zobacz [uwierzytelnianie urządzeń za pomocą certyfikatów X. 509 urzędu certyfikacji](../../iot-hub/iot-hub-x509ca-overview.md).
+## <a name="connect-devices-using-x509-certificates"></a>Łączenie urządzeń przy użyciu certyfikatów X.509
 
-Poniższe kroki opisują sposób łączenia urządzeń z IoT Central przy użyciu certyfikatów X. 509:
+W środowisku produkcyjnym używanie certyfikatów X.509 jest zalecanym mechanizmem uwierzytelniania urządzeń dla usługi IoT Central. Aby dowiedzieć się więcej, zobacz [Uwierzytelnianie urządzeń przy użyciu certyfikatów urzędu certyfikacji X.509](../../iot-hub/iot-hub-x509ca-overview.md).
 
-1. W aplikacji IoT Central _Dodaj i sprawdź pośredni lub główny certyfikat X. 509_ , który jest używany do generowania certyfikatów urządzeń:
+Przed podłączeniem urządzenia do certyfikatu X.509 należy dodać i zweryfikować certyfikat pośredni lub główny certyfikat X.509 w aplikacji. Urządzenia muszą używać certyfikatów typu leaf X.509 wygenerowanych na podstawie certyfikatu głównego lub pośredniego.
 
-    - Przejdź do opcji **administracja > połączenie z urządzeniem > certyfikaty (X. 509)** i Dodaj certyfikat główny lub pośredni X. 509, którego używasz do generowania certyfikatów urządzeń typu liść.
+### <a name="add-and-verify-a-root-or-intermediate-certificate"></a>Dodawanie i weryfikowanie certyfikatu głównego lub pośredniego
 
-      ![Ustawienia połączenia](media/concepts-get-connected/connection-settings.png)
+Przejdź do **pozycji Połączenie > administracji urządzenia > zarządzać certyfikatem podstawowym** i dodać certyfikat główny lub pośredni X.509 używany do generowania certyfikatów urządzeń.
 
-      W przypadku naruszenia zabezpieczeń lub wymuszenia wygaśnięcia certyfikatu podstawowego Użyj certyfikatu pomocniczego, aby zmniejszyć przestoje. Podczas aktualizowania certyfikatu podstawowego można nadal inicjować obsługę administracyjną urządzeń przy użyciu certyfikatu pomocniczego.
+![Ustawienia połączenia](media/concepts-get-connected/manage-x509-certificate.png)
 
-    - Weryfikowanie własności certyfikatu gwarantuje, że obiektu przekazującego certyfikatu ma klucz prywatny certyfikatu. Aby zweryfikować certyfikat:
-        - Wybierz przycisk obok **kodu weryfikacyjnego** , aby wygenerować kod.
-        - Utwórz certyfikat weryfikacji X. 509 z kodem weryfikacyjnym wygenerowanym w poprzednim kroku. Zapisz certyfikat jako plik CER.
-        - Przekaż podpisany certyfikat weryfikacyjny i wybierz pozycję **Weryfikuj**.
+Weryfikacja własności certyfikatu gwarantuje, że osoba przekazująca certyfikat ma klucz prywatny certyfikatu. Aby zweryfikować certyfikat:
 
-          ![Ustawienia połączenia](media/concepts-get-connected/verify-cert.png)
+  1. Wybierz przycisk obok **pozycji Kod weryfikacyjny,** aby wygenerować kod.
+  1. Utwórz certyfikat weryfikacji X.509 z kodem weryfikacyjnym wygenerowanym w poprzednim kroku. Zapisz certyfikat jako plik cer.
+  1. Prześlij podpisany certyfikat weryfikacji i wybierz pozycję **Sprawdź**. Certyfikat jest oznaczony jako **Zweryfikowany** po pomyślnym zakończeniu weryfikacji.
 
-1. Użyj pliku CSV do _zaimportowania i zarejestrowania urządzeń_ w aplikacji IoT Central.
+Jeśli masz naruszenie zabezpieczeń lub certyfikat podstawowy jest ustawiony na wygaśnięcie, użyj certyfikatu pomocniczego, aby skrócić czas przestoju. Podczas aktualizowania certyfikatu podstawowego można kontynuować aprowizyję urządzeń przy użyciu certyfikatu pomocniczego.
 
-1. _Konfigurowanie urządzeń._ Wygeneruj certyfikaty liścia przy użyciu przekazanego certyfikatu głównego. Użyj **identyfikatora urządzenia** jako wartości CNAME w certyfikatach liścia. Identyfikator urządzenia powinien składać się ze wszystkich małych liter. Następnie zaprogramowanie urządzeń przy użyciu informacji o usłudze aprowizacji. Gdy urządzenie jest włączane po raz pierwszy, pobiera informacje o połączeniu dla aplikacji IoT Central z usługi DPS.
+### <a name="register-and-connect-devices"></a>Rejestrowanie i podłączanie urządzeń
 
-### <a name="further-reference"></a>Dalsze informacje
+Aby połączyć urządzenia zbiorcze przy użyciu certyfikatów X.509, należy najpierw zarejestrować urządzenia w aplikacji, za pomocą pliku CSV, aby [zaimportować identyfikatory urządzeń i nazwy urządzeń](howto-manage-devices.md#import-devices). Identyfikatory urządzeń powinny być małe.
 
-- Przykładowa implementacja dla [RaspberryPi.](https://aka.ms/iotcentral-docs-Raspi-releases)
-
-- [Przykładowy klient urządzenia w języku C.](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+Generowanie certyfikatów X.509 dla urządzeń przy użyciu przekazanego certyfikatu głównego lub pośredniego. Użyj **identyfikatora urządzenia** `CNAME` jako wartości w certyfikatach liścia. Kod urządzenia wymaga wartości **zakresu identyfikatora** dla aplikacji, **identyfikatora urządzenia**i odpowiedniego certyfikatu urządzenia.
 
 ### <a name="for-testing-purposes-only"></a>Tylko do celów testowych
 
-Do celów testowych można użyć tych narzędzi do generowania certyfikatów urzędu certyfikacji i certyfikatów urządzeń.
+Tylko do testowania można użyć następujących narzędzi do generowania certyfikatów głównych, pośrednich i urządzeń:
 
-- W przypadku korzystania z urządzenia DevKit to [Narzędzie wiersza polecenia](https://aka.ms/iotcentral-docs-dicetool) generuje certyfikat urzędu certyfikacji, który można dodać do aplikacji IoT Central w celu zweryfikowania certyfikatów.
+- [Narzędzia dla zestawu SDK urządzenia inicjowania obsługi administracyjnej urządzeń azure IoT:](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md)kolekcja narzędzi Node.js, których można używać do generowania i weryfikowania certyfikatów i kluczy X.509.
+- Jeśli używasz urządzenia DevKit, to [narzędzie wiersza polecenia](https://aka.ms/iotcentral-docs-dicetool) generuje certyfikat urzędu certyfikacji, który można dodać do aplikacji IoT Central w celu zweryfikowania certyfikatów.
+- [Zarządzanie testowymi certyfikatami urzędu certyfikacji dla przykładów i samouczków:](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)kolekcja skryptów programu PowerShell i Bash w celu:
+  - Tworzenie łańcucha certyfikatów.
+  - Zapisz certyfikaty jako pliki cer do przekazania do aplikacji IoT Central.
+  - Użyj kodu weryfikacyjnego z aplikacji IoT Central, aby wygenerować certyfikat weryfikacji.
+  - Tworzenie certyfikatów liścia dla urządzeń przy użyciu identyfikatorów urządzeń jako parametru narzędzia.
 
-- Użyj tego [narzędzia wiersza polecenia](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) , aby:
-  - Utwórz łańcuch certyfikatów. Wykonaj krok 2 w artykule w witrynie GitHub.
-  - Zapisz certyfikaty jako pliki. cer, aby przekazać je do aplikacji IoT Central.
-  - Użyj kodu weryfikacyjnego z aplikacji IoT Central w celu wygenerowania certyfikatu weryfikacji. Wykonaj krok 3 w artykule w witrynie GitHub.
-  - Utwórz certyfikaty liści dla urządzeń, korzystając z identyfikatorów urządzeń jako parametru do narzędzia. Wykonaj krok 4 w artykule w witrynie GitHub.
+### <a name="further-reference"></a>Dalsze informacje
 
-## <a name="connect-without-registering-devices"></a>Łączenie bez rejestrowania urządzeń
+- [Przykładowa implementacja dla RaspberryPi](https://aka.ms/iotcentral-docs-Raspi-releases)
+- [Przykładowy klient urządzenia w C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
 
-Kluczowym scenariuszem IoT Central umożliwia producentom OEM zbiorcze wyprodukowanie urządzeń, które mogą nawiązywać połączenia z aplikacją IoT Central bez wcześniejszego zarejestrowania. Producent musi generować odpowiednie poświadczenia i konfigurować urządzenia w fabryce. Gdy urządzenie jest włączane po raz pierwszy, automatycznie łączy się z aplikacją IoT Central. Aby można było wymusić wysyłanie danych, operator IoT Central musi zatwierdzić urządzenie.
+## <a name="connect-without-registering-devices"></a>Łączenie bez rejestracji urządzeń
 
-Na poniższym diagramie przedstawiono ten przepływ:
+Wcześniej opisane scenariusze wymagają zarejestrowania urządzeń w aplikacji przed nawiązaniem połączenia. IoT Central umożliwia również producentom OEM masową produkcję urządzeń, które można łączyć bez uprzedniego zarejestrowania. Producent OEM generuje odpowiednie poświadczenia urządzenia i konfiguruje urządzenia fabrycznie. Gdy klient włącza urządzenie po raz pierwszy, łączy się z dps, który następnie automatycznie łączy urządzenie do poprawnej aplikacji IoT Central. Operator centrum IoT musi zatwierdzić urządzenie przed rozpoczęciem wysyłania danych do aplikacji.
 
-![Ustawienia połączenia](media/concepts-get-connected/device-connection-flow1.png)
+Przepływ różni się nieco w zależności od tego, czy urządzenia używają tokenów Sygnatury dostępu Współdzielonego, czy certyfikatów X.509:
 
-Poniższe kroki opisują ten proces bardziej szczegółowo. Kroki różnią się nieco w zależności od tego, czy są używane certyfikaty SAS lub X. 509 na potrzeby uwierzytelniania urządzenia:
+### <a name="connect-devices-that-use-sas-tokens-without-registering"></a>Łączenie urządzeń korzystających z tokenów Sygnatury dostępu Współdzielonego bez rejestracji
 
-1. Skonfiguruj ustawienia połączenia:
+1. Skopiuj klucz podstawowy grupy aplikacji IoT Central:
 
-    - **Certyfikaty X. 509:** [Dodaj i Sprawdź certyfikat główny/pośredni](#connect-devices-using-x509-certificates) i użyj go do wygenerowania certyfikatów urządzeń w następnym kroku.
-    - **SAS:** Skopiuj klucz podstawowy. Ten klucz jest grupowym kluczem SAS dla aplikacji IoT Central. Użyj klucza do wygenerowania kluczy sygnatury dostępu współdzielonego urządzenia w następnym kroku.
-    ![](media/concepts-get-connected/connection-settings-sas.png) SAS ustawień połączenia
+    ![Podstawowy klucz SAS grupy aplikacji](media/concepts-get-connected/group-sas-keys.png)
 
-1. Generowanie poświadczeń urządzenia
-    - **Certyfikaty X. 509:** Wygeneruj certyfikaty liści dla urządzeń przy użyciu certyfikatu głównego lub pośredniego dodanego do aplikacji IoT Central. Upewnij się, że w certyfikatach liścia jest używany **Identyfikator urządzenia** z małymi literami jako rekord CNAME. Tylko do celów testowych Użyj tego [narzędzia wiersza polecenia](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) do generowania certyfikatów urządzeń.
-    - **SAS:** Za pomocą tego [narzędzia wiersza polecenia](https://www.npmjs.com/package/dps-keygen) można generować klucze SAS urządzeń. Użyj **klucza podstawowego** grupy z poprzedniego kroku. Identyfikator urządzenia musi mieć małe litery.
+1. Użyj narzędzia [dps-keygen](https://www.npmjs.com/package/dps-keygen) do generowania kluczy SAS urządzenia. Użyj klucza podstawowego grupy z poprzedniego kroku. Identyfikatory urządzeń muszą być małe:
 
-      Aby zainstalować [Narzędzie Generator kluczy](https://github.com/Azure/dps-keygen), uruchom następujące polecenie:
+    ```cmd
+    dps-keygen -mk:<group primary key> -di:<device ID>
+    ```
 
-      ```cmd/sh
-      npm i -g dps-keygen
-      ```
+1. Producent OEM miga każde urządzenie z identyfikatorem urządzenia, wygenerowanym kluczem SAS urządzenia i **wartością zakresu identyfikatora** aplikacji.
 
-      Aby wygenerować klucz urządzenia z klucza podstawowego SAS grupy, uruchom następujące polecenie:
+1. Po włączeniu urządzenia najpierw łączy się z dps, aby pobrać jego informacje rejestracyjne IoT Central.
 
-      ```cmd/sh
-      dps-keygen -mk:<Primary_Key(GroupSAS)> -di:<device_id>
-      ```
+    Urządzenie początkowo ma stan urządzenia **bez związku** na stronie **Urządzenia** i nie jest przypisane do szablonu urządzenia. Na stronie **Urządzenia** **przenieś** urządzenie do odpowiedniego szablonu urządzenia. Inicjowanie obsługi administracyjnej urządzenia jest już zakończone, stan urządzenia jest teraz **aprowizowana,** a urządzenie może rozpocząć wysyłanie danych.
 
-1. Aby skonfigurować urządzenia, należy wypróbować każde urządzenie z **identyfikatorem zakresu**, **identyfikatorem urządzenia**i **certyfikatem urządzenia X. 509** lub **kluczem sygnatury dostępu współdzielonego**.
+    Na stronie **Połączenie > Urządzenia administracja** opcja Automatyczne **zatwierdzanie** określa, czy należy ręcznie zatwierdzić urządzenie, zanim będzie można rozpocząć wysyłanie danych.
 
-1. Następnie włącz urządzenie, aby połączyć się z aplikacją IoT Central. Po przełączeniu na urządzenie najpierw nawiązuje połączenie z usługą DPS w celu pobrania informacji o rejestracji IoT Central.
+    > [!NOTE]
+    > Aby dowiedzieć się, jak automatycznie kojarzyć urządzenie z szablonem urządzenia, zobacz [Łączenie urządzeń z ioT Plug and Play (wersja zapoznawcza)](#connect-devices-with-iot-plug-and-play-preview).
 
-1. Podłączone urządzenie początkowo jest wyświetlane jako **nieskojarzone** na stronie **urządzenia** . Stan aprowizacji urządzeń jest **zarejestrowany**. **Przeprowadź migrację** urządzenia do odpowiedniego szablonu urządzenia i zatwierdź urządzenie w celu nawiązania połączenia z aplikacją IoT Central. Następnie urządzenie może pobrać parametry połączenia z IoT Hub i rozpocząć wysyłanie danych. Inicjowanie obsługi urządzeń zostało zakończone, a stan aprowizacji jest teraz **zainicjowany**.
+### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>Podłączanie urządzeń korzystających z certyfikatów X.509 bez rejestracji
 
-## <a name="individual-enrollment-based-device-connectivity"></a>Indywidualne połączenie z urządzeniem opartym na rejestracji
+1. [Dodaj i zweryfikuj główny lub pośredni certyfikat X.509](#connect-devices-using-x509-certificates) do aplikacji IoT Central. (#connect-devices-using-x509-certificates)
 
-W przypadku klientów łączących urządzenia z poświadczeniami uwierzytelniania dla poszczególnych urządzeń jest dostępna opcja. Rejestracja indywidualna to wpis dla jednego urządzenia, które może nawiązać połączenie. Rejestracje indywidualne mogą używać certyfikatów liścia X. 509 lub tokenów SAS (z poziomu fizycznego lub wirtualnego modułu TPM) jako mechanizmów zaświadczania. Identyfikator urządzenia (znany również jako identyfikator rejestracji) w rejestracji indywidualnej jest alfanumeryczny, pisany małymi literami i może zawierać łączniki. Więcej informacji na temat poszczególnych rejestracji [znajdziesz tutaj](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment).
+1. Generuj certyfikaty liściowe dla swoich urządzeń przy użyciu certyfikatu głównego lub pośredniego dodanego do aplikacji IoT Central. Użyj identyfikatorów urządzeń o niższych literach jako `CNAME` certyfikatów typu liść.
+
+1. Producent OEM miga każde urządzenie z identyfikatorem urządzenia, wygenerowanym lewym certyfikatem X.509 i **wartością zakresu identyfikatora** aplikacji.
+
+1. Po włączeniu urządzenia najpierw łączy się z dps, aby pobrać jego informacje rejestracyjne IoT Central.
+
+    Urządzenie początkowo ma stan urządzenia **bez związku** na stronie **Urządzenia** i nie jest przypisane do szablonu urządzenia. Na stronie **Urządzenia** **przenieś** urządzenie do odpowiedniego szablonu urządzenia. Inicjowanie obsługi administracyjnej urządzenia jest już zakończone, stan urządzenia jest teraz **aprowizowana,** a urządzenie może rozpocząć wysyłanie danych.
+
+    Na stronie **Połączenie > Urządzenia administracja** opcja Automatyczne **zatwierdzanie** określa, czy należy ręcznie zatwierdzić urządzenie, zanim będzie można rozpocząć wysyłanie danych.
+
+    > [!NOTE]
+    > Aby dowiedzieć się, jak automatycznie kojarzyć urządzenie z szablonem urządzenia, zobacz [Łączenie urządzeń z ioT Plug and Play (wersja zapoznawcza)](#connect-devices-with-iot-plug-and-play-preview).
+
+## <a name="individual-enrollment-based-device-connectivity"></a>Indywidualna łączność z urządzeniami opartymi na rejestracji
+
+W przypadku klientów łączących urządzenia, z których każdy ma własne poświadczenia uwierzytelniania, należy używać rejestracji indywidualnych. Rejestracja indywidualna to wpis dla jednego urządzenia, które może się połączyć. Poszczególne rejestracje mogą używać certyfikatów listowych X.509 lub tokenów Sygnatury dostępu Współdzielonego (z fizycznego lub wirtualnego zaufanego modułu platformy) jako mechanizmów zaświadczania. Identyfikator urządzenia (znany również jako identyfikator rejestracji) w indywidualnej rejestracji jest alfanumeryczny, małe litery i może zawierać łączniki. Aby uzyskać więcej informacji, zobacz [DPS rejestracji indywidualnej](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment).
 
 > [!NOTE]
-> Podczas tworzenia rejestracji indywidualnej dla urządzenia ma ono pierwszeństwo przed domyślnymi poświadczeniami opartymi na rejestracji w grupie (SAS, x509) w aplikacji.
+> Podczas tworzenia rejestracji indywidualnej dla urządzenia, ma pierwszeństwo przed domyślnymi opcjami rejestracji grupy w aplikacji IoT Central.
 
-### <a name="creating-individual-enrollments"></a>Tworzenie indywidualnych rejestracji
-IoT Central obsługuje następujące mechanizmy zaświadczania
+### <a name="creating-individual-enrollments"></a>Tworzenie rejestracji indywidualnych
 
-1. **Zaświadczenie klucza symetrycznego:** Zaświadczenie klucza symetrycznego to proste podejście do uwierzytelniania urządzenia za pomocą wystąpienia usługi Device Provisioning. Aby utworzyć rejestrację indywidualną przy użyciu kluczy symetrycznych; Otwórz okno dialogowe łączenie, wybierz pozycję Rejestracja indywidualna i mechanizm "SAS" oraz wprowadź klucze podstawowe i pomocnicze. Klucze SAS muszą być zakodowane w formacie base64. Poniżej znajduje się [łącze](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) do przykładów kodu, które ułatwiają pisanie kodu urządzenia w celu aprowizacji urządzeń przy użyciu kluczy symetrycznych i rejestracji indywidualnych.
-1. **Certyfikaty X. 509:** Certyfikaty X. 509 zgodnie z tytułem sugerujeją mechanizm zaświadczania opartego na certyfikatach, ale świetny sposób skalowania produkcji. Aby utworzyć rejestrację indywidualną przy użyciu kluczy symetrycznych, wybierz pozycję Rejestracja i mechanizm "X. 509" i przekaż certyfikaty podstawowe i pomocnicze i Zapisz w celu utworzenia rejestracji. Poniżej znajduje się [łącze](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample) do przykładów kodu, które ułatwiają pisanie kodu urządzenia w celu aprowizacji urządzeń przy użyciu certyfikatu x509. Certyfikaty urządzeń używane z [indywidualnym](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment) wpisem rejestracji wymagają, aby nazwa podmiotu musiała być ustawiona na identyfikator urządzenia (znany również jako identyfikator rejestracji) indywidualnego wpisu rejestracji.
-1. **Zaświadczanie modułu TPM:** Moduł TPM ma moduł TPM i jest typem sprzętowego modułu zabezpieczeń (HSM) i jest jednym z najbardziej bezpiecznych sposobów łączenia urządzeń.  W tym artykule przyjęto założenie, że używasz dyskretnego, oprogramowania układowego lub zintegrowanego modułu TPM. Emulowane moduły TPM oprogramowania są odpowiednie dla prototypów lub testowania, ale nie zapewniają takiego samego poziomu zabezpieczeń jak dyskretny, oprogramowanie układowe lub zintegrowane moduły TPM do. Nie zalecamy korzystania z moduły TPM oprogramowania w środowisku produkcyjnym. Aby utworzyć rejestrację indywidualną przy użyciu kluczy symetrycznych, wybierz pozycję Rejestracja i mechanizm "TPM" i wprowadź klucze poręczenia, aby utworzyć rejestrację. Aby uzyskać więcej informacji na temat typów moduły TPM, możesz dowiedzieć się więcej na temat zaświadczania modułu TPM [tutaj](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation). Poniżej znajduje się [łącze](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/TpmSample) do przykładów kodu, które ułatwiają pisanie kodu urządzenia w celu aprowizacji urządzeń przy użyciu modułu TPM. Aby utworzyć zaświadczanie oparte na module TPM, wpisz klucz poręczenia i Zapisz.
+IoT Central obsługuje następujące mechanizmy zaświadczania dla poszczególnych rejestracji:
 
-## <a name="connect-devices-with-iot-plug-and-play-preview"></a>Łączenie urządzeń z usługą IoT Plug and Play (wersja zapoznawcza)
+- **Zaświadczenie klucza symetrycznego:** Zaświadczanie klucza symetrycznego jest proste podejście do uwierzytelniania urządzenia z wystąpieniem DPS. Aby utworzyć indywidualną rejestrację, która używa kluczy symetrycznych, otwórz stronę **Połączenie urządzenia,** wybierz opcję **Rejestracja indywidualna** jako metodę połączenia i **Podpis dostępu współdzielonego (SAS)** jako mechanizm. Wprowadź zakodowane klucze podstawowe i pomocnicze base64 i zapisz zmiany. Użyj **zakresu identyfikatora**, **identyfikatora urządzenia**i klucza podstawowego lub pomocniczego, aby podłączyć urządzenie.
 
-Jedną z najważniejszych funkcji usługi IoT Plug and Play (wersja zapoznawcza) z IoT Central jest możliwość automatycznego kojarzenia szablonów urządzeń z urządzeniem. Wraz z poświadczeniami urządzeń urządzenia mogą teraz wysyłać **CapabilityModelId** w ramach wywołania rejestracji urządzeń, a IoT Central odnajdywania i kojarzenia szablonu urządzenia. Proces odnajdywania jest następujący:
+    > [!TIP]
+    > Do testowania można użyć **OpenSSL** do generowania kluczy zakodowanych base64:`openssl rand -base64 64`
 
-1. Kojarzy z szablonem urządzenia, jeśli został już opublikowany w aplikacji IoT Central.
+- **Certyfikaty X.509:** Aby utworzyć indywidualną rejestrację z certyfikatami X.509, otwórz stronę **Połączenie urządzenia,** wybierz opcję **Rejestracja indywidualna** jako metoda połączenia i **Certyfikaty (X.509)** jako mechanizm. Certyfikaty urządzeń używane z indywidualnym wpisem rejestracji mają wymóg, aby wystawca i podmiot CN były ustawione na identyfikator urządzenia.
+
+    > [!TIP]
+    > Do testowania można użyć [narzędzia dla zestawu SDK urządzenia inicjowania obsługi administracyjnej urządzeń azure dla node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) do generowania certyfikatu z podpisem własnym:`node create_test_cert.js device "mytestdevice"`
+
+- **Zaświadczenie modułu TPM (Trusted Platform Module):** Moduł [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) jest rodzajem sprzętowego modułu zabezpieczeń. Korzystanie z modułu TPM jest jednym z najbezpieczniejszych sposobów podłączenia urządzenia. W tym artykule założono, że używasz dyskretnego, firmware lub zintegrowanego modułu TPM. Emulowane programowo moduły TPM doskonale nadają się do prototypowania lub testowania, ale nie zapewniają takiego samego poziomu bezpieczeństwa, jak dyskretne, firmware lub zintegrowane moduły TPM. Nie używaj programów TPM w produkcji. Aby utworzyć rejestrację indywidualną, która używa modułu TPM, otwórz stronę **Połączenie urządzenia,** wybierz opcję **Rejestracja indywidualna** jako metodę połączenia, a moduł **TPM** jako mechanizm. Wprowadź klucz poręczenia modułu TPM i zapisz informacje o połączeniu urządzenia.
+
+## <a name="connect-devices-with-iot-plug-and-play-preview"></a>Łączenie urządzeń za pomocą ioT Plug and Play (wersja zapoznawcza)
+
+Jedną z kluczowych funkcji IoT Plug and Play (podgląd) z IoT Central jest możliwość automatycznego kojarzenia szablonów urządzeń na połączenie urządzenia. Wraz z poświadczeniami urządzenia urządzenia mogą teraz wysyłać **CapabilityModelId** jako część wywołania rejestracji urządzenia. Ta funkcja umożliwia IoT Central odnajdywać i kojarzyć szablon urządzenia z urządzeniem. Proces odnajdywania działa w następujący sposób:
+
+1. Kojarzy się z szablonem urządzenia, jeśli jest on już opublikowany w aplikacji IoT Central.
 1. Pobiera z publicznego repozytorium opublikowanych i certyfikowanych modeli możliwości.
 
-Poniżej znajduje się format dodatkowego ładunku wysyłanego przez urządzenie podczas wywołania rejestracji w usłudze DPS
+Poniżej znajduje się format dodatkowego ładunku, który urządzenie wysłałoby podczas wywołania rejestracji DPS
 
 ```javascript
 '__iot:interfaces': {
-              CapabilityModelId: <this is the URN for the capability model>
-          }
+    CapabilityModelId: <this is the URN for the capability model>
+}
 ```
 
 > [!NOTE]
-> Należy pamiętać, że opcja automatycznego zatwierdzania powinna być włączona, aby urządzenia automatycznie łączyły się, wykrywać model i rozpoczynać wysyłanie danych.
+> Należy zauważyć, że opcja **Automatyczne zatwierdzanie** w **administracji > połączenie urządzenia** musi być włączona, aby urządzenia automatycznie łączyły się, odnajdywały szablon urządzenia i rozpoczynały wysyłanie danych.
 
-## <a name="device-status"></a>Stan urządzenia
+## <a name="device-status-values"></a>Wartości stanu urządzenia
 
-Gdy rzeczywiste urządzenie nawiązuje połączenie z aplikacją IoT Central, stan urządzenia zmienia się w następujący sposób:
+Gdy rzeczywiste urządzenie łączy się z aplikacją IoT Central, jego stan urządzenia zmienia się w następujący sposób:
 
-1. Stan urządzenia jest pierwszy **zarejestrowany**. Ten stan oznacza, że urządzenie jest tworzone w IoT Central i ma identyfikator urządzenia. Urządzenie jest rejestrowane, gdy:
-    - Na stronie **urządzenia** zostanie dodane nowe rzeczywiste urządzenie.
-    - Zestaw urządzeń jest dodawany przy użyciu opcji **Importuj** na stronie **urządzenia** .
+1. Stan urządzenia jest najpierw **zarejestrowany**. Ten stan oznacza, że urządzenie jest tworzone w UIOT Central i ma identyfikator urządzenia. Urządzenie jest rejestrowane, gdy:
+    - Nowe rzeczywiste urządzenie zostanie dodane na stronie **Urządzenia.**
+    - Zestaw urządzeń jest dodawany przy użyciu **importu** na stronie **Urządzenia.**
 
-1. Stan urządzenia zostanie zmieniony na **zainicjowany** , gdy urządzenie połączone z aplikacją IoT Central z prawidłowymi poświadczeniami ukończy krok aprowizacji. W tym kroku urządzenie pobiera parametry połączenia z IoT Hub. Urządzenie może teraz połączyć się z IoT Hub i rozpocząć wysyłanie danych.
+1. Stan urządzenia zmienia się na **Aprowizowana,** gdy urządzenie podłączone do aplikacji IoT Central z prawidłowymi poświadczeniami zakończy krok inicjowania obsługi administracyjnej. W tym kroku urządzenie używa dps do automatycznego pobierania ciągu połączenia z Usługi IoT Hub używane przez aplikację IoT Central. Urządzenie może teraz łączyć się z centrum IoT i rozpoczynać wysyłanie danych.
 
-1. Operator może blokować urządzenie. Gdy urządzenie jest zablokowane, nie może wysyłać danych do aplikacji IoT Central. Zablokowane urządzenia mają stan **zablokowany**. Operator musi zresetować urządzenie, aby można było wznowić wysyłanie danych. Gdy operator odblokowuje urządzenie, stan powraca do poprzedniej wartości, **zarejestrowane** lub **obsługiwane**.
+1. Operator może zablokować urządzenie. Gdy urządzenie jest zablokowane, nie może wysyłać danych do aplikacji IoT Central. Zablokowane urządzenia mają stan **Zablokowane**. Operator musi zresetować urządzenie, zanim będzie można wznowić wysyłanie danych. Gdy operator odblokowuje urządzenie, stan powraca do poprzedniej wartości, **zarejestrowanej** lub **Aprowizowana**.
 
-1. Stan urządzenia **oczekuje na zatwierdzenie**, co oznacza, że opcja **autozatwierdzania** jest wyłączona i wymaga, aby wszystkie urządzenia łączące się z IoT Central być jawnie zatwierdzone przez operatora. Urządzenia, które nie zostały zarejestrowane ręcznie na stronie **urządzeń** , ale połączono z prawidłowymi poświadczeniami, będą mieć stan urządzenia **oczekujący na zatwierdzenie**. Operatory mogą zatwierdzać te urządzenia ze strony **urządzenia** za pomocą przycisku **Zatwierdź** .
+1. Jeśli stan urządzenia to **Oczekiwanie na zatwierdzenie,** oznacza to, że opcja **Auto zatwierdzania** jest wyłączona. Operator musi jawnie zatwierdzić urządzenie przed rozpoczęciem wysyłania danych. Urządzenia niezarejestrowane ręcznie na stronie **Urządzenia,** ale połączone z prawidłowymi poświadczeniami będą miały stan urządzenia **Oczekiwanie na zatwierdzenie**. Operatorzy mogą zatwierdzać te urządzenia na stronie **Urządzenia** za pomocą przycisku **Zatwierdź.**
 
-1. Stan urządzenia jest **nieskojarzony**, co oznacza, że urządzenia łączące się z IoT Central nie mają skojarzonego szablonu urządzenia. Jest to zwykle wykonywane w następujących scenariuszach:
-    - Zestaw urządzeń jest dodawany przy użyciu opcji **Importuj** na stronie **urządzenia** bez określania szablonu urządzenia
-    - Urządzenia, które nie zostały zarejestrowane ręcznie na stronie **urządzeń** połączone z prawidłowymi poświadczeniami, ale bez określania identyfikatora szablonu podczas rejestracji.  
-Operator może skojarzyć urządzenie z szablonem ze strony **urządzenia** za pomocą przycisku **Migrowanie** .
+1. Jeśli stan urządzenia jest **nieskołączeniu,** oznacza to, że urządzenie łączące się z centrum IoT nie ma skojarzonego szablonu urządzenia. Taka sytuacja zazwyczaj dzieje się w następujących scenariuszach:
 
-## <a name="best-practices"></a>Najlepsze praktyki 
-1.  W przypadku używania usługi DPS do łączenia urządzeń z IoT Central upewnij się, że parametry połączenia urządzenia (IoT Hub) nie są utrwalane lub buforowane. Aby ponownie nawiązać połączenie z urządzeniami, przejdź przez regularne przepływu rejestracji urządzeń usługi DPS w celu uzyskania prawidłowych parametrów połączenia urządzenia. Jeśli parametry połączenia są buforowane, oprogramowanie urządzenia jest uruchamiane w celu ryzyka posiadania starych parametrów połączenia w scenariuszach, w których IoT Central zaktualizował bazowe IoT Hub platformy Azure. 
+    - Zestaw urządzeń jest dodawany przy użyciu **importu** na stronie **Urządzenia** bez określania szablonu urządzenia.
+    - Urządzenie zostało zarejestrowane ręcznie na stronie **Urządzenia** bez określania szablonu urządzenia. Urządzenie następnie połączone z prawidłowymi poświadczeniami.  
+
+    Operator może skojarzyć urządzenie z szablonem urządzenia na stronie **Urządzenia** za pomocą przycisku **Migruj.**
+
+## <a name="best-practices"></a>Najlepsze rozwiązania
+
+Nie należy zachowywać ani buforować ciągu połączenia urządzenia, który dps zwraca po pierwszym podłączeniu urządzenia. Aby ponownie podłączyć urządzenie, przejdź przez standardowy przepływ rejestracji urządzenia, aby uzyskać prawidłowy ciąg połączenia urządzenia. Jeśli urządzenie buforuje parametry połączenia, oprogramowanie urządzenia naraży na ryzyko wystąpienia nieaktualnego ciągu połączenia, jeśli usługa IoT Central aktualizuje bazowy koncentrator Azure IoT hub, którego używa.
 
 ## <a name="sdk-support"></a>Obsługa zestawu SDK
 
-Zestawy SDK urządzeń platformy Azure oferują najprostszy sposób implementacji kodu urządzenia. Dostępne są następujące zestawy SDK urządzeń:
+Zestaw SDK urządzeń platformy Azure oferuje najprostszy sposób implementowania kodu urządzenia. Dostępne są następujące sdk urządzeń:
 
-- [Zestaw SDK usługi Azure IoT dla języka C](https://github.com/azure/azure-iot-sdk-c)
-- [Zestaw SDK usługi Azure IoT dla języka Python](https://github.com/azure/azure-iot-sdk-python)
-- [Zestaw SDK usługi Azure IoT dla środowiska Node. js](https://github.com/azure/azure-iot-sdk-node)
-- [Zestaw SDK usługi Azure IoT dla języka Java](https://github.com/azure/azure-iot-sdk-java)
+- [Zestaw Azure IoT SDK dla języka C](https://github.com/azure/azure-iot-sdk-c)
+- [Zestaw Azure IoT SDK dla języka Python](https://github.com/azure/azure-iot-sdk-python)
+- [Zestaw Azure IoT SDK dla platformy Node.js](https://github.com/azure/azure-iot-sdk-node)
+- [Zestaw Azure IoT SDK dla języka Java](https://github.com/azure/azure-iot-sdk-java)
 - [Zestaw Azure IoT SDK dla platformy .NET](https://github.com/azure/azure-iot-sdk-csharp)
 
-### <a name="sdk-features-and-iot-hub-connectivity"></a>Funkcje zestawu SDK i IoT Hub łączności
+### <a name="sdk-features-and-iot-hub-connectivity"></a>Funkcje SDK i łączność z centrum IoT
 
-Cała komunikacja urządzeń z IoT Hub używa następujących opcji łączności IoT Hub:
+Cała komunikacja urządzenia z centrum IoT Hub korzysta z następujących opcji łączności Usługi IoT Hub:
 
-- [Obsługa komunikatów przesyłanych z urządzeń do chmury](../../iot-hub/iot-hub-devguide-messages-d2c.md)
-- [Bliźniaczych reprezentacji urządzenia](../../iot-hub/iot-hub-devguide-device-twins.md)
+- [Wiadomości między urządzeniami a chmurą](../../iot-hub/iot-hub-devguide-messages-d2c.md)
+- [Bliźnięta urządzeń](../../iot-hub/iot-hub-devguide-device-twins.md)
 
-Poniższa tabela zawiera podsumowanie sposobu mapowania funkcji usługi Azure IoT Central Device na funkcje IoT Hub:
+W poniższej tabeli podsumowano sposób mapowania funkcji urządzenia usługi Azure IoT Central na funkcje usługi IoT Hub:
 
 | Azure IoT Central | Azure IoT Hub |
 | ----------- | ------- |
-| Pomiar: Telemetria | Obsługa komunikatów przesyłanych z urządzeń do chmury |
-| Właściwości urządzenia | Właściwości zgłoszone przez urządzenie |
-| Ustawienia | Wymagane i zgłoszone właściwości dotyczące sznurka urządzenia |
+| Telemetria | Wiadomości między urządzeniami a chmurą |
+| Właściwość | Właściwości zgłaszane bliźniaczej reprezentacji urządzenia |
+| Właściwość (zapisywalna) | Dwaj bliźniacze właściwości urządzenia pożądane i zgłaszane właściwości |
+| Polecenie | Metody bezpośrednie |
 
-Aby dowiedzieć się więcej o korzystaniu z zestawów SDK urządzeń, zobacz temat [łączenie urządzenia z systemem DevDiv Kit z aplikacją IoT Central platformy Azure](howto-connect-devkit.md) na przykład Code.
+Aby dowiedzieć się więcej na temat korzystania z zestawu SDK urządzeń, zobacz [Łączenie urządzenia zestawu DevDiv z aplikacją Usługi Azure IoT Central,](howto-connect-devkit.md) na przykład kod.
 
 ### <a name="protocols"></a>Protokoły
 
-Zestawy SDK urządzeń obsługują następujące protokoły sieciowe do nawiązywania połączenia z usługą IoT Hub:
+SDK urządzeń obsługują następujące protokoły sieciowe do łączenia się z centrum IoT hub:
 
 - MQTT
 - AMQP
 - HTTPS
 
-Aby uzyskać informacje o tych protokołach różnicowych i wskazówkach dotyczących wybierania tych protokołów, zobacz [Wybieranie protokołu komunikacyjnego](../../iot-hub/iot-hub-devguide-protocols.md).
+Aby uzyskać informacje na temat tych protokołów różnic i wskazówek dotyczących wybierania jednego z nich, zobacz [Wybieranie protokołu komunikacyjnego](../../iot-hub/iot-hub-devguide-protocols.md).
 
-Jeśli urządzenie nie może użyć żadnego z obsługiwanych protokołów, można użyć Azure IoT Edge do konwersji protokołu. IoT Edge obsługuje inne scenariusze analizy w celu odciążenia przetwarzania do krawędzi z aplikacji IoT Central platformy Azure.
+Jeśli urządzenie nie może używać żadnego z obsługiwanych protokołów, możesz użyć usługi Azure IoT Edge do konwersji protokołu. Usługa IoT Edge obsługuje inne scenariusze analizy na podstawie krawędzi, aby odciążyć przetwarzanie do krawędzi z aplikacji Azure IoT Central.
 
 ## <a name="security"></a>Zabezpieczenia
 
-Wszystkie dane wymieniane między urządzeniami a IoT Central platformy Azure są szyfrowane. IoT Hub uwierzytelnia każde żądanie z urządzenia, które nawiązuje połączenie z dowolnymi punktami końcowymi IoT Hub z urządzeniem. Aby uniknąć wymiany poświadczeń za pośrednictwem sieci, urządzenie używa podpisanych tokenów do uwierzytelnienia. Aby uzyskać więcej informacji, zobacz [kontrolowanie dostępu do IoT Hub](../../iot-hub/iot-hub-devguide-security.md).
+Wszystkie dane wymieniane między urządzeniami a centrum Usługi Azure IoT Central są szyfrowane. Centrum IoT Hub uwierzytelnia każde żądanie z urządzenia, które łączy się z dowolnymi punktami końcowymi usługi IoT Hub skierowanego na urządzenie. Aby uniknąć wymiany poświadczeń za pomocą sieci owego, urządzenie używa podpisanych tokenów do uwierzytelniania. Aby uzyskać więcej informacji, zobacz [Kontrolowanie dostępu do Usługi IoT Hub](../../iot-hub/iot-hub-devguide-security.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wiesz już o łączności urządzeń w usłudze Azure IoT Central, poniżej przedstawiono sugerowane następne kroki:
+Teraz, gdy dowiedziałeś się o łączności z urządzeniami w usłudze Azure IoT Central, oto sugerowane następne kroki:
 
-- [Przygotowywanie i łączenie urządzenia DevKit](howto-connect-devkit.md)
-- [SDK języka C: Inicjowanie obsługi klienta urządzenia SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+- [Przygotowywanie i podłączanie urządzenia DevKit](howto-connect-devkit.md)
+- [C SDK: Przydzielenie obsługi administracyjnej sk klienta urządzenia](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
