@@ -1,6 +1,6 @@
 ---
-title: Dołączanie maszyn w celu zarządzania przez Azure Automation konfigurację stanu
-description: Jak skonfigurować maszyny do zarządzania przy użyciu konfiguracji stanu Azure Automation
+title: Maszyny dołączające do zarządzania przez konfigurację stanu automatyzacji platformy Azure
+description: Jak skonfigurować maszyny do zarządzania za pomocą konfiguracji stanu automatyzacji usługi Azure
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,110 +9,113 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 89e86a6702be7314b99975cac90818252eb07df7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: MT
+ms.openlocfilehash: 0bf70b73098427847c73b4dd962d56d44fe6ee2e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278963"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283212"
 ---
-# <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Dołączanie maszyn w celu zarządzania przez Azure Automation konfigurację stanu
+# <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Maszyny dołączające do zarządzania przez konfigurację stanu automatyzacji platformy Azure
 
-## <a name="why-manage-machines-with-azure-automation-state-configuration"></a>Dlaczego warto zarządzać maszynami z użyciem Azure Automation stanu konfiguracji?
+## <a name="why-manage-machines-with-azure-automation-state-configuration"></a>Dlaczego warto zarządzać komputerami za pomocą konfiguracji stanu automatyzacji platformy Azure?
 
-Azure Automation konfiguracja stanu to usługa zarządzania konfiguracją dla węzłów konfiguracji żądanego stanu (DSC) w dowolnym chmurze lub lokalnym centrum danych.
-Umożliwia szybkie i łatwe skalowanie na tysiącach maszyn z poziomu centralnej, bezpiecznej lokalizacji.
-Można łatwo dołączać maszyny, przypisywać do nich konfiguracje deklaracyjne i wyświetlać raporty pokazujące zgodność poszczególnych maszyn z wybranym określonym stanem.
-Usługa konfiguracji stanu Azure Automation to DSC, co Azure Automation elementów Runbook do obsługi skryptów programu PowerShell.
-Innymi słowy, w taki sam sposób, jaki Azure Automation ułatwia zarządzanie skryptami programu PowerShell, ułatwia również zarządzanie konfiguracjami DSC.
-Aby dowiedzieć się więcej na temat korzyści z używania konfiguracji stanu Azure Automation, zobacz [Konfiguracja stanu Azure Automation — Omówienie](automation-dsc-overview.md).
+Konfiguracja stanu automatyzacji platformy Azure to usługa zarządzania konfiguracją dla węzłów konfiguracji żądanego stanu (DSC) w dowolnej chmurze lub lokalnym centrum danych. Dostęp do niej jest dostępny w witrynie Azure portal, wybierając **pozycję Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**. 
 
-Azure Automation konfiguracja stanu może służyć do zarządzania różnymi maszynami:
+Usługa ta umożliwia skalowalność na tysiącach maszyn szybko i łatwo z centralnej, bezpiecznej lokalizacji. Można łatwo przywkłędować maszyny, przypisać im deklaratywnych konfiguracji i wyświetlić raporty pokazujące zgodność każdej maszyny z żądanym stanem, który określisz.
+
+Usługa konfiguracji stanu automatyzacji platformy Azure jest dsc, jakie są elementy runbook usługi Azure Automation do skryptów programu PowerShell. Innymi słowy w taki sam sposób, w jaki usługa Azure Automation ułatwia zarządzanie skryptami programu PowerShell, pomaga również zarządzać konfiguracjami DSC. Aby dowiedzieć się więcej o korzyściach płynących z korzystania z konfiguracji stanu automatyzacji platformy Azure, zobacz [omówienie konfiguracji stanu automatyzacji platformy Azure.](automation-dsc-overview.md)
+
+Konfiguracja stanu automatyzacji platformy Azure może służyć do zarządzania różnymi komputerami:
 
 - Maszyny wirtualne platformy Azure
-- Azure Virtual Machines (klasyczny)
-- Fizyczne/wirtualne maszyny z systemem Windows w środowisku lokalnym lub w chmurze innej niż Azure (w tym wystąpienia AWS EC2)
-- Fizyczne/wirtualne maszyny z systemem Linux lokalnie, na platformie Azure lub w chmurze innej niż Azure
+- Maszyny wirtualne platformy Azure (klasyczne)
+- Fizyczne/wirtualne maszyny z systemem Windows lokalnie lub w chmurze innej niż Azure (w tym wystąpienia AWS EC2)
+- Lokalne maszyny z systemem Linux fizyczne/wirtualne, na platformie Azure lub w chmurze innej niż Azure
 
-Ponadto jeśli nie jesteś gotowy do zarządzania konfiguracją komputera z chmury, Azure Automation konfiguracja stanu może być również używana jako punkt końcowy tylko do raportowania.
-Umożliwia to Ustawianie (wypychania) konfiguracji za poorednictwem DSC i wyświetlanie szczegółów raportowania w Azure Automation.
-
-> [!NOTE]
-> Zarządzanie maszynami wirtualnymi platformy Azure z konfiguracją stanu jest bezpłatne, jeśli zainstalowane rozszerzenie DSC maszyny wirtualnej jest większe niż 2,70. Aby uzyskać więcej informacji, zobacz [**stronę z cennikiem usługi Automation**](https://azure.microsoft.com/pricing/details/automation/).
-
-W poniższych sekcjach opisano, jak można dołączyć każdy typ maszyny do Azure Automation konfiguracji stanu.
+Jeśli nie jesteś gotowy do zarządzania konfiguracją komputera z chmury, można użyć konfiguracji stanu automatyzacji platformy Azure jako punktu końcowego tylko do raportu. Ta funkcja umożliwia ustawienie (wypychanie) konfiguracji za pośrednictwem dsc i wyświetlanie szczegółów raportowania w usłudze Azure Automation.
 
 > [!NOTE]
->Wdrożenie DSC w węźle systemu Linux korzysta z folderu `/tmp` i modułów, takich jak **nxAutomation** , są tymczasowo pobierane do weryfikacji przed ich zainstalowaniem w odpowiedniej lokalizacji. Aby upewnić się, że moduły są poprawnie zainstalowane, Agent Log Analytics dla systemu Linux musi mieć uprawnienia do odczytu/zapisu w folderze `/tmp`. Agent Log Analytics dla systemu Linux działa jako użytkownik `omsagent`. 
->
->Aby udzielić uprawnienia do zapisu `omsagent` użytkownika, uruchom następujące polecenia: `setfacl -m u:omsagent:rwx /tmp`
->
+> Zarządzanie maszynami wirtualnymi platformy Azure za pomocą konfiguracji stanu automatyzacji platformy Azure jest uwzględniane bez dodatkowych opłat, jeśli zainstalowana wersja rozszerzenia konfiguracji żądanego stanu maszyny Wirtualnej platformy Azure jest większa niż 2,70. Aby uzyskać więcej informacji, zobacz [**strona cennika automatyzacji**](https://azure.microsoft.com/pricing/details/automation/).
 
-## <a name="azure-virtual-machines"></a>Maszyny wirtualne platformy Azure
+W poniższych sekcjach tego artykułu opisano, jak można dołączać maszyny wymienione powyżej do konfiguracji stanu automatyzacji platformy Azure.
 
-Azure Automation konfiguracja stanu umożliwia łatwe dołączanie maszyn wirtualnych platformy Azure w celu zarządzania konfiguracją przy użyciu Azure Portal, szablonów Azure Resource Manager lub programu PowerShell. W obszarze okapu i bez administratora, który ma zdalny dostęp do maszyny wirtualnej, rozszerzenie konfiguracji żądanego stanu maszyny wirtualnej platformy Azure rejestruje maszynę wirtualną z konfiguracją stanu Azure Automation.
-Ponieważ rozszerzenie konfiguracji żądanego stanu maszyny wirtualnej platformy Azure jest uruchamiane asynchronicznie, należy wykonać kroki w celu śledzenia postępu lub rozwiązywania problemów, które znajdują się w sekcji [**Rozwiązywanie problemów z dołączaniem do maszyny wirtualnej platformy Azure**](#troubleshooting-azure-virtual-machine-onboarding) .
+## <a name="onboarding-azure-vms"></a>Dołączanie maszyn wirtualnych platformy Azure
 
-### <a name="azure-portal"></a>Portalu Azure
+Konfiguracja stanu automatyzacji platformy Azure umożliwia łatwe dołączanie maszyn wirtualnych platformy Azure do zarządzania konfiguracją przy użyciu witryny Azure portal, szablonów usługi Azure Resource Manager lub programu PowerShell. Pod maską i bez konieczności zdalnego dostępu administratora do maszyny Wirtualnej rozszerzenie konfiguracji żądanego stanu maszyny Wirtualnej rejestruje maszynę wirtualną z konfiguracją stanu automatyzacji platformy Azure. Ponieważ rozszerzenie platformy Azure działa asynchronicznie, kroki, aby śledzić jego postęp lub rozwiązywać problemy z nim znajdują się w sekcji [rozwiązywanie problemów z maszyną wirtualną platformy Azure dołączania](#troubleshooting-azure-virtual-machine-onboarding) w tym artykule.
 
-W [Azure Portal](https://portal.azure.com/)przejdź do konta Azure Automation, do którego chcesz dołączyć maszyny wirtualne. Na stronie Konfiguracja stanu i na karcie **węzły** kliknij pozycję **+ Dodaj**.
+> [!NOTE]
+>Wdrażanie dsc do węzła systemu Linux używa **/tmp** folderu. Moduły, `nxautomation` takie jak są tymczasowo pobierane do weryfikacji przed zainstalowaniem ich w odpowiednich lokalizacjach. Aby upewnić się, że moduły są poprawnie instalowane, agent usługi Log Analytics dla systemu Linux potrzebuje uprawnień do odczytu/zapisu w folderze **/tmp.**<br><br>
+>Agent analizy dzienników dla `omsagent` systemu Linux działa jako użytkownik. Aby udzielić użytkownikowi uprawnień `omsagent` do zapisu `setfacl -m u:omsagent:rwx /tmp`>, uruchom polecenie .
 
-Wybierz maszynę wirtualną platformy Azure do dołączenia.
+### <a name="onboard-a-vm-using-azure-portal"></a>Wbudowana maszyna wirtualna przy użyciu witryny Azure portal
 
-Jeśli na komputerze nie zainstalowano rozszerzenia żądanego stanu programu PowerShell, a stan zasilacza jest uruchomiony, kliknij przycisk **Połącz**.
+Aby dołączać konfigurację usługi Azure VM do usługi Azure Automation State za pośrednictwem [witryny Azure portal:](https://portal.azure.com/)
 
-W obszarze **rejestracja**wprowadź [wartości lokalnych Configuration Manager programu PowerShell](/powershell/scripting/dsc/managing-nodes/metaConfig) , które są wymagane dla przypadku użycia, i opcjonalnie konfigurację węzła do przypisania do maszyny wirtualnej.
+1. Przejdź do konta usługi Azure Automation, na którym mają być dołączane maszyny wirtualne. 
 
-![dołączania](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+2. Na stronie Konfiguracja stanu wybierz kartę **Węzły,** a następnie kliknij pozycję **Dodaj**.
 
-### <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
+3. Wybierz maszynę wirtualną do wbudowanej.
 
-Usługi Azure Virtual Machines można wdrażać i dołączać do konfiguracji stanu Azure Automation za pośrednictwem Azure Resource Manager szablonów. Zobacz temat [serwer zarządzany przez usługę konfiguracji żądanego stanu](https://azure.microsoft.com/resources/templates/101-automation-configuration/) , aby zapoznać się z przykładowym szablonem służącym do dołączania istniejącej maszyny wirtualnej w celu Azure Automation konfiguracji stanu.
-Jeśli zarządzasz zestawem skalowania maszyn wirtualnych, zapoznaj się z przykładową [konfiguracją zestawu skalowania maszyn wirtualnych za pomocą Azure Automation](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/).
+4. Jeśli na komputerze nie zainstalowano rozszerzenia żądanego stanu programu PowerShell i stan zasilania jest uruchomiony, kliknij przycisk **Połącz**.
 
-### <a name="powershell"></a>Program PowerShell
+5. W obszarze **Rejestracja**wprowadź [wartości lokalnego programu PowerShell DSC programu Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig) wymagane dla przypadku użycia. Opcjonalnie można wprowadzić konfigurację węzła, aby przypisać do maszyny Wirtualnej.
 
-Polecenie cmdlet [register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) może służyć do dołączania maszyn wirtualnych na platformie Azure przy użyciu programu PowerShell.
-Jednak jest to obecnie tylko zaimplementowane dla maszyn z systemem Windows (polecenie cmdlet wyzwala tylko rozszerzenie systemu Windows).
+![Dołączania](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
-### <a name="registering-virtual-machines-across-azure-subscriptions"></a>Rejestrowanie maszyn wirtualnych w ramach subskrypcji platformy Azure
+### <a name="onboard-a-vm-using-azure-resource-manager-templates"></a>Dołączanie maszyny Wirtualnej przy użyciu szablonów usługi Azure Resource Manager
 
-Najlepszym sposobem na zarejestrowanie maszyn wirtualnych z innych subskrypcji platformy Azure jest użycie rozszerzenia DSC w szablonie wdrażania Azure Resource Manager.
-Przykłady są dostępne w [rozszerzeniu konfiguracji żądanego stanu z szablonami Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template).
-Aby znaleźć klucz rejestracji i adres URL rejestracji do użycia jako parametry w szablonie, zobacz następującą sekcję [**bezpieczna Rejestracja**](#secure-registration) .
+Maszynę Wirtualną można wdrożyć i wdrożyć w konfiguracji stanu automatyzacji platformy Azure przy użyciu szablonów usługi Azure Resource Manager. Zobacz [Serwer zarządzany przez usługę konfiguracji żądanego stanu](https://azure.microsoft.com/resources/templates/101-automation-configuration/) dla przykładowego szablonu, który dołącza istniejącą maszynę wirtualną do konfiguracji stanu automatyzacji platformy Azure. Jeśli zarządzasz zestawem skalowania maszyny Wirtualnej, zobacz przykładowy szablon w [konfiguracji zestawu skalowania maszyny Wirtualnej zarządzanej przez usługę Azure Automation.](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/)
 
-## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances"></a>Fizyczne/wirtualne maszyny z systemem Windows w środowisku lokalnym lub w chmurze innej niż Azure (w tym wystąpienia AWS EC2)
+### <a name="onboard-machines-using-powershell"></a>Urządzenia pokładowe korzystające z programu PowerShell
 
-Serwery z systemem Windows działające lokalnie lub w innych środowiskach w chmurze można również dołączać do konfiguracji stanu Azure Automation, o ile mają [dostęp wychodzący do platformy Azure](automation-dsc-overview.md#network-planning):
+Polecenia cmdlet [Register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) w programie PowerShell można użyć do wbudowanych maszyn wirtualnych do konfiguracji stanu automatyzacji platformy Azure. 
 
-1. Upewnij się, że na maszynach, które mają zostać dołączone do Azure Automation konfiguracji stanu, zainstalowano najnowszą wersję programu [WMF 5](https://aka.ms/wmf5latest) .
-1. Postępuj zgodnie z instrukcjami w poniższej sekcji [**generowanie konfiguracji NADMIAROWOŚCI DSC**](#generating-dsc-metaconfigurations) w celu wygenerowania folderu zawierającego wymaganą konfigurację konfiguracji DSC.
-1. Zdalnie Zastosuj konfigurację konfiguracji DSC programu PowerShell do maszyn, które chcesz dołączyć. **Na komputerze, z którego jest uruchamiane to polecenie, musi być zainstalowana najnowsza wersja programu [WMF 5](https://aka.ms/wmf5latest)** :
+> [!NOTE]
+>Polecenie `Register-AzAutomationDscNode` cmdlet jest obecnie implementowane tylko dla komputerów z systemem Windows, ponieważ wyzwala tylko rozszerzenie systemu Windows.
+
+### <a name="register-vms-across-azure-subscriptions"></a>Rejestrowanie maszyn wirtualnych w ramach subskrypcji platformy Azure
+
+Najlepszym sposobem rejestrowania maszyn wirtualnych z innych subskrypcji platformy Azure jest użycie rozszerzenia DSC w szablonie wdrażania usługi Azure Resource Manager. Przykłady znajdują się w [rozszerzeniu konfiguracji żądanego stanu z szablonami usługi Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template).
+
+Aby znaleźć klucz rejestracji i adres URL rejestracji do użycia jako parametry w [szablonie,](#onboarding-securely-using-registration) zobacz Dołączanie bezpiecznie przy użyciu rejestracji sekcji w tym artykule.
+
+## <a name="onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances"></a>Dołączanie fizycznych/wirtualnych maszyn z systemem Windows w środowisku lokalnym lub w chmurze innej niż Azure (w tym wystąpienia AWS EC2)
+
+Można dołączać serwery systemu Windows z lokalnymi lub w innych środowiskach chmury do konfiguracji stanu automatyzacji platformy Azure. Serwery muszą mieć [dostęp wychodzący do platformy Azure](automation-dsc-overview.md#network-planning).
+
+1. Upewnij się, że najnowsza wersja [WMF 5](https://aka.ms/wmf5latest) jest zainstalowana na komputerach do wbudowanej konfiguracji stanu automatyzacji platformy Azure. Ponadto w 5 WMF musi być zainstalowany na komputerze, który jest używany do operacji dołączania.
+1. Postępuj zgodnie ze wskazówkami w sekcji [Generowanie metakonfiguracji DSC,](#generating-dsc-metaconfigurations) aby utworzyć folder zawierający wymagane metakonfiguracje DSC. 
+1. Użyj następującego polecenia cmdlet, aby zdalnie zastosować metakonfiguracje dsc programu PowerShell do komputerów, które mają być wbudowane. 
 
    ```powershell
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
    ```
 
-1. Jeśli nie można zastosować zdalnego konfigurowania konfiguracji DSC programu PowerShell, skopiuj folder konfiguracji z kroku 2 do każdego komputera do dołączenia. Następnie Wywołaj polecenie **Set-DscLocalConfigurationManager** lokalnie na każdym komputerze, aby dołączyć.
-1. Za pomocą Azure Portal lub poleceń cmdlet Sprawdź, czy maszyny do dołączenia są wyświetlane jako węzły konfiguracji stanu zarejestrowane na koncie usługi Azure Automation.
+1. Jeśli nie można zdalnie zastosować metakonfiguracji dsc programu PowerShell, skopiuj folder **metakonfiguracji** do komputerów, na których się włączysz. Następnie dodaj kod, aby wywołać `Set-DscLocalConfigurationManager` lokalnie na komputerach.
+1. Korzystając z witryny Azure portal lub poleceń cmdlet, sprawdź, czy maszyny do wbudowanego są wyświetlane jako węzły konfiguracji stanu zarejestrowane na koncie usługi Azure Automation.
 
-## <a name="physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure"></a>Fizyczne/wirtualne maszyny z systemem Linux w środowisku lokalnym lub w chmurze innej niż Azure
+## <a name="onboarding-physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure"></a>Dołączanie fizycznych/wirtualnych maszyn z systemem Linux w środowisku lokalnym lub w chmurze innej niż Azure
 
-Serwery z systemem Linux działające lokalnie lub w innych środowiskach w chmurze można również dołączać do konfiguracji stanu Azure Automation, o ile mają [dostęp wychodzący do platformy Azure](automation-dsc-overview.md#network-planning):
+Można dołączać serwery systemu Linux działające lokalnie lub w innych środowiskach chmury do konfiguracji stanu automatyzacji platformy Azure. Serwery muszą mieć [dostęp wychodzący do platformy Azure](automation-dsc-overview.md#network-planning).
 
-1. Upewnij się, że Najnowsza wersja [konfiguracji żądanego stanu programu PowerShell dla systemu Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) jest zainstalowana na komputerach, które chcesz dołączyć do Azure Automation konfiguracji stanu.
-2. Jeśli [lokalne Configuration Manager konfiguracji DSC programu PowerShell](/powershell/scripting/dsc/managing-nodes/metaConfig4) są zgodne z przypadkiem użycia i chcesz dołączyć do nich maszyny, takie jak **zarówno** ściągają, jak i raportują Azure Automationą konfigurację stanu:
+1. Upewnij się, że najnowsza wersja [konfiguracji żądanego stanu programu PowerShell dla systemu Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) jest zainstalowana na komputerach, aby była zainstalowana na pokładzie konfiguracji stanu automatyzacji platformy Azure.
+2. Jeśli [program PowerShell DSC Local Configuration Manager domyślnie](/powershell/scripting/dsc/managing-nodes/metaConfig4) pasuje do przypadku użycia i chcesz na komputerach wbudowanych, tak aby zarówno pobierać z i raport do konfiguracji stanu automatyzacji platformy Azure:
 
-   - Na każdym komputerze z systemem Linux, aby dołączać Azure Automation konfigurację stanu, należy użyć `Register.py` do dołączenia przy użyciu lokalnych Configuration Manager ustawień DSC programu PowerShell:
+   - Na każdym komputerze z systemem Linux do `Register.py` wbudowanej konfiguracji stanu automatyzacji platformy Azure należy użyć do wbudowanego przy użyciu domyślnych ustawień domyślnych lokalnego programu PowerShell DSC configuration manager.
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
-   - Aby znaleźć klucz rejestracji i adres URL rejestracji dla konta usługi Automation, zobacz następującą sekcję [**bezpieczna Rejestracja**](#secure-registration) .
+   - Aby znaleźć klucz rejestracji i adres URL rejestracji dla konta automatyzacji, zobacz [dołączanie bezpiecznie przy użyciu rejestracji](#onboarding-securely-using-registration) sekcji, jeśli ten artykuł.
 
-     Jeśli lokalne Configuration Manager konfiguracji DSC środowiska PowerShell **nie są zgodne z** przypadkiem użycia lub chcesz dołączyć maszyny, aby były one tylko zgłaszane do Azure Automation konfiguracji stanu, wykonaj kroki 3-6. W przeciwnym razie przejdź bezpośrednio do kroku 6.
+3. Jeśli domyślne ustawienia domyślne lokalnego programu PowerShell DSC (Local Configuration Manager) (LCM) nie są zgodne z przypadkiem użycia lub chcesz na komputerach wbudowanych, które zgłaszają tylko do konfiguracji stanu automatyzacji platformy Azure, wykonaj kroki 4-7. W przeciwnym razie przejdź bezpośrednio do kroku 7.
 
-3. Postępuj zgodnie z instrukcjami w poniższej sekcji [**generowanie konfiguracyjnych konfiguracji DSC**](#generating-dsc-metaconfigurations) w celu wygenerowania folderu zawierającego wymaganą konfigurację konfiguracji DSC.
-4. Zdalnie Zastosuj konfigurację konfiguracji DSC programu PowerShell do maszyn, które chcesz dołączyć:
+4. Postępuj zgodnie ze wskazówkami w sekcji [Generowanie metakonfiguracji DSC,](#generating-dsc-metaconfigurations) aby utworzyć folder zawierający wymagane metakonfiguracje DSC.
+
+5. Upewnij się, że najnowsza wersja [WMF 5](https://aka.ms/wmf5latest) jest zainstalowana na komputerze używanym do dołączania.
+
+6. Dodaj kod w następujący sposób, aby zdalnie zastosować metakonfiguracje dsc programu PowerShell do komputerów, które mają być wbudowane.
 
     ```powershell
     $SecurePass = ConvertTo-SecureString -String '<root password>' -AsPlainText -Force
@@ -125,28 +128,30 @@ Serwery z systemem Linux działające lokalnie lub w innych środowiskach w chmu
     Set-DscLocalConfigurationManager -CimSession $Session -Path C:\Users\joe\Desktop\DscMetaConfigs
     ```
 
-Na komputerze, z którego jest uruchamiane to polecenie, musi być zainstalowana najnowsza wersja programu [WMF 5](https://aka.ms/wmf5latest) .
+7. Jeśli nie można zdalnie zastosować metakonfiguracji dsc programu PowerShell, skopiuj metakonfiguracje odpowiadające maszynom zdalnym z folderu opisanego w kroku 4 na komputery z systemem Linux.
 
-1. Jeśli nie można zastosować zdalnego konfigurowania konfiguracji DSC programu PowerShell, skopiuj konfigurację z folderu w kroku 5 na maszynę z systemem Linux. Następnie Wywołaj `SetDscLocalConfigurationManager.py` lokalnie na każdej maszynie z systemem Linux, którą chcesz dołączyć do Azure Automation konfiguracji stanu:
+8. Dodaj kod `Set-DscLocalConfigurationManager.py` do wywoływania lokalnie na każdym komputerze z systemem Linux do wbudowanej konfiguracji stanu automatyzacji platformy Azure.
 
    `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path to metaconfiguration file>`
 
-2. Za pomocą Azure Portal lub poleceń cmdlet Sprawdź, czy maszyny do dołączenia są teraz wyświetlane jako węzły DSC zarejestrowane na koncie usługi Azure Automation.
+9. Korzystając z witryny Azure portal lub poleceń cmdlet, upewnij się, że maszyny do wbudowanego teraz są wyświetlane jako węzły DSC zarejestrowane na koncie usługi Azure Automation.
 
-## <a name="generating-dsc-metaconfigurations"></a>Generowanie konfiguracji DSC
+## <a name="generating-dsc-metaconfigurations"></a>Generowanie metakonfiguracji DSC
 
-Aby określić ogólny sposób dołączania maszyn do Azure Automation konfiguracji stanu, można wygenerować konfigurację wciąganą [DSC](/powershell/scripting/dsc/managing-nodes/metaConfig) , która nakazuje AGENTowi DSC pobranie z i/lub raport do Azure Automation konfiguracji stanu. Konfiguracje konfiguracji DSC konfiguracji stanu Azure Automation można generować przy użyciu konfiguracji DSC programu PowerShell lub poleceń cmdlet programu PowerShell Azure Automation.
-
-> [!NOTE]
-> Konfiguracje konfiguracji DSC zawierają wpisy tajne, które są konieczne do dołączenia komputera do konta usługi Automation na potrzeby zarządzania. Upewnij się, że wszystkie utworzone konfiguracje konfiguracji DSC są prawidłowo chronione, lub usuń je po użyciu.
-
-### <a name="using-a-dsc-configuration"></a>Korzystanie z konfiguracji DSC
-
-1. Otwórz programu vscode (lub ulubiony Edytor) jako administrator na komputerze w środowisku lokalnym. Na komputerze musi być zainstalowana najnowsza wersja programu [WMF 5](https://aka.ms/wmf5latest) .
-1. Skopiuj następujący skrypt lokalnie. Ten skrypt zawiera konfigurację DSC programu PowerShell służącą do tworzenia konfiguracji, a także polecenie do uruchamiania tworzenia konfiguracji.
+Aby przywkłęka dowolnego komputera do konfiguracji stanu automatyzacji platformy Azure, można wygenerować [metakonfigurację DSC](/powershell/scripting/dsc/managing-nodes/metaConfig). Ta konfiguracja nakazuje agentowi DSC, aby pobierał z i/lub raportować konfigurację stanu automatyzacji platformy Azure. Metakonfigurację DSC dla konfiguracji stanu automatyzacji usługi Azure automation można wygenerować przy użyciu konfiguracji dsc programu PowerShell lub poleceń cmdlet programu Azure Automation PowerShell.
 
 > [!NOTE]
-> Nazwy konfiguracji węzła konfiguracji stanu uwzględniają wielkość liter w portalu. Jeśli wielkość liter jest niezgodna, węzeł nie zostanie wyświetlony na karcie **węzły** .
+> Metakonfiguracje DSC zawierają wpisy tajne potrzebne do wbudowanego komputera do konta automatyzacji do zarządzania. Upewnij się, że należy prawidłowo chronić wszystkie utworzone metakonfiguracje DSC lub usunąć je po użyciu.
+
+Obsługa serwera proxy dla metakonfiguracji jest kontrolowana przez LCM, który jest aparatem DSC programu Windows PowerShell. LCM działa na wszystkich węzłach docelowych i jest odpowiedzialny za wywoływanie zasobów konfiguracji, które są zawarte w skrypcie metakonfiguracji DSC. Obsługę serwera proxy można uwzględnić w metakonfiguracji, dołączając definicje adresu `ConfigurationRepositoryWeb`URL `ResourceRepositoryWeb`serwera `ReportServerWeb` proxy i poświadczeń serwera proxy zgodnie z potrzebami w programach , i blokach. Zobacz [Konfigurowanie lokalnego menedżera konfiguracji](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7).
+
+### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>Generowanie metakonfiguracji DSC przy użyciu konfiguracji DSC
+
+1. Otwórz vscode (lub ulubiony edytor) jako administrator na komputerze w środowisku lokalnym. Urządzenie musi mieć zainstalowaną najnowszą wersję [WMF 5.](https://aka.ms/wmf5latest)
+1. Skopiuj lokalny skrypt. Ten skrypt zawiera konfigurację dsc programu PowerShell do tworzenia konfiguracji metakonfiguracji i polecenie rozpoczęcia tworzenia metakonfiguracji.
+
+    > [!NOTE]
+    > W nazwach konfiguracji węzła konfiguracji stanu rozróżniana jest wielkość liter w witrynie Azure portal. Jeśli sprawa jest niezgodna, węzeł nie pojawi się na karcie **Węzły.**
 
    ```powershell
    # The DSC configuration that will generate metaconfigurations
@@ -223,8 +228,8 @@ Aby określić ogólny sposób dołączania maszyn do Azure Automation konfigura
 
                 ResourceRepositoryWeb AzureAutomationStateConfiguration
                 {
-                ServerUrl       = $RegistrationUrl
-                RegistrationKey = $RegistrationKey
+                    ServerUrl       = $RegistrationUrl
+                    RegistrationKey = $RegistrationKey
                 }
             }
 
@@ -258,21 +263,25 @@ Aby określić ogólny sposób dołączania maszyn do Azure Automation konfigura
    DscMetaConfigs @Params
    ```
 
-1. Wprowadź klucz rejestracji i adres URL dla konta usługi Automation, a także nazwy maszyn do dołączenia. Wszystkie inne parametry są opcjonalne. Aby znaleźć klucz rejestracji i adres URL rejestracji dla konta usługi Automation, zobacz następującą sekcję [**bezpieczna Rejestracja**](#secure-registration) .
-1. Jeśli chcesz, aby maszyny raportują informacje o stanie DSC do Azure Automation konfiguracji stanu, ale nie pobieraj konfiguracji ani modułów programu PowerShell, ustaw dla parametru **ReportOnly** wartość true.
-1. Uruchom skrypt. Teraz powinien znajdować się folder o nazwie **DscMetaConfigs** w katalogu roboczym zawierający konfiguracje konfiguracji DSC programu PowerShell dla maszyn, które mają zostać dołączone (jako administrator):
+1. Wypełnij klucz rejestracji i adres URL konta Automatyzacji, a także nazwy maszyn, które mają być wbudowane. Wszystkie inne parametry są opcjonalne. Aby znaleźć klucz rejestracji i adres URL rejestracji dla konta automatyzacji, zobacz [sekcję Dołączanie bezpiecznie przy użyciu rejestracji.](#onboarding-securely-using-registration)
+
+1. Jeśli chcesz, aby maszyny zgłaszały informacje o stanie DSC do konfiguracji stanu usługi Azure `ReportOnly` Automation, ale nie ściągały konfiguracji lub modułów programu PowerShell, ustaw parametr na true.
+
+1. Jeśli `ReportOnly` nie jest ustawiona, maszyny raportują informacje o stanie DSC do konfiguracji stanu usługi Azure Automation i ściągają konfigurację lub moduły programu PowerShell. Odpowiednio ustawić parametry `ConfigurationRepositoryWeb`w `ResourceRepositoryWeb`, `ReportServerWeb` i bloki.
+
+1. Uruchom skrypt. Teraz powinien mieć folder katalogu roboczego o nazwie **DscMetaConfigs**, zawierający metakonfiguracje DSC programu PowerShell dla komputerów do wbudowanego (jako administrator).
 
     ```powershell
     Set-DscLocalConfigurationManager -Path ./DscMetaConfigs
     ```
 
-### <a name="using-the-azure-automation-cmdlets"></a>Korzystanie z Azure Automation poleceń cmdlet
+### <a name="generate-dsc-metaconfigurations-using-azure-automation-cmdlets"></a>Generowanie metakonfiguracji DSC przy użyciu poleceń cmdlet usługi Azure Automation
 
-Jeśli lokalne Configuration Manager konfiguracji DSC programu PowerShell są zgodne z przypadkiem użycia i chcesz dołączyć do nich maszyny, takie jak ściąganie i raportowanie do Azure Automation konfiguracja stanu, polecenia cmdlet Azure Automation zapewniają uproszczoną metodę generowania wymagana konfiguracja konfiguracji DSC:
+Jeśli ustawienia domyślne programu PowerShell DSC LCM są zgodne z przypadkiem użycia i chcesz na komputerach wbudowanych zarówno pobierać z i raportować do konfiguracji stanu automatyzacji platformy Azure, można wygenerować potrzebne metakonfiguracje DSC po prostu przy użyciu poleceń cmdlet usługi Azure Automation.
 
-1. Otwórz konsolę programu PowerShell lub programu vscode jako administrator na komputerze w środowisku lokalnym.
-2. Nawiązywanie połączenia z Azure Resource Manager przy użyciu `Connect-AzAccount`
-3. Pobierz konfiguracje konfiguracji DSC programu PowerShell dla maszyn, które chcesz dołączyć, z konta usługi Automation, do którego chcesz dołączyć węzły:
+1. Otwórz konsolę programu PowerShell lub vscode jako administrator na komputerze w środowisku lokalnym.
+2. Łączenie się z usługą Azure Resource Manager przy użyciu`Connect-AzAccount`
+3. Pobierz metakonfiguracje DSC programu PowerShell dla maszyn, które chcesz mieć wbudowane, z konta automatyzacji, na którym konfigurujesz węzły.
 
    ```powershell
    # Define the parameters for Get-AzAutomationDscOnboardingMetaconfig using PowerShell Splatting
@@ -287,49 +296,57 @@ Jeśli lokalne Configuration Manager konfiguracji DSC programu PowerShell są zg
    Get-AzAutomationDscOnboardingMetaconfig @Params
    ```
 
-1. Teraz powinien znajdować się folder o nazwie ***DscMetaConfigs***, zawierający konfiguracje konfiguracji DSC programu PowerShell dla maszyn, które mają zostać dołączone (jako administrator):
+1. Teraz powinien mieć folder o nazwie **DscMetaConfigs**, zawierający metakonfiguracje DSC programu PowerShell dla komputerów do wbudowanego (jako administrator).
 
     ```powershell
     Set-DscLocalConfigurationManager -Path $env:UserProfile\Desktop\DscMetaConfigs
     ```
 
-## <a name="secure-registration"></a>Bezpieczna Rejestracja
+## <a name="onboarding-securely-using-registration"></a>Bezpieczne dołączanie przy użyciu rejestracji
 
-Maszyny mogą bezpiecznie dołączać do konta Azure Automation przy użyciu protokołu rejestracji konfiguracji DSC WMF 5, który umożliwia węzłowi DSC uwierzytelnianie na serwerze ściągania lub raportowania DSC programu PowerShell (łącznie z konfiguracją stanu Azure Automation). Węzeł rejestruje na serwerze w **adresie URL rejestracji**, uwierzytelniając przy użyciu **klucza rejestracji**. Podczas rejestracji węzeł DSC oraz serwer ściągania/raportowania DSC negocjują unikatowy certyfikat używany do uwierzytelniania na serwerze po rejestracji. Ten proces uniemożliwia dołączenie węzłów od siebie nawzajem, na przykład w przypadku naruszenia bezpieczeństwa i niebezpiecznego węzła. Po rejestracji klucz rejestracji nie jest używany do uwierzytelniania ponownie i jest usuwany z węzła.
+Maszyny mogą bezpiecznie dołączać do konta usługi Azure Automation za pośrednictwem protokołu rejestracji WMF 5 DSC. Ten protokół umożliwia węzłowi DSC uwierzytelnienie na serwerze ściągania lub raportu dsc programu PowerShell DSC, w tym konfiguracji stanu automatyzacji platformy Azure. Węzeł rejestruje się z serwerem pod adresem URL rejestracji i uwierzytelnia się przy użyciu klucza rejestracji. Podczas rejestracji węzeł DSC i serwer ściągania/raportu DSC negocjują unikatowy certyfikat dla węzła, który ma być używany do uwierzytelniania w rejestracji post-rejestracji serwera. Ten proces uniemożliwia węzłom wbudowanym personifikowanie się nawzajem, na przykład, jeśli węzeł jest zagrożony i zachowuje się złośliwie. Po rejestracji klucz rejestracji nie jest ponownie używany do uwierzytelniania i jest usuwany z węzła.
 
-Informacje wymagane do protokołu rejestracji konfiguracji stanu można uzyskać z **kluczy** w obszarze **ustawienia konta** w Azure Portal. Otwórz ten blok, klikając ikonę klucza w panelu **podstawy** dla konta usługi Automation.
+Informacje wymagane dla protokołu rejestracji konfiguracji stanu można uzyskać z **kluczy** w obszarze **Ustawienia konta** w witrynie Azure portal. 
 
-![Klucze i adres URL usługi Azure Automation](./media/automation-dsc-onboarding/DSC_Onboarding_4.png)
+![Klucze automatyzacji platformy Azure i adres URL](./media/automation-dsc-onboarding/DSC_Onboarding_4.png)
 
-- Adres URL rejestracji to pole adresu URL w bloku Zarządzaj kluczami.
-- Klucz rejestracji to podstawowy klucz dostępu lub pomocniczy klucz dostępu w bloku Zarządzaj kluczami. Można użyć dowolnego klucza.
+- Adres URL rejestracji to pole ADRESU URL na stronie Klucze.
+- Klucz rejestracji to wartość pola **Klucz dostępu podstawowego** lub **klucza dostępu pomocniczego** na stronie Klucze. Można użyć jednego z tych kluczy.
 
-Aby zwiększyć bezpieczeństwo, należy ponownie wygenerować podstawowe i pomocnicze klucze dostępu konta usługi Automation (na stronie **Zarządzanie kluczami** ), aby uniemożliwić rejestracje w przyszłości przy użyciu poprzednich kluczy.
+Aby zwiększyć bezpieczeństwo, można ponownie wygenerować podstawowe i pomocnicze klucze dostępu konta automatyzacji w dowolnym momencie na keys strony. Regeneracja kluczy uniemożliwia przyszłe rejestracje węzłów przy użyciu poprzednich kluczy.
 
-## <a name="certificate-expiration-and-re-registration"></a>Wygaśnięcie i ponowne rejestrowanie certyfikatu
+## <a name="re-registering-a-node"></a>Ponowna rejestracja węzła
 
-Po zarejestrowaniu maszyny jako węzła DSC w konfiguracji stanu Azure Automation istnieje kilka powodów, dla których może być konieczne ponowne zarejestrowanie tego węzła w przyszłości:
+Po zarejestrowaniu komputera jako węzła DSC w konfiguracji stanu automatyzacji usługi Azure, istnieje kilka powodów, dla których może być konieczne ponowne zarejestrowanie tego węzła w przyszłości.
 
-- W przypadku wersji systemu Windows Server starszych niż Windows Server 2019 każdy węzeł automatycznie negocjuje unikatowy certyfikat na potrzeby uwierzytelniania, który wygaśnie po upływie jednego roku. Obecnie protokół rejestracji DSC programu PowerShell nie może automatycznie odnawiać certyfikatów, gdy zbliżają się do wygaśnięcia, więc należy ponownie zarejestrować węzły po upływie roku. Przed ponownym zarejestrowaniem upewnij się, że w każdym węźle jest uruchomiony system Windows Management Framework 5,0 RTM. Jeśli certyfikat uwierzytelniania węzła wygaśnie i węzeł nie zostanie ponownie zarejestrowany, węzeł nie będzie mógł komunikować się z Azure Automation i jest oznaczony jako "nie odpowiada". Ponowne zarejestrowanie wykonane przez 90 dni lub mniej od czasu wygaśnięcia certyfikatu lub w dowolnym momencie po upływie czasu wygaśnięcia certyfikatu spowoduje wygenerowanie i użycie nowego certyfikatu.  Rozwiązanie tego problemu jest zawarte w systemie Windows Server 2019 lub nowszym.
-- Aby zmienić [wartości wszystkich lokalnych Configuration Manager środowiska PowerShell](/powershell/scripting/dsc/managing-nodes/metaConfig4) , które zostały ustawione podczas początkowej rejestracji węzła, na przykład ConfigurationMode. Obecnie te wartości agenta DSC można zmienić tylko przez ponowną rejestrację. Jedynym wyjątkiem jest konfiguracja węzła przypisana do węzła — można ją zmienić w Azure Automation DSC bezpośrednio.
+- **Odnowienie certyfikatu.** W przypadku wersji systemu Windows Server przed systemem Windows Server 2019 każdy węzeł automatycznie negocjuje unikatowy certyfikat uwierzytelniania, który wygasa po upływie jednego roku. Jeśli certyfikat wygaśnie bez odnowienia, węzeł nie może `Unresponsive`komunikować się z usługą Azure Automation i jest oznaczony . Obecnie protokół rejestracji dsc programu PowerShell nie może automatycznie odnawiać certyfikatów, gdy zbliżają się do wygaśnięcia i należy ponownie zarejestrować węzły po roku. Przed ponowną rejestracją upewnij się, że każdy węzeł jest uruchomiony WMF 5 RTM. 
 
-Ponowna rejestracja może być wykonywana w taki sam sposób, jak początkowo zarejestrowano węzeł przy użyciu dowolnej metody dołączania opisanej w tym dokumencie. Nie musisz wyrejestrować węzła z konfiguracji stanu Azure Automation przed jego ponownym zarejestrowaniem.
+    Ponowna rejestracja wykonana 90 dni lub mniej od czasu wygaśnięcia certyfikatu lub w dowolnym momencie po czasie wygaśnięcia certyfikatu powoduje wygenerowanie i użycie nowego certyfikatu. Rozwiązanie tego problemu znajduje się w systemie Windows Server 2019 i nowszych.
 
-## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Rozwiązywanie problemów z dołączaniem do maszyny wirtualnej platformy Azure
+- **Zmiany wartości DSC LCM.** Może być konieczna zmiana [wartości LCM dsc programu PowerShell](/powershell/scripting/dsc/managing-nodes/metaConfig4) ustawionych podczas początkowej rejestracji węzła, `ConfigurationMode`na przykład . Obecnie można zmienić te wartości agenta DSC tylko poprzez ponowną rejestrację. Jedynym wyjątkiem jest wartość konfiguracji węzła przypisana do węzła. Można to zmienić bezpośrednio w usłudze Azure Automation DSC.
 
-Azure Automation konfiguracja stanu umożliwia łatwe dołączanie maszyn wirtualnych z systemem Windows Azure na potrzeby zarządzania konfiguracją. Pod wyciągnięciem, rozszerzenie konfiguracji żądanego stanu maszyny wirtualnej platformy Azure służy do rejestrowania maszyny wirtualnej z konfiguracją stanu Azure Automation. Ponieważ rozszerzenie konfiguracji żądanego stanu maszyny wirtualnej platformy Azure jest uruchamiane asynchronicznie, śledzenie jego postępu i rozwiązywanie problemów może być ważne.
+Węzeł można ponownie zarejestrować w taki sam sposób, w jaki węzeł został zarejestrowany, przy użyciu dowolnej metody dołączania opisanej w tym dokumencie. Nie trzeba wyrejestrować węzła z konfiguracji stanu usługi Azure Automation przed ponownym zarejestrowaniem go.
+
+## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Rozwiązywanie problemów z dołączaniem maszyny wirtualnej platformy Azure
+
+Konfiguracja stanu automatyzacji platformy Azure umożliwia łatwe dołączanie maszyn wirtualnych systemu Windows platformy Azure do zarządzania konfiguracją. Pod maską rozszerzenie konfiguracji żądanego stanu maszyny Wirtualnej platformy Azure służy do rejestrowania maszyny Wirtualnej w konfiguracji stanu automatyzacji platformy Azure. Ponieważ rozszerzenie konfiguracji żądanego stanu maszyny Wirtualnej platformy Azure działa asynchronicznie, śledzenie jego postępów i rozwiązywanie problemów z jego wykonaniem może być ważne.
 
 > [!NOTE]
-> Dowolna metoda dołączania maszyny wirtualnej platformy Azure z systemem Windows w celu Azure Automation konfiguracji stanu korzystającej z rozszerzenia konfiguracji żądanego stanu maszyny wirtualnej platformy Azure może potrwać do godziny, aż węzeł zostanie wyświetlony w Azure Automation. Jest to spowodowane instalacją systemu Windows Management Framework 5,0 na maszynie wirtualnej przez rozszerzenie DSC maszyny wirtualnej platformy Azure, które jest wymagane do dołączenia maszyny wirtualnej do konfiguracji stanu Azure Automation.
+> Dowolna metoda dołączania maszyny Wirtualnej systemu Windows platformy Azure do konfiguracji stanu automatyzacji platformy Azure, która używa rozszerzenia konfiguracji żądanego stanu maszyny Wirtualnej platformy Azure, może potrwać do godziny, aby usługa Azure Automation wyświetliła ją jako zarejestrowaną. To opóźnienie jest spowodowane instalacją WMF 5 na maszynie wirtualnej przez rozszerzenie konfiguracji żądanego stanu maszyny Wirtualnej platformy Azure, które jest wymagane do dołączania maszyny Wirtualnej do konfiguracji stanu automatyzacji usługi Azure.
 
-Aby rozwiązać problem lub wyświetlić stan rozszerzenia konfiguracji żądanego stanu maszyny wirtualnej platformy Azure, w Azure Portal przejdź do dołączanej maszyny wirtualnej, a następnie kliknij pozycję **rozszerzenia** w obszarze **Ustawienia**. Następnie kliknij pozycję **DSC** lub **DSCForLinux** w zależności od używanego systemu operacyjnego. Aby uzyskać więcej informacji, kliknij pozycję **Wyświetl szczegółowy stan**.
+Aby rozwiązać problem lub wyświetlić stan rozszerzenia konfiguracji żądanego stanu maszyny Wirtualnej platformy Azure:
 
-Aby uzyskać więcej informacji na temat rozwiązywania problemów, zobacz [Rozwiązywanie problemów przy użyciu konfiguracji żądanego stanu Azure Automation (DSC)](./troubleshoot/desired-state-configuration.md).
+1. W witrynie Azure portal przejdź do maszyny Wirtualnej, która jest dołączana.
+2. Kliknij **pozycję Rozszerzenia** w obszarze **Ustawienia**. 
+3. Teraz wybierz **DSC** lub **DSCForLinux**, w zależności od systemu operacyjnego. 
+4. Aby uzyskać więcej informacji, możesz kliknąć pozycję **Wyświetl szczegółowy stan**.
+
+Aby uzyskać więcej informacji na temat rozwiązywania problemów, zobacz [Rozwiązywanie problemów z konfiguracją żądanego stanu usługi Azure Automation (DSC)](./troubleshoot/desired-state-configuration.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby rozpocząć, zobacz [wprowadzenie do konfiguracji stanu Azure Automation](automation-dsc-getting-started.md)
-- Aby dowiedzieć się więcej na temat kompilowania konfiguracji DSC, aby można było przypisać je do węzłów docelowych, zobacz [Kompilowanie konfiguracji w konfiguracji stanu Azure Automation](automation-dsc-compile.md)
-- Aby uzyskać informacje dotyczące poleceń cmdlet programu PowerShell, zobacz temat [polecenia cmdlet konfiguracji stanu Azure Automation](/powershell/module/az.automation#automation)
-- Aby uzyskać informacje o cenach, zobacz [Cennik konfiguracji stanu Azure Automation](https://azure.microsoft.com/pricing/details/automation/)
-- Aby zapoznać się z przykładem użycia konfiguracji stanu Azure Automation w potoku ciągłego wdrażania, zobacz [wdrażanie ciągłe przy użyciu konfiguracji stanu Azure Automation i czekolady](automation-dsc-cd-chocolatey.md)
+- Aby uzyskać informacje o tym, zobacz [Wprowadzenie do konfiguracji stanu automatyzacji platformy Azure](automation-dsc-getting-started.md).
+- Aby dowiedzieć się więcej o kompilowaniu konfiguracji DSC, aby można je było przypisać do węzłów docelowych, zobacz [Kompilowanie konfiguracji w konfiguracji stanu automatyzacji platformy Azure](automation-dsc-compile.md).
+- Aby uzyskać informacje o poleceniach cmdlet programu PowerShell, zobacz [polecenia cmdlet konfiguracji stanu automatyzacji platformy Azure](/powershell/module/az.automation#automation).
+- Aby uzyskać informacje o cenach, zobacz [Cennik konfiguracji stanu usługi Azure Automation .](https://azure.microsoft.com/pricing/details/automation/)
+- Na przykład przy użyciu konfiguracji stanu automatyzacji platformy Azure w potoku ciągłego wdrażania, zobacz [Przykład użycia: Ciągłe wdrażanie na maszynach wirtualnych przy użyciu konfiguracji stanu automatyzacji platformy Azure i chocolatey](automation-dsc-cd-chocolatey.md).

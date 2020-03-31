@@ -1,6 +1,6 @@
 ---
-title: Wdróż agenta, aby połączyć dane CEF z platformą Azure wskaźnikiem wersji zapoznawczej | Microsoft Docs
-description: Dowiedz się, jak wdrożyć agenta, aby połączyć dane CEF z platformą Azure.
+title: Wdrażanie agenta w celu połączenia danych cef z usługą Azure Sentinel Preview| Dokumenty firmy Microsoft
+description: Dowiedz się, jak wdrożyć agenta, aby połączyć dane CEF z usługą Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,38 +15,38 @@ ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
 ms.openlocfilehash: b0c9335357cb793ea76e1dbe68575f716a50372a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588471"
 ---
-# <a name="step-1-deploy-the-agent"></a>Krok 1. wdrażanie agenta
+# <a name="step-1-deploy-the-agent"></a>Krok 1: Wdrażanie agenta
 
 
-W tym kroku należy wybrać maszynę z systemem Linux, która będzie pełnić rolę serwera proxy między wskaźnikiem danych platformy Azure a rozwiązaniem zabezpieczeń. Na komputerze proxy należy uruchomić skrypt, który:
-- Instaluje agenta Log Analytics i konfiguruje go w razie potrzeby w celu nasłuchiwania komunikatów dziennika systemowego.
-- Konfiguruje demona dziennika systemowego do nasłuchiwania komunikatów dziennika systemu przy użyciu portu TCP 514, a następnie przekazuje tylko komunikaty CEF do agenta Log Analytics przy użyciu portu TCP 25226.
-- Ustawia agenta dziennika systemowego do zbierania danych i bezpiecznego wysyłania go do usługi Azure wskaźnikowej, w której jest analizowany i wzbogacony.
+W tym kroku należy wybrać komputer z systemem Linux, który będzie działać jako serwer proxy między usługą Azure Sentinel i rozwiązania zabezpieczeń. Będziesz musiał uruchomić skrypt na komputerze proxy, który:
+- Instaluje agenta usługi Log Analytics i konfiguruje go w razie potrzeby do nasłuchiwać wiadomości Syslog.
+- Konfiguruje demona Syslog do nasłuchiwać wiadomości Syslog przy użyciu portu TCP 514, a następnie przesyła dalej tylko komunikaty CEF do agenta usługi Log Analytics przy użyciu portu TCP 25226.
+- Ustawia agenta Syslog do zbierania danych i wysyłania ich bezpiecznie do usługi Azure Sentinel, gdzie jest analizowany i wzbogacony.
  
 ## <a name="deploy-the-agent"></a>Wdrażanie agenta
  
-1. W portalu Azure wskaźnikowym kliknij pozycję **Łączniki danych** i wybierz pozycję **Common Event format (CEF)** , a następnie **Otwórz stronę łącznik**. 
+1. W portalu Azure Sentinel kliknij pozycję **Łączniki danych** i wybierz pozycję **Wspólny format zdarzeń (CEF),** a następnie **otwórz stronę łącznika**. 
 
-1. W obszarze **Instalowanie i Konfigurowanie agenta dziennika**systemu wybierz typ maszyny, platformę Azure, inną chmurę lub lokalnie. 
+1. W obszarze **Zainstaluj i skonfiguruj agenta Syslog**wybierz typ komputera, azure, inną chmurę lub lokalnie. 
    > [!NOTE]
-   > Ponieważ skrypt w następnym kroku instaluje agenta Log Analytics i łączy maszynę z obszarem roboczym wskaźnikowego platformy Azure, upewnij się, że ta maszyna nie jest połączona z żadnym innym obszarem roboczym.
-1. Musisz mieć podwyższony poziom uprawnień (sudo) na swojej maszynie. Upewnij się, że na maszynie jest zainstalowany program Python, przy użyciu następującego polecenia: `python –version`
+   > Ponieważ skrypt w następnym kroku instaluje agenta usługi Log Analytics i łączy komputer z obszarem roboczym usługi Azure Sentinel, upewnij się, że ten komputer nie jest połączony z żadnym innym obszarem roboczym.
+1. Musisz mieć podwyższone uprawnienia (sudo) na komputerze. Upewnij się, że masz Pythona na komputerze za pomocą następującego polecenia:`python –version`
 
-1. Uruchom na komputerze proxy następujący skrypt.
+1. Uruchom następujący skrypt na komputerze proxy.
    `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
-1. Gdy skrypt jest uruchomiony, upewnij się, że nie są wyświetlane żadne komunikaty o błędach lub ostrzeżeniach.
+1. Gdy skrypt jest uruchomiony, sprawdź, czy nie otrzymasz żadnych komunikatów o błędzie ani ostrzeżeniach.
 
-Przejdź do [kroku 2: Skonfiguruj rozwiązanie zabezpieczeń do przesyłania dalej komunikatów CEF](connect-cef-solution-config.md) .
+Przejdź do [kroku 2: Skonfiguruj rozwiązanie zabezpieczające do przesyłania dalej komunikatów CEF](connect-cef-solution-config.md) .
 
 
 ## <a name="next-steps"></a>Następne kroki
-W tym dokumencie przedstawiono sposób łączenia urządzeń CEF z platformą Azure — wskaźnikiem. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
-- Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats.md).
+W tym dokumencie dowiesz się, jak połączyć urządzenia CEF z usługą Azure Sentinel. Aby dowiedzieć się więcej o usłudze Azure Sentinel, zobacz następujące artykuły:
+- Dowiedz się, jak [uzyskać wgląd w dane i potencjalne zagrożenia.](quickstart-get-visibility.md)
+- Rozpocznij [wykrywanie zagrożeń za pomocą usługi Azure Sentinel](tutorial-detect-threats.md).
 

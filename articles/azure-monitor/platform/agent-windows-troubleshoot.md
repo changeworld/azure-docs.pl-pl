@@ -1,50 +1,50 @@
 ---
-title: Rozwiązywanie problemów z agentem Log Analytics dla systemu Windows
-description: Opisz objawy, przyczyny i rozwiązywanie typowych problemów z Log Analytics agentem dla systemu Windows w Azure Monitor.
+title: Rozwiązywanie problemów z agentem usługi Log Analytics dla systemu Windows
+description: Opisz symptomy, przyczyny i rozwiązanie najczęstszych problemów z agentem usługi Log Analytics dla systemu Windows w usłudze Azure Monitor.
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 78625707bfa296eeb7ad8cc658657f46da1dc495
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 4112555347ce1d718375fbab3f166c6f2f5deeaa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668795"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80333503"
 ---
-# <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Jak rozwiązywać problemy z agentem Log Analytics dla systemu Windows 
+# <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Jak rozwiązywać problemy z agentem usługi Log Analytics dla systemu Windows 
 
-Ten artykuł zawiera informacje ułatwiające rozwiązywanie problemów dotyczących błędów, które mogą wystąpić w przypadku Log Analytics agenta dla systemu Windows w programie Azure Monitor i sugeruje rozwiązania, które można rozwiązać.
+Ten artykuł zawiera pomoc w rozwiązywaniu problemów z błędami, które mogą wystąpić z agentem usługi Log Analytics dla systemu Windows w usłudze Azure Monitor i sugeruje możliwe rozwiązania, aby je rozwiązać.
 
-Jeśli żadna z powyższych czynności działa, następujących kanałów pomocy technicznej dostępne są również:
+Jeśli żaden z tych kroków nie działa, dostępne są również następujące kanały pomocy technicznej:
 
-* Klienci korzystający z usług Premier Premium mogą otworzyć żądanie pomocy technicznej w wersji [Premium.](https://premier.microsoft.com/)
-* Klienci z umowami pomocy technicznej systemu Azure mogą otworzyć żądanie pomocy technicznej [w Azure Portal](https://manage.windowsazure.com/?getsupport=true).
-* Odwiedź stronę Log Analytics opinię, aby przejrzeć przesłane pomysły i usterki [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) lub plik nowy. 
+* Klienci korzystający z pomocy technicznej Premier mogą otworzyć żądanie pomocy technicznej w [u. Premier](https://premier.microsoft.com/).
+* Klienci korzystający z umów pomocy technicznej platformy Azure mogą otworzyć żądanie pomocy technicznej [w witrynie Azure.](https://manage.windowsazure.com/?getsupport=true)
+* Odwiedź stronę Opinii usługi Log Analytics, aby [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) przejrzeć przesłane pomysły i błędy lub złożyć nową. 
 
 ## <a name="important-troubleshooting-sources"></a>Ważne źródła rozwiązywania problemów
 
- Aby pomóc w rozwiązywaniu problemów związanych z agentem Log Analytics dla systemu Windows, Agent rejestruje zdarzenia w dzienniku zdarzeń systemu Windows, w odniesieniu do programu *Application i Services\Operations Manager*.  
+ Aby pomóc w rozwiązywaniu problemów związanych z agentem usługi Log Analytics dla systemu Windows, agent rejestruje zdarzenia w dzienniku zdarzeń systemu Windows, w szczególności w obszarze *Aplikacja i usługi\Program Operations Manager*.  
 
 ## <a name="connectivity-issues"></a>Problemy z łącznością
 
-Jeśli Agent komunikuje się za pośrednictwem serwera proxy lub zapory, mogą wystąpić ograniczenia dotyczące zapobiegania komunikacji między komputerem źródłowym a usługą Azure Monitor. W przypadku zablokowania komunikacji z powodu błędnej konfiguracji Rejestracja z obszarem roboczym może zakończyć się niepowodzeniem podczas próby zainstalowania agenta lub skonfigurowania agenta po zakończeniu instalacji w celu raportowania do dodatkowego obszaru roboczego. Komunikacja agenta może zakończyć się niepowodzeniem po pomyślnej rejestracji. W tej sekcji opisano metody rozwiązywania problemu tego typu z agentem systemu Windows.
+Jeśli agent komunikuje się za pośrednictwem serwera proxy lub zapory, mogą istnieć ograniczenia uniemożliwiające komunikację z komputera źródłowego i usługi Azure Monitor. W przypadku, gdy komunikacja jest zablokowana, z powodu błędnej konfiguracji rejestracja w obszarze roboczym może zakończyć się niepowodzeniem podczas próby zainstalowania agenta lub skonfigurowania agenta po skonfigurowaniu do raportowania do dodatkowego obszaru roboczego. Komunikacja agenta może zakończyć się niepowodzeniem po pomyślnej rejestracji. W tej sekcji opisano metody rozwiązywania tego typu problemów z agentem systemu Windows.
 
-Sprawdź, czy zapora lub serwer proxy został skonfigurowany tak, aby zezwalał na następujące porty i adresy URL opisane w poniższej tabeli. Upewnij się również, że inspekcja HTTP nie jest włączona dla ruchu w sieci Web, ponieważ może to uniemożliwić bezpieczny kanał protokołu TLS między agentem i Azure Monitor.  
+Sprawdź, czy zapora lub serwer proxy jest skonfigurowany tak, aby zezwalać na następujące porty i adresy URL opisane w poniższej tabeli. Upewnij się również, że inspekcja HTTP nie jest włączona dla ruchu internetowego, ponieważ może uniemożliwić bezpieczny kanał TLS między agentem a usługą Azure Monitor.  
 
 |Zasób agenta|Porty |Kierunek |Obejście inspekcji HTTPS|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Wychodzący|Yes |  
-|*.oms.opinsights.azure.com |Port 443 |Wychodzący|Yes |  
-|*.blob.core.windows.net |Port 443 |Wychodzący|Yes |  
+|*.ods.opinsights.azure.com |port 443 |Wychodzący|Tak |  
+|*.oms.opinsights.azure.com |port 443 |Wychodzący|Tak |  
+|*.blob.core.windows.net |port 443 |Wychodzący|Tak |  
 
-Informacje dotyczące zapory wymagane do Azure Government można znaleźć w temacie [Azure Government Management](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). Jeśli planujesz używać Azure Automation hybrydowego procesu roboczego elementu Runbook do nawiązywania połączenia z usługą Automation i zarejestrowania się z nią w celu używania elementów Runbook lub rozwiązań do zarządzania w danym środowisku, musi on mieć dostęp do numeru portu i adresów URL opisanych w temacie [Konfigurowanie sieci dla hybrydowego procesu roboczego elementu Runbook](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
+Aby uzyskać informacje o zaporze wymagane dla platformy Azure Government, zobacz [Zarządzanie dla instytucji rządowych platformy Azure](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). Jeśli planujesz używać procesu roboczego hybrydowego wiązki uruchomieniu usługi Azure Automation do łączenia się z usługą Automatyzacja i rejestrowania się w niej w celu używania wiązek ekwiwania lub rozwiązań do zarządzania w twoim środowisku, musi mieć dostęp do numeru portu i adresów URL opisanych w [temacie Konfigurowanie sieci dla hybrydowego procesu roboczego systemu Runbook](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 
-Istnieje kilka sposobów, aby sprawdzić, czy Agent pomyślnie komunikuje się z Azure Monitor.
+Istnieje kilka sposobów sprawdzenia, czy agent pomyślnie komunikuje się z usługą Azure Monitor.
 
-- Włącz [ocenę Agent Health usługi Azure log Analytics](../insights/solution-agenthealth.md) w obszarze roboczym. Na pulpicie nawigacyjnym Agent Health Wyświetl **liczbę nieodpowiadających agentów** , aby szybko sprawdzić, czy Agent znajduje się na liście.  
+- Włącz [ocenę kondycji agenta usługi Azure Log Analytics](../insights/solution-agenthealth.md) w obszarze roboczym. Na pulpicie nawigacyjnym kondycji agenta wyświetl kolumnę **Liczba agentów nieodpowiadających,** aby szybko sprawdzić, czy agent znajduje się na liście.  
 
-- Uruchom następujące zapytanie, aby potwierdzić, że Agent wysyła puls do obszaru roboczego, do którego jest skonfigurowana do raportowania. Zastąp `<ComputerName>` rzeczywistą nazwą komputera.
+- Uruchom następującą kwerendę, aby potwierdzić, że agent wysyła puls do obszaru roboczego, do który jest skonfigurowany do raportowania. Wymień `<ComputerName>` na rzeczywistą nazwę urządzenia.
 
     ```
     Heartbeat 
@@ -52,36 +52,36 @@ Istnieje kilka sposobów, aby sprawdzić, czy Agent pomyślnie komunikuje się z
     | summarize arg_max(TimeGenerated, * ) by Computer 
     ```
 
-    Jeśli komputer pomyślnie komunikuje się z usługą, zapytanie powinno zwrócić wynik. Jeśli zapytanie nie zwróciło wyniku, najpierw sprawdź, czy Agent jest skonfigurowany do raportowania do prawidłowego obszaru roboczego. Jeśli jest prawidłowo skonfigurowany, przejdź do kroku 3 i Przeszukaj dziennik zdarzeń systemu Windows, aby ustalić, czy Agent rejestruje, jakiego problemu może uniemożliwiać komunikację z Azure Monitor.
+    Jeśli komputer pomyślnie komunikuje się z usługą, kwerenda powinna zwrócić wynik. Jeśli kwerenda nie zwróciła wyniku, najpierw sprawdź, czy agent jest skonfigurowany do raportowania do właściwego obszaru roboczego. Jeśli jest poprawnie skonfigurowany, przejdź do kroku 3 i wyszukaj w dzienniku zdarzeń systemu Windows, aby zidentyfikować, czy agent rejestruje, jaki problem może uniemożliwiać mu komunikowanie się z usługą Azure Monitor.
 
-- Inną metodą identyfikacji problemu z łącznością jest uruchomienie narzędzia **TestCloudConnectivity** . Narzędzie jest instalowane domyślnie z agentem w folderze *%systemroot%\Program Files\Microsoft monitoring Agent\Agent*. W wierszu polecenia z podwyższonym poziomem uprawnień przejdź do folderu i uruchom narzędzie. Narzędzie zwraca wyniki i wyróżnia, w których teście nie powiodło się (na przykład jeśli zostało ono powiązane z określonym portem/adresem URL, który został zablokowany). 
+- Inną metodą identyfikowania problemu z łącznością jest uruchomienie narzędzia **TestCloudConnectivity.** Narzędzie jest instalowane domyślnie z agentem w folderze *%SystemRoot%\Program Files\Microsoft Monitoring Agent\Agent*. W wierszu polecenia z podwyższonym poziomem uprawnień przejdź do folderu i uruchom narzędzie. Narzędzie zwraca wyniki i podświetla, gdzie test nie powiódł się (na przykład, jeśli był powiązany z określonym portem/adresem URL, który został zablokowany). 
 
-    ![Wyniki wykonywania narzędzia TestCloudConnection](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
+    ![Wyniki wykonania narzędzia TestCloudConnection](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- Przefiltruj *Operations Manager* dziennik zdarzeń **według źródeł zdarzeń** - *Usługa kondycji moduły*, *HealthService*oraz *Łącznik usługi* i przefiltruj według *ostrzeżenia* na **poziomie zdarzenia** *i sprawdź* , czy zarejestrowano zdarzenia z poniższej tabeli. Jeśli są, przejrzyj kroki rozwiązywania dotyczące każdego możliwego zdarzenia.
+- Filtruj dziennik zdarzeń *programu Operations Manager* według modułów - usługi kondycji źródeł **zdarzeń,** *healthservice*i *łącznika usługi* i filtruj według *ostrzeżenia* **o poziomie zdarzenia** i *błędu,* aby potwierdzić, czy napisał zdarzenia z poniższej tabeli.*Health Service Modules* Jeśli tak, przejrzyj kroki rozwiązywania problemów uwzględnione dla każdego możliwego zdarzenia.
 
     |Identyfikator zdarzenia |Element źródłowy |Opis |Rozwiązanie |
     |---------|-------|------------|-----------|
-    |2133 & 2129 |Usługa badania kondycji |Nie można nawiązać połączenia z usługą z agenta |Ten błąd może wystąpić, gdy Agent nie może komunikować się bezpośrednio z usługą Azure Monitor ani za pomocą zapory/serwera proxy. Sprawdź ustawienia serwera proxy agenta lub czy Zapora sieci/serwer proxy zezwala na ruch TCP z komputera do usługi.|
-    |2138 |Moduły Usługa kondycji |Serwer proxy wymaga uwierzytelniania |Skonfiguruj ustawienia serwera proxy agenta i określ nazwę użytkownika/hasło wymagane do uwierzytelnienia na serwerze proxy. |
-    |2129 |Moduły Usługa kondycji |Nieudane połączenie/negocjowanie protokołu SSL nie powiodło się |Sprawdź ustawienia protokołu TCP/IP karty sieciowej oraz ustawienia serwera proxy agenta.|
-    |2127 |Moduły Usługa kondycji |Nie powiodło się wysyłanie danych — kod błędu |Jeśli wystąpi tylko okresowo w ciągu dnia, może to być tylko Losowa anomalia, którą można zignorować. Monitoruj, aby zrozumieć, jak często się dzieje. Jeśli zdarza się to często przez cały dzień, należy najpierw sprawdzić konfigurację sieci i ustawienia serwera proxy. Jeśli opis zawiera kod błędu HTTP 404 i jest to pierwszy raz, gdy agent próbuje wysłać dane do usługi, będzie zawierać błąd 500 z wewnętrznym kodem błędu 404. 404 nie znaleziono, co oznacza, że obszar magazynu dla nowego obszaru roboczego jest nadal zainicjowany. Przy następnym ponowieniu próby dane zostaną pomyślnie zapisane w obszarze roboczym zgodnie z oczekiwaniami. Błąd HTTP 403 może wskazywać na problem z uprawnieniami lub poświadczeniami. Więcej informacji zawiera błąd 403, aby pomóc w rozwiązaniu problemu.|
-    |4000 |Łącznik usługi |Rozpoznawanie nazw DNS nie powiodło się |Komputer nie może rozpoznać adresu internetowego używanego podczas wysyłania danych do usługi. Mogą to być ustawienia programu rozpoznawania nazw DNS na komputerze, nieprawidłowe ustawienia serwera proxy lub może to być tymczasowy problem z systemem DNS dla dostawcy. Jeśli trwa okresowo, przyczyną może być przejściowy problem z siecią.|
-    |4001 |Łącznik usługi |Nie można nawiązać połączenia z usługą. |Ten błąd może wystąpić, gdy Agent nie może komunikować się bezpośrednio z usługą Azure Monitor ani za pomocą zapory/serwera proxy. Sprawdź ustawienia serwera proxy agenta lub czy Zapora sieci/serwer proxy zezwala na ruch TCP z komputera do usługi.|
-    |4002 |Łącznik usługi |Usługa zwróciła kod stanu HTTP 403 w odpowiedzi na zapytanie. Skontaktuj się z administratorem usługi w celu uzyskania kondycji usługi. Kwerenda zostanie ponowiona później. |Ten błąd jest zapisywana podczas początkowej fazy rejestracji agenta i zobaczysz adres URL podobny do następującego: *https://\<identyfikator obszaru roboczego >. OMS. usługi OpInsights. Azure. com/AgentService. svc/AgentTopologyRequest*. Kod błędu 403 oznacza zabroniony i może być spowodowany błędnym IDENTYFIKATORem lub kluczem obszaru roboczego lub danymi i godziną na komputerze. Jeśli czas +/-15 minut od bieżącego czasu dołączania kończy się niepowodzeniem. Aby rozwiązać ten konieczność, zaktualizuj datę i/lub strefę czasową komputera z systemem Windows.|
+    |2133 & 2129 |Usługa kondycji |Połączenie z usługą z agenta nie powiodło się |Ten błąd może wystąpić, gdy agent nie może komunikować się bezpośrednio lub za pośrednictwem serwera zapory/serwera proxy do usługi Azure Monitor. Sprawdź ustawienia serwera proxy agenta lub czy zapora sieciowa/serwer proxy zezwala na ruch TCP z komputera do usługi.|
+    |2138 |Moduły usługi zdrowotnej |Serwer proxy wymaga uwierzytelnienia |Skonfiguruj ustawienia serwera proxy agenta i określ nazwę użytkownika/hasło wymagane do uwierzytelnienia na serwerze proxy. |
+    |2129 |Moduły usługi zdrowotnej |Nieudane połączenie/nieudana negocjacja TLS |Sprawdź ustawienia karty sieciowej TCP/IP i ustawienia serwera proxy agenta.|
+    |2127 |Moduły usługi zdrowotnej |Niepowodzenie wysyłania danych odebrany kod błędu |Jeśli dzieje się to tylko okresowo w ciągu dnia, może to być po prostu losowa anomalia, którą można zignorować. Monitoruj, aby zrozumieć, jak często to się dzieje. Jeśli zdarza się to często w ciągu dnia, najpierw sprawdź konfigurację sieci i ustawienia serwera proxy. Jeśli opis zawiera kod błędu HTTP 404 i jest to pierwszy raz, gdy agent próbuje wysłać dane do usługi, będzie zawierać błąd 500 z wewnętrznym kodem błędu 404. 404 oznacza nie znaleziono, co wskazuje, że obszar magazynowania dla nowego obszaru roboczego jest nadal aprowizacji. Przy następnej próbie ponawiania danych zostanie pomyślnie zapis w obszarze roboczym zgodnie z oczekiwaniami. Błąd HTTP 403 może wskazywać na problem z uprawnieniami lub poświadczeniami. Więcej informacji zawiera błąd 403, aby pomóc w rozwiązaniu problemu.|
+    |4000 |Łącznik serwisu |Rozpoznawanie nazw DNS nie powiodło się |Komputer nie może rozpoznać adresu internetowego używanego podczas wysyłania danych do usługi. Mogą to być ustawienia programu rozpoznawania nazw DNS na komputerze, nieprawidłowe ustawienia serwera proxy lub tymczasowy problem z systemem DNS u dostawcy. Jeśli dzieje się to okresowo, może to być spowodowane przez przejściowy problem związany z siecią.|
+    |4001 |Łącznik serwisu |Połączenie z usługą nie powiodło się. |Ten błąd może wystąpić, gdy agent nie może komunikować się bezpośrednio lub za pośrednictwem serwera zapory/serwera proxy do usługi Azure Monitor. Sprawdź ustawienia serwera proxy agenta lub czy zapora sieciowa/serwer proxy zezwala na ruch TCP z komputera do usługi.|
+    |4002 |Łącznik serwisu |Usługa zwróciła kod stanu HTTP 403 w odpowiedzi na kwerendę. Skontaktuj się z administratorem usługi, aby uzyskać informacje o kondycji usługi. Kwerenda zostanie ponowiona później. |Ten błąd jest zapisywany podczas początkowej fazy rejestracji agenta i zobaczysz adres URL podobny do następującego: *https://\<workspaceID>.oms.opinsights.azure.com/AgentService.svc/AgentTopologyRequest*. Kod błędu 403 oznacza zabronione i może być spowodowane przez błędnie ominął identyfikator obszaru roboczego lub klucz lub dane i czas jest niepoprawna na komputerze. Jeśli czas wynosi +/- 15 minut od bieżącego czasu, dołączanie nie powiedzie się. Aby rozwiązać ten problem, zaktualizuj datę i/lub strefę czasową komputera z systemem Windows.|
 
-## <a name="data-collection-issues"></a>Problemy z zbieraniem danych
+## <a name="data-collection-issues"></a>Problemy z gromadzeniem danych
 
-Po zainstalowaniu agenta i przesłaniu raportów do jego skonfigurowanego obszaru roboczego lub obszarów roboczych może on przestać otrzymywać informacje o konfiguracji, zbieraniu lub przekazywaniu wydajności, dzienników lub innych danych do usługi w zależności od tego, co jest włączone i ukierunkowane na komputer. Należy określić, czy:
+Po zainstalowaniu agenta i raportowaniu skonfigurowanego obszaru roboczego lub obszarów roboczych może przestać odbierać konfigurację, zbierać lub przekazywać dalej wydajność, dzienniki lub inne dane do usługi w zależności od tego, co jest włączone i kierowanie na komputer. Konieczne jest ustalenie, czy:
 
-- Czy jest to konkretny typ danych, czy wszystkie dane, które nie są dostępne w obszarze roboczym?
+- Czy jest to określony typ danych lub wszystkie dane, które nie są dostępne w obszarze roboczym?
 - Czy typ danych jest określony przez rozwiązanie lub określony jako część konfiguracji zbierania danych obszaru roboczego?
-- Ile komputerów dotyczy ten wpływ? Czy do obszaru roboczego są raportowane pojedyncze lub wiele komputerów?
-- Czy zadziałała i zakończyła się w określonym dniu lub nie został nigdy zebrany? 
-- Czy kwerenda przeszukiwania dzienników jest używana syntaktycznie? 
-- Czy Agent odebrał kiedykolwiek swoją konfigurację od Azure Monitor?
+- Ile komputerów dotyczy? Czy jest to jeden lub wiele komputerów raportowania do obszaru roboczego?
+- Czy to działa i czy zatrzymał się o określonej porze dnia, czy nigdy nie zostały zebrane? 
+- Czy kwerenda wyszukiwania dziennika używasz syntaktycznie poprawne? 
+- Czy agent kiedykolwiek otrzymał swoją konfigurację z usługi Azure Monitor?
 
-Pierwszym krokiem w rozwiązywaniu problemów jest określenie, czy komputer wysyła zdarzenie pulsu.
+Pierwszym krokiem w rozwiązywaniu problemów jest ustalenie, czy komputer wysyła zdarzenie pulsu.
 
 ```
 Heartbeat 
@@ -89,18 +89,18 @@ Heartbeat
     | summarize arg_max(TimeGenerated, * ) by Computer
 ```
 
-Jeśli zapytanie zwraca wyniki, należy określić, czy konkretny typ danych nie jest zbierany i przekazywany do usługi. Przyczyną może być to, że Agent nie otrzymuje zaktualizowanej konfiguracji z usługi lub inny objaw uniemożliwiający normalne działanie agenta. Wykonaj następujące kroki, aby kontynuować rozwiązywanie problemów.
+Jeśli kwerenda zwraca wyniki, należy określić, czy określony typ danych nie jest zbierany i przekazywane do usługi. Może to być spowodowane przez agenta nie odbieranie zaktualizowanej konfiguracji z usługi lub innego objawu uniemożliwiającego agenta normalnie działać. Wykonaj następujące kroki, aby dalej rozwiązywać problemy.
 
-1. Otwórz wiersz polecenia z podwyższonym poziomem uprawnień na komputerze i ponownie uruchom usługę agenta, wpisując `net stop healthservice && net start healthservice`.
-2. Otwórz dziennik zdarzeń *Operations Manager* i Wyszukaj **identyfikatory zdarzeń** *7023, 7024, 7025, 7028* i *1210* ze **źródła zdarzeń** *HealthService*.  Te zdarzenia wskazują, że Agent pomyślnie otrzyma konfigurację z Azure Monitor i aktywnie monitoruje komputer. Opis zdarzenia dla zdarzenia o IDENTYFIKATORze 1210 również określi ostatni wiersz wszystkich rozwiązań i szczegółowych informacji, które znajdują się w zakresie monitorowania w agencie.  
+1. Otwórz wiersz polecenia z podwyższonym poziomem uprawnień na `net stop healthservice && net start healthservice`komputerze i uruchom ponownie usługę agenta, wpisując polecenie .
+2. Otwórz dziennik zdarzeń *programu Operations Manager* i wyszukaj **identyfikatory zdarzeń** *7023, 7024, 7025, 7028* i *1210* ze **źródła zdarzeń** *HealthService*.  Te zdarzenia wskazują, że agent pomyślnie odbiera konfigurację z usługi Azure Monitor i aktywnie monitoruje komputer. Opis zdarzenia dla zdarzenia o identyfikatorze 1210 określi również w ostatnim wierszu wszystkie rozwiązania i usługi Insights, które są uwzględnione w zakresie monitorowania agenta.  
 
-    ![Opis zdarzenia o IDENTYFIKATORze 1210](./media/agent-windows-troubleshoot/event-id-1210-healthservice-01.png)
+    ![Opis zdarzenia o identyfikatorze 1210](./media/agent-windows-troubleshoot/event-id-1210-healthservice-01.png)
 
-3. Jeśli po kilku minutach nie widzisz oczekiwanych danych w wynikach zapytania lub wizualizacji, w zależności od tego, czy oglądasz dane z rozwiązania lub szczegółowych informacji, w dzienniku zdarzeń *Operations Manager* Wyszukaj **źródła zdarzeń** *HealthService* i *Usługa kondycji moduły* i przefiltruj według *ostrzeżenia* na **poziomie zdarzeń** i sprawdź, *czy* zarejestrowano zdarzenia z poniższej tabeli.
+3. Jeśli po kilku minutach nie zobaczysz **oczekiwanych** danych w wynikach kwerendy lub wizualizacji, w zależności od tego, czy są wyświetlane dane z rozwiązania lub aplikacji Insight, z dziennika zdarzeń *programu Operations Manager* wyszukaj źródła zdarzeń *HealthService* i *moduły usługi kondycji* i filtruj według *ostrzeżenia* o **poziomie zdarzenia** i *błędu,* aby potwierdzić, czy zostało napisane zdarzenia z poniższej tabeli.
 
     |Identyfikator zdarzenia |Element źródłowy |Opis |Rozwiązanie |
     |---------|-------|------------|
-    |8000 |HealthService |To zdarzenie określa, czy przepływ pracy związany z wydajnością, zdarzeniem, czy innym typem danych zbieranych nie jest w stanie przesłać dalej do usługi w celu pozyskania w obszarze roboczym. | Identyfikator zdarzenia 2136 ze źródła HealthService jest zapisywana razem z tym zdarzeniem i może wskazywać, że Agent nie może komunikować się z usługą, prawdopodobnie z powodu błędnej konfiguracji serwera proxy i ustawień uwierzytelniania, awarii sieci lub zapory sieciowej/serwera proxy nie zezwala na ruch TCP z komputera do usługi.| 
-    |10102 i 10103 |Moduły Usługa kondycji |Przepływ pracy nie może rozpoznać źródła danych. |Taka sytuacja może wystąpić, jeśli określony licznik wydajności lub wystąpienie nie istnieje na komputerze lub jest niepoprawnie zdefiniowane w ustawieniach danych obszaru roboczego. Jeśli jest to [licznik wydajności](data-sources-performance-counters.md#configuring-performance-counters)określony przez użytkownika, sprawdź, czy podane informacje mają prawidłowy format i istnieją na komputerach docelowych. |
-    |26002 |Moduły Usługa kondycji |Przepływ pracy nie może rozpoznać źródła danych. |Taka sytuacja może wystąpić, jeśli określony dziennik zdarzeń systemu Windows nie istnieje na komputerze. Ten błąd może być bezpiecznie ignorowany, jeśli komputer nie powinien mieć zarejestrowanego dziennika zdarzeń. w przeciwnym razie, jeśli jest to [Dziennik zdarzeń](data-sources-windows-events.md#configuring-windows-event-logs)określony przez użytkownika, sprawdź, czy podane informacje są poprawne. |
+    |8000 |Służba zdrowia |To zdarzenie określi, czy przepływ pracy związany z wydajnością, zdarzeniem lub innym zebranym typem danych nie może przesłać dalej do usługi w celu pobrania do obszaru roboczego. | Identyfikator zdarzenia 2136 ze źródła HealthService jest zapisywany razem z tym zdarzeniem i może wskazywać, że agent nie może komunikować się z usługą, prawdopodobnie z powodu błędnej konfiguracji serwera proxy i ustawień uwierzytelniania, awarii sieci lub zapory sieciowej/serwera proxy nie zezwala na ruch TCP z komputera do usługi.| 
+    |10102 i 10103 |Moduły usługi zdrowotnej |Przepływ pracy nie może rozwiązać źródła danych. |Taka możliwość może wystąpić, jeśli określony licznik wydajności lub wystąpienie nie istnieje na komputerze lub jest niepoprawnie zdefiniowany w ustawieniach danych obszaru roboczego. Jeśli jest to [licznik wydajności](data-sources-performance-counters.md#configuring-performance-counters)określony przez użytkownika, sprawdź, czy określone informacje są zgodne z poprawnym formatem i istnieją na komputerach docelowych. |
+    |26002 |Moduły usługi zdrowotnej |Przepływ pracy nie może rozwiązać źródła danych. |Taka możliwość może wystąpić, jeśli określony dziennik zdarzeń systemu Windows nie istnieje na komputerze. Ten błąd można bezpiecznie zignorować, jeśli nie oczekuje się, że ten dziennik zdarzeń zostanie zarejestrowany, w przeciwnym razie, jeśli jest to [dziennik zdarzeń](data-sources-windows-events.md#configuring-windows-event-logs)określony przez użytkownika, sprawdź, czy określone informacje są poprawne. |
 

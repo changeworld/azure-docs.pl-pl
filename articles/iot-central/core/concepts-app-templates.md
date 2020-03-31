@@ -1,6 +1,6 @@
 ---
-title: Co to są szablony aplikacji na platformie Azure IoT Central | Microsoft Docs
-description: Szablony aplikacji IoT Central platformy Azure umożliwiają przechodzenie do tworzenia rozwiązań IoT.
+title: Co to są szablony aplikacji w usłudze Azure IoT Central | Dokumenty firmy Microsoft
+description: Szablony aplikacji usługi Azure IoT Central umożliwiają przejście do tworzenia rozwiązań IoT.
 author: philmea
 ms.author: philmea
 ms.date: 10/25/2019
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: fde46ddfe85ca2cd1aa4ba65c8bd93d4db328410
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77019047"
 ---
 # <a name="what-are-application-templates"></a>Co to są szablony aplikacji?
 
-Szablony aplikacji na platformie Azure IoT Central są narzędziem ułatwiającym kompilacje rozwiązań Stwórz ich rozwój rozwiązań IoT. Za pomocą szablonów aplikacji można korzystać ze wszystkich elementów, co jest możliwe, aby w pełni dostosować aplikacje do swoich klientów.
+Szablony aplikacji w usłudze Azure IoT Central to narzędzie ułatwiające konstruowaniu rozwiązań w celu rozpoczęcia opracowywania rozwiązań IoT. Możesz użyć szablonów aplikacji do wszystkiego, od wyczucia tego, co jest możliwe, do pełnego dostosowania i aplikacji do odsprzedaży klientom.
 
 Szablony aplikacji składają się z:
 
-- Przykładowe pulpity nawigacyjne operatorów
+- Przykładowe pulpity nawigacyjne operatora
 - Przykładowe szablony urządzeń
-- Symulowane urządzenia generujące dane w czasie rzeczywistym
+- Symulowane urządzenia wytwarzające dane w czasie rzeczywistym
 - Wstępnie skonfigurowane reguły i zadania
-- Zaawansowana dokumentacja obejmująca samouczki i porady
+- Bogata dokumentacja, w tym samouczki i instrukcje
 
-Szablon aplikacji jest wybierany podczas tworzenia aplikacji. Nie można zmienić szablonu po utworzeniu aplikacji.
+Podczas tworzenia aplikacji wybierasz szablon aplikacji. Nie można zmienić szablonu po utworzeniu aplikacji.
 
 ## <a name="custom-templates"></a>Szablony niestandardowe
 
@@ -35,23 +35,23 @@ Jeśli chcesz utworzyć aplikację od podstaw, wybierz jeden z dwóch niestandar
 - Aplikacja niestandardowa
 - Aplikacja niestandardowa (starsza wersja)
 
-Wybierz szablon **aplikacji niestandardowej** , chyba że masz konkretną przyczynę użycia starszego szablonu.
+Wybierz szablon **aplikacji niestandardowej,** chyba że masz określony powód, aby użyć starszego szablonu.
 
-## <a name="industry-focused-templates"></a>Szablony skoncentrowane na branży
+## <a name="industry-focused-templates"></a>Szablony branżowe
 
-Azure IoT Central to platforma aplikacji branżowych niezależny od. Szablony aplikacji to przykładowe, dostępne w branży przykłady dla tych branż
+Usługa Azure IoT Central to niezależna od branży platforma aplikacji. Szablony aplikacji są przykładami branżowymi dostępnymi obecnie dla tych branż, a w przyszłości pojawią się kolejne:
 
-- [Stępują](../retail/overview-iot-central-retail-pnp.md)
+- [Sprzedaż detaliczna](../retail/overview-iot-central-retail-pnp.md)
   - Połączona logistyka
   - Cyfrowe centrum dystrybucji
-  - Monitorowanie warunku analizy w sklepie
-  - Analiza w sklepie — wyewidencjonowywanie
-  - Inteligentne zarządzanie magazynem
-- [Energii](../energy/overview-iot-central-energy.md)
-  - Monitorowanie inteligentnych liczników
+  - Analityka w sklepie - monitorowanie stanu
+  - Analityka w sklepie - kasa
+  - Inteligentne zarządzanie zapasami
+- [Energetyczna](../energy/overview-iot-central-energy.md)
+  - Inteligentne monitorowanie liczników
   - Monitorowanie paneli słonecznych
-- [Zarządowi](../government/overview-iot-central-government.md)
-  - Połączone zarządzanie odpadami
+- [Instytucje rządowe](../government/overview-iot-central-government.md)
+  - Połączone gospodarowanie odpadami
   - Monitorowanie zużycia wody
   - Monitorowanie jakości wody
 - [Opieka zdrowotna](../healthcare/overview-iot-central-healthcare.md).
@@ -59,4 +59,4 @@ Azure IoT Central to platforma aplikacji branżowych niezależny od. Szablony ap
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, kiedy wiesz, co IoT Central szablonów aplikacji, Zacznij od [utworzenia aplikacji IoT Central](quick-deploy-iot-central.md).
+Teraz, gdy wiesz, jakie są szablony aplikacji IoT Central, rozpocznij tworzenie [aplikacji centralnej IoT](quick-deploy-iot-central.md).

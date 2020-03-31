@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie modułów z poziomu Azure IoT Edge wiersza polecenia platformy Azure
-description: Użyj interfejsu wiersza polecenia platformy Azure z rozszerzeniem usługi Azure IoT, aby wypchnąć moduł IoT Edge z IoT Hub do urządzenia IoT Edge, zgodnie z konfiguracją manifestu wdrożenia.
+title: Wdrażanie modułów z wiersza polecenia interfejsu wiersza polecenia interfejsu wiersza polecenia platformy Azure — usługa Azure IoT Edge
+description: Użyj interfejsu wiersza polecenia platformy Azure z rozszerzeniem IoT platformy Azure, aby wypchnąć moduł usługi IoT Edge z centrum IoT Hub do urządzenia usługi IoT Edge, skonfigurowanego przez manifest wdrożenia.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,35 +9,35 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e93360d4045f9c97d45abe2af489804a4c3c85f0
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 619ba7cb2d99e0137fd1834096dd5b66ffcd6ec9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673488"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240378"
 ---
-# <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Wdrożyć moduły usługi Azure IoT Edge przy użyciu wiersza polecenia platformy Azure
+# <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Wdrażanie modułów usługi Azure IoT Edge za pomocą interfejsu wiersza polecenia platformy Azure
 
-Po utworzeniu usługi IoT Edge modułów za pomocą logiki biznesowej, należy wdrożyć je na urządzeniach do działania na urządzeniach brzegowych. Jeśli masz wiele modułów, które współpracują ze sobą do zbierania i przetwarzania danych, możesz wdrożyć je w całości i zadeklarować reguły routingu, które łączą te elementy.
+Po utworzeniu modułów usługi IoT Edge z logiką biznesową, chcesz wdrożyć je na urządzeniach do pracy na urządzeniach brzegowych. Jeśli masz wiele modułów, które współpracują ze sobą w celu zbierania i przetwarzania danych, można wdrożyć je wszystkie naraz i zadeklarować reguły routingu, które je łączą.
 
-[Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) to narzędzie wielodostępnej do obsługi wielu platform i zarządzania zasobami platformy Azure, takimi jak IoT Edge. Umożliwia zarządzanie zasobami usługi Azure IoT Hub, wystąpieniami usługi device provisioning i połączonymi centrami po gotowych. Nowe rozszerzenie IoT uzupełnia interfejs wiersza polecenia platformy Azure przy użyciu funkcji, takich jak zarządzanie urządzeniami i pełne możliwości usługi IoT Edge.
+[Narzędzie interfejsu wiersza](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) polecenia platformy Azure to narzędzie wiersza polecenia platformy open source do zarządzania zasobami platformy Azure, takimi jak usługa IoT Edge. Umożliwia zarządzanie zasobami usługi Azure IoT Hub, wystąpieniami usługi inicjowania obsługi administracyjnej urządzeń i połączonych koncentratorów po wyjęciu z pudełka. Nowe rozszerzenie IoT wzbogaca interfejs wiersza polecenia platformy Azure o funkcje, takie jak zarządzanie urządzeniami i pełne możliwości usługi IoT Edge.
 
-W tym artykule pokazano, jak utworzyć manifest wdrożenia JSON, a następnie użyć do wypychania wdrożenia na urządzeniu usługi IoT Edge. Aby uzyskać informacje na temat tworzenia wdrożenia, które jest przeznaczone dla wielu urządzeń na podstawie ich udostępnionych tagów, zobacz [wdrażanie i monitorowanie modułów IoT Edge w odpowiedniej skali](how-to-deploy-monitor-cli.md)
+W tym artykule pokazano, jak utworzyć manifest wdrożenia JSON, a następnie użyć tego pliku do wypchnięcia wdrożenia do urządzenia usługi IoT Edge. Aby uzyskać informacje dotyczące tworzenia wdrożenia przeznaczonego dla wielu urządzeń na podstawie ich udostępnionych tagów, zobacz [Wdrażanie i monitorowanie modułów usługi IoT Edge na dużą skalę](how-to-deploy-monitor-cli.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Centrum IoT](../iot-hub/iot-hub-create-using-cli.md) w ramach subskrypcji platformy Azure.
-* [Urządzenie IoT Edge](how-to-register-device.md#register-with-the-azure-cli) z zainstalowanym IoT Edge środowiska uruchomieniowego.
-* [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) w Twoim środowisku. Minimalna wersja interfejsu wiersza polecenia platformy Azure musi być 2.0.70 lub nowsza. Użyj polecenia `az --version` w celu przeprowadzenia weryfikacji. Ta wersja obsługuje polecenia rozszerzenia az i wprowadza platformę poleceń Knack.
+* [Centrum IoT w](../iot-hub/iot-hub-create-using-cli.md) subskrypcji platformy Azure.
+* [Urządzenie IoT Edge](how-to-register-device.md#register-with-the-azure-cli) z zainstalowanym czasem wykonywania IoT Edge.
+* [Narzędzie CLI platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) w twoim środowisku. Co najmniej wersja interfejsu wiersza polecenia platformy Azure musi mieć wartość 2.0.70 lub nowszy. Użyj polecenia `az --version` w celu przeprowadzenia weryfikacji. Ta wersja obsługuje polecenia rozszerzenia az i wprowadza platformę poleceń Knack.
 * [Rozszerzenie IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension).
 
-## <a name="configure-a-deployment-manifest"></a>Konfigurowanie manifestu wdrożenia
+## <a name="configure-a-deployment-manifest"></a>Konfigurowanie manifestu wdrażania
 
-Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdrożenia, sposób przepływu danych między modułami i żądane właściwości bliźniaczych reprezentacjach modułów. Aby uzyskać więcej informacji na temat działania manifestów wdrożenia i sposobu ich tworzenia, zobacz [Opis sposobu używania, konfigurowania i ponownego użycia modułów IoT Edge](module-composition.md).
+Manifest wdrożenia to dokument JSON, który opisuje, które moduły do wdrożenia, jak przepływy danych między modułami i żądane właściwości bliźniaczych reprezentacji modułu. Aby uzyskać więcej informacji na temat działania manifestów wdrażania i sposobu ich tworzenia, zobacz Opis sposobu [użycia, skonfigurowania i ponownego użycia modułów usługi IoT Edge.](module-composition.md)
 
-Aby wdrożyć moduły przy użyciu wiersza polecenia platformy Azure, Zapisz manifest wdrażania lokalnie jako plik JSON. Ścieżka pliku zostaną użyte w następnej sekcji, po uruchomieniu polecenia, aby zastosować konfigurację do Twojego urządzenia.
+Aby wdrożyć moduły przy użyciu interfejsu wiersza polecenia platformy Azure, zapisz manifest wdrożenia lokalnie jako plik .json. Ścieżka pliku będzie używana w następnej sekcji po uruchomieniu polecenia, aby zastosować konfigurację do urządzenia.
 
-Poniżej przedstawiono manifestu podstawowego wdrożenia za pomocą jednego modułu, na przykład:
+Oto podstawowy manifest wdrażania z jednym modułem jako przykład:
 
 ```json
 {
@@ -110,34 +110,34 @@ Poniżej przedstawiono manifestu podstawowego wdrożenia za pomocą jednego modu
 
 ## <a name="deploy-to-your-device"></a>Wdrażanie na urządzeniu
 
-Możesz wdrożyć moduły do Twojego urządzenia, stosując manifestu wdrażania, który został skonfigurowany z informacjami o module.
+Moduły można wdrożyć na urządzeniu, stosując manifest wdrożenia skonfigurowany z informacjami o module.
 
-Przejdź do folderu, w którym jest zapisany manifest wdrożenia. Jeśli użyto jednego z szablonów IoT Edge VS Code, użyj pliku `deployment.json` w folderze **config** katalogu rozwiązania, a nie pliku `deployment.template.json`.
+Zmień katalogi w folder, w którym jest zapisywany manifest wdrożenia. Jeśli użyto jednego z szablonów usługi VS Code `deployment.json` IoT Edge, użyj pliku w `deployment.template.json` folderze **konfiguracji** katalogu rozwiązania, a nie pliku.
 
-Aby zastosować konfigurację do urządzenia usługi IoT Edge, użyj następującego polecenia:
+Użyj następującego polecenia, aby zastosować konfigurację do urządzenia Usługi IoT Edge:
 
-   ```cli
+   ```azurecli
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content [file path]
    ```
 
-W parametrze identyfikatora urządzenia jest rozróżniana wielkość liter. Punktów zawartości parametru do wdrożenia w manifeście zapisany plik.
+W parametrze identyfikatora urządzenia rozróżniana jest wielkość liter. Parametr zawartości wskazuje zapisany plik manifestu wdrożenia.
 
-   ![AZ iot edge zestaw modułów w danych wyjściowych](./media/how-to-deploy-cli/set-modules.png)
+   ![az iot krawędzi zestaw modułów wyjścia](./media/how-to-deploy-cli/set-modules.png)
 
-## <a name="view-modules-on-your-device"></a>Wyświetlanie modułów na urządzeniu z systemem
+## <a name="view-modules-on-your-device"></a>Wyświetlanie modułów na urządzeniu
 
-Po wdrożeniu modułów na urządzeniu, możesz wyświetlać wszystkie z nich za pomocą następującego polecenia:
+Po wdrożeniu modułów na urządzeniu można wyświetlić je za pomocą następującego polecenia:
 
 Wyświetl moduły znajdujące się na urządzeniu usługi IoT Edge:
 
-   ```cli
+   ```azurecli
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-W parametrze identyfikatora urządzenia jest rozróżniana wielkość liter.
+W parametrze identyfikatora urządzenia rozróżniana jest wielkość liter.
 
-   ![dane wyjściowe az iot hub tożsamości modułu listy](./media/how-to-deploy-cli/list-modules.png)
+   ![az iot hub module-identity list output az iot hub module-identity list output az iot](./media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się [, jak wdrażać i monitorować moduły IoT Edge w odpowiedniej skali](how-to-deploy-monitor.md)
+Dowiedz się, jak [wdrażać i monitorować moduły usługi IoT Edge na dużą skalę](how-to-deploy-monitor.md)
