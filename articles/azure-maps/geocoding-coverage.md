@@ -1,33 +1,33 @@
 ---
-title: Pokrycie geokodowania | Mapy Microsoft Azure
-description: Proces konwertowania adresu lokalizacji na współrzędne geograficzne i Długość geograficzna jest znany jako geokodowania. Ten artykuł zawiera informacje na temat regionów z pokryciem geokodowania w Microsoft Azure Maps.
-author: farah-alyasari
-ms.author: v-faalya
+title: Zasięg geokodowania | Mapy platformy Microsoft Azure
+description: Proces konwersji adresu lokalizacji na współrzędne szerokości i długości geograficznej jest znany jako geokodowanie. W tym artykule dowiesz się o regionach z pokryciem geokodowania w usługach Microsoft Azure Maps.
+author: philmea
+ms.author: philmea
 ms.date: 12/31/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 149dd0a3e709bbf4660aaae176f76f560de873e2
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210059"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335646"
 ---
-# <a name="azure-maps-geocoding-coverage"></a>Pokrycie geokodowania Azure Maps
+# <a name="azure-maps-geocoding-coverage"></a>Pokrycie geokodowania usługi Azure Maps
 
-Podczas wyszukiwania lokalizacji z Azure Maps, usługa wyszukiwania, na przykład [pobieranie adresu wyszukiwania](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress), przyjmuje terminy wyszukiwania i zwraca współrzędne geograficzne. Ten proces jest nazywany geokodowaniem. Jednak Azure Maps nie mają tego samego poziomu informacji i dokładności dla wszystkich regionów i krajów. Skorzystaj z tego artykułu, aby określić, jakiego rodzaju lokalizacje można niezawodnie wyszukiwać w poszczególnych regionach. 
+Podczas wyszukiwania lokalizacji za pomocą usługi Azure Maps usługa wyszukiwania, na przykład [Pobierz adres wyszukiwania,](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)przyjmuje wyszukiwane terminy i zwraca współrzędne szerokości i długości geograficznej. Ten proces jest nazywany geokodowaniem. Jednak usługa Azure Maps nie ma takiego samego poziomu informacji i dokładności dla wszystkich regionów i krajów. Ten artykuł służy do określania, jakiego rodzaju lokalizacje można niezawodnie wyszukiwać w każdym regionie. 
 
-Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drogowych oraz dokładności geokodowanej usługi geokodowania. Poniższe kategoryzacje służą do określania poziomu obsługi geokodowania w poszczególnych krajach/regionach.
-* **Punkty adresów** — dane dotyczące adresów można rozpoznać na współrzędnej szerokości/długości geograficznej w ramach paczki adresowej (granica właściwości). Czasami określana jako "Rooftop". Jest to najwyższy poziom dokładności dostępny dla adresów. 
-* **Numery domów** — adresy są interpolowane na współrzędnej szerokości geograficznej na ulicy.
-* Adresy **poziomu ulic** są rozpoznawane jako Współrzędna szerokości/długości geograficznej ulicy, która zawiera adres. Nie można przetworzyć numeru domu.
-* Nazwy miejsc miasta na **poziomie miejscowości** są obsługiwane.
+Możliwość geokodowania w kraju/regionie zależy od zakresu danych drogowych i dokładności geokodowania usługi geokodowania. Następujące kategoryzowania są używane określić poziom obsługi geokodowania w każdym kraju/regionie.
+* **Punkty adresowe** — dane adresów można rozpoznać na współrzędną szerokości/długości geograficznej w obrębie działki adresu (granicy właściwości). Czasami określane jako "Rooftop" dokładne. Jest to najwyższy poziom dokładności dostępny dla adresów. 
+* **Numery domów** — adresy są interpolowane do współrzędnej szerokości/długości geograficznej na ulicy.
+* **Poziom ulicy** — adresy są rozpoznawane na współrzędnej szerokości/długości geograficznej ulicy zawierającej adres. Numer domu nie może być przetwarzany.
+* **Poziom miasta** — obsługiwane są nazwy miejsc w mieście.
 
 ## <a name="americas"></a>Ameryki
 
-| Kraj/region                                       | Punkty adresów | Numery domów | Poziom ulicy | Poziom miasta | Punkty orientacyjne |
+| Kraj/region                                       | Punkty adresowe | Numery domów | Poziom ulicy | Poziom miasta | Punkty szczególne |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Anguilla                                            |                 |                |              |      ✓     |          ✓         |
 | Antarktyda                                          |                 |                |              |      ✓     |          ✓         |
@@ -47,7 +47,7 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 | Kolumbia                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kostaryka                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Kuba                                                |                 |                |       ✓      |      ✓     |          ✓         |
-| Mini                                            |                 |                |       ✓      |      ✓     |          ✓         |
+| Dominika                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Dominicana                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Ekwador                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Salwador                                         |                 |                |       ✓      |      ✓     |          ✓         |
@@ -69,17 +69,17 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 | Paragwaj                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Peru                                                |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Portoryko                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Saint Barthélemy                                    |                 |                |       ✓      |      ✓     |          ✓         |
+| Św Barthélemy                                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Kitts i Nevis                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Lucia                                         |                 |                |              |      ✓     |          ✓         |
 | Saint-Martin                                        |                 |                |       ✓      |      ✓     |          ✓         |
-| Saint-Pierre i Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
+| Św Pierre i Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Vincent i Grenadyny                    |                 |                |              |      ✓     |          ✓         |
 | Sint Maarten                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Georgia Południowa i Sandwich Południowy        |                 |                |              |      ✓     |          ✓         |
 | Surinam                                            |                 |                |              |      ✓     |          ✓         |
 | Trynidad i Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
-| Stany Zjednoczone odległe mniejsze wyspy                |                 |                |              |      ✓     |          ✓         |
+| Stany Zjednoczone Minor Outlying Islands                |                 |                |              |      ✓     |          ✓         |
 | Stany Zjednoczone Ameryki                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Urugwaj                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Wenezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
@@ -88,7 +88,7 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 
 ## <a name="asia-pacific"></a>Azja i Pacyfik
 
-| Kraj/region                                      | Punkty adresów |Numery domów | Poziom ulicy | Poziom miasta | Punkty orientacyjne |
+| Kraj/region                                      | Punkty adresowe |Numery domów | Poziom ulicy | Poziom miasta | Punkty szczególne |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Samoa Amerykańskie                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Australia                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -104,7 +104,7 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 | Wyspy Cooka                                        |                 |                |              |      ✓     |          ✓         |
 | Fidżi                                                |                  |                |              |      ✓     |          ✓        |
 | Polinezja Francuska                                    |                 |                |              |      ✓     |          ✓         |
-| Wyspy Heard i McDonald                   |                 |                |              |      ✓     |          ✓         |
+| Wyspa Heard i Wyspy McDonalda                   |                 |                |              |      ✓     |          ✓         |
 | SRA Hongkong                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonezja                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indie                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
@@ -121,7 +121,7 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 | Nowa Kaledonia                                       |                 |                |              |      ✓     |          ✓         |
 | Nowa Zelandia                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Niue                                                |                 |                |              |      ✓     |          ✓         |
-| Wyspa Norfolk                                      |                 |                |              |      ✓     |          ✓         |
+| Norfolk                                      |                 |                |              |      ✓     |          ✓         |
 | Korea Północna                                         |                 |                |              |      ✓     |          ✓         |
 | Mariany Północne                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Pakistan                                            |                 |                |              |      ✓     |          ✓         |
@@ -129,25 +129,25 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 | Papua Nowa Gwinea                                    |                 |                |              |      ✓     |          ✓         |
 | Filipiny                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Pitcairn                                            |                 |                |              |      ✓     |          ✓         |
-| Zachodniego                                               |                 |                |              |      ✓     |          ✓         |
-| Wyspy Senkaku/Diaoyutai                                     |        ✓        |                |              |      ✓     |          ✓         |
+| Samoa                                               |                 |                |              |      ✓     |          ✓         |
+| Wyspy Senkaku                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Singapur                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Wyspy Salomona                                     |                 |                |              |      ✓     |          ✓         |
-| Kurils południowy                                     |        ✓        |                |              |      ✓     |          ✓         |
+| Kuryle południowe                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Sri Lanka                                           |                 |                |              |      ✓     |          ✓         |
 | Tajwan                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Tajlandia                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Tokelau                                             |                 |                |              |      ✓     |          ✓         |
 | Tonga                                               |                 |                |              |      ✓     |          ✓         |
 | Wyspy Turks i Caicos                            |                 |                |              |      ✓     |          ✓         |
-| Tuwalu                                              |                 |                |              |      ✓     |          ✓         |
+| Tuvalu                                              |                 |                |              |      ✓     |          ✓         |
 | Vanuatu                                             |                 |                |              |      ✓     |          ✓         |
 | Wietnam                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Wallis i Futuna                                   |                 |                |              |      ✓     |          ✓         |
 
 ## <a name="europe"></a>Europa
 
-| Kraj/region                                      | Punkty adresów |Numery domów | Poziom ulicy | Poziom miasta | Punkty orientacyjne |
+| Kraj/region                                      | Punkty adresowe |Numery domów | Poziom ulicy | Poziom miasta | Punkty szczególne |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Albania                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Andora                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -170,7 +170,7 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 | Niemcy                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Gibraltar                                           |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Grecja                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Objęt                                           |                 |                |              |      ✓     |          ✓         |
+| Grenlandia                                           |                 |                |              |      ✓     |          ✓         |
 | Guernsey                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Węgry                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Islandia                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -180,22 +180,22 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 | Jan Mayen                                           |        ✓        |                |              |      ✓     |          ✓         |
 | Jersey                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kazachstan                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Kosowie                                              |                 |                |       ✓      |      ✓     |          ✓         |
+| Kosowa                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Kirgistan                                          |                 |                |              |      ✓     |          ✓         |
 | Łotwa                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Liechtenstein                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Litwa                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Luksemburg                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Macedonia Północna                                     |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| M alta                                               |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Malta                                               |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Mołdawia                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Monaco                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Monako                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Czarnogóra                                          |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Holandia                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Norwegia                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Polska                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Portugalia                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| \+ Azory i Maderę                                 |                 |                |       ✓      |      ✓     |          ✓         |
+| +Azory i Madera                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Rumunia                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Federacja Rosyjska                                  |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | San Marino                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -217,7 +217,7 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 
 ## <a name="middle-east-and-africa"></a>Bliski Wschód i Afryka
 
-| Kraj/region                                      | Punkty adresów |Numery domów | Poziom ulicy | Poziom miasta | Punkty orientacyjne |
+| Kraj/region                                      | Punkty adresowe |Numery domów | Poziom ulicy | Poziom miasta | Punkty szczególne |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Afganistan                                         |                 |                |              |      ✓     |          ✓         |
 | Algieria                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -225,22 +225,22 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 | Bahrajn                                             |        ✓        |       ✓        |       ✓      |      ✓     |          ✓         |
 | Benin                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Botswana                                            |                 |                |       ✓      |      ✓     |          ✓         |
-| Wyspa Bouvet                                       |                 |                |              |      ✓     |          ✓         |
+| Wyspa Bouveta                                       |                 |                |              |      ✓     |          ✓         |
 | Burkina Faso                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Burundi                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Kamerun                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Cabo Verde                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Republika Środkowoafrykańska                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Czad                                                |                 |                |       ✓      |      ✓     |          ✓         |
-| Konga                                               |                 |                |       ✓      |      ✓     |          ✓         |
-| Wybrzeże Kości Słoniowej                                       |                 |                |       ✓      |      ✓     |          ✓         |
+| Kongo                                               |                 |                |       ✓      |      ✓     |          ✓         |
+| Côte d'Ivoire                                       |                 |                |       ✓      |      ✓     |          ✓         |
 | Demokratyczna Republika Konga                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Dżibuti                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Egipt                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Gwinea Równikowa, Republika                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Erytrea                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Etiopia                                            |                 |                |       ✓      |      ✓     |          ✓         |
-| Francuskie Terytoria Południowe|                        |                |              |      ✓     |          ✓         |
+| Francuskie Terytoria Południowe i Antarktyczne|                        |                |              |      ✓     |          ✓         |
 | Gabon                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Gambia                                              |                 |                |              |      ✓     |          ✓         |
 | Ghana                                               |                 |                |       ✓      |      ✓     |          ✓         |
@@ -255,7 +255,7 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 | Liban                                             |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Lesotho                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Liberia                                             |                 |                |       ✓      |      ✓     |          ✓         |
-| Libya                                               |                 |                |       ✓      |      ✓     |          ✓         |
+| Libia                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Madagaskar                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Malawi                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Malediwy                                            |                 |                |              |      ✓     |          ✓         |
@@ -272,20 +272,20 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 | Nigeria                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Oman                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Katar                                               |        ✓        |                |       ✓      |      ✓     |          ✓         |
-| Reunion                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Réunion                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Rwanda                                              |                 |                |       ✓      |      ✓     |          ✓         |
-| Wyspa Świętej Heleny                                        |                 |                |              |      ✓     |          ✓         |
+| Święta Helena                                        |                 |                |              |      ✓     |          ✓         |
 | Arabia Saudyjska                                        |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Senegal                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Seszele                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Sierra Leone                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Somalia                                             |                 |                |              |      ✓     |          ✓         |
 | Republika Południowej Afryki                                        |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Sudan południowy                                         |                 |                |       ✓      |      ✓     |          ✓         |
+| Sudan Południowy                                         |                 |                |       ✓      |      ✓     |          ✓         |
 | Sudan                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Suazi                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Syria                                               |                 |                |              |      ✓     |          ✓         |
-| Wyspy Świętego Tomasza i Książęca                               |                 |                |       ✓      |      ✓     |          ✓         |
+| Wyspy Świętego Tomasza i Książęcej                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Tanzania                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Togo                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Tunezja                                             |        ✓        |                |       ✓      |      ✓     |          ✓         |
@@ -299,7 +299,7 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat Azure Maps geokodowania, zobacz strony referencyjne [wyszukiwania](https://docs.microsoft.com/rest/api/maps/search) .
+Aby uzyskać więcej informacji na temat geokodowania usługi Azure Maps, zobacz strony odwołania [do wyszukiwania.](https://docs.microsoft.com/rest/api/maps/search)
 
-Dowiedz się więcej o [obszarach pokrycia usługi Traffic Maps](traffic-coverage.md). 
+Dowiedz się więcej o [obszarach zasięgu usługi ruchu mapy](traffic-coverage.md). 
 

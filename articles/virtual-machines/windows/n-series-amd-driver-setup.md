@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 164f07f6545c1c225814958bba5722536b11a9b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 883dbc95ee77d03aee4c3231c6ab8c03f9f7f6e4
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78269440"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387839"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Instalowanie sterowników procesorów graficznych AMD na maszynach wirtualnych z systemem Windows z systemem Windows
 
@@ -40,7 +40,7 @@ Aby uzyskać podstawowe specyfikacje, pojemność pamięci masowej i szczegóły
 
 2. Jeśli jesteś klientem w wersji zapoznawczej NVv4, zatrzymaj maszynę wirtualną i poczekaj, aż przejdzie do stanu zatrzymanego(cofniętego).
 
-3. Uruchom maszynę wirtualną, a następnie odinstaluj sterownik podglądu, uruchamiając "amdcleanuputility-x64.exe" znajdującego się w folderze "...\AMDCleanUninstallUtility". Dokładna ścieżka będzie się różnić w zależności od tego, gdzie znajdują się poprzednie pliki instalacyjne sterownika.  
+3. Uruchom maszynę wirtualną i pobierz najnowsze [narzędzie AMD Cleanup Utility](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Odinstaluj istniejący sterownik, uruchamiając "amdcleanuputility-x64.exe". Proszę NIE używać żadnych exisitng narzędzie oczyszczania, który został zainstalowany z poprzedniego sterownika.  
 
 4. Pobierz i zainstaluj najnowszy sterownik.
 

@@ -1,53 +1,53 @@
 ---
-title: Obsługa usług Azure Marketplace i AppSource | Azure
-description: Informacje o pomocy technicznej i linki dla witryny Azure Marketplace i AppSource
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: MaggiePucciEvans
-manager: evansma
+title: Obsługa portalu Azure Marketplace i usługi AppSource | Azure
+description: Informacje dotyczące pomocy technicznej i łącza do portalu Azure Marketplace i usługi AppSource
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
-ms.date: 3/11/2020
-ms.author: evansma
-ms.openlocfilehash: 80911ce7858308302b1736328b6c7954c0e05a86
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.topic: conceptual
+ms.date: 3/19/2020
+ms.author: dsindona
+ms.openlocfilehash: 6cb08e11910bc0afdd4b2f454582612395cbd50f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79095525"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284929"
 ---
-# <a name="support-for-the-marketplace"></a>Obsługa portalu Marketplace  
-Poniżej znajduje się lista opcji pomocy technicznej dla portalu Marketplace.  
+# <a name="support-for-the-marketplace"></a>Obsługa rynku  
+Oto lista opcji pomocy technicznej dla Marketplace.  
 
-Ponadto możesz uzyskać odpowiedzi na wiele pytań w [kanale Marketplace forum społeczności C + AI](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222).  
+Ponadto możesz uzyskać odpowiedzi na wiele pytań w [kanale Marketplace na Forum Społeczności C+AI.](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)  
 
 ## <a name="onboarding"></a>Dołączanie
 
-Otwórz bilet z [obsługą wydawcy portalu Microsoft Marketplace](https://aka.ms/marketplacepublishersupport) , aby uzyskać problemy z dołączaniem i rozpoczęciem pracy.
+Otwórz bilet z [obsługą wydawcy portalu](https://aka.ms/marketplacepublishersupport) Microsoft Marketplace w przypadku problemów z dołączaniem i wprowadzeniem.
 
-## <a name="partner-center-or-cloud-partner-portal"></a>Centrum partnerskie lub portal Cloud Partner  
+## <a name="partner-center-or-cloud-partner-portal"></a>Centrum partnerów lub portal partnerów w chmurze  
 
 | Kanał pomocy technicznej | Opis | Dostępność |  
 |:--- |:--- |:--- |  
-| Aby uzyskać pomoc, odwiedź stronę Tworzenie zdarzenia znajdującą się w [pomocy technicznej portalu Marketplace](https://aka.ms/marketplacepublishersupport)</li> </ul> | Obsługa Centrum partnerskiego lub portal Cloud Partner. | Pomoc techniczna jest świadczona 24x5. |  
+| Aby uzyskać pomoc, odwiedź stronę Tworzenie incydentu znajdującą się pod [adresem Pomocy technicznej w portalu Marketplace](https://aka.ms/marketplacepublishersupport)</li> </ul> | Obsługa centrum partnerów lub portalu cloud partnerów. | Wsparcie jest zapewnione 24x5. |  
 
-## <a name="technical"></a>Techniczne  
+## <a name="technical"></a>Szczegóły techniczne  
 
 | Kanał pomocy technicznej | Opis |  
 |:--- |:--- |  
-| Fora MSDN: Marketplace w witrynie [Social.MSDN.Microsoft.com/forums/Azure/Home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Forum Microsoft Developer Network. |  
-| Stack Overflow: platforma Azure znajduje się w witrynie [StackOverflow.com/questions/Tagged/Azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow środowisko, aby uzyskać rozwiązania i zadawać pytania dotyczące wszystkiego związanego z portalem Azure Marketplace.<ul> <li>Stack Overflow: Witryna Azure Marketplace znajdująca się w witrynie [StackOverflow.com/questions/Tagged/Azure-Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow: Azure Resource Manager znajdujący się w [StackOverflow.com/questions/Tagged/Azure-Resource-Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow: Virtual Machines na platformie Azure, które znajdują się w [StackOverflow.com/questions/Tagged/Azure-Virtual-Machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow: kontenery na platformie Azure zlokalizowane pod adresem [StackOverflow.com/search?q=Azure+Container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
+| MsDN forum: Marketplace znajduje się w [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Forum microsoft developer network. |  
+| Przepełnienie stosu: platforma Azure znajdująca się w [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stos środowiska przepełnienia, aby uzyskać rozwiązania i zadać pytania dotyczące wszystkiego, co związane z usługą Azure Marketplace.<ul> <li>Przepełnienie stosu: usługa Azure Marketplace znajduje się w [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Przepełnienie stosu: usługa Azure Resource Manager znajduje się w [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Przepełnienie stosu: maszyny wirtualne na platformie Azure znajdujące się w [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Przepełnienie stosu: kontenery na platformie Azure znajdujące się w [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 
 ## <a name="marketing-resources"></a>Zasoby marketingowe  
 
 | Kanał pomocy technicznej | Opis | Dostępność |  
 |:--- |:--- |:--- |  
-| Adres e-mail: [cosell@microsoft.com](mailto:cosell@microsoft.com) | Obsługa procesów dołączania i pytań związanych z programem współsprzedażowym. | Na podstawie strefy czasowej pacyficznego. |  
-| Adres e-mail: [gtm@microsoft.com](mailto:gtm@microsoft.com) | Obsługa korzyści GTM i pytań programu. | Godziny pracy znajdują się w strefie czasowej pacyficznego. |  
-| Adres e-mail: [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Odpowiedzi na pytania dotyczące użycia logo i znakowanie na platformie Azure. |  |  
+| Adres e-mail:[cosell@microsoft.com](mailto:cosell@microsoft.com) | Obsługa procesów dołączania i pytań związanych z programem Co-Sell. | Z siedzibą w strefie czasowej Pacyfiku. |  
+| Adres e-mail:[gtm@microsoft.com](mailto:gtm@microsoft.com) | Obsługa korzyści GTM i pytań dotyczących programu. | Godziny pracy znajdują się w strefie czasowej Pacyfiku. |  
+| Adres e-mail:[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Odpowiedzi na pytania dotyczące użycia logo platformy Azure i znakowania. |  |  
 
 
 ## <a name="next-steps"></a>Następne kroki
-Odwiedź stronę [przewodnika po wydawcy portalu Azure Marketplace i AppSource](./marketplace-publishers-guide.md) .  
- 
+
+* Odwiedź [stronę Przewodnik po portalu Azure Marketplace i Przewodnik dla wydawców appsource](https://docs.microsoft.com/azure/marketplace/).
+* Dowiedz się więcej o [pomocy technicznej dla programu Commercial Marketplace w Centrum partnerów](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+
 ---

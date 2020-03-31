@@ -1,6 +1,6 @@
 ---
-title: Analiza w usłudze SQL Data Warehouse przy użyciu języka T-SQL, Python - zespołu danych dla celów naukowych
-description: Przykłady, które pomagają przy użyciu magazynu danych SQL do analizy predykcyjnej.
+title: Analiza w magazynie danych SQL za pomocą T-SQL, Python - Proces nauki o danych zespołowych
+description: Przykłady, które przechodzą przez korzystanie z usługi SQL Data Warehouse do analizy predykcyjnej.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,27 +11,27 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4c8be715391f71e281ca41cc68428a2d29d78783
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: f657f02a39a023f6cb620895549105e7fd1eb233
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864132"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128161"
 ---
-# <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Usługa SQL Data Warehouse przewodniki dotyczące przetwarzania danych przy użyciu języka T-SQL i języka Python na platformie Azure
+# <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Wskazówki dotyczące nauki o danych w magazynie danych SQL przy użyciu t-SQL i python na platformie Azure
 
-Te przewodniki używać usługi SQL Data Warehouse do analizy predykcyjnej. One wykonaj kroki opisane w procesie nauki o danych zespołu. Omówienie procesu do nauki o danych zespołu, zobacz [danych dla celów naukowych](overview.md). Aby zapoznać się z wprowadzeniem do usługi SQL Data Warehouse, zobacz [co to jest Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Te wskazówki użycia usługi SQL Data Warehouse do analizy predykcyjnej. Wykonaj one kroki opisane w procesie nauki o danych zespołu. Aby zapoznać się z omówieniem procesu nauki o danych zespołu, zobacz [Proces nauki o danych](overview.md). Aby uzyskać wprowadzenie do usługi SQL Data Warehouse, zobacz [Co to jest usługa Azure SQL Data Warehouse?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-Przewodniki dotyczące przetwarzania dodatkowe dane, które są wykonywane w procesie nauki o danych zespołu są pogrupowane według **platformy** używane. Zobacz [przewodniki dotyczące wykonywania procesu do nauki o danych zespołu](walkthroughs.md) do podziału na pozycje z tych przykładów.
+Dodatkowe wskazówki do nauki o danych, które wykonują proces nauki o danych zespołu są pogrupowane według **platformy,** której używają. Zobacz [wskazówki wykonujące proces nauki o danych zespołu](walkthroughs.md) dla itemization tych przykładów.
 
 
-## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>Przewidywanie napiwków przy użyciu języka T-SQL i Notesy programu IPython, usługa SQL Data Warehouse
+## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>Przewidywanie porad dotyczących taksówek przy użyciu notebooków T-SQL i IPython z magazynem danych SQL
 
-W instrukcji [Use SQL Data Warehouse](sqldw-walkthrough.md) pokazano, jak tworzyć i wdrażać modele klasyfikacji i regresji uczenia maszynowego przy użyciu SQL Data Warehouse (SQL DW).  Dane to publicznie dostępny zestaw danych o wykorzystaniu NYC i taryfy.
+[W przewodniku Użyj magazynu danych SQL](sqldw-walkthrough.md) pokazano, jak tworzyć i wdrażać modele klasyfikacji i regresji uczenia maszynowego przy użyciu magazynu danych SQL (SQL DW).  Dane są publicznie dostępne nyc taksówką i zestaw danych taryfy.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać omówienie najważniejsze składniki wchodzące w skład procesu do nauki o danych zespołu, zobacz [przegląd danych zespołu dla celów naukowych](overview.md).
+Aby zapoznać się z omówieniem kluczowych składników, które składają się na proces nauki o danych zespołu, zobacz [omówienie procesu nauki o danych zespołu.](overview.md)
 
-Aby zapoznać się z omówieniem cyklu życia procesu nauki o danych zespołowych, zobacz [cykl życia procesu nauki o danych zespołowych](lifecycle.md). Ten cykl życia przedstawia kroki od początku do końca, które zwykle są wykonywane podczas wykonywania projektów. 
+Aby zapoznać się z omówienia cyklu życia procesu nauki o danych zespołu, zobacz [Cykl życia procesu nauki o danych zespołu.](lifecycle.md) Ten cykl życia określa kroki, od początku do końca, które projekty zwykle wykonaj, gdy są wykonywane. 

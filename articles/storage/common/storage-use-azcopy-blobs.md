@@ -1,6 +1,6 @@
 ---
-title: Transferowanie danych do lub z usługi Azure Blob Storage za pomocą AzCopy v10 | Microsoft Docs
-description: Ten artykuł zawiera kolekcję przykładowych poleceń AzCopy, które pomagają w tworzeniu kontenerów, kopiowaniu plików i synchronizowaniu katalogów między lokalnymi systemami plików i kontenerami.
+title: Przesyłanie danych do lub z magazynu obiektów Blob platformy Azure przy użyciu programu AzCopy w wersji 10 | Dokumenty firmy Microsoft
+description: Ten artykuł zawiera kolekcję przykładowych poleceń AzCopy, które ułatwiają tworzenie kontenerów, kopiowanie plików i synchronizowanie katalogów między lokalnymi systemami plików i kontenerami.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,266 +9,266 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78933586"
 ---
-# <a name="transfer-data-with-azcopy-and-blob-storage"></a>Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB
+# <a name="transfer-data-with-azcopy-and-blob-storage"></a>Przesyłanie danych za pomocą pamięci masowej AzCopy i Blob
 
-AzCopy to narzędzie wiersza polecenia, za pomocą którego można kopiować dane do, z lub między kontami magazynu. Ten artykuł zawiera przykładowe polecenia, które działają z usługą BLOB Storage.
+AzCopy to narzędzie wiersza polecenia, za pomocą którego można kopiować dane do, z lub między kontami magazynu. Ten artykuł zawiera przykładowe polecenia, które współpracują z magazynem obiektów Blob.
 
-## <a name="get-started"></a>Rozpoczynanie pracy
+## <a name="get-started"></a>Wprowadzenie
 
-Zapoznaj się z artykułem [wprowadzenie do AzCopy](storage-use-azcopy-v10.md) w celu pobrania AzCopy i Dowiedz się więcej na temat sposobów dostarczania poświadczeń autoryzacji do usługi magazynu.
+Zobacz artykuł [Wprowadzenie do azcopy,](storage-use-azcopy-v10.md) aby pobrać azcopy i dowiedzieć się, w jaki sposób można podać poświadczenia autoryzacji do usługi magazynu.
 
 > [!NOTE]
-> W przykładach w tym artykule przyjęto założenie, że tożsamość została uwierzytelniona przy użyciu polecenia `AzCopy login`. AzCopy następnie używa konta usługi Azure AD do autoryzacji dostępu do danych w usłudze BLOB Storage.
+> Przykłady w tym artykule zakładają, że uwierzytelniłeś `AzCopy login` swoją tożsamość za pomocą polecenia. AzCopy następnie używa konta usługi Azure AD do autoryzowania dostępu do danych w magazynie obiektów Blob.
 >
-> Jeśli wolisz używać tokenu SAS do autoryzacji dostępu do danych obiektów blob, możesz dołączyć ten token do adresu URL zasobu w każdym poleceniu AzCopy.
+> Jeśli wolisz używać tokenu Sygnatury dostępu Współdzielonego do autoryzowania dostępu do danych obiektów blob, możesz dołączyć ten token do adresu URL zasobu w każdym poleceniu AzCopy.
 >
 > Na przykład: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="create-a-container"></a>Tworzenie kontenera
 
 > [!TIP]
-> W przykładach w tej sekcji zamieszczono argumenty Path z pojedynczymi cudzysłowami (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
+> Przykłady w tej sekcji ujęć argumenty ścieżki z pojedynczymi cudzysłowami (''). Użyj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd.exe). Jeśli używasz powłoki poleceń systemu Windows (cmd.exe), należy ująć argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczych cudzysłowów (').
 
-Aby utworzyć kontener, można użyć polecenia [AzCopy](storage-ref-azcopy-make.md) . Przykłady w tej sekcji tworzą kontener o nazwie `mycontainer`.
+Aby utworzyć kontener, można użyć polecenia [azcopy make.](storage-ref-azcopy-make.md) Przykłady w tej sekcji utworzyć `mycontainer`kontener o nazwie .
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy make 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>'` |
+| **Składni** | `azcopy make 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>'` |
 | **Przykład** | `azcopy make 'https://mystorageaccount.blob.core.windows.net/mycontainer'` |
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy make 'https://mystorageaccount.dfs.core.windows.net/mycontainer'` |
 
-Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Make](storage-ref-azcopy-make.md).
+Szczegółowe dokumenty referencyjne można znaleźć [w pliku azcopy make](storage-ref-azcopy-make.md).
 
 ## <a name="upload-files"></a>Przekazywanie plików
 
-Aby przekazać pliki i katalogi z komputera lokalnego, można użyć polecenia [copy AzCopy](storage-ref-azcopy-copy.md) .
+Za pomocą polecenia [kopiowania azcopy](storage-ref-azcopy-copy.md) można przesyłać pliki i katalogi z komputera lokalnego.
 
 Ta sekcja zawiera następujące przykłady:
 
 > [!div class="checklist"]
 > * Przekazywanie pliku
-> * Przekaż katalog
-> * Przekaż zawartość katalogu 
+> * Przekazywanie katalogu
+> * Przekazywanie zawartości katalogu 
 > * Przekazywanie określonych plików
 
-Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-ref-azcopy-copy.md).
+Szczegółowe dokumenty referencyjne można znaleźć [w kopii azcopy](storage-ref-azcopy-copy.md).
 
 > [!TIP]
-> W przykładach w tej sekcji zamieszczono argumenty Path z pojedynczymi cudzysłowami (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
+> Przykłady w tej sekcji ujęć argumenty ścieżki z pojedynczymi cudzysłowami (''). Użyj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd.exe). Jeśli używasz powłoki poleceń systemu Windows (cmd.exe), należy ująć argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczych cudzysłowów (').
 
 ### <a name="upload-a-file"></a>Przekazywanie pliku
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy '<local-file-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-name>'` |
+| **Składni** | `azcopy copy '<local-file-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-name>'` |
 | **Przykład** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
-Możesz również przekazać plik za pomocą symbolu wieloznacznego (*) w dowolnym miejscu w ścieżce lub nazwie pliku. Na przykład: `'C:\myDirectory\*.txt'`lub `C:\my*\*.txt`.
+Plik można również przekazać za pomocą symbolu wieloznacznego (*) w dowolnym miejscu ścieżki pliku lub nazwy pliku. Na przykład: `'C:\myDirectory\*.txt'` `C:\my*\*.txt`, lub .
 
 > [!NOTE]
-> AzCopy domyślnie przekazuje dane jako blokowe obiekty blob. Aby przekazać pliki jako Dołącz obiekty blob lub stronicowe obiekty blob, Użyj flagi `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
-> AzCopy domyślnie przekazuje dane w celu dziedziczenia warstwy dostępu do konta. Aby przekazać pliki do określonej [warstwy dostępu](../blobs/storage-blob-storage-tiers.md), użyj flagi `--block-blob-tier=[Hot|Cool|Archive]`.
+> AzCopy domyślnie przesyła dane jako blokowe obiekty blob. Aby przekazać pliki jako dołączanie obiektów blob `--blob-type=[BlockBlob|PageBlob|AppendBlob]`lub stronicowych obiektów blob, użyj flagi .
+> AzCopy domyślnie przekazuje dane do dziedziczenia warstwy dostępu do konta. Aby przekazać pliki do określonej [warstwy dostępu,](../blobs/storage-blob-storage-tiers.md)użyj flagi `--block-blob-tier=[Hot|Cool|Archive]`.
 
-### <a name="upload-a-directory"></a>Przekaż katalog
+### <a name="upload-a-directory"></a>Przekazywanie katalogu
 
-Ten przykład kopiuje katalog (i wszystkie pliki w tym katalogu) do kontenera obiektów BLOB. Wynik jest katalogiem w kontenerze o tej samej nazwie.
+W tym przykładzie kopiuje katalog (i wszystkie pliki w tym katalogu) do kontenera obiektów blob. Wynikiem jest katalog w kontenerze o tej samej nazwie.
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --recursive` |
+| **Składni** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --recursive` |
 | **Przykład** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --recursive` |
 
-Aby skopiować do katalogu w kontenerze, należy po prostu określić nazwę tego katalogu w ciągu polecenia.
+Aby skopiować do katalogu w kontenerze, wystarczy określić nazwę tego katalogu w ciągu polecenia.
 
 |    |     |
 |--------|-----------|
 | **Przykład** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' --recursive` |
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' --recursive` |
 
-W przypadku określenia nazwy katalogu, który nie istnieje w kontenerze, AzCopy tworzy nowy katalog o tej nazwie.
+Jeśli określisz nazwę katalogu, który nie istnieje w kontenerze, AzCopy utworzy nowy katalog o tej nazwie.
 
-### <a name="upload-the-contents-of-a-directory"></a>Przekaż zawartość katalogu
+### <a name="upload-the-contents-of-a-directory"></a>Przekazywanie zawartości katalogu
 
-Zawartość katalogu można przekazać bez kopiowania samego katalogu zawierającego symbol wieloznaczny (*).
+Zawartość katalogu można przekazać bez kopiowania samego katalogu zawierającego za pomocą symbolu wieloznacznego (*).
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'` |
+| **Składni** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'` |
 | **Przykład** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory'` |
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory'` |
 
 > [!NOTE]
-> Dołącz flagę `--recursive` do przekazywania plików we wszystkich podkatalogach.
+> Dołącz flagę, `--recursive` aby przekazać pliki we wszystkich podkatarzy.
 
 ### <a name="upload-specific-files"></a>Przekazywanie określonych plików
 
-Możesz określić pełne nazwy plików lub użyć częściowych nazw z symbolami wieloznacznymi (*).
+Można określić pełne nazwy plików lub użyć nazw częściowych ze znakami wieloznaczowymi (*).
 
-#### <a name="specify-multiple-complete-file-names"></a>Określ wiele pełnych nazw plików
+#### <a name="specify-multiple-complete-file-names"></a>Określanie wielu kompletnych nazw plików
 
-Użyj polecenia [copy AzCopy](storage-ref-azcopy-copy.md) z opcją `--include-path`. Oddziel poszczególne nazwy plików przy użyciu średnika (`;`).
+Użyj polecenia [kopiowania azcopy](storage-ref-azcopy-copy.md) z `--include-path` opcją. Oddziel poszczególne nazwy plików za`;`pomocą średnika ( ).
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-path <semicolon-separated-file-list>` |
+| **Składni** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-path <semicolon-separated-file-list>` |
 | **Przykład** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 
-W tym przykładzie AzCopy transferuje katalog `C:\myDirectory\photos` i plik `C:\myDirectory\documents\myFile.txt`. Należy uwzględnić opcję `--recursive`, aby przenieść wszystkie pliki w katalogu `C:\myDirectory\photos`.
+W tym przykładzie AzCopy przenosi `C:\myDirectory\photos` `C:\myDirectory\documents\myFile.txt` katalog i plik. Należy dołączyć `--recursive` opcję, aby przenieść `C:\myDirectory\photos` wszystkie pliki w katalogu.
 
-Można również wykluczać pliki przy użyciu opcji `--exclude-path`. Aby dowiedzieć się więcej, zobacz [AzCopy Copy](storage-ref-azcopy-copy.md) Reference docs.
+Można również wykluczyć pliki `--exclude-path` za pomocą tej opcji. Aby dowiedzieć się więcej, zobacz dokumenty odwołania do [kopii azcopy.](storage-ref-azcopy-copy.md)
 
-#### <a name="use-wildcard-characters"></a>Użyj symboli wieloznacznych
+#### <a name="use-wildcard-characters"></a>Używanie symboli wieloznacznych
 
-Użyj polecenia [copy AzCopy](storage-ref-azcopy-copy.md) z opcją `--include-pattern`. Określ częściowe nazwy, które zawierają symbole wieloznaczne. Oddziel nazwy przy użyciu semicolin (`;`). 
+Użyj polecenia [kopiowania azcopy](storage-ref-azcopy-copy.md) z `--include-pattern` opcją. Określ nazwy częściowe, które zawierają symbole wieloznaczne. Oddziel nazwy za pomocą`;`półkoliny ( ). 
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
+| **Składni** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
 | **Przykład** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 
-Można również wykluczać pliki przy użyciu opcji `--exclude-pattern`. Aby dowiedzieć się więcej, zobacz [AzCopy Copy](storage-ref-azcopy-copy.md) Reference docs.
+Można również wykluczyć pliki `--exclude-pattern` za pomocą tej opcji. Aby dowiedzieć się więcej, zobacz dokumenty odwołania do [kopii azcopy.](storage-ref-azcopy-copy.md)
 
-Opcje `--include-pattern` i `--exclude-pattern` mają zastosowanie tylko do nazw plików, a nie do ścieżki.  Jeśli chcesz skopiować wszystkie pliki tekstowe, które istnieją w drzewie katalogów, użyj opcji `–recursive`, aby uzyskać całe drzewo katalogów, a następnie użyj `–include-pattern` i określ `*.txt`, aby pobrać wszystkie pliki tekstowe.
+Opcje `--include-pattern` `--exclude-pattern` i dotyczą tylko nazwy plików, a nie ścieżki.  Jeśli chcesz skopiować wszystkie pliki tekstowe, które istnieją w `–recursive` drzewie katalogów, użyj opcji, `–include-pattern` aby `*.txt` uzyskać całe drzewo katalogów, a następnie użyj i określ, aby uzyskać wszystkie pliki tekstowe.
 
 ## <a name="download-files"></a>Pobieranie plików
 
-Aby pobrać obiekty blob, katalogi i kontenery na komputer lokalny, można użyć polecenia [copy AzCopy](storage-ref-azcopy-copy.md) .
+Za pomocą polecenia [kopiowania azcopy](storage-ref-azcopy-copy.md) można pobrać obiekty BLOB, katalogi i kontenery na komputer lokalny.
 
 Ta sekcja zawiera następujące przykłady:
 
 > [!div class="checklist"]
 > * Pobieranie pliku
-> * Pobierz katalog
-> * Pobierz zawartość katalogu
+> * Pobieranie katalogu
+> * Pobieranie zawartości katalogu
 > * Pobieranie określonych plików
 
 > [!NOTE]
-> Jeśli wartość właściwości `Content-md5` obiektu BLOB zawiera skrót, AzCopy oblicza skrót MD5 dla pobranych danych i weryfikuje, czy skrót MD5 przechowywany we właściwości `Content-md5` obiektu BLOB jest zgodny z obliczonym skrótem. Jeśli te wartości nie są zgodne, pobieranie nie powiedzie się, o ile nie zastąpisz tego zachowania, dołączając `--check-md5=NoCheck` lub `--check-md5=LogOnly` do polecenia copy.
+> Jeśli `Content-md5` wartość właściwości obiektu blob zawiera skrót, AzCopy oblicza skrót MD5 dla pobranych danych i sprawdza, czy skrót `Content-md5` MD5 przechowywany we właściwości obiektu blob jest zgodny z obliczonym skrótem. Jeśli te wartości nie są zgodne, pobieranie nie powiedzie się, `--check-md5=NoCheck` `--check-md5=LogOnly` chyba że zostanie zastąpione to zachowanie przez dołączenie lub polecenie copy.
 
-Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-ref-azcopy-copy.md).
+Szczegółowe dokumenty referencyjne można znaleźć [w kopii azcopy](storage-ref-azcopy-copy.md).
 
 > [!TIP]
-> W przykładach w tej sekcji zamieszczono argumenty Path z pojedynczymi cudzysłowami (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
+> Przykłady w tej sekcji ujęć argumenty ścieżki z pojedynczymi cudzysłowami (''). Użyj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd.exe). Jeśli używasz powłoki poleceń systemu Windows (cmd.exe), należy ująć argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczych cudzysłowów (').
 
 ### <a name="download-a-file"></a>Pobieranie pliku
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'` |
+| **Składni** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'` |
 | **Przykład** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
 
-### <a name="download-a-directory"></a>Pobierz katalog
+### <a name="download-a-directory"></a>Pobieranie katalogu
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
+| **Składni** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
 | **Przykład** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 
-Ten przykład powoduje, że katalog o nazwie `C:\myDirectory\myBlobDirectory` zawiera wszystkie pobrane pliki.
+W tym przykładzie jest `C:\myDirectory\myBlobDirectory` to katalog o nazwie, który zawiera wszystkie pobrane pliki.
 
-### <a name="download-the-contents-of-a-directory"></a>Pobierz zawartość katalogu
+### <a name="download-the-contents-of-a-directory"></a>Pobieranie zawartości katalogu
 
-Zawartość katalogu można pobrać bez kopiowania samego katalogu zawierającego symbol wieloznaczny (*).
+Zawartość katalogu można pobrać bez kopiowania samego katalogu zawierającego za pomocą symbolu wieloznacznego (*).
 
 > [!NOTE]
-> Obecnie ten scenariusz jest obsługiwany tylko w przypadku kont, które nie mają hierarchicznej przestrzeni nazw.
+> Obecnie ten scenariusz jest obsługiwany tylko dla kont, które nie mają hierarchicznego obszaru nazw.
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy 'https://<storage-account-name>.blob.core.windows.net/<container-name>/*' '<local-directory-path>/'` |
+| **Składni** | `azcopy copy 'https://<storage-account-name>.blob.core.windows.net/<container-name>/*' '<local-directory-path>/'` |
 | **Przykład** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/*' 'C:\myDirectory'` |
 
 > [!NOTE]
-> Dołącz flagę `--recursive`, aby pobrać pliki we wszystkich podkatalogach.
+> Dołącz flagę, `--recursive` aby pobrać pliki we wszystkich podkatarzy.
 
 ### <a name="download-specific-files"></a>Pobieranie określonych plików
 
-Możesz określić pełne nazwy plików lub użyć częściowych nazw z symbolami wieloznacznymi (*).
+Można określić pełne nazwy plików lub użyć nazw częściowych ze znakami wieloznaczowymi (*).
 
-#### <a name="specify-multiple-complete-file-names"></a>Określ wiele pełnych nazw plików
+#### <a name="specify-multiple-complete-file-names"></a>Określanie wielu kompletnych nazw plików
 
-Użyj polecenia [copy AzCopy](storage-ref-azcopy-copy.md) z opcją `--include-path`. Oddziel poszczególne nazwy plików przy użyciu semicolin (`;`).
+Użyj polecenia [kopiowania azcopy](storage-ref-azcopy-copy.md) z `--include-path` opcją. Oddziel poszczególne nazwy plików za`;`pomocą średnika ( ).
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
+| **Składni** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
 | **Przykład** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt'--recursive` |
 
-W tym przykładzie AzCopy transferuje katalog `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` i plik `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt`. Należy uwzględnić opcję `--recursive`, aby przenieść wszystkie pliki w katalogu `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos`.
+W tym przykładzie AzCopy przenosi `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` katalog i plik. Należy dołączyć `--recursive` opcję, aby przenieść `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` wszystkie pliki w katalogu.
 
-Można również wykluczać pliki przy użyciu opcji `--exclude-path`. Aby dowiedzieć się więcej, zobacz [AzCopy Copy](storage-ref-azcopy-copy.md) Reference docs.
+Można również wykluczyć pliki `--exclude-path` za pomocą tej opcji. Aby dowiedzieć się więcej, zobacz dokumenty odwołania do [kopii azcopy.](storage-ref-azcopy-copy.md)
 
-#### <a name="use-wildcard-characters"></a>Użyj symboli wieloznacznych
+#### <a name="use-wildcard-characters"></a>Używanie symboli wieloznacznych
 
-Użyj polecenia [copy AzCopy](storage-ref-azcopy-copy.md) z opcją `--include-pattern`. Określ częściowe nazwy, które zawierają symbole wieloznaczne. Oddziel nazwy przy użyciu semicolin (`;`).
+Użyj polecenia [kopiowania azcopy](storage-ref-azcopy-copy.md) z `--include-pattern` opcją. Określ nazwy częściowe, które zawierają symbole wieloznaczne. Oddziel nazwy za pomocą`;`półkoliny ( ).
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
+| **Składni** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
 | **Przykład** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
-Można również wykluczać pliki przy użyciu opcji `--exclude-pattern`. Aby dowiedzieć się więcej, zobacz [AzCopy Copy](storage-ref-azcopy-copy.md) Reference docs.
+Można również wykluczyć pliki `--exclude-pattern` za pomocą tej opcji. Aby dowiedzieć się więcej, zobacz dokumenty odwołania do [kopii azcopy.](storage-ref-azcopy-copy.md)
 
-Opcje `--include-pattern` i `--exclude-pattern` mają zastosowanie tylko do nazw plików, a nie do ścieżki.  Jeśli chcesz skopiować wszystkie pliki tekstowe, które istnieją w drzewie katalogów, użyj opcji `–recursive`, aby uzyskać całe drzewo katalogów, a następnie użyj `–include-pattern` i określ `*.txt`, aby pobrać wszystkie pliki tekstowe.
+Opcje `--include-pattern` `--exclude-pattern` i dotyczą tylko nazwy plików, a nie ścieżki.  Jeśli chcesz skopiować wszystkie pliki tekstowe, które istnieją w `–recursive` drzewie katalogów, użyj opcji, `–include-pattern` aby `*.txt` uzyskać całe drzewo katalogów, a następnie użyj i określ, aby uzyskać wszystkie pliki tekstowe.
 
-## <a name="copy-blobs-between-storage-accounts"></a>Kopiowanie obiektów BLOB między kontami magazynu
+## <a name="copy-blobs-between-storage-accounts"></a>Kopiowanie obiektów blob między kontami magazynu
 
-Możesz użyć AzCopy, aby skopiować obiekty blob do innych kont magazynu. Operacja kopiowania jest synchroniczna, dlatego gdy polecenie zwróci wartość, która wskazuje, że wszystkie pliki zostały skopiowane. 
+Za pomocą programu AzCopy można kopiować obiekty blob na inne konta magazynu. Operacja kopiowania jest synchroniczowa, więc po powrocie polecenia oznacza to, że wszystkie pliki zostały skopiowane. 
 
-AzCopy używa [interfejsów API](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url) [serwer-serwer](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) , aby dane były kopiowane bezpośrednio między serwerami magazynu. Te operacje kopiowania nie korzystają z przepustowości sieci komputera. Przepływność tych operacji można zwiększyć, ustawiając wartość zmiennej środowiskowej `AZCOPY_CONCURRENCY_VALUE`. Aby dowiedzieć się więcej, zobacz [Optymalizowanie przepływności](storage-use-azcopy-configure.md#optimize-throughput).
+AzCopy używa [interfejsów API](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url) [serwera do serwera,](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) dzięki czemu dane są kopiowane bezpośrednio między serwerami magazynu. Te operacje kopiowania nie używają przepustowości sieci komputera. Można zwiększyć przepływność tych operacji, ustawiając `AZCOPY_CONCURRENCY_VALUE` wartość zmiennej środowiskowej. Aby dowiedzieć się więcej, zobacz [Optymalizowanie przepływności](storage-use-azcopy-configure.md#optimize-throughput).
 
 > [!NOTE]
 > Ten scenariusz ma następujące ograniczenia w bieżącej wersji.
 >
-> - Musisz dołączyć token sygnatury dostępu współdzielonego do każdego źródłowego adresu URL. W przypadku podania poświadczeń autoryzacji za pomocą Azure Active Directory (AD) można pominąć token sygnatury dostępu współdzielonego tylko z docelowego adresu URL.
->-  Konta magazynu blokowych obiektów BLOB w warstwie Premium nie obsługują warstw dostępu. Aby pominąć warstwę dostępu obiektu BLOB w operacji kopiowania, należy ustawić `s2s-preserve-access-tier` na `false` (na przykład: `--s2s-preserve-access-tier=false`).
+> - Musisz dołączyć token sygnatury dostępu Współdzielonego do każdego źródłowego adresu URL. Jeśli podasz poświadczenia autoryzacji przy użyciu usługi Azure Active Directory (AD), można pominąć token sygnatury dostępu Współdzielonego tylko z docelowego adresu URL.
+>-  Konta magazynu obiektów blob programu Premium nie obsługują warstw dostępu. Pomiń warstwę dostępu obiektu blob z `s2s-preserve-access-tier` operacji `false` kopiowania, `--s2s-preserve-access-tier=false`ustawiając na (Na przykład: ).
 
 Ta sekcja zawiera następujące przykłady:
 
 > [!div class="checklist"]
-> * Kopiowanie obiektu BLOB do innego konta magazynu
-> * Kopiowanie katalogu do innego konta magazynu
+> * Kopiowanie obiektu blob na inne konto magazynu
+> * Kopiowanie katalogu na inne konto magazynu
 > * Kopiowanie kontenera na inne konto magazynu
-> * Kopiuj wszystkie kontenery, katalogi i pliki na inne konto magazynu
+> * Kopiowanie wszystkich kontenerów, katalogów i plików na inne konto magazynu
 
-Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-ref-azcopy-copy.md).
+Szczegółowe dokumenty referencyjne można znaleźć [w kopii azcopy](storage-ref-azcopy-copy.md).
 
 > [!TIP]
-> W przykładach w tej sekcji zamieszczono argumenty Path z pojedynczymi cudzysłowami (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
+> Przykłady w tej sekcji ujęć argumenty ścieżki z pojedynczymi cudzysłowami (''). Użyj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd.exe). Jeśli używasz powłoki poleceń systemu Windows (cmd.exe), należy ująć argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczych cudzysłowów (').
 
- Te przykłady działają również z kontami, które mają hierarchiczną przestrzeń nazw. [Dostęp z użyciem protokołu wieloprotokołowego do Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) umożliwia korzystanie z tej samej składni adresu URL (`blob.core.windows.net`) na tych kontach. 
+ Te przykłady działają również z kontami, które mają hierarchiczną przestrzeń nazw. [Dostęp do wielu protokołów w magazynie usługi Data Lake](../blobs/data-lake-storage-multi-protocol-access.md) `blob.core.windows.net`umożliwia użycie tej samej składni adresu URL ( ) na tych kontach. 
 
-### <a name="copy-a-blob-to-another-storage-account"></a>Kopiowanie obiektu BLOB do innego konta magazynu
+### <a name="copy-a-blob-to-another-storage-account"></a>Kopiowanie obiektu blob na inne konto magazynu
 
 Użyj tej samej składni adresu URL (`blob.core.windows.net`) dla kont, które mają hierarchiczną przestrzeń nazw.
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>'` |
+| **Składni** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>'` |
 | **Przykład** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 
-### <a name="copy-a-directory-to-another-storage-account"></a>Kopiowanie katalogu do innego konta magazynu
+### <a name="copy-a-directory-to-another-storage-account"></a>Kopiowanie katalogu na inne konto magazynu
 
 Użyj tej samej składni adresu URL (`blob.core.windows.net`) dla kont, które mają hierarchiczną przestrzeń nazw.
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **Składni** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Przykład** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 | **Przykład** (hierarchiczna przestrzeń nazw)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
@@ -278,85 +278,85 @@ Użyj tej samej składni adresu URL (`blob.core.windows.net`) dla kont, które m
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **Składni** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Przykład** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 | **Przykład** (hierarchiczna przestrzeń nazw)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
-### <a name="copy-all-containers-directories-and-blobs-to-another-storage-account"></a>Kopiuj wszystkie kontenery, katalogi i obiekty blob na inne konto magazynu
+### <a name="copy-all-containers-directories-and-blobs-to-another-storage-account"></a>Kopiowanie wszystkich kontenerów, katalogów i obiektów blob na inne konto magazynu
 
 Użyj tej samej składni adresu URL (`blob.core.windows.net`) dla kont, które mają hierarchiczną przestrzeń nazw.
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive` |
+| **Składni** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive` |
 | **Przykład** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
 | **Przykład** (hierarchiczna przestrzeń nazw)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
 
-## <a name="synchronize-files"></a>Synchronizuj pliki
+## <a name="synchronize-files"></a>Synchronizowanie plików
 
-Zawartość lokalnego systemu plików można zsynchronizować z kontenerem obiektów BLOB. Możesz również synchronizować kontenery i katalogi wirtualne ze sobą. Synchronizacja jest jednokierunkowa. Innymi słowy, możesz wybrać, które z tych dwóch punktów końcowych są źródłem, a które są lokalizacją docelową. Synchronizacja używa także serwera do interfejsów API serwera. Przykłady przedstawione w tej sekcji działają również z kontami, które mają hierarchiczną przestrzeń nazw. 
-
-> [!NOTE]
-> Bieżąca wersja AzCopy nie jest synchronizowana między innymi źródłami i miejscami docelowymi (na przykład: Magazyn plików lub Amazon Web Services (AWS).
-
-Polecenie [Sync](storage-ref-azcopy-sync.md) porównuje nazwy plików i ostatnio modyfikowane sygnatury czasowe. Ustaw opcjonalną flagę `--delete-destination` na wartość `true` lub `prompt`, aby usunąć pliki w katalogu docelowym, jeśli te pliki nie istnieją już w katalogu źródłowym.
-
-Jeśli ustawisz flagę `--delete-destination` na `true` AzCopy usuwa pliki bez podawania monitu. Jeśli chcesz, aby monit pojawił się przed AzCopy usunięciem pliku, Ustaw flagę `--delete-destination` na `prompt`.
+Zawartość lokalnego systemu plików można zsynchronizować z kontenerem obiektów blob. Można również synchronizować kontenery i katalogi wirtualne ze sobą. Synchronizacja jest jednokierunkowa. Innymi słowy można wybrać, który z tych dwóch punktów końcowych jest źródłem, a który jest miejscem docelowym. Synchronizacja używa również interfejsów API serwera do serwera. Przykłady przedstawione w tej sekcji również pracy z kontami, które mają hierarchiczną przestrzeń nazw. 
 
 > [!NOTE]
-> Aby zapobiec przypadkowemu usunięciu, upewnij się, że funkcja [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) została włączona przed użyciem flagi `--delete-destination=prompt|true`.
+> Bieżąca wersja programu AzCopy nie synchronizuje się między innymi źródłami i miejscami docelowymi (na przykład: magazyn plików lub zasobniki S3 usług Amazon Web Services (AWS).
 
-Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Sync](storage-ref-azcopy-sync.md).
+Polecenie [synchronizacji](storage-ref-azcopy-sync.md) porównuje nazwy plików i ostatnio zmodyfikowane znaczniki czasu. Ustaw `--delete-destination` opcjonalną flagę `true` na `prompt` wartość lub usunięcie plików w katalogu docelowym, jeśli te pliki nie istnieją już w katalogu źródłowym.
+
+Jeśli flaga `--delete-destination` zostanie `true` ustawiona na AzCopy, spowoduje usunięcie plików bezdawania monitu. Jeśli chcesz, aby monit był wyświetlany, zanim AzCopy `prompt`usunie plik, ustaw flagę na `--delete-destination` .
+
+> [!NOTE]
+> Aby zapobiec przypadkowym usunięciu, przed użyciem flagi należy `--delete-destination=prompt|true` włączyć operację [usuwania nietrwałego.](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)
+
+Szczegółowe dokumenty referencyjne można znaleźć [w części Azcopy Sync](storage-ref-azcopy-sync.md).
 
 > [!TIP]
-> W przykładach w tej sekcji zamieszczono argumenty Path z pojedynczymi cudzysłowami (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
+> Przykłady w tej sekcji ujęć argumenty ścieżki z pojedynczymi cudzysłowami (''). Użyj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd.exe). Jeśli używasz powłoki poleceń systemu Windows (cmd.exe), należy ująć argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczych cudzysłowów (').
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Aktualizowanie kontenera ze zmianami w lokalnym systemie plików
 
-W takim przypadku kontener jest miejscem docelowym, a lokalny system plików jest źródłem. 
+W takim przypadku kontener jest miejscem docelowym, a źródłem jest lokalny system plików. 
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **Składni** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Przykład** | `azcopy sync 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
 
-### <a name="update-a-local-file-system-with-changes-to-a-container"></a>Aktualizowanie lokalnego systemu plików przy użyciu zmian w kontenerze
+### <a name="update-a-local-file-system-with-changes-to-a-container"></a>Aktualizowanie lokalnego systemu plików ze zmianami w kontenerze
 
 W takim przypadku lokalny system plików jest miejscem docelowym, a kontener jest źródłem.
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive` |
+| **Składni** | `azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive` |
 | **Przykład** | `azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
 
 ### <a name="update-a-container-with-changes-in-another-container"></a>Aktualizowanie kontenera ze zmianami w innym kontenerze
 
-Pierwszym kontenerem, który pojawia się w tym poleceniu jest źródło. Drugim z nich jest miejsce docelowe.
+Pierwszy kontener, który pojawia się w tym poleceniu jest źródłem. Drugi to cel podróży.
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **Składni** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Przykład** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
 ### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Aktualizowanie katalogu ze zmianami w katalogu w innym udziale plików
 
-Pierwszym katalogiem, który pojawia się w tym poleceniu jest źródło. Drugim z nich jest miejsce docelowe.
+Pierwszym katalogiem, który pojawia się w tym poleceniu, jest źródło. Drugi to cel podróży.
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
+| **Składni** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
 | **Przykład** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej przykładów znajdziesz w jednym z następujących artykułów:
+Znajdź więcej przykładów w każdym z tych artykułów:
 
-- [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
+- [Wprowadzenie do narzędzia AzCopy](storage-use-azcopy-v10.md)
 
-- [Samouczek: Migrowanie danych lokalnych do magazynu w chmurze za pomocą AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
+- [Samouczek: Migracja danych lokalnych do magazynu w chmurze za pomocą narzędzia AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
 
-- [Transferowanie danych za pomocą AzCopy i magazynu plików](storage-use-azcopy-files.md)
+- [Przesyłanie danych za pomocą AzCopy i przechowywania plików](storage-use-azcopy-files.md)
 
-- [Transferowanie danych za pomocą zasobników AzCopy i Amazon S3](storage-use-azcopy-s3.md)
+- [Przesyłanie danych za pomocą wiader AzCopy i Amazon S3](storage-use-azcopy-s3.md)
 
-- [Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy](storage-use-azcopy-configure.md)
+- [Konfigurowanie, optymalizowanie i rozwiązywanie problemów z programem AzCopy](storage-use-azcopy-configure.md)

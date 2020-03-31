@@ -1,6 +1,6 @@
 ---
-title: Co to jest Wydawca OPC — Azure | Microsoft Docs
-description: Ten artykuł zawiera omówienie funkcji wydawcy programu OPC. Umożliwia publikowanie szyfrowanych danych telemetrycznych JSON przy użyciu ładunku JSON w usłudze Azure IoT Hub.
+title: Co to jest wydawca OPC - Azure | Dokumenty firmy Microsoft
+description: Ten artykuł zawiera omówienie funkcji programu OPC Publisher. Umożliwia publikowanie zakodowanych danych telemetrycznych JSON przy użyciu ładunku JSON w usłudze Azure IoT Hub.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
@@ -9,38 +9,38 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 2310a81d3cfaeff203134af9968bc2d5caea3e9c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73824778"
 ---
-# <a name="what-is-opc-publisher"></a>Co to jest Wydawca OPC?
+# <a name="what-is-opc-publisher"></a>Co to jest OPC Publisher?
 
-OPC Publisher jest implementacją referencyjną, która demonstruje, jak:
+OPC Publisher to implementacja referencyjna, która pokazuje, jak:
 
 - Połącz się z istniejącymi serwerami OPC UA.
-- Publikuj dane telemetryczne kodowane w formacie JSON z serwerów OPC UA w podsystemie OPC UA pub/sub przy użyciu ładunku JSON do usługi Azure IoT Hub.
+- Publikowanie danych telemetrycznych zakodowanych w formacie JSON z serwerów OPC UA w formacie OPC UA Pub/Sub przy użyciu ładunku JSON w usłudze Azure IoT Hub.
 
-Można użyć dowolnego protokołu transportowego obsługiwanego przez zestaw SDK klienta platformy Azure IoT Hub: HTTPS, AMQP i MQTT.
+Można użyć dowolnego protokołu transportu, który obsługuje zestaw SDK klienta usługi Azure IoT Hub: HTTPS, AMQP i MQTT.
 
-Implementacja odniesienia obejmuje:
+Implementacja referencyjna obejmuje:
 
-- *Klient* OPC UA do łączenia się z istniejącymi serwerami OPC UA w sieci.
-- *Serwer* OPC UA na porcie 62222, za pomocą którego można zarządzać opublikowanymi i oferowanymi IoT Hub metodami bezpośrednimi w taki sam sposób.
+- *Klient* OPC UA do łączenia się z istniejącymi serwerami OPC UA, które masz w sieci.
+- *Serwer* OPC UA na porcie 62222, którego można używać do zarządzania tym, co zostało opublikowane i oferuje bezpośrednie metody Usługi IoT Hub, aby zrobić to samo.
 
-[Implementację odwołania wydawcy OPC](https://github.com/Azure/iot-edge-opc-publisher) można pobrać z witryny GitHub.
+[Implementację referencyjną programu OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) można pobrać z usługi GitHub.
 
-Aplikacja jest implementowana przy użyciu technologii .NET Core i może działać na dowolnej platformie obsługiwanej przez platformę .NET Core.
+Aplikacja jest implementowana przy użyciu technologii .NET Core i może działać na dowolnej platformie obsługiwanej przez .NET Core.
 
-Wydawca OPC implementuje logikę ponawiania prób w celu ustanowienia połączeń z punktami końcowymi, które nie odpowiadają na określoną liczbę żądań Keep Alive. Na przykład, jeśli serwer OPC UA przestanie odpowiadać z powodu awarii w zasilaniu.
+OPC Publisher implementuje logikę ponawiania próby do ustanowienia połączeń z punktami końcowymi, które nie odpowiadają na pewną liczbę żądań keep alive. Na przykład jeśli serwer OPC UA przestaje odpowiadać z powodu przerwy w zasilaniu.
 
-Dla każdego odrębnego interwału publikowania na serwerze OPC UA aplikacja tworzy oddzielną subskrypcję, w ramach której zostaną zaktualizowane wszystkie węzły z tym interwałem publikacji.
+Dla każdego odrębnego interwału publikowania na serwerze OPC UA aplikacja tworzy oddzielną subskrypcję, za pomocą której aktualizowane są wszystkie węzły z tym interwałem publikowania.
 
-Wydawca OPC obsługuje przetwarzanie wsadowe danych wysyłanych do IoT Hub, aby zmniejszyć obciążenie sieci. Ta Partia zadań wysyła pakiet do IoT Hub tylko wtedy, gdy osiągnięto skonfigurowany rozmiar pakietu.
+OPC Publisher obsługuje przetwarzanie danych wysyłanych do usługi IoT Hub w celu zmniejszenia obciążenia sieci. To przetwarzanie wsadowe wysyła pakiet do Centrum IoT tylko wtedy, gdy osiągnięto skonfigurowany rozmiar pakietu.
 
-Ta aplikacja używa stosu referencyjnego OPC Foundation OPC UA jako pakietów NuGet. Zapoznaj się [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) z postanowieniami licencyjnymi.
+Ta aplikacja używa stosu odwołań OPC Foundation OPC UA jako pakietów NuGet. Zapoznaj [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) się z postanowieniami licencyjnymi.
 
 ### <a name="next-steps"></a>Następne kroki
 
-Teraz wiesz, co to jest Wydawca OPC, sugerowanym następnym krokiem jest zapoznanie się z informacjami na temat [konfigurowania wydawcy programu OPC](howto-opc-publisher-configure.md).
+Teraz dowiedziałeś się, czym jest OPC Publisher, następnym krokiem jest dowiedzenie się, jak [skonfigurować OPC Publisher](howto-opc-publisher-configure.md).

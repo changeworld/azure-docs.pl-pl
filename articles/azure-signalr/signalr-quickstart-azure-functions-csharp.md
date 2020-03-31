@@ -1,5 +1,5 @@
 ---
-title: Azure SignalR Service bez użycia serwera Przewodnik Szybki Start —C#
+title: 'Szybki start bezserwerowy usługi Azure SignalR — C #'
 description: Przewodnik Szybki start pokazujący, jak za pomocą usług Azure SignalR Service i Azure Functions utworzyć pokój czatu.
 author: sffamily
 ms.service: signalr
@@ -8,21 +8,21 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.openlocfilehash: 75d9977546c2a085765310a5654897f739a271ae
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "65595400"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Szybki start: tworzenie pokoju rozmów za pomocą usług Azure Functions i SignalR Service oraz przy użyciu języka C\#
+# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Szybki start: tworzenie pokoju rozmów z usługą Azure Functions i SignalR Service przy użyciu języka C\#
 
 Usługa Azure SignalR Service umożliwia łatwe dodawanie funkcji czasu rzeczywistego do aplikacji. Usługa Azure Functions to bezserwerowa platforma, która pozwala uruchamiać kod bez zarządzania jakąkolwiek infrastrukturą. W tym przewodniku Szybki start dowiesz się, jak utworzyć bezserwerową aplikację czatu w czasie rzeczywistym za pomocą usług SignalR Service i Functions.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz jeszcze programu Visual Studio 2019 r zainstalowany, możesz pobrać i używać **bezpłatne** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
+Jeśli nie masz jeszcze zainstalowanej programu Visual Studio 2019, możesz pobrać **bezpłatną** [wersję programu Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)i korzystać z niej. Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
 
-W tym samouczku mogą również uruchamiać w wierszu polecenia (z systemem macOS, Windows lub Linux) przy użyciu [podstawowych narzędzi (v2) dla usługi Azure Functions](https://github.com/Azure/azure-functions-core-tools#installing), [zestawu .NET Core SDK](https://dotnet.microsoft.com/download), a wybrany edytor kodu.
+Ten samouczek można również uruchomić w wierszu polecenia (macOS, Windows lub Linux) przy użyciu [narzędzia Azure Functions Core Tools (v2),](https://github.com/Azure/azure-functions-core-tools#installing)zestawu [.NET Core SDK](https://dotnet.microsoft.com/download)i ulubionego edytora kodu.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,7 +36,7 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com/> prz
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Konfigurowanie i uruchamianie aplikacji funkcji platformy Azure
 
-1. Uruchom program Visual Studio (lub innego edytora kodu) i otwórz rozwiązanie w *rozmowy/src/csharp* folderu sklonowanego repozytorium.
+1. Uruchom program Visual Studio (lub inny edytor kodu) i otwórz rozwiązanie w folderze *src/chat/csharp* sklonowanego repozytorium.
 
 1. W przeglądarce z otwartą witryną Azure Portal potwierdź, że wdrożone wcześniej wystąpienie usługi SignalR Service zostało pomyślnie utworzone, wyszukując jego nazwę w polu wyszukiwania w górnej części witryny. Wybierz wystąpienie, aby je otworzyć.
 
@@ -55,13 +55,13 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com/> prz
     - **GetSignalRInfo** — ta funkcja generuje i zwraca informacje o prawidłowym połączeniu przy użyciu danych wejściowych powiązania *SignalRConnectionInfo*.
     - **SendMessage** — ta funkcja otrzymuje wiadomość rozmowy w treści żądania i używa powiązania danych wyjściowych usługi *SignalR* do rozpowszechnienia komunikatu do wszystkich połączonych aplikacji klienckich.
 
-1. Aby uruchomić aplikację funkcji platformy Azure lokalnie, użyj jednej z następujących opcji.
+1. Użyj jednej z następujących opcji, aby uruchomić aplikację funkcji platformy Azure lokalnie.
 
-    - **Visual Studio**: W menu Debugowanie wybierz pozycję *Rozpocznij debugowanie*, aby uruchomić aplikację.
+    - **Visual Studio:** W menu *debugowania* wybierz polecenie *Rozpocznij debugowanie,* aby uruchomić aplikację.
 
         ![Debugowanie aplikacji](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-debug-vs.png)
 
-    - **Wiersz polecenia**: Wykonaj następujące polecenie, aby uruchomić hosta funkcji.
+    - **Wiersz polecenia:** Wykonaj następujące polecenie, aby uruchomić hosta funkcji.
 
         ```bash
         func start
@@ -71,9 +71,9 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com/> prz
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start, skompilowane i uruchomione w czasie rzeczywistym aplikacji bez użycia serwera w programie Visual Studio. W dalszej kolejności zapoznaj się ze sposobem opracowywania i wdrażania funkcji usługi Azure Functions za pomocą programu Visual Studio.
+W tym przewodniku Szybki start została skusiła i uruchomiła aplikację bezserwerową w programie Visual Studio. W dalszej kolejności zapoznaj się ze sposobem opracowywania i wdrażania funkcji usługi Azure Functions za pomocą programu Visual Studio.
 
 > [!div class="nextstepaction"]
 > [Opracowywanie funkcji usługi Azure Functions przy użyciu programu Visual Studio](../azure-functions/functions-develop-vs.md)

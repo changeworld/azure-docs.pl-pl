@@ -1,5 +1,5 @@
 ---
-title: Uruchamianie notesu datakostks z działaniem
+title: Uruchamianie notesu databricks z aktywnością
 description: Dowiedz się, jak można użyć działania notesu usługi Databricks w usłudze Azure Data Factory w celu uruchomienia notesu usługi Databricks w klastrze zadań usługi Databricks.
 services: data-factory
 ms.service: data-factory
@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
 ms.openlocfilehash: 39b8745b65eccd8e4d1b5986490e30be443ad656
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74913512"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Uruchamianie notesu usługi Databricks za pomocą działania notesu usługi Databricks w usłudze Azure Data Factory
@@ -28,11 +28,11 @@ Ten samouczek obejmuje następujące procedury:
 
   - Tworzenie potoku, który używa działania notesu usługi Databricks.
 
-  - Wyzwalanie uruchomienia potoku.
+  - Wyzwalanie uruchomienia potoku
 
   - Monitorowanie uruchomienia potoku.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 Poniższy klip wideo zawiera jedenastominutowe wprowadzenie i demonstrację tej funkcji:
 
@@ -52,7 +52,7 @@ Poniższy klip wideo zawiera jedenastominutowe wprowadzenie i demonstrację tej 
 
 1.  W okienku **Nowa fabryka danych** wprowadź wartość **ADFTutorialDataFactory** w polu **Nazwa**.
 
-    Nazwa fabryki danych platformy Azure musi być *globalnie unikatowa*. Jeśli zostanie wyświetlony poniższy błąd, zmień nazwę fabryki danych. (Na przykład użyj nazwy **\<twojanazwa\>ADFTutorialDataFactory**). Artykuł [Usługa Data Factory — reguły nazewnictwa](https://docs.microsoft.com/azure/data-factory/naming-rules) zawiera reguły nazewnictwa artefaktów usługi Data Factory.
+    Nazwa fabryki danych platformy Azure musi być *unikatowa globalnie.* Jeśli zostanie wyświetlony poniższy błąd, zmień nazwę fabryki danych. (Na przykład użyj ** \<nazwy\>ADFTutorialDataFactory**). Artykuł [Usługa Data Factory — reguły nazewnictwa](https://docs.microsoft.com/azure/data-factory/naming-rules) zawiera reguły nazewnictwa artefaktów usługi Data Factory.
 
     ![Udostępnianie nazwy nowej fabryki danych](media/transform-data-using-databricks-notebook/new-azure-data-factory.png)
 
@@ -60,18 +60,18 @@ Poniższy klip wideo zawiera jedenastominutowe wprowadzenie i demonstrację tej 
 
 1.  W obszarze **Grupa zasobów** wykonaj jedną z następujących czynności:
     
-    - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej.
+    - Wybierz **pozycję Użyj istniejącej** i wybierz istniejącą grupę zasobów z listy rozwijanej.
     
     - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.
 
-    W niektórych krokach w tym samouczku szybkiego startu zakłada się, że nazwa grupy zasobów to **ADFTutorialResourceGroup**. Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) (Używanie grup zasobów do zarządzania zasobami platformy Azure).
+    Niektóre kroki opisane w tym przewodniku Szybki start zakładają, że dla grupy zasobów jest używana nazwa **ADFTutorialResourceGroup.** Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) (Używanie grup zasobów do zarządzania zasobami platformy Azure).
 
 1.  W obszarze **Wersja** wybierz pozycję **V2**.
 
 1.  W obszarze **Lokalizacja** wybierz lokalizację fabryki danych.
 
     Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (takie jak HDInsight) używane przez usługę Data Factory mogą znajdować się w innych regionach.
-1.  Wybierz pozycję **Utwórz**.
+1.  Wybierz **pozycję Utwórz**.
 
 
 1.  Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**. Wybierz kafelek **Tworzenie i monitorowanie**, aby na osobnej karcie uruchomić aplikację interfejsu użytkownika usługi Data Factory.
@@ -98,7 +98,7 @@ W tej sekcji utworzysz połączoną usługę Databricks. Ta połączona usługa 
 
 1.  W oknie **Nowa połączona usługa** wykonaj następujące czynności:
     
-    1.  W polu **Nazwa** podaj ciąg ***AzureDatabricks\_LinkedService***.
+    1.  W przypadku **nazwy**wprowadź ***usługę\_AzureDatabricks LinkedService***
     
     1.  Wybierz odpowiedni **obszar roboczy usługi Databricks**, w którym uruchomisz notes.
 
@@ -110,7 +110,7 @@ W tej sekcji utworzysz połączoną usługę Databricks. Ta połączona usługa 
 
     1.  W polu **Wersja klastra** wybierz opcję **4.2** (z oprogramowaniem Apache Spark 2.3.1 i Scala 2.11).
 
-    1.  Na potrzeby tego samouczka w polu **Typ węzła klastra** wybierz opcję **Standard\_D3\_v2** w kategorii **Ogólnego przeznaczenia (HDD)** . 
+    1.  Na potrzeby tego samouczka w polu **Typ węzła klastra** wybierz opcję **Standard\_D3\_v2** w kategorii **Ogólnego przeznaczenia (HDD)**. 
     
     1.  W polu **Procesy robocze** podaj wartość **2**.
     
@@ -120,7 +120,7 @@ W tej sekcji utworzysz połączoną usługę Databricks. Ta połączona usługa 
 
 ## <a name="create-a-pipeline"></a>Tworzenie potoku
 
-1.  Wybierz przycisk **+** (znak plus), a następnie wybierz pozycję **Potok** w menu.
+1.  Wybierz **+** przycisk (plus), a następnie wybierz polecenie **Potok** w menu.
 
     ![Przyciski do tworzenia nowego potoku](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image9.png)
 
@@ -150,7 +150,7 @@ W tej sekcji utworzysz połączoną usługę Databricks. Ta połączona usługa 
 
           ![Tworzenie nowego folderu](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. [Utwórz nowy Notes](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), wywołaj **go w folderze** **adftutorial** , a następnie kliknij przycisk **Utwórz.**
+       1. [Utwórz nowy notes](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), nazwijmy to **mynotebook** w **folderze adftutorial,** kliknij przycisk **Utwórz.**
 
           ![Tworzenie nowego notesu](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
@@ -177,9 +177,9 @@ W tej sekcji utworzysz połączoną usługę Databricks. Ta połączona usługa 
 
        ![Dodawanie parametru](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  Nazwij parametr jako **dane wejściowe** i podaj wartość jako wyrażenie **\@potoku (). Parameters. Name**.
+    b.  Nazwij parametr jako **dane wejściowe** i podaj wartość jako ** \@wyrażenie pipeline().parameters.name**.
 
-1.  Aby zweryfikować potok, wybierz przycisk **Weryfikuj** na pasku narzędzi. Wybierz przycisk **\>\>** (strzałka w prawo), aby zamknąć okno weryfikacji.
+1.  Aby zweryfikować potok, wybierz przycisk **Weryfikuj** na pasku narzędzi. Aby zamknąć okno sprawdzania ** \> ** poprawności, wybierz przycisk (strzałka w prawo).
 
     ![Weryfikowanie potoku](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image18.png)
 
@@ -193,13 +193,13 @@ Wybierz pozycję **Wyzwól** na pasku narzędzi, a następnie wybierz pozycję *
 
 ![Wybieranie polecenia Wyzwól teraz](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image20.png)
 
-W oknie dialogowym **Uruchamianie potoku** zostanie wyświetlona prośba o podanie parametru **nazwa**. Jako parametru użyj w tym miejscu wartości **/path/filename**. Kliknij przycisk **Zakończ**.
+W oknie dialogowym **Uruchamianie potoku** zostanie wyświetlona prośba o podanie parametru **nazwa**. Jako parametru użyj w tym miejscu wartości **/path/filename**. Kliknij **pozycję Zakończ.**
 
 ![Podawanie wartości parametru nazwa](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image21.png)
 
 ## <a name="monitor-the-pipeline-run"></a>Monitorowanie działania potoku
 
-1.  Przejdź do karty **monitorowanie** . Upewnij się, że zobaczysz uruchomienie potoku. Utworzenie klastra zadań usługi Databricks, w którym jest wykonywany notes, trwa około 5–8 minut.
+1.  Przełącz się na kartę **Monitor.** Utworzenie klastra zadań usługi Databricks, w którym jest wykonywany notes, trwa około 5–8 minut.
 
     ![Monitorowanie potoku](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image22.png)
 
@@ -229,6 +229,6 @@ Potok w tym przykładzie wyzwala działanie notesu usługi Databricks i przekazu
 
   - Tworzenie potoku, który używa działania notesu usługi Databricks.
 
-  - Wyzwalanie uruchomienia potoku.
+  - Wyzwalanie uruchomienia potoku
 
   - Monitorowanie uruchomienia potoku.

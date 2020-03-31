@@ -1,5 +1,5 @@
 ---
-title: Dodawanie logowania z firmą Microsoft do ASP.NET Core Web Apps — platforma tożsamości firmy Microsoft | Azure
+title: Dodawanie logowania za pomocą firmy Microsoft do ASP.NET podstawowych aplikacji sieci Web — platforma tożsamości firmy Microsoft | Azure
 description: Dowiedz się, jak zaimplementować logowanie firmy Microsoft w aplikacji internetowej ASP.NET Core za pomocą protokołu OpenID Connect.
 services: active-directory
 author: jmprieur
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 72c363c34a3e7e01cb32917dd87237e4bbfc9490
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c4d34a6db774712e13ea86d38ae48a543a07a8bc
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249147"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79529768"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Szybki Start: Dodawanie logowania z firmą Microsoft do aplikacji internetowej ASP.NET Core
-W tym przewodniku szybki start użyjesz przykładowego kodu, aby dowiedzieć się, w jaki sposób aplikacja sieci Web ASP.NET Core może się zalogować na kontach osobistych (hotmail.com, outlook.com, inne) i służbowych z dowolnego wystąpienia Azure Active Directory (Azure AD). (Zobacz [, jak działa przykład](#how-the-sample-works) dla ilustracji).
+# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Szybki start: dodawanie logowania za pomocą firmy Microsoft do aplikacji sieci Web ASP.NET Core
+W tym przewodniku Szybki start można użyć przykładu kodu, aby dowiedzieć się, jak aplikacja sieci web ASP.NET Core może logować się na kontach osobistych (hotmail.com, outlook.com, inne) oraz kontach służbowych i szkolnych z dowolnego wystąpienia usługi Azure Active Directory (Azure AD). (Zobacz [Jak działa przykład](#how-the-sample-works) dla ilustracji).
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Rejestrowanie i pobieranie aplikacji Szybki start
 > Istnieją dwie opcje uruchamiania aplikacji Szybki start:
@@ -29,7 +29,7 @@ W tym przewodniku szybki start użyjesz przykładowego kodu, aby dowiedzieć si�
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1. Zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
 >
-> 1. Przejdź do [Rejestracje aplikacji Azure Portal](https://aka.ms/aspnetcore2-1-aad-quickstart-v2).
+> 1. Przejdź do [witryny Azure portal — rejestracje aplikacji](https://aka.ms/aspnetcore2-1-aad-quickstart-v2).
 > 1. Wprowadź nazwę aplikacji i wybierz pozycję **Zarejestruj**.
 > 1. Postępuj zgodnie z instrukcjami, aby jednym kliknięciem pobrać i automatycznie skonfigurować nową aplikację.
 >
@@ -38,18 +38,18 @@ W tym przewodniku szybki start użyjesz przykładowego kodu, aby dowiedzieć si�
 > #### <a name="step-1-register-your-application"></a>Krok 1. Rejestrowanie aplikacji
 > Aby zarejestrować aplikację i ręcznie dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
 >
-> 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+> 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta służbowego lub konta firmy Microsoft.
 > 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
-> 1. Przejdź do strony Microsoft Identity Platform for Developers [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) .
-> 1. Wybierz pozycję **Nowa rejestracja**.
+> 1. Przejdź do platformy tożsamości firmy Microsoft dla deweloperów [Rejestracje aplikacji.](https://go.microsoft.com/fwlink/?linkid=2083908)
+> 1. Wybierz **pozycję Nowa rejestracja**.
 > 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 >    - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `AspNetCore-Quickstart`.
->    - W obszarze **Identyfikator URI przekierowania**Dodaj `https://localhost:44321/`i wybierz pozycję **zarejestruj**.
+>    - W **obszarze Przekieruj identyfikator URI**dodaj `https://localhost:44321/`i wybierz pozycję **Zarejestruj**.
 > 1. Wybierz menu **Uwierzytelnianie**, a następnie dodaj następujące informacje:
->    - W obszarze **identyfikatory URI przekierowania**Dodaj `https://localhost:44321/signin-oidc`i wybierz pozycję **Zapisz**.
+>    - W **obszarze Przekierowanie identyfikatorów URI**dodaj `https://localhost:44321/signin-oidc`i wybierz pozycję **Zapisz**.
 >    - W sekcji **Ustawienia zaawansowane** ustaw pole **Adres URL wylogowywania** na wartość `https://localhost:44321/signout-oidc`.
 >    - W obszarze **Niejawne przyznanie** zaznacz pole wyboru **Tokeny Identyfikatorów**.
->    - Wybierz pozycję **Zapisz**.
+>    - Wybierz **pozycję Zapisz**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1. Konfigurowanie aplikacji w witrynie Azure Portal
@@ -63,24 +63,24 @@ W tym przewodniku szybki start użyjesz przykładowego kodu, aby dowiedzieć si�
 #### <a name="step-2-download-your-aspnet-core-project"></a>Krok 2. Pobieranie projektu ASP.NET Core
 
 > [!div renderon="docs"]
-> [Pobierz rozwiązanie Visual Studio 2019](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+> [Pobierz rozwiązanie programu Visual Studio 2019](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Uruchom projekt przy użyciu programu Visual Studio 2019.
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [Pobierz przykład kodu]()
+> [Pobierz przykładowy kod](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3. Twoja aplikacja jest skonfigurowana i gotowa do uruchomienia
-> Twój projekt został skonfigurowany z wartościami właściwości aplikacji i jest gotowy do uruchomienia. 
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: Aplikacja jest skonfigurowana i gotowa do uruchomienia
+> Skonfigurowaliśmy projekt z wartościami właściwości aplikacji i jest on gotowy do uruchomienia. 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > Enter_the_Supported_Account_Info_Here
 > [!div renderon="docs"]
-> #### <a name="step-3-run-your-visual-studio-project"></a>Krok 3. uruchamianie projektu programu Visual Studio
+> #### <a name="step-3-run-your-visual-studio-project"></a>Krok 3: Uruchamianie projektu programu Visual Studio
 > 1. Wyodrębnij plik zip do folderu lokalnego w ramach folderu głównego, na przykład **C:\Azure-Samples**.
-> 1. Otwórz rozwiązanie w programie Visual Studio 
-> 1. Edytuj plik **appsettings.json**. Znajdź `ClientId` i zaktualizuj wartość `ClientId` z wartością **identyfikatora aplikacji (klienta)** zarejestrowanej aplikacji. 
+> 1. Otwieranie rozwiązania w programie Visual Studio 
+> 1. Edytuj plik **appsettings.json**. Znajdź `ClientId` i zaktualizuj wartość za pomocą `ClientId` wartości **identyfikatora aplikacji (klienta)** zarejestrowanej aplikacji. 
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here"
@@ -98,14 +98,14 @@ W tym przewodniku szybki start użyjesz przykładowego kodu, aby dowiedzieć si�
 >   - Jeśli aplikacja obsługuje tryb **Wszyscy użytkownicy kont Microsoft**, zastąp tę wartość za pomocą wartości `common`
 >
 > > [!TIP]
-> > Aby znaleźć wartości **Identyfikator aplikacji (klienta)** , **Identyfikator katalogu (dzierżawy)** i **Obsługiwane typy kont**, przejdź do strony **Przegląd** w witrynie Azure Portal.
+> > Aby znaleźć wartości **Identyfikator aplikacji (klienta)**, **Identyfikator katalogu (dzierżawy)** i **Obsługiwane typy kont**, przejdź do strony **Przegląd** w witrynie Azure Portal.
 
 ## <a name="more-information"></a>Więcej informacji
 
-Ta sekcja zawiera omówienie kodu wymaganego do zalogowania użytkowników. Ten przegląd może być przydatny do zrozumienia sposobu działania kodu, głównych argumentów oraz, jeśli chcesz dodać logowanie do istniejącej aplikacji ASP.NET Core.
+W tej sekcji przedstawiono przegląd kodu wymaganego do logowania użytkowników. Ten przegląd może być przydatne, aby zrozumieć, jak działa kod, główne argumenty, a także jeśli chcesz dodać logowania do istniejącej aplikacji ASP.NET Core.
 
-### <a name="how-the-sample-works"></a>Jak działa przykład
-![Pokazuje sposób działania przykładowej aplikacji wygenerowanej przez ten przewodnik Szybki Start](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.svg)
+### <a name="how-the-sample-works"></a>Jak działa próbka
+![Pokazuje, jak działa przykładowa aplikacja generowana przez ten szybki start](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.svg)
 
 ### <a name="startup-class"></a>Klasa początkowa
 
@@ -142,9 +142,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Metoda `AddAuthentication` konfiguruje usługę pod kątem dodawania uwierzytelniania opartego na plikach cookie, który jest używany w scenariuszach przeglądarki i do ustawiania wyzwania OpenID Connect Connect. 
+Metoda `AddAuthentication` konfiguruje usługę, aby dodać uwierzytelnianie oparte na plikach cookie, które jest używane w scenariuszach przeglądarki i ustawić wyzwanie OpenID Connect. 
 
-Wiersz zawierający `.AddAzureAd` dodaje do aplikacji uwierzytelnianie platformy tożsamości firmy Microsoft. Następnie jest on konfigurowany do logowania za pomocą punktu końcowego platformy tożsamości firmy Microsoft.
+Wiersz zawierający `.AddAzureAd` dodaje uwierzytelnianie platformy tożsamości firmy Microsoft do aplikacji. Następnie jest skonfigurowany do logowania się przy użyciu punktu końcowego platformy tożsamości firmy Microsoft.
 
 > |Lokalizacja  |  |
 > |---------|---------|
@@ -154,23 +154,23 @@ Wiersz zawierający `.AddAzureAd` dodaje do aplikacji uwierzytelnianie platformy
 
 
 > [!NOTE]
-> Ustawieniem `ValidateIssuer = false` jest uproszczenie dla tego przewodnika Szybki Start. W rzeczywistych aplikacjach należy sprawdzić poprawność wystawcy.
-> Zapoznaj się z przykładami, aby dowiedzieć się, jak to zrobić.
+> Ustawienie `ValidateIssuer = false` jest uproszczeniem dla tego szybkiego startu. W rzeczywistych aplikacjach należy zweryfikować wystawcę.
+> Zobacz przykłady, aby zrozumieć, jak to zrobić.
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Ochrona kontrolera lub metody kontrolera
 
-Kontroler lub jego metody można chronić za pomocą atrybutu `[Authorize]`. Ten atrybut ogranicza dostęp do kontrolera lub metod przez zezwolenie tylko uwierzytelnionym użytkownikom, co oznacza, że można uruchomić wyzwanie uwierzytelniania w celu uzyskania dostępu do kontrolera, jeśli użytkownik nie jest uwierzytelniony.
+Kontroler lub jego metody można chronić za pomocą atrybutu `[Authorize]`. Ten atrybut ogranicza dostęp do kontrolera lub metod, zezwalając tylko uwierzytelnionym użytkownikom, co oznacza, że wyzwanie uwierzytelniania można uruchomić, aby uzyskać dostęp do kontrolera, jeśli użytkownik nie jest uwierzytelniony.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z repozytorium GitHub dla tego ASP.NET Coreego samouczka, aby uzyskać więcej informacji, w tym instrukcje dotyczące sposobu dodawania uwierzytelniania do nowej aplikacji sieci Web ASP.NET Core, sposobu wywoływania Microsoft Graph i innych interfejsów API firmy Microsoft, sposobu wywoływania własnych interfejsów API, dodawania Autoryzacja, Logowanie użytkowników w chmurach narodowych lub tożsamość społecznościowa i inne:
+Zapoznaj się z repozytorium GitHub dla tego samouczka ASP.NET Core, aby uzyskać więcej informacji, w tym instrukcje dotyczące dodawania uwierzytelniania do zupełnie nowej aplikacji sieci Web ASP.NET Core, jak wywoływać program Microsoft Graph i inne interfejsy API firmy Microsoft, jak wywoływać własne interfejsy API, jak dodawać autoryzacja, jak zalogować się do użytkowników w chmurach krajowych lub z tożsamościami społecznymi i nie tylko:
 
 > [!div class="nextstepaction"]
-> [Samouczek aplikacji sieci Web ASP.NET Core](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
+> [ASP.NET Core Web App samouczek](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
 
-Pomóż nam ulepszyć platformę tożsamości firmy Microsoft. Powiedz nam, co myślisz, wykonując krótką ankietę z dwoma pytaniami.
+Pomóż nam ulepszyć platformę tożsamości firmy Microsoft. Powiedz nam, co myślisz, wypełniając krótką ankietę z dwoma pytaniami.
 
 > [!div class="nextstepaction"]
-> [Microsoft Identity platform — ankieta](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
+> [Ankieta na temat platformy tożsamości firmy Microsoft](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

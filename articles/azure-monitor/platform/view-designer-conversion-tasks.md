@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor widoku projektanta na skoroszyty typowe zadania konwersji
+title: Projektant widoku usługi Azure Monitor do typowych zadań konwersji skoroszytów
 description: ''
 author: austonli
 ms.author: aul
@@ -7,101 +7,101 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 5559dac916262998d621b40757398088ec613609
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658748"
 ---
-# <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Wyświetlanie typowych zadań konwersji projektanta na skoroszyty
-[Projektant widoków](view-designer.md) jest funkcją Azure monitor, która umożliwia tworzenie niestandardowych widoków, które ułatwiają wizualizację danych w obszarze roboczym log Analytics, z wykresami, listami i osiami czasu. Są one wycofywane i zastępowane skoroszytami, które zapewniają dodatkową funkcjonalność. W tym artykule szczegółowo opisano zadania, które są wspólne w przypadku konwertowania widoków do skoroszytów.
+# <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Wyświetlanie typowych zadań konwersji projektanta w skoroszytach
+[Projektant widoku](view-designer.md) jest funkcją usługi Azure Monitor, która umożliwia tworzenie widoków niestandardowych ułatwiające wizualizację danych w obszarze roboczym usługi Log Analytics za pomocą wykresów, list i osi czasu. Są one stopniowo wycofywane i zastępowane skoroszytami, które zapewniają dodatkowe funkcje. W tym artykule opisano zadania typowe podczas konwertowania widoków na skoroszyty.
 
 
-## <a name="quickstart-with-preset-view-designer-templates"></a>Przewodnik Szybki Start z predefiniowanymi szablonami projektanta widoków
+## <a name="quickstart-with-preset-view-designer-templates"></a>Szybki start z wstępnie ustawionymi szablonami projektanta widoku
 
-Skoroszyty w Log Analytics obszarach roboczych mają już szablony, które są zgodne z niektórymi widokami w projektancie widoków. W kategorii **Wyświetl prowadnice projektanta** wybierz pozycję **Wyświetl przewodnik przejścia projektanta** , aby dowiedzieć się więcej na temat opcji, lub wybierz jeden z predefiniowanych szablonów.
+Skoroszyty w obszarach roboczych usługi Log Analytics mają już szablony wykonane w taki sposób, aby pasowały do niektórych widoków w projektancie widoku. W kategorii **Wyświetl prowadnice projektanta** wybierz pozycję **Wyświetl przewodnik po przejściu projektanta,** aby dowiedzieć się więcej o opcjach, lub wybierz jeden z gotowych szablonów.
 
 ![Przykładowe szablony](media/view-designer-conversion-tasks/templates.png)
 
 ## <a name="enabling-time-range-filter"></a>Włączanie filtru zakresu czasu
-Projektant widoków ma wbudowany domyślny filtr zakresu czasu, jednak w skoroszytach to ustawienie nie jest domyślnie włączone. Skoroszyty umożliwiają użytkownikom tworzenie własnych filtrów zakresu czasu, które mogą być bardziej odpowiednie dla dzienników danych. Poniżej przedstawiono procedurę generowania filtru:
+Projektant widoku ma wbudowany domyślny filtr zakresu czasu, jednak w skoroszytach to ustawienie nie jest domyślnie włączone. Skoroszyty umożliwiają użytkownikom tworzenie własnych filtrów zakresu czasu, które mogą mieć większe zastosowanie do dzienników danych. Kroki generowania filtru są wymienione poniżej:
 
-Wybierz opcję **Dodaj parametry** . Domyślny **styl** jest ustawiony na *Pills*.
+Wybierz opcję **Dodaj parametry.** Domyślny **styl** jest ustawiony na *Pigułki*.
 
 ![Dodaj param](media/view-designer-conversion-tasks/add-param.png)
 
- Wybierz przycisk **Dodaj parametr** .
+ Wybierz przycisk **Dodaj parametr.**
 
 ![Dodaj parametr](media/view-designer-conversion-tasks/add-parameter.png)
 
-Z menu paska bocznego w polu tekstowym **Nazwa parametru** wpisz *TimeRange*. Ustaw **Typ parametru** jako *Selektor zakresu czasu*. Zaznacz pole wyboru **wymagane?**
+Z menu paska bocznego w pola tekstowym **Nazwa parametru** wpisz *TimeRange*. Ustaw **typ parametru** jako *selektor zakresu czasu*. Zaznacz pole wyboru **Wymagane?**
 
 ![Menu parametrów](media/view-designer-conversion-tasks/parameter-menu.png)
 
-Zapisz parametr w lewym górnym rogu menu paska bocznego. Listę rozwijaną można pozostawić domyślnie jako *nieustawioną* lub wybrać domyślną wartość **TimeRange** , na przykład *24 godziny*. Wybierz pozycję **gotowe edytowanie**.
+Zapisz parametr w lewym górnym rogu menu paska bocznego. Można pozostawić listy rozwijanej jako *nierozstawionej* domyślnie lub wybrać domyślną wartość **TimeRange,** taką jak *24 godziny*. Wybierz **pozycję Gotowe edytowanie**.
 
-Parametrów można używać w zapytaniach, dodając nawiasy klamrowe {} wokół nazwy parametru. Więcej szczegółów na temat parametrów można znaleźć w [dokumentacji skoroszytów dotyczącej parametrów](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md).
+Parametry mogą być używane w kwerendach, {} dodając nawiasy klamrowe wokół nazwy parametru. Więcej informacji na temat parametrów można znaleźć w [dokumentacji skoroszytów na temat parametrów](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md).
 
 ## <a name="updating-queries-with-the-timerange-parameter"></a>Aktualizowanie zapytań za pomocą parametru TimeRange
 
-### <a name="option-1-select-timerange-from-the-time-range-dropdown"></a>Opcja 1: wybierz pozycję TimeRange z listy rozwijanej zakresu czasu
+### <a name="option-1-select-timerange-from-the-time-range-dropdown"></a>Opcja 1: Wybierz timerange z listy rozwijanej Zakres czasu
 
 ![Parametr czasu](media/view-designer-conversion-tasks/time-parameter.png)
 
-### <a name="option-2-update-your-log-queries"></a>Opcja 2: aktualizowanie zapytań dziennika
+### <a name="option-2-update-your-log-queries"></a>Opcja 2: Aktualizowanie zapytań dziennika
 
-W zapytaniu Dodaj wiersz: `| where TimeGenerated {TimeRange}` jak w poniższym przykładzie:
+W zapytaniu dodaj `| where TimeGenerated {TimeRange}` wiersz: jak w poniższym przykładzie:
 
-Oryginalne zapytanie
+Oryginalna kwerenda
 ```KQL
 search * 
 | summarize count() by Type
 ```
 
-Zaktualizowane zapytanie
+Zaktualizowana kwerenda
 ```KQL
 search * 
 | where TimeGenerated {TimeRange} 
 | summarize count() by Type
 ```
 
-## <a name="including-a-list"></a>Dołączanie listy
-Większość widoków projektanta widoku zawiera listę i można ją odtworzyć w skoroszycie.
+## <a name="including-a-list"></a>W tym lista
+Większość widoków projektanta widoku zawiera listę i można odtworzyć tę standardową listę w skoroszycie.
 
 ![Lista kafelków](media/view-designer-conversion-tasks/tile-list.png)
 
-Dodaj wizualizację, klikając pozycję **Dodaj zapytanie** w obszarze Opcje komórki.
+Dodaj wizualizację, klikając pozycję **Dodaj zapytanie** z opcji komórki.
 
 ![Dodaj param](media/view-designer-conversion-tasks/add-param.png)
 
-Projektant widoków korzysta z zapytania domyślnego, które jest zgodne z składnią z oryginalnego przykładu. Można to zaktualizować przez zmianę zapytania do zaktualizowanego formularza, tak jak w poniższym przykładzie:
+Projektant widoku używa kwerendy domyślnej, która pasuje do składni z oryginalnego przykładu. Można to zaktualizować, zmieniając kwerendę na zaktualizowany formularz, tak jak w poniższym przykładzie:
 
-Oryginalne zapytanie
+Oryginalna kwerenda
 ```KQL
 search * 
 | summarize AggregatedValue = count() by Type
 ```
 
-Zaktualizowane zapytanie
+Zaktualizowana kwerenda
 ```KQL
 search * 
 | summarize Count = count() by Type
 ```
 
-Spowoduje to wygenerowanie listy podobnej do następującej:
+Spowoduje to wygenerowanie listy, która wygląda podobnie do następujących:
 
 ![Przykład listy](media/view-designer-conversion-tasks/list-example.png)
 
-## <a name="enabling-sparklines"></a>Włączanie wykresów przebiegu w czasie
-Typową funkcją dla siatek jest dodanie wykresów przebiegu w celu podsumowania różnych wzorców danych w czasie. Projektant widoków oferuje funkcję **włączania wykresów przebiegu w czasie** dla wszystkich list, tak jak w przypadku skoroszytów. Aby uwzględnić wykresy przebiegu w danych, które pasują do projektanta widoków, Dołącz dane przy użyciu oryginalnego zapytania, jak w poniższym przykładzie:
+## <a name="enabling-sparklines"></a>Włączanie wykresów przebiegu w przebiegu w przebiegu
+Częstą cechą dla siatek jest dodanie wykresów przebiegu w czasie w celu podsumowania różnych wzorców danych w czasie. Projektant widoku oferuje funkcję **Włącz wykresy przebiegu w przebiegu dla** wszystkich list, podobnie jak skoroszyty. Aby uwzględnić wykresy przebiegu w przebiegu w przebiegu w przebiegu w danych, które pasują do projektanta widoku, dołącz do danych z oryginalną kwerendą, tak jak w poniższym przykładzie:
 
-Oryginalne zapytanie
+Oryginalna kwerenda
 ```KQL
 search *
 | summarize AggregatedValue = count() by Type) on Type
 ```
 
-Zaktualizowane zapytanie
+Zaktualizowana kwerenda
 ```KQL
 search * 
 | summarize AggregatedValue = count() by Type
@@ -110,48 +110,48 @@ search *
 | project Type, AggregatedValue, Trend
 ```
 
-Wybierz pozycję **Ustawienia kolumny**.
-![](media/view-designer-conversion-tasks/column-settings.png) Ustawienia kolumny
+Wybierz **pozycję Ustawienia kolumn**.
+![Ustawienia kolumny](media/view-designer-conversion-tasks/column-settings.png)
 
-Zaktualizuj listę rozwijaną **renderowania kolumn** , aby była *obszarem platformy Spark*.
-![wykresy przebiegu w czasie](media/view-designer-conversion-tasks/sparkline.png)
+Zaktualizuj listy rozwijane **modułu renderowania kolumn** jako *obszar iskierki*.
+![Sparklines](media/view-designer-conversion-tasks/sparkline.png)
 
-Zapisz ustawienia i ponownie uruchom zapytanie, aby zaktualizować tabelę w celu uwzględnienia wykresu przebiegu w czasie.
+Zapisz ustawienia i uruchom kwerendę ponownie, aby zaktualizować tabelę w celu uwzględnienia wykresu przebiegu w przebiegu w przebiegu.
 
-Siatka wyników będzie wyglądać podobnie do następującej: ![przykładu wykresu przebiegu w czasie](media/view-designer-conversion-tasks/sparkline-example.png)
+Wynikowa siatka będzie wyglądać ![podobnie do następującego: przykład wykresu przebiegu w przebiegu w przebiegu w przebiegu](media/view-designer-conversion-tasks/sparkline-example.png)
 
-## <a name="advanced-cell-settings"></a>Zaawansowane ustawienia komórki
-Aby wyświetlić widok duplikatów, można wykonywać zadania, takie jak zmiana rozmiaru komórek skoroszytu lub Dodawanie kodów PIN i linków zewnętrznych do dzienników.
+## <a name="advanced-cell-settings"></a>Zaawansowane ustawienia komórek
+Aby odblodawać odbicie lustrzane projektanta widoku, można wykonywać zadania, takie jak zmiana rozmiaru komórek skoroszytu lub dodawanie pinów i łączy zewnętrznych do dzienników.
 
-Aby uzyskać dostęp do **ustawień zaawansowanych** , wybierz ikonę koła zębatego u dołu każdej komórki.
+Aby uzyskać dostęp do **ustawień zaawansowanych,** wybierz ikonę koła zębatego u dołu każdej komórki.
 
 ![Ustawienia zaawansowane](media/view-designer-conversion-tasks/advanced-settings.png)
 
 Spowoduje to wyświetlenie menu z różnymi opcjami:
 
-![Ustawienia zaawansowane ustawień](media/view-designer-conversion-tasks/advanced-settings-settings.png)
+![Ustawienia zaawansowane](media/view-designer-conversion-tasks/advanced-settings-settings.png)
 
-Aby dodać kod PIN i link do zapytania zewnętrznego, zaznacz odpowiednie pola wyboru. Aby dodać tytuł do komórki, wpisz odpowiedni tytuł w sekcji **tytuł wykresu** .
+Aby dodać pinezkę i łącze do kwerendy zewnętrznej, zaznacz odpowiednie pola wyboru. Aby dodać tytuł do komórki, wpisz żądany tytuł w sekcji **Tytuł wykresu.**
 
-Domyślnie każda komórka skoroszytów jest ustawiana jako cała szerokość strony, ale można ją dostosować, przenosząc komórkę w dół na karcie **styl** menu **Ustawienia zaawansowane** .
+Domyślnie każda komórka skoroszytów jest ustawiona na całą szerokość strony, ale można ją dostosować, skalując komórkę w dół na karcie **Styl** w menu **Ustawienia zaawansowane**
 
 ![Styl ustawień zaawansowanych](media/view-designer-conversion-tasks/advanced-settings-style.png)
 
  
 ## <a name="additional-parameters"></a>Dodatkowe parametry
-Wybierz pozycję **Dodaj parametr** , aby utworzyć nowy parametr w skoroszycie. 
+Wybierz **pozycję Dodaj parametr,** aby utworzyć nowy parametr w skoroszycie. 
 
-Aby wybrać subskrypcję, wpisz *subskrypcję* w polu **Nazwa parametru** w menu po stronie i wybierz opcję *wybór subskrypcji* z listy rozwijanej **Typ parametru**
+Aby wybrać subskrypcję, wpisz *subskrypcję* w polu **Nazwa parametru** w menu bocznym i wybierz selektor *subskrypcji* z listy rozwijanej **Typ parametru**
 
 ![Menu subskrypcji](media/view-designer-conversion-tasks/subscription-filter.png)
 
-Aby wybrać zasób, wpisz *zasób* w polu **Nazwa parametru** w menu po stronie i wybierz pozycję *Selektor zasobów* z listy rozwijanej **Typ parametru** .
+Aby wybrać zasób, wpisz *zasób* w polu **Nazwa parametru** w menu bocznym i wybierz pozycję *Selektor zasobów* z listy rozwijanej **Typ parametru.**
 
 ![Menu zasobów](media/view-designer-conversion-tasks/resource-filter.png)
 
-Spowoduje to wstawienie list rozwijanych, aby umożliwić dostęp do różnych subskrypcji i zasobów.
+Spowoduje to wstawienie listy rozwijanej, aby umożliwić dostęp do różnych subskrypcji i zasobów.
 
-![Lista rozwijana zasobów subskrypcji](media/view-designer-conversion-tasks/subscription-resource.png)
+![Rozwijanie zasobów subskrypcji](media/view-designer-conversion-tasks/subscription-resource.png)
 
 
 ## <a name="next-steps"></a>Następne kroki

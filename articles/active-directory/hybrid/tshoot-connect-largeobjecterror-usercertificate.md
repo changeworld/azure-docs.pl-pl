@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect — błędów LargeObject spowodowanych przez atrybut userCertificate | Dokumentacja firmy Microsoft
-description: Ten temat zawiera instrukcje korygowania błędów LargeObject spowodowanych przez atrybut userCertificate.
+title: Usługa Azure AD Connect — błędy largeobject spowodowane atrybutem userCertificate | Dokumenty firmy Microsoft
+description: W tym temacie przedstawiono kroki korygowania dla błędów LargeObject spowodowanych przez atrybut userCertificate.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,169 +18,169 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62095493"
 ---
-# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizacja programu Azure AD Connect: Obsługa błędów LargeObject spowodowanych przez atrybut userCertificate
+# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizacja usługi Azure AD Connect: obsługa błędów LargeObject spowodowanych przez atrybut userCertificate
 
-Azure AD wymusza maksymalny limit wynoszący **15** certyfikatu wartości na **userCertificate** atrybutu. Jeśli program Azure AD Connect umożliwia wyeksportowanie obiektu z więcej niż 15 wartości do usługi Azure AD, usługa Azure AD zwraca **LargeObject** błąd z komunikatem:
+Usługa Azure AD wymusza maksymalny limit **15** wartości certyfikatów w atrybucie **userCertificate.** Jeśli usługa Azure AD Connect eksportuje obiekt o wartościach więcej niż 15 do usługi Azure AD, usługa Azure AD zwraca błąd **LargeObject** z komunikatem:
 
->*"Elastycznie obiektu jest zbyt duży. Ogranicz liczbę wartości atrybutu dla tego obiektu. Operacja zostanie ponowiona podczas następnego cyklu synchronizacji..."*
+>*"Obiekt aprowizacji jest za duży. Przytnij liczbę wartości atrybutów w tym obiekcie. Operacja zostanie ponowiona w następnym cyklu synchronizacji..."*
 
-Błąd LargeObject może być spowodowany przez inne atrybuty usługi AD. Aby upewnić się, w rzeczywistości jest to spowodowane przez atrybut userCertificate, należy sprawdzić przed obiektu w lokalnej usługi AD lub na [wyszukiwanie magazynu Metaverse Menedżera usługi synchronizacji](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch).
+Błąd LargeObject może być spowodowany przez inne atrybuty usługi AD. Aby potwierdzić, że jest rzeczywiście spowodowane przez userCertificate atrybut, należy sprawdzić względem obiektu albo w lokalnej ad lub w [menedżerze synchronizacji Metaverse Search](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch).
 
-Aby uzyskać listę obiektów w dzierżawie, z błędami LargeObject, użyj jednej z następujących metod:
+Aby uzyskać listę obiektów w dzierżawie z błędami LargeObject, należy użyć jednej z następujących metod:
 
- * Jeśli włączono dzierżawy usługi Azure AD Connect Health do celów synchronizacji, możesz zapoznać się z [raport o błędach synchronizacji](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync) podane.
+ * Jeśli dzierżawa jest włączona dla usługi Azure AD Connect Health do synchronizacji, można odwołać się do [raportu o błędach synchronizacji.](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync)
  
- * Powiadomienia e-mail dla błędów synchronizacji katalogu wysyłanym na końcu każdego cyklu synchronizacji zawiera listę obiektów z błędami LargeObject. 
- * [Karcie operacje Menedżera usługi synchronizacji](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations) Wyświetla listę obiektów z błędami LargeObject po kliknięciu najnowsze eksportu do operacji usługi Azure AD.
+ * Wiadomość e-mail z powiadomieniem o błędach synchronizacji katalogów, która jest wysyłana na końcu każdego cyklu synchronizacji, zawiera listę obiektów z błędami LargeObject. 
+ * Karta [Operacje programu Synchronizacja usługi Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations) wyświetla listę obiektów z błędami LargeObject po kliknięciu najnowszej operacji Eksportuj do usługi Azure AD.
  
-## <a name="mitigation-options"></a>Opcje ograniczania ryzyka
-Do momentu rozwiązania błąd LargeObject inne zmiany atrybutów ten sam obiekt nie można wyeksportować do usługi Azure AD. Aby naprawić błąd, należy wziąć pod uwagę następujące opcje:
+## <a name="mitigation-options"></a>Opcje łagodzenia zmiany klimatu
+Dopóki błąd LargeObject nie zostanie rozwiązany, inne zmiany atrybutu do tego samego obiektu nie mogą być eksportowane do usługi Azure AD. Aby rozwiązać ten błąd, można rozważyć następujące opcje:
 
- * Uaktualnij program Azure AD Connect do tworzenia w 1.1.524.0 lub po. W programie Azure AD Connect kompilacji 1.1.524.0, out-of-box synchronizacji, które zasady zostały zaktualizowanie, aby nie Eksportuj atrybutów userCertificate i userSMIMECertificate, jeśli więcej niż 15 wartości atrybutów. Aby uzyskać szczegółowe informacje o tym, jak uaktualnić program Azure AD Connect, można znaleźć w artykule [program Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
+ * Uaktualnij usługę Azure AD Connect do kompilacji 1.1.524.0 lub później. W usłudze Azure AD Connect kompilacji 1.1.524.0 reguły synchronizacji out-of-box zostały zaktualizowane, aby nie eksportować atrybuty userCertificate i userSMIMECertificate, jeśli atrybuty mają więcej niż 15 wartości. Szczegółowe informacje na temat uaktualniania usługi Azure AD Connect można znaleźć w artykule [Azure AD Connect: Uaktualnienie z poprzedniej wersji do najnowszej.](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version)
 
- * Implementowanie **reguły synchronizacji ruchu wychodzącego** w programie Azure AD Connect, które eksportuje **wartość null, wartość zamiast wartości faktycznych dla obiektów z więcej niż 15 wartości certyfikatu**. Ta opcja jest odpowiednia, jeśli nie potrzebujesz dowolna z wartości certyfikatów, które mają zostać wyeksportowane do usługi Azure AD dla obiektów z więcej niż 15 wartości. Aby uzyskać szczegółowe informacje na temat sposobu wykonania tej reguły synchronizacji, można znaleźć w następnej sekcji [Implementowanie reguły synchronizacji, aby ograniczyć eksportu atrybutu userCertificate](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute).
+ * Zaimplementuj **regułę synchronizacji wychodzącej** w usłudze Azure AD Connect, która eksportuje **wartość null zamiast rzeczywistych wartości dla obiektów o wartościach więcej niż 15 certyfikatów**. Ta opcja jest odpowiednia, jeśli nie wymaga się żadnych wartości certyfikatu, które mają być eksportowane do usługi Azure AD dla obiektów z więcej niż 15 wartości. Szczegółowe informacje na temat implementacji tej reguły synchronizacji można znaleźć w następnej sekcji [Implementowanie reguły synchronizacji w celu ograniczenia eksportu atrybutu userCertificate](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute).
 
- * Zmniejsz liczbę wartości certyfikatu dla lokalnego obiektu usługi AD (15 lub mniej), usuwając wartości, które nie są już używane przez Twoją organizację. Jest to odpowiednie, jeśli rozrostu atrybutu jest spowodowany przez certyfikaty wygasłe lub nieużywane. Możesz użyć [tutaj dostępny skrypt programu PowerShell](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f) ułatwia znalezienie kopii zapasowej i Usuń wygasłe certyfikaty w lokalnej usługi AD. Przed usunięciem certyfikaty, zalecane jest, sprawdź z administratorami infrastruktury w przypadku klucza publicznego w Twojej organizacji.
+ * Zmniejsz liczbę wartości certyfikatów w lokalnym obiekcie AD (15 lub mniej) przez usunięcie wartości, które nie są już używane przez organizację. Jest to odpowiednie, jeśli nadęcie atrybutu jest spowodowane wygasłymi lub nieużywanych certyfikatów. Skrypt programu [PowerShell dostępny w tym miejscu](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f) ułatwia znajdowanie, tworzenie kopii zapasowych i usuwanie wygasłych certyfikatów w lokalnej układzie AD. Przed usunięciem certyfikatów zaleca się sprawdzenie ich u administratorów infrastruktury kluczy publicznych w organizacji.
 
- * Skonfiguruj program Azure AD Connect, które mają zostać wykluczone atrybutu userCertificate są eksportowane do usługi Azure AD. Ogólnie rzecz biorąc zaleca się tę opcję, ponieważ atrybut może być używane Microsoft Online Services w celu włączenia określonych scenariuszy. W szczególności:
-    * Atrybut userCertificate obiektu użytkownika jest używany przez usługi Exchange Online i klientów programu Outlook komunikat podpisywania i szyfrowania. Aby dowiedzieć się więcej na temat tej funkcji, można znaleźć w artykule [S/MIME wiadomości podpisywania i szyfrowania](https://technet.microsoft.com/library/dn626158(v=exchg.150).aspx).
+ * Skonfiguruj usługę Azure AD Connect, aby wykluczyć atrybut userCertificate z eksportowania do usługi Azure AD. Ogólnie rzecz biorąc nie zaleca się tej opcji, ponieważ atrybut może być używany przez usługi Microsoft Online Services w celu włączenia określonych scenariuszy. W szczególności:
+    * Atrybut userCertificate w obiekcie User jest używany przez klientów usługi Exchange Online i Outlook do podpisywania i szyfrowania wiadomości. Aby dowiedzieć się więcej o tej funkcji, zapoznaj się z artykułem [S/MIME dotyczącymi podpisywania i szyfrowania wiadomości](https://technet.microsoft.com/library/dn626158(v=exchg.150).aspx).
 
-    * Atrybut userCertificate obiektu komputera umożliwia przez usługę Azure AD Windows 10 w środowisku lokalnym urządzeń przyłączonych do domeny, do łączenia z usługą Azure AD. Aby dowiedzieć się więcej na temat tej funkcji, przeczytaj artykuł [łączenie urządzeń przyłączonych do domeny do usługi Azure AD, dla środowisk systemu Windows 10](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy).
+    * Atrybut userCertificate w obiekcie Komputer jest używany przez usługę Azure AD, aby umożliwić lokalnym urządzeniom lokalnym połączonym z domeną system Windows 10 łączenie się z usługą Azure AD. Aby dowiedzieć się więcej o tej funkcji, zapoznaj się [z artykułem Łączenie urządzeń przyłączonych do domeny z usługą Azure AD dla środowiska systemu Windows 10](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy).
 
-## <a name="implementing-sync-rule-to-limit-export-of-usercertificate-attribute"></a>Implementowanie reguły synchronizacji, aby ograniczyć eksportu atrybutu userCertificate
-Aby rozwiązać błąd LargeObject spowodowany przez atrybut userCertificate, można zaimplementować regułę synchronizacji ruchu wychodzącego w programie Azure AD Connect, które eksportuje **wartość null, wartość zamiast wartości faktycznych dla obiektów z więcej niż 15 wartości certyfikatu**. W tej sekcji opisano kroki wymagane do wykonania dla reguły synchronizacji **użytkownika** obiektów. Kroki mogą być dostosowane do **skontaktuj się z pomocą** i **komputera** obiektów.
+## <a name="implementing-sync-rule-to-limit-export-of-usercertificate-attribute"></a>Implementowanie reguły synchronizacji w celu ograniczenia eksportu atrybutu userCertificate
+Aby rozwiązać błąd LargeObject spowodowany przez atrybut userCertificate, można zaimplementować regułę synchronizacji wychodzącej w usłudze Azure AD Connect, która eksportuje **wartość null zamiast rzeczywistych wartości dla obiektów o wartościach więcej niż 15 certyfikatów**. W tej sekcji opisano kroki wymagane do zaimplementowania reguły synchronizacji dla obiektów **użytkownika.** Kroki można dostosować do **kontaktów** i **komputer** obiektów.
 
 > [!IMPORTANT]
-> Eksportowanie wartości null powoduje usunięcie certyfikatu wartości wcześniej pomyślnie wyeksportowane do usługi Azure AD.
+> Eksportowanie wartości null powoduje usunięcie wartości certyfikatów wcześniej eksportowanych pomyślnie do usługi Azure AD.
 
 Kroki można podsumować jako:
 
-1. Wyłącz harmonogram synchronizacji i sprawdzić, czy jest brak synchronizacji w toku.
-3. Atrybut userCertificate można znaleźć w istniejącą regułę synchronizacji ruchu wychodzącego.
-4. Utwórz regułę synchronizacji ruchu wychodzącego, wymagane.
-5. Sprawdź, czy nowa reguła synchronizacji na istniejący obiekt z błędem LargeObject
-6. Zastosować nową regułę synchronizacji do pozostałych obiektów z błędami LargeObject.
-7. Sprawdź, brak nieoczekiwanych zmian oczekujących mają zostać wyeksportowane do usługi Azure AD.
-8. Wyeksportuj zmiany do usługi Azure AD.
-9. Ponownie Włącz harmonogram synchronizacji.
+1. Wyłącz harmonogram synchronizacji i sprawdź, czy nie jest synchronizacja w toku.
+3. Znajdź istniejącą regułę synchronizacji wychodzącej dla atrybutu userCertificate.
+4. Utwórz wymaganą regułę synchronizacji wychodzącej.
+5. Sprawdź nową regułę synchronizacji na istniejącym obiekcie z błędem LargeObject.
+6. Zastosuj nową regułę synchronizacji do pozostałych obiektów z błędem LargeObject.
+7. Sprawdź, czy nie ma żadnych nieoczekiwanych zmian oczekujących na wyeksportowanie do usługi Azure AD.
+8. Eksportuj zmiany do usługi Azure AD.
+9. Włącz ponownie harmonogram synchronizacji.
 
-### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Krok 1. Wyłącz harmonogram synchronizacji i sprawdzić, czy jest brak synchronizacji w toku
-Upewnij się, że synchronizacja nie ma miejsce, gdy jesteś w trakcie wdrażania nowej reguły synchronizacji, aby uniknąć niezamierzonych zmian eksportowanych do usługi Azure AD. Aby wyłączyć harmonogram synchronizacji wbudowane:
+### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Krok 1. Wyłącz harmonogram synchronizacji i sprawdź, czy nie ma synchronizacji w toku
+Upewnij się, że synchronizacja nie ma miejsca, gdy jesteś w trakcie implementowania nowej reguły synchronizacji, aby uniknąć niezamierzonych zmian eksportowanych do usługi Azure AD. Aby wyłączyć wbudowany harmonogram synchronizacji:
 1. Uruchom sesję programu PowerShell na serwerze usługi Azure AD Connect.
 
-2. Wyłącz zaplanowanej synchronizacji, uruchamiając polecenie cmdlet: `Set-ADSyncScheduler -SyncCycleEnabled $false`
+2. Wyłącz zaplanowaną synchronizację, uruchamiając polecenie cmdlet:`Set-ADSyncScheduler -SyncCycleEnabled $false`
 
 > [!Note]
-> Te czynności mają zastosowanie tylko wtedy do nowszej wersji (1.1.xxx.x) programu Azure AD Connect za pomocą wbudowanych harmonogramu. Jeśli używasz starszej wersji (1.0.xxx.x) programu Azure AD Connect, który używa harmonogramu zadań Windows lub własny niestandardowy harmonogram (nie jest to częsty) używają do wyzwolenia okresowej synchronizacji, należy odpowiednio je wyłączyć.
+> Powyższe kroki mają zastosowanie tylko do nowszych wersji (1.1.xxx.x) usługi Azure AD Connect z wbudowanym harmonogramem. Jeśli używasz starszych wersji (1.0.xxx.x) usługi Azure AD Connect, która używa harmonogramu zadań systemu Windows lub używasz własnego harmonogramu niestandardowego (nie często) do wyzwalania okresowej synchronizacji, należy je odpowiednio wyłączyć.
 
-1. Rozpocznij **Menedżera usługi synchronizacji** , przechodząc do rozpoczęcia → usługi synchronizacji.
+1. Uruchom **Menedżera usług synchronizacji,** przechodząc do START → Usługa synchronizacji.
 
-1. Przejdź do **operacji** kartę i upewnij się, brak żadnej operacji, których stan to *"w"toku.*
+1. Przejdź do karty **Operacje** i upewnij się, że nie ma żadnej operacji, której stan jest *"w toku".*
 
-### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Krok 2. Znajdź istniejącą regułę synchronizacji ruchu wychodzącego dla atrybutu userCertificate
-Powinna to być istniejącą regułę synchronizacji, która jest włączone i skonfigurowane do wyeksportowania certyfikatu użytkownika atrybutu dla obiektów użytkowników do usługi Azure AD. Odszukaj tę regułę synchronizacji, aby dowiedzieć się, jego **pierwszeństwo** i **filtru określania zakresu** konfiguracji:
+### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Krok 2. Znajdowanie istniejącej reguły synchronizacji wychodzącej dla atrybutu userCertificate
+Powinna istnieć istniejąca reguła synchronizacji, która jest włączona i skonfigurowana do eksportowania atrybutu userCertificate dla obiektów użytkownika do usługi Azure AD. Znajdź tę regułę synchronizacji, aby dowiedzieć się, że jej **konfiguracja filtru pierwszeństwa** i **zakresu:**
 
-1. Rozpocznij **Synchronization Rules Editor** , przechodząc do rozpoczęcia → Synchronization Rules Editor.
+1. Uruchom **Edytor reguł synchronizacji,** przechodząc do START → Edytor reguł synchronizacji.
 
-2. Konfigurowanie filtrów wyszukiwania, z następującymi wartościami:
+2. Skonfiguruj filtry wyszukiwania z następującymi wartościami:
 
     | Atrybut | Wartość |
     | --- | --- |
-    | Direction |**Wychodzące** |
-    | Typ obiektu MV |**Osoby** |
-    | Łącznik |*Nazwa łącznika usługi Azure AD* |
-    | Typ obiektu łącznika |**Użytkownik** |
+    | Kierunek |**Wychodzący** |
+    | Typ obiektu MV |**Person (Osoba)** |
+    | Łącznik |*nazwa łącznika usługi Azure AD* |
+    | Typ obiektu łącznika |**Użytkownika** |
     | Atrybut MV |**userCertificate** |
 
-3. Jeśli używasz OOB reguły synchronizacji (out-of-box) do łącznika usługi Azure AD można wyeksportować userCertficiate atrybutu dla obiektów użytkowników, należy uzyskać ponownie *"Się do usługi AAD — użytkownik ExchangeOnline"* reguły.
-4. Zanotuj **pierwszeństwo** wartość ta reguła synchronizacji.
-5. Wybierz regułę synchronizacji, a następnie kliknij przycisk **Edytuj**.
-6. W *"Edytuj zarezerwowanych reguły Confirmation"* wyskakujące okno dialogowe, kliknij przycisk **nie**. (Nie martw się, nie będziemy wprowadzać zmian tej reguły synchronizacji).
-7. Na ekranie edycji wybierz **filtru Scoping** kartę.
-8. Zanotuj wartości zakresu konfiguracji filtru. Jeśli używane są reguły synchronizacji OOB, powinien dokładnie istnieć **jedna grupa filtrów określania zakresu zawierające dwóch klauzul**, w tym:
+3. Jeśli używasz reguł synchronizacji OOB (out-of-box) do łącznika usługi Azure AD do eksportowania atrybutu userCertficiate dla obiektów użytkownika, należy przywrócić regułę *"Out to AAD — User ExchangeOnline".*
+4. Zanotuj wartość **pierwszeństwa** tej reguły synchronizacji.
+5. Wybierz regułę synchronizacji i kliknij przycisk **Edytuj**.
+6. W oknie podręcznym *"Edytuj potwierdzenie reguły zarezerwowanej"* kliknij przycisk **Nie**. (Nie martw się, nie zamierzamy wprowadzać żadnych zmian w tej regule synchronizacji).
+7. Na ekranie edycji wybierz kartę **Filtr zakresu.**
+8. Zanotuj konfigurację filtru zakresu. Jeśli używasz reguły synchronizacji OOB, powinna istnieć dokładnie **jedna grupa filtrów zakresu zawierająca dwie klauzule,** w tym:
 
     | Atrybut | Operator | Wartość |
     | --- | --- | --- |
-    | sourceObjectType | RÓWNA SIĘ | Użytkownik |
-    | cloudMastered | NOTEQUAL | True |
+    | SourceObjectType | Równe | Użytkownik |
+    | chmuraMastered | NOTEQUAL (100) | True |
 
-### <a name="step-3-create-the-outbound-sync-rule-required"></a>Krok 3. Utwórz regułę synchronizacji ruchu wychodzącego, wymagane
-Nowa reguła synchronizacji musi mieć taką samą **filtru określania zakresu** i **wyższy priorytet** niż istniejące reguły synchronizacji. Gwarantuje to, że nowa reguła synchronizacji ma zastosowanie do tego samego zestawu obiektów jako istniejącą regułę synchronizacji i zastępuje istniejącą regułę synchronizacji dla atrybutu userCertificate. Aby utworzyć regułę synchronizacji:
-1. Za pomocą edytora reguł synchronizacji, kliknij przycisk **Dodaj nową regułę** przycisku.
-2. W obszarze **kartę opis**, podaj następującą konfigurację:
+### <a name="step-3-create-the-outbound-sync-rule-required"></a>Krok 3. Tworzenie wymaganej reguły synchronizacji wychodzącej
+Nowa reguła synchronizacji musi mieć ten sam **filtr zakresu** i **wyższy priorytet** niż istniejąca reguła synchronizacji. Gwarantuje to, że nowa reguła synchronizacji ma zastosowanie do tego samego zestawu obiektów co istniejąca reguła synchronizacji i zastępuje istniejącą regułę synchronizacji dla atrybutu userCertificate. Aby utworzyć regułę synchronizacji:
+1. W Edytorze reguł synchronizacji kliknij przycisk **Dodaj nową regułę.**
+2. W **zakładce Opis**podaj następującą konfigurację:
 
     | Atrybut | Wartość | Szczegóły |
     | --- | --- | --- |
-    | Name (Nazwa) | *Podaj nazwę* | Np. *"Się do usługi AAD — niestandardowe przesłonięcia dla certyfikatu użytkownika"* |
-    | Opis | *Podaj opis* | Np. *"Jeśli atrybut userCertificate ma więcej niż 15 wartości, Eksportuj NULL".* |
-    | Połączonego systemu | *Wybierz łącznik usługi Azure AD* |
-    | Połączony System typu obiektu | **Użytkownik** | |
-    | Typ obiektu Metaverse | **Osoby** | |
-    | Typ łącza | **Join** | |
-    | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 do 99* | Wybrana liczba nie mogą być używane przez istniejące reguły synchronizacji i ma niższą wartość (i w związku z tym, wyższy priorytet) niż istniejące reguły synchronizacji. |
+    | Nazwa | *Podaj nazwę* | Np., *"Out to AAD - Niestandardowe zastąpienie dla userCertificate"* |
+    | Opis | *Podaj opis* | Na przykład *"Jeśli atrybut userCertificate ma więcej niż 15 wartości, eksportuj wartość NULL."* |
+    | Podłączony system | *Wybieranie łącznika usługi Azure AD* |
+    | Typ obiektu systemu podłączonego | **Użytkownika** | |
+    | Typ obiektu Metaverse | **Osoba** | |
+    | Typ łącza | **Dołącz** | |
+    | Pierwszeństwo | *Wybierz liczbę z 1 do 99* | Wybrana liczba nie może być używana przez żadną istniejącą regułę synchronizacji i ma niższą wartość (a zatem wyższy priorytet) niż istniejąca reguła synchronizacji. |
 
-3. Przejdź do **filtru Scoping** kartę i wdrożenie tego samego filtru określania zakresu używa istniejącej reguły synchronizacji.
-4. Pomiń **Dołącz zasady** kartę.
-5. Przejdź do **przekształcenia** kartę, aby dodać nowe przekształcenia przy użyciu następujących konfiguracji:
+3. Przejdź do karty **Filtr zakresu** i zaimplementuj ten sam filtr zakresu, z który korzysta istniejąca reguła synchronizacji.
+4. Pomiń kartę **Reguły dołączania.**
+5. Przejdź do karty **Przekształcenia,** aby dodać nową transformację przy użyciu następującej konfiguracji:
 
     | Atrybut | Wartość |
     | --- | --- |
-    | Typ przepływu |**Expression** |
+    | Typ przepływu |**Wyrażenie** |
     | Atrybut docelowy |**userCertificate** |
-    | Atrybut źródłowy |*Użyj następującego wyrażenia*: `IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
+    | Atrybut źródłowy |*Użyj następującego wyrażenia:*`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     
-6. Kliknij przycisk **Dodaj** przycisk, aby utworzyć regułę synchronizacji.
+6. Kliknij przycisk **Dodaj,** aby utworzyć regułę synchronizacji.
 
-### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>Krok 4. Sprawdź nową regułę synchronizacji na istniejący obiekt z błędem LargeObject
-To, aby sprawdzić, czy reguła synchronizacji utworzona działa poprawnie na istniejący obiekt AD błąd LargeObject przed zastosowaniem do innych obiektów:
-1. Przejdź do **operacji** kartę w Menedżerze usługi synchronizacji.
-2. Wybierz najbardziej aktualną eksportu do operacji usługi Azure AD i kliknij jeden z obiektów z błędami LargeObject.
-3.  Na ekranie podręczne właściwości obiektu obszaru łącznika kliknij **Podgląd** przycisku.
-4. Na ekranie wyskakujące (wersja zapoznawcza) wybierz **pełnej synchronizacji** i kliknij przycisk **zatwierdzenia w wersji zapoznawczej**.
-5. Zamknij ekran (wersja zapoznawcza) i ekran właściwości obiektu obszaru łącznika.
-6. Przejdź do **łączników** kartę w Menedżerze usługi synchronizacji.
-7. Kliknij prawym przyciskiem myszy **usługi Azure AD** łącznika, a następnie wybierz pozycję **uruchamianie...**
-8. W oknie podręcznym uruchomienia łącznika wybierz **wyeksportować** krok, a następnie kliknij przycisk **OK**.
-9. Poczekaj, aż eksportu do usługi Azure AD, aby zakończyć i upewnij się, że nie ma więcej LargeObject błędów dla tego określonego obiektu.
+### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>Krok 4. Weryfikowanie nowej reguły synchronizacji istniejącego obiektu za pomocą błędu LargeObject
+Ma to na celu sprawdzenie, czy utworzona reguła synchronizacji działa poprawnie na istniejącym obiekcie AD z błędem LargeObject przed zastosowaniem go do innych obiektów:
+1. Przejdź do karty **Operacje** w Menedżerze usług synchronizacji.
+2. Wybierz najnowszą operację Eksportuj do usługi Azure AD i kliknij jeden z obiektów z błędami LargeObject.
+3.  Na ekranie podręcznym Właściwości obiektu obszaru łącznika kliknij przycisk **Podgląd.**
+4. Na ekranie podręcznym Podgląd wybierz pozycję **Pełna synchronizacja** i kliknij pozycję **Podgląd zatwierdzania**.
+5. Zamknij ekran Podgląd i ekran Właściwości obiektu obszaru łącznika.
+6. Przejdź do karty **Łączniki** w Menedżerze usług synchronizacji.
+7. Kliknij prawym przyciskiem myszy łącznik **usługi Azure AD** i wybierz polecenie **Uruchom...**
+8. W wyskakującym okienku Uruchom łącznik wybierz krok **Eksportuj** i kliknij przycisk **OK**.
+9. Poczekaj na export do usługi Azure AD, aby zakończyć i upewnij się, że nie ma więcej LargeObject błąd na tym określonym obiekcie.
 
-### <a name="step-5-apply-the-new-sync-rule-to-remaining-objects-with-largeobject-error"></a>Krok 5. Zastosować nową regułę synchronizacji do pozostałych obiektów z błędami LargeObject
-Po dodaniu reguły synchronizacji, musisz uruchomić kroku Pełna synchronizacja w łączniku usługi AD:
-1. Przejdź do **łączników** kartę w Menedżerze usługi synchronizacji.
-2. Kliknij prawym przyciskiem myszy **AD** łącznika, a następnie wybierz pozycję **uruchamianie...**
-3. W oknie podręcznym uruchomienia łącznika wybierz **pełną synchronizację** krok, a następnie kliknij przycisk **OK**.
-4. Poczekaj, aż kroku pełnej synchronizacji, aby ukończyć.
-5. Powtórz powyższe kroki dla pozostałych łączników usługi AD, jeśli masz więcej niż jedną łączników usługi AD. Wiele łączników są zazwyczaj wymagane, jeśli masz wiele katalogów lokalnych.
+### <a name="step-5-apply-the-new-sync-rule-to-remaining-objects-with-largeobject-error"></a>Krok 5. Stosowanie nowej reguły synchronizacji do pozostałych obiektów z błędem LargeObject
+Po dodaniu reguły synchronizacji należy uruchomić pełny krok synchronizacji na łączniku usługi AD:
+1. Przejdź do karty **Łączniki** w Menedżerze usług synchronizacji.
+2. Kliknij prawym przyciskiem myszy łącznik **usługi AD** i wybierz polecenie **Uruchom...**
+3. W wyskakującym okienku Uruchom łącznik wybierz krok **Pełna synchronizacja** i kliknij przycisk **OK**.
+4. Poczekaj na zakończenie kroku pełnej synchronizacji.
+5. Powtórz powyższe kroki dla pozostałych łączników usługi AD, jeśli masz więcej niż jeden łącznik usługi AD. Zazwyczaj wiele łączników są wymagane, jeśli masz wiele katalogów lokalnych.
 
-### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>Krok 6. Nie występują żadne nieoczekiwanych zmian oczekujących mają zostać wyeksportowane do usługi Azure AD
-1. Przejdź do **łączników** kartę w Menedżerze usługi synchronizacji.
-2. Kliknij prawym przyciskiem myszy **usługi Azure AD** łącznika, a następnie wybierz pozycję **wyszukiwania obszaru łącznika**.
-3. W oknie podręcznym wyszukiwania obszaru łącznika:
-    1. Ustaw zakres na **operacja eksportowania oczekująca**.
-    2. Sprawdź wszystkie 3 pola wyboru, w tym **Dodaj**, **Modyfikuj** i **Usuń**.
-    3. Kliknij przycisk **wyszukiwania** przycisk, aby zwrócić wszystkie obiekty za pomocą zmian oczekujących mają zostać wyeksportowane do usługi Azure AD.
-    4. Sprawdź, czy występują nieoczekiwane zmiany. Aby sprawdzić zmiany dla danego obiektu, kliknij dwukrotnie obiekt.
+### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>Krok 6. Sprawdź, czy nie ma nieoczekiwanych zmian oczekujących na wyeksportowanie do usługi Azure AD
+1. Przejdź do karty **Łączniki** w Menedżerze usług synchronizacji.
+2. Kliknij prawym przyciskiem myszy łącznik **usługi Azure AD** i wybierz pozycję Obszar **łącznika wyszukiwania**.
+3. W wyskakującym okienku Obszar łącznika wyszukiwania:
+    1. Ustaw zakres **na Oczekujące na Eksport**.
+    2. Zaznacz wszystkie 3 pola wyboru, w tym **Dodaj,** **Modyfikuj** i **Usuń**.
+    3. Kliknij przycisk **Wyszukaj,** aby zwrócić wszystkie obiekty ze zmianami oczekującymi na wyeksportowanie do usługi Azure AD.
+    4. Sprawdź, czy nie ma żadnych nieoczekiwanych zmian. Aby sprawdzić zmiany dla danego obiektu, kliknij dwukrotnie obiekt.
 
-### <a name="step-7-export-the-changes-to-azure-ad"></a>Krok 7. Eksportuj zmiany do usługi Azure AD
+### <a name="step-7-export-the-changes-to-azure-ad"></a>Krok 7. Eksportowanie zmian do usługi Azure AD
 Aby wyeksportować zmiany do usługi Azure AD:
-1. Przejdź do **łączników** kartę w Menedżerze usługi synchronizacji.
-2. Kliknij prawym przyciskiem myszy **usługi Azure AD** łącznika, a następnie wybierz pozycję **uruchamianie...**
-4. W oknie podręcznym uruchomienia łącznika wybierz **wyeksportować** krok, a następnie kliknij przycisk **OK**.
-5. Poczekaj, aż eksportu do usługi Azure AD, aby zakończyć i upewnij się, że nie ma żadnych więcej błędów LargeObject.
+1. Przejdź do karty **Łączniki** w Menedżerze usług synchronizacji.
+2. Kliknij prawym przyciskiem myszy łącznik **usługi Azure AD** i wybierz polecenie **Uruchom...**
+4. W wyskakującym okienku Uruchom łącznik wybierz krok **Eksportuj** i kliknij przycisk **OK**.
+5. Poczekaj na export do usługi Azure AD, aby zakończyć i upewnij się, że nie ma więcej largeobject błędy.
 
-### <a name="step-8-re-enable-sync-scheduler"></a>Krok 8. Ponownie Włącz harmonogram synchronizacji
-Teraz, gdy problem zostanie rozwiązany, ponownie włączyć harmonogram synchronizacji wbudowane:
-1. Uruchom sesję programu PowerShell.
-2. Ponownie włączyć zaplanowanej synchronizacji, uruchamiając polecenie cmdlet: `Set-ADSyncScheduler -SyncCycleEnabled $true`
+### <a name="step-8-re-enable-sync-scheduler"></a>Krok 8. Ponowne włączanie harmonogramu synchronizacji
+Teraz, gdy problem został rozwiązany, ponownie włącz wbudowany harmonogram synchronizacji:
+1. Uruchamianie sesji programu PowerShell.
+2. Ponownie włącz zaplanowaną synchronizację, uruchamiając polecenie cmdlet:`Set-ADSyncScheduler -SyncCycleEnabled $true`
 
 > [!Note]
-> Te czynności mają zastosowanie tylko wtedy do nowszej wersji (1.1.xxx.x) programu Azure AD Connect za pomocą wbudowanych harmonogramu. Jeśli używasz starszej wersji (1.0.xxx.x) programu Azure AD Connect, który używa harmonogramu zadań Windows lub własny niestandardowy harmonogram (nie jest to częsty) używają do wyzwolenia okresowej synchronizacji, należy odpowiednio je wyłączyć.
+> Powyższe kroki mają zastosowanie tylko do nowszych wersji (1.1.xxx.x) usługi Azure AD Connect z wbudowanym harmonogramem. Jeśli używasz starszych wersji (1.0.xxx.x) usługi Azure AD Connect, która używa harmonogramu zadań systemu Windows lub używasz własnego harmonogramu niestandardowego (nie często) do wyzwalania okresowej synchronizacji, należy je odpowiednio wyłączyć.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej na temat [integrowania tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md).
 

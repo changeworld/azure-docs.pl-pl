@@ -12,10 +12,10 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shg
 ms.openlocfilehash: c112fb0b2d0eb3b8a66731948f48c8038a2296f8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023654"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Wprowadzenie do zestawu SDK usługi Batch dla środowiska Node.js
@@ -43,7 +43,7 @@ Klient Node.js wdraża zadanie wsadowe wraz z zadaniem podrzędnym przygotowania
 
 > [!TIP]
 > Klient Node.js w podanym linku nie zawiera konkretnego kodu, który można wdrożyć jako aplikację funkcji platformy Azure. Użyj następujących linków, aby zapoznać się z instrukcjami tworzenia kodu.
-> - [Create function app](../azure-functions/functions-create-first-azure-function.md) (Tworzenie aplikacji funkcji)
+> - [Tworzenie aplikacji funkcji](../azure-functions/functions-create-first-azure-function.md)
 > - [Create timer trigger function](../azure-functions/functions-bindings-timer.md) (Tworzenie funkcji wyzwalanej czasomierzem)
 >
 >
@@ -67,7 +67,7 @@ To polecenie instaluje najnowszą wersję zestawu Node SDK usługi Azure Batch.
 
 ### <a name="step-2-create-an-azure-batch-account"></a>Krok 2. Tworzenie konta usługi Azure Batch
 
-Można go utworzyć za pomocą [Azure Portal](batch-account-create-portal.md) lub z wiersza polecenia ([POWERSHELL](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)).
+Można go utworzyć z [witryny Azure portal](batch-account-create-portal.md) lub z wiersza polecenia ([PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)).
 
 Poniżej przedstawiono polecenia, które umożliwiają utworzenie konta za pomocą interfejsu wiersza polecenia platformy Azure.
 

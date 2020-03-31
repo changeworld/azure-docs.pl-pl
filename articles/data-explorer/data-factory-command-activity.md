@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z poleceń sterowania Eksplorator danych platformy Azure w programie Azure Data Factory
-description: W tym temacie Użyj poleceń sterowania Eksplorator danych platformy Azure w programie Azure Data Factory
+title: Używanie poleceń sterujących usługi Azure Data Explorer w fabryce danych platformy Azure
+description: W tym temacie użyj poleceń sterowania Usługi Azure Data Explorer w usłudze Azure Data Factory
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,89 +9,89 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.openlocfilehash: 20da2d54ea54674656b2c1006d094c63133baf79
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72264492"
 ---
-# <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Użyj działania Azure Data Factory polecenia, aby uruchomić polecenia usługi Azure Eksplorator danych Control
+# <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Uruchamianie poleceń sterujących usługi Azure Data Explorer za pomocą działania polecenia usługi Azure Data Factory
 
-[Azure Data Factory](/azure/data-factory/) (ADF) to oparta na chmurze usługa integracji danych, która umożliwia wykonywanie kombinacji działań na danych. Użyj podajnika APD do tworzenia przepływów pracy opartych na danych na potrzeby organizowania i automatyzowania przenoszenia i przekształcania danych. Działanie **polecenia platformy azure Eksplorator danych** w Azure Data Factory umożliwia uruchamianie [poleceń sterowania Eksplorator danych platformy Azure](/azure/kusto/concepts/#control-commands) w ramach przepływu pracy usługi ADF. W tym artykule przedstawiono sposób tworzenia potoku za pomocą działania Lookup i działania ForEach zawierającego działanie polecenia platformy Azure Eksplorator danych.
+[Usługa Azure Data Factory](/azure/data-factory/) (ADF) to usługa integracji danych oparta na chmurze, która umożliwia wykonywanie kombinacji działań na danych. Za pomocą podajnika ADF można tworzyć przepływy pracy oparte na danych do organizowania i automatyzacji przenoszenia danych i przekształcania danych. Działanie **polecenia usługi Azure Data Explorer** w usłudze Azure Data Factory umożliwia [uruchamianie poleceń sterujących usługi Azure Data Explorer](/azure/kusto/concepts/#control-commands) w ramach przepływu pracy usługi ADF. W tym artykule dowiesz się, jak utworzyć potok z działaniem odnośnika i forEach działania zawierające działanie polecenia Usługi Azure Data Explorer.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
-* [Klaster Eksplorator danych i baza danych platformy Azure](create-cluster-database-portal.md)
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
+* [Klaster i baza danych usługi Azure Data Explorer](create-cluster-database-portal.md)
 * Źródło danych.
 * [Fabryka danych](data-factory-load-data.md#create-a-data-factory)
 
 ## <a name="create-a-new-pipeline"></a>Tworzenie nowego potoku
 
-1. Wybierz narzędzie **autor** ołówka. 
-1. Utwórz nowy potok, wybierając **+** , a następnie wybierz pozycję **potok** z listy rozwijanej.
+1. Wybierz narzędzie **Autor** ołówka. 
+1. Utwórz nowy potok, **+** wybierając, a następnie wybierz **potok** z listy rozwijanej.
 
-   ![Utwórz nowy potok](media/data-factory-command-activity/create-pipeline.png)
+   ![tworzenie nowego potoku](media/data-factory-command-activity/create-pipeline.png)
 
-## <a name="create-a-lookup-activity"></a>Tworzenie działania wyszukiwania
+## <a name="create-a-lookup-activity"></a>Tworzenie działania odnośnika
 
-[Działanie Lookup](/azure/data-factory/control-flow-lookup-activity) może pobrać zestaw danych ze wszystkich obsługiwanych przez Azure Data Factory źródeł danych. Dane wyjściowe działania Lookup mogą być używane w działaniu ForEach lub innym.
+[Działanie odnośnika](/azure/data-factory/control-flow-lookup-activity) można pobrać zestaw danych z dowolnego źródła danych obsługiwanych przez usługę Azure Data Factory. Dane wyjściowe z działania odnośnika mogą być używane w ForEach lub inne działanie.
 
-1. W okienku **działania** w obszarze **Ogólne**wybierz działanie **Wyszukiwanie** . Przeciągnij i upuść je do głównej kanwy po prawej stronie.
+1. W okienku **Działania** w obszarze **Ogólne**wybierz aktywność **odnośnika.** Przeciągnij i upuść go do głównego płótna po prawej stronie.
  
-    ![Wybierz działanie Lookup](media/data-factory-command-activity/select-activity.png)
+    ![wybieranie działania odnośnika](media/data-factory-command-activity/select-activity.png)
 
-1. Kanwa zawiera teraz utworzone działanie Lookup. Użyj kart poniżej kanwy, aby zmienić wszystkie odpowiednie parametry. **Ogólnie**rzecz biorąc, Zmień nazwę działania. 
+1. Kanwa zawiera teraz utworzone działanie odnośnika. Użyj kart pod kanwą, aby zmienić odpowiednie parametry. **Ogólnie rzecz biorąc**, zmień nazwę działania. 
 
-    ![Edytuj działanie Lookup](media/data-factory-command-activity/edit-lookup-activity.PNG)
+    ![edytowanie aktywności odnośnika](media/data-factory-command-activity/edit-lookup-activity.PNG)
 
     > [!TIP]
-    > Kliknij pusty obszar kanwy, aby wyświetlić właściwości potoku. Użyj karty **Ogólne** , aby zmienić nazwę potoku. Nasz potok nosi nazwę *potok-4-docs*.
+    > Kliknij pusty obszar kanwy, aby wyświetlić właściwości potoku. Użyj **ogólne** kartę, aby zmienić nazwę potoku. Nasz rurociąg nosi nazwę *pipeline-4-docs*.
 
-### <a name="create-an-azure-data-explorer-dataset-in-lookup-activity"></a>Tworzenie zestawu danych Eksplorator danych platformy Azure w działaniu Lookup
+### <a name="create-an-azure-data-explorer-dataset-in-lookup-activity"></a>Tworzenie zestawu danych Usługi Azure Data Explorer w działaniu odnośnym
 
-1. W obszarze **Ustawienia**Wybierz wstępnie utworzony **źródłowy zestaw danych**platformy Azure Eksplorator danych lub wybierz pozycję **+ Nowy** , aby utworzyć nowy zestaw danych.
+1. W **obszarze Ustawienia**wybierz wstępnie utworzony zestaw danych usługi Azure Data Explorer **Source**lub wybierz pozycję **+ Nowy,** aby utworzyć nowy zestaw danych.
  
-    ![Dodaj zestaw danych w ustawieniach wyszukiwania](media/data-factory-command-activity/lookup-settings.png)
+    ![dodawanie zestawu danych w ustawieniach odnośnych](media/data-factory-command-activity/lookup-settings.png)
 
-1. Wybierz zestaw danych **Eksplorator danych platformy Azure (Kusto)** z okna **nowego zestawu danych** . Wybierz pozycję **Kontynuuj** , aby dodać nowy zestaw danych.
+1. Wybierz zestaw danych **Usługi Azure Data Explorer (Kusto)** z okna Nowy zestaw **danych.** Wybierz **pozycję Kontynuuj,** aby dodać nowy zestaw danych.
 
-   ![Wybierz nowy zestaw danych](media/data-factory-command-activity/select-new-dataset.png) 
+   ![wybieranie nowego zestawu danych](media/data-factory-command-activity/select-new-dataset.png) 
 
-1. Nowe parametry zestawu danych usługi Azure Eksplorator danych są widoczne w **ustawieniach**. Aby zaktualizować parametry, wybierz pozycję **Edytuj**.
+1. Nowe parametry zestawu danych Usługi Azure Data Explorer są widoczne w **ustawieniach**. Aby zaktualizować parametry, wybierz pozycję **Edytuj**.
 
-    ![Ustawienia wyszukiwania za pomocą zestawu danych usługi Azure Eksplorator danych](media/data-factory-command-activity/lookup-settings-with-adx-dataset.png)
+    ![ustawienia wyszukiwania z zestawem danych Usługi Azure Data Explorer](media/data-factory-command-activity/lookup-settings-with-adx-dataset.png)
 
-1. Na głównej kanwie zostanie otwarta nowa karta **AzureDataExplorerTable** . 
-    * Wybierz pozycję **Ogólne** i Edytuj nazwę zestawu danych. 
-    * Wybierz pozycję **połączenie** , aby edytować właściwości zestawu danych. 
-    * Wybierz **połączoną usługę** z listy rozwijanej lub wybierz pozycję **+ Nowa** , aby utworzyć nową połączoną usługę.
+1. **AzureDataExplorerTable** nowa karta otwiera się w głównym kanwy. 
+    * Wybierz **pozycję Ogólne** i edytuj nazwę zestawu danych. 
+    * Wybierz **opcję Połączenie,** aby edytować właściwości zestawu danych. 
+    * Wybierz **usługę połączona** z listy rozwijanej lub wybierz **+ Nowy,** aby utworzyć nową usługę połączona.
 
-    ![Edytuj właściwości zestawu danych Eksplorator danych platformy Azure](media/data-factory-command-activity/adx-dataset-properties-edit-connections.png)
+    ![Edytowanie właściwości zestawu danych Usługi Azure Data Explorer](media/data-factory-command-activity/adx-dataset-properties-edit-connections.png)
 
-1. Podczas tworzenia nowej połączonej usługi zostanie otwarta strona **Nowa połączona usługa (Azure Eksplorator danych)** :
+1. Podczas tworzenia nowej połączonej usługi zostanie otwarta strona **Nowa usługa połączona (Azure Data Explorer):**
 
-    ![ADX nową połączoną usługę](media/data-factory-command-activity/adx-new-linked-service.png)
+    ![Nowa usługa połączona adx](media/data-factory-command-activity/adx-new-linked-service.png)
 
-   * Wybierz **nazwę** połączonej usługi Azure Eksplorator danych. W razie konieczności Dodaj **Opis** .
-   * W obszarze **Połącz za pośrednictwem środowiska Integration Runtime**Zmień bieżące ustawienia, jeśli jest to potrzebne. 
-   * W obszarze **Metoda wyboru konta** wybierz klaster przy użyciu jednej z dwóch metod: 
-        * Wybierz przycisk radiowy **z subskrypcji platformy Azure** i wybierz konto **subskrypcji platformy Azure** . Następnie wybierz **klaster**. Należy zauważyć, że lista rozwijana będzie dotyczyć tylko klastrów należących do użytkownika.
-        * Zamiast tego wybierz pozycję **wprowadź ręcznie** przycisk radiowy, a następnie wprowadź **punkt końcowy** (adres URL klastra).
+   * Wybierz **nazwę** usługi połączonej z Eksploratorem danych platformy Azure. W razie potrzeby dodaj **opis.**
+   * W **obszarze Połącz za pośrednictwem środowiska uruchomieniowego integracji,** w razie potrzeby zmień bieżące ustawienia. 
+   * W **opcji Wyboru konta** wybierz klaster przy użyciu jednej z dwóch metod: 
+        * Wybierz przycisk opcji **z subskrypcji platformy Azure** i wybierz swoje konto subskrypcji platformy **Azure.** Następnie wybierz **klaster**. Należy zauważyć, że lista rozwijana będzie tylko lista klastrów, które należą do użytkownika.
+        * Zamiast tego wybierz pozycję Wprowadź przycisk opcji **ręcznej** i wprowadź **punkt końcowy** (adres URL klastra).
     * Określ **dzierżawcę**.
-    * Wprowadź **Identyfikator jednostki usługi**. Identyfikator podmiotu zabezpieczeń musi mieć odpowiednie uprawnienia, zgodnie z poziomem uprawnień wymaganym przez używane polecenie.
-    * Wybierz przycisk **klucz jednostki usługi** i wprowadź **klucz jednostki usługi**.
-    * Wybierz **bazę danych** z menu rozwijanego. Alternatywnie wybierz opcję **Edytuj** pole wyboru i wprowadź nazwę bazy danych.
-    * Wybierz pozycję **Testuj połączenie** , aby przetestować utworzone połączenie połączonej usługi. Jeśli można nawiązać połączenie z instalatorem, zostanie wyświetlone zielonego **znacznika wyboru.**
-    * Wybierz pozycję **Zakończ** , aby ukończyć tworzenie połączonej usługi.
+    * Wprowadź **identyfikator jednostki usługi**. Identyfikator jednostki musi mieć odpowiednie uprawnienia, zgodnie z poziomem uprawnień wymaganym przez używane polecenie.
+    * Wybierz przycisk **klucza głównego usługi** i wprowadź **klucz główny usługi**.
+    * Wybierz **bazę danych** z menu rozwijanego. Alternatywnie zaznacz pole wyboru **Edytuj** i wprowadź nazwę bazy danych.
+    * Wybierz **opcję Testuj połączenie,** aby przetestować utworzone połączenie połączonej usługi. Jeśli można połączyć się z konfiguracją, pojawi się zielony znacznik wyboru **Połączenie powiodło.**
+    * Wybierz **zakończ,** aby zakończyć tworzenie połączonej usługi.
 
-1. Po skonfigurowaniu połączonej usługi w **AzureDataExplorerTable** > **połączenie**należy dodać nazwę **tabeli** . Wybierz pozycję **Podgląd danych**, aby upewnić się, że dane są poprawnie wyświetlane.
+1. Po skonfigurowaniu połączonej usługi w **usłudze AzureDataExplorerTable** > **Connection**dodaj nazwę **tabeli.** Wybierz **opcję Podgląd danych**, aby upewnić się, że dane są poprawnie prezentowane.
 
-   Zestaw danych jest teraz gotowy i możesz kontynuować edytowanie potoku.
+   Zestaw danych jest już gotowy i można kontynuować edycję potoku.
 
-### <a name="add-a-query-to-your-lookup-activity"></a>Dodawanie zapytania do działania wyszukiwania
+### <a name="add-a-query-to-your-lookup-activity"></a>Dodawanie kwerendy do aktywności odnośnika
 
-1. W obszarze **potok-4-docs** > **Ustawienia** Dodaj zapytanie w polu tekstowym **zapytania** , na przykład:
+1. W**ustawieniach** **pipeline-4-docs** > dodaj kwerendę w polu tekstowym **kwerendy,** na przykład:
 
     ```kusto
     ClusterQueries
@@ -99,39 +99,39 @@ ms.locfileid: "72264492"
     | summarize count() by Database
     ```
 
-1. W razie konieczności zmień właściwości **limit czasu zapytania** lub **bez obcinania** i **pierwszego wiersza** . W tym przepływie utrzymujemy domyślny **limit czasu zapytania** i usuń zaznaczenie pól wyboru. 
+1. W razie potrzeby zmień limit **czasu kwerendy** lub **Brak obcinania** i **Tylko pierwszy wiersz.** W tym przepływie zachowujemy domyślny **limit czasu kwerendy** i wyczyść zaznaczenie pól wyboru. 
 
-    ![Ustawienia końcowe działania Lookup](media/data-factory-command-activity/lookup-activity-final-settings.png)
+    ![Ostateczne ustawienia aktywności odnośnika](media/data-factory-command-activity/lookup-activity-final-settings.png)
 
-## <a name="create-a-for-each-activity"></a>Utwórz działanie for-each 
+## <a name="create-a-for-each-activity"></a>Tworzenie działania dla każdego 
 
-Działanie [for-each](/azure/data-factory/control-flow-for-each-activity) służy do iterowania kolekcji i wykonywania określonych działań w pętli. 
+[For-Each](/azure/data-factory/control-flow-for-each-activity) działania jest używany do iteracji za kolekcji i wykonywania określonych działań w pętli. 
 
-1. Teraz dodasz działanie for-each do potoku. To działanie będzie przetwarzać dane zwrócone przez działanie wyszukiwania. 
-    * W okienku **działania** w obszarze **iteracja & Conditional**wybierz działanie **foreach** , a następnie przeciągnij i upuść je na kanwie.
-    * Narysuj linię między wyjściem działania Lookup i wejściem działania ForEach na kanwie, aby je połączyć.
+1. Teraz można dodać for-each działania do potoku. To działanie będzie przetwarzać dane zwrócone z działania odnośnika. 
+    * W okienku **Działania** w obszarze **Iteracja & warunkowe**wybierz działanie **ForEach** i przeciągnij je i upuść na kanwę.
+    * Narysuj linię między dane wyjściowe działania odnośnika i dane wejściowe forEach działania w kanwie, aby je połączyć.
 
         ![Działanie ForEach](media/data-factory-command-activity/for-each-activity.png)
 
 1.  Wybierz działanie ForEach na kanwie. Na karcie **Ustawienia** poniżej:
-    * Zaznacz pole wyboru **sekwencyjnego** , aby przeprowadzić sekwencyjne przetwarzanie wyników wyszukiwania, lub pozostaw niezaznaczone, aby utworzyć równoległe przetwarzanie.
+    * Sprawdź **sekwencyjne** pole wyboru, aby uzyskać sekwencyjne przetwarzanie wyników wyszukiwania lub pozostaw niezaznaczone, aby utworzyć przetwarzanie równoległe.
     * Ustaw **liczbę partii**.
-    * W obszarze **elementy**podaj następujące odwołanie do wartości wyjściowej: *@activity ("Lookup1"). Output. Value*
+    * W **pozycji ,** podaj następujące odwołanie do wartości wyjściowej: * @activity('Lookup1').output.value*
 
        ![Ustawienia działania ForEach](media/data-factory-command-activity/for-each-activity-settings.png)
 
-## <a name="create-an-azure-data-explorer-command-activity-within-the-foreach-activity"></a>Tworzenie działania polecenia platformy Azure Eksplorator danych w ramach działania ForEach
+## <a name="create-an-azure-data-explorer-command-activity-within-the-foreach-activity"></a>Tworzenie działania polecenia usługi Azure Data Explorer w ramach działania ForEach
 
-1. Kliknij dwukrotnie działanie ForEach na kanwie, aby otworzyć je na nowej kanwie, aby określić działania w ciągu ForEach.
-1. W okienku **działania** w obszarze **Azure Eksplorator danych**wybierz działanie **polecenie Azure Eksplorator danych** , a następnie przeciągnij i upuść je na kanwie.
+1. Kliknij dwukrotnie forEach działania na kanwie, aby otworzyć go w nowym kanwie, aby określić działania w ForEach.
+1. W okienku **Działania** w obszarze **Eksplorator danych platformy Azure**wybierz działanie polecenia usługi Azure Data **Explorer** i przeciągnij je i upuść na kanwę.
 
-    ![Działanie polecenia Eksplorator danych platformy Azure](media/data-factory-command-activity/adx-command-activity.png)
+    ![Działanie polecenia Usługi Azure Data Explorer](media/data-factory-command-activity/adx-command-activity.png)
 
-1.  Na karcie **połączenie** wybierz wcześniej utworzoną usługę połączoną.
+1.  Na karcie **Połączenie** wybierz tę samą wcześniej utworzoną usługę połączeniową.
 
-    ![Karta połączenie działania z poleceniem Azure Data Explorer](media/data-factory-command-activity/adx-command-activity-connection-tab.png)
+    ![karta połączenie działania polecenia usługi Azure data explorer](media/data-factory-command-activity/adx-command-activity-connection-tab.png)
 
-1. Na karcie **polecenie** podaj następujące polecenie:
+1. Na karcie **Polecenie** podaj następujące polecenie:
 
     ```kusto
     .export
@@ -143,34 +143,34 @@ Działanie [for-each](/azure/data-factory/control-flow-for-each-activity) służ
     <| ClusterQueries | where Database == "@{item().Database}"
     ```
 
-    **Polecenie** instruuje usługę Azure Eksplorator danych, aby wyeksportować wyniki danego zapytania do magazynu obiektów BLOB w formacie skompresowanym. Działa asynchronicznie (przy użyciu modyfikatora asynchronicznego).
-    Zapytanie odnosi się do kolumny bazy danych każdego wiersza w wyniku działania Lookup. **Limit czasu polecenia** można pozostawić bez zmian.
+    **Polecenie** nakazuje Eksploratorowi danych platformy Azure wyeksportowanie wyników danej kwerendy do magazynu obiektów blob w skompresowanym formacie. Działa asynchronicznie (przy użyciu modyfikatora asynchronicznego).
+    Kwerenda dotyczy kolumny bazy danych każdego wiersza w wyniku działania odnośnika. Limit **czasu polecenia** może pozostać bez zmian.
 
     ![działanie polecenia](media/data-factory-command-activity/command.png)   
 
     > [!NOTE]
     > Działanie polecenia ma następujące limity:
-    > * Limit rozmiaru: 1 MB, rozmiar odpowiedzi
-    > * Limit czasu: 20 minut (wartość domyślna), 1 godzina (maksymalna).
-    > * W razie potrzeby można dołączyć zapytanie do wyniku przy użyciu [AdminThenQuery](/azure/kusto/management/index#combining-queries-and-control-commands), aby zmniejszyć wynikowy rozmiar/czas.
+    > * Limit rozmiaru: 1 MB rozmiaru odpowiedzi
+    > * Limit czasu: 20 minut (domyślnie), 1 godzina (maksymalnie).
+    > * W razie potrzeby można dołączyć kwerendę do wyniku za pomocą [AdminThenQuery](/azure/kusto/management/index#combining-queries-and-control-commands), aby zmniejszyć wynikowy rozmiar/czas.
 
-1.  Teraz potok jest gotowy. Możesz wrócić do widoku głównego potoku, klikając nazwę potoku.
+1.  Teraz rurociąg jest gotowy. Możesz wrócić do głównego widoku potoku, klikając nazwę potoku.
 
-    ![Potok poleceń Eksplorator danych platformy Azure](media/data-factory-command-activity/adx-command-pipeline.png)
+    ![Potok poleceń Eksploratora danych platformy Azure](media/data-factory-command-activity/adx-command-pipeline.png)
 
-1. Wybierz opcję **Debuguj** przed opublikowaniem potoku. Postęp potoku można monitorować na karcie **dane wyjściowe** .
+1. Wybierz **debugowanie** przed opublikowaniem potoku. Postęp potoku można monitorować na karcie **Dane wyjściowe.**
 
-    ![dane wyjściowe działania dotyczącego polecenia Eksploratora danych platformy Azure](media/data-factory-command-activity/command-activity-output.png)
+    ![dane wyjściowe działania polecenia usługi Azure data explorer](media/data-factory-command-activity/command-activity-output.png)
 
-1. Można **opublikować wszystko** , a następnie **dodać wyzwalacz** do uruchomienia potoku. 
+1. Można **opublikować wszystkie,** a następnie **Dodaj wyzwalacz,** aby uruchomić potok. 
 
-## <a name="control-command-outputs"></a>Dane wyjściowe polecenia sterowania
+## <a name="control-command-outputs"></a>Wyjmują polecenia sterowania
 
-Struktura danych wyjściowych działania polecenia jest szczegółowo opisana poniżej. Dane wyjściowe mogą być używane przez następne działanie w potoku.
+Struktura danych wyjściowych działania polecenia jest szczegółowo opisana poniżej. To dane wyjściowe mogą być używane przez następne działanie w potoku.
 
-### <a name="returned-value-of-a-non-async-control-command"></a>Zwrócona wartość polecenia sterowania nieasynchronicznego
+### <a name="returned-value-of-a-non-async-control-command"></a>Zwracana wartość polecenia sterującego nieaskroniencyjnego
 
-W nieasynchronicznym poleceniu sterowania struktura zwracanej wartości jest podobna do struktury wyniku działania Lookup. Pole `count` wskazuje liczbę zwróconych rekordów. Pole stałej tablicy `value` zawiera listę rekordów. 
+W poleceniu kontroli nieaskroniencyjnej struktura zwracanej wartości jest podobna do struktury wyniku działania odnośnika. To `count` pole wskazuje liczbę zwróconych rekordów. Stałe pole `value` tablicy zawiera listę rekordów. 
 
 ```json
 { 
@@ -190,9 +190,9 @@ W nieasynchronicznym poleceniu sterowania struktura zwracanej wartości jest pod
 } 
 ```
  
-### <a name="returned-value-of-an-async-control-command"></a>Zwrócona wartość polecenia sterowania asynchronicznego
+### <a name="returned-value-of-an-async-control-command"></a>Zwracana wartość polecenia sterującego asynchronią
 
-W przypadku polecenia sterowania asynchronicznego działanie sonduje tabelę operacji w tle, dopóki nie zostanie ukończona operacja asynchroniczna lub upłynie limit czasu. W związku z tym zwrócona wartość będzie zawierać wynik `.show operations OperationId` dla danej właściwości **OperationId** . Sprawdź wartości właściwości **stan** i **stan** , aby sprawdzić pomyślne zakończenie operacji.
+W poleceniu kontroli asynchronii aktywność sonduje tabelę operacji za kulisami, dopóki operacja asynchroniza nie zostanie ukończona lub przekroczony czas. W związku z tym zwracana `.show operations OperationId` wartość będzie zawierać wynik dla danej **właściwości OperationId.** Sprawdź wartości **state** i **status** właściwości, aby sprawdzić pomyślne zakończenie operacji.
 
 ```json
 { 
@@ -219,5 +219,5 @@ W przypadku polecenia sterowania asynchronicznego działanie sonduje tabelę ope
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej na temat sposobu [kopiowania danych do usługi Azure Eksplorator danych przy użyciu Azure Data Factory](data-factory-load-data.md).
-* Dowiedz się więcej o używaniu [szablonu Azure Data Factory do kopiowania zbiorczego z bazy danych na platformę Azure Eksplorator danych](data-factory-template.md).
+* Dowiedz się, jak [kopiować dane do Eksploratora danych platformy Azure przy użyciu usługi Azure Data Factory](data-factory-load-data.md).
+* Dowiedz się więcej o używaniu [szablonu usługi Azure Data Factory do kopiowania zbiorczego z bazy danych do Eksploratora danych platformy Azure.](data-factory-template.md)

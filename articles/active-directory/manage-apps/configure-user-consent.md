@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie sposobu, w jaki użytkownicy końcowi wyrażają zgodę na aplikacje za pomocą usługi Azure AD
-description: Dowiedz się, jak i kiedy użytkownicy mogą wyrazić zgodę na aplikacje, które będą miały dostęp do danych organizacji.
+title: Konfigurowanie sposobu wyrażania zgody użytkowników końcowych na aplikacje korzystające z usługi Azure AD
+description: Dowiedz się, jak zarządzać, jak i kiedy użytkownicy mogą wyrazić zgodę na aplikacje, które będą miały dostęp do danych organizacji.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,50 +13,50 @@ ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5bd305d2943d1b12756171748f28d32300081d71
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443391"
 ---
-# <a name="configure-how-end-users-consent-to-applications"></a>Konfigurowanie sposobu, w jaki użytkownicy końcowi wyrażają zgodę na aplikacje
+# <a name="configure-how-end-users-consent-to-applications"></a>Konfigurowanie sposobu wyrażania zgody użytkowników końcowych na aplikacje
 
-Aplikacje można zintegrować z platformą tożsamości firmy Microsoft, aby umożliwić użytkownikom logowanie się przy użyciu konta służbowego w usłudze Azure Active Directory (Azure AD) i uzyskiwanie dostępu do danych organizacji w celu zapewnienia zaawansowanych środowisk opartych na danych. Różne uprawnienia umożliwiają aplikacji różnego poziomu dostępu do danych użytkowników i organizacji.
+Aplikacje mogą integrować się z platformą Microsoft Identity, aby umożliwić użytkownikom logowanie się przy użyciu konta służbowego lub szkolnego w usłudze Azure Active Directory (Azure AD) oraz dostęp do danych organizacji w celu zapewnienia środowiska opartego na danych. Różne uprawnienia umożliwiają aplikacji inny poziom dostępu do danych użytkowników i organizacji.
 
-Domyślnie użytkownicy mogą wyrazić zgodę na aplikacje uzyskujące dostęp do danych organizacji, ale tylko w przypadku niektórych uprawnień. Na przykład Domyślnie użytkownik może wyrazić zgodę na zezwolenie aplikacji na dostęp do własnej skrzynki pocztowej lub zespołów, do których należy użytkownik, ale nie może wyrazić zgody na odczytanie i zapisanie we wszystkich witrynach programu SharePoint w organizacji. Zezwalanie użytkownikom na zgodę samodzielnie pozwala użytkownikom na łatwe uzyskiwanie przydatnych aplikacji, które integrują się z Microsoft 365, platformą Azure i innymi usługami, ale może to stanowić ryzyko, jeśli nie są one używane i monitorowane uważnie.
+Domyślnie użytkownicy mogą wyrażać zgodę na aplikacje uzyskujące dostęp do danych organizacji, chociaż tylko dla niektórych uprawnień. Na przykład domyślnie użytkownik może wyrazić zgodę na zezwolenie aplikacji na dostęp do własnej skrzynki pocztowej lub konwersacji usługi Teams dla zespołu, do której jest właścicielem, ale nie może wyrazić zgody na zezwalanie aplikacji na nienadzorowany dostęp do odczytu i zapisu we wszystkich witrynach programu SharePoint w organizacji. Zezwalając użytkownikom na wyrażenie zgody przez siebie pozwala użytkownikom łatwo nabyć przydatne aplikacje, które integrują się z usługami Microsoft 365, Azure i innymi usługami, może stanowić ryzyko, jeśli nie są używane i monitorowane starannie.
 
-Firma Microsoft zaleca wyłączenie w przyszłości operacji wyrażania zgody użytkowników na zmniejszenie obszaru powierzchni i uniknięcie tego ryzyka. Jeśli użytkownik wyraża zgodę na wyłączenie, poprzednie dotacje zgody nadal będą honorowane, ale wszystkie przyszłe operacje wyrażania zgody muszą być wykonywane przez administratora. Użytkownicy mogą żądać zgody administratora w całej dzierżawie za pomocą [przepływu pracy zintegrowanego żądania zgody administratora](configure-admin-consent-workflow.md) lub przez własne procesy obsługi. Aby uzyskać więcej informacji [, zobacz pięć kroków związanych z zabezpieczaniem infrastruktury tożsamości](../../security/fundamentals/steps-secure-identity.md) .
+Firma Microsoft zaleca wyłączenie przyszłych operacji zgody użytkownika, aby zmniejszyć powierzchnię i ograniczyć to ryzyko. Jeśli zgoda użytkownika jest wyłączona, wcześniejsze dotacje zgody będą nadal honorowane, ale wszystkie przyszłe operacje zgody muszą być wykonywane przez administratora. Zgoda administratora w całej dzierżawie może być żądana przez użytkowników za pośrednictwem [przepływu pracy żądania zgody zintegrowanego administratora](configure-admin-consent-workflow.md) lub za pośrednictwem własnych procesów pomocy technicznej. Aby uzyskać więcej informacji, zobacz [Pięć kroków do zabezpieczenia infrastruktury tożsamości.](../../security/fundamentals/steps-secure-identity.md)
 
 ## <a name="configure-user-consent-to-applications"></a>Konfigurowanie zgody użytkownika na aplikacje
-### <a name="disable-or-enable-user-consent-from-the-azure-portal"></a>Wyłączenie lub włączenie zgody użytkownika z Azure Portal
+### <a name="disable-or-enable-user-consent-from-the-azure-portal"></a>Wyłączanie lub włączanie zgody użytkownika z witryny Azure Portal
 
-Za pomocą Azure Portal można wyłączyć lub umożliwić użytkownikom wyrażanie zgody na aplikacje uzyskujące dostęp do danych organizacji:
+Za pomocą witryny Azure Portal można wyłączyć lub włączyć możliwość wyrażenia zgody przez użytkowników na aplikacje uzyskujące dostęp do danych organizacji:
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako [administrator globalny](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator).
-2. Wybierz **Azure Active Directory**, następnie **aplikacje dla przedsiębiorstw**, a następnie **Ustawienia użytkownika**.
-3. Włączać lub wyłączać wyrażanie zgody użytkownika z kontrolką z etykietą **Użytkownicy mogą wyrazić zgodę na aplikacje uzyskujące dostęp do danych firmy w ich imieniu**.
-4. Obowiązkowe Skonfiguruj [przepływ pracy żądania zgody administratora](configure-admin-consent-workflow.md) , aby upewnić się, że użytkownicy, którzy nie mogą wyrazić zgody na aplikację, mogą zażądać zatwierdzenia.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako [administrator globalny](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator).
+2. Wybierz **pozycję Azure Active Directory**, a następnie **aplikacje przedsiębiorstwa**, a następnie **ustawienia użytkownika**.
+3. Włącz lub wyłącz zgodę użytkownika za pomocą formantu **oznaczonego Użytkownicy mogą wyrazić zgodę na dostęp aplikacji do danych firmy w ich imieniu.**
+4. (Opcjonalnie) Skonfiguruj [przepływ pracy żądania zgody administratora,](configure-admin-consent-workflow.md) aby upewnić się, że użytkownicy, którzy nie mogą wyrazić zgody na aplikację, mogą zażądać zatwierdzenia.
 
 > [!TIP]
-> Aby umożliwić użytkownikom zażądanie przeglądu aplikacji, do której użytkownik nie może wyrazić zgody (na przykład ponieważ zgoda użytkownika została wyłączona lub aplikacja żąda uprawnień, których użytkownik nie może udzielić), należy rozważyć [skonfigurowanie przepływu pracy zgody administratora](configure-admin-consent-workflow.md).
+> Aby umożliwić użytkownikom żądanie przeglądu aplikacji przez administratora, na którą użytkownik nie może wyrazić zgody (na przykład dlatego, że zgoda użytkownika została wyłączona lub ponieważ aplikacja żąda uprawnień, których użytkownik nie może udzielić), rozważ [skonfigurowanie przepływu pracy zgody administratora](configure-admin-consent-workflow.md).
 
-### <a name="disable-or-enable-user-consent-using-powershell"></a>Wyłączanie lub Włączanie zgody użytkownika przy użyciu programu PowerShell
+### <a name="disable-or-enable-user-consent-using-powershell"></a>Wyłączanie lub włączanie zgody użytkownika przy użyciu programu PowerShell
 
-Możesz użyć modułu Azure AD PowerShell V1 ([MSOnline](https://docs.microsoft.com/powershell/module/msonline/?view=azureadps-1.0)), aby włączyć lub wyłączyć możliwość wyrażania zgody na aplikacje uzyskujące dostęp do danych organizacji.
+Modułu programu Azure AD PowerShell w wersji 1[(MSOnline)](https://docs.microsoft.com/powershell/module/msonline/?view=azureadps-1.0)można włączyć lub wyłączyć możliwość wyrażenia zgody przez użytkowników na aplikacje uzyskujące dostęp do danych organizacji.
 
-1. Zaloguj się do swojej organizacji, uruchamiając to polecenie cmdlet:
+1. Zaloguj się do organizacji, uruchamiając to polecenie cmdlet:
 
     ```powershell
     Connect-MsolService
     ```
 
-2. Sprawdź, czy jest włączona zgoda użytkownika przez uruchomienie tego polecenia cmdlet:
+2. Sprawdź, czy zgoda użytkownika jest włączona, uruchamiając to polecenie cmdlet:
 
     ```powershell
     Get-MsolCompanyInformation | Format-List UsersPermissionToUserConsentToAppEnabled
     ```
 
-3. Włączać lub wyłączać wyrażanie zgody użytkownika. Na przykład aby wyłączyć wyrażanie zgody użytkownika, uruchom następujące polecenie cmdlet:
+3. Włącz lub wyłącz zgodę użytkownika. Na przykład, aby wyłączyć zgodę użytkownika, uruchom to polecenie cmdlet:
 
     ```powershell
     Set-MsolCompanySettings -UsersPermissionToUserConsentToAppEnabled $false
@@ -65,31 +65,31 @@ Możesz użyć modułu Azure AD PowerShell V1 ([MSOnline](https://docs.microsoft
 ## <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Konfigurowanie zgody właściciela grupy na aplikacje uzyskujące dostęp do danych grupy
 
 > [!IMPORTANT]
-> Poniższe informacje dotyczą przyszłych funkcji, dzięki którym właściciele grup mogą udzielać aplikacjom dostępu do danych ich grup. Po wydaniu tej funkcji będzie ona domyślnie włączona. Mimo że ta funkcja nie jest jeszcze ogólnie dostępna, można użyć tych instrukcji, aby z wyprzedzeniem wyłączyć tę możliwość.
+> Poniższe informacje są dla nadchodzącej funkcji, która pozwoli właścicielom grup udzielić aplikacji dostępu do danych swoich grup. Po zwolnieniu tej funkcji zostanie ono domyślnie włączone. Chociaż ta funkcja nie jest jeszcze powszechnie wydana, można użyć tych instrukcji, aby wyłączyć możliwość przed jej wydaniem.
 
-Właściciele grupy mogą autoryzować aplikacje (na przykład aplikacje opublikowane przez innych dostawców) w celu uzyskania dostępu do danych organizacji skojarzonych z grupą. Na przykład właściciel zespołu (który jest właścicielem grupy Office 365 dla zespołu) może zezwalać aplikacji na odczytywanie wszystkich komunikatów zespołów w zespole lub listę profilu podstawowego członków grupy.
+Właściciele grup mogą autoryzować aplikacje (na przykład aplikacje publikowane przez dostawców zewnętrznych) w celu uzyskania dostępu do danych organizacji skojarzonych z grupą. Na przykład właściciel zespołu (który jest właścicielem grupy usługi Office 365 dla zespołu) może zezwolić aplikacji na odczytywanie wszystkich wiadomości usługi Teams w zespole lub wyświetlić listę podstawowego profilu członków grupy.
 
 > [!NOTE]
-> Niezależnie od tego ustawienia Właściciel grupy zawsze może dodawać innych użytkowników lub aplikacje bezpośrednio jako właściciele grupy.
+> Niezależnie od tego ustawienia właściciel grupy zawsze może dodawać innych użytkowników lub aplikacje bezpośrednio jako właścicieli grupy.
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>Konfigurowanie zgody właściciela grupy przy użyciu programu PowerShell
 
-Możesz użyć modułu Azure AD PowerShell w wersji zapoznawczej ([AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)), aby włączyć lub wyłączyć możliwość wyrażania zgody dla aplikacji uzyskujących dostęp do danych organizacji w odniesieniu do posiadanych przez nich grup.
+Moduł azure ad powershell preview[(AzureADPreview)](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)umożliwia włączenie lub wyłączenie możliwości właścicieli grup w celu wyrażenia zgody na aplikacje uzyskujące dostęp do danych organizacji dla grup, które są ich własnością.
 
-1. Upewnij się, że używasz modułu [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) (ten krok jest istotny, jeśli zainstalowano moduł [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) i moduł [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) ).
+1. Upewnij się, że używasz modułu [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) (ten krok jest ważny, jeśli zainstalowano zarówno moduł [AzureAD,](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) jak i moduł [AzureADPreview).](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)
 
     ```powershell
     Remove-Module AzureAD
     Import-Module AzureADPreview
     ```
 
-2. Nawiązywanie połączenia z usługą Azure AD PowerShell.
+2. Połącz się z programem Azure AD PowerShell.
 
    ```powershell
    Connect-AzureAD
    ```
 
-3. Pobierz bieżącą wartość ustawień *zasad* dotyczących ustawień katalogu w dzierżawie. Wymaga to sprawdzenia, czy zostały utworzone ustawienia katalogu dla tej funkcji, a jeśli nie, użyj wartości z odpowiedniego szablonu ustawień katalogu.
+3. Pobierz bieżącą wartość ustawień katalogu *Ustawienia zasad zgody* w dzierżawie. Wymaga to sprawdzenia, czy utworzono ustawienia katalogu dla tej funkcji, a jeśli nie, użycie wartości z odpowiedniego szablonu ustawień katalogu.
 
     ```powershell
     $consentSettingsTemplateId = "dffd5d46-495d-40a9-8e21-954ff55e198a" # Consent Policy Settings
@@ -104,14 +104,14 @@ Możesz użyć modułu Azure AD PowerShell w wersji zapoznawczej ([AzureADPrevie
     $limitedToValue = $settings.Values | ? { $_.Name -eq "ConstrainGroupSpecificConsentToMembersOfGroupId" }
     ```
 
-4. Zapoznaj się z wartościami ustawień. Istnieją dwie wartości ustawień, które definiują, którzy użytkownicy będą mogli zezwolić aplikacji na dostęp do danych swojej grupy:
+4. Zrozumienie wartości ustawień. Istnieją dwie wartości ustawień, które określają, którzy użytkownicy będą mogli zezwolić aplikacji na dostęp do danych grupy:
 
     | Ustawienie       | Typ         | Opis  |
     | ------------- | ------------ | ------------ |
-    | _EnableGroupSpecificConsent_   | Wartość logiczna |  Flaga oznaczająca, czy właściciele grup mogą udzielać uprawnień specyficznych dla grupy. |
-    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Identyfikator GUID | Jeśli _EnableGroupSpecificConsent_ jest ustawiona na wartość "true", a ta wartość jest ustawiona na identyfikator obiektu grupy, członkowie identyfikowanej grupy będą uprawnieni do przyznawania uprawnień specyficznych dla grupy do grup, których są właścicielami. |
+    | _EnableGroupSpecificConsent (Specyfikacja grupy)_   | Wartość logiczna |  Flaga wskazująca, czy właściciele grup mogą udzielać uprawnień specyficznych dla grupy. |
+    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid (identyfikator GUID) | Jeśli _EnableGroupSpecificConsent_ jest ustawiona na "True", a ta wartość ustawiona na identyfikator obiektu grupy, członkowie zidentyfikowanej grupy będą upoważnieni do udzielania uprawnień specyficznych dla grupy do grup, których są właścicielami. |
 
-5. Zaktualizuj wartości ustawień dla żądanej konfiguracji:
+5. Aktualizuj wartości ustawień dla żądanej konfiguracji:
 
     ```powershell
     # Disable group-specific consent entirely
@@ -147,8 +147,8 @@ Możesz użyć modułu Azure AD PowerShell w wersji zapoznawczej ([AzureADPrevie
 
 [Konfigurowanie przepływu pracy zgody administratora](configure-admin-consent-workflow.md)
 
-[Przyznaj administratorowi zgodę na dostęp do aplikacji](grant-admin-consent.md)
+[Udzielanie zgody administratora dla całej dzierżawy na aplikację](grant-admin-consent.md)
 
 [Uprawnienia i zgoda na platformie tożsamości firmy Microsoft](../develop/active-directory-v2-scopes.md)
 
-[Usługa Azure AD w systemie StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Usługa Azure AD w przepływie stosuPrzepełnienie](https://stackoverflow.com/questions/tagged/azure-active-directory)

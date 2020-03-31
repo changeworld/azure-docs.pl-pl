@@ -1,7 +1,7 @@
 ---
 title: Analizowanie zabezpieczeń sieci za pomocą widoku grupy zabezpieczeń — interfejs wiersza polecenia platformy Azure
 titleSuffix: Azure Network Watcher
-description: W tym artykule opisano, jak za pomocą interfejsu wiersza polecenia platformy Azure analizować zabezpieczenia maszyn wirtualnych za pomocą widoku grupy zabezpieczeń.
+description: W tym artykule opisano sposób używania interfejsu wiersza polecenia platformy Azure do analizowania zabezpieczeń maszyn wirtualnych za pomocą widoku grupy zabezpieczeń.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,46 +13,46 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 73f1efc512bf031021791da8cc55bc4e7d98a812
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840779"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>Analizowanie zabezpieczeń maszyny wirtualnej za pomocą widoku grupy zabezpieczeń przy użyciu interfejsu wiersza polecenia platformy Azure
 
 > [!div class="op_single_selector"]
-> - [Program PowerShell](network-watcher-security-group-view-powershell.md)
+> - [Powershell](network-watcher-security-group-view-powershell.md)
 > - [Interfejs wiersza polecenia platformy Azure](network-watcher-security-group-view-cli.md)
-> - [Interfejs API REST](network-watcher-security-group-view-rest.md)
+> - [INTERFEJS API ODPOCZYNKU](network-watcher-security-group-view-rest.md)
 
-Widok grupy zabezpieczeń umożliwia skonfigurowanie skonfigurowanych i obowiązujących reguł zabezpieczeń sieci, które są stosowane do maszyny wirtualnej. Ta funkcja jest przydatna do inspekcji i diagnozowania sieciowych grup zabezpieczeń i reguł skonfigurowanych na maszynie wirtualnej w celu zapewnienia, że ruch jest prawidłowo dozwolony lub odrzucany. W tym artykule przedstawiono sposób pobierania skonfigurowanych i obowiązujących reguł zabezpieczeń do maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
+Widok grupy zabezpieczeń zwraca skonfigurowane i skuteczne reguły zabezpieczeń sieci, które są stosowane do maszyny wirtualnej. Ta funkcja jest przydatna do inspekcji i diagnozowania grup zabezpieczeń sieciowych i reguł skonfigurowanych na maszynie wirtualnej, aby upewnić się, że ruch jest poprawnie dozwolony lub odrzucany. W tym artykule pokażemy, jak pobrać skonfigurowane i skuteczne reguły zabezpieczeń do maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Aby wykonać kroki opisane w tym artykule, należy [zainstalować interfejs wiersza polecenia platformy Azure dla systemów Mac, Linux i Windows (CLI)](/cli/azure/install-azure-cli).
+Aby wykonać kroki opisane w tym artykule, należy [zainstalować interfejs wiersza polecenia platformy Azure dla komputerów Mac, Linux i Windows (CLI)](/cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym scenariuszu założono, że wykonano już kroki opisane w temacie [tworzenie Network Watcher](network-watcher-create.md) w celu utworzenia Network Watcher.
+W tym scenariuszu przyjęto założenie, że postępuje już kroki w [Tworzenie obserwatora sieci,](network-watcher-create.md) aby utworzyć obserwatora sieci.
 
 ## <a name="scenario"></a>Scenariusz
 
-Scenariusz opisany w tym artykule umożliwia pobranie skonfigurowanych i obowiązujących reguł zabezpieczeń dla danej maszyny wirtualnej.
+Scenariusz omówiony w tym artykule pobiera skonfigurowane i skuteczne reguły zabezpieczeń dla danej maszyny wirtualnej.
 
-## <a name="get-a-vm"></a>Pobierz maszynę wirtualną
+## <a name="get-a-vm"></a>Uzyskaj maszynę wirtualną
 
-Aby uruchomić polecenie cmdlet `vm list`, wymagana jest maszyna wirtualna. Następujące polecenie wyświetla listę maszyn wirtualnych w grupie zasobów:
+Maszyna wirtualna jest wymagana `vm list` do uruchomienia polecenia cmdlet. Następujące polecenie zawiera listę maszyn wirtualnych w grupie zasobów:
 
 ```azurecli
 az vm list -resource-group resourceGroupName
 ```
 
-Po poznaniu maszyny wirtualnej można użyć polecenia cmdlet `vm show`, aby uzyskać identyfikator zasobu:
+Gdy znasz maszynę wirtualną, `vm show` możesz użyć polecenia cmdlet, aby uzyskać jej identyfikator zasobu:
 
 ```azurecli
 az vm show -resource-group resourceGroupName -name virtualMachineName
 ```
 
-## <a name="retrieve-security-group-view"></a>Pobierz widok grupy zabezpieczeń
+## <a name="retrieve-security-group-view"></a>Pobieranie widoku grupy zabezpieczeń
 
 Następnym krokiem jest pobranie wyniku widoku grupy zabezpieczeń.
 
@@ -62,7 +62,7 @@ az network watcher show-security-group-view --resource-group resourceGroupName -
 
 ## <a name="viewing-the-results"></a>Wyświetlanie wyników
 
-Poniższy przykład to skrócona odpowiedź na zwrócone wyniki. Wyniki pokazują wszystkie obowiązujące i stosowane reguły zabezpieczeń na maszynie wirtualnej podzielone na grupy **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**i **EffectiveSecurityRules**.
+Poniższy przykład jest skrócona odpowiedź zwracanych wyników. Wyniki pokazują wszystkie skuteczne i stosowane reguły zabezpieczeń na maszynie wirtualnej w podziale na grupy **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**i **EffectiveSecurityRules**.
 
 ```json
 {
@@ -154,6 +154,6 @@ Poniższy przykład to skrócona odpowiedź na zwrócone wyniki. Wyniki pokazuj�
 
 ## <a name="next-steps"></a>Następne kroki
 
-Odwiedź stronę [Inspekcja sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń) z Network Watcher](network-watcher-nsg-auditing-powershell.md) , aby dowiedzieć się, jak zautomatyzować sprawdzanie poprawności sieciowych grup zabezpieczeń.
+Odwiedź [stronę Inspekcja grup zabezpieczeń sieci (NSG) z funkcją Kontrola sieci,](network-watcher-nsg-auditing-powershell.md) aby dowiedzieć się, jak zautomatyzować sprawdzanie poprawności grup zabezpieczeń sieciowych.
 
-Dowiedz się więcej o regułach zabezpieczeń, które są stosowane do zasobów sieciowych, odwiedzając [Widok grupy zabezpieczeń omówienie](network-watcher-security-group-view-overview.md)
+Dowiedz się więcej o regułach zabezpieczeń stosowanych do zasobów sieciowych, odwiedzając [omówienie widoku grupy zabezpieczeń](network-watcher-security-group-view-overview.md)

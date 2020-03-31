@@ -1,6 +1,6 @@
 ---
-title: Najlepsze rozwiązania dotyczące kształtowania zapytań JSON-Azure Time Series Insights | Microsoft Docs
-description: Dowiedz się, jak poprawić wydajność zapytań Azure Time Series Insights, zmieniając kod JSON.
+title: Najważniejsze wskazówki dotyczące kształtowania zapytań json — usługa Azure Time Series Insights | Dokumenty firmy Microsoft
+description: Dowiedz się, jak zwiększyć wydajność zapytań usługi Azure Time Series Insights, kształtując JSON.
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
@@ -10,58 +10,58 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: 8232fd4c2a1e17800c96854b4ba7298e57ed84b7
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76989896"
 ---
-# <a name="shape-json-to-maximize-query-performance"></a>Shape JSON w celu zmaksymalizowania wydajności zapytań 
+# <a name="shape-json-to-maximize-query-performance"></a>Ukształtuj JSON, aby zmaksymalizować wydajność kwerendy 
 
-Ten artykuł zawiera wskazówki dotyczące sposobu tworzenia kształtu JSON w celu zmaksymalizowania wydajności zapytań Azure Time Series Insights.
+Ten artykuł zawiera wskazówki dotyczące kształtowania JSON, aby zmaksymalizować wydajność zapytań usługi Azure Time Series Insights.
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Film wideo
 
-### <a name="learn-best-practices-for-shaping-json-to-meet-your-storage-needsbr"></a>Zapoznaj się z najlepszymi rozwiązaniami dotyczącymi kształtowania JSON w celu spełnienia wymagań dotyczących magazynu.</br>
+### <a name="learn-best-practices-for-shaping-json-to-meet-your-storage-needsbr"></a>Poznaj najlepsze wskazówki dotyczące kształtowania JSON w celu zaspokojenia potrzeb pamięci masowej.</br>
 
 > [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
 
 ## <a name="best-practices"></a>Najlepsze rozwiązania
 
-Pomyśl o sposobie wysyłania zdarzeń do Time Series Insights. Mianowicie:
+Zastanów się, jak wysyłasz zdarzenia do usługi Time Series Insights. Mianowicie zawsze:
 
-1. jak najbardziej wydajny wysyłanie danych przez sieć.
-1. Upewnij się, że dane są przechowywane w sposób, aby można było wykonywać agregacje odpowiednie dla danego scenariusza.
-1. Upewnij się, że nie osiągnięto limitów maksymalnej właściwości Time Series Insights:
-   - 600 właściwości (kolumny) dla środowisk S1.
-   - 800 właściwości (kolumny) dla środowisk S2.
-
-> [!TIP]
-> Przejrzyj [limity i planowanie](time-series-insights-update-plan.md) w wersji zapoznawczej Azure Time Series Insights.
-
-Poniższe wskazówki ułatwiają zapewnienie najlepszej możliwej wydajności zapytań:
-
-1. Jako nazwy właściwości nie należy używać właściwości dynamicznych, takich jak identyfikator tagu. Służy do osiągnięcia maksymalnego limitu właściwości.
-1. Nie wysyłaj niepotrzebnych właściwości. Jeśli właściwość zapytania nie jest wymagana, nie należy jej wysyłać. W ten sposób można uniknąć ograniczeń dotyczących magazynu.
-1. Użyj [danych referencyjnych](time-series-insights-add-reference-data-set.md) , aby uniknąć wysyłania danych statycznych przez sieć.
-1. Udostępnianie właściwości wymiarów między wieloma zdarzeniami w celu skuteczniejszego wysyłania danych przez sieć.
-1. Nie używaj tablicy głębokiego zagnieżdżenia. Time Series Insights obsługuje do dwóch poziomów zagnieżdżonych tablic, które zawierają obiekty. Time Series Insights spłaszcza tablic w komunikatach do wielu zdarzeń z parami wartości właściwości.
-1. Jeśli tylko kilka istnieją środki dla wszystkich lub większości zdarzeń, zaleca się wysłać te miary jako osobne właściwości w ramach tego samego obiektu. Ich wysyłanie osobno zmniejsza liczbę zdarzeń i może poprawić wydajność zapytań, ponieważ wymaga przetworzenia mniejszych zdarzeń. Jeśli istnieje kilka miar, wysłanie ich jako wartości w pojedynczej właściwości minimalizuje możliwość osiągnięcia maksymalnego limitu właściwości.
-
-## <a name="example-overview"></a>Przykład — Omówienie
-
-W poniższych dwóch przykładach pokazano, jak wysyłać zdarzenia, aby wyróżnić poprzednie zalecenia. Poniższy przykład umożliwia przejrzenie sposobu zastosowania zaleceń.
-
-Przykłady są oparte na scenariuszu, w którym wiele urządzeń wysyła pomiary lub sygnały. Pomiary lub sygnały mogą być natężeniem przepływu, ciśnieniem oleju, temperatury i wilgotności. W pierwszym przykładzie istnieje kilka pomiarów dla wszystkich urządzeń. Drugi przykład zawiera wiele urządzeń, a każde urządzenie wysyła wiele unikatowych pomiarów.
-
-## <a name="scenario-one-only-a-few-measurements-exist"></a>Scenariusz 1: istnieje tylko kilka pomiarów
+1. Przesyłaj dane przez sieć tak efektywnie, jak to możliwe.
+1. Upewnij się, że dane są przechowywane w sposób, dzięki czemu można wykonywać agregacje odpowiednie dla danego scenariusza.
+1. Upewnij się, że nie osiągniesz maksymalnych limitów właściwości usługi Time Series Insights:
+   - 600 właściwości (kolumn) dla środowisk S1.
+   - 800 właściwości (kolumn) dla środowisk S2.
 
 > [!TIP]
-> Zalecamy wysłanie każdego pomiaru lub sygnału jako oddzielnej właściwości lub kolumny.
+> Przejrzyj [limity i planowanie](time-series-insights-update-plan.md) w usłudze Azure Time Series Insights Preview.
 
-W poniższym przykładzie istnieje pojedynczy komunikat IoT Hub platformy Azure, w którym tablica zewnętrzna zawiera wspólną sekcję wspólnych wartości wymiarów. Tablica zewnętrzna używa danych referencyjnych w celu zwiększenia wydajności wiadomości. Dane referencyjne zawierają metadane urządzeń, które nie ulegają zmianie przy każdym zdarzeniu, ale udostępniają przydatne właściwości analizy danych. Przetwarzanie wsadowe wspólnych wartości wymiarów i korzystanie z danych referencyjnych polega na zapisywaniu bajtów przesyłanych przez sieć, co sprawia, że komunikat jest bardziej wydajny.
+Następujące wskazówki pomagają zapewnić najlepszą możliwą wydajność kwerendy:
 
-Należy wziąć pod uwagę następujący ładunek JSON wysłany do środowiska Time Series Insights GA przy użyciu [obiektu komunikatu urządzenia IoT](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet) , który jest serializowany do formatu JSON w przypadku wysłania do chmury platformy Azure:
+1. Nie używaj właściwości dynamicznych, takich jak identyfikator tagu, jako nazwy właściwości. To użycie przyczynia się do osiągnięcia limitu maksymalnych właściwości.
+1. Nie wysyłaj niepotrzebnych właściwości. Jeśli właściwość kwerendy nie jest wymagana, najlepiej jej nie wysyłać. W ten sposób można uniknąć ograniczeń przechowywania.
+1. Użyj [danych referencyjnych,](time-series-insights-add-reference-data-set.md) aby uniknąć wysyłania danych statycznych przez sieć.
+1. Udostępniaj właściwości wymiaru między wieloma zdarzeniami, aby wydajniej wysyłać dane przez sieć.
+1. Nie należy używać zagnieżdżania tablic głębokich. Aplikacja Time Series Insights obsługuje maksymalnie dwa poziomy tablic zagnieżdżonych, które zawierają obiekty. Usługi Time Series Insights spłaszczają tablice w wiadomościach na wiele zdarzeń z parami wartości właściwości.
+1. Jeśli istnieje tylko kilka środków dla wszystkich lub większości zdarzeń, lepiej jest wysłać te środki jako oddzielne właściwości w tym samym obiekcie. Wysyłanie ich oddzielnie zmniejsza liczbę zdarzeń i może zwiększyć wydajność kwerendy, ponieważ mniej zdarzeń muszą być przetwarzane. Gdy istnieje kilka miar, wysyłanie ich jako wartości w jednej właściwości minimalizuje możliwość osiągnięcia maksymalnego limitu właściwości.
+
+## <a name="example-overview"></a>Przykładowy przegląd
+
+Poniższe dwa przykłady pokazują, jak wysłać zdarzenia, aby wyróżnić poprzednie zalecenia. Po każdym przykładzie można przejrzeć sposób stosowania zaleceń.
+
+Przykłady są oparte na scenariuszu, w którym wiele urządzeń wysyła pomiary lub sygnały. Pomiary lub sygnały mogą być natężenie przepływu, ciśnienie oleju silnikowego, temperatura i wilgotność. W pierwszym przykładzie istnieje kilka pomiarów na wszystkich urządzeniach. Drugi przykład ma wiele urządzeń, a każde urządzenie wysyła wiele unikatowych pomiarów.
+
+## <a name="scenario-one-only-a-few-measurements-exist"></a>Scenariusz pierwszy: Istnieje tylko kilka pomiarów
+
+> [!TIP]
+> Zaleca się wysłanie każdego pomiaru lub sygnału jako osobnej właściwości lub kolumny.
+
+W poniższym przykładzie istnieje pojedynczy komunikat usługi Azure IoT Hub, w którym tablica zewnętrzna zawiera wspólną sekcję wspólnych wartości wymiarów. Tablica zewnętrzna używa danych referencyjnych, aby zwiększyć wydajność wiadomości. Dane referencyjne zawierają metadane urządzenia, które nie zmieniają się z każdym zdarzeniem, ale zapewniają przydatne właściwości do analizy danych. Przetwarzanie typowych wartości wymiarów i stosowanie danych referencyjnych zapisuje bajty wysyłane przez sieć, co sprawia, że wiadomość jest bardziej wydajna.
+
+Należy wziąć pod uwagę następujące ładunku JSON wysyłane do środowiska ga usługi Time Series Insights przy użyciu [obiektu komunikat urządzenia IoT,](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet) który jest serializowany do JSON po wysłaniu do chmury platformy Azure:
 
 
 ```JSON
@@ -93,34 +93,34 @@ Należy wziąć pod uwagę następujący ładunek JSON wysłany do środowiska T
 ]
 ```
 
-* Tabela danych referencyjnych, która ma klucz **deviceId**właściwości klucza:
+* Tabela danych referencyjnych, która ma **identyfikator właściwości klucza:**
 
-   | deviceId | messageId | DeviceLocation |
+   | deviceId | Messageid | deviceLocation (Lokalizacja urządzenia) |
    | --- | --- | --- |
-   | FXXX | LINE\_DATA | Unia Europejska |
-   | FYYY | LINE\_DATA | Stany Zjednoczone |
+   | FXXX (polski) | DANE\_LINIOWE | UE |
+   | W YYY | DANE\_LINIOWE | USA |
 
-* Time Series Insights tabeli zdarzeń po spłaszczeniu:
+* Tabela zdarzeń usługi Time Series Insights po spłaszczeniu:
 
-   | deviceId | messageId | DeviceLocation | sygnatura czasowa | Seria. Przepływ współczynnika ft3/s | Seria. Aparat wykorzystanie ropa naftowa psi |
+   | deviceId | Messageid | deviceLocation (Lokalizacja urządzenia) | sygnatura czasowa | Serii. Natężenie przepływu ft3/s | Serii. Ciśnienie oleju silnikowego psi |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | LINE\_DATA | Unia Europejska | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
-   | FXXX | LINE\_DATA | Unia Europejska | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
-   | FYYY | LINE\_DATA | Stany Zjednoczone | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
+   | FXXX (polski) | DANE\_LINIOWE | UE | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
+   | FXXX (polski) | DANE\_LINIOWE | UE | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
+   | W YYY | DANE\_LINIOWE | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
 > [!NOTE]
-> - Kolumna **deviceId** służy jako nagłówek kolumny dla różnych urządzeń w flotie. Właściwość **deviceId** , która ma własną nazwę właściwości, ogranicza łączną liczbę urządzeń do 595 (dla środowisk S1) lub 795 (dla środowisk S2) z innymi pięcioma kolumnami.
-> - Nie można uniknąć niepotrzebnych właściwości (na przykład informacje dotyczące marki i modelu). Ze względu na to, że w przyszłości nie będą wysyłane zapytania do właściwości, eliminuje to lepszą wydajność sieci i magazynu.
-> - Dane referencyjne są używane w celu zmniejszenia liczby bajtów transferowanych przez sieć. Dwa atrybuty **MessageID** i **deviceLocation** są sprzężone przy użyciu właściwości Key **deviceId**. Te dane są przyłączone do danych telemetrycznych w czasie, a następnie przechowywane w Time Series Insights na potrzeby wykonywania zapytań.
-> - Używane są dwie warstwy zagnieżdżania, które są maksymalną ilością zagnieżdżenia obsługiwaną przez Time Series Insights. Koniecznie można uniknąć głęboko zagnieżdżonych tablic.
-> - Miary są wysyłane jako oddzielne właściwości w obrębie tego samego obiektu, ponieważ istnieje kilka miar. Tutaj, **Seria. Szybkość przepływu** i **Seria. Ft3 ciśnienia oleju silnikowego** są unikatowymi kolumnami.
+> - Kolumna **deviceId** służy jako nagłówek kolumny dla różnych urządzeń we flocie. Dokonywanie **deviceId** wartość własnej nazwy właściwości ogranicza całkowitą liczbę urządzeń do 595 (dla środowisk S1) lub 795 (dla środowisk S2) z pozostałych pięciu kolumn.
+> - Unika się niepotrzebnych właściwości (na przykład informacji o make i model). Ponieważ właściwości nie będą wyszukiwane w przyszłości, wyeliminowanie ich umożliwia lepszą wydajność sieci i pamięci masowej.
+> - Dane referencyjne są używane w celu zmniejszenia liczby bajtów przesyłanych przez sieć. Dwa atrybuty **messageId** i **deviceLocation** są połączone przy użyciu funkcji key **deviceId**. Te dane są łączone z danymi telemetrycznymi w czasie transferu danych przychodzących, a następnie są przechowywane w usłudze Time Series Insights do wykonywania zapytań.
+> - Używane są dwie warstwy zagnieżdżania, co jest maksymalną ilością zagnieżdżania obsługiwane przez usługi Time Series Insights. Jest to bardzo ważne, aby uniknąć głęboko zagnieżdżonych tablic.
+> - Miary są wysyłane jako oddzielne właściwości w tym samym obiekcie, ponieważ istnieje kilka miar. Tutaj, **seria. Natężenie przepływu psi** i **serii. Ciśnienie oleju silnikowego ft3/s** to unikalne kolumny.
 
-## <a name="scenario-two-several-measures-exist"></a>Scenariusz dwa: istnieją różne miary
+## <a name="scenario-two-several-measures-exist"></a>Scenariusz drugi: Istnieje kilka miar
 
 > [!TIP]
-> Zalecamy wysyłanie pomiarów jako krotek "Type", "jednostki" i "value".
+> Zaleca się wysyłanie miar jako krotek "typ", "jednostka" i "value".
 
-Przykładowy ładunek JSON:
+Przykład ładunku JSON:
 
 ```JSON
 [
@@ -163,43 +163,43 @@ Przykładowy ładunek JSON:
 ]
 ```
 
-* Tabela danych referencyjnych, która zawiera właściwości klucza **deviceId** i **Series. tagId**:
+* Tabela danych referencyjnych, która ma właściwości **klucza deviceId** i **series.tagId:**
 
-   | deviceId | series.tagId | messageId | DeviceLocation | type | Jednostka |
+   | deviceId | identyfikator series.tagId | Messageid | deviceLocation (Lokalizacja urządzenia) | type | unit |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LINE\_DATA | Unia Europejska | Szybkość przepływu | ft3/s |
-   | FXXX | oilPressure | LINE\_DATA | Unia Europejska | Ciśnienie oleju silnikowego | psi |
-   | FYYY | pumpRate | LINE\_DATA | Stany Zjednoczone | Szybkość przepływu | ft3/s |
-   | FYYY | oilPressure | LINE\_DATA | Stany Zjednoczone | Ciśnienie oleju silnikowego | psi |
+   | FXXX (polski) | pompaWłasna | DANE\_LINIOWE | UE | Przepływ | ft3/s |
+   | FXXX (polski) | olejPressure | DANE\_LINIOWE | UE | Ciśnienie oleju silnikowego | psi |
+   | W YYY | pompaWłasna | DANE\_LINIOWE | USA | Przepływ | ft3/s |
+   | W YYY | olejPressure | DANE\_LINIOWE | USA | Ciśnienie oleju silnikowego | psi |
 
-* Time Series Insights tabeli zdarzeń po spłaszczeniu:
+* Tabela zdarzeń usługi Time Series Insights po spłaszczeniu:
 
-   | deviceId | series.tagId | messageId | DeviceLocation | type | Jednostka | sygnatura czasowa | Serie. wartość |
+   | deviceId | identyfikator series.tagId | Messageid | deviceLocation (Lokalizacja urządzenia) | type | unit | sygnatura czasowa | series.value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LINE\_DATA | Unia Europejska | Szybkość przepływu | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | LINE\_DATA | Unia Europejska | Ciśnienie oleju silnikowego | psi | 2018-01-17T01:17:00Z | 34.7 |
-   | FXXX | pumpRate | LINE\_DATA | Unia Europejska | Szybkość przepływu | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | LINE\_DATA | Unia Europejska | Ciśnienie oleju silnikowego | psi | 2018-01-17T01:17:00Z | 49.2 |
-   | FYYY | pumpRate | LINE\_DATA | Stany Zjednoczone | Szybkość przepływu | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | LINE\_DATA | Stany Zjednoczone | Ciśnienie oleju silnikowego | psi | 2018-01-17T01:18:00Z | 22.2 |
+   | FXXX (polski) | pompaWłasna | DANE\_LINIOWE | UE | Przepływ | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX (polski) | olejPressure | DANE\_LINIOWE | UE | Ciśnienie oleju silnikowego | psi | 2018-01-17T01:17:00Z | 34.7 |
+   | FXXX (polski) | pompaWłasna | DANE\_LINIOWE | UE | Przepływ | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX (polski) | olejPressure | DANE\_LINIOWE | UE | Ciśnienie oleju silnikowego | psi | 2018-01-17T01:17:00Z | 49.2 |
+   | W YYY | pompaWłasna | DANE\_LINIOWE | USA | Przepływ | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | W YYY | olejPressure | DANE\_LINIOWE | USA | Ciśnienie oleju silnikowego | psi | 2018-01-17T01:18:00Z | 22.2 |
 
 > [!NOTE]
-> - Kolumny **deviceId** i **Series. tagId** pełnią rolę nagłówków kolumn dla różnych urządzeń i tagów w flotie. Użycie każdego z nich jako własnego atrybutu ogranicza zapytanie do 594 (dla środowisk S1) lub 794 (dla środowisk S2) Łączna liczba urządzeń z innymi sześcioma kolumnami.
-> - Niepotrzebne właściwości zostały wykluczone z przyczyn podanych w pierwszym przykładzie.
-> - Dane referencyjne są używane w celu zmniejszenia liczby bajtów transferowanych przez sieć przez wprowadzenie identyfikatora **deviceId**, który jest używany dla unikatowej pary wartości **MessageID** i **deviceLocation**. Złożona seria kluczy **. tagId** jest używana dla unikatowej pary **typów** i **jednostek**. Klucz złożony umożliwia użycie pary **deviceId** i **Series. tagId** do odwoływania się do czterech wartości: **MessageID, deviceLocation, Type** i **Unit**. Te dane są przyłączone do danych telemetrycznych w czasie. Jest on następnie przechowywany w Time Series Insights na potrzeby wykonywania zapytań.
-> - Używane są dwie warstwy zagnieżdżania, z przyczyn cytowanych w pierwszym przykładzie.
+> - Kolumny **deviceId** i **series.tagId** służą jako nagłówki kolumn dla różnych urządzeń i tagów we flocie. Przy użyciu każdego jako własny atrybut ogranicza kwerendę do 594 (dla środowisk S1) lub 794 (dla środowisk S2) całkowita liczba urządzeń z pozostałych sześciu kolumn.
+> - Uniknięto niepotrzebnych właściwości, z powodu przytoczonego w pierwszym przykładzie.
+> - Dane referencyjne są używane w celu zmniejszenia liczby bajtów przesyłanych przez sieć poprzez wprowadzenie **deviceId**, który jest używany dla unikatowej pary **messageId** i **deviceLocation**. Plik composite key **series.tagId** jest używany dla unikatowej pary **typu** i **jednostki**. Klucz złożony umożliwia **deviceId** i **series.tagId** pary, które mają być używane do odwoływania się do czterech wartości: **messageId, deviceLocation, type,** i **unit**. Te dane są łączone z danymi telemetrycznymi w czasie transferu danych przychodzących. Następnie jest przechowywany w usłudze Time Series Insights do wykonywania zapytań.
+> - Dwie warstwy zagnieżdżania są używane, z powodu cytowanego w pierwszym przykładzie.
 
-### <a name="for-both-scenarios"></a>Dla obu scenariuszy
+### <a name="for-both-scenarios"></a>W obu scenariuszach
 
-Dla właściwości o dużej liczbie możliwych wartości najlepiej wysyłać jako odrębne wartości w jednej kolumnie, zamiast tworzyć nową kolumnę dla każdej wartości. W poprzednich dwóch przykładach:
+Dla właściwości z dużą liczbą możliwych wartości najlepiej jest wysłać jako różne wartości w jednej kolumnie zamiast tworzyć nową kolumnę dla każdej wartości. Z dwóch poprzednich przykładów:
 
-  - W pierwszym przykładzie kilka właściwości ma kilka wartości, więc należy wykonać każdą odrębną właściwość.
-  - W drugim przykładzie miary nie są określone jako pojedyncze właściwości. Zamiast tego są one tablicą wartości lub miar we właściwości typowej serii. Zostanie wysłany nowy klucz **tagId** , który tworzy nową kolumnę **serie. tagId** w spłaszczonej tabeli. Nowy **Typ** i **Jednostka** właściwości są tworzone przy użyciu danych referencyjnych, dzięki czemu limit właściwości nie zostanie osiągnięty.
+  - W pierwszym przykładzie kilka właściwości ma kilka wartości, więc należy zrobić każdy oddzielne właściwości.
+  - W drugim przykładzie miary nie są określone jako poszczególne właściwości. Zamiast tego są one tablicy wartości lub miar w ramach właściwości common series. Zostanie wysłany nowy **identyfikator tagId** klucza, który tworzy nowy **identyfikator series.tagId** kolumny w tabeli spłaszczone. Nowy **typ** właściwości i **jednostka** są tworzone przy użyciu danych referencyjnych, tak aby limit właściwości nie został osiągnięty.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przeczytaj więcej na temat wysyłania [komunikatów dotyczących urządzeń IoT Hub do chmury](../iot-hub/iot-hub-devguide-messages-construct.md).
+- Dowiedz się więcej o [wysyłaniu komunikatów urządzenia usługi IoT Hub do chmury](../iot-hub/iot-hub-devguide-messages-construct.md).
 
-- Przeczytaj [Azure Time Series Insights składnię zapytania](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax) , aby dowiedzieć się więcej o składni zapytań dla interfejsu API REST Time Series Insights dostępu do danych.
+- Przeczytaj [składnię kwerend usługi Azure Time Series Insights,](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax) aby dowiedzieć się więcej o składni kwerendy dla interfejsu API REST dostępu do danych usługi Time Series Insights.
 
-- Dowiedz się [, jak kształtować zdarzenia](./time-series-insights-send-events.md).
+- Dowiedz [się, jak kształtować zdarzenia](./time-series-insights-send-events.md).

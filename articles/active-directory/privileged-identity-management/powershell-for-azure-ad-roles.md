@@ -1,6 +1,6 @@
 ---
-title: PowerShell dla ról usługi Azure AD w usłudze PIM — Azure AD | Microsoft Docs
-description: Zarządzanie rolami usługi Azure AD przy użyciu poleceń cmdlet programu PowerShell w programie Azure AD Privileged Identity Management (PIM).
+title: Role usługi PowerShell dla usługi Azure AD w usłudze PIM — usługa Azure AD | Dokumenty firmy Microsoft
+description: Zarządzanie rolami usługi Azure AD przy użyciu poleceń cmdlet programu PowerShell w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,107 +16,107 @@ ms.date: 02/26/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efb85b4a54b8f61e44f1f8bc75f893f93a0feb8a
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 364b0268be99685b18db175ffbabd9350531d500
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164960"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80048872"
 ---
-# <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Program PowerShell dla ról usługi Azure AD w Privileged Identity Management
+# <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Role usługi PowerShell dla usługi Azure AD w zarządzania tożsamościami uprzywilejowanymi
 
-Ten artykuł zawiera instrukcje dotyczące korzystania z poleceń cmdlet programu PowerShell w usłudze Azure Active Directory (Azure AD) w celu zarządzania rolami usługi Azure AD w Privileged Identity Management (PIM). Zawarto również informacje, jak skonfigurować program przy użyciu modułu Azure AD PowerShell.
+Ten artykuł zawiera instrukcje dotyczące używania poleceń cmdlet programu PowerShell usługi Azure Active Directory (Azure AD) do zarządzania rolami usługi Azure AD w zarządzania tożsamościami uprzywilejowanymi (PIM). Informuje również, jak skonfigurować moduł programu Azure AD PowerShell.
 
 > [!Note]
-> Nasze oficjalne środowisko PowerShell jest obsługiwane tylko w przypadku, gdy korzystasz z nowej wersji Azure AD Privileged Identity Management. Przejdź do Privileged Identity Management i upewnij się, że masz Poniższy transparent w bloku Szybki Start.
-> [![Sprawdź wersję Privileged Identity Management masz](media/pim-how-to-add-role-to-user/pim-new-version.png "Wybierz > usługi Azure AD Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox) Jeśli nie masz tego transparentu, zaczekaj, aż trwa proces wdrażania tego zaktualizowanego środowiska w ciągu najbliższych kilku tygodni.
-> Polecenia cmdlet programu PowerShell Privileged Identity Management są obsługiwane za pomocą modułu Azure AD Preview. Jeśli używasz innego modułu i ten moduł zwróci komunikat o błędzie, zacznij korzystać z tego nowego modułu. Jeśli masz jakiekolwiek systemy produkcyjne utworzone w oparciu o inny moduł, skontaktuj się z pim_preview@microsoft.com
+> Nasz oficjalny program PowerShell jest obsługiwany tylko wtedy, gdy korzystasz z nowej wersji uprzywilejowanego zarządzania tożsamościami usługi Azure AD. Przejdź do uprzywilejowanego zarządzania tożsamościami i upewnij się, że masz następujący baner na bloku szybkiego startu.
+> [![sprawdź wersję uprzywilejowanego zarządzania tożsamościami, którą](media/pim-how-to-add-role-to-user/pim-new-version.png "Wybieranie zarządzania tożsamościami > uprzywilejowanych usługi Azure AD")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox) Jeśli nie masz tego banera, poczekaj, jak jesteśmy obecnie w trakcie wprowadzania tego zaktualizowanego doświadczenia w ciągu najbliższych kilku tygodni.
+> Polecenia cmdlet usługi PowerShell zarządzania tożsamościami uprzywilejowanymi są obsługiwane za pośrednictwem modułu usługi Azure AD Preview. Jeśli używasz innego modułu, a ten moduł zwraca teraz komunikat o błędzie, zacznij używać tego nowego modułu. Jeśli masz jakieś systemy produkcyjne zbudowane na innym module, skontaktuj się zpim_preview@microsoft.com
 
 ## <a name="installation-and-setup"></a>Instalacja i konfiguracja
 
-1. Instalowanie modułu usługi Azure AD w wersji zapoznawczej
+1. Instalowanie modułu usługi Azure AD Preview
 
         Install-module AzureADPreview
 
-1. Przed kontynuowaniem upewnij się, że masz wymagane uprawnienia roli. Jeśli próbujesz wykonać zadania zarządzania, takie jak podawanie roli lub aktualizowanie ustawienia roli, upewnij się, że masz rolę Administrator globalny lub administrator ról uprzywilejowanych. Jeśli użytkownik próbuje aktywować własne przypisanie, nie są wymagane żadne uprawnienia poza domyślnymi uprawnieniami użytkownika.
+1. Upewnij się, że masz wymagane uprawnienia roli przed kontynuowaniem. Jeśli próbujesz wykonywać zadania zarządzania, takie jak nadanie przypisania roli lub aktualizowanie ustawienia roli, upewnij się, że masz rolę administratora globalnego lub administratora ról uprzywilejowanych. Jeśli po prostu próbujesz aktywować własne przypisanie, nie są wymagane żadne uprawnienia wykraczające poza domyślne uprawnienia użytkownika.
 
-1. Nawiązywanie połączenia z usługą Azure AD.
+1. Połącz się z usługą Azure AD.
 
         $AzureAdCred = Get-Credential  
         Connect-AzureAD -Credential $AzureAdCred
 
-1. Znajdź swój identyfikator dzierżawy, przechodząc do **Azure Active Directory** **Właściwości** >  > **Identyfikator katalogu**. W sekcji poleceń cmdlet Użyj tego identyfikatora zawsze wtedy, gdy musisz podać identyfikator zasobu.
+1. Znajdź swój identyfikator **dzierżawy,** > przechodząc do identyfikatora katalogu**właściwości** > usługi Azure Active**Directory**. W sekcji polecenia cmdlets użyj tego identyfikatora, gdy trzeba podać identyfikator resourceId.
 
-    ![Znajdź identyfikator dzierżawy we właściwościach organizacji usługi Azure AD](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
+    ![Znajdowanie identyfikatora dzierżawy we właściwościach organizacji usługi Azure AD](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> Poniższe sekcje stanowią proste przykłady, które mogą pomóc Ci w rozpoczęciu pracy. Więcej szczegółowej dokumentacji dotyczącej następujących poleceń cmdlet można znaleźć w https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management. Należy jednak zamienić ciąg "azureResources" w parametrze identyfikatorem na wartość "aadRoles". Należy również pamiętać, aby użyć identyfikatora dzierżawy dla organizacji usługi Azure AD jako parametru resourceId.
+> Poniższe sekcje są prostymi przykładami, które mogą pomóc Ci w uruchomieniu. Bardziej szczegółową dokumentację dotyczącą następujących poleceń https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_managementcmdlet można znaleźć na poziomie . Jednak należy zastąpić "azureResources" w providerID parametr z "aadRoles". Należy również pamiętać, aby użyć identyfikatora dzierżawy dla organizacji usługi Azure AD jako parametr resourceId.
 
 ## <a name="retrieving-role-definitions"></a>Pobieranie definicji ról
 
-Użyj poniższego polecenia cmdlet, aby pobrać wszystkie wbudowane i niestandardowe role usługi Azure AD w organizacji usługi Azure AD (dzierżawca). Ten ważny krok zapewnia mapowanie między nazwą roli a zduplikowanych. Zduplikowanych jest używany w tych poleceniach cmdlet, aby można było odwołać się do określonej roli.
+Użyj następującego polecenia cmdlet, aby uzyskać wszystkie wbudowane i niestandardowe role usługi Azure AD w twojej organizacji usługi Azure AD (dzierżawie). Ten ważny krok zapewnia mapowanie między nazwą roli a roląDefinitionId. RolaDefinitionId jest używany w tych poleceń cmdlet w celu odwołania się do określonej roli.
 
-Zduplikowanych jest specyficzna dla organizacji usługi Azure AD i różni się od zduplikowanych zwróconego przez interfejs API zarządzania rolami.
+Obiekt roleDefinitionId jest specyficzny dla organizacji usługi Azure AD i różni się od funkcjiDefinitionId zwracany przez interfejs API zarządzania rolami.
 
     Get-AzureADMSPrivilegedRoleDefinition -ProviderId aadRoles -ResourceId 926d99e7-117c-4a6a-8031-0cc481e9da26
 
-Wynika
+Wynik:
 
 ![Pobierz wszystkie role dla organizacji usługi Azure AD](./media/powershell-for-azure-ad-roles/get-all-roles-result.png)
 
 ## <a name="retrieving-role-assignments"></a>Pobieranie przypisań ról
 
-Użyj poniższego polecenia cmdlet, aby pobrać wszystkie przypisania ról w organizacji usługi Azure AD.
+Użyj następującego polecenia cmdlet, aby pobrać wszystkie przypisania ról w organizacji usługi Azure AD.
 
     Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26"
 
-Użyj następującego polecenia cmdlet, aby pobrać wszystkie przypisania ról dla określonego użytkownika. Ta lista jest również znana jako "Moje role" w portalu usługi Azure AD. Jedyną różnicą jest to, że dodano filtr dla identyfikatora podmiotu. Identyfikator podmiotu w tym kontekście jest identyfikatorem użytkownika lub IDENTYFIKATORem grupy.
+Użyj następującego polecenia cmdlet, aby pobrać wszystkie przypisania ról dla określonego użytkownika. Ta lista jest również znana jako "Moje role" w portalu usługi Azure AD. Jedyną różnicą jest to, że dodano filtr dla identyfikatora tematu. Identyfikator tematu w tym kontekście jest identyfikatorem użytkownika lub identyfikatorem grupy.
 
     Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "subjectId eq 'f7d1887c-7777-4ba3-ba3d-974488524a9d'" 
 
-Użyj następującego polecenia cmdlet, aby pobrać wszystkie przypisania ról dla określonej roli. Zduplikowanych tutaj to identyfikator, który jest zwracany przez poprzednie polecenie cmdlet.
+Użyj następującego polecenia cmdlet, aby pobrać wszystkie przypisania ról dla określonej roli. RolaDefinitionId w tym miejscu jest identyfikator, który jest zwracany przez poprzednie polecenie cmdlet.
 
     Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "roleDefinitionId eq '0bb54a22-a3df-4592-9dc7-9e1418f0f61c'"
 
-Polecenia cmdlet powodują wyświetlenie listy obiektów przypisania roli przedstawionych poniżej. Identyfikator podmiotu jest IDENTYFIKATORem użytkownika, do którego przypisano rolę. Stan przypisania może być aktywny lub być uprawniony. Jeśli użytkownik jest aktywny i istnieje identyfikator w polu LinkedEligibleRoleAssignmentId, oznacza to, że rola jest obecnie aktywowana.
+Polecenia cmdlet powodują wyświetlenia listy obiektów przypisania ról pokazanych poniżej. Identyfikator tematu jest identyfikatorem użytkownika użytkownika, do którego przypisana jest rola. Stan przypisania może być aktywny lub kwalifikowalny. Jeśli użytkownik jest aktywny i istnieje identyfikator w polu LinkedEligibleRoleAssignmentId, oznacza to, że rola jest aktualnie aktywowana.
 
-Wynika
+Wynik:
 
 ![Pobieranie wszystkich przypisań ról dla organizacji usługi Azure AD](./media/powershell-for-azure-ad-roles/get-all-role-assignments-result.png)
 
 ## <a name="assign-a-role"></a>Przypisywanie roli
 
-Aby utworzyć kwalifikujące się przypisanie, użyj następującego polecenia cmdlet.
+Użyj następującego polecenia cmdlet, aby utworzyć odpowiednie przypisanie.
 
     Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'ff690580-d1c6-42b1-8272-c029ded94dec' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'adminAdd' -AssignmentState 'Eligible' -schedule $schedule -reason "dsasdsas" 
 
-Harmonogram, który definiuje godzinę rozpoczęcia i zakończenia przypisania, jest obiektem, który można utworzyć jak w poniższym przykładzie:
+Harmonogram, który definiuje czas rozpoczęcia i zakończenia przypisania, jest obiektem, który można utworzyć w następującym przykładzie:
 
     $schedule = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedSchedule
     $schedule.Type = "Once"
     $schedule.StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
     $schedule.endDateTime = "2020-07-25T20:49:11.770Z"
 
-## <a name="activate-a-role-assignment"></a>Aktywuj przypisanie roli
+## <a name="activate-a-role-assignment"></a>Uaktywnianie przypisania roli
 
-Aby aktywować kwalifikujące się przypisanie, użyj następującego polecenia cmdlet.
+Użyj następującego polecenia cmdlet, aby aktywować kwalifikujące się przypisanie.
 
     Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'UserAdd' -AssignmentState 'Active' -schedule $schedule -reason "dsasdsas" 
 
-To polecenie cmdlet jest niemal identyczne z poleceniem cmdlet do tworzenia przypisania roli. Kluczową różnicą między poleceniami cmdlet jest, że dla parametru – type aktywacja ma wartość "userAdd", a nie "adminAdd". Druga różnica polega na tym, że parametr – AssignmentState jest "aktywny" zamiast "kwalifikujący się".
+To polecenie cmdlet jest prawie identyczne z poleceniem cmdlet do tworzenia przypisania roli. Kluczową różnicą między poleceniami cmdlet jest to, że dla parametru –Type aktywacja jest "userAdd" zamiast "adminAdd". Inną różnicą jest to, że parametr –AssignmentState to "Aktywny" zamiast "Kwalifikujący się".
 
 > [!Note]
-> Istnieją dwa ograniczenia dotyczące aktywacji roli za poorednictwem programu PowerShell.
-> 1. Jeśli w ustawieniach roli jest wymagany system biletu/numer biletu, nie ma możliwości podawania ich jako parametru. W rezultacie nie będzie możliwe uaktywnienie roli poza Azure Portal. Ta funkcja jest wdrażana w programie PowerShell w ciągu następnych kilku miesięcy.
-> 1. W przypadku korzystania z uwierzytelniania wieloskładnikowego w ramach aktywacji roli obecnie nie jest możliwe, aby program PowerShell zakwestionował użytkownika podczas aktywowania jego roli. Zamiast tego użytkownicy będą musieli wyzwolić wyzwanie usługi MFA, gdy łączą się z usługą Azure AD, wykonując [ten wpis w blogu](http://www.anujchaudhary.com/2020/02/connect-to-azure-ad-powershell-with-mfa.html) od jednego z naszych inżynierów. Jeśli tworzysz aplikację dla usługi PIM, jedną z możliwych implementacji jest zażądanie użytkowników i ponowne połączenie ich z modułem po otrzymaniu błędu "MfaRule".
+> Istnieją dwa scenariusze ograniczające aktywację roli za pośrednictwem programu PowerShell.
+> 1. Jeśli potrzebujesz systemu biletu / numeru biletu w ustawieniach roli, nie ma możliwości podania ich jako parametru. W związku z tym nie będzie można aktywować rolę poza witryną Azure portal. Ta funkcja jest wdrażana w programie PowerShell w ciągu najbliższych kilku miesięcy.
+> 1. Jeśli do aktywacji roli wymagane jest uwierzytelnianie wieloskładnikowe, obecnie program PowerShell nie może wyzywać użytkownika po aktywowaniu roli. Zamiast tego użytkownicy będą musieli wyzwolić wyzwanie usługi MFA, gdy łączą się z usługą Azure AD, wykonując [ten wpis w blogu](http://www.anujchaudhary.com/2020/02/connect-to-azure-ad-powershell-with-mfa.html) od jednego z naszych inżynierów. Jeśli tworzysz aplikację dla usługi PIM, jedną z możliwych implementacji jest wyzwanie dla użytkowników i ponownie połączyć ich z modułem po otrzymaniu błędu "MfaRule".
 
 ## <a name="retrieving-and-updating-role-settings"></a>Pobieranie i aktualizowanie ustawień roli
 
-Użyj poniższego polecenia cmdlet, aby pobrać wszystkie ustawienia roli w organizacji usługi Azure AD.
+Użyj następującego polecenia cmdlet, aby uzyskać wszystkie ustawienia roli w organizacji usługi Azure AD.
 
     Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'" 
 
-Ustawienie obejmuje cztery główne obiekty. Tylko trzy z tych obiektów są obecnie używane przez program PIM. UserMemberSettings to ustawienia aktywacji, AdminEligibleSettings to ustawienia przypisywania dla kwalifikujących się przypisań, a AdminmemberSettings to ustawienia przypisywania dla aktywnych przypisań.
+W ustawieniach znajdują się cztery główne obiekty. Tylko trzy z tych obiektów są obecnie używane przez pim. Ustawienia użytkowników to ustawienia aktywacji, Ustawienia administracyjne są ustawieniami przydziałów dla kwalifikujących się przydziałów, a ustawienia administracji są ustawieniami przypisania dla aktywnych przypisań.
 
 [![](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png "Get and update role settings")](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
 
@@ -126,13 +126,13 @@ Aby zaktualizować ustawienie roli, należy najpierw zdefiniować obiekt ustawie
     $setting.RuleIdentifier = "JustificationRule"
     $setting.Setting = "{'required':false}"
 
-Następnie można zastosować ustawienie do jednego z obiektów dla określonej roli, jak pokazano poniżej. Ten identyfikator jest IDENTYFIKATORem ustawienia roli, który można pobrać z wyniku polecenia cmdlet listy ustawień roli.
+Następnie można przejść do przodu i zastosować ustawienie do jednego z obiektów dla określonej roli, jak pokazano poniżej. Identyfikator w tym miejscu jest identyfikator ustawienia roli, które mogą być pobierane z wyniku polecenia cmdlet ustawień roli listy.
 
-    Set-AzureADMSPrivilegedRoleSetting -ProviderId ‘aadRoles’ -Id ‘ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId ‘3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId ‘2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
+    Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Przypisywanie roli niestandardowej usługi Azure AD](azure-ad-custom-roles-assign.md)
-- [Usuń lub zaktualizuj niestandardowe przypisanie roli usługi Azure AD](azure-ad-custom-roles-update-remove.md)
-- [Skonfiguruj niestandardowe przypisanie roli usługi Azure AD](azure-ad-custom-roles-configure.md)
+- [Usuwanie lub aktualizowanie przypisania niestandardowego zadania usługi Azure AD](azure-ad-custom-roles-update-remove.md)
+- [Konfigurowanie przypisania niestandardowego zadania usługi Azure AD](azure-ad-custom-roles-configure.md)
 - [Definicje ról w usłudze Azure AD](../users-groups-roles/directory-assign-admin-roles.md)

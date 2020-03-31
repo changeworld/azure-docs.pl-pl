@@ -1,5 +1,5 @@
 ---
-title: Modyfikowanie zawartości strony w portalu dla deweloperów w API Management
+title: Modyfikowanie zawartości strony w portalu dla deweloperów w usłudze API Management
 titleSuffix: Azure API Management
 description: Dowiedz się, jak edytować zawartość stron w portalu deweloperów w usłudze Azure API Management.
 services: api-management
@@ -15,22 +15,22 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
 ms.openlocfilehash: ebf2cbd430339378a09d10d91ad61327d24842e4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430635"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Modyfikowanie zawartości i układu stron w portalu deweloperów w usłudze Azure API Management
 Istnieją trzy podstawowe sposoby dostosowywania portalu deweloperów w usłudze Azure API Management:
 
-* [Edytuj zawartość stron statycznych i elementów układu strony][modify-content-layout] (wyjaśniono w tym przewodniku)
-* [Aktualizowanie stylów używanych dla elementów strony w portalu dla deweloperów][customize-styles]
+* [Edycja zawartości stron statycznych i elementów układu strony][modify-content-layout] (opisana w tym przewodniku)
+* [Aktualizacja stylów używanych dla elementów strony w portalu deweloperów][customize-styles]
 * [Modyfikowanie szablonów używanych dla stron wygenerowanych przez portal][portal-templates] (na przykład dokumentacji interfejsu API, produktów, uwierzytelniania użytkowników itp.)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="page-structure"> </a>Struktura stron portalu dla deweloperów
+## <a name="structure-of-developer-portal-pages"></a><a name="page-structure"> </a>Struktura stron portalu deweloperów
 
 Portal deweloperów jest oparty na systemie zarządzania zawartością. Układ każdej strony jest tworzony przez zestaw małych elementów nazywanych widżetami:
 
@@ -42,7 +42,7 @@ Wszystkie widżety można edytować.
 
 W ramach codziennej edycji stron zwykle modyfikowany jest tylko widżet Zawartość mający różną zawartość w przypadku poszczególnych stron.
 
-## <a name="modify-layout-widget"> </a>Modyfikowanie zawartości widżetu układu
+## <a name="modifying-the-contents-of-a-layout-widget"></a><a name="modify-layout-widget"> </a>Modyfikowanie zawartości widżetu układu
 
 Portal deweloperów jest dostępny z poziomu witryny Azure Portal.
 
@@ -55,8 +55,8 @@ Portal deweloperów jest dostępny z poziomu witryny Azure Portal.
 
 Teraz nowy nagłówek powinien być widoczny na każdej stronie portalu dla deweloperów.
 
-## <a name="next-steps"> </a>Następne kroki
-* [Aktualizowanie stylów używanych dla elementów strony w portalu dla deweloperów][customize-styles]
+## <a name="next-steps"></a><a name="next-steps"> </a>Następne kroki
+* [Aktualizacja stylów używanych dla elementów strony w portalu deweloperów][customize-styles]
 * [Modyfikowanie szablonów używanych dla stron wygenerowanych przez portal][portal-templates] (na przykład dokumentacji interfejsu API, produktów, uwierzytelniania użytkowników itp.)
 
 [Structure of developer portal pages]: #page-structure

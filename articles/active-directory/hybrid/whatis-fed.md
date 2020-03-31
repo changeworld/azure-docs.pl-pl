@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb8886987c09b504262d6ea12863a646d6022cc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: fd7a5b186ebc98babe1baacc9f56f39dc8fbc093
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73883648"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80049374"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>Co to jest federacja w usłudze Azure AD Connect?
 
@@ -36,9 +36,9 @@ Można sfederować środowisko lokalne z usługą Azure AD i użyć tej federacj
 ## <a name="next-steps"></a>Następne kroki
 
 - [Co to jest tożsamość hybrydowa?](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
-- [Co to są programy Azure AD Connect i Connect Health?](whatis-azure-ad-connect.md)
+- [Co to jest usługa Azure AD Connect i connect health?](whatis-azure-ad-connect.md)
 - [Co to jest synchronizacja skrótów haseł?](whatis-phs.md)
 - [Co to jest federacja?](whatis-fed.md)
 - [Co to jest logowanie jednokrotne?](how-to-connect-sso.md)
-- [How federation works (Jak działa federacja)](how-to-connect-fed-whatis.md)
-- [Konfigurowanie federacji z serwerem PingFederate](how-to-connect-install-custom.md#configuring-federation-with-pingfederate)
+- [Jak działa federacja](how-to-connect-fed-whatis.md)
+- [Federacja z serwerem PingFederate](how-to-connect-install-custom.md#configuring-federation-with-pingfederate)

@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie Azure Security Center dla agenta IoT | Microsoft Docs
-description: Dowiedz się, jak skonfigurować Azure Security Center dla agentów zabezpieczeń IoT do użycia z Azure Security Center dla usługi IoT Security.
+title: Konfigurowanie usługi Azure Security Center dla agenta IoT| Dokumenty firmy Microsoft
+description: Dowiedz się, jak skonfigurować usługę Azure Security Center dla agentów zabezpieczeń IoT do użytku z usługą Azure Security Center for IoT security service.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,38 +16,38 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
 ms.openlocfilehash: 70396cdcaf8b6e2ac66619290eea35a7b260cd9a
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461253"
 ---
 # <a name="tutorial-configure-security-agents"></a>Samouczek: Konfigurowanie agentów zabezpieczeń
 
-W tym artykule wyjaśniono Azure Security Center dla agentów zabezpieczeń IoT oraz szczegółowo, jak je zmienić i skonfigurować. 
+W tym artykule opisano usługę Azure Security Center dla agentów zabezpieczeń IoT oraz szczegółowe informacje na temat ich zmiany i konfigurowania. 
 
 > [!div class="checklist"]
 > * Konfigurowanie alertów zabezpieczeń
-> * Zmień zachowanie agenta, edytując właściwości przędzy
-> * Odkryj konfigurację domyślną
+> * Zmienianie zachowania agenta przez edytowanie właściwości bliźniaczej reprezentacji
+> * Odnajduj konfigurację domyślną
 
 ## <a name="agents"></a>Agenci
 
-Azure Security Center dla agentów zabezpieczeń IoT zbiera dane z urządzeń IoT i wykonuje działania w celu ograniczenia wykrytych luk w zabezpieczeniach. Konfigurację agenta zabezpieczeń można sterować za pomocą zestawu właściwości wieloosiowego modułu, które możesz dostosować. Ogólnie rzecz biorąc, pomocnicze aktualizacje tych właściwości są rzadko używane.  
+Usługa Azure Security Center dla agentów zabezpieczeń IoT zbiera dane z urządzeń IoT i wykonuje akcje zabezpieczeń w celu wyeliminowania wykrytych luk w zabezpieczeniach. Konfiguracja agenta zabezpieczeń jest kontrolowana przy użyciu zestawu właściwości bliźniaczej reprezentacji modułu, które można dostosować. Ogólnie rzecz biorąc, pomocnicze aktualizacje tych właściwości są rzadkie.  
 
-Azure Security Center dla obiektu konfiguracji przędzy agenta zabezpieczeń IoT jest obiektem formatu JSON. Obiekt konfiguracji to zestaw właściwości, które można kontrolować, aby kontrolować zachowanie agenta. 
+Obiekt konfiguracji bliźniaczej reprezentacji agenta zabezpieczeń usługi Azure Security Center for IoT jest obiektem w formacie JSON. Obiekt konfiguracji to zestaw właściwości, które można zdefiniować w celu kontrolowania zachowania agenta. 
 
-Te konfiguracje umożliwiają dostosowanie agenta dla każdego wymaganego scenariusza. Na przykład automatyczne wyłączenie niektórych zdarzeń lub utrzymywanie zużycia mocy na minimalnym poziomie jest możliwe przez skonfigurowanie tych właściwości.  
+Te konfiguracje ułatwiają dostosowanie agenta dla każdego scenariusza wymagane. Na przykład automatyczne wykluczanie niektórych zdarzeń lub utrzymywanie zużycia energii na minimalnym poziomie jest możliwe przez skonfigurowanie tych właściwości.  
 
-Aby wprowadzić zmiany, użyj [schematu](https://aka.ms/iot-security-github-module-schema) konfiguracji usługi Azure Security Center dla usługi IoT Security Agent.  
+Użyj [schematu](https://aka.ms/iot-security-github-module-schema) konfiguracji agenta zabezpieczeń Usługi Azure Security Center dla IoT, aby wprowadzić zmiany.  
 
-## <a name="configuration-objects"></a>Obiekty konfiguracji 
+## <a name="configuration-objects"></a>Obiekty konfiguracyjne 
 
-Właściwości powiązane z każdym Azure Security Centerm agenta zabezpieczeń IoT znajdują się w obiekcie konfiguracji agenta, w sekcji żądane właściwości modułu **azureiotsecurity** . 
+Właściwości związane z każdym agentem zabezpieczeń Usługi Azure Security Center dla IoT znajdują się w obiekcie konfiguracji agenta, w sekcji żądane właściwości modułu **azureiotsecurity.** 
 
-Aby zmodyfikować konfigurację, Utwórz i zmodyfikuj ten obiekt w ramach tożsamości **azureiotsecurity** w module. 
+Aby zmodyfikować konfigurację, należy utworzyć i zmodyfikować ten obiekt wewnątrz tożsamości bliźniaczej reprezentacji modułu **azureiotsecurity.** 
 
-Jeśli obiekt konfiguracji agenta nie istnieje w wieloosiowce modułu **azureiotsecurity** , wszystkie wartości właściwości agenta zabezpieczeń są ustawione na wartość domyślne. 
+Jeśli obiekt konfiguracji agenta nie istnieje w bliźniaczej reprezentacji modułu **azureiotsecurity,** wszystkie wartości właściwości agenta zabezpieczeń są ustawione na domyślne. 
 
 ```json
 "desired": {
@@ -56,44 +56,44 @@ Jeśli obiekt konfiguracji agenta nie istnieje w wieloosiowce modułu **azureiot
 }
 ```
 
-## <a name="configuration-schema-and-validation"></a>Schemat i sprawdzanie poprawności konfiguracji 
+## <a name="configuration-schema-and-validation"></a>Schemat konfiguracji i sprawdzanie poprawności 
 
-Upewnij się, że konfiguracja agenta została sprawdzona względem tego [schematu](https://aka.ms/iot-security-github-module-schema). Agent nie zostanie uruchomiony, jeśli obiekt konfiguracji nie jest zgodny ze schematem.
+Upewnij się, że konfiguracja agenta jest sprawdzana pod kątem tego [schematu](https://aka.ms/iot-security-github-module-schema). Agent nie zostanie uruchomiony, jeśli obiekt konfiguracji nie jest zgodny ze schematem.
 
  
-Jeśli Agent jest uruchomiony, obiekt konfiguracji zostanie zmieniony na nieprawidłową konfigurację (Konfiguracja jest niezgodna ze schematem), Agent zignoruje nieprawidłową konfigurację i będzie nadal korzystać z bieżącej konfiguracji. 
+Jeśli gdy agent jest uruchomiony, obiekt konfiguracji zostanie zmieniony na nieprawidłową konfigurację (konfiguracja nie pasuje do schematu), agent zignoruje nieprawidłową konfigurację i będzie nadal używał bieżącej konfiguracji. 
 
-### <a name="configuration-validation"></a>Weryfikacja konfiguracji
+### <a name="configuration-validation"></a>Sprawdzanie poprawności konfiguracji
 
-Azure Security Center dla agenta zabezpieczeń IoT raportuje bieżącą konfigurację w sekcji zgłoszonych właściwości tożsamości bliźniaczyej modułu **azureiotsecurity** .
-Agent raportuje wszystkie dostępne właściwości, jeśli właściwość nie została ustawiona przez użytkownika, Agent zgłasza konfigurację domyślną.
+Agent zabezpieczeń Usługi Azure Security Center for IoT zgłasza swoją bieżącą konfigurację wewnątrz sekcji zgłoszonych właściwości bliźniaczej tożsamości modułu **azureiotsecurity.**
+Agent raportuje wszystkie dostępne właściwości, jeśli właściwość nie została ustawiona przez użytkownika, agent raportuje domyślną konfigurację.
 
-Aby sprawdzić poprawność konfiguracji, Porównaj wartości ustawione w odpowiedniej sekcji z wartościami zgłoszonymi w sekcji zgłoszone.
+Aby sprawdzić poprawność konfiguracji, porównaj wartości ustawione w żądanej sekcji z wartościami zgłoszonymi w zgłoszonej sekcji.
 
-W przypadku niezgodności między pożądanymi i zgłoszonymi właściwościami Agent nie mógł przeanalizować konfiguracji.
+Jeśli istnieje niezgodność między żądane i zgłaszane właściwości, agent nie był w stanie przeanalizować konfiguracji.
 
-Sprawdź poprawność żądanych właściwości względem [schematu](https://aka.ms/iot-security-github-module-schema), Usuń błędy i ponownie Ustaw żądane właściwości.
+Sprawdź poprawność żądanych właściwości względem [schematu,](https://aka.ms/iot-security-github-module-schema)napraw błędy i ponownie ustaw żądane właściwości!
 
 > [!NOTE]
-> Alert błędu konfiguracji zostanie wygenerowany z agenta w przypadku, gdy Agent nie mógł przeanalizować odpowiedniej konfiguracji.
-> Porównaj zgłoszoną i pożądaną sekcję, aby zrozumieć, czy alert nadal dotyczy
+> Alert o błędzie konfiguracji zostanie zwolniony z agenta w przypadku, gdy agent nie był w stanie przeanalizować żądanej konfiguracji.
+> Porównaj zgłoszoną i żądaną sekcję, aby dowiedzieć się, czy alert nadal ma zastosowanie
 
 ## <a name="editing-a-property"></a>Edytowanie właściwości 
 
-Wszystkie właściwości niestandardowe muszą być ustawione wewnątrz obiektu konfiguracji agenta w ramach sznurka modułu **azureiotsecurity** .
-Aby użyć domyślnej wartości właściwości, Usuń właściwość z obiektu konfiguracji.
+Wszystkie właściwości niestandardowe muszą być ustawione wewnątrz obiektu konfiguracji agenta w obiekcie **azureiotsecurity** modułu bliźniaczej reprezentacji.
+Aby użyć domyślnej wartości właściwości, usuń właściwość z obiektu konfiguracji.
 
 ### <a name="setting-a-property"></a>Ustawianie właściwości
 
-1. W IoT Hub Znajdź i wybierz urządzenie, które chcesz zmienić.
+1. W centrum IoT Hub znajdź i wybierz urządzenie, które chcesz zmienić.
 
-1. Kliknij urządzenie, a następnie w module **azureiotsecurity** .
+1. Kliknij na urządzeniu, a następnie na **azureiotsecurity** modułu.
 
-1. Kliknij pozycję **identyfikator modułu — sznurek**.
+1. Kliknij **moduł Identity Twin**.
 
 1. Edytuj właściwości, które chcesz zmienić w module zabezpieczeń.
    
-   Na przykład, aby skonfigurować zdarzenia połączeń jako wysoki priorytet i zbierać zdarzenia o wysokim priorytecie co 7 minut, użyj poniższej konfiguracji.
+   Na przykład, aby skonfigurować zdarzenia połączenia jako wysoki priorytet i zbierać zdarzenia o wysokim priorytecie co 7 minut, należy użyć następującej konfiguracji.
    
     ```json
     "desired": {
@@ -108,49 +108,49 @@ Aby użyć domyślnej wartości właściwości, Usuń właściwość z obiektu k
     }
     ```
 
-1. Kliknij przycisk **Save** (Zapisz).
+1. Kliknij przycisk **Zapisz**.
 
 ### <a name="using-a-default-value"></a>Używanie wartości domyślnej
 
-Aby użyć domyślnej wartości właściwości, Usuń właściwość z obiektu konfiguracji.
+Aby użyć domyślnej wartości właściwości, usuń właściwość z obiektu konfiguracji.
 
 ## <a name="default-properties"></a>Właściwości domyślne 
 
-Poniższa tabela zawiera właściwości, które mają być kontrolowane Azure Security Center dla agentów zabezpieczeń IoT.
+Poniższa tabela zawiera właściwości kontrolowane usługi Azure Security Center dla agentów zabezpieczeń IoT.
 
-Wartości domyślne są dostępne w odpowiednim schemacie w serwisie [GitHub](https\://aka.ms/iot-security-module-default).
+Wartości domyślne są dostępne w odpowiednim schemacie w [usłudze GitHub](https\://aka.ms/iot-security-module-default).
 
-| Name (Nazwa)| Stan | Prawidłowe wartości| Wartości domyślne| Opis |
+| Nazwa| Stan | Prawidłowe wartości| Wartości domyślne| Opis |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|highPriorityMessageFrequency|Wymagane: FAŁSZ |Prawidłowe wartości: czas trwania w formacie ISO 8601 |Wartość domyślna: PT7M |Maksymalny przedział czasu przed wysłaniem komunikatów o wysokim priorytecie.|
-|lowPriorityMessageFrequency |Wymagane: FAŁSZ|Prawidłowe wartości: czas trwania w formacie ISO 8601 |Wartość domyślna: PT5H |Maksymalny czas przed wysłaniem komunikatów o niskim priorytecie.| 
-|snapshotFrequency |Wymagaj: false|Prawidłowe wartości: czas trwania w formacie ISO 8601 |Wartość domyślna PT13H |Interwał tworzenia migawek stanu urządzenia.| 
-|maxLocalCacheSizeInBytes |Wymagane: FAŁSZ |Prawidłowe wartości: |Wartość domyślna: 2560000, większa niż 8192 | Maksymalny rozmiar magazynu (w bajtach) dozwolony dla pamięci podręcznej komunikatów agenta. Maksymalna ilość miejsca na przechowywanie komunikatów na urządzeniu przed wysłaniem komunikatów.| 
-|maxMessageSizeInBytes |Wymagane: FAŁSZ |Prawidłowe wartości: liczba dodatnia większa niż 8192, mniejsza niż 262144 |Wartość domyślna: 204800 |Maksymalny dozwolony rozmiar agenta do komunikatu w chmurze. To ustawienie Steruje ilością maksymalnych danych wysyłanych w poszczególnych wiadomościach. |
-|eventPriority $ {EventName} |Wymagane: FAŁSZ |Prawidłowe wartości: wysoka, niska, wyłączona |Wartości domyślne: |Priorytet każdego zdarzenia generowanego przez agenta | 
+|wysokaPriorityMessageFrequency|Wymagane: false |Prawidłowe wartości: Czas trwania w formacie ISO 8601 |Wartość domyślna: PT7M |Maksymalny przedział czasu przed wysłaniem wiadomości o wysokim priorytecie.|
+|niskaPriorityMessageFrequency |Wymagane: false|Prawidłowe wartości: Czas trwania w formacie ISO 8601 |Wartość domyślna: PT5H |Maksymalny czas przed wysłaniem wiadomości o niskim priorytecie.| 
+|snapshotFrequency |Wymagaj: false|Prawidłowe wartości: Czas trwania w formacie ISO 8601 |Wartość domyślna PT13H |Przedział czasu do tworzenia migawek stanu urządzenia.| 
+|maxLocalCacheSizeInBytes |Wymagane: false |Prawidłowe wartości: |Wartość domyślna: 2560000, większa niż 8192 | Maksymalna ilość miejsca do magazynowania (w bajtach) dozwolona dla pamięci podręcznej wiadomości agenta. Maksymalna ilość miejsca do przechowywania wiadomości na urządzeniu przed wysłaniem wiadomości.| 
+|maxMessageSizeInBytes |Wymagane: false |Prawidłowe wartości: Liczba dodatnia, większa niż 8192, mniejsza niż 262144 |Wartość domyślna: 204800 |Maksymalny dozwolony rozmiar wiadomości agenta w chmurze. To ustawienie steruje maksymalną ilością danych wysyłanych w każdej wiadomości. |
+|eventPriority${Nazwa zdarzenia} |Wymagane: false |Prawidłowe wartości: Wysoki, Niski, Wyłączony |Wartości domyślne: |Priorytet każdego zdarzenia wygenerowanego przez agenta | 
 
 ### <a name="supported-security-events"></a>Obsługiwane zdarzenia zabezpieczeń
 
-|Nazwa zdarzenia| PropertyName | Wartość domyślna| Zdarzenie migawki| Szczegóły stanu  |
+|Nazwa wydarzenia| PropertyName | Wartość domyślna| Zdarzenie migawki| Szczegóły Stan  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|Zdarzenie diagnostyczne|eventPriorityDiagnostic| Wyłączone| False| Zdarzenia diagnostyczne powiązane z agentem. To zdarzenie służy do pełnego rejestrowania.| 
+|Zdarzenie diagnostyczne|eventPriorityDiagnostic| Wyłączone| False| Zdarzenia diagnostyczne związane z agentem. Użyj tego zdarzenia do szczegółowego rejestrowania.| 
 |Błąd konfiguracji |eventPriorityConfigurationError |Małe |False |Agent nie może przeanalizować konfiguracji. Sprawdź konfigurację względem schematu.| 
-|Dane statystyczne dotyczące porzuconego zdarzenia |eventPriorityDroppedEventsStatistics |Małe |True|Statystyki zdarzeń związanych z agentem. |
-|Podłączony sprzęt|eventPriorityConnectedHardware |Małe |True |Migawka wszystkich urządzeń podłączonych do urządzenia.|
-|Nasłuchiwanie portów|eventPriorityListeningPorts |Wysoka |True |Migawka wszystkich otwartych portów nasłuchiwania na urządzeniu.|
-|Tworzenie procesu |eventPriorityProcessCreate |Małe |False |Przeprowadza inspekcję tworzenia procesu na urządzeniu.|
-|Zakończenie procesu|eventPriorityProcessTerminate |Małe |False |Przeprowadza inspekcję zakończenia procesu na urządzeniu.| 
-|Informacje o systemie |eventPrioritySystemInformation |Małe |True |Migawka informacji o systemie (na przykład: system operacyjny lub procesor CPU).| 
+|Statystyki porzuconych zdarzeń |eventPriorityDroppedEventsStatistics |Małe |True|Statystyki zdarzeń związanych z agentem. |
+|Podłączony sprzęt|eventPriorityConnectedHardware |Małe |True |Migawka całego sprzętu podłączonego do urządzenia.|
+|Porty nasłuchiwania|eventPriorityListeningPorts |Wysoka |True |Migawka wszystkich otwartych portów nasłuchiwania w urządzeniu.|
+|Tworzenie procesu |eventPriorityProcessKrównienie |Małe |False |Inspekcje procesu tworzenia na urządzeniu.|
+|Zakończenie procesu|eventPriorityProcessTerminate |Małe |False |Inspekcje zakończenia procesu na urządzeniu.| 
+|Informacje o systemie |eventPrioritySystemInformation |Małe |True |Migawka informacji o systemie (na przykład: system operacyjny lub procesora CPU).| 
 |Użytkownicy lokalni| eventPriorityLocalUsers |Wysoka |True|Migawka zarejestrowanych użytkowników lokalnych w systemie. |
-|Login|  eventPriorityLogin |Wysoka|False|Przeprowadź inspekcję zdarzeń logowania na urządzeniu (logowanie lokalne i zdalne).|
-|Tworzenie połączenia |eventPriorityConnectionCreate|Małe|False|Przeprowadza inspekcję połączeń TCP utworzonych do i z urządzenia. |
-|Konfiguracja zapory| eventPriorityFirewallConfiguration|Małe|True|Migawka konfiguracji zapory urządzenia (reguły zapory). |
-|Linia bazowa systemu operacyjnego| eventPriorityOSBaseline| Małe|True|Migawka kontroli linii bazowej systemu operacyjnego urządzenia.|
+|Logowanie|  eventPriorityLogin |Wysoka|False|Inspekcja zdarzeń logowania do urządzenia (logowania lokalne i zdalne).|
+|Tworzenie połączenia |eventPriorityConnectionCreate|Małe|False|Przeprowadza inspekcje połączeń TCP utworzonych do i z urządzenia. |
+|Konfiguracja zapory| eventPriorityFirewallKonfiguracja|Małe|True|Migawka konfiguracji zapory urządzenia (reguły zapory). |
+|Punkt odniesienia dla systemu operacyjnego| eventPriorityOSBaseline| Małe|True|Migawka sprawdzania linii bazowej systemu operacyjnego urządzenia.|
 |
  
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Opis Azure Security Center dotyczących zaleceń IoT](concept-recommendations.md)
-- [Eksplorowanie Azure Security Center dotyczących alertów IoT](concept-security-alerts.md)
-- [Uzyskiwanie dostępu do danych pierwotnych zabezpieczeń](how-to-security-data-access.md)
+- [Poznaj zaleceń dotyczące usługi Azure Security Center dla IoT](concept-recommendations.md)
+- [Eksploruj usługi Azure Security Center pod kątem alertów IoT](concept-security-alerts.md)
+- [Dostęp do nieprzetworzonych danych zabezpieczeń](how-to-security-data-access.md)

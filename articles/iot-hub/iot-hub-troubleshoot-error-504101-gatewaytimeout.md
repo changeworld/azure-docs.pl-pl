@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z usługą Azure IoT Hub błąd 504101 GatewayTimeout
+title: Rozwiązywanie problemów z błędem usługi Azure IoT Hub 504101 GatewayTimeout
 description: Dowiedz się, jak naprawić błąd 504101 GatewayTimeout
 author: jlian
 manager: briz
@@ -9,36 +9,36 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: b74a93e15d533bf9b15797e6371a25230f7a08f7
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76960674"
 ---
 # <a name="504101-gatewaytimeout"></a>504101 GatewayTimeout
 
-W tym artykule opisano przyczyny i rozwiązania **504101 błędów GatewayTimeout** .
+W tym artykule opisano przyczyny i rozwiązania dla **błędów 504101 GatewayTimeout.**
 
 ## <a name="symptoms"></a>Objawy
 
-Gdy próba wywołania metody bezpośredniej z IoT Hub na urządzenie, żądanie kończy się niepowodzeniem z błędem **504101 GatewayTimeout**.
+Podczas próby wywołania metody bezpośredniej z Usługi IoT Hub na urządzenie, żądanie kończy się niepowodzeniem z błędem **504101 GatewayTimeout**.
 
 ## <a name="cause"></a>Przyczyna
 
-### <a name="cause-1"></a>Przyczyny 1
+### <a name="cause-1"></a>Przyczyna 1
 
-IoT Hub napotkał błąd i nie może potwierdzić, czy metoda bezpośrednia została ukończona przed upływem limitu czasu.
+Centrum IoT hub napotkał błąd i nie można potwierdzić, jeśli metoda bezpośrednia została ukończona przed limitem czasu.
 
-### <a name="cause-2"></a>Przyczyny 2
+### <a name="cause-2"></a>Przyczyna 2
 
-W przypadku korzystania ze starszej wersji zestawu Azure C# IoT SDK (< 1.19.0), link AMQP między urządzeniem i IoT Hub może zostać porzucony dyskretnie z powodu błędu.
+Podczas korzystania z wcześniejszej wersji usługi Azure IoT C# SDK (<1.19.0), łącze AMQP między urządzeniem a centrum IoT hub można po cichu upuścić z powodu błędu.
 
 ## <a name="solution"></a>Rozwiązanie
 
 ### <a name="solution-1"></a>Rozwiązanie 1
 
-Wydaj ponowną próbę.
+Wystaw ponowienie próby.
 
 ### <a name="solution-2"></a>Rozwiązanie 2
 
-Uaktualnij do najnowszej wersji zestawu Azure IOT C# SDK.
+Uaktualnij do najnowszej wersji SDK języka Azure IOT C#.

@@ -1,6 +1,6 @@
 ---
-title: Azure AD v2 Windows Desktop Wprowadzenie-config | Microsoft Docs
-description: Jak aplikacja Windows Desktop .NET (XAML) może uzyskać token dostępu i wywołać interfejs API chroniony przez punkt końcowy Azure Active Directory v2.
+title: Wprowadzenie do pulpitu usługi Azure AD w wersji 2 — konfigura | Dokumenty firmy Microsoft
+description: Jak aplikacja Windows Desktop .NET (XAML) może uzyskać token dostępu i wywołać interfejs API chroniony przez punkt końcowy usługi Azure Active Directory w wersji 2.
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
@@ -17,16 +17,16 @@ ms.date: 01/29/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.openlocfilehash: 4c757b52e7378bffe4a4954022b131b772a337cf
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897686"
 ---
 # <a name="add-the-applications-registration-information-to-your-app"></a>Dodawanie informacji rejestracyjnych aplikacji do aplikacji
 W tym kroku należy dodać identyfikator aplikacji do projektu.
 
-1.  Otwórz `App.xaml.cs` i Zastąp wiersz zawierający `ClientId`:
+1.  Otwórz `App.xaml.cs` i wymień `ClientId` linię zawierającą:
 
 ```csharp
 private static string ClientId = "[Enter the application Id here]";

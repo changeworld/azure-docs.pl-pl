@@ -1,6 +1,6 @@
 ---
-title: Metryki zapytania SQL dla interfejsu API SQL usługi Azure Cosmos DB
-description: Dowiedz się więcej o tym, jak Instrumentacja i debugować wydajność zapytań SQL usługi Azure Cosmos DB żądań.
+title: Metryki zapytań SQL dla interfejsu API SQL usługi Azure Cosmos DB DB
+description: Dowiedz się, jak instrumentować i debugować wydajność zapytań SQL żądań usługi Azure Cosmos DB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,48 +8,48 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69614824"
 ---
-# <a name="tuning-query-performance-with-azure-cosmos-db"></a>Dostrajanie wydajności zapytań za pomocą usługi Azure Cosmos DB
+# <a name="tuning-query-performance-with-azure-cosmos-db"></a>Tuning query performance with Azure Cosmos DB (Dostosowywanie wydajności zapytań w usłudze Azure Cosmos DB)
 
-Usługa Azure Cosmos DB zapewnia [interfejsu API SQL dla wykonywanie zapytań o dane](how-to-sql-query.md), bez konieczności schematu lub indeksów pomocniczych. Ten artykuł zawiera następujące informacje dla deweloperów:
+Usługa Azure Cosmos DB udostępnia [interfejs API SQL do wykonywania zapytań o dane](how-to-sql-query.md), bez konieczności tworzenia schematu lub indeksów pomocniczych. Ten artykuł zawiera następujące informacje dla deweloperów:
 
-* Szczegółowych informacji o sposobie działania wykonywania zapytania SQL usługi Azure Cosmos DB
-* Szczegółowe informacje na temat zapytania nagłówki żądania i odpowiedzi oraz opcje zestawu SDK klienta
-* Wskazówki i najlepsze rozwiązania dotyczące wydajności zapytań
-* Przykłady wykorzystania statystyk wykonywania SQL, aby debugować wydajność zapytań
+* Szczegółowe informacje na temat działania programu Sql usługi Azure Cosmos DB
+* Szczegółowe informacje o nagłówkach żądań i odpowiedzi kwerendy oraz opcjach SDK klienta
+* Porady i najlepsze wskazówki dotyczące wydajności kwerend
+* Przykłady wykorzystania statystyk wykonania SQL do debugowania wydajności kwerendy
 
-## <a name="about-sql-query-execution"></a>Wykonywanie zapytania SQL — informacje
+## <a name="about-sql-query-execution"></a>Informacje o wykonywaniu zapytań SQL
 
-W usłudze Azure Cosmos DB przechowywać dane w kontenerach, które można powiększać do dowolnego [przepływności żądania lub rozmiar](partition-data.md). Usługa Azure Cosmos DB jest skalowana bezproblemowo danych na fizyczne partycje dzieje się w tle do obsługi wzrostu ilości danych lub zwiększenie aprowizowanej przepływności. Możesz wykonywać zapytania SQL do dowolnego kontenera przy użyciu interfejsu API REST lub jednym z obsługiwanych [zestawów SDK SQL](sql-api-sdk-dotnet.md).
+W usłudze Azure Cosmos DB przechowujesz dane w kontenerach, które mogą rosnąć do dowolnego [rozmiaru magazynu lub żądania przepływności.](partition-data.md) Usługa Azure Cosmos DB bezproblemowo skaluje dane między partycjami fizycznymi w ramach okładek do obsługi wzrostu danych lub zwiększenia aprowizowanej przepływności. Zapytania SQL można wysyłać do dowolnego kontenera przy użyciu interfejsu API REST lub jednego z [obsługiwanych pakietów SDK SQL](sql-api-sdk-dotnet.md).
 
-Krótkie omówienie partycjonowania: zdefiniowanie klucza partycji, takich jak "city", który określa, jak dane zostanie podzielona na partycje fizyczne. Dane należące do pojedynczego klucza partycji (na przykład "city" == "Seattle") są przechowywane w partycji fizycznych, ale zazwyczaj jedna partycja fizycznej ma wiele kluczy partycji. Gdy partycja osiągnie rozmiar magazynu, usługa bezproblemowo dzieli partycji na dwóch nowych partycji i dzieli klucza partycji równomiernie na te partycje. Ponieważ partycje są przejściowy, interfejsy API należy użyć klasą abstrakcyjną "zakres kluczy partycji", oznacza zakresy skróty kluczy partycji. 
+Krótki przegląd partycjonowania: można zdefiniować klucz partycji, takich jak "miasto", który określa, jak dane są podzielone między partycje fizyczne. Dane należące do pojedynczego klucza partycji (na przykład "miasto" == "Seattle") są przechowywane w partycji fizycznej, ale zazwyczaj pojedyncza partycja fizyczna ma wiele kluczy partycji. Gdy partycja osiągnie rozmiar magazynu, usługa bezproblemowo dzieli partycję na dwie nowe partycje i dzieli klucz partycji równomiernie na te partycje. Ponieważ partycje są przejściowe, interfejsy API używają abstrakcji "zakresu klucza partycji", co oznacza zakresy skrótów klucza partycji. 
 
-Po wykonaniu zapytania do usługi Azure Cosmos DB zestawu SDK wykonuje te etapy logiczne:
+Po wystawieniu kwerendy do usługi Azure Cosmos DB zestaw SDK wykonuje następujące logiczne kroki:
 
-* Analizuje zapytania SQL w celu ustalenia planu wykonania zapytania. 
-* Jeśli zapytanie zawiera filtr względem klucza partycji, takich jak `SELECT * FROM c WHERE c.city = "Seattle"`, jest kierowany do pojedynczej partycji. Jeśli zapytanie nie ma filtr klucza partycji, a następnie jest wykonywany w wszystkie partycje, a wyniki są scalane po stronie klienta.
-* Zapytanie jest wykonywane w ramach każdej partycji w serii lub równolegle, na podstawie konfiguracji klienta. Każdej partycji zapytania może spowodować, że jeden lub więcej wystąpień komunikacji dwustronnej w zależności od złożoności zapytania skonfigurowany rozmiar strony, a aprowizowana przepływność kolekcji. Każdego wykonania zwraca liczbę [jednostek żądania](request-units.md) używane przez wykonanie zapytania i opcjonalnie statystyk wykonywania zapytań. 
-* Zestaw SDK wykonuje podsumowania wyników zapytań między partycjami. Na przykład jeśli zapytanie obejmuje klauzuli ORDER BY w partycjach, następnie wyniki z poszczególnymi partycjami są sortowane scalania do zwracają wyniki w kolejności posortowanej globalnie. Jeśli zapytanie jest agregacji, takiej jak `COUNT`, liczby elementów z poszczególnymi partycjami są sumowane do produkcji liczby całkowitej.
+* Przesiemać kwerendę SQL, aby określić plan wykonywania kwerendy. 
+* Jeśli kwerenda zawiera filtr względem klucza partycji, na przykład `SELECT * FROM c WHERE c.city = "Seattle"`jest kierowany do jednej partycji. Jeśli kwerenda nie ma filtru na klucz partycji, a następnie jest wykonywany we wszystkich partycjach, a wyniki są scalane po stronie klienta.
+* Kwerenda jest wykonywana w ramach każdej partycji w serii lub równolegle, na podstawie konfiguracji klienta. W ramach każdej partycji kwerenda może wykonać co najmniej jedną rundę w zależności od złożoności zapytania, skonfigurowanego rozmiaru strony i aprowizowanej przepływności kolekcji. Każde wykonanie zwraca liczbę [jednostek żądań](request-units.md) zużytych przez wykonanie kwerendy i opcjonalnie statystyki wykonywania kwerendy. 
+* SDK wykonuje podsumowanie wyników kwerendy na partycjach. Na przykład jeśli kwerenda obejmuje KOLEJNOŚĆ przez partycje, a następnie wyniki z poszczególnych partycji są scalane sortowane, aby zwrócić wyniki w kolejności globalnie posortowane. Jeśli kwerenda jest agregacja jak `COUNT`, liczby z poszczególnych partycji są sumowane w celu uzyskania ogólnej liczby.
 
-Zestawy SDK udostępniają różne opcje w celu wykonywania zapytań. Na przykład na platformie .NET te opcje są dostępne w `FeedOptions` klasy. W poniższej tabeli opisano te opcje i ich wpływ na czas wykonywania zapytania. 
+SDKs zapewniają różne opcje wykonywania zapytań. Na przykład w .NET te opcje `FeedOptions` są dostępne w klasie. W poniższej tabeli opisano te opcje i ich wpływ na czas wykonywania kwerendy. 
 
 | Opcja | Opis |
 | ------ | ----------- |
-| `EnableCrossPartitionQuery` | Musi być ustawiona na wartość true dla dowolnego zapytania, który wymaga wykonywania na więcej niż jednej partycji. Jest to jawne flagę, aby umożliwić kompromisy świadome wydajności w czasie projektowania. |
-| `EnableScanInQuery` | Musi być równa true, jeśli rezygnujesz z indeksowania, ale chcesz uruchomić zapytanie za pomocą skanowania, mimo to. Tylko zastosowanie, gdy indeksowanie dla ścieżki żądany filtr jest wyłączona. | 
-| `MaxItemCount` | Maksymalna liczba elementów do zwrócenia na komunikacji dwustronnej z serwerem. Przez ustawienie wartości -1, można pozwolić, serwer zarządzania liczby elementów. Alternatywnie można obniżyć tę wartość, aby pobrać tylko niewielka liczba elementów na komunikację dwustronną. 
-| `MaxBufferedItemCount` | To jest opcja po stronie klienta i używana do ograniczania zmniejszenie zużycia pamięci podczas wykonywania między partycjami klauzuli ORDER BY. Wyższa wartość pomaga zmniejszyć opóźnienie między partycjami sortowania. |
-| `MaxDegreeOfParallelism` | Pobiera lub ustawia liczbę równoczesnych uruchomień operacji po stronie klienta podczas równoległego wykonywania zapytań w usłudze Azure Cosmos Database. Wartość właściwości dodatnią ogranicza liczbę jednoczesnych operacji wartość zestawu. Jeśli jest ustawiona na wartość mniejszą niż 0, system automatycznie decyduje, liczby równoczesnych operacji do uruchomienia. |
-| `PopulateQueryMetrics` | Czas ładowania umożliwia rejestrowanie szczegółowe statystyki czasu spędzonego w różnych faz wykonywania zapytania, takie jak czas kompilacji, czas pętli indeksów i dokumentów. Pomoc techniczna systemu Azure, aby zdiagnozować problemy z wydajnością zapytań mogą udostępniać dane wyjściowe z statystyki zapytań. |
-| `RequestContinuation` | Można wznowić wykonywania zapytań, przekazując token kontynuacji nieprzezroczyste zwracany przez każde zapytanie. Token kontynuacji hermetyzuje stan wszystkich wymaganych do wykonywania zapytań. |
-| `ResponseContinuationTokenLimitInKb` | Można ograniczyć maksymalny rozmiar token kontynuacji zwrócony przez serwer. Należy ustawić, jeśli aplikacja hosta ma limity rozmiaru nagłówka odpowiedzi. To ustawienie może zwiększyć ogólną czas trwania i RU dla zapytania.  |
+| `EnableCrossPartitionQuery` | Musi być ustawiona na true dla każdej kwerendy, która wymaga wykonania na więcej niż jednej partycji. Jest to wyraźna flaga, aby umożliwić świadome kompromisy wydajności w czasie rozwoju. |
+| `EnableScanInQuery` | Musi być ustawiona na true, jeśli zrezygnowano z indeksowania, ale mimo to chcesz uruchomić kwerendę za pomocą skanowania. Dotyczy tylko wtedy, gdy indeksowanie żądanej ścieżki filtru jest wyłączone. | 
+| `MaxItemCount` | Maksymalna liczba elementów do zwrotu na czas podróży na serwer. Ustawiając na -1, można pozwolić serwerowi zarządzać liczbą elementów. Można też obniżyć tę wartość, aby pobrać tylko niewielką liczbę elementów na podróż w obie strony. 
+| `MaxBufferedItemCount` | Jest to opcja po stronie klienta i służy do ograniczenia zużycia pamięci podczas wykonywania kolejności między partycjami. Wyższa wartość pomaga zmniejszyć opóźnienie sortowania partycji krzyżowej. |
+| `MaxDegreeOfParallelism` | Pobiera lub ustawia liczbę równoczesnych operacji uruchomić po stronie klienta podczas wykonywania zapytań równoległych w usłudze bazy danych usługi Azure Cosmos. Wartość właściwości dodatniej ogranicza liczbę równoczesnych operacji do ustawionej wartości. Jeśli jest ustawiona na mniej niż 0, system automatycznie decyduje o liczbie równoczesnych operacji do uruchomienia. |
+| `PopulateQueryMetrics` | Umożliwia szczegółowe rejestrowanie statystyk czasu spędzonego w różnych fazach wykonywania kwerendy, takich jak czas kompilacji, czas pętli indeksu i czas ładowania dokumentu. Dane wyjściowe ze statystyk zapytań można udostępniać za pomocą pomocy technicznej platformy Azure w celu zdiagnozowania problemów z wydajnością kwerend. |
+| `RequestContinuation` | Można wznowić wykonywanie kwerendy, przekazując w tokenie kontynuacji nieprzezroczyste zwrócone przez dowolną kwerendę. Token kontynuacji hermetyzuje wszystkie stany wymagane do wykonywania kwerendy. |
+| `ResponseContinuationTokenLimitInKb` | Można ograniczyć maksymalny rozmiar tokenu kontynuacji zwracanego przez serwer. Może być konieczne ustawienie tego, jeśli host aplikacji ma ograniczenia rozmiaru nagłówka odpowiedzi. Ustawienie to może zwiększyć ogólny czas trwania i rus używane dla kwerendy.  |
 
-Na przykład Przyjrzyjmy przedstawiono przykładowe zapytanie na klucz partycji, Żądana kolekcja o `/city` jako partycję kluczy i zainicjowana przy użyciu 100 000 jednostek RU/s przepływności. W przypadku żądania tego zapytania za pomocą `CreateDocumentQuery<T>` na platformie .NET, podobnie do poniższego:
+Na przykład weźmy przykładową kwerendę na klucz partycji `/city` żądany w kolekcji z jako klucz partycji i aprowizować z 100 000 RU/s przepływności. Żądanie tej kwerendy przy użyciu `CreateDocumentQuery<T>` w .NET, jak następujące:
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -66,7 +66,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 FeedResponse<dynamic> result = await query.ExecuteNextAsync();
 ```
 
-Fragment kodu zestawu SDK, pokazana powyżej, odnosi się do następujących żądania interfejsu API REST:
+Fragment kodu SDK pokazany powyżej odpowiada następującemu żądaniu interfejsu API REST:
 
 ```
 POST https://arramacquerymetrics-westus.documents.azure.com/dbs/db/colls/sample/docs HTTP/1.1
@@ -93,9 +93,9 @@ Expect: 100-continue
 {"query":"SELECT * FROM c WHERE c.city = 'Seattle'"}
 ```
 
-Każdej strony wykonanie zapytania odnosi się do interfejsu API REST `POST` z `Accept: application/query+json` nagłówek i zapytanie SQL w treści. Każda kwerenda sprawia, że jeden lub więcej rund do serwera przy użyciu `x-ms-continuation` token powtarzane między klientem i serwerem, aby wznowić wykonywanie. Opcje konfiguracji w FeedOptions są przekazywane do serwera w formie nagłówki żądania. Na przykład `MaxItemCount` odpowiada `x-ms-max-item-count`. 
+Każda strona wykonywania kwerendy odpowiada `POST` interfejsowi API REST z nagłówkiem `Accept: application/query+json` i kwerendą SQL w treści. Każde zapytanie sprawia, że jeden lub `x-ms-continuation` więcej rund do serwera z tokenu echo między klientem i serwerem, aby wznowić wykonywanie. Opcje konfiguracji w opcjach FeedOptions są przekazywane do serwera w postaci nagłówków żądań. Na przykład `MaxItemCount` odpowiada `x-ms-max-item-count`. 
 
-Żądanie zwraca odpowiedź następujących (tutaj obcięto je dla czytelności):
+Żądanie zwraca następującą odpowiedź (obcięta dla czytelności):
 
 ```
 HTTP/1.1 200 Ok
@@ -122,54 +122,54 @@ x-ms-gatewayversion: version=1.14.33.2
 Date: Tue, 27 Jun 2017 21:59:49 GMT
 ```
 
-Następujące nagłówki odpowiedzi klucza zwróconych przez kwerendę:
+Nagłówki odpowiedzi klucza zwrócone z kwerendy są następujące:
 
 | Opcja | Opis |
 | ------ | ----------- |
-| `x-ms-item-count` | Liczba elementów zwróconych w odpowiedzi. Jest to zależne od podane `x-ms-max-item-count`, liczba elementów, które można dopasować w ramach odpowiedzi maksymalny rozmiar ładunku, aprowizowanej przepływności i czasu wykonywania zapytania. |  
-| `x-ms-continuation:` | Token kontynuacji, aby wznowić wykonywanie zapytania, jeśli są dostępne dodatkowe wyniki. | 
-| `x-ms-documentdb-query-metrics` | Statystyki zapytań do wykonywania. Jest to rozdzielany ciąg zawierający statystyk czasu poświęconego na różnych etapach wykonywania zapytania. Zwracane, gdy `x-ms-documentdb-populatequerymetrics` ustawiono `True`. | 
-| `x-ms-request-charge` | Liczba [jednostek żądania](request-units.md) używane przez zapytanie. | 
+| `x-ms-item-count` | Liczba elementów zwróconych w odpowiedzi. Jest to zależne `x-ms-max-item-count`od dostarczonej liczby elementów, które mogą być zmieszczone w maksymalny rozmiar ładunku odpowiedzi, aprowizowana przepływność i czas wykonywania kwerendy. |  
+| `x-ms-continuation:` | Token kontynuacji, aby wznowić wykonywanie kwerendy, jeśli dostępne są dodatkowe wyniki. | 
+| `x-ms-documentdb-query-metrics` | Statystyki kwerendy dla wykonania. Jest to ciąg rozdzielany zawierający statystyki czasu spędzonego w różnych fazach wykonywania kwerendy. Zwracany, `x-ms-documentdb-populatequerymetrics` jeśli `True`jest ustawiona na . | 
+| `x-ms-request-charge` | Liczba [jednostek żądań](request-units.md) zużytych przez kwerendę. | 
 
-Aby uzyskać więcej informacji na temat nagłówków żądań interfejsu API REST i opcji, zobacz [wykonywanie zapytań o zasoby przy użyciu interfejsu API REST](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
+Aby uzyskać szczegółowe informacje na temat nagłówków i opcji żądań interfejsu API REST, zobacz [Wykonywanie zapytań o zasoby przy użyciu interfejsu API REST](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
 
-## <a name="best-practices-for-query-performance"></a>Najlepsze rozwiązania dotyczące wydajności zapytań
-Poniżej przedstawiono najbardziej typowe czynniki, które mają wpływ na wydajność zapytań usługi Azure Cosmos DB. Firma Microsoft zagłęb się w każdej z tych tematów, w tym artykule.
+## <a name="best-practices-for-query-performance"></a>Najważniejsze wskazówki dotyczące wydajności kwerendy
+Poniżej przedstawiono najczęstsze czynniki wpływające na wydajność zapytań usługi Azure Cosmos DB. Zagłębiamy się w każdy z tych tematów w tym artykule.
 
-| współczynnik | Porada | 
+| Czynnikiem | Porada | 
 | ------ | -----| 
-| Aprowizowana przepływność | Zmierz jednostek RU na zapytanie i upewnij się, że wymagane aprowizowanej przepływności zapytań. | 
-| Partycjonowanie i klucze partycji | Preferuj zapytania z wartością klucza partycji w klauzuli filtru w celu uzyskania niskich opóźnień. |
-| Opcje zestawu SDK i zapytań | Zestaw SDK najlepszych rozwiązań, takich jak połączenie bezpośrednie i Dostosuj opcje wykonywania zapytania po stronie klienta. |
-| Opóźnienie sieci | Konto w ramach sieci obciążenie w pomiaru i odczytu z najbliższego regionu za pomocą międzyregionalnych interfejsów API. |
-| Zasady indeksowania | Upewnij się, że masz wymagany ścieżki/zasady indeksowania dla zapytania. |
-| Metryk wykonywania zapytania | Analizuj metryki wykonywania zapytania, aby zidentyfikować potencjalne ponownego kształtów zapytań i danych.  |
+| Aprowizowana przepływność | Zmierz ru na kwerendę i upewnij się, że masz wymaganą aprowizowaną przepływność dla zapytań. | 
+| Partycjonowanie i klucze partycji | Korzyść zapytania z wartością klucza partycji w klauzuli filtru dla małych opóźnień. |
+| SDK i opcje kwerend | Postępuj zgodnie z najlepszymi rozwiązaniami sdk, takimi jak łączność bezpośrednia, i dostroić opcje wykonywania zapytań po stronie klienta. |
+| Opóźnienie sieci | Uwzględniaj obciążenie sieci w pomiarach i używaj wielowykonanych interfejsów API do odczytu z najbliższego regionu. |
+| Zasady indeksowania | Upewnij się, że masz wymagane ścieżki indeksowania/zasady dla kwerendy. |
+| Metryki wykonywania kwerend | Analizowanie metryk wykonywania kwerendy w celu zidentyfikowania potencjalnych przepisań kształtów kwerendy i danych.  |
 
 ### <a name="provisioned-throughput"></a>Aprowizowana przepływność
-Cosmos DB tworzenia kontenerów, danych, z których każdy z zarezerwowaną przepływnością wyrażoną w żądaniu jednostki (RU) na sekundę. Odczytu dokumentu o rozmiarze 1 KB jest 1 RU i każdej operacji (takich jak zapytania) jest znormalizować do stałej liczby jednostek żądania oparte na jego złożoność. Na przykład, jeśli masz 1000 jednostek RU/s aprowizowaną dla kontenera i masz zapytania, takiego jak `SELECT * FROM c WHERE c.city = 'Seattle'` który zużywa 5 jednostek RU, a następnie przeprowadzić (1000 jednostek RU/s) / (5 jednostek RU/query) = 200 zapytań na sekundę takich zapytań na sekundę. 
+W usłudze Cosmos DB tworzysz kontenery danych, z których każdy ma zarezerwowaną przepływność wyrażoną w jednostkach żądań (RU) na sekundę. Odczyt dokumentu 1 KB to 1 RU, a każda operacja (w tym zapytania) jest normalizowana do stałej liczby ru na podstawie jego złożoności. Na przykład jeśli masz 1000 RU/s aprowizować dla kontenera i masz kwerendę taką jak `SELECT * FROM c WHERE c.city = 'Seattle'` ta zużywa 5 ru, następnie można wykonać (1000 RU/s) / (5 RU/query) = 200 zapytań/s takich zapytań na sekundę. 
 
-Jeśli prześlesz ponad 200 zapytań na sekundę, szybkości żądań przychodzących ponad 200/s uruchomienia usługi. Zestawy SDK automatycznie obsługiwać ten przypadek, wykonując wycofywania/ponawiania, w związku z tym można zauważyć większych opóźnieniach, aby te zapytania. Zwiększenie aprowizowanej przepływności wymaganą wartość zwiększa Twoje zapytanie opóźnienia i przepływności. 
+Jeśli prześlesz więcej niż 200 zapytań/s, usługa rozpocznie ograniczanie szybkości żądań przychodzących powyżej 200/s. SDK automatycznie obsługiwać ten przypadek, wykonując backoff/retry, w związku z tym można zauważyć większe opóźnienie dla tych zapytań. Zwiększenie aprowizowanej przepływności do wymaganej wartości zwiększa opóźnienie zapytania i przepływność. 
 
-Aby dowiedzieć się więcej na temat jednostek żądania, zobacz [jednostek żądania](request-units.md).
+Aby dowiedzieć się więcej o jednostkach żądań, zobacz [Żądania jednostek](request-units.md).
 
 ### <a name="partitioning-and-partition-keys"></a>Partycjonowanie i klucze partycji
 W usłudze Azure Cosmos DB zapytania są przeważnie wykonywane w kolejności od najszybszego/nabardziej efektywnego do wolniejszego/mniej efektywnego. 
 
-* Pobierz na pojedynczym kluczu partycji i klucz elementu
-* Zapytanie z klauzulą filtru pojedynczego klucza partycji
-* Zapytania bez klauzuli filtru równości lub zakres dowolne właściwości
-* Zapytania bez filtrów
+* GET na jednym kluczu partycji i kluczu elementu
+* Zapytanie z klauzulą filtru na jednym kluczu partycji
+* Zapytanie bez klauzuli filtru równości lub zakresu dla dowolnej właściwości
+* Zapytanie bez filtrów
 
-Zapytania, które należy zapoznać się z wszystkie partycje muszą większych opóźnień, a następnie wykorzystywać wyższe (RUS). Ponieważ każda partycja zawiera, automatycznego indeksowania wszystkich właściwości, zapytanie może ich obsługa jest wydajna z indeksu w tym przypadku. Można tworzyć zapytania, obejmujących wiele partycji szybciej przy użyciu opcji równoległości.
+Zapytania, które należy skonsultować się ze wszystkimi partycjami, wymagają większego opóźnienia i mogą zużywać wyższe procesory RU. Ponieważ każda partycja ma automatyczne indeksowanie względem wszystkich właściwości, kwerenda może być skutecznie obsługiwana z indeksu w tym przypadku. Można wywrzeć zapytania, które obejmują partycje szybciej przy użyciu opcji równoległości.
 
-Aby dowiedzieć się więcej na temat partycjonowania i klucze partycji, zobacz [partycjonowanie w usłudze Azure Cosmos DB](partition-data.md).
+Aby dowiedzieć się więcej na temat partycjonowania i kluczy partycji, zobacz [Partycjonowanie w usłudze Azure Cosmos DB](partition-data.md).
 
-### <a name="sdk-and-query-options"></a>Opcje zestawu SDK i zapytań
-Zobacz [porady dotyczące wydajności](performance-tips.md) i [testowania Wydajnościowego](performance-testing.md) dotyczące sposobu uzyskania optymalnej wydajności po stronie klienta z usługi Azure Cosmos DB. W tym za pomocą najnowszych zestawów SDK, konfigurowanie konfiguracje specyficzne dla platformy, takich jak domyślna liczba połączeń, częstotliwość operacji wyrzucania elementów bezużytecznych i przy użyciu opcji łączności uproszczone, takich jak bezpośrednio/TCP. 
+### <a name="sdk-and-query-options"></a>SDK i opcje kwerend
+Zobacz [wskazówki dotyczące wydajności](performance-tips.md) i [testowanie wydajności,](performance-testing.md) aby uzyskać najlepszą wydajność po stronie klienta z usługi Azure Cosmos DB. Obejmuje to korzystanie z najnowszych zestawów SDK, konfigurowanie konfiguracji specyficznych dla platformy, takich jak domyślna liczba połączeń, częstotliwość wyrzucania elementów bezużytecznych i używanie lekkich opcji łączności, takich jak Direct/TCP. 
 
 
-#### <a name="max-item-count"></a>Maksymalna liczba elementów
-Dla zapytań, wartość `MaxItemCount` może mieć znaczący wpływ na czas wykonywania zapytania end-to-end. Każdy komunikacji dwustronnej z serwerem zwróci nie więcej niż liczba elementów w `MaxItemCount` (domyślnie 100 elementów). Ustawienie tej opcji na wartość większą (-1 jest maksymalną i zalecane) zwiększa ogólną czasu trwania zapytania, ograniczenie liczby rund między serwerem a klientem, szczególnie w przypadku zapytań przy użyciu dużych zestawów wyników.
+#### <a name="max-item-count"></a>Maksymalna liczba przedmiotów
+W przypadku kwerend wartość `MaxItemCount` może mieć znaczący wpływ na czas kwerendy end-to-end. Każda podróż w obie strony na serwer zwraca `MaxItemCount` nie więcej niż liczbę elementów w (Domyślnie 100 elementów). Ustawienie tej wartości na wyższą wartość (-1 jest maksymalna i zalecane) poprawi ogólny czas trwania zapytania, ograniczając liczbę rund między serwerem a klientem, szczególnie w przypadku zapytań z dużymi zestawami wyników.
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -182,7 +182,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ```
 
 #### <a name="max-degree-of-parallelism"></a>Maksymalny stopień równoległości
-Zapytania można dostrajanie `MaxDegreeOfParallelism` Aby zidentyfikować najlepsze konfiguracje dla aplikacji, szczególnie w przypadku wykonywania zapytań między partycjami (bez filtrowania na wartość klucza partycji). `MaxDegreeOfParallelism`  Określa maksymalną liczbę zadań równoległych, czyli maksymalną liczbę partycji odwiedzin równolegle. 
+W przypadku kwerend `MaxDegreeOfParallelism` dostroić, aby zidentyfikować najlepsze konfiguracje dla aplikacji, zwłaszcza w przypadku wykonywania kwerend między partycjami (bez filtru na wartość klucza partycji). `MaxDegreeOfParallelism`steruje maksymalną liczbą równoległych zadań, tj. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -196,30 +196,30 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ```
 
 Załóżmy, że
-* D = Domyślna maksymalna liczba zadań równoległych (= łączna liczba procesorów w komputerze klienckim)
-* P = określonych przez użytkownika maksymalną liczbę równoległych zadań podrzędnych
-* N = liczba partycji, które potrzeb odwiedzin odpowiedzi na kwerendę
+* D = Domyślna maksymalna liczba równoległych zadań (= całkowita liczba procesora na komputerze klienckim)
+* P = Określona przez użytkownika maksymalna liczba równoległych zadań
+* N = Liczba partycji, które należy odwiedzić, aby odpowiedzieć na zapytanie
 
-Poniżej przedstawiono wpływ jak zapytania równolegle będzie się zachowywał tak dla różnych wartości P.
-* (P == 0) = > Tryb szeregowej
-* (P == 1) = > maksymalna liczba jedno zadanie
-* (P > 1) = > zadań równoległych Min (P, N) 
-* (P < 1) = > zadań równoległych Min (N, D)
+Poniżej przedstawiono implikacje zachowania zapytań równoległych dla różnych wartości P.
+* (P == 0) => trybie szeregowym
+* (P == 1) => Maksymalnie jedno zadanie
+* (P > 1) => Min (P, N) zadania równoległe 
+* (P < 1) => Min (N, D) zadania równoległe
 
-Informacje o wersji zestawu SDK i wyświetlić szczegółowe informacje na temat metod i klas zaimplementowano [zestawów SDK SQL](sql-api-sdk-dotnet.md)
+Informacje o wersji sdk i szczegóły dotyczące zaimplementowanych klas i metod można znaleźć w [pakietach SDK SQL](sql-api-sdk-dotnet.md)
 
 ### <a name="network-latency"></a>Opóźnienie sieci
-Zobacz [dystrybucję globalną usługi Azure Cosmos DB](tutorial-global-distribution-sql-api.md) jak skonfigurować dystrybucję globalną i nawiązać połączenie z najbliższego regionu. Opóźnienie sieci ma znaczący wpływ na wydajność zapytań, gdy trzeba utworzyć wiele rund lub pobieranie dużych zestawu wyników z zapytania. 
+Zobacz [dystrybucja globalna usługi Azure Cosmos DB,](tutorial-global-distribution-sql-api.md) aby dowiedzieć się, jak skonfigurować dystrybucję globalną i połączyć się z najbliższym regionem. Opóźnienie sieci ma znaczący wpływ na wydajność kwerendy, gdy trzeba zrobić wiele rund lub pobrać duży zestaw wyników z kwerendy. 
 
-Sekcję metryk wykonywania zapytania wyjaśnia, jak pobrać czas wykonywania zapytania na serwerach ( `totalExecutionTimeInMs`), dzięki czemu można odróżnić czas potrzebny do wykonywania zapytań i czas potrzebny do sieci tranzytowej.
+Sekcja dotycząca metryk wykonywania kwerend wyjaśnia sposób pobierania czasu wykonywania `totalExecutionTimeInMs`serwerów kwerend ( ), dzięki czemu można odróżnić czas spędzony w wykonywaniu kwerend a czas spędzony w tranzycie sieciowym.
 
 ### <a name="indexing-policy"></a>Zasady indeksowania
-Zobacz [konfigurowania zasad indeksowania](index-policy.md) indeksowania ścieżek, typów i trybów i ich wpływ na wykonanie zapytania. Domyślnie zasady indeksowania używa skrótu indeksowania dla ciągów, która obowiązuje dla zapytań o równość, ale nie dla zakresu zapytania/order przez zapytania. Jeśli potrzebujesz zapytań o zakres dla ciągów, zaleca się określenie zakresu typu indeksu dla wszystkich ciągów. 
+Zobacz [Konfigurowanie zasad indeksowania](index-policy.md) dla indeksowania ścieżek, rodzajów i trybów oraz wpływu na wykonywanie kwerend. Domyślnie zasady indeksowania używa indeksowania hash dla ciągów, który jest skuteczny dla zapytań równości, ale nie dla zakres kwerend/kolejność przez kwerendy. Jeśli potrzebujesz zapytań zakres dla ciągów, zaleca się określenie typu indeksu zakresu dla wszystkich ciągów. 
 
-Domyślnie Azure Cosmos DB będzie stosować Automatyczne indeksowanie do wszystkich danych. W przypadku scenariuszy wstawiania o wysokiej wydajności należy rozważyć wykluczenie ścieżek, ponieważ spowoduje to zmniejszenie kosztu RU dla każdej operacji wstawiania. 
+Domyślnie usługa Azure Cosmos DB zastosuje automatyczne indeksowanie do wszystkich danych. W przypadku scenariuszy wstawiania o wysokiej wydajności należy rozważyć wyłączenie ścieżek, ponieważ zmniejszy to koszt RU dla każdej operacji wstawiania. 
 
-## <a name="query-execution-metrics"></a>Metryk wykonywania zapytania
-Możesz uzyskać szczegółowych metryk dotyczących wykonywania zapytań, przekazując opcjonalny `x-ms-documentdb-populatequerymetrics` nagłówka (`FeedOptions.PopulateQueryMetrics` w zestawie SDK platformy .NET). Wartość zwrócona w `x-ms-documentdb-query-metrics` ma następujące pary klucz-wartość przeznaczone do zaawansowanego rozwiązywania problemów dotyczących wykonywania zapytania. 
+## <a name="query-execution-metrics"></a>Metryki wykonywania kwerend
+Można uzyskać szczegółowe metryki dotyczące wykonywania kwerendy, przekazując w opcjonalnym `x-ms-documentdb-populatequerymetrics` nagłówku (`FeedOptions.PopulateQueryMetrics` w pliku .NET SDK). Wartość zwrócona w `x-ms-documentdb-query-metrics` ma następujące pary klucz-wartość przeznaczone do zaawansowanego rozwiązywania problemów dotyczących wykonywania zapytania. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -239,41 +239,41 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 | Metryka | Jednostka | Opis | 
 | ------ | -----| ----------- |
-| `totalExecutionTimeInMs` | milisekundy | Czas wykonywania zapytania | 
+| `totalExecutionTimeInMs` | milisekundy | Czas wykonywania kwerendy | 
 | `queryCompileTimeInMs` | milisekundy | Czas kompilacji kwerendy  | 
-| `queryLogicalPlanBuildTimeInMs` | milisekundy | Czas na utworzenie planu zapytania logiczne | 
-| `queryPhysicalPlanBuildTimeInMs` | milisekundy | Czas na utworzenie planu zapytania fizycznych | 
-| `queryOptimizationTimeInMs` | milisekundy | Czas potrzebny do optymalizacji zapytań | 
-| `VMExecutionTimeInMs` | milisekundy | Czas potrzebny do wykonywania zapytań | 
-| `indexLookupTimeInMs` | milisekundy | Czas spędzony w warstwie fizycznej indeksu | 
-| `documentLoadTimeInMs` | milisekundy | Czas poświęcony na ładowanie dokumentów  | 
-| `systemFunctionExecuteTimeInMs` | milisekundy | Całkowity czas wykonywania funkcji (wbudowane) systemu (w milisekundach)  | 
-| `userFunctionExecuteTimeInMs` | milisekundy | Całkowity czas wykonywania funkcje zdefiniowane przez użytkownika (w milisekundach) | 
+| `queryLogicalPlanBuildTimeInMs` | milisekundy | Czas na zbudowanie logicznego planu kwerend | 
+| `queryPhysicalPlanBuildTimeInMs` | milisekundy | Czas na tworzenie fizycznego planu zapytań | 
+| `queryOptimizationTimeInMs` | milisekundy | Czas poświęcony na optymalizację kwerendy | 
+| `VMExecutionTimeInMs` | milisekundy | Czas spędzony w czasie wykonywania kwerendy | 
+| `indexLookupTimeInMs` | milisekundy | Czas spędzony w warstwie indeksu fizycznego | 
+| `documentLoadTimeInMs` | milisekundy | Czas spędzony na załadunku dokumentów  | 
+| `systemFunctionExecuteTimeInMs` | milisekundy | Całkowity czas spędzony na wykonywaniu funkcji systemu (wbudowanego) w milisekundach  | 
+| `userFunctionExecuteTimeInMs` | milisekundy | Całkowity czas spędzony na wykonywaniu funkcji zdefiniowanych przez użytkownika w milisekundach | 
 | `retrievedDocumentCount` | count | Całkowita liczba pobranych dokumentów  | 
-| `retrievedDocumentSize` | B | Całkowity rozmiar pobrane dokumenty w bajtach  | 
-| `outputDocumentCount` | count | Liczba dokumentów, danych wyjściowych | 
+| `retrievedDocumentSize` | Bajtów | Całkowity rozmiar pobranych dokumentów w bajtach  | 
+| `outputDocumentCount` | count | Liczba dokumentów wyjściowych | 
 | `writeOutputTimeInMs` | milisekundy | Czas wykonywania kwerendy w milisekundach | 
-| `indexUtilizationRatio` | stosunek (< = 1) | Załadowano stosunek liczby dokumentów dopasowane przez filtr, aby liczba dokumentów  | 
+| `indexUtilizationRatio` | (<=1) | Stosunek liczby dokumentów dopasowanych przez filtr do liczby załadowanych dokumentów  | 
 
-Zestawy SDK klientów wewnętrznie mogą mieć wiele operacji zapytania do obsługi zapytań w ramach każdej partycji. Klient wysyła więcej niż jedno wywołanie dla partycji, jeśli łączna liczba wyników przekracza `x-ms-max-item-count`, jeśli zapytanie przekroczy aprowizowaną przepływność na partycję, lub jeśli ładunek zapytania osiągnie maksymalny rozmiar na stronie lub jeśli kwerenda osiągnie system przydzielonych limit czasu. Zwraca każdego wykonania zapytania częściowego `x-ms-documentdb-query-metrics` dla tej strony. 
+Zestaw SDK klienta może wewnętrznie wykonać wiele operacji kwerendy do obsługi kwerendy w ramach każdej partycji. Klient wykonuje więcej niż jedno wywołanie na `x-ms-max-item-count`partycję, jeśli całkowite wyniki przekraczają , jeśli kwerenda przekracza aprowizowaną przepływność dla partycji lub jeśli ładunek zapytania osiągnie maksymalny rozmiar na stronę lub jeśli kwerenda osiągnie limit czasu przydzielony do systemu. Każde częściowe wykonanie `x-ms-documentdb-query-metrics` kwerendy zwraca dla tej strony. 
 
-Poniżej przedstawiono kilka przykładowych zapytań i jak interpretować niektóre metryki zwrócone w wyniku wykonywania zapytań: 
+Oto kilka przykładowych zapytań i jak interpretować niektóre metryki zwrócone z wykonania kwerendy: 
 
-| Zapytanie | Przykładowe metryki | Opis | 
+| Zapytanie | Przykładowa metryka | Opis | 
 | ------ | -----| ----------- |
-| `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Liczba dokumentów, pobierane jest 100 + 1, aby dopasować klauzuli TOP. Zapytanie jest przede wszystkim zużywany czas w `WriteOutputTime` i `DocumentLoadTime` ponieważ skanowania. | 
-| `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount jest teraz wyższa (500 + 1, aby dopasować klauzuli TOP). | 
-| `SELECT * FROM c WHERE c.N = 55` | `"IndexLookupTime": "00:00:00.0009500"` | Około 0.9 ms odbywa się w IndexLookupTime dla klucza wyszukiwania, ponieważ jest on indeksu wyszukiwania `/N/?`. | 
-| `SELECT * FROM c WHERE c.N > 55` | `"IndexLookupTime": "00:00:00.0017700"` | Nieco więcej czasu (w wersji 1.7 ms) działania IndexLookupTime przez skanowanie zakresu, ponieważ jest on indeksu wyszukiwania `/N/?`. | 
-| `SELECT TOP 500 c.N FROM c` | `"IndexLookupTime": "00:00:00.0017700"` | Ten sam czas spędzony na `DocumentLoadTime` jako poprzednich zapytań, ale niższe `WriteOutputTime` ponieważ firma Microsoft jest projekcji tylko jedną właściwość. | 
-| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | Działania o 213 ms `UserDefinedFunctionExecutionTime` wykonywania funkcji zdefiniowanej przez użytkownika w każdej wartości `c.N`. |
-| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(c.Name, 'Den')` | `"IndexLookupTime": "00:00:00.0006400", "SystemFunctionExecutionTime": "00:00:00.0074100"` | Około 0,6 ms odbywa się w `IndexLookupTime` na `/Name/?`. Większość czasu wykonywania zapytania (OK. 7 ms) w `SystemFunctionExecutionTime`. |
-| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | Zapytanie jest wykonywane jako skanowania, ponieważ używa ona `LOWER`, a 500 poza 2491 pobrane dokumenty zostaną zwrócone. |
+| `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Liczba pobranych dokumentów wynosi 100+1, aby dopasować je do klauzuli TOP. Czas zapytania jest najczęściej `WriteOutputTime` `DocumentLoadTime` spędzany w i ponieważ jest to skanowanie. | 
+| `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount jest teraz wyższa (500+1, aby dopasować klauzulę TOP). | 
+| `SELECT * FROM c WHERE c.N = 55` | `"IndexLookupTime": "00:00:00.0009500"` | Około 0,9 ms jest wydawana w IndexLookupTime dla wyszukiwania klucza, `/N/?`ponieważ jest to wyszukiwanie indeksu na . | 
+| `SELECT * FROM c WHERE c.N > 55` | `"IndexLookupTime": "00:00:00.0017700"` | Nieco więcej czasu (1,7 ms) spędzonych w IndexLookupTime w zakresie `/N/?`skanowania, ponieważ jest to wyszukiwanie indeksu na . | 
+| `SELECT TOP 500 c.N FROM c` | `"IndexLookupTime": "00:00:00.0017700"` | Ten sam `DocumentLoadTime` czas spędzony `WriteOutputTime` na poprzednich kwerendach, ale niższy, ponieważ wyświetlamy tylko jedną właściwość. | 
+| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | Około 213 ms `UserDefinedFunctionExecutionTime` jest wydawane na wykonywanie UDF na każdej wartości `c.N`. |
+| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(c.Name, 'Den')` | `"IndexLookupTime": "00:00:00.0006400", "SystemFunctionExecutionTime": "00:00:00.0074100"` | Około 0,6 ms `IndexLookupTime` jest `/Name/?`wydawane na . Większość czasu wykonywania kwerendy (~7 `SystemFunctionExecutionTime`ms) w programie . |
+| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | Kwerenda jest wykonywana jako skanowanie, ponieważ używa `LOWER`, i 500 z 2491 pobranych dokumentów są zwracane. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
-* Aby dowiedzieć się więcej o obsługiwanych operatorów zapytań SQL i słów kluczowych, zobacz [zapytania SQL](sql-query-getting-started.md). 
-* Aby dowiedzieć się więcej na temat jednostek żądania, zobacz [jednostek żądania](request-units.md).
-* Aby dowiedzieć się więcej na temat zasad indeksowania, zobacz [zasad indeksowania](index-policy.md) 
+## <a name="next-steps"></a>Następne kroki
+* Aby dowiedzieć się więcej o obsługiwanych operatorach zapytań SQL i słowach kluczowych, zobacz [kwerenda SQL](sql-query-getting-started.md). 
+* Aby dowiedzieć się więcej o jednostkach żądań, zobacz [jednostki żądań](request-units.md).
+* Aby dowiedzieć się więcej o zasadach indeksowania, zobacz [zasady indeksowania](index-policy.md) 
 
 

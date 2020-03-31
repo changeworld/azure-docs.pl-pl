@@ -8,28 +8,28 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74072109"
 ---
-# <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Przykłady konfiguracji routera, aby skonfigurować i zarządzać nimi translatora adresów Sieciowych
+# <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Przykłady konfiguracji routera do konfigurowania translatora adresów sieciowych i zarządzania nim
 
-Ta strona zawiera przykłady konfiguracji translatora adresów Sieciowych dla Cisco ASA i Juniper SRX serii routerów, podczas pracy z usługą ExpressRoute. Te powinny być przykłady tylko do celów informacyjnych i nie może być używany, ponieważ jest. Możesz pracować z dostawcą, co pozwoli uzyskać odpowiednich konfiguracji sieci.
+Ta strona zawiera przykłady konfiguracji NAT dla routerów serii Cisco ASA i Juniper SRX podczas pracy z usługą ExpressRoute. Są one przeznaczone wyłącznie do próbek i nie mogą być używane w stanie, w jakim są. Można współpracować z dostawcą, aby wymyślić odpowiednie konfiguracje dla sieci.
 
 > [!IMPORTANT]
-> Przykłady na tej stronie są przeznaczone wyłącznie w przypadku orientacji. Należy skontaktować się z dostawcą zespołu sprzedaży / technicznych i zespołowi sieci, co pozwoli uzyskać odpowiednie konfiguracje do własnych potrzeb. Microsoft nie będzie obsługiwał problemy związane z konfiguracji opisanych na tej stronie. Musisz skontaktować się z dostawcą urządzenia problemów.
+> Przykłady na tej stronie mają być przeznaczone wyłącznie do wskazówek. Musisz współpracować z dostawcą sprzedaży / zespół techniczny i zespół sieci, aby wymyślić odpowiednie konfiguracje, aby spełnić Twoje potrzeby. Firma Microsoft nie będzie obsługiwać problemów związanych z konfiguracjami wymienionymi na tej stronie. W celu uzyskania pomocy technicznej należy skontaktować się z dostawcą urządzenia.
 > 
 > 
 
-* Poniższe przykłady konfiguracji routera mają zastosowanie do komunikacji równorzędnej Azure publicznej i firmy Microsoft. Nie musisz skonfigurować translatora adresów Sieciowych dla prywatnej komunikacji równorzędnej Azure. Przegląd [komunikacje równorzędne usługi ExpressRoute](expressroute-circuit-peerings.md) i [wymagania translatora adresów Sieciowych ExpressRoute](expressroute-nat.md) Aby uzyskać więcej informacji.
+* Poniższe przykłady konfiguracji routera dotyczą komunikacji równorzędnej usługi Azure Public i Microsoft. Nie można skonfigurować translatora adresów sieciowych dla prywatnej komunikacji równorzędnej platformy Azure. Przejrzyj [wymagania dotyczące komunikacji równorzędnej usługi ExpressRoute](expressroute-circuit-peerings.md) [i usługi ExpressRoute NAT, aby](expressroute-nat.md) uzyskać więcej informacji.
 
-* Łączność z Internetem i usługi ExpressRoute, należy użyć oddzielnych pul adresów IP translatora adresów Sieciowych. Przy użyciu tej samej puli adresów IP translatora adresów Sieciowych dla Internetu i usługi ExpressRoute spowoduje asymetryczny routing i utraty łączności.
+* Musisz używać oddzielnych pul ADRESÓW IP NAT dla łączności z Internetem i programem ExpressRoute. Korzystanie z tej samej puli adresów IP NAT w Internecie i ubrać w program ExpressRoute spowoduje asymetryczne routingu i utratę łączności.
 
 
-## <a name="cisco-asa-firewalls"></a>Cisco ASA zapory
-### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>Konfiguracja osobisty token dostępu dla ruchu z sieci klienta do firmy Microsoft
+## <a name="cisco-asa-firewalls"></a>Zapory Cisco ASA
+### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>Konfiguracja PAT dla ruchu z sieci klienta do firmy Microsoft
     object network MSFT-PAT
       range <SNAT-START-IP> <SNAT-END-IP>
 
@@ -49,14 +49,14 @@ Ta strona zawiera przykłady konfiguracji translatora adresów Sieciowych dla Ci
 
     nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
 
-### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>Konfiguracja osobisty token dostępu dla ruchu z firmy Microsoft do sieci klienta
+### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>Konfiguracja PAT dla ruchu z firmy Microsoft do sieci klienta
 
 **Interfejsy i kierunek:**
 
     Source Interface (where the traffic enters the ASA): inside
     Destination Interface (where the traffic exits the ASA): outside
 
-**Konfiguracja:**
+**Konfiguracji:**
 
 Pula NAT:
 
@@ -68,7 +68,7 @@ Serwer docelowy:
     object network Customer-Network
         network-object <IP> <Subnet-Mask>
 
-Grupy obiektów dla adresów IP klienta
+Grupa obiektów dla adresów IP klientów
 
     object-group network MSFT-Network-1
         network-object <MSFT-IP> <Subnet-Mask>
@@ -76,13 +76,13 @@ Grupy obiektów dla adresów IP klienta
     object-group network MSFT-PAT-Networks
         network-object object MSFT-Network-1
 
-Polecenia translatora adresów Sieciowych:
+Polecenia NAT:
 
     nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
 
 
-## <a name="juniper-srx-series-routers"></a>Juniper SRX serii routery
-### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Utwórz nadmiarowe interfejsy sieci Ethernet dla klastra
+## <a name="juniper-srx-series-routers"></a>Routery serii Juniper SRX
+### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Tworzenie nadmiarowych interfejsów Ethernet dla klastra
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -114,12 +114,12 @@ Polecenia translatora adresów Sieciowych:
     }
 
 
-### <a name="2-create-two-security-zones"></a>2. Utwórz dwie strefy zabezpieczeń
-* Zaufania strefy sieci wewnętrznej i godny dla zewnętrznych sieci skierowany routery graniczne
-* Przypisz odpowiednie interfejsy do strefy
-* Zezwalaj usługom na interfejsach
+### <a name="2-create-two-security-zones"></a>2. Tworzenie dwóch stref zabezpieczeń
+* Strefa zaufania dla sieci wewnętrznej i strefy nieufności dla routerów edge z widokiem na sieć zewnętrzną
+* Przypisywanie odpowiednich interfejsów do stref
+* Zezwalaj na usługi na interfejsach
 
-    zabezpieczenia {strefy {zaufania strefie zabezpieczeń {hosta — — ruch przychodzący {systemu usług {ping;                   } protokołów {bgp;                   interfejsy}} {reth0.100;               {}} Godny strefy zabezpieczeń {hosta — — ruch przychodzący {systemu usług {ping;                   } protokołów {bgp;                   interfejsy}} {reth1.100;               }           }       }   }
+    bezpieczeństwa { strefy { security-zone Trust { host-inbound-traffic { system-services { ping;                   } protokoły { bgp;                   } } interfejsy { reth0.100;               } } strefa zabezpieczeń Nieufność { host-ruch przychodzący { system-services { ping;                   } protokoły { bgp;                   } } interfejsy { reth1.100;               }           }       }   }
 
 
 ### <a name="3-create-security-policies-between-zones"></a>3. Tworzenie zasad zabezpieczeń między strefami
@@ -153,9 +153,9 @@ Polecenia translatora adresów Sieciowych:
     }
 
 
-### <a name="4-configure-nat-policies"></a>4. Skonfiguruj zasady NAT
-* Utwórz dwie pule translatora adresów Sieciowych. Jeden będzie służyć do NAT ruchu wychodzącego do firmy Microsoft i innych firmy Microsoft do klienta.
-* Tworzenie reguły NAT ruchu odpowiednich
+### <a name="4-configure-nat-policies"></a>4. Konfigurowanie zasad NAT
+* Utwórz dwie pule NAT. Jeden będzie używany do ruchu NAT wychodzących do firmy Microsoft i innych od firmy Microsoft do klienta.
+* Tworzenie reguł na nat odpowiedniego ruchu
   
        security {
            nat {
@@ -212,10 +212,10 @@ Polecenia translatora adresów Sieciowych:
            }
        }
 
-### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Skonfiguruj protokół BGP do anonsowania selektywnych prefiksów w każdym kierunku
-Zapoznaj się z przykładami na stronie Przykłady [konfiguracji routingu](expressroute-config-samples-routing.md) .
+### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Skonfiguruj BGP do reklamowania prefiksów selektywnych w każdym kierunku
+Zapoznaj się z przykładami na stronie [Przykłady konfiguracji routingu.](expressroute-config-samples-routing.md)
 
-### <a name="6-create-policies"></a>6. Utwórz zasady
+### <a name="6-create-policies"></a>6. Tworzenie zasad
     routing-options {
                   autonomous-system <Customer-ASN>;
     }

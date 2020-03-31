@@ -1,44 +1,44 @@
 ---
-title: Wdrażanie dedykowanych hostów platformy Azure przy użyciu Azure PowerShell
-description: Wdróż maszyny wirtualne na dedykowanych hostach przy użyciu Azure PowerShell.
+title: Wdrażanie dedykowanych hostów platformy Azure przy użyciu programu Azure PowerShell
+description: Wdrażanie maszyn wirtualnych do dedykowanych hostów przy użyciu programu Azure PowerShell.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 30d15970b00a81ab85cdb85d2c0a27ee23ed1b92
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: a228a83d711c84d2aa994e6de7d90af48cca7f28
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79130311"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530941"
 ---
-# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu Azure PowerShell
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu programu Azure PowerShell
 
-W tym artykule opisano sposób tworzenia [dedykowanego hosta](dedicated-hosts.md) platformy Azure do hostowania maszyn wirtualnych. 
+W tym artykule opisano, jak utworzyć [dedykowany host](dedicated-hosts.md) platformy Azure do obsługi maszyn wirtualnych (maszyn wirtualnych). 
 
-Upewnij się, że zainstalowano program Azure PowerShell w wersji 2.8.0 lub nowszej i zalogujesz się do konta platformy Azure w programie z dodatkiem `Connect-AzAccount`. 
+Upewnij się, że zainstalowano usługę Azure PowerShell w wersji 2.8.0 lub `Connect-AzAccount`nowszej, a użytkownik jest zalogowany do konta platformy Azure za pomocą programu . 
 
 ## <a name="limitations"></a>Ograniczenia
 
-- Zestawy skalowania maszyn wirtualnych nie są obecnie obsługiwane na dedykowanych hostach.
-- Rozmiary i typy sprzętu dostępne dla dedykowanych hostów różnią się w zależności od regionu. Więcej informacji można znaleźć na [stronie cennika](https://aka.ms/ADHPricing) hosta.
+- Zestawy skalowania maszyny wirtualnej nie są obecnie obsługiwane na dedykowanych hostach.
+- Rozmiary i typy sprzętu dostępne dla dedykowanych hostów różnią się w zależności od regionu. Więcej informacji można znaleźć na [stronie z cennikiem hosta.](https://aka.ms/ADHPricing)
 
 ## <a name="create-a-host-group"></a>Tworzenie grupy hostów
 
-**Grupa hostów** jest zasobem, który reprezentuje kolekcję dedykowanych hostów. Można utworzyć grupę hostów w regionie i strefie dostępności, a następnie dodać do niej hosty. W przypadku planowania wysokiej dostępności dostępne są dodatkowe opcje. W przypadku dedykowanych hostów można użyć jednej lub obu następujących opcji: 
-- Obejmuje wiele stref dostępności. W takim przypadku konieczne jest posiadanie grupy hostów w każdej ze stref, które mają być używane.
-- Obejmuje wiele domen błędów, które są mapowane na stojaki fizyczne. 
+**Grupa hostów** jest zasobem reprezentującym kolekcję dedykowanych hostów. Tworzysz grupę hostów w regionie i strefie dostępności i dodajesz do niej hosty. Podczas planowania wysokiej dostępności, istnieją dodatkowe opcje. Z dedykowanymi hostami można użyć jednej lub obu następujących opcji: 
+- Obejmuje wiele stref dostępności. W takim przypadku musisz mieć grupę hostów w każdej ze stref, których chcesz użyć.
+- Obejmują wiele domen błędów, które są mapowane do stojaków fizycznych. 
  
-W obu przypadkach należy podać liczbę domen błędów dla grupy hostów. Jeśli nie chcesz obejmować domen błędów w grupie, użyj liczby domen błędów wynoszącej 1. 
+W obu przypadkach należy podać liczbę domen błędów dla grupy hosta. Jeśli nie chcesz obejmować domen błędów w grupie, użyj liczby domen błędów 1. 
 
-Możesz również zdecydować się na korzystanie ze stref dostępności i domen błędów. Ten przykład umożliwia utworzenie grupy hostów w strefie 1 z 2 domenami błędów. 
+Można również zdecydować się na użycie zarówno stref dostępności, jak i domen błędów. W tym przykładzie tworzy grupę hostów w strefie 1, z 2 domen błędów. 
 
 
-```powershell
+```azurepowershell-interactive
 $rgName = "myDHResourceGroup"
-$location = "East US"
+$location = "EastUS"
 
 New-AzResourceGroup -Location $location -Name $rgName
 $hostGroup = New-AzHostGroup `
@@ -51,14 +51,14 @@ $hostGroup = New-AzHostGroup `
 
 ## <a name="create-a-host"></a>Tworzenie hosta
 
-Teraz Utwórzmy dedykowanego hosta w grupie hostów. Oprócz nazwy hosta, należy podać jednostkę SKU dla hosta. Jednostka SKU hosta przechwytuje obsługiwaną serię maszyn wirtualnych oraz generowanie sprzętu dla dedykowanego hosta.
+Teraz utwórzmy dedykowanego hosta w grupie hostów. Oprócz nazwy hosta, należy podać jednostkę SKU dla hosta. Jednostka SKU hosta przechwytuje obsługiwaną serię maszyn wirtualnych, a także generowanie sprzętu dla dedykowanego hosta.
 
-Aby uzyskać więcej informacji o jednostkach SKU i cenach hosta, zobacz [Cennik dedykowanego hosta platformy Azure](https://aka.ms/ADHPricing).
+Aby uzyskać więcej informacji na temat jednostek SKU hosta i cen, zobacz [Cennik hosta dedykowanego platformy Azure](https://aka.ms/ADHPricing).
 
-Jeśli ustawisz liczbę domen błędów dla grupy hostów, zostanie wyświetlony monit o określenie domeny błędów dla hosta. W tym przykładzie ustawimy domenę błędów dla hosta na 1.
+Jeśli ustawisz liczbę domen błędów dla grupy hostów, zostaniesz poproszony o określenie domeny błędów dla hosta. W tym przykładzie ustawiamy domenę błędów dla hosta na 1.
 
 
-```powershell
+```azurepowershell-interactive
 $dHost = New-AzHost `
    -HostGroupName $hostGroup.Name `
    -Location $location -Name myHost `
@@ -72,10 +72,10 @@ $dHost = New-AzHost `
 
 Utwórz maszynę wirtualną na dedykowanym hoście. 
 
-Jeśli podczas tworzenia grupy hostów została określona strefa dostępności, należy użyć tej samej strefy podczas tworzenia maszyny wirtualnej. W tym przykładzie, ponieważ nasza grupa hostów znajduje się w strefie 1, musimy utworzyć maszynę wirtualną w strefie 1.  
+Jeśli podczas tworzenia grupy hosta określono strefę dostępności, podczas tworzenia maszyny wirtualnej jest wymagana użycia tej samej strefy. W tym przykładzie, ponieważ nasza grupa hostów znajduje się w strefie 1, musimy utworzyć maszynę wirtualną w strefie 1.  
 
 
-```powershell
+```azurepowershell-interactive
 $cred = Get-Credential
 New-AzVM `
    -Credential $cred `
@@ -89,13 +89,13 @@ New-AzVM `
 ```
 
 > [!WARNING]
-> Jeśli utworzono maszynę wirtualną na hoście, który nie ma wystarczającej ilości zasobów, maszyna wirtualna zostanie utworzona w stanie niepowodzenia. 
+> Jeśli utworzysz maszynę wirtualną na hoście, który nie ma wystarczającej ilości zasobów, maszyna wirtualna zostanie utworzona w stanie FAILED. 
 
 ## <a name="check-the-status-of-the-host"></a>Sprawdź stan hosta
 
-Można sprawdzić stan kondycji hosta oraz liczbę maszyn wirtualnych, które można wdrożyć na hoście przy użyciu [GetAzHost](/powershell/module/az.compute/get-azhost) z parametrem `-InstanceView`.
+Można sprawdzić stan kondycji hosta i ile maszyn wirtualnych można nadal wdrożyć `-InstanceView` na hoście przy użyciu [GetAzHost](/powershell/module/az.compute/get-azhost) z parametrem.
 
-```
+```azurepowershell-interactive
 Get-AzHost `
    -ResourceGroupName $rgName `
    -Name myHost `
@@ -164,29 +164,75 @@ Location               : eastus
 Tags                   : {}
 ```
 
+## <a name="add-an-existing-vm"></a>Dodawanie istniejącej maszyny wirtualnej 
+
+Do dedykowanego hosta można dodać istniejącą maszynę wirtualną, ale najpierw maszyna wirtualna musi być zatrzymana\przydziałem. Przed przeniesieniem maszyny Wirtualnej na dedykowany host upewnij się, że konfiguracja maszyny Wirtualnej jest obsługiwana:
+
+- Rozmiar maszyny Wirtualnej musi znajdować się w tej samej rodzinie rozmiarów co dedykowany host. Na przykład jeśli dedykowany host jest DSv3, rozmiar maszyny Wirtualnej może być Standard_D4s_v3, ale nie może być Standard_A4_v2. 
+- Maszyna wirtualna musi znajdować się w tym samym regionie co dedykowany host.
+- Maszyna wirtualna nie może być częścią grupy miejsc docelowych zbliżeniowych. Usuń maszynę wirtualną z grupy miejsc docelowych zbliżeniowych przed przeniesieniem jej do dedykowanego hosta. Aby uzyskać więcej informacji, zobacz [Przenoszenie maszyny Wirtualnej z grupy miejsc docelowych zbliżeniowych](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- Maszyna wirtualna nie może być w zestawie dostępności.
+- Jeśli maszyna wirtualna znajduje się w strefie dostępności, musi być tą samą strefą dostępności co grupa hosta. Ustawienia strefy dostępności dla maszyny Wirtualnej i grupy hostów muszą być zgodne.
+
+Zastąp wartości zmiennych własnymi informacjami.
+
+```azurepowershell-interactive
+$vmRGName = "movetohost"
+$vmName = "myVMtoHost"
+$dhRGName = "myDHResourceGroup"
+$dhGroupName = "myHostGroup"
+$dhName = "myHost"
+
+$myDH = Get-AzHost `
+   -HostGroupName $dhGroupName `
+   -ResourceGroupName $dhRGName `
+   -Name $dhName
+   
+$myVM = Get-AzVM `
+   -ResourceGroupName $vmRGName `
+   -Name $vmName
+   
+$myVM.Host = New-Object Microsoft.Azure.Management.Compute.Models.SubResource
+
+$myVM.Host.Id = "$myDH.Id"
+
+Stop-AzVM `
+   -ResourceGroupName $vmRGName `
+   -Name $vmName -Force
+   
+Update-AzVM `
+   -ResourceGroupName $vmRGName `
+   -VM $myVM -Debug
+   
+Start-AzVM `
+   -ResourceGroupName $vmRGName `
+   -Name $vmName
+```
+
+
 ## <a name="clean-up"></a>Czyszczenie
 
-Opłaty są naliczane za dedykowane hosty nawet wtedy, gdy nie wdrożono żadnych maszyn wirtualnych. Należy usunąć wszystkie hosty, których obecnie nie używasz, aby zaoszczędzić koszty.  
+Opłaty są naliczane za dedykowane hosty, nawet jeśli nie są wdrażane żadne maszyny wirtualne. Należy usunąć wszystkie hosty, których obecnie nie używasz, aby zaoszczędzić koszty.  
 
-Hosta można usunąć tylko wtedy, gdy nie ma dłużej używanych maszyn wirtualnych. Usuń maszyny wirtualne za pomocą polecenia [Remove-AzVM](/powershell/module/az.compute/remove-azvm).
+Hosta można usunąć tylko wtedy, gdy nie ma już maszyn wirtualnych korzystających z niego. Usuń maszyny wirtualne za pomocą [remove-AzVM](/powershell/module/az.compute/remove-azvm).
 
-```powershell
+```azurepowershell-interactive
 Remove-AzVM -ResourceGroupName $rgName -Name myVM
 ```
 
-Po usunięciu maszyn wirtualnych można usunąć hosta za pomocą polecenia [Remove-AzHost](/powershell/module/az.compute/remove-azhost).
+Po usunięciu maszyn wirtualnych można usunąć hosta za pomocą [funkcji Usuń-AzHost](/powershell/module/az.compute/remove-azhost).
 
-```powershell
+```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
-Po usunięciu wszystkich hostów można usunąć grupę hostów za pomocą polecenia [Remove-AzHostGroup](/powershell/module/az.compute/remove-azhostgroup). 
+Po usunięciu wszystkich hostów można usunąć grupę hostów za pomocą [programu Remove-AzHostGroup](/powershell/module/az.compute/remove-azhostgroup). 
 
-```powershell
+```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
-Możesz również usunąć całą grupę zasobów w pojedynczym poleceniu za pomocą polecenia [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). Spowoduje to usunięcie wszystkich zasobów utworzonych w grupie, w tym wszystkich maszyn wirtualnych, hostów i grup hostów.
+Można również usunąć całą grupę zasobów w jednym poleceniu za pomocą [polecenia Usuń AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). Spowoduje to usunięcie wszystkich zasobów utworzonych w grupie, w tym wszystkich maszyn wirtualnych, hostów i grup hostów.
  
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $rgName
@@ -195,6 +241,6 @@ Remove-AzResourceGroup -Name $rgName
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Istnieje przykładowy szablon, który znajduje się w [tym miejscu](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md), który używa stref i domen błędów w celu uzyskania maksymalnej odporności w regionie.
+- Istnieje przykładowy szablon, znaleziono [tutaj,](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)który używa zarówno stref i domen błędów dla maksymalnej odporności w regionie.
 
-- Możesz również wdrożyć dedykowane hosty przy użyciu [Azure Portal](dedicated-hosts-portal.md).
+- Dedykowane hosty można również wdrażać za pomocą [portalu Azure.](dedicated-hosts-portal.md)
