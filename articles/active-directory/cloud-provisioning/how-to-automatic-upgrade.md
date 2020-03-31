@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect agenta aprowizacji w chmurze: automatyczne uaktualnianie | Microsoft Docs'
-description: W tym artykule opisano wbudowaną funkcję automatycznego uaktualniania w ramach agenta aprowizacji Azure AD Connect Cloud.
+title: 'Agent inicjowania obsługi administracyjnej chmury usługi Azure AD Connect: automatyczne uaktualnianie | Dokumenty firmy Microsoft'
+description: W tym artykule opisano wbudowaną funkcję automatycznego uaktualniania w agencie inicjowania obsługi administracyjnej w chmurze usługi Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,39 +16,39 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f09b2fc685881aa8a7bd87b6a855c657af9ef43d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78190317"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Azure AD Connect agenta aprowizacji w chmurze: automatyczne uaktualnianie
+# <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Agent inicjowania obsługi administracyjnej w chmurze usługi Azure AD Connect: automatyczne uaktualnianie
 
-Upewnienie się, że Azure Active Directory (Azure AD) łączenie z agentem aprowizacji usług w chmurze jest zawsze aktualne, dzięki funkcji automatycznego uaktualniania.
+Upewnienie się, że instalacja agenta inicjowania obsługi administracyjnej usługi Azure Active Directory (Azure AD) Connect jest zawsze aktualna, jest łatwa dzięki funkcji automatycznego uaktualniania.
 
-Agent jest instalowany w tym miejscu: "program files\Azure AD Connecting Agent\AADConnectProvisioningAgent.exe"
+Agent jest zainstalowany w tym miejscu: "Program files\Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe"
 
-Aby sprawdzić wersję, kliknij prawym przyciskiem myszy plik wykonywalny i wybierz polecenie Właściwości, a następnie Szczegóły.
+Aby zweryfikować wersję, kliknij prawym przyciskiem myszy plik wykonywalny i wybierz właściwości, a następnie szczegóły.
 
 ![Wersja pliku agenta](media/how-to-automatic-upgrade/agent1.png)
 
-Agent Aktualizator jest zainstalowany w tym miejscu: "program files\Azure AD Connect Provisioning Agent Updater\AzureADConnectAgentUpdater.exe"
+Aktualizacja agenta jest zainstalowana w tym miejscu: "Pliki programu\Agent aprowizowania usługi Azure AD Connect Updater\AzureADConnectAgentUpdater.exe"
 
-Aby sprawdzić wersję, kliknij prawym przyciskiem myszy plik wykonywalny i wybierz polecenie Właściwości, a następnie Szczegóły.
+Aby zweryfikować wersję, kliknij prawym przyciskiem myszy plik wykonywalny i wybierz właściwości, a następnie szczegóły.
 
-![Wersja agenta Aktualizator](media/how-to-automatic-upgrade/agent2.png)
+![Wersja programu aktualizacji agenta](media/how-to-automatic-upgrade/agent2.png)
 
 ## <a name="uninstall-the-agent"></a>Odinstalowywanie agenta
-Aby usunąć agenta, przejdź do pozycji **Odinstaluj lub zmień program** i Odinstaluj następujące elementy:
+Aby usunąć agenta, przejdź do **strony Odinstaluj lub zmień program** i odinstaluj następujące elementy:
 
-- **Microsoft Azure AD Aktualizator połączenia z agentem**
-- **Microsoft Azure AD połączyć się z agentem aprowizacji**
-- **Microsoft Azure AD Połącz pakiet agenta aprowizacji**
+- **Aktualizacja agenta usługi Microsoft Azure AD Connect**
+- **Agent inicjowania obsługi administracyjnej usługi Microsoft Azure AD Connect**
+- **Pakiet agenta aprowizacji usługi Microsoft Azure AD Connect**
 
-![Usuwanie agenta](media/how-to-automatic-upgrade/agent3.png)
+![Usunięcie agenta](media/how-to-automatic-upgrade/agent3.png)
 
 ## <a name="next-steps"></a>Następne kroki 
 
-- [Co to jest inicjowanie obsługi?](what-is-provisioning.md)
-- [Co to jest Azure AD Connect aprowizacji w chmurze?](what-is-cloud-provisioning.md)
+- [Co to jest aprowizacja?](what-is-provisioning.md)
+- [Co to jest aprowizacja w chmurze programu Azure AD Connect?](what-is-cloud-provisioning.md)
 

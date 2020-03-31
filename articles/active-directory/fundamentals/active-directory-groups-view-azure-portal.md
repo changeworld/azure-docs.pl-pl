@@ -1,5 +1,5 @@
 ---
-title: Szybki Start — wyświetlanie grup & członków — Azure AD
+title: Szybki start — wyświetlanie grup & członków — Azure AD
 description: Instrukcje wyszukiwania i wyświetlania grup w organizacji oraz ich członków.
 services: active-directory
 author: msaburnley
@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d52c90db5414c39c4e916bbab19c43739d9ea904
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75423017"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
@@ -27,7 +27,7 @@ Przy użyciu witryny Azure Portal możesz wyświetlić istniejące grupy i czło
 
 W tym przewodniku Szybki start wyświetlisz wszystkie istniejące grupy w organizacji wraz z przypisanymi do nich członkami.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/). 
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem musisz wykonać następujące czynności:
@@ -50,10 +50,10 @@ Utwórz nową grupę o nazwie _MDM policy - West_. Aby uzyskać więcej informac
     
     - **Typ członkostwa**: wybierz pozycję **Przypisane**.
 
-3. Wybierz pozycję **Utwórz**.
+3. Wybierz **pozycję Utwórz**.
 
 ## <a name="create-a-new-user"></a>Tworzenie konta nowego użytkownika
-Utwórz konto nowego użytkownika, który nazywa się _Alain Charon_. Użytkownik musi mieć konto, aby można było dodać go jako członka grupy. Najpierw sprawdź kartę "nazwy domen niestandardowych", aby uzyskać zweryfikowaną nazwę domeny, w której chcesz utworzyć użytkowników. Aby uzyskać więcej informacji na temat tworzenia konta nowego użytkownika, zobacz [How to add or delete users (Jak dodawać i usuwać konta użytkowników)](add-users-azure-active-directory.md).
+Utwórz konto nowego użytkownika, który nazywa się _Alain Charon_. Użytkownik musi mieć konto, aby można było dodać go jako członka grupy. Najpierw sprawdź kartę "Niestandardowe nazwy domen", aby uzyskać zweryfikowaną nazwę domeny, w której można utworzyć użytkowników. Aby uzyskać więcej informacji na temat tworzenia konta nowego użytkownika, zobacz [How to add or delete users (Jak dodawać i usuwać konta użytkowników)](add-users-azure-active-directory.md).
 
 1. Wybierz pozycje **Azure Active Directory** i **Użytkownicy**, a następnie pozycję **Nowy użytkownik**.
 
@@ -68,7 +68,7 @@ Utwórz konto nowego użytkownika, który nazywa się _Alain Charon_. Użytkowni
 ## <a name="add-a-group-member"></a>Dodawanie członka grupy
 Gdy masz już grupę i konto użytkownika, możesz dodać użytkownika _Alain Charon_ jako członka grupy _MDM policy - West_. Aby uzyskać więcej informacji na temat dodawania członków do grupy, zobacz [How to add or remove group members (Jak dodawać i usuwać członków grupy)](active-directory-groups-members-azure-portal.md).
 
-1. Wybierz pozycję **Azure Active Directory** > **Grupy**.
+1. Wybierz **pozycję Grupy usługi Azure Active Directory** > **Groups**.
 
 2. Na stronie **Grupy — Wszystkie grupy** wyszukaj grupę **MDM policy - West** i wybierz ją.
 
@@ -81,7 +81,7 @@ Gdy masz już grupę i konto użytkownika, możesz dodać użytkownika _Alain Ch
 ## <a name="view-all-groups"></a>Wyświetlanie wszystkich grup
 Na stronie **Grupy — Wszystkie grupy** w witrynie Azure Portal są widoczne wszystkie grupy w organizacji.
 
-- Wybierz pozycję **Azure Active Directory** > **Grupy**.
+- Wybierz pozycję**Grupy** **usługi Azure Active Directory** > .
 
     Zostanie wyświetlona strona **Grupy — Wszystkie grupy** zawierająca wszystkie aktywne grupy.
 

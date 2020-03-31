@@ -1,5 +1,5 @@
 ---
-title: Tworzenie klastra usługi Azure Eksplorator danych & DB za pomocą interfejsu wiersza polecenia platformy Azure
+title: Tworzenie klastra usługi Azure Data Explorer & bazy danych za pomocą interfejsu wiersza polecenia platformy Azure
 description: Dowiedz się, w jaki sposób utworzyć klaster i bazę danych usługi Azure Data Explorer przy użyciu interfejsu wiersza polecenia platformy Azure
 author: radennis
 ms.author: radennis
@@ -8,31 +8,31 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 6b8c2924e50da095c3bc5c7db2d2bf48ef5a27c2
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77561939"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Tworzenie klastra Eksplorator danych i bazy danych platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Tworzenie klastra i bazy danych usługi Azure Data Explorer przy użyciu interfejsu wiersza polecenia platformy Azure
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
-> * [Interfejs wiersza polecenia](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
-> * [C#](create-cluster-database-csharp.md)
+> * [Cli](create-cluster-database-cli.md)
+> * [Powershell](create-cluster-database-powershell.md)
+> * [C #](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
-> * [Szablon usługi ARM](create-cluster-database-resource-manager.md)
+> * [Szablon ARM](create-cluster-database-resource-manager.md)
 
-Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Aby używać usługi Azure Data Explorer, najpierw utwórz klaster, a następnie utwórz w tym klastrze co najmniej jedną bazę danych. Następnie pozyskaj (załaduj) dane do bazy danych, aby uruchamiać w niej zapytania. W tym artykule opisano tworzenie klastra i bazy danych przy użyciu interfejsu wiersza polecenia platformy Azure.
+Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Aby używać usługi Azure Data Explorer, najpierw utwórz klaster, a następnie utwórz w tym klastrze co najmniej jedną bazę danych. Następnie pozyskaj (załaduj) dane do bazy danych, aby uruchamiać w niej zapytania. W tym artykule utworzysz klaster i bazę danych przy użyciu interfejsu wiersza polecenia platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do wykonania tego artykułu jest potrzebna subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby ukończyć ten artykuł, potrzebujesz subskrypcji platformy Azure. Jeśli go nie masz, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia platformy Azure i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby sprawdzić wersję. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Jeśli zdecydujesz się zainstalować i używać interfejsu wiersza polecenia platformy Azure lokalnie, ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby sprawdzić wersję. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="configure-the-cli-parameters"></a>Konfigurowanie parametrów interfejsu wiersza polecenia
 
@@ -87,8 +87,8 @@ Jeśli wynik zawiera element `provisioningState` o wartości `Succeeded`, klaste
    | cluster-name | *azureclitest* | Nazwa klastra, w którym zostanie utworzona baza danych.|
    | name | *clidatabase* | Nazwa bazy danych.|
    | resource-group | *testrg* | Nazwa grupy zasobów, w której zostanie utworzony klaster. |
-   | soft-delete-period | *P365D* | Oznacza ilość czasu, przez jaki dane będą przechowywane do zapytania. Aby uzyskać więcej informacji, zobacz [zasady przechowywania](/azure/kusto/concepts/retentionpolicy) . |
-   | hot-cache-period | *P31D* | Oznacza czas przechowywania danych w pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [zasady pamięci podręcznej](/azure/kusto/concepts/cachepolicy) . |
+   | soft-delete-period | *P365D* | Oznacza czas, przez który dane będą przechowywane do zapytania. Aby uzyskać więcej informacji, zobacz [zasady przechowywania.](/azure/kusto/concepts/retentionpolicy) |
+   | hot-cache-period | *P31D* | Oznacza czas, przez który dane będą przechowywane w pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [zasady pamięci podręcznej.](/azure/kusto/concepts/cachepolicy) |
 
 1. Uruchom następujące polecenie, aby wyświetlić utworzoną bazę danych:
 
@@ -100,7 +100,7 @@ Masz teraz klaster i bazę danych.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-* Jeśli planujesz postępować zgodnie z innymi artykułami, Zachowaj utworzone zasoby.
+* Jeśli planujesz śledzić nasze inne artykuły, zachowaj utworzone zasoby.
 * Aby wyczyścić zasoby, usuń klaster. Usunięcie klastra powoduje również usunięcie znajdujących się w nim baz danych. Użyj następującego polecenia, aby usunąć klaster:
 
     ```azurecli-interactive
@@ -109,4 +109,4 @@ Masz teraz klaster i bazę danych.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Pozyskiwanie danych przy użyciu biblioteki języka Python Eksplorator danych platformy Azure](python-ingest-data.md)
+* [pozyskiwanie danych przy użyciu biblioteki języka Python w usłudze Azure Data Explorer](python-ingest-data.md)

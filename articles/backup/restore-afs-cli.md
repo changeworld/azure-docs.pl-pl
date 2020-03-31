@@ -1,24 +1,24 @@
 ---
 title: Przywracanie udziałów plików platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure
-description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure przywrócić kopie zapasowe udziałów plików platformy Azure w magazynie Recovery Services
+description: Dowiedz się, jak przywrócić zapasowe udziały plików platformy Azure w magazynie usług Recovery Services za pomocą interfejsu wiersza polecenia platformy Azure
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: 63b2be2fe24c1274ed1581b7b849de578c978842
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76931049"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Przywracanie udziałów plików platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure
 
-Interfejs wiersza polecenia platformy Azure zapewnia obsługę systemu Azure w programie. To doskonałe narzędzie do tworzenia niestandardowych automatyzacji do korzystania z zasobów platformy Azure. W tym artykule wyjaśniono, jak przywrócić cały udział plików lub określone pliki z punktu przywracania utworzonego przez [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) przy użyciu interfejsu wiersza polecenia platformy Azure. Te kroki można również wykonać przy użyciu programu [Azure PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-afs-automation) lub w witrynie [Azure Portal](backup-afs.md).
+Narzędzie cli platformy Azure zapewnia środowisko wiersza polecenia do zarządzania zasobami platformy Azure. Jest to doskonałe narzędzie do tworzenia automatyzacji niestandardowej do korzystania z zasobów platformy Azure. W tym artykule wyjaśniono, jak przywrócić cały udział plików lub określonych plików z punktu przywracania utworzonego przez [usługę Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) przy użyciu interfejsu wiersza polecenia platformy Azure. Te kroki można również wykonać przy użyciu programu [Azure PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-afs-automation) lub w witrynie [Azure Portal](backup-afs.md).
 
-Na końcu tego artykułu dowiesz się, jak wykonywać następujące operacje za pomocą interfejsu wiersza polecenia platformy Azure:
+Na końcu tego artykułu dowiesz się, jak wykonać następujące operacje za pomocą interfejsu wiersza polecenia platformy Azure:
 
-* Wyświetl punkty przywracania dla kopii zapasowej udziału plików platformy Azure.
-* Przywróć pełny udział plików platformy Azure.
-* Przywróć pojedyncze pliki lub foldery.
+* Wyświetlanie punktów przywracania dla kopii zapasowej udziału plików platformy Azure.
+* Przywracanie pełnego udziału plików platformy Azure.
+* Przywracanie pojedynczych plików lub folderów.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -26,35 +26,35 @@ Aby zainstalować interfejs wiersza polecenia lokalnie i korzystać z niego, nal
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym artykule przyjęto założenie, że masz już udział plików platformy Azure, którego kopia zapasowa została utworzona przez Azure Backup. Jeśli go nie masz, zobacz Tworzenie kopii zapasowych [udziałów plików platformy Azure przy użyciu interfejsu wiersza polecenia](backup-afs-cli.md) w celu skonfigurowania usługi Backup dla udziału plików. W tym artykule opisano użycie następujących zasobów:
+W tym artykule przyjęto założenie, że masz już udział plików platformy Azure, który jest wspierany przez usługę Azure Backup. Jeśli go nie masz, zobacz [Tworzenie kopii zapasowych udziałów plików platformy Azure w wierszu polecenia,](backup-afs-cli.md) aby skonfigurować kopię zapasową dla udziału plików. W tym artykule należy użyć następujących zasobów:
 
 | Udział plików  | Konto magazynu | Region | Szczegóły                                                      |
 | ----------- | --------------- | ------ | ------------------------------------------------------------ |
-| *migracji pamięci*  | *afsaccount*      | EastUS | Oryginalne źródło kopii zapasowej przy użyciu Azure Backup                 |
-| *azurefiles1* | *afaccount1*      | EastUS | Źródło docelowe używane do odzyskiwania lokalizacji alternatywnej |
+| *pliki azurefiles*  | *afsaccount (konto afsaccount)*      | Okręg wyborczy EastUS | Kopia zapasowa oryginalnego źródła przy użyciu usługi Azure Backup                 |
+| *pliki azurefiles1* | *afaccount1*      | Okręg wyborczy EastUS | Źródło docelowe używane do odzyskiwania lokalizacji alternatywnej |
 
-Możesz użyć podobnej struktury dla udziałów plików, aby wypróbować różne typy przywracania wyjaśnione w tym artykule.
+Można użyć podobnej struktury dla udziałów plików, aby wypróbować różne typy przywracania wyjaśnione w tym artykule.
 
-## <a name="fetch-recovery-points-for-the-azure-file-share"></a>Pobierz punkty odzyskiwania dla udziału plików platformy Azure
+## <a name="fetch-recovery-points-for-the-azure-file-share"></a>Pobieranie punktów odzyskiwania dla udziału plików platformy Azure
 
-Użyj polecenia [AZ Backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) , aby wyświetlić listę wszystkich punktów odzyskiwania kopii zapasowej udziału plików.
+Użyj polecenia cmdlet [listy punktów odzyskiwania kopii zapasowej az,](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) aby wyświetlić listę wszystkich punktów odzyskiwania dla kopii zapasowej udziału plików.
 
-Poniższy przykład pobiera listę punktów odzyskiwania dla udziału plików *migracji pamięci* na koncie magazynu *afsaccount* .
+W poniższym przykładzie pobiera listę punktów odzyskiwania dla udziału pliku *azurefiles* na koncie magazynu *afsaccount.*
 
 ```azurecli-interactive
 az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --backup-management-type azurestorage --item-name “AzureFileShare;azurefiles” --workload-type azurefileshare --out table
 ```
 
-Możesz również uruchomić poprzednie polecenie cmdlet przy użyciu przyjaznej nazwy kontenera i elementu, podając następujące dwa dodatkowe parametry:
+Poprzednią polecenie cmdlet można również uruchomić przy użyciu przyjaznej nazwy kontenera i elementu, podając następujące dwa dodatkowe parametry:
 
-* **--Backup-Management-Type**: *azurestorage*
-* **--Typ obciążenia**: *azurefileshare*
+* **--backup-management-type**: *azurestorage*
+* **--workload-type**: *azurefileshare*
 
 ```azurecli-interactive
 az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --backup-management-type azurestorage --item-name azurefiles --workload-type azurefileshare --out table
 ```
 
-Zestaw wyników to lista punktów odzyskiwania wraz ze szczegółami dotyczącymi czasu i spójności poszczególnych punktów przywracania.
+Zestaw wyników jest listą punktów odzyskiwania ze szczegółami czasu i spójności dla każdego punktu przywracania.
 
 ```output
 Name                Time                        Consistency
@@ -64,22 +64,22 @@ Name                Time                        Consistency
 932879614553967772  2020-01-04T21:33:04+00:00   FileSystemConsistent
 ```
 
-Atrybut **name** w danych wyjściowych odpowiada nazwie punktu odzyskiwania, który może być używany jako wartość parametru **--RP-Name** w operacji odzyskiwania.
+**Atrybut Name** w danych wyjściowych odpowiada nazwie punktu odzyskiwania, który może być używany jako wartość parametru **--rp-name** w operacjach odzyskiwania.
 
-## <a name="full-share-recovery-by-using-the-azure-cli"></a>Odzyskiwanie pełnego udziału przy użyciu interfejsu wiersza polecenia platformy Azure
+## <a name="full-share-recovery-by-using-the-azure-cli"></a>Pełne odzyskiwanie udziału przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Można użyć tej opcji przywracania, aby przywrócić pełny udział plików w lokalizacji oryginalnej lub alternatywnej.
+Za pomocą tej opcji przywracania można przywrócić pełny udział plików w oryginalnej lub alternatywnej lokalizacji.
 
-Zdefiniuj następujące parametry, aby wykonać operacje przywracania:
+Zdefiniuj następujące parametry do wykonywania operacji przywracania:
 
-* **--Container-Name**: nazwa konta magazynu, które hostuje kopię zapasową oryginalnego udziału plików. Aby pobrać nazwę lub przyjazną nazwę kontenera, użyj polecenia [AZ Backup Container list](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) .
-* **--Item-Name**: Nazwa kopii zapasowej oryginalnego pliku, który ma być używany dla operacji przywracania. Aby pobrać nazwę lub przyjazną nazwę elementu kopii zapasowej, użyj polecenia [AZ Backup Item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) .
+* **--container-name**: Nazwa konta magazynu, na którym znajduje się kopia zapasowa oryginalnego udziału plików. Aby pobrać nazwę lub przyjazną nazwę kontenera, użyj polecenia [az backup container list.](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)
+* **--item-name**: Nazwa kopii zapasowej oryginalnego udziału pliku, którego chcesz użyć do operacji przywracania. Aby pobrać nazwę lub przyjazną nazwę elementu kopii zapasowej, użyj polecenia [az backup item list.](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list)
 
-### <a name="restore-a-full-share-to-the-original-location"></a>Przywróć pełny udział do oryginalnej lokalizacji
+### <a name="restore-a-full-share-to-the-original-location"></a>Przywracanie pełnego udziału do oryginalnej lokalizacji
 
-W przypadku przywracania do oryginalnej lokalizacji nie trzeba określać parametrów związanych z elementem docelowym. Należy podać tylko **konflikt** .
+Po przywróceniu do oryginalnej lokalizacji nie trzeba określać parametrów związanych z obiektem docelowym. Należy podać tylko **rozwiązanie konfliktu.**
 
-W poniższym przykładzie zastosowano polecenie [AZ Backup Restore Restore-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) z trybem przywracania ustawionym na *originallocation* , aby przywrócić udział plików *migracji pamięci* w oryginalnej lokalizacji. Używany jest punkt odzyskiwania 932883129628959823, który uzyskano w obszarze [pobieranie punktów odzyskiwania dla udziału plików platformy Azure](#fetch-recovery-points-for-the-azure-file-share):
+W poniższym przykładzie użyto polecenia cmdlet [przywracania przywracania kopii zapasowej az](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) z trybem przywracania ustawionym na *originallocation* w celu przywrócenia udziału pliku *azurefiles* w oryginalnej lokalizacji. Używasz punktu odzyskiwania 932883129628959823, który został uzyskany w [punktach odzyskiwania pobierania dla udziału plików platformy Azure:](#fetch-recovery-points-for-the-azure-file-share)
 
 ```azurecli-interactive
 az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation --resolve-conflict overwrite --out table
@@ -91,18 +91,18 @@ Name                                  ResourceGroup
 6a27cc23-9283-4310-9c27-dcfb81b7b4bb  azurefiles
 ```
 
-Atrybut **name** w danych wyjściowych odpowiada nazwie zadania, które jest tworzone przez usługę kopii zapasowej dla operacji przywracania. Aby śledzić stan zadania, użyj polecenia [AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet.
+**Atrybut Name** w danych wyjściowych odpowiada nazwie zadania utworzonego przez usługę tworzenia kopii zapasowej dla operacji przywracania. Aby śledzić stan zadania, użyj polecenia cmdlet [zadania kopii zapasowej az.](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show)
 
-### <a name="restore-a-full-share-to-an-alternate-location"></a>Przywróć pełny udział w lokalizacji alternatywnej
+### <a name="restore-a-full-share-to-an-alternate-location"></a>Przywracanie pełnego udziału do lokalizacji alternatywnej
 
-Możesz użyć tej opcji, aby przywrócić udział plików w alternatywnej lokalizacji i zachować oryginalny udział plików jako. Określ następujące parametry odzyskiwania lokalizacji alternatywnej:
+Za pomocą tej opcji można przywrócić udział plików w lokalizacji alternatywnej i zachować oryginalny udział plików w stanie takim, w jakim jest. Określ następujące parametry dla odzyskiwania lokalizacji alternatywnej:
 
-* **--Target-Storage-account**: konto magazynu, do którego zostanie przywrócona zawartość kopii zapasowej. Docelowe konto magazynu musi znajdować się w tej samej lokalizacji co magazyn.
-* **--docelowy udział plików**: udział plików w docelowym koncie magazynu, do którego zostanie przywrócona zawartość kopii zapasowej.
-* **--Target-folder**: folder w udziale plików, do którego przywracane są dane. Jeśli kopia zapasowa ma zostać przywrócona do folderu głównego, nadaj wartości folderu docelowego jako pusty ciąg.
-* **--Rozwiąż konflikt**: instrukcje w przypadku konfliktu z przywróconymi danymi. Akceptuje **zastępowanie** lub **pomijanie**.
+* **--target-storage-account:** konto magazynu, na którym przywrócono kopię zapasową zawartości. Docelowe konto magazynu musi znajdować się w tej samej lokalizacji co magazyn.
+* **--target-file-share:** Udział plików na docelowym koncie magazynu, na którym przywrócono kopię zapasową zawartości.
+* **--target-folder**: Folder pod udziałem plików, do którego dane są przywracane. Jeśli kopia zapasowa ma zostać przywrócona do folderu głównego, należy podać wartości folderu docelowego jako pusty ciąg.
+* **--resolve-conflict:** Instrukcja, jeśli występuje konflikt z przywróconymi danymi. Akceptuje **zastąpienie** lub **pominięcie**.
 
-Poniższy przykład używa [AZ Backup Restore Restore-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) z trybem przywracania jako *alternatelocation* , aby przywrócić udział plików *migracji pamięci* na koncie magazynu *afsaccount* do udziału plików *azurefiles1* na koncie magazynu *afaccount1* .
+W poniższym przykładzie użyto [az backup restore restore-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) z trybem przywracania jako *alternatelocation,* aby przywrócić udział pliku *azurefiles* na koncie magazynu *afsaccount* do udziału plików *azurefiles1 na* koncie magazynu *afaccount1.*
 
 ```azurecli-interactive
 az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
@@ -114,28 +114,28 @@ Name                                  ResourceGroup
 babeb61c-d73d-4b91-9830-b8bfa83c349a  azurefiles
 ```
 
-Atrybut **name** w danych wyjściowych odpowiada nazwie zadania, które jest tworzone przez usługę kopii zapasowej dla operacji przywracania. Aby śledzić stan zadania, użyj polecenia [AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet.
+**Atrybut Name** w danych wyjściowych odpowiada nazwie zadania utworzonego przez usługę tworzenia kopii zapasowej dla operacji przywracania. Aby śledzić stan zadania, użyj polecenia cmdlet [zadania kopii zapasowej az.](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show)
 
 ## <a name="item-level-recovery"></a>Odzyskiwanie na poziomie elementu
 
-Ta opcja przywracania służy do przywracania pojedynczych plików lub folderów w lokalizacji oryginalnej lub alternatywnej.
+Za pomocą tej opcji przywracania można przywrócić poszczególne pliki lub foldery w oryginalnej lub alternatywnej lokalizacji.
 
-Zdefiniuj następujące parametry, aby wykonać operacje przywracania:
+Zdefiniuj następujące parametry do wykonywania operacji przywracania:
 
-* **--Container-Name**: nazwa konta magazynu, które hostuje kopię zapasową oryginalnego udziału plików. Aby pobrać nazwę lub przyjazną nazwę kontenera, użyj polecenia [AZ Backup Container list](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) .
-* **--Item-Name**: Nazwa kopii zapasowej oryginalnego pliku, który ma być używany dla operacji przywracania. Aby pobrać nazwę lub przyjazną nazwę elementu kopii zapasowej, użyj polecenia [AZ Backup Item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) .
+* **--container-name**: Nazwa konta magazynu, na którym znajduje się kopia zapasowa oryginalnego udziału plików. Aby pobrać nazwę lub przyjazną nazwę kontenera, użyj polecenia [az backup container list.](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)
+* **--item-name**: Nazwa kopii zapasowej oryginalnego udziału pliku, którego chcesz użyć do operacji przywracania. Aby pobrać nazwę lub przyjazną nazwę elementu kopii zapasowej, użyj polecenia [az backup item list.](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list)
 
-Określ następujące parametry dla elementów, które mają zostać odzyskane:
+Określ następujące parametry dla elementów, które chcesz odzyskać:
 
-* **Sourcefilepath**: ścieżka bezwzględna pliku, która ma zostać przywrócona w udziale plików jako ciąg. Ta ścieżka jest tą samą ścieżką, która jest używana w pliku [AZ Storage File Download](https://docs.microsoft.com/cli/azure/storage/file?view=azure-cli-latest#az-storage-file-download) lub [AZ Storage File show](https://docs.microsoft.com/cli/azure/storage/file?view=azure-cli-latest#az-storage-file-show) interfejsu wiersza polecenia.
-* **SourceFileType**: Wybierz, czy wybrano katalog lub plik. Akceptuje **katalog** lub **plik**.
-* **ResolveConflict**: instrukcja, jeśli wystąpił konflikt z przywróconymi danymi. Akceptuje **zastępowanie** lub **pomijanie**.
+* **SourceFilePath**: Bezwzględna ścieżka pliku, który ma zostać przywrócony w udziale plików, jako ciąg. Ta ścieżka jest tą samą ścieżką, która jest używana w [pliku az storage download](https://docs.microsoft.com/cli/azure/storage/file?view=azure-cli-latest#az-storage-file-download) lub plik [az storage zawiera](https://docs.microsoft.com/cli/azure/storage/file?view=azure-cli-latest#az-storage-file-show) polecenia interfejsu wiersza polecenia.
+* **SourceFileType**: Wybierz, czy jest wybrany katalog, czy plik. Akceptuje **katalog** lub **plik**.
+* **ResolveConflict**: Instrukcja, jeśli występuje konflikt z przywróconymi danymi. Akceptuje **zastąpienie** lub **pominięcie**.
 
-### <a name="restore-individual-files-or-folders-to-the-original-location"></a>Przywróć pojedyncze pliki lub foldery do oryginalnej lokalizacji
+### <a name="restore-individual-files-or-folders-to-the-original-location"></a>Przywracanie pojedynczych plików lub folderów do oryginalnej lokalizacji
 
-Użyj polecenia [AZ Backup Restore Restore-migracji pamięci](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) z trybem przywracania ustawionym na *originallocation* w celu przywrócenia określonych plików lub folderów do ich oryginalnej lokalizacji.
+Użyj polecenia cmdlet [przywracania przywracania kopii zapasowej az](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) z trybem przywracania ustawionym na *originallocation,* aby przywrócić określone pliki lub foldery do ich pierwotnej lokalizacji.
 
-Poniższy przykład przywraca plik *RestoreTest. txt* w jego pierwotnej lokalizacji: udział plików *migracji pamięci* .
+Poniższy przykład przywraca plik *RestoreTest.txt* w oryginalnej lokalizacji: udział pliku *azurefiles.*
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
@@ -147,17 +147,17 @@ Name                                  ResourceGroup
 df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 ```
 
-Atrybut **name** w danych wyjściowych odpowiada nazwie zadania, które jest tworzone przez usługę kopii zapasowej dla operacji przywracania. Aby śledzić stan zadania, użyj polecenia [AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet.
+**Atrybut Name** w danych wyjściowych odpowiada nazwie zadania utworzonego przez usługę tworzenia kopii zapasowej dla operacji przywracania. Aby śledzić stan zadania, użyj polecenia cmdlet [zadania kopii zapasowej az.](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show)
 
 ### <a name="restore-individual-files-or-folders-to-an-alternate-location"></a>Przywracanie pojedynczych plików lub folderów do lokalizacji alternatywnej
 
-Aby przywrócić określone pliki lub foldery do innej lokalizacji, użyj polecenia [AZ Backup Restore Restore-migracji pamięci](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) cmdlet z trybem przywracania ustawionym na *alternatelocation* i określ następujące parametry powiązane z elementem docelowym:
+Aby przywrócić określone pliki lub foldery do lokalizacji alternatywnej, użyj polecenia cmdlet [przywracania przywracania kopii zapasowej az](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) z trybem przywracania ustawionym na *alternatywną lokalizację* i określ następujące parametry związane z obiektem docelowym:
 
-* **--Target-Storage-account**: konto magazynu, do którego zostanie przywrócona zawartość kopii zapasowej. Docelowe konto magazynu musi znajdować się w tej samej lokalizacji co magazyn.
-* **--docelowy udział plików**: udział plików w docelowym koncie magazynu, do którego zostanie przywrócona zawartość kopii zapasowej.
-* **--Target-folder**: folder w udziale plików, do którego przywracane są dane. Jeśli kopia zapasowa ma zostać przywrócona do folderu głównego, nadaj jej wartość jako pusty ciąg.
+* **--target-storage-account:** konto magazynu, na którym przywrócono kopię zapasową zawartości. Docelowe konto magazynu musi znajdować się w tej samej lokalizacji co magazyn.
+* **--target-file-share:** Udział plików na docelowym koncie magazynu, na którym przywrócono kopię zapasową zawartości.
+* **--target-folder**: Folder pod udziałem plików, do którego dane są przywracane. Jeśli kopia zapasowa ma zostać przywrócona do folderu głównego, nadaj wartość folderu docelowego jako pusty ciąg.
 
-Poniższy przykład przywraca plik *RestoreTest. txt* znajdujący się pierwotnie w udziale plików *migracji pamięci* do lokalizacji alternatywnej: folder *restoredata* w udziale plików *azurefiles1* hostowanym na koncie magazynu *afaccount1* .
+Poniższy przykład przywraca plik *RestoreTest.txt* pierwotnie obecny w udziale pliku *azurefiles* do alternatywnej lokalizacji: folder *restoredata* w udziale plików *azurefiles1* hostowany na koncie magazynu *afaccount1.*
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
@@ -169,8 +169,8 @@ Name                                  ResourceGroup
 df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 ```
 
-Atrybut **name** w danych wyjściowych odpowiada nazwie zadania, które jest tworzone przez usługę kopii zapasowej dla operacji przywracania. Aby śledzić stan zadania, użyj polecenia [AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet.
+**Atrybut Name** w danych wyjściowych odpowiada nazwie zadania utworzonego przez usługę tworzenia kopii zapasowej dla operacji przywracania. Aby śledzić stan zadania, użyj polecenia cmdlet [zadania kopii zapasowej az.](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się [, jak zarządzać kopiami zapasowymi udziałów plików platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure](manage-afs-backup-cli.md).
+Dowiedz się, jak [zarządzać kopiami zapasowymi udziału plików platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure.](manage-afs-backup-cli.md)

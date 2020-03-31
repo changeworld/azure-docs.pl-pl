@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: Konfigurowanie Azure Security Center na potrzeby rozwiązania IoT'
-description: W tym przewodniku szybki start dowiesz się, jak skonfigurować kompleksowe rozwiązanie IoT przy użyciu Azure Security Center dla IoT.
+title: 'Szybki start: konfigurowanie usługi Azure Security Center dla rozwiązania IoT'
+description: W tym przewodniku Szybki start dowiedz się, jak skonfigurować kompleksowe rozwiązanie IoT przy użyciu usługi Azure Security Center dla IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,46 +16,46 @@ ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
 ms.openlocfilehash: e670df359cc33c9eaca089d0ed8f9614ef8c0468
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73904151"
 ---
-# <a name="quickstart-configure-your-iot-solution"></a>Szybki Start: Konfigurowanie rozwiązania IoT
+# <a name="quickstart-configure-your-iot-solution"></a>Szybki start: konfigurowanie rozwiązania IoT
 
-Ten artykuł zawiera informacje na temat przeprowadzania początkowej konfiguracji rozwiązania do ochrony IoT przy użyciu Azure Security Center dla IoT. 
+Ten artykuł zawiera wyjaśnienie, jak wykonać początkową konfigurację rozwiązania zabezpieczeń IoT przy użyciu usługi Azure Security Center dla IoT. 
 
 ## <a name="azure-security-center-for-iot"></a>Azure Security Center dla IoT
 
-Azure Security Center dla IoT oferuje kompleksowe zabezpieczenia kompleksowych rozwiązań IoT opartych na platformie Azure.
+Usługa Azure Security Center for IoT zapewnia kompleksowe zabezpieczenia kompleksowych rozwiązań IoT opartych na platformie Azure.
 
-Dzięki Azure Security Center dla IoT możesz monitorować całe rozwiązanie IoT na jednym pulpicie nawigacyjnym, obsłużyć wszystkie urządzenia IoT, platformy IoT i zasoby zaplecza na platformie Azure.
+Dzięki usłudze Azure Security Center dla IoT możesz monitorować całe rozwiązanie IoT na jednym pulpicie nawigacyjnym, napawając wszystkie urządzenia IoT, platformy IoT i zasoby zaplecza na platformie Azure.
 
-Po włączeniu usługi IoT w IoT Hub Azure Security Center w celu automatycznego zidentyfikowania innych usług platformy Azure, również połączona z IoT Hub i związanych z Twoim rozwiązaniem IoT.
+Po włączeniu usługi IoT Hub usługa Azure Security Center for IoT automatycznie identyfikuje inne usługi platformy Azure, również połączone z centrum IoT Hub i powiązane z rozwiązaniem IoT.
 
-Oprócz automatycznego wykrywania relacji można także wybierać i wybierać inne grupy zasobów platformy Azure, które mają być używane w ramach rozwiązania IoT. 
+Oprócz automatycznego wykrywania relacji można również wybrać i wybrać inne grupy zasobów platformy Azure do oznaczenia jako część rozwiązania IoT. 
 
 Wybrane opcje umożliwiają dodawanie całych subskrypcji, grup zasobów lub pojedynczych zasobów. 
 
-Po zdefiniowaniu wszystkich relacji zasobów Azure Security Center dla usługi IoT wykorzystuje Azure Security Center, aby udostępnić zalecenia dotyczące zabezpieczeń i alerty dotyczące tych zasobów.
+Po zdefiniowaniu wszystkich relacji zasobów usługa Azure Security Center for IoT korzysta z usługi Azure Security Center w celu zapewnienia zaleceń dotyczących zabezpieczeń i alertów dotyczących tych zasobów.
 
 ## <a name="add-azure-resources-to-your-iot-solution"></a>Dodawanie zasobów platformy Azure do rozwiązania IoT
 
 Aby dodać nowy zasób do rozwiązania IoT, wykonaj następujące czynności: 
 
-1. Otwórz **IoT Hub** w Azure Portal. 
-1. Wybierz i Otwórz **zasoby** z opcji **zabezpieczenia** w menu po lewej stronie. 
-1. Wybierz pozycję **Edytuj** i wybierz grupy zasobów należące do rozwiązania IoT.
-1. Kliknij pozycję **Add** (Dodaj). 
+1. Otwórz centrum **IoT Hub** w witrynie Azure portal. 
+1. Wybierz i otwórz **zasoby** z obszarze **Zabezpieczenia** w menu po lewej stronie. 
+1. Wybierz **pozycję Edytuj** i wybierz grupy zasobów, które należą do rozwiązania IoT.
+1. Kliknij przycisk **Dodaj**. 
 
 Gratulacje! Dodano nową grupę zasobów do rozwiązania IoT.
 
-Azure Security Center usługi IoT teraz monitoruje nowo dodane grupy zasobów i prezentuje odpowiednie zalecenia dotyczące zabezpieczeń i alerty w ramach rozwiązania IoT.
+Usługa Azure Security Center dla IoT monitoruje teraz nowo dodane grupy zasobów i na powierzchniach odpowiednie zalecenia dotyczące zabezpieczeń i alerty w ramach rozwiązania IoT.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Przejdź do następnego artykułu, aby dowiedzieć się, jak utworzyć moduły zabezpieczeń...
+Przejdź do następnego artykułu, aby dowiedzieć się, jak tworzyć moduły bezpieczeństwa...
 
 > [!div class="nextstepaction"]
 > [Tworzenie modułów zabezpieczeń](quickstart-create-security-twin.md)

@@ -1,6 +1,6 @@
 ---
-title: Dodawanie podmiotów zabezpieczeń bazy danych dla Eksplorator danych platformy Azure przy użyciu języka Python
-description: W tym artykule dowiesz się, jak dodać podmioty zabezpieczeń bazy danych dla usługi Azure Eksplorator danych przy użyciu języka Python.
+title: Dodawanie podmiotów bazy danych dla Eksploratora danych platformy Azure przy użyciu języka Python
+description: W tym artykule dowiesz się, jak dodać podmioty bazy danych dla Usługi Azure Data Explorer przy użyciu języka Python.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,29 +8,29 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 8b9c4f4d5427b326c273558db0bff808068b192a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965010"
 ---
-# <a name="add-database-principals-for-azure-data-explorer-by-using-python"></a>Dodawanie podmiotów zabezpieczeń bazy danych dla Eksplorator danych platformy Azure przy użyciu języka Python
+# <a name="add-database-principals-for-azure-data-explorer-by-using-python"></a>Dodawanie podmiotów bazy danych dla Eksploratora danych platformy Azure przy użyciu języka Python
 
 > [!div class="op_single_selector"]
-> * [C#](database-principal-csharp.md)
+> * [C #](database-principal-csharp.md)
 > * [Python](database-principal-python.md)
 > * [Szablon usługi Azure Resource Manager](database-principal-resource-manager.md)
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. W tym artykule opisano Dodawanie podmiotów zabezpieczeń bazy danych dla usługi Azure Eksplorator danych przy użyciu języka Python.
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. W tym artykule dodasz podmioty bazy danych dla Usługi Azure Data Explorer przy użyciu języka Python.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
 * [Tworzenie klastra i bazy danych](create-cluster-database-python.md)
 
-## <a name="install-python-package"></a>Zainstaluj pakiet języka Python
+## <a name="install-python-package"></a>Instalowanie pakietu Python
 
-Aby zainstalować pakiet języka Python dla usługi Azure Eksplorator danych (Kusto), Otwórz wiersz polecenia, który ma w swojej ścieżce Język Python. Uruchom następujące polecenie:
+Aby zainstalować pakiet Python dla usługi Azure Data Explorer (Kusto), otwórz wiersz polecenia, który ma Pythona w swojej ścieżce. Uruchom następujące polecenie:
 
 ```
 pip install azure-common
@@ -39,9 +39,9 @@ pip install azure-mgmt-kusto
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
-## <a name="add-a-database-principal"></a>Dodawanie podmiotu zabezpieczeń bazy danych
+## <a name="add-a-database-principal"></a>Dodawanie podmiotu bazy danych
 
-Poniższy przykład pokazuje, jak dodać podmiot zabezpieczeń bazy danych programowo.
+W poniższym przykładzie pokazano, jak programowo dodać jednostkę bazy danych.
 
 ```Python
 from azure.mgmt.kusto import KustoManagementClient
@@ -81,19 +81,19 @@ poller = kusto_management_client.database_principal_assignments.create_or_update
 
 |**Ustawienie** | **Sugerowana wartość** | **Opis pola**|
 |---|---|---|
-| tenant_id | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy. Znany również jako identyfikator katalogu.|
-| subscription_id | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator subskrypcji używany do tworzenia zasobów.|
-| client_id | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator klienta aplikacji, który może uzyskiwać dostęp do zasobów w dzierżawie.|
-| client_secret | *xxxxxxxxxxxxxx* | Wpis tajny klienta aplikacji, który może uzyskiwać dostęp do zasobów w dzierżawie. |
+| tenant_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy. Znany również jako identyfikator katalogu.|
+| subscription_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator subskrypcji używany do tworzenia zasobów.|
+| client_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator klienta aplikacji, która może uzyskać dostęp do zasobów w dzierżawie.|
+| client_secret | *xxxxxxxxxxxxxx* | Klucz tajny klienta aplikacji, która może uzyskać dostęp do zasobów w dzierżawie. |
 | resource_group_name | *testrg* | Nazwa grupy zasobów zawierającej klaster.|
 | cluster_name | *mykustocluster* | Nazwa klastra.|
-| database_name | *mykustodatabase* | Nazwa bazy danych.|
+| Nazwa_bazy_danych | *mykustodatabase* | Nazwa bazy danych.|
 | principal_assignment_name | *databasePrincipalAssignment1* | Nazwa zasobu głównego bazy danych.|
-| principal_id | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator podmiotu zabezpieczeń, który może być adresem e-mail użytkownika, IDENTYFIKATORem aplikacji lub grupą zabezpieczeń.|
-| role (rola) | *Administratora* | Rola podmiotu zabezpieczeń bazy danych, która może być "admin", "pokarmem", "Monitor", "User", "UnrestrictedViewers", "Viewer".|
-| tenant_id_for_principal | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy podmiotu zabezpieczeń.|
-| principal_type | *Aplikacja* | Typ podmiotu zabezpieczeń, który może mieć wartość "User", "App" lub "Group"|
+| Principal_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Główny identyfikator, który może być e-mail użytkownika, identyfikator aplikacji lub nazwa grupy zabezpieczeń.|
+| role (rola) | *Administracja* | Rola podmiotu głównej bazy danych, który może być "Admin", "Ingestor", "Monitor", "Użytkownik", "UnrestrictedViewers", "Viewer".|
+| tenant_id_for_principal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy głównego zobowiązanego.|
+| principal_type | *Aplikacja* | Typ podmiotu zabezpieczeń, który może być "Użytkownik", "Aplikacja" lub "Grupa"|
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Pozyskiwanie danych przy użyciu biblioteki języka Python Eksplorator danych platformy Azure](python-ingest-data.md)
+* [pozyskiwanie danych przy użyciu biblioteki języka Python w usłudze Azure Data Explorer](python-ingest-data.md)

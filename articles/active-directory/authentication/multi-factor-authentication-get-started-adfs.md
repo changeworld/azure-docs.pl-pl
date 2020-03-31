@@ -1,5 +1,5 @@
 ---
-title: Weryfikacja dwuetapowa usługi Azure MFA i usług ADFS — Azure Active Directory
+title: Weryfikacja dwuetapowa usługi Azure MFA i usługi ADFS — usługa Azure Active Directory
 description: Ta strona dotyczy usługi Azure Multi-Factor Authentication i zawiera informacje umożliwiające rozpoczęcie korzystania z usługi Azure MFA i usług AD FS.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1fbbba49ddf2252e22cb32a0b8adc6fa2070e999
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74847137"
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Wprowadzenie do usługi Azure Multi-Factor Authentication i usług Active Directory Federation Services
 
 <center>
 
-![rozpoczęcie korzystania z usługi Azure MFA i usług ADFS](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
+![Rozpoczęcie pracy usługi Azure MFA i usługi ADFS](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
 W przypadku organizacji, które sfederowały lokalną usługę Active Directory z usługą Azure Active Directory za pomocą usług AD FS, dostępne są dwie opcje używania usługi Azure Multi-Factor Authentication.
 

@@ -1,86 +1,86 @@
 ---
-title: Wizualizuj dane z usługi Azure Eksplorator danych przy użyciu Kibana
-description: W tym artykule dowiesz się, jak skonfigurować Eksplorator danych platformy Azure jako źródło danych dla Kibana
+title: Wizualizuj dane z eksploratora danych platformy Azure za pomocą programu Kibana
+description: W tym artykule dowiesz się, jak skonfigurować Eksploratora danych platformy Azure jako źródło danych dla kibana
 author: orspod
 ms.author: orspodek
 ms.reviewer: guregini
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 30d74f36c6462d1fba039595d2ed6fe722b742e8
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: fac9c78607e50dca384670bf4cc08b50f723312b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79164815"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065607"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-kibana-with-the-k2bridge-open-source-connector"></a>Wizualizuj dane z usługi Azure Eksplorator danych w Kibana za pomocą łącznika programu K2Bridge Open Source
+# <a name="visualize-data-from-azure-data-explorer-in-kibana-with-the-k2bridge-open-source-connector"></a>Wizualizuj dane z usługi Azure Data Explorer w kibanie za pomocą łącznika typu open source K2Bridge
 
-K2Bridge (Kibana-Kusto Bridge) umożliwia korzystanie z platformy Azure Eksplorator danych jako źródła danych i wizualizację tych danych w Kibana. K2Bridge to aplikacja kontenera typu [Open Source](https://github.com/microsoft/K2Bridge) , która działa jako serwer proxy między wystąpieniem Kibana i klastrem Eksplorator danych platformy Azure. W tym artykule opisano sposób tworzenia tego połączenia przy użyciu programu K2Bridge.
+K2Bridge (Kibana-Kusto Bridge) umożliwia korzystanie z Usługi Azure Data Explorer jako źródła danych i wizualizowanie tych danych w Kibana. K2Bridge to aplikacja konteneryzowana [typu open source,](https://github.com/microsoft/K2Bridge) która działa jako serwer proxy między wystąpieniem Kibana a klastrem usługi Azure Data Explorer. W tym artykule opisano sposób tworzenia tego połączenia za pomocą aplikacji K2Bridge.
 
-K2Bridge tłumaczy zapytania Kibana do języka zapytań Kusto (KQL) i wysyła wyniki Eksplorator danych platformy Azure z powrotem do Kibana. 
+K2Bridge tłumaczy zapytania Kibana na Język zapytania Kusto (KQL) i wysyła wyniki Usługi Azure Data Explorer z powrotem do Kibana. 
 
    ![wykres](media/k2bridge/k2bridge-chart.png)
 
-K2Bridge obsługuje kartę odnajdywania Kibana, w której można:
-* Wyszukiwanie i Eksplorowanie danych
+K2Bridge obsługuje kartę Odkryj Kibana, gdzie można:
+* Wyszukiwanie i eksplorowanie danych
 * Filtrowanie wyników
 * Dodawanie lub usuwanie pól w siatce wyników
-* Wyświetl zawartość rekordu
-* Zapisz i Udostępnij wyszukiwania
+* Wyświetlanie zawartości rekordu
+* Zapisywanie i udostępnianie wyszukiwań
 
-Na poniższej ilustracji przedstawiono wystąpienie Kibana powiązane z platformą Azure Eksplorator danych przez K2Bridge. Środowisko użytkownika w Kibana nie jest zmieniane.
+Poniższy obraz ekspozycyjny przedstawia wystąpienie Kibana powiązane z Eksploratorem danych platformy Azure przez K2Bridge. Środowisko użytkownika w Kibana pozostaje bez zmian.
 
    [![Strona Kibana](media/k2bridge/k2bridge-kibana-page.png)](media/k2bridge/k2bridge-kibana-page.png#lightbox)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby móc wizualizować dane z usługi Azure Eksplorator danych w Kibana, przygotuj następujące elementy:
+Zanim będzie można wizualizować dane z usługi Azure Data Explorer w programie Kibana, przygotuj następujące elementy:
 
-* [Helm v3](https://github.com/helm/helm#install), Menedżer pakietów Kubernetes
-* Klaster usługi Azure Kubernetes Service (AKS) lub inny klaster Kubernetes (wersja 1,14 do wersji 1,16 zostały przetestowane i zweryfikowane). Jeśli potrzebujesz klastra AKS, zobacz Wdrażanie klastra AKS [przy użyciu interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough) lub [Korzystanie z Azure Portal](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal)
-* [Klaster Eksplorator danych platformy Azure](create-cluster-database-portal.md), w tym:
-    * Adres URL klastra usługi Azure Eksplorator danych 
+* [Helm V3](https://github.com/helm/helm#install), menedżer pakietów Kubernetes
+* Klaster usługi Azure Kubernetes (AKS) lub dowolny inny klaster kubernetes (wersja 1.14 do wersja 1.16 zostały przetestowane i zweryfikowane). Jeśli potrzebujesz klastra AKS, zobacz Wdrażanie klastra AKS [przy użyciu interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough) lub za pomocą portalu [Azure](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal)
+* [Klaster Eksploratora danych platformy Azure](create-cluster-database-portal.md), w tym:
+    * Adres URL klastra usługi Azure Data Explorer 
     * Nazwa bazy danych
     
-* Jednostka usługi Azure AD uprawniona do wyświetlania danych w usłudze Azure Eksplorator danych, w tym:
+* Podmiot usługi Azure AD autoryzowany do wyświetlania danych w Eksploratorze danych platformy Azure, w tym:
     * Identyfikator klienta 
-    * Wpis tajny klienta
+    * Tajemnica klienta
 
-    Zalecana jest jednostka usługi z uprawnieniem "Podgląd". Nie zaleca się używania wyższych uprawnień.
+    Zaleca się jednostkę usługi z uprawnieniem "Viewer". Nie zaleca się używania wyższych uprawnień.
 
-    * [Ustaw uprawnienia do wyświetlania klastra dla jednostki usługi Azure AD](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
+    * [Ustaw uprawnienia do widoku klastra dla jednostki usługi Azure AD](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
 
-    Aby uzyskać więcej informacji na temat nazwy głównej usługi Azure AD, zobacz [Tworzenie jednostki usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
+    Aby uzyskać więcej informacji na temat jednostki usługi Azure AD, zobacz [Tworzenie jednostki usługi Azure AD.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
 
-## <a name="run-k2bridge-on-azure-kubernetes-service-aks"></a>Uruchom K2Bridge w usłudze Azure Kubernetes Service (AKS)
+## <a name="run-k2bridge-on-azure-kubernetes-service-aks"></a>Uruchamianie aplikacji K2Bridge w usłudze Azure Kubernetes (AKS)
 
-Domyślnie wykres K2Bridges's Helm odwołuje się do publicznie dostępnego obrazu znajdującego się w Container Registry firmy Microsoft (MCR). MCR nie wymaga żadnych poświadczeń ani nie działa.
+Domyślnie wykres Helm firmy K2Bridges odwołuje się do publicznie dostępnego obrazu znajdującego się w rejestrze kontenerów firmy Microsoft (MCR). McR nie wymaga żadnych poświadczeń i działa out-of-the-box.
 
 1. Pobierz wymagane wykresy Helm.
 
-1. Dodaj zależność Elasticsearch do Helm. 
-    Przyczyna zależności Elasticsearch polega na tym, że K2Bridge używa wewnętrznego małego wystąpienia Elasticsearch do obsługi żądań metadanych (takich jak wzorce indeksów i zapisane zapytania). Żadne dane biznesowe nie są zapisywane w tym wystąpieniu wewnętrznym i można je traktować jako szczegóły implementacji. 
+1. Dodaj zależność Elasticsearch do helmu. 
+    Powodem zależności Elasticsearch jest to, że K2Bridge używa wewnętrznego małego wystąpienia Elasticsearch do obsługi żądań związanych z metadanymi (takich jak wzorce indeksu i zapisane zapytania). Żadne dane biznesowe nie są zapisywane w tym wystąpieniu wewnętrznym i można je uznać za szczegóły implementacji. 
 
-    1. Aby dodać zależność Elasticsearch do Helm:
+    1. Aby dodać zależność Elasticsearch do helma:
 
         ```bash
         helm repo add elastic https://helm.elastic.co
         helm repo update
         ```
 
-    1. Aby uzyskać wykres K2Bridge z katalogu wykresów repozytorium GitHub:
-        1. Sklonuj repozytorium z usługi [GitHub](https://github.com/microsoft/K2Bridge).
-        1. Przejdź do katalogu głównego repozytorium K2Bridges.
-        1. Uruchom:
+    1. Aby uzyskać wykres K2Bridge spod katalogu wykresów repozytorium GitHub:
+        1. Sklonuj repozytorium z [GitHub](https://github.com/microsoft/K2Bridge).
+        1. Przejdź do katalogu repozytorium głównego K2Bridges.
+        1. Uruchomienie:
 
             ```bash
             helm dependency update charts/k2bridge
             ```
 
-1. Wdróż K2Bridge:
+1. Wdrażanie K2Bridge:
 
-    1. Ustaw zmienne z prawidłowymi wartościami dla danego środowiska:
+    1. Ustaw zmienne z odpowiednimi wartościami dla środowiska:
 
         ```bash
         ADX_URL=[YOUR_ADX_CLUSTER_URL] #For example, https://mycluster.westeurope.kusto.windows.net
@@ -90,8 +90,8 @@ Domyślnie wykres K2Bridges's Helm odwołuje się do publicznie dostępnego obra
         ADX_TENANT_ID=[SERVICE_PRINCIPAL_TENANT_ID]
         ```
 
-    1. Obowiązkowe Włącz telemetrię Application Insights platformy Azure. 
-        Jeśli używasz usługi Azure Application Insights po raz pierwszy, należy najpierw [utworzyć zasób Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource). Należy [skopiować klucz Instrumentacji](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) do zmiennej: 
+    1. (Opcjonalnie) Włącz dane telemetryczne usługi Azure Application Insights. 
+        Jeśli jest to pierwszy raz, gdy używasz usługi Azure Application Insights, należy najpierw [utworzyć zasób usługi Application Insights.](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) Należy [skopiować klucz instrumentacji](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) do zmiennej: 
 
         ```bash
         APPLICATION_INSIGHTS_KEY=[INSTRUMENTATION_KEY]
@@ -104,83 +104,85 @@ Domyślnie wykres K2Bridges's Helm odwołuje się do publicznie dostępnego obra
         helm install k2bridge charts/k2bridge -n k2bridge --set image.repository=$REPOSITORY_NAME/$CONTAINER_NAME --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set settings.aadClientId="$ADX_CLIENT_ID" --set settings.aadClientSecret="$ADX_CLIENT_SECRET" --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=latest] [--set privateRegistry="$IMAGE_PULL_SECRET_NAME"] [--set settings.collectTelemetry=$COLLECT_TELEMETRY]
         ```
 
-        W obszarze [Konfiguracja](https://github.com/microsoft/K2Bridge/blob/master/docs/configuration.md) można znaleźć pełny zestaw opcji konfiguracji.
+        W [konfiguracji](https://github.com/microsoft/K2Bridge/blob/master/docs/configuration.md) można znaleźć kompletny zestaw opcji konfiguracji.
 
-    1. W danych wyjściowych polecenia zostanie zaproponowane następne polecenie Helm do wdrożenia Kibana. Opcjonalnie Uruchom polecenie:
+    1. Dane wyjściowe polecenia zasugerują następne polecenie Helm do uruchomienia w celu wdrożenia Kibana. Opcjonalnie uruchom:
 
         ```bash
         helm install kibana elastic/kibana -n k2bridge --set image=docker.elastic.co/kibana/kibana-oss --set imageTag=6.8.5 --set elasticsearchHosts=http://k2bridge:8080
         ```
-    1. Używanie przekazywania portów w celu uzyskania dostępu do Kibana na hoście lokalnym: 
+        
+    1. Użyj przekierowania portów, aby uzyskać dostęp do Kibana na localhost: 
 
         ```bash
         kubectl port-forward service/kibana-kibana 5601 --namespace k2bridge
         ```
-    1. Połącz się z usługą Kibana, przechodząc do http://127.0.0.1:5601.
+        
+    1. Połącz się z Kibana, przeglądając do http://127.0.0.1:5601.
 
-    1. Udostępnienie użytkownikom końcowym Kibana. Istnieje wiele metod, które należy wykonać. Metoda używana w dużym stopniu zależy od przypadku użycia.
+    1. Uwidacznia kibana użytkownikom końcowym. Istnieje wiele metod, aby to zrobić. Metoda, której używasz, w dużej mierze zależy od przypadku użycia.
 
-        Na przykład:
+        Przykład:
 
-        Uwidacznianie usługi jako usługi równoważenia obciążenia. Aby to zrobić, Dodaj następujący parametr do polecenia instalacji K2Bridge Helm ([powyżej](#install-k2bridge-chart)):
-
-        `--set service.type=LoadBalancer`
+        Uwidaczniać usługę jako usługę LoadBalancer. Aby to zrobić, `--set service.type=LoadBalancer` dodaj parametr do polecenia instalacji K2Bridge Helm ([powyżej](#install-k2bridge-chart)).        
     
-        Następnie uruchom:
-
-           ```bash
-           kubectl get service -w -n k2bridge
-           ```   
+        Następnie uruchom polecenie:
+        
+        ```bash
+        kubectl get service -w -n k2bridge
+        ```
+        
         Dane wyjściowe powinny wyglądać następująco: 
 
         ```bash
         NAME            TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
         kibana-kibana   LoadBalancer   xx.xx.xx.xx   <pending>      5601:30128/TCP   4m24s
         ```
-        Następnie można użyć wygenerowanego zewnętrznego adresu IP, który zostanie wyświetlony, a następnie użyć go do uzyskania dostępu do Kibana przez otwarcie przeglądarki w celu: `\<EXTERNAL-IP>:5601`.
+ 
+        Następnie można użyć wygenerowanego zewnętrznego adresu IP, który się pojawi, i `<EXTERNAL-IP>:5601`użyć go, aby uzyskać dostęp do Kibana, otwierając przeglądarkę na .
 
-1. Skonfiguruj wzorce indeksów w celu uzyskania dostępu do danych:  
+1. Skonfiguruj wzorce indeksów, aby uzyskać dostęp do danych:  
 W nowym wystąpieniu Kibana:
      1. Otwórz Kibana.
-     1. Przejdź do zarządzania.
-     1. Wybierz pozycję **wzorce indeksów**. 
+     1. Przejdź do pozycji Zarządzanie.
+     1. Wybierz **opcję Wzorce indeksu**. 
      1. Utwórz wzorzec indeksu.
-Nazwa indeksu musi dokładnie pasować do nazwy tabeli lub funkcji bez gwiazdki. Odpowiedni wiersz można skopiować z listy.
+Nazwa indeksu musi dokładnie odpowiadać nazwie tabeli lub nazwy funkcji bez gwiazdki. Odpowiedni wiersz można skopiować z listy.
 
 > [!Note]
-> Aby uruchomić na innych dostawców Kubernetes, Zmień wartość Elasticsearch storageClassName w `values.yaml`, aby dopasować ją do sugerowanej przez dostawcę.
+> Aby uruchomić na innych dostawców Kubernetes, należy zmienić Elasticsearch storageClassName w, `values.yaml` aby dopasować jeden sugerowane przez dostawcę.
 
-## <a name="visualize-data"></a>Wizualizacja danych
+## <a name="visualize-data"></a>Wizualizowanie danych
 
-Gdy usługa Azure Eksplorator danych jest skonfigurowana jako źródło danych dla Kibana, można użyć Kibana do eksplorowania danych. 
+Gdy Usługa Azure Data Explorer jest skonfigurowana jako źródło danych dla kibana, można użyć Kibana do eksplorowania danych. 
 
-1. W Kibana, w menu po lewej stronie wybierz kartę **odnajdywanie** .
+1. W kibana, w menu po lewej stronie, wybierz **discover** kartę.
 
-1. Z listy rozwijanej po lewej stronie Wybierz wzorzec indeksu (w tym przypadku tabelę Eksplorator danych platformy Azure), która definiuje źródło danych, które chcesz zbadać.
+1. Z lewej listy rozwijanej wybierz wzorzec indeksu (w tym przypadku tabelę Eksploratora danych platformy Azure), która definiuje źródło danych, które chcesz eksplorować.
     
-   ![Wybierz wzorzec indeksu](media/k2bridge/k2bridge-select-an-index-pattern.png)
+   ![Wybieranie wzorca indeksu](media/k2bridge/k2bridge-select-an-index-pattern.png)
 
-1. Jeśli dane zawierają pole filtru czasu, można określić zakres czasu. W prawym górnym rogu strony Ustaw filtr czasu. Domyślnie odnajdywanie pokazuje dane z ostatnich 15 minut.
+1. Jeśli dane mają pole filtru czasu, można określić zakres czasu. W prawym górnym rogu strony ustaw filtr czasu. Domyślnie discover pokazuje dane z ostatnich 15 minut.
 
    ![Filtr czasu](media/k2bridge/k2bridge-time-filter.png)
     
-1. W tabeli wyników przedstawiono pierwsze 500 rekordów. Można rozwinąć dokument, aby przeanalizować jego dane pól w formatach JSON lub tabeli.
+1. Tabela wyników zawiera pierwsze 500 rekordów. Można rozwinąć dokument, aby sprawdzić jego dane pola w formacie JSON lub tabeli.
 
-   ![Rozwiń rekord](media/k2bridge/k2bridge-expand-record.png)
+   ![Rozwijanie rekordu](media/k2bridge/k2bridge-expand-record.png)
 
-1. Domyślnie tabela wyniki zawiera kolumny dla dokumentu _source i pola czas (jeśli istnieje). Można wybrać konkretne kolumny, które mają zostać dodane do tabeli wyników, wybierając pozycję **Dodaj** obok nazwy pola na lewym pasku bocznym.
+1. Domyślnie tabela wyników zawiera kolumny dla _source dokumentu i pola czasu (jeśli istnieje). Można wybrać określone kolumny, które mają zostać dodane do tabeli wyników, wybierając **dodaj** obok nazwy pola na lewym pasku bocznym.
 
    ![Określone kolumny](media/k2bridge/k2bridge-specific-columns.png)
     
-1. Na pasku zapytania można wyszukiwać dane według:
-    * Wprowadzanie terminu wyszukiwania
-    * Użycie składni zapytań Lucene. 
-    Na przykład:
-        * Wyszukaj ciąg "Error", aby znaleźć wszystkie rekordy, które zawierają tę wartość. 
-        * Wyszukaj ciąg "status: 200", aby uzyskać wszystkie rekordy z wartością stanu równą 200. 
-    * Używanie operatorów logicznych (i, nie)
-    * Używanie symboli wieloznacznych (gwiazdka "\*" lub znak zapytania "?") Na przykład:
-        * `"destination_city: L*"` kwerendy będzie pasować do rekordów, w których wartość miejscowości docelowej rozpoczyna się od "l" (K2Bridge nie jest rozróżniana wielkość liter).
+1. Na pasku zapytania można przeszukiwać dane według:
+    * Wprowadzanie wyszukiwanego terminu
+    * Korzystanie ze składni kwerendy lucene. 
+    Przykład:
+        * Wyszukaj "błąd", aby znaleźć wszystkie rekordy, które zawierają tę wartość. 
+        * Wyszukaj "stan: 200", aby uzyskać wszystkie rekordy o wartości statusu 200. 
+    * Korzystanie z operatorów logicznych (AND, OR, NOT)
+    * Używanie symboli wieloznacznych \* (gwiazdka " " lub znaku zapytania "?") Na przykład:
+        * Kwerenda `"destination_city: L*"` będzie zgodna rekordy, w których wartość miasta docelowego zaczyna się od "l" (K2Bridge nie jest rozróżniana wielkość liter).
 
     ![Uruchamianie zapytania](media/k2bridge/k2bridge-run-query.png)
     
@@ -188,20 +190,20 @@ Gdy usługa Azure Eksplorator danych jest skonfigurowana jako źródło danych d
     > W [wyszukiwaniu](https://github.com/microsoft/K2Bridge/blob/master/docs/searching.md)można znaleźć więcej reguł wyszukiwania i logiki.
 
 1. Aby filtrować wyniki wyszukiwania, użyj **listy pól** na prawym pasku bocznym strony. 
-    Lista pól to miejsce, w którym można zobaczyć:
-    * Pięć najważniejszych wartości pola
-    * Liczba rekordów zawierających pole
+    Lista pól jest miejscem, w którym można zobaczyć:
+    * Pięć pierwszych wartości pola
+    * Liczba rekordów zawierających to pole
     * Procent rekordów zawierających każdą wartość. 
     
     >[!Tip]
-    > Użyj ikony lupy (+), aby znaleźć wszystkie rekordy z określoną wartością.
+    > Użyj ikony lupy (+), aby znaleźć wszystkie rekordy o określonej wartości.
     
     ![Lista pól](media/k2bridge/k2bridge-field-list.png)
    
-    Możesz również filtrować wyniki przy użyciu ikony lupy (+) w widoku tabeli wyników każdego rekordu w tabeli wyników.
+    Wyniki można również filtrować za pomocą ikony lupy (+) w widoku formatu tabeli wyników każdego rekordu w tabeli wyników.
     
      ![Lista tabel](media/k2bridge/k2bridge-table-list.png)
     
-1. Wybierz opcję, aby **zapisać** lub **udostępnić** wyszukiwanie.
+1. Wybierz opcję **Zapisz** lub **Udostępnij** wyszukiwanie.
 
      ![Zapisz wyszukiwanie](media/k2bridge/k2bridge-save-search.png)

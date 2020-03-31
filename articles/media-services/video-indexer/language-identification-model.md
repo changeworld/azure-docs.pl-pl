@@ -1,7 +1,7 @@
 ---
-title: Użyj Video Indexer do autoidentyfikacji języków mówionych — Azure
+title: Automatyczne identyfikowanie języków mówionych za pomocą indeksatora wideo — Azure
 titleSuffix: Azure Media Services
-description: W tym artykule opisano, jak Video Indexer model identyfikacji języka jest używany do automatycznego identyfikowania języka wymawianego w filmie wideo.
+description: W tym artykule opisano, jak model identyfikacji języka indeksatora wideo jest używany do automatycznego identyfikowania języka mówionego w filmie wideo.
 services: media-services
 author: juliako
 manager: femila
@@ -11,29 +11,29 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
 ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513885"
 ---
-# <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatycznie zidentyfikuj język mówiony przy użyciu modelu identyfikacji języka
+# <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatyczne identyfikowanie języka mówionego za pomocą modelu identyfikacji języka
 
-Video Indexer obsługuje automatyczne identyfikowanie języka (POKRYWy), czyli proces automatycznego identyfikowania zawartości języka wymawianego z dźwiękiem i wysyłania pliku multimedialnego do uzyskanego w określonym języku. Obecnie pokrywa się z językiem angielskim, hiszpańskim, francuskim, niemieckim, włoskim, chińskim (uproszczonym), japońskim, rosyjskim i portugalskim (brazylijskim). 
+Video Indexer obsługuje automatyczną identyfikację języka (LID), która jest procesem automatycznej identyfikacji treści języka mówionego z audio i wysyłania pliku multimedialnego do transkrypcji w dominującym zidentyfikowanym języku. Obecnie LID obsługuje angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, rosyjski i portugalski (brazylijski). 
 
-## <a name="choosing-auto-language-identification-on-indexing"></a>Wybieranie opcji autoidentyfikacja języka podczas indeksowania
+## <a name="choosing-auto-language-identification-on-indexing"></a>Wybieranie automatycznej identyfikacji języka podczas indeksowania
 
-Podczas indeksowania lub [ponownego indeksowania](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) wideo przy użyciu interfejsu API, wybierz opcję `auto detect` w parametrze `sourceLanguage`.
+Podczas indeksowania lub [ponownego indeksowania](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) wideo za `auto detect` pomocą interfejsu `sourceLanguage` API, wybierz opcję w parametrze.
 
-Gdy korzystasz z portalu, przejdź do swoich **filmów wideo** na stronie głównej [Video Indexer](https://www.videoindexer.ai/) i umieść wskaźnik myszy na nazwie filmu wideo, który chcesz ponownie zindeksować. W prawym dolnym rogu kliknij przycisk ponownie Indeksuj. W oknie dialogowym **ponowne indeksowanie wideo** wybierz pozycję *Autowykrywanie* z pola listy rozwijanej **Język źródłowy wideo** .
+Korzystając z portalu, przejdź do **filmów z konta** na stronie głównej [indeksatora wideo](https://www.videoindexer.ai/) i umieść wskaźnik myszy na nazwie filmu, który chcesz ponownie indeksować. W prawym dolnym rogu kliknij przycisk ponownego indeksowania. W oknie dialogowym **Ponowne indeksowanie wideo** wybierz pozycję *Automatyczne wykrywanie* z listy rozwijanej **Język źródłowy wideo.**
 
-![Wykryj automatycznie](./media/language-identification-model/auto-detect.png)
+![Autowykrywanie](./media/language-identification-model/auto-detect.png)
 
 ## <a name="model-output"></a>Dane wyjściowe modelu
 
-Video Indexer przekształca film wideo zgodnie z najbardziej prawdopodobnym językiem, jeśli jest `> 0.6`wiarygodność dla tego języka. Jeśli nie można zidentyfikować języka z pewnością, założono, że język mówiony jest angielski. 
+Indeksator wideo transkrybuje film według najbardziej prawdopodobnego języka, `> 0.6`jeśli zaufanie do tego języka jest . Jeśli język nie może być identyfikowany z ufnością, zakłada, że językiem mówionym jest angielski. 
 
-Język dominujący modelu jest dostępny w formacie JSON usługi Insights jako atrybut `sourceLanguage` (w obszarze głównym/wideo/Insights). Odpowiedni wynik zaufania jest również dostępny pod atrybutem `sourceLanguageConfidence`.
+Model dominujący język jest dostępny w `sourceLanguage` insights JSON jako atrybut (w katalogu głównym / filmy / insights). Odpowiedni wynik zaufania jest również `sourceLanguageConfidence` dostępny w ramach atrybutu.
 
 ```json
 "insights": {
@@ -49,15 +49,15 @@ Język dominujący modelu jest dostępny w formacie JSON usługi Insights jako a
 
 ## <a name="guidelines-and-limitations"></a>Wytyczne i ograniczenia
 
-* Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, rosyjski i portugalski (Brazylia).
-* Jeśli dźwięk zawiera języki inne niż lista obsługiwanych powyżej, wynik jest nieoczekiwany.
-* Jeśli Video Indexer nie może zidentyfikować języka o wysokiej pewności wystarczającej (`>0.6`), język rezerwowy jest w języku angielskim.
-* Nie istnieje bieżąca obsługa plików z dźwiękiem w językach mieszanych. Jeśli dźwięk zawiera różne języki, wynik jest nieoczekiwany. 
-* Jakość audio o niskiej jakości może mieć wpływ na wyniki modelu.
-* Model wymaga co najmniej jednej minuty mowy w dźwięku.
-* Model jest przeznaczony do rozpoznawania samodzielnej obsługi mowy (nie polecenia głosowe, zarejestrowaniem itp.).
+* Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, rosyjski i brazylijski portugalski.
+* Jeśli dźwięk zawiera języki inne niż obsługiwana lista powyżej, wynik jest nieoczekiwany.
+* Jeśli indeksator wideo nie może zidentyfikować języka`>0.6`z wystarczająco wysokim zaufaniem ( ), językiem rezerwowym jest angielski.
+* Nie ma bieżącej obsługi plików z mieszanymi językami audio. Jeśli dźwięk zawiera języki mieszane, wynik jest nieoczekiwany. 
+* Dźwięk o niskiej jakości może mieć wpływ na wyniki modelu.
+* Model wymaga co najmniej jednej minuty mowy w audio.
+* Model jest przeznaczony do rozpoznawania spontanicznej mowy konwersacyjnej (nie poleceń głosowych, śpiewu itp.).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Omówienie](video-indexer-overview.md)
-* [Automatyczne identyfikowanie i transkrypcja zawartości w wielu językach](multi-language-identification-transcription.md)
+* [Przegląd](video-indexer-overview.md)
+* [Automatyczne identyfikowanie i transkrybowanie treści wielojęzycznych](multi-language-identification-transcription.md)

@@ -1,6 +1,6 @@
 ---
-title: Używanie certyfikatów LetsEncrypt.org z Application Gateway
-description: Ten artykuł zawiera informacje na temat uzyskiwania certyfikatu z usługi LetsEncrypt.org i używania go na Application Gateway klastrach AKS.
+title: Używanie certyfikatów LetsEncrypt.org z bramą aplikacji
+description: Ten artykuł zawiera informacje dotyczące uzyskiwania certyfikatu od LetsEncrypt.org i używania go w bramie aplikacji dla klastrów AKS.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73957986"
 ---
-# <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>Używanie certyfikatów z LetsEncrypt.org na Application Gateway dla klastrów AKS
+# <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>Używanie certyfikatów z LetsEncrypt.org w bramie aplikacji dla klastrów AKS
 
-Ta sekcja służy do konfigurowania AKS do korzystania z [LetsEncrypt.org](https://letsencrypt.org/) i automatycznego uzyskiwania certyfikatu TLS/SSL dla domeny. Certyfikat zostanie zainstalowany na Application Gateway, co spowoduje zakończenie protokołu SSL/TLS dla klastra AKS. W opisanej tutaj konfiguracji jest używany dodatek Kubernetes [Menedżera certyfikatów](https://github.com/jetstack/cert-manager) , który automatyzuje tworzenie certyfikatów i zarządzanie nimi.
+W tej sekcji skonfigurowano system AKS w celu wykorzystania [LetsEncrypt.org](https://letsencrypt.org/) i automatycznego uzyskiwania certyfikatu TLS/SSL dla domeny. Certyfikat zostanie zainstalowany w bramie aplikacji, która będzie wykonywać zakończenie protokołu SSL/TLS dla klastra AKS. Konfiguracja opisana w tym miejscu używa [dodatku](https://github.com/jetstack/cert-manager) Kubernetes menedżera certyfikatu, który automatyzuje tworzenie certyfikatów i zarządzanie nimi.
 
-Wykonaj poniższe kroki, aby zainstalować [Menedżera certyfikatów](https://docs.cert-manager.io) w istniejącym klastrze AKS.
+Wykonaj poniższe czynności, aby zainstalować [menedżera certyfikatów](https://docs.cert-manager.io) w istniejącym klastrze AKS.
 
-1. Wykres Helm
+1. Wykres steru
 
-    Uruchom następujący skrypt, aby zainstalować `cert-manager` wykres Helm. Spowoduje to:
+    Uruchom następujący skrypt, `cert-manager` aby zainstalować wykres helm. Będzie to:
 
-    - Utwórz nową przestrzeń nazw `cert-manager` w AKS
-    - Utwórz następujący CRDs: Certificate, Challenge, ClusterIssuer, Issuer, Order
-    - Instalowanie wykresu Menedżera certyfikatów (z [docs.CERT-Manager.IO)](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#steps)
+    - tworzenie nowej `cert-manager` przestrzeni nazw w programie AKS
+    - tworzenie następujących CRD: Certyfikat, Wyzwanie, ClusterIssuer, Wystawca, Zamówienie
+    - zainstalować wykres menedżera certyfikatu (od [docs.cert-manager.io)](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#steps)
 
     ```bash
     #!/bin/bash
@@ -54,16 +54,16 @@ Wykonaj poniższe kroki, aby zainstalować [Menedżera certyfikatów](https://do
       jetstack/cert-manager
     ```
 
-2. Zasób ClusterIssuer
+2. Zasób klastraIsuer
 
-    Utwórz zasób `ClusterIssuer`. Jest ona wymagana przez `cert-manager` do reprezentowania `Lets Encrypt` urząd certyfikacji, w którym zostaną uzyskane podpisane certyfikaty.
+    Tworzenie `ClusterIssuer` zasobu. Jest to wymagane `cert-manager` przez `Lets Encrypt` do reprezentowania urzędu certyfikacji, gdzie podpisane certyfikaty zostaną uzyskane.
 
-    Przy użyciu zasobu `ClusterIssuer` niezwiązanego z przestrzenią nazw Menedżer certyfikatów będzie wystawiał certyfikaty, które mogą być używane z wielu przestrzeni nazw. `Let’s Encrypt` korzysta z protokołu ACME do sprawdzenia, czy podaną nazwę domeny i wystawiasz certyfikat. Więcej szczegółowych informacji na temat konfigurowania [`ClusterIssuer` właściwości.](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html) `ClusterIssuer` poinstruuje `cert-manager`, aby wystawiać certyfikaty przy użyciu środowiska przejściowego `Lets Encrypt` używanego do testowania (certyfikat główny nieobecny w sklepach/magazynów zaufania klienta).
+    Za pomocą zasobu niepodleganego, `ClusterIssuer` cert-manager wystawi certyfikaty, które mogą być używane z wielu obszarów nazw. `Let’s Encrypt`używa protokołu ACME do sprawdzenia, czy użytkownik kontroluje daną nazwę domeny i wystawia certyfikat. Więcej szczegółów na `ClusterIssuer` temat konfigurowania właściwości [tutaj](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html). `ClusterIssuer`zainstruuje `cert-manager` wystawianie `Lets Encrypt` certyfikatów przy użyciu środowiska przejściowego używanego do testowania (certyfikat główny nie jest obecny w magazynach zaufania przeglądarki/klienta).
 
-    Domyślny typ wyzwania w YAML poniżej jest `http01`. Inne wyzwania są udokumentowane na [letsencrypt.org — typy wyzwania](https://letsencrypt.org/docs/challenge-types/)
+    Domyślnym typem wyzwania w `http01`poniższym pliku YAML jest . Inne wyzwania są dokumentowane na [letsencrypt.org - Typy wyzwań](https://letsencrypt.org/docs/challenge-types/)
 
     > [!IMPORTANT] 
-    > Zaktualizuj `<YOUR.EMAIL@ADDRESS>` w YAML poniżej
+    > Aktualizacja `<YOUR.EMAIL@ADDRESS>` w YAML poniżej
 
     ```bash
     #!/bin/bash
@@ -93,15 +93,15 @@ Wykonaj poniższe kroki, aby zainstalować [Menedżera certyfikatów](https://do
     EOF
     ```
 
-3. Wdróż aplikację
+3. Wdrażanie aplikacji
 
-    Utwórz zasób transferu danych przychodzących, aby udostępnić aplikację `guestbook` przy użyciu Application Gateway z opcją szyfrowania certyfikatu.
+    Utwórz zasób transferu `guestbook` danych przychodzących, aby udostępnić aplikację przy użyciu bramy aplikacji z certyfikatem Lets Encrypt.
 
-    Upewnij się, że Application Gateway ma publiczną konfigurację adresu IP frontonu z nazwą DNS (przy użyciu domyślnej domeny `azure.com` lub zainicjuj usługę `Azure DNS Zone` i przypisz własną domenę niestandardową).
-    Zanotuj `certmanager.k8s.io/cluster-issuer: letsencrypt-staging`adnotacji, która informuje Menedżera certyfikatów, aby przetworzyć oznakowany zasób transferu danych przychodzących.
+    Upewnij się, że brama aplikacji ma publiczną konfigurację ip `azure.com` frontu z `Azure DNS Zone` nazwą DNS (przy użyciu domeny domyślnej lub aprowizowania usługi i przypisać własną domenę niestandardową).
+    Zanotuj `certmanager.k8s.io/cluster-issuer: letsencrypt-staging`adnotację , która nakazuje cert-managerowi przetworzenie oznakowanego zasobu transferu danych przychodzących.
 
     > [!IMPORTANT] 
-    > Zaktualizuj `<PLACEHOLDERS.COM>` w YAML poniżej z własną domeną (lub Application Gateway, na przykład "kh-aks-ingress.westeurope.cloudapp.azure.com")
+    > Aktualizacja `<PLACEHOLDERS.COM>` w YAML poniżej za pomocą własnej domeny (lub bramy aplikacji, na przykład "kh-aks-ingress.westeurope.cloudapp.azure.com")
 
     ```bash
     kubectl apply -f - <<EOF
@@ -127,15 +127,15 @@ Wykonaj poniższe kroki, aby zainstalować [Menedżera certyfikatów](https://do
     EOF
     ```
 
-    Po kilku sekundach można uzyskać dostęp do usługi `guestbook` za pośrednictwem adresu URL HTTPS Application Gateway przy użyciu automatycznie wystawionego certyfikatu `Lets Encrypt` **przemieszczania** .
-    Przeglądarka może ostrzec użytkownika o nieprawidłowym urzędzie certyfikacji. Certyfikat przemieszczania jest wystawiony przez `CN=Fake LE Intermediate X1`. Wskazuje to, że system działał zgodnie z oczekiwaniami i jest gotowy do certyfikatu produkcyjnego.
+    Po kilku sekundach można `guestbook` uzyskać dostęp do usługi za pośrednictwem adresu URL HTTPS bramy aplikacji przy użyciu automatycznie wystawionego certyfikatu **przemieszczania.** `Lets Encrypt`
+    Twoja przeglądarka może ostrzec cię o nieprawidłowym urzędzie cert. Certyfikat przemieszczania jest `CN=Fake LE Intermediate X1`wystawiany przez program . Jest to wskazanie, że system działał zgodnie z oczekiwaniami i jesteś gotowy do certyfikatu produkcyjnego.
 
-4. Certyfikat produkcyjny
+4. Certyfikat produkcji
 
-    Po pomyślnym skonfigurowaniu certyfikatu przemieszczania można przełączyć się na produkcyjny serwer xyz:
-    1. Zastąp adnotację przemieszczania w zasobie transferu danych przychodzących przy użyciu: `certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
-    1. Usuń istniejące `ClusterIssuer` przemieszczania utworzone w poprzednim kroku i Utwórz nowe, zastępując serwer XYZ z ClusterIssuer YAML powyżej z `https://acme-v02.api.letsencrypt.org/directory`
+    Po pomyślnym skonfigurowaniu certyfikatu przemieszczania można przełączyć się na produkcyjny serwer ACME:
+    1. Zastąp adnotację przemieszczania zasobu transferu danych przychodzących:`certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
+    1. Usuń istniejącą `ClusterIssuer` tymczasowość utworzoną w poprzednim kroku i utwórz nową, zastępując serwer ACME z powyższego pliku YAML clusterissuera`https://acme-v02.api.letsencrypt.org/directory`
 
-5. Wygaśnięcie i odnowienie certyfikatu
+5. Wygaśnięcie i odnawianie certyfikatu
 
-    Przed wygaśnięciem `Lets Encrypt` certyfikat `cert-manager` automatycznie zaktualizuje certyfikat w magazynie Kubernetes Secret. W tym momencie Application Gateway kontroler transferu danych przychodzących będzie stosował zaktualizowany klucz tajny, do którego odwołuje się zasób transferu danych przychodzących, za pomocą którego można skonfigurować Application Gateway.
+    Przed `Lets Encrypt` wygaśnięciem certyfikatu `cert-manager` zostanie automatycznie zaktualizowany certyfikat w magazynie tajnym usługi Kubernetes. W tym momencie kontroler transferu danych przychodzących bramy aplikacji zastosuje zaktualizowany klucz tajny, do którego odwołuje się zasoby transferu danych przychodzących, których używa do konfigurowania bramy aplikacji.

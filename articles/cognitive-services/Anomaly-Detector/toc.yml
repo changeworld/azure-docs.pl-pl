@@ -78,7 +78,17 @@
       href: 'https://arxiv.org/abs/1906.03821'
 - name: Zasoby
   items:
-    - name: Ceny
+    - name: Pomoc techniczna
+      items:
+        - name: Uzyskiwanie pomocy technicznej
+          href: 'https://aka.ms/adsupport'
+        - name: Stack Overflow
+          href: 'https://aka.ms/adso'
+        - name: MSDN
+          href: 'https://aka.ms/admsdn'
+        - name: User Voice
+          href: 'https://aka.ms/aduservoice'
+    - name: Cennik
       href: 'https://aka.ms/adpricing'
     - name: Dostępność regionalna
       href: 'https://aka.ms/adregion'
@@ -90,13 +100,3 @@
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: Zgodność
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-- name: Pomoc techniczna
-  items:
-    - name: Uzyskiwanie pomocy technicznej
-      href: 'https://aka.ms/adsupport'
-    - name: Stack Overflow
-      href: 'https://aka.ms/adso'
-    - name: MSDN
-      href: 'https://aka.ms/admsdn'
-    - name: User Voice
-      href: 'https://aka.ms/aduservoice'

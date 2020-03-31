@@ -1,7 +1,7 @@
 ---
-title: Konfigurowanie interfejsu API sieci Web, który wywołuje interfejsy API sieci Web | Azure
+title: Konfigurowanie internetowego interfejsu API, który wywołuje internetowe interfejsy API | Azure
 titleSuffix: Microsoft identity platform
-description: Dowiedz się, jak utworzyć internetowy interfejs API, który wywołuje interfejsy API sieci Web (Konfiguracja kodu aplikacji)
+description: Dowiedz się, jak utworzyć internetowy interfejs API, który wywołuje internetowe interfejsy API (konfiguracja kodu aplikacji)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,23 +16,23 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 82b5e1d9753fbb65fd81f24b06016d302457144e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76834097"
 ---
-# <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Internetowy interfejs API, który wywołuje interfejsy API sieci Web: Konfiguracja kodu
+# <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Internetowy interfejs API, który wywołuje internetowe interfejsy API: konfiguracja kodu
 
-Po zarejestrowaniu internetowego interfejsu API można skonfigurować kod dla aplikacji.
+Po zarejestrowaniu interfejsu API sieci web można skonfigurować kod aplikacji.
 
-Kod używany do konfigurowania internetowego interfejsu API, dzięki czemu wywołuje podrzędne interfejsy API sieci Web na podstawie kodu, który jest używany do ochrony internetowego interfejsu API. Aby uzyskać więcej informacji, zobacz [chroniony internetowy interfejs API: Konfiguracja aplikacji](scenario-protected-web-api-app-configuration.md).
+Kod używany do konfigurowania interfejsu API sieci web, tak aby wywołuje podrzędne interfejsy API sieci web opiera się na kod, który jest używany do ochrony interfejsu API sieci web. Aby uzyskać więcej informacji, zobacz [Chroniony interfejs API sieci Web: konfiguracja aplikacji](scenario-protected-web-api-app-configuration.md).
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-## <a name="code-subscribed-to-ontokenvalidated"></a>Kod subskrybowany do OnTokenValidated
+## <a name="code-subscribed-to-ontokenvalidated"></a>Kod subskrybowany onTokenValidated
 
-Na podstawie konfiguracji kodu dla wszelkich chronionych interfejsów API sieci Web należy zasubskrybować weryfikację tokenu okaziciela, który otrzymujesz po wywołaniu interfejsu API:
+Oprócz konfiguracji kodu dla wszystkich chronionych interfejsów API sieci web, należy subskrybować sprawdzanie poprawności tokenu nośnika, który otrzymujesz, gdy interfejs API jest wywoływany:
 
 ```csharp
 /// <summary>
@@ -67,18 +67,18 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
 }
 ```
 
-## <a name="on-behalf-of-flow"></a>W imieniu przepływu
+## <a name="on-behalf-of-flow"></a>Przepływ w imieniu
 
-Metoda AddAccountToCacheFromJwt () musi:
+Metoda AddAccountToCacheFromJwt() musi:
 
-- Utworzenie wystąpienia biblioteki uwierzytelniania firmy Microsoft (MSAL) poufnej aplikacji klienckiej.
-- Wywołaj `AcquireTokenOnBehalf` metody. To wywołanie wymienia token okaziciela, który został uzyskany przez klienta dla internetowego interfejsu API względem tokenu okaziciela dla tego samego użytkownika, ale ma interfejs API wywołujący podrzędny interfejs API.
+- Tworzenie wystąpienia poufnej aplikacji klienckiej biblioteki uwierzytelniania firmy Microsoft (MSAL).
+- Wywołanie `AcquireTokenOnBehalf` metody. To wywołanie wymienia token okaziciela, który został nabyty przez klienta dla internetowego interfejsu API względem tokenu nośnika dla tego samego użytkownika, ale ma wywołać interfejsu API podrzędnego interfejsu API.
 
 ### <a name="instantiate-a-confidential-client-application"></a>Tworzenie wystąpienia poufnej aplikacji klienckiej
 
-Ten przepływ jest dostępny tylko w poufnej przepływie klienta, dzięki czemu chroniony internetowy interfejs API udostępnia poświadczenia klienta (klucz tajny klienta lub certyfikat) do [klasy ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) za pomocą metody `WithClientSecret` lub `WithCertificate`.
+Ten przepływ jest dostępny tylko w przepływie klienta poufnego, dzięki czemu chroniony interfejs API sieci web udostępnia poświadczenia klienta (klucz `WithCertificate` tajny klienta lub certyfikat) do [ConfidentialClientApplicationBuilder klasy](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) za pośrednictwem `WithClientSecret` metody lub.
 
-![Lista metod IConfidentialClientApplication](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
+![Lista metod iConfidentialClientApplication](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
 ```csharp
 IConfidentialClientApplication app;
@@ -96,20 +96,20 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 #endif
 ```
 
-Na koniec zamiast udowodnić swoją tożsamość za pośrednictwem klucza tajnego klienta lub certyfikatu, poufne aplikacje klienckie mogą udowodnić swoją tożsamość za pomocą potwierdzeń klientów.
-Aby uzyskać więcej informacji na temat tego zaawansowanego scenariusza, zobacz [poufne potwierdzenia klientów](msal-net-client-assertions.md).
+Na koniec zamiast potwierdzać swoją tożsamość za pośrednictwem klucza tajnego klienta lub certyfikatu, poufne aplikacje klienckie mogą udowodnić swoją tożsamość przy użyciu potwierdzeń klienta.
+Aby uzyskać więcej informacji na temat tego zaawansowanego scenariusza, zobacz [Poufne potwierdzenia klienta](msal-net-client-assertions.md).
 
-### <a name="how-to-call-on-behalf-of"></a>Jak wywołać w imieniu
+### <a name="how-to-call-on-behalf-of"></a>Jak dzwonić w imieniu
 
-Należy wykonać wywołanie w imieniu (OBO), wywołując [metodę AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) w interfejsie `IConfidentialClientApplication`.
+Należy wykonać wywołanie w imieniu (OBO) wywołując [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) `IConfidentialClientApplication` metody w interfejsie.
 
-Klasa `UserAssertion` jest tworzona na podstawie tokenu nośnego, który jest odbierany przez internetowy interfejs API od własnych klientów. Istnieją [dwa konstruktory](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet):
-* Jeden, który pobiera token okaziciela sieci Web JSON (JWT)
-* Jeden, który ma dowolny rodzaj potwierdzenia użytkownika, inny rodzaj tokenu zabezpieczającego, którego typ jest następnie określony w dodatkowym parametrze o nazwie `assertionType`
+Klasa `UserAssertion` jest zbudowana z tokenu okaziciela, który jest odbierany przez internetowy interfejs API od własnych klientów. Istnieją [dwa konstruktory:](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)
+* Taki, który pobiera token na okaziciela JSON Web Token (JWT)
+* Taki, który przyjmuje wszelkiego rodzaju potwierdzenia użytkownika, inny rodzaj tokenu zabezpieczającego, którego typ jest następnie określony w dodatkowym parametrze o nazwie`assertionType`
 
-![UserAssertion — właściwości i metody](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
+![Właściwości i metody obsługi użytkownika](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
 
-W rzeczywistości przepływ OBO jest często używany do uzyskiwania tokenu dla podrzędnego interfejsu API i przechowywania go w pamięci podręcznej tokenów użytkownika MSAL.NET. Można to zrobić, tak aby inne części interfejsu API sieci Web mogły później wywołać [zastąpień](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) ``AcquireTokenOnSilent`` w celu wywołania podrzędnych interfejsów API. To wywołanie ma wpływ na odświeżanie tokenów, w razie konieczności.
+W praktyce przepływ OBO jest często używany do uzyskiwania tokenu dla interfejsu API podrzędnego i przechowywania go w pamięci podręcznej tokenu użytkownika MSAL.NET. Można to zrobić, aby inne części internetowego [overrides](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) interfejsu API ``AcquireTokenOnSilent`` można później wywołać na zastąpienia wywołać interfejsów API podrzędnego. To wywołanie ma wpływ odświeżania tokenów, jeśli to konieczne.
 
 ```csharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
@@ -144,11 +144,11 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
      }
 }
 ```
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-Przepływ "w imieniu" (OBO) służy do uzyskania tokenu wywołującego podrzędny interfejs API sieci Web. W tym przepływie internetowy interfejs API odbiera token okaziciela z uprawnieniami delegowanymi przez użytkownika z aplikacji klienckiej, a następnie wymienia ten token dla innego tokenu dostępu, aby wywołać podrzędny interfejs API sieci Web.
+Przepływ W imieniu (OBO) służy do uzyskania tokenu do wywołania podrzędnego interfejsu API sieci web. W tym przepływie internetowy interfejs API odbiera token na okaziciela z uprawnieniami delegowanymi użytkownika z aplikacji klienckiej, a następnie wymienia ten token na inny token dostępu, aby wywołać podrzędny interfejs API sieci web.
 
-Poniższy kod używa `SecurityContextHolder`u sprężynowej struktury zabezpieczeń w interfejsie API sieci Web w celu uzyskania zweryfikowanego tokenu okaziciela. Następnie używa biblioteki języka Java MSAL, aby uzyskać token dla interfejsu API podrzędnego przy użyciu wywołania `acquireToken` z `OnBehalfOfParameters`. MSAL buforuje token tak, aby kolejne wywołania interfejsu API mogły użyć `acquireTokenSilently`, aby uzyskać buforowany token.
+Poniższy kod używa platformy Spring `SecurityContextHolder` Security w interfejsie API sieci web, aby uzyskać zweryfikowany token nośnika. Następnie używa biblioteki MSAL Java, aby uzyskać token `acquireToken` dla `OnBehalfOfParameters`interfejsu API podrzędnego przy użyciu wywołania z . MSAL buforuje token, dzięki czemu kolejne `acquireTokenSilently` wywołania interfejsu API można użyć, aby uzyskać token w pamięci podręcznej.
 
 ```Java
 @Component
@@ -213,21 +213,21 @@ class MsalAuthHelper {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Przepływ "w imieniu" (OBO) służy do uzyskania tokenu wywołującego podrzędny interfejs API sieci Web. W tym przepływie internetowy interfejs API odbiera token okaziciela z uprawnieniami delegowanymi przez użytkownika z aplikacji klienckiej, a następnie wymienia ten token dla innego tokenu dostępu, aby wywołać podrzędny interfejs API sieci Web.
+Przepływ W imieniu (OBO) służy do uzyskania tokenu do wywołania podrzędnego interfejsu API sieci web. W tym przepływie internetowy interfejs API odbiera token na okaziciela z uprawnieniami delegowanymi użytkownika z aplikacji klienckiej, a następnie wymienia ten token na inny token dostępu, aby wywołać podrzędny interfejs API sieci web.
 
-Interfejs API sieci Web w języku Python będzie musiał użyć oprogramowania pośredniczącego w celu zweryfikowania tokenu okaziciela otrzymanego od klienta. Interfejs API sieci Web może następnie uzyskać token dostępu dla podrzędnego interfejsu API przy użyciu biblioteki języka Python MSAL, wywołując metodę [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) . Przykład pokazujący ten przepływ przy użyciu języka MSAL Python nie jest jeszcze dostępny.
+Interfejs API sieci Web języka Python będzie musiał użyć oprogramowania pośredniczącego, aby sprawdzić poprawność tokenu nośnika odebranego od klienta. Internetowy interfejs API można następnie uzyskać token dostępu dla interfejsu API [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) podrzędnego przy użyciu biblioteki MSAL Python, wywołując metodę. Przykład demonstruujący ten przepływ za pomocą biuletynu MSAL Python nie jest jeszcze dostępny.
 
 ---
 
-Można także zobaczyć przykład implementacji przepływu OBO w [Node. js i Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61).
+Można również zobaczyć przykład implementacji przepływu OBO w [Node.js i usługi Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61).
 
 ## <a name="protocol"></a>Protocol (Protokół)
 
-Aby uzyskać więcej informacji na temat protokołu OBO, zobacz [Microsoft Identity platform i OAuth 2,0 w imieniu usługi Flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
+Aby uzyskać więcej informacji na temat protokołu OBO, zobacz [Platformę tożsamości firmy Microsoft i OAuth 2.0 W imieniu przepływu](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Internetowy interfejs API, który wywołuje interfejsy API sieci Web: uzyskiwanie tokenu dla aplikacji](scenario-web-api-call-api-acquire-token.md)
+> [Internetowy interfejs API, który wywołuje internetowe interfejsy API: uzyskiwanie tokenu dla aplikacji](scenario-web-api-call-api-acquire-token.md)

@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 01/29/2020
-  ms.openlocfilehash: 28cfe37f6058dbedb11fb6fe01d932cbb10cbd18
-  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+  ms.openlocfilehash: 957a942efd618003dd3ff3f9f76be72799770859
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 02/12/2020
-  ms.locfileid: "77162960"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80288295"
 landingContent:
 - title: Event Hubs — informacje
   linkLists:
@@ -70,7 +70,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Tworzenie centrum zdarzeń z obsługą platformy Apache Kafka
-      url: event-hubs-create-kafka-enabled.md
+      url: event-hubs-create.md
     - text: Dublowanie brokera platformy Kafka w centrum zdarzeń
       url: event-hubs-kafka-mirror-maker-tutorial.md
     - text: Łączenie platformy Apache Spark z centrum zdarzeń
@@ -143,7 +143,7 @@ landingContent:
       url: event-hubs-ip-filtering.md
     - text: Korzystanie z punktów końcowych usługi dla sieci wirtualnej
       url: event-hubs-service-endpoints.md
+    - text: Używanie prywatnych punktów końcowych
+      url: private-link-service.md
     - text: Konfigurowanie zarządzanych przez klienta kluczy na potrzeby szyfrowania danych magazynowanych
       url: configure-customer-managed-key.md
-    - text: Włączanie integracji sieci wirtualnych i zapór
-      url: event-hubs-tutorial-virtual-networks-firewalls.md

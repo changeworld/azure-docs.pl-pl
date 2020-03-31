@@ -1,75 +1,75 @@
 ---
-title: Zmień ścieżkę obiektu BLOB z domyślnego
-description: Dowiedz się, jak skonfigurować funkcję platformy Azure w celu zmiany nazwy ścieżki pliku obiektu BLOB
+title: Zmienianie ścieżki obiektów blob z wartości domyślnej
+description: Dowiedz się, jak skonfigurować funkcję platformy Azure w celu zmiany nazwy ścieżki pliku obiektu blob
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 5ba1709ae195631371e4ea72667ba9b2a4bf279e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76270628"
 ---
-# <a name="change-a-blob-path-from-the-default-path"></a>Zmiana ścieżki obiektu BLOB ze ścieżki domyślnej
+# <a name="change-a-blob-path-from-the-default-path"></a>Zmienianie ścieżki obiektu blob ze ścieżki domyślnej
 
-Gdy Usługa StorSimple Data Manager przekształca dane, domyślnie umieszcza przekształcone obiekty blob w kontenerze magazynu określonym podczas tworzenia repozytorium docelowego. Gdy obiekty blob docierają do tej lokalizacji, warto przenieść te obiekty blob do lokalizacji alternatywnej. W tym artykule opisano sposób konfigurowania funkcji platformy Azure w celu zmiany nazwy domyślnej ścieżki pliku obiektu BLOB, a tym samym przenoszenia obiektów BLOB do innej lokalizacji.
+Gdy Usługa StorSimple Data Manager przekształca dane, domyślnie umieszcza przekształcone obiekty blob w kontenerze magazynu, jak określono podczas tworzenia repozytorium docelowego. Gdy obiekty blob docierają do tej lokalizacji, można przenieść te obiekty blob do lokalizacji alternatywnej. W tym artykule opisano sposób konfigurowania funkcji platformy Azure w celu zmiany nazwy domyślnej ścieżki pliku obiektu blob i w związku z tym przeniesienia obiektów blob do innej lokalizacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Upewnij się, że w usłudze StorSimple Data Manager masz poprawnie skonfigurowaną definicję zadania.
+Upewnij się, że masz poprawnie skonfigurowaną definicję zadania w usłudze StorSimple Data Manager.
 
 ## <a name="create-an-azure-function"></a>Tworzenie funkcji platformy Azure
 
-Aby utworzyć funkcję platformy Azure, wykonaj następujące czynności:
+Aby utworzyć funkcję platformy Azure, wykonaj następujące kroki:
 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com/).
+1. Przejdź do [witryny Azure portal](https://portal.azure.com/).
 
-2. Kliknij pozycję **+ Utwórz zasób**. W polu **wyszukiwania** wpisz **aplikacja funkcji** i naciśnij klawisz **Enter**. Wybierz i kliknij pozycję **aplikacja funkcji** na wyświetlonej liście aplikacji.
+2. Kliknij **pozycję + Utwórz zasób**. W polu **Wyszukiwania** wpisz **aplikację funkcji** i naciśnij klawisz **Enter**. Wybierz i kliknij **pozycję Aplikacja Funkcja** na wyświetlonej liście aplikacji.
 
-    ![Wpisz "aplikacja funkcji" w polu wyszukiwania](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
+    ![Wpisz "Aplikacja funkcyjna" w polu wyszukiwania](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
 3. Kliknij przycisk **Utwórz**.
 
-    ![Przycisk "Utwórz" okna aplikacja funkcji](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
+    ![Przycisk "Utwórz" w oknie aplikacji funkcji](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
 
-4. W bloku konfiguracja **aplikacja funkcji** wykonaj następujące czynności:
+4. W bloku konfiguracji **aplikacji funkcji** wykonaj następujące czynności:
 
     1. Podaj unikatową **nazwę aplikacji**.
-    2. Z listy rozwijanej wybierz **subskrypcję**. Ta subskrypcja powinna być taka sama jak ta, która jest skojarzona z usługą StorSimple Data Manager.
-    3. Wybierz pozycję **Utwórz nową** grupę zasobów.
-    4. Na liście rozwijanej **Plan hostingu** wybierz pozycję **Plan zużycia**.
-    5. Określ lokalizację, w której działa funkcja. Należy zlokalizować ten sam region, w którym znajduje się Usługa StorSimple Data Manager i konto magazynu skojarzone z definicją zadania.
-    6. Wybierz istniejące konto magazynu lub utwórz nowe. Konto magazynu jest używane wewnętrznie przez funkcję.
+    2. Z listy rozwijanej wybierz **pozycję Subskrypcja**. Ta subskrypcja powinna być taka sama jak ta skojarzona z usługą StorSimple Data Manager.
+    3. Wybierz **pozycję Utwórz nową** grupę zasobów.
+    4. W przypadku listy rozwijanej **Plan hostingu** wybierz pozycję **Plan zużycia**.
+    5. Określ lokalizację, w której działa funkcja. Ma zostać położony ten sam region, w którym znajduje się usługa StorSimple Data Manager i konto magazynu skojarzone z definicją zadania.
+    6. Wybierz istniejące konto magazynu lub utwórz nowe. Konto magazynu jest używane wewnętrznie dla tej funkcji.
 
-        ![Wprowadź nowe dane konfiguracji aplikacja funkcji](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
+        ![Wprowadzanie nowych danych konfiguracyjnych aplikacji funkcji](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
 
     7. Kliknij przycisk **Utwórz**. Zostanie utworzona aplikacja funkcji.
      
-        ![Utworzono aplikacja funkcji](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
+        ![Utworzono aplikację funkcji](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
-5. Wybierz pozycję **funkcje**, a następnie kliknij pozycję **+ Nowa funkcja**.
+5. Wybierz pozycję **Funkcje**i kliknij przycisk **+ Nowa funkcja**.
 
-    ![Kliknij pozycję + Nowa funkcja](./media/storsimple-data-manager-change-default-blob-path/create-new-function.png)
+    ![Kliknij + Nowa funkcja](./media/storsimple-data-manager-change-default-blob-path/create-new-function.png)
 
-6. Wybierz **C#** język. W tablicy kafelków szablonu wybierz pozycję **C#** na kafelku **QueueTrigger-CSharp** .
+6. Wybierz **C#** dla języka. W tablicy kafelków szablonów wybierz pozycję **C#** na kafelku **QueueTrigger-CSharp.**
 
-7. W **wyzwalaczu kolejki**:
+7. W **wyzwalaczu kolejki:**
 
     1. Wprowadź **nazwę** funkcji.
     2. W polu **Nazwa kolejki** wpisz nazwę definicji zadania transformacji danych.
-    3. W obszarze **połączenie konta magazynu**kliknij pozycję **Nowy**. Z listy kont magazynu wybierz konto skojarzone z definicją zadania. Zanotuj nazwę połączenia (wyróżnioną). Nazwa jest wymagana w dalszej części funkcji platformy Azure.
+    3. W obszarze **Połączenie z kontem magazynowania**kliknij **nowy**. Z listy kont magazynu wybierz konto skojarzone z definicją zadania. Zanotuj nazwę połączenia (wyróżnioną). Nazwa jest wymagana później w funkcji platformy Azure.
 
-        ![Utwórz nową C# funkcję](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
+        ![Tworzenie nowej funkcji Języka C#](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
 
-    4. Kliknij przycisk **Utwórz**. Zostanie utworzona **Funkcja** .
+    4. Kliknij przycisk **Utwórz**. **Funkcja** jest tworzona.
 
      
-10. W oknie funkcji Uruchom plik _. CSX_ .
+10. W oknie Funkcja uruchom plik _csx._
 
-    ![Utwórz nową C# funkcję](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
+    ![Tworzenie nowej funkcji Języka C#](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
     
     Wykonaj poniższe kroki.
 
@@ -175,25 +175,25 @@ Aby utworzyć funkcję platformy Azure, wykonaj następujące czynności:
 
         ```
 
-    2. Zastąp **STORAGE_CONNECTIONNAME** w wierszu 11 wierszem do połączenia z kontem magazynu (zobacz krok 7c).
+    2. Zastąp **STORAGE_CONNECTIONNAME** w wierszu 11 połączeniem z kontem pamięci masowej (patrz krok 7c).
 
-        ![Kopiuj nazwę połączenia magazynu](./media/storsimple-data-manager-change-default-blob-path/new-function-storage-connection-name.png)
+        ![Nazwa połączenia kopiowania magazynu](./media/storsimple-data-manager-change-default-blob-path/new-function-storage-connection-name.png)
 
     3. **Zapisz** funkcję.
 
-        ![Funkcja Save](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
+        ![Zapisz, funkcja](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
 
-12. Aby ukończyć funkcję, Dodaj jeden plik, wykonując następujące czynności:
+12. Aby ukończyć funkcję, dodaj jeszcze jeden plik, wykonując następujące czynności:
 
-    1. Kliknij pozycję **Wyświetl pliki**.
+    1. Kliknij **pozycję Wyświetl pliki**.
 
-       ![Link "Wyświetl pliki"](./media/storsimple-data-manager-change-default-blob-path/view-files.png)
+       ![Łącze "Wyświetl pliki"](./media/storsimple-data-manager-change-default-blob-path/view-files.png)
 
     2. Kliknij pozycję **+ Dodaj**.
         
-        ![Link "Wyświetl pliki"](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
+        ![Łącze "Wyświetl pliki"](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
-    3. Wpisz polecenie **Project. JSON**, a następnie naciśnij klawisz **Enter**. W pliku **Project. JSON** wklej następujący kod:
+    3. Wpisz **project.json**, a następnie naciśnij klawisz **Enter**. W pliku **project.json** wklej następujący kod:
 
         ```
         {
@@ -209,12 +209,12 @@ Aby utworzyć funkcję platformy Azure, wykonaj następujące czynności:
         ```
 
     
-    4. Kliknij pozycję **Zapisz**.
+    4. Kliknij przycisk **Zapisz**.
 
-        ![Link "Wyświetl pliki"](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
+        ![Łącze "Wyświetl pliki"](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 
-Utworzono funkcję platformy Azure. Ta funkcja jest wyzwalana za każdym razem, gdy nowy obiekt BLOB jest generowany przez zadanie przekształcania danych.
+Utworzono funkcję platformy Azure. Ta funkcja jest wyzwalana za każdym razem, gdy nowy obiekt blob jest generowany przez zadanie przekształcania danych.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Używanie StorSimple Data Manager interfejsu użytkownika do przekształcania danych](storsimple-data-manager-ui.md)
+[Przekształcanie danych za pomocą interfejsu użytkownika menedżera danych StorSimple](storsimple-data-manager-ui.md)

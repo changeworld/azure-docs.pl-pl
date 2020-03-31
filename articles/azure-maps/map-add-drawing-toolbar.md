@@ -1,29 +1,29 @@
 ---
-title: Dodawanie paska narzędzi Rysowanie do mapy | Mapy Microsoft Azure
-description: Jak dodać pasek narzędzi rysowania do mapy za pomocą Azure Maps Web SDK
-author: farah-alyasari
-ms.author: v-faalya
+title: Dodawanie paska narzędzi do rysowania do mapy | Mapy platformy Microsoft Azure
+description: Jak dodać pasek narzędzi do rysowania do mapy przy użyciu zestawu SDK usługi Azure Maps Web
+author: philmea
+ms.author: philmea
 ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cb0f70bc42c9ac0f7026c910593950516f027a88
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bebf1ddfbca3aec5a551193609381cf3510bc3ac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209753"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334500"
 ---
-# <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Dodawanie paska narzędzi narzędzi do rysowania do mapy
+# <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Dodawanie paska narzędzi do rysowania do mapy
 
-W tym artykule pokazano, jak używać modułu narzędzi do rysowania i wyświetlać pasek narzędzi rysowania na mapie. Kontrolka [DrawingToolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) dodaje pasek narzędzi Rysowanie na mapie. Dowiesz się, jak tworzyć mapy za pomocą tylko jednego i wszystkich narzędzi do rysowania oraz jak dostosować renderowanie kształtów rysowania w Menedżerze rysowania.
+W tym artykule pokazano, jak korzystać z modułu Narzędzia do rysowania i wyświetlać pasek narzędzi rysowania na mapie. Formant [DrawingToolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) dodaje pasek narzędzi rysowania na mapie. Dowiesz się, jak tworzyć mapy za pomocą tylko jednego i wszystkich narzędzi do rysowania oraz jak dostosować renderowanie kształtów rysunku w menedżerze rysunków.
 
 ## <a name="add-drawing-toolbar"></a>Dodawanie paska narzędzi rysowania
 
-Poniższy kod tworzy wystąpienie Menedżera rysowania i wyświetla pasek narzędzi na mapie.
+Poniższy kod tworzy wystąpienie menedżera rysunku i wyświetla pasek narzędzi na mapie.
 
-```Javascript
+```javascript
 //Create an instance of the drawing manager and display the drawing toolbar.
 drawingManager = new atlas.drawing.DrawingManager(map, {
         toolbar: new atlas.control.DrawingToolbar({
@@ -33,20 +33,20 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
     });
 ```
 
-Poniżej znajduje się kompletny przykładowy kod wykonywany w powyższych funkcjach:
+Poniżej znajduje się kompletny przykładowy kod uruchomiony powyższych funkcji:
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Dodawanie paska narzędzi rysowania" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zapoznaj się z piórem <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>Dodawanie paska narzędzi Rysowanie</a> przez Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+Zobacz pasek narzędzi Dodaj <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>rysunek</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>pióra według usługi Azure Maps ( ) na <a href='https://codepen.io'>funkcji CodePen</a>.
 </iframe>
 
 
 ## <a name="limit-displayed-toolbar-options"></a>Ogranicz wyświetlane opcje paska narzędzi
 
-Poniższy kod tworzy wystąpienie Menedżera rysowania i wyświetla pasek narzędzi z narzędziem rysowania wielokątów na mapie. 
+Poniższy kod tworzy wystąpienie menedżera rysunku i wyświetla pasek narzędzi z narzędziem do rysowania wielokątów na mapie. 
 
-```Javascript
+```javascript
 //Create an instance of the drawing manager and display the drawing toolbar with polygon drawing tool.
 drawingManager = new atlas.drawing.DrawingManager(map, {
         toolbar: new atlas.control.DrawingToolbar({
@@ -57,53 +57,81 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
     });
 ```
 
-Poniżej znajduje się kompletny przykładowy kod wykonywany w powyższych funkcjach:
+Poniżej znajduje się kompletny przykładowy kod uruchomiony powyższych funkcji:
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Dodawanie narzędzia do rysowania wielokątów" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz pióro <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>Dodaj narzędzie do rysowania wielokątów</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Dodawanie narzędzia do rysowania wielokąta" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Zobacz <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>narzędzie Dodawania wielokąta</a> przez usługę<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps ( ) na <a href='https://codepen.io'>funkcji CodePen</a>.
 </iframe>
 
 
-## <a name="change-drawing-rendering-style"></a>Zmień styl renderowania rysowania
+## <a name="change-drawing-rendering-style"></a>Zmienianie stylu renderowania rysunku
 
-Poniższy kod pobiera warstwy renderowania z Menedżera rysowania i modyfikuje ich opcje, aby zmienić styl renderowania dla rysowania. W takim przypadku punkty będą renderowane z niebieską ikoną znacznika. Linie będą czerwone i cztery piksele. Wielokąty mają zielony kolor wypełnienia i pomarańczowy konspekt.
+Styl rysowanych kształtów można dostosować, pobierając warstwy bazowe menedżera rysunków `drawingManager.getLayers()` za pomocą funkcji, a następnie ustawiając opcje na poszczególnych warstwach. Uchwyty przeciągania, które pojawiają się dla współrzędnych podczas edycji kształtu, są znacznikami HTML. Styl uchwytów przeciągania można dostosować, przekazując opcje `dragHandleStyle` `secondaryDragHandleStyle` znaczników HTML do i opcji menedżera rysunku.  
 
-```Javascript
+Poniższy kod pobiera warstwy renderowania z Menedżera rysunku i modyfikuje ich opcje, aby zmienić styl renderowania dla rysunku. W takim przypadku punkty będą renderowane za pomocą niebieskiej ikony znacznika. Linie będą czerwone i mają cztery piksele szerokości. Wielokąty będą miały zielony kolor wypełnienia i pomarańczowy kontur. Następnie zmienia style uchwytów przeciągania na kwadratowe ikony. 
+
+```javascript
+//Get rendering layers of drawing manager.
 var layers = drawingManager.getLayers();
-    layers.pointLayer.setOptions({
-        iconOptions: {
-            image: 'marker-blue'
-        }
-    });
-    layers.lineLayer.setOptions({
-        strokeColor: 'red',
-        strokeWidth: 4
-    });
-    layers.polygonLayer.setOptions({
-        fillColor: 'green'
-    });
-    layers.polygonOutlineLayer.setOptions({
-        strokeColor: 'orange'
-    });
+
+//Change the icon rendered for points.
+layers.pointLayer.setOptions({
+    iconOptions: {
+        image: 'marker-blue'
+    }
+});
+
+//Change the color and width of lines.
+layers.lineLayer.setOptions({
+    strokeColor: 'red',
+    strokeWidth: 4
+});
+
+//Change fill color of polygons.
+layers.polygonLayer.setOptions({
+    fillColor: 'green'
+});
+
+//Change the color of polygon outlines.
+layers.polygonOutlineLayer.setOptions({
+    strokeColor: 'orange'
+});
+
+//Update the style of the drag handles that appear when editting.
+drawingManager.setOptions({
+    //Primary drag handle that represents coordinates in the shape.
+    dragHandleStyle: {
+        anchor: 'center',
+        htmlContent: '<svg width="15" height="15" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer"><rect x="0" y="0" width="15" height="15" style="stroke:black;fill:white;stroke-width:4px;"/></svg>',
+        draggable: true
+    },
+
+    //Secondary drag hanle that represents mid-point coordinates that users can grab to add new cooridnates in the middle of segments.
+    secondaryDragHandleStyle: {
+        anchor: 'center',
+        htmlContent: '<svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer"><rect x="0" y="0" width="10" height="10" style="stroke:white;fill:black;stroke-width:4px;"/></svg>',
+        draggable: true
+    }
+});  
 ```
 
-Poniżej znajduje się kompletny przykładowy kod wykonywany w powyższych funkcjach:
+Poniżej znajduje się kompletny przykładowy kod uruchomiony powyższych funkcji:
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Zmień styl renderowania rysowania" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz styl renderowania dla pióra <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>zmiana rysowania</a> według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Zmienianie stylu renderowania rysunku" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Zobacz <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>styl renderowania rysunku zmiany</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>pióra według usługi Azure Maps ( ) na <a href='https://codepen.io'>funkcji CodePen</a>.
 </iframe>
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak używać dodatkowych funkcji modułu narzędzi do rysowania:
+Dowiedz się, jak korzystać z dodatkowych funkcji modułu narzędzi do rysowania:
 
 > [!div class="nextstepaction"]
-> [Pobierz dane kształtu](map-get-shape-data.md)
+> [Pobieranie danych kształtów](map-get-shape-data.md)
 
 > [!div class="nextstepaction"]
 > [Reagowanie na zdarzenia rysowania](drawing-tools-events.md)
@@ -111,13 +139,13 @@ Dowiedz się, jak używać dodatkowych funkcji modułu narzędzi do rysowania:
 > [!div class="nextstepaction"]
 > [Typy interakcji i skróty klawiaturowe](drawing-tools-interactions-keyboard-shortcuts.md)
 
-Dowiedz się więcej na temat klas i metod używanych w tym artykule:
+Dowiedz się więcej o klasach i metodach użytych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Zmapować](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapę](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Rysowanie paska narzędzi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [Pasek narzędzi rysowania](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
 
 > [!div class="nextstepaction"]
-> [Menedżer rysowania](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Kierownik rysunku](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)

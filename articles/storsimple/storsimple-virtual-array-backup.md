@@ -1,6 +1,6 @@
 ---
-title: Samouczek tworzenia kopii zapasowych Microsoft Azure StorSimple Virtual Array | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób tworzenia kopii zapasowej rozwiązania StorSimple Virtual Array udziały i woluminy.
+title: Samouczek kopii zapasowej tablicy wirtualnej usługi Microsoft Azure StorSimple | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób utworzenia kopii zapasowej udziałów i woluminów tablicy wirtualnej StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -16,103 +16,103 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60581398"
 ---
-# <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Tworzenie kopii zapasowej udziałów lub woluminów na rozwiązania StorSimple Virtual Array
+# <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Łącze zapasowe udziałów lub woluminów w macierzy wirtualnej StorSimple
 
 ## <a name="overview"></a>Omówienie
 
-Macierz wirtualna StorSimple jest hybrydowe urządzenie magazynujące w chmurze w środowisku lokalnym wirtualnego skonfigurowanego jako serwer plików lub serwera iSCSI. Macierz wirtualna umożliwia użytkownikowi utworzenie zaplanowanych, jak i ręczne tworzenie kopii zapasowych udziałów lub woluminów na urządzeniu. Po skonfigurowaniu serwera jako serwera plików także umożliwia odzyskiwanie na poziomie elementu. W tym samouczku opisano sposób tworzenia zaplanowanych, jak i ręczne tworzenie kopii zapasowych i odzyskiwanie na poziomie elementu można przywrócić usuniętego pliku na macierz wirtualna.
+StorSimple Virtual Array to hybrydowe urządzenie wirtualne w chmurze, które można skonfigurować jako serwer plików lub serwer iSCSI. Tablica wirtualna umożliwia użytkownikowi tworzenie zaplanowanych i ręcznych kopii zapasowych wszystkich udziałów lub woluminów na urządzeniu. Po skonfigurowaniu jako serwer plików umożliwia również odzyskiwanie na poziomie elementu. W tym samouczku opisano sposób tworzenia zaplanowanych i ręcznych kopii zapasowych oraz odzyskiwania na poziomie elementu w celu przywrócenia usuniętego pliku w tablicy wirtualnej.
 
-Ten samouczek dotyczy macierze wirtualne StorSimple tylko. Aby uzyskać informacji na temat serii 8000, przejdź do [tworzenie kopii zapasowej dla urządzeń z serii 8000](storsimple-manage-backup-policies-u2.md)
+Ten samouczek dotyczy tylko tablic wirtualnych StorSimple. Aby uzyskać informacje na temat serii 8000, przejdź do [tworzenia kopii zapasowej dla urządzenia z serii 8000](storsimple-manage-backup-policies-u2.md)
 
-## <a name="back-up-shares-and-volumes"></a>Tworzenie kopii zapasowej udziały i woluminy
+## <a name="back-up-shares-and-volumes"></a>Dziele zapasowe udziałów i wolumenów
 
-Tworzenie kopii zapasowych zapewnia ochronę w momencie, odzyskiwanie i zminimalizować czas przywracania, udziały i woluminy. Można tworzyć kopie zapasowe udział lub wolumin w urządzeniu StorSimple na dwa sposoby: **Zaplanowane** lub **ręczne**. W poniższych sekcjach omówiono każdej z metod.
+Kopie zapasowe zapewniają ochronę punktu w czasie, poprawiają możliwość odzyskiwania i minimalizują czas przywracania udziałów i woluminów. Możesz wywklić kopii zapasowej udziału lub woluminu na urządzeniu StorSimple na dwa sposoby: **Zaplanowany** lub **Ręczny**. Każda z metod jest omówiona w poniższych sekcjach.
 
-## <a name="change-the-backup-start-time"></a>Zmiana czasu rozpoczęcia tworzenia kopii zapasowych
+## <a name="change-the-backup-start-time"></a>Zmienianie czasu rozpoczęcia tworzenia kopii zapasowej
 
 > [!NOTE]
-> W tej wersji zaplanowane kopie zapasowe są tworzone przez zasady domyślne, które jest uruchamiane codziennie o określonej godzinie i tworzy kopię zapasową wszystkich udziałów lub woluminów na urządzeniu. Nie jest możliwe utworzyć zasady niestandardowe dla zaplanowanych kopii zapasowych w tej chwili.
+> W tej wersji zaplanowane kopie zapasowe są tworzone przez domyślną zasadę, która jest uruchamiana codziennie o określonej godzinie i tworzy kopię zapasową wszystkich udziałów lub woluminów na urządzeniu. Obecnie nie można tworzyć niestandardowych zasad dla zaplanowanych kopii zapasowych.
 
 
-Rozwiązania StorSimple Virtual Array ma domyślne zasady tworzenia kopii zapasowej, który rozpoczyna się o określonej godzinie dnia (22:30) i tworzy kopię zapasową wszystkich udziałów lub woluminów na urządzeniu, raz dziennie. Możesz zmienić czas, w którym nie można zmienić kopii zapasowej jest uruchamiana, ale częstotliwość i okres przechowywania (który określa liczbę kopii zapasowych, aby zachować). Podczas te kopie zapasowe całego urządzenia wirtualnego jest wykonywana kopia zapasowa. To może potencjalnie wpłynąć na wydajność urządzenia i wpływa na obciążeń wdrożonych na urządzeniu. Dlatego zaleca się zaplanować te kopie zapasowe poza godzinami pracy.
+Aplikacja StorSimple Virtual Array ma domyślną zasadę tworzenia kopii zapasowych, która rozpoczyna się o określonej porze dnia (22:30) i jednocześnie jednocześnie jednocześnie współucześnia wszystkich udziałów lub woluminów na urządzeniu. Można zmienić godzinę rozpoczęcia tworzenia kopii zapasowej, ale nie można zmienić częstotliwości i przechowywania (która określa liczbę kopii zapasowych do zachowania). Podczas wykonywania tych kopii zapasowych kopia zapasowa całego urządzenia wirtualnego jest kopią zapasową. Może to potencjalnie wpłynąć na wydajność urządzenia i wpłynąć na obciążenia wdrożone na urządzeniu. W związku z tym zaleca się zaplanowanie tych kopii zapasowych poza godzinami szczytu.
 
- Aby zmienić domyślny czas rozpoczęcia tworzenia kopii zapasowych, wykonaj następujące kroki w [witryny Azure portal](https://portal.azure.com/).
+ Aby zmienić domyślny czas rozpoczęcia tworzenia kopii zapasowej, wykonaj następujące czynności w [witrynie Azure portal](https://portal.azure.com/).
 
-#### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>Aby zmienić czas rozpoczęcia domyślnymi zasadami kopii zapasowych
+#### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>Aby zmienić godzinę rozpoczęcia domyślnej zasady tworzenia kopii zapasowej
 
-1. Przejdź do **urządzeń**. Zostanie wyświetlona lista urządzeń zarejestrowanych za pomocą usługi Menedżer urządzeń StorSimple. 
+1. Przejdź do **urządzenia**. Zostanie wyświetlona lista urządzeń zarejestrowanych w usłudze StorSimple Device Manager. 
    
-    ![Przejdź do urządzenia](./media/storsimple-virtual-array-backup/changebuschedule1.png)
+    ![przechodzenie do urządzeń](./media/storsimple-virtual-array-backup/changebuschedule1.png)
 
-2. Wybierz i kliknij swoje urządzenie. **Ustawienia** zostanie wyświetlony blok. Przejdź do **Zarządzaj > zasady kopii zapasowych**.
+2. Wybierz i kliknij urządzenie. Zostanie wyświetlony blok **Ustawienia.** Przejdź do **zarządzania > zasady tworzenia kopii zapasowych**.
    
-    ![Wybierz urządzenie](./media/storsimple-virtual-array-backup/changebuschedule2.png)
+    ![wybierz urządzenie](./media/storsimple-virtual-array-backup/changebuschedule2.png)
 
-3. W **zasady tworzenia kopii zapasowych** bloku, domyślny czas rozpoczęcia to 22:30. Można określić nową wartość czasu rozpoczęcia dla harmonogramu dziennego w strefie czasowej urządzenia.
+3. W **bloku Zasady kopii zapasowej** domyślna godzina rozpoczęcia to 22:30. Można określić nową godzinę rozpoczęcia dla dziennego harmonogramu w strefie czasowej urządzenia.
    
-    ![Przejdź do zasad tworzenia kopii zapasowych](./media/storsimple-virtual-array-backup/changebuschedule5.png)
+    ![przejdź do zasad tworzenia kopii zapasowych](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
-4. Kliknij pozycję **Zapisz**.
+4. Kliknij przycisk **Zapisz**.
 
-### <a name="take-a-manual-backup"></a>Utwórz kopię zapasową ręczne
+### <a name="take-a-manual-backup"></a>Wykonywanie ręcznej kopii zapasowej
 
-Oprócz zaplanowanych kopii zapasowych możesz wykonać ręcznie (na żądanie) tworzenie kopii zapasowych danych urządzenia w dowolnym momencie.
+Oprócz zaplanowanych kopii zapasowych można w dowolnym momencie wykonać ręczną (na żądanie) kopię zapasową danych urządzenia.
 
 #### <a name="to-create-a-manual-backup"></a>Ręczne tworzenie kopii zapasowej
 
-1. Przejdź do **urządzeń**. Wybierz swoje urządzenie, a następnie kliknij prawym przyciskiem myszy **...**  po prawej stronie w zaznaczonym wierszu. Z menu kontekstowego wybierz **wykonaj kopię zapasową**.
+1. Przejdź do **urządzenia**. Wybierz urządzenie i kliknij prawym przyciskiem myszy **...** po prawej stronie wybranego wiersza. Z menu kontekstowego wybierz polecenie **Zrób kopię zapasową**.
    
-    ![Przejdź do wykonania kopii zapasowej](./media/storsimple-virtual-array-backup/takebackup1m.png)
+    ![nawigować, aby wykonać kopię zapasową](./media/storsimple-virtual-array-backup/takebackup1m.png)
 
-2. W **wykonaj kopię zapasową** bloku kliknij **wykonaj kopię zapasową**. Będzie wykonywać kopie zapasowe, wszystkie udziały na serwerze plików lub wszystkie woluminy na serwerze iSCSI. 
+2. W bloku **Zrób kopię zapasową** kliknij pozycję **Zrób kopię zapasową**. Spowoduje to kopię zapasową wszystkich udziałów na serwerze plików lub wszystkich woluminów na serwerze iSCSI. 
    
-    ![Początkowa kopia zapasowa](./media/storsimple-virtual-array-backup/takebackup2m.png)
+    ![uruchamianie kopii zapasowej](./media/storsimple-virtual-array-backup/takebackup2m.png)
    
-    Uruchamia kopii zapasowej na żądanie, i zobaczysz, że zadanie tworzenia kopii zapasowej została uruchomiona.
+    Rozpoczyna się tworzenie kopii zapasowej na żądanie i widać, że zadanie tworzenia kopii zapasowej zostało rozpoczęte.
    
-    ![Początkowa kopia zapasowa](./media/storsimple-virtual-array-backup/takebackup3m.png) 
+    ![uruchamianie kopii zapasowej](./media/storsimple-virtual-array-backup/takebackup3m.png) 
    
-    Gdy zadanie zostanie pomyślnie zakończony, otrzymasz powiadomienie, ponownie. Następnie rozpoczyna się proces tworzenia kopii zapasowej.
+    Po pomyślnym zakończeniu zadania zostanie ponownie powiadomiony. Następnie rozpoczyna się proces tworzenia kopii zapasowej.
    
-    ![Utworzono zadanie kopii zapasowej](./media/storsimple-virtual-array-backup/takebackup4m.png)
+    ![utworzone zadanie tworzenia kopii zapasowej](./media/storsimple-virtual-array-backup/takebackup4m.png)
 
-3. Aby śledzić postęp wykonywania kopii zapasowych i przyjrzyj się szczegóły zadania, kliknij powiadomienie. Spowoduje to przejście do **szczegóły zadania**.
+3. Aby śledzić postęp tworzenia kopii zapasowych i przeglądać szczegóły zadania, kliknij powiadomienie. Spowoduje to przejście do **szczegółów zadania**.
    
-     ![Szczegóły zadania kopii zapasowej](./media/storsimple-virtual-array-backup/takebackup5m.png)
+     ![szczegóły zadania tworzenia kopii zapasowej](./media/storsimple-virtual-array-backup/takebackup5m.png)
 
-4. Po wykonaniu kopii zapasowej przejdź do **zarządzania > katalog kopii zapasowej**. Migawki w chmurze wszystkich akcji (lub woluminów) zostanie wyświetlony na urządzeniu.
+4. Po zakończeniu wykonywania kopii zapasowej przejdź do **katalogu Zarządzanie > kopia zapasowa**. Zobaczysz migawkę chmury wszystkich udziałów (lub woluminów) na urządzeniu.
    
-    ![Zakończono tworzenie kopii zapasowej](./media/storsimple-virtual-array-backup/takebackup19m.png) 
+    ![Ukończona kopia zapasowa](./media/storsimple-virtual-array-backup/takebackup19m.png) 
 
-## <a name="view-existing-backups"></a>Wyświetl istniejące kopie zapasowe
+## <a name="view-existing-backups"></a>Wyświetlanie istniejących kopii zapasowych
 Aby wyświetlić istniejące kopie zapasowe, wykonaj następujące kroki w witrynie Azure portal.
 
 #### <a name="to-view-existing-backups"></a>Aby wyświetlić istniejące kopie zapasowe
 
-1. Przejdź do **urządzeń** bloku. Wybierz i kliknij swoje urządzenie. W **ustawienia** przejdź do bloku **zarządzania > katalog kopii zapasowej**.
+1. Przejdź do **urządzenia** bloku. Wybierz i kliknij urządzenie. W bloku **Ustawienia** przejdź do **pozycji Zarządzanie > katalog kopii zapasowych**.
    
-    ![Przejdź do katalogu kopii zapasowej](./media/storsimple-virtual-array-backup/viewbackups1.png)
-2. Określ następujące kryteria, które ma być używany do filtrowania:
+    ![Przejdź do katalogu kopii zapasowych](./media/storsimple-virtual-array-backup/viewbackups1.png)
+2. Określ następujące kryteria, które mają być używane do filtrowania:
    
-   - **Zakres czasu** — może być **ostatnich 1 godziny**, **ostatnich 24 godzin**, **ostatnie 7 dni**, **w ciągu ostatnich 30 dni**, **ubiegły rok** , i **Data niestandardowa**.
+   - **Zakres czasu** - może to być **przeszłe 1 godziny**, **Ostatnie 24 godziny,** **Ostatnie 7 dni,** **Ostatnie 30 dni,** **Miniony rok**i **Data niestandardowa.**
     
-   - **Urządzenia** — wybierz z listy serwerów plików lub serwery iSCSI rejestrowania przy użyciu usługi Menedżer urządzeń StorSimple.
+   - **Urządzenia** — wybierz z listy serwerów plików lub serwerów iSCSI zarejestrowanych w usłudze StorSimple Device Manager.
    
-   - **Zainicjowano** — mogą być automatycznie **zaplanowane** (przy użyciu zasad tworzenia kopii zapasowej) lub **ręcznie** zainicjujesz ().
+   - **Inicjowane** — mogą być automatycznie **zaplanowane** (przez zasady tworzenia kopii zapasowych) lub **ręcznie** inicjowane (przez Użytkownika).
    
-     ![Filtrować kopie zapasowe](./media/storsimple-virtual-array-backup/viewbackups2.png)
+     ![Filtrowanie kopii zapasowych](./media/storsimple-virtual-array-backup/viewbackups2.png)
 
-3. Kliknij przycisk **Zastosuj**. Filtrowana lista kopii zapasowych jest wyświetlany w **katalog kopii zapasowej** bloku. Uwaga tylko 100 elementów kopii zapasowej może być wyświetlany w danym momencie.
+3. Kliknij przycisk **Zastosuj**. Filtrowana lista kopii zapasowych jest wyświetlana w bloku **katalog kopii zapasowej.** Uwaga Tylko 100 elementów kopii zapasowej mogą być wyświetlane w danym czasie.
    
-    ![Zaktualizowano wykaz kopii zapasowych](./media/storsimple-virtual-array-backup/viewbackups3.png)
+    ![Zaktualizowany katalog kopii zapasowych](./media/storsimple-virtual-array-backup/viewbackups3.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [administrowanie rozwiązania StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+Dowiedz się więcej o [administrowaniu tablicą wirtualną StorSimple](storsimple-ova-web-ui-admin.md).
 

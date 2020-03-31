@@ -1,30 +1,30 @@
 ---
-title: Powiązanie danych wejściowych usługi sygnałów Azure Functions
-description: Zapoznaj się z tematem zwracanie adresu URL punktu końcowego usługi sygnalizującego i tokenu dostępu w Azure Functions.
+title: Powiązanie wejściowe usługi SignalR usługi azure functions
+description: Dowiedz się, aby zwrócić adres URL punktu końcowego usługi SignalR i token dostępu w usłudze Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 53d336aff3177a76c5e02266ffb8484bd9945119
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77530265"
 ---
-# <a name="signalr-service-input-binding-for-azure-functions"></a>Powiązanie danych wejściowych usługi sygnalizującego dla Azure Functions
+# <a name="signalr-service-input-binding-for-azure-functions"></a>Powiązanie wejściowe usługi SignalR dla funkcji platformy Azure
 
-Aby klient mógł nawiązać połączenie z usługą Azure Signal, musi pobrać adres URL punktu końcowego usługi i prawidłowy token dostępu. Powiązanie danych wejściowych *SignalRConnectionInfo* generuje adres URL punktu końcowego usługi sygnalizującego oraz prawidłowy token, który jest używany do nawiązywania połączenia z usługą. Ponieważ token jest ograniczony do czasu i może służyć do uwierzytelniania określonego użytkownika w połączeniu, nie należy buforować tokenu ani udostępniać go między klientami. Wyzwalacz HTTP korzystający z tego powiązania może być używany przez klientów do pobierania informacji o połączeniu.
+Zanim klient może połączyć się z usługą Azure SignalR Service, musi pobrać adres URL punktu końcowego usługi i prawidłowy token dostępu. Powiązanie wejściowe *SignalRConnectionInfo* tworzy adres URL punktu końcowego usługi SignalR i prawidłowy token, które są używane do łączenia się z usługą. Ponieważ token jest ograniczony czasowo i może służyć do uwierzytelniania określonego użytkownika do połączenia, nie należy buforować tokenu lub udostępniać go między klientami. Wyzwalacz HTTP przy użyciu tego powiązania może służyć przez klientów do pobierania informacji o połączeniu.
 
-Aby uzyskać więcej informacji na temat tego powiązania do tworzenia funkcji "Negotiate", która może być używana przez zestaw SDK klienta sygnalizującego, zapoznaj się z [artykułem opracowywanie i konfigurowanie Azure Functions](../azure-signalr/signalr-concept-serverless-development-config.md) w dokumentacji dotyczącej pojęć dotyczących usługi sygnalizującej.
+Aby uzyskać więcej informacji na temat tego powiązania jest używany do tworzenia funkcji "negotiate", które mogą być używane przez SDK klienta signalr, zobacz [artykuł rozwoju i konfiguracji usługi Azure Functions](../azure-signalr/signalr-concept-serverless-development-config.md) w dokumentacji koncepcji usługi SignalR.
 
-Aby uzyskać informacje na temat konfiguracji i szczegółów konfiguracji, zobacz [Omówienie](functions-bindings-signalr-service.md).
+Aby uzyskać informacje na temat szczegółów konfiguracji i konfiguracji, zobacz [omówienie](functions-bindings-signalr-service.md).
 
 ## <a name="example"></a>Przykład
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-W poniższym przykładzie pokazano [ C# funkcję](functions-dotnet-class-library.md) , która uzyskuje informacje o połączeniu sygnalizujące przy użyciu powiązania wejściowego i zwraca je za pośrednictwem protokołu HTTP.
+W poniższym przykładzie pokazano [funkcję Języka C#,](functions-dotnet-class-library.md) która uzyskuje informacje o połączeniu SignalR przy użyciu powiązania wejściowego i zwraca go za pośrednictwem protokołu HTTP.
 
 ```cs
 [FunctionName("negotiate")]
@@ -36,13 +36,13 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[Skrypt języka C#](#tab/csharp-script)
 
-Poniższy przykład przedstawia powiązanie danych wejściowych informacji o połączeniu sygnalizującego w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania do zwrócenia informacji o połączeniu.
+W poniższym przykładzie pokazano powiązanie wejściowe informacji o połączeniu SignalR w pliku *function.json* i [funkcję skryptu języka C#,](functions-reference-csharp.md) która używa powiązania do zwracania informacji o połączeniu.
 
-Tutaj podano dane powiązań w pliku *Function. JSON* :
+Oto dane powiązania w pliku *function.json:*
 
-Przykład Function. JSON:
+Przykładowa funkcja.json:
 
 ```json
 {
@@ -54,7 +54,7 @@ Przykład Function. JSON:
 }
 ```
 
-Oto kod C# skryptu:
+Oto kod skryptu języka C#:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -66,13 +66,13 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Poniższy przykład przedstawia powiązanie danych wejściowych informacji o połączeniu sygnalizującego w pliku *Function. JSON* i [funkcji języka JavaScript](functions-reference-node.md) , która używa powiązania do zwrócenia informacji o połączeniu.
+W poniższym przykładzie pokazano powiązanie wejściowe informacji o połączeniu SignalR w pliku *function.json* i [funkcję JavaScript,](functions-reference-node.md) która używa powiązania do zwracania informacji o połączeniu.
 
-Tutaj podano dane powiązań w pliku *Function. JSON* :
+Oto dane powiązania w pliku *function.json:*
 
-Przykład Function. JSON:
+Przykładowa funkcja.json:
 
 ```json
 {
@@ -84,7 +84,7 @@ Przykład Function. JSON:
 }
 ```
 
-Poniżej przedstawiono kod JavaScript:
+Oto kod JavaScript:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -94,11 +94,11 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Poniższy przykład przedstawia powiązanie danych wejściowych informacji o połączeniu sygnalizującego w pliku *Function. JSON* i funkcji języka [Python](functions-reference-python.md) , która używa powiązania do zwrócenia informacji o połączeniu.
+W poniższym przykładzie pokazano powiązanie wejściowe informacji o połączeniu SignalR w pliku *function.json* i [funkcję Języka Python,](functions-reference-python.md) która używa powiązania do zwracania informacji o połączeniu.
 
-Tutaj podano dane powiązań w pliku *Function. JSON* :
+Oto dane powiązania w pliku *function.json:*
 
-Przykład Function. JSON:
+Przykładowa funkcja.json:
 
 ```json
 {
@@ -110,7 +110,7 @@ Przykład Function. JSON:
 }
 ```
 
-Oto kod języka Python:
+Oto kod Pythona:
 
 ```python
 def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
@@ -125,7 +125,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Poniższy przykład pokazuje [funkcję języka Java](functions-reference-java.md) , która uzyskuje informacje o połączeniu sygnalizujące przy użyciu powiązania wejściowego i zwraca je za pośrednictwem protokołu HTTP.
+W poniższym przykładzie pokazano [funkcję Java,](functions-reference-java.md) która pobiera informacje o połączeniu SignalR przy użyciu powiązania wejściowego i zwraca go za pośrednictwem protokołu HTTP.
 
 ```java
 @FunctionName("negotiate")
@@ -143,15 +143,15 @@ public SignalRConnectionInfo negotiate(
 
 ---
 
-## <a name="authenticated-tokens"></a>Tokeny uwierzytelnione
+## <a name="authenticated-tokens"></a>Uwierzytelnione tokeny
 
-Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, można dodać do wygenerowanego tokenu identyfikator użytkownika. Uwierzytelnianie w aplikacji funkcji można łatwo dodać przy użyciu [uwierzytelniania App Service](../app-service/overview-authentication-authorization.md).
+Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, można dodać oświadczenie identyfikatora użytkownika do wygenerowanego tokenu. Uwierzytelnianie można łatwo dodać do aplikacji funkcyjnej przy użyciu [funkcji App Service Authentication](../app-service/overview-authentication-authorization.md).
 
-App Service Authentication ustawia nagłówki HTTP o nazwach `x-ms-client-principal-id` i `x-ms-client-principal-name`, które zawierają odpowiednio Identyfikator podmiotu zabezpieczeń klienta uwierzytelnionego użytkownika i jego nazwę.
+Uwierzytelnianie usługi aplikacji ustawia `x-ms-client-principal-id` `x-ms-client-principal-name` nagłówki HTTP o nazwie i które zawierają odpowiednio identyfikator i nazwę główną klienta uwierzytelnionego użytkownika.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Właściwość `UserId` powiązania można ustawić na wartość z dowolnego nagłówka przy użyciu [wyrażenia powiązania](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` lub `{headers.x-ms-client-principal-name}`.
+Właściwość powiązania `UserId` można ustawić na wartość z nagłówka za `{headers.x-ms-client-principal-id}` pomocą `{headers.x-ms-client-principal-name}` [wyrażenia wiążącego](./functions-bindings-expressions-patterns.md): lub .
 
 ```cs
 [FunctionName("negotiate")]
@@ -166,11 +166,11 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[Skrypt języka C#](#tab/csharp-script)
 
-Właściwość `userId` powiązania można ustawić na wartość z dowolnego nagłówka przy użyciu [wyrażenia powiązania](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` lub `{headers.x-ms-client-principal-name}`.
+Właściwość powiązania `userId` można ustawić na wartość z nagłówka za `{headers.x-ms-client-principal-id}` pomocą `{headers.x-ms-client-principal-name}` [wyrażenia wiążącego](./functions-bindings-expressions-patterns.md): lub .
 
-Przykład Function. JSON:
+Przykładowa funkcja.json:
 
 ```json
 {
@@ -183,7 +183,7 @@ Przykład Function. JSON:
 }
 ```
 
-Oto kod C# skryptu:
+Oto kod skryptu języka C#:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -197,11 +197,11 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Właściwość `userId` powiązania można ustawić na wartość z dowolnego nagłówka przy użyciu [wyrażenia powiązania](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` lub `{headers.x-ms-client-principal-name}`.
+Właściwość powiązania `userId` można ustawić na wartość z nagłówka za `{headers.x-ms-client-principal-id}` pomocą `{headers.x-ms-client-principal-name}` [wyrażenia wiążącego](./functions-bindings-expressions-patterns.md): lub .
 
-Przykład Function. JSON:
+Przykładowa funkcja.json:
 
 ```json
 {
@@ -214,7 +214,7 @@ Przykład Function. JSON:
 }
 ```
 
-Poniżej przedstawiono kod JavaScript:
+Oto kod JavaScript:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -226,9 +226,9 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Właściwość `userId` powiązania można ustawić na wartość z dowolnego nagłówka przy użyciu [wyrażenia powiązania](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` lub `{headers.x-ms-client-principal-name}`.
+Właściwość powiązania `userId` można ustawić na wartość z nagłówka za `{headers.x-ms-client-principal-id}` pomocą `{headers.x-ms-client-principal-name}` [wyrażenia wiążącego](./functions-bindings-expressions-patterns.md): lub .
 
-Przykład Function. JSON:
+Przykładowa funkcja.json:
 
 ```json
 {
@@ -241,7 +241,7 @@ Przykład Function. JSON:
 }
 ```
 
-Oto kod języka Python:
+Oto kod Pythona:
 
 ```python
 def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
@@ -258,7 +258,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Właściwość `userId` powiązania można ustawić na wartość z dowolnego nagłówka przy użyciu [wyrażenia powiązania](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` lub `{headers.x-ms-client-principal-name}`.
+Właściwość powiązania `userId` można ustawić na wartość z nagłówka za `{headers.x-ms-client-principal-id}` pomocą `{headers.x-ms-client-principal-name}` [wyrażenia wiążącego](./functions-bindings-expressions-patterns.md): lub .
 
 ```java
 @FunctionName("negotiate")
@@ -279,4 +279,4 @@ public SignalRConnectionInfo negotiate(
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Komunikaty usługi wysyłania sygnałów (powiązanie danych wyjściowych)](./functions-bindings-signalr-service-output.md) 
+- [Wyślij komunikaty usługi SignalR (powiązanie wyjściowe)](./functions-bindings-signalr-service-output.md) 

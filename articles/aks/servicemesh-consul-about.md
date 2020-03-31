@@ -1,101 +1,101 @@
 ---
-title: Przegląd Consul
-description: Uzyskaj przegląd Consul
+title: Przegląd konsula
+description: Zapoznaj się z przeglądem konsula
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: c518985b360fa3264bd5ac1e3fe76d61b2810b9b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594213"
 ---
-# <a name="consul"></a>Consul
+# <a name="consul"></a>Konsul
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-[Consul][consul] to rozwiązanie sieciowe usług obsługujące wiele centrów danych służące do nawiązywania połączeń i zabezpieczania usług na różnych platformach środowiska uruchomieniowego. [Connect][consul-features] to składnik, który zapewnia możliwości sieci usługi.
+[Konsul][consul] jest rozwiązaniem sieciowym obsługującym wiele centrów danych do łączenia i zabezpieczania usług na platformach runtime. [Connect][consul-features] jest składnikiem, który zapewnia możliwości siatki usług.
 
 ## <a name="architecture"></a>Architektura
 
-Consul zapewnia płaszczyznę danych, która składa się z [przyczep][consul-sidecar] opartych na [wysłannikaach][envoy-proxy]domyślnie. Consul ma podłączaną architekturę serwera proxy. Te inteligentne serwery proxy kontrolują cały ruch sieciowy do i z sieci i obciążeń z siatką.
+Konsul udostępnia płaszczyznę danych, która domyślnie składa się z [wózków bocznych opartych][consul-sidecar] na [wysłanniku.][envoy-proxy] Konsul posiada podłączoną architekturę proxy. Te inteligentne serwery proxy kontrolują cały ruch sieciowy w aplikacjach i obciążeniach z siatki.
 
-Płaszczyzna kontroli zarządza konfiguracją i zasadami za pośrednictwem następujących [składników][consul-architecture]:
+Płaszczyzna sterowania zarządza konfiguracją i zasadami za pomocą następujących [składników:][consul-architecture]
 
-- **Serwer** — Agent Consul działający w trybie serwera, który obsługuje stan klastra Consul.
+- **Serwer** — agent konsula działający w trybie serwera, który utrzymuje stan klastra konsula.
 
-- **Klient** — Agent Consul uruchomiony w trybie uproszczonego klienta. Każdy węzeł obliczeniowy musi mieć uruchomiony agent klienta. Ten klient brokeruje konfigurację i zasady między obciążeniami a konfiguracją Consul. 
+- **Klient** - Agent konsula działający w lekkim trybie klienta. Każdy węzeł obliczeniowy musi mieć uruchomiony agent klienta. Ta konfiguracja brokerów klienta i zasady między obciążeniami i konfiguracji konsula. 
 
-Na poniższym diagramie architektury pokazano, jak działa różne składniki w płaszczyźnie danych i płaszczyzny kontroli.
+Na poniższym diagramie architektury pokazano, jak różne składniki w płaszczyźnie danych i płaszczyzny sterującej współdziałają.
 
-![Omówienie składników i architektury Consul.](media/servicemesh/consul/about-architecture.png)
+![Przegląd komponentów konsula i architektury.](media/servicemesh/consul/about-architecture.png)
 
 
 ## <a name="selection-criteria"></a>Kryteria wyboru
 
-Ważne jest zrozumienie i rozważenie następujących zagadnień podczas oceniania Consul obciążeń:
+Podczas oceny konsula pod kątem obciążeń ważne jest zrozumienie i rozważenie następujących obszarów:
 
-- [Zasady Consul](#consul-principles)
-- [Możliwość](#capabilities)
-- [Scenariusze](#scenarios)
+- [Zasady konsula](#consul-principles)
+- [Możliwości](#capabilities)
+- [Scenariuszy](#scenarios)
 
 
-### <a name="consul-principles"></a>Zasady Consul
+### <a name="consul-principles"></a>Zasady konsula
 
-Następujące zasady [dotyczą][consul-principles] projektu Consul:
+Projekt konsula [kieruje][consul-principles] następującymi zasadami:
 
-- Oparte na **interfejsach API** -codify wszystkie konfiguracje i zasady.
+- **Api-Driven** — kodyfikuj całą konfigurację i zasady.
 
-- **Uruchamiaj i łącz z dowolnego miejsca** — łączenie obciążeń na platformach środowiska uruchomieniowego (Kubernetes, maszyny wirtualne, bezserwerowe).
+- **Uruchamianie i łączenie w dowolnym miejscu** — łączenie obciążeń na platformach środowiska uruchomieniowego (Kubernetes, VM, Serverless).
 
-- **Rozszerzając i Integruj** — bezpieczne łączenie obciążeń w całej infrastrukturze.
+- **Rozszerzanie i integrowanie** — bezpieczne łączenie obciążeń między infrastrukturą.
 
 
 ### <a name="capabilities"></a>Możliwości
 
-Consul zapewnia następujący zestaw możliwości:
+Konsul zapewnia następujący zestaw możliwości:
 
-- **Siatka** — Brama (wiele centrów danych), maszyny wirtualne (poza węzłami klastra), synchronizacja usługi, wbudowane opcje debugowania
+- **Siatka** – brama (centrum danych wielozadaniowe), maszyny wirtualne (poza węzłami klastra), synchronizacja usług, wbudowana opcja debugowania
 
-- **Proxy** — wysłannika, wbudowanego serwera proxy, dostępnego do podłączenia, serwera proxy P4 dla obciążeń systemu Windows
+- **Proxy** - Wysłannik, wbudowany serwer proxy, podłączalny, l4 proxy dostępne dla obciążeń systemu Windows
 
-- **Zarządzanie ruchem** — Routing, dzielenie, rozdzielczość
+- **Zarządzanie ruchem** – routing, dzielenie, rozpoznawanie
 
-- **Zasady** — zamiary, listy ACL
+- **Polityka** – intencje, listy ACL
 
-- **Zabezpieczenia** — autoryzacja, uwierzytelnianie, szyfrowanie, tożsamości oparte na SPIFFE, zewnętrzny urząd certyfikacji (magazyn), zarządzanie certyfikatami i rotacja
+- **Bezpieczeństwo** — autoryzacja, uwierzytelnianie, szyfrowanie, tożsamości oparte na spiffe, zewnętrzny urząd certyfikacji (Vault), zarządzanie certyfikatami i rotacja
 
-- **Zauważalność** — metryki, pulpit nawigacyjny interfejsu użytkownika, Prometheus, grafana
+- **Observability** – metryki, panel interfejsu użytkownika, prometeusz, grafana
 
 
 ### <a name="scenarios"></a>Scenariusze
 
-Consul jest dobrze dostosowane do i sugerowane dla następujących scenariuszy:
+Konsul jest dobrze dopasowany i zasugerowany w następujących scenariuszach:
 
-- Rozszerzanie istniejących obciążeń połączonych Consul
+- Rozszerzanie istniejących obciążeń połączonych konsula
 
 - Wymagania dotyczące zgodności dotyczące zarządzania certyfikatami
 
-- Siatka usługi wiele klastrów
+- Siatka usługi wielu klastrów
 
-- Obciążenia oparte na maszynach wirtualnych, które mają być dołączone do sieci usługi
+- Obciążenia oparte na maszynach wirtualnych, które mają zostać uwzględnione w siatce usług
 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-W poniższej dokumentacji opisano, jak można zainstalować usługę Consul w usłudze Azure Kubernetes Service (AKS):
+W poniższej dokumentacji opisano sposób instalowania konsula w usłudze Azure Kubernetes Service (AKS):
 
 > [!div class="nextstepaction"]
-> [Instalowanie Consul w usłudze Azure Kubernetes Service (AKS)][consul-install]
+> [Instalowanie konsula w usłudze Azure Kubernetes (AKS)][consul-install]
 
-Możesz również dodatkowo zapoznać się z funkcjami i architekturą Consul:
+Można również dowiedzieć się więcej funkcje konsula i architektury:
 
-- [Funkcje Consul][consul-features]
-- [Architektura Consul][consul-architecture]
-- [Consul — jak działa połączenie][consul-how-connect-works]
+- [Funkcje konsula][consul-features]
+- [Architektura konsula][consul-architecture]
+- [Konsul - Jak działa Connect][consul-how-connect-works]
 
 <!-- LINKS - external -->
 [consul]: https://www.consul.io/mesh.html

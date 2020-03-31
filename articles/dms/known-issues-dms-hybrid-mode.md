@@ -1,6 +1,6 @@
 ---
 title: Znane problemy/ograniczenia migracji przy użyciu trybu hybrydowego
-description: Informacje o znanych problemach/ograniczeniach migracji przy użyciu Azure Database Migration Service w trybie hybrydowym.
+description: Dowiedz się więcej o znanych problemach/ograniczeniach migracji przy użyciu usługi migracji bazy danych Azure w trybie hybrydowym.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,91 +12,91 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: aedc7ea3d778d52f6f348837430987568af188ef
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77649606"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Znane problemy/ograniczenia migracji przy użyciu trybu hybrydowego
 
-W poniższych sekcjach opisano znane problemy i ograniczenia związane z używaniem Azure Database Migration Service w trybie hybrydowym.
+Znane problemy i ograniczenia związane z korzystaniem z usługi migracji bazy danych Azure w trybie hybrydowym są opisane w poniższych sekcjach.
 
-## <a name="installer-fails-to-authenticate"></a>Nie można uwierzytelnić Instalatora
+## <a name="installer-fails-to-authenticate"></a>Nie można uwierzytelnić instalatora
 
-Po przekazaniu certyfikatu do AdApp istnieje opóźnienie do kilku minut, zanim będzie można uwierzytelnić się na platformie Azure. Instalator spróbuje ponowić próbę z pewnym opóźnieniem, ale możliwe jest, aby opóźnienie propagacji było dłuższe niż ponowienie i zobaczysz komunikat **FailedToGetAccessTokenException** . Jeśli certyfikat został przekazany do poprawnego AdApp i podano poprawny identyfikator AppId w pliku dmsSettings. JSON, spróbuj ponownie uruchomić polecenie instalacji.
+Po przesłaniu certyfikatu do aplikacji AdApp opóźnienie wynosi do kilku minut, zanim będzie mógł uwierzytelnić się za pomocą platformy Azure. Instalator spróbuje ponowić próbę z pewnym opóźnieniem, ale jest możliwe, że opóźnienie propagacji będzie dłuższe niż ponowna próba, a zobaczysz komunikat **FailedToGetAccessTokenException.** Jeśli certyfikat został przesłany do właściwego adapp i poprawny AppId został dostarczony w dmsSettings.json, spróbuj ponownie uruchomić polecenie install.
 
 ## <a name="service-offline-after-successful-installation"></a>Usługa "offline" po pomyślnej instalacji
 
-Jeśli usługa jest wyświetlana w trybie offline po pomyślnym zakończeniu procesu instalacji, spróbuj wykonać poniższe czynności.
+Jeśli usługa jest wyświetlana w trybie offline po pomyślnym zakończeniu procesu instalacji, spróbuj wykonać następujące kroki.
 
-1. W Azure Portal, w wystąpieniu Azure Database Migration Service, przejdź do karty ustawienia **hybrydowe** , a następnie sprawdź, czy proces roboczy jest zarejestrowany, sprawdzając siatkę zarejestrowanych procesów roboczych.
+1. W witrynie Azure portal w przypadku usługi migracji bazy danych azure przejdź do karty Ustawienia **hybrydowe,** a następnie sprawdź, czy pracownik jest zarejestrowany, sprawdzając siatkę zarejestrowanych pracowników.
 
-    Stan tego procesu roboczego powinien być w **trybie online**, ale jeśli wystąpił problem, może on być wyświetlany jako w **trybie offline** .
+    Stan tego pracownika powinien być **w trybie online,** ale może być wyświetlane jako **w trybie offline,** jeśli występuje problem.
 
-2. Na komputerze roboczym Sprawdź stan usługi, uruchamiając następujące polecenie programu PowerShell:
+2. Na komputerze roboczym sprawdź stan usługi, uruchamiając następujące polecenie programu PowerShell:
 
     ```
     Get-Service Scenario*
     ```
 
-    To polecenie umożliwia wyświetlenie stanu usługi systemu Windows, w której działa proces roboczy. Powinien istnieć tylko jeden wynik. Jeśli proces roboczy został zatrzymany, możesz spróbować ponownie uruchomić go za pomocą następującego polecenia programu PowerShell:
+    To polecenie podaje stan usługi systemu Windows z uruchomionym pracownikiem. Powinien być tylko jeden wynik. Jeśli pracownik zostanie zatrzymany, można spróbować go ponownie uruchomić za pomocą następującego polecenia programu PowerShell:
 
     ```
     Start-Service Scenario*
     ```
 
-    Możesz również sprawdzić usługę w interfejsie użytkownika usług systemu Windows.
+    Można również sprawdzić usługę w interfejsie użytkownika usług systemu Windows.
 
-3. Jeśli usługa systemu Windows jest przełączana między uruchomioną i zatrzymaną, proces roboczy napotkał problemy podczas uruchamiania. Aby określić problem, Sprawdź dzienniki hybrydowych procesów roboczych Azure Database Migration Service.
+3. Jeśli cykle usługi systemu Windows między uruchamianiem i zatrzymaniem, pracownik napotkał problemy z uruchomieniem. Sprawdź dzienniki hybrydowych procesów roboczych usługi migracji usługi Azure Database, aby ustalić problem.
 
-    - Dzienniki procesu instalacji są przechowywane w folderze "Logs" w folderze, z którego został uruchomiony plik wykonywalny Instalatora.
-    - Azure Database Migration Service hybrydowe dzienniki procesów roboczych są przechowywane w folderze **WorkerLogs** w folderze, w którym jest zainstalowany proces roboczy. Domyślną lokalizacją dla plików dziennika hybrydowego procesu roboczego jest **C:\Program Files\DatabaseMigrationServiceHybrid\WorkerLogs**.
+    - Dzienniki procesu instalacji są przechowywane w folderze "dzienniki" w folderze, z którego uruchomiono plik wykonywalny instalatora.
+    - Dzienniki procesów roboczych usługi migracji bazy danych Azure są przechowywane w folderze **WorkerLogs** w folderze, w którym jest zainstalowany proces roboczy. Domyślną lokalizacją plików dziennika procesu roboczego hybrydowego jest **C:\Program Files\DatabaseMigrationServiceHybrid\WorkerLogs**.
 
 ## <a name="using-your-own-signed-certificate"></a>Korzystanie z własnego podpisanego certyfikatu
 
-Certyfikat wygenerowany przez akcję GenerateCert to certyfikat z podpisem własnym, który może nie być akceptowalny w oparciu o wewnętrzne zasady zabezpieczeń. Zamiast korzystać z tego certyfikatu, możesz podać własny certyfikat i podać odcisk palca w pliku dmsSettings. JSON. Ten certyfikat będzie musiał zostać przekazany do AdApp i zainstalowany na komputerze, na którym jest instalowany Azure Database Migration Service hybrydowy proces roboczy. Następnie zainstaluj ten certyfikat z kluczem prywatnym w magazynie certyfikatów komputera lokalnego.
+Certyfikat wygenerowany przez akcję GenerateCert jest certyfikatem z podpisem własnym, który może być nie do przyjęcia na podstawie wewnętrznych zasad zabezpieczeń. Zamiast używać tego certyfikatu, można podać własny certyfikat i podać odcisk palca w dmsSettings.json. Ten certyfikat należy przekazać do adapp i zainstalować na komputerze, na którym instalujesz pracownika hybrydowego usługi migracji usługi Azure Database. Następnie zainstaluj ten certyfikat z kluczem prywatnym w magazynie certyfikatów komputera lokalnego.
 
-## <a name="running-the-worker-service-as-a-low-privilege-account"></a>Uruchamianie usługi Worker jako konta z niskim poziomem uprawnień
+## <a name="running-the-worker-service-as-a-low-privilege-account"></a>Uruchamianie usługi pracownika jako konta o niskich uprawnieniach
 
-Domyślnie usługa hybrydowego procesu roboczego Azure Database Migration Service jest uruchamiana jako konto systemu lokalnego. Można zmienić konto używane dla tej usługi, o ile używane konto ma uprawnienia sieciowe. Aby zmienić konto Uruchom jako usługi, użyj następującego procesu.
+Domyślnie usługa hybrydowego procesu migracji usługi azure database migration service działa jako konto systemu lokalnego. Konto używane dla tej usługi można zmienić, o ile konto, którego używasz, ma uprawnienia sieciowe. Aby zmienić konto "uruchom jako" usługi, użyj następującego procesu.
 
-1. Zatrzymaj usługę za pośrednictwem usług systemu Windows lub za pomocą polecenia zatrzymania usługi w programie PowerShell.
+1. Zatrzymaj usługę za pośrednictwem usług systemu Windows lub za pomocą polecenia Zatrzymaj usługę w programie PowerShell.
 
-2. Zaktualizuj usługę tak, aby korzystała z innego konta logowania.
+2. Zaktualizuj usługę, aby użyć innego konta logowania.
 
-3. W programie certmgr dla certyfikatów komputera lokalnego nadaj kluczom prywatnym uprawnienia do nowego konta dla **klucza aplikacji hybrydowej DMS** i **kluczy aparatu usługi DMS** .
+3. W certmgr dla certyfikatów komputera lokalnego należy przyznać uprawnienia klucza prywatnego do nowego konta dla certyfikatów **par kluczy hybrydowych aplikacji DMS** i **dms scenario.**
 
-    a. Otwórz certmgr, aby wyświetlić następujące klucze:
+    a. Otwórz certmgr, aby wyświetlić następujące klawisze:
 
     - Klucz aplikacji hybrydowej DMS
     - Klucz konfiguracji hybrydowego procesu roboczego DMS
-    - Para kluczy aparatu scenariusza "DMS"
+    - Para kluczy silnika scenariusza DMS
 
-    b. Kliknij prawym przyciskiem myszy wpis **kluczowej aplikacji na DMS** , wskaż polecenie **wszystkie zadania**, a następnie wybierz pozycję **Zarządzaj kluczami prywatnymi**.
+    b. Kliknij prawym przyciskiem myszy wpis **Klucz hybrydowy DMS,** wskaż **polecenie Wszystkie zadania**, a następnie wybierz polecenie **Zarządzaj kluczami prywatnymi**.
 
-    c. Na karcie **zabezpieczenia** wybierz pozycję **Dodaj**, a następnie wprowadź nazwę konta.
+    d. Na karcie **Zabezpieczenia** wybierz pozycję **Dodaj**, a następnie wprowadź nazwę konta.
 
-    d. Wykonaj te same czynności, aby przyznać uprawnienia klucza prywatnego nowemu kontu do certyfikatu **pary kluczy aparatu usługi DMS** .
+    d. Użyj tych samych kroków, aby udzielić uprawnień klucza prywatnego dla nowego konta do certyfikatu **pary kluczy aparatu scenariusza DMS.**
 
-## <a name="unregistering-the-worker-manually"></a>Ręczne Wyrejestrowywanie procesu roboczego
+## <a name="unregistering-the-worker-manually"></a>Ręczne wyrejestrowanie pracownika
 
-Jeśli nie masz już dostępu do komputera roboczego, możesz wyrejestrować proces roboczy i ponownie użyć wystąpienia Azure Database Migration Service, wykonując następujące czynności:
+Jeśli nie masz już dostępu do komputera roboczego, możesz wyrejestrować pracownika i ponownie użyć wystąpienia usługi migracji usługi Azure Database, wykonując następujące kroki:
 
-1. W Azure Portal, ma do wystąpienia Azure Database Migration Service, a następnie przejdź do strony ustawienia **hybrydowe** .
+1. W witrynie Azure portal przejdź do wystąpienia usługi migracji bazy danych azure, a następnie przejdź do strony ustawień **hybrydowych.**
 
-   Pozycja proces roboczy zostanie wyświetlona na liście, a stan będzie wyświetlany jako **offline**.
+   Wpis pracownika pojawi się na liście ze stanem wyświetlanym jako **Offline**.
 
-2. Po prawej stronie listy wpisów procesu roboczego wybierz wielokropek, a następnie wybierz pozycję **Wyrejestruj**.
+2. Po prawej stronie listy wpisu pracownika wybierz elipsy, a następnie wybierz pozycję **Wyrejestruj**.
 
-## <a name="addressing-issues-for-specific-migration-scenarios"></a>Rozwiązywanie problemów dotyczących określonych scenariuszy migracji
+## <a name="addressing-issues-for-specific-migration-scenarios"></a>Rozwiązywanie problemów dotyczących konkretnych scenariuszy migracji
 
-W poniższych sekcjach opisano problemy dotyczące scenariusza związane z używaniem Azure Database Migration Service trybu hybrydowego do przeprowadzenia migracji w trybie online.
+W poniższych sekcjach opisano problemy specyficzne dla scenariusza związane z używaniem trybu hybrydowego usługi Azure Database Migration Service do przeprowadzania migracji online.
 
-### <a name="online-migrations-to-azure-sql-database-managed-instance"></a>Migracje online do Azure SQL Database wystąpienia zarządzanego
+### <a name="online-migrations-to-azure-sql-database-managed-instance"></a>Migracje online do wystąpienia zarządzanego usługi Azure SQL Database
 
-**Duże użycie procesora CPU**
+**Wysokie użycie procesora**
 
-**Problem**: w przypadku migracji w trybie online do SQL Database wystąpienia zarządzanego, komputer, na którym działa hybrydowy proces roboczy, będzie napotykał duże użycie procesora CPU, jeśli istnieje zbyt wiele kopii zapasowych lub kopia zapasowa jest zbyt duża.
+**Problem:** W przypadku migracji online do wystąpienia zarządzanego bazy danych SQL komputer z uruchomień hybrydowych napotka wysokie użycie procesora CPU, jeśli istnieje zbyt wiele kopii zapasowych lub jeśli kopie zapasowe są zbyt duże.
 
-Środki **zaradcze**: Aby rozwiązać ten problem, należy użyć skompresowanych kopii zapasowych, podzielić migrację tak, aby korzystała z wielu udziałów, lub skalować komputer z uruchomionym hybrydowym procesem roboczym.
+**Środki zaradcze:** Aby złagodzić ten problem, należy użyć skompresowanych kopii zapasowych, podzielić migrację, aby używać wielu udziałów lub skalować komputer z systemem hybrydowego procesu roboczego.

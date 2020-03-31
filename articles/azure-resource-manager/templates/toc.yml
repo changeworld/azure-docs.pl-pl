@@ -10,9 +10,31 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: Tworzenie szablonów — program VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
+    - name: Usługi platformy Azure
+      items:
+        - name: AKS
+          href: ../../aks/kubernetes-walkthrough-rm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Backup
+          href: ../../backup/quick-backup-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Cosmos DB
+          href: ../../cosmos-db/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Event Grid
+          href: ../../event-grid/blob-event-quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Centrum zdarzeń
+          href: ../../event-hubs/event-hubs-resource-manager-namespace-event-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Usługa Key Vault
+          href: ../../key-vault/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Moduł równoważenia obciążenia
+          href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Zasady
+          href: ../../governance/policy/assign-policy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Komunikaty usługi Service Bus
+          href: ../../service-bus-messaging/service-bus-resource-manager-namespace-queue.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Baza danych SQL
+          href: ../../sql-database/sql-database-single-database-get-started-template.md?toc=/azure/azure-resource-manager/templates/toc.json
 - name: Samouczki
   items:
-    - name: Początkujący
+    - name: Szablony dla początkujących
       items:
         - name: 1. Tworzenie pierwszego szablonu
           href: template-tutorial-create-first-template.md
@@ -34,6 +56,15 @@
           href: template-tutorial-add-tags.md
         - name: 10. Używanie pliku parametrów
           href: template-tutorial-use-parameter-file.md
+    - name: Wdrożenie
+      items:
+        - name: 1 — Wdrażanie szablonu lokalnego
+          href: deployment-tutorial-local-template.md
+        - name: 2 — Wdrażanie szablonu połączonego
+          href: deployment-tutorial-linked-template.md
+        - name: 3 — Tworzenie potoku
+          displayName: Devop
+          href: deployment-tutorial-pipeline.md
     - name: Zaawansowane
       items:
         - name: Dokumentacja dotycząca korzystania z szablonów
@@ -61,9 +92,6 @@
           href: template-tutorial-deploy-sql-extensions-bacpac.md
         - name: Artefakty zabezpieczeń
           href: template-tutorial-secure-artifacts.md
-        - name: Ciągła integracja z użyciem usługi Azure Pipelines
-          displayName: DevOps
-          href: template-tutorial-use-azure-pipelines.md
         - name: Korzystanie z praktyk bezpiecznego wdrażania
           displayName: adm
           href: deployment-manager-tutorial.md
@@ -214,7 +242,7 @@
         - name: InvalidTemplate
           href: error-invalid-template.md
         - name: Problemy z wdrażaniem w systemie Linux
-          href: ../../virtual-machines/linux/troubleshoot-deploy-vm.md
+          href: ../../virtual-machines/troubleshooting/troubleshoot-deploy-vm-linux.md
         - name: NoRegisteredProviderFound
           href: error-register-resource-provider.md
         - name: NotFound
@@ -222,9 +250,9 @@
         - name: ParentResourceNotFound
           href: error-parent-resource.md
         - name: Problemy z aprowizowaniem i alokacją w systemie Linux
-          href: ../../virtual-machines/linux/troubleshoot-deployment-new-vm.md
+          href: ../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md
         - name: Problemy z aprowizowaniem i alokacją w systemie Windows
-          href: ../../virtual-machines/windows/troubleshoot-deployment-new-vm.md
+          href: ../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md
         - name: RequestDisallowedByPolicy
           href: error-policy-requestdisallowedbypolicy.md
         - name: ReservedResourceName
@@ -234,7 +262,7 @@
         - name: SkuNotAvailable
           href: error-sku-not-available.md
         - name: Problemy z wdrażaniem w systemie Windows
-          href: ../../virtual-machines/windows/troubleshoot-deploy-vm.md
+          href: ../../virtual-machines/troubleshooting/troubleshoot-deploy-vm-windows.md
 - name: Dokumentacja
   items:
     - name: Dokumentacja dotycząca szablonów

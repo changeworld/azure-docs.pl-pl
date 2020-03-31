@@ -1,6 +1,6 @@
 ---
-title: Przywracanie lub trwałe usuwanie ostatnio usuniętego użytkownika — Azure AD
-description: Jak wyświetlić użytkowników z możliwością przywrócenia, przywracanie usuniętego użytkownika lub trwale usunąć użytkownika z usługą Azure Active Directory.
+title: Przywracanie lub trwale usuwanie ostatnio usuniętego użytkownika — Usługa Azure AD
+description: Jak wyświetlić przywracalnych użytkowników, przywrócić usuniętego użytkownika lub trwale usunąć użytkownika za pomocą usługi Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,80 +14,80 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 573269da1ca6b9ee09b493f4e758e78121d6c2f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75422861"
 ---
-# <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Przywrócić lub usunąć ostatnio usuniętego użytkownika przy użyciu usługi Azure Active Directory
-Po usunięciu użytkownika konto pozostaje w stanie wstrzymania przez 30 dni. Podczas tego 30-dniowe okno konto użytkownika można przywrócić, wraz z jego właściwości. Po pomyślnej tego 30-dniowe okno, użytkownik jest automatycznie i stałe, usuwane.
+# <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Przywracanie lub usuwanie ostatnio usuniętego użytkownika przy użyciu usługi Azure Active Directory
+Po usunięciu użytkownika konto pozostaje w stanie zawieszenia przez 30 dni. W tym 30-dniowym oknie można przywrócić konto użytkownika wraz ze wszystkimi jego właściwościami. Po upływie tego 30-dniowego okna użytkownik jest automatycznie i trwale usuwany.
 
-Można wyświetlić z możliwością przywrócenia użytkowników, przywracanie usuniętego użytkownika lub trwałe usuwanie użytkownika przy użyciu usługi Azure Active Directory (Azure AD) w witrynie Azure portal.
+Możesz wyświetlić przywracalnych użytkowników, przywrócić usuniętego użytkownika lub trwale usunąć użytkownika przy użyciu usługi Azure Active Directory (Azure AD) w witrynie Azure Portal.
 
 >[!Important]
->Trwale usunięto użytkownika można przywrócić, nie możesz ani obsługi klienta firmy Microsoft.
+>Ani Ty, ani dział obsługi klienta firmy Microsoft nie mogą przywrócić trwale usuniętego użytkownika.
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
-Użytkownik musi mieć jedną z następujących ról, aby przywrócić i trwale usunąć użytkowników.
+Aby przywrócić i trwale usunąć użytkowników, musisz mieć jedną z następujących ról.
 
 - Administrator globalny
 
-- Pomoc techniczna dla partnerów (warstwa 1)
+- Pomoc techniczna poziomu 1 partnera
 
-- Pomoc techniczna dla partnerów (warstwa 2)
+- Obsługa partnerów Tier2
 
-- Administrator użytkowników
+- Administrator użytkownika
 
-## <a name="view-your-restorable-users"></a>Wyświetlanie z możliwością przywrócenia użytkowników
-Można wyświetlić wszystkich użytkowników, które zostały usunięte z mniej niż 30 dni temu. Tacy użytkownicy mogą zostać przywrócone.
+## <a name="view-your-restorable-users"></a>Wyświetlanie przywracalnych użytkowników
+Możesz zobaczyć wszystkich użytkowników, którzy zostali usunięci mniej niż 30 dni temu. Tych użytkowników można przywrócić.
 
-### <a name="to-view-your-restorable-users"></a>Aby wyświetlić z możliwością przywrócenia użytkowników
-1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla organizacji.
+### <a name="to-view-your-restorable-users"></a>Aby wyświetlić odtwarzalnych użytkowników
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla organizacji.
 
-2. Wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **usuniętych użytkowników**.
+2. Wybierz **pozycję Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Użytkownicy usunięci**.
 
-    Przejrzyj listę użytkowników, które są dostępne do przywrócenia.
+    Przejrzyj listę użytkowników, którzy są dostępni do przywrócenia.
 
-    ![Użytkownicy — strona usuniętych użytkowników z użytkowników, którzy mogą zostać przywrócone](media/active-directory-users-restore/users-deleted-users-view-restorable.png)
+    ![Użytkownicy — strona Usunięto użytkowników, a użytkownicy nadal mogą zostać przywróceni](media/active-directory-users-restore/users-deleted-users-view-restorable.png)
 
 ## <a name="restore-a-recently-deleted-user"></a>Przywracanie ostatnio usuniętego użytkownika
 
-Po usunięciu konta użytkownika z organizacji konto jest w stanie wstrzymania i wszystkie powiązane informacje organizacji są zachowywane. Podczas przywracania użytkownika są również przywracane informacje o organizacji.
+Gdy konto użytkownika zostanie usunięte z organizacji, konto jest w stanie wstrzymania, a wszystkie powiązane informacje o organizacji są zachowywane. Po przywróceniu użytkownika te informacje o organizacji są również przywracane.
 
 > [!Note]
-> Po przywróceniu użytkownika zostaną również przywrócone licencje przypisane do użytkownika w czasie usuwania, nawet jeśli dla tych licencji nie ma dostępnych stanowisk. Jeśli zużywasz więcej licencji więcej niż zakupiono, Twoja organizacja może być tymczasowo niezgodna z użyciem licencji.
+> Po przywróceniu użytkownika licencje, które zostały przypisane do użytkownika w momencie usuwania, są również przywracane, nawet jeśli nie ma wolnych miejsc dla tych licencji. Jeśli następnie zużywasz więcej licencji niż zakupiono, twoja organizacja może być tymczasowo niezgodna z przepisami dotyczącymi użycia licencji.
 
 ### <a name="to-restore-a-user"></a>Aby przywrócić użytkownika
-1. Na **użytkownicy — usuniętych użytkowników** strony, wyszukaj i wybierz jedną z dostępnych użytkowników. Na przykład _Mary Parker_.
+1. Na stronie **Użytkownicy — Usunięto użytkowników** wyszukaj i wybierz jednego z dostępnych użytkowników. Na przykład _Mary Parker_.
 
-2. Wybierz **użytkownika przywracania**.
+2. Wybierz **pozycję Przywróć użytkownika**.
 
-    ![Użytkownicy — stronie usuniętych użytkowników z podświetloną opcją użytkownika przywracania](media/active-directory-users-restore/users-deleted-users-restore-user.png)
+    ![Użytkownicy — strona Usunięto użytkowników z wyróżnioną opcją Przywróć użytkownika](media/active-directory-users-restore/users-deleted-users-restore-user.png)
 
 ## <a name="permanently-delete-a-user"></a>Trwałe usuwanie użytkownika
-Można trwale usunąć użytkownika z organizacji bez czekania 30 dni na automatyczne usunięcie. Trwale usunięto użytkownika nie można przywrócić przez Ciebie innego administratora ani znakiem obsługi klienta firmy Microsoft.
+Możesz trwale usunąć użytkownika z organizacji bez czekania na 30 dni na automatyczne usunięcie. Nie można przywrócić trwale usuniętego użytkownika przez użytkownika, innego administratora ani przez dział obsługi klienta firmy Microsoft.
 
 >[!Note]
->Trwałe usunięcie użytkownika przez pomyłkę, należy utworzyć nowego użytkownika, a następnie ręcznie wprowadź poprzednich informacji. Aby uzyskać więcej informacji na temat tworzenia nowego użytkownika, zobacz [apletu Dodaj lub usuń użytkowników](add-users-azure-active-directory.md).
+>Jeśli przez pomyłkę trwale usuniesz użytkownika, musisz utworzyć nowego użytkownika i ręcznie wprowadzić wszystkie poprzednie informacje. Aby uzyskać więcej informacji na temat tworzenia nowego użytkownika, zobacz [Dodawanie lub usuwanie użytkowników](add-users-azure-active-directory.md).
 
 ### <a name="to-permanently-delete-a-user"></a>Aby trwale usunąć użytkownika
 
-1. Na **użytkownicy — usuniętych użytkowników** strony, wyszukaj i wybierz jedną z dostępnych użytkowników. Na przykład _Rae Huff_.
+1. Na stronie **Użytkownicy — Usunięto użytkowników** wyszukaj i wybierz jednego z dostępnych użytkowników. Na przykład _Rae Huff_.
 
-2. Wybierz **trwałe usunięcie**.
+2. Wybierz **pozycję Usuń trwale**.
 
-    ![Użytkownicy — stronie usuniętych użytkowników z podświetloną opcją użytkownika przywracania](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
+    ![Użytkownicy — strona Usunięto użytkowników z wyróżnioną opcją Przywróć użytkownika](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
 ## <a name="next-steps"></a>Następne kroki
-Po przywrócić lub usunąć użytkowników, należy wykonać następujące procesy basic:
+Po przywróceniu lub usunięciu użytkowników można wykonać następujące podstawowe procesy:
 
 - [Dodawanie lub usuwanie użytkowników](add-users-azure-active-directory.md)
 
 - [Przypisywanie ról do użytkowników](active-directory-users-assign-role-azure-portal.md)
 
-- [Dodać lub zmienić informacje o profilu](active-directory-users-profile-azure-portal.md)
+- [Dodawanie lub zmienianie informacji o profilu](active-directory-users-profile-azure-portal.md)
 
-- [Dodawanie użytkowników-Gości z innej organizacji](../b2b/what-is-b2b.md)
+- [Dodawanie użytkowników-gości z innej organizacji](../b2b/what-is-b2b.md)
 
-Aby uzyskać więcej informacji na temat innych dostępnych zadań zarządzania użytkownikami, zapoznaj się z [dokumentacją zarządzania użytkownikami usługi Azure AD](../users-groups-roles/index.yml).
+Aby uzyskać więcej informacji na temat innych dostępnych zadań zarządzania użytkownikami, [dokumentację zarządzania użytkownikami usługi Azure AD](../users-groups-roles/index.yml).

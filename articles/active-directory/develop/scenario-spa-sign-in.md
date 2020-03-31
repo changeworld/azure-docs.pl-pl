@@ -1,5 +1,5 @@
 ---
-title: Logowanie jednostronicowej aplikacji & logowania — platforma tożsamości firmy Microsoft | Azure
+title: Jednostronicowe logowanie & logowania do aplikacji — platforma tożsamości firmy Microsoft | Azure
 description: Dowiedz się, jak utworzyć aplikację jednostronicową (logowanie)
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,37 +17,37 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: eb75aa53051e7e3c424ffe131cda61324fe86b1a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159968"
 ---
-# <a name="single-page-application-sign-in-and-sign-out"></a>Aplikacja jednostronicowa: Logowanie i wylogowywanie
+# <a name="single-page-application-sign-in-and-sign-out"></a>Aplikacja jednostronicowa: Logowanie i wylogowywanie się
 
-Dowiedz się, jak dodać logowanie do kodu dla aplikacji jednostronicowej.
+Dowiedz się, jak dodać logowanie do kodu aplikacji jednostronicowej.
 
-Aby uzyskać tokeny umożliwiające dostęp do interfejsów API w aplikacji, wymagany jest kontekst uwierzytelnionego użytkownika. Użytkowników można zalogować do aplikacji w MSAL. js na dwa sposoby:
+Aby można było uzyskać tokeny dostępu do interfejsów API w aplikacji, należy uwierzytelniony kontekst użytkownika. Użytkownicy do aplikacji można zalogować na dwa sposoby:
 
-* [Okno podręczne](#sign-in-with-a-pop-up-window), przy użyciu metody `loginPopup`
-* [Przekierowywanie](#sign-in-with-redirect)przy użyciu metody `loginRedirect`
+* [Wyskakujące okno](#sign-in-with-a-pop-up-window) `loginPopup` , przy użyciu metody
+* [Przekierowanie](#sign-in-with-redirect), `loginRedirect` przy użyciu metody
 
-Opcjonalnie można również przekazać zakresy interfejsów API, dla których użytkownik musi wyrazić zgodę w czasie logowania.
+Opcjonalnie można również przekazać zakresy interfejsów API, dla których użytkownik musi wyrazić zgodę w momencie logowania.
 
 > [!NOTE]
-> Jeśli aplikacja ma już dostęp do kontekstu uwierzytelnionego użytkownika lub tokenu identyfikatora, można pominąć krok logowania i bezpośrednio uzyskać tokeny. Aby uzyskać szczegółowe informacje, zobacz [Logowanie jednokrotne bez logowania MSAL. js](msal-js-sso.md#sso-without-msaljs-login).
+> Jeśli aplikacja ma już dostęp do uwierzytelnionego kontekstu użytkownika lub tokenu identyfikatora, można pominąć krok logowania i bezpośrednio uzyskać tokeny. Aby uzyskać szczegółowe informacje, zobacz [Logowanie sytowe bez logowania msal.js](msal-js-sso.md#sso-without-msaljs-login).
 
-## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>Wybieranie między podręcznym i przekierowaniami
+## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>Wybieranie między wyskakującym okienkiem lub przekierowaniem
 
-W aplikacji nie można używać obu metod podręcznych i przekierowania. Wybór między podręcznym i przekierowaniami zależy od przepływu aplikacji:
+Nie można używać zarówno wyskakujących i przekierowywania metod w aplikacji. Wybór między wyskakującym okienkiem lub przekierowaniem zależy od przepływu aplikacji:
 
-* Jeśli nie chcesz, aby użytkownicy przechodzą poza główną stronę aplikacji podczas uwierzytelniania, zalecamy wyskakującą metodę. Ponieważ przekierowanie uwierzytelniania odbywa się w oknie podręcznym, stan głównej aplikacji jest zachowywany.
+* Jeśli nie chcesz, aby użytkownicy odeszli od głównej strony aplikacji podczas uwierzytelniania, zalecamy metodę wyskakunia. Ponieważ przekierowanie uwierzytelniania odbywa się w wyskakującym oknie, stan aplikacji głównej jest zachowywany.
 
-* Jeśli użytkownicy mają ograniczenia przeglądarki lub zasady, w których wyskakujące okienka są wyłączone, można użyć metody redirect. Użyj metody redirect w przeglądarce Internet Explorer, ponieważ występują [znane problemy z wyskakującymi oknami w programie Internet Explorer](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser).
+* Jeśli użytkownicy mają ograniczenia przeglądarki lub zasady, w których okna podręczne są wyłączone, można użyć metody przekierowania. Użyj metody przekierowania w przeglądarce Internet Explorer, ponieważ istnieją [znane problemy z wyskakuwaniem okien w programie Internet Explorer](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser).
 
-## <a name="sign-in-with-a-pop-up-window"></a>Logowanie za pomocą okna podręcznego
+## <a name="sign-in-with-a-pop-up-window"></a>Logowanie się za pomocą wyskakujące okienka
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const loginRequest = {
@@ -63,9 +63,9 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 });
 ```
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
-Otoka kątowa MSAL umożliwia Zabezpieczanie określonych tras w aplikacji przez dodanie `MsalGuard` do definicji trasy. Ta funkcja Guard wywoła metodę w celu zalogowania się, gdy zostanie uzyskany dostęp do tej trasy.
+Otoka kątowa MSAL umożliwia zabezpieczenie określonych tras w `MsalGuard` aplikacji przez dodanie do definicji trasy. Ta osłona wywoła metodę logowania się, gdy ta trasa jest dostępna.
 
 ```javascript
 // In app.routes.ts
@@ -77,7 +77,7 @@ Otoka kątowa MSAL umożliwia Zabezpieczanie określonych tras w aplikacji przez
   { path: 'myProfile' ,component: MsGraphComponent, canActivate : [MsalGuard] },
 ```
 
-W przypadku okna podręcznego Włącz opcję konfiguracji `popUp`. Możesz również przekazać zakresy, które wymagają zgody w następujący sposób:
+Aby uzyskać wyskakujące `popUp` okno, włącz opcję konfiguracji. Można również przekazać zakresy, które wymagają zgody w następujący sposób:
 
 ```javascript
 //In app.module.ts
@@ -91,11 +91,11 @@ W przypadku okna podręcznego Włącz opcję konfiguracji `popUp`. Możesz równ
 ```
 ---
 
-## <a name="sign-in-with-redirect"></a>Logowanie przy użyciu przekierowania
+## <a name="sign-in-with-redirect"></a>Logowanie się za pomocą przekierowania
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Metody przekierowania nie zwracają obietnicy ze względu na przejście z głównej aplikacji. Aby przetworzyć zwrócone tokeny i uzyskać do nich dostęp, należy zarejestrować wywołania zwrotne sukcesu i błędów przed wywołaniem metod przekierowania.
+Metody przekierowania nie zwracają obietnicy z powodu odejścia od głównej aplikacji. Aby przetworzyć i uzyskać dostęp do zwróconych tokenów, należy zarejestrować wywołania zwrotne sukcesu i błędów przed wywołaniem metod przekierowania.
 
 ```javascript
 function authCallback(error, response) {
@@ -111,22 +111,22 @@ const loginRequest = {
 userAgentApplication.loginRedirect(loginRequest);
 ```
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
-Kod jest taki sam, jak opisano wcześniej w sekcji dotyczącej logowania przy użyciu okna podręcznego. Domyślny przepływ jest przekierowywany.
+Kod w tym miejscu jest taki sam, jak opisano wcześniej w sekcji o logowanie się z wyskakującym oknie. Domyślnym przepływem jest przekierowanie.
 
 > [!NOTE]
-> Token identyfikatora nie zawiera zgodnych zakresów i reprezentuje tylko uwierzytelnionego użytkownika. Wysłane zakresy są zwracane w tokenie dostępu, który zostanie pozyskany w następnym kroku.
+> Token identyfikatora nie zawiera zakresów zgody i reprezentuje tylko uwierzytelnionego użytkownika. Dozwolone zakresy są zwracane w tokenie dostępu, który zostanie zakupiony w następnym kroku.
 
 ---
 
 ## <a name="sign-out"></a>Wylogowywanie
 
-Biblioteka MSAL zapewnia metodę `logout`, która czyści pamięć podręczną w magazynie przeglądarki i wysyła żądanie wylogowania do Azure Active Directory (Azure AD). Po wylogowaniu Biblioteka domyślnie przekierowuje do strony początkowej aplikacji.
+Biblioteka MSAL `logout` zawiera metodę, która czyści pamięć podręczną w magazynie przeglądarki i wysyła żądanie wylogowania do usługi Azure Active Directory (Azure AD). Po wylogowaniu biblioteka domyślnie przekierowuje z powrotem do strony początkowej aplikacji.
 
-Można skonfigurować identyfikator URI, do którego ma zostać przekierowany po wylogowaniu, ustawiając `postLogoutRedirectUri`. Ten identyfikator URI powinien być również zarejestrowany jako identyfikator URI wylogowania w rejestracji aplikacji.
+Identyfikator URI, do którego powinien zostać przekierowany po `postLogoutRedirectUri`wylogowywaniu się, można skonfigurować ustawienie . Ten identyfikator URI powinien być również zarejestrowany jako identyfikator URI wylogowania w rejestracji aplikacji.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const config = {
@@ -143,7 +143,7 @@ userAgentApplication.logout();
 
 ```
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
 ```javascript
 //In app.module.ts

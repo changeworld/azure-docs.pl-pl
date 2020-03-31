@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie modułów na dużą skalę przy użyciu Visual Studio Code-Azure IoT Edge
-description: Użyj rozszerzenia IoT Visual Studio Code, aby utworzyć automatyczne wdrożenia dla grup IoT Edge urządzeń.
+title: Wdrażanie modułów na dużą skalę przy użyciu kodu programu Visual Studio — usługa Azure IoT Edge
+description: Użyj rozszerzenia IoT dla programu Visual Studio Code, aby utworzyć automatyczne wdrożenia dla grup urządzeń usługi IoT Edge.
 keywords: ''
 author: kgremban
 manager: philmea
@@ -10,52 +10,52 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 08299a589dc6e8f768cba7ef976e109ef1fb69d7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774135"
 ---
-# <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Wdrażanie modułów IoT Edge na dużą skalę przy użyciu Visual Studio Code
+# <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Wdrażanie modułów usługi IoT Edge na dużą skalę przy użyciu kodu programu Visual Studio
 
-Można utworzyć **IoT Edge Automatyczne wdrażanie** przy użyciu Visual Studio Code do zarządzania trwającymi wdrożeniami dla wielu urządzeń jednocześnie. Automatyczne wdrożenia dla IoT Edge są częścią funkcji [automatycznej zarządzania urządzeniami](/azure/iot-hub/iot-hub-automatic-device-management) w programie IoT Hub. Wdrożenia to procesy dynamiczne, które umożliwiają wdrożenie wielu modułów na wielu urządzeniach. Możliwe jest również śledzenie stanu i kondycji modułów oraz wprowadzanie zmian w razie potrzeby.
+Można utworzyć **automatyczne wdrożenie usługi IoT Edge** przy użyciu programu Visual Studio Code do zarządzania bieżącymi wdrożeniami dla wielu urządzeń jednocześnie. Automatyczne wdrożenia usługi IoT Edge są częścią funkcji [automatycznego zarządzania urządzeniami](/azure/iot-hub/iot-hub-automatic-device-management) usługi IoT Hub. Wdrożenia są procesami dynamicznymi, które umożliwiają wdrażanie wielu modułów na wielu urządzeniach. Można również śledzić stan i kondycję modułów i wprowadzać zmiany, gdy jest to konieczne.
 
-Aby uzyskać więcej informacji, zobacz [opis IoT Edge wdrożenia automatyczne dla pojedynczych urządzeń lub w odpowiedniej skali](module-deployment-monitoring.md).
+Aby uzyskać więcej informacji, zobacz [Opis automatycznych wdrożeń usługi IoT Edge dla pojedynczych urządzeń lub na dużą skalę.](module-deployment-monitoring.md)
 
-W tym artykule opisano konfigurowanie Visual Studio Code i rozszerzenia IoT. Następnie dowiesz się, jak wdrażać moduły na zestawie IoT Edge urządzeń.
+W tym artykule skonfigurować Visual Studio Code i rozszerzenie IoT. Następnie dowiesz się, jak wdrożyć moduły w zestawie urządzeń IoT Edge.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Usługi IoT hub](../iot-hub/iot-hub-create-through-portal.md) w subskrypcji platformy Azure.
-* [Urządzenie usługi IoT Edge](how-to-register-device.md#register-with-visual-studio-code) za pomocą zainstalowanego środowiska uruchomieniowego usługi IoT Edge.
+* [Centrum IoT w](../iot-hub/iot-hub-create-through-portal.md) subskrypcji platformy Azure.
+* [Urządzenie IoT Edge](how-to-register-device.md#register-with-visual-studio-code) z zainstalowanym czasem wykonywania IoT Edge.
 * [Program Visual Studio Code](https://code.visualstudio.com/)
 * [Narzędzia usługi Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) dla programu Visual Studio Code.
 
-## <a name="sign-in-to-access-your-iot-hub"></a>Zaloguj się do dostępu do usługi IoT hub
+## <a name="sign-in-to-access-your-iot-hub"></a>Zaloguj się, aby uzyskać dostęp do centrum IoT
 
-Za pomocą rozszerzeń usługi Azure IoT można Visual Studio Code do wykonywania operacji w centrum. Aby te operacje działały, należy zalogować się do konta platformy Azure i wybrać Centrum IoT, nad którym pracujesz.
+Rozszerzenia IoT usługi Azure dla programu Visual Studio Code umożliwiają operacje za pomocą usługi Hub. Aby te operacje działały, musisz zalogować się do konta platformy Azure i wybrać centrum IoT, nad którymi pracujesz.
 
-1. W programie Visual Studio Code Otwórz **Explorer** widoku.
+1. W programie Visual Studio Code otwórz widok **Eksploratora.**
 
-1. W dolnej części Eksploratora rozwiń sekcję **IoT Hub platformy Azure** .
+1. U dołu Eksploratora rozwiń sekcję **Centrum Usługi Azure IoT.**
 
-1. Kliknij pozycję **...** w nagłówku sekcji **IoT Hub platformy Azure** . Jeśli nie widzisz wielokropka, umieść kursor nad nagłówka.
+1. Kliknij **...** w nagłówku sekcji **Usługi Azure IoT Hub.** Jeśli wielokropek nie jest widoczny, umieść wskaźnik myszy na nagłówku.
 
-1. Wybierz **wybierz Centrum IoT Hub**.
+1. Wybierz **pozycję Wybierz Centrum IoT**.
 
-1. Jeśli nie zalogowano się na koncie platformy Azure, postępuj zgodnie z monitami, aby to zrobić.
+1. Jeśli nie jesteś zalogowany do konta platformy Azure, postępuj zgodnie z instrukcjami, aby to zrobić.
 
 1. Wybierz swoją subskrypcję platformy Azure.
 
-1. Wybierz Centrum IoT hub.
+1. Wybierz centrum IoT.
 
-## <a name="configure-a-deployment-manifest"></a>Konfigurowanie manifestu wdrożenia
+## <a name="configure-a-deployment-manifest"></a>Konfigurowanie manifestu wdrażania
 
-Manifest wdrożenia to dokument JSON, który opisuje moduły do wdrożenia. Opisuje również sposób przepływu danych między modułami i żądanymi właściwościami modułu bliźniaczych reprezentacji. Aby uzyskać więcej informacji, zobacz [Informacje o sposobie wdrażania modułów i ustanawiania tras w programie IoT Edge](module-composition.md).
+Manifest wdrażania jest dokumentem JSON, który opisuje, które moduły do wdrożenia. Opisano w nim również sposób przepływu danych między modułami i żądane właściwości bliźniacze modułu. Aby uzyskać więcej informacji, zobacz [Dowiedz się, jak wdrażać moduły i ustalać trasy w uliczce IoT.](module-composition.md)
 
-Aby wdrożyć moduły przy użyciu programu Visual Studio Code, Zapisz pliku manifestu wdrożenia lokalnie jako. Plik JSON. Musisz podać swoją lokalizację po uruchomieniu polecenia, aby zastosować konfigurację do urządzenia.
+Aby wdrożyć moduły przy użyciu programu Visual Studio Code, zapisz manifest wdrożenia lokalnie jako plik . JSON. Należy podać jego lokalizację po uruchomieniu polecenia, aby zastosować konfigurację do urządzenia.
 
-Poniżej przedstawiono manifestu podstawowego wdrożenia za pomocą jednego modułu, na przykład:
+Oto podstawowy manifest wdrażania z jednym modułem jako przykład:
 
 ```json
 {
@@ -126,13 +126,13 @@ Poniżej przedstawiono manifestu podstawowego wdrożenia za pomocą jednego modu
 }
 ```
 
-Aby określić, które urządzenia IoT Edge można obecnie skonfigurować, uruchom polecenie **IoT Edge: Pobierz informacje o urządzeniu** .
+Jeśli chcesz określić, które urządzenia IoT Edge można obecnie skonfigurować, uruchom polecenie **IoT Edge: Get Device Info.**
 
 ## <a name="identify-devices-with-target-conditions"></a>Identyfikowanie urządzeń z warunkami docelowymi
 
-Aby zidentyfikować IoT Edge urządzeń, które mają otrzymać wdrożenie, należy określić warunek docelowy. Warunek docelowy jest spełniony, gdy określone kryteria są zgodne z identyfikatorem deviceId, wartością tagu lub zgłoszoną wartością właściwości.
+Aby zidentyfikować urządzenia usługi IoT Edge, które mają odbierać wdrożenie, należy określić warunek docelowy. Warunek docelowy jest spełniony, gdy określone kryteria są zgodne przez deviceId, wartość znacznika lub zgłoszoną wartość właściwości.
 
-Znaczniki można konfigurować w postaci sznurka urządzenia. Poniżej znajduje się przykład sznurka urządzenia z tagami:
+Skonfiguruj tagi w bliźniaczej reprezentacji urządzenia. Oto przykład bliźniaczej reprezentacji urządzenia, która ma tagi:
 
 ```json
 "tags":{
@@ -145,26 +145,26 @@ Znaczniki można konfigurować w postaci sznurka urządzenia. Poniżej znajduje 
 }
 ```
 
-To urządzenie otrzyma wdrożenie, jeśli warunek docelowy wdrożenia zawiera wyrażenie odpowiadające jednemu z wartości tagu, takim jak `tag.location.building = '20'`.
+To urządzenie otrzyma wdrożenie, jeśli warunek docelowy wdrożenia zawiera wyrażenie zgodne z jedną `tag.location.building = '20'`z wartości tagu, taką jak .
 
-Jeśli chcesz wskazać określone urządzenie, niezależnie od jego tagów lub innych wartości, wystarczy określić `deviceId` dla warunku docelowego.
+Jeśli chcesz kierować określone urządzenie niezależnie od jego tagów lub `deviceId` innych wartości, po prostu określ warunek docelowy.
 
-Oto kilka innych przykładów:
+Oto kilka przykładów:
 
-* deviceId = "linuxprod1"
-* deviceId = "linuxprod1" lub deviceId = "linuxprod2" lub deviceId = "linuxprod3"
-* Tags.Environment = "prod"
-* Tagi. Environment = "prod" i Tags. Location = "westus2"
-* Tagi. Environment = "prod" lub Tags. Location = "westus2"
-* Tags. operator = "Jan" i Tagi. Environment = "prod" i NOT deviceId = "linuxprod1"
+* deviceId ='linuxprod1'
+* deviceId = 'linuxprod1' LUB deviceId = 'linuxprod2' LUB deviceId = 'linuxprod3'
+* tags.environment ='prod'
+* tags.environment = 'prod' AND tags.location = 'westus2'
+* tags.environment = 'prod' OR tags.location = 'westus2'
+* tags.operator = 'John' AND tags.environment = 'prod' A NOT deviceId = 'linuxprod1'
 
-Aby uzyskać szczegółowe informacje, zobacz [warunek docelowy](module-deployment-monitoring.md#target-condition) . Aby uzyskać więcej informacji na temat tagów i bliźniacze reprezentacje urządzeń, zobacz [poznawanie i używanie bliźniaczych reprezentacji urządzeń w usłudze IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
+Szczegółowe informacje można znaleźć [w warunku docelowym.](module-deployment-monitoring.md#target-condition) Aby uzyskać więcej informacji na temat bliźniąt bliźniąt urządzeń i tagów, zobacz [Opis bliźniaczych urządzeń i używanie ich w U.](../iot-hub/iot-hub-devguide-device-twins.md)
 
-### <a name="edit-the-device-twin"></a>Edytowanie sznurka urządzenia
+### <a name="edit-the-device-twin"></a>Edytowanie bliźniaczej reprezentacji urządzenia
 
-Można edytować sznurki urządzenia w Visual Studio Code, aby skonfigurować Tagi. Z menu **Widok** wybierz pozycję **paleta poleceń** i uruchom polecenie **IoT Edge: Edit Device bliźniaczy** . Wybierz urządzenie IoT Edge i pojawi się sznury urządzenia.
+Można edytować bliźniaczej reprezentacji urządzenia w programie Visual Studio Code, aby skonfigurować tagi. Z menu **Widok** wybierz pozycję **Paleta poleceń** i uruchom polecenie **IoT Edge: Edit Device Twin.** Wybierz urządzenie IoT Edge i pojawi się bliźniacza reprezentacja urządzenia.
 
-W tym przykładzie nie zdefiniowano żadnych znaczników. Zastąp bieżącą pustą sekcję `"tags": {}` własną definicją tagów.
+W tym przykładzie nie zdefiniowano żadnych tagów. Zastąp `"tags": {}` bieżącą pustą sekcję własną definicją znaczników.
 
 ```json
 {
@@ -204,29 +204,29 @@ W tym przykładzie nie zdefiniowano żadnych znaczników. Zastąp bieżącą pus
 }
 ```
 
-Po zapisaniu lokalnego pliku Uruchom polecenie **IoT Edge: Update splot urządzenia** .
+Po zapisaniu pliku lokalnego uruchom polecenie **IoT Edge: Update Device Twin.**
 
 ## <a name="create-deployment-at-scale"></a>Tworzenie wdrożenia na dużą skalę
 
-Po skonfigurowaniu manifestu wdrażania i skonfigurowaniu tagów w ramach sznurka urządzenia można przystąpić do wdrożenia.
+Po skonfigurowaniu manifestu wdrażania i skonfigurowanych tagów w bliźniaczej reprezentacji urządzenia można przystąpić do wdrożenia.
 
-1. Z menu **Widok** wybierz pozycję **paleta poleceń** i wybierz polecenie **Azure IoT Edge: Utwórz wdrożenie w skali** .
+1. Z menu **Widok** wybierz **pozycję Paleta poleceń** i wybierz polecenie **Azure IoT Edge: Create Deployment at Scale.**
 
-1. Przejdź do pliku manifestu wdrożenia JSON, którego chcesz użyć, a następnie kliknij przycisk **wybierz manifestu wdrażania krawędzi**.
+1. Przejdź do pliku JSON manifestu wdrożenia, którego chcesz użyć, a następnie kliknij przycisk **Wybierz manifest wdrożenia krawędzi**.
 
-1. Podaj wartości jako monit, rozpoczynając od **identyfikatora wdrożenia**.
+1. Podaj wartości zgodnie z monitem, zaczynając od **identyfikatora wdrożenia**.
 
-   ![Określ identyfikator wdrożenia](./media/how-to-deploy-monitor-vscode/create-deployment-at-scale.png)
+   ![Określanie identyfikatora wdrożenia](./media/how-to-deploy-monitor-vscode/create-deployment-at-scale.png)
 
-   Określ wartości tych parametrów:
+   Określ wartości dla tych parametrów:
 
   | Parametr | Opis |
   | --- | --- |
-  | Identyfikator wdrożenia | Nazwa wdrożenia, które zostanie utworzone w usłudze IoT Hub. Nadaj wdrożenia unikatową nazwę, która jest maksymalnie 128 małe litery. Należy unikać miejsca do magazynowania i następujące nieprawidłowe znaki: `& ^ [ ] { } \ | " < > /`. |
-  | Warunek docelowy | Wprowadź warunek docelowy, aby określić, które urządzenia będą ukierunkowane na to wdrożenie. Warunek jest oparty na tagach bliźniaczych urządzeń lub w raportowanych właściwościach urządzenia i powinien być zgodny z formatem wyrażenia. Na przykład `tags.environment='test' and properties.reported.devicemodel='4000x'`. |
-  | Priorytet |  Dodatnia liczba całkowita. Jeśli co najmniej dwa wdrożenia są przeznaczone dla tego samego urządzenia, zostanie zastosowane wdrożenie o najwyższej wartości liczbowej dla priorytetu. |
+  | Identyfikator wdrożenia | Nazwa wdrożenia, które zostanie utworzone w centrum IoT Hub. Nadaj wdrożeniu unikatową nazwę, która wynosi do 128 małych liter. Unikaj spacji i następujących `& ^ [ ] { } \ | " < > /`nieprawidłowych znaków: . |
+  | Warunek docelowy | Wprowadź warunek docelowy, aby określić, które urządzenia będą kierowane za pomocą tego wdrożenia.Warunek jest oparty na tagach bliźniaczej reprezentacji urządzenia lub bliźniaczej reprezentacji urządzenia zgłoszonych właściwości i powinien być zgodny z formatem wyrażenia.Na przykład `tags.environment='test' and properties.reported.devicemodel='4000x'`. |
+  | Priorytet |  Dodatnia wartość całkowita. Jeśli dwa lub więcej wdrożeń są przeznaczone dla tego samego urządzenia, wdrożenie o najwyższej wartości liczbowej dla priorytetu będzie stosowane. |
 
-  Po określeniu priorytetu Terminal powinien wyświetlać dane wyjściowe podobne do następujących:
+  Po określeniu priorytetu terminal powinien wyświetlać wyjście podobne do następującego obrazu:
 
    ```cmd
    [Edge] Start deployment with deployment id [{specified-value}] and target condition [{specified-value}]
@@ -235,8 +235,8 @@ Po skonfigurowaniu manifestu wdrażania i skonfigurowaniu tagów w ramach sznurk
 
 ## <a name="monitoring-and-modifying-deployments"></a>Monitorowanie i modyfikowanie wdrożeń
 
-Użyj [interfejsu wiersza polecenia platformy Azure](how-to-deploy-monitor-cli.md#monitor-a-deployment) lub [Azure Portal](how-to-deploy-monitor.md#monitor-a-deployment) , aby monitorować, modyfikować i usuwać wdrożenia. Oba zapewniają metryki dla wdrożeń.
+Użyj [interfejsu wiersza polecenia platformy Azure](how-to-deploy-monitor-cli.md#monitor-a-deployment) lub [witryny Azure portal](how-to-deploy-monitor.md#monitor-a-deployment) do monitorowania, modyfikowania i usuwania wdrożeń. Oba zapewniają metryki dotyczące wdrożeń.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [wdrażaniu modułów na IoT Edge urządzeniach](module-deployment-monitoring.md).
+Dowiedz się więcej o [wdrażaniu modułów na urządzeniach IoT Edge](module-deployment-monitoring.md).

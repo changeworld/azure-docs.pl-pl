@@ -1,6 +1,6 @@
 ---
-title: Migrowanie z Azure Media Encoder do Media Encoder Standard | Microsoft Docs
-description: W tym temacie omówiono sposób migrowania z Azure Media Encoder do Media Encoder Standard procesora multimediów.
+title: Migracja z usługi Azure Media Encoder do media encoder Standard | Dokumenty firmy Microsoft
+description: W tym temacie omówiono sposób migracji z usługi Azure Media Encoder do procesora multimediów Media Encoder Standard.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
 ms.openlocfilehash: f8fe1b13db6473e80f0d7cdc638b775a0c8062c7
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513505"
 ---
-# <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Migrowanie z Azure Media Encoder do Media Encoder Standard
+# <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Migrowanie z usługi Azure Media Encoder do media encoder Standard
 
-W tym artykule omówiono procedurę migrowania ze starszej wersji procesora nośnika z Azure Media Encoder (AZWA) (która jest wycofywana) do Media Encoder Standard procesora multimediów. Aby uzyskać daty wycofania, zobacz temat ten [starszy składnik](legacy-components.md) .
+W tym artykule omówiono kroki migracji z starszego procesora multimediów usługi Azure Media Encoder (AME) (który jest wycofywany) do procesora nośników Media Encoder Standard. Aby uzyskać daty wycofania, zobacz ten temat [starszych składników.](legacy-components.md)
 
-Podczas kodowania plików o nazwie AZWA klienci zazwyczaj używają nazwanego ciągu wstępnie zdefiniowanego, takiego jak `H264 Adaptive Bitrate MP4 Set 1080p`. Aby przeprowadzić migrację, należy zaktualizować kod, aby używał **Media Encoder Standard** procesora multimediów zamiast azwa i jednego z odpowiedników [ustawień systemowych](media-services-mes-presets-overview.md) , takich jak `H264 Multiple Bitrate 1080p`. 
+Podczas kodowania plików za pomocą usługi AME klienci zazwyczaj `H264 Adaptive Bitrate MP4 Set 1080p`używali nazwanego ciągu predefiniowanych, takiego jak . Aby przeprowadzić migrację, kod musi zostać zaktualizowany w celu użycia procesora multimediów **Media Encoder Standard** zamiast AME i jednego z [równoważnych ustawień systemowych, takich](media-services-mes-presets-overview.md) jak `H264 Multiple Bitrate 1080p`. 
 
-## <a name="migrating-to-media-encoder-standard"></a>Migrowanie do Media Encoder Standard
+## <a name="migrating-to-media-encoder-standard"></a>Migrowanie do standardu kodera multimediów
 
-Oto typowy C# przykład kodu, który używa starszego procesora nośnika. 
+Oto typowy przykład kodu języka C#, który używa starszego procesora multimediów. 
 
 ```csharp
 // Declare a new job. 
@@ -45,7 +45,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
     TaskOptions.None); 
 ```
 
-Poniżej znajduje się zaktualizowana wersja, która używa Media Encoder Standard.
+Oto zaktualizowana wersja, która używa Media Encoder Standard.
 
 ```csharp
 // Declare a new job. 
@@ -64,13 +64,13 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>Scenariusze zaawansowane 
 
-Jeśli utworzono własne ustawienie wstępne kodowania dla opcji AZWA przy użyciu schematu, istnieje [odpowiedni schemat dla Media Encoder Standard](media-services-mes-schema.md). Jeśli masz pytania dotyczące sposobu mapowania starszych ustawień do nowego kodera, skontaktuj się z nami za pośrednictwem mailto:amshelp@microsoft.com  
+Jeśli utworzono własne ustawienie kodowania dla pliku AME przy użyciu jego schematu, istnieje [równoważny schemat dla programu Media Encoder Standard](media-services-mes-schema.md). Jeśli masz pytania dotyczące mapowania starszych ustawień na nowy koder, skontaktuj się z nami za pośrednictwemmailto:amshelp@microsoft.com  
 ## <a name="known-differences"></a>Znane różnice 
 
-Media Encoder Standard jest bardziej niezawodna, niezawodna, ma lepszą wydajność i produkuje lepsze dane wyjściowe niż w przypadku starszego kodera AZWA. Dodatkowo: 
+Media Encoder Standard jest bardziej wytrzymały, niezawodny, ma lepszą wydajność i zapewnia lepszą jakość wydruku niż starszy koder AME. Ponadto: 
 
-* Media Encoder Standard tworzy pliki wyjściowe z inną konwencją nazewnictwa niż AZWA.
-* Media Encoder Standard tworzy artefakty, takie jak pliki zawierające [metadane plików wejściowych](media-services-input-metadata-schema.md) i [metadane plików wyjściowych](media-services-output-metadata-schema.md).
+* Media Encoder Standard tworzy pliki wyjściowe z inną konwencją nazewnictwa niż AME.
+* Media Encoder Standard produkuje artefakty, takie jak pliki zawierające [metadane pliku wejściowego](media-services-input-metadata-schema.md) i [metadane plików wyjściowych](media-services-output-metadata-schema.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

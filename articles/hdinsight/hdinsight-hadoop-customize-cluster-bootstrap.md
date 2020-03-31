@@ -1,6 +1,6 @@
 ---
-title: Dostosowywanie konfiguracji klastrów usługi Azure HDInsight przy użyciu narzędzia Bootstrap
-description: Dowiedz się, jak dostosować konfigurację klastra usługi HDInsight programowo przy użyciu szablonów programu .NET, programu PowerShell i Menedżer zasobów.
+title: Dostosowywanie konfiguracji klastra usługi Azure HDInsight przy użyciu narzędzia bootstrap
+description: Dowiedz się, jak programowo dostosowywać konfigurację klastra USŁUGI HDInsight przy użyciu szablonów .Net, PowerShell i Resource Manager.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,53 +9,53 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: e641340ac04415ee4a20cda2bc09bbdbef9802a6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272528"
 ---
-# <a name="customize-hdinsight-clusters-using-bootstrap"></a>Dostosowywanie klastrów usługi HDInsight przy użyciu narzędzia Bootstrap
+# <a name="customize-hdinsight-clusters-using-bootstrap"></a>Dostosowywanie klastrów HDInsight przy użyciu bootstrap
 
-Skrypty Bootstrap umożliwiają programowe Instalowanie i Konfigurowanie składników w usłudze Azure HDInsight.
+Skrypty bootstrap umożliwiają programowe instalowanie i konfigurowanie składników w usłudze Azure HDInsight.
 
-Istnieją trzy podejścia do ustawiania ustawień pliku konfiguracji podczas tworzenia klastra usługi HDInsight:
+Istnieją trzy podejścia do ustawiania ustawień plików konfiguracyjnych podczas tworzenia klastra HDInsight:
 
 * Korzystanie z programu Azure PowerShell
 * Korzystanie z zestawu SDK dla platformy .NET
-* Użyj szablonu Azure Resource Manager
+* Korzystanie z szablonu usługi Azure Resource Manager
 
-Na przykład przy użyciu tych metod programistycznych można skonfigurować opcje w następujących plikach:
+Na przykład za pomocą tych metod programowych można skonfigurować opcje w tych plikach:
 
 * clusterIdentity.xml
 * core-site.xml
-* gateway.xml
+* plik gateway.xml
 * hbase-env.xml
 * hbase-site.xml
 * hdfs-site.xml
 * hive-env.xml
-* hive-site.xml
-* mapred — lokacja
+* strona ul.xml
+* mapred-site
 * oozie-site.xml
 * oozie-env.xml
-* storm-site.xml
+* burza-site.xml
 * tez-site.xml
 * webhcat-site.xml
-* yarn-site.xml
-* Server. Properties (Konfiguracja Kafka-Broker)
+* przędza-site.xml
+* server.properties (konfiguracja kafka-broker)
 
-Aby uzyskać informacje na temat instalowania dodatkowych składników w klastrze usługi HDInsight podczas tworzenia, zobacz [Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu (Linux)](hdinsight-hadoop-customize-cluster-linux.md).
+Aby uzyskać informacje na temat instalowania dodatkowych składników w klastrze HDInsight w czasie tworzenia, zobacz [Dostosowywanie klastrów HDInsight przy użyciu akcji skryptów (Linux).](hdinsight-hadoop-customize-cluster-linux.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* W przypadku korzystania z programu PowerShell należy użyć polecenia [AZ module](https://docs.microsoft.com/powershell/azure/overview).
+* Jeśli korzystasz z programu PowerShell, potrzebny jest [moduł Az](https://docs.microsoft.com/powershell/azure/overview).
 
 ## <a name="use-azure-powershell"></a>Korzystanie z programu Azure PowerShell
 
-Poniższy kod programu PowerShell dostosowuje konfigurację [Apache Hive](https://hive.apache.org/) :
+Następujący kod programu PowerShell dostosowuje konfigurację [gałęzi Apache:](https://hive.apache.org/)
 
 > [!IMPORTANT]  
-> Może być konieczne użycie parametru `Spark2Defaults` z [dodatkiem Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue). Można przekazać wartości puste do parametru, jak pokazano w poniższym przykładzie kodu.
+> Może `Spark2Defaults` być konieczne użycie [parametru z dodatkiem Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue). Można przekazać puste wartości do parametru, jak pokazano w przykładzie kodu poniżej.
 
 ```powershell
 # hive-site.xml configuration
@@ -81,16 +81,16 @@ New-AzHDInsightCluster `
     -Config $config
 ```
 
-Pełny działający skrypt programu PowerShell znajduje się w [dodatku](#appendix-powershell-sample).
+Kompletny działający skrypt programu PowerShell można znaleźć w [dodatku](#appendix-powershell-sample).
 
-**Aby sprawdzić zmianę:**
+**Aby zweryfikować zmianę:**
 
-1. Przejdź do `https://CLUSTERNAME.azurehdinsight.net/`, gdzie `CLUSTERNAME` jest nazwą klastra.
-1. W menu po lewej stronie przejdź do > **Konfiguracja** usługi **Hive** > **Zaawansowane**.
-1. Rozwiń węzeł **zaawansowana gałąź — lokacja**.
-1. Zlokalizuj **gałąź Hive. metadanych. Client. Socket. Timeout** i Potwierdź, że wartość to **latach 90**.
+1. Przejdź `https://CLUSTERNAME.azurehdinsight.net/` do `CLUSTERNAME` miejsca, w którym znajduje się nazwa klastra.
+1. W menu po lewej stronie przejdź do **pozycji Hive** > **Configs** > **Advanced**.
+1. Rozwiń **zaawansowaną lokację ul**.
+1. Znajdź **hive.metastore.client.socket.timeout** i upewnij się, że wartość to **90s**.
 
-Więcej przykładów na temat dostosowywania innych plików konfiguracji:
+Kilka przykładów dostosowywania innych plików konfiguracyjnych:
 
 ```xml
 # hdfs-site.xml configuration
@@ -108,11 +108,11 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 
 ## <a name="use-net-sdk"></a>Korzystanie z zestawu SDK dla platformy .NET
 
-Zobacz [zestaw SDK usługi Azure HDInsight dla platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
+Zobacz [Zestaw SDK usługi Azure HDInsight dla platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
 
 ## <a name="use-resource-manager-template"></a>Używanie szablonu usługi Resource Manager
 
-Narzędzia Bootstrap można użyć w szablonie Menedżer zasobów:
+W szablonie Menedżera zasobów można użyć boottrapu:
 
 ```json
 "configurations": {
@@ -124,18 +124,18 @@ Narzędzia Bootstrap można użyć w szablonie Menedżer zasobów:
 }
 ```
 
-![Usługa Hadoop dostosowuje szablon Azure Resource Manager ładowania początkowego klastra](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![Hadoop dostosowuje szablon usługi Azure Resource Manager z zestawem inautu](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>Zobacz też
 
-* [Tworzenie klastrów Apache Hadoop w usłudze HDInsight](hdinsight-hadoop-provision-linux-clusters.md) zawiera instrukcje dotyczące tworzenia klastra usługi HDInsight przy użyciu innych opcji niestandardowych.
-* [Tworzenie skryptów akcji skryptu dla usługi HDInsight](hdinsight-hadoop-script-actions-linux.md)
-* [Instalowanie i używanie Apache Spark w klastrach usługi HDInsight](spark/apache-spark-jupyter-spark-sql-use-portal.md)
-* [Instalowanie i używanie oprogramowania Apache Giraph w klastrach usługi HDInsight](hdinsight-hadoop-giraph-install.md).
+* [Tworzenie klastrów Apache Hadoop w programie HDInsight](hdinsight-hadoop-provision-linux-clusters.md) zawiera instrukcje dotyczące tworzenia klastra HDInsight przy użyciu innych opcji niestandardowych.
+* [Tworzenie skryptów akcji skryptów dla hdinsight](hdinsight-hadoop-script-actions-linux.md)
+* [Instalowanie i używanie aplikacji Apache Spark w klastrach HDInsight](spark/apache-spark-jupyter-spark-sql-use-portal.md)
+* [Zainstaluj i używaj Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install.md).
 
-## <a name="appendix-powershell-sample"></a>Dodatek: Przykładowy program PowerShell
+## <a name="appendix-powershell-sample"></a>Dodatek: Przykład programu PowerShell
 
-Ten skrypt programu PowerShell tworzy klaster usługi HDInsight i dostosowuje ustawienie Hive. Wprowadź wartości dla `$nameToken`, `$httpPassword`i `$sshPassword`.
+Ten skrypt programu PowerShell tworzy klaster HDInsight i dostosowuje ustawienie gałęzi. Pamiętaj, aby wprowadzić `$nameToken` `$httpPassword`wartości `$sshPassword`dla , i .
 
 ```powershell
 ####################################
