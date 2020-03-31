@@ -1,6 +1,6 @@
 ---
-title: 'Program Azure AD Connect: Opcje urządzenia | Dokumentacja firmy Microsoft'
-description: W tym dokumencie szczegółowych informacji dostępnych w programie Azure AD Connect opcje urządzenia
+title: 'Usługa Azure AD Connect: opcje urządzenia | Dokumenty firmy Microsoft'
+description: Ten dokument zawiera szczegółowe informacje o opcjach urządzenia dostępnych w usłudze Azure AD Connect
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,34 +17,34 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96ddcdb67ef079cfa23902a1dcb03b0ec61077fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109543"
 ---
-# <a name="azure-ad-connect-device-options"></a>Program Azure AD Connect: Opcje urządzenia
+# <a name="azure-ad-connect-device-options"></a>Usługa Azure AD Connect: opcje urządzenia
 
-Poniższa dokumentacja zawiera informacje o różnych opcjach urządzeń dostępnych w programie Azure AD Connect. Program Azure AD Connect można użyć, aby skonfigurować następujące dwie operacje: 
-* **Dołączenie do hybrydowej usługi Azure AD**: Jeśli w lokalnym środowisku zużycie AD a zalet usługi Azure AD, można zaimplementować urządzeń przyłączonych do usługi Azure AD hybrydowych. Te urządzenia są połączone, zarówno w usłudze Active Directory w środowisku lokalnym i usługi Azure Active Directory.
-* **Zapisywanie zwrotne urządzeń**: Zapisywanie zwrotne urządzeń służy do włączania dostępu warunkowego opartego na urządzeniach z usługami AD FS (2012 R2 lub nowszy) chronione urządzeń
+Poniższa dokumentacja zawiera informacje o różnych opcjach urządzeń dostępnych w usłudze Azure AD Connect. Za pomocą usługi Azure AD Connect można skonfigurować następujące dwie operacje: 
+* **Hybrydowe sprzężenie usługi Azure AD:** Jeśli twoje środowisko ma lokalną usługę AD i chcesz korzystać z usługi Azure AD, możesz zaimplementować hybrydowe urządzenia przyłączone do usługi Azure AD. Te urządzenia są przyłączane zarówno do lokalnej usługi Active Directory, jak i usługi Azure Active Directory.
+* **Zapisywanie zwrotne urządzenia:** Zapisywanie zwrotne urządzenia służy do włączania dostępu warunkowego na podstawie urządzeń do urządzeń chronionych usługami AD FS (2012 R2 lub nowszych)
 
-## <a name="configure-device-options-in-azure-ad-connect"></a>Konfiguruj opcje urządzenia w usłudze Azure AD Connect
+## <a name="configure-device-options-in-azure-ad-connect"></a>Konfigurowanie opcji urządzeń w usłudze Azure AD Connect
 
-1.  Uruchom usługę Azure AD Connect. W **dodatkowe zadania** wybierz opcję **Konfiguruj opcje urządzenia**.  Kliknij przycisk **Dalej**.
-    ![Konfiguruj opcje urządzenia](./media/how-to-connect-device-options/deviceoptions.png) 
+1.  Uruchom usługę Azure AD Connect. Na stronie **Zadania dodatkowe** wybierz pozycję **Konfiguruj opcje urządzenia**.  Kliknij przycisk **alej**.
+    ![Konfigurowanie opcji urządzenia](./media/how-to-connect-device-options/deviceoptions.png) 
 
-    **Przegląd** strony wyświetli szczegóły.
+    Na stronie **Przegląd** są wyświetlane szczegóły.
     ![Omówienie](./media/how-to-connect-device-options/deviceoverview.png)
 
     >[!NOTE]
-    > Nowe Konfiguruj opcje urządzenia jest dostępna tylko w wersji 1.1.819.0 lub nowszej.
+    > Nowe opcje konfigurowania urządzenia są dostępne tylko w wersji 1.1.819.0 i nowszej.
 
-2.  Po podaniu poświadczeń dla usługi Azure AD, możesz wybrać operacji do wykonania na stronie Opcje urządzenia.
-    ![Operacje dotyczące urządzenia](./media/how-to-connect-device-options/deviceoptionsselection.png)
+2.  Po podaniu poświadczeń dla usługi Azure AD można wybrać operację, która ma zostać wykonana na stronie Opcje urządzenia.
+    ![Operacje na urządzeniach](./media/how-to-connect-device-options/deviceoptionsselection.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Konfiguruj dołączenie do hybrydowej usługi Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md)
-* [Skonfiguruj / Wyłącz zapisywanie zwrotne urządzeń](how-to-connect-device-writeback.md)
+* [Konfigurowanie hybrydowego sprzężenia usługi AD](../device-management-hybrid-azuread-joined-devices-setup.md)
+* [Konfigurowanie / wyłączanie zapisywania zwrotnego urządzenia](how-to-connect-device-writeback.md)
 

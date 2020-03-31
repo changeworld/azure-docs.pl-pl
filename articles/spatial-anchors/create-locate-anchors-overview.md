@@ -1,5 +1,5 @@
 ---
-title: Tworzenie & lokalizowania kotwic
+title: Tworzenie & zlokaliowania zakotwiczenia omówienie
 description: Szczegółowe objaśnienie tworzenia i znajdowania kotwic przy użyciu usługi Azure Spatial Anchors.
 author: ramonarguelles
 manager: vriveras
@@ -9,17 +9,17 @@ ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: f406edb42204e7ffc94bcbfa1e22b269aea67b32
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74270457"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>Jak utworzyć i zlokalizować kotwice przy użyciu kotwic przestrzennych platformy Azure
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>Jak tworzyć i lokalizować kotwice przy użyciu zakotwiczeń przestrzennych platformy Azure
 
 Usługa Azure Spatial Anchors umożliwia udostępnianie kotwic na całym świecie między różnymi urządzeniami.
 
-Obsługuje kilka różnych środowisk programistycznych.
+Obsługuje kilka różnych środowisk programistów.
 
 ## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej, kontynuuj, wybierając swoje środowisko deweloperskie:

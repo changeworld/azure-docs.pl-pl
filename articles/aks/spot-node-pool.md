@@ -1,6 +1,6 @@
 ---
-title: Wersja zapoznawcza — Dodawanie puli węzłów dodatkowych do klastra usługi Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak dodać pulę węzłów dodatkowych do klastra usługi Azure Kubernetes Service (AKS).
+title: Podgląd — dodawanie puli węzłów punktowych do klastra usługi Azure Kubernetes (AKS)
+description: Dowiedz się, jak dodać pulę węzłów punktowych do klastra usługi Azure Kubernetes (AKS).
 services: container-service
 author: zr-msft
 ms.service: container-service
@@ -8,66 +8,66 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: zarhoads
 ms.openlocfilehash: 466ad7c88547b6676ba0ae263b74d14059322f1c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77622039"
 ---
-# <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Wersja zapoznawcza — Dodawanie puli węzłów dodatkowych do klastra usługi Azure Kubernetes Service (AKS)
+# <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Podgląd — dodawanie puli węzłów punktowych do klastra usługi Azure Kubernetes (AKS)
 
-Pula węzłów dodatkowych jest pulą węzłów utworzoną przez [zestaw skalowania maszyn wirtualnych][vmss-spot]. Używanie dodatkowych maszyn wirtualnych dla węzłów z klastrem AKS umożliwia korzystanie z niewykorzystywanych pojemności na platformie Azure przy znaczącym obciążeniu. Ilość dostępnej niewykorzystanej pojemności zależy od wielu czynników, w tym rozmiaru węzła, regionu i godziny dnia.
+Pula węzłów punktowych to pula węzłów, wspierana przez [zestaw skalowania maszyny wirtualnej punktowej][vmss-spot]. Korzystanie z maszyn wirtualnych punktowych dla węzłów z klastrem AKS umożliwia korzystanie z niewykorzystanej pojemności na platformie Azure przy znacznych oszczędnościach kosztów. Ilość dostępnych niewykorzystanych zdolności produkcyjnych będzie się różnić w zależności od wielu czynników, w tym rozmiaru węzła, regionu i porą dnia.
 
-Podczas wdrażania puli węzłów dodatkowych platforma Azure przydzieli węzły dodatkowe, jeśli dostępna jest pojemność. Ale nie ma umowy SLA dla węzłów dodatkowych. Zestaw skalowania punktowego, który wykonuje kopię zapasową puli węzłów dodatkowych, jest wdrażany w jednej domenie błędów i nie oferuje gwarancji wysokiej dostępności. W dowolnym momencie, gdy platforma Azure potrzebuje pojemności z powrotem, infrastruktura platformy Azure wykryje węzły dodatkowe.
+Podczas wdrażania puli węzłów punktowych platforma Azure przydzieli węzły punktowe, jeśli dostępna jest pojemność. Ale nie ma umowy SLA dla węzłów punktowych. Zestaw skalowania punktowego, który cofa pulę węzłów punktowych jest wdrażany w jednej domenie błędów i nie oferuje gwarancji wysokiej dostępności. W dowolnym momencie, gdy platforma Azure potrzebuje pojemności z powrotem, infrastruktury platformy Azure będzie eksmitować węzłów punktowych.
 
-Węzły dodatkowe są doskonałe dla obciążeń, które mogą obsługiwać przerwy, wczesne zakończenia lub wykluczenia. Na przykład obciążenia takie jak zadania przetwarzania wsadowego, środowiska deweloperskie i testowe oraz duże obciążenia obliczeniowe mogą być dobrym kandydatami do zaplanowania w puli węzłów dodatkowych.
+Węzły punktowe doskonale nadają się do obciążeń, które mogą obsługiwać przerwy, wcześniejsze zakończenia lub eksmisje. Na przykład obciążeń, takich jak zadania przetwarzania wsadowego, środowiska programowania i testowania i dużych obciążeń obliczeniowych może być dobrymi kandydatami do zaplanowania w puli węzłów punktowych.
 
-W tym artykule opisano Dodawanie dodatkowej puli węzłów dodatkowych do istniejącego klastra usługi Azure Kubernetes Service (AKS).
+W tym artykule należy dodać pomocniczą pulę węzłów punktowych do istniejącego klastra usługi Azure Kubernetes Service (AKS).
 
-W tym artykule założono podstawową wiedzę na temat koncepcji Kubernetes i Azure Load Balancer. Aby uzyskać więcej informacji, zobacz [Kubernetes podstawowe pojęcia dotyczące usługi Azure Kubernetes Service (AKS)][kubernetes-concepts].
+W tym artykule przyjęto podstawową wiedzę o pojęciach platformy Kubernetes i Azure Load Balancer. Aby uzyskać więcej informacji, zobacz [Podstawowe pojęcia dotyczące usługi Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
 Ta funkcja jest obecnie dostępna w wersji zapoznawczej.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Podczas tworzenia klastra w celu używania puli węzłów dodatkowych, ten klaster musi również używać Virtual Machine Scale Sets dla pul węzłów i usługi równoważenia obciążenia w *warstwie Standardowa* . Należy również dodać dodatkową pulę węzłów po utworzeniu klastra do używania puli węzłów dodatkowych. Dodawanie dodatkowej puli węzłów jest omówione w późniejszym kroku, ale najpierw musisz włączyć funkcję w wersji zapoznawczej.
+Podczas tworzenia klastra do używania puli węzłów punktowych, ten klaster musi również używać zestawów skalowania maszyny wirtualnej dla pul węzłów i *standardowego* modułu równoważenia obciążenia jednostki SKU. Należy również dodać dodatkową pulę węzłów po utworzeniu klastra, aby użyć puli węzłów punktowych. Dodanie dodatkowej puli węzłów jest omówione w późniejszym kroku, ale najpierw należy włączyć funkcję podglądu.
 
 > [!IMPORTANT]
-> Funkcje AKS w wersji zapoznawczej to samoobsługowe i niezgodne. Są one dostarczane w celu zebrania opinii i usterek z naszej społeczności. W wersji zapoznawczej te funkcje nie są przeznaczone do użytku produkcyjnego. Funkcje w publicznej wersji zapoznawczej są objęte wsparciem "najlepsze wysiłki". Pomoc dla zespołów pomocy technicznej AKS jest dostępna w godzinach pracy w czasie pracy (PST). Dodatkowe informacje można znaleźć w następujących artykułach pomocy technicznej:
+> Funkcje podglądu usługi AKS to samoobsługowe, opt-in. Są one dostarczane w celu zebrania opinii i błędów od naszej społeczności. W wersji zapoznawczej te funkcje nie są przeznaczone do użytku w wersji produkcyjnej. Funkcje w publicznej wersji zapoznawczej są objęte wsparciem "najlepszego wysiłku". Pomoc zespołów pomocy technicznej AKS jest dostępna tylko w godzinach pracy strefy czasowej Pacyfiku (PST). Aby uzyskać dodatkowe informacje, zobacz następujące artykuły pomocy technicznej:
 >
-> * [Zasady pomocy technicznej AKS][aks-support-policies]
-> * [Pomoc techniczna platformy Azure — często zadawane pytania][aks-faq]
+> * [Zasady wsparcia AKS][aks-support-policies]
+> * [Często zadawane pytania dotyczące pomocy technicznej platformy Azure][aks-faq]
 
-### <a name="register-spotpoolpreview-preview-feature"></a>Rejestrowanie funkcji spotpoolpreview w wersji zapoznawczej
+### <a name="register-spotpoolpreview-preview-feature"></a>Rejestrowanie funkcji podglądu spotpoolpreview
 
-Aby utworzyć klaster AKS, który używa puli węzłów dodatkowych, należy włączyć flagę funkcji *spotpoolpreview* w subskrypcji. Ta funkcja udostępnia najnowszy zestaw rozszerzeń usługi podczas konfigurowania klastra.
+Aby utworzyć klaster usługi AKS, który używa puli węzłów punktowych, należy włączyć flagę funkcji *spotpoolpreview* w ramach subskrypcji. Ta funkcja zapewnia najnowszy zestaw ulepszeń usługi podczas konfigurowania klastra.
 
 > [!CAUTION]
-> Po zarejestrowaniu funkcji w ramach subskrypcji nie można obecnie wyrejestrować tej funkcji. Po włączeniu niektórych funkcji w wersji zapoznawczej można użyć wartości domyślnych dla wszystkich klastrów AKS utworzonych w ramach subskrypcji. Nie włączaj funkcji w wersji zapoznawczej w ramach subskrypcji produkcyjnych. Korzystaj z oddzielnej subskrypcji, aby testować funkcje w wersji zapoznawczej i zbierać opinie.
+> Podczas rejestrowania funkcji w ramach subskrypcji nie można obecnie odeszło od rejestracji tej funkcji. Po włączeniu niektórych funkcji w wersji zapoznawczej ustawienia domyślne mogą być używane dla wszystkich klastrów AKS utworzonych w ramach subskrypcji. Nie włączaj funkcji w wersji zapoznawczej w subskrypcjach produkcyjnych. Użyj oddzielnej subskrypcji, aby przetestować funkcje w wersji zapoznawczej i zebrać opinie.
 
-Zarejestruj flagę funkcji *spotpoolpreview* za pomocą polecenia [AZ Feature Register][az-feature-register] , jak pokazano w następującym przykładzie:
+Zarejestruj flagę funkcji *spotpoolpreview* za pomocą polecenia [az feature register,][az-feature-register] jak pokazano w poniższym przykładzie:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "spotpoolpreview"
 ```
 
-Wyświetlenie stanu *rejestracji*może potrwać kilka minut. Stan rejestracji można sprawdzić za pomocą polecenia [AZ Feature list][az-feature-list] :
+Trwa kilka minut, aby stan pokazał *zarejestrowany*. Stan rejestracji można sprawdzić za pomocą polecenia [az feature list:][az-feature-list]
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/spotpoolpreview')].{Name:name,State:properties.state}"
 ```
 
-Gdy wszystko będzie gotowe, Odśwież rejestrację dostawcy zasobów *Microsoft. ContainerService* za pomocą polecenia [AZ Provider Register][az-provider-register] :
+Gdy będzie to gotowe, odśwież rejestrację dostawcy zasobów *Microsoft.ContainerService* za pomocą polecenia [rejestru dostawcy az:][az-provider-register]
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
 
-### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia AKS-Preview
+### <a name="install-aks-preview-cli-extension"></a>Instalowanie rozszerzenia interfejsu wiersza polecenia aks-preview
 
-Aby utworzyć klaster AKS, który używa puli węzłów dodatkowych, wymagany jest interfejs wiersza polecenia *AKS-Preview* w wersji 0.4.32 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji zapoznawczej* przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] :
+Aby utworzyć klaster usługi AKS, który używa puli węzłów punktowych, potrzebne jest rozszerzenie interfejsu wiersza polecenia *aks-preview* w wersji 0.4.32 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia interfejsu wiersza polecenia platformy Azure *aks-preview* przy użyciu polecenia [dodawania rozszerzenia az,][az-extension-add] a następnie sprawdź dostępność dostępnych aktualizacji za pomocą polecenia [aktualizacji rozszerzenia az:][az-extension-update]
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -79,22 +79,22 @@ az extension update --name aks-preview
 
 ### <a name="limitations"></a>Ograniczenia
 
-Podczas tworzenia klastrów AKS i zarządzania nimi za pomocą puli węzłów dodatkowych obowiązują następujące ograniczenia:
+Podczas tworzenia klastrów AKS i zarządzania nimi z pulą węzłów punktowych obowiązują następujące ograniczenia:
 
-* Pula węzłów dodatkowych nie może być domyślną pulą węzłów klastra. Puli węzłów dodatkowych można używać tylko dla puli pomocniczej.
-* Nie można uaktualnić puli węzłów dodatkowych, ponieważ pule węzłów dodatkowych nie mogą gwarantować Cordon i opróżniania. Należy zamienić istniejącą pulę węzłów dodatkowych na nową, aby wykonać operacje, takie jak uaktualnienie wersji Kubernetes. Aby zastąpić pulę węzłów dodatkowych, Utwórz nową pulę węzła dodatkowego z inną wersją Kubernetes, poczekaj, aż jej stan będzie *gotowa*, a następnie usuń starą pulę węzłów.
-* Nie można jednocześnie uaktualnić płaszczyzny kontroli i pul węzłów. Należy je uaktualnić osobno lub usunąć pulę węzłów dodatkowych, aby uaktualnić płaszczyznę kontroli i pozostałe pule węzłów w tym samym czasie.
-* Pula węzłów dodatkowych musi używać Virtual Machine Scale Sets.
-* Po utworzeniu nie można zmienić ScaleSetPriority ani SpotMaxPrice.
-* Podczas ustawiania SpotMaxPrice wartość musi być równa-1 lub wartość dodatnia z maksymalnie pięć miejsc dziesiętnych.
-* Pula węzłów dodatkowych będzie miała etykietę *Kubernetes.Azure.com/scalesetpriority:Spot*, *Kubernetes.Azure.com/scalesetpriority=Spot:NoSchedule*i zasobniki systemowe będą mieć antykoligacje.
-* Musisz dodać [odpowiednie tolerowanie][spot-toleration] , aby zaplanować obciążenia w puli węzłów dodatkowych.
+* Pula węzłów punktowych nie może być domyślną pulą węzłów klastra. Pula węzłów punktowych może być używana tylko dla puli dodatkowej.
+* Nie można uaktualnić puli węzłów punktowych, ponieważ pule węzłów punktowych nie mogą zagwarantować kordonu i drenażu. Należy zastąpić istniejącą pulę węzłów punktowych nową, aby wykonać operacje, takie jak uaktualnianie wersji usługi Kubernetes. Aby zastąpić pulę węzłów punktowych, utwórz nową pulę węzłów punktowych z inną wersją aplikacji Kubernetes, poczekaj, aż jej stan będzie *gotowy,* a następnie usuń starą pulę węzłów.
+* Pul płaszczyzny sterowania i węzłów nie można uaktualnić w tym samym czasie. Należy uaktualnić je oddzielnie lub usunąć pulę węzłów punktowych, aby uaktualnić płaszczyznę sterowania i pozostałe pule węzłów w tym samym czasie.
+* Pula węzłów punktowych musi używać zestawów skalowania maszyny wirtualnej.
+* Po utworzeniu nie można zmienić scalesetpriority ani SpotMaxPrice.
+* Podczas ustawiania SpotMaxPrice wartość musi wynosić -1 lub wartość dodatnią z maksymalnie pięcioma miejscami po przecinku.
+* Pula węzłów punktowych będzie miała *etykietę kubernetes.azure.com/scalesetpriority:spot*, *skazy kubernetes.azure.com/scalesetpriority=spot:NoSchedule,* a zasobniki systemowe będą miały antykowincje.
+* Należy dodać [odpowiednią tolerancję,][spot-toleration] aby zaplanować obciążenia w puli węzłów punktowych.
 
-## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>Dodawanie puli węzłów dodatkowych do klastra AKS
+## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>Dodawanie puli węzłów punktowych do klastra AKS
 
-Należy dodać pulę węzłów dodatkowych do istniejącego klastra z włączonymi wieloma pulami węzłów. Więcej szczegółowych informacji na temat tworzenia klastra AKS z wieloma pulami węzłów można znaleźć [tutaj][use-multiple-node-pools].
+Należy dodać pulę węzłów punktowych do istniejącego klastra, który ma włączone puli wielu węzłów. Więcej szczegółów na temat tworzenia klastra AKS z wieloma pulami węzłów można znaleźć [tutaj][use-multiple-node-pools].
 
-Utwórz pulę węzłów za pomocą polecenia [AZ AKS nodepool Add][az-aks-nodepool-add].
+Utwórz pulę węzłów przy użyciu [az aks nodepool add][az-aks-nodepool-add].
 ```azurecli-interactive
 az aks nodepool add \
     --resource-group myResourceGroup \
@@ -109,24 +109,24 @@ az aks nodepool add \
     --no-wait
 ```
 
-Domyślnie podczas tworzenia klastra z wieloma pulami węzłów w klastrze AKS należy utworzyć pulę węzłów o *priorytecie* *regularnym* . Powyższe polecenie dodaje pomocniczą pulę węzłów do istniejącego klastra AKS o *priorytecie* *.* *Priorytet* *obszaru Ustawia pulę węzłów dodatkowych.* Parametr *wykluczanie zasad* jest ustawiany na wartość *delete* w powyższym przykładzie, który jest wartością domyślną. Po ustawieniu [Zasady wykluczania][eviction-policy] do *usunięcia*węzły w podstawowym zestawie skalowania puli węzłów są usuwane, gdy zostaną wykluczone. Można również ustawić zasady wykluczania do *alokacji*. Po ustawieniu Zasady wykluczania na *Cofnij przydział*węzły w źródłowym zestawie skalowania są ustawiane na stan zatrzymany bez alokacji podczas wykluczania. Liczba węzłów w stanie zatrzymania bez przydziału względem limitu przydziału obliczeń i może powodować problemy ze skalowaniem klastra lub uaktualnieniem. Wartości *priorytetu* i *wykluczenia-zasady* można ustawić tylko podczas tworzenia puli węzłów. Tych wartości nie można później zaktualizować.
+Domyślnie podczas tworzenia klastra z wieloma pulami węzłów należy utworzyć pulę węzłów o *priorytecie Regular* w klastrze AKS. *priority* Powyższe polecenie dodaje pomocniczą pulę węzłów do istniejącego klastra AKS o *priorytecie* *Spot*. *Priorytet* *Spot* sprawia, że pula węzłów puli węzłów. Parametr *zasady eksmisji* jest ustawiony na *Usuń* w powyższym przykładzie, który jest wartością domyślną. Po ustawieniu [zasady eksmisji][eviction-policy] na *Usuń,* węzły w podstawowym zestawie skali puli węzłów są usuwane po ich eksmisji. Można również ustawić zasady eksmisji na *Deallocate*. Po ustawieniu zasad eksmisji na *Deallocate,* węzły w podstawowym zestawie skalowania są ustawione na stan zatrzymanego przydzielonego po eksmisji. Węzły w stanie zatrzymano-cofnięto alokację są wliczane do przydziału obliczeniowego i mogą powodować problemy ze skalowaniem lub uaktualnianiem klastra. Wartości *zasad priorytetu* i *eksmisji* można ustawić tylko podczas tworzenia puli węzłów. Tych wartości nie można zaktualizować później.
 
-Polecenie włącza również [Automatyczne skalowanie klastra][cluster-autoscaler], zalecane do użycia z pulami węzłów dodatkowych. W zależności od obciążenia działającego w klastrze automatyczne skalowanie klastra skaluje się w górę i skaluje liczbę węzłów w puli węzłów. W przypadku pul węzła dodatkowego automatyczne skalowanie klastra będzie skalować liczbę węzłów po wykluczeniu, jeśli nadal będą potrzebne dodatkowe węzły. Jeśli zmienisz maksymalną liczbę węzłów, jaką może mieć Pula węzłów, należy również dostosować wartość `maxCount` skojarzoną z automatycznym skalowaniem klastra. Jeśli podczas wykluczania nie używasz automatycznego skalowania klastra, pula dodatkowa będzie ostatecznie zmniejszać do zera i wymagać ręcznej operacji w celu uzyskania dodatkowych węzłów dodatkowych.
+Polecenie włącza również [skalowanie automatyczne klastra,][cluster-autoscaler]który jest zalecany do użycia z pulami węzłów punktowych. Na podstawie obciążeń uruchomionych w klastrze skalowanie automatyczne klastra skaluje w górę i skaluje w dół liczbę węzłów w puli węzłów. W przypadku pul węzłów punktowych skalowanie automatyczne klastra spowoduje skalowanie w górę liczby węzłów po eksmisji, jeśli nadal potrzebne są dodatkowe węzły. Jeśli zmienisz maksymalną liczbę węzłów, które może mieć pula węzłów, należy również dostosować `maxCount` wartość skojarzoną z skalowaniem automatycznym klastra. Jeśli nie używasz skalowania automatycznego klastra, po eksmisji pula punktowa ostatecznie zmniejszy się do zera i wymaga ręcznej operacji, aby otrzymać dodatkowe węzły punktowe.
 
 > [!Important]
-> Zaplanuj obciążenia tylko w pulach węzłów dodatkowych, które mogą obsłużyć przerwy, takie jak zadania przetwarzania wsadowego i środowiska testowania. Zaleca się skonfigurowanie przydziałów [i tolerowania][taints-tolerations] w puli węzłów punktowych, aby upewnić się, że tylko obciążenia, które mogą obsłużyć wykluczenia węzłów, zaplanowali w puli węzłów dodatkowych. Na przykład powyższym poleceniem domyślnie dodaje jest *Kubernetes.Azure.com/scalesetpriority=Spot:NoSchedule* , więc w tym węźle zaplanowano tylko te same wartości.
+> Zaplanuj tylko obciążenia w pulach węzłów miejscu, które mogą obsługiwać przerwy, takie jak zadania przetwarzania wsadowego i środowiska testowe. Zaleca się skonfigurowanie [taints i tolerancji][taints-tolerations] w puli węzłów miejscu, aby upewnić się, że tylko obciążenia, które mogą obsługiwać eksmisji węzłów są zaplanowane w puli węzłów miejscu. Na przykład powyższe polecenie ny default dodaje skazę *kubernetes.azure.com/scalesetpriority=spot:NoSchedule* więc tylko zasobniki z odpowiednią tolerancją są zaplanowane w tym węźle.
 
-## <a name="verify-the-spot-node-pool"></a>Weryfikowanie puli węzłów dodatkowych
+## <a name="verify-the-spot-node-pool"></a>Sprawdzanie puli węzłów punktowych
 
-Aby sprawdzić, czy pula węzłów została dodana jako Pula węzłów dodatkowych:
+Aby sprawdzić, czy pula węzłów została dodana jako pula węzłów punktowych:
 
 ```azurecli
 az aks nodepool show --resource-group myResourceGroup --cluster-name myAKSCluster --name spotnodepool
 ```
 
-Potwierdź, że *scaleSetPriority* jest na *miejscu*.
+Potwierdź *skalSetPriority* jest *spot*.
 
-Aby zaplanować uruchomienie elementu na węźle dodatkowym, należy dodać tolerowanie odnoszące się do zmiany koloru w węźle. W poniższym przykładzie przedstawiono część pliku YAML, który definiuje tolerowanie, który odnosi się do *Kubernetes.Azure.com/scalesetpriority=Spot:NoSchedule* .
+Aby zaplanować uruchomienie zasobnika w węźle punktowym, dodaj tolerancję odpowiadającą skazom zastosowanym do węzła punktowego. Poniższy przykład przedstawia część pliku yaml, który definiuje tolerancję, która odpowiada *kubernetes.azure.com/scalesetpriority=spot:NoSchedule* taint używane w poprzednim kroku.
 
 ```yaml
 spec:
@@ -140,16 +140,16 @@ spec:
    ...
 ```
 
-Gdy zostanie wdrożony element pod z tym tolerowaniem, Kubernetes może pomyślnie zaplanować element na węzłach z zastosowaniem zmiany.
+Po wdrożeniu zasobnika z tą tolerancją, kubernetes można pomyślnie zaplanować zasobnika w węzłach z taint zastosowane.
 
-## <a name="max-price-for-a-spot-pool"></a>Maksymalna cena puli dodatkowych
-[Cennik wystąpień dodatkowych to zmienna][pricing-spot], na podstawie regionu i jednostki SKU. Aby uzyskać więcej informacji, zobacz cennik dla systemów [Linux][pricing-linux] i [Windows][pricing-windows].
+## <a name="max-price-for-a-spot-pool"></a>Maksymalna cena za basen punktowy
+[Ceny dla wystąpień kasowych są zmienne][pricing-spot], na podstawie regionu i jednostki SKU. Aby uzyskać więcej informacji, zobacz ceny dla [systemów Linux][pricing-linux] i [Windows][pricing-windows].
 
-W przypadku zmiennych cenowych istnieje możliwość ustawienia maksymalnej ceny w dolarach amerykańskich (USD) przy użyciu maksymalnie 5 miejsc dziesiętnych. Na przykład wartość *0,98765* to maksymalna cena $0,98765 USD za godzinę. Jeśli ustawisz maksymalną wartość *-1*, wystąpienie nie zostanie wykluczone w oparciu o cenę. Cena dla tego wystąpienia będzie aktualna cena za wystąpienie standardowe lub cena w przypadku wystąpienia standardowego, w zależności od tego, czy jest to mniejsze, pod warunkiem, że dostępne są pojemności i limity przydziału.
+W przypadku zmiennych cen możesz ustawić cenę maksymalną w dolarach amerykańskich (USD), używając do 5 miejsc po przecinku. Na przykład wartość *0.98765* będzie maksymalna cena $0.98765 USD za godzinę. Jeśli ustawisz cenę maksymalną na *-1,* wystąpienie nie zostanie eksmitowane na podstawie ceny. Cena dla wystąpienia będzie bieżącą ceną spotu lub ceną dla standardowego wystąpienia, w zależności od tego, która z tych wartości jest niższa, o ile dostępna jest zdolność produkcyjna i kwota.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule opisano sposób dodawania puli węzłów dodatkowych do klastra AKS. Aby uzyskać więcej informacji na temat sterowania zestawami w puli węzłów, zobacz [najlepsze rozwiązania dotyczące zaawansowanych funkcji usługi Scheduler w AKS][operator-best-practices-advanced-scheduler].
+W tym artykule dowiesz się, jak dodać pulę węzłów punktowych do klastra AKS. Aby uzyskać więcej informacji na temat kontrolowania zasobników w pulach węzłów, zobacz [Najważniejsze wskazówki dotyczące zaawansowanych funkcji harmonogramu w ustroju AKS][operator-best-practices-advanced-scheduler].
 
 <!-- LINKS - External -->
 [kubernetes-services]: https://kubernetes.io/docs/concepts/services-networking/service/

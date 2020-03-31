@@ -1,7 +1,7 @@
 ---
-title: Zagadnienia dotyczące przeglądarki systemu Android w programie (MSAL.NET) | Azure
+title: Xamarin Android zagadnienia przeglądarki systemu Android (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Dowiedz się więcej na temat zagadnień dotyczących używania przeglądarek systemu w programie Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
+description: Dowiedz się więcej o zagadnieniach dotyczących korzystania z przeglądarek systemowych w systemie Xamarin w systemie Android z biblioteką uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -15,62 +15,62 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad26a4d619a7984f08a8decc87f9339adae47cdd
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77132611"
 ---
-#  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>Zagadnienia dotyczące korzystania z usługi MSAL.NET w przeglądarce systemu Android dla platformy Xamarin
+#  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>Xamarin Android zagadnienia przeglądarki systemu za pomocą MSAL.NET
 
-W tym artykule omówiono zagadnienia, które należy wziąć pod uwagę podczas korzystania z przeglądarki systemu w programie Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
+W tym artykule omówiono, co należy wziąć pod uwagę podczas korzystania z przeglądarki systemowej na platformie Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 
-Począwszy od programu MSAL.NET 2.4.0 Preview, MSAL.NET obsługuje przeglądarki inne niż Chrome. Na urządzeniu z systemem Android nie trzeba już instalować programu Chrome w celu uwierzytelnienia.
+Począwszy od MSAL.NET wersji zapoznawczej 2.4.0, MSAL.NET obsługuje przeglądarki inne niż Chrome. Nie wymaga już instalacji Chrome na urządzeniu z Androidem do uwierzytelniania.
 
-Zalecamy używanie przeglądarek, które obsługują niestandardowe karty. Oto kilka przykładów tych przeglądarek:
+Zaleca się korzystanie z przeglądarek obsługujących karty niestandardowe. Oto kilka przykładów tych przeglądarek:
 
-| Przeglądarki z obsługą kart niestandardowych | Nazwa pakietu |
+| Przeglądarki z niestandardowymi kartami obsługują | Nazwa pakietu |
 |------| ------- |
 |Chrome | com.android.chrome|
-|Microsoft Edge | com. Microsoft. emmx|
-|Firefox | org. mozilla. Firefox|
-|Ecosia | com.ecosia.android|
-|Kiwi | com. kiwibrowser. Browser|
-|Brave | com. Brave. Browser|
+|Microsoft Edge | witryna com.microsoft.emmx|
+|Firefox | org.mozilla.firefox|
+|Ecosia (Ecosia) | com.ecosia.android|
+|Kiwi | com.kiwibrowser.browser|
+|Odważny | com.brave.browser (strona główna)|
 
-Oprócz identyfikowania przeglądarek, które oferują obsługę kart niestandardowych, nasze testy wskazują, że niektóre przeglądarki, które nie obsługują niestandardowych kart, również działają w celu uwierzytelniania. Te przeglądarki obejmują program Opera, Opera Mini, inbrowser i Maxthon. 
+Oprócz identyfikowania przeglądarek, które oferują obsługę kart niestandardowych, nasze testy wskazują, że kilka przeglądarek, które nie obsługują kart niestandardowych również działa do uwierzytelniania. Przeglądarki te obejmują Opera, Opera Mini, InBrowser i Maxthon. 
 
 ## <a name="tested-devices-and-browsers"></a>Przetestowane urządzenia i przeglądarki
-W poniższej tabeli wymieniono urządzenia i przeglądarki, które zostały przetestowane pod kątem zgodności z uwierzytelnianiem.
+W poniższej tabeli wymieniono urządzenia i przeglądarki, które zostały przetestowane pod kątem zgodności uwierzytelniania.
 
 | Urządzenie | Przeglądarka     |  Wynik  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/jeden + | \* Chrome | Zakończony powodzeniem|
-| Huawei/jeden + | \* brzegowe | Zakończony powodzeniem|
-| Huawei/jeden + | \* Firefox | Zakończony powodzeniem|
-| Huawei/jeden + | Brave\* | Zakończony powodzeniem|
-| Jeden + | Ecosia\* | Zakończony powodzeniem|
-| Jeden + | Kiwi\* | Zakończony powodzeniem|
-| Huawei/jeden + | Opera | Zakończony powodzeniem|
-| Huawei | OperaMini | Zakończony powodzeniem|
-| Huawei/jeden + | Brak przeglądarki | Zakończony powodzeniem|
-| Jeden + | Maxthon | Zakończony powodzeniem|
-| Huawei/jeden + | DuckDuckGo | Użytkownik anulował uwierzytelnianie|
-| Huawei/jeden + | Przeglądarka UC | Użytkownik anulował uwierzytelnianie|
-| Jeden + | Tuńczyk | Użytkownik anulował uwierzytelnianie|
-| Jeden + | Przeglądarka CM | Użytkownik anulował uwierzytelnianie|
-| Huawei/jeden + | Brak zainstalowanych | Wyjątek AndroidActivityNotFound|
+| Huawei/One+ | Chrome\* | Przekazać|
+| Huawei/One+ | Edge\* | Przekazać|
+| Huawei/One+ | Firefox\* | Przekazać|
+| Huawei/One+ | Odważny\* | Przekazać|
+| Jeden+ | Ecosia (Ecosia)\* | Przekazać|
+| Jeden+ | Kiwi\* | Przekazać|
+| Huawei/One+ | Opera | Przekazać|
+| Huawei | OperaMini (OperaMini) | Przekazać|
+| Huawei/One+ | InBrowser (Wbrązowie) | Przekazać|
+| Jeden+ | Maxthon | Przekazać|
+| Huawei/One+ | Duckduckgo | Anulowane uwierzytelnianie użytkownika|
+| Huawei/One+ | Przeglądarka UC | Anulowane uwierzytelnianie użytkownika|
+| Jeden+ | Dolphin | Anulowane uwierzytelnianie użytkownika|
+| Jeden+ | Przeglądarka CM | Anulowane uwierzytelnianie użytkownika|
+| Huawei/One+ | Brak zainstalowany | Wyjątek AndroidActivityNotFound|
 
-\* obsługuje niestandardowe karty
+\*Obsługa kart niestandardowych
 
 ## <a name="known-issues"></a>Znane problemy
 
-Jeśli na urządzeniu nie jest włączona przeglądarka, MSAL.NET wygeneruje wyjątek `AndroidActivityNotFound`.  
-  - Środki **zaradcze**: poproszenie użytkownika o włączenie przeglądarki na swoim urządzeniu. Zaleca się, aby przeglądarka obsługiwała niestandardowe karty.
+Jeśli użytkownik nie ma włączonej przeglądarki na urządzeniu, MSAL.NET `AndroidActivityNotFound` zgłosić wyjątek.  
+  - **Środki zaradcze:** Poproś użytkownika o włączenie przeglądarki na swoim urządzeniu. Polec przeglądarkę obsługującą karty niestandardowe.
 
-Jeśli uwierzytelnianie nie powiedzie się (na przykład w przypadku uruchamiania uwierzytelniania z DuckDuckGo), MSAL.NET zwróci `AuthenticationCanceled MsalClientException`. 
-  - **Problem z głównym**: przeglądarka, która obsługuje niestandardowe karty, nie została włączona na urządzeniu. Uwierzytelnianie zostało uruchomione przy użyciu przeglądarki, która nie mogła ukończyć uwierzytelniania. 
-  - Środki **zaradcze**: poproszenie użytkownika o włączenie przeglądarki na swoim urządzeniu. Zaleca się, aby przeglądarka obsługiwała niestandardowe karty.
+Jeśli uwierzytelnianie nie powiedzie się (na przykład, jeśli uwierzytelnianie `AuthenticationCanceled MsalClientException`zostanie uruchomiony za pomocą DuckDuckGo), MSAL.NET zwróci . 
+  - **Główny problem:** przeglądarka obsługująca niestandardowe karty nie została włączona na urządzeniu. Uwierzytelnianie uruchomione za pomocą przeglądarki, która nie mogła ukończyć uwierzytelniania. 
+  - **Środki zaradcze:** Poproś użytkownika o włączenie przeglądarki na swoim urządzeniu. Polec przeglądarkę obsługującą karty niestandardowe.
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji i przykładów kodu, zobacz [Wybieranie między osadzoną przeglądarką internetową i przeglądarką systemową w systemie Xamarin Android](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid) i [osadzonym i systemowym interfejsie użytkownika sieci Web](msal-net-web-browsers.md#embedded-vs-system-web-ui).  
+Aby uzyskać więcej informacji i przykłady kodu, zobacz [Wybieranie między osadzoną przeglądarką internetową a przeglądarką systemową na systemie Xamarin Android](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid) i [embedded versus system web ui](msal-net-web-browsers.md#embedded-vs-system-web-ui).  

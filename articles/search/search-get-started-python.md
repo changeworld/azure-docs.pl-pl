@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: Tworzenie indeksu wyszukiwania w języku Python przy użyciu interfejsów API REST'
+title: 'Szybki start: tworzenie indeksu wyszukiwania w języku Python przy użyciu interfejsów API REST'
 titleSuffix: Azure Cognitive Search
-description: Wyjaśnia, jak utworzyć indeks, załadować dane i uruchamiać zapytania przy użyciu języka Python, notesów Jupyter oraz interfejsu API REST platformy Azure Wyszukiwanie poznawcze.
+description: W tym artykule wyjaśniono, jak utworzyć indeks, załadować dane i uruchomić kwerendy przy użyciu języka Python, notesów jupyter i interfejsu API REST usługi Azure Cognitive Search.
 author: tchristiani
 manager: nitinme
 ms.author: terrychr
@@ -10,53 +10,53 @@ ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 02/10/2020
 ms.openlocfilehash: 93fb9ec735de1abf89eb217d0f4096fcfc0afe94
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78227103"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Szybki Start: Tworzenie indeksu Wyszukiwanie poznawcze platformy Azure w języku Python przy użyciu notesów Jupyter
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Szybki start: tworzenie indeksu usługi Azure Cognitive Search w języku Python przy użyciu notesów Jupyter
 
 > [!div class="op_single_selector"]
-> * [Python (REST)](search-get-started-python.md)
-> * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C#](search-create-index-dotnet.md)
-> * [Poster (REST)](search-get-started-postman.md)
+> * [Python (RESZTA)](search-get-started-python.md)
+> * [Program PowerShell (REST)](search-create-index-rest-api.md)
+> * [C #](search-create-index-dotnet.md)
+> * [Listonosz (REST)](search-get-started-postman.md)
 > * [Portal](search-create-index-portal.md)
 > 
 
-Tworzenie notesu Jupyter, który tworzy, ładuje i bada indeks Wyszukiwanie poznawcze platformy Azure przy użyciu języka Python i [interfejsów API REST platformy azure wyszukiwanie poznawcze](https://docs.microsoft.com/rest/api/searchservice/). W tym artykule opisano sposób tworzenia notesu krok po kroku. Alternatywnie można [pobrać i uruchomić gotowy Notes Python Jupyter](https://github.com/Azure-Samples/azure-search-python-samples).
+Tworzenie notesu Jupyter, który tworzy, ładuje i wysyła kwerendy do indeksu usługi Azure Cognitive Search przy użyciu języka Python i [interfejsów API REST usługi Azure Cognitive Search.](https://docs.microsoft.com/rest/api/searchservice/) W tym artykule wyjaśniono, jak tworzyć notes krok po kroku. Alternatywnie, można [pobrać i uruchomić gotowy notebook Jupyter Python](https://github.com/Azure-Samples/azure-search-python-samples).
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten przewodnik Szybki Start wymaga następujących usług i narzędzi. 
+Do tego przewodnika Szybki start wymagane są następujące usługi i narzędzia. 
 
-+ [Anaconda 3. x](https://www.anaconda.com/distribution/#download-section), dostarczając notesy języka Python 3. x i Jupyter.
++ [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section), zapewniając Python 3.x i Jupyter Notebooki.
 
-+ [Utwórz usługę Azure wyszukiwanie poznawcze](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. W tym przewodniku Szybki Start możesz skorzystać z warstwy Bezpłatna. 
++ [Utwórz usługę Azure Cognitive Search](search-create-service-portal.md) lub znajdź [istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. W tym przewodniku Szybki start można użyć warstwy Bezpłatna. 
 
-## <a name="get-a-key-and-url"></a>Pobierz klucz i adres URL
+## <a name="get-a-key-and-url"></a>Uzyskaj klucz i adres URL
 
-Wywołania interfejsu REST wymagają adresu URL usługi i klucza dostępu dla każdego żądania. Usługa wyszukiwania jest tworzona razem z usługą, więc jeśli do subskrypcji dodano Wyszukiwanie poznawcze platformy Azure, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
+Wywołania interfejsu REST wymagają adresu URL usługi i klucza dostępu dla każdego żądania. Usługa wyszukiwania jest tworzona z obu, więc jeśli dodano usługę Azure Cognitive Search do subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
 
-1. [Zaloguj się do Azure Portal](https://portal.azure.com/)i na stronie **Przegląd** usługi wyszukiwania Uzyskaj adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
+1. [Zaloguj się do witryny Azure portal](https://portal.azure.com/), a na stronie **przegląd** usługi wyszukiwania pobierz adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
 
-1. W obszarze **ustawienia** > **klucze**Uzyskaj klucz administratora dla pełnych praw do usługi. Istnieją dwa wymienne klucze administratora zapewniające ciągłość działania w przypadku, gdy trzeba ją wycofać. W przypadku żądań dotyczących dodawania, modyfikowania i usuwania obiektów można użyć klucza podstawowego lub pomocniczego.
+1. W **ustawieniach** > **klawiszy**pobierz klucz administratora, aby uzyskać pełne prawa do usługi. Istnieją dwa wymienne klucze administracyjne, przewidziane dla ciągłości biznesowej w przypadku, gdy trzeba przewrócić jeden. Klucz podstawowy lub pomocniczy można używać w żądaniach dodawania, modyfikowania i usuwania obiektów.
 
-![Pobieranie punktu końcowego HTTP i klucza dostępu](media/search-get-started-postman/get-url-key.png "Pobieranie punktu końcowego HTTP i klucza dostępu")
+![Uzyskiwanie punktu końcowego HTTP i klucza dostępu](media/search-get-started-postman/get-url-key.png "Uzyskiwanie punktu końcowego HTTP i klucza dostępu")
 
-Wszystkie żądania wymagają klucza API dla każdego żądania wysyłanego do usługi. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
+Wszystkie żądania wymagają klucza api przy każdym żądaniu wysłanym do usługi. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
 
-## <a name="connect-to-azure-cognitive-search"></a>Nawiązywanie połączenia z usługą Azure Wyszukiwanie poznawcze
+## <a name="connect-to-azure-cognitive-search"></a>Łączenie się z usługą Azure Cognitive Search
 
-W tym zadaniu Uruchom Notes Jupyter i sprawdź, czy możesz nawiązać połączenie z usługą Azure Wyszukiwanie poznawcze. W tym celu należy zażądać listy indeksów z usługi. W systemie Windows z Anaconda3 można użyć nawigatora Anaconda do uruchomienia notesu.
+W tym zadaniu uruchom notes Jupyter i sprawdź, czy możesz połączyć się z usługą Azure Cognitive Search. Zrobisz to, żądając listy indeksów z usługi. W systemie Windows z anaconda3 można użyć Anaconda Navigator do uruchomienia notesu.
 
-1. Utwórz nowy Notes python3.
+1. Utwórz nowy notes Python3.
 
-1. W pierwszej komórce Załaduj biblioteki używane do pracy z formatem JSON i formułowania żądań HTTP.
+1. W pierwszej komórce załaduj biblioteki używane do pracy z JSON i formułowania żądań HTTP.
 
    ```python
    import json
@@ -64,7 +64,7 @@ W tym zadaniu Uruchom Notes Jupyter i sprawdź, czy możesz nawiązać połącze
    from pprint import pprint
    ```
 
-1. W drugiej komórce wprowadź elementy żądania, które będą stałe dla każdego żądania. Zastąp wartość w polu Nazwa usługi wyszukiwania (nazwa usługi-SEARCH-SERVICE-NAME) i klucz interfejsu API administratora (administrator-administrator-klucz) z prawidłowymi wartościami. 
+1. W drugiej komórce wprowadź elementy żądania, które będą stałymi przy każdym żądaniu. Zastąp nazwę usługi wyszukiwania (YOUR-SEARCH-SERVICE-NAME) i klucz interfejsu API administratora (YOUR-ADMIN-API-KEY) prawidłowymi wartościami. 
 
    ```python
    endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
@@ -73,9 +73,9 @@ W tym zadaniu Uruchom Notes Jupyter i sprawdź, czy możesz nawiązać połącze
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
 
-   W przypadku uzyskania ConnectionError `"Failed to establish a new connection"`upewnij się, że klucz API-Key jest podstawowym lub pomocniczym kluczem administratora i że są używane wszystkie znaki wiodące i końcowe (`?` i `/`).
+   Jeśli zostanie otrzymasz `"Failed to establish a new connection"`ConnectionError , sprawdź, czy klucz interfejsu API jest podstawowym lub`?` pomocniczym kluczem administratora i czy wszystkie znaki wiodące i końcowe ( i `/`) są na miejscu.
 
-1. W trzeciej komórce należy sformułować żądanie. To żądanie GET odwołuje się do kolekcji indeksów usługi wyszukiwania i wybiera Właściwość Name istniejących indeksów.
+1. W trzeciej komórce sformułowaj żądanie. To żądanie GET jest przeznaczone dla kolekcji indeksów usługi wyszukiwania i wybiera właściwość nazwy istniejących indeksów.
 
    ```python
    url = endpoint + "indexes" + api_version + "&$select=name"
@@ -84,21 +84,21 @@ W tym zadaniu Uruchom Notes Jupyter i sprawdź, czy możesz nawiązać połącze
    pprint(index_list)
    ```
 
-1. Uruchom każdy krok. Jeśli istnieją indeksy, odpowiedź zawiera listę nazw indeksów. Na poniższym zrzucie ekranu usługa ma już indeks azureblob i realestate-US-Sample.
+1. Uruchom każdy krok. Jeśli istnieją indeksy, odpowiedź zawiera listę nazw indeksów. Na poniższym zrzucie ekranu usługa ma już indeks azureblob i indeks przykładowy realestate-us.
 
-   ![Skrypt języka Python w notesie Jupyter z żądaniami HTTP do usługi Azure Wyszukiwanie poznawcze](media/search-get-started-python/connect-azure-search.png "Skrypt języka Python w notesie Jupyter z żądaniami HTTP do usługi Azure Wyszukiwanie poznawcze")
+   ![Skrypt Języka Python w notesie Jupyter z żądaniami HTTP do usługi Azure Cognitive Search](media/search-get-started-python/connect-azure-search.png "Skrypt Języka Python w notesie Jupyter z żądaniami HTTP do usługi Azure Cognitive Search")
 
-   W przeciwieństwie do pustej kolekcji indeksów zwracana jest odpowiedź: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
+   Natomiast pusta kolekcja indeksu zwraca tę odpowiedź:`{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
 ## <a name="1---create-an-index"></a>1 — Tworzenie indeksu
 
-Jeśli nie korzystasz z portalu, musi istnieć indeks usługi, aby można było załadować dane. Ten krok powoduje użycie [interfejsu API Rest tworzenia indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index) w celu wypchnięcia schematu indeksu do usługi.
+Jeśli nie używasz portalu, indeks musi istnieć w usłudze, zanim będzie można załadować dane. Ten krok używa [interfejsu API Create Index REST](https://docs.microsoft.com/rest/api/searchservice/create-index) do wypychania schematu indeksu do usługi.
 
-Wymagane elementy indeksu obejmują nazwę, kolekcję pól i klucz. Kolekcja Fields definiuje strukturę *dokumentu*. Każde pole ma nazwę, typ i atrybuty, które określają sposób użycia pola (na przykład czy jest to możliwość wyszukiwania pełnotekstowego, filtrowania lub pobierania w wynikach wyszukiwania). W indeksie należy wyznaczyć jedno z pól typu `Edm.String` jako *klucz* dla tożsamości dokumentu.
+Wymagane elementy indeksu obejmują nazwę, kolekcję pól i klucz. Kolekcja pól definiuje strukturę *dokumentu*. Każde pole ma nazwę, typ i atrybuty, które określają sposób jego użycia (na przykład, czy można je przeszukiwać pełnotekstowo, filtrować czy pobierać w wynikach wyszukiwania). W ramach indeksu jedno z `Edm.String` pól typu musi być wyznaczone jako *klucz* tożsamości dokumentu.
 
-Ten indeks ma nazwę "Hotele-Szybki Start" i zawiera definicje pól widoczne poniżej. Jest to podzestaw większego [indeksu hoteli](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) używany w innych przewodnikach. Ten przewodnik Szybki Start został przez nas przycięty do zwięzłości.
+Ten indeks nosi nazwę "hotels-quickstart" i zawiera definicje pól, które widzisz poniżej. Jest to podzbiór większego [indeksu hoteli](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) używanego w innych instruktażyach. Przycięliśmy go w tym przewodniku szybki start dla zwięzłości.
 
-1. W następnej komórce wklej poniższy przykład do komórki, aby udostępnić schemat. 
+1. W następnej komórce wklej poniższy przykład do komórki, aby zapewnić schemat. 
 
     ```python
     index_schema = {
@@ -126,7 +126,7 @@ Ten indeks ma nazwę "Hotele-Szybki Start" i zawiera definicje pól widoczne pon
     }
     ```
 
-2. W innej komórce należy sformułować żądanie. To żądanie POST odwołuje się do kolekcji indeksów usługi wyszukiwania i tworzy indeks na podstawie schematu indeksu podanego w poprzedniej komórce.
+2. W innej komórce sformułowaj żądanie. To żądanie POST jest przeznaczone dla kolekcji indeksów usługi wyszukiwania i tworzy indeks na podstawie schematu indeksu podanego w poprzedniej komórce.
 
    ```python
    url = endpoint + "indexes" + api_version
@@ -137,20 +137,20 @@ Ten indeks ma nazwę "Hotele-Szybki Start" i zawiera definicje pól widoczne pon
 
 3. Uruchom każdy krok.
 
-   Odpowiedź obejmuje reprezentację schematu w formacie JSON. Poniższy zrzut ekranu przedstawia tylko część odpowiedzi.
+   Odpowiedź zawiera reprezentację JSON schematu. Poniższy zrzut ekranu pokazuje tylko część odpowiedzi.
 
     ![Żądanie utworzenia indeksu](media/search-get-started-python/create-index.png "Żądanie utworzenia indeksu")
 
 > [!Tip]
-> Innym sposobem sprawdzenia tworzenia indeksu jest sprawdzenie listy indeksów w portalu.
+> Innym sposobem weryfikacji tworzenia indeksu jest sprawdzenie listy Indeksy w portalu.
 
 <a name="load-documents"></a>
 
-## <a name="2---load-documents"></a>2 — ładowanie dokumentów
+## <a name="2---load-documents"></a>2 - Ładowanie dokumentów
 
-Aby wypchnąć dokumenty, użyj żądania HTTP POST do punktu końcowego adresu URL Twojego indeksu. Interfejs API REST to [Dodawanie, aktualizowanie lub usuwanie dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Dokumenty pochodzą z [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) w serwisie GitHub.
+Aby wypchnąć dokumenty, użyj żądania HTTP POST do punktu końcowego adresu URL indeksu. Interfejs API REST to [Dodawanie, aktualizowanie lub usuwanie dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Dokumenty pochodzą z [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) na GitHub.
 
-1. W nowej komórce Podaj cztery dokumenty, które są zgodne ze schematem indeksu. Określ akcję przekazywania dla każdego dokumentu.
+1. W nowej komórce podaj cztery dokumenty, które są zgodne ze schematem indeksu. Określ akcję przekazywania dla każdego dokumentu.
 
     ```python
     documents = {
@@ -235,7 +235,7 @@ Aby wypchnąć dokumenty, użyj żądania HTTP POST do punktu końcowego adresu 
     }
     ```   
 
-2. W innej komórce należy sformułować żądanie. To żądanie POST odwołuje się do kolekcji docs na indeksie z przewodnikiem Szybki Start i wypycha dokumenty podane w poprzednim kroku.
+2. W innej komórce sformułowaj żądanie. To żądanie POST jest przeznaczone dla kolekcji dokumentów indeksu szybki start w hotelach i wypycha dokumenty dostarczone w poprzednim kroku.
 
    ```python
    url = endpoint + "indexes/hotels-quickstart/docs/index" + api_version
@@ -250,21 +250,21 @@ Aby wypchnąć dokumenty, użyj żądania HTTP POST do punktu końcowego adresu 
 
 ## <a name="3---search-an-index"></a>3 — Przeszukiwanie indeksu
 
-W tym kroku przedstawiono sposób wykonywania zapytań względem indeksu przy użyciu [interfejsu API REST dokumentów do przeszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+W tym kroku pokazano, jak zbadać indeks za pomocą [interfejsu API REST dokumentów wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-1. W komórce podaj wyrażenie zapytania, które wykonuje puste wyszukiwanie (Search = *), zwracając niesklasyfikowaną listę (wynik wyszukiwania = 1,0) dowolnych dokumentów. Domyślnie usługa Azure Wyszukiwanie poznawcze zwraca 50 dopasowań w danym momencie. Zgodnie ze strukturą, to zapytanie zwraca całą strukturę dokumentu i jego wartości. Dodaj $count = true, aby uzyskać liczbę wszystkich dokumentów w wynikach.
+1. W komórce podaj wyrażenie zapytania, które wykonuje puste wyszukiwanie (search=*), zwracając listę nierankingową (wynik wyszukiwania = 1,0) dowolnych dokumentów. Domyślnie usługa Azure Cognitive Search zwraca 50 dopasowań naraz. Zgodnie z ustrukturyzowania, ta kwerenda zwraca całą strukturę dokumentu i wartości. Dodaj $count=true, aby uzyskać liczbę wszystkich dokumentów w wynikach.
 
    ```python
    searchstring = '&search=*&$count=true'
    ```
 
-1. W nowej komórce podaj następujący przykład, aby wyszukać warunki "Hotele" i "Wi-Fi". Dodaj $select, aby określić pola do uwzględnienia w wynikach wyszukiwania.
+1. W nowej komórce podaj poniższy przykład wyszukiwania na terminach "hotele" i "wifi". Dodaj $select, aby określić, które pola mają być uwzględniane w wynikach wyszukiwania.
 
    ```python
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
    ```
 
-1. W innej komórce należy sformułować żądanie. To żądanie GET odwołuje się do kolekcji docs na indeksie z przewodnikiem Szybki Start i dołącza zapytanie określone w poprzednim kroku.
+1. W innej komórce sformułowaj żądanie. To żądanie GET jest przeznaczone dla kolekcji dokumentów indeksu szybki start hoteli i dołącza kwerendę określoną w poprzednim kroku.
 
    ```python
    url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
@@ -273,11 +273,11 @@ W tym kroku przedstawiono sposób wykonywania zapytań względem indeksu przy u�
    pprint(query)
    ```
 
-1. Uruchom każdy krok. Wyniki powinny wyglądać podobnie do poniższych danych wyjściowych. 
+1. Uruchom każdy krok. Wyniki powinny wyglądać podobnie do następujących danych wyjściowych. 
 
     ![Przeszukiwanie indeksu](media/search-get-started-python/search-index.png "Przeszukiwanie indeksu")
 
-1. Wypróbuj kilka innych przykładów zapytania, aby uzyskać działanie dla składni. Można zastąpić `searchstring` poniższymi przykładami, a następnie ponownie uruchomić żądanie wyszukiwania. 
+1. Wypróbuj kilka innych przykładów zapytań, aby uzyskać odczucie składni. Można zastąpić `searchstring` poniższymi przykładami, a następnie ponownie uruchomić żądanie wyszukiwania. 
 
    Zastosuj filtr: 
 
@@ -285,13 +285,13 @@ W tym kroku przedstawiono sposób wykonywania zapytań względem indeksu przy u�
    searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
    ```
 
-   Zrób pierwsze dwa wyniki:
+   Weź dwa najlepsze wyniki:
 
    ```python
    searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
    ```
 
-    Zamówienie według określonego pola:
+    Kolejność według określonego pola:
 
    ```python
    searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
@@ -299,15 +299,15 @@ W tym kroku przedstawiono sposób wykonywania zapytań względem indeksu przy u�
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Gdy pracujesz nad własną subskrypcją, dobrym pomysłem jest zakończenie projektu w celu ustalenia, czy nadal potrzebujesz utworzonych zasobów. Zasoby po lewej stronie mogą być kosztowne. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
+Jeśli pracujesz w ramach własnej subskrypcji, dobrym pomysłem po zakończeniu projektu jest sprawdzenie, czy dalej potrzebujesz utworzonych zasobów. Nadal uruchomione zasoby mogą generować koszty. Zasoby możesz usuwać pojedynczo lub możesz usunąć grupę zasobów, aby usunąć cały ich zestaw.
 
-Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku **wszystkie zasoby** lub **grupy zasobów** w okienku nawigacji po lewej stronie.
+Zasoby można znaleźć i zarządzać nimi w portalu, korzystając z łącza **Wszystkie zasoby** lub **Grupy zasobów** w lewym okienku nawigacji.
 
-Jeśli używasz bezpłatnej usługi, pamiętaj, że masz ograniczone do trzech indeksów, indeksatorów i źródeł danych. Możesz usunąć poszczególne elementy w portalu, aby zachować limit. 
+Jeśli korzystasz z bezpłatnej usługi, należy pamiętać, że są ograniczone do trzech indeksów, indeksatorów i źródeł danych. Możesz usunąć poszczególne elementy w portalu, aby pozostać poniżej limitu. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jako uproszczenie, ten przewodnik Szybki Start używa skróconej wersji indeksu hoteli. Możesz utworzyć pełną wersję, aby wypróbować bardziej interesujące zapytania. Aby uzyskać pełną wersję i wszystkie 50 dokumentów, uruchom kreatora **importowania danych** , wybierając *Hotele* z wbudowanych przykładowych źródeł danych.
+W ramach uproszczenia ten szybki start wykorzystuje skróconą wersję indeksu Hotele. Możesz utworzyć pełną wersję, aby wypróbować bardziej interesujące zapytania. Aby uzyskać pełną wersję i wszystkie 50 dokumentów, uruchom **Kreatora importu danych,** wybierając *przykładowe hotele* z wbudowanych przykładowych źródeł danych.
 
 > [!div class="nextstepaction"]
-> [Szybki Start: Tworzenie indeksu w Azure Portal](search-get-started-portal.md)
+> [Szybki start: tworzenie indeksu w witrynie Azure portal](search-get-started-portal.md)

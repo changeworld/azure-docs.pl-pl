@@ -1,6 +1,6 @@
 ---
-title: Przykłady programu Azure PowerShell dla usługi Azure Lab Services | Dokumentacja firmy Microsoft
-description: Przykłady programu Azure PowerShell — skrypty ułatwiające zarządzanie laboratoriami w usłudze Azure Lab Services
+title: Przykłady programu Azure PowerShell dla usług Azure Lab | Dokumenty firmy Microsoft
+description: Przykłady programu Azure PowerShell — skrypty ułatwiające zarządzanie laboratoriami w usługach Azure Lab Services
 services: lab-services
 author: spelluru
 manager: ''
@@ -13,21 +13,21 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: spelluru
 ms.openlocfilehash: 09b93cc1d1f05e185a1550fb8141423447e802b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64730608"
 ---
-# <a name="azure-powershell-samples-for-azure-lab-services"></a>Przykłady programu Azure PowerShell dla usługi Azure Lab Services
+# <a name="azure-powershell-samples-for-azure-lab-services"></a>Przykłady programu Azure PowerShell dla usług Azure Lab Services
 
-Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerShell dla usługi Azure Lab Services.
+Poniższa tabela zawiera łącza do przykładowych skryptów programu Azure PowerShell dla usług Azure Lab Services.
 
 | |  |
 |---|---|
-|[Dodawanie użytkownika zewnętrznego do laboratorium](scripts/add-external-user-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell dodaje użytkownika zewnętrznego do laboratorium Azure DevTest Labs. |
-|[Dodawanie obrazów z witryny marketplace do laboratorium](scripts/add-marketplace-images-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell dodaje obrazy z witryny marketplace do laboratorium Azure DevTest Labs. |
-|[Tworzenie obrazu niestandardowego z poziomu dysku VHD](scripts/create-custom-image-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell tworzy niestandardowy obraz w laboratorium Azure DevTest Labs. |
-|[Utworzyć rolę niestandardową, w laboratorium](scripts/create-custom-role-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell tworzy niestandardową rolę w laboratorium w usłudze Azure Lab Services. |
-|[Zestaw dozwolonych rozmiarów maszyn wirtualnych w laboratorium](scripts/set-allowed-vm-sizes-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell ustawia rozmiarów dozwolonych maszyn wirtualnych (VM) w laboratorium. |
+|[Dodawanie użytkownika zewnętrznego do laboratorium](scripts/add-external-user-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell dodaje użytkownika zewnętrznego do laboratorium w laboratorium usługi Azure DevTest Labs. |
+|[Dodawanie obrazów portalu Marketplace do laboratorium](scripts/add-marketplace-images-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell dodaje obrazy portalu Marketplace do laboratorium w laboratorium usługi Azure DevTest Labs. |
+|[Tworzenie niestandardowego obrazu z dysku VHD](scripts/create-custom-image-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell tworzy obraz niestandardowy w laboratorium w laboratorium usługi Azure DevTest Labs. |
+|[Tworzenie roli niestandardowej w laboratorium](scripts/create-custom-role-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell tworzy rolę niestandardową w laboratorium w usłudze Azure Lab Services. |
+|[Ustawianie dozwolonych rozmiarów maszyn wirtualnych w laboratorium](scripts/set-allowed-vm-sizes-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Te zestawy skryptów programu PowerShell zezwalają na rozmiary maszyn wirtualnych w laboratorium. |
 

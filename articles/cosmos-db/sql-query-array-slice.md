@@ -1,6 +1,6 @@
 ---
-title: ARRAY_SLICE w języku zapytań Azure Cosmos DB
-description: Dowiedz się, w jaki sposób Funkcja systemowa SQL wycinka tablicy w Azure Cosmos DB zwraca część wyrażenia tablicy
+title: ARRAY_SLICE w języku zapytań usługi Azure Cosmos DB
+description: Dowiedz się, jak funkcja systemu SQL plasterka tablicy w usłudze Azure Cosmos DB zwraca część wyrażenia tablicy
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a98cb17d22f41776ff788d12ced6aa988ad0b10e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303328"
 ---
-# <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE (Azure Cosmos DB)
+# <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE (Usługa Azure Cosmos DB)
  Zwraca część wyrażenia tablicy.
   
 ## <a name="syntax"></a>Składnia
@@ -26,20 +26,20 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
 ## <a name="arguments"></a>Argumenty
   
 *arr_expr*  
-   To dowolne wyrażenie tablicowe.  
+   Jest dowolne wyrażenie tablicy.  
   
 *num_expr*  
-   Liczony od zera indeksu liczbowego od którego należy rozpocząć tablicy. Ujemne wartości mogą być używane, aby określić indeks początkowy względem ostatniego elementu odwołań do tablic tj -1 do ostatniego elementu w tablicy.  
+   Indeks liczbowy oparty na wartości zerowej, od którego ma się rozpocząć tablicę. Wartości ujemne mogą służyć do określenia indeksu początkowego względem ostatniego elementu tablicy, czyli -1 odwołuje się do ostatniego elementu w tablicy.  
 
-*num_expr* Opcjonalne wyrażenie liczbowe, które ustawia maksymalną liczbę elementów w tablicy wyników.    
+*num_expr* Opcjonalne wyrażenie liczbowe, które ustawia maksymalną liczbę elementów w tablicy wynikowej.    
 
-## <a name="return-types"></a>Typy zwracane
+## <a name="return-types"></a>Typy zwrotów
   
   Zwraca wyrażenie tablicy.  
   
 ## <a name="examples"></a>Przykłady
   
-  Poniższy przykład pokazuje, jak uzyskać różne wycinków tablicy przy użyciu `ARRAY_SLICE`.  
+  W poniższym przykładzie pokazano, jak uzyskać `ARRAY_SLICE`różne wycinki tablicy za pomocą .  
   
 ```sql
 SELECT
@@ -69,10 +69,10 @@ SELECT
 
 ## <a name="remarks"></a>Uwagi
 
-Ta funkcja systemowa nie będzie używać indeksu.
+Ta funkcja systemu nie będzie korzystać z indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Funkcje tablicowe Azure Cosmos DB](sql-query-array-functions.md)
-- [Azure Cosmos DB funkcje systemowe](sql-query-system-functions.md)
-- [Wprowadzenie do Azure Cosmos DB](introduction.md)
+- [Funkcje macierzy Usługi Azure Cosmos DB](sql-query-array-functions.md)
+- [Funkcje systemowe Usługi Azure Cosmos DB](sql-query-system-functions.md)
+- [Wprowadzenie do usługi Azure Cosmos DB](introduction.md)

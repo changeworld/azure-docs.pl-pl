@@ -1,52 +1,52 @@
 ---
-title: Używanie Azure Portal do monitorowania zarządzanej aplikacji
-description: Pokazuje, w jaki sposób używać Azure Portal do monitorowania dostępności i alertów dla aplikacji zarządzanej.
+title: Monitorowanie zarządzanej aplikacji za pomocą witryny Azure Portal
+description: Pokazuje, jak używać witryny Azure portal do monitorowania dostępności i alertów dla aplikacji zarządzanej.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: afe78dd00ecebdc54b6d73c4c8324729e117d95b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651750"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>Monitorowanie wdrożonego wystąpienia aplikacji zarządzanej
 
-Po wdrożeniu aplikacji zarządzanej w ramach subskrypcji platformy Azure warto sprawdzić stan aplikacji. W tym artykule przedstawiono opcje w Azure Portal sprawdzania stanu. Dostępność zasobów w aplikacji zarządzanej można monitorować. Możesz również skonfigurować alerty i wyświetlać je.
+Po wdrożeniu zarządzanej aplikacji do subskrypcji platformy Azure można sprawdzić stan aplikacji. W tym artykule przedstawiono opcje w witrynie Azure portal do sprawdzania stanu. Można monitorować dostępność zasobów w aplikacji zarządzanej. Można również skonfigurować i wyświetlić alerty.
 
 ## <a name="view-resource-health"></a>Wyświetlanie kondycji zasobu
 
 1. Wybierz wystąpienie aplikacji zarządzanej.
 
-   ![Wybierz aplikację zarządzaną](./media/monitor-managed-application-portal/select-managed-application.png)
+   ![Wybierz aplikację zarządzana](./media/monitor-managed-application-portal/select-managed-application.png)
 
-1. Wybierz **Resource Health**.
+1. Wybierz **pozycję Kondycja zasobów**.
 
-   ![Wybierz kondycję zasobu](./media/monitor-managed-application-portal/select-resource-health.png)
+   ![Wybierz kondycję zasobów](./media/monitor-managed-application-portal/select-resource-health.png)
 
-1. Wyświetl dostępność zasobów w aplikacji zarządzanej.
+1. Służy do wyświetlania dostępności zasobów w aplikacji zarządzanej.
 
    ![Wyświetlanie kondycji zasobu](./media/monitor-managed-application-portal/view-health.png)
 
 ## <a name="view-alerts"></a>Wyświetlanie alertów
 
-1. Wybierz pozycję **alerty**.
+1. Wybierz **pozycję Alerty**.
 
-   ![Wybierz alerty](./media/monitor-managed-application-portal/select-alerts.png)
+   ![Wybieranie alertów](./media/monitor-managed-application-portal/select-alerts.png)
 
-1. Jeśli masz skonfigurowane reguły alertów, zobaczysz informacje o alertach, które zostały zgłoszone.
+1. Jeśli skonfigurowano reguły alertów, zobaczysz informacje o alertach, które zostały zgłoszone.
 
    ![Wyświetlanie alertów](./media/monitor-managed-application-portal/view-alerts.png)
 
-1. Aby dodać reguły alertów, wybierz pozycję **+ Nowa reguła alertu**.
+1. Aby dodać reguły alertów, wybierz **pozycję + Nowa reguła alertu**.
 
    ![Tworzenie alertu](./media/monitor-managed-application-portal/create-new-alert.png)
 
-Możesz tworzyć alerty dla wystąpienia aplikacji zarządzanej lub zasobów w zarządzanej aplikacji. Aby uzyskać informacje na temat tworzenia alertów, zobacz [Omówienie alertów w Microsoft Azure](../../azure-monitor/platform/alerts-overview.md).
+Można utworzyć alerty dla wystąpienia aplikacji zarządzanej lub zasobów w aplikacji zarządzanej. Aby uzyskać informacje dotyczące tworzenia alertów, zobacz [Omówienie alertów na platformie Microsoft Azure](../../azure-monitor/platform/alerts-overview.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby zapoznać się z przykładami aplikacji zarządzanych, zobacz [przykładowe projekty dla aplikacji zarządzanych przez platformę Azure](sample-projects.md).
-* Aby wdrożyć aplikację zarządzaną, zobacz [wdrażanie aplikacji katalogu usług za pomocą Azure Portal](deploy-service-catalog-quickstart.md).
+* W przypadku przykładów aplikacji zarządzanych zobacz [Przykładowe projekty dla aplikacji zarządzanych platformy Azure.](sample-projects.md)
+* Aby wdrożyć aplikację zarządzaną, zobacz [Wdrażanie aplikacji wykazu usług za pośrednictwem witryny Azure Portal](deploy-service-catalog-quickstart.md).

@@ -1,33 +1,33 @@
 ---
-title: Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin. Forms
-description: Dowiedz się, jak wysyłać wieloplatformowe powiadomienia wypychane do aplikacji platformy Xamarin. Forms przy użyciu usług Azure.
+title: Dodawanie powiadomień wypychanych do aplikacji Xamarin.Forms
+description: Dowiedz się, jak używać usług platformy Azure do wysyłania powiadomień wypychanych wieloplatformowych do aplikacji platformy Xamarin.Forms.
 ms.assetid: d9b1ba9a-b3f2-4d12-affc-2ee34311538b
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: f23ac2d693492695c398893c103d5a77a0e93129
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461474"
 ---
-# <a name="add-push-notifications-to-your-xamarinforms-app"></a>Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin. Forms
+# <a name="add-push-notifications-to-your-xamarinforms-app"></a>Dodawanie powiadomień wypychanych do aplikacji Xamarin.Forms
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Omówienie
 
-W tym samouczku dowiesz się, jak dodać powiadomienia wypychane do wszystkich projektów, które powstały w ramach [szybkiego startu Xamarin. Forms](app-service-mobile-xamarin-forms-get-started.md). Oznacza to, że powiadomienie wypychane jest wysyłane do wszystkich klientów na wielu platformach za każdym razem, gdy rekord zostanie wstawiony.
+W tym samouczku dodasz powiadomienia wypychane do wszystkich projektów, które powstały w wyniku [szybkiego uruchamiania platformy Xamarin.Forms](app-service-mobile-xamarin-forms-get-started.md). Oznacza to, że powiadomienie wypychane jest wysyłane do wszystkich klientów między platformami za każdym razem, gdy rekord jest wstawiany.
 
-Jeśli nie używasz pobranego projektu szybkiego startu serwera, będzie potrzebny pakiet rozszerzenia powiadomień wypychanych. Aby uzyskać więcej informacji, zobacz temat [współpraca z zestawem SDK serwera zaplecza platformy .NET dla platformy Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Jeśli nie korzystasz z pobranego projektu serwera szybkiego startu, potrzebny będzie pakiet rozszerzenia powiadomień wypychanych. Aby uzyskać więcej informacji, zobacz [Praca z zestawem SDK serwera wewnętrznej bazy danych .NET dla aplikacji mobilnych platformy Azure](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W przypadku systemu iOS wymagane jest [członkostwo w programie Apple Developer](https://developer.apple.com/programs/ios/) i fizyczne urządzenie z systemem iOS. [Symulator systemu iOS nie obsługuje powiadomień wypychanych](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html).
+W przypadku systemu iOS potrzebne będzie członkostwo w [programie deweloperskim Firmy Apple](https://developer.apple.com/programs/ios/) i fizyczne urządzenie z systemem iOS. [Symulator systemu iOS nie obsługuje powiadomień wypychanych](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html).
 
-## <a name="configure-hub"></a>Konfigurowanie centrum powiadomień
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>Konfigurowanie centrum powiadomień
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
@@ -37,24 +37,24 @@ W przypadku systemu iOS wymagane jest [członkostwo w programie Apple Developer]
 
 ## <a name="configure-and-run-the-android-project-optional"></a>Konfigurowanie i uruchamianie projektu systemu Android (opcjonalnie)
 
-Wykonaj tę sekcję, aby włączyć powiadomienia wypychane dla projektu Xamarin. Forms Droid dla systemu Android.
+Wypełnij tę sekcję, aby włączyć powiadomienia wypychane dla projektu Xamarin.Forms Droid dla systemu Android.
 
-### <a name="enable-firebase-cloud-messaging-fcm"></a>Włącz funkcję Firebase Cloud Messaging (FCM)
+### <a name="enable-firebase-cloud-messaging-fcm"></a>Włącz firebase cloud messaging (FCM)
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-### <a name="configure-the-mobile-apps-back-end-to-send-push-requests-by-using-fcm"></a>Konfigurowanie zaplecza Mobile Apps w celu wysyłania żądań push przy użyciu FCM
+### <a name="configure-the-mobile-apps-back-end-to-send-push-requests-by-using-fcm"></a>Konfigurowanie zaplecza aplikacji mobilnych do wysyłania żądań wypychania przy użyciu usługi FCM
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
 ### <a name="add-push-notifications-to-the-android-project"></a>Dodawanie powiadomień wypychanych do projektu systemu Android
 
-Zaplecze skonfigurowanym za pomocą FCM można dodać składniki i kody do klienta w celu zarejestrowania się w FCM. Możesz również rejestrować powiadomienia wypychane za pomocą usługi Azure Notification Hubs za pomocą zaplecza Mobile Apps i odbierać powiadomienia.
+Po skonfigurowaniu zaplecza z fcm można dodawać składniki i kody do klienta, aby zarejestrować się w FCM. Możesz również zarejestrować powiadomienia wypychane za pomocą usługi Azure Notification Hubs za pośrednictwem zaplecza aplikacji mobilnych i otrzymywać powiadomienia.
 
-1. W projekcie **Droid** kliknij prawym przyciskiem myszy pozycję **odwołania > Zarządzaj pakietami NuGet.** ...
-1. W oknie Menedżer pakietów NuGet Wyszukaj pakiet **Xamarin. Firebase. Messaging** i dodaj go do projektu.
-1. We właściwościach projektu projektu **Droid** Ustaw aplikację na kompilację przy użyciu systemu Android w wersji 7,0 lub nowszej.
-1. Dodaj plik **Google-Services. JSON** pobrany z konsoli Firebase do katalogu głównego projektu **Droid** i ustaw jego akcję kompilacji na **GoogleServicesJson**. Aby uzyskać więcej informacji, zobacz [Dodawanie pliku JSON usług Google Services](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
+1. W projekcie **Droid** kliknij prawym przyciskiem myszy **odwołania > zarządzanie pakietami NuGet ...**.
+1. W oknie Menedżera pakietów NuGet wyszukaj pakiet **Xamarin.Firebase.Messaging** i dodaj go do projektu.
+1. We właściwościach projektu **Droid** ustaw aplikację do kompilacji przy użyciu systemu Android w wersji 7.0 lub nowszej.
+1. Dodaj plik **google-services.json,** pobrany z konsoli Firebase, do katalogu głównego projektu **Droid** i ustaw jego akcję kompilacji na **GoogleServicesJson**. Aby uzyskać więcej informacji, zobacz [Dodawanie pliku JSON usług Google](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Rejestrowanie w usłudze Firebase Cloud Messaging
 
@@ -71,9 +71,9 @@ Zaplecze skonfigurowanym za pomocą FCM można dodać składniki i kody do klien
     </receiver>
     ```
 
-#### <a name="implementing-the-firebase-instance-id-service"></a>Wdrażanie usługi Identyfikatora wystąpienia usługi Firebase
+#### <a name="implementing-the-firebase-instance-id-service"></a>Implementowanie usługi identyfikatora wystąpienia firebase
 
-1. Dodaj nową klasę do projektu **Droid** o nazwie `FirebaseRegistrationService`i upewnij się, że na początku pliku znajdują się następujące instrukcje `using`:
+1. Dodaj nową klasę do projektu `FirebaseRegistrationService` **Droid** o nazwie `using` i upewnij się, że w górnej części pliku znajdują się następujące instrukcje:
 
     ```csharp
     using System.Threading.Tasks;
@@ -83,7 +83,7 @@ Zaplecze skonfigurowanym za pomocą FCM można dodać składniki i kody do klien
     using Microsoft.WindowsAzure.MobileServices;
     ```
 
-1. Zastąp pustą klasę `FirebaseRegistrationService` następującym kodem:
+1. Zastąp pustą `FirebaseRegistrationService` klasę następującym kodem:
 
     ```csharp
     [Service]
@@ -110,13 +110,13 @@ Zaplecze skonfigurowanym za pomocą FCM można dodać składniki i kody do klien
     }
     ```
 
-    Klasa `FirebaseRegistrationService` jest odpowiedzialna za generowanie tokenów zabezpieczających, którzy autoryzują aplikację w celu uzyskania dostępu do FCM. Metoda `OnTokenRefresh` jest wywoływana, gdy aplikacja otrzymuje token rejestracji z FCM. Metoda pobiera token z właściwości `FirebaseInstanceId.Instance.Token`, która jest asynchronicznie aktualizowana przez FCM. Metoda `OnTokenRefresh` jest rzadko wywoływana, ponieważ token jest aktualizowany tylko wtedy, gdy aplikacja jest zainstalowana lub odinstalowana, gdy użytkownik usuwa dane aplikacji, gdy aplikacja wymazuje identyfikator wystąpienia lub gdy zabezpieczenia tokenu zostały naruszone. Ponadto usługi Identyfikatora wystąpienia usługi FCM zażąda, że aplikacja odświeża jej token okresowo zazwyczaj co 6 miesięcy.
+    Klasa `FirebaseRegistrationService` jest odpowiedzialna za generowanie tokenów zabezpieczających, które autoryzują aplikację do dostępu do fcm. Metoda `OnTokenRefresh` jest wywoływana, gdy aplikacja odbiera token rejestracji z FCM. Metoda pobiera token z `FirebaseInstanceId.Instance.Token` właściwości, która jest asynchronicznie aktualizowana przez FCM. Metoda `OnTokenRefresh` jest rzadko wywoływana, ponieważ token jest aktualizowany tylko wtedy, gdy aplikacja jest zainstalowana lub odinstalowana, gdy użytkownik usuwa dane aplikacji, gdy aplikacja usuwa identyfikator wystąpienia lub gdy bezpieczeństwo tokenu zostało naruszone. Ponadto usługa identyfikator wystąpienia FCM zażąda, aby aplikacja okresowo odświeża swój token, zazwyczaj co 6 miesięcy.
 
-    Metoda `OnTokenRefresh` wywołuje również metodę `SendRegistrationTokenToAzureNotificationHub`, która jest używana do kojarzenia tokena rejestracji użytkownika z centrum powiadomień platformy Azure.
+    Metoda `OnTokenRefresh` wywołuje również `SendRegistrationTokenToAzureNotificationHub` metodę, która jest używana do skojarzenia tokenu rejestracji użytkownika z Centrum powiadomień platformy Azure.
 
-#### <a name="registering-with-the-azure-notification-hub"></a>Rejestrowanie w usłudze Azure Notification Hubs
+#### <a name="registering-with-the-azure-notification-hub"></a>Rejestrowanie się w Centrum powiadomień platformy Azure
 
-1. Dodaj nową klasę do projektu **Droid** o nazwie `AzureNotificationHubService`i upewnij się, że na początku pliku znajdują się następujące instrukcje `using`:
+1. Dodaj nową klasę do projektu `AzureNotificationHubService` **Droid** o nazwie `using` i upewnij się, że w górnej części pliku znajdują się następujące instrukcje:
 
     ```csharp
     using System;
@@ -126,7 +126,7 @@ Zaplecze skonfigurowanym za pomocą FCM można dodać składniki i kody do klien
     using Newtonsoft.Json.Linq;
     ```
 
-1. Zastąp pustą klasę `AzureNotificationHubService` następującym kodem:
+1. Zastąp pustą `AzureNotificationHubService` klasę następującym kodem:
 
     ```csharp
     public class AzureNotificationHubService
@@ -155,11 +155,11 @@ Zaplecze skonfigurowanym za pomocą FCM można dodać składniki i kody do klien
     }
     ```
 
-    Metoda `RegisterAsync` tworzy prosty szablon wiadomości z powiadomieniem jako kod JSON i rejestruje je w celu otrzymywania powiadomień o szablonach z centrum powiadomień przy użyciu tokenu rejestracji Firebase. Daje to gwarancję, że wszelkie powiadomienia wysyłane z Centrum powiadomień platformy Azure będą ukierunkowane na urządzenie, reprezentowane przez tokenu rejestracji.
+    Metoda `RegisterAsync` tworzy prosty szablon wiadomości powiadomień jako JSON i rejestruje się, aby otrzymywać powiadomienia szablonu z centrum powiadomień, przy użyciu tokenu rejestracji Firebase. Gwarantuje to, że wszystkie powiadomienia wysyłane z usługi Azure Notification Hub będą kierowane na urządzenie reprezentowane przez token rejestracji.
 
-#### <a name="displaying-the-contents-of-a-push-notification"></a>Wyświetlanie zawartości powiadomienia Wypychanego
+#### <a name="displaying-the-contents-of-a-push-notification"></a>Wyświetlanie zawartości powiadomienia wypychanego
 
-1. Dodaj nową klasę do projektu **Droid** o nazwie `FirebaseNotificationService`i upewnij się, że na początku pliku znajdują się następujące instrukcje `using`:
+1. Dodaj nową klasę do projektu `FirebaseNotificationService` **Droid** o nazwie `using` i upewnij się, że w górnej części pliku znajdują się następujące instrukcje:
 
     ```csharp
     using Android.App;
@@ -170,7 +170,7 @@ Zaplecze skonfigurowanym za pomocą FCM można dodać składniki i kody do klien
     using Firebase.Messaging;
     ```
 
-1. Zastąp pustą klasę `FirebaseNotificationService` następującym kodem:
+1. Zastąp pustą `FirebaseNotificationService` klasę następującym kodem:
 
     ```csharp
     [Service]
@@ -213,22 +213,22 @@ Zaplecze skonfigurowanym za pomocą FCM można dodać składniki i kody do klien
     }
     ```
 
-    Metoda `OnMessageReceived`, która jest wywoływana, gdy aplikacja otrzymuje powiadomienie z FCM, wyodrębnia zawartość komunikatu i wywołuje metodę `SendNotification`. Ta metoda Konwertuje zawartość komunikatu do lokalnego powiadomienia, który jest uruchamiany, gdy aplikacja jest uruchomiona z powiadomieniem znajdujących się w obszarze powiadomień.
+    Metoda, `OnMessageReceived` która jest wywoływana, gdy aplikacja odbiera powiadomienie z FCM, wyodrębnia zawartość wiadomości i wywołuje `SendNotification` metodę. Ta metoda konwertuje zawartość wiadomości na lokalne powiadomienie, które jest uruchamiane, gdy aplikacja jest uruchomiona, z powiadomieniem wyświetlanym w obszarze powiadomień.
 
-Teraz możesz zacząć testować powiadomienia wypychane w aplikacji uruchomionej na urządzeniu z systemem Android lub w emulatorze.
+Teraz możesz przystąpić do testowania powiadomień push w aplikacji uruchomionej na urządzeniu z systemem Android lub emulatorze.
 
-### <a name="test-push-notifications-in-your-android-app"></a>Testowanie powiadomień wypychanych w aplikacji systemu Android
+### <a name="test-push-notifications-in-your-android-app"></a>Testowanie powiadomień wypychanych w aplikacji na Androida
 
-Pierwsze dwa kroki są wymagane tylko w przypadku testowania na emulatorze.
+Pierwsze dwa kroki są wymagane tylko podczas testowania na emulatorze.
 
-1. Upewnij się, że wdrażasz program lub debugujesz go na urządzeniu lub w emulatorze skonfigurowanym za pomocą Usługi Google Play. Można to sprawdzić, sprawdzając, czy aplikacje **odtwarzania** są zainstalowane na urządzeniu lub w emulatorze.
-2. Dodaj konto Google do urządzenia z systemem Android, klikając pozycję **aplikacje** > **Ustawienia** > **Dodaj konto**. Następnie postępuj zgodnie z monitami, aby dodać istniejące konto Google do urządzenia lub utworzyć nowe.
-3. W programie Visual Studio lub Xamarin Studio kliknij prawym przyciskiem myszy projekt **Droid** , a następnie kliknij pozycję **Ustaw jako projekt startowy**.
-4. Kliknij przycisk **Uruchom** , aby skompilować projekt i uruchomić aplikację na urządzeniu z systemem Android lub w emulatorze.
-5. W aplikacji wpisz zadanie, a następnie kliknij ikonę plus ( **+** ).
-6. Sprawdź, czy odebrano powiadomienie po dodaniu elementu.
+1. Upewnij się, że wdrażasz lub debugujesz na urządzeniu lub emulatorze skonfigurowanym w usługach Google Play. Można to zweryfikować, sprawdzając, czy aplikacje **Play** są zainstalowane na urządzeniu lub emulatorze.
+2. Dodaj konto Google do urządzenia z Androidem, klikając**pozycję Ustawienia** >  **aplikacji** > **Dodaj konto**. Następnie postępuj zgodnie z instrukcjami, aby dodać istniejące konto Google do urządzenia lub utworzyć nowe.
+3. W programie Visual Studio lub Xamarin Studio kliknij prawym przyciskiem myszy projekt **Droid** i kliknij polecenie **Ustaw jako projekt startowy**.
+4. Kliknij **przycisk Uruchom,** aby utworzyć projekt i uruchomić aplikację na urządzeniu z androidem lub emulatorze.
+5. W aplikacji wpisz zadanie, a następnie kliknij**+** ikonę plus ( ).
+6. Sprawdź, czy powiadomienie jest odbierane po dodaniu elementu.
 
-## <a name="configure-and-run-the-ios-project-optional"></a>Konfigurowanie i uruchamianie projektu dla systemu iOS (opcjonalnie)
+## <a name="configure-and-run-the-ios-project-optional"></a>Konfigurowanie i uruchamianie projektu systemu iOS (opcjonalnie)
 
 Ta sekcja dotyczy uruchamiania projektu Xamarin iOS dla urządzeń z systemem iOS. Jeśli nie pracujesz z urządzeniami z systemem iOS, możesz pominąć tę sekcję.
 
@@ -238,19 +238,19 @@ Ta sekcja dotyczy uruchamiania projektu Xamarin iOS dla urządzeń z systemem iO
 
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-Następnie skonfigurujesz ustawienie projektu dla systemu iOS w Xamarin Studio lub Visual Studio.
+Następnie skonfigurujesz ustawienie projektu systemu iOS w programie Xamarin Studio lub Visual Studio.
 
 [!INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
-#### <a name="add-push-notifications-to-your-ios-app"></a>Dodawanie powiadomień wypychanych do aplikacji systemu iOS
+#### <a name="add-push-notifications-to-your-ios-app"></a>Dodawanie powiadomień wypychanych do aplikacji na iOS
 
-1. W projekcie **systemu iOS** Otwórz AppDelegate.cs i Dodaj następującą instrukcję na początku pliku kodu.
+1. W projekcie **systemu iOS** otwórz AppDelegate.cs i dodaj następującą instrukcję do górnej części pliku kodu.
 
     ```csharp
     using Newtonsoft.Json.Linq;
     ```
 
-2. W klasie **AppDelegate** Dodaj zastąpienie dla zdarzenia **RegisteredForRemoteNotifications** , aby zarejestrować się w celu otrzymywania powiadomień:
+2. W **AppDelegate** klasy, dodać zastąpienie dla **RegisteredForRemoteNotifications** zdarzenia, aby zarejestrować się do powiadomień:
 
     ```csharp
     public override void RegisteredForRemoteNotifications(UIApplication application,
@@ -270,7 +270,7 @@ Następnie skonfigurujesz ustawienie projektu dla systemu iOS w Xamarin Studio l
     }
     ```
 
-3. W programie **AppDelegate**Dodaj również następujące zastąpienie dla programu obsługi zdarzeń **DidReceiveRemoteNotification** :
+3. W **AppDelegate**, również dodać następujące zastąpienie **didReceiveRemoteNotification** obsługi zdarzenia:
 
     ```csharp
     public override void DidReceiveRemoteNotification(UIApplication application,
@@ -293,7 +293,7 @@ Następnie skonfigurujesz ustawienie projektu dla systemu iOS w Xamarin Studio l
 
     Ta metoda obsługuje powiadomienia przychodzące, gdy aplikacja jest uruchomiona.
 
-4. W klasie **AppDelegate** Dodaj następujący kod do metody **FinishedLaunching** :
+4. W **AppDelegate** klasy, dodaj następujący kod do **FinishedLaunching** metody:
 
     ```csharp
     // Register for push notifications.
@@ -307,36 +307,36 @@ Następnie skonfigurujesz ustawienie projektu dla systemu iOS w Xamarin Studio l
     UIApplication.SharedApplication.RegisterForRemoteNotifications();
     ```
 
-    Umożliwia to obsługę powiadomień zdalnych i żądań rejestracji wypychanej.
+    Umożliwia to obsługę zdalnych powiadomień i żądań rejestracji wypychania.
 
-Twoja aplikacja została zaktualizowana w celu obsługi powiadomień wypychanych.
+Aplikacja jest teraz aktualizowana w celu obsługi powiadomień wypychanych.
 
-#### <a name="test-push-notifications-in-your-ios-app"></a>Testowanie powiadomień wypychanych w aplikacji systemu iOS
+#### <a name="test-push-notifications-in-your-ios-app"></a>Testowanie powiadomień wypychanych w aplikacji na iOS
 
-1. Kliknij prawym przyciskiem myszy projekt iOS, a następnie kliknij pozycję **Ustaw jako projekt startowy**.
-2. Naciśnij przycisk **Uruchom** lub **F5** w programie Visual Studio, aby skompilować projekt i uruchomić aplikację na urządzeniu z systemem iOS. Następnie kliknij przycisk **OK** , aby zaakceptować powiadomienia wypychane.
+1. Kliknij prawym przyciskiem myszy projekt systemu iOS, a następnie kliknij polecenie **Ustaw jako projekt startowy**.
+2. Naciśnij przycisk **Uruchom** lub **F5** w programie Visual Studio, aby utworzyć projekt i uruchomić aplikację na urządzeniu z systemem iOS. Następnie kliknij przycisk **OK,** aby zaakceptować powiadomienia wypychane.
 
    > [!NOTE]
-   > Musisz jawnie zaakceptować powiadomienia wypychane z aplikacji. To żądanie występuje tylko podczas pierwszego uruchomienia aplikacji.
+   > Musisz jawnie akceptować powiadomienia wypychane z aplikacji. To żądanie występuje tylko przy pierwszym uruchomieniu aplikacji.
 
-3. W aplikacji wpisz zadanie, a następnie kliknij ikonę plus ( **+** ).
-4. Sprawdź, czy odebrano powiadomienie, a następnie kliknij przycisk **OK** , aby odrzucić powiadomienie.
+3. W aplikacji wpisz zadanie, a następnie kliknij**+** ikonę plus ( ).
+4. Sprawdź, czy powiadomienie zostało odebrane, a następnie kliknij przycisk **OK,** aby odrzucić powiadomienie.
 
 ## <a name="configure-and-run-windows-projects-optional"></a>Konfigurowanie i uruchamianie projektów systemu Windows (opcjonalnie)
 
-Ta sekcja służy do uruchamiania projektów Xamarin. Forms WinApp i WinPhone81 dla urządzeń z systemem Windows. Te kroki obsługują również projekty platforma uniwersalna systemu Windows (platformy UWP). Jeśli nie pracujesz z urządzeniami z systemem Windows, możesz pominąć tę sekcję.
+Ta sekcja służy do uruchamiania projektów Xamarin.Forms WinApp i WinPhone81 dla urządzeń z systemem Windows. Te kroki obsługują również projekty platformy uniwersalnej systemu Windows (UWP). Jeśli nie pracujesz z urządzeniami z systemem Windows, możesz pominąć tę sekcję.
 
-#### <a name="register-your-windows-app-for-push-notifications-with-windows-notification-service-wns"></a>Rejestrowanie aplikacji systemu Windows na potrzeby powiadomień wypychanych za pomocą usługi powiadomień systemu Windows (WNS)
+#### <a name="register-your-windows-app-for-push-notifications-with-windows-notification-service-wns"></a>Rejestrowanie aplikacji systemu Windows w celu otrzymywani powiadomień wypychanych w usłudze powiadomień systemu Windows (WNS)
 
 [!INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
-#### <a name="configure-the-notification-hub-for-wns"></a>Konfigurowanie centrum powiadomień dla WNS
+#### <a name="configure-the-notification-hub-for-wns"></a>Konfigurowanie centrum powiadomień dla usługi WNS
 
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
 #### <a name="add-push-notifications-to-your-windows-app"></a>Dodawanie powiadomień wypychanych do aplikacji systemu Windows
 
-1. W programie Visual Studio Otwórz **App.XAML.cs** w projekcie systemu Windows i Dodaj następujące instrukcje.
+1. W programie Visual Studio otwórz **App.xaml.cs** w projekcie systemu Windows i dodaj następujące instrukcje.
 
     ```csharp
     using Newtonsoft.Json.Linq;
@@ -346,9 +346,9 @@ Ta sekcja służy do uruchamiania projektów Xamarin. Forms WinApp i WinPhone81 
     using <your_TodoItemManager_portable_class_namespace>;
     ```
 
-    Zastąp `<your_TodoItemManager_portable_class_namespace>` z przestrzenią nazw projektu przenośnego, który zawiera klasę `TodoItemManager`.
+    Zamień `<your_TodoItemManager_portable_class_namespace>` obszar nazw projektu przenośnego, który zawiera `TodoItemManager` klasę.
 
-2. W App.xaml.cs Dodaj następującą metodę **następującą initnotificationsasync** :
+2. W App.xaml.cs dodaj następującą metodę **InitNotificationsAsync:**
 
     ```csharp
     private async Task InitNotificationsAsync()
@@ -374,42 +374,42 @@ Ta sekcja służy do uruchamiania projektów Xamarin. Forms WinApp i WinPhone81 
     }
     ```
 
-    Ta metoda pobiera kanał powiadomień wypychanych i rejestruje szablon w celu otrzymywania powiadomień o szablonach z centrum powiadomień. Powiadomienie o szablonie, które obsługuje *messageParam* , zostanie dostarczone do tego klienta.
+    Ta metoda pobiera kanał powiadomień wypychanych i rejestruje szablon do odbierania powiadomień szablonu z Centrum powiadomień. Powiadomienie szablonu, który obsługuje *messageParam* zostaną dostarczone do tego klienta.
 
-3. W App.xaml.cs zaktualizuj definicję metody obsługi zdarzeń **OnStarted** , dodając modyfikator `async`. Następnie Dodaj następujący wiersz kodu na końcu metody:
+3. W App.xaml.cs zaktualizuj definicję metody obsługi zdarzeń **OnLaunched,** dodając `async` modyfikator. Następnie dodaj następujący wiersz kodu na końcu metody:
 
     ```csharp
     await InitNotificationsAsync();
     ```
 
-    Dzięki temu Rejestracja powiadomień wypychanych jest tworzona lub odświeżana za każdym razem, gdy aplikacja zostanie uruchomiona. Należy to zrobić w celu zagwarantowania, że kanał push WNS jest zawsze aktywny.  
+    Dzięki temu rejestracja powiadomień wypychanych jest tworzona lub odświeżana za każdym razem, gdy aplikacja jest uruchamiana. Należy to zrobić, aby zagwarantować, że kanał push WNS jest zawsze aktywny.  
 
-4. W Eksplorator rozwiązań dla programu Visual Studio Otwórz plik **Package. appxmanifest** i ustaw opcję **wyskakujące** z opcją **tak** w obszarze **powiadomienia**.
-5. Skompiluj aplikację i sprawdź, czy nie wystąpiły żadne błędy. Twoja aplikacja kliencka powinna teraz rejestrować się w celu otrzymywania powiadomień dotyczących szablonów z zaplecza Mobile Apps. Powtórz tę sekcję dla każdego projektu systemu Windows w rozwiązaniu.
+4. W Eksploratorze rozwiązań dla programu Visual Studio otwórz plik **Package.appxmanifest** i ustaw **opcję Wyskakuj na** **Tak** w obszarze **Powiadomienia**.
+5. Skompiluj aplikację i sprawdź, czy nie ma żadnych błędów. Aplikacja kliencka powinna teraz zarejestrować się w celu otrzymywannia powiadomień o szablonie z zaplecza aplikacji mobilnych. Powtórz tę sekcję dla każdego projektu systemu Windows w rozwiązaniu.
 
 #### <a name="test-push-notifications-in-your-windows-app"></a>Testowanie powiadomień wypychanych w aplikacji systemu Windows
 
-1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt systemu Windows, a następnie kliknij pozycję **Ustaw jako projekt startowy**.
+1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt systemu Windows, a następnie kliknij polecenie **Ustaw jako projekt startowy**.
 2. Kliknij przycisk **Uruchom**, aby skompilować projekt i uruchomić aplikację.
-3. W aplikacji wpisz nazwę nowego TodoItem, a następnie kliknij ikonę plus ( **+** ), aby ją dodać.
-4. Sprawdź, czy odebrano powiadomienie po dodaniu elementu.
+3. W aplikacji wpisz nazwę nowego todoitem, a następnie kliknij**+** ikonę plus ( ), aby ją dodać.
+4. Sprawdź, czy powiadomienie jest odbierane po dodaniu elementu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji na temat powiadomień wypychanych można znaleźć w tematach:
+Więcej informacji o powiadomieniach wypychanych:
 
-* [Wysyłanie powiadomień wypychanych z usługi Azure Mobile Apps](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
-* [Obsługa komunikatów w chmurze Firebase](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
-* [Powiadomienia zdalne z obsługą komunikatów w chmurze Firebase](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
-* [Diagnozuj problemy z powiadomieniem wypychanym](../notification-hubs/notification-hubs-push-notification-fixer.md)  
-  Istnieją różne przyczyny, dla których powiadomienia mogą zostać porzucone lub nie kończyć się na urządzeniach. W tym temacie pokazano, jak analizować i ustalić główną przyczynę niepowodzeń powiadomień wypychanych.
+* [Wysyłanie powiadomień wypychanych z aplikacji mobilnych platformy Azure](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
+* [Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
+* [Zdalne powiadomienia z firebase cloud messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
+* [Diagnozowanie problemów z powiadomieniami wypychanych](../notification-hubs/notification-hubs-push-notification-fixer.md)  
+  Istnieją różne powody, dla których powiadomienia mogą zostać usunięte lub nie trafiają do urządzeń. W tym temacie pokazano, jak analizować i dowiedzieć się główną przyczynę błędów powiadomień wypychanych.
 
-Możesz również przejść do jednego z następujących samouczków:
+Można również przejść do jednego z następujących samouczków:
 
 * [Dodawanie uwierzytelniania do aplikacji](app-service-mobile-xamarin-forms-get-started-users.md)  
   Dowiedz się, jak uwierzytelniać użytkowników aplikacji przy użyciu dostawcy tożsamości.
 * [Włączanie synchronizacji w trybie offline dla aplikacji](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
-  Dowiedz się, jak dodać obsługę aplikacji w trybie offline przy użyciu zaplecza funkcji Mobile Apps. Dzięki synchronizacji w trybie offline użytkownicy mogą korzystać z aplikacji mobilnej&mdash;przeglądania, dodawania i modyfikowania danych&mdash;nawet w przypadku braku połączenia sieciowego.
+  Dowiedz się, jak dodać obsługę aplikacji w trybie offline przy użyciu zaplecza funkcji Mobile Apps. Dzięki synchronizacji w trybie offline&mdash;użytkownicy mogą wchodzić&mdash;w interakcje z przeglądaniem, dodawaniem lub modyfikowaniem danych aplikacji mobilnej, nawet jeśli nie ma połączenia sieciowego.
 
 <!-- Images. -->
 

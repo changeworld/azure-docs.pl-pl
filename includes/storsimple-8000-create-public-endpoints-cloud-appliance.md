@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 1cf5bbdad555c50c418851904f36a578522843b2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183293"
 ---
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>Aby utworzyć publiczne punkty końcowe na urządzeniu w chmurze
@@ -31,7 +31,7 @@ ms.locfileid: "67183293"
 
         W bloku Dodawanie reguły zabezpieczeń dla ruchu przychodzącego:
 
-        1. Aby uzyskać **nazwa**, wpisz następującą nazwę punktu końcowego: WinRMHttps.
+        1. W polu **Nazwa** wpisz następującą nazwę punktu końcowego: WinRMHttps.
         
         2. W polu **Priorytet** wybierz numer mniejszy niż 1000 (czyli priorytet reguły domyślnej). Im większa wartość, tym niższy priorytet.
 

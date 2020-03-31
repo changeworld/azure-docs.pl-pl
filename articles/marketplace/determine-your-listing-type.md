@@ -1,70 +1,65 @@
 ---
-title: Określanie opcji publikowania w portalu Azure Marketplace | Azure
-description: W tym artykule opisano kryteria kwalifikacyjne i wymagania dotyczące publikowania partnerów próbujących zrozumieć sposób publikowania aplikacji w portalu Azure Marketplace.
+title: Określanie opcji publikowania w witrynach Microsoft AppSource i Azure Marketplace
+description: W tym artykule opisano kryteria uprawnień i wymagania dotyczące publikowania partnerów próbujących zrozumieć, jak publikować aplikacje w witrynach Microsoft AppSource i Azure Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
-manager: pabutler
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
-ms.date: 06/13/2018
-ms.author: ellacroi
-ms.openlocfilehash: ed25b92dc759f687e35a8424558453a830369a57
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.topic: conceptual
+ms.date: 03/26/2020
+ms.author: dsindona
+ms.openlocfilehash: 4c41fcbb8766feb68db7d60d591e914a6ba0aea2
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548353"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349537"
 ---
 # <a name="determine-your-publishing-option"></a>Określanie opcji publikowania
-Opcja publikowania wybrana dla oferty odnosi się bezpośrednio zarówno do wymagań dotyczących uprawnień, jak i korzyści z witryny Marketplace GTM. Co ważniejsze, wybór opcji publikowania i typu oferty definiuje sposób, w jaki użytkownicy będą korzystać z oferty portalu Marketplace.
 
-Aby skonfigurować swoją ofertę, musisz zrozumieć następujące kluczowe koncepcje dotyczące rynku: Opcje publikowania, typy ofert i konfigurację oraz wywołania do akcji, które będą określać, jak i gdzie oferta zostanie przedstawiona w witrynie portalu Marketplace.
+Opcja publikowania wybrana dla oferty odnosi się bezpośrednio zarówno do wymagań kwalifikacyjnych, jak i korzyści GTM na rynku komercyjnym. Co ważniejsze, wybór opcji publikowania i typu oferty określa, w jaki sposób użytkownicy będą wchodzić w interakcje z ofertą komercyjnego rynku.
 
-![](./media/marketplace-publishers-guide/storefronts_options_table.png)
+Aby skonfigurować ofertę, musisz zrozumieć następujące kluczowe pojęcia rynku komercyjnego: opcje publikowania, typy ofert i konfigurację oraz wezwania do działania, które będą regulować sposób i miejsce prezentowania oferty na rynku komercyjnym Storefronts.
 
+![Witryny sklepu i opcje publikowania w komercyjnych witrynach w witrynach firmy Microsoft](./media/marketplace-publishers-guide/storefronts_options_table.png)
 
-W tym artykule dowiesz się, jak to zrobić...
-<ul><li>    Jak określić odpowiedni sklep dla swojego rozwiązania </ul></li>
-<ul><li>    Które opcje publikowania i wywołania do akcji są dostępne w każdej sklepie </ul></li>
-<ul><li>    Jakie typy ofert są dostępne dla każdej opcji publikowania </ul></li>
+Z tego artykułu dowiesz się:
 
+- Jak określić odpowiednią witrynę sklepową dla danego rozwiązania
+- Które opcje publikowania i wezwania do działania są dostępne w każdej witrynie sklepu
+- Jakie typy ofert są dostępne dla każdej opcji publikowania
 
-## <a name="selecting-a-storefront-publishing-option-and-offer-type-for-your-solution"></a>Wybieranie witryny sklepu, opcji publikowania i typu oferty dla Twojego rozwiązania
+## <a name="selecting-a-storefront-publishing-option-and-offer-type-for-your-solution"></a>Wybieranie witryny sklepowej, opcji publikowania i typu oferty dla rozwiązania
 
-Przed wybraniem opcji publikowania należy zapoznać się z wymaganiami dotyczącymi uprawnień witryny Marketplace dotyczącymi rozwiązań, aplikacji i usług w witrynie sieci Web:
+Przed wybraniem opcji publikowania należy zapoznać się z wymaganiami dotyczącymi uprawnień do witryny sklepu dotyczącymi rozwiązań, aplikacji i usług w witrynie komercyjnej:
 
-Aplikacje w **portalu Azure Marketplace** są technicznymi rozwiązaniami "konstrukcyj-Block" opartymi na platformie Azure i przeznaczonymi dla odbiorców IT lub deweloperów. Usługi doradcze w witrynie Azure Marketplace to profesjonalne oferty usług, które ułatwiają klientom rozpoczęcie pracy z platformą Azure lub przyspieszenie korzystania z niej.
+Aplikacje **Microsoft AppSource** to rozwiązania biznesowe, które można zbudować na platformie Azure lub w celu: Dynamics 365, Office 365, Power BI lub Power Apps. Usługi konsultingowe AppSource to profesjonalne usługi, które pomagają klientom rozpocząć korzystanie z dynamics 365 i usługi Power BI lub przyspieszyć korzystanie z nich.
 
-Aplikacje **AppSource** są rozwiązaniami biznesowymi, które mogą być wbudowane w platformę Azure lub wbudowaną dla: Dynamics 365, Office 365, Power BI lub aplikacji zaawansowanych. Usługi doradcze AppSource są ofertami usług profesjonalnych, które ułatwiają klientom rozpoczęcie pracy z systemem Dynamics Power BI 365 lub przyspieszeniem korzystania z niego.
+Aplikacje **portalu Azure Marketplace** to techniczne rozwiązania oparte na bloku konstrukcyjnym wbudowane lub wbudowane w platformę Azure i przeznaczone dla odbiorców it lub deweloperów. Usługi konsultingowe portalu Azure Marketplace to profesjonalne usługi, które pomagają klientom rozpocząć korzystanie z platformy Azure lub przyspieszyć korzystanie z platformy Azure.
 
+## <a name="understand-storefront-selection"></a>Opis wyboru witryny sklepowej
 
-## <a name="understand-storefront-selection"></a>Omówienie wyboru witryny sklepu
-
-Każda witryna sklepu obsługuje unikatowe wymagania klientów. Witryna sklepu, w której Twoja oferta zostanie opublikowana, będzie określana według typu oferty, oferowania możliwości Transact i kategorii i/lub wyboru branżowego przeznaczonych dla określonych odbiorców. 
+Każda witryna sklepowa spełnia unikalne wymagania klientów. Witryna sklepu, w której zostanie opublikowana Twoja oferta, zostanie określona według typu oferty, oferuje możliwości transakcji i wybór kategorii i/lub branży, aby kierować reklamy do określonej grupy odbiorców. 
 
 >[!Note]
->"Tworzenie krzyżowe" (tylko w przypadku aplikacji SaaS): gdy lista lub oferta oparta na wersji próbnej spełnia kryteria dla odbiorców dla użytkowników technicznych i firmowych, oferta zostanie wyświetlona w obu witrynach. Dowiedz się więcej na temat opcji publikowania poniżej.
+>"Inter-listing" (tylko w przypadku aplikacji SaaS): gdy lista lub oferta oparta na wersji próbnej spełnia kryteria zarówno dla odbiorców technicznych, jak i biznesowych, Twoja oferta zostanie wyświetlona w obu witrynach sklepowych. Dowiedz się więcej o opcjach publikowania poniżej.
 
-## <a name="choose-a-publishing-option"></a>Wybierz opcję publikowania
+## <a name="choose-a-publishing-option"></a>Wybieranie opcji publikowania
 
-Dostępne opcje publikowania oferują zróżnicowane zaangażowanie klientów, zapewniając dostęp do udostępniania potencjalnych klientów i [komercyjnych korzyści z witryny Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).  Zanotuj wywołania do akcji, które odpowiadają opcji publikowania:
+Dostępne opcje publikowania oferują zróżnicowane zaangażowanie klientów, jednocześnie zapewniając dostęp do udostępniania potencjalnych klientów i [korzyści na rynku komercyjnym.](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)  Zwróć uwagę na wezwania do działania, które odpowiadają opcji publikowania:
 
 | **Opcja publikowania**    | **Opis**  |
 | :------------------- | :-------------------|
-| **Staw** | Prosta lista aplikacji lub usługi, która umożliwia użytkownikowi portalu Marketplace zażądanie połączenia z klientem za pośrednictwem wywołania do akcji **kontaktowanie się ze mną** . |
-| **Wersja próbna** | Skorzystaj z portalu Marketplace, aby zwiększyć możliwości odnajdywania i automatyzowania aprowizacji wersji próbnej rozwiązania, dzięki czemu potencjalni użytkownicy mogą korzystać z usługi SaaS, IaaS lub firmy Microsoft bez opłat przez ograniczony czas przed ich zakupem. Opcja wywołania do akcji używana dla opcji publikowania wersji próbnej: **bezpłatna wersja próbna** lub **testowa**. |
-|**BYOL**  |Skorzystaj z portalu Marketplace, aby zwiększyć możliwości odnajdywania i automatyzowania aprowizacji rozwiązania oraz dokończyć transakcję finansowo osobno. Typy ofert BYOL doskonale sprawdzają się w przypadku migracji do chmury. Wywołanie akcji to **teraz**.
-| **Transact** | Aplikacja jest uruchamiana na platformie Azure i może być inicjowana jako zasób bezpośrednio do subskrypcji platformy Azure klienta, gdy klient wybierze wywołanie " **Pobierz teraz** do działania". Opłaty za licencję na oprogramowanie można opcjonalnie zakupić i rozliczać za pośrednictwem wybranego instrumentu płatniczego i postanowień, a także wybrać opcję oferowania ograniczonego czasu dostępu do **bezpłatnej wersji próbnej oprogramowania** (dostępnego w witrynie Azure Marketplace). |
+| **Listy** | Prosta lista aplikacji lub usługi, która umożliwia użytkownikowi komercyjnego rynku żądanie połączenia się z klientem za pośrednictwem wezwania do działania **Kontakt ze mną.** |
+| **Wersja próbna** | Korzystaj z komercyjnego rynku, aby zwiększyć wykrywalność i zautomatyzować aprowizacji rozwiązania wersji próbnej, umożliwiając potencjalnym użytkownikom korzystanie z usług SaaS, IaaS lub microsoft w aplikacji bez żadnych kosztów przez ograniczony czas przed zakupem. Wezwania do działania używane dla opcji publikowania próbnego są **bezpłatną wersję próbną** lub **jazdę próbną.** |
+| **PRZEZOCHUSZ** | Skorzystaj z komercyjnego rynku, aby zwiększyć wykrywalność i zautomatyzować aprowizacji rozwiązania i zakończyć transakcję finansową oddzielnie. Typy ofert BYOL są idealne do migracji lokalnych do chmury. Wezwanie do działania jest **Get it Now**.
+| **Transact** | Oferty transakcji są sprzedawane za pośrednictwem komercyjnego rynku. Firma Microsoft jest odpowiedzialna za rozliczenia i kolekcje. Wezwanie do działania jest **Get it Now**.|
 
 >[!Note]
->W przypadku korzystania z opcji publikacji Transact należy poznać zagadnienia dotyczące cen, rozliczeń, fakturowania i wypłaty przed wybraniem typu oferty i utworzeniem oferty. [Aby dowiedzieć się więcej, zapoznaj się z artykułami dotyczącymi rozliczeń i zagadnień komercyjnych](./marketplace-commercial-transaction-capabilities-and-considerations.md).
+>Podczas korzystania z opcji publikowania transakcji, ważne jest, aby zrozumieć ceny, rozliczeń, fakturowania i płatności rozważań przed wybraniem typu oferty i utworzeniem oferty. Zapoznaj się z [artykułem o rozliczeniach i zagadnieniach handlowych w Marketplace, aby dowiedzieć się więcej](./marketplace-commercial-transaction-capabilities-and-considerations.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-*   Po wybraniu opcji publikowania możesz [wybrać typ oferty](./publisher-guide-by-offer-type.md) , który będzie używany do prezentowania oferty.
-*   Zapoznaj się z wymaganiami dotyczącymi kwalifikacji w sekcji Opcje publikowania według typu oferty, aby zakończyć wybór i konfigurację oferty.
-*   Zapoznaj się z wzorcem publikowania według witryny sklepu, aby zapoznać się z przykładami dotyczącymi sposobu mapowania rozwiązania na typ oferty i konfigurację.
-
-
-
+- Po wybraniu opcji publikowania możesz wybrać [typ oferty,](./publisher-guide-by-offer-type.md) który będzie używany do prezentacji oferty.
+- Przejrzyj wymagania dotyczące uprawnień w sekcji Opcje publikowania według typu oferty, aby sfinalizować wybór i konfigurację oferty.
+- Przejrzyj wzorce publikowania według witryny sklepowej, aby zapoznać się z przykładami, w jaki sposób rozwiązanie mapuje typ oferty i konfigurację.

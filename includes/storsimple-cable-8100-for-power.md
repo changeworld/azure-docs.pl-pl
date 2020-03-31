@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: db2104020e9478b1fedf68e1c9467f75e16044e2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183268"
 ---
-#### <a name="to-cable-for-power"></a>Aby podłączyć do zasilania
-1. Upewnij się, że możliwości zmienia się na każdym z możliwości i chłodzenie modułów (PCMs) znajdują się w pozycji wył.
-2. Kable połączyć się z poszczególnymi PCMs w obudowie podstawowego.
-3. Podłącz kable do jednostki dystrybucji zasilania stojak (PDU), jak pokazano na poniższej ilustracji. Upewnij się, że dwa użyj PCMs oddzielić źródła zasilania.
+#### <a name="to-cable-for-power"></a>Do kabla do zasilania
+1. Upewnij się, że przełączniki zasilania każdego z modułów zasilania i chłodzenia (PCM) znajdują się w pozycji OFF.
+2. Podłącz przewody zasilające do każdego z pcm w obudowie podstawowej.
+3. Podłącz przewody zasilające do jednostek dystrybucji zasilania stelaża (PDU), jak pokazano na poniższej ilustracji. Upewnij się, że oba pcms używać oddzielnych źródeł zasilania.
    
    > [!IMPORTANT]
-   > Aby zapewnić wysoką dostępność w systemie, firma Microsoft zaleca ściśle przestrzegać możliwości okablowania schemat pokazano na poniższym diagramie. 
+   > Aby zapewnić wysoką dostępność systemu, zaleca się ścisłe przestrzeganie schematu okablowania zasilania przedstawionego na poniższym diagramie. 
    > 
    > 
    
-    ![Podłączanie kabli do urządzenia 2U zasilania](./media/storsimple-cable-8100-for-power/HCSCableYour2UDeviceforPower.png)
+    ![Kabel urządzenia 2U do zasilania](./media/storsimple-cable-8100-for-power/HCSCableYour2UDeviceforPower.png)
    
-    **Power okablowania na urządzeniu 8100**
+    **Okablowanie zasilania urządzenia 8100**
    
    | Label | Opis |
    |:--- |:--- |
@@ -31,6 +31,6 @@ ms.locfileid: "67183268"
    | 2 |Kontroler 1 |
    | 3 |Kontroler 0 |
    | 4 |PCM 1 |
-   | 5 |PDU |
-4. Aby włączyć system, przerzuć wyłączniki zasilania na obu PCMs pozycji dalej.
+   | 5 |Procesory PDU |
+4. Aby włączyć system, przerzuć przełączniki zasilania na oba PCM do pozycji ON.
 

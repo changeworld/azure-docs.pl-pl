@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Tworzenie aplikacji dla systemu iOS'
+title: 'Szybki start: tworzenie aplikacji na iOS'
 description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć aplikację dla systemu iOS przy użyciu usługi Spatial Anchors.
 author: craigktreasure
 manager: vriveras
@@ -8,14 +8,14 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 277a669484201a060a2bb5455d6154165bbb8e84
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6304077a26f5c0ecb91e1ec4936bd79b3d839d95
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465169"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79471221"
 ---
-# <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Szybki Start: Tworzenie aplikacji dla systemu iOS z zakotwiczeniami przestrzennymi platformy Azure w postaci SWIFT lub w celu-C
+# <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Szybki start: tworzenie aplikacji na iOS za pomocą zakotwiczeń przestrzennych platformy Azure w trybie Swift lub Objective-C
 
 W tym przewodniku Szybki start opisano, jak utworzyć aplikację dla systemu iOS przy użyciu usługi [Azure Spatial Anchors](../overview.md) w języku Swift lub Objective-C. Azure Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu. Gdy skończysz, będziesz mieć aplikację ARKit dla systemu iOS, która może zapisywać i przywoływać kotwicę przestrzenną.
 
@@ -32,8 +32,11 @@ Omawiane tematy:
 
 Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz następującymi elementami:
 
-- Maszyna macOS z włączoną obsługą dewelopera z najnowszą wersją <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> i <a href="https://cocoapods.org" target="_blank">CocoaPods</a> .
-- Narzędzie git zainstalowane za pośrednictwem usługi oprogramowania homebrew. Wprowadź następujące polecenie w jednym wierszu terminalu: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Następnie uruchom `brew install git` i `brew install git-lfs`.
+- Urządzenie z systemem macOS z zainstalowaną najnowszą wersją <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">xcode</a> i <a href="https://cocoapods.org" target="_blank">cocoaPods.</a>
+- Git zainstalowany przez HomeBrew:
+  1. Wprowadź następujące polecenie jako pojedynczy wiersz `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`w terminalu: . 
+  1. Uruchom polecenia `brew install git` i `brew install git-lfs`.
+  1. Zaktualizuj swój `git lfs install` gif z (dla `git lfs install --system` bieżącego użytkownika) lub (dla całego systemu).
 - Deweloperskie urządzenie z systemem iOS, <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">zgodne z zestawem ARKit</a>.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -46,7 +49,7 @@ Użyj terminalu, aby wykonać następujące czynności.
 
 Zainstaluj konieczne zasobniki przy użyciu programu CocoaPods:
 
-# <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
+# <a name="swift"></a>[Swift](#tab/openproject-swift)
 
 Przejdź do adresu `iOS/Swift/`.
 
@@ -54,7 +57,7 @@ Przejdź do adresu `iOS/Swift/`.
 cd ./iOS/Swift/
 ```
 
-# <a name="objective-ctabopenproject-objc"></a>[Objective-C](#tab/openproject-objc)
+# <a name="objective-c"></a>[Cel C](#tab/openproject-objc)
 
 Przejdź do adresu `iOS/Objective-C/`.
 
@@ -69,15 +72,15 @@ Uruchom polecenie `pod install --repo-update` w celu zainstalowania programu Coc
 Następnie otwórz plik `.xcworkspace` w programie Xcode.
 
 > [!NOTE]
-> Zapoznaj się z [krokami](#cocoapods-issues-on-macos-catalina-1015) rozwiązywania problemów, jeśli masz problemy z CocoaPod po uaktualnieniu do macOS Catalina (10,15).
+> Zapoznaj się z instrukcjami rozwiązywania [problemów tutaj,](#cocoapods-issues-on-macos-catalina-1015) jeśli masz problemy z CocoaPod po uaktualnieniu do systemu macOS Catalina (10.15).
 
-# <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
+# <a name="swift"></a>[Swift](#tab/openproject-swift)
 
 ```bash
 open ./SampleSwift.xcworkspace
 ```
 
-# <a name="objective-ctabopenproject-objc"></a>[Objective-C](#tab/openproject-objc)
+# <a name="objective-c"></a>[Cel C](#tab/openproject-objc)
 
 ```bash
 open ./SampleObjC.xcworkspace
@@ -87,9 +90,9 @@ open ./SampleObjC.xcworkspace
 
 ## <a name="configure-account-identifier-and-key"></a>Konfigurowanie identyfikatora i klucza konta
 
-Następnym krokiem jest skonfigurowanie aplikacji w taki sposób, aby korzystała z identyfikatora konta i klucza konta. Skopiowano je do edytora tekstu podczas [konfigurowania zasobów kotwic przestrzennych](#create-a-spatial-anchors-resource).
+Następnym krokiem jest skonfigurowanie aplikacji do używania identyfikatora konta i klucza konta. Skopiowano je do edytora tekstu podczas [konfigurowania zasobu Zakotwiczenia przestrzenne](#create-a-spatial-anchors-resource).
 
-# <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
+# <a name="swift"></a>[Swift](#tab/openproject-swift)
 
 Otwórz plik `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
 
@@ -97,7 +100,7 @@ Znajdź pole `spatialAnchorsAccountKey` i zastąp wartość `Set me` kluczem kon
 
 Znajdź pole `spatialAnchorsAccountId` i zastąp wartość `Set me` identyfikatorem konta.
 
-# <a name="objective-ctabopenproject-objc"></a>[Objective-C](#tab/openproject-objc)
+# <a name="objective-c"></a>[Cel C](#tab/openproject-objc)
 
 Otwórz plik `iOS/Objective-C/SampleObjC/BaseViewController.m`.
 
@@ -113,7 +116,7 @@ Podłącz urządzenie z systemem iOS do komputera Mac i ustaw **aktywny schemat*
 
 ![Wybieranie urządzenia](./media/get-started-ios/select-device.png)
 
-Wybierz pozycję **Build and then run the current scheme (Skompiluj i uruchom bieżący schemat)** .
+Wybierz pozycję **Build and then run the current scheme (Skompiluj i uruchom bieżący schemat)**.
 
 ![Wdrażanie i uruchamianie](./media/get-started-ios/deploy-run.png)
 
@@ -124,9 +127,9 @@ W programie Xcode zatrzymaj aplikację, naciskając pozycję **Stop**.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-### <a name="cocoapods-issues-on-macos-catalina-1015"></a>CocoaPods problemy w macOS Catalina (10,15)
+### <a name="cocoapods-issues-on-macos-catalina-1015"></a>Problemy z cocoaPods w systemie macOS Catalina (10.15)
 
-Jeśli niedawno Zaktualizowano do macOS Catalina (10,15) i CocoaPods zostały wcześniej zainstalowane, CocoaPods może być w stanie przerwania i nie powiodło się poprawne skonfigurowanie plików projektu i `.xcworkspace`. Aby rozwiązać ten problem, należy ponownie zainstalować program CocoaPods, uruchamiając następujące polecenia:
+Jeśli niedawno zaktualizowano do systemu macOS Catalina (10.15) i miał CocoaPods zainstalowany wcześniej, CocoaPods może być `.xcworkspace` w stanie uszkodzonym i nie poprawnie skonfigurować strąki i pliki projektu. Aby rozwiązać ten problem, musisz ponownie zainstalować CocoaPods, uruchamiając następujące polecenia:
 
 ```shell
 brew update
@@ -134,9 +137,20 @@ brew install cocoapods --build-from-source
 brew link --overwrite cocoapods
 ```
 
+### <a name="app-crashes-when-deploying-to-ios-1031-from-a-personal-provisioning-profiledeveloper-account"></a>Aplikacja ulega awarii podczas wdrażania w uos 10.3.1 z osobistego profilu aprowizacji/konta dewelopera 
+
+Jeśli wdrożysz aplikację dla systemu iOS w systemie iOS 10.3.1 z osobistego `Library not loaded: @rpath/ADAL...`profilu aprowizacji/konta dewelopera, może zostać wyświetlony ten błąd: . 
+
+Aby rozwiązać ten problem:
+
+- Użyj profilu inicjowania obsługi administracyjnej, który nie jest profilem zespołu osobistego (płatne konto dewelopera).
+- Wdrażanie aplikacji na urządzeniu z systemem iOS z systemem iOS 13.3 lub starszym lub na urządzeniu z systemem iOS 13.4 w wersji beta lub wersji.
+- Dowiedz się więcej o tym problemie na [przepełnienie stosu](https://stackoverflow.com/questions/60015309/running-ios-apps-causes-runtime-error-for-frameworks-code-signature-invalid).
+
+
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Samouczek: udostępnianie kotwic przestrzennych między urządzeniami](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Samouczek: Udostępnianie zakotwiczeń przestrzennych na różnych urządzeniach](../tutorials/tutorial-share-anchors-across-devices.md)

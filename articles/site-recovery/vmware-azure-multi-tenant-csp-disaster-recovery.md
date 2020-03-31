@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie odzyskiwania po awarii programu VMware do platformy Azure w środowisku wielu dzierżawców przy użyciu Site Recovery i programu Cloud Solution Provider (CSP) | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii programu VMware w środowisku z wieloma dzierżawami przy użyciu usługi Azure Site Recovery.
+title: Konfigurowanie odzyskiwania po awarii VMware na platformie Azure w środowisku wielonajemskim przy użyciu usługi Site Recovery i programu Dostawcy rozwiązań w chmurze (CSP) | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii VMware w środowisku wielodostępnym za pomocą usługi Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,97 +8,97 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 77b64f09b7fd1429eb23c4407c729dfc0aafdf2b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60461031"
 ---
-# <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Konfigurowanie odzyskiwania po awarii programu VMware w środowisku wielu dzierżawców w ramach programu Cloud Solution Provider (CSP)
+# <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Konfigurowanie odzyskiwania po awarii VMware w środowisku wielonajemowym za pomocą programu Dostawcy rozwiązań w chmurze (CSP)
 
-[CSP program](https://partner.microsoft.com/en-US/cloud-solution-provider) sprzyjają razem lepiej scenariusze dla usług w chmurze firmy Microsoft, w tym usługi Office 365, pakietu Enterprise Mobility Suite i Microsoft Azure. Za pomocą programu CSP partnerzy właścicielem end-to-end relacji z klientami i stają się punkt kontaktowy podstawowej relacji. Partnerów można wdrożyć subskrypcji platformy Azure dla klientów i łączyć przy użyciu własnych wartości dodanej, dostosowane oferty.
+[Program dostawcy usług kryptograficznych](https://partner.microsoft.com/en-US/cloud-solution-provider) promuje lepsze relacje dla usług w chmurze firmy Microsoft, w tym usługi Office 365, pakietu Enterprise Mobility Suite i platformy Microsoft Azure. Dzięki CSP partnerzy są właścicielami relacji end-to-end z klientami i stają się głównym punktem kontaktowym relacji. Partnerzy mogą wdrażać subskrypcje platformy Azure dla klientów i łączyć subskrypcje z ich własną ofertą o wartości dodanej, dostosowaną do indywidualnych potrzeb.
 
-Za pomocą [usługi Azure Site Recovery](site-recovery-overview.md), jako partnerzy mogą zarządzać odzyskiwaniem po awarii dla klientów bezpośrednio w ramach programu CSP. Alternatywnie możesz skonfigurować środowiska Site Recovery za pomocą dostawcy usług Kryptograficznych i umożliwiają klientom w zarządzaniu ich potrzeb odzyskiwania po awarii w sposób samoobsługi. W obu przypadkach partnerzy są łączności między Site Recovery i ich odbiorców. Partnerzy relację z klientem usługi i są naliczane klientom użycie Site Recovery.
+Dzięki [usłudze Azure Site Recovery](site-recovery-overview.md), jako partnerom, możesz zarządzać odzyskiwaniem po awarii dla klientów bezpośrednio za pośrednictwem usługi CSP. Alternatywnie można użyć dostawcy usług kryptograficznych do konfigurowania środowisk odzyskiwania witryny i umożliwienia klientom zarządzania własnymi potrzebami odzyskiwania po awarii w sposób samoobsługowy. W obu scenariuszach partnerzy są łącznikiem między odzyskiem witryny a ich klientami. Partnerzy obsługują relację z klientami i rozliczają klientów za użycie usługi Site Recovery.
 
-W tym artykule opisano sposób jako partner można tworzenia i Zarządzaj subskrypcjami dzierżawy za pośrednictwem dostawcy usług Kryptograficznych, scenariusz replikacji VMware wielodostępnych.
+W tym artykule opisano, jak jako partner można tworzyć i zarządzać subskrypcjami dzierżawy za pośrednictwem usługi CSP, dla scenariusza replikacji VMware z wieloma dzierżawami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować replikacji oprogramowania VMware, należy wykonać następujące czynności:
+Aby skonfigurować replikację VMware, należy wykonać następujące czynności:
 
-- [Przygotowanie](tutorial-prepare-azure.md) zasobów platformy Azure, w tym subskrypcję platformy Azure, siecią wirtualną platformy Azure i konto magazynu.
-- [Przygotowanie](vmware-azure-tutorial-prepare-on-premises.md) lokalnych serwerów VMware i maszyn wirtualnych.
-- Dla każdej dzierżawy należy utworzyć na serwerze zarządzania oddzielnym, który może komunikować się z maszynami wirtualnymi dzierżawy i serwerami vCenter. Tylko jako partner należy prawa dostępu do tego serwera zarządzania. Dowiedz się więcej o [środowiskach wielodostępnych](vmware-azure-multi-tenant-overview.md).
+- [Przygotuj się](tutorial-prepare-azure.md) Zasoby platformy Azure, w tym subskrypcja platformy Azure, sieć wirtualna platformy Azure i konto magazynu.
+- [Przygotowywanie](vmware-azure-tutorial-prepare-on-premises.md) lokalnych serwerów VMware i maszyn wirtualnych.
+- Dla każdej dzierżawy należy utworzyć oddzielny serwer zarządzania, który może komunikować się z maszynami wirtualnymi dzierżawcy i serwerami vCenter. Tylko Ty jako partner powinieneś mieć prawa dostępu do tego serwera zarządzania. Dowiedz się więcej o [środowiskach wielodostępnych](vmware-azure-multi-tenant-overview.md).
 
-## <a name="create-a-tenant-account"></a>Utwórz konto dzierżawy
+## <a name="create-a-tenant-account"></a>Tworzenie konta dzierżawy
 
-1. Za pomocą [Microsoft Partner Center](https://partnercenter.microsoft.com/), zaloguj się do swojego konta programu CSP.
-2. Na **pulpit nawigacyjny** menu, wybierz opcję **klientów**.
-3. Na stronie zostanie otwarty, kliknij przycisk **Dodaj klienta** przycisku.
-4. W **nowego klienta** strony, wprowadź informacje dotyczące konta dla dzierżawy.
+1. Za pośrednictwem [Centrum partnerów firmy Microsoft](https://partnercenter.microsoft.com/)zaloguj się do swojego konta CSP.
+2. W menu **Pulpit nawigacyjny** wybierz polecenie **Klienci**.
+3. Na otwartej stronie kliknij przycisk **Dodaj klienta.**
+4. Na stronie **Nowy klient** wprowadź szczegóły informacji o koncie dla dzierżawy.
 
-    ![Na stronie informacje o koncie](./media/vmware-azure-multi-tenant-csp-disaster-recovery/customer-add-filled.png)
+    ![Strona Informacje o koncie](./media/vmware-azure-multi-tenant-csp-disaster-recovery/customer-add-filled.png)
 
-5. Następnie kliknij przycisk **dalej: Subskrypcje**.
-6. Na stronie Wybór subskrypcji wybierz **Microsoft Azure** pole wyboru. Możesz dodać inne subskrypcje teraz lub w dowolnym innym czasie.
-7. Na **przeglądu** strony, Potwierdź szczegóły dzierżawy, a następnie kliknij **przesyłania**.
-8. Po utworzeniu konta dzierżawy, zostanie wyświetlona strona potwierdzenia, wyświetlania szczegółów domyślne konto i hasło dla tej subskrypcji. Zapisz informacje o, a następnie zmiany hasła później zgodnie z potrzebami, za pośrednictwem platformy Azure Zaloguj strony portalu.
+5. Następnie kliknij **przycisk Dalej: Subskrypcje**.
+6. Na stronie wyboru subskrypcji zaznacz pole wyboru **Microsoft Azure.** Możesz dodać inne subskrypcje teraz lub w dowolnym innym czasie.
+7. Na stronie **Recenzja** potwierdź szczegóły dzierżawy, a następnie kliknij przycisk **Prześlij**.
+8. Po utworzeniu konta dzierżawy zostanie wyświetlona strona potwierdzenia z informacjami o koncie domyślnym i haśle dla tej subskrypcji. Zapisz informacje i zmień hasło później w razie potrzeby za pośrednictwem strony logowania w portalu Azure.
 
-Te informacje mogą udostępniać dzierżawy, ponieważ jest lub można tworzyć i udostępniać oddzielnego konta, jeśli to konieczne.
+Można udostępnić te informacje dzierżawie w stanie takim, w jakim jest, lub w razie potrzeby utworzyć i udostępnić oddzielne konto.
 
-## <a name="access-the-tenant-account"></a>Dostęp do konta dzierżawy
+## <a name="access-the-tenant-account"></a>Uzyskiwanie dostępu do konta dzierżawy
 
-Można uzyskać dostępu do subskrypcji dzierżawcy przy użyciu pulpicie nawigacyjnym Centrum partnerskiego firmy Microsoft.
+Dostęp do subskrypcji dzierżawy można uzyskać za pośrednictwem pulpitu nawigacyjnego Centrum partnerów firmy Microsoft.
 
-1. Na **klientów** kliknij nazwę konta dzierżawy.
-2. W **subskrypcje** strona konta dzierżawy, możesz monitorować istniejące subskrypcje z konta i dodawać więcej subskrypcje, zgodnie z potrzebami.
-3. Aby zarządzać operacji odzyskiwania po awarii dzierżawy, wybierz pozycję **wszystkie zasoby (witryna Azure portal)** . Spowoduje to przydzielenie dostępu do subskrypcji platformy Azure dla dzierżawy.
+1. Na stronie **Klienci** kliknij nazwę konta dzierżawy.
+2. Na stronie **Subskrypcje** konta dzierżawy można monitorować istniejące subskrypcje kont i w razie potrzeby dodać więcej subskrypcji.
+3. Aby zarządzać operacjami odzyskiwania po awarii dzierżawcy, wybierz pozycję **Wszystkie zasoby (Azure portal).** Daje to dostęp do subskrypcji platformy Azure dzierżawy.
 
-    ![Łączy wszystkie zasoby](./media/vmware-azure-multi-tenant-csp-disaster-recovery/all-resources-select.png)  
+    ![Łącze Wszystkie zasoby](./media/vmware-azure-multi-tenant-csp-disaster-recovery/all-resources-select.png)  
 
-4. Dostępu można sprawdzić, klikając link usługi Azure Active Directory w górnym rogu witryny Azure portal.
+4. Dostęp można zweryfikować, klikając łącze usługi Azure Active Directory w prawym górnym rogu witryny Azure portal.
 
-    ![Azure Active Directory link](./media/vmware-azure-multi-tenant-csp-disaster-recovery/aad-admin-display.png)
+    ![Łącze usługi Azure Active Directory](./media/vmware-azure-multi-tenant-csp-disaster-recovery/aad-admin-display.png)
 
-Można teraz wykonać i zarządzać operacjami usługi Site Recovery wszystkie dzierżawy w witrynie Azure portal. Dostęp do subskrypcji z dzierżawy za pośrednictwem dostawcy usług Kryptograficznych do odzyskiwania po awarii zarządzane, wykonaj proces opisany wcześniej.
+Teraz można wykonywać i zarządzać wszystkimi operacjami odzyskiwania witryny dla dzierżawy w witrynie Azure portal. Aby uzyskać dostęp do subskrypcji dzierżawy za pośrednictwem dostawcy usług kryptograficznych dla zarządzanego odzyskiwania po awarii, postępuj zgodnie z wcześniej opisanym procesem.
 
 ## <a name="assign-tenant-access-to-the-subscription"></a>Przypisywanie dostępu dzierżawcy do subskrypcji
 
-1. Upewnij się, że infrastruktury odzyskiwania po awarii jest skonfigurowany. Partnerzy dostęp do subskrypcji z dzierżawy za pośrednictwem portalu dostawcy usług Kryptograficznych, niezależnie od tego, czy odbywa się odzyskiwanie po awarii i samoobsługowego. Konfigurowanie magazynu i zarejestruj infrastruktury do subskrypcji dzierżawcy.
-2. Podaj dzierżawcy z [utworzonego konta](#create-a-tenant-account).
-3. Nowy użytkownik można dodać do subskrypcji dzierżawy za pośrednictwem portalu dostawcy usług Kryptograficznych w następujący sposób:
+1. Upewnij się, że skonfigurowana jest infrastruktura odzyskiwania po awarii. Partnerzy uzyskują dostęp do subskrypcji dzierżawy za pośrednictwem portalu dostawcy usług kryptograficznych, niezależnie od tego, czy odzyskiwanie po awarii jest zarządzane, czy samoobsługowe. Skonfiguruj infrastrukturę magazynu i zarejestruj subskrypcje dzierżawy.
+2. Podaj dzierżawce [utworzone konto](#create-a-tenant-account).
+3. Możesz dodać nowego użytkownika do subskrypcji dzierżawy za pośrednictwem portalu CSP w następujący sposób:
 
-    ) przejdź do strony subskrypcji dostawcy CSP dzierżawcy, a następnie wybierz **użytkownikami i licencjami** opcji.
+    a) Przejdź do strony subskrypcji CSP dzierżawcy, a następnie wybierz opcję **Użytkownicy i licencje.**
 
-      ![Strona subskrypcji dostawcy CSP dzierżawcy](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
+      ![Strona subskrypcji usługi CSP dzierżawcy](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-    (b) teraz utworzyć nowego użytkownika, wprowadzając odpowiednie szczegóły i wybierając uprawnienia lub przez przekazanie listy użytkowników w pliku CSV.
+    b) Teraz utwórz nowego użytkownika, wprowadzając odpowiednie szczegóły i wybierając uprawnienia lub przesyłając listę użytkowników w pliku CSV.
     
-    c) po utworzeniu nowego użytkownika, wróć do witryny Azure portal. W **subskrypcji** wybierz odpowiednie subskrypcji.
+    c) Po utworzeniu nowego użytkownika wróć do witryny Azure portal. Na stronie **Subskrypcja** wybierz odpowiednią subskrypcję.
 
-    d) wybierz **kontrola dostępu (IAM)** , a następnie kliknij przycisk **przypisań ról**.
+    d) Wybierz **kontrolę dostępu (IAM),** a następnie kliknij pozycję **Przypisania ról**.
 
-    (e) kliknij **Dodaj przypisanie roli** można dodać użytkownika z poziomem dostępu istotne. Użytkownicy, które zostały utworzone za pośrednictwem portalu dostawcy usług Kryptograficznych są wyświetlane na karcie przypisania roli.
+    e) Kliknij pozycję **Dodaj przypisanie roli,** aby dodać użytkownika z odpowiednim poziomem dostępu. Użytkownicy, którzy zostali utworzeni za pośrednictwem portalu CSP są wyświetlane na karcie Przypisania ról.
 
       ![Dodawanie użytkownika](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
 
-- Większość operacji zarządzania *Współautor* roli jest wystarczająca. Użytkownicy z poziomu tego dostępu można wykonać wszystkie czynności, które w ramach subskrypcji, ale Zmień poziomy dostępu (dla której *właściciela*— poziom dostępu jest wymagany).
-- Usługa Site Recovery ma również trzy [wstępnie zdefiniowane role użytkownika](site-recovery-role-based-linked-access-control.md), który może służyć do bardziej ograniczyć poziomów dostępu zgodnie z potrzebami.
+- W przypadku większości operacji zarządzania rola *współautora* jest wystarczająca. Użytkownicy z tym poziomem dostępu mogą wykonywać wszystkie usługi w ramach subskrypcji, z wyjątkiem zmiany poziomów dostępu (dla których wymagany jest dostęp na poziomie *właściciela).*
+- Odzyskiwanie witryny ma również trzy [wstępnie zdefiniowane role użytkowników,](site-recovery-role-based-linked-access-control.md)które mogą służyć do dalszego ograniczania poziomów dostępu zgodnie z wymaganiami.
 
-## <a name="multi-tenant-environments"></a>Środowiska z wieloma dzierżawcami
+## <a name="multi-tenant-environments"></a>Środowiska wielodostępne
 
 Istnieją trzy główne modele wielodostępne:
 
-* **Dostawcy usług hostingu (HSP) udostępnionych**: Partner ten jest właścicielem infrastruktury fizycznej i korzysta z zasobów udostępnionych (vCenter, centrów danych, magazynu fizycznego i tak dalej) do hostowania wielu maszyn wirtualnych dzierżawy w tej samej infrastrukturze. Partner może zapewnić zarządzanie odzyskiwania po awarii jako usługa zarządzana, lub dzierżawy mogą być właścicielami odzyskiwania po awarii jako rozwiązanie samoobsługi.
+* **Dostawca usług hostingu współdzielonego (HSP)**: Partner jest właścicielem infrastruktury fizycznej i używa zasobów udostępnionych (vCenter, centrów danych, magazynu fizycznego itd.) do hostowania wielu maszyn wirtualnych dzierżawy w tej samej infrastrukturze. Partner może zapewnić zarządzanie odzyskiwaniem po awarii jako usługę zarządzaną lub dzierżawca może być właścicielem odzyskiwania po awarii jako samoobsługowego rozwiązania.
 
-* **Dostawca usług hostingu w wersji dedykowanej**: Partner jest właścicielem infrastruktury fizycznej, ale używa dedykowanych zasobów (wiele vCenters, fizycznych magazynów danych i tak dalej) do obsługi każdego dzierżawcy maszyny wirtualne, w osobnej infrastruktury. Partner może zapewnić zarządzanie odzyskiwania po awarii jako usługa zarządzana lub dzierżawcy mogą jej właścicielem jako rozwiązanie samoobsługi.
+* **Dedykowany dostawca usług hostingowych:** partner jest właścicielem infrastruktury fizycznej, ale używa dedykowanych zasobów (wiele centrów wirtualnych, fizycznych magazynów danych i tak dalej) do hostowania maszyn wirtualnych każdej dzierżawy w oddzielnej infrastrukturze. Partner może zapewnić zarządzanie odzyskiwaniem po awarii jako usługę zarządzaną lub dzierżawca może być właścicielem go jako samoobsługowego rozwiązania.
 
-* **Zarządzane usługi dostawcy (MSP)** : Klient jest właścicielem infrastruktury fizycznej, który jest hostem maszyny wirtualne, a partner zapewnia możliwości odzyskiwania po awarii i zarządzanie.
+* **Dostawca usług zarządzanych (MSP)**: Klient jest właścicielem infrastruktury fizycznej, która obsługuje maszyny wirtualne, a partner zapewnia włączenie odzyskiwania po awarii i zarządzania.
 
-Konfigurując subskrypcji dzierżawy zgodnie z opisem w tym artykule, możesz szybko rozpocząć pozwala klientom w żadnej z odpowiednich modeli wielodostępnych. Dowiedz się więcej o różnych modeli z wieloma dzierżawami i lokalnych kontroli dostępu [tutaj](vmware-azure-multi-tenant-overview.md).
+Konfigurując subskrypcje dzierżawy zgodnie z opisem w tym artykule, można szybko uruchomić włączanie klientów w dowolnym z odpowiednich modeli wielodostępnych. Więcej informacji na temat różnych modeli wielodostępnych i włączania lokalnych kontroli dostępu można [znaleźć tutaj.](vmware-azure-multi-tenant-overview.md)
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [kontroli dostępu opartej na rolach](site-recovery-role-based-linked-access-control.md) Zarządzanie wdrożeniami usługi Azure Site Recovery.
-- Dowiedz się więcej na temat replikacji VMware – Azure [architektura replikacji](vmware-azure-architecture.md).
-- [Sprawdź samouczek](vmware-azure-tutorial.md) replikowania maszyn wirtualnych VMware na platformę Azure.
-Dowiedz się więcej o [środowiskach wielodostępnych](vmware-azure-multi-tenant-overview.md) replikowania maszyn wirtualnych VMware na platformę Azure.
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej o [kontroli dostępu opartej na rolach](site-recovery-role-based-linked-access-control.md) w celu zarządzania wdrożeniami usługi Azure Site Recovery.
+- Dowiedz się więcej o [architekturze replikacji](vmware-azure-architecture.md)VMware na platformie Azure.
+- [Przejrzyj samouczek replikowania](vmware-azure-tutorial.md) maszyn wirtualnych VMware na platformie Azure.
+Dowiedz się więcej o [środowiskach wielodostępnych](vmware-azure-multi-tenant-overview.md) do replikowania maszyn wirtualnych VMware na platformie Azure.

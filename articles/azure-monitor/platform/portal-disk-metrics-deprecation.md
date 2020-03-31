@@ -1,6 +1,6 @@
 ---
-title: Przestarzałe metryki dysku w Azure Portal | Microsoft Docs
-description: Dowiedz się, które metryki dysku zostały wycofane i jak zaktualizować alerty metryki, aby korzystać z nowych metryk.
+title: Wycofanie danych dysku w witrynie Azure portal | Dokumenty firmy Microsoft
+description: Dowiedz się, które metryki dysku zostały przestarzałe i jak zaktualizować alerty metryki, aby użyć nowych metryk.
 services: azure-monitor
 ms.subservice: metrics
 ms.topic: conceptual
@@ -8,28 +8,28 @@ author: albecker1
 ms.author: albecker
 ms.date: 03/12/2020
 ms.openlocfilehash: f2b960c2198800e04da77ad6b5be78d7b4762354
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299805"
 ---
-# <a name="disk-metrics-deprecation-in-the-azure-portal"></a>Przestarzałe metryki dysku w Azure Portal
+# <a name="disk-metrics-deprecation-in-the-azure-portal"></a>Wycofanie danych dysku w witrynie Azure portal
 
-Przestarzałe metryki powiązane z dyskami zostaną wkrótce usunięte z Azure Portal. Dostępna jest nowa wersja każdej przestarzałej metryki do użycia. W tym artykule opisano, które metryki są nowe i jak aktualizować alerty metryki w celu ich używania.
+Przestarzałe metryki związane z dyskiem zostaną wkrótce usunięte z witryny Azure portal. Nowa wersja każdej przestarzałej metryki jest dostępna do użycia. Z tego artykułu dowiesz się, które metryki są nowe i jak zaktualizować alerty metryki, aby ich używać.
 
-## <a name="list-of-new-metrics"></a>Lista nowych metryk
+## <a name="list-of-new-metrics"></a>Lista nowych wskaźników
 
-Ta tabela mapuje każdą przestarzałą metrykę na odpowiadającą jej nową metrykę. 
+W tej tabeli mapuje każdy przestarzały metryki do jego odpowiedniego nowego metryki. 
 
-|Przestarzała Metryka|Nowa (zastępowanie) Metryka|
+|Przestarzała metryka|Nowa (zastępcza) metryka|
 |----|----|
-|Głębokość kolejki dysku danych (przestarzałe)|Głębokość kolejki dysku danych (wersja zapoznawcza)|
+|QD dysku danych (przestarzałe)|Głębokość kolejki dysków danych (wersja zapoznawcza)|
 |Bajty odczytu dysku danych/s (przestarzałe)|Bajty odczytu dysku danych/s (wersja zapoznawcza)|
-|Operacje odczytu z dysku danych/s (przestarzałe)|Operacje odczytu z dysku danych/s (wersja zapoznawcza)|
-|Bajty zapisu na dysku danych/s (przestarzałe)|Bajty zapisu na dysku danych/s (wersja zapoznawcza)|
+|Operacje odczytu dysku danych/s (przestarzałe)|Operacje odczytu dysku danych/s (wersja zapoznawcza)|
+|Bajty zapisu dysku danych/s (przestarzałe)|Bajty zapisu dysku danych/s (wersja zapoznawcza)|
 |Operacje zapisu na dysku danych/s (przestarzałe)|Operacje zapisu na dysku danych/s (wersja zapoznawcza)|
-|OS głębokość kolejki (przestarzałe)|Głębokość kolejki systemu operacyjnego (wersja zapoznawcza)|
+|OS QD (przestarzałe)|Głębokość kolejki systemu operacyjnego (wersja zapoznawcza)|
 |Bajty odczytu systemu operacyjnego/s (przestarzałe)|Bajty odczytu systemu operacyjnego/s (wersja zapoznawcza)|
 |Operacje odczytu systemu operacyjnego/s (przestarzałe)|Operacje odczytu systemu operacyjnego/s (wersja zapoznawcza)|
 |Bajty zapisu systemu operacyjnego/s (przestarzałe)|Bajty zapisu systemu operacyjnego/s (wersja zapoznawcza)|
@@ -37,71 +37,71 @@ Ta tabela mapuje każdą przestarzałą metrykę na odpowiadającą jej nową me
 
 <a id="update-metrics" />
 
-## <a name="migrate-metrics-in-your-metric-alerts"></a>Migrowanie metryk w alertach metryk
+## <a name="migrate-metrics-in-your-metric-alerts"></a>Migrowanie danych w alertach metryk
 
-Zaktualizuj alerty metryki, aby używać nowych metryk.
+Zaktualizuj alerty metryki, aby używać nowych danych.
 
-1. W Azure Portal Wyszukaj **alerty**. Następnie w sekcji **usługi** wybierz pozycję **alerty**.
-
-   > [!div class="mx-imgBorder"]
-   > Opis obrazu ![](./media/portal-disk-metrics-deprecation/alert-service-azure-portal.png)
-
-2. Na stronie **alerty** wybierz przycisk **Zarządzaj regułami alertów** . 
+1. W witrynie Azure portal wyszukaj **alerty**. Następnie w sekcji **Usługi** wybierz pozycję **Alerty**.
 
    > [!div class="mx-imgBorder"]
-   > Opis obrazu ![](./media/portal-disk-metrics-deprecation/manage-alert-rules-button.png)
+   > ![Opis obrazu](./media/portal-disk-metrics-deprecation/alert-service-azure-portal.png)
 
-3. Z listy rozwijanej **Grupa zasobów** zaznacz pole wyboru **Virtual Machines** i na liście rozwijanej **Typ sygnału** zaznacz pole wyboru **metryki** . 
+2. Na stronie **Alerty** wybierz przycisk **Zarządzaj regułami alertów.** 
 
    > [!div class="mx-imgBorder"]
-   > Opis obrazu ![](./media/portal-disk-metrics-deprecation/filter-alerts.png)
+   > ![Opis obrazu](./media/portal-disk-metrics-deprecation/manage-alert-rules-button.png)
 
-4. Na liście metryk Zidentyfikuj warunki, które odnoszą się do dysków. Kliknij nazwę reguły. 
+3. Na liście rozwijanej **Grupa zasobów** zaznacz pole wyboru **Maszyny wirtualne,** a następnie na liście rozwijanej **Typ sygnału** zaznacz pole wyboru **Metryki.** 
+
+   > [!div class="mx-imgBorder"]
+   > ![Opis obrazu](./media/portal-disk-metrics-deprecation/filter-alerts.png)
+
+4. Na liście metryk należy zidentyfikować warunki, które odnoszą się do dysków. Kliknij nazwę reguły. 
 
    Nazwa jest wyświetlana jako hiperłącze w kolumnie **Nazwa** tabeli.
 
    > [!div class="mx-imgBorder"]
-   > Opis obrazu ![](./media/portal-disk-metrics-deprecation/find-disk-conditions.png)
+   > ![Opis obrazu](./media/portal-disk-metrics-deprecation/find-disk-conditions.png)
 
-5. W sekcji **warunki** na stronie **Zarządzanie regułami** kliknij warunek alertu. 
+5. W sekcji **Warunki** na stronie **Zarządzanie regułami** kliknij warunek alertu. 
 
    Warunek jest wyświetlany jako hiperłącze.  
 
    > [!div class="mx-imgBorder"]
-   > Opis obrazu ![](./media/portal-disk-metrics-deprecation/adjust-condition.png)
+   > ![Opis obrazu](./media/portal-disk-metrics-deprecation/adjust-condition.png)
 
-   Zostanie wyświetlona strona **Konfigurowanie logiki sygnału** , a ustawienia warunku zostaną wyświetlone w sekcji **logika alertu** na tej stronie.
+   Zostanie wyświetlona strona **Konfiguruj logikę sygnału,** a ustawienia warunku pojawią się w sekcji **Logika alertu** na tej stronie.
 
-6. Zanotuj te ustawienia, ponieważ zostaną usunięte po usunięciu przestarzałej metryki.
+6. Po usunięciu przestarzałej metryki należy zarejestrować te ustawienia.
 
    > [!div class="mx-imgBorder"]
-   > Opis obrazu ![](./media/portal-disk-metrics-deprecation/condition-rules.png)
+   > ![Opis obrazu](./media/portal-disk-metrics-deprecation/condition-rules.png)
 
    > [!TIP] 
-   > Rozważ przechwycenie tych ustawień na zrzucie ekranu lub w pliku tekstowym. 
+   > Należy rozważyć przechwycenie tych ustawień na zrzucie ekranu lub w pliku tekstowym. 
 
-7. Kliknij link **Wróć do wyboru sygnału** .
+7. Kliknij **łącze Wyboru Wstecz, aby zasygnalizować.**
 
    > [!div class="mx-imgBorder"]
-   > Opis obrazu ![](./media/portal-disk-metrics-deprecation/back-to-signal-selection.png)
+   > ![Opis obrazu](./media/portal-disk-metrics-deprecation/back-to-signal-selection.png)
 
-8. Na stronie **Konfiguruj logikę sygnału** wybierz odpowiednią metrykę wymiany (Nowa Metryka). Użyj [tabeli](#update-metrics) , która występuje wcześniej w tym artykule, aby zidentyfikować nazwę nowej metryki.
+8. Na stronie **Konfigurowanie logiki sygnału** wybierz odpowiednią metrykę zastępczą (nową metrykę). Użyj [tabeli,](#update-metrics) która pojawia się wcześniej w tym artykule, aby oznaczyć nazwę nowej metryki.
 
    > [!TIP] 
-   > Zacznij pisać na pasku wyszukiwania, aby zawęzić listę nazw metryk. 
+   > Zacznij wpisywać tekst na pasku wyszukiwania, aby zawęzić listę nazw metryk. 
 
    > [!div class="mx-imgBorder"]
-   > Opis obrazu ![](./media/portal-disk-metrics-deprecation/choose-new-metric.png)
+   > ![Opis obrazu](./media/portal-disk-metrics-deprecation/choose-new-metric.png)
 
-9. Wybierz przycisk **gotowe** . 
+9. Wybierz przycisk **Gotowe.** 
 
    > [!div class="mx-imgBorder"]
-   > Opis obrazu ![](./media/portal-disk-metrics-deprecation/set-new-metric.png)
+   > ![Opis obrazu](./media/portal-disk-metrics-deprecation/set-new-metric.png)
 
-10. Zatwierdź zmiany, wybierając przycisk **Zapisz** . 
+10. Zaobe go to zatwierdź, wybierając przycisk **Zapisz.** 
 
     > [!div class="mx-imgBorder"]
-    > Opis obrazu ![](./media/portal-disk-metrics-deprecation/save-new-metric.png)
+    > ![Opis obrazu](./media/portal-disk-metrics-deprecation/save-new-metric.png)
 
 
 

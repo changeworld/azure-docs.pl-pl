@@ -1,53 +1,53 @@
 ---
-title: Zainstaluj wolumin emptyDir do grupy kontenerów
-description: Dowiedz się, jak zainstalować wolumin emptyDir, aby udostępnić dane między kontenerami w grupie kontenerów w Azure Container Instances
+title: Zamów pustyDłowięż do grupy kontenerów
+description: Dowiedz się, jak zainstalować wolumin emptyDir, aby udostępnić dane między kontenerami w grupie kontenerów w wystąpieniach kontenera platformy Azure
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 64a3c83008f163167528a5e5987fe2316942d5bc
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77117736"
 ---
-# <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Zainstaluj wolumin emptyDir w Azure Container Instances
+# <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Instalowanie woluminu pustegodiru w wystąpieniach kontenera platformy Azure
 
-Dowiedz się, jak zainstalować wolumin *emptyDir* , aby udostępnić dane między kontenerami w grupie kontenerów w Azure Container Instances. Używaj woluminów *emptyDir* jako tymczasowych pamięci podręcznych dla obciążeń kontenerów.
+Dowiedz się, jak zainstalować *wolumin emptyDir,* aby udostępnić dane między kontenerami w grupie kontenerów w wystąpieniach kontenera platformy Azure. Użyj *emptyDir* woluminów jako tymczasowych pamięci podręcznych dla konteneryzowanych obciążeń.
 
 > [!NOTE]
-> Instalowanie woluminu *emptyDir* jest obecnie ograniczone do kontenerów systemu Linux. Gdy pracujemy nad przełączeniem wszystkich funkcji do kontenerów systemu Windows, w [przeglądzie](container-instances-overview.md#linux-and-windows-containers)można znaleźć bieżące różnice między platformami.
+> Montaż *woluminu emptyDir* jest obecnie ograniczony do kontenerów systemu Linux. Podczas gdy pracujemy nad wprowadzeniem wszystkich funkcji do kontenerów systemu Windows, możesz znaleźć aktualne różnice w platformie w [przeglądzie](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="emptydir-volume"></a>wolumin emptyDir
 
-Wolumin *emptyDir* udostępnia zapisywalny katalog dla każdego kontenera w grupie kontenerów. Kontenery w grupie mogą odczytywać i zapisywać te same pliki w woluminie i mogą być instalowane przy użyciu tych samych lub różnych ścieżek w każdym kontenerze.
+Wolumin *emptyDir* udostępnia zapisywalny katalog dostępny dla każdego kontenera w grupie kontenerów. Kontenery w grupie można odczytywać i zapisywać te same pliki w woluminie i może być zainstalowany przy użyciu tych samych lub różnych ścieżek w każdym kontenerze.
 
-Przykład użycia dla woluminu *emptyDir* :
+W niektórych przykładach użyto *pustegodłościDir:*
 
-* Miejsce na pliki tymczasowe
-* Tworzenie punktów kontrolnych podczas długotrwałych zadań
-* Przechowuj dane pobierane przez kontener przyczepek i obsługiwane przez kontener aplikacji
+* Przestrzeń do zarysowania
+* Punkt kontrolny podczas długotrwałych zadań
+* Przechowywanie danych pobranych przez kontener wózka bocznego i obsługiwanych przez kontener aplikacji
 
-Dane w woluminie *emptyDir* są utrwalane przez awarie kontenera. Jednak kontenery, które są ponownie uruchamiane, nie są gwarantowane, aby zachować dane na woluminie *emptyDir* . Jeśli zatrzymasz grupę kontenerów, wolumin *emptyDir* nie zostanie utrwalony.
+Dane w *woluminie emptyDir* jest utrwalony przez awarie kontenera. Kontenery, które są ponownie uruchomione, jednak nie są gwarantowane do utrwalenia danych w *emptyDir* woluminu. Jeśli zatrzymasz grupę kontenerów, *wolumin emptyDir* nie zostanie utrwalony.
 
-Maksymalny rozmiar woluminu *emptyDir* systemu Linux to 50 GB.
+Maksymalny rozmiar *woluminu linuxowego emptyDir* wynosi 50 GB.
 
-## <a name="mount-an-emptydir-volume"></a>Instalowanie woluminu emptyDir
+## <a name="mount-an-emptydir-volume"></a>Montowanie pustego woluminuDir
 
-Aby zainstalować wolumin emptyDir w wystąpieniu kontenera, można wdrożyć przy użyciu [szablonu Azure Resource Manager](/azure/templates/microsoft.containerinstance/containergroups), [pliku YAML](container-instances-reference-yaml.md)lub innych metod programistycznych do wdrażania grupy kontenerów.
+Aby zainstalować wolumin emptyDir w wystąpieniu kontenera, można wdrożyć przy użyciu [szablonu usługi Azure Resource Manager,](/azure/templates/microsoft.containerinstance/containergroups) [pliku YAML](container-instances-reference-yaml.md)lub innych metod programowych w celu wdrożenia grupy kontenerów.
 
-Najpierw Wypełnij tablicę `volumes` w sekcji `properties` grupy kontenerów pliku. Następnie dla każdego kontenera w grupie kontenerów, w której chcesz zainstalować wolumin *emptyDir* , Wypełnij tablicę `volumeMounts` w sekcji `properties` definicji kontenera.
+Najpierw wypełnij tablicę `volumes` w sekcji `properties` grupy kontenerów pliku. Następnie dla każdego kontenera w grupie kontenerów, w którym chcesz zainstalować *wolumin emptyDir,* wypełnij `volumeMounts` tablicę `properties` w sekcji definicji kontenera.
 
-Na przykład poniższy szablon Menedżer zasobów tworzy grupę kontenerów składającą się z dwóch kontenerów, z których każdy instaluje wolumin *emptyDir* :
+Na przykład następujący szablon Menedżera zasobów tworzy grupę kontenerów składającą się z dwóch kontenerów, z których każdy montuje *wolumin emptyDir:*
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json -->
 [!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
 
-Aby zapoznać się z przykładami wdrożenia grupy kontenerów, zobacz [wdrażanie grupy wielokontenerowej przy użyciu szablonu Menedżer zasobów](container-instances-multi-container-group.md) i [wdrażanie grupy wielokontenera przy użyciu pliku YAML](container-instances-multi-container-yaml.md).
+Aby wyświetlić przykłady wdrażania grupy kontenerów, zobacz [Wdrażanie grupy wielu kontenerów przy użyciu szablonu Menedżera zasobów](container-instances-multi-container-group.md) i [wdrażanie grupy wielu kontenerów przy użyciu pliku YAML](container-instances-multi-container-yaml.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak zainstalować inne typy woluminów w Azure Container Instances:
+Dowiedz się, jak zainstalować inne typy woluminów w wystąpieniach kontenera platformy Azure:
 
 * [Instalowanie udziału plików platformy Azure w usłudze Azure Container Instances](container-instances-volume-azure-files.md)
-* [Zainstaluj wolumin gitRepo w Azure Container Instances](container-instances-volume-gitrepo.md)
-* [Zainstaluj wolumin tajny w Azure Container Instances](container-instances-volume-secret.md)
+* [Instalowanie woluminu gitRepo w wystąpieniach kontenera platformy Azure](container-instances-volume-gitrepo.md)
+* [Instalowanie woluminu tajnego w wystąpieniach kontenera platformy Azure](container-instances-volume-secret.md)

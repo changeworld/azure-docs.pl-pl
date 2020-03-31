@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 02/09/2020
 ms.author: glenga
 ms.openlocfilehash: 1fc37c6f93fba34944caa7a91c2a89ce5dcdc398
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78201941"
 ---
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
 > [!TIP]
-> Podczas uruchamiania Host pobiera i instaluje [rozszerzenie powiązania magazynu](../articles/azure-functions/functions-bindings-storage-queue.md#functions-2x-and-higher) oraz inne rozszerzenia powiązań firmy Microsoft. Ta instalacja jest wykonywana, ponieważ rozszerzenia powiązań są domyślnie włączone w pliku *host. JSON* o następujących właściwościach:
+> Podczas uruchamiania host pobiera i instaluje [rozszerzenie powiązania magazynu](../articles/azure-functions/functions-bindings-storage-queue.md#functions-2x-and-higher) i inne rozszerzenia powiązania firmy Microsoft. Ta instalacja odbywa się, ponieważ rozszerzenia powiązania są domyślnie włączone w pliku *host.json* z następującymi właściwościami:
 >
 > ```json
 > {
@@ -25,5 +25,5 @@ ms.locfileid: "78201941"
 > }
 > ```
 >
-> Jeśli występują błędy związane z rozszerzeniami powiązań, sprawdź, czy powyższe właściwości znajdują się w pliku *host. JSON*.
+> Jeśli wystąpią jakiekolwiek błędy związane z rozszerzeniami wiązania, sprawdź, czy powyższe właściwości są obecne w *pliku host.json*.
 ::: zone-end  

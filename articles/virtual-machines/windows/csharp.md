@@ -1,6 +1,6 @@
 ---
-title: Tworzenie maszyny wirtualnej platformy Azure i zarządzanie nią przy użyciu programuC#
-description: Użyj C# i Azure Resource Manager, aby wdrożyć maszynę wirtualną i wszystkie jej zasoby pomocnicze.
+title: 'Tworzenie maszyny wirtualnej platformy Azure i zarządzanie nią przy użyciu języka C #'
+description: Użyj języka C# i usługi Azure Resource Manager, aby wdrożyć maszynę wirtualną i wszystkie jej zasoby pomocnicze.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,51 +15,51 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: 3930e51f63615abd21a7b04199a0f4767925792a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944511"
 ---
-# <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi na platformie Azure za pomocąC# #
+# <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi na platformie Azure przy użyciu języka C # #
 
-[Maszyna wirtualna platformy Azure](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) wymaga kilku dodatkowych zasobów platformy Azure. W tym artykule opisano tworzenie i usuwanie zasobów maszyn wirtualnych oraz zarządzanie C#nimi za pomocą programu. Omawiane kwestie:
+[Maszyna wirtualna platformy Azure](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) potrzebuje kilku zasobów platformy Azure. W tym artykule opisano tworzenie zasobów maszyn wirtualnych, zarządzanie nimi i usuwanie ich przy użyciu języka C#. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Tworzenie projektu programu Visual Studio
 > * Zainstaluj pakiet
-> * Utwórz poświadczenia
+> * Tworzenie poświadczeń
 > * Tworzenie zasobów
 > * Wykonywanie zadań zarządzania
 > * Usuwanie zasobów
 > * Uruchamianie aplikacji
 
-Wykonanie tych kroków trwa około 20 minut.
+To trwa około 20 minut, aby wykonać te kroki.
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-1. Jeśli jeszcze tego nie zrobiono, zainstaluj [program Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wybierz pozycję **Programowanie aplikacji klasycznych platformy .NET** na stronie obciążenia, a następnie kliknij przycisk **Zainstaluj**. W podsumowaniu można zobaczyć, że **.NET Framework narzędzia deweloperskie 4-4,6** są automatycznie wybierane. Jeśli masz już zainstalowany program Visual Studio, możesz dodać obciążenie .NET przy użyciu programu uruchamiania programu Visual Studio.
-2. W programie Visual Studio kliknij kolejno pozycje **Plik** > **Nowy** > **Projekt**.
-3. W **obszarze Szablony** > **Wizualizacja C#** wybierz pozycję **aplikacja konsoli (.NET Framework)** , wprowadź *myDotnetProject* jako nazwę projektu, wybierz lokalizację projektu, a następnie kliknij przycisk **OK**.
+1. Jeśli jeszcze tego nie zrobiłeś, zainstaluj [program Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wybierz pozycję **.NET desktop development** na stronie Obciążenia, a następnie kliknij pozycję **Zainstaluj**. W podsumowaniu widać, że **narzędzia programistyczne .NET Framework 4 - 4.6** są automatycznie wybierane. Jeśli program Visual Studio został już zainstalowany, można dodać obciążenie platformy .NET przy użyciu programu Visual Studio Launcher.
+2. W programie Visual Studio kliknij pozycję **Plik** > **nowego** > **projektu**.
+3. W **obszarze Szablony** > **Visual C#** wybierz pozycję **Aplikacja konsoli (.NET Framework)** wprowadź *myDotnetProject* dla nazwy projektu, wybierz lokalizację projektu, a następnie kliknij przycisk **OK**.
 
 ## <a name="install-the-package"></a>Zainstaluj pakiet
 
-Pakiety NuGet to najprostszy sposób instalacji bibliotek, które należy wykonać, aby zakończyć te kroki. Aby uzyskać biblioteki, które są potrzebne w programie Visual Studio, wykonaj następujące czynności:
+Pakiety NuGet są najprostszym sposobem zainstalowania bibliotek, które należy wykonać te kroki. Aby uzyskać biblioteki, które są potrzebne w programie Visual Studio, wykonaj następujące kroki:
 
-1. Kliknij kolejno pozycje **narzędzia** > **Menedżer pakietów NuGet**, a następnie kliknij pozycję **konsola Menedżera pakietów**.
-2. Wpisz następujące polecenie w konsoli programu:
+1. Kliknij pozycję **Tools** > **Nuget Package Manager**, a następnie kliknij pozycję **Konsola Menedżera pakietów**.
+2. Wpisz to polecenie w konsoli:
 
     ```
     Install-Package Microsoft.Azure.Management.Fluent
     ```
 
-## <a name="create-credentials"></a>Utwórz poświadczenia
+## <a name="create-credentials"></a>Tworzenie poświadczeń
 
-Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do jednostki [usługi Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md). Należy również zarejestrować identyfikator aplikacji, klucz uwierzytelniania i identyfikator dzierżawy, które są potrzebne w późniejszym kroku.
+Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do [jednostki usługi Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md). Należy również zarejestrować identyfikator aplikacji, klucz uwierzytelniania i identyfikator dzierżawy, które są potrzebne w późniejszym kroku.
 
-### <a name="create-the-authorization-file"></a>Utwórz plik autoryzacji
+### <a name="create-the-authorization-file"></a>Tworzenie pliku autoryzacji
 
-1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy pozycję *myDotnetProject* > **Dodaj** > **nowy element**, a następnie wybierz pozycję **plik tekstowy** w *pozycji elementy wizualne C#* . Nazwij plik *azureauth. Properties*, a następnie kliknij przycisk **Dodaj**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy *myDotnetProject* > **Dodaj** > **nowy element,** a następnie wybierz polecenie Plik **tekstowy** w *elementów programu Visual C#*. Nazwij plik *azureauth.properties,* a następnie kliknij przycisk **Dodaj**.
 2. Dodaj następujące właściwości autoryzacji:
 
     ```
@@ -73,10 +73,10 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do jednostki [usł
     graphURL=https://graph.microsoft.com/
     ```
 
-    Zastąp **&lt;Identyfikator subskrypcji&gt;** identyfikatorem subskrypcji, **&lt;identyfikatorem aplikacji&gt;** z identyfikatorem aplikacji Active Directory, **&lt;klucz uwierzytelniania**&gt;z kluczem aplikacji, a **&lt;identyfikator dzierżawy&gt;** z identyfikatorem dzierżawy.
+    Zamień ** &lt;identyfikator&gt; subskrypcji** identyfikatorem subskrypcji, ** &lt;identyfikatorem&gt; aplikacji** identyfikatorem usługi Active Directory na identyfikator aplikacji usługi Active Directory, ** &lt;kluczem&gt; uwierzytelniania** kluczem aplikacji i ** &lt;identyfikatorem dzierżawy&gt; ** identyfikatorem dzierżawy.
 
-3. Zapisz plik azureauth. Properties. 
-4. Ustaw zmienną środowiskową w systemie Windows o nazwie AZURE_AUTH_LOCATION z pełną ścieżką do pliku autoryzacji, który został utworzony. Na przykład można użyć następującego polecenia programu PowerShell:
+3. Zapisz plik azureauth.properties. 
+4. Ustaw zmienną środowiskową w systemie Windows o nazwie AZURE_AUTH_LOCATION z pełną ścieżką do utworzonego pliku autoryzacji. Można na przykład użyć następującego polecenia programu PowerShell:
 
     ```
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
@@ -84,7 +84,7 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do jednostki [usł
 
 ### <a name="create-the-management-client"></a>Tworzenie klienta zarządzania
 
-1. Otwórz plik Program.cs dla utworzonego projektu. Następnie Dodaj te instrukcje przy użyciu instrukcji do istniejących instrukcji w górnej części pliku:
+1. Otwórz plik Program.cs dla utworzonego projektu. Następnie dodaj je przy użyciu instrukcji do istniejących instrukcji w górnej części pliku:
 
     ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -94,7 +94,7 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do jednostki [usł
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     ```
 
-2. Aby utworzyć klienta zarządzania programu, Dodaj następujący kod do metody Main:
+2. Aby utworzyć klienta zarządzania, dodaj ten kod do Main metody:
 
     ```csharp
     var credentials = SdkContext.AzureCredentialsFactory
@@ -111,9 +111,9 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do jednostki [usł
 
 ### <a name="create-the-resource-group"></a>Tworzenie grupy zasobów
 
-Wszystkie zasoby muszą być zawarte w [grupie zasobów](../../azure-resource-manager/management/overview.md).
+Wszystkie zasoby muszą znajdować się w [grupie zasobów](../../azure-resource-manager/management/overview.md).
 
-Aby określić wartości dla aplikacji i utworzyć grupę zasobów, Dodaj ten kod do metody Main:
+Aby określić wartości dla aplikacji i utworzyć grupę zasobów, dodaj ten kod do metody Main:
 
 ```csharp
 var groupName = "myResourceGroup";
@@ -128,9 +128,9 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
 
 ### <a name="create-the-availability-set"></a>Tworzenie zestawu dostępności
 
-[Zestawy dostępności](tutorial-availability-sets.md) ułatwiają zarządzanie maszynami wirtualnymi używanymi przez aplikację.
+[Zestawy dostępności](tutorial-availability-sets.md) ułatwiają utrzymanie maszyn wirtualnych używanych przez aplikację.
 
-Aby utworzyć zestaw dostępności, Dodaj następujący kod do metody Main:
+Aby utworzyć zestaw dostępności, dodaj ten kod do Main metody:
 
 ```csharp
 Console.WriteLine("Creating availability set...");
@@ -143,9 +143,9 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
 
 ### <a name="create-the-public-ip-address"></a>Tworzenie publicznego adresu IP
 
-[Publiczny adres IP](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) jest wymagany do komunikowania się z maszyną wirtualną.
+[Publiczny adres IP](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) jest potrzebny do komunikowania się z maszyną wirtualną.
 
-Aby utworzyć publiczny adres IP dla maszyny wirtualnej, Dodaj ten kod do metody Main:
+Aby utworzyć publiczny adres IP dla maszyny wirtualnej, dodaj ten kod do metody Main:
    
 ```csharp
 Console.WriteLine("Creating public IP address...");
@@ -160,7 +160,7 @@ var publicIPAddress = azure.PublicIPAddresses.Define("myPublicIP")
 
 Maszyna wirtualna musi znajdować się w podsieci [sieci wirtualnej](../../virtual-network/virtual-networks-overview.md).
 
-Aby utworzyć podsieć i sieć wirtualną, Dodaj ten kod do metody Main:
+Aby utworzyć podsieć i sieć wirtualną, dodaj ten kod do metody Main:
 
 ```csharp
 Console.WriteLine("Creating virtual network...");
@@ -172,11 +172,11 @@ var network = azure.Networks.Define("myVNet")
     .Create();
 ```
 
-### <a name="create-the-network-interface"></a>Utwórz interfejs sieciowy
+### <a name="create-the-network-interface"></a>Tworzenie interfejsu sieciowego
 
-Maszyna wirtualna musi mieć interfejs sieciowy, aby komunikować się z siecią wirtualną.
+Maszyna wirtualna potrzebuje interfejsu sieciowego do komunikowania się w sieci wirtualnej.
 
-Aby utworzyć interfejs sieciowy, Dodaj następujący kod do metody Main:
+Aby utworzyć interfejs sieciowy, dodaj ten kod do metody Main:
 
 ```csharp
 Console.WriteLine("Creating network interface...");
@@ -192,9 +192,9 @@ var networkInterface = azure.NetworkInterfaces.Define("myNIC")
 
 ### <a name="create-the-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Teraz, gdy wszystkie zasoby pomocnicze zostały utworzone, można utworzyć maszynę wirtualną.
+Teraz, gdy utworzono wszystkie zasoby pomocnicze, można utworzyć maszynę wirtualną.
 
-Aby utworzyć maszynę wirtualną, Dodaj ten kod do metody Main:
+Aby utworzyć maszynę wirtualną, dodaj ten kod do metody Main:
 
 ```csharp
 Console.WriteLine("Creating virtual machine...");
@@ -212,11 +212,11 @@ azure.VirtualMachines.Define(vmName)
 ```
 
 > [!NOTE]
-> Ten samouczek tworzy maszynę wirtualną z uruchomioną wersją systemu operacyjnego Windows Server. Aby dowiedzieć się więcej na temat wybierania innych obrazów, zobacz [nawigowanie i wybieranie obrazów maszyn wirtualnych platformy Azure za pomocą programu Windows PowerShell i interfejsu wiersza polecenia platformy Azure](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> W tym samouczku utworzy się maszynę wirtualną z uruchomieniem wersji systemu operacyjnego Windows Server. Aby dowiedzieć się więcej na temat wybierania innych obrazów, zobacz [Nawigowanie i wybieranie obrazów maszyn wirtualnych platformy Azure za pomocą programu Windows PowerShell i interfejsu wiersza polecenia platformy Azure](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 >
 
-Jeśli chcesz użyć istniejącego dysku zamiast obrazu z witryny Marketplace, użyj tego kodu:
+Jeśli chcesz użyć istniejącego dysku zamiast obrazu w portalu marketplace, użyj tego kodu:
 
 ```csharp
 var managedDisk = azure.Disks.Define("myosdisk")
@@ -239,17 +239,17 @@ azure.VirtualMachines.Define("myVM")
 
 ## <a name="perform-management-tasks"></a>Wykonywanie zadań zarządzania
 
-W trakcie cyklu życia maszyny wirtualnej można uruchamiać zadania zarządzania, takie jak uruchamianie, zatrzymywanie lub usuwanie maszyny wirtualnej. Ponadto możesz chcieć utworzyć kod w celu zautomatyzowania powtarzalnych lub złożonych zadań.
+W trakcie cyklu życia maszyny wirtualnej można uruchamiać zadania zarządzania, takie jak uruchamianie, zatrzymywanie lub usuwanie maszyny wirtualnej. Ponadto można utworzyć kod do automatyzacji powtarzających się lub złożonych zadań.
 
-Jeśli chcesz zrobić coś z maszyną wirtualną, musisz uzyskać jego wystąpienie:
+Gdy musisz coś zrobić z maszyną wirtualną, musisz uzyskać jej wystąpienie:
 
 ```csharp
 var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 ```
 
-### <a name="get-information-about-the-vm"></a>Pobierz informacje o maszynie wirtualnej
+### <a name="get-information-about-the-vm"></a>Uzyskaj informacje o maszynie wirtualnej
 
-Aby uzyskać informacje o maszynie wirtualnej, Dodaj ten kod do metody Main:
+Aby uzyskać informacje o maszynie wirtualnej, dodaj ten kod do Main metody:
 
 ```csharp
 Console.WriteLine("Getting information about the virtual machine...");
@@ -319,9 +319,9 @@ Console.ReadLine();
 
 ### <a name="stop-the-vm"></a>Zatrzymywanie maszyny wirtualnej
 
-Można zatrzymać maszynę wirtualną i zachować wszystkie jej ustawienia, ale w dalszym ciągu korzystać z niej lub można zatrzymać maszynę wirtualną i cofnąć jej przydział. Po cofnięciu przydziału maszyny wirtualnej wszystkie skojarzone z nią zasoby są również cofane i rozliczane.
+Można zatrzymać maszynę wirtualną i zachować wszystkie jej ustawienia, ale nadal być naliczane za nią lub można zatrzymać maszynę wirtualną i przydzielić ją. Gdy maszyna wirtualna jest cofnięta alokacja, wszystkie zasoby skojarzone z nią są również cofnięte i kończy się rozliczenia dla niego.
 
-Aby zatrzymać maszynę wirtualną bez cofania jej przydziału, Dodaj ten kod do metody Main:
+Aby zatrzymać maszynę wirtualną bez rozdzielania jej, dodaj ten kod do metody Main:
 
 ```csharp
 Console.WriteLine("Stopping vm...");
@@ -330,7 +330,7 @@ Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-Jeśli chcesz cofnąć alokację maszyny wirtualnej, Zmień wywołanie wyłączenie na ten kod:
+Jeśli chcesz zmienić alokację maszyny wirtualnej, zmień wywołanie usługi PowerOff na ten kod:
 
 ```csharp
 vm.Deallocate();
@@ -338,7 +338,7 @@ vm.Deallocate();
 
 ### <a name="start-the-vm"></a>Uruchamianie maszyny wirtualnej
 
-Aby uruchomić maszynę wirtualną, Dodaj ten kod do metody Main:
+Aby uruchomić maszynę wirtualną, dodaj ten kod do main metody:
 
 ```csharp
 Console.WriteLine("Starting vm...");
@@ -347,11 +347,11 @@ Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-### <a name="resize-the-vm"></a>Zmiana rozmiaru maszyny wirtualnej
+### <a name="resize-the-vm"></a>Ponowne rozmiary maszyny Wirtualnej
 
-Podczas wybierania rozmiaru maszyny wirtualnej należy wziąć pod uwagę wiele aspektów wdrożenia. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych](sizes.md).  
+Wiele aspektów wdrażania należy wziąć pod uwagę przy podejmowaniu decyzji o rozmiarze maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Rozmiary maszyn wirtualnych](sizes.md).  
 
-Aby zmienić rozmiar maszyny wirtualnej, Dodaj ten kod do metody Main:
+Aby zmienić rozmiar maszyny wirtualnej, dodaj ten kod do Metody głównej:
 
 ```csharp
 Console.WriteLine("Resizing vm...");
@@ -364,7 +364,7 @@ Console.ReadLine();
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Dodawanie dysku danych do maszyny wirtualnej
 
-Aby dodać dysk danych do maszyny wirtualnej, Dodaj ten kod do metody Main. Ten przykład dodaje dysk danych o rozmiarze 2 GB, Han a LUN 0 i typ buforowania ReadWrite:
+Aby dodać dysk danych do maszyny wirtualnej, dodaj ten kod do metody Main. W tym przykładzie dodaje dysk danych o rozmiarze 2 GB, han jednostkę LUN 0 i typ buforowania ReadWrite:
 
 ```csharp
 Console.WriteLine("Adding data disk to vm...");
@@ -377,9 +377,9 @@ Console.ReadLine();
 
 ## <a name="delete-resources"></a>Usuwanie zasobów
 
-Ze względu na to, że opłaty są naliczone za zasoby używane na platformie Azure, zawsze warto usunąć zasoby, które nie są już potrzebne. Jeśli chcesz usunąć maszyny wirtualne i wszystkie zasoby pomocnicze, wystarczy usunąć grupę zasobów.
+Ponieważ są naliczane opłaty za zasoby używane na platformie Azure, zawsze jest dobrą praktyką, aby usunąć zasoby, które nie są już potrzebne. Jeśli chcesz usunąć maszyny wirtualne i wszystkie zasoby pomocnicze, wszystko, co musisz zrobić, to usunąć grupę zasobów.
 
-Aby usunąć grupę zasobów, Dodaj następujący kod do metody Main:
+Aby usunąć grupę zasobów, dodaj ten kod do metody Main:
 
 ```csharp
 azure.ResourceGroups.DeleteByName(groupName);
@@ -387,12 +387,12 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Ukończenie działania tej aplikacji konsolowej od początku do końca trwa około pięciu minut. 
+Powinno upłynąć około pięciu minut, aby ta aplikacja konsoli działała całkowicie od początku do końca. 
 
-1. Aby uruchomić aplikację konsolową, kliknij przycisk **Uruchom**.
+1. Aby uruchomić aplikację konsoli, kliknij przycisk **Start**.
 
-2. Przed naciśnięciem klawisza **Enter** w celu rozpoczęcia usuwania zasobów można sprawdzić poprawność tworzenia zasobów w Azure Portal. Kliknij stan wdrożenia, aby wyświetlić informacje o wdrożeniu.
+2. Przed naciśnięciem **klawisza Enter,** aby rozpocząć usuwanie zasobów, może upłynąć kilka minut, aby zweryfikować tworzenie zasobów w witrynie Azure portal. Kliknij stan wdrożenia, aby wyświetlić informacje o wdrożeniu.
 
 ## <a name="next-steps"></a>Następne kroki
-* Skorzystaj z szablonu, aby utworzyć maszynę wirtualną przy użyciu informacji w temacie [Wdrażanie maszyny wirtualnej platformy Azure przy użyciu programu C# i szablonu Menedżer zasobów](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Skorzystaj z używania szablonu do tworzenia maszyny wirtualnej przy użyciu informacji zawartych w [usłudze Wdrażanie maszyny wirtualnej platformy Azure przy użyciu języka C# i szablonu Menedżera zasobów.](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * Dowiedz się więcej o korzystaniu z [bibliotek platformy Azure dla platformy .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet).

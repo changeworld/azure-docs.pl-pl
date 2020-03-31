@@ -1,22 +1,22 @@
 ---
-title: MultiStorageAccountCombo — element interfejsu użytkownika
-description: Opisuje element interfejsu użytkownika Microsoft. Storage. MultiStorageAccountCombo dla Azure Portal.
+title: Element interfejsu użytkownika MultiStorageAccountCombo
+description: Zawiera opis elementu interfejsu użytkownika microsoft.storage.MultiStorageAccountCombo dla witryny Azure portal.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 06412a1f08f1f242a3f3bd9be17b795ee09fcf9d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651880"
 ---
-# <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft.Storage.MultiStorageAccountCombo UI element
+# <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft.Storage.MultiStorageAccountCombo Element interfejsu użytkownika
 
-Grupa kontrolek do tworzenia kilku kont magazynu z nazwami, które zaczynają się od wspólnego prefiksu.
+Grupa formantów do tworzenia kilku kont magazynu o nazwach, które zaczynają się od wspólnego prefiksu.
 
-## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
+## <a name="ui-sample"></a>Próbka interfejsu użytkownika
 
 ![Microsoft.Storage.MultiStorageAccountCombo](./media/managed-application-elements/microsoft.storage.multistorageaccountcombo.png)
 
@@ -60,13 +60,13 @@ Grupa kontrolek do tworzenia kilku kont magazynu z nazwami, które zaczynają si
 
 ## <a name="remarks"></a>Uwagi
 
-- Wartość `defaultValue.prefix` jest łączona z co najmniej jedną liczbą całkowitą w celu wygenerowania sekwencji nazw kont magazynu. Na przykład jeśli `defaultValue.prefix` jest **sa** i `count` ma **2**, generowane są nazwy kont magazynu **SA1** i **SA2** . Nazwy wygenerowanego konta magazynu są sprawdzane automatycznie w celu zapewnienia unikatowości.
-- Nazwy kont magazynu są generowane lexicographically na podstawie `count`. Na przykład jeśli `count` wynosi 10, wówczas nazwy kont magazynu kończą się dwoma cyfrowymi liczbami całkowitymi (01, 02, 03).
-- Wartość domyślna `defaultValue.prefix` ma **wartość null**, a dla `defaultValue.type` jest **Premium_LRS**.
-- Dowolny typ nieokreślony w `constraints.allowedTypes` jest ukryty, a żaden typ nie został określony w `constraints.excludedTypes` jest pokazywany. `constraints.allowedTypes` i `constraints.excludedTypes` są opcjonalne, ale nie mogą być używane jednocześnie.
-- Oprócz generowania nazw kont magazynu, `count` służy do ustawiania odpowiedniego mnożnika dla elementu. Obsługuje ona wartość statyczną, taką jak **2**, lub wartość dynamiczną z innego elementu, np. `[steps('step1').storageAccountCount]`. Wartość domyślna to **1**.
+- Wartość dla `defaultValue.prefix` jest łączona z jedną lub kilkoma liczbami całkowitymi w celu wygenerowania sekwencji nazw kont magazynu. Na przykład `defaultValue.prefix` jeśli jest `count` **sa** i jest **2**, a następnie nazwy kont magazynu **sa1** i **sa2** są generowane. Nazwy wygenerowanych kont magazynu są automatycznie sprawdzane pod kątem unikatowości.
+- Nazwy kont magazynu są generowane leksykograficznie na `count`podstawie . Na przykład `count` jeśli jest 10, nazwy kont magazynu kończą się dwucyfrowymi liczbami całkowitymi (01, 02, 03).
+- Wartość domyślna `defaultValue.prefix` dla to `defaultValue.type` **null**, a dla **Premium_LRS**.
+- Każdy typ, `constraints.allowedTypes` który nie jest określony w `constraints.excludedTypes` jest ukryty, a każdy typ, który nie jest określony w, jest wyświetlany. `constraints.allowedTypes`i `constraints.excludedTypes` są opcjonalne, ale nie mogą być używane jednocześnie.
+- Oprócz generowania nazw kont `count` magazynu, służy do ustawiania odpowiedniego mnożnika dla elementu. Obsługuje wartość statyczną, taką jak **2**lub wartość dynamiczną z innego elementu, na przykład. `[steps('step1').storageAccountCount]` Wartość domyślna to **1**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
-* Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).
+* Aby zapoznać się z wprowadzeniem do tworzenia definicji interfejsu użytkownika, zobacz [Wprowadzenie do createuidefinition](create-uidefinition-overview.md).
+* Aby uzyskać opis wspólnych właściwości w elementach interfejsu użytkownika, zobacz [CreateUiDefinition elementów](create-uidefinition-elements.md).
