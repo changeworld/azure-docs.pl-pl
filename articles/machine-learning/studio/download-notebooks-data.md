@@ -1,7 +1,7 @@
 ---
-title: Jak pobrać dane notesów (wersja zapoznawcza)
+title: Jak pobrać dane notesów (podglądu)
 titleSuffix: ML Studio (classic) - Azure
-description: Jak pobrać dane notesów (wersja zapoznawcza) w ML Studio (klasyczne).
+description: Jak pobrać notebooki (podgląd) dane w ML Studio (classic).
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
@@ -9,25 +9,25 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/12/2020
 ms.openlocfilehash: 9c4215d2c2e811b4c6369ee3773fb811695da4fd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204362"
 ---
-# <a name="download-notebookspreview-data"></a>Pobierz dane notesów (wersja zapoznawcza)
+# <a name="download-notebookspreview-data"></a>Pobieranie danych notesów (podglądu)
 
-Funkcja notesów (wersja zapoznawcza) zostanie usunięta z *kwietnia 13 2020*. Po tej dacie karta notesy (wersja zapoznawcza) zostanie usunięta i nie będzie można przywrócić danych z notesów. Pobierz dane z notesów przed 13 2020 kwietnia.
+Funkcja Notes (wersja zapoznawcza) zostanie usunięta *13 kwietnia 2020 r.* Po tej dacie karta Notesy (podgląd) zniknie i nie można przywrócić danych notesów. Pobierz dane notesów przed 13 kwietnia 2020 r.
 
-Ten artykuł zawiera instrukcje krok po kroku dotyczące pobierania danych notesów (wersja zapoznawcza).
+Ten artykuł zawiera instrukcje krok po kroku dotyczące pobierania danych notesów (wersji zapoznawczej).
 
-1. Przejdź do karty **notesy** w Azure Machine Learning Studio (klasyczne).
-    ![przechodzenie do karty notesy!](./media/download-notebooks/notebooks-list.png)
+1. Przejdź do karty **Notesy** w usłudze Azure Machine Learning Studio (klasyczny).
+    ![Przejdź do karty Notesy!](./media/download-notebooks/notebooks-list.png)
 
-1. Wybierz Notes, który chcesz pobrać. Zostanie on otwarty w Jupyter.
-    ![wybrać Notes](./media/download-notebooks/select-notebook.png) jednocześnie pobranie wielu notesów nie jest obsługiwane.
+1. Wybierz notes, który chcesz pobrać. Otworzy się w Jupyter.
+    ![Wybierz notes](./media/download-notebooks/select-notebook.png) Pobieranie wielu notesów jednocześnie nie jest obsługiwane.
 
-1. Przejdź do **plików** -> **Pobierz jako**i wybierz opcję Format.
-    ![opcje pobierania notesu](./media/download-notebooks/download-options.PNG)
+1. Przejdź do **opcji Pobieranie plików** -> **jako**i wybierz opcję formatu.
+    ![Opcje pobierania notesu](./media/download-notebooks/download-options.PNG)
 
-1. Po wybraniu opcji plik notesu rozpocznie się pobieranie. Zignoruj wszystkie błędy 500 lub 502, które są wyświetlane, nie wpłyną na pobieranie.
+1. Po wybraniu opcji plik notesu rozpocznie pobieranie. Zignoruj wszystkie pojawiające się błędy 500 lub 502, nie będą miały wpływu na pobieranie.

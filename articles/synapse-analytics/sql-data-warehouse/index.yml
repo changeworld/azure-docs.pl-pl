@@ -4,20 +4,20 @@ summary: Azure Synapse to nieograniczona usługa analizy, która łączy magazyn
 metadata:
   title: Azure Synapse Analytics
   description: Azure Synapse to nieograniczona usługa analizy, która łączy magazynowanie danych przedsiębiorstwa z analizą danych big data. Zapewnia swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, korzystając z bezserwerowych zasobów na żądanie lub aprowizowanych zasobów — w dużej skali.
-  services: sql-data-warehouse
-  ms.service: sql-data-warehouse
-  ms.subservice: design
+  services: synapse-analytics
+  ms.service: synapse-analytics
+  ms.subservice: 
   ms.topic: landing-page
   ms.collection: collection
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 10/03/2019
-  ms.openlocfilehash: 36943d330d0bd97fe6139f5cfa19da571fc70835
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 0622aa7566d88a58ae33741cd844ba66b2459ec1
+  ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "80135678"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80346578"
 landingContent:
 - title: Informacje o usłudze Azure Synapse Analytics
   linkLists:
@@ -45,7 +45,7 @@ landingContent:
     links:
     - text: Projektowanie strategii ładowania danych
       url: design-elt-data-loading.md
-    - text: Najlepsze praktyki
+    - text: Najlepsze rozwiązania
       url: guidance-for-loading-data.md
   - linkListType: how-to-guide
     links:
@@ -59,7 +59,7 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: Najlepsze praktyki
+    - text: Najlepsze rozwiązania
       url: sql-data-warehouse-best-practices.md
     - text: Dostosowywanie uporządkowanego klastrowanego indeksu magazynu kolumn
       url: performance-tuning-ordered-cci.md

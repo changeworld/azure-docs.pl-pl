@@ -1,35 +1,35 @@
 ---
-title: Szablony Menedżer zasobów dla interfejsu API usługi Azure Cosmos DB Gremlin
-description: Użyj szablonów Azure Resource Manager, aby utworzyć i skonfigurować interfejs API usługi Azure Cosmos DB Gremlin.
+title: Szablony Menedżera zasobów dla interfejsu API gremlin usługi Azure Cosmos DB
+description: Tworzenie i konfigurowanie interfejsu API Gremlin usługi Azure Cosmos DB za pomocą szablonów usługi Azure Resource Manager.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
 ms.openlocfilehash: e4c18d93f07cb2143dcc5bf9c93b9ac7298d2f7b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246749"
 ---
-# <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Zarządzanie zasobami interfejsu API usługi Azure Cosmos DB Gremlin przy użyciu szablonów Azure Resource Manager
+# <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Zarządzanie zasobami interfejsu API usługi Azure Cosmos DB Gremlin przy użyciu szablonów usługi Azure Resource Manager
 
-W tym artykule opisano sposób wykonywania różnych operacji w celu zautomatyzowania zarządzania kontami Azure Cosmos DB, bazami danych i kontenerami przy użyciu szablonów Azure Resource Manager. W tym artykule przedstawiono przykłady tylko dla kont interfejsu API Gremlin, aby znaleźć przykłady dla innych kont typu interfejsu API, zobacz: korzystanie z szablonów Azure Resource Manager z interfejsem API Azure Cosmos DB dla [Cassandra](manage-cassandra-with-resource-manager.md), [SQL](manage-sql-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md)i [tabel](manage-table-with-resource-manager.md) .
+W tym artykule opisano sposób wykonywania różnych operacji w celu zautomatyzowania zarządzania kontami, bazami danych i kontenerami usługi Azure Cosmos DB przy użyciu szablonów usługi Azure Resource Manager. W tym artykule przedstawiono przykłady tylko kont interfejsu API gremlin, aby znaleźć przykłady dla innych kont typu interfejsu API zobacz: użyj szablonów usługi Azure Resource Manager z interfejsem API usługi Azure Cosmos DB dla [cassandra](manage-cassandra-with-resource-manager.md), [SQL](manage-sql-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md), [artykuły tabeli.](manage-table-with-resource-manager.md)
 
-## Tworzenie Azure Cosmos DB interfejsu API dla konta MongoDB, bazy danych i kolekcji<a id="create-resource"></a>
+## <a name="create-azure-cosmos-db-api-for-mongodb-account-database-and-collection"></a>Tworzenie interfejsu API bazy danych usługi Azure Cosmos dla konta, bazy danych i kolekcji usługi MongoDB<a id="create-resource"></a>
 
-Tworzenie Azure Cosmos DB zasobów przy użyciu szablonu Azure Resource Manager. Ten szablon utworzy konto usługi Azure Cosmos dla interfejsu API Gremlin z dwoma wykresami, które współdzielą przepływność na 400 RU/s na poziomie bazy danych. Skopiuj szablon i Wdróż, jak pokazano poniżej, lub odwiedź [galerię szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-gremlin/) i Wdróż ją z Azure Portal. Możesz również pobrać szablon na komputer lokalny lub utworzyć nowy szablon i określić ścieżkę lokalną za pomocą parametru `--template-file`.
+Tworzenie zasobów usługi Azure Cosmos DB przy użyciu szablonu usługi Azure Resource Manager. Ten szablon utworzy konto usługi Azure Cosmos dla interfejsu API Gremlin z dwoma wykresami, które współużytkują przepływność 400 RU/s na poziomie bazy danych. Skopiuj szablon i wdrażaj go w sposób pokazany poniżej lub odwiedź [galerię Szybki start platformy Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-gremlin/) i wdrażaj go w witrynie Azure Portal. Można również pobrać szablon na komputer lokalny lub utworzyć nowy szablon `--template-file` i określić ścieżkę lokalną z parametrem.
 
 > [!NOTE]
-> Nazwy kont muszą zawierać małe litery i 44 lub mniej znaków.
-> Aby zaktualizować RU/s, ponownie prześlij szablon ze zaktualizowanymi wartościami właściwości przepływności.
+> Nazwy kont muszą być małe i 44 lub mniej znaków.
+> Aby zaktualizować program RU/s, należy ponownie przesłać szablon ze zaktualizowanymi wartościami właściwości przepływności.
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-gremlin/azuredeploy.json":::
 
-## <a name="deploy-with-the-azure-cli"></a>Wdrażanie przy użyciu interfejsu wiersza polecenia platformy Azure
+## <a name="deploy-with-the-azure-cli"></a>Wdrażanie za pomocą interfejsu wiersza polecenia platformy Azure
 
-Aby wdrożyć szablon Azure Resource Manager przy użyciu interfejsu wiersza polecenia platformy Azure, **Skopiuj** skrypt i wybierz opcję **Wypróbuj** , aby otworzyć Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
+Aby wdrożyć szablon Usługi Azure Resource Manager przy użyciu interfejsu wiersza polecenia platformy Azure, **skopiuj** skrypt i wybierz pozycję **Spróbuj go** otworzyć usługę Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
 
 ```azurecli-interactive
 
@@ -51,13 +51,13 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-Polecenie `az cosmosdb show` wyświetla nowo utworzone konto usługi Azure Cosmos po jego aprowizacji. Jeśli zdecydujesz się użyć lokalnie zainstalowanej wersji interfejsu wiersza polecenia platformy Azure zamiast korzystania z Cloud Shell, zobacz artykuł [interfejsu wiersza polecenia platformy Azure](/cli/azure/) .
+Polecenie `az cosmosdb show` pokazuje nowo utworzone konto usługi Azure Cosmos po jego zainicjowaniu obsługi administracyjnej. Jeśli zdecydujesz się użyć lokalnie zainstalowanej wersji interfejsu wiersza polecenia platformy Azure zamiast korzystania z usługi Cloud Shell, zobacz artykuł [interfejsu wiersza polecenia platformy Azure.](/cli/azure/)
 
 ## <a name="next-steps"></a>Następne kroki
 
 Oto kilka dodatkowych zasobów:
 
-- [Dokumentacja Azure Resource Manager](/azure/azure-resource-manager/)
-- [Schemat dostawcy zasobów Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
-- [Azure Cosmos DB Szablony szybkiego startu](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Rozwiązywanie typowych błędów wdrażania Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md)
+- [Dokumentacja usługi Azure Resource Manager](/azure/azure-resource-manager/)
+- [Schemat dostawcy zasobów usługi Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
+- [Szablony szybkiego startu usługi Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+- [Rozwiązywanie typowych błędów wdrażania usługi Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md)

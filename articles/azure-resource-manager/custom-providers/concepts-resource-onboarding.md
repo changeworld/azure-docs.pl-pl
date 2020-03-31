@@ -1,43 +1,43 @@
 ---
 title: Dołączanie zasobów
-description: Dowiedz się więcej na temat przeprowadzania dołączania zasobów przy użyciu niestandardowych dostawców platformy Azure w celu zastosowania zarządzania lub konfiguracji do innych typów zasobów platformy Azure.
+description: Dowiedz się więcej o wykonywaniu dołączania zasobów przy użyciu dostawców niestandardowych platformy Azure w celu zastosowania zarządzania lub konfiguracji do innych typów zasobów platformy Azure.
 author: jjbfour
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: jobreen
 ms.openlocfilehash: 1846b036f12fe7e691021ec0248782cad946d9b7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75650411"
 ---
-# <a name="azure-custom-providers-resource-onboarding-overview"></a>Omówienie dołączania zasobów niestandardowych dostawców platformy Azure
+# <a name="azure-custom-providers-resource-onboarding-overview"></a>Omówienie dołączania zasobów dostawców niestandardowych platformy Azure
 
-Dołączanie zasobów niestandardowych dostawców platformy Azure jest modelem rozszerzalności dla typów zasobów platformy Azure. Pozwala to na stosowanie operacji lub zarządzania w istniejących zasobach platformy Azure na dużą skalę. Aby uzyskać więcej informacji, zobacz [jak Dostawcy niestandardowi platformy Azure mogą poszerzać platformę Azure](overview.md). W tym artykule opisano:
+Dołączanie zasobów dostawców niestandardowych platformy Azure jest modelem rozszerzalności dla typów zasobów platformy Azure. Umożliwia stosowanie operacji lub zarządzania w istniejących zasobach platformy Azure na dużą skalę. Aby uzyskać więcej informacji, zobacz [Jak dostawcy niestandardowi platformy Azure mogą rozszerzać platformę Azure](overview.md). W tym artykule opisano:
 
-- Jak można dołączać do zasobów.
-- Podstawowe informacje na temat dołączania zasobów i sposoby ich używania.
-- Gdzie można znaleźć przewodniki i przykłady kodu, aby rozpocząć pracę.
+- Co zasób dołączania może zrobić.
+- Podstawy dołączania zasobów i sposób ich używania.
+- Gdzie można znaleźć przewodniki i przykłady kodu, aby rozpocząć.
 
 > [!IMPORTANT]
 > Dostawcy niestandardowi są obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub mogą mieć ograniczone możliwości.
+> Ta wersja zapoznawcza jest dostarczana bez umowy dotyczącej poziomu usług i nie zaleca się jej dla obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwały lub mogą mieć ograniczone możliwości.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="what-can-resource-onboarding-do"></a>Co można dołączyć do zasobów?
+## <a name="what-can-resource-onboarding-do"></a>Do czego może dorównać dołączanie zasobów?
 
-Podobnie jak niestandardowe [zasoby dostawcy platformy Azure](./custom-providers-resources-endpoint-how-to.md), dołączanie do zasobów definiuje kontrakt, który spowoduje, że serwer proxy wysyła żądania do punktu końcowego. W przeciwieństwie do zasobów niestandardowych, dołączanie do zasobów nie tworzy nowego typu zasobu. Zamiast tego umożliwia rozszerzenie istniejących typów zasobów. I dołączanie do zasobów współdziała z Azure Policy, więc zarządzanie i Konfigurowanie zasobów można przeprowadzić w odpowiedniej skali. Przykłady przepływów pracy związanych z dołączaniem zasobów:
+Podobnie jak [w niestandardowych dostawcach platformy Azure,](./custom-providers-resources-endpoint-how-to.md)dołączanie zasobów definiuje kontrakt, który będzie proxy "dołączanie" żądań do punktu końcowego. W przeciwieństwie do zasobów niestandardowych dołączanie zasobów nie tworzy nowego typu zasobu. Zamiast tego umożliwia rozszerzenie istniejących typów zasobów. Dołączanie zasobów działa z usługą Azure Policy, dzięki czemu zarządzanie i konfiguracja zasobów można wykonywać na dużą skalę. Kilka przykładów przepływów pracy dołączania zasobów:
 
 - Instalowanie rozszerzeń maszyn wirtualnych i zarządzanie nimi.
-- Przekazuj i Konfiguruj wartości domyślne na kontach usługi Azure Storage.
-- Włącz ustawienia diagnostyki linii bazowej w odpowiedniej skali.
+- Przekaż i skonfiguruj wartości domyślne na kontach magazynu platformy Azure.
+- Włącz podstawowe ustawienia diagnostyczne na dużą skalę.
 
 ## <a name="resource-onboarding-basics"></a>Podstawy dołączania zasobów
 
-Konfigurowanie dołączania zasobów za pośrednictwem dostawców niestandardowych platformy Azure odbywa się przy użyciu typów zasobów Microsoft. CustomProviders/resourceProviders i Microsoft. CustomProviders/Association. Aby włączyć dołączanie zasobów dla niestandardowego dostawcy, podczas procesu konfiguracji Utwórz element typu **ResourceType** o nazwie "Associations" z atrybutem **routingtype** zawierającym wartość "Extension". Microsoft. CustomProviders/Associations i Microsoft. CustomProviders/resourceProviders nie muszą należeć do tej samej grupy zasobów.
+Konfigurowanie dołączania zasobów za pośrednictwem dostawców niestandardowych platformy Azure przy użyciu microsoft.CustomProviders/resourceProviders i Microsoft.CustomProviders/skojarzenia typów zasobów. Aby włączyć dołączanie zasobów dla dostawcy niestandardowego, podczas procesu konfiguracji utwórz **typ zasobu** o nazwie "skojarzenia" z **typem routingu,** który zawiera "Rozszerzenie". Microsoft.CustomProviders/skojarzenia i Microsoft.CustomProviders/resourceProviders nie muszą należeć do tej samej grupy zasobów.
 
-Oto przykład niestandardowego dostawcy platformy Azure:
+Oto przykładowy dostawca niestandardowy platformy Azure:
 
 ```JSON
 {
@@ -56,14 +56,14 @@ Oto przykład niestandardowego dostawcy platformy Azure:
 
 Właściwość | Wymagana? | Opis
 ---|---|---
-name | Tak | Nazwa definicji punktu końcowego. W przypadku dołączania do zasobów nazwa musi mieć wartość "Associations".
-routingtype | Tak | Określa typ kontraktu z punktem końcowym. W przypadku dołączania do zasobów prawidłowy **routingTypes** to "proxy, pamięć podręczna, rozszerzenie" i "webhook, cache, Extension".
-endpoint | Tak | Punkt końcowy, do którego będą kierowane żądania. Będzie to obsługiwać odpowiedź i wszystkie efekty uboczne żądania.
+name | Tak | Nazwa definicji punktu końcowego. W przypadku dołączania zasobów nazwa musi być "skojarzeniami".
+typ routingu | Tak | Określa typ umowy z punktem końcowym. W przypadku dołączania zasobów **prawidłowe typy routingu** to "Proxy,Cache,Extension" i "Webhook,Cache,Extension".
+endpoint | Tak | Punkt końcowy do kierowania żądań do. Spowoduje to obsługę odpowiedzi i wszelkie skutki uboczne żądania.
 
-Po utworzeniu niestandardowego dostawcy z typem zasobu skojarzenia można użyć elementu Microsoft. CustomProviders/Associations. Microsoft. CustomProviders/Associations jest zasobem rozszerzenia, który może rozszerzać każdy inny zasób platformy Azure. Po utworzeniu wystąpienia elementu Microsoft. CustomProviders/Association przyjmujemy Właściwość **element targetresourceid**, która powinna być PRAWIDŁOWYm identyfikatorem zasobu Microsoft. CustomProviders/ResourceProviders lub Microsoft. Solutions/Applications. W takich przypadkach żądanie zostanie przekazane do typu zasobu skojarzenia w utworzonym wystąpieniu Microsoft. CustomProviders/resourceProviders.
+Po utworzeniu dostawcy niestandardowego z typem zasobu skojarzeń można kierować reklamy za pomocą witryn Microsoft.CustomProviders/associations. Microsoft.CustomProviders/skojarzenia jest zasobem rozszerzenia, które można rozszerzyć dowolne inne zasoby platformy Azure. Po utworzeniu wystąpienia microsoft.CustomProviders/skojarzenia, zajmie właściwość **targetResourceId**, który powinien być prawidłowy Microsoft.CustomProviders/resourceProviders lub Microsoft.Solutions/applications resource ID. W takich przypadkach żądanie zostanie przekazane do typu zasobu skojarzeń w utworzonym wystąpieniu Microsoft.CustomProviders/resourceProviders.
 
 > [!NOTE]
-> Jeśli identyfikator zasobu Microsoft. Solutions/Applications jest określony jako **element targetresourceid**, w zarządzanej grupie zasobów musi być wdrożony pakiet Microsoft. CustomProviders/resourceProviders, który ma nazwę "Public".
+> Jeśli identyfikator zasobu Microsoft.Solutions/applications jest podany jako **obiekt docelowyResourceId,** musi istnieć microsoft.CustomProviders/resourceProviders wdrożone w grupie zasobów zarządzanych o nazwie "public".
 
 Przykładowe skojarzenie dostawców niestandardowych platformy Azure:
 
@@ -78,15 +78,15 @@ Przykładowe skojarzenie dostawców niestandardowych platformy Azure:
 
 Właściwość | Wymagana? | Opis
 ---|---|---
-Element targetresourceid | Tak | Identyfikator zasobu Microsoft. CustomProviders/resourceProviders lub Microsoft. Solutions/Applications.
+obiekt docelowyResourceId | Tak | Identyfikator zasobu microsoft.CustomProviders/resourceProviders lub Microsoft.Solutions/applications.
 
 ## <a name="how-to-use-resource-onboarding"></a>Jak korzystać z dołączania zasobów
 
-Proces dołączania do zasobów działa przez rozszerzanie innych zasobów przy użyciu zasobu rozszerzenia Microsoft. CustomProviders/Associations. W poniższym przykładzie żądanie jest wykonywane dla maszyny wirtualnej, ale można rozszerzyć dowolny zasób.
+Dołączanie zasobów działa poprzez rozszerzenie innych zasobów za pomocą zasobu rozszerzenia Microsoft.CustomProviders/associations. W poniższym przykładzie żądanie jest dla maszyny wirtualnej, ale każdy zasób można rozszerzyć.
 
-Najpierw należy utworzyć zasób niestandardowego dostawcy z typem zasobu skojarzenia. Spowoduje to zadeklarowanie adresu URL wywołania zwrotnego, który będzie używany podczas tworzenia odpowiedniego zasobu Microsoft. CustomProviders/Association, który jest przeznaczony dla dostawcy niestandardowego.
+Najpierw należy utworzyć niestandardowy zasób dostawcy z typem zasobu skojarzeń. Spowoduje to zadeklarowanie adresu URL wywołania zwrotnego, który będzie używany podczas tworzenia odpowiedniego zasobu Microsoft.CustomProviders/associations, który jest przeznaczony dla dostawcy niestandardowego.
 
-Przykładowe żądanie Microsoft. CustomProviders/resourceProviders Create:
+Przykładowe żądania tworzenia żądania przez firmę Microsoft.CustomProviders/resourceProviders:
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}?api-version=2018-09-01-preview
@@ -107,9 +107,9 @@ Content-Type: application/json
 }
 ```
 
-Po utworzeniu niestandardowego dostawcy można wskazać inne zasoby i zastosować efekty uboczne niestandardowego dostawcy.
+Po utworzeniu dostawcy niestandardowego można kierować inne zasoby i zastosować do nich skutki uboczne dostawcy niestandardowego.
 
-Przykładowe żądanie utworzenia pakietu Microsoft. CustomProviders/Association:
+Przykładowe żądanie tworzenia żądania przez microsoft.customproviders/skojarzenia:
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/providers/Microsoft.CustomProviders/associations/{associationName}?api-version=2018-09-01-preview
@@ -127,7 +127,7 @@ Content-Type: application/json
 }
 ```
 
-To żądanie zostanie następnie przekazane do punktu końcowego określonego w utworzonym dostawcy niestandardowym, do którego odwołuje się **element targetresourceid** w tej formie:
+To żądanie zostanie następnie przekazane do punktu końcowego określonego w utworzonym dostawcy niestandardowym, do którego odwołuje się **identyfikator targetResourceId** w tym formularzu:
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -146,18 +146,18 @@ X-MS-CustomProviders-ExtendedResource: /subscriptions/{subscriptionId}/resourceG
 }
 ```
 
-Punkt końcowy powinien odpowiedzieć na `Content-Type` aplikacji/JSON i prawidłową treść odpowiedzi JSON. Pola, które są zwracane w ramach obiektu **Właściwości** w formacie JSON, zostaną dodane do odpowiedzi zwrotnej skojarzenia.
+Punkt końcowy powinien odpowiadać za `Content-Type` pomocą aplikacji/json i prawidłowej treści odpowiedzi JSON. Pola, które są zwracane w obiekcie **właściwości** JSON zostaną dodane do odpowiedzi zwracanej skojarzenia.
 
 ## <a name="getting-help"></a>Uzyskiwanie pomocy
 
-Jeśli masz pytania dotyczące programowania niestandardowych dostawców zasobów platformy Azure, spróbuj zadawać je na [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Na podobnej pytanie mogły już zostać odebrane odpowiedzi, więc najpierw należy sprawdzić przed opublikowaniem. Dodaj tag ```azure-custom-providers```, aby uzyskać szybką odpowiedź!
+Jeśli masz pytania dotyczące tworzenia dostawców zasobów niestandardowych platformy Azure, spróbuj zadać je w [usłudze Przepełnienie stosu](https://stackoverflow.com/questions/tagged/azure-custom-providers). Na podobne pytanie można było już odpowiedzieć, więc sprawdź najpierw przed opublikowaniem. Dodaj tag, ```azure-custom-providers``` aby uzyskać szybką odpowiedź!
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono informacje o dostawcach niestandardowych. Zobacz następujące artykuły, aby dowiedzieć się więcej:
+W tym artykule dowiesz się o dostawcach niestandardowych. Więcej informacji można znaleźć w następujących artykułach:
 
-- [Samouczek: dołączanie zasobów z dostawcami niestandardowymi](./tutorial-resource-onboarding.md)
+- [Samouczek: Dołączanie zasobów z dostawcami niestandardowymi](./tutorial-resource-onboarding.md)
 - [Samouczek: Tworzenie niestandardowych akcji i zasobów na platformie Azure](./tutorial-get-started-with-custom-providers.md)
-- [Szybki Start: Tworzenie niestandardowego dostawcy zasobów i wdrażanie zasobów niestandardowych](./create-custom-provider.md)
-- [Instrukcje: Dodawanie akcji niestandardowych do interfejsu API REST platformy Azure](./custom-providers-action-endpoint-how-to.md)
-- [Instrukcje: Dodawanie zasobów niestandardowych do interfejsu API REST platformy Azure](./custom-providers-resources-endpoint-how-to.md)
+- [Szybki start: tworzenie niestandardowego dostawcy zasobów i wdrażanie zasobów niestandardowych](./create-custom-provider.md)
+- [Jak: Dodawanie akcji niestandardowych do interfejsu API REST platformy Azure](./custom-providers-action-endpoint-how-to.md)
+- [Jak: Dodawanie zasobów niestandardowych do interfejsu API REST platformy Azure](./custom-providers-resources-endpoint-how-to.md)

@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj reguły niestandardowe WAF & domyślnego zestawu reguł dla drzwi frontonu platformy Azure
-description: Dowiedz się, jak skonfigurować zasady WAF składają się z reguł niestandardowych i zarządzanych dla istniejącego punktu końcowego z przodu.
+title: Konfigurowanie reguł niestandardowych WAF & domyślnego zestawu reguł dla drzwi frontowych platformy Azure
+description: Dowiedz się, jak skonfigurować zasady WAF składają się zarówno z reguł niestandardowych, jak i zarządzanych dla istniejącego punktu końcowego drzwi frontowych.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,28 +8,28 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
 ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74186636"
 ---
-# <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Konfigurowanie zasad zapory aplikacji sieci Web przy użyciu Azure PowerShell
+# <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Konfigurowanie zasad zapory aplikacji sieci Web przy użyciu programu Azure PowerShell
 
-Zasady zapory aplikacji sieci Web platformy Azure (WAF) definiują inspekcje wymagane, gdy żądanie dociera do przodu.
-W tym artykule opisano sposób konfigurowania zasad WAF, które składają się z niektórych reguł niestandardowych i z włączonym domyślnym zestawem reguł dla platformy Azure.
+Zasady zapory aplikacji sieci Web platformy Azure (WAF) definiują inspekcje wymagane, gdy żądanie dociera do drzwi frontowych.
+W tym artykule pokazano, jak skonfigurować zasady WAF, która składa się z niektórych reguł niestandardowych i z włączoną domyślną regułą zarządzaną platformą Azure.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem konfigurowania zasad limitu szybkości Skonfiguruj środowisko programu PowerShell i Utwórz profil dla drzwi.
+Przed rozpoczęciem konfigurowania zasad limitu szybkości należy skonfigurować środowisko programu PowerShell i utworzyć profil drzwi frontowych.
 
 ### <a name="set-up-your-powershell-environment"></a>Konfigurowanie środowiska programu PowerShell
 
 Program Azure PowerShell udostępnia zestaw poleceń cmdlet, które pozwalają zarządzać zasobami platformy Azure przy użyciu modelu usługi [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 
 
-Możesz zainstalować program [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) w maszynie lokalnej i używać go w dowolnej sesji programu PowerShell. Postępuj zgodnie z instrukcjami na stronie, aby zalogować się przy użyciu poświadczeń platformy Azure, i zainstaluj polecenie AZ PowerShell module.
+Możesz zainstalować program [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) w maszynie lokalnej i używać go w dowolnej sesji programu PowerShell. Postępuj zgodnie z instrukcjami na stronie, aby zalogować się przy użyciu poświadczeń platformy Azure i zainstalować moduł Az PowerShell.
 
 #### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -43,18 +43,18 @@ Przed zainstalowaniem modułu usługi Front Door upewnij się, że masz zainstal
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
 
-#### <a name="install-azfrontdoor-module"></a>Zainstaluj AZ. Usługa frontdoor module 
+#### <a name="install-azfrontdoor-module"></a>Instalowanie modułu Az.FrontDoor 
 
 ```
 Install-Module -Name Az.FrontDoor
 ```
-### <a name="create-a-front-door-profile"></a>Tworzenie profilu frontu drzwi
+### <a name="create-a-front-door-profile"></a>Tworzenie profilu drzwi przednich
 
-Utwórz profil z drzwiami wstępnymi, postępując zgodnie z instrukcjami opisanymi w [przewodniku szybki start: Tworzenie profilu front-drzwi](../../frontdoor/quickstart-create-front-door.md)
+Tworzenie profilu drzwi przednich, postępując zgodnie z instrukcjami opisanymi w [przewodniku Szybki start: Tworzenie profilu drzwi przednich](../../frontdoor/quickstart-create-front-door.md)
 
 ## <a name="custom-rule-based-on-http-parameters"></a>Reguła niestandardowa oparta na parametrach http
 
-Poniższy przykład pokazuje, jak skonfigurować regułę niestandardową z dwoma warunkami dopasowania przy użyciu polecenia [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject). Żądania pochodzą z określonej lokacji zdefiniowanej przez obiekt odwołujący, a ciąg zapytania nie zawiera "hasła". 
+W poniższym przykładzie pokazano, jak skonfigurować regułę niestandardową z dwoma warunkami dopasowania przy użyciu [new-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject). Żądania pochodzą z określonej witryny zdefiniowanej przez stronę odsyłającą, a ciąg zapytania nie zawiera "hasła". 
 
 ```powershell-interactive
 $referer = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Equal -Selector "Referer" -MatchValue "www.mytrustedsites.com/referpage.html"
@@ -64,40 +64,40 @@ $AllowFromTrustedSites = New-AzFrontDoorWafCustomRuleObject -Name "AllowFromTrus
 
 ## <a name="custom-rule-based-on-http-request-method"></a>Reguła niestandardowa oparta na metodzie żądania http
 
-Utwórz regułę blokującą metodę "PUT" przy użyciu polecenia [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject) w następujący sposób:
+Utwórz metodę blokowania reguły "PUT" przy użyciu [metody New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject) w następujący sposób:
 
 ```powershell-interactive
 $put = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestMethod -OperatorProperty Equal -MatchValue PUT
 $BlockPUT = New-AzFrontDoorWafCustomRuleObject -Name "BlockPUT" -RuleType MatchRule -MatchCondition $put -Action Block -Priority 2
 ```
 
-## <a name="create-a-custom-rule-based-on-size-constraint"></a>Utwórz regułę niestandardową opartą na ograniczeniu rozmiaru
+## <a name="create-a-custom-rule-based-on-size-constraint"></a>Tworzenie reguły niestandardowej na podstawie ograniczenia rozmiaru
 
-Poniższy przykład tworzy regułę blokującą żądania o adresie URL dłuższym niż 100 znaków przy użyciu Azure PowerShell:
+Poniższy przykład tworzy żądania blokowania reguły z adresem URL, który jest dłuższy niż 100 znaków przy użyciu programu Azure PowerShell:
 ```powershell-interactive
 $url = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestUri -OperatorProperty GreaterThanOrEqual -MatchValue 100
 $URLOver100 = New-AzFrontDoorWafCustomRuleObject -Name "URLOver100" -RuleType MatchRule -MatchCondition $url -Action Block -Priority 3
 ```
-## <a name="add-managed-default-rule-set"></a>Dodaj zarządzany zestaw reguł domyślnych
+## <a name="add-managed-default-rule-set"></a>Dodaj zarządzany domyślny zestaw reguł
 
-Poniższy przykład tworzy zarządzany domyślny zestaw reguł przy użyciu Azure PowerShell:
+Poniższy przykład tworzy zarządzany domyślny zestaw reguł przy użyciu programu Azure PowerShell:
 ```powershell-interactive
 $managedRules =  New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version 1.0
 ```
 ## <a name="configure-a-security-policy"></a>Konfigurowanie zasad zabezpieczeń
 
-Znajdź nazwę grupy zasobów zawierającej profil przedniego przy użyciu `Get-AzResourceGroup`. Następnie skonfiguruj zasady zabezpieczeń z utworzonymi regułami w poprzednich krokach przy użyciu polecenia [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) w określonej grupie zasobów zawierającej profil drzwi przednich.
+Znajdź nazwę grupy zasobów zawierającej profil Drzwiami frontowymi za pomocą programu `Get-AzResourceGroup`. Następnie skonfiguruj zasady zabezpieczeń z utworzonymi regułami w poprzednich krokach przy użyciu [funkcji New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) w określonej grupie zasobów zawierającej profil drzwiami frontowymi.
 
 ```powershell-interactive
 $myWAFPolicy=New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $AllowFromTrustedSites,$BlockPUT,$URLOver100 -ManagedRule $managedRules -EnabledState Enabled -Mode Prevention
 ```
 
-## <a name="link-policy-to-a-front-door-front-end-host"></a>Łączenie zasad z hostem frontonu przedniego
+## <a name="link-policy-to-a-front-door-front-end-host"></a>Połącz zasady z hostem frontu drzwi frontowych
 
-Połącz obiekt zasad zabezpieczeń z istniejącym hostem frontonu z przednim Drzwiem i zaktualizuj właściwości drzwi zewnętrznych. Najpierw Pobierz obiekt front-drzwi przy użyciu polecenia [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor).
-Następnie ustaw właściwość *WebApplicationFirewallPolicyLink* frontonu na identyfikator *ResourceID* "$myWAFPolicy $" utworzony w poprzednim kroku przy użyciu polecenia [Set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor). 
+Połącz obiekt zasad zabezpieczeń z istniejącym hostem frontu drzwi frontowych i zaktualizuj właściwości drzwi frontowych. Najpierw pobierz obiekt Drzwi frontowe za pomocą [funkcji Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor).
+Następnie ustaw właściwość *Front-End WebApplicationFirewallPolicyLink* na *identyfikator resourceId* "$myWAFPolicy$" utworzoną w poprzednim kroku przy użyciu [funkcji Set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor). 
 
-W poniższym przykładzie użyto nazwy grupy zasobów *myResourceGroupFD1* z założeniem, że profil przeddrzwi został utworzony przy użyciu instrukcji przedstawionych w [przewodniku szybki start: Tworzenie przedniego](../../frontdoor/quickstart-create-front-door.md) artykułu. Ponadto w poniższym przykładzie Zastąp $frontDoorName nazwą profilu od drzwi do przodu. 
+W poniższym przykładzie użyto nazwy grupy zasobów *myResourceGroupFD1* przy założeniu, że profil drzwi frontowych został utworzony przy użyciu instrukcji podanych w artykule [Szybki start: Tworzenie drzwi przednich.](../../frontdoor/quickstart-create-front-door.md) Ponadto w poniższym przykładzie zastąp $frontDoorName nazwą profilu drzwiami frontowymi. 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `
@@ -108,9 +108,9 @@ W poniższym przykładzie użyto nazwy grupy zasobów *myResourceGroupFD1* z za�
  ```
 
 > [!NOTE]
-> Musisz tylko ustawić właściwość *WebApplicationFirewallPolicyLink* , aby połączyć zasady zabezpieczeń z frontonem. Kolejne aktualizacje zasad są automatycznie stosowane do frontonu.
+> Wystarczy tylko raz ustawić właściwość *WebApplicationFirewallPolicyLink,* aby połączyć zasady zabezpieczeń z frontonem drzwi frontowych. Kolejne aktualizacje zasad są automatycznie stosowane do front-endu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [drzwiach zewnętrznych](../../frontdoor/front-door-overview.md) 
-- Dowiedz się więcej o [WAF z przednim drzwiem](afds-overview.md)
+- Dowiedz się więcej o [drzwiach frontowych](../../frontdoor/front-door-overview.md) 
+- Dowiedz się więcej o [WAF z drzwiami przednimi](afds-overview.md)

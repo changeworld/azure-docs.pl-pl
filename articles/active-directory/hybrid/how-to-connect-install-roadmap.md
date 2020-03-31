@@ -13,19 +13,19 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cddf2ab36b2372ce93ae8a2a6230ccb02ae30117
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f9ed613972f166f1f9955fc34e9bb640d87da6b5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79261426"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331437"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Harmonogram instalacji usług Azure AD Connect i Azure AD Connect Health.
 
 ## <a name="install-azure-ad-connect"></a>Instalowanie programu Azure AD Connect
 
 > [!IMPORTANT]
-> Firma Microsoft nie obsługuje modyfikowania ani działania synchronizacji programu Azure AD Connect poza akcjami, które zostały formalnie udokumentowane. Każda z tych akcji może skutkować niespójnością lub nieobsługiwanym stanem synchronizacji Azure AD Connect. W związku z tym firma Microsoft nie może zapewnić pomocy technicznej dotyczącej takich wdrożeń.
+> Firma Microsoft nie obsługuje modyfikowania ani działania synchronizacji programu Azure AD Connect poza akcjami, które zostały formalnie udokumentowane. Każda z tych akcji może spowodować niespójny lub nieobsługiowany stan synchronizacji usługi Azure AD Connect. W rezultacie firma Microsoft nie może zapewnić pomocy technicznej dla takich wdrożeń.
 
 Program Azure AD Connect można pobrać z [Centrum pobierania Microsoft](https://go.microsoft.com/fwlink/?LinkId=615771).
 
@@ -45,8 +45,8 @@ Program Azure AD Connect można pobrać z [Centrum pobierania Microsoft](https:/
 |Pobieranie programu Azure AD Connect | [Pobieranie programu Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)|
 |Instalowanie przy użyciu ustawień ekspresowych | [Ekspresowa instalacja programu Azure AD Connect](./how-to-connect-install-express.md)|
 |Instalowanie przy użyciu ustawień dostosowanych | [Niestandardowa instalacja programu Azure AD Connect](./how-to-connect-install-custom.md)|
-|Uaktualnianie przy użyciu narzędzia DirSync | [Uaktualnianie z narzędzia Azure AD Sync (DirSync)](./how-to-dirsync-upgrade-get-started.md)|
-|Po instalacji | [Weryfikowanie instalacji i przypisywanie licencji](how-to-connect-post-installation.md)|
+|Uaktualnianie przy użyciu narzędzia DirSync | [Uaktualnienie przy użyciu narzędzia Azure AD Sync (DirSync)](./how-to-dirsync-upgrade-get-started.md)|
+|Po instalacji | [Weryfikowanie instalacji i przypisywania licencji](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>Więcej informacji o instalowaniu programu Azure AD Connect
 Warto również przygotować się na kwestie związane z [działaniem](how-to-connect-sync-operations.md). Może być wskazane zastosowanie serwera zapasowego umożliwiającego łatwe przełączenie w przypadku [awarii](how-to-connect-sync-staging-server.md#disaster-recovery). Jeśli planujesz częste wprowadzanie zmian konfiguracji, należy zaplanować serwer [trybu przejściowego](how-to-connect-sync-staging-server.md).
@@ -68,7 +68,7 @@ Program Azure AD Connect zawiera szereg funkcji, które są domyślnie włączon
 
 [Zapisywanie zwrotne haseł](../authentication/quickstart-sspr.md) umożliwia użytkownikom zmienianie i resetowanie haseł w chmurze i stosowanie lokalnych zasad haseł.
 
-[Zapisywanie zwrotne urządzeń](how-to-connect-device-writeback.md) umożliwi zapisanie urządzenia w usłudze Azure AD z powrotem do Active Directory lokalnego, dzięki czemu będzie można go używać na potrzeby dostępu warunkowego.
+[Zapis wsteczny urządzenia](how-to-connect-device-writeback.md) pozwoli na urządzenie zarejestrowane w usłudze Azure AD mają być zapisywane z powrotem do lokalnej usługi Active Directory, dzięki czemu może służyć do dostępu warunkowego.
 
 Funkcja [zapobiegania przypadkowemu usuwaniu](how-to-connect-sync-feature-prevent-accidental-deletes.md) jest domyślnie włączona i zabezpiecza katalog w chmurze przed usunięciem dużej liczby elementów jednocześnie. Domyślnie dozwolone jest usunięcie 500 elementów w jednym przebiegu. Możesz zmienić to ustawienie w zależności od wielkości organizacji.
 
@@ -97,7 +97,7 @@ Model konfiguracji synchronizacji jest nazywany [aprowizacją deklaratywną](con
 ### <a name="next-steps-to-customize-azure-ad-connect-sync"></a>Następne kroki dostosowywania synchronizacji w programie Azure AD Connect
 |Temat |Link|  
 | --- | --- |
-|Wszystkie artykuły dotyczące synchronizacji programu Azure AD Connect | [Synchronizacja programu Azure AD Connect](how-to-connect-sync-whatis.md)|
+|Wszystkie artykuły dotyczące synchronizacji programu Azure AD Connect | [Synchronizacja usługi Azure AD Connect](how-to-connect-sync-whatis.md)|
 |Zagadnienia techniczne | [Synchronizacja programu Azure AD Connect: zagadnienia techniczne](how-to-connect-sync-technical-concepts.md)|
 |Opis konfiguracji domyślnej | [Synchronizacja programu Azure AD Connect: opis konfiguracji domyślnej](concept-azure-ad-connect-sync-default-configuration.md)|
 |Opis użytkowników i kontaktów | [Synchronizacja programu Azure AD Connect: opis użytkowników i kontaktów](concept-azure-ad-connect-sync-user-and-contacts.md)|
@@ -108,7 +108,7 @@ Model konfiguracji synchronizacji jest nazywany [aprowizacją deklaratywną](con
 
 Program Azure AD Connect udostępnia pewne funkcje, które upraszczają sfederowanie z usługą Azure AD za pomocą usług AD FS i zarządzanie relacjami zaufania federacji. Program Azure AD Connect obsługuje usługi AD FS w systemie Windows Server 2012 R2 lub nowszym.
 
-[Aktualizuj certyfikat SSL farmy usług AD FS](how-to-connect-fed-ssl-update.md), nawet jeśli nie używasz programu Azure AD Connect do zarządzania relacjami zaufania federacji.
+[Aktualizowanie certyfikatu TLS/SSL farmy usług AD FS,](how-to-connect-fed-ssl-update.md) nawet jeśli do zarządzania zaufaniem federacji nie jest używany usługa Azure AD Connect.
 
 [Dodaj serwer usług AD FS](how-to-connect-fed-management.md#addadfsserver) do farmy, aby rozwinąć farmę zgodnie z potrzebami.
 
@@ -121,7 +121,7 @@ Jeśli serwer usług AD FS nie został skonfigurowany tak, aby automatycznie akt
 ### <a name="next-steps-to-configure-federation-features"></a>Następne kroki konfigurowania funkcji federacyjnych
 |Temat |Link|  
 | --- | --- |
-|Wszystkie artykuły dotyczące usług AD FS | [Program Azure AD Connect a federacja](how-to-connect-fed-whatis.md)|
+|Wszystkie artykuły dotyczące usług AD FS | [Usługa Azure AD Connect i federacja](how-to-connect-fed-whatis.md)|
 |Konfigurowanie usług AD FS z poddomenami | [Obsługa wielu domen do federowania w usłudze Azure AD](how-to-connect-install-multiple-domains.md)|
 |Zarządzanie farmą usług AD FS | [Dostosowywanie usług AD FS i zarządzanie nimi za pomocą programu Azure AD Connect](how-to-connect-fed-management.md)|
 |Ręczne aktualizowanie certyfikatów federacji | [Odnawianie certyfikatów federacji dla usług Office 365 i Azure AD](how-to-connect-fed-o365-certs.md)|
@@ -130,9 +130,9 @@ Jeśli serwer usług AD FS nie został skonfigurowany tak, aby automatycznie akt
 ## <a name="get-started-with-azure-ad-connect-health"></a>Wprowadzenie do programu Azure AD Connect Health
 Aby rozpocząć pracę z programem Azure AD Connect Health, należy wykonać następujące czynności:
 
-1. [Uzyskaj usługę Azure AD w wersji Premium](../fundamentals/active-directory-get-started-premium.md) lub [rozpocznij okres próbny](https://azure.microsoft.com/trial/get-started-active-directory/).
-2. [Pobierz i zainstaluj agentów programu Azure AD Connect Health](#download-and-install-azure-ad-connect-health-agent) na serwerach tożsamości.
-3. Wyświetl pulpit nawigacyjny programu Azure AD Connect Health na stronie [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth).
+1. [Pobierz usługę Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) lub [rozpocznij wersję próbną.](https://azure.microsoft.com/trial/get-started-active-directory/)
+2. [Pobierz i zainstaluj agentów kondycji usługi Azure AD Connect](#download-and-install-azure-ad-connect-health-agent) na serwerach tożsamości.
+3. Wyświetl pulpit nawigacyjny usługi [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth)Azure AD Connect Health pod adresem .
 
 > [!NOTE]
 > Pamiętaj, że przed wyświetleniem danych na pulpicie nawigacyjnym programu Azure AD Connect Health musisz zainstalować agentów programu Azure AD Connect Health na serwerach docelowych.
@@ -147,7 +147,7 @@ Aby rozpocząć pracę z programem Azure AD Connect Health, należy wykonać nas
 * Wprowadzenie do korzystania z programu Azure AD Connect Health do celów synchronizacji
     * [Pobierz i zainstaluj najnowszą wersję programu Azure AD Connect](https://go.microsoft.com/fwlink/?linkid=615771). Agent kondycji do celów synchronizacji zostanie zainstalowany w ramach instalacji programu Azure AD Connect (w wersji 1.0.9125.0 lub nowszej).
 * Wprowadzenie do korzystania z programu Azure AD Connect Health dla usług AD DS
-    * [Pobierz agenta programu Azure AD Connect Health dla usług AD DS](https://go.microsoft.com/fwlink/?LinkID=820540).
+    * [Pobierz agenta kondycji usługi Azure AD Connect dla usług AD DS](https://go.microsoft.com/fwlink/?LinkID=820540).
     * [Zobacz instrukcje instalacji](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds).
 
 
@@ -160,13 +160,13 @@ Portal programu Azure AD Connect Health umożliwia wyświetlanie alertów, wynik
 ![Portal programu Azure AD Connect Health](./media/whatis-hybrid-identity-health/portalsidebar.png)
 
 * **Szybki Start**: wybranie tej opcji powoduje otwarcie bloku **Szybki start**. Agenta programu Azure AD Connect Health można pobrać, wybierając pozycję **Pobierz narzędzia**. Można również uzyskać dostęp do dokumentacji i przekazać swoją opinię.
-* **Azure Active Directory Connect (synchronizacja)** : ta opcja umożliwia pokazanie serwerów programu Azure AD Connect, które są aktualnie monitorowane przez program Azure AD Connect Health. Pozycja **Błędy synchronizacji** umożliwia wyświetlenie podstawowych błędów synchronizacji Twojej pierwszej dołączonej usługi synchronizacji według kategorii. Wybranie pozycji **Usługi synchronizacji** powoduje otwarcie bloku z informacjami na temat serwerów programu Azure AD Connect. Aby dowiedzieć się więcej o dostępnych możliwościach, zobacz [Używanie programu Azure AD Connect Health w celu synchronizacji](how-to-connect-health-sync.md).
+* **Azure Active Directory Connect (synchronizacja)**: ta opcja umożliwia pokazanie serwerów programu Azure AD Connect, które są aktualnie monitorowane przez program Azure AD Connect Health. Pozycja **Błędy synchronizacji** umożliwia wyświetlenie podstawowych błędów synchronizacji Twojej pierwszej dołączonej usługi synchronizacji według kategorii. Wybranie pozycji **Usługi synchronizacji** powoduje otwarcie bloku z informacjami na temat serwerów programu Azure AD Connect. Aby dowiedzieć się więcej o dostępnych możliwościach, zobacz [Używanie programu Azure AD Connect Health w celu synchronizacji](how-to-connect-health-sync.md).
 * **Active Directory Federation Services**: ta opcja umożliwia pokazanie wszystkich usług AD FS, które są aktualnie monitorowane przez program Azure AD Connect Health. Po wybraniu wystąpienia zostaje otwarty blok z informacjami dotyczącymi tego wystąpienia usługi. Informacje te obejmują przegląd, właściwości, alerty, wyniki monitorowania i analizy użycia. Aby dowiedzieć się więcej o dostępnych możliwościach, zobacz [Używanie programu Azure AD Connect Health z usługami AD FS](how-to-connect-health-adfs.md).
 * **Active Directory Domain Services**: ta opcja umożliwia pokazanie wszystkich lasów usług AD DS, które są aktualnie monitorowane przez program Azure AD Connect Health. Po wybraniu lasu zostaje otwarty blok z informacjami dotyczącymi tego lasu. Te informacje obejmują przegląd najważniejszych danych, pulpit nawigacyjny Kontrolery domeny, pulpit nawigacyjny Stan replikacji, alerty i monitorowanie. Aby dowiedzieć się więcej o dostępnych możliwościach, zobacz [Używanie programu Azure AD Connect Health z usługami AD DS](how-to-connect-health-adds.md).
 * **Konfiguracja**: ta sekcja obejmuje opcje umożliwiające włączanie i wyłączanie ustawień:
 
-   - **Automatyczna aktualizacja** agenta Azure AD Connect Health do najnowszej wersji: Agent Azure AD Connect Health jest automatycznie aktualizowany, gdy są dostępne nowe wersje. Ta opcja jest domyślnie włączona.
-   - **Dostęp do danych** z poziomu integralności katalogu usługi Azure AD przez firmę Microsoft tylko do celów związanych z rozwiązywaniem problemów: Jeśli ta opcja jest włączona, firma Microsoft może uzyskiwać dostęp do tych samych danych, które są wyświetlane przez użytkownika. Te informacje mogą być przydatne do rozwiązywania problemów i zapewnienia niezbędnej pomocy. Ta opcja jest domyślnie wyłączona
+   - **Automatyczna aktualizacja** agenta usługi Azure AD Connect Health do najnowszej wersji: agent usługi Azure AD Connect Health jest automatycznie aktualizowany, gdy dostępne są nowe wersje. Ta opcja jest domyślnie włączona.
+   - **Dostęp do danych** z integralności katalogu usługi Azure AD przez firmę Microsoft tylko w celu rozwiązywania problemów: jeśli ta opcja jest włączona, firma Microsoft może uzyskać dostęp do tych samych danych oglądanych przez użytkownika. Informacje te mogą być przydatne do rozwiązywania problemów i zapewnienia niezbędnej pomocy. Ta opcja jest domyślnie wyłączona
 * W sekcji **Kontrola dostępu oparta na rolach (IAM)** można zarządzać dostępem do danych programu Connect Health na podstawie ról. 
 
 ## <a name="next-steps"></a>Następne kroki
@@ -174,8 +174,8 @@ Portal programu Azure AD Connect Health umożliwia wyświetlanie alertów, wynik
 - [Sprzęt i wymagania wstępne](how-to-connect-install-prerequisites.md) 
 - [Ustawienia ekspresowe](how-to-connect-install-express.md)
 - [Ustawienia dostosowane](how-to-connect-install-custom.md)
-- [Synchronizacja skrótów haseł](how-to-connect-password-hash-synchronization.md)|
+- [Synchronizacja skrótu hasła](how-to-connect-password-hash-synchronization.md)|
 - [Uwierzytelnianie przekazywane](how-to-connect-pta.md)
-- [Program Azure AD Connect a federacja](how-to-connect-fed-whatis.md)
+- [Usługa Azure AD Connect i federacja](how-to-connect-fed-whatis.md)
 - [Instalowanie agentów programu Azure AD Connect Health](how-to-connect-health-agent-install.md) 
-- [Synchronizacja programu Azure AD Connect](how-to-connect-sync-whatis.md)
+- [Synchronizacja usługi Azure AD Connect](how-to-connect-sync-whatis.md)

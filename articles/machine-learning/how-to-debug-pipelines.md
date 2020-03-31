@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 578e935ee742ad476aeafb53670f0a92035249e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064082"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388988"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Debugowanie i rozwiązywanie problemów z potokami uczenia maszynowego
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -136,8 +136,8 @@ W przypadku potoków utworzonych w projektancie można znaleźć **pliki dzienni
 Po przesłaniu przebiegu potoku i pozostania na stronie tworzenia można znaleźć pliki dziennika wygenerowane dla każdego modułu.
 
 1. Wybierz dowolny moduł na kanwie tworzenia.
-1. W prawym okienku modułu przejdź do **danych Wyjściowo-ogs.**
-1. Zaznaczanie pliku dziennika`70_driver_log.txt`
+1. W prawym okienku modułu przejdź do karty **Wyjścia + Dzienniki.**
+1. Wybierz plik `70_driver_log.txt`dziennika .
 
     ![Tworzenie dzienników modułów stron](./media/how-to-debug-pipelines/pipelinerun-05.png)
 
@@ -148,8 +148,8 @@ Można również znaleźć pliki dziennika określonych przebiegów na stronie s
 1. Wybierz przebieg potoku utworzony w projektancie.
     ![Strona uruchomienia potoku](./media/how-to-debug-pipelines/pipelinerun-04.png)
 1. Wybierz dowolny moduł w okienku podglądu.
-1. W prawym okienku modułu przejdź do **danych Wyjściowo-ogs.**
-1. Zaznaczanie pliku dziennika`70_driver_log.txt`
+1. W prawym okienku modułu przejdź do karty **Wyjścia + Dzienniki.**
+1. Wybierz plik `70_driver_log.txt`dziennika .
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Debugowanie i rozwiązywanie problemów w usłudze Application Insights
 Aby uzyskać więcej informacji na temat korzystania z biblioteki Języka Python OpenCensus w ten sposób, zobacz ten przewodnik: [Debugowanie i rozwiązywanie problemów z potokami uczenia maszynowego w usłudze Application Insights](how-to-debug-pipelines-application-insights.md)

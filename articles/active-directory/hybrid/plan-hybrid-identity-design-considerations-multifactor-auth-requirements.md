@@ -1,6 +1,6 @@
 ---
-title: Projektowania tożsamości hybrydowej — wymagania dotyczące uwierzytelniania wieloskładnikowego Azure | Dokumentacja firmy Microsoft
-description: Kontrola dostępu warunkowego usługi Azure Active Directory sprawdza, czy określonych warunków, wybranego podczas uwierzytelniania użytkownika, a jeśli tak, to przed zezwoleniem na dostęp do aplikacji. Po spełnieniu tych warunków, użytkownik jest uwierzytelniony i zezwolenie na dostęp do aplikacji.
+title: Projekt tożsamości hybrydowej — wymagania dotyczące uwierzytelniania wieloskładnikowego Azure | Dokumenty firmy Microsoft
+description: Dzięki kontroli dostępu warunkowego usługa Azure Active Directory sprawdza określone warunki, które można wybrać podczas uwierzytelniania użytkownika i przed zezwoleniem na dostęp do aplikacji. Po spełnieniu tych warunków użytkownik jest uwierzytelniony i ma dostęp do aplikacji.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,46 +18,46 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109292"
 ---
-# <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Określić wymagania dotyczące uwierzytelniania wieloskładnikowego dla rozwiązania tożsamości hybrydowej
-W tym świecie mobilności użytkownikom uzyskiwanie dostępu do danych i aplikacji w chmurze, jak i z dowolnego urządzenia i zabezpieczanie te informacje mają ogromne znaczenie.  Codziennie jest nowy nagłówek o naruszenia zabezpieczeń.  Mimo że nie ma żadnej gwarancji, przed naruszeniami takie, uwierzytelnianie wieloskładnikowe zapewnia dodatkową warstwę zabezpieczeń, aby uniknąć tych naruszeń.
-Rozpocznij od oceny wymagania organizacji dotyczące uwierzytelniania wieloskładnikowego. Oznacza to co jest organizacji chcesz zabezpieczyć.  Ocena ważne jest, aby zdefiniować wymagania techniczne dotyczące konfigurowania i umożliwienie użytkownikom organizacje do uwierzytelniania wieloskładnikowego.
+# <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Określanie wymagań dotyczących uwierzytelniania wieloskładnikowego dla rozwiązania tożsamości hybrydowej
+W tym świecie mobilności, gdy użytkownicy uzyskują dostęp do danych i aplikacji w chmurze i z dowolnego urządzenia, zabezpieczenie tych informacji stało się najważniejsze.  Każdego dnia pojawia się nowy nagłówek o naruszeniu bezpieczeństwa.  Chociaż nie ma żadnej gwarancji przed takimi naruszeniami, uwierzytelnianie wieloskładnikowe zapewnia dodatkową warstwę zabezpieczeń, aby zapobiec tym naruszeniom.
+Zacznij od oceny wymagań organizacji dotyczących uwierzytelniania wieloskładnikowego. To jest to, co organizacja stara się zabezpieczyć.  Ta ocena jest ważne, aby zdefiniować wymagania techniczne dotyczące konfigurowania i włączania użytkowników organizacji do uwierzytelniania wieloskładnikowego.
 
-Pamiętaj odpowiedzieć na następujące czynności:
+Pamiętaj, aby odpowiedzieć na następujące pytania:
 
-* Firma chce do zabezpieczania aplikacji firmy Microsoft 
+* Czy Twoja firma próbuje zabezpieczyć aplikacje firmy Microsoft? 
 * Jak te aplikacje są publikowane?
-* Firma oferuje dostępu zdalnego, aby pracownicy mogli uzyskiwać dostęp do aplikacji w środowisku lokalnym?
+* Czy Twoja firma zapewnia zdalny dostęp, aby umożliwić pracownikom dostęp do aplikacji lokalnych?
 
-Jeśli tak, jakiego typu dostępu zdalnego? Należy również ocenić, gdzie użytkownicy, którzy uzyskują dostęp do tych aplikacji zostaną umiejscowione. Ocena jest innym ważnym krokiem do określenia strategii odpowiednie uwierzytelnianie wieloskładnikowe. Pamiętaj odpowiedzieć na następujące pytania:
+Jeśli tak, jakiego typu dostęp zdalny? Należy również ocenić, gdzie będą znajdować się użytkownicy uzyskujący dostęp do tych aplikacji. Ta ocena jest kolejnym ważnym krokiem do zdefiniowania odpowiedniej strategii uwierzytelniania wieloskładnikowego. Pamiętaj, aby odpowiedzieć na następujące pytania:
 
-* Gdzie użytkownicy mają się znajdować?
-* Mogą one znajdować się znajduje się gdziekolwiek?
-* Czy firma chce nawiązać ograniczeniami zależnie od lokalizacji użytkownika?
+* Gdzie mają się znajdować użytkownicy?
+* Czy mogą znajdować się w dowolnym miejscu?
+* Czy Twoja firma chce ustanowić ograniczenia w zależności od lokalizacji użytkownika?
 
-Po zrozumieniu wymagań, należy również ocenić wymagania użytkownika dotyczące uwierzytelniania wieloskładnikowego. Ocena jest ważne, ponieważ określi wymagania dotyczące wdrażania uwierzytelniania wieloskładnikowego. Pamiętaj odpowiedzieć na następujące pytania:
+Po zapoznaniu się z tymi wymaganiami, ważne jest również, aby ocenić wymagania użytkownika dotyczące uwierzytelniania wieloskładnikowego. Ta ocena jest ważna, ponieważ zdefiniuje wymagania dotyczące wprowadzania uwierzytelniania wieloskładnikowego. Pamiętaj, aby odpowiedzieć na następujące pytania:
 
-* Zaczynasz użytkowników przy użyciu uwierzytelniania wieloskładnikowego?
-* Do niektórych zastosowań będzie wymagane w celu zapewnienia dodatkowego uwierzytelniania?  
-  * Jeśli tak, zawsze, gdy pochodzącego z sieciami zewnętrznymi lub uzyskiwania dostępu do określonych aplikacji lub w innych warunkach?
-* Użytkownicy, będzie wymagać szkolenia dotyczące konfiguracji i implementowanie uwierzytelniania wieloskładnikowego?
-* Jakie są najważniejsze scenariusze, które firma chce włączyć uwierzytelnianie wieloskładnikowe dla użytkowników?
+* Czy użytkownicy są zaznajomieni z uwierzytelnianiem wieloskładnikowym?
+* Czy niektóre zastosowania będą wymagane do zapewnienia dodatkowego uwierzytelniania?  
+  * Jeśli tak, cały czas, gdy pochodzą z sieci zewnętrznych lub dostęp do określonych aplikacji, lub w innych warunkach?
+* Czy użytkownicy będą wymagać przeszkolenia w zakresie konfigurowania i implementowania uwierzytelniania wieloskładnikowego?
+* Jakie są kluczowe scenariusze, które firma chce włączyć uwierzytelnianie wieloskładnikowe dla swoich użytkowników?
 
-Po udzieleniu odpowiedzi na pytania Wstecz, można określić, czy istnieją uwierzytelnianie wieloskładnikowe już wdrożone w środowisku lokalnym. Ocena ważne jest, aby zdefiniować wymagania techniczne dotyczące konfigurowania i umożliwienie użytkownikom organizacje do uwierzytelniania wieloskładnikowego. Pamiętaj odpowiedzieć na następujące pytania:
+Po udzieleniu odpowiedzi na poprzednie pytania, będzie można zrozumieć, czy istnieją uwierzytelnianie wieloskładnikowe już zaimplementowane lokalnie. Ta ocena jest ważne, aby zdefiniować wymagania techniczne dotyczące konfigurowania i włączania użytkowników organizacji do uwierzytelniania wieloskładnikowego. Pamiętaj, aby odpowiedzieć na następujące pytania:
 
-* Czy firma potrzebuje ochrony uprzywilejowanych kont za pomocą usługi MFA?
-* Czy firma musi włączyć uwierzytelnianie wieloskładnikowe w przypadku niektórych aplikacji w celu zachowania zgodności?
-* Czy firma musi włączyć uwierzytelnianie wieloskładnikowe dla wszystkich uprawnionych użytkowników z tych aplikacji lub tylko dla administratorów?
-* Czy potrzebne są zawsze włączone uwierzytelnianie MFA lub tylko wtedy, gdy użytkownicy są zalogowani poza siecią firmową?
+* Czy Twoja firma musi chronić uprzywilejowane konta za pomocą usługi MFA?
+* Czy twoja firma musi włączyć usługę MFA dla niektórych aplikacji ze względu na zgodność?
+* Czy twoja firma musi włączyć usługę MFA dla wszystkich uprawnionych użytkowników tej aplikacji lub tylko administratorów?
+* Czy potrzebne jest zawsze włączone uwierzytelnianie usługi MFA lub tylko wtedy, gdy użytkownicy są zalogowani poza siecią firmową?
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Definiowanie strategii wdrażania tożsamości hybrydowej](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
-## <a name="see-also"></a>Zobacz także
-[Omówienie zagadnień dotyczących projektowania](plan-hybrid-identity-design-considerations-overview.md)
+## <a name="see-also"></a>Zobacz też
+[Omówienie zagadnień projektowych](plan-hybrid-identity-design-considerations-overview.md)
 

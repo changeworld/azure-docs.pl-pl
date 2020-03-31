@@ -1,6 +1,6 @@
 ---
 title: Dołączanie nowego urządzenia z systemem Windows 10 przy użyciu usługi Azure AD podczas pierwszego uruchomienia | Microsoft Docs
-description: Jak użytkownicy można skonfigurować usługi Azure AD Join podczas poza środowiska.
+description: Jak użytkownicy mogą skonfigurować przyłączenie usługi Azure AD podczas środowiska po wyjęciu z pudełka.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 384157828e9c816b150e40bf3f09b74578c4a98e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67482099"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Samouczek: dołączanie nowego urządzenia z systemem Windows 10 przy użyciu usługi Azure AD podczas pierwszego uruchomienia
@@ -39,7 +39,7 @@ W tym samouczku dowiesz się, jak dołączyć urządzenie do usługi Azure AD po
 
 Aby dołączyć urządzenie z systemem Windows 10, należy skonfigurować usługę rejestracji urządzeń, aby umożliwić rejestrowanie urządzeń. Oprócz posiadania uprawnień do dołączania urządzeń w dzierżawie usługi Azure AD musisz mieć mniej zarejestrowanych urządzeń niż skonfigurowane maksimum. Aby uzyskać więcej informacji, zobacz [konfigurowanie ustawień urządzenia](device-management-azure-portal.md#configure-device-settings).
 
-Ponadto, jeśli dzierżawa jest federacyjna, dostawca tożsamości MUSI obsługiwać punkt końcowy nazwy użytkownika/hasła WS-Fed i WS-Trust. Może to być wersja 1.3 lub 2005. Ta obsługa protokołu jest wymagany do przyłączenia urządzenia do usługi Azure AD i zaloguj się do urządzenia przy użyciu hasła.
+Ponadto, jeśli dzierżawa jest federacyjna, dostawca tożsamości MUSI obsługiwać punkt końcowy nazwy użytkownika/hasła WS-Fed i WS-Trust. Może to być wersja 1.3 lub 2005. Ta obsługa protokołu jest wymagana zarówno do przyłączenia urządzenia do usługi Azure AD, jak i zalogowania się do urządzenia za pomocą hasła.
 
 ## <a name="joining-a-device"></a>Dołączanie urządzenia
 
@@ -59,7 +59,7 @@ Ponadto, jeśli dzierżawa jest federacyjna, dostawca tożsamości MUSI obsługi
 
     ![Ekran logowania](./media/azuread-joined-devices-frx/03.png)
 
-1. Urządzenie lokalizuje pasującego dzierżawy w usłudze Azure AD. Jeśli znajdujesz się w domenie federacyjnej, system przekieruje Cię do lokalnego serwera usługi Secure Token Service (STS), np. usługi Active Directory Federation Services (AD FS).
+1. Urządzenie lokalizuje pasującą dzierżawę w usłudze Azure AD. Jeśli znajdujesz się w domenie federacyjnej, system przekieruje Cię do lokalnego serwera usługi Secure Token Service (STS), np. usługi Active Directory Federation Services (AD FS).
 1. Jeśli jesteś użytkownikiem, który nie korzysta z domeny federacyjnej, wprowadź poświadczenia bezpośrednio na stronie hostowanej w usłudze Azure AD. 
 1. Zostanie wyświetlony monit o zastosowanie uwierzytelniania wieloskładnikowego. 
 1. Usługa Azure AD sprawdzi, czy rejestracja w usłudze zarządzania urządzeniami przenośnymi jest wymagana.
@@ -74,7 +74,7 @@ Aby sprawdzić, czy urządzenie dołączyło do usługi Azure AD, zapoznaj się 
 
 ![Dostęp do zasobów służbowych](./media/azuread-joined-devices-frx/13.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać więcej informacji, zobacz [wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](overview.md).
 - Aby uzyskać więcej informacji o zarządzaniu urządzeniami w portalu usługi Azure AD, zobacz [zarządzanie urządzeniami przy użyciu witryny Azure Portal](device-management-azure-portal.md).

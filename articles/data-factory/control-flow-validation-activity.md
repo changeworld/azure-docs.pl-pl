@@ -1,6 +1,6 @@
 ---
-title: Działanie walidacji w Azure Data Factory
-description: Działanie sprawdzania poprawności nie kontynuuje wykonywania potoku, dopóki nie zostanie zweryfikowany dołączony zestaw danych z określonymi kryteriami, które użytkownik określi.
+title: Działanie sprawdzania poprawności w fabryce danych platformy Azure
+description: Działanie sprawdzania poprawności nie kontynuuje wykonywania potoku, dopóki nie weryfikuje dołączonego zestawu danych z określonymi kryteriami określonymi przez użytkownika.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: f63c78c59d7d6be3c66ea0785389eff73e3bff60
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73678369"
 ---
-# <a name="validation-activity-in-azure-data-factory"></a>Działanie walidacji w Azure Data Factory
-Można użyć walidacji w potoku, aby upewnić się, że potok będzie nadal wykonywany po zweryfikowaniu, że istnieje odwołanie do dołączonego zestawu danych, że spełnia określone kryteria lub został osiągnięty limit czasu.
+# <a name="validation-activity-in-azure-data-factory"></a>Działanie sprawdzania poprawności w fabryce danych platformy Azure
+Można użyć sprawdzania poprawności w potoku, aby upewnić się, że potok kontynuuje wykonywanie tylko po zatwierdzeniu dołączone odwołanie do dołączonego zestawu danych istnieje, że spełnia określone kryteria lub limit czasu został osiągnięty.
 
 
 ## <a name="syntax"></a>Składnia
@@ -60,22 +60,22 @@ Można użyć walidacji w potoku, aby upewnić się, że potok będzie nadal wyk
 
 Właściwość | Opis | Dozwolone wartości | Wymagany
 -------- | ----------- | -------------- | --------
-name | Nazwa działania "Walidacja" | Ciąg | Tak |
-type | Musi być ustawiona na wartość **Walidacja**. | Ciąg | Tak |
-Zestawu | Działanie będzie blokować wykonywanie do momentu zweryfikowania, czy odwołanie do tego zestawu danych istnieje i że spełnia określone kryteria, lub został osiągnięty limit czasu. Dostarczony zestaw danych powinien obsługiwać Właściwość "MinimumSize" lub "ChildItems". | Odwołanie do zestawu danych | Tak |
-timeout | Określa limit czasu pracy działania. Jeśli wartość nie jest określona, wartość domyślna to 7 dni ("7.00:00:00"). Format to d. hh: mm: SS | Ciąg | Nie |
-chodzenia | Opóźnienie w sekundach między próbami walidacji. Jeśli wartość nie jest określona, wartość domyślna to 10 sekund. | Liczba całkowita | Nie |
-childItems | Sprawdza, czy folder ma elementy podrzędne. Można ustawić na wartość-true: Sprawdź, czy folder istnieje i czy zawiera elementy. Bloki do momentu, gdy co najmniej jeden element jest obecny w folderze lub wartość limitu czasu zostanie osiągnięta.-false: Sprawdź, czy folder istnieje i czy jest pusty. Bloki do momentu, gdy folder jest pusty lub zostanie osiągnięta wartość limitu czasu. Jeśli wartość nie zostanie określona, działanie zostanie zablokowane do momentu, aż folder istnieje lub zostanie osiągnięty limit czasu. | Wartość logiczna | Nie |
-minimumSize | Minimalny rozmiar pliku w bajtach. Jeśli wartość nie jest określona, wartość domyślna to 0 bajtów. | Liczba całkowita | Nie |
+name | Nazwa działania "Sprawdzanie poprawności" | Ciąg | Tak |
+type | Musi być **ustawiona**na Sprawdzanie poprawności . | Ciąg | Tak |
+Dataset | Działanie zablokuje wykonanie, dopóki nie potwierdzi, że to odwołanie do tego zestawu danych istnieje i że spełnia określone kryteria lub limit czasu został osiągnięty. Zestaw danych pod warunkiem, powinny obsługiwać "MinimumSize" lub "ChildItems" właściwości. | Odwołanie do zestawu danych | Tak |
+timeout | Określa limit czasu pracy działania. Jeśli nie określono żadnej wartości, wartość domyślna to 7 dni ("7.00:00:00"). Format to d.hh:mm:ss | Ciąg | Nie |
+Snu | Opóźnienie w sekundach między próbami sprawdzania poprawności. Jeśli żadna wartość nie zostanie określona, wartość domyślna to 10 sekund. | Liczba całkowita | Nie |
+Childitems | Sprawdza, czy folder zawiera elementy podrzędne. Można ustawić na true: Sprawdź, czy folder istnieje i czy zawiera elementy. Bloki, dopóki co najmniej jeden element jest obecny w folderze lub wartość limitu czasu zostanie osiągnięty.-false: Sprawdź, czy folder istnieje i czy jest pusty. Blokuje, dopóki folder nie będzie pusty lub do momentu osiągnięcia wartości limitu czasu. Jeśli nie określono żadnej wartości, działanie zostanie zablokowane, dopóki folder nie istnieje lub do momentu osiągnięcia limitu czasu. | Wartość logiczna | Nie |
+Minimumsize | Minimalny rozmiar pliku w bajtach. Jeśli żadna wartość nie zostanie określona, wartość domyślna to 0 bajtów | Liczba całkowita | Nie |
 
 
 ## <a name="next-steps"></a>Następne kroki
-Zobacz inne działania przepływu sterowania obsługiwane przez Data Factory:
+Zobacz inne działania przepływu sterowania obsługiwane przez fabrykę danych:
 
 - [Działanie If Condition](control-flow-if-condition-activity.md)
 - [Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md)
 - [Dla każdego działania](control-flow-for-each-activity.md)
-- [Działanie GetMetadata](control-flow-get-metadata-activity.md)
+- [Uzyskaj aktywność metadanych](control-flow-get-metadata-activity.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
-- [Aktywność sieci Web](control-flow-web-activity.md)
+- [Działanie internetowe](control-flow-web-activity.md)
 - [Działanie Until](control-flow-until-activity.md)

@@ -1,6 +1,6 @@
 ---
-title: Zdarzenie ukończenia usuwania puli Azure Batch
-description: Odwołanie do zdarzenia ukończenia usuwania puli usługi Batch. To zdarzenie jest emitowane po zakończeniu operacji usuwania puli.
+title: Usuwanie pełnego zdarzenia puli usługi Azure Batch
+description: Odwołanie do puli partii usuń pełne zdarzenie. To zdarzenie jest emitowane po zakończeniu operacji usuwania puli.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -12,17 +12,17 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
 ms.openlocfilehash: d317d7395a8246c109073a72338b55960cb50954
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023620"
 ---
 # <a name="pool-delete-complete-event"></a>Zdarzenie zakończenia usuwania puli
 
  To zdarzenie jest emitowane po zakończeniu operacji usuwania puli.
 
- Poniższy przykład pokazuje treść zdarzenia ukończenia usuwania puli.
+ W poniższym przykładzie przedstawiono treść puli usuń pełne zdarzenie.
 
 ```
 {
@@ -35,8 +35,8 @@ ms.locfileid: "77023620"
 |Element|Typ|Uwagi|
 |-------------|----------|-----------|
 |`id`|Ciąg|Identyfikator puli.|
-|`startTime`|Data i godzina|Godzina, o której rozpoczęto Usuwanie puli.|
-|`endTime`|Data i godzina|Godzina, o której ukończono Usuwanie puli.|
+|`startTime`|DateTime|Rozpoczął się czas usuwania puli.|
+|`endTime`|DateTime|Czas usunięcia puli ukończony.|
 
 ## <a name="remarks"></a>Uwagi
-Aby uzyskać więcej informacji o stanach i kodach błędów dla operacji zmiany rozmiaru puli, zobacz [Usuwanie puli z konta](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).
+Aby uzyskać więcej informacji o stanach i kodach błędów dla operacji ponownego rozmiaru puli, zobacz [Usuwanie puli z konta](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).

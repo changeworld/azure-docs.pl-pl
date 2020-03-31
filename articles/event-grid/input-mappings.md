@@ -1,6 +1,6 @@
 ---
-title: Mapy niestandardowe pole do schematu usługi Azure Event Grid
-description: W tym artykule opisano sposób konwertowania niestandardowego schematu na schemat Azure Event Grid, gdy dane zdarzenia nie są zgodne ze schematem Event Grid.
+title: Mapowanie pola niestandardowego do schematu siatki zdarzeń platformy Azure
+description: W tym artykule opisano sposób konwertowania schematu niestandardowego do schematu usługi Azure Event Grid, gdy dane zdarzeń nie są zgodne ze schematem siatki zdarzeń.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721663"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Mapowanie pól niestandardowych na schemat usługi Event Grid
 
-Jeśli dane zdarzenia nie są zgodne z oczekiwanym [schematem Event Grid](event-schema.md), można nadal używać Event Grid do kierowania zdarzenia do subskrybentów. W tym artykule opisano sposób mapowania schematu do schematu usługi Event Grid.
+Jeśli dane zdarzenia nie są zgodne ze [schematem oczekiwanej siatki zdarzeń,](event-schema.md)nadal można użyć usługi Event Grid do kierowania zdarzenia do subskrybentów. W tym artykule opisano sposób mapowania schematu do schematu siatki zdarzeń.
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
@@ -25,7 +25,7 @@ Jeśli dane zdarzenia nie są zgodne z oczekiwanym [schematem Event Grid](event-
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
-## <a name="original-event-schema"></a>Oryginalny schemat zdarzeń
+## <a name="original-event-schema"></a>Schemat oryginalnego zdarzenia
 
 Załóżmy, że masz aplikację, która wysyła zdarzenia w następującym formacie:
 
@@ -39,19 +39,19 @@ Załóżmy, że masz aplikację, która wysyła zdarzenia w następującym forma
 ]
 ```
 
-Mimo że ten format nie jest zgodny wymagany schemat, usługi Event Grid umożliwia mapowanie pól w schemacie. Ewentualnie można odbierać wartości w oryginalnym schematem.
+Mimo że ten format nie jest zgodny z wymaganym schematem, usługa Event Grid umożliwia mapowanie pól do schematu. Lub można odbierać wartości w oryginalnym schemacie.
 
-## <a name="create-custom-topic-with-mapped-fields"></a>Tworzenie tematu niestandardowego przy użyciu zamapowane pola
+## <a name="create-custom-topic-with-mapped-fields"></a>Tworzenie tematu niestandardowego z mapowanymi polami
 
-Podczas tworzenia niestandardowego tematu, należy określić sposób mapowania pól z oryginalnego zdarzenia do schematu siatki zdarzeń. Istnieją trzy wartości, które umożliwia dostosowywanie mapowania:
+Podczas tworzenia tematu niestandardowego określ sposób mapowania pól z oryginalnego zdarzenia do schematu siatki zdarzeń. Istnieją trzy wartości używane do dostosowywania mapowania:
 
-* Wartość **schematu wejściowego** określa typ schematu. Dostępne opcje to: schematu CloudEvents, schemacie zdarzenie niestandardowe lub schematu usługi Event Grid. Wartość domyślna to schemat usługi Event Grid. Podczas tworzenia niestandardowego mapowanie między schematu i schemat siatki zdarzeń, Użyj schematu zdarzeń niestandardowych. Gdy zdarzenia są schematu CloudEvents, używanie schematu Cloudevents.
+* Wartość **schematu wejściowego** określa typ schematu. Dostępne opcje to schemat CloudEvents, niestandardowy schemat zdarzeń lub schemat siatki zdarzeń. Wartością domyślną jest schemat siatki zdarzeń. Podczas tworzenia mapowania niestandardowego między schematem a schematem siatki zdarzeń należy użyć niestandardowego schematu zdarzeń. Gdy zdarzenia znajdują się w schemacie CloudEvents, użyj schematu Cloudevents.
 
-* Właściwość **mapowania wartości domyślnych** określa wartości domyślne dla pól w schemacie Event Grid. Można ustawić wartości domyślne dla `subject`, `eventtype`i `dataversion`. Zazwyczaj używa się tego parametru podczas gdy niestandardowego schematu nie zawiera pola, które odpowiada jednej z tych trzech pól. Można na przykład określić, że wersja danych ma zawsze wartość **1,0**.
+* Właściwość **wartości domyślnych mapowania** określa wartości domyślne dla pól w schemacie siatki zdarzeń. Można ustawić wartości `subject`domyślne dla , `eventtype`i `dataversion`. Zazwyczaj ten parametr jest używany, gdy schemat niestandardowy nie zawiera pola, które odpowiada jednemu z tych trzech pól. Na przykład można określić, że wersja danych jest zawsze ustawiona na **1.0**.
 
-* Wartość **pola mapowania** mapuje pola ze schematu do schematu usługi Event Grid. Możesz określić wartości w pary klucz/wartość rozdzielonych spacjami. Nazwa klucza musi zawierać nazwę pola siatki zdarzeń. Dla wartości Użyj nazwy pola. Można użyć nazw kluczy dla `id`, `topic`, `eventtime`, `subject`, `eventtype`i `dataversion`.
+* **Wartości pól mapowania** mapuje pola ze schematu do schematu siatki zdarzeń. Należy określić wartości w pary kluczy/wartości oddzielonych spacją. W przypadku nazwy klucza należy użyć nazwy pola siatki zdarzenia. W przypadku wartości użyj nazwy pola. Można użyć nazw `id`kluczy dla `eventtype`, `dataversion` `topic`, `eventtime` `subject`, , i .
 
-Aby utworzyć niestandardowego tematu przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby utworzyć temat niestandardowy za pomocą interfejsu wiersza polecenia platformy Azure, należy użyć:
 
 ```azurecli-interactive
 # If you have not already installed the extension, do it now.
@@ -83,11 +83,11 @@ New-AzureRmEventGridTopic `
   -InputMappingDefaultValue @{subject="DefaultSubject"; dataVersion="1.0" }
 ```
 
-## <a name="subscribe-to-event-grid-topic"></a>Subskrybowanie do tematu usługi event grid
+## <a name="subscribe-to-event-grid-topic"></a>Subskrybuj temat siatki zdarzeń
 
-Podczas subskrybowania tematu niestandardowego, należy określić schemat, którego chcesz użyć do odbierania zdarzeń. Określasz schematu CloudEvents, zdarzenie niestandardowe schematu lub schemat usługi Event Grid. Wartość domyślna to schemat usługi Event Grid.
+Podczas subskrybowania tematu niestandardowego, należy określić schemat, który ma być używany do odbierania zdarzeń. Należy określić schemat CloudEvents, schemat zdarzeń niestandardowych lub schemat siatki zdarzeń. Wartością domyślną jest schemat siatki zdarzeń.
 
-Poniższy przykład ilustruje subskrybowanie tematu usługi event grid i używa schematu usługi Event Grid. W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
+Poniższy przykład subskrybuje temat siatki zdarzeń i używa schematu siatki zdarzeń. W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
 ```azurecli-interactive
 topicid=$(az eventgrid topic show --name demoTopic -g myResourceGroup --query id --output tsv)
@@ -99,7 +99,7 @@ az eventgrid event-subscription create \
   --endpoint <endpoint_URL>
 ```
 
-W następnym przykładzie użyto schemat danych wejściowych zdarzenia:
+W następnym przykładzie użyto schematu wejściowego zdarzenia:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -109,7 +109,7 @@ az eventgrid event-subscription create \
   --endpoint <endpoint_URL>
 ```
 
-Poniższy przykład ilustruje subskrybowanie tematu usługi event grid i używa schematu usługi Event Grid. W przypadku programu PowerShell użyj polecenia:
+Poniższy przykład subskrybuje temat siatki zdarzeń i używa schematu siatki zdarzeń. W przypadku programu PowerShell użyj polecenia:
 
 ```azurepowershell-interactive
 $topicid = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
@@ -122,7 +122,7 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema EventGridSchema
 ```
 
-W następnym przykładzie użyto schemat danych wejściowych zdarzenia:
+W następnym przykładzie użyto schematu wejściowego zdarzenia:
 
 ```azurepowershell-interactive
 New-AzureRmEventGridSubscription `
@@ -133,9 +133,9 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema CustomInputSchema
 ```
 
-## <a name="publish-event-to-topic"></a>Publikowanie zdarzenia do tematu
+## <a name="publish-event-to-topic"></a>Publikowanie zdarzenia w temacie
 
-Teraz możesz przystąpić do wysłania zdarzenia do tematu niestandardowego i zobaczyć wyniki tego mapowania. Następujący skrypt do opublikowania zdarzenia w [przykładowym schemacie](#original-event-schema):
+Teraz możesz wysłać zdarzenie do tematu niestandardowego i wyświetlić wynik mapowania. Następujący skrypt do opublikowania zdarzenia w [przykładowym schemacie:](#original-event-schema)
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
@@ -166,9 +166,9 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-Teraz Spójrz na punkt końcowy usługi elementu WebHook. Obie subskrypcje zdarzeń są dostarczane w różnych schematach.
+Teraz spójrz na punkt końcowy webhook. Dwie subskrypcje dostarczone zdarzenia w różnych schematów.
 
-Pierwsza używany schemat siatki zdarzeń. Format dostarczonego zdarzenia jest następujący:
+Pierwsza subskrypcja używane schemat siatki zdarzeń. Format dostarczonego zdarzenia jest:
 
 ```json
 {
@@ -189,9 +189,9 @@ Pierwsza używany schemat siatki zdarzeń. Format dostarczonego zdarzenia jest n
 }
 ```
 
-Te pola zawierają mapowania z tematu niestandardowego. **myEventTypeField** jest mapowany na **Typ zdarzenia**. Używane są wartości domyślne dla elementu **dataversion** i **subject** . Obiekt **danych** zawiera oryginalne pola schematu zdarzenia.
+Te pola zawierają mapowania z tematu niestandardowego. **myEventTypeField** jest mapowany na **Typ zdarzenia**. Używane są wartości domyślne dla **DataVersion** i **Subject.** **Data** Obiekt zawiera oryginalne pola schematu zdarzeń.
 
-Drugiej subskrypcji używany schemat danych wejściowych zdarzeń. Format dostarczonego zdarzenia jest następujący:
+Druga subskrypcja używane schemat zdarzenia wejściowego. Format dostarczonego zdarzenia jest:
 
 ```json
 {
@@ -207,6 +207,6 @@ Należy zauważyć, że oryginalne pola zostały dostarczone.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać informacje dotyczące dostarczania i ponawiania zdarzeń, [Event Grid dostarczania komunikatów i ponawiania próby](delivery-and-retry.md).
+* Aby uzyskać informacje o dostarczaniu zdarzeń i ponownych próbach, [w ucho.](delivery-and-retry.md)
 * Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Wprowadzenie do usługi Azure Event Grid](overview.md).
-* Aby szybko rozpocząć korzystanie z Event Grid, zobacz [Tworzenie i kierowanie zdarzeń niestandardowych z Azure Event Grid](custom-event-quickstart.md).
+* Aby szybko rozpocząć korzystanie z usługi Event Grid, zobacz [Tworzenie i rozsyłanie zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md).

@@ -1,6 +1,6 @@
 ---
-title: Zagadnienia dotyczące wydajności dla usługi Azure Files NetApp | Dokumentacja firmy Microsoft
-description: W tym artykule opisano zagadnienia dotyczące wydajności dla usługi Azure Files NetApp.
+title: Zagadnienia dotyczące wydajności plików NetApp platformy Azure | Dokumenty firmy Microsoft
+description: W tym artykule opisano zagadnienia dotyczące wydajności plików NetApp platformy Azure.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,53 +15,53 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: b-juche
 ms.openlocfilehash: 97e3c6212edd2ade4eabb96db3543e9b3b68e2ae
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67454141"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Kwestie dotyczące wydajności dla usługi Azure NetApp Files
 
-[Limit przepływności](azure-netapp-files-service-levels.md) dla woluminu jest określane przez połączenie przydziału przypisanych do woluminu i poziom wybranej usługi. Po wprowadzeniu planów wydajności dotyczące usługi Azure Files NetApp, należy zrozumieć kilka zagadnień. 
+[Limit przepływności](azure-netapp-files-service-levels.md) dla woluminu jest określany przez kombinację przydziału przypisanego do woluminu i wybranego poziomu usług. Podczas tworzenia planów wydajności dotyczących plików NetApp platformy Azure należy zapoznać się z kilkoma zagadnieniami. 
 
-## <a name="quota-and-throughput"></a>Limit przydziału i przepływności  
+## <a name="quota-and-throughput"></a>Przydział i przepływność  
 
-Limit przepływności jest tylko jeden wyznacznik rzeczywistej wydajności, która zostanie zrealizowana.  
+Limit przepływności jest tylko jednym wyznacznikiem rzeczywistej wydajności, która zostanie zrealizowana.  
 
-Magazyn typowe zagadnienia dotyczące wydajności, łącznie z zapisu i odczytu mieszanego, rozmiar transferu, losowych lub sekwencyjnych wzorców i wieloma innymi czynnikami przyczyni się do wydajności całkowitej dostarczane.  
+Typowe zagadnienia dotyczące wydajności magazynu, w tym mikst odczytu i zapisu, rozmiar transferu, losowe lub sekwencyjne wzorce i wiele innych czynników przyczyni się do całkowitej wydajności.  
 
-Maksymalna przepływność empiryczne obserwowanej podczas testowania jest 4 500 MiB/s.  W warstwie magazynu Premium limit przydziału woluminu z 70.31 TiB przydzieli limit przepustowości, która jest wystarczająco wysoka, aby osiągnąć ten poziom wydajności.  
+Maksymalna przepustowość empiryczna zaobserwowana podczas testów wynosi 4500 MiB/s.  W warstwie magazynu w warstwie Premium przydział woluminu 70,31 TiB udostępni limit przepływności, który jest wystarczająco wysoki, aby osiągnąć ten poziom wydajności.  
 
-Jeśli rozważasz przypisywanie woluminu kwoty przydziału poza 70.31 TiB dodatkowego przydziału można przypisać wolumin do przechowywania dodatkowych danych. Jednak dodano limitu przydziału nie spowoduje dalsze zwiększenie rzeczywista przepływność.  
+Jeśli rozważasz przypisanie kwot przydziału woluminu powyżej 70,31 TiB, dodatkowy przydział może zostać przypisany do woluminu w celu przechowywania dodatkowych danych. Jednak dodatkowy przydział nie spowoduje dalszego wzrostu rzeczywistej przepływności.  
 
-Zobacz [wydajności testy dla usługi Azure Files NetApp](azure-netapp-files-performance-benchmarks.md) Aby uzyskać dodatkowe informacje.
+Aby uzyskać dodatkowe informacje, zobacz [wskaźniki wydajności dla plików NetApp usługi Azure.](azure-netapp-files-performance-benchmarks.md)
 
-## <a name="overprovisioning-the-volume-quota"></a>Celi limit przydziału woluminu
+## <a name="overprovisioning-the-volume-quota"></a>Nadmierna aprowizowanie przydziału woluminu
 
-Jeśli wydajność obciążenia jest powiązana limit przepływności, istnieje możliwość overprovision limit przydziału woluminu wyższego poziomu przepływności i uzyskać lepszą wydajność.  
+Jeśli wydajność obciążenia jest związana z limitem przepływności, możliwe jest przepros urozdział przydziału woluminu, aby ustawić wyższy poziom przepływności i osiągnąć wyższą wydajność.  
 
-Na przykład, jeśli wolumin w warstwie Premium storage ma tylko 500 GiB danych, ale wymaga 128 MiB/s przepływności, możesz ustawić limit przydziału na 2 TiB tak, aby poziom przepływności odpowiednio (64 MiB/s na TB * 2 TiB = 128 MiB/s).  
+Na przykład jeśli wolumin w warstwie magazynu w warstwie Premium ma tylko 500 GiB danych, ale wymaga 128 MiB/s przepływności, można ustawić przydział na 2 TiB, tak aby odpowiednio ustawiony poziom przepływności (64 MiB/s na TB * 2 TiB = 128 MiB/s).  
 
-Jeśli wolumin do osiągnięcia wyższej przepływności można spójnie overprovision, wyższego poziomu usługi zamiast tego Rozważ użycie.  W powyższym przykładzie można osiągnąć ten sam limit przepływności o połowę limit przydziału woluminu przy użyciu warstwy magazynowania Ultra zamiast (128 MiB/s na TiB * 1 TiB = 128 MiB/s).
+Jeśli konsekwentnie overprovision woluminu w celu osiągnięcia wyższej przepływności, należy rozważyć użycie wyższego poziomu usług zamiast tego.  W powyższym przykładzie można osiągnąć ten sam limit przepływności z połową przydziału woluminu przy użyciu warstwy magazynu Ultra zamiast (128 MiB/s na TiB * 1 TiB = 128 MiB/s).
 
-## <a name="dynamically-increasing-or-decreasing-volume-quota"></a>Dynamicznie zwiększenie lub zmniejszenie limit przydziału woluminu
+## <a name="dynamically-increasing-or-decreasing-volume-quota"></a>Dynamicznie zwiększający lub zmniejszający się przydział wolumenu
 
-Czy wymagania dotyczące wydajności są w istocie tymczasowe, czy została zwiększona wymagań dotyczących wydajności w ustalonym czasie, dynamicznie można zwiększyć lub zmniejszyć limit przydziału woluminu, aby natychmiast dostosować limit przepływności.  Należy zwrócić uwagę następujące kwestie: 
+Jeśli wymagania dotyczące wydajności mają charakter tymczasowy lub jeśli masz zwiększone zapotrzebowanie na wydajność przez określony czas, można dynamicznie zwiększyć lub zmniejszyć przydział woluminu, aby natychmiast dostosować limit przepływności.  Należy zwrócić uwagę na następujące kwestie: 
 
-* Limit przydziału woluminu można zwiększyć lub zmniejszyć bez konieczności wstrzymywanie operacji We/Wy i dostęp do woluminu zostanie przerwana lub nie dotyczy.  
+* Przydział woluminu można zwiększyć lub zmniejszyć bez konieczności wstrzymywania we/wy, a dostęp do woluminu nie jest przerywany ani wpływa.  
 
-    Można dostosować przydziału podczas aktywnej transakcji we/wy dla woluminu.  Należy pamiętać, że ten limit przydziału woluminu nigdy nie można zmniejszyć poniżej ilość danych logicznych, która jest przechowywana w woluminie.
+    Przydział można skorygować podczas aktywnej transakcji we/wy względem woluminu.  Należy zauważyć, że przydział woluminu nigdy nie może być zmniejszony poniżej ilości danych logicznych przechowywanych w woluminie.
 
-* Gdy limit przydziału woluminu zostanie zmieniona, analogiczna zmiana limit przepływności jest prawie natychmiastowe. 
+* Po zmianie przydziału woluminu odpowiednia zmiana limitu przepływności jest niemal natychmiastowa. 
 
-    Zmiana przerwań lub nie mieć wpływ na dostęp do woluminu lub operacji We/Wy.  
+    Zmiana nie przerywa ani nie wpływa na dostęp do woluminu ani we/wy.  
 
-* Dostosowywanie limit przydziału woluminu wymaga zmian w zakresie rozmiaru puli pojemności.  
+* Dostosowanie przydziału woluminu wymaga zmiany rozmiaru puli pojemności.  
 
-    Dynamiczne i bez wywierania wpływu na dostępność woluminu lub we/wy można dostosować rozmiar pojemności w puli.
+    Rozmiar puli pojemności można regulować dynamicznie i bez wpływu na dostępność woluminu lub we/wy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Poziomy usług dla usługi Azure NetApp Files](azure-netapp-files-service-levels.md)
-- [Testy porównawcze wydajności dla usługi Azure Files NetApp](azure-netapp-files-performance-benchmarks.md)
+- [Testy porównawcze wydajności dla usługi Azure NetApp Files](azure-netapp-files-performance-benchmarks.md)

@@ -1,7 +1,7 @@
 ---
 title: Przykłady skryptów w języku JavaScript
 titleSuffix: Azure AD B2C
-description: Informacje o używaniu języka JavaScript w usłudze Azure Active Directory B2C.
+description: Dowiedz się więcej o używaniu języka JavaScript w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,43 +12,43 @@ ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a26f6c5e69ca083335580a0368459e062de3941e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187665"
 ---
-# <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Przykładowe skrypty JavaScript do użycia w usłudze Azure Active Directory B2C
+# <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Przykłady języka JavaScript do użycia w usłudze Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Możesz dodać własny kod po stronie klienta JavaScript do aplikacji Azure Active Directory B2C (Azure AD B2C).
+Do aplikacji usługi Azure Active Directory B2C (Azure AD B2C) można dodać własny kod po stronie klienta JavaScript.
 
-Aby włączyć język JavaScript dla aplikacji:
+Aby włączyć obsługę języka JavaScript dla aplikacji:
 
 * Dodawanie elementu do [zasad niestandardowych](custom-policy-overview.md)
-* Wybierz [Układ strony](page-layout.md)
-* Używanie [b2clogin.com](b2clogin.md) w żądaniach
+* Wybieranie [układu strony](page-layout.md)
+* Użyj [b2clogin.com](b2clogin.md) w swoich żądaniach
 
-W tym artykule opisano sposób zmiany zasad niestandardowych w celu włączenia wykonywania skryptu.
+W tym artykule opisano, jak można zmienić zasady niestandardowe, aby włączyć wykonywanie skryptów.
 
 > [!NOTE]
-> Jeśli chcesz włączyć język JavaScript dla przepływów użytkownika, zobacz [wersje JavaScript i układ strony w Azure Active Directory B2C](user-flow-javascript-overview.md).
+> Aby włączyć obsługę języka JavaScript dla przepływów użytkowników, zobacz [JavaScript i wersje układu strony w usłudze Azure Active Directory B2C](user-flow-javascript-overview.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-### <a name="select-a-page-layout"></a>Wybierz układ strony
+### <a name="select-a-page-layout"></a>Wybieranie układu strony
 
-* Wybierz [Układ strony](contentdefinitions.md#select-a-page-layout) dla elementów interfejsu użytkownika aplikacji.
+* Wybierz [układ strony](contentdefinitions.md#select-a-page-layout) dla elementów interfejsu użytkownika aplikacji.
 
-    Jeśli zamierzasz używać języka JavaScript, musisz [zdefiniować wersję układu strony](contentdefinitions.md#migrating-to-page-layout) z wersją `contract` strony dla *wszystkich* definicji zawartości w niestandardowych zasadach.
+    Jeśli zamierzasz używać języka JavaScript, musisz zdefiniować `contract` wersję układu strony z [wersją](contentdefinitions.md#migrating-to-page-layout) strony dla *wszystkich* definicji zawartości w zasadach niestandardowych.
 
-## <a name="add-the-scriptexecution-element"></a>Dodaj ScriptExecution element
+## <a name="add-the-scriptexecution-element"></a>Dodawanie elementu ScriptExecution
 
-Wykonanie skryptu jest włączane przez dodanie elementu **ScriptExecution** do elementu [RelyingParty](relyingparty.md) .
+Można włączyć wykonywanie skryptu przez dodanie **ScriptExecution** element do [RelyingParty](relyingparty.md) element.
 
-1. Otwórz plik zasad niestandardowych. Na przykład *SignUpOrSignin. XML*.
-2. Dodaj element **ScriptExecution** do elementu **UserJourneyBehaviors** **RelyingParty**:
+1. Otwórz niestandardowy plik zasad. Na przykład *signuporsignin.xml*.
+2. Dodaj **ScriptExecution** element do **UserJourneyBehaviors** element **RelyingParty:**
 
     ```XML
     <RelyingParty>
@@ -59,15 +59,15 @@ Wykonanie skryptu jest włączane przez dodanie elementu **ScriptExecution** do 
       ...
     </RelyingParty>
     ```
-3. Zapisz i przekazać plik.
+3. Zapisz i przekaż plik.
 
 [!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="javascript-samples"></a>Przykłady skryptów w języku JavaScript
 
-### <a name="show-or-hide-a-password"></a>Pokaż lub Ukryj hasło
+### <a name="show-or-hide-a-password"></a>Pokazywale lub ukrywanie hasła
 
-Typowym sposobem pomóc klientom w ich Powodzenie rejestracji jest aby umożliwić im zobaczyć, jakie wprowadzono jako jego hasło. Ta opcja pomaga użytkownikom zarejestrować się, co pozwala na łatwe Zobacz oraz wprowadzić korekty do swojego hasła, jeśli to konieczne. Każde pole typu hasło ma pole wyboru z etykietą **Pokaż hasło** .  Dzięki temu użytkownika, aby wyświetlić hasło w postaci zwykłego tekstu. Uwzględnij ten fragment kodu w szablonie rejestracji lub logowania dla strony samodzielnie:
+Typowym sposobem, aby pomóc klientom w ich sukces rejestracji jest umożliwienie im zobaczyć, co wprowadzili jako hasło. Ta opcja pomaga użytkownikom zarejestrować się, umożliwiając im łatwe wyświetlanie i wprowadzanie poprawek do hasła w razie potrzeby. Każde pole hasła typu ma pole wyboru z etykietą **Pokaż hasło.**  Dzięki temu użytkownik może zobaczyć hasło w postaci zwykłego tekstu. Dołącz ten fragment kodu do szablonu rejestracji lub logowania dla strony, która została potwierdzona samodzielnie:
 
 ```Javascript
 function makePwdToggler(pwd){
@@ -113,7 +113,7 @@ setupPwdTogglers();
 
 ### <a name="add-terms-of-use"></a>Dodawanie warunków użytkowania
 
-Dołącz następujący kod do strony, na której chcesz dołączyć pole wyboru **warunki użytkowania** . To pole wyboru jest zazwyczaj potrzebne na swoich stronach rejestracji konta rejestracji i społecznościowych konta lokalnego.
+Dołącz do strony następujący kod, w którym chcesz dołączyć pole wyboru **Warunki użytkowania.** To pole wyboru jest zwykle potrzebne na stronach rejestracji konta lokalnego i konta społecznościowego.
 
 ```Javascript
 function addTermsOfUseLink() {
@@ -138,8 +138,8 @@ function addTermsOfUseLink() {
 }
 ```
 
-W kodzie Zastąp `termsOfUseUrl` linkiem do warunków użytkowania. Dla katalogu Utwórz nowy atrybut użytkownika o nazwie **termsOfUse** , a następnie Dołącz **termsOfUse** jako atrybut użytkownika.
+W kodzie `termsOfUseUrl` zastąp linkiem do umowy dotyczącej warunków użytkowania. Dla katalogu utwórz nowy atrybut użytkownika o nazwie **termsOfUse,** a następnie dołącz **termsOfUse** jako atrybut użytkownika.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji o sposobach dostosowywania interfejsu użytkownika aplikacji można znaleźć w temacie [Dostosowywanie interfejsu użytkownika aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C](custom-policy-ui-customization.md).
+Więcej informacji na temat dostosowywania interfejsu użytkownika aplikacji można znaleźć w [obszarze Dostosowywanie interfejsu użytkownika aplikacji przy użyciu zasad niestandardowych w usłudze Azure Active Directory B2C](custom-policy-ui-customization.md).

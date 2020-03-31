@@ -1,6 +1,6 @@
 ---
-title: Jak używać kolejek Azure Service Bus przy użyciu języka Ruby
-description: W ramach tego samouczka nauczysz się tworzyć aplikacje Ruby do wysyłania komunikatów do i odbierania komunikatów z kolejki Service Bus.
+title: Jak korzystać z kolejek usługi Azure Service Bus z ruby
+description: W tym samouczku dowiesz się, jak tworzyć aplikacje Ruby do wysyłania wiadomości do i odbierania wiadomości z kolejki usługi Service Bus.
 services: service-bus-messaging
 documentationcenter: ruby
 author: axisc
@@ -15,32 +15,32 @@ ms.topic: quickstart
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: a699543bb442e7c57d57e72acb2cdf6ac40159c1
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76760593"
 ---
-# <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>Szybki Start: jak używać kolejek Service Bus przy użyciu języka Ruby
+# <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>Szybki start: jak korzystać z kolejek usługi Service Bus z Ruby
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-W ramach tego samouczka nauczysz się tworzyć aplikacje Ruby do wysyłania komunikatów do i odbierania komunikatów z kolejki Service Bus. Przykłady są zapisywane w języku Ruby i korzystają z usługi Azure rozwiązania gem.
+W tym samouczku dowiesz się, jak tworzyć aplikacje Ruby do wysyłania wiadomości do i odbierania wiadomości z kolejki usługi Service Bus. Przykłady są zapisywane w ruby i używać klejnotu azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-1. Subskrypcja platformy Azure. Do wykonania kroków tego samouczka potrzebne jest konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Wykonaj czynności opisane w [Azure Portal Użyj, aby utworzyć artykuł kolejki Service Bus](service-bus-quickstart-portal.md) .
-    1. Zapoznaj się z krótkim omówieniem **kolejek**Service Bus. 
-    2. Utwórz **przestrzeń nazw**Service Bus. 
-    3. Pobierz **Parametry połączenia**. 
+1. Subskrypcja platformy Azure. Do wykonania kroków tego samouczka potrzebne jest konto platformy Azure. Możesz aktywować [swoje korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub założyć bezpłatne [konto.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
+2. Wykonaj kroki opisane w artykule [Użyj portalu Azure, aby utworzyć kolejkę usługi Service Bus.](service-bus-quickstart-portal.md)
+    1. Przeczytaj krótki **przegląd** **kolejek**usługi Service Bus . 
+    2. Tworzenie obszaru **nazw**usługi Service Bus . 
+    3. Pobierz **ciąg połączenia**. 
 
         > [!NOTE]
-        > W tym samouczku utworzysz **kolejkę** w przestrzeni nazw Service Bus przy użyciu języka Ruby. 
+        > Spowoduje to utworzenie **kolejki** w obszarze nazw usługi Service Bus przy użyciu ruby w tym samouczku. 
 
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
 ## <a name="how-to-create-a-queue"></a>Jak utworzyć kolejkę
-Obiekt **Azure:: ServiceBusService** umożliwia korzystanie z kolejek. Aby utworzyć kolejkę, użyj metody `create_queue()`. Poniższy przykład tworzy kolejkę lub drukuje błędy.
+**Obiekt Azure::ServiceBusService** umożliwia pracę z kolejkami. Aby utworzyć kolejkę, `create_queue()` użyj tej metody. Poniższy przykład tworzy kolejkę lub drukuje wszelkie błędy.
 
 ```ruby
 azure_service_bus_service = Azure::ServiceBus::ServiceBusService.new(sb_host, { signer: signer})
@@ -51,7 +51,7 @@ rescue
 end
 ```
 
-Można również przekazać obiekt **Azure:: ServiceBus:: Queue** z dodatkowymi opcjami, co pozwala na zastąpienie domyślnych ustawień kolejki, takich jak czas wiadomości na żywo lub maksymalny rozmiar kolejki. Poniższy przykład pokazuje, jak ustawić maksymalny rozmiar kolejki na 5 GB i czas wygaśnięcia na 1 minutę:
+Można również przekazać **azure::ServiceBus::Queue** obiektu z dodatkowych opcji, które umożliwia zastąpienie domyślne ustawienia kolejki, takie jak czas wiadomości do żywo lub maksymalny rozmiar kolejki. W poniższym przykładzie pokazano, jak ustawić maksymalny rozmiar kolejki na 5 GB i czas na żywo do 1 minuty:
 
 ```ruby
 queue = Azure::ServiceBus::Queue.new("test-queue")
@@ -61,10 +61,10 @@ queue.default_message_time_to_live = "PT1M"
 queue = azure_service_bus_service.create_queue(queue)
 ```
 
-## <a name="how-to-send-messages-to-a-queue"></a>Jak wysyłać komunikaty do kolejki
-Aby wysłać komunikat do kolejki Service Bus, aplikacja wywołuje metodę `send_queue_message()` w obiekcie **Azure:: ServiceBusService** . Komunikaty wysyłane do (i odbieranych z) Service Bus kolejki są typu **Azure:: ServiceBus:: BrokeredMessage** i mają zestaw właściwości standardowych (takich jak `label` i `time_to_live`), słownik używany do przechowywania niestandardowych właściwości specyficznych dla aplikacji oraz treść dowolnych danych aplikacji. Aplikacja może ustawić treść komunikatu przez przekazanie wartości ciągu jako komunikat i wszystkie wymagane właściwości standardowe są wypełniane wartościami domyślnymi.
+## <a name="how-to-send-messages-to-a-queue"></a>Jak wysyłać wiadomości do kolejki
+Aby wysłać wiadomość do kolejki usługi Service `send_queue_message()` Bus, aplikacja wywołuje metodę na **azure::ServiceBusService** obiektu. Wiadomości wysyłane do (i odebrane z) kolejek usługi Service Bus to **Azure::ServiceBus::BrokeredMessage** obiektów i mają zestaw właściwości standardowych (takich jak `label` i `time_to_live`), słownik, który jest używany do przechowywania właściwości specyficzne dla aplikacji niestandardowe i treść dowolnych danych aplikacji. Aplikacja może ustawić treść wiadomości, przekazując wartość ciągu jako komunikat, a wszystkie wymagane właściwości standardowe są wypełniane wartościami domyślnymi.
 
-Poniższy przykład pokazuje, jak wysłać wiadomość testową do kolejki o nazwie `test-queue` przy użyciu `send_queue_message()`:
+W poniższym przykładzie pokazano, jak wysłać `test-queue` `send_queue_message()`wiadomość testową do kolejki o nazwie przy użyciu:
 
 ```ruby
 message = Azure::ServiceBus::BrokeredMessage.new("test queue message")
@@ -75,13 +75,13 @@ azure_service_bus_service.send_queue_message("test-queue", message)
 Kolejki usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nagłówek, który zawiera standardowe i niestandardowe właściwości aplikacji, może mieć maksymalny rozmiar 64 KB. Nie ma żadnego limitu liczby komunikatów w kolejce, ale jest ograniczenie całkowitego rozmiaru komunikatów przechowywanych przez kolejkę. Ten rozmiar kolejki jest definiowany w czasie tworzenia, z górnym limitem 5 GB.
 
 ## <a name="how-to-receive-messages-from-a-queue"></a>Jak odbierać komunikaty z kolejki
-Komunikaty są odbierane z kolejki przy użyciu metody `receive_queue_message()` w obiekcie **Azure:: ServiceBusService** . Domyślnie komunikaty są odczytywane i blokowane bez usuwania z kolejki. Można jednak usuwać wiadomości z kolejki w miarę ich odczytywania, ustawiając opcję `:peek_lock` na **false**.
+Wiadomości są odbierane z `receive_queue_message()` kolejki przy użyciu metody na **Azure::ServiceBusService** obiektu. Domyślnie wiadomości są odczytywane i blokowane bez usuwania z kolejki. Można jednak usunąć wiadomości z kolejki, ponieważ są `:peek_lock` one odczytywane, ustawiając opcję **false**.
 
-Zachowanie domyślne polega na odczycie i usunięciu operacji dwuetapowej, co również umożliwia obsługę aplikacji, które nie mogą tolerować brakujących komunikatów. Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Gdy aplikacja zakończy przetwarzanie komunikatu (lub zapisuje ją w sposób niezawodny w przyszłości), kończy drugi etap procesu odbierania przez wywołanie metody `delete_queue_message()` i podanie komunikatu, który ma zostać usunięty jako parametr. Metoda `delete_queue_message()` oznaczy komunikat jako używany i usuń go z kolejki.
+Domyślne zachowanie sprawia, że odczytywanie i usuwanie operacji dwuetapowej, co również umożliwia obsługę aplikacji, które nie tolerują brakujących komunikatów. Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Po zakończeniu przetwarzania wiadomości (lub magazynuje ją niezawodnie do przetwarzania w przyszłości), kończy `delete_queue_message()` drugi etap procesu odbierania przez metodę wywoływania i dostarczanie wiadomości do usunięcia jako parametr. Metoda `delete_queue_message()` oznaczy wiadomość jako zużytą i usunie ją z kolejki.
 
-Jeśli parametr `:peek_lock` ma wartość **false**, odczytywanie i usuwanie wiadomości stanie się najprostszym modelem i sprawdza się najlepiej w scenariuszach, w których aplikacja może tolerować nieprzetwarzanie komunikatu w przypadku awarii. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ Service Bus oznaczył komunikat jako używany, gdy aplikacja jest ponownie uruchamiana i zaczyna zużywać komunikaty, zostanie pominięty komunikat, który został zużyty przed awarią.
+Jeśli `:peek_lock` parametr jest ustawiony na **false,** odczytu i usuwania wiadomości staje się najprostszym modelem i działa najlepiej w scenariuszach, w których aplikacja może tolerować nie przetwarzania wiadomości w przypadku awarii. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ usługa Service Bus oznaczyła komunikat jako zużyty, gdy aplikacja uruchomi się ponownie i zacznie ponownie likwidować wiadomości, zostanie wyświetlony komunikat, który został zużyty przed awarią.
 
-W poniższym przykładzie pokazano, jak odbierać i przetwarzać komunikaty przy użyciu `receive_queue_message()`. Przykład najpierw odbiera i usuwa komunikat przy użyciu `:peek_lock` ustawiona na **wartość false**, następnie otrzymuje kolejny komunikat, a następnie usuwa komunikat przy użyciu `delete_queue_message()`:
+W poniższym przykładzie pokazano, jak `receive_queue_message()`odbierać i przetwarzać wiadomości za pomocą programu . Przykład najpierw odbiera i usuwa wiadomość `:peek_lock` przy użyciu zestawu do **false,** a następnie `delete_queue_message()`odbiera kolejną wiadomość, a następnie usuwa wiadomość za pomocą:
 
 ```ruby
 message = azure_service_bus_service.receive_queue_message("test-queue",
@@ -91,20 +91,20 @@ azure_service_bus_service.delete_queue_message(message)
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Sposób obsługi awarii aplikacji i komunikatów niemożliwych do odczytania
-Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiornika nie może przetworzyć komunikatu z jakiegoś powodu, może wywołać metodę `unlock_queue_message()` w obiekcie **Azure:: ServiceBusService** . To wywołanie powoduje Service Bus odblokowywanie komunikatu w kolejce i udostępnienie go do odebrania przez tę samą aplikację wykorzystującą lub przez inną aplikację, która korzysta z aplikacji.
+Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiornika nie jest w stanie przetworzyć `unlock_queue_message()` komunikatu z jakiegoś powodu, następnie można wywołać metodę na **Azure::ServiceBusService** obiektu. To wywołanie powoduje, że usługa Service Bus, aby odblokować wiadomość w kolejce i udostępnić go do odebrania ponownie, za pomocą tej samej aplikacji zużywającej lub przez inną aplikację zużywającą.
 
-Istnieje również limit czasu skojarzony z komunikatem zablokowanym w kolejce i jeśli aplikacja nie może przetworzyć komunikatu przed upływem limitu czasu blokady (na przykład jeśli awaria aplikacji), Service Bus odblokować komunikat automatycznie i spowoduje, że dostępne do ponownego odebrania.
+Istnieje również limit czasu skojarzony z komunikatem zablokowanym w kolejce, a jeśli aplikacja nie może przetworzyć wiadomości przed upływem limitu czasu blokady (na przykład, jeśli aplikacja ulegnie awarii), usługa Service Bus automatycznie odblokowuje wiadomość i ją tworzy. można otrzymać ponownie.
 
-W przypadku awarii aplikacji po przetworzeniu komunikatu, ale przed wywołaniem metody `delete_queue_message()`, komunikat zostanie ponownie dostarczony do aplikacji po jej ponownym uruchomieniu. Ten proces jest często wywoływany *co najmniej raz podczas przetwarzania*; oznacza to, że każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach może zostać ponownie dostarczony ten sam komunikat. Jeśli scenariusz nie toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Jest to często osiągane przy użyciu właściwości `message_id` komunikatu, która pozostaje stała między kolejnymi próbami dostarczenia.
+W przypadku awarii aplikacji po przetworzeniu wiadomości, ale przed wywołaniem `delete_queue_message()` metody, komunikat jest ponownie dostarczony do aplikacji po ponownym uruchomieniu. Proces ten jest często nazywany *Co najmniej raz przetwarzania;* oznacza to, że każda wiadomość jest przetwarzana co najmniej raz, ale w niektórych sytuacjach ta sama wiadomość może zostać ponownie dostarczona. Jeśli scenariusz nie toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Jest to często osiągane przy użyciu `message_id` właściwości wiadomości, która pozostaje stała w próbach dostarczenia.
 
 > [!NOTE]
-> Za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/)można zarządzać zasobami Service Bus. Eksplorator Service Bus umożliwia użytkownikom łączenie się z przestrzenią nazw Service Bus i administrowanie jednostkami obsługi komunikatów w prosty sposób. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcja importowania/eksportowania lub możliwość testowania tematów, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 
+> Zasoby usługi Service Bus można zarządzać za pomocą [Eksploratora magistrali usług](https://github.com/paolosalvatori/ServiceBusExplorer/). Eksplorator usługi Service Bus umożliwia użytkownikom łączenie się z obszarem nazw usługi Service Bus i administrowanie jednostkami obsługi wiadomości w łatwy sposób. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcje importu/eksportu lub możliwość testowania tematu, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 
 
 ## <a name="next-steps"></a>Następne kroki
 Teraz, kiedy znasz już podstawy kolejek usługi Service Bus, skorzystaj z poniższych linków, aby dowiedzieć się więcej.
 
 * Omówienie [kolejek, tematów i subskrypcji](service-bus-queues-topics-subscriptions.md).
-* Odwiedź witrynę [Azure SDK dla repozytorium Ruby](https://github.com/Azure/azure-sdk-for-ruby) w serwisie GitHub.
+* Odwiedź [zestaw SDK platformy Azure dla](https://github.com/Azure/azure-sdk-for-ruby) repozytorium Ruby w usłudze GitHub.
 
-Aby uzyskać informacje na temat porównania między kolejkami Azure Service Bus omówione w tym artykule i kolejkami platformy Azure omówionymi w artykule [jak korzystać z usługi queue storage z poziomu języka Ruby](../storage/queues/storage-ruby-how-to-use-queue-storage.md) , zobacz kolejki [platformy azure i kolejki Azure Service Bus — porównane i różnicowe](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+Aby uzyskać porównanie kolejek usługi Azure Service Bus omówionych w tym artykule i kolejek platformy Azure omówionych w artykule [Jak używać magazynu kolejek z ruby,](../storage/queues/storage-ruby-how-to-use-queue-storage.md) zobacz [Kolejki platformy Azure i kolejki usługi Azure Service Bus — w porównaniu i w przeciwieństwie do kontrastu](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 

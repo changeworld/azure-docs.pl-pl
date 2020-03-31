@@ -1,13 +1,13 @@
 ---
-title: Konfigurowanie środowiska projektowego w systemie Linux
+title: Konfigurowanie środowiska programistycznego w systemie Linux
 description: Zainstaluj środowisko uruchomieniowe i zestaw SDK oraz utwórz lokalny klaster projektowy w systemie Linux. Po ukończeniu tej konfiguracji wszystko będzie gotowe do kompilowania aplikacji.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 572b1509f45a7f5bf2c63619809f01d17c3493d1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258436"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Przygotowywanie środowiska projektowego w systemie Linux
@@ -92,7 +92,7 @@ Aby zainstalować zestaw SDK i skojarzony pakiet środowiska uruchomieniowego pr
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. Dodaj klucz JDK Azul do pęku kluczy APT i skonfiguruj jego repozytorium.
+7. Dodaj klucz Azul JDK do breloka APT i skonfiguruj jego repozytorium.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
@@ -179,7 +179,7 @@ Uruchom klaster lokalny po zakończeniu instalacji.
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. Otwórz przeglądarkę internetową i przejdź do narzędzia [Service Fabric Explorer](http://localhost:19080/Explorer) (`http://localhost:19080/Explorer`). Po uruchomieniu klastra zostanie wyświetlony pulpit nawigacyjny narzędzia Service Fabric Explorer. Może upłynąć kilka minut, zanim klaster zostanie całkowicie skonfigurowany. Jeśli przeglądarka nie może otworzyć adresu URL lub narzędzie Service Fabric Explorer nie wyświetla informacji o gotowości systemu, zaczekaj kilka minut i spróbuj ponownie.
+2. Otwórz przeglądarkę internetową i przejdź`http://localhost:19080/Explorer`do [Eksploratora sieci szkieletowej usług](http://localhost:19080/Explorer) ( ). Po uruchomieniu klastra zostanie wyświetlony pulpit nawigacyjny narzędzia Service Fabric Explorer. Może upłynąć kilka minut, zanim klaster zostanie całkowicie skonfigurowany. Jeśli przeglądarka nie może otworzyć adresu URL lub narzędzie Service Fabric Explorer nie wyświetla informacji o gotowości systemu, zaczekaj kilka minut i spróbuj ponownie.
 
     ![Narzędzie Service Fabric Explorer w systemie Linux][sfx-linux]
 
@@ -228,7 +228,7 @@ Zainstaluj [zestaw .NET Core 2.0 SDK dla systemu Ubuntu](https://www.microsoft.c
 
 ## <a name="set-up-java-development"></a>Konfigurowanie środowiska programowania w języku Java
 
-Aby skompilować usługi Service Fabric przy użyciu języka Java, zainstaluj Gradle, aby uruchomić zadania kompilacji. Uruchom poniższe polecenie, aby zainstalować Gradle. Biblioteki Java usługi Service Fabric są ściągane z narzędzia Maven.
+Aby utworzyć usługi sieci szkieletowej usług przy użyciu języka Java, należy zainstalować Gradle do uruchamiania zadań kompilacji. Uruchom poniższe polecenie, aby zainstalować Gradle. Biblioteki Java usługi Service Fabric są ściągane z narzędzia Maven.
 
 
 * Ubuntu
@@ -261,11 +261,11 @@ Wtyczkę środowiska Eclipse dla usługi Service Fabric można zainstalować z p
 > 
 > W systemie Ubuntu zaleca się instalowanie bezpośrednio z witryny środowiska Eclipse, a nie za pomocą instalatora pakietu (`apt` lub `apt-get`). Gwarantuje to uzyskanie najnowszej wersji środowiska Eclipse. Można zainstalować środowisko Eclipse IDE for Java Developers lub Java EE Developers.
 
-1. W środowisku Eclipse upewnij się, że masz zainstalowaną wersję Eclipse Neon lub nowszą oraz zestaw Buildship 2.2.1 lub nowszy. Sprawdź wersje zainstalowanych składników, wybierając kolejno pozycje **Help** > **About Eclipse** > **Installation Details** (Pomoc > Informacje o środowisku Eclipse > Szczegóły instalacji). Kompilację można zaktualizować, korzystając z instrukcji zamieszczonych w [Przezaćmieniu: zaćmienie dla Gradle][buildship-update].
+1. W środowisku Eclipse upewnij się, że masz zainstalowaną wersję Eclipse Neon lub nowszą oraz zestaw Buildship 2.2.1 lub nowszy. Sprawdź wersje zainstalowanych komponentów, wybierając **pozycję Pomoc** > dotycząca**szczegółów instalacji programu****Eclipse** > . Zestaw Buildship można zaktualizować zgodnie z instrukcjami podanymi w artykule [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: wtyczka Eclipse dla narzędzia Gradle).
 
-2. Aby zainstalować wtyczkę usługi Service Fabric, wybierz pozycję **Help** > **Install New Software** (Pomoc > Zainstaluj nowe oprogramowanie).
+2. Aby zainstalować wtyczkę sieci szkieletowej usług, wybierz pozycję **Pomoc** > w**instalacji nowego oprogramowania**.
 
-3. W polu **Work with** (Praca z) wpisz adres **https://dl.microsoft.com/eclipse** .
+3. W polu **Work with** (Praca z) wpisz adres **https://dl.microsoft.com/eclipse**.
 
 4. Wybierz pozycję **Dodaj**.
 
@@ -275,7 +275,7 @@ Wtyczkę środowiska Eclipse dla usługi Service Fabric można zainstalować z p
 
 6. Wykonaj kroki instalacji. Następnie zaakceptuj umowę licencyjną użytkownika oprogramowania.
 
-Jeśli wtyczka usługi Service Fabric Eclipse jest już zainstalowana, upewnij się, że używasz najnowszej wersji. Sprawdź, wybierając kolejno pozycje **Help** > **About Eclipse** > **Installation Details** (Pomoc > Informacje o środowisku Eclipse > Szczegóły instalacji). Następnie wyszukaj Service Fabric na liście zainstalowanych wtyczek. Wybierz pozycję **Aktualizuj** , jeśli jest dostępna nowsza wersja.
+Jeśli wtyczka usługi Service Fabric Eclipse jest już zainstalowana, upewnij się, że używasz najnowszej wersji. Sprawdź, wybierając **pomoc dotyczącą** > **szczegółów instalacji programu****Eclipse** > . Następnie wyszukaj sieci szkieletowej usług na **Update** liście zainstalowanych wtyczek.
 
 Aby uzyskać więcej informacji, zobacz artykuł [Wtyczka usługi Service Fabric na potrzeby tworzenia aplikacji Java w środowisku Eclipse](service-fabric-get-started-eclipse.md).
 

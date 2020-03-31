@@ -1,74 +1,74 @@
 ---
-title: Użyj odwołań Key Vault
-description: Dowiedz się, jak skonfigurować Azure App Service i Azure Functions do korzystania z Azure Key Vault odwołań. Udostępnienie Key Vault wpisów tajnych dla kodu aplikacji.
+title: Korzystanie z odwołań do magazynu kluczy
+description: Dowiedz się, jak skonfigurować usługę Azure App Service i usługi Azure Functions do korzystania z odwołań do usługi Azure Key Vault. Udostępnij kodowi aplikacji wpisy tajne usługi Key Vault.
 author: mattchenderson
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280341"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Użyj Key Vault odwołań dla App Service i Azure Functions
+# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Korzystanie z odwołań do usługi App Service i usługi Azure
 
-W tym temacie przedstawiono sposób pracy z wpisami tajnymi Azure Key Vault w App Service lub Azure Functions aplikacji bez konieczności wprowadzania jakichkolwiek zmian w kodzie. [Azure Key Vault](../key-vault/key-vault-overview.md) to usługa zapewniająca scentralizowane zarządzanie kluczami tajnymi z pełną kontrolą nad zasadami dostępu i historią inspekcji.
+W tym temacie pokazano, jak pracować z wpisami tajnymi z usługi Azure Key Vault w usłudze app service lub aplikacji Usługi Azure bez konieczności żadnych zmian kodu. [Usługa Azure Key Vault](../key-vault/key-vault-overview.md) to usługa zapewniająca scentralizowane zarządzanie wpisami tajnymi, z pełną kontrolą nad zasadami dostępu i historią inspekcji.
 
-## <a name="granting-your-app-access-to-key-vault"></a>Udzielanie aplikacji dostępu do Key Vault
+## <a name="granting-your-app-access-to-key-vault"></a>Przyznawanie aplikacji dostępu do usługi Key Vault
 
-Aby można było odczytać wpisy tajne z Key Vault, należy utworzyć magazyn i nadać aplikacji uprawnienia dostępu do niej.
+Aby odczytać wpisy tajne z usługi Key Vault, musisz utworzyć magazyn i udzielić aplikacji uprawnień dostępu do niego.
 
-1. Utwórz magazyn kluczy, postępując zgodnie z [przewodnikiem Szybki start Key Vault](../key-vault/quick-create-cli.md).
+1. Utwórz magazyn kluczy, śledząc [szybki start usługi Key Vault](../key-vault/quick-create-cli.md).
 
-1. Utwórz [skojarzoną z systemem tożsamość zarządzaną](overview-managed-identity.md) dla aplikacji.
+1. Utwórz [tożsamości zarządzanej przypisanej przez system](overview-managed-identity.md) dla aplikacji.
 
    > [!NOTE] 
-   > Odwołania Key Vault obecnie obsługują tylko tożsamości zarządzane przypisane do systemu. Nie można używać tożsamości przypisanych do użytkownika.
+   > Odwołania do magazynu kluczy obsługują obecnie tylko tożsamości zarządzane przypisane przez system. Nie można używać tożsamości przypisanych przez użytkownika.
 
-1. Utwórz [zasady dostępu w Key Vault](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) dla utworzonej wcześniej tożsamości aplikacji. Włącz uprawnienie "Pobieranie" klucza tajnego dla tych zasad. Nie należy konfigurować ustawień "autoryzowane aplikacje" ani `applicationId`, ponieważ nie są one zgodne z zarządzaną tożsamością.
+1. Utwórz [zasady dostępu w magazynie kluczy](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) dla tożsamości aplikacji utworzonej wcześniej. Włącz tajne uprawnienie "Pobierz" dla tej zasady. Nie należy konfigurować "autoryzowanej `applicationId` aplikacji" ani ustawień, ponieważ nie jest to zgodne z tożsamością zarządzaną.
 
     > [!NOTE]
-    > Odwołania Key Vault nie są obecnie dostępne do rozpoznawania wpisów tajnych przechowywanych w magazynie kluczy z [ograniczeniami sieci](../key-vault/key-vault-overview-vnet-service-endpoints.md).
+    > Odwołania do magazynu kluczy nie są obecnie w stanie rozpoznać wpisów tajnych przechowywanych w magazynie kluczy z [ograniczeniami sieciowymi.](../key-vault/key-vault-overview-vnet-service-endpoints.md)
 
 ## <a name="reference-syntax"></a>Składnia odwołania
 
-Odwołanie Key Vault ma postać `@Microsoft.KeyVault({referenceString})`, gdzie `{referenceString}` jest zastępowana jedną z następujących opcji:
+Odwołanie do magazynu kluczy `@Microsoft.KeyVault({referenceString})`jest `{referenceString}` formularzem , gdzie jest zastępowany przez jedną z następujących opcji:
 
 > [!div class="mx-tdBreakAll"]
 > | Ciąg odwołania                                                            | Opis                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri =_SecretUri_                                                       | **SecretUri** powinien być pełnym identyfikatorem URI płaszczyzny danych klucza tajnego w Key Vault, w tym wersji, np., https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | Magazynname =_magazynname_; Secretname =_secretname_; Wersjawpisutajnego =_wersjawpisutajnego_ | Nazwa **magazynu** powinna być nazwą zasobu Key Vault. **Wpis tajny** musi być nazwą docelowego wpisu tajnego. **Wersjawpisutajnego** powinna być wersją klucza tajnego do użycia. |
+> | SecretUri =_secretUri_                                                       | **SecretUri** powinien być pełnym identyfikatorem URI płaszczyzny danych tajnego w magazynie kluczy, w tym wersji, np.https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
+> | VaultName =_vaultName_; SecretName =_secretName_; SecretVersion =_secretVersion_ | **VaultName** powinien nazwę zasobu magazynu kluczy. **SecretName** powinna być nazwa klucza tajnego docelowego. **SecretVersion** powinna być wersją klucza tajnego do użycia. |
 
-Na przykład kompletne odwołanie z wersją będzie wyglądać następująco:
+Na przykład pełne odwołanie z Version będzie wyglądać następująco:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
-Alternatywnie:
+Inna możliwość:
 
 ```
 @Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret;SecretVersion=ec96f02080254f109c51a1f14cdb1931)
 ```
 
 
-## <a name="source-application-settings-from-key-vault"></a>Ustawienia aplikacji źródłowej z Key Vault
+## <a name="source-application-settings-from-key-vault"></a>Ustawienia aplikacji źródłowych z przechowalni kluczy
 
-Odwołania Key Vault mogą być używane jako wartości [ustawień aplikacji](configure-common.md#configure-app-settings), co pozwala zachować wpisy tajne w Key Vault zamiast konfiguracji lokacji. Ustawienia aplikacji są bezpiecznie szyfrowane w stanie spoczynku, ale jeśli potrzebujesz funkcji tajnego zarządzania, należy przejść do Key Vault.
+Odwołania do magazynu kluczy mogą być używane jako wartości [dla ustawień aplikacji,](configure-common.md#configure-app-settings)co pozwala zachować wpisy tajne w magazynie kluczy zamiast konfiguracji witryny. Ustawienia aplikacji są bezpiecznie szyfrowane w spoczynku, ale jeśli potrzebujesz tajnych funkcji zarządzania, powinny one przejść do usługi Key Vault.
 
-Aby użyć odwołania Key Vault dla ustawienia aplikacji, należy ustawić odwołanie jako wartość ustawienia. Twoja aplikacja może odwoływać się do klucza tajnego za pomocą jego klucza jako normalnego. Nie są wymagane żadne zmiany w kodzie.
+Aby użyć odwołania do magazynu kluczy dla ustawienia aplikacji, ustaw odwołanie jako wartość ustawienia. Aplikacja może odwoływać się do klucza tajnego za pośrednictwem jego klucza jako normalne. Nie są wymagane żadne zmiany kodu.
 
 > [!TIP]
-> Większość ustawień aplikacji używających odwołań Key Vault powinna być oznaczona jako ustawienia miejsca, ponieważ dla każdego środowiska należy mieć oddzielne magazyny.
+> Większość ustawień aplikacji przy użyciu odwołań do usługi Key Vault powinna być oznaczona jako ustawienia gniazda, ponieważ powinny mieć oddzielne przechowalnia dla każdego środowiska.
 
 ### <a name="azure-resource-manager-deployment"></a>Wdrożenie usługi Azure Resource Manager
 
-W przypadku automatyzowania wdrożeń zasobów za pomocą szablonów Azure Resource Manager może być konieczne sekwencjonowanie zależności w określonej kolejności, aby ta funkcja działała. Pamiętaj, że musisz zdefiniować ustawienia aplikacji jako własny zasób zamiast używać właściwości `siteConfig` w definicji lokacji. Wynika to z faktu, że lokacja musi być zdefiniowana jako pierwsza, aby można było utworzyć tożsamość przypisaną do systemu i użyć jej w zasadach dostępu.
+Podczas automatyzacji wdrożeń zasobów za pośrednictwem szablonów usługi Azure Resource Manager, może być konieczne sekwencjonowanie zależności w określonej kolejności, aby ta funkcja działała. Należy zauważyć, że należy zdefiniować ustawienia aplikacji jako własny `siteConfig` zasób, a nie przy użyciu właściwości w definicji witryny. Dzieje się tak, ponieważ lokacja musi być najpierw zdefiniowana, aby tożsamość przypisana do systemu została utworzona z nią i może być używana w zasadach dostępu.
 
-Przykład psuedo-Template dla aplikacji funkcji może wyglądać następująco:
+Przykładowy szablon psuedo dla aplikacji funkcyjnej może wyglądać następująco:
 
 ```json
 {
@@ -172,30 +172,30 @@ Przykład psuedo-Template dla aplikacji funkcji może wyglądać następująco:
 ```
 
 > [!NOTE] 
-> W tym przykładzie wdrożenie kontroli źródła zależy od ustawień aplikacji. Jest to zwykle niebezpieczne zachowanie, ponieważ aktualizacja ustawienia aplikacji zachowuje się asynchronicznie. Ponieważ jednak zostały dołączone `WEBSITE_ENABLE_SYNC_UPDATE_SITE` ustawienie aplikacji, aktualizacja jest synchroniczna. Oznacza to, że wdrożenie kontroli źródła rozpocznie się dopiero po całkowitym zaktualizowaniu ustawień aplikacji.
+> W tym przykładzie wdrożenie kontroli źródła zależy od ustawień aplikacji. Jest to zwykle niebezpieczne zachowanie, ponieważ aktualizacja ustawienia aplikacji zachowuje się asynchronicznie. Jednak ponieważ uwzględniliśmy ustawienie `WEBSITE_ENABLE_SYNC_UPDATE_SITE` aplikacji, aktualizacja jest synchroniczowa. Oznacza to, że wdrożenie kontroli źródła rozpocznie się dopiero po pełnej aktualizacji ustawień aplikacji.
 
-## <a name="troubleshooting-key-vault-references"></a>Rozwiązywanie problemów dotyczących Key Vault
+## <a name="troubleshooting-key-vault-references"></a>Rozwiązywanie problemów z odwołaniami do magazynu kluczy
 
-Jeśli odwołanie nie zostanie prawidłowo rozwiązane, zamiast tego zostanie użyta wartość referencyjna. Oznacza to, że dla ustawień aplikacji zostanie utworzona zmienna środowiskowa, której wartość ma składnię `@Microsoft.KeyVault(...)`. Może to spowodować, że aplikacja zgłosi błędy, ponieważ oczekuje ona wpisu tajnego określonej struktury.
+Jeśli odwołanie nie zostanie poprawnie rozpoznane, zamiast tego zostanie użyta wartość referencyjna. Oznacza to, że w przypadku ustawień aplikacji zostanie `@Microsoft.KeyVault(...)` utworzona zmienna środowiskowa, której wartość ma składnię. Może to spowodować, że aplikacja do rzucania błędów, ponieważ spodziewał się tajemnicy określonej struktury.
 
-Najczęściej jest to spowodowane niepoprawną konfiguracją [zasad dostępu Key Vault](#granting-your-app-access-to-key-vault). Jednak może być również przyczyną, że wpis tajny nie jest już istniejący lub błąd składniowy w samej odwołaniu.
+Najczęściej jest to spowodowane błędną konfiguracją [zasad dostępu usługi Key Vault.](#granting-your-app-access-to-key-vault) Jednak może to być również ze względu na klucz tajny już nie istnieje lub błąd składni w samym odwołaniu.
 
-Jeśli składnia jest poprawna, można wyświetlić inne przyczyny błędu, sprawdzając bieżący stan rozwiązania w portalu. Przejdź do ustawień aplikacji i wybierz pozycję "Edytuj" dla odnośnego odwołania. Na stronie Konfiguracja ustawienia powinny być widoczne informacje o stanie, w tym wszelkie błędy. Brak tych informacji oznacza, że Składnia odwołania jest nieprawidłowa.
+Jeśli składnia jest poprawna, można wyświetlić inne przyczyny błędu, sprawdzając bieżący stan rozpoznawania w portalu. Przejdź do ustawień aplikacji i wybierz "Edytuj", aby uzyskać informacje na temat. Poniżej konfiguracji ustawień powinny być widoczne informacje o stanie, w tym wszelkie błędy. Brak tych oznacza, że składnia odwołania jest nieprawidłowa.
 
 Możesz również użyć jednego z wbudowanych detektorów, aby uzyskać dodatkowe informacje.
 
-### <a name="using-the-detector-for-app-service"></a>Używanie narzędzia wykrywania dla App Service
+### <a name="using-the-detector-for-app-service"></a>Korzystanie z detektora dla usługi app service
 
-1. W portalu przejdź do swojej aplikacji.
-2. Wybierz pozycję **Diagnozuj i rozwiąż problemy**.
-3. Wybierz pozycję **dostępność i wydajność** , a następnie wybierz pozycję **aplikacja internetowa.**
-4. Znajdź **Key Vault Diagnostyka ustawień aplikacji** i kliknij pozycję **więcej informacji**.
+1. W portalu przejdź do aplikacji.
+2. Kliknij pozycję **Diagnozowanie i rozwiązywanie problemów**.
+3. Wybierz **pozycję Dostępność i wydajność** i wybierz pozycję W dół aplikacji sieci **Web.**
+4. Znajdź **diagnostykę ustawień aplikacji magazynu kluczy** i kliknij przycisk **Więcej informacji**.
 
 
-### <a name="using-the-detector-for-azure-functions"></a>Używanie narzędzia wykrywania dla Azure Functions
+### <a name="using-the-detector-for-azure-functions"></a>Korzystanie z detektora dla funkcji platformy Azure
 
-1. W portalu przejdź do swojej aplikacji.
-2. Przejdź do **opcji platformy.**
-3. Wybierz pozycję **Diagnozuj i rozwiąż problemy**.
-4. Wybierz opcję **dostępność i wydajność** , a następnie wybierz pozycję **aplikacja funkcjonalna lub raportowanie błędów.**
-5. Kliknij pozycję **Key Vault Diagnostyka ustawień aplikacji.**
+1. W portalu przejdź do aplikacji.
+2. Przejdź do **funkcji platformy.**
+3. Kliknij pozycję **Diagnozowanie i rozwiązywanie problemów**.
+4. Wybierz **pozycję Dostępność i wydajność** i wybierz pozycję Aplikacja funkcja w dół lub błędy **raportowania.**
+5. Kliknij **diagnostykę ustawień aplikacji magazynu kluczy.**

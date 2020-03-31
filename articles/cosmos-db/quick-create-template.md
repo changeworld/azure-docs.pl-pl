@@ -1,6 +1,6 @@
 ---
-title: Szybki Start — tworzenie Azure Cosmos DB i kontenera przy użyciu szablonu Azure Resource Manager
-description: Przewodnik Szybki Start przedstawiający sposób tworzenia bazy danych usługi Azure Cosmos i kontenera przy użyciu szablonu Azure Resource Manager
+title: Szybki start — tworzenie bazy danych usługi Azure Cosmos i kontenera przy użyciu szablonu usługi Azure Resource Manager
+description: Szybki start przedstawiający sposób korzystania z bazy danych usługi Azure Cosmos i kontenera przy użyciu szablonu usługi Azure Resource Manager
 author: SnehaGunda
 ms.author: sngun
 tags: azure-resource-manager
@@ -9,23 +9,23 @@ ms.topic: quickstart
 ms.date: 02/27/2020
 ms.custom: subject-armqs
 ms.openlocfilehash: 7c02cdf772b06f7070071aa7ba35c59b019187cc
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78301730"
 ---
-# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Szybki Start: Tworzenie Azure Cosmos DB i kontenera przy użyciu szablonu Azure Resource Manager
+# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Szybki start: tworzenie bazy danych usługi Azure Cosmos i kontenera przy użyciu szablonu usługi Azure Resource Manager
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Azure Cosmos DB umożliwia szybkie tworzenie i wykonywanie zapytań dotyczących baz danych kluczy/wartości, baz danych dokumentów i baz danych grafów. Ten przewodnik Szybki Start koncentruje się na procesie wdrażania szablonu Menedżer zasobów w celu utworzenia bazy danych usługi Azure Cosmos i kontenera w tej bazie danych. Później można przechowywać dane w tym kontenerze.
+Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Usługi Azure Cosmos DB można używać do szybkiego tworzenia i wykonywania zapytań o bazy danych klucz/wartość, bazy danych dokumentów i bazy danych wykresów. Ten przewodnik Szybki start koncentruje się na procesie wdrażania szablonu Usługi Resource Manager w celu utworzenia bazy danych usługi Azure Cosmos i kontenera w tej bazie danych. Później można przechowywać dane w tym kontenerze.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Subskrypcja platformy Azure lub bezpłatne Azure Cosmos DB konto wersji próbnej
+Subskrypcja platformy Azure lub bezpłatne konto próbne usługi Azure Cosmos DB
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -33,57 +33,57 @@ Subskrypcja platformy Azure lub bezpłatne Azure Cosmos DB konto wersji próbnej
 
 ## <a name="create-an-azure-cosmos-account-database-container"></a>Tworzenie konta, bazy danych, kontenera usługi Azure Cosmos
 
-### <a name="review-the-template"></a>Zapoznaj się z szablonem
+### <a name="review-the-template"></a>Przejrzyj szablon
 
-Szablon używany w tym przewodniku szybki start pochodzi z [szablonów szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/).
+Szablon używany w tym przewodniku Szybki start pochodzi z [szablonów szybki start platformy Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/).
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-create/azuredeploy.json":::
 
 Trzy zasoby platformy Azure są zdefiniowane w szablonie:
 
-* [Microsoft. DocumentDB/databaseAccounts](/azure/templates/microsoft.documentdb/databaseaccounts): Tworzenie konta Azure Cosmos.
+* [Microsoft.DocumentDB/databaseKonta:](/azure/templates/microsoft.documentdb/databaseaccounts)Utwórz konto usługi Azure Cosmos.
 
-* [Microsoft. DocumentDB/databaseAccounts/Sqldatabases](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases): Tworzenie bazy danych Azure Cosmos.
+* [Microsoft.DocumentDB/databaseKonta/sqlDatabases](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases): Tworzenie bazy danych usługi Azure Cosmos.
 
-* [Microsoft. DocumentDB/databaseAccounts/Sqldatabases/Containers](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases/containers): Tworzenie kontenera usługi Azure Cosmos.
+* [Microsoft.DocumentDB/databaseKonta/sqlDatabases/containers:](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases/containers)Tworzenie kontenera usługi Azure Cosmos.
 
-Więcej przykładów szablonów Azure Cosmos DB można znaleźć w [galerii szablonów szybkiego startu](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb).
+Więcej przykładów szablonów usługi Azure Cosmos DB można znaleźć w [galerii szablonów przewodnika Szybki start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb).
 
 ### <a name="deploy-the-template"></a>Wdrożenie szablonu
 
-1. Wybierz poniższy obraz, aby zalogować się na platformie Azure i otworzyć szablon. Szablon tworzy konto usługi Azure Cosmos, bazę danych i kontener.
+1. Wybierz poniższy obraz, aby zalogować się na platformie Azure i otworzyć szablon. Szablon tworzy konto usługi Azure Cosmos, bazy danych i kontenera.
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json"><img src="./media/quick-create-template/deploy-to-azure.png" alt="deploy to azure"/></a>
 
 2. Wybierz lub wprowadź następujące wartości.
 
-   ![Szablon Menedżer zasobów, integracja Azure Cosmos DB, wdrażanie portalu](./media/quick-create-template/create-cosmosdb-using-template-portal.png)
+   ![Szablon Usługi Resource Manager, integracja z usługą Azure Cosmos DB, wdrażanie portalu](./media/quick-create-template/create-cosmosdb-using-template-portal.png)
 
-    O ile nie zostanie on określony, użyj wartości domyślnych, aby utworzyć zasoby usługi Azure Cosmos.
+    O ile nie zostanie określony, użyj wartości domyślnych do utworzenia zasobów usługi Azure Cosmos.
 
     * **Subskrypcja**: wybierz subskrypcję platformy Azure.
-    * **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wprowadź unikatową nazwę grupy zasobów, a następnie kliknij przycisk **OK**.
+    * **Grupa zasobów**: wybierz **pozycję Utwórz nowy**, wprowadź unikatową nazwę grupy zasobów, a następnie kliknij przycisk **OK**.
     * **Lokalizacja**: wybierz lokalizację.  Na przykład **Środkowe stany USA**.
-    * **Nazwa konta**: Wprowadź nazwę dla konta usługi Azure Cosmos. Musi być globalnie unikatowa.
-    * **Lokalizacja**: wprowadź lokalizację, w której chcesz utworzyć konto usługi Azure Cosmos. Konto usługi Azure Cosmos może znajdować się w tej samej lokalizacji co grupa zasobów.
-    * **Region podstawowy**: podstawowy region repliki dla konta usługi Azure Cosmos.
-    * **Region pomocniczy**: pomocniczy region repliki dla konta usługi Azure Cosmos.
-    * **Nazwa bazy danych**: Nazwa bazy danych usługi Azure Cosmos.
-    * **Nazwa kontenera**: nazwa kontenera usługi Azure Cosmos.
-    * **Przepływność**: przepływność dla kontenera, minimalna wartość przepływności to 400 ru/s.
+    * **Nazwa konta:** wprowadź nazwę konta usługi Azure Cosmos. Musi być unikatowa globalnie.
+    * **Lokalizacja:** wprowadź lokalizację, w której chcesz utworzyć konto usługi Azure Cosmos. Konto usługi Azure Cosmos może znajdować się w tej samej lokalizacji co grupa zasobów.
+    * **Region podstawowy:** Podstawowy region repliki dla konta usługi Azure Cosmos.
+    * **Region pomocniczy:** pomocniczy region repliki dla konta usługi Azure Cosmos.
+    * **Nazwa bazy danych:** Nazwa bazy danych usługi Azure Cosmos.
+    * **Nazwa kontenera:** Nazwa kontenera usługi Azure Cosmos.
+    * **Przepływność:** Przepływność kontenera, minimalna wartość przepływności wynosi 400 RU/s.
     * **Wyrażam zgodę na powyższe warunki i postanowienia**: zaznacz.
 
 3. Wybierz pozycję **Kup**. Po pomyślnym wdrożeniu konta usługi Azure Cosmos otrzymasz powiadomienie:
 
-   ![Menedżer zasobów szablon, integracja Cosmos DB, wdrażanie powiadomienia portalu](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+   ![Szablon Menedżera zasobów, integracja usługi Cosmos DB, powiadomienie o wdrażaniu portalu](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
-Azure Portal jest używany do wdrożenia szablonu. Oprócz Azure Portal można również użyć Azure PowerShell, interfejsu wiersza polecenia platformy Azure i API REST. Aby poznać inne metody wdrażania, zobacz [wdrażanie szablonów](../azure-resource-manager/templates/deploy-powershell.md).
+Witryna Azure portal służy do wdrażania szablonu. Oprócz witryny Azure portal można również użyć interfejsu API programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure i interfejsu API REST. Aby poznać inne metody wdrażania, zobacz [Wdrażanie szablonów](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="validate-the-deployment"></a>Weryfikowanie wdrożenia
 
-Możesz użyć Azure Portal, aby sprawdzić konto usługi Azure Cosmos, bazę danych i kontener albo użyć następującego interfejsu wiersza polecenia platformy Azure lub skryptu Azure PowerShell, aby utworzyć listę utworzonego wpisu tajnego.
+Za pomocą witryny Azure Portal można sprawdzić konto usługi Azure Cosmos, bazę danych i kontener lub użyć następującego skryptu interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell do wyświetlenia listy utworzonego klucza tajnego.
 
-# <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
+# <a name="cli"></a>[Cli](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter your Azure Cosmos account name:" &&
@@ -93,7 +93,7 @@ read resourcegroupName &&
 az cosmosdb show -g $resourcegroupName -n $cosmosAccountName
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[Powershell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your Azure Cosmos account exists"
@@ -105,10 +105,10 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli planujesz kontynuować pracę z kolejnymi samouczkami, możesz pozostawić te zasoby na miejscu.
-Gdy grupa zasobów nie będzie już konieczna, usuń ją, usuwając konto usługi Azure Cosmos i powiązane zasoby. Aby usunąć grupę zasobów przy użyciu interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell:
+Jeśli planujesz kontynuować pracę z kolejnymi i samouczkami, możesz pozostawić te zasoby na swoim miejscu.
+Gdy nie jest już potrzebne, usuń grupę zasobów, która usuwa konto usługi Azure Cosmos i powiązanych zasobów. Aby usunąć grupę zasobów przy użyciu interfejsu wiersza polecenia platformy Azure lub programu Azure Powershell:
 
-# <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
+# <a name="cli"></a>[Cli](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -117,7 +117,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[Powershell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -129,8 +129,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start utworzono konto usługi Azure Cosmos, bazę danych i kontener przy użyciu szablonu Azure Resource Manager i zweryfikowano wdrożenie. Aby dowiedzieć się więcej na temat Azure Cosmos DB i Azure Resource Manager, przejdź do artykułu poniżej.
+W tym przewodniku Szybki start utworzono konto usługi Azure Cosmos, bazę danych i kontener przy użyciu szablonu usługi Azure Resource Manager i zweryfikowano wdrożenie. Aby dowiedzieć się więcej o usłudze Azure Cosmos DB i usłudze Azure Resource Manager, przejdź do poniższych artykułów.
 
-- Zapoznaj się [z omówieniem Azure Cosmos DB](introduction.md)
-- Dowiedz się więcej o [Azure Resource Manager](../azure-resource-manager/management/overview.md)
-- Pobierz inne [szablony Menedżer zasobów Azure Cosmos DB](resource-manager-samples.md)
+- Przeczytaj [omówienie usługi Azure Cosmos DB](introduction.md)
+- Dowiedz się więcej o [usłudze Azure Resource Manager](../azure-resource-manager/management/overview.md)
+- Pobierz inne [szablony usługi Azure Cosmos DB Resource Manager](resource-manager-samples.md)

@@ -1,6 +1,6 @@
 ---
-title: Analizy przy użyciu języka U-SQL w usłudze Azure Data Lake — zespołu danych dla celów naukowych
-description: Przykłady, które pomagają przy użyciu języka U-SQL w usłudze Azure Data Lake analizy predykcyjnej.
+title: Analiza przy użyciu języka U-SQL w usłudze Azure Data Lake — proces nauki o danych zespołowych
+description: Przykłady, które przechodzą przez korzystanie z języka U-SQL w usłudze Azure Data Lake do analizy predykcyjnej.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,26 +12,26 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 2e5eb0acd2a94f7726fbacefbe6e1022c8cebae2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75864183"
 ---
-# <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Usługa Azure Data Lake przewodniki dotyczące przetwarzania danych przy użyciu języka U-SQL
+# <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Wskazówki dotyczące nauki o danych usługi Azure Data Lake przy użyciu języka U-SQL
 
-Te przewodniki za pomocą języka U-SQL usługi Azure Data Lake analizy predykcyjnej. One wykonaj kroki opisane w procesie nauki o danych zespołu. Omówienie procesu do nauki o danych zespołu, zobacz [danych dla celów naukowych](overview.md). Aby zapoznać się z wprowadzeniem do usługi Azure Data Lake, zobacz [Omówienie programu Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md).
+Te wskazówki używają U-SQL z usługą Azure Data Lake do analizy predykcyjnej. Wykonaj one kroki opisane w procesie nauki o danych zespołu. Aby zapoznać się z omówieniem procesu nauki o danych zespołu, zobacz [Proces nauki o danych](overview.md). Aby zapoznać się z wprowadzeniem do usługi Azure Data Lake, zobacz [Omówienie usługi Azure Data Lake Store.](../../data-lake-store/data-lake-store-overview.md)
 
-Przewodniki dotyczące przetwarzania dodatkowe dane, które są wykonywane w procesie nauki o danych zespołu są pogrupowane według **platformy** używane. Zobacz [przewodniki dotyczące wykonywania procesu do nauki o danych zespołu](walkthroughs.md) do podziału na pozycje z tych przykładów.
+Dodatkowe wskazówki do nauki o danych, które wykonują proces nauki o danych zespołu są pogrupowane według **platformy,** której używają. Zobacz [wskazówki wykonujące proces nauki o danych zespołu](walkthroughs.md) dla itemization tych przykładów.
 
 
-## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>Przewidywanie napiwków przy użyciu języka U-SQL w usłudze Azure Data Lake
+## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>Przewidywanie porad dotyczących taksówek przy użyciu języka U-SQL za pomocą usługi Azure Data Lake
 
-Azure Data Lake w przewodniku [dotyczącym analizy danych](data-lake-walkthrough.md) pokazuje, jak używać Azure Data Lake do eksploracji danych i binarnych zadań klasyfikacji.  Dane są przykładem zestawu danych z NYC taksówkami.  Zadanie jest przewidywane niezależnie od tego, czy Porada jest płacona przez klienta. 
+W przewodniku [Użyj usługi Azure Data Lake do nauki o danych](data-lake-walkthrough.md) pokazano, jak używać usługi Azure Data Lake do wykonywania zadań eksploracji danych i klasyfikacji binarnej.  Dane są próbką zestawu danych taksówki NYC.  Zadanie polega na przewidywaniu, czy napiwek jest wypłacany przez klienta. 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby zapoznać się z omówieniem procesu nauki o danych zespołowych, zobacz [Omówienie procesu nauka danych zespołu](overview.md).
+Aby zapoznać się z omówieniem procesu nauki o danych zespołu, zobacz [omówienie procesu nauki o danych zespołu.](overview.md)
 
-Aby zapoznać się z omówieniem cyklu życia procesu nauki o danych zespołowych, zobacz [cykl życia procesu nauki o danych zespołowych](lifecycle.md). Ten cykl życia przedstawia etapy, w których projekty są zwykle wykonywane po ich wykonaniu. 
+Aby zapoznać się z omówienia cyklu życia procesu nauki o danych zespołu, zobacz [Cykl życia procesu nauki o danych zespołu.](lifecycle.md) Ten cykl życia przedstawia kroki, które projekty zwykle wykonaj, gdy są one wykonywane. 

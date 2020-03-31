@@ -1,21 +1,21 @@
 ---
-title: Tworzenie aplikacji platformy Xamarin przy użyciu interfejsu API .NET i Azure Cosmos DB dla usługi MongoDB
+title: Tworzenie aplikacji platformy Xamarin za pomocą interfejsu API usługi .NET i usługi Azure Cosmos DB dla usługi MongoDB
 description: Przykładowy kod Xamarin, którego można używać do nawiązywania połączeń z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB i wysyłania do niego zapytań
 author: codemillmatt
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/20/2018
+ms.date: 03/16/2020
 ms.author: masoucou
-ms.openlocfilehash: a21e3705fe367e478ec02b82ec83c4ad7cfb4151
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 98b0ddf345ebd19e2cd974db3891e88c9f72530d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445458"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79481691"
 ---
-# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Szybki Start: Tworzenie aplikacji Xamarin. Forms przy użyciu zestawu .NET SDK i interfejsu API Azure Cosmos DB dla MongoDB
+# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Szybki start: tworzenie aplikacji Xamarin.Forms za pomocą narzędzia .NET SDK i interfejsu API usługi Azure Cosmos DB dla usługi MongoDB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -26,7 +26,7 @@ ms.locfileid: "75445458"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, można szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość i grafów.
+Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, można szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość i grafów.
 
 Ten przewodnik Szybki start przedstawia tworzenie [konta Cosmos skonfigurowanego za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](mongodb-introduction.md), bazy danych dokumentów i kolekcji przy użyciu witryny Azure Portal. Następnie utworzysz aplikację platformy Xamarin.Forms z listą zadań do wykonania za pomocą [sterownika .NET MongoDB](https://docs.mongodb.com/ecosystem/drivers/csharp/).
 
@@ -34,7 +34,7 @@ Ten przewodnik Szybki start przedstawia tworzenie [konta Cosmos skonfigurowanego
 
 Aby uruchomić przykład, musisz mieć program [Visual Studio](https://www.visualstudio.com/downloads/) lub [Visual Studio dla komputerów Mac](https://visualstudio.microsoft.com/vs/mac/) i ważne konto usługi Azure CosmosDB.
 
-Jeśli nie masz jeszcze programu Visual Studio, Pobierz [program Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/) z pakietem roboczym **opracowywanie aplikacji mobilnych za pomocą platformy .NET** zainstalowanej z instalatorem.
+Jeśli nie masz jeszcze programu Visual Studio, pobierz [program Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) z programem Mobile development z zainstalowanym instalatorem obciążenia platformy **.NET.**
 
 Jeśli wolisz pracować na komputerze Mac, pobierz program [Visual Studio dla komputerów Mac](https://visualstudio.microsoft.com/vs/mac/) i uruchom instalację.
 
@@ -52,13 +52,21 @@ Przykład opisany w tym artykule jest zgodny ze sterownikiem bazy danych MongoDB
 
 Najpierw pobierz przykładową aplikację z usługi GitHub. Implementuje ona aplikację listy zadań za pomocą modelu magazynu dokumentów bazy danych MongoDB.
 
-1. Otwórz wiersz polecenia, utwórz nowy folder o nazwie git-samples, a następnie zamknij wiersz polecenia.
 
-    ```bash
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+1. W systemie Windows otwórz wiersz polecenia lub na komputerze Mac otwórz terminal, utwórz nowy folder o nazwie git-samples, a następnie zamknij okno.
+
+    ```batch
     md "C:\git-samples"
     ```
 
-2. Otwórz okno terminalu usługi Git, na przykład git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
+    ```bash
+    mkdir '$home\git-samples\
+    ```
+
+2. Otwórz okno terminala usługi Git, np. git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
 
     ```bash
     cd "C:\git-samples"
@@ -70,11 +78,11 @@ Najpierw pobierz przykładową aplikację z usługi GitHub. Implementuje ona apl
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started.git
     ```
 
-Jeśli nie chcesz korzystać z usługi Git, możesz też [pobrać projekt jako plik ZIP](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started/archive/master.zip).
+Jeśli nie chcesz korzystać z git, możesz również [pobrać projekt jako plik ZIP](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started/archive/master.zip)
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 
-Ten krok jest opcjonalny. Jeśli chcesz się dowiedzieć, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizowanie parametrów połączenia](#update-your-connection-string).
+Ten krok jest opcjonalny. Jeśli chcesz się dowiedzieć, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizacja parametrów połączenia](#update-your-connection-string).
 
 Wszystkie poniższe fragmenty kodu pochodzą z klasy `MongoService`, którą można znaleźć w następującej lokalizacji: src/TaskList.Core/Services/MongoService.cs.
 
@@ -86,6 +94,8 @@ Wszystkie poniższe fragmenty kodu pochodzą z klasy `MongoService`, którą mo�
 
     settings.SslSettings =
         new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+
+    settings.RetryWrites = false;
 
     MongoClient mongoClient = new MongoClient(settings);
     ```
@@ -154,11 +164,16 @@ Wszystkie poniższe fragmenty kodu pochodzą z klasy `MongoService`, którą mo�
 
 Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach połączenia i skopiować je do aplikacji.
 
-1. W witrynie [Azure Portal](https://portal.azure.com/), korzystając ze swojego konta usługi Azure Cosmos DB, kliknij w lewym panelu nawigacyjnym pozycję **Parametry połączenia**, a następnie pozycję **Klucze odczytu i zapisu**. Użyj przycisków kopiowania po prawej stronie ekranu, aby skopiować podstawowe parametry połączenia w kolejnych krokach.
+1. W witrynie [Azure Portal](https://portal.azure.com/), korzystając ze swojego konta usługi Azure Cosmos DB, kliknij na lewym panelu nawigacyjnym pozycję **Parametry połączenia**, a następnie pozycję **Klucze odczytu i zapisu**. Użyj przycisków kopiowania po prawej stronie ekranu, aby skopiować podstawowe parametry połączenia w kolejnych krokach.
 
 2. Otwórz plik **APIKeys.cs** w katalogu **Helpers** projektu **TaskList.Core**.
 
 3. Skopiuj **podstawowe parametry połączenia** z portalu (używając przycisku kopiowania) i wprowadź je jako wartość pola **ConnectionString** w pliku **APIKeys.cs**.
+
+4. Usuń `&replicaSet=globaldb` z ciągu połączenia. Zostanie wyświetlony błąd środowiska uruchomieniowego, jeśli nie usuniesz tej wartości z ciągu zapytania.
+
+> [!IMPORTANT]
+> Aby uniknąć `&replicaSet=globaldb` błędu środowiska uruchomieniowego, należy usunąć parę klucz/wartość z ciągu zapytania ciągu połączenia.
 
 Aplikacja została zaktualizowana i zawiera teraz wszystkie informacje potrzebne do nawiązania komunikacji z usługą Azure Cosmos DB.
 

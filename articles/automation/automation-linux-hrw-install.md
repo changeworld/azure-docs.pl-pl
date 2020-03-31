@@ -1,71 +1,71 @@
 ---
 title: Hybrydowy proces roboczy elementu runbook usługi Azure Automation (Linux)
-description: Ten artykuł zawiera informacje dotyczące instalowania Azure Automation hybrydowego procesu roboczego elementu Runbook, dzięki czemu można uruchamiać elementy Runbook na komputerach z systemem Linux w lokalnym środowisku centrum danych lub w chmurze.
+description: Ten artykuł zawiera informacje dotyczące instalowania procesu roboczego hybrydowego systemu Azure Automation, dzięki czemu można uruchamiać elementy runbook na komputerach z systemem Linux w lokalnym centrum danych lub środowisku chmury.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2579748d9c68512e51fe46ec70084c30d06953bc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278768"
 ---
-# <a name="deploy-a-linux-hybrid-runbook-worker"></a>Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Linux
+# <a name="deploy-a-linux-hybrid-runbook-worker"></a>Wdrażanie procesu roboczego hybrydowego systemu Linux
 
-Za pomocą funkcji hybrydowego procesu roboczego elementu Runbook programu Azure Automation można uruchamiać elementy Runbook bezpośrednio na komputerze hostującym rolę i w odniesieniu do zasobów w środowisku, aby zarządzać tymi zasobami lokalnymi. Hybrydowy proces roboczy elementu Runbook systemu Linux wykonuje elementy Runbook jako specjalny użytkownik, który może mieć podwyższony poziom uprawnień do uruchamiania poleceń wymagających podniesienia uprawnień. Elementy Runbook są przechowywane i zarządzane w Azure Automation a następnie dostarczane do co najmniej jednego wyznaczenia komputerów.
+Za pomocą funkcji Hybrydowy proces roboczy elementu runbook usługi Azure Automation można uruchamiać elementy runbook bezpośrednio na komputerze obsługującym rolę i przeciwko zasobom w środowisku do zarządzania tymi zasobami lokalnymi. Proces roboczy hybrydowego systemu Linux wykonuje runbooks jako specjalnego użytkownika, który może być podwyższony dla uruchamiania poleceń, które wymagają podniesienia uprawnień. Elementy runbook są przechowywane i zarządzane w usłudze Azure Automation, a następnie dostarczane do jednego lub więcej wyznaczonych komputerów.
 
-W tym artykule opisano sposób instalowania hybrydowego procesu roboczego elementu Runbook na komputerze z systemem Linux.
+W tym artykule opisano sposób instalowania hybrydowego procesu roboczego egoisty na komputerze z systemem Linux.
 
 ## <a name="supported-linux-operating-systems"></a>Obsługiwane systemy operacyjne Linux
 
-Funkcja hybrydowego procesu roboczego elementu Runbook obsługuje następujące dystrybucje:
+Funkcja Hybrydowy proces roboczy elementu runbook obsługuje następujące dystrybucje:
 
-* Amazon Linux 2012,09 do 2015,09 (x86/x64)
+* Amazon Linux 2012.09 do 2015.09 (x86/x64)
 * CentOS Linux 5, 6 i 7 (x86/x64)
 * Oracle Linux 5, 6 i 7 (x86/x64)
 * Red Hat Enterprise Linux Server 5, 6 i 7 (x86/x64)
 * Debian GNU/Linux 6, 7 i 8 (x86/x64)
-* Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS i 18,04 (x86/x64)
+* Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS i 18.04 (x86/x64)
 * SUSE Linux Enterprise Server 11 i 12 (x86/x64)
 
-## <a name="installing-a-linux-hybrid-runbook-worker"></a>Instalowanie hybrydowego procesu roboczego elementu Runbook systemu Linux
+## <a name="installing-a-linux-hybrid-runbook-worker"></a>Instalowanie hybrydowego procesu roboczego systemu Linux
 
-Aby zainstalować i skonfigurować hybrydowy proces roboczy elementu Runbook na komputerze z systemem Linux, należy wykonać prostą procedurę ręcznego instalowania i konfigurowania roli. Wymaga włączenia rozwiązania **Automation Hybrid Worker** w obszarze roboczym usługi Azure log Analytics, a następnie uruchomienia zestawu poleceń, aby zarejestrować komputer jako proces roboczy i dodać go do grupy.
+Aby zainstalować i skonfigurować hybrydowy proces roboczy systemu Runbook na komputerze z systemem Linux, należy wykonać prosty proces, aby ręcznie zainstalować i skonfigurować rolę. Wymaga włączenia rozwiązania **Automation Hybrid Worker** w obszarze roboczym usługi Azure Log Analytics, a następnie uruchomienie zestawu poleceń, aby zarejestrować komputer jako proces roboczy i dodać go do grupy.
 
-Minimalne wymagania dla hybrydowego procesu roboczego elementu Runbook systemu Linux to:
+Minimalne wymagania dla procesu roboczego hybrydowego systemu Linux są następujące:
 
 * Dwa rdzenie
 * 4 GB pamięci RAM
-* Port 443 (ruch wychodzący)
+* Port 443 (wychodzący)
 
 ### <a name="package-requirements"></a>Wymagania dotyczące pakietu
 
 | **Wymagany pakiet** | **Opis** | **Wersja minimalna**|
 |--------------------- | --------------------- | -------------------|
 |Glibc |Biblioteka GNU C| 2.5-12 |
-|OpenSSL| Biblioteki OpenSSL | 1,0 (protokoły TLS 1,1 i TLS 1,2 są obsługiwane|
-|Odsłon | zazwinięcie klienta sieci Web | 7.15.5|
-|Python-ctypes | Wymagany jest język Python 2. x |
-|WYGASŁ | Moduły uwierzytelniania podłączane|
-| **Opcjonalny pakiet** | **Opis** | **Wersja minimalna**|
-| PowerShell Core | Aby uruchomić elementy Runbook programu PowerShell, należy zainstalować program PowerShell, zobacz temat [Instalowanie programu PowerShell Core w systemie Linux](/powershell/scripting/install/installing-powershell-core-on-linux) , aby dowiedzieć się, jak go zainstalować.  | 6.0.0 |
+|Openssl| Biblioteki OpenSSL | 1.0 (obsługiwane są TLS 1.1 i TLS 1.2|
+|Narzędzie Curl | Klient sieci web cURL | 7.15.5|
+|Python-ctypes | Python 2.x jest wymagany |
+|PAM | Podłączane moduły uwierzytelniania (PAM)|
+| **Pakiet opcjonalny** | **Opis** | **Wersja minimalna**|
+| Program PowerShell Core | Aby uruchomić programy PowerShell, program PowerShell musi zostać zainstalowany, zobacz [Instalowanie programu PowerShell Core w systemie Linux,](/powershell/scripting/install/installing-powershell-core-on-linux) aby dowiedzieć się, jak go zainstalować.  | 6.0.0 |
 
 ### <a name="installation"></a>Instalacja
 
-Przed kontynuowaniem Zanotuj Log Analytics obszar roboczy, z którym jest połączone konto usługi Automation. Należy również zwrócić uwagę na klucz podstawowy konta usługi Automation. Oba te elementy można znaleźć na stronie Azure Portal, wybierając swoje konto usługi Automation, wybierając pozycję **obszar roboczy** dla identyfikatora obszaru roboczego, a następnie wybierając **klucze** klucza podstawowego. Aby uzyskać informacje na temat portów i adresów potrzebnych dla hybrydowego procesu roboczego elementu Runbook, zobacz [Konfigurowanie sieci](automation-hybrid-runbook-worker.md#network-planning).
+Przed kontynuowaniem należy zwrócić uwagę na obszar roboczy usługi Log Analytics, z którego jest połączone konto automatyzacji. Zanotuj również klucz podstawowy konta automatyzacji. Można znaleźć zarówno w witrynie Azure portal, wybierając konto automatyzacji, wybierając **obszar roboczy** dla identyfikatora obszaru roboczego i wybierając **klawisze** dla klucza podstawowego. Aby uzyskać informacje o portach i adresach potrzebnych dla hybrydowego procesu roboczego niu gospołowego, zobacz [Konfigurowanie sieci](automation-hybrid-runbook-worker.md#network-planning).
 
-1. Włącz **Automation Hybrid Worker** rozwiązanie na platformie Azure, korzystając z jednej z następujących metod:
+1. Włącz rozwiązanie **automation hybrid worker** na platformie Azure przy użyciu jednej z następujących metod:
 
-   * Dodaj **Automation Hybrid Worker** rozwiązanie do swojej subskrypcji, korzystając z procedury opisanej w tematach [Dodawanie Azure monitor dzienników rozwiązań do obszaru roboczego](../log-analytics/log-analytics-add-solutions.md).
+   * Dodaj rozwiązanie **Automation Hybrid Worker** do subskrypcji przy użyciu procedury w obszarze [roboczym Dodawanie rozwiązań dziennika usługi Azure Monitor.](../log-analytics/log-analytics-add-solutions.md)
    * Uruchom następujące polecenie cmdlet:
 
         ```azurepowershell-interactive
          Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
         ```
 
-1. Zainstaluj agenta Log Analytics dla systemu Linux, uruchamiając następujące polecenie. Zastąp \<identyfikator obszaru roboczego\> i \<WorkspaceKey\> z odpowiednimi wartościami z obszaru roboczego.
+1. Zainstaluj agenta usługi Log Analytics dla systemu Linux, uruchamiając następujące polecenie. \<Zamień\> identyfikator \<obszaru\> roboczego i klawisz WorkspaceKey na odpowiednie wartości z obszaru roboczego.
 
    [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
@@ -73,45 +73,45 @@ Przed kontynuowaniem Zanotuj Log Analytics obszar roboczy, z którym jest połą
    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
    ```
 
-1. Uruchom następujące polecenie, zmieniając wartości parametrów *-w*, *-k*, *-g*i *-e*. Dla parametru *-g* Zastąp wartość nazwą grupy hybrydowych procesów roboczych elementu Runbook, do której ma zostać dołączony nowy hybrydowy proces roboczy elementu Runbook systemu Linux. Jeśli nazwa nie istnieje na koncie usługi Automation, Nowa grupa hybrydowych procesów roboczych elementu Runbook zostanie nadana przy użyciu tej nazwy.
+1. Uruchom następujące polecenie, zmieniając wartości parametrów *-w*, *-k*, *-g*i *-e*. Dla parametru *-g* zastąp wartość nazwą grupy hybrydowego procesu roboczego żylik, do którą powinien dołączyć nowy hybrydowy proces roboczy systemu Linux. Jeśli nazwa nie istnieje na koncie automatyzacji, nowa grupa hybrydowego systemu runbook roboczego jest o tej nazwie.
 
    ```bash
    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <LogAnalyticsworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
    ```
 
-1. Po zakończeniu działania polecenia na stronie **grupy hybrydowych procesów roboczych** w Azure Portal zostanie wyświetlona nowa grupa i liczba członków. Jeśli jest to istniejąca Grupa, liczba członków jest zwiększana. Możesz wybrać grupę z listy na stronie **grupy hybrydowych procesów roboczych** i wybrać kafelek **hybrydowe procesy** robocze. Na stronie **hybrydowe procesy robocze** zobaczysz każdego członka grupy na liście.
+1. Po zakończeniu polecenia **hybrydowe grupy robocze** strony w witrynie Azure Portal pokazuje nową grupę i liczbę członków. Jeśli jest to istniejąca grupa, liczba elementów członkowskich jest zwiększana. Grupę można wybrać z listy na stronie **Hybrydowe grupy robocze** i wybrać kafelek **Hybrydowych pracowników.** Na stronie **Hybrydowe pracowników** strony, zobaczysz każdy członek grupy na liście.
 
 > [!NOTE]
-> Jeśli używasz rozszerzenia maszyny wirtualnej Azure Monitor dla systemu Linux dla maszyny wirtualnej platformy Azure, zalecamy ustawienie `autoUpgradeMinorVersion` na wartość false, ponieważ funkcja autouaktualniania wersji może spowodować problemy z hybrydowym procesem roboczym elementu Runbook. Aby dowiedzieć się, jak ręcznie uaktualnić rozszerzenie, zobacz [wdrażanie interfejsu wiersza polecenia platformy Azure ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
+> Jeśli używasz rozszerzenia maszyny wirtualnej usługi Azure Monitor dla `autoUpgradeMinorVersion` systemu Linux dla maszyny wirtualnej platformy Azure, zalecamy ustawienie false, ponieważ automatyczne uaktualnianie wersji może spowodować problemy z hybrydowym pracownikiem życiorysu. Aby dowiedzieć się, jak ręcznie uaktualnić rozszerzenie, zobacz [Wdrażanie interfejsu wiersza polecenia platformy Azure ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
 
-## <a name="turning-off-signature-validation"></a>Wyłączanie weryfikacji podpisu
+## <a name="turning-off-signature-validation"></a>Wyłączanie sprawdzania poprawności podpisu
 
-Domyślnie hybrydowe procesy robocze elementu Runbook systemu Linux wymagają weryfikacji podpisu. W przypadku uruchomienia niepodpisanego elementu Runbook dla procesu roboczego zostanie wyświetlony komunikat o błędzie "Weryfikacja podpisu nie powiodła się". Aby wyłączyć weryfikację podpisu, uruchom następujące polecenie. Zastąp drugi parametr IDENTYFIKATORem obszaru roboczego usługi log Analytics.
+Domyślnie hybrydowe środowiska członkowskie systemu Linux wymagają weryfikacji podpisu. Jeśli uruchomisz niepodpisany element runbook dla pracownika, zostanie wyświetlony komunikat "Sprawdzanie poprawności podpisu nie powiodło się". Aby wyłączyć sprawdzanie poprawności podpisu, uruchom następujące polecenie. Zastąp drugi parametr identyfikatorem obszaru roboczego analizy dzienników.
 
  ```bash
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>
  ```
 
-## <a name="supported-runbook-types"></a>Obsługiwane typy elementów Runbook
+## <a name="supported-runbook-types"></a>Obsługiwane typy elementów runbook
 
-Hybrydowe procesy robocze elementu Runbook systemu Linux nie obsługują pełnego zestawu typów elementów Runbook w Azure Automation.
+Hybrydowe procesy owe elementów workers systemu Linux nie obsługują pełnego zestawu typów elementów runbook w usłudze Azure Automation.
 
-Następujące typy elementów Runbook działają w hybrydowym procesie roboczym systemu Linux:
+Następujące typy elementów runbook działają na proces roboczy hybrydowy systemu Linux:
 
 * Python 2
-* Program PowerShell
+* PowerShell
 
   > [!NOTE]
-  > Elementy Runbook programu PowerShell wymagają zainstalowania programu PowerShell Core na komputerze z systemem Linux. Zobacz temat [Instalowanie programu PowerShell Core w systemie Linux](/powershell/scripting/install/installing-powershell-core-on-linux) , aby dowiedzieć się, jak go zainstalować.
+  > Podręczniki programu PowerShell wymagają zainstalowania programu PowerShell Core na komputerze z systemem Linux. Zobacz [Instalowanie programu PowerShell Core w systemie Linux,](/powershell/scripting/install/installing-powershell-core-on-linux) aby dowiedzieć się, jak go zainstalować.
 
-Następujące typy elementów Runbook nie działają w hybrydowym procesie roboczym Linux:
+Następujące typy elementów runbook nie działają na pracownika hybrydowego systemu Linux:
 
 * Przepływ pracy programu PowerShell
-* Graficzny
+* Element graficzny
 * Graficzny przepływ pracy programu PowerShell
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby dowiedzieć się, jak skonfigurować elementy Runbook do automatyzowania procesów w lokalnym centrum danych lub w innym środowisku chmury, zobacz [Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook](automation-hrw-run-runbooks.md).
-* Aby uzyskać instrukcje dotyczące usuwania hybrydowych procesów roboczych elementów Runbook, zobacz [usuwanie Azure Automation hybrydowych procesów roboczych elementów Runbook](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).
-* Aby dowiedzieć się, jak rozwiązywać problemy dotyczące hybrydowych procesów roboczych elementów Runbook, zobacz [Rozwiązywanie problemów hybrydowych procesów roboczych elementów](troubleshoot/hybrid-runbook-worker.md#linux)
+* Aby dowiedzieć się, jak skonfigurować programy runbook do automatyzacji procesów w lokalnym centrum danych lub innym środowisku chmury, zobacz [Runbooks w hybrydowym usłudze Runbook Worker](automation-hrw-run-runbooks.md).
+* Aby uzyskać instrukcje dotyczące usuwania hybrydowych workers ceł funkcjonowania, zobacz [Usuwanie hybrydowych workers ceł funkcjonowania usługi Azure Automation](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).
+* Aby dowiedzieć się, jak rozwiązywać problemy z hybrydowymi pracownikami funkcjonowania, zobacz [Rozwiązywanie problemów z hybrydowymi robotami ujedniającymi systemu Linux](troubleshoot/hybrid-runbook-worker.md#linux)

@@ -1,35 +1,37 @@
 ---
-title: Skonfiguruj sieć VPN typu punkt-lokacja (P2S) w systemie Linux do użycia z Azure Files | Microsoft Docs
-description: Jak skonfigurować sieć VPN typu punkt-lokacja (P2S) w systemie Linux do użycia z usługą Azure Files
+title: Konfigurowanie sieci VPN typu "point-to-site) w systemie Linux do użytku z plikami azure | Dokumenty firmy Microsoft
+description: Jak skonfigurować sieć VPN typu punkt-lokacja (P2S) w systemie Linux do użytku z usługą Azure Files
 author: roygara
 ms.service: storage
 ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b988435fc6928d52321cb427e2412e7ca81680d2
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: cfff05ed52258ee448d83a521b99dca7d356a0f9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73141745"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061046"
 ---
-# <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Skonfiguruj sieć VPN typu punkt-lokacja (P2S) w systemie Linux do użycia z usługą Azure Files
-Za pomocą połączenia sieci VPN typu punkt-lokacja (P2S) można instalować udziały plików platformy Azure za pośrednictwem protokołu SMB spoza platformy Azure bez konieczności otwierania portu 445. Połączenie sieci VPN typu punkt-lokacja to połączenie sieci VPN między platformą Azure i pojedynczym klientem. Aby można było użyć połączenia sieci VPN P2S z Azure Files, należy skonfigurować połączenie sieci VPN P2S dla każdego klienta, który chce nawiązać połączenie. Jeśli masz wielu klientów, którzy muszą nawiązać połączenie z udziałami plików platformy Azure z sieci lokalnej, możesz użyć połączenia sieci VPN typu lokacja-lokacja (S2S) zamiast połączenia punkt-lokacja dla każdego klienta. Aby dowiedzieć się więcej, zobacz [Konfigurowanie sieci VPN typu lokacja-lokacja do użycia z usługą Azure Files](storage-files-configure-s2s-vpn.md).
+# <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Konfigurowanie sieci VPN typu "point-to-site) w systemie Linux do użytku z plikami azure
+Za pomocą połączenia sieci VPN typu punkt-lokacja (P2S) można zainstalować udziały plików platformy Azure za pośrednictwem protokołu SMB spoza platformy Azure bez otwierania portu 445. Połączenie sieci VPN typu punkt-lokacja jest połączeniem sieci VPN między platformą Azure a klientem indywidualnym. Aby korzystać z połączenia sieci VPN P2S z usługą Azure Files, połączenie sieci VPN P2S musi być skonfigurowane dla każdego klienta, który chce się połączyć. Jeśli masz wielu klientów, którzy muszą połączyć się z udziałami plików platformy Azure z sieci lokalnej, możesz użyć połączenia sieci VPN lokacja lokacja (S2S) zamiast połączenia typu punkt-lokacja dla każdego klienta. Aby dowiedzieć się więcej, zobacz [Konfigurowanie sieci VPN między lokacjami do użytku z usługą Azure Files](storage-files-configure-s2s-vpn.md).
 
-Zdecydowanie zalecamy zapoznanie się z [omówieniem Azure Files sieci](storage-files-networking-overview.md) przed kontynuowaniem pracy z tym artykułem, aby uzyskać pełną dyskusję na temat opcji sieciowych dostępnych dla Azure Files.
+Zdecydowanie zaleca się [przeczytanie przeglądu sieci usługi Azure Files](storage-files-networking-overview.md) przed kontynuowaniem tego artykułu, aby uzyskać pełną dyskusję na temat opcji sieci dostępnych dla usług Azure Files.
 
-W tym artykule szczegółowo opisano procedurę konfigurowania sieci VPN typu punkt-lokacja w systemie Linux w celu zainstalowania udziałów plików platformy Azure bezpośrednio w środowisku lokalnym. Jeśli chcesz kierować ruchem Azure File Sync przez sieć VPN, zobacz [konfigurowanie Azure File Sync serwera proxy i ustawień zapory](storage-sync-files-firewall-and-proxy.md).
+W artykule opisano kroki konfigurowania sieci VPN typu punkt-lokacja w systemie Linux do instalowania udziałów plików platformy Azure bezpośrednio lokalnie. Jeśli chcesz przekierować ruch usługi Azure File Sync przez sieć VPN, zobacz [konfigurowanie ustawień serwera proxy i zapory usługi Azure File Sync](storage-sync-files-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- Najnowsza wersja interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji na temat instalowania interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia Azure PowerShell](https://docs.microsoft.com/cli/azure/install-azure-cli) i wybieranie systemu operacyjnego. Jeśli wolisz używać modułu Azure PowerShell w systemie Linux, możesz jednak wyświetlić poniższe instrukcje dla interfejsu wiersza polecenia platformy Azure.
+- Najnowsza wersja interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji na temat instalowania interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia programu Azure PowerShell](https://docs.microsoft.com/cli/azure/install-azure-cli) i wybieranie systemu operacyjnego. Jeśli wolisz używać modułu programu Azure PowerShell w systemie Linux, może jednak poniższe instrukcje są prezentowane dla interfejsu wiersza polecenia platformy Azure.
 
-- Udział plików platformy Azure, który chcesz zainstalować lokalnie. W przypadku połączenia sieci VPN typu punkt-lokacja można użyć [standardowego](storage-how-to-create-file-share.md) lub [Premium udziału plików platformy Azure](storage-how-to-create-premium-fileshare.md) .
+- Udział plików platformy Azure, który chcesz zainstalować lokalnie. Udziały plików platformy Azure są wdrażane w ramach kont magazynu, które są konstrukcjami zarządzania reprezentującymi współużytkową pulę magazynu, w której można wdrożyć wiele udziałów plików, a także inne zasoby magazynu, takie jak kontenery obiektów blob lub kolejki. Więcej informacji na temat wdrażania udziałów plików i kont magazynu platformy Azure można dowiedzieć się więcej w obszarze [Tworzenie udziału plików platformy Azure](storage-how-to-create-file-share.md).
+
+- Prywatny punkt końcowy dla konta magazynu zawierającego udział plików platformy Azure, który chcesz zainstalować lokalnie. Aby dowiedzieć się więcej o tworzeniu prywatnego punktu końcowego, zobacz [Konfigurowanie sieciowych punktów końcowych usługi Azure Files](storage-files-networking-endpoints.md?tabs=azure-cli). 
 
 ## <a name="install-required-software"></a>Zainstaluj wymagane oprogramowanie
-Brama sieci wirtualnej platformy Azure może zapewnić połączenia sieci VPN przy użyciu kilku protokołów sieci VPN, w tym protokołu IPsec i OpenVPN. W tym przewodniku przedstawiono sposób korzystania z protokołu IPsec i używania pakietu klient strongswan w celu zapewnienia pomocy technicznej w systemie Linux. 
+Brama sieci wirtualnej platformy Azure może dostarczać połączenia VPN przy użyciu kilku protokołów VPN, w tym IPsec i OpenVPN. W tym przewodniku pokazano, jak używać protokołu IPsec i używa pakietu strongSwan, aby zapewnić obsługę w systemie Linux. 
 
-> Zweryfikowano z Ubuntu 18,10.
+> Zweryfikowano z Ubuntu 18.10.
 
 ```bash
 sudo apt install strongswan strongswan-pki libstrongswan-extra-plugins curl libxml2-utils cifs-utils
@@ -38,11 +40,11 @@ installDir="/etc/"
 ```
 
 ### <a name="deploy-a-virtual-network"></a>Wdrażanie sieci wirtualnej 
-Aby uzyskać dostęp do udziału plików platformy Azure i innych zasobów platformy Azure z lokalnego programu za pośrednictwem sieci VPN typu punkt-lokacja, należy utworzyć sieć wirtualną lub sieci wirtualnej. Połączenie sieci VPN P2S, które zostanie utworzone automatycznie, jest mostkiem między lokalną maszyną z systemem Linux a tą siecią wirtualną platformy Azure.
+Aby uzyskać dostęp do udziału plików platformy Azure i innych zasobów platformy Azure z lokalnego za pośrednictwem sieci VPN typu punkt lokacja, należy utworzyć sieć wirtualną lub sieć wirtualną. Połączenie sieci VPN P2S, które automatycznie utworzysz, jest pomostem między lokalnym komputerem z systemem Linux a tą siecią wirtualną platformy Azure.
 
-Poniższy skrypt spowoduje utworzenie sieci wirtualnej platformy Azure z trzema podsieciami: jedną dla punktu końcowego usługi konta magazynu, jedną dla prywatnego punktu końcowego konta magazynu, która jest wymagana do lokalnego dostępu do konta magazynu bez tworzenia niestandardowych Routing dla publicznego adresu IP konta magazynu, które może ulec zmianie, oraz jeden dla bramy sieci wirtualnej, który udostępnia usługę sieci VPN. 
+Poniższy skrypt utworzy sieć wirtualną platformy Azure z trzema podsieciami: jedną dla punktu końcowego usługi konta magazynu, jedną dla prywatnego punktu końcowego konta magazynu, która jest wymagana do uzyskania dostępu do konta magazynu lokalnie bez tworzenia niestandardowych routingu dla publicznego adresu IP konta magazynu, które mogą ulec zmianie, i jeden dla bramy sieci wirtualnej, która zapewnia usługę sieci VPN. 
 
-Pamiętaj, aby zastąpić `<region>`, `<resource-group>`i `<desired-vnet-name>` odpowiednimi wartościami dla danego środowiska.
+Pamiętaj, `<region>`aby `<resource-group>`zastąpić `<desired-vnet-name>` , i z odpowiednimi wartościami dla środowiska.
 
 ```bash
 region="<region>"
@@ -79,87 +81,8 @@ gatewaySubnet=$(az network vnet subnet create \
     --query "id" | tr -d '"')
 ```
 
-## <a name="restrict-the-storage-account-to-the-virtual-network"></a>Ogranicz konto magazynu do sieci wirtualnej
-Domyślnie podczas tworzenia konta magazynu możesz uzyskać do niego dostęp z dowolnego miejsca na świecie, o ile masz środki do uwierzytelniania Twojego żądania (na przykład z tożsamością Active Directory lub kluczem konta magazynu). Aby ograniczyć dostęp do tego konta magazynu do właśnie utworzonej sieci wirtualnej, należy utworzyć zestaw reguł sieci, który umożliwia dostęp w sieci wirtualnej i odmówił wszystkim innym dostępu.
-
-Ograniczenie konta magazynu do sieci wirtualnej wymaga użycia punktu końcowego usługi. Punkt końcowy usługi to konstrukcja sieciowa, za pomocą której można uzyskać dostęp do publicznej usługi DNS/publicznego adresu IP tylko z poziomu sieci wirtualnej. Ponieważ publiczny adres IP nie ma gwarancji tego samego, ostatecznie chcemy użyć prywatnego punktu końcowego, a nie punktu końcowego usługi dla konta magazynu, ale nie można ograniczyć konta magazynu, chyba że punkt końcowy usługi jest również narażony.
-
-Pamiętaj, aby zamienić `<storage-account-name>` na konto magazynu, do którego chcesz uzyskać dostęp.
-
-```bash
-storageAccountName="<storage-account-name>"
-
-az storage account network-rule add \
-    --resource-group $resourceGroupName \
-    --account-name $storageAccountName \
-    --subnet $serviceEndpointSubnet > /dev/null
-
-az storage account update \
-    --resource-group $resourceGroupName \
-    --name $storageAccountName \
-    --bypass "AzureServices" \
-    --default-action "Deny" > /dev/null
-```
-
-## <a name="create-a-private-endpoint-preview"></a>Tworzenie prywatnego punktu końcowego (wersja zapoznawcza)
-Utworzenie prywatnego punktu końcowego dla konta magazynu powoduje, że konto magazynu jest adresem IP w przestrzeni adresów IP sieci wirtualnej. Po zainstalowaniu udziału plików platformy Azure z lokalnego przy użyciu tego prywatnego adresu IP reguły routingu autodefiniowane przez instalację sieci VPN będą kierować żądanie instalacji do konta magazynu za pośrednictwem sieci VPN. 
-
-```bash
-zoneName="privatelink.file.core.windows.net"
-
-storageAccount=$(az storage account show \
-    --resource-group $resourceGroupName \
-    --name $storageAccountName \
-    --query "id" | tr -d '"')
-
-az resource update \
-    --ids $privateEndpointSubnet \
-    --set properties.privateEndpointNetworkPolicies=Disabled > /dev/null
-
-az network private-endpoint create \
-    --resource-group $resourceGroupName \
-    --name "$storageAccountName-PrivateEndpoint" \
-    --location $region \
-    --subnet $privateEndpointSubnet \
-    --private-connection-resource-id $storageAccount \
-    --group-ids "file" \
-    --connection-name "privateEndpointConnection" > /dev/null
-
-az network private-dns zone create \
-    --resource-group $resourceGroupName \
-    --name $zoneName > /dev/null
-
-az network private-dns link vnet create \
-    --resource-group $resourceGroupName \
-    --zone-name $zoneName \
-    --name "$virtualNetworkName-link" \
-    --virtual-network $virtualNetworkName \
-    --registration-enabled false > /dev/null
-
-networkInterfaceId=$(az network private-endpoint show \
-    --name "$storageAccountName-PrivateEndpoint" \
-    --resource-group $resourceGroupName \
-    --query 'networkInterfaces[0].id' | tr -d '"')
- 
-storageAccountPrivateIP=$(az resource show \
-    --ids $networkInterfaceId \
-    --api-version 2019-04-01 \
-    --query "properties.ipConfigurations[0].properties.privateIPAddress" | tr -d '"')
-
-fqdnQuery="properties.ipConfigurations[0].properties.privateLinkConnectionProperties.fqdns[0]"
-fqdn=$(az resource show \
-    --ids $networkInterfaceId \
-    --api-version 2019-04-01 \
-    --query $fqdnQuery | tr -d '"')
-
-az network private-dns record-set a create \
-    --name $storageAccountName \
-    --zone-name $zoneName \
-    --resource-group $resourceGroupName > /dev/null
-```
-
-## <a name="create-certificates-for-vpn-authentication"></a>Tworzenie certyfikatów do uwierzytelniania za pośrednictwem sieci VPN
-Aby połączenia sieci VPN z lokalnych maszyn z systemem Linux były uwierzytelniane w celu uzyskania dostępu do sieci wirtualnej, należy utworzyć dwa certyfikaty: certyfikat główny, który zostanie udostępniony bramy maszyny wirtualnej, i certyfikat klienta, który będzie podpisany przy użyciu certyfikatu głównego. Poniższy skrypt tworzy wymagane certyfikaty.
+## <a name="create-certificates-for-vpn-authentication"></a>Tworzenie certyfikatów dla uwierzytelniania sieci VPN
+Aby połączenia sieci VPN z lokalnych maszyn z systemem Linux były uwierzytelnione w celu uzyskania dostępu do sieci wirtualnej, należy utworzyć dwa certyfikaty: certyfikat główny, który zostanie dostarczony do bramy maszyny wirtualnej, oraz certyfikat klienta, który zostanie podpisana certyfikatem głównym. Poniższy skrypt tworzy wymagane certyfikaty.
 
 ```bash
 rootCertName="P2SRootCert"
@@ -188,13 +111,13 @@ sudo ipsec pki --pub --in "clientKey.pem" | \
 openssl pkcs12 -in "clientCert.pem" -inkey "clientKey.pem" -certfile rootCert.pem -export -out "client.p12" -password "pass:$password"
 ```
 
-## <a name="deploy-virtual-network-gateway"></a>Wdróż bramę sieci wirtualnej
-Brama sieci wirtualnej platformy Azure to usługa, z którą będą łączyć się lokalne maszyny z systemem Linux. Wdrożenie tej usługi wymaga dwóch podstawowych składników: publiczny adres IP, który będzie identyfikować bramę klientom w dowolnym miejscu na świecie i certyfikat główny utworzony wcześniej, który będzie używany do uwierzytelniania klientów.
+## <a name="deploy-virtual-network-gateway"></a>Wdrażanie bramy sieci wirtualnej
+Brama sieci wirtualnej platformy Azure to usługa, z którą będą łączeć się lokalne maszyny z systemem Linux. Wdrożenie tej usługi wymaga dwóch podstawowych składników: publicznego adresu IP, który będzie identyfikował bramę do klientów, gdziekolwiek są na świecie, oraz certyfikatu głównego utworzonego wcześniej, który będzie używany do uwierzytelniania klientów.
 
-Pamiętaj, aby zastąpić `<desired-vpn-name-here>` nazwą, która ma być dla tych zasobów.
+Pamiętaj, `<desired-vpn-name-here>` aby zastąpić nazwą, którą chcesz dla tych zasobów.
 
 > [!Note]  
-> Wdrożenie bramy sieci wirtualnej platformy Azure może potrwać do 45 minut. Gdy ten zasób jest wdrażany, skrypt skryptu bash zablokuje ukończenie wdrożenia. Jest to oczekiwane.
+> Wdrożenie bramy sieci wirtualnej platformy Azure może potrwać do 45 minut. Gdy ten zasób jest wdrażany, ten skrypt skrypt bash zablokuje dla wdrożenia do ukończenia. Jest to oczekiwane.
 
 ```bash
 vpnName="<desired-vpn-name-here>"
@@ -228,8 +151,8 @@ az network vnet-gateway root-cert create \
     --output none
 ```
 
-## <a name="configure-the-vpn-client"></a>Konfigurowanie klienta VPN
-Brama sieci wirtualnej platformy Azure utworzy pakiet do pobrania z plikami konfiguracyjnymi wymaganymi do zainicjowania połączenia sieci VPN na lokalnym komputerze z systemem Linux. Poniższy skrypt umieści certyfikaty utworzone w prawidłowym miejscu i skonfiguruje plik `ipsec.conf` z prawidłowymi wartościami z pliku konfiguracji w pakiecie do pobrania.
+## <a name="configure-the-vpn-client"></a>Konfigurowanie klienta sieci VPN
+Brama sieci wirtualnej platformy Azure utworzy pakiet do pobrania z plikami konfiguracyjnymi wymaganymi do zainicjowania połączenia sieci VPN na lokalnym komputerze z systemem Linux. Poniższy skrypt umieści utworzone certyfikaty we właściwym miejscu `ipsec.conf` i skonfiguruje plik z poprawnymi wartościami z pliku konfiguracyjnego w pakiecie do pobrania.
 
 ```bash
 vpnClient=$(az network vnet-gateway vpn-client generate \
@@ -267,8 +190,8 @@ sudo ipsec restart
 sudo ipsec up $virtualNetworkName 
 ```
 
-## <a name="mount-azure-file-share"></a>Zainstaluj udział plików platformy Azure
-Teraz po skonfigurowaniu sieci VPN typu punkt-lokacja można zainstalować swój udział plików platformy Azure. W poniższym przykładzie zostanie zainstalowany udział nietrwały. Aby trwale zainstalować, zobacz [Korzystanie z udziału plików platformy Azure w systemie Linux](storage-how-to-use-files-linux.md). 
+## <a name="mount-azure-file-share"></a>Udostępnianie plików platformy Azure
+Po skonfigurowaniu sieci VPN typu punkt-lokacja możesz zainstalować udział plików platformy Azure. Poniższy przykład spowoduje zainstalowanie udziału nietrwałe. Aby stale montować, zobacz [Używanie udziału plików platformy Azure w systemie Linux](storage-how-to-use-files-linux.md). 
 
 ```bash
 fileShareName="myshare"
@@ -285,7 +208,7 @@ smbPath="//$storageAccountPrivateIP/$fileShareName"
 sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
 ```
 
-## <a name="see-also"></a>Zobacz także
-- [Omówienie sieci Azure Files](storage-files-networking-overview.md)
-- [Skonfiguruj sieć VPN typu punkt-lokacja (P2S) w systemie Windows do użytku z usługą Azure Files](storage-files-configure-p2s-vpn-windows.md)
-- [Konfigurowanie sieci VPN typu lokacja-lokacja (S2S) do użycia z usługą Azure Files](storage-files-configure-s2s-vpn.md)
+## <a name="see-also"></a>Zobacz też
+- [Omówienie sieci usług Azure Files](storage-files-networking-overview.md)
+- [Konfigurowanie sieci VPN typu "punkt-lokacja) w systemie Windows do użytku z plikami platformy Azure](storage-files-configure-p2s-vpn-windows.md)
+- [Konfigurowanie sieci VPN lokacja lokacja (S2S) do użytku z usługą Azure Files](storage-files-configure-s2s-vpn.md)

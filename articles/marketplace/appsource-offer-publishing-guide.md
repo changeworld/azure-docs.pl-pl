@@ -1,35 +1,35 @@
 ---
-title: Przewodnik publikowania AppSource oferowanych dla witryny sklepu AppsSource | Portal Azure Marketplace
-description: Przewodnik krok po kroku i publikowanie list kontrolnych dotyczących publikowania aplikacji w sklepie AppSource dla pakietu Office 365, Dynamics 365, Power BI i aplikacji zaawansowanych
+title: Przewodnik po publikacji oferty usługi AppSource dla witryny sklepu AppsSource | Azure Marketplace
+description: Przewodnik krok po kroku i listy kontrolne publikowania aplikacji w sklepie AppSource dla office 365, Dynamics 365, Power BI i Power Apps
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: ellacroi
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2018
-ms.author: ellacroi
-ms.openlocfilehash: 831da237c06657981e402fc1f8fd09ccd67f85fb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: 82b1d096b1641915fc2dc58e000c40c18731c28c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427212"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286646"
 ---
-# <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Pakiet Office 365, Dynamics 365, aplikacje zaawansowane i przewodnik po opublikowaniu oferty Power BI
+# <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Przewodnik po publikowaniu ofert usługi Office 365, Dynamics 365, Power Apps i Power BI
 
-Witryna sklepu AppSource obejmuje oferty, które kompilują lub rozszerą Dynamics 365, Office 365, Power BI i zaawansowane aplikacje. Każdy z tych produktów ma konkretną dokumentację, która przeprowadzi Cię przez proces publikowania. Poniżej znajdują się linki do bardziej szczegółowych informacji dla każdego typu oferty. 
+Witryna sklepu AppSource zawiera oferty, które opierają się na dynamics 365, Office 365, usłudze Power BI i power apps. Każdy z tych produktów posiada określoną dokumentację, która poprowadzi Cię w procesie publikowania. Poniżej znajdują się linki do bardziej szczegółowych informacji dla każdego typu oferty. 
 
-AppSource zapłacili oferty, lista i wersje próbne, z wywołaniem akcji "Pobierz teraz", "Skontaktuj się z nami" i "Wypróbuj teraz". 
+AppSource zapłacił, listy i oferty wersji próbnej, z wezwaniem do działania "Get it Now", "Skontaktuj się ze mną" i "Wypróbuj teraz." 
 
 ## <a name="product-specific-guides"></a>Przewodniki specyficzne dla produktu
 
 ### <a name="office-365"></a>Office 365
 
-Przejrzyj [proces publikowania i wytyczne](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store)
+Przejrzyj [proces publikowania i wskazówki](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store)
 
 ### <a name="power-apps"></a>Power Apps
 
-Dowiedz się, jak klienci mogą [testować aplikację na AppSource.](https://powerapps.microsoft.com/blog/appsource-test-drive/)
+Dowiedz się, jak klienci mogą [testować aplikację w uźródle aplikacji.](https://powerapps.microsoft.com/blog/appsource-test-drive/)
 
 ### <a name="power-bi"></a>Power BI
 
@@ -38,21 +38,21 @@ Przejrzyj [proces publikowania i wskazówki.](https://docs.microsoft.com/power-b
 ### <a name="dynamics-365"></a>Dynamics 365
 
 #### <a name="dynamics-365-for-finance-and-operations"></a>Dynamics 365 for Finance and Operations
-Podczas kompilowania wersji Enterprise Edition Przejrzyj [proces publikowania i wytyczne](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)
+Podczas tworzenia wersji Enterprise Edition zapoznaj się z [procesem publikowania i wytycznymi](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
-Zobacz [Dynamics 365 for Finanse i oferty operacji,](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer) aby opublikować ofertę w Portal Cloud partner.
+Zobacz [Dynamics 365 for Finance and Operations offer,](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer) aby dowiedzieć się, jak opublikować ofertę w portalu cloud partner.
 
 ### <a name="dynamics-365-for-customer-engagement"></a>Dynamics 365 for Customer Engagement
 Przejrzyj [proces publikowania i wskazówki](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource).
 
-Aby uzyskać informacje na temat sposobu publikowania oferty w portal Cloud Partner, zobacz [Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-customer-engagement-offer) .
+Zobacz [Dynamics 365 for Customer Engagement,](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-customer-engagement-offer) aby dowiedzieć się, jak opublikować ofertę w portalu Cloud Partner Portal.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli jeszcze tego nie zrobiono, 
+Jeśli jeszcze tego nie zrobiłeś, 
 
-- [Zarejestruj](https://azuremarketplace.microsoft.com/sell) się w portalu Marketplace.
+- [Zarejestruj się](https://azuremarketplace.microsoft.com/sell) na rynku.
 
-Jeśli rejestrujesz się i Pracujesz w portal Cloud Partner, 
+Jeśli jesteś zarejestrowany i pracujesz w Portalu Cloud Partner, 
 
-- [Zaloguj się do Portal Cloud partner](https://cloudpartner.azure.com) , aby utworzyć lub zakończyć swoją ofertę.
+- [Zaloguj się do portalu cloud partner,](https://cloudpartner.azure.com) aby utworzyć lub uzupełnić ofertę.

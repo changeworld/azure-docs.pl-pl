@@ -1,24 +1,24 @@
 ---
-title: Dokumentacja interfejsu API usługi Azure Application Insights Agent
-description: Dokumentacja interfejsu API agenta Application Insights. Disable-InstrumentationEngine. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
+title: Odwołanie do interfejsu API agenta usługi Azure Application Insights
+description: Odwołanie do interfejsu API agenta usługi Application Insights. In disable-InstrumentationEngine. Monitoruj działanie witryny bez ponownego rozmieszczania witryny. Współpracuje ze ASP.NET aplikacjami sieci web hostowanymi lokalnie, na maszynach wirtualnych lub na platformie Azure.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: dafa12db95a10df467bf0d042cfd9395720648b2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671379"
 ---
-# <a name="application-insights-agent-api-disable-instrumentationengine"></a>Interfejs API agenta Application Insights: Disable-InstrumentationEngine
+# <a name="application-insights-agent-api-disable-instrumentationengine"></a>Interfejs API agenta usługi Application Insights: In disable-InstrumentationEngine
 
-W tym artykule opisano polecenie cmdlet, które jest członkiem [modułu programu PowerShell AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
+W tym artykule opisano polecenie cmdlet, który jest członkiem [modułu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 ## <a name="description"></a>Opis
 Wyłącza aparat instrumentacji, usuwając niektóre klucze rejestru.
-Uruchom ponownie usługi IIS, aby zmiany zaczęły obowiązywać.
+Uruchom ponownie usługę IIS, aby zmiany zostały wprowadzone.
 
 > [!IMPORTANT] 
 > To polecenie cmdlet wymaga sesji programu PowerShell z uprawnieniami administratora.
@@ -31,13 +31,13 @@ PS C:\> Disable-InstrumentationEngine
 
 ## <a name="parameters"></a>Parametry 
 
-### <a name="-verbose"></a>-Verbose
-**Wspólny parametr.** Ten przełącznik umożliwia wyprowadzanie szczegółowych dzienników.
+### <a name="-verbose"></a>-Pełne
+**Wspólny parametr.** Użyj tego przełącznika do wyprowadzania szczegółowych dzienników.
 
 ## <a name="output"></a>Dane wyjściowe
 
 
-#### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Przykładowe dane wyjściowe pomyślnie wyłączające aparat Instrumentacji
+#### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Przykładowy wynik z pomyślnego wyłączenia silnika oprzyrządowania
 
 ```
 Configuring IIS Environment for instrumentation engine...
@@ -50,5 +50,5 @@ Configuring registry for instrumentation engine...
 
 ## <a name="next-steps"></a>Następne kroki
 
- Zrób więcej dzięki Application Insights agentowi:
- - Skorzystaj z naszego przewodnika, aby [rozwiązać problemy z](status-monitor-v2-troubleshoot.md) agentem Application Insights.
+ Więcej informacji za pomocą agenta usługi Application Insights:
+ - Skorzystaj z naszego [przewodnika,](status-monitor-v2-troubleshoot.md) aby rozwiązać problem z agentem aplikacji Insights.

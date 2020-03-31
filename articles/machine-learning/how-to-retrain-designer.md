@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 02/24/2020
-ms.openlocfilehash: 264b169eefde18880f50feae2554aa3ca7037b1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8791e933882832dc7b0037c860a4c4e1e9a54c7
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368166"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389039"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Ponowne trenowanie modeli za pomocą projektanta usługi Azure Machine Learning (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -54,14 +54,14 @@ Aby przeszkolić model, potrzebny jest model początkowy. W tej sekcji dowiesz s
    W tym przykładzie dane są przechowywane w [magazynie danych platformy Azure](how-to-access-data.md). Jeśli nie masz jeszcze magazynu danych, możesz go utworzyć teraz, wybierając **pozycję Nowy magazyn danych**.
 
 1. Określ ścieżkę do danych. Można również wybrać **opcję Przeglądaj ścieżkę,** aby przejść do magazynu danych. 
-1. Wybierz **pozycję Uruchom** u góry obszaru roboczego.
+1. Wybierz **pozycję Prześlij** u góry obszaru roboczego.
     
    > [!NOTE]
    > Jeśli ustawiono już domyślne obliczenia dla tego projektu potoku, potok zostanie uruchomiony automatycznie. W przeciwnym razie możesz wykonać monity w okienku ustawień, aby ustawić je teraz.
 
 ### <a name="find-your-trained-model"></a>Znajdź swój wyszkolony model
 
-Projektant zapisuje wszystkie dane wyjściowe potoku, w tym modele uczony, na domyślnym koncie magazynu. Można również uzyskać dostęp do przeszkolonego modelu bezpośrednio w projektancie:
+Projektant zapisuje wszystkie dane wyjściowe potoku, w tym modele uczony, na domyślnym koncie magazynu. Można jednak również uzyskać dostęp do wyszkolonych modeli bezpośrednio w projektancie:
 
 1. Poczekaj na zakończenie działania potoku.
 1. Wybierz moduł **Train Model** (Trenowanie modelu).

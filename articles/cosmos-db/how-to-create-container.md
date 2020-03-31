@@ -1,68 +1,68 @@
 ---
 title: Tworzenie kontenera w usłudze Azure Cosmos DB
-description: Dowiedz się, jak utworzyć kontener w Azure Cosmos DB przy użyciu Azure Portal, .NET, Java, Python, Node. js i innych zestawów SDK.
+description: Dowiedz się, jak utworzyć kontener w usłudze Azure Cosmos DB przy użyciu witryny Azure portal, .Net, Java, Python, Node.js i innych zestawów SDK.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 4eaa2974817bfcd8bef83e5139d75a2d4c2ec107
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873713"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Tworzenie kontenera usługi Azure Cosmos
 
-W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos (kolekcji, tabeli lub grafów). W tym celu można użyć Azure Portal, interfejsu wiersza polecenia platformy Azure lub obsługiwanych zestawów SDK. W tym artykule pokazano, jak utworzyć kontener, określić klucz partycji i aprowizować przepływność.
+W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos (kolekcja, tabela lub wykres). W tym celu można użyć witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub obsługiwanych zestawów SDK. W tym artykule pokazano, jak utworzyć kontener, określić klucz partycji i aprowizować przepływność.
 
 ## <a name="create-a-container-using-azure-portal"></a>Tworzenie kontenera przy użyciu witryny Azure Portal
 
-### <a id="portal-sql"></a>Interfejs API SQL
+### <a name="sql-api"></a><a id="portal-sql"></a>Interfejs API SQL
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Azure Cosmos](create-sql-api-dotnet.md#create-account)lub Wybierz istniejące konto.
+1. [Utwórz nowe konto usługi Azure Cosmos](create-sql-api-dotnet.md#create-account)lub wybierz istniejące konto.
 
-1. Otwórz okienko **Eksplorator danych** i wybierz pozycję **nowy kontener**. Następnie podaj następujące szczegóły:
+1. Otwórz okienko **Eksploratora danych** i wybierz pozycję **Nowy kontener**. Następnie podaj następujące szczegóły:
 
    * Wskaż, czy tworzysz nową bazę danych, czy używasz istniejącej.
    * Wprowadź identyfikator kontenera.
    * Wprowadź klucz partycji.
-   * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
+   * Wprowadź przepływność, która ma być aprowizowana (na przykład 1000 procesorów RU).
    * Kliknij przycisk **OK**.
 
-    ![Zrzut ekranu przedstawiający okienko Eksplorator danych z wyróżnionym nowym kontenerem](./media/how-to-create-container/partitioned-collection-create-sql.png)
+    ![Zrzut ekranu przedstawiający okienko Eksploratora danych z wyróżnioną pojednawką Nowy kontener](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
-### <a id="portal-mongodb"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB
+### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account)lub Wybierz istniejące konto.
+1. [Utwórz nowe konto usługi Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account)lub wybierz istniejące konto.
 
-1. Otwórz okienko **Eksplorator danych** i wybierz pozycję **nowy kontener**. Następnie podaj następujące szczegóły:
+1. Otwórz okienko **Eksploratora danych** i wybierz pozycję **Nowy kontener**. Następnie podaj następujące szczegóły:
 
    * Wskaż, czy tworzysz nową bazę danych, czy używasz istniejącej.
    * Wprowadź identyfikator kontenera.
    * Wprowadź klucz fragmentu.
-   * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
+   * Wprowadź przepływność, która ma być aprowizowana (na przykład 1000 procesorów RU).
    * Kliknij przycisk **OK**.
 
-    ![Zrzut ekranu przedstawiający interfejs Azure Cosmos DB API dla MongoDB, okno dialogowe Dodawanie kontenera](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+    ![Zrzut ekranu przedstawiający interfejs API bazy danych usługi Azure Cosmos DB dla usługi MongoDB, okno dialogowe Dodawanie kontenera](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
-### <a id="portal-cassandra"></a>Interfejs API rozwiązania Cassandra
+### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra API
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Azure Cosmos](create-cassandra-dotnet.md#create-a-database-account)lub Wybierz istniejące konto.
+1. [Utwórz nowe konto usługi Azure Cosmos](create-cassandra-dotnet.md#create-a-database-account)lub wybierz istniejące konto.
 
 1. Otwórz okienko **Data Explorer** i wybierz pozycję **Nowa tabela**. Następnie podaj następujące szczegóły:
 
    * Wskaż, czy tworzysz nową przestrzeń kluczy, czy używasz istniejącej.
    * Wprowadź nazwę tabeli.
    * Wprowadź właściwości i określ klucz podstawowy.
-   * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
+   * Wprowadź przepływność, która ma być aprowizowana (na przykład 1000 procesorów RU).
    * Kliknij przycisk **OK**.
 
     ![Zrzut ekranu interfejsu API Cassandra, okno dialogowe Dodawanie tabeli](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
@@ -70,33 +70,33 @@ W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos 
 > [!NOTE]
 > W przypadku interfejsu API rozwiązania Cassandra jako klucz partycji jest używany klucz podstawowy.
 
-### <a id="portal-gremlin"></a>Interfejs API języka Gremlin
+### <a name="gremlin-api"></a><a id="portal-gremlin"></a>Interfejs API języka Gremlin
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Azure Cosmos](create-graph-dotnet.md#create-a-database-account)lub Wybierz istniejące konto.
+1. [Utwórz nowe konto usługi Azure Cosmos](create-graph-dotnet.md#create-a-database-account)lub wybierz istniejące konto.
 
 1. Otwórz okienko **Data Explorer** i wybierz pozycję **Nowy graf**. Następnie podaj następujące szczegóły:
 
    * Wskaż, czy tworzysz nową bazę danych, czy używasz istniejącej.
-   * Wprowadź identyfikator grafu.
+   * Wprowadź identyfikator wykresu.
    * Wybierz pojemność magazynu **Bez ograniczeń**.
    * Wprowadź klucz partycji dla wierzchołków.
-   * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
+   * Wprowadź przepływność, która ma być aprowizowana (na przykład 1000 procesorów RU).
    * Kliknij przycisk **OK**.
 
     ![Zrzut ekranu interfejsu API Gremlin, okno dialogowe Dodawanie grafu](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
 
-### <a id="portal-table"></a>Interfejs API tabel
+### <a name="table-api"></a><a id="portal-table"></a>Interfejs API tabel
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Azure Cosmos](create-table-dotnet.md#create-a-database-account)lub Wybierz istniejące konto.
+1. [Utwórz nowe konto usługi Azure Cosmos](create-table-dotnet.md#create-a-database-account)lub wybierz istniejące konto.
 
 1. Otwórz okienko **Data Explorer** i wybierz pozycję **Nowa tabela**. Następnie podaj następujące szczegóły:
 
    * Wprowadź identyfikator tabeli.
-   * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
+   * Wprowadź przepływność, która ma być aprowizowana (na przykład 1000 procesorów RU).
    * Kliknij przycisk **OK**.
 
     ![Zrzut ekranu interfejsu API tabel, okno dialogowe Dodawanie tabeli](./media/how-to-create-container/partitioned-collection-create-table.png)
@@ -104,33 +104,33 @@ W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos 
 > [!Note]
 > W przypadku interfejsu API tabel klucz partycji jest określany każdorazowo podczas dodawania nowego wiersza.
 
-## Tworzenie kontenera przy użyciu interfejsu wiersza polecenia platformy Azure<a id="cli-sql"></a><a id="cli-mongodb"></a><a id="cli-cassandra"></a><a id="cli-gremlin"></a><a id="cli-table"></a>
+## <a name="create-a-container-using-azure-cli"></a>Tworzenie kontenera przy użyciu interfejsu wiersza polecenia platformy Azure<a id="cli-sql"></a><a id="cli-mongodb"></a><a id="cli-cassandra"></a><a id="cli-gremlin"></a><a id="cli-table"></a>
 
-Poniższe linki pokazują, jak utworzyć zasoby kontenera dla Azure Cosmos DB przy użyciu interfejsu wiersza polecenia platformy Azure.
+Poniższe łącza pokazują, jak utworzyć zasoby kontenera dla usługi Azure Cosmos DB przy użyciu interfejsu wiersza polecenia platformy Azure.
 
-Aby zapoznać się z listą wszystkich przykładów interfejsu wiersza polecenia platformy Azure dla wszystkich Azure Cosmos DB interfejsów API, zobacz, interfejs API [SQL](cli-samples.md), [interfejs API Cassandra](cli-samples-cassandra.md), [interfejs API MongoDB](cli-samples-mongodb.md), [interfejs API Gremlin](cli-samples-gremlin.md)i [interfejs API tabel](cli-samples-table.md)
+Aby uzyskać listę wszystkich przykładów interfejsu wiersza polecenia platformy Azure we wszystkich interfejsach API usługi Azure Cosmos DB, zobacz [INTERFEJS API SQL](cli-samples.md), interfejs API [Cassandra](cli-samples-cassandra.md), [interfejs API mongodb,](cli-samples-mongodb.md) [interfejs API gremlin](cli-samples-gremlin.md)i [interfejs API tabeli](cli-samples-table.md)
 
 * [Tworzenie kontenera za pomocą interfejsu wiersza polecenia platformy Azure](manage-with-cli.md#create-a-container)
-* [Tworzenie kolekcji dla Azure Cosmos DB interfejsu API MongoDB w interfejsie wiersza polecenia platformy Azure](./scripts/cli/mongodb/create.md)
-* [Tworzenie tabeli Cassandra przy użyciu interfejsu wiersza polecenia platformy Azure](./scripts/cli/cassandra/create.md)
-* [Tworzenie grafu Gremlin przy użyciu interfejsu wiersza polecenia platformy Azure](./scripts/cli/gremlin/create.md)
-* [Tworzenie tabeli interfejs API tabel przy użyciu interfejsu wiersza polecenia platformy Azure](./scripts/cli/table/create.md)
+* [Tworzenie kolekcji dla usługi Azure Cosmos DB dla interfejsu API usługi MongoDB za pomocą interfejsu wiersza polecenia platformy Azure](./scripts/cli/mongodb/create.md)
+* [Tworzenie tabeli Cassandra za pomocą interfejsu wiersza polecenia platformy Azure](./scripts/cli/cassandra/create.md)
+* [Tworzenie wykresu Gremlin za pomocą interfejsu wiersza polecenia platformy Azure](./scripts/cli/gremlin/create.md)
+* [Tworzenie tabeli interfejsu API tabeli za pomocą interfejsu wiersza polecenia platformy Azure](./scripts/cli/table/create.md)
 
-## Tworzenie kontenera przy użyciu programu<a id="ps-sql"> </a> PowerShell <a id="ps-cassandra"></a><a id="ps-mongodb"><a id="ps-gremlin"><a id="ps-table"></a>
+## <a name="create-a-container-using-powershella-idps-mongodba-idps-gremlin"></a>Tworzenie kontenera przy użyciu programu PowerShell<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"><a id="ps-table"></a>
 
-Poniższe linki pokazują, jak utworzyć zasoby kontenera dla Azure Cosmos DB przy użyciu programu PowerShell.
+Poniższe łącza pokazują, jak utworzyć zasoby kontenera dla usługi Azure Cosmos DB przy użyciu programu PowerShell.
 
-Aby zapoznać się z listą wszystkich przykładów interfejsu wiersza polecenia platformy Azure dla wszystkich Azure Cosmos DB interfejsów API, zobacz, interfejs API [SQL](powershell-samples-sql.md), [interfejs API Cassandra](powershell-samples-cassandra.md), [interfejs API MongoDB](powershell-samples-mongodb.md), [interfejs API Gremlin](powershell-samples-gremlin.md)i [interfejs API tabel](powershell-samples-table.md)
+Aby uzyskać listę wszystkich przykładów interfejsu wiersza polecenia platformy Azure we wszystkich interfejsach API usługi Azure Cosmos DB, zobacz [INTERFEJS API SQL](powershell-samples-sql.md), interfejs API [Cassandra](powershell-samples-cassandra.md), [interfejs API mongodb,](powershell-samples-mongodb.md) [interfejs API gremlin](powershell-samples-gremlin.md)i [interfejs API tabeli](powershell-samples-table.md)
 
-* [Tworzenie kontenera przy użyciu programu PowerShell](manage-with-powershell.md#create-container)
-* [Tworzenie kolekcji dla Azure Cosmos DB interfejsu API MongoDB przy użyciu programu PowerShell](./scripts/powershell/mongodb/ps-mongodb-create.md)
-* [Tworzenie tabeli Cassandra przy użyciu programu PowerShell](./scripts/powershell/cassandra/ps-cassandra-create.md)
-* [Tworzenie grafu Gremlin przy użyciu programu PowerShell](./scripts/powershell/gremlin/ps-gremlin-create.md)
-* [Tworzenie tabeli interfejs API tabel przy użyciu programu PowerShell](./scripts/powershell/table/ps-table-create.md)
+* [Tworzenie kontenera za pomocą programu Powershell](manage-with-powershell.md#create-container)
+* [Tworzenie kolekcji dla usługi Azure Cosmos DB dla interfejsu API mongodb za pomocą programu Powershell](./scripts/powershell/mongodb/ps-mongodb-create.md)
+* [Tworzenie tabeli Cassandra za pomocą programu Powershell](./scripts/powershell/cassandra/ps-cassandra-create.md)
+* [Tworzenie wykresu Gremlin za pomocą programu Powershell](./scripts/powershell/gremlin/ps-gremlin-create.md)
+* [Tworzenie tabeli interfejsu API tabeli za pomocą programu PowerShell](./scripts/powershell/table/ps-table-create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>Tworzenie kontenera przy użyciu zestawu .NET SDK
 
-### <a id="dotnet-sql-graph"></a>Interfejs API SQL i interfejs API języka Gremlin
+### <a name="sql-api-and-gremlin-api"></a><a id="dotnet-sql-graph"></a>Interfejs API SQL i interfejs API języka Gremlin
 
 ```csharp
 // Create a container with a partition key and provision 1000 RU/s throughput.
@@ -144,7 +144,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 1000 });
 ```
 
-### <a id="dotnet-mongodb"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB
+### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="dotnet-mongodb"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB
 
 ```csharp
 // Create a collection with a partition key by using Mongo Shell:
@@ -152,9 +152,9 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 ```
 
 > [!Note]
-> Protokół MongoDB Wire nie rozumie koncepcji [jednostek żądania](request-units.md). Aby utworzyć nową kolekcję z zainicjowaną przepływność, użyj Azure Portal lub Cosmos DB zestawów SDK dla interfejsu API SQL.
+> Protokół przewodowy MongoDB nie rozumie pojęcia [jednostek żądających](request-units.md). Aby utworzyć nową kolekcję z aprowizowaną przepływnością, użyj witryny Azure portal lub zestawów SDK usługi Cosmos DB dla interfejsu API SQL.
 
-### <a id="dotnet-cassandra"></a>Interfejs API rozwiązania Cassandra
+### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API
 
 ```csharp
 // Create a Cassandra table with a partition/primary key and provision 1000 RU/s throughput.
@@ -169,4 +169,4 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 * [Partitioning in Azure Cosmos DB (Partycjonowanie w usłudze Azure Cosmos DB)](partitioning-overview.md)
 * [Jednostki żądania w usłudze Azure Cosmos DB](request-units.md)
 * [Aprowizacja przepływności kontenerów i baz danych](set-throughput.md)
-* [Współpraca z kontem usługi Azure Cosmos](account-overview.md)
+* [Praca z kontem usługi Azure Cosmos](account-overview.md)

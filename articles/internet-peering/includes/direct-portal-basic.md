@@ -9,47 +9,47 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 79cf4b2edd1a25df427cf15f9ee7f2f331ebd2df
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774642"
 ---
-1. Kliknij pozycję **Utwórz zasób,**  > **zobaczyć wszystkie**.
+1. Kliknij **pozycję Utwórz zasób** > **Zobacz wszystkie**.
 
     > [!div class="mx-imgBorder"]
-    > ![wyszukiwanie komunikacji równorzędnej](../media/setup-seeall.png)
+    > ![Komunikacja równorzędna wyszukiwania](../media/setup-seeall.png)
 
-1. Wyszukaj *komunikację równorzędną* w polu wyszukiwania i naciśnij klawisz *Enter* na klawiaturze. Na stronie wyników kliknij pozycję zasób **komunikacji równorzędnej** .
-
-    > [!div class="mx-imgBorder"]
-    > ![uruchamiania komunikacji równorzędnej](../media/setup-launch.png)
-
-1. Po uruchomieniu **komunikacji równorzędnej** Przejrzyj stronę, aby poznać szczegóły. Gdy wszystko będzie gotowe, kliknij przycisk **Utwórz**.
+1. Wyszukaj *peering* w polu wyszukiwania i naciśnij *klawisz Enter* na klawiaturze. Na podstawie wyników kliknij zasób **komunikacji równorzędnej.**
 
     > [!div class="mx-imgBorder"]
-    > ![utworzyć komunikację równorzędną](../media/setup-create.png)
+    > ![Uruchamianie komunikacji równorzędnej](../media/setup-launch.png)
 
-1. Na stronie **Tworzenie komunikacji równorzędnej** w obszarze **podstawowe** karty Wypełnij pola, jak pokazano poniżej.
+1. Po uruchomieniu **komunikacji równorzędnej** przejrzyj stronę, aby zrozumieć szczegóły. Gdy będzie gotowy, kliknij przycisk **Utwórz**.
 
     > [!div class="mx-imgBorder"]
-    > ![podstawy komunikacji równorzędnej](../media/setup-basics-tab.png)
+    > ![Tworzenie komunikacji równorzędnej](../media/setup-create.png)
 
-    * Wybierz swoją **subskrypcję**platformy Azure.
-    * W obszarze **Grupa zasobów**można wybrać istniejącą grupę zasobów z listy rozwijanej lub utworzyć nową grupę, klikając pozycję **Utwórz nową**. W tym przykładzie utworzymy nową grupę zasobów.
-    * **Nazwa** odpowiada nazwie zasobu i może być dowolna.
-    * **Region** jest wybierany w przypadku wybrania istniejącej grupy zasobów w powyższym kroku. Jeśli wybrano opcję utworzenia nowej grupy zasobów, należy również wybrać region platformy Azure, w którym ma się znajdować zasób. Wschodnie stany USA
+1. Na stronie **Tworzenie komunikacji równorzędnej** na karcie **Podstawy** wypełnij pola, jak pokazano poniżej.
+
+    > [!div class="mx-imgBorder"]
+    > ![Podstawy komunikacji równorzędnej](../media/setup-basics-tab.png)
+
+    * Wybierz **subskrypcję**platformy Azure .
+    * W przypadku **grupy zasobów**można wybrać istniejącą grupę zasobów z listy rozwijanej lub utworzyć nową grupę, klikając pozycję **Utwórz nowy**. W tym przykładzie utworzymy nową grupę zasobów.
+    * **Nazwa** odpowiada nazwie zasobu i może być wszystkim, co wybierzesz.
+    * **Region** jest wybierany automatycznie, jeśli w powyższym kroku wybrano istniejącą grupę zasobów. Jeśli zdecydujesz się utworzyć nową grupę zasobów, należy również wybrać region platformy Azure, w którym ma się rezydować zasób. Wschodnie stany USA
 
         > [!NOTE]
-        > Region, w którym znajduje się grupa zasobów, jest niezależny od lokalizacji, w której chcesz utworzyć komunikację równorzędną z firmą Microsoft. Najlepszym rozwiązaniem jest zorganizowanie zasobów komunikacji równorzędnej w grupach zasobów znajdujących się w najbliższych regionach świadczenia usługi Azure. Przykład: w przypadku komunikacji równorzędnej w Ashburn można utworzyć grupę zasobów w *regionie Wschodnie stany USA* lub *Wschodnie stany USA 2*
+        > Region, w którym znajduje się grupa zasobów, jest niezależny od lokalizacji, w której chcesz utworzyć komunikację równorzędnej z firmą Microsoft. Najlepszym rozwiązaniem jest jednak organizowanie zasobów komunikacji równorzędnej w grupach zasobów znajdujących się w najbliższych regionach platformy Azure. Np.: dla komunikacji równorzędnej w Ashburn, można utworzyć grupę zasobów we *wschodnich stanach USA* lub *wschodnich us2*
 
-    * Wybierz swój numer ASN w polu **peer ASN** .
+    * Wybierz asn w polu **Peer ASN.**
 
         > [!IMPORTANT]
-        > * Przed przesłaniem żądania komunikacji równorzędnej można wybrać tylko numer ASN z ValidationState jako "zatwierdzony". Jeśli żądanie PeerAsn zostało przesłane, poczekaj przez 12 godzin, a więc w przypadku skojarzenia ASN na "zatwierdzone". Jeśli wybrany numer ASN oczekuje na weryfikację, zostanie wyświetlony komunikat o błędzie. 
-        > * Jeśli nie widzisz numeru ASN, należy wybrać, a następnie sprawdzić, czy wybrano poprawną subskrypcję. Jeśli tak jest, sprawdź, czy utworzono już PeerAsn przy użyciu opcji [Skojarz równorzędną pozycję ASN z subskrypcją platformy Azure](../howto-subscription-association-portal.md).
+        > * Przed przesłaniem żądania komunikacji równorzędnej można wybrać asn z certyfikatem sprawdzania poprawności jako "Zatwierdzone". Jeśli właśnie przesłałeś żądanie PeerAsn, poczekaj około 12 godzin, aż skojarzenie ASN zostanie "zatwierdzone". Jeśli wybrana asn jest oczekująca na sprawdzenie, zostanie wyświetlony komunikat o błędzie. 
+        > * Jeśli nie widzisz asn trzeba wybrać, a następnie sprawdź, czy wybrano właściwą subskrypcję. Jeśli tak, sprawdź, czy utworzono już peerasn przy użyciu [skojarzenia elementów równorzędnych ASN do subskrypcji platformy Azure](../howto-subscription-association-portal.md).
 
         > [!div class="mx-imgBorder"]
-        > ![wypełnione podstawy komunikacji równorzędnej](../media/setup-direct-basics-filled-tab.png)
+        > ![Wypełnione podstawowe informacje o komunikacji równorzędnej](../media/setup-direct-basics-filled-tab.png)
 
-    * Kliknij przycisk **Dalej: > konfiguracji** , aby kontynuować.
+    * Kliknij **dalej: Konfiguracja >,** aby kontynuować.

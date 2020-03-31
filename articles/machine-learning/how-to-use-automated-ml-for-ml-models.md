@@ -1,7 +1,7 @@
 ---
-title: Tworzenie modeli & wdrażanie przy użyciu programu autoML
+title: Tworzenie modeli & wdrażanie za pomocą automl
 titleSuffix: Azure Machine Learning
-description: Twórz, Przeglądaj i wdrażaj automatyczne modele uczenia maszynowego za pomocą Azure Machine Learning.
+description: Tworzenie, przeglądanie i wdrażanie zautomatyzowanych modeli uczenia maszynowego za pomocą usługi Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,236 +12,236 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
 ms.openlocfilehash: 9999d74bf6bef3e8351460add7efc8bdbfcd1045
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79270032"
 ---
-# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Twórz, Przeglądaj i wdrażaj automatyczne modele uczenia maszynowego za pomocą Azure Machine Learning
+# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Tworzenie, przeglądanie i wdrażanie zautomatyzowanych modeli uczenia maszynowego za pomocą usługi Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-W tym artykule dowiesz się, jak tworzyć, eksplorować i wdrażać zautomatyzowane modele uczenia maszynowego bez jednego wiersza kodu w interfejsie Azure Machine Learning Studio. Automatyczne Uczenie maszynowe to proces, w którym jest wybierany najlepszy algorytm uczenia maszynowego dla konkretnych danych. Ten proces umożliwia szybkie generowanie modeli uczenia maszynowego. [Dowiedz się więcej o automatycznym uczeniu maszynowym](concept-automated-ml.md).
+W tym artykule dowiesz się, jak tworzyć, eksplorować i wdrażać zautomatyzowane modele uczenia maszynowego bez jednego wiersza kodu w interfejsie studio usługi Azure Machine Learning. Zautomatyzowane uczenie maszynowe to proces, w którym wybrany jest najlepszy algorytm uczenia maszynowego używany dla określonych danych. Ten proces umożliwia szybkie generowanie modeli uczenia maszynowego. [Dowiedz się więcej o zautomatyzowanym uczeniu maszynowym](concept-automated-ml.md).
  
-Aby zapoznać się z kompleksowym przykładem, wypróbuj [Samouczek dotyczący tworzenia modelu klasyfikacji przy użyciu zautomatyzowanego interfejsu ML Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
+W przykładzie end to end spróbuj [wykonać samouczek do tworzenia modelu klasyfikacji za pomocą zautomatyzowanego interfejsu ml usługi Azure Machine Learning.](tutorial-first-experiment-automated-ml.md) 
 
-W przypadku środowiska języka Python można [skonfigurować automatyczne eksperymenty uczenia maszynowego](how-to-configure-auto-train.md) za pomocą zestawu SDK Azure Machine Learning.
+Aby uzyskać środowisko oparte na kodzie języka Python, [skonfiguruj eksperymenty automatycznego uczenia maszynowego](how-to-configure-auto-train.md) za pomocą sdk usługi Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
-* Obszar roboczy Azure Machine Learning z typem **wersji Enterprise Edition**. Zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md).  Aby uaktualnić istniejący obszar roboczy do wersji Enterprise, zobacz [uaktualnianie do wersji Enterprise Edition](how-to-manage-workspace.md#upgrade).
+* Obszar roboczy usługi Azure Machine Learning z typem **wersji Enterprise**. Zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md).  Aby uaktualnić istniejący obszar roboczy do wersji Enterprise, zobacz [Uaktualnianie do wersji Enterprise](how-to-manage-workspace.md#upgrade).
 
-## <a name="get-started"></a>Rozpoczynanie pracy
+## <a name="get-started"></a>Wprowadzenie
 
-1. Zaloguj się do Azure Machine Learning w https://ml.azure.com. 
+1. Zaloguj się do usługi https://ml.azure.comAzure Machine Learning w . 
 
-1. Wybierz swoją subskrypcję i obszar roboczy. 
+1. Wybierz subskrypcję i obszar roboczy. 
 
-1. Przejdź do okienka po lewej stronie. Wybierz pozycję **zautomatyzowany ml** w sekcji **autor** .
+1. Przejdź do lewego okienka. Wybierz **opcję Automatyczna ml** w sekcji **Autor.**
 
-[okienko nawigacji ![Azure Machine Learning Studio](media/how-to-use-automated-ml-for-ml-models/nav-pane.png)](media/how-to-use-automated-ml-for-ml-models/nav-pane-expanded.png)
+[![Okienko nawigacji studio usługi Azure Machine Learning](media/how-to-use-automated-ml-for-ml-models/nav-pane.png)](media/how-to-use-automated-ml-for-ml-models/nav-pane-expanded.png)
 
- Jeśli po raz pierwszy przeprowadzisz eksperymenty, zobaczysz pustą listę i linki do dokumentacji. 
+ Jeśli po raz pierwszy wykonujesz eksperymenty, zobaczysz pustą listę i linki do dokumentacji. 
 
-W przeciwnym razie zostanie wyświetlona lista ostatnich zautomatyzowanych eksperymentów dotyczących uczenia maszynowego, w tym tych utworzonych za pomocą zestawu SDK. 
+W przeciwnym razie zobaczysz listę ostatnich eksperymentów automatycznego uczenia maszynowego, w tym eksperymentów utworzonych za pomocą zestawu SDK. 
 
 ## <a name="create-and-run-experiment"></a>Tworzenie i uruchamianie eksperymentu
 
-1. Wybierz pozycję **+ Nowy zautomatyzowany przebieg** i wypełnij formularz.
+1. Wybierz **+ Nowy automatyczny uruchom ml** i wypełnij formularz.
 
-1. Wybierz zestaw danych z kontenera magazynu lub Utwórz nowy zestaw danych. Zestawy danych mogą być tworzone na podstawie plików lokalnych, adresów URL sieci Web, magazynów danych lub otwartych zestawów danych platformy Azure. 
+1. Wybierz zestaw danych z kontenera magazynu lub utwórz nowy zestaw danych. Zestawy danych można tworzyć na podstawie plików lokalnych, adresów URL sieci Web, magazynów danych lub otwartych zestawów danych platformy Azure. 
 
     >[!Important]
     > Wymagania dotyczące danych szkoleniowych:
     >* Dane muszą być w formie tabelarycznej.
-    >* Wartość, która ma zostać przewidywalna (kolumna docelowa), musi być obecna w danych.
+    >* Wartość, którą chcesz przewidzieć (kolumna docelowa) musi być obecna w danych.
 
-    1. Aby utworzyć nowy zestaw danych z pliku na komputerze lokalnym, wybierz pozycję **Przeglądaj** , a następnie wybierz plik. 
+    1. Aby utworzyć nowy zestaw danych z pliku na komputerze lokalnym, wybierz pozycję **Przeglądaj,** a następnie wybierz plik. 
 
     1. Nadaj zestawowi danych unikatową nazwę i podaj opcjonalny opis. 
 
-    1. Wybierz pozycję **dalej** , aby otworzyć **formularz magazyn danych i wybór pliku**. Na tym formularzu wybierasz miejsce przekazania zestawu danych; domyślny kontener magazynu, który jest automatycznie tworzony razem z obszarem roboczym, lub wybierz kontener magazynu, który ma być używany do eksperymentu. 
+    1. Wybierz **przycisk Dalej,** aby otworzyć **formularz datastore i wybór pliku**. W tym formularzu możesz wybrać miejsce przesyłania zestawu danych; domyślny kontener magazynu, który jest tworzony automatycznie z obszarem roboczym lub wybierz kontener magazynu, który ma być używany w eksperymencie. 
 
-    1. Przejrzyj **Ustawienia i Podgląd** w formularzu pod kątem dokładności. Formularz jest inteligentnie wypełniany na podstawie typu pliku. 
+    1. Przejrzyj **formularz Ustawienia i podgląd,** aby uzyskać dokładność. Formularz jest inteligentnie wypełniany na podstawie typu pliku. 
 
         Pole| Opis
         ----|----
         Format pliku| Definiuje układ i typ danych przechowywanych w pliku.
-        Ogranicznik| Jeden lub więcej znaków do określenia granicy między oddzielnymi, niezależnymi regionami w postaci zwykłego tekstu lub innymi strumieniami danych.
-        Kodowanie| Identyfikuje tablicę znaków, która ma być używana do odczytywania zestawu danych.
-        Nagłówki kolumn| Wskazuje, w jaki sposób nagłówki zestawu danych (jeśli istnieją) będą traktowane.
-        Pomiń wiersze | Wskazuje, ile (jeśli istnieją) wiersze są pomijane w zestawie danych.
+        Ogranicznik| Jeden lub więcej znaków do określania granicy między oddzielnymi, niezależnymi regionami w postaci zwykłego tekstu lub innych strumieni danych.
+        Kodowanie| Określa, jaki bit do tabeli schematu znaków do użycia do odczytu zestawu danych.
+        Nagłówki kolumn| Wskazuje, jak nagłówki zestawu danych, jeśli istnieją, będą traktowane.
+        Pomiń wiersze | Wskazuje, ile wierszy jest pomijanych w zestawie danych.
     
-        Wybierz opcję **Dalej**.
+        Wybierz **pozycję Dalej**.
 
-    1. Formularz **schematu** jest inteligentnie wypełniany na podstawie opcji wybranych w formularzu **Ustawienia i Podgląd** . W tym miejscu należy skonfigurować typ danych dla każdej kolumny, sprawdzić nazwy kolumn i wybrać kolumny, które **nie mają być dołączone** do eksperymentu. 
+    1. Formularz **Schemat** jest inteligentnie wypełniany na podstawie wyborów w formularzu **Ustawienia i podgląd.** W tym miejscu skonfiguruj typ danych dla każdej kolumny, przejrzyj nazwy kolumn i wybierz kolumny, których **nie uwzględnić** w eksperymencie. 
             
-        Wybierz pozycję **Dalej.**
+        Wybierz **pozycję Dalej.**
 
-    1. Formularz **Potwierdź szczegóły** to podsumowanie informacji poprzednio wypełnionych w **podstawowych informacjach** i ustawieniach oraz w formularzach **wersji zapoznawczej** . Istnieje również możliwość utworzenia profilu danych dla zestawu danych przy użyciu obliczeń z włączoną obsługą profilowania. Dowiedz się więcej na temat [profilowania danych](#profile).
+    1. Formularz **Potwierdź szczegóły** jest podsumowaniem informacji wcześniej wypełnionych w **formularzach Podstawowe informacje** i ustawienia oraz **formularze podglądu.** Istnieje również możliwość utworzenia profilu danych dla zestawu danych przy użyciu obliczeń z włączoną profilem. Dowiedz się więcej o [profilowaniu danych](#profile).
 
-        Wybierz opcję **Dalej**.
-1. Wybierz nowo utworzony zestaw danych, gdy zostanie wyświetlony. Możliwe jest również wyświetlanie podglądu zestawu danych i przykładowych statystyk. 
+        Wybierz **pozycję Dalej**.
+1. Po wyświetleniu nowego zestawu danych wybierz nowo utworzony zestaw danych. Można również wyświetlić podgląd zestawu danych i przykładowych statystyk. 
 
-1. W formularzu **Konfigurowanie przebiegu** wprowadź unikatową nazwę eksperymentu.
+1. W formularzu **Konfiguruj przebieg** wprowadź unikatową nazwę eksperymentu.
 
-1. Wybierz kolumnę docelową; jest to kolumna, dla której chcesz przeprowadzić prognozę.
+1. Wybierz kolumnę docelową; jest to kolumna, na której chcesz zrobić prognozy.
 
-1. Wybierz obliczenia dla zadania profilowania i szkolenia danych. Lista istniejących obliczeń jest dostępna na liście rozwijanej. Aby utworzyć nowe obliczenie, postępuj zgodnie z instrukcjami podanymi w kroku 7.
+1. Wybierz obliczenia dla zadania profilowania danych i szkolenia. Lista istniejących obliczeń jest dostępna w rozwijanej. Aby utworzyć nowe obliczenia, postępuj zgodnie z instrukcjami w kroku 7.
 
-1. Wybierz pozycję **Utwórz nowe obliczenie** , aby skonfigurować kontekst obliczeniowy dla tego eksperymentu.
+1. Wybierz **pozycję Utwórz nowe obliczenia,** aby skonfigurować kontekst obliczeniowy dla tego eksperymentu.
 
     Pole|Opis
     ---|---
-    Nazwa obliczeniowa| Wprowadź unikatową nazwę identyfikującą kontekst obliczeniowy.
-    Rozmiar maszyny wirtualnej| Wybierz rozmiar maszyny wirtualnej dla obliczenia.
-    Minimalna/Maksymalna liczba węzłów (w ustawieniach zaawansowanych)| Aby profilować dane, musisz określić co najmniej jeden węzeł. Wprowadź maksymalną liczbę węzłów dla obliczeń. Wartość domyślna to 6 węzłów na potrzeby obliczeń AML.
+    Nazwa obliczeń| Wprowadź unikatową nazwę identyfikującą kontekst obliczeniowy.
+    Rozmiar maszyny wirtualnej| Wybierz rozmiar maszyny wirtualnej dla obliczeń.
+    Min / Max węzłów (w ustawieniach zaawansowanych)| Aby dane profilu, należy określić 1 lub więcej węzłów. Wprowadź maksymalną liczbę węzłów dla obliczeń. Wartość domyślna to 6 węzłów dla obliczeń AML.
     
-    Wybierz pozycję **Utwórz**. Tworzenie nowego obliczenia może potrwać kilka minut.
+    Wybierz **pozycję Utwórz**. Utworzenie nowego obliczeń może potrwać kilka minut.
 
     >[!NOTE]
-    > Nazwa obliczeniowa wskazuje, czy w przypadku obliczeń, które zostały wybrane/utworzone, *włączono profilowanie*. (Szczegółowe informacje znajdują się w sekcji [Profilowanie danych](#profile) ).
+    > Nazwa obliczeń wskazuje, czy wybrane/utworzone obliczenie jest *włączone profilowanie*. (Więcej informacji można znaleźć w [sekcji profilowania danych).](#profile)
 
-    Wybierz opcję **Dalej**.
+    Wybierz **pozycję Dalej**.
 
-1. W formularzu **Typ zadania i ustawienia** wybierz typ zadania: Klasyfikacja, regresja lub prognozowanie. Zobacz [jak zdefiniować typy zadań,](how-to-define-task-type.md) Aby uzyskać więcej informacji.
+1. W formularzu **Typ zadania i ustawienia** wybierz typ zadania: klasyfikacja, regresja lub prognozowanie. Zobacz, [jak zdefiniować typy zadań, aby](how-to-define-task-type.md) uzyskać więcej informacji.
 
-    1. W przypadku klasyfikacji można również włączyć uczenie głębokie, które jest używane dla featurizations tekstu.
+    1. Dla klasyfikacji można również włączyć uczenia głębokiego, który jest używany do featurizations tekstu.
 
-    1. W przypadku prognozowania:
+    1. Do prognozowania:
         1. Wybierz kolumnę czasu: Ta kolumna zawiera dane czasu, które mają być używane.
 
-        1. Wybierz horyzont prognoz: wskaż, ile jednostek czasu (min/godzina/dni/tygodnie/miesiące/lata) będzie można przewidzieć na przyszłość. Dalszy model jest wymagany do przewidywania w przyszłości, tym mniej dokładne stanie się. [Dowiedz się więcej o prognozowaniu i prognozowaniu horyzontu](how-to-auto-train-forecast.md).
+        1. Wybierz horyzont prognozy: Wskaż, ile jednostek czasu (minuty/godziny/dni/tygodnie/miesiące/lata) będzie w stanie przewidzieć na przyszłość. Im dalej model jest wymagany do przewidywania w przyszłości, tym mniej dokładne stanie się. [Dowiedz się więcej o prognozowaniu i prognozowaniu horyzontu](how-to-auto-train-forecast.md).
 
-1. Obowiązkowe Wyświetl ustawienia konfiguracji dodawania: dodatkowe ustawienia, których można użyć w celu lepszego kontrolowania zadania szkoleniowego. W przeciwnym razie wartości domyślne są stosowane na podstawie wyboru eksperymentu i danych. 
+1. (Opcjonalnie) Wyświetl ustawienia konfiguracji dodawania: dodatkowe ustawienia, których można użyć, aby lepiej kontrolować zadanie szkoleniowe. W przeciwnym razie wartości domyślne są stosowane na podstawie wyboru eksperymentu i danych. 
 
     Dodatkowe konfiguracje|Opis
     ------|------
-    Metryka podstawowa| Główna Metryka używana do oceniania modelu. [Dowiedz się więcej o metrykach modelu](how-to-configure-auto-train.md#explore-model-metrics).
-    Automatyczne cechowania| Wybierz, aby włączyć lub wyłączyć przetwarzanie wstępne wykonywane przez automatyczne Uczenie maszynowe. Przetwarzanie wstępne obejmuje automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych. Nieobsługiwane w przypadku typu zadania prognozowanie szeregów czasowych. [Dowiedz się więcej na temat przetwarzania wstępnego](#featurization). 
-    Wyjaśnij najlepszy model | Wybierz, aby włączyć lub wyłączyć, aby pokazać wyjaśnienie zalecanego najlepszego modelu
-    Zablokowany algorytm| Wybierz algorytmy, które mają zostać wykluczone z zadania szkoleniowego.
-    Kryterium zakończenia| Po spełnieniu któregokolwiek z tych kryteriów zadanie szkolenia zostanie zatrzymane. <br> *Czas zadania szkoleniowego (godz.)* : jak długo zezwolić na uruchomienie zadania szkoleniowego. <br> *Próg wyniku metryki*: minimalny wynik metryki dla wszystkich potoków. Dzięki temu w przypadku zdefiniowania metryki docelowej, która ma zostać osiągnięta, nie poświęcasz więcej czasu na zadanie szkoleniowe niż to konieczne.
-    Walidacja| Wybierz jedną z opcji krzyżowego sprawdzania poprawności, która ma zostać użyta w zadaniu szkoleniowym. [Dowiedz się więcej na temat krzyżowego sprawdzania poprawności](how-to-configure-auto-train.md).
-    Współbieżność| *Maksymalna liczba współbieżnych iteracji*: maksymalną liczbę potoków (iteracji) do przetestowania w zadaniu szkoleniowym. Zadanie nie zostanie uruchomione więcej niż określona liczba iteracji.
+    Metryka podstawowa| Główna metryka używana do oceniania modelu. [Dowiedz się więcej o metrykach modelu](how-to-configure-auto-train.md#explore-model-metrics).
+    Automatyczne featurization| Wybierz, aby włączyć lub wyłączyć przetwarzanie wstępne wykonywane przez zautomatyzowane uczenie maszynowe. Przetwarzanie wstępne obejmuje automatyczne oczyszczanie danych, przygotowywanie i przekształcanie w celu generowania funkcji syntetycznych. Nie jest obsługiwana dla typu zadania prognozowania szeregów czasowych. [Dowiedz się więcej o przetwarzaniem wstępnym](#featurization). 
+    Wyjaśnij najlepszy model | Wybierz, aby włączyć lub wyłączyć, aby pokazać wytłumaczenia zalecanego najlepszego modelu
+    Zablokowany algorytm| Wybierz algorytmy, które chcesz wykluczyć z zadania szkoleniowego.
+    Kryterium wyjścia| Po spełnieniu któregokolwiek z tych kryteriów zadanie szkoleniowe zostaje zatrzymane. <br> *Czas pracy szkoleniowej (godziny)*: Jak długo można zezwolić na wykonywanie zadania szkoleniowego. <br> *Próg wyniku metryki:* minimalny wynik metryki dla wszystkich potoków. Gwarantuje to, że jeśli masz zdefiniowaną metrykę docelową, którą chcesz osiągnąć, nie spędzasz więcej czasu na pracy szkoleniowej niż jest to konieczne.
+    Sprawdzanie poprawności| Wybierz jedną z opcji sprawdzania poprawności krzyżowej do użycia w zadaniu szkoleniowym. [Dowiedz się więcej o weryfikacji krzyżowej](how-to-configure-auto-train.md).
+    Współbieżność| *Maksymalna liczba równoczesnych iteracji:* Maksymalna liczba potoków (iteracji) do przetestowania w zadaniu szkoleniowym. Zadanie nie będzie działać więcej niż określona liczba iteracji.
 
-1. Obowiązkowe Wyświetl ustawienia cechowania: Jeśli zdecydujesz się włączyć **Automatyczne cechowania** w formularzu **dodatkowych ustawień konfiguracji** , w tym formularzu będzie można określić, które kolumny mają być wykonywane featurizations, i wybrać wartość statystyczną, która ma być używana w przypadku brakujących wartości.
+1. (Opcjonalnie) Wyświetl ustawienia featurization: jeśli wybierzesz opcję **Automatyczna featurization** w formularzu **Dodatkowe ustawienia konfiguracji,** ten formularz jest, gdzie można określić, które kolumny do wykonania tych featurizations na i wybrać, które wartości statystycznej do użycia dla brakujących wartości imputacji.
 
 <a name="profile"></a>
 
-## <a name="data-profiling--summary-stats"></a>Dane statystyczne podsumowania &
+## <a name="data-profiling--summary-stats"></a>Statystyki podsumowania profilowania danych &
 
-Możesz uzyskać szeroką gamę statystyk podsumowujących dla zestawu danych, aby sprawdzić, czy zestaw danych jest gotowy do użycia. W przypadku kolumn nieliczbowych składają się tylko podstawowe dane statystyczne, takie jak minimalna, maksymalna i liczba błędów. W przypadku kolumn liczbowych można także sprawdzić ich statystyczny czas i oszacować quantiles. Profil danych zawiera następujące dane:
+Możesz uzyskać szeroką gamę statystyk podsumowania w zestawie danych, aby sprawdzić, czy zestaw danych jest gotowy do użycia w zestawie. W przypadku kolumn nielicznych zawierają one tylko podstawowe statystyki, takie jak min, max i liczba błędów. W przypadku kolumn liczbowych można również przeglądać ich statystyczne momenty i szacowane kwantyle. W szczególności nasz profil danych obejmuje:
 
 >[!NOTE]
-> Puste wpisy są wyświetlane dla funkcji o nieistotnych typach.
+> Puste wpisy są wyświetlane dla operacji z typami nieistotnymi.
 
-Statystyka|Opis
+Statystyki|Opis
 ------|------
-Cecha| Nazwa sumowanej kolumny.
-Profil| Wizualizacja w wierszu oparta na wywnioskowanym typie. Na przykład ciągi, wartości logiczne i daty będą mieć liczby wartości, podczas gdy miejsca dziesiętne (liczbowe) mają przybliżone histogramy. Pozwala to na szybkie zrozumienie dystrybucji danych.
-Dystrybucja typów| Liczba wartości w wierszu dla typów w kolumnie. Wartości null są własnym typem, więc Wizualizacja jest przydatna do wykrywania nieparzystych lub brakujących wartości.
-Typ|Wywnioskowany typ kolumny. Możliwe wartości to: ciągi, wartości logiczne, daty i miejsca dziesiętne.
-Min.| Minimalna wartość kolumny. Puste wpisy są wyświetlane dla funkcji, których typ nie ma własnej kolejności (np. wartości logicznych).
+Funkcja| Nazwa kolumny, która jest sumowana.
+Profil| Wizualizacja w wierszu na podstawie wywnioskowanego typu. Na przykład ciągi, wartości logiczne i daty będą miały liczbę wartości, podczas gdy liczby dziesiętne (numeryczne) mają przybliżone histogramy. Pozwala to na szybkie zrozumienie dystrybucji danych.
+Dystrybucja typu| Liczba wartości w wierszu typów w kolumnie. Wartości null są ich własnym typem, więc ta wizualizacja jest przydatna do wykrywania wartości nieparzystych lub brakujących.
+Typ|Wywnioskować typ kolumny. Możliwe wartości to: ciągi, wartości logiczne, daty i miejsca dziesiętne.
+Min.| Minimalna wartość kolumny. Puste wpisy są wyświetlane dla obiektów, których typ nie ma właściwej kolejności (np. wartości logiczne).
 Maks.| Maksymalna wartość kolumny. 
-Licznik| Łączna liczba brakujących i nieobecnych wpisów w kolumnie.
-Liczba niebrakujących| Liczba wpisów w kolumnie, których nie ma. Puste ciągi i błędy są traktowane jako wartości, więc nie będą wchodzić w skład "niebrakującej liczby".
-Quantiles| Przybliżone wartości dla każdego quantileu, aby zapewnić rozkład danych.
-Średnia| Średnia arytmetyczna kolumny lub jej średnia.
-Odchylenie standardowe| Pomiar wielkości rozproszenia lub zmienności danych tej kolumny.
-Wariancja| Mierzona, jak daleko odłożenie danych z tej kolumny pochodzi z wartości średniej. 
-Skośność| Mierzona, jak różne dane tej kolumny pochodzą z rozkładu normalnego.
-Kurtoza| Mierzona, jak silnie naśladowanie danych tej kolumny jest porównywane z rozkładem normalnym.
+Liczba| Całkowita liczba brakujących i niewykończone wpisy w kolumnie.
+Liczba niebrakujących| Liczba wpisów w kolumnie, których nie brakuje. Puste ciągi i błędy są traktowane jako wartości, więc nie przyczynią się do "nie brakuje liczby".
+Kwantyle| Przybliżone wartości w każdym quantile, aby zapewnić poczucie rozkładu danych.
+Średnia| Średnia arytmetyczna lub średnia kolumny.
+Odchylenie standardowe| Zmierzyć ilość dyspersji lub zmienności danych tej kolumny.
+Wariancja| Miara tego, jak daleko rozmieszcza się dane tej kolumny jest od jej średniej wartości. 
+Skośność| Zmierz, jak różne są dane tej kolumny od rozkładu normalnego.
+Kurtoza| Miara tego, jak mocno ogołoconych danych tej kolumny jest porównywana z rozkładem normalnym.
 
 
 <a name="featurization"></a>
 
-## <a name="advanced-featurization-options"></a>Zaawansowane opcje cechowania
+## <a name="advanced-featurization-options"></a>Zaawansowane opcje featurization
 
-Automatyczne Uczenie maszynowe oferuje automatyczne przetwarzanie i guardrails danych w celu ułatwienia identyfikowania potencjalnych problemów z danymi i zarządzania nimi. 
+Zautomatyzowane uczenie maszynowe oferuje automatyczne przetwarzanie wstępne i barierki danych, aby ułatwić identyfikację potencjalnych problemów z danymi i zarządzanie nimi. 
 
-### <a name="preprocessing"></a>Przetwarzania wstępnego
+### <a name="preprocessing"></a>Wstępnego przetwarzania
 
-|Przetwarzanie wstępne&nbsp;kroków| Opis |
+|Kroki przetwarzania wstępnego&nbsp;| Opis |
 | ------------- | ------------- |
-|Upuść dużej kardynalności lub żadne funkcje WARIANCJA|Porzuć je z zestawów szkoleniowych i walidacji, w tym funkcji ze wszystkimi wartościami, które są takie same, jak w przypadku wszystkich wierszy lub wyjątkowo dużej kardynalności (na przykład skrótów, identyfikatorów lub GUID).|
-|Naliczenie brakujące wartości|W przypadku funkcji liczbowych wartość jest wartością obliczaną ze średnimi wartościami w kolumnie.<br/><br/>W przypadku funkcji kategorii wartość jest równa liczbie wartości.|
-|Generuj dodatkowe funkcje|Funkcje daty/godziny: rok, miesiąc, dzień, dzień tygodnia, dnia rok, kwartał, tydzień roku, godzina, minuta, sekunda.<br/><br/>W przypadku funkcji tekstowych: Częstotliwość okresu oparta na unigrams, bi-gramach i Tri-Character-Grams.|
-|Przekształcanie i kodowanie |Funkcje liczbowe z kilkoma unikatowymi wartościami są przekształcane w funkcje kategorii.<br/><br/>Jednostronicowe kodowanie jest wykonywane dla niskiej kardynalności kategorii; w celu uzyskania dużej kardynalności kodowanie jedno-gorąca.|
-|Osadzanie wyrazów|Tekst featurized, który konwertuje wektory tokenów tekstowych na wektory zdania przy użyciu modelu wstępnie przeszkolonego. Wektor osadzania każdego wyrazu w dokumencie jest agregowany w celu utworzenia wektora funkcji dokumentu.|
-|Kodowanie docelowe|W przypadku funkcji kategorii odwzorowuje każdą kategorię ze średnią wartością docelową dla problemów z regresją oraz z prawdopodobieństwem klasy dla każdej klasy w przypadku problemów z klasyfikacją. Użycie wag opartych na częstotliwościach i w k-krotne sprawdzanie poprawności jest stosowane, aby zmniejszyć liczbę mapowań i szumów spowodowanych przez kategorie danych rozrzedzonych.|
-|Kodowanie obiektu docelowego tekstu|W przypadku wprowadzania tekstu, skumulowany model liniowy z zbiorem słów jest używany do generowania prawdopodobieństwa każdej klasy.|
-|Waga dowodu (WoE)|Oblicza WoE jako miarę korelacji kolumn kategorii z kolumną docelową. Jest ona obliczana jako dziennik proporcji prawdopodobieństwa klasy w klasie a. Ten krok powoduje wyjście z jednej kolumny funkcji liczbowej dla każdej klasy i eliminuje konieczność jawnego wyprowadzania brakujących wartości i odstającego traktowania.|
-|Odległość klastra|Pociąga k-oznacza model klastra dla wszystkich kolumn liczbowych.  Wyprowadzaj nowe funkcje, jedną nową funkcję liczbową na klaster zawierający odległość poszczególnych próbek do centroida każdego klastra.|
+|Upuść funkcje o wysokiej kardynalności lub bez wariancji|Upuść je z zestawów szkoleniowych i sprawdzania poprawności, w tym funkcji z brakującymi wartościami, tą samą wartością we wszystkich wierszach lub z bardzo wysoką kardynalnością (na przykład skrótami, identyfikatorami lub identyfikatorami GUID).|
+|Przypisywanie brakujących wartości|W przypadku operacji liczbowych należy przypisać średnią wartości w kolumnie.<br/><br/>W przypadku cech kategorii przypisywaj najczęściej spotykaną wartość.|
+|Generowanie dodatkowych funkcji|Dla datetime funkcje: rok, miesiąc, dzień, dzień tygodnia, dzień w roku, kwartał, tydzień roku, godzina, minuta, drugi.<br/><br/>W przypadku funkcji tekstu: Częstotliwość terminów oparta na jednogramach, bi-gramach i trójznakowych gramach.|
+|Przekształcanie i kodowanie |Operacje numeryczne z kilkoma unikatowymi wartościami są przekształcane w funkcje kategoryczne.<br/><br/>Kodowanie na gorąco jest wykonywane dla klasyki niskiej kardynalności; dla wysokiej kardynalności, kodowanie jeden skrót.|
+|Osadzanie wyrazów|Tekst featurizer, który konwertuje wektory tokenów tekstowych na wektory zdań przy użyciu wstępnie przeszkolonego modelu. Wektor osadzania każdego wyrazu w dokumencie jest agregowany razem w celu uzyskania wektora funkcji dokumentu.|
+|Kodowania docelowe|W przypadku obiektów kategorii mapuje każdą kategorię ze uśrednianą wartością docelową problemów z regresją oraz prawdopodobieństwem klasy dla każdej klasy w przypadku problemów z klasyfikacją. Wagi oparte na częstotliwościach i walidacja krzyżowa k-fold są stosowane w celu zmniejszenia nadmiernego dopasowania mapowania i hałasu spowodowanego przez rzadkie kategorie danych.|
+|Kodowanie docelowe tekstu|W przypadku wprowadzania tekstu skumulowany model liniowy z workiem słów jest używany do generowania prawdopodobieństwa każdej klasy.|
+|Waga dowodów (BioE)|Oblicza nieszczęście jako miarę korelacji kolumn kategorii z kolumną docelową. Jest obliczana jako dziennik współczynnika w klasie vs pozaklasowych prawdopodobieństw. Ten krok wyprowadza jedną kolumnę funkcji numerycznej na klasę i eliminuje konieczność jawnego przypisywania brakujących wartości i leczenia odstający.|
+|Odległość klastra|Trenuje k-oznacza klastrowania modelu na wszystkich kolumnach numerycznych.  Wyjścia k nowe funkcje, jedna nowa funkcja numeryczna na klaster, zawierająca odległość każdej próbki do centroidu każdego klastra.|
 
-### <a name="data-guardrails"></a>Guardrails danych
+### <a name="data-guardrails"></a>Barierki ochronne danych
 
-Guardrails danych są stosowane automatycznie, aby pomóc w zidentyfikowaniu potencjalnych problemów dotyczących danych (np. brakujących wartości, nierównowagi klasy) i ułatwienia działania naprawcze w celu uzyskania lepszych wyników. Istnieje wiele najlepszych rozwiązań, które są dostępne i mogą być stosowane w celu uzyskania wiarygodnych wyników. 
+Barierki danych są stosowane automatycznie, aby pomóc w zidentyfikowaniu potencjalnych problemów z danymi (np. brakujące wartości, nierównowaga klasy) i pomagają w podejmowaniu działań naprawczych w celu poprawy wyników. Istnieje wiele najlepszych rozwiązań, które są dostępne i mogą być stosowane w celu osiągnięcia wiarygodnych wyników. 
 
-W poniższej tabeli opisano aktualnie obsługiwane guardrails danych oraz powiązane Stany, które użytkownicy mogą napotkać podczas przesyłania eksperymentu.
+W poniższej tabeli opisano aktualnie obsługiwane barierki danych i skojarzone stany, na które użytkownicy mogą natknąć się podczas przesyłania eksperymentu.
 
-Guardrail|Stan|&nbsp;warunku dla wyzwalacza&nbsp;
+Poręczy|Stan|Warunek&nbsp;&nbsp;wyzwalacza
 ---|---|---
-Brak wartości&nbsp;&nbsp;ich przypisywaniu |**Przeniesione** <br> <br> **FIXED**|    Brak wartości w żadnej z&nbsp;wejściowych kolumn <br> <br> Niektóre kolumny mają brakujące wartości
-Krzyżowe sprawdzanie poprawności|**Odbywać**|Jeśli nie podano jawnego zestawu walidacji
-Wysoka&nbsp;kardynalności&nbsp;funkcja wykrywania&nbsp;|    **Przeniesione** <br> <br>**Odbywać**|    Nie wykryto żadnych funkcji wysokiej kardynalności <br><br> Wykryto wysoką liczebność kolumn wejściowych
-Wykrywanie balansu klas    |**Przeniesione** <br><br><br>**Alerty** |Klasy są zrównoważone w danych szkoleniowych; Zestaw danych jest uznawany za zrównoważony, jeśli każda klasa ma dobrą reprezentację w zestawie danych, zgodnie z liczbą i stosunkiem próbek <br> <br> Klasy w danych szkoleniowych są niezrównoważone
-Spójność danych szeregów czasowych|**Przeniesione** <br><br><br><br> **FIXED** |<br> Przeanalizowane wartości wybranych elementów {Horizon, lag, kroczących} i nie wykryto problemów braku związanych z pamięcią. <br> <br>Przeanalizowane zostały wartości wybrane w polu {Horizon, zwłoka, krocząca}, co może spowodować, że w Twoim doświadczeniu zabrakło pamięci. Okno zwłoki lub stopniowe zostało wyłączone.
+&nbsp;Brakujące&nbsp;wartości przypisywania |**Przekazywane** <br> <br> **Stałe**|    Brak braku wartości w&nbsp;żadnej z kolumn wejściowych <br> <br> W niektórych kolumnach brakuje wartości
+Sprawdzanie poprawności krzyżowej|**Gotowe**|Jeśli nie podano wyraźnego zestawu sprawdzania poprawności
+Wykrywanie&nbsp;funkcji&nbsp;wysokiej&nbsp;kardynalności|    **Przekazywane** <br> <br>**Gotowe**|    Nie wykryto żadnych funkcji wysokiej kardynalności <br><br> Wykryto kolumny wejściowe o wysokiej kardynalności
+Wykrywanie równowagi klas    |**Przekazywane** <br><br><br>**Pogotowiu** |Klasy są zrównoważone w danych szkoleniowych; Zestaw danych jest uważany za zrównoważony, jeśli każda klasa ma dobrą reprezentację w zestawie danych, mierzoną liczbą i ratio próbkami <br> <br> Zajęcia w danych szkoleniowych są nierówne
+Spójność danych szeregów czasowych|**Przekazywane** <br><br><br><br> **Stałe** |<br> Przeanalizowano wybraną wartość {horyzont, opóźnienie, okno toczenia} i nie wykryto żadnych potencjalnych problemów poza pamięcią. <br> <br>Wybrane wartości {horyzont, opóźnienie, okno toczenia} zostały przeanalizowane i potencjalnie spowoduje, że eksperyment zabraknie pamięci. Okno opóźnienia lub walcowania zostało wyłączone.
 
 ## <a name="run-experiment-and-view-results"></a>Uruchamianie eksperymentu i wyświetlanie wyników
 
-Wybierz pozycję **Zakończ** , aby uruchomić eksperyment. Proces przygotowywania eksperymentu może potrwać do 10 minut. Zadania trenowania mogą zająć kolejne 2–3 minuty dla każdego potoku.
+Wybierz **zakończ,** aby uruchomić eksperyment. Proces przygotowywania eksperymentu może potrwać do 10 minut. Zadania trenowania mogą zająć kolejne 2–3 minuty dla każdego potoku.
 
-### <a name="view-experiment-details"></a>Wyświetl szczegóły eksperymentu
+### <a name="view-experiment-details"></a>Wyświetlanie szczegółów eksperymentu
 
-Zostanie otwarty ekran Szczegóły **uruchamiania** na karcie **szczegóły** . Na tym ekranie przedstawiono podsumowanie przebiegu eksperymentu, w tym pasek stanu u góry obok numeru uruchomienia. 
+Zostanie otwarty ekran **Uruchom szczegóły** na karcie **Szczegóły.** Na tym ekranie przedstawiono podsumowanie przebiegu eksperymentu, w tym pasek stanu u góry obok numeru uruchomienia. 
 
 Karta **Modele** zawiera listę utworzonych modeli uporządkowaną według wyników metryk. Domyślnie model, który dla wybranej metryki uzyska najlepszy wynik, znajduje się na początku listy. W miarę wypróbowywania przez zadanie trenowania kolejnych modeli są one dodawane do listy. Umożliwia ona szybkie porównanie metryk modeli wyprodukowanych do tej pory.
 
-[Pulpit nawigacyjny szczegółów uruchamiania ![](media/how-to-use-automated-ml-for-ml-models/run-details.png)](media/how-to-use-automated-ml-for-ml-models/run-details-expanded.png#lightbox)
+[![Uruchom pulpit nawigacyjny szczegółów](media/how-to-use-automated-ml-for-ml-models/run-details.png)](media/how-to-use-automated-ml-for-ml-models/run-details-expanded.png#lightbox)
 
-### <a name="view-training-run-details"></a>Wyświetl szczegóły przebiegu szkoleniowego
+### <a name="view-training-run-details"></a>Wyświetlanie szczegółów przebiegu szkolenia
 
-Przejdź do szczegółów dowolnego z zakończonych modeli, aby zobaczyć szczegóły przebiegu szkoleniowego, takie jak uruchamianie metryk na karcie **Szczegóły modelu** lub na wykresach wydajności na karcie **wizualizacje** . [Dowiedz się więcej na temat wykresów](how-to-understand-automated-ml.md).
+Przechodzenie do szczegółów dowolnego z ukończonych modeli, aby wyświetlić szczegóły przebiegu szkolenia, takie jak metryki uruchamiania na karcie **Szczegóły modelu** lub wykresy wydajności na karcie **Wizualizacje.** [Dowiedz się więcej o wykresach](how-to-understand-automated-ml.md).
 
-[Szczegóły iteracji ![](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
+[![Szczegóły iteracji](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
 ## <a name="deploy-your-model"></a>Wdrażanie modelu
 
-Gdy optymalny model jest dostępny, można go wdrożyć jako usługę sieci Web, aby przewidzieć nowe dane.
+Gdy masz najlepszy model pod ręką, nadszedł czas, aby wdrożyć go jako usługę sieci web, aby przewidzieć na nowe dane.
 
-Automatyczna ML pomaga wdrożyć model bez pisania kodu:
+Automatyczne ml pomaga we wdrażaniu modelu bez pisania kodu:
 
-1. Istnieje kilka opcji wdrażania. 
+1. Masz kilka opcji wdrożenia. 
 
-    + Opcja 1: Aby wdrożyć najlepszy model (zgodnie ze zdefiniowanymi kryteriami metryki), wybierz przycisk **Wdróż najlepszy model** na karcie **szczegóły** .
+    + Opcja 1: Aby wdrożyć najlepszy model (zgodnie z zdefiniowanymi kryteriami metryki), wybierz przycisk **Wdrażanie najlepszego modelu** na karcie **Szczegóły.**
 
-    + Opcja 2: Aby wdrożyć określoną iterację modelu z tego eksperymentu, przejdź do szczegółów modelu, aby otworzyć kartę **Szczegóły modelu** i wybierz pozycję **Wdróż model**.
+    + Opcja 2: Aby wdrożyć określoną iterację modelu z tego eksperymentu, przejdź do szczegółów modelu, aby otworzyć kartę **Szczegóły modelu** i wybierz **pozycję Wdrażanie modelu**.
 
-1. Wypełnij okienko **Wdróż model** .
+1. Wypełnij okienko **modelu wdrażania.**
 
     Pole| Wartość
     ----|----
-    Name (Nazwa)| Wprowadź unikatową nazwę wdrożenia.
-    Opis| Wprowadź opis, aby lepiej zidentyfikować to wdrożenie.
-    Typ obliczenia| Wybierz typ punktu końcowego, który chcesz wdrożyć: *Azure Kubernetes Service (AKS)* lub *Azure Container Instance (ACI)* .
-    Nazwa obliczeniowa| *Dotyczy tylko AKS:* Wybierz nazwę klastra AKS, w którym chcesz wdrożyć.
-    Włącz uwierzytelnianie | Wybierz, aby zezwalać na uwierzytelnianie oparte na tokenach lub na podstawie klucza.
-    Używanie niestandardowych zasobów wdrażania| Włącz tę funkcję, jeśli chcesz przekazać własny skrypt oceniania i plik środowiska. [Dowiedz się więcej o skryptach oceniania](how-to-deploy-and-where.md#script).
+    Nazwa| Wprowadź unikatową nazwę wdrożenia.
+    Opis| Wprowadź opis, aby lepiej określić, do czego służy to wdrożenie.
+    Typ obliczeń| Wybierz typ punktu końcowego, który chcesz wdrożyć: *Usługa Azure Kubernetes Service (AKS)* lub *Wystąpienie kontenera platformy Azure (ACI).*
+    Nazwa obliczeń| *Dotyczy tylko AKS:* Wybierz nazwę klastra AKS, który chcesz wdrożyć.
+    Włącz uwierzytelnianie | Wybierz, aby zezwolić na uwierzytelnianie oparte na tokenach lub kluczach.
+    Korzystanie z niestandardowych zasobów wdrażania| Włącz tę funkcję, jeśli chcesz przekazać własny skrypt oceniania i plik środowiska. [Dowiedz się więcej o ocenianiu skryptów](how-to-deploy-and-where.md#script).
 
     >[!Important]
-    > Nazwy plików muszą mieć długość 32 znaków i muszą zaczynać się i kończyć znakiem alfanumerycznym. Może zawierać łączniki, podkreślenia, kropki i znaki alfanumeryczne między. Spacje są niedozwolone.
+    > Nazwy plików muszą mieć mniej niż 32 znaki i muszą zaczynać się i kończyć alfanumeryką. Może zawierać kreski, podkreślenia, kropki i alfanumeryczne między nimi. Spacje nie są dozwolone.
 
-    Menu *Zaawansowane* oferuje domyślne funkcje wdrażania, takie jak [gromadzenie danych](how-to-enable-app-insights.md) i ustawienia wykorzystania zasobów. Jeśli chcesz przesłonić te ustawienia domyślne, zrób to w menu.
+    Menu *Zaawansowane* oferuje domyślne funkcje wdrażania, takie jak zbieranie [danych](how-to-enable-app-insights.md) i ustawienia wykorzystania zasobów. Jeśli chcesz zastąpić te wartości domyślne, zrób to w tym menu.
 
 1. Wybierz pozycję **Wdróż**. Wdrożenie może potrwać około 20 minut.
 
-Teraz masz działającą usługę sieci Web do generowania prognoz! Możesz przetestować przewidywania, wykonując zapytania dotyczące usługi, korzystając z [Power BI wbudowanej Azure Machine Learning obsługi](how-to-consume-web-service.md#consume-the-service-from-power-bi).
+Teraz masz operacyjną usługę internetową do generowania prognoz! Prognoz można przetestować, odpytując usługę z [wbudowanej usługi Azure Machine Learning.](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Dowiedz się, jak korzystać z usługi sieci Web](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).
-* Zapoznaj się z [automatycznymi wynikami uczenia maszynowego](how-to-understand-automated-ml.md).
-* [Dowiedz się więcej o zautomatyzowanym uczeniu maszynowym](concept-automated-ml.md) i Azure Machine Learning.
+* [Poznaj wyniki automatycznego uczenia maszynowego](how-to-understand-automated-ml.md).
+* [Dowiedz się więcej o zautomatyzowanym uczeniu maszynowym](concept-automated-ml.md) i usłudze Azure Machine Learning.

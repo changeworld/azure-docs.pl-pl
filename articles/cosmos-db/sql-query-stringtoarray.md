@@ -1,6 +1,6 @@
 ---
-title: StringToArray w języku zapytań Azure Cosmos DB
-description: Dowiedz się więcej o funkcji StringToArray systemu SQL w Azure Cosmos DB.
+title: StringToArray w języku kwerendy usługi Azure Cosmos DB
+description: Dowiedz się więcej o funkcji systemu SQL StringToArray w usłudze Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302920"
 ---
-# <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
- Zwraca wyrażenie tłumaczone na tablicę. Jeśli wyrażenia nie można przetłumaczyć, funkcja zwraca wartość undefined.  
+# <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (usługa Azure Cosmos DB)
+ Zwraca wyrażenie przetłumaczone na tablicę. Jeśli nie można przetłumaczyć wyrażenia, zwraca niezdefiniowane.  
   
 ## <a name="syntax"></a>Składnia
   
@@ -28,18 +28,18 @@ StringToArray(<str_expr>)
 *str_expr*  
    Jest wyrażeniem ciągu, które ma być analizowane jako wyrażenie tablicy JSON. 
   
-## <a name="return-types"></a>Typy zwracane
+## <a name="return-types"></a>Typy zwrotów
   
   Zwraca wyrażenie tablicy lub niezdefiniowane. 
   
 ## <a name="remarks"></a>Uwagi
-  Zagnieżdżone wartości ciągu muszą być zapisywane z podwójnymi cudzysłowami, aby były prawidłowymi wartościami JSON. Aby uzyskać szczegółowe informacje o formacie JSON, zobacz [JSON.org](https://json.org/)
+  Wartości zagnieżdżonych ciągów muszą być zapisywane z cudzysłowami podwójnymi, aby były prawidłowe JSON. Aby uzyskać szczegółowe informacje na temat formatu JSON, zobacz [json.org](https://json.org/)
   
 ## <a name="examples"></a>Przykłady
   
-  Poniższy przykład pokazuje, jak `StringToArray` działa w różnych typach. 
+  W poniższym `StringToArray` przykładzie pokazano, jak zachowuje się w różnych typach. 
   
- Poniżej przedstawiono przykłady z prawidłowymi danymi wejściowymi.
+ Poniżej przedstawiono przykłady z prawidłowym wejściem.
 
 ```sql
 SELECT 
@@ -56,10 +56,10 @@ Tutaj znajduje się zestaw wyników.
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
 ```
 
-Poniżej przedstawiono przykład nieprawidłowych danych wejściowych. 
+Poniżej przedstawiono przykład nieprawidłowego wprowadzania danych. 
    
- Pojedyncze cudzysłowy w tablicy nie są prawidłowymi formatami JSON.
-Mimo że są one prawidłowe w ramach zapytania, nie będą analizowane do prawidłowych tablic. Ciągi w ciągu tablicy muszą mieć wartość ucieczki "[\\"\\"]" lub otaczające cudzysłowy muszą być pojedynczymi "[" "]".
+ Pojedyncze cudzysłowy w tablicy nie są prawidłowe JSON.
+Mimo że są one prawidłowe w ramach kwerendy, nie będą analizować prawidłowe tablice. Ciągi w ciągu tablicy muszą być\\\\zmienione "[ " "]" lub otaczający cytat musi być pojedynczy '[""]'.
 
 ```sql
 SELECT
@@ -74,7 +74,7 @@ Tutaj znajduje się zestaw wyników.
 
 Poniżej przedstawiono przykłady nieprawidłowych danych wejściowych.
    
- Przesłane wyrażenie zostanie przeanalizowane jako tablica JSON; następujące elementy nie są oceniane do typu Array i w ten sposób zwracają wartość undefined.
+ Przekazane wyrażenie będzie analizowane jako tablica JSON; następujące nie ocenić, aby wpisać tablicę i w ten sposób zwracać niezdefiniowane.
    
 ```sql
 SELECT
@@ -93,10 +93,10 @@ Tutaj znajduje się zestaw wyników.
 
 ## <a name="remarks"></a>Uwagi
 
-Ta funkcja systemowa nie będzie używać indeksu.
+Ta funkcja systemu nie będzie korzystać z indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Azure Cosmos DB funkcje ciągów](sql-query-string-functions.md)
-- [Azure Cosmos DB funkcje systemowe](sql-query-system-functions.md)
-- [Wprowadzenie do Azure Cosmos DB](introduction.md)
+- [Funkcje ciągów usługi Azure Cosmos DB](sql-query-string-functions.md)
+- [Funkcje systemowe Usługi Azure Cosmos DB](sql-query-system-functions.md)
+- [Wprowadzenie do usługi Azure Cosmos DB](introduction.md)

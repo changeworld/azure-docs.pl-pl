@@ -3,18 +3,18 @@ title: Obsługa oceny funkcji Hyper-V w programie Azure Migrate
 description: Dowiedz się więcej o obsłudze oceny funkcji Hyper-V za pomocą oceny serwera migracji usługi Azure
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 61d8e635a32024ba5afabb34fefa5bf169e2911f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8a698b110f19dff593a93a41e9d6f20eb80cdb0
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336912"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389005"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Macierz wsparcia dla oceny funkcji Hyper-V
 
-W tym artykule podsumowano wymagania wstępne i wymagania dotyczące pomocy technicznej dotyczące oceny maszyn wirtualnych funkcji Hyper-V w ramach przygotowań do migracji na platformę Azure. Jeśli chcesz przeprowadzić migrację maszyn wirtualnych z programem Hyper-V na platformę Azure, przejrzyj [macierz pomocy technicznej migracji](migrate-support-matrix-hyper-v-migration.md).
+W tym artykule podsumowano wymagania wstępne i wymagania dotyczące pomocy technicznej podczas oceny maszyn wirtualnych funkcji Hyper-V do migracji na platformę Azure przy użyciu narzędzia [Azure Migrate:Server Assessment.](migrate-services-overview.md#azure-migrate-server-assessment-tool) Jeśli chcesz przeprowadzić migrację maszyn wirtualnych z programem Hyper-V na platformę Azure, przejrzyj [macierz pomocy technicznej migracji](migrate-support-matrix-hyper-v-migration.md).
 
-Maszyny wirtualne funkcji Hyper-V można ocenić za pomocą narzędzia [Azure Migrate:Server Assessment.](migrate-services-overview.md#azure-migrate-server-assessment-tool) Utwórz projekt migracji platformy Azure, a następnie dodaj narzędzie do projektu. Po dodaniu narzędzia można wdrożyć [urządzenie migracji platformy Azure](migrate-appliance.md). Urządzenie stale odnajduje maszyny lokalne i wysyła metadane maszyny i dane o wydajności na platformę Azure. Po odnajdowaniu maszyn można zebrać odnalezione maszyny do grup i uruchomić ocenę dla grupy.
+Aby skonfigurować ocenę maszyny wirtualnej funkcji Hyper-V, należy utworzyć projekt migracji platformy Azure i dodać narzędzie Oceny serwera do projektu. Po dodaniu narzędzia można wdrożyć [urządzenie migracji platformy Azure](migrate-appliance.md). Urządzenie stale odnajduje maszyny lokalne i wysyła metadane maszyny i dane o wydajności na platformę Azure. Po zakończeniu odnajdywania można zebrać odnalezione maszyny do grup i uruchomić ocenę dla grupy.
 
 
 ## <a name="limitations"></a>Ograniczenia
@@ -44,13 +44,13 @@ Maszyny wirtualne funkcji Hyper-V można ocenić za pomocą narzędzia [Azure Mi
 
 | **Pomoc techniczna**                  | **Szczegóły**               
 | :----------------------------- | :------------------- |
-| **System operacyjny** | Wszystkie systemy operacyjne [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) i [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) obsługiwane przez platformę Azure. |
+| **System operacyjny** | Wszystkie systemy operacyjne [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) i [Linux.](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) |
 | **Integration Services**       | [Usługi integracji funkcji Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) muszą być uruchomione na ocenianych maszynach wirtualnych w celu przechwytywania informacji o systemie operacyjnym. |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Wymagania urządzenia usługi Azure Migrate
 
-Usługa Azure Migrate używa [urządzenia migracji platformy Azure](migrate-appliance.md) do odnajdowania i oceny. Urządzenie można wdrożyć przy użyciu skompresowanego dysku VHd funkcji Hyper-V pobranego z portalu lub skryptu programu PowerShell.
+Usługa Azure Migrate używa [urządzenia migracji platformy Azure](migrate-appliance.md) do odnajdowania i oceny. Urządzenie można wdrożyć przy użyciu skompresowanego dysku VHD funkcji Hyper-V pobranego z portalu lub przy użyciu [skryptu programu PowerShell.](deploy-appliance-script.md)
 
 - Dowiedz się więcej o [wymaganiach dotyczących urządzeń](migrate-appliance.md#appliance---hyper-v) dla funkcji Hyper-V.
 - Dowiedz się więcej o [adresach URL,](migrate-appliance.md#url-access) do które urządzenie musi uzyskać dostęp.
@@ -64,29 +64,13 @@ W poniższej tabeli podsumowano wymagania dotyczące portów do oceny.
 **Urządzenia** | Połączenia przychodzące na porcie TCP 3389 umożliwiające zdalne połączenia pulpitu z urządzeniem.<br/><br/> Połączenia przychodzące na porcie 44368 w celu zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Połączenia wychodzące na portach 443 (HTTPS), aby wysłać metadane odnajdywania i wydajności do usługi Azure Migrate.
 **Host/klaster funkcji Hyper-V** | Połączenia przychodzące na portach WinRM 5985 (HTTP) i 5986 (HTTPS), aby pobierać metadane i dane dotyczące wydajności dla maszyn wirtualnych funkcji Hyper-V przy użyciu sesji wspólnego modelu informacyjnego (CIM).
 
-## <a name="agentless-dependency-analysis-requirements"></a>Wymagania dotyczące analizy zależności bez agenta
-
-[Analiza zależności](concepts-dependency-visualization.md) ułatwia identyfikowanie zależności między komputerami lokalnymi, które chcesz ocenić i przeprowadzić migrację na platformę Azure. W tabeli podsumowano wymagania dotyczące konfigurowania analizy zależności bez agenta. 
-
-**Wymaganie** | **Szczegóły** 
---- | --- 
-**Przed wdrożeniem** | Powinieneś mieć projekt migracji platformy Azure w miejscu, z narzędzia Azure Migrate: Server Assessment dodane do projektu.<br/><br/>  Wizualizacja zależności jest wdrażana po skonfigurowaniu urządzenia migracji platformy Azure w celu odnajdowania lokalnych komputerów VMWare.<br/><br/> [Dowiedz się, jak](create-manage-projects.md) utworzyć projekt po raz pierwszy.<br/> [Dowiedz się, jak](how-to-assess.md) dodać narzędzie do oceny do istniejącego projektu.<br/> [Dowiedz się, jak](how-to-set-up-appliance-vmware.md) skonfigurować urządzenie migracji platformy Azure do oceny maszyn wirtualnych VMware.
-**Obsługa maszyn wirtualnych** | Obecnie obsługiwane tylko dla maszyn wirtualnych VMware.
-**Maszyny wirtualne z systemem Windows** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bitowy).
-**Konto systemu Windows** |  Do analizy zależności urządzenie migracji platformy Azure potrzebuje konta administratora lokalnego lub domeny, aby uzyskać dostęp do maszyn wirtualnych systemu Windows.
-**Maszyny wirtualne z systemem Linux** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14.04, 16.04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
-**Konto Linuksa** | Do analizy zależności na komputerach z systemem Linux urządzenie usługi Azure Migrate musi mieć konto użytkownika z uprawnieniami root.<br/><br/> Alternatywnie konto użytkownika potrzebuje tych uprawnień do plików /bin/netstat i /bin/ls: CAP_DAC_READ_SEARCH i CAP_SYS_PTRACE.
-**Wymaganych agentów** | Nie jest wymagany agent na komputerach, które chcesz analizować.
-**Narzędzia VMware** | Narzędzia VMware Tools (później niż 10.2) muszą być zainstalowane i uruchomione na każdej maszynie wirtualnej, którą chcesz przeanalizować.
-**Program vCenter Server** | Wizualizacja zależności wymaga konta serwera vCenter Server z dostępem tylko do odczytu i uprawnieniami włączonymi dla maszyn wirtualnych > operacji gościa. **Hosty ESXi:** na hostach ESXi z uruchomionymi maszynami wirtualnymi, które chcesz przeanalizować, urządzenie migracji platformy Azure musi mieć możliwość nawiązania połączenia z portem TCP 443.
-
 ## <a name="agent-based-dependency-analysis-requirements"></a>Wymagania analizy zależności oparte na agentach
 
-[Analiza zależności](concepts-dependency-visualization.md) ułatwia identyfikowanie zależności między komputerami lokalnymi, które chcesz ocenić i przeprowadzić migrację na platformę Azure. W tabeli podsumowano wymagania dotyczące konfigurowania analizy zależności opartej na agentach. 
+[Analiza zależności](concepts-dependency-visualization.md) ułatwia identyfikowanie zależności między komputerami lokalnymi, które chcesz ocenić i przeprowadzić migrację na platformę Azure. W tabeli podsumowano wymagania dotyczące konfigurowania analizy zależności opartej na agentach. Funkcja Hyper-V obsługuje obecnie tylko wizualizację zależności opartą na agentach. 
 
 **Wymaganie** | **Szczegóły** 
 --- | --- 
-**Przed wdrożeniem** | Powinieneś mieć projekt migracji platformy Azure w miejscu, z narzędzia Azure Migrate: Server Assessment dodane do projektu.<br/><br/>  Wizualizacja zależności jest wdrażana po skonfigurowaniu urządzenia migracji platformy Azure w celu odnajdowania komputerów lokalnych<br/><br/> [Dowiedz się, jak](create-manage-projects.md) utworzyć projekt po raz pierwszy.<br/> [Dowiedz się, jak](how-to-assess.md) dodać narzędzie do oceny do istniejącego projektu.<br/> Dowiedz się, jak skonfigurować urządzenie migracji platformy Azure do oceny serwerów [hyper-V,](how-to-set-up-appliance-hyper-v.md) [VMware](how-to-set-up-appliance-vmware.md)lub fizycznych.
+**Przed wdrożeniem** | Powinieneś mieć projekt migracji platformy Azure w miejscu, z narzędzia oceny serwera dodane do projektu.<br/><br/>  Wizualizacja zależności jest wdrażana po skonfigurowaniu urządzenia migracji platformy Azure w celu odnajdowania komputerów lokalnych<br/><br/> [Dowiedz się, jak](create-manage-projects.md) utworzyć projekt po raz pierwszy.<br/> [Dowiedz się, jak](how-to-assess.md) dodać narzędzie do oceny do istniejącego projektu.<br/> Dowiedz się, jak skonfigurować urządzenie migracji platformy Azure do oceny [maszyn wirtualnych funkcji Hyper-V.](how-to-set-up-appliance-hyper-v.md)
 **Azure Government** | Wizualizacja zależności nie jest dostępna w usłudze Azure Dla Instytucji.
 **Analiza dzienników** | Usługa Azure Migrate używa rozwiązania [mapy usług](../operations-management-suite/operations-management-suite-service-map.md) w [dziennikach usługi Azure Monitor](../log-analytics/log-analytics-overview.md) do wizualizacji zależności.<br/><br/> Nowy lub istniejący obszar roboczy usługi Log Analytics jest skojarzony z projektem migracji platformy Azure. Obszaru roboczego dla projektu migracji platformy Azure nie można zmodyfikować po jego dodaniu. <br/><br/> Obszar roboczy musi być w tej samej subskrypcji co projekt migracji platformy Azure.<br/><br/> Obszar roboczy musi znajdować się w regionach Wschodnich Stanów Zjednoczonych, Azji Południowo-Wschodniej lub Europy Zachodniej. Obszarów roboczych w innych regionach nie można skojarzyć z projektem.<br/><br/> Obszar roboczy musi znajdować się w regionie, w którym [jest obsługiwana mapa usługi](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites).<br/><br/> W usłudze Log Analytics obszar roboczy skojarzony z programem Azure Migrate jest oznaczony kluczem projektu migracji i nazwą projektu.
 **Wymaganych agentów** | Na każdym komputerze, który chcesz przeanalizować, zainstaluj następujące środki:<br/><br/> [Agent monitorowania firmy Microsoft (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).<br/> [Agent zależności](../azure-monitor/platform/agents-overview.md#dependency-agent).<br/><br/> Jeśli komputery lokalne nie są połączone z Internetem, należy pobrać i zainstalować na nich bramę usługi Log Analytics.<br/><br/> Dowiedz się więcej o instalowaniu [agenta zależności](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) i [programu MMA](how-to-create-group-machine-dependencies.md#install-the-mma).

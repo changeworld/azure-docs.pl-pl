@@ -1,6 +1,6 @@
 ---
-title: Dostosowywanie ustawień wstępnych Media Encoder Standard | Microsoft Docs
-description: W tym temacie pokazano, jak wykonać zaawansowane kodowanie przez dostosowanie Media Encoder Standard ustawień wstępnych zadań. W tym temacie pokazano, jak za pomocą zestawu SDK programu Media Services .NET utworzyć zadanie kodowania i zadanie. Przedstawiono w nim również sposób dostarczania niestandardowych ustawień wstępnych do zadania kodowania.
+title: Dostosowywanie ustawień predefiniowanych cewaru multimediów | Dokumenty firmy Microsoft
+description: W tym temacie pokazano, jak wykonać zaawansowane kodowanie, dostosowując ustawienia predefiniowane standardowych zadań programu Media Encoder. W temacie pokazano, jak używać sdk .NET usługi Media Services do tworzenia zadania kodowania i zadania. Pokazuje również, jak podać niestandardowe ustawienia predefiniowane do zadania kodowania.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251247"
 ---
-# <a name="customizing-media-encoder-standard-presets"></a>Dostosowywanie ustawień wstępnych Media Encoder Standard  
+# <a name="customizing-media-encoder-standard-presets"></a>Dostosowywanie ustawień predefiniowanych kodera multimediów  
 
 ## <a name="overview"></a>Omówienie
 
-W tym artykule pokazano, jak wykonać zaawansowane kodowanie za pomocą Media Encoder Standard (MES) przy użyciu niestandardowego ustawienia wstępnego. W tym artykule jest używane środowisko .NET do tworzenia zadania kodowania i zadania, które wykonuje to zadanie.  
+W tym artykule pokazano, jak wykonać zaawansowane kodowanie za pomocą standardu MES (Media Encoder Standard) przy użyciu ustawień niestandardowych. W artykule użyto platformy .NET do utworzenia zadania kodowania i zadania, które wykonuje to zadanie.  
 
-W tym artykule pokazano, jak dostosować ustawienie wstępne, pobierając [wielokrotna H264 wiele szybkości transmisji bitów 720](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) i zmniejszając liczbę warstw. W artykule [dostosowanie Media Encoder Standard predefiniowane](media-services-advanced-encoding-with-mes.md) przedstawiono niestandardowe ustawienia wstępne, których można użyć do wykonywania zaawansowanych zadań kodowania.
+W tym artykule pokazano, jak dostosować ustawienia wstępne, biorąc [h264 multiple bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) preset i zmniejszając liczbę warstw. W [artykule Dostosowywanie ustawień predefiniowanych kodera multimediów](media-services-advanced-encoding-with-mes.md) przedstawiono niestandardowe ustawienia predefiniowane, które mogą być używane do wykonywania zaawansowanych zadań kodowania.
 
 > [!NOTE]
-> Niestandardowych ustawień predefiniowanych opisanych w tym artykule nie można używać w transformacjech [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) ani poleceń interfejsu wiersza polecenia. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md) .
+> Nie można używać niestandardowych ustawień predefiniowanych opisanych w tym artykule w przekształceniach [usługi Media Services w wersji 3](https://docs.microsoft.com/azure/media-services/latest/) ani w poleceniach interfejsu wiersza polecenia. Aby uzyskać więcej informacji, zapoznaj się [ze wskazówkami dotyczącymi migracji z wersji 2 do 3.](../latest/migrate-from-v2-to-v3.md)
 
-## <a id="customizing_presets"></a>Dostosowywanie ustawień wstępnych MES
+## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a>Dostosowywanie ustawień predefiniowanych mes
 
-### <a name="original-preset"></a>Oryginalne ustawienie wstępne
+### <a name="original-preset"></a>Oryginalne ustawienia wstępne
 
-Zapisz kod JSON zdefiniowany w artykule [wielokrotna H264 o wielu szybkościach transmisji bitów](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) w niektórych plikach z rozszerzeniem. JSON. Na przykład **CustomPreset_JSON. JSON**.
+Zapisz JSON zdefiniowane w [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) artykuł w niektórych plikach z rozszerzeniem .json. Na przykład **CustomPreset_JSON.json**.
 
 ### <a name="customized-preset"></a>Dostosowane ustawienia wstępne
 
-Otwórz plik **CustomPreset_JSON. JSON** i Usuń pierwsze trzy warstwy z **H264Layers** , aby plik wyglądał następująco.
+Otwórz plik **CustomPreset_JSON.json** i usuń pierwsze trzy warstwy z **H264Layers,** aby plik wyglądał tak.
 
 ```json 
     {  
@@ -113,21 +113,21 @@ Otwórz plik **CustomPreset_JSON. JSON** i Usuń pierwsze trzy warstwy z **H264L
     }  
 ```
 
-## <a id="encoding_with_dotnet"></a>Kodowanie przy użyciu zestawu SDK programu Media Services .NET
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Kodowanie za pomocą sdk usługi Media Services .NET
 
-Poniższy przykład kodu używa Media Services .NET SDK do wykonywania następujących zadań:
+Poniższy przykład kodu używa media services .NET SDK do wykonywania następujących zadań:
 
 - Utwórz zadanie kodowania.
-- Pobierz odwołanie do kodera Media Encoder Standard.
-- Załaduj niestandardowe ustawienie wstępne JSON, które zostało utworzone w poprzedniej sekcji. 
+- Uzyskaj odwołanie do kodera Media Encoder Standard.
+- Załaduj niestandardowe ustawienia predefiniowane JSON utworzone w poprzedniej sekcji. 
   
         // Load the JSON from the local file.
         string configuration = File.ReadAllText(fileName);  
 
 - Dodaj zadanie kodowania do zadania. 
-- Określ zasób wejściowy do zakodowania.
-- Utwórz zasób wyjściowy, który zawiera zakodowany element zawartości.
-- Dodaj procedurę obsługi zdarzeń, aby sprawdzić postęp zadania.
+- Określ zasób wejściowy, który ma być zakodowany.
+- Utwórz zasób wyjściowy zawierający zakodowany zasób.
+- Dodaj program obsługi zdarzeń, aby sprawdzić postęp zadania.
 - Przesyłanie zadania.
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
@@ -266,11 +266,11 @@ namespace CustomizeMESPresests
 
 ## <a name="see-also"></a>Zobacz też
 
-- [Jak kodować za pomocą przekształcenia niestandardowego przy użyciu interfejsu wiersza polecenia](../latest/custom-preset-cli-howto.md)
+- [Jak zakodować za pomocą niestandardowego przekształcenia przy użyciu interfejsu wiersza polecenia](../latest/custom-preset-cli-howto.md)
 - [Kodowanie przy użyciu usługi Media Services w wersji 3](../latest/encoding-concept.md)
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekaż opinię
+## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

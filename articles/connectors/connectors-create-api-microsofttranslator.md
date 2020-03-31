@@ -1,6 +1,6 @@
 ---
 title: Nawiązywanie połączenia z usługą Microsoft Translator
-description: Tłumaczenie tekstu i wykonywanie innych zadań języka za pomocą interfejsów API REST usługi Microsoft Translator i Azure Logic Apps
+description: Tłumaczenie tekstu i wykonywanie innych zadań językowych za pomocą interfejsów API rest usługi Microsoft Translator i aplikacji Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,30 +8,30 @@ ms.topic: article
 ms.date: 11/07/2016
 tags: connectors
 ms.openlocfilehash: ec809a897ce2579125c8797dc8c1d8c7d30a8f9c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789551"
 ---
 # <a name="get-started-with-the-microsoft-translator-connector"></a>Wprowadzenie do łącznika usługi Microsoft Translator
 
-Połącz się z usługą Microsoft translator, aby przetłumaczyć tekst, wykryć język i nie tylko. Za pomocą usługi Microsoft translator można: 
+Połącz się z programem Microsoft Translator, aby przetłumaczyć tekst, wykryć język i nie tylko. Za pomocą usługi Microsoft Translator można: 
 
-* Utwórz przepływ biznesowy na podstawie danych uzyskanych z usługi Microsoft Translator. 
-* Użyj akcji do tłumaczenia tekstu, wykrywania języka i innych. Te akcje odbierają odpowiedź, a następnie udostępniają dane wyjściowe dla innych akcji. Na przykład po utworzeniu nowego pliku w usłudze Dropbox można przetłumaczyć tekst w pliku na inny język przy użyciu usługi Microsoft Translator.
+* Twórz przepływ biznesowy na podstawie danych, które otrzymujesz z usługi Microsoft Translator. 
+* Akcje służy do tłumaczenia tekstu, wykrywania języka i nie tylko. Te akcje uzyskać odpowiedź, a następnie udostępnić dane wyjściowe dla innych akcji. Na przykład, gdy nowy plik jest tworzony w Dropbox, można przetłumaczyć tekst w pliku na inny język za pomocą programu Microsoft Translator.
 
-Teraz możesz zacząć od utworzenia aplikacji logiki, zobacz [Tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Możesz rozpocząć, tworząc aplikację logiki teraz, zobacz [Tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-a-connection-to-microsoft-translator"></a>Utwórz połączenie z usługą Microsoft Translator
+## <a name="create-a-connection-to-microsoft-translator"></a>Tworzenie połączenia z usługą Microsoft Translator
 
 > [!INCLUDE [Steps to create a connection to Microsoft Translator](../../includes/connectors-create-api-microsofttranslator.md)]
 > 
 > 
 
-## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
+## <a name="connector-specific-details"></a>Szczegóły specyficzne dla łącznika
 
-Wyświetlanie wszystkich wyzwalaczy i akcji zdefiniowanych w strukturze Swagger, a także wszystkich ograniczeń w [szczegółach łącznika](/connectors/microsofttranslator/).
+Wyświetl wszystkie wyzwalacze i akcje zdefiniowane w swagger, a także zobacz wszelkie limity w [szczegółach łącznika](/connectors/microsofttranslator/).
 
-## <a name="more-connectors"></a>Więcej łączników
+## <a name="more-connectors"></a>Więcej złączy
 Wróć do [listy interfejsów API](apis-list.md).

@@ -1,102 +1,102 @@
 ---
-title: Konfigurowanie parametrów serwera — interfejs wiersza polecenia platformy Azure — Azure Database for MariaDB
-description: W tym artykule opisano sposób konfigurowania parametrów usługi w Azure Database for MariaDB przy użyciu narzędzia wiersza polecenia platformy Azure.
+title: Konfigurowanie parametrów serwera — narzędzie interfejsu wiersza polecenia platformy Azure — usługa Azure Database dla bazy mariadb
+description: W tym artykule opisano sposób konfigurowania parametrów usługi w usłudze Azure Database dla mariadb przy użyciu narzędzia wiersza polecenia interfejsu wiersza interfejsu wiersza interfejsu wiersza polecenia platformy Azure.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 707f4eca440c0e8461420ff0bbc5e67f8e5ad69d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 3/18/2020
+ms.openlocfilehash: 56975c52b22b90840fb1534187e99f6efa19469e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888516"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527677"
 ---
-# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Dostosowywanie parametrów konfiguracji serwera za pomocą interfejsu wiersza polecenia platformy Azure
-Można wyświetlić, wyświetlić i zaktualizować parametry konfiguracji dla serwera Azure Database for MariaDB przy użyciu interfejsu wiersza polecenia platformy Azure, narzędzia wiersza poleceń platformy Azure. Podzestaw konfiguracji aparatu jest uwidoczniony na poziomie serwera i można go modyfikować.
+# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Dostosowywanie parametrów konfiguracji serwera przy użyciu interfejsu wiersza polecenia platformy Azure
+Można wyświetlić, wyświetlić i zaktualizować parametry konfiguracji dla serwera usługi Azure Database dla MariaDB przy użyciu narzędzia interfejsu wiersza polecenia platformy Azure, narzędzia wiersza polecenia platformy Azure. Podzbiór konfiguracji aparatu jest narażony na poziomie serwera i może być modyfikowany.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby krokowo poprowadzić ten przewodnik, musisz:
-- [Serwer Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md)
-- Narzędzie wiersza polecenia [platformy Azure](/cli/azure/install-azure-cli) lub użyj Azure Cloud Shell w przeglądarce.
+Aby przejść przez ten przewodnik, potrzebujesz:
+- [Usługa Azure Database dla serwera MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md)
+- Narzędzie wiersza polecenia interfejsu wiersza interfejsu [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) lub użyj usługi Azure Cloud Shell w przeglądarce.
 
-## <a name="list-server-configuration-parameters-for-azure-database-for-mariadb-server"></a>Wyświetlanie listy parametrów konfiguracji serwera dla Azure Database for MariaDB Server
-Aby wyświetlić listę wszystkich modyfikowalnych parametrów na serwerze i ich wartości, uruchom polecenie [AZ MariaDB Server Configuration list](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) .
+## <a name="list-server-configuration-parameters-for-azure-database-for-mariadb-server"></a>Lista parametrów konfiguracji serwera dla usługi Azure Database dla serwera MariaDB
+Aby wyświetlić listę wszystkich modyfikowalnych parametrów na serwerze i ich wartości, uruchom polecenie [listy konfiguracji serwera az mariadb.](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list)
 
-Dla serwera **mydemoserver.MariaDB.Database.Azure.com** można wyświetlić listę parametrów konfiguracji serwera w **obszarze Grupa zasobów**.
+Można wyświetlić parametry konfiguracji serwera dla serwera **mydemoserver.mariadb.database.azure.com** w ramach grupy zasobów **myresourcegroup**.
 ```azurecli-interactive
 az mariadb server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
 
-Aby zapoznać się z definicją każdego z wymienionych parametrów, zobacz sekcję Referencja MariaDB na stronie [zmienne systemowe serwera](https://mariadb.com/kb/en/library/server-system-variables/).
+Definicja każdego z wymienionych parametrów znajduje się w sekcji MariaDB reference na temat [zmiennych systemowych serwera](https://mariadb.com/kb/en/library/server-system-variables/).
 
 ## <a name="show-server-configuration-parameter-details"></a>Pokaż szczegóły parametru konfiguracji serwera
-Aby wyświetlić szczegóły dotyczące określonego parametru konfiguracji dla serwera, uruchom polecenie [AZ MariaDB Server Configuration show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) .
+Aby wyświetlić szczegółowe informacje o określonym parametrze konfiguracji serwera, uruchom polecenie [show konfiguracji serwera az mariadb.](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show)
 
-W tym przykładzie przedstawiono szczegółowe informacje o **powolnych\_zapytań\_** konfiguracji serwera dzienników dla serwera **mydemoserver.MariaDB.Database.Azure.com** w obszarze Grupa zasobów **.**
+W tym przykładzie przedstawiono szczegóły parametru konfiguracji serwera **\_\_dziennika kwerend powolnych** dla **mydemoserver.mariadb.database.azure.com** serwera w ramach grupy zasobów **myresourcegroup.**
 ```azurecli-interactive
 az mariadb server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 
 ## <a name="modify-a-server-configuration-parameter-value"></a>Modyfikowanie wartości parametru konfiguracji serwera
-Można również zmodyfikować wartość określonego parametru konfiguracji serwera, który aktualizuje podstawową wartość konfiguracyjną dla aparatu serwera MariaDB. Aby zaktualizować konfigurację, użyj polecenia [AZ MariaDB Server Configuration Set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) . 
+Można również zmodyfikować wartość określonego parametru konfiguracji serwera, który aktualizuje podstawową wartość konfiguracji dla aparatu serwera MariaDB. Aby zaktualizować konfigurację, należy użyć polecenia [zestaw konfiguracji serwera az mariadb.](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) 
 
-Aby zaktualizować parametr konfiguracyjny **powolnej\_kwerendy\_dziennik** konfiguracji serwera **mydemoserver.MariaDB.Database.Azure.com** w obszarze Grupa zasobów **.**
+Aby zaktualizować parametr konfiguracji serwera **\_\_dziennika kwerend powolnych** **serwera mydemoserver.mariadb.database.azure.com** w ramach grupy zasobów **myresourcegroup.**
 ```azurecli-interactive
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 ```
 
-Jeśli chcesz zresetować wartość parametru konfiguracji, Pomiń opcjonalny parametr `--value`, a usługa zastosuje wartość domyślną. W powyższym przykładzie będzie wyglądać następująco:
+Jeśli chcesz zresetować wartość parametru konfiguracji, pomiń parametr opcjonalny, `--value` a usługa zastosuje wartość domyślną. W powyższym przykładzie wygląda na to:
 ```azurecli-interactive
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 
-Ten kod resetuje **powolne\_kwerendy\_konfiguracji dziennika** do wartości **domyślnej.** 
+Ten kod resetuje konfigurację **\_\_dziennika kwerendy powolnej** do wartości domyślnej **OFF**. 
 
-## <a name="working-with-the-time-zone-parameter"></a>Praca z parametr strefy czasowej
+## <a name="working-with-the-time-zone-parameter"></a>Praca z parametrem strefy czasowej
 
-### <a name="populating-the-time-zone-tables"></a>Wypełnianie tabel strefy czasowej
+### <a name="populating-the-time-zone-tables"></a>Wypełnianie tabel stref czasowych
 
-Tabele strefy czasowej na serwerze można wypełnić przez wywołanie procedury składowanej `az_load_timezone` za pomocą narzędzia, takiego jak MariaDB Command line lub MariaDB Workbench.
+Tabele stref czasowych na serwerze `az_load_timezone` można wypełnić, wywołując procedurę składowaną za pomocą narzędzia, takiego jak wiersz polecenia MariaDB lub MariaDB Workbench.
 
 > [!NOTE]
-> Jeśli uruchamiasz polecenie `az_load_timezone` z MariaDB Workbench, może być konieczne wyłączenie bezpiecznego trybu aktualizacji przy użyciu `SET SQL_SAFE_UPDATES=0;`.
+> Jeśli `az_load_timezone` polecenie jest uruchomione z programu MariaDB Workbench, może być `SET SQL_SAFE_UPDATES=0;`konieczne wyłączenie trybu bezpiecznej aktualizacji przy użyciu programu .
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> Należy ponownie uruchomić serwer, aby upewnić się, że tabele strefy czasowej są prawidłowo wypełnione. Aby ponownie uruchomić serwer, użyj [Azure Portal](howto-restart-server-portal.md) lub [interfejsu wiersza polecenia](howto-restart-server-cli.md).
+> Należy ponownie uruchomić serwer, aby upewnić się, że tabele stref czasowych są poprawnie wypełnione. Aby ponownie uruchomić serwer, użyj [witryny Azure portal](howto-restart-server-portal.md) lub [interfejsu wiersza polecenia](howto-restart-server-cli.md).
 
-Aby wyświetlić wartości dostępne strefy czasowej, uruchom następujące polecenie:
+Aby wyświetlić dostępne wartości stref czasowych, uruchom następujące polecenie:
 
 ```sql
 SELECT name FROM mysql.time_zone_name;
 ```
 
-### <a name="setting-the-global-level-time-zone"></a>Ustawienia globalne poziomu strefy czasowej
+### <a name="setting-the-global-level-time-zone"></a>Ustawianie strefy czasowej poziomu globalnego
 
-Strefę czasową na poziomie globalnym można ustawić za pomocą polecenia [AZ MariaDB Server Configuration Set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) .
+Strefę czasową poziomu globalnego można ustawić za pomocą polecenia [az mariadb configuration set.](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set)
 
-Następujące polecenie aktualizuje **czas\_** parametr **konfiguracji serwera strefy w obszarze Grupa** **zasobów zasobu do** **USA/Pacyfik**.
+Następujące polecenie aktualizuje parametr konfiguracji serwera **strefy\_czasowej** serwera **mydemoserver.mariadb.database.azure.com** w ramach grupy zasobów **myresourcegroup** do **US/Pacific**.
 
 ```azurecli-interactive
 az mariadb server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
 ```
 
-### <a name="setting-the-session-level-time-zone"></a>Ustawienie strefy czasowej z poziomu sesji
+### <a name="setting-the-session-level-time-zone"></a>Ustawianie strefy czasowej poziomu sesji
 
-Strefę czasową na poziomie sesji można ustawić, uruchamiając polecenie `SET time_zone` za pomocą narzędzia, takiego jak MariaDB Command line lub MariaDB Workbench. Poniższy przykład ustawia strefę czasową **USA / Pacyfik** strefy czasowej.  
+Strefę czasową poziomu sesji można `SET time_zone` ustawić, uruchamiając polecenie za pomocą narzędzia, takiego jak wiersz polecenia MariaDB lub MariaDB Workbench. Poniższy przykład ustawia strefę czasową na strefę czasową **USA/Pacyfiku.**  
 
 ```sql
 SET time_zone = 'US/Pacific';
 ```
 
-Zapoznaj się z dokumentacją MariaDB dla [funkcji daty i godziny](https://mariadb.com/kb/en/library/date-time-functions/).
+Zapoznaj się z dokumentacją MariaDB dotyczącą [funkcji daty i godziny](https://mariadb.com/kb/en/library/date-time-functions/).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Jak skonfigurować [parametry serwera w Azure Portal](howto-server-parameters.md)
+- Jak skonfigurować [parametry serwera w witrynie Azure portal](howto-server-parameters.md)
