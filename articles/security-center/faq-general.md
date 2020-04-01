@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54263a8be900ed381d8450b460e5cf9e6117ac54
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661843"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436134"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Często zadawane pytania — ogólne pytania dotyczące usługi Azure Security Center
 
 ## <a name="what-is-azure-security-center"></a>Co to jest Centrum zabezpieczeń Azure?
 Usługa Azure Security Center pomaga zapobiegać zagrożeniom, wykrywać ich i reagować na nie, zwiększając wgląd w zabezpieczenia zasobów i kontrolę nad nim. Umożliwia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami dla wszystkich subskrypcji, pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań zabezpieczających.
 
-Usługa Security Center używa agenta monitorowania firmy Microsoft do zbierania i przechowywania danych. Aby uzyskać szczegółowe informacje, zobacz [Zbieranie danych w usłudze Azure Security Center.](security-center-enable-data-collection.md)
+Usługa Security Center używa agenta usługi Log Analytics do zbierania i przechowywania danych. Aby uzyskać szczegółowe informacje, zobacz [Zbieranie danych w usłudze Azure Security Center.](security-center-enable-data-collection.md)
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>Jak uzyskać usługę Azure Security Center?

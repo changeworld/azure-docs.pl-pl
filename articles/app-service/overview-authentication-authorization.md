@@ -1,22 +1,22 @@
 ---
 title: Uwierzytelnianie i autoryzacja
-description: Dowiedz się więcej o wbudowanej pomocy technicznej dotyczącej uwierzytelniania i autoryzacji w usłudze Azure App Service oraz o tym, jak może ona pomóc w zabezpieczeniu aplikacji przed nieautoryzowanym dostępem.
+description: Dowiedz się więcej o wbudowanej pomocy technicznej dotyczącej uwierzytelniania i autoryzacji w usłudze Azure App Service i usłudze Azure Functions oraz o tym, jak może pomóc w zabezpieczeniu aplikacji przed nieautoryzowanym dostępem.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
-ms.custom: seodec18
-ms.openlocfilehash: 825d113bbe081ba6fb85da19ff6449824db92d10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: f16b10f13c945dd7f1ae4fdc3f4e02dcd7c5a018
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475395"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437940"
 ---
-# <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
+# <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service i usłudze Azure Functions
 
 > [!NOTE]
-> W tej chwili usługa AAD V2 (w tym MSAL) nie jest obsługiwana dla usług Azure App Services i usług Azure Functions. Sprawdź aktualizacje.
+> W tej chwili [usługa Azure Active Directory w wersji 2.0](../active-directory/develop/v2-overview.md) (w tym [MSAL)](../active-directory/develop/msal-overview.md)nie jest obsługiwana dla usługi Azure App Service i usługi Azure Functions. Sprawdź aktualizacje.
 >
 
 Usługa Azure App Service zapewnia wbudowaną obsługę uwierzytelniania i autoryzacji, dzięki czemu można logować się do użytkowników i uzyskiwać dostęp do danych, zapisując minimalny lub żaden kod w aplikacji sieci Web, interfejsie API RESTful i mobilnym zapleczu, a także [usłudze Azure Functions.](../azure-functions/functions-overview.md) W tym artykule opisano, jak usługa App Service pomaga uprościć uwierzytelnianie i autoryzację aplikacji.
@@ -24,7 +24,7 @@ Usługa Azure App Service zapewnia wbudowaną obsługę uwierzytelniania i autor
 Bezpieczne uwierzytelnianie i autoryzacja wymagają głębokiego zrozumienia zabezpieczeń, w tym federacji, szyfrowania, zarządzania [tokenami internetowymi JSON (JWT),](https://wikipedia.org/wiki/JSON_Web_Token) [typów dotacji](https://oauth.net/2/grant-types/)itd. Usługa App Service udostępnia te narzędzia, dzięki czemu można poświęcić więcej czasu i energii na dostarczanie wartości biznesowej dla klienta.
 
 > [!IMPORTANT]
-> Nie musisz używać usługi App Service dla AuthN/AuthO. Możesz użyć dołączonych funkcji zabezpieczeń w wybranej platformie internetowej lub możesz napisać własne narzędzia. Należy jednak pamiętać, że [Chrome 80 wprowadza przełomowe zmiany w implementacji SameSite dla plików cookie](https://www.chromestatus.com/feature/5088147346030592) (data premiery około marca 2020), a niestandardowe zdalne uwierzytelnianie lub inne scenariusze, które opierają się na publikowaniu plików cookie między witrynami, mogą ulec zerwaniu, gdy przeglądarki klienckie Chrome zostaną zaktualizowane. Obejście jest złożone, ponieważ musi obsługiwać różne zachowania SameSite dla różnych przeglądarek. 
+> Nie musisz używać tej funkcji do uwierzytelniania i autoryzacji. Możesz użyć dołączonych funkcji zabezpieczeń w wybranej platformie internetowej lub możesz napisać własne narzędzia. Należy jednak pamiętać, że [Chrome 80 wprowadza przełomowe zmiany w implementacji SameSite dla plików cookie](https://www.chromestatus.com/feature/5088147346030592) (data premiery około marca 2020), a niestandardowe zdalne uwierzytelnianie lub inne scenariusze, które opierają się na publikowaniu plików cookie między witrynami, mogą ulec zerwaniu, gdy przeglądarki klienckie Chrome zostaną zaktualizowane. Obejście jest złożone, ponieważ musi obsługiwać różne zachowania SameSite dla różnych przeglądarek. 
 >
 > Wersje ASP.NET Core 2.1 i nowsze obsługiwane przez App Service są już poprawione dla tej przełomowej zmiany i odpowiednio obsługują Chrome 80 i starsze przeglądarki. Ponadto ta sama poprawka dla ASP.NET Framework 4.7.2 jest wdrażana w wystąpieniach usługi App Service przez cały styczeń 2020. Aby uzyskać więcej informacji, w tym jak sprawdzić, czy aplikacja otrzymała poprawkę, zobacz [Aktualizacja pliku cookie usługi Azure App Service SameSite](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/).
 >
@@ -46,11 +46,11 @@ Ten moduł obsługuje kilka rzeczy dla aplikacji:
 
 Moduł działa oddzielnie od kodu aplikacji i jest konfigurowany przy użyciu ustawień aplikacji. Nie są wymagane zestawy SDK, określone języki lub zmiany w kodzie aplikacji. 
 
-### <a name="user-claims"></a>Oświadczenia użytkownika
+### <a name="userapplication-claims"></a>Oświadczenia użytkownika/aplikacji
 
-Dla wszystkich struktur języka app service udostępnia oświadczenia użytkownika do kodu przez wstrzyknięcie ich do nagłówków żądań. W przypadku aplikacji ASP.NET 4.6 usługa App Service wypełnia [claimsprincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) oświadczenia uwierzytelnionego użytkownika, dzięki czemu można wykonać `[Authorize]` standardowy wzorzec kodu .NET, w tym atrybut. Podobnie w przypadku aplikacji PHP usługa App `_SERVER['REMOTE_USER']` Service wypełnia zmienną. W przypadku aplikacji Java oświadczenia są [dostępne z serwera Tomcat](containers/configure-language-java.md#authenticate-users-easy-auth).
+Dla wszystkich struktur języka App Service udostępnia oświadczenia w tokenie przychodzącym (czy to z uwierzytelnionego użytkownika końcowego lub aplikacji klienckiej) do kodu przez wstrzyknięcie ich do nagłówków żądań. W przypadku aplikacji ASP.NET 4.6 usługa App Service wypełnia [claimsprincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) oświadczenia uwierzytelnionego użytkownika, dzięki czemu można wykonać `[Authorize]` standardowy wzorzec kodu .NET, w tym atrybut. Podobnie w przypadku aplikacji PHP usługa App `_SERVER['REMOTE_USER']` Service wypełnia zmienną. W przypadku aplikacji Java oświadczenia są [dostępne z serwera Tomcat](containers/configure-language-java.md#authenticate-users-easy-auth).
 
-W przypadku `ClaimsPrincipal.Current` usługi Azure [Functions](../azure-functions/functions-overview.md)program Azure nie jest nawodniony dla kodu platformy .NET, ale nadal można znaleźć oświadczenia użytkownika w nagłówkach żądań.
+Dla [usługi Azure Functions](../azure-functions/functions-overview.md), `ClaimsPrincipal.Current` nie jest wypełniona dla kodu .NET, ale nadal `ClaimsPrincipal` można znaleźć oświadczenia użytkownika w nagłówkach żądań lub uzyskać obiekt z kontekstu żądania lub nawet za pośrednictwem parametru powiązania. Zobacz [pracy z tożsamościami klienta,](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) aby uzyskać więcej informacji.
 
 Aby uzyskać więcej informacji, zobacz [Dostęp do oświadczeń użytkowników](app-service-authentication-how-to.md#access-user-claims).
 
@@ -63,7 +63,7 @@ Usługa App Service udostępnia wbudowany magazyn tokenów, który jest repozyto
 
 Zazwyczaj należy napisać kod do zbierania, przechowywania i odświeżania tych tokenów w aplikacji. W magazynie tokenów po prostu pobrać tokeny, gdy ich potrzebujesz i [powiedzieć app service, aby odświeżyć je,](app-service-authentication-how-to.md#refresh-identity-provider-tokens) gdy staną się [nieprawidłowe.](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) 
 
-Tokeny identyfikatorów, tokeny dostępu i tokeny odświeżania buforowane dla uwierzytelnionej sesji i są dostępne tylko dla skojarzonego użytkownika.  
+Tokeny identyfikatorów, tokeny dostępu i tokeny odświeżania są buforowane dla uwierzytelnionej sesji i są dostępne tylko dla skojarzonego użytkownika.  
 
 Jeśli nie musisz pracować z tokenami w aplikacji, możesz wyłączyć magazyn tokenów.
 
@@ -93,7 +93,7 @@ Przepływ uwierzytelniania jest taki sam dla wszystkich dostawców, ale różni 
 - Za pomocą sdk dostawcy: aplikacja loguje użytkowników do dostawcy ręcznie, a następnie przesyła token uwierzytelniania do usługi App Service do weryfikacji. Zazwyczaj dotyczy to aplikacji bez przeglądarki, które nie mogą przedstawiać użytkownikowi strony logowania dostawcy. Kod aplikacji zarządza procesem logowania, więc jest również nazywany _przepływem kierowanym przez klienta_ lub _przepływem klienta._ Ten przypadek dotyczy interfejsów API REST, [usług Azure Functions](../azure-functions/functions-overview.md)i klientów przeglądarki JavaScript, a także aplikacji przeglądarki, które wymagają większej elastyczności w procesie logowania. Dotyczy to również natywnych aplikacji mobilnych, które logują użytkowników przy użyciu sdk dostawcy.
 
 > [!NOTE]
-> Wywołania z zaufanej aplikacji przeglądarki w usłudze App Service wywołuje inny interfejs API REST w usłudze App Service lub [usługi Azure Functions](../azure-functions/functions-overview.md) mogą być uwierzytelnione przy użyciu przepływu kierowanego na serwer. Aby uzyskać więcej informacji, zobacz [Dostosowywanie uwierzytelniania i autoryzacji w usłudze App Service](app-service-authentication-how-to.md).
+> Wywołania z zaufanej aplikacji przeglądarki w usłudze App Service do innego interfejsu API REST w usłudze App Service lub [usłudze Azure Functions](../azure-functions/functions-overview.md) mogą być uwierzytelnione przy użyciu przepływu kierowanego na serwer. Aby uzyskać więcej informacji, zobacz [Dostosowywanie uwierzytelniania i autoryzacji w usłudze App Service](app-service-authentication-how-to.md).
 >
 
 W poniższej tabeli przedstawiono kroki przepływu uwierzytelniania.

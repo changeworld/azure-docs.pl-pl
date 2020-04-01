@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 26d62f2c027a093ba518b98fa37ce3a31a14f175
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3f0d624605f617a8e5ab914c49c4c94a40ebdcc6
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73664283"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435786"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Szybki start: dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa
 Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i ochronę przed zagrożeniami na potrzeby różnych obciążeń chmury hybrydowej. Warstwa Bezpłatna zapewnia ograniczone bezpieczeństwo jedynie zasobów platformy Azure, natomiast warstwa Standardowa rozszerza te możliwości na środowisko lokalne i inne chmury. Usługa Security Center w warstwie Standardowa pomaga w wyszukiwaniu i naprawianiu luk w zabezpieczeniach, stosowaniu kontroli dostępu i aplikacji w celu blokowania złośliwych działań, wykrywaniu zagrożeń przy użyciu analizy oraz szybkim reagowaniu podczas ataku. Warstwę Standardowa usługi Security Center możesz wypróbować bezpłatnie. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
 
-W tym artykule zmienisz warstwę usługi na wyższą warstwę Standardowa, aby zapewnić dodatkowe zabezpieczenia, i zainstalujesz program Microsoft Monitoring Agent na swoich maszynach wirtualnych w celu monitorowania luk w zabezpieczeniach i zagrożeń.
+W tym artykule uaktualnisz do warstwy Standardowa w celu zwiększenia zabezpieczeń i zainstaluj agenta usługi Log Analytics na maszynach wirtualnych, aby monitorować luki w zabezpieczeniach i zagrożenia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do rozpoczęcia korzystania z usługi Security Center wymagana jest subskrypcja usługi Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/).
@@ -47,14 +47,14 @@ W ciągu kilku minut od pierwszego uruchomienia usługi Security Center mogą zo
 - **Zalecenia** dotyczące sposobów poprawy zabezpieczeń subskrypcji platformy Azure. Kliknięcie kafelka **Zalecenia** spowoduje uruchomienie priorytetyzowanej listy.
 - Spis zasobów **Obliczenia i aplikacje**, **Sieć**, **Bezpieczeństwo danych** oraz **Tożsamość i dostęp**, które są obecnie oceniane przez usługę Security Center wraz ze stanem zabezpieczeń każdego z nich.
 
-Aby w pełni korzystać z usługi Security Center, należy wykonać poniższe kroki w celu zmiany warstwy na wyższą warstwę Standardowa i zainstalowania programu Microsoft Monitoring Agent.
+Aby w pełni korzystać z usługi Security Center, należy wykonać poniższe czynności, aby uaktualnić do warstwy Standardowa i zainstalować agenta usługi Log Analytics.
 
 ## <a name="upgrade-to-the-standard-tier"></a>Zmiana warstwy na wyższą warstwę Standardowa
 Na potrzeby przewodników Szybki start i samouczków usługi Security Center musisz zmienić warstwę na wyższą warstwę Standardowa. Usługa Security Center w warstwie Standardowa jest dostępna w bezpłatnej wersji próbnej. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/). 
 
 1. W menu głównym usługi Security Center wybierz pozycję **Wprowadzenie**.
  
-   ![Wprowadzenie][4]
+   ![Rozpoczęcie pracy][4]
 
 2. W obszarze **Uaktualnienie** usługa Security Center wyświetla listę subskrypcji i obszarów roboczych, które kwalifikują się do dołączenia. 
    - Możesz kliknąć listę rozwijaną **Zastosuj wersję próbną**, aby wyświetlić listę wszystkich subskrypcji i obszarów roboczych ze stanem kwalifikacji do korzystania z wersji próbnej.
@@ -66,11 +66,11 @@ Na potrzeby przewodników Szybki start i samouczków usługi Security Center mus
   ![Alerty zabezpieczeń][9]
 
 ## <a name="automate-data-collection"></a>Automatyzacja zbierania danych
-Usługa Security Center zbiera dane z maszyn wirtualnych platformy Azure i komputerów spoza platformy Azure w celu monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Domyślnie usługa Security Center utworzy nowy obszar roboczy.
+Usługa Security Center zbiera dane z maszyn wirtualnych platformy Azure i komputerów spoza platformy Azure w celu monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą agenta usługi Log Analytics, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z komputera i kopiuje dane do obszaru roboczego do analizy. Domyślnie usługa Security Center utworzy nowy obszar roboczy.
 
-Jeśli jest włączona automatyczna aprowizacja, usługa Security Center instaluje program Microsoft Monitoring Agent na wszystkich obsługiwanych maszynach wirtualnych platformy Azure oraz na wszystkich nowo tworzonych maszynach wirtualnych. Używanie automatycznej aprowizacji jest zdecydowanie zalecane.
+Gdy automatyczne inicjowanie obsługi administracyjnej jest włączone, Usługa Security Center instaluje agenta usługi Log Analytics na wszystkich obsługiwanych maszynach wirtualnych platformy Azure i nowych, które są tworzone. Używanie automatycznej aprowizacji jest zdecydowanie zalecane.
 
-Aby włączyć automatyczną aprowizację programu Microsoft Monitoring Agent:
+Aby włączyć automatyczne inicjowanie obsługi administracyjnej agenta usługi Log Analytics:
 
 1. W menu głównym Centrum zabezpieczeń wybierz pozycję **Ustawienia & cennika**.
 2. W wierszu subskrypcji kliknij subskrypcję, w której chcesz zmienić ustawienia.
@@ -99,11 +99,11 @@ Jeśli chcesz wyłączyć automatyczną aprowizację:
 4. Wybierz **pozycję Zapisz**.
 
 >[!NOTE]
-> Wyłączenie automatycznej aprowizacji nie powoduje usunięcia programu Microsoft Monitoring Agent z maszyn wirtualnych platformy Azure, na których aprowizowano agenta. Wyłączenie automatycznej aprowizacji powoduje ograniczenie monitorowania zabezpieczeń dla zasobów.
+> Wyłączenie automatycznego inicjowania obsługi administracyjnej nie powoduje usunięcia agenta usługi Log Analytics z maszyn wirtualnych platformy Azure, w których agent został aprowizny. Wyłączenie automatycznej aprowizacji powoduje ograniczenie monitorowania zabezpieczeń dla zasobów.
 >
 
 ## <a name="next-steps"></a>Następne kroki
-W ramach tego przewodnika Szybki start zmieniono warstwę usługi na wyższą warstwę Standardowa i aprowizowano program Microsoft Monitoring Agent, aby zapewnić ujednolicone zarządzanie zabezpieczeniami i ochronę przed zagrożeniami obciążeń chmury hybrydowej. Aby dowiedzieć się więcej na temat korzystania z usługi Security Center, przejdź do przewodnika Szybki start dotyczącego dołączania komputerów z systemem Windows znajdujących się w środowisku lokalnym i w innych chmurach.
+W tym przewodniku Szybki start uaktualniono do warstwy Standardowa i aprowizacji agenta usługi Log Analytics do ujednoliconego zarządzania zabezpieczeniami i ochrony przed zagrożeniami w ramach obciążeń chmury hybrydowej. Aby dowiedzieć się więcej na temat korzystania z usługi Security Center, przejdź do przewodnika Szybki start dotyczącego dołączania komputerów z systemem Windows znajdujących się w środowisku lokalnym i w innych chmurach.
 
 > [!div class="nextstepaction"]
 > [Szybki start: dołączanie komputerów z systemem Windows do usługi Azure Security Center](quick-onboard-windows-computer.md)

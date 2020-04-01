@@ -5,16 +5,16 @@ author: jjbfour
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: fd21117219ea3db6946e7a1b889d92702af65b58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75650489"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398477"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Omówienie dostawców zasobów niestandardowych platformy Azure
 
-Dostawcy zasobów niestandardowych platformy Azure to platforma rozszerzalności na platformę Azure. Umożliwia zdefiniowanie niestandardowych interfejsów API, które mogą służyć do wzbogacenia domyślnego środowiska platformy Azure. W tej dokumentacji opisano:
+Dostawcy zasobów niestandardowych platformy Azure to platforma rozszerzalności na platformę Azure. Umożliwia definiowanie niestandardowych interfejsów API, które mogą służyć do wzbogacenia domyślnego środowiska platformy Azure. W tej dokumentacji opisano:
 
 - Jak skompilować i wdrożyć dostawcę zasobów niestandardowych platformy Azure.
 - Jak korzystać z usług Azure Custom Resource Providers, aby rozszerzyć istniejące przepływy pracy.

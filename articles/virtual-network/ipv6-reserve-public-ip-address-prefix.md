@@ -10,20 +10,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 76d1ba2717ac3c8ac8e86687ef1754a8790f3e4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a0dd56842174d89688c862397c373326ef50d1f
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72595086"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420540"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>Rezerwowanie publicznego prefiksu adresu IPv6
 IPv6 dla sieci wirtualnej platformy Azure (VNet) umożliwia hostowania aplikacji na platformie Azure z łącznością IPv6 i IPv4 zarówno w sieci wirtualnej, jak i do i z Internetu. Oprócz rezerwacji poszczególnych adresów IPv6 można zarezerwować ciągłe zakresy adresów Protokołu IPv6 platformy Azure (znany jako prefiks IP) do użytku. W tym artykule opisano sposób tworzenia publicznych adresów IP i zakresów adresów IPv6 przy użyciu programu Azure PowerShell i interfejsu wiersza polecenia.
 
-> [!Important]
-> IPv6 dla usługi Azure Virtual Network jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-single-reserved-ipv6-public-ip"></a>Tworzenie pojedynczego zastrzeżonego publicznego adresu IP protokołu IPv6
 

@@ -1,6 +1,6 @@
 ---
 title: Zapora systemu operacyjnego gościa platformy Azure VM blokuje ruch przychodzący | Dokumenty firmy Microsoft
-description: ''
+description: Dowiedz się, jak rozwiązać problem z połączeniem portalu usług pulpitu zdalnego (RDP), który blokuje ruch przychodzący przez zaporę systemu operacyjnego gościa.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 0cbd1a24f5c460e248d55777735da6809befba63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b80fc997a4b3d2b472717b1ec2f379a4e958d8c
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72028794"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422554"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Zapora systemu operacyjnego gościa platformy Azure VM blokuje ruch przychodzący
 

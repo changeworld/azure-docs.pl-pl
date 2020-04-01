@@ -5,31 +5,49 @@ author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 03/27/2018
+ms.custom: mvc,subject-armqs
+ms.date: 03/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 4430a73f7b46a31847322e65c0aa3c95ebd385ca
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 89d82a140a55c9409ff0cc2dbf30e884a7431ca6
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76270171"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411413"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>Szybki start: tworzenie zestawu skalowania maszyn wirtualnych z systemem Windows przy użyciu szablonu platformy Azure
 
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. Maszyny wirtualne w zestawie skalowania możesz skalować ręcznie lub możesz zdefiniować reguły skalowania automatycznego na podstawie użycia takich zasobów jak procesor CPU, zapotrzebowanie na pamięć lub ruch sieciowy. Moduł równoważenia obciążenia platformy Azure następnie dystrybuuje ruch do wystąpień maszyn wirtualnych w zestawie skalowania. W tym przewodniku Szybki start utworzysz zestaw skalowania maszyn wirtualnych i wdrożysz przykładową aplikację przy użyciu szablonu usługi Azure Resource Manager.
 
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
 Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Wymagania wstępne
 
+Brak.
 
-## <a name="define-a-scale-set-in-a-template"></a>Definiowanie zestawu skalowania w szablonie
-Szablony usługi Azure Resource Manager umożliwiają wdrażanie grup powiązanych zasobów. Szablony są pisane w formacie JavaScript Object Notation (JSON) i określają środowisko całej infrastruktury platformy Azure dla aplikacji. W jednym szablonie można utworzyć zestaw skalowania maszyn wirtualnych, zainstalować aplikacje i skonfigurować reguły automatycznego skalowania. Korzystając ze zmiennych i parametrów, można ponownie użyć tego szablonu, aby zaktualizować istniejące zestawy skalowania lub utworzyć dodatkowe. Szablony można wdrażać za pośrednictwem witryny Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell bądź z poziomu potoków ciągłej integracji/ciągłego dostarczania (CI/CD).
+## <a name="create-a-scale-set"></a>Tworzenie zestawu skalowania
 
-Więcej informacji dotyczących szablonów można znaleźć w temacie [Omówienie usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process). Aby poznać składnię JSON i właściwości, zobacz odwołanie do szablonu [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets).
+Szablony usługi Azure Resource Manager umożliwiają wdrażanie grup powiązanych zasobów. W jednym szablonie można utworzyć zestaw skalowania maszyn wirtualnych, zainstalować aplikacje i skonfigurować reguły automatycznego skalowania. Korzystając ze zmiennych i parametrów, można ponownie użyć tego szablonu, aby zaktualizować istniejące zestawy skalowania lub utworzyć dodatkowe. Szablony można wdrażać za pośrednictwem witryny Azure portal, interfejsu wiersza polecenia platformy Azure, programu Azure PowerShell lub z potoków ciągłej integracji / ciągłego dostarczania (CI/CD).
 
-Szablon definiuje konfigurację dla każdego typu zasobu. Typ zasobu zestawu skalowania maszyn wirtualnych jest podobny do typu zasobu pojedynczej maszyny wirtualnej. Podstawowe elementy typu zasobu zestawu skalowania maszyn wirtualnych są następujące:
+### <a name="review-the-template"></a>Przejrzyj szablon
+
+Szablon używany w tym przewodniku Szybki start pochodzi z [szablonów szybki start platformy Azure](https://azure.microsoft.com/resources/templates/201-vmss-windows-webapp-dsc-autoscale/).
+
+:::code language="json" source="~/quickstart-templates/201-vmss-windows-webapp-dsc-autoscale/azuredeploy.json" range="1-397" highlight="236-325":::
+
+Te zasoby są zdefiniowane w tych szablonach:
+
+- [**Sieć Microsoft.Network/virtual Sieci**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets)
+- [**Microsoft.Insights/skalowanie automatyczneStawienia**](/azure/templates/microsoft.insights/autoscalesettings)
+
+#### <a name="define-a-scale-set"></a>Definiowanie zestawu skalowania
+
+Wyróżniona część jest definicją zasobu zestawu skalowania. Aby utworzyć skalę przy użyciu szablonu, należy zdefiniować odpowiednie zasoby. Podstawowe elementy typu zasobu zestawu skalowania maszyn wirtualnych są następujące:
 
 | Właściwość                     | Opis właściwości                                  | Przykładowa wartość szablonu                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
@@ -44,49 +62,10 @@ Szablon definiuje konfigurację dla każdego typu zasobu. Typ zasobu zestawu ska
 | osProfile.adminUsername      | Nazwa użytkownika dla każdego wystąpienia maszyny wirtualnej                        | użytkownik_azure                                 |
 | osProfile.adminPassword      | Hasło dla każdego wystąpienia maszyny wirtualnej                        | P@ssw0rd!                                 |
 
- W poniższym przykładzie przedstawiono definicję podstawowych zasobów zestawu skalowania. Aby dostosować szablon zestawu skalowania, można zmienić rozmiar maszyny wirtualnej lub pojemność początkową bądź użyć innej platformy albo obrazu niestandardowego.
+Aby dostosować szablon zestawu skalowania, można zmienić rozmiar maszyny Wirtualnej lub pojemność początkową. Inną opcją jest użycie innej platformy lub niestandardowego obrazu.
 
-```json
-{
-  "type": "Microsoft.Compute/virtualMachineScaleSets",
-  "name": "myScaleSet",
-  "location": "East US",
-  "apiVersion": "2017-12-01",
-  "sku": {
-    "name": "Standard_A1",
-    "capacity": "2"
-  },
-  "properties": {
-    "upgradePolicy": {
-      "mode": "Automatic"
-    },
-    "virtualMachineProfile": {
-      "storageProfile": {
-        "osDisk": {
-          "caching": "ReadWrite",
-          "createOption": "FromImage"
-        },
-        "imageReference":  {
-          "publisher": "MicrosoftWindowsServer",
-          "offer": "WindowsServer",
-          "sku": "2016-Datacenter",
-          "version": "latest"
-        }
-      },
-      "osProfile": {
-        "computerNamePrefix": "myvmss",
-        "adminUsername": "azureuser",
-        "adminPassword": "P@ssw0rd!"
-      }
-    }
-  }
-}
-```
+#### <a name="add-a-sample-application"></a>Dodawanie przykładowej aplikacji
 
- W celu skrócenia przykładu nie pokazano w nim konfiguracji wirtualnej karty sieciowej. Dodatkowe składniki, takie jak moduł równoważenia obciążenia, także nie są widoczne. Pełny szablon zestawu skalowania znajduje się [na końcu tego artykułu](#deploy-the-template).
-
-
-## <a name="add-a-sample-application"></a>Dodawanie przykładowej aplikacji
 Aby przetestować zestaw skalowania, należy zainstalować podstawową aplikację internetową. Gdy wdrażasz zestaw skalowania, rozszerzenia maszyn wirtualnych mogą dostarczać konfigurację po wdrożeniu oraz zadania automatyzacji, takie jak instalowanie aplikacji. Skrypty można pobrać z usługi Azure Storage lub GitHub bądź można je dostarczyć do witryny Azure Portal w czasie wykonywania rozszerzenia. Aby zastosować rozszerzenie do zestawu skalowania, dodaj sekcję *extensionProfile* do przedstawionego wcześniej przykładu zasobów. Profil rozszerzenia zwykle definiuje następujące właściwości:
 
 - Typ rozszerzenia
@@ -95,44 +74,17 @@ Aby przetestować zestaw skalowania, należy zainstalować podstawową aplikacj�
 - Lokalizacja konfiguracji lub skryptów instalacji
 - Polecenia do wykonania na wystąpieniach maszyn wirtualnych
 
-Przykładowy szablon [aplikacji ASP.NET w systemie Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) używa rozszerzenia DSC programu PowerShell w celu zainstalowania aplikacji ASP.NET MVC, która działa w usługach IIS. 
+Szablon używa rozszerzenia DSC programu PowerShell do zainstalowania aplikacji ASP.NET MVC, która działa w usługach IIS.
 
 Skrypt instalacji jest pobierany z usługi GitHub, jak zdefiniowano we właściwości *url*. Następnie rozszerzenie uruchamia polecenie *InstallIIS* ze skryptu *IISInstall.ps1*, jak zdefiniowano we właściwościach *function* i *Script*. Sama aplikacja ASP.NET jest dostarczana jako pakiet Web Deploy, który także jest pobierany z usługi GitHub, jak zdefiniowano we właściwości *WebDeployPackagePath*:
 
-```json
-"extensionProfile": {
-  "extensions": [
-    {
-      "name": "Microsoft.Powershell.DSC",
-      "properties": {
-        "publisher": "Microsoft.Powershell",
-        "type": "DSC",
-        "typeHandlerVersion": "2.9",
-        "autoUpgradeMinorVersion": true,
-        "forceUpdateTag": "1.0",
-        "settings": {
-          "configuration": {
-            "url": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/DSC/IISInstall.ps1.zip",
-            "script": "IISInstall.ps1",
-            "function": "InstallIIS"
-          },
-          "configurationArguments": {
-            "nodeName": "localhost",
-            "WebDeployPackagePath": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/WebDeploy/DefaultASPWebApp.v1.0.zip"
-          }
-        }
-      }
-    }
-  ]
-}
-```
-
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
-Szablon [aplikacji ASP.NET MVC w systemie Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) można wdrożyć za pomocą następującego przycisku **Wdróż na platformie Azure**. Ten przycisk otwiera witrynę Azure Portal, ładuje pełny szablon i wyświetla monit o podanie kilku parametrów, takich jak nazwa zestawu skalowania, liczba wystąpień i poświadczenia administratora.
+
+Szablon można wdrożyć, wybierając przycisk Wdrażanie na **platformie Azure.** Ten przycisk otwiera witrynę Azure Portal, ładuje pełny szablon i wyświetla monit o podanie kilku parametrów, takich jak nazwa zestawu skalowania, liczba wystąpień i poświadczenia administratora.
 
 [![Wdrażanie szablonu na platformie Azure](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-windows-webapp-dsc-autoscale%2Fazuredeploy.json)
 
-Aby zainstalować aplikację ASP.NET w systemie Windows za pomocą polecenia [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment), można także użyć programu Azure PowerShell:
+Można również wdrożyć szablon Usługi Resource Manager przy użyciu programu Azure PowerShell:
 
 ```azurepowershell-interactive
 # Create a resource group
@@ -152,8 +104,8 @@ Update-AzVmss `
 
 Wprowadź dane w monitach, aby podać nazwę zestawu skalowania i poświadczenia administratora dla wystąpień maszyn wirtualnych. Utworzenie zestawu skalowania i zastosowanie rozszerzenia w celu skonfigurowania aplikacji może potrwać 10 – 15 minut.
 
+## <a name="test-the-deployment"></a>Testowanie wdrożenia
 
-## <a name="test-your-scale-set"></a>Testowanie zestawu skalowania
 Aby zapoznać się z działaniem zestawu skalowania, uzyskaj dostęp do przykładowej aplikacji internetowej w przeglądarce internetowej. Uzyskaj publiczny adres IP modułu równoważenia obciążenia za pomocą polecenia [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) w następujący sposób:
 
 ```azurepowershell-interactive
@@ -164,16 +116,16 @@ Wprowadź publiczny adres IP modułu równoważenia obciążenia w przeglądarce
 
 ![Uruchamianie witryny usług IIS](./media/virtual-machine-scale-sets-create-powershell/running-iis-site.png)
 
-
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
 Gdy grupa zasobów i zestaw skalowania nie będą już potrzebne, można je usunąć za pomocą polecenia [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). Parametr `-Force` potwierdza, że chcesz usunąć zasoby bez wyświetlania dodatkowego monitu. Parametr `-AsJob` zwraca kontrolę do wiersza polecenia bez oczekiwania na zakończenie operacji.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
-
 ## <a name="next-steps"></a>Następne kroki
+
 W tym przewodniku Szybki start utworzyliśmy zestaw skalowania systemu Windows za pomocą szablonu platformy Azure i użyliśmy rozszerzenia DSC programu PowerShell do zainstalowania podstawowej aplikacji ASP.NET na wystąpieniach maszyn wirtualnych. Aby dowiedzieć się więcej, przejdź do samouczka dotyczącego sposobu tworzenia zestawów skalowania maszyn wirtualnych platformy Azure i zarządzania nimi.
 
 > [!div class="nextstepaction"]

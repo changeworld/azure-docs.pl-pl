@@ -1,16 +1,16 @@
 ---
-title: 'Szybki Start: Tworzenie aplikacji w języku PHP w systemie Linux'
-description: Zacznij korzystać z aplikacji systemu Linux na Azure App Service, wdrażając pierwszą aplikację w języku PHP do kontenera systemu Linux w programie App Service.
+title: 'Szybki start: Tworzenie aplikacji PHP na Linuksie'
+description: Rozpocznij pracę z aplikacjami systemu Linux w usłudze Azure App Service, wdrażając pierwszą aplikację PHP w kontenerze systemu Linux w usłudze App Service.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: 7608c10f2d101a3c24209a5e09bccc6dc31401ca
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: mvc, cli-validatem seodec18
+ms.openlocfilehash: 5a2abaf49071c90ea4fe0d5b5a454ce91f2cb1e4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524108"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046049"
 ---
 # <a name="create-a-php-app-in-app-service-on-linux"></a>Tworzenie aplikacji w języku PHP w usłudze App Service w systemie Linux
 
@@ -18,7 +18,7 @@ ms.locfileid: "77524108"
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Linux. Aby wdrożyć aplikację w usłudze App Service w systemie _Windows_, zobacz [Tworzenie aplikacji PHP na platformie Azure](../app-service-web-get-started-php.md).
 >
 
-Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. Ten samouczek szybki start przedstawia sposób wdrażania aplikacji PHP do Azure App Service w systemie Linux przy użyciu [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+[Usługa App Service w systemie Linux](app-service-linux-intro.md) zapewnia wysoce skalowalną, samoładującą się usługę hostingową przy użyciu systemu operacyjnego Linux. W tym samouczku szybki start pokazano, jak wdrożyć aplikację PHP w usłudze Azure App Service w systemie Linux przy użyciu [powłoki w chmurze.](https://docs.microsoft.com/azure/cloud-shell/overview)
 
 ![Przykładowa aplikacja działająca na platformie Azure](media/quickstart-php/hello-world-in-browser.png)
 
@@ -28,10 +28,10 @@ Kroki podane w tym artykule możesz wykonać przy użyciu komputera z systemem M
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki Start:
+Aby ukończyć ten przewodnik Szybki start:
 
 * <a href="https://git-scm.com/" target="_blank">Zainstaluj oprogramowanie Git</a>
-* <a href="https://php.net" target="_blank">Zainstaluj środowisko PHP</a>
+* <a href="https://php.net" target="_blank">Instalowanie PHP</a>
 
 ## <a name="download-the-sample"></a>Pobierz przykład
 
@@ -70,7 +70,7 @@ W oknie terminalu naciśnij kombinację klawiszy **Ctrl + C**, aby zamknąć ser
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
-Przejdź do witryny, aby zobaczyć nowo utworzoną aplikację z wbudowanym obrazem. Zastąp ciąg _&lt;app name>_ nazwą swojej aplikacji.
+Przejdź do witryny, aby zobaczyć nowo utworzoną aplikację z wbudowanym obrazem. Zamień _ &lt;nazwę aplikacji>_ nazwą aplikacji.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -148,7 +148,7 @@ W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij 
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 
-Zostanie wyświetlona strona Przegląd aplikacji. Tutaj możesz wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie.
+Zostanie wyświetlona strona omówienia aplikacji. Tutaj możesz wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie.
 
 ![Strona usługi App Service w witrynie Azure Portal](media/quickstart-php/php-docs-hello-world-app-service-detail.png)
 
@@ -159,7 +159,7 @@ Menu po lewej stronie zawiera różne strony służące do konfigurowania aplika
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: aplikacja PHP z bazą danych MySQL](tutorial-php-mysql-app.md)
+> [Samouczek: aplikacja PHP z MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
 > [Konfigurowanie aplikacji PHP](configure-language-php.md)

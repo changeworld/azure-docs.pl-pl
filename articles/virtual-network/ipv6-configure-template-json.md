@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie aplikacji podwójnego stosu IPv6 z podstawowym modułem równoważenia obciążenia w sieci wirtualnej platformy Azure — szablon Menedżera zasobów (wersja zapoznawcza)
+title: Wdrażanie aplikacji podwójnego stosu IPv6 z podstawowym modułem równoważenia obciążenia w sieci wirtualnej platformy Azure — szablon Menedżera zasobów
 titlesuffix: Azure Virtual Network
 description: W tym artykule pokazano, jak wdrożyć aplikację podwójnego stosu IPv6 w sieci wirtualnej platformy Azure przy użyciu szablonów maszyn wirtualnych usługi Azure Resource Manager.
 services: virtual-network
@@ -10,18 +10,18 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 06/26/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: b397c874045a89f5992aeadacfbbd4434a486977
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c2f66d92597801aa7c6b0b32f86f594d3effb05
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70012840"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420599"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 z podstawowym modułem równoważenia obciążenia na platformie Azure — szablon (wersja zapoznawcza)
+# <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template"></a>Wdrażanie aplikacji iPv6 z podwójnym stosem z podstawowym modułem równoważenia obciążenia na platformie Azure — szablon
 
-Ten artykuł zawiera listę zadań konfiguracyjnych IPv6 z częścią szablonu maszyny Wirtualnej Usługi Azure Resource Manager, która ma zastosowanie do. Użyj szablonu opisanego w tym artykule, aby wdrożyć aplikację z podwójnym stosem (IPv4 + IPv6) z podstawowym modułem równoważenia obciążenia, która zawiera sieć wirtualną z dwoma stosami z podsieciami IPv4 i IPv6, podstawowy moduł równoważenia obciążenia z dwoma (IPv4 + IPv6) konfiguracjami frontu, maszyny wirtualne z Karty sieciowe, które mają podwójną konfigurację IP, grupę zabezpieczeń sieci i publiczne adresy IP.
+Ten artykuł zawiera listę zadań konfiguracyjnych IPv6 z częścią szablonu maszyny Wirtualnej Usługi Azure Resource Manager, która ma zastosowanie do. Użyj szablonu opisanego w tym artykule, aby wdrożyć aplikację z podwójnym stosem (IPv4 + IPv6) z podstawowym modułem równoważenia obciążenia, która zawiera sieć wirtualną z dwoma stosami z podsieciami IPv4 i IPv6, podstawowy moduł równoważenia obciążenia z dwoma (IPv4 + IPv6) konfiguracjami frontu, maszyny wirtualne z kartami sieciowymi z podwójną konfiguracją IP, grupę zabezpieczeń sieci i publiczne adresy IP.
 
 Aby wdrożyć aplikację z dwoma stosami (IPV4 + IPv6) przy użyciu standardowego modułu równoważenia obciążenia, zobacz [Wdrażanie aplikacji podwójnego stosu IPv6 ze standardowym modułem równoważenia obciążenia — szablon](ipv6-configure-standard-load-balancer-template-json.md).
 

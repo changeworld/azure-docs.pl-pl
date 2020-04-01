@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowych plików i folderów — często zadawane pytan
 description: Rozwiązuje typowe pytania dotyczące tworzenia kopii zapasowych plików i folderów za pomocą usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55819ce7ec5196812d935a21c096c132144d78af
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273425"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421302"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Typowe pytania dotyczące tworzenia kopii zapasowych plików i folderów
 
@@ -57,6 +57,10 @@ Dane kopii zapasowej są wysyłane do centrum danych magazynu, w którym jest za
 ### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>Czy agent MARS obsługuje deduplikację systemu Windows Server 2012?
 
 Tak. Agent MARS konwertuje deduplikowane dane na normalne dane podczas przygotowywania operacji tworzenia kopii zapasowej. Następnie optymalizuje dane do tworzenia kopii zapasowych, szyfruje dane, a następnie wysyła zaszyfrowane dane do magazynu.
+
+### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>Czy potrzebuję uprawnień administratora do zainstalowania i skonfigurowania agenta MARS?
+
+Tak, instalacja agenta MARS i konfiguracja kopii zapasowych przy użyciu konsoli MARS wymagają, aby użytkownik był administratorem lokalnym na chronionym serwerze.
 
 ## <a name="manage-backups"></a>Zarządzanie kopiami zapasowymi
 
@@ -153,7 +157,7 @@ Tak, można użyć opcji **Zmień właściwości** w agencie MARS, aby dostosowa
 
 ## <a name="restore"></a>Przywracanie
 
-### <a name="manage"></a>Zarządzaj
+### <a name="manage"></a>Zarządzanie
 
 **Czy mogę odzyskać, jeśli zapomniałem hasła?**
 Agent usługi Azure Backup wymaga hasła (podanego podczas rejestracji) w celu odszyfrowania kopii zapasowej danych podczas przywracania. Zapoznaj się ze scenariuszami poniżej, aby zapoznać się z opcjami obsługi utraconego hasła:

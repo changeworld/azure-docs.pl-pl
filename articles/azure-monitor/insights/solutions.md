@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: a04ca3768ade6058c59393591c252bc4347a3663
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: c2690ad7cc4dcaa295bfb08b8c0396438ada0807
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275206"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437543"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Rozwiązania do monitorowania w usłudze Azure Monitor
 Rozwiązania do monitorowania wykorzystują usługi na platformie Azure, aby zapewnić dodatkowy wgląd w działanie określonej aplikacji lub usługi. Ten artykuł zawiera krótkie omówienie rozwiązań monitorowania na platformie Azure i szczegółowe informacje na temat ich używania i instalowania.
@@ -83,11 +83,7 @@ Wszystkie rozwiązania monitorowania wymagają [obszaru roboczego usługi Log An
 * Jeśli rozwiązanie wymaga konta automatyzacji, a następnie obszaru roboczego usługi Log Analytics i konta automatyzacji muszą być połączone ze sobą. Obszar roboczy usługi Log Analytics może być połączony tylko z jednym kontem automatyzacji, a konto automatyzacji może być połączone tylko z jednym obszarem roboczym usługi Log Analytics.
 * Aby można było połączyć, obszar roboczy usługi Log Analytics i konto automatyzacji muszą znajdować się w tej samej grupie zasobów i regionie. Wyjątkiem jest obszar roboczy w regionie wschodnich stanów USA i konto automatyzacji we wschodnich stanach USA 2.
 
-### <a name="create-a-link-between-a-log-analytics-workspace-and-automation-account"></a>Tworzenie łącza między obszarem roboczym usługi Log Analytics a kontem automatyzacji
-Sposób określenia obszaru roboczego usługi Log Analytics i konta automatyzacji zależy od metody instalacji rozwiązania.
-
-* Po zainstalowaniu rozwiązania za pośrednictwem portalu Azure Marketplace zostanie wyświetlony monit o podanie konta obszaru roboczego i usługi Automatyzacja. Łącze między nimi jest tworzone, jeśli nie są jeszcze połączone.
-* W przypadku rozwiązań spoza portalu Azure Marketplace należy połączyć obszar roboczy usługi Log Analytics i konto automatyzacji przed zainstalowaniem rozwiązania. Można to zrobić, wybierając dowolne rozwiązanie w portalu Azure Marketplace i wybierając obszar roboczy usługi Log Analytics i konto automatyzacji. Nie musisz faktycznie instalować rozwiązania, ponieważ łącze jest tworzone natychmiast po wybraniu obszaru roboczego usługi Log Analytics i konta automatyzacji. Po utworzeniu łącza, a następnie można użyć tego obszaru roboczego usługi Log Analytics i konta automatyzacji dla dowolnego rozwiązania.
+Po zainstalowaniu rozwiązania za pośrednictwem portalu Azure Marketplace zostanie wyświetlony monit o podanie konta obszaru roboczego i usługi Automatyzacja. Łącze między nimi jest tworzone, jeśli nie są jeszcze połączone.
 
 ### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>Weryfikowanie łącza między obszarem roboczym usługi Log Analytics a kontem automatyzacji
 Można zweryfikować łącze między obszarem roboczym usługi Log Analytics i kontem automatyzacji, wykonując poniższą procedurę.

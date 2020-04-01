@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/21/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: d08ce1c382d173ac98a0e61e6117ed50b958ba44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c733538a4e730a95008a8ec1e4d50c20d6ce24ec
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76119843"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420762"
 ---
-# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>Uaktualnianie aplikacji IPv4 do IPv6 w sieci wirtualnej platformy Azure — PowerShell (wersja zapoznawcza)
+# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Uaktualnianie aplikacji IPv4 do IPv6 w sieci wirtualnej platformy Azure — PowerShell
 
 W tym artykule pokazano, jak dodać łączność IPv6 do istniejącej aplikacji IPv4 w sieci wirtualnej platformy Azure z modułem równoważenia obciążenia standardowego i publicznym adresem IP. Modernizacja w miejscu obejmuje:
 - Przestrzeń adresowa IPv6 dla sieci wirtualnej i podsieci
@@ -28,8 +28,7 @@ W tym artykule pokazano, jak dodać łączność IPv6 do istniejącej aplikacji 
 - Maszyny wirtualne z kartami sieciowymi, które mają zarówno konfigurację IPv4 + IPv6
 - Publiczny adres IP IPv6, dzięki czemu moduł równoważenia obciążenia ma łączność IPv6 z dostępem do Internetu
 
-> [!Important]
-> Obsługa IPv6 dla usługi Azure Virtual Network jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -37,27 +36,6 @@ Jeśli zdecydujesz się zainstalować i używać programu PowerShell lokalnie, t
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-### <a name="register-the-service"></a>Zarejestruj usługę
-
-Przed wdrożeniem aplikacji z dwoma stosami na platformie Azure należy skonfigurować subskrypcję dla tej funkcji w wersji zapoznawczej przy użyciu następującej usługi Azure PowerShell:
-
-Zarejestruj się w następujący sposób:
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-Rejestracja funkcji trwa do 30 minut. Możesz sprawdzić stan rejestracji, uruchamiając następujące polecenie programu Azure PowerShell: Sprawdź rejestrację w następujący sposób:
-```azurepowershell
-Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-Po zakończeniu rejestracji uruchom następujące polecenie:
-
-```azurepowershell
-Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-### <a name="create-a-standard-load-balancer"></a>Tworzenie usługi Load Balancer w warstwie Standardowa
 W tym artykule przyjęto założenie, że wdrożono standardowy moduł równoważenia obciążenia zgodnie z opisem w [przewodniku Szybki start: Tworzenie standardowego modułu równoważenia obciążenia — Azure PowerShell](../load-balancer/quickstart-create-standard-load-balancer-powershell.md).
 
 ## <a name="retrieve-the-resource-group"></a>Pobieranie grupy zasobów
@@ -176,8 +154,7 @@ Sieć wirtualną z dwoma stosami IPv6 można wyświetlić w witrynie Azure Porta
 
   ![Sieć wirtualna z dwoma stosami IPv6 na platformie Azure](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
-> [!NOTE]
-> Sieć wirtualna IPv6 dla platformy Azure jest dostępna w witrynie Azure portal tylko do odczytu w tej wersji w wersji zapoznawczej.
+
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

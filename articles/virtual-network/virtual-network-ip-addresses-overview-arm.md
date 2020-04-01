@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 176cd9b0bf72a123bc644ebc27ee0e091aa54e97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9de94dab7000cee90f4448aa6d81196d3865e021
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245189"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474412"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy adresów IP i metody alokacji na platformie Azure
 
@@ -99,7 +99,7 @@ Statyczne publiczne adresy IP są powszechnie używane w następujących scenari
 * Gdy musisz aktualizować reguły zapory, aby komunikować się z zasobami platformy Azure.
 * Rozpoznawanie nazw DNS, gdzie zmiana adresu IP wymaga aktualizacji rekordów A.
 * Zasoby platformy Azure komunikują się z innymi aplikacjami lub usługami, które korzystają z modelu zabezpieczeń opartych na adres IP.
-* Używasz certyfikatów SSL połączonych z adresem IP.
+* Używasz certyfikatów TLS/SSL połączonych z adresem IP.
 
 > [!NOTE]
 > Platforma Azure przydziela publiczne adresy IP z zakresu unikatowego dla każdego regionu w każdej chmurze platformy Azure. Możesz pobrać listę zakresów (prefiksów) dla następujących chmur platformy Azure: [Publiczna](https://www.microsoft.com/download/details.aspx?id=56519), [Instytucje rządowe USA](https://www.microsoft.com/download/details.aspx?id=57063), [Chiny](https://www.microsoft.com/download/details.aspx?id=57062) i [Niemcy](https://www.microsoft.com/download/details.aspx?id=57064).
@@ -121,7 +121,7 @@ Możesz skojarzyć publiczny adres IP z maszyną wirtualną systemu [Windows](..
 
 ### <a name="internet-facing-load-balancers"></a>Moduły równoważenia obciążenia dostępne z Internetu
 
-Publiczny adres IP utworzony przy użyciu dowolnej jednostki [SKU](#sku) możesz skojarzyć z usługą [Azure Load Balancer](../load-balancer/load-balancer-overview.md), przypisując go do konfiguracji **frontonu** modułu równoważenia obciążenia. Publiczny adres IP służy jako wirtualny adres IP (VIP) o zrównoważonym obciążeniu. Do frontonu modułu równoważenia obciążenia możesz przypisać dynamiczny lub statyczny publiczny adres IP. Do frontonu modułu równoważenia obciążenia możesz także przypisać wiele publicznych adresów IP, co umożliwiają scenariusze [wielu VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), takie jak środowisko wielodostępne z witrynami sieci Web opartymi na protokole SSL. Aby uzyskać więcej informacji na temat jednostek SKU usługi Azure Load Balancer, zobacz [Azure load balancer standard SKU (Usługa Azure Load Balancer — standardowa jednostka SKU)](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Publiczny adres IP utworzony przy użyciu dowolnej jednostki [SKU](#sku) możesz skojarzyć z usługą [Azure Load Balancer](../load-balancer/load-balancer-overview.md), przypisując go do konfiguracji **frontonu** modułu równoważenia obciążenia. Publiczny adres IP służy jako wirtualny adres IP (VIP) o zrównoważonym obciążeniu. Do frontonu modułu równoważenia obciążenia możesz przypisać dynamiczny lub statyczny publiczny adres IP. Można również przypisać wiele publicznych adresów IP do front-endu modułu równoważenia obciążenia, co umożliwia wyświetlanie scenariuszy [wielu adresów VIP,](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) takich jak środowisko wielodostępne z witrynami sieci Web opartymi na TLS. Aby uzyskać więcej informacji na temat jednostek SKU usługi Azure Load Balancer, zobacz [Azure load balancer standard SKU (Usługa Azure Load Balancer — standardowa jednostka SKU)](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="vpn-gateways"></a>Bramy sieci VPN
 

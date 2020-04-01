@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 393c3a06a2366a7d6947faf8bbfe038d6c5982fc
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160070"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419664"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Aplikacja jednostronicowa: uzyskaj token do wywoływania interfejsu API
 
@@ -42,7 +42,7 @@ Można ustawić zakresy interfejsu API, które mają token dostępu do uwzględn
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>Uzyskiwanie tokenu z wyskakującym oknem
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Poniższy kod łączy wcześniej opisany wzorzec z metodami wyskakujących wyskakujących pojęć:
 
@@ -76,20 +76,40 @@ Otoka kątowa MSAL udostępnia interceptor HTTP, który automatycznie uzyskuje t
 Zakresy interfejsów API można określić `protectedResourceMap` w opcji konfiguracji. `MsalInterceptor`zażąda tych zakresów podczas automatycznego pozyskiwania tokenów.
 
 ```javascript
-//In app.module.ts
+// app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
-                protectedResourceMap: {"https://graph.microsoft.com/v1.0/me", ["user.read", "mail.send"]}
-            })]
-         })
-
-providers: [ ProductService, {
-        provide: HTTP_INTERCEPTORS,
-        useClass: MsalInterceptor,
-        multi: true
+  declarations: [
+    // ...
+  ],
+  imports: [
+    // ...
+    MsalModule.forRoot({
+      auth: {
+        clientId: 'Enter_the_Application_Id_Here',
+      }
+    },
+    {
+      popUp: !isIE,
+      consentScopes: [
+        'user.read',
+        'openid',
+        'profile',
+      ],
+      protectedResourceMap: [
+        ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+      ]
+    })
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
     }
-   ],
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
 Dla powodzenia i niepowodzenia nabycia cichego tokenu MSAL Angular zapewnia wywołania zwrotne, które można subskrybować. Ważne jest również, aby pamiętać o rezygnacji z subskrypcji.
@@ -103,7 +123,7 @@ Dla powodzenia i niepowodzenia nabycia cichego tokenu MSAL Angular zapewnia wywo
 
 ngOnDestroy() {
    this.broadcastService.getMSALSubject().next(1);
-   if(this.subscription) {
+   if (this.subscription) {
      this.subscription.unsubscribe();
    }
  }
@@ -115,7 +135,7 @@ Alternatywnie można jawnie uzyskać tokeny przy użyciu metod pozyskiwania toke
 
 ## <a name="acquire-a-token-with-a-redirect"></a>Zdobądź token z przekierowaniem
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Poniższy wzorzec jest opisany wcześniej, ale pokazano za pomocą metody przekierowania do nabycia tokenów interaktywnie. Musisz zarejestrować wywołanie zwrotne przekierowania, jak wspomniano wcześniej.
 
@@ -149,16 +169,16 @@ Oświadczenia opcjonalne można używać do następujących celów:
 
 - Dołącz dodatkowe oświadczenia w tokenach dla aplikacji.
 - Zmień zachowanie niektórych oświadczeń, które usługa Azure AD zwraca w tokenach.
-- Dodawanie i uzyskiwanie dostępu do oświadczeń niestandardowych dla aplikacji. 
+- Dodawanie i uzyskiwanie dostępu do oświadczeń niestandardowych dla aplikacji.
 
 Aby zażądać `IdToken`opcjonalnych oświadczeń w programie , `claimsRequest` można `AuthenticationParameters.ts` wysłać obiekt oświadczeń ciągnionych do pola klasy.
 
 ```javascript
-"optionalClaims":  
+"optionalClaims":
    {
       "idToken": [
             {
-                  "name": "auth_time", 
+                  "name": "auth_time",
                   "essential": true
              }
       ],

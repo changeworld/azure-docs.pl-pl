@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d27c648980338b3a9e12bd618eb4620fe9988fd7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206983"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436912"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Często zadawane pytania dotyczące platformy Apache Kafka w ramach usługi Azure HDInsight
 
@@ -50,7 +50,7 @@ Korzystając z [pakietu zabezpieczeń przedsiębiorstwa (ESP),](../domain-joined
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Czy moje dane są szyfrowane? Czy mogę używać własnych kluczy?
 
-Wszystkie komunikaty platformy Kafka na dyskach zarządzanych są szyfrowane za pomocą [szyfrowania usługi Azure Storage Service Encryption (SSE).](../../storage/common/storage-service-encryption.md) Dane w tranzycie (na przykład dane przesyłane od klientów do brokerów i na odwrót) nie są domyślnie szyfrowane. Można zaszyfrować taki [ruch, konfigurując SSL na własną rękę.](./apache-kafka-ssl-encryption-authentication.md) Ponadto usługa HDInsight umożliwia zarządzanie własnymi kluczami w celu szyfrowania danych w spoczynku. Aby uzyskać więcej informacji, zobacz [Szyfrowanie dysku klucza zarządzanego](../disk-encryption.md)przez klienta.
+Wszystkie komunikaty platformy Kafka na dyskach zarządzanych są szyfrowane za pomocą [szyfrowania usługi Azure Storage Service Encryption (SSE).](../../storage/common/storage-service-encryption.md) Dane w tranzycie (na przykład dane przesyłane od klientów do brokerów i na odwrót) nie są domyślnie szyfrowane. Możliwe jest szyfrowanie takiego ruchu poprzez [samodzielne konfigurowanie protokołu TLS.](./apache-kafka-ssl-encryption-authentication.md) Ponadto usługa HDInsight umożliwia zarządzanie własnymi kluczami w celu szyfrowania danych w spoczynku. Aby uzyskać więcej informacji, zobacz [Szyfrowanie dysku klucza zarządzanego](../disk-encryption.md)przez klienta.
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>Jak połączyć klientów z klastrem?
 
@@ -96,5 +96,5 @@ Użyj monitora platformy Azure do analizowania [dzienników platformy Kafka](./a
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Konfigurowanie szyfrowania i uwierzytelniania warstwy SSL (Secure Sockets Layer) dla platformy Apache Kafka w usłudze Azure HDInsight](./apache-kafka-ssl-encryption-authentication.md)
+* [Konfigurowanie szyfrowania i uwierzytelniania protokołu TLS dla platformy Apache Kafka w usłudze Azure HDInsight](./apache-kafka-ssl-encryption-authentication.md)
 * [Replikowanie tematów platformy Apache Kafka przy użyciu platformy Kafka w usłudze HDInsight za pomocą narzędzia MirrorMaker](./apache-kafka-mirroring.md)

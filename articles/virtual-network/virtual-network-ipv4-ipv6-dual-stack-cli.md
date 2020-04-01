@@ -11,49 +11,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/17/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: b9021784216f02fb117f6e63e150b37b07755912
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 396c37d4c8de6a890102e435c5ec6cc70b598638
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239849"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421021"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli-preview"></a>Wdrażanie aplikacji z dwoma stosami IPv6 przy użyciu podstawowego modułu równoważenia obciążenia — interfejs wiersza polecenia (wersja zapoznawcza)
+# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli"></a>Wdrażanie aplikacji dwusłonowej IPv6 przy użyciu podstawowego modułu równoważenia obciążenia — cli
 
-W tym artykule pokazano, jak wdrożyć aplikację podwójnego stosu (IPv4 + IPv6) z podstawowym modułem równoważenia obciążenia przy użyciu interfejsu wiersza polecenia platformy Azure, która zawiera sieć wirtualną z dwoma stosami z podsiecią z dwoma stosami, podstawowy moduł równoważenia obciążenia z dwoma (IPv4 + IPv6) konfiguracjami frontonacyjnymi, maszyny wirtualne z kartami sieciowymi które mają podwójną konfigurację IP, dwie reguły grupy zabezpieczeń sieci i dwa publiczne adresy IP.
+W tym artykule pokazano, jak wdrożyć aplikację podwójnego stosu (IPv4 + IPv6) z podstawowym modułem równoważenia obciążenia przy użyciu interfejsu wiersza polecenia platformy Azure, która zawiera sieć wirtualną z dwoma stosami z podsiecią z podwójnym stosem, podstawowy moduł równoważenia obciążenia z dwoma (IPv4 + IPv6), maszyny wirtualne z kartami sieciowymi, które mają podwójną konfigurację IP, dwie reguły grupy zabezpieczeń sieci i podwójne publiczne adresy IP.
 
 Aby wdrożyć aplikację z dwoma stosami (IPV4 + IPv6) przy użyciu standardowego modułu równoważenia obciążenia, zobacz [Wdrażanie aplikacji podwójnego stosu IPv6 ze standardowym modułem równoważenia obciążenia przy użyciu narzędzia Azure CLI.](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md)
 
-> [!Important]
-> Podwójny stos IPv6 dla usługi Azure Virtual Network jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Jeśli nie masz subskrypcji platformy Azure, utwórz teraz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Jeśli zdecydujesz się zainstalować i używać interfejsu wiersza polecenia platformy Azure lokalnie zamiast tego, ten szybki start wymaga użycia interfejsu wiersza polecenia platformy Azure w wersji 2.0.49 lub nowszej. Aby dowiedzieć się, jaka wersja jest zainstalowana, uruchom polecenie `az --version`. Aby uzyskać informacje na temat instalacji i uaktualnienia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
-
-## <a name="prerequisites"></a>Wymagania wstępne
-Aby korzystać z funkcji sieci wirtualnej IPv6 dla platformy Azure, należy skonfigurować subskrypcję przy użyciu interfejsu wiersza polecenia platformy Azure w następujący sposób:
-
-```azurecli
-az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-Rejestracja funkcji trwa do 30 minut. Możesz sprawdzić stan rejestracji, uruchamiając następujące polecenie interfejsu wiersza polecenia platformy Azure:
-
-```azurecli
-az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-Po zakończeniu rejestracji uruchom następujące polecenie:
-
-```azurecli
-az provider register --namespace Microsoft.Network
-```
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -387,8 +365,6 @@ Sieć wirtualną z dwoma stosami IPv6 można wyświetlić w witrynie Azure Porta
 
   ![Sieć wirtualna z dwoma stosami IPv6 na platformie Azure](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
-> [!NOTE]
-> Sieć wirtualna IPv6 dla platformy Azure jest dostępna w witrynie Azure portal tylko do odczytu w tej wersji w wersji zapoznawczej.
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

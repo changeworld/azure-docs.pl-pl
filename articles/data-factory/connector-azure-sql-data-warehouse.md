@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/25/2020
-ms.openlocfilehash: 950bbc17af920f104f31af4d324f5546ff29217e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 822a981b84919670aa476567625cdf914206eaa8
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257958"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422181"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiowanie i przekształcanie danych w usłudze Azure Synapse Analytics (dawniej Usługa Azure SQL Data Warehouse) przy użyciu usługi Azure Data Factory 
 
@@ -45,7 +45,7 @@ W przypadku działania kopiowania ten łącznik usługi Azure Synapse Analytics 
 > Jeśli kopiujesz dane przy użyciu środowiska wykonawczego integracji usługi Azure Data Factory Integration, skonfiguruj [zaporę serwera SQL platformy Azure,](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) aby usługi platformy Azure mogły uzyskać dostęp do serwera.
 > Jeśli kopiujesz dane przy użyciu środowiska uruchomieniowego integracji hostowanego samodzielnie, skonfiguruj zaporę serwera SQL platformy Azure, aby zezwoliła na odpowiedni zakres adresów IP. Ten zakres obejmuje adres IP komputera, który jest używany do łączenia się z usługą Azure Synapse Analytics.
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 > [!TIP]
 > Aby osiągnąć najlepszą wydajność, użyj PolyBase, aby załadować dane do usługi Azure Synapse Analytics. [Sekcja Użyj polybase do ładowania danych do usługi Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sekcja zawiera szczegółowe informacje. Aby uzyskać instruktaż z przypadkiem użycia, zobacz [Ładowanie 1 TB do usługi Azure Synapse Analytics w ramach 15 minut za pomocą usługi Azure Data Factory](load-azure-sql-data-warehouse.md).
@@ -485,7 +485,7 @@ Jeśli wymagania nie są spełnione, usługa Azure Data Factory sprawdza ustawie
 
 ### <a name="staged-copy-by-using-polybase"></a>Kopia etapowa przy użyciu bazy PolyBase
 
-Jeśli dane źródłowe nie są natywnie zgodne z PolyBase, włącz kopiowanie danych za pośrednictwem tymczasowego przejściowego wystąpienia magazynu obiektów Blob platformy Azure (nie może to być usługa Azure Premium Storage). W takim przypadku usługa Azure Data Factory automatycznie konwertuje dane w celu spełnienia wymagań dotyczących formatu danych polybase. Następnie wywołuje PolyBase załadować dane do magazynu danych SQL. Na koniec czyści dane tymczasowe z magazynu obiektów blob. Zobacz [kopia etapowa, aby](copy-activity-performance.md#staged-copy) uzyskać szczegółowe informacje na temat kopiowania danych za pośrednictwem przejściowego wystąpienia magazynu obiektów Blob.
+Jeśli dane źródłowe nie są natywnie zgodne z PolyBase, włącz kopiowanie danych za pośrednictwem tymczasowego przejściowego wystąpienia magazynu obiektów Blob platformy Azure (nie może to być usługa Azure Premium Storage). W takim przypadku usługa Azure Data Factory automatycznie konwertuje dane w celu spełnienia wymagań dotyczących formatu danych polybase. Następnie wywołuje PolyBase załadować dane do magazynu danych SQL. Na koniec czyści dane tymczasowe z magazynu obiektów blob. Zobacz [kopia etapowa, aby](copy-activity-performance-features.md#staged-copy) uzyskać szczegółowe informacje na temat kopiowania danych za pośrednictwem przejściowego wystąpienia magazynu obiektów Blob.
 
 Aby użyć tej funkcji, utwórz [usługę połączona usługi Azure Blob Storage,](connector-azure-blob-storage.md#linked-service-properties) która odwołuje się do konta magazynu platformy Azure z tymczasowym magazynem obiektów blob. Następnie `enableStaging` określ `stagingSettings` i właściwości działania kopiowania, jak pokazano w poniższym kodzie.
 
@@ -613,7 +613,7 @@ Użycie instrukcji COPY obsługuje następującą konfigurację:
 2. Ustawienia formatu są następujące:
 
    1. Dla **Parkietu** `compression` : może być bez **kompresji**, **Snappy**lub **GZip**.
-   2. Dla **ORC**: `compression` może być **bez kompresji**, **zlib**lub **Snappy**.
+   2. Dla **ORC** `compression` : może **```zlib```** być bez **kompresji**, lub **Snappy**.
    3. W przypadku **tekstu rozdzielanych**:
       1. `rowDelimiter`jest jawnie ustawiona jako **pojedynczy znak** lub "**\r\n**", wartość domyślna nie jest obsługiwana.
       2. `nullValue`pozostaje jako domyślny lub ustawiony na **pusty ciąg** ("").
@@ -705,7 +705,7 @@ Ustawienia specyficzne dla usługi Azure Synapse Analytics są dostępne na karc
 
 * Przykład SQL:```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**Rozmiar partii:** Wprowadź rozmiar partii, aby podzielić duże dane na odczyty.
+**Rozmiar partii:** Wprowadź rozmiar partii, aby podzielić duże dane na odczyty. W przepływach danych usługa ADF użyje tego ustawienia do ustawiania buforowania kolumnowego platformy Spark. Jest to pole opcji, które będzie używać domyślnych opcji Spark, jeśli pozostanie puste.
 
 **Poziom izolacji:** Domyślna wartość źródeł SQL w przepływie danych mapowania jest odczytywana niezatwierdzone. W tym miejscu można zmienić poziom izolacji na jedną z następujących wartości:
 * Odczytu zatwierdzonego

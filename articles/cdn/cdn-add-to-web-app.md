@@ -16,10 +16,10 @@ ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67594225"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Samouczek: dodawanie usługi Azure CDN do aplikacji internetowej usługi Azure App Service
@@ -43,7 +43,7 @@ Zawartość:
 W celu ukończenia tego samouczka:
 
 - [Zainstaluj oprogramowanie Git](https://git-scm.com/)
-- [Zainstalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -76,7 +76,7 @@ Na stronie **Azure Content Delivery Network** określ ustawienia dla **nowego pu
 | ------- | --------------- | ----------- |
 | **Profil CDN** | myCDNProfile | Profil CDN jest kolekcją punktów końcowych usługi CDN znajdujących się w tej samej warstwie cenowej. |
 | **Warstwa cenowa** | Standard Akamai | [Warstwa cenowa](cdn-features.md) określa dostawcę i dostępne funkcje. W tym samouczku jest używana warstwa *Standard Akamai*. |
-| **Nazwa punktu końcowego usługi CDN** | Dowolna unikatowa nazwa w domenie azureedge.net | Dostęp do zbuforowanych zasobów można uzyskać w domenie *&lt;nazwapunktukoncowego&gt;* .azureedge.net.
+| **Nazwa punktu końcowego usługi CDN** | Dowolna unikatowa nazwa w domenie azureedge.net | Dostęp do buforowanych zasobów w domenie * &lt;endpointname&gt;*.azureedge.net.
 
 Wybierz pozycję **Utwórz**, aby utworzyć profil CDN.
 
@@ -210,7 +210,7 @@ W witrynie Azure Portal na stronie **Punkt końcowy usługi CDN** wybierz pozycj
 
 Z listy rozwijanej **Zachowanie buforowania ciągu kwerendy** wybierz pozycję **Buforuj każdy unikatowy adres URL**.
 
-Wybierz pozycję **Zapisz**.
+Wybierz **pozycję Zapisz**.
 
 ![Wybieranie zachowania buforowania ciągów zapytań](media/cdn-add-to-web-app/portal-select-caching-behavior.png)
 
@@ -256,7 +256,7 @@ Aby uzyskać więcej informacji, zobacz [Control Azure CDN caching behavior with
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Które czynności umiesz wykonać:
 
@@ -268,6 +268,6 @@ Które czynności umiesz wykonać:
 Zapoznaj się z następującymi artykułami, aby dowiedzieć się, jak zoptymalizować wydajność usługi CDN:
 
 > [!div class="nextstepaction"]
-> [Samouczek: Dodawanie domeny niestandardowej do punktu końcowego usługi Azure CDN](cdn-map-content-to-custom-domain.md)
+> [Samouczek: dodawanie domeny niestandardowej do punktu końcowego usługi Azure CDN](cdn-map-content-to-custom-domain.md)
 
 

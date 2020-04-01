@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 11/04/2019
-ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270422"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398180"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Co to są obiekty docelowe obliczeń w usłudze Azure Machine Learning? 
 
@@ -48,12 +48,14 @@ Dowiedz [się, gdzie i jak wdrożyć model w celu obliczeniowym.](how-to-deploy-
 
 Zarządzany zasób obliczeniowy jest tworzony i zarządzany przez usługę Azure Machine Learning. To obliczenie jest zoptymalizowane pod kątem obciążeń uczenia maszynowego. Klastry obliczeniowe i [wystąpienia obliczeniowe](concept-compute-instance.md) usługi Azure Machine Learning są jedynymi zarządzanymi obliczeniami. Dodatkowe zarządzane zasoby obliczeniowe mogą zostać dodane w przyszłości.
 
-Wystąpienia obliczeniowe usługi Azure Machine Learning (wersja zapoznawcza) lub klastry obliczeniowe można utworzyć w:
+Można utworzyć wystąpienia obliczeniowe usługi Azure Machine Learning (wersja zapoznawcza) lub klastry obliczeniowe z:
+* Studio uczenia maszynowego Azure
+* Azure Portal
+* Klasy [obliczeń](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) SDK języka Python i [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)
+* [Zestaw SDK języka R](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
+* Szablon usługi Resource Manager
 
-| | Studio uczenia maszynowego Azure | Portal Azure | SDK | Szablon usługi Resource Manager | Interfejs wiersza polecenia |
-|---| ----- | ----- | ----- | ----- | ----- |
-| Wystąpienie obliczeniowe | tak | tak | tak | tak |  |
-| Klaster obliczeniowy | tak | tak | tak | tak | tak |
+Można również tworzyć klastry obliczeniowe przy użyciu [rozszerzenia uczenia maszynowego dla interfejsu wiersza polecenia platformy Azure.](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training)
 
 Po utworzeniu te zasoby obliczeniowe są automatycznie częścią obszaru roboczego w przeciwieństwie do innych rodzajów celów obliczeniowych.
 

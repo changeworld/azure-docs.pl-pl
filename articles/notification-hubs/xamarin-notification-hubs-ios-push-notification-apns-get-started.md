@@ -238,4 +238,4 @@ W tym samouczku wysłano wyemitowane powiadomienia do wszystkich urządzeń z sy
 [Apple Push Notification Service]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [Apple Push Notification Service fwlink]: https://go.microsoft.com/fwlink/p/?LinkId=272584
 [GitHub]: https://github.com/xamarin/mobile-samples/tree/master/Azure/NotificationHubs
-[Portal Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

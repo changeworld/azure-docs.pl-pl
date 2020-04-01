@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b0b9d62e8761cfb67d0642d8e5a97e7d1f05af12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0a5e89f256b562ce5f702e9ff1388cb4d021bf5
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064449"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437689"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Pozyskiwanie historycznych danych telemetrycznych
 
@@ -37,37 +37,48 @@ Wykonaj następujące kroki:
 > [!NOTE]
 > Musisz być administratorem, aby wykonać następujące kroki.
 
-1. Pobierz [plik zip](https://aka.ms/farmbeatspartnerscriptv2)i wyodrębnij go na dysk lokalny. Wewnątrz pliku zip znajdzie się jeden plik.
+1. Zaloguj się do witryny https://portal.azure.com/.
 
-2. Zaloguj się https://portal.azure.com/ i przejdź do**rejestracji aplikacji**usługi Azure **Active Directory** > .
+2. **Jeśli korzystasz z FarmBeats w wersji 1.2.7 lub nowszej, pomiń kroki a, b i c i przejdź do kroku 3.** Wersję FarmBeats można sprawdzić, wybierając ikonę **Ustawienia** w prawym górnym rogu interfejsu FarmBeats.
 
-3. Wybierz **rejestrację aplikacji,** która została utworzona w ramach wdrożenia FarmBeats. Będzie miał taką samą nazwę jak FarmBeats Datahub.
+      a.  Przejdź do rejestracji**aplikacji** **usługi Azure Active Directory** > 
 
-4. Wybierz **opcję Uwidaczniaj interfejs API** > wybierz pozycję Dodaj aplikację **kliencką** i wprowadź **04b07795-8ddb-461a-bbee-02f9e1bf7b46** i zaznacz opcję **Autoryzuj zakres**. Spowoduje to udzielenie dostępu do interfejsu wiersza polecenia platformy Azure (Cloud Shell) w celu wykonania następujących kroków:
+      b. Wybierz **rejestrację aplikacji,** która została utworzona w ramach wdrożenia FarmBeats. Będzie miał taką samą nazwę jak Plik danych FarmBeats.
 
-5. Otwórz usługę Cloud Shell. Ta opcja jest dostępna na pasku narzędzi w prawym górnym rogu witryny Azure portal.
+      d. Wybierz **opcję Uwidaczniaj interfejs API** > wybierz pozycję Dodaj aplikację **kliencką** i wprowadź **04b07795-8ddb-461a-bbee-02f9e1bf7b46** i zaznacz opcję **Autoryzuj zakres**. Spowoduje to udzielenie dostępu do interfejsu wiersza polecenia platformy Azure (Cloud Shell) w celu wykonania poniższych kroków:
+
+3. Otwórz usługę Cloud Shell. Ta opcja jest dostępna na pasku narzędzi w prawym górnym rogu witryny Azure portal.
 
     ![Pasek narzędzi portalu Azure](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-6. Upewnij się, że środowisko jest ustawione na **program PowerShell**. Domyślnie jest ustawiona na Bash.
+4. Upewnij się, że środowisko jest ustawione na **program PowerShell**. Domyślnie jest ustawiona na Bash.
 
     ![Ustawienie paska narzędzi programu PowerShell](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-7. Przekaż plik z kroku 1 w wystąpieniu usługi Cloud Shell.
+5. Przejdź do katalogu domowego.
 
-    ![Przycisk Przekaż pasek narzędzi](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+    ```azurepowershell-interactive 
+    cd  
+    ```
 
-8. Przejdź do katalogu, w którym plik został przekazany. Domyślnie pliki są przekazywane do katalogu macierzystego pod nazwą użytkownika.
+6. Uruchom następujące polecenie. Spowoduje to pobranie skryptu do katalogu macierzystego.
 
-9. Uruchom następujący skrypt. Skrypt prosi o identyfikator dzierżawy, który można uzyskać ze**strony Przegląd**usługi Azure **Active Directory** > .
+    ```azurepowershell-interactive 
 
-    ```azurepowershell-interactive
+    wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
+
+    ```
+
+7. Uruchom następujący skrypt. Skrypt prosi o identyfikator dzierżawy, który można uzyskać ze strony**Przegląd** **usługi Azure Active Directory.** > 
+
+    ```azurepowershell-interactive 
 
     ./generatePartnerCredentials.ps1   
 
     ```
 
-10. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby przechwycić wartości **dla punktu końcowego interfejsu API,** **identyfikatora dzierżawy,** **identyfikatora klienta,** **klucza tajnego klienta**i ciągu połączenia **EventHub.**
+8. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby przechwycić wartości **dla punktu końcowego interfejsu API,** **identyfikatora dzierżawy,** **identyfikatora klienta,** **klucza tajnego klienta**i ciągu połączenia **EventHub.**
+
 
 ## <a name="create-device-or-sensor-metadata"></a>Tworzenie metadanych urządzenia lub czujnika
 
@@ -108,8 +119,8 @@ Wykonaj następujące kroki:
 |     Kod_produktu| Kod produktu lub nazwa lub numer modelu. Na przykład RS-CO2-N01. |
 |       SensorZezuje nazwę >       | Nazwa miary czujnika. Obsługiwane są tylko małe litery. W przypadku pomiarów z różnych głębokości należy określić głębokość. Na przykład soil_moisture_15cm. Ta nazwa musi być zgodna z danymi telemetrycznymi.  |
 |          SensorZezamia > DataType       |Typ danych telemetrycznych. Obecnie obsługiwane jest double.|
-|    SensorZezje typ >    |Typ pomiaru danych telemetrycznych czujnika. Typy zdefiniowane przez system to AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, Nitrate, O2, PH, Phosphate, PointInTime, Potassium, Pressure, RainGauge, RelativeHumidity, Salinity, SoilMoisture, GlebaTemperytura, SolarRadiation, Stan, TimeDuration, UVRadiation, UVIndex, Objętość, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Aby dodać więcej, zapoznaj się z interfejsem API /ExtendedType.|
-|        SensorZezje > jednostkę              | Jednostka danych telemetrycznych czujnika. Zdefiniowane przez system jednostki to NoUnit, Celsjusza, Fahrenheita, Kelvin, Rankine, Pascal, Mercury, PSI, MilliMeter, CentiMeter, Meter, Inch, Feet, Mile, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSeconiMeter, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, MilliLiter, Seconds, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour Aby dodać więcej, zapoznaj się z /ExtendedType API.|
+|    SensorZezje typ >    |Typ pomiaru danych telemetrycznych czujnika. Typy zdefiniowane przez system to AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Długość, LiquidLevel, Azotan, O2, PH, Fosforan, PointInTime, Potas, Ciśnienie, RainGauge, WzględnaHumidity, Zasolenie, GlebaPrzestrzenianie, GlebaTemperatyzacja, SolarRadiation, Stan, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Aby dodać więcej, zapoznaj się z interfejsem API /ExtendedType.|
+|        SensorZezje > jednostkę              | Jednostka danych telemetrycznych czujnika. Jednostki zdefiniowane przez system to NoUnit, Celsjusza, Fahrenheita, Kelvin, Rankine, Pascal, Mercury, PSI, MilliMeter, CentiMeter, Meter, Inch, Feet, Mile, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Procent, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Litr, MilliLiLi Intryt, Sekundy, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour Aby dodać więcej, zapoznaj się z interfejsem API /ExtendedType.|
 |    SensorMeasures > AggregationType    |  Wartości mogą być żadne, średnie, maksymalne, minimalne lub Standardoweodwianie.  |
 |          Nazwa            | Nazwa identyfikującego zasób. Na przykład nazwa modelu lub nazwa produktu.  |
 |    Opis        | Podaj opis modelu.|
@@ -130,7 +141,7 @@ Aby uzyskać więcej informacji o obiektach, zobacz [Swagger](https://aka.ms/Far
 
 Aby utworzyć żądanie interfejsu API, należy połączyć metodę HTTP (POST), adres URL z usługą interfejsu API i identyfikator URI z zasobem, aby wykonać kwerendę, przesłać dane do żądania, utworzyć lub usunąć je. Następnie należy dodać jeden lub więcej nagłówków żądań HTTP. Adres URL usługi interfejsu API jest punktem końcowym interfejsu API, czyli\<adresem URL datahub (https:// yourdatahub>.azurewebsites.net).  
 
-### <a name="authentication"></a>Uwierzytelnianie
+### <a name="authentication"></a>Authentication
 
 Usługa FarmBeats Datahub używa uwierzytelniania na okaziciela, które wymaga następujących poświadczeń, które zostały wygenerowane w poprzedniej sekcji:
 
@@ -351,11 +362,11 @@ Konwertuj format danych z czujników historycznych na format kanoniczny, który 
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<values>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }
@@ -429,11 +440,11 @@ Oto przykład komunikatu telemetryczne:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }

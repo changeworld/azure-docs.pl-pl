@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 13852acb39a420e2f0da84e18bef4df823c1fa78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5136a00421aebaa72998b1dfcdf75feb935851c6
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206269"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435454"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Zaawansowana ochrona przed zagrożeniami usługi Microsoft Defender za pomocą usługi Azure Security Center
 
@@ -62,7 +62,7 @@ Aby włączyć serwery wbudowane do Centrum zabezpieczeń, kliknij pozycję **Pr
 1. W obszarze **Dołączanie** zaznacz lub utwórz obszar roboczy, w którym mają być przechowywane dane. <br>
 2. Jeśli nie widzisz wszystkich obszarów roboczych, może to być spowodowane brakiem uprawnień, upewnij się, że obszar roboczy jest ustawiony na warstwę Azure Security Standard. Aby uzyskać więcej informacji, zobacz [Uaktualnianie do warstwy standardowej usługi Security Center, aby uzyskać większe bezpieczeństwo](security-center-pricing.md).
     
-3. Wybierz **pozycję Dodaj serwery,** aby wyświetlić instrukcje dotyczące instalowania programu Microsoft Monitoring Agent. 
+3. Wybierz **pozycję Dodaj serwery,** aby wyświetlić instrukcje dotyczące instalowania agenta usługi Log Analytics. 
 
 4. Po wliczeniem można monitorować maszyny w obszarze **Obliczenia i aplikacje**.
 

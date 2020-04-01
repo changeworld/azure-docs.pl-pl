@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 0a705ad81925491fe054d846143472c6e4432b69
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 521d5d8d587b39cf573dedc37ea9f6fd53646e66
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77561906"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410948"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania przy użyciu zadania kompilacji emulatora usługi Azure Cosmos DB w usłudze Azure DevOps
 
@@ -178,4 +178,4 @@ Jeśli konfigurujesz potok ciągłej integracji/ciągłego wdrażania przy użyc
 
 Aby dowiedzieć się więcej na temat korzystania z emulatora do celów lokalnego programowania i testowania, zobacz [Programowanie i testowanie w środowisku lokalnym przy użyciu emulatora usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator).
 
-Aby wyeksportować certyfikaty SSL emulatora, zobacz [Eksportowanie certyfikatów emulatora usługi Azure Cosmos DB do użycia w językach Java, Python i Node.js](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)
+Aby wyeksportować certyfikaty emulatora TLS/SSL, zobacz [Eksportowanie certyfikatów emulatora usługi Azure Cosmos DB do użytku z językami Java, Python i Node.js](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)

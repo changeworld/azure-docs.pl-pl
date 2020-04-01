@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a429a1e454e73a1a9d544e308e5b2d60052d91a9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7a31eece6629558b14b614853addce59642e698b
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349770"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422721"
 ---
 # <a name="troubleshoot"></a>Rozwiązywanie problemów
 
@@ -38,7 +38,9 @@ Aby pobrać plik **deployer.log,** wykonaj następujące czynności:
 **Działania naprawcze:**
 
 1. Przejdź do grupy zasobów FarmBeats Datahub.   
+
 2. Wybierz **Centrum zdarzeń** (DatafeedEventHubNamespace), a następnie sprawdź liczbę wiadomości przychodzących.
+
 3. Wykonaj jedną z następujących czynności:   
    - Jeśli *nie ma żadnych przychodzących wiadomości,* skontaktuj się z partnerem urządzenia.  
    - Jeśli są *wiadomości przychodzące,* kontakt farmbeatssupport@microsoft.com. Dołącz dzienniki datahub i akceleratora oraz przechwycone dane telemetryczne.
@@ -52,6 +54,7 @@ Aby dowiedzieć się, jak pobierać dzienniki, przejdź do sekcji ["Ręczne zbie
 **Działania naprawcze:**
 
 1. Upewnij się, że poprawnie dokonałeś rejestracji partnera — możesz to sprawdzić, przechodząc do witryny datahub, przejdź do /Partner API, Zrób get i sprawdź, czy partner jest zarejestrowany. Jeśli nie, wykonaj [kroki tutaj,](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) aby dodać partnera.
+
 2. Upewnij się, że użyto poprawnego formatu wiadomości telemetrycznych:
 
 ```json
@@ -83,9 +86,12 @@ Aby dowiedzieć się, jak pobierać dzienniki, przejdź do sekcji ["Ręczne zbie
 
 1. W usłudze Datahub Swagger przejdź do interfejsu API partnera.
 2. Wybierz **pozycję Wypróbuj** > **go.** > **Execute**
-3. Zwróć uwagę na identyfikator partnera czujnika, którego jesteś zainteresowany.
-4. Wróć do interfejsu API partnera i wybierz **pozycję\<Pobierz/ID>**.
-5. Określ identyfikator partnera z kroku 3, a następnie wybierz pozycję **Wykonaj**.
+
+> [!NOTE]
+> Identyfikator partnera partnera czujnika, którego jesteś zainteresowany.
+
+3. Wróć do interfejsu API partnera i wybierz **pozycję\<Pobierz/ID>**.
+4. Określ identyfikator partnera z kroku 3, a następnie wybierz pozycję **Wykonaj**.
 
    Odpowiedź interfejsu API powinna mieć parametry połączenia usługi Event Hubs.
 

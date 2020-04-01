@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą adresu E-mail SkyDesk | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i SkyDesk wiadomości E-mail.
+title: 'Samouczek: Integracja usługi Azure Active Directory z pocztą e-mail skydesk | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a pocztą e-mail skydesk.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: faaa5dcc435452d6ed9e0f2c5b481df1e352dfd2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090440"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą adresu E-mail SkyDesk
+# <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Samouczek: Integracja usługi Azure Active Directory z pocztą e-mail usługi SkyDesk
 
-W tym samouczku dowiesz się, jak zintegrować SkyDesk wiadomości E-mail z usługi Azure Active Directory (Azure AD).
-Integrowanie SkyDesk wiadomości E-mail z usługi Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować skydesk poczty e-mail z usługi Azure Active Directory (Azure AD).
+Integracja poczty SkyDesk z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do poczty E-mail SkyDesk.
-* Użytkownikom można automatycznie zalogowany do E-mail SkyDesk (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* W usłudze Azure AD można kontrolować, kto ma dostęp do poczty skydesk.
+* Można włączyć użytkownikom automatyczne logowanie się do skydesk e-mail (logowanie jednokrotne) za pomocą swoich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD przy użyciu adresu E-mail SkyDesk, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z pocztą e-mail skydesk, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Adres E-mail SkyDesk logowanie jednokrotne włączone subskrypcji
+* Subskrypcja z obsługą logowania jednokrotnego SkyDesk
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje E-mail SkyDesk **SP** jednokrotne logowanie inicjowane przez
+* SkyDesk Email obsługuje zainicjowane przez **usługę SP** wprowadzenie SSO
 
-## <a name="adding-skydesk-email-from-the-gallery"></a>Dodawanie funkcji E-mail SkyDesk z galerii
+## <a name="adding-skydesk-email-from-the-gallery"></a>Dodawanie wiadomości e-mail skydesk z galerii
 
-Aby skonfigurować integrację SkyDesk wiadomości e-mail w usłudze Azure AD, należy dodać SkyDesk wiadomości E-mail z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację skydesk poczty e-mail do usługi Azure AD, należy dodać SkyDesk e-mail z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać SkyDesk wiadomości E-mail z galerii, wykonaj następujące czynności:**
+**Aby dodać skydesk e-mail z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -61,37 +61,37 @@ Aby skonfigurować integrację SkyDesk wiadomości e-mail w usłudze Azure AD, n
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **SkyDesk wiadomości E-mail**, wybierz opcję **E-mail SkyDesk** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **SkyDesk Email**, wybierz **SkyDesk Email** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
-     ![SkyDesk poczty E-mail, na liście wyników](common/search-new-app.png)
+     ![SkyDesk E-mail na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji skonfigurujesz i test usługi Azure AD logowania jednokrotnego przy użyciu adresu E-mail SkyDesk w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w wiadomości E-mail SkyDesk musi zostać ustanowione.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego za pomocą SkyDesk Email na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w skydesk e-mail.
 
-Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu adresu E-mail SkyDesk, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą usługi SkyDesk Email, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie SkyDesk adres E-mail logowania jednokrotnego](#configure-skydesk-email-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego E-mail SkyDesk](#create-skydesk-email-test-user)**  — aby odpowiednikiem Britta Simon w wiadomości E-mail SkyDesk, połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie jednokrotne skydesk e-mail](#configure-skydesk-email-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego SkyDesk Email](#create-skydesk-email-test-user)** — aby mieć odpowiednik Britta Simon w skydesk e-mail, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu adresu E-mail SkyDesk, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą usługi SkyDesk Email, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **E-mail SkyDesk** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie integracji aplikacji **SkyDesk Email** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -103,18 +103,18 @@ Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu adresu
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![SkyDesk domeny poczty E-mail i adresów URL pojedynczego logowania jednokrotnego informacji](common/sp-signonurl.png)
+    ![SkyDesk E-mail domeny i adresy URL pojedynczego logowania informacji](common/sp-signonurl.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://mail.skydesk.jp/portal/<companyname>`
 
     > [!NOTE]
-    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta poczty E-mail SkyDesk](https://www.skydesk.jp/apps/support/) można uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta poczty e-mail SkyDesk,](https://www.skydesk.jp/apps/support/) aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/certificatebase64.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-6. Na **skonfigurować konta E-mail SkyDesk** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie wiadomości e-mail SkyDesk** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -122,52 +122,52 @@ Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu adresu
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-skydesk-email-single-sign-on"></a>Konfigurowanie wiadomości E-mail SkyDesk logowania jednokrotnego
+### <a name="configure-skydesk-email-single-sign-on"></a>Konfigurowanie logowania jednokrotnego poczty e-mail w umiań SkyDesk
 
-1. W przeglądarce internetowej innej Zaloguj się do swojego konta E-mail SkyDesk jako administrator.
+1. W innej przeglądarce internetowej zaloguj się do swojego konta e-mail SkyDesk jako administrator.
 
-1. W menu u góry kliknij **instalacji**i wybierz **organizacji**.
+1. W menu u góry kliknij pozycję **Ustawienia**i wybierz pozycję **Org**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
-1. Kliknij pozycję **domen** z lewego panelu.
+1. Kliknij **domeny** z lewego panelu.
 
     ![Konfigurowanie logowania jednokrotnego](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
-1. Kliknij pozycję **Dodawanie domeny**.
+1. Kliknij **pozycję Dodaj domenę**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
-1. Wprowadź nazwę domeny, a następnie zweryfikować domenę.
+1. Wprowadź nazwę domeny, a następnie zweryfikuj domenę.
 
     ![Konfigurowanie logowania jednokrotnego](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
 
-1. Kliknij pozycję **uwierzytelnianie SAML** z lewego panelu.
+1. Kliknij na **UWIERZYTELNIANIE SAML** z lewego panelu.
 
     ![Konfigurowanie logowania jednokrotnego](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
 
-1. Na **uwierzytelnianie SAML** okna dialogowego strony, wykonaj następujące czynności:
+1. Na stronie okna dialogowego **Uwierzytelnianie SAML** wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
 
     > [!NOTE]
-    > Aby używać uwierzytelniania SAML na podstawie, użytkownik powinien mieć **zweryfikowaną domenę** lub **portal adresu URL** Instalatora. Możesz ustawić portalu adres URL o unikatowej nazwie.
+    > Aby użyć uwierzytelniania opartego na SAML, należy **zweryfikować konfigurację adresu** URL domeny lub **portalu.** Możesz ustawić adres URL portalu z unikatową nazwą.
 
     ![Konfigurowanie logowania jednokrotnego](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
-    a. W **adres URL logowania** pola tekstowego, Wklej wartość **adres URL logowania**, który skopiowano z witryny Azure portal.
+    a. W polu tekstowym **Adres URL logowania** wklej wartość adresu URL **logowania,** który został skopiowany z witryny Azure portal.
 
-    b. W **wylogowania** polu tekstowym adresu URL, Wklej wartość **adres URL wylogowania**, które zostały skopiowane z witryny Azure portal.
+    b. W polu tekstowym adres URL **wylogowania** wklej wartość **adresu URL wylogowania,** który został skopiowany z witryny Azure Portal.
 
-    c. **Zmień adres URL hasła** jest opcjonalny więc pozostaw to pole puste.
+    d. **Zmień adres URL hasła** jest opcjonalny, więc pozostaw go pustym.
 
-    d. Kliknij pozycję **uzyskać klucz z pliku** wybierz certyfikat pobrany z witryny Azure portal, a następnie kliknij przycisk **Otwórz** można przekazać certyfikatu.
+    d. Kliknij **przycisk Pobierz klucz z pliku,** aby wybrać pobrany certyfikat z witryny Azure Portal, a następnie kliknij przycisk **Otwórz,** aby przekazać certyfikat.
 
     e. Dla ustawienia **Algorithm** (Algorytm) wybierz pozycję **RSA**.
 
-    f. Kliknij przycisk **Ok** Aby zapisać zmiany.
+    f. Kliknij **przycisk Ok,** aby zapisać zmiany.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -177,7 +177,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -192,19 +192,19 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do poczty E-mail SkyDesk za pomocą platformy Azure logowania jednokrotnego.
+W tej sekcji można włączyć Britta Simon do korzystania z usługi Azure logowania jednokrotnego, udzielając dostępu do SkyDesk e-mail.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **E-mail SkyDesk**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz **pozycję Wszystkie aplikacje**, a następnie wybierz pozycję **SkyDesk Email**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **E-mail SkyDesk**.
+2. Na liście aplikacji wybierz pozycję **SkyDesk Email**.
 
-    ![Link E-mail SkyDesk na liście aplikacji](common/all-applications.png)
+    ![Link SkyDesk Email na liście Aplikacje](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -216,32 +216,32 @@ W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do poczty E-
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-skydesk-email-test-user"></a>Tworzenie użytkownika testowego SkyDesk wiadomości E-mail
+### <a name="create-skydesk-email-test-user"></a>Tworzenie użytkownika testowego SkyDesk Email
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon SkyDesk wiadomości e-mail.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w SkyDesk Email.
 
-Kliknij pozycję **dostęp użytkownika** z lewej strony panelu SkyDesk wiadomości e-mail, a następnie wprowadź swoją nazwę użytkownika.
+Kliknij user **access** z lewego panelu w SkyDesk Email, a następnie wprowadź swoją nazwę użytkownika.
 
 ![Konfigurowanie logowania jednokrotnego](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 
 > [!NOTE]
-> Jeśli potrzebujesz do tworzenia użytkowników zbiorczo, musisz skontaktować się z [zespołem pomocy technicznej klienta poczty E-mail SkyDesk](https://www.skydesk.jp/apps/support/).
+> Jeśli chcesz utworzyć użytkowników masowych, skontaktuj się z [zespołem pomocy technicznej klienta poczty e-mail SkyDesk.](https://www.skydesk.jp/apps/support/)
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka SkyDesk poczty E-mail w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze SkyDesk poczty E-mail, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka SkyDesk Email w Panelu dostępu należy automatycznie zalogować się do wiadomości e-mail SkyDesk, dla której skonfigurowano logującą się do rejestru jednośmiękowego. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,5 +1,5 @@
 ---
-title: Samouczek`:`korzystania z tożsamości zarządzanej w celu uzyskania dostępu do Azure Cosmos DB-Linux — Azure AD
+title: Samouczek`:`Dostęp do usługi Azure Cosmos DB — Linux — Azure AD za pomocą tożsamości zarządzanej
 description: Samouczek przedstawiający proces użycia przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f15a269656f205b0acb6a49740dd4c625c0bdd41
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78248281"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Samouczek: używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Cosmos DB 
@@ -67,7 +67,7 @@ Następnie na koncie usługi Cosmos DB dodaj kolekcję danych, dla której może
 
 ## <a name="retrieve-the-principalid-of-the-linux-vms-system-assigned-managed-identity"></a>Pobieranie elementu `principalID` przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux
 
-Aby uzyskać dostęp do kluczy dostępu do konta usługi Cosmos DB z poziomu usługi Resource Manager w poniższej sekcji, musisz pobrać element `principalID` przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux.  Pamiętaj, aby zastąpić `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (Grupa zasobów, w której znajduje się maszyna wirtualna), i `<VM NAME>` wartości parametrów z własnymi wartościami.
+Aby uzyskać dostęp do kluczy dostępu do konta usługi Cosmos DB z poziomu usługi Resource Manager w poniższej sekcji, musisz pobrać element `principalID` przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux.  Pamiętaj, aby `<SUBSCRIPTION ID>`zastąpić `<RESOURCE GROUP>` , (grupa zasobów, w której `<VM NAME>` znajduje się maszyna wirtualna) i wartości parametrów własnymi wartościami.
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01

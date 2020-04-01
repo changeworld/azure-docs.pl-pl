@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: rogarana
-ms.openlocfilehash: deead728812a34c6f432f59666cd22ba79f5409e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: b7820bc3d1b14e87064e4120edcffb6762041db9
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281293"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411483"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Włączanie uwierzytelniania usługi Active Directory za pomocą smb dla udziałów plików platformy Azure
 
@@ -67,11 +67,7 @@ Uwierzytelnianie usługi Azure Files AD (wersja zapoznawcza) jest dostępne w [w
 
 Uwierzytelnianie usługi Azure Files AD nie jest dostępne w:
 - Zachodnie stany USA
-- Zachodnie stany USA 2
-- Wschodnie stany USA
-- Wschodnie stany USA 2
-- Europa Zachodnia
-- Europa Północna
+
 
 ## <a name="workflow-overview"></a>Omówienie przepływu pracy
 
@@ -219,4 +215,4 @@ Update-AzStorageAccountADObjectPassword `
 Aby uzyskać więcej informacji na temat usług Azure Files i sposobu korzystania z usługi AD za pomocą SMB, zobacz następujące zasoby:
 
 - [Omówienie obsługi uwierzytelniania opartego na tożsamościach usługi Azure Files dla dostępu do SMB](storage-files-active-directory-overview.md)
-- [Najczęściej zadawane pytania](storage-files-faq.md)
+- [Często zadawane pytania](storage-files-faq.md)

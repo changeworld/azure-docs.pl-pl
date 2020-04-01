@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 23a00c766dbb38853c57c91e7f59ec364390c44b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7a1eccd76313c5b3bc74a5b5ebdbcd202ca6841
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245384"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435745"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integracja rozwiązań zabezpieczeń w usłudze Azure Security Center
 Ten dokument ułatwia zarządzanie rozwiązaniami zabezpieczeń już połączonymi z usługą Azure Security Center i dodawanie nowych.
@@ -36,7 +36,7 @@ Usługa Security Center ułatwia włączanie zintegrowanych rozwiązań zabezpie
 Obecnie zintegrowane rozwiązania zabezpieczające obejmują ocenę luk w zabezpieczeniach przez [qualys](https://www.qualys.com/public-cloud/#azure) i [rapid7](https://www.rapid7.com/products/insightvm/) oraz zaporę aplikacji Microsoft Application Gateway Web.
 
 > [!NOTE]
-> Usługa Security Center nie instaluje agenta monitorowania firmy Microsoft na partnerskich urządzeniach wirtualnych, ponieważ większość dostawców zabezpieczeń zabrania agentów zewnętrznych działających na ich urządzeniach.
+> Usługa Security Center nie instaluje agenta usługi Log Analytics na partnerskich urządzeniach wirtualnych, ponieważ większość dostawców zabezpieczeń zabrania agentów zewnętrznych działających na ich urządzeniach.
 >
 >
 
@@ -141,7 +141,7 @@ Zobacz poniższy artykuł, aby zapoznać się z [listą obsługiwanych SIEMów](
 
 Oto kilka zapytań splunk, których można użyć do ściągania danych alertów:
 
-| **Opis kwerendy** | **Kwerendy** |
+| **Opis kwerendy** | **Zapytanie** |
 |----|----|
 | All Alerts| index=główny microsoft.security/locations/alerts|
 | Podsumuj liczbę operacji według ich nazwy| index=main sourcetype="amal:security" \| tabela \| operationName statystyki zliczane według operationName|

@@ -1,14 +1,14 @@
 ---
-title: Dodawanie punktu końcowego HTTPS przy użyciu Kestrel
+title: Dodawanie punktu końcowego HTTPS przy użyciu kestrelu
 description: W ramach tego samouczka dowiesz się, jak dodać punkt końcowy HTTPS do usługi internetowej frontonu platformy ASP.NET Core za pomocą usługi Kestrel i wdrożyć aplikację w klastrze.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238930"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Samouczek: Dodawanie punktu końcowego HTTPS do usługi frontonu internetowego interfejsu API platformy ASP.NET Core za pomocą usługi Kestrel
@@ -27,7 +27,7 @@ Część trzecia serii zawiera informacje na temat wykonywania następujących c
 
 Ta seria samouczków zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
-> * [Kompilowanie aplikacji .NET Service Fabric](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * [Tworzenie aplikacji platformy .NET w usłudze Service Fabric](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [Wdrażanie aplikacji w klastrze zdalnym](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * Dodawanie punktu końcowego protokołu HTTPS do usługi frontonu platformy ASP.NET Core
 > * [Konfigurowanie ciągłej integracji/ciągłego wdrażania za pomocą usługi Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
@@ -41,8 +41,8 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 Przed rozpoczęciem tego samouczka:
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Zainstaluj program Visual Studio 2019](https://www.visualstudio.com/) w wersji 15,5 lub nowszej przy użyciu obciążeń deweloperskich i **ASP.NET** na **platformie Azure** .
-* [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
+* [Zainstaluj program Visual Studio 2019](https://www.visualstudio.com/) w wersji 15.5 lub nowszej za pomocą obciążeń deweloperskich i **ASP.NET i tworzenia sieci Web** platformy **Azure.**
+* [Instalowanie zestawu SDK usługi Service Fabric](service-fabric-get-started.md)
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Uzyskaj certyfikat lub utwórz certyfikat programistyczny z podpisem własnym
 
@@ -153,7 +153,7 @@ serviceContext =>
 Dodaj również następującą metodę, tak aby usługa Kestrel mogła znaleźć certyfikat w magazynie `Cert:\LocalMachine\My` przy użyciu podmiotu.  
 
 Zastąp ciąg „&lt;your_CN_value&gt;” wartością „mytestcert”, jeśli utworzono certyfikat z podpisem własnym za pomocą polecenia programu PowerShell, lub użyj nazwy pospolitej (CN) certyfikatu.
-Należy pamiętać, że w przypadku lokalnego wdrożenia, `localhost` jest preferowane użycie "CN = localhost", aby uniknąć wyjątków uwierzytelniania.
+Należy pamiętać, że w przypadku `localhost` wdrożenia lokalnego jest zaleca się użycie "CN= localhost", aby uniknąć wyjątków uwierzytelniania.
 
 ```csharp
 private X509Certificate2 GetHttpsCertificateFromStore()
@@ -176,7 +176,7 @@ private X509Certificate2 GetHttpsCertificateFromStore()
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>Udzielanie dostępu USŁUGA SIECIOWA do klucza prywatnego certyfikatu
 
-W poprzednim kroku zaimportowano certyfikat do magazynu `Cert:\LocalMachine\My` na komputerze dewelopera.  Teraz jawnie Nadaj kontu z uruchomioną usługą (usługa sieciowa domyślnie) dostęp do klucza prywatnego certyfikatu. Ten krok można wykonać ręcznie (przy użyciu narzędzia certlm. msc), ale lepiej uruchomić skrypt programu PowerShell, [konfigurując skrypt uruchamiania](service-fabric-run-script-at-service-startup.md) w **SetupEntryPoint** manifestu usługi.
+W poprzednim kroku zaimportowano certyfikat do magazynu `Cert:\LocalMachine\My` na komputerze dewelopera.  Teraz jawnie przyznaj kontu uruchomionego usługę (domyślnie USŁUGA SIECIOWA) dostęp do klucza prywatnego certyfikatu. Ten krok można wykonać ręcznie (za pomocą narzędzia certlm.msc), ale lepiej jest automatycznie uruchomić skrypt programu PowerShell, [konfigurując skrypt startowy](service-fabric-run-script-at-service-startup.md) w **pliku SetupEntryPoint** manifestu usługi.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Konfigurowanie punktu wejścia usługi instalatora
 
@@ -335,9 +335,9 @@ Następnie w sekcji **ServiceManifestImport** pliku VotingWebPkg skonfiguruj zas
 
 ## <a name="run-the-application-locally"></a>Uruchamianie aplikacji lokalnie
 
-W Eksplorator rozwiązań wybierz aplikację do **głosowania** i ustaw właściwość **adres URL aplikacji** na "https:\//localhost: 443".
+W Eksploratorze rozwiązań wybierz aplikację **do głosowania** i ustaw właściwość adres **URL aplikacji** na "https:\//localhost:443".
 
-Zapisz wszystkie pliki i naciśnij klawisz F5, aby uruchomić aplikację lokalnie.  Po wdrożeniu aplikacji Przeglądarka sieci Web otworzy się w programie https:\//localhost: 443. Jeśli używasz certyfikatu z podpisem własnym, zobaczysz ostrzeżenie, że komputer nie ufa zabezpieczeniom tej witryny internetowej.  Kontynuuj przechodzenie do strony internetowej.
+Zapisz wszystkie pliki i naciśnij klawisz F5, aby uruchomić aplikację lokalnie.  Po wdrożeniu aplikacji przeglądarka internetowa\/otwiera się na https: /localhost:443. Jeśli używasz certyfikatu z podpisem własnym, zobaczysz ostrzeżenie, że komputer nie ufa zabezpieczeniom tej witryny internetowej.  Kontynuuj przechodzenie do strony internetowej.
 
 ![Aplikacja do głosowania][image2]
 
@@ -345,13 +345,13 @@ Zapisz wszystkie pliki i naciśnij klawisz F5, aby uruchomić aplikację lokalni
 
 Przed wdrożeniem aplikacji na platformie Azure należy zainstalować certyfikat w magazynie `Cert:\LocalMachine\My` wszystkich węzłów klastra zdalnego.  Usługi można przenosić do różnych węzłów klastra.  Po uruchomieniu usługi internetowej frontonu w węźle klastra skrypt uruchamiania wyszuka certyfikat i skonfiguruje uprawnienia dostępu.
 
-Najpierw należy wyeksportować certyfikat do pliku PFX. Otwórz aplikację certlm.msc i przejdź do pozycji **Personal**>**Certificates**.  Kliknij prawym przyciskiem myszy certyfikat *mytestcert*, a następnie wybierz pozycję **Wszystkie zadania**>**Eksportowanie**.
+Najpierw należy wyeksportować certyfikat do pliku PFX. Otwórz aplikację certlm.msc i przejdź do pozycji**Certyfikaty** **osobiste**>.  Kliknij prawym przyciskiem myszy certyfikat *mytestcert*, a następnie wybierz pozycję **Wszystkie zadania**>**Eksportowanie**.
 
 ![Eksportowanie certyfikatu][image4]
 
 W kreatorze eksportu wybierz opcję **Tak, eksportuj klucz prywatny** i wybierz format Wymiana informacji osobistych (PFX).  Wyeksportuj plik do pliku *C:\Users\sfuser\votingappcert.pfx*.
 
-Następnie Zainstaluj certyfikat w klastrze zdalnym, korzystając z [tych dostarczonych skryptów programu PowerShell](./scripts/service-fabric-powershell-add-application-certificate.md).
+Następnie zainstaluj certyfikat w klastrze zdalnym przy użyciu [tych skryptów programu Powershell.](./scripts/service-fabric-powershell-add-application-certificate.md)
 
 > [!Warning]
 > Certyfikat z podpisem własnym jest wystarczający w przypadku programowania i testowania aplikacji. W przypadku aplikacji produkcyjnych należy użyć certyfikatu z [certyfikatu urzędu certyfikacji](https://wikipedia.org/wiki/Certificate_authority) zamiast certyfikatu z podpisem własnym.
@@ -385,7 +385,7 @@ $slb | Set-AzLoadBalancer
 
 Zapisz wszystkie pliki, przełącz z debugowania na wydanie i naciśnij klawisz F6, aby ponownie skompilować rozwiązanie.  W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję **Voting (Głosowanie)** i wybierz polecenie **Opublikuj**. Wybierz punkt końcowy połączenia klastra utworzonego w sekcji [Wdrażanie aplikacji w klastrze](service-fabric-tutorial-deploy-app-to-party-cluster.md) lub wybierz inny klaster.  Kliknij pozycję **Opublikuj**, aby opublikować aplikację w klastrze zdalnym.
 
-Po wdrożeniu aplikacji otwórz przeglądarkę internetową i przejdź do strony [https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443) (zaktualizuj adres URL przy użyciu punktu końcowego połączenia dla klastra). Jeśli używasz certyfikatu z podpisem własnym, zobaczysz ostrzeżenie, że komputer nie ufa zabezpieczeniom tej witryny internetowej.  Kontynuuj przechodzenie do strony internetowej.
+Po wdrożeniu aplikacji otwórz przeglądarkę [https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443) sieci Web i przejdź do (zaktualizuj adres URL za pomocą punktu końcowego połączenia dla klastra). Jeśli używasz certyfikatu z podpisem własnym, zobaczysz ostrzeżenie, że komputer nie ufa zabezpieczeniom tej witryny internetowej.  Kontynuuj przechodzenie do strony internetowej.
 
 ![Aplikacja do głosowania][image3]
 

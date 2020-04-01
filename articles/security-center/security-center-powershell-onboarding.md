@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: 5aaaf539c07a7ba2c2463d5bfd1f452853f52379
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b471fbb62862cd48ebbb239d65b563aa109ef629
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603692"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435476"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatyzacja dołączania usługi Azure Security Center przy użyciu programu PowerShell
 
@@ -29,13 +29,13 @@ Dołączanie usługi Azure Security Center przy użyciu programu PowerShell umo�
 
 Ten artykuł zawiera przykładowy skrypt programu PowerShell, który można modyfikować i używać w środowisku do wdrażania usługi Security Center w ramach subskrypcji. 
 
-W tym przykładzie włączymy usługę Security Center w ramach subskrypcji o identyfikatorze: d07c0080-170c-4c24-861d-9c817742786c i zastosujemy zalecane ustawienia zapewniające wysoki poziom ochrony, implementując standardową warstwę Centrum zabezpieczeń, która zapewnia zaawansowane możliwości ochrony przed zagrożeniami i wykrywania:
+W tym przykładzie włączymy usługę Security Center w ramach subskrypcji o identyfikatorze: d07c0080-170c-4c24-861d-9c817742786c i zastosujemy zalecane ustawienia zapewniające wysoki poziom ochrony, implementując standardową warstwę Centrum zabezpieczeń, która zapewnia zaawansowane funkcje ochrony przed zagrożeniami i wykrywania:
 
 1. Ustaw [standardowy poziom ochrony centrum zabezpieczeń](https://azure.microsoft.com/pricing/details/security-center/). 
  
-2. Ustaw obszar roboczy usługi Log Analytics, do którego agent monitorujący firmy Microsoft będzie wysyłał dane, które zbiera na maszynach wirtualnych skojarzonych z subskrypcją — w tym przykładzie istniejący obszar roboczy zdefiniowany przez użytkownika (myWorkspace).
+2. Ustaw obszar roboczy usługi Log Analytics, do którego agent usługi Log Analytics wyśle dane, które zbiera na maszynach wirtualnych skojarzonych z subskrypcją — w tym przykładzie istniejący obszar roboczy zdefiniowany przez użytkownika (myWorkspace).
 
-3. Uaktywnianie automatycznego inicjowania obsługi administracyjnej programu Security Center, który [wdraża agenta monitorowania firmy Microsoft.](security-center-enable-data-collection.md#auto-provision-mma)
+3. Uaktywnianie automatycznego inicjowania obsługi administracyjnej agenta w [usłudze Security Center, która wdraża agenta usługi Log Analytics.](security-center-enable-data-collection.md#auto-provision-mma)
 
 5. Ustaw [ciso organizacji jako kontakt zabezpieczeń dla alertów Centrum zabezpieczeń i znaczących zdarzeń](security-center-provide-security-contact-details.md).
 
@@ -68,7 +68,7 @@ Te kroki należy wykonać przed uruchomieniem poleceń cmdlet centrum zabezpiecz
         Set-AzSecurityWorkspaceSetting -Name "default" -Scope
         "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
 
-4.  Automatyczne udostępnianie instalacji agenta monitorowania firmy Microsoft na maszynach wirtualnych platformy Azure:
+4.  Automatyczne udostępnianie instalacji agenta usługi Log Analytics na maszynach wirtualnych platformy Azure:
     
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
     

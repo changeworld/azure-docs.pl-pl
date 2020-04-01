@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cba97b84f77bd4e2d4cfd97601fa4f8637105eb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051407"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396065"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Rozpoznawanie oświadczeń w zasadach niestandardowych usługi Azure Active Directory B2C — informacje
 
@@ -76,7 +76,7 @@ Poniższe sekcje listy dostępnych rozpoznawania oświadczeń.
 | {OIDC:Monit} | Parametr `prompt` ciągu kwerendy. | logowanie |
 | {OIDC:RedirectUri} |Parametr `redirect_uri` ciągu kwerendy. | https://jwt.ms |
 | {OIDC:Zasób} |Parametr `resource` ciągu kwerendy. | Nie dotyczy |
-| {OIDC:scope} |Parametr `scope` ciągu kwerendy. | Openid |
+| {OIDC:Zakres} |Parametr `scope` ciągu kwerendy. | Openid |
 | {OIDC:Nazwa użytkownika}| Poświadczenia [hasła właściciela zasobu przepływają](ropc-custom.md) nazwę użytkownika.| emily@contoso.com| 
 
 ### <a name="context"></a>Kontekst
@@ -162,7 +162,7 @@ W poniższym przykładzie pokazano profil techniczny RESTful w tym scenariuszu:
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:Scope}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
@@ -175,7 +175,7 @@ Korzystając z programów rozpoznawania oświadczeń, można wstępnie wypełni�
 
 ### <a name="dynamic-ui-customization"></a>Dostosowywanie dynamicznego interfejsu użytkownika
 
-Usługa Azure AD B2C umożliwia przekazywanie parametrów ciągu zapytania do punktów końcowych definicji zawartości HTML, aby dynamicznie renderować zawartość strony. Na przykład umożliwia możliwość modyfikowania obrazu tła na stronie rejestracji usługi Azure AD B2C lub logowania na podstawie niestandardowego parametru, który jest przekazywanie z aplikacji sieci web lub aplikacji mobilnej. Aby uzyskać więcej informacji, zobacz [Dynamicznie konfigurować interfejs użytkownika przy użyciu zasad niestandardowych w usłudze Azure Active Directory B2C](custom-policy-ui-customization.md). Można również zlokalizować stronę HTML na podstawie parametru języka lub zmienić zawartość na podstawie identyfikatora klienta.
+Usługa Azure AD B2C umożliwia przekazywanie parametrów ciągu zapytania do punktów końcowych definicji zawartości HTML, aby dynamicznie renderować zawartość strony. Na przykład ta funkcja umożliwia modyfikowanie obrazu tła na stronie rejestracji lub logowania usługi Azure AD B2C na podstawie niestandardowego parametru, który jest przekazywał z aplikacji sieci web lub aplikacji mobilnej. Aby uzyskać więcej informacji, zobacz [Dynamicznie konfigurować interfejs użytkownika przy użyciu zasad niestandardowych w usłudze Azure Active Directory B2C](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri). Można również zlokalizować stronę HTML na podstawie parametru języka lub zmienić zawartość na podstawie identyfikatora klienta.
 
 Poniższy przykład przekazuje w parametrze ciągu zapytania `Hawaii`o nazwie **campaignId** o wartości , kod **języka** `en-US`, i **aplikacji** reprezentującej identyfikator klienta:
 

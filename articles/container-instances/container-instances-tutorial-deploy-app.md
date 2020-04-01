@@ -5,17 +5,17 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 757b41bd69d69deb901e3b5b9a633dce3b9e133a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78249970"
 ---
-# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Samouczek: wdrażanie aplikacji kontenera do Azure Container Instances
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Samouczek: Wdrażanie aplikacji kontenera w wystąpieniach kontenera platformy Azure
 
 To jest ostatni samouczek z serii składającej się z trzech części. Wcześniej w tej serii [utworzono obraz kontenera](container-instances-tutorial-prepare-app.md) i [przekazano go do usługi Azure Container Registry](container-instances-tutorial-prepare-acr.md). Ten artykuł stanowi zakończenie serii i dotyczy wdrażania kontenera w usłudze Azure Container Instances.
 
-W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku zostały wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Wdrażanie kontenera z usługi Azure Container Registry do usługi Azure Container Instances
@@ -32,9 +32,9 @@ W tej sekcji używa się interfejsu wiersza polecenia platformy Azure do wdroże
 
 ### <a name="get-registry-credentials"></a>Pobieranie poświadczeń rejestru
 
-Podczas wdrażania obrazu hostowanego w prywatnym rejestrze kontenera platformy Azure, takim jak ten utworzony w [drugim samouczku](container-instances-tutorial-prepare-acr.md), musisz podać poświadczenia, aby uzyskać dostęp do rejestru. 
+Podczas wdrażania obrazu, który jest obsługiwany w prywatnym rejestrze kontenerów platformy Azure, jak ten utworzony w [drugim samouczku,](container-instances-tutorial-prepare-acr.md)należy podać poświadczenia, aby uzyskać dostęp do rejestru. 
 
-Najlepszym rozwiązaniem w przypadku wielu scenariuszy jest utworzenie i skonfigurowanie jednostki usługi Azure Active Directory z uprawnieniami *ściągania* do rejestru. Aby utworzyć jednostkę usługi z niezbędnymi uprawnieniami, zobacz [uwierzytelnianie za pomocą Azure Container Registry z Azure Container Instances](../container-registry/container-registry-auth-aci.md) . Zanotuj identyfikator jednostki *usługi* i *hasło nazwy głównej usługi*. Te poświadczenia są używane do uzyskiwania dostępu do rejestru podczas wdrażania kontenera.
+Najlepszym rozwiązaniem dla wielu scenariuszy jest utworzenie i skonfigurowanie jednostki usługi Azure Active Directory z uprawnieniami *ściągania* do rejestru. Zobacz [Uwierzytelnij przy użyciu rejestru kontenerów platformy Azure z wystąpień kontenerów platformy Azure](../container-registry/container-registry-auth-aci.md) dla przykładowych skryptów, aby utworzyć jednostkę usługi z niezbędnymi uprawnieniami. Należy zwrócić uwagę na *identyfikator jednostki usługi* i *hasło głównego usługi*. Te poświadczenia są używane do uzyskiwania dostępu do rejestru podczas wdrażania kontenera.
 
 Potrzebna jest również pełna nazwa serwera logowania rejestru kontenerów (element `<acrName>` należy zastąpić nazwą rejestru):
 
@@ -44,7 +44,7 @@ az acr show --name <acrName> --query loginServer
 
 ### <a name="deploy-container"></a>Wdrażanie kontenera
 
-Teraz użyj polecenia [AZ Container Create][az-container-create] , aby wdrożyć kontener. Zastąp element `<acrLoginServer>` wartością uzyskaną przy użyciu poprzedniego polecenia. Zastąp elementy `<service-principal-ID>` i `<service-principal-password>` identyfikatorem jednostki usługi i hasłem jednostki usługi, które umożliwiają dostęp do rejestru. Zastąp element `<aciDnsLabel>` odpowiednią nazwą DNS.
+Teraz użyj polecenia [az container create][az-container-create], aby wdrożyć kontener. Zastąp element `<acrLoginServer>` wartością uzyskaną przy użyciu poprzedniego polecenia. Zastąp elementy `<service-principal-ID>` i `<service-principal-password>` identyfikatorem jednostki usługi i hasłem jednostki usługi, które umożliwiają dostęp do rejestru. Zastąp element `<aciDnsLabel>` odpowiednią nazwą DNS.
 
 ```azurecli
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
@@ -54,23 +54,23 @@ W ciągu kilku sekund powinna pojawić się początkowa odpowiedź z platformy A
 
 ### <a name="verify-deployment-progress"></a>Sprawdzanie postępu wdrażania
 
-Aby wyświetlić stan wdrożenia, użyj [AZ Container show][az-container-show]:
+Aby wyświetlić stan wdrożenia, użyj polecenia [az container show][az-container-show]:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query instanceView.state
 ```
 
-Powtarzaj polecenie [AZ Container show][az-container-show] , aż stan zmieni się z *oczekujące* na *uruchomione*, co powinno potrwać od minuty. Jeśli kontener ma stan *Uruchomiono*, przejdź do następnego kroku.
+Powtarzaj polecenie [az container show][az-container-show], aż stan zmieni się z *Oczekujące* na *Uruchomiono*. Powinno to potrwać krócej niż minutę. Jeśli kontener ma stan *Uruchomiono*, przejdź do następnego kroku.
 
 ## <a name="view-the-application-and-container-logs"></a>Wyświetlanie dzienników aplikacji i kontenerów
 
-Po pomyślnym wdrożeniu Wyświetl w pełni kwalifikowaną nazwę domeny (FQDN) kontenera za pomocą polecenia [AZ Container show][az-container-show] :
+Po pomyślnym wdrożeniu wyświetl w pełni kwalifikowaną nazwę domeny (FQDN) kontenera przy użyciu polecenia [az container show][az-container-show]:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Na przykład:
+Przykład:
 ```output
 "aci-demo.eastus.azurecontainer.io"
 ```
@@ -95,7 +95,7 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz już żadnych zasobów utworzonych w tej serii samouczków, możesz uruchomić polecenie [AZ Group Delete][az-group-delete] , aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby. To polecenie usuwa utworzony rejestr kontenerów, a także uruchomiony kontener i wszystkie powiązane zasoby.
+Jeśli nie potrzebujesz już zasobów utworzonych w tej serii samouczków, możesz wykonać polecenie [az group delete][az-group-delete], aby usunąć grupę zasobów i wszystkie należące do niej zasoby. To polecenie usuwa utworzony rejestr kontenerów, a także uruchomiony kontener i wszystkie powiązane zasoby.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

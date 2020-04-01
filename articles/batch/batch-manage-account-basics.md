@@ -11,15 +11,15 @@ ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 03/30/2020
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4df2ec0439e659fd8dc1448c6209c9718114791
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ecae47f6aa0ab3f179632467b7da7805f06162d6
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79479794"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397265"
 ---
 # <a name="manage-your-batch-account"></a>Zarządzanie kontem usługi Batch
 
@@ -33,13 +33,13 @@ Można uruchomić wiele obciążeń usługi Batch na jednym koncie usługi Batch
 
 Konto usługi Batch umożliwia wydajne uruchamianie zadań wsadowych na dużą skalę w obliczeniach równoległych i wysokowydajnych (HPC) na platformie Azure. W ramach zarządzanego konta:
 
-- aplikacje, które uruchamiasz
+- Aplikacje, które uruchamiasz
 
-- alokacja pul i węzłów w pulach
+- Alokacja pul i węzłów w pulach
 
-- liczba i rodzaje zadań 
+- Liczba i typy zadań 
 
-- wprowadzania i wyprowadzania danych. Nie trzeba instalować dodatkowego oprogramowania do zarządzania zadaniami.
+- Wprowadzanie i dane wyjściowe. Nie trzeba instalować dodatkowego oprogramowania do zarządzania zadaniami.
 
 - Podczas tworzenia konta usługi Batch zostaniesz poproszony o przypisanie do niego nazwy. Ta nazwa jest jego identyfikatorem i po przypisaniu nie można zmienić.
 

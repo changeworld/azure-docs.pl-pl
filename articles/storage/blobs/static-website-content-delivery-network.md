@@ -7,16 +7,16 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 01/22/2020
-ms.openlocfilehash: aaf61ccbb3577036c614aa6196d2af57124550fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8eeff5187d27cb75b9e55eba8311dede8970bc4a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76908555"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435230"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>Integracja statycznej witryny sieci Web z usługą Azure CDN
 
-Można włączyć [usługę Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md) do buforowania zawartości ze [statycznej witryny sieci Web,](storage-blob-static-website.md) która jest hostowana na koncie magazynu platformy Azure. Za pomocą usługi Azure CDN można skonfigurować niestandardowy punkt końcowy domeny dla statycznej witryny sieci Web, aprowizować niestandardowe certyfikaty SSL i skonfigurować niestandardowe reguły przepisywania. Konfigurowanie usługi Azure CDN oznacza dodatkowe koszty, ale zapewnia stale niskie opóźnienia połączenia z witryną internetowej z dowolnego miejsca na świecie. Usługa Azure CDN umożliwia również szyfrowanie za pomocą protokołu SSL z użyciem własnego certyfikatu. 
+Można włączyć [usługę Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md) do buforowania zawartości ze [statycznej witryny sieci Web,](storage-blob-static-website.md) która jest hostowana na koncie magazynu platformy Azure. Za pomocą usługi Azure CDN można skonfigurować niestandardowy punkt końcowy domeny dla statycznej witryny sieci Web, aprowizować niestandardowe certyfikaty TLS/SSL i skonfigurować niestandardowe reguły przepisywania. Konfigurowanie usługi Azure CDN oznacza dodatkowe koszty, ale zapewnia stale niskie opóźnienia połączenia z witryną internetowej z dowolnego miejsca na świecie. Usługa Azure CDN zapewnia również szyfrowanie TLS z własnym certyfikatem. 
 
 Aby uzyskać dodatkowe informacje na temat cennika usługi Azure CDN, zobacz [Cennik usługi Content Delivery Network](https://azure.microsoft.com/pricing/details/cdn/).
 

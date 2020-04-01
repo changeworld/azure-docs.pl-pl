@@ -4,12 +4,12 @@ description: Dowiedz się, jak wykonać kopię zapasową serwera exchange w usł
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 9e623b1bdce93c340ccd0e61f9f5145e7154beff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78295848"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421346"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Tworzenie kopii zapasowej serwera programu Exchange na platformie Azure za pomocą usługi Azure Backup Server
 
@@ -34,7 +34,7 @@ Aby zainstalować agenta ochrony MABS na serwerze Exchange, wykonaj następując
 4. Wybierz bazę danych serwera Exchange, którą chcesz chronić, i kliknij przycisk **Dalej**.
 
    > [!NOTE]
-   > Jeśli chronisz program Exchange 2013, sprawdź [wymagania wstępne programu Exchange 2013](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12)).
+   > Jeśli chronisz program Exchange 2013, sprawdź [wymagania wstępne programu Exchange 2013](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016).
    >
    >
 
@@ -53,7 +53,7 @@ Aby zainstalować agenta ochrony MABS na serwerze Exchange, wykonaj następując
     Po wybraniu tej opcji sprawdzanie spójności kopii zapasowych będzie uruchamiane na mabs, aby uniknąć ruchu we/wy, który jest generowany przez uruchomienie polecenia **eseutil** na serwerze Exchange.
 
    > [!NOTE]
-   > Aby użyć tej opcji, należy skopiować pliki Ese.dll i Eseutil.exe do katalogu C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin na serwerze MAB. W przeciwnym razie zostanie wyzwolony następujący błąd:  
+   > Aby użyć tej opcji, należy skopiować pliki Ese.dll i Eseutil.exe do katalogu C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin na serwerze MABS. W przeciwnym razie zostanie wyzwolony następujący błąd:  
    > ![błąd eseutil](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
@@ -66,7 +66,7 @@ Aby zainstalować agenta ochrony MABS na serwerze Exchange, wykonaj następując
    >
 10. Skonfiguruj cele dla **krótkoterminowej kopii zapasowej,** a następnie kliknij przycisk **Dalej**.
 11. Przejrzyj dostępne miejsce na dysku, a następnie kliknij przycisk **Dalej**.
-12. Wybierz godzinę, w której serwer MAB utworzy replikację początkową, a następnie kliknij przycisk **Dalej**.
+12. Wybierz godzinę, w której serwer MABS utworzy replikację początkową, a następnie kliknij przycisk **Dalej**.
 13. Wybierz opcje sprawdzania spójności, a następnie kliknij przycisk **Dalej**.
 14. Wybierz bazę danych, której chcesz użyć kopii zapasowej na platformie Azure, a następnie kliknij przycisk **Dalej**. Przykład:
 

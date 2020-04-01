@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.openlocfilehash: e98ff7fd914bb86cae256bb1bf6c19086758d463
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65e51258b3a24b14b5171968645e88420e92dd5a
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371545"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421070"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopiowanie danych z tabeli SAP przy użyciu usługi Azure Data Factory
 
@@ -62,7 +62,7 @@ Aby użyć tego łącznika tabeli SAP, należy:
   - Autoryzacja używania miejsc docelowych wywołania funkcji zdalnych (RFC).
   - Uprawnienia do wykonywania działania obiektu autoryzacji S_SDSAUTH.
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -230,7 +230,7 @@ Aby skopiować dane z tabeli SAP, obsługiwane są następujące właściwości:
 <br/>
 >`partitionOnInt` Jako `partitionOption` przykład obliczana jest liczba wierszy w każdej partycji za pomocą następującego `partitionLowerBound`wzoru: (suma wierszy przypadających między`maxPartitionsNumber` `partitionUpperBound` i )/ .<br/>
 <br/>
->Aby załadować partycje danych równolegle, aby przyspieszyć kopiowanie, stopień równoległy jest kontrolowany [`parallelCopies`](copy-activity-performance.md#parallel-copy) przez ustawienie działania kopiowania. Na przykład jeśli `parallelCopies` ustawisz cztery, data factory jednocześnie generuje i uruchamia cztery kwerendy na podstawie określonej opcji partycji i ustawień, a każda kwerenda pobiera część danych z tabeli SAP. Zdecydowanie zaleca `maxPartitionsNumber` się dokonanie wielokrotności `parallelCopies` wartości właściwości. Podczas kopiowania danych do magazynu danych opartych na plikach zaleca się również zapisywanie w folderze jako wielu plików (określanie tylko nazwy folderu), w którym to przypadku wydajność jest lepsza niż zapisywanie do jednego pliku.
+>Aby załadować partycje danych równolegle, aby przyspieszyć kopiowanie, stopień równoległy jest kontrolowany [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) przez ustawienie działania kopiowania. Na przykład jeśli `parallelCopies` ustawisz cztery, data factory jednocześnie generuje i uruchamia cztery kwerendy na podstawie określonej opcji partycji i ustawień, a każda kwerenda pobiera część danych z tabeli SAP. Zdecydowanie zaleca `maxPartitionsNumber` się dokonanie wielokrotności `parallelCopies` wartości właściwości. Podczas kopiowania danych do magazynu danych opartych na plikach zaleca się również zapisywanie w folderze jako wielu plików (określanie tylko nazwy folderu), w którym to przypadku wydajność jest lepsza niż zapisywanie do jednego pliku.
 
 W `rfcTableOptions`programie można użyć następujących typowych operatorów zapytań SAP do filtrowania wierszy:
 

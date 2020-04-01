@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: aec8048c7ef2eb0d944cdd2a863e23578f4f87e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db36033ea524603416f16db27f40d5eefb8bf613
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77561684"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437121"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik po rozwiązywaniu problemów z Eksploratorem usługi Azure Storage
 
@@ -76,7 +76,7 @@ Istnieje kilka wbudowanych ról RBAC, które mogą zapewnić uprawnienia potrzeb
 Błędy certyfikatów zazwyczaj występują w jednej z następujących sytuacji:
 
 - Aplikacja jest połączona za pośrednictwem _przezroczystego serwera proxy,_ co oznacza, że serwer (taki jak serwer firmowy) przechwytuje ruch HTTPS, odszyfrowuje go, a następnie szyfruje za pomocą certyfikatu z podpisem własnym.
-- Używasz aplikacji, która wstrzykuje samodzielnie podpisany certyfikat SSL do otrzymywanych wiadomości HTTPS. Przykłady aplikacji, które wstrzykują certyfikaty obejmują oprogramowanie antywirusowe i sieciowe do kontroli ruchu.
+- Używasz aplikacji, która wstrzykuje samodzielnie podpisany certyfikat TLS/SSL do otrzymywanych wiadomości HTTPS. Przykłady aplikacji, które wstrzykują certyfikaty obejmują oprogramowanie antywirusowe i sieciowe do kontroli ruchu.
 
 Gdy Eksplorator magazynu widzi certyfikat z podpisem własnym lub niezaufany, nie wie już, czy odebrana wiadomość HTTPS została zmieniona. Jeśli masz kopię certyfikatu z podpisem własnym, możesz poinstruować Eksploratora magazynu, aby ufał mu, wykonując następujące kroki:
 

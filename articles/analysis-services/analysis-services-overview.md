@@ -4,21 +4,21 @@ description: Dowiedz się więcej o usłudze Azure Analysis Services, w pełni z
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 02/20/2020
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3a18218635b5fc576bd9255eb73c136756ac3caa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7eb46e0eda1cd702f26829fac49ffe0e7916626f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240604"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410370"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co to są usługi Azure Analysis Services?
 
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
-Azure Analysis Services to w pełni zarządzana platforma jako usługa (PaaS), która oferuje modele danych klasy korporacyjnej w chmurze. Zaawansowane funkcje mieszania i modelowania umożliwiają łączenie danych z wielu źródeł, definiowanie metryk oraz zabezpieczanie danych w jednym zaufanym tabelarycznym modelu danych semantycznych. Model danych zapewnia użytkownikom łatwiejszy i szybszy sposób przeglądania ogromnych ilości danych do analizy danych ad hoc.
+Azure Analysis Services to w pełni zarządzana platforma jako usługa (PaaS), która oferuje modele danych klasy korporacyjnej w chmurze. Zaawansowane funkcje mieszania i modelowania umożliwiają łączenie danych z wielu źródeł, definiowanie metryk oraz zabezpieczanie danych w jednym zaufanym tabelarycznym modelu danych semantycznych. Model danych zapewnia użytkownikom łatwiejszy i szybszy sposób przeprowadzania doraźnej analizy danych przy użyciu narzędzi takich jak Power BI i Excel.
 
 ![Źródła danych](./media/analysis-services-overview/aas-overview-overall.png)
 
@@ -38,7 +38,7 @@ Usługa Azure Analysis Services jest dostępna w warstwach **Deweloper**, **Pods
 
 ### <a name="developer-tier"></a>Warstwa Deweloper
 
-Ta warstwa jest zalecana w przypadku scenariuszy związanych z oceną, programowaniem i testowaniem. Pojedynczy plan uwzględnia wszystkie funkcje warstwy Standardowa, ale ma ograniczenia dotyczące mocy obliczeniowej, jednostek QPU i rozmiaru pamięci. Skalowanie repliki zapytania *jest niedostępne* w tej warstwie. W tej warstwie nie jest oferowana umowa SLA.
+Ta warstwa jest zalecana w przypadku scenariuszy związanych z oceną, programowaniem i testowaniem. Pojedynczy plan uwzględnia wszystkie funkcje warstwy Standardowa, ale ma ograniczenia dotyczące mocy obliczeniowej, jednostek QPU i rozmiaru pamięci. Skalowanie w poziomie repliki kwerendy *nie jest dostępne* dla tej warstwy. W tej warstwie nie jest oferowana umowa SLA.
 
 |Planowanie  |Jednostki QPU  |Pamięć (GB)  |
 |---------|---------|---------|
@@ -161,7 +161,7 @@ Na poziomie serwera usługi Analysis Services oferują zaporę, uwierzytelnianie
 
 Zapora usługi Azure Analysis Services blokuje wszystkie połączenia klienta inne niż adresy IP określone w regułach. Domyślnie ochrona za pomocą zapory nie jest włączana w przypadku nowych serwerów. Zalecane jest włączenie ochrony za pomocą zapory i skonfigurowanie zasad w ramach skryptu inicjowania obsługi serwera lub w portalu natychmiast po utworzeniu serwera. Skonfiguruj reguły, określając dozwolone adresy IP przy użyciu poszczególnych adresów IP klientów lub zakresu. Połączenia usługi Power BI również mogą być dozwolone lub zablokowane. Zaporę i reguły należy skonfigurować w portalu lub przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz [Configure a server firewall](analysis-services-qs-firewall.md) (Konfigurowanie zapory serwera).
 
-### <a name="authentication"></a>Uwierzytelnianie
+### <a name="authentication"></a>Authentication
 
 Uwierzytelnianie użytkownika jest obsługiwane przez usługę [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md). Podczas logowania użytkownicy korzystają z tożsamości konta organizacji z dostępem do bazy danych opartym na rolach. Tożsamości użytkowników muszą być członkami domyślnej usługi Azure Active Directory dla subskrypcji, w której znajduje się serwer. Aby dowiedzieć się więcej, zobacz [Authentication and user permissions (Uwierzytelnianie i uprawnienia użytkownika)](analysis-services-manage-users.md).
 
@@ -208,6 +208,10 @@ Microsoft Analysis Services Projects jest dostępny jako bezpłatny pakiet VSIX 
 
 Zarządzaj serwerami i bazami danych modeli przy użyciu [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Łącz się ze swoimi serwerami w chmurze. Uruchamiaj skrypty TMSL bezpośrednio z okna zapytań XMLA i automatyzuj zadania za pomocą skryptów TMSL i programu PowerShell. Nowe funkcje i możliwości pojawiają się bardzo szybko — program SSMS jest aktualizowany co miesiąc.
 
+### <a name="open-source-tools"></a>Narzędzia typu open source
+
+Analysis Services ma żywą społeczność programistów, którzy tworzą narzędzia. Pamiętaj, aby sprawdzić [Tabular Editor](https://tabulareditor.github.io/), narzędzie open-source do tworzenia, utrzymywania i zarządzania modeli tabelaryczne za pomocą intuicyjnego, lekki edytor. [DAX Studio](https://daxstudio.org/)to świetne narzędzie open-source do tworzenia, diagnozowania, dostrajania wydajności i analizy języka DAX.
+
 ### <a name="powershell"></a>PowerShell
 
 Zadania zarządzania zasobami serwerowymi, takie jak tworzenie zasobów serwera, zawieszanie lub wznawianie operacji serwerowych czy zmienianie poziomu (warstwy) serwera, korzystają z poleceń cmdlet programu Azure PowerShell. Inne zadania do zarządzania bazami danych, takie jak dodawanie lub usuwanie członków ról, przetwarzanie czy uruchamianie skryptów TMSL używają poleceń cmdlet w module SqlServer. Aby dowiedzieć się więcej, zobacz [Zarządzanie usługami Azure Analysis Services przy użyciu programu PowerShell](analysis-services-powershell.md).
@@ -232,19 +236,15 @@ Usługa Azure Analysis Services obsługuje również [dynamiczne widoki zarządz
 
 W tej sekcji została przedstawiona dokumentacja dotycząca usługi Azure Analysis Services. Spis treści po lewej stronie ekranu przeglądarki umożliwia wyszukiwanie artykułów. 
 
-Ponieważ modele tabelaryczne usług Azure Analysis Services są tak samo jak modele tabelaryczne w usługach SQL Server Analysis Services, w dokumentacji programu SQL Server Analysis Services znajduje się obszerna biblioteka udostępnionych samouczków modelowania danych, artykułów koncepcyjnych, proceduralnych, deweloperskich i [referencyjnych.](https://docs.microsoft.com/analysis-services/analysis-services-overview) Artykuły w dokumentacji usług SQL Server Analysis Services pokazują, czy mają zastosowanie również do usługi Azure Analysis Services — w tym celu pod tytułem jest dodawany baner DOTYCZY.
+Ponieważ modele tabelaryczne w usługach Azure Analysis Services są tak samo jak modele tabelaryczne w zestawach danych SQL Server Analysis Services i Power BI Premium, w dokumentacji analysis services znajduje się obszerna biblioteka udostępnionych samouczków modelowania danych, artykułów koncepcyjnych, proceduralnych, deweloperskich i [referencyjnych.](https://docs.microsoft.com/analysis-services/?view=azure-analysis-services-current) Artykuły w dokumentacji udostępnionych usług Analysis Services pokazują, czy mają one również zastosowanie do usług Azure Analysis Services przez baner APPLIES TO pod tytułem. Można również użyć selektora wersji nad spisem treści, aby wyświetlić tylko te artykuły, które mają zastosowanie do używanej platformy.
 
 ![Dokumentacja udostępniona](./media/analysis-services-overview/aas-overview-applies-to.png)
 
 ### <a name="contribute"></a>Zostań współautorem!
 
-Dokumentacja usługi Analysis Services, podobnie jak ten artykuł, to dokumentacja typu open source. Jeśli masz konto w serwisie GitHub, możesz edytować artykuł, klikając pozycję Edit (Edytuj) (ołówek) w prawym górnym rogu ekranu przeglądarki. Użyj edytora w przeglądarce, a następnie kliknij pozycję Propose file change (Zaproponuj zmianę pliku). 
+Dokumentacja usługi Analysis Services, podobnie jak ten artykuł, to dokumentacja typu open source. Aby dowiedzieć się więcej o tym, jak możesz wnieść swój wkład, zobacz [Przewodnik po współautorach dokumentów](https://docs.microsoft.com/contribute/). 
 
-![Dokumentacja udostępniona](./media/analysis-services-overview/aas-overview-edit.png)
-
-Zawartość, którą utworzysz, zostanie zrecenzowana przez zespół zajmujący się dokumentacją, a po jej zatwierdzeniu Twoja nazwa konta usługi GitHub będzie wyświetlana jako współautor. Aby dowiedzieć się więcej, zobacz [Przewodnik współautora witryny Docs](https://docs.microsoft.com/contribute/).
-
-W dokumentacji dotyczącej usługi Azure Analysis Services są używane również informacje na temat [problemów z usługą GitHub](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs). Użytkownik może przekazać swoją opinię na temat produktu lub dokumentacji. W tym celu należy skorzystać z sekcji **opinii** w dolnej części artykułu. Funkcja problemów z usługą GitHub nie została jeszcze włączona w dokumentacji usług SQL Server Analysis Services. 
+W dokumentacji dotyczącej usługi Azure Analysis Services są używane również informacje na temat [problemów z usługą GitHub](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs). Użytkownik może przekazać swoją opinię na temat produktu lub dokumentacji. W tym celu należy skorzystać z sekcji **opinii** w dolnej części artykułu. Problemy z usługą GitHub nie są włączone dla udostępnionej dokumentacji usług Analysis Services. 
 
 ## <a name="blogs"></a>Blogi
 

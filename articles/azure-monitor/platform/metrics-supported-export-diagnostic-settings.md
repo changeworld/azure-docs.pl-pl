@@ -3,14 +3,14 @@ title: Metryki platformy Azure Monitor można eksportować za pomocą ustawień 
 description: Lista metryk dostępnych dla każdego typu zasobu za pomocą usługi Azure Monitor.
 services: azure-monitor
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 7a75655d1707dd2491065974ed8addc4c2da1a6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6be8cb1b7e74301d16a1174f5ca2b774334dac3f
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661366"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422109"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Metryki platformy Azure Monitor można eksportować za pomocą ustawień diagnostycznych
 
@@ -24,7 +24,9 @@ Ze względu na zawiłości w wewnętrznej bazy danych usługi Azure Monitor nie 
 
 ## <a name="change-to-behavior-for-nulls-and-zero-values"></a>Zmiana zachowania dla nulls i zero wartości 
  
-Dla metryk platformy, które mogą być eksportowane za pomocą ustawień diagnostycznych, istnieje kilka metryk, dla których usługa Azure Monitor interpretuje "0s" jako "Nulls". Spowodowało to pewne zamieszanie między rzeczywistym "0s" (emitowane przez zasób) i interpretowane "0s" (Nulls). Od **1 kwietnia 2020** r. metryki platformy eksportowane za pomocą ustawień diagnostycznych nie będą już eksportować "0", chyba że zostały rzeczywiście wyemitowane przez zasób bazowy. Uwaga:
+Dla metryk platformy, które mogą być eksportowane za pomocą ustawień diagnostycznych, istnieje kilka metryk, dla których usługa Azure Monitor interpretuje "0s" jako "Nulls". Spowodowało to pewne zamieszanie między rzeczywistym "0s" (emitowane przez zasób) i interpretowane "0s" (Nulls). Wkrótce nastąpi zmiana, a metryki platformy eksportowane za pomocą ustawień diagnostycznych nie będą już eksportować "0", chyba że zostały naprawdę wyemitowane przez zasób bazowy. Zmiana została zaplanowana na 1 kwietnia 2020 r., ale została opóźniona z powodu zmian priorytetowych spowodowanych covid-19. 
+
+Uwaga:
 
 1.  Jeśli usuniesz grupę zasobów lub określony zasób, dane metryki z zrealizowanych zasobów nie będą już wysyłane do celów eksportu ustawień diagnostycznych. Oznacza to, że nie będzie już wyświetlany w centrach zdarzeń, kontach magazynu i obszarach roboczych analizy dzienników.
 2.  Poprawa ta będzie dostępna we wszystkich chmurach publicznych i prywatnych.
@@ -49,7 +51,7 @@ Tabela zawiera następujące kolumny.
 > Poniższa tabela może mieć poziomy pasek przewijania u dołu. Jeśli uważasz, że brakuje informacji, sprawdź, czy pasek przewijania znajduje się aż po lewej stronie.  
 
 
-| Można wyeksportować za pomocą ustawień diagnostycznych?  | Emituje NULLs |  ResourceType  |  Metryka  |  Nazwa metryczna  |  Jednostka  |  Aggregationtype | 
+| Można wyeksportować za pomocą ustawień diagnostycznych?  | Już emitują NULLs |  ResourceType  |  Metryka  |  Nazwa metryczna  |  Jednostka  |  Aggregationtype | 
 |---|---| ---- | ----- | ------ | ---- | ---- | 
 | Tak****  | Nie |  Microsoft.AnalysisSługa/serwery  |  CleanerCurrentPrice  |  Pamięć: Czystsza aktualna cena  |  Liczba  |  Średnia | 
 | Tak****  | Nie |  Microsoft.AnalysisSługa/serwery  |  CleanerMemoryNiejmkliwi  |  Pamięć: Czystsza pamięć nierozskawalna  |  Bajty  |  Średnia | 

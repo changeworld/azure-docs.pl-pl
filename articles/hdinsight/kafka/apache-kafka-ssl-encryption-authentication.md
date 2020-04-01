@@ -1,6 +1,6 @@
 ---
-title: Uwierzytelnianie & szyfrowania SSL platformy Apache Kafka — Usługa Azure HDInsight
-description: Skonfiguruj szyfrowanie SSL do komunikacji między klientami platformy Kafka a brokerami platformy Kafka, a także między brokerami platformy Kafka. Konfigurowanie uwierzytelniania SSL klientów.
+title: Uwierzytelnianie & szyfrowania Protokołu & — Usługa Azure HDInsight
+description: Skonfiguruj szyfrowanie TLS do komunikacji między klientami platformy Kafka a brokerami platformy Kafka, a także między brokerami platformy Kafka. Konfigurowanie uwierzytelniania SSL klientów.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,25 +8,25 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4a363caf61046cf39c31ae2d5f35622b7b9109f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 027a66f4b83225f3c776e1bff1d706f6f4dba976
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129991"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436992"
 ---
-# <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Konfigurowanie szyfrowania i uwierzytelniania warstwy SSL (Secure Sockets Layer) dla platformy Apache Kafka w usłudze Azure HDInsight
+# <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Konfigurowanie szyfrowania i uwierzytelniania protokołu TLS dla platformy Apache Kafka w usłudze Azure HDInsight
 
-W tym artykule pokazano, jak skonfigurować szyfrowanie SSL między klientami Apache Kafka i brokerami Apache Kafka. Pokazuje również, jak skonfigurować uwierzytelnianie klientów (czasami nazywane dwukierunkowym protokołem SSL).
+W tym artykule pokazano, jak skonfigurować szyfrowanie TLS (Transport Layer Security), wcześniej znane jako szyfrowanie SSL (Secure Sockets Layer), między klientami Apache Kafka a brokerami Apache Kafka. Pokazuje również, jak skonfigurować uwierzytelnianie klientów (czasami nazywane dwukierunkowym TLS).
 
 > [!Important]
-> Istnieją dwa klienci, których można użyć w aplikacjach platformy Kafka: klient Java i klient konsoli. Tylko klient `ProducerConsumer.java` Java może używać SSL zarówno do produkcji, jak i konsumpcji. Klient `console-producer.sh` producenta konsoli nie działa z SSL.
+> Istnieją dwa klienci, których można użyć w aplikacjach platformy Kafka: klient Java i klient konsoli. Tylko klient `ProducerConsumer.java` Java może używać protokołu TLS zarówno do produkcji, jak i korzystania z niego. Klient `console-producer.sh` producenta konsoli nie działa z TLS.
 
 > [!Note] 
 > Producent konsoli HDInsight Kafka w wersji 1.1 nie obsługuje ssl.
 ## <a name="apache-kafka-broker-setup"></a>Apache Kafka konfiguracji brokera
 
-Konfiguracja brokera SSL platformy Kafka będzie używać czterech maszyn wirtualnych klastra HDInsight w następujący sposób:
+Konfiguracja brokera Protokołu Kafka TLS będzie używać czterech maszyn wirtualnych klastra HDInsight w następujący sposób:
 
 * headnode 0 - Urząd certyfikacji (CA)
 * węzeł pracownika 0, 1 i 2 - brokerzy
@@ -119,7 +119,7 @@ Aby ukończyć konfigurację brokera, wykonaj następujące szczegółowe instru
 
     ```
 
-## <a name="update-kafka-configuration-to-use-ssl-and-restart-brokers"></a>Aktualizowanie konfiguracji platformy Kafka w celu używania usług SSL i ponowne uruchamianie brokerów
+## <a name="update-kafka-configuration-to-use-tls-and-restart-brokers"></a>Aktualizowanie konfiguracji platformy Kafka w celu używania protokołu TLS i ponownego uruchamiania brokerów
 
 Teraz skonfigurowano każdego brokera platformy Kafka z magazynem kluczy i magazynem zaufania i zaimportowano poprawne certyfikaty. Następnie zmodyfikuj powiązane właściwości konfiguracji platformy Kafka przy użyciu programu Ambari, a następnie uruchom ponownie brokerów platformy Kafka.
 
@@ -166,7 +166,7 @@ Aby ukończyć modyfikację konfiguracji, wykonaj następujące czynności:
 
 ## <a name="client-setup-without-authentication"></a>Konfiguracja klienta (bez uwierzytelniania)
 
-Jeśli nie potrzebujesz uwierzytelniania, podsumowanie czynności konfigurowania tylko szyfrowania SSL to:
+Jeśli nie potrzebujesz uwierzytelniania, podsumowanie czynności konfigurowania tylko szyfrowania TLS to:
 
 1. Zaloguj się do urzędu certyfikacji (aktywnego węzła głównego).
 1. Skopiuj certyfikat urzędu certyfikacji do komputera klienckiego z komputera urzędu certyfikacji (wn0).
@@ -219,7 +219,7 @@ Te kroki są szczegółowo opisane w poniższych fragmentach kodu.
 ## <a name="client-setup-with-authentication"></a>Konfiguracja klienta (z uwierzytelnianiem)
 
 > [!Note]
-> Poniższe kroki są wymagane tylko wtedy, gdy konfigurujesz szyfrowanie SSL **i** uwierzytelnianie. Jeśli konfigurujesz tylko szyfrowanie, zobacz [Konfiguracja klienta bez uwierzytelniania](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication).
+> Poniższe kroki są wymagane tylko wtedy, gdy konfigurujesz szyfrowanie TLS **i** uwierzytelnianie. Jeśli konfigurujesz tylko szyfrowanie, zobacz [Konfiguracja klienta bez uwierzytelniania](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication).
 
 Następujące cztery kroki podsumowują zadania potrzebne do ukończenia konfiguracji klienta:
 
@@ -302,7 +302,7 @@ Szczegóły każdego kroku podano poniżej.
 ## <a name="verification"></a>Weryfikacja
 
 > [!Note]
-> Jeśli są zainstalowane standardy HDInsight 4.0 i Kafka 2.1, można użyć producenta/konsumentów konsoli, aby zweryfikować konfigurację. Jeśli nie, uruchom producenta platformy Kafka na porcie 9092 i wysyłaj wiadomości do tematu, a następnie użyj konsumenta platformy Kafka w porcie 9093, który używa SSL.
+> Jeśli są zainstalowane standardy HDInsight 4.0 i Kafka 2.1, można użyć producenta/konsumentów konsoli, aby zweryfikować konfigurację. Jeśli nie, uruchom producenta platformy Kafka na porcie 9092 i wysyłaj wiadomości do tematu, a następnie użyj konsumenta platformy Kafka w porcie 9093, który używa protokołu TLS.
 
 ### <a name="kafka-21-or-above"></a>Kafka 2.1 lub wyższa
 

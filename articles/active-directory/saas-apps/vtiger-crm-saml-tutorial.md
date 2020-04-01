@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z CRM Vtiger (SAML) | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Vtiger CRM (SAML).
+title: 'Samouczek: Integracja usługi Azure Active Directory z programem Vtiger CRM (SAML) | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a programem Vtiger CRM (SAML).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,73 +17,73 @@ ms.date: 06/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45782d7827a289cc0942eca61d6b30d071a6721c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67450744"
 ---
-# <a name="tutorial-integrate-vtiger-crm-saml-with-azure-active-directory"></a>Samouczek: Integracja Vtiger CRM (SAML w) usłudze Azure Active Directory
+# <a name="tutorial-integrate-vtiger-crm-saml-with-azure-active-directory"></a>Samouczek: Integracja programu Vtiger CRM (SAML) z usługą Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować Vtiger CRM (SAML) w usłudze Azure Active Directory (Azure AD). Po zintegrowaniu Vtiger CRM (SAML) w usłudze Azure AD, możesz wykonywać następujące czynności:
+W tym samouczku dowiesz się, jak zintegrować program Vtiger CRM (SAML) z usługą Azure Active Directory (Azure AD). Po zintegrowaniu programu Vtiger CRM (SAML) z usługą Azure AD można:
 
-* W usłudze Azure AD, kto ma dostęp do Vtiger CRM (SAML) w kontrolce.
-* Umożliwianie użytkownikom można automatycznie zalogowany CRM Vtiger (SAML) przy użyciu konta usługi Azure AD.
-* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrola w usłudze Azure AD, który ma dostęp do programu Vtiger CRM (SAML).
+* Włącz użytkownikom automatyczne logowanie do programu Vtiger CRM (SAML) za pomocą ich kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć pracę, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebujesz następujących elementów:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać miesięcznej bezpłatnej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
-* Vtiger CRM (SAML) logowanie jednokrotne (SSO) włączone subskrypcji.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać miesięczny bezpłatny okres próbny [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Vtiger CRM (SAML) subskrypcja z włączoną funkcją logowania jednokrotnego (SSO).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. 
+W tym samouczku można skonfigurować i przetestować samouszeńców usługi Azure AD w środowisku testowym. 
 
-* Obsługuje Vtiger CRM (SAML) **SP** jednokrotne logowanie inicjowane przez
-* Obsługuje Vtiger CRM (SAML) **Just In Time** aprowizacji użytkowników
+* Vtiger CRM (SAML) **obsługuje** sp inicjowane SSO
+* Vtiger CRM (SAML) obsługuje **inicjowanie** obsługi administracyjnej użytkowników tylko w czasie
 
-## <a name="adding-vtiger-crm-saml-from-the-gallery"></a>Dodawanie Vtiger CRM (SAML) z galerii
+## <a name="adding-vtiger-crm-saml-from-the-gallery"></a>Dodawanie programu Vtiger CRM (SAML) z galerii
 
-Aby skonfigurować integrację programu CRM Vtiger (SAML) w usłudze Azure AD, należy dodać Vtiger CRM (SAML) z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu Vtiger CRM (SAML) z usługą Azure AD, należy dodać program Vtiger CRM (SAML) z galerii do listy zarządzanych aplikacji SaaS.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
-1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
-1. Aby dodać nową aplikację, wybierz **nową aplikację**.
-1. W **Dodaj z galerii** sekcji, wpisz **Vtiger CRM (SAML)** w polu wyszukiwania.
-1. Wybierz **Vtiger CRM (SAML)** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta służbowego lub konta firmy Microsoft.
+1. W lewym okienku nawigacji wybierz usługę **Azure Active Directory.**
+1. Przejdź do **aplikacji korporacyjnych,** a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **Vtiger CRM (SAML)** w polu wyszukiwania.
+1. Wybierz **Vtiger CRM (SAML)** z panelu wyników, a następnie dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą programu CRM Vtiger (SAML) przy użyciu użytkownika testu o nazwie **B.Simon**. Logowania jednokrotnego do pracy należy ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w aplikacji CRM Vtiger (SAML).
+Konfigurowanie i testowanie usługi Azure AD SSO za pomocą programu Vtiger CRM (SAML) przy użyciu użytkownika testowego o nazwie **B.Simon**. Aby użytkownik łączony sygnowanej działał, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w programie Vtiger CRM (SAML).
 
-Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą programu CRM Vtiger (SAML), wykonaj poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować syloga usługi Azure AD za pomocą programu Vtiger CRM (SAML), wykonaj następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie Vtiger CRM (SAML) w rejestracji Jednokrotnej](#configure-vtiger-crm-saml-sso)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Vtiger CRM (SAML)](#create-vtiger-crm-saml-test-user)**  — aby odpowiednikiem Britta Simon w Vtiger CRM (SAML) w połączonym z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-sso)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj samouszeńcę usługi Azure AD](#configure-azure-ad-sso)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowania jednokrotnego Vtiger CRM (SAML)](#configure-vtiger-crm-saml-sso)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego Vtiger CRM (SAML)](#create-vtiger-crm-saml-test-user)** — aby mieć odpowiednik Britta Simon w programie Vtiger CRM (SAML), który jest połączony z reprezentacją użytkownika usługi Azure AD.
+6. **[Test SSO](#test-sso)** - aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie rejestracji jednokrotnej w usłudze Azure AD
 
-Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
+Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azure portal.
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Vtiger CRM (SAML)** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
-1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
-1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie integracji aplikacji **Vtiger CRM (SAML)** znajdź sekcję **Zarządzaj** i wybierz opcję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** kliknij ikonę edycji/pióra dla **podstawowej konfiguracji SAML,** aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Na **podstawową konfigurację protokołu SAML** strony, wprowadź wartości dla następujących pól:
+1. Na stronie **Podstawowa konfiguracja SAML** wprowadź wartości dla następujących pól:
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: 
 
     | | |
     | - |- |
@@ -94,62 +94,62 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<customer_instance>.od1.vtiger.com/sso/saml?acs`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Vtiger CRM (SAML)](mailto:support@vtiger.com) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta Vtiger CRM (SAML),](mailto:support@vtiger.com) aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, Znajdź **certyfikat (Base64)** i wybierz **Pobierz** do pobrania certyfikatu i zapisz go na komputerze.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** w sekcji **Saml Podpisywanie certyfikatów** znajdź **certyfikat (Base64)** i wybierz **pozycję Pobierz,** aby pobrać certyfikat i zapisać go na komputerze.
 
-   ![Link pobierania certyfikatu](common/certificatebase64.png)
+   ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. Na **Ustaw się Vtiger CRM (SAML) w** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. W sekcji **Konfigurowanie programu Vtiger CRM (SAML)** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-### <a name="configure-vtiger-crm-saml-sso"></a>Konfigurowanie logowania jednokrotnego Vtiger CRM (SAML)
+### <a name="configure-vtiger-crm-saml-sso"></a>Konfigurowanie identyfikatora SSO programu Vtiger CRM (SAML)
 
-Aby skonfigurować logowanie jednokrotne na **Vtiger CRM (SAML)** stronie, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie skopiowany adresy URL z portalu Azure, aby [Vtiger CRM (SAML) w pomocy technicznej zespół](mailto:support@vtiger.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować logowanie jednokrotne po stronie **programu Vtiger CRM (SAML),** należy wysłać pobrany **certyfikat (Base64)** i odpowiednie skopiowane adresy URL z witryny Azure portal do [zespołu pomocy technicznej programu Vtiger CRM (SAML).](mailto:support@vtiger.com) Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B.Simon.
+W tej sekcji utworzysz użytkownika testowego w witrynie Azure portal o nazwie B.Simon.
 
-1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
-1. W **użytkownika** właściwości, wykonaj następujące kroki:
+1. Z lewego okienka w witrynie Azure portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
+1. We właściwościach **Użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** username@companydomain.extensionwprowadź pole . Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można udostępnić B.Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu CRM Vtiger (SAML).
+W tej sekcji włączysz B.Simon do korzystania z logowania jednokrotnego platformy Azure, przyznając dostęp do programu Vtiger CRM (SAML).
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście aplikacji wybierz **Vtiger CRM (SAML)** .
-1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Na liście aplikacji wybierz **Vtiger CRM (SAML)**.
+1. Na stronie przegląd aplikacji znajdź sekcję **Zarządzaj** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
+1. Wybierz **pozycję Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym Dodawanie **przydziału.**
 
     ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B.Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B.Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przydziału** kliknij przycisk **Przypisz.**
 
-### <a name="create-vtiger-crm-saml-test-user"></a>Tworzenie użytkownika testowego Vtiger CRM (SAML)
+### <a name="create-vtiger-crm-saml-test-user"></a>Utwórz użytkownika testowego Vtiger CRM (SAML)
 
-W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w CRM Vtiger (SAML). Vtiger CRM (SAML) obsługuje aprowizacji użytkowników w czasie, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w CRM Vtiger (SAML), nowy katalog jest tworzony po uwierzytelnieniu.
+W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w Vtiger CRM (SAML). Vtiger CRM (SAML) obsługuje just-in-time inicjowania obsługi administracyjnej użytkownika, który jest domyślnie włączony. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w programie Vtiger CRM (SAML), nowy jest tworzony po uwierzytelnieniu.
 
 ### <a name="test-sso"></a>Test SSO
 
-Po wybraniu kafelka Vtiger CRM (SAML) w panelu dostępu, możesz powinna istnieć możliwość automatycznej rejestracji do Vtiger CRM (SAML) dla której skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka Vtiger CRM (SAML) w Panelu dostępu należy automatycznie zalogować się do programu Vtiger CRM (SAML), dla którego skonfigurowano logującą się logującą logującą. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

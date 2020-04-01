@@ -1,14 +1,14 @@
 ---
-title: Wdrażanie w usłudze Azure Kubernetes za pomocą Jenkins i wzorca wdrażania Blue/Green
+title: Wdrażanie w usłudze Azure Kubernetes przy użyciu usługi Jenkins i wzorca wdrażania na niebiesko-zielonej
 description: Dowiedz się, w jaki sposób przeprowadzić wdrażanie w usłudze Azure Kubernetes Service (AKS) przy użyciu serwera Jenkins i niebieskiego/zielonego wzorca wdrażania.
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, wdrażanie niebieskie zielone, ciągłe dostarczanie, cd
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251476"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Wdrażanie w usłudze Azure Kubernetes Service (AKS) przy użyciu serwera Jenkins i niebieskiego/zielonego wzorca wdrażania
@@ -113,10 +113,10 @@ Niebieskie/zielone wdrożenie można skonfigurować w usłudze AKS ręcznie lub 
 #### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>Konfigurowanie klastra Kubernetes za pomocą przykładowego skryptu konfiguracji
 1. Zmodyfikuj plik **deploy/aks/setup/setup.sh**, zastępując następujące symbole zastępcze odpowiednimi wartościami dla danego środowiska: 
 
-   - **&lt;your-resource-group-name>**
-   - **&lt;your-kubernetes-cluster-name>**
-   - **&lt;your-location>**
-   - **&lt;your-dns-name-suffix>**
+   - **&lt;nazwa grupy zasobów>**
+   - **&lt;nazwa klastra>**
+   - **&lt;>lokalizacji**
+   - **&lt;your-dns-name-sufiks>**
 
      ![Zrzut ekranu przedstawiający skrypt setup.sh w powłoce bash z wyróżnionymi kilkoma symbolami zastępczymi](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
 
@@ -143,7 +143,7 @@ Niebieskie/zielone wdrożenie można skonfigurować w usłudze AKS ręcznie lub 
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. Zaktualizuj nazwy DNS dla publicznego i testowych punktów końcowych. Podczas tworzenia klastra Kubernetes tworzona jest również [dodatkowa grupa zasobów](https://github.com/Azure/AKS/issues/3), a jej nazwa jest tworzona za pomocą wzorca nazewnictwa **MC_&lt;nazwa-grupy-zasobów> _&lt;nazwa-klastra-kubernetes>_ &lt;lokalizacja>** .
+1. Zaktualizuj nazwy DNS dla publicznego i testowych punktów końcowych. Podczas tworzenia klastra Kubernetes tworzona jest również [dodatkowa grupa zasobów](https://github.com/Azure/AKS/issues/3), a jej nazwa jest tworzona za pomocą wzorca nazewnictwa **MC_&lt;nazwa-grupy-zasobów>_&lt;nazwa-klastra-kubernetes>_&lt;lokalizacja>**.
 
     Znajdź publiczne adresy IP w grupie zasobów.
 
@@ -197,7 +197,7 @@ W tej sekcji zobaczysz, jak przygotować serwer Jenkins do uruchomienia kompilac
    sudo apt-get install git maven 
    ```
    
-1. [Zainstaluj platformę Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce). Upewnij się, że użytkownik `jenkins` ma uprawnienia do uruchamiania poleceń `docker`.
+1. [Zainstaluj program Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce). Upewnij się, że użytkownik `jenkins` ma uprawnienia do uruchamiania poleceń `docker`.
 
 1. [Zainstaluj narzędzie kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
@@ -214,7 +214,7 @@ W tej sekcji zobaczysz, jak przygotować serwer Jenkins do uruchomienia kompilac
     1. Wybierz pozycję **Manage Jenkins > Manage Plugins > Available** (Zarządzanie usługą Jenkins > Zarządzanie wtyczkami > Dostępne).
     1. Wyszukaj i zainstaluj wtyczkę usługi Azure Container Service.
 
-1. Dodaj poświadczenia umożliwiające zarządzanie zasobami na platformie Azure. Jeśli nie masz jeszcze wtyczki, zainstaluj wtyczkę **usługi Azure Credential** .
+1. Dodaj poświadczenia umożliwiające zarządzanie zasobami na platformie Azure. Jeśli nie masz jeszcze wtyczki, zainstaluj wtyczkę **Poświadczeń platformy Azure.**
 
 1. Dodaj poświadczenia jednostki usługi platformy Azure jako typ **Microsoft Azure Service Principal** (Jednostka usługi Microsoft Azure).
 
@@ -247,7 +247,7 @@ W tej sekcji zobaczysz, jak przygotować serwer Jenkins do uruchomienia kompilac
 ## <a name="create-the-job"></a>Tworzenie zadania
 1. Dodaj nowe zadanie o typie **Pipeline** (Potok).
 
-1. Wybierz kolejno pozycje **Pipeline** > **Definition** > **Pipeline script from SCM** (Potok > Definicja > Skrypt potoku z SCM).
+1. Wybierz skrypt potoku**definicji** >  **potoku** > **z SCM**.
 
 1. Wprowadź adres URL repozytorium SCM, zastępując symbol zastępczy &lt;your-forked-repo> nazwą rozwidlonego repozytorium.
 
@@ -282,7 +282,7 @@ az group delete -y --no-wait -n <your-resource-group-name>
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
+Jeśli wystąpią jakiekolwiek błędy z wtyczkami jenkins, zgładź problem w [JIRA usługi Jenkins](https://issues.jenkins-ci.org/) dla określonego składnika.
 
 ## <a name="next-steps"></a>Następne kroki
 

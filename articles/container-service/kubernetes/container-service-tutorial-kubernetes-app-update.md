@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: e65ca30e4f15b6f69f39160c67813047c40ce8ee
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274126"
 ---
 # <a name="deprecated-update-an-application-in-kubernetes"></a>(PRZESTARZAŁE) Aktualizowanie aplikacji w rozwiązaniu Kubernetes
 
 > [!TIP]
-> Aby uzyskać zaktualizowaną wersję tego samouczka korzystającego z usługi Azure Kubernetes, zobacz [Samouczek: aktualizowanie aplikacji w usłudze Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-app-update.md).
+> Zaktualizowana wersja tego samouczka korzystającego z usługi Azure Kubernetes, zobacz [Samouczek: Aktualizowanie aplikacji w usłudze Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-app-update.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -81,7 +81,7 @@ Przejdź do adresu `http://localhost:8080`, aby wyświetlić zaktualizowaną apl
 
 Otaguj obraz `azure-vote-front` wartością loginServer rejestru kontenerów. 
 
-Pobierz nazwę serwera logowania przy użyciu polecenia [az acr list](/cli/azure/acr#az-acr-list).
+Pobierz nazwę serwera logowania za pomocą polecenia [az acr list.](/cli/azure/acr#az-acr-list)
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 51b0d02443df872a7fae13116ea77b13d05055fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1e43cfc55611c432652055db2ac8411d835608b
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74225463"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396816"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Poprawianie błędnie napisanych wyrazów za pomocą sprawdzania pisowni bing
 
@@ -71,7 +71,7 @@ Kwerenda punktu końcowego wymaga klucza przekazanego w parametrach ciągu zapyt
 
 Adres URL punktu końcowego ma kilka wartości, które muszą być przekazywane poprawnie. Klucz interfejsu API sprawdzania pisowni Bing jest tylko kolejnym z nich. Należy ustawić parametr **sprawdzania pisowni** na true i należy ustawić wartość **bing-spell-check-subscription-key** na wartość klucza:
 
-`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription-key={luisKey}&spellCheck=**true**&bing-spell-check-subscription-key=**{bingKey}**&verbose=true&timezoneOffset=0&q={utterance}`
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription-key={luisKey}&spellCheck=true&bing-spell-check-subscription-key={bingKey}&verbose=true&timezoneOffset=0&q={utterance}`
 
 ## <a name="send-misspelled-utterance-to-luis"></a>Wysyłanie błędnie napisanego wypowiedź do usługi LUIS
 1. W przeglądarce internetowej skopiuj `region`poprzedni `appId` `luisKey`ciąg `bingKey` i zastąp , , i własnymi wartościami. Upewnij się, że używasz regionu punktu końcowego, jeśli różni się on od [regionu](luis-reference-regions.md)publikowania .

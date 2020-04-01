@@ -2,14 +2,14 @@
 title: Przygotowywanie maszyn wirtualnych funkcji Hyper V do oceny/migracji za pomocą usługi Azure Migrate
 description: Dowiedz się, jak przygotować się do oceny/migracji maszyn wirtualnych funkcji Hyper-V za pomocą usługi Azure Migrate.
 ms.topic: tutorial
-ms.date: 03/23/2020
+ms.date: 03/31/2020
 ms.custom: mvc
-ms.openlocfilehash: 5760cf667a02384b8f68cc85540264a1b5702747
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336706"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436227"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Przygotowanie do oceny i migracji maszyn wirtualnych z programem Hyper-V na platformę Azure
 
@@ -95,8 +95,9 @@ Funkcji Hyper-V można przygotować dla oceny maszyny Wirtualnej ręcznie lub pr
 - Konfigurowanie komunikacji zdalnej programu PowerShell na każdym hoście, aby urządzenie migracji platformy Azure można uruchamiać polecenia programu PowerShell na hoście za pomocą połączenia WinRM.
 - Delegow poświadczenie, jeśli dyski maszyn wirtualnych znajdują się w zdalnych udziałach SMB.
 - Skonfiguruj konto, którego urządzenie będzie używać do odnajdywanie maszyn wirtualnych na hostach funkcji Hyper-V.
-- Skonfiguruj usługi integracji funkcji Hyper-V na każdej maszynie wirtualnej, którą chcesz odnajdować i ocenić.
+- Skonfiguruj usługi integracji funkcji Hyper-V na każdej maszynie wirtualnej, którą chcesz odnajdować i ocenić. Ustawienia domyślne po włączeniu usług integracji są wystarczające dla migracji platformy Azure.
 
+    ![Włączanie usług integracyjnych](./media/tutorial-prepare-hyper-v/integrated-services.png)
 
 
 ## <a name="prepare-with-a-script"></a>Przygotowywanie za pomocą skryptu
@@ -112,7 +113,7 @@ Skrypt wykonuje następujące czynności:
 - Sprawdza, czy na hoście jest uruchomiona obsługiwana wersja funkcji Hyper-V i roli funkcji Hyper-V.
 - Włącza usługę WinRM i otwiera porty 5985 (HTTP) i 5986 (HTTPS) na hoście (wymagane do zbierania metadanych).
 - Włącza tworzenie komunikacji zdalnej programu PowerShell na hoście.
-- Sprawdza, czy usługa integracji funkcji Hyper-V jest włączona na wszystkich maszynach wirtualnych zarządzanych przez hosta.
+- Sprawdza, czy usługi integracji funkcji Hyper-V są włączone na wszystkich maszynach wirtualnych zarządzanych przez hosta.
 - W razie potrzeby włącza credssp na hoście.
 
 Uruchom skrypt w następujący sposób:
