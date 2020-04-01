@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 03/31/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 27860b8761c565c45a604253efdff5f77606606e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 195f4b5057c0e2d644ab44cc4c32e97c8662d36d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061314"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422798"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Konfigurowanie zaawansowanej ochrony przed zagrożeniami dla usługi Azure Storage
 
@@ -24,7 +24,7 @@ Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage zapewnia doda
 Alerty zabezpieczeń są wyzwalane, gdy występują anomalie w działaniu. Te alerty zabezpieczeń są zintegrowane z [usługą Azure Security Center](https://azure.microsoft.com/services/security-center/)i są również wysyłane za pośrednictwem poczty e-mail do administratorów subskrypcji ze szczegółami dotyczące podejrzanych działań i zaleceniami dotyczącymi sposobu badania i korygować zagrożenia.
 
 > [!NOTE]
-> Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage jest obecnie dostępna tylko dla magazynu obiektów Blob. Nie jest dostępna w obszarze administracji administracji administracji administracji administracji administracji administracji administracji administracji administracji administracji administracji administracji administracji 100-10 Szczegółowe informacje o cenach, w tym bezpłatna 30-dniowa wersja próbna, zobacz [stronę z cennikiem usługi Azure Security Center]( https://azure.microsoft.com/pricing/details/security-center/).
+> Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage jest obecnie dostępna tylko dla magazynu obiektów Blob. Ta usługa jest dostępna w chmurach instytucji rządowych w STANACH Zjednoczonych, ale nie ma innych suwerennych lub chmur rządowych platformy Azure. Szczegółowe informacje o cenach, w tym bezpłatna 30-dniowa wersja próbna, zobacz [stronę z cennikiem usługi Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage pobuje dzienniki diagnostyczne żądań odczytu, zapisu i usuwania do magazynu obiektów Blob w celu wykrycia zagrożeń. Aby zbadać alerty z zaawansowanej ochrony przed zagrożeniami, można wyświetlić powiązane działania magazynu przy użyciu rejestrowania analizy magazynu. Aby uzyskać więcej informacji, zobacz **Konfigurowanie rejestrowania** w [monitorze konta magazynu w witrynie Azure portal](storage-monitor-storage-account.md#configure-logging).
 
@@ -80,14 +80,14 @@ Użyj zasad platformy Azure, aby włączyć zaawansowaną ochronę przed zagroż
 
     ![Strona definicje zasad](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="rest-api"></a>[INTERFEJS API ODPOCZYNKU](#tab/rest-api)
+### <a name="rest-api"></a>[Interfejs API REST](#tab/rest-api)
 
 Polecenia interfejsu API rest umożliwia tworzenie, aktualizowanie lub uzyskanie zaawansowanego ustawienia ochrony przed zagrożeniami dla określonego konta magazynu.
 
 * [Zaawansowana ochrona przed zagrożeniami — tworzenie](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [Zaawansowana ochrona przed zagrożeniami - Pobierz](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Użyj następujących poleceń cmdlet programu PowerShell:
 

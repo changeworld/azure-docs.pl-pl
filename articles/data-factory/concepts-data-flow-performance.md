@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 95a60abef283984d66736358d2d02048f08d700d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246997"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409837"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Przewodnik dotyczący mapowania przepływów danych i dostrajania
 
@@ -69,7 +69,7 @@ Domyślnie włączenie debugowania spowoduje użycie domyślnego środowiska uru
 
 W obszarze **Opcje źródła** w transformacji źródła następujące ustawienia mogą mieć wpływ na wydajność:
 
-* Rozmiar partii nakazuje podajnikowi ADF przechowywanie danych w zestawach w pamięci, a nie w wierszach po wierszu. Rozmiar partii jest ustawieniem opcjonalnym i może zabraknąć zasobów w węzłach obliczeniowych, jeśli nie są one odpowiednio dobrane.
+* Rozmiar partii nakazuje podajnikowi ADF przechowywanie danych w zestawach w pamięci platformy Spark zamiast wiersza po wierszu. Rozmiar partii jest ustawieniem opcjonalnym i może zabraknąć zasobów w węzłach obliczeniowych, jeśli nie są one odpowiednio dobrane. Nie ustawienie tej właściwości będzie korzystać z domyślnych partii buforowania platformy Spark.
 * Ustawienie kwerendy może umożliwić filtrowanie wierszy u źródła, zanim dotrą one do przepływu danych w celu przetworzenia. Może to przyspieszyć początkowe pozyskiwanie danych. Jeśli używasz kwerendy, można dodać opcjonalne wskazówki kwerendy dla usługi Azure SQL DB, takie jak ODCZYT BEZ ZGODY.
 * Odczyt niezatwierdzonych zapewni szybsze wyniki kwerendy w transformacji źródła
 
@@ -77,7 +77,7 @@ W obszarze **Opcje źródła** w transformacji źródła następujące ustawieni
 
 ### <a name="sink-batch-size"></a>Rozmiar partii zlewu
 
-Aby uniknąć przetwarzania przepływów danych wiersz po wierszu, ustaw **rozmiar usługi Batch** na karcie Ustawienia dla witryn Usługi Azure SQL DB i ujmek sql dw platformy Azure. Jeśli rozmiar partii jest ustawiona, ADF przetwarza zapis bazy danych w partiach na podstawie podanego rozmiaru.
+Aby uniknąć przetwarzania przepływów danych wiersz po wierszu, ustaw **rozmiar usługi Batch** na karcie Ustawienia dla witryn Usługi Azure SQL DB i ujmek sql dw platformy Azure. Jeśli rozmiar partii jest ustawiona, ADF przetwarza zapis bazy danych w partiach na podstawie podanego rozmiaru. Nie ustawienie tej właściwości będzie korzystać z domyślnych partii buforowania platformy Spark.
 
 ![Ujście](media/data-flow/sink4.png "Ujście")
 

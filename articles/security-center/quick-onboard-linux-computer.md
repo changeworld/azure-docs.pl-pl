@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
-ms.openlocfilehash: 9f49b858a23d0a1f58505d9f9971a31e8c9167e9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b7181550fd76f158ec04e9779f4301bd74484e1
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73664493"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435974"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Szybki start: dołączanie komputerów z systemem Linux do usługi Azure Security Center
-Po połączeniu subskrypcji platformy Azure można włączyć usługi Security Center dla zasobów systemu Linux działających poza platformą Azure, na przykład lokalnie lub w innych chmurach, przez inicjowanie obsługi administracyjnej agenta. Agent jest nazywany agentem monitorowania firmy Microsoft (MMA), ale jest również znany jako agent systemu OMS.
+Po połączeniu subskrypcji platformy Azure można włączyć usługi Security Center dla zasobów systemu Linux działających poza platformą Azure, na przykład lokalnie lub w innych chmurach, przez inicjowanie obsługi administracyjnej agenta. Agent jest nazywany agentem usługi Log Analytics, ale jest również znany jako agent oms.
 
 Ten przewodnik Szybki start pokazuje, jak zainstalować agenta na komputerze z systemem Linux.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do rozpoczęcia korzystania z usługi Security Center wymagana jest subskrypcja usługi Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/).
 
-Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed rozpoczęciem tego przewodnika Szybki start. Zobacz [Dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa](security-center-get-started.md), aby uzyskać instrukcje dotyczące uaktualnienia. Warstwę Standardowa usługi Security Center możesz wypróbować bezpłatnie. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
+Przed rozpoczęciem tego przewodnika Szybki start musisz ować standardową warstwę cenową centrum zabezpieczeń. Zobacz [Dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa](security-center-get-started.md), aby uzyskać instrukcje dotyczące uaktualnienia. Możesz bezpłatnie wypróbować standard centrum zabezpieczeń. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-linux-computer"></a>Dodawanie nowego komputera z systemem Linux
 

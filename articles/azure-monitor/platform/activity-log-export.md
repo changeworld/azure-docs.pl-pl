@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12c750f96b8852cdd6a6039ebfa750c2ee792a6b
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096289"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396716"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Eksportowanie dziennika aktywności platformy Azure do magazynu lub usługi Azure Event Hubs
 
 > [!IMPORTANT]
-> Metoda wysyłania dziennika aktywności platformy Azure do usługi Azure Storage i usługi Azure Event Hubs została zmieniona na [ustawienia diagnostyczne.](diagnostic-settings.md) W tym artykule opisano starszą metodę, która jest w trakcie przestarzałe. Zobacz uaktualnienie do [kolekcji dzienników aktywności platformy Azure i eksportowanie](diagnostic-settings-legacy.md) do porównania.
+> Metoda wysyłania dziennika aktywności platformy Azure do usługi Azure Storage i usługi Azure Event Hubs została zmieniona na [ustawienia diagnostyczne.](diagnostic-settings.md) W tym artykule opisano starszą metodę, która jest w trakcie przestarzałe. Zobacz Uaktualnić do [zbierania i analizowania dziennika aktywności platformy Azure w usłudze Azure Monitor](activity-log-collect.md) dla porównania.
 
 
-[Dziennik aktywności platformy Azure](platform-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły w ramach subskrypcji platformy Azure. Oprócz przeglądania dziennika aktywności w portalu Azure lub kopiowania go do obszaru roboczego usługi Log Analytics, gdzie można go analizować z innymi danymi zebranymi przez usługę Azure Monitor, można utworzyć profil dziennika w celu zarchiwizowania dziennika aktywności na koncie magazynu platformy Azure lub przesłać go strumieniowo do usługi Centrum zdarzeń.
+[Dziennik aktywności platformy Azure](platform-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły w ramach subskrypcji platformy Azure. Oprócz wyświetlania dziennika aktywności w witrynie Azure portal lub kopiowania go do obszaru roboczego usługi Log Analytics, gdzie mogą być analizowane z innymi danymi zebranymi przez usługę Azure Monitor, można utworzyć profil dziennika, aby zarchiwizować dziennik aktywności na koncie magazynu platformy Azure lub przesłać go strumieniowo do Centrum zdarzeń.
 
 ## <a name="archive-activity-log"></a>Dziennik aktywności archiwum
 Archiwizowanie dziennika aktywności na koncie magazynu jest przydatne, jeśli chcesz zachować dane dziennika dłużej niż 90 dni (z pełną kontrolą nad zasadami przechowywania) do inspekcji, analizy statycznej lub tworzenia kopii zapasowych. Jeśli musisz zachować zdarzenia tylko przez 90 dni lub mniej, nie musisz konfigurowanie archiwizacji konta magazynu, ponieważ zdarzenia dziennika aktywności są zachowywane na platformie Azure przez 90 dni.
@@ -40,7 +40,7 @@ Konto magazynu nie musi znajdować się w tej samej subskrypcji co dzienniki emi
 > [!TIP]
 > Zobacz [Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) w celu zapewnienia dostępu do konta magazynu za zabezpieczoną siecią wirtualną.
 
-### <a name="event-hubs"></a>Usługa Event Hubs
+### <a name="event-hubs"></a>Event Hubs
 Jeśli wysyłasz dziennik aktywności do centrum zdarzeń, musisz [utworzyć centrum zdarzeń,](../../event-hubs/event-hubs-create.md) jeśli jeszcze go nie masz. Jeśli wcześniej przesyłano strumieniowo zdarzenia dziennika aktywności do tej przestrzeni nazw centrów zdarzeń, centrum zdarzeń zostanie ponownie użyczone.
 
 Zasady dostępu współdzielonego definiuje uprawnienia, które ma mechanizm przesyłania strumieniowego. Przesyłanie strumieniowe do centrów zdarzeń wymaga uprawnień Zarządzanie, Wysyłanie i Nasłuchij. Można utworzyć lub zmodyfikować zasady dostępu udostępnionego dla obszaru nazw Centrum zdarzeń w witrynie Azure portal w obszarze Konfigurowanie witryny dla obszaru nazw centrum zdarzeń.

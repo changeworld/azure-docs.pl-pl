@@ -1,14 +1,14 @@
 ---
 title: Monitorowanie zmian delegowania w dzierżawie zarządzającej
 description: Dowiedz się, jak monitorować aktywność delegowania od dzierżawców klientów do dzierżawy zarządzającej.
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 99aa05cb73326e441c0473855c27dc71212cf415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82c41c392210e088c85af510b9698e0140f660e5
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79478229"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421903"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Monitorowanie zmian delegowania w dzierżawie zarządzającej
 
@@ -73,7 +73,7 @@ Po utworzeniu konta jednostki usługi i przypisaniu roli czytnik monitorowania w
 
 Po utworzeniu nowego konta jednostkowego usługi z dostępem czytnika monitorowania do głównego zakresu dzierżawy zarządzającej można go używać do wykonywania zapytań i raportowania aktywności delegowania w dzierżawie. 
 
-Poniższy przykład używa programu Azure PowerShell do wykonywania zapytań o ostatni 1 dzień działania i raportów dotyczących wszelkich dodanych lub usuniętych delegacji (lub prób, które nie powiodły się). Odpytywany [dane dziennika działania dzierżawy,](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) a następnie konstruuje następujące wartości do raportu na delegacje, które są dodawane lub usuwane:
+[Ten skrypt programu Azure PowerShell](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/monitor-delegation-changes) może służyć do kwerendy ostatnich 1 dzień działania i raporty na wszelkie dodane lub usunięte delegacje (lub próby, które nie powiodły się). Odpytywany [dane dziennika działania dzierżawy,](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) a następnie konstruuje następujące wartości do raportu na delegacje, które są dodawane lub usuwane:
 
 - **Identyfikator delegowanego źródła:** Identyfikator delegowanej subskrypcji lub grupy zasobów
 - **CustomerTenantId**: Identyfikator dzierżawy klienta

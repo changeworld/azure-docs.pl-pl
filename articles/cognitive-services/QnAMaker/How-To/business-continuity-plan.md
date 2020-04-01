@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: f920a789f1ec631c5d70863b10d8364b3eb81b6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2100426923418104c31933bf9d1406a6441d3841
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650473"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410928"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Tworzenie planu ciągłości działania dla usługi QnA Maker
 
@@ -33,7 +33,7 @@ Pomysł wysokiego poziomu przedstawiony powyżej jest następujący:
 
 4. Po skonfigurowaniu stosów podstawowych i pomocniczych użyj [Menedżera ruchu,](https://docs.microsoft.com/azure/traffic-manager/) aby skonfigurować dwa punkty końcowe i skonfigurować metodę routingu.
 
-5. Należy utworzyć certyfikat SSL (Secure Sockets Layer) dla punktu końcowego menedżera ruchu. [Powiąż certyfikat SSL](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) w usługach aplikacji.
+5. Należy utworzyć certyfikat TLS (Transport Layer Security), wcześniej znany jako Secure Sockets Layer (SSL), certyfikat dla punktu końcowego menedżera ruchu. [Powiąż certyfikat TLS/SSL](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) w usługach aplikacji.
 
 6. Na koniec użyj punktu końcowego menedżera ruchu w botie lub aplikacji.
 

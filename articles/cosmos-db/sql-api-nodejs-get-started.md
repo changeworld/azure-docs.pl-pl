@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 67f0d79c6b074a822917829eee94c5fd3f6a1ef2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a67c00dab33272120097fde75fcf56f24f9f532b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78274032"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411347"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Samouczek: Tworzenie aplikacji konsoli Node.js za pomocą zestawu JavaScript SDK do zarządzania danymi interfejsu API SQL usługi Azure Cosmos DB
 
@@ -125,7 +125,7 @@ Gdy aplikacja już istnieje, musisz się upewnić, że może ona komunikować si
    ```
    
 > [!Note]
-> W przypadku nawiązywania połączenia z **emulatorem bazy danych usługi Cosmos,** wyłącz weryfikację SSL dla procesu węzła:
+> W przypadku nawiązywania połączenia z **emulatorem bazy danych usługi Cosmos**, wyłącz weryfikację TLS dla procesu węzła:
 >   ```
 >   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 >   const client = new CosmosClient({ endpoint, key });

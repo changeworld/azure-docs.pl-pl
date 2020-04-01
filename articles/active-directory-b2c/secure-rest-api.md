@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aa2e2fb4eb6e269f45494db6d87eef40182971a2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 37d1c181c18f69c040040da2be138eaad3a61693
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346927"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396855"
 ---
 # <a name="secure-your-restful-services"></a>Zabezpiecz swoje usługi RESTful 
 
@@ -186,6 +186,8 @@ Poniżej przedstawiono przykład profilu technicznego RESTful skonfigurowanego z
 
 ## <a name="oauth2-bearer-authentication"></a>Uwierzytelnianie na okaziciela OAuth2 
 
+[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
+
 Uwierzytelnianie tokena na okaziciela jest zdefiniowane w [ramach autoryzacji OAuth2.0: Użycie tokena nośnika (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). W uwierzytelnianiu tokenu okaziciela usługa Azure AD B2C wysyła żądanie HTTP z tokenem w nagłówku autoryzacji.
 
 ```http
@@ -196,6 +198,7 @@ Token nośnika jest nieprzezroczystym ciągiem. Może to być token dostępu JWT
 
 - **Token na okaziciela**. Aby móc wysłać token okaziciela w profilu technicznym Restful, twoje zasady muszą najpierw nabyć token okaziciela, a następnie użyć go w profilu technicznym RESTful.  
 - **Statyczny token na okaziciela**. Użyj tej metody, gdy interfejs API REST wystawia token dostępu długoterminowego. Aby użyć statycznego tokenu nośnika, utwórz klucz zasad i nawiązuj odwołanie z profilu technicznego RESTful do klucza zasad. 
+
 
 ## <a name="using-oauth2-bearer"></a>Korzystanie z nośnika OAuth2  
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 887c9432f04cce775e045bb6da83f0af4a4a4bce
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187240"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396894"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predykaty i predicateValidations
 
@@ -45,7 +45,7 @@ Na poniższym diagramie przedstawiono relację między elementami:
 | Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
 | Identyfikator | Tak | Identyfikator, który jest używany dla predykatu. Inne elementy można użyć tego identyfikatora w zasadach. |
-| Metoda | Tak | Typ metody do użycia do sprawdzania poprawności. Możliwe wartości: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**lub **IsDateRange**. **Wartość IsLengthRange** sprawdza, czy długość wartości oświadczenia ciągu mieści się w zakresie określonych parametrów minimalnych i maksymalnych. **MatchRegex** wartość sprawdza, czy wartość oświadczenia ciągu pasuje do wyrażenia regularnego. **Wartość IncludesCharacters** sprawdza, czy wartość oświadczenia ciągu zawiera zestaw znaków. Wartość **IsDateRange** sprawdza, czy wartość oświadczenia daty mieści się między określonym zakresem parametrów minimalnych i maksymalnych. |
+| Metoda | Tak | Typ metody do użycia do sprawdzania poprawności. Możliwe wartości: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)lub [IsDateRange](#isdaterange).  |
 | Helptext | Nie | Komunikat o błędzie dla użytkowników, jeśli sprawdzanie nie powiedzie się. Ten ciąg można zlokalizować przy użyciu [dostosowania języka](localization.md) |
 
 **Predykat** element zawiera następujące elementy:
@@ -67,7 +67,19 @@ Element **Parametr** zawiera następujące atrybuty:
 | ------- | ----------- | ----------- |
 | Identyfikator | 1:1 | Identyfikator parametru. |
 
-Poniższy przykład `IsLengthRange` przedstawia metodę `Minimum` z `Maximum` parametrami i które określają zakres długości ciągu:
+### <a name="predicate-methods"></a>Metody predykatu
+
+#### <a name="islengthrange"></a>IsLengthRange (IsLengthRange)
+
+IsLengthRange Metoda sprawdza, czy długość wartości oświadczenia ciąg ów mieści się w zakresie minimalnych i maksymalnych parametrów określonych. Element predykatu obsługuje następujące parametry:
+
+| Parametr | Wymagany | Opis |
+| ------- | ----------- | ----------- |
+| Maksimum | Tak | Maksymalna liczba znaków, które można wprowadzić. |
+| Minimalne | Tak | Minimalna liczba znaków, które należy wprowadzić. |
+
+
+Poniższy przykład pokazuje IsLengthRange metody `Minimum` `Maximum` z parametrami i które określają zakres długości ciągu:
 
 ```XML
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
@@ -77,6 +89,14 @@ Poniższy przykład `IsLengthRange` przedstawia metodę `Minimum` z `Maximum` pa
   </Parameters>
 </Predicate>
 ```
+
+#### <a name="matchesregex"></a>Termin dopasowaniaRegex
+
+MatchRegex Metoda sprawdza, czy wartość oświadczenia ciągu pasuje do wyrażenia regularnego. Element predykatu obsługuje następujące parametry:
+
+| Parametr | Wymagany | Opis |
+| ------- | ----------- | ----------- |
+| Regularnewygasijenie | Tak | Wzorzec wyrażenia regularnego do dopasowania. |
 
 Poniższy przykład `MatchesRegex` przedstawia metodę `RegularExpression` z parametrem określającym wyrażenie regularne:
 
@@ -88,6 +108,14 @@ Poniższy przykład `MatchesRegex` przedstawia metodę `RegularExpression` z par
 </Predicate>
 ```
 
+#### <a name="includescharacters"></a>ZawieraWykładywacze
+
+Metoda IncludesCharacters sprawdza, czy wartość oświadczenia ciągu zawiera zestaw znaków. Element predykatu obsługuje następujące parametry:
+
+| Parametr | Wymagany | Opis |
+| ------- | ----------- | ----------- |
+| Characterset | Tak | Zestaw znaków, które można wprowadzić. Na przykład `a-z`małe litery, wielkie `A-Z`litery, `0-9`cyfry lub lista symboli, takich jak `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!`. |
+
 Poniższy przykład `IncludesCharacters` przedstawia metodę `CharacterSet` z parametrem określającym zestaw znaków:
 
 ```XML
@@ -98,7 +126,16 @@ Poniższy przykład `IncludesCharacters` przedstawia metodę `CharacterSet` z pa
 </Predicate>
 ```
 
-Poniższy przykład `IsDateRange` przedstawia metodę `Minimum` z `Maximum` parametrami i które określają `yyyy-MM-dd` `Today`zakres dat w formacie i .
+#### <a name="isdaterange"></a>IsDateRange (IsDateRange)
+
+Metoda IsDateRange sprawdza, czy wartość oświadczenia daty znajduje się między określonym zakresem parametrów minimalnych i maksymalnych. Element predykatu obsługuje następujące parametry:
+
+| Parametr | Wymagany | Opis |
+| ------- | ----------- | ----------- |
+| Maksimum | Tak | Największa możliwa data, którą można wprowadzić. Format daty następuje `yyyy-mm-dd` konwencji `Today`lub . |
+| Minimalne | Tak | Najmniejsza możliwa data, którą można wprowadzić. Format daty następuje `yyyy-mm-dd` konwencji `Today`lub .|
+
+Poniższy przykład `IsDateRange` przedstawia metodę `Minimum` z `Maximum` parametrami i które określają `yyyy-mm-dd` `Today`zakres dat w formacie i .
 
 ```XML
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
@@ -388,3 +425,7 @@ W typie oświadczenia dodaj element **PredicateValidationReference** i `CustomDa
   <PredicateValidationReference Id="CustomDateRange" />
 </ClaimType>
  ```
+
+## <a name="next-steps"></a>Następne kroki
+
+- Dowiedz się, jak [skonfigurować złożoność haseł przy użyciu zasad niestandardowych w usłudze Azure Active Directory B2C](custom-policy-password-complexity.md) przy użyciu sprawdzania predykatu.

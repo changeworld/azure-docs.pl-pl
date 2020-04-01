@@ -1,22 +1,22 @@
 ---
 title: Konfigurowanie uwierzytelniania twitterowego
-description: Dowiedz się, jak skonfigurować uwierzytelnianie na Twitterze jako dostawcę tożsamości dla aplikacji usługi App Service.
+description: Dowiedz się, jak skonfigurować uwierzytelnianie na Twitterze jako dostawcę tożsamości dla usługi aplikacji lub aplikacji Usługi Azure Functions.
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.topic: article
 ms.date: 02/28/2020
-ms.custom: seodec18
-ms.openlocfilehash: 794f671b36b5aeb9f19cf5d80e488500cedb1098
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 3f85f30e0a64b6e39b905fc05503a445aa5876ba
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78207147"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437994"
 ---
-# <a name="configure-your-app-service-app-to-use-twitter-login"></a>Konfigurowanie aplikacji usługi App Service do używania logowania do Twittera
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-twitter-login"></a>Konfigurowanie usługi aplikacji lub aplikacji Usługi Azure Do korzystania z logowania na Twitterze
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-W tym artykule pokazano, jak skonfigurować usługę Azure App Service do używania twittera jako dostawcy uwierzytelniania.
+W tym artykule pokazano, jak skonfigurować usługę Azure App Service lub usługi Azure Functions do używania Twittera jako dostawcy uwierzytelniania.
 
 Aby wykonać procedurę opisaną w tym artykule, potrzebujesz konta na Twitterze, które ma zweryfikowany adres e-mail i numer telefonu. Aby utworzyć nowe konto na Twitterze, przejdź do [twitter.com].
 
@@ -69,5 +69,5 @@ Teraz możesz używać Twittera do uwierzytelniania w aplikacji.
 
 [Twórcy Twittera]: https://go.microsoft.com/fwlink/p/?LinkId=268300
 [twitter.com]: https://go.microsoft.com/fwlink/p/?LinkID=268287
-[Portal Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md

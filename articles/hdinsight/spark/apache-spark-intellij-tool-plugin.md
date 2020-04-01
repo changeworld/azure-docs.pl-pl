@@ -1,23 +1,23 @@
 ---
-title: 'Samouczek — zestaw narzędzi platformy Azure dla aplikacji IntelliJ: Spark — HDInsight'
-description: Samouczek — użyj zestawu narzędzi Azure toolkit for IntelliJ do tworzenia aplikacji Platformy Spark napisanych w scali i przesyłania ich do klastra platformy SPARK usługi HDInsight.
+title: 'Zestaw narzędzi platformy Azure dla aplikacji IntelliJ: Spark — HDInsight'
+description: Użyj zestawu narzędzi Azure toolkit for IntelliJ do tworzenia aplikacji Platformy Spark napisanych w scali i przesyłania ich do klastra platformy SPARK usługi HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 2631a0906a0f0886bdc106f1afef99860a6fe00b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d80f4cb12c79519818f6eccb2bb565bac472b471
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239532"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397694"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Samouczek: Tworzenie aplikacji Apache Spark dla klastra USŁUGI HDInsight za pomocą zestawu narzędzi Platformy Azure dla technologii IntelliJ
+# <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Tworzenie aplikacji Apache Spark dla klastra HDInsight za pomocą zestawu narzędzi Azure toolkit for IntelliJ
 
-W tym samouczku pokazano, jak tworzyć aplikacje Platformy Apache Spark na platformie Azure HDInsight przy użyciu wtyczki **Azure Toolkit** dla intellij IDE. [Usługa Azure HDInsight](../hdinsight-overview.md) to zarządzana usługa analityczna typu open source w chmurze, która umożliwia korzystanie z platform open source, takich jak Hadoop, Apache Spark, Apache Hive i Apache Kafka.
+W tym artykule pokazano, jak tworzyć aplikacje Platformy Apache Spark na platformie Azure HDInsight przy użyciu wtyczki **Azure Toolkit** dla intellij IDE. [Usługa Azure HDInsight](../hdinsight-overview.md) to zarządzana usługa analityczna typu open source w chmurze, która umożliwia korzystanie z platform open source, takich jak Hadoop, Apache Spark, Apache Hive i Apache Kafka.
 
 Wtyczkę **Azure Toolkit** można użyć na kilka sposobów:
 
@@ -25,7 +25,7 @@ Wtyczkę **Azure Toolkit** można użyć na kilka sposobów:
 * Uzyskaj dostęp do zasobów klastra platformy Azure HDInsight Spark.
 * Lokalnie twórz i uruchamiaj aplikację Scala Spark.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 > [!div class="checklist"]
 > * Korzystanie z zestawu narzędzi platformy Azure dla wtyczki IntelliJ
 > * Tworzenie aplikacji Apache Spark
@@ -35,7 +35,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 * Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
-* [Zestaw Oracle Java Development](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  W tym samouczku jest używany język Java w wersji 8.0.202.
+* [Zestaw Oracle Java Development](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  W tym artykule użyto wersji Java 8.0.202.
 
 * IntelliJ IDEA. Ten artykuł używa [IntelliJ IDEA Community ver.  2018.3.4](https://www.jetbrains.com/idea/download/).
 
@@ -77,7 +77,7 @@ Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
 
     |  Właściwość   | Opis   |  
     | ----- | ----- |  
-    |Project name (Nazwa projektu)| Wprowadź nazwę.  W tym samouczku użyto regionu `myApp`.|  
+    |Project name (Nazwa projektu)| Wprowadź nazwę.  W tym `myApp`artykule użyto pliku .|  
     |Lokalizacja&nbsp;projektu| Wprowadź żądaną lokalizację do zapisania projektu.|
     |Zestaw SDK projektu| Może to być puste przy pierwszym użyciu IDEA.  Wybierz pozycję **New...** (Nowy...) i przejdź do swojego zestawu JDK.|
     |Wersja platformy Spark|Kreator tworzenia integruje poprawną wersję dla zestawów Spark SDK i Scala SDK. Jeśli wersja klastra Spark jest starsza niż 2.0, wybierz wartość **Spark 1.x**. W przeciwnym razie wybierz **Spark2.x**. W tym przykładzie używana jest wersja **Spark 2.3.0 (Scala 2.11.8)**.|
@@ -472,7 +472,7 @@ Jeśli nie zamierzasz nadal korzystać z tej aplikacji, usuń utworzony klaster,
 
 1. Wybierz pozycję **Klastry usługi HDInsight** w obszarze **Usługi**.
 
-1. Na wyświetlona lista klastrów HDInsight wybierz **...** obok klastra utworzonego dla tego samouczka.
+1. Na wyświetlona lista klastrów HDInsight wybierz **...** obok klastra utworzonego dla tego artykułu.
 
 1. Wybierz pozycję **Usuń**. Wybierz **pozycję Tak**.
 
@@ -480,7 +480,7 @@ Jeśli nie zamierzasz nadal korzystać z tej aplikacji, usuń utworzony klaster,
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono, jak używać azure toolkit dla intellij plug-in do tworzenia aplikacji Apache Spark napisanych w [Scali](https://www.scala-lang.org/), a następnie przesłane je do klastra platformy SPARK HDInsight bezpośrednio z intellij zintegrowanego środowiska programistycznego (IDE). Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Apache Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI.
+W tym artykule przedstawiono, jak używać azure toolkit for IntelliJ plug-in do tworzenia aplikacji Apache Spark napisanych w [Scali](https://www.scala-lang.org/), a następnie przesłane je do klastra platformy SPARK HDInsight bezpośrednio z intellij zintegrowanego środowiska programistycznego (IDE). Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Apache Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI.
 
 > [!div class="nextstepaction"]
 > [Analizowanie danych platformy Spark apache przy użyciu usługi Power BI](apache-spark-use-bi-tools.md)

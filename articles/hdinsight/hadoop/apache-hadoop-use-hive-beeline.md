@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 77a451cb9f6598bbe7013f4215cfa7cab40186bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f2b192765aab4c7cf18c62988ae2f6080b4b17c
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037541"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436929"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Korzystanie z klienta Apache Beeline z usługą Apache Hive
 
@@ -65,7 +65,7 @@ Aby znaleźć adres URL JDBC z Ambari:
 
 ### <a name="over-public-or-private-endpoints"></a>W publicznych lub prywatnych punktach końcowych
 
-Podczas łączenia się z klastrem przy użyciu publicznych lub prywatnych punktów `admin`końcowych należy podać nazwę konta logowania klastra (domyślnie) i hasło. Na przykład za pomocą Beeline z systemu `clustername.azurehdinsight.net` klienckiego, aby połączyć się z adresem. To połączenie jest `443`nawiązywanie za pośrednictwem portu i jest szyfrowane przy użyciu SSL.
+Podczas łączenia się z klastrem przy użyciu publicznych lub prywatnych punktów `admin`końcowych należy podać nazwę konta logowania klastra (domyślnie) i hasło. Na przykład za pomocą Beeline z systemu `clustername.azurehdinsight.net` klienckiego, aby połączyć się z adresem. To połączenie jest `443`nawiązywanie za pośrednictwem portu i jest szyfrowane przy użyciu protokołu TLS/SSL.
 
 Element `clustername` należy zastąpić nazwą klastra usługi HDInsight. Zamień `admin` konto logowania klastra dla klastra. W przypadku klastrów ESP należy użyć pełnej sieci UPN (na przykład user@domain.com). Zamień `password` na hasło do konta logowania klastra.
 

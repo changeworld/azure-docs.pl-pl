@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: d065439839ba5db479305ae81c61892cb5cf5e70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bbd2e3376f1da3fdf5b10d654a331ce258be5cf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929451"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422103"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiowanie danych z i do dynamics 365 (common data service) lub dynamics CRM przy użyciu usługi Azure Data Factory
 
@@ -60,7 +60,7 @@ To złącze Dynamics jest oparte na [oprzyrządowaniu Dynamics XRM](https://docs
 >[!TIP]
 >Aby skopiować dane z **programu Dynamics 365 Finance and Operations,** można użyć [łącznika Dynamics AX](connector-dynamics-ax.md).
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -324,7 +324,7 @@ Aby skopiować dane do dynamics, następujące właściwości są obsługiwane w
 | ignoreNullValues | Wskazuje, czy podczas operacji zapisu należy zignorować wartości null z danych wejściowych (z wyjątkiem pól klucza).<br/>Dozwolone wartości są **prawdziwe** i **fałszywe**.<br>- **Prawda:** Po wykonaniu operacji upsert/update dane w obiekcie docelowym pozostają niezmienione. Wstaw zdefiniowaną wartość domyślną podczas wykonywania operacji wstawiania.<br/>- **False**: Zaktualizuj dane w obiekcie docelowym do wartości NULL podczas wykonywania operacji upsert/update. Wstaw wartość NULL podczas wykonywania operacji wstawiania. | Nie (wartość domyślna jest false) |
 
 >[!NOTE]
->Domyślna wartość ujścia "**writeBatchSize**" i działania kopiowania "**[parallelCopies](copy-activity-performance.md#parallel-copy)**" dla ujścia Dynamics są zarówno 10. W związku z tym 100 rekordów są przesyłane do dynamics jednocześnie.
+>Domyślna wartość ujścia "**writeBatchSize**" i działania kopiowania "**[parallelCopies](copy-activity-performance-features.md#parallel-copy)**" dla ujścia Dynamics są zarówno 10. W związku z tym 100 rekordów są przesyłane do dynamics jednocześnie.
 
 W przypadku dynamics 365 online istnieje limit [2 równoczesnych wywołań wsadowych na organizację.](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations) Jeśli ten limit zostanie przekroczony, błąd "Serwer zajęty" jest generowany przed wykonaniem pierwszego żądania. Utrzymanie "writeBatchSize" mniej lub równa 10 pozwoli uniknąć takiego ograniczania równoczesnych wywołań.
 

@@ -6,25 +6,30 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: bf0740bbdd4754aeba43e64f1076a1bea33cffc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f049dc6d1261a8201cf79d1779e522b30d13c4b0
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76844427"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409444"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Rozwiązywanie problemów z zapytaniami usługi Azure Stream Analytics
 
 W tym artykule opisano typowe problemy z tworzeniem zapytań usługi Stream Analytics i rozwiązywaniem ich problemów.
 
+W tym artykule opisano typowe problemy z tworzeniem zapytań usługi Azure Stream Analytics, jak rozwiązywać problemy z zapytaniami i jak rozwiązać problemy. Wiele kroków rozwiązywania problemów wymaga włączenia dzienników diagnostycznych dla zadania usługi Usługi Stream Analytics. Jeśli nie masz włączonych dzienników diagnostycznych, zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu dzienników diagnostycznych](stream-analytics-job-diagnostic-logs.md).
+
 ## <a name="query-is-not-producing-expected-output"></a>Kwerenda nie wytwarza oczekiwanych danych wyjściowych
+
 1.  Sprawdź błędy, testując lokalnie:
+
     - W witrynie Azure portal na karcie **Zapytanie** wybierz pozycję **Testuj**. Użyj pobranych przykładowych danych, aby [przetestować kwerendę](stream-analytics-test-query.md). Sprawdź wszelkie błędy i spróbuj je poprawić.   
     - Można również [przetestować kwerendę lokalnie](stream-analytics-live-data-local-testing.md) przy użyciu narzędzi usługi Azure Stream Analytics dla programu Visual Studio lub [Visual Studio Code.](visual-studio-code-local-run-live-input.md) 
 
-2.  [Kwerendy debugowania krok po kroku lokalnie przy użyciu diagramu zadań](debug-locally-using-job-diagram.md) w narzędziach usługi Azure Stream Analytics dla programu Visual Studio. Diagram zadań ma na celu pokazanie, jak przepływy danych ze źródeł wejściowych (Centrum zdarzeń, Centrum IoT itp.) za pośrednictwem wielu kroków kwerendy i wreszcie dane wyjściowe do pochłaniaczy. Każdy krok kwerendy jest mapowany na tymczasowy zestaw wyników zdefiniowany w skrypcie przy użyciu instrukcji WITH. Można wyświetlić dane, a także metryki w każdym kroku kwerendy w każdym zestawie wyników pośrednich, aby znaleźć źródło problemu.
+2.  [Kwerendy debugowania krok po kroku lokalnie przy użyciu diagramu zadań](debug-locally-using-job-diagram.md) w narzędziach usługi Azure Stream Analytics dla programu Visual Studio. Diagram zadań pokazuje, jak przepływy danych ze źródeł wejściowych (Centrum zdarzeń, Centrum IoT itp.) za pośrednictwem wielu kroków kwerendy i na koniec do ujścia danych wyjściowych. Każdy krok kwerendy jest mapowany na tymczasowy zestaw wyników zdefiniowany w skrypcie przy użyciu instrukcji WITH. Można wyświetlić dane, a także metryki, w każdym zestawie wyników pośrednich, aby znaleźć źródło problemu.
+
     ![Wynik podglądu diagramu zadania](./media/debug-locally-using-job-diagram/preview-result.png)
 
 3.  Jeśli używasz [**sygnatury czasowej przez**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics), sprawdź, czy zdarzenia mają sygnatury czasowe większe niż [czas rozpoczęcia zadania](stream-analytics-out-of-order-and-late-events.md).
@@ -33,20 +38,24 @@ W tym artykule opisano typowe problemy z tworzeniem zapytań usługi Stream Anal
     - Klauzula [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) w kwerendzie odfiltrowała wszystkie zdarzenia, uniemożliwiając wygenerowanie danych wyjściowych.
     - Funkcja [**CAST**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) kończy się niepowodzeniem, powodując niepowodzenie zadania. Aby uniknąć błędów rzutowanie typu, należy użyć [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) zamiast tego.
     - Korzystając z funkcji okna, poczekaj na cały czas trwania okna, aby zobaczyć dane wyjściowe z kwerendy.
-    - Sygnatura czasowa dla zdarzeń poprzedza czas rozpoczęcia zadania i w związku z tym zdarzenia są usuwane.
+    - Sygnatura czasowa dla zdarzeń poprzedza czas rozpoczęcia zadania i zdarzenia są usuwane.
+    - [**Warunki JOIN**](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) nie są zgodne. Jeśli nie ma żadnych dopasowań, nie będzie zero danych wyjściowych.
 
-5.  Upewnij się, że zasady zamawiania zdarzeń są skonfigurowane zgodnie z oczekiwaniami. Przejdź do **ustawień** i wybierz pozycję [**Kolejność zdarzeń**](stream-analytics-out-of-order-and-late-events.md). Zasady *nie* są stosowane podczas korzystania z przycisku **Testuj,** aby przetestować kwerendę. Ten wynik jest jedną różnicą między testowaniem w przeglądarce a uruchamianiem zadania w produkcji. 
+5.  Upewnij się, że zasady zamawiania zdarzeń są skonfigurowane zgodnie z oczekiwaniami. Przejdź do **pozycji Ustawienia** i wybierz pozycję [**Kolejność zdarzeń**](stream-analytics-out-of-order-and-late-events.md). Zasady *nie* są stosowane podczas korzystania z przycisku **Testuj,** aby przetestować kwerendę. Ten wynik jest jedną różnicą między testowaniem w przeglądarce a uruchamianiem zadania w produkcji. 
 
 6. Debugowanie przy użyciu dzienników inspekcji i diagnostyki:
     - Użyj [dzienników inspekcji](../azure-resource-manager/resource-group-audit.md)i filtruj, aby zidentyfikować i debugować błędy.
     - Dzienniki [diagnostyczne zadań służy](stream-analytics-job-diagnostic-logs.md) do identyfikowania i debugowania błędów.
 
-## <a name="job-is-consuming-too-many-streaming-units"></a>Zadanie zużywa zbyt wiele jednostek przesyłania strumieniowego
+## <a name="resource-utilization-is-high"></a>Wykorzystanie zasobów jest wysokie
+
 Upewnij się, że korzystasz z równoległości w usłudze Azure Stream Analytics. Możesz nauczyć się [skalować za pomocą równoległości zapytań](stream-analytics-parallelization.md) zadań usługi Stream Analytics, konfigurując partycje wejściowe i dostrajając definicję zapytania analitycznego.
 
 ## <a name="debug-queries-progressively"></a>Debug queries progressively (Stopniowe debugowanie zapytań)
 
-W przetwarzaniu danych w czasie rzeczywistym, wiedząc, jak dane wyglądają w środku kwerendy może być pomocne. Ponieważ dane wejściowe lub kroki zadania usługi Azure Stream Analytics można odczytać wiele razy, można napisać dodatkowe instrukcje SELECT INTO. W ten sposób wyprowadza dane pośrednie do magazynu i pozwala sprawdzić poprawność danych, podobnie jak *zmienne zegarka* zrobić podczas debugowania programu.
+W przetwarzaniu danych w czasie rzeczywistym, wiedząc, jak dane wyglądają w środku kwerendy może być pomocne. Widać to przy użyciu diagramu zadań w programie Visual Studio. Jeśli nie masz programu Visual Studio, można podjąć dodatkowe kroki w celu wytłkować dane pośrednie.
+
+Ponieważ dane wejściowe lub kroki zadania usługi Azure Stream Analytics można odczytać wiele razy, można napisać dodatkowe instrukcje SELECT INTO. W ten sposób wyprowadza dane pośrednie do magazynu i pozwala sprawdzić poprawność danych, podobnie jak *zmienne zegarka* zrobić podczas debugowania programu.
 
 Poniższa przykładowa kwerenda w zadaniu usługi Azure Stream Analytics ma jedno dane wejściowe strumienia, dwa dane wejściowe i dane wyjściowe do usługi Azure Table Storage. Kwerenda łączy dane z Centrum zdarzeń i dwa obiekty blob odwołania, aby uzyskać informacje o nazwie i kategorii:
 

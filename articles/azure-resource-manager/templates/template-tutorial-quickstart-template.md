@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8747a4614cb8106ce80c6caef0aae36111d2c384
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b82e02ecc009e587b89d1fd151fd13f75a4bcf8
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369849"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408507"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Samouczek: Korzystanie z szablonów szybki startu platformy Azure
 
@@ -63,7 +63,7 @@ Użyj interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell
 
 Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie przyjęto założenie, że ustawiono **zmienną templateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -88,6 +88,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> Jeśli wdrożenie nie powiodło się, użyj przełącznika **debugowania** z poleceniem wdrażania, aby wyświetlić dzienniki debugowania.  Można również użyć pełnego **przełącznika,** aby wyświetlić pełne dzienniki debugowania.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

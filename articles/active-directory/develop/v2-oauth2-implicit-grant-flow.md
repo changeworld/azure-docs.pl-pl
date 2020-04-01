@@ -17,12 +17,12 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e3f021fd888bbb408fa66964c54d22f0d68e84e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53d498f4aed8ec86cc57c35824a9fb8aa471dc1d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297693"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419684"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Platforma tożsamości firmy Microsoft i niejawny przepływ dotacji
 
@@ -32,7 +32,7 @@ Za pomocą punktu końcowego platformy tożsamości firmy Microsoft można logow
 * Wiele serwerów autoryzacji i dostawców tożsamości nie obsługuje żądań CORS.
 * Przekierowania przeglądarki pełnej strony z dala od aplikacji stają się szczególnie inwazyjne dla środowiska użytkownika.
 
-Dla tych aplikacji (AngularJS, Ember.js, React.js i tak dalej), platforma tożsamości firmy Microsoft obsługuje przepływ o auth 2.0 implicit Grant. Niejawny przepływ jest opisany w [specyfikacji OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.2). Jego podstawową zaletą jest to, że umożliwia aplikacji, aby uzyskać tokeny z platformy tożsamości firmy Microsoft bez wykonywania wymiany poświadczeń serwera wewnętrznej bazy danych. Dzięki temu aplikacja do logowania użytkownika, obsługi sesji i uzyskać tokeny do innych interfejsów API sieci web w kodzie JavaScript klienta. Istnieje kilka ważnych kwestii bezpieczeństwa, które należy wziąć pod uwagę podczas korzystania z niejawnego przepływu w szczególności wokół [personifikacji](https://tools.ietf.org/html/rfc6749#section-10.3) [klienta](https://tools.ietf.org/html/rfc6749#section-10.3) i użytkownika.
+Dla tych aplikacji (Angular, Ember.js, React.js i tak dalej), platforma tożsamości firmy Microsoft obsługuje przepływ niejawnych dotacji OAuth 2.0. Niejawny przepływ jest opisany w [specyfikacji OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.2). Jego podstawową zaletą jest to, że umożliwia aplikacji, aby uzyskać tokeny z platformy tożsamości firmy Microsoft bez wykonywania wymiany poświadczeń serwera wewnętrznej bazy danych. Dzięki temu aplikacja do logowania użytkownika, obsługi sesji i uzyskać tokeny do innych interfejsów API sieci web w kodzie JavaScript klienta. Istnieje kilka ważnych kwestii bezpieczeństwa, które należy wziąć pod uwagę podczas korzystania z niejawnego przepływu w szczególności wokół [personifikacji](https://tools.ietf.org/html/rfc6749#section-10.3) [klienta](https://tools.ietf.org/html/rfc6749#section-10.3) i użytkownika.
 
 W tym artykule opisano sposób programowania bezpośrednio względem protokołu w aplikacji.  Jeśli to możliwe, zaleca się użycie obsługiwanych bibliotek uwierzytelniania firmy Microsoft (MSAL) zamiast tego do [uzyskiwania tokenów i wywoływania zabezpieczonych interfejsów API sieci Web](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Zapoznaj się również z [przykładowymi aplikacjami korzystającymi z programu MSAL](sample-v2-code.md).
 
@@ -58,7 +58,7 @@ Obecnie preferowaną metodą ochrony wywołań do interfejsu API sieci Web jest 
 
 Niejawny przepływ dotacji nie wystawia tokenów odświeżania, głównie ze względów bezpieczeństwa. Token odświeżania nie jest tak wąsko objęty jak tokeny dostępu, co daje znacznie więcej mocy, co powoduje znacznie więcej obrażeń w przypadku wycieku. W przepływie niejawnym tokeny są dostarczane w adresie URL, w związku z tym ryzyko przechwycenia jest wyższa niż w grant kodu autoryzacji.
 
-Jednak aplikacja JavaScript ma inny mechanizm do dyspozycji do odnawiania tokenów dostępu bez wielokrotnego monitowania użytkownika o poświadczenia. Aplikacja może używać ukrytego elementu iframe do wykonywania nowych żądań tokenu względem punktu końcowego autoryzacji usługi Azure AD: tak długo, jak przeglądarka nadal ma aktywną sesję (przeczytaj: ma plik cookie sesji) względem domeny usługi Azure AD, żądanie uwierzytelniania może z powodzeniem występują bez konieczności interakcji z użytkownikiem.
+Jednak aplikacja JavaScript ma inny mechanizm do dyspozycji do odnawiania tokenów dostępu bez wielokrotnego monitowania użytkownika o poświadczenia. Aplikacja może używać ukrytego elementu iframe do wykonywania nowych żądań tokenu względem punktu końcowego autoryzacji usługi Azure AD: tak długo, jak przeglądarka nadal ma aktywną sesję (przeczytaj: ma plik cookie sesji) względem domeny usługi Azure AD, żądanie uwierzytelniania może pomyślnie wystąpić bez konieczności interakcji z użytkownikiem.
 
 Ten model daje aplikacji JavaScript możliwość niezależnego odnawiania tokenów dostępu, a nawet nabywania nowych dla nowego interfejsu API (pod warunkiem, że użytkownik wcześniej wyraził na nie zgodę). Pozwala to uniknąć dodatkowego obciążenia nabycia, konserwacji i ochrony artefaktu o wysokiej wartości, takiego jak token odświeżania. Artefakt, który umożliwia ciche odnawianie, plik cookie sesji usługi Azure AD, jest zarządzany poza aplikacją. Inną zaletą tego podejścia jest użytkownik może wylogować się z usługi Azure AD, przy użyciu dowolnej aplikacji zalogowanych do usługi Azure AD, uruchomionych na dowolnej karcie przeglądarki. Powoduje to usunięcie pliku cookie sesji usługi Azure AD, a aplikacja JavaScript automatycznie utraci możliwość odnawiania tokenów dla wylogowanego użytkownika.
 
@@ -161,7 +161,7 @@ error=access_denied
 
 Po podpisaniu użytkownika w aplikacji jednostronicowej można po cichu uzyskać tokeny dostępu do wywoływania internetowych interfejsów API zabezpieczonych przez platformę tożsamości firmy Microsoft, takich jak [Microsoft Graph](https://developer.microsoft.com/graph). Nawet jeśli już odebrano `token` token przy użyciu response_type, można użyć tej metody do uzyskania tokenów do dodatkowych zasobów bez konieczności przekierowywania użytkownika, aby zalogować się ponownie.
 
-W normalnym przepływie OpenID Connect/OAuth można to zrobić, wysyłając `/token` żądanie do punktu końcowego platformy tożsamości firmy Microsoft. Jednak punkt końcowy platformy tożsamości firmy Microsoft nie obsługuje żądań CORS, więc wykonywanie wywołań AJAX, aby uzyskać i odświeżyć tokeny nie jest kwestią. Zamiast tego można użyć przepływu niejawnego w ukrytym iframe, aby uzyskać nowe tokeny dla innych interfejsów API sieci web: 
+W normalnym przepływie OpenID Connect/OAuth można to zrobić, wysyłając `/token` żądanie do punktu końcowego platformy tożsamości firmy Microsoft. Jednak punkt końcowy platformy tożsamości firmy Microsoft nie obsługuje żądań CORS, więc wykonywanie wywołań AJAX, aby uzyskać i odświeżyć tokeny nie jest kwestią. Zamiast tego można użyć przepływu niejawnego w ukrytym iframe, aby uzyskać nowe tokeny dla innych interfejsów API sieci web:
 
 ```
 // Line breaks for legibility only
@@ -170,7 +170,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=token
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read 
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &response_mode=fragment
 &state=12345
 &nonce=678910

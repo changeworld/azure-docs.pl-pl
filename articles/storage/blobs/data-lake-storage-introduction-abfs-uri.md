@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 04df30c2a97e865d23999df26768b38cb38be607
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0f67e0d72ee5710a42b6de744ddae98e20220a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68855561"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437125"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Korzystanie z identyfikatora URI usługi Azure Data Lake Storage Gen2
 
@@ -27,7 +27,7 @@ Jeśli konto obsługujące usługę Data Lake Storage Gen2, które chcesz rozwi�
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **Identyfikator schematu** `abfs` : Protokół jest używany jako identyfikator schematu. Można połączyć się z połączeniem ssl (secure socket layer) lub bez niego. Służy `abfss` do łączenia się z bezpiecznym połączeniem warstwy gniazda.
+1. **Identyfikator schematu** `abfs` : Protokół jest używany jako identyfikator schematu. Użytkownik ma możliwość nawiązania połączenia z tls (Transport Layer Security), znanego wcześniej jako Secure Sockets Layer (SSL). Służy `abfss` do łączenia się z połączeniem TLS.
 
 2. **System plików**: Lokalizacja nadrzędna, w którym znajdują się pliki i foldery. Jest to taka sama jak kontenery w usłudze Azure Storage Obiektów Blobs.
 

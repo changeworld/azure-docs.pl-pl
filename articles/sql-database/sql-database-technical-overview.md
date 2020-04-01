@@ -12,16 +12,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 209b4136678e6f04666b4a2b6180f4768bf6afc4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d50ddbbeeaed48c14d07c42588efcbb20bb7d79
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500813"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411154"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database?
 
-Usługa Azure SQL Database to relacyjna baza danych ogólnego przeznaczenia, świadczona jako usługa zarządzana. Dzięki niemu można utworzyć warstwę magazynu danych o wysokiej dostępności i wysokiej wydajności dla aplikacji i rozwiązań na platformie Azure. Baza danych SQL może być właściwym wyborem dla różnych nowoczesnych aplikacji w chmurze, ponieważ umożliwia przetwarzanie zarówno danych relacyjnych, jak i [struktur nierelacyjnych,](sql-database-multi-model-features.md)takich jak wykresy, JSON, przestrzenne i XML.
+Usługa Azure SQL Database to w pełni zarządzany aparat bazy danych typu „platforma jako usługa” (Platform as Service, PaaS) obsługujący większość funkcji zarządzania bazą danych, takich jak uaktualnienia, poprawki, tworzenie kopii zapasowych i monitorowanie, bez konieczności udziału użytkownika. Usługa Azure SQL Database zawsze korzysta z najnowszej stabilnej wersji aparatu bazy danych programu SQL Server i systemu operacyjnego z zastosowanymi poprawkami, zapewniając dostępność na poziomie 99,99%. Funkcje PaaS wbudowane w bazę danych SQL platformy Azure umożliwiają skupienie się na działaniach związanych z administrowania i optymalizacji bazy danych specyficznych dla domeny, które mają kluczowe znaczenie dla Twojej firmy.
+
+Za pomocą usługi Azure SQL Database można utworzyć warstwę magazynu danych o wysokiej dostępności i wysokiej wydajności dla aplikacji i rozwiązań na platformie Azure. Baza danych SQL może być właściwym wyborem dla różnych nowoczesnych aplikacji w chmurze, ponieważ umożliwia przetwarzanie zarówno danych relacyjnych, jak i [struktur nierelacyjnych,](sql-database-multi-model-features.md)takich jak wykresy, JSON, przestrzenne i XML.
 
 Jest on oparty na najnowszej stabilnej wersji [aparatu bazy danych programu Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json). Można użyć zaawansowanych funkcji przetwarzania zapytań, takich jak [wysokowydajne technologie w pamięci](sql-database-in-memory.md) i [inteligentne przetwarzanie zapytań.](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json) W rzeczywistości najnowsze możliwości programu SQL Server są wydawane najpierw do bazy danych SQL, a następnie do samego programu SQL Server. Otrzymujesz najnowsze możliwości programu SQL Server bez narzutów za poprawki lub uaktualnianie, przetestowane w milionach baz danych. 
 
@@ -68,7 +70,7 @@ Baza danych SQL oferuje następujące modele zakupów:
 Usługa Azure SQL Database oferuje trzy warstwy usług, które są przeznaczone dla różnych typów aplikacji:
 - [Warstwa usług ogólnego przeznaczenia/standardu](sql-database-service-tier-general-purpose.md) przeznaczona dla typowych obciążeń. Oferuje opcje zrównoważonego obliczeń i pamięci masowej zorientowane na budżet.
 - [Warstwa usług Business Critical/Premium](sql-database-service-tier-business-critical.md) przeznaczona dla aplikacji OLTP o wysokim współczynniku transakcji i najniższym opóźnieniu we/wy. Oferuje najwyższą odporność na awarie przy użyciu kilku replik izolowanych.
-- [Warstwa usług hiperskali](sql-database-service-tier-hyperscale.md) przeznaczonych dla bardzo dużej bazy danych OLTP i możliwości automatycznego skalowania pamięci masowej i skalowania obliczeń płynnie.    
+- [Warstwa usług hiperskali](sql-database-service-tier-hyperscale.md) przeznaczonych dla bardzo dużej bazy danych OLTP i możliwości skalowania automatycznego skalowania pamięci masowej i skalowania obliczeń płynnie.    
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Pule elastyczne umożliwiające zmaksymalizowanie wykorzystania zasobów
 
@@ -107,11 +109,11 @@ Platforma Azure zapewnia [wbudowane](sql-database-performance-guidance.md) narz�
 
 ## <a name="availability-capabilities"></a>Możliwości dostępności
 
-W tradycyjnym środowisku programu SQL Server zazwyczaj masz co najmniej dwa komputery skonfigurowane lokalnie. Maszyny te mają dokładne, synchronicznie utrzymywane kopie danych w celu ochrony przed awarią pojedynczej maszyny lub komponentu. To środowisko zapewnia wysoką dostępność, ale nie chroni przed klęską żywiołową niszcząc centrum danych.
+Usługa Azure SQL Database umożliwia twojej firmie kontynuowanie działania w przypadku zakłóceń. W tradycyjnym środowisku programu SQL Server zazwyczaj masz co najmniej dwa komputery skonfigurowane lokalnie. Maszyny te mają dokładne, synchronicznie utrzymywane kopie danych w celu ochrony przed awarią pojedynczej maszyny lub komponentu. To środowisko zapewnia wysoką dostępność, ale nie chroni przed klęską żywiołową niszcząc centrum danych.
 
 Odzyskiwanie po awarii zakłada, że zdarzenie katastrofalne jest geograficznie zlokalizowane na tyle, aby mieć inną maszynę lub zestaw maszyn z kopią danych daleko. W programie SQL Server można użyć grup zawsze na dostępność uruchomionych w trybie asynchroniowym, aby uzyskać tę możliwość. Ludzie często nie chcą czekać na replikację, aby stało się tak daleko przed zatwierdzeniem transakcji, więc istnieje możliwość utraty danych, gdy nieplanowane pracy awaryjnej.
 
-Bazy danych w warstwach usług o krytycznym znaczeniu dla systemu premium i biznesowej [już robią coś bardzo podobnego](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) do synchronizacji grupy dostępności. Bazy danych w niższych warstwach usług zapewniają nadmiarowość za pomocą magazynu przy użyciu [innego, ale równoważnego mechanizmu.](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) Wbudowana logika pomaga chronić przed awarią pojedynczej maszyny. Funkcja aktywnej replikacji geograficznej umożliwia ochronę przed katastrofą, w której niszczony jest cały region.
+Bazy danych w warstwach usług o znaczeniu krytycznym dla systemu premium i dla firm [już robią coś podobnego](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) do synchronizacji grupy dostępności. Bazy danych w niższych warstwach usług zapewniają nadmiarowość za pomocą magazynu przy użyciu [innego, ale równoważnego mechanizmu.](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) Wbudowana logika pomaga chronić przed awarią pojedynczej maszyny. Funkcja aktywnej replikacji geograficznej umożliwia ochronę przed katastrofą, w której niszczony jest cały region.
 
 Strefy dostępności platformy Azure próbuje chronić przed awarią budynku pojedynczego centrum danych w jednym regionie. Pomaga chronić przed utratą zasilania lub sieci do budynku. W bazie danych SQL można umieścić różne repliki w różnych strefach dostępności (różne budynki, skutecznie).
 

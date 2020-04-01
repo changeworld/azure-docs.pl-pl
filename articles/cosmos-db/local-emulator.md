@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0c10ec94f6c089b5e5466f5dce73d32d6ce917b3
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238510"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422819"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Użyj emulatora usługi Azure Cosmos do lokalnego rozwoju i testowania
 
@@ -413,7 +413,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 .\importcert.ps1
 ```
 
-Zamknięcie interakcyjnej powłoki po uruchomieniu emulatora spowoduje zamknięcie kontenera emulatora.
+Zamknięcie powłoki interaktywnej po uruchomieniu emulatora spowoduje zamknięcie kontenera emulatora.
 
 Aby otworzyć Eksploratora danych, otwórz następujący adres URL w przeglądarce. Punkt końcowy emulatora znajduje się w powyższym komunikacie odpowiedzi.
 
@@ -445,7 +445,7 @@ Na koniec musimy zaimportować certyfikat Emulator URZĘDU certyfikacji do środ
 
 Jeśli pracujesz na Linuksie, .NET przekaźniki na OpenSSL do sprawdzania poprawności:
 
-1. [Wyeksportuj certyfikat w formacie PFX](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (PFX jest dostępny podczas eksportowania klucza prywatnego). 
+1. [Wyeksportuj certyfikat w formacie PFX](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-tlsssl-certificate) (PFX jest dostępny podczas eksportowania klucza prywatnego). 
 
 1. Skopiuj ten plik PFX do środowiska Linuksa.
 
@@ -471,7 +471,7 @@ Jeśli pracujesz na Linuksie, .NET przekaźniki na OpenSSL do sprawdzania popraw
 
 W przypadku pracy na komputerze Mac należy wykonać następujące czynności:
 
-1. [Wyeksportuj certyfikat w formacie PFX](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (PFX jest dostępny podczas eksportowania klucza prywatnego).
+1. [Wyeksportuj certyfikat w formacie PFX](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-tlsssl-certificate) (PFX jest dostępny podczas eksportowania klucza prywatnego).
 
 1. Skopiuj ten plik PFX do środowiska Mac.
 

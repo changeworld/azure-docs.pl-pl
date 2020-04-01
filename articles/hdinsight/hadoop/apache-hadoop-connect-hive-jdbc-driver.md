@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7d1a77800093ae01bc4eb1e1269d1e9a60f9ce26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8129239f152f6b359b930e56466052da12ef4d42
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616645"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437026"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Query Apache Hive through the JDBC driver in HDInsight (Wysyłanie zapytań do usługi Apache Hive za pośrednictwem sterownika JDBC w usłudze HDInsight)
 
@@ -31,7 +31,7 @@ Aby uzyskać więcej informacji na temat interfejsu JDBC hive, zobacz [HiveJDBCI
 
 ## <a name="jdbc-connection-string"></a>Parametry połączenia sterownika JDBC
 
-Połączenia JDBC z klastrem HDInsight na platformie Azure są nawiązywać za pośrednictwem portu 443, a ruch jest zabezpieczony przy użyciu SSL. Brama publiczna, za którą znajdują się klastry, przekierowuje ruch do portu, na który faktycznie nasłuchuje HiveServer2. Następujący ciąg połączenia pokazuje format używany dla usługi HDInsight:
+Połączenia JDBC z klastrem HDInsight na platformie Azure są nawiązywać za pośrednictwem portu 443, a ruch jest zabezpieczony przy użyciu protokołu TLS/SSL. Brama publiczna, za którą znajdują się klastry, przekierowuje ruch do portu, na który faktycznie nasłuchuje HiveServer2. Następujący ciąg połączenia pokazuje format używany dla usługi HDInsight:
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
@@ -49,7 +49,7 @@ Nazwa hosta "CLUSTERNAME.azurehdinsight.net" w ciągu połączenia jest taka sam
 
 Portu **443** można używać tylko do łączenia się z klastrem z niektórych miejsc poza siecią wirtualną platformy Azure. USŁUGA HDInsight to usługa zarządzana, co oznacza, że wszystkie połączenia z klastrem są zarządzane za pośrednictwem bezpiecznej bramy. Nie można połączyć się z HiveServer 2 bezpośrednio na portach 10001 lub 10000, ponieważ te porty nie są narażone na zewnątrz. 
 
-## <a name="authentication"></a>Uwierzytelnianie
+## <a name="authentication"></a>Authentication
 
 Podczas ustanawiania połączenia należy użyć nazwy administratora i hasła klastra HDInsight do uwierzytelniania w bramie klastra. Podczas łączenia się z klientami JDBC, takimi jak SQuirreL SQL, należy wprowadzić nazwę administratora i hasło w ustawieniach klienta.
 

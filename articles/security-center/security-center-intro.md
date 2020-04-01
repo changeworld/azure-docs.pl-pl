@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 84ed5db54874231d8bde4d892eedbc60c42a3430
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 11201d6560319dd34ec829f1fb34bd13d45011d7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77918761"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435821"
 ---
 # <a name="what-is-azure-security-center"></a>Co to jest Centrum zabezpieczeń Azure?
 
@@ -49,7 +49,7 @@ Aby sprostać tym wyzwaniom, Security Center oferuje narzędzia umożliwiające:
 
 Ponieważ usługa Security Center jest częścią platformy Azure, usługi PaaS na platformie Azure — w tym Service Fabric, bazy danych SQL i konta magazynu — są monitorowane i chronione przez usługę Security Center bez konieczności każdorazowego wdrażania.
 
-Ponadto usługa Security Center dzięki zainstalowaniu programu Microsoft Monitoring Agent chroni również nienależące do platformy Azure serwery i maszyny wirtualne, działające w chmurze lub lokalnie, zarówno w przypadku serwerów opartych na systemach Windows, jak i Linux. Maszyny wirtualne Azure są automatycznie aprowizowane w usłudze Security Center.
+Ponadto usługa Security Center chroni serwery i maszyny wirtualne platformy innych niż platformy Azure w chmurze lub lokalnie, zarówno dla serwerów Windows, jak i Linux, instalując na nich agenta usługi Log Analytics. Maszyny wirtualne Azure są automatycznie aprowizowane w usłudze Security Center.
 
 Zdarzenia zebrane z agentów i platformy Azure są skorelowane w aparat analizy zabezpieczeń, aby zapewnić dostosowane zalecenia (zadania hartowania), które należy wykonać, aby upewnić się, że obciążenia są bezpieczne i alerty zabezpieczeń. Alerty należy badać jak najszybciej, aby upewnić się, że nie dochodzi do złośliwych ataków na działające obciążenia.
 
@@ -129,11 +129,11 @@ Usługa Security Center obejmuje funkcje, które ułatwiają wykonywanie automat
 
 ### <a name="protect-iot-and-hybrid-cloud-workloads"></a>Ochrona obciążeń IoT i chmury hybrydowej
 
-Usługa Azure Security Center for IoT (Internet of Things) upraszcza ochronę obciążenia hybrydowego, zapewniając ujednoliconą widoczność i kontrolę, adaptacyjną ochronę przed zagrożeniami oraz inteligentną ochronę przed zagrożeniami i reagowanie na różne obciążenia na obrzeżach, lokalnie, na platformie Azure i w innych chmurach. Aby uzyskać więcej informacji, zobacz [Centrum zabezpieczeń platformy Azure dla IoT](https://docs.microsoft.com/azure/asc-for-iot/).
+Usługa Azure Security Center for IoT (Internet of Things) upraszcza ochronę obciążenia hybrydowego, zapewniając ujednoliconą widoczność i kontrolę, adaptacyjną ochronę przed zagrożeniami oraz inteligentną ochronę przed zagrożeniami i reagowanie między obciążeniami działającymi na platformie edge, lokalnie, na platformie Azure i w innych chmurach. Aby uzyskać więcej informacji, zobacz [Centrum zabezpieczeń platformy Azure dla IoT](https://docs.microsoft.com/azure/asc-for-iot/).
 
 ## <a name="get-secure-faster"></a>Szybsze osiągnięcie bezpieczeństwa
 
-Natywna integracja z platformą Azure (w tym usługi Azure Policy i dzienniki usługi Azure Monitor) w połączeniu z bezproblemową integracją z innymi rozwiązaniami zabezpieczeń firmy Microsoft, takimi jak Microsoft Cloud App Security i Windows Defender Advanced Threat Protection, zapewnia, że rozwiązanie zabezpieczające jest kompleksowe, a także proste do wbudowanego i wdrożonego.
+Natywna integracja z platformą Azure (w tym usługi Azure Policy i dzienniki usługi Azure Monitor) w połączeniu z bezproblemową integracją z innymi rozwiązaniami zabezpieczeń firmy Microsoft, takimi jak Microsoft Cloud App Security i Windows Defender Advanced Threat Protection, zapewnia kompleksowe rozwiązanie zabezpieczające, a także proste wdrażanie i wdrażanie.
 
 Ponadto można rozszerzyć pełne rozwiązanie poza platformę Azure na obciążenia działające w innych chmurach, jak i w lokalnych centrach danych.
 

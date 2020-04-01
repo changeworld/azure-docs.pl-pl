@@ -3,12 +3,12 @@ title: Dowiedz się, jak działają efekty
 description: Definicje zasad platformy Azure mają różne efekty, które określają sposób zarządzania i raportowania zgodności.
 ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 631c941173a500a4159a37c7c31107b9a6eab872
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0330cb5c732921efda3627dec92e486657097d82
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239979"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422452"
 ---
 # <a name="understand-azure-policy-effects"></a>Opis efektów zasad platformy Azure
 
@@ -432,15 +432,15 @@ Przykład: Ocenia bazy danych programu SQL Server, aby ustalić, czy transparent
 
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-Efekt ten jest używany w `Microsoft.Kubernetes.Data` *trybie* definicji zasad . Służy do przekazywania gatekeeper v3 reguły kontroli wstępu zdefiniowane za pomocą [frameworka ograniczenia OPA](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) do [open policy agent](https://www.openpolicyagent.org/) (OPA) do klastrów Kubernetes na platformie Azure.
+Efekt ten jest używany w `Microsoft.Kubernetes.Data` *trybie* definicji zasad . Służy do przekazywania gatekeeper v3 reguły kontroli wstępu zdefiniowane za pomocą [frameworka ograniczenia OPA](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) do [open policy agent](https://www.openpolicyagent.org/) (OPA) do samodzielnie zarządzanych klastrów Kubernetes na platformie Azure.
 
 > [!NOTE]
-> [Usługa Azure Policy for Kubernetes](aks-engine.md) jest dostępna w wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad.
+> [Usługa Azure Policy for AKS Engine](aks-engine.md) jest dostępna w publicznej wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad.
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint ocena
 
 Kontroler admission agenta otwartych zasad ocenia każde nowe żądanie w klastrze w czasie rzeczywistym.
-Co 15 minut pełne skanowanie klastra jest zakończone, a wyniki zgłaszane do zasad platformy Azure.
+Co 5 minut pełne skanowanie klastra jest zakończone, a wyniki zgłaszane do zasad platformy Azure.
 
 ### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint właściwości
 
@@ -455,7 +455,7 @@ Właściwości **szczegóły** EnforceOPAConstraint efekt ma właściwości podr
 
 ### <a name="enforceopaconstraint-example"></a>Przykład EnforceOPAConstraint
 
-Przykład: Gatekeeper v3 reguły kontroli wstępu, aby ustawić limity zasobów procesora CPU kontenera i pamięci w usłudze Kubernetes.
+Przykład: Reguła kontroli wstępu gatekeeper v3, aby ustawić limity zasobów procesora CPU i pamięci kontenera w aks engine.
 
 ```json
 "if": {
@@ -490,8 +490,8 @@ Przykład: Gatekeeper v3 reguły kontroli wstępu, aby ustawić limity zasobów 
 
 Efekt ten jest używany w `Microsoft.ContainerService.Data` *trybie* definicji zasad . Służy do przekazywania reguł kontroli wstępu Gatekeeper v2 zdefiniowanych za pomocą [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) do [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) w [usłudze Azure Kubernetes.](../../../aks/intro-kubernetes.md)
 
-> [!IMPORTANT]
-> [Usługa Azure Policy for Kubernetes](rego-for-aks.md) jest dostępna w wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad. Wbudowane zasady znajdują się w kategorii **Kubernetes.** **Egzekwuje** efekt polityki i powiązane zasady kategorii **usługi Kubernetes** są _przestarzałe_. Zamiast tego należy użyć zaktualizowanego [enforceopaconstraint](#enforceopaconstraint) efekt.
+> [!NOTE]
+> [Usługa Azure Policy for AKS](rego-for-aks.md) jest dostępna w ograniczonej wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy ocena
 

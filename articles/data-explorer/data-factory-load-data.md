@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 860b1a579d9c8cee6c6e80ae4c4e7fdd7949d5c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e17a004ff866f3915000fb72b6770757062cf83
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71300602"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422910"
 ---
 # <a name="copy-data-to-azure-data-explorer-by-using-azure-data-factory"></a>Kopiowanie danych do Eksploratora danych platformy Azure przy użyciu usługi Azure Data Factory 
 
@@ -29,7 +29,7 @@ Podczas ładowania danych do usługi Azure Data Explorer usługa Data Factory za
 * **Wysoka wydajność:** szybkość ładowania danych wynosi do 1 gigabajta na sekundę (GBps) do usługi Azure Data Explorer. Aby uzyskać więcej informacji, zobacz [Kopiowanie wydajności działania](/azure/data-factory/copy-activity-performance).
 
 W tym artykule narzędzie Data Copy Data służy do ładowania danych z usługi Amazon Simple Storage Service (S3) do usługi Azure Data Explorer. Podobny proces można wykonać, aby skopiować dane z innych magazynów danych, takich jak:
-* [Magazyn obiektów Blob platformy Azure](/azure/data-factory/connector-azure-blob-storage)
+* [Azure Blob Storage](/azure/data-factory/connector-azure-blob-storage)
 * [Azure SQL Database](/azure/data-factory/connector-azure-sql-database)
 * [Magazyn danych SQL platformy Azure](/azure/data-factory/connector-azure-sql-data-warehouse)
 * [Google BigQuery](/azure/data-factory/connector-google-bigquery)
@@ -59,7 +59,7 @@ W tym artykule narzędzie Data Copy Data służy do ładowania danych z usługi 
    | **Nazwa** | W polu wprowadź globalnie unikatową nazwę fabryki danych. Jeśli zostanie wyświetlony błąd, * \"nazwa fabryki danych LoadADXDemo\" nie jest dostępna*, wprowadź inną nazwę dla fabryki danych. Aby uzyskać reguły dotyczące nazywania artefaktów fabryki danych, zobacz [Reguły nazewnictwa fabryki danych](/azure/data-factory/naming-rules).|
    | **Subskrypcja** | Na liście rozwijanej wybierz subskrypcję platformy Azure, w której chcesz utworzyć fabrykę danych. |
    | **Grupa zasobów** | Wybierz **pozycję Utwórz nowy**, a następnie wprowadź nazwę nowej grupy zasobów. Jeśli masz już grupę zasobów, wybierz pozycję **Użyj istniejącego**. |
-   | **Wersja** | Z listy rozwijanej wybierz pozycję **V2**. |  
+   | **Wersja** | Z listy rozwijanej wybierz pozycję **V2**. |    
    | **Lokalizacja** | Z listy rozwijanej wybierz lokalizację fabryki danych. Na liście są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych, które są używane przez fabrykę danych może istnieć w innych lokalizacjach lub regionach. |
 
 1. Wybierz **pozycję Utwórz**.
@@ -78,7 +78,7 @@ Można załadować dane z wielu typów [magazynów danych](/azure/data-factory/c
 
 Dane można załadować w jeden z następujących sposobów:
 
-* W interfejsie użytkownika usługi Azure Data Factory w lewym okienku wybierz ikonę **Autor,** jak pokazano w sekcji "Tworzenie fabryki danych" [w obszarze Tworzenie fabryki danych przy użyciu interfejsu użytkownika usługi Azure Data Factory](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory).
+* W interfejsie użytkownika usługi Azure Data Factory w lewym okienku wybierz ikonę **Autor.** Jest to pokazane w sekcji "Tworzenie fabryki danych" [w obszarze Tworzenie fabryki danych przy użyciu interfejsu użytkownika usługi Azure Data Factory](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory).
 * W narzędziu Kopiowanie danych fabrycznych platformy Azure, jak pokazano w [narzędziu Kopiuj dane, aby skopiować dane](/azure/data-factory/quickstart-create-data-factory-copy-data-tool).
 
 ### <a name="copy-data-from-amazon-s3-source"></a>Kopiowanie danych z Amazon S3 (źródło)
@@ -142,9 +142,12 @@ Dane można załadować w jeden z następujących sposobów:
 
 Nowa usługa połączona usługi Azure Data Explorer jest tworzona w celu skopiowania danych do tabeli docelowej (ujścia) usługi Azure Data Explorer, która jest określona w tej sekcji.
 
+> [!NOTE]
+> Użyj [działania polecenia usługi Azure Data Factory, aby uruchamiać polecenia sterowania usługi Azure Data Explorer](data-factory-command-activity.md) i używać dowolnego z [poleceń pozyskiwania z poleceń kwerendy,](/azure/kusto/management/data-ingestion/ingest-from-query)takich jak `.set-or-replace`.
+
 #### <a name="create-the-azure-data-explorer-linked-service"></a>Tworzenie połączonej usługi Azure Data Explorer
 
-Aby utworzyć usługę połączony z Eksploratorem danych platformy Azure, wykonaj następujące czynności;
+Aby utworzyć usługę połączony z Eksploratorem danych platformy Azure, wykonaj następujące czynności:
 
 1. Aby użyć istniejącego połączenia magazynu danych lub określić nowy magazyn danych, w okienku **Docelowy magazyn danych** wybierz pozycję **Utwórz nowe połączenie**.
 
@@ -160,7 +163,7 @@ Aby utworzyć usługę połączony z Eksploratorem danych platformy Azure, wykon
 
    a. W polu **Nazwa** wprowadź nazwę połączonej usługi Usługi Azure Data Explorer.
 
-   b. W **obszarze Metoda wyboru konta**wykonaj jedną z następujących czynności: 
+   b. W **obszarze Metoda wyboru konta**wybierz jedną z następujących opcji: 
 
     * Wybierz **opcję Z subskrypcji platformy Azure,** a następnie na listach rozwijanych wybierz **subskrypcję platformy Azure** i **klaster**. 
 
@@ -186,7 +189,7 @@ Aby utworzyć usługę połączony z Eksploratorem danych platformy Azure, wykon
 
 #### <a name="configure-the-azure-data-explorer-data-connection"></a>Konfigurowanie połączenia danych usługi Azure Data Explorer
 
-Po utworzeniu połączonego połączenia usługi zostanie otwarte okienko **Magazyn danych miejsce docelowe,** a utworzone połączenie będzie dostępne do użycia. Aby skonfigurować połączenie, wykonaj następujące czynności;
+Po utworzeniu połączonego połączenia usługi zostanie otwarte okienko **Magazyn danych miejsce docelowe,** a utworzone połączenie będzie dostępne do użycia. Aby skonfigurować połączenie, wykonaj następujące czynności:
 
 1. Wybierz **pozycję Dalej**.
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 874c685491774e2a318ae0a8b7394945a51b2f7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68e234b9db269c30dc9f24106ae1942c01304da7
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244513"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422500"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopiowanie danych z i do oracle przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
@@ -55,7 +55,7 @@ W szczególności to złącze Oracle obsługuje:
 
 Środowisko wykonawcze integracji zapewnia wbudowany sterownik Oracle. W związku z tym nie trzeba ręcznie zainstalować sterownik podczas kopiowania danych z i do Oracle.
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -213,7 +213,7 @@ Aby skopiować dane z oracle, ustaw typ `OracleSource`źródła w działaniu kop
 |:--- |:--- |:--- |
 | type | Właściwość typu źródła działania kopiowania `OracleSource`musi być ustawiona na . | Tak |
 | oracleReaderQuery (wyroczniaReaderQuery) | Użyj niestandardowej kwerendy SQL, aby odczytać dane. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego, należy podłączyć wszelkie odpowiednie wbudowane parametry partycji w zapytaniu. Na przykład zobacz [kopiowanie równoległe z Oracle](#parallel-copy-from-oracle) sekcji. | Nie |
-| partitionOptions (opcje partycji) | Określa opcje partycjonowania danych używane do ładowania danych z oracle. <br>Dozwolone wartości to: **Brak** (domyślnie), **PhysicalPartitionsOfTable** i **DynamicRange**.<br>Gdy opcja partycji jest włączona `None`(czyli nie), stopień równoległości równoczesnych ładowania danych z [`parallelCopies`](copy-activity-performance.md#parallel-copy) bazy danych Oracle jest kontrolowany przez ustawienie działania kopiowania. | Nie |
+| partitionOptions (opcje partycji) | Określa opcje partycjonowania danych używane do ładowania danych z oracle. <br>Dozwolone wartości to: **Brak** (domyślnie), **PhysicalPartitionsOfTable** i **DynamicRange**.<br>Gdy opcja partycji jest włączona `None`(czyli nie), stopień równoległości równoczesnych ładowania danych z [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) bazy danych Oracle jest kontrolowany przez ustawienie działania kopiowania. | Nie |
 | podziałY | Określ grupę ustawień partycjonowania danych. <br>Zastosuj, gdy opcja partycji nie `None`jest . | Nie |
 | nazwy partycji | Lista partycji fizycznych, które muszą zostać skopiowane. <br>Zastosuj, gdy opcja `PhysicalPartitionsOfTable`partycji jest . Jeśli używasz kwerendy do pobierania danych `?AdfTabularPartitionName` źródłowych, należy podłączyć w klauzuli WHERE. Na przykład zobacz [kopię równoległą z Oracle](#parallel-copy-from-oracle) sekcji. | Nie |
 | partitionColumnName | Określ nazwę kolumny źródłowej **w typie liczby całkowitej,** która będzie używana przez partycjonowanie zakresu dla kopiowania równoległego. Jeśli nie zostanie określony, klucz podstawowy tabeli jest wykrywany automatycznie i używany jako kolumna partycji. <br>Zastosuj, gdy opcja `DynamicRange`partycji jest . Jeśli używasz kwerendy do pobierania danych `?AdfRangePartitionColumnName` źródłowych, należy podłączyć w klauzuli WHERE. Na przykład zobacz [kopię równoległą z Oracle](#parallel-copy-from-oracle) sekcji. | Nie |
@@ -300,7 +300,7 @@ Aby skopiować dane do oracle, ustaw typ `OracleSink`ujścia w działaniu kopiow
 
 ![Zrzut ekranu przedstawiający opcje partycji](./media/connector-oracle/connector-oracle-partition-options.png)
 
-Po włączeniu kopii podzielonej na partycje usługa Data Factory uruchamia równoległe kwerendy względem źródła Oracle, aby załadować dane według partycji. Stopień równoległy jest [`parallelCopies`](copy-activity-performance.md#parallel-copy) kontrolowany przez ustawienie działania kopiowania. Na przykład jeśli `parallelCopies` ustawisz na cztery, data factory jednocześnie generuje i uruchamia cztery kwerendy na podstawie określonej opcji partycji i ustawień, a każda kwerenda pobiera część danych z bazy danych Oracle.
+Po włączeniu kopii podzielonej na partycje usługa Data Factory uruchamia równoległe kwerendy względem źródła Oracle, aby załadować dane według partycji. Stopień równoległy jest [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kontrolowany przez ustawienie działania kopiowania. Na przykład jeśli `parallelCopies` ustawisz na cztery, data factory jednocześnie generuje i uruchamia cztery kwerendy na podstawie określonej opcji partycji i ustawień, a każda kwerenda pobiera część danych z bazy danych Oracle.
 
 Zaleca się włączenie kopiowania równoległego z partycjonowanie danych, zwłaszcza podczas ładowania dużej ilości danych z bazy danych Oracle. Poniżej przedstawiono sugerowane konfiguracje dla różnych scenariuszy. Podczas kopiowania danych do magazynu danych opartych na plikach zaleca się zapisywanie w folderze jako wielu plików (określanie tylko nazwy folderu), w którym to przypadku wydajność jest lepsza niż zapisywanie do jednego pliku.
 

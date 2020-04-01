@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z połączeniem RDP platformy Azure według identyfikatora zdarzenia | Dokumenty firmy Microsoft
-description: ''
+description: Identyfikatory zdarzeń umożliwia rozwiązywanie różnych problemów uniemożliwiające połączenie protokołu RDP (Remote Desktop) z maszyną wirtualną platformy Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 166648402eec7f8033c090a3f7862a902bae4be6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2073d5f91b26cd2ae53e3291a6d1dad4d711b66d
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71154205"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437064"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Rozwiązywanie problemów z połączeniem RDP maszyny wirtualnej platformy Azure według identyfikatora zdarzenia 
 
@@ -63,7 +63,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Słowa kluczowe:**      Klasyczny <br />
 **Użytkownik:**          N/a <br />
 **Komputer:**      *komputer* <br />
-**Opis:** Serwer hosta sesji usług pulpitu zdalnego nie może zastąpić wygasłego certyfikatu z podpisem własnym, używanego do uwierzytelniania serwera hosta sesji usług pulpitu zdalnego w połączeniach SSL. Odpowiedni kod stanu został odmowa dostępu.
+**Opis:** Serwer hosta sesji usług pulpitu zdalnego nie może zastąpić wygasłego certyfikatu z podpisem własnym, używanego do uwierzytelniania serwera hosta sesji usług pulpitu zdalnego w połączeniach TLS. Odpowiedni kod stanu został odmowa dostępu.
 
 **Nazwa dziennika:**      System <br />
 **Źródło:**        Menedżer Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
@@ -74,7 +74,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Słowa kluczowe:**      Klasyczny <br />
 **Użytkownik:**          N/a <br />
 **Komputer:**      *komputer* <br />
-**Opis:** Serwer hosta sesji usług pulpitu zdalnego nie może utworzyć nowego certyfikatu z podpisem własnym, który ma być używany do uwierzytelniania serwera hosta sesji usług pulpitu zdalnego w połączeniach SSL, odpowiedni kod stanu już istnieje.
+**Opis:** Serwer hosta sesji usług pulpitu zdalnego nie może utworzyć nowego certyfikatu z podpisem własnym, który ma być używany do uwierzytelniania serwera hosta sesji usług pulpitu zdalnego w połączeniach TLS, odpowiedni kod stanu już istnieje.
 
 **Nazwa dziennika:**      System <br />
 **Źródło:**        Menedżer Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
@@ -85,7 +85,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Słowa kluczowe:**      Klasyczny <br />
 **Użytkownik:**          N/a <br />
 **Komputer:**      *komputer* <br />
-**Opis:** Serwer hosta sesji usług pulpitu zdalnego nie może utworzyć nowego certyfikatu z podpisem własnym, który ma być używany do uwierzytelniania serwera hosta sesji usług pulpitu zdalnego w połączeniach SSL. Odpowiedni kod stanu był Keyset nie istnieje
+**Opis:** Serwer hosta sesji usług pulpitu zdalnego nie może utworzyć nowego certyfikatu z podpisem własnym, który ma być używany do uwierzytelniania serwera hosta sesji usług pulpitu zdalnego w połączeniach TLS. Odpowiedni kod stanu był Keyset nie istnieje
 
 Można również sprawdzić, czy zdarzenia błędów SCHANNEL 36872 i 36870 można również sprawdzić, uruchamiając następujące polecenia:
 
@@ -103,7 +103,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Słowa kluczowe:**       <br />
 **Użytkownik:**          System <br />
 **Komputer:**      *komputer* <br />
-**Opis:** Wystąpił błąd krytyczny podczas próby uzyskania dostępu do klucza prywatnego poświadczeń serwera SSL. Kod błędu zwrócony z modułu kryptograficznego to 0x8009030D.  <br />
+**Opis:** Wystąpił błąd krytyczny podczas próby uzyskania dostępu do klucza prywatnego poświadczeń serwera TLS. Kod błędu zwrócony z modułu kryptograficznego to 0x8009030D.  <br />
 Stan błędu wewnętrznego wynosi 10001.
 
 ### <a name="cause"></a>Przyczyna
@@ -186,9 +186,9 @@ Jeśli nie możesz odnowić certyfikatu, wykonaj następujące czynności, aby s
 
 Spróbuj uzyskać dostęp do maszyny Wirtualnej przy użyciu protokołu RDP ponownie.
 
-#### <a name="update-secure-sockets-layer-ssl-certificate"></a>Aktualizowanie certyfikatu warstwy SSL (Secure Sockets Layer)
+#### <a name="update-tlsssl-certificate"></a>Aktualizowanie certyfikatu TLS/SSL
 
-Jeśli skonfigurowano maszynę wirtualną do używania certyfikatu SSL, uruchom następujące polecenie, aby uzyskać odcisk palca. Następnie sprawdź, czy jest taki sam jak odcisk palca certyfikatu:
+Jeśli skonfigurowano maszynę wirtualną do używania certyfikatu TLS/SSL, uruchom następujące polecenie, aby uzyskać odcisk palca. Następnie sprawdź, czy jest taki sam jak odcisk palca certyfikatu:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash

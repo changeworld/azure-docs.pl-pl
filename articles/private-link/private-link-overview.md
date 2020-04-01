@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3218a2de890124915d62afa86fd5f3dca1e72b2e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f75f8392b01e69760171c13c0e6d3b2e22b20dea
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80063096"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421191"
 ---
 # <a name="what-is-azure-private-link"></a>Co to jest łącze prywatne platformy Azure? 
 Usługa Azure Private Link umożliwia dostęp do usług PaaS platformy Azure (na przykład usługi Azure Storage i bazy danych SQL) oraz usługi azure hostowane przez klienta/partnera za pośrednictwem [prywatnego punktu końcowego](private-endpoint-overview.md) w sieci wirtualnej.
@@ -47,7 +47,7 @@ Usługa Azure Private Link zapewnia następujące korzyści:
 |  | Usługa Azure Data Lake Storage 2. generacji        |  Wszystkie regiony publiczne      | Ogólna dostępność <br/> [Dowiedz się więcej](/azure/storage/common/storage-private-endpoints)  |
 |  |  Azure SQL Database         | Wszystkie regiony publiczne      |   Ogólna dostępność <br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
 |  |Usługa Azure Synapse Analytics (magazyn danych SQL)| Wszystkie regiony publiczne |Ogólna dostępność <br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
-|  |Azure Cosmos DB|  WSCHODNIE STANY USA, WSCHODNIE US2, ZACHODNIE STANY USA, ZACHODNIE US2, ŚRODKOWE STANY USA, POŁUDNIOWO-ŚRODKOWE STANY USA, PÓŁNOCNO-ŚRODKOWE STANY USA, EUROPA PÓŁNOCNA, EUROPA ZACHODNIA  |Ogólna dostępność <br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  |Azure Cosmos DB|  Wszystkie regiony publiczne |Ogólna dostępność <br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
 |  |  Usługa Azure Database for PostgreSQL — pojedynczy serwer         | Wszystkie regiony publiczne      |   Ogólna dostępność <br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
 |  |  Azure Database for MySQL         | Wszystkie regiony publiczne      |   Ogólna dostępność <br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
 |  |  Azure Database for MariaDB         | Wszystkie regiony publiczne      |   Ogólna dostępność <br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: af1032de9aabac45ad7a86cfe1f36ed2c04c0f71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1c5bdd1d210a1933699cad52dbf123b50048e01
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444621"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421330"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Dostęp do usługi Azure Cosmos DB z sieci wirtualnych
 
@@ -50,7 +50,7 @@ Autoryzacja sprawdza poprawność uprawnień do akcji zasobu sieci wirtualnej, n
 Tylko sieć wirtualna i ich podsieci dodane do konta usługi Azure Cosmos mają dostęp. Ich równorzędne sieci wirtualne nie mogą uzyskać dostępu do konta, dopóki podsieci w równorzędnych sieciach wirtualnych nie zostaną dodane do konta.
 
 ### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>Jaka jest maksymalna liczba podsieci, które mogą uzyskać dostęp do jednego konta usługi Cosmos? 
-Obecnie można mieć co najwyżej 64 podsieci dozwolone dla konta usługi Azure Cosmos.
+Obecnie można mieć co najwyżej 256 podsieci dozwolone dla konta usługi Azure Cosmos.
 
 ### <a name="can-i-enable-access-from-vpn-and-express-route"></a>Czy mogę włączyć dostęp z sieci VPN i trasy ekspresowej? 
 Aby uzyskać dostęp do konta usługi Azure Cosmos za pomocą trasy Express z lokalnego, należy włączyć komunikację równorzędną firmy Microsoft. Po umieszczeniu zapory IP lub reguł dostępu do sieci wirtualnej można dodać publiczne adresy IP używane do komunikacji równorzędnej firmy Microsoft w zaporze IP konta usługi Azure Cosmos, aby umożliwić usługom lokalnym dostęp do konta usługi Azure Cosmos. 

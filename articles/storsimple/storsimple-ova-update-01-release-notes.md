@@ -1,5 +1,5 @@
 ---
-title: StorSimple Virtual Array Aktualizacje informacje o wersji| Dokumenty firmy Microsoft
+title: StorSimple Virtual Array Update 0.2 & 0.1 informacje o wersji
 description: W tym artykule opisano krytyczne otwarte problemy i rozwiązania dla tablicy wirtualnej StorSimple z aktualizacją 0.2 i 0.1.
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
-ms.openlocfilehash: aad60024187ca180c002f119f4b975e8f69796e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95386f36340aca470769c920e40bbb70e09d34fc
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60629292"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397880"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array Update 0.2 i 0.1 informacje o wersji
 ## <a name="overview"></a>Omówienie

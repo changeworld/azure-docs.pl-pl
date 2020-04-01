@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
-ms.openlocfilehash: ad7d171cb115729e174090c1c80915abbde5999f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b905c75e920577e46017caeb456f8237421086b2
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238728"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421205"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopiowanie danych z magazynu SAP Business przez Open Hub przy użyciu usługi Azure Data Factory
 
@@ -189,7 +189,7 @@ Aby skopiować dane z usługi SAP BW Open Hub, w sekcji **źródła** działania
 >[!TIP]
 >Jeśli tabela Open Hub zawiera tylko dane generowane przez identyfikator pojedynczego żądania, na przykład zawsze należy wykonać pełne obciążenie i zastąpić istniejące dane w tabeli lub uruchomić DTP tylko raz do testu, pamiętaj, aby odznaczyć opcję "excludeLastRequest" w celu skopiowania danych.
 
-Aby przyspieszyć ładowanie danych, można [`parallelCopies`](copy-activity-performance.md#parallel-copy) ustawić na działania kopiowania, aby załadować dane z SAP BW Open Hub równolegle. Na przykład jeśli `parallelCopies` ustawisz cztery, data factory jednocześnie wykonuje cztery wywołania RFC, a każde wywołanie RFC pobiera część danych z tabeli SAP BW Open Hub na partycje według identyfikatora żądania DTP i identyfikatora pakietu. Ma to zastosowanie, gdy liczba unikatowych identyfikatorów żądania DTP + `parallelCopies`identyfikatora pakietu jest większa niż wartość . Podczas kopiowania danych do magazynu danych opartych na plikach zaleca się również zapisywanie w folderze jako wielu plików (określanie tylko nazwy folderu), w którym to przypadku wydajność jest lepsza niż zapisywanie do jednego pliku.
+Aby przyspieszyć ładowanie danych, można [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) ustawić na działania kopiowania, aby załadować dane z SAP BW Open Hub równolegle. Na przykład jeśli `parallelCopies` ustawisz cztery, data factory jednocześnie wykonuje cztery wywołania RFC, a każde wywołanie RFC pobiera część danych z tabeli SAP BW Open Hub na partycje według identyfikatora żądania DTP i identyfikatora pakietu. Ma to zastosowanie, gdy liczba unikatowych identyfikatorów żądania DTP + `parallelCopies`identyfikatora pakietu jest większa niż wartość . Podczas kopiowania danych do magazynu danych opartych na plikach zaleca się również zapisywanie w folderze jako wielu plików (określanie tylko nazwy folderu), w którym to przypadku wydajność jest lepsza niż zapisywanie do jednego pliku.
 
 **Przykład:**
 

@@ -3,12 +3,12 @@ title: Omówienie magazynów usługi Recovery Services
 description: Omówienie i porównanie między magazynami usług odzyskiwania a magazynami kopii zapasowych platformy Azure.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 94a3e5a0865bcc8c0a9ecb866ca013f20a558e1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6a359287533c9ffdd688b5285b24b9c70fa7b7f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673235"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436960"
 ---
 # <a name="recovery-services-vaults-overview"></a>Przegląd magazynów usługi Recovery Services
 
@@ -31,6 +31,14 @@ Magazyny usług odzyskiwania są oparte na modelu usługi Azure Resource Manager
 - **Ochrona wszystkich konfiguracji maszyn wirtualnych platformy Azure:** magazyny usług odzyskiwania chronią maszyny wirtualne oparte na Menedżerze zasobów, w tym dyski premium, dyski zarządzane i zaszyfrowane maszyny wirtualne. Uaktualnienie magazynu kopii zapasowych do magazynu usług odzyskiwania umożliwia uaktualnienie maszyn wirtualnych opartych na programie Service Manager do maszyn wirtualnych opartych na Menedżerze zasobów. Podczas uaktualniania magazynu można zachować punkty odzyskiwania maszyn wirtualnych oparte na usłudze Service Manager i skonfigurować ochronę dla uaktualnionych maszyn wirtualnych (z włączoną obsługą Menedżera zasobów). [Dowiedz się więcej](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
 - **Natychmiastowe przywracanie maszyn wirtualnych IaaS:** korzystając z magazynów usług odzyskiwania, można przywracać pliki i foldery z maszyny wirtualnej IaaS bez przywracania całej maszyny Wirtualnej, co umożliwia szybsze czasy przywracania. Natychmiastowe przywracanie maszyn wirtualnych IaaS jest dostępne zarówno dla maszyn wirtualnych z systemem Windows, jak i z systemem Linux. [Dowiedz się więcej](backup-instant-restore-capability.md)
+
+## <a name="storage-settings-in-the-recovery-services-vault"></a>Ustawienia magazynu w przechowalni usług odzyskiwania
+
+Magazyn usług odzyskiwania to jednostka, która przechowuje kopie zapasowe i punkty odzyskiwania utworzone w czasie. Magazyn usług odzyskiwania zawiera również zasady tworzenia kopii zapasowych skojarzone z chronionymi maszynami wirtualnymi.
+
+Usługa Azure Backup automatycznie obsługuje magazyn dla magazynu. Zobacz, jak [można zmienić ustawienia pamięci masowej](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy).
+
+Aby dowiedzieć się więcej na temat nadmiarowości magazynu, zobacz te artykuły dotyczące nadmiarowości [geograficznej](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) i [lokalnej.](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Zarządzanie magazynami usług odzyskiwania w portalu
 

@@ -1,22 +1,26 @@
 ---
 title: Konfigurowanie uwierzytelniania w usłudze Azure AD
-description: Dowiedz się, jak skonfigurować uwierzytelnianie usługi Azure Active Directory jako dostawcę tożsamości dla aplikacji usługi App Service.
+description: Dowiedz się, jak skonfigurować uwierzytelnianie usługi Azure Active Directory jako dostawcę tożsamości dla usługi app service lub aplikacji Usługi Azure Functions.
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: fdad1f820d006c39fa135a29a5ec7377c47591f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b42f0966288e4ee72b689ddce6313a41e91f13e
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80046442"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80438033"
 ---
-# <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Konfigurowanie aplikacji usługi App Service do używania logowania usługi Azure AD
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurowanie usługi aplikacji lub aplikacji Usługi Azure Functions do używania logowania usługi Azure AD
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-W tym artykule pokazano, jak skonfigurować usługę Azure App Service do używania usługi Azure Active Directory (Azure AD) jako dostawcy uwierzytelniania.
+W tym artykule pokazano, jak skonfigurować usługę Azure App Service lub usługi Azure Functions do używania usługi Azure Active Directory (Azure AD) jako dostawcy uwierzytelniania.
+
+> [!NOTE]
+> W tej chwili [usługa Azure Active Directory w wersji 2.0](../active-directory/develop/v2-overview.md) (w tym [MSAL)](../active-directory/develop/msal-overview.md)nie jest obsługiwana dla usługi Azure App Service i usługi Azure Functions. Sprawdź aktualizacje.
+>
 
 Podczas konfigurowania aplikacji i uwierzytelniania należy postępować zgodnie z tymi najlepszymi rozwiązaniami:
 
@@ -72,7 +76,8 @@ Wykonaj poniższe czynności:
 1. W **obszarze Przekierowanie identyfikatora URI**wybierz pozycję **Web** i wpisz . `<app-url>/.auth/login/aad/callback` Na przykład `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
 1. Wybierz **pozycję Utwórz**.
 1. Po utworzeniu rejestracji aplikacji skopiuj **identyfikator aplikacji (klienta)** i **identyfikator katalogu (dzierżawy)** na później.
-1. Wybierz **opcję Znakowanie**. W **polu URL strony głównej**wprowadź adres URL aplikacji App Service i wybierz pozycję **Zapisz**.
+1. Wybierz pozycję **Uwierzytelnianie**. W obszarze **Niejawne przyznanie**włącz **tokeny identyfikatorów,** aby zezwolić na logowanie użytkowników OpenID Connect z usługi App Service.
+1. (Opcjonalnie) Wybierz **opcję Znakowanie**. W **polu URL strony głównej**wprowadź adres URL aplikacji App Service i wybierz pozycję **Zapisz**.
 1. Wybierz **pozycję Uwidaczniaj** > **zestaw**interfejsu API . Wklej adres URL aplikacji Usługi App Service i wybierz pozycję **Zapisz**.
 
    > [!NOTE]
@@ -96,7 +101,7 @@ Wykonaj poniższe czynności:
     |Pole|Opis|
     |-|-|
     |Identyfikator klienta| Użyj identyfikatora **aplikacji (klienta)** rejestracji aplikacji. |
-    |Identyfikator wystawcy| Użyj `https://login.microsoftonline.com/<tenant-id>`i zastąp * \<identyfikator dzierżawy>* **identyfikatorem katalogu (dzierżawy)** rejestracji aplikacji. |
+    |Adres URL wystawcy| Użyj `https://login.microsoftonline.com/<tenant-id>`i zastąp * \<identyfikator dzierżawy>* **identyfikatorem katalogu (dzierżawy)** rejestracji aplikacji. Ta wartość jest używana do przekierowywania użytkowników do poprawnej dzierżawy usługi Azure AD, a także do pobierania odpowiednich metadanych w celu określenia odpowiednich kluczy podpisywania tokenu i wartości oświadczenia wystawcy tokenu na przykład. |
     |Klucz tajny klienta (opcjonalnie)| Użyj klucza tajnego klienta wygenerowanego podczas rejestracji aplikacji.|
     |Dozwolone grupy odbiorców tokenów| Jeśli jest to aplikacja w chmurze lub serwera i chcesz zezwolić tokeny uwierzytelniania z aplikacji sieci web, dodaj **identyfikator URI identyfikatora aplikacji** w aplikacji sieci web tutaj. Skonfigurowany **identyfikator klienta** jest *zawsze* niejawnie uważany za dozwoloną grupę odbiorców. |
 
@@ -106,21 +111,21 @@ Teraz możesz używać usługi Azure Active Directory do uwierzytelniania w apli
 
 ## <a name="configure-a-native-client-application"></a>Konfigurowanie natywnej aplikacji klienckiej
 
-Można zarejestrować klientów natywnych, aby zezwolić na uwierzytelnianie przy użyciu biblioteki klienta, takiej jak **Biblioteka uwierzytelniania usługi Active Directory**.
+Można zarejestrować klientów natywnych, aby zezwolić na uwierzytelnianie w interfejsie API sieci Web hostowanym w aplikacji przy użyciu biblioteki klienta, takiej jak **Biblioteka uwierzytelniania usługi Active Directory.**
 
 1. W [portalu Azure]wybierz pozycję**Rejestracje** > aplikacji **usługi Active Directory** > **Nowa rejestracja**.
 1. Na stronie **Zarejestruj aplikację** wprowadź **nazwę** rejestracji aplikacji.
 1. W **obszarze Przekierowanie identyfikatora URI**wybierz pozycję Klient `<app-url>/.auth/login/aad/callback`publiczny **(mobilny & pulpit)** i wpisz adres URL . Na przykład `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 
     > [!NOTE]
-    > W przypadku aplikacji systemu Windows należy użyć [identyfikatora SID pakietu](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) jako identyfikatora URI.
+    > W przypadku aplikacji ze sklepu Microsoft Store należy użyć [identyfikatora SID pakietu](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) jako identyfikatora URI.
 1. Wybierz **pozycję Utwórz**.
 1. Po utworzeniu rejestracji aplikacji skopiuj wartość **identyfikatora aplikacji (klienta).**
 1. Wybierz **uprawnienia** > interfejsu API**Dodaj uprawnienie** > **Moje interfejsy API**.
 1. Wybierz rejestrację aplikacji utworzoną wcześniej dla aplikacji usługi App Service. Jeśli nie widzisz rejestracji aplikacji, upewnij się, że dodano zakres **user_impersonation** w [obszarze Tworzenie rejestracji aplikacji w usłudze Azure AD dla aplikacji usługi App Service.](#register)
 1. Wybierz **user_impersonation**, a następnie wybierz pozycję **Dodaj uprawnienia**.
 
-Teraz skonfigurowano natywną aplikację kliencką, która może uzyskać dostęp do aplikacji usługi App Service.
+Teraz skonfigurowano natywną aplikację kliencką, która może uzyskiwać dostęp do aplikacji usługi App Service w imieniu użytkownika.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Następne kroki
 
@@ -128,4 +133,4 @@ Teraz skonfigurowano natywną aplikację kliencką, która może uzyskać dostę
 
 <!-- URLs. -->
 
-[Portal Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: d84085115816a8fe1cba65e191ea391dd91a4aed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77599368"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436008"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>Często zadawane pytania - Pytania dotyczące maszyn wirtualnych
 
@@ -51,7 +51,7 @@ Poniżej znajduje się czas opóźnienia skanowania luk w zabezpieczeniach, aktu
 Usługa Security Center zazwyczaj skanuje w poszukiwaniu nowych danych co godzinę i odpowiednio odświeża zalecenia. 
 
 > [!NOTE]
-> Usługa Security Center używa agenta monitorowania firmy Microsoft do zbierania i przechowywania danych. Aby dowiedzieć się więcej, zobacz [Migracja platformy Azure Security Center .](security-center-platform-migration.md)
+> Usługa Security Center używa agenta usługi Log Analytics do zbierania i przechowywania danych. Aby dowiedzieć się więcej, zobacz [Migracja platformy Azure Security Center .](security-center-platform-migration.md)
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Dlaczego jest wyświetlany komunikat "Brak agenta maszyny Wirtualnej?"

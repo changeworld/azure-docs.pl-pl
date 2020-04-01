@@ -3,12 +3,12 @@ title: Instalowanie agenta usług odzyskiwania platformy Microsoft Azure (MARS)
 description: Dowiedz się, jak zainstalować agenta usług odzyskiwania platformy Microsoft Azure (MARS) w celu utworzenia kopii zapasowej maszyn z systemem Windows.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: b9a6791709d5aff82d11bbf10e5f084fd8c1a000
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3932b66dbc41ff2631e2cccbe716c0877a509d3
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247763"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422934"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Instalowanie agenta marsjańskiej kopii zapasowej platformy Azure
 
@@ -36,6 +36,7 @@ Dane, które są dostępne do tworzenia kopii zapasowych zależy od tego, gdzie 
 * Sprawdź, [co jest obsługiwane i co możesz zrobić kopii zapasowej](backup-support-matrix-mars-agent.md) przez agenta MARS.
 * Upewnij się, że masz konto platformy Azure, jeśli chcesz wykonać zapasową serwera lub klienta na platformie Azure. Jeśli nie masz konta, możesz utworzyć [bezpłatne](https://azure.microsoft.com/free/) w ciągu zaledwie kilku minut.
 * Sprawdź dostęp do Internetu na komputerach, których chcesz zrobić, aby uzyskać jego utworzenie.
+* Upewnij się, że użytkownik wykonujący instalację i konfigurację agenta MARS ma uprawnienia administratora lokalnego na serwerze, który ma być chroniony.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: a25bbd0f14d38a70624dbc58755c0e814753a181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 987cdd76ba533fa0ae4b37c2755fe84a00d14de5
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77604183"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435861"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center — bezpieczeństwo danych
 Aby ułatwić klientom zapobieganie zagrożeniom, wykrywanie ich i reagowanie na nie, usługa Azure Security Center zbiera i przetwarza dane dotyczące zabezpieczeń, w tym informacje o konfiguracji, metadane, dzienniki zdarzeń, pliki zrzutu awaryjnego i inne. Firma Microsoft przestrzega surowych wymogów z zakresu zabezpieczeń i zgodności — od kodu po działanie usługi.
@@ -71,8 +71,8 @@ Artefakty maszyny są przechowywane centralnie w tym samym regionie, co maszyna 
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>Zarządzanie zbieraniem danych z maszyn wirtualnych
 
-W przypadku włączenia usługi Security Center na platformie Azure zbieranie danych jest włączone dla każdej subskrypcji platformy Azure. Zbieranie danych można również włączyć dla subskrypcji w sekcji Zasady zabezpieczeń usługi Azure Security Center. Jeśli zbieranie danych jest włączone, usługa Azure Security Center aprowizuje program Microsoft Monitoring Agent na wszystkich maszynach wirtualnych, które już istnieją i są obsługiwane, oraz na tych, które dopiero zostaną utworzone.
-Program Microsoft Monitoring Agent przeprowadza skanowanie w poszukiwaniu różnych konfiguracji i zdarzeń związanych z zabezpieczeniami i przekazuje je do śladów funkcji [Śledzenie zdarzeń systemu Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx). Ponadto system operacyjny będzie zgłaszać zdarzenia dziennika zdarzeń w trakcie pracy maszyny. Przykłady takich danych to typ systemu operacyjnego i jego wersja, dzienniki systemu operacyjnego (dzienniki zdarzeń systemu Windows), uruchomione procesy, nazwa maszyny, adresy IP, zalogowany użytkownik i identyfikator dzierżawy. Program Microsoft Monitoring Agent odczytuje wpisy dziennika zdarzeń, a narzędzie Śledzenie zdarzeń systemu Windows śledzi i kopiuje je do obszarów roboczych w celu dokonania analizy. Program Microsoft Monitoring Agent kopiuje również pliki zrzutu awaryjnego do obszarów roboczych oraz włącza zdarzenia tworzenia procesów i inspekcję wiersza polecenia.
+W przypadku włączenia usługi Security Center na platformie Azure zbieranie danych jest włączone dla każdej subskrypcji platformy Azure. Zbieranie danych można również włączyć dla subskrypcji w sekcji Zasady zabezpieczeń usługi Azure Security Center. Po włączeniu zbierania danych usługa Azure Security Center apłecz agenta usługi Log Analytics na wszystkich obsługiwanych maszynach wirtualnych platformy Azure i nowych, które są tworzone.
+Agent usługi Log Analytics skanuje w poszukiwaniu różnych konfiguracji związanych z zabezpieczeniami i zdarzeń w [śledzenia zdarzeń dla systemu Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) ślady. Ponadto system operacyjny będzie zgłaszać zdarzenia dziennika zdarzeń w trakcie pracy maszyny. Przykłady takich danych to typ systemu operacyjnego i jego wersja, dzienniki systemu operacyjnego (dzienniki zdarzeń systemu Windows), uruchomione procesy, nazwa maszyny, adresy IP, zalogowany użytkownik i identyfikator dzierżawy. Agent usługi Log Analytics odczytuje wpisy dziennika zdarzeń i ślady ETW i kopiuje je do obszarów roboczych do analizy. Agent usługi Log Analytics kopiuje również pliki zrzutu awaryjnego do obszaru roboczego, włącza zdarzenia tworzenia procesów i włącza inspekcję wiersza polecenia.
 
 Jeśli jest używana warstwa Bezpłatna usługi Azure Security Center, zbieranie danych można również wyłączyć z poziomu maszyn wirtualnych w sekcji Zasady zabezpieczeń. Zbieranie danych jest wymagane dla subskrypcji w warstwie Standardowa. Kolekcja artefaktów i migawki dysków maszyny wirtualnej będzie nadal włączona, nawet jeśli wyłączono zbieranie danych.
 

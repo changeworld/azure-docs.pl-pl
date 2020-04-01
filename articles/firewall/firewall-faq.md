@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 60beccc2f2679a18903b74b84f48afebfb3b69da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45276884d59ac8d1d876e2225ac02bb51c3f74fc
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257755"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437730"
 ---
 # <a name="azure-firewall-faq"></a>Zapora platformy Azure – często zadawane pytania
 
@@ -133,7 +133,7 @@ Wymuszone tunelowanie jest obsługiwane. Aby uzyskać więcej informacji, zobacz
 
 Zapora platformy Azure musi mieć bezpośrednią łączność z Internetem. Jeśli azurefirewallsubnet uczy się domyślnej trasy do sieci lokalnej za pośrednictwem protokołu BGP, należy zastąpić to z 0.0.0.0/0 UDR z **NextHopType** wartość ustawiona jako **Internet,** aby utrzymać bezpośrednią łączność z Internetem.
 
-Jeśli konfiguracja wymaga wymuszonego tunelowania do sieci lokalnej i można określić docelowe prefiksy IP dla miejsc docelowych internetu, można skonfigurować te zakresy za pomocą sieci lokalnej jako następny przeskok za pośrednictwem trasy zdefiniowanej przez użytkownika na AzureFirewallsubnet. Można też użyć protokołu BGP do zdefiniowania tych tras.
+Jeśli konfiguracja wymaga wymuszonego tunelowania do sieci lokalnej i można określić docelowe prefiksy IP dla miejsc docelowych Internetu, można skonfigurować te zakresy za pomocą sieci lokalnej jako następnego przeskoku za pośrednictwem trasy zdefiniowanej przez użytkownika w usłudze AzureFirewallSubnet. Można też użyć protokołu BGP do zdefiniowania tych tras.
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Czy istnieją ograniczenia grupy zasobów zapory?
 
@@ -209,3 +209,7 @@ $fw.ThreatIntelWhitelist.IpAddress = @("ip1", "ip2", …)
 
 Set-AzFirewall -AzureFirewall $fw
 ```
+
+## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Dlaczego ping TCP i podobne narzędzia mogą pomyślnie połączyć się z docelową siecią FQDN, nawet jeśli żadna reguła w zaporze platformy Azure nie zezwala na ten ruch?
+
+Ping TCP nie łączy się z docelową siecią FQDN. Dzieje się tak, ponieważ przezroczysty serwer proxy usługi Azure Firewall nasłuchuje na porcie 80/443 dla ruchu wychodzącego. Ping TCP ustanawia połączenie z zaporą, która następnie porzuca pakiet i rejestruje połączenie. To zachowanie nie ma żadnego wpływu na bezpieczeństwo. Aby jednak uniknąć nieporozumień, badamy potencjalne zmiany w tym zachowaniu. 

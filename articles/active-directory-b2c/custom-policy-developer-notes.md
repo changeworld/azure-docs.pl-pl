@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ee3b5bd3278412949074b77f9d1c53d63a467280
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 403ca480bcf0743d81e375c122c888db96bbf543
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189399"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408717"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Uwagi dewelopera dotyczące zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -59,68 +59,82 @@ Deweloperzy, którzy stosują niestandardowy zestaw funkcji zasad, powinni przes
 
 Niestandardowe funkcje frameworka zasad/tożsamości są stale i szybko rozwijane. Poniższa tabela zawiera indeks funkcji i dostępności składników.
 
-### <a name="identity-providers-tokens-protocols"></a>Dostawcy tożsamości, tokeny, protokoły
+
+### <a name="protocols-and-authorization-flows"></a>Protokoły i przepływy autoryzacji
 
 | Funkcja | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| IDP-OpenIDConnect |  |  | X | Na przykład Google+.  |
-| IDP-OAUTH2 |  |  | X | Na przykład Facebook.  |
-| IDP-OAUTH1 (twitter) |  | X |  | Na przykład Twitter. |
-| IDP-OAUTH1 (ex-twitter) |  |  |  | Nieobsługiwane |
-| IDP-SAML |  |   | X | Na przykład Salesforce, ADFS. |
-| IDP-WSFED | X |  |  |  |
-| Strona uzależniająca OAUTH1 |  |  |  | Bez pomocy technicznej. |
-| Strona uzależniająca OAUTH2 |  |  | X |  |
-| Jednostka uzależniona OIDC |  |  | X |  |
-| Saml jednostki uzależniającej |  |X  |  |  |
-| Strona uzależniona WSFED | X |  |  |  |
-| INTERFEJS API REST z auth podstawowy i certyfikat |  |  | X | Na przykład usługi Azure Logic Apps. |
+| [Kod autoryzacji OAuth2](authorization-code-flow.md) |  |  | X |  |
+| Kod autoryzacji OAuth2 z PKCE |  |  | X | Tylko aplikacje mobilne  |
+| [Przepływ niejawny OAuth2](implicit-flow-single-page-application.md) |  |  | X |  |
+| [Poświadczenia hasła właściciela zasobu OAuth2](ropc-custom.md) |  | X |  |  |
+| [OIDC Connect](openid-connect.md) |  |  | X |  |
+| [SAML2 (polski)](connect-with-saml-service-providers.md)  |  |X  |  | Powiązania POST i Redirect. |
+| OAuth1 |  |  |  | Bez pomocy technicznej. |
+| WSFED (WSFED) | X |  |  |  |
 
-### <a name="component-support"></a>Obsługa składników
+### <a name="identify-providers-federation"></a>Identyfikowanie federacji dostawców 
+
+| Funkcja | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | Na przykład Google+.  |
+| [OAuth2](oauth2-technical-profile.md) |  |  | X | Na przykład Facebook.  |
+| [OAuth1](oauth1-technical-profile.md) |  | X |  | Na przykład Twitter. |
+| [SAML2 (polski)](saml-technical-profile.md) |  |   | X | Na przykład Salesforce, ADFS. |
+| WSFED (WSFED)| X |  |  |  |
+
+
+### <a name="rest-api-integration"></a>Integracja interfejsu API REST
+
+| Funkcja | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| [INTERFEJS API REST z podstawową erą](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
+| [INTERFEJS API REST z auth certyfikatu klienta](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
+| [REST API z auth na okaziciela OAuth2](secure-rest-api.md#oauth2-bearer-authentication) |  | X |  |  |
+
+### <a name="component-support"></a>Obsługa komponentów
 
 | Funkcja | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Uwierzytelnianie wieloskładnikowe platformy Azure |  |  | X |  |
-| Usługa Azure Active Directory jako katalog lokalny |  |  | X |  |
+| [Uwierzytelnianie safruszowe telefonu](phone-factor-technical-profile.md) |  |  | X |  |
+| [Uwierzytelnianie usługi Azure MFA](multi-factor-auth-technical-profile.md) |  | X |  |  |
+| [Hasło jednorazowe](one-time-password-technical-profile.md) |  | X |  |  |
+| [Usługa Azure Active Directory](active-directory-technical-profile.md) jako katalog lokalny |  |  | X |  |
 | Podsystem poczty e-mail platformy Azure do weryfikacji poczty e-mail |  |  | X |  |
-| Obsługa wielu języków|  |  | X |  |
-| Sprawdzanie poprawności predykatu |  |  | X | Na przykład złożoność hasła. |
-| Korzystanie z usług zewnętrznych dostawców usług poczty e-mail |  |X  |  |  |
+| [Zewnętrzni dostawcy usług poczty e-mail](custom-email.md) |  |X  |  |  |
+| [Obsługa wielu języków](localization.md)|  |  | X |  |
+| [Sprawdzanie poprawności predykatu](predicates.md) |  |  | X | Na przykład złożoność hasła. |
+| [Kontrolki wyświetlania](display-controls.md) |  |X  |  |  |
 
-### <a name="content-definition"></a>Definicja zawartości
+
+### <a name="page-layout-versions"></a>Wersje układu strony
 
 | Funkcja | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Strona błędu, api.error |  |  | X |  |
-| Strona wyboru dostawcy usług IDP, api.idpselections |  |  | X |  |
-| Wybór dostawcy tożsamości do rejestracji, api.idpselections.signup |  |  | X |  |
-| Zapomniałeś hasła, api.localaccountpasswordreset |  |  | X |  |
-| Logowanie do konta lokalnego, api.localaccountsignin |  |  | X |  |
-| Rejestracja konta lokalnego, api.localaccountsignup |  |  | X |  |
-| Strona usługi MFA, api.phonefactor |  |  | X |  |
-| Samodzielnie dochodzi do rejestracji konta społecznościowego, api.selfasserted |  |  | X |  |
-| Samodzielnie potwierdzona aktualizacja profilu, api.selfasserted.profileupdate |  |  | X |  |
-| Ujednolicona strona rejestracji lub logowania api.signuporsignin z parametrem "disableSignup" |  |  | X |  |
-| JavaScript / Układ strony |  | X |  |  |
+| [2.0.0](page-layout.md#200) |  | X |  |  |
+| [1.2.0](page-layout.md#120) |  | X |  |  |
+| [1.1.0](page-layout.md#110) |  |  | X |  |
+| [1.0.0](page-layout.md#100) |  |  | X |  |
+| [Obsługa języka JavaScript](javascript-samples.md) |  | X |  |  |
 
 ### <a name="app-ief-integration"></a>Integracja z aplikacją IEF
 
 | Funkcja | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Parametr ciągu kwerendy domain_hint |  |  | X | Dostępne jako oświadczenie, mogą być przekazywane do IDP. |
-| Parametr ciągu kwerendy login_hint |  |  | X | Dostępne jako oświadczenie, mogą być przekazywane do IDP. |
-| Włóż JSON do UserJourney za pośrednictwem client_assertion | X |  |  | Zostanie przestarzały. |
-| Wstaw JSON do userjourney jako id_token_hint |  | X |  | Podejście do przodu, aby przekazać JSON. |
-| Przekazywanie tokenu IDP do aplikacji |  | X |  | Na przykład z Facebooka do aplikacji. |
+| Parametr ciągu kwerendy`domain_hint` |  |  | X | Dostępne jako oświadczenie, mogą być przekazywane do IDP. |
+| Parametr ciągu kwerendy`login_hint` |  |  | X | Dostępne jako oświadczenie, mogą być przekazywane do IDP. |
+| Wstaw JSON do podróży użytkownika za pośrednictwem`client_assertion` | X |  |  | Zostanie przestarzały. |
+| Wstaw JSON do podróży użytkownika jako`id_token_hint` |  | X |  | Podejście do przodu, aby przekazać JSON. |
+| [Przekazywanie tokenu dostawcy tożsamości do aplikacji](idp-pass-through-custom.md) |  | X |  | Na przykład z Facebooka do aplikacji. |
 
 ### <a name="session-management"></a>Zarządzanie sesjami
 
 | Funkcja | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Dostawca sesji SSO |  |  | X |  |
-| Dostawca zewnętrznej sesji logowania |  |  | X |  |
-| Dostawca sesji SSO SAML |  |  | X |  |
-| Domyślny dostawca sesji sytłewu |  |  | X |  |
+| [Domyślny dostawca sesji przyuszeńcowych](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
+| [Zewnętrzny dostawca sesji logowania](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
+| [Dostawca sesji SSO SAML](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
+
 
 ### <a name="security"></a>Zabezpieczenia
 
@@ -128,16 +142,19 @@ Niestandardowe funkcje frameworka zasad/tożsamości są stale i szybko rozwijan
 |-------- | :-----------: | :-------: | :--: | ----- |
 | Klucze zasad — generowanie, ręczne przesyłanie |  |  | X |  |
 | Klucze zasad- RSA/Cert, Tajemnice |  |  | X |  |
-| Przekazywanie zasad |  |  | X |  |
+
 
 ### <a name="developer-interface"></a>Interfejs dewelopera
 
 | Funkcja | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Środowisko użytkownika Usługi Azure Portal-IEF |  |  | X |  |
-| Application Insights UserJourney Logs |  | X |  | Służy do rozwiązywania problemów podczas tworzenia.  |
-| Dzienniki zdarzeń usługi Application Insights (za pomocą kroków aranżacji) |  | X |  | Służy do monitorowania przepływów użytkowników w produkcji. |
+| Przekazywanie zasad |  |  | X |  |
+| [Dzienniki podróży użytkowników usługi Application Insights](troubleshoot-with-application-insights.md) |  | X |  | Służy do rozwiązywania problemów podczas tworzenia.  |
+| [Dzienniki zdarzeń usługi Application Insights](application-insights-technical-profile.md) |  | X |  | Służy do monitorowania przepływów użytkowników w produkcji. |
+
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [zasadach niestandardowych i różnicach z przepływami użytkowników](custom-policy-overview.md).
+- Sprawdź [operacje programu Microsoft Graph dostępne dla usługi Azure AD B2C](microsoft-graph-operations.md)
+- Dowiedz się więcej o [zasadach niestandardowych i różnicach z przepływami użytkowników](custom-policy-overview.md).

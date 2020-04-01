@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 25bc25d9ec12804cc20baa558dce67fb3f8269a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb9a02532c3651aca544ed946f40bdcff9e9be83
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77149199"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411768"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurowanie połączenia typu "punkt-lokacja" z siecią wirtualną przy użyciu uwierzytelniania RADIUS: Program PowerShell
 
@@ -31,9 +31,9 @@ Ten artykuł ułatwia konfigurowanie konfiguracji P2S z uwierzytelnianiem przy u
 
 Połączenia typu punkt-lokacja nie wymagają urządzenia sieci VPN ani publicznego adresu IP. P2S tworzy połączenie VPN za pośrednictwem protokołu SSTP (Secure Socket Tunneling Protocol), OpenVPN lub IKEv2.
 
-* Protokół SSTP to tunel sieci VPN bazujący na protokole SSL, który jest obsługiwany wyłącznie na platformach klienckich Windows. Może przechodzić przez zapory, co czyni go idealnym do nawiązywania połączenia z platformą Azure z dowolnego miejsca. Po stronie serwera obsługiwany jest protokół SSTP w wersji 1.0, 1.1 i 1.2. Klient decyduje o wyborze wersji do użycia. W przypadku systemu Windows 8.1 i nowszych protokół SSTP domyślnie używa wersji 1.2.
+* SSTP to tunel sieci VPN oparty na TLS, który jest obsługiwany tylko na platformach klienckich systemu Windows. Może przechodzić przez zapory, co czyni go idealnym do nawiązywania połączenia z platformą Azure z dowolnego miejsca. Po stronie serwera obsługiwany jest protokół SSTP w wersji 1.0, 1.1 i 1.2. Klient decyduje o wyborze wersji do użycia. W przypadku systemu Windows 8.1 i nowszych protokół SSTP domyślnie używa wersji 1.2.
 
-* OpenVPN® Protocol, protokół VPN oparty na SSL/TLS. Rozwiązanie SSL VPN może przenikać przez zapory, ponieważ większość zapór otwiera port TCP 443 wychodzący, którego używa SSL. OpenVPN może być używany do łączenia się z Androidem, iOS (wersje 11.0 i nowszych), Windows, Linux i Mac (wersje OSX 10.13 i nowsze).
+* OpenVPN® Protocol, protokół VPN oparty na SSL/TLS. Rozwiązanie sieci VPN TLS może przenikać przez zapory, ponieważ większość zapór otwiera port TCP 443 wychodzący, którego używa TLS. OpenVPN może być używany do łączenia się z Androidem, iOS (wersje 11.0 i nowszych), Windows, Linux i Mac (wersje OSX 10.13 i nowsze).
 
 * Sieć VPN z protokołem IKEv2 to oparte na standardach rozwiązanie sieci VPN korzystające z protokołu IPsec. Sieci VPN z protokołem IKEv2 można używać do łączenia z urządzeniami Mac (z systemem OSX 10.11 lub nowszym).
 
@@ -268,7 +268,7 @@ Aby rozwiązać problem z połączeniem P2S, zobacz [Rozwiązywanie problemów z
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-p2s-include.md)]
 
-## <a name="faq"></a><a name="faq"></a>Najczęściej zadawane pytania
+## <a name="faq"></a><a name="faq"></a>Często zadawane pytania
 
 To często zadawane pytania dotyczy P2S przy użyciu uwierzytelniania RADIUS
 

@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a5fe5d6d4076c5d82d33737d05bb95ede0a89c00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4cf260620d4e907fdb9190a052155fa22f1c7985
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73822032"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398338"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Aplikacje wielodostępne z elastycznymi narzędziami bazy danych i zabezpieczeniami na poziomie wiersza
 
@@ -253,7 +253,7 @@ GO
 ```
 
 > [!TIP]
-> W złożonym projekcie może być konieczne dodanie predykatu na setkach tabel, co może być uciążliwe. Istnieje procedura składowana pomocnika, która automatycznie generuje zasady zabezpieczeń i dodaje predykat dla wszystkich tabel w schemacie. Aby uzyskać więcej informacji, zobacz wpis w blogu w temacie Stosowanie zabezpieczeń na [poziomie wiersza do wszystkich tabel — skrypt pomocniczy (blog).](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-to-all-tables-helper-script)
+> W złożonym projekcie może być konieczne dodanie predykatu na setkach tabel, co może być uciążliwe. Istnieje procedura składowana pomocnika, która automatycznie generuje zasady zabezpieczeń i dodaje predykat dla wszystkich tabel w schemacie. Aby uzyskać więcej informacji, zobacz wpis w blogu w temacie Stosowanie zabezpieczeń na [poziomie wiersza do wszystkich tabel — skrypt pomocniczy (blog).](https://techcommunity.microsoft.com/t5/sql-server/apply-row-level-security-to-all-tables-helper-script/ba-p/384360)
 
 Teraz po ponownym uruchomieniu przykładowej aplikacji dzierżawcy zobaczą tylko wiersze, które do nich należą. Ponadto aplikacja nie można wstawić wiersze, które należą do dzierżaw innych niż obecnie połączone z bazy danych niezależnego fragmentu. Ponadto aplikacja nie może zaktualizować Identyfikatora dzierżawy w wierszach, które może zobaczyć. Jeśli aplikacja próbuje zrobić albo, DbUpdateException jest wywoływana.
 

@@ -7,16 +7,16 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 01/31/2020
 ms.author: cherylmc
-ms.openlocfilehash: e995cba1c2ba06333d7bee507182693002cf4bbf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 299a69675eed1ba958c6d13cf447407450df2abb
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76989499"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411129"
 ---
 # <a name="what-is-azure-bastion"></a>Co to jest usługa Azure Bastion?
 
-Usługa Azure Bastion to nowa w pełni zarządzana przez platformę usługa PaaS, którą aprowizujesz w sieci wirtualnej. Zapewnia bezpieczną i bezproblemową łączność RDP/SSH z maszynami wirtualnymi bezpośrednio w witrynie Azure portal za pomocą protokołu SSL. Gdy łączysz się za pomocą usługi Azure Bastion, maszyny wirtualne nie muszą mieć publicznego adresu IP.
+Usługa Azure Bastion to nowa w pełni zarządzana przez platformę usługa PaaS, którą aprowizujesz w sieci wirtualnej. Zapewnia bezpieczną i bezproblemową łączność RDP/SSH z maszynami wirtualnymi bezpośrednio w witrynie Azure portal za pomocą protokołu TLS. Gdy łączysz się za pomocą usługi Azure Bastion, maszyny wirtualne nie muszą mieć publicznego adresu IP.
 
 Bastion zapewnia bezpieczną łączność RDP i SSH do wszystkich maszyn wirtualnych w sieci wirtualnej, w której jest aprowizowana. Korzystanie z usługi Azure Bastion chroni maszyny wirtualne przed udostępnianiem portów RDP/SSH na zewnątrz, zapewniając jednocześnie bezpieczny dostęp przy użyciu protokołu RDP/SSH. Za pomocą usługi Azure Bastion możesz połączyć się z maszyną wirtualną bezpośrednio z witryny Azure portal. Nie potrzebujesz dodatkowego klienta, agenta ani oprogramowania.
 
@@ -41,13 +41,13 @@ Na rysunku przedstawiono architekturę wdrożenia usługi Azure Bastion. Na tym 
 Dostępne są następujące funkcje:
 
 * **RDP i SSH bezpośrednio w witrynie Azure portal:** Możesz bezpośrednio uzyskać dostęp do sesji RDP i SSH bezpośrednio w witrynie Azure portal przy użyciu bezproblemowego środowiska jednym kliknięciem.
-* **Sesja zdalna przez SSL i przechodzenie zapory dla protokołu RDP/SSH:** Usługa Azure Bastion używa klienta sieci web opartego na języku HTML5, który jest automatycznie przesyłany strumieniowo do urządzenia lokalnego, dzięki czemu sesja RDP/SSH jest dostępna za pośrednictwem protokołu SSL na porcie 443, co umożliwia bezpieczne przechodzenie przez zapory firmowe.
+* **Sesja zdalna przez TLS i przechodzenie przez zaporę dla protokołu RDP/SSH:** Usługa Azure Bastion używa klienta sieci web opartego na języku HTML5, który jest automatycznie przesyłany strumieniowo do urządzenia lokalnego, dzięki czemu sesja RDP/SSH jest dostępna za pośrednictwem protokołu TLS na porcie 443, co umożliwia bezpieczne przechodzenie przez zapory firmowe.
 * **Nie jest wymagany publiczny adres IP na maszynie Wirtualnej platformy Azure:** Usługa Azure Bastion otwiera połączenie RDP/SSH z maszyną wirtualną platformy Azure przy użyciu prywatnego adresu IP na maszynie wirtualnej. Nie potrzebujesz publicznego adresu IP na maszynie wirtualnej.
 * **Nie ma kłopotów z zarządzaniem nsgs:** Azure Bastion to w pełni zarządzana usługa PaaS platformy z platformy Azure, która jest wewnętrznie wzmocniona, aby zapewnić bezpieczną łączność RDP/SSH. Nie trzeba stosować żadnych sieciowychg w podsieci Bastion platformy Azure. Ponieważ usługa Azure Bastion łączy się z maszynami wirtualnymi za pomocą prywatnego adresu IP, można skonfigurować sieciowe sieciowe, aby zezwalały na protokół RDP/SSH tylko z usługi Azure Bastion. Eliminuje to kłopotów z zarządzaniem sieciami sieciowymi za każdym razem, gdy trzeba bezpiecznie połączyć się z maszynami wirtualnymi.
 * **Ochrona przed skanowaniem portów:** Ponieważ nie trzeba udostępniać maszyn wirtualnych na publiczny Internet, maszyny wirtualne są chronione przed skanowaniem portów przez nieuczciwych i złośliwych użytkowników znajdujących się poza siecią wirtualną.
 * **Ochrona przed exploitami zero-day. Wzmocnienie tylko w jednym miejscu:** Usługa Azure Bastion to w pełni zarządzana przez platformę usługa PaaS. Ponieważ znajduje się na obwodzie sieci wirtualnej, nie musisz się martwić o wzmocnienie każdej maszyny wirtualnej w sieci wirtualnej. Platforma Azure chroni przed exploitami zero-day, utrzymując platformę Azure Bastion wzmocnioną i zawsze aktualną.
 
-## <a name="faq"></a>Najczęściej zadawane pytania
+## <a name="faq"></a>Często zadawane pytania
 
 [!INCLUDE [Bastion FAQ](../../includes/bastion-faq-include.md)]
 

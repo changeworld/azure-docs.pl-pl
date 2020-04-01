@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
-ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1a3ff32956e8a8530684ba7f300f06d0c032227
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265885"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421127"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopiowanie danych z systemu SAP HANA przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
@@ -188,7 +188,7 @@ Aby skopiować dane z sap HANA, następujące właściwości są obsługiwane w 
 |:--- |:--- |:--- |
 | type | Właściwość typu źródła działania kopiowania musi być ustawiona na: **SapHanaSource** | Tak |
 | query | Określa kwerendę SQL do odczytu danych z wystąpienia SAP HANA. | Tak |
-| partitionOptions (opcje partycji) | Określa opcje partycjonowania danych używane do pozyskiwania danych z sap HANA. Dowiedz się więcej z [kopiowania równoległego z sekcji SAP HANA.](#parallel-copy-from-sap-hana)<br>Wartości zezwalania to: **Brak** (domyślnie), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Dowiedz się więcej z [kopiowania równoległego z sekcji SAP HANA.](#parallel-copy-from-sap-hana) `PhysicalPartitionsOfTable`można używać tylko podczas kopiowania danych z tabeli, ale nie kwerendy. <br>Gdy opcja partycji jest włączona `None`(czyli nie), stopień równoległości równoczesnych ładowania danych z [`parallelCopies`](copy-activity-performance.md#parallel-copy) SAP HANA jest kontrolowany przez ustawienie w działaniu kopiowania. | False |
+| partitionOptions (opcje partycji) | Określa opcje partycjonowania danych używane do pozyskiwania danych z sap HANA. Dowiedz się więcej z [kopiowania równoległego z sekcji SAP HANA.](#parallel-copy-from-sap-hana)<br>Wartości zezwalania to: **Brak** (domyślnie), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Dowiedz się więcej z [kopiowania równoległego z sekcji SAP HANA.](#parallel-copy-from-sap-hana) `PhysicalPartitionsOfTable`można używać tylko podczas kopiowania danych z tabeli, ale nie kwerendy. <br>Gdy opcja partycji jest włączona `None`(czyli nie), stopień równoległości równoczesnych ładowania danych z [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) SAP HANA jest kontrolowany przez ustawienie w działaniu kopiowania. | False |
 | podziałY | Określ grupę ustawień partycjonowania danych.<br>Zastosuj, gdy `SapHanaDynamicRange`opcja partycji jest . | False |
 | partitionColumnName | Określ nazwę kolumny źródłowej, która będzie używana przez partycję do kopiowania równoległego. Jeśli nie zostanie określony, indeks lub klucz podstawowy tabeli jest wykrywany automatycznie i używany jako kolumna partycji.<br>Zastosuj, gdy opcja `SapHanaDynamicRange`partycji jest . Jeśli używasz kwerendy do pobierania danych `?AdfHanaDynamicRangePartitionCondition` źródłowych, należy podłączyć w klauzuli WHERE. Zobacz przykład [w kopiowanie równoległe z sekcji SAP HANA.](#parallel-copy-from-sap-hana) | Tak podczas `SapHanaDynamicRange` korzystania z partycji. |
 | rozmiar pakietu | Określa rozmiar pakietu sieciowego (w kilobajtach) do dzielenia danych na wiele bloków. Jeśli masz dużą ilość danych do skopiowania, zwiększenie rozmiaru pakietu może zwiększyć szybkość odczytu z SAP HANA w większości przypadków. Podczas dostosowywania rozmiaru pakietu zaleca się testowanie wydajności. | Nie.<br>Wartość domyślna to 2048 (2MB). |
@@ -233,7 +233,7 @@ Jeśli używasz `RelationalSource` wpisanego źródła kopii, jest ono nadal obs
 
 ![Zrzut ekranu przedstawiający opcje partycji](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
 
-Po włączeniu kopiowania podzielonego na partycje usługa Data Factory uruchamia równoległe kwerendy względem źródła SAP HANA w celu pobierania danych przez partycje. Stopień równoległy jest [`parallelCopies`](copy-activity-performance.md#parallel-copy) kontrolowany przez ustawienie działania kopiowania. Na przykład jeśli `parallelCopies` ustawisz cztery, usługa Data Factory jednocześnie generuje i uruchamia cztery kwerendy na podstawie określonej opcji partycji i ustawień, a każda kwerenda pobiera część danych z sap HANA.
+Po włączeniu kopiowania podzielonego na partycje usługa Data Factory uruchamia równoległe kwerendy względem źródła SAP HANA w celu pobierania danych przez partycje. Stopień równoległy jest [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kontrolowany przez ustawienie działania kopiowania. Na przykład jeśli `parallelCopies` ustawisz cztery, usługa Data Factory jednocześnie generuje i uruchamia cztery kwerendy na podstawie określonej opcji partycji i ustawień, a każda kwerenda pobiera część danych z sap HANA.
 
 Zaleca się włączenie kopiowania równoległego z partycjonowania danych, zwłaszcza podczas pozyskiwania dużej ilości danych z sap HANA. Poniżej przedstawiono sugerowane konfiguracje dla różnych scenariuszy. Podczas kopiowania danych do magazynu danych opartych na plikach zaleca się zapisywanie w folderze jako wielu plików (określanie tylko nazwy folderu), w którym to przypadku wydajność jest lepsza niż zapisywanie do jednego pliku.
 

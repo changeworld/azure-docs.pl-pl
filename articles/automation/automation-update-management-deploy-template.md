@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/27/2020
-ms.openlocfilehash: a8b382663b56d7481da876979e33194fb0ac533d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: e69f3d7350d0da9f364983eae0935532b576bd76
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77925802"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411471"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Dołączane rozwiązanie do zarządzania aktualizacjami przy użyciu szablonu usługi Azure Resource Manager
 
@@ -25,7 +25,7 @@ Za pomocą [szablonów usługi Azure Resource Manager](../azure-resource-manager
 
 Szablon nie automatyzuje dołączania jednej lub więcej maszyn wirtualnych platformy Azure lub innych niż Azure.
 
-Jeśli masz już obszar roboczy usługi Log Analytics i konto automatyzacji wdrożone w obsługiwanym regionie w ramach subskrypcji, nie są one połączone, a obszar roboczy nie ma jeszcze wdrożonego rozwiązania Zarządzanie aktualizacjami, przy użyciu tego szablonu pomyślnie tworzy i wdraża rozwiązanie do zarządzania aktualizacjami. 
+Jeśli masz już obszar roboczy usługi Log Analytics i konto automatyzacji wdrożone w obsługiwanym regionie w ramach subskrypcji, nie są one połączone, a obszar roboczy nie ma jeszcze wdrożonego rozwiązania zarządzanie aktualizacjami, przy użyciu tego szablonu pomyślnie tworzy łącze i wdraża rozwiązanie do zarządzania aktualizacjami. 
 
 ## <a name="api-versions"></a>Wersje interfejsu API
 
@@ -56,6 +56,7 @@ Następujące parametry w szablonie są ustawiane z wartością domyślną dla o
 
 * sku - domyślnie nowa warstwa cenowa Per-GB wydana w modelu cenowym z kwietnia 2018 r.
 * przechowywanie danych — domyślnie trzydzieści dni
+* rezerwacja pojemności — domyślnie 100 GB
 
 >[!WARNING]
 >Jeśli tworzenie lub konfigurowanie obszaru roboczego usługi Log Analytics w ramach subskrypcji, która wybrała nowy model cenowy z kwietnia 2018 r., jedyną prawidłową warstwą cenową usługi Log Analytics jest **PerGB2018**.
@@ -79,7 +80,7 @@ Następujące parametry w szablonie są ustawiane z wartością domyślną dla o
                 "description": "Workspace name"
             }
         },
-        "pricingTier": {
+        "sku": {
             "type": "string",
             "allowedValues": [
                 "pergb2018",
@@ -168,7 +169,8 @@ Następujące parametry w szablonie są ustawiane z wartością domyślną dla o
             "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
-                "sku": { 
+                "sku": {
+                    "Name": "[parameters('sku')]",
                     "name": "CapacityReservation",
                     "capacityReservationLevel": 100
                 },
@@ -231,13 +233,13 @@ Następujące parametry w szablonie są ustawiane z wartością domyślną dla o
     }
     ```
 
-2. Edytuj szablon, aby spełnić wymagania.
+2. Edytuj szablon, aby spełnić wymagania. Należy rozważyć utworzenie [pliku parametrów Menedżera zasobów](../azure-resource-manager/templates/parameter-files.md) zamiast przekazywania parametrów jako wartości wbudowanych.
 
 3. Zapisz ten plik jako deployUMSolutiontemplate.json w folderze lokalnym.
 
 4. Wszystko jest teraz gotowe do wdrożenia tego szablonu. Można użyć programu PowerShell lub interfejsu wiersza polecenia platformy Azure. Po wyświetleniu monitu o podanie nazwy konta obszaru roboczego i usługi Automation podaj nazwę, która jest globalnie unikatowa we wszystkich subskrypcjach platformy Azure.
 
-    **Powershell**
+    **PowerShell**
 
     ```powershell
     New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deployUMSolutiontemplate.json

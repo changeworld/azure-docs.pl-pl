@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 1d399ffec2cd702dcfa39310803bc780b85bfde1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8124e9860ba5703e96f96c90bc0cf37e42baf9c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77187457"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398354"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Wysyłanie zdarzeń do centrów zdarzeń platformy Azure lub odbieranie ich przy użyciu usługi .NET Core (Microsoft.Azure.EventHubs)
 Ten przewodnik Szybki start pokazuje sposób wysyłania zdarzeń do centrum zdarzeń i odbierania ich z usługi przy użyciu biblioteki **Microsoft.Azure.EventHubs** .NET Core.
 
 > [!WARNING]
-> Ten przewodnik Szybki start używa starego pakietu **Microsoft.Azure.EventHubs.** Aby uzyskać przewodnik Szybki start korzystający z najnowszej biblioteki **Azure.Messaging.EventHubs,** zobacz [Wysyłanie i odbieranie zdarzeń przy użyciu biblioteki Azure.Messaging.EventHubs](get-started-dotnet-standard-send-v2.md). Aby przenieść aplikację ze starej biblioteki na nową, zobacz [Przewodnik do migracji z witryny Microsoft.Azure.EventHubs do usługi Azure.Messaging.EventHubs.](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)
+> Ten przewodnik Szybki start używa starego pakietu **Microsoft.Azure.EventHubs.** Aby uzyskać przewodnik Szybki start korzystający z najnowszej biblioteki **Azure.Messaging.EventHubs,** zobacz [Wysyłanie i odbieranie zdarzeń przy użyciu biblioteki Azure.Messaging.EventHubs](get-started-dotnet-standard-send-v2.md). Aby przenieść aplikację ze starej biblioteki na nową, zobacz [Przewodnik do migracji z witryny Microsoft.Azure.EventHubs do usługi Azure.Messaging.EventHubs.](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Jeśli jesteś nowy w usłudze Azure Event Hubs, zobacz [Centrum zdarzeń omówienie](event-hubs-about.md) przed rozpoczęciem tego przewodnika Szybki start. 

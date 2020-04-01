@@ -1,18 +1,21 @@
 ---
 title: Opis blokowania zasobów
 description: Dowiedz się więcej o opcjach blokowania w planach platformy Azure, aby chronić zasoby podczas przypisywania planu.
-ms.date: 02/27/2020
+ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: b810e8d4ddd263f9e651704d1bf9b785ce0202db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86897ae6665f7a339b51aaae5f1c00144d8b7309
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78199703"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437746"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Opis blokowania zasobów w planach platformy Azure
 
 Tworzenie spójnych środowisk na dużą skalę jest naprawdę cenne tylko wtedy, gdy istnieje mechanizm, aby utrzymać tę spójność. W tym artykule wyjaśniono, jak działa blokowanie zasobów w planach platformy Azure. Aby zobaczyć przykład blokowania zasobów i stosowania _przypisań odmów,_ zobacz samouczek [ochrony nowych zasobów.](../tutorials/protect-new-resources.md)
+
+> [!NOTE]
+> Blokady zasobów wdrożone przez plany platformy Azure są stosowane tylko do zasobów wdrożonych przez przypisanie planu. Istniejące zasoby, takie jak te w grupach zasobów, które już istnieją, nie mają blokad dodanych do nich.
 
 ## <a name="locking-modes-and-states"></a>Tryby i stany blokowania
 

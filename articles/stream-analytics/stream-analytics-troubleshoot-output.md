@@ -6,46 +6,38 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 305632a0faa1eb7e217e86d36c5159e557df7aaf
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79254289"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409250"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Rozwiązywanie problemów z danymi wyjściowymi usługi Azure Stream Analytics
 
-Na tej stronie opisano typowe problemy z połączeniami wyjściowymi oraz sposób rozwiązywania problemów z nimi i rozwiązywania ich.
+W tym artykule opisano typowe problemy z połączeniami wyjściowymi usługi Azure Stream Analytics, jak rozwiązywać problemy z danymi wyjściowymi i jak rozwiązać problemy. Wiele kroków rozwiązywania problemów wymaga włączenia dzienników diagnostycznych dla zadania usługi Usługi Stream Analytics. Jeśli nie masz włączonych dzienników diagnostycznych, zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu dzienników diagnostycznych](stream-analytics-job-diagnostic-logs.md).
 
 ## <a name="output-not-produced-by-job"></a>Produkcja nieprodukcowa według pracy
+
 1.  Sprawdź łączność z wyjściami za pomocą przycisku **Testuj połączenie** dla każdego wyjścia.
 
 2.  Spójrz na [**monitorowanie metryki**](stream-analytics-monitoring.md) **na** monitorze kartę. Ponieważ wartości są agregowane, metryki są opóźnione o kilka minut.
-    - Jeśli zdarzenia wejściowe > 0, zadanie jest w stanie odczytać dane wejściowe. Jeśli zdarzenia wejściowe nie są > 0, wówczas:
-      - Aby sprawdzić, czy źródło danych zawiera prawidłowe dane, sprawdź to za pomocą [Eksploratora usługi Service Bus](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a). Ta kontrola ma zastosowanie, jeśli zadanie używa Centrum zdarzeń jako danych wejściowych.
-      - Sprawdź, czy format serializacji danych i kodowanie danych są zgodnie z oczekiwaniami.
-      - Jeśli zadanie korzysta z Centrum zdarzeń, sprawdź, czy treść wiadomości ma *wartość Null*.
+   * Jeśli zdarzenia wejściowe są większe niż 0, zadanie jest w stanie odczytać dane wejściowe. Jeśli zdarzenia wejściowe nie są większe niż 0, występuje problem z wejściem pracy. Zobacz [Rozwiązywanie problemów z połączeniami wejściowymi,](stream-analytics-troubleshoot-input.md) aby dowiedzieć się, jak rozwiązywać problemy z połączeniem wejściowym.
+   * Jeśli błędy konwersji danych są większe niż 0 i wspinaczka, zobacz [Błędy danych usługi Azure Stream Analytics, aby](data-errors.md) uzyskać szczegółowe informacje o błędach konwersji danych.
+   * Jeśli błędy środowiska uruchomieniowego są większe niż 0, zadanie może odbierać dane, ale generuje błędy podczas przetwarzania kwerendy. Aby znaleźć błędy, przejdź do [dzienników inspekcji](../azure-resource-manager/management/view-activity-logs.md) i filtruj stan *Niepowodzenie.*
+   * Jeśli InputEvents jest większa niż 0, a OutputEvents jest równe 0, jedna z następujących czynności jest spełniony:
+      * W wyniku przetwarzania zapytania nie zostało zwrócone żadne zdarzenie wyjściowe.
+      * Zdarzenia lub pola mogą być zniekształcone, co powoduje zero danych wyjściowych po przetworzeniu kwerendy.
+      * Zadanie nie może wypchnąć danych do ujścia danych wyjściowych ze względu na łączność lub uwierzytelnianie.
 
-    - Jeśli błędy konwersji danych > 0 i wspinaczki, mogą być spełnione następujące warunki:
-      - Zdarzenie danych wyjściowych nie jest zgodne ze schematem docelowej akcesji.
-      - Schemat zdarzenia może nie odpowiadać zdefiniowanemu lub oczekiwanemu schematowi zdarzeń w kwerendzie.
-      - Typy danych niektórych pól w zdarzeniu mogą nie odpowiadać oczekiwaniom.
-
-    - Jeśli błędy środowiska uruchomieniowego > 0, oznacza to, że zadanie może odbierać dane, ale generuje błędy podczas przetwarzania kwerendy.
-      - Aby znaleźć błędy, przejdź do [dzienników inspekcji](../azure-resource-manager/management/view-activity-logs.md) i filtruj stan *Niepowodzenie.*
-
-    - Jeśli InputEvents > 0 i OutputEvents = 0, oznacza to, że jedna z następujących czynności jest spełniony:
-      - W wyniku przetwarzania zapytania nie zostało zwrócone żadne zdarzenie wyjściowe.
-      - Zdarzenia lub jego pola mogą być zniekształcone, co powoduje zero danych wyjściowych po przetworzeniu kwerendy.
-      - Zadanie nie może wypchnąć danych do ujścia danych wyjściowych ze względu na łączność lub uwierzytelnianie.
-
-    - We wszystkich wcześniej wymienionych przypadkach błędów komunikaty dziennika operacji wyjaśnić dodatkowe szczegóły (w tym co się dzieje), z wyjątkiem przypadków, gdy logika kwerendy odfiltrowane wszystkie zdarzenia. Jeśli przetwarzanie wielu zdarzeń generuje błędy, usługa Stream Analytics rejestruje pierwsze trzy komunikaty o błędach tego samego typu w ciągu 10 minut do dzienników operacji. Następnie pomija dodatkowe identyczne błędy z komunikatem z napisem "Błędy występują zbyt szybko, są one pomijane."
+   We wszystkich wcześniej wymienionych przypadkach błędów komunikaty dziennika operacji wyjaśnić dodatkowe szczegóły (w tym co się dzieje), z wyjątkiem przypadków, gdy logika kwerendy odfiltrowane wszystkie zdarzenia. Jeśli przetwarzanie wielu zdarzeń generuje błędy, błędy są agregowane co 10 minut.
 
 ## <a name="job-output-is-delayed"></a>Job output is delayed (Dane wyjściowe zadania są opóźnione)
 
 ### <a name="first-output-is-delayed"></a>Pierwsze wyjście jest opóźnione
+
 Po uruchomieniu zadania usługi Stream Analytics odczytywane są zdarzenia wejściowe, ale w pewnych okolicznościach generowanie danych wyjściowych może być opóźnione.
 
 Duże wartości czasu w elementach zapytania czasowego może przyczynić się do opóźnienia danych wyjściowych. Aby uzyskać poprawne dane wyjściowe w dużych oknach czasu, zadanie przesyłania strumieniowego uruchamia się przez odczyt danych z ostatniego możliwego czasu (do siedmiu dni temu), aby wypełnić okno czasu. W tym czasie nie jest produkowanych żadnych danych wyjściowych, dopóki nie zostanie ukończony odczyt zaległych zdarzeń wejściowych. Ten problem może pojawić się, gdy system uaktualnia zadania przesyłania strumieniowego, a tym samym uruchom ponownie zadanie. Takie ulepszenia zazwyczaj występują raz na kilka miesięcy.
@@ -69,6 +61,7 @@ Te czynniki mają wpływ na terminowość pierwszego generowanego wyjścia:
    - Dla funkcji analitycznych dane wyjściowe są generowane dla każdego zdarzenia, nie ma opóźnienia.
 
 ### <a name="output-falls-behind"></a>Produkcja pozostaje w tyle
+
 Podczas normalnego działania zadania, jeśli okaże się, że dane wyjściowe zadania są w tyle (dłuższe i dłuższe opóźnienia), można wskazać główne przyczyny, badając następujące czynniki:
 - Czy zlew w dolnym biegu rzeki jest ograniczany
 - Czy źródło nadrzędne jest ograniczane
@@ -88,11 +81,11 @@ Należy zwrócić uwagę na następujące obserwacje podczas konfigurowania IGNO
 
 * Nie można ustawić IGNORE_DUP_KEY klucza podstawowego lub unikatowego ograniczenia, które używa ALTER INDEX, należy upuścić i odtworzyć indeks.  
 * Można ustawić opcję IGNORE_DUP_KEY przy użyciu ALTER INDEX dla unikatowego indeksu, który różni się od ograniczenia KLUCZ PODSTAWOWY/UNIKATOWY i został utworzony przy użyciu definicji CREATE INDEX lub INDEX.  
+
 * IGNORE_DUP_KEY nie ma zastosowania do indeksów magazynu kolumn, ponieważ nie można wymusić unikatowość w takich indeksach.  
 
 ## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Nazwy kolumn są małe litery przez usługę Azure Stream Analytics
 Podczas korzystania z oryginalnego poziomu zgodności (1.0), usługa Azure Stream Analytics służy do zmiany nazw kolumn na małe litery. To zachowanie zostało ustalone w późniejszych poziomach zgodności. Aby zachować sprawę, zalecamy klientom przejście do poziomu zgodności 1.1 i nowszych. Więcej informacji na temat [poziomu zgodności dla zadań usługi Azure Stream Analytics można](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)znaleźć .
-
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 

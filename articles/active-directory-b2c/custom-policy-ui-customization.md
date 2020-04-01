@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 87c3a3a904705b9fcb702c4745c4c80a4b447e69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e50d6d0623e87dfa68a7cc9744c3f595ff0179c6
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476726"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396380"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Dostosowywanie interfejsu użytkownika aplikacji przy użyciu zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Wykonaj kroki opisane w [wprowadzenie do zasad niestandardowych](custom-policy-g
 
 [!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-## <a name="4-modify-the-extensions-file"></a>4. Modyfikowanie pliku rozszerzeń
+### <a name="4-modify-the-extensions-file"></a>4. Modyfikowanie pliku rozszerzeń
 
 Aby skonfigurować dostosowywanie interfejsu użytkownika, skopiuj **element ContentDefinition** i jego elementy podrzędne z pliku podstawowego do pliku rozszerzeń.
 
@@ -60,9 +60,9 @@ Aby skonfigurować dostosowywanie interfejsu użytkownika, skopiuj **element Con
 
 1. Zapisz plik rozszerzeń.
 
-## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. Przesyłaj i testuj zaktualizowane zasady niestandardowe
+### <a name="5-upload-and-test-your-updated-custom-policy"></a>5. Przesyłaj i testuj zaktualizowane zasady niestandardowe
 
-### <a name="51-upload-the-custom-policy"></a>5.1 Przesyłanie zasad niestandardowych
+#### <a name="51-upload-the-custom-policy"></a>5.1 Przesyłanie zasad niestandardowych
 
 1. Upewnij się, że używasz katalogu, który zawiera dzierżawę usługi Azure AD B2C, wybierając filtr **subskrypcja katalog +** w górnym menu i wybierając katalog zawierający dzierżawę.
 1. Wyszukaj i wybierz **pozycję Azure AD B2C**.
@@ -70,7 +70,7 @@ Aby skonfigurować dostosowywanie interfejsu użytkownika, skopiuj **element Con
 1. Wybierz **pozycję Przekaż zasady niestandardowe**.
 1. Przekaż plik rozszerzeń, który został wcześniej zmieniony.
 
-### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 Przetestuj zasady niestandardowe za pomocą **funkcji Uruchom teraz**
+#### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 Przetestuj zasady niestandardowe za pomocą **funkcji Uruchom teraz**
 
 1. Wybierz przekazane zasady, a następnie wybierz pozycję **Uruchom teraz**.
 1. Powinieneś być w stanie zarejestrować się przy użyciu adresu e-mail.

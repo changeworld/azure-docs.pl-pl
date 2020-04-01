@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/20/2019
+ms.date: 03/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 8605dae05b7f5270513b645367248090006c04a8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: b08253104eeb61f6bb09fde507473d235a996494
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384912"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422678"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Szybki start: tworzenie obszaru nazw usługi Service Bus i kolejki przy użyciu szablonu usługi Azure Resource Manager
 
@@ -63,9 +63,27 @@ Za pomocą tego szablonu można wdrożyć obszar nazw usługi Service Bus z kole
 
 [Kolejki usługi Service Bus](service-bus-queues-topics-subscriptions.md#queues) oferują dostarczanie wiadomości FIFO (First In, First Out) jednemu lub większej liczbie konkurujących konsumentów.
 
-Aby automatycznie uruchomić wdrożenie, kliknij poniższy przycisk:
+Aby automatycznie uruchomić wdrożenie, kliknij następujący przycisk: Utwórz nową grupę zasobów dla wdrożenia, aby można było łatwo wyczyścić później.
 
 [![Wdrażanie na platformie Azure](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
+
+## <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
+
+1. Wybierz **powiadomienia** u góry, aby zobaczyć stan wdrożenia. Poczekaj, aż wdrożenie zakończy się pomyślnie. Następnie wybierz pozycję **Przejdź do grupy zasobów** w komunikacie z powiadomieniem, aby przejść do strony dla grupy zasobów zawierającej obszar nazw usługi Service Bus. 
+
+    ![Powiadomienie z wdrożenia](./media/service-bus-resource-manager-namespace-queue/notification.png)
+2. Upewnij się, że na liście zasobów jest widoczna przestrzeń nazw usługi Service Bus. 
+
+    ![Grupa zasobów — obszar nazw](./media/service-bus-resource-manager-namespace-queue/resource-group-namespace.png)
+3. Wybierz obszar nazw z listy, aby wyświetlić stronę **Obszar nazw magistrali usług.** 
+
+## <a name="cleanup-resources"></a>Oczyszczanie zasobów
+
+1. W witrynie Azure Portal przejdź do strony **Grupa zasobów** dla grupy zasobów.
+2. Wybierz pozycję **Usuń grupę zasobów** na pasku narzędzi. 
+3. Wpisz nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**. 
+
+    ![Grupa zasobów — usuwanie](./media/service-bus-resource-manager-namespace-queue/resource-group-delete.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

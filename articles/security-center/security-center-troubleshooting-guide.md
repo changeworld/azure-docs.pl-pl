@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 1c751fc31ba9066cf49eabbb86d37eda230c9c98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5a85f8ae1564d724b826c809261e56577f4783a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062887"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435526"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów z usługą Azure Security Center
 
 Ten przewodnik jest przeznaczony dla specjalistów IT, analityków zabezpieczeń informacji oraz administratorów chmury, których organizacje używają usługi Azure Security Center i muszą rozwiązywać problemy związane z usługą Azure Security Center.
 
-Usługa Security Center używa agenta monitorowania firmy Microsoft do zbierania i przechowywania danych. Aby dowiedzieć się więcej, zobacz [Migracja platformy usługi Azure Security Center](security-center-platform-migration.md). Informacje przedstawione w tym artykule reprezentują funkcję Security Center po przejściu do programu Microsoft Monitoring Agent.
+Usługa Security Center używa agenta usługi Log Analytics do zbierania i przechowywania danych. Aby dowiedzieć się więcej, zobacz [Migracja platformy usługi Azure Security Center](security-center-platform-migration.md). Informacje zawarte w tym artykule reprezentują funkcje usługi Security Center po przejściu do agenta usługi Log Analytics.
 
 ## <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -52,23 +52,23 @@ W większości przypadków rozwiązywanie problemów w usłudze Security Center 
 
 Dziennik inspekcji zawiera informacje o wszystkich operacjach zapisu (PUT, POST, DELETE) wykonywanych względem zasobów, ale nie zawiera informacji dotyczących operacji odczytu (GET).
 
-## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
+## <a name="log-analytics-agent"></a>Agent usługi Log Analytics
 
-Usługa Security Center używa agenta monitorowania firmy Microsoft — jest to ten sam agent używany przez usługę Azure Monitor — do zbierania danych zabezpieczeń z maszyn wirtualnych platformy Azure. Po włączeniu zbierania danych i poprawnym zainstalowaniu agenta na maszynie docelowej powinny być wykonywane poniższe procesy:
+Usługa Security Center używa agenta usługi Log Analytics — jest to ten sam agent używany przez usługę Azure Monitor — do zbierania danych zabezpieczeń z maszyn wirtualnych platformy Azure. Po włączeniu zbierania danych i poprawnym zainstalowaniu agenta na maszynie docelowej powinny być wykonywane poniższe procesy:
 
 * HealthService.exe
 
-Po otwarciu konsoli zarządzania usługami (services.msc) będzie również widoczna uruchomiona usługa Microsoft Monitoring Agent (jak pokazano poniżej):
+Po otwarciu konsoli zarządzania usługami (services.msc) zostanie również wyświetlona usługa agenta usługi Usługi Usługi Analizy dzienników uruchomiona w sposób pokazany poniżej:
 
 ![Usługi](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-Aby sprawdzić, która wersja agenta jest używana, otwórz **Menedżera zadań**, na karcie **Procesy** znajdź kartę **Usługa Microsoft Monitoring Agent**, kliknij ją prawym przyciskiem myszy, a następnie kliknij pozycję **Właściwości**. Na karcie **Szczegóły** sprawdź wersję pliku, jak pokazano poniżej:
+Aby zobaczyć, która wersja agenta jest dostępna, otwórz **Menedżera zadań**, na karcie **Procesy** znajdź **usługę agenta analizy dzienników**, kliknij go prawym przyciskiem myszy i kliknij polecenie **Właściwości**. Na karcie **Szczegóły** sprawdź wersję pliku, jak pokazano poniżej:
 
 ![Plik](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
-## <a name="microsoft-monitoring-agent-installation-scenarios"></a>Scenariusze instalacji programu Microsoft Monitoring Agent
+## <a name="log-analytics-agent-installation-scenarios"></a>Scenariusze instalacji agenta usługi Log Analytics
 
-Istnieją dwa scenariusze instalacji, które mogą wygenerować różne wyniki podczas instalowania programu Microsoft Monitoring Agent na komputerze. Obsługiwane scenariusze są następujące:
+Istnieją dwa scenariusze instalacji, które mogą dawać różne wyniki podczas instalowania agenta usługi Log Analytics na komputerze. Obsługiwane scenariusze są następujące:
 
 * **Agent instalowany automatycznie za pomocą usługi Security Center**: w tym scenariuszu możliwe będzie wyświetlanie alertów w obu lokalizacjach — usłudze Security Center i funkcji przeszukiwania dzienników. Otrzymasz powiadomienia e-mail na adres e-mail skonfigurowany w zasadach zabezpieczeń dla subskrypcji, do której należy zasób.
 
@@ -83,16 +83,16 @@ Istnieją dwa scenariusze instalacji, które mogą wygenerować różne wyniki p
 
 | Stan monitorowania | Opis | Kroki rozwiązywania problemów |
 |---|---|---|
-| Oczekująca instalacja agenta | Instalacja programu Microsoft Monitoring Agent jest nadal uruchomiona.  Instalacja może zająć do kilku godzin. | Poczekaj na zakończenie automatycznej instalacji. |
-| Stan zasilania — wyłączone | Maszyna wirtualna została zatrzymana.  Program Microsoft Monitoring Agent można zainstalować tylko na maszynie wirtualnej, która jest uruchomiona. | Uruchom ponownie maszynę wirtualną. |
-| Brak agenta maszyny wirtualnej platformy Azure lub jest on nieprawidłowy | Program Microsoft Monitoring Agent nie został jeszcze zainstalowany.  Aby usługa Security Center mogła zainstalować rozszerzenie, wymagany jest prawidłowy agent maszyny wirtualnej platformy Azure. | Zainstaluj, ponownie zainstaluj lub uaktualnij agenta maszyny wirtualnej platformy Azure na maszynie wirtualnej. |
-| Maszyna wirtualna nie jest w stanie gotowości do instalacji  | Program Microsoft Monitoring Agent nie jest jeszcze zainstalowany, ponieważ maszyna wirtualna nie jest gotowa do instalacji. Maszyna wirtualna nie jest gotowa do instalacji ze względu na problem związany z agentem maszyny wirtualnej lub aprowizacją maszyny wirtualnej. | Sprawdź stan maszyny wirtualnej. Wróć do opcji **Maszyny wirtualne** w portalu i wybierz maszynę wirtualną, aby uzyskać informacje o stanie. |
-|Instalacja nie powiodła się. Wystąpił błąd ogólny | Program Microsoft Monitoring Agent został zainstalowany, ale zakończył się niepowodzeniem ze względu na błąd. | [Zainstaluj rozszerzenie ręcznie](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) lub odinstaluj rozszerzenie, a usługa Security Center spróbuje je zainstalować ponownie. |
-| Instalacja nie powiodła się. Agent lokalny jest już zainstalowany | Instalacja programu Microsoft Monitoring Agent zakończyła się niepowodzeniem. Usługa Security Center zidentyfikowała agenta lokalnego (log analytics lub system center operations manager) już zainstalowanego na maszynie wirtualnej. Aby uniknąć konfiguracji wielokrotnej, w której maszyna wirtualna wysyła raporty do dwóch oddzielnych obszarów roboczych, instalacja programu Microsoft Monitoring Agent została zatrzymana. | Istnieją dwa sposoby rozwiązania problemu: [ręczna instalacja rozszerzenia](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) oraz połączenie go z żądanym obszarem roboczym. Lub też ustawienie żądanego obszaru roboczego jako domyślnego obszaru roboczego oraz włączenie automatycznej aprowizacji agenta.  Zobacz [włączanie automatycznej aprowizacji](security-center-enable-data-collection.md). |
-| Agent nie może nawiązać połączenia z obszarem roboczym | Program Microsoft Monitoring Agent został zainstalowany, ale jego działanie zakończyło się niepowodzeniem ze względu na łączność sieciową.  Sprawdź, czy masz dostęp do Internetu oraz czy skonfigurowano prawidłowy serwer proxy HTTP dla agenta. | Zobacz wymagania sieciowe agenta monitorowania. |
-| Agent podłączony do brakującego lub nieznanego obszaru roboczego | Usługa Security Center zidentyfikowała, że agent monitorujący firmy Microsoft zainstalowany na maszynie wirtualnej jest połączony z obszarem roboczym, do którego nie ma dostępu. | Może do tego dojść w dwóch przypadkach. Obszar roboczy został usunięty i już nie istnieje. Zainstaluj agenta ponownie z prawidłowym obszarem roboczym lub odinstaluj agenta i pozwól usłudze Security Center zakończyć instalację z automatyczną aprowizacją. W drugim przypadku obszar roboczy jest częścią subskrypcji, do której usługa Security Center nie ma uprawnień. Usługa Security Center wymaga od subskrypcji zezwalania dostawcy zasobów usługi Microsoft Security na dostęp. Aby włączyć usługę, zarejestruj subskrypcję u dostawcy zasobów usługi Microsoft Security. Możesz to zrobić przy użyciu interfejsu API, programu PowerShell, portalu lub poprzez odfiltrowanie subskrypcji w pulpicie nawigacyjnym **Przegląd** usługi Security Center. Aby uzyskać więcej informacji, zobacz [Dostawcy zasobów i ich typy](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
+| Oczekująca instalacja agenta | Instalacja agenta usługi Log Analytics jest nadal uruchomiona.  Instalacja może zająć do kilku godzin. | Poczekaj na zakończenie automatycznej instalacji. |
+| Stan zasilania — wyłączone | Maszyna wirtualna została zatrzymana.  Agent usługi Log Analytics można zainstalować tylko na uruchomionej maszynie wirtualnej. | Uruchom ponownie maszynę wirtualną. |
+| Brak agenta maszyny wirtualnej platformy Azure lub jest on nieprawidłowy | Agent usługi Log Analytics nie jest jeszcze zainstalowany.  Aby usługa Security Center mogła zainstalować rozszerzenie, wymagany jest prawidłowy agent maszyny wirtualnej platformy Azure. | Zainstaluj, ponownie zainstaluj lub uaktualnij agenta maszyny wirtualnej platformy Azure na maszynie wirtualnej. |
+| Maszyna wirtualna nie jest w stanie gotowości do instalacji  | Agent usługi Log Analytics nie jest jeszcze zainstalowany, ponieważ maszyna wirtualna nie jest gotowa do instalacji. Maszyna wirtualna nie jest gotowa do instalacji ze względu na problem związany z agentem maszyny wirtualnej lub aprowizacją maszyny wirtualnej. | Sprawdź stan maszyny wirtualnej. Wróć do opcji **Maszyny wirtualne** w portalu i wybierz maszynę wirtualną, aby uzyskać informacje o stanie. |
+|Instalacja nie powiodła się. Wystąpił błąd ogólny | Agent usługi Log Analytics został zainstalowany, ale nie powiodło się z powodu błędu. | [Zainstaluj rozszerzenie ręcznie](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) lub odinstaluj rozszerzenie, a usługa Security Center spróbuje je zainstalować ponownie. |
+| Instalacja nie powiodła się. Agent lokalny jest już zainstalowany | Instalacja agenta usługi Log Analytics nie powiodła się. Usługa Security Center zidentyfikowała agenta lokalnego (log analytics lub system center operations manager) już zainstalowanego na maszynie wirtualnej. Aby uniknąć konfiguracji multi-homing, gdzie maszyna wirtualna jest raportowanie do dwóch oddzielnych obszarów roboczych, instalacja agenta usługi Log Analytics zatrzymany. | Istnieją dwa sposoby rozwiązania problemu: [ręczna instalacja rozszerzenia](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) oraz połączenie go z żądanym obszarem roboczym. Lub też ustawienie żądanego obszaru roboczego jako domyślnego obszaru roboczego oraz włączenie automatycznej aprowizacji agenta.  Zobacz [włączanie automatycznej aprowizacji](security-center-enable-data-collection.md). |
+| Agent nie może nawiązać połączenia z obszarem roboczym | Agent usługi Log Analytics zainstalowany, ale nie powiodło się z powodu łączności sieciowej.  Sprawdź, czy masz dostęp do Internetu oraz czy skonfigurowano prawidłowy serwer proxy HTTP dla agenta. | Zobacz wymagania sieciowe agenta monitorowania. |
+| Agent podłączony do brakującego lub nieznanego obszaru roboczego | Usługa Security Center zidentyfikowała, że agent usługi Log Analytics zainstalowany na maszynie wirtualnej jest połączony z obszarem roboczym, do którego nie ma dostępu. | Może do tego dojść w dwóch przypadkach. Obszar roboczy został usunięty i już nie istnieje. Zainstaluj agenta ponownie z prawidłowym obszarem roboczym lub odinstaluj agenta i pozwól usłudze Security Center zakończyć instalację z automatyczną aprowizacją. W drugim przypadku obszar roboczy jest częścią subskrypcji, do której usługa Security Center nie ma uprawnień. Usługa Security Center wymaga od subskrypcji zezwalania dostawcy zasobów usługi Microsoft Security na dostęp. Aby włączyć usługę, zarejestruj subskrypcję u dostawcy zasobów usługi Microsoft Security. Możesz to zrobić przy użyciu interfejsu API, programu PowerShell, portalu lub poprzez odfiltrowanie subskrypcji w pulpicie nawigacyjnym **Przegląd** usługi Security Center. Aby uzyskać więcej informacji, zobacz [Dostawcy zasobów i ich typy](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
 | Brak identyfikatora agenta lub agent nie odpowiada | Usługa Security Center nie może pobrać danych zabezpieczeń zeskanowanych z maszyny wirtualnej, chociaż agent jest zainstalowany. | Agent nie zgłasza żadnych danych, w tym pulsu. Agent może być uszkodzony lub coś blokuje ruch. Lub agent zgłasza dane, ale brakuje identyfikatora zasobu platformy Azure, więc jest niemożliwe do dopasowania danych do maszyny Wirtualnej platformy Azure. Aby rozwiązać problemy z systemem Linux, zobacz [Przewodnik rozwiązywania problemów dla agenta analizy dzienników dla systemu Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Aby rozwiązać problemy w systemie Windows, zobacz [Troubleshooting Windows Virtual Machines (Rozwiązywanie problemów z maszynami wirtualnymi z systemem Windows)](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
-| Agent nie jest zainstalowany | Zbieranie danych jest wyłączone. | Włącz zbieranie danych w zasadach zabezpieczeń lub ręcznie zainstaluj program Microsoft Monitoring Agent. |
+| Agent nie jest zainstalowany | Zbieranie danych jest wyłączone. | Włącz zbieranie danych w zasadach zabezpieczeń lub ręcznie zainstaluj agenta usługi Log Analytics. |
 
 ## <a name="troubleshooting-monitoring-agent-network-requirements"></a>Rozwiązywanie problemów z wymaganiami dotyczącymi sieci agenta monitorowania <a name="mon-network-req"></a>
 

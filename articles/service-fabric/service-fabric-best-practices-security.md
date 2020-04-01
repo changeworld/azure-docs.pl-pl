@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258930"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478743"
 ---
 # <a name="azure-service-fabric-security"></a>Zabezpieczenia usługi Azure Service Fabric 
 
@@ -208,7 +208,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [Zaleca się wdrożenie konfiguracji standardu branżowego, która jest powszechnie znana i dobrze przetestowana, na przykład linie bazowe zabezpieczeń firmy Microsoft, w przeciwieństwie do samodzielnego tworzenia linii bazowej;](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines) opcja inicjowania obsługi administracyjnej tych w zestawach skalowania maszyny wirtualnej jest użycie programu obsługi rozszerzeń konfiguracji żądanego stanu platformy Azure (DSC), aby skonfigurować maszyny wirtualne, gdy są one w trybie online, więc są one uruchomione oprogramowanie produkcyjne.
 
 ## <a name="azure-firewall"></a>Azure Firewall
-[Zapora azure to zarządzana, oparta na chmurze usługa zabezpieczeń sieci, która chroni zasoby sieci wirtualnej platformy Azure. Jest to w pełni stanowa zapora jako usługa o wbudowanej wysokiej dostępności i nieograniczonej skalowalności chmury.](https://docs.microsoft.com/azure/firewall/overview) umożliwia to ograniczenie wychodzącego ruchu HTTP/S do określonej listy w pełni kwalifikowanych nazw domen (FQDN), w tym symboli wieloznacznych. Ta funkcja nie wymaga kończenia żądań protokołu SSL. Zaleca się, aby korzystać z [tagów FQDN zapory platformy Azure](https://docs.microsoft.com/azure/firewall/fqdn-tags) dla aktualizacji systemu Windows i włączyć ruch sieciowy do punktów końcowych usługi Microsoft Windows Update może przepływać przez zaporę. [Wdrażanie Zapory platformy Azure przy użyciu szablonu](https://docs.microsoft.com/azure/firewall/deploy-template) zawiera przykład dla definicji szablonu zasobów Microsoft.Network/azureFirewalls. Reguły zapory typowe dla aplikacji sieci szkieletowej usług zezwalają na następujące zasady dla sieci wirtualnej klastrów:
+[Zapora azure to zarządzana, oparta na chmurze usługa zabezpieczeń sieci, która chroni zasoby sieci wirtualnej platformy Azure. Jest to w pełni stanowa zapora jako usługa o wbudowanej wysokiej dostępności i nieograniczonej skalowalności chmury.](https://docs.microsoft.com/azure/firewall/overview) umożliwia to ograniczenie wychodzącego ruchu HTTP/S do określonej listy w pełni kwalifikowanych nazw domen (FQDN), w tym symboli wieloznacznych. Ta funkcja nie wymaga zakończenia protokołu TLS/SSL. Zaleca się, aby korzystać z [tagów FQDN zapory platformy Azure](https://docs.microsoft.com/azure/firewall/fqdn-tags) dla aktualizacji systemu Windows i włączyć ruch sieciowy do punktów końcowych usługi Microsoft Windows Update może przepływać przez zaporę. [Wdrażanie Zapory platformy Azure przy użyciu szablonu](https://docs.microsoft.com/azure/firewall/deploy-template) zawiera przykład dla definicji szablonu zasobów Microsoft.Network/azureFirewalls. Reguły zapory typowe dla aplikacji sieci szkieletowej usług zezwalają na następujące zasady dla sieci wirtualnej klastrów:
 
 - *download.microsoft.com
 - *servicefabric.azure.com
@@ -221,7 +221,7 @@ Te reguły zapory uzupełniają dozwolone wychodzące grupy zabezpieczeń sieci,
 
 ## <a name="windows-defender"></a>Windows Defender 
 
-Domyślnie program antywirusowy Windows Defender jest zainstalowany w systemie Windows Server 2016. Aby uzyskać szczegółowe informacje, zobacz [Program antywirusowy usługi Windows Defender w systemie Windows Server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016). Interfejs użytkownika jest domyślnie instalowany w przypadku niektórych jednostek SKU, ale nie jest to wymagane. Aby zmniejszyć wpływ na wydajność i obciążenie związane z zużyciem zasobów poniesione przez usługę Windows Defender, a jeśli zasady zabezpieczeń umożliwiają wykluczanie procesów i ścieżek dla oprogramowania typu open source, zadeklaruj następujący zasób rozszerzenia zestawu skalowania maszyny wirtualnej Właściwości szablonu menedżera, aby wykluczyć klaster sieci szkieletowej usług ze skanowania:
+Domyślnie program antywirusowy Windows Defender jest zainstalowany w systemie Windows Server 2016. Aby uzyskać szczegółowe informacje, zobacz [Program antywirusowy usługi Windows Defender w systemie Windows Server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016). Interfejs użytkownika jest domyślnie instalowany w przypadku niektórych jednostek SKU, ale nie jest to wymagane. Aby zmniejszyć wpływ na wydajność i obciążenie związane z zużyciem zasobów poniesione przez usługę Windows Defender, a zasady zabezpieczeń umożliwiają wykluczanie procesów i ścieżek dla oprogramowania typu open source, zadeklaruj następujące właściwości szablonu Menedżera zasobów rozszerzenia zestawu skalowania maszyny wirtualnej, aby wykluczyć klaster sieci szkieletowej usług ze skanowania:
 
 
 ```json

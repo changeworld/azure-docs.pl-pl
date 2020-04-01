@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5467794bf246fab4ff7ded9c445dbeee0c4093b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbbdf724b9d7fe4948553e7526410b994f491b49
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79139627"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435264"
 ---
 # <a name="integrate-azure-security-center-with-windows-admin-center"></a>Integracja Centrum zabezpieczeń platformy Azure z Centrum administracyjnym systemu Windows
 
@@ -48,7 +48,7 @@ Po pomyślnym zainstalowaniu serwera z Centrum administracyjnego systemu Windows
     * Serwer ma obszar roboczy do raportowania i skojarzoną subskrypcję.
     * Rozwiązanie usługi Security Center do analizy dzienników warstwy standardowej jest włączone w obszarze roboczym. To rozwiązanie zapewnia funkcje warstwy Standardowa usługi Security Center dla *wszystkich* serwerów i maszyn wirtualnych raportowania do tego obszaru roboczego.
     * Usługa Security Center's standard tier pricing for Virtual Machine jest włączona w ramach subskrypcji.
-    * Program Microsoft Monitoring Agent (MMA) jest zainstalowany na serwerze i skonfigurowany do raportowania do wybranego obszaru roboczego. Jeśli serwer zgłasza się już do innego obszaru roboczego, jest skonfigurowany do raportowania do nowo wybranego obszaru roboczego.
+    * Agent usługi Log Analytics jest zainstalowany na serwerze i skonfigurowany do raportowania do wybranego obszaru roboczego. Jeśli serwer zgłasza się już do innego obszaru roboczego, jest skonfigurowany do raportowania do nowo wybranego obszaru roboczego.
 
     > [!NOTE]
     > Może upłynąć trochę czasu po dołączaniu do zaleceń, aby pojawić się. W rzeczywistości, w zależności od aktywności serwera, możesz nie otrzymywać *żadnych* alertów. Aby wygenerować alerty testowe w celu przetestowania alertów działają poprawnie, postępuj zgodnie z instrukcjami zawartymi w [procedurze sprawdzania poprawności alertów.](security-center-alert-validation.md)

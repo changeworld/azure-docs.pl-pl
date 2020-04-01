@@ -1,5 +1,5 @@
 ---
-title: Użyj podsumowania urządzenia storsimple serii 8000 | Dokumenty firmy Microsoft
+title: Użyj bloku podsumowania usługi dla urządzenia storsimple serii 8000
 description: W tym artykule opisano StorSimple bloku podsumowania usługi i wyjaśnia, jak go używać do monitorowania kondycji rozwiązania StorSimple.
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: c174f6ce0fb3d40af953be205a7bfcca60fbfeec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14c37227a7e8598ee6f8f3adc62acd69dd274475
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79267653"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396507"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>Użyj bloku podsumowania usługi dla urządzenia storsimple serii 8000
 

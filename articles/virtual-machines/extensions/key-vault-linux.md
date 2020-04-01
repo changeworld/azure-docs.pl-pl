@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a4fb3ad2ce6225528910bbda9d98a38001242710
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: add2d515e4f8e8c56a98a7292e137e601332d10c
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298992"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410863"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Rozszerzenie maszyny wirtualnej Key Vault dla systemu Linux
 
@@ -31,6 +31,7 @@ Rozszerzenie maszyny Wirtualnej Usługi Key Vault obsługuje następujące dystr
 ### <a name="supported-certificate-content-types"></a>Obsługiwane typy zawartości certyfikatu
 
 - #12 PKCS
+- Pem
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 

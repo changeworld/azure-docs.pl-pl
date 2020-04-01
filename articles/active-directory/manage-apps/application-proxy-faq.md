@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 8bb77a217546f1abe2c28925e32464b8d61702b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 31587777ba22dd8b4cebf81f0ff98979bb30fade
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481283"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410713"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Często zadawane pytania dotyczące serwera proxy aplikacji usługi Active Directory (Azure AD)
 
@@ -113,7 +113,7 @@ Nie, ten scenariusz nie jest obsługiwany, ponieważ serwer proxy aplikacji zako
 
 Zapoznaj się [z tematą Publikowania pulpitu zdalnego za pomocą serwera proxy aplikacji usługi Azure AD](application-proxy-integrate-with-remote-desktop-services.md).
 
-### <a name="can-i-use-kerberos-constrained-delegation-in-the-remote-desktop-gateway-publishing-scenario"></a>Czy mogę używać delegowania ograniczonego protokołu Kerberos w scenariuszu publikowania bramy usług pulpitu zdalnego?
+### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>Czy w scenariuszu publikowania bramy usług pulpitu zdalnego można używać delegowania ograniczonego protokołu Kerberos (logowanie jednokrotne — uwierzytelnianie zintegrowane systemu Windows) ?
 
 Nie, ten scenariusz nie jest obsługiwany.  
 
@@ -121,7 +121,7 @@ Nie, ten scenariusz nie jest obsługiwany.
 
 Tak, jest to oczekiwane. Scenariusz wstępnego uwierzytelniania wymaga formantu ActiveX, który nie jest obsługiwany w przeglądarkach innych firm.
 
-### <a name="is-the-remote-desktop-web-client-supported"></a>Czy klient sieci Web pulpitu zdalnego jest obsługiwany?
+### <a name="is-the-remote-desktop-web-client-html5-supported"></a>Czy klient sieci Web pulpitu zdalnego (HTML5) jest obsługiwany?
 
 Nie, ten scenariusz nie jest obecnie obsługiwany. Aby uzyskać informacje na temat tej funkcji, skorzystaj z naszego forum opinii [uservoice.](https://aka.ms/aadapuservoice)
 
@@ -135,6 +135,10 @@ Tak, jest to oczekiwane. Jeśli komputer użytkownika jest przyłączony do usł
 
 Zapoznaj się [z opcję Włączanie dostępu zdalnego do programu SharePoint za pomocą serwera proxy aplikacji usługi Azure AD](application-proxy-integrate-with-sharepoint-server.md).
 
+### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>Czy mogę uzyskać dostęp do opublikowanego serwera programu SharePoint za pomocą aplikacji mobilnej SharePoint (iOS/Android)?
+
+[Aplikacja mobilna programu SharePoint](https://docs.microsoft.com/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) nie obsługuje obecnie wstępnego uwierzytelniania usługi Azure Active Directory.
+
 ## <a name="active-directory-federation-services-ad-fs-publishing"></a>Publikowanie usług federacyjnych Active Directory (AD FS) 
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>Czy mogę używać serwera proxy aplikacji usługi Azure AD jako serwera proxy usług AD FS (takiego jak serwer proxy aplikacji sieci Web)?
@@ -147,7 +151,7 @@ Nie. Usługa Azure AD Application Proxy jest przeznaczony do pracy z usługą Az
 
 Obecnie obsługa protokołu WebSocket jest nadal w publicznej wersji zapoznawczej i może nie działać dla innych aplikacji. Niektórzy klienci odnieśli mieszany sukces przy użyciu protokołu WebSocket z innymi aplikacjami. Jeśli przetestujesz takie scenariusze, chcielibyśmy usłyszeć Twoje wyniki. Prześlij nam aadapfeedback@microsoft.comswoją opinię na .
 
-Funkcje (Eventlogs, PowerShell i Usługi pulpitu zdalnego) w Centrum administracyjnym systemu Windows (WAC) lub kliencie sieci Web pulpitu zdalnego nie działają obecnie za pośrednictwem serwera proxy aplikacji usługi Azure AD.
+Funkcje (Eventlogs, PowerShell i Usługi pulpitu zdalnego) w Centrum administracyjnym systemu Windows (WAC) lub kliencie sieci Web pulpitu zdalnego (HTML5) nie działają obecnie za pośrednictwem serwera proxy aplikacji usługi Azure AD.
 
 ## <a name="link-translation"></a>Tłumaczenie linków
 

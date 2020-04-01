@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2423d04ead9040cce53d847d24efe75be680d94
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275050"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397308"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Wyświetlanie i pobieranie zdarzeń dziennika aktywności platformy Azure
 
 [Dziennik aktywności platformy Azure](platform-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. Ten artykuł zawiera szczegółowe informacje na temat różnych metod wyświetlania i pobierania zdarzeń dziennika aktywności.
 
-## <a name="azure-portal"></a>Portal Azure
+## <a name="azure-portal"></a>Azure Portal
 Wyświetl dziennik aktywności dla wszystkich zasobów z menu **Monitor** w witrynie Azure portal. Wyświetl dziennik aktywności dla określonego zasobu z opcji **Dziennik aktywności** w menu tego zasobu.
 
 ![Wyświetl dziennik aktywności](./media/activity-logs-overview/view-activity-log.png)
@@ -168,35 +168,6 @@ Pobierz dzienniki aktywności bez filtru lub wybierz:
 ```HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
-
-
-## <a name="activity-logs-analytics-monitoring-solution"></a>Rozwiązanie do monitorowania usługi Activity Logs Analytics
-Rozwiązanie do monitorowania usługi Azure Log Analytics zawiera wiele zapytań dziennika i widoków do analizowania rekordów dziennika aktywności w obszarze roboczym usługi Log Analytics.
-
-### <a name="prerequisites"></a>Wymagania wstępne
-Należy utworzyć ustawienie diagnostyczne, aby wysłać dziennik aktywności dla subskrypcji do obszaru roboczego usługi Log Analytics. Zobacz [Zbieranie dzienników platformy Azure w obszarze roboczym usługi Log Analytics w usłudze Azure Monitor.](resource-logs-collect-workspace.md)
-
-### <a name="install-the-solution"></a>Zainstaluj rozwiązanie
-Użyj procedury w [zainstaluj rozwiązanie do monitorowania,](../insights/solutions.md#install-a-monitoring-solution) aby zainstalować rozwiązanie **analizy dzienników aktywności.** Nie jest wymagana żadna dodatkowa konfiguracja.
-
-### <a name="use-the-solution"></a>Użyj rozwiązania
-Kliknij **pozycję Dzienniki** u góry strony **Dziennik aktywności,** aby otworzyć [rozwiązanie do monitorowania usługi Activity Log Analytics](activity-log-collect.md) dla subskrypcji. Lub dostęp do wszystkich rozwiązań monitorowania w menu **Monitor** subskrypcji w witrynie Azure portal. Wybierz **pozycję Więcej** w sekcji **Statystyki,** aby otworzyć stronę **Przegląd** z kafelkami rozwiązania. Kafelek **Dzienniki aktywności platformy Azure** wyświetla liczbę rekordów **usługi AzureActivity** w obszarze roboczym.
-
-![Kafelek dzienników aktywności platformy Azure](media/collect-activity-logs/azure-activity-logs-tile.png)
-
-
-Kliknij **kafelek Dzienniki aktywności platformy Azure,** aby otworzyć widok **dzienniki aktywności platformy Azure.** Widok zawiera części wizualizacji w poniższej tabeli. Każda część zawiera listę do 10 elementów pasujących do kryteriów tej części dla określonego zakresu czasu. Można uruchomić kwerendę dziennika, która zwraca wszystkie pasujące rekordy, klikając **zobacz wszystko** u dołu części.
-
-![Pulpit nawigacyjny dzienników aktywności platformy Azure](media/collect-activity-logs/activity-log-dash.png)
-
-| Część wizualizacji | Opis |
-| --- | --- |
-| Wpisy dziennika aktywności platformy Azure | Pokazuje wykres słupkowy najwyższej sumy rekordów dziennika aktywności platformy Azure dla wybranego zakresu dat i pokazuje listę 10 najlepszych wywołań aktywności. Kliknij wykres słupkowy, aby `AzureActivity`uruchomić wyszukiwanie dziennika . Kliknij element wywołującego, aby uruchomić wyszukiwanie dziennika zwracające wszystkie wpisy dziennika aktywności dla tego elementu. |
-| Dzienniki aktywności według stanu | Pokazuje wykres pierścieniowy dla stanu dziennika aktywności platformy Azure dla wybranego zakresu dat i listę dziesięciu pierwszych rekordów stanu. Kliknij wykres, aby uruchomić `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`kwerendę dziennika dla . Kliknij element stanu, aby uruchomić wyszukiwanie dziennika zwracające wszystkie wpisy dziennika aktywności dla tego rekordu stanu. |
-| Dzienniki aktywności według zasobów | Pokazuje całkowitą liczbę zasobów za pomocą dzienników aktywności i wyświetla dziesięć pierwszych zasobów z liczbą rekordów dla każdego zasobu. Kliknij całkowity obszar, aby uruchomić `AzureActivity | summarize AggregatedValue = count() by Resource`wyszukiwanie dziennika , który pokazuje wszystkie zasoby platformy Azure dostępne dla rozwiązania. Kliknij zasób, aby uruchomić kwerendę dziennika zwracającą wszystkie rekordy działań dla tego zasobu. |
-| Dzienniki aktywności według dostawcy zasobów | Pokazuje całkowitą liczbę dostawców zasobów, którzy produkują dzienniki aktywności i wyświetla listę dziesięciu najlepszych. Kliknij całkowity obszar, aby uruchomić `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`kwerendę dziennika dla , który pokazuje wszystkich dostawców zasobów platformy Azure. Kliknij dostawcę zasobów, aby uruchomić kwerendę dziennika zwracającą wszystkie rekordy aktywności dla dostawcy. |
-
-
 
 
 ## <a name="next-steps"></a>Następne kroki

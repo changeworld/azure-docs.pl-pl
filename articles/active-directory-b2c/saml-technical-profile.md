@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c81d2bc499c3d9cae262ef62be2dac2d7280be7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 83a13e0b1bb4d55b889d96e42c8f3f18ce0f2b73
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183843"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408938"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego SAML w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -90,11 +90,32 @@ Atrybut **Nazwa** elementu Protokołu musi być ustawiony `SAML2`na .
 
 **OutputClaims** element zawiera listę oświadczeń zwróconych przez dostawcę `AttributeStatement` tożsamości SAML w sekcji. Może być konieczne mapowanie nazwy oświadczenia zdefiniowanego w zasadach na nazwę zdefiniowaną w dostawcy tożsamości. Można również dołączyć oświadczenia, które nie są zwracane przez `DefaultValue` dostawcę tożsamości, tak długo, jak ustawić atrybut.
 
-Aby odczytać twierdzenie SAML **NamedId** w **temacie** jako znormalizowane oświadczenie, `assertionSubjectName`ustaw oświadczenie **PartnerClaimType** na . Upewnij się, że **NameId** jest pierwszą wartością w xml potwierdzenia. Podczas definiowania więcej niż jednego potwierdzenia usługi Azure AD B2C wybiera wartość tematu z ostatniego potwierdzenia.
+### <a name="subject-name-output-claim"></a>Oświadczenie wyjściowe nazwy podmiotu
 
-**OutputClaimsTransformations** element może zawierać kolekcję **OutputClaimsTransformation** elementów, które są używane do modyfikowania oświadczeń danych wyjściowych lub generowania nowych.
+Aby odczytać **nameid** potwierdzenia SAML w **temacie** jako znormalizowane oświadczenie, należy ustawić `SPNameQualifier` oświadczenie **PartnerClaimType** na wartość atrybutu. Jeśli `SPNameQualifier`atrybut nie jest prezentowany, ustaw oświadczenie **PartnerClaimType** na wartość atrybutu. `NameQualifier` 
 
-W poniższym przykładzie przedstawiono oświadczenia zwrócone przez dostawcę tożsamości Facebooka:
+
+Twierdzenie SAML: 
+
+```XML
+<saml:Subject>
+  <saml:NameID SPNameQualifier="http://your-idp.com/unique-identifier" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">david@contoso.com</saml:NameID>
+    <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+      <SubjectConfirmationData InResponseTo="_cd37c3f2-6875-4308-a9db-ce2cf187f4d1" NotOnOrAfter="2020-02-15T16:23:23.137Z" Recipient="https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer" />
+    </SubjectConfirmation>
+  </saml:SubjectConfirmation>
+</saml:Subject>
+```
+
+Oświadczenie wyjściowe:
+
+```XML
+<OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="http://your-idp.com/unique-identifier" />
+```
+
+Jeśli `SPNameQualifier` oba `NameQualifier` lub atrybuty nie są prezentowane w asercji `assertionSubjectName`SAML, ustaw oświadczenie **PartnerClaimType** na . Upewnij się, że **NameId** jest pierwszą wartością w xml potwierdzenia. Podczas definiowania więcej niż jednego potwierdzenia usługi Azure AD B2C wybiera wartość tematu z ostatniego potwierdzenia.
+
+W poniższym przykładzie przedstawiono oświadczenia zwrócone przez dostawcę tożsamości SAML:
 
 - Oświadczenie **identyfikatora issuerUserId** jest mapowane na oświadczenie **assertionSubjectName.**
 - Oświadczenie **first_name** jest mapowane na **oświadczenie givenName.**
@@ -118,6 +139,8 @@ Profil techniczny zwraca również oświadczenia, które nie są zwracane przez 
   <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
 </OutputClaims>
 ```
+
+**OutputClaimsTransformations** element może zawierać kolekcję **OutputClaimsTransformation** elementów, które są używane do modyfikowania oświadczeń danych wyjściowych lub generowania nowych.
 
 ## <a name="metadata"></a>Metadane
 

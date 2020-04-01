@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: labrenne
-ms.openlocfilehash: 2cff6a0e48fc7bf58a642f509fcda6b114e002ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95f27d913cd288c186bae1a6375212b072f50bb4
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022940"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422433"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Tworzenie puli niestandardowej za pomocą Galerii obrazów udostępnionych
 
@@ -38,6 +38,9 @@ Użycie obrazu udostępnionego skonfigurowanego dla scenariusza może zapewnić 
 * **Przechowywanie wersji obrazu i grupowanie w celu łatwiejszego zarządzania.** Definicja grupowania obrazów zawiera informacje o tym, dlaczego obraz został utworzony, do jakiego systemu operacyjnego jest przeznaczony, oraz informacje o używaniu obrazu. Grupowanie obrazów ułatwia zarządzanie obrazami. Aby uzyskać więcej informacji, zobacz [Definicje obrazów](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+> [!NOTE]
+> Musisz uwierzytelnić przy użyciu usługi Azure AD. Jeśli używasz shared-key-auth, pojawi się błąd uwierzytelniania.  
 
 * **Konto usługi Azure Batch.** Aby utworzyć konto usługi Batch, zobacz Szybki start usługi Batch przy użyciu [witryny Azure portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md).
 
@@ -86,6 +89,9 @@ Po pomyślnym utworzeniu zarządzanego obrazu należy utworzyć galerię obrazó
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Tworzenie puli na podstawie obrazu udostępnionego przy użyciu interfejsu wiersza polecenia platformy Azure
 
 Aby utworzyć pulę z obrazu udostępnionego `az batch pool create` przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia. Określ identyfikator udostępnionego `--image` obrazu w tym polu. Upewnij się, że typ systemu operacyjnego i jednostka SKU są zgodne z wersjami określonymi`--node-agent-sku-id`
+
+> [!NOTE]
+> Musisz uwierzytelnić przy użyciu usługi Azure AD. Jeśli używasz shared-key-auth, pojawi się błąd uwierzytelniania.  
 
 ```azurecli
 az batch pool create \

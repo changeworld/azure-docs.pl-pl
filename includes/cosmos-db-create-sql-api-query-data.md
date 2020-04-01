@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/05/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 64c900e01496dad0d5f6a96d8d790ae0c2a8c95a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 408fb2c40e645d9a8b10f1e04d282e134c5489a1
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78927349"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80501557"
 ---
 Za pomocą kwerend w Eksploratorze danych można pobierać i filtrować dane.
 
-1. U góry karty **Elementy** w Eksploratorze `SELECT * FROM c`danych przejrzyj kwerendę domyślną . Ta kwerenda pobiera i wyświetla wszystkie dokumenty w kolekcji w kolejności identyfikatora. 
+1. U góry karty **Elementy** w Eksploratorze `SELECT * FROM c`danych przejrzyj kwerendę domyślną . Ta kwerenda pobiera i wyświetla wszystkie dokumenty z kontenera uporządkowanego według identyfikatora. 
    
    ![Domyślne zapytanie w Eksploratorze danych to „SELECT * FROM c”](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png)
    

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2fce8a7a6f6d345b83c639bd69ecd70271621e9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b344886e89a10a027cba169e92056a6dda443d8d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283161"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421943"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów usługi Azure Resource Manager
 
@@ -65,7 +65,7 @@ Szczegółowe informacje dotyczące monitorowania firmy Microsoft
 > | Akcja | microsoft.aadiam/diagnosticsettingscategories/read | Czytanie kategorii ustawień diagnostycznych |
 > |  | **metricDefinitions (Definicje metryczne)** |  |
 > | Akcja | microsoft.aadiam/metricDefinitions/read | Odczytywanie definicji metryk na poziomie dzierżawy |
-> |  | **metrics** |  |
+> |  | **Metryki** |  |
 > | Akcja | microsoft.aadiam/metryki/odczyt | Czytanie metryk na poziomie dzierżawy |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
@@ -2674,7 +2674,7 @@ Usługa platformy Azure: [zarządzanie kosztami](../cost-management-billing/inde
 > | Akcja | Zarządzanie kosztami firmy Microsoft/prognoza/odczyt | Prognozuj dane użycia według zakresu. |
 > |  | **Operacji** |  |
 > | Akcja | Zarządzanie kosztami firmy Microsoft/operacje/odczyt | Wyświetl listę wszystkich obsługiwanych operacji dostawcy zasobów Microsoft.CostManagement. |
-> |  | **query** |  |
+> |  | **Kwerendy** |  |
 > | Akcja | Zarządzanie kosztami firmy Microsoft/kwerenda/odczyt | Kwerenda dane użycia przez zakres. |
 > |  | **raporty** |  |
 > | Akcja | Microsoft.CostManagement/reports/read | Planowanie raportów dotyczących danych użycia według zakresu. |
@@ -8333,7 +8333,7 @@ Usługa platformy Azure: [Usługa Azure Resource Manager](../azure-resource-mana
 
 ## <a name="microsoftscheduler"></a>Harmonogram firmy Microsoft
 
-Usługa platformy Azure: [harmonogram](../scheduler/index.md)
+Usługa platformy Azure: [harmonogram](../scheduler/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |

@@ -3,12 +3,12 @@ title: Urządzenie usługi Azure Migrate
 description: Zawiera omówienie urządzenia migracji platformy Azure używanego w ocenie i migracji serwera.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 1bb3372467919f1471fa9577cd60e9cecaf1750d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bccf4738d46b65f2d149eafc8e69591141d7d073
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336937"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437588"
 ---
 # <a name="azure-migrate-appliance"></a>Urządzenie usługi Azure Migrate
 
@@ -79,14 +79,14 @@ W poniższej tabeli podsumowano wymagania urządzenia migracji platformy Azure d
 Urządzenie usługi Azure Migrate wymaga łączności z Internetem.
 
 - Podczas wdrażania urządzenia usługa Azure Migrate sprawdza łączność z adresami URL podsumowanym w poniższej tabeli.
-- Jeśli używasz serwera proxy opartego na adresie URL do łączenia się z Internetem, zezwalaj na dostęp do tych adresów URL, upewniając się, że serwer proxy rozpoznaje wszystkie rekordy CNAME odebrane podczas wyszukywania adresów URL.
+- Jeśli używasz serwera proxy opartego na adresach URL do łączenia się z Internetem, musisz zezwolić na dostęp do tych adresów URL, upewniając się, że serwer proxy rozpoznaje wszystkie rekordy CNAME odebrane podczas wyszukywania adresów URL.
 
 **Adres URL** | **Szczegóły**  
 --- | --- |
 *.portal.azure.com  | Przejdź do witryny Azure Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Zaloguj się do subskrypcji platformy Azure.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Tworzenie aplikacji usługi Active Directory dla urządzenia do komunikowania się z usługą Azure Migrate.
-management.azure.com | Tworzenie aplikacji usługi Active Directory dla urządzenia do komunikowania się z usługą Azure Migrate.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Tworzenie aplikacji usługi Azure Active Directory (AD) dla urządzenia do komunikowania się z usługą Azure Migrate.
+management.azure.com | Tworzenie aplikacji usługi Azure AD dla urządzenia do komunikowania się z usługą Azure Migrate.
 dc.services.visualstudio.com | Przekaż dzienniki aplikacji używane do monitorowania wewnętrznego.
 *.vault.azure.net | Zarządzanie wpisami tajnymi w magazynie kluczy platformy Azure.
 aka.ms/* | Zezwól na dostęp do łączy aka. Używane do aktualizacji urządzenia migracji platformy Azure.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: b2b34a6fdf96613c5bc372e585598fabbe43d53d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8767a6ee6218223280ea6219e22540c53d1e89be
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066605"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409117"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Typowe wymagania wstępne dotyczące wdrażania platformy kontenerowej OpenShift 3.11 na platformie Azure
 
@@ -143,15 +143,15 @@ Aby uzyskać więcej informacji na temat podmiotów świadczących usługi, zoba
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Wymagania wstępne mające zastosowanie tylko do szablonu Menedżera zasobów
 
-Wpisy tajne będą musiały zostać utworzone dla klucza prywatnego SSH (**sshPrivateKey**), klucz tajny klienta usługi Azure AD **(aadClientSecret),** hasło administratora OpenShift **(openshiftPassword)** i hasło lub klucz aktywacyjny Red Hat Subscription Manager (**rhsmPasswordOrActivationKey**).  Ponadto, jeśli używane są niestandardowe certyfikaty SSL, konieczne będzie utworzenie sześciu dodatkowych wpisów tajnych - **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**i **masterkeyfile**.  Parametry te zostaną wyjaśnione bardziej szczegółowo.
+Wpisy tajne będą musiały zostać utworzone dla klucza prywatnego SSH (**sshPrivateKey**), klucz tajny klienta usługi Azure AD **(aadClientSecret),** hasło administratora OpenShift **(openshiftPassword)** i hasło lub klucz aktywacyjny Red Hat Subscription Manager (**rhsmPasswordOrActivationKey**).  Ponadto, jeśli używane są niestandardowe certyfikaty TLS/SSL, konieczne będzie utworzenie sześciu dodatkowych wpisów tajnych - **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**i **masterkeyfile**.  Parametry te zostaną wyjaśnione bardziej szczegółowo.
 
 Szablon odwołuje się do określonych nazw tajnych, więc **należy** użyć pogrubionych nazw wymienionych powyżej (z uwzględnieniem wielkości liter).
 
 ### <a name="custom-certificates"></a>Certyfikaty niestandardowe
 
-Domyślnie szablon wdraża klaster OpenShift przy użyciu certyfikatów z podpisem własnym dla konsoli internetowej OpenShift i domeny routingu. Jeśli chcesz użyć niestandardowych certyfikatów SSL, ustaw "routingCertType" na "custom" i 'masterCertType' na "custom".  Dla certyfikatów potrzebne będą pliki urzędu certyfikacji, certyfikatów i kluczy w formacie pem.  Istnieje możliwość użycia certyfikatów niestandardowych dla jednego, ale nie dla drugiego.
+Domyślnie szablon wdraża klaster OpenShift przy użyciu certyfikatów z podpisem własnym dla konsoli internetowej OpenShift i domeny routingu. Jeśli chcesz używać niestandardowych certyfikatów TLS/SSL, ustaw "routingCertType" na "custom" i "masterCertType" na "custom".  Dla certyfikatów potrzebne będą pliki urzędu certyfikacji, certyfikatów i kluczy w formacie pem.  Istnieje możliwość użycia certyfikatów niestandardowych dla jednego, ale nie dla drugiego.
 
-Musisz przechowywać te pliki w wpisach tajnych usługi Key Vault.  Użyj tego samego magazynu kluczy, co używany dla klucza prywatnego.  Zamiast wymagać 6 dodatkowych danych wejściowych dla tajnych nazw, szablon jest zakodowany na czas, aby używać określonych tajnych nazw dla każdego z plików certyfikatów SSL.  Przechowuj dane certyfikatu przy użyciu informacji z poniższej tabeli.
+Musisz przechowywać te pliki w wpisach tajnych usługi Key Vault.  Użyj tego samego magazynu kluczy, co używany dla klucza prywatnego.  Zamiast wymagać 6 dodatkowych danych wejściowych dla tajnych nazw, szablon jest zakodowany na czas, aby używać określonych tajnych nazw dla każdego z plików certyfikatów TLS/SSL.  Przechowuj dane certyfikatu przy użyciu informacji z poniższej tabeli.
 
 | Tajna nazwa      | Plik certyfikatu   |
 |------------------|--------------------|

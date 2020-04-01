@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e3a240901ffca2c126e2b61eaee0cf287cc31d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 595762e6e8f22dddff30f1cff8c4bb79e89624b1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127510"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473853"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Rozwiązywanie problemów z klientem pulpitu zdalnego
 
@@ -21,21 +21,15 @@ W tym artykule opisano typowe problemy z klientem pulpitu zdalnego i sposób ich
 
 ## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Klient pulpitu zdalnego dla systemu Windows 7 lub Windows 10 przestaje odpowiadać lub nie można go otworzyć
 
-Użyj następujących poleceń cmdlet programu PowerShell, aby wyczyścić rejestry klientów poza pasmem (OOB).
+Począwszy od wersji 1.2.790, można zresetować dane użytkownika ze strony Informacje lub za pomocą polecenia.
 
-```PowerShell
-Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
+Użyj następującego polecenia, aby usunąć dane użytkownika, przywrócić ustawienia domyślne i anulować subskrypcję ze wszystkich obszarów roboczych.
 
-#Remove RdClientRadc registry key
-Remove-Item 'HKCU:\Software\Microsoft\RdClientRadc' -Recurse
-
-#Remove all files under %appdata%\RdClientRadc
-Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
+```cmd
+msrdcw.exe /reset [/f]
 ```
 
-Przejdź do **pozycji %AppData%\RdClientRadc** i usuń całą zawartość.
-
-Odinstaluj i zainstaluj ponownie klienta pulpitu zdalnego dla systemów Windows 7 i Windows 10.
+Jeśli używasz wcześniejszej wersji klienta pulpitu zdalnego, zalecamy odinstalowanie i ponowne zainstalowanie klienta.
 
 ## <a name="web-client-wont-open"></a>Klient sieci Web nie zostanie otwarty
 

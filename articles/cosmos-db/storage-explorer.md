@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: fd044d4f32aefc00e1b04f7060e0fc0dc74fd6c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72882351"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411668"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Praca z danymi za pomocą Eksploratora usługi Azure Storage
 
@@ -215,14 +215,14 @@ Istnieje kilka przyczyn wyświetlenia tego błędu, przy czym dwoma najbardziej 
 
 + Jesteś za *przezroczystym serwerem proxy,* co oznacza, że ktoś (na przykład dział IT) przechwytuje ruch HTTPS, odszyfrowuje go, a następnie szyfruje za pomocą certyfikatu z podpisem własnym.
 
-+ Używasz oprogramowania, takiego jak oprogramowanie antywirusowe, które wprowadza certyfikaty SSL z podpisem własnym do wiadomości protokołu HTTPS, które otrzymujesz.
++ Używasz oprogramowania, takiego jak oprogramowanie antywirusowe, które wstrzykuje samodzielnie podpisane certyfikaty TLS/SSL do otrzymywanych wiadomości HTTPS.
 
 Gdy Eksplorator usługi Storage napotka jeden z tych „certyfikatów z podpisem własnym”, nie będzie już wiedział, czy odbierany komunikat HTTPS został naruszony. Jeśli jednak masz kopię certyfikatu z podpisem własnym, możesz poinformować Eksploratora usługi Storage, aby mu zaufał. Jeśli nie masz pewności, kto wprowadza certyfikat, możesz spróbować go znaleźć samodzielnie, wykonując następujące czynności:
 
-1. Zainstaluj protokół Open SSL
+1. Instalowanie openssl
      - [System Windows](https://slproweb.com/products/Win32OpenSSL.html) (dowolna z wersji uproszczonych jest OK)
      - Komputery Mac i system Linux: powinien być dołączony do systemu operacyjnego
-2. Uruchom protokół Open SSL
+2. Uruchom OpenSSL
     - System Windows: przejdź do katalogu instalacyjnego, a następnie **/bin/**, po czym kliknij dwukrotnie plik **openssl.exe**.
     - Komputery Mac i system Linux: wykonaj polecenie **openssl** z terminala
 3. Wykonaj polecenie `s_client -showcerts -connect microsoft.com:443`

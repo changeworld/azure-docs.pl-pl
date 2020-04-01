@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fda49ae31d7598497a3128a846a3f4e12e84ffe1
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245410"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435905"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Funkcje Centrum Bezpieczeństwa (lipiec 2019)
 
@@ -43,7 +43,7 @@ Ten artykuł zawiera szczegółowe informacje dotyczące każdej wycofanej funkc
 
 ## <a name="events-dashboard"></a>Pulpit nawigacyjny zdarzeń<a name="menu_events"></a>
 
-Usługa Security Center używa programu Microsoft Monitoring Agent do zbierania różnych konfiguracji i zdarzeń związanych z zabezpieczeniami z komputerów. Przechowuje te zdarzenia w obszarach roboczych. [Pulpit nawigacyjny zdarzeń](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) umożliwia wyświetlanie tych danych i daje punkt wejścia do usługi Log Analytics.
+Usługa Security Center używa agenta usługi Log Analytics do zbierania różnych konfiguracji i zdarzeń związanych z zabezpieczeniami z komputerów. Przechowuje te zdarzenia w obszarach roboczych. [Pulpit nawigacyjny zdarzeń](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) umożliwia wyświetlanie tych danych i daje punkt wejścia do usługi Log Analytics.
 
 Wycofaliśmy pulpit nawigacyjny zdarzeń, który pojawił się po wybraniu obszaru roboczego:
 

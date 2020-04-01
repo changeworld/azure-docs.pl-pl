@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 66ea8a93723c117a364a188ec05b050e1ef60564
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a31c6cf32222277e033aacf7d04622c54aef9ea
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76548088"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437011"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Migrowanie obciążeń platformy Apache Platformy Kafka do usługi Azure HDInsight 4.0
 
@@ -68,7 +68,7 @@ Następujące wskazówki dotyczące migracji zakładają, że klaster Apache Kaf
 
 Aby ukończyć migrację, wykonaj następujące czynności:
 
-1. **Wdrażanie nowego klastra HDInsight 4.0 i klientów do testowania.** Wdrażanie nowego klastra platformy Kafka hdinsight 4.0. Jeśli można wybrać wiele wersji klastra platformy Kafka, zaleca się wybranie najnowszej wersji. Po wdrożeniu należy ustawić niektóre parametry w razie potrzeby i utworzyć temat o takiej samej nazwie jak istniejące środowisko. Ponadto ustaw szyfrowanie SSL i bring-your-own-key (BYOK) w razie potrzeby. Następnie sprawdź, czy działa poprawnie z nowym klastrem.
+1. **Wdrażanie nowego klastra HDInsight 4.0 i klientów do testowania.** Wdrażanie nowego klastra platformy Kafka hdinsight 4.0. Jeśli można wybrać wiele wersji klastra platformy Kafka, zaleca się wybranie najnowszej wersji. Po wdrożeniu należy ustawić niektóre parametry w razie potrzeby i utworzyć temat o takiej samej nazwie jak istniejące środowisko. Ponadto ustaw TLS i bring-your-own-key (BYOK) szyfrowanie w razie potrzeby. Następnie sprawdź, czy działa poprawnie z nowym klastrem.
 
     ![Wdrażanie nowych klastrów hdinsight 4.0](./media/upgrade-threesix-to-four/deploy-new-hdinsight-clusters.png)
 

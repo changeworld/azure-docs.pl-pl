@@ -3,14 +3,14 @@ title: Kwerenda usługi Azure Update Management dzienniki
 description: W tym artykule opisano sposób wykonywania zapytań o dzienniki dotyczące zarządzania aktualizacjami w obszarze roboczym usługi Log Analytics.
 services: automation
 ms.subservice: update-management
-ms.date: 03/11/2020
+ms.date: 03/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: f31168d47f31d8e740c95cb3d9e449f473cc78dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 863016bbeda9b4aec3bf2b4e12830bd30098150f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79216842"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437843"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Rekordy aktualizacji kwerend dla zarządzania aktualizacjami w dziennikach monitora platformy Azure
 
@@ -39,7 +39,7 @@ Tworzony jest rekord `RequiredUpdate` z typem, który reprezentuje aktualizacje 
 | TenantId | Unikatowy identyfikator reprezentujący wystąpienie usługi Azure Active Directory w organizacjach. | 
 | TimeGenerated | Data i godzina utworzenia rekordu. | 
 | Typ | *Aktualizacja* | 
-| Klasyfikacja aktualizacji | Wskazuje typ aktualizacji, które można zastosować. W przypadku systemu Windows:<br> *Aktualizacje krytyczne*<br> *Aktualizacje zabezpieczeń*<br> *Pakiety zbiorcze aktualizacji*<br> *Pakiety funkcji*<br> *Dodatki Service Pack*<br> *Aktualizacje definicji*<br> *Narzędzia*<br> *Aktualizacje*. Dla Linuksa:<br> *Aktualizacje krytyczne i zabezpieczeń*<br> *Inne* |
+| Klasyfikacja aktualizacji | Wskazuje typ aktualizacji, które można zastosować. W przypadku systemu Windows:<br> *Aktualizacje krytyczne*<br> *Aktualizacje zabezpieczeń*<br> *Pakiety zbiorcze aktualizacji*<br> *Pakiety funkcji*<br> *Dodatki Service Pack*<br> *Aktualizacje definicji*<br> *narzędzia*<br> *Aktualizacje*. Dla Linuksa:<br> *Aktualizacje krytyczne i zabezpieczeń*<br> *Inne* |
 | AktualizacjaEverity | Ocena ważności usterki. Wartości to:<br> *Krytyczny*<br> *Ważne*<br> *Średni*<br> *Niskie* |
 | Tytuł aktualizacji | Tytuł aktualizacji.|
 
@@ -144,7 +144,7 @@ Tworzony jest rekord `UpdateSummary` z typem, który zawiera podsumowanie aktual
 | CriticalUpdatesMissing | Brak odpowiedniej liczby aktualizacji krytycznych. | 
 | ManagementGroupName | Nazwa grupy zarządzania programu Operations Manager lub obszaru roboczego Usługi Log Analytics. |
 | NETRuntimeVersion | Wersja programu .NET Framework zainstalowana na komputerze z systemem Windows. |
-| OldestMissingSecurityUpdateBucket | Wartości to:<br> *Najnowsze*<br> *30 dni temu*<br> *60 dni temu*<br> *Starsza* | 
+| OldestMissingSecurityUpdateBucket | Wartości to:<br> *Ostatnie,* jeśli wartość jest mniejsza niż 30 dni<br> *30 dni temu*<br> *60 dni temu*<br> *90 dni temu*<br> *120 dni temu*<br> *150 dni temu*<br> *180 dni temu*<br> *Starsze,* gdy wartość jest większa niż 180 dni | 
 | OldestMissingSecurityUpdateInDays | Całkowita liczba dni dla najstarszej aktualizacji wykrytej w stosownych przypadkach, która nie została zainstalowana. |
 | OsVersion | Wersja systemu operacyjnego. |
 | OtherUpdatesMissing | Liczba wykrytych aktualizacji brakuje. |

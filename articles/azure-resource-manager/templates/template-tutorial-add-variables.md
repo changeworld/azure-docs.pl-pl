@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7fa6c36b604d0e96b2192ceb6c5585afcade080b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1df86e5b593edec784de21e21a4399274d820bb
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371714"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411689"
 ---
 # <a name="tutorial-add-variables-to-your-arm-template"></a>Samouczek: Dodawanie zmiennych do szablonu ARM
 
@@ -56,7 +56,7 @@ Zastosujmy szablon. Wdrażanie tego szablonu jest łatwiejsze niż poprzednie sz
 
 Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie przyjęto założenie, że ustawiono **zmienną templateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -80,6 +80,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> Jeśli wdrożenie nie powiodło się, użyj przełącznika **debugowania** z poleceniem wdrażania, aby wyświetlić dzienniki debugowania.  Można również użyć pełnego **przełącznika,** aby wyświetlić pełne dzienniki debugowania.
 
 ## <a name="verify-deployment"></a>Weryfikowanie wdrożenia
 

@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 318b3e3f774a4381434fd56154f4c0d95c28c7a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 717a09d8377a7b95fe24300cc65222f307e7419f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79479519"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437520"
 ---
 # <a name="references"></a>Dokumentacja
 
@@ -27,7 +27,7 @@ Interfejsy API Azure FarmBeats zapewniają firmom rolniczym standardowy interfej
 - Automatycznie generowane agregacje sekwencji czasu dla szybkiego budowania modelu.
 - Zintegrowany aparat usługi Azure Data Factory do łatwego tworzenia niestandardowych potoków przetwarzania danych.
 
-## <a name="application-development"></a>Projektowanie aplikacji
+## <a name="application-development"></a>Opracowywanie aplikacji
 
 Interfejsy API FarmBeats zawierają dokumentację techniczną Swagger. Aby uzyskać informacje na temat wszystkich interfejsów API i odpowiadających im żądań lub odpowiedzi, zobacz [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
 
@@ -162,7 +162,7 @@ Interfejsy API usługi Azure FarmBeats są dostępne dla użytkownika lub rejest
     - Wróć do **pozycji Przegląd**i wybierz łącze obok pozycji **Zarządzaj aplikacją w katalogu lokalnym**.
     - Przejdź do **właściwości,** aby przechwycić **identyfikator obiektu**.
 
-4. Przejdź do witryny [Datahub Swagger](https://<yourdatahub>.azurewebsites.net/swagger/index.html) i wykonaj następujące czynności:
+4. Przejdź do witryny Datahub Swagger<yourdatahub>(https:// .azurewebsites.net/swagger/index.html) i wykonaj następujące czynności:
     - Przejdź do **interfejsu API przypisania roli**.
     - Wykonaj post, aby utworzyć obiekt **roleassignment** dla właśnie utworzonego **identyfikatora obiektu.**
 

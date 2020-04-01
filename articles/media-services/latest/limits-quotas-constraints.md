@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 5a4f7e31cb17f47e8796ab99c1f8a089339903df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 514c1466bc1a686adfc3e07e1f19bd566e979dc1
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74888431"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420891"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Przydziały i ograniczenia w usłudze Azure Media Services w wersji 3
 
@@ -26,10 +26,10 @@ W tym artykule opisano przydziały i ograniczenia w usłudze Azure Media Service
 | --- | --- | 
 | Elementy zawartości na konto usługi Azure Media Services | 1 000 000|
 | Filtry manifestów dynamicznych|100|
-| JobInputs na zadanie | 50 (stała)|
-| Zlecenia na zadanie | 20 (stała) |
-| TransformOutputs w transformacji | 20 (stała) |
-| Pliki na jobinput|10 (stała)|
+| Dane wejściowe zlecenia na zadanie | 50 (stała)|
+| Wyjścia zlecenia na zadanie | 20 (stała) |
+| Przekształcanie wyjść w przekształcaniu | 20 (stała) |
+| Pliki na dane wejściowe zadania|10 (stała)|
 | Rozmiar pliku| W niektórych scenariuszach istnieje limit maksymalnego rozmiaru pliku obsługiwanego do przetwarzania w umiaźnym programie Media Services. <sup>(1)</sup> |
 | Zadania na konto usługi Media Services | 500 000 <sup>(2)</sup> (stałe)|
 | Wydarzenia na żywo na konto usługi Media Services |5|

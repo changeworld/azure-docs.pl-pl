@@ -3,12 +3,12 @@ title: Czelokrotnianie kopii zapasowych maszyn wirtualnych funkcji Hyper-V za po
 description: Ten artykuł zawiera procedury tworzenia kopii zapasowych i odzyskiwania maszyn wirtualnych przy użyciu programu Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255061"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420406"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych funkcji Hyper-V za pomocą serwera kopii zapasowych platformy Azure
 
@@ -99,83 +99,6 @@ Są to warunki wstępne do tworzenia kopii zapasowych maszyn wirtualnych funkcji
 9. Na stronie **Opcje sprawdzania spójności** wybierz odpowiedni sposób automatyzacji sprawdzania spójności. Można włączyć uruchamianie sprawdzania tylko wtedy, gdy dane są niespójne, lub zgodnie z harmonogramem. Jeśli nie chcesz konfigurować automatycznego sprawdzania spójności, w dowolnym momencie możesz uruchomić sprawdzanie ręczne, klikając prawym przyciskiem myszy grupę ochrony i wybierając polecenie **Przeprowadź sprawdzanie spójności**.
 
     Po utworzeniu grupy ochrony następuje replikacja początkowa danych zgodnie z wybraną metodą. Po replikacji początkowej tworzone są poszczególne kopie zapasowe zgodnie z ustawieniami grupy ochrony. Jeśli chcesz odzyskać kopie zapasowe danych, zwróć uwagę na następujące kwestie:
-
-## <a name="back-up-virtual-machines-configured-for-live-migration"></a>Tworzenie kopii zapasowych maszyn wirtualnych skonfigurowanych do migracji na żywo
-
-Gdy maszyny wirtualne są zaangażowane w migrację na żywo, program MABS nadal chroni maszyny wirtualne, o ile agent ochrony MABS jest zainstalowany na hoście funkcji Hyper-V. Sposób, w jaki mabs chroni maszyny wirtualne zależy od typu migracji na żywo zaangażowanych.
-
-**Migracja na żywo w klastrze** — gdy maszyna wirtualna jest migrowana w klastrze MABS wykrywa migrację i kopii zapasowej maszyny wirtualnej z nowego węzła klastra bez żadnych wymagań dotyczących interwencji użytkownika. Ponieważ lokalizacja magazynu nie uległa zmianie, usługa MABS kontynuuje wykonywanie pełnych kopii zapasowych.
-
-**Migracja na żywo poza klastrem** — gdy maszyna wirtualna jest migrowana między serwerami autonomicznymi, różnymi klastrami lub między serwerem autonomicznym a klastrem, usługa MABS wykrywa migrację i może przeprowadzić jej utworzenie kopii zapasowej bez interwencji użytkownika.
-
-### <a name="requirements-for-maintaining-protection"></a>Wymagania dotyczące utrzymania ochrony
-
-Poniżej przedstawiono wymagania dotyczące utrzymania ochrony podczas migracji na żywo:
-
-- Hosty funkcji Hyper-V dla maszyn wirtualnych muszą znajdować się w chmurze programu WindowsMM centrum systemowego na serwerze programu VMM z systemem co najmniej System Center 2012 z sp1.
-
-- Agent ochrony MABS musi być zainstalowany na wszystkich hostach funkcji Hyper-V.
-
-- Serwery MABS muszą być podłączone do serwera programu VMM. Wszystkie serwery hostów funkcji Hyper-V w chmurze programu VMM muszą być również połączone z serwerami MABS. Dzięki temu mabs do komunikowania się z serwerem programu VMM, dzięki czemu mabs można dowiedzieć się, na którym serwerze hosta funkcji Hyper-V maszyna wirtualna jest aktualnie uruchomiona, i utworzyć nową kopię zapasową z tego serwera funkcji Hyper-V. Jeśli nie można nawiązać połączenia z serwerem funkcji Hyper-V, kopia zapasowa kończy się niepowodzeniem, a komunikat, że agent ochrony MABS jest nieosiągalny.
-
-- Wszystkie serwery MABS, serwery programu VMM i serwery hosta funkcji Hyper-V muszą znajdować się w tej samej domenie.
-
-### <a name="details-about-live-migration"></a>Szczegółowe informacje o migracji na żywo
-
-W przypadku tworzenia kopii zapasowej podczas migracji na żywo należy pamiętać o następujących kwestiach:
-
-- Jeśli migracja na żywo przenosi magazyn, usługa MABS wykonuje sprawdzanie pełnej spójności maszyny wirtualnej, a następnie kontynuuje wykonywanie pełnych kopii zapasowych. W przypadku migracji na żywo magazynu funkcja Hyper-V reorganizuje wirtualny dysk twardy (VHD) lub VHDX, co powoduje jednorazowy skok rozmiaru danych kopii zapasowej MABS.
-
-- Na hoście maszyny wirtualnej włącz funkcję automatycznego instalowania, aby umożliwić ochronę wirtualną, i wyłącz odciążanie przy użyciu technologii TCP Chimney.
-
-- Firma MABS używa portu 6070 jako domyślnego portu do obsługi usługi pomocnika programu DPM-VMM. Aby zmienić rejestr:
-
-    1. Przejdź do klucza **HKLM\Software\Microsoft\Microsoft Data Protection Manager\Configuration**.
-    2. Utwórz 32-bitową wartość DWORD: DpmVmmHelperServicePort i zapisz zaktualizowany numer portu jako część klucza rejestru.
-    3. Otwórz plik ```<Install directory>\Azure Backup Server\DPM\DPM\VmmHelperService\VmmHelperServiceHost.exe.config``` i zmień numer portu z 6070 na nowy port. Na przykład: ```<add baseAddress="net.tcp://localhost:6080/VmmHelperService/" />```
-    4. Uruchom ponownie usługę pomocnika DPM-VMM, a następnie uruchom ponownie usługę programu DPM.
-
-### <a name="set-up-protection-for-live-migration"></a>Konfiguracja ochrony migracji na żywo
-
-Aby skonfigurować ochronę migracji na żywo:
-
-1. Skonfiguruj serwer MABS i jego magazyn oraz zainstaluj agenta ochrony MABS na każdym serwerze hosta lub węźle klastra funkcji Hyper-V w chmurze programu VMM. Jeśli używasz magazynu SMB w klastrze, zainstaluj agenta ochrony MABS we wszystkich węzłach klastra.
-
-2. Zainstaluj konsolę programu VMM jako składnik klienta na serwerze MABS, aby usługa MABS mogła komunikować się z serwerem programu VMM. Konsola powinna mieć taką samą wersję, jaka działa na serwerze programu VMM.
-
-3. Przypisz konto MABSMachineName$ jako konto administratora tylko do odczytu na serwerze zarządzania programem VMM.
-
-4. Podłącz wszystkie serwery hostów funkcji Hyper-V do wszystkich serwerów MABS za pomocą polecenia `Set-DPMGlobalProperty` cmdlet programu PowerShell. Polecenie cmdlet akceptuje wiele nazw serwerów MABS. Użyj formatu: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Aby uzyskać więcej informacji, zobacz [Set-DPMGlobalProperty](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019).
-
-5. Po odnalezieniu w programie VMM wszystkich maszyn wirtualnych uruchomionych na hostach funkcji Hyper-V w chmurach programu VMM skonfiguruj grupę ochrony i dodaj maszyny wirtualne, które chcesz chronić. Automatyczne sprawdzanie spójności powinny być włączone na poziomie grupy ochrony w celu ochrony w scenariuszach mobilności maszyny wirtualnej.
-
-6. Po skonfigurowaniu ustawień, gdy maszyna wirtualna migruje z jednego klastra do drugiego, wszystkie kopie zapasowe są kontynuowane zgodnie z oczekiwaniami. Możesz sprawdzić, czy migracja na żywo jest włączona zgodnie z oczekiwaniami, w następujący sposób:
-
-   1. Sprawdź, czy usługa pomocnika DPM-VMM jest uruchomiona. Jeśli tak nie jest, uruchom go.
-
-   2. Otwórz program Microsoft SQL Server Management Studio i połącz się z wystąpieniem, w którym znajduje się baza danych MABS (DPMDB). W bazie danych DPMDB uruchom następujące zapytanie: `SELECT TOP 1000 [PropertyName] ,[PropertyValue] FROM[DPMDB].[dbo].[tbl_DLS_GlobalSetting]`.
-
-      Ta kwerenda zawiera `KnownVMMServer`właściwość o nazwie . Ta wartość powinna być taka sama jak wartość dostarczona z poleceniem cmdlet `Set-DPMGlobalProperty`.
-
-   3. Uruchom następujące zapytanie, aby zweryfikować parametr *VMMIdentifier* w lokalizacji `PhysicalPathXML` dla konkretnej maszyny wirtualnej. Zastąp `VMName` nazwą maszyny wirtualnej.
-
-      ```sql
-      select cast(PhysicalPath as XML) from tbl_IM_ProtectedObject where DataSourceId in (select datasourceid from tbl_IM_DataSource   where DataSourceName like '%<VMName>%')
-      ```
-
-   4. Otwórz plik *.xml, który zwraca to zapytanie, i sprawdź, czy w polu *VMMIdentifier* znajduje się wartość.
-
-### <a name="run-manual-migration"></a>Uruchamianie ręcznej migracji
-
-Po wykonaniu kroków w poprzednich sekcjach i zakończeniu zadania Menedżera podsumowania MABS migracja jest włączona. Domyślnie to zadanie jest uruchamiane o północy i wykonywane każdego ranka. Jeśli chcesz uruchomić ręczną migrację w celu sprawdzenia, czy wszystko działa zgodnie z oczekiwaniami, wykonaj następujące czynności:
-
-1. Otwórz program SQL Server Management Studio i połącz się z wystąpieniem, w którym znajduje się baza danych MABS.
-
-2. Uruchom następujące zapytanie: `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0`. To zapytanie zwraca identyfikator harmonogramu **ScheduleID**. Zapisz ten identyfikator, ponieważ użyjesz go w następnym kroku.
-
-3. W programie SQL Server Management Studio rozwiń pozycję **Agent programu SQL Server**, a następnie rozwiń pozycję **Zadania**. Kliknij prawym przyciskiem myszy zapisany identyfikator **ScheduleID** i wybierz polecenie **Uruchom zadanie w kroku**.
-
-Wydajność kopii zapasowej ma wpływ podczas pracy zadania. Czas potrzebny na zakończenie zadania zależy od rozmiaru i skali wdrożenia.
 
 ## <a name="back-up-replica-virtual-machines"></a>Tworzenie kopii zapasowych maszyn wirtualnych repliki
 

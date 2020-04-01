@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z błędami uwierzytelniania podczas łączenia się z maszyną wirtualną platformy Azure za pomocą protokołu RDP | Dokumenty firmy Microsoft
-description: ''
+description: Dowiedz się, jak rozwiązywać problemy z błędami uwierzytelniania, które występują podczas łączenia się z maszyną wirtualną platformy Azure za pomocą protokołu RDP (Remote Desktop Protocol).
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266977"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420818"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Rozwiązywanie problemów z uwierzytelnianiem podczas używania protokołu RDP w celu połączenia z maszyną wirtualną platformy Azure
 

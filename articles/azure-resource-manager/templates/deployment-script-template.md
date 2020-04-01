@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 03/30/2020
 ms.author: jgao
-ms.openlocfilehash: 7ff91545b1b7ab1920f437e0c3a5410270efaac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ef1c3d3fe0fd1ecad95e027b06ce14fd70d4d3f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153254"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437878"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Używanie skryptów wdrażania w szablonach (Wersja zapoznawcza)
 
@@ -42,7 +42,7 @@ Korzyści ze skryptu wdrażania:
 - **Tożsamość zarządzana przypisana przez użytkownika z rolą współautora do docelowej grupy zasobów**. Ta tożsamość jest używana do wykonywania skryptów wdrażania. Aby wykonać operacje poza grupą zasobów, należy udzielić dodatkowych uprawnień. Na przykład przypisz tożsamość do poziomu subskrypcji, jeśli chcesz utworzyć nową grupę zasobów.
 
   > [!NOTE]
-  > Aparat skryptów wdrażania tworzy konto magazynu i wystąpienie kontenera w tle.  Tożsamość zarządzana przypisana przez użytkownika z rolą współautora na poziomie subskrypcji jest wymagana, jeśli subskrypcja nie zarejestrowała konta magazynu platformy Azure (Microsoft.Storage) i wystąpienia kontenera platformy Azure (Microsoft.ContainerInstance) zasobu Dostawców.
+  > Aparat skryptów wdrażania tworzy konto magazynu i wystąpienie kontenera w tle.  Tożsamość zarządzana przypisana przez użytkownika z rolą współautora na poziomie subskrypcji jest wymagana, jeśli subskrypcja nie zarejestrowała dostawców zasobów konta magazynu platformy Azure (Microsoft.Storage) i wystąpienia kontenera platformy Azure (Microsoft.ContainerInstance).
 
   Aby utworzyć tożsamość, zobacz [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu portalu Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)portal lub przy użyciu interfejsu [wiersza polecenia platformy Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)lub przy użyciu programu Azure [PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md). Identyfikator tożsamości jest potrzebny podczas wdrażania szablonu. Format tożsamości jest:
 
@@ -52,7 +52,7 @@ Korzyści ze skryptu wdrażania:
 
   Użyj następującego skryptu interfejsu wiersza polecenia lub programu PowerShell, aby uzyskać identyfikator, podając nazwę grupy zasobów i nazwę tożsamości.
 
-  # <a name="cli"></a>[Cli](#tab/CLI)
+  # <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
   ```azurecli-interactive
   echo "Enter the Resource Group name:" &&
@@ -62,7 +62,7 @@ Korzyści ze skryptu wdrażania:
   az identity show -g jgaoidentity1008rg -n jgaouami --query id
   ```
 
-  # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
   ```azurepowershell-interactive
   $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
@@ -101,6 +101,12 @@ Przykładem jest następujący json.  Najnowszy schemat szablonu można znaleź�
     "forceUpdateTag": 1,
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
+    "environmentVariables": [
+      {
+        "name": "someSecret",
+        "secureValue": "if this is really a secret, don't put it here... in plain text..."
+      }
+    ],
     "scriptContent": "
       param([string] $name)
       $output = 'Hello {0}' -f $name
@@ -126,6 +132,7 @@ Szczegóły wartości właściwości:
 - **forceUpdateTag:** Zmiana tej wartości między wdrożeniami szablonów zmusza skrypt wdrożenia do ponownego wykonania. Użyj funkcji newGuid() lub utcNow(), która musi być ustawiona jako domyślnaValue parametru. Aby dowiedzieć się więcej, zobacz [Uruchamianie skryptu więcej niż raz](#run-script-more-than-once).
 - **azPowerShellVersion**/**azCliVersion**: Określ wersję modułu, która ma być używana. Aby uzyskać listę obsługiwanych wersji programu PowerShell i CLI, zobacz [Wymagania wstępne](#prerequisites).
 - **argumenty**: Określ wartości parametrów. Wartości są oddzielone spacjami.
+- **environmentVariables**: Określ zmienne środowiskowe, które mają być przerzuceni do skryptu. Aby uzyskać więcej informacji, zobacz [Tworzenie skryptów wdrażania](#develop-deployment-scripts).
 - **scriptContent**: Określ zawartość skryptu. Aby uruchomić skrypt zewnętrzny, należy użyć zamiast tego. `primaryScriptUri` Przykłady można znaleźć w 1999 r. w [yd.](#use-inline-scripts) [Use external script](#use-external-scripts)
 - **primaryScriptUri**: Określ publicznie dostępny adres URL do podstawowego skryptu wdrażania z obsługiwanymi rozszerzeniami plików.
 - **supportingScriptUris**: Określ tablicę publicznie dostępnych adresów URL do `ScriptContent` obsługi `PrimaryScriptUri`plików, które są wywoływane w jednym lub .
@@ -234,7 +241,7 @@ Można kontrolować, jak program PowerShell reaguje na błędy nie kończące si
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Przekazywanie zabezpieczonych ciągów do skryptu wdrażania
 
-Ustawienie zmiennych środowiskowych w wystąpieniach kontenerów umożliwia udostępnienie dynamicznej konfiguracji aplikacji lub skryptu uruchamianego przez kontener. Skrypt wdrażania obsługuje niezabezpieczonych i zabezpieczonych zmiennych środowiskowych w taki sam sposób jak wystąpienie kontenera platformy Azure. Aby uzyskać więcej informacji, zobacz [Ustawianie zmiennych środowiskowych w wystąpieniach kontenera](../../container-instances/container-instances-environment-variables.md#secure-values).
+Ustawienie zmiennych środowiskowych (EnvironmentVariable) w wystąpieniach kontenera umożliwia zapewnienie dynamicznej konfiguracji aplikacji lub skryptu uruchamianego przez kontener. Skrypt wdrażania obsługuje niezabezpieczonych i zabezpieczonych zmiennych środowiskowych w taki sam sposób jak wystąpienie kontenera platformy Azure. Aby uzyskać więcej informacji, zobacz [Ustawianie zmiennych środowiskowych w wystąpieniach kontenera](../../container-instances/container-instances-environment-variables.md#secure-values).
 
 ## <a name="debug-deployment-scripts"></a>Skrypty wdrażania debugowania
 

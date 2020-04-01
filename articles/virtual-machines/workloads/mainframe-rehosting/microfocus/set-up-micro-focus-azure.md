@@ -8,22 +8,25 @@ ms.author: edprice
 manager: edprice
 editor: edprice
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 03/30/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: a5426c3cd7552b24739f9a20e01d5a4b42bd383c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3fa5faccf17df17bc4f7cc2d8b023b868fdbe1
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68834574"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411194"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Instalowanie programu Micro Focus Enterprise Server 4.0 i Enterprise Developer 4.0 na platformie Azure
 
 W tym artykule pokazano, jak skonfigurować [micro focus enterprise server 4.0](https://www.microfocus.com/documentation/enterprise-developer/es30/) i Micro Focus Enterprise Developer [4.0](https://www.microfocus.com/documentation/enterprise-developer/ed_30/) na platformie Azure.
 
 Typowe obciążenie na platformie Azure jest środowiskiem deweloperskim i testowym. Ten scenariusz jest typowy, ponieważ jest tak opłacalne i łatwe do wdrożenia i zburzyć. Dzięki serwerowi Enterprise Server firma Micro Focus stworzyła jedną z największych dostępnych platform hostowania mainframe. Obciążeń z/OS można uruchamiać na tańszej platformie x86 na platformie Azure przy użyciu maszyn wirtualnych systemu Windows lub Linux (maszyn wirtualnych).
+
+> [!NOTE]
+> Wkrótce: Instrukcje dotyczące konfigurowania [programu Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) na maszynach wirtualnych platformy Azure.
 
 Ta konfiguracja używa maszyn wirtualnych platformy Azure z obrazem systemu Windows Server 2016 z portalu Azure Marketplace z już zainstalowanym programem Microsoft SQL Server 2017. Ta konfiguracja dotyczy również usługi Azure Stack.
 

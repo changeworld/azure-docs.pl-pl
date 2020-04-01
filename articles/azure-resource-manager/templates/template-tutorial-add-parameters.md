@@ -2,15 +2,15 @@
 title: Samouczek - dodawanie parametrów do szablonu
 description: Dodaj parametry do szablonu usługi Azure Resource Manager, aby był wielokrotnego użycia.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b4f8d5098fc9cf2f91139979cae430594edac5af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de7ec961672db2f3120e00f1a42b33f71e7ab092
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369870"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437829"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>Samouczek: Dodawanie parametrów do szablonu ARM
 
@@ -44,7 +44,7 @@ Zastosujmy szablon. W poniższym przykładzie wdraża szablon z interfejsu wiers
 
 Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie przyjęto założenie, że ustawiono **zmienną templateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -90,7 +90,7 @@ Parametr **storageSKU** ma wartość domyślną. Ta wartość jest używana, gdy
 
 Możesz przystąpić do ponownego wdrożenia. Ponieważ domyślna jednostka SKU jest ustawiona na **Standard_LRS,** nie trzeba podawać wartości dla tego parametru.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -112,13 +112,16 @@ az deployment group create \
 
 ---
 
+> [!NOTE]
+> Jeśli wdrożenie nie powiodło się, użyj przełącznika **debugowania** z poleceniem wdrażania, aby wyświetlić dzienniki debugowania.  Można również użyć pełnego **przełącznika,** aby wyświetlić pełne dzienniki debugowania.
+
 Aby zobaczyć elastyczność szablonu, zastosuj ponownie. Tym razem parametr SKU ma **Standard_GRS**. Możesz przekazać nową nazwę, aby utworzyć inne konto magazynu, lub użyć tej samej nazwy, aby zaktualizować istniejące konto magazynu. Obie opcje działają.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
-  -Name usedefaultsku `
+  -Name usenondefaultsku `
   -ResourceGroupName myResourceGroup `
   -TemplateFile $templateFile `
   -storageName "{your-unique-name}" `
@@ -129,7 +132,7 @@ New-AzResourceGroupDeployment `
 
 ```azurecli
 az deployment group create \
-  --name usedefaultsku \
+  --name usenondefaultsku \
   --resource-group myResourceGroup \
   --template-file $templateFile \
   --parameters storageSKU=Standard_GRS storageName={your-unique-name}
@@ -139,7 +142,7 @@ az deployment group create \
 
 Na koniec uruchommy jeszcze jeden test i zobaczmy, co się stanie po przejściu w jednostce SKU, która nie jest jedną z dozwolonych wartości. W takim przypadku testujemy scenariusz, w którym użytkownik szablonu uważa, że **podstawowe** jest jednym z jednostek SKU.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `

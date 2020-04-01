@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 48a2ed5e4774ac07b4b8fa72a5ee0be86811cfb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3431576acbb01a0cc3a5f372460b28be05bf7ce7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298737"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437464"
 ---
 # <a name="sensor-partner-integration"></a>Integracja z partnerami obsługującymi czujniki
 
@@ -42,9 +42,9 @@ Dane telemetryczne są mapowane na komunikat kanoniczny, który jest publikowany
 
 **Tworzenie API**
 
-Interfejsy API zawierają dokumentację techniczną Swagger. Aby uzyskać więcej informacji na temat interfejsów API i odpowiadających im żądań lub odpowiedzi, zobacz [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
+Interfejsy API zawierają dokumentację techniczną Swagger. Aby uzyskać więcej informacji na temat interfejsów API i odpowiadających im żądań lub odpowiedzi, zobacz [Swagger](https://aka.ms/FarmBeatsSwagger).
 
-**Uwierzytelnianie**
+**Authentication**
 
 FarmBeats używa uwierzytelniania usługi Microsoft Azure Active Directory.Usługa Azure App Service zapewnia wbudowaną obsługę uwierzytelniania i autoryzacji.
 
@@ -150,8 +150,8 @@ FarmBeats Datahub ma następujące interfejsy API, które umożliwiają partnero
   Kod_produktu  | Kod produktu lub nazwa lub numer modelu. Na przykład RS-CO2-N01.  |
   SensorZezuje nazwę >  | Nazwa miary czujnika. Obsługiwane są tylko małe litery. W przypadku pomiarów z różnych głębokości należy określić głębokość. Na przykład soil_moisture_15cm. Ta nazwa musi być zgodna z danymi telemetrycznymi. |
   SensorZezamia > DataType  | Typ danych telemetrycznych. Obecnie obsługiwane jest double. |
-  SensorZezje typ >  | Typ pomiaru danych telemetrycznych czujnika. Poniżej znajdują się typy zdefiniowane przez system: AmbientTemperature, CO2, Głębokość, Elektryczność, Płaszcz liści, Długość, LiquidLevel, Azotan, O2, PH, Fosforan, PointInTime, Potas, Ciśnienie, RainGauge, Względność, Zasolenie, GlebaSocj, GlebaTemperytura, SolarRadiation, Stan, TimeDuration, UVRadiation, UVIndex, Objętość, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Aby dodać więcej, zapoznaj się z interfejsem API /ExtendedType.
-  SensorZezje > jednostkę | Jednostka danych telemetrycznych czujnika. Poniżej znajdują się jednostki zdefiniowane przez system: NoUnit, Celsjusza, Fahrenheita, Kelvin, Rankine, Pascal, Merkury, PSI, Milimetr, CentiMeter, Meter, Inch, Stopy, Mile, Kilometer, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, MilliLiter, Seconds, UnixTimestamp, MicroMolPerMeterSquaredPerSecond i InchesPerHour. Aby dodać więcej, zapoznaj się z interfejsem API /ExtendedType.
+  SensorZezje typ >  | Typ pomiaru danych telemetrycznych czujnika. Poniżej znajdują się typy zdefiniowane przez system: AmbientTemperature, CO2, Głębokość, Elektryczność, LeafWetness, Długość, LiquidLevel, Azotan, O2, PH, Fosforan, PointInTime, Potas, Ciśnienie, RainGauge, WzględnaHumidity, Zasolenie, GlebaPrzestrzenianie, GlebaTemperatyzacja, SolarRadiation, Stan, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Aby dodać więcej, zapoznaj się z interfejsem API /ExtendedType.
+  SensorZezje > jednostkę | Jednostka danych telemetrycznych czujnika. Poniżej znajdują się jednostki zdefiniowane przez system: NoUnit, Celsjusza, Fahrenheita, Kelvin, Rankine, Pascal, Merkury, PSI, Milimetr, CentiMeter, Meter, Inch, Stopy, Mile, Kilometr, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, PartsPerMillion, MicroMol, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, MilliLiter, Sekundy, UnixTimestamp, MicroMolPerMeterSquaredPerSecond i InchesPerHour. Aby dodać więcej, zapoznaj się z interfejsem API /ExtendedType.
   SensorMeasures > AggregationType  | Brak, średnia, maksymalna, minimalna lub StandardDeviation.
   SensorZezuje > głębokość  | Głębokość czujnika w centymetrach. Na przykład pomiar wilgoci 10 cm pod ziemią.
   SensorZezamia > Opis  | Podaj opis pomiaru.
@@ -188,7 +188,7 @@ Translator powinien mieć możliwość dodawania nowych urządzeń lub czujnikó
 
 ### <a name="add-new-types-and-units"></a>Dodawanie nowych typów i jednostek
 
-FarmBeats obsługuje dodawanie nowych typów pomiarów czujników i jednostek. Aby uzyskać więcej informacji na temat interfejsu API /ExtendedType, zobacz [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
+FarmBeats obsługuje dodawanie nowych typów pomiarów czujników i jednostek. Aby uzyskać więcej informacji na temat interfejsu API /ExtendedType, zobacz [Swagger](https://aka.ms/FarmBeatsSwagger).
 
 ## <a name="telemetry-specifications"></a>Specyfikacje telemetryczne
 
@@ -230,11 +230,11 @@ Format wiadomości kanonicznej jest następujący:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }
