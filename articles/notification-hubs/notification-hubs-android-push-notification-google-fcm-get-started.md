@@ -573,4 +573,4 @@ W tym samouczku użyto Firebase Cloud Messaging do emisji powiadomień do wszyst
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: notification-hubs-push-notification-overview.md
-[Portal Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

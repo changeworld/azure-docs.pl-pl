@@ -3,12 +3,12 @@ title: Planowanie wdrożenia klastra sieci szkieletowej usługi Azure
 description: Dowiedz się więcej o planowaniu i przygotowywaniu do wdrożenia klastra sieci szkieletowej produkcyjnych w produkcji na platformie Azure.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1762a6975448301957579b3437a8af5c89b3accd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78193480"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422279"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Planowanie i przygotowanie do wdrożenia klastra
 
@@ -86,6 +86,16 @@ Efemeryczne dyski systemu operacyjnego nie jest określoną funkcją sieci szkie
             }
         }
     ```
+
+> [!NOTE]
+> Aplikacje użytkowników nie powinny mieć żadnych zależności/pliku/artefaktu na dysku systemu operacyjnego, ponieważ dysk systemu operacyjnego zostałby utracony w przypadku uaktualnienia systemu operacyjnego.
+> W związku z tym nie zaleca się [używania PatchOrchestrationApplication](https://github.com/microsoft/Service-Fabric-POA) z dyskami tymczasowymi.
+>
+
+> [!NOTE]
+> Istniejących nieulotnych maszyn wirtualnych nie można uaktualnić w miejscu do używania dysków tymczasowych.
+> Aby przeprowadzić migrację, użytkownicy będą musieli [dodać](./virtual-machine-scale-set-scale-node-type-scale-out.md) nowy węzełType z dyskami efemerycznymi, przenieść obciążenia do nowego węzłaType & [usunąć](./service-fabric-how-to-remove-node-type.md) istniejący typ węzła.
+>
 
 Aby uzyskać więcej informacji i dalsze opcje konfiguracji, zobacz [Dyski systemu operacyjnego Efemeryczny dla maszyn wirtualnych platformy Azure](../virtual-machines/windows/ephemeral-os-disks.md) 
 

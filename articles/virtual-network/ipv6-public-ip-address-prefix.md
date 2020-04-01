@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 8254a7d86d5cadc2ddc03940f4ab2d08de74bd86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 096dbcb6b6a732bd21622658f6f30c5158a821c5
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72965169"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420523"
 ---
-# <a name="reserved-public-ipv6-address-prefix-preview"></a>Zarezerwowany publiczny prefiks adresu IPv6 (wersja zapoznawcza)
+# <a name="reserved-public-ipv6-address-prefix"></a>Zarezerwowany publiczny prefiks adresu IPv6
 
 Na platformie Azure sieci wirtualne (IPv4+ IPv6) (IPv4+IPv6) (IPv4) i maszyny wirtualne (VM) są domyślnie bezpieczne, ponieważ nie mają łączności z Internetem. Możesz łatwo dodać łączność internetową IPv6 do modułów równoważenia obciążenia platformy Azure i maszyn wirtualnych za pomocą publicznych adresów IPv6, które można uzyskać z platformy Azure.
 
@@ -30,8 +30,7 @@ Wszystkie publiczne adresy IP, które można zarezerwować są skojarzone z regi
 
 Oprócz rezerwacji poszczególnych adresów IPv6 można zarezerwować ciągłe zakresy adresów Protokołu IPv6 platformy Azure (znany jako prefiks IP) do użytku.  Podobnie jak w indywidualnych adresach IP, zarezerwowane prefiksy są skojarzone z wybranym regionem platformy Azure i z subskrypcją platformy Azure. Rezerwowanie przewidywalnego, ciągłego zakresu adresów ma wiele zastosowań. Na przykład można znacznie uprościć *białą listę* adresów IP aplikacji hostowanych na platformie Azure przez firmę i klientów, ponieważ statyczne zakresy adresów IP mogą być łatwo zaprogramowane w zapory lokalne.  W razie potrzeby można utworzyć poszczególne publiczne adresy IP z prefiksu IP, a po usunięciu tych poszczególnych publicznych adresów IP są one *zwracane* do zastrzeżonego zakresu, aby można było ich użyć ponownie później. Wszystkie adresy IP w prefiksie IP są zarezerwowane do wyłącznego użytku do czasu usunięcia prefiksu.
 
-> [!Important]
-> IPv6 dla usługi Azure Virtual Network jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 ## <a name="ipv6-prefix-sizes"></a>Rozmiary prefiksów IPv6
 Dostępne są następujące publiczne rozmiary prefiksów IP:

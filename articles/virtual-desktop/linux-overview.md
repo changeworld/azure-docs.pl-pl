@@ -8,23 +8,31 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 967fd1fa182b7c8e581fd74cc287c5a6ba0e4038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127827"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422418"
 ---
 # <a name="linux-support"></a>Obsługa systemu Linux
 
-Za pomocą pakietu Linux SDK dla pulpitu wirtualnego systemu Windows można utworzyć samodzielny klient pulpitu wirtualnego systemu Windows. Można go również użyć, aby włączyć obsługę pulpitu wirtualnego systemu Windows w aplikacji klienckiej. Ten krótki przewodnik wyjaśni, czym jest SDK Linuksa i jak zacząć go używać.
+Partnerzy mogą używać pakietu Linux SDK dla pulpitu wirtualnego systemu Windows do tworzenia autonomicznego klienta pulpitu wirtualnego systemu Windows. Można go również użyć, aby włączyć obsługę pulpitu wirtualnego systemu Windows w aplikacji klienckiej. Ten krótki przewodnik wyjaśni, czym jest SDK Linuksa i jak zacząć go używać.
+
+## <a name="connect-with-your-linux-device"></a>Połącz się z urządzeniem z systemem Linux
+
+Następujący partnerzy zatwierdzili klientów pulpitu wirtualnego systemu Windows dla urządzeń z systemem Linux.
+
+|Partner|Dokumentacja partnera|Wsparcie dla partnerów|
+|:------|:--------------------|:--------------|
+|![Logo IGEL](./media/partners/igel.png)|[Dokumentacja klienta IGEL](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[Pomoc techniczna firmy IGEL](https://www.igel.com/support/)|
 
 ## <a name="what-is-the-linux-sdk"></a>Co to jest SDK Systemu Linux?
 
 Interfejsy API sdk można używać do pobierania źródeł danych źródłowych zasobów, łączenia się z sesjami aplikacji pulpitu lub zdalnego i używania wielu przekierowań obsługiwanych przez naszych klientów zewnętrznych.
 
 > [!NOTE]
-> SDK jest obecnie w fazie rozwoju. Zaktualizujemy ten dokument z instrukcjami dostępu do sdk, gdy jest on dostępny.
+> SDK jest obecnie w fazie rozwoju. Zaktualizujemy ten dokument z instrukcjami dostępu do sdk, gdy jest ogólnie dostępny.
 
 ### <a name="supported-linux-distributions"></a>Obsługiwane dystrybucje linuksa
 

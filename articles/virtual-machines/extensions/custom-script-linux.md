@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: b75b232c048a1ea49256b12ce1b65c4bd87a1cf0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75970783a9408df0a8c128fb9540606e4e4a62f3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535446"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478173"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Używanie rozszerzenia niestandardowego skryptu platformy Azure w wersji 2 z maszynami wirtualnymi z systemem Linux
 Rozszerzenie niestandardowego skryptu w wersji 2 pobiera i uruchamia skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrożeniu, instalacji oprogramowania lub innego zadania konfiguracji/zarządzania. Skrypty można pobrać z usługi Azure Storage lub innej dostępnej lokalizacji internetowej lub udostępnić je do środowiska wykonawczego rozszerzenia. 
@@ -209,6 +209,8 @@ CustomScript używa następującego algorytmu do wykonania skryptu.
  1. wykonywanie skryptu przy użyciu _/bin/sh -c /var/lib/waagent/custom-script/#/script.sh.
 
 ####  <a name="property-managedidentity"></a>Właściwość: managedIdentity
+> [!NOTE]
+> Ta właściwość **musi** być określona tylko w ustawieniach chronionych.
 
 Kod CustomScript (wersja 2.1) obsługuje [tożsamość zarządzaną](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) do pobierania plików z adresów URL podanych w ustawieniu "fileUris". Umożliwia kod customscript dostęp do prywatnych obiektów blob usługi Azure Storage lub kontenerów bez konieczności przekazywania przez użytkownika wpisów tajnych, takich jak tokeny sygnatury dostępu współdzielonego lub klucze konta magazynu.
 
@@ -466,4 +468,3 @@ info:    vm extension get command OK
 
 ## <a name="next-steps"></a>Następne kroki
 Aby zobaczyć kod, bieżące problemy i wersje, zobacz [niestandardowe script-extension-linux repo](https://github.com/Azure/custom-script-extension-linux).
-

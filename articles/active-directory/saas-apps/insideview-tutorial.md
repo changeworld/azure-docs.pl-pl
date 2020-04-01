@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą InsideView | Dokumentacja firmy Microsoft'
-description: W tym samouczku dowiesz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i InsideView.
+title: 'Samouczek: Integracja usługi Azure Active Directory z insideview | Dokumenty firmy Microsoft'
+description: W tym samouczku dowiesz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i InsideView.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,180 +16,180 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 2149b8410104b39652b176895a31b42e094265f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67100086"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą InsideView
+# <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Samouczek: Integracja usługi Azure Active Directory z insideview
 
-W tym samouczku dowiesz się, jak zintegrować InsideView w usłudze Azure Active Directory (Azure AD).
-Ta integracja zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować InsideView z usługą Azure Active Directory (Azure AD).
+Integracja ta zapewnia następujące korzyści:
 
-* Możesz użyć usługi Azure AD w celu kontrolowania, kto ma dostęp do InsideView.
-* Aby umożliwić użytkownikom automatyczne logowanie do InsideView (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji: witryna Azure portal.
+* Za pomocą usługi Azure AD można kontrolować, kto ma dostęp do InsideView.
+* Można włączyć użytkowników, aby automatycznie zalogować się do InsideView (logowanie jednokrotne) za pomocą ich kont usługi Azure AD.
+* Konta można zarządzać w jednej centralnej lokalizacji: w witrynie Azure portal.
 
 Aby dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą InsideView, musisz mieć:
+Aby skonfigurować integrację usługi Azure AD z insideview, musisz mieć:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Subskrypcja InsideView, która ma logowanie jednokrotne włączone.
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja InsideView, która ma włączoną funkcję logowania jednokrotnego.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W ramach tego samouczka możesz skonfigurować i testowanie usługi Azure AD rejestracji jednokrotnej w środowisku testowym.
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* InsideView obsługuje logowanie Jednokrotne zainicjowane przez dostawcę tożsamości.
+* InsideView obsługuje identyfikator sytowy inicjowany przez protokół IdP.
 
 ## <a name="add-insideview-from-the-gallery"></a>Dodaj InsideView z galerii
 
-Aby skonfigurować integrację InsideView w usłudze Azure AD, należy dodać InsideView z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację InsideView z usługą Azure AD, należy dodać InsideView z galerii do listy zarządzanych aplikacji SaaS.
 
-1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory**:
+1. W [witrynie Azure portal](https://portal.azure.com)w lewym okienku wybierz pozycję **Azure Active Directory:**
 
     ![Wybierz pozycję Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**:
+2. Przejdź do **aplikacji dla przedsiębiorstw** > **Wszystkie aplikacje:**
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać aplikację, wybierz pozycję **nową aplikację** w górnej części okna:
+3. Aby dodać aplikację, wybierz **pozycję Nowa aplikacja** w górnej części okna:
 
     ![Wybierz nową aplikację](common/add-new-app.png)
 
-4. W polu wyszukiwania wprowadź **InsideView**. Wybierz **InsideView** w wynikach wyszukiwania, a następnie wybierz **Dodaj**.
+4. W polu wyszukiwania wpisz **InsideView**. Wybierz **insideview** w wynikach wyszukiwania, a następnie wybierz pozycję **Dodaj**.
 
     ![Wyniki wyszukiwania](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz skonfigurować i przetestować usługę Azure AD logowanie jednokrotne za pomocą InsideView przy użyciu użytkownika testu o nazwie Britta Simon.
-Aby włączyć logowanie jednokrotne, należy ustanowić relację między użytkownikiem usługi Azure AD i odpowiedniego użytkownika w InsideView.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD za pomocą funkcji InsideView przy użyciu użytkownika testowego o nazwie Britta Simon.
+Aby włączyć logowanie jednokrotne, należy ustanowić relację między użytkownikiem usługi Azure AD a odpowiednim użytkownikiem w insideview.
 
-Do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą InsideView, należy wykonać następujące czynności:
+Aby skonfigurować i przetestować logowanie jednookrotne usługi Azure AD za pomocą insideview, należy wykonać następujące kroki:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  do włączenia tej funkcji dla użytkowników.
-2. **[Konfigurowanie InsideView logowania jednokrotnego](#configure-insideview-single-sign-on)**  na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowania jednokrotnego.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  włączyć usługi Azure AD logowanie jednokrotne dla użytkownika.
-5. **[Tworzenie użytkownika testowego InsideView](#create-an-insideview-test-user)**  połączony na reprezentację w postaci usługi Azure AD użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  można sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj logowanie jednookrotne usługi Azure AD,](#configure-azure-ad-single-sign-on)** aby włączyć tę funkcję dla użytkowników.
+2. **[Konfigurowanie logowania jednokrotnego InsideView](#configure-insideview-single-sign-on)** po stronie aplikacji.
+3. **[Utwórz użytkownika testowego usługi Azure AD,](#create-an-azure-ad-test-user)** aby przetestować logowanie jednookrotne usługi Azure AD.
+4. **[Przypisz użytkownika testowego usługi Azure AD,](#assign-the-azure-ad-test-user)** aby włączyć logowanie jednookrotne usługi Azure AD dla użytkownika.
+5. **[Utwórz użytkownika testowego InsideView,](#create-an-insideview-test-user)** który jest połączony z reprezentacją usługi Azure AD użytkownika.
+6. **[Przetestuj logowanie jednokrotne,](#test-single-sign-on)** aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji włączysz usługę Azure AD logowania jednokrotnego w witrynie Azure portal.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z InsideView, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą insideview, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com/), na stronie InsideView integracji aplikacji wybierz **logowanie jednokrotne**:
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie Integracja aplikacji InsideView wybierz pozycję **Logowanie jednokrotne:**
 
-    ![Wybierz opcję logowania jednokrotnego](common/select-sso.png)
+    ![Wybieranie logowania jednokrotnego](common/select-sso.png)
 
-2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne:
+2. W oknie **dialogowym Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed,** aby włączyć logowanie jednokrotne:
 
-    ![Wybierz jedną metodę logowania jednokrotnego](common/select-saml-option.png)
+    ![Wybieranie metody logowania jednokrotnego](common/select-saml-option.png)
 
-3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe:
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** wybierz ikonę **Edycja,** aby otworzyć okno dialogowe **Podstawowa konfiguracja SAML:**
 
-    ![Ikona edycji](common/edit-urls.png)
+    ![Ikona Edytuj](common/edit-urls.png)
 
-4. W **podstawową konfigurację protokołu SAML** okna dialogowego pole, wykonaj następujące kroki.
+4. W oknie dialogowym **Podstawowa konfiguracja SAML** należy wykonać następujące czynności.
 
-    ![Podstawowy plik konfiguracji SAML, okno dialogowe](common/idp-reply.png)
+    ![Podstawowe okno dialogowe Konfiguracja SAML](common/idp-reply.png)
 
-    W **adres URL odpowiedzi** wprowadź adres URL, w tym wzorcu:
+    W polu **Odpowiedz na adres URL** wprowadź adres URL w tym wzorzec:
 
     `https://my.insideview.com/iv/<STS Name>/login.iv`
 
     > [!NOTE]
-    > Ta wartość jest symbolem zastępczym. Musisz użyć adresu URL odpowiedzi rzeczywistych. Skontaktuj się z pomocą [zespołem pomocy technicznej InsideView](mailto:support@insideview.com) można uzyskać wartość. Może również odnosić się do wzorców objętego **podstawową konfigurację protokołu SAML** okno dialogowe, w witrynie Azure portal.
+    > Ta wartość jest symbolem zastępczym. Musisz użyć rzeczywistego adresu URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej InsideView,](mailto:support@insideview.com) aby uzyskać wartość. Można również odwołać się do wzorców wyświetlanych w oknie dialogowym **Podstawowa konfiguracja SAML** w witrynie Azure portal.
 
-5. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** stronie **certyfikat podpisywania SAML** zaznacz **Pobierz** łącze obok **certyfikatu (Raw)** , zgodnie z wymaganiami, a następnie Zapisz certyfikat na komputerze:
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** w sekcji **Saml Signing Certificate (Certyfikat podpisywania SAML)** wybierz łącze **Pobierz** obok **pozycji Certyfikat (Raw)**— zgodnie z wymaganiami i zapisz certyfikat na komputerze:
 
     ![Link do pobierania certyfikatu](common/certificateraw.png)
 
-6. W **Konfigurowanie InsideView** sekcji, skopiuj odpowiednie adresy URL, w zależności od wymagań:
+6. W sekcji **Konfigurowanie insideview** skopiuj odpowiednie adresy URL na podstawie wymagań:
 
-    ![Skopiuj adresy URL konfiguracji](common/copy-configuration-urls.png)
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
     1. **Adres URL logowania**.
 
-    1. **Usługa Azure AD identyfikator**.
+    1. **Identyfikator usługi Azure AD**.
 
     1. **Adres URL wylogowania**.
 
-### <a name="configure-insideview-single-sign-on"></a>Konfigurowanie InsideView logowania jednokrotnego
+### <a name="configure-insideview-single-sign-on"></a>Konfigurowanie logowania jednokrotnego InsideView
 
-1. W nowym oknie przeglądarki internetowej Zaloguj się do witryny firmy InsideView jako administrator.
+1. W nowym oknie przeglądarki internetowej zaloguj się do witryny firmy InsideView jako administrator.
 
-1. W górnej części okna wybierz **administratora**, **ustawienia SingleSignOn**, a następnie **Dodaj SAML**.
+1. W górnej części okna wybierz pozycję **Administrator**, **Ustawienia SingleSignOn**, a następnie **dodaj SAML**.
    
-   ![Ustawienia języka SAML pojedynczego logowania jednokrotnego](./media/insideview-tutorial/ic794135.png "SAML pojedynczego ustawień logowania jednokrotnego")
+   ![Ustawienia logowania jednokrotnego SAML](./media/insideview-tutorial/ic794135.png "Ustawienia logowania jednokrotnego SAML")
 
-1. W **Dodaj nowe SAML** sekcji, wykonaj następujące kroki.
+1. W sekcji **Dodaj nowy SAML,** należy wykonać następujące kroki.
 
-    ![Dodaj sekcję nowy SAML](./media/insideview-tutorial/ic794136.png "Dodaj sekcję nowego języka SAML")
+    ![Dodawanie nowej sekcji SAML](./media/insideview-tutorial/ic794136.png "Dodawanie nowej sekcji SAML")
 
-    1. W **nazwa usługi STS** wprowadź nazwę dla danej konfiguracji.
+    1. W polu **Nazwa STS** wprowadź nazwę konfiguracji.
 
-    1. W **SamlP/WS-Fed niechciane punktu końcowego** pole, Wklej **adres URL logowania** wartością skopiowaną z witryny Azure portal.
+    1. W polu **SamlP/WS-Fed Niezamawiany punkt końcowy** wklej wartość **adresu URL logowania** skopiowaną z witryny Azure portal.
 
-    1. Otwórz pierwotne certyfikatu, który został pobrany z witryny Azure portal. Skopiuj zawartość certyfikatu do Schowka, a następnie wklej zawartość do **certyfikatu usługi STS** pole.
+    1. Otwórz certyfikat raw pobrany z witryny Azure portal. Skopiuj zawartość certyfikatu do schowka, a następnie wklej zawartość do pola **Certyfikat STS.**
 
-    1. W **mapowanie identyfikatora użytkownika Crm** wprowadź **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
+    1. W polu **Mapowanie identyfikatora użytkownika programu Crm** wprowadź . **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**
 
-    1. W **mapowanie E-mail Crm** wprowadź **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
+    1. W polu **Mapowanie wiadomości e-mail programu Crm** wprowadź plik **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
 
-    1. W **mapowanie imię Crm** wprowadź **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** .
+    1. W polu **Mapowanie imienia crm** wprowadź . **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**
 
-    1. W **Crm lastName mapowanie** wprowadź **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** .  
+    1. W polu **Mapowanie ostatnioname crm** wprowadź . **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**  
 
-    1. Wybierz pozycję **Zapisz**.
+    1. Wybierz **pozycję Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzysz użytkownika testu o nazwie Britta Simon w witrynie Azure portal.
+W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie Azure portal.
 
-1. W witrynie Azure portal wybierz **usługi Azure Active Directory** w okienku po lewej stronie wybierz **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**:
+1. W witrynie Azure portal wybierz pozycję **Azure Active Directory** w lewym okienku, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy:**
 
-    ![Wybierz opcję Wszyscy użytkownicy](common/users.png)
+    ![Wybierz pozycję Wszyscy użytkownicy](common/users.png)
 
-2. Wybierz **nowego użytkownika** w górnej części okna:
+2. Wybierz **pozycję Nowy użytkownik** w górnej części okna:
 
-    ![Wybierz nowego użytkownika](common/new-user.png)
+    ![Wybierz pozycję Nowy użytkownik](common/new-user.png)
 
-3. W **użytkownika** okna dialogowego pole, wykonaj następujące kroki.
+3. W oknie dialogowym **Użytkownik** należy wykonać następujące czynności.
 
-    ![Okno dialogowe użytkownika](common/user-properties.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
     1. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    1. W **nazwa_użytkownika** wprowadź **BrittaSimon @\<domenatwojejfirmy >.\< Rozszerzenia >** . (Na przykład BrittaSimon@contoso.com.)
+    1. W polu **Nazwa użytkownika** wprowadź BrittaSimon@ **\<> swojej>.\<>rozszerzenia **. (Na przykład BrittaSimon@contoso.com.)
 
-    1. Wybierz **Pokaż hasło**i zanotuj wartość, która znajduje się w **hasło** pole.
+    1. Wybierz **pozycję Pokaż hasło**, a następnie zapisz wartość w polu **Hasło.**
 
-    1. Wybierz pozycję **Utwórz**.
+    1. Wybierz **pozycję Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można udostępnić Britta Simon korzystać z platformy Azure logowania jednokrotnego przez udostępnienie jej InsideView.
+W tej sekcji włączysz Britta Simon do korzystania z logowania jednokrotnego platformy Azure, przyznając jej dostęp do InsideView.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz pozycję **InsideView**.
+1. W portalu Azure wybierz **pozycję Aplikacje przedsiębiorstwa**, wybierz **pozycję Wszystkie aplikacje**, a następnie wybierz pozycję **InsideView**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **InsideView**.
+2. Na liście aplikacji wybierz **insideview**.
 
-    ![Lista aplikacji](common/all-applications.png)
+    ![Lista wniosków](common/all-applications.png)
 
-3. W okienku po lewej stronie wybierz **użytkowników i grup**:
+3. W lewym okienku wybierz **pozycję Użytkownicy i grupy:**
 
     ![Wybieranie pozycji Użytkownicy i grupy](common/users-groups-blade.png)
 
@@ -197,31 +197,31 @@ W tej sekcji można udostępnić Britta Simon korzystać z platformy Azure logow
 
     ![Wybieranie pozycji Dodaj użytkownika](common/add-assign-user.png)
 
-5. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** listy użytkowników, a następnie kliknij **wybierz** znajdujący się u dołu okna.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu okna.
 
-6. Jeśli oczekujesz wartość roli dla asercji SAML **wybierz rolę** okna dialogowego wybierz odpowiednią rolę dla użytkownika z listy. Kliknij przycisk **wybierz** znajdujący się u dołu okna.
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy. Kliknij przycisk **Wybierz** u dołu okna.
 
 7. W oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Przypisz**.
 
 ### <a name="create-an-insideview-test-user"></a>Tworzenie użytkownika testowego InsideView
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do InsideView, należy dodać je do InsideView. Należy je dodać ręcznie.
+Aby umożliwić użytkownikom usługi Azure AD zalogować się do InsideView, należy dodać je do InsideView. Należy dodać je ręcznie.
 
-Aby utworzyć użytkowników i kontaktów w InsideView, skontaktuj się z pomocą [zespołem pomocy technicznej InsideView](mailto:support@insideview.com).
+Aby utworzyć użytkowników lub kontakty w InsideView, skontaktuj się z [zespołem pomocy technicznej InsideView](mailto:support@insideview.com).
 
 > [!NOTE]
-> Można użyć dowolnego narzędzia tworzenia konta użytkownika lub interfejsów API dostarczonych przez InsideView można uaktywniać ich konta usługi Azure AD.
+> Do aprowizowania kont użytkowników usługi Azure AD można użyć dowolnego narzędzia do tworzenia konta użytkownika lub interfejsu API dostarczonego przez insideview.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-Teraz należy przetestować konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego za pomocą panelu dostępu.
+Teraz musisz przetestować konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po wybraniu kafelka InsideView w panelu dostępu użytkownik powinien automatyczne logowanie do wystąpienia InsideView, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [dostępu i użycia aplikacji w portalu Moje aplikacje](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po wybraniu kafelka InsideView w Panelu dostępu należy automatycznie zalogować się do wystąpienia InsideView, dla którego skonfigurowano logującą się logującą. Aby uzyskać więcej informacji o Panelu dostępu, zobacz [Uzyskiwanie dostępu do aplikacji i korzystanie z nich w portalu Moje aplikacje](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-- [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Samouczki dotyczące integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

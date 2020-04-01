@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70067466"
 ---
 # <a name="transform-and-protect-your-api"></a>Przekształcanie i ochrona interfejsu API
@@ -26,7 +26,7 @@ Samouczek przedstawia sposób przekształcania interfejsu API, aby nie ujawniał
 
 W tym samouczku przedstawiono również, jak łatwo można dodawać ochronę do interfejsu API zaplecza dzięki konfigurowaniu liczby wywołań i przydziałów za pomocą usługi Azure API Management. Na przykład możesz ograniczyć liczbę wywołań dla interfejsu API, aby nie był on nadmiernie obciążany przez deweloperów. Aby uzyskać więcej informacji, zobacz [Zasady zarządzania interfejsem API](api-management-policies.md)
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 >
@@ -41,8 +41,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 -   Poznaj [terminologię dotyczącą usługi Azure API Management](api-management-terminology.md).
 -   Zapoznaj się z [koncepcją zasad w usłudze Azure API Management](api-management-howto-policies.md).
--   Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
--   Ukończ również następujący samouczek: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
+-   Ukończ następujące przewodniki Szybki start: [Utwórz wystąpienie usługi Azure API Management](get-started-create-service-instance.md).
+-   Ponadto wykonaj zadania z następującego samouczka: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -71,16 +71,16 @@ Oryginalna odpowiedź powinna wyglądać następująco:
 
 ![Ustawianie zasad danych wychodzących](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png)
 
-1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+1. Wybierz **wersję demonstracyjną interfejsu API Conference**.
 2. W górnej części ekranu wybierz kartę **Projektowanie**.
 3. Wybierz opcję **Wszystkie operacje**.
-4. W sekcji **Przetwarzanie danych wychodzących** kliknij ikonę **</>** .
-5. Umieść kursor wewnątrz elementu **&lt;outbound&gt;** .
+4. W sekcji **Przetwarzanie danych wychodzących** kliknij ikonę **</>**.
+5. Umieść kursor wewnątrz elementu ** &lt;&gt; wychodzącego.**
 6. W okienku po prawej stronie w obszarze **Zasady przekształcania** kliknij dwukrotnie opcję **+ Ustaw nagłówek HTTP** (aby wstawić dwa fragmenty kodu zasad).
 
    ![Zasady](./media/transform-api/transform-api.png)
 
-7. Zmodyfikuj kod **> wychodzącego,abywyglądaćnastępująco:\<**
+7. Zmodyfikuj kod ** \<>wychodzącej,** aby wyglądać następująco:
 
        <set-header name="X-Powered-By" exists-action="delete" />
        <set-header name="X-AspNet-Version" exists-action="delete" />
@@ -97,7 +97,7 @@ W tej sekcji opisano, jak ukrywać oryginalne adresy URL, które są wyświetlan
 
 Aby zobaczyć oryginalną odpowiedź:
 
-1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+1. Wybierz **wersję demonstracyjną interfejsu API Conference**.
 2. Kliknij kartę **Test** w górnej części ekranu.
 3. Wybierz operację **GetSpeakers**.
 4. Naciśnij przycisk **Wyślij** u dołu ekranu.
@@ -108,29 +108,29 @@ Aby zobaczyć oryginalną odpowiedź:
 
 ### <a name="set-the-transformation-policy"></a>Ustawianie zasad przekształcania
 
-1.  Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+1.  Wybierz **wersję demonstracyjną interfejsu API Conference**.
 2.  Wybierz opcję **Wszystkie operacje**.
 3.  W górnej części ekranu wybierz kartę **Projektowanie**.
-4.  W sekcji **Przetwarzanie danych wychodzących** kliknij ikonę **</>** .
-5.  Umieść kursor wewnątrz elementu **&lt;outbound&gt;** .
+4.  W sekcji **Przetwarzanie danych wychodzących** kliknij ikonę **</>**.
+5.  Umieść kursor wewnątrz elementu ** &lt;&gt; wychodzącego.**
 6.  W oknie po prawej stronie w obszarze **Zasady przekształcania** kliknij opcję **+ Znajdź i zastąp ciąg w treści**.
-7.  Zmodyfikuj kod **find-and-replace** (w elemencie **\<outbound\>** ), aby zastąpić adres URL i dopasować go do bramy APIM. Przykład:
+7.  Zmodyfikuj kod **find-and-replace** (w elemencie **\<outbound\>**), aby zastąpić adres URL i dopasować go do bramy APIM. Przykład:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Ochrona interfejsu API poprzez dodanie zasad limitu szybkości (ograniczanie przepustowości)
 
-W tej sekcji przedstawiono sposób dodawania zabezpieczeń do interfejsu API zaplecza poprzez konfigurowanie limitów szybkości. Na przykład możesz ograniczyć liczbę wywołań dla interfejsu API, aby nie był on nadmiernie obciążany przez deweloperów. W tym przykładzie limit jest ustawiony na 3 wywołania w ciągu 15 sekund dla każdego identyfikatora subskrypcji. Po 15 sekundach deweloper może ponowić próbę wywołania interfejsu API.
+W tej sekcji przedstawiono sposób dodawania zabezpieczeń do interfejsu API zaplecza poprzez konfigurowanie limitów szybkości. Na przykład możesz ograniczyć liczbę wywołań dla interfejsu API, aby nie był on nadmiernie obciążany przez deweloperów. W tym przykładzie limit jest ustawiony na 3 wywołania na 15 sekund dla każdego identyfikatora subskrypcji. Po 15 sekundach deweloper może ponowić próbę wywołania interfejsu API.
 
 ![Ustawianie zasad danych przychodzących](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
 
-1.  Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+1.  Wybierz **wersję demonstracyjną interfejsu API Conference**.
 2.  Wybierz opcję **Wszystkie operacje**.
 3.  W górnej części ekranu wybierz kartę **Projektowanie**.
-4.  W sekcji **Przetwarzanie danych przychodzących** kliknij ikonę **</>** .
-5.  Umieść kursor wewnątrz elementu **&lt;inbound&gt;** .
+4.  W sekcji **Przetwarzanie danych przychodzących** kliknij ikonę **</>**.
+5.  Umieść kursor wewnątrz elementu ** &lt;przychodzącego.&gt; **
 6.  W oknie po prawej stronie w obszarze **Zasady ograniczeń dostępu** kliknij opcję **+ Ogranicz liczbę wywołań na klucz**.
-7.  Zmodyfikuj kod **rate-limit-by-key** (w elemencie **\<inbound\>** ) do następującego:
+7.  Zmodyfikuj kod **rate-limit-by-key** (w elemencie **\<inbound\>**) do następującego:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
@@ -162,7 +162,7 @@ Pozostała część tej sekcji testuje przekształcenia zasad ustawione w tym ar
 
 ### <a name="test-the-stripped-response-headers"></a>Testowanie usuniętych nagłówków odpowiedzi
 
-1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+1. Wybierz **wersję demonstracyjną interfejsu API Conference**.
 2. Wybierz kartę **Test**.
 3. Kliknij operację **GetSpeakers**.
 4. Kliknij pozycję **Wyślij**.
@@ -173,7 +173,7 @@ Pozostała część tej sekcji testuje przekształcenia zasad ustawione w tym ar
 
 ### <a name="test-the-replaced-url"></a>Testowanie zamienionego adresu URL
 
-1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+1. Wybierz **wersję demonstracyjną interfejsu API Conference**.
 2. Wybierz kartę **Test**.
 3. Kliknij operację **GetSpeakers**.
 4. Kliknij pozycję **Wyślij**.
@@ -184,7 +184,7 @@ Pozostała część tej sekcji testuje przekształcenia zasad ustawione w tym ar
 
 ### <a name="test-the-rate-limit-throttling"></a>Testowanie limitu szybkości (ograniczania przepustowości)
 
-1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+1. Wybierz **wersję demonstracyjną interfejsu API Conference**.
 2. Wybierz kartę **Test**.
 3. Kliknij operację **GetSpeakers**.
 4. Naciśnij przycisk **Wyślij** trzykrotnie.
@@ -195,7 +195,7 @@ Pozostała część tej sekcji testuje przekształcenia zasad ustawione w tym ar
 
     ![Ograniczanie przepływności](./media/transform-api/test-throttling.png)
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Film wideo
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
 

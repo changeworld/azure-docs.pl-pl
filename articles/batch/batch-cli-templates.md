@@ -11,12 +11,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: c7459c4dc700f034feafbf133b831a52b9233d11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df7db30e987c408ff158acfc468010948c821b8d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77020169"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397534"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Korzystanie z szablonów interfejsu wiersza polecenia usługi Azure Batch i transferu plików
 
@@ -28,7 +28,7 @@ Tworzenie i używanie plików szablonów JSON za pomocą interfejsu wiersza pole
 
 Rozszerzenie interfejsu wiersza polecenia platformy Azure umożliwia batch do użycia end-to-end przez użytkowników, którzy nie są deweloperami. Za pomocą tylko poleceń interfejsu wiersza polecenia można utworzyć pulę, przekazać dane wejściowe, utworzyć zadania i skojarzone zadania oraz pobrać wynikowe dane wyjściowe. Nie jest wymagany żaden dodatkowy kod. Uruchom polecenia interfejsu wiersza polecenia bezpośrednio lub zintegrować je ze skryptami.
 
-Szablony wsadowe opierają się na [istniejącej obsłudze usługi Batch w plikuch](batch-cli-get-started.md#json-files-for-resource-creation) JSON platformy Azure dla plików JSON, aby określić wartości właściwości podczas tworzenia pul, zadań, zadań i innych elementów. Szablony wsadowe dodają następujące możliwości:
+Szablony wsadowe opierają się na istniejącej obsłudze usługi Batch w [plikuch](batch-cli-get-started.md#json-files-for-resource-creation) JSON platformy Azure dla plików JSON, aby określić wartości właściwości podczas tworzenia pul, zadań, zadań i innych elementów. Szablony wsadowe dodają następujące możliwości:
 
 -   Można zdefiniować parametry. Gdy szablon jest używany, tylko wartości parametrów są określone do utworzenia elementu, z innymi wartościami właściwości elementu określonymi w treści szablonu. Użytkownik, który rozumie Batch i aplikacje, które mają być uruchamiane przez partię, może tworzyć szablony, określając wartości puli, zadania i właściwości zadania. Użytkownik mniej zaznajomiony z batch i/lub aplikacje musi tylko określić wartości dla zdefiniowanych parametrów.
 
@@ -68,7 +68,7 @@ Szablony usługi Azure Batch są podobne do szablonów usługi Azure Resource Ma
 
 -   **Parametry**
 
-    -   Zezwalaj na określanie wartości właściwości w sekcji treści, a tylko wartości parametrów muszą być podane, gdy używany jest szablon. Na przykład pełna definicja puli może być umieszczona w treści i tylko jeden parametr zdefiniowany dla identyfikatora puli; tylko ciąg identyfikatora puli w związku z tym musi być dostarczony do utworzenia puli.
+    -   Zezwalaj na określanie wartości właściwości w sekcji treści, a tylko wartości parametrów muszą być podane, gdy używany jest szablon. Na przykład pełna definicja puli może być umieszczona w treści `poolId`i tylko jeden parametr zdefiniowany dla ; tylko ciąg identyfikatora puli w związku z tym musi być dostarczony do utworzenia puli.
         
     -   Treść szablonu może być autorstwa osoby posiadającej wiedzę na temat usługi Batch i aplikacji uruchamianych przez partię; Tylko wartości dla parametrów zdefiniowanych przez autora muszą być podane, gdy używany jest szablon. Użytkownik bez szczegółowej wiedzy partii i/lub aplikacji można zatem użyć szablonów.
 

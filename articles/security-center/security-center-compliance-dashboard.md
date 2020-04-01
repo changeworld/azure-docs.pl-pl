@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: sprawdzanie zgodności z przepisami — Azure Security Center'
-description: 'Samouczek: informacje na temat ulepszania zgodności z przepisami przy użyciu Azure Security Center.'
+title: 'Samouczek: Sprawdzanie zgodności z przepisami — Usługa Azure Security Center'
+description: 'Samouczek: Dowiedz się, jak poprawić zgodność z przepisami za pomocą usługi Azure Security Center.'
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,16 +14,16 @@ ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
 ms.openlocfilehash: 1a6999c05c0b3dbaf572b376412f666c50c23df7
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77604457"
 ---
-# <a name="tutorial-improve-your-regulatory-compliance"></a>Samouczek: ulepszanie zgodności z przepisami
+# <a name="tutorial-improve-your-regulatory-compliance"></a>Samouczek: Poprawa zgodności z przepisami
 ---
 
-Azure Security Center pomaga usprawnić proces spełnienia wymagań dotyczących zgodności z przepisami przy użyciu **pulpitu nawigacyjnego zgodności z przepisami**. Ten pulpit nawigacyjny usługi Security Center zapewnia wgląd w poziom zgodności w oparciu o ciągłe oceny środowiska platformy Azure. Security Center analizuje czynniki ryzyka w środowisku chmury hybrydowej zgodnie z najlepszymi rozwiązaniami w zakresie zabezpieczeń. Te oceny są mapowane na kontrolki zgodności z obsługiwanego zestawu standardów. Na pulpicie nawigacyjnym zgodności z przepisami można zobaczyć stan wszystkich ocen w danym środowisku w kontekście określonego standardu lub rozporządzenia. Zgodnie z zaleceniami i zmniejszeniem czynników ryzyka w Twoim środowisku stan zgodności.
+Usługa Azure Security Center pomaga usprawnić proces spełniania wymagań dotyczących zgodności z przepisami przy użyciu **pulpitu nawigacyjnego zgodności z przepisami.** Ten pulpit nawigacyjny usługi Security Center zapewnia wgląd w poziom zgodności w oparciu o ciągłe oceny środowiska platformy Azure. Usługa Security Center analizuje czynniki ryzyka w środowisku chmury hybrydowej zgodnie z najlepszymi rozwiązaniami w zakresie zabezpieczeń. Te oceny są mapowane na kontrolki zgodności z obsługiwanego zestawu standardów. Na pulpicie nawigacyjnym zgodności z przepisami można zobaczyć stan wszystkich ocen w danym środowisku w kontekście określonego standardu lub rozporządzenia. Gdy działasz zgodnie z zaleceniami i zmniejszasz czynniki ryzyka w swoim środowisku, poprawia się postawa zgodności.
 
 Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -31,7 +31,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 -   Zwiększanie poziomu zgodności przez podejmowanie działań zgodnych z rekomendacjami
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -45,24 +45,24 @@ Usługa Security Center w sposób ciągły ocenia konfigurację zasobów, aby id
 Widok pulpitu nawigacyjnego Zgodność z przepisami ułatwia skoncentrowanie uwagi na lukach w zgodności z ważnym dla Ciebie standardem lub przepisem. Ten skoncentrowany widok umożliwia także stałe monitorowanie oceny zgodności w miarę upływu czasu w chmurze dynamicznej i środowiskach hybrydowych.
 
 >[!NOTE]
-> Domyślnie Security Center obsługuje następujące standardy prawne: Azure CIS, PCI DSS 3,2, ISO 27001 i SOC TSP. 
+> Domyślnie usługa Security Center obsługuje następujące standardy regulacyjne: Azure CIS, PCI DSS 3.2, ISO 27001 i SOC TSP. 
 >
-> Funkcja [dynamiczne pakiety zgodności (wersja zapoznawcza)](update-regulatory-compliance-packages.md) pozwala uaktualnić standardy widoczne na pulpicie nawigacyjnym zgodności z przepisami do nowych pakietów *dynamicznych* . Możesz także użyć tej samej funkcji w wersji zapoznawczej, aby dodać nowe pakiety zgodności i monitorować swoją zgodność przy użyciu dodatkowych standardów. 
+> Funkcja [dynamicznych pakietów zgodności (wersja zapoznawcza)](update-regulatory-compliance-packages.md) umożliwia uaktualnienie standardów wyświetlanych na pulpicie nawigacyjnym zgodności z przepisami do nowych pakietów *dynamicznych.* Można również użyć tej samej funkcji podglądu, aby dodać nowe pakiety zgodności i monitorować zgodność z dodatkowymi standardami. 
 
-1.  W menu głównym Security Center w obszarze **zasady &AMP; zgodność** wybierz pozycję **zgodność z przepisami**. <br>
+1.  W menu głównym Centrum zabezpieczeń w obszarze **ZASADY & ZGODNOŚĆ** wybierz pozycję Zgodność z **przepisami**. <br>
 W górnej części ekranu zostanie wyświetlony pulpit nawigacyjny zawierający przegląd stanu zgodności z zestawem obsługiwanych przepisów dotyczących zgodności. Widoczna jest ogólna ocena zgodności oraz liczba ocen zakończonych powodzeniem i niepowodzeniem skojarzonych z każdym standardem.
 
     ![Opis komputera — godny zaufania](./media/security-center-compliance-dashboard/compliance-dashboard.png)
 
-2.  Wybierz kartę standardu zgodności, który Cię dotyczy. Zostanie wyświetlona lista wszystkich kontrolek dla tego standardu. W przypadku właściwych kontrolek możesz wyświetlić szczegóły ocen zakończonych powodzeniem i niepowodzeniem skojarzonych z daną kontrolką. Niektóre kontrolki są wyszarzone. Te kontrolki nie mają skojarzonych z nimi ocen Security Center. Sprawdź wymagania dotyczące tych i Oceń je we własnym środowisku. Niektóre z nich mogą być powiązane z procesem, a nie techniczne.
+2.  Wybierz kartę standardu zgodności, który Cię dotyczy. Zostanie wyświetlona lista wszystkich kontrolek dla tego standardu. W przypadku właściwych kontrolek możesz wyświetlić szczegóły ocen zakończonych powodzeniem i niepowodzeniem skojarzonych z daną kontrolką. Niektóre formanty są wyszarzone. Te formanty nie mają żadnych ocen usługi Security Center skojarzonych z nimi. Sprawdź wymagania dla nich i ocenić je w swoim środowisku na własną rękę. Niektóre z nich mogą być powiązane z procesem, a nie techniczne.
 
     ![Karta zgodności](./media/security-center-compliance-dashboard/compliance-pci.png)
 
-1. Aby wygenerować i pobrać raport PDF podsumowujący bieżący stan zgodności dla określonego standardu, kliknij przycisk **Pobierz raport**.
+1. Aby wygenerować i pobrać raport PDF podsumowujący bieżący stan zgodności dla określonego standardu, kliknij **przycisk Pobierz raport**.
 
-    Raport zawiera podsumowanie stanu zgodności dla wybranego standardu w oparciu o Security Center oceny danych i jest zorganizowany zgodnie z kontrolkami tego konkretnego standardu. Raport może być współużytkowany z odpowiednimi uczestnikami projektu i może służyć do zapewnienia dowodu dla wewnętrznych i zewnętrznych audytorów.
+    Raport zawiera podsumowanie wysokiego poziomu stanu zgodności dla wybranego standardu na podstawie danych oceny usługi Security Center i jest zorganizowany zgodnie z formantami tego konkretnego standardu. Sprawozdanie może być udostępniane odpowiednim zainteresowanym stronom i może służyć do dostarczania dowodów audytorom wewnętrznym i zewnętrznym.
 
-    ![Pobieranie](./media/security-center-compliance-dashboard/download-report.png)
+    ![pobieranie](./media/security-center-compliance-dashboard/download-report.png)
 
 ## <a name="improve-your-compliance-posture"></a>Zwiększanie poziomu zgodności
 
@@ -97,10 +97,10 @@ Pulpit nawigacyjny Zgodność z przepisami może znacznie uprościć proces zape
 
 Aby dowiedzieć się więcej, zobacz:
 
--   [Zaktualizuj dynamiczne pakiety zgodności na pulpicie nawigacyjnym zgodności z przepisami (wersja zapoznawcza)](update-regulatory-compliance-packages.md) — Dowiedz się więcej na temat tej funkcji w wersji zapoznawczej, która umożliwia zaktualizowanie standardów widocznych na pulpicie nawigacyjnym zgodności z przepisami w celu uzyskania nowych pakietów *dynamicznych* . Możesz również tę samą funkcję w wersji zapoznawczej, aby dodać nowe pakiety zgodności i monitorować swoją zgodność przy użyciu dodatkowych standardów. 
+-   [Aktualizacja do dynamicznych pakietów zgodności na pulpicie nawigacyjnym zgodności z przepisami (Wersja zapoznawcza)](update-regulatory-compliance-packages.md) — dowiedz się więcej o tej funkcji w wersji zapoznawczej, która umożliwia aktualizację standardów wyświetlanych na pulpicie nawigacyjnym zgodności z przepisami do nowych pakietów *dynamicznych.* Można również tę samą funkcję podglądu, aby dodać nowe pakiety zgodności i monitorować zgodność z dodatkowymi standardami. 
 
--   [Monitorowanie kondycji zabezpieczeń w Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
+-   [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — dowiedz się, jak monitorować kondycję zasobów platformy Azure.
 
--   [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Azure Security Center](security-center-recommendations.md) — Dowiedz się, jak używać zaleceń w programie Azure Security Center, aby pomóc w ochronie zasobów platformy Azure.
+-   [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md) — dowiedz się, jak używać zaleceń w usłudze Azure Security Center w celu ochrony zasobów platformy Azure.
 
--   [Popraw swój Bezpieczny wynik w Azure Security Center](security-center-secure-score.md) — Dowiedz się, jak określać priorytety luk w zabezpieczeniach i zalecenia dotyczące zabezpieczeń, aby zwiększyć bezpieczeństwo stan.
+-   [Popraw swój wynik bezpieczeństwa w usłudze Azure Security Center](security-center-secure-score.md) — dowiedz się, jak nadać priorytet lukom w zabezpieczeniach i zaleceniu dotyczące zabezpieczeń, aby w pełni poprawić stan bezpieczeństwa.

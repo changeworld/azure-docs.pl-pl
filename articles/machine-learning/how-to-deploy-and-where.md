@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 96d9a0722ae04dc150b639dced34fa290da93630
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0deace98c5be0b2ce2f29abce4c8a804145afdb1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159420"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475623"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Wdrażanie modeli za pomocą usługi Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -236,7 +236,7 @@ AZUREML_MODEL_DIR jest zmienną środowiskową utworzoną podczas wdrażania us�
 
 W poniższej tabeli opisano wartość AZUREML_MODEL_DIR w zależności od liczby wdrożonych modeli:
 
-| wdrażania | Wartość zmiennej środowiskowej |
+| Wdrożenie | Wartość zmiennej środowiskowej |
 | ----- | ----- |
 | Pojedynczy model | Ścieżka do folderu zawierającego model. |
 | Wiele modeli | Ścieżka do folderu zawierającego wszystkie modele. Modele znajdują się według nazwy i`$MODEL_NAME/$VERSION`wersji w tym folderze ( ) |
@@ -537,9 +537,9 @@ Klasy dla lokalnych, wystąpień kontenerów platformy Azure i usług `azureml.c
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-### <a name="securing-deployments-with-ssl"></a>Zabezpieczanie wdrożeń za pomocą usługi SSL
+### <a name="securing-deployments-with-tls"></a>Zabezpieczanie wdrożeń za pomocą protokołu TLS
 
-Aby uzyskać więcej informacji na temat zabezpieczania wdrożenia usługi sieci web, zobacz [Zabezpieczanie usługi sieci web za pomocą ssl.](how-to-secure-web-service.md#enable)
+Aby uzyskać więcej informacji na temat zabezpieczania wdrożenia usługi sieci web, zobacz [Włączanie protokołu TLS i wdrażanie](how-to-secure-web-service.md#enable).
 
 ### <a name="local-deployment"></a><a id="local"></a>Wdrożenie lokalne
 
@@ -907,6 +907,24 @@ service_name = 'my-sklearn-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
+UWAGA: Modele obsługujące predict_proba domyślnie będą używać tej metody. Aby zastąpić to, aby użyć predict można zmodyfikować post treści, jak poniżej:
+```python
+import json
+
+
+input_payload = json.dumps({
+    'data': [
+        [ 0.03807591,  0.05068012,  0.06169621, 0.02187235, -0.0442235,
+         -0.03482076, -0.04340085, -0.00259226, 0.01990842, -0.01764613]
+    ],
+    'method': 'predict'  # If you have a classification model, the default behavior is to run 'predict_proba'.
+})
+
+output = service.run(input_payload)
+
+print(output)
+```
+
 UWAGA: Te zależności są zawarte w wstępnie utworzonym kontenerze wnioskowania sklearn:
 
 ```yaml
@@ -1154,7 +1172,7 @@ def run(request):
 
 * [Jak wdrożyć model przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md)
 * [Rozwiązywanie problemów z wdrażaniem](how-to-troubleshoot-deployment.md)
-* [Bezpieczne usługi sieci Web usługi azure machine learning za pomocą ssl](how-to-secure-web-service.md)
+* [Zabezpieczanie usługi sieci web za pośrednictwem usługi Azure Machine Learning za pomocą protokołu TLS](how-to-secure-web-service.md)
 * [Korzystanie z modelu usługi Azure Machine Learning wdrożonego jako usługa sieci web](how-to-consume-web-service.md)
 * [Monitoruj swoje modele usługi Azure Machine Learning za pomocą usługi Application Insights](how-to-enable-app-insights.md)
 * [Zbieranie danych dla modeli w produkcji](how-to-enable-data-collection.md)

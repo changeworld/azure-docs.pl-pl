@@ -2,13 +2,13 @@
 title: Funkcje szablonu — zasoby
 description: W tym artykule opisano funkcje używane w szablonie usługi Azure Resource Manager do pobierania wartości dotyczących zasobów.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: e9e1d700282652304f0bede5e697ba8625f5a5d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: 641602218aa19b790eb6e7feabdb7b46a520b590
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156297"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478278"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkcje zasobów dla szablonów ARM
 
@@ -170,8 +170,8 @@ Możliwe zastosowania listy* przedstawiono w poniższej tabeli.
 | Microsoft.DocumentDB/databaseKonta kont | [klawisze list](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Microsoft.DomainRegistration | [listaDosainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listaPozycje](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft.EventGrid/domeny | [klawisze list](/rest/api/eventgrid/domains/listsharedaccesskeys) |
-| Microsoft.EventGrid/tematy | [klawisze list](/rest/api/eventgrid/topics/listsharedaccesskeys) |
+| Microsoft.EventGrid/domeny | [klawisze list](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
+| Microsoft.EventGrid/tematy | [klawisze list](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
 | Microsoft.EventHub/przestrzenie nazw/autoryzacjaRule | [klawisze listkey](/rest/api/eventhub/namespaces/listkeys) |
 | Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [klawisze listkey](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
 | Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [klawisze listkey](/rest/api/eventhub/eventhubs/listkeys) |

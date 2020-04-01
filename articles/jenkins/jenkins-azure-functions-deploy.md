@@ -1,24 +1,24 @@
 ---
-title: Wdrażanie do Azure Functions przy użyciu wtyczki Azure Functions Jenkins
-description: Dowiedz się, jak wdrażać Azure Functions przy użyciu wtyczki Azure Functions Jenkins
+title: Wdrażanie w usłudze Azure Functions przy użyciu dodatku Azure Functions w usłudze Jenkins
+description: Dowiedz się, jak wdrożyć usługi Azure Functions przy użyciu dodatku Jenkins Azure Functions
 keywords: jenkins, azure, metodyki devops, java, usługę azure functions
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: 731bac13a596bbeaf970b3f6ce976a582d1f11ae
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78250922"
 ---
-# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Wdrażanie do Azure Functions przy użyciu wtyczki Azure Functions Jenkins
+# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Wdrażanie w usłudze Azure Functions przy użyciu dodatku Azure Functions w usłudze Jenkins
 
-[Azure Functions](/azure/azure-functions/) to usługa obliczeniowa niewymagająca użycia serwera. Dzięki usłudze Azure Functions możesz uruchamiać kod na żądanie bez konieczności aprowizowania infrastruktury lub zarządzania nią. W tym samouczku pokazano, jak wdrożyć funkcję języka Java w celu Azure Functions przy użyciu wtyczki Azure Functions.
+[Azure Functions](/azure/azure-functions/) to usługa obliczeniowa niewymagająca użycia serwera. Dzięki usłudze Azure Functions możesz uruchamiać kod na żądanie bez konieczności aprowizowania infrastruktury lub zarządzania nią. W tym samouczku pokazano, jak wdrożyć funkcję Java w usłudze Azure Functions przy użyciu wtyczki Usługi Azure Functions.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- **Serwer Jenkins**: Jeśli nie masz zainstalowanego serwera Jenkins, zapoznaj się z artykułem [Tworzenie serwera Jenkins na platformie Azure](./install-jenkins-solution-template.md).
+- **Serwer usługi Jenkins:** Jeśli nie masz zainstalowanego serwera Jenkins, zapoznaj się z tym [artykułem Utwórz serwer usługi Jenkins na platformie Azure](./install-jenkins-solution-template.md).
 
   > [!TIP]
   > Kod źródłowy użyty w tym samouczku znajduje się w [repozytorium GitHub Visual Studio China](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java).
@@ -29,7 +29,7 @@ Funkcję w języku Java z użyciem stosu środowiska uruchomieniowego w języku 
 
 W poniższych krokach pokazano, w jaki sposób utworzyć funkcję w języku Java przy użyciu interfejsu wiersza polecenia platformy Azure:
 
-1. Utwórz grupę zasobów, zastępując symbol zastępczy **&lt;grupa_zasobów>** nazwą grupy zasobów.
+1. Utwórz grupę zasobów, zastępując ** &lt;resource_group>** nazwą grupy zasobów.
 
     ```azurecli
     az group create --name <resource_group> --location eastus
@@ -72,16 +72,16 @@ W poniższych krokach wyjaśniono, jak przygotować serwer Jenkins:
 
 1. Na pulpicie nawigacyjnym serwera Jenkins zainstaluj następujące wtyczki:
 
-    - Azure Functions wtyczka
+    - Wtyczka usługi Azure Functions
     - Wtyczka EnvInject
 
 1. Serwer Jenkins wymaga jednostki usługi platformy Azure w celu uwierzytelniania zasobów platformy Azure i uzyskania do nich dostępu. Zapoznaj się z artykułem [Deploy to Azure App Service (Wdrażanie w usłudze Azure App Service)](./tutorial-jenkins-deploy-web-app-azure-app-service.md), aby uzyskać instrukcje krok po kroku.
 
 1. Na serwerze Jenkins dodaj poświadczenia jako typ „Microsoft Azure Service Principal” („Jednostka usługi Microsoft Azure”), korzystając z jednostki usługi platformy Azure. Zapoznaj się samouczkiem [Deploy to Azure App Service (Wdrażanie w usłudze Azure App Service)](./tutorial-jenkins-deploy-web-app-azure-app-service.md#add-service-principal-to-jenkins).
 
-## <a name="fork-the-sample-github-repo"></a>Rozwidlenie przykładowego repozytorium GitHub
+## <a name="fork-the-sample-github-repo"></a>Rozwidli przykładowe repozytorium GitHub
 
-1. [Zaloguj się do repozytorium GitHub dla przykładowej aplikacji nieparzystej lub](https://github.com/VSChina/odd-or-even-function.git)parzystej.
+1. [Zaloguj się do repozytorium GitHub dla aplikacji nieparzystej lub nawet przykładowej](https://github.com/VSChina/odd-or-even-function.git).
 
 1. W prawym górnym rogu ekranu usługi GitHub wybierz pozycję **Fork** (Utwórz rozwidlenie).
 
@@ -105,7 +105,7 @@ W tej sekcji utworzysz [potok serwera Jenkins](https://jenkins.io/doc/book/pipel
     
 1. W sekcji **Pipeline->Definition** (Potok > Definicja) wybierz pozycję **Pipeline script from SCM** (Skrypt potoku z narzędzia SCM).
 
-1. Wprowadź adres URL i ścieżkę skryptu rozwidlenia usługi GitHub ("doc/Resources/Jenkins/fragmenty"), które mają być używane w [przykładowym fragmenty](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile).
+1. Wprowadź adres URL i ścieżkę skryptu rozwidlenia GitHub ("doc/resources/jenkins/JenkinsFile"), aby użyć go w [przykładzie JenkinsFile](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile).
 
    ```
    node {
@@ -133,7 +133,7 @@ Czas na uruchomienie zadania serwera Jenkins.
 
 1. Najpierw należy uzyskać klucz autoryzacji za pomocą instrukcji zawartych w artykule [Azure Functions HTTP triggers and bindings (Wyzwalacze i powiązania protokołu HTTP w usłudze Azure Functions)](/azure/azure-functions/functions-bindings-http-webhook-trigger#authorization-keys).
 
-1. W przeglądarce wprowadź adres URL aplikacji. Zastąp symbole zastępcze odpowiednimi wartościami i określ wartość liczbową parametru **&lt;input_number>** jako dane wejściowe dla funkcji w języku Java.
+1. W przeglądarce wprowadź adres URL aplikacji. Zastąp symbole zastępcze odpowiednimi wartościami ** &lt;** i określ wartość liczbową dla input_number>jako dane wejściowe dla funkcji Java.
 
     ```
     https://<function_app>.azurewebsites.net/api/HttpTrigger-Java?code=<authorization_key>&number=<input_number>

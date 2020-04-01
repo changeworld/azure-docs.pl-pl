@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 01/09/2020
-ms.openlocfilehash: d945540a769f01c33ca3d3e467fe7c983fb5e286
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 359fd7fc787db5710deca75dd562215d25ed9148
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80287360"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437489"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Zabezpieczenia przedsiębiorstwa dla usługi Azure Machine Learning
 
@@ -26,7 +26,7 @@ Podczas korzystania z usługi w chmurze najlepszym rozwiązaniem jest ograniczen
 > [!NOTE]
 > Informacje zawarte w tym artykule działa z azure machine learning Python SDK w wersji 1.0.83.1 lub nowszej.
 
-## <a name="authentication"></a>Uwierzytelnianie
+## <a name="authentication"></a>Authentication
 
 Uwierzytelnianie wieloskładnikowe jest obsługiwane, jeśli usługa Azure Active Directory (Azure AD) jest skonfigurowana do używania. Oto proces uwierzytelniania:
 
@@ -107,6 +107,28 @@ Usługa Azure Machine Learning opiera się na innych usługach platformy Azure d
 
 Aby uzyskać więcej informacji, zobacz [Jak przeprowadzić eksperymenty i wnioskować w sieci wirtualnej](how-to-enable-virtual-network.md).
 
+Można również włączyć azure private link dla obszaru roboczego. Łącze prywatne umożliwia ograniczenie komunikacji do obszaru roboczego z sieci wirtualnej platformy Azure. Aby uzyskać więcej informacji, zobacz [Jak skonfigurować łącze prywatne](how-to-configure-private-link.md).
+
+> [!TIP]
+> Można połączyć sieć wirtualną i łącze prywatne, aby chronić komunikację między obszarem roboczym a innymi zasobami platformy Azure. Jednak niektóre kombinacje wymagają obszaru roboczego w wersji Enterprise. Poniższa tabela służy do zrozumienia, jakie scenariusze wymagają wersji Enterprise:
+>
+> | Scenariusz | Enterprise</br>Edition | Podstawowa (Basic)</br>Edition |
+> | ----- |:-----:|:-----:| 
+> | Brak sieci wirtualnej lub łącza prywatnego | ✔ | ✔ |
+> | Obszar roboczy bez łącza prywatnego. Inne zasoby (z wyjątkiem usługi Azure Container Registry) w sieci wirtualnej | ✔ | ✔ |
+> | Obszar roboczy bez łącza prywatnego. Inne zasoby z linkiem prywatnym | ✔ | |
+> | Obszar roboczy z łączem prywatnym. Inne zasoby (z wyjątkiem usługi Azure Container Registry) w sieci wirtualnej | ✔ | ✔ |
+> | Obszar roboczy i inne zasoby z łączem prywatnym | ✔ | |
+> | Obszar roboczy z łączem prywatnym. Inne zasoby bez private linku lub sieci wirtualnej | ✔ | ✔ |
+> | Usługa Azure Container Registry w sieci wirtualnej | ✔ | |
+> | Klucze zarządzane przez klienta dla obszaru roboczego | ✔ | |
+> 
+
+> [!WARNING]
+> Podgląd wystąpień obliczeniowych usługi Azure Machine Learning nie jest obsługiwany w obszarze roboczym, w którym jest włączone łącze prywatne.
+> 
+> Usługa Azure Machine Learning nie obsługuje korzystania z usługi Azure Kubernetes, która ma włączone łącze prywatne. Zamiast tego można użyć usługi Azure Kubernetes w sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [Bezpieczne zadania eksperymentowania i wnioskowania usługi Azure ML w ramach sieci wirtualnej platformy Azure.](how-to-enable-virtual-network.md)
+
 ## <a name="data-encryption"></a>Szyfrowanie danych
 
 ### <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
@@ -123,6 +145,8 @@ Usługa Azure Machine Learning przechowuje migawki, dane wyjściowe i dzienniki 
 Aby uzyskać informacje na temat używania własnych kluczy do danych przechowywanych w magazynie obiektów Blob platformy Azure, zobacz [Szyfrowanie usługi Azure Storage z kluczami zarządzanymi przez klienta w usłudze Azure Key Vault](../storage/common/storage-encryption-keys-portal.md).
 
 Dane szkoleniowe są zazwyczaj również przechowywane w magazynie obiektów Blob platformy Azure, dzięki czemu są dostępne dla docelowych obliczeń szkoleniowych. Ten magazyn nie jest zarządzany przez usługę Azure Machine Learning, ale jest instalowany do obliczania obiektów docelowych jako zdalnego systemu plików.
+
+Jeśli chcesz __obrócić lub odwołać__ klucz, możesz to zrobić w dowolnym momencie. Podczas obracania klucza konto magazynu rozpocznie używanie nowego klucza (najnowszej wersji) do szyfrowania danych w spoczynku. Podczas odwoływania (wyłączania) klucza, konto magazynu zajmuje się żądaniami w przypadku awarii. Zwykle trwa godzinę dla obrotu lub odwołania być skuteczne.
 
 Aby uzyskać informacje na temat ponownego generowania kluczy dostępu, zobacz [Ponowne generowanie kluczy dostępu do magazynu](how-to-change-storage-access-key.md).
 
@@ -157,6 +181,8 @@ To wystąpienie usługi Cosmos DB jest tworzone w grupie zasobów zarządzanych 
 > * Jeśli chcesz usunąć to wystąpienie usługi Cosmos DB, należy usunąć obszar roboczy usługi Azure Machine Learning, który go używa. 
 > * Domyślne [__jednostki żądań__](../cosmos-db/request-units.md) dla tego konta usługi Cosmos DB są ustawione na __8000__. Zmiana tej wartości nie jest podparta. 
 
+Jeśli chcesz __obrócić lub odwołać__ klucz, możesz to zrobić w dowolnym momencie. Podczas obracania klucza usługa Cosmos DB rozpocznie używanie nowego klucza (najnowszej wersji) do szyfrowania danych w spoczynku. Podczas odwoływania (wyłączania) klucza usługa Cosmos DB zajmuje się żądaniami w przypadku niepowodzenia. Zwykle trwa godzinę dla obrotu lub odwołania być skuteczne.
+
 Aby uzyskać więcej informacji na temat kluczy zarządzanych przez klienta za pomocą usługi Cosmos DB, zobacz [Konfigurowanie kluczy zarządzanych przez klienta dla konta usługi Azure Cosmos DB](../cosmos-db/how-to-setup-cmk.md).
 
 #### <a name="azure-container-registry"></a>Azure Container Registry
@@ -172,7 +198,21 @@ Na przykład tworzenia obszaru roboczego przy użyciu istniejącego rejestru kon
 
 #### <a name="azure-container-instance"></a>Wystąpienie kontenera platformy Azure
 
-Wystąpienie kontenera platformy Azure nie obsługuje szyfrowania dysku. Jeśli potrzebujesz szyfrowania dysku, zaleca [się wdrożenie w wystąpieniu usługi Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md) zamiast. W takim przypadku można również użyć obsługi usługi Azure Machine Learning dla kontroli dostępu opartych na rolach, aby zapobiec wdrożeniu do wystąpienia kontenera platformy Azure w ramach subskrypcji.
+Można zaszyfrować wdrożony zasób wystąpienia kontenera platformy Azure (ACI) przy użyciu kluczy zarządzanych przez klienta. Klucz zarządzany przez klienta używany dla usługi ACI może być przechowywany w magazynie azure key dla obszaru roboczego. Aby uzyskać informacje na temat generowania klucza, zobacz [Szyfrowanie danych za pomocą klucza zarządzanego przez klienta](../container-instances/container-instances-encrypt-data.md#generate-a-new-key).
+
+Aby użyć klucza podczas wdrażania modelu w wystąpieniu kontenera `AciWebservice.deploy_configuration()`platformy Azure, utwórz nową konfigurację wdrożenia przy użyciu programu . Podaj kluczowe informacje, korzystając z następujących parametrów:
+
+* `cmk_vault_base_url`: Adres URL magazynu kluczy zawierającego klucz.
+* `cmk_key_name`: Nazwa klucza.
+* `cmk_key_version`: Wersja klucza.
+
+Aby uzyskać więcej informacji na temat tworzenia i używania konfiguracji wdrożenia, zobacz następujące artykuły:
+
+* Odwołanie [do usługi AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
+* [Gdzie i jak wdrażać modele](how-to-deploy-and-where.md)
+* [Wdrażanie modelu w wystąpieniach kontenera platformy Azure](how-to-deploy-azure-container-instance.md)
+
+Aby uzyskać więcej informacji na temat używania klucza zarządzanego przez klienta za pomocą usługi ACI, zobacz [Szyfrowanie danych za pomocą klucza zarządzanego przez klienta](../container-instances/container-instances-encrypt-data.md#encrypt-data-with-a-customer-managed-key).
 
 #### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 

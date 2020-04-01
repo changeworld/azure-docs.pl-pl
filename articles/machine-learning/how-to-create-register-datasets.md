@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: c78c1d3ce6dae874ace2abfa8b2bbec6d489538a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4025c620aea49dfb26ab203630c121d29d88d9d7
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536483"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474533"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Tworzenie zestawów danych usługi Azure Machine Learning
 
@@ -52,7 +52,7 @@ Głównym czynnikiem jest to, jak duży jest zestaw danych w pamięci, czyli jak
  
 Jeśli używasz Pandas, nie ma powodu, aby mieć więcej niż 1 vCPU, ponieważ to wszystko będzie używać. Można łatwo zrównać z wieloma procesorami wirtualnymi w jednym wystąpieniu/węźle obliczeniowym usługi Azure Machine Learning za `import pandas as pd` pośrednictwem `import modin.pandas as pd`modin i Dask/Ray i skalować w poziomie do dużego klastra, po prostu zmieniając na . 
  
-Jeśli nie możesz uzyskać wystarczająco dużej wirtualnej dla danych, masz dwie opcje: użyj struktury, takiej jak Spark lub Dask, aby wykonać przetwarzanie danych "poza pamięcią", tj. zebranych na końcu. Jeśli jest to zbyt wolne, Spark lub Dask umożliwiają skalowanie w poziomie do klastra, który nadal może być używany interaktywnie. 
+Jeśli nie możesz uzyskać wystarczająco dużej wirtualnej dla danych, masz dwie opcje: użyj struktury, takiej jak Spark lub Dask, aby wykonać przetwarzanie danych "z pamięci", czyli dataframe jest ładowany do partycji RAM przez partycję i przetwarzany, a ostateczny wynik jest zbierany na końcu. Jeśli jest to zbyt wolne, Spark lub Dask umożliwiają skalowanie w poziomie do klastra, który nadal może być używany interaktywnie. 
 
 ## <a name="dataset-types"></a>Typy zestawów danych
 
@@ -108,6 +108,7 @@ Domyślnie podczas tworzenia zestawu danych tabelarycznego typy danych kolumn s�
 > Jeśli magazyn znajduje się za siecią wirtualną lub zaporą, obsługiwane jest tylko tworzenie zestawu danych za pośrednictwem zestawu SDK. Aby utworzyć zestaw danych, należy uwzględnić `infer_column_types=False` parametry `from_delimited_files()` `validate=False` i metodę. Spowoduje to ominięcie początkowego sprawdzania poprawności i zapewnia, że można utworzyć zestaw danych z tych bezpiecznych plików. 
 
 ```Python
+from azureml.core import Dataset
 from azureml.data.dataset_factory import DataType
 
 # create a TabularDataset from a delimited file behind a public web url and convert column "Survived" to boolean

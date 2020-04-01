@@ -9,35 +9,35 @@ ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
-ms.translationtype: HT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78301010"
 ---
 ## <a name="prepare-your-web-app"></a>Przygotowywanie aplikacji internetowej
 
-Aby utworzyć niestandardowe powiązania zabezpieczeń lub włączyć certyfikaty klienta dla aplikacji App Service, [plan App Service](https://azure.microsoft.com/pricing/details/app-service/) musi znajdować się w warstwie **podstawowa**, **standardowa**, **Premium**lub **izolowana** . W tym kroku musisz się upewnić, że Twoja aplikacja internetowa jest w obsługiwanej warstwie cenowej.
+Aby utworzyć niestandardowe powiązania zabezpieczeń lub włączyć certyfikaty klienta dla aplikacji Usługi app service, [plan usługi app service](https://azure.microsoft.com/pricing/details/app-service/) musi być w warstwie **Podstawowa,** **Standardowa,** **Premium**lub **Izolowana.** W tym kroku musisz się upewnić, że Twoja aplikacja internetowa jest w obsługiwanej warstwie cenowej.
 
 ### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Otwórz [portal Azure](https://portal.azure.com).
+Otwórz witrynę [Azure Portal](https://portal.azure.com).
 
 ### <a name="navigate-to-your-web-app"></a>Przejdź do swojej aplikacji internetowej
 
-Wyszukaj i wybierz **App Services**.
+Wyszukaj i wybierz **pozycję Usługi aplikacji**.
 
-![Wybierz App Services](./media/app-service-ssl-prepare-app/app-services.png)
+![Wybieranie usług aplikacji](./media/app-service-ssl-prepare-app/app-services.png)
 
-Na stronie **App Services** wybierz nazwę aplikacji sieci Web.
+Na stronie **Usługi aplikacji** wybierz nazwę aplikacji sieci Web.
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-ssl-prepare-app/select-app.png)
 
-Na stronie Zarządzanie aplikacji sieci Web.  
+Wylądowałeś na stronie zarządzania aplikacji internetowej.  
 
 ### <a name="check-the-pricing-tier"></a>Sprawdzanie warstwy cenowej
 
-W lewym obszarze nawigacji na stronie Twojej aplikacji internetowej przewiń do sekcji **Ustawienia** i wybierz pozycję **Skaluj w górę (plan usługi App Service)** .
+W lewym obszarze nawigacji na stronie Twojej aplikacji internetowej przewiń do sekcji **Ustawienia** i wybierz pozycję **Skaluj w górę (plan usługi App Service)**.
 
 ![Menu skalowania w górę](./media/app-service-ssl-prepare-app/scale-up-menu.png)
 

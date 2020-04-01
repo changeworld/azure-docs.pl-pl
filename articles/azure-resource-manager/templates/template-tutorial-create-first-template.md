@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ace76b9a13f44c14e348a0338ca01dd6b3948ce3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b05bccf10ef5f273a74ca49e02162fd0408230f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369938"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411719"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Samouczek: Tworzenie i wdrażanie pierwszego szablonu ARM
 
@@ -79,7 +79,7 @@ Gratulacje, utworzono pierwszy szablon.
 
 Aby rozpocząć pracę z platformą Azure PowerShell/Azure CLI, zaloguj się przy użyciu poświadczeń platformy Azure.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Connect-AzAccount
@@ -96,7 +96,7 @@ az login
 
 Podczas wdrażania szablonu należy określić grupę zasobów, która będzie zawierać zasoby. Przed uruchomieniem polecenia wdrażania utwórz grupę zasobów za pomocą interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell. Wybierz karty w poniższej sekcji kodu, aby wybrać między platformą Azure PowerShell i interfejsu wiersza polecenia platformy Azure. Przykłady interfejsu wiersza polecenia w tym artykule są zapisywane dla powłoki Bash.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -118,14 +118,14 @@ az group create \
 
 Aby wdrożyć szablon, użyj interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell. Użyj utworzonej grupy zasobów. Nadaj nazwę wdrożeniu, aby można było łatwo zidentyfikować ją w historii wdrażania. Dla wygody należy również utworzyć zmienną, która przechowuje ścieżkę do pliku szablonu. Ta zmienna ułatwia uruchamianie poleceń wdrażania, ponieważ nie trzeba ponownie wpisywać ścieżkę przy każdym wdrożeniu.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
 New-AzResourceGroupDeployment `
   -Name blanktemplate `
   -ResourceGroupName myResourceGroup `
-  -TemplateFile $templateFile
+  -TemplateFile $templateFile 
 ```
 
 # <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
@@ -144,7 +144,7 @@ az deployment group create \
 
 Polecenie wdrażania zwraca wyniki. Poszukaj, `ProvisioningState` czy wdrożenie zakończyło się pomyślnie.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ![Stan inicjowania obsługi administracyjnej wdrożenia programu PowerShell](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
@@ -153,6 +153,9 @@ Polecenie wdrażania zwraca wyniki. Poszukaj, `ProvisioningState` czy wdrożenie
 ![Stan inicjowania obsługi administracyjnej wdrożenia interfejsu wiersza polecenia platformy Azure](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
 ---
+
+> [!NOTE]
+> Jeśli wdrożenie nie powiodło się, użyj przełącznika **debugowania** z poleceniem wdrażania, aby wyświetlić dzienniki debugowania.  Można również użyć pełnego **przełącznika,** aby wyświetlić pełne dzienniki debugowania.
 
 ## <a name="verify-deployment"></a>Weryfikowanie wdrożenia
 

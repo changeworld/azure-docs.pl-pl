@@ -192,4 +192,4 @@ Po zakończeniu wdrożenia wróć do okna przeglądarki otwartego w kroku **prze
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Środowisko PHP z bazą danych MySQL](app-service-web-tutorial-php-mysql.md)
+> [PHP z bazą danych MySQL](app-service-web-tutorial-php-mysql.md)

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 10e6ed556abe8f8c438e5436fbb93c1b70b85d2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 579767a0d535605a2316c35bd413a75474b5a3de
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445156"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410003"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Jak globalnie rozpowszechniać odczyty przy użyciu interfejsu API usługi Azure Cosmos DB dla usługi MongoDB
 
@@ -86,7 +86,7 @@ Szczegółowe informacje na temat zachowania każdego z tych trybów preferencji
 Na podstawie typowych scenariuszy zaleca się użycie następujących ustawień:
 
 1. Jeśli wymagane są **odczyty o małym opóźnieniu,** należy użyć trybu preferencji **odczytu NEAREST.** To ustawienie kieruje operacje odczytu do najbliższego dostępnego regionu. Należy zauważyć, że jeśli najbliższym regionem jest region WRITE, operacje te są kierowane do tego regionu.
-2. Jeśli wymagana jest **wysoka dostępność i dystrybucja geograficzna odczytów** (opóźnienie nie jest ograniczeniem), należy użyć trybu preferencji odczytu **WTÓRNEGO PREFEROWANEGO.** To ustawienie kieruje operacje odczytu do dostępnego regionu ODCZYTu. Jeśli nie region READ jest dostępny, a następnie żądania są kierowane do regionu WRITE.
+2. Jeśli wymagana jest **wysoka dostępność i dystrybucja geograficzna odczytów** (opóźnienie nie jest ograniczeniem), należy użyć trybu preferencji **odczytu PRIMARY PREFERRED** lub SECONDARY **PREFERRED.** To ustawienie kieruje operacje odczytu do dostępnego regionu ZAPISu lub ODCZYTu odpowiednio. Jeśli region nie jest dostępny, żądania są kierowane do następnego dostępnego regionu zgodnie z zachowaniem preferencji odczytu.
 
 Poniższy fragment kodu z przykładowej aplikacji pokazuje, jak skonfigurować preferencje odczytu NEAREST w NodeJS:
 

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu podróży i wydatków Concur | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory a kosztami podróży i wydatków Concur.
+title: 'Samouczek: Integracja rejestracji jednokrotnej usługi Azure Active Directory (Logowanie jednokrotne) z concur travel and expense | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a konsytującymi podróżami i wydatkami.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,158 +17,158 @@ ms.date: 03/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9dddd9f6904aa5ef7840850792aeabf04666dddc
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72373415"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu podróży i wydatków Concur
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>Samouczek: Integracja rejestracji jednokrotnej usługi Azure Active Directory (Logowanie jednokrotne) z concur travel and expense
 
-W tym samouczku dowiesz się, jak zintegrować Concure i koszty za pomocą usługi Azure Active Directory (Azure AD). Po zintegrowaniu Concur podróży i wydatków z usługą Azure AD możesz:
+W tym samouczku dowiesz się, jak zintegrować concur podróży i wydatków z usługi Azure Active Directory (Azure AD). Po zintegrowaniu concur podróży i wydatków z usługi Azure AD, można:
 
-* Kontrolka w usłudze Azure AD, która ma dostęp do podróży i wydatków usługi Concur.
-* Zezwól użytkownikom na automatyczne logowanie do Concur podróży i wydatków przy użyciu kont usługi Azure AD.
-* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
+* Kontrola w usłudze Azure AD, który ma dostęp do Concur Travel i wydatków.
+* Włącz użytkownikom automatyczne logowanie do concur travel i expense za pomocą swoich kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebujesz następujących elementów:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Subskrypcja podróży i wydatków usługi Concur.
-* Rola "administrator firmy" w ramach konta użytkownika Concur. Możesz sprawdzić, czy masz odpowiednie uprawnienia dostępu, przechodząc do narzędzia samoobsługowego [logowania jednokrotnego Concur](https://www.concursolutions.com/nui/authadmin/ssoadmin). Jeśli nie masz dostępu, skontaktuj się z pomocą techniczną Concur lub zaimplementowanie menedżera projektu. 
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto.](https://azure.microsoft.com/free/)
+* Konsypce subskrypcje podróży i wydatków.
+* Rola "Administrator firmy" w ramach twojego konta użytkownika Concur. Możesz sprawdzić, czy masz odpowiedni dostęp, przechodząc do [Concur SSO Self-Service Tool](https://www.concursolutions.com/nui/authadmin/ssoadmin). Jeśli nie masz dostępu, skontaktuj się z pomocą techniczną concur lub kierownikiem projektu wdrożeniowego. 
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD.
+W tym samouczku można skonfigurować i przetestować samouszeńców usługi Azure AD.
 
-* Concur podróże i wydatki obsługują Logowanie jednokrotne w **dostawcy tożsamości** i **SP**
-* Concur podróże i wydatki obsługują testowanie logowania jednokrotnego w środowisku produkcyjnym i implementacji 
+* Concur Travel and Expense obsługuje **jednostki SSO** inicjowane przez IDP i **SP**
+* Concur Travel and Expense obsługuje testowanie jednosojnika jednosołowego zarówno w środowisku produkcyjnym, jak i wdrożeniowym 
 
 > [!NOTE]
-> Identyfikator tej aplikacji to stała wartość ciągu dla każdego z trzech regionów: US, EMEA i Chiny. Można skonfigurować tylko jedno wystąpienie dla każdego regionu w jednej dzierżawie. 
+> Identyfikator tej aplikacji jest stałą wartością ciągu dla każdego z trzech regionów: USA, EMEA i Chiny. Więc tylko jedno wystąpienie można skonfigurować dla każdego regionu w jednej dzierżawie. 
 
-## <a name="adding-concur-travel-and-expense-from-the-gallery"></a>Dodawanie podróży i wydatków usługi Concur z galerii
+## <a name="adding-concur-travel-and-expense-from-the-gallery"></a>Dodawanie concur travel and expense z galerii
 
-Aby skonfigurować integrację usługi Concur w podróży i obchodzić z usługą Azure AD, musisz dodać przemieszczenie Concur i wydatki z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację concur podróży i wydatków do usługi Azure AD, należy dodać Concur Travel i wydatków z galerii do listy zarządzanych aplikacji SaaS.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
-1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta służbowego lub konta firmy Microsoft.
+1. W lewym okienku nawigacji wybierz usługę **Azure Active Directory.**
+1. Przejdź do **aplikacji korporacyjnych,** a następnie wybierz pozycję **Wszystkie aplikacje**.
 1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
-1. W sekcji **Dodaj z galerii** wpisz **Concur podróże i wydatki** w polu wyszukiwania.
-1. Wybierz pozycję **Concur podróże i wydatki** z panelu wyniki, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
+1. W sekcji **Dodaj z galerii** wpisz **Concur Travel i Expense** w polu wyszukiwania.
+1. Wybierz **pozycję Concur Travel and Expense** z panelu wyników, a następnie dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-concur-travel-and-expense"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD na potrzeby podróży i wydatków usługi Concur
+## <a name="configure-and-test-azure-ad-single-sign-on-for-concur-travel-and-expense"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD pod kątem konkurujących podróży i wydatków
 
-Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą Concurego ruchu i wydatków przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w programie Concur podróże i wydatki.
+Konfigurowanie i testowanie usługi Azure AD SSO za pomocą concur travel and expense przy użyciu użytkownika testowego o nazwie **B.Simon**. Aby identyfikator YSO działał, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w concur travel and expense.
 
-Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą Concurego ruchu i wydatków, wykonaj następujące bloki konstrukcyjne:
+Aby skonfigurować i przetestować usługę Azure AD SSO przy obliczu konkursowej podróży i wydatków, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
-    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
-    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-1. **[Skonfiguruj podróże i wydatki logowania jednokrotnego w usłudze Concur,](#configure-concur-travel-and-expense-sso)** aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-    1. **[Utwórz użytkownika testowego podróży i wydatków usługi Concur,](#create-concur-travel-and-expense-test-user)** aby dysponować odpowiednikiem B. Simon w Concur podróży i wydatków, które są połączone z reprezentacją użytkownika w usłudze Azure AD.
-1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj samouszeńcę usługi Azure AD](#configure-azure-ad-sso)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD za pomocą usługi B.Simon.
+    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić B.Simon używać logowania jednokrotnego usługi Azure AD.
+1. **[Skonfiguruj logowanie jednokrotne i koszty concur](#configure-concur-travel-and-expense-sso)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+    1. **[Utwórz użytkownika testu Konwentu podróży i wydatków](#create-concur-travel-and-expense-test-user)** — aby mieć odpowiednik B.Simon w Concur Travel i expense, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+1. **[Test SSO](#test-sso)** - aby sprawdzić, czy konfiguracja działa.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie rejestracji jednokrotnej w usłudze Azure AD
 
-Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
+Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azure portal.
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji do **podróży i wydatków Concur** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie Integracja aplikacji **Concur Travel i Expense** znajdź sekcję **Zarządzaj** i wybierz **opcję logowanie jednokrotne**.
 1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** kliknij ikonę edycji/pióra dla **podstawowej konfiguracji SAML,** aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. W sekcji **Podstawowa konfiguracja SAML** aplikacja została wstępnie skonfigurowana w trybie inicjalizacji **dostawcy tożsamości** , a wymagane adresy URL są już wstępnie wypełnione na platformie Azure. Użytkownik musi zapisać konfigurację, klikając przycisk **Zapisz** .
+1. W sekcji **Podstawowa konfiguracja SAML** aplikacja jest wstępnie skonfigurowana w trybie inicjowanym **przez usługę IDP,** a niezbędne adresy URL są już wstępnie wypełnione platformą Azure. Użytkownik musi zapisać konfigurację, klikając przycisk **Zapisz.**
 
     > [!NOTE]
-    > Identyfikator (identyfikator jednostki) i adres URL odpowiedzi (adres URL usługi Konsumenckej potwierdzenia) są specyficzne dla regionu. Wybierz pozycję na podstawie centrum danych jednostki Concur. Jeśli nie znasz centrum danych jednostki Concur, skontaktuj się z pomocą techniczną Concur. 
+    > Identyfikator (identyfikator jednostki) i adres URL odpowiedzi (adres URL usługi konsumenta oświadczeń) są specyficzne dla regionu. Wybierz na podstawie centrum danych encji Concur. Jeśli nie znasz centrum danych jednostki Concur, skontaktuj się z pomocą techniczną Concur. 
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióra, aby zmienić ustawienia **atrybutu użytkownika** . Unikatowy identyfikator użytkownika musi pasować do login_id użytkownika Concur. Zwykle należy zmienić **User. userPrincipalName** na **User. mail**.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** kliknij ikonę edycji/pióra **dla atrybutu użytkownika,** aby edytować ustawienia. Unikatowy identyfikator użytkownika musi być zgodny z login_id użytkownika Concur. Zazwyczaj należy zmienić **user.userprincipalname** na **user.mail**.
 
-    ![Edytowanie atrybutu użytkownika](common/edit-attribute.png)
+    ![Edytuj atrybut użytkownika](common/edit-attribute.png)
 
-6. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać metadane i zapisać je na komputerze.
+6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą SAML** w sekcji **Certyfikat podpisywania SAML** znajdź kod **XML metadanych federacji** i wybierz pozycję **Pobierz,** aby pobrać metadane i zapisać je na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
+W tej sekcji utworzysz użytkownika testowego w witrynie Azure portal o nazwie B.Simon.
 
-1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
-1. We właściwościach **użytkownika** wykonaj następujące kroki:
+1. Z lewego okienka w witrynie Azure portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
+1. We właściwościach **Użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** username@companydomain.extensionwprowadź pole . Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do Concur podróży i wydatków.
+W tej sekcji włączysz B.Simon do korzystania z logowania jednokrotnego platformy Azure, przyznając dostęp do Concur Travel i wydatków.
 
-1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście Aplikacje wybierz pozycję **Concur podróże i wydatki**.
-1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Na liście aplikacji wybierz **pozycję Concur Travel and Expense**.
+1. Na stronie przegląd aplikacji znajdź sekcję **Zarządzaj** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
+1. Wybierz **pozycję Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym Dodawanie **przydziału.**
 
-    ![Link Dodaj użytkownika](common/add-assign-user.png)
+    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
-1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B.Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przydziału** kliknij przycisk **Przypisz.**
 
-## <a name="configure-concur-travel-and-expense-sso"></a>Konfigurowanie Concur podróży i wydatków logowania jednokrotnego
+## <a name="configure-concur-travel-and-expense-sso"></a>Konfigurowanie przysłów ysk
 
-1. Aby skonfigurować Logowanie jednokrotne na stronie **Concur podróże i wydatki** , musisz przekazać pobrany **XML metadanych Federacji** do narzędzia samoobsługowego logowania [jednokrotnego Concur](https://www.concursolutions.com/nui/authadmin/ssoadmin) i zalogować się przy użyciu konta z rolą "administrator firmy". 
+1. Aby skonfigurować logowanie jednokrotne po stronie **Koncur Travel i Expense,** należy przekazać pobrany **kod XML metadanych federacji** do [narzędzia samoobsługowego logowania jednokrotnego](https://www.concursolutions.com/nui/authadmin/ssoadmin) i zalogować się za pomocą konta z rolą "Administrator firmy". 
 
-1. Kliknij pozycję **Add** (Dodaj).
-1. Wprowadź niestandardową nazwę dostawcy tożsamości, na przykład "Azure AD (US)". 
-1. Kliknij pozycję **Przekaż plik XML** i Dołącz wcześniej pobrany **kod XML metadanych Federacji** .
-1. Kliknij przycisk **Dodaj metadane** , aby zapisać zmiany.
+1. Kliknij przycisk **Dodaj**.
+1. Wprowadź niestandardową nazwę dla swojego idp, na przykład "Azure AD (US)". 
+1. Kliknij **pozycję Przekaż plik XML** i dołącz pobrany wcześniej kod **XML metadanych federacji.**
+1. Kliknij **pozycję Dodaj metadane,** aby zapisać zmianę.
 
-    ![Zrzut ekranu narzędzia samoobsługowego logowania jednokrotnego Concur](./media/concur-travel-and-expense-tutorial/add-metadata-concur-self-service-tool.png)
+    ![Zrzut ekranu przedstawiający narzędzie samoobsługowe Concur SSO](./media/concur-travel-and-expense-tutorial/add-metadata-concur-self-service-tool.png)
 
-### <a name="create-concur-travel-and-expense-test-user"></a>Utwórz użytkownika testowego podróży i wydatków Concur
+### <a name="create-concur-travel-and-expense-test-user"></a>Utwórz użytkownika testowego Concur Travel and Expense
 
-W tej sekcji utworzysz użytkownika o nazwie B. Simon w Concur podróży i obrachunku. Współpracuj z zespołem pomocy technicznej Concur, aby dodać użytkowników z platformy podróży i wydatków Concur. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
-
-> [!NOTE]
-> B. identyfikator logowania Concur Simon musi pasować do unikatowego identyfikatora B. Simon w usłudze Azure AD. Na przykład jeśli Simon usługi Azure AD `B.Simon@contoso.com`identyfikator. B. Simon identyfikator logowania Concur musi być również `B.Simon@contoso.com`. 
-
-## <a name="configure-concur-mobile-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Concur Mobile
-Aby włączyć logowanie jednokrotne w usłudze Concur Mobile, należy przyznać Concur obsługę **adresu URL dostępu użytkownika**zespołu. Wykonaj poniższe kroki, aby uzyskać **adres URL dostępu użytkownika** z usługi Azure AD:
-1. Przejdź do **aplikacji dla przedsiębiorstw**
-1. Kliknij pozycję **Concur podróże i wydatki**
-1. Kliknij pozycję **Właściwości**
-1. Kopiuj **adres URL dostępu użytkowników** i nadaj temu adresowi URL obsługę Concur
+W tej sekcji utworzysz użytkownika o nazwie B.Simon w Concur Travel and Expense. Praca z zespołem pomocy technicznej Concur, aby dodać użytkowników na platformie Concur Travel and Expense. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego. 
 
 > [!NOTE]
-> Opcja samoobsługowego konfigurowania logowania jednokrotnego jest niedostępna, aby współpraca z zespołem pomocy technicznej Concur mógł włączyć logowanie jednokrotne dla urządzeń przenośnych. 
+> Identyfikator logowania concur B.Simon musi być zgodny z unikatowym identyfikatorem B.Simona w usłudze Azure AD. Na przykład, jeśli B.Simon's Azure AD `B.Simon@contoso.com`unikatowy identyfikator jest . B.Simon's Concur identyfikator logowania `B.Simon@contoso.com` musi być również. 
 
-## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
+## <a name="configure-concur-mobile-sso"></a>Konfigurowanie urządzenia sytłego Concur Mobile
+Aby włączyć identyfikator SSO dla urządzeń przenośnych Concur, musisz podać **adres URL dostępu użytkownika do**zespołu pomocy technicznej Concur . Wykonaj poniższe czynności, aby uzyskać **adres URL dostępu użytkownika** z usługi Azure AD:
+1. Przejdź do **aplikacji Enterprise**
+1. Kliknij **pozycję Zbieżne podróże i wydatki**
+1. Kliknij **pozycję Właściwości**
+1. Kopiuj **adres URL dostępu użytkownika** i podaj ten adres URL do pomocy technicznej concur
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+> [!NOTE]
+> Opcja samoobsługowa do skonfigurowania usługi SSO nie jest dostępna, więc pracuj z zespołem pomocy technicznej Concur, aby włączyć mobilny plik SSO. 
 
-Po kliknięciu kafelka podróży i wydatków usługi Concur w panelu dostępu należy automatycznie zalogować się do Concur podróży i wydatków, dla których skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+## <a name="test-sso"></a>Test SSO 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+Po kliknięciu kafelka Konkuruj podróże i wydatki w Panelu dostępu należy automatycznie zalogować się do konkuruj podróży i wydatków, dla których skonfigurowano logowanie jednośmiękowe. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="additional-resources"></a>Zasoby dodatkowe
+
+- [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Wypróbuj Concur podróży i wydatków dzięki usłudze Azure AD](https://aad.portal.azure.com/)
+- [Wypróbuj zbieżne podróże i wydatki dzięki usłudze Azure AD](https://aad.portal.azure.com/)
 

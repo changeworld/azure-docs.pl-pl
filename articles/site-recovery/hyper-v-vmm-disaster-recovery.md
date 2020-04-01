@@ -4,16 +4,15 @@ description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii dla maszyn 
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: 8d89c7eda845f0e5ed9bc8ccc7b6b3812ba275f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74132994"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437502"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V do dodatkowej lokacji lokalnej
 
@@ -45,7 +44,7 @@ Aby ukończyć ten scenariusz:
 
 - Łączy maszyny wirtualne z odpowiednimi docelowymi sieciami maszyn wirtualnych po przejściu w tryb failover. 
 - Optymalnie umieszcza repliki maszyn wirtualnych na docelowych serwerach hostów funkcji Hyper-V. 
-- Jeśli nie skonfigurujesz mapowania sieci, replikowane maszyny wirtualne nie zostaną połączone z żadną siecią maszyn wirtualnych po przejściu w tryb failover.
+- Jeśli nie skonfigurujesz mapowania sieci, repliki maszyn wirtualnych nie będą połączone z siecią maszyn wirtualnych po przełączeniu w błąd.
 
 Przygotuj program VMM w następujący sposób:
 

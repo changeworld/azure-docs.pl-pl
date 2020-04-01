@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 01/13/2020
-ms.openlocfilehash: c813e8a27a7f85eccff2c23d9ffdcfa4a1442f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 6e300bbec097201b33f0c576db91c2ca720fb921
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282838"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437315"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpieczanie zadań eksperymentowania i wnioskowania usługi Azure w ramach sieci wirtualnej platformy Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ Aby użyć konta magazynu platformy Azure dla obszaru roboczego w sieci wirtualn
     - W __obszarze Sieci wirtualne__wybierz łącze __Dodaj istniejącą sieć wirtualną.__ Ta akcja dodaje sieć wirtualną, w której znajdują się obliczenia (zobacz krok 1).
 
         > [!IMPORTANT]
-        > Konto magazynu musi znajdować się w tej samej sieci wirtualnej co wystąpienia obliczeniowe lub klastry używane do szkolenia lub wnioskowania.
+        > Konto magazynu musi znajdować się w tej samej sieci wirtualnej i podsieci co wystąpienia obliczeniowe lub klastry używane do szkolenia lub wnioskowania.
 
     - Zaznacz pole wyboru __Zezwalaj zaufanym usługom firmy Microsoft na dostęp do tego konta magazynu.__
 
@@ -180,8 +180,6 @@ Jeśli nie chcesz używać domyślnych reguł ruchu wychodzącego i chcesz ogran
    - Usługa Azure Storage, przy użyciu __tagu usługi__ __Storage.RegionName__. Gdzie `{RegionName}` jest nazwa regionu platformy Azure.
    - Usługa Azure Container Registry, przy użyciu __tagu usługi__ __AzureContainerRegistry.RegionName__. Gdzie `{RegionName}` jest nazwa regionu platformy Azure.
    - Usługa Azure Machine Learning przy użyciu __tagu usługi__ __AzureMachineLearning__
-   
-- W przypadku __wystąpienia obliczeniowego__należy również dodać następujące elementy:
    - Usługa Azure Resource Manager, przy użyciu __tagu usługi__ __AzureResourceManager__
    - Usługa Azure Active Directory przy użyciu __tagu usługi__ __AzureActiveDirectory__
 
@@ -242,19 +240,19 @@ Aby uzyskać więcej informacji, zobacz [Tworzenie puli partii Azure w sieci wir
 
 Aby utworzyć klaster obliczeniowy uczenia maszynowego, należy wykonać następujące czynności:
 
-1. W [witrynie Azure portal](https://portal.azure.com)wybierz obszar roboczy usługi Azure Machine Learning.
+1. Zaloguj się do [studia usługi Azure Machine Learning,](https://ml.azure.com/)a następnie wybierz subskrypcję i obszar roboczy.
 
-1. W sekcji __Aplikacja__ wybierz pozycję __Oblicz__, a następnie wybierz pozycję __Dodaj obliczeń__.
+1. Wybierz __pozycję Oblicz__ po lewej stronie.
 
-1. Aby skonfigurować ten zasób obliczeniowy do używania sieci wirtualnej, wykonaj następujące czynności:
+1. Wybierz __pozycję Klastry szkoleniowe__ z __+__ centrum, a następnie wybierz pozycję .
 
-    a. W obszarze __Konfiguracja sieci__wybierz pozycję __Zaawansowane__.
+1. W oknie dialogowym __Nowy klaster szkoleniowy__ rozwiń sekcję __Ustawienia zaawansowane.__
 
-    b. Z listy rozwijanej __Grupa zasobów__ wybierz grupę zasobów zawierającą sieć wirtualną.
+1. Aby skonfigurować ten zasób obliczeniowy do używania sieci wirtualnej, wykonaj następujące czynności w sekcji __Konfigurowanie sieci wirtualnej:__
 
-    d. Z listy rozwijanej __Sieć wirtualna__ wybierz sieć wirtualną zawierającą podsieć.
-
-    d. Z __Subnet__ listy rozwijanej Podsieć wybierz podsieć, której chcesz użyć.
+    1. Z listy rozwijanej __Grupa zasobów__ wybierz grupę zasobów zawierającą sieć wirtualną.
+    1. Z listy rozwijanej __Sieć wirtualna__ wybierz sieć wirtualną zawierającą podsieć.
+    1. Z __Subnet__ listy rozwijanej Podsieć wybierz podsieć, której chcesz użyć.
 
    ![Ustawienia sieci wirtualnej dla uczenia maszynowego Compute](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
 
@@ -356,29 +354,25 @@ Aby dodać usługi AKS w sieci wirtualnej do obszaru roboczego, należy wykonać
 >
 > Wystąpienie usługi AKS i sieć wirtualna platformy Azure muszą znajdować się w tym samym regionie. Jeśli zabezpieczysz konta usługi Azure Storage używane przez obszar roboczy w sieci wirtualnej, muszą one znajdować się w tej samej sieci wirtualnej co wystąpienie usługi AKS.
 
-1. W [witrynie Azure portal](https://portal.azure.com)upewnij się, że grupa sieciowych, która kontroluje sieć wirtualną, ma regułę przychodzącą, która jest włączona dla usługi Azure Machine Learning przy użyciu __usługi AzureMachineLearning__ jako **ŹRÓDŁO.**
+> [!WARNING]
+> Usługa Azure Machine Learning nie obsługuje korzystania z usługi Azure Kubernetes, która ma włączone łącze prywatne.
 
-    [![Okienko Dodawanie obliczeń maszynowych usługi Azure](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png#lightbox)
+1. Zaloguj się do [studia usługi Azure Machine Learning,](https://ml.azure.com/)a następnie wybierz subskrypcję i obszar roboczy.
 
-1. Wybierz obszar roboczy usługi Azure Machine Learning.
+1. Wybierz __pozycję Oblicz__ po lewej stronie.
 
-1. W sekcji __Aplikacja__ wybierz pozycję __Oblicz__, a następnie wybierz pozycję __Dodaj obliczeń__.
+1. Wybierz __pozycję Klastry wnioskowania__ od __+__ środka, a następnie wybierz opcję .
 
-1. Aby skonfigurować ten zasób obliczeniowy do używania sieci wirtualnej, wykonaj następujące czynności:
+1. W oknie dialogowym __Nowy klaster wnioskowania__ wybierz pozycję __Zaawansowane__ w obszarze __Konfiguracja sieci__.
 
-    - W obszarze __Konfiguracja sieci__wybierz pozycję __Zaawansowane__.
+1. Aby skonfigurować ten zasób obliczeniowy do korzystania z sieci wirtualnej, wykonaj następujące akcje:
 
-    - Z listy rozwijanej __Grupa zasobów__ wybierz grupę zasobów zawierającą sieć wirtualną.
-
-    - Z listy rozwijanej __Sieć wirtualna__ wybierz sieć wirtualną zawierającą podsieć.
-
-    - Z __Subnet__ listy rozwijanej Podsieć wybierz podsieć.
-
-    - W polu __Zakres adresów usługi Kubernetes__ wprowadź zakres adresów usługi Kubernetes. Ten zakres adresów używa zakresu ip notacji cidr (Classless Inter-Domain Routing) do definiowania adresów IP dostępnych dla klastra. Nie może pokrywać się z żadnymi zakresami adresów IP podsieci (na przykład 10.0.0.0/16).
-
-    - W polu __Adres IP usługi DNS kubernetes__ wprowadź adres IP usługi DNS kubernetes. Ten adres IP jest przypisany do usługi DNS Kubernetes. Musi znajdować się w zakresie adresów usługi Kubernetes (na przykład 10.0.0.10).
-
-    - W polu __Adres mostka platformy Docker__ wprowadź adres mostka platformy Docker. Ten adres IP jest przypisany do programu Docker Bridge. Nie może znajdować się w żadnych zakresach adresów IP podsieci ani w zakresie adresów usługi Kubernetes (na przykład 172.17.0.1/16).
+    1. Z listy rozwijanej __Grupa zasobów__ wybierz grupę zasobów zawierającą sieć wirtualną.
+    1. Z listy rozwijanej __Sieć wirtualna__ wybierz sieć wirtualną zawierającą podsieć.
+    1. Z __Subnet__ listy rozwijanej Podsieć wybierz podsieć.
+    1. W polu __Zakres adresów usługi Kubernetes__ wprowadź zakres adresów usługi Kubernetes. Ten zakres adresów używa zakresu ip notacji cidr (Classless Inter-Domain Routing) do definiowania adresów IP dostępnych dla klastra. Nie może pokrywać się z żadnymi zakresami adresów IP podsieci (na przykład 10.0.0.0/16).
+    1. W polu __Adres IP usługi DNS kubernetes__ wprowadź adres IP usługi DNS kubernetes. Ten adres IP jest przypisany do usługi DNS Kubernetes. Musi znajdować się w zakresie adresów usługi Kubernetes (na przykład 10.0.0.10).
+    1. W polu __Adres mostka platformy Docker__ wprowadź adres mostka platformy Docker. Ten adres IP jest przypisany do programu Docker Bridge. Nie może znajdować się w żadnych zakresach adresów IP podsieci ani w zakresie adresów usługi Kubernetes (na przykład 172.17.0.1/16).
 
    ![Usługa Azure Machine Learning: ustawienia sieci wirtualnej obliczeń usługi Machine Learning](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
@@ -445,7 +439,7 @@ except:
     prov_config.docker_bridge_cidr = "172.17.0.1/16"
 
     # Create compute target
-    aks_target = ComputeTarget.create(workspace = ws, name = “myaks”, provisioning_configuration = prov_config)
+    aks_target = ComputeTarget.create(workspace = ws, name = "myaks", provisioning_configuration = prov_config)
     # Wait for the operation to complete
     aks_target.wait_for_completion(show_output = True)
     
@@ -466,7 +460,7 @@ Zawartość pliku, `body.json` do którego odwołuje się polecenie, jest podobn
 
 ```json
 { 
-    "location": “<region>”, 
+    "location": "<region>", 
     "properties": { 
         "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>", 
         "computeType": "AKS", 
@@ -504,7 +498,102 @@ Aby uzyskać więcej informacji na temat konfigurowania reguły sieciowej, zobac
 
 ## <a name="use-azure-container-registry"></a>Korzystanie z usługi Azure Container Registry
 
-Korzystając z sieci wirtualnej z usługą Azure Machine Learning, __nie należy__ umieszczać rejestru kontenerów platformy Azure dla obszaru roboczego w sieci wirtualnej. Ta konfiguracja nie jest obsługiwana.
+> [!IMPORTANT]
+> Usługa Azure Container Registry (ACR) można umieścić w sieci wirtualnej, jednak należy spełnić następujące wymagania wstępne:
+>
+> * Obszar roboczy usługi Azure Machine Learning musi być w wersji Enterprise. Aby uzyskać informacje na temat uaktualniania, zobacz [Uaktualnianie do wersji Enterprise](how-to-manage-workspace.md#upgrade).
+> * Twój rejestr kontenerów platformy Azure musi być wersją Premium . Aby uzyskać więcej informacji na temat uaktualniania, zobacz [Zmienianie jednostek SKU](/azure/container-registry/container-registry-skus#changing-skus).
+> * Usługa Azure Container Registry musi znajdować się w tej samej sieci wirtualnej i podsieci, co konto magazynu i obiekty docelowe obliczeniowe używane do szkolenia lub wnioskowania.
+> * Obszar roboczy usługi Azure Machine Learning musi zawierać [klaster obliczeniowy usługi Azure Machine Learning.](how-to-set-up-training-targets.md#amlcompute)
+>
+>     Gdy usługa ACR znajduje się za siecią wirtualną, usługa Azure Machine Learning nie może używać jej do bezpośredniego tworzenia obrazów platformy Docker. Zamiast tego klaster obliczeniowy jest używany do tworzenia obrazów.
+
+1. Aby znaleźć nazwę rejestru kontenerów platformy Azure dla obszaru roboczego, użyj jednej z następujących metod:
+
+    __Azure Portal__
+
+    W sekcji omówienie obszaru roboczego łącza wartości __rejestru__ do rejestru kontenerów platformy Azure.
+
+    ![Usługa Azure Container Registry dla obszaru roboczego](./media/how-to-enable-virtual-network/azure-machine-learning-container-registry.png)
+
+    __Interfejs wiersza polecenia platformy Azure__
+
+    Jeśli [zainstalowano rozszerzenie uczenia maszynowego dla interfejsu wiersza polecenia platformy Azure,](reference-azure-machine-learning-cli.md)można użyć `az ml workspace show` polecenia, aby wyświetlić informacje o obszarze roboczym.
+
+    ```azurecli-interactive
+    az ml workspace show -w yourworkspacename -g resourcegroupname --query 'containerRegistry'
+    ```
+
+    To polecenie zwraca wartość `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"`podobną do . Ostatnia część ciągu jest nazwa rejestru kontenerów platformy Azure dla obszaru roboczego.
+
+1. Aby ograniczyć dostęp do sieci wirtualnej, należy wykonać czynności opisane w temacie [Konfigurowanie dostępu do sieci dla rejestru](../container-registry/container-registry-vnet.md#configure-network-access-for-registry). Podczas dodawania sieci wirtualnej wybierz sieć wirtualną i podsieć dla zasobów usługi Azure Machine Learning.
+
+1. Użyj zestawu Azure Machine Learning Python SDK, aby skonfigurować klaster obliczeniowy do tworzenia obrazów docker. Poniższy fragment kodu pokazuje, jak to zrobić:
+
+    ```python
+    from azureml.core import Workspace
+    # Load workspace from an existing config file
+    ws = Workspace.from_config()
+    # Update the workspace to use an existing compute cluster
+    ws.update(image_build_compute = 'mycomputecluster')
+    ```
+
+    > [!IMPORTANT]
+    > Konto magazynu, klaster obliczeniowy i rejestr kontenerów platformy Azure muszą znajdować się w tej samej podsieci sieci wirtualnej.
+    
+    Aby uzyskać więcej informacji, zobacz odwołanie do metody [update().](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none-)
+
+1. Jeśli używasz łącza prywatnego dla obszaru roboczego usługi Azure Machine Learning i umieścisz rejestr kontenerów platformy Azure dla obszaru roboczego w sieci wirtualnej, należy również zastosować następujący szablon usługi Azure Resource Manager. Ten szablon umożliwia obszarowi roboczemu komunikowanie się z acr za pomocą łącza prywatnego.
+
+    ```json
+    {
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "keyVaultArmId": {
+        "type": "string"
+        },
+        "workspaceName": {
+        "type": "string"
+        },
+        "containerRegistryArmId": {
+        "type": "string"
+        },
+        "applicationInsightsArmId": {
+        "type": "string"
+        },
+        "storageAccountArmId": {
+        "type": "string"
+        },
+        "location": {
+        "type": "string"
+        }
+    },
+    "resources": [
+        {
+        "type": "Microsoft.MachineLearningServices/workspaces",
+        "apiVersion": "2019-11-01",
+        "name": "[parameters('workspaceName')]",
+        "location": "[parameters('location')]",
+        "identity": {
+            "type": "SystemAssigned"
+        },
+        "sku": {
+            "tier": "enterprise",
+            "name": "enterprise"
+        },
+        "properties": {
+            "sharedPrivateLinkResources":
+    [{"Name":"Acr","Properties":{"PrivateLinkResourceId":"[concat(parameters('containerRegistryArmId'), '/privateLinkResources/registry')]","GroupId":"registry","RequestMessage":"Approve","Status":"Pending"}}],
+            "keyVault": "[parameters('keyVaultArmId')]",
+            "containerRegistry": "[parameters('containerRegistryArmId')]",
+            "applicationInsights": "[parameters('applicationInsightsArmId')]",
+            "storageAccount": "[parameters('storageAccountArmId')]"
+        }
+        }
+    ]
+    }
+    ```
 
 ## <a name="next-steps"></a>Następne kroki
 

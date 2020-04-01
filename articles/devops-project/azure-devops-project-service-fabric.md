@@ -10,10 +10,10 @@ ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: 5f14164da5cd89cc7d0578e6b64c39d227734d75
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71969477"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>Samouczek: wdrażanie aplikacji platformy ASP.NET Core w usłudze Azure Service Fabric za pomocą usługi Azure DevOps Projects
@@ -43,7 +43,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 
 Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. Usługa DevOps Projects tworzy również zasoby platformy Azure, na przykład klaster usługi Azure Service Fabric, w wybranej przez użytkownika subskrypcji platformy Azure.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**.
 
@@ -81,7 +81,7 @@ Usługa DevOps Projects automatycznie konfiguruje potok ciągłej integracji/ci�
 
 1. Przejdź do pulpitu nawigacyjnego projektu DevOps.
 
-1. U góry pulpitu nawigacyjnego usługi DevOps Projects wybierz pozycję **Potoki kompilacji**.  
+1. U góry pulpitu nawigacyjnego DevOps Projects wybierz pozycję **Buduj potoki**.  
     Zostanie wyświetlona karta przeglądarki z potokiem kompilacji dla nowego projektu.
 
 1. Wskaż pole **Stan** i wybierz symbol wielokropka (...).  
@@ -127,7 +127,7 @@ Usługa DevOps Projects automatycznie tworzy i konfiguruje kroki wymagane do wdr
 1. Wybierz pozycję **Zatwierdzenia**.  
     Ten widok przedstawia zatwierdzenia kodu skojarzone z danym wdrożeniem. Porównaj wydania, aby wyświetlić różnice w zatwierdzeniach pomiędzy wdrożeniami.
 
-1. Wybierz pozycję **Dzienniki**.  
+1. Wybierz **dzienniki**.  
     Dzienniki zawierają przydatne informacje na temat procesu wdrażania. Możesz je wyświetlać zarówno podczas wdrażania, jak i po jego zakończeniu.
 
 ## <a name="commit-changes-to-git-and-automatically-deploy-them-to-azure"></a>Zatwierdzanie zmian w usłudze Git i automatyczne wdrażanie ich na platformie Azure 
@@ -137,7 +137,7 @@ Usługa DevOps Projects automatycznie tworzy i konfiguruje kroki wymagane do wdr
 
 Teraz możesz rozpocząć współpracę z zespołem nad aplikacją w języku Python w ramach procesu ciągłej integracji/ciągłego wdrażania, który automatycznie wdraża najnowszy kod w witrynie internetowej. Każda zmiana repozytorium usługi Git powoduje uruchomienie kompilacji, a wydanie wdraża zmiany na platformie Azure. Wykonaj procedurę opisaną w tej sekcji lub użyj innej techniki, aby zatwierdzić zmiany w repozytorium. Możesz na przykład sklonować repozytorium Git za pomocą ulubionego narzędzia lub środowiska IDE, a następnie wypchnąć zmiany do tego repozytorium.
 
-1. W menu usługi Azure DevOps wybierz kolejno pozycje **Kod** > **Pliki**, a następnie przejdź do repozytorium.
+1. W menu Azure DevOps wybierz pozycję **Pliki kodu** > **,** a następnie przejdź do repozytorium.
 
 1. Przejdź do katalogu *Views\Home*, wybierz symbol wielokropka (...) obok pliku *Index.cshtml* i wybierz pozycję **Edytuj**.
 

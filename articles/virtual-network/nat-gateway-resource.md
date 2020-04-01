@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 03/31/2020
 ms.author: allensu
-ms.openlocfilehash: 48fd4b0e6f0351cd46fc4063785d961867637e0c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8234bb82ba1f4ff9bd7aea9887121d9c703ac4a3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80060647"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473291"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Projektowanie sieci wirtualnych z zasobami bramy NAT
 
@@ -39,7 +39,7 @@ Konfigurowanie i używanie bramy NAT jest celowo proste:
 Zasób bramy TRANSLATOR:
 - Tworzenie zasobów bramy NAT regionalnej lub strefowej (izolowanej strefą),
 - Przypisywanie adresów IP,
-- Modyfikowanie limitu czasu bezczynnego TCP (opcjonalnie).
+- W razie potrzeby zmodyfikuj limit czasu bezczynnia TCP (opcjonalnie).  Przejrzyj [czasomierze](#timers) <ins>przed</ins> zmianą wartości domyślnej.
 
 Sieć wirtualna:
 - Skonfiguruj podsieć sieci wirtualnej do używania bramy TRANSLATORA.
@@ -178,27 +178,50 @@ Bramy TRANSLATORA mają pierwszeństwo przed wychodzącymi scenariuszami podsiec
 
 ### <a name="availability-zones"></a>Strefy dostępności
 
-Nawet bez stref dostępności translator adresów sieciowych jest odporny i może przetrwać wiele awarii składników infrastruktury. Gdy strefy dostępności są częścią scenariusza, należy skonfigurować translatora i ciągłego opisu dla określonej strefy.  Operacje płaszczyzny sterowania i płaszczyzny danych są powiązane z określoną strefą. Błąd w strefie innej niż istnieje scenariusz oczekuje się bez wpływu na TRANSLATORA. Ruch wychodzący z maszyn wirtualnych w tej samej strefie zakończy się niepowodzeniem z powodu izolacji strefy.
+#### <a name="zone-isolation-with-zonal-stacks"></a>Izolacja strefy ze stosami strefowymi
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" width="425" title="Virtual Network NAT ze strefami dostępności">
+  <img src="media/nat-overview/az-directions.svg" width="425" title="Virtual Network NAT z izolacją strefy, tworzenie wielu "zonal stacks"">
 </p>
 
-*Rysunek: Virtual Network NAT ze strefami dostępności*
+*Rysunek: Virtual Network NAT z izolacją strefy, tworząc wiele "stosów strefowych"*
 
-Brama NAT izolowana w strefie wymaga adresów IP, aby dopasować go do strefy bramy NAT. Zasoby bramy TRANSLATORa z adresami IP z innej strefy lub bez strefy nie są obsługiwane.
+Nawet bez stref dostępności translator adresów sieciowych jest odporny i może przetrwać wiele awarii składników infrastruktury.  Strefy dostępności opierają się na tej odporności ze scenariuszami izolacji stref dla translatora pracowników.
 
-Sieci wirtualne i podsieci są regionalne i nie są wyrównane. Maszyna wirtualna musi znajdować się w tej samej strefie co brama NAT dla obietnicy strefowej połączeń wychodzących. Izolacja strefy jest tworzona przez utworzenie strefowego "stosu" na strefę dostępności. Obietnica strefowa nie będzie istnieć podczas przekraczania stref bramy strefowej nat lub przy użyciu regionalnej bramy NAT z maszynami wirtualnymi strefowymi.
+Sieci wirtualne i ich podsieci są konstrukcjami regionalnymi.  Podsieci nie są ograniczone do strefy.
 
-Podczas wdrażania zestawów skalowania maszyny wirtualnej do użycia z translatorem adresów sieciowych można wdrożyć zestaw skalowania strefowego we własnej podsieci i dołączyć pasującą bramę NAT strefy do tej podsieci. Jeśli używasz zestawów skalowania obejmujących strefę (skala ustawiona w dwóch lub więcej strefach), translator wartości nat nie zapewni obietnicy strefowej.  Translator z translatora i wydajności nie obsługuje nadmiarowości strefy.  Obsługiwane jest tylko izolacja regionalna lub strefa.
+Obietnica strefowa dotycząca izolacji strefy istnieje, gdy wystąpienie maszyny wirtualnej przy użyciu zasobu bramy NAT znajduje się w tej samej strefie co zasób bramy NAT i jego publiczne adresy IP. Wzorzec, który ma być używany do izolacji strefy, tworzy "stos strefowy" na strefę dostępności.  Ten "stos strefowy" składa się z wystąpień maszyny wirtualnej, zasobów bramy NAT, publicznych zasobów adresów IP i/lub zasobów prefiksu w podsieci, która zakłada się, że obsługuje tylko tę samą strefę.   Operacje płaszczyzny sterowania i płaszczyzny danych są następnie wyrównywały i ograniczane do określonej strefy. 
+
+Błąd w strefie innej niż istnieje scenariusz oczekuje się bez wpływu na TRANSLATORA. Ruch wychodzący z maszyn wirtualnych w tej samej strefie zakończy się niepowodzeniem z powodu izolacji strefy.  
+
+#### <a name="integrating-inbound-endpoints"></a>Integrowanie przychodzących punktów końcowych
+
+Jeśli scenariusz wymaga przychodzących punktów końcowych, dostępne są dwie opcje:
+
+| Opcja | Wzorce | Przykład | Pro | Con |
+|---|---|---|---|---|
+| (1) | **Wyrównaj** przychodzące punkty końcowe z **odpowiednimi stosami strefowymi,** które tworzysz dla ruchu wychodzącego. | Utwórz standardowy moduł równoważenia obciążenia z osią strefową. | Ten sam model kondycji i tryb awarii dla ruchu przychodzącego i wychodzącego. Prostsza obsługa. | Poszczególne adresy IP na strefę mogą wymagać maskowania za pomocą wspólnej nazwy DNS. |
+| (2) | **Nakładanie** stosów strefowych na przychodzący punkt końcowy **między strefami.** | Utwórz standardowy moduł równoważenia obciążenia z nadmiarowym frontendem strefy. | Pojedynczy adres IP dla przychodzącego punktu końcowego. | Różne tryby kondycji i awarii dla ruchu przychodzącego i wychodzącego.  Bardziej skomplikowane w obsłudze. |
+
+>[!NOTE]
+> Brama NAT izolowana w strefie wymaga adresów IP, aby dopasować go do strefy bramy NAT. Zasoby bramy TRANSLATORa z adresami IP z innej strefy lub bez strefy nie są dozwolone.
+
+#### <a name="cross-zone-outbound-scenarios-not-supported"></a>Scenariusze wychodzące między strefami nie są obsługiwane
 
 <p align="center">
-  <img src="media/nat-overview/az-directions2.svg" width="425" title="strefa obejmująca virtual network NAT">
+  <img src="media/nat-overview/az-directions2.svg" width="425" title="Virtual Network NAT nie jest kompatybilny z podsiecią obejmującą strefę">
 </p>
 
-*Rysunek: Strefa obejmująca virtual network NAT*
+*Rysunek: Sieć wirtualna NAT nie jest zgodna z podsiecią obejmującą strefę*
 
-Właściwość zones nie jest modyfikowalna.  Ponowne wdrożenie zasobu bramy NAT z zamierzonymi preferencjami regionalnymi lub strefami.
+Nie można osiągnąć obietnicy strefowej z zasobami bramy NAT, gdy wystąpienia maszyny wirtualnej są wdrażane w wielu strefach w tej samej podsieci.   Nawet jeśli do podsieci było wiele strefowych bram NAT, wystąpienie maszyny wirtualnej nie wiedziałoby, który zasób bramy NAT wybrać.
+
+Obietnica strefowa nie istnieje, gdy a) strefa wystąpienia maszyny wirtualnej i strefy bramy strefowej nat nie są wyrównane lub b) regionalny zasób bramy NAT jest używany z wystąpieniami strefowej maszyny wirtualnej.
+
+Gdy scenariusz będzie działać, jego model kondycji i tryb awarii jest niezdefiniowany z punktu widzenia strefy dostępności. Rozważ przejście ze stosami strefowymi lub wszystkimi regionalnymi zamiast tego.
+
+>[!NOTE]
+>Właściwość stref zasobu bramy NAT nie jest modyfikowalna.  Ponowne wdrożenie zasobu bramy NAT z zamierzonymi preferencjami regionalnymi lub strefami.
 
 >[!NOTE] 
 >Adresy IP same w sobie nie są nadmiarowe strefy, jeśli nie określono strefy.  Frontend [standardowego modułu równoważenia obciążenia jest nadmiarowy strefowo,](../load-balancer/load-balancer-standard-availability-zones.md#frontend) jeśli adres IP nie jest tworzony w określonej strefie.  Nie dotyczy to translatora i odpowiedzi na dzieci.  Obsługiwane jest tylko izolacja regionalna lub strefa.
@@ -255,11 +278,9 @@ Po wydaniu portu SNAT jest on dostępny do użycia przez dowolną maszynę wirtu
 
 ### <a name="scaling"></a>Skalowanie
 
-NAT potrzebuje wystarczającej ilości zapasów portów SNAT dla pełnego scenariusza wychodzącego. Skalowanie NAT jest przede wszystkim funkcją zarządzania udostępnionym, dostępnym zapasem portów SNAT. Musi istnieć wystarczająca ilość zapasów, aby zaradzić szczytowy przepływ wychodzący dla wszystkich podsieci dołączonych do zasobu bramy TRANSLATORA.
+Skalowanie NAT jest przede wszystkim funkcją zarządzania udostępnionym, dostępnym zapasem portów SNAT. Translator informacji na ten sposób wymaga wystarczającej ilości zapasów portów SNAT dla oczekiwanych szczytowych przepływów wychodzących dla wszystkich podsieci dołączonych do zasobu bramy TRANSLATORA.  Do utworzenia zapasów portów SNAT można użyć publicznych zasobów adresów IP, publicznych zasobów prefiksu IP lub obu tych zasobów.
 
-SNAT mapuje wiele adresów prywatnych na jeden adres publiczny i używa wielu publicznych adresów IP do skalowania.
-
-Zasób bramy NAT użyje 64 000 portów (portów SNAT) publicznego adresu IP.  Te porty SNAT stają się dostępnym zapasem dla mapowania przepływu prywatnego i publicznego. A dodanie większej liczby publicznych adresów IP zwiększa dostępne porty SNAT zapasów. Zasoby bramy TRANSLATORA mogą skalować do 16 adresów IP i portów 1M SNAT.  TCP i UDP są oddzielnymi zapasami portów SNAT i niepowiązanych.
+SNAT mapuje adresy prywatne na jeden lub więcej publicznych adresów IP, przepisując adres źródłowy i port źródłowy w procesach. Zasób bramy NAT użyje 64 000 portów (portów SNAT) na skonfigurowany publiczny adres IP dla tego tłumaczenia. Zasoby bramy TRANSLATORA mogą skalować do 16 adresów IP i portów 1M SNAT. Jeśli dostępny jest publiczny zasób prefiksu IP, każdy adres IP w prefiksie zapewnia zapasy portów SNAT. A dodanie większej liczby publicznych adresów IP zwiększa dostępne porty SNAT zapasów. TCP i UDP są oddzielnymi zapasami portów SNAT i niepowiązanych.
 
 Zasoby bramy NAT oportunistycznie ponownie użyć portów źródłowych. Do celów skalowania należy założyć, że każdy przepływ wymaga nowego portu SNAT i skalować całkowitą liczbę dostępnych adresów IP dla ruchu wychodzącego.
 
@@ -268,6 +289,9 @@ Zasoby bramy NAT oportunistycznie ponownie użyć portów źródłowych. Do cel�
 Zasoby bramy NAT współdziałają z nagłówkami transportu IP i IP przepływów UDP i TCP i są niezależni od ładunków warstw aplikacji.  Inne protokoły IP nie są obsługiwane.
 
 ### <a name="timers"></a>Czasomierze
+
+>[!IMPORTANT]
+>Długi zegar bezczynności może niepotrzebnie zwiększyć prawdopodobieństwo wyczerpania SNAT. Im dłuższy czasomierz określisz, tym dłuższy nat będzie trzymać się portów SNAT, aż w końcu limit czasu bezczynności. Jeśli przepływy są bezczynne limit czasu, będą one ostatecznie nie w końcu i tak i niepotrzebnie zużywają zapasów portów SNAT.  Przepływy, które nie powiodą się po 2 godzinach, również nie powiodły się w ciągu domyślnych 4 minut. Zwiększenie limitu czasu bezczynności jest opcją ostateczności, która powinna być używana oszczędnie. Jeśli przepływ nigdy nie pozostanie bezczynny, nie będzie miał wpływu na czasomierz bezczynny.
 
 Limit czasu bezczynnego TCP można dostosować z 4 minut (domyślnie) do 120 minut (2 godziny) dla wszystkich przepływów.  Ponadto można zresetować czasomierz bezczynny z ruchem w przepływie.  Zalecanym wzorcem do odświeżania długich bezczynności połączeń i wykrywania żywotności punktu końcowego jest tcp keepalives.  TCP keepalives są wyświetlane jako zduplikowane punkty połączenia sieciowego do punktów końcowych, są niskie obciążenie i niewidoczne dla warstwy aplikacji.
 
@@ -294,7 +318,7 @@ Port SNAT jest dostępny do ponownego użycia do tego samego docelowego adresu I
 
 ## <a name="feedback"></a>Opinia
 
-Chcemy wiedzieć, w jaki sposób możemy ulepszyć usługę. Zaproponować i głosować na to, co powinniśmy budować dalej w [UserVoice dla NAT](https://aka.ms/natuservoice).
+Chcemy wiedzieć, w jaki sposób możemy ulepszyć usługę. Brakuje możliwości? Spraw, co powinniśmy zbudować dalej w [UserVoice dla NAT](https://aka.ms/natuservoice).
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -303,20 +327,20 @@ Chcemy wiedzieć, w jaki sposób możemy ulepszyć usługę. Zaproponować i gł
 * Dowiedz się więcej o [rozwiązywaniu problemów z zasobami bramy NAT](troubleshoot-nat.md).
 * Samouczek sprawdzania poprawności bramy NAT
   - [Interfejs wiersza polecenia platformy Azure](tutorial-create-validate-nat-gateway-cli.md)
-  - [Powershell](tutorial-create-validate-nat-gateway-cli.md)
+  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)
   - [Portal](tutorial-create-validate-nat-gateway-cli.md)
 * Szybki start do wdrażania zasobu bramy NAT
   - [Interfejs wiersza polecenia platformy Azure](./quickstart-create-nat-gateway-cli.md)
-  - [Powershell](./quickstart-create-nat-gateway-powershell.md)
+  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
   - [Portal](./quickstart-create-nat-gateway-portal.md)
   - [Szablonu](./quickstart-create-nat-gateway-template.md)
 * Dowiedz się więcej o interfejsie API zasobów bramy NAT
-  - [INTERFEJS API ODPOCZYNKU](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
+  - [Interfejs API REST](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
   - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
-  - [Powershell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
-
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
 * Dowiedz się więcej o [strefach dostępności](../availability-zones/az-overview.md).
 * Dowiedz się więcej o [standardowym równoważącym obciążenia](../load-balancer/load-balancer-standard-overview.md).
 * Dowiedz się więcej o [strefach dostępności i standardowym równoważącym obciążenia](../load-balancer/load-balancer-standard-availability-zones.md).
+* [Powiedz nam, co zbudować dalej dla Virtual Network NAT w UserVoice](https://aka.ms/natuservoice).
 
 

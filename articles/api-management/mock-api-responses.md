@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70067939"
 ---
 # <a name="mock-api-responses"></a>Pozorowanie odpowiedzi interfejsu API
@@ -27,7 +27,7 @@ Interfejsy API mogą zostać zaimportowane do interfejsu API usługi APIM lub ut
 + Kiedy najpierw projektowana jest fasada interfejsu API, a implementacja zaplecza powstaje później. Lub kiedy zaplecze jest opracowywane równolegle.
 + Gdy zaplecze tymczasowo nie działa lub nie można go przeskalować.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie testowego interfejsu API 
@@ -41,7 +41,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 + Poznaj [terminologię dotyczącą usługi Azure API Management](api-management-terminology.md).
 + Zapoznaj się z [koncepcją zasad w usłudze Azure API Management](api-management-howto-policies.md).
-+ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
++ Ukończ następujące przewodniki Szybki start: [Utwórz wystąpienie usługi Azure API Management](get-started-create-service-instance.md).
 
 ## <a name="create-a-test-api"></a>Tworzenie testowego interfejsu API 
 
@@ -54,7 +54,7 @@ Kroki opisane w tej sekcji pokazują, jak utworzyć pusty interfejs API bez zapl
 3. Z listy wybierz pozycję **Pusty interfejs API**.
 4. W polu **Nazwa wyświetlana** wprowadź tekst „*Testowy interfejs API*”.
 5. W polu **Produkty** wprowadź wartość „*Bez ograniczeń*”.
-6. Wybierz pozycję **Utwórz**.
+6. Wybierz **pozycję Utwórz**.
 
 ## <a name="add-an-operation-to-the-test-api"></a>Dodawanie operacji do testowego interfejsu API
 
@@ -79,7 +79,7 @@ Kroki opisane w tej sekcji pokazują, jak utworzyć pusty interfejs API bez zapl
 6. Pod nagłówkiem **Reprezentacje** po prawej stronie wybierz pozycję **+ Dodaj reprezentację**.
 7. Wprowadź tekst „*application/json*” w polu wyszukiwania i wybierz typ zawartości **application/json**.
 8. W polu tekstowym **Przykład** wprowadź tekst `{ "sampleField" : "test" }`.
-9. Wybierz pozycję **Utwórz**.
+9. Wybierz **pozycję Utwórz**.
 
 ## <a name="enable-response-mocking"></a>Włączanie pozorowania odpowiedzi
 
@@ -97,7 +97,7 @@ Kroki opisane w tej sekcji pokazują, jak utworzyć pusty interfejs API bez zapl
 
     ![Włączanie pozorowania odpowiedzi](./media/mock-api-responses/mock-api-responses-set-mocking.png)
 
-7. Kliknij polecenie **Zapisz**.
+7. Kliknij przycisk **Zapisz**.
 
 ## <a name="test-the-mocked-api"></a>Testowanie pozorowanego interfejsu API
 
@@ -115,7 +115,7 @@ Kroki opisane w tej sekcji pokazują, jak utworzyć pusty interfejs API bez zapl
 
     ![Włączanie pozorowania odpowiedzi](./media/mock-api-responses/mock-api-responses-test-response.png)
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Film wideo
 
 > [!VIDEO https://www.youtube.com/embed/i9PjUAvw7DQ]
 

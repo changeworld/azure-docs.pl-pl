@@ -3,12 +3,12 @@ title: Omówienie wersji środowiska uruchomieniowego usługi Azure Functions
 description: Usługa Azure Functions obsługuje wiele wersji środowiska wykonawczego. Dowiedz się, jakie są różnice między nimi i jak wybrać ten, który jest odpowiedni dla Ciebie.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 21a7b25087efd5d4adf2154c935636c263df9afd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e90752e89be7e381b06f8a87f76f123f0e4a8e3a
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276558"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422492"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Omówienie wersji środowiska uruchomieniowego usługi Azure Functions
 
@@ -18,7 +18,7 @@ Główne wersje środowiska uruchomieniowego usługi Azure Functions są powiąz
 | --------------- | ------------- | ------------ |
 | 3.x | Ogólna dostępność | .NET Rdzeń 3.1 | 
 | 2.x | Ogólna dostępność | .NET Core 2.2 |
-| 1.x | <sup>2.</sup> | .NET Framework 4.6<sup>3</sup> |
+| 1.x | <sup>2.</sup> | .NET Framework 4.7.2<sup>3</sup> |
 
 <sup>1</sup> Wersje GA są obsługiwane dla scenariuszy produkcyjnych.   
 <sup>2</sup> Wersja 1.x jest w trybie konserwacji. Ulepszenia są dostępne tylko w nowszych wersjach.   

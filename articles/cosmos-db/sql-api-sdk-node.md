@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: de1c1b93b813f71b321da0625bc60e0762a859c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 181f43e060e3b4b41babeee375365a97e1d224aa
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70207960"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411283"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Zestaw SDK węzła.js usługi Azure Cosmos DB dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "70207960"
 > * [Java (asynchroniczny)](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Reszta](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Wykonawca zbiorczy - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -318,7 +318,7 @@ Nie zawsze najbardziej widoczne zmiany, ale pomagają naszemu zespołowi szybcie
 ### <a name=""></a><a name="1.11.0"/>1.11.0</a>
 * Dodano obsługę zapytań agregacji (COUNT, MIN, MAX, SUM i AVG).
 * Dodano opcję kontrolowania stopnia równoległości dla zapytań między partycjami.
-* Dodano opcję wyłączania weryfikacji SSL podczas uruchamiania względem emulatora usługi Azure Cosmos DB.
+* Dodano opcję wyłączania weryfikacji TLS podczas uruchamiania względem emulatora usługi Azure Cosmos DB.
 * Obniżono minimalną przepustowość w kolekcjach podzielonych na partycje z 10 100 RU/s do 2500 RU/s.
 * Naprawiono błąd tokenu kontynuacji dla kolekcji pojedynczej partycji. #107 problem z gitHubem.
 * Naprawiono błąd executeStoredProcedure w obsłudze 0 jako pojedynczy param. #155 problem z gitHubem.
@@ -328,7 +328,7 @@ Nie zawsze najbardziej widoczne zmiany, ale pomagają naszemu zespołowi szybcie
 * Drobne oczyszczanie kodu.
 
 ### <a name=""></a><a name="1.10.1"/>1.10.1</a>
-* Wyłączenie weryfikacji SSL podczas korzystania z SDK do kierowania emulator(nazwa hosta = localhost).
+* Wyłączenie weryfikacji TLS podczas korzystania z SDK do kierowania emulator(hostname=localhost).
 * Dodano obsługę włączania rejestrowania skryptów podczas wykonywania procedury składowanej.
 
 ### <a name=""></a><a name="1.10.0"/>1.10.0</a>
@@ -474,7 +474,7 @@ Każde żądanie do usługi Cosmos DB przy użyciu wycofanego SDK zostanie odrzu
 | [1.0.1](#1.0.1) |15 maja 2015 r. |30 sierpnia 2020 r. |
 | [1.0.0](#1.0.0) |8 kwietnia 2015 r. |30 sierpnia 2020 r. |
 
-## <a name="faq"></a>Najczęściej zadawane pytania
+## <a name="faq"></a>Często zadawane pytania
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Zobacz też

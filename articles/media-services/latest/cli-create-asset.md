@@ -1,5 +1,5 @@
 ---
-title: Przekazywanie zawartości do Azure Media Services zasobu przy użyciu interfejsu wiersza polecenia platformy Azure
+title: Przekazywanie zawartości do zasobu usługi Azure Media Services przy użyciu interfejsu wiersza polecenia usługi Azure
 description: Skrypt interfejsu wiersza polecenia platformy Azure w tym temacie pokazuje sposób tworzenia elementu zawartości usługi Media Services, do którego będzie przekazywana zawartość.
 services: media-services
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
 ms.openlocfilehash: 0c24464050d0beee120dcb234582a464d6245270
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76310649"
 ---
 # <a name="cli-example-create-an-asset"></a>Przykład interfejsu wiersza polecenia: tworzenie elementu zawartości
@@ -37,4 +37,4 @@ Skrypt interfejsu wiersza polecenia platformy Azure w tym artykule pokazuje spos
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Przegląd Media Services](media-services-overview.md)
+[Omówienie usługi Media Services](media-services-overview.md)

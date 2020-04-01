@@ -1,22 +1,22 @@
 ---
 title: Konfigurowanie uwierzytelniania na Facebooku
-description: Dowiedz się, jak skonfigurować uwierzytelnianie na Facebooku jako dostawcę tożsamości dla aplikacji Usługi app service.
+description: Dowiedz się, jak skonfigurować uwierzytelnianie na Facebooku jako dostawcę tożsamości dla usługi aplikacji lub aplikacji Usługi Azure Functions.
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.topic: article
 ms.date: 06/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: cd9c8a1bab3616b9b4eb1fe97ee3a9b2307ba77b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 9a2d390a5647ed90284730e9186e981b8e699d10
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671936"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80438020"
 ---
-# <a name="configure-your-app-service-app-to-use-facebook-login"></a>Konfigurowanie aplikacji usługi App Service do korzystania z logowania na Facebooku
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>Konfigurowanie usługi app service lub aplikacji Usługi Azure do korzystania z logowania na Facebooku
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-W tym artykule pokazano, jak skonfigurować usługę Azure App Service do używania Facebooka jako dostawcy uwierzytelniania.
+W tym artykule pokazano, jak skonfigurować usługę Azure App Service lub usługi Azure Functions do używania Facebooka jako dostawcy uwierzytelniania.
 
 Aby wykonać procedurę opisaną w tym artykule, potrzebujesz konta na Facebooku ze zweryfikowanym adresem e-mail i numerem telefonu komórkowego. Aby utworzyć nowe konto na Facebooku, przejdź do [facebook.com].
 
@@ -78,4 +78,4 @@ Teraz możesz używać Facebooka do uwierzytelniania w aplikacji.
 [Twórcy Facebooka]: https://go.microsoft.com/fwlink/p/?LinkId=268286
 [facebook.com]: https://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Portal Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

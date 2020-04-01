@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259827"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477691"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Networking considerations for an App Service Environment (Zagadnienia dotyczące sieci w środowisku App Service Environment) #
 
@@ -138,7 +138,7 @@ Wszystkie te adresy IP są widoczne w witrynie Azure portal z interfejsu użytko
 
 ### <a name="app-assigned-ip-addresses"></a>Adresy IP przypisane do aplikacji ###
 
-Za pomocą zewnętrznego ase można przypisywać adresy IP do poszczególnych aplikacji. Nie można tego zrobić z ASE ILB. Aby uzyskać więcej informacji na temat konfigurowania aplikacji tak, aby miała własny adres IP, zobacz [Zabezpieczanie niestandardowej nazwy DNS z powiązaniem SSL w usłudze Azure App Service](../configure-ssl-bindings.md).
+Za pomocą zewnętrznego ase można przypisywać adresy IP do poszczególnych aplikacji. Nie można tego zrobić z ASE ILB. Aby uzyskać więcej informacji na temat konfigurowania aplikacji tak, aby miała własny adres IP, zobacz [Zabezpieczanie niestandardowej nazwy DNS za pomocą powiązania TLS/SSL w usłudze Azure App Service](../configure-ssl-bindings.md).
 
 Gdy aplikacja ma swój własny adres SSL oparty na protokoczy IP, ASE rezerwuje dwa porty do mapowania na ten adres IP. Jeden port jest przeznaczony dla ruchu HTTP, a drugi dla protokołu HTTPS. Te porty są wymienione w interfejsie ase w sekcji adresy IP. Ruch musi być w stanie dotrzeć do tych portów z adresu VIP lub aplikacje są niedostępne. To wymaganie należy pamiętać podczas konfigurowania sieciowych grup zabezpieczeń (NSG).
 

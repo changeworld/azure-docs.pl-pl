@@ -5,19 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 51b800dde140affd222f2bdb341c0fbf3a57d8cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 3/30/2020
+ms.openlocfilehash: 332feffead74174ba0b9b278d8de1c5957d5b9e6
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530159"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422469"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurowanie replikacji danych w bazie danych platformy Azure dla bazy danych MariaDB
 
 W tym artykule opisano sposób konfigurowania replikacji danych w bazie danych platformy Azure dla bazy danych MariaDB przez skonfigurowanie serwerów głównych i replik. W tym artykule założono, że masz pewne wcześniejsze doświadczenie z mariadb serwerów i baz danych.
 
 Aby utworzyć replikę w usłudze Azure Database for MariaDB, usługa Replikacja danych w synchronizacji synchronizuje dane z głównego serwera MariaDB lokalnie, na maszynach wirtualnych (VM) lub w usługach bazy danych w chmurze.
+
+Przejrzyj [ograniczenia i wymagania](concepts-data-in-replication.md#limitations-and-considerations) replikacji danych przed wykonaniem kroków opisanych w tym artykule.
 
 > [!NOTE]
 > Jeśli serwer główny jest w wersji 10.2 lub nowszej, zaleca się skonfigurowanie replikacji danych przy użyciu [globalnego identyfikatora transakcji](https://mariadb.com/kb/en/library/gtid/).
@@ -36,11 +38,21 @@ Aby utworzyć replikę w usłudze Azure Database for MariaDB, usługa Replikacja
     
     Konta użytkowników nie są replikowane z serwera głównego na serwer repliki. Aby zapewnić użytkownikowi dostęp do serwera repliki, należy ręcznie utworzyć wszystkie konta i odpowiednie uprawnienia na nowo utworzonym serwerze usługi Azure Database dla mariadb.
 
+3. Dodaj adres IP serwera głównego do reguł zapory repliki. 
+
+   Zaktualizuj reguły zapory za pomocą [witryny Azure Portal](howto-manage-firewall-portal.md) lub [interfejsu wiersza polecenia platformy Azure](howto-manage-firewall-cli.md).
+
 ## <a name="configure-the-master-server"></a>Konfigurowanie serwera głównego
 
 Poniższe kroki należy przygotować i skonfigurować serwer MariaDB hostowany lokalnie, na maszynie Wirtualnej lub w usłudze bazy danych w chmurze dla replikacji danych. Serwer MariaDB jest wzorcem replikacji danych.
 
-1. Włącz rejestrowanie binarne.
+1. Przed kontynuowaniem zapoznaj się z [wymaganiami serwera głównego.](concepts-data-in-replication.md#requirements) 
+
+   Na przykład upewnij się, że serwer główny zezwala zarówno na ruch przychodzący, jak i wychodzący na porcie 3306 i że serwer główny ma **publiczny adres IP,** system DNS jest publicznie dostępny lub ma w pełni kwalifikowaną nazwę domeny (FQDN). 
+   
+   Przetestuj łączność z serwerem głównym, próbując połączyć się z narzędzia, takiego jak wiersz polecenia MySQL hostowanego na innym komputerze lub z [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) dostępnej w witrynie Azure portal.
+
+2. Włącz rejestrowanie binarne.
     
     Aby sprawdzić, czy rejestrowanie binarne jest włączone na wzorcu, wprowadź następujące polecenie:
 
@@ -52,7 +64,7 @@ Poniższe kroki należy przygotować i skonfigurować serwer MariaDB hostowany l
 
    Jeśli `log_bin` zwraca `OFF`wartość, edytuj plik **my.cnf** tak, aby `log_bin=ON` włączyć rejestrowanie binarne. Uruchom ponownie serwer, aby zmiana została uwzględnić.
 
-2. Skonfiguruj ustawienia serwera głównego.
+3. Skonfiguruj ustawienia serwera głównego.
 
     Replikacja w danych wymaga, aby parametr `lower_case_table_names` był spójny między serwerami głównymi i replikami. Parametr `lower_case_table_names` jest domyślnie ustawiony `1` na usługę Azure Database dla mariadb.
 
@@ -60,7 +72,7 @@ Poniższe kroki należy przygotować i skonfigurować serwer MariaDB hostowany l
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-3. Utwórz nową rolę replikacji i skonfiguruj uprawnienia.
+4. Utwórz nową rolę replikacji i skonfiguruj uprawnienia.
 
    Utwórz konto użytkownika na serwerze głównym skonfigurowanym z uprawnieniami replikacji. Konto można utworzyć za pomocą poleceń SQL lub mysql workbench. Jeśli planujesz replikację z SSL, należy to określić podczas tworzenia konta użytkownika.
    
@@ -105,7 +117,7 @@ Poniższe kroki należy przygotować i skonfigurować serwer MariaDB hostowany l
    ![Slave replikacji](./media/howto-data-in-replication/replicationslave.png)
 
 
-4. Ustaw serwer główny w trybie tylko do odczytu.
+5. Ustaw serwer główny w trybie tylko do odczytu.
 
    Przed zrzutem bazy danych serwer musi być umieszczony w trybie tylko do odczytu. W trybie tylko do odczytu wzorzec nie może przetwarzać żadnych transakcji zapisu. Aby uniknąć wpływu na działalność, należy zaplanować okno tylko do odczytu poza szczytem.
 
@@ -114,7 +126,7 @@ Poniższe kroki należy przygotować i skonfigurować serwer MariaDB hostowany l
    SET GLOBAL read_only = ON;
    ```
 
-5. Pobierz bieżącą nazwę pliku dziennika binarnego i przesunięcie.
+6. Pobierz bieżącą nazwę pliku dziennika binarnego i przesunięcie.
 
    Aby określić bieżącą nazwę pliku dziennika [`show master status`](https://mariadb.com/kb/en/library/show-master-status/)binarnego i przesunięcie, uruchom polecenie .
     
@@ -127,7 +139,7 @@ Poniższe kroki należy przygotować i skonfigurować serwer MariaDB hostowany l
 
    Zanotuj nazwę pliku binarnego, ponieważ będzie ona używana w późniejszych krokach.
    
-6. Uzyskaj pozycję OWHID (opcjonalnie, potrzebną do replikacji za pomocą OWHID).
+7. Uzyskaj pozycję OWHID (opcjonalnie, potrzebną do replikacji za pomocą OWHID).
 
    Uruchom tę [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) funkcję, aby uzyskać pozycję OWH dla odpowiedniej nazwy pliku binlog i odsunięcia.
   
@@ -196,7 +208,7 @@ Poniższe kroki należy przygotować i skonfigurować serwer MariaDB hostowany l
 
        ```sql
        SET @cert = '-----BEGIN CERTIFICATE-----
-       PLACE YOUR PUBLIC KEY CERTIFICATE'S CONTEXT HERE
+       PLACE YOUR PUBLIC KEY CERTIFICATE\'S CONTEXT HERE
        -----END CERTIFICATE-----'
        ```
 

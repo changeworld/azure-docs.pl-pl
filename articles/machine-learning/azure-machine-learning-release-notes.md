@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 70e8bf95022f88dab54fa13769df4b051cf41c92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b55c351927a56afce697d07f41bfbe668144d68d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247150"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475519"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -624,7 +624,7 @@ Usługa Azure Machine Learning jest teraz dostawcą zasobów dla usługi Event G
     + Naprawiono błąd w run.get_metrics, w którym żądania nie powiodły się, gdyby bieg miał zbyt wiele ściągnięcia dzieci
     + Naprawiono błąd w [run.get_metrics,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run#get-metrics-name-none--recursive-false--run-type-none--populate-false-) w którym żądania nie powiodły się, gdyby bieg miał zbyt wiele ściągnięcia dzieci
     + Dodano obsługę uwierzytelniania w klastrze Arcadia.
-    + Tworzenie obiektu Eksperyment pobiera lub tworzy eksperyment w obszarze roboczym usługi Azure Machine Learning do śledzenia historii uruchamiania. Identyfikator eksperymentu i czas zarchiwizacji są wypełniane w eksperymencie obiektu podczas tworzenia. Przykład: eksperyment = Eksperyment(obszar roboczy, "Nowy eksperyment") experiment_id = experiment.id archive() i reactivate() to funkcje, które można wywołać w eksperymencie, aby ukryć i przywrócić eksperyment z pokazywania w UX lub zwracanego domyślnie w wywołaniu , aby wyświetlić listę eksperymentów. Jeśli nowy eksperyment zostanie utworzony o takiej samej nazwie jak eksperyment zarchiwizowany, można zmienić nazwę zarchiwizowanego eksperymentu podczas ponownej aktywacji, przekazując nową nazwę. Może istnieć tylko jeden aktywny eksperyment z daną nazwą. Przykład: eksperyment1 = Eksperyment(obszar roboczy, "Aktywny eksperyment") eksperyment1.archive() # Utwórz nowy aktywny eksperyment o tej samej nazwie co zarchiwizowana. eksperyment2. = Eksperyment(obszar roboczy, "Aktywny eksperyment") experiment1.reactivate(new_name="Poprzedni aktywny eksperyment") Statywna list() w eksperymencie może mieć filtr nazw i filtr ViewType. ViewType wartości są "ACTIVE_ONLY", "ARCHIVED_ONLY" i "ALL" Przykład: archived_experiments = Experiment.list(obszar roboczy, view_type="ARCHIVED_ONLY") all_first_experiments = Experiment.list(workspace, name="Pierwszy eksperyment", view_type="ALL")
+    + Tworzenie obiektu Eksperyment pobiera lub tworzy eksperyment w obszarze roboczym usługi Azure Machine Learning do śledzenia historii uruchamiania. Identyfikator eksperymentu i czas zarchiwizacji są wypełniane w eksperymencie obiektu podczas tworzenia. Przykład: eksperyment = Eksperyment(obszar roboczy, "Nowy eksperyment") experiment_id = experiment.id archive() i reactivate() to funkcje, które można wywołać w eksperymencie, aby ukryć i przywrócić eksperyment z pokazywania w UX lub zwracanego domyślnie w wywołaniu eksperymentów z listą. Jeśli nowy eksperyment zostanie utworzony o takiej samej nazwie jak eksperyment zarchiwizowany, można zmienić nazwę zarchiwizowanego eksperymentu podczas ponownej aktywacji, przekazując nową nazwę. Może istnieć tylko jeden aktywny eksperyment z daną nazwą. Przykład: eksperyment1 = Eksperyment(obszar roboczy, "Aktywny eksperyment") eksperyment1.archive() # Utwórz nowy aktywny eksperyment o tej samej nazwie co zarchiwizowana. eksperyment2. = Eksperyment(obszar roboczy, "Aktywny eksperyment") experiment1.reactivate(new_name="Poprzedni aktywny eksperyment") Statywna list() w eksperymencie może mieć filtr nazw i filtr ViewType. ViewType wartości są "ACTIVE_ONLY", "ARCHIVED_ONLY" i "ALL" Przykład: archived_experiments = Experiment.list(obszar roboczy, view_type="ARCHIVED_ONLY") all_first_experiments = Experiment.list(workspace, name="Pierwszy eksperyment", view_type="ALL")
     + Obsługa środowiska do wdrażania modelu i aktualizacji usługi
   + **azureml-datadrift**
     + Atrybut show klasy DataDriftDector nie będzie już obsługiwał opcjonalnego argumentu "with_details". Atrybut show będzie prezentować tylko współczynnik dryftu danych i udział dryfu danych kolumn charakterystycznych.
@@ -798,8 +798,8 @@ Karta Eksperyment w [nowym portalu obszaru roboczego](https://ml.azure.com) zost
     + Wyjątek, że kolumna sygnatury czasowej nie można odnaleźć zostanie wyrzucona, jeśli czas seriali związanych interfejsu API jest wywoływana bez kolumny fine sygnatury czasowej przypisane lub przypisane kolumny sygnatury czasowej są usuwane.
     + Kolumny szeregowe czasowe powinny być przypisane z kolumną, której typem jest Data, w przeciwnym razie oczekiwany jest wyjątek
     + Kolumna czasowa, przypisująca interfejs API "with_timestamp_columns", może przyjąć nazwę kolumny z określoną sygnaturą czasową Brak/grubostronną sygnaturę czasową, która wyczyści wcześniej przypisane kolumny sygnatury czasowej.
-    + Wyjątek zostanie wyrzucony, gdy albo grube ziarno lub drobnoziarnista kolumna sygnatury czasowej zostanie upuszczona ze wskazaniem dla użytkownika, że upuszczenie może być wykonane po wykluczeniu kolumny sygnatury czasowej na liście upuszczania lub wywołania with_time_stamp z wartością Brak, aby zwolnić sygnaturę czasową Kolumny
-    + Wyjątek zostanie wyrzucony, gdy kolumna z gruboziarnistym lub drobnoziarnista kolumna sygnatury czasowej nie zostanie uwzględniona na liście kolumn keep ze wskazaniem dla użytkownika, że zachowanie można wykonać po uwzględnieniu kolumny sygnatury czasowej na liście kolumn zachować lub wywołać with_time_stamp z None do zwalniania kolumn sygnatury czasowej.
+    + Wyjątek zostanie wyrzucony, gdy albo gruboziarniste ziarnem lub drobnoziarnista kolumna sygnatury czasowej zostanie upuszczona ze wskazaniem dla użytkownika, że upuszczenie może być wykonane po wykluczeniu kolumny sygnatury czasowej na liście upuszczania lub wywołania with_time_stamp z wartością Brak, aby zwolnić kolumny sygnatury czasowej
+    + Wyjątek zostanie wyrzucony, gdy kolumna z gruboziarnistym lub drobnoziarnista kolumna sygnatury czasowej nie zostanie uwzględniona na liście kolumn keep ze wskazaniem dla użytkownika, że zachowanie można wykonać po uwzględnieniu kolumny sygnatury czasowej na liście kolumn keep lub wywołaniu with_time_stamp z wartością Brak, aby zwolnić kolumny sygnatury czasowej.
     + Dodano rejestrowanie rozmiaru zarejestrowanego modelu.
   + **azureml-explain-model**
     + Naprawiono ostrzeżenie wydrukowane na konsoli, gdy nie zainstalowano pakietu python "pakującego": "Używając starszej niż obsługiwana wersja lightgbm, uaktualnij ją do wersji większej niż 2.2.1"
@@ -925,13 +925,13 @@ W tej wersji obsługiwane są następujące przeglądarki: Chrome, Firefox, Safa
     + Zaktualizowano interfejs, `RawDataContext` aby utworzyć a `AutoMLBaseSettings` wymagać tylko danych i obiektu.
     +  Zezwalaj użytkownikom automl na upuszczanie serii szkoleniowych, które nie są wystarczająco długie podczas prognozowania. - Zezwalaj użytkownikom AutoML na upuszczanie ziaren z zestawu testów, który nie istnieje w zestawie szkoleniowym podczas prognozowania.
   + **azure-cli-ml**
-    + Teraz można zaktualizować certyfikat SSL dla punktu końcowego oceniania wdrożonego w klastrze AKS zarówno dla wygenerowanego przez firmę Microsoft, jak i dla certyfikatu klienta.
+    + Teraz można zaktualizować certyfikat TLS/SSL dla punktu końcowego oceniania wdrożonego w klastrze AKS zarówno dla wygenerowanego przez firmę Microsoft, jak i dla certyfikatu klienta.
   + **azureml-automl-core**
     + Naprawiono błąd w automl, który powodował, że wiersze z brakującymi etykietami nie były poprawnie usuwane.
     + Ulepszone rejestrowanie błędów w automl; pełne komunikaty o błędach będą teraz zawsze zapisywane w pliku dziennika.
     + AutoML zaktualizował swoje `azureml-defaults`przypinanie pakietu, aby uwzględnić , `azureml-explain-model`i `azureml-dataprep`. AutoML nie będzie już ostrzegał o niezgodności pakietu (z wyjątkiem `azureml-train-automl` pakietu).
     + Naprawiono błąd, `timeseries` który powodował, że podziały cv były nierówne, co powodowało niepowodzenie obliczeń pojemników.
-    + Podczas uruchamiania iteracji zespołu dla typu szkolenia cross-validation, jeśli skończyło się na problemach z pobraniem modeli przeszkolonych w całym zestawie danych, mieliśmy niespójność między wagami modelu a modelami, które były podawane do głosowania Zespół.
+    + Podczas uruchamiania iteracji zespołu dla typu szkolenia krzyżowego sprawdzania poprawności, jeśli skończyło się problemy z pobraniem modeli przeszkolonych w całym zestawie danych, mieliśmy niespójność między wagi modelu i modeli, które były podawane do zespołu głosowania.
     + Naprawiono błąd, wywoływany, gdy etykiety szkoleniowe i/lub sprawdzania poprawności (y i y_valid) są dostarczane w postaci pandas dataframe, ale nie jako numpy tablicy.
     + Naprawiono błąd związany z zadaniami prognozowania, gdy w kolumnach logicznych tabel wejściowych napotkano opcję Brak.
     + Zezwalaj użytkownikom automl na upuszczanie serii szkoleniowych, które nie są wystarczająco długie podczas prognozowania. - Zezwalaj użytkownikom AutoML na upuszczanie ziaren z zestawu testów, który nie istnieje w zestawie szkoleniowym podczas prognozowania.
@@ -956,7 +956,7 @@ W tej wersji obsługiwane są następujące przeglądarki: Chrome, Firefox, Safa
     + Obsługiwane importowanie plików HTTP csv/tsv w zestawie danych python SDK.
     + Przestarzała metoda Workspace.setup(). Komunikat ostrzegawczy wyświetlany użytkownikom sugeruje użycie create() lub get()/from_config().
     + Dodano Environment.add_private_pip_wheel(), który umożliwia przekazywanie prywatnych niestandardowych pakietów `whl`python do obszaru roboczego i bezpiecznie używając ich do tworzenia/materializacji środowiska.
-    + Teraz można zaktualizować certyfikat SSL dla punktu końcowego oceniania wdrożonego w klastrze AKS zarówno dla wygenerowanego przez firmę Microsoft, jak i dla certyfikatu klienta.
+    + Teraz można zaktualizować certyfikat TLS/SSL dla punktu końcowego oceniania wdrożonego w klastrze AKS zarówno dla wygenerowanego przez firmę Microsoft, jak i dla certyfikatu klienta.
   + **azureml-explain-model**
     + Dodano parametr, aby dodać identyfikator modelu do objaśnień podczas przekazywania.
     + Dodano `is_raw` tagowanie do wyjaśnień w pamięci i przesłać.
@@ -988,7 +988,7 @@ W tej wersji obsługiwane są następujące przeglądarki: Chrome, Firefox, Safa
   + Wydajność została `read_parquet` znacznie zwiększona podczas pracy w spark.
   + Naprawiono błąd, który `column_type_builder` powodował niepowodzenie w przypadku pojedynczej kolumny z niejednoznacznymi formatami dat.
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Azure Portal
 + **Funkcja podglądu**
   + Przesyłanie strumieniowe plików dziennika i danych wyjściowych jest teraz dostępne dla stron szczegółów uruchamiania. Pliki będą przesyłać strumieniowo aktualizacje w czasie rzeczywistym, gdy przełącznik podglądu jest włączony.
   + Możliwość ustawiania przydziału na poziomie obszaru roboczego jest zwalniana w wersji zapoznawczej. Przydziały AmlCompute są przydzielane na poziomie subskrypcji, ale teraz umożliwiamy rozdzielenie tego przydziału między obszary robocze i przydzielenie go do sprawiedliwego udostępniania i nadzoru. Wystarczy kliknąć na **usages +quotas** blade w lewym pasku nawigacyjnym obszaru roboczego i wybierz kartę **Konfigurowanie przydziałów.**
@@ -1359,7 +1359,7 @@ Wycofaliśmy zmianę, która poprawiła wydajność, ponieważ powodowała probl
 
 ## <a name="2019-05-06"></a>2019-05-06
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Azure Portal
 
 W witrynie Azure portal możesz teraz:
 + Tworzenie i uruchamianie zautomatyzowanych eksperymentów ml
@@ -1478,7 +1478,7 @@ Uwaga: Zestaw SDK języka Python `numpy` `pandas` prep danych nie będzie już i
 
 ## <a name="2019-04-15"></a>2019-04-15
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Azure Portal
   + Teraz można ponownie przesłać istniejące uruchomienie skryptu w istniejącym klastrze obliczeniowym zdalnym.
   + Teraz można uruchomić opublikowany potok z nowymi parametrami na karcie Potoki.
   + Uruchom szczegóły teraz obsługuje nową przeglądarkę plików migawka. Migawkę katalogu można wyświetlić podczas przesyłania określonego przebiegu. Można również pobrać notes, który został przesłany do rozpoczęcia biegu.
@@ -1573,7 +1573,7 @@ Uwaga: Zestaw SDK języka Python `numpy` `pandas` prep danych nie będzie już i
 + **Poprawki i ulepszenia błędów**
   + Dodaliśmy obsługę potoków usługi Azure Machine Learning do ustawiania właściwości source_directory_data_store do żądanego magazynu danych (takiego jak magazyn obiektów blob) w [witrynach RunConfigurations,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) które są dostarczane do [pythonscriptstep.](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) Domyślnie kroki używają magazynu plików platformy Azure jako zapasowego magazynu danych, który może napotkać problemy z ograniczaniem przepustowości, gdy jednocześnie wykonywana jest duża liczba kroków.
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Azure Portal
 
 + **Nowe funkcje**
   + Nowe środowisko edytora tabel przeciągania i upuszczania dla raportów. Użytkownicy mogą przeciągnąć kolumnę ze studni do obszaru tabeli, w którym zostanie wyświetlony podgląd tabeli. Kolumny można zmieniać.
@@ -1798,7 +1798,7 @@ Dowiedz się więcej o sdku przygotowania danych, czytając [dokumenty referency
 
 ## <a name="2018-11-05"></a>2018-11-05
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Azure Portal
 Portal Azure dla usługi Azure Machine Learning ma następujące aktualizacje:
   * Nowa karta **Potoki** dla opublikowanych potoków.
   * Dodano obsługę dołączania istniejącego klastra HDInsight jako celu obliczeniowego.

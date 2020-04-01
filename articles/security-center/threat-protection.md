@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: e348180eb94c1703ceecf2f2b00ab942ba5ff0ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 395f4b5481fcf2028d6bfe736e58c3174a0c80b2
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536330"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435344"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Ochrona przed zagrożeniami w usłudze Azure Security Center
 
@@ -73,9 +73,9 @@ Usługa Azure Security Center integruje się z usługami platformy Azure w celu 
 
 Usługa Security Center zbiera rekordy inspekcji z komputerów z systemem Linux przy użyciu **inspekcji**, jednej z najpopularniejszych struktur inspekcji systemu Linux. w jądrze linii głównej. 
 
-* **Alerty poddane inspekcji w systemie Linux i integracja** <a name="linux-auditd"></a> z programem Microsoft Monitoring Agent (MMA) — skontrolowany system składa się z podsystemu na poziomie jądra, który jest odpowiedzialny za monitorowanie wywołań systemowych. Filtruje je według określonego zestawu reguł i zapisuje dla nich wiadomości do gniazda. Usługa Security Center integruje funkcje z pakietu inspekcji w programie Microsoft Monitoring Agent (MMA). Ta integracja umożliwia zbieranie zdarzeń inspekcji we wszystkich obsługiwanych dystrybucjach systemu Linux, bez żadnych wymagań wstępnych.  
+* **Alerty inspekcji systemu Linux i integracja** <a name="linux-auditd"></a> agenta usługi Log Analytics — skontrolowany system składa się z podsystemu na poziomie jądra, który jest odpowiedzialny za monitorowanie wywołań systemowych. Filtruje je według określonego zestawu reguł i zapisuje dla nich wiadomości do gniazda. Usługa Security Center integruje funkcje z pakietu inspekcji w agencie usługi Log Analytics. Ta integracja umożliwia zbieranie zdarzeń inspekcji we wszystkich obsługiwanych dystrybucjach systemu Linux, bez żadnych wymagań wstępnych.
 
-    skontrolowane rekordy są zbierane, wzbogacane i agregowane w zdarzenia przy użyciu agenta LINUX MMA. Usługa Security Center stale dodaje nowe analizy, które używają sygnałów systemu Linux do wykrywania złośliwych zachowań na komputerach z systemem Linux w chmurze i lokalnie. Podobnie jak w przypadku systemu Windows, te analizy obejmują podejrzane procesy, wątpliwe próby logowania, ładowanie modułu jądra i inne działania. Te działania mogą wskazywać, że maszyna jest atakowana lub została naruszona.  
+    rekordy inspekcji są zbierane, wzbogacane i agregowane w zdarzenia przy użyciu agenta usługi Log Analytics dla agenta systemu Linux. Usługa Security Center stale dodaje nowe analizy, które używają sygnałów systemu Linux do wykrywania złośliwych zachowań na komputerach z systemem Linux w chmurze i lokalnie. Podobnie jak w przypadku systemu Windows, te analizy obejmują podejrzane procesy, wątpliwe próby logowania, ładowanie modułu jądra i inne działania. Te działania mogą wskazywać, że maszyna jest atakowana lub została naruszona.  
 
     Aby uzyskać listę alertów systemu Linux, zobacz [tabelę odwołania alertów](alerts-reference.md#alerts-linux).
 

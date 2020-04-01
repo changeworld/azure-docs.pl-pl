@@ -1,61 +1,61 @@
 ---
 title: Ponowne używanie szablonów w chmurach
-description: Tworzenie szablonów usługi Azure Resource Manager, stale działające dla środowisk inną chmurę. Tworzenie nowego elementu lub aktualizowanie istniejących szablonów dla usługi Azure Stack.
+description: Twórz szablony usługi Azure Resource Manager, które działają spójnie w różnych środowiskach chmury. Tworzenie nowych lub aktualizowanie istniejących szablonów dla usługi Azure Stack.
 author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: fa0df19053c3c238e3c00c46733cb4626dd64072
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c5095efef5d4bef44993bdd9cd52dbdef17378a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773144"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156110"
 ---
-# <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze
+# <a name="develop-arm-templates-for-cloud-consistency"></a>Tworzenie szablonów ARM dla spójności chmury
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Najważniejszą korzyścią z platformy Azure jest spójność. Programowanie inwestycje w jednej lokalizacji są wielokrotnego użytku w innym. Szablon sprawia, że wdrożenia spójnego i powtarzalnego wszystkich środowisk, w tym global Azure, chmurach suwerennych platformy Azure i usługi Azure Stack. Aby ponownie użyć szablonów dla chmur, należy jednak wziąć pod uwagę zależności specyficzne dla chmury, ponieważ w tym przewodniku wyjaśniono.
+Kluczową zaletą platformy Azure jest spójność. Inwestycje dewelopercze dla jednej lokalizacji nadają się do ponownego użytku w innej. Szablon usługi Azure Resource Manager (ARM) sprawia, że wdrożenia są spójne i powtarzalne w różnych środowiskach, w tym na globalnej platformie Azure, suwerennych chmurach platformy Azure i usłudze Azure Stack. Aby ponownie użyć szablonów w chmurach, należy jednak wziąć pod uwagę zależności specyficzne dla chmury, jak wyjaśniono w tym przewodniku.
 
-Firma Microsoft oferuje usługi w chmurze inteligentną i w przedsiębiorstwach w wielu lokalizacjach, w tym:
+Firma Microsoft oferuje inteligentne usługi w chmurze gotowe dla przedsiębiorstw w wielu lokalizacjach, w tym:
 
-* Globalne platformy Azure, obsługiwana przez rozrastającą się sieć zarządzanych przez firmę Microsoft centrów danych w regionach na całym świecie.
-* Izolowane suwerenne chmury, takie jak Azure (Niemcy, Azure Government i Chiny). Suwerenne chmury zapewnić spójną platformę z większością te same atrakcyjne funkcje, które globalnych klientów platformy Azure mają dostęp do.
-* Usługi Azure Stack to platforma chmury hybrydowej, która umożliwia dostarczanie usług platformy Azure z centrum danych Twojej organizacji. Przedsiębiorstwa można skonfigurować usługi Azure Stack w centrach danych na ich własnych lub korzystanie z usług platformy Azure od dostawców usług, uruchamianie usługi Azure Stack w ich urządzenia (czasem nazywane obsługiwanych regionach).
+* Globalna platforma platformy Azure obsługiwana przez rosnącą sieć centrów danych zarządzanych przez firmę Microsoft w regionach na całym świecie.
+* Odizolowane suwerenne chmury, takie jak Azure Germany, Azure Government i Azure China 21Vianet. Suwerenne chmury zapewniają spójną platformę z większością tych samych wspaniałych funkcji, do których mają dostęp globalni klienci platformy Azure.
+* Azure Stack — hybrydowa platforma chmurowa, która umożliwia dostarczanie usług platformy Azure z centrum danych organizacji. Przedsiębiorstwa mogą skonfigurować usługę Azure Stack we własnych centrach danych lub korzystać z usług Platformy Azure od dostawców usług, uruchamiając usługę Azure Stack w swoich obiektach (czasami nazywanych regionami hostowanymi).
 
-Sercem te chmury usługi Azure Resource Manager zapewnia interfejs API, który umożliwia szeroką gamę interfejsy użytkownika do komunikowania się z platformą Azure. Ten interfejs API zapewnia zaawansowane możliwości infrastruktury jako kodu. Dowolnego typu zasobu, który jest dostępny na platformie Azure w chmurze można wdrożyć i konfigurować za pomocą usługi Azure Resource Manager. Pojedynczy szablon można wdrożyć i skonfigurować pełną aplikacji do stanu końcowego operacyjnej.
+W centrum wszystkich tych chmur usługa Azure Resource Manager udostępnia interfejs API, który umożliwia szeroką gamę interfejsów użytkownika do komunikowania się z platformą Azure. Ten interfejs API zapewnia zaawansowane możliwości infrastruktury jako kodu. Każdy typ zasobu, który jest dostępny na platformie chmury platformy Azure można wdrożyć i skonfigurować za pomocą usługi Azure Resource Manager. Za pomocą jednego szablonu można wdrożyć i skonfigurować pełną aplikację do operacyjnego stanu końcowego.
 
 ![Środowiska platformy Azure](./media/templates-cloud-consistency/environments.png)
 
-Spójność global Azure i suwerennych chmurach hostowanej chmury i chmury w centrum danych pomaga korzystać z usługi Azure Resource Manager. Po skonfigurowaniu zasób oparty na szablonie, wdrażanie i konfigurację można ponownie użyć inwestycji w rozwoju w tych chmurach.
+Spójność globalnej platformy Azure, suwerennych chmur, chmur hostowanych i chmury w centrum danych ułatwia korzystanie z usługi Azure Resource Manager. Podczas konfigurowania wdrożenia i konfiguracji zasobów opartych na szablonach można ponownie użyć inwestycji deweloperskich w tych chmurach.
 
-Jednak mimo że globalna suwerennych, hostowaną i chmur hybrydowych świadczenia usług spójne, nie wszystkie chmury są identyczne. W rezultacie można utworzyć szablon z zależnościami w funkcje, które są dostępne tylko w określonej chmurze.
+Jednak mimo że globalne, suwerenne, hostowane i hybrydowe chmury zapewniają spójne usługi, nie wszystkie chmury są identyczne. W rezultacie można utworzyć szablon z zależnościami od funkcji dostępnych tylko w określonej chmurze.
 
-W pozostałej części tego przewodnika opisano obszary, które należy wziąć pod uwagę podczas planowania do tworzenia nowych lub aktualizowanie istniejących szablonów usługi Azure Resource Manager dla usługi Azure Stack. Ogólnie rzecz biorąc z listy kontrolnej powinien zawierać następujące elementy:
+W dalszej części tego przewodnika opisano obszary, które należy wziąć pod uwagę podczas planowania tworzenia nowych lub aktualizowania istniejących szablonów ARM dla usługi Azure Stack. Ogólnie rzecz biorąc, lista kontrolna powinna zawierać następujące elementy:
 
-* Sprawdź funkcje, punkty końcowe, usług i innych zasobów w szablonie są dostępne w lokalizacjach docelowych wdrożenia.
-* Store zagnieżdżonych szablonów i artefaktów konfiguracji dostępnych lokalizacji, na zapewnienie im dostępu w ramach wielu chmur.
-* Użyj odwołania dynamicznego zamiast kodować łączy i elementów.
-* Upewnij się, że parametry szablonu, którego używasz pracować w chmurach programu docelowego.
-* Sprawdź, że dostępne są właściwości specyficzne dla zasobu chmury docelowego.
+* Sprawdź, czy funkcje, punkty końcowe, usługi i inne zasoby w szablonie są dostępne w lokalizacjach wdrożenia docelowego.
+* Przechowuj zagnieżdżone szablony i artefakty konfiguracji w dostępnych lokalizacjach, zapewniając dostęp między chmurami.
+* Użyj odwołań dynamicznych zamiast twardych kodowania łączy i elementów.
+* Upewnij się, że parametry szablonu, których używasz, działają w chmurach docelowych.
+* Sprawdź, czy właściwości specyficzne dla zasobów są dostępne w chmurach docelowych.
 
-Wprowadzenie do szablonów usługi Azure Resource Manager, zobacz [wdrożenie szablonu](overview.md).
+Aby zapoznać się z wprowadzeniem do szablonów ARM, zobacz [Wdrażanie szablonów](overview.md).
 
-## <a name="ensure-template-functions-work"></a>Upewnij się, że praca template — funkcje
+## <a name="ensure-template-functions-work"></a>Upewnij się, że funkcje szablonu działają
 
-Podstawowa składnia szablonu usługi Resource Manager jest JSON. Szablony korzystać z nadzbioru JSON, rozszerzając składnię, używając wyrażeń i funkcji. Procesor języka szablonu jest często aktualizowana do obsługi funkcji dodatkowe szablony. Aby uzyskać szczegółowy opis funkcji dostępnych szablonów, zobacz [funkcje szablonu usługi Azure Resource Manager](template-functions.md).
+Podstawową składnią szablonu ARM jest JSON. Szablony używają nadzbioru JSON, rozszerzając składnię za pomocą wyrażeń i funkcji. Procesor języka szablonu jest często aktualizowany w celu obsługi dodatkowych funkcji szablonu. Szczegółowe informacje na temat dostępnych funkcji szablonu można znaleźć w części [Funkcje szablonu ARM](template-functions.md).
 
-Nowe funkcje szablonu, które zostały wprowadzone do usługi Azure Resource Manager nie są natychmiast dostępne w chmurach suwerennych lub usługi Azure Stack. Aby pomyślnie wdrożyć szablon, wszystkie funkcje, do którego odwołuje się szablonu musi być dostępny w chmurę docelową.
+Nowe funkcje szablonów, które są wprowadzane do usługi Azure Resource Manager nie są natychmiast dostępne w suwerennych chmur lub usługi Azure Stack. Aby pomyślnie wdrożyć szablon, wszystkie funkcje, do których odwołuje się szablon, muszą być dostępne w chmurze docelowej.
 
-Możliwości usługi Azure Resource Manager będzie zawsze wprowadzane do globalnej platformy Azure najpierw. Poniższy skrypt programu PowerShell służy do Sprawdź, czy nowo wprowadzonych template — funkcje są również dostępne w usłudze Azure Stack:
+Możliwości usługi Azure Resource Manager będą zawsze wprowadzane najpierw do globalnej platformy Azure. Aby sprawdzić, czy nowo wprowadzone funkcje szablonu są również dostępne w usłudze Azure Stack, można użyć następującego skryptu programu PowerShell:
 
-1. Wprowadzić klona repozytorium GitHub: [ https://github.com/marcvaneijk/arm-template-functions ](https://github.com/marcvaneijk/arm-template-functions).
+1. Zrób klon repozytorium GitHub: [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions).
 
-1. Gdy masz lokalnego klona repozytorium, podłącz do docelowej usługi Azure Resource Manager przy użyciu programu PowerShell.
+1. Po lokalnym klon repozytorium, połącz się z usługą Azure Resource Manager miejsca docelowego z programem PowerShell.
 
-1. Zaimportuj moduł psm1 i wykonaj następujące polecenie cmdlet Test-AzureRmTemplateFunctions:
+1. Zaimportuj moduł psm1 i wykonaj polecenie cmdlet Test-AzureRmTemplateFunctions:
 
    ```powershell
    # Import the module
@@ -65,19 +65,19 @@ Możliwości usługi Azure Resource Manager będzie zawsze wprowadzane do global
    Test-AzureRmTemplateFunctions -path <path to local clone>
    ```
 
-Skrypt wdroży wiele szablonów, z których każdy zawiera tylko unikatowe template — funkcje zminimalizowane. Dane wyjściowe skryptu raporty funkcje szablonu obsługiwane i dostępne.
+Skrypt wdraża wiele, zminimalizowanych szablonów, z których każdy zawiera tylko unikatowe funkcje szablonu. Dane wyjściowe skryptu raportuje obsługiwane i niedostępne funkcje szablonu.
 
-## <a name="working-with-linked-artifacts"></a>Praca z połączonych artefaktów
+## <a name="working-with-linked-artifacts"></a>Praca z połączonymi artefaktami
 
-Szablon może zawierać odwołania do połączonych artefaktów i zawiera zasobu wdrożenia, który stanowi łącze do innego szablonu. Połączone szablony (nazywane również zagnieżdżonych szablonów) są pobierane przez usługę Resource Manager w środowisku uruchomieniowym. Szablon może również zawierać odwołania do artefaktów dla rozszerzeń maszyny wirtualnej (VM). Te artefakty są pobierane przez rozszerzenie maszyny Wirtualnej działają w ramach maszyny Wirtualnej na potrzeby konfiguracji rozszerzenia maszyn wirtualnych podczas wdrażania szablonu.
+Szablon może zawierać odwołania do połączonych artefaktów i zawierać zasób wdrożenia, który łączy się z innym szablonem. Połączone szablony (nazywane również szablonem zagnieżdżanym) są pobierane przez Menedżera zasobów w czasie wykonywania. Szablon może również zawierać odwołania do artefaktów dla rozszerzeń maszyny wirtualnej. Te artefakty są pobierane przez rozszerzenie maszyny Wirtualnej uruchomione wewnątrz maszyny Wirtualnej w celu skonfigurowania rozszerzenia maszyny Wirtualnej podczas wdrażania szablonu.
 
-W poniższych sekcjach opisano zagadnienia dotyczące spójności chmury podczas tworzenia szablonów obejmujących artefaktów, które są zewnętrzne w stosunku do szablonu wdrożenia głównego.
+W poniższych sekcjach opisano zagadnienia dotyczące spójności chmury podczas tworzenia szablonów, które zawierają artefakty, które są zewnętrzne do głównego szablonu wdrożenia.
 
-### <a name="use-nested-templates-across-regions"></a>Korzystanie z szablonów zagnieżdżonych w wielu regionach
+### <a name="use-nested-templates-across-regions"></a>Używanie szablonów zagnieżdżonych w różnych regionach
 
-Szablony mogą być rozłożone na małe, wielokrotnego użytku szablonów, z których każdy ma określonego celu i mogą być ponownie używane w scenariuszach wdrażania. Aby wykonać wdrożenie, należy określić pojedynczy szablon znane jako szablon głównego lub wzorca. Określa zasoby w celu wdrożenia, takie jak sieci wirtualne, maszyny wirtualne i aplikacje sieci web. Szablon głównego może również zawierać link do innego szablonu, co oznacza, że można zagnieżdżać szablonów. Podobnie zagnieżdżonych szablonów mogą zawierać łącza do innych szablonów. Można zagnieżdżać maksymalnie pięć poziomów w głąb.
+Szablony można rozłożyć na małe szablony wielokrotnego użytku, z których każdy ma określony cel i może być ponownie użyty w scenariuszach wdrażania. Aby wykonać wdrożenie, należy określić pojedynczy szablon znany jako szablon główny lub główny. Określa zasoby do wdrożenia, takie jak sieci wirtualne, maszyny wirtualne i aplikacje sieci web. Szablon główny może również zawierać łącze do innego szablonu, co oznacza, że można zagnieżdżać szablony. Podobnie szablon zagnieżdżony może zawierać łącza do innych szablonów. Można zagnieździć do pięciu poziomów głębokości.
 
-Poniższy kod pokazuje, jak parametr templateLink odwołuje się do zagnieżdżonych szablonów:
+Poniższy kod pokazuje, jak parametr templateLink odnosi się do szablonu zagnieżdżonego:
 
 ```json
 "resources": [
@@ -96,17 +96,17 @@ Poniższy kod pokazuje, jak parametr templateLink odwołuje się do zagnieżdżo
 ]
 ```
 
-Usługa Azure Resource Manager ocenia głównego szablonu w czasie wykonywania i pobiera i ocenia każdy zagnieżdżonych szablonów. Po wszystkich zagnieżdżone szablony są pobierane, szablon jest spłaszczany i inicjowane jest dalsze przetwarzanie.
+Usługa Azure Resource Manager ocenia główny szablon w czasie wykonywania i pobiera i ocenia każdy szablon zagnieżdżony. Po pobraniu wszystkich zagnieżdżonych szablonów szablon jest spłaszczany i inicjowane jest dalsze przetwarzanie.
 
-### <a name="make-linked-templates-accessible-across-clouds"></a>Udostępnienie chmurach połączonymi szablonami
+### <a name="make-linked-templates-accessible-across-clouds"></a>Udostępnij połączone szablony w chmurach
 
-Należy wziąć pod uwagę, gdzie i jak do przechowywania wszelkich połączone szablony, można użyć. W czasie wykonywania, usługi Azure Resource Manager pobiera — i dlatego wymaga bezpośredniego dostępu do — wszystkie połączone szablony. Powszechną praktyką jest usługa GitHub umożliwia przechowywanie zagnieżdżonych szablonów. Repozytorium GitHub może zawierać pliki, które są dostępne publicznie przy użyciu adresu URL. Mimo że ta technika działa dobrze w przypadku chmury publicznej i suwerennych chmur, środowiska Azure Stack może być umieszczona w sieci firmowej lub w odłączonej lokalizacji zdalnej, bez żadnych ruch wychodzący do Internetu. W takich przypadkach usługi Azure Resource Manager zakończy się niepowodzeniem, można pobrać zagnieżdżonych szablonów.
+Zastanów się, gdzie i jak przechowywać używane połączone szablony. W czasie wykonywania usługa Azure Resource Manager pobiera — i dlatego wymaga bezpośredniego dostępu do wszystkich połączonych szablonów. Powszechną praktyką jest użycie gitHub do przechowywania szablonów zagnieżdżonych. Repozytorium GitHub może zawierać pliki, które są publicznie dostępne za pośrednictwem adresu URL. Mimo że ta technika działa dobrze dla chmury publicznej i chmur suwerennych, środowisko usługi Azure Stack może znajdować się w sieci firmowej lub w lokalizacji zdalnej rozłączone, bez wychodzącego dostępu do Internetu. W takich przypadkach usługa Azure Resource Manager nie może pobrać szablonów zagnieżdżonych.
 
-Lepsze rozwiązanie w przypadku wdrożeń w wielu chmur, jest połączone szablony są przechowywane w lokalizacji dostępnej dla docelowej chmury. W idealnym wszystkich artefaktów wdrożenia są obsługiwane w i wdrażanych za pomocą potoku ciągłej integracji/ciągłego rozwoju (CI/CD). Alternatywnie szablonów zagnieżdżonych można przechowywać w kontenera magazynu obiektów blob, w którym usługi Azure Resource Manager można je pobrać.
+Lepszą praktyką dla wdrożeń między chmurami jest przechowywanie połączonych szablonów w lokalizacji dostępnej dla chmury docelowej. W idealnym przypadku wszystkie artefakty wdrażania są obsługiwane i wdrażane z potoku ciągłej integracji/ciągłego programowania (CI/CD). Alternatywnie można przechowywać szablony zagnieżdżone w kontenerze magazynu obiektów blob, z którego usługa Azure Resource Manager może je pobrać.
 
-Ponieważ magazynu obiektów blob na każdej z nich korzysta z innym punktem końcowym pełni kwalifikowaną nazwę domeny (FQDN), należy skonfigurować szablon z lokalizacji połączonymi szablonami z dwoma parametrami. Parametry mogą akceptować dane wejściowe użytkownika w czasie wdrażania. Szablony są zazwyczaj tworzone i współużytkowane przez wiele osób, dlatego najlepszym rozwiązaniem jest użycie standardowej nazwy dla tych parametrów. Konwencje nazewnictwa sprawić, że szablony bardziej wielokrotnego użytku różnych regionach, chmur i autora.
+Ponieważ magazyn obiektów blob w każdej chmurze używa innej w pełni kwalifikowanej nazwy domeny punktu końcowego (FQDN), skonfiguruj szablon z lokalizacją połączonych szablonów z dwoma parametrami. Parametry mogą akceptować dane wejściowe użytkownika w czasie wdrażania. Szablony są zazwyczaj autorstwa i udostępniane przez wiele osób, więc najlepszym rozwiązaniem jest użycie nazwy standardowej dla tych parametrów. Konwencje nazewnictwa ułatwiają tworzenie szablonów na wiele różnych regionów, chmur i autorów.
 
-W poniższym kodzie `_artifactsLocation` służy do punktu w jednym miejscu, zawierający wszystkie artefakty związanych z wdrażaniem. Należy zauważyć, że podano wartość domyślną. W czasie wdrażania, jeśli nie wartości wejściowej jest określona dla `_artifactsLocation`, zostanie użyta domyślna wartość. `_artifactsLocationSasToken` Jest używany jako dane wejściowe na potrzeby `sasToken`. Domyślna wartość powinna być ciągiem pustym dla scenariuszy gdzie `_artifactsLocation` nie jest zabezpieczony — na przykład publicznego repozytorium GitHub.
+W poniższym `_artifactsLocation` kodzie jest używany do wskazywania jednej lokalizacji, zawierającej wszystkie artefakty związane z wdrażaniem. Należy zauważyć, że wartość domyślna jest podana. W czasie wdrażania, jeśli nie `_artifactsLocation`określono wartości wejściowej dla , używana jest wartość domyślna. Jest `_artifactsLocationSasToken` używany jako dane `sasToken`wejściowe dla . Wartość domyślna powinna być pustym ciągiem dla scenariuszy, w `_artifactsLocation` których nie jest zabezpieczony — na przykład publiczne repozytorium GitHub.
 
 ```json
 "parameters": {
@@ -127,7 +127,7 @@ W poniższym kodzie `_artifactsLocation` służy do punktu w jednym miejscu, zaw
 }
 ```
 
-W szablonie, łącza są generowane, łącząc podstawowy identyfikator URI (z `_artifactsLocation` parametr) ze ścieżką względnego artefaktów i `_artifactsLocationSasToken`. Poniższy kod pokazuje, jak podaj łącze do zagnieżdżonych szablonów przy użyciu funkcji szablon identyfikatora uri:
+W całym szablonie łącza są generowane przez połączenie podstawowego identyfikatora URI (z parametru) `_artifactsLocation` ze ścieżką względną artefaktu `_artifactsLocationSasToken`i . Poniższy kod pokazuje, jak określić łącze do szablonu zagnieżdżonego przy użyciu funkcji szablonu uri:
 
 ```json
 "resources": [
@@ -146,11 +146,11 @@ W szablonie, łącza są generowane, łącząc podstawowy identyfikator URI (z `
 ]
 ```
 
-Za pomocą tej metody, wartość domyślna `_artifactsLocation` parametr jest używany. Jeśli połączonymi szablonami, należy pobrać z innej lokalizacji, parametr wejściowy może służyć w czasie wdrażania, aby zastąpić wartość domyślną — bez zmian do szablonu jest wymagana.
+Przy użyciu tej metody używana `_artifactsLocation` jest wartość domyślna dla parametru. Jeśli połączone szablony muszą być pobierane z innej lokalizacji, dane wejściowe parametru mogą być używane w czasie wdrażania do zastąpienia wartości domyślnej — nie jest wymagana żadna zmiana samego szablonu.
 
-### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>Użyj _artifactsLocation zamiast hardcoding łącza
+### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>Użyj _artifactsLocation zamiast linków do twardego kodowania
 
-Oprócz pełnienia dla zagnieżdżonych szablonów, adres URL w `_artifactsLocation` parametr jest używany jako podstawa dla wszystkich powiązanych artefaktów Szablon wdrożenia. Niektóre rozszerzenia maszyny Wirtualnej zawiera łącza do skryptu przechowywane poza szablonu. Aby zainstalować te rozszerzenia należy nie umieszczaj łącza. Na przykład rozszerzeń niestandardowych skryptów i programu PowerShell DSC może połączyć skryptu zewnętrznego w serwisie GitHub, jak pokazano:
+Oprócz używanego dla szablonów zagnieżdżonych, adres URL w parametrze `_artifactsLocation` jest używany jako podstawa dla wszystkich powiązanych artefaktów szablonu wdrożenia. Niektóre rozszerzenia maszyn wirtualnych zawierają łącze do skryptu przechowywanego poza szablonem. W przypadku tych rozszerzeń nie należy kodować na stałe łączy. Na przykład niestandardowe skrypty i rozszerzenia DSC programu PowerShell mogą łączyć się z zewnętrznym skryptem w usłudze GitHub, jak pokazano na rysunku:
 
 ```json
 "properties": {
@@ -166,9 +166,9 @@ Oprócz pełnienia dla zagnieżdżonych szablonów, adres URL w `_artifactsLocat
 }
 ```
 
-Hardcoding łącza do skryptu potencjalnie zapobiega szablon wdrażania pomyślnie do innej lokalizacji. Podczas konfigurowania zasobu maszyny Wirtualnej agenta maszyn wirtualnych uruchomionych na maszynie Wirtualnej inicjuje pobieranie wszystkie skrypty, które są połączone w rozszerzeniu maszyny Wirtualnej, a następnie przechowanie skrypty na lokalnym dysku maszyny Wirtualnej. Funkcje tego podejścia, takie jak linki zagnieżdżonych szablonów wcześniej przedstawionych w sekcji "Użyj nested szablonów w regionach".
+Twarde kodowanie łączy do skryptu potencjalnie uniemożliwia szablonowi pomyślne wdrożenie w innej lokalizacji. Podczas konfigurowania zasobu maszyny Wirtualnej agent maszyny Wirtualnej działający wewnątrz maszyny Wirtualnej inicjuje pobieranie wszystkich skryptów połączonych w rozszerzeniu maszyny Wirtualnej, a następnie przechowuje skrypty na dysku lokalnym maszyny Wirtualnej. To podejście działa jak zagnieżdżone łącza szablonów wyjaśnione wcześniej w sekcji "Użyj szablonów zagnieżdżonych w różnych regionach".
 
-Usługa Resource Manager pobiera zagnieżdżone szablony w czasie wykonywania. Rozszerzenia maszyny Wirtualnej pobieranie wszelkie artefakty zewnętrznych jest wykonywane przez agenta maszyny Wirtualnej. Oprócz różnych inicjatora pobieranie artefaktu rozwiązania w definicji szablonu jest taka sama. Użyj parametru _artifactsLocation o wartości domyślnej ścieżki podstawowej, w którym przechowywane są wszystkie artefakty (w tym skrypty rozszerzenia maszyny Wirtualnej) i `_artifactsLocationSasToken` parametr dla danych wejściowych dla sasToken.
+Menedżer zasobów pobiera szablony zagnieżdżone w czasie wykonywania. W przypadku rozszerzeń maszyn wirtualnych pobieranie wszelkich zewnętrznych artefaktów jest wykonywane przez agenta maszyny Wirtualnej. Oprócz innego inicjatora pobierania artefaktów rozwiązanie w definicji szablonu jest takie samo. Użyj parametru _artifactsLocation z domyślną wartością ścieżki podstawowej, w której przechowywane są wszystkie artefakty `_artifactsLocationSasToken` (w tym skrypty rozszerzenia maszyny Wirtualnej) i parametrem dla danych wejściowych dla sasToken.
 
 ```json
 "parameters": {
@@ -189,7 +189,7 @@ Usługa Resource Manager pobiera zagnieżdżone szablony w czasie wykonywania. R
 }
 ```
 
-Do konstruowania bezwzględny identyfikator URI artefaktu, preferowaną metodą jest użycie funkcji szablon identyfikatora uri, zamiast funkcji szablonu concat. Za pomocą zastąpienia zapisane na stałe linki do skryptów w rozszerzeniu maszyny Wirtualnej za pomocą funkcji szablon identyfikatora uri, tej funkcji w szablonie jest skonfigurowany w celu zachowania spójności w chmurze.
+Aby skonstruować bezwzględny identyfikator URI artefaktu, preferowaną metodą jest użycie funkcji szablonu uri zamiast funkcji szablonu concat. Zastępując hardcoded łącza do skryptów w rozszerzeniu maszyny Wirtualnej z funkcją szablonu uri, ta funkcja w szablonie jest skonfigurowany dla spójności chmury.
 
 ```json
 "properties": {
@@ -205,57 +205,57 @@ Do konstruowania bezwzględny identyfikator URI artefaktu, preferowaną metodą 
 }
 ```
 
-W przypadku tej metody wszystkie artefakty wdrożenia, w tym skrypty konfiguracji mogą być przechowywane w tej samej lokalizacji za pomocą samego szablonu. Aby zmienić lokalizację wszystkich linków, należy określić inny podstawowy adres URL dla _parametrów artifactsLocation_.
+Dzięki takiemu podejściu wszystkie artefakty wdrażania, w tym skrypty konfiguracji, mogą być przechowywane w tej samej lokalizacji z samym szablonem. Aby zmienić lokalizację wszystkich łączy, wystarczy określić inny podstawowy adres URL _parametrów artifactsLocation_.
 
-## <a name="factor-in-differing-regional-capabilities"></a>Wziąć pod uwagę różne możliwości regionalne
+## <a name="factor-in-differing-regional-capabilities"></a>Czynnikiem wpływającym na różne możliwości regionalne
 
-Programowanie metodą agile i ciągły przepływ aktualizacje i nowe usługi, wprowadzone do systemu Azure [regionach mogą różnić się](https://azure.microsoft.com/regions/services/) w dostępności usługi lub aktualizacji. Po rygorystyczne testy wewnętrzne, nowych usług lub aktualizacje do istniejących usług zwykle są wprowadzane do małych odbiorców klientów uczestniczących w programie sprawdzania poprawności. Po klient pomyślnie weryfikacji aktualizacji lub usług są dostępne w regionach platformy Azure przez, a następnie wprowadzone do większej liczbie regionów, wdrażane w suwerennych chmurach i potencjalnie udostępnione dla klientów usługi Azure Stack, jak również.
+Dzięki elastycznemu programowi i ciągłemu przepływowi aktualizacji i nowych usług wprowadzonych na platformę Azure [regiony mogą różnić się](https://azure.microsoft.com/regions/services/) dostępnością usług lub aktualizacji. Po rygorystycznych testach wewnętrznych nowe usługi lub aktualizacje istniejących usług są zwykle wprowadzane do niewielkiej grupy odbiorców klientów uczestniczących w programie sprawdzania poprawności. Po pomyślnym weryfikacji klienta usługi lub aktualizacje są udostępniane w podzbiór regionów platformy Azure, a następnie wprowadzone do większej liczby regionów, wdrożone w chmurach suwerennych i potencjalnie udostępnione również klientom usługi Azure Stack.
 
-Wiedząc, że regiony platformy Azure i chmury może różnić się w ich dostępnych usług, można określeniu niektórych aktywnego szablonów. Jest dobrym miejscem do rozpoczęcia, sprawdzając dostępnych dostawców zasobów dla chmury. Dostawca zasobów informuje zestaw zasobów i operacji, które są dostępne dla usługi platformy Azure.
+Wiedząc, że regiony i chmury platformy Azure mogą się różnić w dostępnych usługach, można podjąć pewne proaktywne decyzje dotyczące szablonów. Dobrym miejscem do rozpoczęcia jest zbadanie dostępnych dostawców zasobów dla chmury. Dostawca zasobów informuje o zestawie zasobów i operacji, które są dostępne dla usługi platformy Azure.
 
-Szablon wdraża i konfiguruje zasoby. Typ zasobu jest dostarczana przez dostawcę zasobów. Na przykład dostawcy zasobów obliczeniowych (Microsoft.Compute) zawiera wiele typów zasobów, takich jak maszyn wirtualnych i availabilitySets. Każdy dostawca zasobów udostępnia interfejs API do usługi Azure Resource Manager zdefiniowane przez typowe umowy, umożliwiając spójny, jednolity środowisko tworzenia we wszystkich dostawców zasobów. Jednak dostawca zasobów, który jest dostępny w global Azure może nie być dostępne w regionie usługi Azure Stack lub należących do suwerennej chmury.
+Szablon wdraża i konfiguruje zasoby. Typ zasobu jest dostarczany przez dostawcę zasobów. Na przykład dostawca zasobów obliczeniowych (Microsoft.Compute) udostępnia wiele typów zasobów, takich jak virtualMachines i availabilitySets. Każdy dostawca zasobów udostępnia interfejs API usługi Azure Resource Manager zdefiniowany przez wspólny kontrakt, umożliwiając spójne, ujednolicone środowisko tworzenia we wszystkich dostawcach zasobów. Jednak dostawca zasobów, który jest dostępny na globalnej platformie Azure może nie być dostępny w suwerennej chmurze lub regionie usługi Azure Stack.
 
 ![Dostawcy zasobów](./media/templates-cloud-consistency/resource-providers.png)
 
-Aby sprawdzić dostawców zasobów, które są dostępne w danej chmury, uruchom następujący skrypt w interfejsie wiersza polecenia platformy Azure ([interfejsu wiersza polecenia](/cli/azure/install-azure-cli)):
+Aby zweryfikować dostawców zasobów dostępnych w danej chmurze, uruchom następujący skrypt w interfejsie wiersza polecenia platformy Azure ([CLI](/cli/azure/install-azure-cli)):
 
 ```azurecli-interactive
 az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
 ```
 
-Następujące polecenie cmdlet programu PowerShell umożliwia również wyświetlić dostępnych dostawców zasobów:
+Można również użyć następującego polecenia cmdlet programu PowerShell, aby wyświetlić dostępnych dostawców zasobów:
 
 ```azurepowershell-interactive
 Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
 ```
 
-### <a name="verify-the-version-of-all-resource-types"></a>Sprawdź wersję wszystkie typy zasobów
+### <a name="verify-the-version-of-all-resource-types"></a>Sprawdzanie wersji wszystkich typów zasobów
 
-Zbiór właściwości jest wspólny dla wszystkich typów zasobów, ale każdy zasób ma również swój własny określonej właściwości. Nowe funkcje i powiązane właściwości są dodawane do istniejących typów zasobów w czasie za pomocą nowej wersji interfejsu API. Zasób w szablonie ma swój własny właściwość wersji API - `apiVersion`. Tej wersji zapewnia, że istniejącej konfiguracji zasobów w szablonie nie ma wpływu zmian na platformie.
+Zestaw właściwości jest wspólny dla wszystkich typów zasobów, ale każdy zasób ma również własne właściwości określone. Nowe funkcje i powiązane właściwości są dodawane do istniejących typów zasobów czasami za pośrednictwem nowej wersji interfejsu API. Zasób w szablonie ma własną `apiVersion`właściwość wersji interfejsu API - . Ta wersja zapewnia, że istniejące konfiguracji zasobów w szablonie nie ma wpływu na zmiany na platformie.
 
-Nowe wersje interfejsu API, wprowadzone do istniejących typów zasobów na platformie Azure globalne mogą natychmiast być niedostępne we wszystkich regionach, suwerenne chmury i usługi Azure Stack. Aby wyświetlić listę dostępnych dostawców zasobów, typy zasobów i wersje interfejsu API dla chmury, używając Eksploratora zasobów w witrynie Azure portal. Wyszukaj Eksploratora zasobów, w menu wszystkie usługi. Rozwiń węzeł dostawców w Eksploratorze zasobów do zwrócenia wszystkich dostępnych dostawców zasobów, typy zasobów i wersje interfejsu API w tej chmury.
+Nowe wersje interfejsu API wprowadzone do istniejących typów zasobów na globalnej platformie Azure mogą nie być natychmiast dostępne we wszystkich regionach, chmurach suwerennych lub usłudze Azure Stack. Aby wyświetlić listę dostępnych dostawców zasobów, typów zasobów i wersji interfejsu API dla chmury, można użyć Eksploratora zasobów w witrynie Azure portal. Wyszukaj Eksploratora zasobów w menu Wszystkie usługi. Rozwiń węzeł Dostawcy w Eksploratorze zasobów, aby zwrócić wszystkich dostępnych dostawców zasobów, ich typy zasobów i wersje interfejsu API w tej chmurze.
 
-Aby wyświetlić listę dostępnych wersji interfejsu API dla wszystkich typów zasobów w danej chmury w interfejsie wiersza polecenia platformy Azure, uruchom następujący skrypt:
+Aby wyświetlić listę dostępnej wersji interfejsu API dla wszystkich typów zasobów w danej chmurze w interfejsie wiersza polecenia platformy Azure, uruchom następujący skrypt:
 
 ```azurecli-interactive
 az provider list --query "[].{namespace:namespace, resourceType:resourceType[]}"
 ```
 
-Umożliwia także następujące polecenia cmdlet programu PowerShell:
+Można również użyć następującego polecenia cmdlet programu PowerShell:
 
 ```azurepowershell-interactive
 Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty ResourceTypes | ft ProviderNamespace, ResourceTypeName, ApiVersions
 ```
 
-### <a name="refer-to-resource-locations-with-a-parameter"></a>Zapoznaj się lokalizacje zasobów za pomocą parametru
+### <a name="refer-to-resource-locations-with-a-parameter"></a>Odwoływanie się do lokalizacji zasobów z parametrem
 
-Szablon zawsze jest wdrażana w grupie zasobów, która znajduje się w regionie. Oprócz samego wdrożenia poszczególnych zasobów w szablonie ma właściwość lokalizacji, która służy do określania regionu do wdrożenia. Tworzenie szablonu w celu zachowania spójności w chmurze, należy dynamiczny sposób do odwoływania się do lokalizacji zasobu, ponieważ każdej usługi Azure Stack może zawierać nazwy unikatową lokalizację. Zazwyczaj są wdrażane zasoby w tym samym regionie co grupa zasobów, ale do obsługi scenariuszy, takich jak dostępność aplikacji między regionami, może być przydatne w celu rozłożenia zasobów między różnymi regionami.
+Szablon jest zawsze wdrażany w grupie zasobów, która znajduje się w regionie. Oprócz samego wdrożenia, każdy zasób w szablonie ma również właściwość lokalizacji, która służy do określania regionu do wdrożenia w. Aby opracować szablon dla spójności chmury, potrzebujesz dynamicznego sposobu odwoływania się do lokalizacji zasobów, ponieważ każdy stos azure może zawierać unikatowe nazwy lokalizacji. Zazwyczaj zasoby są wdrażane w tym samym regionie co grupa zasobów, ale do obsługi scenariuszy, takich jak dostępność aplikacji między regionami, może być przydatne do rozmieszczania zasobów w różnych regionach.
 
-Mimo, że możesz zakodować nazwy regionów podczas określania właściwości zasobów w szablonie, to podejście nie gwarantuje, że szablonu można wdrożyć w innych środowiskach Azure Stack, ponieważ nazwa regionu najprawdopodobniej nie istnieje istnieje.
+Mimo że można hardcode nazwy regionu podczas określania właściwości zasobów w szablonie, to podejście nie gwarantuje, że szablon można wdrożyć w innych środowiskach usługi Azure Stack, ponieważ nazwa regionu najprawdopodobniej nie istnieje tam.
 
-Aby uwzględnić różnych regionach, należy dodać lokalizacją parametru wejściowego do szablonu z wartością domyślną. Jeśli nie określono wartości podczas wdrażania, zostanie użyta wartość domyślna.
+Aby pomieścić różne regiony, dodaj lokalizację parametru wejściowego do szablonu z wartością domyślną. Wartość domyślna będzie używana, jeśli podczas wdrażania nie określono żadnej wartości.
 
-Funkcja szablonu `[resourceGroup()]` zwraca obiekt, który zawiera następujące pary klucz/wartość:
+Funkcja `[resourceGroup()]` szablonu zwraca obiekt zawierający następujące pary klucz/wartość:
 
 ```json
 {
@@ -270,7 +270,7 @@ Funkcja szablonu `[resourceGroup()]` zwraca obiekt, który zawiera następujące
 }
 ```
 
-Odwołując się do klucza lokalizacji obiektu w defaultValue parametru wejściowego, usługi Azure Resource Manager w czasie wykonywania, zastąpi `[resourceGroup().location]` funkcji szablonu o nazwie lokalizacja grupy zasobów do wdrażania szablonu.
+Odwołując się do klucza lokalizacji obiektu w defaultValue parametru wejściowego, Usługa `[resourceGroup().location]` Azure Resource Manager zastąpi w czasie wykonywania funkcję szablonu nazwą lokalizacji grupy zasobów, do.
 
 ```json
 "parameters": {
@@ -291,13 +291,13 @@ Odwołując się do klucza lokalizacji obiektu w defaultValue parametru wejścio
     ...
 ```
 
-Za pomocą tej funkcji szablonu można wdrożyć szablon z każdą chmurą bez nawet z wyprzedzeniem znajomości nazw regionów. Ponadto lokalizacji dla określonego zasobu w szablonie mogą się różnić od lokalizacji grupy zasobów. W takim przypadku można ją skonfigurować przy użyciu dodatkowych parametrów wejściowych dla tego określonego zasobu, podczas gdy inne zasoby w tym samym szablonie nadal używać parametru wejściowego początkową lokalizację.
+Dzięki tej funkcji szablonu można wdrożyć szablon w dowolnej chmurze, nie znając z wyprzedzeniem nazw regionów. Ponadto lokalizacja określonego zasobu w szablonie może się różnić od lokalizacji grupy zasobów. W takim przypadku można go skonfigurować przy użyciu dodatkowych parametrów wejściowych dla tego określonego zasobu, podczas gdy inne zasoby w tym samym szablonie nadal używają początkowego parametru wejściowego lokalizacji.
 
 ### <a name="track-versions-using-api-profiles"></a>Śledzenie wersji przy użyciu profilów interfejsu API
 
-Może być bardzo trudne do śledzenia wszystkich dostępnych dostawców zasobów i pokrewne wersje interfejsu API, które znajdują się w usłudze Azure Stack. Na przykład w czasie pisania, najnowsza wersja interfejsu API dla **Microsoft.Compute/availabilitySets** na platformie Azure to `2018-04-01`, gdy jest dostępna wersja interfejsu API wspólne dla platformy Azure i usługi Azure Stack `2016-03-30`. Typowe wersja interfejsu API dla **Microsoft.Storage/storageAccounts** współużytkowane przez wszystkie lokalizacje platformy Azure i usługi Azure Stack jest `2016-01-01`, a najnowsza wersja interfejsu API na platformie Azure to `2018-02-01`.
+Śledzenie wszystkich dostępnych dostawców zasobów i powiązanych wersji interfejsu API, które są obecne w usłudze Azure Stack, może być bardzo trudne. Na przykład w momencie pisania najnowsza wersja interfejsu API dla **microsoft.compute/availabilitySets** na platformie Azure `2018-04-01` `2016-03-30`jest , podczas gdy dostępna wersja interfejsu API wspólne dla platformy Azure i usługi Azure Stack jest . Wspólna wersja interfejsu API dla **witryny Microsoft.Storage/storageKondykony** współużytkowane przez wszystkie lokalizacje platformy Azure i usługi Azure Stack to `2016-01-01`, podczas gdy najnowsza wersja interfejsu API na platformie Azure to `2018-02-01`.
 
-Z tego powodu usługi Resource Manager wprowadzono koncepcję profilami interfejsu API do szablonów. Bez profilu interfejsu API poszczególnych zasobów w szablonie jest skonfigurowany przy użyciu `apiVersion` element, który zawiera opis wersji interfejsu API dla tego określonego zasobu.
+Z tego powodu Menedżer zasobów wprowadził pojęcie profilów interfejsu API do szablonów. Bez profilów interfejsu API każdy zasób `apiVersion` w szablonie jest skonfigurowany z elementem opisującym wersję interfejsu API dla tego określonego zasobu.
 
 ```json
 {
@@ -338,7 +338,7 @@ Z tego powodu usługi Resource Manager wprowadzono koncepcję profilami interfej
 }
 ```
 
-Wersja profilu interfejsu API działa jako alias dla jednej wersji interfejsu API na typ zasobu jest wspólny dla platformy Azure i usługi Azure Stack. Zamiast określania wersją interfejsu API dla każdego zasobu w szablonie, określ wersja profilu interfejsu API w elemencie głównym o nazwie `apiProfile` i pominąć `apiVersion` element dla poszczególnych zasobów.
+Wersja profilu interfejsu API działa jako alias dla pojedynczej wersji interfejsu API dla każdego typu zasobu wspólnego dla platformy Azure i usługi Azure Stack. Zamiast określać wersję interfejsu API dla każdego zasobu w szablonie, należy określić `apiProfile` tylko wersję `apiVersion` profilu interfejsu API w nowym elemencie głównym o nazwie i pominąć element dla poszczególnych zasobów.
 
 ```json
 {
@@ -378,9 +378,9 @@ Wersja profilu interfejsu API działa jako alias dla jednej wersji interfejsu AP
 }
 ```
 
-Profil interfejsu API zapewnia, że wersje interfejsu API są dostępne w lokalizacjach, dzięki czemu nie trzeba ręcznie zweryfikować apiVersions, które są dostępne w określonej lokalizacji. Aby upewnić się, że wersje interfejsów API odwołuje się profil interfejsów API znajdują się w środowisku usługi Azure Stack, Operatorzy usługi Azure Stack musi przechowywać aktualne rozwiązania na podstawie zasad pomocy technicznej. Jeśli system jest nieaktualna, jest uznawane za niezgodne, a środowisko musi zostać zaktualizowana więcej niż sześć miesięcy.
+Profil interfejsu API zapewnia, że wersje interfejsu API są dostępne w różnych lokalizacjach, więc nie trzeba ręcznie weryfikować apiVersions, które są dostępne w określonej lokalizacji. Aby upewnić się, że wersje interfejsu API, do których odwołuje się profil interfejsu API, są obecne w środowisku usługi Azure Stack, operatorzy usługi Azure Stack muszą aktualizować rozwiązanie na podstawie zasad pomocy technicznej. Jeśli system jest nieaktualny o więcej niż sześć miesięcy, jest uważany za niezgodny z przepisami, a środowisko musi zostać zaktualizowane.
 
-Profil interfejsu API, który nie jest wymagany element w szablonie. Nawet jeśli dodasz element, tylko posłuży za zasoby, dla którego nie `apiVersion` jest określony. Ten element umożliwia stopniowe zmiany, ale nie wymaga żadnych zmian w istniejących szablonów.
+Profil interfejsu API nie jest wymaganym elementem w szablonie. Nawet jeśli dodasz element, będzie on używany tylko `apiVersion` dla zasobów, dla których nie jest określony. Ten element umożliwia stopniowe zmiany, ale nie wymaga żadnych zmian w istniejących szablonach.
 
 ```json
 {
@@ -421,42 +421,42 @@ Profil interfejsu API, który nie jest wymagany element w szablonie. Nawet jeśl
 }
 ```
 
-## <a name="check-endpoint-references"></a>Sprawdź odwołania do punktu końcowego
+## <a name="check-endpoint-references"></a>Sprawdzanie odwołań do punktów końcowych
 
-Zasoby mogą mieć odwołania do innych usług na platformie. Na przykład publiczny adres IP może mieć publicznej nazwy DNS do niej przypisany. Chmura publiczna, suwerenne chmury i rozwiązań usługi Azure Stack mają własne przestrzenie nazw unikatowych punktu końcowego. W większości przypadków zasobu wymaga tylko prefiks jako dane wejściowe w szablonie. Podczas wykonywania usługi Azure Resource Manager dołącza wartość punktu końcowego do niego. Niektóre wartości punktu końcowego muszą być jawnie określone w szablonie.
+Zasoby mogą mieć odwołania do innych usług na platformie. Na przykład publiczny adres IP może mieć przypisaną publiczną nazwę DNS. Chmura publiczna, suwerenne chmury i rozwiązania usługi Azure Stack mają własne odrębne obszary nazw punktów końcowych. W większości przypadków zasób wymaga tylko prefiksu jako dane wejściowe w szablonie. W czasie wykonywania usługa Azure Resource Manager dołącza do niego wartość punktu końcowego. Niektóre wartości punktu końcowego muszą być jawnie określone w szablonie.
 
 > [!NOTE]
-> Tworzenie szablonów w celu zachowania spójności w chmurze, nie umieszczaj punktu końcowego w przestrzeni nazw.
+> Aby opracować szablony dla spójności chmury, nie należy zakodować obszarów nazw punktu końcowego.
 
-Dwa poniższe przykłady są wspólnej przestrzeni nazw punktu końcowego, które muszą być jawnie określone podczas tworzenia zasobu:
+Następujące dwa przykłady są wspólne obszary nazw punktu końcowego, które muszą być jawnie określone podczas tworzenia zasobu:
 
-* Kont usługi Storage (blob, kolejki, tabela i plik)
-* Parametry połączenia dla baz danych i pamięci podręcznej Azure redis Cache
+* Konta magazynu (obiekt blob, kolejka, tabela i plik)
+* Parametry połączenia dla baz danych i pamięci podręcznej azure dla redis
 
-Punkt końcowy w przestrzeni nazw można również w danych wyjściowych szablonu jako informacje dla użytkownika po ukończeniu wdrażania. Poniżej przedstawiono typowe przykłady:
+Obszary nazw punktu końcowego mogą być również używane w danych wyjściowych szablonu jako informacje dla użytkownika po zakończeniu wdrażania. Poniżej przedstawiono typowe przykłady:
 
-* Kont usługi Storage (blob, kolejki, tabela i plik)
-* Parametry połączenia (MySql, SQLServer, SQLAzure, niestandardowe, Centrum NotificationHub, magistrali usług, Centrum zdarzeń, ApiHub, DocDb, usługi RedisCache, PostgreSQL)
+* Konta magazynu (obiekt blob, kolejka, tabela i plik)
+* Parametry połączenia (MySql, SQLServer, SQLAzure, Custom, NotificationHub, ServiceBus, EventHub, ApiHub, DocDb, RedisCache, PostgreSQL)
 * Traffic Manager
-* domainNameLabel publiczny adres IP
-* Korzystaj z zalet usług w chmurze
+* domainNameLabel publicznego adresu IP
+* Usługi w chmurze
 
-Ogólnie rzecz biorąc Unikaj endpoints zapisane na stałe w szablonie. Najlepszym rozwiązaniem jest używanie funkcji szablonu odwołania do dynamicznego pobierania punktów końcowych. Na przykład punkt końcowy najczęściej zapisane na stałe jest przestrzenią nazw punktu końcowego dla kont magazynu. Każde konto magazynu ma unikatową nazwę FQDN, który jest konstruowany, łącząc nazwę konta magazynu z przestrzenią nazw punktu końcowego. Konto magazynu obiektów blob o nazwie mystorageaccount1 wyników w różne nazwy FQDN, w zależności od tego, w chmurze:
+Ogólnie rzecz biorąc należy unikać hardcoded punktów końcowych w szablonie. Najlepszym rozwiązaniem jest użycie funkcji szablonu odwołania do dynamicznego pobierania punktów końcowych. Na przykład punkt końcowy najczęściej hardcoded jest obszar nazw punktu końcowego dla kont magazynu. Każde konto magazynu ma unikatową nazwę FQDN, która jest konstruowana przez łączenie nazwy konta magazynu z obszarem nazw punktu końcowego. Konto magazynu obiektów blob o nazwie mystorageaccount1 powoduje różne nazwy FQDN w zależności od chmury:
 
-* **mystorageaccount1.blob.Core.Windows.NET** podczas tworzenia w chmurze Azure, globalne.
-* **mystorageaccount1.blob.Core.chinacloudapi.CN** utworzone w chmurze 21Vianet platformy Azure w Chinach.
+* **mystorageaccount1.blob.core.windows.net** po utworzeniu w globalnej chmurze platformy Azure.
+* **mystorageaccount1.blob.core.chinacloudapi.cn** po utworzeniu w chmurze Azure China 21Vianet.
 
-Następujące odwołanie do funkcji szablonu pobiera przestrzeń nazw punktu końcowego z dostawcę zasobów magazynowych:
+Następująca funkcja szablonu odwołania pobiera obszar nazw punktu końcowego od dostawcy zasobów magazynu:
 
 ```json
 "diskUri":"[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))).primaryEndpoints.blob, 'container/myosdisk.vhd')]"
 ```
 
-Przez zastąpienie wartości zapisane na stałe punktu końcowego konta magazynu przy użyciu `reference` funkcji szablonu umożliwia tego samego szablonu wdrożenia różnych środowiskach pomyślnie bez wprowadzania żadnych zmian do odwołania do punktu końcowego.
+Zastępując wartość punktu końcowego konta magazynu z `reference` funkcją szablonu, można użyć tego samego szablonu, aby pomyślnie wdrożyć go w różnych środowiskach bez wprowadzania żadnych zmian w odwołaniu do punktu końcowego.
 
-### <a name="refer-to-existing-resources-by-unique-id"></a>Zapoznaj się z istniejącymi zasobami przez unikatowy identyfikator
+### <a name="refer-to-existing-resources-by-unique-id"></a>Odwoływanie się do istniejących zasobów według unikatowego identyfikatora
 
-Można się również odwoływać do istniejącego zasobu z tego samego lub innego zasobu, grupy i w ramach tej samej subskrypcji lub innej subskrypcji w ramach tej samej dzierżawy w tej samej chmurze. Aby pobrać właściwości zasobu, należy użyć Unikatowy identyfikator dla samego zasobu. `resourceId` Funkcji szablonu pobiera unikatowy identyfikator zasobów takich jak SQL Server, co ilustruje poniższy kod:
+Można również odwołać się do istniejącego zasobu z tej samej lub innej grupy zasobów i w ramach tej samej subskrypcji lub innej subskrypcji w ramach tej samej dzierżawy w tej samej chmurze. Aby pobrać właściwości zasobu, należy użyć unikatowego identyfikatora dla samego zasobu. Funkcja `resourceId` szablonu pobiera unikatowy identyfikator zasobu, takiego jak SQL Server, zgodnie z następującym kodem:
 
 ```json
 "outputs": {
@@ -467,37 +467,37 @@ Można się również odwoływać do istniejącego zasobu z tego samego lub inne
 }
 ```
 
-Następnie można użyć `resourceId` działa wewnątrz `reference` funkcji szablonu, można pobrać właściwości bazy danych. Zwracany obiekt zawiera `fullyQualifiedDomainName` właściwość, która przechowuje wartość pełne punktu końcowego. Ta wartość jest pobierana w czasie wykonywania i zapewnia przestrzeń nazw z punktem końcowym specyficznym dla środowiska chmury. Aby zdefiniować parametry połączenia bez hardcoding przestrzeni nazw punktu końcowego, mogą odwoływać się do właściwości zwracanego obiektu bezpośrednio w parametrach połączenia, jak pokazano:
+Następnie można użyć `resourceId` funkcji `reference` wewnątrz funkcji szablonu, aby pobrać właściwości bazy danych. Obiekt zwracany `fullyQualifiedDomainName` zawiera właściwość, która przechowuje pełną wartość punktu końcowego. Ta wartość jest pobierana w czasie wykonywania i zapewnia obszar nazw punktu końcowego specyficzne dla środowiska chmury. Aby zdefiniować ciąg połączenia bez twardego kodowania obszaru nazw punktu końcowego, można odwołać się do właściwości obiektu zwracanego bezpośrednio w ciągu połączenia, jak pokazano na rysunku:
 
 ```json
 "[concat('Server=tcp:', reference(resourceId('sql', 'Microsoft.Sql/servers', parameters('test')), '2015-05-01-preview').fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('database'),';User ID=', parameters('username'), ';Password=', parameters('pass'), ';Encrypt=True;')]"
 ```
 
-## <a name="consider-resource-properties"></a>Należy wziąć pod uwagę właściwości zasobów
+## <a name="consider-resource-properties"></a>Uwzględnianie właściwości zasobu
 
-Określone zasoby w środowiskach usługi Azure Stack mają unikatowych właściwości, które należy wziąć pod uwagę w szablonie.
+Określone zasoby w środowiskach usługi Azure Stack mają unikatowe właściwości, które należy wziąć pod uwagę w szablonie.
 
-### <a name="ensure-vm-images-are-available"></a>Upewnij się, że dostępne obrazy maszyn wirtualnych
+### <a name="ensure-vm-images-are-available"></a>Upewnij się, że obrazy maszyn wirtualnych są dostępne
 
-Platforma Azure zapewnia bogaty wybór obrazów maszyn wirtualnych. Te obrazy są tworzone i przygotowanie do wdrożenia przez firmę Microsoft i partnerów. Obrazy stanowią podstawę dla maszyn wirtualnych na platformie. Jednak spójnej chmurze szablonu powinni zapoznać się tylko dostępne parametry — w szczególności wydawcy, oferty i jednostki SKU dostępne dla globalnej platformy Azure, Azure należących do suwerennej chmury lub rozwiązanie usługi Azure Stack obrazów maszyn wirtualnych.
+Platforma Azure zapewnia bogaty wybór obrazów maszyn wirtualnych. Te obrazy są tworzone i przygotowywane do wdrożenia przez firmę Microsoft i partnerów. Obrazy stanowią podstawę dla maszyn wirtualnych na platformie. Jednak szablon spójny w chmurze powinien odwoływać się tylko do dostępnych parametrów — w szczególności wydawcy, oferty i jednostki SKU obrazów maszyn wirtualnych dostępnych dla globalnej platformy Azure, suwerennych chmur platformy Azure lub rozwiązania usługi Azure Stack.
 
-Aby pobrać listę dostępnych obrazów maszyn wirtualnych w lokalizacji, uruchom następujące polecenie z wiersza polecenia platformy Azure:
+Aby pobrać listę dostępnych obrazów maszyn wirtualnych w lokalizacji, uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure:
 
 ```azurecli-interactive
 az vm image list -all
 ```
 
-Możesz pobrać tę samą listę za pomocą polecenia cmdlet programu Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) i określ lokalizację, z `-Location` parametru. Przykład:
+Tę samą listę można pobrać za pomocą polecenia cmdlet platformy Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) i określić lokalizację, która ma zostać określona za pomocą parametru. `-Location` Przykład:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
 ```
 
-To polecenie może zająć kilka minut, aby zwrócić wszystkie dostępne obrazy w regionie Europa Zachodnia, globalne chmury platformy Azure.
+To polecenie trwa kilka minut, aby zwrócić wszystkie dostępne obrazy w regionie Europy Zachodniej globalnej chmury platformy Azure.
 
-Jeśli zostanie udostępniona tych obrazów maszyn wirtualnych do usługi Azure Stack, dostępnego magazynu będzie używane. Aby uwzględnić nawet najmniejszy jednostki skalowania, usługi Azure Stack można wybrać obrazy, które chcesz dodać do środowiska.
+Jeśli te obrazy maszyn wirtualnych zostały udostępnione do usługi Azure Stack, wszystkie dostępnego magazynu zostaną wykorzystane. Aby pomieścić nawet najmniejszą jednostkę skalowania, usługa Azure Stack umożliwia wybranie obrazów, które chcesz dodać do środowiska.
 
-Poniższy przykład kodu pokazuje spójne podejście do odwoływania się do wydawcy, oferty i jednostki SKU parametrów w szablonach usługi Azure Resource Manager:
+Poniższy przykładowy kod przedstawia spójne podejście do odwoływania się do parametrów wydawcy, oferty i jednostki SKU w szablonach ARM:
 
 ```json
 "storageProfile": {
@@ -510,29 +510,29 @@ Poniższy przykład kodu pokazuje spójne podejście do odwoływania się do wyd
 }
 ```
 
-### <a name="check-local-vm-sizes"></a>Sprawdź lokalne rozmiarów maszyn wirtualnych
+### <a name="check-local-vm-sizes"></a>Sprawdzanie lokalnych rozmiarów maszyn wirtualnych
 
-Do tworzenia szablonu w celu zachowania spójności w chmurze, należy się upewnić, że odpowiedni rozmiar maszyny Wirtualnej jest dostępna we wszystkich środowiskach docelowych. Rozmiary maszyn wirtualnych są grupowania charakterystyki wydajności i możliwości. Przykładowe rozmiary maszyny Wirtualnej zależą od sprzętu, na uruchomiony na maszynie Wirtualnej. Na przykład jeśli chcesz wdrożyć maszyny Wirtualnej zoptymalizowane pod kątem procesora GPU, sprzęt, na którym działa funkcja hypervisor musi mieć sprzętu procesorów GPU.
+Aby opracować szablon dla spójności chmury, należy upewnić się, że rozmiar maszyny Wirtualnej, który chcesz jest dostępny we wszystkich środowiskach docelowych. Rozmiary maszyn wirtualnych to grupowanie charakterystyk i możliwości wydajności. Niektóre rozmiary maszyn wirtualnych zależą od sprzętu, na który działa maszyna wirtualna. Na przykład jeśli chcesz wdrożyć maszynę wirtualną zoptymalizowaną pod kątem procesora GPU, sprzęt uruchamiany hipernadzorcą musi mieć sprzętowe procesory GPU.
 
-Gdy firma Microsoft przedstawia nowy rozmiar maszyny Wirtualnej, która ma niektórych zależności sprzętu, rozmiar maszyny Wirtualnej jest zwykle udostępniane najpierw w mały podzbiór regiony w chmurze platformy Azure. Później staje się dostępny do innych regionów i chmury. Aby upewnić się, że rozmiar maszyny Wirtualnej znajduje się w każdej chmurze, w których wdrażana, możesz pobrać dostępne rozmiary, za pomocą następującego polecenia wiersza polecenia platformy Azure:
+Gdy firma Microsoft wprowadza nowy rozmiar maszyny Wirtualnej, który ma pewne zależności sprzętowe, rozmiar maszyny Wirtualnej jest zwykle udostępniany najpierw w małym podzbiorze regionów w chmurze platformy Azure. Później jest on udostępniany innym regionom i chmurom. Aby upewnić się, że rozmiar maszyny Wirtualnej istnieje w każdej chmurze, którą wdrażasz, można pobrać dostępne rozmiary za pomocą następującego polecenia interfejsu wiersza polecenia platformy Azure:
 
 ```azurecli-interactive
 az vm list-sizes --location "West Europe"
 ```
 
-Dla programu Azure PowerShell użyj polecenia:
+W przypadku programu Azure PowerShell użyj:
 
 ```azurepowershell-interactive
 Get-AzureRmVMSize -Location "West Europe"
 ```
 
-Aby uzyskać pełną listę dostępnych usług, zobacz [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?cdn=disable).
+Aby uzyskać pełną listę dostępnych usług, zobacz [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/?cdn=disable).
 
-### <a name="check-use-of-azure-managed-disks-in-azure-stack"></a>Sprawdź użycie usługi Azure Managed Disks w usłudze Azure Stack
+### <a name="check-use-of-azure-managed-disks-in-azure-stack"></a>Sprawdzanie użycia dysków zarządzanych platformy Azure w usłudze Azure Stack
 
-Zarządzane dyski uchwyt magazynu dla dzierżawy usługi Azure. Zamiast jawnie Tworzenie konta magazynu, a następnie określając identyfikator URI wirtualnego dysku twardego (VHD) umożliwia dysków zarządzanych niejawnie, gdy wdrożysz maszynę Wirtualną, wykonaj następujące akcje. Dyski zarządzane zwiększyć dostępność przez umieszczenie wszystkich dysków z maszyn wirtualnych w zestawie do innego magazynu jednostki dostępności. Ponadto istniejących wirtualnych dysków twardych można przekonwertować od planu Standard do usługi Premium storage znacznie mniej przestojów.
+Dyski zarządzane obsługują magazyn dla dzierżawy platformy Azure. Zamiast jawnie utworzyć konto magazynu i określić identyfikator URI dla wirtualnego dysku twardego (VHD), można użyć dysków zarządzanych do niejawnego wykonywania tych akcji podczas wdrażania maszyny Wirtualnej. Dyski zarządzane zwiększają dostępność, umieszczając wszystkie dyski z maszyn wirtualnych w tej samej dostępności ustawionej w różnych jednostkach magazynu. Ponadto istniejące dyski VHD można konwertować ze standardowej pamięci masowej w wersji Premium ze znacznie krótszym czasem przestoju.
 
-Mimo, że dyski zarządzane znajdują się na plan usługi Azure Stack, są obecnie nie są obsługiwane. Aż do chwili, możesz tworzyć szablony spójnej chmury dla usługi Azure Stack, jawnie określając przy użyciu wirtualnych dysków twardych `vhd` elementu w szablonie zasobu maszyny Wirtualnej, jak pokazano:
+Chociaż dyski zarządzane znajdują się w planie działania usługi Azure Stack, obecnie nie są obsługiwane. Dopóki nie zostaną one utworzone, można tworzyć szablony spójne z chmurą `vhd` dla usługi Azure Stack, jawnie określając identyfikatory VHD przy użyciu elementu w szablonie zasobu maszyny Wirtualnej, jak pokazano na rysunku:
 
 ```json
 "storageProfile": {
@@ -553,7 +553,7 @@ Mimo, że dyski zarządzane znajdują się na plan usługi Azure Stack, są obec
 }
 ```
 
-W przeciwieństwie do określenia konfiguracji dysku zarządzanego w szablonie, należy usunąć `vhd` elementu z konfiguracji dysku.
+Z drugiej strony, aby określić konfigurację `vhd` dysku zarządzanego w szablonie, usuń element z konfiguracji dysku.
 
 ```json
 "storageProfile": {
@@ -570,27 +570,27 @@ W przeciwieństwie do określenia konfiguracji dysku zarządzanego w szablonie, 
 }
 ```
 
-Te same zmiany mają zastosowanie również [dysków z danymi](../../virtual-machines/windows/using-managed-disks-template-deployments.md).
+Te same zmiany dotyczą również [dysków z danymi](../../virtual-machines/windows/using-managed-disks-template-deployments.md).
 
-### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>Sprawdź, czy rozszerzenia maszyn wirtualnych są dostępne w usłudze Azure Stack
+### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>Sprawdzanie, czy rozszerzenia maszyn wirtualnych są dostępne w usłudze Azure Stack
 
-Inną ważną kwestią dotyczącą chmury spójności polega na użyciu [rozszerzenia maszyny wirtualnej](../../virtual-machines/windows/extensions-features.md) do konfigurowania zasobów wewnątrz maszyny Wirtualnej. Nie wszystkie rozszerzenia maszyny Wirtualnej są dostępne w usłudze Azure Stack. Szablon można określić zasoby przeznaczone do rozszerzenia maszyny Wirtualnej, tworzenia zależności i warunków w ramach szablonu.
+Inną kwestią spójności chmury jest użycie [rozszerzeń maszyn wirtualnych](../../virtual-machines/windows/extensions-features.md) do konfigurowania zasobów wewnątrz maszyny wirtualnej. Nie wszystkie rozszerzenia maszyn wirtualnych są dostępne w usłudze Azure Stack. Szablon można określić zasoby przeznaczone dla rozszerzenia maszyny Wirtualnej, tworzenie zależności i warunków w szablonie.
 
-Na przykład jeśli chcesz skonfigurować maszynę Wirtualną z systemem Microsoft SQL Server, rozszerzenia maszyny Wirtualnej można skonfigurować programu SQL Server w ramach wdrożenia szablonu. Należy wziąć pod uwagę, co się stanie, jeśli wdrożenie zawiera również serwer aplikacji skonfigurowany tak, aby utworzyć bazę danych na maszynie Wirtualnej z uruchomionym programem SQL Server. Oprócz również za pomocą rozszerzenia maszyny Wirtualnej dla serwerów aplikacji, można skonfigurować zależności serwera aplikacji na pomyślne zwracany zasobów rozszerzenia maszyny Wirtualnej programu SQL Server. To podejście zapewnia, że maszyna wirtualna działa program SQL Server jest skonfigurowane i dostępne, gdy serwer aplikacji jest zobowiązany do utworzenia bazy danych.
+Na przykład jeśli chcesz skonfigurować maszynę wirtualną z systemem Microsoft SQL Server, rozszerzenie maszyny Wirtualnej można skonfigurować SQL Server jako część wdrożenia szablonu. Należy wziąć pod uwagę, co się stanie, jeśli szablon wdrożenia zawiera również serwer aplikacji skonfigurowany do tworzenia bazy danych na maszynie Wirtualnej z systemem SQL Server. Oprócz również przy użyciu rozszerzenia maszyny Wirtualnej dla serwerów aplikacji, można skonfigurować zależność serwera aplikacji na pomyślny powrót zasobu rozszerzenia maszyny Wirtualnej programu SQL Server. Takie podejście gwarantuje, że maszyna wirtualna z systemem SQL Server jest skonfigurowana i dostępna, gdy serwer aplikacji jest poinstruowany, aby utworzyć bazę danych.
 
-Podejścia deklaratywnego szablonu umożliwia definiowanie stanu końcowego zasobów i ich wzajemnych zależności, podczas gdy platforma dba o logiki wymaganej zależności.
+Deklaratywne podejście szablonu umożliwia zdefiniowanie stanu końcowego zasobów i ich współzależności, podczas gdy platforma zajmuje się logiką wymaganą dla zależności.
 
-#### <a name="check-that-vm-extensions-are-available"></a>Sprawdź, czy są dostępne rozszerzenia maszyny Wirtualnej
+#### <a name="check-that-vm-extensions-are-available"></a>Sprawdź, czy rozszerzenia maszyn wirtualnych są dostępne
 
-Istnieje wiele rodzajów rozszerzeń maszyn wirtualnych. Podczas tworzenia szablonu w celu zachowania spójności w chmurze, pamiętaj użyć rozszerzeń, które są dostępne we wszystkich regionach docelowych szablonu.
+Istnieje wiele typów rozszerzeń maszyn wirtualnych. Podczas tworzenia szablonu dla spójności chmury, upewnij się, że używa tylko rozszerzeń, które są dostępne we wszystkich regionach docelowych szablonu.
 
-Aby pobrać listę rozszerzeń maszyn wirtualnych, które są dostępne dla określonego regionu (w tym przykładzie `myLocation`), uruchom następujące polecenie z wiersza polecenia platformy Azure:
+Aby pobrać listę rozszerzeń maszyn wirtualnych, które są dostępne `myLocation`dla określonego regionu (w tym przykładzie ), uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure:
 
 ```azurecli-interactive
 az vm extension image list --location myLocation
 ```
 
-Można również wykonać programu Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) polecenia cmdlet i użyj `-Location` do określenia lokalizacji obrazu maszyny wirtualnej. Przykład:
+Można również wykonać polecenie cmdlet [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) platformy `-Location` Azure i użyć do określenia lokalizacji obrazu maszyny wirtualnej. Przykład:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version
@@ -598,7 +598,7 @@ Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageTy
 
 #### <a name="ensure-that-versions-are-available"></a>Upewnij się, że wersje są dostępne
 
-Ponieważ rozszerzenia maszyn wirtualnych są zasobami usługi Resource Manager firmy Microsoft, mają własne wersji interfejsu API. Poniższy kod ilustruje typ rozszerzenia maszyny Wirtualnej jest zagnieżdżonych zasobów dostawcy zasobów Microsoft.Compute.
+Ponieważ rozszerzenia maszyn wirtualnych są zasobami menedżera zasobów własnej firmy, mają własne wersje interfejsu API. Jak pokazano w poniższym kodzie, typ rozszerzenia maszyny Wirtualnej jest zagnieżdżonym zasobem w dostawcy zasobów Microsoft.Compute.
 
 ```json
 {
@@ -609,21 +609,21 @@ Ponieważ rozszerzenia maszyn wirtualnych są zasobami usługi Resource Manager 
     ...
 ```
 
-Wersja interfejsu API zasobu rozszerzenia maszyny Wirtualnej musi być obecny we wszystkich lokalizacjach, które ma pod kątem z szablonem. Zależność lokalizacji działa jak dostawca zasobów interfejsu API w wersji dostępności wspomniano w sekcji "Zweryfikuj wersję wszystkich typów zasobów".
+Wersja interfejsu API zasobu rozszerzenia maszyny Wirtualnej musi znajdować się we wszystkich lokalizacjach, które mają być kierowane do szablonu. Zależność lokalizacji działa podobnie do dostępności wersji interfejsu API dostawcy zasobów omówione wcześniej w sekcji "Sprawdź wersję wszystkich typów zasobów".
 
-Aby pobrać listę dostępnych wersji interfejsu API dla zasobu rozszerzenia maszyny Wirtualnej, użyj [Get-AzureRmResourceProvider](/powershell/module/az.resources/get-azresourceprovider) polecenia cmdlet z **Microsoft.Compute** dostawcy zasobów, jak pokazano:
+Aby pobrać listę dostępnych wersji interfejsu API dla zasobu rozszerzenia maszyny Wirtualnej, użyj polecenia cmdlet [Get-AzureRmResourceProvider](/powershell/module/az.resources/get-azresourceprovider) z dostawcą zasobów **Microsoft.Compute,** jak pokazano na rysunku:
 
 ```azurepowershell-interactive
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachines/extensions"}
 ```
 
-Można również użyć rozszerzenia maszyn wirtualnych w zestawach skalowania maszyn wirtualnych. Mają zastosowanie te same warunki lokalizacji. Tworzenie szablonu w celu zachowania spójności w chmurze, upewnij się, że wersje interfejsu API są dostępne we wszystkich lokalizacjach, na którym planujesz wdrożenie. Aby pobrać wersje interfejsu API zasobu rozszerzenia maszyny Wirtualnej dla zestawów skalowania, użyj tego samego polecenia cmdlet jako przed, ale określ skalowania maszyn wirtualnych ustawia typ zasobu, jak pokazano:
+Można również użyć rozszerzeń maszyn wirtualnych w zestawach skalowania maszyny wirtualnej. Obowiązują te same warunki lokalizacji. Aby opracować szablon dla spójności chmury, upewnij się, że wersje interfejsu API są dostępne we wszystkich lokalizacjach, które planujesz wdrożyć. Aby pobrać wersje interfejsu API zasobu rozszerzenia maszyny Wirtualnej dla zestawów skalowania, należy użyć tego samego polecenia cmdlet, co poprzednio, ale określ typ zasobu zestawu wagowych maszyny wirtualnej, jak pokazano na rysunku:
 
 ```azurepowershell-interactive
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachineScaleSets/extensions"}
 ```
 
-Każde rozszerzenie określonych jest także numerów wersji. Ta wersja jest wyświetlana w `typeHandlerVersion` właściwości rozszerzenia maszyny Wirtualnej. Upewnij się, że wersja określona w `typeHandlerVersion` elementu rozszerzenia maszyny Wirtualnej z szablonu są dostępne w lokalizacjach, w którym planujesz wdrożyć szablon. Na przykład poniższy kod określa wersję 1.7:
+Każde określone rozszerzenie jest również wersjona. Ta wersja jest `typeHandlerVersion` wyświetlana we właściwości rozszerzenia maszyny Wirtualnej. Upewnij się, że wersja `typeHandlerVersion` określona w elemencie rozszerzeń maszyn wirtualnych szablonu są dostępne w lokalizacjach, w których planujesz wdrożyć szablon. Na przykład następujący kod określa wersję 1.7:
 
 ```json
 {
@@ -641,31 +641,31 @@ Każde rozszerzenie określonych jest także numerów wersji. Ta wersja jest wy�
         ...
 ```
 
-Aby pobrać listę dostępnych wersji dla określonego rozszerzenia maszyny Wirtualnej, użyj [Get AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) polecenia cmdlet. Poniższy przykład pobiera dostępnych wersji dla rozszerzenia maszyny Wirtualnej w programie PowerShell DSC (Desired State Configuration) z **myLocation**:
+Aby pobrać listę dostępnych wersji dla określonego rozszerzenia maszyny Wirtualnej, należy użyć polecenia cmdlet [Get-AzureRmVMExtensionImage.](/powershell/module/az.compute/get-azvmextensionimage) Poniższy przykład pobiera dostępne wersje rozszerzenia maszyny Wirtualnej dsc programu PowerShell (konfiguracja żądanego stanu) z **myLocation:**
 
 ```azurepowershell-interactive
 Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT
 ```
 
-Aby uzyskać listę wydawców, użyj [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) polecenia. Aby typ żądania, należy użyć [Get AzureRmVMExtensionImageType](/powershell/module/az.compute/get-azvmextensionimagetype) commend.
+Aby uzyskać listę wydawców, należy użyć polecenia [Get-AzureRmVmImagePublisher.](/powershell/module/az.compute/get-azvmimagepublisher) Aby zażądać typu, należy użyć [polecenia Get-AzureRmVMExtensionImageType.](/powershell/module/az.compute/get-azvmextensionimagetype)
 
-## <a name="tips-for-testing-and-automation"></a>Porady dotyczące testowania i automatyzacja
+## <a name="tips-for-testing-and-automation"></a>Wskazówki dotyczące testowania i automatyzacji
 
-To żądanie, aby śledzić wszystkie powiązane ustawienia, możliwości i ograniczeń podczas tworzenia szablonu. Typowym podejściem jest tworzenie i testowanie szablonów względem pojedynczej chmury przed są stosowane w innych lokalizacjach. Jednak wcześniej, które testy są wykonywane w procesie tworzenia, mniej rozwiązywania problemu i przebudowa kodu, Twój zespół deweloperów spowoduje, że. Wdrożenia, które się nie powieść z powodu zależności lokalizacji może być czasochłonne, rozwiązywać problemy. Dlatego zaleca się testowanie automatyczne możliwie jak najszybciej w cyklu tworzenia pakietów administracyjnych. Ostatecznie musisz mieć mniej czasu na programowanie i mniejszej ilości zasobów i spójnej chmurze artefaktów staną się bardziej wartościowe.
+Jest to wyzwanie, aby śledzić wszystkie powiązane ustawienia, możliwości i ograniczenia podczas tworzenia szablonu. Typowym podejściem jest opracowanie i przetestowanie szablonów dla jednej chmury, zanim zostaną zaatakowane inne lokalizacje. Jednak wcześniej, że testy są wykonywane w procesie tworzenia, mniej rozwiązywania problemów i przepisywania kodu zespołu deweloperów będzie musiał zrobić. Wdrożenia, które nie powiodą się z powodu zależności lokalizacji, mogą być czasochłonne do rozwiązywania problemów. Dlatego zalecamy automatyczne testowanie tak wcześnie, jak to możliwe w cyklu tworzenia. Ostatecznie będziesz potrzebować mniej czasu na program i mniej zasobów, a artefakty spójne w chmurze staną się jeszcze bardziej wartościowe.
 
-Na poniższej ilustracji przedstawiono typowy przykład procesu projektowania dla zespołu za pomocą zintegrowanym środowisku programistycznym (IDE). Na różnych etapach na osi czasu testu różne typy są wykonywane. W tym miejscu dwóch deweloperów pracuje na tym samym rozwiązaniu, ale w tym scenariuszu, stosuje się jednakowo do jednego dewelopera lub duży zespół. Każdy deweloper zazwyczaj tworzy kopię lokalną repozytorium centralnym, włączania każdej z nich do pracy nad lokalną kopię bez wywierania wpływu na pozostałe kto pracuje tych samych plików.
+Na poniższej ilustracji przedstawiono typowy przykład procesu tworzenia dla zespołu przy użyciu zintegrowanego środowiska programistycznego (IDE). Na różnych etapach osi czasu wykonywane są różne typy testów. W tym miejscu dwóch deweloperów pracuje nad tym samym rozwiązaniem, ale ten scenariusz dotyczy jednakowo jednego dewelopera lub dużego zespołu. Każdy deweloper zazwyczaj tworzy lokalną kopię centralnego repozytorium, umożliwiając każdemu z nich pracę nad kopią lokalną bez wpływu na inne osoby, które mogą pracować nad tymi samymi plikami.
 
 ![Przepływ pracy](./media/templates-cloud-consistency/workflow.png)
 
-Należy wziąć pod uwagę na poniższe porady dotyczące testowania i automatyzacji:
+Rozważmy następujące wskazówki dotyczące testowania i automatyzacji:
 
-* Wprowadzić korzystanie z narzędzia do testowania. Na przykład programu Visual Studio Code i Visual Studio obejmują funkcję IntelliSense i inne funkcje, które mogą pomóc Ci sprawdzanie poprawności szablonów.
-* Aby poprawić jakość kodu podczas programowania w lokalnym środowisku IDE, należy wykonać statycznej analizy kodu za pomocą testów jednostkowych i testów integracji.
-* Jeszcze lepsze środowisko pracy podczas tworzenia początkowej, testy jednostkowe i testy integracji tylko ostrzega, gdy problem zostanie znaleziony i kontynuować wykonywanie testów. W ten sposób można zidentyfikować problemy, które zostały rozwiązane i ustalić ich priorytety kolejność zmiany, zwaną także wdrożenia oparte na testach (TDD).
-* Należy pamiętać, że niektóre testy mogą być wykonywane bez połączenia do usługi Azure Resource Manager. Inne, takie jak testowanie wdrożenia szablonu wymagają usługi Resource Manager do wykonywania pewnych działań, które nie mogą być wykonywane w trybie offline.
-* Testowanie Szablon wdrożenia względem walidacji interfejsu API nie jest równa rzeczywiste wdrożenie. Ponadto nawet wtedy, gdy należy wdrożyć szablon z pliku lokalnego, wszelkie odwołania do szablonów zagnieżdżonych w szablonie są pobierane przez usługę Resource Manager bezpośrednio i artefakty przywoływane przez rozszerzenia maszyny Wirtualnej są pobierane przez agenta maszyny Wirtualnej uruchomionej w wdrożonej maszyny Wirtualnej.
+* Korzystaj z narzędzi testowych. Na przykład Visual Studio Kod i Visual Studio obejmują IntelliSense i inne funkcje, które mogą pomóc w weryfikacji szablonów.
+* Aby poprawić jakość kodu podczas tworzenia lokalnego IDE, należy wykonać analizę kodu statycznego za pomocą testów jednostkowych i testów integracji.
+* Aby uzyskać jeszcze lepsze środowisko podczas wstępnego rozwoju, testy jednostkowe i testy integracji powinny ostrzegać tylko wtedy, gdy problem zostanie znaleziony i kontynuować testy. W ten sposób można zidentyfikować problemy do rozwiązania i priorytet kolejność zmian, również określane jako wdrożenie oparte na testach (TDD).
+* Należy pamiętać, że niektóre testy można wykonać bez połączenia z usługą Azure Resource Manager. Inne, takie jak testowanie wdrażania szablonów, wymagają Menedżera zasobów do wykonywania pewnych akcji, których nie można wykonać w trybie offline.
+* Testowanie szablonu wdrożenia względem interfejsu API sprawdzania poprawności nie jest równe rzeczywistemu wdrożeniu. Ponadto nawet jeśli wdrożysz szablon z pliku lokalnego, wszelkie odwołania do szablonów zagnieżdżonych w szablonie są pobierane bezpośrednio przez Menedżera zasobów, a artefakty, do których odwołują się rozszerzenia maszyn wirtualnych, są pobierane przez agenta maszyny Wirtualnej działającego wewnątrz wdrożonej maszyny Wirtualnej.
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Zagadnienia dotyczące szablonów usługi Azure Resource Manager](/azure-stack/user/azure-stack-develop-templates)
-* [Najlepsze rozwiązania dotyczące szablonów usługi Azure Resource Manager](template-syntax.md)
+* [Najważniejsze wskazówki dotyczące szablonów ARM](template-syntax.md)

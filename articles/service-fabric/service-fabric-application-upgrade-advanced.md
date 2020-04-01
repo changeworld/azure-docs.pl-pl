@@ -3,12 +3,12 @@ title: Zaawansowane tematy uaktualniania aplikacji
 description: W tym artykule omówiono niektóre zaawansowane tematy dotyczące uaktualniania aplikacji sieci szkieletowej usług.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 09f3fdf1f26a13c6722eb039e132256f33be38ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 182ab6dc1663e160561b8941ebf3a36b5af3d950
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845427"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422809"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Uaktualnianie aplikacji sieci szkieletowej usług: zaawansowane tematy
 
@@ -20,9 +20,9 @@ Podobnie typy usług można usunąć z aplikacji w ramach uaktualnienia. Jednak 
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>Uniknąć spadków połączeń podczas planowanego przestoju usługi bezstanowej (wersja zapoznawcza)
 
-W przypadku planowanych przestojów wystąpienia bezstanowego, takich jak uaktualnienie aplikacji/klastra lub dezaktywacja węzłów, połączenia mogą zostać przerwane z powodu usunięcia narażonego punktu końcowego po jego upadku.
+W przypadku planowanych przestojów wystąpienia bezstanowego, takich jak uaktualnienie aplikacji/klastra lub dezaktywacja węzłów, połączenia mogą zostać przerwane z powodu dziennego punktu końcowego jest usuwany po wystąpieniu ulegnie upadkowi, co powoduje wymuszone zamknięcie połączenia.
 
-Aby tego uniknąć, należy skonfigurować funkcję *RequestDrain* (wersja zapoznawcza), dodając *czas trwania opóźnienia wystąpienia* repliki w konfiguracji usługi. Gwarantuje to, że punkt końcowy anonsowany przez wystąpienie bezstanowe jest usuwany *przed* rozpoczęciem czasomierza opóźnienia do zamknięcia wystąpienia. To opóźnienie umożliwia istniejących żądań do drenażu bezpiecznie przed wystąpienie faktycznie idzie w dół. Klienci są powiadamiani o zmianie punktu końcowego przez funkcję wywołania zwrotnego, dzięki czemu mogą ponownie rozwiązać punkt końcowy i uniknąć wysyłania nowych żądań do wystąpienia w dół.
+Aby tego uniknąć, należy skonfigurować *requestdrain* (wersja zapoznawcza) funkcja, dodając *czas trwania opóźnienia zamknięcia wystąpienia* w konfiguracji usługi, aby umożliwić drenażu podczas odbierania żądań z innych usług w klastrze i używają reverse proxy lub przy użyciu interfejsu API rozpoznawania z modelu powiadomień do aktualizowania punktów końcowych. Gwarantuje to, że punkt końcowy anonsowany przez wystąpienie bezstanowe jest usuwany *przed* rozpoczęciem opóźnienia przed zamknięciem wystąpienia. To opóźnienie umożliwia istniejących żądań do drenażu bezpiecznie przed wystąpienie faktycznie idzie w dół. Klienci są powiadamiani o zmianie punktu końcowego przez funkcję wywołania zwrotnego w momencie uruchamiania opóźnienia, dzięki czemu mogą ponownie rozwiązać punkt końcowy i uniknąć wysyłania nowych żądań do wystąpienia, które przechodzi w dół.
 
 ### <a name="service-configuration"></a>Konfiguracja usługi
 
@@ -50,24 +50,8 @@ Istnieje kilka sposobów konfigurowania opóźnienia po stronie usługi.
 
 ### <a name="client-configuration"></a>Konfiguracja klientów
 
-Aby otrzymywać powiadomienia o zmianie punktu końcowego, klienci`ServiceManager_ServiceNotificationFilterMatched`mogą zarejestrować wywołanie zwrotne ( ) w ten sposób: 
-
-```csharp
-    var filterDescription = new ServiceNotificationFilterDescription
-    {
-        Name = new Uri(serviceName),
-        MatchNamePrefix = true
-    };
-    fbClient.ServiceManager.ServiceNotificationFilterMatched += ServiceManager_ServiceNotificationFilterMatched;
-    await fbClient.ServiceManager.RegisterServiceNotificationFilterAsync(filterDescription);
-
-private static void ServiceManager_ServiceNotificationFilterMatched(object sender, EventArgs e)
-{
-      // Resolve service to get a new endpoint list
-}
-```
-
-Powiadomienie o zmianie jest wskazanie, że punkty końcowe uległy zmianie, klient powinien ponownie rozwiązać punkty końcowe i nie używać punktów końcowych, które nie są anonsowane już, ponieważ będą one przejść w dół wkrótce.
+Aby otrzymywać powiadomienia o zmianie punktu końcowego, klienci powinni zarejestrować wywołanie zwrotne, zobacz [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription).
+Powiadomienie o zmianie jest wskazanie, że punkty końcowe uległy zmianie, klient powinien ponownie rozwiązać punkty końcowe i nie używać punktów końcowych, które nie są już anonsowane, ponieważ wkrótce slegają.
 
 ### <a name="optional-upgrade-overrides"></a>Opcjonalne zastąpienia uaktualnień
 
@@ -80,6 +64,16 @@ Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManife
 ```
 
 Czas trwania opóźnienia dotyczy tylko wywoływane wystąpienie uaktualnienia i w przeciwnym razie nie zmienia poszczególnych konfiguracji opóźnienia usługi. Na przykład można użyć tego, aby `0` określić opóźnienie w celu pominięcia wszelkich wstępnie skonfigurowanych opóźnień uaktualnienia.
+
+> [!NOTE]
+> Ustawienie opróżniania żądań nie jest honorowane dla żądań z modułu Azure Load balancer. Ustawienie nie są honorowane, jeśli usługa wywołująca używa rozwiązania opartego na reklamacji.
+>
+>
+
+> [!NOTE]
+> Tę funkcję można skonfigurować w istniejących usługach przy użyciu polecenia cmdlet Update-ServiceFabricService, jak wspomniano powyżej, gdy wersja kodu klastra jest 7.1.XXX lub wyższa.
+>
+>
 
 ## <a name="manual-upgrade-mode"></a>Tryb ręcznego uaktualniania
 

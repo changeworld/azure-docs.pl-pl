@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 79e337b411f9d115d93050ebeee346a526913d39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcdbbb325e6589669abe6cf3d25ac5191e29118b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371734"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411734"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>Samouczek: Dodawanie zasobu do szablonu ARM
 
@@ -26,7 +26,7 @@ Musisz mieć program Visual Studio Code z rozszerzeniem Narzędzia Menedżera za
 
 Aby dodać definicję konta magazynu do istniejącego szablonu, spójrz na wyróżniony JSON w poniższym przykładzie. Zamiast próbować kopiować sekcje szablonu, skopiuj cały plik i zastąp szablon jego zawartością.
 
-Zastąp **{provide-unique-name}** unikatową nazwą konta magazynu.
+Zastąp **{provide-unique-name}** (łącznie z nawiasami klamrowymi) unikatową nazwą konta magazynu.
 
 > [!IMPORTANT]
 > Nazwa konta magazynu musi być unikatowa w obrębie platformy Azure. Nazwa musi zawierać tylko małe litery lub cyfry. Nie może być dłuższy niż 24 znaki. Możesz wypróbować wzorzec nazewnictwa, taki jak używanie **store1** jako prefiksu, a następnie dodanie inicjałów i dzisiejszej daty. Na przykład używana nazwa może wyglądać jak **store1abc09092019**.
@@ -61,7 +61,7 @@ Można wdrożyć szablon, aby utworzyć konto magazynu. Nadaj wdrożeniu inną n
 
 Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie przyjęto założenie, że ustawiono **zmienną templateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -82,6 +82,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> Jeśli wdrożenie nie powiodło się, użyj przełącznika **debugowania** z poleceniem wdrażania, aby wyświetlić dzienniki debugowania.  Można również użyć pełnego **przełącznika,** aby wyświetlić pełne dzienniki debugowania.
 
 Dwa możliwe błędy wdrażania, które mogą wystąpić:
 

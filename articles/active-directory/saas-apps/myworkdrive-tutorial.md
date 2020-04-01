@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c733873a5545bb01f03abd8178ed2f371e2dd3aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 60fdd9b0a8fb272da885df97e39804a98e48de67
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74074083"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478867"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Samouczek: Integracja usługi MyWorkDrive z usługą Azure Active Directory
 
@@ -92,7 +92,7 @@ Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azu
     > 
     > Adres URL logowania:`https://yourserver.yourdomain.com/Account/Login-saml`
     > 
-    > Skontaktuj się z [zespołem pomocy technicznej MyWorkDrive,](mailto:support@myworkdrive.com) jeśli nie masz pewności, jak skonfigurować własną nazwę hosta i certyfikat SSL dla tych wartości.
+    > Jeśli nie masz pewności, jak skonfigurować własną nazwę hosta i certyfikat TLS/SSL dla tych wartości, skontaktuj się z zespołem pomocy technicznej usługi [MyWorkDrive.](mailto:support@myworkdrive.com)
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiuj, aby skopiować **adres URL metadanych federacji aplikacji** do schowka.
 

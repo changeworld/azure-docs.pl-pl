@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255433"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473933"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Lista kontrolna wydajności i skalowalności magazynu obiektów Blob
 
@@ -32,9 +32,9 @@ W tym artykule organizuje sprawdzone praktyki dotyczące wydajności do listy ko
 | &nbsp; |Cele skalowalności |[Czy duża liczba klientów uzyskujących dostęp do pojedynczego obiektu blob jednocześnie?](#multiple-clients-accessing-a-single-blob-concurrently) |
 | &nbsp; |Cele skalowalności |[Czy aplikacja pozostaje w obrębie obiektów docelowych skalowalności dla pojedynczego obiektu blob?](#bandwidth-and-operations-per-blob) |
 | &nbsp; |Partycjonowanie |[Czy twoja konwencja nazewnictwa została zaprojektowana w celu umożliwienia lepszego równoważenia obciążenia?](#partitioning) |
-| &nbsp; |Obsługa sieci |[Czy urządzenia po stronie klienta mają wystarczająco wysoką przepustowość i małe opóźnienia, aby osiągnąć wymaganą wydajność?](#throughput) |
-| &nbsp; |Obsługa sieci |[Czy urządzenia po stronie klienta mają wysokiej jakości łącze sieciowe?](#link-quality) |
-| &nbsp; |Obsługa sieci |[Czy aplikacja kliencka znajduje się w tym samym regionie co konto magazynu?](#location) |
+| &nbsp; |Networking |[Czy urządzenia po stronie klienta mają wystarczająco wysoką przepustowość i małe opóźnienia, aby osiągnąć wymaganą wydajność?](#throughput) |
+| &nbsp; |Networking |[Czy urządzenia po stronie klienta mają wysokiej jakości łącze sieciowe?](#link-quality) |
+| &nbsp; |Networking |[Czy aplikacja kliencka znajduje się w tym samym regionie co konto magazynu?](#location) |
 | &nbsp; |Bezpośredni dostęp do klienta |[Czy używasz sygnatur dostępu współdzielonego (SAS) i współużytkowania zasobów między źródłami (CORS), aby umożliwić bezpośredni dostęp do usługi Azure Storage?](#sas-and-cors) |
 | &nbsp; |Buforowanie |[Czy buforowanie danych aplikacji jest często dostępne i rzadko zmieniane?](#reading-data) |
 | &nbsp; |Buforowanie |[Czy aplikacja wsadowania aktualizacji przez buforowanie ich na kliencie, a następnie przekazywanie ich w większych zestawach?](#uploading-data-in-batches) |
@@ -42,7 +42,7 @@ W tym artykule organizuje sprawdzone praktyki dotyczące wydajności do listy ko
 | &nbsp; |Konfiguracja .NET |[Czy klient skonfigurował do używania wystarczającej liczby równoczesnych połączeń?](#increase-default-connection-limit) |
 | &nbsp; |Konfiguracja .NET |[Czy w przypadku aplikacji platformy .NET skonfigurowano program .NET do używania wystarczającej liczby wątków?](#increase-minimum-number-of-threads) |
 | &nbsp; |Równoległości prostych |[Czy upewnij się, że równoległość jest ograniczona odpowiednio, tak aby nie przeciążać możliwości klienta lub podejście do celów skalowalności?](#unbounded-parallelism) |
-| &nbsp; |Narzędzia |[Czy korzystasz z najnowszych wersji bibliotek i narzędzi klienckich dostarczonych przez firmę Microsoft?](#client-libraries-and-tools) |
+| &nbsp; |narzędzia |[Czy korzystasz z najnowszych wersji bibliotek i narzędzi klienckich dostarczonych przez firmę Microsoft?](#client-libraries-and-tools) |
 | &nbsp; |Ponowne próby |[Czy używasz zasad ponawiania próby z wykładniczym wycofywania dla błędów ograniczania przepustowości i limitów czasu?](#timeout-and-server-busy-errors) |
 | &nbsp; |Ponowne próby |[Czy aplikacja unika ponownych prób dla błędów, których nie można ponowić?](#non-retryable-errors) |
 | &nbsp; |Kopiowanie obiektów blob |[Czy kopiujesz obiekty BLOB w najbardziej efektywny sposób?](#blob-copy-apis) |
@@ -115,7 +115,7 @@ Można wykonać niektóre najlepsze rozwiązania, aby zmniejszyć częstotliwoś
   
 - Aby uzyskać więcej informacji na temat schematu partycjonowania używanego w usłudze Azure Storage, zobacz [Usługa Azure Storage: Usługa magazynu w chmurze o wysokiej dostępności z silną spójnością.](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)
 
-## <a name="networking"></a>Obsługa sieci
+## <a name="networking"></a>Networking
 
 Ograniczenia sieci fizycznej aplikacji mogą mieć znaczący wpływ na wydajność. W poniższych sekcjach opisano niektóre ograniczenia, które użytkownicy mogą napotkać.  
 
@@ -125,7 +125,7 @@ Przepustowość i jakość łącza sieciowego odgrywają ważną rolę w wydajno
 
 #### <a name="throughput"></a>Przepływność
 
-W przypadku przepustowości problemem często są możliwości klienta. Większe wystąpienia platformy Azure mają karty sieciowe o większej pojemności, więc należy rozważyć użycie większego wystąpienia lub większej liczby maszyn wirtualnych, jeśli potrzebujesz wyższych limitów sieciowych z jednego komputera. Jeśli uzyskujesz dostęp do usługi Azure Storage z aplikacji lokalnej, stosuje się tę samą regułę: poznaj możliwości sieciowe urządzenia klienckiego i łączność sieciową z lokalizacją usługi Azure Storage i ulepsz je w razie potrzeby lub zaprojektuj aplikacji do pracy w ramach swoich możliwości.
+W przypadku przepustowości problemem często są możliwości klienta. Większe wystąpienia platformy Azure mają karty sieciowe o większej pojemności, więc należy rozważyć użycie większego wystąpienia lub większej liczby maszyn wirtualnych, jeśli potrzebujesz wyższych limitów sieciowych z jednego komputera. Jeśli uzyskujesz dostęp do usługi Azure Storage z aplikacji lokalnej, stosuje się tę samą regułę: poznaj możliwości sieciowe urządzenia klienckiego i łączność sieciową z lokalizacją usługi Azure Storage i ulepsz je w razie potrzeby lub zaprojektuj aplikację do pracy w ramach ich możliwości.
 
 #### <a name="link-quality"></a>Jakość łącza
 
@@ -267,7 +267,7 @@ Aby szybko przekazać obiekty BLOB, najpierw określ, czy będziesz przesyłać 
 Aby szybko przekazać pojedynczy duży obiekt blob, aplikacja kliencka może przekazać swoje bloki lub strony równolegle, pamiętając o obiektach skalowalności dla poszczególnych obiektów blob i konta magazynu jako całości. Biblioteki klienta usługi Azure Storage obsługują przekazywanie równolegle. Na przykład można użyć następujących właściwości, aby określić liczbę równoczesnych żądań dozwolonych w .NET lub Java. Biblioteki klientów dla innych obsługiwanych języków zapewniają podobne opcje.
 
 - Dla .NET, ustaw [właściwość BlobRequestOptions.ParallelOperationThreadCount.](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)
-- W przypadku języka Java/Android wywołaj metodę [BlobRequestOptions.setConcurrentRequestCount(final Integer concurrentRequestCount).](/java/api/com.microsoft.azure.storage.blob._blob_request_options.setconcurrentrequestcount)
+- W przypadku języka Java/Android wywołaj metodę [BlobRequestOptions.setConcurrentRequestCount(final Integer concurrentRequestCount).](/java/api/com.microsoft.azure.storage.blob.blobrequestoptions.setconcurrentrequestcount)
 
 ### <a name="upload-many-blobs-quickly"></a>Szybkie przesyłanie wielu obiektów blob
 

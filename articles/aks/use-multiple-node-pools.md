@@ -4,12 +4,12 @@ description: Dowiedz się, jak tworzyć wiele pul węzłów dla klastra w usłud
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 2045cb9a175bead3abf5b53120b9fe381a17b04b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 607419787bc0bab243d6cc2b8cbaa0ec22921e87
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047727"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422314"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Tworzenie wielu pul węzłów dla klastra w usłudze Azure Kubernetes (AKS) i zarządzanie nimi
 
@@ -33,8 +33,8 @@ Podczas tworzenia klastrów AKS i zarządzania nimi obowiązują następujące o
 * Klaster AKS musi używać standardowego modułu równoważenia obciążenia jednostki SKU do używania wielu pul węzłów, funkcja nie jest obsługiwana w przypadku podstawowych modułów równoważenia obciążenia jednostki SKU.
 * Klaster AKS musi używać zestawów skalowania maszyny wirtualnej dla węzłów.
 * Nazwa puli węzłów może zawierać tylko małe litery alfanumeryczne i musi zaczynać się od małych liter. W przypadku pul węzłów systemu Linux długość musi wynosić od 1 do 12 znaków, w przypadku puli węzłów systemu Windows długość musi wynosić od 1 do 6 znaków.
-* Wszystkie pule węzłów muszą znajdować się w tej samej sieci wirtualnej i podsieci.
-* Podczas tworzenia wielu pul węzłów w czasie tworzenia klastra wszystkie wersje kubernetes używane przez pule węzłów muszą być zgodne z wersją ustawioną dla płaszczyzny sterowania. Tę wersję można zaktualizować po zainicjowaniu obsługi administracyjnej klastra przy użyciu operacji puli na węzeł.
+* Wszystkie pule węzłów muszą znajdować się w tej samej sieci wirtualnej.
+* Podczas tworzenia wielu pul węzłów w czasie tworzenia klastra wszystkie wersje kubernetes używane przez pule węzłów muszą być zgodne z wersją ustawioną dla płaszczyzny sterowania. Można to zaktualizować po zainicjowaniu obsługi administracyjnej klastra przy użyciu operacji puli na węzeł.
 
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
 
@@ -120,6 +120,29 @@ Poniższe przykładowe dane wyjściowe pokazują, że *mynodepool* został pomy�
 
 > [!TIP]
 > Jeśli podczas dodawania puli węzłów nie określono rozmiaru *VmSize,* domyślny rozmiar jest *Standard_DS2_v3* dla pul węzłów systemu Windows i *Standard_DS2_v2* dla pul węzłów systemu Linux. Jeśli nie *OrchestratorVersion* jest określony, domyślnie do tej samej wersji co płaszczyzna sterowania.
+
+### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>Dodawanie puli węzłów z unikatową podsiecią (wersja zapoznawcza)
+
+Obciążenie może wymagać podziału węzłów klastra na oddzielne pule dla izolacji logicznej. Ta izolacja może być obsługiwana za pomocą oddzielnych podsieci dedykowanych do każdej puli węzłów w klastrze. Może to rozwiązać wymagania, takie jak posiadanie nieciągłej przestrzeni adresowej sieci wirtualnej do podziału między pulami węzłów.
+
+#### <a name="limitations"></a>Ograniczenia
+
+* Wszystkie podsieci przypisane do węzłów muszą należeć do tej samej sieci wirtualnej.
+* Zasobniki systemu muszą mieć dostęp do wszystkich węzłów w klastrze, aby zapewnić krytyczne funkcje, takie jak rozpoznawanie DNS za pośrednictwem coreDNS.
+* Przypisanie unikatowej podsieci na pulę węzłów jest ograniczone do usługi Azure CNI podczas podglądu.
+* Korzystanie z zasad sieciowych z unikatową pulą podsieci na węzeł nie jest obsługiwane podczas podglądu.
+
+Aby utworzyć pulę węzłów z dedykowaną podsiecią, przekaż identyfikator zasobu podsieci jako dodatkowy parametr podczas tworzenia puli węzłów.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name mynodepool \
+    --node-count 3 \
+    --kubernetes-version 1.15.5
+    --vnet-subnet-id <YOUR_SUBNET_RESOURCE_ID>
+```
 
 ## <a name="upgrade-a-node-pool"></a>Uaktualnianie puli węzłów
 
@@ -695,18 +718,22 @@ az group deployment create \
 
 Aktualizacja klastra usługi AKS może potrwać kilka minut w zależności od ustawień puli węzłów i operacji zdefiniowanych w szablonie Menedżera zasobów.
 
-## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Przypisywanie publicznego adresu IP na węzeł w puli węzłów
+## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>Przypisywanie publicznego adresu IP na węzeł dla puli węzłów (wersja zapoznawcza)
 
 > [!WARNING]
 > Podczas podglądu przypisywania publicznego adresu IP na węzeł nie można go używać z *jednostką SKU standardowego modułu równoważenia obciążenia w utoka* z powodu możliwych reguł modułu równoważenia obciążenia, które są sprzeczne z inicjowania obsługi administracyjnej maszyny Wirtualnej. W wyniku tego ograniczenia pule agentów systemu Windows nie są obsługiwane za pomocą tej funkcji w wersji zapoznawczej. W wersji zapoznawczej należy użyć *jednostki SKU podstawowego modułu równoważenia obciążenia,* jeśli konieczne jest przypisanie publicznego adresu IP na węzeł.
 
-Węzły AKS nie wymagają własnych publicznych adresów IP do komunikacji. Jednak niektóre scenariusze mogą wymagać węzłów w puli węzłów, aby mieć własne publiczne adresy IP. Przykładem jest gra, gdzie konsola musi nawiązać bezpośrednie połączenie z maszyną wirtualną w chmurze, aby zminimalizować przeskoki. Ten scenariusz można osiągnąć, rejestrując się dla oddzielnej funkcji w wersji zapoznawczej Node Public IP (wersja zapoznawcza).
+Węzły AKS nie wymagają własnych publicznych adresów IP do komunikacji. Jednak scenariusze mogą wymagać węzłów w puli węzłów do odbierania własnych dedykowanych publicznych adresów IP. Typowy scenariusz dotyczy obciążeń związanych z grami, w których konsola musi nawiązać bezpośrednie połączenie z maszyną wirtualną w chmurze, aby zminimalizować przeskoki. Ten scenariusz można osiągnąć w urzędzie AKS, rejestrując się w celu wyświetlenia funkcji w wersji zapoznawczej, Node Public IP (wersja zapoznawcza).
+
+Zarejestruj się dla funkcji publiczny adres IP węzła, wydając następujące polecenie interfejsu wiersza polecenia platformy Azure.
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Po pomyślnej rejestracji wdrożyć szablon usługi Azure [above](#manage-node-pools-using-a-resource-manager-template) Resource Manager zgodnie z `enableNodePublicIP` tymi samymi instrukcjami, jak powyżej i dodać właściwość wartości logicznej do agentpoolprofiles. Ustaw wartość `true` jako domyślnie jest `false` ustawiona tak, jakby nie została określona. Ta właściwość jest właściwością tylko do tworzenia i wymaga minimalnej wersji interfejsu API 2019-06-01. Można to zastosować zarówno do pul węzłów systemu Linux, jak i Windows.
+Po pomyślnej rejestracji wdrożyć szablon usługi Azure [above](#manage-node-pools-using-a-resource-manager-template) Resource Manager zgodnie z `enableNodePublicIP` tymi samymi instrukcjami, jak powyżej i dodać właściwość logiczną do agentpoolprofiles. Ustaw wartość `true` jako domyślnie jest `false` ustawiona tak, jakby nie została określona. 
+
+Ta właściwość jest właściwością tylko do tworzenia i wymaga minimalnej wersji interfejsu API 2019-06-01. Można to zastosować zarówno do pul węzłów systemu Linux, jak i Windows.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

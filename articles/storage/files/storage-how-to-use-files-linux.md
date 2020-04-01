@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2dc78c25c2cf63a510b9451c8d694795cd8a91eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72264755d5f0379f0ffb07852f48885126a36898
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060944"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411603"
 ---
 # <a name="use-azure-files-with-linux"></a>Używanie usługi Azure Files z systemem Linux
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure mogą być montowane w dystrybucjach systemu Linux przy użyciu [klienta jądra SMB](https://wiki.samba.org/index.php/LinuxCIFS). W tym artykule przedstawiono dwa sposoby instalowania `mount` udziału plików platformy Azure: na `/etc/fstab`żądanie za pomocą polecenia i przy rozruchu, tworząc wpis w programie .
@@ -194,10 +194,57 @@ Po zakończeniu korzystania z udziału plików platformy `sudo umount $mntPath` 
     > [!Note]  
     > Powyższe mocowanie polecenia montuje się z SMB 3.0. Jeśli twoja dystrybucja systemu Linux nie obsługuje SMB 3.0 z szyfrowaniem lub jeśli obsługuje tylko SMB 2.1, można zainstalować tylko z maszyny Wirtualnej platformy Azure w tym samym regionie co konto magazynu. Aby zainstalować udział plików platformy Azure w dystrybucji systemu Linux, która nie obsługuje SMB 3.0 z szyfrowaniem, należy [wyłączyć szyfrowanie podczas przesyłania dla konta magazynu](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
+### <a name="using-autofs-to-automatically-mount-the-azure-file-shares"></a>Automatyczne instalowanie udziałów plików platformy Azure za pomocą autofs
+
+1. **Upewnij się, że pakiet autofs jest zainstalowany.**  
+
+    Pakiet autofs można zainstalować za pomocą menedżera pakietów w wybranej dystrybucji Linuksa. 
+
+    W dystrybucjach opartych na **Ubuntu** `apt` i **Debianie** użyj menedżera pakietów:
+    ```bash
+    sudo apt update
+    sudo apt install autofs
+    ```
+    Na **Fedorze**, **Red Hat Enterprise Linux 8 +** i **CentOS 8 +** użyj menedżera `dnf` pakietów:
+    ```bash
+    sudo dnf install autofs
+    ```
+    W starszych wersjach **red hat enterprise** `yum` linux i **centos**, użyj menedżera pakietów:
+    ```bash
+    sudo yum install autofs 
+    ```
+    Przy **openSUSE**użyj `zypper` menedżera pakietów:
+    ```bash
+    sudo zypper install autofs
+    ```
+2. **Utwórz punkt instalacji dla udziałów:**
+   ```bash
+    sudo mkdir /fileshares
+    ```
+3. **Kreta nowy niestandardowy plik konfiguracyjny autofs**
+    ```bash
+    sudo vi /etc/auto.fileshares
+    ```
+4. **Dodaj następujące wpisy do /etc/auto.fileshares**
+   ```bash
+   echo "$fileShareName -fstype=cifs,credentials=$smbCredentialFile :$smbPath"" > /etc/auto.fileshares
+   ```
+5. **Dodaj następujący wpis do /etc/auto.master**
+   ```bash
+   /fileshares /etc/auto.fileshares --timeout=60
+   ```
+6. **Ponowne uruchamianie autofs**
+    ```bash
+    sudo systemctl restart autofs
+    ```
+7.  **Uzyskiwanie dostępu do folderu przeznaczonego dla udziału**
+    ```bash
+    cd /fileshares/$filesharename
+    ```
 ## <a name="securing-linux"></a>Zabezpieczanie linuksa
 Aby zainstalować udział plików platformy Azure w systemie Linux, port 445 musi być dostępny. Wiele organizacji blokuje port 445 z powodu zagrożeń bezpieczeństwa związanych z protokołem SMB 1. SMB 1, znany również jako CIFS (Common Internet File System), jest starszy protokół systemu plików zawarte z wielu dystrybucji Linuksa. Protokół SMB 1 jest nieaktualny, nieefektywny i, co najważniejsze, niezabezpieczony. Dobrą wiadomością jest to, że usługa Azure Files nie obsługuje SMB 1, a począwszy od jądra Linuksa w wersji 4.18, Linux umożliwia wyłączenie SMB 1. Zawsze [zalecamy](https://aka.ms/stopusingsmb1) wyłączenie SMB 1 na klientach systemu Linux przed użyciem udziałów plików SMB w produkcji.
 
-Począwszy od jądra Linuksa 4.18, `cifs` moduł jądra SMB, zwany ze względu na starsze, ujawnia nowy `disable_legacy_dialects`parametr modułu (często określany jako *parm* przez różne zewnętrzne dokumenty), zwany . Chociaż wprowadzono jądro Linuksa 4.18, niektórzy dostawcy backported tej zmiany do starszych jąder, które obsługują. Dla wygody w poniższej tabeli opisano dostępność tego parametru modułu w typowych dystrybucjach systemu Linux.
+Począwszy od jądra Linuksa 4.18, `cifs` moduł jądra SMB, zwany ze względu na starsze, ujawnia nowy `disable_legacy_dialects`parametr modułu (często określany jako *parm* przez różne zewnętrzne dokumentacje), zwany . Chociaż wprowadzono jądro Linuksa 4.18, niektórzy dostawcy backported tej zmiany do starszych jąder, które obsługują. Dla wygody w poniższej tabeli opisano dostępność tego parametru modułu w typowych dystrybucjach systemu Linux.
 
 | Dystrybucja | Można wyłączyć SMB 1 |
 |--------------|-------------------|
@@ -281,6 +328,6 @@ Grupa użytkowników usługi Azure Files for Linux udostępnia forum do udostęp
 ## <a name="next-steps"></a>Następne kroki
 Poniższe linki umożliwiają uzyskanie dodatkowych informacji na temat usługi Azure Files:
 
-* [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)
-* [Najczęściej zadawane pytania](../storage-files-faq.md)
+* [Planowanie wdrażania usługi Pliki Azure](storage-files-planning.md)
+* [Często zadawane pytania](../storage-files-faq.md)
 * [Rozwiązywanie problemów](storage-troubleshoot-linux-file-connection-problems.md)

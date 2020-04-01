@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 63b947a27c3aa24b42252bf33febd031f7caefbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46994413ba765e18a826eebfe85a38bb65efc749
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282694"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435617"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Przewodnik planowania i obsługi usługi Azure Security Center
 Ten przewodnik jest przeznaczony dla specjalistów technologii informatycznych,architektów IT, analityków zabezpieczeń informacji i administratorów chmury planujących korzystanie z usługi Azure Security Center.
@@ -131,15 +131,15 @@ Usługa Security Center automatycznie tworzy domyślne zasady zabezpieczeń dla 
 Przed skonfigurowaniem zasad zabezpieczeń przejrzyj poszczególne [zalecenia dotyczące zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-recommendations) i określ, czy te zasady są właściwe dla różnych subskrypcji i grup zasobów. Ważne jest również, aby zrozumieć, jakie działania powinny zostać podjęte w celu wypełnienia zaleceń dotyczących zabezpieczeń oraz kto w organizacji będzie odpowiedzialny za monitorowanie pod kątem nowych zaleceń i podejmowanie wymaganych działań.
 
 ## <a name="data-collection-and-storage"></a>Zbieranie i przechowywanie danych
-Usługa Azure Security Center używa agenta monitorowania firmy Microsoft — jest to ten sam agent używany przez usługę Azure Monitor — do zbierania danych zabezpieczeń z maszyn wirtualnych. [Dane zebrane](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) od tego agenta będą przechowywane w obszarze roboczym usługi Log Analytics.
+Usługa Azure Security Center używa agenta usługi Log Analytics — jest to ten sam agent używany przez usługę Azure Monitor — do zbierania danych zabezpieczeń z maszyn wirtualnych. [Dane zebrane](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) od tego agenta będą przechowywane w obszarze roboczym usługi Log Analytics.
 
 ### <a name="agent"></a>Agent
 
-Po włączeniu automatycznej aprowizacji w zasadach zabezpieczeń program Microsoft Monitoring Agent (dla systemu [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) lub [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)) zostanie automatycznie zainstalowany na wszystkich obsługiwanych maszynach wirtualnych platformy Azure. Program ten będzie również automatycznie instalowany na wszystkich nowych maszynach wirtualnych. Jeśli na maszynie wirtualnej lub komputerze jest już zainstalowany program Microsoft Monitoring Agent, usługa Azure Security Center będzie korzystać z zainstalowanego agenta. Proces agenta został tak zaprojektowany, aby był nieinwazyjny i miał minimalny wpływ na wydajność maszyny wirtualnej.
+Gdy automatyczne inicjowanie obsługi administracyjnej jest włączone w zasadach zabezpieczeń, agent usługi Log Analytics (dla [systemu Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) lub [Linux)](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)jest zainstalowany na wszystkich obsługiwanych maszynach wirtualnych platformy Azure i wszystkich nowych, które są tworzone. Jeśli maszyna wirtualna lub komputer ma już zainstalowanego agenta usługi Log Analytics, usługa Azure Security Center wykorzysta bieżącego zainstalowanego agenta. Proces agenta został tak zaprojektowany, aby był nieinwazyjny i miał minimalny wpływ na wydajność maszyny wirtualnej.
 
-Program Microsoft Monitoring Agent dla systemu Windows wymaga użycia portu TCP 443. Przeczytaj [artykuł na temat rozwiązywania problemów](security-center-troubleshooting-guide.md), aby uzyskać więcej informacji.
+Agent analizy dzienników dla systemu Windows wymaga użycia portu TCP 443. Przeczytaj [artykuł na temat rozwiązywania problemów](security-center-troubleshooting-guide.md), aby uzyskać więcej informacji.
 
-Jeśli w dowolnym momencie chcesz wyłączyć funkcję zbierania danych, możesz to zrobić w zasadach zabezpieczeń. Jednak ponieważ agent monitorowania firmy Microsoft może być używany przez inne usługi zarządzania i monitorowania platformy Azure, agent nie zostanie automatycznie odinstalowany po wyłączeniu zbierania danych w usłudze Security Center. W razie potrzeby można odinstalować agenta ręcznie.
+Jeśli w dowolnym momencie chcesz wyłączyć funkcję zbierania danych, możesz to zrobić w zasadach zabezpieczeń. Jednak ponieważ agent usługi Log Analytics może być używany przez inne usługi zarządzania i monitorowania platformy Azure, agent nie zostanie automatycznie odinstalowany po wyłączeniu zbierania danych w usłudze Security Center. W razie potrzeby można odinstalować agenta ręcznie.
 
 > [!NOTE]
 > Lista obsługiwanych maszyn wirtualnych znajduje się w artykule [Azure Security Center frequently asked questions (FAQ)](faq-vms.md) (Azure Security Center — często zadawane pytania [FAQ]).
@@ -148,7 +148,7 @@ Jeśli w dowolnym momencie chcesz wyłączyć funkcję zbierania danych, możesz
 
 Obszar roboczy to zasób platformy Azure, który służy jako kontener dla danych. Ty i inni członkowie organizacji możecie używać wielu obszarów roboczych, aby zarządzać różnymi zestawami danych zebranymi z całej infrastruktury IT lub jej części.
 
-Dane zbierane z programu Microsoft Monitoring Agent (w imieniu usługi Security Center) będą przechowywane w istniejących obszarach roboczych usługi Log Analytics skojarzonych z subskrypcją platformy Azure lub w nowych obszarach roboczych, uwzględniając lokalizację geograficzną maszyny wirtualnej.
+Dane zebrane z agenta usługi Log Analytics (w imieniu usługi Azure Security Center) będą przechowywane w istniejących obszarach roboczych usługi Log Analytics skojarzonych z subskrypcją platformy Azure lub w nowych obszarach roboczych, z uwzględnieniem obszaru geograficznego maszyny Wirtualnej.
 
 W witrynie Azure Portal można wyświetlić listę swoich obszarów roboczych usługi Log Analytics, w tym wszystkich utworzonych przez usługę Azure Security Center. W przypadku nowych obszarów roboczych zostanie utworzona powiązana grupa zasobów. W obu przypadkach stosowana będzie następująca konwencja nazewnictwa:
 

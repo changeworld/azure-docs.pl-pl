@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: c51469997af23be7a5e1b88677ecadb37e10ac64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7e17f7c4493560bd6118b8d4837fd795a6ab0c8
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244539"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422857"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopiowanie danych z programu Netezza przy użyciu usługi Azure Data Factory
 
@@ -43,7 +43,7 @@ Usługa Azure Data Factory udostępnia wbudowany sterownik umożliwiający łąc
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 Można utworzyć potok, który używa działania kopiowania przy użyciu .NET SDK, Zestaw SDK języka Python, Azure PowerShell, interfejs API REST lub szablonu usługi Azure Resource Manager. Zobacz [samouczek Działania kopiowania,](quickstart-create-data-factory-dot-net.md) aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku, który ma działanie kopiowania.
 
@@ -158,7 +158,7 @@ Aby skopiować dane z netezzy, ustaw typ **źródła** w copy activity na **Nete
 |:--- |:--- |:--- |
 | type | Właściwość **typu** źródła działania kopiowania musi być ustawiona na **NetezzaSource**. | Tak |
 | query | Użyj niestandardowej kwerendy SQL, aby odczytać dane. Przykład: `"SELECT * FROM MyTable"` | Nie (jeśli określono "nazwa tabela" w zestawie danych) |
-| partitionOptions (opcje partycji) | Określa opcje partycjonowania danych używane do ładowania danych z programu Netezza. <br>Wartości zezwalania to: **Brak** (domyślnie), **DataSlice**i **DynamicRange**.<br>Gdy opcja partycji jest włączona `None`(czyli nie), stopień równoległości równoczesnych ładowania danych z bazy [`parallelCopies`](copy-activity-performance.md#parallel-copy) danych Netezza jest kontrolowany przez ustawienie działania kopiowania. | Nie |
+| partitionOptions (opcje partycji) | Określa opcje partycjonowania danych używane do ładowania danych z programu Netezza. <br>Wartości zezwalania to: **Brak** (domyślnie), **DataSlice**i **DynamicRange**.<br>Gdy opcja partycji jest włączona `None`(czyli nie), stopień równoległości równoczesnych ładowania danych z bazy [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) danych Netezza jest kontrolowany przez ustawienie działania kopiowania. | Nie |
 | podziałY | Określ grupę ustawień partycjonowania danych. <br>Zastosuj, gdy opcja `None`partycji nie jest . | Nie |
 | partitionColumnName | Określ nazwę kolumny źródłowej **w typie liczby całkowitej,** która będzie używana przez partycjonowanie zakresu dla kopiowania równoległego. Jeśli nie zostanie określony, klucz podstawowy tabeli jest automatycznie odkrytą i używana jako kolumna partycji. <br>Zastosuj, gdy opcja `DynamicRange`partycji jest . Jeśli używasz kwerendy do pobierania danych `?AdfRangePartitionColumnName` źródłowych, należy podłączyć w klauzuli WHERE. Zobacz przykład [w kopiowanie równoległe z sekcji Netezza.](#parallel-copy-from-netezza) | Nie |
 | partitionUpperBound | Maksymalna wartość kolumny partycji do skopiowania danych. <br>Zastosuj, gdy `DynamicRange`opcja partycji jest . Jeśli używasz kwerendy do pobierania `?AdfRangePartitionUpbound` danych źródłowych, należy podłączyć w klauzuli WHERE. Na przykład zobacz [kopiowanie równoległe z Netezza](#parallel-copy-from-netezza) sekcji. | Nie |
@@ -202,7 +202,7 @@ Aby skopiować dane z netezzy, ustaw typ **źródła** w copy activity na **Nete
 
 ![Zrzut ekranu przedstawiający opcje partycji](./media/connector-netezza/connector-netezza-partition-options.png)
 
-Po włączeniu kopii podzielonej na partycje usługa Data Factory uruchamia równoległe kwerendy względem źródła Netezza w celu załadowania danych przez partycje. Stopień równoległy jest [`parallelCopies`](copy-activity-performance.md#parallel-copy) kontrolowany przez ustawienie działania kopiowania. Na przykład jeśli `parallelCopies` ustawisz cztery, data factory jednocześnie generuje i uruchamia cztery kwerendy na podstawie określonej opcji partycji i ustawień, a każda kwerenda pobiera część danych z bazy danych Netezza.
+Po włączeniu kopii podzielonej na partycje usługa Data Factory uruchamia równoległe kwerendy względem źródła Netezza w celu załadowania danych przez partycje. Stopień równoległy jest [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kontrolowany przez ustawienie działania kopiowania. Na przykład jeśli `parallelCopies` ustawisz cztery, data factory jednocześnie generuje i uruchamia cztery kwerendy na podstawie określonej opcji partycji i ustawień, a każda kwerenda pobiera część danych z bazy danych Netezza.
 
 Zaleca się włączenie kopiowania równoległego z partycjonowania danych, zwłaszcza podczas ładowania dużej ilości danych z bazy danych Netezza. Poniżej przedstawiono sugerowane konfiguracje dla różnych scenariuszy. Podczas kopiowania danych do magazynu danych opartych na plikach zaleca się zapisywanie w folderze jako wielu plików (określanie tylko nazwy folderu), w którym to przypadku wydajność jest lepsza niż zapisywanie do jednego pliku.
 

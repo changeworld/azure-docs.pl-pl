@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 25be48e9caed446be3a86a11143ce3040808065a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294308"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478968"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Zarządzanie serwerem konfiguracji odzyskiwania po awarii serwera fizycznego
 
@@ -290,8 +290,8 @@ Uaktualnij serwer w następujący sposób:
 > [!NOTE]
 > Opcja **-Force** w remove-AzSiteRecoveryFabric może być użyta do wymuszenia usunięcia/usunięcia serwera konfiguracji.
 
-## <a name="renew-ssl-certificates"></a>Odnawianie certyfikatów SSL
-Serwer konfiguracji ma wbudowany serwer sieci web, który organizuje działania usługi mobilności, serwerów przetwarzania i głównych serwerów docelowych podłączonych do niego. Serwer sieci web używa certyfikatu SSL do uwierzytelniania klientów. Certyfikat wygasa po trzech latach i może zostać odnowiony w dowolnym momencie.
+## <a name="renew-tlsssl-certificates"></a>Odnawianie certyfikatów TLS/SSL
+Serwer konfiguracji ma wbudowany serwer sieci web, który organizuje działania usługi mobilności, serwerów przetwarzania i głównych serwerów docelowych podłączonych do niego. Serwer sieci web używa certyfikatu TLS/SSL do uwierzytelniania klientów. Certyfikat wygasa po trzech latach i może zostać odnowiony w dowolnym momencie.
 
 ### <a name="check-expiry"></a>Sprawdź wygaśnięcie
 

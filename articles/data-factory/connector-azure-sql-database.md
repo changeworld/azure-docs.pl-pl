@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 52928b9a4d77a99f3d8b160713c7b4a7cade2d4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f5065a0f4a2a96a747a45f64e00e86f7990bfb8
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238767"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437793"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Kopiowanie i przekształcanie danych w bazie danych SQL usługi Azure przy użyciu usługi Azure Data Factory
 
@@ -48,7 +48,7 @@ W przypadku działania kopiowania ten łącznik bazy danych SQL platformy Azure 
 > Jeśli kopiujesz dane przy użyciu środowiska wykonawczego integracji usługi Azure Data Factory, skonfiguruj [zaporę programu Azure SQL Server,](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) aby usługi platformy Azure mogły uzyskać dostęp do serwera.
 > Jeśli kopiujesz dane przy użyciu środowiska uruchomieniowego integracji hostowanego samodzielnie, skonfiguruj zaporę programu Azure SQL Server, aby zezwoliła na odpowiedni zakres adresów IP. Ten zakres obejmuje adres IP komputera, który jest używany do łączenia się z usługą Azure SQL Database.
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -143,7 +143,7 @@ Aby użyć uwierzytelniania tokenu aplikacji usługi Azure AD opartego na usłud
 4. Udziel jednostki usługi potrzebne uprawnienia, jak zwykle w przypadku użytkowników SQL lub innych. Uruchom następujący kod. Aby uzyskać więcej opcji, zobacz [ten dokument](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
 
     ```sql
-    EXEC sp_addrolemember [role name], [your application name];
+    ALTER ROLE [role name] ADD MEMBER [your application name];
     ```
 
 5. Konfigurowanie połączonej usługi azure SQL Database w usłudze Azure Data Factory.
@@ -190,7 +190,7 @@ Aby użyć uwierzytelnienia tożsamości zarządzanej, wykonaj następujące kro
 3. Udziel tożsamości zarządzanej przez usługę Data Factory, wymaganych uprawnień, jak zwykle dla użytkowników SQL i innych osób. Uruchom następujący kod. Aby uzyskać więcej opcji, zobacz [ten dokument](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
 
     ```sql
-    EXEC sp_addrolemember [role name], [your Data Factory name];
+    ALTER ROLE [role name] ADD MEMBER [your Data Factory name];
     ```
 
 4. Konfigurowanie połączonej usługi azure SQL Database w usłudze Azure Data Factory.

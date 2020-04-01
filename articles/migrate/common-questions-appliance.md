@@ -3,12 +3,12 @@ title: Często zadawane pytania dotyczące urządzenia migracji platformy Azure
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące urządzenia migracji platformy Azure.
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 2ef7de3b31cb11a71ec9379232fc5ff1022cf666
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a08423637f255b973f52616f53172ef6e48d0804
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336969"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437610"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Urządzenie migracji platformy Azure: typowe pytania
 
@@ -94,6 +94,9 @@ Nie. Istnieje mapowanie jeden do jednego między [urządzeniem migracji platform
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Czy projekt migracji platformy Azure może mieć wiele urządzeń?
 Projekt może mieć podłączone do niego wiele urządzeń. Jednak urządzenie może być skojarzone tylko z jednym projektem. 
+
+## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Czy urządzenie/replikacja usługi Azure migrate może łączyć się z tym samym centrum vCenter?
+Tak. Do tego samego serwera vCenter można dodać zarówno urządzenie migracji platformy Azure (używane do oceny i bezagentowej migracji VMware), jak i urządzenie replikacji (używane do migracji maszyn wirtualnych opartych na agentach).
 
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Ile maszyn wirtualnych lub serwerów można odkryć za pomocą urządzenia?

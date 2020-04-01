@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: azure automation, DSC, powershell, konfiguracja żądanego stanu, zarządzanie aktualizacjami, śledzenie zmian, zapasy, elementy runbook, python, graficzny, hybrydowy
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 85a6f8dcb9f551d81a607adc9ae482f4025d804f
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 5ffe845178fffc252e95794bfb58801c9bff16a7
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366350"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411224"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Co to jest usługa Azure Arc dla serwerów (wersja zapoznawcza)
 
@@ -147,7 +147,7 @@ Agent połączonego komputera platformy Azure dla systemów Windows i Linux moż
 
 ### <a name="agent-status"></a>Stan agenta
 
-Agent podłączonego komputera wysyła zwykły komunikat pulsu do usługi co 5 minut. Jeśli nie zostanie odebrany przez 15 minut, urządzenie zostanie uznane za w trybie offline, a stan zostanie automatycznie zmieniony na **Rozłączony** w portalu. Po otrzymaniu kolejnego komunikatu pulsu od agenta Podłączonego komputera jego stan zostanie automatycznie zmieniony na **Połączony**.
+Agent podłączonego komputera wysyła zwykły komunikat pulsu do usługi co 5 minut. Jeśli usługa przestaje odbierać te komunikaty pulsu z komputera, to urządzenie jest uważane za w trybie offline i stan zostanie automatycznie zmieniony na **Rozłączony** w portalu w ciągu 15 do 30 minut. Po otrzymaniu kolejnego komunikatu pulsu od agenta Podłączonego komputera jego stan zostanie automatycznie zmieniony na **Połączony**.
 
 ## <a name="install-and-configure-agent"></a>Instalowanie i konfigurowanie agenta
 

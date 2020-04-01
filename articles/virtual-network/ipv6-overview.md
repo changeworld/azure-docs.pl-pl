@@ -1,5 +1,5 @@
 ---
-title: Omówienie usługi IPv6 dla sieci wirtualnej platformy Azure (wersja zapoznawcza)
+title: Omówienie usługi IPv6 dla sieci wirtualnej platformy Azure
 titlesuffix: Azure Virtual Network
 description: Opis IPv6 punktów końcowych IPv6 i ścieżek danych w sieci wirtualnej platformy Azure.
 services: virtual-network
@@ -10,24 +10,22 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 12/19/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9214886f468a4a052328a99289845361a059b650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03b279ead6b1f5d26ae92b63a8780a61dfd711bb
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75780083"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420567"
 ---
-# <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Co to jest IPv6 dla sieci wirtualnej platformy Azure? (Wersja zapoznawcza)
+# <a name="what-is-ipv6-for-azure-virtual-network"></a>Co to jest IPv6 dla sieci wirtualnej platformy Azure?
 
 IPv6 dla sieci wirtualnej platformy Azure (VNet) umożliwia hostowania aplikacji na platformie Azure z łącznością IPv6 i IPv4 zarówno w sieci wirtualnej, jak i do i z Internetu. Ze względu na wyczerpanie publicznych adresów IPv4, nowe sieci mobilności i Internetu rzeczy (IoT) są często budowane na IPv6. Nawet od dawna isp i sieci komórkowe są przekształcane w IPv6. Usługi iPv4 mogą znaleźć się w rzeczywistej niekorzystnej sytuacji zarówno na istniejących, jak i wschodzących rynkach. Łączność Z dwoma stosami IPv4/IPv6 umożliwia usługom hostowanym na platformie Azure przechodzenie przez tę lukę technologiczną dzięki dostępnym na całym świecie usługom z dwoma stosami, które łatwo łączą się zarówno z istniejącymi urządzeniami i sieciami IPv4, jak i tymi nowymi urządzeniami i sieciami IPv6.
 
 Oryginalna łączność IPv6 platformy Azure ułatwia zapewnienie łączności internetowej z dwoma stosami (IPv4/IPv6) dla aplikacji hostowanych na platformie Azure. Umożliwia proste wdrażanie maszyn wirtualnych z łącznością IPv6 z równoważeniem obciążenia dla połączeń inbound i wychodzących. Ta funkcja jest nadal dostępna, a więcej informacji można znaleźć [tutaj.](../load-balancer/load-balancer-ipv6-overview.md)
 Protokół IPv6 dla sieci wirtualnej platformy Azure jest znacznie bardziej funkcjonalny, umożliwiając wdrożenie pełnych architektur rozwiązań IPv6 na platformie Azure.
 
-> [!Important]
-> IPv6 dla usługi Azure Virtual Network jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Na poniższym diagramie przedstawiono proste wdrożenie podwójnego stosu (IPv4/IPv6) na platformie Azure:
 
@@ -74,7 +72,7 @@ IPv6 for Azure VNET to podstawowy zestaw funkcji, który umożliwia klientom hos
 
 ## <a name="limitations"></a>Ograniczenia
 Bieżąca wersja usługi IPv6 dla sieci wirtualnej platformy Azure ma następujące ograniczenia:
-- Usługa IPv6 dla sieci wirtualnej platformy Azure (Wersja zapoznawcza) jest dostępna we wszystkich globalnych regionach platformy Azure, ale tylko w globalnej platformie Azure — jeszcze nie w chmurach rządowych.
+- Usługa Wirtualna IPv6 dla platformy Azure jest dostępna we wszystkich globalnych regionach platformy Azure, ale tylko w globalnej platformie Azure — nie jest jeszcze dostępna w chmurach rządowych.
 - Bramy usługi ExpressRoute i VPN nie mogą być używane w sieci wirtualnej z włączoną funkcją Protokołu IPv6, bezpośrednio lub w równorzędnie z "UseRemoteGateway". 
 - Platforma Azure (AKS itp.) nie obsługuje komunikacji IPv6 dla kontenerów.  
 

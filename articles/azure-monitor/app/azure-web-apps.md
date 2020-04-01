@@ -3,12 +3,12 @@ title: Monitorowanie wydajności usług aplikacji platformy Azure | Dokumenty fi
 description: Monitorowanie wydajności aplikacji dla usług aplikacji platformy Azure. Czas ładowania wykresu i odpowiedzi, informacje o zależnościach i ustawianie alertów dotyczących wydajności.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 2ec503829d3e6edd7b2b6f6b36314db8a205a8cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2134e059a446c18108e8dd16bcc74504b42b15a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297606"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437189"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorowanie wydajności usługi Azure App Service
 
@@ -28,7 +28,7 @@ Istnieją dwa sposoby włączania monitorowania aplikacji dla aplikacji hostowan
 
     * Takie podejście jest znacznie bardziej konfigurowalne, ale wymaga [dodania zależności od pakietów NuGet SDK SDK aplikacji.](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) Ta metoda oznacza również, że musisz samodzielnie zarządzać aktualizacjami do najnowszej wersji pakietów.
 
-    * Jeśli musisz wykonać niestandardowe wywołania interfejsu API do śledzenia zdarzeń/zależności nie przechwycone domyślnie z monitorowania opartego na agentach, należy użyć tej metody. Zapoznaj się z [interfejsem API dla zdarzeń niestandardowych i metryki artykuł,](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) aby dowiedzieć się więcej.
+    * Jeśli musisz wykonać niestandardowe wywołania interfejsu API do śledzenia zdarzeń/zależności nie przechwycone domyślnie z monitorowania opartego na agentach, należy użyć tej metody. Zapoznaj się z [interfejsem API dla zdarzeń niestandardowych i metryki artykuł,](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) aby dowiedzieć się więcej. Jest to również obecnie jedyna obsługiwana opcja dla obciążeń opartych na systemie Linux.
 
 > [!NOTE]
 > Jeśli zostanie wykryte zarówno monitorowanie oparte na agentach, jak i ręczne instrumentamencie oparte na zestawie SDK, honorowane będą tylko ustawienia instrumentacji ręcznej. Ma to zapobiec wysyłaniu zduplikowanych danych. Aby dowiedzieć się więcej na ten temat, zapoznaj się z [poniższą sekcją rozwiązywania problemów.](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)

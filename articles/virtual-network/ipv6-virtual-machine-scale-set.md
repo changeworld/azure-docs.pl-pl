@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/29/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: b90910614bcd86a54198b1a0961a3378427ea87e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a751fa193c8dd530707f790af0292d536a6f47d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73164993"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420456"
 ---
-# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure-preview"></a>Wdrażanie zestawów skalowania maszyny wirtualnej z ipv6 na platformie Azure (wersja zapoznawcza)
+# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>Wdrażanie zestawów skalowania maszyn wirtualnych z ipv6 na platformie Azure
 
 W tym artykule pokazano, jak wdrożyć zestaw skalowania maszyny wirtualnej z dwoma stosami (IPv4 + IPv6) z podwójnym modułem równoważenia obciążenia zewnętrznego stosu w sieci wirtualnej platformy Azure. Proces tworzenia zestawu skalowania maszyny wirtualnej obsługującej iPv6 jest prawie identyczny z procesem tworzenia poszczególnych maszyn wirtualnych opisanych [w tym miejscu.](ipv6-configure-standard-load-balancer-template-json.md) Kroki, które są podobne do tych opisanych dla poszczególnych maszyn wirtualnych:
-1.  Tworzenie publicznych usług IPv4 i IPv6.
-2.  Utwórz moduł równoważenia obciążenia z dwoma stosami.  
-3.  Tworzenie reguł sieciowej grupy zabezpieczeń (NSG).  
+1.    Tworzenie publicznych usług IPv4 i IPv6.
+2.    Utwórz moduł równoważenia obciążenia z dwoma stosami.  
+3.    Tworzenie reguł sieciowej grupy zabezpieczeń (NSG).  
 
 Jedynym krokiem, który różni się od poszczególnych maszyn wirtualnych jest utworzenie konfiguracji interfejsu sieciowego (NIC), który używa zasobu zestawu skalowania maszyny wirtualnej: networkProfile/networkInterfaceConfigurations. Struktura JSON jest podobna do obiektu Microsoft.Network/networkInterfaces używanego dla poszczególnych maszyn wirtualnych z dodatkiem ustawiania karty sieciowej i konfiguracji IpConfiguration IPv4 jako interfejsu podstawowego przy użyciu **atrybutu "primary": true,** jak pokazano w poniższym przykładzie:
 

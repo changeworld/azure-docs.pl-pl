@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Peakon | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Peakon.
+title: 'Samouczek: Integracja usługi Azure Active Directory z peakonem | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a Peakon.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: b093a26848701254ad674081037c266f1fb012b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094722"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Peakon
+# <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Samouczek: Integracja usługi Azure Active Directory z peakonem
 
-W tym samouczku dowiesz się, jak zintegrować Peakon w usłudze Azure Active Directory (Azure AD).
-Integrowanie Peakon z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować Peakon z usługą Azure Active Directory (Azure AD).
+Integracja Peakon z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Peakon.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do Peakon (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Można kontrolować w usłudze Azure AD, który ma dostęp do Peakon.
+* Można włączyć użytkowników, aby automatycznie zalogować się do Peakon (logowanie jednokrotne) z ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Peakon, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z Peakon, potrzebujesz następujących elementów:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Peakon logowanie jednokrotne włączone subskrypcji
+* Subskrypcja z obsługą logowania jednokrotnego Peakon
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje Peakon **SP** i **tożsamości** jednokrotne logowanie inicjowane przez
+* Peakon obsługuje **sp** i **IDP** zainicjowane SSO
 
 ## <a name="adding-peakon-from-the-gallery"></a>Dodawanie Peakon z galerii
 
-Aby skonfigurować integrację Peakon w usłudze Azure AD, należy dodać Peakon z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację Peakon z usługą Azure AD, należy dodać Peakon z galerii do listy zarządzanych aplikacji SaaS.
 
 **Aby dodać Peakon z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -61,37 +61,37 @@ Aby skonfigurować integrację Peakon w usłudze Azure AD, należy dodać Peakon
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Peakon**, wybierz opcję **Peakon** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Peakon**, wybierz **Peakon** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
      ![Peakon na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Peakon w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Peakon musi zostać ustanowione.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego z Peakon na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w Peakon.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Peakon, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą Peakon, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie Peakon logowania jednokrotnego](#configure-peakon-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Peakon](#create-peakon-test-user)**  — aby odpowiednikiem Britta Simon w Peakon połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie jednokrotne Peakon](#configure-peakon-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego Peakon](#create-peakon-test-user)** — aby mieć odpowiednik Britta Simon w Peakon, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z Peakon, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednookrotne usługi Azure AD za pomocą peakonu, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Peakon** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie integracji aplikacji **Peakon** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -101,28 +101,28 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Peakon, wykonaj nas
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
+4. W sekcji **Podstawowa konfiguracja SAML,** jeśli chcesz skonfigurować aplikację w trybie inicjowanym **przez IDP,** wykonaj następujące czynności:
 
-    ![Peakon domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+    ![Informacje o logach jednokrotnych w domenie Peakon i adresach URL](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://app.peakon.com/saml/<companyid>/metadata`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL przy użyciu następującego wzorca:`https://app.peakon.com/saml/<companyid>/metadata`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://app.peakon.com/saml/<companyid>/assert`
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+5. Kliknij **pozycję Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowanym w sp: **SP**
 
-    ![Peakon domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
+    ![Informacje o logach jednokrotnych w domenie Peakon i adresach URL](common/metadata-upload-additional-signon.png)
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://app.peakon.com/login`
+    W polu **tekstowym "Podpisywanie adresu URL"** wpisz adres URL:`https://app.peakon.com/login`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adres URL odpowiedzi, które zostało wyjaśnione w dalszej części tego samouczka. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości za pomocą rzeczywistego adresu URL identyfikatora i odpowiedzi, który został wyjaśniony w dalszej części samouczka. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (nieprzetworzony)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/certificateraw.png)
+    ![Link do pobierania certyfikatu](common/certificateraw.png)
 
-7. Na **Konfigurowanie Peakon** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+7. W sekcji **Konfigurowanie Peakon** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -130,39 +130,39 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Peakon, wykonaj nas
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-peakon-single-sign-on"></a>Konfigurowanie Peakon logowanie jednokrotne
+### <a name="configure-peakon-single-sign-on"></a>Konfigurowanie rejestracji jednokrotnej Peakon
 
-1. W oknie przeglądarki internetowej innej Zaloguj się w Peakon jako Administrator.
+1. W innym oknie przeglądarki internetowej zaloguj się do Peakon jako administrator.
 
-2. Na pasku menu w lewej części strony kliknij **konfiguracji**, a następnie przejdź do **integracje**.
+2. Na pasku menu po lewej stronie kliknij pozycję **Konfiguracja,** a następnie przejdź do **pozycji Integracje**.
 
-    ![Konfiguracji](./media/peakon-tutorial/tutorial_peakon_config.png)
+    ![The Config](./media/peakon-tutorial/tutorial_peakon_config.png)
 
-3. Na **integracje** kliknij na **logowania jednokrotnego**.
+3. Na stronie **Integracje** kliknij **opcję Logowanie jednokrotne**.
 
-    ![Pojedynczej precyzji](./media/peakon-tutorial/tutorial_peakon_single.png)
+    ![Singiel](./media/peakon-tutorial/tutorial_peakon_single.png)
 
-4. W obszarze **logowania jednokrotnego** sekcji, kliknij pozycję **Włącz**.
+4. W sekcji **Logowanie jednokrotne** kliknij pozycję **Włącz**.
 
-    ![Włącz](./media/peakon-tutorial/tutorial_peakon_enable.png)
+    ![Włączenie](./media/peakon-tutorial/tutorial_peakon_enable.png)
 
-5. Na **logowanie jednokrotne dla pracowników za pośrednictwem protokołu SAML** sekcji, wykonaj następujące czynności:
+5. W sekcji **Logowanie jednokrotne dla pracowników korzystających z saml** należy wykonać następujące kroki:
 
     ![Saml](./media/peakon-tutorial/tutorial_peakon_saml.png)
 
-    a. W **adres URL logowania do logowania jednokrotnego** pola tekstowego, Wklej wartość **adres URL logowania**, który skopiowano z witryny Azure portal.
+    a. In the **SSO Login URL** textbox, paste the value of **Login URL**, which you have copied from the Azure portal.
 
-    b. W **adres URL wylogowania logowania jednokrotnego** pola tekstowego, Wklej wartość **adres URL wylogowania**, który skopiowano z witryny Azure portal.
+    b. W polu tekstowym **adresu URL logowania** logowania logowania wklej wartość adresu URL **wylogowania,** który został skopiowany z witryny Azure portal.
 
-    c. Kliknij przycisk **Choose file** można przekazać certyfikatu, który został pobrany z witryny Azure portal, w polu certyfikatu.
+    d. Kliknij **pozycję Wybierz plik,** aby przekazać certyfikat pobrany z witryny Azure portal do pola Certyfikat.
 
-    d. Kliknij przycisk **ikonę** do skopiowania **identyfikator jednostki** i Wklej **identyfikator** polu tekstowym w **podstawową konfigurację protokołu SAML** sekcji w witrynie Azure portal.
+    d. Kliknij **ikonę,** aby skopiować **identyfikator jednostki** i wkleić w obszarze tekstowym **identyfikator** w sekcji **Podstawowa konfiguracja SAML** w witrynie Azure portal.
 
-    e. Kliknij przycisk **ikonę** do skopiowania **adres URL odpowiedzi (ACS)** i Wklej **adres URL odpowiedzi** polu tekstowym w **podstawową konfigurację protokołu SAML** sekcji w witrynie Azure portal.
+    e. Kliknij **ikonę,** aby skopiować **adres URL odpowiedzi (ACS)** i wkleić w skrzynce tekstowej **Adres URL odpowiedzi** w sekcji **Podstawowa konfiguracja SAML** w witrynie Azure portal.
 
-    f. Kliknij polecenie **Zapisz**.
+    f. Kliknij **przycisk Zapisz**
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -172,7 +172,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -187,19 +187,19 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Peakon.
+W tej sekcji można włączyć Britta Simon do korzystania z azure logowania jednokrotnego, przyznając dostęp do Peakon.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Peakon**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz **pozycję Wszystkie aplikacje**, a następnie wybierz **pozycję Peakon**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Peakon**.
+2. Na liście aplikacji wybierz **peakon**.
 
-    ![Link Peakon na liście aplikacji](common/all-applications.png)
+    ![Łącze Peakon na liście Aplikacje](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -211,48 +211,48 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-peakon-test-user"></a>Tworzenie użytkownika testowego Peakon
+### <a name="create-peakon-test-user"></a>Utwórz użytkownika testowego Peakon
 
-Dla użytkowników usługi Azure AD zarejestrować się w Peakon włączeniu musi być obsługiwana w Peakon.  
-W przypadku Peakon Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD zalogować się do Peakon, muszą one być aprowidywne w Peakon.  
+W przypadku Peakon inicjowania obsługi administracyjnej jest zadanie ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
 1. Zaloguj się do witryny firmy Peakon jako administrator.
 
-2. Na pasku menu w lewej części strony kliknij **konfiguracji**, a następnie przejdź do **pracowników**.
+2. Na pasku menu po lewej stronie strony kliknij pozycję **Konfiguracja,** a następnie przejdź do **pozycji Pracownicy**.
 
     ![Pracownik](./media/peakon-tutorial/tutorial_peakon_employee.png)
 
-3. W prawej górnej części strony, kliknij polecenie **pracowników Dodaj**.
+3. W prawym górnym rogu strony kliknij pozycję **Dodaj pracownika**.
 
       ![Dodaj pracownika](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
 
-3. Na **nowego pracownika** okna dialogowego strony, wykonaj następujące czynności:
+3. Na stronie Okna dialogowego **Nowy pracownik** wykonaj następujące czynności:
 
-     ![Nowych pracowników](./media/peakon-tutorial/tutorial_peakon_create.png)
+     ![Nowy pracownik](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a. W **nazwa** polu tekstowym wpisz imię jako **Britta** i nazwiska jako **simon**.
+    a. W polach **tekstowych Nazwa** wpisz imię jako **Britta** i nazwisko jako **simon**.
 
-    b. W **E-mail** pole tekstowe, wpisz adres e-mail, takich jak **Brittasimon\@contoso.com**.
+    b. W polu **tekstowym Poczta e-mail** wpisz adres e-mail, taki jak **Brittasimon\@contoso.com**.
 
-    c. Kliknij przycisk **pracowników Utwórz**.
+    d. Kliknij **pozycję Utwórz pracownika**.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Peakon w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Peakon, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Peakon w Panelu dostępu należy automatycznie zalogować się do Peakon, dla którego skonfigurowano logującą się logującą logującą. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

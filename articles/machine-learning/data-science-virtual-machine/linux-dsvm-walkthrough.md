@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 9857de0470baa35dcc8005e1622e5e593da95751
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d15d53816d916bd28841aae39255685524faa2d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128348"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477870"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Analiza danych za pomocą maszyny wirtualnej do nauki o danych w systemie Linux na platformie Azure
 
@@ -29,7 +29,7 @@ W tym instruktażu analizujemy zestaw danych [bazy spamu.](https://archive.ics.u
 Aby można było używać systemu DSVM systemu Linux, należy mieć następujące wymagania wstępne:
 
 * **Subskrypcja platformy Azure**. Aby uzyskać subskrypcję platformy Azure, zobacz [Tworzenie bezpłatnego konta platformy Azure już dziś.](https://azure.microsoft.com/free/)
-* [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Aby uzyskać informacje dotyczące inicjowania obsługi administracyjnej maszyny wirtualnej, zobacz [Aprowizowanie maszyny wirtualnej do nauki o danych systemu Linux](linux-dsvm-intro.md).
+* [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu). Aby uzyskać informacje dotyczące inicjowania obsługi administracyjnej maszyny wirtualnej, zobacz [Aprowizowanie maszyny wirtualnej do nauki o danych systemu Linux](linux-dsvm-intro.md).
 * [**X2Go**](https://wiki.x2go.org/doku.php) zainstalowany na komputerze z otwartą sesją XFCE. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie klienta X2Go](linux-dsvm-intro.md#x2go).
 * Aby uzyskać płynniejsze przewijanie, w przeglądarce internetowej DSVM firefox, przełącz flagę `gfx.xrender.enabled` w `about:config`. [Dowiedz się więcej](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Należy również `mousewheel.enable_pixel_scrolling` `False`rozważyć ustawienie na . [Dowiedz się więcej](https://support.mozilla.org/questions/981140).
 * **Konto usługi Azure Machine Learning**. Jeśli jeszcze go nie masz, zarejestruj się, aby założyć nowe konto na [stronie głównej usługi Azure Machine Learning](https://azure.microsoft.com/free/services/machine-learning//).

@@ -1,16 +1,14 @@
 ---
 title: Macierz obsługi odzyskiwania po awarii VMware/fizycznej w usłudze Azure Site Recovery
 description: Podsumowuje obsługę odzyskiwania po awarii maszyn wirtualnych VMware i serwera fizycznego na platformie Azure przy użyciu usługi Azure Site Recovery.
-ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.author: raynew
-ms.openlocfilehash: 05e60c5b008746bbfd72dbe7a2e14b18aa563671
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4cf19f4f74ba24951efb806a9f2e3d88fcad7bc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371396"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478426"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych vmware i serwerów fizycznych na platformie Azure
 
@@ -50,10 +48,10 @@ Wolne miejsce na dysku | 600 GB miejsca na pamięć podręczną serwera przetwar
 Wolne miejsce na dysku | 600 GB miejsca na dysk retencyjny.
 System operacyjny  | Windows Server 2012 R2 lub Windows Server 2016 z pulpitem <br/><br> Jeśli planujesz użyć wbudowanego głównego obiektu docelowego tego urządzenia do powrotu po awarii, upewnij się, że wersja systemu operacyjnego jest taka sama lub wyższa niż elementy replikowane.|
 Ustawienia regionalne systemu operacyjnego | Angielski (en-us)
-[PowerCLI (WYCHOWA)](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Nie jest potrzebny do konfiguracji serwera w wersji [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) lub nowszej. 
-Role systemu Windows Server | Nie włączaj Usług domenowych Active Directory; internetowych usług informacyjnych (IIS) lub funkcji Hyper-V. 
+[PowerCLI (WYCHOWA)](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Nie jest potrzebny do konfiguracji serwera w wersji [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) lub nowszej.
+Role systemu Windows Server | Nie włączaj Usług domenowych Active Directory; internetowych usług informacyjnych (IIS) lub funkcji Hyper-V.
 Zasady grupy| - Uniemożliwić dostęp do wiersza polecenia. <br/> - Uniemożliwić dostęp do narzędzi do edycji rejestru. <br/> - Logika zaufania dla załączników plików. <br/> - Włącz wykonywanie skryptów. <br/> - [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | Upewnij się, że:<br/><br/> - Nie masz wcześniej istniejącej domyślnej strony internetowej <br/> - Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> - Włącz ustawienie [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br/> - Nie masz wcześniej istniejącej strony internetowej / aplikacji nasłuchując na porcie 443<br/>
+IIS | Upewnij się, że:<br/><br/> - Nie masz wcześniej istniejącej domyślnej strony internetowej <br/> - Włącz [uwierzytelnianie anonimowe](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br/> - Włącz ustawienie [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10))  <br/> - Nie masz wcześniej istniejącej strony internetowej / aplikacji nasłuchując na porcie 443<br/>
 Typ karty sieciowej | VMXNET3 (po wdrożeniu jako maszyna wirtualna VMware)
 Typ adresu IP | Statyczny
 Porty | 443 używany do aranżacji kanału sterującego<br/>9443 dla transportu danych
@@ -68,24 +66,24 @@ Usługa Site Recovery obsługuje replikację dowolnego obciążenia uruchomioneg
 **Składnik** | **Szczegóły**
 --- | ---
 Ustawienia komputera | Maszyny replikowane na platformę Azure muszą spełniać [wymagania platformy Azure.](#azure-vm-requirements)
-Obciążenie komputera | Usługa Site Recovery obsługuje replikację dowolnego obciążenia uruchomionego na obsługiwanym komputerze. [Dowiedz się więcej](https://aka.ms/asr_workload).
+Obciążenie komputera | Usługa Site Recovery obsługuje replikację dowolnego obciążenia uruchomionego na obsługiwanym komputerze. [Dowiedz się więcej](site-recovery-workload.md).
 Windows Server 2019 | Obsługiwane z [pakietu zbiorczego aktualizacji 34](https://support.microsoft.com/help/4490016) (wersja 9.22 usługi mobilności) i dalej.
 Windows Server 2016 64-bitowy | Obsługiwane dla Server Core, Server with Desktop Experience.
 Windows Server 2012 R2 / Windows Server 2012 | Obsługiwane.
 System Windows Server 2008 R2 z dodatkem SP1. | Obsługiwane.<br/><br/> Od wersji [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) agenta usługi mobilności, trzeba [obsługi aktualizacji stosu (SSU)](https://support.microsoft.com/help/4490628) i [aktualizacji SHA-2](https://support.microsoft.com/help/4474419) zainstalowane na komputerach z systemem Windows 2008 R2 z sp1 lub nowszym. SHA-1 nie jest obsługiwany od września 2019 r., a jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami. Dowiedz się więcej o [aktualizacji SHA-2 i wymaganiach](https://aka.ms/SHA-2KB).
-Windows Server 2008 z sp2 lub nowszym (64-bitowy/32-bitowy) |  Obsługiwane tylko dla migracji. [Dowiedz się więcej](migrate-tutorial-windows-server-2008.md).<br/><br/> Od wersji [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) agenta usługi mobilności, trzeba [obsługi aktualizacji stosu (SSU)](https://support.microsoft.com/help/4493730) i [aktualizacji SHA-2](hhttps://support.microsoft.com/help/4474419) zainstalowanych na komputerach z systemem Windows 2008 SP2. ISHA-1 nie jest obsługiwany od września 2019 r., a jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami. Dowiedz się więcej o [aktualizacji SHA-2 i wymaganiach](https://aka.ms/SHA-2KB).
+Windows Server 2008 z sp2 lub nowszym (64-bitowy/32-bitowy) |  Obsługiwane tylko dla migracji. [Dowiedz się więcej](migrate-tutorial-windows-server-2008.md).<br/><br/> Od wersji [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) agenta usługi mobilności, trzeba [obsługi aktualizacji stosu (SSU)](https://support.microsoft.com/help/4493730) i [aktualizacji SHA-2](https://support.microsoft.com/help/4474419) zainstalowanych na komputerach z systemem Windows 2008 SP2. ISHA-1 nie jest obsługiwany od września 2019 r., a jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami. Dowiedz się więcej o [aktualizacji SHA-2 i wymaganiach](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus).
 Windows 10, Windows 8.1, Windows 8 | Obsługiwane.
-Windows 7 z 64-bitowym sp1 | Obsługiwane z [pakietu zbiorczego aktualizacji 36](https://support.microsoft.com/help/4503156) (wersja 9.22 usługi mobilności) i dalej. </br></br> Od [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) agenta usługi mobilności, trzeba [obsługi aktualizacji stosu (SSU)](https://support.microsoft.com/help/4490628) i aktualizacji [SHA-2](https://support.microsoft.com/help/4474419) zainstalowanych na komputerach z systemem Windows 7 SP1.  SHA-1 nie jest obsługiwany od września 2019 r., a jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami. Dowiedz się więcej o [aktualizacji SHA-2 i wymaganiach](https://aka.ms/SHA-2KB).
+Windows 7 z 64-bitowym sp1 | Obsługiwane z [pakietu zbiorczego aktualizacji 36](https://support.microsoft.com/help/4503156) (wersja 9.22 usługi mobilności) i dalej. </br></br> Od [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) agenta usługi mobilności, trzeba [obsługi aktualizacji stosu (SSU)](https://support.microsoft.com/help/4490628) i aktualizacji [SHA-2](https://support.microsoft.com/help/4474419) zainstalowanych na komputerach z systemem Windows 7 SP1.  SHA-1 nie jest obsługiwany od września 2019 r., a jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami. Dowiedz się więcej o [aktualizacji SHA-2 i wymaganiach](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus).
 Linux | Obsługiwany jest tylko system 64-bitowy. System 32-bitowy nie jest obsługiwany.<br/><br/>Każdy serwer systemu Linux powinien mieć zainstalowane [składniki usług integracji systemu Linux (LIS).](https://www.microsoft.com/download/details.aspx?id=55106) Jest to wymagane do uruchomienia serwera na platformie Azure po przetestowaniu pracy awaryjnej/pracy awaryjnej. Jeśli brakuje składników LIS, upewnij się, że składniki zostaną zainstalowane [przed](https://www.microsoft.com/download/details.aspx?id=55106) włączeniem replikacji dla komputerów do rozruchu na platformie Azure. <br/><br/> Usługa Site Recovery organizuje przebłaję w pracy awaryjnej w celu uruchomienia serwerów systemu Linux na platformie Azure. Jednak dostawcy systemu Linux mogą ograniczyć obsługę tylko do wersji dystrybucyjnych, które nie osiągnęły końca reszty.<br/><br/> W dystrybucjach systemu Linux obsługiwane są tylko jądra akcji, które są częścią wersji/aktualizacji wersji pomocniczej dystrybucji.<br/><br/> Uaktualnianie chronionych maszyn w głównych wersjach dystrybucji systemu Linux nie jest obsługiwane. Aby uaktualnić, wyłącz replikację, uaktualnij system operacyjny, a następnie ponownie włącz replikację.<br/><br/> [Dowiedz się więcej](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) o obsłudze systemu Linux i technologii open source na platformie Azure.
 Linux Red Hat Enterprise | od 5,2 do 5,11</b><br/> od 6,1 do 6,10</b> </br> 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8.1 <br/> Serwery z systemem Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.10 nie mają wstępnie [zainstalowanych składników Usług integracji linuksa (LIS).](https://www.microsoft.com/download/details.aspx?id=55106) Upewnij się, że należy zainstalować [składniki](https://www.microsoft.com/download/details.aspx?id=55106) przed włączeniem replikacji dla maszyn do rozruchu na platformie Azure.
 Linux: CentOS | od 5,2 do 5,11</b><br/> od 6,1 do 6,10</b><br/> od 7,0 do 7,6<br/> <br/> od 8,0 do 8,1<br/><br/> Serwery z systemem CentOS 5.2-5.11 & 6.1-6.10 nie mają wstępnie [zainstalowanych składników usług integracji systemu Linux (LIS).](https://www.microsoft.com/download/details.aspx?id=55106) Upewnij się, że należy zainstalować [składniki](https://www.microsoft.com/download/details.aspx?id=55106) przed włączeniem replikacji dla maszyn do rozruchu na platformie Azure.
 Ubuntu | Serwer Ubuntu 14.04 LTS [(przegląd obsługiwanych wersji jądra)](#ubuntu-kernel-versions)<br/><br/>Serwer Ubuntu 16.04 LTS [(przegląd obsługiwanych wersji jądra)](#ubuntu-kernel-versions) </br> Serwer Ubuntu 18.04 LTS [(przegląd obsługiwanych wersji jądra)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [(recenzja obsługiwanych wersji jądra)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(przegląd obsługiwanych wersji jądra)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(przegląd obsługiwanych wersji jądra)](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 zw.<br/> Uaktualnianie zreplikowanych komputerów z dodatku SP3 dla systemu SUSE Linux Enterprise Server 11 do dodatku SP4 nie jest obsługiwane. Aby uaktualnić, należy wyłączyć replikację i ponownie włączyć po uaktualnieniu.
-Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Uruchamianie jądra zgodnego z Red Hat lub unbreakable Enterprise Kernel Release 3, 4 & 5 (UEK3, UEK4, UEK5) 
+Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Uruchamianie jądra zgodnego z Red Hat lub unbreakable Enterprise Kernel Release 3, 4 & 5 (UEK3, UEK4, UEK5)
 
 > [!Note]
-> Dla każdej z wersji systemu Windows usługa Azure Site Recovery obsługuje tylko [kompilacje kanału obsługi długoterminowej (LTSC).](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)  [Półroczne](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) wydania kanału są obecnie nieobsługiwały w tej chwili.
+> Dla każdej z wersji systemu Windows usługa Azure Site Recovery obsługuje tylko [kompilacje kanału obsługi długoterminowej (LTSC).](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)  [Półroczne](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) wydania kanału są obecnie nieobsługiwały w tej chwili.
 
 ### <a name="ubuntu-kernel-versions"></a>Wersje jądra Ubuntu
 
@@ -141,7 +139,7 @@ Parawirualizowane urządzenia pamięci masowej | Urządzenia eksportowane przez 
 Urządzenia we/wy bloków wielokanlatowych | Bez pomocy technicznej.
 Serwery fizyczne z kontrolerem pamięci masowej HP CCISS | Bez pomocy technicznej.
 Konwencja nazewnictwa punktów instalacji/instalacji | Nazwa urządzenia lub nazwa punktu instalacji powinny być unikatowe.<br/> Upewnij się, że żadne dwa urządzenia/punkty instalacji nie mają nazw z uwzględnieniem wielkości liter. Na przykład urządzenia nazewnictwa dla tej samej maszyny Wirtualnej jako *device1* i *Device1* nie jest obsługiwany.
-Katalogi | Jeśli korzystasz z wersji usługi mobilności wcześniejszej niż wersja 9.20 (wydana w [zestawie zbiorczym aktualizacji 31),](https://support.microsoft.com/help/4478871/)obowiązują następujące ograniczenia:<br/><br/> - Te katalogi (jeśli są skonfigurowane jako oddzielne partycje/systemy plików) muszą znajdować się na tym samym dysku systemu operacyjnego na serwerze źródłowym: /(root), /boot, /usr, /usr/local, /var, /etc.</br> - Katalog /boot powinien znajdować się na partycji dysku i nie być woluminem LVM.<br/><br/> Od wersji 9.20 ograniczenia te nie mają zastosowania. 
+Katalogi | Jeśli korzystasz z wersji usługi mobilności wcześniejszej niż wersja 9.20 (wydana w [zestawie zbiorczym aktualizacji 31),](https://support.microsoft.com/help/4478871/)obowiązują następujące ograniczenia:<br/><br/> - Te katalogi (jeśli są skonfigurowane jako oddzielne partycje/systemy plików) muszą znajdować się na tym samym dysku systemu operacyjnego na serwerze źródłowym: /(root), /boot, /usr, /usr/local, /var, /etc.</br> - Katalog /boot powinien znajdować się na partycji dysku i nie być woluminem LVM.<br/><br/> Od wersji 9.20 ograniczenia te nie mają zastosowania.
 Katalog rozruchowy | - Dyski rozruchowe nie mogą być w formacie partycji GPT. Jest to ograniczenie architektury platformy Azure. Dyski GPT są obsługiwane jako dyski danych.<br/><br/> Wiele dysków rozruchowych na maszynie wirtualnej nie jest obsługiwanych<br/><br/> - /boot na woluminie LVM na więcej niż jednym dysku nie jest obsługiwany.<br/> - Nie można replikować komputera bez dysku rozruchowego.
 Wymagania dotyczące wolnego miejsca| 2 GB na partycji /root <br/><br/> 250 MB w folderze instalacyjnym
 XFSv5 | Funkcje XFSv5 w systemach plików XFS, takie jak suma kontrolna metadanych, są obsługiwane (usługa mobilności w wersji 9.10).<br/> Użyj narzędzia xfs_info, aby sprawdzić superblok XFS dla partycji. Jeśli `ftype` jest ustawiona na 1, funkcje XFSv5 są w użyciu.
@@ -154,7 +152,7 @@ Btrfs | BTRFS jest obsługiwany od [pakietu zbiorczego aktualizacji 34](https://
 Ponowne rozmiary dysku na zreplikowanej maszynie wirtualnej | Obsługiwane na źródłowej maszynie wirtualnej przed przejściem w stan failover, bezpośrednio we właściwościach maszyny Wirtualnej. Nie ma potrzeby wyłączania/ponownego włączania replikacji.<br/><br/> Jeśli zmienisz źródłowej maszyny Wirtualnej po pracy awaryjnej, zmiany nie są przechwytywać.<br/><br/> Jeśli zmienisz rozmiar dysku na maszynie Wirtualnej platformy Azure po przejściu w stan failover, po zakończeniu pracy po awarii usługa Site Recovery utworzy nową maszynę wirtualną z aktualizacjami.
 Dodawanie dysku na zreplikowanej maszynie wirtualnej | Bez pomocy technicznej.<br/> Wyłącz replikację maszyny Wirtualnej, dodaj dysk, a następnie włącz ponownie replikację.
 
-## <a name="network"></a>Network (Sieć)
+## <a name="network"></a>Sieć
 
 **Składnik** | **Obsługiwane**
 --- | ---
@@ -212,7 +210,7 @@ Gość/serwer - wyklucz dysk | Tak
 Wielościeżka gościa/serwera (MPIO) | Nie
 Partycje GPT gościa/serwera | Pięć partycji są obsługiwane z [pakietu zbiorczego aktualizacji 37](https://support.microsoft.com/help/4508614/) (wersja 9.25 usługi mobilności) i począwszy od. Wcześniej wsparcie poparły cztery.
 ReFS | Elastyczny system plików jest obsługiwany przez usługę mobilności w wersji 9.23 lub nowszej
-Uruchamianie serwera gościa/serwera EFI/UEFI | - Obsługiwane dla systemów Windows Server 2012 lub nowszych, SLES 12 SP4 i RHEL 8.0 z agentem mobilności w wersji 9.30 i nowszych<br/> - Bezpieczny typ rozruchu UEFI nie jest obsługiwany. 
+Uruchamianie serwera gościa/serwera EFI/UEFI | - Obsługiwane dla systemów Windows Server 2012 lub nowszych, SLES 12 SP4 i RHEL 8.0 z agentem mobilności w wersji 9.30 i nowszych<br/> - Bezpieczny typ rozruchu UEFI nie jest obsługiwany.
 
 ## <a name="replication-channels"></a>Kanały replikacji
 
@@ -268,20 +266,20 @@ Nazwa maszyny wirtualnej | Od 1 do 63 znaków.<br/><br/> Ograniczone do liter, c
 
 ## <a name="resource-group-limits"></a>Limity grup zasobów
 
-Aby zrozumieć liczbę maszyn wirtualnych, które mogą być chronione w ramach jednej grupy zasobów, zapoznaj się z artykułem na temat [limitów subskrypcji i przydziałów](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)
+Aby zrozumieć liczbę maszyn wirtualnych, które mogą być chronione w ramach jednej grupy zasobów, zapoznaj się z artykułem na temat [limitów subskrypcji i przydziałów](/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits).
 
 ## <a name="churn-limits"></a>Limity zmian
 
-W poniższej tabeli przedstawiono limity usługi Azure Site Recovery. 
+W poniższej tabeli przedstawiono limity usługi Azure Site Recovery.
 - Limity te są oparte na naszych testach, ale nie obejmują wszystkich możliwych kombinacji we/wy aplikacji.
 - Rzeczywiste wyniki mogą różnić w zależności od kombinacji operacji we/wy aplikacji.
 - Aby uzyskać najlepsze wyniki, zdecydowanie zaleca się uruchomienie [narzędzia Planowanie wdrażania](site-recovery-deployment-planner.md)i przeprowadzenie szeroko zakrojonych testów aplikacji przy użyciu testowych testów pracy awaryjnej w celu uzyskania obrazu prawdziwej wydajności aplikacji.
 
 **Miejsce docelowe replikacji** | **Średni rozmiar źródłowych operacji we/wy na dysku** |**Średni źródłowy współczynnik zmian danych na dysku** | **Łączny współczynnik zmian danych na dysku dziennie**
 ---|---|---|---
-Standard Storage | 8 KB | 2 MB/s | 168 GB na dysk
-Dysk w warstwie Premium P10 lub P15 | 8 KB  | 2 MB/s | 168 GB na dysk
-Dysk w warstwie Premium P10 lub P15 | 16 KB | 4 MB/s |  336 GB na dysk
+Standard Storage | 8 KB    | 2 MB/s | 168 GB na dysk
+Dysk w warstwie Premium P10 lub P15 | 8 KB    | 2 MB/s | 168 GB na dysk
+Dysk w warstwie Premium P10 lub P15 | 16 KB | 4 MB/s |    336 GB na dysk
 Dysk w warstwie Premium P10 lub P15 | 32 KB lub większy | 8 MB/s | 672 GB na dysk
 Dysk w warstwie Premium P20, P30, P40 lub P50 | 8 KB    | 5 MB/s | 421 GB na dysk
 Dysk w warstwie Premium P20, P30, P40 lub P50 | 16 KB lub większy |20 MB/s | 1684 GB na dysk
@@ -310,9 +308,9 @@ Przenoszenie pamięci masowej, sieci, maszyn wirtualnych platformy Azure w ramac
 
 **Nazwa** | **Opis** | **Szczegóły**
 --- | --- | ---
-Serwer konfiguracji | Zainstalowany lokalnie.<br/> Koordynuje komunikację między lokalnymi serwerami VMware lub komputerami fizycznymi a platformą Azure. | - [Dowiedz się więcej o](vmware-physical-azure-config-process-server-overview.md) serwerze konfiguracji.<br/> - [Dowiedz się więcej o](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) uaktualnianiu do najnowszej wersji.<br/> - [Dowiedz się więcej o](vmware-azure-deploy-configuration-server.md) konfigurowaniu serwera konfiguracji. 
+Serwer konfiguracji | Zainstalowany lokalnie.<br/> Koordynuje komunikację między lokalnymi serwerami VMware lub komputerami fizycznymi a platformą Azure. | - [Dowiedz się więcej o](vmware-physical-azure-config-process-server-overview.md) serwerze konfiguracji.<br/> - [Dowiedz się więcej o](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) uaktualnianiu do najnowszej wersji.<br/> - [Dowiedz się więcej o](vmware-azure-deploy-configuration-server.md) konfigurowaniu serwera konfiguracji.
 Serwer przetwarzania | Domyślnie instalowany na serwerze konfiguracji.<br/> Odbiera dane replikacji, optymalizuje je za pomocą buforowania, kompresji i szyfrowania i wysyła je na platformę Azure.<br/> W miarę rozwoju wdrożenia można dodać dodatkowe serwery procesów do obsługi większych ilości ruchu replikacji. | - [Dowiedz się więcej o](vmware-physical-azure-config-process-server-overview.md) serwerze przetwarzania.<br/> - [Dowiedz się więcej o](vmware-azure-manage-process-server.md#upgrade-a-process-server) uaktualnianiu do najnowszej wersji.<br/> - [Dowiedz się więcej o](vmware-physical-large-deployment.md#set-up-a-process-server) konfigurowaniu serwerów procesów skalowanych w poziomie.
-Usługa Mobility Service | Zainstalowany na maszynie wirtualnej VMware lub serwerach fizycznych, które chcesz replikować.<br/> Koordynuje replikację między lokalnymi serwerami VMware/serwerami fizycznymi a platformą Azure.| - [Dowiedz się więcej o](vmware-physical-mobility-service-overview.md) usłudze Mobilności.<br/> - [Dowiedz się więcej o](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) uaktualnianiu do najnowszej wersji.<br/> 
+Usługa Mobility Service | Zainstalowany na maszynie wirtualnej VMware lub serwerach fizycznych, które chcesz replikować.<br/> Koordynuje replikację między lokalnymi serwerami VMware/serwerami fizycznymi a platformą Azure.| - [Dowiedz się więcej o](vmware-physical-mobility-service-overview.md) usłudze Mobilności.<br/> - [Dowiedz się więcej o](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) uaktualnianiu do najnowszej wersji.<br/>
 
 
 

@@ -1,32 +1,54 @@
 ---
 title: Konfigurowanie uwierzytelniania usługi Azure Active Directory
-description: Dowiedz się, jak połączyć się z bazą danych SQL, wystąpieniem zarządzanym i magazynem danych SQL przy użyciu uwierzytelniania usługi Azure Active Directory — po skonfigurowaniu usługi Azure AD.
+description: Dowiedz się, jak połączyć się z bazą danych SQL, wystąpieniem zarządzanym i usługą Azure Synapse Analytics przy użyciu uwierzytelniania usługi Azure Active Directory — po skonfigurowaniu usługi Azure AD.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: data warehouse
+ms.custom: azure-synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 01/07/2020
-ms.openlocfilehash: 881c7076d5131746c730757a07da6fb938429c38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/27/2020
+ms.openlocfilehash: 0e244ea185011bbb7d9f0facad399bb9b577bbc2
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125038"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419886"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Configure and manage Azure Active Directory authentication with SQL (Konfigurowanie uwierzytelniania w usłudze Azure Active Directory i zarządzanie nim przy użyciu języka SQL)
 
-W tym artykule pokazano, jak tworzyć i wypełniać usługę Azure AD, a następnie używać usługi Azure AD z usługą Azure [SQL Database](sql-database-technical-overview.md), [wystąpienie zarządzane](sql-database-managed-instance.md)i magazyn danych [SQL](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Aby uzyskać omówienie, zobacz [Uwierzytelnianie usługi Azure Active Directory](sql-database-aad-authentication.md).
+W tym artykule pokazano, jak tworzyć i wypełniać usługę Azure AD, a następnie używać usługi Azure AD z usługą Azure [SQL Database (SQL Database)](sql-database-technical-overview.md), [wystąpienie zarządzane (MI)](sql-database-managed-instance.md)i [usługi Azure Synapse Analytics (dawniej Usługa Azure SQL Data Warehouse).](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) Aby uzyskać omówienie, zobacz [Uwierzytelnianie usługi Azure Active Directory](sql-database-aad-authentication.md).
 
 > [!NOTE]
-> Ten artykuł dotyczy serwera SQL platformy Azure oraz baz danych SQL Database i baz danych SQL Data Warehouse utworzonych na serwerze SQL platformy Azure. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
+> Ten artykuł dotyczy serwera SQL platformy Azure oraz bazy danych SQL i usługi Azure Synapse. Dla uproszczenia bazy danych SQL jest używany podczas odwoływania się do bazy danych SQL i platformy Azure Synapse.
 
 > [!IMPORTANT]  
 > Łączenie się z programem SQL Server uruchomionym na maszynie Wirtualnej platformy Azure nie jest obsługiwane przy użyciu konta usługi Azure Active Directory. Zamiast tego użyj konta usługi Active Directory w domenie.
+
+## <a name="azure-ad-authentication-methods"></a>Metody uwierzytelniania usługi Azure AD
+
+Uwierzytelnianie usługi Azure AD obsługuje następujące metody uwierzytelniania:
+
+- Tożsamości tylko w chmurze usługi Azure AD
+- Tożsamości hybrydowe usługi Azure AD, które obsługują:
+  - Uwierzytelnianie w chmurze z dwiema opcjami w połączeniu z bezproblemowym logowaniem jednokrotnym (Logowanie jednokrotne)
+    - Uwierzytelnianie haszowe hasła usługi Azure AD
+    - Uwierzytelnianie przekazywane usługi Azure AD
+  - Uwierzytelnianie federacyjne
+
+Aby uzyskać więcej informacji na temat metod uwierzytelniania usługi Azure AD i który z nich wybrać, zobacz artykuł:
+- [Wybierz odpowiednią metodę uwierzytelniania dla rozwiązania do tożsamości hybrydowej usługi Azure Active Directory](../active-directory/hybrid/choose-ad-authn.md)
+
+Aby uzyskać więcej informacji na temat tożsamości hybrydowych usługi Azure AD, konfiguracji i synchronizacji, zobacz następujące artykuły:
+
+- Uwierzytelnianie haszowania hasła — [implementowanie synchronizacji skrótów haseł z synchronizacją usługi Azure AD Connect](../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)
+- Uwierzytelnianie przekazywane — [uwierzytelnianie przekazywane usługi Azure Active Directory](../active-directory/hybrid/how-to-connect-pta-quick-start.md)
+- Uwierzytelnianie federacyjne — [wdrażanie usług federacyjnych Active Directory na platformie Azure](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs) i [usłudze Azure AD Connect i federacji](../active-directory/hybrid/how-to-connect-fed-whatis.md)
+
+Wszystkie powyższe metody uwierzytelniania są obsługiwane dla bazy danych SQL (puli pojedynczej bazy danych i bazy danych), wystąpienia zarządzanego i platformy Azure Synapse.
 
 ## <a name="create-and-populate-an-azure-ad"></a>Tworzenie i wypełnianie usługi Azure AD
 
@@ -45,7 +67,7 @@ Aby uzyskać więcej informacji, zobacz tematy [Integrating your on-premises ide
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>Tworzenie administratora usługi Azure AD dla serwera SQL platformy Azure
 
-Każdy serwer SQL platformy Azure (który obsługuje bazę danych SQL lub magazyn danych SQL) rozpoczyna się od jednego konta administratora serwera, który jest administratorem całego serwera SQL platformy Azure. Należy utworzyć drugiego administratora programu SQL Server, czyli konto usługi Azure AD. Ten podmiot zabezpieczeń jest tworzony jako użytkownik zawartej bazy danych w głównej bazie danych. Jako administratorzy konta administratora serwera są członkami **db_owner** roli w każdej bazie danych użytkowników i wprowadź każdą bazę danych użytkownika jako użytkownika **dbo.** Aby uzyskać więcej informacji na temat kont administratora serwera, zobacz [Zarządzanie bazami danych i logowaniami w bazie danych SQL azure](sql-database-manage-logins.md).
+Każdy serwer SQL platformy Azure (który obsługuje bazę danych SQL lub usługę Azure Synapse) rozpoczyna się od jednego konta administratora serwera, które jest administratorem całego serwera SQL platformy Azure. Należy utworzyć drugiego administratora programu SQL Server, czyli konto usługi Azure AD. Ten podmiot zabezpieczeń jest tworzony jako użytkownik zawartej bazy danych w głównej bazie danych. Jako administratorzy konta administratora serwera są członkami **db_owner** roli w każdej bazie danych użytkowników i wprowadź każdą bazę danych użytkownika jako użytkownika **dbo.** Aby uzyskać więcej informacji na temat kont administratora serwera, zobacz [Zarządzanie bazami danych i logowaniami w bazie danych SQL azure](sql-database-manage-logins.md).
 
 Podczas korzystania z usługi Azure Active Directory z replikacją geograficzną administrator usługi Azure Active Directory musi być skonfigurowany zarówno dla serwerów podstawowych, jak i pomocniczych. Jeśli serwer nie ma administratora usługi Azure Active Directory, a następnie logowania usługi Azure Active Directory i użytkownicy otrzymują "Nie można połączyć się" z błędem serwera.
 
@@ -176,7 +198,7 @@ Najlepszym rozwiązaniem dla istniejących administratorów usługi Azure AD dla
 
 ### <a name="powershell-for-sql-managed-instance"></a>Wystąpienie zarządzanego programu PowerShell dla programu SQL
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Aby uruchomić polecenia cmdlet programu PowerShell, musisz mieć zainstalowany i uruchomiony program Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz temat [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 
@@ -232,13 +254,13 @@ Aby uzyskać więcej informacji na temat poleceń interfejsu wiersza polecenia, 
 ## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>Aprowizowanie administratora usługi Azure Active Directory dla serwera usługi Azure SQL Database
 
 > [!IMPORTANT]
-> Wykonaj następujące kroki tylko wtedy, gdy inicjujesz aprowizacji serwera usługi Azure SQL Database lub hurtowni danych.
+> Wykonaj następujące kroki tylko wtedy, gdy inicjujesz aprowizacji serwera usługi Azure SQL Database lub usługi Azure Synapse Analytics.
 
 Poniższe dwie procedury pokazują, jak aprowizować administratora usługi Azure Active Directory dla serwera SQL platformy Azure w witrynie Azure portal i przy użyciu programu PowerShell.
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Azure Portal
 
-1. W witrynie [Azure Portal](https://portal.azure.com/) w prawym górnym rogu wybierz swoje połączenia, aby wyświetlić listę rozwijaną możliwych usług Active Directory. Wybierz odpowiednią usługę Active Directory jako domyślną usługę Azure AD. W tym kroku powiązana z subskrypcją usługa Active Directory zostaje połączona z serwerem Azure SQL. Dzięki temu mamy pewność, że ta sama subskrypcja jest używana zarówno przez usługę Azure AD, jak i SQL Server. (Serwer Azure SQL może hostować usługę Azure SQL Database lub Azure SQL Data Warehouse).
+1. W witrynie [Azure Portal](https://portal.azure.com/) w prawym górnym rogu wybierz swoje połączenia, aby wyświetlić listę rozwijaną możliwych usług Active Directory. Wybierz odpowiednią usługę Active Directory jako domyślną usługę Azure AD. W tym kroku powiązana z subskrypcją usługa Active Directory zostaje połączona z serwerem Azure SQL. Dzięki temu mamy pewność, że ta sama subskrypcja jest używana zarówno przez usługę Azure AD, jak i SQL Server. (Serwer SQL platformy Azure może być hostowany w bazie danych SQL Database platformy Azure lub usłudze Azure Synapse).
 
     ![Wybór usługi AD][8]
 
@@ -255,7 +277,7 @@ Poniższe dwie procedury pokazują, jak aprowizować administratora usługi Azur
 
     ![Serwery SQL ustawiają administratora usługi Active Directory](./media/sql-database-aad-authentication/sql-servers-set-active-directory-admin.png)  
 
-5. Na stronie **Dodawanie administratora** wyszukaj użytkownika, wybierz użytkownika lub grupę do pełnienia funkcji administratora, a następnie kliknij opcję **Wybierz**. (Na stronie administratora usługi Active Directory wyświetlono wszystkich członków i grupy danej usługi Active Directory). Nie można wybrać wyszarzonych użytkowników lub grup, ponieważ nie są oni obsługiwani jako administratorzy usługi Azure AD. (Zobacz listę obsługiwanych administratorów w sekcji **Funkcje i ograniczenia usługi Azure AD** w sekcji Korzystanie z [uwierzytelniania usługi Azure Active Directory do uwierzytelniania za pomocą bazy danych SQL lub magazynu danych SQL).](sql-database-aad-authentication.md) Kontrola dostępu oparta na rolach (RBAC) ma zastosowanie tylko do portalu i nie jest propagowana do programu SQL Server.
+5. Na stronie **Dodawanie administratora** wyszukaj użytkownika, wybierz użytkownika lub grupę do pełnienia funkcji administratora, a następnie kliknij opcję **Wybierz**. (Na stronie administratora usługi Active Directory wyświetlono wszystkich członków i grupy danej usługi Active Directory). Nie można wybrać wyszarzonych użytkowników lub grup, ponieważ nie są oni obsługiwani jako administratorzy usługi Azure AD. (Zobacz listę obsługiwanych administratorów w sekcji **Funkcje i ograniczenia usługi Azure AD** w sekcji Korzystanie z [uwierzytelniania usługi Azure Active Directory do uwierzytelniania za pomocą bazy danych SQL lub usługi Azure Synapse).](sql-database-aad-authentication.md) Kontrola dostępu oparta na rolach (RBAC) ma zastosowanie tylko do portalu i nie jest propagowana do programu SQL Server.
 
     ![Wybieranie administratora usługi Azure Active Directory](./media/sql-database-aad-authentication/select-azure-active-directory-admin.png)  
 
@@ -270,22 +292,22 @@ Proces zmiany administratora może potrwać kilka minut. Nowy administrator poja
 
 Aby później usunąć administratora, u góry strony **administratora usługi Active Directory** wybierz pozycję **Usuń administratora,** a następnie wybierz pozycję **Zapisz**.
 
-### <a name="powershell-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Usługa PowerShell dla usługi Azure SQL Database i usługi Azure SQL Data Warehouse
+### <a name="powershell-for-azure-sql-database-and-azure-synapse"></a>Usługa PowerShell dla usługi Azure SQL Database i usługi Azure Synapse
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Aby uruchomić polecenia cmdlet programu PowerShell, musisz mieć zainstalowany i uruchomiony program Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz temat [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview). Aby aprowizować administratora usługi Azure AD, należy wykonać następujące polecenia programu Azure PowerShell:
 
 - Connect-AzAccount
 - Wybierz-AzSubscription
 
-Polecenia cmdlet używane do inicjowania obsługi administracyjnej usługi Azure AD i zarządzania nimi dla usługi Azure SQL Database i usługi Azure SQL Data Warehouse:
+Polecenia cmdlet używane do inicjowania obsługi administracyjnej usługi Azure AD i zarządzania nimi dla usługi Azure SQL Database i Azure Synapse:
 
 | Nazwa polecenia cmdlet | Opis |
 | --- | --- |
-| [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Apruje administratora usługi Azure Active Directory dla serwera SQL platformy Azure lub usługi Azure SQL Data Warehouse. (Musi pochodzić z bieżącej subskrypcji) |
-| [Usuń-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Usuwa administratora usługi Azure Active Directory dla serwera SQL platformy Azure lub usługi Azure SQL Data Warehouse. |
-| [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |Zwraca informacje o administratorze usługi Azure Active Directory aktualnie skonfigurowanym dla serwera SQL azure lub usługi Azure SQL Data Warehouse. |
+| [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Apruje administratora usługi Azure Active Directory dla serwera SQL platformy Azure lub usługi Azure Synapse. (Musi pochodzić z bieżącej subskrypcji) |
+| [Usuń-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Usuwa administratora usługi Azure Active Directory dla serwera SQL platformy Azure lub usługi Azure Synapse. |
+| [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |Zwraca informacje o administratorze usługi Azure Active Directory aktualnie skonfigurowanym dla serwera SQL platformy Azure lub usługi Azure Synapse. |
 
 Aby wyświetlić więcej informacji o każdym z tych poleceń, użyj funkcji pomocy w zakresie polecenia programu PowerShell. Na przykład `get-help Set-AzSqlServerActiveDirectoryAdministrator`.
 
@@ -328,10 +350,10 @@ Administrator usługi Azure AD można aprowizować, wywołując następujące po
 
 | Polecenie | Opis |
 | --- | --- |
-|[az sql server ad-admin tworzenie](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | Apruje administratora usługi Azure Active Directory dla serwera SQL platformy Azure lub usługi Azure SQL Data Warehouse. (Musi pochodzić z bieżącej subskrypcji) |
-|[az sql server ad-admin delete az sql server ad-admin delete az sql server ad-admin delete az](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | Usuwa administratora usługi Azure Active Directory dla serwera SQL platformy Azure lub usługi Azure SQL Data Warehouse. |
-|[az sql server ad-admin lista](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | Zwraca informacje o administratorze usługi Azure Active Directory aktualnie skonfigurowanym dla serwera SQL azure lub usługi Azure SQL Data Warehouse. |
-|[az sql server ad-admin aktualizacja](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | Aktualizuje administratora usługi Active Directory dla serwera SQL platformy Azure lub usługi Azure SQL Data Warehouse. |
+|[az sql server ad-admin tworzenie](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | Apruje administratora usługi Azure Active Directory dla serwera SQL platformy Azure lub usługi Azure Synapse. (Musi pochodzić z bieżącej subskrypcji) |
+|[az sql server ad-admin delete az sql server ad-admin delete az sql server ad-admin delete az](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | Usuwa administratora usługi Azure Active Directory dla serwera SQL platformy Azure lub usługi Azure Synapse. |
+|[az sql server ad-admin lista](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | Zwraca informacje o administratorze usługi Azure Active Directory aktualnie skonfigurowanym dla serwera SQL platformy Azure lub usługi Azure Synapse. |
+|[az sql server ad-admin aktualizacja](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | Aktualizuje administratora usługi Active Directory dla serwera SQL platformy Azure lub usługi Azure Synapse. |
 
 Aby uzyskać więcej informacji na temat poleceń interfejsu wiersza polecenia, zobacz [az sql server](/cli/azure/sql/server).
 
@@ -342,7 +364,7 @@ Aby uzyskać więcej informacji na temat poleceń interfejsu wiersza polecenia, 
 
 ## <a name="configure-your-client-computers"></a>Konfigurowanie komputerów klienckich
 
-Na wszystkich komputerach klienckich, z których aplikacje lub użytkownicy łączą się z usługą Azure SQL Database lub usługa Azure SQL Data Warehouse przy użyciu tożsamości usługi Azure AD, należy zainstalować następujące oprogramowanie:
+Na wszystkich komputerach klienckich, z których aplikacje lub użytkownicy łączą się z usługą Azure SQL Database lub Azure Synapse przy użyciu tożsamości usługi Azure AD, należy zainstalować następujące oprogramowanie:
 
 - .NET Framework 4.6 [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx)lub nowszych z .
 - Biblioteka uwierzytelniania usługi Azure Active Directory dla programu SQL Server *(ADAL). DLL*). Poniżej znajdują się łącza do pobrania, aby zainstalować najnowszy sterownik SSMS, ODBC i OLE DB, który zawiera *ADAL. Biblioteka DLL.*
@@ -365,7 +387,7 @@ Wymagania te można spełnić, korzystając z następujących wymagań:
 Uwierzytelnianie w usłudze Azure Active Directory wymaga utworzenia użytkowników bazy danych jako użytkowników zawartej bazy danych. Użytkownik zawartej bazy danych oparty na tożsamości w usłudze Azure AD to użytkownik bazy danych, który nie ma loginu w bazie danych master i jest zamapowany na tożsamość w katalogu Azure AD skojarzonym z bazą danych. Tożsamość w usłudze Azure AD może być indywidualnym kontem użytkownika lub grupą. Aby uzyskać więcej informacji na temat użytkowników zawartej bazy danych, patrz [Contained Database Users - Making Your Database Portable](https://msdn.microsoft.com/library/ff929188.aspx) (Użytkownicy zawartych baz danych — tworzenie przenośnej bazy danych).
 
 > [!NOTE]
-> Użytkowników bazy danych (z wyjątkiem administratorów) nie można tworzyć za pośrednictwem witryny Azure Portal. Role RBAC nie są propagowane do serwera SQL Server, bazy danych SQL Database lub magazynu danych SQL Data Warehouse. Role RBAC na platformie Azure są używane do zarządzania zasobami platformy Azure i nie mają zastosowania do uprawnień do bazy danych. Przykład: osoba o roli **Współautor serwera SQL Server** nie może udzielać dostępu do połączenia z bazą danych SQL Database lub magazynem danych SQL Data Warehouse. Uprawnienie dostępu należy nadać bezpośrednio w bazie danych za pomocą instrukcji języka Transact-SQL.
+> Użytkowników bazy danych (z wyjątkiem administratorów) nie można tworzyć za pośrednictwem witryny Azure Portal. Role RBAC nie są propagowane do programu SQL Server, bazy danych SQL ani usługi Azure Synapse. Role RBAC na platformie Azure są używane do zarządzania zasobami platformy Azure i nie mają zastosowania do uprawnień do bazy danych. Na przykład rola **współautora programu SQL Server** nie udziela dostępu do łączenia się z bazą danych SQL lub usłudze Azure Synapse. Uprawnienie dostępu należy nadać bezpośrednio w bazie danych za pomocą instrukcji języka Transact-SQL.
 
 > [!WARNING]
 > Znaki specjalne, takie jak dwukropek `:` lub ampersand `&` uwzględnione w nazwie użytkownika w instrukcjach języka T-SQL CREATE LOGIN  i CREATE USER nie są obsługiwane.
@@ -417,7 +439,7 @@ Konto użytkownika domeny federacyjnej, które jest importowane do domeny zarzą
 > [!NOTE]
 > Użytkownicy usługi Azure AD są oznaczeni w metadanych bazy danych typem E (EXTERNAL_USER), a grupy typem X (EXTERNAL_GROUPS). Aby uzyskać więcej informacji, zobacz [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
 
-## <a name="connect-to-the-user-database-or-data-warehouse-by-using-ssms-or-ssdt"></a>Łączenie się z bazą danych użytkowników lub magazynem danych przy użyciu usługi SSMS lub SSDT  
+## <a name="connect-to-the-user-database-or-azure-synapse-by-using-ssms-or-ssdt"></a>Łączenie się z bazą danych użytkowników lub usługą Azure Synapse przy użyciu usługi SSMS lub SSDT  
 
 Aby potwierdzić, że administrator usługi Azure AD jest poprawnie skonfigurowany, połącz się z **główną** bazą danych przy użyciu konta administratora usługi Azure AD.
 Aby aprowizować użytkownika zawartej w bazie danych opartej na usłudze Azure AD (innego niż administrator serwera, który jest właścicielem bazy danych), połącz się z bazą danych za pomocą tożsamości usługi Azure AD, która ma dostęp do bazy danych.
@@ -427,35 +449,41 @@ Aby aprowizować użytkownika zawartej w bazie danych opartej na usłudze Azure 
 
 ## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Używanie tożsamości usługi Azure AD do łączenia się przy użyciu usługi SSMS lub SSDT
 
-Poniższe procedury pokazują, jak połączyć się z bazą danych SQL za pomocą tożsamości usługi Azure AD przy użyciu programu SQL Server Management Studio lub sql server database tools.
+Poniższe procedury pokazują, jak połączyć się z bazą danych SQL za pomocą tożsamości usługi Azure AD przy użyciu programu SQL Server Management Studio lub sql server database tools. 
 
 ### <a name="active-directory-integrated-authentication"></a>Zintegrowane uwierzytelnianie usługi Active Directory
 
-Tej metody należy użyć, jeśli użytkownik jest zalogowany w systemie Windows przy użyciu poświadczeń usługi Azure Active Directory z domeny federacyjnej.
+Tej metody należy używać, jeśli użytkownik jest zalogowany w systemie Windows przy użyciu poświadczeń usługi Azure Active Directory z domeny federacyjnej lub domeny zarządzanej skonfigurowany do bezproblemowego logowania jednokrotnego w celu uwierzytelniania haszowania przekazywania i haszowania haseł. Aby uzyskać więcej informacji, zobacz [Azure Active Directory Bezproblemowe logowanie jednokrotne](../active-directory/hybrid/how-to-connect-sso.md).
 
-1. Uruchom Studio zarządzania lub narzędzia danych oraz w oknie dialogowym **Połącz z serwerem** (lub **Z aparatem baz danych)** w polu **Uwierzytelnianie** wybierz pozycję **Active Directory - Integrated**. Hasło nie jest potrzebne ani można je wprowadzić, ponieważ istniejące poświadczenia zostaną wyświetlone dla połączenia.
+1. Uruchom Studio zarządzania lub narzędzia danych oraz w oknie dialogowym **Połącz z serwerem** (lub **Z aparatem baz danych)** w polu **Uwierzytelnianie** wybierz pozycję **Azure Active Directory — Integrated**. Hasło nie jest potrzebne ani można je wprowadzić, ponieważ istniejące poświadczenia zostaną wyświetlone dla połączenia.
 
     ![Wybieranie zintegrowanego uwierzytelniania usługi AD][11]
 
-2. Wybierz przycisk **Opcje,** a następnie na stronie **Właściwości połączenia** w polu **Połącz z bazą danych** wpisz nazwę bazy danych użytkowników, z którą chcesz się połączyć. (Opcja **nazwa domeny usługi AD lub identyfikator dzierżawy**" jest obsługiwana tylko dla aplikacji Universal z opcjami połączenia usługi **MFA,** w przeciwnym razie jest wyszarzona).  
+2. Wybierz przycisk **Opcje,** a następnie na stronie **Właściwości połączenia** w polu **Połącz z bazą danych** wpisz nazwę bazy danych użytkowników, z którą chcesz się połączyć. Aby uzyskać więcej informacji, zobacz artykuł [Wieloczynnikowy auth AAD](sql-database-ssms-mfa-authentication.md#azure-ad-domain-name-or-tenant-id-parameter) na temat różnic między właściwości połączenia dla SSMS 17.x i 18.x. 
 
     ![Wybieranie nazwy bazy danych][13]
 
-## <a name="active-directory-password-authentication"></a>Uwierzytelnianie hasłem usługi Active Directory
+### <a name="active-directory-password-authentication"></a>Uwierzytelnianie hasłem usługi Active Directory
 
 Tej metody należy używać podczas łączenia się z główną nazwą usługi Azure AD przy użyciu domeny zarządzanej usługi Azure AD. Można go również używać do kont federacyjnej bez dostępu do domeny, na przykład podczas pracy zdalnej.
 
-Ta metoda służy do uwierzytelniania do bazy danych SQL/DW z usługi Azure AD dla użytkowników natywnych lub federowanych usługi Azure AD. Użytkownik macierzysty jest jawnie utworzony w usłudze Azure AD i jest uwierzytelniony przy użyciu nazwy użytkownika i hasła, podczas gdy użytkownik federowany jest użytkownikiem systemu Windows, którego domena jest sfederowana z usługą Azure AD. Tej ostatniej metody (przy użyciu hasła & użytkownika) można użyć, gdy użytkownik chce użyć swoich poświadczeń systemu Windows, ale jego komputer lokalny nie jest połączony z domeną (na przykład przy użyciu dostępu zdalnego). W takim przypadku użytkownik systemu Windows może wskazać swoje konto domeny i hasło i może uwierzytelnić się w bazie danych SQL/DW przy użyciu poświadczeń federacyjnej.
+Ta metoda służy do uwierzytelniania do bazy danych SQL lub MI przy użyciu użytkowników tożsamości tylko w chmurze usługi Azure AD lub tych, którzy używają tożsamości hybrydowych usługi Azure AD. Ta metoda obsługuje użytkowników, którzy chcą używać swoich poświadczeń systemu Windows, ale ich komputer lokalny nie jest połączony z domeną (na przykład przy użyciu dostępu zdalnego). W takim przypadku użytkownik systemu Windows może wskazać swoje konto domeny i hasło oraz może uwierzytelnić się w bazie danych SQL, MI lub usłudze Azure Synapse.
 
-1. Uruchom Studio zarządzania lub narzędzia danych oraz w oknie dialogowym **Łączenie się z serwerem** (lub **Aparat bazy danych)** w polu **Uwierzytelnianie** wybierz pozycję **Active Directory - Password**.
+1. Uruchom Studio zarządzania lub narzędzia danych oraz w oknie dialogowym **Łączenie się z serwerem** (lub **Aparat bazy danych)** w polu **Uwierzytelnianie** wybierz pozycję **Azure Active Directory - Password**.
 
-2. W polu **Nazwa użytkownika** wpisz nazwę użytkownika usługi Azure Active Directory w formacie **domain.com .\@** Nazwy użytkowników muszą być kontem z usługi Azure Active Directory lub kontem z domeny federacji z usługą Azure Active Directory.
+2. W polu **Nazwa użytkownika** wpisz nazwę użytkownika usługi Azure Active Directory w formacie **domain.com .\@** Nazwy użytkowników muszą być kontem z usługi Azure Active Directory lub kontem z domeny zarządzanej lub federacyjnej z usługą Azure Active Directory.
 
-3. W polu **Hasło** wpisz hasło użytkownika dla konta usługi Azure Active Directory lub konta domeny federacyjnej.
+3. W polu **Hasło** wpisz hasło użytkownika dla konta usługi Azure Active Directory lub konta domeny zarządzanej/federacyjnej.
 
     ![Wybieranie uwierzytelniania hasła usługi AD][12]
 
 4. Wybierz przycisk **Opcje,** a następnie na stronie **Właściwości połączenia** w polu **Połącz z bazą danych** wpisz nazwę bazy danych użytkowników, z którą chcesz się połączyć. (Zobacz grafikę w poprzedniej opcji).
+
+### <a name="active-directory-interactive-authentication"></a>Uwierzytelnianie interaktywne usługi Active Directory
+
+Ta metoda służy do uwierzytelniania interaktywnego z uwierzytelnianiem wieloskładnikowym (MFA) lub bez niego, przy czym hasło jest wymagane interaktywnie. Tej metody można użyć do uwierzytelniania do bazy danych SQL DB, MI i Usługi Azure Synapse dla użytkowników tożsamości tylko w chmurze usługi Azure AD lub tych, którzy używają tożsamości hybrydowych usługi Azure AD.
+
+Aby uzyskać więcej informacji, zobacz [Korzystanie z wieloczynnikowego uwierzytelniania AAD za pomocą usługi Azure SQL Database i usługi Azure Synapse Analytics (obsługa usługi SSMS dla usługi MFA).](sql-database-ssms-mfa-authentication.md)
 
 ## <a name="using-an-azure-ad-identity-to-connect-from-a-client-application"></a>Używanie tożsamości usługi Azure AD do łączenia się z aplikacją kliencką
 
@@ -463,9 +491,14 @@ Poniższe procedury pokazują, jak połączyć się z bazą danych SQL za pomoc�
 
 ### <a name="active-directory-integrated-authentication"></a>Zintegrowane uwierzytelnianie usługi Active Directory
 
-Aby korzystać ze zintegrowanego uwierzytelniania systemu Windows, usługa Active Directory domeny musi być sfederowana z usługą Azure Active Directory. Aplikacja kliencka (lub usługa) łącząca się z bazą danych musi być uruchomiona na komputerze przyłączanym do domeny pod poświadczeniami domeny użytkownika.
+Aby korzystać ze zintegrowanego uwierzytelniania systemu Windows, usługa Active Directory domeny musi być sfederowana z usługą Azure Active Directory lub powinna być domeną zarządzaną skonfigurowaną do bezproblemowego logowania jednokrotnego w celu uwierzytelniania poprzeciwkowe lub haszgów haseł. Aby uzyskać więcej informacji, zobacz [Azure Active Directory Bezproblemowe logowanie jednokrotne](../active-directory/hybrid/how-to-connect-sso.md).
 
-Aby połączyć się z bazą danych przy użyciu zintegrowanego uwierzytelniania i tożsamości usługi Azure AD, słowo kluczowe Uwierzytelnianie w ciągu połączenia bazy danych musi być ustawione na Zintegrowane z usługą Active Directory. Poniższy przykład kodu Języka C# używa ADO .NET.
+> [!NOTE]
+> [MSAL.NET (Microsoft.Identity.Client)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap) dla zintegrowanego uwierzytelniania systemu Windows nie jest obsługiwana w przypadku bezproblemowego logowania jednokrotnego w celu uwierzytelniania mieszania przekazywania i haszowanie haseł.
+
+Aplikacja kliencka (lub usługa) łącząca się z bazą danych musi być uruchomiona na komputerze przyłączanym do domeny pod poświadczeniami domeny użytkownika.
+
+Aby połączyć się z bazą danych przy użyciu zintegrowanego uwierzytelniania i `Active Directory Integrated`tożsamości usługi Azure AD, słowo kluczowe Uwierzytelnianie w ciągu połączenia bazy danych musi być ustawione na . Poniższy przykład kodu Języka C# używa ADO .NET.
 
 ```csharp
 string ConnectionString = @"Data Source=n9lxnyuzhv.database.windows.net; Authentication=Active Directory Integrated; Initial Catalog=testdb;";
@@ -477,7 +510,7 @@ Słowo kluczowe `Integrated Security=True` parametry połączenia nie jest obsł
 
 ### <a name="active-directory-password-authentication"></a>Uwierzytelnianie hasłem usługi Active Directory
 
-Aby połączyć się z bazą danych przy użyciu zintegrowanego uwierzytelniania i tożsamości usługi Azure AD, słowo kluczowe Uwierzytelnianie musi być ustawione na hasło usługi Active Directory. Parametry połączenia muszą zawierać słowa kluczowe i wartości nazwy użytkownika i identyfikatora UID oraz hasła/identyfikatora PWD. Poniższy przykład kodu Języka C# używa ADO .NET.
+Aby połączyć się z bazą danych przy użyciu kont użytkowników tożsamości tylko w chmurze usługi `Active Directory Password`Azure AD lub osób korzystających z tożsamości hybrydowych usługi Azure AD, należy ustawić słowo kluczowe Uwierzytelnianie. Parametry połączenia muszą zawierać słowa kluczowe i wartości nazwy użytkownika i identyfikatora UID oraz hasła/identyfikatora PWD. Poniższy przykład kodu Języka C# używa ADO .NET.
 
 ```csharp
 string ConnectionString =
@@ -490,7 +523,7 @@ Dowiedz się więcej o metodach uwierzytelniania usługi Azure AD przy użyciu p
 
 ## <a name="azure-ad-token"></a>Token usługi Azure AD
 
-Ta metoda uwierzytelniania umożliwia usługom warstwy środkowej łączenie się z usługą Azure SQL Database lub usługą Azure SQL Data Warehouse przez uzyskanie tokenu z usługi Azure Active Directory (AAD). Umożliwia zaawansowane scenariusze, w tym uwierzytelnianie oparte na certyfikatach. Aby korzystać z uwierzytelniania tokenu usługi Azure AD, należy wykonać cztery podstawowe kroki:
+Ta metoda uwierzytelniania umożliwia usługom warstwy środkowej uzyskanie [tokenów JSON Web Tokens (JWT)](../active-directory/develop/id-tokens.md) do łączenia się z usługą Azure SQL Database lub Azure Synapse przez uzyskanie tokenu z usługi Azure Active Directory (AAD). Ta metoda umożliwia różne scenariusze aplikacji, w tym tożsamości usługi, jednostki usługi i aplikacje przy użyciu uwierzytelniania opartego na certyfikatach. Aby korzystać z uwierzytelniania tokenu usługi Azure AD, należy wykonać cztery podstawowe kroki:
 
 1. Zarejestruj aplikację w usłudze Azure Active Directory i uzyskaj identyfikator klienta dla kodu.
 2. Utwórz użytkownika bazy danych reprezentującego aplikację. (Ukończono wcześniej w kroku 6.)

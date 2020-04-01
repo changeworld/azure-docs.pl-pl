@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 5236fd89ed99ca14bb7fc24e40ef79e12e5177d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61d0a57c541837ab3aebf65e47d757f7ecbe7e40
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245501"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435999"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w usłudze Azure Security Center
 Usługa Security Center zbiera dane z maszyn wirtualnych platformy Azure (maszyn wirtualnych), zestawów skalowania maszyn wirtualnych, kontenerów IaaS i komputerów innych niż azure (w tym lokalnych) w celu monitorowania luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą agenta usługi Log Analytics, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z komputera i kopiuje dane do obszaru roboczego do analizy. Przykładami takich danych są: typ i wersja systemu operacyjnego, dzienniki systemu operacyjnego (dzienniki zdarzeń systemu Windows), uruchomione procesy, nazwa komputera, adresy IP i zalogowany użytkownik. Agent analizy dzienników również kopiuje pliki zrzutu awaryjnego do obszaru roboczego.
@@ -306,7 +306,7 @@ Agent usługi Log Analytics można zainstalować ręcznie, dzięki czemu usługa
 
 - Aby zidentyfikować problemy z niemonitorowanymi maszynami wirtualnymi i komputerami:
 
-    Maszyna wirtualna lub komputer nie jest monitorowany przez usługę Security Center, jeśli na komputerze nie jest uruchomione rozszerzenie agenta monitorowania firmy Microsoft. Na komputerze może być już zainstalowany agent lokalny, na przykład agent bezpośredni usługi OMS lub agent programu System Center Operations Manager. Maszyny z tymi agentami są identyfikowane jako niemonitorowane, ponieważ te agenci nie są w pełni obsługiwane w centrum zabezpieczeń. Aby w pełni skorzystać ze wszystkich funkcji usługi Security Center, wymagane jest rozszerzenie programu Microsoft Monitoring Agent.
+    Maszyna wirtualna lub komputer nie jest monitorowany przez centrum zabezpieczeń, jeśli na komputerze nie jest uruchomione rozszerzenie agenta usługi Log Analytics. Na komputerze może być już zainstalowany agent lokalny, na przykład agent bezpośredni usługi OMS lub agent programu System Center Operations Manager. Maszyny z tymi agentami są identyfikowane jako niemonitorowane, ponieważ te agenci nie są w pełni obsługiwane w centrum zabezpieczeń. Aby w pełni korzystać ze wszystkich możliwości usługi Security Center, wymagane jest rozszerzenie agenta usługi Log Analytics.
 
     Aby uzyskać więcej informacji na temat przyczyn, dla których usługa Security Center nie może pomyślnie monitorować maszyn wirtualnych i komputerów zainicjowanych w celu automatycznego inicjowania obsługi administracyjnej, zobacz [Monitorowanie problemów z kondycją agenta](security-center-troubleshooting-guide.md#mon-agent).
 

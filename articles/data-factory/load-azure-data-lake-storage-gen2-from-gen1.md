@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: ea0a9de5dde02b45ae34e3e98e24b31fd01fa713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f782985d975dd137aa2da48d12757685b47e62b1
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235821"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421263"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Kopiowanie danych z usługi Azure Data Lake Storage Gen1 do gen2 za pomocą usługi Azure Data Factory
 
@@ -146,7 +146,7 @@ Aby ocenić uaktualnienie z usługi Azure Data Lake Storage Gen1 do usługi Azur
 
 Użyj weryfikacji koncepcji, aby zweryfikować kompleksowe rozwiązanie i przetestować przepływność kopiowania w twoim środowisku. Główne kroki weryfikacji koncepcji: 
 
-1. Utwórz jeden potok fabryki danych z pojedynczym działaniem kopiowania, aby skopiować kilka tb danych z usługi Data Lake Storage Gen1 do Data Lake Storage Gen2, aby uzyskać linię bazową wydajności kopiowania. Zacznij od [jednostek integracji danych (DIU)](copy-activity-performance.md#data-integration-units) jako 128. 
+1. Utwórz jeden potok fabryki danych z pojedynczym działaniem kopiowania, aby skopiować kilka tb danych z usługi Data Lake Storage Gen1 do Data Lake Storage Gen2, aby uzyskać linię bazową wydajności kopiowania. Zacznij od [jednostek integracji danych (DIU)](copy-activity-performance-features.md#data-integration-units) jako 128. 
 2. Na podstawie przepływności kopii, którą otrzymujesz w kroku 1, oblicz szacowany czas wymagany dla całej migracji danych. 
 3. (Opcjonalnie) Utwórz tabelę formantów i zdefiniuj filtr plików, aby podzielić pliki do migracji. Sposobem na partycje plików jest: 
 

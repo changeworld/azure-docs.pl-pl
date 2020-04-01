@@ -1,22 +1,22 @@
 ---
-title: Hosting wielu witryn przy użyciu interfejsu wiersza polecenia platformy Azure Application Gateway
-description: Dowiedz się, jak utworzyć bramę aplikacji, która będzie hostować wiele witryn przy użyciu interfejsu wiersza polecenia platformy Azure.
+title: Hosting wielu lokacji przy użyciu interfejsu wiersza polecenia — brama aplikacji platformy Azure
+description: Dowiedz się, jak utworzyć bramę aplikacji, która obsługuje wiele witryn przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 5edc2e5228146aee913027a83e495d94c003e237
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 0e58d9ecfbd0731fc9bf91664763e73d8c56e64a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74047331"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294766"
 ---
-# <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Tworzenie bramy aplikacji z obsługą wielu witryn przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Tworzenie bramy aplikacji z hostingiem wielu witryn przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Przy użyciu interfejsu wiersza polecenia platformy Azure można skonfigurować [hosting wielu witryn sieci Web](application-gateway-multi-site-overview.md) podczas tworzenia [bramy aplikacji](application-gateway-introduction.md). W tym samouczku utworzysz pule zaplecza przy użyciu zestawów skalowania maszyn wirtualnych. Następnie, bazując na należących do Ciebie domenach, skonfigurujesz odbiorniki i reguły, aby się upewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach. W tym samouczku przyjęto założenie, że jesteś właścicielem wielu domen, przykładami których są *www.contoso.com* i *www.fabrikam.com*.
+Za pomocą interfejsu wiersza polecenia platformy Azure można skonfigurować [hosting wielu witryn sieci web](application-gateway-multi-site-overview.md) podczas tworzenia bramy [aplikacji](application-gateway-introduction.md). W tym samouczku utworzysz pule wewnętrznej bazy danych przy użyciu zestawów skalowania maszyn wirtualnych. Następnie, bazując na należących do Ciebie domenach, skonfigurujesz odbiorniki i reguły, aby się upewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach. W tym samouczku przyjęto założenie, że jesteś `www.contoso.com` `www.fabrikam.com`właścicielem wielu domen i używa przykładów i .
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -29,7 +29,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 ![Przykład routingu obejmujący wiele witryn](./media/tutorial-multisite-cli/scenario.png)
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -97,7 +97,7 @@ Tworzenie bramy aplikacji może potrwać kilka minut. Po utworzeniu bramy aplika
 
 ### <a name="add-the-backend-pools"></a>Dodawanie pul zaplecza
 
-Dodaj pule zaplecza o nazwie *contosoPool* i *fabrikamPool* , które są konieczne do przechowywania serwerów zaplecza za pomocą polecenia [AZ Network Application-Gateway Address-Pool Create](/cli/azure/network/application-gateway).
+Dodaj pule wewnętrznej bazy danych o nazwie *contosoPool* i *fabrikamPool,* które są potrzebne do przechowywania serwerów wewnętrznej bazy danych przy użyciu [tworzenia puli adresów bramy aplikacji az.](/cli/azure/network/application-gateway)
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -114,7 +114,7 @@ az network application-gateway address-pool create \
 
 Odbiornik jest wymagany, aby brama aplikacji mogła właściwie kierować ruch do puli zaplecza. W tym samouczku utworzysz dwa odbiorniki dla swoich dwóch domen. W tym przykładzie odbiorniki są tworzone dla domen *www.contoso.com* i *www.fabrikam.com*. 
 
-Dodaj detektory o nazwach *contosoListener* i *fabrikamListener* , które są konieczne do kierowania ruchem za pomocą polecenia [AZ Network Application-Gateway HTTP-Listener Create](/cli/azure/network/application-gateway).
+Dodaj detektory o nazwie *contosoListener* i *fabrikamListener,* które są potrzebne do kierowania ruchu za pomocą [az network application-gateway http-listener create](/cli/azure/network/application-gateway).
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -135,7 +135,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-routing-rules"></a>Dodawanie reguł routingu
 
-Reguły są przetwarzane w kolejności, w której zostały utworzone, a ruch jest kierowany przy użyciu pierwszej reguły, która pasuje do adresu URL wysyłanego do bramy aplikacji. Na przykład jeśli na tym samym porcie utworzono dwie reguły: jedną przy użyciu odbiornika podstawowego, a drugą przy użyciu odbiornika obejmującego wiele witryn, reguła z odbiornikiem obejmującym wiele witryn musi znajdować się przed regułą z odbiornikiem podstawowym, aby funkcja reguły obejmującej wiele witryn działała zgodnie z oczekiwaniami. 
+Reguły są przetwarzane w kolejności, w jakiej są tworzone, a ruch jest kierowany przy użyciu pierwszej reguły, która pasuje do adresu URL wysyłanego do bramy aplikacji. Na przykład jeśli na tym samym porcie utworzono dwie reguły: jedną przy użyciu odbiornika podstawowego, a drugą przy użyciu odbiornika obejmującego wiele witryn, reguła z odbiornikiem obejmującym wiele witryn musi znajdować się przed regułą z odbiornikiem podstawowym, aby funkcja reguły obejmującej wiele witryn działała zgodnie z oczekiwaniami. 
 
 W tym przykładzie utworzysz dwie nowe reguły i usuniesz domyślną regułę, która została utworzona podczas tworzenia bramy aplikacji. Regułę możesz dodać przy użyciu polecenia [az network application-gateway rule create](/cli/azure/network/application-gateway).
 
@@ -222,7 +222,7 @@ Korzystanie z rekordów A nie jest zalecane, ponieważ adres VIP może ulec zmia
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Wpisz nazwę swojej domeny na pasku adresu przeglądarki. Na przykład http\://www.contoso.com.
+Wpisz nazwę swojej domeny na pasku adresu przeglądarki. Takich jak\:http //www.contoso.com.
 
 ![Testowanie witryny contoso w bramie aplikacji](./media/tutorial-multisite-cli/application-gateway-nginxtest1.png)
 
