@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory przy użyciu schematu organizacyjnego teraz | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i teraz schematu organizacyjnego.
+title: 'Samouczek: Integracja usługi Azure Active Directory z schematem OrgChart | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a schematem OrgChart Now.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: b96606b5558e0fbb81733b2f548a89bfb38d5f99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095428"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu schematu organizacyjnego teraz
+# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Samouczek: Integracja usługi Azure Active Directory z schematem OrgChart teraz
 
-W tym samouczku dowiesz się, jak zintegrować teraz schematu organizacyjnego przy użyciu usługi Azure Active Directory (Azure AD).
-Integrowanie schematu organizacyjnego teraz z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować schemat OrgChart Now z usługą Azure Active Directory (Azure AD).
+Integracja schematu OrgChart Now z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do chwili schematu organizacyjnego.
-* Użytkownikom można automatycznie zalogowany do chwili schemat organizacyjny (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Można kontrolować w usłudze Azure AD, który ma dostęp do OrgChart Teraz.
+* Można włączyć użytkowników, aby automatycznie zalogować się do OrgChart Teraz (Logowanie jednokrotne) z ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD przy użyciu schematu organizacyjnego teraz, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z schematem Teraz, potrzebujesz następujących elementów:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Schemat organizacyjny teraz logowanie jednokrotne włączone subskrypcji
+* Subskrypcja z obsługą logowania jednokrotnego OrgChart Now
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Schemat organizacyjny teraz obsługuje **SP** i **tożsamości** jednokrotne logowanie inicjowane przez
+* OrgChart Now obsługuje jednostkę SSO inicjowane przez **sp** i **idp**
 
-## <a name="adding-orgchart-now-from-the-gallery"></a>Dodawanie schematu organizacyjnego teraz z galerii
+## <a name="adding-orgchart-now-from-the-gallery"></a>Dodawanie schematu orgchart teraz z galerii
 
-Aby skonfigurować integrację teraz schematu organizacyjnego w usłudze Azure AD, należy dodać teraz schematu organizacyjnego z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu OrgChart Now z usługą Azure AD, należy dodać schemat OrgChart Now z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać teraz schematu organizacyjnego z galerii, wykonaj następujące czynności:**
+**Aby dodać schemat OrgChart Now z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -61,37 +61,37 @@ Aby skonfigurować integrację teraz schematu organizacyjnego w usłudze Azure A
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **teraz schematu organizacyjnego**, wybierz opcję **teraz schemat organizacyjny** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **OrgChart Now**, wybierz **orgchart teraz** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
-     ![Schemat organizacyjny teraz na liście wyników](common/search-new-app.png)
+     ![Schemat OrgChart Teraz na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji skonfigurujesz i test usługi Azure AD logowania jednokrotnego przy użyciu schematu organizacyjnego teraz w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika teraz schematu organizacyjnego musi zostać ustanowione.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego z OrgChart Teraz na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w programie OrgChart Now.
 
-Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu schematu organizacyjnego teraz, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą schematu OrgChart Now, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie schematu organizacyjnego teraz logowanie jednokrotne](#configure-orgchart-now-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego teraz schematu organizacyjnego](#create-orgchart-now-test-user)**  — aby odpowiednikiem Britta Simon teraz schematu organizacyjnego, połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj orzdusz teraz logowanie jednokrotne](#configure-orgchart-now-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego OrgChart Now](#create-orgchart-now-test-user)** — aby mieć odpowiednik Britta Simon w OrgChart Now, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z teraz schematu organizacyjnego, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednooznaczne usługi Azure AD za pomocą schematu OrgChart Now, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **teraz schematu organizacyjnego** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie Integracja aplikacji **OrgChart Now** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -103,24 +103,24 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z teraz schematu orga
 
 4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następującą czynność:
 
-    ![Schemat organizacyjny teraz domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-identifier.png)
+    ![OrgChart Teraz Domena i adresy URL — informacje o logowaniem jednokrotnym](common/idp-identifier.png)
 
     W polu tekstowym **Identyfikator** wpisz adres URL: `https://sso2.orgchartnow.com`
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+5. Kliknij **pozycję Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowanym w sp: **SP**
 
     ![image](common/both-preintegrated-signon.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
 
     > [!NOTE]
-    > `<YourEntityID>` jest **usługi Azure AD identyfikator** skopiowane z **Skonfiguruj teraz schematu organizacyjnego** sekcji opisany w dalszej części samouczka.
+    > `<YourEntityID>`to **identyfikator usługi Azure AD** skopiowany z sekcji **Konfigurowanie schematu teraz,** opisanej w dalszej części samouczka.
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-7. Na **Skonfiguruj teraz schematu organizacyjnego** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+7. W sekcji **Konfigurowanie schematu orgie teraz** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -128,11 +128,11 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z teraz schematu orga
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-orgchart-now-single-sign-on"></a>Skonfiguruj teraz schematu organizacyjnego logowania jednokrotnego
+### <a name="configure-orgchart-now-single-sign-on"></a>Konfigurowanie schematu organizacyjnego teraz logowanie jednokrotne
 
-Do konfigurowania logowania jednokrotnego na **teraz schematu organizacyjnego** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej teraz schematu organizacyjnego ](mailto:ocnsupport@officeworksoftware.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować logowanie jednokrotne po stronie **OrgChart Now,** musisz wysłać pobrany **kod XML metadanych federacji** i odpowiednie skopiowane adresy URL z witryny Azure portal do [zespołu pomocy technicznej OrgChart Now](mailto:ocnsupport@officeworksoftware.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -142,7 +142,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -157,19 +157,19 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do schematu organizacyjnego teraz.
+W tej sekcji można włączyć Britta Simon do korzystania z azure logowania jednokrotnego, udzielając dostępu do OrgChart Teraz.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **teraz schematu organizacyjnego**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz **pozycję Wszystkie aplikacje**, a następnie wybierz **opcję Schemat Teraz .**
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **teraz schematu organizacyjnego**.
+2. Na liście aplikacji wybierz **pozycję OrgChart Now**.
 
-    ![Schemat organizacyjny teraz link na liście aplikacji](common/all-applications.png)
+    ![Łącze OrgChart Now na liście Aplikacje](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -181,61 +181,61 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-orgchart-now-test-user"></a>Tworzenie użytkownika testowego teraz schematu organizacyjnego
+### <a name="create-orgchart-now-test-user"></a>Utwórz użytkownika testowego OrgChart Now
 
-Aby umożliwić użytkownikom usługi Azure AD zalogować się do chwili schematu organizacyjnego, musi być obsługiwana w chwili schematu organizacyjnego. 
+Aby umożliwić użytkownikom usługi Azure AD zalogować się do orgchart teraz, muszą być aprowizować do OrgChart Teraz. 
 
-1. Schemat organizacyjny teraz obsługę just-in-time, który jest domyślnie włączona. Nowy użytkownik jest tworzony podczas próby dostępu teraz schematu organizacyjnego, jeśli go jeszcze nie istnieje. Tylko będzie utworzyć użytkownika w czasie inicjowania obsługi funkcji **tylko do odczytu** użytkownika, gdy żądanie logowania jednokrotnego pochodzi z rozpoznanym dostawcy tożsamości i wiadomości e-mail w potwierdzenie SAML nie znajduje się na liście użytkowników. Automatycznie inicjowania obsługi funkcji, musisz utworzyć grupę dostępu, pod tytułem **ogólne** teraz schematu organizacyjnego. Wykonaj poniższe kroki, aby utworzyć grupę dostępu:
+1. OrgChart Now obsługuje just-in-time inicjowania obsługi administracyjnej, która jest domyślnie włączona. Nowy użytkownik jest tworzony podczas próby uzyskania dostępu do schematu OrgChart Now, jeśli jeszcze nie istnieje. Funkcja inicjowania obsługi administracyjnej użytkownika just-in-time utworzy tylko użytkownika tylko do **odczytu,** gdy żądanie jednokrotnego pochodzi z rozpoznanego dostawcy tożsamości, a wiadomość e-mail w asercji SAML nie zostanie znaleziona na liście użytkowników. Dla tej funkcji automatycznego inicjowania obsługi administracyjnej należy utworzyć grupę dostępu o nazwie **Ogólne** w OrgChart Teraz. Wykonaj poniższe kroki, aby utworzyć grupę dostępu:
 
-    a. Przejdź do **Zarządzaj grupami** opcja po kliknięciu przycisku **koło zębate** w prawym górnym rogu interfejsu użytkownika.
+    a. Przejdź do opcji **Zarządzaj grupami** po kliknięciu **koła zębatego** w prawym górnym rogu interfejsu użytkownika.
 
-    ![Schemat organizacyjny teraz grup](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
+    ![Grupy OrgChart Now](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
 
-    b. Wybierz **Dodaj** ikonę i nazwy grupy **ogólne** kliknięcie **OK**. 
+    b. Wybierz ikonę **Dodaj** i nazwij grupę **Ogólne,** a następnie kliknij przycisk **OK**. 
 
-    ![Dodaj teraz schematu organizacyjnego](./media/orgchartnow-tutorial/tutorial_orgchartnow_add.png)
+    ![OrgChart Teraz dodaj](./media/orgchartnow-tutorial/tutorial_orgchartnow_add.png)
 
-    c. Wybierz foldery, które mają użytkownicy ogólne lub tylko do odczytu, aby można było uzyskać dostęp do:
+    d. Wybierz foldery, do których chcesz, aby użytkownicy ogólnego lub tylko do odczytu mogli uzyskać dostęp:
 
-    ![Schemat organizacyjny teraz folderów](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
+    ![Foldery OrgChart Now](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
 
-    d. **Zablokuj** foldery tak, aby można je modyfikować tylko administratorom. Następnie naciśnij klawisz **OK**.
+    d. **Zablokuj** foldery, aby mogli je modyfikować tylko użytkownicy administratora. Następnie naciśnij **przycisk OK**.
 
-    ![Schemat organizacyjny teraz blokują](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
+    ![OrgChart Teraz blokada](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
 
-2. Aby utworzyć **administratora** użytkowników i **odczytu/zapisu** użytkowników, należy ręcznie utworzyć użytkownika w celu uzyskania dostępu do ich poziomu uprawnień przy użyciu logowania jednokrotnego. Aby aprowizować konto użytkownika, wykonaj następujące czynności:
+2. Aby utworzyć użytkowników **administratora** i **użytkowników odczytu/zapisu,** należy ręcznie utworzyć użytkownika, aby uzyskać dostęp do ich poziomu uprawnień za pośrednictwem usługi SSO. Aby aprowizować konto użytkownika, wykonaj następujące czynności:
 
-    a. Zaloguj się do schematu organizacyjnego teraz jako Administrator zabezpieczeń.
+    a. Zaloguj się do OrgChart Now jako administrator zabezpieczeń.
 
-    b.  Kliknij pozycję **ustawienia** w prawym górnym rogu, a następnie przejdź do **Zarządzanie użytkownikami**.
+    b.  Kliknij **ustawienia** w prawym górnym rogu, a następnie przejdź do **pozycji Zarządzaj użytkownikami**.
 
-    ![Schemat organizacyjny teraz ustawienia](./media/orgchartnow-tutorial/tutorial_orgchartnow_settings.png)
+    ![Ustawienia OrgChart Now](./media/orgchartnow-tutorial/tutorial_orgchartnow_settings.png)
 
-    c. Kliknij pozycję **Dodaj** i wykonaj następujące czynności:
+    d. Kliknij przycisk **Dodaj** i wykonaj następujące czynności:
 
-    ![Zarządzanie teraz schematu organizacyjnego](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
+    ![Schemat OrgChart teraz zarządza](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
 
-    * W **identyfikator użytkownika** polu tekstowym wprowadź identyfikator użytkownika, takich jak **brittasimon\@contoso.com**.
+    * W polu **tekstowym Identyfikator użytkownika** wprowadź identyfikator użytkownika, taki jak **\@brittasimon contoso.com**.
 
-    * W **adres E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak **brittasimon\@contoso.com**.
+    * W polu tekstowym **Adres e-mail** wprowadź adres e-mail użytkownika, takiego jak **\@brittasimon contoso.com**.
 
-    * Kliknij pozycję **Add** (Dodaj).
+    * Kliknij przycisk **Dodaj**.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka teraz schematu organizacyjnego w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze teraz schematu organizacyjnego, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka OrgChart Now w Panelu dostępu należy automatycznie zalogować się do schematu OrgChart Now, dla którego skonfigurowano logującą się jednoślik. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

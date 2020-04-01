@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 6db2c907abc495ca3c88e1e73e885043a8f19997
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 636f2e6139ad081d1e2fc67462a74cb7e18e3ff0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481538"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475872"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Samouczek: Konfigurowanie bezpiecznego protokołu LDAP dla domeny zarządzanej usług domenowych usługi active directory platformy Azure
 
@@ -30,7 +30,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 > * Konfigurowanie bezpiecznego protokołu LDAP do użytku przez publiczny Internet
 > * Powiąż i przetestuj bezpieczną usługę LDAP dla domeny zarządzanej usług Azure AD DS
 
-Jeśli nie masz subskrypcji platformy Azure, [utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -114,13 +114,13 @@ Te dwa klucze, klucze *prywatne* i *publiczne,* upewnij się, że tylko odpowied
 
 Aby można było użyć certyfikatu cyfrowego utworzonego w poprzednim kroku z domeną zarządzaną usługą Azure AD DS, wyeksportuj certyfikat do *pliku . *Plik certyfikatu PFX zawierający klucz prywatny.
 
-1. Aby otworzyć okno dialogowe *Uruchom,* wybierz klawisze **Windows** i **R.**
+1. Aby otworzyć okno dialogowe *Uruchom,* wybierz klawisze **Windows** + **R.**
 1. Otwórz program Microsoft Management Console (MMC), wprowadzając **program mmc** w oknie dialogowym *Uruchom,* a następnie wybierz przycisk **OK**.
-1. W wierszu **Kontrola konta użytkownika** kliknij przycisk **Tak,** aby uruchomić program MMC jako administrator.
-1. W menu **Plik** kliknij polecenie **Dodaj/Usuń przystawkę...**
+1. W wierszu **Kontrola konta użytkownika** wybierz pozycję **Tak,** aby uruchomić program MMC jako administrator.
+1. Z menu **Plik** wybierz polecenie **Dodaj/Usuń przystawkę...**
 1. W kreatorze **przystawki Certyfikaty** wybierz pozycję **Konto komputera**, a następnie wybierz pozycję **Dalej**.
 1. Na stronie **Wybierz komputer** wybierz pozycję **Komputer lokalny: (komputer, na który jest uruchomiona)**, a następnie wybierz pozycję **Zakończ**.
-1. W oknie dialogowym **Dodawanie lub usuwanie przystawek** kliknij przycisk **OK,** aby dodać przystawkę certyfikaty do programu MMC.
+1. W oknie dialogowym **Dodawanie lub usuwanie przystawek** wybierz przycisk **OK,** aby dodać przystawkę certyfikaty do programu MMC.
 1. W oknie programu MMC rozwiń pozycję **Katalog główny konsoli**. Wybierz **pozycję Certyfikaty (komputer lokalny),** a następnie rozwiń węzeł **osobisty,** a następnie węzeł **Certyfikaty.**
 
     ![Otwieranie magazynu certyfikatów osobistych w programie Microsoft Management Console](./media/tutorial-configure-ldaps/open-personal-store.png)
@@ -177,9 +177,6 @@ W *. *Plik certyfikatu CER można teraz dystrybuować do komputerów klienckich,
 Po utworzeniu i wyeksportowanym certyfikatie cyfrowym zawierającym klucz prywatny i komputerze klienckim ustawionym na zaufanie połączeniu włącz teraz bezpieczną usługę LDAP w domenie zarządzanej usług Azure AD DS. Aby włączyć bezpieczne ldap w domenie zarządzanej usług Azure AD DS, wykonaj następujące kroki konfiguracji:
 
 1. W [witrynie Azure portal](https://portal.azure.com)wprowadź *usługi domeny* w polu **Zasoby wyszukiwania.** Wybierz **usługi domenowe usługi Azure AD** z wyniku wyszukiwania.
-
-    ![Wyszukiwanie i wybieranie domeny zarządzanej usług Azure AD DS w witrynie Azure portal](./media/tutorial-configure-ldaps/search-for-domain-services.png)
-
 1. Wybierz domenę zarządzana, na przykład *aaddscontoso.com*.
 1. Po lewej stronie okna usług Ad DS wybierz pozycję **Secure LDAP**.
 1. Domyślnie bezpieczny dostęp LDAP do domeny zarządzanej jest wyłączony. Przełącz **secure LDAP,** aby **włączyć**.
@@ -235,10 +232,10 @@ Dzięki aktywnej bezpiecznej usłudze LDAP dostęp w Internecie zaktualizuj stre
 
 Skonfiguruj zewnętrznego dostawcę DNS, aby utworzyć rekord hosta, taki jak *ldaps*, aby rozwiązać ten zewnętrzny adres IP. Aby najpierw przetestować lokalnie na komputerze, można utworzyć wpis w pliku hostów systemu Windows. Aby pomyślnie edytować plik hosts na komputerze lokalnym, otwórz *Notatnik* jako administrator, a następnie otwórz plik *C:\Windows\System32\drivers\etc*
 
-Poniższy przykładowy wpis DNS z zewnętrznym dostawcą DNS lub w pliku hostów lokalnych rozwiązuje ruch dla *ldaps.aaddscontoso.com* z zewnętrznym adresem IP *40.121.19.239:*
+Poniższy przykładowy wpis DNS z zewnętrznym dostawcą DNS lub w pliku hostów lokalnych rozwiązuje ruch dla *ldaps.aaddscontoso.com* z zewnętrznym adresem IP *168.62.205.103:*
 
 ```
-40.121.19.239    ldaps.aaddscontoso.com
+168.62.205.103    ldaps.aaddscontoso.com
 ```
 
 ## <a name="test-queries-to-the-managed-domain"></a>Testowanie zapytań do domeny zarządzanej
@@ -261,7 +258,7 @@ Aby wyświetlić obiekty przechowywane w domenie zarządzanej usług Azure AD DS
 1. Wybierz opcję menu **Widok,** a następnie wybierz polecenie **Drzewo**.
 1. Pozostaw pole *BaseDN* puste, a następnie wybierz **przycisk OK**.
 1. Wybierz kontener, na przykład *Użytkownicy usługi AADDC,* a następnie wybierz kontener z prawej i wybierz polecenie **Wyszukaj**.
-1. Pozostaw wstępnie wypełnione pola, a następnie wybierz pozycję **Uruchom**. Wyniki kwerendy są wyświetlane w oknie po prawej stronie.
+1. Pozostaw wstępnie wypełnione pola, a następnie wybierz pozycję **Uruchom**. Wyniki kwerendy są wyświetlane w oknie po prawej stronie, jak pokazano w poniższym przykładzie danych wyjściowych:
 
     ![Wyszukiwanie obiektów w domenie zarządzanej usług Azure AD DS przy użyciu programu LDP.exe](./media/tutorial-configure-ldaps/ldp-query.png)
 
@@ -273,7 +270,7 @@ Jeśli wpis DNS został dodany do pliku hostów lokalnych komputera w celu przet
 
 1. Na komputerze lokalnym otwórz *Notatnik* jako administrator
 1. Przejdź do pliku *C:\Windows\System32\drivers\etc*
-1. Usuwanie wiersza dodanego rekordu, takiego jak`40.121.19.239    ldaps.aaddscontoso.com`
+1. Usuwanie wiersza dodanego rekordu, takiego jak`168.62.205.103    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 692834903899448707200b24a955301e29e14f90
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257279"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478454"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Zarządzanie serwerem konfiguracji odzyskiwania po awarii VMware VMware VMware VM/server physical server
 
@@ -270,9 +270,9 @@ Opcjonalnie można usunąć serwer konfiguracji przy użyciu programu PowerShell
 3. Aby wygenerować plik hasła, wykonaj **plik genpassphrase.exe -v > MobSvc.passphrase**.
 4. Hasło będzie przechowywane w pliku znajdującym się pod adresem **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**.
 
-## <a name="renew-ssl-certificates"></a>Odnawianie certyfikatów SSL
+## <a name="renew-tlsssl-certificates"></a>Odnawianie certyfikatów TLS/SSL
 
-Serwer konfiguracji ma wbudowany serwer sieci web, który organizuje działania usługi mobilności, serwery przetwarzania i główne serwery docelowe podłączone do niego. Serwer sieci web używa certyfikatu SSL do uwierzytelniania klientów. Certyfikat wygasa po trzech latach i może zostać odnowiony w dowolnym momencie.
+Serwer konfiguracji ma wbudowany serwer sieci web, który organizuje działania usługi mobilności, serwery przetwarzania i główne serwery docelowe podłączone do niego. Serwer sieci web używa certyfikatu TLS/SSL do uwierzytelniania klientów. Certyfikat wygasa po trzech latach i może zostać odnowiony w dowolnym momencie.
 
 ### <a name="check-expiry"></a>Sprawdź wygaśnięcie
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/03/2020
 ms.author: tarcher
 ms.openlocfilehash: e9b8ad7a7fcc499f8760b56e6a737be8a6a9e06c
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79200492"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -25,7 +25,7 @@ Usługa Jenkins obsługuje model, w którym serwer Jenkins deleguje pracę do je
 
 ## <a name="connect-to-jenkins"></a>Nawiązywanie połączenia z usługą Jenkins
 
-Przejdź do maszyny wirtualnej (na przykład `http://jenkins2517454.eastus.cloudapp.azure.com/`) w przeglądarce sieci Web. Konsola usługi Jenkins nie jest dostępna za pośrednictwem niezabezpieczonych połączeń HTTP, więc na stronie będą podane instrukcje, aby uzyskać dostęp do tej konsoli w sposób bezpieczny z komputera przy użyciu tunelu SSH.
+Przejdź do maszyny wirtualnej `http://jenkins2517454.eastus.cloudapp.azure.com/`(na przykład) w przeglądarce internetowej. Konsola usługi Jenkins nie jest dostępna za pośrednictwem niezabezpieczonych połączeń HTTP, więc na stronie będą podane instrukcje, aby uzyskać dostęp do tej konsoli w sposób bezpieczny z komputera przy użyciu tunelu SSH.
 
 ![Odblokowywanie usługi Jenkins](./media/jenkins-install-solution-template-steps/jenkins-ssh-instructions.png)
 
@@ -67,7 +67,7 @@ Wybierz kartę **Kompilacja**, a następnie wybierz pozycję **Dodaj krok kompil
 
 ![Kompilowanie przy użyciu otoki Gradle](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-config.png) 
 
-Wybierz pozycję **Zaawansowane**, a następnie wprowadź wartość `complete` w polu **Główny skrypt kompilacji**. Wybierz pozycję **Zapisz**.
+Wybierz pozycję **Zaawansowane**, a następnie wprowadź wartość `complete` w polu **Główny skrypt kompilacji**. Wybierz **pozycję Zapisz**.
 
 ![Konfigurowanie ustawień zaawansowanych w kroku dotyczącym kompilacji i otoki Gradle](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-advances.png) 
 

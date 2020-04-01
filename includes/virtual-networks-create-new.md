@@ -9,48 +9,48 @@ ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
 ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78244981"
 ---
 ## <a name="create-the-virtual-network"></a>Tworzenie sieci wirtualnej
 
 W tej sekcji utworzysz sieć wirtualną i podsieć.
 
-1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób > sieci > sieci wirtualnej** lub Wyszukaj **sieć wirtualną** w polu wyszukiwania.
+1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób > sieć > sieci wirtualnej** lub wyszukaj **sieć wirtualną** w polu wyszukiwania.
 
-2. W obszarze **Utwórz sieć wirtualną**wprowadź lub wybierz te informacje na karcie **podstawowe** :
+2. W **obszarze Tworzenie sieci wirtualnej**wprowadź lub wybierz te informacje na karcie **Podstawy:**
 
     | **Ustawienie**          | **Wartość**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **Szczegóły projektu**  |                                                                 |
-    | Subskrypcja     | Wybierz swoją subskrypcję platformy Azure                                  |
-    | Grupa zasobów   | Wybierz pozycję **Utwórz nowy**, wprowadź **\<resource-group-Name >** , a następnie wybierz pozycję OK lub wybierz istniejącą **\<nazwę grupy zasobów >** na podstawie parametrów. |
+    | Subskrypcja     | Wybierz subskrypcję platformy Azure                                  |
+    | Grupa zasobów   | Wybierz **pozycję Utwórz nową**, wprowadź ** \<>nazwa grupy zasobów **, a następnie wybierz przycisk OK lub wybierz istniejącą ** \<nazwę grupy zasobów>** na podstawie parametrów. |
     | **Szczegóły wystąpienia** |                                                                 |
-    | Name (Nazwa)             | Wprowadź **\<nazwę sieci wirtualnej >**                                    |
-    | Region           | Wybierz pozycję **\<nazwa regionu >** |
+    | Nazwa             | Wprowadź ** \<>nazwa sieci wirtualnej**                                    |
+    | Region           | Wybierz ** \<>nazwa regionu** |
 
-3. Wybierz kartę **adresy IP** lub wybierz przycisk **Dalej: adresy IP** w dolnej części strony.
+3. Wybierz kartę **Adresy IP** lub wybierz przycisk **Dalej: Adresy IP** u dołu strony.
 
-4. Na karcie **adresy IP** wprowadź następujące informacje:
-
-    | Ustawienie            | Wartość                      |
-    |--------------------|----------------------------|
-    | Przestrzeń adresów IPv4 | Wprowadź **\<IPv4-Address-space >** |
-
-5. W obszarze **Nazwa podsieci**wybierz pozycję **domyślny**wyraz.
-
-6. W obszarze **Edytuj podsieć**wprowadź następujące informacje:
+4. Na karcie **Adresy IP** wprowadź następujące informacje:
 
     | Ustawienie            | Wartość                      |
     |--------------------|----------------------------|
-    | Nazwa podsieci | Wprowadź **\<nazwę podsieci >** |
-    | Zakres adresów podsieci | Wprowadź **\<podzakresu adresów podsieci >**
+    | Przestrzeń adresowa IPv4 | Wprowadź ** \<>IPv4-address-space** |
 
-7. Wybierz pozycję **Zapisz**.
+5. W **obszarze Nazwa podsieci**wybierz słowo **domyślne**.
 
-8. Wybierz kartę **Recenzja + tworzenie** lub wybierz przycisk **Recenzja + tworzenie** .
+6. W **podsieci Edytuj**wprowadź te informacje:
 
-9. Wybierz pozycję **Utwórz**.
+    | Ustawienie            | Wartość                      |
+    |--------------------|----------------------------|
+    | Nazwa podsieci | Wprowadź ** \<>nazwa podsieci** |
+    | Zakres adresów podsieci | Wprowadź ** \<>zakresu adresu podsieci**
+
+7. Wybierz **pozycję Zapisz**.
+
+8. Wybierz kartę **Recenzja + utwórz** lub wybierz przycisk **Recenzja + utwórz.**
+
+9. Wybierz **pozycję Utwórz**.

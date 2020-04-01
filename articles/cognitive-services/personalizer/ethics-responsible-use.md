@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 11b626c0033814f0886ac76fff0c5d4087a80554
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e422284b871214dbeca31b5dd17b9177a18ad3c8
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71720238"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478096"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Wytyczne dotyczące odpowiedzialnej implementacji Personalizer
 
@@ -25,7 +25,7 @@ Wytyczne te nie mają na celu doradztwa prawnego i należy oddzielnie upewnić s
 
 Ponadto, projektując aplikację przy użyciu Personalizer, należy wziąć pod uwagę szeroki zestaw obowiązków, które masz przy opracowywaniu dowolnego systemu AI zorientowanego na dane, w tym etyki, prywatności, bezpieczeństwa, bezpieczeństwa, włączenia, przejrzystości i odpowiedzialności. Możesz przeczytać więcej na ten temat w sekcji [Zalecane czytanie.](#recommended-reading)
 
-Możesz użyć następującej zawartości jako początkowej listy kontrolnej i dostosować ją i uściślić do scenariusza. Ten dokument zawiera dwie główne sekcje: Pierwsza poświęcona jest wyróżnianiu kwestii odpowiedzialnego wykorzystania przy wyborze scenariuszy, funkcji i nagród dla Personalizer. Drugie podejście do zestawu wartości, które firma Microsoft uważa za należy wziąć pod uwagę przy tworzeniu systemów AI, i zapewnia zasłyniętą sugestie i zagrożenia dotyczące wpływu personalizatora na korzystanie z personalizatora. 
+Możesz użyć następującej zawartości jako początkowej listy kontrolnej i dostosować ją i uściślić do scenariusza. Ten dokument zawiera dwie główne sekcje: Pierwsza poświęcona jest wyróżnianiu kwestii odpowiedzialnego wykorzystania przy wyborze scenariuszy, funkcji i nagród dla Personalizer. Drugie podejście do zestawu wartości, które firma Microsoft uważa za należy wziąć pod uwagę przy tworzeniu systemów AI, i zapewnia zasłyniętą sugestie i zagrożenia dotyczące wpływu personalizatora na korzystanie z personalizatora.
 
 
 ## <a name="your-responsibility"></a>Twoja odpowiedzialność
@@ -42,18 +42,18 @@ Firma Microsoft nieustannie wkładamy wysiłek w swoje narzędzia i dokumenty, a
 Implementacja Personalizer może mieć wielką wartość dla użytkowników i firmy. Aby wdrożyć Personalizer odpowiedzialnie, zacznij od rozważenia następujących wytycznych, gdy:
 
 * Wybieranie przypadków użycia w celu zastosowania personalizacji.
-* Budowanie [funkcji nagradzania](https://github.com/Azure/personalization-rl/blob/master/docs/concepts-rewards.md).
-* Wybór [funkcji](https://github.com/Azure/personalization-rl/blob/master/docs/concepts-features.md) dotyczących kontekstu i możliwych działań, które będą używane do personalizacji.
+* Budowanie [funkcji nagradzania](concept-rewards.md).
+* Wybór [funkcji](concepts-features.md) dotyczących kontekstu i możliwych działań, które będą używane do personalizacji.
 
 
 ## <a name="choosing-use-cases-for-personalizer"></a>Wybór przypadków użycia personalizatora
 
-Korzystanie z usługi, która uczy się personalizować zawartość i interfejsy użytkownika jest przydatne. Może być również błędnie stosowany, jeśli sposób personalizacji tworzy negatywne skutki uboczne w świecie rzeczywistym, w tym jeśli użytkownicy nie są świadomi personalizacji zawartości. 
+Korzystanie z usługi, która uczy się personalizować zawartość i interfejsy użytkownika jest przydatne. Może być również błędnie stosowany, jeśli sposób personalizacji tworzy negatywne skutki uboczne w świecie rzeczywistym, w tym jeśli użytkownicy nie są świadomi personalizacji zawartości.
 
-Przykłady zastosowań Personalizer z podwyższonym potencjałem negatywnych skutków ubocznych lub brak przejrzystości obejmują scenariusze, w których "nagroda" zależy od wielu długoterminowych złożonych czynników, które, gdy nadmiernie uproszczone do natychmiastowej nagrody może mieć niekorzystne wyników dla osób fizycznych. Są one uważane za "wtórne" wybory lub wybory, które wiążą się z ryzykiem szkody. Przykład: 
+Przykłady zastosowań Personalizer z podwyższonym potencjałem negatywnych skutków ubocznych lub brak przejrzystości obejmują scenariusze, w których "nagroda" zależy od wielu długoterminowych złożonych czynników, które, gdy nadmiernie uproszczone do natychmiastowej nagrody może mieć niekorzystne wyniki dla osób fizycznych. Są one uważane za "wtórne" wybory lub wybory, które wiążą się z ryzykiem szkody. Przykład:
 
 
-* **Finanse**: Personalizacja ofert produktów pożyczkowych, finansowych i ubezpieczeniowych, w których czynniki ryzyka są oparte na danych, o których osoby fizyczne nie wiedzą, nie mogą uzyskać lub nie mogą się spierać. 
+* **Finanse**: Personalizacja ofert produktów pożyczkowych, finansowych i ubezpieczeniowych, w których czynniki ryzyka są oparte na danych, o których osoby fizyczne nie wiedzą, nie mogą uzyskać lub nie mogą się spierać.
 * **Edukacja**: Personalizacja szeregów dla kursów szkolnych i instytucji edukacyjnych, w których zalecenia mogą propagować uprzedzenia i zmniejszać świadomość użytkowników na temat innych opcji.
 * **Demokracja i uczestnictwo obywatelskie**: Personalizacja treści dla użytkowników w celu wpływania na opinie jest konsekwencją i manipulacją.
 * **Ocena nagrody innych firm:** Personalizacja przedmiotów, w których nagroda jest oparta na ocenie użytkownika przez osoby trzecie, zamiast nagrody generowanej przez własne zachowanie użytkownika.
@@ -85,8 +85,8 @@ Zastosuj następujące praktyki przy wyborze funkcji do wysyłania w kontekstach
 * Należy wziąć pod uwagę legalność i etykę korzystania z niektórych funkcji dla niektórych aplikacji, i czy niewinnie wyglądające funkcje mogą być proxy dla innych, które chcesz lub należy unikać,
 * Bądź przejrzysty dla użytkowników, że algorytmy i analiza danych są używane do personalizacji opcji, które widzą.
 * Zadaj sobie pytanie: Czy moi użytkownicy dbają i są szczęśliwi, gdybym użył tych informacji do personalizacji treści dla nich? Czy czuję się komfortowo pokazując im, jak podjęto decyzję o podkreśleniu lub ukryciu niektórych przedmiotów?
-* Użyj danych behawioralnych, a nie klasyfikacji lub segmentacji na podstawie innych cech. Informacje demograficzne były tradycyjnie wykorzystywane przez sprzedawców detalicznych ze względów historycznych - atrybuty demograficzne wydawały się proste do zebrania i działania przed erą cyfrową, ale pytanie, jak istotne są informacje demograficzne, gdy masz rzeczywistą interakcję, danych kontekstowych i historycznych, które bardziej odnoszą się do preferencji i tożsamości użytkowników.
-* Zastanów się, jak zapobiec "fałszowaniu" funkcji przez złośliwych użytkowników, co w przypadku wykorzystania w dużych ilościach może prowadzić do szkolenia Personalizer w wprowadzający w błąd sposób, aby celowo zakłócać, zawstydzać i nękać niektóre klasy użytkowników. 
+* Użyj danych behawioralnych, a nie klasyfikacji lub segmentacji na podstawie innych cech. Informacje demograficzne były tradycyjnie wykorzystywane przez sprzedawców detalicznych ze względów historycznych - atrybuty demograficzne wydawały się proste do zebrania i działania przed erą cyfrową , ale pytanie, jak istotne są informacje demograficzne, gdy masz rzeczywistą interakcję, dane kontekstowe i historyczne, które bardziej odnoszą się do preferencji i tożsamości użytkowników.
+* Zastanów się, jak zapobiec "fałszowaniu" funkcji przez złośliwych użytkowników, co w przypadku wykorzystania w dużych ilościach może prowadzić do szkolenia Personalizer w wprowadzający w błąd sposób, aby celowo zakłócać, zawstydzać i nękać niektóre klasy użytkowników.
 * Jeśli jest to właściwe i wykonalne, zaprojektuj aplikację, aby umożliwić użytkownikom zgodę lub zrezygnować z posiadania niektórych funkcji osobistych. Można je zgrupować, na przykład "Informacje o lokalizacji", "Informacje o urządzeniu", "Historia wcześniejszych zakupów" itp.
 
 
@@ -101,13 +101,13 @@ Na przykład nagradzanie kliknięć sprawi, że Usługa Personalizer będzie szu
 Jako kontrastujący przykład, witryna z wiadomościami może chcieć ustawić nagrody powiązane z czymś bardziej znaczącym niż kliknięcia, na przykład "Czy użytkownik spędzał wystarczająco dużo czasu na przeczytaniu treści?" "Czy kliknęli na odpowiednie artykuły lub referencje?". Z Personalizer łatwo jest ściśle powiązać dane z nagrodami. Ale uważaj, aby nie zmylić krótkoterminowego zaangażowania użytkowników z dobrymi wynikami.
 
 ### <a name="unintended-consequences-from-reward-scores"></a>Niezamierzone konsekwencje z wyników nagród
-Wyniki nagród mogą być tworzone z najlepszymi intencjami, ale nadal mogą powodować nieoczekiwane konsekwencje lub niezamierzone wyniki dotyczące sposobu, w jaki Personalizator plasuje zawartość. 
+Wyniki nagród mogą być tworzone z najlepszymi intencjami, ale nadal mogą powodować nieoczekiwane konsekwencje lub niezamierzone wyniki dotyczące sposobu, w jaki Personalizator plasuje zawartość.
 
 Rozważmy następujące przykłady:
 
 * Nagradzanie personalizacji treści wideo na procentie oglądanej długości filmu prawdopodobnie będzie miało tendencję do klasyfikowania krótszych filmów.
 * Nagradzanie akcji w mediach społecznościowych, bez analizy nastrojów, w jaki sposób są udostępniane lub sama treść, może prowadzić do rankingu obraźliwe, niemoderowane lub zapalnych treści, które mają tendencję do podżegania do wielu "zaangażowania", ale dodaje niewiele wartości.
-* Nagradzanie akcji na elementach interfejsu użytkownika, których użytkownicy nie spodziewają się zmienić, może zakłócać użyteczność i przewidywalność interfejsu użytkownika, gdzie przyciski zaskakująco zmieniają lokalizację lub cel bez ostrzeżenia, utrudniając niektóre z nich użytkowników, aby utrzymać produktywność.
+* Nagradzanie akcji na elementy interfejsu użytkownika, że użytkownicy nie spodziewają się zmienić może zakłócać użyteczność i przewidywalność interfejsu użytkownika, gdzie przyciski są zaskakująco zmiana lokalizacji lub celu bez ostrzeżenia, co utrudnia niektórych grup użytkowników do utrzymania produktywnej.
 
 Zaimplementuj następujące najlepsze rozwiązania:
 
@@ -122,7 +122,7 @@ Poniżej przedstawiono obszary projektowania odpowiedzialnych wdrożeń SI. Dowi
 ![Wartości AI z przyszłych obliczeń](media/ethics-and-responsible-use/ai-values-future-computed.png)
 
 ### <a name="accountability"></a>Odpowiedzialność
-*Osoby, które projektują i wdrażają systemy AI, muszą być odpowiedzialne za działanie ich systemów.* 
+*Osoby, które projektują i wdrażają systemy AI, muszą być odpowiedzialne za działanie ich systemów.*
 
 * Tworzenie wewnętrznych wytycznych dotyczących wdrażania personalizatora, dokumentowania i przekazywania ich zespołowi, kadrze kierowniczej i dostawcom.
 * Wykonywanie okresowych przeglądów sposobu obliczania wyników nagród, wykonywanie ocen offline, aby zobaczyć, jakie funkcje wpływają na personalizator, i używanie wyników w celu wyeliminowania niepotrzebnych i niepotrzebnych funkcji.
@@ -155,9 +155,9 @@ Poniżej przedstawiono obszary projektowania odpowiedzialnych wdrożeń SI. Dowi
 *Systemy AI powinny być bezpieczne i szanować prywatność.* Podczas korzystania z Personalizer:
 
 * *Z góry poinformuj użytkowników o gromadzonych danych oraz o tym, w jaki sposób są wykorzystywane, oraz uzyskaj ich wcześniej zgodę,* przestrzegając lokalnych i branżowych przepisów.
-* *Zapewnij kontrolę użytkownika chroniącą prywatność.* W przypadku aplikacji przechowujących dane osobowe należy rozważyć udostępnienie łatwego do znalezienia przycisku dla funkcji, takich jak: 
-   * `Show me all you know about me`    
-   * `Forget my last interaction` 
+* *Zapewnij kontrolę użytkownika chroniącą prywatność.* W przypadku aplikacji przechowujących dane osobowe należy rozważyć udostępnienie łatwego do znalezienia przycisku dla funkcji, takich jak:
+   * `Show me all you know about me`
+   * `Forget my last interaction`
    * `Delete all you know about me`
 
 W niektórych przypadkach mogą one być wymagane z prawnego punktu widzenia. Należy wziąć pod uwagę kompromisy w modelach przekwalifikowania okresowo, aby nie zawierają śladów usuniętych danych.
@@ -165,7 +165,7 @@ W niektórych przypadkach mogą one być wymagane z prawnego punktu widzenia. Na
 ### <a name="inclusiveness"></a>Brak wykluczeń
 *Zaspokajaj szeroki zakres ludzkich potrzeb i doświadczeń.*
 * *Zapewnij spersonalizowane środowisko dla interfejsów z obsługą ułatwień dostępu.* Wydajność, która wynika z dobrej personalizacji - stosowanej w celu zmniejszenia wysiłku, ruchu i niepotrzebnego powtarzania interakcji - może być szczególnie korzystna dla osób niepełnosprawnych.
-* *Dostosuj zachowanie aplikacji do kontekstu*. Personalizer można użyć do rozróżniania między intencjami w czacie bot, na przykład, jak właściwa interpretacja może być kontekstowe i jeden rozmiar może nie pasować do wszystkich. 
+* *Dostosuj zachowanie aplikacji do kontekstu*. Personalizer można użyć do rozróżniania między intencjami w czacie bot, na przykład, jak właściwa interpretacja może być kontekstowe i jeden rozmiar może nie pasować do wszystkich.
 
 
 ## <a name="proactive-readiness-for-increased-data-protection-and-governance"></a>Proaktywna gotowość do zwiększenia ochrony danych i zarządzania nimi
@@ -185,7 +185,7 @@ Rozważ utworzenie metod zgłaszania przez członków zespołu, użytkowników i
 Każda osoba myśląca o skutkach ubocznych korzystania z jakiejkolwiek technologii jest ograniczona przez ich perspektywy i doświadczenia życiowego. Poszerz zakres dostępnych opinii, wprowadzając bardziej zróżnicowane głosy do swoich zespołów, użytkowników lub rad doradczych; jest to możliwe i zachęcane do wypowiadania się. Rozważ materiały szkoleniowe i szkoleniowe, aby jeszcze bardziej poszerzyć wiedzę zespołu w tej dziedzinie i dodać możliwość omówienia złożonych i wrażliwych tematów.
 
 Należy rozważyć traktowanie zadań dotyczących odpowiedzialnego użycia, podobnie jak inne zadania przecięcia poprzecznego w cyklu życia aplikacji, takie jak zadania związane z środowiskiem użytkownika, zabezpieczeniami lub funkcjami DevOps. Te zadania i ich wymagania nie mogą być refleksją. Należy omówić i zweryfikować odpowiedzialne stosowanie w całym cyklu życia aplikacji.
- 
+
 ## <a name="questions-and-feedback"></a>Pytania i opinie
 
 Firma Microsoft nieustannie wkładamy wysiłek w narzędzia i dokumenty, które pomagają w działaniach na tych obowiązkach. Nasz zespół zachęca do [przekazywania opinii firmie Microsoft,](mailto:cogsvcs-RL-feedback@microsoft.com?subject%3DPersonalizer%20Responsible%20Use%20Feedback&body%3D%5BPlease%20share%20any%20question%2C%20idea%20or%20concern%5D) jeśli uważasz, że dodatkowe narzędzia, funkcje produktu i dokumenty pomogą Ci wdrożyć te wytyczne dotyczące korzystania z personalizatora.

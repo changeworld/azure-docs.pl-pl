@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z ulepszeniami małych | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między małych ulepszenia i usługi Azure Active Directory.
+title: 'Samouczek: Integracja usługi Azure Active Directory z małymi ulepszeniami | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a małymi ulepszeniami.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: d2d0bbc7a6e1c680434041d1b9d55e39a96b6f44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090374"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Samouczek: Integracja usługi Azure Active Directory z ulepszeniami małych
+# <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Samouczek: Integracja usługi Azure Active Directory z małymi ulepszeniami
 
-W tym samouczku dowiesz się, jak zintegrować małych ulepszenia za pomocą usługi Azure Active Directory (Azure AD).
-Integrowanie małych ulepszenia z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować małe ulepszenia z usługą Azure Active Directory (Azure AD).
+Integracja małych ulepszeń z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do małych ulepszenia.
-* Użytkownikom można automatycznie zalogowany do poprawy mały (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Można kontrolować w usłudze Azure AD, który ma dostęp do małych ulepszeń.
+* Można włączyć użytkowników, aby automatycznie zalogować się do małych ulepszeń (logowanie jednokrotne) z ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z ulepszeniami małych, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z małymi ulepszeniami, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Ulepszenia małych pojedynczego logowania jednokrotnego włączonych subskrypcji
+* Subskrypcja z obsługą logowania jednokrotnego small improvements
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Małe obsługuje ulepszenia **SP** jednokrotne logowanie inicjowane przez
+* Małe ulepszenia obsługuje **SP** zainicjowane SSO
 
-## <a name="adding-small-improvements-from-the-gallery"></a>Dodawanie małych ulepszenia z galerii
+## <a name="adding-small-improvements-from-the-gallery"></a>Dodawanie drobnych ulepszeń z galerii
 
-Aby skonfigurować integrację małych ulepszeń w usłudze Azure AD, należy dodać małych ulepszenia z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację małych ulepszeń w usłudze Azure AD, należy dodać małe ulepszenia z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać małych ulepszenia z galerii, wykonaj następujące czynności:**
+**Aby dodać małe ulepszenia z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -61,37 +61,37 @@ Aby skonfigurować integrację małych ulepszeń w usłudze Azure AD, należy do
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **małych ulepszenia**, wybierz opcję **małych ulepszenia** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **małe ulepszenia**, wybierz pozycję **Małe ulepszenia** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
-     ![Ulepszenia małych na liście wyników](common/search-new-app.png)
+     ![Małe ulepszenia na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą małych usprawnieniach użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika poprawę małych musi zostać ustanowione.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego z małych ulepszeń na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w obszarze Małe ulepszenia.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z małych ulepszeniami, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą małych ulepszeń, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfiguruj małe ulepszenia logowania jednokrotnego](#configure-small-improvements-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego małych ulepszenia](#create-small-improvements-test-user)**  — aby odpowiednikiem Britta Simon w małych ulepszenia, połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj małe ulepszenia Logowanie jednokrotne](#configure-small-improvements-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz mały użytkownik testowy ulepszeń](#create-small-improvements-test-user)** — aby mieć odpowiednik Britta Simon w małych ulepszeń, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługi Azure AD logowanie jednokrotne z małych ulepszeniami, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą małych ulepszeń, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **małych ulepszenia** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie Integracja aplikacji **Small Improvements** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -103,20 +103,20 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne z małych ulepszeniami
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Małe ulepszenia domena i adresy URL pojedynczy informacje logowania jednokrotnego](common/sp-identifier.png)
+    ![Małe ulepszenia Domeny i adresy URL — informacje o logowanie jednokrotnym](common/sp-identifier.png)
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.small-improvements.com`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.small-improvements.com`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej małych klienta ulepszenia](mailto:support@small-improvements.com) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta small improvements,](mailto:support@small-improvements.com) aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/certificatebase64.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-6. Na **konfigurowanie małych ulepszenia** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie małych ulepszeń** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -124,33 +124,33 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne z małych ulepszeniami
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-small-improvements-single-sign-on"></a>Konfiguruj małe ulepszenia logowania jednokrotnego
+### <a name="configure-small-improvements-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w małych ulepszeniach
 
-1. W innym oknie przeglądarki Zaloguj się do witryny firmy małych ulepszenia jako administrator.
+1. W innym oknie przeglądarki zaloguj się do witryny firmy Small Improvements jako administrator.
 
-1. Na stronie głównego pulpitu nawigacyjnego kliknij **administracji** przycisku po lewej stronie.
+1. Na głównej stronie pulpitu nawigacyjnego kliknij przycisk **Administracja** po lewej stronie.
 
     ![Konfigurowanie logowania jednokrotnego](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
 
-1. Kliknij przycisk **logowania jednokrotnego SAML** przycisk **integracje** sekcji.
+1. Kliknij przycisk **JEDNOTŁk SAML** z sekcji **Integracje.**
 
     ![Konfigurowanie logowania jednokrotnego](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
 
-1. Na stronie ustawień logowania jednokrotnego wykonaj następujące czynności:
+1. Na stronie Ustawienia samego systemu syłk wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
-    a. W **punkt końcowy HTTP** pola tekstowego, Wklej wartość **adres URL logowania**, który skopiowano z witryny Azure portal.
+    a. W polu tekstowym **punktu końcowego HTTP** wklej wartość **adresu URL logowania,** który został skopiowany z witryny Azure portal.
 
-    b. Otwórz pobranego certyfikatu w programie Notatnik, skopiuj zawartość, a następnie wklej go do **x509 certyfikatu** pola tekstowego. 
+    b. Otwórz pobrany certyfikat w Notatniku, skopiuj zawartość, a następnie wklej go do pola tekstowego **certyfikatu x509.** 
 
-    c. Jeśli chcesz mieć logowania jednokrotnego i nazwy logowania formularza opcję uwierzytelniania dostępne dla użytkowników, sprawdź **włączyć dostęp za pośrednictwem logowania i hasła zbyt** opcji.  
+    d. Jeśli chcesz mieć opcję uwierzytelniania logowania i logowania dla użytkowników, sprawdź opcję **Włącz dostęp za pomocą loginu / hasła.**  
 
-    d. Wprowadź odpowiednią wartość nazwę przycisku logowania jednokrotnego logowania w **SAML monitu** pola tekstowego.  
+    d. Enter the appropriate value to Name the SSO Login button in the **SAML Prompt** textbox.  
 
-    e. Kliknij pozycję **Zapisz**.
+    e. Kliknij przycisk **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -160,7 +160,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -175,19 +175,19 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do małych ulepszenia.
+W tej sekcji można włączyć Britta Simon do korzystania z logowania jednokrotnego platformy Azure, przyznając dostęp do małych ulepszeń.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **małych ulepszenia**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz **pozycję Wszystkie aplikacje**, a następnie wybierz **pozycję Małe ulepszenia**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **małych ulepszenia**.
+2. Na liście aplikacji wybierz pozycję **Małe ulepszenia**.
 
-    ![Ulepszenia małych łącze na liście aplikacji](common/all-applications.png)
+    ![Łącze Małe ulepszenia na liście Aplikacje](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -199,52 +199,52 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-small-improvements-test-user"></a>Tworzenie użytkownika testowego małych ulepszenia
+### <a name="create-small-improvements-test-user"></a>Utwórz mały użytkownik testowy ulepszeń
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do ulepszenia małych, musi być obsługiwana w małych ulepszenia. W przypadku małych ulepszenia aprowizacji to zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD zalogowanie się do małych ulepszeń, muszą one być aprowiowane w małych ulepszeń. W przypadku małych ulepszeń inicjowania obsługi administracyjnej jest zadanie ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
-1. Zaloguj się do witryny firmy małych ulepszenia jako administrator.
+1. Zaloguj się do witryny firmy Small Improvements jako administrator.
 
-1. Na stronie głównej, przejdź do menu po lewej stronie, kliknij pozycję **administracji**.
+1. Na stronie głównej przejdź do menu po lewej stronie, kliknij pozycję **Administracja**.
 
-1. Kliknij przycisk **katalogu użytkownika** przycisku w sekcji Zarządzanie użytkownikami.
+1. Kliknij przycisk **Katalog użytkowników** w sekcji Zarządzanie użytkownikami.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
 
-1. Kliknij przycisk **dodawania użytkowników**.
+1. Kliknij **pozycję Dodaj użytkowników**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
 
-1. Na **Add Users** okno dialogowe, należy wykonać następujące czynności: 
+1. W oknie dialogowym **Dodawanie użytkowników** wykonaj następujące czynności: 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
 
-    a. Wprowadź **imię** użytkownika, takich jak **Britta**.
+    a. Wprowadź **imię** użytkownika, takiego jak **Britta**.
 
-    b. Wprowadź **nazwisko** użytkownika, takich jak **Simon**.
+    b. Wprowadź **nazwisko** użytkownika, takiego jak **Simon**.
 
-    c. Wprowadź **E-mail** użytkownika, takich jak **brittasimon@contoso.com** .
+    d. Wprowadź **adres e-mail** użytkownika w stylu **brittasimon@contoso.com**.
 
-    d. Możesz również wprowadzić osobistą wiadomość w **Wyślij wiadomość e-mail z powiadomieniem** pole. Jeśli nie chcesz wysłać powiadomienie, usuń zaznaczenie tego pola wyboru.
+    d. Możesz również wprowadzić wiadomość osobistą w polu **Wyślij powiadomienie e-mail.** Jeśli nie chcesz wysyłać powiadomienia, wyewidencjonuj to pole wyboru.
 
-    e. Kliknij przycisk **tworzenia użytkowników**.
+    e. Kliknij **pozycję Utwórz użytkowników**.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka małych ulepszenia w panelu dostępu, możesz powinny być automatycznie zalogowany do ulepszenia małe, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Małe ulepszenia w Panelu dostępu należy automatycznie zalogować się do małego ulepszenia, dla którego skonfigurowano logującą się logującą logującą. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą RFPIO | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i RFPIO.
+title: 'Samouczek: Integracja usługi Azure Active Directory z usługą RFPIO | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a programem RFPIO.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,44 +17,44 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 63d7b6af8ff76c890b98c29ded0e8bdc637b45dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67092845"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą RFPIO
+# <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Samouczek: Integracja usługi Azure Active Directory z programem RFPIO
 
-W tym samouczku dowiesz się, jak zintegrować RFPIO w usłudze Azure Active Directory (Azure AD).
-Integrowanie RFPIO z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować program RFPIO z usługą Azure Active Directory (Azure AD).
+Integracja rfpio z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do RFPIO.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do RFPIO (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Można kontrolować w usłudze Azure AD, który ma dostęp do rfpio.
+* Można włączyć użytkowników, aby automatycznie zalogować się do RFPIO (logowanie jednokrotne) z ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą RFPIO, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z usługą RFPIO, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* RFPIO logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
+* Subskrypcja z obsługą logowania jednokrotnego RFPIO
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje RFPIO **dodatkiem SP oraz dostawców tożsamości** jednokrotne logowanie inicjowane przez
+* RFPIO obsługuje jednostki SSO inicjowane przez **SP i IDP**
 
-## <a name="adding-rfpio-from-the-gallery"></a>Dodawanie RFPIO z galerii
+## <a name="adding-rfpio-from-the-gallery"></a>Dodawanie rfpio z galerii
 
-Aby skonfigurować integrację RFPIO w usłudze Azure AD, należy dodać RFPIO z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu RFPIO z usługą Azure AD, należy dodać rfpio z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać RFPIO z galerii, wykonaj następujące czynności:**
+**Aby dodać rfpio z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -62,37 +62,37 @@ Aby skonfigurować integrację RFPIO w usłudze Azure AD, należy dodać RFPIO z
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **RFPIO**, wybierz opcję **RFPIO** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **RFPIO**, wybierz **RFPIO** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
     ![RFPIO na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą RFPIO w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w RFPIO musi zostać ustanowione.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego za pomocą RFPIO na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w programie RFPIO.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą RFPIO, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednookrotne usługi Azure AD za pomocą narzędzia RFPIO, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie RFPIO logowania jednokrotnego](#configure-rfpio-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego RFPIO](#create-rfpio-test-user)**  — aby odpowiednikiem Britta Simon w RFPIO połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie jednokrotne RFPIO](#configure-rfpio-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego RFPIO](#create-rfpio-test-user)** — aby mieć odpowiednik Britta Simon w RFPIO, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z RFPIO, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednookrotne usługi Azure AD za pomocą narzędzia RFPIO, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **RFPIO** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie integracji aplikacji **RFPIO** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -102,32 +102,32 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z RFPIO, wykonaj nast
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb, wykonaj następujące kroki:
+4. W sekcji **Podstawowa konfiguracja SAML,** jeśli chcesz skonfigurować aplikację w trybie inicjowanym **przez IDP,** wykonaj następujący krok:
 
-    ![RFPIO domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-identifier.png)
+    ![Informacje o domenie rfpio i adresach URL logowania jednokrotnego](common/idp-identifier.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://www.rfpio.com`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL przy użyciu następującego wzorca:`https://www.rfpio.com`
 
     b. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
 
-    c. W **tan przekaźnika** polu tekstowym wprowadź wartość ciągu. Skontaktuj się z pomocą [zespołu pomocy technicznej RFPIO](https://www.rfpio.com/contact/) aby zyskać tę wartość.
+    d. W polu tekstowym **Stan przekazywania** wprowadź wartość ciągu. Skontaktuj się z [zespołem pomocy technicznej RFPIO,](https://www.rfpio.com/contact/) aby uzyskać tę wartość.
 
-    ![RFPIO domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-preintegrated-relay.png)
+    ![Informacje o domenie rfpio i adresach URL logowania jednokrotnego](common/idp-preintegrated-relay.png)
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+5. Kliknij **pozycję Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowanym w sp: **SP**
 
     ![image](common/both-preintegrated-signon.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://www.app.rfpio.com`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL identyfikatora i logowania jednokrotnego. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta RFPIO](https://www.rfpio.com/contact/) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości za pomocą rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta RFPIO,](https://www.rfpio.com/contact/) aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-7. Na **Konfigurowanie RFPIO** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+7. W sekcji **Konfigurowanie RFPIO** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -135,42 +135,42 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z RFPIO, wykonaj nast
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-rfpio-single-sign-on"></a>Konfigurowanie RFPIO logowania jednokrotnego
+### <a name="configure-rfpio-single-sign-on"></a>Konfigurowanie logowania jednokrotnego programu RFPIO
 
-1. W oknie przeglądarki internetowej innej, zaloguj się do **RFPIO** witryny sieci Web jako administrator.
+1. W innym oknie przeglądarki internetowej zaloguj się w witrynie **RFPIO** jako administrator.
 
-1. Kliknij listę rozwijaną dolnym lewym rogu.
+1. Kliknij na lewym dolnym rogu listy rozwijanej.
 
     ![Konfigurowanie logowania jednokrotnego](./media/rfpio-tutorial/app1.png)
 
-1. Kliknij pozycję **ustawień organizacji**. 
+1. Kliknij ustawienia **organizacji**. 
 
     ![Konfigurowanie logowania jednokrotnego](./media/rfpio-tutorial/app2.png)
 
-1. Kliknij pozycję **funkcje i integracji**.
+1. Kliknij na **FUNKCJE & INTEGRACJI**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/rfpio-tutorial/app4.png)
 
-1. W **konfiguracji logowania jednokrotnego SAML** kliknij **Edytuj**.
+1. W **konfiguracji SSO SAML** kliknij przycisk **Edytuj**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/rfpio-tutorial/app3.png)
 
-1. W tej części należy wykonać następujące czynności:
+1. W tej sekcji wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/rfpio-tutorial/app5.png)
     
-    a. Skopiuj zawartość **pobierane metadane XML** i wklej go w **Konfiguracja tożsamości** pola.
+    a. Skopiuj zawartość **pobranego pliku XML metadanych** i wklej ją do pola **konfiguracji tożsamości.**
 
     > [!NOTE]
-    >Aby skopiować zawartość pobrana **XML metadanych Federacji** użyj **Notatnik ++** lub zastosowanie mieszanej **edytora XML**.
+    >Aby skopiować zawartość pobranych **metadanych federacyjnego XML** Użyj **Notatnika++** lub właściwego **edytora XML**.
 
-    b. Kliknij przycisk **zweryfikować**.
+    b. Kliknij pozycję **Validate** (Waliduj).
 
-    c. Po kliknięciu przycisku **zweryfikować**, przerzucania **SAML(Enabled)** pozycji włączone.
+    d. Po kliknięciu **przycisku Sprawdź poprawność**, Przerzuć **SAML(Włączone)** do wł.
 
-    d. Kliknij przycisk **Submit** (Prześlij).
+    d. Kliknij **przycisk Prześlij**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -180,7 +180,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -190,23 +190,23 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
+    b. W polu **Nazwa** `brittasimon@yourcompanydomain.extension`użytkownika wpisz . Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do RFPIO.
+W tej sekcji można włączyć Britta Simon do korzystania z azure logowania jednokrotnego, przyznając dostęp do RFPIO.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **RFPIO**.
+1. W portalu Azure wybierz pozycję **Aplikacje przedsiębiorstwa**, wybierz **pozycję Wszystkie aplikacje,** a następnie wybierz pozycję **RFPIO**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
 2. Na liście aplikacji wybierz **RFPIO**.
 
-    ![Link RFPIO na liście aplikacji](common/all-applications.png)
+    ![Łącze RFPIO na liście Aplikacje](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -218,7 +218,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
@@ -226,46 +226,46 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 1. Zaloguj się do witryny firmy RFPIO jako administrator.
 
-1. Kliknij listę rozwijaną dolnym lewym rogu.
+1. Kliknij na lewym dolnym rogu listy rozwijanej.
 
     ![Konfigurowanie logowania jednokrotnego](./media/rfpio-tutorial/app1.png)
 
-1. Kliknij pozycję **ustawień organizacji**. 
+1. Kliknij ustawienia **organizacji**. 
 
     ![Konfigurowanie logowania jednokrotnego](./media/rfpio-tutorial/app2.png)
 
-1. Kliknij przycisk **członków zespołu**.
+1. Kliknij **pozycję CZŁONKOWIE ZESPOŁU**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/rfpio-tutorial/app6.png)
 
-1. Kliknij pozycję **Dodaj członków**.
+1. Kliknij na **DODAJ CZŁONKÓW**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/rfpio-tutorial/app7.png)
 
-1. W **Dodawanie nowych elementów członkowskich** sekcji. Wykonaj następujące czynności:
+1. W sekcji **Dodaj nowych członków.** Wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/rfpio-tutorial/app8.png)
 
-    a. Wprowadź **adres E-mail** w **Podaj jeden adres e-mail dla każdego wiersza** pola.
+    a. Wprowadź **adres e-mail** w polu **Wprowadź po jednym adresie e-mail na wiersz.**
 
-    b. Wybierz **roli** zgodnie z wymaganiami użytkownika.
+    b. Wybierz **rolę** zgodnie z wymaganiami.
 
-    c. Kliknij przycisk **Dodaj członków**.
+    d. Kliknij **pozycję DODAJ CZŁONKÓW**.
 
     > [!NOTE]
     > Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem umożliwiającym potwierdzenie konta, zanim stanie się ono aktywne.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka RFPIO w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze RFPIO, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka RFPIO w Panelu dostępu należy automatycznie zalogować się do urządzenia RFPIO, dla którego skonfigurowano logującą się logującą logującą. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

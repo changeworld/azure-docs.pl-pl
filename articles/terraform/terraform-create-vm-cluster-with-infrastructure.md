@@ -1,32 +1,32 @@
 ---
-title: Samouczek — Tworzenie klastra maszyn wirtualnych platformy Azure z Terraform i HCL
-description: W tym samouczku użyto Terraform i HCL do utworzenia klastra maszyn wirtualnych z systemem Linux przy użyciu modułu równoważenia obciążenia na platformie Azure
-keywords: klaster maszyny wirtualnej usługi Azure DevOps Terraform VM
+title: Samouczek — tworzenie klastra maszyn wirtualnych platformy Azure za pomocą terraform i hcl
+description: W tym samouczku używasz Terraform i HCL do tworzenia klastra maszyn wirtualnych systemu Linux z modułem równoważenia obciążenia na platformie Azure
+keywords: azure devops terraform vm wirtualny klaster maszyny
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: ae1b8eac15309ff27297d9472e70d32e68acaaac
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945269"
 ---
-# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Samouczek: Tworzenie klastra maszyn wirtualnych platformy Azure z Terraform i HCL
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Samouczek: Tworzenie klastra maszyn wirtualnych platformy Azure za pomocą terraform i hcl
 
-W tym samouczku pokazano, jak utworzyć mały klaster obliczeniowy przy użyciu [listy HCL](https://www.terraform.io/docs/configuration/syntax.html). 
+W tym samouczku zobaczysz, jak utworzyć mały klaster obliczeniowy przy użyciu [funkcji HCL](https://www.terraform.io/docs/configuration/syntax.html). 
 
-Dowiesz się, jak wykonywać następujące zadania:
+Dowiesz się, jak wykonać następujące zadania:
 
 > [!div class="checklist"]
-> * Skonfiguruj uwierzytelnianie na platformie Azure.
-> * Utwórz plik konfiguracji Terraform.
-> * Aby utworzyć moduł równoważenia obciążenia, użyj pliku konfiguracji Terraform.
-> * Użyj pliku konfiguracji Terraform do wdrożenia dwóch maszyn wirtualnych z systemem Linux w zestawie dostępności.
+> * Konfigurowanie uwierzytelniania platformy Azure.
+> * Utwórz plik konfiguracyjny Terraform.
+> * Użyj pliku konfiguracyjnego Terraform, aby utworzyć moduł równoważenia obciążenia.
+> * Użyj pliku konfiguracji Terraform, aby wdrożyć dwie maszyny wirtualne z systemem Linux w zestawie dostępności.
 > * Zainicjuj narzędzie Terraform.
-> * Utwórz plan wykonywania Terraform.
-> * Zastosuj plan wykonywania Terraform, aby utworzyć zasoby platformy Azure.
+> * Utwórz plan wykonania Terraform.
+> * Zastosuj plan wykonania Terraform, aby utworzyć zasoby platformy Azure.
 
-## <a name="1-set-up-azure-authentication"></a>1. Skonfiguruj uwierzytelnianie na platformie Azure
+## <a name="1-set-up-azure-authentication"></a>1. Konfigurowanie uwierzytelniania platformy Azure
 
 > [!NOTE]
 > Jeśli [używasz zmiennych środowiskowych programu Terraform](terraform-install-configure.md) lub uruchamiasz ten samouczek w usłudze [Azure Cloud Shell](terraform-cloud-shell.md), pomiń tę sekcję.
@@ -59,7 +59,7 @@ W tej sekcji wygenerujesz jednostkę usługi platformy Azure i dwa pliki konfigu
    }
    ```
 
-6. Utwórz nowy plik, który będzie zawierać wartości zmiennych programu Terraform. Często nazywamy `terraform.tfvars` plik zmiennej Terraform, ponieważ Terraform automatycznie ładuje każdy plik o nazwie `terraform.tfvars` (lub zgodnie ze wzorcem `*.auto.tfvars`), jeśli jest obecny w bieżącym katalogu. 
+6. Utwórz nowy plik, który będzie zawierać wartości zmiennych programu Terraform. Często nazywa się plik `terraform.tfvars` zmiennej Terraform, ponieważ Terraform automatycznie `terraform.tfvars` ładuje dowolny `*.auto.tfvars`plik o nazwie (lub podąża za wzorcem), jeśli znajduje się w bieżącym katalogu. 
 
 7. Skopiuj następujący kod do pliku zmiennych. Upewnij się, że zastąpiono symbole zastępcze w następujący sposób: dla `subscription_id` użyto identyfikatora subskrypcji platformy określonego przy uruchamianiu polecenia `az account set`. Dla symbolu zastępczego `tenant_id` użyto wartości `tenant` zwróconej przez polecenie `az ad sp create-for-rbac`. Dla symbolu zastępczego `client_id` użyto wartości `appId` zwróconej przez polecenie `az ad sp create-for-rbac`. Dla symbolu zastępczego `client_secret` użyto wartości `password` zwróconej przez polecenie `az ad sp create-for-rbac`.
 
@@ -70,7 +70,7 @@ W tej sekcji wygenerujesz jednostkę usługi platformy Azure i dwa pliki konfigu
    client_secret = "<password-returned-from-creating-a-service-principal>"
    ```
 
-## <a name="2-create-a-terraform-configuration-file"></a>2. Utwórz plik konfiguracji Terraform
+## <a name="2-create-a-terraform-configuration-file"></a>2. Tworzenie pliku konfiguracyjnego Terraform
 
 W tej sekcji utworzysz plik zawierający definicje zasobów dla infrastruktury.
 
@@ -216,9 +216,9 @@ W tej sekcji utworzysz plik zawierający definicje zasobów dla infrastruktury.
    }
    ```
 
-## <a name="3-initialize-terraform"></a>3. zainicjuj Terraform 
+## <a name="3-initialize-terraform"></a>3. Inicjowanie terraform 
 
-[Polecenie terraform init](https://www.terraform.io/docs/commands/init.html) służy do inicjowania katalogu, który zawiera pliki konfiguracji programu Terraform utworzone w poprzednich sekcjach. Dobrym sposobem jest zawsze uruchomienie `terraform init` polecenia po zapisaniu nowej konfiguracji Terraform. 
+[Polecenie terraform init](https://www.terraform.io/docs/commands/init.html) służy do inicjowania katalogu, który zawiera pliki konfiguracji programu Terraform utworzone w poprzednich sekcjach. Dobrą praktyką jest zawsze uruchamiać `terraform init` polecenie po napisaniu nowej konfiguracji Terraform. 
 
 > [!TIP]
 > Polecenie `terraform init` jest idempotentne, co oznacza, że można je uruchomić wielokrotnie, uzyskując ten sam wynik. Dlatego jeśli pracujesz w środowisku zespołowym i sądzisz, że pliki konfiguracji mogły zostać zmienione, zawsze dobrym pomysłem jest wywołanie polecenia `terraform init` przed wykonaniem lub zastosowaniem planu.
@@ -231,48 +231,48 @@ Aby zainicjować program Terraform, uruchom następujące polecenie:
 
   ![Inicjowanie programu Terraform](media/terraform-create-vm-cluster-with-infrastructure/terraform-init.png)
 
-## <a name="4-create-a-terraform-execution-plan"></a>4. Utwórz plan wykonywania Terraform
+## <a name="4-create-a-terraform-execution-plan"></a>4. Tworzenie planu wykonania Terraform
 
 [Polecenie terraform plan](https://www.terraform.io/docs/commands/plan.html) służy do tworzenia planu wykonania. Aby wygenerować plan wykonania, program Terraform agreguje wszystkie pliki `.tf` w bieżącym katalogu. 
 
-[Parametr-out](https://www.terraform.io/docs/commands/plan.html#out-path) zapisuje plan wykonania do pliku wyjściowego. Ta funkcja rozwiązuje problemy współbieżności typowe w środowiskach wielu deweloperów. Jeden z takich problemów rozwiązany przez plik wyjściowy jest następującym scenariuszem:
+[Parametr -out](https://www.terraform.io/docs/commands/plan.html#out-path) zapisuje plan wykonania w pliku wyjściowym. Ta funkcja rozwiązuje problemy współbieżności typowe w środowiskach wielowykładowych. Jednym z takich problemów rozwiązanych przez plik wyjściowy jest następujący scenariusz:
 
-1. Dev 1 tworzy plik konfiguracji.
-1. Dev 2 modyfikuje plik konfiguracji.
-1. Dev 1 ma zastosowanie (uruchamia) plik konfiguracji.
-1. Dev 1 otrzymuje nieoczekiwane wyniki, nie wiedząc, że dev 2 zmodyfikował konfigurację.
+1. Dev 1 tworzy plik konfiguracyjny.
+1. Dev 2 modyfikuje plik konfiguracyjny.
+1. Dev 1 stosuje (uruchamia) plik konfiguracyjny.
+1. Dev 1 uzyskuje nieoczekiwane wyniki nie wiedząc, że Dev 2 zmodyfikowano konfigurację.
 
-Dev 1 określenie pliku wyjściowego uniemożliwia deweloperowi 2 wpływ na dev 1. 
+Dev 1 określający plik wyjściowy zapobiega wpływowi dev 2 na dev 1. 
 
-Jeśli nie musisz zapisywać planu wykonywania, uruchom następujące polecenie:
+Jeśli nie musisz zapisywać planu wykonania, uruchom następujące polecenie:
 
   ```bash
   terraform plan
   ```
 
-Jeśli musisz zapisać plan wykonywania, uruchom następujące polecenie. Zastąp symbole zastępcze odpowiednimi wartościami dla danego środowiska.
+Jeśli chcesz zapisać plan wykonania, uruchom następujące polecenie. Zastąp symbole zastępcze odpowiednimi wartościami dla danego środowiska.
 
   ```bash
   terraform plan -out=<path>
   ```
 
-Innym przydatnym parametrem jest [-var-File](https://www.terraform.io/docs/commands/plan.html#var-file-foo).
+Innym przydatnym parametrem jest [-var-file](https://www.terraform.io/docs/commands/plan.html#var-file-foo).
 
-Domyślnie Terraform próbuje znaleźć plik zmiennych w następujący sposób:
-- Plik o nazwie `terraform.tfvars`
-- Plik o nazwie przy użyciu następującego wzorca: `*.auto.tfvars`
+Domyślnie Terraform próbował znaleźć plik zmiennych w następujący sposób:
+- Plik o nazwie`terraform.tfvars`
+- Plik o nazwie przy użyciu następującego wzorca:`*.auto.tfvars`
 
-Jednak plik zmiennych nie musi być zgodny z jedną z powyższych Konwencji. W takim przypadku należy określić nazwę pliku zmiennych przy użyciu parametru `-var-file`, w którym nazwa pliku zmiennej nie ma rozszerzenia. Poniższy przykład ilustruje ten punkt:
+Jednak plik zmiennych nie musi być zgodny z jedną z dwóch poprzednich konwencji. W takim przypadku określ nazwę pliku `-var-file` zmiennych za pomocą parametru, w którym nazwa pliku zmiennej nie zawiera rozszerzenia. Poniższy przykład ilustruje ten punkt:
 
 ```hcl
 terraform plan -var-file <my-variables-file>
 ```
 
-Terraform Określa akcje niezbędne do osiągnięcia stanu określonego w pliku konfiguracji.
+Terraform określa akcje niezbędne do osiągnięcia stanu określonego w pliku konfiguracyjnym.
 
 ![Tworzenie planu wykonania programu Terraform](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
 
-## <a name="5-apply-the-terraform-execution-plan"></a>5. Zastosuj plan wykonywania Terraform
+## <a name="5-apply-the-terraform-execution-plan"></a>5. Stosowanie planu wykonania Terraform
 
 Ostatnim krokiem tego samouczka jest użycie [polecenia terraform apply](https://www.terraform.io/docs/commands/apply.html) w celu zastosowania zbioru akcji wygenerowanego przez polecenie `terraform plan`.
 
@@ -293,4 +293,4 @@ Jeśli chcesz zastosować wcześniej zapisany plan wykonania, uruchom następuj�
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure przy użyciu Terraform](terraform-create-vm-scaleset-network-disks-hcl.md)
+> [Tworzenie zestawu skalowania maszyny wirtualnej platformy Azure przy użyciu terraform](terraform-create-vm-scaleset-network-disks-hcl.md)

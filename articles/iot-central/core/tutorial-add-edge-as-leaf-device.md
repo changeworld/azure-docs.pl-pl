@@ -1,6 +1,6 @@
 ---
-title: Dodawanie urządzenia Azure IoT Edge do usługi Azure IoT Central | Microsoft Docs
-description: Jako operator Dodaj urządzenie Azure IoT Edge do aplikacji IoT Central platformy Azure
+title: Dodawanie urządzenia usługi Azure IoT Edge do usługi Azure IoT Central | Dokumenty firmy Microsoft
+description: Jako operator dodaj urządzenie Usługi Azure IoT Edge do aplikacji Azure IoT Central
 author: rangv
 ms.author: rangv
 ms.date: 12/09/2019
@@ -10,58 +10,58 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: bf74784998de6bbad6310c48c24d6353512bff13
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77027734"
 ---
-# <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Samouczek: Dodawanie urządzenia Azure IoT Edge do aplikacji IoT Central platformy Azure
+# <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Samouczek: Dodawanie urządzenia usługi Azure IoT Edge do aplikacji Azure IoT Central
 
-W tym samouczku pokazano, jak skonfigurować i dodać urządzenie Azure IoT Edge do aplikacji IoT Central platformy Azure. Samouczek korzysta z maszyny wirtualnej z systemem Linux z obsługą IoT Edge z poziomu portalu Azure Marketplace w celu symulowania urządzenia IoT Edge. Urządzenie IoT Edge używa modułu, który generuje symulowane dane telemetryczne środowiska. Dane telemetryczne są wyświetlane na pulpicie nawigacyjnym w aplikacji IoT Central.
+W tym samouczku pokazano, jak skonfigurować i dodać urządzenie usługi Azure IoT Edge do aplikacji Usługi Azure IoT Central. W samouczku użyto maszyny wirtualnej systemu Linux obsługującej usługę IoT Edge z witryny Azure Marketplace do symulowania urządzenia usługi IoT Edge. Urządzenie usługi IoT Edge używa modułu, który generuje symulowane dane telemetryczne środowiska. Dane telemetryczne można wyświetlić na pulpicie nawigacyjnym w aplikacji IoT Central.
 
 Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie szablonu urządzenia dla urządzenia IoT Edge
-> * Utwórz urządzenie IoT Edge w IoT Central
+> * Tworzenie urządzenia IoT Edge w centrum IoT
 > * Wdrażanie symulowanego urządzenia IoT Edge na maszynie wirtualnej z systemem Linux
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ukończ Przewodnik Szybki Start dotyczący [tworzenia aplikacji IoT Central platformy Azure](./quick-deploy-iot-central.md) , aby utworzyć aplikację IoT Central przy użyciu niestandardowego szablonu **aplikacji > aplikacji niestandardowej** .
+Ukończ szybki start [aplikacji Azure IoT Central,](./quick-deploy-iot-central.md) aby utworzyć aplikację IoT Central przy użyciu niestandardowego szablonu **aplikacji > niestandardowej.**
 
-Aby wykonać kroki opisane w tym samouczku, musisz mieć aktywną subskrypcję platformy Azure.
+Aby wykonać kroki opisane w tym samouczku, potrzebujesz aktywnej subskrypcji platformy Azure.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
-Pobierz plik manifestu IoT Edge z usługi GitHub. Kliknij prawym przyciskiem myszy poniższy link, a następnie wybierz pozycję **Zapisz link jako**: [EnvironmentalSensorManifest. JSON](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json)
+Pobierz plik manifestu usługi IoT Edge z usługi GitHub. Kliknij prawym przyciskiem myszy poniższy link, a następnie wybierz **pozycję Zapisz łącze jako**: [EnvironmentalSensorManifest.json](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json)
 
-## <a name="create-device-template"></a>Utwórz szablon urządzenia
+## <a name="create-device-template"></a>Tworzenie szablonu urządzenia
 
-W tej sekcji utworzysz szablon urządzenia dla IoT Edge urządzenia, które nawiązuje połączenie z aplikacją IoT Central. Zaimportujmy manifest IoT Edge, aby rozpocząć pracę, a następnie zmodyfikować szablon w celu dodania definicji i widoków telemetrii:
+W tej sekcji utworzysz szablon urządzenia dla urządzenia Usługi IoT Edge, które łączy się z aplikacją IoT Central. Zaimportować manifest usługi IoT Edge, aby rozpocząć, a następnie zmodyfikuj szablon, aby dodać definicje i widoki telemetryczne:
 
-### <a name="import-manifest-to-create-template"></a>Importowanie manifestu w celu utworzenia szablonu
+### <a name="import-manifest-to-create-template"></a>Zaimportuj manifest do tworzenia szablonu
 
-Aby utworzyć szablon urządzenia na podstawie manifestu IoT Edge:
+Aby utworzyć szablon urządzenia z manifestu IoT Edge:
 
-1. W aplikacji IoT Central przejdź do **szablonów urządzeń** i wybierz pozycję **+ Nowy**.
+1. W aplikacji IoT Central przejdź do **szablonów urządzeń** i wybierz + **Nowy**.
 
-1. Na stronie **Wybieranie typu szablonu** wybierz kafelek **Azure IoT Edge** . Następnie wybierz pozycję **Dalej: Dostosuj**.
+1. Na stronie **Wybierz typ szablonu** wybierz kafelek **usługi Azure IoT Edge.** Następnie wybierz **przycisk Dalej: Dostosuj**.
 
-1. Na stronie **Przekaż manifest wdrożenia Azure IoT Edge** wybierz pozycję **Przeglądaj** , aby przekazać wcześniej pobrany plik **EnvironmentalSensorManifest. JSON** . Następnie wybierz kolejno pozycje **Dalej: przegląd**.
+1. Na stronie **narzędzia azure ioT edge wdrożenia** usługi Azure Wybierz pozycję **Przeglądaj,** aby przekazać **środowisko EnvironmentalSensorManifest.json** pobrane wcześniej. Następnie wybierz **przycisk Dalej: Przejrzyj**.
 
-1. Na stronie **Przegląd** wybierz pozycję **Utwórz**.
+1. Na stronie **Recenzja** wybierz pozycję **Utwórz**.
 
-1. Po utworzeniu szablonu zmień jego nazwę na *Urządzenie brzegowe czujnika środowiska*.
+1. Po utworzeniu szablonu zmień jego nazwę na *Urządzenie krawędziowe czujnika środowiskowego*.
 
-1. Wybierz Interfejs **zarządzania** w module **SimulatedTemperatureSensor** , aby wyświetlić dwie właściwości zdefiniowane w manifeście:
+1. Wybierz interfejs **Zarządzania** w module **SimulatedTemperatureSensor,** aby wyświetlić dwie właściwości zdefiniowane w manifeście:
 
-![Szablon urządzenia utworzony na podstawie IoT Edge manifestu](./media/tutorial-add-edge-as-leaf-device/imported-manifest.png)
+![Szablon urządzenia utworzony na podstawie manifestu IoT Edge](./media/tutorial-add-edge-as-leaf-device/imported-manifest.png)
 
-### <a name="add-telemetry-to-manifest"></a>Dodaj telemetrię do manifestu
+### <a name="add-telemetry-to-manifest"></a>Dodawanie danych telemetrycznych do manifestu
 
-Manifest IoT Edge nie definiuje telemetrii wysyłanej przez moduł. Należy dodać definicje telemetrii do szablonu urządzenia. Moduł **SimulatedTemperatureSensor** wysyła komunikaty telemetryczne, które wyglądają podobnie jak w poniższym kodzie JSON:
+Manifest usługi IoT Edge nie definiuje danych telemetrycznych wysyłanej przez moduł. Należy dodać definicje danych telemetrycznych do szablonu urządzenia. Moduł **SimulatedTemperatureSensor** wysyła komunikaty telemetryczne, które wyglądają jak następujący JSON:
 
 ```json
 {
@@ -77,124 +77,124 @@ Manifest IoT Edge nie definiuje telemetrii wysyłanej przez moduł. Należy doda
 }
 ```
 
-Aby dodać definicje telemetrii do szablonu urządzenia:
+Aby dodać definicje danych telemetrycznych do szablonu urządzenia:
 
-1. Wybierz pozycję **Zarządzaj** interfejsem w szablonie **urządzenia brzegowego czujnika środowiska** .
+1. Wybierz interfejs **Zarządzanie** w szablonie **Urządzenie krawędzi czujnika środowiska.**
 
-1. Wybierz pozycję **+ Dodaj funkcję**. Wprowadź *maszynę* jako **nazwę wyświetlaną** i upewnij się, że **Typ możliwości** to **telemetrię**.
+1. Wybierz **+ Dodaj możliwość**. Wprowadź *komputer* jako **nazwę wyświetlaną** i upewnij się, że **typem możliwości** jest **Telemetria**.
 
-1. Wybierz **obiekt** jako typ schematu, a następnie wybierz pozycję **Definiuj**. Na stronie Definicja obiektu Dodaj *temperaturę* i *ciśnienie* jako atrybuty typu **Double** , a następnie wybierz pozycję **Zastosuj**.
+1. Zaznacz **obiekt** jako typ schematu, a następnie wybierz polecenie **Definiuj**. Na stronie definicji obiektu dodaj *temperaturę* i *ciśnienie* jako atrybuty typu **Double,** a następnie wybierz pozycję **Zastosuj**.
 
-1. Wybierz pozycję **+ Dodaj funkcję**. Wprowadź wartość *otaczającą* jako **nazwę wyświetlaną** i upewnij się, że **Typ możliwości** to **Telemetria**.
+1. Wybierz **+ Dodaj możliwość**. Wprowadź *otoczenie* jako **nazwę wyświetlaną** i upewnij się, że **typem możliwości** jest **Telemetria**.
 
-1. Wybierz **obiekt** jako typ schematu, a następnie wybierz pozycję **Definiuj**. Na stronie Definicja obiektu Dodaj *temperaturę* i *wilgotność* jako atrybuty typu **Double** , a następnie wybierz pozycję **Zastosuj**.
+1. Zaznacz **obiekt** jako typ schematu, a następnie wybierz polecenie **Definiuj**. Na stronie definicji obiektu dodaj *temperaturę* i *wilgotność* jako atrybuty typu **Double,** a następnie wybierz pozycję **Zastosuj**.
 
-1. Wybierz pozycję **+ Dodaj funkcję**. Wprowadź *timeCreated* jako **nazwę wyświetlaną** i upewnij się, że **Typ możliwości** to **telemetrię**.
+1. Wybierz **+ Dodaj możliwość**. Wprowadź *timeCreated* jako **nazwę wyświetlaną** i upewnij się, że **typem możliwości** jest **Telemetria**.
 
-1. Wybierz **element DateTime** jako typ schematu.
+1. Wybierz **DateTime** jako typ schematu.
 
-1. Wybierz pozycję **Zapisz** , aby zaktualizować szablon.
+1. Wybierz **pozycję Zapisz,** aby zaktualizować szablon.
 
-Interfejs **zarządzania** zawiera teraz typy telemetrii **maszyny**, **otoczenia**i **timeCreated** :
+Interfejs **Zarządzanie** zawiera teraz **typy**danych telemetrycznych maszyny, **otoczenia**i **czasuPracowane:**
 
-![Interfejs z typami danych telemetrii maszyn i otoczenia](./media/tutorial-add-edge-as-leaf-device/manage-interface.png)
+![Interfejs z typami telemetrii maszynowej i otoczenia](./media/tutorial-add-edge-as-leaf-device/manage-interface.png)
 
 ### <a name="add-views-to-template"></a>Dodawanie widoków do szablonu
 
-Szablon urządzenia nie ma jeszcze widoku, który umożliwia operatorowi wyświetlenie danych telemetrycznych z urządzenia IoT Edge. Aby dodać widok do szablonu urządzenia:
+Szablon urządzenia nie ma jeszcze widoku, który umożliwia operatorowi wyświetlanie danych telemetrycznych z urządzenia usługi IoT Edge. Aby dodać widok do szablonu urządzenia:
 
-1. Wybierz pozycję **widoki** w szablonie **urządzenia brzegowego czujnika środowiska** .
+1. Wybierz **widoki** w szablonie **Urządzenie krawędzi czujnika środowiska.**
 
-1. Na stronie **Wybierz, aby dodać nowy widok** kliknij kafelek **Wizualizacja urządzenia** .
+1. Na stronie **Wybierz, aby dodać nowy widok,** wybierz kafelek **Wizualizacja urządzenia.**
 
-1. Zmień nazwę widoku, aby *wyświetlić dane telemetryczne urządzenia IoT Edge*.
+1. Zmień nazwę widoku na *Wyświetlanie danych telemetrycznych urządzenia usługi IoT Edge*.
 
-1. Wybierz typy danych telemetrii **otoczenia** i **maszyny** . Następnie wybierz pozycję **Dodaj kafelek**.
+1. Wybierz typy danych telemetrycznych **otoczenia** i **maszyny.** Następnie wybierz pozycję **Dodaj kafelek**.
 
-1. Wybierz pozycję **Zapisz** , aby zapisać widok **IoT Edge danych telemetrycznych urządzenia** .
+1. Wybierz **pozycję Zapisz,** aby zapisać widok **telemetrii urządzenia Widoku IoT Edge.**
 
-![Szablon urządzenia z widokiem telemetrii](./media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png)
+![Szablon urządzenia z widokiem telemetrycznym](./media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png)
 
 ### <a name="publish-the-template"></a>Publikowanie szablonu
 
-Aby można było dodać urządzenie, które używa szablonu **urządzenia brzegowego czujnika środowiska** , należy opublikować szablon.
+Aby można było dodać urządzenie korzystające z szablonu **Urządzenia krawędzi czujnika środowiska,** należy opublikować szablon.
 
-Przejdź do szablonu **urządzenia brzegowego czujnika środowiska** i wybierz pozycję **Publikuj**. Następnie wybierz pozycję **Publikuj** , aby opublikować szablon:
+Przejdź do szablonu **Urządzenia krawędzi czujnika środowiskowego** i wybierz pozycję **Publikuj**. Następnie wybierz **pozycję Publikuj,** aby opublikować szablon:
 
 ![Publikowanie szablonu urządzenia](./media/tutorial-add-edge-as-leaf-device/publish-template.png)
 
-## <a name="add-iot-edge-device"></a>Dodaj urządzenie IoT Edge
+## <a name="add-iot-edge-device"></a>Dodawanie urządzenia usługi IoT Edge
 
-Po opublikowaniu szablonu **urządzenia brzegowego czujnika środowiska** możesz dodać urządzenie do aplikacji IoT Central:
+Teraz opublikowano szablon **Urządzenia krawędzi czujnika środowiska,** możesz dodać urządzenie do aplikacji IoT Central:
 
-1. W aplikacji IoT Central przejdź do strony **urządzenia** i wybierz z listy dostępnych szablonów pozycję **Urządzenie brzegowe czujnika środowiska** .
+1. W aplikacji IoT Central przejdź do strony **Urządzenia** i wybierz **pozycję Urządzenie krawędziowe czujnika środowiska** na liście dostępnych szablonów.
 
-1. Wybierz pozycję **+** , aby dodać nowe urządzenie z szablonu. Na stronie **Tworzenie nowego urządzenia** wybierz pozycję **Utwórz**.
+1. Wybierz, **+** aby dodać nowe urządzenie z szablonu. Na stronie **Tworzenie nowego urządzenia** wybierz pozycję **Utwórz**.
 
-Masz teraz nowe urządzenie o stanie **zarejestrowano**:
+Masz teraz nowe urządzenie o statusie **Zarejestrowany:**
 
 ![Publikowanie szablonu urządzenia](./media/tutorial-add-edge-as-leaf-device/new-device.png)
 
-### <a name="get-the-device-credentials"></a>Pobieranie poświadczeń urządzenia
+### <a name="get-the-device-credentials"></a>Uzyskaj poświadczenia urządzenia
 
-Wdrożenie urządzenia IoT Edge w dalszej części tego samouczka wymaga poświadczeń, które umożliwią urządzeniu łączenie się z aplikacją IoT Central. Pobierz poświadczenia urządzenia:
+Podczas wdrażania urządzenia usługi IoT Edge w dalszej części tego samouczka, należy poświadczenia, które umożliwiają urządzeniu połączyć się z aplikacją IoT Central. Pobierz poświadczenia urządzenia:
 
-1. Na stronie **urządzenie** wybierz utworzone urządzenie.
+1. Na stronie **Urządzenie** wybierz utworzone urządzenie.
 
 1. Wybierz przycisk **Połącz**.
 
-1. Na stronie **połączenie urządzenia** Zanotuj **zakres identyfikatorów**, **Identyfikator urządzenia**i **klucz podstawowy**. Te wartości są używane później.
+1. Na stronie **Połączenie z urządzeniem** zanotuj **zakres identyfikatora**, **identyfikator urządzenia**i **klucz podstawowy**. Te wartości są używane później.
 
 1. Wybierz polecenie **Zamknij**.
 
-Zakończono konfigurowanie aplikacji IoT Central, aby umożliwić urządzeniu IoT Edge nawiązywanie połączenia.
+Zakończono konfigurowanie aplikacji IoT Central, aby umożliwić połączenie urządzenia Usługi IoT Edge.
 
 ## <a name="deploy-an-iot-edge-device"></a>Wdrażanie urządzenia IoT Edge
 
-W tym samouczku zostanie użyta maszyna wirtualna z systemem Linux z obsługą Azure IoT Edge, utworzona na platformie Azure w celu symulowania urządzenia IoT Edge. Aby utworzyć maszynę wirtualną z obsługą IoT Edge:
+W tym samouczku używasz maszyny wirtualnej z systemem Linux z obsługą usługi Azure IoT Edge, utworzonej na platformie Azure w celu symulowania urządzenia usługi IoT Edge. Aby utworzyć maszynę wirtualną z obsługą krawędzi IoT:
 
-1. Przejdź do [Azure IoT Edge na Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) w portalu Azure Marketplace. Następnie wybierz pozycję **Pobierz teraz**.
+1. Przejdź do [usługi Azure IoT Edge na Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) w portalu Azure Marketplace. Następnie wybierz pozycję **Pobierz teraz**.
 
-1. Na stronie **Tworzenie tej aplikacji na platformie Azure** wybierz pozycję **Kontynuuj**. Ten link prowadzi do Azure Portal, w którym może być konieczne zalogowanie się do subskrypcji platformy Azure.
+1. Na stronie **Utwórz tę aplikację na platformie Azure** wybierz pozycję **Kontynuuj**. To łącze spowoduje przejście do witryny Azure portal, w której może być konieczne zalogowanie się do subskrypcji platformy Azure.
 
-1. Na stronie **Azure IoT Edge na Ubuntu** w Azure Portal wybierz pozycję **Utwórz**.
+1. Na stronie **Azure IoT Edge na Ubuntu** w witrynie Azure portal wybierz pozycję **Utwórz**.
 
-1. Na stronie **Tworzenie maszyny wirtualnej > podstawowe** :
+1. Na stronie **Tworzenie maszyny wirtualnej > podstawy:**
 
     - Wybierz swoją subskrypcję platformy Azure.
-    - Utwórz nową grupę zasobów o nazwie **IoT-Edge-Devices**.
+    - Utwórz nową grupę zasobów o nazwie **iot-edge-devices**.
     - Użyj nazwy maszyny wirtualnej: **iotedgevm**.
     - Wybierz najbliższy region.
-    - Ustaw typ uwierzytelniania na **hasło**.
+    - Ustaw typ uwierzytelniania na **Hasło**.
     - Wybierz nazwę użytkownika i hasło.
-    - Pozostałe opcje można pozostawić do wartości domyślnych.
+    - Pozostałe opcje można pozostawić wartościom domyślnym.
     - Wybierz pozycję **Przegląd + utwórz**.
 
-1. Po zakończeniu walidacji wybierz pozycję **Utwórz**.
+1. Po zakończeniu sprawdzania poprawności wybierz pozycję **Utwórz**.
 
-Po upływie kilku minut, po zakończeniu wdrażania, wybierz pozycję **Przejdź do zasobu**.
+Po kilku minutach po zakończeniu wdrażania wybierz pozycję **Przejdź do zasobu**.
 
-### <a name="provision-vm-as-an-iot-edge-device"></a>Udostępnianie maszyny wirtualnej jako urządzenia IoT Edge 
+### <a name="provision-vm-as-an-iot-edge-device"></a>Aprowizuj maszynę wirtualną jako urządzenie Z krawędzią IoT 
 
-Aby udostępnić maszynę wirtualną jako urządzenie IoT Edge:
+Aby aprowizować maszynę wirtualną jako urządzenie Z krawędzią IoT:
 
-1. W sekcji **Pomoc techniczna i rozwiązywanie problemów** wybierz pozycję **konsola szeregowa**.
+1. W sekcji **Pomoc techniczna + rozwiązywanie problemów** wybierz **pozycję Konsola szeregowa**.
 
-1. Naciśnij klawisz **Enter** , aby wyświetlić monit `login:`. Wprowadź nazwę użytkownika i hasło, aby się zalogować.
+1. Naciśnij **klawisz Enter,** aby wyświetlić `login:` monit. Wprowadź swoją nazwę użytkownika i hasło, aby się zalogować.
 
-1. Uruchom następujące polecenie, aby sprawdzić wersję środowiska uruchomieniowego IoT Edge. W momencie pisania wersja jest 1.0.8:
+1. Uruchom następujące polecenie, aby sprawdzić wersję środowiska wykonawczego IoT Edge. W momencie pisania, wersja jest 1.0.8:
 
     ```bash
     sudo iotedge --version
     ```
 
-1. Użyj edytora `nano`, aby otworzyć plik IoT Edge config. YAML:
+1. Użyj `nano` edytora, aby otworzyć plik config.yaml usługi IoT Edge:
 
     ```bash
     sudo nano /etc/iotedge/config.yaml
     ```
 
-1. Przewiń w dół do momentu wyświetlenia `# Manual provisioning configuration`. Dodaj komentarz do następnych trzech wierszy, jak pokazano w poniższym fragmencie kodu:
+1. Przewiń w `# Manual provisioning configuration`dół, aż zobaczysz . Skomentuj następne trzy wiersze, jak pokazano w poniższym urywek:
 
     ```yaml
     # Manual provisioning configuration
@@ -203,7 +203,7 @@ Aby udostępnić maszynę wirtualną jako urządzenie IoT Edge:
     #  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
     ```
 
-1. Przewiń w dół do momentu wyświetlenia `# DPS symmetric key provisioning configuration`. Usuń komentarz z następnych ośmiu wierszy, jak pokazano w poniższym fragmencie kodu:
+1. Przewiń w `# DPS symmetric key provisioning configuration`dół, aż zobaczysz . Odkomentuj następne osiem wierszy, jak pokazano w poniższym urywek:
 
     ```yaml
     # DPS symmetric key provisioning configuration
@@ -217,13 +217,13 @@ Aby udostępnić maszynę wirtualną jako urządzenie IoT Edge:
         symmetric_key: "{symmetric_key}"
     ```
 
-1. Zastąp `{scope_id}` **zakresem identyfikatora** dla zanotowanej wcześniej uwagi.
+1. Zamień `{scope_id}` na **zakres identyfikatora,** o których wcześniej zanotowano.
 
-1. Zastąp `{registration_id}` **identyfikatorem urządzenia** , który został wcześniej zanotowany.
+1. Zastąp `{registration_id}` **identyfikatorem urządzenia,** o którego wcześniej zanotowano.
 
-1. Zastąp `{symmetric_key}` **kluczem podstawowym** , dla którego zostało wykonane wcześniej notatki.
+1. Zamień `{symmetric_key}` **na klucz podstawowy,** który wcześniej zanotowano.
 
-1. Zapisz zmiany (**Ctrl-O**) i wyjdź (**Ctrl-X**) edytora `nano`.
+1. Zapisz zmiany (**Ctrl-O**) i exit ( `nano` **Ctrl-X**) edytora.
 
 1. Uruchom następujące polecenie, aby ponownie uruchomić demona IoT Edge:
 
@@ -246,25 +246,25 @@ Aby udostępnić maszynę wirtualną jako urządzenie IoT Edge:
     edgeHub                     running          Up 22 seconds    mcr.microsoft.com/azureiotedge-hub:1.0
     ```
 
-## <a name="view-the-telemetry"></a>Wyświetlanie telemetrii
+## <a name="view-the-telemetry"></a>Wyświetlanie danych telemetrycznych
 
-Symulowane urządzenie IoT Edge jest teraz uruchomione na maszynie wirtualnej. W aplikacji IoT Central stan urządzenia jest teraz **inicjowany** na stronie **urządzenia** :
+Symulowane urządzenie IoT Edge jest teraz uruchomione na maszynie wirtualnej. W aplikacji IoT Central stan urządzenia jest teraz **aprowizowana** na stronie **Urządzenia:**
 
-![Zainicjowane urządzenie](./media/tutorial-add-edge-as-leaf-device/provisioned-device.png)
+![Urządzenie aprowizowane](./media/tutorial-add-edge-as-leaf-device/provisioned-device.png)
 
-Dane telemetryczne są widoczne na stronie **wyświetl IoT Edge telemetrii urządzenia** :
+Dane telemetryczne można wyświetlić na stronie **danych telemetrycznych urządzenia Widok usługi IoT Edge:**
 
-![Dane telemetryczne urządzenia](./media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png)
+![Telemetria urządzenia](./media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png)
 
-Na stronie **moduły** zostanie wyświetlony stan modułów IoT Edge:
+Strona **Moduły** pokazuje stan modułów IoT Edge:
 
-![Dane telemetryczne urządzenia](./media/tutorial-add-edge-as-leaf-device/edge-module-status.png)
+![Telemetria urządzenia](./media/tutorial-add-edge-as-leaf-device/edge-module-status.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wiesz już, jak korzystać z IoT Edge urządzeń i zarządzać nimi w IoT Central, Oto sugerowany następny krok:
+Teraz, gdy już wiesz, jak pracować z urządzeniami IoT Edge i zarządzać nimi w UIŚ Central, oto sugerowany następny krok:
 
 <!-- Next how-tos in the sequence -->
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie przezroczystej bramy](../../iot-edge/how-to-create-transparent-gateway.md)
+> [Konfigurowanie bramy przezroczystej](../../iot-edge/how-to-create-transparent-gateway.md)

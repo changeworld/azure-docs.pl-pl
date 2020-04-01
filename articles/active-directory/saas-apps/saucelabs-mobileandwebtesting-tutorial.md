@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą sos Labs — Mobile i testowanie sieci Web | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i sos Labs — Mobile i testowanie sieci Web.
+title: 'Samouczek: Integracja usługi Azure Active Directory z Sauce Labs — testowanie na urządzeniach mobilnych i w sieci Web | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a sauce labs — mobile i web testing.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,45 +16,45 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 8933cb90672e49305cd0fb7dc5e4f8f04f94093e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67091557"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą sos Labs — Mobile i testowanie sieci Web
+# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Samouczek: Integracja usługi Azure Active Directory z laboratoriami Sauce Labs — testowanie na urządzeniach mobilnych i w sieci Web
 
-W tym samouczku dowiesz się, jak integrować laboratoria sos - Mobile i testowanie sieci Web w usłudze Azure Active Directory (Azure AD).
-Integrowanie laboratoriów sos - Mobile i testowanie sieci Web z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować Sauce Labs — Mobile i testowanie sieci Web z usługą Azure Active Directory (Azure AD).
+Integracja Sauce Labs — testowanie mobilne i internetowe z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do laboratoriów sos - Mobile i testowanie sieci Web.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do laboratoriów sos - Mobile i testowanie sieci Web (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* W usłudze Azure AD można kontrolować, kto ma dostęp do Sauce Labs — mobile i web testing.
+* Można włączyć użytkowników, aby automatycznie zalogować się do Sauce Labs — mobile i web testing (logowanie jednokrotne) z ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do konfigurowania integracji z usługą Azure AD z sos Labs — Mobile i testowanie sieci Web, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z sauce labs — mobile i web testing, potrzebujesz następujących elementów:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* Sos Labs — Mobile i testowanie sieci Web pojedynczego logowania jednokrotnego włączonych subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
+* Sauce Labs - Subskrypcja z obsługą logowania jednokrotnego i testowania sieci Web
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Sos Labs — Mobile i testowanie sieci Web obsługuje **tożsamości** jednokrotne logowanie inicjowane przez
-* Sos Labs — Mobile i testowanie sieci Web obsługuje **Just In Time** aprowizacji użytkowników
+* Sauce Labs - Testy mobilne i internetowe obsługują zainicjowane przez **IDP** SSO
+* Sauce Labs - Testowanie mobilne i internetowe obsługuje **inicjowanie** obsługi administracyjnej użytkowników just in time
 
-## <a name="adding-sauce-labs---mobile-and-web-testing-from-the-gallery"></a>Dodawanie sos Labs — Mobile i testowanie sieci Web z galerii
+## <a name="adding-sauce-labs---mobile-and-web-testing-from-the-gallery"></a>Dodawanie Sauce Labs - Mobile and Web Testing z galerii
 
-Aby skonfigurować integrację sos Labs — Mobile i testowanie sieci Web w usłudze Azure AD, należy dodać sos Labs — Mobile i testowanie sieci Web z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację Sauce Labs — Mobile and Web Testing w usłudze Azure AD, należy dodać Sauce Labs — Mobile i Web Testing z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać sos Labs — Mobile i testowanie sieci Web z galerii, wykonaj następujące czynności:**
+**Aby dodać Sauce Labs - Mobile i Web Testing z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -62,37 +62,37 @@ Aby skonfigurować integrację sos Labs — Mobile i testowanie sieci Web w usł
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **sos Labs — Mobile i testowanie sieci Web**, wybierz opcję **sos Labs — Mobile i testowanie sieci Web** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Sauce Labs - Mobile and Web Testing**, wybierz Sauce **Labs - Mobile and Web Testing** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
-    ![Sos Labs — Mobile i testowanie sieci Web na liście wyników](common/search-new-app.png)
+    ![Sauce Labs - Testy mobilne i internetowe na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą Labs sos — Mobile i testowanie sieci Web w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Do logowania jednokrotnego do pracy, relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w laboratoriach sos — mobilnych oraz testowanie sieci Web musi zostać ustanowione.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego z Sauce Labs - Mobile i Web Testing na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w sauce labs — mobile i web testing.
 
-Do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą Labs sos - Mobile i testowanie sieci Web, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą sauce labs — mobile i web testing, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Skonfiguruj laboratoria sos - mobilnych i sieci Web testowanie logowania jednokrotnego](#configure-sauce-labs---mobile-and-web-testing-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie laboratoriów sos - Mobile i testowanie sieci Web test użytkownika](#create-sauce-labs---mobile-and-web-testing-test-user)**  — aby odpowiednikiem Britta Simon w sos Labs — Mobile i testowanie sieci Web jest połączony z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj Sauce Labs — mobile and Web Testing Single Sign-On](#configure-sauce-labs---mobile-and-web-testing-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz Sauce Labs — mobile i web testing test użytkownika](#create-sauce-labs---mobile-and-web-testing-test-user)** — aby mieć odpowiednik Britta Simon w Sauce Labs — mobile i web testing, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z sos Labs — Mobile i testowanie sieci Web, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą sauce labs — mobile i web testing, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **sos Labs — Mobile i testowanie sieci Web** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie **Sauce Labs — Mobile and Web Testing** application integration page, select Single **sign-on (Rejestracja jednokrotna).**
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -104,13 +104,13 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z sos Labs — Mobile
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** użytkownik nie musi wykonywać żadnych kroków, ponieważ aplikacja jest już wstępnie zintegrowana z platformą Azure.
 
-    ![Sos Labs — Mobile i domeny testowania sieci Web oraz adresy URL pojedynczego logowania jednokrotnego informacji](common/preintegrated.png)
+    ![Sauce Labs - Mobile i Web Testing Domain i adresy URL — informacje o logach jednokrotnych](common/preintegrated.png)
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-6. Na **skonfiguruj laboratoria sos - Mobile i testowanie sieci Web** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie laboratoriów sauce – mobile i web testing** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -118,33 +118,33 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z sos Labs — Mobile
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-sauce-labs---mobile-and-web-testing-single-sign-on"></a>Skonfiguruj laboratoria sos - Mobile i testowania rejestracji jednokrotnej w sieci Web
+### <a name="configure-sauce-labs---mobile-and-web-testing-single-sign-on"></a>Konfigurowanie Sauce Labs - Mobile i Web Testing Single Sign-On
 
-1. W oknie przeglądarki internetowej innej Zaloguj się do laboratoriów sos - mobilnych i sieci Web testowania witryny firmy jako administrator.
+1. W innym oknie przeglądarki internetowej zaloguj się do witryny firmy Sauce Labs — Mobile i Web Testing jako administrator.
 
-2. Kliknij pozycję **ikony użytkownika** i wybierz **zarządzanie zespołem** kartę.
+2. Kliknij **ikonę Użytkownik** i wybierz kartę **Zarządzanie zespołem.**
 
     ![Konfigurowanie logowania jednokrotnego](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
 
-3. Wprowadź swoje **nazwy domeny** w polu tekstowym.
+3. Wprowadź **nazwę domeny** w obszarze tekstowym.
 
     ![Konfigurowanie logowania jednokrotnego](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
 
-4. Kliknij przycisk **Konfiguruj** kartę.
+4. Kliknij pozycję **Konfiguruj** kartę.
 
     ![Konfigurowanie logowania jednokrotnego](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
 
-5. W **skonfigurować logowanie jednokrotne** sekcji, wykonaj następujące kroki.
+5. W sekcji **Konfigurowanie logowania jednokrotnego** wykonaj następujące czynności.
 
     ![Konfigurowanie logowania jednokrotnego](./media/saucelabs-mobileandwebtesting-tutorial/configure4.png)
 
-    a. Kliknij przycisk **Przeglądaj** i przekaż plik metadanych pobrany z usługi Azure AD.
+    a. Kliknij **przycisk Przeglądaj** i przekaż pobrany plik metadanych z usługi Azure AD.
 
-    b. Wybierz **Zezwalaj APROWIZACJI just in Time** pola wyboru.
+    b. Zaznacz pole wyboru **ZEZWALAJ NA INICJOWANIE OBSŁUGI ADMINISTRACYJNEJ TYLKO W CZASIE.**
 
-    c. Kliknij pozycję **Zapisz**.
+    d. Kliknij przycisk **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -154,7 +154,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -164,24 +164,24 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`  
+    b. W polu **Nazwa użytkownika** wpisz `brittasimon@yourcompanydomain.extension`  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do laboratoriów sos - Mobile i testowanie sieci Web za pomocą platformy Azure logowania jednokrotnego.
+W tej sekcji można włączyć Britta Simon do korzystania z usługi Azure logowania jednokrotnego, udzielając dostępu do Sauce Labs — mobile i testowania sieci Web.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **sos Labs — Mobile i testowanie sieci Web**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz **pozycję Wszystkie aplikacje**, a następnie wybierz **pozycję Sauce Labs — Mobile and Web Testing**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **sos Labs — Mobile i testowanie sieci Web**.
+2. Na liście aplikacji wybierz **opcję Sauce Labs - Mobile and Web Testing**.
 
-    ![Laboratoria sos - Mobile i testowanie sieci Web Połącz się na liście aplikacji](common/all-applications.png)
+    ![Sauce Labs - Łącze do testowania urządzeń mobilnych i stron internetowych na liście Aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -193,28 +193,28 @@ W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do laborator
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-sauce-labs---mobile-and-web-testing-test-user"></a>Tworzenie laboratoriów sos - Mobile i testowanie sieci Web test użytkownika
+### <a name="create-sauce-labs---mobile-and-web-testing-test-user"></a>Tworzenie Sauce Labs - Użytkownik testowy testów mobilnych i internetowych
 
-W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w sos Labs — Mobile i testowanie sieci Web. Sos Labs — Mobile i testowanie sieci Web obsługuje aprowizacji użytkowników w czasie, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w laboratoriach sos - Mobile i testowanie sieci Web, nowy katalog jest tworzony po uwierzytelnieniu.
+W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w Sauce Labs - Mobile i Web Testing. Sauce Labs — testy mobilne i internetowe obsługują inicjowanie obsługi administracyjnej użytkowników tylko w czasie, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w Sauce Labs — Mobile i Web Testing, nowy jest tworzony po uwierzytelnieniu.
 
 > [!Note]
-> Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [sos Labs — Mobile i testowanie sieci Web zespołu pomocy technicznej](mailto:support@saucelabs.com).
+> Jeśli chcesz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej Sauce Labs - Mobile and Web Testing](mailto:support@saucelabs.com).
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu Labs sos — Mobile i testowanie sieci Web kafelka w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Labs sos — Mobile i testowanie sieci Web, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Sauce Labs — Mobile and Web Testing w Panelu dostępu należy automatycznie zalogować się do sauce labs — mobile i web testing, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

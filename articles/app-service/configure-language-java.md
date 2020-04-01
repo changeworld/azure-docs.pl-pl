@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2b21061e8a939b91c637ef05bbe6375c0b3f82e8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 2b09a7765cff20fb49ce6ab3d1e7bce2e15f0e9e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383977"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475216"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurowanie aplikacji Java systemu Windows dla usługi Azure App Service
 
@@ -74,7 +74,7 @@ Usługa Azure App Service obsługuje dostrajanie i dostosowywanie po wyjęciu z 
 
 - [Konfigurowanie ustawień aplikacji](configure-common.md#configure-app-settings)
 - [Konfigurowanie domeny niestandardowej](app-service-web-tutorial-custom-domain.md)
-- [Konfigurowanie powiązań SSL](configure-ssl-bindings.md)
+- [Konfigurowanie powiązań TLS](configure-ssl-bindings.md)
 - [Dodawanie sieci CDN](../cdn/cdn-add-to-web-app.md)
 - [Konfigurowanie witryny Kudu](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
 
@@ -183,7 +183,7 @@ Aby wyłączyć tę funkcję, należy `WEBSITE_AUTH_SKIP_PRINCIPAL` utworzyć us
 
 ### <a name="configure-tlsssl"></a>Konfigurowanie protokołu TLS/SSL
 
-Postępuj zgodnie z instrukcjami w [Secure niestandardowej nazwy DNS z powiązaniem SSL w usłudze Azure App Service,](configure-ssl-bindings.md) aby przekazać istniejący certyfikat SSL i powiązać go z nazwą domeny aplikacji. Domyślnie aplikacja będzie nadal zezwalać na połączenia HTTP-postępuj zgodnie z określonymi krokami w samouczku, aby wymusić SSL i TLS.
+Postępuj zgodnie z instrukcjami w [Secure niestandardowej nazwy DNS z powiązaniem TLS w usłudze Azure App Service,](configure-ssl-bindings.md) aby przekazać istniejący certyfikat TLS/SSL i powiązać go z nazwą domeny aplikacji. Domyślnie aplikacja będzie nadal zezwalać na połączenia HTTP-postępuj zgodnie z określonymi krokami w samouczku, aby wymusić SSL i TLS.
 
 ### <a name="use-keyvault-references"></a>Korzystanie z odwołań do keyvault
 

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności — Azure Portal'
+title: 'Samouczek: Równoważenie obciążenia maszyn wirtualnych w strefach dostępności — witryna Azure portal'
 titleSuffix: Azure Load Balancer
 description: Ten samouczek przedstawia sposób tworzenia usługi Load Balancer w warstwie Standardowa przy użyciu frontonu strefowo nadmiarowego w celu zrównoważenia obciążenia maszyn wirtualnych w różnych strefach dostępności przy użyciu witryny Azure Portal
 services: load-balancer
@@ -16,10 +16,10 @@ ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: f521cc68476e2f9df1cc8288cf41156da3851cd0
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251889"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Samouczek: równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności przy użyciu usługi Load Balancer w strefie Standardowa w witrynie Azure Portal
@@ -39,27 +39,27 @@ Aby uzyskać więcej informacji na temat obsługi stref dostępności przy użyc
 
 Jeśli chcesz, możesz wykonać ten samouczek przy użyciu [interfejsu wiersza polecenia platformy Azure](load-balancer-standard-public-zone-redundant-cli.md).
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem. 
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure portal w [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-standard-load-balancer"></a>Tworzenie usługi Load Balancer w warstwie Standardowa
 
 Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczny adres IP w warstwie Standardowa. W przypadku tworzenia nowego publicznego adresu IP podczas tworzenia modułu równoważenia obciążenia jest on automatycznie konfigurowany jako standardowa jednostka SKU. Jest on również automatycznie strefowo nadmiarowy.
 
-1. W lewym górnym rogu ekranu kliknij pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
+1. W lewym górnym rogu ekranu kliknij pozycję **Utwórz zasobowy** > **Moduł równoważenia obciążenia****sieciowego** > .
 2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
     | Subskrypcja               | Wybierz subskrypcję.    |    
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLBAZ* w polu tekstowym.|
-    | Name (Nazwa)                   | *myLoadBalancer*                                   |
+    | Nazwa                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
-    | Typ          | Wybierz pozycję **Publiczna**.                                        |
-    | SKU           | Wybierz opcję **Standardowa**.                          |
+    | Typ          | wybierz pozycję **Publiczny**.                                        |
+    | SKU           | Wybierz **opcję Standardowy**.                          |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
     | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
     |Strefa dostępności| Wybierz pozycję **Strefowo nadmiarowy**.    |
@@ -71,16 +71,16 @@ W tej sekcji utworzysz sieć wirtualną i maszyny wirtualne w różnych strefach
 
 ## <a name="virtual-network-and-parameters"></a>Sieć wirtualna i parametry
 
-W tej sekcji należy zamienić następujące parametry w krokach z poniższymi informacjami:
+W tej sekcji należy zastąpić następujące parametry w krokach poniższymi informacjami:
 
 | Parametr                   | Wartość                |
 |-----------------------------|----------------------|
-| **\<nazwy grupy zasobów >**  | myResourceGroupLBAZ (wybierz istniejącą grupę zasobów) |
-| **\<nazwę sieci wirtualnej >** | myVNet          |
-| **\<nazwę regionu >**          | Europa Zachodnia      |
-| **\<adres IPv4 >**   | 10.0.0.0 \ 16          |
-| **\<nazwę podsieci >**          | myBackendSubnet        |
-| **\<zakres adresów podsieci >** | 10.0.0.0 \ 24          |
+| **\<>nazwa grupy zasobów**  | myResourceGroupLBAZ (Wybierz istniejącą grupę zasobów) |
+| **\<>nazwa sieci wirtualnej** | myVNet ( myVNet )          |
+| **\<nazwa regionu>**          | Europa Zachodnia      |
+| **\<>przestrzeni adresowej IPv4**   | 10.0.0.0\16          |
+| **\<>nazwa podsieci**          | myBackendSubnet        |
+| **\<>zakresu adresu podsieci** | 10.0.0.0\24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -91,7 +91,7 @@ Utwórz sieciową grupę zabezpieczeń w celu zdefiniowania połączeń przychod
 1. W lewej górnej części ekranu kliknij pozycję **Utwórz zasób**, w polu wyszukiwania wpisz *Sieciowa grupa zabezpieczeń*, a następnie na stronie sieciowej grupy zabezpieczeń kliknij pozycję **Utwórz**.
 2. Na stronie tworzenia sieciowej grupy zabezpieczeń wprowadź następujące wartości:
     - *myNetworkSecurityGroup* — jako nazwę sieciowej grupy zabezpieczeń.
-    - *myResourceGroupLBAZ* — jako nazwę istniejącej grupy zasobów.
+    - *myResourceGroupLBAZ* — dla nazwy istniejącej grupy zasobów.
    
 ![Tworzenie sieci wirtualnej](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
@@ -120,14 +120,14 @@ W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń, aby zezwolić na p
     - *TCP* — w polu **Protokół**
     - *Zezwalaj* — w polu **Akcja**
     - *200* — w polu **Priorytet**
-    - *myRDPRule* — w polu nazwy
+    - *myRDPRule* dla nazwy
     - *Zezwalaj na RDP* — w polu opisu
 
 ### <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
 
 Utwórz maszyny wirtualne w różnych strefach regionu (strefie 1, strefie 2 i strefie 3). Mogą one pełnić rolę serwerów zaplecza dla modułu równoważenia obciążenia.
 
-1. W lewej górnej części ekranu kliknij pozycję **Utwórz zasób** > **Compute** > **Windows Server 2016 Datacenter** i wprowadź następujące wartości dla maszyny wirtualnej:
+1. W lewym górnym rogu ekranu kliknij pozycję **Utwórz zasób** > **Obliczeniowe** > **Centrum danych systemu Windows Server 2016** i wprowadź następujące wartości dla maszyny wirtualnej:
     - *myVM1* — jako nazwę maszyny wirtualnej.        
     - *azureuser* — jako nazwę użytkownika administratora.    
     - *myResourceGroupLBAZ* — w obszarze **Grupa zasobów** wybierz opcję **Użyj istniejącej**, a następnie wybierz wartość *myResourceGroupLBAZ*.
@@ -150,7 +150,7 @@ Utwórz maszyny wirtualne w różnych strefach regionu (strefie 1, strefie 2 i s
 1. W menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie na liście zasobów kliknij pozycję **myVM1** znajdującą się w grupie zasobów *myResourceGroupLBAZ*.
 2. Na stronie **Przegląd** kliknij pozycję **Połącz** dla protokołu RDP z maszyną wirtualną.
 3. Zaloguj się do maszyny wirtualnej przy użyciu nazwy użytkownika *azureuser*.
-4. Na pulpicie serwera przejdź do pozycji **Narzędzia administracyjne systemu Windows**>**Windows PowerShell**.
+4. Na pulpicie serwera przejdź do pozycji **Narzędzia administracyjne**>systemu**Windows Windows PowerShell**.
 5. W oknie programu PowerShell uruchom poniższe polecenia, aby zainstalować serwer usług IIS, usunąć domyślny plik iisstart.htm i dodać nowy plik iisstart.htm, który wyświetla nazwę maszyny wirtualnej:
    ```azurepowershell-interactive
     
@@ -178,12 +178,12 @@ Na potrzeby rozdzielania ruchu między maszyny wirtualne używana jest pula adre
 1. W menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie na liście zasobów kliknij pozycję **myLoadBalancer**.
 2. W obszarze **Ustawienia** kliknij pozycję **Pule zaplecza**, a następnie kliknij pozycję **Dodaj**.
 3. Na stronie **Dodawanie puli zaplecza** wykonaj następujące czynności:
-    - W polu nazwy wpisz *myBackEndPool* jako nazwę puli zaplecza.
+    - Dla name, wpisz *myBackEndPool*, jako nazwę puli wewnętrznej bazy danych.
     - W menu rozwijanym w obszarze **Sieć wirtualna** kliknij pozycję **myVNet**.
     - W menu rozwijanym w obszarze **Maszyna wirtualna** kliknij pozycję **myVM1**.
     - W menu rozwijanym w obszarze **Adres IP** kliknij pozycję myVM1.
 4. Kliknij pozycję **Dodaj nowy zasób zaplecza**, aby dodać wszystkie maszyny wirtualne (*myVM2* i *myVM3*) do dodania do puli zaplecza modułu równoważenia obciążenia.
-5. Kliknij pozycję **Add** (Dodaj).
+5. Kliknij przycisk **Dodaj**.
 
     ![Dodawanie do puli adresów zaplecza](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 
@@ -224,7 +224,7 @@ Reguła modułu równoważenia obciążenia służy do definiowania sposobu dyst
     ![Dodawanie reguły równoważenia obciążenia](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)
 
 ## <a name="test-the-load-balancer"></a>Testowanie modułu równoważenia obciążenia
-1. Znajdź publiczny adres IP dla usługi Load Balancer na ekranie **Przegląd**. Kliknij pozycję **Wszystkie zasoby**, a następnie kliknij pozycję **myPublicIP**.
+1. Znajdź publiczny adres IP modułu równoważenia obciążenia na **ekranie Przegląd.** Kliknij pozycję **Wszystkie zasoby**, a następnie kliknij pozycję **myPublicIP**.
 
 2. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. W przeglądarce jest wyświetlana domyślna strona internetowego serwera usług IIS.
 

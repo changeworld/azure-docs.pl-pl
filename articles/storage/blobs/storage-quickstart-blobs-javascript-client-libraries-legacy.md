@@ -27,7 +27,7 @@ W tym przewodniku Szybki start nauczysz się zarządzać obiektami blob za pomoc
 - Konto platformy Azure z aktywną subskrypcją. [Utwórz konto za darmo](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Konto usługi Azure Storage. [Utwórz konto magazynu](../common/storage-account-create.md).
 - Lokalny serwer www. W tym artykule użyto [pliku Node.js](https://nodejs.org) do otwarcia serwera podstawowego.
-- [Program Visual Studio Code](https://code.visualstudio.com)
+- [Visual Studio Code](https://code.visualstudio.com).
 - Rozszerzenie kodu VS do debugowania przeglądarki, takie jak [Debuger dla Chrome](vscode:extension/msjsdiag.debugger-for-chrome) lub [Debuger dla przeglądarki Microsoft Edge](vscode:extension/msjsdiag.debugger-for-edge).
 
 ## <a name="setting-up-storage-account-cors-rules"></a>Konfigurowanie reguł CORS konta magazynu

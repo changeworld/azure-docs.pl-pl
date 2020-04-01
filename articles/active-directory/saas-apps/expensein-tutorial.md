@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą ExpenseIn | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i ExpenseIn.
+title: 'Samouczek: Integracja usługi Azure Active Directory z expensein | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a expensein.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,182 +17,182 @@ ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c09542013dff3a18965d1070216a938c26a144e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67102840"
 ---
-# <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Samouczek: Integracja ExpenseIn za pomocą usługi Azure Active Directory
+# <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Samouczek: Integrowanie expensein z usługą Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować ExpenseIn w usłudze Azure Active Directory (Azure AD). W ramach ExpenseIn integracji z usługą Azure AD, możesz wykonywać następujące czynności:
+W tym samouczku dowiesz się, jak zintegrować ExpenseIn z usługą Azure Active Directory (Azure AD). Po zintegrowaniu ExpenseIn z usługą Azure AD można:
 
-* Kontrolowanie w usłudze Azure AD, kto ma dostęp do ExpenseIn.
-* Umożliwianie użytkownikom można automatycznie zalogowany do ExpenseIn za pomocą kont usługi Azure AD.
-* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrola w usłudze Azure AD, który ma dostęp do ExpenseIn.
+* Włącz użytkownikom automatyczne logowanie do expensein za pomocą ich kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć pracę, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebujesz następujących elementów:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
-* ExpenseIn logowania jednokrotnego (SSO) włączone subskrypcji.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto.](https://azure.microsoft.com/free/)
+* ExpenseIn subskrypcja z włączoną rejestracją jednokrotną (Logowanie jednokrotne).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. Obsługuje ExpenseIn **dodatkiem SP oraz dostawców tożsamości** jednokrotne logowanie inicjowane przez.
+W tym samouczku można skonfigurować i przetestować samouszeńców usługi Azure AD w środowisku testowym. ExpenseIn obsługuje **sp i idp** zainicjowane SSO.
 
-## <a name="adding-expensein-from-the-gallery"></a>Dodawanie ExpenseIn z galerii
+## <a name="adding-expensein-from-the-gallery"></a>Dodawanie expensein z galerii
 
-Aby skonfigurować integrację ExpenseIn w usłudze Azure AD, należy dodać ExpenseIn z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację expensein do usługi Azure AD, należy dodać ExpenseIn z galerii do listy zarządzanych aplikacji SaaS.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
-1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
-1. Aby dodać nową aplikację, wybierz **nową aplikację**.
-1. W **Dodaj z galerii** sekcji, wpisz **ExpenseIn** w polu wyszukiwania.
-1. Wybierz **ExpenseIn** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta służbowego lub konta firmy Microsoft.
+1. W lewym okienku nawigacji wybierz usługę **Azure Active Directory.**
+1. Przejdź do **aplikacji korporacyjnych,** a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **ExpenseIn** w polu wyszukiwania.
+1. Wybierz **expenseIn** z panelu wyników, a następnie dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą ExpenseIn za pomocą użytkownika testu o nazwie **B.Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w ExpenseIn.
+Konfigurowanie i testowanie usługi Azure AD SSO za pomocą expenseIn przy użyciu użytkownika testowego o nazwie **B.Simon**. Aby użytkownik syt/r działał, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w usłudze ExpenseIn.
 
-Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą ExpenseIn, wykonaj poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować przychylić się do usługi Azure AD z pomocą usługi ExpenseIn, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie ExpenseIn](#configure-expensein)**  do konfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą B.Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające B.Simon do użycia usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego ExpenseIn](#create-expensein-test-user)**  mieć odpowiednikiem B.Simon ExpenseIn połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-sso)**  Aby sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj sytuasz usługi Azure AD,](#configure-azure-ad-sso)** aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj ExpenseIn,](#configure-expensein)** aby skonfigurować ustawienia logowania dodatkowego po stronie aplikacji.
+3. **[Utwórz użytkownika testowego usługi Azure AD,](#create-an-azure-ad-test-user)** aby przetestować logowanie jednokrotne usługi Azure AD za pomocą usługi B.Simon.
+4. **[Przypisz użytkownika testowego usługi Azure AD,](#assign-the-azure-ad-test-user)** aby włączyć B.Simon do korzystania z usługi Azure AD logowania jednokrotnego.
+5. **[Utwórz expenseIn użytkownika testowego,](#create-expensein-test-user)** aby mieć odpowiednik B.Simon w expenseIn, który jest połączony z reprezentacji usługi Azure AD użytkownika.
+6. **[Przetestuj sytą próbę sycącą,](#test-sso)** aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie rejestracji jednokrotnej w usłudze Azure AD
 
-Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
+Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azure portal.
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **ExpenseIn** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
-1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
-1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie Integracja aplikacji **ExpenseIn** znajdź sekcję **Zarządzaj** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** kliknij ikonę edycji/pióra dla **podstawowej konfiguracji SAML,** aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb, wykonaj następujące kroki:
+4. W sekcji **Podstawowa konfiguracja SAML,** jeśli chcesz skonfigurować aplikację w trybie inicjowanym **przez IDP,** wykonaj następujący krok:
 
-    W **adres URL odpowiedzi** tekstu wpisz dowolny adres URL:
+    W polu tekstowym **Odpowiedz na adres URL** wpisz dowolny z adresów URL:
 
     | |
     |--|
     | `https://app.expensein.com/samlcallback` |
     | `https://mobileapi.expensein.com/identity/samlcallback` |
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+5. Kliknij **pozycję Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowanym w sp: **SP**
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://app.expensein.com/saml`
+    W polu **tekstowym "Podpisywanie adresu URL"** wpisz adres URL:`https://app.expensein.com/saml`
 
-1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i kliknij przycisk **Pobierz** można pobrać **certyfikat (Base64)** i zapisz go na komputerze.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiuj przycisk **kopiowania adresów url metadanych federacji aplikacji,** a następnie kliknij przycisk **Pobierz,** aby pobrać **certyfikat (Base64)** i zapisać go na komputerze.
 
-   ![Link pobierania certyfikatu](./media/expensein-tutorial/copy-metdataurl-certificate.png)
+   ![Link do pobierania certyfikatu](./media/expensein-tutorial/copy-metdataurl-certificate.png)
 
-1. Na **Konfigurowanie ExpenseIn** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. W sekcji **Konfigurowanie wydatków** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-### <a name="configure-expensein"></a>Konfigurowanie ExpenseIn
+### <a name="configure-expensein"></a>Konfigurowanie expensein
 
-1. Aby zautomatyzować konfigurację w ramach ExpenseIn, musisz zainstalować **rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania** , klikając **zainstalować rozszerzenie**.
+1. Aby zautomatyzować konfigurację w ramach ExpenseIn, musisz zainstalować **rozszerzenie przeglądarki My Apps Secure Sign-in,** klikając pozycję Zainstaluj **rozszerzenie**.
 
-    ![Moje rozszerzenie aplikacji](common/install-myappssecure-extension.png)
+    ![Rozszerzenie Moje aplikacje](common/install-myappssecure-extension.png)
 
-2. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **ExpenseIn Instalatora** nastąpi bezpośrednie przekierowanie do aplikacji ExpenseIn. W tym miejscu należy podać poświadczenia administratora do logowania się do ExpenseIn. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i zautomatyzować kroki 3 – 5.
+2. Po dodaniu rozszerzenia do przeglądarki, kliknij **koszty instalacjiIn** przekieruje Cię do aplikacji ExpenseIn. Stamtąd podaj poświadczenia administratora, aby zalogować się do ExpenseIn. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację dla Ciebie i zautomatyzuje kroki 3-5.
 
     ![Konfiguracja instalacji](common/setup-sso.png)
 
-3. Jeśli chcesz ręcznie skonfigurować ExpenseIn, Otwórz nowe okno przeglądarki sieci web i logowania do witryny firmy ExpenseIn z uprawnieniami administratora i wykonaj następujące czynności:
+3. Jeśli chcesz ręcznie skonfigurować expenseIn, otwórz nowe okno przeglądarki sieci Web i zaloguj się do witryny firmy ExpenseIn jako administrator i wykonaj następujące czynności:
 
-4. Kliknij pozycję **administratora** górnej części strony a następnie przejdź do **logowania jednokrotnego** i kliknij przycisk **dostawcy Dodaj**.
+4. Kliknij **pozycję Administrator** w górnej części strony, a następnie przejdź do **logowania jednokrotnego** i kliknij pozycję **Dodaj dostawcę**.
 
      ![Konfiguracja ExpenseIn](./media/expenseIn-tutorial/config01.png)
 
-5. Na **nowego dostawcę tożsamości** wyskakujące, wykonaj następujące czynności:
+5. W wyskakującym okienku **Nowy dostawca tożsamości** wykonaj następujące czynności:
 
     ![Konfiguracja ExpenseIn](./media/expenseIn-tutorial/config02.png)
 
-    a. W **Nazwa dostawcy** tekstu wpisz nazwę, takich jak na przykład: Azure.
+    a. W polu **tekstowym Nazwa dostawcy** wpisz nazwę typu ex:Azure.
 
-    b. Wybierz **tak** jako **Zezwalaj na logowanie na Intitated dostawcy**.
+    b. Wybierz **pozycję Tak** jako **zezwalaj na logowanie do dostawcy**.
 
-    c. W **docelowy adres Url** tekstu pole, Wklej wartość **adres URL logowania**, które zostały skopiowane z witryny Azure portal.
+    d. W polu **tekstowym Docelowy adres URL** wklej wartość **adresu URL logowania,** który został skopiowany z witryny Azure portal.
 
-    d. W **wystawcy** tekstu pole, Wklej wartość **usługi Azure AD identyfikator**, które zostały skopiowane z witryny Azure portal.
+    d. W polu tekstowym **Wystawca** wklej wartość **identyfikatora usługi Azure AD,** który został skopiowany z witryny Azure portal.
 
-    e. Otwórz certyfikat (Base64) w programie Notatnik, skopiuj jego zawartość i wklej ją w **certyfikatu** pola tekstowego.
+    e. Otwórz certyfikat (Base64) w Notatniku, skopiuj jego zawartość i wklej ją w polu tekstowym **Certyfikat.**
 
-    f. Kliknij pozycję **Utwórz**.
+    f. Kliknij przycisk **Utwórz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B.Simon.
+W tej sekcji utworzysz użytkownika testowego w witrynie Azure portal o nazwie B.Simon.
 
-1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
-1. W **użytkownika** właściwości, wykonaj następujące kroki:
+1. Z lewego okienka w witrynie Azure portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
+1. We właściwościach **Użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** username@companydomain.extensionwprowadź pole . Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można udostępnić B.Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do ExpenseIn.
+W tej sekcji włączysz B.Simon do korzystania z logowania jednokrotnego platformy Azure, przyznając dostęp do ExpenseIn.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście aplikacji wybierz **ExpenseIn**.
-1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Na liście aplikacji wybierz pozycję **ExpenseIn**.
+1. Na stronie przegląd aplikacji znajdź sekcję **Zarządzaj** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
+1. Wybierz **pozycję Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym Dodawanie **przydziału.**
 
     ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B.Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B.Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przydziału** kliknij przycisk **Przypisz.**
 
-### <a name="create-expensein-test-user"></a>Tworzenie użytkownika testowego ExpenseIn
+### <a name="create-expensein-test-user"></a>Utwórz expenseIn użytkownika testowego
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do ExpenseIn, musi być obsługiwana w ExpenseIn. W ExpenseIn Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD zalogowanie się do ExpenseIn, muszą one być aprowizowana do ExpenseIn. W ExpenseIn inicjowania obsługi administracyjnej jest zadanie ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
-1. Zaloguj się do ExpenseIn jako Administrator.
+1. Zaloguj się do ExpenseIn jako administrator.
 
-2. Kliknij pozycję **administratora** górnej części strony a następnie przejdź do **użytkowników** i kliknij przycisk **nowego użytkownika**.
+2. Kliknij **na Admin** w górnej części strony, a następnie przejdź do **użytkowników** i kliknij pozycję **Nowy użytkownik**.
 
      ![Konfiguracja ExpenseIn](./media/expenseIn-tutorial/config03.png)
 
-3. Na **szczegóły** wyskakujące, wykonaj następujące czynności:
+3. W wyskakującym okienku **Szczegóły** wykonaj następujące czynności:
 
     ![Konfiguracja ExpenseIn](./media/expenseIn-tutorial/config04.png)
 
-    a. W **imię** tekstu Wprowadź imię użytkownika, takich jak **B**.
+    a. W polu **tekstowym Imię** wprowadź imię użytkownika, takiego jak **B**.
 
-    b. W polu tekstowym **Last name** (Nazwisko) wprowadź nazwisko użytkownika, na przykład **Simon**.
+    b. W polu **tekstowym Nazwisko** wprowadź nazwisko użytkownika, takiego jak **Simon**.
 
-    c. W **E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak `B.Simon@contoso.com`.
+    d. W polu tekstowym **Email** (Adres e-mail) wprowadź adres e-mail użytkownika, na przykład `B.Simon@contoso.com`.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="test-sso"></a>Test SSO
 
-Po wybraniu kafelka ExpenseIn w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze ExpenseIn, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka ExpenseIn w Panelu dostępu należy automatycznie zalogować się do expensein, dla którego skonfigurowano logującą się logującą. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Freedcamp | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Freedcamp.
+title: 'Samouczek: Integracja usługi Azure Active Directory z Freedcamp | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a Freedcamp.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,178 +17,178 @@ ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4de1ae135df4cd070fe9c6ee322e304caa1e17c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67101911"
 ---
-# <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Samouczek: Integracja Freedcamp za pomocą usługi Azure Active Directory
+# <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Samouczek: Integracja Freedcamp z usługą Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować Freedcamp w usłudze Azure Active Directory (Azure AD). W ramach Freedcamp integracji z usługą Azure AD, możesz wykonywać następujące czynności:
+W tym samouczku dowiesz się, jak zintegrować Freedcamp z usługą Azure Active Directory (Azure AD). Po zintegrowaniu Freedcamp z usługą Azure AD można:
 
-* Kontrolowanie w usłudze Azure AD, kto ma dostęp do Freedcamp.
-* Umożliwianie użytkownikom można automatycznie zalogowany do Freedcamp za pomocą kont usługi Azure AD.
-* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrola w usłudze Azure AD, który ma dostęp do Freedcamp.
+* Włącz użytkownikom automatyczne logowanie do Freedcamp za pomocą swoich kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć pracę, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebujesz następujących elementów:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Freedcamp logowania jednokrotnego (SSO) włączone subskrypcji.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto.](https://azure.microsoft.com/free/)
+* Freedcamp rejestracji jednokrotnej (SSO) włączone subskrypcji.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. Obsługuje Freedcamp **dodatkiem SP oraz dostawców tożsamości** jednokrotne logowanie inicjowane przez.
+W tym samouczku można skonfigurować i przetestować samouszeńców usługi Azure AD w środowisku testowym. Freedcamp obsługuje **sp i IDP** zainicjowane SSO.
 
 ## <a name="adding-freedcamp-from-the-gallery"></a>Dodawanie Freedcamp z galerii
 
-Aby skonfigurować integrację Freedcamp w usłudze Azure AD, należy dodać Freedcamp z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację Freedcamp z usługą Azure AD, należy dodać Freedcamp z galerii do listy zarządzanych aplikacji SaaS.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
-1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
-1. Aby dodać nową aplikację, wybierz **nową aplikację**.
-1. W **Dodaj z galerii** sekcji, wpisz **Freedcamp** w polu wyszukiwania.
-1. Wybierz **Freedcamp** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta służbowego lub konta firmy Microsoft.
+1. W lewym okienku nawigacji wybierz usługę **Azure Active Directory.**
+1. Przejdź do **aplikacji korporacyjnych,** a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **Freedcamp** w polu wyszukiwania.
+1. Wybierz **pozycję Freedcamp** z panelu wyników, a następnie dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą Freedcamp za pomocą użytkownika testu o nazwie **Britta Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w Freedcamp.
+Konfigurowanie i testowanie usługi Azure AD SSO z Freedcamp przy użyciu użytkownika testowego o nazwie **Britta Simon**. Aby użytkownik łączony sytuować działał, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w Freedcamp.
 
-Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą Freedcamp, wykonaj poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować przychylić się do usługi Azure AD z freedcamp, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie Freedcamp](#configure-freedcamp)**  do konfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Freedcamp](#create-freedcamp-test-user)**  mieć odpowiednikiem Britta Simon Freedcamp połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-sso)**  Aby sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj sytuasz usługi Azure AD,](#configure-azure-ad-sso)** aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj Freedcamp,](#configure-freedcamp)** aby skonfigurować ustawienia logowania sytego po stronie aplikacji.
+3. **[Utwórz użytkownika testowego usługi Azure AD,](#create-an-azure-ad-test-user)** aby przetestować logowanie jednokrotne usługi Azure AD za pomocą Britta Simon.
+4. **[Przypisz użytkownika testowego usługi Azure AD,](#assign-the-azure-ad-test-user)** aby umożliwić Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego Freedcamp,](#create-freedcamp-test-user)** aby mieć odpowiednik Britta Simon w Freedcamp, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+6. **[Przetestuj sytą próbę sycącą,](#test-sso)** aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie rejestracji jednokrotnej w usłudze Azure AD
 
-Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
+Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azure portal.
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Freedcamp** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
-1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
-1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie integracji aplikacji **Freedcamp** znajdź sekcję **Zarządzaj** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** kliknij ikonę edycji/pióra dla **podstawowej konfiguracji SAML,** aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
+1. W sekcji **Podstawowa konfiguracja SAML,** jeśli chcesz skonfigurować aplikację w trybie inicjowanym **przez IDP,** wykonaj następujące czynności:
 
-    1. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.freedcamp.com/sso/<UNIQUEID>`
+    1. W polu tekstowym **Identyfikator** wpisz adres URL przy użyciu następującego wzorca:`https://<SUBDOMAIN>.freedcamp.com/sso/<UNIQUEID>`
 
     2. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.freedcamp.com/sso/acs/<UNIQUEID>`
 
-1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+1. Kliknij **pozycję Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowanym w sp: **SP**
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.freedcamp.com/login`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Użytkownicy mogą również wprowadzać wartości adresu url w odniesieniu do swojej własnej domenie klienta i nie mogą być koniecznie wzorca `freedcamp.com`, mogą wprowadzać dowolne klienta domeny określonej wartości, specyficzne dla ich wystąpienia aplikacji. Ponadto możesz skontaktować się ze [zespołem pomocy technicznej klienta Freedcamp](mailto:devops@freedcamp.com) więcej informacji na temat wzorców adresów url.
+    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Użytkownicy mogą również wprowadzić wartości adresów URL w odniesieniu do własnej `freedcamp.com`domeny klienta i mogą nie być koniecznie wzorca , mogą wprowadzić dowolną wartość specyficzne dla domeny klienta, specyficzne dla ich wystąpienia aplikacji. Możesz również skontaktować się z [zespołem pomocy technicznej Freedcamp Client,](mailto:devops@freedcamp.com) aby uzyskać więcej informacji na temat wzorców adresów URL.
 
-1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, Znajdź **certyfikat (Base64)** i wybierz **Pobierz** do pobrania certyfikatu i zapisz go na komputerze.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** w sekcji **Saml Podpisywanie certyfikatów** znajdź **certyfikat (Base64)** i wybierz **pozycję Pobierz,** aby pobrać certyfikat i zapisać go na komputerze.
 
-   ![Link pobierania certyfikatu](common/certificatebase64.png)
+   ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. Na **Konfigurowanie Freedcamp** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. W sekcji **Konfigurowanie Freedcamp** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-### <a name="configure-freedcamp"></a>Konfigurowanie Freedcamp
+### <a name="configure-freedcamp"></a>Konfigurowanie freedcamp
 
-1. Aby zautomatyzować konfigurację w ramach Freedcamp, musisz zainstalować **rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania** , klikając **zainstalować rozszerzenie**.
+1. Aby zautomatyzować konfigurację w Freedcamp, musisz zainstalować **rozszerzenie przeglądarki My Apps Secure Sign-in,** klikając pozycję Zainstaluj **rozszerzenie**.
 
-    ![Moje rozszerzenie aplikacji](common/install-myappssecure-extension.png)
+    ![Rozszerzenie Moje aplikacje](common/install-myappssecure-extension.png)
 
-2. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **Freedcamp Instalatora** nastąpi bezpośrednie przekierowanie do aplikacji Freedcamp. W tym miejscu należy podać poświadczenia administratora do logowania się do Freedcamp. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i zautomatyzować kroki 3 – 5.
+2. Po dodaniu rozszerzenia do przeglądarki, kliknij **Instalator Freedcamp** skieruje Cię do aplikacji Freedcamp. Stamtąd podaj poświadczenia administratora, aby zalogować się do Freedcamp. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację dla Ciebie i zautomatyzuje kroki 3-5.
 
     ![Konfiguracja instalacji](common/setup-sso.png)
 
-3. Jeśli chcesz ręcznie skonfigurować Freedcamp, Otwórz nowe okno przeglądarki sieci web i logowania do witryny firmy Freedcamp z uprawnieniami administratora i wykonaj następujące czynności:
+3. Jeśli chcesz ręcznie skonfigurować Freedcamp, otwórz nowe okno przeglądarki internetowej i zaloguj się do witryny firmy Freedcamp jako administrator i wykonaj następujące czynności:
 
-4. W prawym górnym rogu strony kliknij **profilu** , a następnie przejdź do **Moje konto**.
+4. W prawym górnym rogu strony kliknij **profil,** a następnie przejdź do **pozycji Moje konto**.
 
-    ![Konfiguracja Freedcamp](./media/freedcamp-tutorial/config01.png)
+    ![Konfiguracja freedcamp](./media/freedcamp-tutorial/config01.png)
 
-5. Z lewej strony paska menu, kliknij pozycję **logowania jednokrotnego** i **połączenia usługi logowania jednokrotnego** strony należy wykonać następujące czynności:
+5. Po lewej stronie paska menu kliknij jedno i jedno **i** kolejne godziny na stronie **Połączenia jednosojowe** wykonaj następujące czynności:
 
-    ![Konfiguracja Freedcamp](./media/freedcamp-tutorial/config02.png)
+    ![Konfiguracja freedcamp](./media/freedcamp-tutorial/config02.png)
 
-    a. W **tytuł** tekstu wpisz tytuł.
+    a. W polu tekstowym **Tytuł** wpisz tytuł.
 
-    b. W **identyfikator jednostki** pole tekstowe, Wklej **usługi Azure AD identyfikator** wartości, które zostały skopiowane z witryny Azure portal.
+    b. W polu **tekstowym identyfikator jednostki** wklej wartość **identyfikatora usługi Azure AD,** która została skopiowana z witryny Azure portal.
 
-    c. W **adres URL logowania** pole tekstowe, Wklej **adres URL logowania** wartości, które zostały skopiowane z witryny Azure portal.
+    d. W polu tekstowym **Adres URL logowania** wklej wartość adresu URL **logowania,** która została skopiowana z witryny Azure portal.
 
-    d. Otwórz certyfikat zakodowany w formacie Base64 w programie Notatnik, skopiuj jego zawartość i wklej go do **certyfikatu** pola tekstowego.
+    d. Otwórz zakodowany certyfikat Base64 w notatniku, skopiuj jego zawartość i wklej go do pola tekstowego **Certyfikat.**
 
-    e. Kliknij przycisk **Submit** (Prześlij).
+    e. Kliknij **przycisk Prześlij**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji utworzysz użytkownika testowego w witrynie Azure portal o nazwie Britta Simon.
 
-1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
-1. W **użytkownika** właściwości, wykonaj następujące kroki:
+1. Z lewego okienka w witrynie Azure portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
+1. We właściwościach **Użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `Britta Simon`.  
-   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `BrittaSimon@contoso.com`.
+   1. W polu **Nazwa użytkownika** username@companydomain.extensionwprowadź pole . Na przykład `BrittaSimon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można udostępnić Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Freedcamp.
+W tej sekcji włączysz Britta Simon do korzystania z logowania jednokrotnego platformy Azure, przyznając dostęp do Freedcamp.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście aplikacji wybierz **Freedcamp**.
-1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Na liście aplikacji wybierz pozycję **Freedcamp**.
+1. Na stronie przegląd aplikacji znajdź sekcję **Zarządzaj** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
+1. Wybierz **pozycję Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym Dodawanie **przydziału.**
 
     ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz **pozycję Britta Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przydziału** kliknij przycisk **Przypisz.**
 
-### <a name="create-freedcamp-test-user"></a>Tworzenie użytkownika testowego Freedcamp
+### <a name="create-freedcamp-test-user"></a>Utwórz użytkownika testowego Freedcamp
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się w celu Freedcamp, ich musi być obsługiwana w Freedcamp. W Freedcamp Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+Aby włączyć użytkowników usługi Azure AD, zaloguj się do Freedcamp, muszą one być aprowizować w Freedcamp. W Freedcamp inicjowania obsługi administracyjnej jest zadanie ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
-1. W oknie przeglądarki internetowej innej Zaloguj się do Freedcamp jako Administrator zabezpieczeń.
+1. W innym oknie przeglądarki internetowej zaloguj się do Freedcamp jako administrator zabezpieczeń.
 
-2. Na toright górnym rogu strony kliknij **profilu** , a następnie przejdź do **System zarządzania**.
+2. W górnym rogu strony kliknij **profil,** a następnie przejdź do **pozycji Zarządzaj systemem**.
 
-    ![Konfiguracja Freedcamp](./media/freedcamp-tutorial/config03.png)
+    ![Konfiguracja freedcamp](./media/freedcamp-tutorial/config03.png)
 
-3. Po prawej stronie na stronie System zarządzania wykonaj następujące czynności:
+3. Po prawej stronie strony Zarządzanie systemem wykonaj następujące czynności:
 
-    ![Konfiguracja Freedcamp](./media/freedcamp-tutorial/config04.png)
+    ![Konfiguracja freedcamp](./media/freedcamp-tutorial/config04.png)
 
-    a. Kliknij pozycję **apletu Dodaj lub zaproszenia użytkowników**.
+    a. Kliknij **dodaj lub zaproś użytkowników**.
 
-    b. W **E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak `Brittasimon@contoso.com`.
+    b. W polu tekstowym **Poczta e-mail** wprowadź adres e-mail użytkownika w stylu `Brittasimon@contoso.com`.
 
-    c. Kliknij przycisk **Dodaj użytkownika**.
+    d. Kliknij **pozycję Dodaj użytkownika**.
 
 ### <a name="test-sso"></a>Test SSO
 
-Po wybraniu kafelka Freedcamp w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Freedcamp, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka Freedcamp w Panelu dostępu należy automatycznie zalogować się do Freedcamp, dla którego skonfigurowano logującą się logującą logującą. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

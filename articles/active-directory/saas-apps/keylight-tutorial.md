@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą LockPath Keylight | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i LockPath Keylight.
+title: 'Samouczek: Integracja usługi Azure Active Directory z technologią LockPath Keylight | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a ładowaniem klawiszy LockPath.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,45 +17,45 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 148c2c46a911088d01ab83fe2d16e8ca81d272ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67098787"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą LockPath Keylight
+# <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Samouczek: Integracja usługi Azure Active Directory z technologią LockPath Keylight
 
-W tym samouczku dowiesz się, jak zintegrować LockPath Keylight w usłudze Azure Active Directory (Azure AD).
-Integrowanie LockPath Keylight z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować narzędzie LockPath Keylight z usługą Azure Active Directory (Azure AD).
+Integracja lockpath keylight z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do LockPath Keylight.
-* Użytkownikom można automatycznie zalogowany do LockPath Keylight (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Można kontrolować w usłudze Azure AD, który ma dostęp do LockPath Keylight.
+* Można włączyć użytkowników do automatycznego logowania do LockPath Keylight (Logowanie jednokrotne) z ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą LockPath Keylight, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z programem LockPath Keylight, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* LockPath Keylight logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
+* Subskrypcja z obsługą logowania jednokrotnego LockPath Keylight
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje LockPath Keylight **SP** jednokrotne logowanie inicjowane przez
-* Obsługuje LockPath Keylight **Just In Time** aprowizacji użytkowników
+* LockPath Keylight obsługuje sso inicjowane przez **sp**
+* LockPath Keylight obsługuje **inicjowanie** obsługi administracyjnej użytkowników just in time
 
-## <a name="adding-lockpath-keylight-from-the-gallery"></a>Dodawanie LockPath Keylight z galerii
+## <a name="adding-lockpath-keylight-from-the-gallery"></a>Dodawanie lockpath keylight z galerii
 
-Aby skonfigurować integrację LockPath Keylight w usłudze Azure AD, należy dodać LockPath Keylight z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację LockPath Keylight do usługi Azure AD, należy dodać LockPath Keylight z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać LockPath Keylight z galerii, wykonaj następujące czynności:**
+**Aby dodać lockpath keylight z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -63,37 +63,37 @@ Aby skonfigurować integrację LockPath Keylight w usłudze Azure AD, należy do
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **LockPath Keylight**, wybierz opcję **LockPath Keylight** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **LockPath Keylight**, wybierz **lockpath Keylight** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
     ![LockPath Keylight na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji skonfigurujesz i test usługi Azure AD logowanie jednokrotne za pomocą LockPath Keylight w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w LockPath Keylight musi zostać ustanowione.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego za pomocą LockPath Keylight na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w aplikacji LockPath Keylight.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą LockPath Keylight, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą lockpath keylight, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie LockPath Keylight logowania jednokrotnego](#configure-lockpath-keylight-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego LockPath Keylight](#create-lockpath-keylight-test-user)**  — aby odpowiednikiem Britta Simon w LockPath Keylight, połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie jednokrotne LockPath Keylight](#configure-lockpath-keylight-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego LockPath Keylight](#create-lockpath-keylight-test-user)** — aby mieć odpowiednik Britta Simon w LockPath Keylight, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z LockPath Keylight, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednookrotne usługi Azure AD za pomocą lockpath keylight, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **LockPath Keylight** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [portalu Azure](https://portal.azure.com/)portal na stronie integracji aplikacji **LockPath Keylight** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -105,22 +105,22 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z LockPath Keylight, 
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![LockPath Keylight domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier-reply.png)
+    ![LockPath Keylight Domain i adresy URL — informacje o logach jednokrotnych](common/sp-identifier-reply.png)
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<company name>.keylightgrc.com/`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<company name>.keylightgrc.com`
 
-    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<company name>.keylightgrc.com/Login.aspx`
+    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<company name>.keylightgrc.com/Login.aspx`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Keylight LockPath](https://www.lockpath.com/contact/) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej klienta LockPath Keylight,](https://www.lockpath.com/contact/) aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (nieprzetworzony)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/certificateraw.png)
+    ![Link do pobierania certyfikatu](common/certificateraw.png)
 
-6. Na **Konfigurowanie LockPath Keylight** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie funkcji LockPath Keylight** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -128,57 +128,57 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z LockPath Keylight, 
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-lockpath-keylight-single-sign-on"></a>Konfigurowanie LockPath Keylight logowania jednokrotnego
+### <a name="configure-lockpath-keylight-single-sign-on"></a>Konfigurowanie logowania jednokrotnego lockpath keylight
 
-1. Aby włączyć logowanie Jednokrotne w LockPath Keylight, wykonaj następujące czynności:
+1. Aby włączyć funkcję SSO w lockpath keylight, wykonaj następujące kroki:
 
-    a. Zaloguj się do swojego konta LockPath Keylight jako administrator.
+    a. Zaloguj się do konta LockPath Keylight jako administrator.
 
-    b. W menu u góry kliknij **osoby**i wybierz **instalacji Keylight**.
+    b. W menu u góry kliknij pozycję **Osoba**i wybierz pozycję **Ustawienia reflektorów kluczowych**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/keylight-tutorial/401.png)
 
-    c. W widoku drzewa po lewej stronie kliknij pozycję **SAML**.
+    d. W widoku drzewa po lewej stronie kliknij przycisk **SAML**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/keylight-tutorial/402.png)
 
-    d. Na **ustawienia języka SAML** okno dialogowe, kliknij przycisk **Edytuj**.
+    d. W oknie dialogowym **Ustawienia SAML** kliknij pozycję **Edytuj**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/keylight-tutorial/404.png)
 
-1. Na **edytowanie ustawień protokołu SAML** okna dialogowego strony, wykonaj następujące czynności:
+1. Na stronie okna dialogowego **Edytowanie ustawień SAML** wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/keylight-tutorial/405.png)
 
-    a. Ustaw **uwierzytelnianie SAML** do **Active**.
+    a. Ustaw **uwierzytelnianie SAML** na **Aktywne**.
 
-    b. W **adres URL logowania dostawcy tożsamości** pola tekstowego, Wklej **adres URL logowania** wartości, które zostały skopiowane z witryny Azure portal.
+    b. W polu tekstowym **adresu URL logowania dostawcy tożsamości** wklej wartość adresu URL **logowania** skopiowaną z witryny Azure portal.
 
-    c. W **adres URL wylogowania dostawcy tożsamości** pola tekstowego, Wklej **adres URL wylogowania** wartości, które zostały skopiowane z witryny Azure portal.
+    d. W polu tekstowym **adresu URL wylogowania dostawcy tożsamości** wklej wartość adresu URL **wylogowania,** która została skopiowana z portalu Azure.
 
-    d. Kliknij przycisk **wybierz plik** wybierz pobrany certyfikat LockPath Keylight, a następnie kliknij przycisk **Otwórz** można przekazać certyfikatu.
+    d. Kliknij **pozycję Wybierz plik,** aby wybrać pobrany certyfikat LockPath Keylight, a następnie kliknij przycisk **Otwórz,** aby przekazać certyfikat.
 
-    e. Ustaw **lokalizacji identyfikator użytkownika SAML** do **elementu NameIdentifier instrukcji podmiotu**.
+    e. Ustaw **lokalizację identyfikatora użytkownika SAML** na **NameIdentifier element instrukcji podmiotu**.
 
-    f. Podaj **Keylight usługodawcy** przy użyciu następującego wzorca: `https://<CompanyName>.keylightgrc.com`.
+    f. Podaj **dostawcę usług Keylight** przy użyciu następującego wzorca: `https://<CompanyName>.keylightgrc.com`.
 
-    g. Ustaw **automatyczne aprowizowanie użytkowników** do **Active**.
+    g. Ustaw **automatyczne udostępnianie użytkownikom** na **aktywnych**.
 
-    h. Ustaw **automatyczna obsługa typu konta** do **pełnej**.
+    h. Ustaw **typ konta automatycznego aprowizyjowania** na **Pełny użytkownik**.
 
-    i. Ustaw **roli zabezpieczeń automatycznej obsługi**, wybierz opcję **użytkowników standardowych z SAML**.
+    i. Ustaw **rolę zabezpieczeń automatycznego aprowizyzu**, wybierz pozycję **Użytkownik standardowy z SAML**.
 
-    j. Ustaw **konfiguracji zabezpieczeń automatycznej obsługi**, wybierz opcję **standardowej konfiguracji użytkownika**.
+    j. Ustaw **konfigurację zabezpieczeń automatycznego aprowizowania**, wybierz opcję **Standardowa konfiguracja użytkownika**.
 
-    k. W **atrybut E-mail** polu tekstowym wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    k. W polach **tekstowych atrybutu E-mail** wpisz polecenie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    l. W **atrybut imię** polu tekstowym wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    l. W polach tekstowych **atrybutu Imię i nazwisko** wpisz polecenie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    m. W **ostatniego atrybutu nazwy** polu tekstowym wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    m. W polach tekstowych **atrybutu Nazwisko** wpisz . `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
 
-    n. Kliknij pozycję **Zapisz**.
+    n. Kliknij przycisk **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -188,7 +188,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -198,23 +198,23 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
+    b. W polu **Nazwa** `brittasimon@yourcompanydomain.extension`użytkownika wpisz . Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do LockPath Keylight.
+W tej sekcji można włączyć Britta Simon do korzystania z azure logowania jednokrotnego, przyznając dostęp do LockPath Keylight.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **LockPath Keylight**.
+1. W portalu Azure wybierz pozycję **Aplikacje przedsiębiorstwa**, wybierz **pozycję Wszystkie aplikacje**, a następnie wybierz pozycję **LockPath Keylight**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **LockPath Keylight**.
+2. Na liście aplikacji wybierz **lockpath keylight**.
 
-    ![Łącze LockPath Keylight na liście aplikacji](common/all-applications.png)
+    ![Łącze LockPath Keylight na liście Aplikacje](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -226,24 +226,24 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-lockpath-keylight-test-user"></a>Tworzenie użytkownika testowego LockPath Keylight
+### <a name="create-lockpath-keylight-test-user"></a>Utwórz użytkownika testowego LockPath Keylight
 
-W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w LockPath Keylight. LockPath Keylight obsługuje aprowizacji użytkowników w czasie, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w LockPath Keylight, nowy katalog jest tworzony po uwierzytelnieniu. Jeśli potrzebujesz ręcznie utworzyć użytkownika, musisz skontaktować się z [zespołem pomocy technicznej klienta Keylight LockPath](https://www.lockpath.com/contact/).
+W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w LockPath Keylight. LockPath Keylight obsługuje just-in-time inicjowania obsługi administracyjnej użytkownika, który jest domyślnie włączony. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w LockPath Keylight, nowy jest tworzony po uwierzytelnieniu. Jeśli chcesz utworzyć użytkownika ręcznie, należy skontaktować się z [zespołem pomocy technicznej klienta LockPath Keylight](https://www.lockpath.com/contact/).
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka LockPath Keylight w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze LockPath Keylight, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka LockPath Keylight w Panelu dostępu należy automatycznie zalogować się do reflektora lockpath keylight, dla którego skonfigurowano logującą się jednoślik. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

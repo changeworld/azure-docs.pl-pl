@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 1a2a370ac92ea3edf925d97af6f5e721c79d0d2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8674714451f3cc686acb74d6c66ac6800b75936
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529700"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478086"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Punkty końcowe przesyłania strumieniowego (Origin) w usłudze Azure Media Services
 
@@ -118,7 +118,7 @@ W tej sekcji podano szczegółowe informacje na temat niektórych właściwości
     > [!NOTE]
     > Punkty końcowe przesyłania strumieniowego znajdujące się w tym samym centrum danych nie mogą współużytkować tej samej niestandardowej nazwy hosta.
 
-    Obecnie usługa Media Services nie obsługuje ssl z domenami niestandardowymi.
+    Obecnie usługa Media Services nie obsługuje protokołu TLS z domenami niestandardowymi.
 
 - `maxCacheAge`- Zastępuje domyślny nagłówek kontroli pamięci podręcznej HTTP max-age ustawiony przez punkt końcowy przesyłania strumieniowego na fragmenty nośników i manifesty na żądanie. Wartość jest ustawiana w sekundach.
 - `resourceState` -

@@ -1,6 +1,6 @@
 ---
-title: Wyślij wiadomość e-mail, gdy Key Vault status tajnych zmian
-description: Przewodnik po użyciu Logic Apps w celu reagowania na zmiany Key Vault wpisów tajnych
+title: Wysyłanie wiadomości e-mail po zmianie stanu magazynu kluczy
+description: Przewodnik dotyczący używania aplikacji logiki do reagowania na zmiany wpisów tajnych usługi Key Vault
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,83 +11,83 @@ ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 8d43a254ad79a13320fa2c5a19cf4bc8d6e2c968
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78199754"
 ---
-# <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Użyj Logic Apps do otrzymywania wiadomości e-mail o zmianach stanu wpisów tajnych magazynu kluczy
+# <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Korzystanie z aplikacji logiki w celu otrzymywania wiadomości e-mail o zmianach stanu wpisów tajnych magazynu kluczy
 
-W tym przewodniku dowiesz się, jak odpowiedzieć na zdarzenia Azure Key Vault, które są odbierane za pośrednictwem [Azure Event Grid](../event-grid/index.yml) przy użyciu [Azure Logic Apps](../logic-apps/index.yml). Na koniec masz skonfigurowaną aplikację logiki Azure do wysyłania wiadomości e-mail z powiadomieniem za każdym razem, gdy wpis tajny zostanie utworzony w Azure Key Vault.
+W tym przewodniku dowiesz się, jak reagować na zdarzenia usługi Azure Key Vault, które są odbierane za pośrednictwem [usługi Azure Event Grid](../event-grid/index.yml) przy użyciu usługi Azure Logic [Apps.](../logic-apps/index.yml) Na koniec zostanie skonfigurowana aplikacja logiki platformy Azure do wysyłania wiadomości e-mail z powiadomieniem za każdym razem, gdy w usłudze Azure Key Vault zostanie utworzony klucz tajny.
 
-Omówienie integracji Azure Key Vault/Azure Event Grid można znaleźć w temacie [monitorowanie Key Vault z Azure Event Grid (wersja zapoznawcza)](event-grid-overview.md).
+Aby zapoznać się z omówieniem integracji usługi Azure Key Vault / Azure Event Grid, zobacz [Monitorowanie usługi Key Vault za pomocą usługi Azure Event Grid (wersja zapoznawcza)](event-grid-overview.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Konto e-mail od dowolnego dostawcy poczty e-mail obsługiwanego przez Azure Logic Apps (na przykład Office 365 Outlook). To konto e-mail służy do wysyłania powiadomień o zdarzeniach. Aby uzyskać pełną listę łączników obsługiwanych przez usługę Logic Apps, zobacz [Omówienie łączników](/connectors).
-- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Magazyn kluczy w ramach subskrypcji platformy Azure. Nowy magazyn kluczy można szybko utworzyć, wykonując kroki z [zestawu i pobierając klucz tajny z Azure Key Vault przy użyciu interfejsu wiersza polecenia platformy Azure](quick-create-cli.md).
+- Konto e-mail od dowolnego dostawcy poczty e-mail obsługiwanego przez usługę Azure Logic Apps (na przykład usługę Office 365 Outlook). To konto e-mail służy do wysyłania powiadomień o zdarzeniach. Aby uzyskać pełną listę łączników obsługiwanych przez usługę Logic Apps, zobacz [Omówienie łączników](/connectors).
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
+- Magazyn kluczy w subskrypcji platformy Azure. Możesz szybko utworzyć nowy magazyn kluczy, wykonując kroki opisane w [obszarze Ustaw i pobierając klucz tajny z usługi Azure Key Vault przy użyciu interfejsu wiersza polecenia platformy Azure.](quick-create-cli.md)
 
-## <a name="create-a-logic-app-via-event-grid"></a>Tworzenie aplikacji logiki za pomocą Event Grid
+## <a name="create-a-logic-app-via-event-grid"></a>Tworzenie aplikacji logiki za pośrednictwem siatki zdarzeń
 
-Najpierw Utwórz aplikację logiki za pomocą programu obsługi usługi Event Grid i Subskrybuj Azure Key Vault zdarzenia "SecretNewVersionCreated".
+Najpierw utwórz aplikację logiki za pomocą programu obsługi siatki zdarzeń i subskrybuj zdarzenia usługi Azure Key Vault "SecretNewVersionCreated".
 
-Aby utworzyć subskrypcję Azure Event Grid, wykonaj następujące kroki:
+Aby utworzyć subskrypcję usługi Azure Event Grid, wykonaj następujące kroki:
 
-1. W Azure Portal przejdź do magazynu kluczy, wybierz pozycję **zdarzenia >** wprowadzenie i kliknij pozycję **Logic Apps**
+1. W witrynie Azure portal przejdź do magazynu kluczy, wybierz pozycję **Zdarzenia > wprowadzenie** i kliknij pozycję **Aplikacje logiki**
 
     
-    ![Strona Key Vault — zdarzenia](./media/eventgrid-logicapps-kvsubs.png)
+    ![Przechowalnia kluczy — strona wydarzeń](./media/eventgrid-logicapps-kvsubs.png)
 
-1. W programie **Logic Apps Designer** Sprawdź poprawność połączenia i kliknij przycisk **Kontynuuj** . 
+1. W **programie Logic Apps Designer** sprawdź poprawność połączenia i kliknij przycisk **Kontynuuj** 
  
-    ![Projektant aplikacji logiki — połączenie](./media/eventgrid-logicappdesigner1.png)
+    ![Logic App Designer - połączenie](./media/eventgrid-logicappdesigner1.png)
 
-1. Na ekranie **po wystąpieniu zdarzenia zasobu** wykonaj następujące czynności:
-    - Pozostaw nazwę **subskrypcji** i **zasobu** jako domyślną.
-    - Wybierz pozycję **Microsoft. Resource magazyn. magazyny** dla **typu zasobu**.
-    - W obszarze **Typ zdarzenia**wybierz pozycję **Microsoft. SecretNewVersionCreated** .
+1. Na ekranie **Gdy wystąpi zdarzenie zasobu** wykonaj następujące czynności:
+    - Pozostaw **subskrypcję** i **nazwę zasobu** jako domyślną.
+    - Wybierz **pozycję Microsoft.KeyVault.vaults** dla **typu zasobu**.
+    - Wybierz **pozycję Microsoft.KeyVault.SecretNewVersionTwoło** dla **elementu typu zdarzenia — 1**.
 
-    ![Projektant aplikacji logiki — procedura obsługi zdarzeń](./media/eventgrid-logicappdesigner2.png)
+    ![Logic App Designer — program obsługi zdarzeń](./media/eventgrid-logicappdesigner2.png)
 
-1. Wybierz pozycję **+ nowy krok** spowoduje to otwarcie okna umożliwiającego wybranie akcji.
-1. Wyszukaj nazwę **E-mail**. W oparciu o Twojego dostawcę poczty e-mail znajdź i wybierz zgodny łącznik. W tym samouczku jest używana usługa **Office 365 Outlook**. Kroki dla innych dostawców poczty e-mail są podobne.
-1. Wybierz akcję **Wyślij wiadomość e-mail (wersja 2)** .
+1. Wybierz **+ Nowy krok** Otworzy się okno, aby wybrać akcję.
+1. Wyszukaj nazwę **E-mail**. W oparciu o Twojego dostawcę poczty e-mail znajdź i wybierz zgodny łącznik. Ten samouczek używa **usługi Office 365 Outlook**. Kroki dla innych dostawców poczty e-mail są podobne.
+1. Wybierz akcję **Wyślij wiadomość e-mail (V2).**
 
-   ![Projektant aplikacji logiki — Dodawanie poczty e-mail](./media/eventgrid-logicappdesigner3.png)
+   ![Logic App Designer - dodawanie wiadomości e-mail](./media/eventgrid-logicappdesigner3.png)
 
-1. Kompiluj szablon wiadomości e-mail:
+1. Zbuduj szablon wiadomości e-mail:
     - **Do:** Wprowadź adres e-mail, aby otrzymywać wiadomości e-mail z powiadomieniami. Na potrzeby tego samouczka użyj konta e-mail, które nadaje się do celów testowych.
-    - **Temat** i **Treść**: wpisz tekst wiadomości e-mail. Za pomocą narzędzia do wybierania wybierz właściwości JSON w celu dołączenia zawartości dynamicznej opartej na danych zdarzenia. Dane zdarzenia można pobrać przy użyciu `@{triggerBody()?['Data']}`.
+    - **Temat** i **Treść**: wpisz tekst wiadomości e-mail. Za pomocą narzędzia do wybierania wybierz właściwości JSON w celu dołączenia zawartości dynamicznej opartej na danych zdarzenia. Dane zdarzenia można pobrać za `@{triggerBody()?['Data']}`pomocą programu .
 
-    Twój szablon wiadomości e-mail może wyglądać podobnie do tego przykładu.
+    Szablon wiadomości e-mail może wyglądać jak w tym przykładzie.
 
-    ![Projektant aplikacji logiki — Dodawanie poczty e-mail](./media/eventgrid-logicappdesigner4.png)
+    ![Logic App Designer - dodawanie wiadomości e-mail](./media/eventgrid-logicappdesigner4.png)
 
-8. Kliknij przycisk **Zapisz jako**.
-9. Wprowadź **nazwę** nowej aplikacji logiki, a następnie kliknij przycisk **Utwórz**.
+8. Kliknij **pozycję Zapisz jako**.
+9. Wprowadź **nazwę** nowej aplikacji logiki i kliknij przycisk **Utwórz**.
     
-    ![Projektant aplikacji logiki — Dodawanie poczty e-mail](./media/eventgrid-logicappdesigner5.png)
+    ![Logic App Designer - dodawanie wiadomości e-mail](./media/eventgrid-logicappdesigner5.png)
 
 ## <a name="test-and-verify"></a>Testowanie i weryfikowanie
 
-1.  Przejdź do magazynu kluczy na Azure Portal i wybierz pozycję **zdarzenia > subskrypcje zdarzeń**.  Sprawdź, czy utworzono nową subskrypcję
+1.  Przejdź do magazynu kluczy w witrynie Azure portal i wybierz **pozycję Zdarzenia > subskrypcje zdarzeń**.  Sprawdzanie, czy nowa subskrypcja została utworzona
     
-    ![Projektant aplikacji logiki — Dodawanie poczty e-mail](./media/eventgrid-logicapps-kvnewsubs.png)
+    ![Logic App Designer - dodawanie wiadomości e-mail](./media/eventgrid-logicapps-kvnewsubs.png)
 
-1.  Przejdź do magazynu kluczy, wybierz pozycję wpisy **tajne**, a następnie wybierz pozycję **+ Generuj/Importuj**. Utwórz nowy wpis tajny dla celów testowych Nazwij klucz i Zachowaj pozostałe parametry w ustawieniach domyślnych.
+1.  Przejdź do magazynu kluczy, wybierz pozycję **Wpisy tajne**i wybierz **pozycję + Generuj/Importuj**. Utwórz nowy klucz tajny do celów testowania nazwij klucz i zachowaj pozostałe parametry w ustawieniach domyślnych.
 
-    ![Key Vault — Utwórz klucz tajny](./media/eventgrid-logicapps-kv-create-secret.png)
+    ![Magazyn kluczy — tworzenie klucza tajnego](./media/eventgrid-logicapps-kv-create-secret.png)
 
-1. Na ekranie **Tworzenie wpisu tajnego** Podaj dowolną nazwę i dowolną wartość, a następnie wybierz pozycję **Utwórz**.
+1. Na ekranie **Utwórz klucz tajny** podaj dowolną nazwę, dowolną wartość i wybierz pozycję **Utwórz**.
 
-Po utworzeniu wpisu tajnego zostanie odebrana wiadomość e-mail ze skonfigurowanymi adresami.
+Po utworzeniu klucza tajnego wiadomość e-mail zostanie odebrana pod skonfigurowanym adresem.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przegląd: [monitorowanie Key Vault z Azure Event Grid (wersja zapoznawcza)](event-grid-overview.md)
-- Instrukcje: [kierowanie powiadomień magazynu kluczy do Azure Automation](event-grid-tutorial.md).
-- [Schemat zdarzeń Azure Event Grid dla Azure Key Vault (wersja zapoznawcza)](../event-grid/event-schema-key-vault.md)
+- Omówienie: [Monitorowanie magazynu kluczy za pomocą usługi Azure Event Grid (wersja zapoznawcza)](event-grid-overview.md)
+- Jak: [Kierowanie powiadomień magazynu kluczy do usługi Azure Automation](event-grid-tutorial.md).
+- [Schemat zdarzeń usługi Azure Event Grid dla usługi Azure Key Vault (wersja zapoznawcza)](../event-grid/event-schema-key-vault.md)
 - Dowiedz się więcej na temat usługi [Azure Event Grid](../event-grid/index.yml).
 - Dowiedz się więcej o [funkcji Logic Apps usługi Azure App Service](../logic-apps/index.yml).

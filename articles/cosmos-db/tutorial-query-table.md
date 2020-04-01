@@ -1,6 +1,6 @@
 ---
 title: Jak wykonywać zapytania względem danych tabeli w usłudze Azure Cosmos DB?
-description: Dowiedz się, jak wykonywać zapytania dotyczące danych przechowywanych na koncie Azure Cosmos DB interfejs API tabel przy użyciu filtrów OData i zapytań LINQ
+description: Dowiedz się, jak wysyłać zapytania do danych przechowywanych na koncie interfejsu API tabeli usługi Azure Cosmos DB przy użyciu filtrów OData i zapytań LINQ
 author: sakash279
 ms.author: akshanka
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 8f31ace0045dad2f038a1eded52a41ffb1932f99
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76770482"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Samouczek: Wykonywanie zapytań w usłudze Azure Cosmos DB przy użyciu interfejsu API tabel
@@ -48,7 +48,7 @@ Ponieważ właściwości PartitionKey i RowKey tworzą klucz podstawowy jednostk
 ```
 https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')  
 ```
-**Results**
+**Wyniki**
 
 | PartitionKey | RowKey | Adres e-mail | PhoneNumber |
 | --- | --- | --- | --- |
@@ -74,7 +74,7 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 Aby uzyskać więcej informacji na temat sposobu tworzenia wyrażenia filtru dla różnych typów danych, zobacz [Wykonywanie zapytań względem tabel i jednostek](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities).
 
-**Results**
+**Wyniki**
 
 | PartitionKey | RowKey | Adres e-mail | PhoneNumber |
 | --- | --- | --- | --- |

@@ -1,22 +1,22 @@
 ---
-title: 'Wzorzec: właściwości pola w definicji zasad'
-description: Ten Azure Policy wzorzec zawiera przykład użycia właściwości pola w definicji zasad.
+title: 'Wzorzec: Właściwości pola w definicji zasad'
+description: Ten wzorzec zasad platformy Azure zawiera przykład użycia właściwości pola w definicji zasad.
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: e65767dd9cbe7b2192c21f779643289e5a7fc45e
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77172863"
 ---
-# <a name="azure-policy-pattern-field-properties"></a>Wzorzec Azure Policy: właściwości pola
+# <a name="azure-policy-pattern-field-properties"></a>Wzorzec zasad platformy Azure: właściwości pola
 
-Operator [Field](../concepts/definition-structure.md#fields) oblicza określoną właściwość lub [alias](../concepts/definition-structure.md#aliases) dla podanej wartości dla danego [warunku](../concepts/definition-structure.md#conditions).
+Operator [pola](../concepts/definition-structure.md#fields) ocenia określoną właściwość lub [alias](../concepts/definition-structure.md#aliases) do podanej wartości dla danego [warunku](../concepts/definition-structure.md#conditions).
 
 ## <a name="sample-policy-definition"></a>Przykładowa definicja zasad
 
-Ta definicja zasad umożliwia zdefiniowanie dozwolonych regionów spełniających wymagania geograficznej lokalizacji w organizacji. Dozwolone zasoby są zdefiniowane w parametrze **listOfAllowedLocations** (_Array_). Zasoby, które pasują do definicji, są [odrzucane](../concepts/effects.md#deny).
+Ta definicja zasad umożliwia definiowanie dozwolonych regionów, które spełniają wymagania organizacji dotyczące lokalizacji geograficznej. Dozwolone zasoby są definiowane w **liście parametrówOfAllowedLocations** (_tablica_). Zasoby, które pasują do definicji są [odrzucane](../concepts/effects.md#deny).
 
 :::code language="json" source="~/policy-templates/patterns/pattern-fields.json":::
 
@@ -24,13 +24,13 @@ Ta definicja zasad umożliwia zdefiniowanie dozwolonych regionów spełniającyc
 
 :::code language="json" source="~/policy-templates/patterns/pattern-fields.json" range="18-36" highlight="3,7,11":::
 
-Operator **pola** jest używany trzy razy w obrębie [operatora logicznego](../concepts/definition-structure.md#logical-operators) **allOf**.
+Operator **pola** jest używany trzy razy w [ramach operatora logicznego](../concepts/definition-structure.md#logical-operators) **allOf**.
 
-- Pierwsze użycie szacuje Właściwość `location` z warunkiem **notIn** do parametru **listOfAllowedLocations** . **notIn** działa, ponieważ oczekuje _tablicy_ , a parametr jest _tablicą_. Jeśli `location` utworzonego lub zaktualizowanego zasobu nie znajduje się na liście zatwierdzonych, ten element ma wartość true.
-- Drugie użycie również oblicza Właściwość `location`, ale używa warunku **notEquals** , aby sprawdzić, czy zasób jest _globalny_. Jeśli `location` utworzonego lub zaktualizowanego zasobu nie jest _globalna_, ten element ma wartość true.
-- Ostatnie użycie szacuje Właściwość `type` i używa warunku **notEquals** do sprawdzenia, czy typ zasobu nie jest _Microsoft. usługi azureactivedirectory/b2cDirectories_. Jeśli nie, ten element ma wartość true.
+- Pierwsze użycie ocenia `location` właściwość z **notIn** warunek do **listOfAllowedLocations** parametru. **notIn** działa zgodnie z oczekiwaniami _tablicy_ i parametr jest _tablicą_. Jeśli `location` utworzonego lub zaktualizowanego zasobu nie ma na liście zatwierdzonych, ten element ocenia true.
+- Drugie użycie również ocenia `location` właściwość, ale używa **warunku notEquals,** aby sprawdzić, czy zasób jest _globalny._ `location` Jeśli utworzony lub zaktualizowany zasób nie jest _globalny,_ ten element ocenia wartość true.
+- Ostatnie użycie ocenia `type` właściwość i używa warunku **notEquals** do sprawdzania poprawności typu zasobu nie jest _Microsoft.AzureActiveDirectory/b2cDirectory_. Jeśli tak nie jest, ten element ocenia true.
 
-Jeśli wszystkie trzy instrukcje warunku w operatorze logicznym **allOf** oceńą wartość true, tworzenie lub aktualizowanie zasobów jest blokowane przez Azure Policy.
+Jeśli wszystkie trzy instrukcje warunek w **allOf** operator logiczny ocenić true, tworzenie lub aktualizacja zasobów jest blokowany przez zasady platformy Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 

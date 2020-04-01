@@ -8,16 +8,16 @@ ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b8821f3bb3d48786697cbc4137baf530856774fd
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274010"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(PRZESTARZAŁE) Wdrażanie klastra Kubernetes w usłudze Azure Container Service
 
 > [!TIP]
-> Aby uzyskać zaktualizowaną wersję tego samouczka korzystającego z usługi Azure Kubernetes, zobacz [Samouczek: Wdrażanie klastra usługi Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-cluster.md).
+> Aby uzyskać zaktualizowaną wersję tego samouczka korzystającego z usługi Azure Kubernetes, zobacz [Samouczek: Wdrażanie klastra usługi Azure Kubernetes (AKS).](../../aks/tutorial-kubernetes-deploy-cluster.md)
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -38,7 +38,7 @@ W poprzednich samouczkach utworzono obraz kontenera i przekazano go do wystąpie
 
 Utwórz klaster Kubernetes w usłudze Azure Container Service za pomocą polecenia [az acs create](/cli/azure/acs#az-acs-create). 
 
-Poniższy przykład obejmuje tworzenie klastra o nazwie `myK8sCluster` w grupie zasobów o nazwie `myResourceGroup`. Ta grupa zasobów została utworzona w ramach [poprzedniego samouczka](./container-service-tutorial-kubernetes-prepare-acr.md).
+Poniższy przykład obejmuje tworzenie klastra o nazwie `myK8sCluster` w grupie zasobów o nazwie `myResourceGroup`. Ta grupa zasobów została utworzona w [poprzednim samouczku](./container-service-tutorial-kubernetes-prepare-acr.md).
 
 ```azurecli-interactive
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
@@ -100,4 +100,4 @@ W tym samouczku wdrożono klaster Kubernetes usługi Azure Container Service. Wy
 Przejdź do następnego samouczka, aby dowiedzieć się, jak uruchomić aplikację w klastrze.
 
 > [!div class="nextstepaction"]
-> [Uruchamianie aplikacji w usłudze Kubernetes](./container-service-tutorial-kubernetes-deploy-application.md)
+> [Wdrażanie aplikacji w rozwiązaniu Kubernetes](./container-service-tutorial-kubernetes-deploy-application.md)

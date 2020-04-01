@@ -5,20 +5,20 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 1a5b9555572264b6a00b4ce73eaa0719d94fd99b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252154"
 ---
-# <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Samouczek: Tworzenie usługi Azure Container Registry i wypychanie obrazu kontenera
+# <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Samouczek: Tworzenie rejestru kontenerów platformy Azure i wypychanie obrazu kontenera
 
 Niniejszy samouczek jest drugą częścią trzyczęściowej serii. [W części pierwszej](container-instances-tutorial-prepare-app.md) samouczka utworzono obraz kontenera Docker dla aplikacji internetowej środowiska Node.js. W tym samouczku obraz zostanie wypchnięty do usługi Azure Container Registry. Jeśli obraz kontenera nie został jeszcze utworzony, wróć do artykułu [Samouczek 1 — Tworzenie obrazu kontenera](container-instances-tutorial-prepare-app.md).
 
-Usługa Azure Container Registry jest prywatnym rejestrem platformy Docker na platformie Azure. W tym samouczku druga część serii obejmuje:
+Usługa Azure Container Registry jest prywatnym rejestrem platformy Docker na platformie Azure. W tym samouczku, część druga serii, ty:
 
 > [!div class="checklist"]
-> * Tworzenie wystąpienia Azure Container Registry przy użyciu interfejsu wiersza polecenia platformy Azure
+> * Tworzenie wystąpienia rejestru kontenerów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure
 > * Otagowanie obrazu kontenera na potrzeby usługi Azure Container Registry
 > * Przekazanie obrazu do rejestru
 
@@ -38,7 +38,7 @@ Utwórz grupę zasobów za pomocą polecenia [az group create][az-group-create].
 az group create --name myResourceGroup --location eastus
 ```
 
-Po utworzeniu grupy zasobów Utwórz usługę Azure Container Registry za pomocą polecenia [AZ ACR Create][az-acr-create] . Nazwa rejestru kontenerów musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. Zamień wartość `<acrName>` na unikatową nazwę rejestru:
+Po utworzeniu grupy zasobów utwórz rejestr kontenerów platformy Azure za pomocą polecenia [az acr create][az-acr-create]. Nazwa rejestru kontenerów musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. Zamień wartość `<acrName>` na unikatową nazwę rejestru:
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -77,7 +77,7 @@ Należy zalogować się do wystąpienia usługi Azure Container Registry przed w
 az acr login --name <acrName>
 ```
 
-Na przykład:
+Przykład:
 
 ```azurecli
 az acr login --name mycontainerregistry082
@@ -93,7 +93,7 @@ Login Succeeded
 
 Aby wypchnąć obraz kontenera do prywatnego rejestru, takiego jak usługa Azure Container Registry, najpierw musisz otagować obraz pełną nazwą serwera logowania rejestru.
 
-Najpierw pobierz pełną nazwę serwera logowania dla rejestru kontenerów platformy Azure. Uruchom następujące polecenie [AZ ACR show][az-acr-show] i zastąp `<acrName>` nazwą właśnie utworzonego rejestru:
+Najpierw pobierz pełną nazwę serwera logowania dla rejestru kontenerów platformy Azure. Uruchom następujące polecenie [az acr show][az-acr-show] i zastąp wartość `<acrName>` nazwą utworzonego rejestru:
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
@@ -111,7 +111,7 @@ Result
 mycontainerregistry082.azurecr.io
 ```
 
-Teraz Wyświetl listę obrazów lokalnych przy użyciu polecenia [Docker images][docker-images] :
+Teraz wyświetl listę obrazów lokalnych przy użyciu polecenia [docker images][docker-images]:
 
 ```bash
 docker images
@@ -125,7 +125,7 @@ REPOSITORY          TAG       IMAGE ID        CREATED           SIZE
 aci-tutorial-app    latest    5c745774dfa9    39 minutes ago    68.1 MB
 ```
 
-Oznacz obraz *ACI-samouczek-App* z serwerem logowania rejestru kontenerów. Ponadto dodaj tag `:v1` na końcu nazwy obrazu, aby wskazać numer wersji obrazu. Zamień `<acrLoginServer>` na wynik polecenia [AZ ACR show][az-acr-show] wykonanego wcześniej.
+Otaguj obraz *aplikacji aci-tutorial* za pomocą serwera logowania rejestru kontenerów. Ponadto dodaj tag `:v1` na końcu nazwy obrazu, aby wskazać numer wersji obrazu. Zastąp wartość `<acrLoginServer>` wynikiem polecenia [az acr show][az-acr-show], które zostało wykonane wcześniej.
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
@@ -142,7 +142,7 @@ mycontainerregistry082.azurecr.io/aci-tutorial-app    v1        5c745774dfa9    
 
 ## <a name="push-image-to-azure-container-registry"></a>Wypychanie obrazu do usługi Azure Container Registry
 
-Teraz, gdy Otagowano obraz *ACI-samouczek-App* z pełną nazwą serwera logowania w rejestrze prywatnym, można wypchnąć obraz do rejestru za pomocą polecenia [Docker push][docker-push] . Zastąp wartość `<acrLoginServer>` pełną nazwa serwera logowania uzyskaną we wcześniejszym kroku.
+Teraz, gdy już oznaczone *aci-tutorial-app* obraz z pełną nazwą serwera logowania prywatnego rejestru, można wypchnąć obraz do rejestru za pomocą polecenia [push docker.][docker-push] Zastąp wartość `<acrLoginServer>` pełną nazwa serwera logowania uzyskaną we wcześniejszym kroku.
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
@@ -164,13 +164,13 @@ v1: digest: sha256:ed67fff971da47175856505585dcd92d1270c3b37543e8afd46014d328f05
 
 ## <a name="list-images-in-azure-container-registry"></a>Wyświetlanie listy obrazów w usłudze Azure Container Registry
 
-Aby sprawdzić, czy właśnie wypychany obraz jest rzeczywiście w rejestrze kontenerów platformy Azure, Wyświetl listę obrazów w rejestrze za pomocą polecenia [AZ ACR Repository list][az-acr-repository-list] . Zastąp wartość `<acrName>` nazwą rejestru kontenerów.
+Aby sprawdzić, czy właśnie wypchnięty obraz rzeczywiście znalazł się w rejestrze kontenerów platformy Azure, wyświetl listę obrazów w rejestrze, korzystając z polecenia [az acr repository list][az-acr-repository-list]. Zastąp wartość `<acrName>` nazwą rejestru kontenerów.
 
 ```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
-Na przykład:
+Przykład:
 
 ```azurecli
 az acr repository list --name mycontainerregistry082 --output table
@@ -182,7 +182,7 @@ Result
 aci-tutorial-app
 ```
 
-Aby wyświetlić *Tagi* dla określonego obrazu, użyj polecenia [AZ ACR Repository show-Tags][az-acr-repository-show-tags] .
+Aby wyświetlić *tagi* dla określonego obrazu, użyj polecenia [az acr repository show-tags][az-acr-repository-show-tags].
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table
@@ -202,7 +202,7 @@ v1
 W tym samouczku przygotowano rejestr kontenerów platformy Azure do używania z usługą Azure Container Instances oraz wypchnięto obraz kontenera do rejestru. Wykonano następujące czynności:
 
 > [!div class="checklist"]
-> * Utworzono wystąpienie Azure Container Registry za pomocą interfejsu wiersza polecenia platformy Azure
+> * Utworzono wystąpienie rejestru kontenerów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure
 > * Tagowanie obrazu kontenera na potrzeby usługi Azure Container Registry
 > * Przekazywanie obrazu do usługi Azure Container Registry
 

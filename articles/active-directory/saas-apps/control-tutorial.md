@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą kontrolki | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i kontroli ciągłość działalności biznesowej.
+title: 'Samouczek: Integracja usługi Azure Active Directory z formą Control | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i kontrolą ciągłości.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,132 +17,132 @@ ms.date: 05/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5a3383c6c79f3cde901c244eafb39bb0f479176
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67164910"
 ---
-# <a name="tutorial-integrate-continuity-control-with-azure-active-directory"></a>Samouczek: Integracja kontroli ciągłości działania za pomocą usługi Azure Active Directory
+# <a name="tutorial-integrate-continuity-control-with-azure-active-directory"></a>Samouczek: Integrowanie kontroli ciągłości z usługą Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować ciągłości Sterowanie (Sterowanie) z usługą Azure Active Directory (Azure AD). Gdy kontrolka jest integracja z usługą Azure AD, możesz wykonywać następujące czynności:
+W tym samouczku dowiesz się, jak zintegrować kontrolę ciągłości (control) z usługą Azure Active Directory (Azure AD). Po zintegrowaniu control z usługą Azure AD można:
 
-* Zarządzanie w usłudze Azure AD, kto ma dostęp do formantu.
-* Umożliwianie użytkownikom można automatycznie zalogowany do formantu za pomocą kont usługi Azure AD.
-* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
+* Zarządzaj w usłudze Azure AD, który ma dostęp do kontroli.
+* Włącz użytkownikom automatyczne logowanie do kontroli za pomocą ich kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć pracę, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebujesz następujących elementów:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać miesięcznej bezpłatnej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
-* Kontrolka logowania jednokrotnego (SSO) włączone subskrypcji.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać miesięczny bezpłatny okres próbny [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja z włączoną kontrolą logowania jednokrotnego (Logowanie jednokrotne).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. Kontrolowanie obsługuje **SP** jednokrotne logowanie inicjowane przez.
+W tym samouczku można skonfigurować i przetestować samouszeńców usługi Azure AD w środowisku testowym. Sterowanie **obsługuje** sp zainicjowane SSO.
 
-## <a name="adding-control-from-the-gallery"></a>Dodawanie kontrolki z galerii
+## <a name="adding-control-from-the-gallery"></a>Dodawanie formantu z galerii
 
-Aby skonfigurować integrację kontroli w usłudze Azure AD, należy dodać formant z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację kontroli z usługą Azure AD, należy dodać formant z galerii do listy zarządzanych aplikacji SaaS.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
-1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
-1. Aby dodać nową aplikację, wybierz **nową aplikację**.
-1. W **Dodaj z galerii** sekcji, wpisz **kontroli** w polu wyszukiwania.
-1. Wybierz **kontroli** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta służbowego lub konta firmy Microsoft.
+1. W lewym okienku nawigacji wybierz usługę **Azure Active Directory.**
+1. Przejdź do **aplikacji korporacyjnych,** a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **Formant** w polu wyszukiwania.
+1. Wybierz **pozycję Sterowanie** z panelu wyników, a następnie dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą kontrolki za pomocą użytkownika testu o nazwie **Britta Simon**. Logowania jednokrotnego do pracy należy ustanowić relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w formancie.
+Konfigurowanie i testowanie sytua usługi Azure AD z kontrolą przy użyciu użytkownika testowego o nazwie **Britta Simon**. Aby użytkownik syt/r działał, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w formancie.
 
-Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą kontrolki, wykonaj poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować sytua usługi Azure AD z kontrolą, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego kontroli](#configure-control-sso)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie kontrolki użytkownika testowego](#create-control-test-user)**  — aby odpowiednikiem Britta Simon w formant, który jest połączony z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-sso)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj samouszeńcę usługi Azure AD](#configure-azure-ad-sso)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie jednokrotne sterowania formantem](#configure-control-sso)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego kontroli](#create-control-test-user)** — mieć odpowiednik Britta Simon w formancie, który jest połączony z reprezentacji usługi Azure AD użytkownika.
+6. **[Test SSO](#test-sso)** - aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie rejestracji jednokrotnej w usłudze Azure AD
 
-Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
+Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azure portal.
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **kontroli** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
-1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
-1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie Integracja aplikacji **Formantuj** znajdź sekcję **Zarządzaj** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** kliknij ikonę edycji/pióra dla **podstawowej konfiguracji SAML,** aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Na **podstawową konfigurację protokołu SAML** strony, wprowadź wartości dla następujących pól:
+1. Na stronie **Podstawowa konfiguracja SAML** wprowadź wartości dla następującego pola:
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.continuity.net/auth/saml`
 
     > [!Note]
-    > Ta wartość nie jest prawdziwa. Zaktualizuj wartość za pomocą poprawną domenę podrzędną. Poddomena usługi logowania jednokrotnego można skonfigurować na [strategii uwierzytelniania kontroli](https://control.continuity.net/settings/account_profile#tab/security). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Ta wartość nie jest prawdziwa. Zaktualizuj wartość za pomocą poprawnej poddomeny. Poddomenę jednosojowej można skonfigurować w witrynie [Control Authentication Strategies](https://control.continuity.net/settings/account_profile#tab/security). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 1. W sekcji **Certyfikat podpisywania SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Certyfikat podpisywania SAML**.
 
     ![Edytowanie certyfikatu podpisywania SAML](common/edit-certificate.png)
 
-1. W sekcji **Certyfikat podpisywania SAML** skopiuj wartość **Odcisk palca** i zapisz go na komputerze.
+1. W sekcji **Certyfikat podpisywania SAML** skopiuj **odcisk palca** i zapisz go na komputerze.
 
     ![Kopiowanie wartości Odcisk palca](common/copy-thumbprint.png)
 
-1. Na **skonfigurować kontrolę** sekcji, skopiuj adres URL logowania i zapisz go na komputerze.
+1. W sekcji **Konfigurowanie formantu** skopiuj adres URL logowania i zapisz go na komputerze.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-### <a name="configure-control-sso"></a>Konfiguruj kontrolę logowania jednokrotnego
+### <a name="configure-control-sso"></a>Konfigurowanie sytuaj sterowniki sytue dla sterowania
 
-Aby skonfigurować logowanie jednokrotne na **kontroli** stronie, musisz zaktualizować ustawienia uwierzytelniania rejestracji jednokrotnej w [strategii uwierzytelniania kontroli](https://control.continuity.net/settings/account_profile#tab/security). Aktualizacja **adres URL logowania jednokrotnego SAML** z **adres URL logowania** i **odcisk palca certyfikatu** z **wartość odcisku palca** w witrynie Azure portal.
+Aby skonfigurować logowanie jednokrotne po stronie **sterowania,** należy zaktualizować ustawienia uwierzytelniania logowania jednokrotnego w [witrynie Strategie uwierzytelniania sterowania](https://control.continuity.net/settings/account_profile#tab/security). Zaktualizuj **adres URL logowania SAML** za pomocą **adresu URL logowania** i **odcisku palca certyfikatu** za pomocą **funkcji Odcisk palca** z witryny Azure portal.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji utworzysz użytkownika testowego w witrynie Azure portal o nazwie Britta Simon.
 
-1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
-1. W **użytkownika** właściwości, wykonaj następujące kroki:
+1. Z lewego okienka w witrynie Azure portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
+1. We właściwościach **Użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `Britta Simon`.  
-   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `BrittaSimon@contoso.com`.
+   1. W polu **Nazwa użytkownika** username@companydomain.extensionwprowadź pole . Na przykład `BrittaSimon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można udostępnić Britta Simon do udzielania dostępu do kontrolki za pomocą platformy Azure logowania jednokrotnego.
+W tej sekcji włączysz Britta Simon do korzystania z logowania jednokrotnego platformy Azure, przyznając dostęp do kontroli.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście aplikacji wybierz **kontroli**.
-1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Na liście aplikacji wybierz pozycję **Sterowanie**.
+1. Na stronie przegląd aplikacji znajdź sekcję **Zarządzaj** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
+1. Wybierz **pozycję Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym Dodawanie **przydziału.**
 
     ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz **pozycję Britta Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przydziału** kliknij przycisk **Przypisz.**
 
-### <a name="create-control-test-user"></a>Tworzenie kontrolki użytkownika testowego
+### <a name="create-control-test-user"></a>Utwórz użytkownika testowego sterowania
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w formancie. Praca z [zespołem pomocy technicznej kontroli](mailto:help@continuity.net) Aby dodać użytkowników na platformie kontroli. Użyj Britta Simon usługi Azure AD **nazwa_użytkownika** do wypełnienia jej **identyfikator użytkownika dostawcy tożsamości** w formancie. Użytkowników musi zostać utworzona, a ich **identyfikator użytkownika dostawcy tożsamości** ustawiony w formancie, zanim rozpoczną korzystanie z logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w formancie. Praca z [zespołem pomocy technicznej control,](mailto:help@continuity.net) aby dodać użytkowników na platformie Control. Użyj **nazwy użytkownika** usługi Azure AD firmy Britta Simon, aby wypełnić jej identyfikator użytkownika **dostawcy tożsamości** w formancie. Użytkownicy muszą zostać utworzone, a ich identyfikator **użytkownika dostawcy tożsamości** w formancie, zanim będą mogli korzystać z logowania jednokrotnego.
 
 ### <a name="test-sso"></a>Test SSO
 
-Po wybraniu kafelka kontrolki w panelu dostępu użytkownik powinien automatyczne logowanie do kontroli, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka Formantu w Panelu dostępu należy automatycznie zalogować się do formantu, dla którego skonfigurowano logowanie logowane. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z usługi Azure Table Storage lub interfejs API tabel Azure Cosmos DB w języku Java
+title: Korzystanie z usługi Azure Table Storage lub interfejsu API tabeli usługi Azure Cosmos DB z języka Java
 description: Przechowywanie danych strukturalnych w chmurze za pomocą usługi Azure Table Storage lub interfejsu Table API usługi Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,18 +9,18 @@ ms.date: 04/05/2018
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 33569730e565c68d66539feb4491b1925796b300
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76771144"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Jak korzystać z usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB przy użyciu języka Java
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>Przegląd
-W tym artykule przedstawiono sposób wykonywania typowych zadań przy użyciu usług Azure Table Storage oraz Azure Cosmos DB. Przykłady są zapisywane w języku Java i korzystają z [zestawu SDK usługi Azure Storage dla języka Java][Azure Storage SDK for Java]. Omówiono scenariusze **tworzenia**, **wyświetlania listy** i **usuwania** tabel, a także **wstawiania** jednostek w tabeli i **wykonywania na nich zapytań** oraz **modyfikowania** i **usuwania** jednostek w tabeli. Aby uzyskać więcej informacji na temat tabel, zobacz sekcję [Następne kroki](#next-steps).
+## <a name="overview"></a>Omówienie
+W tym artykule przedstawiono sposób wykonywania typowych zadań przy użyciu usług Azure Table Storage oraz Azure Cosmos DB. Przykłady zostały napisane w języku Java i wymagają użycia [zestawu SDK usługi Azure Storage dla języka Java][Azure Storage SDK for Java]. Omówiono scenariusze **tworzenia**, **wyświetlania listy** i **usuwania** tabel, a także **wstawiania** jednostek w tabeli i **wykonywania na nich zapytań** oraz **modyfikowania** i **usuwania** jednostek w tabeli. Aby uzyskać więcej informacji na temat tabel, zobacz sekcję [Następne kroki](#next-steps).
 
 > [!NOTE]
 > Jest dostępny zestaw SDK dla deweloperów korzystających z usługi Azure Storage na urządzeniach z systemem Android. Aby uzyskać więcej informacji, zobacz [zestaw SDK usługi Azure Storage dla systemu Android][Azure Storage SDK for Android].
@@ -38,7 +38,7 @@ W tym artykule przedstawiono sposób wykonywania typowych zadań przy użyciu us
 ## <a name="create-a-java-application"></a>Tworzenie aplikacji Java
 Podczas pracy z tym przewodnikiem będziesz używać funkcji magazynu, które można uruchamiać lokalnie w aplikacji Java lub w kodzie działającym w ramach roli internetowej lub roli procesu roboczego na platformie Azure.
 
-Aby skorzystać z przykładów przedstawionych w tym artykule, zainstaluj zestaw Java Development Kit (JDK), a następnie utwórz konto usługi Azure Storage lub Azure Cosmos DB w ramach swojej subskrypcji platformy Azure. Po wykonaniu tej czynności Sprawdź, czy system programistyczny spełnia minimalne wymagania i zależności, które są wymienione w repozytorium [zestawu SDK usługi Azure Storage dla języka Java][Azure Storage SDK for Java] w serwisie GitHub. Jeśli Twój system spełnia te wymagania, możesz pobrać biblioteki usługi Azure Storage dla języka Java z tego repozytorium i zainstalować je w systemie zgodnie z instrukcjami. Po wykonaniu tych zadań możesz utworzyć aplikację Java z użyciem przykładów zawartych w tym artykule.
+Aby skorzystać z przykładów przedstawionych w tym artykule, zainstaluj zestaw Java Development Kit (JDK), a następnie utwórz konto usługi Azure Storage lub Azure Cosmos DB w ramach swojej subskrypcji platformy Azure. Po wykonaniu tych czynności sprawdź, czy Twój system programistyczny spełnia wymagania minimalne i zależności wymienione w repozytorium [Azure Storage SDK for Java][Azure Storage SDK for Java] w witrynie GitHub. Jeśli Twój system spełnia te wymagania, możesz pobrać biblioteki usługi Azure Storage dla języka Java z tego repozytorium i zainstalować je w systemie zgodnie z instrukcjami. Po wykonaniu tych zadań możesz utworzyć aplikację Java z użyciem przykładów zawartych w tym artykule.
 
 ## <a name="configure-your-application-to-access-table-storage"></a>Konfigurowanie aplikacji na potrzeby dostępu do usługi Table Storage
 Na początku pliku Java, w którym chcesz używać interfejsów API usługi Azure Storage lub interfejsu API tabel usługi Azure Cosmos DB w celu uzyskania dostępu do tabel, dodaj następujące instrukcje import:
@@ -96,7 +96,7 @@ W poniższych przykładach założono, że uzyskano parametry połączenia za po
 Obiekt **CloudTableClient** umożliwia pobieranie obiektów referencyjnych dla tabel i jednostek. Poniższy kod tworzy obiekt **CloudTableClient**, a następnie za jego pomocą tworzy nowy obiekt **CloudTable** reprezentujący tabelę o nazwie „people” (osoby). 
 
 > [!NOTE]
-> Istnieją inne sposoby tworzenia obiektów **CloudStorageAccount**. Aby uzyskać więcej informacji zobacz sekcję **CloudStorageAccount** w [Dokumentacja zestawu SDK klienta usługi Azure Storage].
+> Istnieją inne sposoby tworzenia obiektów **CloudStorageAccount**. Aby uzyskać więcej informacji zobacz sekcję **CloudStorageAccount** w [dokumentacji zestawu SDK klienta usługi Azure Storage].
 >
 
 ```java
@@ -122,7 +122,7 @@ catch (Exception e)
 ```
 
 ## <a name="list-the-tables"></a>Wyświetlanie listy tabel
-Aby uzyskać listę tabel, wywołaj metodę **CloudTableClient.listTables()** , aby pobrać iterowaną listę nazw tabel.
+Aby uzyskać listę tabel, wywołaj metodę **CloudTableClient.listTables()**, aby pobrać iterowaną listę nazw tabel.
 
 ```java
 try
@@ -454,7 +454,7 @@ catch (Exception e)
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>Tworzenie zapytania do podzbioru właściwości jednostki
-Za pomocą zapytania wykonywanego względem tabeli można pobrać tylko kilka właściwości z jednostki. Ta technika, zwana projekcją, redukuje przepustowość i może poprawiać wydajność zapytań, zwłaszcza w przypadku dużych jednostek. Zapytanie w poniższym kodzie zwraca wyłącznie adresy e-mail jednostek w tabeli dzięki użyciu metody **select**. Te wyniki są projektowane do kolekcji obiektów **String** za pomocą zapytania **EntityResolver**, wykonującego konwersję typu jednostek zwróconych z serwera. Więcej informacji na temat projekcji można znaleźć w temacie [tabele platformy Azure: wprowadzenie upsert i projekcji zapytań] [tabele platformy Azure: wprowadzenie upsert i projekcji zapytań]. Należy zauważyć, że funkcja projekcji nie jest obsługiwana w lokalnym emulatorze magazynu, dlatego ten kod zadziała tylko w przypadku użycia konta w usłudze tabel.
+Za pomocą zapytania wykonywanego względem tabeli można pobrać tylko kilka właściwości z jednostki. Ta technika, zwana projekcją, redukuje przepustowość i może poprawiać wydajność zapytań, zwłaszcza w przypadku dużych jednostek. Zapytanie w poniższym kodzie zwraca wyłącznie adresy e-mail jednostek w tabeli dzięki użyciu metody **select**. Te wyniki są projektowane do kolekcji obiektów **String** za pomocą zapytania **EntityResolver**, wykonującego konwersję typu jednostek zwróconych z serwera. Więcej informacji na temat projekcji można dowiedzieć się w programie [Tabele platformy Azure: wprowadzenie upsert i projekcji zapytań][Tabele platformy Azure: wprowadzenie upsert i projekcji zapytań]. Należy zauważyć, że funkcja projekcji nie jest obsługiwana w lokalnym emulatorze magazynu, dlatego ten kod zadziała tylko w przypadku użycia konta w usłudze tabel.
 
 ```java
 try
@@ -496,7 +496,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-or-replace-an-entity"></a>Wstawianie lub zastępowanie jednostki
-Często zdarza się, że chcesz dodać jednostkę do tabeli, ale nie wiesz, czy taka jednostka już istnieje. Operacja wstawiania lub zastępowania umożliwia przesłanie jednego żądania, w wyniku którego jednostka zostanie wstawiona (jeśli jeszcze nie istnieje) lub zastąpiona (jeśli istnieje). Poniższy kod, oparty na poprzednich przykładach, wstawia lub zastępuje jednostkę „Walter Harp”. Po utworzeniu nowej jednostki kod wywołuje metodę **TableOperation.insertOrReplace**. Następnie wywołuje metodę **execute** względem obiektu **CloudTable**, używając tabeli i operacji wstawiania lub zastępowania jako parametrów. Aby zaktualizować tylko część jednostki, można użyć zamiast tego metody **TableOperation.insertOrMerge**. Należy zauważyć, że funkcja wstawiania lub zastępowania nie jest obsługiwana w lokalnym emulatorze magazynu, dlatego ten kod zadziała tylko w przypadku użycia konta w usłudze tabel. Więcej informacji na temat wstawiania lub zastępowania oraz wstawiania i scalania w tym [tabelach platformy Azure: wprowadzenie upsert i projekcji zapytań] [tabele platformy Azure: wprowadzenie upsert i projekcji zapytań].
+Często zdarza się, że chcesz dodać jednostkę do tabeli, ale nie wiesz, czy taka jednostka już istnieje. Operacja wstawiania lub zastępowania umożliwia przesłanie jednego żądania, w wyniku którego jednostka zostanie wstawiona (jeśli jeszcze nie istnieje) lub zastąpiona (jeśli istnieje). Poniższy kod, oparty na poprzednich przykładach, wstawia lub zastępuje jednostkę „Walter Harp”. Po utworzeniu nowej jednostki kod wywołuje metodę **TableOperation.insertOrReplace**. Następnie wywołuje metodę **execute** względem obiektu **CloudTable**, używając tabeli i operacji wstawiania lub zastępowania jako parametrów. Aby zaktualizować tylko część jednostki, można użyć zamiast tego metody **TableOperation.insertOrMerge**. Należy zauważyć, że funkcja wstawiania lub zastępowania nie jest obsługiwana w lokalnym emulatorze magazynu, dlatego ten kod zadziała tylko w przypadku użycia konta w usłudze tabel. Więcej informacji na temat wstawiania lub zamieniania i wstawiania lub scalania można dowiedzieć się w tym [Tabele platformy Azure: Wprowadzenie upsert i projekcji zapytań][Tabele platformy Azure: wprowadzenie upsert i projekcji zapytań].
 
 ```java
 try
@@ -596,7 +596,7 @@ catch (Exception e)
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) jest bezpłatną aplikacją autonomiczną oferowaną przez firmę Microsoft, która umożliwia wizualną pracę z danymi w usłudze Azure Storage w systemach Windows, macOS i Linux.
 * [Zestaw SDK usługi Azure Storage dla języka Java][Azure Storage SDK for Java]
 * [Dokumentacja zestawu SDK klienta usługi Azure Storage][Azure Storage Client SDK Reference]
-* [Interfejs API REST usługi Azure Storage][Azure Storage REST API]
+* [Usługa Azure Storage — interfejs API REST][Azure Storage REST API]
 * [Blog zespołu odpowiedzialnego za usługę Azure Storage][Blog zespołu odpowiedzialnego za usługę Azure Storage]
 
 Aby uzyskać więcej informacji, odwiedź stronę [Azure dla deweloperów języka Java](/java/azure).

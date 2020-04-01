@@ -17,13 +17,13 @@ ms.date: 05/02/2018
 ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: db10520508eb0b216a59cc643394ab27fd5ffa69
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77169921"
 ---
-# <a name="azure-policy-sample-built-ins-for-virtual-network"></a>Przykładowe zasady platformy Azure dla usługi Virtual Network
+# <a name="azure-policy-sample-built-ins-for-virtual-network"></a>Wbudowane przykładowe zasady platformy Azure dla sieci wirtualnej
 
 Poniższa tabela zawiera linki do przykładów dla usługi [Azure Policy](../governance/policy/overview.md). Przykłady znajdują się w [repozytorium przykładów usługi Azure Policy](https://github.com/Azure/azure-policy).
 

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76939248"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Samouczek: tworzenie rekordu aliasu do odwoływania do rekordu zasobów w strefie DNS
@@ -26,7 +26,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 > * Testowanie rekordu aliasu.
 
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do testowania niezbędna jest nazwa domeny, którą można hostować w usłudze Azure DNS. Musisz mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmuje możliwość ustawiania dla domeny rekordów serwera nazw (NS).
@@ -57,8 +57,8 @@ Utwórz rekord aliasu, który wskazuje na rekord zasobów w strefie DNS.
 
 ## <a name="test-the-alias-record"></a>Testowanie rekordu aliasu
 
-1. Uruchom ulubione narzędzie nslookup. Możesz na przykład przejść do [https://network-tools.com/nslook](https://network-tools.com/nslook).
-2. Ustaw typ zapytania dla rekordów A i wyszukaj **test.\<Twoja nazwa domeny\>** . W odpowiedzi otrzymasz **10.10.10.10**.
+1. Uruchom ulubione narzędzie nslookup. Jedną z opcji jest [https://network-tools.com/nslook](https://network-tools.com/nslook)przejście do pliku .
+2. Ustaw typ zapytania dla rekordów A i wyszukaj **test.\<Twoja nazwa domeny\>**. W odpowiedzi otrzymasz **10.10.10.10**.
 3. W witrynie Azure Portal zmień rekord A **serwer** na **10.11.11.11**.
 4. Poczekaj kilka minut, a następnie użyj ponownie narzędzia nslookup dla rekordu **test**. W odpowiedzi otrzymasz **10.11.11.11**.
 

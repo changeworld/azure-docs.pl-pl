@@ -1,11 +1,11 @@
 ---
 ms.openlocfilehash: 9758cdf07d1ad56e6300e89eed2aa0b1da29e081
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76694574"
 ---
-## <a name="create-a-cloud-spatial-anchor"></a>Utwórz kotwicę przestrzenną w chmurze
+## <a name="create-a-cloud-spatial-anchor"></a>Tworzenie kotwicy przestrzennej chmury
 
-Aby utworzyć kotwicę przestrzenną w chmurze, należy najpierw utworzyć kotwicę w systemie AR platformy, a następnie utworzyć odpowiednika w chmurze. Używasz metody `CreateAnchorAsync()`.
+Aby utworzyć kotwicę przestrzenną chmury, należy najpierw utworzyć kotwicę w systemie AR platformy, a następnie utworzyć odpowiednik chmury. Używasz `CreateAnchorAsync()` tej metody.

@@ -1,14 +1,14 @@
 ---
-title: Samouczek — Tworzenie rejestru z replikacją geograficzną
+title: Samouczek — tworzenie rejestru replikowanego geograficznie
 description: Tworzenie rejestru kontenerów platformy Azure, konfigurowanie replikacji geograficznej, przygotowanie obrazu platformy Docker i wdrożenie go w rejestrze. Pierwsza część trzyczęściowej serii.
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238524"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Samouczek: przygotowywanie rejestru kontenerów platformy Azure z replikacją geograficzną
@@ -37,25 +37,25 @@ Usługa Azure Cloud Shell nie zawiera składników platformy Docker wymaganych d
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 
-Zaloguj się do [Azure portal](https://portal.azure.com).
+Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
-Wybierz pozycję **Utwórz zasób** > **Kontenery** > **Azure Container Registry**.
+Wybierz **pozycję Utwórz** > **kontenery** > zasobów Azure Container**Registry**.
 
 ![Tworzenie rejestru kontenerów w witrynie Azure Portal][tut-portal-01]
 
 Skonfiguruj nowy rejestr za pomocą następujących ustawień:
 
 * **Nazwa rejestru**: utwórz nazwę rejestru, która jest globalnie unikatowa w obrębie platformy Azure i składa się z od 5 do 50 znaków alfanumerycznych
-* **Grupa zasobów**: **utwórz nową** > `myResourceGroup`
-* **Lokalizacja**: `West US`
-* **Administrator**: `Enable` (wymagane dla funkcji Web App for Containers na potrzeby ściągania obrazów)
-* **Jednostka SKU**: `Premium` (wymagana dla replikacji geograficznej)
+* **Grupa zasobów**: **Tworzenie nowych** > `myResourceGroup`
+* **Lokalizacja**:`West US`
+* **Administrator**użytkownika `Enable` : (wymagane dla aplikacji sieci Web dla kontenerów do ściągania obrazów)
+* **Jednostka SKU**: `Premium` (wymagana do replikacji geograficznej)
 
 Wybierz przycisk **Utwórz**, aby wdrożyć wystąpienie usługi ACR.
 
 ![Tworzenie rejestru kontenerów w witrynie Azure Portal][tut-portal-02]
 
-W dalszej części tego samouczka wartość `<acrName>` będzie używana jako symbol zastępczy wybranej **nazwy rejestru** kontenerów.
+W pozostałej części tego samouczka używamy `<acrName>` jako symbol zastępczy dla **wybranej nazwy rejestru** kontenera.
 
 > [!TIP]
 > Ponieważ rejestry kontenerów platformy Azure to zwykle zasoby o długim czasie życia używane na wielu hostach kontenerów, zalecamy utworzenie rejestru w jego własnej grupie zasobów. Podczas konfigurowania rejestrów z replikacją geograficzną i elementów webhook te dodatkowe zasoby są umieszczane w tej samej grupie zasobów.
@@ -106,13 +106,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
-Jeśli nie masz zainstalowanego `git`, możesz [pobrać archiwum zip][acr-helloworld-zip] bezpośrednio z witryny GitHub.
+Jeśli nie masz zainstalowanego narzędzia `git`, możesz [pobrać archiwum ZIP][acr-helloworld-zip] bezpośrednio z usługi GitHub.
 
 ## <a name="update-dockerfile"></a>Aktualizacja pliku Dockerfile
 
-Plik Dockerfile dołączony do przykładu przedstawia sposób tworzenia kontenera. Rozpoczyna się ono od oficjalnego obrazu [aspnetcore][dockerhub-aspnetcore], następnie pliki aplikacji są kopiowane do kontenera, instalowane są zależności, dane wyjściowe są kompilowane za pomocą oficjalnego obrazu [aspnetcore-build][dockerhub-aspnetcore-build] i w końcu jest kompilowany zoptymalizowany obraz aspnetcore.
+Plik Dockerfile dołączony do przykładu przedstawia sposób tworzenia kontenera. Rozpoczyna się od oficjalnego obrazu [aspnetcore][dockerhub-aspnetcore], następnie pliki aplikacji są kopiowane do kontenera, instalowane są zależności, dane wyjściowe są kompilowane za pomocą oficjalnego obrazu [aspnetcore-build][dockerhub-aspnetcore-build] i w końcu jest kompilowany zoptymalizowany obraz aspnetcore.
 
-[Pliku dockerfile][dockerfile] znajduje się w `./AcrHelloworld/Dockerfile` w sklonowanym źródle.
+Plik [Dockerfile][dockerfile] znajduje się w lokalizacji `./AcrHelloworld/Dockerfile` w sklonowanym źródle.
 
 ```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base

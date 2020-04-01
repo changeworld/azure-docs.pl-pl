@@ -1,6 +1,6 @@
 ---
 title: Przykłady interfejsu wiersza polecenia platformy Azure — Event Grid | Microsoft Docs
-description: Ten artykuł zawiera tabelę zawierającą linki do przykładów skryptów interfejsu wiersza polecenia (CLI) platformy Azure dla Event Grid.
+description: Ten artykuł zawiera tabelę zawierającą łącza do przykładów skryptów interfejsu wiersza polecenia platformy Azure (CLI) dla siatki zdarzeń.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -11,10 +11,10 @@ ms.tgt_pltfrm: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 0cef3f5ae7c647236d52e4c571e5fc382e1560f4
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76514616"
 ---
 # <a name="azure-cli-samples-for-event-grid"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Event Grid

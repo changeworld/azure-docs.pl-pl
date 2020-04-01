@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą LearnUpon | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i LearnUpon.
+title: 'Samouczek: Integracja usługi Azure Active Directory z LearnUpon | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a LearnUpon.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,48 +17,48 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ecdcd8c6024b3cacb422b556718bbbdbb5d601c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67098236"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą LearnUpon
+# <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Samouczek: Integracja usługi Azure Active Directory z learnupon
 
-W tym samouczku dowiesz się, jak zintegrować LearnUpon w usłudze Azure Active Directory (Azure AD).
-Integrowanie LearnUpon z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować LearnUpon z usługą Azure Active Directory (Azure AD).
+Integracja LearnUpon z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do LearnUpon.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do LearnUpon (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Można kontrolować w usłudze Azure AD, który ma dostęp do LearnUpon.
+* Można włączyć użytkowników, aby automatycznie zalogować się do LearnUpon (logowanie jednokrotne) z ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą LearnUpon, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z LearnUpon, potrzebujesz następujących elementów:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* LearnUpon logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
+* LearnUpon subskrypcji z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
 
-* Obsługuje LearnUpon **tożsamości** jednokrotne logowanie inicjowane przez
+* LearnUpon obsługuje zainicjowane przez **IDP jednostkę** SSO
 
-* Obsługuje LearnUpon **Just In Time** aprowizacji użytkowników
+* LearnUpon obsługuje **inicjowanie** obsługi administracyjnej użytkowników just in time
 
 
 ## <a name="adding-learnupon-from-the-gallery"></a>Dodawanie LearnUpon z galerii
 
-Aby skonfigurować integrację LearnUpon w usłudze Azure AD, należy dodać LearnUpon z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację LearnUpon do usługi Azure AD, należy dodać LearnUpon z galerii do listy zarządzanych aplikacji SaaS.
 
 **Aby dodać LearnUpon z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -66,37 +66,37 @@ Aby skonfigurować integrację LearnUpon w usłudze Azure AD, należy dodać Lea
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **LearnUpon**, wybierz opcję **LearnUpon** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **LearnUpon**, wybierz **pozycję LearnUpon** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
     ![LearnUpon na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą LearnUpon w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w LearnUpon musi zostać ustanowione.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego z LearnUpon na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w LearnUpon.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą LearnUpon, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować usługę Azure AD logowania jednokrotnego za pomocą LearnUpon, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie LearnUpon logowania jednokrotnego](#configure-learnupon-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego LearnUpon](#create-learnupon-test-user)**  — aby odpowiednikiem Britta Simon w LearnUpon połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj LearnUpon Log-On](#configure-learnupon-single-sign-on)** - aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz learnupon użytkownika testowego](#create-learnupon-test-user)** - mieć odpowiednik Britta Simon w LearnUpon, który jest połączony z reprezentacji usługi Azure AD użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z LearnUpon, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednookrotne usługi Azure AD za pomocą LearnUpon, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **LearnUpon** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie Integracja aplikacji **LearnUpon** wybierz opcję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -108,18 +108,18 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z LearnUpon, wykonaj 
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![LearnUpon domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-reply.png)
+    ![LearnUpon Domain i adresy URL — informacje o loguchu jednokrotnym](common/idp-reply.png)
 
-    W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.learnupon.com/saml/consumer`
+    W polu tekstowym **Odpowiedz na adres URL** wpisz adres URL, używając następującego wzorca:`https://<companyname>.learnupon.com/saml/consumer`
 
     > [!NOTE]
-    > Ta wartość nie jest prawdziwa. Zaktualizuj ją, stosując rzeczywisty adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta LearnUpon](https://www.learnupon.com/features/support/) można uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Ta wartość nie jest prawdziwa. Zaktualizuj ją, stosując rzeczywisty adres URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej klienta LearnUpon,](https://www.learnupon.com/features/support/) aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** strony, odszukaj **odcisk PALCA** — zostanie ona dodana do LearnUpon ustawień protokołu SAML.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą SAML** znajdź **ODCISK PALCA** — zostanie on dodany do ustawień SAML LearnUpon.
 
-    ![Link pobierania certyfikatu](common/certificateraw.png)
+    ![Link do pobierania certyfikatu](common/certificateraw.png)
 
-6. Na **Konfigurowanie LearnUpon** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie LearnUpon** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -127,47 +127,47 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z LearnUpon, wykonaj 
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-learnupon-single-sign-on"></a>Konfigurowanie LearnUpon logowanie jednokrotne
+### <a name="configure-learnupon-single-sign-on"></a>Konfigurowanie learnupon logowanie jednokrotne
 
-1. Otwórz inne wystąpienie przeglądarki i zaloguj się do LearnUpon przy użyciu konta administratora.
+1. Otwórz inne wystąpienie przeglądarki i zaloguj się do LearnUpon przy za pomocą konta administratora.
 
-1. Kliknij przycisk **ustawienia** kartę.
+1. Kliknij kartę **Ustawienia.**
 
     ![Konfigurowanie logowania jednokrotnego](./media/learnupon-tutorial/tutorial_learnupon_06.png)
 
-1. Kliknij przycisk **Rejestracja jednokrotna — SAML**, a następnie kliknij przycisk **ustawienia ogólne** do konfigurowania ustawień protokołu SAML.
+1. Kliknij **pozycję Jednokrotne zalogowanie — SAML**, a następnie kliknij pozycję **Ustawienia ogólne,** aby skonfigurować ustawienia SAML.
    
     ![Konfigurowanie logowania jednokrotnego](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
 
-1. W **ustawienia ogólne** sekcji, wykonaj następujące czynności:
+1. W sekcji **Ustawienia ogólne** wykonaj następujące czynności:
    
     ![Konfigurowanie logowania jednokrotnego](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
   
-    a. Wybierz **włączone**.
+    a. Wybierz pozycję **Włączone**.
 
-    b. Wybierz **wersji** jako **2.0**.
+    b. Wybierz **wersję** jako **2.0**.
 
-    c. Wybierz **pominąć warunki** jako **nie**.
+    d. Wybierz **pozycję Pomiń warunki** jako **nie**.
 
-    d. W **wpis tokenu SAML nazwa param** polu tekstowym wpisz nazwę parametru post żądania na adres URL klienta SAML wskazany powyżej, zawierający potwierdzenie SAML, która ma zostać zweryfikowane i uwierzytelniony — na przykład **SAMLResponse** .
+    d. W pole tekstowym **nazwa param tokenu SAML** wpisz nazwę parametru post żądania na wskazanym powyżej adresie URL konsumenta SAML, który zawiera aserację SAML, która ma zostać zweryfikowana i uwierzytelniona — na przykład **SAMLResponse**.
 
-    e. W **Format identyfikatora nazwy** pole tekstowe, wpisz wartość, która wskazuje, gdzie w swojej potwierdzenie SAML identyfikator użytkowników (adres E-mail) znajduje się — na przykład `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`.
+    e. W polu **tekstowym Format identyfikatora nazwy** wpisz wartość wskazującą miejsce, w którym znajduje się identyfikator użytkownika `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`(adres e-mail) w asercji SAML — na przykład .
   
-    f. W **identyfikowania lokalizacji dostawcy** polu tekstowym wpisz wartość, która wskazuje, gdzie użytkownicy są wysyłane do, jeśli kliknij ikona przekazanych z ekranu logowania do portalu Azure.
+    f. W polu tekstowym **Identyfikowanie lokalizacji dostawcy** wpisz wartość, która wskazuje, do której użytkownicy są wysyłani, jeśli klikną ikonę przesłane z ekranu logowania usługi Azure portal.
   
-    g. W **adres URL wylogowania** pola tekstowego, Wklej **adres URL wylogowania** wartości, które zostały skopiowane z witryny Azure portal.
+    g. W polu tekstowym **Wyloguj adres URL** wklej wartość **adresu URL wylogowania,** która została skopiowana z witryny Azure portal.
 
-    h. Kliknij przycisk **Zarządzanie drukuje finger**, a następnie przekaż odcisk palca certyfikatu pobrany.
+    h. Kliknij pozycję **Zarządzaj odbitkami palcami,** a następnie przekaż odcisk palca pobranego certyfikatu.
 
-1. Kliknij przycisk **ustawienia użytkownika**, a następnie wykonaj następujące czynności:
+1. Kliknij **pozycję Ustawienia użytkownika**, a następnie wykonaj następujące czynności:
 
      ![Konfigurowanie logowania jednokrotnego](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
-    a. W **Format identyfikatora nazwy pierwszej** pole tekstowe, wpisz wartość, która informuje NAS, gdzie znajdują się w Twojej potwierdzenie SAML firstname użytkowników znajduje się — na przykład: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    a. W polu tekstowym **Format identyfikatora** imienia wpisz wartość, która informuje nas, gdzie w asercji `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`SAML znajduje się nazwa użytkownika - na przykład: .
   
-    b. W **ostatniego Format identyfikatora nazwy** pole tekstowe, wpisz wartość, która informuje NAS, gdzie znajdują się w Twojej potwierdzenie SAML lastname użytkowników znajduje się — na przykład: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    b. W polu tekstowym **Format identyfikatora nazwiska** wpisz wartość, która informuje nas, gdzie w asercji `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`SAML znajduje się ostatnianazwa użytkowników - na przykład: .
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -177,7 +177,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -187,23 +187,23 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
+    b. W polu **Nazwa** `brittasimon@yourcompanydomain.extension`użytkownika wpisz . Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do LearnUpon.
+W tej sekcji można włączyć Britta Simon do korzystania z azure logowania jednokrotnego, przyznając dostęp do LearnUpon.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **LearnUpon**.
+1. W portalu Azure wybierz pozycję **Aplikacje przedsiębiorstwa**, wybierz **pozycję Wszystkie aplikacje**, a następnie wybierz pozycję **LearnUpon**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **LearnUpon**.
+2. Na liście aplikacji wybierz **learnupon**.
 
-    ![Link LearnUpon na liście aplikacji](common/all-applications.png)
+    ![Łącze LearnUpon na liście Aplikacje](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -215,24 +215,24 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-learnupon-test-user"></a>Tworzenie użytkownika testowego LearnUpon
+### <a name="create-learnupon-test-user"></a>Utwórz użytkownika testowego LearnUpon
 
-W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w LearnUpon. LearnUpon obsługuje aprowizacji użytkowników w czasie, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w LearnUpon, nowy katalog jest tworzony po uwierzytelnieniu. Jeśli musisz utworzyć ręcznie przez użytkownika, musisz skontaktować się z [zespołem pomocy technicznej LearnUpon](https://www.learnupon.com/features/support/).
+W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w LearnUpon. LearnUpon obsługuje just-in-time inicjowania obsługi administracyjnej użytkownika, który jest domyślnie włączony. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w LearnUpon, nowy jest tworzony po uwierzytelnieniu. Jeśli chcesz ręcznie utworzyć użytkownika, musisz skontaktować się z [zespołem pomocy technicznej LearnUpon](https://www.learnupon.com/features/support/).
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka LearnUpon w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze LearnUpon, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka LearnUpon w Panelu dostępu należy automatycznie zalogować się do learnUpon, dla którego skonfigurowano logującą się logującą. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

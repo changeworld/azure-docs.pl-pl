@@ -1,6 +1,6 @@
 ---
 title: Archiwizowanie metryk platformy Azure i zapisywanie danych w dzienniku przy użyciu usługi Azure Storage
-description: Archiwizuj dane dziennika i metryki wygenerowane przez zasoby platformy Azure na koncie magazynu.
+description: Archiwizuj dane dziennika i metryki generowane przez zasoby platformy Azure na koncie magazynu.
 author: johnkemnetz
 services: azure-monitor
 ms.topic: tutorial
@@ -9,10 +9,10 @@ ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
 ms.openlocfilehash: 3ed00b1c68c41bc392b09c97dd47c9cdb8fa890d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77661729"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archiwizowanie metryk platformy Azure i zapisywanie danych w dzienniku przy użyciu usługi Azure Storage
@@ -33,11 +33,11 @@ W tym samouczku przedstawiono kroki konfigurowania środowiska platformy Azure p
 > * Wyświetlanie danych monitorowania na koncie magazynu
 > * Czyszczenie zasobów
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne](https://azure.microsoft.com/free/) konto przed rozpoczęciem.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [Azure portal](https://portal.azure.com/).
+Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
@@ -69,7 +69,7 @@ Dane monitorowania z subskrypcji będą teraz przepływać do konta magazynu.
 
 ## <a name="route-resource-data-to-the-storage-account"></a>Przekierowywanie danych zasobów do konta magazynu
 
-Teraz skonfigurujemy dane na poziomie zasobów (metryki zasobów i dzienniki zasobów), które mają być kierowane do konta magazynu przez skonfigurowanie **ustawień diagnostycznych zasobów**.
+Teraz konfigurujemy dane na poziomie zasobów (metryki zasobów i dzienniki zasobów) do kierowania do konta magazynu, konfigurując **ustawienia diagnostyczne zasobów**.
 
 1. Kliknij przycisk **Monitoruj** na liście w okienku nawigacji po lewej stronie, a następnie wybierz pozycję **Ustawienia diagnostyczne**. Zostanie wyświetlona lista wszystkich zasobów w subskrypcji, które generują dane monitorowania za pośrednictwem usługi Azure Monitor. Jeśli nie widzisz żadnych zasobów na tej liście, możesz najpierw [utworzyć aplikację logiki](../../logic-apps/quickstart-create-first-logic-app-workflow.md). Dzięki temu uzyskasz zasób, dla którego możesz skonfigurować ustawienie diagnostyczne.
 
@@ -95,7 +95,7 @@ Teraz skonfigurujemy dane na poziomie zasobów (metryki zasobów i dzienniki zas
 
 6. Ustaw suwak **Okres przechowywania (w dniach)** na wartość 30. Suwak umożliwia ustawienie liczby dni przechowywania danych monitorowania na koncie magazynu. Starsze dane są automatycznie usuwane przez usługę Azure Monitor. Wpisanie wartości zero powoduje, że dane są przechowywane przez nieograniczony czas.
 
-7. Kliknij przycisk **Save** (Zapisz).
+7. Kliknij przycisk **Zapisz**.
 
 Dane monitorowania z zasobu będą teraz przepływać do konta magazynu.
 
@@ -136,7 +136,7 @@ Dane monitorowania z zasobu będą teraz przepływać do konta magazynu.
 
 9. W wyświetlonej sekcji wybierz konto magazynu utworzone w kroku **Tworzenie konta magazynu**.
 
-10. Kliknij przycisk **Save** (Zapisz).
+10. Kliknij przycisk **Zapisz**.
 
 Dane monitorowania z maszyn wirtualnych będą teraz przepływać do konta magazynu.
 
@@ -161,7 +161,7 @@ Jeśli wykonano powyższe kroki, dane zaczęły już przepływać do konta magaz
 
 5. Przejdź do pliku PT1H.json, klikając identyfikator zasobu, datę i godzinę w obrębie kontenerów. Kliknij plik PT1H.json, a następnie kliknij przycisk **Pobierz**. Każdy obiekt blob PT1H.json zawiera obiekt blob JSON ze zdarzeniami, które wystąpiły w ciągu godziny określonej w adresie URL obiektu blob (na przykład h = 12). Zdarzenia występujące w danej chwili są na bieżąco dołączane do pliku PT1H.json. Wartość odpowiadająca minutom(m = 00) zawsze wynosi 00, ponieważ zdarzenia dziennika są dzielone na poszczególne obiekty blob w odstępach jednogodzinnych.
 
-   Możesz teraz wyświetlić zdarzenie JSON przechowywane na koncie magazynu. W przypadku dzienników zasobów zasobów format obiektów BLOB jest:
+   Możesz teraz wyświetlić zdarzenie JSON przechowywane na koncie magazynu. W przypadku dzienników zasobów format obiektów blob jest:
 
    insights-logs-{nazwa kategorii dziennika}/id_zasobu=/{identyfikator zasobu}/y={czterocyfrowy rok}/m={dwucyfrowy miesiąc}/d={dwucyfrowy dzień}/h={dwucyfrowa pełna godzina w formacie 24-godzinnym}/m=00/PT1H.json
 

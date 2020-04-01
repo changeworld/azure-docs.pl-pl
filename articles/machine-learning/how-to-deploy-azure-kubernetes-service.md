@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: db2e80ebb6cbe5f31f2d99a1403a15daf38fd877
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 792964f28ddb3fcb10932b8de9499a9c7027960f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722411"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475381"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Wdrażanie modelu w klastrze usługi Azure Kubernetes
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -131,7 +131,7 @@ Jeśli ustawisz `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, klaster 
 > [!WARNING]
 > Nie należy tworzyć wielu jednoczesnych załączników do tego samego klastra AKS z obszaru roboczego. Na przykład dołączanie jednego klastra usługi AKS do obszaru roboczego przy użyciu dwóch różnych nazw. Każdy nowy załącznik spowoduje przerwanie poprzedniego istniejącego załącznika.Com.
 >
-> Aby ponownie dołączyć klaster AKS, na przykład w celu zmiany ssl lub innego ustawienia konfiguracji klastra, należy najpierw usunąć istniejący załącznik za pomocą [pliku AksCompute.detach().](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--)
+> Aby ponownie dołączyć klaster AKS, na przykład w celu zmiany protokołu TLS lub innego ustawienia konfiguracji klastra, należy najpierw usunąć istniejący załącznik za pomocą [pliku AksCompute.detach().](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--)
 
 Aby uzyskać więcej informacji na temat tworzenia klastra AKS przy użyciu interfejsu wiersza polecenia lub portalu platformy Azure, zobacz następujące artykuły:
 
@@ -348,7 +348,7 @@ print(token)
 * [Bezpieczne eksperymentowanie i wnioskowanie w sieci wirtualnej](how-to-enable-virtual-network.md)
 * [Jak wdrożyć model przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md)
 * [Rozwiązywanie problemów z wdrażaniem](how-to-troubleshoot-deployment.md)
-* [Bezpieczne usługi sieci Web usługi azure machine learning za pomocą ssl](how-to-secure-web-service.md)
+* [Zabezpieczanie usługi sieci web za pośrednictwem usługi Azure Machine Learning za pomocą protokołu TLS](how-to-secure-web-service.md)
 * [Korzystanie z modelu ml wdrożonego jako usługa sieci web](how-to-consume-web-service.md)
 * [Monitoruj swoje modele usługi Azure Machine Learning za pomocą usługi Application Insights](how-to-enable-app-insights.md)
 * [Zbieranie danych dla modeli w produkcji](how-to-enable-data-collection.md)

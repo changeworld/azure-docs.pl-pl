@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: e0b4bcac8494f136dde21b03422e12b72cecb8f3
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 4517f85fae278bd8bc15a9586d9dc0202e7dfe56
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366440"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475231"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Opis produktów z usługi Azure Stream Analytics
 
@@ -101,7 +101,7 @@ Gdy używasz magazynu obiektów Blob jako danych wyjściowych, nowy plik jest tw
 * Jeśli dane wyjściowe są podzielone na partycje przez pole niestandardowe, a nowy obiekt blob jest tworzony na klucz partycji, jeśli nie istnieje.
 * Jeśli dane wyjściowe są podzielone na partycje przez pole niestandardowe, w którym kardynalność klucza partycji przekracza 8000, a nowy obiekt blob jest tworzony na klucz partycji.
 
-## <a name="event-hubs"></a>Usługa Event Hubs
+## <a name="event-hubs"></a>Event Hubs
 
 [Usługa Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) jest wysoce skalowalne publikowania subskrybowania zdarzenia ingestor. Może zbierać miliony zdarzeń na sekundę. Jednym z zastosowań centrum zdarzeń jako dane wyjściowe jest, gdy dane wyjściowe zadania usługi Stream Analytics staje się dane wejściowe innego zadania przesyłania strumieniowego. Aby uzyskać informacje na temat maksymalnego rozmiaru wiadomości i optymalizacji rozmiaru partii, zobacz sekcję [rozmiar partii wyjściowej.](#output-batch-size)
 
@@ -188,7 +188,7 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opisy do tworzenia dan
 | Nazwa tabeli |Nazwa tabeli. Tabela zostanie utworzona, jeśli nie istnieje. |
 | Klucz partycji |Nazwa kolumny danych wyjściowych zawierającej klucz partycji. Klucz partycji jest unikatowym identyfikatorem partycji w tabeli, która stanowi pierwszą część klucza podstawowego jednostki. Jest to wartość ciągu, który może mieć rozmiar do 1 KB. |
 | Klucz wiersza |Nazwa kolumny danych wyjściowych zawierającej klucz wiersza. Klucz wiersza jest unikatowym identyfikatorem jednostki w obrębie partycji. Stanowi drugą część klucza podstawowego jednostki. Klucz wiersza jest wartością ciągu, która może mieć rozmiar do 1 KB. |
-| Rozmiar partii |Liczba rekordów dla operacji wsadowej. Wartość domyślna (100) jest wystarczająca dla większości zadań. Zobacz [specyfikację operacji partii tabeli, aby](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation) uzyskać więcej informacji na temat modyfikowania tego ustawienia. |
+| Rozmiar partii |Liczba rekordów dla operacji wsadowej. Wartość domyślna (100) jest wystarczająca dla większości zadań. Zobacz [specyfikację operacji partii tabeli, aby](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.tablebatchoperation) uzyskać więcej informacji na temat modyfikowania tego ustawienia. |
 
 ## <a name="service-bus-queues"></a>Kolejki usługi Service Bus
 
@@ -342,18 +342,18 @@ Usługa Azure Stream Analytics używa partii o zmiennym rozmiarze do przetwarzan
 
 W poniższej tabeli wyjaśniono niektóre zagadnienia dotyczące przetwarzania wsadowego:
 
-| Typ wyjścia | Maksymalny rozmiar wiadomości | Optymalizacja rozmiaru partii |
+| Typ wyjścia |    Maksymalny rozmiar wiadomości | Optymalizacja rozmiaru partii |
 | :--- | :--- | :--- |
 | Azure Data Lake Store | Zobacz [limity magazynowania w jeziorze danych](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits). | Użyj do 4 MB na operację zapisu. |
 | Azure SQL Database | Konfigurowalne przy użyciu maksymalnej liczby partii. Domyślnie 10 000 wierszy i 100 wierszy minimalnych na pojedynczą wstawianie zbiorcze.<br />Zobacz [limity SQL platformy Azure](../sql-database/sql-database-resource-limits.md). |  Każda partia jest początkowo wstawiana zbiorczo z maksymalną liczbą partii. Partia jest podzielona na pół (do minimalnej liczby partii) na podstawie błędów ponawialnych z SQL. |
 | Azure Blob Storage | Zobacz [limity usługi Azure Storage](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). | Maksymalny rozmiar bloku obiektu blob wynosi 4 MB.<br />Maksymalna liczba obiektów blob bock wynosi 50 000. |
-| Azure Event Hubs  | 256 KB lub 1 MB na wiadomość. <br />Zobacz [limity centrów zdarzeń](../event-hubs/event-hubs-quotas.md). |  Gdy partycjonowanie danych wejściowych/wyjściowych nie jest wyrównane, każde zdarzenie jest pakowane pojedynczo `EventData` i wysyłane w partii do maksymalnego rozmiaru wiadomości. Dzieje się tak również wtedy, gdy używane są [niestandardowe właściwości metadanych.](#custom-metadata-properties-for-output) <br /><br />  Gdy partycjonowanie danych wejściowych/wyjściowych jest wyrównane, wiele zdarzeń jest pakowanych w jedno `EventData` wystąpienie, do maksymalnego rozmiaru wiadomości i wysyłanych. |
+| Azure Event Hubs    | 256 KB lub 1 MB na wiadomość. <br />Zobacz [limity centrów zdarzeń](../event-hubs/event-hubs-quotas.md). |    Gdy partycjonowanie danych wejściowych/wyjściowych nie jest wyrównane, każde zdarzenie jest pakowane pojedynczo `EventData` i wysyłane w partii do maksymalnego rozmiaru wiadomości. Dzieje się tak również wtedy, gdy używane są [niestandardowe właściwości metadanych.](#custom-metadata-properties-for-output) <br /><br />  Gdy partycjonowanie danych wejściowych/wyjściowych jest wyrównane, wiele zdarzeń jest pakowanych w jedno `EventData` wystąpienie, do maksymalnego rozmiaru wiadomości i wysyłanych.    |
 | Power BI | Zobacz [Limity interfejsu API odpoczynku usługi Power BI](https://msdn.microsoft.com/library/dn950053.aspx). |
 | Azure Table Storage | Zobacz [limity usługi Azure Storage](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). | Wartość domyślna to 100 jednostek na pojedynczą transakcję. W razie potrzeby można skonfigurować go do mniejszej wartości. |
-| Kolejka usługi Azure Service Bus   | 256 KB na wiadomość dla warstwy standardowej, 1 MB dla warstwy Premium.<br /> Zobacz [Limity usługi Service Bus](../service-bus-messaging/service-bus-quotas.md). | Użyj jednego zdarzenia na wiadomość. |
+| Kolejka usługi Azure Service Bus    | 256 KB na wiadomość dla warstwy standardowej, 1 MB dla warstwy Premium.<br /> Zobacz [Limity usługi Service Bus](../service-bus-messaging/service-bus-quotas.md). | Użyj jednego zdarzenia na wiadomość. |
 | Temat usługi Azure Service Bus | 256 KB na wiadomość dla warstwy standardowej, 1 MB dla warstwy Premium.<br /> Zobacz [Limity usługi Service Bus](../service-bus-messaging/service-bus-quotas.md). | Użyj jednego zdarzenia na wiadomość. |
-| Azure Cosmos DB   | Zobacz [limity usługi Azure Cosmos DB](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits). | Rozmiar partii i częstotliwość zapisu są dostosowywane dynamicznie na podstawie odpowiedzi usługi Azure Cosmos DB. <br /> Nie ma żadnych z góry określonych ograniczeń z usługi Stream Analytics. |
-| Azure Functions   | | Domyślny rozmiar partii to 262 144 bajtów (256 KB). <br /> Domyślna liczba zdarzeń na partię wynosi 100. <br /> Rozmiar partii można konfigurować i można go zwiększyć lub zmniejszyć w [opcjach wyjściowych](#azure-functions)usługi Stream Analytics .
+| Azure Cosmos DB    | Zobacz [limity usługi Azure Cosmos DB](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits). | Rozmiar partii i częstotliwość zapisu są dostosowywane dynamicznie na podstawie odpowiedzi usługi Azure Cosmos DB. <br /> Nie ma żadnych z góry określonych ograniczeń z usługi Stream Analytics. |
+| Azure Functions    | | Domyślny rozmiar partii to 262 144 bajtów (256 KB). <br /> Domyślna liczba zdarzeń na partię wynosi 100. <br /> Rozmiar partii można konfigurować i można go zwiększyć lub zmniejszyć w [opcjach wyjściowych](#azure-functions)usługi Stream Analytics .
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]

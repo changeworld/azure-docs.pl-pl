@@ -4,10 +4,10 @@ description: Gdy zasób jest niezgodny, istnieje wiele możliwych przyczyn. Dowi
 ms.date: 04/26/2019
 ms.topic: how-to
 ms.openlocfilehash: c931831ddf3cc727b9861e75969eac3bf00c9e45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 03/30/2020
 ms.locfileid: "79264637"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ustalanie przyczyn niezgodności
@@ -111,7 +111,7 @@ W przypadku _zasad auditIfNotExists_ w kategorii _Konfiguracja gościa_ może is
 
 Możesz również nie mieć dostępu do bezpośredniego logowania się do maszyny Wirtualnej, ale musisz poinformować, dlaczego maszyna wirtualna jest _niezgodna._
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Rozpocznij od wykonania tych samych kroków w powyższej sekcji, aby wyświetlać szczegóły zgodności zasad.
 

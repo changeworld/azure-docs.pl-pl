@@ -1,26 +1,26 @@
 ---
-title: Uaktualnij środowisko uruchomieniowe Service Fabric na platformie Azure
+title: Uaktualnianie środowiska wykonawczego sieci szkieletowej usług na platformie Azure
 description: W ramach tego samouczka dowiesz się, jak przy użyciu programu PowerShell uaktualnić środowisko uruchomieniowe klastra usługi Service Fabric hostowanego na platformie Azure.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 2fb08d7aba3e35fb6147b75bbcee35b46873b5f6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252730"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Samouczek: uaktualnianie środowiska uruchomieniowego klastra usługi Service Fabric na platformie Azure
 
-Ten samouczek jest czwartą częścią serii i pokazuje, jak uaktualnić środowisko uruchomieniowe Service Fabric w klastrze Service Fabric platformy Azure. Ta część samouczka jest zapisywana dla Service Fabric klastrów działających na platformie Azure i nie ma zastosowania do autonomicznych klastrów Service Fabric.
+Ten samouczek jest częścią czwartą serii i pokazuje, jak uaktualnić środowisko uruchomieniowe sieci szkieletowej usług w klastrze sieci szkieletowej usług Azure. Ta część samouczka jest napisana dla klastrów sieci szkieletowej usług uruchomionych na platformie Azure i nie ma zastosowania do autonomicznych klastrów sieci szkieletowej usług.
 
 > [!WARNING]
 > Na potrzeby tej części samouczka wymagany jest program PowerShell. Uaktualnianie środowiska uruchomieniowego klastra nie jest jeszcze obsługiwane przez narzędzia interfejsu wiersza polecenia platformy Azure. Alternatywnie klaster możesz uaktualnić w portalu. Aby uzyskać więcej informacji, zobacz [Uaktualnianie klastra usługi Azure Service Fabric](service-fabric-cluster-upgrade.md).
 
-Jeśli w klastrze działa już najnowsze środowisko uruchomieniowe Service Fabric, nie trzeba tego robić. Jednak korzystając z tego artykułu, możesz zainstalować dowolne obsługiwane środowisko uruchomieniowe w klastrze usługi Azure Service Fabric.
+Jeśli w klastrze jest już uruchomiony najnowszy środowiska uruchomieniowego sieci szkieletowej usług, nie trzeba wykonać tego kroku. Jednak korzystając z tego artykułu, możesz zainstalować dowolne obsługiwane środowisko uruchomieniowe w klastrze usługi Azure Service Fabric.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Odczytywanie wersji klastra
@@ -42,9 +42,9 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 Przed rozpoczęciem tego samouczka:
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Zainstaluj [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) lub [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+* Zainstaluj [platformę Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) lub [platformę Azure CLI](/cli/azure/install-azure-cli).
 * Tworzenie bezpiecznego [klastra systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) na platformie Azure
-* Skonfiguruj środowisko deweloperskie w systemie Windows. Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com) oraz **wieloplatformowe obciążenia programistyczne** **platformy Azure**, **ASP.NET i Web Development**oraz platformy .NET Core.  Następnie skonfiguruj [środowisko deweloperskie platformy .NET](service-fabric-get-started.md).
+* Skonfiguruj środowisko deweloperskie w systemie Windows. Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com) i tworzenie platformy **Azure,** **ASP.NET i tworzenie stron internetowych**oraz obciążenia **programistyczne .NET Core na wielu platformach.**  Następnie skonfiguruj [środowisko deweloperskie platformy .NET](service-fabric-get-started.md).
 
 ### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -58,14 +58,14 @@ Set-AzContext -SubscriptionId <guid>
 
 ## <a name="get-the-runtime-version"></a>Uzyskiwanie wersji środowiska uruchomieniowego
 
-Po nawiązaniu połączenia z platformą Azure wybierz subskrypcję zawierającą klaster Service Fabric, aby uzyskać wersję środowiska uruchomieniowego klastra.
+Po nawiązaniu połączenia z platformą Azure, wybranej subskrypcji zawierającej klaster sieci szkieletowej usług, można uzyskać wersję środowiska wykonawczego klastra.
 
 ```powershell
 Get-AzServiceFabricCluster -ResourceGroupName SFCLUSTERTUTORIALGROUP -Name aztestcluster `
     | Select-Object ClusterCodeVersion
 ```
 
-Lub wystarczy uzyskać listę wszystkich klastrów w ramach subskrypcji, korzystając z następującego przykładu:
+Możesz też uzyskać listę wszystkich klastrów w ramach subskrypcji w następującym przykładzie:
 
 ```powershell
 Get-AzServiceFabricCluster | Select-Object Name, ClusterCodeVersion

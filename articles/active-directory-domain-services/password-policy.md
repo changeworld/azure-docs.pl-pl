@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 01/21/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: c4402c1ce2f051c8d1911e7c0332d4cac787ce1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc1863ff4200ee4cca94f18e3adfffa7ea42db96
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613194"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475967"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zasady blokady haseł i kont w domenach zarządzanych
 
@@ -105,20 +105,20 @@ Aby utworzyć niestandardowe zasady haseł, należy użyć narzędzi administrac
     * Ustawienia, takie jak złożoność hasła, wiek lub czas wygaśnięcia tylko dla użytkowników ręcznie utworzonych w domenie zarządzanej usług Azure AD DS.
     * Ustawienia blokady konta dotyczą wszystkich użytkowników, ale są obowiązywać tylko w domenie zarządzanej, a nie w samej usłudze Azure AD.
 
-    ![Tworzenie niestandardowych zasad haseł precyzyjnych](./media/how-to/custom-fgpp.png)
+    ![Tworzenie niestandardowych zasad haseł precyzyjnych](./media/password-policy/custom-fgpp.png)
 
 1. Odznacz pola wyboru **Chroń przed przypadkowym usunięciem**. Jeśli ta opcja jest zaznaczona, nie można zapisać FGPP.
 1. W sekcji **Bezpośrednio dotyczy** przycisku **Dodaj.** W oknie dialogowym **Wybieranie użytkowników lub grup** wybierz przycisk **Lokalizacje.**
 
-    ![Wybierz użytkowników i grupy, aby zastosować zasady haseł do](./media/how-to/fgpp-applies-to.png)
+    ![Wybierz użytkowników i grupy, aby zastosować zasady haseł do](./media/password-policy/fgpp-applies-to.png)
 
 1. Zasady haseł można stosować tylko do grup. W oknie dialogowym **Lokalizacje** rozwiń nazwę domeny, taką jak *aaddscontoso.com*, a następnie wybierz o.o., na przykład **Użytkownicy usługi AADDC**. Jeśli masz niestandardową instalację organizacyjną, która zawiera grupę użytkowników, których chcesz zastosować, wybierz tę ojówę.
 
-    ![Wybierz ou, do którego należy grupa](./media/how-to/fgpp-container.png)
+    ![Wybierz ou, do którego należy grupa](./media/password-policy/fgpp-container.png)
 
 1. Wpisz nazwę grupy, do której chcesz zastosować zasady, a następnie wybierz pozycję **Sprawdź nazwy,** aby sprawdzić, czy grupa istnieje.
 
-    ![Wyszukaj i wybierz grupę, aby zastosować FGPP](./media/how-to/fgpp-apply-group.png)
+    ![Wyszukaj i wybierz grupę, aby zastosować FGPP](./media/password-policy/fgpp-apply-group.png)
 
 1. Po nazwie wybranej grupy wyświetlanej teraz w sekcji **Bezpośrednie dotyczy,** wybierz przycisk **OK,** aby zapisać niestandardowe zasady haseł.
 

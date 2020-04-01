@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Kontiki | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Kontiki.
+title: 'Samouczek: Integracja usługi Azure Active Directory z kontiki | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a kontiki.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,105 +17,105 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfb154bce34b2ceda99b82c7ca3534b8a8ee0a1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67098488"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Kontiki
+# <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Samouczek: Integracja usługi Azure Active Directory z kontiki
 
-W tym samouczku dowiesz się, jak zintegrować Kontiki w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować kontiki z usługą Azure Active Directory (Azure AD).
 
-Integrowanie Kontiki z usługą Azure AD zapewnia następujące korzyści:
+Integracja kontiki z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz użyć usługi Azure AD w celu kontrolowania, kto ma dostęp do Kontiki.
-* Użytkownicy mogą być automatycznie zalogowany do Kontiki za pomocą kont usługi Azure AD (logowanie jednokrotne).
+* Za pomocą usługi Azure AD można kontrolować, kto ma dostęp do kontiki.
+* Użytkownicy mogą być automatycznie zalogowany do Kontiki za pomocą swoich kont usługi Azure AD (logowanie jednokrotne).
 * Możesz zarządzać kontami z jednej centralnej lokalizacji — witryny Azure Portal.
 
-Aby uzyskać więcej informacji na temat oprogramowania jako usługi (SaaS) integracji aplikacji z usługą Azure AD, zobacz [logowanie jednokrotne do aplikacji w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby uzyskać więcej informacji na temat integracji aplikacji z usługą Azure AD na temat oprogramowania jako usługi, zobacz [Logowanie jednokrotne w aplikacjach usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Kontiki, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z kontiki, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcję usługi Azure AD, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed przystąpieniem do wykonywania.
-* Subskrypcja Kontiki przy użyciu logowania jednokrotnego włączone.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji usługi Azure AD, utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
+* Subskrypcja Kontiki z włączoną rejestracją jednoosobową.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W ramach tego samouczka konfigurowania i testowania usługi Azure AD logowanie jednokrotne w środowisku testowym, a integracja Kontiki z usługą Azure AD.
+W tym samouczku można skonfigurować i przetestować azure ad logowania jednokrotnego w środowisku testowym i zintegrować Kontiki z usługą Azure AD.
 
 Kontiki obsługuje następujące funkcje:
 
-* **Zainicjowane przez Dostawcę logowania jednokrotnego**
+* **Logowanie jednokrotne inicjowane przez sp.**
 * **Aprowizowanie użytkowników typu just in time**
 
-## <a name="add-kontiki-in-the-azure-portal"></a>Dodaj Kontiki w witrynie Azure portal
+## <a name="add-kontiki-in-the-azure-portal"></a>Dodawanie kontiki w witrynie Azure portal
 
-Aby zintegrować Kontiki z usługą Azure AD, należy dodać Kontiki z listą zarządzanych aplikacji SaaS.
+Aby zintegrować Kontiki z usługą Azure AD, należy dodać kontiki do listy zarządzanych aplikacji SaaS.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
-1. W menu po lewej stronie wybierz **usługi Azure Active Directory**.
+1. W menu po lewej stronie wybierz pozycję **Azure Active Directory**.
 
     ![Opcja usługi Azure Active Directory](common/select-azuread.png)
 
-1. Wybierz pozycję **Aplikacje dla przedsiębiorstw** > **Wszystkie aplikacje**.
+1. Wybierz **aplikacje** > enterprise**Wszystkie aplikacje**.
 
     ![Okienko Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. Aby dodać aplikację, wybierz pozycję **nową aplikację**.
+1. Aby dodać aplikację, wybierz pozycję **Nowa aplikacja**.
 
-    ![Nowa opcja aplikacji](common/add-new-app.png)
+    ![Opcja Nowa aplikacja](common/add-new-app.png)
 
-1. W polu wyszukiwania wprowadź **Kontiki**. W wynikach wyszukiwania wybierz **Kontiki**, a następnie wybierz pozycję **Dodaj**.
+1. W polu wyszukiwania wpisz **Kontiki**. W wynikach wyszukiwania wybierz pozycję **Kontiki**, a następnie wybierz pozycję **Dodaj**.
 
     ![Kontiki na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Kontiki w oparciu o nazwie użytkownika testowego **Britta Simon**. Dla logowania jednokrotnego do pracy należy ustanowić połączone relację między użytkownikiem usługi Azure AD i powiązanych użytkowników w Kontiki.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego z Kontiki na podstawie użytkownika testowego o nazwie **Britta Simon**. Aby logowanie jednokrotne działało, należy ustanowić połączone relacje między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w kontiki.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Kontiki, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą kontiki, należy wykonać następujące bloki konstrukcyjne:
 
 | Zadanie | Opis |
 | --- | --- |
-| **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)** | Umożliwia użytkownikom korzystać z tej funkcji. |
-| **[Konfigurowanie Kontiki logowania jednokrotnego](#configure-kontiki-single-sign-on)** | Konfiguruje pojedynczy ustawień logowania jednokrotnego w aplikacji. |
-| **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** | Testy usługi Azure AD logowanie jednokrotne dla użytkownika o nazwie Britta Simon. |
-| **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** | Umożliwia Britta Simon korzystać z usługi Azure AD logowania jednokrotnego. |
-| **[Tworzenie użytkownika testowego Kontiki](#create-a-kontiki-test-user)** | Tworzy odpowiednikiem Britta Simon Kontiki połączonego z usługi Azure AD reprezentacja użytkownika. |
+| **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** | Umożliwia użytkownikom korzystanie z tej funkcji. |
+| **[Konfigurowanie logowania jednokrotnego kontiki](#configure-kontiki-single-sign-on)** | Konfiguruje ustawienia logowania jednokrotnego w aplikacji. |
+| **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** | Testy logowania jednokrotnego usługi Azure AD dla użytkownika o nazwie Britta Simon. |
+| **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** | Umożliwia Firmie Britta Simon używanie logowania jednokrotnego usługi Azure AD. |
+| **[Tworzenie użytkownika testowego Kontiki](#create-a-kontiki-test-user)** | Tworzy odpowiednik Britta Simon w Kontiki, który jest połączony z reprezentacji usługi Azure AD użytkownika. |
 | **[Testowanie logowania jednokrotnego](#test-single-sign-on)** | Sprawdza, czy konfiguracja działa. |
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji skonfigurujesz usługi Azure AD logowanie jednokrotne za pomocą Kontiki w witrynie Azure portal.
+W tej sekcji można skonfigurować azure ad logowania jednokrotnego z Kontiki w witrynie Azure portal.
 
-1. W [witryny Azure portal](https://portal.azure.com/)w **Kontiki** okienko integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)w okienku integracji aplikacji **Kontiki** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Konfigurowanie opcji rejestracji jednokrotnej](common/select-sso.png)
+    ![Konfigurowanie opcji logowania jednokrotnego](common/select-sso.png)
 
-1. W **wybierz jedną metodę logowania jednokrotnego** okienku wybierz **SAML** lub **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne.
+1. W okienku **Wybierz metodę logowania jednokrotnego** wybierz tryb **SAML** lub **SAML/WS-Fed,** aby włączyć logowanie jednokrotne.
 
     ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-1. W **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** okienku wybierz **Edytuj** (ikonę ołówka) aby otworzyć **podstawową konfigurację protokołu SAML** okienka.
+1. W okienku **Konfigurowanie logowania jednokrotnego za pomocą saml** wybierz pozycję **Edytuj** (ikona ołówka), aby otworzyć podstawowe okienko **konfiguracji SAML.**
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. W **podstawową konfigurację protokołu SAML** okienku w obszarze **adres URL logowania** tekstu wprowadź adres URL z następującym wzorcem: `https://<companyname>.mc.eval.kontiki.com`
+1. W podstawowym okienku **konfiguracji SAML** w polu tekstowym **Podpisz adres URL** wprowadź adres URL zawierający następujący wzorzec:`https://<companyname>.mc.eval.kontiki.com`
 
-    ![Kontiki domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-signonurl.png)
+    ![Informacje o logach jednokrotnych domeny kontiki i adresów URL](common/sp-signonurl.png)
 
     > [!NOTE]
-    > Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Kontiki](https://customersupport.kontiki.com/enterprise/contactsupport.html) można pobrać poprawną wartość do użycia. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Skontaktuj się z [zespołem pomocy technicznej klienta Kontiki,](https://customersupport.kontiki.com/enterprise/contactsupport.html) aby uzyskać poprawną wartość do użycia. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. W **Ustaw się logowanie jednokrotne z SAML** okienko w **certyfikat podpisywania SAML** zaznacz **Pobierz** obok **XML metadanych Federacji**. Wybierz opcję pobierania, w zależności od wymagań. Zapisz certyfikat na komputerze.
+1. W okienku **Konfigurowanie logowania jednokrotnego za pomocą saml** w sekcji **Certyfikat podpisywania SAML** wybierz pozycję **Pobierz** obok pozycji **XML metadanych federacji**. Wybierz opcję pobierania na podstawie twoich wymagań. Zapisz certyfikat na komputerze.
 
-    ![Opcja pobierania certyfikatu XML metadanych Federacji](common/metadataxml.png)
+    ![Opcja pobierania certyfikatu XML metadanych federacji](common/metadataxml.png)
 
-1. W **Konfigurowanie Kontiki** sekcji, skopiuj następujące adresy URL, zgodnie z wymaganiami:
+1. W sekcji **Konfigurowanie kontiki** skopiuj następujące adresy URL na podstawie twoich wymagań:
 
     * Adres URL logowania
     * Identyfikator usługi Azure AD
@@ -123,74 +123,74 @@ W tej sekcji skonfigurujesz usługi Azure AD logowanie jednokrotne za pomocą Ko
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-### <a name="configure-kontiki-single-sign-on"></a>Konfigurowanie Kontiki logowania jednokrotnego
+### <a name="configure-kontiki-single-sign-on"></a>Konfigurowanie logowania jednokrotnego kontiki
 
-Aby skonfigurować logowanie jednokrotne na stronie Kontiki, Wyślij pobrany plik XML metadanych Federacji i odpowiednie adresy URL, które zostały skopiowane z portalu Azure w celu [zespołem pomocy technicznej Kontiki](https://customersupport.kontiki.com/enterprise/contactsupport.html). Zespół pomocy technicznej Kontiki używa tych informacji, wysyłanych przez nich, aby upewnić się, że SAML logowania jednokrotnego połączenie jest prawidłowo po obu stronach.
+Aby skonfigurować logowanie jednokrotne po stronie Kontiki, wyślij pobrany plik XML metadanych federacji i odpowiednie adresy URL skopiowane z witryny Azure portal do [zespołu pomocy technicznej Kontiki](https://customersupport.kontiki.com/enterprise/contactsupport.html). Zespół pomocy technicznej Kontiki używa wysyłanych informacji, aby upewnić się, że połączenie logowania jednokrotnego SAML jest poprawnie ustawione po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
 W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie Azure Portal.
 
-1. W witrynie Azure Portal wybierz kolejno pozycje **Azure Active Directory** > **Użytkownicy** > **Wszyscy użytkownicy**.
+1. W witrynie Azure portal wybierz pozycję**Użytkownicy** >  **usługi Azure Active Directory** > **Wszyscy użytkownicy**.
 
-    ![Użytkownicy i wszystkie opcje użytkowników](common/users.png)
+    ![Opcje Użytkownicy i Wszyscy użytkownicy](common/users.png)
 
 1. Wybierz przycisk **Nowy użytkownik**.
 
-    ![Nowa opcja użytkownika](common/new-user.png)
+    ![Opcja Nowy użytkownik](common/new-user.png)
 
 1. W okienku **Użytkownik** wykonaj następujące czynności:
 
     1. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    1. W **nazwa_użytkownika** wprowadź **brittasimon\@\<Twojej domeny firmy >.\< Rozszerzenia >** . Na przykład **brittasimon\@contoso.com**.
+    1. W polu **Nazwa użytkownika** wprowadź **>\@\<brittasimon twoja firma-domena.\<>rozszerzenia **. Na przykład **contoso.com brittasimon\@**.
 
-    1. Wybierz **hasło Show** pole wyboru. Zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    1. Zaznacz pole wyboru **Pokaż hasło.** Zapisz wartość wyświetlaną w polu **Hasło.**
 
-    1. Wybierz pozycję **Utwórz**.
+    1. Wybierz **pozycję Utwórz**.
 
-    ![W okienku użytkownika](common/user-properties.png)
+    ![Okienko Użytkownik](common/user-properties.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz udzielić dostępu Britta Simon Kontiki, dzięki czemu korzystaniem Azure logowania jednokrotnego.
+W tej sekcji udzielisz Firmie Britta Simon dostępu do kontiki, aby mogła używać logowania jednokrotnego platformy Azure.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **Kontiki**.
+1. W portalu Azure wybierz **pozycję Aplikacje** > dla**przedsiębiorstw Wszystkie aplikacje** > **Kontiki**.
 
     ![Okienko Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. Na liście aplikacji wybierz **Kontiki**.
+1. Na liście aplikacji wybierz **kontiki**.
 
     ![Kontiki na liście aplikacji](common/all-applications.png)
 
 1. W menu wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Opcja użytkowników i grup](common/users-groups-blade.png)
+    ![Opcja Użytkownicy i grupy](common/users-groups-blade.png)
 
 1. Wybierz przycisk **Dodaj użytkownika**. Następnie w okienku **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy**.
 
     ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okienku wybierz **Britta Simon** na liście Użytkownicy. Wybierz pozycję **Wybierz**.
+1. W okienku **Użytkownicy i grupy** wybierz pozycję **Britta Simon** na liście użytkowników. Wybierz pozycję **Wybierz**.
 
-1. Jeśli są oczekiwane wartości roli dla asercji SAML w **wybierz rolę** okienku zaznacz odpowiednie rolę dla użytkownika z listy. Wybierz pozycję **Wybierz**.
+1. Jeśli oczekujesz wartości roli w asercji SAML, w okienku **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy. Wybierz pozycję **Wybierz**.
 
-1. W **Dodaj przydziału** okienku wybierz **przypisać**.
+1. W okienku **Dodawanie przydziału** wybierz pozycję **Przypisz**.
 
 ### <a name="create-a-kontiki-test-user"></a>Tworzenie użytkownika testowego Kontiki
 
-Brak elementu działania umożliwiające skonfigurowanie aprowizacji w Kontiki użytkowników. Gdy przypisany użytkownik próbuje zalogować się do Kontiki za pomocą portalu Moje aplikacje, Kontiki sprawdza, czy użytkownik istnieje. Nie znaleziono żadnego konta użytkownika, Kontiki automatycznie utworzy konto użytkownika.
+Nie ma żadnego elementu akcji do konfigurowania inicjowania obsługi administracyjnej użytkownika w kontiki. Gdy przypisany użytkownik próbuje zalogować się do kontiki za pomocą portalu Moje aplikacje, kontiki sprawdza, czy użytkownik istnieje. Jeśli nie zostanie znalezione żadne konto użytkownika, Kontiki automatycznie utworzy konto użytkownika.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji możesz przetestować konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu portalu Moje aplikacje.
+W tej sekcji można przetestować konfigurację logowania jednokrotnego usługi Azure AD przy użyciu portalu Moje aplikacje.
 
-Po skonfigurowaniu rejestracji jednokrotnej, po wybraniu **Kontiki** w portalu Moje aplikacje są automatycznie zarejestrowaniu w usłudze Kontiki. Aby uzyskać więcej informacji na temat portalu Moje aplikacje, zobacz [dostępu i użycia aplikacji w portalu Moje aplikacje](../user-help/my-apps-portal-end-user-access.md).
+Po skonfigurowaniu logowania jednokrotnego po wybraniu **opcji Kontiki** w portalu Moje aplikacje użytkownik jest automatycznie zalogowany do kontiki. Aby uzyskać więcej informacji o portalu Moje aplikacje, zobacz [Uzyskiwanie dostępu do aplikacji i korzystanie z nich w portalu Moje aplikacje](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej, przejrzyj następujące artykuły:
+Aby dowiedzieć się więcej, zapoznaj się z tymi artykułami:
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

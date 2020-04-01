@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: d2115b1dc7e9f3150e44eb5ee9417e88ebeaa279
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56c31e03eeec0c81207dc402e864eadec2d768bd
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370826"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474060"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Łączenie sieci laboratorium z siecią wirtualną równorzędną w usługach Azure Lab Services 
 Ten artykuł zawiera informacje dotyczące komunikacji równorzędnej sieci laboratoriów z inną siecią. 
@@ -38,6 +38,8 @@ Niektóre sieci lokalne są połączone z usługą Azure Virtual Network za poś
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurowanie w momencie tworzenia konta w laboratorium
 Podczas tworzenia nowego konta laboratorium można wybrać istniejącą sieć wirtualną, która jest wyświetlana na liście rozwijanej **sieci wirtualnej równorzędnej** na karcie **Zaawansowane.** Wybrana sieć wirtualna jest połączona (równorzędna) z laboratoriami utworzonymi w ramach konta laboratorium. Wszystkie maszyny wirtualne w laboratoriach, które są tworzone po wykonywując tę zmianę będzie miał dostęp do zasobów w sieci wirtualnej równorzędnej. 
+
+Istnieje również przepis, aby zapewnić **zakres adresów** maszyn wirtualnych dla laboratoriów. Jeśli zakres adresów jest podany, wszystkie maszyny wirtualne w laboratoriach w ramach konta laboratorium zostaną utworzone w tym zakresie adresów. Zakres adresów powinien znajdować się w notacji CIDR (np. 10.20.0.0/20) i nie pokrywać się z istniejącymi zakresami adresów. Podczas podawania zakresu adresów, ważne jest, aby myśleć o liczbie maszyn wirtualnych, które zostaną utworzone w laboratoriach i zapewnić zakres adresów, aby pomieścić. Dla danego zakresu zostanie wyświetlona liczba laboratoriów, które może pomieścić.
 
 ![Wybierz sieć wirtualną do elementu równorzędnego](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 

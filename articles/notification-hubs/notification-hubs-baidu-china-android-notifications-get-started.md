@@ -485,5 +485,5 @@ Testowe powiadomienie można wysłać przy użyciu karty debugowania w witrynie 
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Zestaw SDK systemu Android dla powiadomień wypychanych w usłudze Baidu]: https://push.baidu.com/sdk/push_client_sdk_for_android
-[Portal Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Baidu portal]: https://www.baidu.com/

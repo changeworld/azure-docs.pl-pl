@@ -1,32 +1,32 @@
 ---
-title: Samouczek — Konfigurowanie Azure Cloud Shell dla Terraform
-description: W tym samouczku użyjesz Terraform z Azure Cloud Shell, aby uprościć konfigurację uwierzytelniania i szablonu.
-keywords: Azure DevOps Terraform Cloud Shell
+title: Samouczek — konfigurowanie powłoki chmury azure dla terraform
+description: W tym samouczku używasz Terraform z usługi Azure Cloud Shell, aby uprościć uwierzytelnianie i konfigurację szablonu.
+keywords: azure devops terraform powłoki chmury
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 3a9db1143ba07b549a271d53d610e0a4853467c6
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945331"
 ---
-# <a name="tutorial-configure-azure-cloud-shell-for-terraform"></a>Samouczek: Konfigurowanie Azure Cloud Shell dla Terraform
+# <a name="tutorial-configure-azure-cloud-shell-for-terraform"></a>Samouczek: Konfigurowanie powłoki chmury azure dla terraform
 
-Terraform dobrze działa z wiersza polecenia bash w systemie macOS, Windows lub Linux. Uruchamianie konfiguracji Terraform w środowisku bash [Azure Cloud Shell](/azure/cloud-shell/overview) ma pewne unikatowe zalety. W tym samouczku pokazano, jak napisać skrypty Terraform wdrażane na platformie Azure przy użyciu Cloud Shell.
+Terraform działa dobrze z wiersza polecenia Bash w systemach macOS, Windows lub Linux. Uruchamianie konfiguracji terraform w doświadczeniu bash [usługi Azure Cloud Shell](/azure/cloud-shell/overview) ma pewne unikalne zalety. W tym samouczku pokazano, jak napisać skrypty Terraform, które wdrażają na platformie Azure przy użyciu usługi Cloud Shell.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="automatic-credential-configuration"></a>Konfiguracja poświadczeń automatycznych
 
-Narzędzie Terraform jest instalowane i od razu dostępne w usłudze Cloud Shell. Skrypty Terraform uwierzytelniają się przy użyciu platformy Azure podczas logowania w celu Cloud Shell zarządzania infrastrukturą bez dodatkowej konfiguracji. Automatyczne uwierzytelnianie pomija dwa procesy ręczne:
+Narzędzie Terraform jest instalowane i od razu dostępne w usłudze Cloud Shell. Skrypty Terraform uwierzytelniają się za pomocą platformy Azure po zalogowaniu się do usługi Cloud Shell w celu zarządzania infrastrukturą bez dodatkowej konfiguracji. Uwierzytelnianie automatyczne pomija dwa procesy ręczne:
 - Tworzenie jednostki usługi Active Directory
 - Konfigurowanie zmiennych dostawcy usługi Azure Terraform
 
 
 ## <a name="use-modules-and-providers"></a>Korzystanie z modułów i dostawców
 
-Moduły Terraform platformy Azure wymagają poświadczeń w celu uzyskania dostępu do zasobów platformy Azure i ich modyfikowania. Aby użyć modułów Terraform w Cloud Shell, Dodaj następujący kod:
+Moduły usługi Azure Terraform wymagają poświadczeń, aby uzyskać dostęp do zasobów platformy Azure i zmodyfikować go. Aby użyć modułów Terraform w usłudze Cloud Shell, dodaj następujący kod:
 
 
 ```hcl
@@ -39,16 +39,16 @@ provider "azurerm" {
 }
 ```
 
-Cloud Shell przekazuje wymagane wartości dostawcy `azurerm` za pomocą zmiennych środowiskowych w przypadku korzystania z poleceń interfejsu wiersza polecenia `terraform`.
+Usługa Cloud Shell przekazuje `azurerm` wymagane wartości dla dostawcy za pośrednictwem `terraform` zmiennych środowiskowych podczas korzystania z dowolnego polecenia interfejsu wiersza polecenia.
 
 ## <a name="other-cloud-shell-developer-tools"></a>Inne narzędzia programistyczne w usłudze Cloud Shell
 
-Pliki i stany powłoki pozostają w usłudze Azure Storage między sesjami usługi Cloud Shell. Użyj [Eksplorator usługi Azure Storage](/azure/vs-azure-tools-storage-manage-with-storage-explorer) do kopiowania i przekazywania plików do Cloud Shell z komputera lokalnego.
+Pliki i stany powłoki pozostają w usłudze Azure Storage między sesjami usługi Cloud Shell. Użyj [Eksploratora usługi Azure Storage,](/azure/vs-azure-tools-storage-manage-with-storage-explorer) aby skopiować i przekazać pliki do usługi Cloud Shell z komputera lokalnego.
 
-Interfejs wiersza polecenia platformy Azure jest dostępny w Cloud Shell i jest doskonałym narzędziem do testowania konfiguracji i sprawdzania pracy po zakończeniu `terraform apply` lub `terraform destroy`.
+Narzędzie interfejsu wiersza polecenia platformy Azure jest dostępne w usłudze Cloud `terraform apply` `terraform destroy` Shell i jest doskonałym narzędziem do testowania konfiguracji i sprawdzania pracy po zakończeniu lub zakończeniu.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie małego klastra maszyn wirtualnych przy użyciu rejestru modułu](terraform-create-vm-cluster-module.md)
+> [Tworzenie małego klastra maszyn wirtualnych przy użyciu rejestru modułów](terraform-create-vm-cluster-module.md)

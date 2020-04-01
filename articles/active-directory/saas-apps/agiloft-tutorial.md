@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z usługą Agiloft | Microsoft Docs'
+title: 'Samouczek: Integracja usługi Azure Active Directory z Agiloft | Dokumenty firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a aplikacją Agiloft.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3283695c42c5bccf00ca43274d120409646c380f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73153961"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Samouczek: integracja Azure Active Directory z usługą Agiloft
+# <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Samouczek: Integracja usługi Azure Active Directory z Agiloft
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Agiloft z usługą Azure Active Directory (Azure AD).
 Integracja aplikacji Agiloft z usługą Azure AD zapewnia następujące korzyści:
@@ -33,7 +33,7 @@ Integracja aplikacji Agiloft z usługą Azure AD zapewnia następujące korzyśc
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -103,11 +103,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Agiloft, w
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
+4. W sekcji **Podstawowa konfiguracja SAML,** Jeśli chcesz skonfigurować aplikację w trybie inicjowanym **przez IDP,** wykonaj następujące czynności:
 
     ![Domena i adresy URL aplikacji Agiloft — informacje dotyczące logowania jednokrotnego](common/idp-intiated.png)
 
-    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: 
 
     | |
     |-|-|
@@ -115,7 +115,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Agiloft, w
     | `https://<subdomain>.agiloft.com/project/<KB_NAME>` |
     | |
 
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: 
 
     | |
     |-|-|
@@ -123,11 +123,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Agiloft, w
     | `https://<subdomain>.agiloft.com:443/gui2/spsamlsso?project=<KB_NAME>` |
     | |
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+5. Kliknij **pozycję Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowanym w sp: **SP**
 
     ![Domena i adresy URL aplikacji Agiloft — informacje dotyczące logowania jednokrotnego](common/metadata-upload-additional-signon.png)
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: 
 
     | |
     |-|-|
@@ -156,11 +156,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Agiloft, w
 
 1. W innym oknie przeglądarki zaloguj się do witryny firmowej aplikacji Agiloft jako administrator.
 
-2. Kliknij pozycję **Setup (Konfigurowanie)** (w okienku po lewej stronie), a następnie wybierz pozycję **Access (Dostęp)** .
+2. Kliknij pozycję **Setup (Konfigurowanie)** (w okienku po lewej stronie), a następnie wybierz pozycję **Access (Dostęp)**.
 
     ![Konfiguracja aplikacji Agiloft](./media/agiloft-tutorial/setup1.png)
 
-3. Kliknij przycisk **Configure SAML 2.0 Single Sign-On (Skonfiguruj logowanie jednokrotne SAML 2.0)** .
+3. Kliknij przycisk **Configure SAML 2.0 Single Sign-On (Skonfiguruj logowanie jednokrotne SAML 2.0)**.
 
     ![Konfiguracja aplikacji Agiloft](./media/agiloft-tutorial/setup2.png)
 
@@ -168,15 +168,15 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Agiloft, w
 
     ![Konfiguracja aplikacji Agiloft](./media/agiloft-tutorial/setup4.png)
 
-    a. W polu tekstowym **wystawcy identyfikator jednostki dostawcy tożsamości/wystawca** wklej wartość **identyfikatora usługi Azure AD**, która została skopiowana z Azure Portal.
+    a. W polu **tekstowym Identyfikator jednostki IdP / Wystawca** wklej wartość **identyfikatora reklamy platformy Azure,** który został skopiowany z witryny Azure portal.
 
-    b. W polu tekstowym **adres URL logowania dostawcy tożsamości** wklej wartość **adresu URL logowania**, która została skopiowana z Azure Portal.
+    b. W polu tekstowym **adresu URL logowania IdP** wklej wartość **adresu URL logowania,** który został skopiowany z witryny Azure portal.
 
-    d. W polu tekstowym **adres URL wylogowywania dostawcy tożsamości** wklej wartość **adresu URL wylogowania**, którą skopiowano z Azure Portal.
+    d. W polu tekstowym **adresu URL wylogowania idp** wklej wartość **adresu URL wylogowania,** który został skopiowany z witryny Azure portal.
 
-    d. Otwórz **certyfikat zakodowany w formacie Base-64** w Notatniku pobranym z Azure Portal Skopiuj zawartość tego pliku do schowka, a następnie wklej go do **dostawcy tożsamości podanego w polu tekstowym zawartość certyfikatu X. 509** .
+    d. Otwórz **certyfikat zakodowany w bazie podstawowej 64** w notatniku pobranym z witryny Azure Portal, skopiuj jego zawartość do schowka, a następnie wklej ją do pola tekstowego **zawartości certyfikatu IdP dostarczonej x.509.**
 
-    e. Kliknij przycisk **Finish** (Zakończ).
+    e. Kliknij przycisk **Zakończ**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -186,7 +186,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -196,7 +196,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. W polu **Nazwa użytkownika** wpisz **\@brittasimon yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -225,7 +225,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
@@ -237,12 +237,12 @@ W tej sekcji w aplikacji Agiloft jest tworzony użytkownik o nazwie Britta Simon
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Agiloft w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Agiloft, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Agiloft w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Agiloft, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

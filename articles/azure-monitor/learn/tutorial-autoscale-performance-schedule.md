@@ -9,10 +9,10 @@ ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
 ms.openlocfilehash: 85ae76d9dcb0b4a1f95992c2f5da48a81fb12677
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77661656"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Tworzenie ustawienia automatycznego skalowania dla zasobów platformy Azure na podstawie danych wydajności lub harmonogramu
@@ -27,11 +27,11 @@ W tym samouczku zostaną wykonane następujące czynności:
 > * Wyzwalanie akcji skalowania na zewnątrz i obserwowanie spadku liczby wystąpień
 > * Czyszczenie zasobów
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne](https://azure.microsoft.com/free/) konto przed rozpoczęciem.
 
 ## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com/).
+Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-web-app-and-app-service-plan"></a>Tworzenie aplikacji internetowej i planu usługi App Service
 1. Kliknij opcję **Utwórz zasób** z okienka nawigacji po lewej stronie.
@@ -126,7 +126,7 @@ Aby wyzwolić warunek skalowania do wewnątrz we właśnie utworzonym ustawieniu
 
 2. Szybko ponownie załaduj stronę ponad 10 razy.
 
-3. W okienku nawigacji po lewej stronie wybierz opcję **Monitor**. Po załadowaniu strony wybierz kartę **Automatyczne skalowanie**.
+3. W okienku nawigacji po lewej stronie wybierz opcję **Monitor**. Po załadowaniu strony wybierz kartę **Skalowanie automatyczne.**
 
 4. Z listy wybierz plan usługi App Service używany w tym samouczku.
 
@@ -145,7 +145,7 @@ Warunek skalowania na zewnątrz w ustawieniu automatycznego skalowania jest wyzw
 
 2. Załaduj witrynę Azure Portal.
 
-3. W okienku nawigacji po lewej stronie wybierz opcję **Monitor**. Po załadowaniu strony wybierz kartę **Automatyczne skalowanie**.
+3. W okienku nawigacji po lewej stronie wybierz opcję **Monitor**. Po załadowaniu strony wybierz kartę **Skalowanie automatyczne.**
 
 4. Z listy wybierz plan usługi App Service używany w tym samouczku.
 

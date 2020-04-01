@@ -8,17 +8,17 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
 ms.openlocfilehash: 8a512676ab0e56f51c0fb9c59f2e530cfcf73333
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "60617629"
 ---
-# <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Samouczek: Renderowanie sceny Blender za pomocą Eksploratora usługi Batch
+# <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Samouczek: renderowanie sceny programu Blender przy użyciu narzędzia Batch Explorer
 
 W tym samouczku przedstawiono sposób renderowania wielu ramek sceny demonstracyjnej programu Blender. Na potrzeby tego samouczka używany jest program Blender, ponieważ jest bezpłatny dla klienta i renderujących maszyn wirtualnych, ale proces jest bardzo podobny w przypadku używania innych aplikacji, takich jak Maya lub 3ds Max.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Przekazywanie sceny programu Blender do usługi Azure Storage
 > * Tworzenie puli usługi Batch z wieloma węzłami w celu wykonania renderowania
@@ -90,7 +90,7 @@ Utwórz pulę usługi Batch korzystającą z renderowania obrazu maszyn wirtualn
 > [!WARNING]
 > Należy pamiętać, że kiedy w puli znajdują się maszyny wirtualne, kosztami tych maszyn wirtualnych jest obciążana Twoja subskrypcja platformy Azure. Należy usunąć pulę lub usunąć z niej maszyny wirtualne, aby zatrzymać naliczanie opłat. Usuń pulę na końcu tego samouczka, aby zapobiec stałemu naliczaniu opłat.
 
-Stan puli i maszyn wirtualnych można monitorować w widoku 'Pul'; Poniższy przykład pokazuje wszystkie trzy maszyny wirtualne zostały przydzielone, dwie zostały uruchomione i są w stanie bezczynności, jeden wciąż trwa uruchamianie: ![Mapy cieplnej puli](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap.png)
+Stan puli i maszyn wirtualnych można monitorować w widoku „Pools” (Pule). W poniższym przykładzie wszystkie trzy maszyny wirtualne zostały przydzielone, dwie z nich zostały uruchomione i są w stanie bezczynności, a uruchamianie jednej wciąż trwa: ![Mapa cieplna puli](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap.png)
 
 ## <a name="create-a-rendering-job"></a>Tworzenie zadania renderowania
 
@@ -109,25 +109,25 @@ Utwórz zadanie renderowania w celu renderowania niektórych ramek przy użyciu 
 
 ![Szablon zlecenia dla programu Blender](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_template.png)
 
-Po utworzeniu zadania i wszystkie zadania, zadanie zostanie wyświetlony wraz z zadania: ![Lista zadań](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
+Po utworzeniu zlecenia i wszystkich zadań zlecenie zostanie wyświetlone wraz z zadaniami zlecenia: ![Lista zadań w ramach zlecenia](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
 
 Podczas pierwszego uruchomienia zadania na maszynie wirtualnej w puli, uruchamiane jest zadanie podrzędne przygotowania zlecenia usługi Batch, które kopiuje pliki sceny z grupy plików magazynu na maszynę wirtualną, aby były one dostępne dla programu Blender.
 Stan renderowania można określić, wyświetlając plik dziennika stdout.txt utworzony przez program Blender.  Wybierz zadanie, aby wyświetlić kartę „Task Outputs” (Dane wyjściowe zadania), na której można wybrać i wyświetlić plik „stdout.txt”.
 ![plik stdout](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_stdout.png)
 
-Wybranie puli "blender windows" puli maszyn wirtualnych będą widoczne w stanie uruchomienia: ![Mapy cieplnej puli, z uruchomionymi węzłów](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap_running.png)
+W przypadku wybrania puli „blender-windows” maszyny wirtualne z puli będą widoczne w stanie uruchomionym: ![Mapa cieplna puli z uruchomionymi węzłami](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap_running.png)
 
 Wygenerowanie renderowanych obrazów potrwa kilka minut w zależności od wybranego rozmiaru maszyny wirtualnej.  Przy użyciu maszyny wirtualnej F16 określonej wcześniej renderowanie ramek trwało około 16 minut.
 
 ## <a name="view-the-rendering-output"></a>Wyświetlanie danych wyjściowych renderowania
 
-Gdy ramek zakończą renderowanie, te zadania będą wyświetlane jako ukończony: ![Ukończenie zadania](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_tasks_complete.png)
+Po zakończeniu renderowania ramek te zadania będą wyświetlane jako ukończone: ![Kończenie zadań](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_tasks_complete.png)
 
-Wyrenderowany obraz jest najpierw zapisywane do maszyny Wirtualnej i można wyświetlić, wybierając folder "wd": ![Renderowania obrazu w węźle w puli](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
+Renderowany obraz jest najpierw zapisywany na maszynie wirtualnej i można go wyświetlić, wybierając folder „wd”: ![Renderowany obraz w węźle puli](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
 
-Szablon zlecenia określa również, że pliki wyjściowe ramki i dziennika są zapisywane zwrotnie w grupie plików konta usługi Azure Storage określonej podczas tworzenia zlecenia.  "Dane" interfejs użytkownika może służyć do wyświetlania dzienników i pliki wyjściowe może również służyć do pobierania plików: ![Renderowania obrazu w grupie plików magazynu](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image_storage.png)
+Szablon zlecenia określa również, że pliki wyjściowe ramki i dziennika są zapisywane zwrotnie w grupie plików konta usługi Azure Storage określonej podczas tworzenia zlecenia.  Interfejs użytkownika „Data” (Dane) może być używany do wyświetlania dzienników i plików wyjściowych, a także do pobierania plików: ![Renderowany obraz w grupie plików usługi Storage](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image_storage.png)
 
-Po zakończeniu wszystkich zadań, zadanie zostanie oznaczone jako kończone: ![Zadania i wszystkie zadania zostały zakończone](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_alltasks_complete.png)
+Po zakończeniu wszystkich zadań zlecenie zostanie oznaczone jako ukończone: ![Zlecenie i wszystkie zadania ukończone](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_alltasks_complete.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -138,7 +138,7 @@ Po zakończeniu wszystkich zadań, zadanie zostanie oznaczone jako kończone: ![
 * Wybierz pulę „blender-windows”
 * Kliknij ją prawym przyciskiem myszy i wybierz polecenie „Usuń” lub wybierz ikonę kosza nad pulą
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * W sekcji „Gallery” (Galeria) zapoznaj się z aplikacjami renderującymi dostępnymi za pomocą narzędzia Batch Explorer.
 * Dla każdej aplikacji istnieje kilka dostępnych szablonów, które z czasem zostaną rozwinięte.  Na przykład dla programu Blender istnieją szablony, które dzielą pojedynczy obraz na kafelki, dzięki czemu części obrazu mogą być renderowane równolegle.
 * Aby uzyskać kompleksowy opis możliwości renderowania, zobacz zbiór artykułów [tutaj](https://docs.microsoft.com/azure/batch/batch-rendering-service).

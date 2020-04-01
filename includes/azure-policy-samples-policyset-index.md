@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 0bb952d5d13f5afc01956a164a5bf5bd2d66f6b8
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77172989"
 ---
 ## <a name="guest-configuration"></a>Konfiguracja gościa
@@ -14,11 +14,11 @@ ms.locfileid: "77172989"
 
 [!INCLUDE [azure-policy-samples-policyset-monitoring](azure-policy-samples-policyset-monitoring.md)]
 
-## <a name="regulatory-compliance"></a>Zgodność z przepisami
+## <a name="regulatory-compliance"></a>Zgodność
 
 [!INCLUDE [azure-policy-samples-policyset-regulatory-compliance](azure-policy-samples-policyset-regulatory-compliance.md)]
 
-## <a name="security-center"></a>Centrum zabezpieczeń
+## <a name="security-center"></a>Security Center
 
 [!INCLUDE [azure-policy-samples-policyset-security-center](azure-policy-samples-policyset-security-center.md)]
 
