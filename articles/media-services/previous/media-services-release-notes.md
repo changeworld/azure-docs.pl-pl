@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: a55ef4f814c0d13a6efbeeb8cd9a5565d2869432
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3893c8d19c89b639e0584f203cbcd1adf7e2dee
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183299"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474831"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji usługi Azure Media Services
 
@@ -344,9 +344,9 @@ W tej wersji oznaczył domyślny konstruktor microsoft.WindowsAzure.MediaService
 * Dodano względne przesunięcia dla BeginDate i ExpirationDate w szablonie licencji PlayReady.
 
 ## <a name="november-2014-release"></a><a id="november_changes_14"></a>Wydanie z listopada 2014 r.
-* Teraz można użyć usługi Media Services do pozyskiwania zawartości płynnego przesyłania strumieniowego na żywo (fMP4) za pomocą połączenia SSL. Aby łowić ssl, upewnij się, że można zaktualizować adres URL pozyskiwania do protokołu HTTPS. Obecnie usługa Media Services nie obsługuje ssl z domenami niestandardowymi. Aby uzyskać więcej informacji na temat przesyłania strumieniowego na żywo, zobacz [Praca z usługą Azure Media Services przesyłanie strumieniowe na żywo](https://msdn.microsoft.com/library/azure/dn783466.aspx).
-* Obecnie nie można pochłonieć strumienia na żywo RTMP za połączenie SSL.
-* Można przesyłać strumieniowo za pomocą ssl tylko wtedy, gdy punkt końcowy przesyłania strumieniowego, z którego dostarczasz zawartość został utworzony po 10 września 2014. Jeśli adresy URL przesyłania strumieniowego są oparte na punktach końcowych przesyłania strumieniowego utworzonych po 10 września 2014 r., adres URL zawiera "streaming.mediaservices.windows.net" (nowy format). Adresy URL przesyłania strumieniowego zawierające "origin.mediaservices.windows.net" (stary format) nie obsługują protokołu SSL. Jeśli adres URL jest w starym formacie i chcesz przesyłać strumieniowo za pomocą ssl, [utwórz nowy punkt końcowy przesyłania strumieniowego](media-services-portal-manage-streaming-endpoints.md). Aby przesyłać strumieniowo zawartość za pomocą protokołu SSL, użyj adresów URL opartych na nowym punkcie końcowym przesyłania strumieniowego.
+* Teraz można użyć usługi Media Services do pozyskiwania zawartości płynnego przesyłania strumieniowego na żywo (fMP4) za pomocą połączenia TLS. Aby nalecieć za pośrednictwem protokołu TLS, należy zaktualizować adres URL pozyskiwania do protokołu HTTPS. Obecnie usługa Media Services nie obsługuje protokołu TLS z domenami niestandardowymi. Aby uzyskać więcej informacji na temat przesyłania strumieniowego na żywo, zobacz [Praca z usługą Azure Media Services przesyłanie strumieniowe na żywo](https://msdn.microsoft.com/library/azure/dn783466.aspx).
+* Obecnie nie można pochłonieć strumienia na żywo RTMP za połączenie TLS.
+* Można przesyłać strumieniowo za pomocą protokołu TLS tylko wtedy, gdy punkt końcowy przesyłania strumieniowego, z którego dostarczasz zawartość została utworzona po 10 września 2014 r. Jeśli adresy URL przesyłania strumieniowego są oparte na punktach końcowych przesyłania strumieniowego utworzonych po 10 września 2014 r., adres URL zawiera "streaming.mediaservices.windows.net" (nowy format). Adresy URL przesyłania strumieniowego zawierające "origin.mediaservices.windows.net" (stary format) nie obsługują protokołu TLS. Jeśli adres URL jest w starym formacie i chcesz przesyłać strumieniowo za pomocą protokołu TLS, [utwórz nowy punkt końcowy przesyłania strumieniowego](media-services-portal-manage-streaming-endpoints.md). Aby przesyłać strumieniowo zawartość za pomocą protokołu TLS, użyj adresów URL opartych na nowym punkcie końcowym przesyłania strumieniowego.
 
 ### <a name="media-services-net-sdk"></a><a id="oct_sdk"></a>Zestaw .NET SDK usługi Media Services
 SDK usługi Media Services dla rozszerzeń .NET jest teraz w wersji 2.0.0.3.

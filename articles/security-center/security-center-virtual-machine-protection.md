@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282642"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435635"
 ---
 # <a name="protect-your-machines-and-applications"></a>Chroń swoje maszyny i aplikacje
 Gdy usługa Azure Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy zalecenia, które prowadzą użytkownika przez proces konfigurowania potrzebnych formantów w celu wzmocnienia i ochrony zasobów.
@@ -84,10 +84,10 @@ W tym miejscu są widoczne szczegóły zabezpieczeń maszyny Wirtualnej lub komp
 
 
 
-### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>Zestawy skalowania maszyny wirtualnej
-Usługa Security Center automatycznie wykrywa, czy masz zestawy skalowania i zaleca zainstalowanie na nich agenta monitorowania firmy Microsoft.
+### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>Zestawy skalowania maszyn wirtualnych
+Usługa Security Center automatycznie wykrywa, czy masz zestawy skalowania i zaleca zainstalowanie na nich agenta usługi Log Analytics.
 
-Aby zainstalować agenta monitorowania firmy Microsoft: 
+Aby zainstalować agenta usługi Log Analytics: 
 
 1. Wybierz zalecenie **Zainstaluj agenta monitorowania w zestawie skalowania maszyny wirtualnej**. Otrzymujesz listę niemonitorowanych zestawów skalowania.
 
@@ -95,7 +95,7 @@ Aby zainstalować agenta monitorowania firmy Microsoft:
 
    ![Instalowanie wiadomości MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-Aby ustawić nowe zestawy skalowania, aby automatycznie zainstalować agenta monitorowania firmy Microsoft:
+Aby ustawić nowe zestawy skalowania, aby automatycznie instalować agenta usługi Log Analytics:
 1. Przejdź do witryny Zasad platformy Azure i kliknij pozycję **Definicje**.
 
 1. Wyszukaj zasady **Wdrażanie agenta analizy dzienników dla zestawów skalowania maszyny wirtualnej systemu Windows** i kliknij na niego.
@@ -104,7 +104,7 @@ Aby ustawić nowe zestawy skalowania, aby automatycznie zainstalować agenta mon
 
 1. Ustaw obszar **roboczy** **Zakres** i usługa Log Analytics i kliknij przycisk **Przypisz**.
 
-Jeśli chcesz ustawić wszystkie istniejące zestawy skalowania, aby zainstalować agenta monitorowania firmy Microsoft, w usłudze Azure Policy przejdź do **korygowania** i zastosuj istniejące zasady do istniejących zestawów skalowania.
+Jeśli chcesz ustawić wszystkie istniejące zestawy skalowania, aby zainstalować agenta usługi Log Analytics, w usłudze Azure Policy przejdź do **korygowania** i zastosuj istniejące zasady do istniejących zestawów skalowania.
 
 
 
@@ -195,7 +195,7 @@ Po kliknięciu jednej z maszyn wirtualnych z systemem docker, zobaczysz stronę 
 
 Usługa Security Center skanuje konfiguracje platformy Docker i zapewnia wgląd w błędy konfiguracji poprzez dostarczenie listy wszystkich ocenionych reguł zakończonych niepowodzeniem. Usługa Security Center zawiera wskazówki ułatwiające szybkie rozwiązywanie tych problemów i oszczędność czasu. Usługa Security Center stale ocenia konfiguracje platformy Docker i udostępnia Ci ich najnowszy stan.
 
-![karta kontenera](./media/security-center-container-recommendations/container-cis-benchmark.png)
+![karta kontenera](./media/security-center-virtual-machine-recommendations/container-cis-benchmark.png)
 
 
 ## <a name="next-steps"></a>Następne kroki

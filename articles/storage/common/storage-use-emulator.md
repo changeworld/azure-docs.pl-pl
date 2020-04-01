@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 1f13efeb5c2ebcb8b23dea6f9ae997039972f089
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 997aa9d96f2f52331865fd15d97443d74bb8bc1f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72428320"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398012"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Używanie emulatora magazynu platformy Azure do tworzenia i testowania
 
@@ -325,6 +325,6 @@ Nie ma żadnych różnic specyficznych dla magazynu kolejki w emulatorze.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Oceń wieloplatformowy, obsługiwany przez społeczność emulator pamięci masowej typu open source [Azurite](https://github.com/arafato/azurite). 
+* Oceń wieloplatformowy, obsługiwany przez społeczność emulator pamięci masowej typu open source [Azurite](https://github.com/azure/azurite). 
 * [Przykłady usługi Azure Storage przy użyciu platformy .NET](../storage-samples-dotnet.md) zawierają łącza do kilku przykładów kodu, których można użyć podczas tworzenia aplikacji.
 * Za pomocą [Eksploratora usługi Microsoft Azure Storage](https://storageexplorer.com) można pracować z zasobami na koncie magazynu w chmurze i w emulatorze magazynu.

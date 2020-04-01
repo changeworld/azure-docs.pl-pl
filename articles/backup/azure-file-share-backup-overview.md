@@ -3,12 +3,12 @@ title: Kopia zapasowa udziału plików platformy Azure – informacje
 description: Dowiedz się, jak zrobić zapasowy udziałów plików platformy Azure w magazynie usług odzyskiwania
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 0e17b05a3febaa673fb29d45c2bcef25e2996df8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd5bb51b2c7b5c09e9d859b69c3094eb50c205b5
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78386722"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396284"
 ---
 # <a name="about-azure-file-share-backup"></a>Kopia zapasowa udziału plików platformy Azure – informacje
 
@@ -43,6 +43,15 @@ Tworzenie kopii zapasowej udziału plików platformy Azure to natywne rozwiązan
 6. Zawartość udziału plików platformy Azure (pojedyncze pliki lub pełny udział) można przywrócić z migawek dostępnych w udziale pliku źródłowego. Po wyzwoleniu operacji adres URL migawki jest pobierany z magazynu metadanych, a dane są wyświetlane i przesyłane z migawki źródłowej do wybranego docelowego udziału plików.
 
 7. Dane monitorowania zadań kopii zapasowej i przywracania są wypychane do usługi Monitorowania kopii zapasowych platformy Azure. Dzięki temu można monitorować kopie zapasowe w chmurze dla udziałów plików w jednym pulpicie nawigacyjnym. Ponadto można również skonfigurować alerty lub powiadomienia e-mail, gdy ma to wpływ na kondycję kopii zapasowej. Wiadomości e-mail są wysyłane za pośrednictwem usługi poczty e-mail platformy Azure.
+
+## <a name="backup-costs"></a>Koszty tworzenia kopii zapasowych
+
+Kopia zapasowa udziału plików Azure jest rozwiązaniem opartym na migawkach, a opłaty za magazyn za migawki są naliczane wraz z użyciem plików platformy Azure zgodnie ze szczegółami cen wymienionymi [tutaj.](https://azure.microsoft.com/pricing/details/storage/files/)
+
+Jednak opłata za chronione wystąpienie za wykorzystanie rozwiązania do tworzenia kopii zapasowych jest zgodna z modelem cenowym opisanym w sekcji [Kopia zapasowa dla plików platformy Azure.](https://azure.microsoft.com/pricing/details/backup/) Obecnie rzeczywista cena została zaktualizowana tylko dla zachodnio-środkowych stanów USA. W przypadku innych regionów dokładne ceny zostaną wkrótce zaktualizowane o pewne różnice regionalne, ale przy użyciu tego samego modelu cenowego.
+
+>[!NOTE]
+>Podczas podglądu nie ma "opłaty za chronione wystąpienie" i opłata będzie pobierana tylko za migawki zgodnie z cenami wymienionymi [tutaj](https://azure.microsoft.com/pricing/details/storage/files/).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 03/31/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76dd07a59a9fa7c0d6231a766ff4090c11f9f5bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 957aa77e18ea8f910f258d1dc59de0d093b0eab6
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331905"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476659"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Jak: Blokowanie uwierzytelniania starszej wersji usługi Azure AD za pomocą dostępu warunkowego   
 
@@ -92,7 +92,7 @@ Te dzienniki wskażą, którzy użytkownicy są nadal zależni od starszego uwie
 
 ### <a name="block-legacy-authentication"></a>Blokowanie starszego uwierzytelniania 
 
-W zasadach dostępu warunkowego można ustawić warunek, który jest powiązany z aplikacjami klienckimi, które są używane do uzyskiwania dostępu do zasobów. Warunek aplikacji klienckich umożliwia zawężenie zakresu do aplikacji korzystających ze starszego uwierzytelniania, wybierając **pozycję Inni klienci** dla aplikacji **mobilnych i klientów klasycznych.**
+W zasadach dostępu warunkowego można ustawić warunek, który jest powiązany z aplikacjami klienckimi, które są używane do uzyskiwania dostępu do zasobów. Warunek aplikacji klienckich umożliwia zawężenie zakresu do aplikacji korzystających ze starszego uwierzytelniania, wybierając **klientów Programu Exchange ActiveSync** i **innych klientów** w obszarze **Aplikacje mobilne i klienci klasyczni**.
 
 ![Inni klienci](./media/block-legacy-authentication/01.png)
 

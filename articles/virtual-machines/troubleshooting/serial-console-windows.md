@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 87ccb1c4995337b385f685797980a9fc3962bc6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68089a86b8b832638abd30aa7c36aa1c5bd84225
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79267003"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410114"
 ---
 # <a name="azure-serial-console-for-windows"></a>Konsola szeregowa platformy Azure dla systemu Windows
 
@@ -60,7 +60,7 @@ Alternatywnie, aby ręcznie włączyć konsolę szeregową dla zestawu skalowani
 
 1. Łączenie się z maszyną wirtualną systemu Windows przy użyciu pulpitu zdalnego
 1. W wierszu polecenia administracyjnego uruchom następujące polecenia:
-    - `bcdedit /ems {current} on`
+    - `bcdedit /ems {current} on`lub `bcdedit /ems '{current}' on` jeśli używasz programu PowerShell
     - `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 1. Uruchom ponownie system, aby włączyć konsolę SAC.
 
@@ -102,15 +102,15 @@ Jeśli chcesz włączyć wyświetlanie monitów z modułem ładującego systemu 
 
     ![Połącz się z sac](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.  Wprowadź, `cmd` aby utworzyć kanał, który ma wystąpienie CMD.
+1.    Wprowadź, `cmd` aby utworzyć kanał, który ma wystąpienie CMD.
 
-1.  Wprowadź `ch -si 1` lub `<esc>+<tab>` naciśnij klawisze skrótów, aby przełączyć się do kanału, na który jest uruchomione wystąpienie CMD.
+1.    Wprowadź `ch -si 1` lub `<esc>+<tab>` naciśnij klawisze skrótów, aby przełączyć się do kanału, na który jest uruchomione wystąpienie CMD.
 
-1.  Naciśnij **klawisz Enter**, a następnie wprowadź poświadczenia logowania z uprawnieniami administracyjnymi.
+1.    Naciśnij **klawisz Enter**, a następnie wprowadź poświadczenia logowania z uprawnieniami administracyjnymi.
 
-1.  Po wprowadzeniu prawidłowych poświadczeń zostanie otwarte wystąpienie CMD.
+1.    Po wprowadzeniu prawidłowych poświadczeń zostanie otwarte wystąpienie CMD.
 
-1.  Aby uruchomić wystąpienie programu `PowerShell` PowerShell, wprowadź instancję CMD, a następnie naciśnij klawisz **Enter**.
+1.    Aby uruchomić wystąpienie programu `PowerShell` PowerShell, wprowadź instancję CMD, a następnie naciśnij klawisz **Enter**.
 
     ![Otwórz wystąpienie programu PowerShell](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 

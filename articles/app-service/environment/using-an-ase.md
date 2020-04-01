@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/01/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7ca6882aea7225dcb97c9f913267b2543de07fef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a73c1998203a8696b67a5e7eb3af23898239265
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133136"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477623"
 ---
 # <a name="use-an-app-service-environment"></a>Używanie środowiska usługi App Service
 
@@ -88,7 +88,7 @@ W ase można skalować usługi app service zaplanować maksymalnie 100 wystąpie
 
 ## <a name="ip-addresses"></a>Adresy IP
 
-Usługa App Service może przydzielić dedykowany adres IP do aplikacji. Ta funkcja jest dostępna po skonfigurowaniu protokołu SSL opartego na protokoście IP, zgodnie z opisem w temacie [Powiązanie istniejącego niestandardowego certyfikatu SSL z usługą Azure App Service.][ConfigureSSL] W ase równoważenia obciążenia sieciowego nie można dodać więcej adresów IP, które mają być używane dla protokołu SSL opartego na protokosze.
+Usługa App Service może przydzielić dedykowany adres IP do aplikacji. Ta funkcja jest dostępna po skonfigurowaniu protokołu SSL opartego na protokoście IP, zgodnie z opisem w temacie [Powiązanie istniejącego niestandardowego certyfikatu TLS/SSL z usługą Azure App Service.][ConfigureSSL] W ase równoważenia obciążenia sieciowego nie można dodać więcej adresów IP, które mają być używane dla protokołu SSL opartego na protokosze.
 
 Za pomocą zewnętrznego programu ASE można skonfigurować protokół SSL oparty na protokona ip dla aplikacji w taki sam sposób, jak w usłudze aplikacji wielodostępnej. W ASE zawsze jest jeden wolny adres, do 30 adresów IP. Za każdym razem, gdy używasz jednego, inny jest dodawany tak, że adres jest zawsze łatwo dostępny. Opóźnienie czasowe jest wymagane do przydzielenia innego adresu IP. To opóźnienie zapobiega dodawaniu adresów IP w krótkim odstępie czasu.
 

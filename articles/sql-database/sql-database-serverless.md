@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 3/11/2020
-ms.openlocfilehash: 5c36dbfbe63314ef97edfa3dfbaae34667db002d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a72d3dc7f7b3fddf66df8111b1e92116a62883a
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268706"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474027"
 ---
 # <a name="azure-sql-database-serverless"></a>Bezserwerowa baza danych SQL azure
 
@@ -151,7 +151,7 @@ Opóźnienie autoresume i autopause bezserwerowej bazy danych jest zazwyczaj w k
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Zarządzane przez klienta przezroczyste szyfrowanie danych (BYOK)
 
-Jeśli przy użyciu [zarządzanego przez klienta przezroczystego szyfrowania danych](transparent-data-encryption-byok-azure-sql.md) (BYOK) i bezserwerowej bazy danych jest automatycznie wstrzymana po usunięciu lub odwołaniu klucza, baza danych pozostaje w stanie automatycznego wstrzymania.  W takim przypadku podczas następnej próby wznowienia bazy danych pozostaje wstrzymana, dopóki jej stan nie przejdzie do niedostępnego po około 10 minutach lub mniej.  Gdy baza danych staje się niedostępna, proces odzyskiwania jest taki sam jak dla aprowizacji baz danych obliczeniowych.  Jeśli baza danych bezserwerowa jest w trybie online, gdy występuje usunięcie lub cofnięcie klucza, baza danych staje się również niedostępna po około 10 minutach lub mniej w taki sam sposób, jak w przypadku aprowizacji baz danych obliczeniowych.
+Jeśli przy użyciu [zarządzanego przez klienta przezroczystego szyfrowania danych](transparent-data-encryption-byok-azure-sql.md) (BYOK) i bezserwerowej bazy danych jest automatycznie wstrzymana po usunięciu lub odwołaniu klucza, baza danych pozostaje w stanie automatycznego wstrzymania.  W takim przypadku po otwarciu bazy danych baza danych pozostaje w trybie online, dopóki jej stan nie przejdzie do niedostępnego po około 10 minutach lub mniej.  Gdy baza danych staje się niedostępna, proces odzyskiwania jest taki sam jak dla aprowizacji baz danych obliczeniowych.  Jeśli baza danych bezserwerowa jest w trybie online, gdy występuje usunięcie lub cofnięcie klucza, baza danych staje się również niedostępna po około 10 minutach lub mniej w taki sam sposób, jak w przypadku aprowizacji baz danych obliczeniowych.
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Dołączanie do warstwy obliczeniowej bezserwerowej
 

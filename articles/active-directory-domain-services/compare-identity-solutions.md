@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/22/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: d2495605cccf658b15e812fd85fd65671e84d15b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 62826b209b37e5abe5d33455809ba1b894ddb85f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76544280"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476449"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Porównanie samodzielnie zarządzanych Usług domenowych Active Directory, usługi Azure Active Directory i zarządzanych Usług domenowych Usługi domenowe Usługi active directory platformy Azure
 
@@ -102,9 +102,9 @@ W przypadku urządzeń przyłączonych do usług Azure AD DS aplikacje mogą uż
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | Urządzenie sterowane przez            | Azure AD                                            | Domena zarządzana usługą Azure AD DS                                                |
 | Reprezentacja w katalogu | Obiekty urządzenia w katalogu usługi Azure AD            | Obiekty komputera w domenie zarządzanej usług Azure AD DS                        |
-| Uwierzytelnianie                  | Protokoły oparte na OAuth / OpenID Connect              | Protokoły Kerberos i NTLM                                               |
+| Authentication                  | Protokoły oparte na OAuth / OpenID Connect              | Protokoły Kerberos i NTLM                                               |
 | Zarządzanie                      | Oprogramowanie do zarządzania urządzeniami przenośnymi (MDM), takie jak usługa Intune | Zasady grupy                                                              |
-| Obsługa sieci                      | Działa przez Internet                             | Musi być połączony z siecią wirtualną lub z nią równorzędny, w którym wdrożona jest domena zarządzana |
+| Networking                      | Działa przez Internet                             | Musi być połączony z siecią wirtualną lub z nią równorzędny, w którym wdrożona jest domena zarządzana |
 | Świetne dla...                    | Urządzenia mobilne lub stacjonarne użytkownika końcowego                  | Maszyny wirtualne serwera wdrożone na platformie Azure                                              |
 
 ## <a name="next-steps"></a>Następne kroki

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 9909c46015fffb3bea3eef094599312e28b935c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96f3825288846e86771ef3907eb4da4e58630df3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77046194"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475178"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrowanie bramy aplikacji platformy Azure i zapory aplikacji sieci Web z wersji 1 do wersji 2
 
@@ -40,6 +40,7 @@ Dostępny jest skrypt programu Azure PowerShell, który wykonuje następujące c
 * Jeśli dla bramy V1 jest włączony tryb FIPS, nie zostanie ona zmigrowana do nowej bramy w wersji 2. Tryb FIPS nie jest obsługiwany w wersji 2.
 * Wersja 2 nie obsługuje IPv6, więc bramy v1 z włączoną funkcją IPv6 nie są migrowane. Jeśli skrypt zostanie uruchomiony, może on nie zostać ukończony.
 * Jeśli brama w wersji 1 ma tylko prywatny adres IP, skrypt tworzy publiczny adres IP i prywatny adres IP dla nowej bramy w wersji 2. Bramy w wersji 2 obecnie nie obsługują tylko prywatnych adresów IP.
+* Nagłówki z nazwami zawierającymi inne niż litery, cyfry, łączniki i podkreślenia nie są przekazywane do aplikacji. Dotyczy to tylko nazw nagłówków, a nie wartości nagłówka. Jest to przełomowa zmiana z v1.
 
 ## <a name="download-the-script"></a>Pobierz skrypt
 

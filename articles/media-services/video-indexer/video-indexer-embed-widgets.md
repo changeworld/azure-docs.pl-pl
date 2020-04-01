@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: e475c1bc1878c6b5a0efbbe41f2a3a0fe86bcff2
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
-ms.translationtype: HT
+ms.openlocfilehash: 6ed5c509cf310b743e4ef52f411dfa34e5db09c1
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389379"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411624"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Osadzanie widżetów indeksatora wideo w aplikacjach
 
@@ -66,16 +66,12 @@ Za pomocą widżetu Edytor można tworzyć nowe projekty i zarządzać statystyk
 
 1. Zaloguj się w witrynie [indeksatora wideo.](https://www.videoindexer.ai/)
 2. Wybierz film, z którego chcesz pracować.
-3. Wybierz przycisk **Osadź,** który pojawi się pod filmem.
-
-    ![Przycisk Osadzaj w indeksatorze wideo](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
+3. Wybierz przycisk osadzania**</>**( ) wyświetlany pod filmem.
 
     Po wybraniu przycisku **Osadzanie** możesz wybrać widżet, który chcesz osadzić w aplikacji.
 4. Wybierz odpowiedni typ widżetu **(Cognitive Insights,** **Player**lub **Editor**).
- 
-5. Skopiuj kod osadzania, a następnie dodaj go do aplikacji.
-
-    ![Kod osadzania dla aplikacji — indeksator wideo](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
+5. Skopiuj kod osadzania (pojawia się w **oknie kopiowania osadzonego kodu** w oknie dialogowym **Udostępnianie & Osadzanie).**
+6. Dodaj kod do aplikacji.
 
 > [!NOTE]
 > Jeśli masz problemy z udostępnianiem adresów URL wideo, dodaj ten `location` parametr do łącza. Parametr powinien być ustawiony na [regiony platformy Azure, w których istnieje indeksator wideo.](regions.md) Na przykład: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
@@ -239,7 +235,7 @@ Jeśli na przykład chcesz osadzić widżet zawierający tylko statystyki osób 
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-Tytuł okna elementu iframe można również dostosować, podając `&title=<YourTitle>` adres URL elementu iframe. (Dostosowuje wartość HTML). <title>
+Tytuł okna elementu iframe można również dostosować, podając `&title=<YourTitle>` adres URL elementu iframe. (Dostosowuje wartość HTML). `<title>`
    
 Jeśli na przykład chcesz nadać okno iframe tytuł "MyInsights", adres URL będzie wyglądał następująco:
 
@@ -257,7 +253,7 @@ Przykład:
 
 Domyślnie odtwarzacz indeksatora wideo ma automatycznie generowane napisy, które są oparte na transkrypcji wideo. Transkrypcja jest wyodrębniona z filmu z językiem źródłowym wybranym podczas przesyłania filmu.
 
-Jeśli chcesz osadzić w innym języku, możesz dodać &captions=< Language Code > do adresu URL osadzania gracza. Jeśli chcesz, aby podpisy były wyświetlane domyślnie, możesz przekazać &showCaptions=true.
+Jeśli chcesz osadzić w innym języku, `&captions=<Language Code>` możesz dodać go do adresu URL osadzania gracza. Jeśli chcesz, aby podpisy były wyświetlane domyślnie, możesz przekazać &showCaptions=true.
 
 Adres URL osadzania będzie wyglądał następująco:
 

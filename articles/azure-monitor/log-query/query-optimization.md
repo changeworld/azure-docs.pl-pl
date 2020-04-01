@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/28/2019
-ms.openlocfilehash: c32731ce2de2b0f886a1e21ee8ccad3996e395eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2019
+ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480270"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411429"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optymalizuj zapytania dzienników w usłudze Azure Monitor
 Dzienniki usługi Azure Monitor używają [usługi Azure Data Explorer (ADX)](/azure/data-explorer/) do przechowywania danych dziennika i uruchamiania zapytań do analizowania tych danych. Tworzy, zarządza i utrzymuje klastry ADX dla Ciebie i optymalizuje je pod kątem obciążenia analizy dziennika. Po uruchomieniu kwerendy jest zoptymalizowana i kierowana do odpowiedniego klastra ADX, który przechowuje dane obszaru roboczego. Dzienniki usługi Azure Monitor i Eksplorator danych platformy Azure używają wielu mechanizmów automatycznej optymalizacji zapytań. Podczas automatycznej optymalizacji zapewniają znaczny wzrost, są one w niektórych przypadkach, gdzie można znacznie zwiększyć wydajność kwerendy. W tym artykule wyjaśniono zagadnienia dotyczące wydajności i kilka technik, aby je naprawić.
@@ -57,7 +57,7 @@ Czas przetwarzania zapytań jest poświęcwana na:
 - Pobieranie danych — pobieranie starych danych zużywa więcej czasu niż pobieranie najnowszych danych.
 - Przetwarzanie danych – logika i ocena danych. 
 
-Poza czasem spędzonym w węzłach przetwarzania kwerend, istnieje dodatkowy czas, który jest spędzany przez dzienniki usługi Azure Monitor, aby: uwierzytelnić użytkownika i sprawdzić, czy mogą uzyskać dostęp do tych danych, zlokalizować magazyn danych, przeanalizować kwerendę i przydzielić przetwarzanie kwerendy Węzłów. Ten czas nie jest uwzględniony w zapytaniu całkowity czas procesora CPU.
+Inne niż czas spędzony w węzłach przetwarzania kwerendy, istnieje dodatkowy czas, który jest spędzany przez dzienniki usługi Azure Monitor do: uwierzytelnić użytkownika i sprawdzić, czy mogą uzyskać dostęp do tych danych, zlokalizować magazyn danych, przeanalizować kwerendę i przydzielić węzły przetwarzania kwerendy. Ten czas nie jest uwzględniony w zapytaniu całkowity czas procesora CPU.
 
 ### <a name="early-filtering-of-records-prior-of-using-high-cpu-functions"></a>Wczesne filtrowanie rekordów przed użyciem wysokich funkcji procesora
 
@@ -155,6 +155,21 @@ Heartbeat
 
 > [!NOTE]
 > Wskaźnik ten przedstawia tylko procesora CPU z bezpośredniego klastra. W kwerendzie wieloregionowej będzie reprezentować tylko jeden z regionów. W kwerendzie wieloprzestrzeniowej może nie zawierać wszystkich obszarów roboczych.
+
+### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>Unikaj pełnej analizy XML i JSON podczas analizowania ciągów
+Pełna analizowanie obiektu XML lub JSON może zużywać wysokie zasoby procesora CPU i pamięci. W wielu przypadkach, gdy potrzebny jest tylko jeden lub dwa parametry, a obiekty XML lub JSON są proste, łatwiej jest je przeanalizować jako ciągi za pomocą [operatora analizy lub](/azure/kusto/query/parseoperator) innych technik [analizowania tekstu.](/azure/azure-monitor/log-query/parse-text) Zwiększenie wydajności będzie bardziej znaczące w miarę zwiększania liczby rekordów w obiekcie XML lub JSON. Jest to niezbędne, gdy liczba rekordów sięga dziesiątek milionów.
+
+Na przykład następująca kwerenda zwróci dokładnie takie same wyniki jak powyższe kwerendy bez wykonywania pełnej analizy XML. Należy zauważyć, że sprawia, że niektóre założenia na strukturę plików XML, takich jak ten FilePath element pochodzi po FileHash i żaden z nich ma atrybuty. 
+
+```Kusto
+//even more efficient
+SecurityEvent
+| where EventID == 8002 //Only this event have FileHash
+| where EventData !has "%SYSTEM32" //Early removal of unwanted records
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" *
+| summarize count() by FileHash, FilePath
+| where FileHash != "" // No need to filter out %SYSTEM32 here as it was removed before
+```
 
 
 ## <a name="data-used-for-processed-query"></a>Dane używane do przetworzonej kwerendy

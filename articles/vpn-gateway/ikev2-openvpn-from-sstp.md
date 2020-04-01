@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 03/30/2020
 ms.author: alzam
-ms.openlocfilehash: 60c3a7f4f12993f475b3d03fd0915971d7673a5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5500d993a4bf3c664f14182d983f9abed8ebb08a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80143107"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398363"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Przejście do protokołu OpenVPN lub IKEv2 z protokołu SSTP
 
@@ -33,7 +33,7 @@ Sieć VPN typu punkt-lokacja może używać jednego z następujących protokoł�
 >IKEv2 i OpenVPN dla P2S są dostępne tylko dla modelu wdrażania Menedżera zasobów. Nie są one dostępne dla klasycznego modelu wdrażania. Podstawowa jednostka SKU bramy nie obsługuje protokołów IKEv2 lub OpenVPN. Jeśli używasz podstawowej jednostki SKU, trzeba będzie usunąć i ponownie utworzyć produkcyjną bramę sieci wirtualnej SKU.
 >
 
-## <a name="migrating-from-sspt-to-ikev2-or-openvpn"></a>Migracja z SSPT do IKEv2 lub OpenVPN
+## <a name="migrating-from-sstp-to-ikev2-or-openvpn"></a>Migracja z protokołu SSTP do protokołu IKEv2 lub OpenVPN
 
 Mogą wystąpić przypadki, gdy chcesz obsługiwać więcej niż 128 równoczesnych połączeń P2S z bramą sieci VPN, ale używasz protokołu SSTP. W takim przypadku należy przejść do protokołu IKEv2 lub OpenVPN.
 

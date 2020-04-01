@@ -1,21 +1,21 @@
 ---
-title: 'Samouczek: jak przekazać obraz — wyszukiwanie wizualne Bing'
+title: 'Samouczek: Jak przekazać obraz za pomocą interfejsu API wyszukiwania wizualnego Bing'
 titleSuffix: Azure Cognitive Services
-description: W samouczku szczegółowo omówiono poszczególne etapy procesu przekazywania obrazu do usługi Bing oraz analizowania i wyświetlania odpowiedzi.
+description: Dowiedz się, jak przesłać obraz do usługi Bing, uzyskać szczegółowe informacje na jego temat, wyświetlić odpowiedź.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 11/29/2019
+ms.date: 03/31/2020
 ms.author: scottwhi
-ms.openlocfilehash: 84a8219221525400a9d3241c2f183d24344c2f6a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ecd1ab5e613bb326b65f6aa50f3f85172bc334ac
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74689182"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477938"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Samouczek: Przekazywanie obrazów do interfejsu API wyszukiwania wizualnego usługi Bing
 

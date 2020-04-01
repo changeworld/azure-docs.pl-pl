@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: wyszukiwanie obrazów REST API i Node.js - Bing Image Search'
+title: 'Szybki start: wyszukiwanie obrazów za pomocą interfejsu API REST wyszukiwania obrazów Bing i pliku Node.js'
 titleSuffix: Azure Cognitive Services
-description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania wyszukiwania obrazów do interfejsu API wyszukiwania obrazów Bing przy użyciu języka JavaScript i otrzymywać odpowiedzi w formacie JSON.
+description: Ten szybki start służy do wysyłania żądań wyszukiwania obrazów do interfejsu API REST wyszukiwania obrazów Bing przy użyciu języka JavaScript i odbierania odpowiedzi JSON.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2aaed57c7e1d817cd892f45c441ab59d4ffba3d3
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 15757d606a846a2951bc5c15d8d5ef0dbfd7a2a1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930760"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478597"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Szybki start: wyszukiwanie obrazów za pomocą interfejsu API REST wyszukiwania obrazów Bing i pliku Node.js
 

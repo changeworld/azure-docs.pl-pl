@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: e7b8f8a33b741a8dcf2d1a68ae3cf86d6e3687eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2674ca0f4808cb6f01781565e57369ca5d3ac37
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284605"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478789"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Odczytywanie komunikatów przesyłanych z urządzeń do chmury z wbudowanego punktu końcowego
 
@@ -24,7 +24,7 @@ Domyślnie wiadomości są kierowane do wbudowanego punktu końcowego skierowane
 | **Liczba partycji** | Ustaw tę właściwość w tworzeniu, aby zdefiniować liczbę [partycji](../event-hubs/event-hubs-features.md#partitions) dla pozyskiwania zdarzeń urządzenia do chmury. |
 | **Czas przechowywania**  | Ta właściwość określa, jak długo w dniach wiadomości są zachowywane przez Centrum IoT. Wartość domyślna to jeden dzień, ale można ją zwiększyć do siedmiu dni. |
 
-Usługa IoT Hub umożliwia przechowywanie danych we wbudowanych centrach zdarzeń przez maksymalnie 7 dni. Można ustawić czas przechowywania podczas tworzenia centrum IoT Hub. Czas przechowywania danych w centrum IoT Hub zależy od warstwy i typu jednostki centrum IoT. Pod względem rozmiaru wbudowane centra zdarzeń mogą przechowywać wiadomości o maksymalnym rozmiarze wiadomości do co najmniej 24 godzin przydziału. Na przykład dla 1 jednostki S1 IoT Hub zapewnia wystarczającą ilość miejsca do przechowywania co najmniej 400K wiadomości o rozmiarze 4k każdy. Jeśli urządzenia wysyłają mniejsze wiadomości, mogą być przechowywane przez dłuższy czas (do 7 dni) w zależności od ilości zużywanego miejsca. Gwarantujemy zachowanie danych przez określony czas przechowywania jako minimum.
+Usługa IoT Hub umożliwia przechowywanie danych we wbudowanych centrach zdarzeń przez maksymalnie 7 dni. Można ustawić czas przechowywania podczas tworzenia centrum IoT Hub. Czas przechowywania danych w centrum IoT Hub zależy od warstwy i typu jednostki centrum IoT. Pod względem rozmiaru wbudowane centra zdarzeń mogą przechowywać wiadomości o maksymalnym rozmiarze wiadomości do co najmniej 24 godzin przydziału. Na przykład dla 1 jednostki S1 IoT Hub zapewnia wystarczającą ilość miejsca do przechowywania co najmniej 400K wiadomości o rozmiarze 4k każdy. Jeśli urządzenia wysyłają mniejsze wiadomości, mogą być przechowywane przez dłuższy czas (do 7 dni) w zależności od ilości zużywanego miejsca. Gwarantujemy zachowanie danych przez określony czas przechowywania jako minimum. Wiadomości wygasną i nie będą dostępne po upływie czasu przechowywania. 
 
 Usługa IoT Hub umożliwia również zarządzanie grupami odbiorców we wbudowanym punkcie końcowym odbierania od urządzenia do chmury. Dla każdego centrum IoT Hub może być maksymalnie 20 grup odbiorców.
 
@@ -62,9 +62,9 @@ Pakiety SDK, których można użyć do nawiązania połączenia z wbudowanym pun
 
 | Język | SDK | Przykład | Uwagi |
 | -------- | --- | ------ | ----- |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Quickstart](quickstart-send-telemetry-dotnet.md) | Używa informacji zgodnych z centrum zdarzeń |
- Java | https://github.com/Azure/azure-event-hubs-java | [Quickstart](quickstart-send-telemetry-java.md) | Używa informacji zgodnych z centrum zdarzeń |
-| Node.js | https://github.com/Azure/azure-event-hubs-node | [Quickstart](quickstart-send-telemetry-node.md) | Używa ciągu połączenia Usługi IoT Hub |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Szybki start](quickstart-send-telemetry-dotnet.md) | Używa informacji zgodnych z centrum zdarzeń |
+ Java | https://github.com/Azure/azure-event-hubs-java | [Szybki start](quickstart-send-telemetry-java.md) | Używa informacji zgodnych z centrum zdarzeń |
+| Node.js | https://github.com/Azure/azure-event-hubs-node | [Szybki start](quickstart-send-telemetry-node.md) | Używa ciągu połączenia Usługi IoT Hub |
 | Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | Używa ciągu połączenia Usługi IoT Hub |
 
 Integracje produktów, których można używać z wbudowanym punktem końcowym zgodnym z centrum zdarzeń, który udostępnia centrum IoT Hub:

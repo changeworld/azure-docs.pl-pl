@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54e44a12f593d2074eefe5b2ff890863db3199f7
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257747"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478956"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Rozwiązywanie problemów z błędami podczas awarii maszyny wirtualnej VMware lub komputera fizycznego na platformie Azure
 
@@ -128,7 +128,7 @@ Zwykle nie jest to powodem do niepokoju i zwykle mogą być ignorowane dla niepl
 
 Ten problem jest wskazany, gdy nie można wyświetlić magazynu danych na platformie Azure portalu podczas próby ponownego przeceniania maszyny wirtualnej, która doświadczyła pracy awaryjnej. Dzieje się tak, ponieważ główny obiekt docelowy nie jest rozpoznawany jako maszyna wirtualna w obszarze vCenters dodany do usługi Azure Site Recovery.
 
-Aby uzyskać więcej informacji na temat ponownego przekazywania komputera witrażowego, zobacz [Ponowne przekazywanie i przywracanie komputerów w sieciowej do lokacji lokalnej po przeczesaniu pracy awaryjnej na platformie Azure.](vmware-azure-reprotect.md)
+Aby uzyskać więcej informacji na temat ponownego przeczesywania maszyny wirtualnej, zobacz [Ponowne przekazywanie i przywracanie komputerów awaryjnych do lokacji lokalnej po przeczesaniu pracy awaryjnej na platformie Azure.](vmware-azure-reprotect.md)
 
 Aby rozwiązać ten problem:
 
@@ -138,7 +138,7 @@ Ręcznie utwórz główny cel w centrum vCenter, który zarządza komputerem źr
 > 
 > Operacje odnajdywania i odświeżania sieci szkieletowej mogą potrwać do 30 minut. 
 
-## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Rejestracja docelowych wzorca linuksa z CS kończy się niepowodzeniem z błędem SSL 35 
+## <a name="linux-master-target-registration-with-cs-fails-with-a-tls-error-35"></a>Rejestracja docelowych wzorca linuksa z CS kończy się niepowodzeniem z błędem TLS 35 
 
 Rejestracja obiektu docelowego wzorca usługi Azure Site Recovery master z serwerem konfiguracji kończy się niepowodzeniem z powodu włączenia uwierzytelnionego serwera proxy w głównym obiekcie docelowym. 
  

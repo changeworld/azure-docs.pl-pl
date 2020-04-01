@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z umiejętności Base | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Base umiejętności.
+title: 'Samouczek: Integracja usługi Azure Active Directory z bazą umiejętności | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a bazą umiejętności.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,45 +16,45 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a088675bc1610daf275bac77ae222f0e664afd67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090557"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Samouczek: Integracja usługi Azure Active Directory z Base umiejętności
+# <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Samouczek: Integracja usługi Azure Active Directory z bazą umiejętności
 
-W tym samouczku dowiesz się, jak zintegrować Base umiejętności za pomocą usługi Azure Active Directory (Azure AD).
-Integrowanie umiejętności podstawowej z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować bazę umiejętności z usługą Azure Active Directory (Azure AD).
+Integracja bazy umiejętności z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do podstawowej umiejętności.
-* Użytkownikom można automatycznie zalogowany do podstawy umiejętności (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Można kontrolować w usłudze Azure AD, który ma dostęp do bazy umiejętności.
+* Można włączyć użytkowników, aby automatycznie zalogować się do bazy umiejętności (logowanie jednokrotne) za pomocą swoich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do konfigurowania integracji z usługą Azure AD z Base umiejętności, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z bazą umiejętności, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Umiejętności podstawowych logowanie jednokrotne włączone subskrypcji
+* Subskrypcja z obsługą logowania jednokrotnego skills base
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje Base umiejętności **SP** jednokrotne logowanie inicjowane przez
-* Obsługuje Base umiejętności **Just In Time** aprowizacji użytkowników
+* Baza umiejętności obsługuje zainicjowane przez **SP** SSO
+* Baza umiejętności obsługuje **inicjowanie** obsługi administracyjnej użytkowników just in time
 
-## <a name="adding-skills-base-from-the-gallery"></a>Dodawanie podstawowej umiejętności za pomocą galerii
+## <a name="adding-skills-base-from-the-gallery"></a>Dodawanie bazy umiejętności z galerii
 
-Aby skonfigurować integrację podstawy umiejętności w usłudze Azure AD, należy dodać Base umiejętności z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację bazy umiejętności z usługą Azure AD, należy dodać bazę umiejętności z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać podstawowy umiejętności z galerii, wykonaj następujące czynności:**
+**Aby dodać bazę umiejętności z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -62,37 +62,37 @@ Aby skonfigurować integrację podstawy umiejętności w usłudze Azure AD, nale
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Base umiejętności**, wybierz opcję **Base umiejętności** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **skills base**, wybierz **bazę umiejętności** z panelu wyników, a następnie kliknij przycisk **Dodaj,** aby dodać aplikację.
 
-     ![Podstawa umiejętności na liście wyników](common/search-new-app.png)
+     ![Baza umiejętności na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Base umiejętności oparte na użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w podstawowym umiejętności musi zostać ustanowione.
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego z skills base na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w bazie umiejętności.
 
-Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu podstawowej umiejętności, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą bazy umiejętności, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie umiejętności Base logowania jednokrotnego](#configure-skills-base-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Base umiejętności](#create-skills-base-test-user)**  — aby odpowiednikiem Britta Simon w podstawowym umiejętności, połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie jednokrotne oparte na bazie umiejętności](#configure-skills-base-single-sign-on)** — umożliwia skonfigurowanie ustawień logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testu bazy umiejętności](#create-skills-base-test-user)** — aby mieć odpowiednik Britta Simon w bazie umiejętności, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z Base umiejętności, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą bazy umiejętności, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Base umiejętności** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie integracji aplikacji **bazy umiejętności** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -104,18 +104,18 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Base umiejętności
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Domena podstawowa umiejętności i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-signonurl.png)
+    ![Informacje o domenie bazy umiejętności i adresach URL z logami jednokrotnymi](common/sp-signonurl.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://app.skills-base.com/o/<customer-unique-key>`
 
     > [!NOTE]
-    > Adres URL logowania można uzyskać z poziomu aplikacji Base umiejętności. . Zaloguj się jako Administrator i przejść do administratora -> Ustawienia -> wystąpienie szczegółów -> skrótu. Skopiuj adres URL logowania jednokrotnego, a następnie wklej je powyżej pola tekstowego.
+    > Adres URL logowania można uzyskać z aplikacji Skills Base. Zaloguj się jako administrator i przejdź do szczegółów wystąpienia ustawień > administratora > -> shortcut. Skopiuj adres URL logowania i wklej go w powyższym polach tekstowych.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-6. Na **Skonfiguruj podstawowy umiejętności** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie bazy umiejętności** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -123,30 +123,30 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Base umiejętności
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-skills-base-single-sign-on"></a>Konfigurowanie umiejętności podstawowego logowania jednokrotnego
+### <a name="configure-skills-base-single-sign-on"></a>Konfigurowanie logowania jednokrotnego bazy umiejętności
 
-1. W oknie przeglądarki internetowej innej, zaloguj się do podstawowej umiejętności jako Administrator zabezpieczeń.
+1. W innym oknie przeglądarki internetowej zaloguj się do bazy umiejętności jako administrator zabezpieczeń.
 
-2. Z menu po lewej stronie w obszarze **administratora** kliknij **uwierzytelniania**.
+2. Po lewej stronie menu w obszarze **ADMIN** kliknij pozycję **Uwierzytelnianie**.
 
     ![Administrator](./media/skillsbase-tutorial/tutorial_skillsbase_auth.png)
 
-3. Na **uwierzytelniania** strony, wybierz opcję jednokrotne logowanie jako **SAML 2**.
+3. Na stronie **uwierzytelniania** wybierz pozycję Logowanie jednokrotne jako **SAML 2**.
 
     ![Logowanie jednokrotne](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
-4. Na **uwierzytelniania** strony, wykonaj następujące czynności:
+4. Na stronie **uwierzytelniania** wykonaj następujące czynności:
 
     ![Logowanie jednokrotne](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
-    a. Kliknij pozycję **metadanych aktualizacji tożsamości** znajdujący się obok **stan** opcji, a następnie wklej zawartość XML metadanych, który został pobrany z witryny Azure portal w określonym polu tekstowym.
+    a. Kliknij przycisk **Aktualizuj metadane IdP** obok opcji **Stan** i wklej zawartość protokołu XML metadanych pobranych z witryny Azure portal w określonym polu tekstowym.
 
     > [!Note]
-    > Możesz również walidować metadanych tożsamości za pośrednictwem **modułu sprawdzania poprawności metadanych** narzędzie jako wyróżniane na powyższym zrzucie ekranu.
+    > Można również sprawdzić poprawność metadanych idp za pomocą narzędzia **sprawdzania poprawności metadanych,** jak pokazano na zrzucie ekranu powyżej.
 
-    b. Kliknij pozycję **Zapisz**.
+    b. Kliknij przycisk **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -156,7 +156,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
@@ -171,19 +171,19 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do podstawowej umiejętności.
+W tej sekcji można włączyć Britta Simon do korzystania z logowania jednokrotnego platformy Azure, przyznając dostęp do bazy umiejętności.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Base umiejętności**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz **pozycję Wszystkie aplikacje**, a następnie wybierz pozycję **Baza umiejętności**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Base umiejętności**.
+2. Na liście aplikacji wybierz pozycję **Baza umiejętności**.
 
-    ![Link Base umiejętności, na liście aplikacji](common/all-applications.png)
+    ![Łącze Baza umiejętności na liście Aplikacje](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -195,27 +195,27 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, a następnie w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-skills-base-test-user"></a>Tworzenie użytkownika testowego Base umiejętności
+### <a name="create-skills-base-test-user"></a>Utwórz użytkownika testu bazy umiejętności
 
-W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w podstawowym umiejętności. Podstawowy umiejętności obsługuje Inicjowanie obsługi użytkowników just-in-time, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w podstawowym umiejętności, nowy katalog jest tworzony po uwierzytelnieniu.
+W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w bazie umiejętności. Baza umiejętności obsługuje just-in-time inicjowania obsługi administracyjnej użytkowników, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w bazie umiejętności, nowy jest tworzony po uwierzytelnieniu.
 
 > [!Note]
-> Jeśli potrzebujesz ręcznie utworzyć użytkownika, postępuj zgodnie z instrukcjami [tutaj](http://wiki.skills-base.net/index.php?title=Adding_people_and_enabling_them_to_log_in).
+> Jeśli chcesz ręcznie utworzyć użytkownika, postępuj zgodnie z instrukcjami [tutaj](http://wiki.skills-base.net/index.php?title=Adding_people_and_enabling_them_to_log_in).
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Base umiejętności w panelu dostępu, powinny być automatycznie zarejestrowaniu w usłudze podstawowej umiejętności, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Bazy umiejętności w Panelu dostępu należy automatycznie zalogować się do bazy umiejętności, dla której skonfigurowano logującą się logującą logującą logującą. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

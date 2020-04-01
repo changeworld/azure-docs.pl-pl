@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dfb6d72b3f8f61e1350101173ecec6134a614edf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4838597c50898748eb4b33e81ff22eaeea37b30
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687151"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476895"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrate your ILB App Service Environment with the Azure Application Gateway (Integrowanie środowiska App Service Environment wewnętrznego modułu równoważenia obciążenia z usługą Azure Application Gateway) #
 
@@ -20,7 +20,7 @@ ms.locfileid: "74687151"
 
 Zapory aplikacji sieci Web pomagają zabezpieczyć aplikacje internetowe, sprawdzając przychodzący ruch internetowy w celu blokowania iniekcji SQL, skryptów międzyustnych, przekazywania złośliwego oprogramowania & aplikacji DDoS i innych ataków. Sprawdza również odpowiedzi z serwerów sieci web zaplecza dla zapobiegania utracie danych (DLP). Możesz uzyskać urządzenie WAF z portalu Azure marketplace lub użyć [bramy aplikacji azure.][appgw]
 
-Brama aplikacji platformy Azure to urządzenie wirtualne, które zapewnia równoważenie obciążenia warstwy 7, odciążanie SSL i ochronę zapory aplikacji sieci web (WAF). Można nasłuchiwać na publiczny adres IP i kierowania ruchu do punktu końcowego aplikacji. W poniższych informacjach opisano sposób integracji bramy aplikacji skonfigurowanej przez waf z aplikacją w środowisku usługi aplikacji równoważenia obciążenia.  
+Brama aplikacji platformy Azure to urządzenie wirtualne, które zapewnia równoważenie obciążenia warstwy 7, odciążanie TLS/SSL i ochronę zapory aplikacji sieci web (WAF). Można nasłuchiwać na publiczny adres IP i kierowania ruchu do punktu końcowego aplikacji. W poniższych informacjach opisano sposób integracji bramy aplikacji skonfigurowanej przez waf z aplikacją w środowisku usługi aplikacji równoważenia obciążenia.  
 
 Integracja bramy aplikacji ze środowiskiem usługi aplikacji równoważenia obciążenia sieciowego jest na poziomie aplikacji. Podczas konfigurowania bramy aplikacji ze środowiskiem usługi aplikacji równoważenia obciążenia, robisz to dla określonych aplikacji w środowisku usługi aplikacji równoważenia obciążenia. Ta technika umożliwia hosting bezpiecznych aplikacji wielodostępnych w jednym środowisku usługi aplikacji równoważenia obciążenia.  
 

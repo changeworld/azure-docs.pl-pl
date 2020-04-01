@@ -4,16 +4,16 @@ description: Dowiedz się, jak dodać jednostkę usługi automatyzacji do roli a
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1370f65405963ebf825e986e6801607a0d96156e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 925fbbb51ac240b96486a2c0aa09c850a8d164bc
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78298092"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408643"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Dodawanie jednostki usługi do roli administratora serwera 
 
@@ -39,7 +39,7 @@ Administratorzy serwerów można skonfigurować przy użyciu programu SQL Server
     
     ![Wyszukiwanie konta głównego dostawcy usługi](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
-## <a name="using-a-resource-manager-template"></a>Używanie szablonu Menedżera zasobów
+## <a name="using-a-resource-manager-template"></a>Używanie szablonu usługi Resource Manager
 
 Administratorzy serwera można również skonfigurować, wdrażając serwer usług Analysis Services przy użyciu szablonu usługi Azure Resource Manager. Tożsamość uruchomionego wdrożenia musi należeć do roli **współautora** zasobu w [kontroli dostępu opartej na rolach platformy Azure (RBAC).](../role-based-access-control/overview.md)
 

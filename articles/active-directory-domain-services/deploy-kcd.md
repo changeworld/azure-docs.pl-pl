@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 216fdeca9893f4e290474512617f13382d22890f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d7c9319097d81f4db2e2c5ecfc692269d27a4db
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614017"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476101"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Konfigurowanie delegowania z ograniczeniami protokołu Kerberos (KCD) w usługach domenowych usługi active directory platformy Azure
 

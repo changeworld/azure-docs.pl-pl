@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 752334e3d594b1f95786aecaca134b74c4e264d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688690"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477798"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Jak utworzyć środowisko usługi app service w wersji 1 
 
@@ -45,7 +45,7 @@ Aby utworzyć środowisko usługi app service w wersji 1, możesz przeszukać ś
 3. Wybierz lub określ nową grupę zasobów. Grupa zasobów używana dla ase musi być taka sama, która jest używana dla sieci wirtualnej. Jeśli wybierzesz istniejącą sieci wirtualną, wybór grupy zasobów dla ase zostanie zaktualizowany w celu odzwierciedlenia sieci wirtualnej.
    
     ![][2]
-4. Dokonaj wyboru sieci wirtualnej i lokalizacji. Można utworzyć nową sieć wirtualną lub wybrać istniejącą sieć wirtualną. Jeśli wybierzesz nową wirtualną sieci, możesz określić nazwę i lokalizację. Nowa sieci wirtualnej będzie miała zakres adresów 192.168.250.0/23 i podsieć o nazwie **default,** która jest zdefiniowana jako 192.168.250.0/24. Można również po prostu wybrać istniejącą sieci wirtualną Klasycznego lub Menedżera zasobów. Wybór typu VIP określa, czy ase można uzyskać bezpośrednio z Internetu (zewnętrzne) lub jeśli używa wewnętrznego modułu równoważenia obciążenia (ILB). Aby dowiedzieć się więcej o nich, przeczytaj [artykuł Korzystanie z wewnętrznego modułu równoważenia obciążenia ze środowiskiem usługi aplikacji][ILBASE]. Jeśli wybierzesz typ VIP zewnętrzny, możesz wybrać liczbę zewnętrznych adresów IP, z których system jest tworzony na potrzeby IPSSL. Jeśli wybierzesz wewnętrzny, musisz określić poddomenę, której będzie używać program ASE. Ases można wdrożyć w sieciach wirtualnych, które używają zakresów adresów *publicznych* *lub* przestrzeni adresowych RFC1918 (tj. adresów prywatnych). Aby korzystać z sieci wirtualnej z zakresem adresów publicznych, należy utworzyć sieć wirtualną z wyprzedzeniem. Po wybraniu istniejącej sieci wirtualnej należy utworzyć nową podsieć podczas tworzenia ase. **Nie można użyć wstępnie utworzonej podsieci w portalu. Program ASE z istniejącą wcześniej podsiecią można utworzyć, jeśli program ASE zostanie utworzony przy użyciu szablonu Menedżera zasobów.** Aby utworzyć środowisko ASE z szablonu, użyj tych informacji w tym miejscu, [Tworzenie środowiska usługi app service z szablonu][ILBAseTemplate] i tutaj Tworzenie środowiska usługi aplikacji [równoważenia obciążenia][ASEfromTemplate]przy użyciu szablonu .
+4. Dokonaj wyboru sieci wirtualnej i lokalizacji. Można utworzyć nową sieć wirtualną lub wybrać istniejącą sieć wirtualną. Jeśli wybierzesz nową wirtualną sieci, możesz określić nazwę i lokalizację. Nowa sieci wirtualnej będzie miała zakres adresów 192.168.250.0/23 i podsieć o nazwie **default,** która jest zdefiniowana jako 192.168.250.0/24. Można również po prostu wybrać istniejącą sieci wirtualną Klasycznego lub Menedżera zasobów. Wybór typu VIP określa, czy ase można uzyskać bezpośrednio z Internetu (zewnętrzne) lub jeśli używa wewnętrznego modułu równoważenia obciążenia (ILB). Aby dowiedzieć się więcej o nich, przeczytaj [artykuł Korzystanie z wewnętrznego modułu równoważenia obciążenia ze środowiskiem usługi aplikacji][ILBASE]. Jeśli wybierzesz typ VIP zewnętrzny, możesz wybrać liczbę zewnętrznych adresów IP tworzonych przez system do celów protokołu IP SSL. Jeśli wybierzesz wewnętrzny, musisz określić poddomenę, której będzie używać program ASE. Ases można wdrożyć w sieciach wirtualnych, które używają zakresów adresów *publicznych* *lub* przestrzeni adresowych RFC1918 (tj. adresów prywatnych). Aby korzystać z sieci wirtualnej z zakresem adresów publicznych, należy utworzyć sieć wirtualną z wyprzedzeniem. Po wybraniu istniejącej sieci wirtualnej należy utworzyć nową podsieć podczas tworzenia ase. **Nie można użyć wstępnie utworzonej podsieci w portalu. Program ASE z istniejącą wcześniej podsiecią można utworzyć, jeśli program ASE zostanie utworzony przy użyciu szablonu Menedżera zasobów.** Aby utworzyć środowisko ASE z szablonu, użyj tych informacji w tym miejscu, [Tworzenie środowiska usługi app service z szablonu][ILBAseTemplate] i tutaj Tworzenie środowiska usługi aplikacji [równoważenia obciążenia][ASEfromTemplate]przy użyciu szablonu .
 
 ### <a name="details"></a>Szczegóły
 Ase jest tworzony z 2 front ends i 2 Pracowników. Front ends działają jako punkty końcowe HTTP/HTTPS i wysyłają ruch do pracowników, które są rolami hostujymiszymi aplikacje. Można dostosować ilość po utworzeniu ase, a nawet skonfigurować reguły skalowania automatycznego dla tych pul zasobów. Aby uzyskać więcej informacji na temat ręcznego skalowania, zarządzania i monitorowania środowiska usługi app service, przejdź tutaj: [Jak skonfigurować środowisko usługi aplikacji][ASEConfig] 

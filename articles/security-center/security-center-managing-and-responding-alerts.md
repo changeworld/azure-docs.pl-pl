@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 6ea951b542d893b8fef3cdf19a964ce2ef8a034d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 8e44ce594375deeac47f037515d96c57d15c8359
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79415699"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398400"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Zarządzanie alertami zabezpieczeń i reagowanie na nie w usłudze Azure Security Center
 
@@ -73,5 +73,6 @@ Usługa Security Center automatycznie gromadzi, analizuje i integruje dane dzien
 
 W tym dokumencie przedstawiono sposób konfigurowania zasad zabezpieczeń w Centrum zabezpieczeń. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
+- [Moduł Microsoft Learn dotyczący używania funkcji alertów usługi Azure Security Center do obserwowaniu zagrożeń i reagowania na nie](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 * [Alerty zabezpieczeń w usłudze Azure Security Center](security-center-alerts-overview.md).
 * [Obsługa incydentów związanych z bezpieczeństwem](security-center-incident.md)

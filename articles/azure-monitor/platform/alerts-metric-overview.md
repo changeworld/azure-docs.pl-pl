@@ -4,12 +4,12 @@ description: Zapoznaj się z omówieniem tego, co możesz zrobić z alertami met
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: b6d8bc69a407838025c5e78e0a1c773ab457c409
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6860cad077b597df923274f8971f5652d4ba9e3
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480236"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397971"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Omówienie działania alertów metryk w usłudze Azure Monitor
 
@@ -51,7 +51,7 @@ Załóżmy, że utworzono prostą regułę alertu alertu metryki dynamiczne prog
 - Okresy wstecz: 4
 - Liczba naruszeń: 4
 
-Po utworzeniu reguły alertu algorytm uczenia maszynowego Progów dynamicznych uzyska dostępne dane historyczne, obliczy próg, który najlepiej pasuje do wzorca zachowania serii metryk i będzie stale uczyć się na podstawie nowych danych, aby dokładniejszego progu.
+Po utworzeniu reguły alertu algorytm uczenia maszynowego progów dynamicznych uzyska dostępne dane historyczne, obliczy próg, który najlepiej pasuje do wzorca zachowania serii metryk i będzie stale uczyć się na podstawie nowych danych, aby próg był dokładniejszy.
 
 Od momentu utworzenia reguły alertu monitor jest uruchamiany co 1 minut i analizuje wartości metryki w ciągu ostatnich 20 minut pogrupowanych w 5-minutowe okresy i sprawdza, czy średnia wartości okresu w każdym z 4 okresów przekracza oczekiwany próg. Jeśli warunek jest spełniony, czyli średni procent procesora CPU w ciągu ostatnich 20 minut (cztery 5 minut okresy) odbiega od oczekiwanego zachowania cztery razy, reguła alertu uruchamia aktywowane powiadomienie. Jeśli w grupie akcji skojarzonej z regułą alertu skonfigurowano akcję wiadomości e-mail lub haka sieci Web, otrzymasz aktywowane powiadomienie.
 
@@ -140,6 +140,10 @@ Zakres monitorowania można określić za pomocą jednej reguły alertu metryki 
 - wszystkie maszyny wirtualne (w jednym regionie platformy Azure) w jednej subskrypcji
 
 Tworzenie reguł alertów metryki, które monitorują wiele zasobów jest jak [tworzenie innych alertów metryki,](alerts-metric.md) który monitoruje pojedynczy zasób. Jedyną różnicą jest to, że można wybrać wszystkie zasoby, które chcesz monitorować. Reguły te można również tworzyć za pomocą [szablonów usługi Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). Otrzymasz indywidualne powiadomienia dla każdego monitorowatego zasobu.
+
+> [!NOTE]
+>
+> W regule alertu metryki, która monitoruje wiele zasobów, tylko jeden warunek jest dozwolony.
 
 ## <a name="typical-latency"></a>Typowe opóźnienie
 

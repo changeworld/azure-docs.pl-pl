@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 381aad5d0a56362d9966ed54b931a8478f2f6bf2
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500596"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410500"
 ---
 # <a name="about-point-to-site-vpn"></a>Informacje o sieci VPN typu punkt-lokacja
 
@@ -22,9 +22,9 @@ Połączenie bramy VPN Gateway typu punkt-lokacja pozwala utworzyć bezpieczne p
 
 Sieć VPN typu punkt-lokacja może używać jednego z następujących protokołów:
 
-* **OpenVPN® Protocol**, protokół VPN oparty na SSL/TLS. Rozwiązanie SSL VPN może przenikać przez zapory, ponieważ większość zapór otwiera port TCP 443 wychodzący, którego używa SSL. OpenVPN może być używany do łączenia się z Androidem, iOS (wersje 11.0 i nowszych), Windows, Linux i Mac (wersje OSX 10.13 i nowsze).
+* **OpenVPN® Protocol**, protokół VPN oparty na SSL/TLS. Rozwiązanie sieci VPN TLS może przenikać przez zapory, ponieważ większość zapór otwiera port TCP 443 wychodzący, którego używa TLS. OpenVPN może być używany do łączenia się z Androidem, iOS (wersje 11.0 i nowszych), Windows, Linux i Mac (wersje OSX 10.13 i nowsze).
 
-* Secure Socket Tunneling Protocol (SSTP), zastrzeżony protokół VPN oparty na SSL. Rozwiązanie SSL VPN może przenikać przez zapory, ponieważ większość zapór otwiera port TCP 443 wychodzący, którego używa SSL. Protokół SSTP jest obsługiwany tylko na urządzeniach z systemem Windows. Platforma Azure obsługuje wszystkie wersje systemu Windows z protokółem SSTP (Windows 7 lub nowszym).
+* Secure Socket Tunneling Protocol (SSTP), zastrzeżony protokół SIECI VPN oparty na technologii TLS. Rozwiązanie sieci VPN TLS może przenikać przez zapory, ponieważ większość zapór otwiera port TCP 443 wychodzący, którego używa TLS. Protokół SSTP jest obsługiwany tylko na urządzeniach z systemem Windows. Platforma Azure obsługuje wszystkie wersje systemu Windows z protokółem SSTP (Windows 7 lub nowszym).
 
 * Sieć VPN z protokołem IKEv2 to oparte na standardach rozwiązanie sieci VPN korzystające z protokołu IPsec. Sieci VPN z protokołem IKEv2 można używać do łączenia z urządzeniami Mac (z systemem OSX 10.11 lub nowszym).
 

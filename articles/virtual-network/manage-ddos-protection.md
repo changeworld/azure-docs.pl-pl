@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 786b21e7571ed173d2da90f587a5b76d8c92a13d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95a70a1d0c4367adb1dd276bff1b1eb20caafc59
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279730"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473380"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Zarządzanie standardem ochrony przed atakami DDoS azure przy użyciu portalu Azure
 
@@ -202,7 +202,7 @@ Dzienniki przepływu będą miały następujące pola:
 - Typ protokołu 
 - Działania podjęte podczas łagodzenia zmiany klimatu
 
-
+Analiza ataków będzie działać tylko wtedy, gdy standard ochrony przed atakami jest włączony w sieci wirtualnej publicznego adresu IP. 
 
 ## <a name="validate-ddos-detection"></a>Sprawdzanie poprawności wykrywania DDoS
 

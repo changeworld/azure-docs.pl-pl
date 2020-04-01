@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 963b86852a7df557ad7179e444e7c3a2692f57d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a14f4d548053fb7aaf6f450176fdc49bc7b119bf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531456"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421034"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Rozwiązywanie problemów z wydajnością działania kopiowania
 
@@ -88,7 +88,7 @@ Gdy wydajność działania kopiowania nie spełnia twoich oczekiwań, aby rozwi�
 
   - Sprawdź źródło kopii i wzór ujścia: 
 
-    - Jeśli wzorzec kopiowania obsługuje większe niż 4 jednostki integracji danych (DIU) — zapoznaj się z [tą sekcją](copy-activity-performance.md#data-integration-units) dotyczącą szczegółów, zazwyczaj możesz spróbować zwiększyć dius, aby uzyskać lepszą wydajność. 
+    - Jeśli wzorzec kopiowania obsługuje większe niż 4 jednostki integracji danych (DIU) — zapoznaj się z [tą sekcją](copy-activity-performance-features.md#data-integration-units) dotyczącą szczegółów, zazwyczaj możesz spróbować zwiększyć dius, aby uzyskać lepszą wydajność. 
 
     - W przeciwnym razie należy rozważyć podzielenie pojedynczego dużego zestawu danych na kilka mniejszych zestawów danych i pozwolić tym zadaniam kopiowania uruchamiać się jednocześnie, z których każda rozwiązuje część danych. Możesz to zrobić za pomocą funkcji Odnośnik/GetMetadata + ForEach + Copy. Należy zapoznać się [z poleceniem Kopiuj pliki z wielu kontenerów](solution-template-copy-files-multiple-containers.md), [Migruj dane z Amazon S3 do ADLS Gen2](solution-template-migration-s3-azure.md)lub [Kopiuj zbiorczo z](solution-template-bulk-copy-with-control-table.md) szablonami rozwiązań tabeli sterowania jako ogólny przykład.
 
@@ -102,7 +102,7 @@ Gdy wydajność działania kopiowania nie spełnia twoich oczekiwań, aby rozwi�
 
   - Sprawdź źródło kopii i wzór ujścia: 
 
-    - Jeśli wzorzec kopiowania obsługuje większe niż 4 jednostki integracji danych (DIU) — zapoznaj się z [tą sekcją](copy-activity-performance.md#data-integration-units) dotyczącą szczegółów, zazwyczaj możesz spróbować zwiększyć dius, aby uzyskać lepszą wydajność. 
+    - Jeśli wzorzec kopiowania obsługuje większe niż 4 jednostki integracji danych (DIU) — zapoznaj się z [tą sekcją](copy-activity-performance-features.md#data-integration-units) dotyczącą szczegółów, zazwyczaj możesz spróbować zwiększyć dius, aby uzyskać lepszą wydajność. 
 
     - W przeciwnym razie stopniowo dostrajaj [równoległe kopie,](copy-activity-performance-features.md)zwróć uwagę, że zbyt wiele kopii równoległych może nawet zaszkodzić wydajności.
 

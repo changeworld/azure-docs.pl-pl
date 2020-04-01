@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: c7c6cebf0a5c6371893dff52b2e8d7c064a40084
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e1d7cc4bb7762d3ebd29e349467f3e33c0887f9
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257941"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421222"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopiowanie danych z programu Teradata Vantage przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
@@ -202,7 +202,7 @@ Aby skopiować dane z teradata, w sekcji **źródła** działania kopiowania obs
 |:--- |:--- |:--- |
 | type | Właściwość typu źródła działania kopiowania `TeradataSource`musi być ustawiona na . | Tak |
 | query | Użyj niestandardowej kwerendy SQL, aby odczytać dane. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego, należy podłączyć wszelkie odpowiednie wbudowane parametry partycji w zapytaniu. Przykłady można znaleźć w sekcji [Kopia równoległa z teradaty.](#parallel-copy-from-teradata) | Nie (jeśli określono tabelę w zestawie danych) |
-| partitionOptions (opcje partycji) | Określa opcje partycjonowania danych używane do ładowania danych z teradata. <br>Wartości zezwalania to: **Brak** (domyślnie), **Hash** i **DynamicRange**.<br>Gdy opcja partycji jest włączona `None`(czyli nie), stopień równoległości równoczesnych ładowania danych z [`parallelCopies`](copy-activity-performance.md#parallel-copy) Teradata jest kontrolowany przez ustawienie działania kopiowania. | Nie |
+| partitionOptions (opcje partycji) | Określa opcje partycjonowania danych używane do ładowania danych z teradata. <br>Wartości zezwalania to: **Brak** (domyślnie), **Hash** i **DynamicRange**.<br>Gdy opcja partycji jest włączona `None`(czyli nie), stopień równoległości równoczesnych ładowania danych z [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) Teradata jest kontrolowany przez ustawienie działania kopiowania. | Nie |
 | podziałY | Określ grupę ustawień partycjonowania danych. <br>Zastosuj, gdy opcja `None`partycji nie jest . | Nie |
 | partitionColumnName | Określ nazwę kolumny źródłowej, która będzie używana przez partycję zakresu lub partycję hash dla kopiowania równoległego. Jeśli nie zostanie określony, podstawowy indeks tabeli jest wykrywany automatycznie i używany jako kolumna partycji. <br>Zastosuj, gdy opcja `Hash` `DynamicRange`partycji jest lub . Jeśli używasz kwerendy do pobierania danych `?AdfHashPartitionCondition` `?AdfRangePartitionColumnName` źródłowych, hak lub w klauzuli WHERE. Zobacz przykład [w kopiowanie równoległe z sekcji Teradata.](#parallel-copy-from-teradata) | Nie |
 | partitionUpperBound | Maksymalna wartość kolumny partycji do skopiowania danych. <br>Zastosuj, gdy `DynamicRange`opcja partycji jest . Jeśli używasz kwerendy do pobierania `?AdfRangePartitionUpbound` danych źródłowych, należy podłączyć w klauzuli WHERE. Na przykład zobacz [kopię równoległą z Teradata](#parallel-copy-from-teradata) sekcji. | Nie |
@@ -250,7 +250,7 @@ Aby skopiować dane z teradata, w sekcji **źródła** działania kopiowania obs
 
 ![Zrzut ekranu przedstawiający opcje partycji](./media/connector-teradata/connector-teradata-partition-options.png)
 
-Po włączeniu kopii podzielonej na partycje usługa Data Factory uruchamia równoległe kwerendy względem źródła Teradata w celu załadowania danych według partycji. Stopień równoległy jest [`parallelCopies`](copy-activity-performance.md#parallel-copy) kontrolowany przez ustawienie działania kopiowania. Na przykład jeśli `parallelCopies` ustawisz cztery, data factory jednocześnie generuje i uruchamia cztery kwerendy na podstawie określonej opcji partycji i ustawień, a każda kwerenda pobiera część danych z Teradata.
+Po włączeniu kopii podzielonej na partycje usługa Data Factory uruchamia równoległe kwerendy względem źródła Teradata w celu załadowania danych według partycji. Stopień równoległy jest [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kontrolowany przez ustawienie działania kopiowania. Na przykład jeśli `parallelCopies` ustawisz cztery, data factory jednocześnie generuje i uruchamia cztery kwerendy na podstawie określonej opcji partycji i ustawień, a każda kwerenda pobiera część danych z Teradata.
 
 Zaleca się włączenie kopiowania równoległego z partycjonowanie danych, zwłaszcza podczas ładowania dużej ilości danych z Teradata. Poniżej przedstawiono sugerowane konfiguracje dla różnych scenariuszy. Podczas kopiowania danych do magazynu danych opartych na plikach zaleca się zapisywanie w folderze jako wielu plików (określanie tylko nazwy folderu), w którym to przypadku wydajność jest lepsza niż zapisywanie do jednego pliku.
 

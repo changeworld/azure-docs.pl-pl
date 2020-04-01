@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249167"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408488"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co jest monitorowane przez usługę Azure Monitor?
 W tym artykule opisano różne aplikacje i usługi, które są monitorowane przez usługę Azure Monitor. 
@@ -70,7 +70,7 @@ W poniższej tabeli wymieniono usługi platformy Azure i dane, które zbierają 
 |Usługa zaświadczania | Nie | Nie | Nie |  |
 |Automatyzacja | Tak | Tak | Nie |  |
 |Usługa Azure Service Manager (RDFE) | Nie | Nie | Nie |  |
-|Tworzenie kopii zapasowych | Nie | Tak | Nie |  |
+|Backup | Nie | Tak | Nie |  |
 |Bastion | Nie | Nie | Nie |  |
 |Batch | Tak | Tak | Nie |  |
 |Usługa Batch — sztuczna inteligencja | Nie | Nie | Nie |  |
@@ -87,7 +87,7 @@ W poniższej tabeli wymieniono usługi platformy Azure i dane, które zbierają 
 |Cost Management | Nie | Nie | Nie |  |
 |Data Box | Nie | Nie | Nie |  |
 |Katalog danych Gen2 | Nie | Nie | Nie |  |
-|Eksplorator danych | Tak | Tak | Nie |  |
+|Data Explorer | Tak | Tak | Nie |  |
 |Fabryka danych | Tak | Tak | Nie |  |
 |Fabryka danych v2 | Nie | Tak | Nie |  |
 |Data Share | Nie | Nie | Nie |  |
@@ -104,7 +104,7 @@ W poniższej tabeli wymieniono usługi platformy Azure i dane, które zbierają 
 |Dynamics 365 Zaangażowanie klientów | Nie | Nie | Nie |  |
 |Dynamics 365 Finanse i operacje | Nie | Nie | Nie |  |
 |Event Grid | Tak | Nie | Nie |  |
-|Usługa Event Hubs | Tak | Tak | Nie |  |
+|Event Hubs | Tak | Tak | Nie |  |
 |ExpressRoute | Tak | Tak | Nie |  |
 |Zapora | Tak | Tak | Nie |  |
 |Front Door | Tak | Tak | Nie |  |
@@ -180,7 +180,7 @@ Usługi i rozwiązania w poniższej tabeli przechowują swoje dane w obszarze ro
 | [Usługa Azure Sentinel](/azure/sentinel/) | Łączy się z różnymi źródłami, w tym z usługami Office 365 i usługami Amazon Web Cloud Trail. Zobacz [Łączenie źródeł danych](/azure/sentinel/connect-data-sources). |
 | [Analiza usługi Key Vault](insights/azure-key-vault.md) | Analizowanie dzienników zdarzeń inspekcji usługi Azure Key Vault. |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Utwórz ustawienie diagnostyczne do wysyłania dzienników do usługi Azure Monitor. Zobacz [Wysyłanie danych dziennika do magazynu, centrów zdarzeń lub analizy dzienników w usłudze Intune (wersja zapoznawcza)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |
-| Network (Sieć)  | [Monitor wydajności sieci](insights/network-performance-monitor.md) — monitorowanie łączności sieciowej i wydajności do punktów końcowych usług i aplikacji.<br>[Brama aplikacji platformy Azure](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) — analizowanie dzienników i metryk z usługi Azure Application Gateway.<br>[Analiza ruchu](/azure/network-watcher/traffic-analytics) — analizuje dzienniki przepływu sieciowej grupy zabezpieczeń obserwatora sieci (Network Watcher), aby zapewnić wgląd w przepływ ruchu w chmurze platformy Azure. |
+| Sieć  | [Monitor wydajności sieci](insights/network-performance-monitor.md) — monitorowanie łączności sieciowej i wydajności do punktów końcowych usług i aplikacji.<br>[Brama aplikacji platformy Azure](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) — analizowanie dzienników i metryk z usługi Azure Application Gateway.<br>[Analiza ruchu](/azure/network-watcher/traffic-analytics) — analizuje dzienniki przepływu sieciowej grupy zabezpieczeń obserwatora sieci (Network Watcher), aby zapewnić wgląd w przepływ ruchu w chmurze platformy Azure. |
 | [Office 365](insights/solution-office-365.md) | Monitorowanie środowiska usługi Office 365. Zaktualizowana wersja z ulepszonym dołączaniem dostępnym za pośrednictwem usługi Azure Sentinel. |
 | [Analiza SQL](insights/azure-sql.md) | Monitoruj wydajność baz danych SQL platformy Azure, pul elastycznych i wystąpień zarządzanych na dużą skalę i w wielu subskrypcjach. |
 | [Surface Hub](insights/surface-hubs.md) | Śledzenie kondycji i użycia urządzeń Surface Hub. |
@@ -198,7 +198,7 @@ Inne rozwiązania są dostępne do monitorowania różnych aplikacji i usług, a
 |:---|:---|
 | [Sprawdzanie kondycji usługi Active Directory](insights/ad-assessment.md) | Oceń ryzyko i kondycję środowisk usługi Active Directory. |
 | [Stan replikacji usługi Active Directory](insights/ad-replication-status.md) | Regularnie monitoruje środowisko usługi Active Directory pod kątem wszelkich awarii replikacji. |
-| [Analiza dziennika aktywności](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | Analizuj wpisy dziennika aktywności przy użyciu wstępnie zdefiniowanych zapytań i widoków dziennika. |
+| [Analiza dziennika aktywności](platform/activity-log-view.md#azure-portal) | Służy do wyświetlania wpisów dziennika aktywności. |
 | [Analiza DNS (wersja zapoznawcza)](insights/dns-analytics.md) | Zbiera, analizuje i koreluje dzienniki analityczne i inspekcji DNS systemu Windows oraz inne powiązane dane z serwerów DNS. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Zbieraj, wyświetlaj i analizuj metryki kondycji i wydajności systemu Cloud Foundry w wielu wdrożeniach. |
 | [Kontenery](insights/containers.md) | Wyświetlanie hostów kontenerów platformy Docker i Windows oraz zarządzanie nimi. |

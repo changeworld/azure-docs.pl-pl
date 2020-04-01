@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 30696c5dcb3353ea468aa78dbc107dae4d292edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dfc6793bba473c4046863937baa292dde7bf421
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334443"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478691"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Struktury danych w usłudze mobilności usługi Azure Maps
 
@@ -31,13 +31,13 @@ Jest `metroID` to identyfikator obszaru metra, który może służyć do wywoła
 
 ## <a name="stop-ids"></a>Zatrzymaj identyfikatory
 
-Zatrzymania przesyłania mogą być określane przez dwa typy identyfikatorów, identyfikator specyfikacji ogólnego [kanału informacyjnego (GFTS)](https://gtfs.org/) i identyfikator zatrzymania usługi Azure Maps. Identyfikator GFTS jest określany jako stopKey i identyfikator zatrzymania usługi Azure Maps jest określany jako identyfikator stopID. Często odwołując się do przystanków przesyłania, zachęcamy do korzystania z identyfikatora zatrzymania usługi Azure Maps. stopID jest bardziej stabilny i może pozostać taki sam, o ile istnieje fizyczne zatrzymanie. Identyfikator zatrzymania GTFS jest aktualizowany częściej. Na przykład identyfikator zatrzymania GTFS można zaktualizować na żądanie dostawcy GTFS lub po wydaniu nowej wersji GTFS. Chociaż fizyczne zatrzymanie nie miało zmian, identyfikator zatrzymania GTFS może ulec zmianie.
+Zatrzymania przesyłania mogą być określane przez dwa typy identyfikatorów, identyfikator specyfikacji ogólnego [kanału informacyjnego (GFTS)](http://gtfs.org/) i identyfikator zatrzymania usługi Azure Maps. Identyfikator GFTS jest określany jako stopKey i identyfikator zatrzymania usługi Azure Maps jest określany jako identyfikator stopID. Często odwołując się do przystanków przesyłania, zachęcamy do korzystania z identyfikatora zatrzymania usługi Azure Maps. stopID jest bardziej stabilny i może pozostać taki sam, o ile istnieje fizyczne zatrzymanie. Identyfikator zatrzymania GTFS jest aktualizowany częściej. Na przykład identyfikator zatrzymania GTFS można zaktualizować na żądanie dostawcy GTFS lub po wydaniu nowej wersji GTFS. Chociaż fizyczne zatrzymanie nie miało zmian, identyfikator zatrzymania GTFS może ulec zmianie.
 
 Aby rozpocząć, możesz poprosić o pobliskie przystanki tranzytowe za pomocą [interfejsu Get Nearby Transit API](https://aka.ms/AzureMapsMobilityNearbyTransit).
 
 ## <a name="line-groups-and-lines"></a>Grupy wierszy i linie
 
-Usługa mobilności używa równoległego modelu danych dla linii i grup linii. Model ten jest używany do lepszego radzenia sobie ze zmianami odziedziczonymi po trasach [GTFS](https://gtfs.org/) i danych o podróżach.
+Usługa mobilności używa równoległego modelu danych dla linii i grup linii. Model ten jest używany do lepszego radzenia sobie ze zmianami odziedziczonymi po trasach [GTFS](http://gtfs.org/) i danych o podróżach.
 
 
 ### <a name="line-groups"></a>Grupy wierszy

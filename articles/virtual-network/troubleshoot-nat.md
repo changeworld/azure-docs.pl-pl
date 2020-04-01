@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 03/30/2020
 ms.author: allensu
-ms.openlocfilehash: 4a273801290a0a5833ebd83983a8b6b0ad856b45
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c012a8d83761b88cc59b62d11fd3d5542ca7f7a1
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79408488"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396089"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Rozwiązywanie problemów z łącznością TRANSLATOR SIECI WIRTUALNEJ platformy Azure
 
@@ -40,14 +40,15 @@ Aby rozwiązać te problemy, wykonaj kroki opisane w poniższej sekcji.
 
 Pojedynczy [zasób bramy TRANSLATOR](nat-gateway-resource.md) obsługuje od 64 000 do 1 miliona równoczesnych przepływów.  Każdy adres IP udostępnia 64 000 portów SNAT do dostępnego magazynu. Na zasób bramy TRANSLATORA można użyć maksymalnie 16 adresów IP.  Mechanizm SNAT jest opisany [tutaj](nat-gateway-resource.md#source-network-address-translation) bardziej szczegółowo.
 
-Często główną przyczyną wyczerpania SNAT jest anty-wzorzec dla jak połączenia wychodzącego jest ustanawiana i zarządzane.  Uważnie przejrzyj tę sekcję.
+Często główną przyczyną wyczerpania SNAT jest anty-wzorzec dla jak połączenia wychodzącego jest ustanawiana, zarządzane lub konfigurowalne czasomierze zmienione z ich wartości domyślnych.  Uważnie przejrzyj tę sekcję.
 
 #### <a name="steps"></a>Kroki
 
-1. Sprawdź, jak aplikacja tworzy łączność wychodzącą (na przykład przegląd kodu lub przechwytywanie pakietów). 
-2. Określ, czy to działanie jest oczekiwane zachowanie lub czy aplikacja jest niewłaściwie.  Użyj [metryki](nat-metrics.md) w usłudze Azure Monitor, aby uzasadnić swoje ustalenia. Użyj kategorii "Niepowodzenie" dla metryki Połączenia SNAT.
-3. Oceń, czy są przestrzegane odpowiednie wzorce.
-4. Oceń, czy należy ograniczyć wyczerpanie portów SNAT za pomocą dodatkowych adresów IP przypisanych do zasobu bramy TRANSLATORA.
+1. Sprawdź, czy domyślny limit czasu bezczynnego został zmodyfikowany do wartości wyższej niż 4 minuty.
+2. Sprawdź, jak aplikacja tworzy łączność wychodzącą (na przykład przegląd kodu lub przechwytywanie pakietów). 
+3. Określ, czy to działanie jest oczekiwane zachowanie lub czy aplikacja jest niewłaściwie.  Użyj [metryki](nat-metrics.md) w usłudze Azure Monitor, aby uzasadnić swoje ustalenia. Użyj kategorii "Niepowodzenie" dla metryki Połączenia SNAT.
+4. Oceń, czy są przestrzegane odpowiednie wzorce.
+5. Oceń, czy należy ograniczyć wyczerpanie portów SNAT za pomocą dodatkowych adresów IP przypisanych do zasobu bramy TRANSLATORA.
 
 #### <a name="design-patterns"></a>Wzorce projektowe
 
@@ -55,15 +56,17 @@ Zawsze korzystaj z ponownego użycia połączenia i buforowania połączeń, gdy
 
 _**Rozwiązanie:**_ Używanie odpowiednich wzorców i najlepszych praktyk
 
+- Zasoby bramy TRANSLATORA mają domyślny limit czasu bezczynności TCP 4 minuty.  Jeśli to ustawienie zostanie zmienione na wyższą wartość, translator z translatorem ludzi będzie dłużej przepływać i może powodować [niepotrzebną presję na zapasy portów SNAT](nat-gateway-resource.md#timers).
 - Żądania niepodzielne (jedno żądanie na połączenie) są złym wyborem projektu. Takie anty-wzorek ogranicza skalę, zmniejsza wydajność i zmniejsza niezawodność. Zamiast tego ponownie użyć połączeń HTTP/S, aby zmniejszyć liczbę połączeń i skojarzonych portów SNAT. Skala aplikacji wzrośnie, a wydajność wzrośnie dzięki zmniejszeniu uzgadniania, obciążeniem i kosztom operacji kryptograficznej podczas korzystania z protokołu TLS.
 - System DNS może wprowadzać wiele pojedynczych przepływów na woluminie, gdy klient nie buforuje wyniku rozpoznawania nazw DNS. Użyj buforowania.
 - Przepływy UDP (na przykład wyszukiwania DNS) przydzielają porty SNAT na czas trwania limitu czasu bezczynności. Im dłuższy limit czasu bezczynnego, tym większe ciśnienie w portach SNAT. Użyj krótkiego limitu czasu bezczynnego (na przykład 4 minuty).
 - Użyj pul połączeń, aby kształtować wolumin połączenia.
-- Nigdy nie po cichu porzucić przepływ TCP i polegać na czasomierze TCP do czyszczenia przepływu. Spowoduje to pozostawienie stanu przydzielonego w systemach pośrednich i punktach końcowych oraz spowoduje, że porty będą niedostępne dla innych połączeń. Może to wywołać błędy aplikacji i wyczerpanie SNAT. 
-- Wartości czasomierza zamknięcia TCP nie powinny być zmieniane bez wiedzy ekspertów na temat wpływu. Podczas TCP odzyska, wydajność aplikacji może mieć negatywny wpływ, gdy punkty końcowe połączenia mają niedopasowane oczekiwania. Chęć zmiany czasomierzy jest zwykle oznaką podstawowego problemu projektowego. Zapoznaj się z poniższymi zaleceniami.
+- Nigdy nie po cichu porzucić przepływ TCP i polegać na czasomierze TCP do czyszczenia przepływu. Jeśli nie pozwolisz TCP jawnie zamknąć połączenie, stan pozostaje przydzielony w systemach pośrednich i punktach końcowych i sprawia, że porty SNAT niedostępne dla innych połączeń. Może to wywołać błędy aplikacji i wyczerpanie SNAT. 
+- Nie zmieniaj wartości czasu ścisłego związanego z TCP na poziomie systemu operacyjnego bez specjalistycznej wiedzy na temat wpływu. Podczas gdy stos TCP zostanie odzyskany, wydajność aplikacji może mieć negatywny wpływ, gdy punkty końcowe połączenia mają niedopasowane oczekiwania. Chęć zmiany czasomierzy jest zwykle oznaką podstawowego problemu projektowego. Zapoznaj się z poniższymi zaleceniami.
 
 Często wyczerpanie SNAT może być również wzmacniane za pomocą innych wzorców anty-wzorów w podstawowej aplikacji. Przejrzyj te dodatkowe wzorce i najlepsze rozwiązania, aby poprawić skalę i niezawodność usługi.
 
+- Poznaj wpływ zmniejszenia [limitu czasu bezczynności TCP](nat-gateway-resource.md#timers) do niższych wartości, w tym domyślnego limitu czasu bezczynności 4 minut, aby wcześniej zwolnić zapasy portów SNAT.
 - Należy wziąć pod uwagę [wzorce sondowania asynchronii dla](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) długotrwałych operacji, aby zwolnić zasoby połączenia dla innych operacji.
 - Przepływy długotrwałe (na przykład ponownie używane połączenia TCP) powinny używać funkcji tcp keepalives lub keepalives warstwy aplikacji, aby uniknąć limitu czasu systemów pośrednich. Zwiększenie limitu czasu bezczynności jest ostatecznością i może nie rozwiązać główną przyczynę. Długi limit czasu może spowodować błędy niskiej szybkości po upływie limitu czasu i wprowadzić opóźnienie i niepotrzebne błędy.
 - Wdzięku [ponawiania wzorców](https://docs.microsoft.com/azure/architecture/patterns/retry) powinny być używane w celu uniknięcia agresywnych ponownych prób/wybuchów podczas przejściowej awarii lub odzyskiwania awarii.
@@ -175,7 +178,7 @@ Można wskazać zainteresowanie dodatkowymi możliwościami za pośrednictwem [v
 ## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [nat sieci wirtualnej](nat-overview.md)
-* Dowiedz się ab Smażyć [zasób bramy NAT](nat-gateway-resource.md)
+* Dowiedz się więcej o [zasobie bramy NAT](nat-gateway-resource.md)
 * Dowiedz się więcej o [metrykach i alertach dotyczących zasobów bramy TRANSLATORA](nat-metrics.md).
 * [Powiedz nam, co zbudować dalej dla Virtual Network NAT w UserVoice](https://aka.ms/natuservoice).
 

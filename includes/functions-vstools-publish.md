@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: dee7d778c4a1c1f37ddab7b9d072f83a22acbc60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a4fbb3803f2eed4f961792a29a6bf8a327ea208
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80056601"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80502196"
 ---
 1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Opublikuj**.
 
@@ -44,6 +44,6 @@ ms.locfileid: "80056601"
 
 5. Wybierz **utwórz,** aby utworzyć aplikację funkcji i jej powiązanych zasobów na platformie Azure z tych ustawień i wdrożyć kod projektu funkcji. 
 
-6. Po zakończeniu wdrażania zanotuj wartość **adresu URL witryny,** która jest adresem aplikacji funkcji na platformie Azure.
+6. Wybierz pozycję Publikuj i po zakończeniu wdrażania zanotuj wartość **adresu URL witryny,** która jest adresem aplikacji funkcji na platformie Azure.
 
     ![Komunikat o powodzeniu publikowania](./media/functions-vstools-publish/functions-visual-studio-publish-complete.png)

@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: 1244fe64d0c23782fdae7a0f92415bada4bef55a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf90120157bf64bd62a3b5ec9d8a6b2c6260e024
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76907658"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398294"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Równoważenie obciążenia partycji w wielu wystąpieniach aplikacji
 Aby skalować aplikację przetwarzania zdarzeń, można uruchomić wiele wystąpień aplikacji i mieć ją zrównoważyć obciążenie między sobą. W starszych wersjach [EventProcessorHost](event-hubs-event-processor-host.md) pozwoliło na zrównoważenie obciążenia między wieloma wystąpieniami programu i zdarzeń punktu kontrolnego podczas odbierania. W nowszych wersjach (od 5.0) **EventProcessorClient** (.NET i Java) lub **EventHubConsumerClient** (Python i JavaScript) umożliwia zrobienie tego samego. Model programistyczny jest prostszy przy użyciu zdarzeń. Subskrybujesz zdarzenia, które Cię interesują, rejestrując program obsługi zdarzeń.
 
-W tym artykule opisano przykładowy scenariusz używania wielu wystąpień do odczytywania zdarzeń z Centrum zdarzeń, a następnie zawiera szczegółowe informacje o funkcjach klienta procesora zdarzeń, który umożliwia odbieranie zdarzeń z wielu partycji jednocześnie i równoważenie obciążenia z innymi konsumentów korzystających z tego samego centrum zdarzeń i grupy konsumentów.
+W tym artykule opisano przykładowy scenariusz używania wielu wystąpień do odczytu zdarzeń z centrum zdarzeń, a następnie zawiera szczegółowe informacje o funkcjach klienta procesora zdarzeń, który umożliwia odbieranie zdarzeń z wielu partycji jednocześnie i równoważenie obciążenia z innymi konsumentami korzystającymi z tego samego centrum zdarzeń i grupy odbiorców.
 
 > [!NOTE]
 > Kluczem do skalowania dla centrów zdarzeń jest idea podzielonych na partycje konsumentów. W przeciwieństwie do [wzorca konkurujących konsumentów](https://msdn.microsoft.com/library/dn568101.aspx) wzorzec konsumenta, wzorzec konsumenta podzielony na partycje umożliwia dużą skalę, usuwając wąskie gardło rywalizacji i ułatwiając równoległość końca do końca.
@@ -83,6 +83,13 @@ Jeśli procesor zdarzeń rozłącza się z partycją, inne wystąpienie może wz
 
 Po wykonaniu punktu kontrolnego, aby oznaczyć zdarzenie jako przetworzone, wpis w magazynie punktów kontrolnych jest dodawany lub aktualizowany o przesunięcie zdarzenia i numer sekwencyjny. Użytkownicy powinni zdecydować o częstotliwości aktualizowania punktu kontrolnego. Aktualizowanie po każdym pomyślnie przetworzonym zdarzeniu może mieć wpływ na wydajność i koszty, ponieważ wyzwala operację zapisu do podstawowego magazynu punktów kontrolnych. Ponadto punkt kontrolny każdego zdarzenia wskazuje na wzorzec obsługi wiadomości w kolejce, dla którego kolejka usługi Service Bus może być lepszym rozwiązaniem niż centrum zdarzeń. Ideą Centrum zdarzeń jest to, że otrzymujesz "co najmniej raz" dostawę na dużą skalę. Dzięki temu, że systemy podrzędne są idempotentne, można łatwo odzyskać po awarii lub ponownym uruchomieniu, które powodują, że te same zdarzenia są odbierane wiele razy.
 
+> [!NOTE]
+> Jeśli używasz usługi Azure Blob Storage jako magazynu punktów kontrolnych w środowisku, które obsługuje inną wersję SDK obiektów blob magazynu niż te zwykle dostępne na platformie Azure, musisz użyć kodu, aby zmienić wersję interfejsu API usługi storage na określoną wersję obsługiwaną przez to środowisko. Na przykład jeśli używasz [centrum zdarzeń w usłudze Azure Stack Hub w wersji 2002,](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)najwyższą dostępną wersją usługi Storage jest wersja 2017-11-09. W takim przypadku należy użyć kodu do kierowania wersji interfejsu API usługi magazynu do 2017-11-09. Na przykład, jak kierować określonej wersji interfejsu API magazynu, zobacz te przykłady w usłudze GitHub: 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js) lub [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
+
 ## <a name="thread-safety-and-processor-instances"></a>Bezpieczeństwo wątków i wystąpienia procesora
 
 Domyślnie procesor zdarzeń lub konsument jest bezpieczny dla wątków i zachowuje się w sposób synchroniczne. Gdy zdarzenia przychodzą dla partycji, funkcja, która przetwarza zdarzenia jest wywoływana. Kolejne komunikaty i wywołania tej funkcji kolejkują się w górę za kulisami, ponieważ pompa komunikatów nadal działa w tle w innych wątkach. To bezpieczeństwo gwintów eliminuje potrzebę kolekcji bezpiecznych dla wątków i znacznie zwiększa wydajność.
@@ -93,4 +100,4 @@ Zobacz następujące szybkie starty:
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](event-hubs-java-get-started-send.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-node-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)

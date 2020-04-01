@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: ec1507e09a183f8d466a456b70151861f5f0e82c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e79f4c791d0252c719846da3aa8024b0e622dca
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159442"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477019"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji usługi Load Balancer
 
@@ -66,7 +66,7 @@ Określone wartości limitu czasu i interwału określają, czy wystąpienie zos
 
 Możemy jeszcze bardziej zilustrować to zachowanie za pomocą przykładu. Jeśli ustawiono liczbę odpowiedzi sondy na 2, a interwał na 5 sekund, oznacza to, że 2 błędy przesiewu sondy muszą być przestrzegane w odstępie 10 sekund.  Ponieważ czas, w którym wysyłana jest sonda nie jest synchronizowana, gdy aplikacja może zmienić stan, możemy powiązanie czasu do wykrycia przez dwa scenariusze:
 
-1. Jeśli aplikacja rozpocznie produkcję odpowiedzi sondy przesuwu chwilę przed przybyciem pierwszej sondy, wykrycie tych zdarzeń zajmie 10 sekund (2 x 5 sekund) plus czas trwania aplikacji, która zaczyna sygnalizować limit czasu do momentu pierwszego sonda przybywa.  Można założyć, że to wykrycie zajmie nieco ponad 10 sekund.
+1. Jeśli aplikacja rozpocznie tworzenie odpowiedzi sondy przesuwu chwilę przed przybyciem pierwszej sondy, wykrycie tych zdarzeń zajmie 10 sekund (2 x 5 sekund interwałów) plus czas trwania aplikacji zaczyna sygnalizować limit czasu do momentu przybycia pierwszej sondy.  Można założyć, że to wykrycie zajmie nieco ponad 10 sekund.
 2. Jeśli aplikacja rozpocznie produkcję odpowiedzi sondy limit czasu tuż po przybyciu pierwszej sondy, wykrywanie tych zdarzeń nie rozpocznie się, dopóki następna sonda nadejdzie (i upośnie limit czasu) plus kolejne 10 sekund (2 x 5 sekund interwałów).  Można założyć, że to wykrycie zajmie mniej niż 15 sekund.
 
 W tym przykładzie po wykryciu platforma zajmie niewielką ilość czasu, aby zareagować na tę zmianę.  Oznacza to, że w zależności od 
@@ -76,7 +76,10 @@ W tym przykładzie po wykryciu platforma zajmie niewielką ilość czasu, aby za
 3. gdy wykrywanie zostało przekazane na całej platformie 
 
 można założyć, że reakcja na odpowiedź sondy przekroju czasu zajmie od co najmniej nieco ponad 10 sekund do maksymalnie ponad 15 sekund, aby zareagować na zmianę sygnału z aplikacji.  Ten przykład jest przedstawiony w celu zilustrowania tego, co się dzieje, jednak nie jest możliwe prognozowanie dokładnego czasu trwania poza powyższymi wytycznymi przedstawionymi w tym przykładzie.
- 
+
+>[!NOTE]
+>Sonda kondycji sondy wszystkie uruchomione wystąpienia w puli wewnętrznej bazy danych. Jeśli wystąpienie zostanie zatrzymane, nie zostanie sondowane, dopóki nie zostanie ponownie uruchomione.
+
 ## <a name="probe-types"></a><a name="types"></a>Typy sond
 
 Protokół używany przez sondę kondycji można skonfigurować w jedną z następujących opcji:
@@ -232,7 +235,7 @@ W przypadku równoważenia obciążenia UDP należy wygenerować niestandardowy 
 
 W przypadku korzystania z [reguł równoważenia obciążenia portów wysokiej](load-balancer-ha-ports-overview.md) jakości ze [standardowym modułem równoważenia obciążenia](load-balancer-standard-overview.md)wszystkie porty są równoważące obciążenie, a pojedyncza odpowiedź sondy kondycji musi odzwierciedlać stan całego wystąpienia.
 
-Nie należy tłumaczyć ani proxy sondy kondycji za pośrednictwem wystąpienia, które odbiera sondy kondycji do innego wystąpienia w sieci wirtualnej, ponieważ ta konfiguracja może prowadzić do błędów kaskadowych w scenariuszu.  Rozważmy następujący scenariusz: zestaw urządzeń innych firm jest wdrażany w puli wewnętrznej bazy danych zasobu modułu równoważenia obciążenia w celu zapewnienia skali i nadmiarowości dla urządzeń, a sonda kondycji jest skonfigurowana do sondowania portu, który jest serwerem proxy urządzenia innej firmy lub na inne maszyny wirtualne stojące za urządzeniem.  Jeśli sondujesz ten sam port, którego używasz do tłumaczenia lub żądania serwera proxy do innych maszyn wirtualnych za urządzeniem, każda odpowiedź sondy z jednej maszyny wirtualnej za urządzeniem oznaczy samo urządzenie jako martwe. Ta konfiguracja może prowadzić do kaskadowego błędu całego scenariusza aplikacji w wyniku pojedynczego punktu końcowego wewnętrznej bazy danych za urządzeniem.  Wyzwalacz może być sporadyczne awarii sondy, która spowoduje, że moduł równoważenia obciążenia, aby oznaczyć w dół oryginalnego miejsca docelowego (wystąpienie urządzenia) i z kolei można wyłączyć cały scenariusz aplikacji. Zamiast tego sonduj kondycję samego urządzenia. Wybór sondy w celu określenia sygnału kondycji jest ważnym czynnikiem dla scenariuszy sieciowych urządzeń wirtualnych (NVA) i należy skonsultować się z dostawcą aplikacji, co jest odpowiednim sygnałem kondycji dla takich scenariuszy.
+Nie należy tłumaczyć ani proxy sondy kondycji za pośrednictwem wystąpienia, które odbiera sondy kondycji do innego wystąpienia w sieci wirtualnej, ponieważ ta konfiguracja może prowadzić do błędów kaskadowych w scenariuszu.  Rozważmy następujący scenariusz: zestaw urządzeń innych firm jest wdrażany w puli wewnętrznej bazy danych zasobu modułu równoważenia obciążenia, aby zapewnić skalowanie i nadmiarowość dla urządzeń, a sonda kondycji jest skonfigurowana do sondowania portu, który jest serwerem proxy urządzenia innej firmy lub przekłada się na inne maszyny wirtualne za urządzeniem.  Jeśli sondujesz ten sam port, którego używasz do tłumaczenia lub żądania serwera proxy do innych maszyn wirtualnych za urządzeniem, każda odpowiedź sondy z jednej maszyny wirtualnej za urządzeniem oznaczy samo urządzenie jako martwe. Ta konfiguracja może prowadzić do kaskadowego błędu całego scenariusza aplikacji w wyniku pojedynczego punktu końcowego wewnętrznej bazy danych za urządzeniem.  Wyzwalacz może być sporadyczne awarii sondy, która spowoduje, że moduł równoważenia obciążenia, aby oznaczyć w dół oryginalnego miejsca docelowego (wystąpienie urządzenia) i z kolei można wyłączyć cały scenariusz aplikacji. Zamiast tego sonduj kondycję samego urządzenia. Wybór sondy w celu określenia sygnału kondycji jest ważnym czynnikiem dla scenariuszy sieciowych urządzeń wirtualnych (NVA) i należy skonsultować się z dostawcą aplikacji, co jest odpowiednim sygnałem kondycji dla takich scenariuszy.
 
 Jeśli nie zezwalasz [na źródłowy adres IP](#probesource) sondy w zasadach zapory, sonda kondycji zakończy się niepowodzeniem, ponieważ nie może dotrzeć do wystąpienia.  Z kolei moduł równoważenia obciążenia oznaczy swoje wystąpienie z powodu błędu sondy kondycji.  Ta błędna konfiguracja może spowodować niepowodzenie scenariusza aplikacji z równoważeniem obciążenia.
 

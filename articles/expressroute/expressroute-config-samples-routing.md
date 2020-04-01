@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 12/06/2018
-ms.author: cherylmc
-ms.openlocfilehash: 2c37dadeb669fb88f858b5487379828a8dddec6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/26/2020
+ms.author: osamaz
+ms.openlocfilehash: 5304aefaf3ad70bb552b4b0d1b26fcce9867c9c0
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74076664"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397747"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Przykłady konfiguracji routera do konfigurowania routingu i zarządzania nim
 Ta strona zawiera przykłady konfiguracji interfejsu i routingu dla routerów z serii Cisco IOS-XE i Juniper MX podczas pracy z usługą ExpressRoute. Są one przeznaczone wyłącznie do próbek i nie mogą być używane w stanie, w jakim są. Można współpracować z dostawcą, aby wymyślić odpowiednie konfiguracje dla sieci. 
@@ -91,6 +91,25 @@ Za pomocą map tras i list prefiksów można filtrować prefiksy propagowane do 
     !
     route-map <MS_Prefixes_Inbound> permit 10
      match ip address prefix-list <MS_Prefixes>
+    !
+
+### <a name="5-configuring-bfd"></a>5. Konfigurowanie BFD
+
+BfD można skonfigurować w dwóch miejscach. Jeden na poziomie interfejsu, a drugi na poziomie BGP. Poniższy przykład dotyczy interfejsu QinQ. 
+
+    interface GigabitEthernet<Interface_Number>.<Number>
+     bfd interval 300 min_rx 300 multiplier 3
+     encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+     ip address <IPv4_Address><Subnet_Mask>
+    
+    router bgp <Customer_ASN>
+     bgp log-neighbor-changes
+     neighbor <IP#2_used_by_Azure> remote-as 12076
+     !        
+     address-family ipv4
+      neighbor <IP#2_used_by_Azure> activate
+      neighbor <IP#2_used_by_Azure> fall-over bfd
+     exit-address-family
     !
 
 
@@ -173,7 +192,7 @@ Router można skonfigurować tak, aby anonsował wybrane prefiksy firmie Microso
     }
 
 
-### <a name="4-route-maps"></a>4. Mapy tras
+### <a name="4-route-policies"></a>4. Zasady tras
 Za pomocą map tras i list prefiksów można filtrować prefiksy propagowane do sieci. Możesz użyć poniższego przykładu, aby wykonać zadanie. Upewnij się, że masz odpowiednią konfigurację list prefiksów.
 
     policy-options {
@@ -203,6 +222,24 @@ Za pomocą map tras i list prefiksów można filtrować prefiksy propagowane do 
         }                                   
     }
 
+### <a name="4-configuring-bfd"></a>4. Konfigurowanie BFD
+BfD można skonfigurować tylko w sekcji protokołu BGP.
+
+    protocols {
+        bgp { 
+            group <Group_Name> { 
+                peer-as 12076;              
+                neighbor <IP#2_used_by_Azure>;
+                bfd-liveness-detection {
+                       minimum-interval 3000;
+                       multiplier 3;
+                }
+            }                               
+        }                                   
+    }
+
 ## <a name="next-steps"></a>Następne kroki
 Szczegółowe informacje znajdują się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania).
+
+
 

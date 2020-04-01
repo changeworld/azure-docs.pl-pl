@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c4d34a6db774712e13ea86d38ae48a543a07a8bc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e60d3f0221bce836f49e87a96c762e68cf8a60ad
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79529768"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473689"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Szybki start: dodawanie logowania za pomocą firmy Microsoft do aplikacji sieci Web ASP.NET Core
 W tym przewodniku Szybki start można użyć przykładu kodu, aby dowiedzieć się, jak aplikacja sieci web ASP.NET Core może logować się na kontach osobistych (hotmail.com, outlook.com, inne) oraz kontach służbowych i szkolnych z dowolnego wystąpienia usługi Azure Active Directory (Azure AD). (Zobacz [Jak działa przykład](#how-the-sample-works) dla ilustracji).
@@ -75,7 +75,7 @@ W tym przewodniku Szybki start można użyć przykładu kodu, aby dowiedzieć si
 > Skonfigurowaliśmy projekt z wartościami właściwości aplikacji i jest on gotowy do uruchomienia. 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Enter_the_Supported_Account_Info_Here
+> > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>Krok 3: Uruchamianie projektu programu Visual Studio
 > 1. Wyodrębnij plik zip do folderu lokalnego w ramach folderu głównego, na przykład **C:\Azure-Samples**.
@@ -165,7 +165,7 @@ Kontroler lub jego metody można chronić za pomocą atrybutu `[Authorize]`. Ten
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z repozytorium GitHub dla tego samouczka ASP.NET Core, aby uzyskać więcej informacji, w tym instrukcje dotyczące dodawania uwierzytelniania do zupełnie nowej aplikacji sieci Web ASP.NET Core, jak wywoływać program Microsoft Graph i inne interfejsy API firmy Microsoft, jak wywoływać własne interfejsy API, jak dodawać autoryzacja, jak zalogować się do użytkowników w chmurach krajowych lub z tożsamościami społecznymi i nie tylko:
+Zapoznaj się z repozytorium GitHub dla tego samouczka ASP.NET Core, aby uzyskać więcej informacji, w tym instrukcje dotyczące dodawania uwierzytelniania do zupełnie nowej aplikacji sieci Web ASP.NET, jak wywoływać microsoft graph i inne interfejsy API firmy Microsoft, jak dzwonić do własnych interfejsów API, jak dodawać autoryzację, jak logować się do użytkowników w chmurach krajowych lub z tożsamościami społecznościowymi i innymi :
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core Web App samouczek](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

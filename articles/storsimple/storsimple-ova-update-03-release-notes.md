@@ -1,5 +1,5 @@
 ---
-title: StorSimple Virtual Array Aktualizacje informacje o wersji| Dokumenty firmy Microsoft
+title: StorSimple Virtual Array Update 0.3 informacje o wersji
 description: W tym artykule opisano krytyczne otwarte problemy i rozwiązania dla tablicy wirtualnej StorSimple z aktualizacją 0.3.
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/15/2016
 ms.author: alkohli
-ms.openlocfilehash: 635b5f4edf5d403c569b4957540fc105997b3e8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f56c36f18379449409f4989eab9510da1f686d0d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60629275"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397807"
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>StorSimple Virtual Array Update 0.3 informacje o wersji
 ## <a name="overview"></a>Omówienie

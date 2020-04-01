@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z dostępem SSO MS Azure dla pakietu Office Ethidex zgodności™ | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i dostępem SSO MS Azure dla usługi Ethidex zgodności z pakietem Office™.
+title: 'Samouczek: integracja rejestracji jednokrotnej usługi Azure Active Directory (SSO) z ms azure sso access for Ethidex Compliance Office™ | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a ms azure sso access dla biura zgodności Ethidex™.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,141 +17,141 @@ ms.date: 09/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00cbb5ff4b9354d0d1702161460b2646669f34c2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70844369"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ms-azure-sso-access-for-ethidex-compliance-office"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą MS Azure SSO Access dla pakietu Office Ethidex zgodności™
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ms-azure-sso-access-for-ethidex-compliance-office"></a>Samouczek: integracja rejestracji jednokrotnej usługi Azure Active Directory (SSO) z ms azure sso access for Ethidex Compliance Office™
 
-W ramach tego samouczka nauczysz się zintegrować z usługą Microsoft Azure Logowanie jednokrotne w usłudze Ethidex, aby uzyskać™ zgodność z usługą Azure Active Directory (Azure AD). W przypadku integrowania dostępu SSO MS Azure dla usługi Ethidex o™ zgodności z usługą Azure AD można:
+W tym samouczku dowiesz się, jak zintegrować ms Azure SSO Access for Ethidex Compliance Office™ z usługą Azure Active Directory (Azure AD). Po zintegrowaniu ms azure sso access for Ethidex Compliance Office™ z usługą Azure AD, można:
 
-* Kontrolka w usłudze Azure AD, która ma dostęp do usługi MS Azure SSO Access for Ethidex, Office™.
-* Umożliwienie użytkownikom automatycznego logowania się do usługi MS Azure SSO Access for Ethidex w™ pakiecie Office z kontami usługi Azure AD.
-* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
+* Kontrola w usłudze Azure AD, który ma dostęp do ms Azure SSO Access dla Ethidex Compliance Office™.
+* Włącz użytkownikom automatyczne logowanie do usługi MS Azure SSO Access for Ethidex Compliance Office™ za pomocą ich kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebujesz następujących elementów:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Dostęp do logowania jednokrotnego na platformie Microsoft Azure dla pakietu™ Office Ethidex zgodności z włączoną obsługą logowania jednokrotnego (SSO).
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto.](https://azure.microsoft.com/free/)
+* MS Azure SSO Access for Ethidex Compliance Office™ subskrypcja z włączoną funkcją logowania jednokrotnego (SSO).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W tym samouczku można skonfigurować i przetestować samouszeńców usługi Azure AD w środowisku testowym.
 
-* Dostęp do usługi MS Azure SSO dla programu Ethidex w pakiecie Office™ obsługuje **dostawcy tożsamości** zainicjowane Logowanie jednokrotne
+* MS Azure SSO Access for Ethidex Compliance Office™ obsługuje zainicjowane przez protokół SSO inicjowane przez protokół **IDP**
 
-## <a name="adding-ms-azure-sso-access-for-ethidex-compliance-office-from-the-gallery"></a>Dodawanie dostępu SSO MS Azure do usługi Ethidex zgodności z pakietem Office™ z galerii
+## <a name="adding-ms-azure-sso-access-for-ethidex-compliance-office-from-the-gallery"></a>Dodawanie pakietu MS Azure SSO Access for Ethidex Compliance Office™ z galerii
 
-Aby skonfigurować integrację dostępu SSO MS Azure dla usługi Ethidex zgodności z pakietem™ Office w usłudze Azure AD, musisz dodać usługę MS Azure SSO Access dla pakietu Office Ethidex™ z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację pakietu MS Azure SSO Access for Ethidex Compliance Office™ do usługi Azure AD, należy dodać ms azure sso access dla biura zgodności Ethidex™ z galerii do listy zarządzanych aplikacji SaaS.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
-1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta służbowego lub konta firmy Microsoft.
+1. W lewym okienku nawigacji wybierz usługę **Azure Active Directory.**
+1. Przejdź do **aplikacji korporacyjnych,** a następnie wybierz pozycję **Wszystkie aplikacje**.
 1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
-1. W sekcji **Dodaj z galerii** wpisz **MS Azure SSO Access for Ethidex — zgodność z pakietem Office™** w polu wyszukiwania.
-1. Wybierz pozycję **MS Azure SSO Access for Ethidex,™** z poziomu panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
+1. W sekcji **Dodaj z galerii** wpisz **MS Azure SSO Access for Ethidex Compliance Office™** w polu wyszukiwania.
+1. Wybierz **ms azure sso access for Ethidex Compliance Office™** z panelu wyników, a następnie dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-ms-azure-sso-access-for-ethidex-compliance-office"></a>Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD dla dostępu SSO MS Azure dla usługi Ethidex, aby uzyskać zgodność z pakietem Office™
+## <a name="configure-and-test-azure-ad-single-sign-on-for-ms-azure-sso-access-for-ethidex-compliance-office"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD dla usługi MS Azure SSO Access for Ethidex Compliance Office™
 
-Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD przy użyciu logowania jednokrotnego MS Azure dla programu™ Ethidex, używając użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w usłudze MS Azure SSO Access for™ Ethidex.
+Konfigurowanie i testowanie usługi Azure AD SSO za pomocą ms Azure SSO Access for Ethidex Compliance Office™ przy użyciu użytkownika testowego o nazwie **B.Simon**. Aby użytkownik łączony sytuował działał, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w usłudze MS Azure SSO Access for Ethidex Compliance Office™.
 
-Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD przy użyciu logowania jednokrotnego MS Azure dla programu™ Ethidex, wykonaj następujące bloki konstrukcyjne:
+Aby skonfigurować i przetestować usługę Azure AD SSO przy pomocą pakietu MS Azure SSO Access for Ethidex Compliance Office™ wykonaj następujące elementy konstrukcyjne:
 
-1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
-    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
-    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-1. **[Konfigurowanie dostępu SSO MS Azure dla usługi Ethidex zgodności z logowaniem](#configure-ms-azure-sso-access-for-ethidex-compliance-office-sso)** jednokrotnym Office — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-    1. **[Utwórz dostęp do usługi MS Azure SSO dla użytkownika testowego Ethidex zgodności](#create-ms-azure-sso-access-for-ethidex-compliance-office-test-user)** , aby uzyskać odpowiedni odpowiednik B. Simon w usłudze MS Azure SSO Access for Ethidex Office™, która jest połączona z reprezentacją usługi Azure AD.
-1. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj samouszeńcę usługi Azure AD](#configure-azure-ad-sso)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD za pomocą usługi B.Simon.
+    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić B.Simon używać logowania jednokrotnego usługi Azure AD.
+1. **[Skonfiguruj ms azure logowanie jednokrotne dla ethidex compliance office logowania](#configure-ms-azure-sso-access-for-ethidex-compliance-office-sso)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+    1. **[Utwórz ms azure sso dostęp do ethidex zgodności office test użytkownika](#create-ms-azure-sso-access-for-ethidex-compliance-office-test-user)** — mieć odpowiednik B.Simon w MS Azure SSO Access dla Ethidex Compliance Office™ który jest połączony z reprezentacji usługi Azure AD użytkownika.
+1. **[Test SSO](#test-sso)** - aby sprawdzić, czy konfiguracja działa.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie rejestracji jednokrotnej w usłudze Azure AD
 
-Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
+Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azure portal.
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja z **usługą MS Azure logowania jednokrotnego dla programu™ Ethidex** , Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)— na stronie **MS Azure SSO Access for Ethidex Compliance Office™** sekcji **Zarządzanie** i wybierz opcję **logowania jednokrotnego**.
 1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** kliknij ikonę edycji/pióra dla **podstawowej konfiguracji SAML,** aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. W sekcji **Podstawowa konfiguracja języka SAML** wprowadź wartości dla następujących pól:
+1. W sekcji **Podstawowa konfiguracja SAML** wprowadź wartości dla następujących pól:
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `com.ethidex.prod.<CLIENTID>`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL przy użyciu następującego wzorca:`com.ethidex.prod.<CLIENTID>`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://www.ethidex.com/saml2/sp/acs/<CLIENTID>`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z pomocą [techniczną usługi MS Azure logowania jednokrotnego dla programu™ Ethidex](mailto:support@ethidex.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [ms azure sso access for Ethidex Compliance Office™ zespół pomocy technicznej,](mailto:support@ethidex.com) aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Aplikacja Microsoft Azure SSO Access dla programu Ethidex zgodność aplikacji pakietu™ Office oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Na poniższym zrzucie ekranu przedstawiono listę atrybutów domyślnych, gdzie atrybut **nameidentifier** jest mapowany na atrybut **user.userprincipalname**. Usługa MS Azure SSO Access for Ethidex — aplikacja pakietu™ Office oczekuje na zamapowanie **NameIdentifier** z **użytkownikiem. mail**, dlatego należy edytować Mapowanie atrybutów, klikając ikonę **Edytuj** i zmieniając mapowanie atrybutu.
+1. MS Azure SSO Access for Ethidex Compliance Office™ application application expects the SAML assertions in a specific format, which requires you to add custom attribute mappings to your SAML token attributes configuration. Na poniższym zrzucie ekranu przedstawiono listę atrybutów domyślnych, gdzie atrybut **nameidentifier** jest mapowany na atrybut **user.userprincipalname**. MS Azure SSO Access for Ethidex Compliance Office™ aplikacja oczekuje **nameidentifier** być mapowane z **user.mail**, więc trzeba edytować mapowanie atrybutów, klikając na **ikonę edycji** i zmienić mapowanie atrybutów.
 
     ![image](common/edit-attribute.png)
 
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (RAW)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** w sekcji **Saml Podpisywanie certyfikatów** znajdź **certyfikat (raw)** i wybierz **pozycję Pobierz,** aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/certificateraw.png)
+    ![Link do pobierania certyfikatu](common/certificateraw.png)
 
-1. W sekcji **konfigurowanie™ pakietu Office Logowanie jednokrotne w usłudze MS Azure dla usługi Ethidex** należy skopiować odpowiednie adresy URL zgodnie z wymaganiami.
+1. W sekcji **Konfigurowanie pakietu SSO ms azure dla biura zgodności Ethidex™,** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
+W tej sekcji utworzysz użytkownika testowego w witrynie Azure portal o nazwie B.Simon.
 
-1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
-1. We właściwościach **użytkownika** wykonaj następujące kroki:
+1. Z lewego okienka w witrynie Azure portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
+1. We właściwościach **Użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** username@companydomain.extensionwprowadź pole . Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
    1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi MS Azure SSO dostęp dla™ pakietu Office dla zgodności Ethidex.
+W tej sekcji włączysz B.Simon do korzystania z logowania jednokrotnego platformy Azure, przyznając dostęp do ms azure sso dostęp do ethidex compliance office™.
 
-1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście Aplikacje wybierz pozycję **MS Azure SSO Access for Ethidex, aby uzyskać zgodność z pakietem Office™**.
-1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Na liście aplikacji wybierz pozycję **MS Azure SSO Access for Ethidex Compliance Office™**.
+1. Na stronie przegląd aplikacji znajdź sekcję **Zarządzaj** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
+1. Wybierz **pozycję Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym Dodawanie **przydziału.**
 
-    ![Link Dodaj użytkownika](common/add-assign-user.png)
+    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
-1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B.Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przydziału** kliknij przycisk **Przypisz.**
 
-## <a name="configure-ms-azure-sso-access-for-ethidex-compliance-office-sso"></a>Konfigurowanie dostępu SSO MS Azure dla usługi Ethidex zgodności z logowaniem jednokrotnym pakietu Office
+## <a name="configure-ms-azure-sso-access-for-ethidex-compliance-office-sso"></a>Konfigurowanie dostępu sytego ms azure dla pakietu SSO ethidex compliance office
 
-Aby skonfigurować Logowanie jednokrotne w usłudze **MS Azure SSO Access for™ Ethidex** , należy wysłać pobrany **certyfikat (RAW)** i odpowiednie skopiowane adresy URL z Azure Portal do [usługi MS Azure SSO Access w celu zapewnienia zgodności z pakietem Ethidex,™ zespół pomocy technicznej](mailto:support@ethidex.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować logowanie jednokrotne w **usłudze MS Azure SSO Access for Ethidex Compliance Office™** stronie, należy wysłać pobrany **certyfikat (raw)** i odpowiednie skopiowane adresy URL z witryny Azure portal do [ms Azure SSO Access dla ethidex Compliance Office™ zespół pomocy technicznej](mailto:support@ethidex.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
-### <a name="create-ms-azure-sso-access-for-ethidex-compliance-office-test-user"></a>Utwórz dostęp do usługi MS Azure SSO dla użytkownika testowego Ethidex zgodności z pakietem Office
+### <a name="create-ms-azure-sso-access-for-ethidex-compliance-office-test-user"></a>Tworzenie programu MS Azure SSO Access dla użytkownika testowego ethidex compliance office
 
-W tej sekcji utworzysz użytkownika o nazwie B. Simon w usłudze MS Azure SSO Access for Ethidex, aby uzyskać zgodność z pakietem Office™. Współdziałanie z usługą [MS Azure SSO Access for Ethidex — zespół pomocy technicznej™ pakietu Office](mailto:support@ethidex.com) , aby dodać użytkowników w usłudze MS Azure SSO Access for Ethidex™ platformę Office. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie B.Simon w MS Azure SSO Access for Ethidex Compliance Office™. Praca z [ms Azure SSO Access for Ethidex Compliance Office™ zespół pomocy technicznej,](mailto:support@ethidex.com) aby dodać użytkowników w MS Azure SSO Access for Ethidex Compliance Office™ platformie. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
+## <a name="test-sso"></a>Test SSO 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka usługi Microsoft Azure SSO dostęp dla programu Ethidex dla™ pakietu Office w panelu dostępu należy automatycznie zalogować się do usługi MS Azure SSO dostęp do programu Ethidex™, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka MS Azure SSO Access for Ethidex Compliance Office™ w panelu dostępu, powinieneś zostać automatycznie zalogowany do ms Azure SSO Access for Ethidex Compliance Office™ dla którego skonfigurowano logowanie jednośliżane. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Wypróbuj usługę Microsoft Azure SSO Access dla programu Ethidex, aby uzyskać zgodność z™ pakietem Office w usłudze Azure AD](https://aad.portal.azure.com/)
+- [Wypróbuj usługę MS Azure SSO Access for Ethidex Compliance Office™ z usługą Azure AD](https://aad.portal.azure.com/)
 

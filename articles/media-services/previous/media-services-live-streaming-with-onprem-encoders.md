@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0d19d68d016a47762fb5d2646ea6ccf74d3ef75
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251039"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476558"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Praca z kanałami odbierania wielu transmisji bitów na żywo z enkoderów lokalnych
 
@@ -112,7 +112,7 @@ Kanał zapewnia wejściowy punkt końcowy (adres URL pozyskiwania), który możn
 
 Podczas tworzenia kanału można uzyskać adresy URL pozyskiwania. Aby uzyskać te adresy URL, kanał nie musi być w stanie **uruchamiania.** Gdy będziesz gotowy, aby rozpocząć wypychanie danych do kanału, kanał musi być w stanie **uruchomiony.** Po rozpoczęciu pozyskiwania danych przez kanał można wyświetlić podgląd strumienia za pomocą adresu URL wersji zapoznawczej.
 
-Masz możliwość pozyskiwania pofragmentowanego strumienia na żywo MP4 (Smooth Streaming) za połączenieM SSL. Aby łowić ssl, upewnij się, że można zaktualizować adres URL pozyskiwania do protokołu HTTPS. Obecnie nie można łykać RTMP przez SSL.
+Masz możliwość pozyskiwania pofragmentowanego strumienia na żywo MP4 (Smooth Streaming) za połączenieM TLS. Aby nalecieć za pośrednictwem protokołu TLS, należy zaktualizować adres URL pozyskiwania do protokołu HTTPS. Obecnie nie można łykać RTMP przez TLS.
 
 #### <a name="keyframe-interval"></a><a id="keyframe_interval"></a>Interwał klatki kluczowej
 Podczas generowania strumienia z wieloma szybkościami transmisji bitów lokalnie używany jest interwał klatek kluczowych określający czas trwania grupy obrazów (GOP) używany przez ten koder zewnętrzny. Po otrzymaniu tego kanału przychodzącego strumienia, można dostarczyć strumień na żywo do aplikacji odtwarzania klienta w dowolnym z następujących formatów: Płynne przesyłanie strumieniowe, Dynamiczne adaptacyjne przesyłanie strumieniowe przez HTTP (DASH) i HTTP Live Streaming (HLS). Podczas przesyłania strumieniowego na żywo hls jest zawsze pakowany dynamicznie. Domyślnie usługa Media Services automatycznie oblicza współczynnik pakowania segmentu HLS (fragmenty na segment) na podstawie interwału klatki kluczowej otrzymanego z kodera na żywo.

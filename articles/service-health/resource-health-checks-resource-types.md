@@ -3,12 +3,12 @@ title: Obsługiwane typy zasobów za pośrednictwem usługi Azure Resource Healt
 description: Obsługiwane typy zasobów za pośrednictwem kondycji zasobów platformy Azure
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 3ba7b308c0c7671df8a652194830cb910cb89acc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cc80147730fdc97b1181690f6e70fc538d4afcc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258306"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478907"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy zasobów i kontrole kondycji w kondycji zasobów platformy Azure
 Poniżej znajduje się pełna lista wszystkich kontroli wykonywanych za pośrednictwem kondycji zasobów według typów zasobów.
@@ -47,6 +47,11 @@ Poniżej znajduje się pełna lista wszystkich kontroli wykonywanych za pośredn
 |Wykonane kontrole|
 |---|
 |<ul><li>Czy można uzyskać do niego kontakt z poziomu centrum danych?</li><li>Czy dostawca zasobów usług Cognitive Services jest dostępny?</li><li>Czy usługa Cognitive Service jest dostępna w odpowiednim regionie?</li><li>Czy operacje odczytu mogą być wykonywane na koncie magazynu, na którym przechowywane są metadane zasobu?</li><li>Czy osiągnięto przydział wywołania interfejsu API?</li><li>Czy osiągnięto limit odczytu wywołania interfejsu API?</li></ul>|
+
+## <a name="microsoftcomputehostgroupshosts"></a>Microsoft.compute/hostgroups/hosts
+|Wykonane kontrole|
+|---|
+|<ul><li>Jest gospodarzem i działa</li><li>Czy sprzęt hosta jest zdegradowany?</li><li>Czy host jest cofnięty?</li><li>Czy usługa sprzętu hosta została zalecona na inny sprzęt?</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |Wykonane kontrole|

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 69e2c053c9fb874889bc3d5b08be6e0c7ce875a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 260ddccc1a1b0bd4090284025b79e20ff5ce4fdc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162909"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475248"
 ---
 # <a name="azure-media-services-concepts"></a>Pojęcia dotyczące usługi Azure Media Services 
 
@@ -97,7 +97,7 @@ Usługa Azure Media Services udostępnia wiele opcji kodowania multimediów w ch
 Podczas rozpoczynania pracy z usługą Media Services, ważne jest, aby zrozumieć różnicę między kodeków i formatów plików.
 Kodeki to oprogramowanie, które implementuje algorytmy kompresji/dekompresji, podczas gdy formaty plików są kontenerami, które przechowują skompresowany film.
 
-Usługa Media Services zapewnia dynamiczne opakowanie, które pozwala dostarczać adaptacyjną zawartość kodowaną MP4 lub smooth streaming w formatach strumieniowych obsługiwanych przez Media Services (MPEG DASH, HLS, Smooth Streaming) bez konieczności ponownego pakowania do tych formatów strumieniowych.
+Usługa Media Services zapewnia dynamiczne pakowanie, które umożliwia dostarczanie adaptacyjnej szybkości transmisji bitów MP4 lub zawartości zakodowanej w trybie smooth streaming w formatach przesyłania strumieniowego obsługiwanych przez usługę Media Services (MPEG DASH, HLS, Smooth Streaming) bez konieczności ponownego pakowania do tych formatów przesyłania strumieniowego.
 
 Aby skorzystać z [dynamicznego pakowania,](media-services-dynamic-packaging-overview.md)musisz zakodować plik antresoli (źródłowej) w zestaw adaptacyjnych plików MP4 o szybkości transmisji bitów lub adaptacyjnych plikach Płynnego przesyłania strumieniowego i mieć co najmniej jeden standardowy lub premium punkt końcowy przesyłania strumieniowego w stanie uruchomionym.
 
@@ -166,7 +166,7 @@ Podczas pracy z usługą Media Services zaleca się zakodowanie plików z antres
 ### <a name="streaming-endpoint"></a>Punkt końcowy przesyłania strumieniowego
 Punkt przesyłania strumieniowego reprezentuje usługę przesyłania strumieniowego, która może dostarczać zawartość bezpośrednio do aplikacji odtwarzacza klienckiego lub do sieci dostarczania zawartości (CDN) w celu dalszej dystrybucji (usługa Azure Media Services zapewnia teraz integrację usługi Azure CDN). Strumień wychodzący z usługi punktu końcowego przesyłania strumieniowego może być strumieniem na żywo lub zasobem wideo na żądanie na koncie usługi Media Services. Klienci platformy Media Services wybierają **standardowy** punkt końcowy przesyłania strumieniowego lub co najmniej jeden punkt końcowy przesyłania strumieniowego **Premium**, zgodnie ze swoimi potrzebami. Standardowy punkt końcowy przesyłania strumieniowego jest odpowiedni dla większości obciążeń przesyłania strumieniowego. 
 
-Standardowy punkt końcowy przesyłania strumieniowego jest odpowiedni dla większości obciążeń przesyłania strumieniowego. Standardowe punkty końcowe przesyłania strumieniowego oferują elastyczność dostarczania zawartości do praktycznie każdego urządzenia poprzez dynamiczne pakowanie do HLS, MPEG-DASH i Smooth Streaming, a także dynamiczne szyfrowanie dla Microsoft PlayReady, Google Widevine, Apple Fairplay i AES128.  Skalują się również od bardzo małych do bardzo dużych odbiorców z tysiącami równoczesnych widzów za pośrednictwem integracji usługi Azure CDN. Jeśli masz zaawansowane obciążenie lub wymagania dotyczące pojemności przesyłania strumieniowego nie pasują do standardowych celów przepustowości punktu końcowego przesyłania strumieniowego lub chcesz kontrolować pojemność usługi StreamingEndpoint w celu obsługi rosnących potrzeb przepustowości, zaleca się, aby przydzielanie jednostek skalowania (nazywanych również jednostkami strumieniowymi premium).
+Standardowy punkt końcowy przesyłania strumieniowego jest odpowiedni dla większości obciążeń przesyłania strumieniowego. Standardowe punkty końcowe przesyłania strumieniowego oferują elastyczność dostarczania zawartości do praktycznie każdego urządzenia za pomocą dynamicznego pakowania w HLS, MPEG-DASH i Smooth Streaming, a także dynamiczne szyfrowanie dla firm Microsoft PlayReady, Google Widevine, Apple Fairplay i AES128.  Skalują się również od bardzo małych do bardzo dużych odbiorców z tysiącami równoczesnych widzów za pośrednictwem integracji usługi Azure CDN. Jeśli masz zaawansowane obciążenie lub wymagania dotyczące pojemności przesyłania strumieniowego nie pasują do standardowych docelowych przepływności punktu końcowego przesyłania strumieniowego lub chcesz kontrolować pojemność usługi StreamingEndpoint do obsługi rosnących potrzeb przepustowości, zaleca się przydzielenie jednostek skalowania (znanych również jako jednostki przesyłania strumieniowego premium).
 
 Zaleca się stosowanie dynamicznego pakowania i/lub szyfrowania dynamicznego.
 
@@ -180,7 +180,7 @@ Domyślnie na koncie usługi Media Services mogą być maksymalnie 2 punkty koń
 Naliczane są tylko wtedy, gdy punkt przesyłania strumieniowego jest w stanie uruchomionym.
 
 ### <a name="asset-delivery-policy"></a>Zasady dostarczania zasobów
-Jednym z kroków w przepływie pracy dostarczania zawartości usługi Media Services jest konfigurowanie [zasad dostarczania dla zasobów,](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)które mają być przesyłane strumieniowo. Zasady dostarczania zasobów informują usługę Media Services, w jaki sposób mają być dostarczane zasób: do którego protokołu przesyłania strumieniowego powinien być dynamicznie pakowany (na przykład MPEG DASH, HLS, Smooth Streaming lub wszystkie), niezależnie od tego, czy chcesz dynamicznie szyfrować zasobów i sposobu (koperta lub wspólne szyfrowanie).
+Jednym z kroków w przepływie pracy dostarczania zawartości usługi Media Services jest konfigurowanie [zasad dostarczania dla zasobów,](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)które mają być przesyłane strumieniowo. Zasady dostarczania zasobów informują usługę Media Services, w jaki sposób ma być dostarczany zasób: do którego protokołu przesyłania strumieniowego powinien być dynamicznie pakowany (na przykład MPEG DASH, HLS, Smooth Streaming lub wszystkie), niezależnie od tego, czy chcesz dynamicznie szyfrować zasób i jak (koperta lub wspólne szyfrowanie).
 
 Jeśli masz zasób zaszyfrowany magazyn, przed przesyłaniem strumieniowego zasobu serwer przesyłania strumieniowego usuwa szyfrowanie magazynu i przesyła strumieniowo zawartość przy użyciu określonych zasad dostarczania. Na przykład, aby dostarczyć zasób zaszyfrowany za pomocą klucza szyfrowania Advanced Encryption Standard (AES), ustaw typ zasad na DynamicEnvelopeEncryption. Aby usunąć szyfrowanie magazynu i przesłać strumieniowo zasób w wyczyszcz, ustaw typ zasad na NoDynamicEncryption.
 
@@ -197,10 +197,10 @@ http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba01
 ### <a name="streaming-urls"></a>Adresy URL przesyłania strumieniowego
 Przesyłanie strumieniowe zawartości do klientów. Aby zapewnić użytkownikom adresy URL przesyłania strumieniowego, należy najpierw utworzyć lokalizator OnDemandOrigin. Tworzenie lokalizatora, daje podstawową ścieżkę do zasobu, który zawiera zawartość, którą chcesz przesyłać strumieniowo. Jednak aby móc przesyłać strumieniowo tę zawartość, należy dalej modyfikować tę ścieżkę. Aby utworzyć pełny adres URL do pliku manifestu przesyłania strumieniowego, należy połączyć wartość ścieżki lokalizatora i nazwę pliku manifestu (nazwa pliku filename.ism). Następnie dołącz /Manifest i odpowiedni format (w razie potrzeby) do ścieżki lokalizatora.
 
-Można również przesyłać strumieniowo zawartość za pomocą połączenia SSL. Aby to zrobić, upewnij się, że adresy URL przesyłania strumieniowego zaczynają się od protokołu HTTPS. Obecnie usługa AMS nie obsługuje ssl z domenami niestandardowymi.  
+Można również przesyłać strumieniowo zawartość za pomocą połączenia TLS. Aby to zrobić, upewnij się, że adresy URL przesyłania strumieniowego zaczynają się od protokołu HTTPS. Obecnie usługa AMS nie obsługuje protokołu TLS z domenami niestandardowymi.  
 
 >[!NOTE]
->Możesz przesyłać strumieniowo za pomocą ssl tylko wtedy, gdy punkt końcowy przesyłania strumieniowego, z którego dostarczasz zawartość, został utworzony po 10 września 2014 r. Jeśli adresy URL przesyłania strumieniowego są oparte na punktach końcowych przesyłania strumieniowego utworzonych po 10 września, adres URL zawiera "streaming.mediaservices.windows.net" (nowy format). Adresy URL przesyłania strumieniowego zawierające "origin.mediaservices.windows.net" (stary format) nie obsługują protokołu SSL. Jeśli adres URL jest w starym formacie i chcesz mieć możliwość przesyłania strumieniowego za pomocą ssl, utwórz nowy punkt końcowy przesyłania strumieniowego. Użyj adresów URL utworzonych na podstawie nowego punktu końcowego przesyłania strumieniowego, aby przesyłać strumieniowo zawartość za pomocą protokołu SSL.
+>Można przesyłać strumieniowo za pomocą protokołu TLS tylko wtedy, gdy punkt końcowy przesyłania strumieniowego, z którego dostarczasz zawartość, został utworzony po 10 września 2014 r. Jeśli adresy URL przesyłania strumieniowego są oparte na punktach końcowych przesyłania strumieniowego utworzonych po 10 września, adres URL zawiera "streaming.mediaservices.windows.net" (nowy format). Adresy URL przesyłania strumieniowego, które zawierają "origin.mediaservices.windows.net" (stary format) nie obsługują protokołu TLS. Jeśli adres URL jest w starym formacie i chcesz mieć możliwość przesyłania strumieniowego za pomocą protokołu TLS, utwórz nowy punkt końcowy przesyłania strumieniowego. Użyj adresów URL utworzonych na podstawie nowego punktu końcowego przesyłania strumieniowego, aby przesyłać strumieniowo zawartość za pomocą protokołu TLS.
 
 Na poniższej liście opisano różne formaty przesyłania strumieniowego i podano przykłady:
 

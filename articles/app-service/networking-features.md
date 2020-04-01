@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bc3d35830d833c0223a400140c53e583d2f6ed37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475429"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474911"
 ---
 # <a name="app-service-networking-features"></a>Funkcje sieciowe usługi App Service
 
@@ -81,7 +81,7 @@ Gdy używasz adresu przypisanego aplikacji, ruch nadal przechodzi przez te same 
 * Obsługa potrzeb SSL opartych na protokoi dla twojej aplikacji
 * Ustawianie dedykowanego adresu aplikacji, który nie jest udostępniany innym osobom
 
-Możesz dowiedzieć się, jak ustawić adres w aplikacji za pomocą [samouczka konfigurowania protokołu SSL opartego na adresach IP][appassignedaddress]. 
+Możesz dowiedzieć się, jak ustawić adres w aplikacji, za pomocą [samouczka Dodawanie certyfikatu TLS/SSL w usłudze Azure App Service][appassignedaddress]. 
 
 ### <a name="access-restrictions"></a>Ograniczenia dostępu 
 

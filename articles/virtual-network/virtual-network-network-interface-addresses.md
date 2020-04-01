@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: a2a85d98bf29e78d58bf0c578ce79943bae21fc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5655a58c3538ac47e8649619b079dc46ee01242
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244968"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473220"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Dodawanie, zmienianie i usuwanie adresów IP dla interfejsów sieciowych platformy Azure
 
@@ -78,7 +78,7 @@ Może być konieczna zmiana metody przypisywania adresu IPv4, zmiana statycznego
 6. Wybierz **pozycję Zapisz**.
 
 >[!NOTE]
->Jeśli podstawowy interfejs sieciowy ma wiele konfiguracji IP i zmieniasz prywatny adres IP podstawowej konfiguracji IP, należy ręcznie ponownie przypisać podstawowe i pomocnicze adresy IP do interfejsu sieciowego w systemie Windows (nie jest wymagane dla systemu Linux) . Aby ręcznie przypisać adresy IP do interfejsu sieciowego w systemie operacyjnym, zobacz [Przypisywanie wielu adresów IP do maszyn wirtualnych](virtual-network-multiple-ip-addresses-portal.md#os-config). Aby uzyskać szczególne uwagi przed ręcznym dodaniem adresów IP do systemu operacyjnego maszyny wirtualnej, zobacz [prywatne](#private) adresy IP. Nie należy dodawać żadnych publicznych adresów IP do systemu operacyjnego maszyny wirtualnej.
+>Jeśli podstawowy interfejs sieciowy ma wiele konfiguracji ip i zmieniasz prywatny adres IP podstawowej konfiguracji IP, należy ręcznie ponownie przypisać podstawowe i pomocnicze adresy IP do interfejsu sieciowego w systemie Windows (nie jest wymagane dla systemu Linux). Aby ręcznie przypisać adresy IP do interfejsu sieciowego w systemie operacyjnym, zobacz [Przypisywanie wielu adresów IP do maszyn wirtualnych](virtual-network-multiple-ip-addresses-portal.md#os-config). Aby uzyskać szczególne uwagi przed ręcznym dodaniem adresów IP do systemu operacyjnego maszyny wirtualnej, zobacz [prywatne](#private) adresy IP. Nie należy dodawać żadnych publicznych adresów IP do systemu operacyjnego maszyny wirtualnej.
 
 **Polecenia**
 
@@ -120,7 +120,7 @@ Oprócz podstawowej konfiguracji ip interfejs sieciowy może mieć przypisane do
 
 - Musi mieć przypisany prywatny adres IPv4 lub IPv6. Jeśli adres jest IPv6, interfejs sieciowy może mieć tylko jedną pomocniczą konfigurację IP. Jeśli adres jest IPv4, interfejs sieciowy może mieć wiele dodatkowych konfiguracji IP przypisane do niego. Aby dowiedzieć się więcej o liczbie prywatnych i publicznych adresów IPv4 można przypisać do interfejsu sieciowego, zobacz artykuł [Limity platformy Azure.](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)
 - Może również mieć publiczny adres IPv4 lub IPv6 przypisany do niego. Przypisywanie wielu adresów IPv4 do interfejsu sieciowego jest przydatne w scenariuszach, takich jak:
-  - Hostowanie wielu witryn sieci Web lub usług z różnymi adresami IP i certyfikatami SSL na jednym serwerze.
+  - Hostowanie wielu witryn lub usług z różnymi adresami IP i certyfikatami TLS/SSL na jednym serwerze.
   - Maszyna wirtualna służąca jako wirtualne urządzenie sieciowe, takie jak zapora lub moduł równoważenia obciążenia.
   - Możliwość dodawania dowolnych prywatnych adresów IPv4 dla dowolnego interfejsu sieciowego do puli zaplecza modułu równoważenia obciążenia platformy Azure. W przeszłości tylko podstawowy adres IPv4 dla podstawowego interfejsu sieciowego można było dodać do puli zaplecza. Aby dowiedzieć się więcej o tym, jak równoważyć wiele konfiguracji IPv4, zobacz [bilansowanie obciążenia wielu konfiguracji IP.](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
   - Możliwość równoważenia obciążenia jednego adresu IPv6 przypisanego do interfejsu sieciowego. Aby dowiedzieć się więcej o tym, jak równoważyć obciążenie prywatnego adresu IPv6, zobacz artykuł [Adresy IPv6 równoważenia obciążenia.](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -136,7 +136,7 @@ Prywatne [adresy IPv4](#ipv4) lub IPv6 umożliwiają maszynie wirtualnej komunik
 Domyślnie serwery DHCP platformy Azure przypisują prywatny adres IPv4 dla [podstawowej konfiguracji IP](#primary) interfejsu sieciowego platformy Azure do interfejsu sieciowego w systemie operacyjnym maszyny wirtualnej. O ile nie jest to konieczne, nigdy nie należy ręcznie ustawiać adresu IP interfejsu sieciowego w systemie operacyjnym maszyny wirtualnej.
 
 > [!WARNING]
-> Jeśli adres IPv4 ustawiony jako podstawowy adres IP interfejsu sieciowego w systemie operacyjnym maszyny wirtualnej jest zawsze inny niż prywatny adres IPv4 przypisany do podstawowej konfiguracji IP podstawowego interfejsu sieciowego podłączonego do maszyny wirtualnej na platformie Azure, tracisz łączność z maszyną wirtualną.
+> Jeśli adres IPv4 ustawiony jako podstawowy adres IP interfejsu sieciowego w systemie operacyjnym maszyny wirtualnej jest zawsze inny niż prywatny adres IPv4 przypisany do podstawowej konfiguracji IP podstawowego interfejsu sieciowego podłączonego do maszyny wirtualnej na platformie Azure, utracisz łączność z maszyną wirtualną.
 
 Istnieją scenariusze, w których konieczne jest ręczne ustawienie adresu IP interfejsu sieciowego w systemie operacyjnym maszyny wirtualnej. Na przykład należy ręcznie ustawić podstawowe i pomocnicze adresy IP systemu operacyjnego Windows podczas dodawania wielu adresów IP do maszyny wirtualnej platformy Azure. W przypadku maszyny wirtualnej systemu Linux może być konieczne ręczne ustawienie pomocniczych adresów IP. Szczegółowe informacje można znaleźć [w aplikacji Dodawanie adresów IP do systemu operacyjnego maszyny Wirtualnej.](virtual-network-multiple-ip-addresses-portal.md#os-config) Jeśli kiedykolwiek chcesz zmienić adres przypisany do konfiguracji IP, zaleca się:
 

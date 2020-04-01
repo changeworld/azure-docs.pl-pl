@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/15/2020
-ms.openlocfilehash: 7745888dcaa1324d4a9d956e93d0504c8da8c026
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/25/2020
+ms.openlocfilehash: 198b78d5bab15057fdb6c7f6d4e8fff9f77d496e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501765"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397087"
 ---
 # <a name="microsoft-flow-connector-preview"></a>Łącznik usługi Microsoft Flow (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Aby uzyskać więcej informacji, zobacz [przykłady użycia łącznika programu 
 
 ![Okno dialogowe logowania](./media/flow/flow-signin.png)
 
-## <a name="authentication"></a>Uwierzytelnianie
+## <a name="authentication"></a>Authentication
 
 Można uwierzytelnić za pomocą poświadczeń użytkownika lub aplikacji usługi AAD.
 
@@ -116,7 +116,7 @@ Użyj polecenia Uruchom kontrolkę i wizualizuj akcję wyników, aby uruchomić 
 ### <a name="run-query-and-list-results"></a>Uruchamianie wyników kwerendy i listy
 
 > [!Note]
-> Jeśli kwerenda zaczyna się od kropki (co oznacza, że jest [to polecenie sterujące),](https://docs.microsoft.com/azure/kusto/management/index)użyj [polecenia Uruchom sterowanie i wizualizuj wyniki](#run-control-command-and-visualize-results)
+> Jeśli kwerenda zaczyna się od kropki (co oznacza, że jest to [polecenie sterujące),](https://docs.microsoft.com/azure/kusto/management/index)użyj [polecenia Uruchom sterowanie i wizualizuj wyniki](#run-control-command-and-visualize-results).
 
 Ta akcja wysyła zapytanie do klastra Kusto. Akcje, które są dodawane później iteracji nad każdym wierszu wyników kwerendy.
 
@@ -130,7 +130,7 @@ Poniższy przykład wyzwala kwerendę co minutę i wysyła wiadomość e-mail na
 ### <a name="run-query-and-visualize-results"></a>Uruchamianie kwerendy i wizualizowanie wyników
         
 > [!Note]
-> Jeśli kwerenda zaczyna się od kropki (co oznacza, że jest [to polecenie sterujące),](https://docs.microsoft.com/azure/kusto/management/index)użyj [polecenia Uruchom sterowanie i wizualizuj wyniki](#run-control-command-and-visualize-results)
+> Jeśli kwerenda zaczyna się od kropki (co oznacza, że jest to [polecenie sterujące),](https://docs.microsoft.com/azure/kusto/management/index)użyj [polecenia Uruchom sterowanie i wizualizuj wyniki](#run-control-command-and-visualize-results).
         
 Użyj uruchom kwerendę i zwizualizuj wyniki akcji, aby wizualizować wynik zapytania Kusto jako tabelę lub wykres. Na przykład użyj tego przepływu, aby otrzymywać codzienne raporty ICM pocztą e-mail. 
     
@@ -147,17 +147,21 @@ Możesz dołączyć krok w dowolnym przepływie, aby wysyłać raporty pocztą e
 
 1. Wybierz **+ Nowy krok,** aby dodać nowy krok do przepływu.
 1. W polu wyszukiwania wprowadź pozycję Office 365 i wybierz pozycję **Office 365 Outlook**.
-1. Wybierz akcję **Wyślij wiadomość e-mail**.
+1. Wybierz **pozycję Wyślij wiadomość e-mail (V2)**.
 1. Wprowadź adres e-mail do miejsca, w którym ma zostać wysłany raport e-mail.
 1. Wprowadź temat wiadomości e-mail.
-1. W polu *Treść* z pola Zawartość dynamiczna wybierz pozycję **Obiekt**.
+1. Wybierz **widok Kod**.
+1. Umieść kursor w polu *Treść* i wybierz pozycję **Dodaj zawartość dynamiczną**.
+1. Wybierz **BodyHtml**.
+    ![Wyślij wiadomość e-mail](./media/flow/flow-send-email.png)
 1. Wybierz pozycję **Pokaż opcje zaawansowane**.
 1. W polu *Nazwa załączników -1* wybierz pozycję **Nazwa załącznika**.
 1. W polu *Zawartość załączników* wybierz pozycję **Zawartość załącznika**.
+1. W razie potrzeby dodaj więcej załączników. 
 1. W razie potrzeby ustaw poziom ważności.
 1. Wybierz **pozycję Zapisz**.
 
-![Wyślij wiadomość e-mail](./media/flow/flow-sendemail.png)
+![Wyślij wiadomość e-mail](./media/flow/flow-add-attachments.png)
 
 ## <a name="check-if-your-flow-succeeded"></a>Sprawdź, czy przepływ się powiódł
 

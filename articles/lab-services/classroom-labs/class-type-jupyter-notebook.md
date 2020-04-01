@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: dfb133f9aa3dd9b76f8b4ea4c6188cfaf9a67b75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 371c2186d44469a22b138255fb513761a9be4437
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444115"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478216"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Skonfiguruj laboratorium do nauczania nauki o danych za pomocą notesów Pythona i Jupytera
 
@@ -34,10 +34,10 @@ Włącz ustawienia opisane w poniższej tabeli dla konta laboratorium. Aby uzysk
 
 | Ustawienie konta laboratorium | Instrukcje |
 | ------------------- | ------------ |
-| Obraz portalu Marketplace | Włącz obraz [maszyny wirtualnej do nauki o danych — windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) do użycia na koncie laboratorium. |
+| Obraz portalu Marketplace | Włącz obraz [maszyny wirtualnej do nauki o danych — windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) do użycia na koncie laboratorium. |
 
 >[!TIP]
->W tym artykule skupimy się na konfigurowaniu komputera szablonu korzystającego z systemu operacyjnego Windows Server.  Jest również możliwe skonfigurowanie klasy nauki o danych za pomocą notesów Języka Python i Jupyter przy użyciu [maszyny wirtualnej do nauki o danych dla systemu Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) lub [maszyny wirtualnej do nauki o danych dla systemu Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) obrazów z witryny Azure Marketplace.
+>W tym artykule skupimy się na konfigurowaniu komputera szablonu korzystającego z systemu operacyjnego Windows Server.  Jest również możliwe skonfigurowanie klasy nauki o danych za pomocą notesów języka Python i Jupyter przy użyciu [obrazów maszyny wirtualnej do nauki o danych dla systemu Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) z portalu Azure Marketplace.
 
 ### <a name="lab-settings"></a>Ustawienia laboratorium
 
@@ -50,7 +50,7 @@ Podczas konfigurowania laboratorium w klasie należy używać ustawień w poniż
 
 ## <a name="template-machine"></a>Maszyna szablonu
 
-Maszyna wirtualna do nauki o danych — obraz [systemu Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) zawiera niezbędne struktury uczenia głębokiego i narzędzia wymagane dla tego typu klasy.  Obraz zawiera notesy Jupyter i Visual Studio Code.  [Notebooki Jupyter](http://jupyter-notebook.readthedocs.io) to aplikacja internetowa, która umożliwia analitykom danych do wykonywania nieprzetworzonych danych, uruchamiania obliczeń i zobacz wyniki w tym samym środowisku.  Dla naszego komputera szablonu aplikacja internetowa będzie działać lokalnie.  [Visual Studio Code](https://code.visualstudio.com/) to IDE, który zapewnia bogate środowisko interaktywne podczas pisania i testowania notesu.  Aby uzyskać więcej informacji, zobacz [Praca z notesami jupyter w programie Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support).
+Maszyna wirtualna do nauki o danych — obraz [systemu Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) zawiera niezbędne struktury uczenia głębokiego i narzędzia wymagane dla tego typu klasy.  Obraz zawiera notesy Jupyter i Visual Studio Code.  [Notebooki Jupyter](http://jupyter-notebook.readthedocs.io) to aplikacja internetowa, która umożliwia analitykom danych do wykonywania nieprzetworzonych danych, uruchamiania obliczeń i zobacz wyniki w tym samym środowisku.  Dla naszego komputera szablonu aplikacja internetowa będzie działać lokalnie.  [Visual Studio Code](https://code.visualstudio.com/) to IDE, który zapewnia bogate środowisko interaktywne podczas pisania i testowania notesu.  Aby uzyskać więcej informacji, zobacz [Praca z notesami jupyter w programie Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support).
 
 Zadaniem do skonfigurowania klasy jest dostarczenie notesów lokalnych.  Aby uzyskać instrukcje dotyczące korzystania z przykładów usługi Azure Machine Learning, zobacz [jak skonfigurować środowisko za pomocą notesów jupyter.](../../machine-learning/how-to-configure-environment.md#jupyter)  Można również podać własne notesy na komputerze szablonu.  Notesy zostaną skopiowane do wszystkich komputerów uczniów po opublikowaniu szablonu.
 

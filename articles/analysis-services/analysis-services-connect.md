@@ -4,19 +4,19 @@ description: Dowiedz się, jak łączyć się z serwerem usług Analysis Service
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3231b46060cbb755ada000473c8fbe873cc51ef1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2875959a833134131fa6db6d51df0c2b47a39377
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73147319"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411313"
 ---
 # <a name="connecting-to-servers"></a>Łączenie z serwerami
 
-W tym artykule opisano łączenie się z serwerem przy użyciu aplikacji do modelowania danych i zarządzania, takich jak SQL Server Management Studio (SSMS) lub Visual Studio z projektami analysis services lub z aplikacjami raportowania klienta, takimi jak Microsoft Excel, Power BI Aplikacje stacjonarne lub niestandardowe. Połączenia z usługami Azure Analysis Services używają protokołu HTTPS.
+W tym artykule opisano łączenie się z serwerem przy użyciu aplikacji do modelowania danych i zarządzania, takich jak SQL Server Management Studio (SSMS) lub Visual Studio z projektami analysis services lub z aplikacjami raportowania klienta, takimi jak Microsoft Excel, Power BI Desktop lub aplikacje niestandardowe. Połączenia z usługami Azure Analysis Services używają protokołu HTTPS.
 
 ## <a name="client-libraries"></a>Biblioteki klienta
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: fedc1f6ce8fbaeaf0d2cae3a1b04169192868e61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6683c1b78b0e7ecba162026708c83843e2c08180
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270695"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478889"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Łączenie się z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps przy użyciu środowiska usługi integracji (ISE)
 
@@ -32,7 +32,7 @@ W tym artykule pokazano, jak wykonać te zadania przy użyciu witryny Azure port
 * Stwórz ise.
 * Dodaj dodatkową pojemność do ise.
 
-Można również utworzyć środowisku ISE przy użyciu interfejsu API REST aplikacji logiki, w tym konfigurowania kluczy zarządzanych przez klienta:
+Można również utworzyć środowisku ISE przy użyciu [przykładowego szablonu szybkiego startu usługi Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) lub przy użyciu interfejsu API REST aplikacji logiki, w tym konfigurowania kluczy zarządzanych przez klienta:
 
 * [Tworzenie środowiska usługi integracji (ISE) przy użyciu interfejsu API REST aplikacji logiki](../logic-apps/create-integration-service-environment-rest-api.md)
 * [Konfigurowanie kluczy zarządzanych przez klienta w celu szyfrowania danych w stanie spoczynku dla ise](../logic-apps/customer-managed-keys-integration-service-environment.md)

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 10/22/2019
+ms.date: 03/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c2d31ef46dfba31a8f217f68e8d5f98b67d58da5
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75422654"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410595"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Samouczek: Tworzenie pierwszego pakietu dostępu w zarządzaniu uprawnieniami usługi Azure AD
 
@@ -84,79 +84,83 @@ Katalog zasobów ma jeden lub więcej zasobów do udostępnienia. W tym kroku ut
 
 1. W witrynie Azure portal w lewej nawigacji kliknij pozycję **Usługa Azure Active Directory**.
 
-1. W menu po lewej stronie kliknij pozycję **Zarządzanie tożsamościami**
+2. W menu po lewej stronie kliknij pozycję **Zarządzanie tożsamościami**
 
-1. W menu po lewej stronie kliknij pozycję **Pakiety programu Access**.  Jeśli widzisz **odmowy programu Access**, upewnij się, że licencja usługi Azure AD Premium P2 jest obecny w katalogu.
+3. W menu po lewej stronie kliknij pozycję **Pakiety programu Access**.  Jeśli widzisz **odmowy programu Access**, upewnij się, że licencja usługi Azure AD Premium P2 jest obecny w katalogu.
 
-1. Kliknij **pozycję Nowy pakiet dostępu**.
+4. Kliknij **pozycję Nowy pakiet dostępu**.
 
     ![Zarządzanie uprawnieniami w witrynie Azure portal](./media/entitlement-management-shared/access-packages-list.png)
 
-1. Na karcie **Podstawy** wpisz nazwę pakiet dostępu **kampanii marketingowej** i opis **Dostęp do zasobów kampanii**.
+5. Na karcie **Podstawy** wpisz nazwę pakiet dostępu **kampanii marketingowej** i opis **Dostęp do zasobów kampanii**.
 
-1. Pozostaw listę rozwijaną **Katalog** ustawioną na **Ogólne**.
+6. Pozostaw listę rozwijaną **Katalog** ustawioną na **Ogólne**.
 
     ![Nowy pakiet dostępu — karta Podstawy](./media/entitlement-management-access-package-first/basics.png)
 
-1. Kliknij **przycisk Dalej,** aby otworzyć kartę **Role zasobów.**
+7. Kliknij **przycisk Dalej,** aby otworzyć kartę **Role zasobów.**
 
     Na tej karcie należy wybrać zasoby i rolę zasobu do uwzględnienia w pakiecie dostępu.
 
-1. Kliknij pozycję **Grupy i zespoły**.
+8. Kliknij pozycję **Grupy i zespoły**.
 
-1. W okienku Wybierz grupy znajdź i wybierz wcześniej utworzoną grupę **Zasoby marketingowe.**
+9. W okienku Wybierz grupy znajdź i wybierz wcześniej utworzoną grupę **Zasoby marketingowe.**
 
     Domyślnie są widoczne grupy wewnątrz i na zewnątrz katalogu **ogólnego.** Po wybraniu grupy poza **katalogiem ogólnym** zostanie on dodany do katalogu **ogólnego.**
 
     ![Nowy pakiet dostępu — karta Role zasobów](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
-1. Kliknij **przycisk Wybierz,** aby dodać grupę do listy.
+10. Kliknij **przycisk Wybierz,** aby dodać grupę do listy.
 
-1. Z listy rozwijanej **Rola** wybierz pozycję **Członek**.
+11. Z listy rozwijanej **Rola** wybierz pozycję **Członek**.
 
     ![Nowy pakiet dostępu — karta Role zasobów](./media/entitlement-management-access-package-first/resource-roles.png)
 
-1. Kliknij **przycisk Dalej,** aby otworzyć kartę **Żądania.**
+    >[!NOTE]
+    > Podczas korzystania z [grup dynamicznych](../users-groups-roles/groups-create-rule.md) nie będzie widać żadnych innych ról dostępnych oprócz właściciela. Jest to celowe.
+    > ![Omówienie scenariusza](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+
+12. Kliknij **przycisk Dalej,** aby otworzyć kartę **Żądania.**
 
     Na tej karcie należy utworzyć zasady żądania. *Zasady* definiuje reguły lub barierki dostępu do pakietu dostępu. Tworzenie zasad, które umożliwiają określonego użytkownika w katalogu zasobów, aby zażądać tego pakietu dostępu.
 
-1. W sekcji **Użytkownicy, którzy mogą żądać dostępu,** kliknij pozycję **Dla użytkowników w katalogu,** a następnie kliknij pozycję **Konkretne użytkownicy i grupy**.
+13. W sekcji **Użytkownicy, którzy mogą żądać dostępu,** kliknij pozycję **Dla użytkowników w katalogu,** a następnie kliknij pozycję **Konkretne użytkownicy i grupy**.
 
     ![Nowy pakiet dostępu — karta Żądania](./media/entitlement-management-access-package-first/requests.png)
 
-1. Kliknij **pozycję Dodaj użytkowników i grupy**.
+14. Kliknij **pozycję Dodaj użytkowników i grupy**.
 
-1. W okienku Wybierz użytkowników i grupy wybierz wcześniej utworzonego użytkownika **Requestor1.**
+15. W okienku Wybierz użytkowników i grupy wybierz wcześniej utworzonego użytkownika **Requestor1.**
 
     ![Nowy pakiet dostępu — karta Żądania — wybieranie użytkowników i grup](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-1. Kliknij **pozycję Wybierz**.
+16. Kliknij **pozycję Wybierz**.
 
-1. Przewiń w dół do sekcji **Zatwierdzanie** i **Włączanie żądań.**
+17. Przewiń w dół do sekcji **Zatwierdzanie** i **Włączanie żądań.**
 
-1. Zostaw **wymagaj zatwierdzenia** ustawionego na **Nie**.
+18. Zostaw **wymagaj zatwierdzenia** ustawionego na **Nie**.
 
-1. W przypadku **opcji Włącz żądania**kliknij przycisk **Tak,** aby włączyć żądanie tego pakietu dostępu zaraz po jego utworzeniu.
+19. W przypadku **opcji Włącz żądania**kliknij przycisk **Tak,** aby włączyć żądanie tego pakietu dostępu zaraz po jego utworzeniu.
 
     ![Nowy pakiet dostępu — karta Żądania — zatwierdzanie i włączanie żądań](./media/entitlement-management-access-package-first/requests-approval-enable.png)
 
-1. Kliknij **przycisk Dalej,** aby otworzyć kartę **Cykl życia.**
+20. Kliknij **przycisk Dalej,** aby otworzyć kartę **Cykl życia.**
 
-1. W sekcji **Wygasanie** ustaw **przypisania pakietów programu Access wygaśnie** na **Liczbę dni**.
+21. W sekcji **Wygasanie** ustaw **przypisania pakietów programu Access wygaśnie** na **Liczbę dni**.
 
-1. Ustaw **przydziały wygasają po** **30** dniach.
+22. Ustaw **przydziały wygasają po** **30** dniach.
 
     ![Nowy pakiet dostępu — karta Cykl życia](./media/entitlement-management-access-package-first/lifecycle.png)
 
-1. Kliknij **przycisk Dalej,** aby otworzyć kartę **Recenzja + Utwórz.**
+23. Kliknij **przycisk Dalej,** aby otworzyć kartę **Recenzja + Utwórz.**
 
     ![Nowy pakiet dostępu — recenzja + karta Utwórz](./media/entitlement-management-access-package-first/review-create.png)
 
     Po kilku chwilach powinno zostać wyświetlone powiadomienie, że pakiet dostępu został pomyślnie utworzony.
 
-1. W menu po lewej stronie pakietu dostępu kampanii marketingowej kliknij pozycję **Przegląd**.
+24. W menu po lewej stronie pakietu dostępu kampanii marketingowej kliknij pozycję **Przegląd**.
 
-1. Skopiuj **łącze Mój portal programu Access**.
+25. Skopiuj **łącze Mój portal programu Access**.
 
     Użyjesz tego linku do następnego kroku.
 

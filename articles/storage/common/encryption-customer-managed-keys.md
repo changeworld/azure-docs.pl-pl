@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6a3447a88aea1087c7ec327a956044ea94e793e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b5712094b9821dfa041cd5ba8617e86f7231bde
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79410040"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478022"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Zarządzanie szyfrowaniem usługi Azure Storage za pomocą kluczy zarządzanych przez klienta za pomocą usługi Azure Key Vault
 
@@ -51,7 +51,7 @@ Klucze zarządzane przez klienta można włączyć tylko na istniejących kontac
 
 Podczas konfigurowania klucza zarządzanego przez klienta usługa Azure Storage zawija główny klucz szyfrowania danych dla konta kluczem zarządzanym przez klienta w skojarzonym magazynie kluczy. Włączenie kluczy zarządzanych przez klienta nie wpływa na wydajność i staje się skuteczne natychmiast.
 
-Podczas modyfikowania klucza używanego do szyfrowania usługi Azure Storage przez włączenie lub wyłączenie kluczy zarządzanych przez klienta, zaktualizowanie wersji klucza lub określenie innego klucza, zmienia się szyfrowanie klucza głównego, ale dane na koncie usługi Azure Storage nie są muszą być ponownie zaszyfrowane.
+Podczas modyfikowania klucza używanego do szyfrowania usługi Azure Storage przez włączenie lub wyłączenie kluczy zarządzanych przez klienta, aktualizowanie wersji klucza lub określanie innego klucza, a następnie szyfrowanie klucza głównego zmienia się, ale dane na koncie usługi Azure Storage nie muszą być ponownie szyfrowane.
 
 Po włączeniu lub wyłączeniu kluczy zarządzanych przez klienta lub podczas modyfikowania klucza lub wersji klucza zmienia się ochrona głównego klucza szyfrowania, ale dane na koncie usługi Azure Storage nie muszą być ponownie szyfrowane.
 
@@ -68,7 +68,7 @@ Aby dowiedzieć się, jak używać kluczy zarządzanych przez klienta za pomocą
 
 Aby włączyć klucze zarządzane przez klienta na koncie magazynu, należy użyć usługi Azure Key Vault do przechowywania kluczy. Należy włączyć właściwości **Usuwanie nietrwałe** i **Nie przeczyszczaj** w magazynie kluczy.
 
-Tylko klucze RSA o rozmiarze 2048 są obsługiwane za pomocą szyfrowania usługi Azure Storage. Aby uzyskać więcej informacji o kluczach, zobacz **Klucze magazynu kluczy,** wpisy tajne i certyfikaty usługi Azure Key Vault — informacje o [kluczach, wpisach tajnych i certyfikatach](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)usługi Azure Key Vault .
+Tylko 2048-bitowe klucze RSA i RSA-HSM są obsługiwane za pomocą szyfrowania usługi Azure Storage. Aby uzyskać więcej informacji o kluczach, zobacz **Klucze magazynu kluczy,** wpisy tajne i certyfikaty usługi Azure Key Vault — informacje o [kluczach, wpisach tajnych i certyfikatach](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)usługi Azure Key Vault .
 
 ## <a name="rotate-customer-managed-keys"></a>Obracanie kluczy zarządzanych przez klienta
 

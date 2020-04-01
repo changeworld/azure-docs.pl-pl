@@ -3,12 +3,12 @@ title: Zmienianie ustawień klastra sieci szkieletowej usług Azure
 description: W tym artykule opisano ustawienia sieci szkieletowej i zasady uaktualniania sieci szkieletowej, które można dostosować.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: a4e64a4db70d419a3ef6441545d53abd298c85bb
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8ca40791e625f1ea5904c4e2516e3f211ba551cf
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346793"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477898"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosowywanie ustawień klastra usługi Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej klastra sieci szkieletowej usług, które można dostosować. W przypadku klastrów hostowanych na platformie Azure można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Uaktualnianie konfiguracji klastra platformy Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych można dostosować ustawienia, aktualizując plik *ClusterConfig.json* i wykonując uaktualnienie konfiguracji w klastrze. Aby uzyskać więcej informacji, zobacz [Uaktualnianie konfiguracji autonomicznego klastra](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -29,7 +29,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |Rozmiar bodyChunkSize |Uint, wartość domyślna to 16384 |Dynamiczny| Podaje rozmiar fragmentu w bajtach używanych do odczytu treści. |
 |Żużel w crlchecking|uint, domyślnie jest 0x40000000 |Dynamiczny| Flagi do sprawdzania poprawności łańcucha certyfikatów aplikacji/usługi; na przykład sprawdzanie crl 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY Ustawienie 0 wyłącza sprawdzanie CRL Pełna lista obsługiwanych wartości jest udokumentowana przez dwFlags certGetCertificateChain:https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |Domyślny limit czasuhttprequest |Czas w sekundach. domyślnie wynosi 120 |Dynamiczny|Określ czas w sekundach.  Daje domyślny limit czasu żądania dla żądań http przetwarzanych w bramie aplikacji http. |
-|Certyfikat ForwardClientCertificate|bool, domyślnie jest FALSE|Dynamiczny|Po ustawieniu na false, reverse proxy nie zażąda certyfikatu klienta. Po ustawieniu na wartość true, reverse proxy zażąda certyfikatu klienta podczas uzgadniania SSL i przekazuje ciąg formatu PEM zakodowanego base64 do usługi w nagłówku o nazwie X-Client-Certificate.Usługa może zakończyć się niepowodzeniem żądania z odpowiednim kodem stanu po sprawdzeniu danych certyfikatu. Jeśli jest to prawda, a klient nie przedstawia certyfikatu, odwrócony serwer proxy prześli pusty nagłówek i pozwoli serwisowi obsłużyć sprawę. Odwrócony serwer proxy będzie działał jako warstwa przezroczysta. Aby dowiedzieć się więcej, zobacz [Konfigurowanie uwierzytelniania certyfikatów klienta](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
+|Certyfikat ForwardClientCertificate|bool, domyślnie jest FALSE|Dynamiczny|Po ustawieniu na false, reverse proxy nie zażąda certyfikatu klienta. Po ustawieniu na wartość true, reverse proxy zażąda certyfikatu klienta podczas uzgadniania SSL i przekazuje ciąg formatu PEM zakodowany base64 do usługi w nagłówku o nazwie X-Client-Certificate.Usługa może zakończyć się niepowodzeniem żądania z odpowiednim kodem stanu po sprawdzeniu danych certyfikatu. Jeśli jest to prawda, a klient nie przedstawia certyfikatu, odwrócony serwer proxy prześli pusty nagłówek i pozwoli serwisowi obsłużyć sprawę. Odwrócony serwer proxy będzie działał jako warstwa przezroczysta. Aby dowiedzieć się więcej, zobacz [Konfigurowanie uwierzytelniania certyfikatów klienta](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
 |GatewayAuthCredentialType |ciąg, domyślnie jest "Brak" |Statyczny| Wskazuje typ poświadczeń zabezpieczeń do użycia w punkcie końcowym bramy aplikacji http Prawidłowe wartości to Brak/X509. |
 |GatewayX509CertificateFindType |ciąg, domyślnie jest "FindByThumbprint" |Dynamiczny| Wskazuje sposób wyszukiwania certyfikatu w magazynie określonym przez GatewayX509CertificateStoreName obsługiwana wartość: FindByThumbprint; ZnajdźNazjectName. |
 |GatewayX509CertificateFindValue | ciąg, domyślnie jest "" |Dynamiczny| Wartość filtru wyszukiwania używana do lokalizowania certyfikatu bramy aplikacji http. Ten certyfikat jest skonfigurowany w punkcie końcowym https i może również służyć do weryfikacji tożsamości aplikacji, jeśli jest to potrzebne przez usługi. Najpierw wyszukuje się wartość FindValue; a jeśli tak nie jest; FindValueSecondary jest spojrzał w górę. |
@@ -55,9 +55,9 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |Rozmiar MinReplicaSetSize|int, wartość domyślna to 0|Statyczny|Rozmiar MinReplicaSetSize dla backuprestoreservice |
-|Miejsca docelowe|ciąg, domyślnie jest ""|Statyczny|  Usługa PlacementConstraints for BackupRestore |
+|Miejsca docelowe|ciąg, domyślnie jest ""|Statyczny|    Usługa PlacementConstraints for BackupRestore |
 |Drukarka SecretEncryptionCertThumbprint|ciąg, domyślnie jest ""|Dynamiczny|Odcisk palca certyfikatu szyfrowania tajnego X509 |
-|SecretEncryptionCertX509StoreName|ciąg, domyślnie jest "Mój"|   Dynamiczny|    Wskazuje to certyfikat używany do szyfrowania i odszyfrowywania creds Nazwa magazynu certyfikatów X.509, który jest używany do szyfrowania poświadczeń magazynu odszyfrowywania używanych przez usługę przywracania kopii zapasowej |
+|SecretEncryptionCertX509StoreName|ciąg, domyślnie jest "Mój"|    Dynamiczny|    Wskazuje to certyfikat używany do szyfrowania i odszyfrowywania creds Nazwa magazynu certyfikatów X.509, który jest używany do szyfrowania poświadczeń magazynu odszyfrowywania używanych przez usługę przywracania kopii zapasowej |
 |Rozmiar zestawu TargetReplicaSetSize|int, wartość domyślna to 0|Statyczny| Rozmiar zestawu TargetReplicaSetSize dla backuprestoreservice |
 
 ## <a name="clustermanager"></a>Menedżer klastra
@@ -147,7 +147,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |Rozmiar MinReplicaSetSize|int, wartość domyślna to 0|Statyczny|Usługa MinReplicaSetSize for EventStore |
-|Miejsca docelowe|ciąg, domyślnie jest ""|Statyczny|  Usługa PlacementConstraints for EventStore |
+|Miejsca docelowe|ciąg, domyślnie jest ""|Statyczny|    Usługa PlacementConstraints for EventStore |
 |Rozmiar zestawu TargetReplicaSetSize|int, wartość domyślna to 0|Statyczny| Usługa TargetReplicaSetSize for EventStore |
 
 ## <a name="fabricclient"></a>TkaninaClient
@@ -270,7 +270,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |CommonNameNtlmPasswordSecret|SecureString, domyślnie jest wspólny::SecureString(")| Statyczny|Klucz tajny hasła, który używany jako materiał siewny wygenerował to samo hasło podczas korzystania z uwierzytelniania NTLM |
 |DiskSpaceHealthReportingIntervalWhenCloseToOutOfDiskSpace |TimeSpan, domyślnie jest wspólny::TimeSpan::FromMinutes(5)|Dynamiczny|Określ czas w sekundach. Przedział czasu między sprawdzaniem miejsca na dysku do raportowania zdarzenia kondycji, gdy dysk jest bliski braku miejsca. |
 |DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |TimeSpan, domyślnie jest wspólny::TimeSpan::FromMinutes(15)|Dynamiczny|Określ czas w sekundach. Przedział czasu między sprawdzaniem miejsca na dysku do raportowania zdarzenia kondycji, gdy na dysku jest wystarczająco dużo miejsca. |
-|EnableImageStoreHealthReporting (Raportowanie o stanie zdrowia w sieci) |bool, domyślnie jest PRAWDA |Statyczny|Config, aby ustalić, czy usługa magazynu plików powinna zgłaszać jego kondycję. |
+|EnableImageStoreHealthReporting (Raportowanie o stanie zdrowia w sieci) |bool, domyślnie jest PRAWDA    |Statyczny|Config, aby ustalić, czy usługa magazynu plików powinna zgłaszać jego kondycję. |
 |FreeDiskSpaceNotificationSizeInKB|int64, domyślnie jest\*to 25 1024 |Dynamiczny|Rozmiar wolnego miejsca na dysku, poniżej którego może wystąpić ostrzeżenie o kondycji. Minimalna wartość tego config i FreeDiskSpaceNotificationThresholdPercentage config są używane do określenia wysyłania ostrzeżenia o kondycji. |
 |FreeDiskSpaceNotificationThresholdPercentage|podwójne, domyślnie jest to 0,02 |Dynamiczny|Procent wolnego miejsca na dysku, poniżej którego może wystąpić ostrzeżenie o kondycji. Minimalna wartość tego config i FreeDiskSpaceNotificationInMB config są używane do określenia wysyłania ostrzeżenia o kondycji. |
 |Generowanie konta 1Klinamuname| bool, domyślnie jest PRAWDA|Statyczny|Określa, czy konto ma być generowane z algorytmem generowania nazwy użytkownika V1. Począwszy od sieci szkieletowej usług w wersji 6.1; konto z generowaniem v2 jest zawsze tworzone. Konto V1 jest niezbędne w przypadku uaktualnień z/do wersji, które nie obsługują generacji V2 (przed wersją 6.1).|
@@ -547,7 +547,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |MinPlacementInterval | Czas w sekundach, wartość domyślna to 1 |Dynamiczny| Określ czas w sekundach. Określa minimalną ilość czasu, który musi upłynąć przed dwoma kolejnymi rundami umieszczania. |
 |MoveExistingReplicaForPlacement | Bool, wartość domyślna jest true |Dynamiczny|Ustawienie, które określa, czy przenieść istniejącą replikę podczas umieszczania. |
 |RuchPerPartitionPoliczaniePoliczanieInterwalne | Czas w sekundach, domyślnie to 600 |Statyczny| Określ czas w sekundach. Wskazać długość przeszłego interwału, dla którego można śledzić ruchy repliki dla każdej partycji (używane wraz z MovementPerPartitionThrottleThreshold). |
-|RuchPerPartitionThrottleThreshold | Uint, wartość domyślna to 50 |Dynamiczny| Dla partycji nie wystąpi żaden ruch związany z równoważeniem, jeśli liczba ruchów związanych z równoważeniem replik tej partycji osiągnęła lub przekroczyła w poprzednim przedziale czasowym RuchPerPartitionThrottleCountingInterval. |
+|RuchPerPartitionThrottleThreshold | Uint, wartość domyślna to 50 |Dynamiczny| Nie ruch związany z równoważeniem wystąpi dla partycji, jeśli liczba równoważenia powiązanych ruchów dla replik tej partycji osiągnęła lub przekroczyła MovementPerFailoverUnitThrottleThreshold w poprzednim przedziale wskazanym przez MovementPerPartitionThrottleCountingInterval. |
 |MoveParentToFixAffinityWiększość | Bool, wartość domyślna to false |Dynamiczny| Ustawienie, które określa, czy repliki nadrzędne mogą być przenoszone w celu naprawienia ograniczeń koligacji.|
 |Usługi częściowo zawarte | Bool, wartość domyślna jest true |Dynamiczny| Określa, czy wszystkie repliki usługi w klastrze zostaną umieszczone "wszystko lub nic" biorąc pod uwagę ograniczone odpowiednie węzły dla nich.|
 |PlaceChildWithoutParent | Bool, wartość domyślna jest true | Dynamiczny|Ustawienie, które określa, czy replika usługi podrzędnej mogą być umieszczone, jeśli nie replika nadrzędna jest w górę. |
@@ -568,8 +568,8 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |TraceCRMReasons |Bool, wartość domyślna jest true |Dynamiczny|Określa, czy mają być śledzeni przyczyny ruchów wystawionych przez program CRM do kanału zdarzeń operacyjnych. |
 |UaktualnienieDomainConstraintPriority | Int, wartość domyślna to 1| Dynamiczny|Określa priorytet ograniczenia domeny uaktualnienia: 0: Hard; 1: Miękki; negatywne: Ignoruj. |
 |Raporty UseMoveCostReports | Bool, wartość domyślna to false | Dynamiczny|Nakazuje LB zignorować element kosztu funkcji oceniania; potencjalnie dużą liczbę ruchów w celu uzyskania lepszego wyważonego rozmieszczenia. |
-|UżyjSeparateSecondaryLoad | Bool, wartość domyślna jest true | Dynamiczny|Ustawienie, które określa, czy należy użyć innego obciążenia pomocniczego. |
-|UżyjSeparateSecondaryMoveCost|Bool, domyślnie jest FALSE | Dynamiczny|Ustawienie, które określa, czy PLB należy użyć innego kosztu przeniesienia dla dodatkowego w każdym węźle Jeśli UseSeparateSecondaryMoveCost jest wyłączony: - Zgłoszony koszt przeniesienia dla pomocniczego w jednym węźle spowoduje zastąpienie kosztu przeniesienia dla każdego pomocniczego (we wszystkich innych węzłach) Jeśli UseSeparateSecondaryMoveObst jest włączony: - Zgłoszony koszt przeniesienia dla dodatkowego w jednym węźle zacznie obowiązywać tylko w tym pomocniczym (bez wpływu na pomocnicze w innych węzłach) - Jeśli wystąpi awaria repliki - nowa replika jest tworzona z domyślnym kosztem przeniesienia określonym w usłudze poziom - Jeśli PLB przenosi istniejącą replikę - koszty przeniesienia idzie z nim |
+|UżyjSeparateSecondaryLoad | Bool, wartość domyślna jest true | Dynamiczny|Ustawienie, które określa, czy oddzielne obciążenie powinno być używane dla replik pomocniczych. |
+|UżyjSeparateSecondaryMoveCost | Bool, wartość domyślna to false | Dynamiczny|Ustawienie, które określa, czy oddzielny koszt przeniesienia powinien być używany dla replik pomocniczych. |
 |Poprawność poprawnościzaceptujconstraint | Bool, wartość domyślna jest true |Dynamiczny| Określa, czy wyrażenie PlacementConstraint dla usługi jest sprawdzane podczas aktualizowaniem service's ServiceDescription. |
 |ValidatePrimaryPlacementConstraintOnPromote| Bool, domyślnie jest PRAWDA |Dynamiczny|Określa, czy wyrażenie PlacementConstraint dla usługi jest oceniane pod kątem preferencji podstawowych w trybie failover. |
 |Pełny Raport ZdrowiaJętnik | Int, wartość domyślna to 20 | Dynamiczny|Określa, ile razy replika musi pozostać nieumieszczona przed zgłoszeniem ostrzeżenia o kondycji (jeśli jest włączone pełne raportowanie kondycji). |
@@ -685,7 +685,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |UstawieniaX509StoreName| ciąg, domyślnie jest "MY"| Dynamiczny|Magazyn certyfikatów X509 używany przez fabrykę do ochrony konfiguracji |
 |UseClusterCertForIpcServerTlsBezpieczeństwo|bool, domyślnie jest FALSE|Statyczny|Określa, czy do zabezpieczania jednostki transportu TLS serwera IPC Server ma być używany certyfikat klastra |
 |X509Folder|ciąg, domyślnie jest /var/lib/waagent|Statyczny|Folder, w którym znajdują się certyfikaty X509 i klucze prywatne |
-|TLS1_2_CipherList| ciąg| Statyczny|Jeśli jest ustawiona na niepusty ciąg; zastępuje obsługiwana listę szyfrowania dla protokołu TLS1.2 i poniżej. Zobacz dokumentację "otwiera szyfry" w celu pobrania obsługiwanej listy szyfrów i format listy Przykład silnej listy szyfrów dla TLS1.2: "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384: ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256" Dotyczy tylko Linuksa. |
+|TLS1_2_CipherList| ciąg| Statyczny|Jeśli jest ustawiona na niepusty ciąg; zastępuje obsługiwana listę szyfrowania dla protokołu TLS1.2 i poniżej. Zobacz dokumentację "otwiera szyfry" w celu pobrania obsługiwanej listy szyfrowania i format listy Przykład silnej listy szyfrów dla TLS1.2: "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256" Dotyczy tylko Linuksa. |
 
 ## <a name="securityadminclientx509names"></a>Zabezpieczenia/AdminClientX509Names
 

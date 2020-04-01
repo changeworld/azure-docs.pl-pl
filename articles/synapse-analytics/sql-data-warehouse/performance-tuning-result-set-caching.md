@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 0c2190c29054301a8e21a9a27eb078802fbc9612
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: da476dc14949ebab1a054a9624d91acb25b9f2b4
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350857"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474483"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Strojenie wydajności za pomocą buforowania zestawu wyników  
 Gdy buforowanie zestawu wyników jest włączone, sql analytics automatycznie buforuje wyniki kwerendy w bazie danych użytkowników do powtarzalnego użycia.  Dzięki temu kolejne wykonania kwerendy, aby uzyskać wyniki bezpośrednio z utrwalonych pamięci podręcznej, więc ponowneuwkomczenie nie jest potrzebne.   Buforowanie zestawu wyników zwiększa wydajność zapytań i zmniejsza użycie zasobów obliczeniowych.  Ponadto kwerendy przy użyciu zestawu wyników buforowanych nie używają żadnych gniazd współbieżności i w związku z tym nie są wliczane do istniejących limitów współbieżności. Dla zabezpieczeń użytkownicy mogą uzyskiwać dostęp do wyników w pamięci podręcznej tylko wtedy, gdy mają takie same uprawnienia dostępu do danych, jak użytkownicy tworzący wyniki w pamięci podręcznej.  
@@ -65,10 +65,10 @@ Zestaw wyników w pamięci podręcznej jest ponownie odtwarzany dla kwerendy, je
 - Istnieje dokładne dopasowanie między nową kwerendą a poprzednią kwerendą, która wygenerowała pamięć podręczną zestawu wyników.
 - Nie ma żadnych zmian danych lub schematu w tabelach, z których został wygenerowany zestaw wyników w pamięci podręcznej.
 
-Uruchom to polecenie, aby sprawdzić, czy kwerenda została wykonana z trafieniem lub pominięciem pamięci podręcznej wyników. Jeśli zostanie trafiona pamięć podręczna, result_cache_hit zwróci 1.
+Uruchom to polecenie, aby sprawdzić, czy kwerenda została wykonana z trafieniem lub pominięciem pamięci podręcznej wyników. Kolumna result_set_cache zwraca wartość 1 dla trafienia w pamięci podręcznej, 0 dla pominięcia pamięci podręcznej i wartości ujemne z powodów, dla których buforowanie zestawu wyników nie zostało użyte. Sprawdź [szczegóły na dm_pdw_exec_requests.](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7)
 
 ```sql
-SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests 
+SELECT request_id, command, result_set_cache FROM sys.dm_pdw_exec_requests
 WHERE request_id = <'Your_Query_Request_ID'>
 ```
 

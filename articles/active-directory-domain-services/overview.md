@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/22/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: ea0fa0e9d4e475a8496d1ee52b4cdfea11a13d8d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: cf961b00c4823d0c9efcf44b0db7bb75a80d3dfa
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76544114"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474320"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Co to są Usługi domenowe Active Directory platformy Azure?
 
@@ -51,7 +51,7 @@ Usługi Azure AD DS oferuje alternatywy dla konieczności tworzenia połączeń 
 
 ## <a name="azure-ad-ds-features-and-benefits"></a>Funkcje i korzyści usługi Azure AD DS
 
-Aby zapewnić usługi tożsamości aplikacjom i maszynom wirtualnym w chmurze, usługa Azure AD DS jest w pełni zgodna z tradycyjnym środowiskiem usług AD DS dla operacji, takich jak przyłączanie do domeny, bezpieczne LDAP (LDAPS), zarządzanie zasadami grupy i DNS oraz obsługa powiązania i odczytu LDAP. Obsługa zapisu LDAP jest dostępna dla obiektów utworzonych w domenie zarządzanej usługi Azure AD DS, ale nie zasobów zsynchronizowanych z usługi Azure AD. Następujące funkcje usługi Azure AD DS upraszczają operacje wdrażania i zarządzania:
+Aby zapewnić usługi tożsamości aplikacjom i maszynom wirtualnym w chmurze, usługa Azure AD DS jest w pełni zgodna z tradycyjnym środowiskiem usług AD DS dla operacji, takich jak przyłączanie do domeny, bezpieczne LDAP (LDAPS), zasady grupy, zarządzanie dns i obsługa powiązania LDAP i odczytu. Obsługa zapisu LDAP jest dostępna dla obiektów utworzonych w domenie zarządzanej usługi Azure AD DS, ale nie zasobów zsynchronizowanych z usługi Azure AD. Następujące funkcje usługi Azure AD DS upraszczają operacje wdrażania i zarządzania:
 
 * **Uproszczone środowisko wdrażania:** Usługi Azure AD DS jest włączona dla dzierżawy usługi Azure AD przy użyciu jednego kreatora w witrynie Azure portal.
 * **Zintegrowane z usługą Azure AD:** Konta użytkowników, członkostwa w grupach i poświadczenia są automatycznie dostępne w dzierżawie usługi Azure AD. Nowi użytkownicy, grupy lub zmiany atrybutów z dzierżawy usługi Azure AD lub lokalnego środowiska usług AD DS są automatycznie synchronizowane z usługą Azure AD DS.
@@ -71,7 +71,7 @@ W przypadku środowisk hybrydowych, które uruchamiają usługi AD DS lokalnie, 
 
 ## <a name="how-does-azure-ad-ds-work"></a>Jak działa usługa Azure AD DS?
 
-Aby zapewnić usługi tożsamości, platforma Azure tworzy wystąpienie usług AD DS w wybranej sieci wirtualnej. W tle tworzona jest para kontrolerów domeny systemu Windows Server, które są uruchamiane na maszynach wirtualnych platformy Azure. Nie trzeba zarządzać, konfigurować ani aktualizować tych kontrolerów domeny. Platforma Azure zarządza kontrolerami domeny w ramach usługi Azure AD DS.
+Aby zapewnić usługi tożsamości, platforma Azure tworzy wystąpienie usług AD DS w wybranej sieci wirtualnej. W tle tworzone są pary kontrolerów domeny systemu Windows Server, które są uruchamiane na maszynach wirtualnych platformy Azure. Nie trzeba zarządzać, konfigurować ani aktualizować tych kontrolerów domeny. Platforma Azure zarządza kontrolerami domeny w ramach usługi Azure AD DS.
 
 Domena zarządzana usługą Azure AD DS jest skonfigurowana do wykonywania jednokierunkowej synchronizacji z usługi Azure AD w celu zapewnienia dostępu do centralnego zestawu użytkowników, grup i poświadczeń. Zasoby można tworzyć bezpośrednio w domenie zarządzanej usług Azure AD DS, ale nie są one synchronizowane z powrotem do usługi Azure AD. Aplikacje, usługi i maszyny wirtualne na platformie Azure, które łączą się z tą siecią wirtualną, mogą następnie używać typowych funkcji usług AD DS, takich jak dołączanie do domeny, zasady grupy, LDAP i uwierzytelnianie Kerberos / NTLM.
 

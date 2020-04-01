@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: ead0ac04fbd2244fce97dd043ebd44f24fb0f67f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dceb3db4572ecdaf504745dba1099a5eccead43
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054916"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80395782"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Usuwanie i odzyskiwanie obszaru roboczego usługi Azure Log Analytics
 
@@ -43,7 +43,7 @@ Operacja usuwania obszaru roboczego usuwa zasób Menedżera zasobów obszaru rob
 
 Obszar roboczy można usunąć za pomocą programu [PowerShell,](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0) [interfejsu API REST](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)lub w portalu [Azure.](https://portal.azure.com)
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Azure Portal
 
 1. Aby się zalogować, przejdź do [witryny Azure portal](https://portal.azure.com). 
 2. W witrynie Azure portal wybierz pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **obszary robocze usługi Log Analytics**.
@@ -56,6 +56,17 @@ Obszar roboczy można usunąć za pomocą programu [PowerShell,](https://docs.mi
 ```PowerShell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
+
+### <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+Aby usunąć obszar roboczy usługi Log Analytics, musisz mieć uprawnienia "Log Analytics Contributor".<br>
+Jeśli podczas tworzenia obszaru roboczego zostanie wyświetlony komunikat o błędzie "*Ta nazwa obszaru roboczego jest już używana,może*to być:
+* Nazwa obszaru roboczego nie jest dostępna i jest używana przez inną osobę w organizacji lub przez innego klienta.
+* Obszar roboczy został usunięty w ciągu ostatnich 14 dni, a jego nazwa była zarezerwowana dla okresu usuwania nietrwałego. Aby zastąpić usuwanie programów i natychmiast usunąć obszar roboczy i utworzyć nowy obszar roboczy o tej samej nazwie, wykonaj następujące kroki, aby najpierw odzyskać obszar roboczy i wykonać trwałe usunięcie:<br>
+   1. [Odzyskaj](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) swój obszar roboczy.
+   2. [Trwałe usunięcie](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) obszaru roboczego.
+   3. Utwórz nowy obszar roboczy o tej samej nazwie obszaru roboczego.
+
 
 ## <a name="permanent-workspace-delete"></a>Trwałe usuwanie obszaru roboczego
 Metoda usuwania nietrwałego może nie mieścić się w niektórych scenariuszach, takich jak programowanie i testowanie, gdzie należy powtórzyć wdrożenie z tymi samymi ustawieniami i nazwą obszaru roboczego. W takich przypadkach można trwale usunąć obszar roboczy i "zastąpić" okres usuwania nietrwałego. Operacja usuwania stałego obszaru roboczego zwalnia nazwę obszaru roboczego i można utworzyć nowy obszar roboczy o tej samej nazwie.

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f655b7793bfbb5bbeddfc2f1f8e7bc973dabeb4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd3881617227430488f8dd3f2f3d24072b24b8ce
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687359"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478729"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Wprowadzenie do środowiska usługi app service w wersji 1
 
@@ -48,7 +48,7 @@ Wszystkie zasoby obliczeniowe w środowisku usługi app service są przeznaczone
 
 Środowisko usługi aplikacji składa się z frontonu puli zasobów obliczeniowych, a także od jednej do trzech pul zasobów obliczeniowych procesu roboczego.
 
-Pula front-end zawiera zasoby obliczeniowe odpowiedzialne za zakończenie SSL, a także automatyczne równoważenie obciążenia żądań aplikacji w środowisku usługi aplikacji.
+Pula front-end zawiera zasoby obliczeniowe odpowiedzialne za zakończenie protokołu TLS, a także automatyczne równoważenie obciążenia żądań aplikacji w środowisku usługi aplikacji.
 
 Każda pula procesów roboczych zawiera zasoby obliczeniowe przydzielone do [planów usługi app service,][AppServicePlan]które z kolei zawierają jedną lub więcej aplikacji usługi Azure App Service.  Ponieważ w środowisku usługi app service mogą istnieć maksymalnie trzy różne pule procesów, można wybrać różne zasoby obliczeniowe dla każdej puli procesów roboczych.  
 

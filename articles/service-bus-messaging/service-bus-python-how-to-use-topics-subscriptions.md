@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 03e22c4c179850e5140015c0abc2d89f16d4b624
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4745d675086f1b07bf7fccf17c14c76e4b18fba2
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76774545"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478072"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Szybki start: używanie tematów i subskrypcji usługi Service Bus w języku Python
 
@@ -35,7 +35,7 @@ W tym artykule opisano sposób używania języka Python z usługą Azure Service
 ## <a name="prerequisites"></a>Wymagania wstępne
 - Subskrypcja platformy Azure. Możesz aktywować [korzyści dla subskrybenta programu Visual Studio lub MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub założyć [bezpłatne konto.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
 - Obszar nazw usługi Service Bus utworzony przez wykonując kroki opisane w [przewodniku Szybki start: Tworzenie tematu i subskrypcji usługi Service Bus za pomocą portalu Azure.](service-bus-quickstart-topics-subscriptions-portal.md) Skopiuj nazwę obszaru nazw, nazwę klucza dostępu udostępnionego i wartość klucza podstawowego na ekranie **Zasady dostępu udostępnionego,** aby użyć go w dalszej części tego przewodnika Szybki start. 
-- Python 3.4x lub wyższy, z zainstalowanym pakietem [zestawu Azure Python SDK.][Azure Python package] Aby uzyskać więcej informacji, zobacz [Podręcznik instalacji języka Python](/azure/python/python-sdk-azure-install).
+- Python 3.4x lub wyższy, z zainstalowanym pakietem [zestawu Azure Python SDK.][Azure Python package] Aby uzyskać więcej informacji, zobacz [Podręcznik instalacji języka Python](/azure/developer/python/azure-sdk-install).
 
 ## <a name="create-a-servicebusservice-object"></a>Tworzenie obiektu usługi ServiceBusService
 

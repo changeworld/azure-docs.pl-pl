@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory przy użyciu Pomocnika pomocnika | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i pomocnika pomocnika.
+title: 'Samouczek: Integracja usługi Azure Active Directory z pomocnikiem pomocy | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a pomocnikiem.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,142 +17,142 @@ ms.date: 05/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d70cdade93b028c90c9f62374cd6b997556dd52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67101282"
 ---
-# <a name="tutorial-integrate-helper-helper-with-azure-active-directory"></a>Samouczek: Integrowanie pomocy pomocnika za pomocą usługi Azure Active Directory
+# <a name="tutorial-integrate-helper-helper-with-azure-active-directory"></a>Samouczek: Integracja pomocnika pomocnika z usługą Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować pomocnika pomocnika za pomocą usługi Azure Active Directory (Azure AD). Gdy pomocnika pomocnika można zintegrować z usługą Azure AD, możesz wykonywać następujące czynności:
+W tym samouczku dowiesz się, jak zintegrować Pomocnika pomocnika z usługą Azure Active Directory (Azure AD). Po zintegrowaniu Pomocnika pomocnika z usługą Azure AD można:
 
-* Kontrolowanie w usłudze Azure AD, kto ma dostęp do pomocy pomocnika.
-* Umożliwianie użytkownikom można automatycznie zalogowany pomocnika pomocnika za pomocą kont usługi Azure AD.
-* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrola w usłudze Azure AD, który ma dostęp do Pomocnika Pomocnika.
+* Włącz użytkownikom automatyczne logowanie do Pomocnika pomocnika za pomocą ich kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć pracę, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebujesz następujących elementów:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Pomocnik pomocnika logowania jednokrotnego (SSO) włączone subskrypcji.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto.](https://azure.microsoft.com/free/)
+* Subskrypcja z włączoną funkcją logowania jednokrotnego pomocnika Pomocnika .Helper Single sign-on (SSO) enabled subscription.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. Obsługuje pomocnika Pomocnika **dodatkiem SP oraz dostawców tożsamości** zainicjowane logowania jednokrotnego i obsługuje **Just In Time** Inicjowanie obsługi użytkowników.
+W tym samouczku można skonfigurować i przetestować samouszeńców usługi Azure AD w środowisku testowym. Pomocnik pomocniczy obsługuje **sp i idp** zainicjowane SSO i obsługuje **just in time** użytkownika inicjowania obsługi administracyjnej.
 
-## <a name="adding-helper-helper-from-the-gallery"></a>Dodawanie pomocnika pomocnika z galerii
+## <a name="adding-helper-helper-from-the-gallery"></a>Dodawanie pomocnika z galerii
 
-Aby skonfigurować integrację pomocnika pomocnika do usługi Azure AD, należy dodać pomocnika pomocnika z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację Pomocnika pomocnika z usługą Azure AD, należy dodać Pomocnika pomocnika z galerii do listy zarządzanych aplikacji SaaS.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
-1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
-1. Aby dodać nową aplikację, wybierz **nową aplikację**.
-1. W **Dodaj z galerii** sekcji, wpisz **pomocnika Pomocnika** w polu wyszukiwania.
-1. Wybierz **pomocnika Pomocnika** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta służbowego lub konta firmy Microsoft.
+1. W lewym okienku nawigacji wybierz usługę **Azure Active Directory.**
+1. Przejdź do **aplikacji korporacyjnych,** a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **pomocnik pomocnika** w polu wyszukiwania.
+1. Wybierz **pozycję Pomocnik pomocniczy** z panelu wyników, a następnie dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD przy użyciu Pomocnika pomocnika za pomocą użytkownika testu o nazwie **B. Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w Pomocniku pomocnika.
+Konfigurowanie i testowanie usługi Azure AD SSO za pomocą pomocnika pomocnika przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby użytkownik łączony sytuować działał, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w Pomocniku pomocnika.
 
-Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD przy użyciu Pomocnika pomocnika, wykonaj poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować usługę Azure AD SSO za pomocą pomocnika pomocnika, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie pomocnika Pomocnika](#configure-helper-helper)**  do konfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą B. Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające Simon B. korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego pomocnika Pomocnika](#create-helper-helper-test-user)**  mieć odpowiednikiem B. Simon w Pomocniku pomocnika, połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-sso)**  Aby sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj sytuasz usługi Azure AD,](#configure-azure-ad-sso)** aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj Pomocnika pomocnika,](#configure-helper-helper)** aby skonfigurować ustawienia logowania sytego po stronie aplikacji.
+3. **[Utwórz użytkownika testowego usługi Azure AD,](#create-an-azure-ad-test-user)** aby przetestować logowanie jednokrotne usługi Azure AD za pomocą B. Simon.
+4. **[Przypisz użytkownika testowego usługi Azure AD,](#assign-the-azure-ad-test-user)** aby włączyć B. Simon do korzystania z usługi Azure AD logowania jednokrotnego.
+5. **[Utwórz pomocnika pomocnika użytkownika testowego,](#create-helper-helper-test-user)** aby mieć odpowiednik B. Simon w Pomocnik pomocnika, który jest połączony z reprezentacji usługi Azure AD użytkownika.
+6. **[Przetestuj sytą próbę sycącą,](#test-sso)** aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie rejestracji jednokrotnej w usłudze Azure AD
 
-Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
+Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azure portal.
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **pomocnika Pomocnika** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
-1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
-1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie Integracja aplikacji **Pomocnika** znajdź sekcję **Zarządzaj** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** kliknij ikonę edycji/pióra dla **podstawowej konfiguracji SAML,** aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli masz **plik metadanych usługodawcy** i chcesz skonfigurować w **dostawcy tożsamości** zainicjowano tryb wykonaj następujące czynności:
+1. Jeśli masz **plik metadanych dostawcy usług** i chcesz skonfigurować w trybie inicjowanym przez **IDP,** w sekcji **Podstawowa konfiguracja SAML,** wykonaj następujące czynności:
 
     >[!NOTE]
-    >Przejdź do adresu url `https://sso.helperhelper.com/saml/<customer_id>` można pobrać pliku metadanych dostawcy usług. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta pomocnika Pomocnika](mailto:info@helperhelper.com) dla `<customer_id>`.
+    >Przejdź do `https://sso.helperhelper.com/saml/<customer_id>` adresu URL, aby uzyskać plik metadanych dostawcy usług. Skontaktuj się z [zespołem pomocy technicznej pomocnika pomocnika](mailto:info@helperhelper.com) klienta dla `<customer_id>`.
 
-    a. Kliknij przycisk **przekazywania pliku metadanych**.
+    a. Kliknij pozycję **Przekaż plik metadanych**.
 
-    b. Kliknij pozycję **logo folderu** wybierz plik metadanych, a następnie kliknij przycisk **przekazywanie**.
+    b. Kliknij **logo folderu**, aby wybrać plik metadanych, a następnie kliknij pozycję **Przekaż**.
 
-    c. Po pomyślnym przekazaniu pliku metadanych **identyfikator** i **adres URL odpowiedzi** wartości Uzyskaj automatycznie wypełnione w sekcji podstawową konfigurację protokołu SAML.
+    d. Po pomyślnym przekazaniu pliku metadanych wartości **identyfikatora** i **adresu URL odpowiedzi** są automatycznie wypełniane w sekcji Podstawowa konfiguracja SAML.
 
     > [!Note]
     > Jeśli wartości **Identyfikator** i **Adres URL odpowiedzi** nie zostaną automatycznie wypełnione, wpisz te wartości ręcznie zgodnie z wymaganiami.
 
-1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+1. Kliknij **pozycję Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowanym w sp: **SP**
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://sso.helperhelper.com/saml/<customer_id>/login`
 
     > [!NOTE]
-    > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta pomocnika Pomocnika](mailto:info@helperhelper.com) aby zyskać tę wartość. Może również odnosić się do wzorców objętego **podstawową konfigurację protokołu SAML** sekcji portal.l platformy Azure.
+    > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z [zespołem pomocy technicznej pomocnika pomocnika klienta,](mailto:info@helperhelper.com) aby uzyskać tę wartość. Można również odwołać się do wzorców pokazanych w sekcji **Podstawowa konfiguracja SAML** w witrynie Azure portal.l.
 
-1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i zapisz go na swoje Notatnik .
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiuj, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na Notatniku.
 
-   ![Link pobierania certyfikatu](common/copy-metadataurl.png)
+   ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
 
-1. Na **Konfigurowanie pomocnika Pomocnika** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. W sekcji **Konfigurowanie pomocnika** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-### <a name="configure-helper-helper"></a>Konfigurowanie pomocnika pomocnika
+### <a name="configure-helper-helper"></a>Konfigurowanie pomocnika
 
-Aby skonfigurować logowanie jednokrotne na **pomocnika Pomocnika** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [zespołem pomocy technicznej pomocnika Pomocnika](mailto:info@helperhelper.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować logowanie jednokrotne po stronie **Pomocnika** pomocnika, należy wysłać **adres URL metadanych federacji aplikacji** do zespołu pomocy pomocnika pomocnika [.](mailto:info@helperhelper.com) Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B. Simon.
+W tej sekcji utworzysz użytkownika testowego w witrynie Azure portal o nazwie B. Simon.
 
-1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
-1. W **użytkownika** właściwości, wykonaj następujące kroki:
+1. Z lewego okienka w witrynie Azure portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
+1. We właściwościach **Użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B. Simon`.  
-   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `BrittaSimon@contoso.com`.
+   1. W polu **Nazwa użytkownika** username@companydomain.extensionwprowadź pole . Na przykład `BrittaSimon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można udostępnić Simon B. do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do pomocy pomocnika.
+W tej sekcji włączysz B. Simon do korzystania z logowania jednokrotnego platformy Azure, przyznając dostęp do Pomocnika Pomocnika.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście aplikacji wybierz **pomocnika Pomocnika**.
-1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Na liście aplikacji wybierz pozycję **Pomocnik**.
+1. Na stronie przegląd aplikacji znajdź sekcję **Zarządzaj** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
+1. Wybierz **pozycję Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym Dodawanie **przydziału.**
 
     ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B. Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz **pozycję B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przydziału** kliknij przycisk **Przypisz.**
 
-### <a name="create-helper-helper-test-user"></a>Tworzenie użytkownika testowego pomocnika pomocnika
+### <a name="create-helper-helper-test-user"></a>Utwórz użytkownika testowego pomocnika
 
-W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w Pomocniku pomocnika. Pomocnik pomocnika obsługuje Inicjowanie obsługi użytkowników just-in-time, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w Pomocniku pomocnika, nowy katalog jest tworzony po uwierzytelnieniu.
+W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w Pomocnik pomocnika. Pomocnik pomocnika obsługuje just-in-time inicjowania obsługi administracyjnej użytkownika, który jest domyślnie włączony. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w Pomocniku pomocnika, nowy jest tworzony po uwierzytelnieniu.
 
 ### <a name="test-sso"></a>Test SSO
 
-Po wybraniu kafelka pomocnika pomocnika w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze pomocnika pomocnika, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka Pomocnika pomocnika w Panelu dostępu należy automatycznie zalogować się do pomocnika pomocnika, dla którego skonfigurowano logującą się logującą logującą. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

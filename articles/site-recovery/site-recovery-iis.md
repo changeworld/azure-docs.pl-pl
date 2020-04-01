@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 513a0f28fc03cbf24e35112245c9756d5ce00783
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954666"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478288"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji sieci Web opartej na usługach IIS
 
 Oprogramowanie aplikacyjne jest motorem produktywności biznesowej w organizacji. Różne aplikacje internetowe mogą służyć różnym celom w organizacji. Niektóre aplikacje, takie jak aplikacje używane do przetwarzania listy płac, aplikacje finansowe i witryny sieci Web skierowane do klientów, mogą mieć kluczowe znaczenie dla organizacji. Aby zapobiec utracie produktywności, ważne jest, aby organizacja stale uruchamiała te aplikacje. Co ważniejsze, posiadanie tych aplikacji stale dostępnych może pomóc zapobiec uszkodzeniu marki lub wizerunku organizacji.
 
-Krytyczne aplikacje sieci web są zazwyczaj skonfigurowane jako aplikacje wielowarstwowe: sieć web, baza danych i aplikacja znajdują się w różnych warstwach. Oprócz rozprzestrzeniania się w różnych warstwach, aplikacje mogą również używać wielu serwerów w każdej warstwie, aby zrównoważyć ruch. Ponadto mapowania między różnymi warstwami i na serwerze sieci web mogą być oparte na statycznych adresach IP. Podczas pracy awaryjnej niektóre z tych mapowań muszą zostać zaktualizowane, zwłaszcza jeśli na serwerze sieci web skonfigurowano wiele witryn sieci Web. Jeśli aplikacje sieci web używają ssl, należy zaktualizować powiązania certyfikatów.
+Krytyczne aplikacje sieci web są zazwyczaj skonfigurowane jako aplikacje wielowarstwowe: sieć web, baza danych i aplikacja znajdują się w różnych warstwach. Oprócz rozprzestrzeniania się w różnych warstwach, aplikacje mogą również używać wielu serwerów w każdej warstwie, aby zrównoważyć ruch. Ponadto mapowania między różnymi warstwami i na serwerze sieci web mogą być oparte na statycznych adresach IP. Podczas pracy awaryjnej niektóre z tych mapowań muszą zostać zaktualizowane, zwłaszcza jeśli na serwerze sieci web skonfigurowano wiele witryn sieci Web. Jeśli aplikacje sieci web używają protokołu TLS, należy zaktualizować powiązania certyfikatów.
 
 Tradycyjne metody odzyskiwania, które nie są oparte na replikacji obejmują tworzenie kopii zapasowych różnych plików konfiguracyjnych, ustawienia rejestru, powiązania, składniki niestandardowe (COM lub .NET), zawartość i certyfikaty. Pliki są odzyskiwane za pomocą zestawu kroków ręcznych. Tradycyjne metody odzyskiwania kopii zapasowych i ręcznego odzyskiwania plików są uciążliwe, podatne na błędy i nie skalowalne. Na przykład można łatwo zapomnieć o utworzeniu kopii zapasowej certyfikatów. Po przejściu w stan failover nie masz innego wyboru, jak tylko kupić nowe certyfikaty dla serwera.
 
@@ -118,22 +118,22 @@ Każda strona składa się z wiążących informacji. Informacje o powiązaniach
 >
 > Jeśli ustawisz powiązanie witryny na **Wszystkie nieprzypisane,** nie musisz aktualizować tego powiązania po przełączeniu w stan failover. Ponadto jeśli adres IP skojarzony z witryną nie zostanie zmieniony po przełączeniu w stan failover, nie trzeba aktualizować powiązania witryny. (Przechowywanie adresu IP zależy od architektury sieci i podsieci przypisanych do lokacji podstawowych i lokacji odzyskiwania. Ich zaktualizowanie może być niemożliwe dla twojej organizacji).
 
-![Zrzut ekranu przedstawiający ustawienie powiązania SSL](./media/site-recovery-iis/sslbinding.png)
+![Zrzut ekranu przedstawiający ustawienie powiązania TLS/SSL](./media/site-recovery-iis/sslbinding.png)
 
 Jeśli adres IP został skojarzony z witryną, zaktualizuj wszystkie powiązania lokacji o nowy adres IP. Aby zmienić powiązania [lokacji, dodaj skrypt aktualizacji warstwy sieci Web usług IIS](https://aka.ms/asr-web-tier-update-runbook-classic) po grupie 3 w planie odzyskiwania.
 
 #### <a name="update-the-load-balancer-ip-address"></a>Aktualizowanie adresu IP modułu równoważenia obciążenia
 Jeśli masz maszynę wirtualną ARR, aby zaktualizować adres IP, dodaj [skrypt trybu failover ARR usług IIS](https://aka.ms/asr-iis-arrtier-failover-script-classic) po grupie 4.
 
-#### <a name="ssl-certificate-binding-for-an-https-connection"></a>Powiązanie certyfikatu SSL dla połączenia HTTPS
-Witryna sieci Web może mieć skojarzony certyfikat SSL, który pomaga zapewnić bezpieczną komunikację między serwerem sieci web a przeglądarką użytkownika. Jeśli witryna sieci Web ma połączenie HTTPS, a także powiązaną lokację HTTPS powiązaną z adresem IP serwera IIS z powiązaniem certyfikatu SSL, należy dodać nowe powiązanie lokacji dla certyfikatu z adresem IP maszyny wirtualnej usług IIS po przełączeniu w tryb failover.
+#### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>Powiązanie certyfikatu TLS/SSL dla połączenia HTTPS
+Witryna sieci Web może mieć skojarzony certyfikat TLS/SSL, który pomaga zapewnić bezpieczną komunikację między serwerem sieci web a przeglądarką użytkownika. Jeśli witryna sieci Web ma połączenie HTTPS, a także powiązaną lokację HTTPS powiązaną z adresem IP serwera IIS z powiązaniem certyfikatu TLS/SSL, należy dodać nowe powiązanie lokacji certyfikatu z adresem IP maszyny wirtualnej usług IIS po przełączeniu w tryb failover.
 
-Certyfikat SSL może być wystawiony dla następujących składników:
+Certyfikat TLS/SSL może być wystawiony dla następujących składników:
 
 * W pełni kwalifikowana nazwa domeny witryny.
 * Nazwa serwera.
 * Certyfikat symboli wieloznacznych dla nazwy domeny.  
-* Adres IP. Jeśli certyfikat SSL jest wystawiony na adres IP serwera IIS, inny certyfikat SSL musi być wystawiony na adres IP serwera IIS w witrynie platformy Azure. Należy utworzyć dodatkowe powiązanie SSL dla tego certyfikatu. Z tego powodu zaleca się nie używać certyfikatu SSL wystawionego na adres IP. Ta opcja jest mniej powszechnie stosowana i wkrótce zostanie przestarzała zgodnie z nowymi zmianami urzędu certyfikacji / forum przeglądarki.
+* Adres IP. Jeśli certyfikat TLS/SSL jest wystawiony na adres IP serwera IIS, należy wydać inny certyfikat TLS/SSL względem adresu IP serwera IIS w witrynie platformy Azure. Należy utworzyć dodatkowe powiązanie TLS dla tego certyfikatu. Z tego powodu zaleca się nie używać certyfikatu TLS/SSL wystawionego na adres IP. Ta opcja jest mniej powszechnie stosowana i wkrótce zostanie przestarzała zgodnie z nowymi zmianami urzędu certyfikacji / forum przeglądarki.
 
 #### <a name="update-the-dependency-between-the-web-tier-and-the-application-tier"></a>Aktualizowanie zależności między warstwą sieci web a warstwą aplikacji
 Jeśli masz zależność specyficzne dla aplikacji, która jest oparta na adres IP maszyn wirtualnych, należy zaktualizować tę zależność po pracy awaryjnej.

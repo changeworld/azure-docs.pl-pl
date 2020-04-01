@@ -328,7 +328,7 @@ Przykładowa aplikacja działa pomyślnie po wyświetleniu następujących wynik
 
 1. Zaloguj się w [witrynie Azure portal](https://portal.azure.com/), znajdź utworzone centrum IoT Hub.
 
-    ![Portal Azure](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
+    ![Azure Portal](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
 
 1. W okienku **Zasady dostępu udostępnionego** kliknij **zasady iothubowner**i zapisz ciąg połączenia centrum IoT Hub.
 

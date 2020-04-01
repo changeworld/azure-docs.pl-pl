@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7400c8288d8901460e462ce43b69815e178a718c
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 6771060f05a03c82879738dc5e8caccb67e55abc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384011"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478008"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Samouczek: Integracja z logiem jednokrotnym usługi Azure Active Directory z usługą Citrix NetScaler (uwierzytelnianie oparte na protokół Kerberos)
 
@@ -219,7 +219,7 @@ Aby powiązać moduł równoważenia obciążenia z serwerem wirtualnym:
 
 ### <a name="bind-the-certificate"></a>Powiąż certyfikat
 
-Aby opublikować tę usługę jako SSL, powiąż certyfikat serwera, a następnie przetestuj aplikację:
+Aby opublikować tę usługę jako TLS, powiąż certyfikat serwera, a następnie przetestuj aplikację:
 
 1. W obszarze **Certyfikat**wybierz pozycję **Brak certyfikatu serwera**.
 

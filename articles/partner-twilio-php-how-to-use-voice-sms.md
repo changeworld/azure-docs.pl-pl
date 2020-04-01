@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 34057f1962338927a252011dccc56ed6a77bec47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f9fb250109a1c9000eae8da0d6337c96f19f0f89
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69636022"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410545"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>Jak korzystać z funkcji Twilio dla funkcji głosowych i SMS w PHP
 W tym przewodniku pokazano, jak wykonywać typowe zadania programowania za pomocą usługi interfejsu API usługi Twilio na platformie Azure. Scenariusze obejmują nawiązanie połączenia telefonicznego i wysyłanie wiadomości SMS. Aby uzyskać więcej informacji na temat usługi Twilio i używania głosu i wiadomości SMS w aplikacjach, zobacz sekcję [Następne kroki.](#NextSteps)
@@ -138,7 +138,7 @@ Poniżej przedstawiono sposób nawiązać połączenie wychodzące przy użyciu 
 
 Jak wspomniano, ten kod używa witryny dostarczonej przez twilio do zwrócenia odpowiedzi TwiML. Zamiast tego można użyć własnej witryny, aby zapewnić odpowiedź TwiML; Aby uzyskać więcej informacji, zobacz [Jak zapewnić odpowiedzi TwiML z własnej witryny sieci Web](#howto_provide_twiml_responses).
 
-* **Uwaga:** Aby rozwiązać problem z błędami sprawdzania poprawności certyfikatu SSL, zobacz[http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
+* **Uwaga:** Aby rozwiązać problemy z błędami sprawdzania poprawności certyfikatów TLS/SSL, zobacz[http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
 
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>Jak: Wyślij wiadomość SMS
 Poniżej przedstawiono sposób wysyłania wiadomości SMS przy użyciu **klasy Services_Twilio.** Numer **Od** jest dostarczany przez program Twilio dla kont próbnych do wysyłania wiadomości SMS. Numer **Do** musi zostać zweryfikowany dla konta usługi Twilio przed uruchomieniem kodu.

@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 2148ce41267627d9d6e0437897a99a8dbdbe0746
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 18c1d8b42dc73951901ec4ae9b79715ddbd47617
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382770"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474044"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Jak skonfigurować usługę Azure Database dla replikacji danych MySQL
 
-W tym artykule dowiesz się, jak skonfigurować replikację danych w usłudze Azure Database for MySQL, konfigurując serwery główne i repliki. Replikacja w danych umożliwia synchronizowanie danych z głównego serwera MySQL działającego lokalnie, na maszynach wirtualnych lub usługach bazy danych hostowanych przez innych dostawców chmury w replikę w usłudze Azure Database for MySQL. 
+W tym artykule opisano sposób konfigurowania replikacji danych w bazie danych platformy Azure dla mysql przez skonfigurowanie serwerów głównych i replik. W tym artykule założono, że masz pewne wcześniejsze doświadczenie z serwerami i bazami danych MySQL.
 
-W tym artykule założono, że masz co najmniej pewne wcześniejsze doświadczenie z serwerami i bazami danych MySQL.
+Aby utworzyć replikę w usłudze Azure Database for MySQL, usługa Replikacja danych synchronizuje dane z głównego serwera MySQL lokalnie, na maszynach wirtualnych (VM) lub w usługach bazy danych w chmurze.
 
 Przejrzyj [ograniczenia i wymagania](concepts-data-in-replication.md#limitations-and-considerations) replikacji danych przed wykonaniem kroków opisanych w tym artykule.
 
@@ -47,7 +47,7 @@ Poniższe kroki należy przygotować i skonfigurować serwer MySQL hostowany lok
 
    Na przykład upewnij się, że serwer główny zezwala zarówno na ruch przychodzący, jak i wychodzący na porcie 3306 i że serwer główny ma **publiczny adres IP,** system DNS jest publicznie dostępny lub ma w pełni kwalifikowaną nazwę domeny (FQDN). 
    
-   Przetestuj łączność z serwerem głównym, próbując połączyć się z narzędzia, takiego jak wiersz polecenia MySQL hostowanego na innym komputerze lub z [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) dostępnej w witrynie Azure portal 
+   Przetestuj łączność z serwerem głównym, próbując połączyć się z narzędzia, takiego jak wiersz polecenia MySQL hostowanego na innym komputerze lub z [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) dostępnej w witrynie Azure portal.
 
 2. Włączanie rejestrowania binarnego
 
@@ -71,7 +71,7 @@ Poniższe kroki należy przygotować i skonfigurować serwer MySQL hostowany lok
 
 4. Tworzenie nowej roli replikacji i konfigurowanie uprawnień
 
-   Utwórz konto użytkownika na serwerze głównym skonfigurowanym z uprawnieniami replikacji. Można to zrobić za pomocą poleceń SQL lub narzędzia, takiego jak MySQL Workbench. Należy wziąć pod uwagę, czy planujesz replikowanie za pomocą SSL, ponieważ będzie to musiało zostać określone podczas tworzenia użytkownika. Zapoznaj się z dokumentacją MySQL, aby dowiedzieć się, jak [dodać konta użytkowników](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html) na serwerze głównym. 
+   Utwórz konto użytkownika na serwerze głównym skonfigurowanym z uprawnieniami replikacji. Można to zrobić za pomocą poleceń SQL lub narzędzia, takiego jak MySQL Workbench. Należy wziąć pod uwagę, czy planujesz replikowanie za pomocą SSL, ponieważ będzie to musiało zostać określone podczas tworzenia użytkownika. Zapoznaj się z dokumentacją MySQL, aby dowiedzieć się, jak [dodać konta użytkowników](https://dev.mysql.com/doc/refman/5.7/en/user-names.html) na serwerze głównym. 
 
    W poniższych poleceniach utworzona nowa rola replikacji jest w stanie uzyskać dostęp do wzorca z dowolnego komputera, a nie tylko z komputera, na którym znajduje się sam wzorzec. Odbywa się to przez określenie "syncuser@'%" w poleceniu create user. Więcej informacji na temat [określania nazw kont](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)można znaleźć w dokumentacji MySQL.
 

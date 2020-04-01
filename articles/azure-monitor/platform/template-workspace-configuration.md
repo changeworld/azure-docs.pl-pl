@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 357075caaf91769026deb839e038e5d42fb63a38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60f85a30815bc1bace409b50af6332bb6622d7ca
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054683"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477985"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Zarządzanie obszarem roboczym usługi Log Analytics przy użyciu szablonów usługi Azure Resource Manager
 
@@ -48,6 +48,9 @@ W poniższej tabeli wymieniono wersję interfejsu API dla zasobów używanych w 
 
 Poniższy przykład tworzy obszar roboczy przy użyciu szablonu z komputera lokalnego. Szablon JSON jest skonfigurowany tak, aby wymagał tylko nazwy i lokalizacji nowego obszaru roboczego. Używa wartości określonych dla innych parametrów obszaru roboczego, takich jak [tryb kontroli dostępu](design-logs-deployment.md#access-control-mode), warstwa cenowa, retencja i poziom rezerwacji pojemności.
 
+> [!WARNING]
+> Poniższy szablon tworzy obszar roboczy usługi Log Analytics i konfiguruje zbieranie danych. Może to zmienić ustawienia rozliczeń. [Przejrzyj zarządzanie użyciem i kosztami za pomocą dzienników usługi Azure Monitor,](manage-cost-storage.md) aby zrozumieć rozliczenia za dane zebrane w obszarze roboczym usługi Log Analytics przed zastosowaniem ich w środowisku platformy Azure.
+
 W przypadku rezerwacji pojemności definiuje się wybraną rezerwację pojemności `CapacityReservation` dla pozyskiwania danych, określając `capacityReservationLevel`jednostkę SKU i wartość w GB właściwości . Poniższa lista zawiera szczegółowe informacje o obsługiwanych wartościach i zachowaniu podczas konfigurowania.
 
 - Po ustawieniu limitu rezerwacji nie można zmienić na inną jednostkę SKU w ciągu 31 dni.
@@ -75,7 +78,7 @@ W przypadku rezerwacji pojemności definiuje się wybraną rezerwację pojemnoś
               "description": "Specifies the name of the workspace."
             }
         },
-      "pricingTier": {
+      "sku": {
         "type": "string",
         "allowedValues": [
           "pergb2018",
@@ -131,7 +134,7 @@ W przypadku rezerwacji pojemności definiuje się wybraną rezerwację pojemnoś
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-          "name": "[parameters('pricingTier')]"
+                    "name": "[parameters('sku')]"
                 },
                 "retentionInDays": 120,
                 "features": {
@@ -145,15 +148,15 @@ W przypadku rezerwacji pojemności definiuje się wybraną rezerwację pojemnoś
     }
     ```
 
-> [Informacje] dla ustawień rezerwacji pojemności, należy użyć tych właściwości w obszarze "sku":
+   >[!NOTE]
+   >W przypadku ustawień rezerwacji pojemności należy użyć tych właściwości w obszarze "sku":
+   >* "name": "CapacityReservation",
+   >* "capacityReservationLevel": 100
 
->   "name": "CapacityReservation",
+2. Edytuj szablon, aby spełnić wymagania. Należy rozważyć utworzenie [pliku parametrów Menedżera zasobów](../../azure-resource-manager/templates/parameter-files.md) zamiast przekazywania parametrów jako wartości wbudowanych. Przejrzyj odwołanie do [szablonu Microsoft.OperationalInsights/workspaces,](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) aby dowiedzieć się, jakie właściwości i wartości są obsługiwane. 
 
->   "capacityReservationLevel": 100
-
-
-2. Edytuj szablon, aby spełnić wymagania. Przejrzyj odwołanie do [szablonu Microsoft.OperationalInsights/workspaces,](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) aby dowiedzieć się, jakie właściwości i wartości są obsługiwane. 
 3. Zapisz ten plik jako **deploylaworkspacetemplate.json** w folderze lokalnym.
+
 4. Wszystko jest teraz gotowe do wdrożenia tego szablonu. Do utworzenia obszaru roboczego użyj programu PowerShell lub wiersza polecenia, określając nazwę obszaru roboczego i lokalizację jako część polecenia. Nazwa obszaru roboczego musi być unikatowa globalnie we wszystkich subskrypcjach platformy Azure.
 
    * W przypadku programu PowerShell użyj następujących poleceń z folderu zawierającego szablon:
@@ -176,7 +179,7 @@ Wdrożenie może potrwać kilka minut. Po zakończeniu zostanie wyświetlony kom
 Poniższy przykład szablonu ilustruje, jak:
 
 1. Dodawanie rozwiązań do obszaru roboczego
-2. Utwórz zapisane wyszukiwania. Aby upewnić się, że wdrożenia nie zastępują zapisanych wyszukiwań przypadkowo, właściwość eTag powinna zostać dodana w zasobie "savedSearches", aby zastąpić i utrzymać idempotencję zapisanych wyszukiwań.
+2. Utwórz zapisane wyszukiwania. Aby upewnić się, że wdrożenia nie zastępują zapisanych wyszukiwań przypadkowo, właściwość eTag powinna zostać dodana w zasobie "savedSearches", aby zastąpić i utrzymać idempotency zapisanych wyszukiwań.
 3. Tworzenie grupy komputerów
 4. Włączanie zbierania dzienników usług IIS z komputerów z zainstalowanym agentem systemu Windows
 5. Zbieranie liczników perf dysku logicznego z komputerów z systemem Linux (% używanych iod; Darmowe megabajty; % używanej przestrzeni; Transfery dysków/s; Odczyty dysku/s; Zapisy na dysku/s)
@@ -197,7 +200,7 @@ Poniższy przykład szablonu ilustruje, jak:
         "description": "Workspace name"
       }
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "allowedValues": [
         "PerGB2018",
@@ -306,7 +309,7 @@ Poniższy przykład szablonu ilustruje, jak:
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('sku')]"
         }
       },
       "resources": [
@@ -605,7 +608,7 @@ Poniższy przykład szablonu ilustruje, jak:
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').customerId]"
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').sku.name]"
     },

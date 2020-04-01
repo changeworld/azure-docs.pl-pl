@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 1ddbc8e909c5ba0b720e893e87c0f495d256a886
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7b38ad40977e1042032210d3a82a73ff6169adc
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279158"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411057"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Dzienniki kondycji i diagnostyki zaplecza dla bramy aplikacji
 
@@ -96,9 +96,9 @@ Poniższy fragment kodu przedstawia przykład odpowiedzi:
 Można używać różnych typów dzienników na platformie Azure do zarządzania bramami aplikacji i rozwiązywania problemów z nimi. Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Wszystkie dzienniki można wyodrębnić z magazynu obiektów blob platformy Azure i wyświetlać w różnych narzędziach, takich jak [dzienniki usługi Azure Monitor,](../azure-monitor/insights/azure-networking-analytics.md)Excel i Power BI. Więcej informacji na temat różnych typów dzienników można dowiedzieć się z poniższej listy:
 
 * **Dziennik aktywności:** Można użyć [dzienników aktywności platformy Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (dawniej nazywanych dziennikami operacyjnymi i dziennikami inspekcji), aby wyświetlić wszystkie operacje przesłane do subskrypcji platformy Azure i ich stan. Wpisy dziennika aktywności są zbierane domyślnie i można je wyświetlać w witrynie Azure Portal.
-* **Dziennik dostępu:** Można użyć tego dziennika, aby wyświetlić wzorce dostępu bramy aplikacji i analizować ważne informacje. Obejmuje to adres IP wywołującego, żądany adres URL, opóźnienie odpowiedzi, kod zwrotny oraz bajty w i na zewnątrz. Dziennik dostępu jest zbierany co 300 sekund. Ten dziennik zawiera jeden rekord na wystąpienie bramy aplikacji. Wystąpienie bramy aplikacji jest identyfikowane przez właściwość instanceId.
+* **Dziennik dostępu:** Można użyć tego dziennika, aby wyświetlić wzorce dostępu bramy aplikacji i analizować ważne informacje. Obejmuje to adres IP wywołującego, żądany adres URL, opóźnienie odpowiedzi, kod zwrotny oraz bajty w i na zewnątrz. Dziennik dostępu jest zbierany co 60 sekund. Ten dziennik zawiera jeden rekord na wystąpienie bramy aplikacji. Wystąpienie bramy aplikacji jest identyfikowane przez właściwość instanceId.
 * **Dziennik wydajności:** Można użyć tego dziennika, aby wyświetlić, jak działają wystąpienia bramy aplikacji. Ten dziennik przechwytuje informacje o wydajności dla każdego wystąpienia, w tym całkowitą liczbę obsługiwanych żądań, przepływność w bajtach, całkowitą liczbę obsługiwanych żądań, liczbę żądań nie powiodło się oraz w dobrej kondycji i złej liczbie wystąpień zaplecza. Dziennik wydajności jest zbierany co 60 sekund. Dziennik wydajności jest dostępny tylko dla jednostki SKU w wersji 1. Dla jednostki SKU w wersji 2 użyj [metryki](application-gateway-metrics.md) dla danych wydajności.
-* **Dziennik zapory:** Można użyć tego dziennika do wyświetlania żądań, które są rejestrowane w trybie wykrywania lub zapobiegania bramy aplikacji skonfigurowanej z zaporą aplikacji sieci web.
+* **Dziennik zapory:** Można użyć tego dziennika do wyświetlania żądań, które są rejestrowane w trybie wykrywania lub zapobiegania bramy aplikacji skonfigurowanej z zaporą aplikacji sieci web. Dzienniki zapory są zbierane co 60 sekund. 
 
 > [!NOTE]
 > Dzienniki są dostępne tylko dla zasobów wdrożonych w modelu wdrażania usługi Azure Resource Manager. Nie można używać dzienników dla zasobów w klasycznym modelu wdrażania. Aby uzyskać lepsze zrozumienie dwóch modeli, zobacz [opis wdrażania Menedżera zasobów i klasycznego wdrażania](../azure-resource-manager/management/deployment-models.md) artykułu.

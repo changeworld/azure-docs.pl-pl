@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 22d98656f42f52f2fba0845fac6f1d210d2cf0bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8d32a6434db0fad18b9fe7c2d6e2117795eb651
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264682"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476738"
 ---
 # <a name="deliver-content-to-customers"></a>Dostarczanie treści klientom
 Gdy dostarczasz klientom treści przesyłane strumieniowo lub wideo na żądanie, twoim celem jest dostarczanie wysokiej jakości wideo na różnych urządzeniach w różnych warunkach sieciowych.
@@ -40,7 +40,7 @@ W tym artykule przedstawiono omówienie ważnych pojęć dostarczania zawartośc
 Aby sprawdzić znane problemy, zobacz [Znane problemy](media-services-deliver-content-overview.md#known-issues).
 
 ## <a name="dynamic-packaging"></a>Dynamiczne tworzenie pakietów
-Dzięki dynamicznemu opakowaniu, które zapewnia usługa Media Services, można dostarczać adaptacyjną zawartość mp4 z szybkością transmisji bitów lub płynną transmisję strumieniową w formatach przesyłania strumieniowego obsługiwanych przez media services (MPEG-DASH, HLS, Smooth Streaming) bez konieczności ponownego pakowania do tych formatów strumieniowych. Zalecamy dostarczanie treści za pomocą dynamicznego opakowania.
+Dzięki dynamicznemu pakietowi, które zapewnia usługa Media Services, można dostarczać adaptacyjną zawartość kodowaną mp4 z szybkością transmisji bitów lub płynną transmisję strumieniową w formatach przesyłania strumieniowego obsługiwanych przez usługę Media Services (MPEG-DASH, HLS, Smooth Streaming) bez konieczności ponownego pakowania do tych formatów przesyłania strumieniowego. Zalecamy dostarczanie treści za pomocą dynamicznego opakowania.
 
 Aby skorzystać z dynamicznego pakowania, musisz zakodować plik antresoli (źródłowej) w zestawie plików MP4 o adaptacyjnej szybkości transmisji bitów lub adaptacyjnych plikach płynnego przesyłania strumieniowego.
 
@@ -82,10 +82,10 @@ Adaptacyjne technologie szybkości transmisji bitów umożliwiają aplikacjom od
 Aby zapewnić użytkownikom adresy URL przesyłania strumieniowego, należy najpierw utworzyć lokalizator OnDemandOrigin. Utworzenie lokalizatora daje podstawową ścieżkę do zasobu, który zawiera zawartość, którą chcesz przesyłać strumieniowo. Jednak aby móc przesyłać strumieniowo tę zawartość, należy zmodyfikować tę ścieżkę dalej. Aby utworzyć pełny adres URL do pliku manifestu przesyłania strumieniowego, należy połączyć wartość ścieżki lokalizatora i nazwę pliku manifestu (nazwa pliku filename.ism). Następnie dołącz **/Manifest** i odpowiedni format (w razie potrzeby) do ścieżki lokalizatora.
 
 > [!NOTE]
-> Można również przesyłać strumieniowo zawartość za pomocą połączenia SSL. Aby to zrobić, upewnij się, że adresy URL przesyłania strumieniowego zaczynają się od protokołu HTTPS. Należy zauważyć, że obecnie usługa AMS nie obsługuje ssl z domenami niestandardowymi.  
+> Można również przesyłać strumieniowo zawartość za pomocą połączenia TLS. Aby to zrobić, upewnij się, że adresy URL przesyłania strumieniowego zaczynają się od protokołu HTTPS. Należy zauważyć, że obecnie usługa AMS nie obsługuje protokołu TLS z domenami niestandardowymi.  
 > 
 
-Możesz przesyłać strumieniowo za pomocą ssl tylko wtedy, gdy punkt końcowy przesyłania strumieniowego, z którego dostarczasz zawartość, został utworzony po 10 września 2014 r. Jeśli adresy URL przesyłania strumieniowego są oparte na punktach końcowych przesyłania strumieniowego utworzonych po 10 września 2014 r., adres URL zawiera "streaming.mediaservices.windows.net". Adresy URL przesyłania strumieniowego zawierające "origin.mediaservices.windows.net" (stary format) nie obsługują protokołu SSL. Jeśli adres URL jest w starym formacie i chcesz mieć możliwość przesyłania strumieniowego za pomocą ssl, utwórz nowy punkt końcowy przesyłania strumieniowego. Użyj adresów URL opartych na nowym punkcie końcowym przesyłania strumieniowego, aby przesyłać strumieniowo zawartość za pomocą protokołu SSL.
+Można przesyłać strumieniowo za pomocą protokołu TLS tylko wtedy, gdy punkt końcowy przesyłania strumieniowego, z którego dostarczasz zawartość, został utworzony po 10 września 2014 r. Jeśli adresy URL przesyłania strumieniowego są oparte na punktach końcowych przesyłania strumieniowego utworzonych po 10 września 2014 r., adres URL zawiera "streaming.mediaservices.windows.net". Adresy URL przesyłania strumieniowego, które zawierają "origin.mediaservices.windows.net" (stary format) nie obsługują protokołu TLS. Jeśli adres URL jest w starym formacie i chcesz mieć możliwość przesyłania strumieniowego za pomocą protokołu TLS, utwórz nowy punkt końcowy przesyłania strumieniowego. Użyj adresów URL opartych na nowym punkcie końcowym przesyłania strumieniowego, aby przesyłać strumieniowo zawartość za pomocą protokołu TLS.
 
 ## <a name="streaming-url-formats"></a><a id="URLs"/>Formaty adresów URL przesyłania strumieniowego
 
@@ -155,7 +155,7 @@ Punkt końcowy przesyłania strumieniowego reprezentuje usługę przesyłania st
 
 ## <a name="known-issues"></a>Znane problemy
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Zmiany w wersji manifestu Smooth Streaming
-Przed wydaniem usługi z lipca 2016 r. — gdy zasoby wyprodukowane przez Media Encoder Standard, Media Encoder Premium Workflow lub wcześniejszy koder Azure Media Encoder były przesyłane strumieniowo przy użyciu dynamicznego pakowania — manifest Płynne przesyłanie strumieniowe będzie zgodny z wersją 2.0. W wersji 2.0 czas trwania fragmentu nie używa tak zwanych tagów powtarzania ('r).In version 2.0, the fragment durations do not use the so called repeat ('r') tags. Przykład:
+Przed wydaniem usługi z lipca 2016 r. — gdy zasoby wyprodukowane przez Media Encoder Standard, Media Encoder Premium Workflow lub wcześniejszy koder Azure Media Encoder były przesyłane strumieniowo przy użyciu dynamicznego pakowania — manifest płynnego przesyłania strumieniowego zostanie zgodny z wersją 2.0. W wersji 2.0 czas trwania fragmentu nie używa tak zwanych tagów powtarzania ('r).In version 2.0, the fragment durations do not use the so called repeat ('r') tags. Przykład:
 
 
     <?xml version="1.0" encoding="UTF-8"?>

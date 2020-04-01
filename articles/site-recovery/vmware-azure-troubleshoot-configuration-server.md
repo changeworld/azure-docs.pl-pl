@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 25e2b488d3b6e7e5cabd1a71d1489efaf01231b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73748547"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478311"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Rozwiązywanie problemów z serwerem konfiguracji
 
@@ -42,7 +42,7 @@ Komputer źródłowy rejestruje się na serwerze konfiguracji podczas instalowan
     3. Upewnij się, że foldery wymienione w [folderze Odzyskiwanie witryny są](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) wykluczone z oprogramowania antywirusowego.
     4. Po rozwiązaniu problemów z siecią ponów próbę rejestracji, postępując zgodnie z wytycznymi w [3.](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)
 
-6. Jeśli **żądanie wpisu ciągu: (7) - Nie można połączyć się z serwerem** nie został znaleziony, w tym samym pliku dziennika poszukaj **żądania ciągu: (60) - Certyfikat równorzędny nie może być uwierzytelniony przy użyciu podanych certyfikatów urzędu certyfikacji**. Ten błąd może wystąpić, ponieważ certyfikat serwera konfiguracji wygasł lub komputer źródłowy nie obsługuje protokołów SSL TLS 1.0 lub nowszych. Może również wystąpić, jeśli zapora blokuje komunikację SSL między komputerem źródłowym a serwerem konfiguracji. Jeśli zostanie znaleziony ciąg: 
+6. Jeśli **żądanie wpisu ciągu: (7) - Nie można połączyć się z serwerem** nie został znaleziony, w tym samym pliku dziennika poszukaj **żądania ciągu: (60) - Certyfikat równorzędny nie może być uwierzytelniony przy użyciu podanych certyfikatów urzędu certyfikacji**. Ten błąd może wystąpić, ponieważ certyfikat serwera konfiguracji wygasł lub komputer źródłowy nie obsługuje protokołów TLS 1.0 lub nowszych. Może również wystąpić, jeśli zapora blokuje komunikację TLS między komputerem źródłowym a serwerem konfiguracji. Jeśli zostanie znaleziony ciąg: 
     1. Aby rozwiązać problem, połącz się z adresem IP serwera konfiguracji za pomocą przeglądarki sieci Web na komputerze źródłowym. Użyj adresu\/ \/ \>IP serwera konfiguracji URI https:<:443/. Upewnij się, że komputer źródłowy może dotrzeć do serwera konfiguracji za pośrednictwem portu 443.
     2. Sprawdź, czy należy dodać lub usunąć reguły zapory na komputerze źródłowym, aby komputer źródłowy miał rozmawiać z serwerem konfiguracji. Ze względu na różnorodność oprogramowania zapory, które mogą być używane, nie możemy wyświetlić listy wszystkich wymaganych konfiguracji zapory. Współpracuj z administratorami sieci, aby odblokować wszelkie problemy z połączeniem.
     3. Upewnij się, że foldery wymienione w [folderze Odzyskiwanie witryny są](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) wykluczone z oprogramowania antywirusowego.  

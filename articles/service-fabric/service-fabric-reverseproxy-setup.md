@@ -4,12 +4,12 @@ description: Dowiedz się, jak skonfigurować i skonfigurować usługę odwrotne
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 131440036896d323cbf821d7a220328456e1db36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645450"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476676"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Konfigurowanie i konfigurowanie odwrotnego serwera proxy w sieci szkieletowej usług Azure
 Reverse proxy to opcjonalna usługa sieci szkieletowej usług Azure, która pomaga mikrousług uruchomionych w klastrze sieci szkieletowej usług odnajdywać i komunikować się z innymi usługami, które mają punkty końcowe http. Aby dowiedzieć się więcej, zobacz [Odwracanie serwera proxy w sieci szkieletowej usług Azure](service-fabric-reverseproxy.md). W tym artykule pokazano, jak skonfigurować i skonfigurować odwrotny serwer proxy w klastrze. 
@@ -23,7 +23,7 @@ Aby skonfigurować odwrotny serwer proxy podczas [tworzenia klastra przy użyciu
 1. W **kroku 2: Konfiguracja klastra**, w obszarze **Konfiguracja typu węzła**wybierz **pozycję Włącz odwrotny serwer proxy**.
 
    ![Włączanie odwrotnego serwera proxy w portalu](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. (Opcjonalnie) Aby skonfigurować bezpieczny serwer proxy wsteczny, należy skonfigurować certyfikat SSL. W **kroku 3: Zabezpieczenia**, na **Konfigurowanie ustawień zabezpieczeń klastra**, w obszarze **Typ konfiguracji**, wybierz **niestandardowe**. Następnie w obszarze **Odwrócony certyfikat SSL serwera proxy**wybierz pozycję **Dołącz certyfikat SSL dla odwrotnego serwera proxy** i wprowadź szczegóły certyfikatu.
+2. (Opcjonalnie) Aby skonfigurować bezpieczny serwer proxy wsteczny, należy skonfigurować certyfikat TLS/SSL. W **kroku 3: Zabezpieczenia**, na **Konfigurowanie ustawień zabezpieczeń klastra**, w obszarze **Typ konfiguracji**, wybierz **niestandardowe**. Następnie w obszarze **Odwrócony certyfikat SSL serwera proxy**wybierz pozycję **Dołącz certyfikat SSL dla odwrotnego serwera proxy** i wprowadź szczegóły certyfikatu.
 
    ![Konfigurowanie bezpiecznego serwera proxy wstecznego w portalu](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -74,7 +74,7 @@ Po szablonie Menedżera zasobów można włączyć odwrotny serwer proxy, wykonu
         ...
     }
     ```
-3. Aby skonfigurować certyfikaty SSL na porcie dla odwrotnego serwera proxy, dodaj certyfikat do właściwości ***reverseProxyCertificate*** w [sekcji Typ zasobu](../resource-group-authoring-templates.md) **Microsoft.ServiceFabric/clusters** .
+3. Aby skonfigurować certyfikaty TLS/SSL na porcie dla odwrotnego serwera proxy, dodaj certyfikat do właściwości ***reverseProxyCertificate*** w [sekcji Typ zasobu](../resource-group-authoring-templates.md) **Microsoft.ServiceFabric/clusters** .
 
     ```json
     {

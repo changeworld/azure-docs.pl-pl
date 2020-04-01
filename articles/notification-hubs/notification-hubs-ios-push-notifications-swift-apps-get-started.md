@@ -26,7 +26,7 @@ ms.locfileid: "80336638"
 # <a name="tutorial-send-push-notifications-to-swift-ios-apps-using-notification-hubs-rest-api"></a>Samouczek: Wysyłanie powiadomień wypychanych do aplikacji Swift na iOS przy użyciu interfejsu API REST centrum powiadomień
 
 > [!div class="op_single_selector"]
-> * [Cel C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+> * [Obiektowy C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
 > * [Swift](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
 
 W tym samouczku usługi Azure Notification Hubs służy do wypychania powiadomień do aplikacji systemu iOS opartej na platformie Swift przy użyciu [interfejsu API REST](/rest/api/notificationhubs/). Można również utworzyć pustą aplikację na iOS, która odbiera powiadomienia wypychane przy użyciu [usługi Apple Push Notification (APN).](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1)

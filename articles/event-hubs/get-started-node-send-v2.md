@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: e296ae36eeeb816d8704ab03824f8cbb80082ea6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 063f2e1005db177420da7f81b799ab01fd212d7e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77163011"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478477"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Wysyłanie zdarzeń do lub odbieranie zdarzeń z centrów zdarzeń przy użyciu języka JavaScript (usługa azure/event-hubs w wersji 5)
 Ten przewodnik Szybki start pokazuje sposób wysyłania zdarzeń do centrum zdarzeń i odbierania ich z wykorzystaniem pakietu JavaScript **usługi azure/event-hubs w wersji 5.** 
@@ -109,6 +109,10 @@ Gratulacje! Zdarzenia zostały wysłane do centrum zdarzeń.
 
 ## <a name="receive-events"></a>Odbieranie zdarzeń
 W tej sekcji otrzymasz zdarzenia z Centrum zdarzeń przy użyciu magazynu magazynu obiektów Blob usługi Azure w aplikacji JavaScript. Wykonuje punkty kontrolne metadanych na odebranych wiadomości w regularnych odstępach czasu w obiekcie blob usługi Azure Storage. Takie podejście ułatwia kontynuowanie otrzymywania wiadomości później od miejsca, w którym zostało przerwane.
+
+> [!NOTE]
+> Jeśli korzystasz z usługi Azure Stack Hub, ta platforma może obsługiwać inną wersję SDK obiektów blob magazynu niż te zwykle dostępne na platformie Azure. Na przykład jeśli korzystasz [z usługi Azure Stack Hub w wersji 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), najwyższą dostępną wersją usługi Storage jest wersja 2017-11-09. W takim przypadku oprócz następujących kroków w tej sekcji, należy również dodać kod do docelowej wersji interfejsu API usługi magazynu 2017-11-09. Aby uzyskać przykład sposobu kierowania na określoną wersję interfejsu API magazynu, zobacz przykłady [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) i [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) w usłudze GitHub. Aby uzyskać więcej informacji na temat wersji usługi Azure Storage obsługiwanych w usłudze Azure Stack Hub, zobacz [usługi Azure Stack Hub storage: Różnice i zagadnienia.](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)
+
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Tworzenie konta magazynu platformy Azure i kontenera obiektów blob
 Aby utworzyć konto magazynu platformy Azure i kontener obiektów blob w nim, wykonaj następujące akcje:

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5ada709350802344bfa65cce269735baa416edf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3bd1156de4aed7d1ea5c530605697f2dc80d63c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234447"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476980"
 ---
 # <a name="high-availability-ports-overview"></a>Omówienie portów o wysokiej dostępności
 
@@ -95,7 +95,7 @@ Można skonfigurować *jeden* publiczny zasób standardowego modułu równoważe
 ## <a name="limitations"></a>Ograniczenia
 
 - Reguły równoważenia obciążenia portów wysokiej dostępności są dostępne tylko dla wewnętrznego standardowego modułu równoważenia obciążenia.
-- Nie jest obsługiwane łączenie reguły równoważenia obciążenia portów wysokiej klasy i reguły równoważenia obciążenia portów innych niż wiele ha.
+- Nie jest obsługiwane łączenie reguły równoważenia obciążenia portów wysokiej klasy i reguły równoważenia obciążenia nieobjętych ha, wskazującej te same konfiguracje ipkonfiguracji wewnętrznej bazy danych.
 - Istniejące fragmenty adresów IP będą przekazywane przez reguły równoważenia obciążenia portów wysokiej klasy do tego samego miejsca docelowego co pierwszy pakiet.  Ip fragmentowanie pakietu UDP lub TCP nie jest obsługiwane.
 - Symetria przepływu (głównie dla scenariuszy wywołujących wartość wyuswania NVA) jest obsługiwana za pomocą wystąpienia wewnętrznej bazy danych i pojedynczej karty sieciowej (i pojedynczej konfiguracji IP) tylko wtedy, gdy jest używana, jak pokazano na powyższym diagramie i przy użyciu reguł równoważenia obciążenia portów wysokiej klasy. Nie jest to przewidziane w żadnym innym scenariuszu. Oznacza to, że dwa lub więcej zasobów modułu równoważenia obciążenia i ich odpowiednich reguł podejmują niezależne decyzje i nigdy nie są koordynowane. Zobacz opis i diagram [dla wirtualnych urządzeń sieciowych](#nva). W przypadku korzystania z wielu kart sieciowych lub nakładania urządzenia WUS między publicznym i wewnętrznym modułem równoważenia obciążenia symetria przepływu jest niedostępna.  Możesz obejść ten problem przez źródło NAT'ing przepływu transferu danych przychodzących do ip urządzenia, aby umożliwić odpowiedzi, aby uzyskać dostęp do tej samej sieci WUS.  Jednak zdecydowanie zaleca się przy użyciu pojedynczej karty sieciowej i przy użyciu architektury odniesienia pokazano na powyższym diagramie.
 

@@ -3,12 +3,12 @@ title: Monitorowanie usług Node.js za pomocą usługi Azure Application Insight
 description: Monitoruj wydajność i diagnozuj problemy w usługach Node.js za pomocą usługi Application Insights.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 38336e3faf3764233dd94bffbfb24421e054496a
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670019"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411580"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorowanie usług i aplikacji Node.js za pomocą usługi Application Insights
 
@@ -16,11 +16,11 @@ ms.locfileid: "77670019"
 
 Aby móc odbierać, przechowywać i eksplorować dane monitorowania, uwzględnij zestaw SDK w kodzie, a następnie skonfiguruj odpowiedni zasób usługi Application Insights na platformie Azure. Zestaw SDK wysyła dane do zasobu na potrzeby przyszłej analizy i eksploracji.
 
-Zestaw Node.js SDK może automatycznie monitorować przychodzące i wychodzące żądania HTTP, wyjątki i niektóre metryki systemu. Od wersji 0.20 zestaw SDK może również monitorować niektóre popularne pakiety innych firm, takie jak MongoDB, MySQL i Redis. Wszystkie zdarzenia związane z przychodzącym żądaniem HTTP są skorelowane, aby zapewnić szybsze rozwiązanie problemów.
+Zestaw Node.js SDK może automatycznie monitorować przychodzące i wychodzące żądania HTTP, wyjątki i niektóre metryki systemu. Począwszy od wersji 0.20, SDK może również monitorować niektóre typowe [pakiety innych firm,](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules)takie jak MongoDB, MySQL i Redis. Wszystkie zdarzenia związane z przychodzącym żądaniem HTTP są skorelowane, aby zapewnić szybsze rozwiązanie problemów.
 
 Do ręcznego instrumentowania i monitorowania dodatkowych aspektów aplikacji i systemu można używać interfejsu API TelemetryClient. Interfejs API TelemetryClient został szczegółowo opisany w dalszej części tego artykułu.
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 Wykonaj następujące zadania w celu skonfigurowania monitorowania aplikacji lub usługi.
 

@@ -2,13 +2,13 @@
 title: Poprawa bazy wiedzy - QnA Maker
 description: Popraw jakość swojej bazy wiedzy dzięki aktywnemu uczeniu się. Przeglądaj, akceptuj lub odrzucaj, dodawaj bez usuwania lub zmieniania istniejących pytań.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 8b2176731ce456b70521cc9208435d0b19943ab8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: 1eb0ed42f700c14350a5e4f1eff9b7592cbf8ef6
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053084"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474883"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Akceptowanie pytań sugerowanych w aktywnej nauce w bazie wiedzy
 
@@ -203,7 +203,7 @@ W [przykładzie bota azure,](https://aka.ms/activelearningsamplebot)oba te dzia�
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>Przykładowy kod języka C# dla interfejsu API pociągu z platformą Bot Framework 4.x
 
-Poniższy kod ilustruje sposób wysyłania informacji z powrotem do programu QnA Maker za pomocą interfejsu API pociągu. Ten [kompletny przykład kodu](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-activelearning/csharp_dotnetcore) jest dostępny w usłudze GitHub.
+Poniższy kod ilustruje sposób wysyłania informacji z powrotem do programu QnA Maker za pomocą interfejsu API pociągu.
 
 ```csharp
 public class FeedbackRecords
@@ -266,7 +266,7 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 
 ### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Przykładowy kod node.js dla interfejsu API pociągu z platformą Bot Framework 4.x
 
-Poniższy kod ilustruje sposób wysyłania informacji z powrotem do programu QnA Maker za pomocą interfejsu API pociągu. Ten [kompletny przykład kodu](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs) jest dostępny w usłudze GitHub.
+Poniższy kod ilustruje sposób wysyłania informacji z powrotem do programu QnA Maker za pomocą interfejsu API pociągu.
 
 ```javascript
 async callTrain(stepContext){
@@ -331,8 +331,8 @@ Kolumna `SuggestedQuestions` jest obiektem JSON informacji `autosuggested`niejaw
 ```
 
 Można również użyć interfejsu API pobierania zmian, aby przejrzeć te zmiany, używając REST lub dowolnego z pakietów SDK opartych na języku:
-* [INTERFEJS API ODPOCZYNKU](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
-* [Zestaw SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
+* [Interfejs API REST](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
+* [Zestaw SDK .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
 
 
 Po ponownym zaimportu tej aplikacji, aktywne uczenie się nadal zbierać informacje i polecam sugestie dla bazy wiedzy.

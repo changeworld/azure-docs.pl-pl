@@ -4,19 +4,18 @@ description: Dowiedz się więcej o niektórych zagadnieniach dotyczących proje
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
-ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: e00ec8448739ac30950877a2ae196aa78cde750c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 69f8cd0f78a45c6c5e53368edc5902c4b6695701
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264195"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408832"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Zagadnienia dotyczące projektowania sieci wirtualnej i opcje konfiguracji usług domenowych usługi Azure AD
 
@@ -76,7 +75,7 @@ Sieć wirtualną można połączyć z inną siecią wirtualną (sieć wirtualna-
 
 ![Łączność z siecią wirtualną przy użyciu bramy sieci VPN](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
 
-Aby uzyskać więcej informacji na temat korzystania z wirtualnej sieci prywatnej, zobacz [Konfigurowanie połączenia bramy sieci VPN z siecią wirtualną przy użyciu portalu Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal).
+Aby uzyskać więcej informacji na temat korzystania z wirtualnej sieci prywatnej, zobacz [Konfigurowanie połączenia bramy sieci VPN z siecią wirtualną przy użyciu portalu Azure](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
 
 ## <a name="name-resolution-when-connecting-virtual-networks"></a>Rozpoznawanie nazw podczas łączenia sieci wirtualnych
 
@@ -97,11 +96,11 @@ Domena zarządzana usługą Azure AD DS tworzy pewne zasoby sieciowe podczas wdr
 | Reguły modułu równoważenia obciążenia                     | Gdy domena zarządzana usługą Azure AD DS jest skonfigurowana do bezpiecznego protokołu LDAP w porcie TCP 636, trzy reguły są tworzone i używane na modułu równoważenia obciążenia do dystrybucji ruchu. |
 
 > [!WARNING]
-> Nie usuwaj żadnego zasobu sieciowego utworzonego przez usługi Azure AD DS. Jeśli usuniesz którykolwiek z zasobów sieciowych, wystąpi awaria usługi Azure AD DS.
+> Nie usuwaj ani nie modyfikuj żadnego zasobu sieciowego utworzonego przez usługi Azure AD DS, na przykład ręcznego konfigurowania modułu równoważenia obciążenia lub reguł. Jeśli usuniesz lub zmodyfikujesz którykolwiek z zasobów sieciowych, może wystąpić awaria usługi Azure AD DS.
 
 ## <a name="network-security-groups-and-required-ports"></a>Sieciowe grupy zabezpieczeń i wymagane porty
 
-[Sieciowa grupa zabezpieczeń (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) zawiera listę reguł, które zezwalają lub odmawiają ruchu sieciowego ruchowi w sieci wirtualnej platformy Azure. Sieciowa grupa zabezpieczeń jest tworzona podczas wdrażania usług Azure AD DS, która zawiera zestaw reguł, które umożliwiają usłudze świadczenie funkcji uwierzytelniania i zarządzania. Ta domyślna grupa zabezpieczeń sieci jest skojarzona z podsiecią sieci wirtualnej, w zarządzanej przez usługę Azure AD DS jest wdrażana.
+[Sieciowa grupa zabezpieczeń (NSG)](../virtual-network/virtual-networks-nsg.md) zawiera listę reguł, które zezwalają lub odmawiają ruchu sieciowego ruchowi w sieci wirtualnej platformy Azure. Sieciowa grupa zabezpieczeń jest tworzona podczas wdrażania usług Azure AD DS, która zawiera zestaw reguł, które umożliwiają usłudze świadczenie funkcji uwierzytelniania i zarządzania. Ta domyślna grupa zabezpieczeń sieci jest skojarzona z podsiecią sieci wirtualnej, w zarządzanej przez usługę Azure AD DS jest wdrażana.
 
 Następujące reguły sieciowej grupy zabezpieczeń są wymagane dla usług Azure AD DS w celu świadczenia usług uwierzytelniania i zarządzania. Nie edytuj ani nie usuwaj tych reguł sieciowej grupy zabezpieczeń dla podsieci sieci wirtualnej, w których wdrożona jest domena zarządzana usługą Azure AD DS.
 

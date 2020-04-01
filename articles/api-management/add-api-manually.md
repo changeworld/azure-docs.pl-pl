@@ -13,15 +13,15 @@ ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: apimpm
 ms.openlocfilehash: 5440333360549c5df2da57c97b24dcc77436ba4b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70072698"
 ---
 # <a name="add-an-api-manually"></a>Ręczne dodawanie interfejsu API
 
-Kroki opisane w tym artykule pokazują, jak za pomocą Azure Portal dodać interfejs API ręcznie do wystąpienia API Management (APIM). Typowy scenariusz, w przypadku którego tworzysz pusty interfejs API i definiujesz go ręcznie, to pozorowanie interfejsu API. Aby uzyskać szczegółowe informacje na interfejsu API na temat pozorowania interfejsu API, zobacz [Pozorowanie odpowiedzi interfejsu API](mock-api-responses.md).
+W tym artykule opisano kroki ręcznego dodawania interfejsu API do wystąpienia usługi API Management (APIM). Typowy scenariusz, w przypadku którego tworzysz pusty interfejs API i definiujesz go ręcznie, to pozorowanie interfejsu API. Aby uzyskać szczegółowe informacje na interfejsu API na temat pozorowania interfejsu API, zobacz [Pozorowanie odpowiedzi interfejsu API](mock-api-responses.md).
 
 Jeśli chcesz zaimportować istniejący interfejs API, zobacz sekcję [tematów pokrewnych](#related-topics).
 
@@ -45,12 +45,12 @@ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Twor
     |**Nazwa**|**Wartość**|**Opis**|
     |---|---|---|
     |**Nazwa wyświetlana**|*Pusty interfejs API*|Ta nazwa jest wyświetlana w portalu dla deweloperów.|
-    |**Nazwa**|*pusty interfejs API*|Zapewnia unikatową nazwę interfejsu API.|
-    |**Adres URL usługi internetowej** (opcjonalnie)|*https://httpbin.org*| Jeśli chcesz pozorować interfejs API, możesz nie wprowadzać żadnych informacji. <br/>W tym przypadku wprowadzamy [https://httpbin.org](https://httpbin.org). Jest to publiczna usługa testowania. <br/>Jeśli chcesz zaimportować interfejs API, który jest automatycznie mapowany na zaplecze, zapoznaj się z jednym z tematów w sekcji [tematów pokrewnych](#related-topics).|
-    |**Schemat adresu URL**|*Schemat*|W takim przypadku nawet jeśli zaplecze ma niezabezpieczony dostęp przez protokół HTTP, określamy bezpieczny dostęp usługi APIM przez protokół HTTPS do zaplecza. <br/>Taki scenariusz (HTTPS do HTTP) jest nazywany zakończeniem połączenia HTTPS. Tę czynność można wykonać, jeśli w sieci wirtualnej istnieje interfejs API (jeśli wiadomo, że dostęp jest zabezpieczony, nawet jeśli protokół HTTPS nie jest używany). <br/>Procesu „zakończenia połączenia HTTPS” można użyć, aby zaoszczędzić czas w przypadku niektórych cykli procesora.|
-    |**Sufiks adresu URL**|*hbin*| Sufiks to nazwa, która identyfikuje dany interfejs API w tym wystąpieniu usługi APIM. Musi ona być unikatowa w tym wystąpieniu usługi APIM.|
-    |**Produkty**|*Unlimited (nieograniczony)*|Opublikuj interfejs API przez skojarzenie go z produktem. Jeśli chcesz, aby interfejs API został opublikowany i był dostępny dla deweloperów, dodaj go do produktu. Możesz to zrobić podczas tworzenia interfejsu API lub ustawić tę opcję później.<br/><br/>Produkty to skojarzenia co najmniej jednego interfejsu API. Możesz uwzględnić wiele interfejsów API i zaoferować je deweloperom za pośrednictwem portalu deweloperów. <br/>Przed uzyskaniem dostępu do interfejsu API deweloperzy muszą najpierw zasubskrybować produkt. Podczas subskrybowania otrzymują oni klucz subskrypcji działający dla każdego interfejsu API w tym produkcie. Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc domyślnie posiada subskrypcję każdego produktu.<br/><br/> Domyślnie każde wystąpienie usługi API Management zawiera dwa produkty przykładowe: **początkowy** i **bez ograniczeń**.| 
-5. Wybierz pozycję **Utwórz**.
+    |**Nazwa**|*pusty api*|Zapewnia unikatową nazwę interfejsu API.|
+    |**Adres URL usługi internetowej** (opcjonalnie)|*https://httpbin.org*| Jeśli chcesz pozorować interfejs API, możesz nie wprowadzać żadnych informacji. <br/>W takim przypadku [https://httpbin.org](https://httpbin.org)wprowadzamy . Jest to publiczna usługa testowania. <br/>Jeśli chcesz zaimportować interfejs API, który jest automatycznie mapowany na zaplecze, zapoznaj się z jednym z tematów w sekcji [tematów pokrewnych](#related-topics).|
+    |**Schemat adresu URL**|*HTTP*|W takim przypadku nawet jeśli zaplecze ma niezabezpieczony dostęp przez protokół HTTP, określamy bezpieczny dostęp usługi APIM przez protokół HTTPS do zaplecza. <br/>Taki scenariusz (HTTPS do HTTP) jest nazywany zakończeniem połączenia HTTPS. Tę czynność można wykonać, jeśli w sieci wirtualnej istnieje interfejs API (jeśli wiadomo, że dostęp jest zabezpieczony, nawet jeśli protokół HTTPS nie jest używany). <br/>Procesu „zakończenia połączenia HTTPS” można użyć, aby zaoszczędzić czas w przypadku niektórych cykli procesora.|
+    |**Sufiks adresu URL**|*hbin (hbin)*| Sufiks to nazwa, która identyfikuje dany interfejs API w tym wystąpieniu usługi APIM. Musi ona być unikatowa w tym wystąpieniu usługi APIM.|
+    |**Produkty**|*Unlimited (nieograniczony)*|Opublikuj interfejs API przez skojarzenie go z produktem. Jeśli chcesz, aby interfejs API został opublikowany i był dostępny dla deweloperów, dodaj go do produktu. Możesz to zrobić podczas tworzenia interfejsu API lub ustawić tę opcję później.<br/><br/>Produkty to skojarzenia co najmniej jednego interfejsu API. Możesz uwzględnić wiele interfejsów API i zaoferować je deweloperom za pośrednictwem portalu deweloperów. <br/>Przed uzyskaniem dostępu do interfejsu API deweloperzy muszą najpierw zasubskrybować produkt. Podczas subskrybowania otrzymują oni klucz subskrypcji działający dla każdego interfejsu API w tym produkcie. Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc domyślnie posiada subskrypcję każdego produktu.<br/><br/> Domyślnie każde wystąpienie usługi API Management zawiera dwa produkty przykładowe: **Starter** i **Unlimited**.| 
+5. Wybierz **pozycję Utwórz**.
 
 W tym momencie w usłudze APIM nie ma żadnych operacji mapowanych na operacje w interfejsie API zaplecza. Jeśli wywołasz operację, która jest uwidaczniana za pośrednictwem zaplecza, a nie usługi APIM, może wystąpić błąd **404**.
 
@@ -65,9 +65,9 @@ W tej sekcji przedstawiono sposób dodawania operacji „/ get” w celu mapowan
 
 1. Wybierz interfejs API utworzony w poprzednim kroku.
 2. Kliknij przycisk **+ Dodaj operację**.
-3. W polu **adresu URL** wybierz pozycję **GET**, a następnie wprowadź ciąg „ */get*” w zasobie.
+3. W polu **adresu URL** wybierz pozycję **GET**, a następnie wprowadź ciąg „*/get*” w zasobie.
 4. Wprowadź ciąg „*FetchData*” w polu **Nazwa wyświetlana**.
-5. Wybierz pozycję **Zapisz**.
+5. Wybierz **pozycję Zapisz**.
 
 ### <a name="test-an-operation"></a>Testowanie operacji
 
@@ -87,9 +87,9 @@ W tej sekcji przedstawiono sposób dodawania operacji przyjmującej parametr. W 
 
 1. Wybierz interfejs API utworzony w poprzednim kroku.
 2. Kliknij przycisk **+ Dodaj operację**.
-3. W polu **adresu URL** wybierz pozycję **GET**, a następnie wprowadź ciąg „ */status/{code}* ” w zasobie. Opcjonalnie możesz podać niektóre informacje skojarzone z tym parametrem. Na przykład wprowadź wartość „*Numer*” w obszarze **TYP** i „*200*” (wartość domyślna) w obszarze **WARTOŚCI**.
+3. W polu **adresu URL** wybierz pozycję **GET**, a następnie wprowadź ciąg „*/status/{code}*” w zasobie. Opcjonalnie możesz podać niektóre informacje skojarzone z tym parametrem. Na przykład wprowadź wartość „*Numer*” w obszarze **TYP** i „*200*” (wartość domyślna) w obszarze **WARTOŚCI**.
 4. Wprowadź ciąg „GetStatus” w polu **Nazwa wyświetlana**.
-5. Wybierz pozycję **Zapisz**.
+5. Wybierz **pozycję Zapisz**.
 
 ### <a name="test-the-operation"></a>Testowanie operacji 
 

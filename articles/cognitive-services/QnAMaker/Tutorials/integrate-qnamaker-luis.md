@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 7e1ea234bde96ce84259841bbc592bf6373bc639
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c01f5f41e61cd65855789bb753a7a297fe475885
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71802806"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396341"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Użyj bota z QnA Maker i LUIS, aby dystrybuować swoją bazę wiedzy
 Ponieważ baza wiedzy QnA Maker rośnie w dużych rozmiarach, trudno jest utrzymać ją jako pojedynczy zestaw monolityczny i istnieje potrzeba podzielenia bazy wiedzy na mniejsze fragmenty logiczne.
@@ -37,13 +37,13 @@ W powyższym scenariuszu QnA Maker najpierw pobiera intencji pytania przychodzą
 1. [Tworzenie aplikacji](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app).
 1. [Dodaj intencję](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) dla każdej bazy wiedzy programu QnA Maker. Wypowiedzi przykład powinny odpowiadać pytania w bazach wiedzy QnA Maker.
 1. [Trenuj aplikację usługi LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) i [publikuj aplikację usługi LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp) jako aplikację usługi LUIS.
-1. W sekcji **Zarządzanie** zanotuj identyfikator aplikacji usługi LUIS, klucz punktu końcowego usługi LUIS i [niestandardową nazwę domeny](../../cognitive-services-custom-subdomains.md). Te wartości będą potrzebne później. 
+1. W sekcji **Zarządzanie** zanotuj identyfikator aplikacji usługi LUIS, klucz punktu końcowego usługi LUIS i [niestandardową nazwę domeny](../../cognitive-services-custom-subdomains.md). Te wartości będą potrzebne później.
 
 ## <a name="create-qna-maker-knowledge-bases"></a>Tworzenie baz wiedzy programu QnA Maker
 
 1. Zaloguj się do [aplikacji QnA Maker](https://qnamaker.ai).
 1. [Tworzenie](https://www.qnamaker.ai/Create) baz wiedzy dla każdej intencji w aplikacji usługi LUIS.
-1. Przetestuj i opublikuj bazy wiedzy. Podczas publikowania każdej bazy wiedzy należy zanotować identyfikator KB, nazwę zasobu (niestandardową poddomenę przed _azurewebsites.net/qnamaker)_ i klucz punktu końcowego autoryzacji. Te wartości będą potrzebne później. 
+1. Przetestuj i opublikuj bazy wiedzy. Podczas publikowania każdej bazy wiedzy należy zanotować identyfikator KB, nazwę zasobu (niestandardową poddomenę przed _azurewebsites.net/qnamaker)_ i klucz punktu końcowego autoryzacji. Te wartości będą potrzebne później.
 
     W tym artykule przyjęto założenie, że wszystkie kbs są tworzone w tej samej subskrypcji programu Azure QnA Maker.
 
@@ -60,7 +60,7 @@ W powyższym scenariuszu QnA Maker najpierw pobiera intencji pytania przychodzą
 
 ## <a name="change-code-in-basicluisdialogcs"></a>Zmień kod w BasicLuisDialog.cs
 1. W sekcji **Zarządzanie botami** nawigacji botów aplikacji sieci web w witrynie Azure portal wybierz pozycję **Buduj**.
-2. Wybierz **otwórz edytor kodu online**. Zostanie otwarta nowa karta przeglądarki ze środowiskiem edycji online. 
+2. Wybierz **otwórz edytor kodu online**. Zostanie otwarta nowa karta przeglądarki ze środowiskiem edycji online.
 3. W sekcji **WWWROOT** wybierz katalog **Dialogi,** a następnie otwórz **BasicLuisDialog.cs**.
 4. Dodaj zależności do górnej części pliku **BasicLuisDialog.cs:**
 
@@ -155,7 +155,7 @@ W powyższym scenariuszu QnA Maker najpierw pobiera intencji pytania przychodzą
     ```
 
 
-7. Zmodyfikuj klasę BasicLuisDialog. Każda intencja usługi LUIS powinna mieć metodę ozdobioną **luisintent**. Parametrem do dekoracji jest rzeczywista nazwa intencji usługi LUIS. Nazwa metody, która jest dekorowana _powinna_ być nazwą intencji usługi LUIS dla czytelności i łatwości konserwacji, ale nie musi być taka sama w czasie projektowania lub wykonywania.  
+7. Zmodyfikuj klasę BasicLuisDialog. Każda intencja usługi LUIS powinna mieć metodę ozdobioną **luisintent**. Parametrem do dekoracji jest rzeczywista nazwa intencji usługi LUIS. Nazwa metody, która jest dekorowana _powinna_ być nazwą intencji usługi LUIS dla czytelności i łatwości konserwacji, ale nie musi być taka sama w czasie projektowania lub wykonywania.
 
     ```csharp
     [Serializable]
@@ -170,7 +170,7 @@ W powyższym scenariuszu QnA Maker najpierw pobiera intencji pytania przychodzą
         // assumes all KBs are created with same Azure service
         static string qnamaker_endpointKey = "<QnA Maker endpoint KEY>";
         static string qnamaker_resourceName = "my-qnamaker-s0-s";
-        
+
         // QnA Maker Human Resources Knowledge base
         static string HR_kbID = "<QnA Maker KNOWLEDGE BASE ID>";
 
@@ -240,4 +240,4 @@ W witrynie Azure portal wybierz pozycję **Testuj w czacie sieci Web,** aby prze
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie planu ciągłości biznesowej dla usługi QnA Maker](../How-To/business-continuity-plan.md)
+> [Zintegruj swoją bazę wiedzy z wirtualnym agentem power](integrate-with-power-virtual-assistant-fallback-topic.md)

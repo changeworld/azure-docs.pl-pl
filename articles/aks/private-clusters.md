@@ -4,12 +4,12 @@ description: Dowiedz się, jak utworzyć prywatny klaster usługi Kubernetes pla
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: cdefcfe460a97f647afa05947e92fae0c4d07001
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87f52c5a749b531e5b0656e0b30ff0fe9c1a57bf
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499305"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398048"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Tworzenie prywatnego klastra usługi Kubernetes platformy Azure
 
@@ -80,6 +80,18 @@ Jak wspomniano, komunikacja równorzędna sieci wirtualnej jest jednym ze sposob
 7. W lewym okienku wybierz pozycję **Peerings**.  
 8. Wybierz **pozycję Dodaj**, dodaj sieć wirtualną maszyny Wirtualnej, a następnie utwórz komunikację równorzędnej.  
 9. Przejdź do sieci wirtualnej, w której masz maszynę wirtualną, wybierz **pozycję Peerings**, wybierz sieć wirtualną AKS, a następnie utwórz komunikację równorzędną. Jeśli zakresy adresów w sieci wirtualnej usługi AKS i kolizji sieci wirtualnej maszyny Wirtualnej, komunikacja równorzędna kończy się niepowodzeniem. Aby uzyskać więcej informacji, zobacz [Komunikacja równorzędna sieci wirtualnej][virtual-network-peering].
+
+## <a name="hub-and-spoke-with-custom-dns"></a>Koncentrat i rozmowa z niestandardowym systemem DNS
+
+[Architektury koncentratora i szprychy](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) są często używane do wdrażania sieci na platformie Azure. W wielu z tych wdrożeń ustawienia DNS w sieciach wirtualnych szprychy są skonfigurowane do odwoływania się do centralnej usługi przesyłania dalej DNS, aby umożliwić lokalne i oparte na platformie Azure rozpoznawanie DNS. Podczas wdrażania klastra AKS w takim środowisku sieciowym, istnieją pewne szczególne kwestie, które muszą być brane pod uwagę.
+
+![Prywatne centrum klastra i szprychy](media/private-clusters/aks-private-hub-spoke.png)
+
+1. Domyślnie podczas inicjowania obsługi administracyjnej klastra prywatnego w grupie zasobów zarządzanych przez klaster tworzony jest prywatny punkt końcowy (1) i prywatna strefa DNS (2). Klaster używa rekordu A w strefie prywatnej do rozpoznawania adresu IP prywatnego punktu końcowego w celu komunikacji z serwerem interfejsu API.
+
+2. Prywatna strefa DNS jest połączona tylko z siecią wirtualną, do którą są dołączone węzły klastra (3). Oznacza to, że prywatny punkt końcowy można rozpoznać tylko przez hosty w tej połączonej sieci wirtualnej. W scenariuszach, w których nie skonfigurowano niestandardowego systemu DNS w sieci wirtualnej (domyślnie), działa to bez problemu jako punkt hostów w wersji 168.63.129.16 dla systemu DNS, która może rozpoznawać rekordy w prywatnej strefie DNS z powodu łącza.
+
+3. W scenariuszach, w których sieć wirtualna zawierająca klaster ma niestandardowe ustawienia DNS (4), wdrażanie klastra kończy się niepowodzeniem, chyba że prywatna strefa DNS jest połączona z siecią wirtualną zawierającą niestandardowe programy rozpoznawania nazw DNS (5). To łącze można utworzyć ręcznie po utworzeniu strefy prywatnej podczas inicjowania obsługi administracyjnej klastra lub za pomocą automatyzacji po wykryciu utworzenia strefy przy użyciu zasad platformy Azure lub innych mechanizmów wdrażania opartych na zdarzeniach (na przykład usługa Azure Event Grid i usługi Azure Functions).
 
 ## <a name="dependencies"></a>Zależności  
 

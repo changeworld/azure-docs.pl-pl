@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 698fab470cdc8b8d04fa4319fd71c31b58d1c5a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066889"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478154"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozszerzenie niestandardowego skryptu dla systemu Windows
 
@@ -106,7 +106,7 @@ Te elementy powinny być traktowane jako poufne dane i określone w konfiguracji
 > Tylko jedna wersja rozszerzenia może być zainstalowana na maszynie wirtualnej w momencie, określając skrypt niestandardowy dwa razy w tym samym szablonie Menedżera zasobów dla tej samej maszyny Wirtualnej zakończy się niepowodzeniem.
 
 > [!NOTE]
-> Możemy użyć tego schematu wewnątrz zasobu VirtualMachine lub jako autonomicznego zasobu. Nazwa zasobu musi być w tym formacie "virtualMachineName/extensionName", jeśli to rozszerzenie jest używane jako samodzielny zasób w szablonie ARM. 
+> Możemy użyć tego schematu wewnątrz zasobu VirtualMachine lub jako autonomicznego zasobu. Nazwa zasobu musi być w tym formacie "virtualMachineName/extensionName", jeśli to rozszerzenie jest używane jako samodzielny zasób w szablonie ARM.
 
 ### <a name="property-values"></a>Wartości właściwości
 
@@ -146,6 +146,8 @@ Za pomocą ustawień publicznych może przydatne do debugowania, ale zaleca się
 Ustawienia publiczne są wysyłane w postaci zwykłego tekstu do maszyny Wirtualnej, gdzie skrypt zostanie wykonany.  Chronione ustawienia są szyfrowane przy użyciu klucza znanego tylko platformie Azure i maszynie wirtualnej. Ustawienia są zapisywane na maszynie Wirtualnej w miarę ich wysyłania, oznacza to, że jeśli ustawienia zostały zaszyfrowane, są zapisywane zaszyfrowane na maszynie Wirtualnej. Certyfikat używany do odszyfrowywania zaszyfrowanych wartości jest przechowywany na maszynie wirtualnej i używany do odszyfrowywania ustawień (jeśli to konieczne) w czasie wykonywania.
 
 ####  <a name="property-managedidentity"></a>Właściwość: managedIdentity
+> [!NOTE]
+> Ta właściwość **musi** być określona tylko w ustawieniach chronionych.
 
 Kod CustomScript (wersja 1.10) obsługuje [tożsamość zarządzaną](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) do pobierania plików z adresów URL podanych w ustawieniu "fileUris". Umożliwia kod customscript dostęp do prywatnych obiektów blob usługi Azure Storage lub kontenerów bez konieczności przekazywania przez użytkownika wpisów tajnych, takich jak tokeny sygnatury dostępu współdzielonego lub klucze konta magazynu.
 
@@ -278,7 +280,7 @@ Aby wdrożyć niestandardowe rozszerzenie skryptu w zestawie skalowania, zobacz 
 
 Aby wdrożyć rozszerzenie skryptów niestandardowych na klasycznych maszynach wirtualnych, można użyć portalu Azure lub klasycznych poleceń cmdlet programu Azure PowerShell.
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Przejdź do zasobu klasycznej maszyny Wirtualnej. Wybierz **rozszerzenia** w obszarze **Ustawienia**.
 

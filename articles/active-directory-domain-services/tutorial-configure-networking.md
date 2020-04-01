@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 26122278ad74fb1d383ca7a900810b6060ee78f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: af284e4c10487123c8c2a2105a25a2285ae0aa99
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73172675"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474360"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-instance"></a>Samouczek: Konfigurowanie sieci wirtualnej dla wystąpienia usług domenowych usługi domenowej Active Directory platformy Azure
 
@@ -29,7 +29,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 > * Tworzenie zakresu adresów IP i dodatkowej podsieci w sieci wirtualnej usług Azure AD DS
 > * Konfigurowanie komunikacji równorzędnej sieci wirtualnej w sieci oddzielonej od usług Azure AD DS
 
-Jeśli nie masz subskrypcji platformy Azure, [utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -72,18 +72,18 @@ Domyślnie sieć wirtualna platformy Azure utworzona za pomocą domeny zarządza
 Aby utworzyć podsieć sieci wirtualnej dla maszyn wirtualnych i obciążeń aplikacji, wykonaj następujące kroki:
 
 1. W witrynie Azure portal wybierz grupę zasobów domeny zarządzanej usług Azure AD DS, takiej jak *myResourceGroup*. Z listy zasobów wybierz domyślną sieć wirtualną, taką jak *aadds-vnet*.
-1. W menu po lewej stronie okna sieci wirtualnej wybierz pozycję **Przestrzeń adresowa**. Sieć wirtualna jest tworzona z pojedynczą przestrzenią adresową *10.0.1.0/24*, która jest używana przez domyślną podsieć.
+1. W menu po lewej stronie okna sieci wirtualnej wybierz pozycję **Przestrzeń adresowa**. Sieć wirtualna jest tworzona z pojedynczą przestrzenią adresową *10.0.2.0/24*, która jest używana przez domyślną podsieć.
 
     Dodaj dodatkowy zakres adresów IP do sieci wirtualnej. Rozmiar tego zakresu adresów i rzeczywistego zakresu adresów IP, którego należy użyć, zależy od innych już wdrożonych zasobów sieciowych. Zakres adresów IP nie powinien pokrywać się z istniejącymi zakresami adresów w środowisku platformy Azure lub lokalnym. Upewnij się, że rozmiar zakresu adresów IP wystarczająco duży dla liczby maszyn wirtualnych, które mają być wdrażane w podsieci.
 
-    W poniższym przykładzie dodano dodatkowy zakres adresów IP *10.0.2.0/24.* Gdy będzie gotowy, wybierz pozycję **Zapisz**.
+    W poniższym przykładzie dodano dodatkowy zakres adresów IP *10.0.3.0/24.* Gdy będzie gotowy, wybierz pozycję **Zapisz**.
 
     ![Dodawanie dodatkowego zakresu adresów IP sieci wirtualnej w witrynie Azure portal](./media/tutorial-configure-networking/add-vnet-address-range.png)
 
 1. Następnie w menu po lewej stronie okna sieci wirtualnej wybierz pozycję **Podsieci**, a następnie wybierz + **Podsieć,** aby dodać podsieć.
 1. Wprowadź nazwę podsieci, taką jak *obciążenia*. W razie potrzeby **zaktualizuj zakres adresów,** jeśli chcesz użyć podzbioru zakresu adresów IP skonfigurowanego dla sieci wirtualnej w poprzednich krokach. Na razie pozostaw domyślne opcje, takie jak grupa zabezpieczeń sieci, tabela tras, punkty końcowe usługi.
 
-    W poniższym przykładzie tworzony jest *podsieć* o nazwie obciążeń, który używa zakresu adresów IP *10.0.2.0/24:*
+    W poniższym przykładzie tworzony jest *podsieć* o nazwie obciążeń, który używa zakresu adresów IP *10.0.3.0/24:*
 
     ![Dodawanie dodatkowej podsieci sieci wirtualnej w witrynie Azure portal](./media/tutorial-configure-networking/add-vnet-subnet.png)
 
@@ -130,7 +130,7 @@ W tym samouczku skonfigurujmy serwery DNS sieci wirtualnej platformy Azure, aby 
 
 1. W witrynie Azure portal wybierz grupę zasobów sieci wirtualnej równorzędnej, taką jak *myResourceGroup*. Z listy zasobów wybierz sieć wirtualną równorzędnej, taką jak *myVnet*.
 1. W menu po lewej stronie okna sieci wirtualnej wybierz pozycję **Serwery DNS**.
-1. Domyślnie sieć wirtualna używa wbudowanych serwerów DNS dostarczonych przez platformę Azure. Wybierz opcję **używania niestandardowych** serwerów DNS. Wprowadź adresy IP kontrolerów domeny usług Azure AD DS, które zwykle są *10.0.1.4* i *10.0.1.5*. Potwierdź te adresy IP w oknie **Przegląd** domeny zarządzanej usług Azure AD DS w portalu.
+1. Domyślnie sieć wirtualna używa wbudowanych serwerów DNS dostarczonych przez platformę Azure. Wybierz opcję **używania niestandardowych** serwerów DNS. Wprowadź adresy IP kontrolerów domeny usług Azure AD DS, które zwykle są *10.0.2.4* i *10.0.2.5*. Potwierdź te adresy IP w oknie **Przegląd** domeny zarządzanej usług Azure AD DS w portalu.
 
     ![Konfigurowanie serwerów DNS w sieci wirtualnej do używania kontrolerów domeny usług Azure AD DS](./media/tutorial-configure-networking/custom-dns.png)
 

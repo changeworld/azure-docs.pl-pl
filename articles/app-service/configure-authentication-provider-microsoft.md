@@ -1,22 +1,22 @@
 ---
 title: Konfigurowanie uwierzytelniania firmy Microsoft
-description: Dowiedz się, jak skonfigurować uwierzytelnianie konta Microsoft jako dostawcę tożsamości dla aplikacji usługi App Service.
+description: Dowiedz się, jak skonfigurować uwierzytelnianie konta Microsoft jako dostawcę tożsamości dla usługi aplikacji lub aplikacji Usługi Azure Functions.
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
-ms.custom: seodec18
-ms.openlocfilehash: 95c603d4a10eb0e4d0817e20755c0f9b36baa96f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: ea745aa00f8990a2d1232a19780fdc70e2f78996
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76842337"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437961"
 ---
-# <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Konfigurowanie aplikacji usługi App Service do używania logowania do konta Microsoft
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>Konfigurowanie usługi app service lub aplikacji Usługi Azure do korzystania z logowania konta Microsoft
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-W tym temacie pokazano, jak skonfigurować usługę Azure App Service do używania usługi AAD do obsługi osobistych identyfikatorów logowania do konta Microsoft.
+W tym temacie pokazano, jak skonfigurować usługę Azure App Service lub usługi Azure Functions do używania usługi AAD do obsługi osobistych identyfikatorów logowania do konta Microsoft.
 
 > [!NOTE]
 > Zarówno osobiste konta Microsoft, jak i konta organizacyjne korzystają z dostawcy tożsamości usługi AAD. W tej chwili nie jest możliwe skonfigurowanie tego dostawcy tożsamości do obsługi obu typów logowań.
@@ -61,4 +61,4 @@ Teraz możesz używać konta Microsoft do uwierzytelniania w aplikacji.
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Portal Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

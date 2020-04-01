@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 7c971dcac702318d15a27736828092e987468ca3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 352ff91bf26c7ff4f6945431fe6e1357f030e1db
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77162977"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477519"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Wysyłanie zdarzeń do lub odbieranie zdarzeń z centrów zdarzeń przy użyciu języka Python (usługa azure-eventhub w wersji 5)
 Ten przewodnik Szybki start pokazuje, jak wysyłać zdarzenia i odbierać zdarzenia z centrum zdarzeń przy użyciu pakietu **języka Azure Eventhub w wersji 5** języka Python.
@@ -22,7 +22,7 @@ Ten przewodnik Szybki start pokazuje, jak wysyłać zdarzenia i odbierać zdarze
 > Ten przewodnik Szybki start korzysta z najnowszego pakietu azure eventhub w wersji 5. Aby uzyskać szybki start, który używa starego pakietu azure eventhub w wersji 1, zobacz [Wysyłanie i odbieranie zdarzeń przy użyciu usługi azure-eventhub w wersji 1](event-hubs-python-get-started-send.md). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Jeśli jesteś nowy w usłudze Azure Event Hubs, zobacz [Centrum zdarzeń omówienie](event-hubs-about.md) przed rozpoczęciem tego przewodnika Szybki start. 
+Jeśli jesteś nowym użytkownikiem usługi Azure Event Hubs, zobacz [Omówienie centrów zdarzeń](event-hubs-about.md) przed rozpoczęciem tego przewodnika Szybki start. 
 
 Do wykonania kroków tego przewodnika Szybki start niezbędne jest spełnienie następujących wymagań wstępnych:
 
@@ -79,9 +79,14 @@ W tej sekcji utworzysz skrypt języka Python, aby wysłać zdarzenia do centrum 
 
     > [!NOTE]
     > Pełny kod źródłowy, w tym komentarze informacyjne, przejdź do [strony GitHub send_async.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/send_async.py).
+    
 
 ## <a name="receive-events"></a>Odbieranie zdarzeń
 Ten przewodnik Szybki start używa magazynu obiektów Blob platformy Azure jako magazynu punktów kontrolnych. Magazyn punktu kontrolnego jest używany do utrwalania punktów kontrolnych (czyli ostatnio odczytu pozycji).  
+
+> [!NOTE]
+> Jeśli korzystasz z usługi Azure Stack Hub, ta platforma może obsługiwać inną wersję SDK obiektów blob magazynu niż te zwykle dostępne na platformie Azure. Na przykład jeśli korzystasz [z usługi Azure Stack Hub w wersji 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), najwyższą dostępną wersją usługi Storage jest wersja 2017-11-09. W takim przypadku oprócz następujących kroków w tej sekcji, należy również dodać kod do docelowej wersji interfejsu API usługi magazynu 2017-11-09. Na przykład, jak kierować określonej wersji interfejsu API magazynu, zobacz [synchroniczne](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py) i [asynchroniczne](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py) przykłady w usłudze GitHub. Aby uzyskać więcej informacji na temat wersji usługi Azure Storage obsługiwanych w usłudze Azure Stack Hub, zobacz [usługi Azure Stack Hub storage: Różnice i zagadnienia.](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)
+
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Tworzenie konta magazynu platformy Azure i kontenera obiektów blob
 Utwórz konto magazynu platformy Azure i kontener obiektów blob w nim, wykonując następujące kroki:

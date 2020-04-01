@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2020
+ms.date: 03/27/2020
 ms.author: shvija
-ms.openlocfilehash: 808e813ad90626acec893a021634566f091c895f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 0546adb6131479a8f5d2e7e31819483200586839
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76904484"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397337"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Availability and consistency in Event Hubs (Dostępność i spójność w usłudze Event Hubs)
 
@@ -36,12 +36,63 @@ W yokreślenie browaru definiuje spójność i dostępność w następujący spo
 Centra zdarzeń jest zbudowany na modelu danych podzielonych na partycje. Można skonfigurować liczbę partycji w centrum zdarzeń podczas instalacji, ale nie można zmienić tej wartości później. Ponieważ należy używać partycji z centrum zdarzeń, należy podjąć decyzję o dostępności i spójności dla aplikacji.
 
 ## <a name="availability"></a>Dostępność
-Najprostszym sposobem rozpoczęcia pracy z centrum zdarzeń jest użycie zachowania domyślnego. Jeśli utworzysz nowy **[obiekt EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** i użyjesz **[metody Send,](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** zdarzenia są automatycznie dystrybuowane między partycjami w centrum zdarzeń. To zachowanie pozwala na największą ilość czasu.
+Najprostszym sposobem rozpoczęcia pracy z centrum zdarzeń jest użycie zachowania domyślnego. 
+
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[Usługa Azure.Messaging.EventHubs (5.0.0 lub nowsze)](#tab/latest)
+Jeśli utworzysz nowy **[Obiekt EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)** i użyjesz Metody **[SendAsync,](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)** zdarzenia są automatycznie dystrybuowane między partycjami w centrum zdarzeń. To zachowanie pozwala na największą ilość czasu.
+
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Witryna Microsoft.Azure.EventHubs (4.1.0 lub wcześniejsza)](#tab/old)
+Jeśli utworzysz nowy **[obiekt EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** i użyjesz **[metody Send,](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** zdarzenia są automatycznie dystrybuowane między partycjami w centrum zdarzeń. To zachowanie pozwala na największą ilość czasu.
+
+---
 
 W przypadkach użycia, które wymagają maksymalnego czasu wystania, ten model jest preferowany.
 
 ## <a name="consistency"></a>Spójność
-W niektórych scenariuszach kolejność zdarzeń może być ważna. Na przykład system zaplecza może przetworzyć polecenie aktualizacji przed poleceniem usuwania. W tym przypadku można ustawić klucz partycji na zdarzenie `PartitionSender` lub użyć obiektu, aby wysyłać tylko zdarzenia do określonej partycji. W ten sposób zapewnia, że gdy te zdarzenia są odczytywane z partycji, są odczytywane w kolejności.
+W niektórych scenariuszach kolejność zdarzeń może być ważna. Na przykład system zaplecza może przetworzyć polecenie aktualizacji przed poleceniem usuwania. W tym przypadku można ustawić klucz partycji na zdarzenie `PartitionSender` lub użyć obiektu (jeśli używasz starej biblioteki Microsoft.Azure.Messaging), aby wysyłać tylko zdarzenia do określonej partycji. W ten sposób zapewnia, że gdy te zdarzenia są odczytywane z partycji, są odczytywane w kolejności. Jeśli używasz biblioteki **Azure.Messaging.EventHubs** i aby uzyskać więcej informacji, zobacz [Migrowanie kodu z PartitionSender do EventHubProducerClient do publikowania zdarzeń na partycji](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition).
+
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[Usługa Azure.Messaging.EventHubs (5.0.0 lub nowsze)](#tab/latest)
+
+```csharp
+var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
+var eventHubName = "<< NAME OF THE EVENT HUB >>";
+
+await using (var producerClient = new EventHubProducerClient(connectionString, eventHubName))
+{
+    var batchOptions = new CreateBatchOptions() { PartitionId = "my-partition-id" };
+    using EventDataBatch eventBatch = await producerClient.CreateBatchAsync(batchOptions);
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("First")));
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second")));
+    
+    await producerClient.SendAsync(eventBatch);
+}
+```
+
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Witryna Microsoft.Azure.EventHubs (4.1.0 lub wcześniejsza)](#tab/old)
+
+```csharp
+var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
+var eventHubName = "<< NAME OF THE EVENT HUB >>";
+
+var connectionStringBuilder = new EventHubsConnectionStringBuilder(connectionString){ EntityPath = eventHubName }; 
+var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
+PartitionSender partitionSender = eventHubClient.CreatePartitionSender("my-partition-id");
+try
+{
+    EventDataBatch eventBatch = partitionSender.CreateBatch();
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("First")));
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second")));
+
+    await partitionSender.SendAsync(eventBatch);
+}
+finally
+{
+    await partitionSender.CloseAsync();
+    await eventHubClient.CloseAsync();
+}
+```
+
+---
 
 W tej konfiguracji należy pamiętać, że jeśli określona partycja, do której wysyłasz jest niedostępna, zostanie wyświetlone odpowiedzi na błąd. Jako punkt porównania, jeśli nie masz koligacji do jednej partycji, usługa Centrum zdarzeń wysyła zdarzenie do następnej dostępnej partycji.
 

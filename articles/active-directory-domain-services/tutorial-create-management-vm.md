@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 63c5f068adab58c901acf5fd26261d57e1183f0d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 09fcf88c6dfe90380f387c6d72c751634f5b1606
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481521"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475734"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Samouczek: tworzenie maszyny Wirtualnej zarządzania w celu konfigurowania domeny zarządzanej usług domenowych usługi active directory i administrowania nimi
 
@@ -29,7 +29,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 > * Instalowanie narzędzi administracyjnych usługi Active Directory na maszynie Wirtualnej systemu Windows Server
 > * Wykonywanie typowych zadań za pomocą Centrum administracyjnego usługi Active Directory
 
-Jeśli nie masz subskrypcji platformy Azure, [utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -89,7 +89,6 @@ Aby rozpocząć, połącz się z maszyną wirtualną systemu Windows Server w na
 
     ![Łączenie się z maszyną wirtualną systemu Windows przy użyciu bastionu w witrynie Azure portal](./media/join-windows-vm/connect-to-vm.png)
 
-    Można również [utworzyć i używać hosta Bastion azure (obecnie w wersji zapoznawczej),][azure-bastion] aby zezwolić na dostęp tylko za pośrednictwem witryny Azure portal za pośrednictwem protokołu TLS.
 1. Wprowadź poświadczenia maszyny Wirtualnej, a następnie wybierz pozycję **Połącz**.
 
    ![Łączenie się za pośrednictwem hosta bastionu w witrynie Azure portal](./media/join-windows-vm/connect-to-bastion.png)

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 65fc4ed25b0fd360de8e3b1439d1766485eb2e58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba1d06ce83d50b6f0db84d1e423e66eae98f665d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688640"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477503"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Certyfikaty i środowisko usługi aplikacji 
 
@@ -22,7 +22,7 @@ ASE jest jednym systemem dzierżawy. Ponieważ jest pojedyncza dzierżawa, istni
 
 ## <a name="ilb-ase-certificates"></a>Certyfikaty ASE równoważenia obciążenia sieciowego 
 
-Jeśli używasz zewnętrznego ase, a następnie aplikacje są osiągane w [appname]. [asename].p.azurewebsites.net. Domyślnie wszystkie asy, nawet asy RÓWNOWAżenia obciążenia sieciowego, są tworzone z certyfikatami, które są zgodne z tym formatem. Gdy masz ASE ILB, aplikacje są osiągane na podstawie nazwy domeny, którą określisz podczas tworzenia ASE równoważenia obciążenia. Aby aplikacje obsługiwać ssl, należy przekazać certyfikaty. Uzyskaj ważny certyfikat SSL przy użyciu wewnętrznych urzędów certyfikacji, zakupu certyfikatu od zewnętrznego wystawcy lub przy użyciu certyfikatu z podpisem własnym. 
+Jeśli używasz zewnętrznego ase, a następnie aplikacje są osiągane w [appname]. [asename].p.azurewebsites.net. Domyślnie wszystkie asy, nawet asy RÓWNOWAżenia obciążenia sieciowego, są tworzone z certyfikatami, które są zgodne z tym formatem. Gdy masz ASE ILB, aplikacje są osiągane na podstawie nazwy domeny, którą określisz podczas tworzenia ASE równoważenia obciążenia. Aby aplikacje obsługiwać TLS, należy przekazać certyfikaty. Uzyskaj ważny certyfikat TLS/SSL przy użyciu wewnętrznych urzędów certyfikacji, zakup certyfikatu od zewnętrznego wystawcy lub przy użyciu certyfikatu z podpisem własnym. 
 
 Istnieją dwie opcje konfigurowania certyfikatów za pomocą narzędzia ASE równoważenia obciążenia sieciowego.  Można ustawić domyślny certyfikat symboli wieloznacznych dla środowiska ASE równoważenia obciążenia sieciowego lub ustawić certyfikaty w poszczególnych aplikacjach sieci web w środowisku ASE.  Niezależnie od dokonanego wyboru następujące atrybuty certyfikatu muszą być poprawnie skonfigurowane:
 
@@ -58,7 +58,7 @@ Aplikacje hostowane w ase można użyć funkcji certyfikatu zorientowanych na ap
 - Protokół SSL oparty na protoke, który jest obsługiwany tylko z zewnętrznym ase.  Ase równoważenia obciążenia sieciowego nie obsługuje protokołu SSL opartego na protokosze IP.
 - Certyfikaty hostowane przez keyvault 
 
-Instrukcje przekazywania tych certyfikatów i zarządzania nimi są dostępne w obszarze [Dodaj certyfikat SSL w usłudze Azure App Service.](../configure-ssl-certificate.md)  Jeśli po prostu konfigurujesz certyfikaty tak, aby były zgodne z niestandardową nazwą domeny przypisaną do aplikacji sieci web, te instrukcje wystarczą. Jeśli przekazujesz certyfikat dla aplikacji sieci Web ASE równoważenia obciążenia sieciowego z domyślną nazwą domeny, określ witrynę scm w sieci SAN certyfikatu, jak wspomniano wcześniej. 
+Instrukcje przekazywania tych certyfikatów i zarządzania nimi są dostępne w obszarze [Dodaj certyfikat TLS/SSL w usłudze Azure App Service.](../configure-ssl-certificate.md)  Jeśli po prostu konfigurujesz certyfikaty tak, aby były zgodne z niestandardową nazwą domeny przypisaną do aplikacji sieci web, te instrukcje wystarczą. Jeśli przekazujesz certyfikat dla aplikacji sieci Web ASE równoważenia obciążenia sieciowego z domyślną nazwą domeny, określ witrynę scm w sieci SAN certyfikatu, jak wspomniano wcześniej. 
 
 ## <a name="tls-settings"></a>Ustawienia protokołu TLS 
 

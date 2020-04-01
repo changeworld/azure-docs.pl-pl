@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a9917010b7301bf70c3bebf68c35d82f4839e0f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255836"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409044"
 ---
 # <a name="hyperscale-service-tier"></a>Warstwa usługi Hiperskala
 
@@ -25,7 +25,7 @@ Usługa Azure SQL Database jest oparta na architekturze aparatu bazy danych prog
 -  Hiperskala
 -  Krytyczna dla biznesu/Premium
 
-Warstwa usługi hiperskali w usłudze Azure SQL Database to najnowsza warstwa usług w modelu zakupów opartym na wynikach wirtualnych. Ta warstwa usług to wysoce skalowalna warstwa wydajności magazynu i wydajności obliczeniowej, która wykorzystuje architekturę platformy Azure do skalowania w poziomie zasobów magazynu i obliczeń dla bazy danych SQL azure znacznie przekraczającej limity dostępne dla ogólnego przeznaczenia i firmy Krytyczne warstwy usług.
+Warstwa usługi hiperskali w usłudze Azure SQL Database to najnowsza warstwa usług w modelu zakupów opartym na wynikach wirtualnych. Ta warstwa usług jest wysoce skalowalną warstwą wydajności magazynu i wydajności obliczeniowej, która wykorzystuje architekturę platformy Azure do skalowania w poziomie zasobów magazynu i zasobów obliczeniowych dla bazy danych SQL azure znacznie przekraczających limity dostępne dla warstw usług ogólnego przeznaczenia i krytycznych dla firmy.
 
 > 
 > [!NOTE]
@@ -96,7 +96,7 @@ Serwery stron to systemy reprezentujące aparat magazynu skalowany w poziomie.  
 
 ### <a name="log-service"></a>Usługa dzienników
 
-Usługa dziennika akceptuje rekordy dziennika z podstawowej repliki obliczeniowej, utrzymuje je w trwałej pamięci podręcznej i przekazuje rekordy dziennika do pozostałych replik obliczeniowych (aby mogły aktualizować swoje pamięci podręczne), a także odpowiednie serwery stron, dzięki czemu można je zaktualizować. tam. W ten sposób wszystkie zmiany danych z podstawowej repliki obliczeniowej są propagowane za pośrednictwem usługi dziennika do wszystkich pomocniczych replik obliczeniowych i serwerów stron. Na koniec rekordy dziennika są wypychane do magazynu długoterminowego w usłudze Azure Storage, która jest praktycznie nieskończone repozytorium magazynu. Mechanizm ten eliminuje potrzebę częstego obcinania dziennika. Usługa dziennika ma również lokalną pamięć podręczną, aby przyspieszyć dostęp do rekordów dziennika.
+Usługa dziennika akceptuje rekordy dziennika z podstawowej repliki obliczeniowej, utrzymuje je w trwałej pamięci podręcznej i przekazuje rekordy dziennika do pozostałych replik obliczeniowych (aby mogły aktualizować swoje pamięci podręczne), a także odpowiednie serwery stron, dzięki czemu można tam aktualizować dane. W ten sposób wszystkie zmiany danych z podstawowej repliki obliczeniowej są propagowane za pośrednictwem usługi dziennika do wszystkich pomocniczych replik obliczeniowych i serwerów stron. Na koniec rekordy dziennika są wypychane do magazynu długoterminowego w usłudze Azure Storage, która jest praktycznie nieskończone repozytorium magazynu. Mechanizm ten eliminuje potrzebę częstego obcinania dziennika. Usługa dziennika ma również lokalną pamięć podręczną, aby przyspieszyć dostęp do rekordów dziennika.
 
 ### <a name="azure-storage"></a>Azure Storage
 
@@ -205,8 +205,7 @@ Są to bieżące ograniczenia warstwy usług hiperskali w ga.  Aktywnie pracujem
 | Problem | Opis |
 | :---- | :--------- |
 | Okienko Zarządzanie kopiami zapasowymi dla serwera logicznego nie powoduje, że bazy danych hiperskali będą filtrowane z serwera SQL  | Hiperskala ma oddzielną metodę zarządzania kopiami zapasowymi i jako takie ustawienia przechowywania długoterminowego przechowywania i przechowywania kopii zapasowej w czasie nie mają zastosowania / są unieważnione. W związku z tym bazy danych hiperskali nie są wyświetlane w okienku Zarządzanie zapasem. |
-| Przywracanie do określonego momentu | Po migracji bazy danych do warstwy usług hiperskali przywracanie do punktu w czasie przed migracją nie jest obsługiwane.|
-| Przywracanie bazy danych nieprzeskalowych do hiperskali i odwrotnie | Nie można przywrócić bazy danych na dużą skalę do bazy danych nie hiperskalowej ani przywrócić bazy danych nie hiperskali do bazy danych hiperskali.|
+| Przywracanie do określonego momentu | Bazy danych na dużą skalę można przywrócić do bazy danych nie hiperskalowej w okresie przechowywania bazy danych innych niż hiperskali. Nie można przywrócić bazy danych nie hiperskalowej do bazy danych na dużą skalę.|
 | Jeśli baza danych ma jeden lub więcej plików danych większych niż 1 TB, migracja nie powiedzie się | W niektórych przypadkach może być możliwe obejść ten problem, zmniejszając dużych plików, aby być mniej niż 1 TB. W przypadku migracji bazy danych używanej podczas procesu migracji upewnij się, że żaden plik nie jest większy niż 1 TB. Użyj następującej kwerendy, aby określić rozmiar plików bazy danych. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Wystąpienie zarządzane | Wystąpienie zarządzanej bazy danych SQL usługi Azure nie jest obecnie obsługiwane w bazach danych w hiperskali. |
 | Pule elastyczne |  Pule elastyczne nie są obecnie obsługiwane z hiperskali bazy danych SQL.|

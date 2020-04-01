@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 3/18/2020
-ms.openlocfilehash: a35a586a519ff78e8b32d986b92bd008b2c6b858
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.date: 3/30/2020
+ms.openlocfilehash: 59b8753007c3b9130c397dda30c571580cbb5326
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067861"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411087"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Jak używać sys_schema do dostrajania wydajności i konserwacji bazy danych w usłudze Azure Database for MySQL
 
@@ -60,6 +60,9 @@ W tym przykładzie usługa Azure Database for MySQL spędził 53 minut opróżni
 ## <a name="database-maintenance"></a>Konserwacja bazy danych
 
 ### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
+
+[!IMPORTANT]
+> Wykonywanie zapytań w tym widoku może mieć wpływ na wydajność. Zaleca się wykonanie tego rozwiązywania problemów poza godzinami pracy poza szczytem.
 
 Pula buforów InnoDB znajduje się w pamięci i jest głównym mechanizmem pamięci podręcznej między systemem dbms i magazynu. Rozmiar puli buforów InnoDB jest powiązany z warstwą wydajności i nie można go zmienić, chyba że zostanie wybrana inna jednostka SKU produktu. Podobnie jak w przypadku pamięci w systemie operacyjnym, stare strony są wymieniane, aby zrobić miejsce na świeższe dane. Aby dowiedzieć się, które tabele zużywają większość pamięci puli buforów InnoDB, można zbadać widok *sys.innodb_buffer_stats_by_table.*
 

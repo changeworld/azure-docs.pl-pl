@@ -1,58 +1,114 @@
 ---
-title: Zbieranie dziennika aktywności platformy Azure w obszarze roboczym usługi Log Analytics
+title: Zbieranie i analizowanie dziennika aktywności platformy Azure w usłudze Azure Monitor
 description: Zbieranie dziennika aktywności platformy Azure w dziennikach usługi Azure Monitor i używanie rozwiązania do monitorowania do analizowania i przeszukiwania dziennika aktywności platformy Azure we wszystkich subskrypcjach platformy Azure.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/30/2019
-ms.openlocfilehash: 407bff10e2480c5210d3057bcccd6c60e591c165
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/24/2020
+ms.openlocfilehash: 4265f6050b237cb40afeddfc228ade9be06be039
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80055307"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396782"
 ---
-# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym usługi Log Analytics w usłudze Azure Monitor
+# <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>Zbieranie i analizowanie dziennika aktywności platformy Azure w usłudze Azure Monitor
+[Dziennik aktywności platformy Azure](platform-logs-overview.md) to dziennik [platformy,](platform-logs-overview.md) który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. Dziennik aktywności można wyświetlić w portalu Azure portal, ale należy skonfigurować go do wysyłania do obszaru roboczego usługi Log Analytics, aby włączyć dodatkowe funkcje usługi Azure Monitor. W tym artykule opisano sposób wykonywania tej konfiguracji i wysyłanie dziennika aktywności do usługi Azure storage i centrów zdarzeń.
 
-> [!WARNING]
-> Teraz można zbierać dziennik aktywności w obszarze roboczym usługi Log Analytics przy użyciu ustawienia diagnostycznego podobnego do sposobu zbierania dzienników zasobów. Zobacz [Zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym usługi Log Analytics w usłudze Azure Monitor.](diagnostic-settings-legacy.md)
+Zbieranie dziennika aktywności w obszarze roboczym usługi Log Analytics zapewnia następujące zalety:
 
-[Dziennik aktywności platformy Azure](platform-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły w ramach subskrypcji platformy Azure. W tym artykule opisano sposób zbierania dziennika aktywności w obszarze roboczym usługi Log Analytics i jak korzystać z rozwiązania do [monitorowania](../insights/solutions.md)usługi Analizy dzienników aktywności, które udostępnia zapytania dziennika i widoki do analizowania tych danych. 
-
-Łączenie dziennika aktywności z obszarem roboczym usługi Log Analytics zapewnia następujące korzyści:
-
-- Skonsoliduj dziennik aktywności z wielu subskrypcji platformy Azure w jedną lokalizację do analizy.
-- Wpisy dziennika aktywności sklepu przez okres dłuższy niż 90 dni.
+- Brak pobierania danych lub pobierania opłat za przechowywanie danych dziennika aktywności przechowywanych w obszarze roboczym usługi Log Analytics.
 - Skoreluj dane dziennika aktywności z innymi danymi monitorowania zebranymi przez usługę Azure Monitor.
-- Użyj [zapytań dziennika](../log-query/log-query-overview.md) do wykonywania złożonych analiz i uzyskać szczegółowe informacje na temat wpisów dziennika aktywności.
+- Użyj zapytań dziennika do wykonywania złożonych analiz i uzyskać szczegółowe informacje na temat wpisów dziennika aktywności.
+- Użyj alertów dziennika z wpisami aktywności, co pozwala na bardziej złożoną logikę alertów.
+- Zapisy dziennika aktywności sklepu przez okres dłuższy niż 90 dni.
+- Konsolidacja wpisów dziennika z wielu subskrypcji platformy Azure i dzierżaw w jedną lokalizację do analizy razem.
 
-## <a name="connect-to-log-analytics-workspace"></a>Łączenie się z obszarem roboczym usługi Log Analytics
-Pojedynczy obszar roboczy może być połączony z dziennikiem aktywności dla wielu subskrypcji w tej samej dzierżawie platformy Azure. W przypadku zbierania w wielu dzierżawach zobacz [Zbieranie dzienników aktywności platformy Azure w obszarze roboczym usługi Log Analytics w różnych subskrypcjach w różnych dzierżawach usługi Azure Active Directory.](activity-log-collect-tenants.md)
 
-> [!IMPORTANT]
-> Może pojawić się błąd z poniższą procedurą, jeśli microsoft.OperationalInsights i Microsoft.OperationsManagement dostawców zasobów nie są zarejestrowane dla subskrypcji. Zobacz [dostawców zasobów platformy Azure i typów,](../../azure-resource-manager/management/resource-providers-and-types.md) aby zarejestrować tych dostawców.
 
-Aby połączyć dziennik aktywności z obszarem roboczym usługi Log Analytics, użyj następującej procedury:
+## <a name="collecting-activity-log"></a>Zbieranie dziennika aktywności
+Dziennik aktywności jest zbierany automatycznie do [przeglądania w witrynie Azure portal](activity-log-view.md). Aby zebrać go w obszarze roboczym usługi Log Analytics lub wysłać go do magazynu platformy Azure lub centrów zdarzeń, utwórz [ustawienie diagnostyczne](diagnostic-settings.md). Jest to ta sama metoda, która jest używana przez dzienniki zasobów, dzięki czemu jest spójna dla wszystkich [dzienników platformy.](platform-logs-overview.md)  
+
+Aby utworzyć ustawienie diagnostyczne dla dziennika aktywności, wybierz **ustawienia diagnostyczne** z menu **Dziennik aktywności** w usłudze Azure Monitor. Zobacz [Tworzenie ustawień diagnostycznych do zbierania dzienników platformy i metryk na platformie Azure,](diagnostic-settings.md) aby uzyskać szczegółowe informacje na temat tworzenia ustawienia. Opis kategorii, które można filtrować, zobacz [Kategorie w dzienniku aktywności.](activity-log-view.md#categories-in-the-activity-log) Jeśli masz jakieś starsze ustawienia, upewnij się, że zostały one wyłączone przed utworzeniem ustawienia diagnostycznego. Włączenie obu tych danych może spowodować zduplikowanie danych.
+
+![Ustawienia diagnostyczne](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+
+> [!NOTE]
+> Obecnie można utworzyć tylko ustawienie diagnostyczne poziomu subskrypcji przy użyciu witryny Azure portal i szablonu Menedżera zasobów. 
+
+
+## <a name="legacy-settings"></a>Starsze ustawienia 
+Podczas gdy ustawienia diagnostyczne są preferowaną metodą wysyłania dziennika aktywności do różnych miejsc docelowych, starsze metody będą nadal działać, jeśli nie zdecydujesz się zastąpić ustawieniem diagnostycznym. Ustawienia diagnostyczne mają następujące zalety w stosunku do starszych metod i zaleca się zaktualizowanie konfiguracji:
+
+- Spójna metoda zbierania wszystkich dzienników platformy.
+- Zbieranie dziennika aktywności w wielu subskrypcjach i dzierżawach.
+- Zbieranie filtrów do zbierania tylko dzienników dla określonych kategorii.
+- Zbierz wszystkie kategorie dziennika aktywności. Niektóre kategorie nie są zbierane przy użyciu starszej metody.
+- Szybsze opóźnienie pozyskiwania dziennika. Poprzednia metoda ma około 15 minut opóźnienia, podczas gdy ustawienia diagnostyczne dodaje tylko około 1 minuty.
+
+
+
+### <a name="log-profiles"></a>Profile dzienników
+Profile dzienników są starszą metodą wysyłania dziennika aktywności do usługi Azure storage lub centrum zdarzeń. Poniższa procedura służy do kontynuowania pracy z profilem dziennika lub wyłączania go w ramach przygotowań do migracji do ustawienia diagnostycznego.
+
+1. Z menu **Azure Monitor** w witrynie Azure portal wybierz **dziennik aktywności**.
+3. Kliknij pozycję **Ustawienia diagnostyczne**.
+
+   ![Ustawienia diagnostyczne](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+4. Kliknij fioletowy baner, aby zapoznać się ze starszą wersji.
+
+    ![Starsze doświadczenie](media/diagnostic-settings-subscription/legacy-experience.png)
+
+### <a name="log-analytics-workspace"></a>Obszar roboczy usługi Log Analytics
+Starsza metoda zbierania dziennika aktywności do obszaru roboczego usługi Log Analytics łączy dziennik w konfiguracji obszaru roboczego. 
 
 1. Z menu **obszarów roboczych usługi Log Analytics** w witrynie Azure portal wybierz obszar roboczy do zbierania dziennika aktywności.
 1. W sekcji **Źródła danych obszaru roboczego** w menu obszaru roboczego wybierz pozycję **Dziennik aktywności platformy Azure**.
 1. Kliknij subskrypcję, którą chcesz połączyć.
 
-    ![Obszary robocze](media/activity-log-export/workspaces.png)
+    ![Obszary robocze](media/activity-log-collect/workspaces.png)
 
 1. Kliknij **przycisk Połącz,** aby połączyć dziennik aktywności w subskrypcji z wybranym obszarem roboczym. Jeśli subskrypcja jest już połączona z innym obszarem roboczym, kliknij przycisk **Rozłącz** najpierw, aby ją odłączyć.
 
-    ![Łączenie obszarów roboczych](media/activity-log-export/connect-workspace.png)
+    ![Łączenie obszarów roboczych](media/activity-log-collect/connect-workspace.png)
 
-## <a name="analyze-in-log-analytics-workspace"></a>Analizowanie w obszarze roboczym usługi Log Analytics
-Po podłączeniu dziennika aktywności do obszaru roboczego usługi Log Analytics wpisy zostaną zapisane w obszarze roboczym do tabeli o nazwie **AzureActivity,** którą można pobrać za pomocą [kwerendy dziennika.](../log-query/log-query-overview.md) Struktura tej tabeli różni się w zależności od [kategorii wpisu dziennika](activity-log-view.md#categories-in-the-activity-log). Zobacz [schemat zdarzeń dziennika aktywności platformy Azure,](activity-log-schema.md) aby uzyskać opis każdej kategorii.
+
+Aby wyłączyć to ustawienie, wykonaj tę samą procedurę i kliknij przycisk **Rozłącz,** aby usunąć subskrypcję z obszaru roboczego.
+
+
+## <a name="analyze-activity-log-in-log-analytics-workspace"></a>Analizowanie dziennika aktywności w obszarze roboczym usługi Log Analytics
+Po podłączeniu dziennika aktywności do obszaru roboczego usługi Log Analytics wpisy zostaną zapisane w obszarze roboczym do tabeli o nazwie *AzureActivity,* którą można pobrać za pomocą [kwerendy dziennika.](../log-query/log-query-overview.md) Struktura tej tabeli różni się w zależności od [kategorii wpisu dziennika](activity-log-view.md#categories-in-the-activity-log). Zobacz [schemat zdarzeń dziennika aktywności platformy Azure,](activity-log-schema.md) aby uzyskać opis każdej kategorii.
+
+
+### <a name="data-structure-changes"></a>Zmiany struktury danych
+Ustawienia diagnostyczne zbierają te same dane, co starsza metoda używana do zbierania dziennika aktywności z pewnymi zmianami w strukturze tabeli *AzureActivity.*
+
+Kolumny w poniższej tabeli zostały przestarzałe w zaktualizowanym schemacie. Nadal istnieją w *usłudze AzureActivity,* ale nie będą miały żadnych danych. Zastąpienie tych kolumn nie są nowe, ale zawierają te same dane, co przestarzała kolumna. Są one w innym formacie, więc może być konieczne zmodyfikowanie zapytań dziennika, które ich używają. 
+
+| Przestarzała kolumna | Kolumna zastępcza |
+|:---|:---|
+| ActivityStatus (Stan aktywności)    | ActivityStatusValue    |
+| AktywnośćSubstatus | DziałanieSubstatusValue |
+| OperationName     | OperacjaNameValue     |
+| ResourceProvider  | ResourceProviderValue  |
+
+> [!IMPORTANT]
+> W niektórych przypadkach wartości w tych kolumnach mogą być we wszystkich wielkich literach. Jeśli masz kwerendę, która zawiera te kolumny, należy użyć [operatora =~](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators) do porównania bez uwzględniania wielkości liter.
+
+Następująca kolumna została dodana do *usługi AzureActivity* w zaktualizowanym schemacie:
+
+- Authorization_d
+- Claims_d
+- Properties_d
+
 
 ## <a name="activity-logs-analytics-monitoring-solution"></a>Rozwiązanie do monitorowania usługi Activity Logs Analytics
-Rozwiązanie do monitorowania usługi Azure Log Analytics zawiera wiele zapytań dziennika i widoków do analizowania rekordów dziennika aktywności w obszarze roboczym usługi Log Analytics.
+Rozwiązanie do monitorowania usługi Azure Log Analytics zostanie wkrótce przestarzałe i zastąpione skoroszytem przy użyciu zaktualizowanego schematu w obszarze roboczym usługi Log Analytics. Nadal można użyć rozwiązania, jeśli masz już włączone, ale może być używany tylko wtedy, gdy zbierasz dziennik aktywności przy użyciu starszych ustawień. 
 
-### <a name="install-the-solution"></a>Zainstaluj rozwiązanie
-Użyj procedury w [zainstaluj rozwiązanie do monitorowania,](../insights/solutions.md#install-a-monitoring-solution) aby zainstalować rozwiązanie **analizy dzienników aktywności.** Nie jest wymagana żadna dodatkowa konfiguracja.
+
 
 ### <a name="use-the-solution"></a>Użyj rozwiązania
 Rozwiązania do monitorowania są dostępne z menu **Monitor** w witrynie Azure portal. Wybierz **pozycję Więcej** w sekcji **Statystyki,** aby otworzyć stronę **Przegląd** z kafelkami rozwiązania. Kafelek **Dzienniki aktywności platformy Azure** wyświetla liczbę rekordów **usługi AzureActivity** w obszarze roboczym.
@@ -64,12 +120,96 @@ Kliknij **kafelek Dzienniki aktywności platformy Azure,** aby otworzyć widok *
 
 ![Pulpit nawigacyjny dzienników aktywności platformy Azure](media/collect-activity-logs/activity-log-dash.png)
 
-| Część wizualizacji | Opis |
-| --- | --- |
-| Wpisy dziennika aktywności platformy Azure | Pokazuje wykres słupkowy najwyższej sumy rekordów dziennika aktywności platformy Azure dla wybranego zakresu dat i pokazuje listę 10 najlepszych wywołań aktywności. Kliknij wykres słupkowy, aby `AzureActivity`uruchomić wyszukiwanie dziennika . Kliknij element wywołującego, aby uruchomić wyszukiwanie dziennika zwracające wszystkie wpisy dziennika aktywności dla tego elementu. |
-| Dzienniki aktywności według stanu | Pokazuje wykres pierścieniowy dla stanu dziennika aktywności platformy Azure dla wybranego zakresu dat i listę dziesięciu pierwszych rekordów stanu. Kliknij wykres, aby uruchomić `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`kwerendę dziennika dla . Kliknij element stanu, aby uruchomić wyszukiwanie dziennika zwracające wszystkie wpisy dziennika aktywności dla tego rekordu stanu. |
-| Dzienniki aktywności według zasobów | Pokazuje całkowitą liczbę zasobów za pomocą dzienników aktywności i wyświetla dziesięć pierwszych zasobów z liczbą rekordów dla każdego zasobu. Kliknij całkowity obszar, aby uruchomić `AzureActivity | summarize AggregatedValue = count() by Resource`wyszukiwanie dziennika , który pokazuje wszystkie zasoby platformy Azure dostępne dla rozwiązania. Kliknij zasób, aby uruchomić kwerendę dziennika zwracającą wszystkie rekordy działań dla tego zasobu. |
-| Dzienniki aktywności według dostawcy zasobów | Pokazuje całkowitą liczbę dostawców zasobów, którzy produkują dzienniki aktywności i wyświetla listę dziesięciu najlepszych. Kliknij całkowity obszar, aby uruchomić `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`kwerendę dziennika dla , który pokazuje wszystkich dostawców zasobów platformy Azure. Kliknij dostawcę zasobów, aby uruchomić kwerendę dziennika zwracającą wszystkie rekordy aktywności dla dostawcy. |
+
+### <a name="enable-the-solution-for-new-subscriptions"></a>Włącz rozwiązanie dla nowych subskrypcji
+Wkrótce nie będzie już można dodać rozwiązania analizy dzienników aktywności do subskrypcji przy użyciu witryny Azure portal. Można go dodać za pomocą poniższej procedury z szablonem Menedżera zasobów. 
+
+1. Skopiuj następujący json do pliku o nazwie *ActivityLogTemplate*.json.
+
+    ```json
+    {
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "type": "String",
+            "defaultValue": "my-workspace",
+            "metadata": {
+              "description": "Specifies the name of the workspace."
+            }
+        },
+        "location": {
+            "type": "String",
+            "allowedValues": [
+              "east us",
+              "west us",
+              "australia central",
+              "west europe"
+            ],
+            "defaultValue": "australia central",
+            "metadata": {
+              "description": "Specifies the location in which to create the workspace."
+            }
+        }
+      },
+        "resources": [
+        {
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "name": "[parameters('workspaceName')]",
+            "apiVersion": "2015-11-01-preview",
+            "location": "[parameters('location')]",
+            "properties": {
+                "features": {
+                    "searchVersion": 2
+                }
+            }
+        },
+        {
+            "type": "Microsoft.OperationsManagement/solutions",
+            "apiVersion": "2015-11-01-preview",
+            "name": "[concat('AzureActivity(', parameters('workspaceName'),')')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName'))]"
+            ],
+            "plan": {
+                "name": "[concat('AzureActivity(', parameters('workspaceName'),')')]",
+                "promotionCode": "",
+                "product": "OMSGallery/AzureActivity",
+                "publisher": "Microsoft"
+            },
+            "properties": {
+                "workspaceResourceId": "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName'))]",
+                "containedResources": [
+                    "[concat(resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName')), '/views/AzureActivity(',parameters('workspaceName'))]"
+                ]
+            }
+        },
+        {
+          "type": "Microsoft.OperationalInsights/workspaces/datasources",
+          "kind": "AzureActivityLog",
+          "name": "[concat(parameters('workspaceName'), '/', subscription().subscriptionId)]",
+          "apiVersion": "2015-11-01-preview",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+              "[parameters('WorkspaceName')]"
+          ],
+          "properties": {
+              "linkedResourceId": "[concat(subscription().Id, '/providers/microsoft.insights/eventTypes/management')]"
+          }
+        }
+      ]
+    }    
+    ```
+
+2. Wdrażanie szablonu przy użyciu następujących poleceń programu PowerShell:
+
+    ```PowerShell
+    Connect-AzAccount
+    Select-AzSubscription <SubscriptionName>
+    New-AzResourceGroupDeployment -Name activitysolution -ResourceGroupName <ResourceGroup> -TemplateFile <Path to template file>
+    ```
+
 
 ## <a name="next-steps"></a>Następne kroki
 

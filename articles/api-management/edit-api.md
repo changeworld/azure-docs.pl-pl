@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
 ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70072151"
 ---
 # <a name="edit-an-api"></a>Edytowanie interfejsu API
@@ -28,7 +28,7 @@ Kroki opisane w tym samouczku umożliwiają użycie usługi API Management (APIM
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md)
++ [Utwórz wystąpienie usługi Azure API Management](get-started-create-service-instance.md)
 + [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
@@ -47,7 +47,7 @@ Kroki opisane w tym samouczku umożliwiają użycie usługi API Management (APIM
 
 Możesz zaktualizować interfejs API zaplecza w witrynie Azure Portal, wykonując następujące czynności:
 
-1. Wybierz pozycję **Wszystkie operacje**.
+1. Wybierz **wszystkie operacje**
 2. Kliknij ikonę ołówka w oknie **Fronton**.
 
     ![Edytowanie interfejsu API](./media/edit-api/edit-api002.png)
@@ -64,5 +64,5 @@ Możesz zaktualizować interfejs API zaplecza w witrynie Azure Portal, wykonują
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przykłady zasad usługi APIM](policy-samples.md)
-> [Przekształcanie i ochrona opublikowanego interfejsu API](transform-api.md)
+> [Przykłady](policy-samples.md)
+> zasad APIM[Przekształcaj i chronij opublikowany interfejs API](transform-api.md)

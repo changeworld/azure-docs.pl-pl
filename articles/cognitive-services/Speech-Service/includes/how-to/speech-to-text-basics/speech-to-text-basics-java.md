@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 7d29f781950784cdb8951b3a6e45d5b5d0f9819f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c2b474c9d6485bdba31412435f4edbdd2383b3c0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79539540"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80501755"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -36,7 +36,7 @@ Istnieje kilka sposobów, które można [`SpeechConfig`](https://docs.microsoft.
 * Z hostem: przekaż adres hosta. Klucz lub token autoryzacji jest opcjonalny.
 * Z tokenem autoryzacji: przekaż w tokenie autoryzacji i skojarzonym regionie.
 
-Przyjrzyjmy się, [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) jak jest tworzony przy użyciu klucza i regionu.
+Przyjrzyjmy się, [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) jak jest tworzony przy użyciu klucza i regionu. Zobacz stronę [pomocy technicznej regionu,](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) aby znaleźć identyfikator regionu.
 
 ```java
 SpeechConfig config = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");

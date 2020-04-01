@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
-ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe1f1d2700619bfcac4512bb0e631262edf8401c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274985"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398094"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Tworzenie alertu metryki za pomocą szablonu usługi Resource Manager
 
@@ -1518,6 +1518,10 @@ W tej sekcji opisano szablony usługi Azure Resource Manager dla trzech scenariu
 - Monitorowanie wszystkich maszyn wirtualnych (w jednym regionie platformy Azure) w jednej lub większej liczbie grup zasobów.
 - Monitorowanie wszystkich maszyn wirtualnych (w jednym regionie platformy Azure) w ramach subskrypcji.
 - Monitorowanie listy maszyn wirtualnych (w jednym regionie platformy Azure) w ramach subskrypcji.
+
+> [!NOTE]
+>
+> W regule alertu metryki, która monitoruje wiele zasobów, tylko jeden warunek jest dozwolony.
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Alert progu statycznego na wszystkich maszynach wirtualnych w co najmniej jednej grupie zasobów
 

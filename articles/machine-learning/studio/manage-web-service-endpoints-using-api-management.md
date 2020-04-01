@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: cbe01ee9b8edeab349db484cea6c25dca32bf213
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7064101c21c11b48d8616dbeaa2fd9075660fd3b
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218023"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473454"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Zarządzanie usługami sieci Web usługi Azure Machine Learning Studio (klasyczne) przy użyciu usługi API Management
 
@@ -217,7 +217,7 @@ Kliknij **przycisk Tak,** aby opublikować eksperyment.
 ![tak do opublikowania](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>Testowanie usługi internetowej
-Usługa sieci web AzureML składa się z punktów końcowych RSS (usługa żądania/odpowiedzi) i BES (usługa wykonywania wsadowego). RSS jest do synchroniczego wykonywania. BES jest dla asynchronii wykonanie zadania. Aby przetestować usługę sieci web przy próbkie źródła języka Python poniżej, może być konieczne pobranie i zainstalowanie pakietu Azure SDK dla języka Python (zobacz: [Jak zainstalować język Python](/azure/python/python-sdk-azure-install)).
+Usługa sieci web AzureML składa się z punktów końcowych RSS (usługa żądania/odpowiedzi) i BES (usługa wykonywania wsadowego). RSS jest do synchroniczego wykonywania. BES jest dla asynchronii wykonanie zadania. Aby przetestować usługę sieci web przy próbkie źródła języka Python poniżej, może być konieczne pobranie i zainstalowanie pakietu Azure SDK dla języka Python (zobacz: [Jak zainstalować język Python](/azure/developer/python/azure-sdk-install)).
 
 Potrzebny będzie również **obszar roboczy,** **usługa**i **api_key** eksperymentu dla poniższego przykładowego źródła. Obszar roboczy i usługa można znaleźć, klikając **przycisk Żądaj/Odpowiedź** lub **Wykonanie wsadowe** dla eksperymentu na pulpicie nawigacyjnym usługi sieci web.
 

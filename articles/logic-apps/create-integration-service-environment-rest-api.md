@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 2c6e35b1e7d160064998004f87c5b14d0eaeac5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0670331d2338b4b6419ffbff1452b5fbac91029f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127655"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478832"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Tworzenie środowiska usługi integracji (ISE) przy użyciu interfejsu API REST aplikacji logiki
 
 W tym artykule pokazano, jak utworzyć [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) za pośrednictwem interfejsu API REST aplikacji logiki dla scenariuszy, w których aplikacje logiki i konta integracji potrzebują dostępu do [sieci wirtualnej platformy Azure.](../virtual-network/virtual-networks-overview.md) Środowisko ISE jest izolowanym środowiskiem, które używa dedykowanego magazynu i innych zasobów, które są oddzielone od "globalnej" usługi aplikacji logiki z wieloma dzierżawami. Ta separacja zmniejsza również wpływ innych dzierżaw platformy Azure na wydajność aplikacji. Ise zapewnia również własne statyczne adresy IP. Te adresy IP są oddzielone od statycznych adresów IP, które są współużytkowane przez aplikacje logiki w publicznej, usługi wielu dzierżawców.
 
-Aby utworzyć środowisko ISE przy użyciu portalu Azure, zobacz [Łączenie się z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps.](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
+Można również utworzyć ise przy użyciu [przykładowego szablonu szybkiego startu usługi Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) lub za pomocą [witryny Azure portal](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
 > [!IMPORTANT]
 > Aplikacje logiki, wbudowane wyzwalacze, wbudowane akcje i łączniki uruchamiane w interfejsie ISE używają planu cenowego innego niż plan cenowy oparty na zużyciu. Aby dowiedzieć się, jak działają ceny i rozliczenia dla firm ISE, zobacz [model cenowy Aplikacji logiki](../logic-apps/logic-apps-pricing.md#fixed-pricing). Aby uzyskać informacje o cenach, zobacz [Ceny aplikacji logiki](../logic-apps/logic-apps-pricing.md).

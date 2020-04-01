@@ -6,17 +6,22 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/01/2019
+ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40ef05107f20a3396f6710f894a2dbad2d7fa6c9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79246879"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478847"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Użyj zbiorczej biblioteki .NET executor do wykonywania operacji zbiorczych w usłudze Azure Cosmos DB
+
+> [!NOTE]
+> Ta zbiorcza biblioteka executor opisana w tym artykule jest obsługiwana dla aplikacji korzystających z wersji .NET SDK 2.x. W przypadku nowych aplikacji można użyć **obsługi zbiorczej,** która jest dostępna bezpośrednio w [pliku .NET SDK w wersji 3.x](tutorial-sql-api-dotnet-bulk-import.md) i nie wymaga żadnej biblioteki zewnętrznej. 
+
+> Jeśli obecnie używasz biblioteki wykonawców zbiorczych i planujesz migrację do obsługi zbiorczej w nowszym sdku SDK, użyj kroków w [przewodniku migracji,](how-to-migrate-from-bulk-executor-library.md) aby przeprowadzić migrację aplikacji.
 
 Ten samouczek zawiera instrukcje dotyczące używania zbiorczego executora biblioteki .NET do importowania i aktualizowania dokumentów do kontenera usługi Azure Cosmos. Aby dowiedzieć się więcej o zbiorczej bibliotece executor i jak pomaga wykorzystać ogromną przepływność i magazyn, zobacz zbiorczy artykuł [omówienia biblioteki executor.](bulk-executor-overview.md) W tym samouczku zostanie wyświetlone przykładowa aplikacja .NET, która zbiorczo importuje losowo generowane dokumenty do kontenera usługi Azure Cosmos. Po zaimportowaniu pokazuje, jak można zbiorczo aktualizować importowane dane, określając poprawki jako operacje do wykonania w określonych polach dokumentu.
 

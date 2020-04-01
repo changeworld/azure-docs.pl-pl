@@ -3,13 +3,15 @@ title: Migrowanie maszyn wirtualnych funkcji Hyper V na platformę Azure za pomo
 description: Dowiedz się, jak przeprowadzić migrację lokalnych maszyn wirtualnych z funkcji Hyper V na platformę Azure za pomocą migracji serwera migracji usługi Azure
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2b9ed56186649b7644adbd1237ad74af50474cc5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom:
+- MVC
+- fasttrack-edit
+ms.openlocfilehash: b5d37da7ea0c53a7e8cbb5b579d529dd4a799fed
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80279712"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422693"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrowanie maszyn wirtualnych funkcji Hyper-V na platformę Azure 
 
@@ -62,7 +64,7 @@ Jeśli po drugim samouczku i masz już projekt migracji platformy Azure, dodaj n
 
 4. Na liście narzędzi wybierz narzędzie **Azure Migrate: Server Migration** > **Add tool**
 
-    ![Narzędzie Do migracji serwera](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
+    ![Narzędzie do migracji serwera](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Konfigurowanie urządzenia migracji platformy Azure

@@ -4,12 +4,12 @@ description: Wyselekcjonowana lista najczęściej zadawanych pytań dotyczących
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: diberry
-ms.openlocfilehash: e002efe74bf7bcd3d944b01b0a25a731a2db3f66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 310cfe0cc8c1f647c09b8e0efb435a1ab326ff62
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284266"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474962"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Rozwiązywanie problemów dla programu QnA Maker
 
@@ -30,7 +30,7 @@ Dowiedz się więcej o [warstwach cenowych](Concepts/azure-resources.md).
 <details>
 <summary><b>Jak uzyskać punkt końcowy usługi QnAMaker</b></summary>
 
-**Odpowiedź**: Punkt końcowy usługi QnAMaker jest przydatny do celów debugowania podczas kontaktowania się z pomocą techniczną QnAMaker lub uservoice. Punkt końcowy jest adresem URL https://your-resource-name.azurewebsites.netw tym formularzu: .
+**Odpowiedź**: Punkt końcowy usługi QnAMaker jest przydatny do celów debugowania podczas kontaktowania się z pomocą techniczną QnAMaker lub uservoice. Punkt końcowy jest adresem URL `https://your-resource-name.azurewebsites.net`w tym formularzu: .
 
 1. Przejdź do usługi QnAMaker (grupy zasobów) w [witrynie Azure portal](https://portal.azure.com)
 

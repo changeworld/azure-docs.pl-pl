@@ -11,21 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/23/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 5dc231febc2e9b605b9e7f603f5d036b8a2c62eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3f9b32ea55f0ceebf08b22ccc7e2ceec0b6227e
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240756"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420807"
 ---
-# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli-preview"></a>Dodawanie IPv6 do aplikacji IPv4 w sieci wirtualnej platformy Azure — interfejs wiersza polecenia platformy Azure (wersja zapoznawcza)
+# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>Dodawanie IPv6 do aplikacji IPv4 w sieci wirtualnej platformy Azure — interfejs wiersza polecenia platformy Azure
 
 W tym artykule pokazano, jak dodać adresy IPv6 do aplikacji, która używa publicznego adresu IP IPv4 w sieci wirtualnej platformy Azure dla standardowego modułu równoważenia obciążenia przy użyciu interfejsu wiersza polecenia platformy Azure. Uaktualnienie w miejscu obejmuje sieć wirtualną i podsieć, standardowy moduł równoważenia obciążenia z konfiguracjami frontonu IPv4 + IPV6, maszyny wirtualne z kartami sieciowymi, które mają konfiguracje IPv4 + IPv6, grupę zabezpieczeń sieci i publiczne adresy IP.
 
-> [!Important]
-> Obsługa IPv6 dla usługi Azure Virtual Network jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -33,29 +31,6 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia platformy Azur
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-### <a name="register-the-service"></a>Zarejestruj usługę
-
-Przed wdrożeniem aplikacji podwójnego stosu na platformie Azure, należy skonfigurować subskrypcję dla tej funkcji w wersji zapoznawczej przy użyciu następującej interfejsu wiersza polecenia platformy Azure:
-
-```azurecli
-az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-Rejestracja funkcji trwa do 30 minut. Możesz sprawdzić stan rejestracji, uruchamiając następujące polecenie interfejsu wiersza polecenia platformy Azure:
-
-```azurecli
-az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-Po zakończeniu rejestracji uruchom następujące polecenie:
-
-```azurecli
-az provider register --namespace Microsoft.Network
-```
-
-### <a name="create-a-standard-load-balancer"></a>Tworzenie usługi Load Balancer w warstwie Standardowa
 W tym artykule przyjęto założenie, że wdrożono standardowy moduł równoważenia obciążenia zgodnie z opisem w [przewodniku Szybki start: Tworzenie standardowego modułu równoważenia obciążenia — Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md).
 
 ## <a name="create-ipv6-addresses"></a>Tworzenie adresów IPv6
@@ -173,8 +148,6 @@ Sieć wirtualną z dwoma stosami IPv6 można wyświetlić w witrynie Azure Porta
 
   ![Sieć wirtualna z dwoma stosami IPv6 na platformie Azure](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
-> [!NOTE]
-> Sieć wirtualna IPv6 dla platformy Azure jest dostępna w witrynie Azure portal tylko do odczytu w tej wersji w wersji zapoznawczej.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

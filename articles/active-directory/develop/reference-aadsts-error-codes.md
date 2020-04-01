@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 03/31/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 89240102837b65ed2a09d9f4865ad47ee5d5afa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91d285e2a839a7d6266c5d58f52901a48a7a8c84
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154563"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473170"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kody błędów uwierzytelniania i autoryzacji usługi Azure AD
 
@@ -148,7 +148,7 @@ Wyszukaj numeryczną część zwracanego kodu błędu.  Na przykład, jeśli otr
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist — użytkownik lub administrator nie wyraził zgody na korzystanie z aplikacji o identyfikatorze X. Wyślij interaktywne żądanie autoryzacji dla tego użytkownika i zasobu. |
 | AADSTS65004 | UserDeclinedConsent — użytkownik odmówił zgody na dostęp do aplikacji. Użytkownik musi ponowić próbę zalogowania się i wyrazić zgodę na aplikację|
-| AADSTS65005 | MisconfiguredApplication — lista dostępu do zasobów wymagana przez aplikację nie zawiera aplikacji wykrywalnych przez zasób lub aplikacja kliencka zażądała dostępu do zasobu, który nie został określony na liście dostępu do wymaganych zasobów lub usługa Graph zwróciła nieprawidłowe nie znaleziono żądania lub zasobu. Jeśli aplikacja obsługuje SAML, być może skonfigurowano aplikację z niewłaściwym identyfikatorem (encja). Wypróbuj rozdzielczość wymienioną dla SAML, korzystając z poniższego linku:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | MisconfiguredApplication — lista dostępu do zasobów wymagana przez aplikację nie zawiera aplikacji wykrywalnych przez zasób lub aplikacja kliencka zażądała dostępu do zasobu, który nie został określony na liście dostępu do wymaganych zasobów lub usługa Graph zwróciła złe żądanie lub nie znaleziono zasobu. Jeśli aplikacja obsługuje SAML, być może skonfigurowano aplikację z niewłaściwym identyfikatorem (encja). Wypróbuj rozdzielczość wymienioną dla SAML, korzystając z poniższego linku:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
 | AADSTS67003 | AktorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant — uwierzytelnianie nie powiodło się. Token odświeżania jest nieprawidłowy. Błąd może być spowodowany następującymi przyczynami:<ul><li>Nagłówek powiązania tokenu jest pusty</li><li>Skrót powiązania tokenu nie jest zgodny</li></ul> |
 | AADSTS70001 | UnauthorizedClient — aplikacja jest wyłączona. |
@@ -271,6 +271,8 @@ Wyszukaj numeryczną część zwracanego kodu błędu.  Na przykład, jeśli otr
 | AADSTS700020 | Wymagane interakcje — dotacja dostępu wymaga interakcji. |
 | AADSTS700022 | InvalidMultipleResourcesScope — podana wartość dla zakresu parametru wejściowego nie jest prawidłowa, ponieważ zawiera więcej niż jeden zasób. |
 | AADSTS700023 | InvalidResourcelessScope — podana wartość dla zakresu parametrów wejściowych nie jest prawidłowa, gdy żąda token dostępu. |
+| AADSTS7000222| InvalidClientSecretExpiredKeysProvided — dostarczone klucze tajne klienta wygasły. Odwiedź witrynę Azure Portal, aby utworzyć nowe klucze dla aplikacji lub rozważ użycie poświadczeń certyfikatu w celu zwiększenia zabezpieczeń:https://aka.ms/certCreds |
+| AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant — pod warunkiem, że kod autoryzacji jest przeznaczony do użycia w stosunku do innych dzierżawców, w ten sposób odrzucone. Kod autoryzacji OAuth2 musi zostać zrealizowany względem tej samej dzierżawy, dla jakiej został nabyty (/common lub /{tenant-ID}, stosownie do przypadku) |
 | AADSTS1000000 | UserNotBoundError — interfejs API powiązania wymaga użytkownika usługi Azure AD również uwierzytelnić za pomocą zewnętrznego IDP, który nie został jeszcze zdarzyło. |
 | AADSTS1000002 | BindCompleteInterruptError — powiązanie zostało zakończone pomyślnie, ale użytkownik musi zostać poinformowany. |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled — aplikacja jest wyłączona. |

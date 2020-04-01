@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 8b95bb45436f45dc0e62fb12d6ab1b24c37372e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9ed11cd00909a104b5ea54463f8a98020837e10
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280068"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477883"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing ruchu w sieci wirtualnej
 
@@ -122,7 +122,7 @@ Brama sieci lokalnej może wymieniać trasy z bramą sieci wirtualnej platformy 
 
 W przypadku, gdy wymieniasz trasy z platformą Azure przy użyciu protokołu BGP, oddzielna trasa jest dodawana do tabeli tras wszystkich podsieci w sieci wirtualnej dla każdego anonsowanego prefiksu. Trasa jest dodawana z *bramą sieci wirtualnej* wymienioną jako element źródłowy i typ następnego przeskoku. 
 
-Propagację marszrut ER i bramy sieci VPN można wyłączyć w podsieci przy użyciu właściwości w tabeli marszruty. Podczas wymiany tras z platformą Azure przy użyciu protokołu BGP trasy nie są dodawane do tabeli tras wszystkich podsieci z wyłączeniami propagacji tras bramy sieci wirtualnej. Łączność z połączeniami sieci VPN jest uzyskiwana przy użyciu [tras niestandardowych](#custom-routes), których typ następnego przeskoku to *brama sieci wirtualnej*. Aby uzyskać szczegółowe informacje, zobacz [Jak wyłączyć propagację trasy bramy sieci wirtualnej](manage-route-table.md#create-a-route-table).
+Propagację marszrut ER i bramy sieci VPN można wyłączyć w podsieci przy użyciu właściwości w tabeli marszruty. Podczas wymiany tras z platformą Azure przy użyciu protokołu BGP trasy nie są dodawane do tabeli tras wszystkich podsieci z wyłączeniami propagacji tras bramy sieci wirtualnej. Łączność z połączeniami sieci VPN jest uzyskiwana przy użyciu [tras niestandardowych](#custom-routes), których typ następnego przeskoku to *brama sieci wirtualnej*. **Propagacji trasy nie należy wyłączać w sieci GatewaySubnet. Brama nie będzie działać z tym ustawieniem wyłączonym.** Aby uzyskać szczegółowe informacje, zobacz [Jak wyłączyć propagację trasy bramy sieci wirtualnej](manage-route-table.md#create-a-route-table).
 
 ## <a name="how-azure-selects-a-route"></a>Jak platforma Azure wybiera trasę
 

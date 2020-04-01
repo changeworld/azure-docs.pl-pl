@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: bd2f372bdcb949b64f748d186a9b060bb9cbec4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96828a854c340b89c26023ce60f9c85dd1bb4cdd
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77087057"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473915"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Wykonywanie operacji usługi Azure Queue Storage przy użyciu programu Azure PowerShell
 
@@ -103,7 +103,7 @@ Get-AzStorageQueue -Context $ctx | Select-Object Name
 
 ## <a name="add-a-message-to-a-queue"></a>Dodawanie wiadomości do kolejki
 
-Operacje wpływające na rzeczywiste komunikaty w kolejce używają biblioteki klienta magazynu .NET jako udostępnianej w programie PowerShell. Aby dodać wiadomość do kolejki, utwórz nowe wystąpienie obiektu wiadomości, [microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message) klasy. Następnie wywołaj metodę [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage). Klasę CloudQueueMessage można utworzyć przy użyciu ciągu (w formacie UTF-8) lub tablicy bajtów.
+Operacje wpływające na rzeczywiste komunikaty w kolejce używają biblioteki klienta magazynu .NET jako udostępnianej w programie PowerShell. Aby dodać wiadomość do kolejki, utwórz nowe wystąpienie obiektu wiadomości, [microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) klasy. Następnie wywołaj metodę [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage). Klasę CloudQueueMessage można utworzyć przy użyciu ciągu (w formacie UTF-8) lub tablicy bajtów.
 
 W poniższym przykładzie pokazano, jak dodać wiadomość do kolejki.
 

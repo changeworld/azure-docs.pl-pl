@@ -5,12 +5,12 @@ ms.date: 01/23/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 00fc3a01e6f42c2704af9dbc807dce193ff2971c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 658910dc4291375c7b2ab22e88c599b970b885af
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80117134"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419113"
 ---
 Obrazy znormalizowanej maszyny wirtualnej umożliwiają organizacjom migrację do chmury i zapewniają spójność wdrożeń. Obrazy zazwyczaj zawierają wstępnie zdefiniowane ustawienia zabezpieczeń i konfiguracji oraz niezbędne oprogramowanie. Konfigurowanie własnego potoku przetwarzania wymaga czasu, infrastruktury i konfiguracji, ale za pomocą programu Azure VM Image Builder po prostu podaj prostą konfigurację opisującą obraz, prześlij go do usługi, a obraz zostanie utworzony i rozproszony.
  
@@ -51,7 +51,7 @@ AIB będzie obsługiwać obrazy systemu operacyjnego bazy portalu Azure Marketpl
 - CentOS 7,6, 7,7
 - SLES 12 SP4
 - SLES 15, SLES 15 SP1
-- Windows 10 RS5 Enterprise/Professional/Enterprise for Virtual Desktop (EVD) 
+- Windows 10 RS5 Enterprise/Enterprise multi-session/Professional
 - Windows 2016
 - Windows 2019
 
@@ -78,7 +78,7 @@ Usługa Azure Image Builder to w pełni zarządzana usługa platformy Azure, kt�
 
 ## <a name="permissions"></a>Uprawnienia
 
-Aby umożliwić konstruktorowi obrazów maszyn wirtualnych platformy Azure rozpowszechnianie obrazów do obrazów zarządzanych lub do galerii obrazów udostępnionych, należy podać uprawnienia współautora dla usługi "Azure Virtual Machine Image Builder" (identyfikator aplikacji: cf32a0cc-373c-47c9-9156-0db11f6a6dfc ) w grupach zasobów. 
+Aby umożliwić konstruktorowi obrazów maszyn wirtualnych platformy Azure rozpowszechnianie obrazów do obrazów zarządzanych lub do galerii obrazów udostępnionych, należy podać uprawnienia współautora dla usługi "Azure Virtual Machine Image Builder" (identyfikator aplikacji: cf32a0cc-373c-47c9-9156-0db11f6a6dfc) w grupach zasobów. 
 
 Jeśli używasz istniejącego niestandardowego obrazu zarządzanego lub wersji obrazu, a następnie Azure Image Builder będzie potrzebować co najmniej "Reader" dostęp do tych grup zasobów.
 

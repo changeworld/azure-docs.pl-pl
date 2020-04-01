@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
-ms.openlocfilehash: cb5603c12f06e4f5d5675ca27e171321ecc8827a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d460112394d7c7b7d2da4e8af41c0085b67226ec
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536449"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475459"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Wdrażanie modelu w wystąpieniach kontenera platformy Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -94,7 +94,7 @@ Zobacz [wdrażanie modeli za pomocą programu VS Code](tutorial-train-deploy-ima
 
 * [Jak wdrożyć model przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md)
 * [Rozwiązywanie problemów z wdrażaniem](how-to-troubleshoot-deployment.md)
-* [Bezpieczne usługi sieci Web usługi azure machine learning za pomocą ssl](how-to-secure-web-service.md)
+* [Zabezpieczanie usługi sieci web za pośrednictwem usługi Azure Machine Learning za pomocą protokołu TLS](how-to-secure-web-service.md)
 * [Korzystanie z modelu ml wdrożonego jako usługa sieci web](how-to-consume-web-service.md)
 * [Monitoruj swoje modele usługi Azure Machine Learning za pomocą usługi Application Insights](how-to-enable-app-insights.md)
 * [Zbieranie danych dla modeli w produkcji](how-to-enable-data-collection.md)

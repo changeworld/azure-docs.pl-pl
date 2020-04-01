@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: c3c24a803a9fe2774f52cbb1e2cef04191d7995d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 46ffe61028e40b17d31ceba34ee58b8f25c0c471
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79372816"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80502008"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -39,7 +39,7 @@ Istnieje kilka sposobów, które można [`SpeechConfig`](https://docs.microsoft.
 * Z hostem: przekaż adres hosta. Klucz lub token autoryzacji jest opcjonalny.
 * Z tokenem autoryzacji: przekaż w tokenie autoryzacji i skojarzonym regionie.
 
-Przyjrzyjmy się, [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) jak jest tworzony przy użyciu klucza i regionu.
+Przyjrzyjmy się, [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) jak jest tworzony przy użyciu klucza i regionu. Zobacz stronę [pomocy technicznej regionu,](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) aby znaleźć identyfikator regionu.
 
 ```csharp
 var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");

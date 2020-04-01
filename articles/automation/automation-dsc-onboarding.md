@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 0bf70b73098427847c73b4dd962d56d44fe6ee2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 554a4c64700bb189b4b9f085bd7c259312a36b4b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283212"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410934"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Maszyny dołączające do zarządzania przez konfigurację stanu automatyzacji platformy Azure
 
@@ -107,7 +107,7 @@ Można dołączać serwery systemu Linux działające lokalnie lub w innych śro
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
-   - Aby znaleźć klucz rejestracji i adres URL rejestracji dla konta automatyzacji, zobacz [dołączanie bezpiecznie przy użyciu rejestracji](#onboarding-securely-using-registration) sekcji, jeśli ten artykuł.
+   - Aby znaleźć klucz rejestracji i adres URL rejestracji dla konta automatyzacji, zobacz [dołączanie bezpiecznie przy użyciu rejestracji](#onboarding-securely-using-registration) sekcji tego artykułu.
 
 3. Jeśli domyślne ustawienia domyślne lokalnego programu PowerShell DSC (Local Configuration Manager) (LCM) nie są zgodne z przypadkiem użycia lub chcesz na komputerach wbudowanych, które zgłaszają tylko do konfiguracji stanu automatyzacji platformy Azure, wykonaj kroki 4-7. W przeciwnym razie przejdź bezpośrednio do kroku 7.
 

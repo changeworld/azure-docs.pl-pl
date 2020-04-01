@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 4b2b388fb736997010a6cbbdf93b23b77c7ef3a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51985c5fa4b2296e43c0a062d0af84a1bb51e89c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603971"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397754"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Zabezpiecz swoje porty zarządzania dzięki dostępowi just-in-time
 
@@ -202,33 +202,22 @@ Aby korzystać z rozwiązania dostępu do maszyn wirtualnych just-in-time za po�
 
 W poniższym przykładzie ustawia zasadę dostępu do maszyn wirtualnych just-in-time na określonej maszynie wirtualnej i ustawia następujące elementy:
 
-1.  Zamknij porty 22 i 3389.
+1.    Zamknij porty 22 i 3389.
 
-2.  Ustaw maksymalny przedział czasu 3 godziny dla każdego, aby można je było otworzyć na zatwierdzone żądanie.
-3.  Umożliwia użytkownikowi, który żąda dostępu, kontrolowanie źródłowych adresów IP i umożliwia użytkownikowi ustanowienie pomyślnej sesji po zatwierdzeniu żądania dostępu just-in-time.
+2.    Ustaw maksymalny przedział czasu 3 godziny dla każdego, aby można je było otworzyć na zatwierdzone żądanie.
+3.    Umożliwia użytkownikowi, który żąda dostępu, kontrolowanie źródłowych adresów IP i umożliwia użytkownikowi ustanowienie pomyślnej sesji po zatwierdzeniu żądania dostępu just-in-time.
 
 Aby wykonać ten problem, uruchom w programie PowerShell następujące czynności:
 
-1.  Przypisywanie zmiennej, która przechowuje zasady dostępu do maszyn wirtualnych just-in-time dla maszyny Wirtualnej:
+1.    Przypisywanie zmiennej, która przechowuje zasady dostępu do maszyn wirtualnych just-in-time dla maszyny Wirtualnej:
 
-        $JitPolicy = (@{
-         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
-        ports=(@{
-             number=22;
-             protocol="*";
-             allowedSourceAddressPrefix=@("*");
-             maxRequestAccessDuration="PT3H"},
-             @{
-             number=3389;
-             protocol="*";
-             allowedSourceAddressPrefix=@("*");
-             maxRequestAccessDuration="PT3H"})})
+        $JitPolicy = (@{ id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" ports=(@{ number=22;        protocol="*";        allowedSourceAddressPrefix=@("*");        maxRequestAccessDuration="PT3H"}, @{ number=3389;        protocol="*";        allowedSourceAddressPrefix=@("*");        maxRequestAccessDuration="PT3H"}}})
 
-2.  Wstawianie zasady dostępu maszyny Wirtualnej just-in-time do tablicy:
+2.    Wstawianie zasady dostępu maszyny Wirtualnej just-in-time do tablicy:
     
         $JitPolicyArr=@($JitPolicy)
 
-3.  Skonfiguruj zasady dostępu do maszyn wirtualnych just-in-time na wybranej maszynie wirtualnej:
+3.    Skonfiguruj zasady dostępu do maszyn wirtualnych just-in-time na wybranej maszynie wirtualnej:
     
         Set-AzJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
@@ -237,18 +226,13 @@ Aby wykonać ten problem, uruchom w programie PowerShell następujące czynnośc
 W poniższym przykładzie można wyświetlić żądanie dostępu just-in-time do określonej maszyny Wirtualnej, w którym port 22 jest żądany do otwarcia dla określonego adresu IP i przez określony czas:
 
 Uruchom następujące czynności w programie PowerShell:
-1.  Konfigurowanie właściwości dostępu żądania maszyny Wirtualnej
+1.    Konfigurowanie właściwości dostępu żądania maszyny Wirtualnej
 
-        $JitPolicyVm1 = (@{
-          id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
-        ports=(@{
-           number=22;
-           endTimeUtc="2018-09-17T17:00:00.3658798Z";
-           allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
-2.  Wstaw parametry żądania dostępu maszyny Wirtualnej do tablicy:
+        $JitPolicyVm1 = (@{ id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" ports=(@{ number=22;      endTimeUtc="2018-09-17T17:00:00.3658798Z";      allowedSourceAddressPrefix=@("IPV4ADDRESS")}})})
+2.    Wstaw parametry żądania dostępu maszyny Wirtualnej do tablicy:
 
         $JitPolicyArr=@($JitPolicyVm1)
-3.  Wyślij dostęp do żądania (użyj identyfikatora zasobu, który otrzymałeś w kroku 1)
+3.    Wyślij dostęp do żądania (użyj identyfikatora zasobu, który otrzymałeś w kroku 1)
 
         Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
 
@@ -271,6 +255,7 @@ W tym artykule dowiesz się, jak dostęp do maszyn wirtualnych just-in-time w us
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
+- Moduł Microsoft Learn [Chroń swoje serwery i maszyny wirtualne przed atakami typu "brutalne i złośliwe oprogramowanie" za pomocą usługi Azure Security Center](https://docs.microsoft.com/learn/modules/secure-vms-with-azure-security-center/)
 - [Ustawianie zasad zabezpieczeń](tutorial-security-policy.md) — dowiedz się, jak skonfigurować zasady zabezpieczeń dla subskrypcji platformy Azure i grup zasobów.
 - [Zarządzanie zaleceniami dotyczącymi zabezpieczeń](security-center-recommendations.md) — dowiedz się, jak zalecenia pomagają chronić zasoby platformy Azure.
 - [Monitorowanie kondycji zabezpieczeń](security-center-monitoring.md) — dowiedz się, jak monitorować kondycję zasobów platformy Azure.

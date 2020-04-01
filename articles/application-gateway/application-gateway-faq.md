@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 242fc115c5b2324c770de480fb19985e8b874893
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 290467d5d20a74f8b8b2c23f6da0dcadfd74cc56
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371264"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411027"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące bramy aplikacji
 
@@ -353,11 +353,11 @@ Obecnie jedno wystąpienie kontrolera transferu danych przychodzących można sk
 
 Brama aplikacji udostępnia trzy dzienniki: 
 
-* **ApplicationGatewayAccessLog**: Dziennik dostępu zawiera każde żądanie przesłane do frontonu bramy aplikacji. Dane obejmują adres IP wywołującego, żądany adres URL, opóźnienie odpowiedzi, kod zwrotny oraz bajty w i na zewnątrz. Dziennik dostępu jest zbierany co 300 sekund. Zawiera jeden rekord na bramę aplikacji.
+* **ApplicationGatewayAccessLog**: Dziennik dostępu zawiera każde żądanie przesłane do frontonu bramy aplikacji. Dane obejmują adres IP wywołującego, żądany adres URL, opóźnienie odpowiedzi, kod zwrotny oraz bajty w i na zewnątrz. Zawiera jeden rekord na bramę aplikacji.
 * **ApplicationGatewayPerformanceLog**: Dziennik wydajności przechwytuje informacje o wydajności dla każdej bramy aplikacji. Informacje obejmują przepływność w bajtach, całkowita liczba obsługiwanych żądań, liczba żądań nie powiodło się oraz liczba wystąpień wewnętrznej bazy danych w dobrej kondycji i złej kondycji.
 * **ApplicationGatewayFirewallLog**: W przypadku bram aplikacji skonfigurowanych za pomocą narzędzia WAF dziennik zapory zawiera żądania rejestrowane w trybie wykrywania lub w trybie zapobiegania.
 
-Aby uzyskać więcej informacji, zobacz [kondycja wewnętrznej bazy danych, dzienniki diagnostyczne i metryki bramy aplikacji](application-gateway-diagnostics.md).
+Wszystkie dzienniki są zbierane co 60 sekund. Aby uzyskać więcej informacji, zobacz [kondycja wewnętrznej bazy danych, dzienniki diagnostyczne i metryki bramy aplikacji](application-gateway-diagnostics.md).
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Skąd mam wiedzieć, czy członkowie puli wewnętrznej bazy danych są zdrowi?
 

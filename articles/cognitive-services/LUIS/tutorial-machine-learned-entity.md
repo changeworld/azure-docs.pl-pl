@@ -1,22 +1,14 @@
 ---
 title: 'Samouczek: wyodrębnianie danych strukturalnych za pomocą jednostki nauczanej maszynowo — LUIS'
-titleSuffix: Azure Cognitive Services
 description: Wyodrębnij dane strukturalne z wypowiedź przy użyciu jednostki nauczane maszynowo. Aby zwiększyć dokładność ekstrakcji, dodaj podskładniki z deskryptorami i wiązaniami.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: e1709a5e86c8fed8d7f724ad1b105bd02df9fa56
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 03/31/2020
+ms.openlocfilehash: f521e634c129aaf03ee341328721bd89723e8264
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75381770"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478347"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Samouczek: wyodrębnianie danych strukturalnych z wypowiedź użytkownika z jednostek nauczonych maszynowo w language understanding (LUIS)
 
@@ -44,19 +36,19 @@ Jednostka nauczona maszynowo obsługuje [koncepcję rozkładu modelu,](luis-conc
 
 W tym samouczku dodano jednostkę nauczaną maszyną, aby wyodrębnić dane z wypowiedź.
 
-Celem jednostki jest zdefiniowanie danych do wyodrębnienia. Obejmuje to nadanie danych nazwę, typ (jeśli to możliwe), wszelkie rozwiązania danych, jeśli istnieją niejednoznaczności i dokładny tekst, który składa się na dane.
+Jednostka definiuje dane, które mają być wyodrębniane z wypowiedź. Obejmuje to nadanie danych nazwę, typ (jeśli to możliwe), wszelkie rozwiązania danych, jeśli istnieją niejednoznaczności i dokładny tekst, który składa się na dane.
 
-Aby zdefiniować jednostkę, należy utworzyć jednostkę, a następnie oznaczyć tekst reprezentujący jednostkę w wypowiedź przykład. Te oznaczone przykłady uczą usługi LUIS, co jest jednostką i gdzie można znaleźć w wypowiedź.
+Aby zdefiniować jednostkę, należy utworzyć jednostkę, a następnie oznaczyć tekst reprezentujący jednostkę w przykładowych wypowiedziach we wszystkich intencjach. Te oznaczone przykłady uczą usługi LUIS, co jest jednostką i gdzie można znaleźć w wypowiedź.
 
 ## <a name="entity-decomposability-is-important"></a>Rozkład jednostek jest ważny
 
-Rozkład jednostek jest ważne zarówno dla przewidywania intencji i wyodrębniania danych.
+Rozkład jednostek jest ważne zarówno dla przewidywania intencji i wyodrębniania danych z jednostką.
 
 Zacznij od jednostki nauczanych maszynowo, która jest jednostką początkową i najwyższego poziomu do wyodrębniania danych. Następnie rozłożyć jednostkę na części wymagane przez aplikację kliencką.
 
 Chociaż możesz nie wiedzieć, jak szczegółowe chcesz jednostki po uruchomieniu aplikacji, najlepszym rozwiązaniem jest, aby rozpocząć od jednostki maszynowo nauczył, a następnie rozkładu z podskładnikami w aplikacji dojrzewa.
 
-W praktyce utworzysz jednostkę nauczaną maszynowo, która będzie reprezentować zamówienie dla aplikacji do pizzy. Kolejność powinna mieć wszystkie części, które są niezbędne do fullfil zamówienia. Aby rozpocząć, jednostka wyodrębni tekst związany z zamówieniem, wyciągając rozmiar i ilość.
+W tym utworzysz jednostkę nauczona maszynowo do reprezentowania zamówienia dla aplikacji do pizzy. Kolejność powinna mieć wszystkie części, które są niezbędne do fullfil zamówienia. Aby rozpocząć, jednostka wyodrębni tekst związany z zamówieniem, wyciągając rozmiar i ilość.
 
 Wypowiedź `Please deliver one large cheese pizza to me` dla `one large cheese pizza` należy wyodrębnić jako `1` kolejność, a następnie również wyodrębnić i `large`.
 
@@ -92,7 +84,7 @@ Aby wyodrębnić szczegółowe informacje o zamówieniu `Order` pizzy, utwórz j
     ![Dodawanie struktury do encji](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
 1. W polu **Utwórz jednostkę nauczona maszyny** `Size` w polu **Struktura** dodaj, a następnie wybierz pozycję Wprowadź.
-1. Aby dodać **deskryptor** `+` , zaznacz **w obszarze Deskryptory dla** obszaru Rozmiar, a następnie wybierz pozycję **Utwórz nową listę fraz**.
+1. Aby dodać **deskryptor** `+` , zaznacz w obszarze **Deskryptory,** a następnie wybierz pozycję **Utwórz nową listę fraz**.
 
 1. W polu **Utwórz nowy deskryptor** `SizeDescriptor` listy fraz wprowadź `small` `medium`nazwę, `large`a następnie wprowadź wartości: , , i . Po wypełnieniu pola **Sugestie** `extra large`wybierz `xl`opcję , i . Wybierz **pozycję Gotowe,** aby utworzyć nową listę fraz.
 
@@ -108,7 +100,7 @@ Aby wyodrębnić szczegółowe informacje o zamówieniu `Order` pizzy, utwórz j
 
     ![Etykieta jednostki rozmiar tekstu w wypowiedź.](media/tutorial-machine-learned-entity/mark-and-create-size-entity.png)
 
-    Wiersz jest stały pod tekstem, ponieważ zarówno etykietowanie, jak i przewidywanie są zgodne, ponieważ tekst został jawnie oznaczony etykietą.
+    Wiersz jest stały pod tekstem, ponieważ zarówno etykietowanie, jak i przewidywanie są zgodne, ponieważ tekst został _jawnie_ oznaczony etykietą.
 
 1. Etykieta `Order` jednostki w pozostałych wypowiedzi wraz z jednostki size. Nawiasy kwadratowe w tekście `Order` wskazują encję oznaczona etykietą i encję `Size` wewnątrz.
 
@@ -132,7 +124,7 @@ Aby wyodrębnić szczegółowe informacje o zamówieniu `Order` pizzy, utwórz j
     |--|
     |`pickup XL meat lovers pizza`|
 
-    Ogólny element górny jest oznaczony etykietą, `Order` a `Size` podskładnik jest również oznaczony liniami kropkowanymi. Jest to pomyślne przewidywanie.
+    Ogólny element górny jest oznaczony etykietą, `Order` a `Size` podskładnik jest również oznaczony liniami kropkowanymi.
 
     ![Przewidywana wypowiedź z nowym przykładem za pomocą encji](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
 
@@ -160,20 +152,20 @@ Rozpocznij od dodania wstępnie utworzonej jednostki numeru do aplikacji.
 
 ## <a name="create-subcomponent-entity-with-constraint-to-help-extract-data"></a>Tworzenie jednostki podskładła z ograniczeniem w celu wyodrębniania danych
 
-Jednostka `Order` powinna mieć `Quantity` podskładent, aby określić, ile towaru są w kolejności. Ilość powinna być ograniczona do liczby, tak aby wyodrębnione dane były natychmiast użyteczne przez aplikację kliencką.
+Jednostka `Order` powinna mieć `Quantity` podskładent, aby określić, ile towaru są w kolejności. Ilość powinna być ograniczona do liczby, tak aby wyodrębnione dane były natychmiast dostępne dla aplikacji klienckiej według nazwy.
 
 Ograniczenie jest stosowane jako dopasowanie tekstu, z dokładnym dopasowaniem (na przykład jednostką listy) lub za pomocą wyrażeń regularnych (takich jak encja wyrażenia regularnego lub wstępnie utworzony element).
 
 Za pomocą ograniczenia wyodrębniany jest tylko tekst zgodny z tym ograniczeniem.
 
 1. Następnie wybierz pozycję `Order` **Elementy,** a następnie wybierz encję.
-1. Wybierz **+ Dodaj komponent,** a następnie wprowadź nazwę, `Quantity` a następnie wybierz pozycję Enter, aby dodać nową encję do aplikacji.
-1. Po powiadomieniu o `Quantity` powodzenie wybierz podskładnik, a następnie wybierz ołówek Wiązania.
+1. Wybierz **+ Dodaj komponent,** a następnie wprowadź nazwę, `Quantity` a następnie `Order` wybierz pozycję Enter, aby dodać nowy podskładnik do encji.
+1. Po powiadomieniu o powodzenie w **opcji zaawansowanych**wybierz ołówek Wiązania.
 1. Z listy rozwijanej wybierz wstępnie utworzony numer.
 
     ![Utwórz encję ilości z wstępnie utworzonym numerem jako ograniczeniem.](media/tutorial-machine-learned-entity/create-constraint-from-prebuilt-number.png)
 
-    Jednostka `Quantity` jest stosowana wtedy i tylko wtedy, gdy zostanie znaleziony tekst pasujący do wstępnie utworzonej jednostki numer.
+    Encja `Quantity` jest stosowana, gdy tekst jest zgodny z wstępnie utworzonym elementem numer.
 
     Jednostka z ograniczeniem jest tworzony, ale nie zostały jeszcze zastosowane do wypowiedzi przykład.
 
@@ -182,7 +174,7 @@ Za pomocą ograniczenia wyodrębniany jest tylko tekst zgodny z tym ograniczenie
 
 ## <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>Wypowiedź przykładu etykiety, aby nauczyć usługi LUIS o jednostce
 
-1. Wybierz **opcji intencji** z nawigacji po lewej stronie, a następnie wybierz **orderPizza** intencji. Trzy liczby w następujących wypowiedzi są oznaczone etykietą, ale `Order` są wizualnie poniżej wiersza jednostki. Ten niższy poziom oznacza, że jednostki są `Order` znalezione, ale nie są uważane za poza jednostką.
+1. Wybierz **opcji intencji** z nawigacji po lewej stronie, a następnie wybierz **orderPizza** intencji. Trzy liczby w następujących wypowiedzi są oznaczone etykietą, ale `Order` są wizualnie poniżej wiersza jednostki. Ten niższy poziom oznacza, że jednostki są znalezione, ale nie są uważane za część jednostki. `Order`
 
     ![Wstępnie utworzony numer został znaleziony, ale nie jest jeszcze uważany za poza jednostką Order.](media/tutorial-machine-learned-entity/prebuilt-number-not-part-of-order-entity.png)
 
@@ -192,7 +184,7 @@ Za pomocą ograniczenia wyodrębniany jest tylko tekst zgodny z tym ograniczenie
 
 ## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Trenuj aplikację, aby zastosować zmiany encji do aplikacji
 
-Wybierz **train,** aby trenować aplikację z tych nowych wypowiedzi.
+Wybierz **train,** aby trenować aplikację z tych nowych wypowiedzi. Po treningu `Quantity` podskładnik jest `Order` poprawnie przewidywany w składniku. Ta poprawna prognoza jest wskazywana linią ciągłą.
 
 ![Trenuj aplikację, a następnie przejrzyj wypowiedzi przykładowe.](media/tutorial-machine-learned-entity/trained-example-utterances.png)
 
@@ -213,7 +205,7 @@ Przetestuj aplikację za pomocą interaktywnego panelu **testowego.** Ten proces
 
     Rozmiar został prawidłowo zidentyfikowany. Należy pamiętać, że wypowiedzi `OrderPizza` przykład w intencji nie `medium` mają przykład jako rozmiar, ale `SizeDescriptor` należy użyć deskryptora listy fraz, która zawiera medium.
 
-    Ilość nie jest poprawnie przewidywana. Aby rozwiązać ten problem, można dodać więcej wypowiedzi przykład przy użyciu tego `Quantity` wyrazu, aby wskazać ilość i etykiety tego wyrazu jako jednostki.
+    Ilość nie jest poprawnie przewidywana. Można rozwiązać ten problem w aplikacji klienckiej, domyślnie rozmiar do jednego (1), jeśli nie ma rozmiaru jest zwracany w przewidywaniu usługi LUIS.
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Publikowanie aplikacji w celu uzyskania do niej dostępu z punktu końcowego HTTP
 
@@ -223,7 +215,7 @@ Przetestuj aplikację za pomocą interaktywnego panelu **testowego.** Ten proces
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Przejdź na koniec adresu URL w adresie i wprowadź tę samą kwerendę, którą wprowadzono w interaktywnym panelu testowym.
+1. Przejdź na koniec adresu URL w adresie i zastąp _YOUR_QUERY_HERE_ tą samą kwerendą, którą wprowadzono w interaktywnym panelu testowym.
 
     `deliver a medium veggie pizza`
 
