@@ -7,26 +7,26 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: f290b08d1f625600d03c9540b28c289e9b449471
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475158"
+ms.locfileid: "80517923"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Opcja współsprzedaży w Centrum partnerów
 
-Dostarczanie informacji na karcie Co-sell jest całkowicie opcjonalne. Jest to wymagane do osiągnięcia co-sell Ready i IP Co-sell Ready status. Podane informacje będą używane przez zespoły sprzedaży firmy Microsoft, aby dowiedzieć się więcej o rozwiązaniu podczas oceny jego dopasowania do potrzeb klienta. Nie jest dostępny bezpośrednio dla klientów. Aby uzyskać więcej informacji, zobacz [sprzedaż za pośrednictwem firmy Microsoft](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft).
+Dostarczanie informacji na karcie Co-sell jest całkowicie opcjonalne. Jest to wymagane do osiągnięcia co-sell Ready i IP Co-sell Ready status. Podane informacje będą używane przez zespoły sprzedaży firmy Microsoft, aby dowiedzieć się więcej o rozwiązaniu podczas oceny jego dopasowania do potrzeb klienta. Nie jest dostępny bezpośrednio dla klientów. Aby uzyskać więcej informacji, zobacz [sprzedaż za pośrednictwem firmy Microsoft](https://partner.microsoft.com/membership/sell-with-microsoft).
 
 Opcja współsprzedaży w Centrum partnerów jest obecnie dostępna dla niektórych typów ofert. Obsługa dodatkowych typów ofert będzie dostępna w czasie.
 
 | **Typ oferty** | **Strona co-sell dostępna w Centrum partnerów** |
 |    -----------------------    |    -----------------------------  |
-| Oprogramowanie jako usługa (SaaS) |     Ogólna dostępność około kwietnia 2020 r.     |
+| Oprogramowanie jako usługa (SaaS) |     Ogólna dostępność kwiecień 2020      |
 | Dynamics 365 for Customer Engagement & PowerApps      |     Dostępny teraz      |
 | Dynamics 365 for Operations     |     Dostępny teraz       |
-| Dynamics 365 Business Central      |  Ogólna dostępność około kwietnia 2020 r.    |
-| Azure Application     |     Ogólna dostępność około kwietnia 2020 r.     |
+| Dynamics 365 Business Central      |  Ogólna dostępność kwiecień 2020     |
+| Azure Application     |     Ogólna dostępność kwiecień 2020     |
 | Maszyna wirtualna platformy Azure      |     Do ogłoszenia       |
 | Kontener platformy Azure     |     Do ogłoszenia       |
 | Usługa konsultingowa      |     Do ogłoszenia       |
@@ -66,8 +66,7 @@ Można udostępnić zabezpieczenia dla firmy Microsoft do oceny potrzeb klientó
 
 | **Dokumenty**    | **Opis**  |
 | :------------------- | :-------------------|
-| *Klient jednostronicowy* | Gotowy do obsługi klienta opis twojej oferty. Zespoły sprzedaży firmy Microsoft mogą udostępniać te informacje klientom, aby ustalić, czy oferta może być dobra, i upewnić się, że jest gotowa na klienta. <br> <br> Użyj jednego z odpowiednich szablonów dostępnych w Centrum partnerskim: <br> <ul> <li> Szablon jednostronicowy platformy Microsoft Azure </li> <li> Jednostronicowy szablon systemu Microsoft Dynamics 365 </li> <li> Szablon jednostronicowy usługi Office 365 </li> <li> Szablon jednostronicowy systemu Windows 10 </li> </ul>
- |
+| *Klient jednostronicowy* | Gotowy do obsługi klienta opis twojej oferty. Zespoły sprzedaży firmy Microsoft mogą udostępniać te informacje klientom, aby ustalić, czy oferta może być dobra, i upewnić się, że jest gotowa na klienta. <br> <br> Użyj jednego z odpowiednich szablonów dostępnych w Centrum partnerskim: <br> <ul> <li> Szablon jednostronicowy platformy Microsoft Azure </li> <li> Jednostronicowy szablon systemu Microsoft Dynamics 365 </li> <li> Szablon jednostronicowy usługi Office 365 </li> <li> Szablon jednostronicowy systemu Windows 10 </li> </ul> |
 | *Prezentacja klienta* | Przesuń talię, aby rozbić swoje rozwiązanie i jego propozycję wartości. Po upewnieniu się, że oferta jest gotowa do użycia klienta, zespoły sprzedaży firmy Microsoft mogą udostępnić prezentację klientom, aby wyrazić wartość, jaką obie firmy przynoszą podczas wdrażania wspólnego rozwiązania. Prezentacja powinna obejmować to, co robi twoje rozwiązanie, jak może pomóc klientom, do jakich branż jest to rozwiązanie i jak wypada w porównaniu z konkurencyjnymi rozwiązaniami. <br> <br> Użyj szablonu dostępnego w Centrum partnerów.|
 | *Studium przypadku klienta* | Te informacje pokazują potencjalnego klienta, w jaki sposób ty i firma Microsoft pomyślnie wdrożyliście to rozwiązanie w poprzednich przypadkach. <br> <br> Użyj szablonu dostępnego w Centrum partnerów. |
 | *Weryfikowalne wygrane klienta (opcjonalnie)* | Konkretne przykłady sukcesów klientów po wdrożeniu rozwiązania. |

@@ -1,15 +1,15 @@
 ---
 title: Limity usługi Azure Blockchain
 description: Omówienie limitów usług i funkcjonalności w usłudze Azure Blockchain
-ms.date: 11/22/2019
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.reviewer: janders
-ms.openlocfilehash: f4001ee520f3f3136d1bac5ca047c80526fc92e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: c728e617ac37795988cd596c7cb0c5025aac4ccf
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74455647"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529575"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Limity w usłudze Blockchain platformy Azure
 
@@ -17,12 +17,16 @@ Usługa Azure Blockchain service ma limity usług i funkcjonalności, takie jak 
 
 ## <a name="pricing-tier"></a>Warstwa cenowa
 
-Maksymalne limity transakcji i węzłów walidatora zależą od tego, czy aprowizujesz usługę Azure Blockchain w warstwach cenowych podstawowych czy standardowych.
+Maksymalne limity transakcji i węzłów walidatora zależą od tego, czy aprowizujesz usługę Azure Blockchain w podstawowych czy standardowych warstwach cenowych.
 
 | Warstwa cenowa | Maksymalna liczba węzłów transakcji | Maksymalne węzły walidatora |
 |:---|:---:|:---:|
-| Podstawowa (Basic) | 10 | 1 |
+| Podstawowy | 10 | 1 |
 | Standardowa | 10 | 2 |
+
+Sieć konsorcjum powinna mieć co najmniej dwa węzły warstwy standardowej usługi Azure Blockchain Service. Węzły warstwy standardowej obejmują dwa węzły walidatora. Cztery węzły walidatora są wymagane, aby spełnić [konsensus Stambulskiej Tolerancji Na uszkodzenia.](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)
+
+Użyj podstawowej warstwy jest do tworzenia, testowania i weryfikacji koncepcji. Użyj warstwy standardowej dla wdrożeń klasy produkcyjnej. Należy również użyć *warstwy Standardowa,* jeśli używasz Menedżera danych Blockchain lub wysyłasz dużą liczbę transakcji prywatnych.
 
 Zmiana warstwy cenowej między podstawową a standardową po utworzeniu elementu członkowskiego nie jest obsługiwana.
 
@@ -50,7 +54,7 @@ Zmniejszanie rozmiaru magazynu księgi i dziennika nie jest obsługiwane.
 
 * **Członkowie usunięci z konsorcjum nie mogą zostać ponownie dodani**
 
-    Zamiast tego muszą zostać ponownie zaproszeni do przyłączenia się do konsorcjum i utworzenia nowego członka. Ich istniejący zasób elementu członkowskiego nie są usuwane w celu zachowania transakcji historycznych.
+    Zamiast tego muszą zostać ponownie zaproszeni do przyłączenia się do konsorcjum i utworzenia nowego członka. Ich istniejące zasoby członkowskie nie są usuwane w celu zachowania transakcji historycznych.
 
 * **Wszyscy członkowie konsorcjum muszą używać tej samej wersji księgi**
 

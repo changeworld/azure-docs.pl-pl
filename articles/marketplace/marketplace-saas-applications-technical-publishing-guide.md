@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: 2c1cb755b62812336a306994f6820573130815e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 641297ea74a08dea163cf768b8e9b245348824a4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288363"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544286"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Przewodnik publikowania ofert w aplikacjach SaaS
 
@@ -25,8 +25,8 @@ Aplikacje SaaS są dostępne w obu witrynach sklepu Azure W poniższej tabeli op
 
 | Opcja witryny sklepu | Aukcji | Próba/transak |  
 | --- | --- | --- |  
-| AppSource | Tak (skontaktuj się ze mną) | Tak (PowerBI/Dynamics) |
-| Rynek platformy Azure | Nie | Tak (aplikacje SaaS) |   
+| AppSource | Tak | Tak |
+| Rynek platformy Azure | Nie | Tak |   
 
 **Lista:**  Opcja publikowania aukcji składa się z typu oferty Kontakt me i jest używana, gdy udział na poziomie wersji próbnej lub transakcji nie jest możliwy. Zaletą tego podejścia jest to, że umożliwia wydawcom z rozwiązaniem na rynku, aby natychmiast rozpocząć odbieranie potencjalnych klientów, które mogą być przekształcone w oferty, aby zwiększyć swoją działalność.  
 **Wersja próbna/transakcja:**  Klient ma możliwość bezpośredniego zakupu lub żądania wersji próbnej dla rozwiązania. Dostarczanie wersji próbnej zwiększa poziom zaangażowania oferowanych klientom i umożliwia klientom odkrywanie rozwiązania przed zakupem. Dzięki doświadczeniu próbnego będziesz miał większe szanse na promocję w witrynach sklepowych i powinieneś spodziewać się coraz bogatszych potencjalnych klientów z zaangażowania klientów. Wersje próbne muszą obejmować bezpłatne wsparcie przynajmniej na czas trwania okresu próbnego.  
@@ -95,7 +95,7 @@ Ponadto usługa Azure Active Directory udostępnia witrynę do sprawdzania dost�
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Włączanie wersji próbnych za pomocą usługi Azure Active Directory  
 
-Firma Microsoft uwierzytelnia wszystkich użytkowników portalu Marketplace za pomocą usługi Azure AD, więc gdy uwierzytelniony użytkownik kliknie pozycję Próbna w portalu Marketplace i zostanie przekierowany do środowiska próbnego, można aprowizować użytkownika bezpośrednio do wersji próbnej bez konieczności dodatkowego etapu logowania. Token, który aplikacja otrzymuje z usługi Azure AD podczas uwierzytelniania zawiera cenne informacje o użytkowniku, których można użyć do utworzenia konta użytkownika w aplikacji, co umożliwia automatyzację obsługi administracyjnej i zwiększyć prawdopodobieństwo konwersji. Aby uzyskać więcej informacji na temat tokenu, zobacz [Przykładowe tokeny](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
+Firma Microsoft uwierzytelnia wszystkich użytkowników portalu Marketplace za pomocą usługi Azure AD, więc gdy uwierzytelniony użytkownik kliknie za pośrednictwem listy próbnej w portalu Marketplace i zostanie przekierowany do środowiska próbnego, można aprowizować użytkownika bezpośrednio do wersji próbnej bez konieczności dodatkowego kroku logowania. Token, który aplikacja otrzymuje z usługi Azure AD podczas uwierzytelniania zawiera cenne informacje o użytkowniku, których można użyć do utworzenia konta użytkownika w aplikacji, co umożliwia automatyzację obsługi administracyjnej i zwiększyć prawdopodobieństwo konwersji. Aby uzyskać więcej informacji na temat tokenu, zobacz [Przykładowe tokeny](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
 
 Korzystanie z usługi Azure AD w celu włączenia uwierzytelniania jednym kliknięciem w aplikacji lub wersji próbnej wykonuje następujące czynności:  
 * Usprawnia obsługę klienta z Marketplace do wersji próbnej.  

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: dcc2c38238f707a5d43cde03502c589add9461b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 462a44f7766e0ec52ba7156d6de5ae5261e21376
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335920"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547368"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Używanie usługi Azure API Management z sieciami wirtualnymi
 Sieci wirtualne platformy Azure umożliwiają umieszczanie dowolnych zasobów platformy Azure w sieci nieobsługującej routingu internetowego, do której kontrolujesz dostęp. Sieci te można następnie połączyć z sieciami lokalnymi przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej o sieciach wirtualnych platformy Azure, zacznij od informacji tutaj: [Omówienie sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md).
@@ -102,7 +102,7 @@ Poniżej znajduje się lista typowych problemów z nieprawidłową konfiguracją
 * **Niestandardowa konfiguracja serwera DNS:** Usługa zarządzania interfejsami API zależy od kilku usług platformy Azure. Gdy usługa Zarządzanie interfejsami API jest hostowana w sieci wirtualnej z niestandardowym serwerem DNS, musi rozpoznać nazwy hostów tych usług platformy Azure. Postępuj zgodnie z [tymi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) wskazówkami dotyczącymi niestandardowej konfiguracji DNS. Zobacz tabelę portów poniżej i inne wymagania sieciowe w celach informacyjnych.
 
 > [!IMPORTANT]
-> Jeśli planujesz używać niestandardowych serwerów DNS dla sieci wirtualnej, należy ją skonfigurować **przed** wdrożeniem w niej usługi zarządzania interfejsami API. W przeciwnym razie należy zaktualizować usługę Zarządzanie interfejsami API za każdym razem, gdy zmienisz serwery DNS, uruchamiając [operację Zastosuj konfigurację sieci](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/ApplyNetworkConfigurationUpdates)
+> Jeśli planujesz używać niestandardowych serwerów DNS dla sieci wirtualnej, należy ją skonfigurować **przed** wdrożeniem w niej usługi zarządzania interfejsami API. W przeciwnym razie należy zaktualizować usługę Zarządzanie interfejsami API za każdym razem, gdy zmienisz serwery DNS, uruchamiając [operację Zastosuj konfigurację sieci](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/ApiManagementService/ApplyNetworkConfigurationUpdates)
 
 * **Porty wymagane do zarządzania interfejsami API:** Ruch przychodzący i wychodzący do podsieci, w której wdrożono zarządzanie interfejsem API, można sterować za pomocą [sieciowej grupy zabezpieczeń][Network Security Group]. Jeśli którykolwiek z tych portów jest niedostępny, usługa API Management może nie działać poprawnie i może stać się niedostępna. Po co najmniej jeden z tych portów zablokowany jest inny typowy problem z nieprawidłową konfiguracją podczas korzystania z zarządzania interfejsami API z siecią wirtualną.
 
@@ -133,6 +133,8 @@ Poniżej znajduje się lista typowych problemów z nieprawidłową konfiguracją
 + **Dostęp DNS:** Dostęp wychodzący na porcie 53 jest wymagany do komunikacji z serwerami DNS. Jeśli niestandardowy serwer DNS istnieje na drugim końcu bramy sieci VPN, serwer DNS musi być osiągalny z podsieci hostingu zarządzania interfejsami API.
 
 + **Metryki i monitorowanie kondycji: Wychodząca**łączność sieciowa z punktami końcowymi monitorowania platformy Azure, które są rozwiązywane w następujących domenach:
+
++ **Regionalne tagi usługi**": reguły sieciowej sieciowej sieciowej zezwalające na łączność wychodzącą z tagami usługi Storage, SQL i EventHubs mogą używać regionalnych wersji tych tagów odpowiadających regionowi zawierającemu wystąpienie zarządzania interfejsami API (na przykład Storage.WestUS dla wystąpienia zarządzania interfejsami API w regionie Zachodnie stany USA). W wdrożeniach wieloregionowych sieciowej w każdym regionie należy zezwolić na ruch do tagów usługi dla tego regionu.
 
     | Środowisko platformy Azure | Punkty końcowe                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -170,7 +172,7 @@ Poniżej znajduje się lista typowych problemów z nieprawidłową konfiguracją
   > [!IMPORTANT]
   > Po sprawdzeniu poprawności łączności przed wdrożeniem usługi Api Management w podsieci należy usunąć wszystkie zasoby wdrożone w podsieci.
 
-* **Aktualizacje przyrostowe:** Podczas wprowadzania zmian w sieci należy zapoznać się z [interfejsem API NetworkStatus](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/networkstatus), aby sprawdzić, czy usługa api Management nie utraciła dostępu do żadnych krytycznych zasobów, od których zależy. Stan łączności powinien być aktualizowany co 15 minut.
+* **Aktualizacje przyrostowe:** Podczas wprowadzania zmian w sieci należy zapoznać się z [interfejsem API NetworkStatus](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/networkstatus), aby sprawdzić, czy usługa api Management nie utraciła dostępu do żadnych krytycznych zasobów, od których zależy. Stan łączności powinien być aktualizowany co 15 minut.
 
 * **Łącza nawigacji zasobów:** Podczas wdrażania w podsieci sieci sieci wirtualnej w stylu Menedżera zasobów usługa API Management rezerwuje podsieć, tworząc łącze nawigacji zasobów. Jeśli podsieć zawiera już zasób innego dostawcy, wdrożenie zakończy **się niepowodzeniem**. Podobnie po przeniesieniu usługi api Management do innej podsieci lub usunięciu jej usuniemy to łącze nawigacji zasobów.
 

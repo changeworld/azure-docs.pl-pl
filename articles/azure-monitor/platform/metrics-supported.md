@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 03/17/2020
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e01ed9f784d77b3c425c60de31ab87f86dbb688b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 674321878cfce2d05189700a8b5118e233d9044d
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500605"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520704"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki za pomocą usługi Azure Monitor
 
@@ -24,6 +24,9 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 > *Na przykład*: metrykę „Komunikaty przychodzące” w centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak w przypadku eksportowania za pomocą ustawień diagnostycznych metryka ta jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejkach w centrum zdarzeń.
 >
 > Aby uzyskać listę metryk platformy, które można eksportować za pomocą ustawień diagnostycznych, zobacz [ten artykuł](metrics-supported-export-diagnostic-settings.md).
+
+
+
 
 
 
@@ -101,15 +104,15 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |EventHubDroppedWydarzenia|Porzucone zdarzenia EventHub|Liczba|Łącznie|Liczba zdarzeń pominiętych z powodu osiągniętego limitu rozmiaru kolejki|Lokalizacja|
 |Usługa EventHubTotalBytesSent|Rozmiar zdarzeń EventHub|Bajty|Łącznie|Całkowity rozmiar zdarzeń EventHub w bajtach|Lokalizacja|
 |Żądania|Żądania|Liczba|Łącznie|Metryki żądań bramy z wieloma wymiarami|Lokalizacja,Nazwa hosta,LastErrorReason,BackendResponseCode,GatewayResponseCode,BackendResponseCodeCategory,GatewayResponseCodeCategory|
+|Łączność sieciowa|Stan łączności sieciowej zasobów (wersja zapoznawcza)|Liczba|Łącznie|Stan łączności sieciowej zależnych typów zasobów z usługi API Management|Lokalizacja,Typ zasobu|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
 
 |Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Konto HttpIncomingRequestCount|Konto HttpIncomingRequestCount|Liczba|Liczba|Całkowita liczba przychodzących żądań http.|Brak|
-|Nie możnahttprequestcount|Nie możnahttprequestcount|Liczba|Liczba|Nie powiodło się żądania http.|Brak|
-|HttpIncomingRequestDuration (HttpIncomingRequestDuration)|HttpIncomingRequestDuration (HttpIncomingRequestDuration)|Liczba|Średnia|Opóźnienie żądania http.|Brak|
+|Konto HttpIncomingRequestCount|Konto HttpIncomingRequestCount|Liczba|Liczba|Całkowita liczba przychodzących żądań http.|Statuscode|
+|HttpIncomingRequestDuration (HttpIncomingRequestDuration)|HttpIncomingRequestDuration (HttpIncomingRequestDuration)|Liczba|Średnia|Opóźnienie żądania http.|Statuscode|
 
 
 ## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Wiosna
@@ -171,21 +174,21 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |LeavingPoolNodeCount|Opuszczanie liczby węzłów puli|Liczba|Łącznie|Liczba węzłów opuszczających pulę|Brak|
 |BezużytecznyNodeCount|Liczba węzłów bezużytecznych|Liczba|Łącznie|Liczba węzłów bezużytecznych|Brak|
 |WywłaszczoneNodeCount|Wywłaszczona liczba węzłów|Liczba|Łącznie|Liczba wywłaszczonych węzłów|Brak|
-|ZadanieStartEvent|Zdarzenia rozpoczęcia zadania|Liczba|Łącznie|Całkowita liczba uruchomionych zadań|Brak|
-|ZadanieZamyknięcie|Zdarzenia ukończenia zadania|Liczba|Łącznie|Całkowita liczba ukończonych zadań|Brak|
-|ZadanieFailEvent (Zadanie)|Zdarzenia niepowodzenia zadania|Liczba|Łącznie|Całkowita liczba zadań, które zostały wykonane w stanie awarii|Brak|
-|PoolCreateEvent (Twórstwo na basenie)|Zdarzenia tworzenia puli|Liczba|Łącznie|Łączna liczba utworzonych puli|Brak|
-|Proces poolresizestartevent|Zdarzenia rozpoczęcia ponownego rozmiaru puli|Liczba|Łącznie|Całkowita liczba rozmiarów puli, które zostały uruchomione|Brak|
-|Impreza PoolResizeCompleteEvent|Zdarzenia ukończenia ponownego rozmiaru rozmiaru puli|Liczba|Łącznie|Całkowita liczba przesiąknów puli, które zostały ukończone|Brak|
-|Impreza PoolDeleteStartEvent|Zdarzenia rozpoczęcia usuwania puli|Liczba|Łącznie|Całkowita liczba usuniętych puli, które zostały rozpoczęte|Brak|
-|PoolDeleteCompleteEVent|Zdarzenia usuwania puli|Liczba|Łącznie|Całkowita liczba usuniętych puli, które zostały ukończone|Brak|
-|JobDeleteCompleteEVent|Zdarzenia zakończenia usuwania zadania|Liczba|Łącznie|Całkowita liczba zadań, które zostały pomyślnie usunięte.|Brak|
-|JobDeleteStartEvent (ZadanieDeletStartEvent)|Zdarzenia rozpoczęcia usuwania zadań|Liczba|Łącznie|Całkowita liczba zadań, które zostały żądane do usunięcia.|Brak|
-|JobDisableCompleteEVent (JobDisableCompleteEvent)|Zadanie wyłączanie zakończonych zdarzeń|Liczba|Łącznie|Całkowita liczba zadań, które zostały pomyślnie wyłączone.|Brak|
-|JobDisableStartEvent (ZadanieDisableStartEvent)|Wyłączanie zdarzeń startowych zadania|Liczba|Łącznie|Całkowita liczba zadań, które zostały żądane do wyłączenia.|Brak|
-|JobStartEvent (Początek zadania)|Zdarzenia rozpoczęcia zadania|Liczba|Łącznie|Całkowita liczba zadań, które zostały pomyślnie uruchomione.|Brak|
-|JobTerminateCompleteEvent (JobTerminateCompleteEvent)|Zakończenie zadania zdarzenia zakończone|Liczba|Łącznie|Całkowita liczba zadań, które zostały pomyślnie zakończone.|Brak|
-|JobTerminateStartEvent (ZadanieTerminateStartEvent)|Zakończenie zadania zdarzenia startowe|Liczba|Łącznie|Całkowita liczba zadań, które zostały żądane do zakończenia.|Brak|
+|ZadanieStartEvent|Zdarzenia rozpoczęcia zadania|Liczba|Łącznie|Całkowita liczba uruchomionych zadań|poolId,jobId|
+|ZadanieZamyknięcie|Zdarzenia ukończenia zadania|Liczba|Łącznie|Całkowita liczba ukończonych zadań|poolId,jobId|
+|ZadanieFailEvent (Zadanie)|Zdarzenia niepowodzenia zadania|Liczba|Łącznie|Całkowita liczba zadań, które zostały wykonane w stanie awarii|poolId,jobId|
+|PoolCreateEvent (Twórstwo na basenie)|Zdarzenia tworzenia puli|Liczba|Łącznie|Łączna liczba utworzonych puli|pulaId|
+|Proces poolresizestartevent|Zdarzenia rozpoczęcia ponownego rozmiaru puli|Liczba|Łącznie|Całkowita liczba rozmiarów puli, które zostały uruchomione|pulaId|
+|Impreza PoolResizeCompleteEvent|Zdarzenia ukończenia ponownego rozmiaru rozmiaru puli|Liczba|Łącznie|Całkowita liczba przesiąknów puli, które zostały ukończone|pulaId|
+|Impreza PoolDeleteStartEvent|Zdarzenia rozpoczęcia usuwania puli|Liczba|Łącznie|Całkowita liczba usuniętych puli, które zostały rozpoczęte|pulaId|
+|PoolDeleteCompleteEVent|Zdarzenia usuwania puli|Liczba|Łącznie|Całkowita liczba usuniętych puli, które zostały ukończone|pulaId|
+|JobDeleteCompleteEVent|Zdarzenia zakończenia usuwania zadania|Liczba|Łącznie|Całkowita liczba zadań, które zostały pomyślnie usunięte.|Jobid|
+|JobDeleteStartEvent (ZadanieDeletStartEvent)|Zdarzenia rozpoczęcia usuwania zadań|Liczba|Łącznie|Całkowita liczba zadań, które zostały żądane do usunięcia.|Jobid|
+|JobDisableCompleteEVent (JobDisableCompleteEvent)|Zadanie wyłączanie zakończonych zdarzeń|Liczba|Łącznie|Całkowita liczba zadań, które zostały pomyślnie wyłączone.|Jobid|
+|JobDisableStartEvent (ZadanieDisableStartEvent)|Wyłączanie zdarzeń startowych zadania|Liczba|Łącznie|Całkowita liczba zadań, które zostały żądane do wyłączenia.|Jobid|
+|JobStartEvent (Początek zadania)|Zdarzenia rozpoczęcia zadania|Liczba|Łącznie|Całkowita liczba zadań, które zostały pomyślnie uruchomione.|Jobid|
+|JobTerminateCompleteEvent (JobTerminateCompleteEvent)|Zakończenie zadania zdarzenia zakończone|Liczba|Łącznie|Całkowita liczba zadań, które zostały pomyślnie zakończone.|Jobid|
+|JobTerminateStartEvent (ZadanieTerminateStartEvent)|Zakończenie zadania zdarzenia startowe|Liczba|Łącznie|Całkowita liczba zadań, które zostały żądane do zakończenia.|Jobid|
 
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/obszary robocze
@@ -417,6 +420,7 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 
 
 
+
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
 
 |Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
@@ -537,11 +541,12 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |DataIn (wyjdą|Dane w|Bajty|Łącznie|Rozmiar przychodzących danych w bajtach.|Nazwa api,Nazwa operacji,Region|
 |DataOut (DataOut)|Wyjście danych|Bajty|Łącznie|Rozmiar danych wychodzących w bajtach.|Nazwa api,Nazwa operacji,Region|
 |Opóźnienie|Opóźnienie|Milisekund|Średnia|Opóźnienie w milisekundach.|Nazwa api,Nazwa operacji,Region|
+|TotalTokenCalls (Liczba powołów)|Łączna liczba wywołań tokenów|Liczba|Łącznie|Całkowita liczba wywołań tokenu.|Nazwa api,Nazwa operacji,Region|
 |Znaki Przetłumaczone|Przetłumaczone znaki|Liczba|Łącznie|Całkowita liczba znaków w przychodzącym żądaniu tekstowym.|Nazwa api,Nazwa operacji,Region|
 |ZnakiSzkolone|Postacie wyszkolone|Liczba|Łącznie|Całkowita liczba przeszkolonych znaków.|Nazwa api,Nazwa operacji,Region|
 |MowaSessionDuration|Czas trwania sesji mowy|Sekundy|Łącznie|Całkowity czas trwania sesji mowy w sekundach.|Nazwa api,Nazwa operacji,Region|
 |TotalTransakcje|Łączna liczba transakcji|Liczba|Łącznie|Łączna liczba transakcji.|Brak|
-|TotalTokenCalls (Liczba powołów)|Łączna liczba wywołań tokenów|Liczba|Łącznie|Całkowita liczba wywołań tokenu.|Nazwa api,Nazwa operacji,Region|
+|Przetworzonematyges|Przetworzone obrazy|Liczba|Łącznie| Liczba transakcji do przetwarzania obrazu.|ApiName,FeatureName,Kanał,Region|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
@@ -556,16 +561,16 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Operacje zapisu dysku/s|Operacje zapisu dysku/s|Połów połówek|Średnia|We/Wy zapisu dysku|Brak|
 |Pozostałe kredyty CPU|Pozostałe kredyty CPU|Liczba|Średnia|Łączna liczba kredytów dostępnych do rozerwania|Brak|
 |Zużyte kredyty CPU|Zużyte kredyty CPU|Liczba|Średnia|Łączna liczba kredytów wykorzystanych przez maszynę wirtualną|Brak|
-|Bajty odczytu dysku/s|Bajty odczytu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania|SlotId (SlotId)|
-|Bajty zapisu na dysku/s|Bajty zapisu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|SlotId (SlotId)|
-|Operacje odczytu dysku/s|Operacje odczytu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|SlotId (SlotId)|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s (przestarzałe)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku podczas monitorowania|SlotId (SlotId)|
-|Na dysk QD|QD dysku danych (przestarzałe)|Liczba|Średnia|Głębokość kolejki dysku danych(lub długość kolejki)|SlotId (SlotId)|
-|Bajty odczytu systemu operacyjnego na dysk/s|Bajty odczytu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
-|Bajty zapisu systemu operacyjnego na dysk/s|Bajty zapisu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Bajty/S zapisane na jednym dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
-|Operacje odczytu systemu operacyjnego na dysku/s|Operacje odczytu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
-|Operacje zapisu systemu operacyjnego na dysk/s|Operacje zapisu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku z jednego dysku podczas monitorowania dysku systemu operacyjnego|Brak|
-|System operacyjny na dysk QD|QD dysku systemu operacyjnego (przestarzałe)|Liczba|Średnia|Głębokość kolejki systemu operacyjnego (lub długość kolejki)|Brak|
+|Bajty odczytu dysku/s|Bajty odczytu dysku danych/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania|SlotId (SlotId)|
+|Bajty zapisu na dysku/s|Bajty zapisu dysku danych/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|SlotId (SlotId)|
+|Operacje odczytu dysku/s|Operacje odczytu dysku danych/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|SlotId (SlotId)|
+|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku podczas monitorowania|SlotId (SlotId)|
+|Na dysk QD|[QD dysku danych [(przestarzałe)](portal-disk-metrics-deprecation.md)](portal-disk-metrics-deprecation.md)|Liczba|Średnia|Głębokość kolejki dysku danych(lub długość kolejki)|SlotId (SlotId)|
+|Bajty odczytu systemu operacyjnego na dysk/s|Bajty odczytu dysku systemu operacyjnego/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Bajty zapisu systemu operacyjnego na dysk/s|Bajty zapisu dysku systemu operacyjnego/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Bajty/S zapisane na jednym dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje odczytu systemu operacyjnego na dysku/s|Operacje odczytu dysku systemu operacyjnego/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje zapisu systemu operacyjnego na dysk/s|Operacje zapisu dysku systemu operacyjnego/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku z jednego dysku podczas monitorowania dysku systemu operacyjnego|Brak|
+|System operacyjny na dysk QD|QD dysku systemu operacyjnego [(przestarzałe)](portal-disk-metrics-deprecation.md)|Liczba|Średnia|Głębokość kolejki systemu operacyjnego (lub długość kolejki)|Brak|
 |Bajty odczytu dysku danych/s|Bajty odczytu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania|Jednostki lun|
 |Bajty zapisu dysku danych/s|Bajty zapisu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|Jednostki lun|
 |Operacje odczytu dysku danych/s|Operacje odczytu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|Jednostki lun|
@@ -578,8 +583,8 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Głębokość kolejki dysku systemu operacyjnego|Głębokość kolejki systemu operacyjnego (wersja zapoznawcza)|Liczba|Średnia|Głębokość kolejki systemu operacyjnego (lub długość kolejki)|Brak|
 |Przepływy przychodzące|Przepływy przychodzące|Liczba|Średnia|Przepływy przychodzące to liczba przepływów bieżących w kierunku przychodzącym (ruch przechodzący do maszyny Wirtualnej)|Brak|
 |Przepływy wychodzące|Przepływy wychodzące|Liczba|Średnia|Przepływy wychodzące to liczba przepływów bieżących w kierunku wychodzącym (ruch wychodzący z maszyny Wirtualnej)|Brak|
-|Maksymalna szybkość tworzenia przepływów przychodzących|Maksymalna szybkość tworzenia przepływów przychodzących (wersja zapoznawcza)|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów przychodzących (ruch przechodzący do maszyny Wirtualnej)|Brak|
-|Maksymalna szybkość tworzenia przepływów wychodzących|Maksymalna szybkość tworzenia przepływów wychodzących (wersja zapoznawcza)|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów wychodzących (ruch wychodzący z maszyny Wirtualnej)|Brak|
+|Maksymalna szybkość tworzenia przepływów przychodzących|Maksymalna szybkość tworzenia przepływów przychodzących|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów przychodzących (ruch przechodzący do maszyny Wirtualnej)|Brak|
+|Maksymalna szybkość tworzenia przepływów wychodzących|Maksymalna szybkość tworzenia przepływów wychodzących|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów wychodzących (ruch wychodzący z maszyny Wirtualnej)|Brak|
 |Trafienie odczytu pamięci podręcznej dysków danych premium|Trafienie odczytu pamięci podręcznej dysków premium (wersja zapoznawcza)|Wartość procentowa|Średnia|Trafienie odczytu pamięci podręcznej dysków danych premium|Jednostki lun|
 |Odczyt pamięci podręcznej dysku z danymi w warstwie Premium|Odczyt pamięci podręcznej dysków premium (wersja zapoznawcza)|Wartość procentowa|Średnia|Odczyt pamięci podręcznej dysku z danymi w warstwie Premium|Jednostki lun|
 |Trafienie odczytu pamięci podręcznej dysku systemu operacyjnego premium|Trafienie odczytu pamięci podręcznej dysku premium OS (wersja zapoznawcza)|Wartość procentowa|Średnia|Trafienie odczytu pamięci podręcznej dysku systemu operacyjnego premium|Brak|
@@ -601,16 +606,16 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Operacje zapisu dysku/s|Operacje zapisu dysku/s|Połów połówek|Średnia|We/Wy zapisu dysku|VMName|
 |Pozostałe kredyty CPU|Pozostałe kredyty CPU|Liczba|Średnia|Łączna liczba kredytów dostępnych do rozerwania|Brak|
 |Zużyte kredyty CPU|Zużyte kredyty CPU|Liczba|Średnia|Łączna liczba kredytów wykorzystanych przez maszynę wirtualną|Brak|
-|Bajty odczytu dysku/s|Bajty odczytu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania|SlotId (SlotId)|
-|Bajty zapisu na dysku/s|Bajty zapisu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|SlotId (SlotId)|
-|Operacje odczytu dysku/s|Operacje odczytu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|SlotId (SlotId)|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s (przestarzałe)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku podczas monitorowania|SlotId (SlotId)|
-|Na dysk QD|QD dysku danych (przestarzałe)|Liczba|Średnia|Głębokość kolejki dysku danych(lub długość kolejki)|SlotId (SlotId)|
-|Bajty odczytu systemu operacyjnego na dysk/s|Bajty odczytu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
-|Bajty zapisu systemu operacyjnego na dysk/s|Bajty zapisu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Bajty/S zapisane na jednym dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
-|Operacje odczytu systemu operacyjnego na dysku/s|Operacje odczytu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
-|Operacje zapisu systemu operacyjnego na dysk/s|Operacje zapisu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku z jednego dysku podczas monitorowania dysku systemu operacyjnego|Brak|
-|System operacyjny na dysk QD|QD dysku systemu operacyjnego (przestarzałe)|Liczba|Średnia|Głębokość kolejki systemu operacyjnego (lub długość kolejki)|Brak|
+|Bajty odczytu dysku/s|Bajty odczytu dysku danych/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania|SlotId (SlotId)|
+|Bajty zapisu na dysku/s|Bajty zapisu dysku danych/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|SlotId (SlotId)|
+|Operacje odczytu dysku/s|Operacje odczytu dysku danych/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|SlotId (SlotId)|
+|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku podczas monitorowania|SlotId (SlotId)|
+|Na dysk QD|QD dysku danych [(przestarzałe)](portal-disk-metrics-deprecation.md)|Liczba|Średnia|Głębokość kolejki dysku danych(lub długość kolejki)|SlotId (SlotId)|
+|Bajty odczytu systemu operacyjnego na dysk/s|Bajty odczytu dysku systemu operacyjnego/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Bajty zapisu systemu operacyjnego na dysk/s|Bajty zapisu dysku systemu operacyjnego/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Bajty/S zapisane na jednym dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje odczytu systemu operacyjnego na dysku/s|Operacje odczytu dysku systemu operacyjnego/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje zapisu systemu operacyjnego na dysk/s|Operacje zapisu dysku systemu operacyjnego/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku z jednego dysku podczas monitorowania dysku systemu operacyjnego|Brak|
+|System operacyjny na dysk QD|QD dysku systemu operacyjnego [(przestarzałe)](portal-disk-metrics-deprecation.md)|Liczba|Średnia|Głębokość kolejki systemu operacyjnego (lub długość kolejki)|Brak|
 |Bajty odczytu dysku danych/s|Bajty odczytu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania|LUN,Nazwa VM|
 |Bajty zapisu dysku danych/s|Bajty zapisu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|LUN,Nazwa VM|
 |Operacje odczytu dysku danych/s|Operacje odczytu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|LUN,Nazwa VM|
@@ -623,8 +628,8 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Głębokość kolejki dysku systemu operacyjnego|Głębokość kolejki systemu operacyjnego (wersja zapoznawcza)|Liczba|Średnia|Głębokość kolejki systemu operacyjnego (lub długość kolejki)|VMName|
 |Przepływy przychodzące|Przepływy przychodzące|Liczba|Średnia|Przepływy przychodzące to liczba przepływów bieżących w kierunku przychodzącym (ruch przechodzący do maszyny Wirtualnej)|VMName|
 |Przepływy wychodzące|Przepływy wychodzące|Liczba|Średnia|Przepływy wychodzące to liczba przepływów bieżących w kierunku wychodzącym (ruch wychodzący z maszyny Wirtualnej)|VMName|
-|Maksymalna szybkość tworzenia przepływów przychodzących|Maksymalna szybkość tworzenia przepływów przychodzących (wersja zapoznawcza)|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów przychodzących (ruch przechodzący do maszyny Wirtualnej)|VMName|
-|Maksymalna szybkość tworzenia przepływów wychodzących|Maksymalna szybkość tworzenia przepływów wychodzących (wersja zapoznawcza)|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów wychodzących (ruch wychodzący z maszyny Wirtualnej)|VMName|
+|Maksymalna szybkość tworzenia przepływów przychodzących|Maksymalna szybkość tworzenia przepływów przychodzących|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów przychodzących (ruch przechodzący do maszyny Wirtualnej)|VMName|
+|Maksymalna szybkość tworzenia przepływów wychodzących|Maksymalna szybkość tworzenia przepływów wychodzących|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów wychodzących (ruch wychodzący z maszyny Wirtualnej)|VMName|
 |Trafienie odczytu pamięci podręcznej dysków danych premium|Trafienie odczytu pamięci podręcznej dysków premium (wersja zapoznawcza)|Wartość procentowa|Średnia|Trafienie odczytu pamięci podręcznej dysków danych premium|LUN,Nazwa VM|
 |Odczyt pamięci podręcznej dysku z danymi w warstwie Premium|Odczyt pamięci podręcznej dysków premium (wersja zapoznawcza)|Wartość procentowa|Średnia|Odczyt pamięci podręcznej dysku z danymi w warstwie Premium|LUN,Nazwa VM|
 |Trafienie odczytu pamięci podręcznej dysku systemu operacyjnego premium|Trafienie odczytu pamięci podręcznej dysku premium OS (wersja zapoznawcza)|Wartość procentowa|Średnia|Trafienie odczytu pamięci podręcznej dysku systemu operacyjnego premium|VMName|
@@ -646,16 +651,16 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Operacje zapisu dysku/s|Operacje zapisu dysku/s|Połów połówek|Średnia|We/Wy zapisu dysku|Brak|
 |Pozostałe kredyty CPU|Pozostałe kredyty CPU|Liczba|Średnia|Łączna liczba kredytów dostępnych do rozerwania|Brak|
 |Zużyte kredyty CPU|Zużyte kredyty CPU|Liczba|Średnia|Łączna liczba kredytów wykorzystanych przez maszynę wirtualną|Brak|
-|Bajty odczytu dysku/s|Bajty odczytu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania|SlotId (SlotId)|
-|Bajty zapisu na dysku/s|Bajty zapisu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|SlotId (SlotId)|
-|Operacje odczytu dysku/s|Operacje odczytu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|SlotId (SlotId)|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s (przestarzałe)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku podczas monitorowania|SlotId (SlotId)|
-|Na dysk QD|QD dysku danych (przestarzałe)|Liczba|Średnia|Głębokość kolejki dysku danych(lub długość kolejki)|SlotId (SlotId)|
-|Bajty odczytu systemu operacyjnego na dysk/s|Bajty odczytu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
-|Bajty zapisu systemu operacyjnego na dysk/s|Bajty zapisu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Bajty/S zapisane na jednym dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
-|Operacje odczytu systemu operacyjnego na dysku/s|Operacje odczytu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
-|Operacje zapisu systemu operacyjnego na dysk/s|Operacje zapisu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku z jednego dysku podczas monitorowania dysku systemu operacyjnego|Brak|
-|System operacyjny na dysk QD|QD dysku systemu operacyjnego (przestarzałe)|Liczba|Średnia|Głębokość kolejki systemu operacyjnego (lub długość kolejki)|Brak|
+|Bajty odczytu dysku/s|Bajty odczytu dysku danych/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania|SlotId (SlotId)|
+|Bajty zapisu na dysku/s|Bajty zapisu dysku danych/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|SlotId (SlotId)|
+|Operacje odczytu dysku/s|Operacje odczytu dysku danych/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|SlotId (SlotId)|
+|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku podczas monitorowania|SlotId (SlotId)|
+|Na dysk QD|QD dysku danych [(przestarzałe)](portal-disk-metrics-deprecation.md)|Liczba|Średnia|Głębokość kolejki dysku danych(lub długość kolejki)|SlotId (SlotId)|
+|Bajty odczytu systemu operacyjnego na dysk/s|Bajty odczytu dysku systemu operacyjnego/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Bajty zapisu systemu operacyjnego na dysk/s|Bajty zapisu dysku systemu operacyjnego/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Bajty/S zapisane na jednym dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje odczytu systemu operacyjnego na dysku/s|Operacje odczytu dysku systemu operacyjnego/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje zapisu systemu operacyjnego na dysk/s|Operacje zapisu dysku systemu operacyjnego/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku z jednego dysku podczas monitorowania dysku systemu operacyjnego|Brak|
+|System operacyjny na dysk QD|QD dysku systemu operacyjnego [(przestarzałe)](portal-disk-metrics-deprecation.md)|Liczba|Średnia|Głębokość kolejki systemu operacyjnego (lub długość kolejki)|Brak|
 |Bajty odczytu dysku danych/s|Bajty odczytu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania|Jednostki lun|
 |Bajty zapisu dysku danych/s|Bajty zapisu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|Jednostki lun|
 |Operacje odczytu dysku danych/s|Operacje odczytu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|Jednostki lun|
@@ -668,8 +673,8 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Głębokość kolejki dysku systemu operacyjnego|Głębokość kolejki systemu operacyjnego (wersja zapoznawcza)|Liczba|Średnia|Głębokość kolejki systemu operacyjnego (lub długość kolejki)|Brak|
 |Przepływy przychodzące|Przepływy przychodzące|Liczba|Średnia|Przepływy przychodzące to liczba przepływów bieżących w kierunku przychodzącym (ruch przechodzący do maszyny Wirtualnej)|Brak|
 |Przepływy wychodzące|Przepływy wychodzące|Liczba|Średnia|Przepływy wychodzące to liczba przepływów bieżących w kierunku wychodzącym (ruch wychodzący z maszyny Wirtualnej)|Brak|
-|Maksymalna szybkość tworzenia przepływów przychodzących|Maksymalna szybkość tworzenia przepływów przychodzących (wersja zapoznawcza)|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów przychodzących (ruch przechodzący do maszyny Wirtualnej)|Brak|
-|Maksymalna szybkość tworzenia przepływów wychodzących|Maksymalna szybkość tworzenia przepływów wychodzących (wersja zapoznawcza)|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów wychodzących (ruch wychodzący z maszyny Wirtualnej)|Brak|
+|Maksymalna szybkość tworzenia przepływów przychodzących|Maksymalna szybkość tworzenia przepływów przychodzących|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów przychodzących (ruch przechodzący do maszyny Wirtualnej)|Brak|
+|Maksymalna szybkość tworzenia przepływów wychodzących|Maksymalna szybkość tworzenia przepływów wychodzących|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów wychodzących (ruch wychodzący z maszyny Wirtualnej)|Brak|
 |Trafienie odczytu pamięci podręcznej dysków danych premium|Trafienie odczytu pamięci podręcznej dysków premium (wersja zapoznawcza)|Wartość procentowa|Średnia|Trafienie odczytu pamięci podręcznej dysków danych premium|Jednostki lun|
 |Odczyt pamięci podręcznej dysku z danymi w warstwie Premium|Odczyt pamięci podręcznej dysków premium (wersja zapoznawcza)|Wartość procentowa|Średnia|Odczyt pamięci podręcznej dysku z danymi w warstwie Premium|Jednostki lun|
 |Trafienie odczytu pamięci podręcznej dysku systemu operacyjnego premium|Trafienie odczytu pamięci podręcznej dysku premium OS (wersja zapoznawcza)|Wartość procentowa|Średnia|Trafienie odczytu pamięci podręcznej dysku systemu operacyjnego premium|Brak|
@@ -734,6 +739,21 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |HyperVMemoryutilization|Obliczanie krawędzi — użycie pamięci|Wartość procentowa|Średnia|Ilość używanej pamięci RAM|InstanceName|
 
 
+## <a name="microsoftdatacatalogdatacatalogs"></a>Microsoft.DataCatalog/datacatalogs
+
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|Klasyfikacja danych assetdistributionByClassification|Podział aktywów według klasyfikacji|Liczba|Łącznie|Wskazuje liczbę aktywów z określoną przypisaną klasyfikacją, to znaczy są one klasyfikowane z tą etykietą.|Klasyfikacja,Źródło|
+|AssetDistributionByStorageType|Dystrybucja zasobów według typu magazynu|Liczba|Łącznie|Wskazuje liczbę zasobów o określonym typie magazynu.|Rodzaj magazynu|
+|NumberOfAssetsWithClassifications|Liczba aktywów o co najmniej jednej klasyfikacji|Liczba|Średnia|Wskazuje liczbę zasobów z co najmniej jedną klasyfikacją znaczników.|Brak|
+|SkanowanieCancelled|Skanowanie anulowane|Liczba|Łącznie|Wskazuje liczbę anulowanych skanów.|Brak|
+|SkanowanieNieukoletowane|Skanowanie zakończone|Liczba|Łącznie|Wskazuje liczbę skanów zakończonych pomyślnie.|Brak|
+|ScanFailed (Nieumiejętnieszone|Skanowanie nie powiodło się|Liczba|Łącznie|Wskazuje liczbę skanów, które nie powiodły się.|Brak|
+|Czas skanowaniaWyjętego|Czas skanowania|Sekundy|Łącznie|Wskazuje całkowity czas skanowania w sekundach.|Brak|
+|CatalogActiveUsers|Codziennie aktywni użytkownicy|Liczba|Łącznie|Liczba aktywnych użytkowników dziennie|Brak|
+|KatalogPodań|Rozkład użycia według operacji|Liczba|Łącznie|Wskazać liczbę operacji, które użytkownik wykonuje w katalogu, tj.|Operacja|
+
+
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories Microsoft.DataFactory/datafactories Microsoft.DataFactory/datafactories Microsoft.
 
 |Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
@@ -775,6 +795,7 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Sukces w jobauendedsukces|Udany czas AU|Sekundy|Łącznie|Całkowity czas UA dla udanych zadań.|Brak|
 |JobAUEndedFailure|Nieudany czas AU|Sekundy|Łącznie|Całkowity czas UA dla zadań po awarii.|Brak|
 |JobAUEndedCancelled|Anulowany czas AU|Sekundy|Łącznie|Całkowity czas UA dla anulowanych zadań.|Brak|
+|JobStage (Etap pracy)|Praca na etapie|Liczba|Łącznie|Liczba zadań na każdym etapie.|Brak|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/konta
@@ -786,6 +807,18 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Dataread|Odczyt danych|Bajty|Łącznie|Łączna ilość danych odczytanych z konta.|Brak|
 |WriteRequests (Zapisy)|Żądania zapisu|Liczba|Łącznie|Liczba żądań zapisu danych na konto.|Brak|
 |OdczytRequests|Żądania odczytu|Liczba|Łącznie|Liczba żądań odczytu danych do konta.|Brak|
+
+
+## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/konta
+
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|UdziałCount|Wysłane udziały|Liczba|Maksimum|Liczba wysłanych akcji na koncie|Nazwaudziału|
+|Konto ShareSubscription|Odebrane udziały|Liczba|Maksimum|Liczba otrzymanych akcji na rachunku|Nazwa sharesubscription|
+|PomyślnieSynchronizacja akcji|Wysłane migawki udziału powiodło się|Liczba|Liczba|Liczba wysłanych migawek z udziałem powiodła się na koncie|Brak|
+|Nieudana synchronizacja udostępnień|Wysłane migawki udziału nie powiodły się|Liczba|Liczba|Liczba wysłanych migawek udziału nie powiodło się na koncie|Brak|
+|PomyślnieShareSubscriptionSynchronizations|Odebrane migawki udziału powiodło się|Liczba|Liczba|Liczba odebranych migawek udziału powiodło się na koncie|Brak|
+|Nieudane synchronizacje sharesubscription|Odebrane migawki udziału nie powiodły się|Liczba|Liczba|Liczba odebranych migawek udziału nie powiodło się na koncie|Brak|
 
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/serwery
@@ -866,6 +899,23 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |network_bytes_ingress|Sieć — wejście|Bajty|Łącznie|Sieć w różnych aktywnych połączeniach|Brak|
 
 
+## <a name="microsoftdbforpostgresqlsingleservers"></a>Microsoft.DBforPostgreSQL/singleservers
+
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|cpu_percent|Procent procesora|Wartość procentowa|Średnia|Procent procesora|Brak|
+|memory_percent|Procent pamięci|Wartość procentowa|Średnia|Procent pamięci|Brak|
+|Iops|Liczba operacji we/wy na sekundę|Liczba|Średnia|Operacje we/wy na sekundę|Brak|
+|storage_percent|Procent miejsca|Wartość procentowa|Średnia|Procent miejsca|Brak|
+|storage_used|Używany magazyn|Bajty|Średnia|Używany magazyn|Brak|
+|active_connections|Aktywne połączenia|Liczba|Średnia|Aktywne połączenia|Brak|
+|network_bytes_egress|Sieć — wyjście|Bajty|Łącznie|Wyjście sieciowe w aktywnych połączeniach|Brak|
+|network_bytes_ingress|Sieć — wejście|Bajty|Łącznie|Sieć w różnych aktywnych połączeniach|Brak|
+|connections_failed|Połączenia zakończone niepowodzeniem|Liczba|Łącznie|Połączenia zakończone niepowodzeniem|Brak|
+|connections_succeeded|Połączenia z powodzeniem|Liczba|Łącznie|Połączenia z powodzeniem|Brak|
+|maximum_used_transactionIDs|Maksymalna liczba używanych identyfikatorów transakcji|Liczba|Średnia|Maksymalna liczba używanych identyfikatorów transakcji|Brak|
+
+
 
 
 
@@ -900,6 +950,8 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |d2c.endpoints.egress.storage.blob|Routing: obiekty blob dostarczane do magazynu|Liczba|Łącznie|Liczba czasów routingu usługi IoT Hub dostarczane obiekty blob do punktów końcowych magazynu.|Brak|
 |EventGridDeliveries|Dostawy w siatce zdarzeń (wersja zapoznawcza)|Liczba|Łącznie|Liczba zdarzeń usługi IoT Hub opublikowanych w usztywnieniu zdarzeń. Użyj wymiaru Wynik dla liczby pomyślnych i nieudanych żądań. Wymiar EventType pokazuje typhttps://aka.ms/ioteventgrid)zdarzenia ( .|Identyfikator zasobu,Wynik,Typ zdarzenia|
 |EventGridLatency|Opóźnienie siatki zdarzeń (wersja zapoznawcza)|Milisekund|Średnia|Średnie opóźnienie (milisekundy) od momentu wygenerowania zdarzenia Iot Hub do momentu opublikowania zdarzenia w uścisku zdarzeń. Liczba ta jest średnią między wszystkimi typami zdarzeń. Użyj eventtype wymiar, aby zobaczyć opóźnienie określonego typu zdarzenia.|Identyfikator zasobu,Typ zdarzenia|
+|Usługi routingu|Dostawy routingu (wersja zapoznawcza)|Milisekund|Łącznie|Ile razy Usługa IoT Hub próbowała dostarczać wiadomości do wszystkich punktów końcowych przy użyciu routingu. Aby wyświetlić liczbę udanych lub nieudanych prób, użyj wymiaru Wynik. Aby wyświetlić przyczynę błędu, takich jak nieprawidłowe, porzucone lub oddzielone, należy użyć FailureReasonCategory wymiaru. Można również użyć endpointname i EndpointType wymiary, aby zrozumieć, ile wiadomości zostały dostarczone do różnych punktów końcowych. Wartość metryki zwiększa się o jeden dla każdej próby dostarczenia, w tym jeśli wiadomość jest dostarczana do wielu punktów końcowych lub jeśli wiadomość jest dostarczana do tego samego punktu końcowego wiele razy.|Identyfikator zasobu,typ punktu końcowego,Nazwa punktu końcowego,Kategoria nazwa sezonu awarii,Wynik,Źródło routingu|
+|RoutingDeliveryLatency|Opóźnienie dostawy routingu (wersja zapoznawcza)|Milisekund|Średnia|Średnie opóźnienie (milisekundy) między wejściem w błąd do usługi IoT Hub a wejściem transferu danych wejściowych do punktu końcowego. Można użyć endpointname i EndpointType wymiary, aby zrozumieć opóźnienie do różnych punktów końcowych.|Identyfikator zasobu,Typ punktu końcowego,Nazwa końcowa,Źródło routingu|
 |d2c.twin.read.success|Udane bliźniacze odczyty z urządzeń|Liczba|Łącznie|Liczba wszystkich pomyślnych odczytów bliźniaczych zainicjowanych przez urządzenie.|Brak|
 |d2c.twin.read.failure|Nieudane bliźniacze odczyty z urządzeń|Liczba|Łącznie|Liczba wszystkich odczytów bliźniaczej inicjowanych przez urządzenie nie powiodło się.|Brak|
 |d2c.twin.read.size|Rozmiar odpowiedzi bliźniaczych odczytów z urządzeń|Bajty|Średnia|Średnia, min i max wszystkich udanych urządzeń zainicjowane bliźniaczej odsłony.|Brak|
@@ -949,6 +1001,8 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |AtestyPty|Próby zaświadczania|Liczba|Łącznie|Liczba prób uzyskania zaświadczeń o urządzeniu|Nazwa usługi inicjowania obsługi administracyjnej,Stan,Protokół|
 
 
+
+
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseKonta kont
 
 |Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
@@ -956,32 +1010,62 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Dodaj region|Dodano region|Liczba|Liczba|Dodano region|Region|
 |DostępneStorage|Dostępna pamięć|Bajty|Łącznie|Całkowita dostępna pamięć masowa zgłoszona po 5 minutach ziarnistości|Nazwa kolekcji,Nazwa bazy danych,Region|
 |CassandraConnectionClosures|Zamknięcia połączeń Cassandra|Liczba|Łącznie|Liczba połączeń Cassandra, które zostały zamknięte, zgłoszone po 1 minutze|Typ interfejsu API,Region,ZamknięciePorezon|
+|CassandraKeyspaceDelete|Kasandra Keyspace usunięta|Liczba|Liczba|Kasandra Keyspace usunięta|Nazwa zasobów,ApiKind,ApiKindResourceType,OperationType|
+|CassandraKeyspaceThroughputUpdate|Zaktualizowano przepływność przestrzeni kluczy Cassandra|Liczba|Liczba|Zaktualizowano przepływność przestrzeni kluczy Cassandra|Nazwa zasobów,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|CassandraKeyspaceUpdate|Zaktualizowano przestrzeń kluczy Cassandra|Liczba|Liczba|Zaktualizowano przestrzeń kluczy Cassandra|Nazwa zasobów,ApiKind,ApiKindResourceType,IsThroughputRequest|
 |Ładunki CassandraRequestCharge|Opłaty za żądanie Cassandra|Liczba|Łącznie|RUs zużyte dla cassandra wniosków złożonych|TYP INTERFEJSU API,Nazwa bazy danych,Nazwa kolekcji,Region,OperationType,Typ zasobu|
 |CassandraSwoki|Prośby Cassandra|Liczba|Liczba|Liczba złożonych wniosków cassandra|APIType,Nazwa bazy danych,Nazwa kolekcji,Region,OperationType,ResourceType,ErrorCode|
+|CassandraTableDelete (CassandraTableDelete)|Tabela Cassandra usunięta|Liczba|Liczba|Tabela Cassandra usunięta|Nazwa zasobów,ChildResourceName,ApiKind,ApiKindResourceType,OperationType|
+|CassandraTableThroughputUpdate|Zaktualizowano przepustowość tabeli Cassandra|Liczba|Liczba|Zaktualizowano przepustowość tabeli Cassandra|Nazwa zasobów,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|CassandraTableUpdate|Zaktualizowano tabelę Cassandra|Liczba|Liczba|Zaktualizowano tabelę Cassandra|Nazwa zasobów,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
 |Utwórz konto|Utworzone konto|Liczba|Liczba|Utworzone konto|Brak|
 |DataUsage (DataUsage)|Użycie danych|Bajty|Łącznie|Całkowite wykorzystanie danych zgłoszone po 5 minutach szczegółowości|Nazwa kolekcji,Nazwa bazy danych,Region|
 |Usuńkonta|Usunięte konto|Liczba|Liczba|Usunięte konto|Brak|
 |Liczba dokumentów|Liczba dokumentów|Liczba|Łącznie|Całkowita liczba dokumentów zgłoszonych przy 5 minutach szczegółowości|Nazwa kolekcji,Nazwa bazy danych,Region|
 |DocumentQuota (DokumentQuota)|Przydział dokumentu|Bajty|Łącznie|Całkowity przydział magazynowania zgłoszony przy 5 minutach szczegółowości|Nazwa kolekcji,Nazwa bazy danych,Region|
+|GremlinDatabaseDelete|Baza danych Gremlin usunięta|Liczba|Liczba|Baza danych Gremlin usunięta|Nazwa zasobów,ApiKind,ApiKindResourceType,OperationType|
+|GremlinDatabaseThroughputUpdate|Aktualizacja przepływności bazy danych Gremlin|Liczba|Liczba|Aktualizacja przepływności bazy danych Gremlin|Nazwa zasobów,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|GremlinDatabaseUpdate|Zaktualizowano bazę danych Gremlin|Liczba|Liczba|Zaktualizowano bazę danych Gremlin|Nazwa zasobów,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|GremlinGraphDelete|Gremlin Graph Deleted|Liczba|Liczba|Gremlin Graph Deleted|Nazwa zasobów,ChildResourceName,ApiKind,ApiKindResourceType,OperationType|
+|GremlinGraphThroughputUpdate|Zaktualizowano przepustowość wykresu Gremlin|Liczba|Liczba|Zaktualizowano przepustowość wykresu Gremlin|Nazwa zasobów,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|GremlinGraphUpdate|Gremlin Graph Zaktualizowano|Liczba|Liczba|Gremlin Graph Zaktualizowano|Nazwa zasobów,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
 |IndeksUsage|Użycie indeksu|Bajty|Łącznie|Całkowite użycie indeksu zgłoszone po 5 minutach szczegółowości|Nazwa kolekcji,Nazwa bazy danych,Region|
 |MetadataRequests|Żądania metadanych|Liczba|Liczba|Liczba żądań metadanych. Usługa Cosmos DB przechowuje zbieranie metadanych systemu dla każdego konta, co pozwala na bezpłatne wyliczanie kolekcji, baz danych itp.|Nazwa bazy danych,Nazwa kolekcji,Region,Kod stanu,Rola|
-|MongoRequestCharge|Opłata za żądanie Mongo|Liczba|Łącznie|Jednostki żądające Mongo zużyte|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu|
-|MongoRequests|Prośby Mongo|Liczba|Liczba|Liczba złożonych wniosków mongo|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu|
+|MongoCollectionDelete|Kolekcja Mongo usunięta|Liczba|Liczba|Kolekcja Mongo usunięta|Nazwa zasobów,ChildResourceName,ApiKind,ApiKindResourceType,OperationType|
+|MongoCollectionThroughputUpdate|Zaktualizowano przepustowość kolekcji Mongo|Liczba|Liczba|Zaktualizowano przepustowość kolekcji Mongo|Nazwa zasobów,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|MongoCollectionUpdate|Zaktualizowano kolekcję Mongo|Liczba|Liczba|Zaktualizowano kolekcję Mongo|Nazwa zasobów,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|MongoDBDatabaseUpdate|Zaktualizowano bazę danych Mongo|Liczba|Liczba|Zaktualizowano bazę danych Mongo|Nazwa zasobów,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|MongoDatabaseDelete|Usunięto bazę danych Mongo|Liczba|Liczba|Usunięto bazę danych Mongo|Nazwa zasobów,ApiKind,ApiKindResourceType,OperationType|
+|MongoDatabaseThroughputUpdate|Zaktualizowano przepływność bazy danych Mongo|Liczba|Liczba|Zaktualizowano przepływność bazy danych Mongo|Nazwa zasobów,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|MongoRequestCharge|Opłata za żądanie Mongo|Liczba|Łącznie|Jednostki żądające Mongo zużyte|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu,Stan|
+|MongoRequests|Prośby Mongo|Liczba|Liczba|Liczba złożonych wniosków mongo|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu,Stan|
 |MongoRequestsCount|Mongo Cena żądania|Połów połówek|Średnia|Liczba żądań Mongo na sekundę|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu|
 |MongoRequestsDelete|Mongo Delete Cena żądania|Połów połówek|Średnia|Mongo Usuń żądanie na sekundę|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu|
 |MongoRequestsInsert|Mongo Wstawić cena żądania|Połów połówek|Średnia|Mongo Liczba wstawiania na sekundę|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu|
 |Klasztor MongoRequestsQuery|Szybkość żądania kwerendy Mongo|Połów połówek|Średnia|Żądanie mongo kwerendy na sekundę|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu|
 |MongoRequestsUpdate|Mongo Update Cena żądania|Połów połówek|Średnia|Żądanie aktualizacji Mongo na sekundę|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu|
+|Znormalizowana konsumpcjaRU|Znormalizowane zużycie RU|Wartość procentowa|Maksimum|Maksymalny procent zużycia RU na minutę|Nazwa kolekcji,Nazwa bazy danych,Region|
 |AprowizowanaWyt.|Aprowizowana przepływność|Liczba|Maksimum|Aprowizowana przepływność|Nazwa bazy danych,Nazwa kolekcji|
 |RegionUuUchomor|Przemij regionu po awarii|Liczba|Liczba|Przemij regionu po awarii|Brak|
 |UsuńRegion|Usunięto region|Liczba|Liczba|Usunięto region|Region|
 |ReplikacjaLatency|Opóźnienie replikacji P99|Milisekund|Średnia|P99 Opóźnienie replikacji w regionach źródłowych i docelowych dla konta z obsługą geograficzną|Region źródłowy,Region docelowy|
+|ServerSideLatency (ServerSideLatency)|Opóźnienie po stronie serwera|Milisekund|Średnia|Opóźnienie po stronie serwera|Nazwa bazy danych,Nazwa kolekcji,Region,Tryb połączenia,OperationType,PublicAPIType|
 |Dostępność usług|Dostępność usług|Wartość procentowa|Średnia|Dostępność żądań konta z dokładnością do jednej godziny, dnia lub miesiąca|Brak|
-|Jednostki TotalRequestUnits|Łączna liczba jednostek żądań|Liczba|Łącznie|Zużyte jednostki żądań|Nazwa bazy danych,Nazwa kolekcji,Region,Kod stanu,Rodzaj operacji|
-|TotalRequests|Łączna liczba żądań|Liczba|Liczba|Liczba złożonych wniosków|Nazwa bazy danych,Nazwa kolekcji,Region,Kod stanu,Rodzaj operacji|
+|SqlContainerDelete|Usunięty kontener SQL|Liczba|Liczba|Usunięty kontener SQL|Nazwa zasobów,ChildResourceName,ApiKind,ApiKindResourceType,OperationType|
+|Dodatek SqlContainerThroughputUpdate|Zaktualizowano przepływność kontenera SQL|Liczba|Liczba|Zaktualizowano przepływność kontenera SQL|Nazwa zasobów,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|Dodatek SqlContainer|Zaktualizowano kontener SQL|Liczba|Liczba|Zaktualizowano kontener SQL|Nazwa zasobów,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|SqlDatabaseDelete|Usunięto bazę danych SQL|Liczba|Liczba|Usunięto bazę danych SQL|Nazwa zasobów,ApiKind,ApiKindResourceType,OperationType|
+|SqlDatabaseThroughputUpdate|Zaktualizowano przepływność bazy danych SQL|Liczba|Liczba|Zaktualizowano przepływność bazy danych SQL|Nazwa zasobów,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|Dodatek SqlDatabase|Zaktualizowano bazę danych SQL|Liczba|Liczba|Zaktualizowano bazę danych SQL|Nazwa zasobów,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|TableTableDelete (TableTableDelete)|Usunięto tabelę usługi AzureTable|Liczba|Liczba|Usunięto tabelę usługi AzureTable|Nazwa zasobów,ApiKind,ApiKindResourceType,OperationType|
+|Tabela TabelaThroughputUpdate|Zaktualizowano przepływność tabeli usługi AzureTable|Liczba|Liczba|Zaktualizowano przepływność tabeli usługi AzureTable|Nazwa zasobów,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|Tabela TabelaUpdate|Zaktualizowano tabelę usługi AzureTable|Liczba|Liczba|Zaktualizowano tabelę usługi AzureTable|Nazwa zasobów,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|Jednostki TotalRequestUnits|Łączna liczba jednostek żądań|Liczba|Łącznie|Zużyte jednostki żądań|Nazwa bazy danych,Nazwa kolekcji,Region,Kod stanu,Typ operacji,Stan|
+|TotalRequests|Łączna liczba żądań|Liczba|Liczba|Liczba złożonych wniosków|Nazwa bazy danych,Nazwa kolekcji,Region,Kod stanu,Typ operacji,Stan|
 |Aktualizujnaklucza konta|Zaktualizowano klucze konta|Liczba|Liczba|Zaktualizowano klucze konta|Keytype|
 |AktualizacjaAccountNetworkSettings|Zaktualizowano ustawienia sieciowe konta|Liczba|Liczba|Zaktualizowano ustawienia sieciowe konta|Brak|
 |UpdateAccountReplicationSettings|Zaktualizowano ustawienia replikacji konta|Liczba|Liczba|Zaktualizowano ustawienia replikacji konta|Brak|
+|UpdateDiagnosticsSettings|Zaktualizowano ustawienia diagnostyczne konta|Liczba|Liczba|Zaktualizowano ustawienia diagnostyczne konta|Nazwa diagnostyki,Nazwa grupy zasobów|
 
 
 
@@ -1023,6 +1107,21 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Liczba porzuconychwentów|Porzucone zdarzenia|Liczba|Łącznie|Łączna liczba usuniętych zdarzeń pasujących do tej subskrypcji zdarzenia|DropReason,Nazwa zdarzenia|
 |Liczba nienaliczonych liter|Zdarzenia z martwymi literami|Liczba|Łącznie|Łączna liczba martwych zdarzeń z literami pasującymi do tej subskrypcji zdarzenia|DeadLetterReason,Nazwa zdarzenia|
 
+## <a name="microsofteventgridsystemtopics"></a>Microsoft.EventGrid/systemTopics
+
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|PublishSuccessCount|Opublikowane wydarzenia|Liczba|Łącznie|Łączna liczba zdarzeń opublikowanych w tym temacie|Brak|
+|Konto PublishFailCount|Publikowanie zdarzeń nie powiodło się|Liczba|Łącznie|Całkowita liczba zdarzeń nie może opublikować w tym temacie|Typ błędu,Błąd|
+|Niedoścignionalicznik|Niedopasowane wydarzenia|Liczba|Łącznie|Łączna liczba zdarzeń, które nie pasują do żadnej z subskrypcji zdarzeń w tym temacie|Brak|
+|PublishSuccessLatencyInMs|Publikowanie opóźnienia sukcesu|Milisekund|Łącznie|Publikowanie opóźnienia sukcesu w milisekundach|Brak|
+|MatchedEventCount|Dopasowane wydarzenia|Liczba|Łącznie|Łączna liczba zdarzeń dopasowanych do tej subskrypcji wydarzenia|Nazwa zdarzenia|
+|DeliveryAttemptFailCount|Zdarzenia nieudane dostawy|Liczba|Łącznie|Całkowita liczba zdarzeń nie została do dostarczenia do tej subskrypcji zdarzenia|Błąd,Typ błędu,Nazwasubscription Zdarzenia|
+|Liczba dostawsukcesy|Dostarczone zdarzenia|Liczba|Łącznie|Łączna liczba zdarzeń dostarczonych do tej subskrypcji wydarzenia|Nazwa zdarzenia|
+|Miejsca doceloweProcessingDurationInMs|Docelowy czas przetwarzania|Milisekund|Średnia|Docelowy czas przetwarzania w milisekundach|Nazwa zdarzenia|
+|Liczba porzuconychwentów|Porzucone zdarzenia|Liczba|Łącznie|Łączna liczba usuniętych zdarzeń pasujących do tej subskrypcji zdarzenia|DropReason,Nazwa zdarzenia|
+|Liczba nienaliczonych liter|Zdarzenia z martwymi literami|Liczba|Łącznie|Łączna liczba martwych zdarzeń z literami pasującymi do tej subskrypcji zdarzenia|DeadLetterReason,Nazwa zdarzenia|
+
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft.EventGrid/eventSubscriptions
 
 |Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
@@ -1042,6 +1141,7 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Konto PublishFailCount|Publikowanie zdarzeń nie powiodło się|Liczba|Łącznie|Całkowita liczba zdarzeń nie może opublikować w tym temacie|Typ błędu,Błąd|
 |Niedoścignionalicznik|Niedopasowane wydarzenia|Liczba|Łącznie|Łączna liczba zdarzeń, które nie pasują do żadnej z subskrypcji zdarzeń w tym temacie|Brak|
 |PublishSuccessLatencyInMs|Publikowanie opóźnienia sukcesu|Milisekund|Łącznie|Publikowanie opóźnienia sukcesu w milisekundach|Brak|
+
 
 
 
@@ -1106,6 +1206,7 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Przechwycone bajty|Przechwycone bajty.|Bajty|Łącznie|Przechwycone bajty dla witryny Microsoft.EventHub.|Brak|
 |Procesor CPU|Procesor CPU|Wartość procentowa|Maksimum|Wykorzystanie procesora CPU dla klastra centrum zdarzeń jako wartość procentowa|Rola|
 |DostępneMemory|Dostępna pamięć|Wartość procentowa|Maksimum|Dostępna pamięć dla klastra Centrum zdarzeń jako procent pamięci całkowitej.|Rola|
+|Rozmiar|Rozmiar eventhubu w bajtach.|Bajty|Średnia|Rozmiar eventhubu w bajtach.|Rola|
 
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/klastry
@@ -1126,9 +1227,6 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |ObservedCapacity (Zdolność obserwowana)|Obserwowana pojemność|Liczba|Średnia|Pojemność zgłoszona do skalowania automatycznego podczas wykonywania.|Brak|
 |ScaleActionsInitiated|Zainicjowano akcje skalowania|Liczba|Łącznie|Kierunek operacji skalowania.|SkalaKierunkowa|
 
-
-
-
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Składniki
 
 |Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
@@ -1141,9 +1239,9 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |przeglądarkaTimings/receiveDuration|Odbieranie czasu odpowiedzi|Milisekund|Średnia|Czas między pierwszym i ostatnim bajtami lub do rozłączenia.|Brak|
 |przeglądarkaTimings/sendDuration|Wyślij czas żądania|Milisekund|Średnia|Czas między połączeniem sieciowym a odebraniem pierwszego bajtu.|Brak|
 |przeglądarkaTimings/totalDuration|Czas ładowania strony przeglądarki|Milisekund|Średnia|Czas od żądania użytkownika do DOM, arkusze stylów, skrypty i obrazy są ładowane.|Brak|
-|zależności/liczba|Wywołania zależności|Liczba|Liczba|Liczba wywołań wykonanych przez aplikację do zasobów zewnętrznych.|zależność/typ,zależność/wydajnośćBucket,zależność/sukces,zależność/cel,operacja/syntetyczna,chmura/rolaInstacja,chmura/roleName|
-|zależności/czas trwania|Czas trwania zależności|Milisekund|Średnia|Czas trwania wywołań składanych przez aplikację do zasobów zewnętrznych.|zależność/typ,zależność/wydajnośćBucket,zależność/sukces,zależność/cel,operacja/syntetyczna,chmura/rolaInstacja,chmura/roleName|
-|zależności/nie powiodło się|Niepowodzenia wywołania zależności|Liczba|Liczba|Liczba nieudanych wywołań zależności wykonanych przez aplikację do zasobów zewnętrznych.|zależność/typ,zależność/wydajnośćBucket,zależność/sukces,zależność/cel,operacja/syntetyczna,chmura/rolaInstacja,chmura/roleName|
+|zależności/liczba|Wywołania zależności|Liczba|Liczba|Liczba wywołań wykonanych przez aplikację do zasobów zewnętrznych.|zależność/typ,zależność/wydajnośćBucket,zależność/sukces,zależność/cel,zależność/wynikKod,operacja/syntetyczny,chmura/rolaInstacja,chmura/roleName|
+|zależności/czas trwania|Czas trwania zależności|Milisekund|Średnia|Czas trwania wywołań składanych przez aplikację do zasobów zewnętrznych.|zależność/typ,zależność/wydajnośćBucket,zależność/sukces,zależność/cel,zależność/wynikKod,operacja/syntetyczny,chmura/rolaInstacja,chmura/roleName|
+|zależności/nie powiodło się|Niepowodzenia wywołania zależności|Liczba|Liczba|Liczba nieudanych wywołań zależności wykonanych przez aplikację do zasobów zewnętrznych.|zależność/typ,zależność/wydajnośćBucket,zależność/sukces,zależność/cel,zależność/wynikKod,operacja/syntetyczny,chmura/rolaInstacja,chmura/roleName|
 |odsłony/liczba|Wyświetlenia strony|Liczba|Liczba|Liczba wyświetleń strony.|operacja/syntetyczna,chmura/nazwa roli|
 |odsłon/czasu trwania strony|Czas ładowania widoku strony|Milisekund|Średnia|Czas ładowania widoku strony|operacja/syntetyczna,chmura/nazwa roli|
 |performanceCounters/requestExecutionTime|Czas wykonania żądania HTTP|Milisekund|Średnia|Czas wykonania ostatniego żądania.|chmura/rolaInstance|
@@ -1164,6 +1262,20 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |wyjątki/serwer|Wyjątki serwera|Liczba|Liczba|Liczba nieprzechoczonych wyjątków zgłaszanych w aplikacji serwera.|klient/isServer,chmura/roleName,chmura/rolaInstance|
 |ślady/liczba|Ślady|Liczba|Liczba|Śledzenie liczby dokumentów|śledzenie/severityPoziomowanie,operacja/syntetyczne,chmura/rolaname,chmura/rolaInstance|
 
+
+## <a name="microsoftiotcentraliotapps"></a>Microsoft.IoTCentral/IoTApps
+
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|connectedDeviceCount|Całkowita liczba podłączonych urządzeń|Liczba|Średnia|Liczba urządzeń podłączonych do IoT Central|Brak|
+|c2d.property.read.success|Pomyślne odczyty właściwości urządzenia z usługi IoT Central|Liczba|Łącznie|Liczba wszystkich pomyślnych odczytów właściwości zainicjowanych z usługi IoT Central|Brak|
+|c2d.property.read.failure|Odczyty właściwości urządzenia nie powiodło się z centrum IoT|Liczba|Łącznie|Liczba wszystkich odczytów właściwości nie powiodło się zainicjowanych z usługi IoT Central|Brak|
+|d2c.property.read.success|Pomyślne odczyty właściwości urządzenia z urządzeń|Liczba|Łącznie|Liczba wszystkich pomyślnych odczytów właściwości zainicjowanych z urządzeń|Brak|
+|d2c.property.read.failure|Odczyt właściwości urządzenia nie powiodło się z urządzeń|Liczba|Łącznie|Liczba wszystkich odczytów właściwości nie powiodło się zainicjowane z urządzeń|Brak|
+|c2d.property.update.success|Pomyślne aktualizacje właściwości urządzenia z usługi IoT Central|Liczba|Łącznie|Liczba wszystkich pomyślnych aktualizacji właściwości zainicjowanych z usługi IoT Central|Brak|
+|c2d.property.update.failure|Aktualizacje właściwości urządzenia nie powiodło się z usługi IoT Central|Liczba|Łącznie|Liczba wszystkich aktualizacji właściwości nie powiodło się zainicjowanych z usługi IoT Central|Brak|
+|d2c.property.update.success|Pomyślne aktualizacje właściwości urządzenia z urządzeń|Liczba|Łącznie|Liczba wszystkich pomyślnych aktualizacji właściwości zainicjowanych z urządzeń|Brak|
+|d2c.property.update.failure|Aktualizacje właściwości urządzenia nie powiodło się z urządzeń|Liczba|Łącznie|Liczba wszystkich aktualizacji właściwości nie powiodło się zainicjowanych z urządzeń|Brak|
 
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/przechowalnia
@@ -1189,10 +1301,10 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |WydarzeniaProcessedForEventHubs|Przetwarzane zdarzenia (dla centrów zdarzeń/IoT)|Liczba|Łącznie|Liczba zdarzeń przetwarzanych przez klaster podczas pozyskiwania z usługi Event/IoT Hub|EventStatus|
 |PołknienieWyskuj|Wynik spożycia|Liczba|Liczba|Liczba operacji pozyskiwania|PołknięciaWyskłości szczegółowe|
 |Procesor CPU|Procesor CPU|Wartość procentowa|Średnia|Poziom wykorzystania procesora|Brak|
-|ContinuousExportNumOfRecordsExported|Ciągły eksport – liczba eksportowanych rekordów|Liczba|Łącznie|Liczba wyeksportowanych rekordów, wystrzelonych dla każdego artefaktu magazynu zapisanego podczas operacji eksportowania|Brak|
+|ContinuousExportNumOfRecordsExported|Ciągły eksport – liczba eksportowanych rekordów|Liczba|Łącznie|Liczba wyeksportowanych rekordów, wystrzelonych dla każdego artefaktu magazynu zapisanego podczas operacji eksportowania|Ciągła nazwa ekspedycjowa,Baza danych|
 |Eksportutilization|Wykorzystanie eksportu|Wartość procentowa|Maksimum|Wykorzystanie eksportu|Brak|
 |Ciągła liczba ekspportów|Ciągła liczba oczekujących na eksport|Liczba|Maksimum|Liczba oczekujących zadań ciągłego eksportu gotowych do wykonania|Brak|
-|ContinuousExportMaxLatenessMinutes|Ciągłe eksportowanie Max Lateness Minut|Liczba|Maksimum|Maksymalna opóźnienia w ciągu kilku minut wszystkich ciągłych wywozu oczekujących i gotowych do realizacji|Brak|
+|ContinuousExportMaxLatenessMinutes|Ciągły eksport Max Lateness|Liczba|Maksimum|Opóźnienie (w minutach) zgłoszone przez ciągłe zadania eksportowe w klastrze|Brak|
 |CiągłyWydajnik|Ciągły wynik eksportu|Liczba|Liczba|Wskazuje, czy eksport ciągły zakończył się pomyślnie, czy nie powiodło się|Ciągłanana nazwa ekspedycjowa,Wynik,Baza danych|
 |StreamingOwanieDuration|Czas pozyskiwania przesyłania strumieniowego|Milisekund|Średnia|Czas pozyskiwania przesyłania strumieniowego w milisekundach|Brak|
 |Szybkość pozyskiwania danych w strumieniu strumieniowym|Szybkość pozyskiwania danych przesyłania strumieniowego|Liczba|Średnia|Szybkość przesyłania strumieniowego danych pozyskiwania (MB na sekundę)|Brak|
@@ -1202,6 +1314,7 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |TotalNumberOfThrottledQueries (Liczba NumerOfThrottledQueries)|Całkowita liczba kwerend z ograniczeniami|Liczba|Łącznie|Całkowita liczba kwerend z ograniczeniami|Brak|
 |TotalNumberOfThrottledCommands|Całkowita liczba poleceń z ograniczeniem|Liczba|Łącznie|Całkowita liczba poleceń z ograniczeniem|Commandtype|
 |TotalNumberOfExtents|Łączna liczba zakresów|Liczba|Łącznie|Łączna liczba zakresów danych|Brak|
+|Liczba wystąpień|Liczba wystąpień|Liczba|Średnia|Całkowita liczba wystąpień|Brak|
 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/przepływy pracy
@@ -1242,11 +1355,6 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |RozliczeniaUsageNativeOperation|Użycie rozliczeń dla natywnych wykonań operacji|Liczba|Łącznie|Liczba natywnych wykonań operacji, które są rozliczane.|Brak|
 |RozliczenieUsageStandardconnector|Użycie rozliczeń dla wykonania łącznika standardowego|Liczba|Łącznie|Liczba standardowych wykonań łącznika, które są rozliczane.|Brak|
 |RozliczeniaUsageStorageKonsumpcja|Użycie rozliczeń dla wykonań zużycia magazynu|Liczba|Łącznie|Liczba wykonań zużycia magazynu, które są rozliczane.|Brak|
-|RozliczeniaUsageNativeOperation|Użycie rozliczeń dla natywnych wykonań operacji|Liczba|Łącznie|Liczba natywnych wykonań operacji, które są rozliczane.|Brak|
-|RozliczenieUsageStandardconnector|Użycie rozliczeń dla wykonania łącznika standardowego|Liczba|Łącznie|Liczba standardowych wykonań łącznika, które są rozliczane.|Brak|
-|RozliczeniaUsageStorageKonsumpcja|Użycie rozliczeń dla wykonań zużycia magazynu|Liczba|Łącznie|Liczba wykonań zużycia magazynu, które są rozliczane.|Brak|
-
-
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft.Logic/integrationServiceEnvironments
 
@@ -1289,15 +1397,26 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 
 |Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
+|Anulowane przebiegi|Anulowane przebiegi|Liczba|Łącznie|Liczba uruchomień anulowanych dla tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Anuluj żądane przebiegi|Anuluj żądane przebiegi|Liczba|Łącznie|Liczba przebiegów, w których zażądano anulowania dla tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
 |Ukończone przebiegi|Ukończone przebiegi|Liczba|Łącznie|Liczba przebiegów zakończonych pomyślnie dla tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
-|Rozpoczęte biegi|Rozpoczęte biegi|Liczba|Łącznie|Liczba uruchomień rozpoczętych dla tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
 |Nieudane przebiegi|Nieudane przebiegi|Liczba|Łącznie|Liczba uruchomień nie powiodła się dla tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Finalizowanie przebiegów|Finalizowanie przebiegów|Liczba|Łącznie|Liczba uruchomień wprowadzonych w stanie finalizacji dla tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Nie odpowiada uruchamia|Nie odpowiada uruchamia|Liczba|Łącznie|Liczba uruchomień, które nie odpowiadają dla tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Nie rozpoczęto uruchomień|Nie rozpoczęto uruchomień|Liczba|Łącznie|Liczba uruchomień w stanie nieu uruchomiony dla tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Przygotowanie przebiegów|Przygotowanie przebiegów|Liczba|Łącznie|Liczba uruchomień przygotowujących się do tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Przebiegi inicjowania obsługi administracyjnej|Przebiegi inicjowania obsługi administracyjnej|Liczba|Łącznie|Liczba uruchomień, które są inicjowania obsługi administracyjnej dla tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Przebiegi w kolejce|Przebiegi w kolejce|Liczba|Łącznie|Liczba uruchomień, które są umieszczane w kolejce dla tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Rozpoczęte biegi|Rozpoczęte biegi|Liczba|Łącznie|Liczba uruchomień rozpoczętych dla tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Uruchamianie przebiegów|Uruchamianie przebiegów|Liczba|Łącznie|Liczba uruchomień rozpoczętych dla tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Errors|Errors|Liczba|Łącznie|Liczba błędów uruchamiania w tym obszarze roboczym|Scenariusz|
+|Ostrzeżenia|Ostrzeżenia|Liczba|Łącznie|Liczba ostrzeżeń o przebiegu w tym obszarze roboczym|Scenariusz|
 |Rejestr modelu zakończył się pomyślnie|Rejestr modelu zakończył się pomyślnie|Liczba|Łącznie|Liczba rejestracji modelu, które powiodły się w tym obszarze roboczym|Scenariusz|
 |Rejestr modelu nie powiódł się|Rejestr modelu nie powiódł się|Liczba|Łącznie|Liczba rejestracji modelu, które nie powiodły się w tym obszarze roboczym|Scenariusz,Kod stanu|
 |Rozpoczęto wdrażanie modelu|Rozpoczęto wdrażanie modelu|Liczba|Łącznie|Liczba wdrożeń modelu rozpoczętych w tym obszarze roboczym|Scenariusz|
 |Wdrożenie modelu powiodło się|Wdrożenie modelu powiodło się|Liczba|Łącznie|Liczba wdrożeń modelu, które powiodły się w tym obszarze roboczym|Scenariusz|
 |Wdrażanie modelu nie powiodło się|Wdrażanie modelu nie powiodło się|Liczba|Łącznie|Liczba wdrożeń modelu, które nie powiodły się w tym obszarze roboczym|Scenariusz,Kod stanu|
-|Łączna liczba węzłów|Łączna liczba węzłów|Liczba|Średnia|Liczba węzłów ogółem. Suma ta obejmuje niektóre aktywne węzły, węzły bezczynności, węzły bezużyteczne, wstępnie wywłaszczone węzły, opuszczanie węzłów|Scenariusz,Nazwa klastra|
+|Łączna liczba węzłów|Łączna liczba węzłów|Liczba|Średnia|Liczba węzłów ogółem. Suma ta obejmuje niektóre aktywne węzły, węzły bezczynności, węzły bezużyteczne, wstępnie wypoprawione węzły, wychodzące węzły|Scenariusz,Nazwa klastra|
 |Aktywne węzły|Aktywne węzły|Liczba|Średnia|Liczba węzłów Acitve. Są to węzły, które aktywnie uruchamiają zadanie.|Scenariusz,Nazwa klastra|
 |Węzły bezczynne|Węzły bezczynne|Liczba|Średnia|Liczba bezczynnych węzłów. Bezczynne węzły są węzłami, które nie są uruchomione żadne zadania, ale można zaakceptować nowe zadanie, jeśli są dostępne.|Scenariusz,Nazwa klastra|
 |Niezniszalne węzły|Niezniszalne węzły|Liczba|Średnia|Liczba węzłów bezużytecznych. Nieużywalne węzły nie są funkcjonalne z powodu pewnego problemu nierozwiązywalne. Platforma Azure będzie przetwarzać te węzły.|Scenariusz,Nazwa klastra|
@@ -1344,13 +1463,21 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |StreamingPolicyCount|Liczba zasad przesyłania strumieniowego|Liczba|Średnia|Ile zasad przesyłania strumieniowego jest już utworzonych na bieżącym koncie usługi multimediów|Brak|
 |StreamingPolicyQuotaUsedPercentage|Użyty procent przydziału zasad przesyłania strumieniowego|Wartość procentowa|Średnia|Polityka przesyłania strumieniowego używana procent na bieżącym koncie usługi multimedialnej|Brak|
 
+
+## <a name="microsoftmixedrealityremoterenderingaccounts"></a>Konta Microsoft.MixedReality/remoteRenderingAccounts
+
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|AktywaPrzekonwertowane|Przekonwertowane zasoby|Liczba|Łącznie|Łączna liczba przeliczonych aktywów|Identyfikator aplikacji,Identyfikator zasobu,SDKVersion|
+|ActiveRenderingSessions (Liczba spotkań aktywnych)|Aktywne sesje renderowania|Liczba|Łącznie|Całkowita liczba aktywnych sesji renderowania|Identyfikator aplikacji,Identyfikator zasobu,Typ sesji,SDKVersion|
+
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft.NetApp/netAppKonakony/pojemnośćPuly/woluminy
 
 |Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |ŚredniareadLatency|Średnie opóźnienie odczytu|Milisekund|Średnia|Średnie opóźnienie odczytu w milisekundach na operację|Brak|
 |Średnia Średniawłasność|Średnie opóźnienie zapisu|Milisekund|Średnia|Średnie opóźnienie zapisu w milisekundach na operację|Brak|
-|Rozmiar volumeLogicalSize|Rozmiar logiczny woluminu|Bajty|Średnia|Rozmiar logiczny woluminu (używane bajty)|Brak|
+|Rozmiar volumeLogicalSize|Rozmiar zużytej objętości|Bajty|Średnia|Rozmiar logiczny woluminu (używane bajty)|Brak|
 |Rozmiar pliku VolumeSnapshotSize|Rozmiar migawki woluminu|Bajty|Średnia|Rozmiar wszystkich migawek w woluminie|Brak|
 |ReadIops (ReadIops)|Przeczytaj iops|Połów połówek|Średnia|Operacje odczytu/wyjścia na sekundę|Brak|
 |WriteIops (WriteIops)|Napisz iops|Połów połówek|Średnia|Zapis operacji wpuszczania/wyjścia na sekundę|Brak|
@@ -1359,8 +1486,8 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 
 |Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|VolumePoolPrzydzieliłUżywane|Użyta pula woluminów|Bajty|Średnia|Przydzielony używany rozmiar puli|Brak|
-|Rozmiar woluminuPoolTotalLogicalSize|Całkowity rozmiar logiczny puli woluminów|Bajty|Średnia|Suma logicznego rozmiaru wszystkich tomów należących do puli|Brak|
+|VolumePoolPrzydzieliłUżywane|Pula przydzielona do rozmiaru woluminu|Bajty|Średnia|Przydzielony używany rozmiar puli|Brak|
+|Rozmiar woluminuPoolTotalLogicalSize|Rozmiar zużytego basenu|Bajty|Średnia|Suma logicznego rozmiaru wszystkich tomów należących do puli|Brak|
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft.Network/networkInterfaces
 
@@ -1383,7 +1510,6 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |SnatConnectionCount (Liczba połączeń SnatConnection)|Liczba połączeń SNAT|Liczba|Łącznie|Łączna liczba nowych połączeń SNAT utworzonych w okresie czasu|FrontendIPAddress,BackendIPAddress,ConnectionState|
 |AllocatedSnatPorts (Porty AllocatedSnat)|Przydzielone porty SNAT (wersja zapoznawcza)|Liczba|Łącznie|Łączna liczba portów SNAT przydzielonych w okresie czasu|FrontendIPAddress,BackendIPAddress,ProtocolType,IsAwaitingRemoval|
 |UżywanePorty sznat|Używane porty SNAT (wersja zapoznawcza)|Liczba|Łącznie|Całkowita liczba portów SNAT używanych w okresie czasu|FrontendIPAddress,BackendIPAddress,ProtocolType,IsAwaitingRemoval|
-
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft.Network/dnszones
 
@@ -1458,8 +1584,11 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Nieudane zapisy|Żądania zakończone niepowodzeniem|Liczba|Łącznie|Liczba nieudanych żądań obsługiwanych przez bramę aplikacji|BackendSettingsPool|
 |Status odpowiedzi|Stan odpowiedzi|Liczba|Łącznie|Stan odpowiedzi http zwrócony przez bramę aplikacji|Grupa HttpStatus|
 |CurrentConnections (Połączenia prądowe)|Bieżące połączenia|Liczba|Łącznie|Liczba bieżących połączeń nawiązanych za pomocą bramy aplikacji|Brak|
+|NewConnectionsPerSecond|Nowe połączenia na sekundę|Połów połówek|Średnia|Nowe połączenia na sekundę ustanowione za pomocą bramy aplikacji|Brak|
 |Utilizacja procesora|Wykorzystanie procesora|Wartość procentowa|Średnia|Bieżące wykorzystanie procesora bramy aplikacji|Brak|
 |Jednostki pojemnościowe|Bieżące jednostki pojemności|Liczba|Średnia|Zużywane jednostki pojemnościowe|Brak|
+|Jednostki o stałej niezdolności do pracy|Stałe jednostki mocy wyładowowej do wyładowania|Liczba|Średnia|Minimalne jednostki pojemności, które będą|Brak|
+|Jednostki o szacowanej zdolności produkcyjnej|Szacowane rozliczane jednostki zdolności produkcyjnych|Liczba|Średnia|Szacowana pojemność jednostek, które będą naliczane|Brak|
 |Jednostki obliczeniowe|Bieżące jednostki obliczeniowe|Liczba|Średnia|Zużyte jednostki obliczeniowe|Brak|
 |Stan wewnętrznej odpowiedzi|Stan odpowiedzi wewnętrznej bazy danych|Liczba|Łącznie|Liczba kodów odpowiedzi HTTP generowanych przez członków wewnętrznej bazy danych. Nie obejmuje to żadnych kodów odpowiedzi generowanych przez bramę aplikacji.|Serwer zaplecza,backendpool,zapleczehttpsetting,httpStatusGroup|
 |TlsProtocol ( TlsProtocol )|Protokół TLS klienta|Liczba|Łącznie|Liczba żądań TLS i innych niż TLS zainicjowanych przez klienta, który nawiązał połączenie z bramą aplikacji. Aby wyświetlić dystrybucję protokołu TLS, filtruj według wymiaru protokołu TLS.|Słuchacz,TlsProtocol|
@@ -1473,6 +1602,7 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |MatchedCount|Dystrybucja reguł całkowitej zapory aplikacji sieci Web w wersji 1|Liczba|Łącznie|Zapora aplikacji sieci Web w wersji 1 Całkowita dystrybucja reguł dla ruchu przychodzącego|Grupa reguł,RuleId|
 |BlockedCount|Dystrybucja reguł zablokowanych żądań zapory aplikacji sieci Web w wersji 1|Liczba|Łącznie|Zapora aplikacji sieci Web w wersji 1 zablokowana dystrybucja reguł żądań|Grupa reguł,RuleId|
 |BlockedReqCount|Liczba zablokowanych żądań zapory aplikacji sieci Web w wersji 1|Liczba|Łącznie|Liczba zablokowanych żądań zapory aplikacji sieci Web w wersji 1|Brak|
+
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
@@ -1500,6 +1630,8 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |LiniaProtocol|LiniaProtocol|Liczba|Średnia|Stan protokołu wiersza portu|Link|
 |PortBitsInPerSekund|BitsInPerSekund|Połów połówek|Średnia|Bity przychodzące na sekundę z platformą Azure|Link|
 |PortBitsOutPerSekunda|BitsOutPerSekunda|Połów połówek|Średnia|Bity wychodzące z platformy Azure na sekundę|Link|
+
+
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
@@ -1568,6 +1700,18 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |BackendHealthPercentage|Procent kondycji wewnętrznej bazy danych|Wartość procentowa|Średnia|Procent pomyślnych sond kondycji od serwera proxy HTTP/S do zaplecza|Zaplecze,Zaplecze|
 |Konto WebApplicationFirewallRequestCount|Liczba żądań zapory aplikacji sieci Web|Liczba|Łącznie|Liczba żądań klientów przetworzonych przez Zaporę aplikacji sieci Web|Nazwa zasad,Nazwa reguły,Akcja|
 
+
+## <a name="microsoftnetworkprivatednszones"></a>Microsoft.Network/privateDnsZones
+
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|QueryVolume (Wyw.|Wolumin kwerendy|Liczba|Łącznie|Liczba zapytań obsługiwanych dla prywatnej strefy DNS|Brak|
+|Konto RecordSetCount|Liczba zestawów rekordów|Liczba|Maksimum|Liczba zestawów rekordów w prywatnej strefie DNS|Brak|
+|Ulatnianie recordSetCapacityUtilization|Rekordowe wykorzystanie pojemności zestawu mocy produkcyjnych|Wartość procentowa|Maksimum|Procent pojemności zestawu rekordów wykorzystywanej przez prywatną strefę DNS|Brak|
+|Wirtualna siećlinkcount|Liczba łączy sieci wirtualnej|Liczba|Maksimum|Liczba sieci wirtualnych połączonych z prywatną strefą DNS|Brak|
+|Wirtualna SiećLinkCapacityUtilization|Wykorzystanie pojemności łącza sieci wirtualnej|Wartość procentowa|Maksimum|Procent pojemności łącza sieci wirtualnej wykorzystywanej przez prywatną strefę DNS|Brak|
+|VirtualNetworkWithRegistrationLinkCount|Liczba łączy rejestracji sieci wirtualnej|Liczba|Maksimum|Liczba sieci wirtualnych połączonych z prywatną strefą DNS z włączoną automatyczną rejestracją|Brak|
+|VirtualNetworkWithRegistrationCapacityUtilization (Wirtualna sieć z rejestracjązduszność|Wykorzystanie pojemności łącza rejestracji sieci wirtualnej|Wartość procentowa|Maksimum|Procent łącza sieci wirtualnej z pojemnością automatycznej rejestracji wykorzystywaną przez prywatną strefę DNS|Brak|
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Przestrzenie nazw/NotificationHubs
 
@@ -1693,20 +1837,12 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Average_Size przechowywane w plikach stronicowania|Rozmiar przechowywany w plikach stronicowania|Liczba|Średnia|Average_Size przechowywane w plikach stronicowania|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
 |Average_Uptime|Uptime|Liczba|Średnia|Average_Uptime|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
 |Average_Users|Użytkownicy|Liczba|Średnia|Average_Users|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
-|Average_Avg. wartość operacji dysku na sek./odczyt|Średnia dysk s/odczyt|Liczba|Średnia|Average_Avg. wartość operacji dysku na sek./odczyt|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
-|Average_Avg. dysku na sek./zapis|Średnia sek./zapis|Liczba|Średnia|Average_Avg. dysku na sek./zapis|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
 |Average_Current długość kolejki dysku|Bieżąca długość kolejki dysku|Liczba|Średnia|Average_Current długość kolejki dysku|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
-|odczyty Average_Disk/s|Odczyty dysku/s|Liczba|Średnia|odczyty Average_Disk/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
-|Average_Disk transfery/s|Transfery dysków/s|Liczba|Średnia|Average_Disk transfery/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
-|Average_Disk zapisy/s|Zapisy na dysku/s|Liczba|Średnia|Average_Disk zapisy/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
-|megabajty Average_Free|Darmowe megabajty|Liczba|Średnia|megabajty Average_Free|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
-|Average_% wolnego miejsca|% wolnego miejsca|Liczba|Średnia|Average_% wolnego miejsca|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
 |Average_Available MBytes|Dostępne MBytes|Liczba|Średnia|Average_Available MBytes|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
 |Average_% używanych bajtów|% używanych bajtów na które|Liczba|Średnia|Average_% używanych bajtów|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
 |Average_Bytes odebrane/s|Bajty odebrane/s|Liczba|Średnia|Average_Bytes odebrane/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
 |Average_Bytes wysłane/s|Bajty wysłane/s|Liczba|Średnia|Average_Bytes wysłane/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
 |Average_Bytes Suma/s|Suma bajtów/s|Liczba|Średnia|Average_Bytes Suma/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
-|Average_% czasu procesora|Czas procesora (%)|Liczba|Średnia|Average_% czasu procesora|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
 |Długość Average_Processor kolejki|Długość kolejki procesora|Liczba|Średnia|Długość Average_Processor kolejki|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
 |Puls|Puls|Liczba|Łącznie|Puls|Komputer,Typ systemu operacyjnego,Wersja,Komputer źródłowy|
 |Aktualizacja|Aktualizacja|Liczba|Średnia|Aktualizacja|Komputer,Produkt,Klasyfikacja,UpdateState,Opcjonalnie,Zatwierdzone|
@@ -1727,6 +1863,7 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |IngressTrafficRate (Wzrost ruchu ingresicrate)|Szybkość ruchu przychodzącego|BitsPerSecond (BitsPerSecond)|Średnia|Szybkość ruchu przychodzącego w bitach na sekundę|Connectionid|
 |Ruch wychodzącyAterwa|Szybkość ruchu wychodzącego|BitsPerSecond (BitsPerSecond)|Średnia|Szybkość ruchu wychodzącego w bitach na sekundę|Connectionid|
 
+
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacitys
 
 |Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
@@ -1736,6 +1873,22 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |qpu_high_utilization_metric|Wysokie wykorzystanie jednostek QPU|Liczba|Łącznie|QPU High Utilization In Last Minute, 1 dla wysokiego wykorzystania QPU, w przeciwnym razie 0|Brak wymiarów|
 |memory_metric|Memory (Pamięć)|Bajty|Średnia|Memory (pamięć). Zakres 0-3 GB dla A1, 0-5 GB dla A2, 0-10 GB dla A3, 0-25 GB dla A4, 0-50 GB dla A5 i 0-100 GB dla A6|Brak wymiarów|
 |memory_thrashing_metric|Przeładowywanie pamięci|Wartość procentowa|Średnia|Średnia pamięć thrashing.|Brak wymiarów|
+
+
+## <a name="microsoftprojectbabylonaccounts"></a>Microsoft.ProjectBabylon/konta
+
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|Klasyfikacja danych assetdistributionByClassification|Podział aktywów według klasyfikacji|Liczba|Łącznie|Wskazuje liczbę aktywów z określoną przypisaną klasyfikacją, to znaczy są one klasyfikowane z tą etykietą.|Klasyfikacja,Źródło,Identyfikator zasobu|
+|AssetDistributionByStorageType|Dystrybucja zasobów według typu magazynu|Liczba|Łącznie|Wskazuje liczbę zasobów o określonym typie magazynu.|Typ magazynu,Identyfikator zasobu|
+|CatalogActiveUsers|Codziennie aktywni użytkownicy|Liczba|Łącznie|Liczba aktywnych użytkowników dziennie|ResourceId|
+|KatalogPodań|Rozkład użycia według operacji|Liczba|Łącznie|Wskazać liczbę operacji, które użytkownik wykonuje w katalogu, tj.|Operacja,Identyfikator zasobu|
+|NumberOfAssetsWithClassifications|Liczba aktywów o co najmniej jednej klasyfikacji|Liczba|Średnia|Wskazuje liczbę zasobów z co najmniej jedną klasyfikacją znaczników.|ResourceId|
+|SkanowanieCancelled|Skanowanie anulowane|Liczba|Łącznie|Wskazuje liczbę anulowanych skanów.|ResourceId|
+|SkanowanieNieukoletowane|Skanowanie zakończone|Liczba|Łącznie|Wskazuje liczbę skanów zakończonych pomyślnie.|ResourceId|
+|ScanFailed (Nieumiejętnieszone|Skanowanie nie powiodło się|Liczba|Łącznie|Wskazuje liczbę skanów, które nie powiodły się.|ResourceId|
+|Czas skanowaniaWyjętego|Czas skanowania|Sekundy|Łącznie|Wskazuje całkowity czas skanowania w sekundach.|ResourceId|
+
 
 
 
@@ -1849,8 +2002,8 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |dwu_used|DWU używany|Liczba|Maksimum|DWU używane. Dotyczy tylko magazynów danych.|Brak|
 |cache_hit_percent|Procent trafienia w pamięci podręcznej|Wartość procentowa|Maksimum|Procent trafienia w pamięci podręcznej. Dotyczy tylko magazynów danych.|Brak|
 |cache_used_percent|Wartość procentowa używanej pamięci podręcznej|Wartość procentowa|Maksimum|Pamięć podręczna używana procent. Dotyczy tylko magazynów danych.|Brak|
-|sqlserver_process_core_percent|Procent rdzenia procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia procesora CPU dla procesu programu SQL Server, mierzony przez system operacyjny.|Brak|
-|sqlserver_process_memory_percent|Procent pamięci procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia pamięci dla procesu programu SQL Server, mierzony przez system operacyjny.|Brak|
+|sqlserver_process_core_percent|Procent rdzenia procesu programu SQL Server|Wartość procentowa|Maksimum|Użycie procesora CPU jako procent procesu bazy danych SQL. Nie dotyczy hurtowni danych.|Brak|
+|sqlserver_process_memory_percent|Procent pamięci procesu programu SQL Server|Wartość procentowa|Maksimum|Użycie pamięci jako procent procesu bazy danych SQL. Nie dotyczy hurtowni danych.|Brak|
 |tempdb_data_size|Kilobajty rozmiaru pliku danych tempdb|Liczba|Maksimum|Kilobajty o rozmiarze pliku danych tempdb. Nie dotyczy hurtowni danych.|Brak|
 |tempdb_log_size|Kilobajty rozmiaru pliku dziennika tempdb|Liczba|Maksimum|Kilobajty o rozmiarze pliku dziennika tempdb. Nie dotyczy hurtowni danych.|Brak|
 |tempdb_log_used_percent|Używany dziennik procentu tempdb|Wartość procentowa|Maksimum|Używany dziennik procentu tempdb. Nie dotyczy hurtowni danych.|Brak|
@@ -1860,9 +2013,23 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |app_memory_percent|Procent pamięci aplikacji|Wartość procentowa|Średnia|Procent pamięci aplikacji. Dotyczy baz danych bezserwerowych.|Brak|
 |allocated_data_storage|Przydzielone miejsce na dane|Bajty|Średnia|Przydzielone przechowywanie danych. Nie dotyczy hurtowni danych.|Brak|
 |memory_usage_percent|Procent pamięci|Wartość procentowa|Maksimum|Procent pamięci. Dotyczy tylko magazynów danych.|Brak|
+|dw_backup_size_gb|Rozmiar magazynu danych|Liczba|Łącznie|Rozmiar magazynu danych składa się z rozmiaru danych i dziennika transakcji. Dane są wliczane do części "Magazyn" rachunku. Dotyczy tylko magazynów danych.|Brak|
+|dw_snapshot_size_gb|Rozmiar magazynu migawki|Liczba|Łącznie|Rozmiar magazynu migawek to rozmiar przyrostowych zmian przechwyconych przez migawki w celu utworzenia zdefiniowanych przez użytkownika i automatycznych punktów przywracania. Dane są wliczane do części "Magazyn" rachunku. Dotyczy tylko magazynów danych.|Brak|
+|dw_geosnapshot_size_gb|Rozmiar magazynu odzyskiwania po awarii|Liczba|Łącznie|Rozmiar magazynu odzyskiwania po awarii jest odzwierciedlany jako "Magazyn odzyskiwania po awarii" na rachunku. Dotyczy tylko magazynów danych.|Brak|
+|wlg_allocation_relative_to_system_percent|Alokacja grupy obciążenia według procentu systemu|Wartość procentowa|Maksimum|Przydzielony procent zasobów w stosunku do całego systemu na grupę obciążenia. Dotyczy tylko magazynów danych.|WorkloadGroupName,IsUserDefiniowane|
+|wlg_allocation_relative_to_wlg_effective_cap_percent|Alokacja grupy obciążenia według procentu zasobów cap|Wartość procentowa|Maksimum|Zaalokowany procent zasobów w stosunku do określonych zasobów limitu na grupę obciążenia. Dotyczy tylko magazynów danych.|WorkloadGroupName,IsUserDefiniowane|
+|wlg_active_queries|Aktywne kwerendy grupy obciążenia|Liczba|Łącznie|Aktywne zapytania w grupie obciążenia. Dotyczy tylko magazynów danych.|WorkloadGroupName,IsUserDefiniowane|
+|wlg_queued_queries|Kwerendy w kolejce grupy obciążeń|Liczba|Łącznie|Kwerendy umieszczone w kolejce w grupie obciążenia. Dotyczy tylko magazynów danych.|WorkloadGroupName,IsUserDefiniowane|
+|active_queries|Aktywne zapytania|Liczba|Łącznie|Aktywne zapytania we wszystkich grupach obciążenia. Dotyczy tylko magazynów danych.|Brak|
+|queued_queries|Kwerendy w kolejce|Liczba|Łącznie|Kwerendy w kolejce we wszystkich grupach obciążenia. Dotyczy tylko magazynów danych.|Brak|
+|wlg_active_queries_timeouts|Limity czasu kwerend grupy obciążenia|Liczba|Łącznie|Kwerendy, które zostały przesunęły limit czasu dla grupy obciążenia. Dotyczy tylko magazynów danych.|WorkloadGroupName,IsUserDefiniowane|
+|wlg_effective_min_resource_percent|Efektywny procent minimalnego zasobu|Wartość procentowa|Maksimum|Minimalny procent zasobów zarezerwowanych i odizolowanych dla grupy obciążenia, biorąc pod uwagę minimalny poziom usług. Dotyczy tylko magazynów danych.|WorkloadGroupName,IsUserDefiniowane|
+|wlg_effective_cap_resource_percent|Efektywny procent zasobów cap|Wartość procentowa|Maksimum|Twardy limit procentu zasobów dozwolonych dla grupy obciążenia, biorąc pod uwagę efektywny procent minimalnego zasobu przydzielony dla innych grup obciążenia. Dotyczy tylko magazynów danych.|WorkloadGroupName,IsUserDefiniowane|
 |full_backup_size_bytes|Pełny rozmiar pamięci masowej kopii zapasowej|Bajty|Maksimum|Skumulowany pełny rozmiar magazynu kopii zapasowej. Dotyczy baz danych opartych na wynikach wirtualnych. Nie dotyczy baz danych na dużą skalę.|Brak|
 |diff_backup_size_bytes|Rozmiar magazynu kopii zapasowych różnicowego|Bajty|Maksimum|Skumulowany rozmiar magazynu różnicowego kopii zapasowej. Dotyczy baz danych opartych na wynikach wirtualnych. Nie dotyczy baz danych na dużą skalę.|Brak|
-|log_backup_size_bytes|Rozmiar magazynu kopii zapasowej dziennika|Bajty|Maksimum|Skumulowany rozmiar magazynu kopii zapasowej dziennika. Dotyczy baz danych opartych na wynikach wirtualnych. Nie dotyczy baz danych na dużą skalę.|Brak|
+|log_backup_size_bytes|Rozmiar magazynu kopii zapasowej dziennika|Bajty|Maksimum|Skumulowany rozmiar magazynu kopii zapasowej dziennika. Dotyczy baz danych opartych nacorach wirtualnych i hiperskalach.|Brak|
+|snapshot_backup_size_bytes|Rozmiar magazynu kopii zapasowej migawki|Bajty|Maksimum|Skumulowany rozmiar magazynu kopii zapasowej migawki. Dotyczy baz danych na dużą skalę.|Brak|
+|base_blob_size_bytes|Rozmiar magazynu podstawowego obiektu blob|Bajty|Maksimum|Rozmiar magazynu podstawowego obiektu blob. Dotyczy baz danych na dużą skalę.|Brak|
 
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
@@ -1893,8 +2060,8 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |database_cpu_limit|Limit procesora|Liczba|Średnia|Limit procesora|DataResourceId|
 |cpu_used|Używany procesor|Liczba|Średnia|Używany procesor. Dotyczy elastycznych pul opartych na pulach opartych na pulach typu vCore.|Brak|
 |database_cpu_used|Używany procesor|Liczba|Średnia|Używany procesor|DataResourceId|
-|sqlserver_process_core_percent|Procent rdzenia procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia procesora CPU dla procesu programu SQL Server, mierzony przez system operacyjny. Dotyczy basenów elastycznych.|Brak|
-|sqlserver_process_memory_percent|Procent pamięci procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia pamięci dla procesu programu SQL Server, mierzony przez system operacyjny. Dotyczy basenów elastycznych.|Brak|
+|sqlserver_process_core_percent|Procent rdzenia procesu programu SQL Server|Wartość procentowa|Maksimum|Użycie procesora CPU jako procent procesu bazy danych SQL. Dotyczy basenów elastycznych.|Brak|
+|sqlserver_process_memory_percent|Procent pamięci procesu programu SQL Server|Wartość procentowa|Maksimum|Użycie pamięci jako procent procesu bazy danych SQL. Dotyczy basenów elastycznych.|Brak|
 |tempdb_data_size|Kilobajty rozmiaru pliku danych tempdb|Liczba|Maksimum|Kilobajty rozmiaru pliku danych tempdb|Brak|
 |tempdb_log_size|Kilobajty rozmiaru pliku dziennika tempdb|Liczba|Maksimum|Kilobajty rozmiaru pliku dziennika tempdb|Brak|
 |tempdb_log_used_percent|Używany dziennik procentu tempdb|Wartość procentowa|Maksimum|Używany dziennik procentu tempdb|Brak|
@@ -2090,6 +2257,46 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Dane wejściaEventsSourcesBacklogged|Zaległe zdarzenia wejściowe|Liczba|Maksimum|Zaległe zdarzenia wejściowe|Nazwa logiczna,Identyfikator partycji|
 |Dane wejścioweSourcesPerSecond|Odebrane źródła wejściowe|Liczba|Łącznie|Odebrane źródła wejściowe|Nazwa logiczna,Identyfikator partycji|
 
+## <a name="microsoftsynapseworkspaces"></a>Microsoft.Synapse/obszary robocze
+
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|AranżacjaPipelineRunsEnded|Zakończono przebiegi rurociągu|Liczba|Łącznie|Liczba uruchomień potoku aranżacji, które zakończyły się pomyślnie, nie powiodły się lub zostały anulowane|Wynik,Typ błędu,Potok|
+|AranżacjaActivityRunsEnded|Zakończono przebiegi aktywności|Liczba|Łącznie|Liczba działań aranżacji, które zakończyły się pomyślnie, nie powiodły się lub zostały anulowane|Wynik,Typ błędu,Działanie,Typ działania,Potok|
+|AranżacjaTriggersEnded|Wyzwalacze zakończone|Liczba|Łącznie|Liczba wyzwalaczy aranżacji, które zakończyły się pomyślnie, nie powiodły się lub zostały anulowane|Wynik,Typ błędu,Wyzwalacz|
+|SQLOnDemandLoginPróbuje|Próby logowania|Liczba|Łącznie|Liczba prób logowania, które zakończyły się powodzeniem lub nie powiodły się|Wynik|
+|SQLOnDemandQueriesEnded|Zakończyły się kwerendy|Liczba|Łącznie|Liczba kwerend, które zakończyły się pomyślnie, nie powiodły się lub zostały anulowane|Wynik|
+|SQLOnDemandQueryProcessedBytes|Przetwarzane dane|Bajty|Łącznie|Ilość danych przetwarzanych przez kwerendy|Brak|
+
+## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft.Synapse/obszary robocze/duże puli danych
+
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|SparkJobsEnded (SparkJobsEnded)|Wnioski zakończone|Liczba|Łącznie|Liczba zakończonych wniosków|Typ zadania,Wynik zadania|
+|RdzenieCapacity|Pojemność rdzeni|Liczba|Maksimum|Pojemność rdzeni|Brak|
+|MemoryCapacityGB|Pojemność pamięci (GB)|Liczba|Maksimum|Pojemność pamięci (GB)|Brak|
+
+## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft.Synapse/obszary robocze/sqlPools
+
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|DWULimit|Limit DWU|Liczba|Maksimum|Cel poziomu usług puli SQL|Brak|
+|DWUUżytowany|DWU używany|Liczba|Maksimum|Reprezentuje reprezentację wysokiego poziomu użycia w puli SQL. Mierzona przez limit DWU * PROCENT DWU|Brak|
+|DWUUsedPercent|DWU używany procent|Wartość procentowa|Maksimum|Reprezentuje reprezentację wysokiego poziomu użycia w puli SQL. Mierzona przez użycie maksymalnej wartości procentowej między procentem procesora a procentem we/wy danych|Brak|
+|PołączeniaBlockedByFirewall|Połączenia zablokowane przez zaporę|Liczba|Łącznie|Liczba połączeń zablokowanych przez reguły zapory. Ponowne przeglądanie zasad kontroli dostępu dla puli SQL i monitorowanie tych połączeń, jeśli liczba jest wysoka|Brak|
+|AdaptiveCacheHitPercent|Adaptacyjna wartość procentowa trafień pamięci podręcznej|Wartość procentowa|Maksimum|Mierzy, jak dobrze obciążenia wykorzystują adaptacyjną pamięć podręczną. Użyj tej metryki z metryką procentową trafienia w pamięci podręcznej, aby określić, czy mają być skalowane dla dodatkowej pojemności, czy ponownie uruchomić obciążenia, aby nawilżyć pamięć podręczną|Brak|
+|AdaptiveCacheUsedPercent|Adaptacyjna pamięć podręczna używana procentowa|Wartość procentowa|Maksimum|Mierzy, jak dobrze obciążenia wykorzystują adaptacyjną pamięć podręczną. Użyj tej metryki z metryką procentową użytą w pamięci podręcznej, aby określić, czy skalować dodatkowe obciążenia pojemnościowe lub ponownie nawilżać pamięć podręczną, aby nawilżyć pamięć podręczną|Brak|
+|LocalTempDBUsedPercent|Lokalny tempdb używany procent|Wartość procentowa|Maksimum|Lokalne wykorzystanie bazy danych tempdb we wszystkich węzłach obliczeniowych — wartości są emitowane co pięć minut|Brak|
+|MemoryUsedPercent|Wartość procentowa używanej pamięci|Wartość procentowa|Maksimum|Wykorzystanie pamięci we wszystkich węzłach w puli SQL|Brak|
+|Połączenia|Połączenia|Liczba|Łącznie|Liczba całkowitych logowań do puli SQL|Wynik|
+|WLGActiveQueries (WLGActiveQueries)|Aktywne kwerendy grupy obciążenia|Liczba|Łącznie|Aktywne zapytania w grupie obciążenia. Za pomocą tej metryki niefiltrowane i nieskładka wyświetla wszystkie aktywne zapytania uruchomione w systemie|IsUserDefiniowany,WorkloadGroup|
+|WLGActiveQueriesTimeouts|Limity czasu kwerend grupy obciążenia|Liczba|Łącznie|Zapytania dla grupy obciążenia, które zostały przesunął limit czasu. Limity czasu kwerendy zgłoszone przez tę metrykę są tylko wtedy, gdy kwerenda rozpoczęła wykonywanie (nie obejmuje czasu oczekiwania z powodu blokowania lub oczekiwania zasobów)|IsUserDefiniowany,WorkloadGroup|
+|WLGAllocationBySystemPercent|Alokacja grupy obciążenia według procentu systemu|Wartość procentowa|Maksimum|Procent alokacji zasobów w stosunku do całego systemu|IsUserDefiniowany,WorkloadGroup|
+|WLGAllocationByMaxResourcePercent|Alokacja grupy obciążenia według maksymalnego procentu zasobów|Wartość procentowa|Maksimum|Wyświetla procent alokacji zasobów względem procentu zasobu Efektywnego limitu na grupę obciążenia. Ta metryka zapewnia efektywne wykorzystanie grupy obciążenia|IsUserDefiniowany,WorkloadGroup|
+|WLGEffectiveCapResourcePercent|Efektywny procent zasobów cap|Wartość procentowa|Maksimum|Procent zasobu efektywnego limitu dla grupy obciążenia. Jeśli istnieją inne grupy obciążenia z min_percentage_resource > 0, effective_cap_percentage_resource jest obniżana proporcjonalnie|IsUserDefiniowany,WorkloadGroup|
+|wlg_effective_min_resource_percent|Efektywny procent minimalnego zasobu|Wartość procentowa|Minimalne|Efektywne ustawienie procentowe minimalnego zasobu jest dozwolone, biorąc pod uwagę poziom usługi i ustawienia grupy obciążenia. Efektywny min_percentage_resource można regulować na niższych poziomach usług|IsUserDefiniowany,WorkloadGroup|
+|WLGQueuedQueries|Kwerendy w kolejce grupy obciążeń|Liczba|Łącznie|Skumulowana liczba żądań w kolejce po osiągnięciu maksymalnego limitu współbieżności|IsUserDefiniowany,WorkloadGroup|
+
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/environments
 
 |Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
@@ -2103,6 +2310,8 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |IngressReceivedMessagesCountLag|Opóźnienie liczby odebranych wiadomości przychodzących|Liczba|Średnia|Różnica między numerem sekwencyjnym ostatniej wiadomości w kolejce w partycji źródłowej zdarzenia a numerem sekwencyjnym komunikatów przetwarzanych w u danych przychodzących|Brak|
 |Właściwości WarmStorageMaxProperties|Właściwości maksymalnej pamięci masowej|Liczba|Maksimum|Maksymalna liczba właściwości używanych przez środowisko dla SKU S1/S2 i maksymalna liczba właściwości dozwolona przez Ciepły magazyn dla payg sku|Brak|
 |WarmStorageUżywanewłaściwości|Właściwości używane do ciepłej pamięci masowej |Liczba|Maksimum|Liczba właściwości używanych przez środowisko dla jednostki SKU S1/S2 i liczba właściwości używanych przez Warm Store dla payg sku|Brak|
+
+
 
 ## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft.TimeSeriesInsights/environments/eventsources
 
@@ -2171,7 +2380,7 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |TcpLastAck (TcpLastAck)|TCP Ostatni Ack|Liczba|Średnia|TCP Ostatni Ack|Wystąpienie|
 |TcpTimeWait (TcpTimeWait)|Oczekiwanie czasu TCP|Liczba|Średnia|Oczekiwanie czasu TCP|Wystąpienie|
 
-## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/sites (z wyłączeniem funkcji)
+## <a name="microsoftwebsites"></a>Microsoft.Web/witryny
 
 > [!NOTE]
 > **Użycie systemu plików** to nowa metryka wdrażana globalnie, nie oczekuje się żadnych danych, chyba że zostałasz na białej liście do prywatnej wersji zapoznawczej.
@@ -2217,35 +2426,6 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Gen2Kolekcje|Odpady odśmieskowe gen 2|Liczba|Łącznie|Odpady odśmieskowe gen 2|Wystąpienie|
 |Stan zdrowiaSeksus|Stan kontroli kondycji|Liczba|Średnia|Stan kontroli kondycji|Wystąpienie|
 |System PlikówUsage|Użycie systemu plików|Bajty|Średnia|Użycie systemu plików|Brak|
-
-## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (funkcje)
-
-|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
-|---|---|---|---|---|---|
-|Bytesreceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
-|Bajtów|Wyjście danych|Bajty|Łącznie|Wyjście danych|Wystąpienie|
-|Protokół Http5xx|Błędy serwera http|Liczba|Łącznie|Błędy serwera http|Wystąpienie|
-|Zestaw pamięci|Zestaw roboczy pamięci|Bajty|Średnia|Zestaw roboczy pamięci|Wystąpienie|
-|ŚredniaZapraca Zestaw|Zestaw pracy średniej pamięci|Bajty|Średnia|Zestaw pracy średniej pamięci|Wystąpienie|
-|Jednostki funkcyjne|Jednostki wykonawcze funkcji|MB / Milisekundy|Łącznie|[Jednostki wykonawcze funkcji](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Wystąpienie|
-|FunkcjaWykonaniaLicznik|Liczba wykonania funkcji|Liczba|Łącznie|Liczba wykonania funkcji|Wystąpienie|
-|Bajty prywatne|Bajty prywatne|Bajty|Średnia|Bajty prywatne|Wystąpienie|
-|IoReadBytesPerSekund|Bajty odczytu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Bajty odczytu we/wy na sekundę|Wystąpienie|
-|IoWriteBytesPerSekund|Bajty zapisu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Bajty zapisu we/wy na sekundę|Wystąpienie|
-|IoOtherBytesPerSekund|IO inne bajty na sekundę|PrzeztówPerSekunda|Łącznie|IO inne bajty na sekundę|Wystąpienie|
-|IoReadOperationsPerSecond|Operacje odczytu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Operacje odczytu we/wy na sekundę|Wystąpienie|
-|IoWriteOperationsPerSecond|Operacje zapisu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Operacje zapisu we/wy na sekundę|Wystąpienie|
-|IoOtherOperationsPerSecond|Inne operacje we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Inne operacje we/wy na sekundę|Wystąpienie|
-|RequestsInApplicationQueue|Żądania w kolejce aplikacji|Liczba|Średnia|Żądania w kolejce aplikacji|Wystąpienie|
-|CurrentAssemblies|Bieżące złożenia|Liczba|Średnia|Bieżące złożenia|Wystąpienie|
-|TotalAppDomains (TotalAppDomains)|Łączna liczba domen aplikacji|Liczba|Średnia|Łączna liczba domen aplikacji|Wystąpienie|
-|TotalAppDomainsNiezaładkłano|Całkowita liczba niezaładowanych domen aplikacji|Liczba|Średnia|Całkowita liczba niezaładowanych domen aplikacji|Wystąpienie|
-|Gen0Kolekcje|Odpady odśmieskowe Gen 0|Liczba|Łącznie|Odpady odśmieskowe Gen 0|Wystąpienie|
-|Gen1Kolekcje|Wyrzucanie elementów bezużytecznych gen 1|Liczba|Łącznie|Wyrzucanie elementów bezużytecznych gen 1|Wystąpienie|
-|Gen2Kolekcje|Odpady odśmieskowe gen 2|Liczba|Łącznie|Odpady odśmieskowe gen 2|Wystąpienie|
-|Stan zdrowiaSeksus|Stan kontroli kondycji|Liczba|Średnia|Stan kontroli kondycji|Wystąpienie|
-|System PlikówUsage|Użycie systemu plików|Bajty|Średnia|Użycie systemu plików|Brak|
-
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 

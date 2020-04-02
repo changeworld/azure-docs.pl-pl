@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: f50115732940eab14db30842be85b47cb4a552e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88d25083a1105023279f3907a4573319fabe087c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299521"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520773"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Szyfrowanie po stronie serwera dysków zarządzanych platformy Azure
 
@@ -68,7 +68,7 @@ Na razie klucze zarządzane przez klienta mają następujące ograniczenia:
 
 - Jeśli ta funkcja jest włączona dla dysku, nie można jej wyłączyć.
     Jeśli chcesz obejść ten problem, należy [skopiować wszystkie dane na](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk) zupełnie inny dysk zarządzany, który nie używa kluczy zarządzanych przez klienta.
-- Obsługiwane są tylko ["miękkie" i "twarde" klucze RSA](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) o rozmiarze 2080, bez innych klawiszy lub rozmiarów.
+- Obsługiwane są tylko ["miękkie" i "twarde" klucze RSA](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) o rozmiarze 2048, bez innych klawiszy ani rozmiarów.
 - Dyski utworzone na podstawie obrazów niestandardowych, które są szyfrowane przy użyciu szyfrowania po stronie serwera i kluczy zarządzanych przez klienta, muszą być szyfrowane przy użyciu tych samych kluczy zarządzanych przez klienta i muszą być w tej samej subskrypcji.
 - Migawki utworzone z dysków zaszyfrowanych za pomocą szyfrowania po stronie serwera i kluczy zarządzanych przez klienta muszą być szyfrowane przy tym samym kluczu zarządzanym przez klienta.
 - W galerii obrazów udostępnionych nie można używać obrazów niestandardowych zaszyfrowanych przy użyciu szyfrowania po stronie serwera i kluczy zarządzanych przez klienta.

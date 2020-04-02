@@ -9,26 +9,29 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 7abbdf03e85f425f65a45e6640b82529c2b9c84f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b95a3e32bc2b8df3d02453e42fa9bbc3719134b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614068"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519132"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Tworzenie jednostki organizacyjnej w domenie zarządzanej usług domenowych usługi azure AD
 
 Jednostki organizacyjne w Usługach domenowych Active Directory (AD DS) umożliwiają logiczne grupowanie obiektów, takich jak konta użytkowników, konta usług lub konta komputerów. Następnie można przypisać administratorów do określonych procesorów operacyjnych i zastosować zasady grupy, aby wymusić docelowe ustawienia konfiguracji.
 
-Domeny zarządzane usługi Azure AD DS obejmują dwa wbudowane jednostki organizacyjne — *komputery AADDC* i *użytkowników usługi AADDC.* Obiekt organizacyjny *komputerów AADDC* zawiera obiekty komputera dla wszystkich komputerów, które są przyłączone do domeny zarządzanej. *AADDC Użytkownicy OU* obejmuje użytkowników i grup zsynchronizowanych z dzierżawy usługi Azure AD. Podczas tworzenia i uruchamiania obciążeń korzystających z usług Azure AD DS może być konieczne utworzenie kont usług dla aplikacji w celu uwierzytelnienia się. Aby zorganizować te konta usługi, często należy utworzyć niestandardową jednostkę organizacyjną w domenie zarządzanej usług Azure AD DS, a następnie utworzyć konta usługi w tej jednostki organizacyjnej.
+Domeny zarządzane usługi Azure AD DS obejmują następujące dwa wbudowane jednostki organizacyjne:
+
+* *AADDC Computers* — zawiera obiekty komputera dla wszystkich komputerów, które są przyłączone do domeny zarządzanej.
+* *Użytkownicy usługi AADDC* — obejmuje użytkowników i grupy zsynchronizowane z dzierżawy usługi Azure AD.
+
+Podczas tworzenia i uruchamiania obciążeń korzystających z usług Azure AD DS może być konieczne utworzenie kont usług dla aplikacji w celu uwierzytelnienia się. Aby zorganizować te konta usługi, często należy utworzyć niestandardową jednostkę organizacyjną w domenie zarządzanej usług Azure AD DS, a następnie utworzyć konta usługi w tej jednostki organizacyjnej.
 
 W środowisku hybrydowym producenci organizacyjni utworzone w lokalnym środowisku usług AD DS nie są synchronizowane z usługą Azure AD DS. Domeny zarządzane usługi Azure AD DS używają płaskiej struktury jednostki organizacyjnej. Wszystkie konta użytkowników i grupy są przechowywane w kontenerze *Użytkownicy usługi AADDC,* mimo że są synchronizowane z różnych domen lokalnych lub lasów, nawet jeśli skonfigurowano tam hierarchiczną strukturę operacji organizacyjnej.
 
 W tym artykule pokazano, jak utworzyć jednostkę organizacyjną w domenie zarządzanej usług Azure AD DS.
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -68,19 +71,19 @@ Aby utworzyć niestandardową instalację organizacyjną, należy użyć narzęd
 1. Aby utworzyć procesory organizacyjne i zarządzać nimi, wybierz pozycję **Centrum administracyjne usługi Active Directory** z listy narzędzi administracyjnych.
 1. W lewym okienku wybierz domenę zarządzana usługą Azure AD DS, taką jak *aaddscontoso.com*. Zostanie wyświetlona lista istniejących procesorów operacyjnych i zasobów:
 
-    ![Wybieranie domeny zarządzanej usług Azure AD DS w Centrum administracyjnym usługi Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
+    ![Wybieranie domeny zarządzanej usług Azure AD DS w Centrum administracyjnym usługi Active Directory](./media/create-ou/create-ou-adac-overview.png)
 
 1. Okienko **Zadania** jest wyświetlane po prawej stronie Centrum administracyjnego usługi Active Directory. W obszarze domeny, na przykład *aaddscontoso.com*, wybierz pozycję **Nowa > Jednostka organizacyjna**.
 
-    ![Wybierz opcję utworzenia nowej usługi organizacyjnej w Centrum administracyjnym usługi Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
+    ![Wybierz opcję utworzenia nowej usługi organizacyjnej w Centrum administracyjnym usługi Active Directory](./media/create-ou/create-ou-adac-new-ou.png)
 
 1. W oknie dialogowym **Tworzenie jednostki organizacyjnej** określ **nazwę** nowej jednostki organizacyjnej, taką jak *MyCustomOu*. Podaj krótki opis dla tej instalacji organizacyjnej, na przykład *niestandardowa instalacja organizacyjna dla kont usług.* W razie potrzeby można również ustawić pole **Zarządzane według** jednostki organizacyjnej. Aby utworzyć niestandardową instalację organizacyjną, wybierz przycisk **OK**.
 
-    ![Tworzenie niestandardowej instalacji organizacyjnej z Centrum administracyjnego usługi Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
+    ![Tworzenie niestandardowej instalacji organizacyjnej z Centrum administracyjnego usługi Active Directory](./media/create-ou/create-ou-dialog.png)
 
 1. W Centrum administracyjnym usługi Active Directory niestandardowa instalacja organizacyjna jest teraz wyświetlana i jest dostępna do użycia:
 
-    ![Niestandardowa instalacja organizacyjna dostępna do użycia w Centrum administracyjnym usługi Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
+    ![Niestandardowa instalacja organizacyjna dostępna do użycia w Centrum administracyjnym usługi Active Directory](./media/create-ou/create-ou-done.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
