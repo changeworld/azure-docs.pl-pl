@@ -10,12 +10,12 @@ ms.date: 02/24/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b0f2ad7566d0204871a9c6441315d6201662d92b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53eca8a0b9e7cc9abb8f89cd56fca5df28f2de0f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616284"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521923"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Autoryzowanie dostępu do danych w usłudze Azure Storage
 
@@ -33,7 +33,7 @@ W poniższej tabeli opisano opcje, które usługa Azure Storage oferuje w celu a
 
 Każda opcja autoryzacji jest krótko opisana poniżej:
 
-- **Integracja usługi Azure Active Directory (Azure AD)** dla obiektów blob i kolejek. Usługa Azure AD zapewnia kontrolę dostępu opartą na rolach (RBAC) dla szczegółowej kontroli nad dostępem klienta do zasobów na koncie magazynu. Aby uzyskać więcej informacji dotyczących integracji usług Azure AD dla obiektów blob i kolejek, zobacz [Autoryzowanie dostępu do obiektów blob i kolejek platformy Azure przy użyciu usługi Azure Active Directory.](storage-auth-aad.md)
+- **Integracja usługi Azure Active Directory (Azure AD)** dla obiektów blob i kolejek. Usługa Azure AD zapewnia kontrolę dostępu opartą na rolach (RBAC) do kontroli nad dostępem klienta do zasobów na koncie magazynu. Aby uzyskać więcej informacji dotyczących integracji usług Azure AD dla obiektów blob i kolejek, zobacz [Autoryzowanie dostępu do obiektów blob i kolejek platformy Azure przy użyciu usługi Azure Active Directory.](storage-auth-aad.md)
 
 - **Uwierzytelnianie usługi domenowe Usługi active directory (Azure AD DS)** dla usług Azure Files. Usługa Azure Files obsługuje autoryzację opartą na tożsamości za pośrednictwem bloku komunikatów serwera (SMB) za pośrednictwem usługi Azure AD DS. Funkcji RBAC można używać do precyzyjnej kontroli nad dostępem klienta do zasobów usługi Azure Files na koncie magazynu. Aby uzyskać więcej informacji na temat uwierzytelniania plików Platformy Azure przy użyciu usług domenowych, zapoznaj się z naszym [omówieniem](../files/storage-files-active-directory-overview.md).
 

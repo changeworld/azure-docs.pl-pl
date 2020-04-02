@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 0aa71e4b78df8087093f183b146c525d2a8a0f99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78275211b77cb34cf9aa92e44778e5d4d81fffed
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366244"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521011"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkcje & narzędzia dla usługi Azure Cloud Shell
 
@@ -44,7 +44,7 @@ Pliki poza `$HOME` i stan komputera nie są utrwalone w sesjach. Należy użyć 
 
 ### <a name="azure-drive-azure"></a>Dysk platformy Azure (Azure:)
 
-Program PowerShell w usłudze Cloud`Azure:`Shell uruchamia cię na dysku platformy Azure ( ).
+Program PowerShell w usłudze`Azure:`Cloud Shell udostępnia dysk platformy Azure ( ). Możesz przełączyć się na `cd Azure:` dysk platformy Azure z `cd  ~`i z powrotem do katalogu domowego za pomocą .
 Dysk platformy Azure umożliwia łatwe wykrywanie i nawigację zasobów platformy Azure, takich jak zasoby obliczeniowe, sieć, magazyn itp., podobnie jak nawigacja w systemie plików.
 Możesz nadal używać znanych [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure) do zarządzania tymi zasobami, niezależnie od dysku, na który się znajdujesz.
 Wszelkie zmiany wprowadzone w zasobach platformy Azure, wprowadzone bezpośrednio w witrynie Azure portal lub za pośrednictwem poleceń cmdlet programu Azure PowerShell, są odzwierciedlane na dysku platformy Azure.  Można uruchomić, `dir -Force` aby odświeżyć swoje zasoby.
@@ -67,7 +67,7 @@ Program PowerShell w usłudze Cloud Shell zawiera prywatną kompilację modułu 
 
 Usługa Cloud Shell zawiera wstępnie skonfigurowane uwierzytelnianie dla narzędzi typu open source, takich jak Terraform, Ansible i Chef InSpec. Wypróbuj go z przykładowych instruktajm.
 
-## <a name="tools"></a>Narzędzia
+## <a name="tools"></a>narzędzia
 
 |Kategoria   |Nazwa   |
 |---|---|
@@ -78,7 +78,7 @@ Usługa Cloud Shell zawiera wstępnie skonfigurowane uwierzytelnianie dla narzę
 |Tworzenie narzędzi            |make<br> maven<br> npm<br> Pip         |
 |Kontenery             |[Docker Machine](https://github.com/docker/machine)<br> [Okręg wyborczy Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Hełm](https://github.com/kubernetes/helm)<br> [Interfejsu wiersza polecenia DC/OS](https://github.com/dcos/dcos-cli)         |
 |Bazy danych              |Klient MySQL<br> Klient PostgreSql<br> [Sqlcmd](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|Inne                  |Klient iPython<br> [Cli odlewnicza chmury](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Możliwość ansible](https://www.ansible.com/microsoft-azure)<br> [Szef kuchni InSpec](https://www.chef.io/inspec/)<br> [Lalkowa śruba](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)|
+|Inne                  |Klient iPython<br> [Cli odlewnicza chmury](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Szef kuchni InSpec](https://www.chef.io/inspec/)<br> [Lalkowa śruba](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)|
 
 ## <a name="language-support"></a>Obsługa języków
 

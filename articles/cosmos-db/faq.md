@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 75cef47c1ed2b6da054442a4a1215141e67ad1b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c994caf094918b39204437b5194d81a64affc66
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498579"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545655"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -219,7 +219,7 @@ Interfejs API usługi Azure Cosmos DB dla mongodb to warstwa zgodności protoko�
 
 Najszybszym sposobem na połączenie się z bazą danych usługi Cosmos za pomocą interfejsu API usługi Azure Cosmos DB dla usługi MongoDB jest przekazanie witryny [Azure portal.](https://portal.azure.com) Przejdź do swojego konta, a następnie w lewym menu nawigacyjnym kliknij pozycję **Szybki start**. Szybki start to najlepszy sposób na uzyskanie fragmentów kodu w celu połączenia się z bazą danych.
 
-Usługa Azure Cosmos DB wymusza ścisłe wymagania i standardy zabezpieczeń. Konta usługi Azure Cosmos DB wymagają uwierzytelniania i bezpiecznej komunikacji za pośrednictwem protokołu SSL, dlatego należy używać usługi TLSv1.2.
+Usługa Azure Cosmos DB wymusza ścisłe wymagania i standardy zabezpieczeń. Konta usługi Azure Cosmos DB wymagają uwierzytelniania i bezpiecznej komunikacji za pośrednictwem protokołu TLS, dlatego należy używać usługi TLSv1.2.
 
 Aby uzyskać więcej informacji, zobacz [Łączenie się z bazą danych usługi Cosmos za pomocą interfejsu API usługi Azure Cosmos DB dla usługi MongoDB.](connect-mongodb-account.md)
 

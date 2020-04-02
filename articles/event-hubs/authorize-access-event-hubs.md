@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: d4304abf0ca089fbbea86f12cd03dea836db612e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f44be4e1d3d1186f0122bd4669ae800ab42e31d6
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368355"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521308"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Autoryzacja dostępu do usługi Azure Event Hubs
 Za każdym razem, gdy publikujesz lub zużywasz zdarzenia/dane z centrum zdarzeń, klient próbuje uzyskać dostęp do zasobów centrum zdarzeń. Każde żądanie do bezpiecznego zasobu musi być autoryzowane, aby usługa mogła zapewnić, że klient ma wymagane uprawnienia do publikowania/korzystania z danych. 
@@ -39,7 +39,7 @@ Sygnatury dostępu współdzielonego (SAS) dla zasobów centrum zdarzeń zapewni
 
 Autoryzowanie użytkowników lub aplikacji przy użyciu tokenu OAuth 2.0 zwróconego przez usługę Azure AD zapewnia doskonałe zabezpieczenia i łatwość użycia za pośrednictwem sygnatur dostępu współdzielonego (SAS). Dzięki usłudze Azure AD nie ma potrzeby przechowywania tokenów dostępu z kodem i potencjalnymi lukami w zabezpieczeniach. Chociaż można nadal używać podpisów dostępu współdzielonego (SAS) do udzielania szczegółowego dostępu do zasobów usługi Event Hubs, usługa Azure AD oferuje podobne możliwości bez konieczności zarządzania tokenami sygnatury dostępu Współdzielonego lub martwić się o odwołanie naruszonego sygnatury dostępu Współdzielonego. 
 
-Domyślnie wszystkie zasoby usługi Event Hubs są zabezpieczone i są dostępne tylko dla właściciela konta. Chociaż można użyć dowolnej ze strategii autoryzacji opisanych powyżej, aby udzielić klientom dostępu do zasobów usługi Event Hub. Tylko zasoby usługi Event Hubs utworzone za pomocą modelu wdrażania usługi Azure Resource Manager obsługują autoryzację usługi Azure AD. Firma Microsoft zaleca korzystanie z usługi Azure AD, jeśli to możliwe, aby zapewnić maksymalne bezpieczeństwo i łatwość użycia.
+Domyślnie wszystkie zasoby usługi Event Hubs są zabezpieczone i są dostępne tylko dla właściciela konta. Chociaż można użyć dowolnej ze strategii autoryzacji opisanych powyżej, aby udzielić klientom dostępu do zasobów usługi Event Hub. Firma Microsoft zaleca korzystanie z usługi Azure AD, jeśli to możliwe, aby zapewnić maksymalne bezpieczeństwo i łatwość użycia.
 
 Aby uzyskać więcej informacji na temat autoryzacji przy użyciu sygnatury dostępu współdzielonego, zobacz [Autoryzowanie dostępu do zasobów Centrum zdarzeń przy użyciu podpisów dostępu współdzielonego](authorize-access-shared-access-signature.md).
 

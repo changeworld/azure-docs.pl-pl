@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/28/2020
+ms.date: 03/31/2020
 ms.author: radeltch
-ms.openlocfilehash: 5e3512ce86bdf96a5e6cfcf0e4459b656a5ac5bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1ae2c3c949e8bdbf30c8bef496177d56cd2dcbd
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77565863"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521409"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Wysoka dostępność maszyn wirtualnych SAP HANA na maszynach wirtualnych platformy Azure w systemie Red Hat Enterprise Linux
 
@@ -263,9 +263,13 @@ W tych sekcjach należy wykonać następujące prefiksy:
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   Tworzenie woluminów logicznych. Wolumin liniowy jest tworzony `lvcreate` podczas `-i` używania bez przełącznika. Sugerujemy utworzenie woluminu rozłożonego w celu uzyskania lepszej `-i` wydajności we/wy, gdzie argumentem powinna być liczba podstawowej objętości fizycznej. W tym dokumencie dla woluminu danych są używane `-i` dwa woluminy fizyczne, więc argument przełącznika jest ustawiony na **2**. Jeden wolumin fizyczny jest używany dla `-i` woluminu dziennika, więc nie przełącznik jest jawnie używany. Użyj `-i` przełącznika i ustaw go na liczbę podstawowej woluminu fizycznego, gdy używasz więcej niż jednego woluminu fizycznego dla każdego woluminu danych, dziennika lub udostępnionego woluminu.
+   Tworzenie woluminów logicznych. Wolumin liniowy jest tworzony `lvcreate` podczas `-i` używania bez przełącznika. Sugerujemy utworzenie woluminu rozłożonego w celu uzyskania lepszej wydajności we/wy i dostosowanie rozmiarów pasków do wartości udokumentowanych w [konfiguracjach pamięci masowej maszyn wirtualnych SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage). Argument `-i` powinien być liczbą podstawowych woluminów `-I` fizycznych, a argumentem jest rozmiar paska. W tym dokumencie dla woluminu danych są używane `-i` dwa woluminy fizyczne, więc argument przełącznika jest ustawiony na **2**. Rozmiar paska dla woluminu danych to **256KiB**. Jeden wolumin fizyczny jest używany dla `-i` `-I` woluminu dziennika, więc żadne lub przełączniki nie są jawnie używane dla poleceń woluminu dziennika.  
 
-   <pre><code>sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
+   > [!IMPORTANT]
+   > Użyj `-i` przełącznika i ustaw go na liczbę podstawowej woluminu fizycznego, gdy używasz więcej niż jednego woluminu fizycznego dla każdego woluminu danych, dziennika lub udostępnionego woluminu. Użyj `-I` przełącznika, aby określić rozmiar paska podczas tworzenia woluminu rozłożonego.  
+   > Zobacz [konfiguracje magazynu maszyn wirtualnych SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) dla zalecanych konfiguracji magazynu, w tym rozmiarów pasków i liczby dysków.  
+
+   <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_shared vg_hana_shared_<b>HN1</b>
    sudo mkfs.xfs /dev/vg_hana_data_<b>HN1</b>/hana_data

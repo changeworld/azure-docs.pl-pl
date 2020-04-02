@@ -1,6 +1,6 @@
 ---
 title: Korzystanie z apache Flink for Apache Kafka — usługi Azure Event Hubs | Dokumenty firmy Microsoft
-description: Ten artykuł zawiera informacje dotyczące sposobu łączenia aplikacji Apache Flink z centrum zdarzeń platformy Azure z włączoną usługą Azure
+description: Ten artykuł zawiera informacje dotyczące łączenia aplikacji Apache Flink z centrum zdarzeń platformy Azure
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: db877279bcfa7e132841e342cfc25b66bb3ec384
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ab542e1328bb986f53d31e2eca75007cf1e0c75
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283603"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521800"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Korzystanie z platformy Apache Flink z usługą Azure Event Hubs dla platformy Apache Kafka
 W tym samouczku pokazano, jak połączyć apache Flink z centrum zdarzeń bez zmiany klientów protokołu lub uruchamiania własnych klastrów. Usługa Azure Event Hubs obsługuje [apache kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html).
@@ -48,7 +48,7 @@ Aby ukończyć ten samouczek, upewnij się, że masz następujące wymagania wst
 
 ## <a name="create-an-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
 
-Obszar nazw centrum zdarzeń jest wymagany do wysyłania lub odbierania z dowolnej usługi Centrum zdarzeń. Zobacz [Tworzenie centrów zdarzeń z włączoną platformą Kafka, aby](event-hubs-create.md) uzyskać informacje na temat uzyskiwania punktu końcowego usługi Event Hubs Platformy Kafka. Pamiętaj, aby skopiować parametry połączenia usługi Event Hubs do późniejszego użycia.
+Obszar nazw centrum zdarzeń jest wymagany do wysyłania lub odbierania z dowolnej usługi Centrum zdarzeń. Zobacz [Tworzenie centrum zdarzeń,](event-hubs-create.md) aby uzyskać instrukcje tworzenia obszaru nazw i centrum zdarzeń. Pamiętaj, aby skopiować parametry połączenia usługi Event Hubs do późniejszego użycia.
 
 ## <a name="clone-the-example-project"></a>Klonowanie projektu przykładowego
 
@@ -88,11 +88,11 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-Producent rozpocznie teraz wysyłanie zdarzeń do centrum zdarzeń z `test` włączoną platformą Kafka na temat i drukowanie zdarzeń do stdout.
+Producent rozpocznie teraz wysyłanie wydarzeń do `test` centrum zdarzeń na temat i drukowanie wydarzeń do stdout.
 
 ## <a name="run-flink-consumer"></a>Uruchamianie konsumenta Flink
 
-Korzystając z podanego przykładu konsumenta, odbieraj wiadomości z centrów zdarzeń z włączoną platformą Kafka.
+Korzystając z podanego przykładu konsumenta, odbieraj wiadomości z Centrum zdarzeń. 
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>Podaj punkt końcowy usługi Event Hubs Platformy Kafka
 
@@ -136,7 +136,7 @@ Aby dowiedzieć się więcej na temat usługi Event Hubs i usługi Event Hubs dl
 
 - [Dowiedz się więcej na temat usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Usługa Event Hubs dla platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Jak utworzyć centra Event Hubs z obsługą platformy Kafka](event-hubs-create.md)
+- [Tworzenie centrum zdarzeń](event-hubs-create.md)
 - [Przesyłanie strumieniowe do usługi Event Hubs z aplikacji platformy Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Dublowanie brokera platformy Kafka w centrum zdarzeń](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Łączenie platformy Apache Spark z centrum zdarzeń](event-hubs-kafka-spark-tutorial.md)

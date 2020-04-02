@@ -1,15 +1,15 @@
 ---
 title: Konfigurowanie menedżera danych blockchain przy użyciu witryny Azure portal — usługa Azure Blockchain Service
 description: Twórz i zarządzaj Menedżerem danych Blockchain dla usługi Azure Blockchain za pomocą witryny Azure portal.
-ms.date: 11/04/2019
+ms.date: 03/30/2020
 ms.topic: article
-ms.reviewer: chroyal
-ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: beacef0660a253c90afb507618e8a1742f0c9d2d
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273165"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529613"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurowanie menedżera danych łańcucha bloków przy użyciu witryny Azure Portal
 
@@ -22,7 +22,7 @@ Aby skonfigurować wystąpienie menedżera danych blockchain, należy:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Ukończ [szybki start: Tworzenie członka łańcucha bloków przy użyciu portalu Azure](create-member.md) lub [przewodnika Szybki start: tworzenie członka łańcucha bloków usługi Azure Blockchain przy użyciu interfejsu wiersza polecenia platformy Azure](create-member-cli.md)
+* Ukończ [przewodnik Szybki start: Utwórz członka łańcucha bloków za pomocą portalu Azure](create-member.md) lub [przewodnika Szybki start: utwórz członka łańcucha bloków usługi Azure Blockchain przy użyciu interfejsu wiersza polecenia platformy Azure.](create-member-cli.md) Warstwa *Standard* Standard usługi Azure Blockchain Service jest zalecana podczas korzystania z Menedżera danych blockchain.
 * Tworzenie [tematu siatki zdarzeń](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
 * Dowiedz się więcej o [programach obsługi zdarzeń w usłudze Azure Event Grid](../../event-grid/event-handlers.md)
 

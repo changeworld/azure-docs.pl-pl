@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3b738d95b5b777f1cf0329fb3c1bc3e2860421e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045863"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545970"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
 ## <a name="overview"></a>Omówienie
@@ -179,7 +179,7 @@ Dla wielu organizacji szyfrowanie danych w spoczynku jest obowiązkowym krokiem 
 
 Usługi usługi magazynu platformy Azure obsługują teraz usługę CORS, dzięki czemu po ustawieniu reguł CORS dla usługi poprawnie uwierzytelnione żądanie utworzone względem usługi z innej domeny jest oceniane w celu ustalenia, czy jest dozwolone zgodnie z określonymi regułami.
 
-## <a name="networking"></a>Obsługa sieci
+## <a name="networking"></a>Networking
 Sekcja zawiera dodatkowe informacje dotyczące kluczowych funkcji zabezpieczeń sieci platformy Azure i informacje podsumowujące o tych możliwościach.
 
 ### <a name="network-layer-controls"></a>Formanty warstwy sieciowej
@@ -233,11 +233,11 @@ Usługa Microsoft [Azure Application Gateway](../../application-gateway/overview
 
 ![Application Gateway](./media/overview/azure-security-fig2.png)
 
-Pozwala na optymalizację wydajności farmy internetowej poprzez odciążanie procesora intensywnie zakończenia SSL do bramy aplikacji (znany również jako "odciążanie SSL" lub "SSL mostkowania"). Zapewnia również inne funkcje routingu warstwy 7, w tym dystrybucję ruchu przychodzącego okrężną, koligacji sesji opartej na plikach cookie, routing oparty na ścieżce adresów URL oraz możliwość hostowania wielu witryn sieci Web za jedną bramą aplikacji. Usługa Azure Application Gateway to moduł równoważenia obciążenia warstwy 7.
+Pozwala na optymalizację wydajności farmy internetowej poprzez odciążanie intensywnego zakończenia TLS procesora do bramy aplikacji (znanej również jako "odciążanie TLS" lub "mostkowanie TLS"). Zapewnia również inne funkcje routingu warstwy 7, w tym dystrybucję ruchu przychodzącego okrężną, koligacji sesji opartej na plikach cookie, routing oparty na ścieżce adresów URL oraz możliwość hostowania wielu witryn sieci Web za jedną bramą aplikacji. Usługa Azure Application Gateway to moduł równoważenia obciążenia warstwy 7.
 
 Udostępnia tryb failover, oparty na wydajności routing żądań HTTP między różnymi serwerami — w chmurze i lokalnymi.
 
-Aplikacja udostępnia wiele funkcji kontrolera dostarczania aplikacji (ADC), w tym równoważenie obciążenia HTTP, koligacja sesji oparta na plikach cookie, odciążanie [warstwy SSL (Secure Sockets Layer),](../../application-gateway/tutorial-restrict-web-traffic-powershell.md) niestandardowe sondy kondycji, obsługę wielu lokacji i wiele innych.
+Aplikacja udostępnia wiele funkcji kontrolera dostarczania aplikacji (ADC), w tym równoważenie obciążenia HTTP, koligacja sesji oparta na plikach cookie, [odciążanie TLS,](../../application-gateway/tutorial-restrict-web-traffic-powershell.md)niestandardowe sondy kondycji, obsługę wielu lokacji i wiele innych.
 
 ### <a name="web-application-firewall"></a>Zapora aplikacji internetowej
 Zapora aplikacji sieci Web jest funkcją [bramy aplikacji platformy Azure,](../../application-gateway/overview.md) która zapewnia ochronę aplikacjom sieci Web, które używają bramy aplikacji dla standardowych funkcji kontroli dostarczania aplikacji (ADC). Zapora aplikacji internetowej realizuje ten cel, chroniąc je przed większością z 10 najpopularniejszych luk w zabezpieczeniach w Internecie OWASP.
@@ -323,7 +323,7 @@ Aktualizacje poprawek stanowią podstawę do znajdowania i rozwiązywania potenc
 [Usługa Security Center](../../security-center/security-center-intro.md) pomaga zapobiegać zagrożeniom, wykrywać i reagować na nie, a także zapewnia lepszy wgląd w zabezpieczenia zasobów platformy Azure i kontrolę nad nim. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami w ramach subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby przejść niezauważone, i współpracuje z szerokim ekosystemem rozwiązań zabezpieczających.
 
 ## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
-Zabezpieczanie systemów, aplikacji i danych rozpoczyna się od kontroli dostępu opartych na tożsamości. Funkcje zarządzania tożsamościami i dostępem wbudowane w produkty i usługi biznesowe firmy Microsoft pomagają chronić informacje organizacyjne i osobiste przed nieautoryzowanym dostępem, udostępniając je legalnym użytkownikom w dowolnym miejscu i czasie. tego potrzebują.
+Zabezpieczanie systemów, aplikacji i danych rozpoczyna się od kontroli dostępu opartych na tożsamości. Funkcje zarządzania tożsamościami i dostępem wbudowane w produkty i usługi biznesowe firmy Microsoft pomagają chronić informacje organizacyjne i osobiste przed nieautoryzowanym dostępem, udostępniając je legalnym użytkownikom w dowolnym miejscu i czasie.
 
 ### <a name="secure-identity"></a>Bezpieczna tożsamość
 Firma Microsoft używa wielu praktyk i technologii zabezpieczeń w swoich produktach i usługach do zarządzania tożsamością i dostępem.

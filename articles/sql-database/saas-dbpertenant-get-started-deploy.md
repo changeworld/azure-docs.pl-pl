@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 31f712f80ee2492e4bbaec99bd093d46f9d04e6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3182daa4ebf3becc824b600d1e487e12b875b275
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823996"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529650"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Wdrażanie i eksplorowanie wielodostępnejastosyny SaaS, który używa wzorca bazy danych na dzierżawę z bazy danych SQL
 
@@ -128,7 +128,7 @@ Aplikacja Wingtip używa [*usługi Azure Traffic Manager*](../traffic-manager/t
 
     | Część adresu URL        | Opis       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | Zdarzenia części aplikacji Wingtip.<br /><br /> *-dpt* odróżnia *implementacji bazy danych na dzierżawcę* Wingtip Tickets od innych implementacji. Przykładami są *implementacje pojedynczej* aplikacji na dzierżawę *(-sa)* lub *wielodostępne bazy danych* (*-mt).* |
+    | wydarzenia.wingtip-dpt | Zdarzenia części aplikacji Wingtip.<br /><br /> *-dpt* odróżnia *implementacji bazy danych na dzierżawcę* Wingtip Tickets od innych implementacji. Przykładami są *implementacje pojedynczej* aplikacji na dzierżawę *(-sa)* lub *wielodostępne bazy danych* (*-mt).* |
     | . * &lt;użytkownik&gt;* | *af1* w przykładzie. |
     | trafficmanager.net/ .trafficmanager.net/ | Traffic Manager, podstawowy adres URL. |
     | klub fabrikamjazzc | Identyfikuje dzierżawcę o nazwie Fabrikam Jazz Club. |

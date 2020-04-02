@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 2/18/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 6ba48f3c40e45afa02e03a7589e968cca723118e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bc191bb27ebb0bac631ef5cfa8ddc34bbd8214e
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249518"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520888"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup akcji i zarządzanie nimi w witrynie Azure portal
 Grupa akcji to zbiór preferencji powiadomień zdefiniowanych przez właściciela subskrypcji platformy Azure. Alerty usługi Azure Monitor i service health używają grup akcji do powiadamiania użytkowników o wyzwoleniu alertu. Różne alerty mogą używać tej samej grupy akcji lub różnych grup akcji w zależności od wymagań użytkownika. W ramach subskrypcji można skonfigurować maksymalnie 2000 grup akcji.
@@ -52,7 +52,7 @@ Aby uzyskać informacje na temat konfigurowania grup akcji za pomocą szablonów
 
     1. **Nazwa**: Wprowadź unikatowy identyfikator dla tej akcji.
 
-    1. **Typ akcji:** Wybierz adres e-mail/SMS/Push/Voice, aplikację logiki, element webhook, ITSM lub system uruchomieniu automatyzacji.
+    1. **Typ akcji:** Wybierz element runbook automatyzacji, funkcję platformy Azure, rolę usługi Azure Resource Manager poczty e-mail, e-mail/SMS/Push/Voice, ITSM, aplikację logiki, bezpieczny element webhook, element webhook.
 
     1. **Szczegóły:** Na podstawie typu akcji wprowadź numer telefonu, adres e-mail, identyfikator URI elementu webhook, aplikację platformy Azure, połączenie ITSM lub element runbook automatyzacji. W przypadku akcji ITSM należy dodatkowo określić **element pracy** i inne pola wymagane przez narzędzie ITSM.
     

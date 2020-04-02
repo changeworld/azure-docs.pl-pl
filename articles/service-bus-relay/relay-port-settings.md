@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 55bb6b620c7ba9ee13068213cbc867b165acc185
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 532e3c297c42ea16b1f462a01699fc2fd71c6cce
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76514888"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529108"
 ---
 # <a name="azure-relay-port-settings"></a>Ustawienia portu usługi Azure Relay
 
@@ -27,7 +27,7 @@ W poniższej tabeli opisano wymaganą konfigurację wartości portów dla usług
 
 ## <a name="hybrid-connections"></a>Połączenia hybrydowe
 
-Połączenia hybrydowe używa WebSockets na porcie 443 z SSL jako podstawowy mechanizm transportu, który używa tylko **HTTPS.** 
+Połączenia hybrydowe używa WebSockets na porcie 443 z TLS jako podstawowy mechanizm transportu, który używa tylko **HTTPS.** 
 
 ## <a name="wcf-relays"></a>Przekaźniki WCF
   

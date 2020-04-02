@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 88daecdf4490ffd4eef45e6cd664a16f86bad113
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2cdafa9a36a5f906151ca6946e18ef82bc7f1e01
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76170282"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529420"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurowanie laboratorium w laboratoriach devtest platformy Azure do korzystania z bramy pulpitu zdalnego
 W laboratoriach DevTest Azure można skonfigurować bramę pulpitu zdalnego dla laboratorium, aby zapewnić bezpieczny dostęp do maszyn wirtualnych laboratorium bez konieczności udostępniania portu RDP. Laboratorium zapewnia centralne miejsce dla użytkowników laboratorium, aby wyświetlić i połączyć się ze wszystkimi maszynami wirtualnymi, do których mają dostęp. Przycisk **Połącz** na stronie **Maszyna wirtualna** tworzy plik RDP specyficzny dla komputera, który można otworzyć, aby połączyć się z urządzeniem. Połączenie RDP można dodatkowo dostosować i zabezpieczyć, łącząc laboratorium z bramą pulpitu zdalnego. 
@@ -43,7 +43,7 @@ Takie podejście jest bezpieczniejsze, ponieważ użytkownik laboratorium uwierz
 Aby pracować z funkcją uwierzytelniania tokenów DevTest Labs, istnieje kilka wymagań konfiguracyjnych dla maszyn bramy, usług nazw domen (DNS) i funkcji.
 
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>Wymagania dotyczące zdalnych komputerów bramy pulpitu
-- Certyfikat SSL musi być zainstalowany na komputerze bramy, aby objatrakać ruch HTTPS. Certyfikat musi być zgodny z w pełni kwalifikowaną nazwą domeny (FQDN) modułu równoważenia obciążenia dla farmy bramy lub nazwy FQDN samego komputera, jeśli istnieje tylko jeden komputer. Certyfikaty SSL z dziką kartą nie działają.  
+- Certyfikat TLS/SSL musi być zainstalowany na komputerze bramy w celu obsługi ruchu HTTPS. Certyfikat musi być zgodny z w pełni kwalifikowaną nazwą domeny (FQDN) modułu równoważenia obciążenia dla farmy bramy lub nazwy FQDN samego komputera, jeśli istnieje tylko jeden komputer. Certyfikaty TLS/SSL z symbolami wieloznaczowymi nie działają.  
 - Certyfikat podpisywania zainstalowany na komputerach bramy. Utwórz certyfikat podpisywania przy użyciu [skryptu Create-SigningCertificate.ps1.](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1)
 - Zainstaluj moduł [uwierzytelniania podłączanego,](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) który obsługuje uwierzytelnianie tokenów bramy pulpitu zdalnego. Jednym z przykładów `RDGatewayFedAuth.msi` takiego modułu jest to, że pochodzi z [System Center Virtual Machine Manager (VMM) obrazy](/system-center/vmm/install-console?view=sc-vmm-1807). Aby uzyskać więcej informacji o centrum [systemowym,](https://docs.microsoft.com/system-center/) zobacz Dokumentacja systemu i [szczegóły cen](https://www.microsoft.com/cloud-platform/system-center-pricing).  
 - Serwer bramy może obsługiwać `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`żądania kierowane do programu .
@@ -58,7 +58,7 @@ Funkcja platformy Azure obsługuje `https://{function-app-uri}/app/host/{lab-mac
 
 ## <a name="requirements-for-network"></a>Wymagania dotyczące sieci
 
-- System DNS dla nazwy FQDN skojarzonej z certyfikatem SSL zainstalowanym na maszynach bramy musi kierować ruch do komputera bramy lub modułu równoważenia obciążenia farmy maszyn bramy.
+- System DNS dla nazwy FQDN skojarzonej z certyfikatem TLS/SSL zainstalowanym na maszynach bramy musi kierować ruch do komputera bramy lub modułu równoważenia obciążenia farmy maszyn bramy.
 - Jeśli maszyna laboratoryjna używa prywatnych adresów IP, musi istnieć ścieżka sieciowa z komputera bramy do komputera laboratoryjnego, poprzez udostępnianie tej samej sieci wirtualnej lub przy użyciu sieci wirtualnych równorzędnych.
 
 ## <a name="configure-the-lab-to-use-token-authentication"></a>Konfigurowanie laboratorium do używania uwierzytelniania tokenów 
@@ -79,7 +79,7 @@ Skonfiguruj laboratorium do używania uwierzytelniania tokenu, wykonując nastę
 1. Z listy laboratoriów wybierz **laboratorium**.
 1. Na stronie laboratorium wybierz **pozycję Konfiguracja i zasady**.
 1. W menu po lewej stronie w sekcji **Ustawienia** wybierz pozycję **Ustawienia laboratorium**.
-1. W sekcji **Pulpit zdalny** wprowadź w pełni kwalifikowaną nazwę domeny (FQDN) lub adres IP komputera bramy usług pulpitu zdalnego lub farmy dla pola **Nazwa hosta bramy.** Ta wartość musi być zgodna z FQDN certyfikatu SSL używanego na komputerach bramy.
+1. W sekcji **Pulpit zdalny** wprowadź w pełni kwalifikowaną nazwę domeny (FQDN) lub adres IP komputera bramy usług pulpitu zdalnego lub farmy dla pola **Nazwa hosta bramy.** Ta wartość musi być zgodna z FQDN certyfikatu TLS/SSL używanego na komputerach bramy.
 
     ![Opcje pulpitu zdalnego w ustawieniach laboratoryjnych](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
 1. W sekcji **Pulpit zdalny** w przypadku klucza tajnego **tokenu bramy** wprowadź nazwę klucza tajnego utworzonego wcześniej. Ta wartość nie jest kluczem funkcyjnym, ale nazwą klucza tajnego w magazynie kluczy laboratorium, który przechowuje klucz funkcyjny.
@@ -110,7 +110,7 @@ Oto przykład sieciowej sieciowej, która zezwala tylko na ruch, który najpierw
 Wykonaj następujące kroki, aby skonfigurować przykładowe rozwiązanie dla farmy bramy pulpitu zdalnego.
 
 1. Utwórz certyfikat podpisywania.  Uruchom [create-signingCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1). Zapisz odcisk palca, hasło i kodowanie Base64 utworzonego certyfikatu.
-2. Uzyskaj certyfikat SSL. Nazwa FQDN skojarzona z certyfikatem SSL musi być dla kontrolowanej domeny. Zapisz odcisk palca, hasło i kodowanie Base64 dla tego certyfikatu. Aby uzyskać odcisk palca za pomocą programu PowerShell, należy użyć następujących poleceń.
+2. Uzyskaj certyfikat TLS/SSL. Nazwa FQDN skojarzona z certyfikatem TLS/SSL musi być dla kontrolowanej domeny. Zapisz odcisk palca, hasło i kodowanie Base64 dla tego certyfikatu. Aby uzyskać odcisk palca za pomocą programu PowerShell, należy użyć następujących poleceń.
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;
@@ -132,9 +132,9 @@ Wykonaj następujące kroki, aby skonfigurować przykładowe rozwiązanie dla fa
     - instanceCount – liczba maszyn bramy do utworzenia.  
     - alwaysOn — wskazuje, czy zachować utworzoną aplikację usługi Azure Functions w stanie ciepłym, czy nie. Utrzymywanie aplikacji Usługi Azure usługi pozwoli uniknąć opóźnień, gdy użytkownicy po raz pierwszy próbują połączyć się z ich laboratorium maszyny Wirtualnej, ale ma wpływ na koszty.  
     - tokenLifetime — czas utworzenia tokenu będzie prawidłowy. Format to HH:MM:SS.
-    - sslCertificate — kodowanie base64 certyfikatu SSL dla maszyny bramy.
-    - sslCertificatePassword — hasło certyfikatu SSL dla maszyny bramy.
-    - sslCertificateThumbprint — odcisk palca certyfikatu do identyfikacji w lokalnym magazynie certyfikatów certyfikatu SSL.
+    - sslCertificate — kodowanie Base64 certyfikatu TLS/SSL dla maszyny bramy.
+    - sslCertificatePassword — hasło certyfikatu TLS/SSL dla maszyny bramy.
+    - sslCertificateThumbprint — odcisk palca certyfikatu do identyfikacji w lokalnym magazynie certyfikatów certyfikatu TLS/SSL.
     - signCertificate — kodowanie Base64 do podpisywania certyfikatu dla komputera bramy.
     - signCertificatePassword — hasło do podpisywania certyfikatu dla komputera bramy.
     - signCertificateThumbprint — odcisk palca certyfikatu do identyfikacji w lokalnym magazynie certyfikatów certyfikatu podpisywania.
@@ -157,7 +157,7 @@ Wykonaj następujące kroki, aby skonfigurować przykładowe rozwiązanie dla fa
         - {utc-expiration-date} jest datą w czasie UTC, z którą token sygnatury dostępu Współdzielonego wygaśnie, a token sygnatury dostępu współdzielonego nie może być już używany do uzyskiwania dostępu do konta magazynu.
 
     Rejestrowanie wartości gatewayFQDN i gatewayIP z danych wyjściowych wdrożenia szablonu. Należy również zapisać wartość klucza funkcyjnego dla nowo utworzonej funkcji, którą można znaleźć na karcie [Ustawienia aplikacji funkcji.](../azure-functions/functions-how-to-use-azure-function-app-settings.md)
-5. Skonfiguruj system DNS tak, aby FQDN certyfikatu SSL kierowała do adresu IP gatewayIP z poprzedniego kroku.
+5. Skonfiguruj system DNS tak, aby funkcja FQDN certyfikatu TLS/SSL była kierowana na adres IP gatewayIP z poprzedniego kroku.
 
     Po utworzeniu farmy bramy usług pulpitu zdalnego i wykonaniu odpowiednich aktualizacji DNS jest ona gotowa do użycia przez laboratorium w laboratorium DevTest Labs. Ustawienia **tajnej nazwy hosta bramy** i **tokenu bramy** muszą być skonfigurowane do używania wdrożonych komputerów bramy. 
 

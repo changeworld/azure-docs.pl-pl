@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: a242da8cc98a21248c48a1b3981fa713706028ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4cef49f138b96848b8e59cb5b2d0b185d4568aa9
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064941"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520993"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Uwierzytelnij aplikację za pomocą usługi Azure Active Directory w celu uzyskania dostępu do zasobów usługi Event Hubs
 Platforma Microsoft Azure zapewnia zintegrowane zarządzanie kontrolą dostępu dla zasobów i aplikacji opartych na usłudze Azure Active Directory (Azure AD). Kluczową zaletą korzystania z usługi Azure AD z usługi Azure Event Hubs jest to, że nie trzeba już przechowywać poświadczenia w kodzie. Zamiast tego można zażądać tokenu dostępu OAuth 2.0 z platformy Microsoft Identity. Nazwa zasobu, aby `https://eventhubs.azure.net/` zażądać tokenu jest (Dla klientów `https://<namespace>.servicebus.windows.net`platformy Kafka, zasób, aby zażądać tokenu jest ). Usługa Azure AD uwierzytelnia podmiot zabezpieczeń (użytkownika, grupy lub jednostki usługi) z uruchomieniem aplikacji. Jeśli uwierzytelnianie zakończy się pomyślnie, usługa Azure AD zwraca token dostępu do aplikacji, a aplikacja może następnie użyć tokenu dostępu do autoryzowania żądania do zasobów usługi Azure Event Hubs.
@@ -106,7 +106,7 @@ Aby uzyskać listę scenariuszy, dla których tokeny pozyskiwania jest obsługiw
 ## <a name="samples"></a>Samples
 - [Przykłady witryn Microsoft.Azure.EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
-    Te przykłady używają starej biblioteki **Microsoft.Azure.EventHubs,** ale można łatwo zaktualizować go do korzystania z najnowszej biblioteki **Azure.Messaging.EventHubs.** Aby przenieść przykład ze starej biblioteki do nowej, zobacz [Przewodnik do migracji z witryny Microsoft.Azure.EventHubs do usługi Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md).
+    Te przykłady używają starej biblioteki **Microsoft.Azure.EventHubs,** ale można łatwo zaktualizować go do korzystania z najnowszej biblioteki **Azure.Messaging.EventHubs.** Aby przenieść przykład ze starej biblioteki do nowej, zobacz [Przewodnik do migracji z witryny Microsoft.Azure.EventHubs do usługi Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
 - [Przykłady witryn Azure.Messaging.EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
     Ten przykład został zaktualizowany, aby użyć najnowszej biblioteki **Azure.Messaging.EventHubs.**

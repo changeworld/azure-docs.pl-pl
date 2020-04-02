@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 4b1c1a963b065411f1a0ab84141bdf1835930ebb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fe20c90cf857ce09a83c6ac53e6fe77eb512153
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74973547"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528188"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Publiczne zestawy danych do testowania i prototypowania
 
@@ -31,7 +31,7 @@ Przejrzyj tę listę publicznych zestawów danych, aby uzyskać dane, których m
 | [Dane z nasa z nauk o Ziemi](https://earthdata.nasa.gov/) | Ponad 32 000 zbiorów danych obejmujących rolnictwo, atmosferę, biosferę, klimat, kriosferę, wymiary ludzkie, hydrosferę, powierzchnię ziemi, oceany, interakcje słońce-ziemia i wiele innych. | Zestawy danych są w różnych formatach. |
 | [Opóźnienia lotów linii lotniczych i inne dane transportowe](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Biuro Statystyki Transportu (DOS) Departamentu Transportu USA (DOT) śledzi na czas wydajność lotów krajowych obsługiwanych przez dużych przewoźników lotniczych. Podsumowanie pojawia się na temat liczby lotów na czas, opóźnionych, odwołanych i przekierowanych ... w tabelach podsumowujących zamieszczonych na tej stronie internetowej." | Pliki są w formacie CSV. |
 | [Ofiary śmiertelne w ruchu drogowym - US Fatality Analysis Reporting System (FARS)](https://www.nhtsa.gov/FARS) | "FARS jest ogólnopolskim spisem danych zapewniających NHTSA, Kongres i amerykańskie dane publiczne dotyczące śmiertelnych obrażeń odniesionych w wypadkach drogowych pojazdów silnikowych." | "Tworzenie własnych danych śmiertelnych prowadzonych online za pomocą systemu zapytań FARS. Możesz też pobrać wszystkie dane FARS z 1975 roku, aby je przedstawić ze strony FTP." |
-| [Dane toksycznych substancji chemicznych - dane EPA Toxicity ForeCaster (ToxCast™)](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "Najbardziej aktualne, publicznie dostępne dane EPA dotyczące toksyczności o wysokiej przepustowości dotyczące tysięcy chemikaliów. Dane te są generowane w ramach badań toxcast epa." | Zestawy danych są dostępne w różnych formatach, w tym arkuszy kalkulacyjnych, pakietów R i plików bazy danych MySQL. |
+| [Toksyczne dane chemiczne - Dane EPA Toxicity ForeCaster (ToxCast)&trade;](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "Najbardziej aktualne, publicznie dostępne dane EPA dotyczące toksyczności o wysokiej przepustowości dotyczące tysięcy chemikaliów. Dane te są generowane w ramach badań toxcast epa." | Zestawy danych są dostępne w różnych formatach, w tym arkuszy kalkulacyjnych, pakietów R i plików bazy danych MySQL. |
 | [Toksyczne dane chemiczne - NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | "Wyzwanie związane z danymi Tox21 z 2014 r. ma na celu pomóc naukowcom zrozumieć potencjał substancji chemicznych i związków testowanych za pośrednictwem toksykologii w ramach inicjatywy XXI wieku, aby zakłócić szlaki biologiczne w sposób, który może spowodować skutki toksyczne." | Zestawy danych są dostępne w formatach SMILES i SDF. Dane zawierają "dane dotyczące aktywności ą w skazach i struktury chemiczne na kolekcji Tox21 ~10 000 związków (Tox21 10K)." |
 | [Dane biotechnologiczne i genomowe z NCBI](https://www.ncbi.nlm.nih.gov/guide/data-software/) | Wiele zbiorów danych obejmujących geny, genomy i białka. | Zestawy danych są w formacie tekstowym, XML, BLAST i innych. Dostępna jest aplikacja BLAST. |
 
@@ -41,7 +41,6 @@ Przejrzyj tę listę publicznych zestawów danych, aby uzyskać dane, których m
 |---|---|---|
 | [Dane o taksówce w Nowym Jorku](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Rekordy podróży taksówką obejmują pola przechwytywania pick-up i dropoff daty / godziny, pick-up i dropoff lokalizacje, odległości podróży, wyszczególnione taryfy, rodzaje stawek, typy płatności i kierowcy zgłoszonych liczby pasażerów." | Zestawy danych są w plikach CSV według miesiąca. |
 | [Zestawy danych Microsoft Research - "Data Science for Research"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Wiele zestawów danych obejmujących interakcję człowiek-komputer, audio/wideo, wyszukiwanie danych/informacji, geoprzestrzenne/lokalizację, przetwarzanie języka naturalnego i robotykę/wizję komputerową. | Zestawy danych są w różnych formatach, spakowane do pobrania. |
-| [Dane dotyczące genomu publicznego](https://www.completegenomics.com/public-data/) | "Zróżnicowany zestaw danych całych genomów ludzkich jest swobodnie dostępny do użytku publicznego w celu wzmocnienia każdego badania genomowego..." Dostawca, Complete Genomics, jest prywatną korporacją nastawioną na zysk. | Zestawy danych po wyodrębnianiu są w formacie tekstowym UNIX. Dostępne są również narzędzia analityczne. |
 | [Dane open science data cloud](https://www.opensciencedatacloud.org/projects/) | "Open Science Data Cloud zapewnia społeczności naukowej zasoby do przechowywania, udostępniania i analizowania terabajtów i zbiorów danych naukowych w skali petabajtów."| Zestawy danych są w różnych formatach. |
 | [Globalne dane klimatyczne - WorldClim](https://worldclim.org/) | "WorldClim to zestaw globalnych warstw klimatycznych (dane o klimacie siatkowym) o rozdzielczości przestrzennej około 1 km2. Dane te mogą być używane do mapowania i modelowania przestrzennego." | Pliki te zawierają dane geoprzestrzenne. Aby uzyskać więcej informacji, zobacz [Format danych](https://worldclim.org/formats1). |
 | [Dane o ludzkim społeczeństwie - Projekt GDELT](https://www.gdeltproject.org/data.html) | "Projekt GDELT jest największą, najbardziej wszechstronną i najwyższą rozdzielczością otwartą bazą danych społeczeństwa ludzkiego, jaką kiedykolwiek stworzono." | Surowe pliki danych są w formacie CSV. |

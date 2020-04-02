@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 5f3027909d1c4684e2ef5d1b6e967cb11f570fd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: ca5f80e57f90e4dd26ac2e4a175998ff3de2c102
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062427"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546437"
 ---
 # <a name="customize-server-parameters-by-using-azure-cli"></a>Dostosowywanie parametrów serwera przy użyciu interfejsu wiersza polecenia platformy Azure
 Można wyświetlić, wyświetlić i zaktualizować parametry konfiguracji dla usługi Azure Database dla serwera MySQL przy użyciu narzędzia azure cli, narzędzia wiersza polecenia platformy Azure. Podzbiór konfiguracji aparatu jest narażony na poziomie serwera i może być modyfikowany. 
@@ -55,10 +55,10 @@ Ten kod resetuje konfigurację **\_\_dziennika kwerendy powolnej** do wartości 
 
 ### <a name="populating-the-time-zone-tables"></a>Wypełnianie tabel stref czasowych
 
-Tabele stref czasowych na serwerze `az_load_timezone` można wypełnić, wywołując procedurę składowaną za pomocą narzędzia, takiego jak wiersz polecenia MySQL lub MySQL Workbench.
+Tabele stref czasowych na serwerze `mysql.az_load_timezone` można wypełnić, wywołując procedurę składowaną za pomocą narzędzia, takiego jak wiersz polecenia MySQL lub MySQL Workbench.
 
 > [!NOTE]
-> Jeśli `az_load_timezone` używasz polecenia z mysql workbench, może być konieczne wyłączenie `SET SQL_SAFE_UPDATES=0;`trybu bezpiecznej aktualizacji przy użyciu .
+> Jeśli `mysql.az_load_timezone` używasz polecenia z mysql workbench, może być konieczne wyłączenie `SET SQL_SAFE_UPDATES=0;`trybu bezpiecznej aktualizacji przy użyciu .
 
 ```sql
 CALL mysql.az_load_timezone();

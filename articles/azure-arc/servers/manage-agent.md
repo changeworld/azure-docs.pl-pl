@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 758e6123fd09df1e3f8b2e883a729b9fec4328d1
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 8bcf59ee863bb2fd2a3213480372ad215c2fc00d
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80367293"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528586"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Zarządzanie i utrzymywanie agenta Podłączonego komputera
 
@@ -61,6 +61,9 @@ Kreator instalacji odnajduje, czy istnieje poprzednia wersja, a następnie autom
 ### <a name="linux-agent"></a>Agent Linuksa
 
 Aby zaktualizować agenta na komputerze z systemem Linux do najnowszej wersji, obejmuje dwa polecenia. Jedno polecenie, aby zaktualizować indeks pakietu lokalnego z listą najnowszych dostępnych pakietów z repozytoriów i jedno polecenie uaktualniania pakietu lokalnego. 
+
+> [!NOTE]
+> Aby uaktualnić agenta, musisz mieć uprawnienia dostępu *głównego* lub konto, które ma podwyższone prawa przy użyciu sudo.
 
 #### <a name="upgrade-ubuntu"></a>Uaktualnij Ubuntu
 
@@ -112,13 +115,11 @@ Akcje polecenia [zypper,](https://en.opensuse.org/Portal:Zypper) takie jak insta
 
 ## <a name="remove-the-agent"></a>Usuń agenta
 
-Aby odinstalować agenta systemu Windows lub Linux za pomocą wiersza polecenia lub kreatora konfiguracji opisanego w tej sekcji, należy odinstalować jedną z poniższych procedur. Przed odinstalowaniem agenta należy najpierw odłączyć komputer od programu Azure Arc dla serwerów (wersja zapoznawcza), wykonując następujące kroki: 
-
-1. Otwórz usługę Azure Arc dla serwerów (wersja zapoznawcza), przechodząc do [witryny Azure portal](https://aka.ms/hybridmachineportal).
-
-2. Wybierz maszynę z listy, wybierz wielokropek (**...**), a następnie wybierz pozycję **Usuń**.
+Wykonaj jedną z następujących metod, aby odinstalować agenta podłączonego komputera systemu Windows lub Linux z komputera. Usunięcie agenta nie powoduje wyrejestrowania komputera za pomocą systemu Arc dla serwerów (wersja zapoznawcza), jest to oddzielny proces, który wykonujesz, gdy nie trzeba już zarządzać komputerem na platformie Azure.
 
 ### <a name="windows-agent"></a>Agent systemu Windows
+
+Obie następujące metody usuwają agenta, ale nie usuwają folderu *C:\Program Files\AzureConnectedMachineAgent* na komputerze.
 
 #### <a name="uninstall-from-control-panel"></a>Odinstalowywanie z Panelu sterowania
 
@@ -158,6 +159,9 @@ Aby odinstalować agenta ręcznie z wiersza polecenia lub użyć metody zautomat
 
 ### <a name="linux-agent"></a>Agent Linuksa
 
+> [!NOTE]
+> Aby odinstalować agenta, musisz mieć uprawnienia dostępu *głównego* lub konto, które ma podwyższone prawa przy użyciu sudo.
+
 Aby odinstalować agenta Linuksa, polecenie do użycia zależy od systemu operacyjnego Linux.
 
 - W przypadku Ubuntu uruchom następujące polecenie:
@@ -177,3 +181,11 @@ Aby odinstalować agenta Linuksa, polecenie do użycia zależy od systemu operac
     ```bash
     sudo zypper remove azcmagent
     ```
+
+## <a name="unregister-machine"></a>Wyrejestrować maszynę
+
+Jeśli planujesz zatrzymać zarządzanie komputerem za pomocą usług pomocniczych na platformie Azure, wykonaj następujące kroki, aby wyrejestrować komputer za pomocą funkcji Arc dla serwerów (wersja zapoznawcza). Można wykonać ten krok przed lub po usunięciu agenta podłączonego komputera z komputera.
+
+1. Otwórz usługę Azure Arc dla serwerów (wersja zapoznawcza), przechodząc do [witryny Azure portal](https://aka.ms/hybridmachineportal).
+
+2. Wybierz maszynę z listy, wybierz wielokropek (**...**), a następnie wybierz pozycję **Usuń**.

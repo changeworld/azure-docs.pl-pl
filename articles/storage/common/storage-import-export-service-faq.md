@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: dcf9a278bfc0ede844f8eb59e3a256e40a47c57d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282430"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519482"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Usługa importu/eksportowania platformy Azure: często zadawane pytania
 
@@ -99,15 +99,17 @@ Dyski można wysyłać do centrum danych platformy Azure przy użyciu dowolnego 
 > [!NOTE]
 > Centra danych w Indiach wymagają listu deklaracji na papierze firmowym (challan dostawy) do zwrotu dysków. Aby zorganizować wymagany bilet wstępu, należy również zarezerwować odbiór u wybranego operatora i udostępnić szczegóły w centrum danych.
 
-### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Czy są jakieś ograniczenia w wysyłaniu dysku na arenie międzynarodowej?
+### <a name="are-there-any-restrictions-with-shipping-and-returning-my-drive-internationally"></a>Czy istnieją jakieś ograniczenia dotyczące wysyłki i zwrotu dysku na arenie międzynarodowej?
 
 Należy pamiętać, że fizyczne nośniki, które wysyłasz, mogą wymagać przekroczenia granic międzynarodowych. Użytkownik jest odpowiedzialny za zapewnienie, że jego fizyczne nośniki i dane są importowane i/lub eksportowane zgodnie z obowiązującymi przepisami prawa. Przed wysłaniem nośnika fizycznego skontaktuj się z doradcami, aby sprawdzić, czy twoje multimedia i dane mogą być legalnie wysyłane do zidentyfikowanego centrum danych. Pomoże to zapewnić, że dotrze do firmy Microsoft w odpowiednim czasie.
+
+Po zakończeniu przesyłania proces zwracania dysków na adres międzynarodowy może trwać dłużej niż typowe 2-3 dni potrzebne do wysyłki lokalnej. Na etapie wymienionym w witrynie Azure portal jako opakowanie zespół data box zapewnia, że zostanie dostarczona poprawna dokumentacja, aby upewnić się, że przesyłka jest zgodna z różnymi wymaganiami dotyczącymi importu i eksportu międzynarodowego.
 
 ### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Czy istnieją specjalne wymagania dotyczące dostarczania dysków do centrum danych?
 
 Wymagania zależą od określonych ograniczeń centrum danych platformy Azure.
 
-- Istnieje kilka witryn, które wymagają numeru przychodzącego identyfikatora centrum danych firmy Microsoft, który ma być zapisywany na działce ze względów bezpieczeństwa. Przed wysłaniem dysków lub dysków do centrum danych skontaktujadbops@microsoft.comsię z działem operacji usługi Azure DataBox ( ), aby uzyskać ten numer. Bez tego numeru pakiet zostanie odrzucony.
+- Istnieje kilka witryn, takich jak Australia, Niemcy i Wielka Brytania Południowa, które wymagają numeru przychodzącego identyfikatora centrum danych firmy Microsoft, który ma być zapisany na działce ze względów bezpieczeństwa. Przed wysłaniem dysków lub dysków do centrum danych skontaktujadbops@microsoft.comsię z działem operacji usługi Azure DataBox ( ), aby uzyskać ten numer. Bez tego numeru pakiet zostanie odrzucony.
 - Centra danych w Indiach wymagają danych osobowych kierowcy, takich jak rządowy dowód tożsamości lub nr dowodu. (na przykład PAN, AADHAR, DL), imię i nazwisko, kontakt i numer tablicy rejestracyjnej samochodu, aby uzyskać przepustkę wejściową. Aby uniknąć opóźnień w dostawie, poinformuj operatora o tych wymaganiach.
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Podczas tworzenia zadania adres wysyłki to lokalizacja, która różni się od lokalizacji konta magazynu. Co mam zrobić?

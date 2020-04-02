@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: edeafb5730f06dac22fd9919ca42ea388d5fd0f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1aa3537679ee37cbc6085344d2f31ae4043d32bb
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277182"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520669"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Powiązania magazynu tabel platformy Azure dla funkcji platformy Azure
 
@@ -36,7 +36,7 @@ Powiązania magazynu tabel znajdują się w pakiecie [Microsoft.Azure.WebJobs.Ex
 
 Użyj powiązania wejściowego magazynu tabel platformy Azure, aby odczytać tabelę na koncie usługi Azure Storage.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="one-entity"></a>Jeden podmiot
 
@@ -310,7 +310,7 @@ Aby uzyskać więcej informacji na temat korzystania z cloudtable, zobacz [Wprow
 Jeśli spróbujesz `CloudTable` powiązać i pojawi się komunikat o błędzie, upewnij się, że masz odwołanie do [poprawnej wersji SDK magazynu](#azure-storage-sdk-version-in-functions-1x).
 
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 W poniższym przykładzie przedstawiono powiązanie wejściowe tabeli w pliku *function.json* i [kod JavaScript,](functions-reference-node.md) który używa powiązania. Funkcja używa wyzwalacza kolejki do odczytu pojedynczego wiersza tabeli. 
 
@@ -474,7 +474,7 @@ public Person[] get(
 
 ## <a name="input---attributes-and-annotations"></a>Dane wejściowe - atrybuty i adnotacje
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
  W [bibliotekach klas języka C#](functions-dotnet-class-library.md)użyj następujących atrybutów, aby skonfigurować powiązanie wejściowe tabeli:
 
@@ -536,7 +536,7 @@ Konto magazynu do użycia jest określane w następującej kolejności:
 
 Atrybuty nie są obsługiwane przez skrypt języka C#.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atrybuty nie są obsługiwane przez javascript.
 
@@ -564,13 +564,13 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**klawisz rowKey** |**RowKey** | Element opcjonalny. Klucz wiersza jednostki tabeli do odczytu. Zobacz sekcję [użycia,](#input---usage) aby uzyskać wskazówki dotyczące używania tej właściwości.| 
 |**wziąć** |**Weź** | Element opcjonalny. Maksymalna liczba jednostek do odczytu w języku JavaScript. Zobacz sekcję [użycia,](#input---usage) aby uzyskać wskazówki dotyczące używania tej właściwości.| 
 |**Filtr** |**Filtr** | Element opcjonalny. Wyrażenie filtru OData dla wprowadzania danych w tabeli w języku JavaScript. Zobacz sekcję [użycia,](#input---usage) aby uzyskać wskazówki dotyczące używania tej właściwości.| 
-|**Połączenia** |**Połączenia** | Nazwa ustawienia aplikacji, która zawiera ciąg połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy tutaj. Na przykład jeśli `connection` ustawisz "MyStorage", środowisko wykonawcze Functions szuka ustawienia aplikacji o nazwie "MyStorage". Jeśli pozostawisz `connection` puste, środowisko wykonawcze Functions używa domyślnego ciągu połączenia `AzureWebJobsStorage`Magazyn w ustawieniu aplikacji o nazwie .|
+|**Połączenia** |**Połączenia** | Nazwa ustawienia aplikacji, która zawiera ciąg połączenia magazynu do użycia dla tego powiązania. Ustawienie może być nazwą "AzureWebJobs" ustawienie aplikacji lub nazwę ciągu połączenia. Na przykład jeśli nazwa ustawienia jest "AzureWebJobsMyStorage", można określić "MyStorage" tutaj. Środowisko wykonawcze functions automatycznie wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage". Jeśli pozostawisz `connection` puste, środowisko wykonawcze Functions używa domyślnego ciągu połączenia `AzureWebJobsStorage`Magazyn w ustawieniu aplikacji o nazwie .|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="input---usage"></a>Wejście - użycie
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 * **Odczyt jednego wiersza w**
 
@@ -596,7 +596,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
   > [!NOTE]
   > `IQueryable`nie jest obsługiwany w [czasie wykonywania Functions v2](functions-versions.md). Alternatywą jest [użycie parametru metody paramName cloudtable](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) do odczytu tabeli przy użyciu sdk usługi Azure Storage. Jeśli spróbujesz `CloudTable` powiązać i pojawi się komunikat o błędzie, upewnij się, że masz odwołanie do [poprawnej wersji SDK magazynu](#azure-storage-sdk-version-in-functions-1x).
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Ustaw `filter` właściwości `take` i. Nie ustawiaj `partitionKey` `rowKey`ani nie ustawiaj . Dostęp do jednostki tabeli wejściowej (lub encji) za pomocą programu `context.bindings.<BINDING_NAME>`. Deserializowane obiekty `RowKey` `PartitionKey` mają i właściwości.
 
@@ -617,7 +617,7 @@ Użyj powiązania danych wyjściowych magazynu tabel platformy Azure, aby zapisa
 > [!NOTE]
 > To powiązanie danych wyjściowych nie obsługuje aktualizowania istniejących jednostek. Użyj `TableOperation.Replace` operacji [z pakietu Azure Storage SDK,](../cosmos-db/tutorial-develop-table-dotnet.md#delete-an-entity) aby zaktualizować istniejącą jednostkę.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 W poniższym przykładzie przedstawiono [funkcję Języka C#,](functions-dotnet-class-library.md) która używa wyzwalacza HTTP do pisania pojedynczego wiersza tabeli. 
 
@@ -696,7 +696,7 @@ public class Person
 
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 W poniższym przykładzie przedstawiono powiązanie danych wyjściowych tabeli w pliku *function.json* i [funkcję JavaScript,](functions-reference-node.md) która używa powiązania. Funkcja zapisuje wiele elementów tabeli.
 
@@ -883,7 +883,7 @@ public class AddPersons {
 
 ## <a name="output---attributes-and-annotations"></a>Dane wyjściowe - atrybuty i adnotacje
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 W [bibliotekach klas języka C#](functions-dotnet-class-library.md)użyj [atrybutu TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs).
 
@@ -921,7 +921,7 @@ Za pomocą `StorageAccount` atrybutu można określić konto magazynu na poziomi
 
 Atrybuty nie są obsługiwane przez skrypt języka C#.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atrybuty nie są obsługiwane przez javascript.
 
@@ -955,7 +955,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 ## <a name="output---usage"></a>Wyjście - użycie
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Dostęp do jednostki tabeli `ICollector<T> paramName` wyjściowej przy użyciu parametru `IAsyncCollector<T> paramName` metody lub `T` gdzie zawiera `PartitionKey` i `RowKey` właściwości. Właściwościom tym często towarzyszy wdrożenie `ITableEntity` lub `TableEntity`dziedziczenie .
 
@@ -967,7 +967,7 @@ Dostęp do jednostki tabeli `ICollector<T> paramName` wyjściowej przy użyciu p
 
 Alternatywnie można użyć `CloudTable` parametru metody do zapisu w tabeli przy użyciu zestawu SDK usługi Azure Storage. Jeśli spróbujesz `CloudTable` powiązać i pojawi się komunikat o błędzie, upewnij się, że masz odwołanie do [poprawnej wersji SDK magazynu](#azure-storage-sdk-version-in-functions-1x).
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Dostęp do zdarzenia `context.bindings.<name>` wyjściowego przy `<name>` użyciu, `name` gdzie jest wartość określona we właściwości *function.json*.
 

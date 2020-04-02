@@ -6,14 +6,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/18/2019
+ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: 13adf6de420b54299d04a226dab81e75cbb9fef2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4e91aa59168deb18375bf86ae77f655ca3dab47
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75975785"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521263"
 ---
 # <a name="manage-storage-account-access-keys"></a>Zarządzanie kluczami dostępu do konta magazynu
 
@@ -52,6 +52,8 @@ Postępuj zgodnie z tym procesem, aby obrócić klucze konta magazynu:
 
 > [!NOTE]
 > Firma Microsoft zaleca używanie tylko jednego klucza we wszystkich aplikacjach w tym samym czasie. Jeśli używasz klucza 1 w niektórych miejscach i klucza 2 w innych, nie będzie można obracać kluczy bez utraty dostępu przez jakąś aplikację.
+
+Aby obrócić klucze dostępu do konta, użytkownik musi być administratorem usługi lub musi mieć przypisaną rolę RBAC, która zawiera **microsoft.Storage/storageAccounts/regeneratekey/action**. Niektóre wbudowane role RBAC, które zawierają tę akcję, to role roli roli usługi **Właściciel,** **Współautor**i **Operator klucza magazynu.** Aby uzyskać więcej informacji na temat roli administratora usługi, zobacz [klasyczne role administratora subskrypcji, role usługi Azure RBAC i role usługi Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md). Aby uzyskać szczegółowe informacje na temat wbudowanych ról RBAC dla usługi Azure Storage, zobacz sekcję **Magazyn** [w wbudowanych rolach platformy Azure dla usługi Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
 
 ## <a name="next-steps"></a>Następne kroki
 

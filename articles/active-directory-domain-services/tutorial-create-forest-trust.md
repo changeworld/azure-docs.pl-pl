@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 5620d1cdc7dc71bdac17057b9a13a74150b12d5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb96cb32c05d2ba3fbd38e72c16540d947436117
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77612514"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519064"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Samouczek: tworzenie wychodzącego zaufania lasu do domeny lokalnej w usługach domenowych Usługi domenowe Active Directory platformy Azure (wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 > * Tworzenie jednokierunkowego wychodzącego zaufania lasu w usługach Azure AD DS
 > * Testowanie i sprawdzanie poprawności relacji zaufania dla uwierzytelniania i dostępu do zasobów
 
-Jeśli nie masz subskrypcji platformy Azure, [utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -59,7 +59,7 @@ Przed skonfigurowaniem zaufania lasu w usługach Azure AD DS upewnij się, że s
 
 * Użyj prywatnych adresów IP. Nie polegaj na dhcp z dynamicznym przypisywaniem adresów IP.
 * Unikaj nakładających się przestrzeni adresów IP, aby umożliwić komunikację równorzędną i routing sieci wirtualnej między platformą Azure a lokalną.
-* Sieć wirtualna platformy Azure potrzebuje podsieci bramy do skonfigurowania połączenia sieci VPN lokacja lokacja lokacja (S2S) lub usługi ExpressRoute
+* Sieć wirtualna platformy Azure potrzebuje podsieci bramy do skonfigurowania połączenia [sieci VPN lokacja-lokacja platformy Azure (S2S)][vpn-gateway] lub połączenia [Usługi ExpressRoute][expressroute]
 * Utwórz podsieci z wystarczającą ilością adresów IP do obsługi scenariusza.
 * Upewnij się, że usługi Azure AD DS ma własną podsieć, nie udostępniaj tej podsieci sieci wirtualnej z maszynami wirtualnymi i usługami aplikacji.
 * Sieci wirtualne typu peered NIE są przechodnie.
@@ -74,7 +74,7 @@ Aby poprawnie rozpoznać domenę zarządzaną usługą Azure AD DS ze środowisk
 1. Wybierz **start | Narzędzia administracyjne | System DNS**
 1. Wybierz prawym przycisku wyboru serwer DNS, taki jak *myAD01*, wybierz **pozycję Właściwości**
 1. Wybierz **pozycję Przesyłanie dalej**, a następnie **edytuj,** aby dodać dodatkowe usługi przesyłania dalej.
-1. Dodaj adresy IP domeny zarządzanej usługi Azure AD DS, takie jak *10.0.1.4* i *10.0.1.5*.
+1. Dodaj adresy IP domeny zarządzanej usługi Azure AD DS, takie jak *10.0.2.4* i *10.0.2.5*.
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Tworzenie zaufania lasu przychodzącego w domenie lokalnej
 
@@ -85,10 +85,6 @@ Aby skonfigurować zaufanie przychodzące w lokalnej domenie usług AD DS, wykon
 1. Wybierz **start | Narzędzia administracyjne | Domeny i relacje zaufania usługi Active Directory**
 1. Wybierz domenę po prawej stronie, na przykład *onprem.contoso.com*, wybierz **pozycję Właściwości**
 1. Następnie wybierz kartę **Ufanie,** a następnie **pozycję Nowe zaufanie**
-
-   > [!NOTE]
-   > Jeśli nie widzisz opcji menu **Zaufania,** zaznacz w obszarze **Właściwości** *typu Las*. Tylko lasy *zasobów* mogą tworzyć relacje zaufania. Jeśli typem lasu jest *Użytkownik,* nie można utworzyć relacji zaufania. Obecnie nie ma możliwości zmiany typu lasu domeny zarządzanej usługą Azure AD DS. Należy usunąć i ponownie utworzyć domenę zarządzaną jako las zasobów.
-
 1. Wprowadź nazwę w nazwie domeny usług Azure AD DS, na przykład *aaddscontoso.com,* a następnie wybierz pozycję **Dalej**
 1. Wybierz opcję, aby utworzyć **zaufanie lasu**, a następnie utworzyć **jeden sposób: zaufanie przychodzące.**
 1. Wybierz, aby utworzyć zaufanie tylko dla **tej domeny**. W następnym kroku można utworzyć zaufanie w witrynie Azure portal dla domeny zarządzanej usług Azure AD DS.
@@ -104,12 +100,16 @@ Aby utworzyć zaufanie wychodzące dla domeny zarządzanej usługi Azure AD DS w
 
 1. W witrynie Azure portal wyszukaj i wybierz **pozycję Usługi domenowe usługi Azure AD**, a następnie wybierz domenę zarządzana, taką jak *aaddscontoso.com*
 1. Z menu po lewej stronie domeny zarządzanej usługi Azure AD DS wybierz pozycję **Ufa,** a następnie wybierz opcję **+ Dodaj** zaufanie.
+
+   > [!NOTE]
+   > Jeśli nie widzisz opcji menu **Zaufania,** zaznacz w obszarze **Właściwości** *typu Las*. Tylko lasy *zasobów* mogą tworzyć relacje zaufania. Jeśli typem lasu jest *Użytkownik,* nie można utworzyć relacji zaufania. Obecnie nie ma możliwości zmiany typu lasu domeny zarządzanej usługą Azure AD DS. Należy usunąć i ponownie utworzyć domenę zarządzaną jako las zasobów.
+
 1. Wprowadź nazwę wyświetlaną identyfikującą zaufanie, a następnie lokalną zaufaną nazwę DNS lasu, taką jak *onprem.contoso.com*
 1. Podaj to samo hasło zaufania, które zostało użyte podczas konfigurowania zaufania lasu przychodzącego dla lokalnej domeny usług AD DS w poprzedniej sekcji.
-1. Podaj co najmniej dwa serwery DNS dla lokalnej domeny usług AD DS, takie jak *10.0.2.4* i *10.0.2.5*
+1. Podaj co najmniej dwa serwery DNS dla lokalnej domeny usług AD DS, takich jak *10.1.1.4* i *10.1.1.5*
 1. Gdy jest to gotowe, **zapisz** wychodzące zaufanie lasu
 
-    [Tworzenie wychodzącego zaufania lasu w witrynie Azure portal](./media/create-forest-trust/portal-create-outbound-trust.png)
+    ![Tworzenie wychodzącego zaufania lasu w witrynie Azure portal](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
 
 ## <a name="validate-resource-authentication"></a>Sprawdzanie poprawności uwierzytelniania zasobów
 
@@ -126,11 +126,7 @@ Następujące typowe scenariusze umożliwiają sprawdzenie poprawności zaufania
 
 Maszyna wirtualna systemu Windows Server powinna być przyłączona do domeny zasobów usług Azure AD DS. Ta maszyna wirtualna służy do testowania lokalnego użytkownika można uwierzytelnić na maszynie wirtualnej.
 
-1. Połącz się z maszyną wirtualną systemu Windows Server przyłączony do lasu zasobów usługi Azure AD DS przy użyciu pulpitu zdalnego i poświadczeń administratora usług Azure AD DS. Jeśli zostanie wyświetlony błąd uwierzytelniania na poziomie sieci (NLA), sprawdź, czy używane konto użytkownika nie jest kontem użytkownika domeny.
-
-    > [!NOTE]
-    > Aby bezpiecznie połączyć się z maszynami wirtualnymi przyłączonych do usług domenowych usługi Azure AD, można użyć [usługi hosta bastionu platformy Azure](https://docs.microsoft.com/azure/bastion/bastion-overview) w obsługiwanych regionach platformy Azure.
-
+1. Połącz się z maszyną wirtualną systemu Windows Server przyłączony do lasu zasobów usług Azure AD DS przy użyciu [usługi Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) i poświadczeń administratora usług Azure AD DS.
 1. Otwórz wiersz polecenia i `whoami` użyj polecenia, aby wyświetlić nazwę wyróżniającą aktualnie uwierzytelnionego użytkownika:
 
     ```console
@@ -152,10 +148,7 @@ Za pomocą maszyny Wirtualnej systemu Windows Server przyłączony do lasu zasob
 
 #### <a name="enable-file-and-printer-sharing"></a>Włączanie udostępniania plików i drukarek
 
-1. Połącz się z maszyną wirtualną systemu Windows Server przyłączony do lasu zasobów usługi Azure AD DS przy użyciu pulpitu zdalnego i poświadczeń administratora usług Azure AD DS. Jeśli zostanie wyświetlony błąd uwierzytelniania na poziomie sieci (NLA), sprawdź, czy używane konto użytkownika nie jest kontem użytkownika domeny.
-
-    > [!NOTE]
-    > Aby bezpiecznie połączyć się z maszynami wirtualnymi przyłączonych do usług domenowych usługi Azure AD, można użyć [usługi hosta bastionu platformy Azure](https://docs.microsoft.com/azure/bastion/bastion-overview) w obsługiwanych regionach platformy Azure.
+1. Połącz się z maszyną wirtualną systemu Windows Server przyłączony do lasu zasobów usług Azure AD DS przy użyciu [usługi Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) i poświadczeń administratora usług Azure AD DS.
 
 1. Otwórz **pozycję Ustawienia systemu Windows**, a następnie wyszukaj i wybierz pozycję Centrum sieci i **udostępniania**.
 1. Wybierz opcję **Zmień ustawienia udostępniania zaawansowanego.**
@@ -221,3 +214,5 @@ Aby uzyskać więcej informacji koncepcyjnych dotyczących typów lasów w usłu
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
 [howto-change-sku]: change-sku.md
+[vpn-gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+[expressroute]: ../expressroute/expressroute-introduction.md

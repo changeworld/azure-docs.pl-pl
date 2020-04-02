@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 03/31/2020
 ms.author: b-juche
-ms.openlocfilehash: b2000c3fd3d64793f797e997d8f3c10eaed5d7aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ad9e13667791c38a8bf8be01919bcdbd0032102
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409601"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519585"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Tworzenie woluminu SMB dla usługi Azure NetApp Files
 
@@ -74,6 +74,14 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
 
     Zobacz [Projektowanie topologii witryn dotyczących](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) lokacji i usług AD. 
     
+* Usługa Azure NetApp Files obsługuje typy szyfrowania DES, Kerberos AES 128 i Kerberos AES 256 (od najmniej bezpiecznych do najbardziej bezpiecznych). Poświadczenia użytkownika używane do dołączenia do usługi Active Directory muszą mieć włączoną najwyższą odpowiednią opcję konta, która odpowiada możliwościom włączonym w usłudze Active Directory.   
+
+    Jeśli na przykład usługa Active Directory ma tylko funkcję AES-128, należy włączyć opcję konta AES-128 dla poświadczeń użytkownika. Jeśli usługa Active Directory ma funkcję AES-256, należy włączyć opcję konta AES-256 (która obsługuje również AES-128). Jeśli usługa Active Directory nie ma możliwości szyfrowania Protokołu Kerberos, usługa Azure NetApp Files domyślnie używa des.  
+
+    Opcje konta można włączyć we właściwościach konsoli programu MMC Użytkownicy i komputery usługi Active Directory:   
+
+    ![Program MMC Użytkownicy i komputery usługi Active Directory](../media/azure-netapp-files/ad-users-computers-mmc.png)
+
 Zobacz Często zadawane pytania dotyczące [smb](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) plików netapp platformy Azure o dodatkowych informacjach o usłudze AD. 
 
 ## <a name="decide-which-domain-services-to-use"></a>Określanie usług domenowych do użycia 

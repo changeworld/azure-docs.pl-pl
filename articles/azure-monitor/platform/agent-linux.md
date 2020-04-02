@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 40c279a4beee9fbebe2de7f272fe51d9039f071c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa2356901403c7a63aa4aa96dcb38f9c0c971e58
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668710"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528345"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Łączenie komputerów z systemem Linux z monitorem platformy Azure
 
@@ -22,7 +22,7 @@ Agent usługi Log Analytics dla systemu Linux można zainstalować przy użyciu 
 * [Ręcznie pobierz i zainstaluj](#install-the-agent-manually) agenta. Jest to wymagane, gdy komputer z systemem Linux nie ma dostępu do Internetu i będzie komunikować się z usługą Azure Monitor lub usługa Azure Automation za pośrednictwem [bramy analizy dzienników.](gateway.md) 
 * [Zainstaluj agenta dla systemu Linux przy użyciu skryptu otoki](#install-the-agent-using-wrapper-script) hostowanego w usłudze GitHub. Jest to zalecana metoda instalowania i uaktualniania agenta, gdy komputer ma łączność z Internetem, bezpośrednio lub za pośrednictwem serwera proxy.
 
-Aby poznać obsługiwaną konfigurację, przejrzyj tematy dotyczące [obsługiwanych systemów operacyjnych Linux](log-analytics-agent.md#supported-linux-operating-systems) oraz [konfiguracji zapory sieciowej](log-analytics-agent.md#network-firewall-requirements).
+Aby poznać obsługiwaną konfigurację, przejrzyj tematy dotyczące [obsługiwanych systemów operacyjnych Linux](log-analytics-agent.md#supported-linux-operating-systems) oraz [konfiguracji zapory sieciowej](log-analytics-agent.md#firewall-requirements).
 
 >[!NOTE]
 >Agenta usługi Log Analytics dla systemu Linux nie można skonfigurować w taki sposób, aby przesyłał raporty do więcej niż jednego obszaru roboczego usługi Log Analytics. Można go skonfigurować tylko do raportowania zarówno do grupy zarządzania programu System Center Operations Manager, jak i do obszaru roboczego usługi Log Analytics jednocześnie lub do pojedynczego.

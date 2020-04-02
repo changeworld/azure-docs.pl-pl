@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed64ee3d0e024c32be08ed4e010a6933033c3f87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e96f9484c103ebe75e21705b94cf35b9e16c54f
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476522"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529333"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scenariusze usługi Azure Disk Encryption na maszynach wirtualnych z systemem Windows
 
@@ -251,6 +251,8 @@ Szyfrowanie dysków platformy Azure nie działa w następujących scenariuszach,
 - Efemeryczne dyski systemu operacyjnego.
 - Szyfrowanie systemów plików udostępnionych/rozproszonych, takich jak (ale nie ograniczając się do) DFS, GFS, DRDB i CephFS.
 - Przenoszenie zaszyfrowanych maszyn wirtualnych do innej subskrypcji.
+- Maszyny wirtualne gen2 (zobacz: [Obsługa maszyn wirtualnych generacji 2 na platformie Azure)](generation-2.md#generation-1-vs-generation-2-capabilities)
+- Maszyny wirtualne serii Lsv2 (patrz: [seria Lsv2)](../lsv2-series.md)
 
 ## <a name="next-steps"></a>Następne kroki
 

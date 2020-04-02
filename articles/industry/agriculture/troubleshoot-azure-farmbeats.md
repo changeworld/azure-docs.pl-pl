@@ -5,29 +5,45 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 7a31eece6629558b14b614853addce59642e698b
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 504dfb721c7b87d5497c73851d0694601b253d5c
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422721"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529691"
 ---
 # <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-Ten artykuł zawiera rozwiązania typowych problemów z usługą Azure FarmBeats.
+Ten artykuł zawiera rozwiązania typowych problemów z usługą Azure FarmBeats. Aby uzyskać dodatkową pomoc, skontaktuj się farmbeatssupport@microsoft.comz naszym Forum Pomocy [technicznej](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) lub napisz do nas na adres .
 
-Aby uzyskać dodatkową pomoc, skontaktuj się z nami pod adresem farmbeatssupport@microsoft.com. Upewnij się, że plik **deployer.log** w wiadomości e-mail.
+## <a name="install-issues"></a>Problemy z instalacją
 
-Aby pobrać plik **deployer.log,** wykonaj następujące czynności:
+  > [!NOTE]
+  > Jeśli instalacja jest ponownie uruchamiana z powodu błędu, przed ponownym wyzwoleniem instalacji należy usunąć grupę zasobów lub usunąć wszystkie zasoby z grupy zasobów.
 
-1. Zaloguj się do **witryny Azure Portal** i wybierz subskrypcję i dzierżawę usługi Azure AD.
-2. Uruchom usługę Cloud Shell z górnego obszaru nawigacyjnego witryny Azure Portal.
-3. Wybierz **Bash** jako preferowane środowisko Cloud Shell.
-4. Wybierz wyróżnioną ikonę, a następnie na liście rozwijanej wybierz pozycję **Pobierz**.
+### <a name="invalid-sentinel-credentials"></a>Nieprawidłowe poświadczenia wartownika
 
-    ![Projekt FarmBeats](./media/troubleshoot-azure-farmbeats/download-deployer-log-1.png)
+Poświadczenia wartownika podane podczas instalacji są niepoprawne. Uruchom ponownie instalację przy użyciu poprawnych poświadczeń.
 
-5. W następnym okienku wprowadź ścieżkę do pliku **deployer.log.** Na przykład wprowadź **farmbeats-deployer.log**.
+### <a name="the-regional-account-quota-of-batch-accounts-for-the-specified-subscription-has-been-reached"></a>Osiągnięto przydział konta regionalnego kont wsadowych dla określonej subskrypcji
+
+Zwiększ przydział lub usuń nieużywane konta wsadowe i uruchom ponownie instalację.
+
+### <a name="invalid-resource-group-location"></a>Nieprawidłowa lokalizacja grupy zasobów
+
+Upewnij się, że grupa zasobów znajduje się w tej samej lokalizacji co region określony podczas instalacji.
+
+### <a name="other-install-issues"></a>Inne problemy z instalacją
+
+Skontaktuj się z nami, podjąc następujące szczegóły:
+
+- Twój identyfikator subskrypcji
+- Nazwa grupy zasobów
+- Dołącz plik dziennika dla błędu wdrożenia, wykonując poniższe czynności:
+
+    1. Przejdź do grupy zasobów w witrynie Azure portal.
+    2. Wybierz pozycję Wdrożenia w sekcji Ustawienia po lewej stronie.
+    3. Dla każdego wdrożenia, które pokazuje "Nie powiodło się", kliknij, aby uzyskać szczegółowe informacje i pobrać szczegóły wdrożenia. Dołącz ten plik do poczty.
 
 ## <a name="sensor-telemetry"></a>Telemetria czujnika
 
@@ -37,13 +53,11 @@ Aby pobrać plik **deployer.log,** wykonaj następujące czynności:
 
 **Działania naprawcze:**
 
-1. Przejdź do grupy zasobów FarmBeats Datahub.   
-
+1. Przejdź do grupy zasobów FarmBeats Datahub.
 2. Wybierz **Centrum zdarzeń** (DatafeedEventHubNamespace), a następnie sprawdź liczbę wiadomości przychodzących.
-
-3. Wykonaj jedną z następujących czynności:   
+3. Wykonaj jedną z następujących czynności:
    - Jeśli *nie ma żadnych przychodzących wiadomości,* skontaktuj się z partnerem urządzenia.  
-   - Jeśli są *wiadomości przychodzące,* kontakt farmbeatssupport@microsoft.com. Dołącz dzienniki datahub i akceleratora oraz przechwycone dane telemetryczne.
+   - Jeśli są *przychodzące wiadomości,* skontaktuj się z nami z dziennikami datahub i akceleratora oraz przechwyconymi danymi telemetrycznymi.
 
 Aby dowiedzieć się, jak pobierać dzienniki, przejdź do sekcji ["Ręczne zbieranie dzienników".](#collect-logs-manually)  
 
@@ -107,7 +121,7 @@ Podczas usuwania urządzenia może wystąpić jeden z następujących typowych s
 
 **Komunikat**: "Urządzenie odwołuje się do czujników: Z urządzeniem jest skojarzony jeden lub więcej czujników. Usuń czujniki, a następnie usuń urządzenie."  
 
-**Znaczenie:** Urządzenie jest skojarzone z wieloma czujnikami, które są wdrażane w farmie.   
+**Znaczenie:** Urządzenie jest skojarzone z wieloma czujnikami, które są wdrażane w farmie.
 
 **Działania naprawcze:**  
 
@@ -126,9 +140,7 @@ Podczas usuwania urządzenia może wystąpić jeden z następujących typowych s
 
     > [!NOTE]
     > Nie można usunąć urządzenia, jeśli są z nim skojarzone czujniki. Aby uzyskać więcej informacji na temat usuwania skojarzonych czujników, zobacz sekcję **Usuwanie czujników** w [sekcji Pobierz dane z czujników od partnerów czujników](get-sensor-data-from-sensor-partner.md).
-
     > Partnerzy nie mają dostępu do usuwania urządzenia lub czujnika. Tylko administratorzy mają dostęp do tego samego.
-
 
 ## <a name="issues-with-jobs"></a>Problemy z zadaniami
 
@@ -136,7 +148,7 @@ Podczas usuwania urządzenia może wystąpić jeden z następujących typowych s
 
 **Komunikat**: "Błąd wewnętrzny FarmBeats, zobacz przewodnik rozwiązywania problemów, aby uzyskać więcej informacji".
 
-**Działania naprawcze:** Ten problem może wynikać z tymczasowego błędu w potoku danych. Utwórz zadanie ponownie. Jeśli błąd będzie się powtarzał, dodaj komunikat o błędzie w FarmBeatsSupport@microsoft.compoście na forum FarmBeats lub skontaktuj się z nim .
+**Działania naprawcze:** Ten problem może wynikać z tymczasowego błędu w potoku danych. Utwórz zadanie ponownie. Jeśli błąd będzie się powtarzał, skontaktuj się z nami z komunikatem o błędzie / dziennikami.
 
 ## <a name="accelerator-troubleshooting"></a>Rozwiązywanie problemów z akceleratorem
 
@@ -146,7 +158,7 @@ Podczas usuwania urządzenia może wystąpić jeden z następujących typowych s
 
 **Komunikat**: "Nie znaleziono pasujących użytkowników".
 
-**Działanie naprawcze:** sprawdź identyfikator wiadomości e-mail, dla którego próbujesz dodać przypisanie roli. Identyfikator wiadomości e-mail musi być dokładnym dopasowaniem identyfikatora, który jest zarejestrowany dla tego użytkownika w usłudze Active Directory. Jeśli błąd będzie się powtarzał, dodaj komunikat o błędzie w FarmBeatsSupport@microsoft.compoście na forum FarmBeats lub skontaktuj się z nim .
+**Działanie naprawcze:** sprawdź identyfikator wiadomości e-mail, dla którego próbujesz dodać przypisanie roli. Identyfikator wiadomości e-mail musi być dokładnym dopasowaniem identyfikatora, który jest zarejestrowany dla tego użytkownika w usłudze Active Directory. Jeśli błąd będzie się powtarzał, skontaktuj się z nami z komunikatem o błędzie / dziennikami.
 
 ### <a name="unable-to-log-in-to-accelerator"></a>Nie można zalogować się do akceleratora
 
@@ -154,7 +166,7 @@ Podczas usuwania urządzenia może wystąpić jeden z następujących typowych s
 
 **Działania naprawcze:** Poproś administratora o autoryzację dostępu do wdrożenia FarmBeats. Można to zrobić, wykonując post interfejsów API roleAssignment lub za pośrednictwem kontroli dostępu w okienku **Ustawienia** w akceleratorze.  
 
-Jeśli masz już przyznany dostęp i masz do czynienia z tym błędem, spróbuj ponownie, odświeżając stronę. Jeśli błąd będzie się powtarzał, dodaj komunikat o błędzie w FarmBeatsSupport@microsoft.compoście na forum FarmBeats lub skontaktuj się z nim .
+Jeśli masz już przyznany dostęp i masz do czynienia z tym błędem, spróbuj ponownie, odświeżając stronę. Jeśli błąd będzie się powtarzał, skontaktuj się z nami z komunikatem o błędzie / dziennikami.
 
 ![Projekt FarmBeats](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
 
@@ -166,7 +178,7 @@ Jeśli masz już przyznany dostęp i masz do czynienia z tym błędem, spróbuj 
 
 **Działanie naprawcze:** Ten błąd występuje, jeśli strona jest bezczynna zbyt długo. Odśwież stronę.  
 
-Jeśli błąd będzie się powtarzał, dodaj komunikat o błędzie w FarmBeatsSupport@microsoft.compoście na forum FarmBeats lub skontaktuj się z nim .
+Jeśli błąd będzie się powtarzał, skontaktuj się z nami z komunikatem o błędzie / dziennikami.
 
 **Problem:** Akcelerator FarmBeats nie pokazuje najnowszej wersji, nawet po uaktualnieniu FarmBeatsDeployment.
 
@@ -185,15 +197,36 @@ Jeśli błąd będzie się powtarzał, dodaj komunikat o błędzie w FarmBeatsSu
 
 Wykonaj jedną z następujących czynności:
 
-- Uruchom ponownie instalatora w celu uaktualnienia usługi Datahub przy użyciu poprawnej nazwy użytkownika i hasła.
+- Zaktualizuj FarmBeats za pomocą poprawnej nazwy użytkownika / hasła, wykonując poniższe czynności i ponów próbę wykonania zadania.
+
+    *Zaktualizuj nazwę użytkownika sentinel*
+    1. Zaloguj się do [witryny Azure portal](https://portal.azure.com).
+    2. W polu **Wyszukiwania** wyszukaj grupę zasobów FarmBeats Datahub.
+    3. Wybierz opcję Magazynowanie konta***** -> Kontenery -> pliki prep-prep -> to_vm -> config.ini
+    4. Kliknij pozycję Edytuj
+    5. Aktualizowanie nazwy użytkownika w sekcji sentinel_account
+
+    *Aktualizacja hasła wartownika*
+    1. Zaloguj się do [witryny Azure portal](https://portal.azure.com).
+    2. W polu **Wyszukiwania** wyszukaj grupę zasobów FarmBeats Datahub.
+    3. Wybierz keyvault-*****
+    4. Wybieranie zasad dostępu w obszarze Ustawienia
+    5. Kliknij "Dodaj zasady dostępu"
+    6. Użyj "Zarządzanie tajne" dla konfigurowania z szablonu i dodać siebie do podmiotu zabezpieczeń
+    7. Kliknij pozycję Dodaj, a następnie kliknij pozycję Zapisz na stronie Zasady dostępu
+    8. Kliknij pozycję Wpisy tajne w obszarze Ustawienia
+    9. Kliknij sentinel-hasło
+    10. Tworzenie nowej wersji wartości i włączanie jej
+
 - Uruchom ponownie zadanie nie powiodło się lub uruchom zadanie indeksów satelitarnych dla zakresu dat od 5 do 7 dni, a następnie sprawdź, czy zadanie zakończyło się pomyślnie.
 
-### <a name="sentinel-hub-wrongurlor-site-not-accessible"></a>Centrum wartownika: nieprawidłowy adres URL lub witryna nie jest dostępna 
+### <a name="sentinel-hub-wrongurlor-site-not-accessible"></a>Centrum wartownika: nieprawidłowy adres URL lub witryna nie jest dostępna
 
-**Komunikat o niepowodzeniu zadania**: "Ups, coś poszło nie tak. Strona, do której próbujesz uzyskać dostęp, jest (tymczasowo) niedostępna." 
+**Komunikat o niepowodzeniu zadania**: "Ups, coś poszło nie tak. Strona, do której próbujesz uzyskać dostęp, jest (tymczasowo) niedostępna."
 
 **Działania naprawcze:**
-1. Otwórz [sentinel](https://scihub.copernicus.eu/dhus/) w przeglądarce, aby zobaczyć, czy strona jest dostępna. 
+
+1. Otwórz [sentinel](https://scihub.copernicus.eu/dhus/) w przeglądarce, aby zobaczyć, czy strona jest dostępna.
 2. Jeśli witryna sieci Web nie jest dostępna, sprawdź, czy zapora sieciowa, sieć firmowa lub inne oprogramowanie blokujące uniemożliwia dostęp do witryny sieci Web, a następnie podejmij niezbędne kroki, aby zezwolić na adres URL sentinel. 
 3. Uruchom ponownie zadanie nie powiodło się lub uruchom zadanie indeksów satelitarnych dla zakresu dat od 5 do 7 dni, a następnie sprawdź, czy zadanie zakończyło się pomyślnie.  
 
@@ -215,25 +248,26 @@ Ten problem może wystąpić, jeśli wszelkie działania konserwacyjne są wykon
 
 **Komunikat o niepowodzeniu zadania**: "Maksymalna liczba dwóch\<równoczesnych przepływów osiągniętych przez użytkownika ' nazwa użytkownika>'."
 
-**Znaczenie:** Jeśli zadanie nie powiedzie się, ponieważ osiągnięto maksymalną liczbę połączeń, to samo konto Sentinel jest używane w innym wdrożeniu oprogramowania.
+**Znaczenie:** Jeśli zadanie nie powiedzie się, ponieważ osiągnięto maksymalną liczbę połączeń, to samo konto Sentinel jest używane w wielu zadaniach.
 
 **Działania naprawcze:** Spróbuj wykonać jedną z następujących czynności:
 
-* Utwórz nowe konto Sentinel, a następnie uruchom ponownie instalatora, aby uaktualnić program Datahub przy użyciu nowej nazwy użytkownika i hasła sentinel.  
-* Uruchom ponownie zadanie niepowodzenia lub uruchom zadanie indeksów satelitarnych dla zakresu dat od 5 do 7 dni, a następnie sprawdź, czy zadanie zakończyło się pomyślnie.
+* Poczekaj na zakończenie innych zadań przed ponownym uruchomieniem zadania nie powiodło się.
+* Utwórz nowe konto Sentinel, a następnie zaktualizuj nazwę użytkownika i hasło Sentinel w Polach FarmBeats.
 
-### <a name="sentinel-server-refused-connection"></a>Serwer Sentinel: Odrzucone połączenie 
+### <a name="sentinel-server-refused-connection"></a>Serwer Sentinel: Odrzucone połączenie
 
-**Komunikat o niepowodzeniu zadania:** http://172.30.175.69:8983/solr/dhus"Serwer odmówił połączenia w: ." 
+**Komunikat o niepowodzeniu zadania:** http://172.30.175.69:8983/solr/dhus"Serwer odmówił połączenia w: ."
 
-**Działania naprawcze:** Ten problem może wystąpić, jeśli na serwerze Sentinel wykonywane są jakiekolwiek czynności konserwacyjne. 
-1. Jeśli jakiekolwiek zadanie lub potok nie powiedzie się, ponieważ wykonywana jest konserwacja, należy ponownie przesłać zadanie po pewnym czasie. 
+**Działania naprawcze:** Ten problem może wystąpić, jeśli na serwerze Sentinel wykonywane są jakiekolwiek czynności konserwacyjne.
+
+1. Jeśli jakiekolwiek zadanie lub potok nie powiedzie się, ponieważ wykonywana jest konserwacja, należy ponownie przesłać zadanie po pewnym czasie.
 
    Aby uzyskać informacje na temat planowanych lub nieplanowanych działań konserwacyjnych Sentinel, przejdź do witryny [Aktualności Centrum otwartego dostępu programu Copernicus.](https://scihub.copernicus.eu/news/)  
 
 2. Uruchom ponownie zadanie nie powiodło się lub uruchom zadanie indeksów satelitarnych dla zakresu dat od 5 do 7 dni, a następnie sprawdź, czy zadanie zakończyło się pomyślnie.
 
-### <a name="soil-moisture-map-has-white-areas"></a>Gleba Wilgotność mapa ma białe obszary 
+### <a name="soil-moisture-map-has-white-areas"></a>Gleba Wilgotność mapa ma białe obszary
 
 **Problem**: Wygenerowano mapę Wilgotność gleby, ale mapa ma głównie białe obszary.
 
@@ -244,114 +278,34 @@ Ten problem może wystąpić, jeśli wszelkie działania konserwacyjne są wykon
 
 [Zainstaluj i wdrażaj Eksploratora usługi Azure Storage]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
 
-### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>Zbieranie dzienników zadań usługi Azure Data Factory w usłudze Datahub
+### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Zbieranie dzienników zadań usługi Azure Data Factory lub dzienników usługi App Service w usłudze Datahub
 
 1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 2. W polu **Wyszukiwania** wyszukaj grupę zasobów FarmBeats Datahub.
-
-    > [!NOTE]
-    > Wybierz grupę zasobów Datahub, która została określona podczas instalacji FarmBeats.
-
-3. Na **pulpicie nawigacyjnym grupy zasobów** wyszukaj konto magazynu *datahublogs.\* * Na przykład wyszukaj **plik datahublogsmvxmq**.  
+3. Na **pulpicie nawigacyjnym grupy zasobów** wyszukaj konto magazynu *datahublogs.\* * Na przykład *datahublogsmvxmq*.  
 4. W kolumnie **Nazwa** wybierz konto magazynu, aby wyświetlić pulpit nawigacyjny **konta magazynu.**
 5. W okienku **datahubblogs\* ** wybierz pozycję **Otwórz w Eksploratorze,** aby wyświetlić aplikację Open Azure Storage **Explorer.**
-6. W lewym okienku wybierz pozycję **Kontenery obiektów blob**, a następnie wybierz pozycję **Dzienniki zadań**.
-7. W okienku **dzienniki zadań** wybierz pozycję **Pobierz**.
-8. Pobierz dzienniki do folderu lokalnego na komputerze.
-9. Wyślij wiadomość e-mail farmbeatssupport@microsoft.comdo pobranego pliku zip na adres .
+6. W lewym okienku wybierz **kontenery obiektów blob**, a następnie wybierz **dzienniki zadań** dla dzienników usługi Azure Data Factory lub **dzienników appinsights-logów** dla dzienników usługi App Service.
+7. Wybierz **pozycję Pobierz** i pobierz dzienniki do folderu lokalnego na komputerze.
 
     ![Projekt FarmBeats](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
 
-### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Zbieranie dzienników zadań usługi Azure Data Factory w akceleratorze
+### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Zbieranie dzienników zadań usługi Azure Data Factory lub dzienników usługi App Service dla akceleratora
 
 1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 2. W polu **Wyszukiwania** wyszukaj grupę zasobów Akceleratora FarmBeats.
-
-    > [!NOTE]
-    > Wybierz grupę zasobów akceleratora określoną podczas instalacji FarmBeats.
-
-3. Na **pulpicie nawigacyjnym grupy zasobów** *wyszukaj\* * konto magazynu. Na przykład wyszukaj **storagedop4k\***.
+3. Na **pulpicie nawigacyjnym grupy zasobów** *wyszukaj\* * konto magazynu. Na przykład *storagedop4k\**.
 4. Wybierz konto magazynu w kolumnie **Nazwa,** aby wyświetlić pulpit nawigacyjny **konta magazynu.**
 5. W okienku **magazynu\* ** wybierz pozycję **Otwórz w Eksploratorze,** aby otworzyć aplikację Usługi Azure Storage Explorer.
-6. W lewym okienku wybierz pozycję **Kontenery obiektów blob**, a następnie wybierz pozycję **Dzienniki zadań**.
-7. W okienku **dzienniki zadań** wybierz pozycję **Pobierz**.
-8. Pobierz dzienniki do folderu lokalnego na komputerze.
-9. Wyślij wiadomość e-mail farmbeatssupport@microsoft.comdo pobranego pliku zip na adres .
-
-
-### <a name="collect-datahub-app-service-logs"></a>Zbieranie dzienników usługi aplikacji Datahub
-
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
-2. W polu **Wyszukiwania** wyszukaj grupę zasobów FarmBeats Datahub.
-
-    > [!NOTE]
-    > Wybierz grupę zasobów Datahub, która została określona podczas instalacji FarmBeats.
-
-3. W grupie zasobów wyszukaj konto magazynu *datahublogs.\* * Na przykład wyszukaj **fordatahublogsmvxmq\***.
-4. Wybierz konto magazynu w kolumnie **Nazwa,** aby wyświetlić pulpit nawigacyjny **konta magazynu.**
-5. W okienku **datahubblogs\* ** wybierz pozycję **Otwórz w Eksploratorze,** aby otworzyć aplikację Usługi Azure Storage Explorer.
-6. W lewym okienku wybierz pozycję **Kontenery obiektów Blob**, a następnie wybierz **pozycję appinsights-logs**.
-7. W okienku **appinsights-logs** wybierz pozycję **Pobierz**.
-8. Pobierz dzienniki do folderu lokalnego na komputerze.
-9. Wyślij wiadomość e-mail farmbeatssupport@microsoft.comdo pobranego pliku zip na adres .
-
-### <a name="collect-accelerator-app-service-logs"></a>Zbieranie dzienników usługi aplikacji Akcelerator
-
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
-2. W polu **Wyszukiwania** wyszukaj grupę zasobów Akceleratora FarmBeats.
-
-    > [!NOTE]
-    > Wybierz grupę zasobów FarmBeats Accelerator, która została udostępniony podczas instalacji FarmBeats.
-
-3. W grupie zasobów *wyszukaj\* * konto magazynu. Na przykład wyszukaj **storagedop4k\***.
-4. Wybierz konto magazynu w kolumnie **Nazwa,** aby wyświetlić pulpit nawigacyjny **konta magazynu.**
-5. W okienku **magazynu\* ** wybierz pozycję **Otwórz w Eksploratorze,** aby otworzyć aplikację Usługi Azure Storage Explorer.
-6. W lewym okienku wybierz pozycję **Kontenery obiektów Blob**, a następnie wybierz **pozycję appinsights-logs**.
-7. W okienku **appinsights-logs** wybierz pozycję **Pobierz**.
-8. Pobierz dzienniki do folderu lokalnego na komputerze.
-9. Wyślij wiadomość e-mail do pobranego folderu na adres farmbeatssupport@microsoft.com.
-
-## <a name="known-issues"></a>Znane problemy
-
-## <a name="batch-related-issues"></a>Problemy związane z partią
-
-**Komunikat o błędzie**: "Osiągnięto przydział konta regionalnego kont wsadowych dla określonej subskrypcji."
-
-**Działania naprawcze:** Zwiększ przydział lub usuń nieużywane konta wsadowe i uruchom ponownie wdrożenie.
-
-### <a name="azure-active-directory-azure-ad-related-issues"></a>Problemy związane z usługą Azure Active Directory (Azure AD)
-
-**Komunikat o błędzie:**"Nie można zaktualizować wymaganych ustawień do usługi Azure AD App d41axx40-xx21-4fbd-8xxf-97xxx9e2xxc0: Niewystarczające uprawnienia do ukończenia operacji. Upewnij się, że powyższe ustawienia są poprawnie skonfigurowane dla aplikacji usługi Azure AD."
-
-**Znaczenie:** Konfiguracja rejestracji aplikacji usługi Azure AD nie została poprawnie ukończona.  
-
-**Działania naprawcze:** Poproś administratora IT (osobę z dostępem do odczytu dzierżawy), aby użył naszego [skryptu](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) do tworzenia rejestracji aplikacji usługi Azure AD. Ten skrypt automatycznie zajmuje się również krokami konfiguracji.
-
-**Komunikat o błędzie:**"Nie można utworzyć\<nowej\>nazwy aplikacji usługi Active Directory ' w tej dzierżawie: Inny obiekt o tej samej wartości identyfikatorów właściwości identyfikator URI już istnieje."
-
-**Znaczenie:** Rejestracja aplikacji usługi Azure AD o tej samej nazwie już istnieje.
-
-**Działanie naprawcze:** Usuń istniejącą rejestrację aplikacji usługi Azure AD lub ponownie ją użyć do instalacji. Jeśli ponownie korzystasz z istniejącej rejestracji aplikacji usługi Azure AD, przekaż identyfikator aplikacji i klucz tajny klienta do instalatora i ponownie wdrożyć.
-
-## <a name="issues-with-the-inputjson-file"></a>Problemy z plikiem input.json
-
-**Błąd:** Wystąpił błąd odczytu danych wejściowych z pliku *input.json.*
-
-**Działania naprawcze:** Ten problem zwykle występuje z powodu błędu w określaniu poprawnej ścieżki pliku *input.json* lub nazwy instalatora. Wykonuj odpowiednie poprawki i ponów próbę wdrożenia.
-
-**Błąd:** W pliku *input.json* występuje błąd podczas analizowania wartości.
-
-**Działania naprawcze:** Ten problem wynika głównie z niepoprawnych wartości w pliku *input.json.* Wykonuj odpowiednie poprawki i ponów próbę wdrożenia.
+6. W lewym okienku wybierz **kontenery obiektów blob**, a następnie wybierz **dzienniki zadań** dla dzienników usługi Azure Data Factory lub **dzienników appinsights-logów** dla dzienników usługi App Service.
+7. Wybierz **pozycję Pobierz** i pobierz dzienniki do folderu lokalnego na komputerze.
 
 ## <a name="high-cpu-usage"></a>Wysokie użycie procesora
 
-**Błąd:** Pojawia się alert e-mail, który odnosi się do **alertu o wysokim użyciu procesora .** 
+**Błąd:** Pojawia się alert e-mail, który odnosi się do **alertu o wysokim użyciu procesora .**
 
-**Działania naprawcze:** 
+**Działania naprawcze:**
+
 1. Przejdź do grupy zasobów FarmBeats Datahub.
 2. Wybierz **usługę aplikacji**.  
 3. Przejdź do [strony cenowej usługi App Service,](https://azure.microsoft.com/pricing/details/app-service/windows/)a następnie wybierz odpowiednią warstwę cenową.
-
-## <a name="next-steps"></a>Następne kroki
-
-Jeśli nadal masz problemy z FarmBeats, skontaktuj się z naszym [Forum Pomocy Technicznej.](https://aka.ms/farmbeatssupport)

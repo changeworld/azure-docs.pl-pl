@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 24aa3462aef4f719e93d17389ff342084f6c7864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668761"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520738"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Jak rozwiązywać problemy z agentem usługi Log Analytics dla systemu Linux 
 
@@ -76,7 +76,7 @@ Jeśli żaden z tych kroków nie działa, dostępne są również następujące 
 | --- | --- |
 | 2 | Nieprawidłowa opcja podana do skryptu omsadmin. Uruchom `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` do użycia. |
 | 3 | Nieprawidłowa konfiguracja dostarczona do skryptu omsadmin. Uruchom `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` do użycia. |
-| 4 | Nieprawidłowy serwer proxy dostarczony do skryptu omsadmin. Sprawdź serwer proxy i zapoznaj się z naszą [dokumentacją dotyczącą korzystania z serwera proxy HTTP](log-analytics-agent.md#network-firewall-requirements). |
+| 4 | Nieprawidłowy serwer proxy dostarczony do skryptu omsadmin. Sprawdź serwer proxy i zapoznaj się z naszą [dokumentacją dotyczącą korzystania z serwera proxy HTTP](log-analytics-agent.md#firewall-requirements). |
 | 5 | 403 Błąd HTTP odebrany z usługi Azure Monitor. Szczegółowe informacje można znaleźć w pełnym pliku wyjściowym skryptu omsadmin. |
 | 6 | Błąd HTTP nieobjęty 200 odebrany z usługi Azure Monitor. Szczegółowe informacje można znaleźć w pełnym pliku wyjściowym skryptu omsadmin. |
 | 7 | Nie można połączyć się z usługą Azure Monitor. Szczegółowe informacje można znaleźć w pełnym pliku wyjściowym skryptu omsadmin. |
@@ -157,15 +157,8 @@ Poniżej wtyczki wyjściowej, odkomentuj `#` następującą sekcję, usuwając p
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
 2. Przejrzyj sekcję [Aktualizuj ustawienia serwera proxy,](agent-manage.md#update-proxy-settings) aby sprawdzić, czy agent został prawidłowo skonfigurowany do komunikowania się za pośrednictwem serwera proxy.    
-* Sprawdź, czy następujące punkty końcowe usługi Azure Monitor są umieszczane na białej liście:
 
-    |Zasób agenta| Porty | Kierunek |
-    |------|---------|----------|  
-    |*.ods.opinsights.azure.com | port 443| Ruch przychodzący i wychodzący |  
-    |*.oms.opinsights.azure.com | port 443| Ruch przychodzący i wychodzący |  
-    |*.blob.core.windows.net | port 443| Ruch przychodzący i wychodzący |  
-
-    Jeśli planujesz używać procesu roboczego hybrydowego wiązki uruchomieniu usługi Azure Automation do łączenia się z usługą Automatyzacja i rejestrowania się w niej w celu używania wiązek ekwiwania lub rozwiązań do zarządzania w twoim środowisku, musi mieć dostęp do numeru portu i adresów URL opisanych w [temacie Konfigurowanie sieci dla hybrydowego procesu roboczego systemu Runbook](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
+3. Sprawdź, czy punkty końcowe opisane na liście [wymagań zapory sieciowej](log-analytics-agent.md#firewall-requirements) usługi Azure Monitor są poprawnie dodawane do listy dozwolonych. Jeśli używasz usługi Azure Automation, kroki konfiguracji sieci niezbędne są połączone powyżej, jak również.
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Problem: Podczas próby wsuń na pokład pojawia się błąd 403
 
