@@ -1,24 +1,26 @@
 ---
-title: Często zadawane pytania dotyczące platformy Cloudyn na platformie Azure | Microsoft Docs
+title: Często zadawane pytania dotyczące platformy Cloudyn na platformie Azure
 description: W tym artykule podano odpowiedzi na niektóre często zadawane pytania dotyczące platformy Cloudyn.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
-ms.topic: troubleshooting
+ms.date: 03/12/2020
+ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 5c770d83d59edf0a56184f8eea0bda6b0603893c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: b1ec81ea135079defb390becc025f51cde2dad7f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770078"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411242"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Często zadawane pytania dotyczące platformy Cloudyn
 
 W tym artykule podano odpowiedzi na niektóre często zadawane pytania dotyczące platformy Cloudyn. Jeśli masz pytania na temat platformy Cloudyn, możesz je zadawać na stronie [często zadawanych pytań dotyczących platformy Cloudyn](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn).
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Jak mogę rozwiązać typowe problemy z pośrednią konfiguracją przedsiębiorstwa?
 
@@ -58,13 +60,13 @@ Jeśli nie możesz wyświetlić żadnych danych zaleceń optymalizatora, najpraw
 
 Aby aktywować konto:
 
-1.  W portalu Cloudyn kliknij pozycję **Ustawienia** w górnym prawym rogu i wybierz pozycję **Konta w chmurze**.
-2.  Na karcie Konta platformy Microsoft Azure wyszukaj konta, które mają **nieaktywowaną** subskrypcję.
-3.  Po prawej stronie nieaktywowanego konta kliknij symbol **edycji**, który przypomina ołówek.
-4.  Identyfikator dzierżawy i identyfikator stawki zostaną automatycznie wykryte. Kliknij przycisk **Dalej**.
-5.  Nastąpi przekierowywanie do witryny Azure Portal. Zaloguj się do portalu i autoryzuj dostęp modułu zbierającego platformy Cloudyn do danych platformy Azure.
-6.  Następnie nastąpi przekierowanie do strony zarządzania kontami platformy Cloudyn, a subskrypcja zostanie zaktualizowana przy użyciu stanu konta **Aktywne**. Będzie wyświetlany symbol zielonego znacznika wyboru.
-7.  Jeśli nie widzisz symbolu zielonego znacznika wyboru dla co najmniej jednej z subskrypcji, oznacza to, że nie masz uprawnień do tworzenia aplikacji czytnika (CloudynCollector) dla subskrypcji. Użytkownik z wyższymi uprawnieniami do subskrypcji musi powtórzyć kroki 3 i 4.  
+1.    W portalu Cloudyn kliknij pozycję **Ustawienia** w górnym prawym rogu i wybierz pozycję **Konta w chmurze**.
+2.    Na karcie Konta platformy Microsoft Azure wyszukaj konta, które mają **nieaktywowaną** subskrypcję.
+3.    Po prawej stronie nieaktywowanego konta kliknij symbol **edycji**, który przypomina ołówek.
+4.    Identyfikator dzierżawy i identyfikator stawki zostaną automatycznie wykryte. Kliknij przycisk **Dalej**.
+5.    Nastąpi przekierowywanie do witryny Azure Portal. Zaloguj się do portalu i autoryzuj dostęp modułu zbierającego platformy Cloudyn do danych platformy Azure.
+6.    Następnie nastąpi przekierowanie do strony zarządzania kontami platformy Cloudyn, a subskrypcja zostanie zaktualizowana przy użyciu stanu konta **Aktywne**. Będzie wyświetlany symbol zielonego znacznika wyboru.
+7.    Jeśli nie widzisz symbolu zielonego znacznika wyboru dla co najmniej jednej z subskrypcji, oznacza to, że nie masz uprawnień do tworzenia aplikacji czytnika (CloudynCollector) dla subskrypcji. Użytkownik z wyższymi uprawnieniami do subskrypcji musi powtórzyć kroki 3 i 4.  
 
 Po wykonaniu powyższych kroków zalecenia optymalizatora staną się widoczne w ciągu od jednego do dwóch dni. Jednak może upłynąć do pięciu dni, zanim staną się dostępne pełne dane optymalizacji.
 
@@ -95,7 +97,7 @@ Zalecamy utworzenie co najmniej dwóch kont administratorów platformy Cloudyn n
 
 Jeśli nie możesz zalogować się do portalu Cloudyn, upewnij się, że używasz poprawnego adresu URL, aby zalogować się do platformy Cloudyn. Użyj witryny [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
-Unikaj używania bezpośredniego adresu URL platformy Cloudyn: https://app.cloudyn.com.
+Unikaj używania bezpośredniego adresu URL platformy Cloudyn: `https://app.cloudyn.com`.
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Jak mogę aktywować nieaktywowane konta przy użyciu poświadczeń platformy Azure?
 
