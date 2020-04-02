@@ -1,15 +1,15 @@
 ---
 title: Tworzenie członka usługi Azure Blockchain — interfejs wiersza polecenia platformy Azure
 description: Utwórz członka usługi Azure Blockchain dla konsorcjum łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure.
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 0a3cf3d7c7f3dc0b8ece6fd6a466e42ae970b61c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 322b1884726b6dfe322560032ed1b8a98c600154
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214732"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529618"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Szybki start: tworzenie członka łańcucha bloków usługi Azure Blockchain przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -58,7 +58,7 @@ az resource create \
 | **hasło** | Hasło do domyślnego węzła transakcji członka. Użyj hasła do uwierzytelniania podstawowego podczas łączenia się z domyślnym węzłem transakcji publicznej punktu końcowego członka łańcucha bloków.
 | **Konsorcjum** | Nazwa konsorcjum do przyłączenia lub utworzenia. Aby uzyskać więcej informacji na temat konsorcjów, zobacz [konsorcjum usługi Azure Blockchain Service](consortium.md).
 | **konsorcjumAccountPassword** | Hasło konta konsorcjum jest również znane jako hasło konta członkowskiego. Hasło konta członkowskiego służy do szyfrowania klucza prywatnego dla konta Ethereum, który jest tworzony dla twojego członka. Do zarządzania konsorcjum używasz konta członkowskiego i hasła do konta członkowskiego.
-| **skuName (nazwa skuname)** | Typ warstwy. Użyj S0 dla standardu i B0 dla basic. Użyj warstwy *Podstawowa* do tworzenia, testowania i weryfikacji pojęć. Użyj warstwy *Standardowa* dla wdrożeń na poziomie produkcyjnym.
+| **skuName (nazwa skuname)** | Typ warstwy. Użyj S0 dla standardu i B0 dla basic. Użyj warstwy *Podstawowa* do tworzenia, testowania i weryfikacji pojęć. Użyj warstwy *Standardowa* dla wdrożeń na poziomie produkcyjnym. Należy również użyć *warstwy Standardowa,* jeśli używasz Menedżera danych Blockchain lub wysyłasz dużą liczbę transakcji prywatnych. Zmiana warstwy cenowej między podstawową a standardową po utworzeniu elementu członkowskiego nie jest obsługiwana.
 
 Tworzenie członka łańcucha bloków i wspieranie zasobów zajmuje około 10 minut.
 

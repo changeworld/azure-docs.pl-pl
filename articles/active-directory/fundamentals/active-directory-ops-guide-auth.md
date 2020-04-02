@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b4ec003888d75a582d25feef8ed2ce010fa7996
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368046"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546248"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Przewodnik po operacjach zarządzania uwierzytelnianiem usługi Azure Active Directory
 
@@ -101,7 +101,7 @@ Jeśli w organizacji lokalnej brakuje strategii odporności awarii lub ma strate
 
 ![przepływ synchronizacji skrótu hasła](./media/active-directory-ops-guide/active-directory-ops-img5.png)
 
-Aby lepiej zrozumieć opcje uwierzytelniania, zobacz [Wybieranie właściwej metody uwierzytelniania dla rozwiązania do tożsamości hybrydowej usługi Azure Active Directory.](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)
+Aby lepiej zrozumieć opcje uwierzytelniania, zobacz [Wybieranie właściwej metody uwierzytelniania dla rozwiązania do tożsamości hybrydowej usługi Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/hybrid/choose-ad-authn)
 
 ### <a name="programmatic-usage-of-credentials"></a>Programowe użycie poświadczeń
 
@@ -115,7 +115,7 @@ Firma Microsoft zaleca również kontakt z właścicielami aplikacji, aby zrozum
 
 ### <a name="on-premises-authentication"></a>Uwierzytelnianie lokalne
 
-Uwierzytelnianie federacyjne ze zintegrowanym uwierzytelnianiem systemu Windows (IWA) lub bezproblemowym logowaniem jednokrotnym (SSO) zarządzane z synchronizacją hash hasła lub uwierzytelnianiem pass-through jest najlepszym doświadczeniem użytkownika w sieci firmowej do lokalnych kontrolerów domeny. Minimalizuje zmęczenie poświadczeń i zmniejsza ryzyko, że użytkownicy padają ofiarą ataków phishingowych. Jeśli uwierzytelnianie zarządzane w chmurze jest już używane za pomocą phs lub PTA, ale użytkownicy nadal muszą wpisywać swoje hasło podczas uwierzytelniania lokalnego, należy natychmiast [wdrożyć bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso). Z drugiej strony, jeśli są obecnie federowane z planami, aby ostatecznie przeprowadzić migrację do uwierzytelniania zarządzanego w chmurze, należy zaimplementować bezproblemowe logowanie jednokrotne w ramach projektu migracji.
+Uwierzytelnianie federacyjne ze zintegrowanym uwierzytelnianiem systemu Windows (IWA) lub bezproblemowym logowaniem jednokrotnym (SSO) za pomocą synchronizacji skrótów haseł lub uwierzytelniania przekazywanego jest najlepszym doświadczeniem użytkownika w sieci firmowej z kontrolerami domeny lokalnej. Minimalizuje zmęczenie poświadczeń i zmniejsza ryzyko, że użytkownicy padają ofiarą ataków phishingowych. Jeśli uwierzytelnianie zarządzane w chmurze jest już używane za pomocą phs lub PTA, ale użytkownicy nadal muszą wpisywać swoje hasło podczas uwierzytelniania lokalnego, należy natychmiast [wdrożyć bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso). Z drugiej strony, jeśli są obecnie federowane z planami, aby ostatecznie przeprowadzić migrację do uwierzytelniania zarządzanego w chmurze, należy zaimplementować bezproblemowe logowanie jednokrotne w ramach projektu migracji.
 
 ### <a name="device-trust-access-policies"></a>Zasady dostępu zaufania do urządzeń
 
@@ -230,11 +230,11 @@ Jeśli posiadasz już licencje usługi Azure AD Premium P2, które obsługują r
 
 Usługa Microsoft Intune Application Management (MAM) umożliwia wypychanie kontroli ochrony danych, takich jak szyfrowanie pamięci masowej, numer PIN, oczyszczanie magazynu zdalnego itp., do zgodnych aplikacji klienckich, takich jak Outlook Mobile. Ponadto można utworzyć zasady dostępu warunkowego, aby [ograniczyć dostęp](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) do usług w chmurze, takich jak Usługa Exchange Online, z zatwierdzonych lub zgodnych aplikacji.
 
-Jeśli pracownicy instalują aplikacje obsługujące usługę MAM, takie jak aplikacje mobilne pakietu Office, aby uzyskać dostęp do zasobów firmowych, takich jak Exchange Online lub SharePoint Online, a także obsługujesz byod (przynieś własne urządzenie), zalecamy wdrożenie zasad aplikacji MAM w celu zarządzania konfiguracja aplikacji w urządzeniach będących własnością osobistą bez rejestracji mdm, a następnie zaktualizować zasady dostępu warunkowego, aby zezwolić tylko na dostęp od klientów obsługujących usługę MAM.
+Jeśli pracownicy instalują aplikacje obsługujące usługę MAM, takie jak aplikacje mobilne pakietu Office, aby uzyskać dostęp do zasobów firmowych, takich jak Exchange Online lub SharePoint Online, a także obsługujesz usługę BYOD (przynieś własne urządzenie), zalecamy wdrożenie zasad usługi MAM aplikacji w celu zarządzania konfiguracją aplikacji na urządzeniach będących własnością osobistą bez rejestracji mdm, a następnie zaktualizowanie zasad dostępu warunkowego, aby zezwolić tylko na dostęp od klientów obsługujących usługę MAM.
 
 ![Kontrola dotacji dostępu warunkowego](./media/active-directory-ops-guide/active-directory-ops-img12.png)
 
-Jeśli pracownicy instalują aplikacje obsługujące usługę MAM w stosunku do zasobów firmowych, a dostęp jest ograniczony na zarządzanych urządzeniach usługi Intune, należy rozważyć wdrożenie zasad mam aplikacji w celu zarządzania konfiguracją aplikacji dla urządzeń osobistych, oraz aktualizowanie zasad dostępu warunkowego, aby zezwolić tylko na dostęp od klientów obsługujących usługę MAM.
+Jeśli pracownicy instalują aplikacje obsługujące usługę MAM w stosunku do zasobów firmowych, a dostęp jest ograniczony na zarządzanych urządzeniach usługi Intune, należy rozważyć wdrożenie zasad usługi MAM aplikacji w celu zarządzania konfiguracją aplikacji dla urządzeń osobistych i zaktualizować zasady dostępu warunkowego, aby zezwolić tylko na dostęp od klientów obsługujących usługę MAM.
 
 ### <a name="conditional-access-implementation"></a>Implementacja dostępu warunkowego
 
@@ -329,7 +329,7 @@ Poniżej znajdują się ustawienia użytkownika i grupy, które można zablokowa
 #### <a name="user-settings"></a>Ustawienia użytkownika
 
 - **Użytkownicy zewnętrzni** — współpraca zewnętrzna może odbywać się organicznie w przedsiębiorstwie dzięki usługom, takim jak Teams, Power BI, Sharepoint Online i Azure Information Protection. Jeśli masz jawne ograniczenia do kontrolowania współpracy zewnętrznej inicjowane przez użytkownika, zaleca się włączenie użytkowników zewnętrznych przy użyciu [zarządzania uprawnieniami usługi Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) lub kontrolowanej operacji, takich jak za pośrednictwem działu pomocy technicznej. Jeśli nie chcesz zezwalać na organiczną współpracę zewnętrzną usług, możesz [całkowicie zablokować członkom możliwość zapraszania użytkowników zewnętrznych.](https://docs.microsoft.com/azure/active-directory/b2b/delegate-invitations) Alternatywnie można również [zezwolić lub zablokować określone domeny](https://docs.microsoft.com/azure/active-directory/b2b/allow-deny-list) w zaproszeniach użytkowników zewnętrznych.
-- **Rejestracje aplikacji** — gdy rejestracje aplikacji są włączone, użytkownicy końcowi mogą samodzielnie dołączać aplikacje i udzielą dostępu do swoich danych. Typowym przykładem rejestracji aplikacji są użytkownicy, którzy włączają wtyczki programu Outlook lub asystentów głosowych, takich jak Alexa i Siri, aby odczytywać wiadomości e-mail i kalendarz lub wysyłać wiadomości e-mail w ich imieniu. Jeśli klient zdecyduje się wyłączyć rejestrację aplikacji, zespoły InfoSec i IAM muszą być zaangażowane w zarządzanie wyjątkami (rejestracje aplikacji, które są potrzebne na podstawie wymagań biznesowych), ponieważ muszą zarejestrować aplikacje za pomocą konta administratora, i najprawdopodobniej wymagają projektowania procesu w celu operacjonalizacji procesu.
+- **Rejestracje aplikacji** — gdy rejestracje aplikacji są włączone, użytkownicy końcowi mogą samodzielnie dołączać aplikacje i udzielą dostępu do swoich danych. Typowym przykładem rejestracji aplikacji są użytkownicy, którzy włączają wtyczki programu Outlook lub asystentów głosowych, takich jak Alexa i Siri, aby odczytywać wiadomości e-mail i kalendarz lub wysyłać wiadomości e-mail w ich imieniu. Jeśli klient zdecyduje się wyłączyć rejestrację aplikacji, zespoły InfoSec i IAM muszą być zaangażowane w zarządzanie wyjątkami (rejestracje aplikacji, które są potrzebne na podstawie wymagań biznesowych), ponieważ musieliby zarejestrować aplikacje za pomocą konta administratora i najprawdopodobniej wymagają projektowania procesu w celu operacjonalizacji procesu.
 - **Portal administracyjny** — organizacje mogą zablokować obiekt Azure AD w witrynie Azure portal, dzięki czemu osoby niebędące administratorami nie mogą uzyskać dostępu do zarządzania usługą Azure AD w witrynie Azure portal i pomylić się. Przejdź do ustawień użytkownika w portalu zarządzania usługi Azure AD, aby ograniczyć dostęp:
 
 ![Dostęp z ograniczeniami portalu administracyjnego](./media/active-directory-ops-guide/active-directory-ops-img13.png)

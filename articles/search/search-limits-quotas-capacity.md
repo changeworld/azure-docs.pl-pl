@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b54905e201ee7a6dbf4c6837960a6e0b63057ea9
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282980"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549053"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Limity usługi Azure Cognitive Search
 
@@ -30,7 +30,7 @@ Maksymalne limity dotyczące magazynu, obciążeń i ilości indeksów i innych 
 > [!NOTE]
 > Od 1 lipca wszystkie warstwy są ogólnie dostępne, w tym warstwa Zoptymalizowana do magazynowania. Wszystkie ceny można znaleźć na stronie [Szczegóły cen.](https://azure.microsoft.com/pricing/details/search/)
 
-  S3 High Density (S3 HD) jest przeznaczony do określonych obciążeń: [multi-najem](search-modeling-multitenant-saas-applications.md) i dużych ilości małych indeksów (jeden milion dokumentów na indeks, trzy tysiące indeksów na usługę). Ta warstwa nie zapewnia [funkcji indeksatora](search-indexer-overview.md). W S3 HD pozyskiwanie danych musi korzystać z metody wypychania, używając wywołań interfejsu API do wypychania danych ze źródła do indeksu. 
+  S3 High Density (S3 HD) jest przeznaczony do określonych obciążeń: [multi-najem](search-modeling-multitenant-saas-applications.md) i dużych ilości małych indeksów (trzy tysiące indeksów na usługę). Ta warstwa nie zapewnia [funkcji indeksatora](search-indexer-overview.md). W S3 HD pozyskiwanie danych musi korzystać z metody wypychania, używając wywołań interfejsu API do wypychania danych ze źródła do indeksu. 
 
 > [!NOTE]
 > Usługa jest aprowizowana w określonej warstwie. Przeskakiwanie poziomów w celu uzyskania pojemności obejmuje inicjowanie obsługi administracyjnej nowej usługi (nie ma uaktualnienia w miejscu). Aby uzyskać więcej informacji, zobacz [Wybieranie jednostki SKU lub warstwy](search-sku-tier.md). Aby dowiedzieć się więcej na temat dostosowywania pojemności w usłudze, która została już zainicjowana, zobacz [Skalowanie poziomów zasobów dla obciążeń zapytań i indeksowania](search-capacity-planning.md).
@@ -61,38 +61,16 @@ Maksymalne limity dotyczące magazynu, obciążeń i ilości indeksów i innych 
 
 <sup>2</sup> Posiadanie bardzo dużej liczby elementów w złożonych kolekcjach na dokument powoduje obecnie wysokie wykorzystanie magazynu. Jest to znany problem. W międzyczasie limit 3000 jest bezpieczną górną granicą dla wszystkich warstw usług. Ten limit jest wymuszany tylko dla operacji indeksowania, które wykorzystują najwcześniejszą ogólnie`2019-05-06`dostępną wersję interfejsu API (GA), która obsługuje złożone pola typów ( ) i począwszy od. Aby nie przerywać klientów, którzy mogą używać wcześniejszych wersji interfejsu API w wersji zapoznawczej (które obsługują złożone pola typu), nie będziemy wymuszać tego limitu dla operacji indeksowania, które używają tych wersji interfejsu API w wersji zapoznawczej. Należy zauważyć, że wersje interfejsu API w wersji zapoznawczej nie są przeznaczone do użycia w scenariuszach produkcyjnych i zdecydowanie zalecamy klientom przejście do najnowszej wersji interfejsu API ga.
 
+> [!NOTE]
+> Podczas gdy maksymalna pojemność pojedynczego indeksu jest zazwyczaj ograniczona przez dostępny magazyn, istnieje maksymalna górna granica całkowitej liczby dokumentów, które mogą być przechowywane w jednym indeksie. Limit ten wynosi około 24 miliardów dokumentów na indeks dla usług wyszukiwania Basic, S1, S2 i S3 oraz 2 miliardy dokumentów na indeks dla usług wyszukiwania S3HD. Każdy element kolekcji złożonych są liczone jako oddzielne dokumenty dla celów tych limitów.
+
 <a name="document-limits"></a>
 
 ## <a name="document-limits"></a>Limity dokumentów 
 
-Od października 2018 r. nie ma już żadnych limitów dokumentów dla każdej nowej usługi utworzonej w dowolnej warstwie podlegania rozliczania (Podstawowa, S1, S2, S3, S3 HD) w dowolnym regionie. Chociaż od listopada/grudnia 2017 r. w większości regionów liczono nieograniczoną liczbę dokumentów, kilka regionów nadal nakładało limity dokumentów po tej dacie. W zależności od tego, kiedy i gdzie utworzono usługę wyszukiwania, może być uruchomiona usługa, która nadal podlega limitom dokumentów.
+Od października 2018 r. nie ma już żadnych limitów liczby dokumentów dla każdej nowej usługi utworzonej w dowolnej warstwie podlegania rozliczania (Podstawowa, S1, S2, S3, S3 HD) w dowolnym regionie. Starsze usługi utworzone przed październikiem 2018 r. mogą nadal podlegać limitom liczby dokumentów.
 
 Aby ustalić, czy usługa ma limity dokumentów, użyj [interfejsu API REST statystyki usługi GET](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics). Limity dokumentów są odzwierciedlane `null` w odpowiedzi, ze wskazaniem żadnych limitów.
-
-> [!NOTE]
-> Mimo że nie ma żadnych limitów określonych dokumentów jednostki SKU, każdy indeks nadal podlega maksymalnemu bezpiecznej granicy, aby zapewnić stabilność usługi. Limit ten pochodzi z Lucene. Każdy dokument usługi Azure Cognitive Search jest wewnętrznie indeksowany jako jeden lub więcej dokumentów Lucene. Liczba dokumentów lucene na dokument wyszukiwania zależy od całkowitej liczby elementów w złożonych polach kolekcji. Każdy element jest indeksowany jako oddzielny dokument Lucene. Na przykład dokument z 3 elementami w złożonym polu kolekcji, zostanie zindeksowany jako 4 dokumenty Lucene - 1 dla samego dokumentu i 3 dla elementów. Maksymalna liczba dokumentów Lucene wynosi około 25 miliardów na indeks.
-
-### <a name="regions-previously-having-document-limits"></a>Regiony, w które wcześniej obowiązują limity dokumentów
-
-Jeśli portal wskazuje limit dokumentów, usługa została utworzona przed końcem 2017 r. lub została utworzona w centrum danych przy użyciu klastrów o niższej pojemności do obsługi usług Azure Cognitive Search:
-
-+ Australia Wschodnia
-+ Azja Wschodnia
-+ Indie Środkowe
-+ Japonia Zachodnia
-+ Zachodnio-środkowe stany USA
-
-W przypadku usług podlegających limitom dokumentów obowiązują następujące maksymalne limity:
-
-|  Bezpłatna | Podstawowa (Basic) | S1 | S2 | S3 | S3&nbsp;HD |
-|-------|-------|----|----|----|-------|
-|  10 000 |1&nbsp;milion |15 mln na partycję lub 180 mln na usługę |60 mln na partycję lub 720 mln na usługę |120 mln na partycję lub 1,4 mld na usługę |1 mln na indeks lub 200 mln na partycję |
-
-Jeśli usługa ma limity, które Cię blokują, utwórz nową usługę, a następnie ponownie opublikuj całą zawartość do tej usługi. Nie ma mechanizmu bezproblemowego ponownego obsługi administracyjnej usługi na nowym sprzęcie za kulisami.
-
-> [!Note] 
-> W przypadku usług O wysokiej gęstości S3 utworzonych po koniec 2017 r. usunięto 200 milionów dokumentów na partycję, ale pozostaje limit 1 miliona dokumentów na indeks.
-
 
 ### <a name="document-size-limits-per-api-call"></a>Limity rozmiaru dokumentu na wywołanie interfejsu API
 
@@ -136,7 +114,7 @@ Maksymalny czas pracy istnieje, aby zapewnić równowagę i stabilność usługi
 
 Maksymalna dozwolona liczba map synonimów zależy od warstwy cenowej. Każda reguła może mieć do 20 rozszerzeń, gdzie rozszerzenie jest równoważnym terminem. Na przykład, biorąc pod uwagę "kot", skojarzenie z "kotkiem", "kotem" i "felis" (rodzaj dla kotów) będzie liczone jako 3 rozszerzenia.
 
-| Zasób | Bezpłatna | Podstawowa (Basic) | S1 | S2 | S3 | S3-HD |L1 (właso. | L2 (l2) |
+| Zasób | Bezpłatna | Podstawowy | S1 | S2 | S3 | S3-HD |L1 (właso. | L2 (l2) |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Maksymalna liczba map synonimów |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Maksymalna liczba reguł na mapę |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |

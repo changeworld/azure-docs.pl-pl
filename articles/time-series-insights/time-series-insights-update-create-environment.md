@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 856410f2166ae442e8beadf36eac312748407b13
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77526822"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529747"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Samouczek: Konfigurowanie środowiska usługi Azure Time Series Insights Preview
 
@@ -30,7 +30,6 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 > * Uruchamianie przykładowego akceleratora rozwiązań umożliwiającego strumieniowe przesyłanie danych do środowiska wersji zapoznawczej usługi Azure Time Series Insights.
 > * Wykonywanie podstawowej analizy danych.
 > * Definiowanie hierarchii oraz typu modelu szeregów czasowych i kojarzenie ich z wystąpieniami.
-> * Użyj łącznika usługi Power BI i wizualizuj dane w usłudze Power BI.
 
 >[!TIP]
 > [Akceleratory rozwiązań IoT](https://www.azureiotsolutions.com/Accelerators) zapewniają wstępnie skonfigurowane rozwiązania klasy korporacyjnej, których można użyć do przyspieszenia opracowywania niestandardowych rozwiązań IoT.
@@ -359,3 +358,8 @@ Dowiedz się więcej o modelach szeregów czasowych:
 
 > [!div class="nextstepaction"]
 > [Modelowanie danych w usłudze Azure Time Series Insights w wersji zapoznawczej](./time-series-insights-update-tsm.md)
+
+Dowiedz się więcej o łączeniu środowiska z witryną Power BI
+
+> [!div class="nextstepaction"]
+> [Wizualizuj dane z usługi Time Series Insights w usłudze Power BI](./how-to-connect-power-bi.md)

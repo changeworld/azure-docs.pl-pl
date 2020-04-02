@@ -2,13 +2,13 @@
 title: 'Samouczek: wyodrębnianie danych strukturalnych za pomocą jednostki nauczanej maszynowo — LUIS'
 description: Wyodrębnij dane strukturalne z wypowiedź przy użyciu jednostki nauczane maszynowo. Aby zwiększyć dokładność ekstrakcji, dodaj podskładniki z deskryptorami i wiązaniami.
 ms.topic: tutorial
-ms.date: 03/31/2020
-ms.openlocfilehash: f521e634c129aaf03ee341328721bd89723e8264
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 04/01/2020
+ms.openlocfilehash: 52bf2fb0b9f37e0c731a46c0aaf8b6c5e7f0e911
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478347"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545852"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Samouczek: wyodrębnianie danych strukturalnych z wypowiedź użytkownika z jednostek nauczonych maszynowo w language understanding (LUIS)
 
@@ -215,7 +215,7 @@ Przetestuj aplikację za pomocą interaktywnego panelu **testowego.** Ten proces
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Przejdź na koniec adresu URL w adresie i zastąp _YOUR_QUERY_HERE_ tą samą kwerendą, którą wprowadzono w interaktywnym panelu testowym.
+1. Przejdź na koniec adresu URL na pasku adresu i zastąp _YOUR_QUERY_HERE_ tą samą kwerendą, którą wprowadzono w interaktywnym panelu testowym.
 
     `deliver a medium veggie pizza`
 

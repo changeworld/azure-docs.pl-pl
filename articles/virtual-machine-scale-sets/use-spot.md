@@ -1,30 +1,25 @@
 ---
-title: Tworzenie zestawu skalowania korzystającego z maszyn wirtualnych platformy Azure (wersja zapoznawcza)
+title: Tworzenie zestawu skalowania korzystającego z maszyn wirtualnych platformy Azure w punktach
 description: Dowiedz się, jak tworzyć zestawy skalowania maszyny wirtualnej platformy Azure, które używają maszyn wirtualnych punktowych do oszczędzania na kosztach.
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.topic: conceptual
-ms.date: 02/11/2020
+ms.topic: article
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162688"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545938"
 ---
-# <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Wersja zapoznawcza: maszyny wirtualne platformy Azure spot dla zestawów skalowania maszyny wirtualnej 
+# <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Maszyny wirtualne platformy Azure spot dla zestawów skalowania maszyn wirtualnych 
 
 Korzystanie z platformy Azure Spot w zestawach skalowania umożliwia korzystanie z naszej niewykorzystanej pojemności przy znacznych oszczędnościach kosztów. W dowolnym momencie, gdy platforma Azure potrzebuje pojemności z powrotem, infrastruktury platformy Azure będzie eksmitować wystąpień spot. W związku z tym wystąpienia spot są idealne dla obciążeń, które mogą obsługiwać przerwy, takie jak zadania przetwarzania wsadowego, środowiska deweloperów/testów, dużych obciążeń obliczeniowych i innych.
 
 Ilość dostępnej pojemności może się różnić w zależności od rozmiaru, regionu, połówka dnia i innych. Podczas wdrażania wystąpień spot w zestawach skalowania platforma Azure przydzieli wystąpienie tylko wtedy, gdy dostępna jest pojemność, ale dla tych wystąpień nie ma umowy SLA. Zestaw skalowania punktowego jest wdrażany w jednej domenie błędów i nie oferuje gwarancji wysokiej dostępności.
 
-> [!IMPORTANT]
-> Wystąpienia spot są obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest zalecana dla obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 
 ## <a name="pricing"></a>Cennik
 
@@ -47,7 +42,7 @@ Użytkownicy mogą wyrazić zgodę na otrzymywanie powiadomień w maszynie wirtu
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Wdrażanie maszyn wirtualnych punktowych w zestawach skalowania
 
 Aby wdrożyć maszyny wirtualne punktowe w zestawach skalowania, można ustawić nową flagę *Priorytet* na *Punkt .* Wszystkie maszyny wirtualne w zestawie skalowania zostaną ustawione na Spot. Aby utworzyć zestaw skalowania z maszynami wirtualnymi punktowymi, należy użyć jednej z następujących metod:
-- [Portal Azure](#portal)
+- [Azure Portal](#portal)
 - [Interfejs wiersza polecenia platformy Azure](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Szablony usługi Azure Resource Manager](#resource-manager-templates)
@@ -104,7 +99,7 @@ W przypadku wdrożeń szablonów punktowych użyj`"apiVersion": "2019-03-01"` lu
 
 Aby usunąć wystąpienie po jego eksmisji, zmień parametr na `evictionPolicy` . `Delete`
 
-## <a name="faq"></a>Najczęściej zadawane pytania
+## <a name="faq"></a>Często zadawane pytania
 
 **P.** Po utworzeniu, jest spot wystąpienie takie same jak standardowe wystąpienie?
 
@@ -172,6 +167,5 @@ Aby usunąć wystąpienie po jego eksmisji, zmień parametr na `evictionPolicy` 
 **Odp.:** Możesz opublikować i oznaczyć swoje pytanie na `azure-spot` Q&[A](https://docs.microsoft.com/answers/topics/azure-spot.html). 
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz, gdy utworzono zestaw skalowania z maszynami wirtualnymi punktowymi, spróbuj wdrożyć nasz [szablon skalowania automatycznego przy użyciu spot](https://github.com/Azure/vm-scale-sets/tree/master/preview/lowpri).
 
 Sprawdź [stronę cennik zestawu skalowania maszyny wirtualnej, aby](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) uzyskać szczegółowe informacje o cenach.

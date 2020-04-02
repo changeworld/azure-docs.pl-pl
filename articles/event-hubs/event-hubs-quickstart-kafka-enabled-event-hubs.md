@@ -8,12 +8,12 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 02/12/2020
-ms.openlocfilehash: 4a0d7d30ea02af222ab4a758c18b46d7488e1a8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d196611dcf9f29e981977b8506ad9623f4629b53
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280715"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521647"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Szybki start: przesyłanie strumieniowe danych za pomocą centrów zdarzeń przy użyciu protokołu Platformy Kafka
 Ten przewodnik Szybki start pokazuje, jak przesyłać strumieniowo do centrów zdarzeń bez zmiany klientów protokołu lub uruchamiania własnych klastrów. Dowiesz się, jak używać producentów i konsumentów do rozmów z centrum zdarzeń tylko ze zmianą konfiguracji w aplikacjach. Usługa Azure Event Hubs obsługuje [platformę Apache Kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html)
@@ -32,7 +32,7 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
 * [Git](https://www.git-scm.com/)
 
 
-## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs z obsługą platformy Kafka
+## <a name="create-an-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
 Podczas tworzenia obszaru nazw centrum zdarzeń warstwy **standardowej** punkt końcowy platformy Kafka dla obszaru nazw jest automatycznie włączony. Można przesyłać strumieniowo zdarzenia z aplikacji korzystających z protokołu Kafka do centrum zdarzeń warstwy standardowej. Postępuj zgodnie z instrukcjami krok po kroku w [Centrum tworzenia zdarzeń przy użyciu witryny Azure Portal,](event-hubs-create.md) aby utworzyć obszar nazw centrum zdarzeń warstwy **standardowej.** 
 
 > [!NOTE]
@@ -98,7 +98,7 @@ Podczas tworzenia obszaru nazw centrum zdarzeń warstwy **standardowej** punkt k
     Kod źródłowy dla klasy obsługi przykładowej CustomAuthenticateCallbackHandler można znaleźć w serwisie GitHub [tutaj.](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/consumer/src/main/java)
 
     Tutaj można znaleźć wszystkie przykłady OAuth dla centrów zdarzeń dla platformy [Kafka.](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)
-7. Uruchom kod użytkownika i przetwórz go z poziomu usługi Event Hubs z obsługą platformy Kafka przy użyciu klientów platformy Kafka:
+7. Uruchom kod konsumenta i przetwarzaj zdarzenia z Centrum zdarzeń przy użyciu klientów platformy Kafka:
 
     ```java
     mvn clean package
@@ -113,5 +113,5 @@ W tym artykule dowiesz się, jak przesyłać strumieniowo do centrów zdarzeń b
 - [Dowiedz się więcej na temat usługi Event Hubs dla platformy Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 - [Przewodniki Szybki start dla centrów zdarzeń dla platformy Kafka w usłudze GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart)
 - [Samouczki dotyczące centrów zdarzeń dla platformy Kafka w usłudze GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials)
-- Użyj [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) do [przesyłania strumieniowego zdarzeń z platformy Kafka lokalnie do platformy Kafka włączone usługi Event Hubs w chmurze.](event-hubs-kafka-mirror-maker-tutorial.md)
-- Dowiedz się, jak przesyłać strumieniowo do usługi Event Hubs z obsługą platformy Kafka przy użyciu narzędzi [Apache Flink](event-hubs-kafka-flink-tutorial.md) lub [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md)
+- Użyj [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) do [przesyłania strumieniowego zdarzeń z platformy Kafka lokalnie do centrum zdarzeń w chmurze.](event-hubs-kafka-mirror-maker-tutorial.md)
+- Dowiedz się, jak przesyłać strumieniowo do Centrów zdarzeń za pomocą [apache Flink](event-hubs-kafka-flink-tutorial.md) lub [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md)

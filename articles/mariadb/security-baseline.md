@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d9cff47c61fc08305427b25f949884b1ef089fd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca3a79b0d31cc18b8ff77f02ce4ce3d517d7a638
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289669"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548699"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Usługa Azure Security Baseline dla bazy danych platformy Azure dla bazy danych MariaDB
 
@@ -894,9 +894,9 @@ Jak zapewnić uwierzytelnianie usługi Key Vault z tożsamością zarządzaną:h
 
 **Wskazówki:** Usługa Azure Database dla serwera MariaDB obecnie nie obsługuje uwierzytelniania usługi Azure Active Directory w celu uzyskania dostępu do baz danych.  Podczas tworzenia usługi Azure Database dla serwera MariaDB, należy podać poświadczenia dla użytkownika administratora. Tego administratora można użyć do utworzenia dodatkowych użytkowników MariaDB.  
 
-W przypadku maszyn wirtualnych platformy Azure lub aplikacji sieci Web uruchomionych w usłudze Azure App Service używanych do uzyskiwania dostępu do bazy danych usługi Azure dla serwera MariaDB należy używać tożsamości usługi zarządzanej w połączeniu z usługą Azure Key Vault do przechowywania i pobierania poświadczeń dla usługi Azure Database dla mariadb Serwera.  Upewnij się, że włączona jest funkcja usuwania nietrwałego przechowalni kluczy.
+W przypadku maszyn wirtualnych platformy Azure lub aplikacji sieci web uruchomionych w usłudze Azure App Service używanych do uzyskiwania dostępu do bazy danych usługi Azure dla serwera MariaDB należy używać tożsamości usługi zarządzanej w połączeniu z usługą Azure Key Vault do przechowywania i pobierania poświadczeń dla usługi Azure Database dla serwera MariaDB.  Upewnij się, że włączona jest funkcja usuwania nietrwałego przechowalni kluczy.
 
-Użyj tożsamości zarządzanych, aby zapewnić usługi platformy Azure z automatycznie zarządzaną tożsamością w usłudze Azure Active Directory (AD). Tożsamości zarządzane umożliwia uwierzytelnianie do dowolnej usługi, która obsługuje uwierzytelnianie usługi Azure AD, w tym Usługi Key Vault, bez żadnych poświadczeń w kodzie. Jak skonfigurować tożsamości zarządzane: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vmHow aby zintegrować się z tożsamościami zarządzanymi platformy Azure:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Użyj tożsamości zarządzanych, aby zapewnić usługi platformy Azure z automatycznie zarządzaną tożsamością w usłudze Azure Active Directory (AD). Tożsamości zarządzane umożliwia uwierzytelnianie do dowolnej usługi, która obsługuje uwierzytelnianie usługi Azure AD, w tym Usługi Key Vault, bez żadnych poświadczeń w kodzie. Jak skonfigurować tożsamości zarządzane: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm. Jak zintegrować się z https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identitytożsamościami zarządzanymi platformy Azure: .
 
 
 

@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238678"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546056"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Samouczek: Trenuj swój pierwszy model ML
 
@@ -28,7 +28,7 @@ W tym samouczku nauczysz się wykonywać następujące zadania:
 > [!div class="checklist"]
 > * Łączenie obszaru roboczego i tworzenie eksperymentu
 > * Załaduj dane i trenuj modele scikit-learn
-> * Wyświetlanie wyników treningów w portalu
+> * Wyświetlanie wyników treningu w studiu
 > * Pobieranie najlepszego modelu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -89,7 +89,7 @@ X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 
 ## <a name="train-a-model"></a>Szkolenie modelu
 
-Szkolenie prostego modelu scikit-learn można łatwo wykonać lokalnie do szkolenia na małą skalę, ale podczas szkolenia wielu iteracji z dziesiątkami różnych permutacji funkcji i ustawień hiperparametru, łatwo jest stracić informacje o tym, jakie modele zostały przeszkolone i jak ich wyszkolił. Poniższy wzorzec projektu pokazuje, jak wykorzystać sdk, aby łatwo śledzić szkolenia w chmurze.
+Szkolenie prostego modelu scikit-learn można łatwo wykonać lokalnie do szkolenia na małą skalę, ale podczas szkolenia wielu iteracji z dziesiątkami różnych permutacji funkcji i ustawień hiperparametru, łatwo jest stracić informacje o tym, jakie modele zostały przeszkolone i jak je przeszkoliłeś. Poniższy wzorzec projektu pokazuje, jak wykorzystać sdk, aby łatwo śledzić szkolenia w chmurze.
 
 Tworzenie skryptu, który trenuje modele grzbietu w pętli przez różne wartości alfa hiperparametryczne.
 
@@ -124,32 +124,33 @@ Powyższy kod wykonuje następujące czynności:
 
 1. Dla każdej wartości hiperparametrycznej alfa w `alphas` tablicy w ramach eksperymentu tworzony jest nowy przebieg. Wartość alfa jest rejestrowana w celu rozróżnienia między każdym przebiegiem.
 1. W każdym uruchomieniu model Ridge jest tworzone, trenowane i używane do uruchamiania prognoz. Błąd typu root-mean-squared jest obliczany dla wartości rzeczywistych i przewidywanych, a następnie rejestrowany w przebiegu. W tym momencie run ma metadane dołączone zarówno dla wartości alfa i dokładności rmse.
-1. Następnie model dla każdego uruchomienia jest serializowany i przekazany do uruchomienia. Dzięki temu można pobrać plik modelu z uruchomienia w portalu.
+1. Następnie model dla każdego uruchomienia jest serializowany i przekazany do uruchomienia. Dzięki temu można pobrać plik modelu z uruchomienia w studio.
 1. Na końcu każdej iteracji przebieg jest `run.complete()`uzupełniony przez wywołanie .
 
-Po zakończeniu szkolenia, wywołać zmienną, `experiment` aby pobrać łącze do eksperymentu w portalu.
+Po zakończeniu szkolenia, wywołać zmienną, `experiment` aby pobrać link do eksperymentu w studio.
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>Nazwa</th><th>Workspace</th><th>Strona raportu</th><th>Strona dokumenty</th></tr><tr><td>eksperyment cukrzycy</td><td>nazwa obszaru roboczego</td><td>Łącze do witryny Azure portal</td><td>Łącze do dokumentacji</td></tr></table>
+<table style="width:100%"><tr><th>Nazwa</th><th>Workspace</th><th>Strona raportu</th><th>Strona dokumenty</th></tr><tr><td>eksperyment cukrzycy</td><td>nazwa obszaru roboczego</td><td>Łącze do studia usługi Azure Machine Learning</td><td>Łącze do dokumentacji</td></tr></table>
 
-## <a name="view-training-results-in-portal"></a>Wyświetlanie wyników szkolenia w portalu
+## <a name="view-training-results-in-studio"></a>Wyświetlanie wyników szkolenia w studio
 
-Po **łączu do witryny Azure portal** przeniesie Cię do głównej strony eksperymentu. Tutaj widzisz wszystkie poszczególne biegi w eksperymencie. Wszystkie niestandardowe wartości`alpha_value` rejestrowane `rmse`(i , w tym przypadku) stają się polami dla każdego uruchomienia, a także stają się dostępne dla wykresów i kafelków u góry strony eksperymentu. Aby dodać zarejestrowaną metrykę do wykresu lub kafelka, umieść nad nią wskaźnik myszy, kliknij przycisk edycji i znajdź metrykę zarejestrowaną na zamówienie.
+Po **łączu do usługi Azure Machine Learning studio** przeniesie Cię do głównej strony eksperymentu. Tutaj widzisz wszystkie poszczególne biegi w eksperymencie. Wszystkie niestandardowe wartości`alpha_value` rejestrowane `rmse`(i , w tym przypadku) stają się polami dla każdego uruchomienia, a także stają się dostępne dla wykresów i kafelków u góry strony eksperymentu. Aby dodać zarejestrowaną metrykę do wykresu lub kafelka, umieść nad nią wskaźnik myszy, kliknij przycisk edycji i znajdź metrykę zarejestrowaną na zamówienie.
 
 Podczas szkolenia modeli na dużą skalę w setkach i tysiącach oddzielnych przebiegów, ta strona ułatwia zobaczenie każdego wyszkolonego modelu, w szczególności sposobu ich przeszkolenia i zmiany unikatowych wskaźników w czasie.
 
-![Strona eksperymentu głównego w portalu](./media/tutorial-1st-experiment-sdk-train/experiment-main.png)
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="Strona głównego eksperymentu w studiu.":::
 
-Kliknięcie łącza numeru uruchomienia `RUN NUMBER` w kolumnie prowadzi do strony dla każdego pojedynczego uruchomienia. Domyślna karta **Szczegóły** zawiera bardziej szczegółowe informacje o każdym uruchomieniu. Przejdź do **danych wyjściowych** kartę, `.pkl` a zobaczysz plik dla modelu, który został przekazany do uruchomienia podczas każdej iteracji szkolenia. W tym miejscu można pobrać plik modelu, zamiast przeszkolić go ręcznie.
 
-![Uruchom stronę szczegółów w portalu](./media/tutorial-1st-experiment-sdk-train/model-download.png)
+Wybierz łącze numeru `RUN NUMBER` uruchomienia w kolumnie, aby wyświetlić stronę dla pojedynczego uruchomienia. Domyślna karta **Szczegóły** zawiera bardziej szczegółowe informacje o każdym uruchomieniu. Przejdź do **danych wyjściowych + dzienniki** `.pkl` kartę, a zobaczysz plik dla modelu, który został przekazany do uruchomienia podczas każdej iteracji szkolenia. W tym miejscu można pobrać plik modelu, zamiast przeszkolić go ręcznie.
+
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Uruchom stronę szczegółów w studio.":::
 
 ## <a name="get-the-best-model"></a>Uzyskaj najlepszy model
 
-Oprócz możliwości pobierania plików modelu z eksperymentu w portalu, można je również pobrać programowo. Poniższy kod iteruje za pośrednictwem każdego uruchomienia w eksperymencie i uzyskuje dostęp zarówno do metryk przebiegu rejestrowane i szczegóły uruchomienia (który zawiera run_id). To śledzi najlepsze uruchomienie, w tym przypadku uruchomić z najniższym root-mean-squared-error.
+Oprócz możliwości pobierania plików modelu z eksperymentu w studio, można je również pobrać programowo. Poniższy kod iteruje za pośrednictwem każdego uruchomienia w eksperymencie i uzyskuje dostęp zarówno do metryk przebiegu rejestrowane i szczegóły uruchomienia (który zawiera run_id). To śledzi najlepsze uruchomienie, w tym przypadku uruchomić z najniższym root-mean-squared-error.
 
 ```python
 minimum_rmse_runid = None
@@ -214,7 +215,7 @@ W tym samouczku wykonaliśmy następujące zadania:
 > [!div class="checklist"]
 > * Połączenie obszaru roboczego i utworzenie eksperymentu
 > * Załadowane dane i wyszkolone modele scikit-learn
-> * Wyświetlone wyniki szkolenia w portalu i pobrane modele
+> * Oglądane wyniki szkolenia w studio i pobrane modele
 
 [Wdróż model](tutorial-deploy-models-with-aml.md) za pomocą usługi Azure Machine Learning.
 Dowiedz się, jak opracować zautomatyzowane eksperymenty [uczenia maszynowego.](tutorial-auto-train-models.md)

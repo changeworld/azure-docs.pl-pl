@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 11/26/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: cc126af67a0d8627d61e595cee56f3df8973340d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 160873fe889d7eccc7efd08b4767854a5b24c484
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613048"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518971"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Konfigurowanie synchronizacji o określonym zakresie z usługi Azure AD na usługi domenowe Usługi domenowe Active Directory platformy Azure
 
@@ -42,18 +42,20 @@ Za pomocą portalu Azure lub programu PowerShell można skonfigurować ustawieni
 
 | Akcja | | |
 |--|--|--|
-| Tworzenie domeny zarządzanej usług Azure AD DS i konfigurowanie synchronizacji o określonym zakresie | [Portal Azure](#enable-scoped-synchronization-using-the-azure-portal) | [Powershell](#enable-scoped-synchronization-using-powershell) |
-| Modyfikowanie synchronizacji o określonym zakresie | [Portal Azure](#modify-scoped-synchronization-using-the-azure-portal) | [Powershell](#modify-scoped-synchronization-using-powershell) |
-| Wyłączanie synchronizacji o określonym zakresie | [Portal Azure](#disable-scoped-synchronization-using-the-azure-portal) | [Powershell](#disable-scoped-synchronization-using-powershell) |
+| Tworzenie domeny zarządzanej usług Azure AD DS i konfigurowanie synchronizacji o określonym zakresie | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
+| Modyfikowanie synchronizacji o określonym zakresie | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
+| Wyłączanie synchronizacji o określonym zakresie | [Azure Portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
-> Zmiana zakresu synchronizacji powoduje, że domena zarządzana usługą Azure AD DS ponownie zsynchronizuje wszystkie dane.
+> Zmiana zakresu synchronizacji powoduje, że domena zarządzana usługą Azure AD DS ponownie zsynchronizuje wszystkie dane. Obowiązują następujące zastrzeżenia:
 > 
 >  * Po zmianie zakresu synchronizacji dla domeny zarządzanej usług Azure AD DS występuje pełna ponowna synchronizacja.
 >  * Obiekty, które nie są już wymagane w domenie zarządzanej usług Azure AD DS są usuwane. Nowe obiekty są tworzone w domenie zarządzanej.
 >  * Ponowna synchronizacja może zająć dużo czasu. Czas synchronizacji zależy od liczby obiektów, takich jak użytkownicy, grupy i członkostwa w domenie zarządzanej usług Azure AD DS i katalogu usługi Azure AD. W przypadku dużych katalogów z setkami tysięcy obiektów ponowna synchronizacja może potrwać kilka dni.
 
 ## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>Włączanie synchronizacji o określonym zakresie przy użyciu portalu Azure
+
+Aby włączyć synchronizację o określonym zakresie w witrynie Azure portal, wykonaj następujące kroki:
 
 1. Postępuj zgodnie z [samouczkiem, aby utworzyć i skonfigurować wystąpienie usług Azure AD DS](tutorial-create-instance-advanced.md). Wykonaj wszystkie wymagania wstępne i kroki wdrażania inne niż dla zakresu synchronizacji.
 1. Wybierz pozycję **Zakres** w kroku synchronizacji, a następnie wybierz grupy usługi Azure AD do synchronizacji z wystąpieniem usług Azure AD DS.
@@ -173,7 +175,7 @@ Write-Output "******************************************************************
 
 ## <a name="enable-scoped-synchronization-using-powershell"></a>Włączanie synchronizacji o określonym zakresie przy użyciu programu PowerShell
 
-Użyj programu PowerShell, aby wykonać ten zestaw kroków. Zapoznaj się z instrukcjami, aby [włączyć usługi domenowe Active Directory azure przy użyciu programu PowerShell](powershell-create-instance.md). Kilka kroków w tym artykule są nieco modyfikowane w celu skonfigurowania synchronizacji o określonym zakresie.
+Użyj programu PowerShell, aby wykonać następujący zestaw kroków. Zapoznaj się z instrukcjami, aby [włączyć usługi domenowe Active Directory azure przy użyciu programu PowerShell](powershell-create-instance.md). Kilka kroków w tym artykule są nieco modyfikowane w celu skonfigurowania synchronizacji o określonym zakresie.
 
 1. Wykonaj następujące zadania z tego artykułu, aby włączyć usługi Azure AD DS przy użyciu programu PowerShell. Zatrzymaj się na kroku, aby faktycznie utworzyć domenę zarządzaną. Konfigurowanie synchronizacji o określonym zakresie, które tworzysz domenę zarządzana usługą Azure AD DS.
 

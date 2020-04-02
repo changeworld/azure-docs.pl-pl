@@ -1,17 +1,17 @@
 ---
-title: Najważniejsze wskazówki dotyczące zarządzania w zakresie platformy Azure | Dokumenty firmy Microsoft
-description: ''
+title: Rozwiązania do zarządzania w najlepszych rozwiązaniach platformy Azure
+description: W tym artykule zapoznaj się ze wskazówkami dotyczącymi tworzenia pliku rozwiązania do zarządzania. Zobacz, jak pracować ze źródłami danych, podręcznikami runbook, widokami i alertami.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 837fb87d73698961ec1550b122840563d1707f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cb300297336edcce4294b800520ad570b12bcde
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663202"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548162"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Najważniejsze wskazówki dotyczące tworzenia rozwiązań do zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]

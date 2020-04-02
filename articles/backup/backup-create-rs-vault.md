@@ -4,12 +4,12 @@ description: W tym artykule dowiesz się, jak utworzyć magazyny usług odzyskiw
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: e722996f516d21445d8e0028df925ca44eb02bfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38f23ee458845b92c04af47307a2411b26c8ac81
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295015"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529382"
 ---
 # <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
@@ -90,6 +90,7 @@ W tym procesie istnieją implikacje cenowe, ponieważ jest na poziomie magazynu.
 >- Przejrzyj [macierz pomocy technicznej](backup-support-matrix.md#cross-region-restore) dla listy obsługiwanych typów zarządzanych i regionów.
 >- Funkcja przywracania między regionami (CRR) jest obecnie dostępna tylko w następujących regionach: 
 >    - Zachodnio-środkowe stany USA
+>    - Zachodnie stany USA
 >    - Zachodnie stany USA 2
 >    - Południowo-środkowe stany USA
 >    - Wschodnie stany USA
@@ -101,11 +102,14 @@ W tym procesie istnieją implikacje cenowe, ponieważ jest na poziomie magazynu.
 >    - Australia Południowo-Wschodnia
 >    - Indie Środkowe
 >    - Indie Południowe
+>    - Indie Zachodnie
 >    - Japonia Wschodnia
 >    - Japonia Zachodnia
 >    - Azja Południowo-Wschodnia
 >    - Południowe Zjednoczone Królestwo
 >    - Zachodnie Zjednoczone Królestwo
+>    - Europa Zachodnia
+>    - Europa Północna
 >    - Francja Środkowa
 >    - Korea Środkowa
 >    - Korea Południowa

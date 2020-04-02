@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: fb6094ec418d2b212759bddd2c4d49c7e6193849
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed8e5eaa0ff9b58f80473b052aacfb9f01d45055
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73690707"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529223"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Łączenie się z bazą danych SQL przy użyciu języka C i C++
 
@@ -28,7 +28,7 @@ Upewnij się, że masz:
 
 * Aktywne konto platformy Azure. Jeśli go nie masz, możesz zarejestrować się w celu uzyskania [bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * [Visual Studio](https://www.visualstudio.com/downloads/). Należy zainstalować składniki języka C++, aby skompilować i uruchomić ten przykład.
-* [Visual Studio Linux Development](https://visualstudiogallery.msdn.microsoft.com/725025cf-7067-45c2-8d01-1e0fd359ae6e). Jeśli tworzysz na Linuksie, należy również zainstalować rozszerzenie Visual Studio Linux.
+* [Visual Studio Linux Development](https://docs.microsoft.com/cpp/linux/?view=vs-2019). Jeśli tworzysz na Linuksie, należy również zainstalować rozszerzenie Visual Studio Linux.
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Usługa Azure SQL Database i SQL Server na maszynach wirtualnych
 Usługa Azure SQL jest oparta na programie Microsoft SQL Server i została zaprojektowana w celu zapewnienia wysokiej dostępności, wydajnej i skalowalnej usługi. Korzystanie z platformy SQL Azure za pośrednictwem zastrzeżonej bazy danych działającej lokalnie ma wiele zalet. Dzięki usłudze SQL Azure nie musisz instalować, instalować, obsługiwać ani zarządzać bazą danych, ale tylko zawartością i strukturą bazy danych. Typowe rzeczy, o które się martwimy dzięki bazom danych, takie jak odporność na uszkodzenia i nadmiarowość, są wbudowane.

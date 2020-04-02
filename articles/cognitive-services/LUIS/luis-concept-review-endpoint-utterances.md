@@ -1,22 +1,14 @@
 ---
 title: Przeglądanie wypowiedzi użytkownika — usługa LUIS
-titleSuffix: Azure Cognitive Services
 description: Dzięki aktywnemu uczeniu wypowiedzi punktu końcowego przeglądu dla poprawnej intencji i jednostki. Usługa LUIS wybiera wypowiedzi punktu końcowego, o które nie ma pewności.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: diberry
-ms.openlocfilehash: 375d4b4e7c3fcafbdfde1ff447bedc3e16aff2f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 8d267fc441dc2cbf7f8ae3746486d5e7be55f135
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219941"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546847"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Pojęcia dotyczące włączania aktywnego uczenia się przez przeglądanie wypowiedzi punktów końcowych
 Aktywne uczenie się jest jedną z trzech strategii poprawiania dokładności przewidywania i najłatwiejszych do wdrożenia. Dzięki aktywnemu uczeniu wypowiedzi punktu końcowego przeglądu dla poprawnej intencji i jednostki. Usługa LUIS wybiera wypowiedzi punktu końcowego, o które nie ma pewności.
@@ -29,6 +21,8 @@ Usługa LUIS dodaje wypowiedzi do listy recenzji, gdy górna intencja wypalania 
 
 ## <a name="single-pool-for-utterances-per-app"></a>Pojedyncza pula wypowiedzi na aplikację
 Lista **przejrzyj wypowiedzi punktu końcowego** nie zmienia się na podstawie wersji. Jest tylko jedna pula wypowiedzi do przejrzenia, niezależnie od aktywnie edytowanej wersji wypowiedzi ani od wersji aplikacji opublikowanej w punkcie końcowym.
+
+W [interfejsie API REST](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9)nazwa wersji jest wymagana i musi istnieć w aplikacji, ale nie jest używana poza tą weryfikacją. Wypowiedzi przeglądu dotyczą całej aplikacji. Jeśli usuniesz wypowiedzi z jednej _wersji,_ dotyczy to wszystkich wersji.
 
 ## <a name="where-are-the-utterances-from"></a>Gdzie są wypowiedzi z
 Wypowiedzi punktu końcowego są pobierane z zapytań użytkowników końcowych w punkcie końcowym HTTP aplikacji. Jeśli aplikacja nie została opublikowana lub nie otrzymała jeszcze trafień, nie masz żadnych wypowiedzi do przejrzenia. Jeśli nie trafienia punktu końcowego są odbierane dla określonego zamiaru lub jednostki, nie masz wypowiedzi do przeglądu, które je zawierają.

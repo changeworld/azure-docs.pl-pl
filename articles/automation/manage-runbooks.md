@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ad8c05b3347ed4741d574a5e6bcc1d928db08411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad2a34691a00f217db6cf6835eefed18c8862d32
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366840"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547934"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Zarządzanie podręcznikami runbook w usłudze Azure Automation
 
@@ -128,6 +128,19 @@ $RGName = "ResourceGroup"
 Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 -Name $runbookName -ResourceGroupName $RGName
 ```
+
+### <a name="schedule-a-runbook-in-the-azure-portal"></a>Planowanie uruchomieniu w witrynie Azure portal
+
+Po opublikowaniu egou można zaplanować jego działanie.
+
+1. Otwórz projekt runbook w witrynie Azure portal.
+2. Wybierz **pozycję Harmonogramy** w obszarze **Zasoby**.
+3. Wybierz **pozycję Dodaj harmonogram**.
+4. W okienku Harmonogram yjsk z nadajnikiem wybierz pozycję **Połącz harmonogram z programem runbook**.
+5. Wybierz pozycję **Utwórz nowy harmonogram** w okienku Harmonogram.
+6. Wprowadź nazwę, opis i inne parametry w okienku Nowy harmonogram. 
+7. Po utworzeniu harmonogramu zaznacz go i kliknij przycisk **OK**. Teraz powinien być połączony z twoim runbookiem.
+8. Poszukaj wiadomości e-mail w skrzynce pocztowej, aby powiadomić Cię o stanie elementami eks-owych.
 
 ## <a name="next-steps"></a>Następne kroki
 

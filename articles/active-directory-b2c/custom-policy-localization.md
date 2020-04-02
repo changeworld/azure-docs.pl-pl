@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1401cbe1920c7c6df804aadbba1751612ba9cf06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be12bce8fa29076621bec35228838a4ebdd97433
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126797"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545866"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Lokalizowanie interfejsu użytkownika aplikacji przy użyciu zasad niestandardowych w usłudze Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Dostosowywanie języka w usłudze Azure Active Directory B2C (Azure AD B2C) umożliwia dostosowanie różnych języków do potrzeb klienta. Firma Microsoft udostępnia tłumaczenia dla 36 języków, ale można również dostarczyć własne tłumaczenia dla dowolnego języka. Nawet jeśli środowisko jest dostępne tylko dla jednego języka, możesz dostosować dowolny tekst na stronach. 
+Dostosowywanie języka w usłudze Azure Active Directory B2C (Azure AD B2C) umożliwia dostosowanie różnych języków do potrzeb klienta. Firma Microsoft udostępnia tłumaczenia na [36 języków,](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)ale można również dostarczyć własne tłumaczenia dla dowolnego języka. Nawet jeśli środowisko jest dostępne tylko dla jednego języka, możesz dostosować dowolny tekst na stronach. 
 
 W tym artykule pokazano, jak obsługiwać wiele ustawień regionalnych lub języków w zasadach dotyczących podróży użytkowników. Lokalizacja wymaga trzech kroków: skonfigurować jawną listę obsługiwanych języków, podać ciągi i kolekcje specyficzne dla języka i edytować [definicję zawartości](contentdefinitions.md) strony. 
 

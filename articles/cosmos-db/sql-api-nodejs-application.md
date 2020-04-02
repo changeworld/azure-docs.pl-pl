@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 7a01c436f31a8ce5b8071db3eda4cf5562c421c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3c50e82647b22a18edee92f47abc1d136670cacc
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441279"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519673"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Samouczek: Tworzenie aplikacji sieci Web Node.js przy użyciu zestawu JavaScript SDK do zarządzania kontem interfejsu API SQL w usłudze Azure Cosmos DB 
 
@@ -83,7 +83,7 @@ Teraz nauczysz się, jak utworzyć podstawowy projekt aplikacji Hello World w ś
    npm start
    ```
 
-1. Nową aplikację można wyświetlić, przechodząc [http://localhost:3000](http://localhost:3000)do przeglądarki do .
+1. Swoją nową aplikację możesz wyświetlić, przechodząc w przeglądarce na adres `http://localhost:3000`.
    
    ![Poznaj środowisko Node.js — zrzut ekranu aplikacji Hello World w oknie przeglądarki](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
@@ -359,7 +359,7 @@ Teraz, po wykonaniu wstępnej instalacji i konfiguracji, napiszesz kod, który j
 
 ## <a name="build-a-user-interface"></a><a name="_Toc395783181"></a>Tworzenie interfejsu użytkownika
 
-Teraz utwórzmy interfejs użytkownika, aby użytkownik mógł korzystać z aplikacji. Utworzona w poprzednich sekcjach aplikacja Express używa aparatu widoku **Jade**.
+Teraz skompilujmy interfejs użytkownika, aby użytkownik mógł wchodzić w interakcje z aplikacją. Utworzona w poprzednich sekcjach aplikacja Express używa aparatu widoku **Jade**.
 
 1. Plik **layout.jade** w katalogu **views** jest używany jako szablon globalny dla innych plików **jade**. W tym kroku zmodyfikujesz go w celu używania platformy Twitter Bootstrap, która jest zestawem narzędzi służącym do projektowania witryn internetowych.  
 

@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: d17026dba26b3c1cb846d60967180c29563c425d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82773ab6decfe15ee1a9d839a1f10a158ae72c42
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74545586"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521315"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Uwierzytelnij dostęp do zasobów Centrum zdarzeń przy użyciu sygnatur dostępu współdzielonego (SAS)
 Podpis dostępu współdzielonego (SAS) zapewnia szczegółową kontrolę nad typem dostępu udzielonego klientom, którzy mają podpis dostępu współdzielonego. Oto niektóre z formantów, które można ustawić w sygnatury dostępu Współdzielonego: 
@@ -33,7 +33,7 @@ W tym artykule opisano uwierzytelnianie dostępu do zasobów usługi Event Hubs 
 
 
 ## <a name="configuring-for-sas-authentication"></a>Konfigurowanie uwierzytelniania sygnatury dostępu Współdzielonego
-Regułę autoryzacji dostępu udostępnionego eventhubs można skonfigurować w obszarze nazw Centrum zdarzeń lub w encji (wystąpienie centrum zdarzeń lub w temacie Platformy Kafka w centrach zdarzeń dla obszaru nazw obsługującego platformę Kafka). Konfigurowanie reguły autoryzacji dostępu współdzielonego w grupie odbiorców nie jest obecnie obsługiwane, ale można użyć reguł skonfigurowanych w obszarze nazw lub encji w celu zabezpieczenia dostępu do grupy odbiorców. 
+Regułę autoryzacji dostępu udostępnionego EventHubs można skonfigurować w obszarze nazw Centrum zdarzeń lub w encji (wystąpienie centrum zdarzeń lub temat platformy Kafka w centrum zdarzeń). Konfigurowanie reguły autoryzacji dostępu współdzielonego w grupie odbiorców nie jest obecnie obsługiwane, ale można użyć reguł skonfigurowanych w obszarze nazw lub encji w celu zabezpieczenia dostępu do grupy odbiorców. 
 
 Na poniższej ilustracji przedstawiono, jak reguły autoryzacji mają zastosowanie do przykładowych jednostek. 
 

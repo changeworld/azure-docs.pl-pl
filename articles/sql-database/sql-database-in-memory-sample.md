@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: e7e7fc44d5f8b46a66c698d3a33ceeab5b8625c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b707d67c88eb550d397134b2294c1c5b0e1f7f7d
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73810324"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528213"
 ---
 # <a name="in-memory-sample"></a>Próbka w pamięci
 
@@ -41,7 +41,7 @@ Przykładową bazę danych AdventureWorksLT można utworzyć za pomocą kilku kl
 Aby uzyskać bardziej uproszczone, ale bardziej atrakcyjne wizualnie demo wydajności dla oltp w pamięci, zobacz:
 
 - Wydanie: [in-memory-oltp-demo-v1.0](https://github.com/Microsoft/sql-server-samples/releases/tag/in-memory-oltp-demo-v1.0)
-- Kod źródłowy: [in-memory-oltp-demo-source-code](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/in-memory/ticket-reservations)
+- Kod źródłowy: [in-memory-oltp-demo-source-code](https://github.com/microsoft/sql-server-samples/tree/master/samples/features/in-memory-database)
 
 #### <a name="installation-steps"></a>Kroki instalacji
 
@@ -411,9 +411,9 @@ W bazie danych z warstwy cenowej P2 można oczekiwać około dziewięć razy prz
 
 - [Używanie protokołu OLTP w pamięci w istniejącej aplikacji SQL platformy Azure](sql-database-in-memory-oltp-migration.md)
 
-#### <a name="tools"></a>Narzędzia
+#### <a name="tools"></a>narzędzia
 
-- [Portal Azure](https://portal.azure.com/)
+- [Azure Portal](https://portal.azure.com/)
 
 - [Sql Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/13/2019
+ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 53bbee6dd75e045c2a7e95c88a0138c9859d12db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad36547b0cf9457d7ff4fdd919a0bb1362539eb5
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80374090"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522717"
 ---
 W tym artykule odpowiedzieć na niektóre często zadawane pytania dotyczące dysków zarządzanych platformy Azure i dysków SSD w wersji Premium platformy Azure.
 
@@ -409,11 +409,11 @@ Nie ma żadnych wad użycia trim na dyskach platformy Azure na dyskach premium l
 
 **Jakie regiony obsługują możliwość rozerwania dla odpowiedniego rozmiaru dysku SSD premium?**
 
-Funkcja rozbłyskowania jest obecnie obsługiwana w usłudze Azure West Central US.
+Funkcja rozbłysku jest obecnie obsługiwana we wszystkich regionach usługi Azure Public Cloud, a wkrótce pojawi się obsługa suwerennych chmur. 
 
 **W jakich regionach są obsługiwane rozmiary dysków zarządzanych GiB 4/8/16 (P1/P2/P3, E1/E2/E3)?**
 
-Te nowe rozmiary dysków są obecnie obsługiwane w usłudze Azure West Central US.
+Te nowe rozmiary dysków są obecnie obsługiwane we wszystkich regionach usługi Azure Public Cloud, a wkrótce pojawi się obsługa chmur suwerennych. 
 
 **Czy rozmiary dysków P1/P2/P3 są obsługiwane dla dysków niezarządzanych lub obiektów blob stron?**
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/18/2020
 ms.author: spelluru
-ms.openlocfilehash: d58e11551c2857c269e8985e81f84138f6d389ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b87107545761e10c6fb648e54064fbafbdbacd52
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370822"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546006"
 ---
 # <a name="classroom-lab-setup-guide"></a>Przewodnik po konfiguracji laboratorium w klasie
 
@@ -79,7 +79,7 @@ Usługi Lab services używa modelu wyceny płatności zgodnie z rzeczywistym uż
 Studenci są przypisane ich własnej maszyny Wirtualnej, który jest przypisany do nich przez cały okres istnienia laboratorium.  Mogą wybrać:
 
 - Zapisz bezpośrednio na maszynie wirtualnej.
-- Zapisz w zewnętrznym repozytorium, takim jak OneDrive, GitHub itp.
+- Zapisz w lokalizacji zewnętrznej, takiej jak OneDrive, GitHub itp.
 
 Aby korzystać z usługi OneDrive, można skonfigurować to automatycznie dla studentów na ich maszyn wirtualnych laboratorium.  Dodatkowe informacje na ten temat znajdują się poniżej.
 
@@ -133,7 +133,7 @@ Po zrozumieniu wymagań dla laboratorium klasy, można go skonfigurować.  Skorz
         > [!NOTE]
         > W zależności od typu zainstalowanego systemu operacyjnego maszyna wirtualna może potrwać kilka minut.  Aby upewnić się, że maszyna wirtualna laboratorium jest gotowa do użycia w zaplanowanych godzinach, zaleca się uruchamianie maszyn wirtualnych z 30-minutowym wyprzedzeniem, aby upewnić się, że maszyny wirtualne są uruchomione i gotowe do użycia.
 
-   - [Ustawianie przydziałów dla użytkowników](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users) i [ustawianie dodatkowego przydziału dla określonego użytkownika](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quota-for-a-specific-user)
+   - [Ustawianie przydziałów dla użytkowników](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users) i [ustawianie dodatkowego przydziału dla określonego użytkownika](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quotas-for-specific-users)
   
    - [Włączanie automatycznego zamykania po rozłączeniu](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 

@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 090446d286b38a0bfcbde4ed9e77235050b36417
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70137336"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547699"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Zestaw Azure Cosmos DB Python SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "70137336"
 > * [Java (asynchroniczny)](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Reszta](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Wykonawca zbiorczy - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -36,7 +36,7 @@ ms.locfileid: "70137336"
 |**Dokumentacja interfejsu API**|[Dokumentacja referencyjna interfejsu API języka Python](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
 |**Instrukcje instalacji SDK**|[Instrukcje instalacji zestawów SDK języka Python](https://github.com/Azure/azure-cosmos-python)|
 |**Współtworzenie sdk**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
-|**Wprowadzenie**|[Wprowadzenie do sdk języka Python](sql-api-python-application.md)|
+|**Rozpoczęcie pracy**|[Wprowadzenie do sdk języka Python](sql-api-python-application.md)|
 |**Aktualnie obsługiwana platforma**|[Python 2.7](https://www.python.org/downloads/) i [Python 3.5](https://www.python.org/downloads/)|
 
 ## <a name="release-notes"></a>Informacje o wersji
@@ -84,7 +84,7 @@ ms.locfileid: "70137336"
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
 * Dodano obsługę zapytań agregacji (COUNT, MIN, MAX, SUM i AVG).
-* Dodano opcję wyłączania weryfikacji SSL podczas uruchamiania emulatora usługi Cosmos DB.
+* Dodano opcję wyłączania weryfikacji TLS podczas uruchamiania emulatora bazy danych Usługi Cosmos.
 * Usunięto ograniczenie modułu żądań zależnych, aby mieć dokładnie 2.10.0.
 * Obniżono minimalną przepustowość w kolekcjach podzielonych na partycje z 10 100 RU/s do 2500 RU/s.
 * Dodano obsługę włączania rejestrowania skryptów podczas wykonywania procedury składowanej.
@@ -102,7 +102,7 @@ ms.locfileid: "70137336"
 ### <a name="190"></a><a name="1.9.0"/>1.9.0
 * Dodano obsługę zasad ponawiania dla żądań ograniczonych. (Żądania ograniczone otrzymują zbyt duży wyjątek, kod błędu 429). Domyślnie usługa Azure Cosmos DB ponawia dziewięć razy dla każdego żądania, gdy zostanie napotkany kod błędu 429, honorując ponawianie czasu po wierszu w nagłówku odpowiedzi. Czas stałego interwału ponawiania próby można teraz ustawić jako część właściwości RetryOptions w obiekcie ConnectionPolicy, jeśli chcesz zignorować ponowny ponawianieczasu zwróconego przez serwer między ponownych prób. Usługa Azure Cosmos DB czeka teraz maksymalnie 30 sekund dla każdego żądania, które jest ograniczane (niezależnie od liczby ponownych prób) i zwraca odpowiedź z kodem błędu 429. Ten czas można również zastąpić we właściwości RetryOptions na ConnectionPolicy obiektu.
 * Usługa Cosmos DB zwraca teraz x-ms-throttle-retry-count i x-ms-throttle-retry-wait-time-ms jako nagłówki odpowiedzi w każdym żądaniu, aby oznaczyć liczbę ponownych prób przepustnicy i skumulowany czas oczekiwania między ponownych prób.
-* Usunięto RetryPolicy klasy i odpowiedniej właściwości (retry_policy) narażone na document_client klasy i zamiast tego wprowadzono RetryOptions klasy odsłaniając RetryOptions właściwości connectionpolicy klasy, które mogą służyć do zastąpienia niektórych z nich domyślne opcje ponawiania próby.
+* Usunięto RetryPolicy klasy i odpowiedniej właściwości (retry_policy) narażone na document_client klasy i zamiast tego wprowadzono RetryOptions klasy odsłaniając RetryOptions właściwości connectionpolicy klasy, które mogą służyć do zastąpienia niektórych domyślnych opcji ponawiania.
 
 ### <a name="180"></a><a name="1.8.0"/>1.8.0
 * Dodano obsługę kont bazy danych w wielu regionach.
@@ -187,7 +187,7 @@ Każde żądanie do usługi Cosmos DB przy użyciu wycofanego SDK są odrzucane 
 | 0.9.1-prelease |23 września 2014 r. |29 lutego 2016 r. |
 | 0.9.0-prelease |21 sierpnia 2014 r. |29 lutego 2016 r. |
 
-## <a name="faq"></a>Najczęściej zadawane pytania
+## <a name="faq"></a>Często zadawane pytania
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Zobacz też

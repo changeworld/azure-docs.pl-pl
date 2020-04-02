@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Dodaj rejestrowanie do potoków szkolenia i oceniania partii i wyświetlaj zarejestrowane wyniki w usłudze Application Insights.
 services: machine-learning
 author: aburek
-ms.author: anrode
+ms.author: cgronlun
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85dcd9ef98deb2ea0117f2db280e49c4a57bf00f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 217a89f6ede4e4b1d2182eed79b088808432044f
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76776302"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529375"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>Debugowanie i rozwiązywanie problemów z potokami uczenia maszynowego w usłudze Application Insights
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Posiadanie dzienników w jednym miejscu zapewni historię wyjątków i komunikat
   ```
 * Utwórz [wystąpienie usługi Application Insights](../azure-monitor/app/opencensus-python.md) (ten dokument zawiera również informacje o uzyskaniu ciągu połączenia dla zasobu)
 
-## <a name="getting-started"></a>Wprowadzenie
+## <a name="getting-started"></a>Getting Started
 
 Ta sekcja jest wprowadzenie specyficzne dla korzystania z OpenCensus z potoku usługi Azure Machine Learning. Aby uzyskać szczegółowy samouczek, zobacz [OpenCensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 

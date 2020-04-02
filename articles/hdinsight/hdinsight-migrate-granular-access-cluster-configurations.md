@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: f1fdb9dffbe06430ea7e3eb9339e23f5239e4e36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb78d84aa0f9a2832b6599edeac9d50e0e226437
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310836"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546350"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrowanie do szczegółowego dostępu opartego na rolach w przypadku konfiguracji klastrów
 
@@ -131,8 +131,8 @@ Aktualizacja do [wersji 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0
 
 Aktualizacja [do wersji 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) lub nowszej pakietu HDInsight SDK dla języka Java. Minimalne modyfikacje kodu mogą być wymagane, jeśli używasz metody, której dotyczą te zmiany:
 
-- [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get)nie będzie **już zwracać poufnych parametrów,** takich jak klucze magazynu (lokacja rdzenia) lub poświadczenia HTTP (brama).
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update)jest teraz przestarzała.
+- `ConfigurationsInner.get`nie będzie **już zwracać poufnych parametrów,** takich jak klucze magazynu (lokacja rdzenia) lub poświadczenia HTTP (brama).
+- `ConfigurationsInner.update`jest teraz przestarzała.
 
 ### <a name="sdk-for-go"></a>SDK na dopuszka do pracy
 
@@ -185,7 +185,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 Alternatywnie można użyć witryny Azure portal, aby dodać przypisanie roli operatora klastra HDInsight do użytkownika. Zobacz dokumentację [Zarządzanie dostępem do zasobów platformy Azure przy użyciu funkcji RBAC i witryny Azure portal — dodawanie przypisania roli](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment).
 
-## <a name="faq"></a>Najczęściej zadawane pytania
+## <a name="faq"></a>Często zadawane pytania
 
 ### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>Dlaczego widzę odpowiedź 403 (Zabronione) po zaktualizowaniu żądań interfejsu API i/lub narzędzia?
 
@@ -193,9 +193,9 @@ Konfiguracje klastra są teraz za szczegółową kontrolę `Microsoft.HDInsight/
 
 ### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Dlaczego podczas uruchamiania polecenia interfejsu wiersza polecenia Azure CLI jest widoczne "Niewystarczające uprawnienia do wykonania operacji", aby przypisać rolę operatora klastra HDInsight innemu użytkownikowi lub podmiotowi usługi?
 
-Oprócz roli Właściciel, użytkownik lub jednostka usługi wykonująca polecenie musi mieć wystarczające uprawnienia AAD do wyszukiwania identyfikatorów obiektów cesjonariusza. Ten komunikat wskazuje niewystarczające uprawnienia usługi AAD. Spróbuj zastąpić `-–assignee` `–assignee-object-id` argument i podać identyfikator obiektu cesjonariusza jako parametr zamiast nazwy (lub identyfikatora głównego w przypadku tożsamości zarządzanej). Zobacz sekcję parametry opcjonalne [przypisania roli az tworzenie dokumentacji,](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) aby uzyskać więcej informacji.
+Oprócz roli Owner, użytkownik lub jednostka usługi wykonująca polecenie musi mieć wystarczające uprawnienia usługi Azure AD, aby wyszukać identyfikatory obiektów cesjonariusza. Ten komunikat wskazuje niewystarczające uprawnienia usługi Azure AD. Spróbuj zastąpić `-–assignee` `–assignee-object-id` argument i podać identyfikator obiektu cesjonariusza jako parametr zamiast nazwy (lub identyfikatora głównego w przypadku tożsamości zarządzanej). Zobacz sekcję parametry opcjonalne [przypisania roli az tworzenie dokumentacji,](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) aby uzyskać więcej informacji.
 
-Jeśli to nadal nie zadziała, skontaktuj się z administratorem usługi AAD, aby uzyskać odpowiednie uprawnienia.
+Jeśli to nadal nie działa, skontaktuj się z administratorem usługi Azure AD, aby uzyskać odpowiednie uprawnienia.
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Co się stanie, jeśli nie podejmę żadnych działań?
 

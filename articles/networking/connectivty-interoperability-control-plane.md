@@ -1,5 +1,5 @@
 ---
-title: 'Współdziałanie w funkcjach łączności zaplecza platformy Azure: analiza płaszczyzny sterowania | Dokumenty firmy Microsoft'
+title: 'Interoperacyjność na platformie Azure : Analiza płaszczyzny sterowania'
 description: Ten artykuł zawiera analizę płaszczyzny sterowania konfiguracji testu, której można użyć do analizowania współdziałania między usługą ExpressRoute, sieci VPN typu lokacja-lokacja i komunikacji równorzędnej w sieci wirtualnej na platformie Azure.
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 4921e4c4fc0da95250a0171c66d6a69093b10687
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e41bc86533815c394077bf5276d930fe958cd19
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873849"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518270"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Współdziałanie w funkcjach łączności zaplecza platformy Azure: analiza płaszczyzny sterowania
+# <a name="interoperability-in-azure--control-plane-analysis"></a>Interoperacyjność na platformie Azure : Analiza płaszczyzny sterowania
 
 W tym artykule opisano analizę płaszczyzny sterowania [konfiguracji testu][Setup]. Można również przejrzeć [konfigurację konfiguracji testu][Configuration] i [analizę płaszczyzny danych][Data-Analysis] konfiguracji testu.
 

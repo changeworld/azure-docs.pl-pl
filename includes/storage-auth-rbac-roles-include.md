@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 4b10955a1d3b85acbcae109836bebc03ec04c72c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d73bab76860abf3e9fa442dad44e1ddb66d147a3
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76279513"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519576"
 ---
 Platforma Azure udostępnia następujące wbudowane role RBAC do autoryzowania dostępu do danych obiektów blob i kolejek przy użyciu usługi Azure AD i OAuth:
 
@@ -24,6 +24,8 @@ Platforma Azure udostępnia następujące wbudowane role RBAC do autoryzowania d
 - [Czytnik danych kolejki magazynu:](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader)Służy do udzielania uprawnień tylko do odczytu do kolejek platformy Azure.
 - [Procesor komunikatów o danych kolejki magazynu:](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor)służy do udzielania zaglądanie, pobieranie i usuwanie uprawnień do wiadomości w kolejkach usługi Azure Storage.
 - [Nadawca wiadomości z danymi kolejki magazynu:](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender)służy do udzielania uprawnień do dodawania wiadomości w kolejkach usługi Azure Storage.
+
+Aby uzyskać szczegółowe informacje na temat wbudowanych ról RBAC dla usługi Azure Storage dla usług azure i usługi zarządzania, zobacz sekcję **Magazyn** [w wbudowanych ról platformy Azure dla usługi Azure RBAC.](../articles/role-based-access-control/built-in-roles.md#storage) Ponadto aby uzyskać informacje na temat różnych typów ról, które zapewniają uprawnienia na platformie Azure, zobacz [klasyczne role administratora subskrypcji, role usługi Azure RBAC i role usługi Azure AD.](../articles/role-based-access-control/rbac-and-directory-admin-roles.md)
 
 > [!NOTE]
 > Propagowanie przydziałów ról RBAC może potrwać do pięciu minut.

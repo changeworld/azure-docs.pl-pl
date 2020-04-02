@@ -10,16 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: c6593a2746e628c89e20f6ef92a1430bd294e4fe
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: fb70600ad245968377cdebd23a7b531e552bb546
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438309"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529319"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurowanie łącza prywatnego platformy Azure dla obszaru roboczego usługi Azure Machine Learning
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Konfigurowanie łącza prywatnego platformy Azure dla obszaru roboczego usługi Azure Machine Learning (wersja zapoznawcza)
 
-W tym dokumencie dowiesz się, jak używać łącza prywatnego platformy Azure w obszarze roboczym usługi Azure Machine Learning. Usługa Azure Private Link umożliwia łączenie się z obszarem roboczym przy użyciu prywatnego punktu końcowego. Prywatny punkt końcowy to zestaw prywatnych adresów IP w sieci wirtualnej. Następnie można ograniczyć dostęp do obszaru roboczego, aby występował tylko za pomocą prywatnych adresów IP. Private Link pomaga zmniejszyć ryzyko eksfiltracji danych. Aby dowiedzieć się więcej o prywatnych punktach końcowych, zobacz artykuł [Azure Private Link.](/azure/private-link/private-link-overview)
+W tym dokumencie dowiesz się, jak używać łącza prywatnego platformy Azure w obszarze roboczym usługi Azure Machine Learning. Ta funkcja jest obecnie w wersji zapoznawczej i jest dostępna w regionach Wschodnich Stanów Zjednoczonych, Zachodnie stany USA 2, Południowo-Środkowe stany USA. 
+
+Usługa Azure Private Link umożliwia łączenie się z obszarem roboczym przy użyciu prywatnego punktu końcowego. Prywatny punkt końcowy to zestaw prywatnych adresów IP w sieci wirtualnej. Następnie można ograniczyć dostęp do obszaru roboczego, aby występował tylko za pomocą prywatnych adresów IP. Private Link pomaga zmniejszyć ryzyko eksfiltracji danych. Aby dowiedzieć się więcej o prywatnych punktach końcowych, zobacz artykuł [Azure Private Link.](/azure/private-link/private-link-overview)
 
 > [!IMPORTANT]
 > Usługa Azure Private Link nie ma wpływu na płaszczyznę sterowania platformy Azure (operacje zarządzania), takie jak usuwanie obszaru roboczego lub zarządzanie zasobami obliczeniowymi. Na przykład tworzenie, aktualizowanie lub usuwanie obiektu docelowego obliczeń. Operacje te są wykonywane przez publiczny Internet w zwykły sposób.

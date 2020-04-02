@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: 777e4e1f8fdd05345d949fe8c78b4a5b1953b8b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 306d847c2bc5af72d37dbf8bf472a5bae63e9fd5
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298261"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528502"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Często zadawane pytania dotyczące usługi Azure Monitor
 
@@ -177,7 +177,7 @@ Określ istniejącą lub nową [grupę akcji,](platform/action-groups.md) aby gd
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Jakie są wymagania zapory dla agentów usługi Azure Monitor?
-Aby uzyskać szczegółowe informacje na temat wymagań zapory, zobacz [Wymagania zapory](platform/log-analytics-agent.md#network-firewall-requirements)sieciowej.
+Aby uzyskać szczegółowe informacje na temat wymagań zapory, zobacz [Wymagania zapory](platform/log-analytics-agent.md#firewall-requirements)sieciowej.
 
 
 ## <a name="visualizations"></a>Wizualizacje
@@ -682,7 +682,7 @@ Funkcja mapa usługi Azure Monitor dla maszyn wirtualnych jest oparta na mapie u
 * Nie można utworzyć nowych grup komputerów mapy usług w usłudze Azure Monitor dla maszyn wirtualnych.  
 
 ### <a name="why-do-my-performance-charts-show-dotted-lines"></a>Dlaczego na wykresach skuteczności są wyświetlane linie przerywane?
-Może to nastąpić z kilku powodów.  W przypadkach, gdy istnieje luka w zbieraniu danych, przedstawiamy linie jako kropkowane.  Jeśli zmodyfikowano częstotliwość próbkowania danych dla włączonych liczników wydajności (domyślnym ustawieniem jest zbieranie danych co 60 sekund), na wykresie można zobaczyć kropkowane linie, jeśli wybierzesz wąski zakres czasu dla wykresu, a częstotliwość próbkowania jest mniejsza niż rozmiar zasobnika używany na wykresie (na przykład częstotliwość próbkowania wynosi co 10 minut, a każde wiadro na wykresie wynosi 5 minut).  Wybranie szerszego zakresu czasu do wyświetlenia powinno spowodować, że linie wykresu będą wyświetlane jako linie ciągłe, a nie kropki w tym przypadku.
+Może to nastąpić z kilku powodów.  W przypadkach, gdy istnieje luka w zbieraniu danych, przedstawiamy linie jako kropkowane.  Jeśli zmodyfikowano częstotliwość próbkowania danych dla włączonych liczników wydajności (domyślnym ustawieniem jest zbieranie danych co 60 sekund), na wykresie można zobaczyć kropkowane linie, jeśli wybierzesz wąski zakres czasu dla wykresu, a częstotliwość próbkowania jest mniejsza niż rozmiar zasobnika używany na wykresie (na przykład częstotliwość próbkowania wynosi co 10 minut, a każde zasobnik na wykresie wynosi 5 minut).  Wybranie szerszego zakresu czasu do wyświetlenia powinno spowodować, że linie wykresu będą wyświetlane jako linie ciągłe, a nie kropki w tym przypadku.
 
 ### <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Czy grupy są obsługiwane za pomocą usługi Azure Monitor dla maszyn wirtualnych?
 Tak, po zainstalowaniu agenta zależności zbieramy informacje z maszyn wirtualnych, aby wyświetlać grupy na podstawie subskrypcji, grupy zasobów, zestawów skalowania maszyny wirtualnej i usług w chmurze.  Jeśli używasz mapy usług i utworzono grupy maszyn, są one również wyświetlane.  Grupy komputerów pojawią się również w filtrze grup, jeśli utworzono je dla przeglądanych obszarów roboczych. 

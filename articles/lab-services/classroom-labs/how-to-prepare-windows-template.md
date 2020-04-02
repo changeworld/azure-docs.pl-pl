@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: c52a1212d160adce3a0a0638164833bc2907a856
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76515007"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521185"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Przewodnik dotyczący konfigurowania komputera z szablonami systemu Windows w usługach Azure Lab Services
 
@@ -185,7 +185,7 @@ Zalecamy aktualizację wszystkich aplikacji ze Sklepu Microsoft do ich najnowszy
 3. Wybierz **pobierz** i aktualizuje z menu rozwijanego.
 4. Kliknij przycisk **Pobierz aktualizację.**
 
-Za pomocą programu Powershell można również zaktualizować aplikacje ze sklepu Microsoft Store, które są już zainstalowane.
+Za pomocą programu PowerShell można również zaktualizować aplikacje ze sklepu Microsoft Store, które są już zainstalowane.
 
 ```powershell
 (Get-WmiObject -Namespace "root\cimv2\mdm\dmmap" -Class "MDM_EnterpriseModernAppManagement_AppManagement01").UpdateScanMethod()
@@ -234,3 +234,6 @@ Zainstaluj inne aplikacje powszechnie używane do nauczania za pośrednictwem ap
 ## <a name="conclusion"></a>Podsumowanie
 
 W tym artykule przedstawiono opcjonalne kroki, aby przygotować maszynę wirtualną szablonu systemu Windows dla klasy skutecznej.  Kroki obejmują instalowanie usługi OneDrive i instalowanie usługi Office 365, instalowanie aktualizacji dla systemu Windows i instalowanie aktualizacji dla aplikacji ze Sklepu Microsoft.  Omówiliśmy również sposób ustawiania aktualizacji do harmonogramu, który najlepiej sprawdza się w twojej klasie.  
+
+## <a name="next-steps"></a>Następne kroki
+Zobacz artykuł dotyczący kontrolowania zachowania zamknięcia systemu Windows, aby ułatwić zarządzanie kosztami: [Przewodnik po kontrolowaniu zachowania zamknięcia systemu Windows](how-to-windows-shutdown.md)

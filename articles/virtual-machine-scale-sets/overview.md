@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: manayar
-ms.openlocfilehash: e6201f9ac2e9b813de5a4622fc7996eb1202a164
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1e0f7c65504637cd79a3183ce9785c73b55f6a51
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76273704"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548560"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Co to są zestawy skalowania maszyn wirtualnych?
 Zestawy skalowania maszyn wirtualnych platformy Azure pozwalają utworzyć grupę identycznych, mających zrównoważone obciążenie maszyn wirtualnych i zarządzać nimi. Liczba wystąpień maszyn wirtualnych może automatycznie zwiększać lub zmniejszać się w reakcji na zapotrzebowanie lub zdefiniowany harmonogram. Zestawy skalowania zapewniają wysoką dostępność Twoim aplikacjom i pozwalają na centralnie zarządzanie, konfigurowanie i aktualizowanie dużej liczby maszyn wirtualnych. Za pomocą zestawów skalowania maszyn wirtualnych możesz tworzyć usługi na dużą skalę dla takich obszarów jak obliczenia, dane big data i obciążenia kontenera.
@@ -27,7 +27,7 @@ Zestawy skalowania maszyn wirtualnych platformy Azure zapewniają możliwości z
 - **Łatwe tworzenie wielu maszyn wirtualnych i zarządzanie nimi**
     - Jeśli masz wiele maszyn wirtualnych, na których działa Twoja aplikacja, ważne jest zachowanie spójnej konfiguracji w całym środowisku. Zapewniana wydajność aplikacji, rozmiar maszyny wirtualnej, konfiguracja dysku i instalacje aplikacji powinny być zgodne na wszystkich maszynach wirtualnych.
     - Za pomocą zestawów skalowania wszystkie wystąpienia maszyn wirtualnych są tworzone na podstawie tego samego podstawowego obrazu systemu operacyjnego i jego konfiguracji. Takie podejście umożliwia łatwe zarządzanie setkami maszyn wirtualnych bez dodatkowych zadań konfiguracji lub zarządzania siecią.
-    - Zestawy skalowania obsługują korzystanie z [modułu równoważenia obciążenia platformy Azure](../load-balancer/load-balancer-overview.md) dla podstawowej dystrybucji ruchu warstwy 4 oraz z [usługi Azure Application Gateway](../application-gateway/application-gateway-introduction.md) dla bardziej zaawansowanej dystrybucji ruchu warstwy 7 i kończenia żądań SSL.
+    - Zestawy skalowania obsługują użycie [modułu równoważenia obciążenia platformy Azure](../load-balancer/load-balancer-overview.md) do podstawowej dystrybucji ruchu warstwy 4 i [bramy aplikacji platformy Azure](../application-gateway/application-gateway-introduction.md) dla bardziej zaawansowanej dystrybucji ruchu warstwy 7 i zakończenia protokołu TLS.
 
 - **Zapewnia wysoką dostępność i odporność aplikacji**
     - Zestawy skalowania służą do uruchamiania wielu wystąpień aplikacji. Jeśli jedno z tych wystąpień maszyny wirtualnej ma problem, klienci nadal mają dostęp do aplikacji za pośrednictwem jednego z innych wystąpień maszyn wirtualnych z minimalną przerwą.

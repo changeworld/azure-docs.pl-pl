@@ -1,6 +1,6 @@
 ---
 title: Korzystanie ze strumieni Akka dla platformy Apache Kafka — usługi Azure Event Hubs| Dokumenty firmy Microsoft
-description: Ten artykuł zawiera informacje dotyczące sposobu łączenia strumieni Akka z apache Platformy Kafka włączone Centrum zdarzeń platformy Azure.
+description: Ten artykuł zawiera informacje dotyczące sposobu łączenia strumieni Akka z centrum zdarzeń platformy Azure.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 729e78959f93b1aa1563a049a64c553929c4f97e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c53fcc7b4b99e77237ba7ea9219aef4182f2af61
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283637"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521835"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Używanie programu Akka Streams z usługą Event Hubs dla platformy Apache Kafka
 W tym samouczku pokazano, jak połączyć strumienie Akka z centrum zdarzeń bez zmiany klientów protokołu lub uruchamiania własnych klastrów. Usługa Azure Event Hubs for the Kafka obsługuje [apache kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html)
@@ -49,7 +49,7 @@ Aby ukończyć ten samouczek, upewnij się, że masz następujące wymagania wst
 
 ## <a name="create-an-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
 
-Obszar nazw centrum zdarzeń jest wymagany do wysyłania lub odbierania z dowolnej usługi Centrum zdarzeń. Zobacz [Tworzenie centrów zdarzeń z włączoną platformą Kafka, aby](event-hubs-create.md) uzyskać informacje na temat uzyskiwania punktu końcowego usługi Event Hubs Platformy Kafka. Pamiętaj, aby skopiować parametry połączenia usługi Event Hubs do późniejszego użycia.
+Obszar nazw centrum zdarzeń jest wymagany do wysyłania lub odbierania z dowolnej usługi Centrum zdarzeń. Zobacz [Tworzenie centrum zdarzeń, aby](event-hubs-create.md) uzyskać szczegółowe informacje. Pamiętaj, aby skopiować parametry połączenia usługi Event Hubs do późniejszego użycia.
 
 ## <a name="clone-the-example-project"></a>Klonowanie projektu przykładowego
 

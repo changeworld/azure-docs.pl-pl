@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: afc7a7406831568304c2ebd8d9a6c72b497e04e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a6540b5784a76acfc248fb15feb1aaf39420845
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75972882"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546945"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Przetwarzanie dużych zestawów danych przy użyciu usługi Data Factory i Batch
 > [!NOTE]
@@ -430,7 +430,7 @@ Ta sekcja zawiera więcej szczegółów na temat kodu w Execute metody.
     } while (continuationToken != null);
 
     ```
-   Aby uzyskać więcej informacji, zobacz dokumentację [metody ListBlobsSegmented.](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented)
+   Aby uzyskać więcej informacji, zobacz dokumentację [metody ListBlobsSegmented.](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)
 
 1. Kod do pracy za pośrednictwem zestawu obiektów blob logicznie przechodzi w pętli do-while. W **Execute metody,** pętla do-while przekazuje listę obiektów blob do metody o nazwie **Oblicz**. Metoda zwraca zmienną ciągu o nazwie **output,** która jest wynikiem iteracji przez wszystkie obiekty blob w segmencie.
 
@@ -560,7 +560,7 @@ Połączone usługi łączą magazyny danych lub usługi obliczeniowe z fabryką
 
 1. Wybierz przycisk **Wdróż** na pasku poleceń, aby wdrożyć połączoną usługę.
 
-   ![Wdrożenie](./media/data-factory-data-processing-using-batch/image8.png)
+   ![Wdrażanie](./media/data-factory-data-processing-using-batch/image8.png)
 
 #### <a name="create-an-azure-batch-linked-service"></a>Tworzenie połączonej usługi Azure Batch
 W tym kroku utworzysz połączony serwis dla konta usługi Batch, który jest używany do uruchamiania działania niestandardowego fabryki danych.
@@ -965,7 +965,7 @@ Po przetworzeniu danych można je używać za pomocą narzędzi online, takich j
 * [Platforma Azure i usługa Power BI: podstawowe omówienie](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
 ## <a name="references"></a>Dokumentacja
-* [Fabryka danych platformy Azure](https://azure.microsoft.com/documentation/services/data-factory/)
+* [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [Wprowadzenie do usługi Data Factory](data-factory-introduction.md)
   * [Wprowadzenie do usługi Data Factory](data-factory-build-your-first-pipeline.md)

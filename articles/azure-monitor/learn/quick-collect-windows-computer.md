@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 11b61612a261b32e2d15b5dc70005b18aa112ed4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b3949159d939a043fd4ccc820bc1cdad14da7751
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240345"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528378"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Zbieranie danych z komputera z systemem Windows w środowisku hybrydowym za pomocą usługi Azure Monitor
 
 [Usługa Azure Monitor](../overview.md) może zbierać dane bezpośrednio z fizycznych lub wirtualnych komputerów z systemem Windows w danym środowisku do obszaru roboczego analizy dzienników w celu szczegółowej analizy i korelacji. Instalowanie [agenta usługi Log Analytics](../platform/log-analytics-agent.md) umożliwia platformie Azure Monitor zbieranie danych z centrum danych lub innego środowiska w chmurze. W tym przewodniku Szybki start opisano, jak w kilku prostych krokach skonfigurować i rozpocząć zbieranie danych z komputera z systemem Windows. Aby uzyskać informacje na temat maszyn wirtualnych systemu Windows platformy Azure, zobacz [Zbieranie danych o maszynach wirtualnych platformy Azure](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
-Aby zapoznać się z obsługiwana konfiguracją, zobacz [Obsługiwane systemy operacyjne Windows](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) i [konfiguracja zapory sieciowej](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements).
+Aby zapoznać się z obsługiwana konfiguracją, zobacz [Obsługiwane systemy operacyjne Windows](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) i [konfiguracja zapory sieciowej](../../azure-monitor/platform/log-analytics-agent.md#firewall-requirements).
  
 Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
@@ -36,7 +36,7 @@ Zaloguj się do witryny Azure portal w [https://portal.azure.com](https://portal
 
 1. W witrynie Azure portal wybierz pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **obszary robocze usługi Log Analytics**.
 
-    ![Portal Azure](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
+    ![Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Wybierz **pozycję Utwórz**, a następnie wybierz opcje dla następujących elementów:
 

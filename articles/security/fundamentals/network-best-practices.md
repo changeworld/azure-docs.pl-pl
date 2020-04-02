@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 3ded20f37a394e6adf726ad40c01aa36d41e4e8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e155758d19b45d977fcd087bff0ceb85898f8f8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299349"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548301"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Najważniejsze wskazówki dotyczące zabezpieczeń sieci
 W tym artykule omówiono kolekcję najlepszych rozwiązań platformy Azure w celu zwiększenia zabezpieczeń sieci. Te najlepsze rozwiązania pochodzą z naszego środowiska z siecią platformy Azure i środowiskami klientów takich jak Ty.
@@ -153,12 +153,12 @@ Zaleca się stosowanie równoważenia obciążenia, kiedy tylko jest to możliwe
 - Akceptuje tylko bezpieczne połączenie, więc niezaszyfrowana komunikacja z serwerem nie jest akceptowalną opcją.
 - Wymaga wielu żądań HTTP na tym samym długotrwałym połączeniu TCP, które mają być kierowane lub równoważenia obciążenia do różnych serwerów zaplecza.
 
-**Opcja równoważenia obciążenia:** Użyj [bramy aplikacji azure](/azure/application-gateway/application-gateway-introduction), moduł równoważenia obciążenia ruchu internetowego HTTP. Brama aplikacji obsługuje szyfrowanie SSL typu end-to-end i [zakończenie SSL](/azure/application-gateway/application-gateway-introduction) na bramie. Serwery sieci Web mogą być następnie odciążone od szyfrowania i odszyfrowywania narzutów oraz ruchu przepływającego w stanie niezaszyfrowanym do serwerów zaplecza.
+**Opcja równoważenia obciążenia:** Użyj [bramy aplikacji azure](/azure/application-gateway/application-gateway-introduction), moduł równoważenia obciążenia ruchu internetowego HTTP. Brama aplikacji obsługuje szyfrowanie TLS end-to-end i [zakończenie TLS](/azure/application-gateway/application-gateway-introduction) na bramie. Serwery sieci Web mogą być następnie odciążone od szyfrowania i odszyfrowywania narzutów oraz ruchu przepływającego w stanie niezaszyfrowanym do serwerów zaplecza.
 
 **Scenariusz:** Należy załadować równoważenie połączeń przychodzących z Internetu między serwerami znajdującymi się w sieci wirtualnej platformy Azure. Scenariusze są wtedy, gdy:
 
 - Mają aplikacje bezstanowe, które akceptują przychodzące żądania z Internetu.
-- Nie wymagaj lepkich sesji ani odciążania SSL. Sesje przyklejone to metoda używana z równoważeniem obciążenia aplikacji w celu osiągnięcia koligacji serwera.
+- Nie wymagaj lepkich sesji ani odciążania TLS. Sesje przyklejone to metoda używana z równoważeniem obciążenia aplikacji w celu osiągnięcia koligacji serwera.
 
 **Opcja równoważenia obciążenia:** Użyj witryny Azure portal, aby [utworzyć zewnętrzny moduł równoważenia obciążenia,](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) który rozkłada przychodzące żądania na wiele maszyn wirtualnych, aby zapewnić wyższy poziom dostępności.
 

@@ -2,20 +2,20 @@
 title: Zalecenia dotyczące zabezpieczeń dla usługi Azure Key Vault
 description: Zalecenia dotyczące zabezpieczeń usługi Azure Key Vault. Wdrożenie tych wskazówek pomoże Ci wypełnić swoje zobowiązania w zakresie bezpieczeństwa opisane w naszym modelu wspólnej odpowiedzialności
 services: key-vault
-author: barclayn
+author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: article
 ms.date: 09/30/2019
-ms.author: barclayn
+ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 9fd41ae9b61a9c74fd5d99dd71199cfde06f5cb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d18dca2d7c44ac9db5ebabc5cc10f2f0b3f2c069
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78192374"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546359"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Zalecenia dotyczące zabezpieczeń dla usługi Azure Key Vault
 
@@ -46,7 +46,7 @@ Niektóre z zaleceń zawartych w tym artykule mogą być automatycznie monitorow
  Dzienniki diagnostyczne w usłudze Key Vault powinny być włączone | Włącz dzienniki i zachowaj je do roku. Dzięki temu można odtworzyć ślady aktywności do celów dochodzenia, gdy wystąpi zdarzenie zabezpieczeń lub sieć zostanie naruszona. | [Tak](../security-center/security-center-identity-access.md) |
 | Ograniczanie dostępu do dzienników magazynu kluczy azure | [Dzienniki magazynu kluczy](key-vault-logging.md) zapisują informacje o działaniach wykonywanych w magazynie, takich jak tworzenie lub usuwanie magazynów, kluczy, wpisów tajnych i mogą być używane podczas badania |  - |
 
-## <a name="networking"></a>Obsługa sieci
+## <a name="networking"></a>Networking
 
 | Zalecenie | Komentarze | Security Center |
 |-|----|--|

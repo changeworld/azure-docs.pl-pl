@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 9333bb36971fc28a23a443e50d191abeef05b758
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57368331e83111836e13b6c3796cacad9816e318
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78208227"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521293"
 ---
 Aby wyświetlić i skopiować klucze dostępu do konta magazynu lub parametry połączenia z witryny Azure Portal:
 
@@ -26,3 +26,5 @@ Aby wyświetlić i skopiować klucze dostępu do konta magazynu lub parametry po
     ![Zrzut ekranu przedstawiający sposób wyświetlania kluczy dostępu w witrynie Azure portal](media/storage-view-keys-include/portal-connection-string.png)
 
 Możesz użyć albo klucz, aby uzyskać dostęp do usługi Azure Storage, ale ogólnie jest dobrą praktyką, aby użyć pierwszego klucza i zarezerwować użycie drugiego klucza podczas obracania kluczy.
+
+Aby wyświetlić lub odczytać klucze dostępu do konta, użytkownik musi być administratorem usługi lub musi mieć przypisaną rolę RBAC, która zawiera **microsoft.Storage/storageAccounts/listkeys/action**. Niektóre wbudowane role RBAC, które zawierają tę akcję, to role roli roli usługi **Właściciel,** **Współautor**i **Operator klucza magazynu.** Aby uzyskać więcej informacji na temat roli administratora usługi, zobacz [klasyczne role administratora subskrypcji, role usługi Azure RBAC i role usługi Azure AD](../articles/role-based-access-control/rbac-and-directory-admin-roles.md). Aby uzyskać szczegółowe informacje na temat wbudowanych ról usługi Azure Storage, zobacz sekcję **Magazyn** [w wbudowanych rolach platformy Azure dla usługi Azure RBAC.](../articles/role-based-access-control/built-in-roles.md#storage)

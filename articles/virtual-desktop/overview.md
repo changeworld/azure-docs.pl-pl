@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e62b3c551f41bca0055f35cf6bf62c59d921c73b
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 01767e88714bfb4e134957298505edd218d462d3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80294829"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546923"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co to jest Windows Virtual Desktop? 
 
@@ -43,7 +43,7 @@ Desktop wirtualny systemu Windows umożliwia skonfigurowanie skalowalnego i elas
 * Utwórz pełne środowisko wirtualizacji pulpitu w ramach subskrypcji platformy Azure bez konieczności uruchamiania dodatkowych serwerów bramy.
 * Publikowanie jak najwięcej pul hostów, jak trzeba, aby pomieścić różnych obciążeń.
 * Przynieś własny obraz dla obciążeń produkcyjnych lub testuj z galerii Azure.
-* Zmniejsz koszty dzięki łączonych zasobom wielosesyjnym. Dzięki nowej funkcji wielu sesji systemu Windows 10 Enterprise dostępnej wyłącznie w przypadku pulpitu wirtualnego systemu Windows i hosta sesji pulpitu zdalnego (RDSH) w systemie Windows Server można znacznie zmniejszyć liczbę narzutów maszyn wirtualnych i systemu operacyjnego, a jednocześnie nadal zapewniając użytkownikom te same zasoby.
+* Zmniejsz koszty dzięki łączonych zasobom wielosesyjnym. Dzięki nowej funkcji wielu sesji systemu Windows 10 Enterprise, która jest dostępna wyłącznie w przypadku pulpitu wirtualnego systemu Windows i hosta sesji pulpitu zdalnego (RDSH) w systemie Windows Server, można znacznie zmniejszyć liczbę narzutów na maszyny wirtualne i system operacyjny, jednocześnie zapewniając użytkownikom te same zasoby.
 * Zapewnij indywidualną własność za pośrednictwem osobistych (trwałych) komputerów stacjonarnych.
 
 Pulpity wirtualne można wdrażać i zarządzać nimi:
@@ -89,21 +89,38 @@ Maszyny wirtualne platformy Azure utworzone dla pulpitu wirtualnego systemu Wind
 
 Maszyny wirtualne platformy Azure utworzone dla pulpitu wirtualnego systemu Windows muszą mieć dostęp do następujących adresów URL:
 
-|Adres|Port wychodzący|Przeznaczenie|
-|---|---|---|
-|*.wvd.microsoft.com|Port TCP 443|Ruch serwisowy|
-|*.blob.core.windows.net|Port TCP 443|Agent, aktualizacje stosu SXS i ruch agenta|
-|*.core.windows.net|Port TCP 443|Ruch agenta|
-|*.servicebus.windows.net|Port TCP 443|Ruch agenta|
-|prod.warmpath.msftcloudes.com|Port TCP 443|Ruch agenta|
-|catalogartifact.azureedge.net|Port TCP 443|Azure Marketplace|
-|kms.core.windows.net|Port TCP 1688|Aktywacja systemu Windows 10|
+|Adres|Wychodzący port TCP|Przeznaczenie|Tag usługi|
+|---|---|---|---|
+|*.wvd.microsoft.com|443|Ruch serwisowy|WindowsVirtualDesktop|
+|mrsglobalsteus2prod.blob.core.windows.net|443|Aktualizacje stosu agenta i SXS|AzureCloud|
+|*.core.windows.net|443|Ruch agenta|AzureCloud|
+|*.servicebus.windows.net|443|Ruch agenta|AzureCloud|
+|prod.warmpath.msftcloudes.com|443|Ruch agenta|AzureCloud|
+|catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
+|kms.core.windows.net|1688|Aktywacja systemu Windows|Internet|
+
+
 
 >[!IMPORTANT]
 >Otwarcie tych adresów URL jest niezbędne do niezawodnego wdrożenia pulpitu wirtualnego systemu Windows. Zablokowanie dostępu do tych adresów URL nie jest obsługiwane i wpłynie na funkcjonalność usługi. Te adresy URL odpowiadają tylko witrynom i zasobom pulpitu wirtualnego systemu Windows i nie zawierają adresów URL innych usług, takich jak usługa Azure Active Directory.
 
+W poniższej tabeli wymieniono opcjonalne adresy URL, do których maszyny wirtualne platformy Azure mogą mieć dostęp:
+
+|Adres|Wychodzący port TCP|Przeznaczenie|Tag usługi|
+|---|---|---|---|
+|*.microsoftonline.com|443|Uwierzytelnianie w usługach MS Online|Brak|
+|*.events.data.microsoft.com|443|Usługa telemetrii|Brak|
+|www.msftconnecttest.com|443|Wykrywa, czy system operacyjny jest podłączony do Internetu|Brak|
+|*.prod.do.dsp.mp.microsoft.com|443|Windows Update|Brak|
+|login.windows.net|443|Logowanie do usług MS Online Services, Office 365|Brak|
+|*.sfx.ms|443|Aktualizacje oprogramowania klienckiego usługi OneDrive|Brak|
+|*.digicert.com|443|Sprawdzanie odwołania certyfikatu|Brak|
+
+
 >[!NOTE]
 >Pulpit wirtualny systemu Windows nie ma obecnie listy zakresów adresów IP, które można umieszczać na białej liście, aby zezwolić na ruch sieciowy. Obsługujemy tylko białe listy określonych adresów URL w tej chwili.
+>
+>Aby uzyskać listę adresów URL związanych z pakietem Office, w tym wymagane adresy URL związane z usługą Azure Active Directory, zobacz [Adresy URL i zakresy adresów IP usługi Office 365](/office365/enterprise/urls-and-ip-address-ranges).
 >
 >W przypadku adresów URL dotyczących ruchu usługowego należy użyć symbolu wieloznacznego (*). Jeśli wolisz nie używać * dla ruchu związanego z agentami, oto jak znaleźć adresy URL bez symboli wieloznacznych:
 >
@@ -137,15 +154,15 @@ Następujący klienci pulpitu zdalnego obsługują pulpit wirtualny systemu Wind
 
 Klienci pulpitu zdalnego muszą mieć dostęp do następujących adresów URL:
 
-|Adres|Port wychodzący|Przeznaczenie|Klienci|
+|Adres|Wychodzący port TCP|Przeznaczenie|Klienci|
 |---|---|---|---|
-|*.wvd.microsoft.com|Port TCP 443|Ruch serwisowy|Wszystkie|
-|*.servicebus.windows.net|Port TCP 443|Rozwiązywanie problemów z danymi|Wszystkie|
-|go.microsoft.com|Port TCP 443|Microsoft FWLinks|Wszystkie|
-|aka.ms|Port TCP 443|Skracacz adresów URL firmy Microsoft|Wszystkie|
-|docs.microsoft.com|Port TCP 443|Dokumentacja|Wszystkie|
-|privacy.microsoft.com|Port TCP 443|Oświadczenie o ochronie prywatności|Wszystkie|
-|query.prod.cms.rt.microsoft.com|Port TCP 443|Aktualizacje klienta|Pulpit systemu Windows|
+|*.wvd.microsoft.com|443|Ruch serwisowy|Wszystkie|
+|*.servicebus.windows.net|443|Rozwiązywanie problemów z danymi|Wszystkie|
+|go.microsoft.com|443|Microsoft FWLinks|Wszystkie|
+|aka.ms|443|Skracacz adresów URL firmy Microsoft|Wszystkie|
+|docs.microsoft.com|443|Dokumentacja|Wszystkie|
+|privacy.microsoft.com|443|Oświadczenie o ochronie prywatności|Wszystkie|
+|query.prod.cms.rt.microsoft.com|443|Aktualizacje klienta|Pulpit systemu Windows|
 
 >[!IMPORTANT]
 >Otwarcie tych adresów URL jest niezbędne dla niezawodnego doświadczenia klienta. Zablokowanie dostępu do tych adresów URL nie jest obsługiwane i wpłynie na funkcjonalność usługi. Te adresy URL odpowiadają tylko witrynom i zasobom klienta i nie zawierają adresów URL innych usług, takich jak usługa Azure Active Directory.

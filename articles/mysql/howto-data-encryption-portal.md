@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 78a290b1e2984719645fb4d4ff253ab021a0826e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: acf3e6273f98d98d5da55cfb5b044677116c44dc
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299043"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520808"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Szyfrowanie danych dla usługi Azure Database dla MySQL przy użyciu witryny Azure portal
 
@@ -65,7 +65,7 @@ Dowiedz się, jak skonfigurować szyfrowanie danych dla usługi Azure Database d
 
 4. Aby upewnić się, że wszystkie pliki (w tym pliki tymczasowe) są w pełni zaszyfrowane, uruchom ponownie serwer.
 
-## <a name="restore-or-create-a-replica-of-the-server"></a>Przywracanie lub tworzenie repliki serwera
+## <a name="using-data-encryption-for-restore-or-replica-servers"></a>Używanie szyfrowania danych do przywracania lub repliki serwerów
 
 Po zaszyfrowywanie usługi Azure Database for MySQL przy pomocą klucza zarządzanego klienta przechowywanego w usłudze Key Vault każda nowo utworzona kopia serwera jest również szyfrowana. Tę nową kopię można wykonać za pomocą operacji lokalnego lub przywracania geograficznego lub za pośrednictwem operacji repliki (lokalnej/międzyregionowej). Tak więc dla zaszyfrowanego serwera MySQL, można użyć następujących kroków, aby utworzyć zaszyfrowany serwer przywrócony.
 
@@ -93,132 +93,6 @@ Po zaszyfrowywanie usługi Azure Database for MySQL przy pomocą klucza zarządz
 4. Po zarejestrowaniu jednostki usługi ponownie przywtniu certyfikat klucza, a serwer wznawia jego normalne funkcje.
 
    ![Zrzut ekranu przedstawiający usługę Azure Database for MySQL z przywróconą funkcjonalnością](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
-
-
-## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Włączanie szyfrowania danych za pomocą szablonu usługi Azure Resource Manager
-
-Oprócz witryny Azure portal można również włączyć szyfrowanie danych na serwerze usługi Azure Database dla mysql przy użyciu szablonów usługi Azure Resource Manager dla nowych i istniejących serwerów.
-
-### <a name="for-a-new-server"></a>Dla nowego serwera
-
-Użyj jednego ze wstępnie utworzonych szablonów usługi Azure Resource Manager, aby aprowizować serwer z włączonym szyfrowaniem danych: [Przykład z szyfrowaniem danych](https://github.com/Azure/azure-mysql/tree/master/arm-templates/ExampleWithDataEncryption)
-
-Ten szablon usługi Azure Resource Manager tworzy usługę Azure Database dla serwera MySQL i używa **keyvault** i **key** przekazywane jako parametry, aby włączyć szyfrowanie danych na serwerze.
-
-### <a name="for-an-existing-server"></a>Dla istniejącego serwera
-Ponadto można użyć szablonów usługi Azure Resource Manager, aby włączyć szyfrowanie danych na istniejących serwerach usługi Azure Database dla serwerów MySQL.
-
-* Przekaż identyfikator URI klucza usługi Azure Key Vault, który został skopiowany wcześniej pod właściwością `keyVaultKeyUri` w obiekcie właściwości.
-
-* Użyj *wersji interfejsu API 2020-01-01-preview.*
-
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "location": {
-      "type": "string"
-    },
-    "serverName": {
-      "type": "string"
-    },
-    "keyVaultName": {
-      "type": "string",
-      "metadata": {
-        "description": "Key vault name where the key to use is stored"
-      }
-    },
-    "keyVaultResourceGroupName": {
-      "type": "string",
-      "metadata": {
-        "description": "Key vault resource group name where it is stored"
-      }
-    },
-    "keyName": {
-      "type": "string",
-      "metadata": {
-        "description": "Key name in the key vault to use as encryption protector"
-      }
-    },
-    "keyVersion": {
-      "type": "string",
-      "metadata": {
-        "description": "Version of the key in the key vault to use as encryption protector"
-      }
-    }
-  },
-  "variables": {
-    "serverKeyName": "[concat(parameters('keyVaultName'), '_', parameters('keyName'), '_', parameters('keyVersion'))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.DBforMySQL/servers",
-      "apiVersion": "2017-12-01",
-      "kind": "",
-      "location": "[parameters('location')]",
-      "identity": {
-        "type": "SystemAssigned"
-      },
-      "name": "[parameters('serverName')]",
-      "properties": {
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-05-01",
-      "name": "addAccessPolicy",
-      "resourceGroup": "[parameters('keyVaultResourceGroupName')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.DBforMySQL/servers', parameters('serverName'))]"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": [
-            {
-              "type": "Microsoft.KeyVault/vaults/accessPolicies",
-              "name": "[concat(parameters('keyVaultName'), '/add')]",
-              "apiVersion": "2018-02-14-preview",
-              "properties": {
-                "accessPolicies": [
-                  {
-                    "tenantId": "[subscription().tenantId]",
-                    "objectId": "[reference(resourceId('Microsoft.DBforMySQL/servers/', parameters('serverName')), '2017-12-01', 'Full').identity.principalId]",
-                    "permissions": {
-                      "keys": [
-                        "get",
-                        "wrapKey",
-                        "unwrapKey"
-                      ]
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "[concat(parameters('serverName'), '/', variables('serverKeyName'))]",
-      "type": "Microsoft.DBforMySQL/servers/keys",
-      "apiVersion": "2020-01-01-preview",
-      "dependsOn": [
-        "addAccessPolicy",
-        "[resourceId('Microsoft.DBforMySQL/servers', parameters('serverName'))]"
-      ],
-      "properties": {
-        "serverKeyType": "AzureKeyVault",
-        "uri": "[concat(reference(resourceId(parameters('keyVaultResourceGroupName'), 'Microsoft.KeyVault/vaults/', parameters('keyVaultName')), '2018-02-14-preview', 'Full').properties.vaultUri, 'keys/', parameters('keyName'), '/', parameters('keyVersion'))]"
-      }
-    }
-  ]
-}
-
-```
 
 ## <a name="next-steps"></a>Następne kroki
 

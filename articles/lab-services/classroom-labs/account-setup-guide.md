@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/18/2020
 ms.author: spelluru
-ms.openlocfilehash: 7b9ef32f16369bbb6c5bb69ef500ec8bb90fde20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88b37ea4ff717689f05afbb41d33a56a8cbb2c22
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370874"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547620"
 ---
 # <a name="lab-account-setup-guide"></a>Przewodnik konfiguracji konta laboratorium
 
@@ -90,7 +90,7 @@ Po zapoznaniu się z wymaganiami dotyczącymi konta w laboratorium, możesz go s
    - [Grupa zasobów](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#resource-group)
    - [Konto laboratorium](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#lab-account)
    - [Laboratorium w klasie](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#classroom-lab)
-   - [Wybieranie regionu\Lokalizacja](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regions-or-locations)
+   - [Wybieranie regionu\Lokalizacja](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations)
    - [Wskazówki dotyczące nazewnictwa zasobów](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#naming)
 
 2. **Dodawanie użytkowników do roli Twórca laboratorium**

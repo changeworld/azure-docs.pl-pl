@@ -13,17 +13,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 054b5c7d13df39de4fa57167e0363c0b4acf9b08
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4cabd63dc39590a9bf728528f3e7b3aa5d3f6b04
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80280749"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521754"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Samouczek: Przetwarzanie apache kafka dla zdarzeń centrum zdarzeń przy użyciu analizy strumienia 
 W tym artykule pokazano, jak przesyłać strumieniowo dane do centrów zdarzeń i przetwarzać go za pomocą usługi Azure Stream Analytics. Przeprowadzi Cię przez następujące kroki: 
 
-1. Tworzenie obszaru nazw centrów zdarzeń z włączoną platformą Kafka.
+1. Utwórz przestrzeń nazw usługi Event Hubs.
 2. Utwórz klienta platformy Kafka, który wysyła wiadomości do centrum zdarzeń.
 3. Utwórz zadanie usługi Stream Analytics, które kopiuje dane z Centrum zdarzeń do magazynu obiektów blob platformy Azure. 
 
@@ -41,7 +41,7 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
 * **Konto usługi Azure Storage**. Jeśli go nie masz, [utwórz go](../storage/common/storage-account-create.md) przed kontynuowaniem. Zadanie usługi Stream Analytics w tym instruktażu przechowuje dane wyjściowe w magazynie obiektów blob platformy Azure. 
 
 
-## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs z obsługą platformy Kafka
+## <a name="create-an-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
 Podczas tworzenia obszaru nazw centrum zdarzeń warstwy **standardowej** punkt końcowy platformy Kafka dla obszaru nazw jest automatycznie włączony. Można przesyłać strumieniowo zdarzenia z aplikacji korzystających z protokołu Kafka do centrum zdarzeń warstwy standardowej. Postępuj zgodnie z instrukcjami krok po kroku w [Centrum tworzenia zdarzeń przy użyciu witryny Azure Portal,](event-hubs-create.md) aby utworzyć obszar nazw centrum zdarzeń warstwy **standardowej.** 
 
 > [!NOTE]
@@ -185,7 +185,7 @@ W tym artykule dowiesz się, jak przesyłać strumieniowo do centrów zdarzeń b
 
 - [Dowiedz się więcej na temat usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Usługa Event Hubs dla platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Jak utworzyć centra Event Hubs z obsługą platformy Kafka](event-hubs-create.md)
+- [Tworzenie centrum zdarzeń](event-hubs-create.md)
 - [Przesyłanie strumieniowe do usługi Event Hubs z aplikacji platformy Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Dublowanie brokera platformy Kafka w centrum zdarzeń](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Łączenie platformy Apache Spark z centrum zdarzeń](event-hubs-kafka-spark-tutorial.md)

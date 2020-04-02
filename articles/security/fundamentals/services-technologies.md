@@ -3,7 +3,7 @@ title: Usługi i technologie zabezpieczeń platformy Azure | Dokumenty firmy Mic
 description: Ten artykuł zawiera wyselekcjonowaną listę usług i technologii usługi Azure Security.
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: a5a7f60a-97e2-49b4-a8c5-7c010ff27ef8
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
-ms.author: barclayn
-ms.openlocfilehash: 741e6b9cad20645fdfc085623fd9492a12ac1dfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726563"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549208"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Usługi zabezpieczeń i technologie dostępne na platformie Azure
 
@@ -79,7 +79,7 @@ Z biegiem czasu ta lista będzie się zmieniać i rozwijać, tak jak platforma A
 | [Kopia&nbsp;zapasowa platformy Azure](/azure/backup/backup-introduction-to-azure-backup)| Usługa oparta na platformie Azure używana do krotnego utworzenia kopii zapasowej i przywracania danych w chmurze platformy Azure. |
 | [Odzyskiwanie&nbsp;&nbsp;witryny platformy Azure](/azure/site-recovery/site-recovery-overview)|Usługa online, która replikuje obciążenia uruchomione na maszynach fizycznych i wirtualnych (VM) z lokacji głównej do lokalizacji dodatkowej, aby umożliwić odzyskiwanie usług po awarii. |
 
-## <a name="networking"></a>Obsługa sieci
+## <a name="networking"></a>Networking
 |Usługa|Opis|
 |------|--------|
 | [&nbsp;Sieciowe&nbsp;grupy zabezpieczeń](/azure/virtual-network/virtual-networks-nsg)| Funkcja kontroli dostępu sieciowego przy użyciu 5-krotki do podejmowania decyzji zezwalania lub odrzucania.  |

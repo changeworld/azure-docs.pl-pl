@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c021e68f8b76d8b0d3e6e9ff21c242580f53313
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220084"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520941"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Granice modelu usługi LUIS i kluczy
 Usługa LUIS ma kilka obszarów granicznych. Pierwszym z nich jest [granica modelu](#model-boundaries), który kontroluje intencje, jednostki i funkcje w usłudze LUIS. Drugi obszar to [limity przydziałów](#key-limits) na podstawie typu klucza. Trzeci obszar granic to [kombinacja klawiatury](#keyboard-controls) do sterowania witryną sieci Luis. Czwarty obszar to [mapowanie regionu świata](luis-reference-regions.md) między witryną sieci Web tworzenia usługi LUIS a interfejsami API [punktu końcowego](luis-glossary.md#endpoint) usługi LUIS.
@@ -40,7 +40,7 @@ Jeśli aplikacja przekracza limity i granice modelu usługi LUIS, należy rozwa�
 | [Podgląd — elementy listy dynamicznej](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 listy ~1k na żądanie punktu końcowego prognozowania kwerendy|
 | [Wzorce](luis-concept-patterns.md)|500 wzorów na aplikację.<br>Maksymalna długość wzoru wynosi 400 znaków.<br>3 Pattern.any elementów na wzorzec<br>Maksymalnie 2 zagnieżdżone teksty opcjonalne we wzorze|
 | [Wzór.any](./luis-concept-entity-types.md)|100 na aplikację, 3 pattern.any jednostek na wzorzec |
-| [Lista fraz][phrase-list]|500 list fraz. Lista frazeów niewymiennych ma maksymalnie 5000 fraz. Wymienna lista frazeów ma maksymalnie 50 000 fraz. Maksymalna liczba fraz na aplikację 500 000 fraz.|
+| [Lista fraz][phrase-list]|500 list fraz. 10 globalnych list fraz ze względu na model jako limit funkcji. Lista frazeów niewymiennych ma maksymalnie 5000 fraz. Wymienna lista frazeów ma maksymalnie 50 000 fraz. Maksymalna liczba fraz na aplikację 500 000 fraz.|
 | [Wstępnie utworzone jednostki](./luis-prebuilt-entities.md) | bez limitu|
 | [Jednostki wyrażenia regularnego](./luis-concept-entity-types.md)|20 podmiotów<br>500 znaków max. na wzorzec jednostki wyrażenia regularnego|
 | [Role](luis-concept-roles.md)|300 ról na aplikację. 10 ról na encję|

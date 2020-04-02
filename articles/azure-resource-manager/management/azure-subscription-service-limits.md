@@ -3,12 +3,12 @@ title: Limity i przydziały subskrypcji platformy Azure
 description: Zawiera listę typowych limitów subskrypcji i usług platformy Azure, przydziałów i ograniczeń. Ten artykuł zawiera informacje na temat zwiększania limitów wraz z wartościami maksymalnymi.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 325f7b3d03435945779c1f42e13681dcfd9604b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 397d6a719f64a49208e651469fab9cf841ccd4ad
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334870"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521356"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure subscription and service limits, quotas, and constraints (Limity subskrypcji i usług, limity przydziału oraz ograniczenia platformy Azure)
 
@@ -244,7 +244,11 @@ W poniższej tabeli przedstawiono funkcje i limity [warstw usług](../../contain
 
 ## <a name="media-services-limits"></a>Limity usług multimedialnych
 
-[!INCLUDE [azure-mediaservices-limits](../../../includes/azure-mediaservices-limits.md)]
+[!INCLUDE [azure-mediaservices-limits](../../../includes/media-servieces-limits-quotas-constraints.md)]
+
+### <a name="media-services-v2-legacy"></a>Media Services w wersji 2 (starsza wersja)
+
+Aby uzyskać limity specyficzne dla usługi Media Services w wersji 2 (starsza wersja), zobacz [Media Services w wersji 2 (starsza wersja)](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations)
 
 ## <a name="mobile-services-limits"></a>Limity usług mobilnych
 

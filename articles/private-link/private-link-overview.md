@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f75f8392b01e69760171c13c0e6d3b2e22b20dea
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 5b4347cb5032b7f3651d0d3fcb20dc5d416f9bee
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421191"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546572"
 ---
 # <a name="what-is-azure-private-link"></a>Co to jest łącze prywatne platformy Azure? 
 Usługa Azure Private Link umożliwia dostęp do usług PaaS platformy Azure (na przykład usługi Azure Storage i bazy danych SQL) oraz usługi azure hostowane przez klienta/partnera za pośrednictwem [prywatnego punktu końcowego](private-endpoint-overview.md) w sieci wirtualnej.
@@ -53,15 +53,15 @@ Usługa Azure Private Link zapewnia następujące korzyści:
 |  |  Azure Database for MariaDB         | Wszystkie regiony publiczne      |   Ogólna dostępność <br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
 |  |  W usłudze Azure Key Vault         | Wszystkie regiony publiczne      |   Ogólna dostępność   <br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
 |  |Usługa Kubernetes platformy Azure — interfejs API usługi Kubernetes | Wszystkie regiony publiczne      |   Ogólna dostępność   <br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/aks/private-clusters)   |
-|  |Azure Search | WSCHODNIE STANY USA, ZACHODNIE STANY USA2, POŁUDNIOWO-ŚRODKOWE STANY ZJEDNOCZONE |   Wersja zapoznawcza    |
+|  |Azure Search | WSCHODNIE STANY USA, ZACHODNIE STANY USA 2, POŁUDNIOWO-ŚRODKOWE STANY USA |   Wersja zapoznawcza    |
 |  |Azure Container Registry | Wszystkie regiony publiczne      |   Wersja zapoznawcza   |
 |  |Azure App Configuration | Wszystkie regiony publiczne      |   Wersja zapoznawcza   |
-|  |Azure Backup | WSCHODNIE STANY USA, ZACHODNIE STANY USA2, POŁUDNIOWO-ŚRODKOWE STANY ZJEDNOCZONE     |   Wersja zapoznawcza   |
+|  |Azure Backup | WSCHODNIE STANY USA, ZACHODNIE STANY USA 2, POŁUDNIOWO-ŚRODKOWE STANY USA     |   Wersja zapoznawcza   |
 |  |Centrum zdarzeń Azure | Wszystkie regiony publiczne      |   Wersja zapoznawcza    |
 |  |Azure Service Bus | Wszystkie regiony publiczne      |   Wersja zapoznawcza   |
 |  |Azure Relay | Wszystkie regiony publiczne      |   Wersja zapoznawcza   |
-|  |Azure Event Grid| Wszystkie regiony publiczne      |   Wersja zapoznawcza   <br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/event-grid/network-security)   |
-|  |Azure Web Apps | WSCHODNIE STANY USA, ZACHODNIE STANY USA2, POŁUDNIOWO-ŚRODKOWE STANY ZJEDNOCZONE      |   Wersja zapoznawcza   <br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|  |Azure Event Grid| WSCHODNIE STANY USA, ZACHODNIE STANY USA 2, POŁUDNIOWO-ŚRODKOWE STANY USA      |   Wersja zapoznawcza   <br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/event-grid/network-security)   |
+|  |Azure Web Apps | WSCHODNIE STANY USA, ZACHODNIE STANY USA 2, POŁUDNIOWO-ŚRODKOWE STANY USA      |   Wersja zapoznawcza   <br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
 
 Aby uzyskać najbardziej aktualne powiadomienia, sprawdź [stronę aktualizacji sieci wirtualnej platformy Azure](https://azure.microsoft.com/updates/?product=virtual-network).
 

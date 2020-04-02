@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
-ms.openlocfilehash: 9999d74bf6bef3e8351460add7efc8bdbfcd1045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa85e80f1a90191a0a34a6962437c27a9d57ef65
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270032"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547551"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Tworzenie, przeglądanie i wdrażanie zautomatyzowanych modeli uczenia maszynowego za pomocą usługi Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Aby uzyskać środowisko oparte na kodzie języka Python, [skonfiguruj eksperyme
 
 * Obszar roboczy usługi Azure Machine Learning z typem **wersji Enterprise**. Zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md).  Aby uaktualnić istniejący obszar roboczy do wersji Enterprise, zobacz [Uaktualnianie do wersji Enterprise](how-to-manage-workspace.md#upgrade).
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 1. Zaloguj się do usługi https://ml.azure.comAzure Machine Learning w . 
 
@@ -124,7 +124,7 @@ W przeciwnym razie zobaczysz listę ostatnich eksperymentów automatycznego ucze
     Wyjaśnij najlepszy model | Wybierz, aby włączyć lub wyłączyć, aby pokazać wytłumaczenia zalecanego najlepszego modelu
     Zablokowany algorytm| Wybierz algorytmy, które chcesz wykluczyć z zadania szkoleniowego.
     Kryterium wyjścia| Po spełnieniu któregokolwiek z tych kryteriów zadanie szkoleniowe zostaje zatrzymane. <br> *Czas pracy szkoleniowej (godziny)*: Jak długo można zezwolić na wykonywanie zadania szkoleniowego. <br> *Próg wyniku metryki:* minimalny wynik metryki dla wszystkich potoków. Gwarantuje to, że jeśli masz zdefiniowaną metrykę docelową, którą chcesz osiągnąć, nie spędzasz więcej czasu na pracy szkoleniowej niż jest to konieczne.
-    Sprawdzanie poprawności| Wybierz jedną z opcji sprawdzania poprawności krzyżowej do użycia w zadaniu szkoleniowym. [Dowiedz się więcej o weryfikacji krzyżowej](how-to-configure-auto-train.md).
+    Walidacja| Wybierz jedną z opcji sprawdzania poprawności krzyżowej do użycia w zadaniu szkoleniowym. [Dowiedz się więcej o weryfikacji krzyżowej](how-to-configure-auto-train.md).
     Współbieżność| *Maksymalna liczba równoczesnych iteracji:* Maksymalna liczba potoków (iteracji) do przetestowania w zadaniu szkoleniowym. Zadanie nie będzie działać więcej niż określona liczba iteracji.
 
 1. (Opcjonalnie) Wyświetl ustawienia featurization: jeśli wybierzesz opcję **Automatyczna featurization** w formularzu **Dodatkowe ustawienia konfiguracji,** ten formularz jest, gdzie można określić, które kolumny do wykonania tych featurizations na i wybrać, które wartości statystycznej do użycia dla brakujących wartości imputacji.
@@ -178,17 +178,27 @@ Zautomatyzowane uczenie maszynowe oferuje automatyczne przetwarzanie wstępne i 
 
 ### <a name="data-guardrails"></a>Barierki ochronne danych
 
-Barierki danych są stosowane automatycznie, aby pomóc w zidentyfikowaniu potencjalnych problemów z danymi (np. brakujące wartości, nierównowaga klasy) i pomagają w podejmowaniu działań naprawczych w celu poprawy wyników. Istnieje wiele najlepszych rozwiązań, które są dostępne i mogą być stosowane w celu osiągnięcia wiarygodnych wyników. 
-
-W poniższej tabeli opisano aktualnie obsługiwane barierki danych i skojarzone stany, na które użytkownicy mogą natknąć się podczas przesyłania eksperymentu.
+Barierki danych są stosowane, gdy automatyczne featurization jest włączona lub sprawdzanie poprawności jest ustawiona na auto. Barierki danych pomagają identyfikować potencjalne problemy z danymi (np. brakujące wartości, nierównowaga klas) i pomagają w podejmowaniu działań naprawczych w celu poprawy wyników. Istnieje wiele najlepszych rozwiązań, które są dostępne i mogą być stosowane w celu osiągnięcia wiarygodnych wyników. Użytkownicy mogą przeglądać barierki danych w studio w zakładce **Barierki** ```show_output=True``` danych w zautomatyzowanym uruchomieniu ml lub ustawiając podczas przesyłania eksperymentu przy użyciu zestawu SDK języka Python. W poniższej tabeli opisano barierki danych obecnie obsługiwane i skojarzone stany, które użytkownicy mogą natknąć podczas przesyłania eksperymentu.
 
 Poręczy|Stan|Warunek&nbsp;&nbsp;wyzwalacza
 ---|---|---
-&nbsp;Brakujące&nbsp;wartości przypisywania |**Przekazywane** <br> <br> **Stałe**|    Brak braku wartości w&nbsp;żadnej z kolumn wejściowych <br> <br> W niektórych kolumnach brakuje wartości
-Sprawdzanie poprawności krzyżowej|**Gotowe**|Jeśli nie podano wyraźnego zestawu sprawdzania poprawności
-Wykrywanie&nbsp;funkcji&nbsp;wysokiej&nbsp;kardynalności|    **Przekazywane** <br> <br>**Gotowe**|    Nie wykryto żadnych funkcji wysokiej kardynalności <br><br> Wykryto kolumny wejściowe o wysokiej kardynalności
-Wykrywanie równowagi klas    |**Przekazywane** <br><br><br>**Pogotowiu** |Klasy są zrównoważone w danych szkoleniowych; Zestaw danych jest uważany za zrównoważony, jeśli każda klasa ma dobrą reprezentację w zestawie danych, mierzoną liczbą i ratio próbkami <br> <br> Zajęcia w danych szkoleniowych są nierówne
-Spójność danych szeregów czasowych|**Przekazywane** <br><br><br><br> **Stałe** |<br> Przeanalizowano wybraną wartość {horyzont, opóźnienie, okno toczenia} i nie wykryto żadnych potencjalnych problemów poza pamięcią. <br> <br>Wybrane wartości {horyzont, opóźnienie, okno toczenia} zostały przeanalizowane i potencjalnie spowoduje, że eksperyment zabraknie pamięci. Okno opóźnienia lub walcowania zostało wyłączone.
+Brakujące wartości operacji przypisanie |**Przekazywane** <br><br><br> **Gotowe**| W danych szkoleniowych nie wykryto brakujących wartości funkcji. Dowiedz się więcej o [brakuującym imputacji wartości.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Brakujące wartości funkcji zostały wykryte w danych szkoleniowych i przypisane.
+Obsługa funkcji o wysokiej kardynalności |**Przekazywane** <br><br><br> **Gotowe**| Dane wejściowe zostały przeanalizowane i nie wykryto żadnych funkcji wysokiej kardynalności. Dowiedz się więcej o [wykrywaniu funkcji wysokiej kardynalności.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Funkcje wysokiej kardynalności zostały wykryte w danych wejściowych i zostały obsłużone.
+Obsługa podziału sprawdzania poprawności |**Gotowe**| *Konfiguracja sprawdzania poprawności została ustawiona na "auto", a dane szkoleniowe zawierały **mniej** niż 20 000 wierszy.* <br> Każda iteracja uczonego modelu została zweryfikowana za pomocą krzyżowego sprawdzania poprawności. Dowiedz się więcej o [danych sprawdzania poprawności.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *Konfiguracja sprawdzania poprawności została ustawiona na "auto", a dane szkoleniowe zawierały **ponad** 20 000 wierszy.* <br> Dane wejściowe zostały podzielone na zestaw danych szkoleniowych i zestaw danych sprawdzania poprawności do sprawdzania poprawności modelu.
+Wykrywanie równoważenia klas |**Przekazywane** <br><br><br><br> **Pogotowiu** | Dane wejściowe zostały przeanalizowane, a wszystkie klasy są zrównoważone w danych szkoleniowych. Zestaw danych jest uważany za zrównoważony, jeśli każda klasa ma dobrą reprezentację w zestawie danych, mierzoną liczbą i współczynnikiem próbek. <br><br><br> Niezrównoważone klasy zostały wykryte w danych wejściowych. Aby naprawić błąd modelu, rozwiąż problem równoważenia. Dowiedz się więcej o [nieeksołkowych danych.](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml#imbalance)
+Wykrywanie problemów z pamięcią |**Przekazywane** <br><br><br><br> **Gotowe** |<br> Przeanalizowano wybraną wartość {horyzont, opóźnienie, okno toczenia} i nie wykryto żadnych potencjalnych problemów poza pamięcią. Dowiedz się więcej o [konfiguracjach prognozowania szeregów czasowych.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) <br><br><br>Wybrane wartości {horyzont, opóźnienie, okno toczenia} zostały przeanalizowane i potencjalnie spowoduje, że eksperyment zabraknie pamięci. Konfiguracje opóźnień lub okien toczących się zostały wyłączone.
+Wykrywanie częstotliwości |**Przekazywane** <br><br><br><br> **Gotowe** |<br> Seria czasowa została przeanalizowana, a wszystkie punkty danych są wyrównane z wykrytą częstotliwością. <br> <br> Przeanalizowano szeregi czasowe i wykryto punkty danych, które nie są zgodne z wykrytą częstotliwością. Te punkty danych zostały usunięte z zestawu danych. Dowiedz się więcej o [przygotowaniu danych do prognozowania szeregów czasowych.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
+
+#### <a name="data-guardrail-states"></a>Stany poręczy danych
+Barierki danych będą wyświetlać jeden z trzech stanów: "Przekazany", "Gotowe lub "Alerty".
+
+Stan| Opis
+----|----
+Przekazywane| Nie wykryto żadnych problemów z danymi i nie jest wymagana żadna akcja użytkownika. 
+Gotowe| Zmiany zostały zastosowane do danych. Zachęcamy użytkowników do zapoznania się z działaniami naprawczymi podjętymi przez zautomatyzowane ml, aby upewnić się, że zmiany są zgodne z oczekiwanymi wynikami. 
+Pogotowiu| Wykryto problem z danymi, których nie można było rozwiązać. Zachęcamy użytkowników do zmiany i rozwiązania problemu. 
+
+Poprzednia wersja automatycznego ml wyświetlała czwarty stan: "Naprawiony". Nowsze eksperymenty nie będą wyświetlać tego stanu, a wszystkie barierki, które wyświetlały stan "Stały", będą teraz wyświetlać "Gotowe".   
 
 ## <a name="run-experiment-and-view-results"></a>Uruchamianie eksperymentu i wyświetlanie wyników
 

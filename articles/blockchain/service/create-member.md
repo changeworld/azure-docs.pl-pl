@@ -1,15 +1,15 @@
 ---
 title: Tworzenie członka usługi Azure Blockchain — witryna Azure portal
 description: Utwórz członka usługi Azure Blockchain dla konsorcjum łańcucha bloków przy użyciu witryny Azure portal.
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 3c468633a193d78fb1c017a756ee372c6feefb12
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4c3dabc6abdffd2fb08ece617545d8471955d130
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79203665"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529641"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Szybki start: tworzenie członka łańcucha bloków usługi Azure Blockchain przy użyciu portalu Azure
 
@@ -36,7 +36,7 @@ Członek usługi Azure Blockchain Service jest węzłem łańcucha bloków w sie
     Konsorcjum | W przypadku nowego konsorcjum wprowadź unikatową nazwę. Jeśli dołączysz do konsorcjum za pośrednictwem zaproszenia, wybierz konsorcjum, do którego dołączasz. Aby uzyskać więcej informacji na temat konsorcjów, zobacz [konsorcjum usługi Azure Blockchain Service](consortium.md).
     Nazwa | Wybierz unikatową nazwę dla członka usługi Azure Blockchain Service. Nazwa członka łańcucha bloków może zawierać tylko małe litery i cyfry. Pierwszy znak musi być literą. Wartość musi zawierać się o długości od 2 do 20 znaków.
     Hasło do konta użytkownika | Hasło konta członkowskiego służy do szyfrowania klucza prywatnego dla konta Ethereum, który jest tworzony dla twojego członka. Do zarządzania konsorcjum używasz konta członkowskiego i hasła do konta członkowskiego.
-    Cennik | Konfiguracja węzła i koszt nowej usługi. Wybierz łącze **Zmień,** aby wybrać warstwę **Standardowa** i **Podstawowa.** Użyj *podstawowej* warstwy jest do programowania, testowania i weryfikacji pojęć. Użyj warstwy *Standardowa* dla wdrożeń na poziomie produkcyjnym.
+    Cennik | Konfiguracja węzła i koszt nowej usługi. Wybierz łącze **Zmień,** aby wybrać warstwę **Standardowa** i **Podstawowa.** Użyj *podstawowej* warstwy jest do programowania, testowania i weryfikacji pojęć. Użyj warstwy *Standardowa* dla wdrożeń na poziomie produkcyjnym. Należy również użyć *warstwy Standardowa,* jeśli używasz Menedżera danych Blockchain lub wysyłasz dużą liczbę transakcji prywatnych. Zmiana warstwy cenowej między podstawową a standardową po utworzeniu elementu członkowskiego nie jest obsługiwana.
     Hasło węzła | Hasło do domyślnego węzła transakcji członka. Użyj hasła do uwierzytelniania podstawowego podczas łączenia się z domyślnym węzłem transakcji publicznej punktu końcowego członka łańcucha bloków.
 
 1. Wybierz **opcję Przejrzyj + utwórz,** aby sprawdzić poprawność ustawień. Wybierz **pozycję Utwórz,** aby aprowizować usługę. Inicjowanie obsługi administracyjnej trwa około 10 minut.

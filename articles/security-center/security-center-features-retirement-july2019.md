@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: fda49ae31d7598497a3128a846a3f4e12e84ffe1
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 1f923db5c730f6dec15f4fc211ab7acbd009ac7f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435905"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521414"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Funkcje Centrum Bezpieczeństwa (lipiec 2019)
 
@@ -169,7 +169,7 @@ Jeśli masz istniejące połączone rozwiązania, zachęcamy do przejścia na us
 
 Usługa Azure Security Center monitoruje konfiguracje zabezpieczeń, stosując zestaw [ponad 150 zalecanych reguł](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) dotyczących wzmacniania ochrony systemu operacyjnego. Te reguły odnoszą się do zapór sieciowych, inspekcji, zasad haseł i innych. Jeśli okaże się, że maszyna ma konfigurację podatną na zagrożenia, usługa Security Center wygeneruje rekomendację dotyczącą zabezpieczeń. [Ekran konfiguracji zabezpieczeń Edycji](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) umożliwia klientom dostosowanie domyślnej konfiguracji zabezpieczeń systemu operacyjnego w umykarze zabezpieczeń.
 
-Wycofaliśmy tę funkcję podglądu. Aby zresetować konfiguracje zabezpieczeń z powrotem do wartości domyślnych po dacie wycofania, należy to zrobić za pośrednictwem interfejsu API lub programu Powershell, korzystając z [poniższych instrukcji](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization).
+Wycofaliśmy tę funkcję podglądu. Aby zresetować konfiguracje zabezpieczeń z powrotem do wartości domyślnych po dacie wycofania, należy to zrobić za pośrednictwem interfejsu API lub programu Powershell, korzystając z [poniższych instrukcji](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/Reset%20security%20configurations%20customization).
 
 ![Edytowanie konfiguracji zabezpieczeń][17]
 

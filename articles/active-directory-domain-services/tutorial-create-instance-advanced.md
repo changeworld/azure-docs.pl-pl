@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f6817c1ec308e75a4af88825d46848b504775e19
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a7ab79fe7ccfbf6d292b6ba7be58026955a06516
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239147"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519322"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Samouczek: Tworzenie i konfigurowanie wystąpienia usług domenowych usługi active directory platformy Azure z zaawansowanymi opcjami konfiguracji
 
@@ -30,7 +30,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 > * Dodawanie użytkowników administracyjnych do zarządzania domeną
 > * Włączanie synchronizacji skrótów haseł
 
-Jeśli nie masz subskrypcji platformy Azure, [utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

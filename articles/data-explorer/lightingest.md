@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 99517e45892cd7a6167ae83ff3058edae1377b10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 95d943685cf511acb88f9e48d36a9dd43b0a27d2
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80109565"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548015"
 ---
 # <a name="install-and-use-lightingest"></a>Instalowanie i używanie LightIngest
 
@@ -22,6 +22,9 @@ Narzędzie może pobierać dane źródłowe z folderu lokalnego lub z kontenera 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * LightIngest - pobierz go jako część [pakietu Microsoft.Azure.Kusto.Tools NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)
+
+    ![Oświetlenienajednak](media/lightingest/lightingest-download-area.png)
+
 * WinRAR - pobierz go z [www.win-rar.com/download.html](http://www.win-rar.com/download.html)
 
 ## <a name="install-lightingest"></a>Zainstaluj LightIngest
@@ -44,16 +47,20 @@ Narzędzie może pobierać dane źródłowe z folderu lokalnego lub z kontenera 
     >
     >![Pomoc wiersza polecenia](media/lightingest/lightingest-cmd-line-help.png)
 
-1. Wprowadź, `LightIngest` po którym następuje parametry połączenia z klastrem usługi Azure Data Explorer, który będzie zarządzał pozyskiwania.
+1. Wprowadź, `ingest-` po którym następuje parametry połączenia z klastrem usługi Azure Data Explorer, który będzie zarządzał pozyskiwania.
     Ujednij parametry połączenia w cudzysłowie i postępuj zgodnie [ze specyfikacją ciągów połączeń Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto).
 
     Przykład:
     ```
-    LightIngest "Data Source=https://{Cluster name and region}.kusto.windows.net;AAD Federated Security=True"  -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+    ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
     ```
 
-* Zalecaną metodą `LightIngest` jest praca z punktem końcowym `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`spożycia w . W ten sposób usługa Azure Data Explorer może zarządzać obciążeniem pozyskiwania i można łatwo odzyskać po błędach przejściowych. Można jednak również `LightIngest` skonfigurować do pracy bezpośrednio z`https://{yourClusterNameAndRegion}.kusto.windows.net`punktem końcowym silnika ( ).
-* Aby uzyskać optymalną wydajność pozyskiwania, ważne jest, aby LightIngest `LightIngest` znać rozmiar nieprzetworzonych danych i tak będzie oszacować nieskompresowany rozmiar plików lokalnych. Jednak `LightIngest` może nie być w stanie poprawnie oszacować nieprzetworzony rozmiar skompresowanych obiektów blob bez uprzedniego ich pobrania. W związku z tym podczas pozyskiwania skompresowanych obiektów blob, ustaw `rawSizeBytes` właściwość na metadanych obiektu blob do nieskompresowanego rozmiaru danych w bajtach.
+* Zalecaną metodą jest, aby LightIngest działał z `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`punktem końcowym spożycia w punkcie końcowym spożycia w . W ten sposób usługa Azure Data Explorer może zarządzać obciążeniem pozyskiwania i można łatwo odzyskać po błędach przejściowych. Można jednak również skonfigurować LightIngest do pracy bezpośrednio z`https://{yourClusterNameAndRegion}.kusto.windows.net`punktem końcowym silnika ( ).
+
+> [!Note]
+> Jeśli połkniesz bezpośrednio z punktem końcowym silnika, `ingest-`nie musisz uwzględniać , ale nie będzie funkcji DM, aby chronić silnik i poprawić wskaźnik powodzenia spożycia.
+
+* Aby uzyskać optymalną wydajność pozyskiwania, ważne jest, aby LightIngest znać rozmiar surowych danych i tak LightIngest oszacować nieskompresowany rozmiar plików lokalnych. Jednak LightIngest może nie być w stanie poprawnie oszacować nieprzetworzonego rozmiaru skompresowanych obiektów blob bez uprzedniego ich pobrania. W związku z tym podczas pozyskiwania skompresowanych obiektów blob, ustaw `rawSizeBytes` właściwość na metadanych obiektu blob do nieskompresowanego rozmiaru danych w bajtach.
 
 ## <a name="general-command-line-arguments"></a>Ogólne argumenty wiersza polecenia
 
@@ -66,7 +73,7 @@ Narzędzie może pobierać dane źródłowe z folderu lokalnego lub z kontenera 
 |-prefiks               |             |ciąg  |Optional (Opcjonalność)  |Gdy dane źródłowe do pozyskiwania znajduje się w magazynie obiektów blob, ten prefiks adresu URL jest współużytkowana przez wszystkie obiekty blob, z wyłączeniem nazwy kontenera. <br>Na przykład, jeśli dane `MyContainer/Dir1/Dir2`są w , `Dir1/Dir2`to prefiks powinien być . Zaleca się załączanie w cudzysłowie |
 |-wzór              |             |ciąg  |Optional (Opcjonalność)  |Wzorzec, za pomocą którego są zbierane pliki źródłowe/obiekty blob. Obsługuje symbole wieloznaczne. Na przykład `"*.csv"`. Zaleca się ujęte w cudzysłowie |
 |-zipPattern           |             |ciąg  |Optional (Opcjonalność)  |Wyrażenie regularne do użycia podczas wybierania plików w archiwum ZIP do pozyskiwania.<br>Wszystkie inne pliki w archiwum zostaną zignorowane. Na przykład `"*.csv"`. Zaleca się otoczyć go w cudzysłowie |
-|-format               |-f           |ciąg  |Optional (Opcjonalność)  |Format danych źródłowych. Musi być jednym z [obsługiwanych formatów](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#supported-data-formats) |
+|-format               |-f           |ciąg  |Optional (Opcjonalność)  |Format danych źródłowych. Musi być jednym z [obsługiwanych formatów](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats) |
 |-ingestionMappingPath |-mappingPath |ciąg  |Optional (Opcjonalność)  |Ścieżka do pliku mapowania kolumn pozyskiwania (obowiązkowe dla formatów Json i Avro). Zobacz [mapowania danych](https://docs.microsoft.com/azure/kusto/management/mappings) |
 |-ingestionMappingRef  |-mappingRef  |ciąg  |Optional (Opcjonalność)  |Nazwa wstępnie utworzonego mapowania kolumn pozyskiwania (obowiązkowe dla formatów Json i Avro). Zobacz [mapowania danych](https://docs.microsoft.com/azure/kusto/management/mappings) |
 |-creationTimePattern  |             |ciąg  |Optional (Opcjonalność)  |Gdy zestaw, jest używany do wyodrębniania CreationTime właściwości ze ścieżki pliku lub obiektu blob. Zobacz [Używanie argumentu CreationTimePattern](#using-creationtimepattern-argument) |
@@ -76,11 +83,17 @@ Narzędzie może pobierać dane źródłowe z folderu lokalnego lub z kontenera 
 
 ### <a name="using-creationtimepattern-argument"></a>Używanie argumentu CreationTimePattern
 
-Argument `-creationTimePattern` wyodrębnia CreationTime właściwość ze ścieżki pliku lub obiektu blob. Wzorzec nie musi odzwierciedlać całej ścieżki elementu, tylko sekcję otaczającą sygnaturę czasową, której chcesz użyć.
-Wartość argumentu musi zawierać trzy sekcje:
+Argument `-creationTimePattern` wyodrębnia CreationTime właściwość ze ścieżki pliku lub obiektu blob. Deseń nie musi odzwierciedlać całej ścieżki elementu, tylko sekcję zawierającą sygnaturę czasową, której chcesz użyć.
+
+Wartości argumentów muszą zawierać:
 * Stały test bezpośrednio poprzedzający sygnaturę czasowa, ujęty w pojedyncze cudzysłowy
 * Format sygnatury czasowej w standardowym [notacji .NET DateTime](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)
-* Tekst stały bezpośrednio po sygnatury czasowej Na przykład, jeśli nazwy obiektów blob kończą się na "historicalvalues19840101.parquet" (sygnatura czasowa to cztery `-creationTimePattern` cyfry dla roku, dwie cyfry dla miesiąca i dwie cyfry dla dnia miesiąca), odpowiednią wartością argumentu jest "historicalvalues'yyyyMMdd'.parquet".
+* Stały tekst bezpośrednio po sygnatury czasowej. Na przykład jeśli nazwy obiektów `historicalvalues19840101.parquet` blob kończą się (sygnatura czasowa to cztery cyfry dla roku, dwie cyfry `-creationTimePattern` dla miesiąca i dwie cyfry dla dnia miesiąca), odpowiednią wartością argumentu jest:
+
+```
+ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
+ -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+```
 
 ### <a name="command-line-arguments-for-advanced-scenarios"></a>Argumenty wiersza polecenia dla zaawansowanych scenariuszy
 
@@ -96,7 +109,7 @@ Wartość argumentu musi zawierać trzy sekcje:
 |-devTracing           |-ślad       |ciąg  |Optional (Opcjonalność)  |Jeśli jest ustawiona, dzienniki diagnostyczne są zapisywane `RollingLogs` w katalogu lokalnym (domyślnie w bieżącym katalogu lub mogą być modyfikowane przez ustawienie wartości przełącznika) |
 
 ## <a name="blob-metadata-properties"></a>Właściwości metadanych obiektu Blob
-W przypadku użycia z `LightIngest` obiektami blob platformy Azure użyje niektórych właściwości metadanych obiektów blob, aby rozszerzyć proces pozyskiwania.
+W przypadku użycia z obiektami blob platformy Azure LightIngest użyje niektórych właściwości metadanych obiektu blob, aby rozszerzyć proces pozyskiwania.
 
 |Właściwość metadanych                            | Sposób użycia                                                                           |
 |---------------------------------------------|---------------------------------------------------------------------------------|

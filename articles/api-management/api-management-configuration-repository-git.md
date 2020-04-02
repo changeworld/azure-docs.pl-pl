@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 9bbd62bc05e03641c2abe9308d9238bef23877c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9184808b71cce03882022fd37967fe421e64062
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71104963"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548982"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Jak konfigurować i zapisywać konfigurację usługi API Management za pomocą narzędzia Git
 
@@ -223,7 +223,7 @@ Ostateczne ustawienie `$ref-policy`, mapuje plik instrukcji zasad globalnych dla
 Folder `apis` zawiera folder dla każdego interfejsu API w wystąpieniu usługi, który zawiera następujące elementy.
 
 * `apis\<api name>\configuration.json`- jest to konfiguracja interfejsu API i zawiera informacje o adresie URL usługi wewnętrznej bazy danych i operacji. Jest to te same informacje, które zostaną zwrócone, `export=true` jeśli `application/json` były do wywołania Pobierz określonego [interfejsu API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) w formacie.
-* `apis\<api name>\api.description.html`- jest to opis API i odpowiada `description` właściwości [jednostki API](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property).
+* `apis\<api name>\api.description.html`- jest to opis API i odpowiada `description` właściwości [jednostki API](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty).
 * `apis\<api name>\operations\`- ten `<operation name>.description.html` folder zawiera pliki, które mapują operacje w interfejsie API. Każdy plik zawiera opis pojedynczej operacji w interfejsie `description` API, który mapuje do właściwości [jednostki operacji](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) w interfejsie API REST.
 
 ### <a name="groups-folder"></a>folder grupy

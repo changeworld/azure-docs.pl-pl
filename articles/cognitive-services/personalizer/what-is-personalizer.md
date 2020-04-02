@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 850ab0ee89ee167886d8747a0c721bb643529e14
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ac6d72cbb69796851e58098138d51bb0988be4ec
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80052071"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520974"
 ---
 # <a name="what-is-personalizer"></a>Co to jest usługa Personalizacja?
 
@@ -59,7 +59,7 @@ Personalizer wykorzystał uczenie wzmacniające, aby wybrać jedną najlepszą a
 
 Personalizer's **Rank** [API](https://go.microsoft.com/fwlink/?linkid=2092082) jest wywoływana za _każdym razem, gdy_ prezentujesz zawartość w czasie rzeczywistym. Jest to znane jako **zdarzenie,** zauważyć o _identyfikatorze zdarzenia_.
 
-**Personalizer's Reward** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) można wywołać w czasie rzeczywistym lub opóźnione, aby lepiej dopasować swoją infrastrukturę. Określasz wynik nagrody na podstawie potrzeb biznesowych. Może to być pojedyncza wartość, taka jak 1 na dobre i 0 na złe lub liczba wyprodukowana przez algorytm utworzony z uwzględnieniem celów biznesowych i metryk.
+**Personalizer's Reward** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) można wywołać w czasie rzeczywistym lub opóźnione, aby lepiej dopasować swoją infrastrukturę. Określasz wynik nagrody na podstawie potrzeb biznesowych. Wynik nagrody wynosi od 0 do 1. Może to być pojedyncza wartość, taka jak 1 na dobre i 0 na złe lub liczba wyprodukowana przez algorytm utworzony z uwzględnieniem celów biznesowych i metryk.
 
 ## <a name="personalizer-content-requirements"></a>Wymagania dotyczące zawartości personalizatora
 
@@ -101,6 +101,6 @@ Ponieważ Personalizer używa informacji zbiorczych w czasie zbliżonym do rzecz
 * [Co to jest uczenie się wzmacniania?](concepts-reinforcement-learning.md)
 * [Dowiedz się więcej o funkcjach i akcjach żądania rangi](concepts-features.md)
 * [Dowiedz się więcej o określaniu wyniku dla prośby o nagrodę](concept-rewards.md)
-* [Szybki start](sdk-learning-loop.md)
+* [Przewodniki Szybki Start](sdk-learning-loop.md)
 * [Samouczek](tutorial-use-azure-notebook-generate-loop-data.md)
 * [Korzystanie z interaktywnego dema](https://personalizationdemo.azurewebsites.net/)

@@ -1,25 +1,18 @@
 ---
-title: Użyj szablonu do wdrażania maszyn wirtualnych platformy Azure spot (wersja zapoznawcza)
+title: Wdrażanie maszyn wirtualnych platformy Azure w punktach za pomocą szablonu
 description: Dowiedz się, jak używać szablonu do wdrażania maszyn wirtualnych w miejscu, aby zaoszczędzić koszty.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 0e635fe7ce9b442a9cc8f0fdf614feef5a3a756a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1352761e308aa2e26864654dae65c290df47102b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79082799"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548257"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Wdrażanie maszyn wirtualnych punktowych przy użyciu szablonu Menedżera zasobów
 
@@ -29,11 +22,6 @@ Ceny maszyn wirtualnych punktowych są zmienne na podstawie regionu i jednostki 
 
 Masz możliwość, aby ustawić maksymalną cenę jesteś gotów zapłacić, za godzinę, dla maszyny Wirtualnej. Maksymalna cena maszyny Wirtualnej spot można ustawić w dolarach amerykańskich (USD), przy użyciu miejsc po przecinku do 5. Na przykład wartość `0.98765`będzie maksymalna cena $0.98765 USD za godzinę. Jeśli ustawisz maksymalną `-1`cenę, maszyna wirtualna nie zostanie eksmitowana na podstawie ceny. Cena za maszynę wirtualną będzie bieżącą ceną spotu lub ceną standardowej maszyny Wirtualnej, która kiedykolwiek jest mniejsza, o ile dostępna jest pojemność i przydział. Aby uzyskać więcej informacji na temat ustawiania ceny maksymalnej, zobacz [Maszyny wirtualne spot - Cennik](spot-vms.md#pricing).
 
-> [!IMPORTANT]
-> Wystąpienia spot są obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest zalecana dla obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 
 ## <a name="use-a-template"></a>Korzystanie z szablonu
 

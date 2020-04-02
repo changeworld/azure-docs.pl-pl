@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 5da0297dd97c8263bdc47f1d5a3d7d2d1f835e4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82608c98fc8ea15167b690547906c2238b1b3c04
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298830"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544337"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array best practices (Najlepsze rozwiązania dotyczące macierzy wirtualnej StorSimple)
 
@@ -121,7 +121,7 @@ W związku z tym zalecamy:
 * Upewnij się, że tablica wirtualna znajduje się we własnej jednostce organizacyjnej (OU) dla usługi Active Directory.
 * Upewnij się, że do tablicy wirtualnej nie są stosowane żadne obiekty zasad grupy. Można zablokować dziedziczenie, aby upewnić się, że tablica wirtualna (węzeł podrzędny) nie dziedziczy automatycznie żadnych zasad grupy od obiektu nadrzędnego. Aby uzyskać więcej informacji, przejdź do [blokowania dziedziczenia](https://technet.microsoft.com/library/cc731076.aspx).
 
-### <a name="networking"></a>Obsługa sieci
+### <a name="networking"></a>Networking
 Konfiguracja sieci dla tablicy wirtualnej odbywa się za pośrednictwem lokalnego interfejsu użytkownika sieci Web. Interfejs sieci wirtualnej jest włączony za pośrednictwem funkcji hypervisor, w którym jest aprowizowana tablica wirtualna. Strona [Ustawienia sieciowe](storsimple-virtual-array-deploy3-fs-setup.md) służy do konfigurowania adresu IP interfejsu sieci wirtualnej, podsieci i bramy.  Można również skonfigurować podstawowy i pomocniczy serwer DNS, ustawienia czasu i opcjonalne ustawienia serwera proxy dla urządzenia. Większość konfiguracji sieci jest konfiguracją jednorazową. Przejrzyj [storsimple wymagania sieciowe](storsimple-ova-system-requirements.md#networking-requirements) przed wdrożeniem tablicy wirtualnej.
 
 Podczas wdrażania tablicy wirtualnej zaleca się przestrzeganie następujących najlepszych rozwiązań:
@@ -161,8 +161,8 @@ Należy pamiętać o następujących sprawdzonych praktyk podczas inicjowania ob
 
 * Rozmiary plików względem aprowizowanego rozmiaru udziału warstwowego mogą mieć wpływ na wydajność warstwowego. Praca z dużymi plikami może spowodować spowolnienie warstwy. Podczas pracy z dużymi plikami zaleca się, aby największy plik był mniejszy niż 3% rozmiaru udziału.
 * W macierzy wirtualnej można utworzyć maksymalnie 16 woluminów/udziałów. Limity rozmiaru woluminów/udziałów przypiętych lokalnie i warstwowych należy zawsze zapoznać się z [limitami tablic wirtualnych StorSimple](storsimple-ova-limits.md).
-* Podczas tworzenia woluminu należy uwzględnić oczekiwane zużycie danych, a także przyszły wzrost. Woluminu nie można później rozwinąć.
-* Po utworzeniu woluminu nie można zmniejszyć rozmiaru woluminu na StorSimple.
+* Podczas tworzenia woluminu należy uwzględnić oczekiwane zużycie danych, a także przyszły wzrost. Woluminu lub udziału nie można później rozwinąć.
+* Po utworzeniu woluminu/udziału nie można zmniejszyć rozmiaru woluminu/udziału w StorSimple.
 * Podczas zapisywania do woluminu warstwowego na StorSimple, gdy dane woluminu osiągnie pewien próg (względem miejsca lokalnego zarezerwowanego dla woluminu), we/wy jest ograniczona. Dalsze zapisywanie do tego woluminu spowalnia we/wy znacznie. Chociaż można zapisywać do woluminu warstwowego poza jego pojemności aprowizacji (nie aktywnie zatrzymać użytkownika od zapisu poza pojemność aprowizowana), zobaczysz powiadomienie alertu, że masz oversubscribed. Po wyświetleniu alertu konieczne jest podjęcie środków zaradczych, takich jak usunięcie danych woluminu (rozszerzenie woluminu nie jest obecnie obsługiwane).
 * W przypadku odzyskiwania po awarii, ponieważ liczba dopuszczalnych udziałów/wolumenów wynosi 16, a maksymalna liczba udziałów/wolumenów, które mogą być przetwarzane równolegle, wynosi również 16, liczba udziałów/wolumenów nie ma wpływu na RPO i RTO.
 

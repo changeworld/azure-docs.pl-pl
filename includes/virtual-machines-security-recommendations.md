@@ -2,18 +2,18 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: virtual-machines
-author: barclayn
+author: msmbaldwin
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/13/2019
-ms.author: barclayn
+ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: d0ede337f2ae17f28cd02df7ed35919bd9955e7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df577ab2b5e9658fd55324c8fd6fd008621b4d46
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74048564"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545903"
 ---
 Ten artykuł zawiera zalecenia dotyczące zabezpieczeń dla maszyn wirtualnych platformy Azure. Postępuj zgodnie z tymi zaleceniami, aby pomóc w wypełnieniu zobowiązań w zakresie bezpieczeństwa opisanych w naszym modelu dla wspólnej odpowiedzialności. Zalecenia pomogą również poprawić ogólne bezpieczeństwo rozwiązań aplikacji sieci web. Aby uzyskać więcej informacji na temat tego, co firma Microsoft robi, aby wypełniać obowiązki dostawcy usług, zobacz [Współużytkowane obowiązki związane z przetwarzaniem w chmurze](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
 
@@ -53,7 +53,7 @@ Aby uzyskać ogólne informacje o usłudze Azure Security Center, zobacz [Co to 
 |-|----|--|
 | Monitoruj maszyny wirtualne. | Usługi [Azure Monitor dla maszyn wirtualnych](../articles/azure-monitor/insights/vminsights-overview.md) można używać do monitorowania stanu maszyn wirtualnych platformy Azure i zestawów skalowania maszyn wirtualnych. Problemy z wydajnością maszyny Wirtualnej może prowadzić do zakłóceń w usłudze, co narusza zasadę zabezpieczeń dostępności. | - |
 
-## <a name="networking"></a>Obsługa sieci
+## <a name="networking"></a>Networking
 
 | Zalecenie | Komentarze | Security Center |
 |-|----|--|

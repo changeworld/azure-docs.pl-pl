@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 04/01/2020
 ms.author: b-juche
-ms.openlocfilehash: 79c23c49cbf3c869b41e5a2dbfc6ec0aaa93e4ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59453dbb9617f5a2ddbdca08709747b11a688560
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258179"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547098"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Często zadawane pytania dotyczące plików NetApp platformy Azure
 
@@ -144,6 +144,11 @@ Usługa Azure NetApp Files obsługuje wersje usług domenowych Active Directory 
 ### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>Dlaczego dostępne miejsce na moim kliencie SMB nie pokazuje aprowizowanego rozmiaru?
 
 Rozmiar woluminu zgłoszony przez klienta SMB jest maksymalny rozmiar woluminu usługi Azure NetApp Files może wzrosnąć do. Rozmiar woluminu usługi Azure NetApp Files, jak pokazano na kliencie SMB nie odzwierciedla przydziału lub rozmiaru woluminu. Rozmiar woluminu lub przydział plików NetApp usługi Azure można uzyskać za pośrednictwem witryny Azure portal lub interfejsu API.
+
+### <a name="does-azure-netapp-files-support-kerberos-encryption"></a>Czy pliki NetApp platformy Azure obsługują szyfrowanie Kerberos?
+
+Tak, domyślnie usługa Azure NetApp Files obsługuje szyfrowanie AES-128 i AES-256 dla ruchu między usługą a docelowymi kontrolerami domeny usługi Active Directory. Zobacz [Tworzenie woluminu SMB dla plików NetApp platformy Azure](azure-netapp-files-create-volumes-smb.md) dla wymagań. 
+
 <!--
 ### Does Azure NetApp Files support LDAP signing? 
 

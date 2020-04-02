@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: 68a9a7d5f90831bb2e0c9284cb71ae4b92edffad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee2743af2f8499aec04d8b6b733e1ba4c2a82083
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131417"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546073"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności usługi Azure Cosmos DB i platformy .NET
 
@@ -54,7 +54,7 @@ Jeśli testujesz na wysokim poziomie przepływności (więcej niż 50 000 ru/s),
 > [!NOTE] 
 > Wysokie użycie procesora CPU może spowodować zwiększone opóźnienie i wyjątki limitu czasu żądania.
 
-## <a name="networking"></a>Obsługa sieci
+## <a name="networking"></a>Networking
 <a id="direct-connection"></a>
 
 **Zasady połączenia: użyj trybu bezpośredniego połączenia**
@@ -80,7 +80,7 @@ Korzystając z protokołu TCP w trybie bezpośrednim, oprócz portów bramy, nal
 |Brama  |   HTTPS    |  Wszystkie SDK    |   SQL (443), MongoDB (10250, 10255, 10256), Tabela (443), Kasandra (10350), Wykres (443)    |
 |Direct    |     TCP    |  Zestaw SDK .NET    | Porty w zakresie od 10000 do 20000 |
 
-Usługa Azure Cosmos DB oferuje prosty, otwarty model programowania RESTful za pośrednictwem protokołu HTTPS. Ponadto oferuje wydajny protokół TCP, który jest również restful w swoim modelu komunikacji i jest dostępny za pośrednictwem pliku SDK klienta .NET. Protokół TCP używa protokołu SSL do uwierzytelniania początkowego i szyfrowania ruchu. Aby uzyskać najlepszą wydajność, użyj protokołu TCP, jeśli to możliwe.
+Usługa Azure Cosmos DB oferuje prosty, otwarty model programowania RESTful za pośrednictwem protokołu HTTPS. Ponadto oferuje wydajny protokół TCP, który jest również restful w swoim modelu komunikacji i jest dostępny za pośrednictwem pliku SDK klienta .NET. Protokół TCP używa protokołu TLS do uwierzytelniania początkowego i szyfrowania ruchu. Aby uzyskać najlepszą wydajność, użyj protokołu TCP, jeśli to możliwe.
 
 W przypadku SDK V3 tryb połączenia jest `CosmosClient` konfiguracyjny podczas tworzenia wystąpienia w pliku `CosmosClientOptions`. Pamiętaj, że tryb bezpośredni jest domyślny.
 

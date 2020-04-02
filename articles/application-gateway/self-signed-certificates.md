@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0447e87fd8685188af8008995ba938092f2b87fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0547f254a64cecc7072ee9ff79eb50204b34bc17
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80293610"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548860"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generowanie certyfikatu z podpisem z podpisem z podpisem bramy aplikacji platformy Azure przy zastosowaniu niestandardowego głównego urzędu certyfikacji
 
@@ -179,7 +179,7 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 
 Aby przekazać certyfikat w bramie aplikacji, należy wyeksportować certyfikat crt do zakodowanego formatu .cer Base-64. Ponieważ plik .crt zawiera już klucz publiczny w formacie zakodowanym base-64, po prostu zmień nazwę rozszerzenia pliku z .crt na .cer. 
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Aby przekazać zaufany certyfikat główny z portalu, wybierz **ustawienia HTTP** i wybierz protokół **HTTPS.**
 
@@ -262,12 +262,13 @@ Add-AzApplicationGatewayRequestRoutingRule `
 
 Set-AzApplicationGateway -ApplicationGateway $gw 
 ```
+
 ### <a name="verify-the-application-gateway-backend-health"></a>Weryfikowanie kondycji wewnętrznej bazy danych bramy aplikacji
 
 1. Kliknij widok **kondycji wewnętrznej bazy** danych bramy aplikacji, aby sprawdzić, czy sonda jest w dobrej kondycji.
-1.    Powinieneś zobaczyć, że stan jest **w dobrej kondycji** dla sondy HTTPS.
+1. Powinieneś zobaczyć, że stan jest **w dobrej kondycji** dla sondy HTTPS.
 
-    ![Sonda HTTPS](media/self-signed-certificates/https-probe.png)
+![Sonda HTTPS](media/self-signed-certificates/https-probe.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

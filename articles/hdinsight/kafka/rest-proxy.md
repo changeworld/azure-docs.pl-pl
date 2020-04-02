@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d99a3b803b80dc41990a63e647d3ba928deb31af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 8997b385960c58b17747dfcfced74010af80550b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198909"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548204"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interakcja z klastrami platformy Apache w usłudze Azure HDInsight przy użyciu serwera proxy REST
 
@@ -20,7 +20,7 @@ Serwer proxy Kafka REST umożliwia interakcję z klastrem platformy Kafka za po�
 
 ## <a name="rest-api-reference"></a>Informacje o interfejsie API REST
 
-Aby uzyskać pełną specyfikację operacji obsługiwanych przez interfejs API OdPR platformy Kafka, zobacz [informacje dotyczące interfejsu API serwera REST HDInsight .](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)
+Aby uzyskać pełną specyfikację operacji obsługiwanych przez interfejs API rest platformy Kafka, zobacz [odwołanie do interfejsu API serwera PROXY REST w programie HDInsight Kafka](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy).
 
 ## <a name="background"></a>Tło
 
@@ -34,7 +34,7 @@ Utworzenie klastra platformy Windows usługi HDInsight za pomocą serwera proxy 
 
 ### <a name="security"></a>Zabezpieczenia
 
-Dostęp do serwera proxy Usługi Kafka REST jest zarządzany za pomocą grup zabezpieczeń usługi Azure Active Directory. Podczas tworzenia klastra platformy Kafka z włączonym serwerem proxy REST należy udostępnić grupę zabezpieczeń usługi Azure Active Directory, która powinna mieć dostęp do punktu końcowego REST. Klienci platformy Kafka (aplikacje), które potrzebują dostępu do serwera proxy REST, powinni być zarejestrowani w tej grupie przez właściciela grupy. Właściciel grupy może to zrobić za pośrednictwem portalu lub za pośrednictwem programu Powershell.
+Dostęp do serwera proxy Usługi Kafka REST jest zarządzany za pomocą grup zabezpieczeń usługi Azure Active Directory. Podczas tworzenia klastra platformy Kafka z włączonym serwerem proxy REST, należy podać grupę zabezpieczeń usługi Azure Active Directory, która powinna mieć dostęp do punktu końcowego REST. Klienci platformy Kafka (aplikacje), które potrzebują dostępu do serwera proxy REST, powinni być zarejestrowani w tej grupie przez właściciela grupy. Właściciel grupy można to zrobić za pośrednictwem portalu lub za pośrednictwem programu PowerShell.
 
 Przed złożeniem żądań do punktu końcowego serwera proxy REST aplikacja kliencka powinna uzyskać token OAuth, aby zweryfikować członkostwo w odpowiedniej grupie zabezpieczeń. Znajdź [przykład aplikacji klienta](#client-application-sample) poniżej, który pokazuje, jak uzyskać token OAuth. Gdy aplikacja kliencka ma token OAuth, muszą przekazać ten token w żądaniu HTTP do serwera proxy REST.
 
@@ -44,7 +44,12 @@ Przed złożeniem żądań do punktu końcowego serwera proxy REST aplikacja kli
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 1. Zarejestrować aplikację w usłudze Azure AD. Aplikacje klienckie, które piszesz do interakcji z serwerem proxy Rest platformy Kafka użyje identyfikatora tej aplikacji i klucz tajny do uwierzytelniania na platformie Azure.
-1. Utwórz grupę zabezpieczeń usługi Azure AD i dodaj aplikację zarejestrowaną w usłudze Azure AD do grupy zabezpieczeń. Ta grupa zabezpieczeń będzie używana do kontrolowania, które aplikacje mogą wchodzić w interakcje z serwerem proxy REST. Aby uzyskać więcej informacji na temat tworzenia grup usługi Azure AD, zobacz [Tworzenie grupy podstawowej i dodawanie członków przy użyciu usługi Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+
+1. Utwórz grupę zabezpieczeń usługi Azure AD i dodaj aplikację zarejestrowaną w usłudze Azure AD do grupy zabezpieczeń jako "członka" grupy. Ta grupa zabezpieczeń będzie używana do kontrolowania, które aplikacje mogą wchodzić w interakcje z serwerem proxy REST. Aby uzyskać więcej informacji na temat tworzenia grup usługi Azure AD, zobacz [Tworzenie grupy podstawowej i dodawanie członków przy użyciu usługi Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+
+    Sprawdzanie poprawności grupy jest typu !["Security" Grupa zabezpieczeń](./media/rest-proxy/rest-proxy-group.png)
+
+    Sprawdzanie poprawności tej aplikacji ![jest członkiem grupy Sprawdzania poprawności członkostwa](./media/rest-proxy/rest-proxy-membergroup.png)
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>Tworzenie klastra platformy Kafka z włączonym serwerem proxy REST
 
@@ -69,18 +74,18 @@ Poniższy kod języka Python służy do interakcji z serwerem proxy REST w klast
 1. Zapisz przykładowy kod na komputerze z zainstalowanym pythonem.
 1. Zainstaluj wymagane zależności pythona, `pip3 install adal` `pip install msrestazure`wykonując i .
 1. Zmodyfikuj sekcję kodu *Skonfiguruj te właściwości* i zaktualizuj następujące właściwości dla swojego środowiska:
-    1.  *Identyfikator dzierżawy* — dzierżawa platformy Azure, w której znajduje się twoja subskrypcja.
-    1.  *Identyfikator klienta* — identyfikator aplikacji zarejestrowanej w grupie zabezpieczeń.
-    1.  *Klucz tajny klienta* — klucz tajny dla aplikacji zarejestrowanej w grupie zabezpieczeń
-    1.  *Kafkarest_endpoint* — pobierz tę wartość z zakładki "właściwości" w przeglądzie klastra, zgodnie z opisem w [sekcji wdrażania](#create-a-kafka-cluster-with-rest-proxy-enabled). Powinien być w następującym formacie –`https://<clustername>-kafkarest.azurehdinsight.net`
-3. Z wiersza polecenia wykonaj plik pythona, wykonując`python <filename.py>`
+    1.    *Identyfikator dzierżawy* — dzierżawa platformy Azure, w której znajduje się twoja subskrypcja.
+    1.    *Identyfikator klienta* — identyfikator aplikacji zarejestrowanej w grupie zabezpieczeń.
+    1.    *Klucz tajny klienta* — klucz tajny dla aplikacji zarejestrowanej w grupie zabezpieczeń
+    1.    *Kafkarest_endpoint* — pobierz tę wartość z zakładki "właściwości" w przeglądzie klastra, zgodnie z opisem w [sekcji wdrażania](#create-a-kafka-cluster-with-rest-proxy-enabled). Powinien być w następującym formacie –`https://<clustername>-kafkarest.azurehdinsight.net`
+1. Z wiersza polecenia wykonaj plik pythona, wykonując`python <filename.py>`
 
 Ten kod wykonuje następujące czynności:
 
 1. Pobiera token OAuth z usługi Azure AD
 1. Pokazuje, jak złożyć żądanie do serwera proxy Kafka REST
 
-Aby uzyskać więcej informacji na temat uzyskiwania tokenów OAuth w pythonie, zobacz [Python AuthenticationContext klasy](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python). Może pojawić się opóźnienie, podczas gdy tematy, które nie są tworzone lub usuwane za pośrednictwem serwera proxy ODW kafka są odzwierciedlane tam. To opóźnienie jest spowodowane odświeżenie pamięci podręcznej.
+Aby uzyskać więcej informacji na temat uzyskiwania tokenów OAuth w pythonie, zobacz [Python AuthenticationContext klasy](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python). Może pojawić się opóźnienie, podczas gdy tematy, które nie są tworzone lub usuwane za pośrednictwem serwera proxy Odwłowienia platformy Kafka są tam odzwierciedlane. To opóźnienie jest spowodowane odświeżenie pamięci podręcznej.
 
 ```python
 #Required python packages
@@ -124,6 +129,12 @@ request_url = kafkarest_endpoint + getstatus
 # sending get request and saving the response as response object
 response = requests.get(request_url, headers={'Authorization': accessToken})
 print(response.content)
+```
+
+Poniżej znajduje się inny przykład, jak pobrać token z platformy Azure dla serwera proxy REST przy użyciu polecenia curl. Należy zauważyć, `resource=https://hib.azurehdinsight.net` że musimy określony podczas uzyskiwania tokenu.
+
+```cmd
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&resource=https://hib.azurehdinsight.net' 'https://login.microsoftonline.com/<tenantid>/oauth2/token'
 ```
 
 ## <a name="next-steps"></a>Następne kroki

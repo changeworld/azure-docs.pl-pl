@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: takamath
-ms.openlocfilehash: e2dd642139ae082cc0d0838e61399c549d2d812a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 074d512767769fe434cd4a6d4f4e8e6a88f7ed2a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74970791"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549118"
 ---
 # <a name="enable-browser-connection-on-lab-virtual-machines"></a>Włączanie połączenia przeglądarki na maszynach wirtualnych w laboratorium 
 DevTest Labs integruje się z [usługą Azure Bastion](https://docs.microsoft.com/azure/bastion/), która umożliwia łączenie się z maszynami wirtualnymi za pośrednictwem przeglądarki. Najpierw należy włączyć połączenie przeglądarki na maszynach wirtualnych laboratorium.
 
-Jako właściciel laboratorium możesz włączyć dostęp do wszystkich maszyn wirtualnych w laboratorium za pośrednictwem przeglądarki. Nie potrzebujesz dodatkowego klienta, agenta ani oprogramowania. Usługa Azure Bastion zapewnia bezpieczną i bezproblemową łączność RDP/SSH z maszynami wirtualnymi bezpośrednio w witrynie Azure portal za pomocą protokołu SSL. Po nawiązaniu połączenia za pośrednictwem usługi Azure Bastion maszyny wirtualne nie potrzebują publicznego adresu IP. Aby uzyskać więcej informacji, zobacz [Co to jest Bastion platformy Azure?](../bastion/bastion-overview.md)
+Jako właściciel laboratorium możesz włączyć dostęp do wszystkich maszyn wirtualnych w laboratorium za pośrednictwem przeglądarki. Nie potrzebujesz dodatkowego klienta, agenta ani oprogramowania. Usługa Azure Bastion zapewnia bezpieczną i bezproblemową łączność RDP/SSH z maszynami wirtualnymi bezpośrednio w witrynie Azure portal za pomocą protokołu TLS. Po nawiązaniu połączenia za pośrednictwem usługi Azure Bastion maszyny wirtualne nie potrzebują publicznego adresu IP. Aby uzyskać więcej informacji, zobacz [Co to jest Bastion platformy Azure?](../bastion/bastion-overview.md)
 
 
 W tym artykule pokazano, jak włączyć połączenie przeglądarki na maszynach wirtualnych laboratorium.

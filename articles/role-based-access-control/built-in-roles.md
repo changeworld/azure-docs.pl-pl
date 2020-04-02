@@ -15,12 +15,12 @@ ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: ba07a0b0d3be0366179bba14c786fafad8753dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fe3b94463da07304f2c853910ac5d2a6771d070
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280698"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545640"
 ---
 # <a name="azure-built-in-roles"></a>Wbudowane role platformy Azure
 
@@ -46,7 +46,7 @@ Poniższa tabela zawiera krótki opis i unikatowy identyfikator każdej wbudowan
 > | [Logowanie administratora maszyny wirtualnej](#virtual-machine-administrator-login) | Wyświetlanie maszyn wirtualnych w portalu i logowanie się jako administrator | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | [Współautor maszyny wirtualnej](#virtual-machine-contributor) | Umożliwia zarządzanie maszynami wirtualnymi, ale nie ma do nich dostępu, a nie z kontem sieci wirtualnej lub magazynu, z którymi są połączone. | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | [Login użytkownika maszyny wirtualnej](#virtual-machine-user-login) | Wyświetl maszyny wirtualne w portalu i zaloguj się jako zwykły użytkownik. | fb879df8-f326-4884-b1cf-06f3ad86be52 |
-> | **Obsługa sieci** |  |  |
+> | **Networking** |  |  |
 > | [Współautor punktu końcowego sieci CDN](#cdn-endpoint-contributor) | Może zarządzać punktami końcowymi sieci CDN, ale nie może udzielić dostępu innym użytkownikom. | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
 > | [Czytnik punktów końcowych CDN](#cdn-endpoint-reader) | Można wyświetlić punkty końcowe sieci CDN, ale nie można wprowadzać zmian. | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
 > | [Współautor profilu sieci CDN](#cdn-profile-contributor) | Może zarządzać profilami sieci CDN i ich punktami końcowymi, ale nie może udzielić dostępu innym użytkownikom. | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
@@ -666,7 +666,7 @@ Wyświetl maszyny wirtualne w portalu i zaloguj się jako zwykły użytkownik.
 }
 ```
 
-## <a name="networking"></a>Obsługa sieci
+## <a name="networking"></a>Networking
 
 
 ### <a name="cdn-endpoint-contributor"></a>Współautor punktu końcowego sieci CDN
@@ -4644,7 +4644,7 @@ Może zarządzać usługą, ale nie interfejsami API
 > | Microsoft.ApiManagement/service/managedeployments/action Microsoft.ApiManagement/service/managedeployments/action Microsoft.ApiManagement/service/managedeployments/action Microsoft. | Zmienianie jednostki SKU/jednostek, dodawanie/usuwanie regionalnych wdrożeń usługi api Management Service |
 > | Microsoft.ApiManagement/service/read | Odczytywanie metadanych wystąpienia usługi zarządzania interfejsami API |
 > | Microsoft.ApiManagement/service/restore/action | Przywracanie usługi zarządzania interfejsami API z określonego kontenera na koncie magazynu dostarczonym przez użytkownika |
-> | Microsoft.ApiManagement/service/updatecertificate/action | Przekazywanie certyfikatu SSL dla usługi zarządzania interfejsami API |
+> | Microsoft.ApiManagement/service/updatecertificate/action | Przekazywanie certyfikatu TLS/SSL dla usługi zarządzania interfejsem API |
 > | Microsoft.ApiManagement/service/updatehostname/action | Konfigurowanie, aktualizowanie lub usuwanie niestandardowych nazw domen usługi zarządzania interfejsami API |
 > | Microsoft.ApiManagement/service/write | Tworzenie lub aktualizowanie wystąpienia usługi zarządzania interfejsami API |
 > | Microsoft.Authorization/*/read | Odczytywanie ról i przypisań ról |

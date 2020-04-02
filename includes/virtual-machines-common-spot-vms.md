@@ -1,28 +1,23 @@
 ---
 title: Plik dyrektywy include
 description: Plik dyrektywy include
-services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7cfa6e9810057493cc3007eec7fd1668a70c727e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d56964b7415e4ca5903950cd46c02b3c27f62d5e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77179030"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547415"
 ---
 Korzystanie z maszyn wirtualnych spot pozwala na wykorzystanie naszej niewykorzystanej pojemności przy znacznych oszczędnościach kosztów. W dowolnym momencie, gdy platforma Azure potrzebuje pojemności z powrotem, infrastruktura platformy Azure będzie eksmitować maszyny wirtualne spot. W związku z tym maszyny wirtualne spot są idealne dla obciążeń, które mogą obsługiwać przerwy, takie jak zadania przetwarzania wsadowego, środowiska deweloperów/testów, duże obciążenia obliczeniowe i inne.
 
 Ilość dostępnej pojemności może się różnić w zależności od rozmiaru, regionu, połówka dnia i innych. Podczas wdrażania maszyn wirtualnych spot platforma Azure przydzieli maszyny wirtualne, jeśli dostępna jest pojemność, ale dla tych maszyn wirtualnych nie ma żadnej umowy SLA. Spot VM nie oferuje gwarancji wysokiej dostępności. W dowolnym momencie, gdy platforma Azure potrzebuje pojemności z powrotem, infrastruktura platformy Azure będzie eksmitować maszyny wirtualne spot z powiadomieniem 30 sekund. 
 
-> [!IMPORTANT]
-> Wystąpienia spot są obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest zalecana dla obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 
 ## <a name="eviction-policy"></a>Zasady eksmisji
 

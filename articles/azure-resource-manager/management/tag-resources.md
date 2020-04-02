@@ -2,13 +2,13 @@
 title: Oznaczanie zasobów, grup zasobów i subskrypcji dla organizacji logicznej
 description: Pokazuje, jak stosować tagi do organizowania zasobów platformy Azure do rozliczeń i zarządzania.
 ms.topic: conceptual
-ms.date: 03/20/2020
-ms.openlocfilehash: ffc97df0923e26c3abf0eed8e7810f3b1dc61ed2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 76f9f61b3fe7002508bbd884f427efcfee698579
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132201"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548491"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Organizowanie zasobów i hierarchii zarządzania za pomocą tagów
 
@@ -20,7 +20,7 @@ Aby uzyskać zalecenia dotyczące wdrażania strategii znakowania, zobacz Przewo
 
 ## <a name="required-access"></a>Wymagany dostęp
 
-Aby zastosować znaczniki do zasobu, musisz mieć dostęp do zapisu do typu zasobu **Microsoft.Resources/tags.** Rola **Współautor tagów** umożliwia stosowanie tagów do encji bez dostępu do samej jednostki.
+Aby zastosować znaczniki do zasobu, musisz mieć dostęp do zapisu do typu zasobu **Microsoft.Resources/tags.** Rola [Współautor tagów](../../role-based-access-control/built-in-roles.md#tag-contributor) umożliwia stosowanie tagów do encji bez dostępu do samej jednostki. Obecnie rola współautora tagu nie może stosować tagów do zasobów lub grup zasobów za pośrednictwem portalu. Można zastosować tagi do subskrypcji za pośrednictwem portalu. Obsługuje wszystkie operacje tagów za pośrednictwem programu PowerShell i interfejsu API REST.  
 
 Rola [współautora](../../role-based-access-control/built-in-roles.md#contributor) udziela również wymaganego dostępu do stosowania tagów do dowolnej encji. Aby zastosować znaczniki tylko do jednego typu zasobu, użyj roli współautora dla tego zasobu. Na przykład, aby zastosować znaczniki do maszyn wirtualnych, użyj [współautora maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
@@ -28,7 +28,7 @@ Rola [współautora](../../role-based-access-control/built-in-roles.md#contribut
 
 ### <a name="apply-tags"></a>Stosowanie znaczników
 
-Usługa Azure PowerShell oferuje dwa polecenia do stosowania tagów - [New-AzTag](/powershell/module/az.resources/new-aztag) i [Update-AzTag](/powershell/module/az.resources/update-aztag). Aby korzystać z tych poleceń, musisz mieć program Azure PowerShell 3.6.1 lub nowszą.
+Usługa Azure PowerShell oferuje dwa polecenia do stosowania tagów - [New-AzTag](/powershell/module/az.resources/new-aztag) i [Update-AzTag](/powershell/module/az.resources/update-aztag). Musisz mieć moduł Az.Resources 1.12.0 lub nowszy. Możesz sprawdzić swoją `Get-Module Az.Resources`wersję za pomocą programu . Można zainstalować ten moduł lub [zainstalować program Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1 lub nowszą.
 
 **New-AzTag** zastępuje wszystkie znaczniki w zasobie, grupie zasobów lub subskrypcji. Podczas wywoływania polecenia należy przekazać identyfikator zasobu jednostki, którą chcesz oznaczyć.
 

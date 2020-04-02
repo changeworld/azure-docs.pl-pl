@@ -2,15 +2,16 @@
 title: Wdrażanie istniejącego pliku wykonywalnego w sieci szkieletowej usług Azure
 description: Dowiedz się, jak spakować istniejącą aplikację jako plik wykonywalny gościa, dzięki czemu można ją wdrożyć w klastrze sieci szkieletowej usług.
 ms.topic: conceptual
-ms.date: 07/02/2017
-ms.openlocfilehash: cdbc965d0e8ec4a8f42fbe438b8ac6ddfe05a1b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: c6c6bc0369593c177b74261da1fd8c15dd73fcb3
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75377110"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520484"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Pakiet i wdrażanie istniejącego pliku wykonywalnego w sieci szkieletowej usług
+
 Podczas pakowania istniejącego pliku wykonywalnego jako [plik wykonywalny gościa](service-fabric-guest-executables-introduction.md)można wybrać opcję użycia szablonu projektu programu Visual Studio lub [ręcznego utworzenia pakietu aplikacji.](#manually) Za pomocą programu Visual Studio struktura pakietu aplikacji i pliki manifestu są tworzone przez nowy szablon projektu dla Ciebie.
 
 > [!TIP]
@@ -18,6 +19,7 @@ Podczas pakowania istniejącego pliku wykonywalnego jako [plik wykonywalny gośc
 >
 
 ## <a name="use-visual-studio-to-package-and-deploy-an-existing-executable"></a>Używanie programu Visual Studio do pakowania i wdrażania istniejącego pliku wykonywalnego
+
 Program Visual Studio udostępnia szablon usługi sieci szkieletowej usług, aby ułatwić wdrażanie pliku wykonywalnego gościa w klastrze sieci szkieletowej usług.
 
 1. Wybierz **pozycję Plik** > **nowego projektu**i utwórz aplikację sieci szkieletowej usług.
@@ -37,6 +39,13 @@ Program Visual Studio udostępnia szablon usługi sieci szkieletowej usług, aby
 
 Aby zapoznać się z przykładowym instruktażem, zobacz [Tworzenie pierwszej aplikacji wykonywalnej gościa przy użyciu programu Visual Studio](quickstart-guest-app.md).
 
+### <a name="packaging-multiple-executables-with-visual-studio"></a>Pakowanie wielu plików wykonywalnych za pomocą programu Visual Studio
+
+Za pomocą programu Visual Studio można utworzyć pakiet aplikacji zawierający wiele plików wykonywalnych gościa. Po dodaniu pierwszego pliku wykonywalnego gościa kliknij prawym przyciskiem myszy projekt aplikacji i wybierz **usługę Add->New Service Fabric,** aby dodać drugi projekt wykonywalny gościa do rozwiązania.
+
+> [!NOTE]
+> Jeśli zdecydujesz się połączyć źródło w projekcie programu Visual Studio, tworzenie rozwiązania programu Visual Studio, upewnij się, że pakiet aplikacji jest aktualny ze zmianami w źródle.
+
 ## <a name="use-yeoman-to-package-and-deploy-an-existing-executable-on-linux"></a>Użyj Yeoman do pakowania i wdrażania istniejącego pliku wykonywalnego w systemie Linux
 
 Procedura tworzenia i wdrażania pliku wykonywalnego gościa w systemie Linux jest taka sama jak wdrażanie aplikacji csharp lub java.
@@ -47,9 +56,17 @@ Procedura tworzenia i wdrażania pliku wykonywalnego gościa w systemie Linux je
 
 Yeoman tworzy pakiet aplikacji z odpowiednią aplikacją i plikami manifestu wraz ze skryptami instalacji i odinstalowywania.
 
+### <a name="packaging-multiple-executables-using-yeoman-on-linux"></a>Pakowanie wielu plików wykonywalnych przy użyciu Yeoman na Linuksie
+
+Aby dodać kolejną usługę do aplikacji utworzonej już przy użyciu polecenia `yo`, wykonaj następujące czynności:
+
+1. Zmień katalog na katalog główny istniejącej aplikacji.  Na przykład wpisz polecenie `cd ~/YeomanSamples/MyApplication`, jeśli aplikacja `MyApplication` to aplikacja utworzona przez narzędzie Yeoman.
+2. Uruchom `yo azuresfguest:AddService` i podaj niezbędne szczegóły.
+
 <a id="manually"></a>
 
 ## <a name="manually-package-and-deploy-an-existing-executable"></a>Ręczne pakowanie i wdrażanie istniejącego pliku wykonywalnego
+
 Proces ręcznego pakowania pliku wykonywalnego gościa opiera się na następujących ogólnych krokach:
 
 1. Utwórz strukturę katalogów pakietów.
@@ -57,14 +74,12 @@ Proces ręcznego pakowania pliku wykonywalnego gościa opiera się na następuj�
 3. Edytuj plik manifestu usługi.
 4. Edytuj plik manifestu aplikacji.
 
-<!--
->[AZURE.NOTE] We do provide a packaging tool that allows you to create the ApplicationPackage automatically. The tool is currently in preview. You can download it from [here](https://aka.ms/servicefabricpacktool).
--->
-
 ### <a name="create-the-package-directory-structure"></a>Tworzenie struktury katalogów pakietów
+
 Można rozpocząć od utworzenia struktury katalogów, zgodnie z opisem w [pakiecie aplikacji sieci szkieletowej usług Azure.](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps)
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>Dodawanie kodu aplikacji i plików konfiguracyjnych
+
 Po utworzeniu struktury katalogów można dodać kod aplikacji i pliki konfiguracyjne pod katalogami kodu i konfiguracji. Można również utworzyć dodatkowe katalogi lub podkatalogi pod katalogami kodu lub konfiguracji.
 
 Sieć szkieletowa `xcopy` usług wykonuje zawartość katalogu głównego aplikacji, więc nie ma wstępnie zdefiniowanej struktury do użycia innej niż tworzenie dwóch najlepszych katalogów, kodu i ustawień. (Jeśli chcesz, możesz wybrać różne nazwy. Więcej szczegółów znajduje się w następnej sekcji.)
@@ -75,6 +90,7 @@ Sieć szkieletowa `xcopy` usług wykonuje zawartość katalogu głównego aplika
 >
 
 ### <a name="edit-the-service-manifest-file"></a>Edytowanie pliku manifestu usługi
+
 Następnym krokiem jest edycja pliku manifestu usługi w celu uwzględnienia następujących informacji:
 
 * Nazwa typu usługi. Jest to identyfikator, który sieci szkieletowej usług używa do identyfikowania usługi.
@@ -114,6 +130,7 @@ Oto przykład `ServiceManifest.xml` pliku:
 Poniższe sekcje przejść przez różne części pliku, które należy zaktualizować.
 
 #### <a name="update-servicetypes"></a>Aktualizowanie typów usług
+
 ```xml
 <ServiceTypes>
   <StatelessServiceType ServiceTypeName="NodeApp" UseImplicitHost="true" />
@@ -133,6 +150,7 @@ Element CodePackage określa lokalizację (i wersję) kodu usługi.
 Element `Name` jest używany do określenia nazwy katalogu w pakiecie aplikacji, który zawiera kod usługi. `CodePackage`również ma `version` atrybut. Może to służyć do określenia wersji kodu, a także potencjalnie może służyć do uaktualniania kodu usługi przy użyciu infrastruktury zarządzania cyklem życia aplikacji w sieci szkieletowej usług.
 
 #### <a name="optional-update-setupentrypoint"></a>Opcjonalnie: Aktualizacja SetupEntrypoint
+
 ```xml
 <SetupEntryPoint>
    <ExeHost>
@@ -147,6 +165,7 @@ Istnieje tylko jeden SetupEntryPoint, więc skrypty instalacyjne muszą być zgr
 W poprzednim przykładzie SetupEntryPoint uruchamia plik `LaunchConfig.cmd` wsadowy o `scripts` nazwie, który znajduje się w podkatalogu katalogu kodu (przy założeniu, że element WorkingFolder jest ustawiony na CodeBase).
 
 #### <a name="update-entrypoint"></a>Aktualizuj punkt wejścia
+
 ```xml
 <EntryPoint>
   <ExeHost>
@@ -171,12 +190,14 @@ Element `ExeHost` określa plik wykonywalny (i argumenty), które powinny być u
 WorkingFolder jest przydatne do ustawienia poprawnego katalogu roboczego, dzięki czemu ścieżki względne mogą być używane przez aplikację lub skrypty inicjowania.
 
 #### <a name="update-endpoints-and-register-with-naming-service-for-communication"></a>Aktualizowanie punktów końcowych i rejestrowanie się w usłudze nazewnictwa w celu komunikacji
+
 ```xml
 <Endpoints>
    <Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" Type="Input" />
 </Endpoints>
 
 ```
+
 W poprzednim przykładzie `Endpoint` element określa punkty końcowe, które aplikacja może nasłuchiwanie. W tym przykładzie aplikacja Node.js nasłuchuje na http na porcie 3000.
 
 Ponadto można poprosić sieci szkieletowej usług, aby opublikować ten punkt końcowy do usługi nazewnictwa, dzięki czemu inne usługi można odnajdywać adres punktu końcowego do tej usługi. Dzięki temu można komunikować się między usługami, które są plikami wykonywalnymi gościa.
@@ -189,9 +210,11 @@ W poniższym przykładzie po wdrożeniu usługi w Eksploratorze `http://10.1.4.9
    <Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000"  UriScheme="http" PathSuffix="myapp/" Type="Input" />
 </Endpoints>
 ```
+
 Tych adresów z [odwrotnym serwerem proxy](service-fabric-reverseproxy.md) można używać do komunikowania się między usługami.
 
 ### <a name="edit-the-application-manifest-file"></a>Edytowanie pliku manifestu aplikacji
+
 Po skonfigurowaniu `Servicemanifest.xml` pliku należy wprowadzić pewne zmiany w `ApplicationManifest.xml` pliku, aby upewnić się, że używany jest poprawny typ i nazwa usługi.
 
 ```xml
@@ -204,6 +227,7 @@ Po skonfigurowaniu `Servicemanifest.xml` pliku należy wprowadzić pewne zmiany 
 ```
 
 #### <a name="servicemanifestimport"></a>UsługaManifestImport
+
 W `ServiceManifestImport` elemencie można określić jedną lub więcej usług, które mają zostać uwzględnione w aplikacji. Usługi są przywoływanie z `ServiceManifestName`, który określa `ServiceManifest.xml` nazwę katalogu, w którym znajduje się plik.
 
 ```xml
@@ -213,6 +237,7 @@ W `ServiceManifestImport` elemencie można określić jedną lub więcej usług,
 ```
 
 ## <a name="set-up-logging"></a>Konfigurowanie rejestrowania
+
 W przypadku plików wykonywalnych gości warto zobaczyć dzienniki konsoli, aby dowiedzieć się, czy skrypty aplikacji i konfiguracji wykazują błędy.
 Przekierowanie konsoli można skonfigurować `ServiceManifest.xml` w `ConsoleRedirection` pliku za pomocą elementu.
 
@@ -240,7 +265,8 @@ Przekierowanie konsoli można skonfigurować `ServiceManifest.xml` w `ConsoleRed
 
 Pliki dziennika są zapisywane w jednym z katalogów roboczych usługi. Aby ustalić, gdzie znajdują się pliki, użyj Eksploratora sieci szkieletowej usług, aby określić, który węzeł jest uruchomiony na usłudze i który katalog roboczy jest używany. Ten proces jest omówiony w dalszej części tego artykułu.
 
-## <a name="deployment"></a>wdrażania
+## <a name="deployment"></a>Wdrożenie
+
 Ostatnim krokiem jest [wdrożenie aplikacji](service-fabric-deploy-remove-applications.md). W poniższym skrypcie programu PowerShell pokazano, jak wdrożyć aplikację w lokalnym klastrze deweloperów i uruchomić nową usługę sieci szkieletowej usług.
 
 ```powershell
@@ -281,14 +307,14 @@ Jeśli przejdziesz do węzła i przejdziesz do aplikacji, zobaczysz istotne info
 
 ![Lokalizacja na dysku](./media/service-fabric-deploy-existing-app/locationondisk2.png)
 
-Jeśli przeglądasz katalog przy użyciu Eksploratora serwera, możesz znaleźć katalog roboczy i folder dziennika usługi, jak pokazano na poniższym zrzucie ekranu: 
+Jeśli przeglądasz katalog przy użyciu Eksploratora serwera, możesz znaleźć katalog roboczy i folder dziennika usługi, jak pokazano na poniższym zrzucie ekranu:
 
 ![Lokalizacja dziennika](./media/service-fabric-deploy-existing-app/loglocation.png)
 
 ## <a name="next-steps"></a>Następne kroki
+
 W tym artykule dowiesz się, jak spakować plik wykonywalny gościa i wdrożyć go w sieci szkieletowej usług. Zobacz następujące artykuły, aby uzyskać powiązane informacje i zadania.
 
 * [Przykład do pakowania i wdrażania pliku wykonywalnego gościa,](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)w tym link do wstępnej wersji narzędzia do pakowania
 * [Próbka dwóch plików wykonywalnych gościa (C# i nodejs) komunikujących się za pośrednictwem usługi nazewnictwa przy użyciu rest](https://github.com/Azure-Samples/service-fabric-containers)
-* [Wdrażanie wielu aplikacji wykonywalnych gości](service-fabric-deploy-multiple-apps.md)
 * [Tworzenie pierwszej aplikacji sieci szkieletowej usług przy użyciu programu Visual Studio](service-fabric-tutorial-create-dotnet-app.md)

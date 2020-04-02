@@ -1,6 +1,6 @@
 ---
 title: Tworzenie aplikacji mobilnej, która wywołuje internetowe interfejsy API | Azure
-titleSuffix: Microsoft identity platform
+titleSuffix: Microsoft identity platform | Azure
 description: Dowiedz się, jak utworzyć aplikację mobilną, która wywołuje internetowe interfejsy API (omówienie)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6675d67299091325fcc3e12572a906716bf5b88d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: acd44298e401aabaef03f5ddd84f37f32a3d8bcd
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77132419"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546088"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scenariusz: Aplikacja mobilna, która wywołuje internetowe interfejsy API
 
@@ -53,13 +53,14 @@ Zagadnienia dotyczące aplikacji mobilnych:
 - **Środowisko użytkownika jest kluczem:** zezwalaj użytkownikom na wyświetlanie wartości aplikacji, zanim poprosisz o zalogowanie się. Żądaj tylko wymaganych uprawnień.
 - **Obsługa wszystkich konfiguracji użytkowników:** wielu użytkowników biznesowych urządzeń przenośnych musi przestrzegać zasad dostępu warunkowego i zasad zgodności z urządzeniami. Pamiętaj, aby obsługiwać te kluczowe scenariusze.
 - **Implementowanie logowania jednokrotnego (Logowanie jednokrotne)**: Za pomocą platformy MSAL i microsoft tożsamości, można włączyć logowanie jednokrotne za pośrednictwem przeglądarki urządzenia lub Microsoft Authenticator (i Intune Company Portal w systemie Android).
+- **Zaimplementuj tryb urządzenia udostępnionego:** Włącz aplikację do użycia w scenariuszach urządzeń udostępnionych, na przykład w szpitalach, produkcji, handlu detalicznego i finansach. [Dowiedz się więcej o obsłudze trybu udostępnionego urządzenia](msal-shared-devices.md).
 
 ## <a name="specifics"></a>Specyfiki
 
 Podczas tworzenia aplikacji mobilnej na platformie tożsamości firmy Microsoft należy pamiętać o następujących zagadnieniach:
 
 - W zależności od platformy niektóre interakcje z użytkownikiem mogą być wymagane przy pierwszym logowanie użytkowników. Na przykład system iOS wymaga aplikacji, aby pokazać interakcję użytkownika, gdy używają sytuowania po raz pierwszy za pośrednictwem microsoft authenticator (i intune company portal w systemie Android).
-- W systemach iOS i Android msal może używać zewnętrznej przeglądarki do logowania użytkowników. Zewnętrzna przeglądarka może pojawić się na górze aplikacji. Można dostosować konfigurację do korzystania z webviews w aplikacji zamiast.
+- W systemach iOS i Android msal może używać zewnętrznej przeglądarki do logowania użytkowników. Zewnętrzna przeglądarka może pojawić się na górze aplikacji.
 - Nigdy nie używaj tajemnicy w aplikacji mobilnej. W tych aplikacjach wpisy tajne są dostępne dla wszystkich użytkowników.
 
 ## <a name="next-steps"></a>Następne kroki

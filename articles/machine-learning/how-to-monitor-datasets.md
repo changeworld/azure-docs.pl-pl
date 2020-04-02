@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 401019c537cb0eb51fa6002637e170a79210f7d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a7a89b4ff1f6deb94c545e64b4584d7959d573a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617632"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546380"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Wykrywanie dryftu danych (podgląd) w zestawach danych
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Metryki i szczegółowe informacje są dostępne za pośrednictwem zasobu [usłu
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do tworzenia monitorów zestawu danych i pracy z nią potrzebne są:
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 * [Obszar roboczy usługi Azure Machine Learning](how-to-manage-workspace.md).
 * [Zainstalowano zestaw SDK usługi Azure Machine Learning dla języka Python,](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)który zawiera pakiet zestawów danych azureml.
 * Dane strukturalne (tabelaryczne) z sygnaturą czasową określoną w ścieżce pliku, nazwie pliku lub kolumnie w danych.
@@ -77,7 +77,7 @@ Docelowy zestaw danych musi `timeseries` mieć ustawioną cechę, określając k
 
 #### <a name="python-sdk"></a>Zestaw SDK dla języka Python
 
-[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) Metoda [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) klasy definiuje kolumnę sygnatury czasowej dla zestawu danych. 
+[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) Metoda [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) klasy definiuje kolumnę sygnatury czasowej dla zestawu danych. 
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -104,7 +104,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-Pełny przykład użycia `timeseries` cech zestawów danych można znaleźć w [przykładowym notesie](https://aka.ms/azureml-tsd-notebook) lub dokumentacji zestawu danych [SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-).
+Pełny przykład użycia `timeseries` cech zestawów danych można znaleźć w [przykładowym notesie](https://aka.ms/azureml-tsd-notebook) lub dokumentacji zestawu danych [SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
 
 #### <a name="azure-machine-learning-studio"></a>Studio uczenia maszynowego Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]

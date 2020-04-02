@@ -3,12 +3,12 @@ title: Ocena maszyn wirtualnych VMware do migracji na platformę Azure
 description: W tym artykule opisano sposób oceny lokalnych maszyn wirtualnych VMware do migracji na platformę Azure przy użyciu oceny serwera migracji usługi Azure.
 ms.topic: tutorial
 ms.date: 03/23/2019
-ms.openlocfilehash: f33e56f7e0af920363475edfa7e86977c2efd1d9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336741"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548743"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Ocena maszyn wirtualnych VMware przy użyciu oceny serwera migracji platformy Azure
 
@@ -163,7 +163,7 @@ Urządzenie musi połączyć się z serwerem vCenter, aby odnajdować dane dotyc
 1. W **obszarze Określ szczegóły serwera vCenter**określ nazwę (FQDN) lub adres IP wystąpienia serwera vCenter Server. Można opuścić port domyślny lub określić port niestandardowy, na którym nasłuchuje serwer vCenter Server.
 2. W **obszarze Nazwa użytkownika** i **Hasło**określ poświadczenia konta serwera vCenter Server używane do odnajdywać maszyny wirtualne w wystąpieniu serwera vCenter Server. 
 
-    - Powinieneś mieć skonfigurować konto z wymaganymi uprawnieniami w [poprzednim samouczku](/tutorial-prepare-vmware.md#set-up-an-account-for-assessment).
+    - Powinieneś mieć skonfigurować konto z wymaganymi uprawnieniami w [poprzednim samouczku](tutorial-prepare-vmware.md#set-up-an-account-for-assessment).
     - Jeśli chcesz odnajdować zakres do określonych obiektów VMware (vCenter Server centrów danych, klastrów, folder klastrów, hosty, folder hostów lub poszczególnych maszyn wirtualnych.), zapoznaj się z instrukcjami w [tym artykule,](set-discovery-scope.md) aby ograniczyć konto używane przez usługę Azure Migrate.
 
 3. Wybierz **opcję Sprawdź poprawność połączenia,** aby upewnić się, że urządzenie może łączyć się z serwerem vCenter Server.

@@ -7,12 +7,12 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/24/2020
-ms.openlocfilehash: 4dff471fa0f2194756409e01512ed223a1d46024
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99c32122fc48aaea7428fa559d7289713849f34e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241441"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548901"
 ---
 # <a name="create-an-azure-data-explorer-cluster-in-your-virtual-network"></a>Tworzenie klastra usługi Azure Data Explorer w sieci wirtualnej
 
@@ -68,7 +68,7 @@ Aby utworzyć grupę zabezpieczeń sieciowych:
     | Nazwa | AllowAzureDataExplorerManagement (Zezwalaj na dostęp do danych)
     | | |
     
-1. Powtórz poprzednie dwa kroki dla wszystkich zależności przychodzących i wychodzących zgodnie z [zależnościami dla wdrożenia sieci wirtualnej](/azure/data-explorer/vnet-deloyment#dependencies-for-vnet-deployment). Alternatywnie reguły ruchu wychodzącego można zastąpić pojedynczą regułą, aby umożliwić *dostęp do Internetu* dla portów 443 i 80.
+1. Powtórz poprzednie dwa kroki dla wszystkich zależności przychodzących i wychodzących zgodnie z [zależnościami dla wdrożenia sieci wirtualnej](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment). Alternatywnie reguły ruchu wychodzącego można zastąpić pojedynczą regułą, aby umożliwić *dostęp do Internetu* dla portów 443 i 80.
     
     Reguły sieciowej sieciowej sieciowej dla zależności przychodzących i wychodzących powinny wyglądać następująco:
 
@@ -121,7 +121,7 @@ Aby utworzyć sieć wirtualną i podsieć:
     | | | |
 
     > [!NOTE]
-    > W przypadku obciążeń produkcyjnych zaplanuj rozmiar podsieci zgodnie z [rozmiarem podsieci planu w sieci wirtualnej](/azure/data-explorer/vnet-deloyment#plan-subnet-size-in-your-vnet)
+    > W przypadku obciążeń produkcyjnych zaplanuj rozmiar podsieci zgodnie z [rozmiarem podsieci planu w sieci wirtualnej](/azure/data-explorer/vnet-deployment#plan-subnet-size-in-your-vnet)
 
 1. Wybierz pozycję **Przeglądanie + tworzenie**, aby przejrzeć szczegóły swojego klastra, a następnie wybierz pozycję **Utwórz**, aby aprowizować klaster.
 

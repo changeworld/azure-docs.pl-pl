@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff1b37c3053ffa91dcb432cd97a7dd6fd71dad1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d058ff5f9863642f73725db3472c942161447f25
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250428"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548431"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Szyfrowanie dysków platformy Azure dla maszyn wirtualnych z systemem Linux 
 
@@ -32,7 +32,7 @@ Podstawy szyfrowania dysków platformy Azure dla systemu Linux można poznać w 
 
 ## <a name="supported-vms-and-operating-systems"></a>Obsługiwane maszyny wirtualne i systemy operacyjne
 
-### <a name="supported-vm-sizes"></a>Obsługiwane rozmiary maszyn wirtualnych
+### <a name="supported-vms"></a>Obsługiwane maszyny wirtualne
 
 Maszyny wirtualne z systemem Linux są dostępne w [różnych rozmiarach.](sizes.md) Szyfrowanie dysków platformy Azure nie jest dostępne na [maszynach wirtualnych podstawowych i szeregowych serii A](https://azure.microsoft.com/pricing/details/virtual-machines/series/)ani na maszynach wirtualnych, które nie spełniają tych wymagań dotyczących pamięci minimalnej:
 
@@ -44,7 +44,9 @@ Maszyny wirtualne z systemem Linux są dostępne w [różnych rozmiarach.](sizes
 
 Po zakończeniu procesu szyfrowania dysku systemu operacyjnego na maszynach wirtualnych systemu Linux maszyn wirtualnych można skonfigurować do pracy z mniejszą ilością pamięci. 
 
-Szyfrowanie dysków platformy Azure jest również dostępne dla maszyn wirtualnych z magazynu w stanie Premium. 
+Szyfrowanie dysków platformy Azure jest również dostępne dla maszyn wirtualnych z magazynu w stanie Premium.
+
+Szyfrowanie dysków platformy Azure nie jest dostępne na [maszynach wirtualnych generacji 2)](generation-2.md#generation-1-vs-generation-2-capabilities)i [maszynach wirtualnych z serii Lsv2](../lsv2-series.md)). Aby uzyskać więcej wyjątków, zobacz [Szyfrowanie dysków platformy Azure: Nieobsługiwowane scenariusze](disk-encryption-linux.md#unsupported-scenarios).
 
 ### <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 

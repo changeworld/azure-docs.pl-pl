@@ -8,12 +8,12 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 9b8c3a36dbdd3a14d0bd325c22421033a1765df3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 84b703cceeb130b177b8ab32281ef616b1ec632b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063696"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548836"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Łączenie się z kontem usługi Azure Cosmos przy użyciu programu Studio 3T
 
@@ -21,9 +21,6 @@ Aby połączyć się z interfejsem API usługi Azure Cosmos DB dla mongodb przy 
 
 * Pobierz i zainstaluj [Studio 3T](https://studio3t.com/).
 * Mieć informacje o ciągu [połączenia](connect-mongodb-account.md) konta usługi Azure Cosmos.
-
-> [!NOTE]
-> Obecnie Robo 3T v1.2 i niższe wersje są obsługiwane przez interfejs API Usługi Cosmos DB dla MongoDB.
 
 ## <a name="create-the-connection-in-studio-3t"></a>Tworzenie połączenia w Studio 3T
 

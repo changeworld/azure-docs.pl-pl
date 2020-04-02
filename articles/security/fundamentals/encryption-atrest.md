@@ -3,7 +3,7 @@ title: Szyfrowanie danych platformy Microsoft Azure w spoczynku | Dokumenty firm
 description: Ten artykuł zawiera omówienie szyfrowania danych platformy Microsoft Azure w spoczynku, ogólne możliwości i ogólne zagadnienia.
 services: security
 documentationcenter: na
-author: barclayn
+author: msmbaldwin
 manager: barbkess
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
-ms.author: barclayn
-ms.openlocfilehash: d8aa643dcf9734ac983c9c4c0d53bda24ce4688d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mbaldwin
+ms.openlocfilehash: 42b83963dc4996a7347d57be712451086fa79b26
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125066"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548622"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Szyfrowanie danych platformy Azure w spoczynku
 
@@ -125,13 +125,13 @@ Każdy z modeli szyfrowania po stronie serwera w spoczynku implikuje charakterys
 
 #### <a name="server-side-encryption-using-service-managed-keys"></a>Szyfrowanie po stronie serwera przy użyciu kluczy zarządzanych przez usługę
 
-Dla wielu klientów podstawowym wymogiem jest zapewnienie, że dane są szyfrowane, gdy są w spoczynku. Szyfrowanie po stronie serwera przy użyciu kluczy zarządzanych przez usługę umożliwia ten model, umożliwiając klientom oznaczenie określonego zasobu (konto magazynu, baza danych SQL itp.) do szyfrowania i pozostawienie wszystkich aspektów zarządzania kluczami, takich jak wydawanie kluczy, rotacja i tworzenie kopii zapasowych w firmie Microsoft . Większość usług platformy Azure, które obsługują szyfrowanie w spoczynku zazwyczaj obsługuje ten model odciążania zarządzania kluczami szyfrowania na platformie Azure. Dostawca zasobów platformy Azure tworzy klucze, umieszcza je w bezpiecznym magazynie i pobiera je w razie potrzeby. Oznacza to, że usługa ma pełny dostęp do kluczy i usługa ma pełną kontrolę nad zarządzaniem cyklem życia poświadczeń.
+Dla wielu klientów podstawowym wymogiem jest zapewnienie, że dane są szyfrowane, gdy są w spoczynku. Szyfrowanie po stronie serwera przy użyciu kluczy zarządzanych przez usługę umożliwia ten model, umożliwiając klientom oznaczenie określonego zasobu (konto magazynu, bazy danych SQL itp.) do szyfrowania i pozostawienie wszystkich aspektów zarządzania kluczami, takich jak wydawanie kluczy, rotacja i tworzenie kopii zapasowych w firmie Microsoft. Większość usług platformy Azure, które obsługują szyfrowanie w spoczynku zazwyczaj obsługuje ten model odciążania zarządzania kluczami szyfrowania na platformie Azure. Dostawca zasobów platformy Azure tworzy klucze, umieszcza je w bezpiecznym magazynie i pobiera je w razie potrzeby. Oznacza to, że usługa ma pełny dostęp do kluczy i usługa ma pełną kontrolę nad zarządzaniem cyklem życia poświadczeń.
 
 ![Zarządzane](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
 
 Szyfrowanie po stronie serwera przy użyciu kluczy zarządzanych przez usługę w związku z tym szybko rozwiązuje potrzebę szyfrowania w spoczynku z niskim obciążeniem dla klienta. Gdy klient jest dostępny, zazwyczaj otwiera witrynę Azure portal dla docelowego dostawcy subskrypcji i zasobów i sprawdza pole wskazujące, że chcą, aby dane były szyfrowane. W niektórych Menedżerów zasobów szyfrowanie po stronie serwera z kluczami zarządzanymi usługami jest domyślnie włączone.
 
-Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez firmę Microsoft oznacza, że usługa ma pełny dostęp do przechowywania kluczy i zarządzania nimi. Podczas gdy niektórzy klienci mogą chcieć zarządzać kluczami, ponieważ czują, że zyskują większe bezpieczeństwo, koszt i ryzyko związane z niestandardowym rozwiązaniem magazynu kluczy należy wziąć pod uwagę podczas oceny tego modelu. W wielu przypadkach organizacja może określić, że ograniczenia zasobów lub ryzyko rozwiązania lokalnego może być większe niż ryzyko zarządzania szyfrowaniem w chmurze kluczy spoczynku.  Jednak ten model może nie być wystarczający dla organizacji, które mają wymagania do kontrolowania tworzenia lub cyklu życia kluczy szyfrowania lub do zarządzania kluczami szyfrowania usługi przez inny personel niż osoby zarządzające usługą (tj. segregacja zarządzania kluczami z ogólnego modelu zarządzania usługą).
+Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez firmę Microsoft oznacza, że usługa ma pełny dostęp do przechowywania kluczy i zarządzania nimi. Podczas gdy niektórzy klienci mogą chcieć zarządzać kluczami, ponieważ czują, że zyskują większe bezpieczeństwo, koszt i ryzyko związane z niestandardowym rozwiązaniem magazynu kluczy należy wziąć pod uwagę podczas oceny tego modelu. W wielu przypadkach organizacja może określić, że ograniczenia zasobów lub ryzyko rozwiązania lokalnego może być większe niż ryzyko zarządzania szyfrowaniem w chmurze kluczy spoczynku.  Jednak ten model może nie być wystarczający dla organizacji, które mają wymagania do kontrolowania tworzenia lub cyklu życia kluczy szyfrowania lub mieć inny personel zarządzać kluczami szyfrowania usługi niż osoby zarządzające usługą (czyli oddzielenie zarządzania kluczami od ogólnego modelu zarządzania usługą).
 
 ##### <a name="key-access"></a>Dostęp do klucza
 
@@ -267,8 +267,8 @@ Szyfrowanie po stronie klienta danych usługi Azure SQL Database jest obsługiwa
 | Azure Machine Learning Studio    | Tak                | Podgląd, RSA 2048-bit | -               |
 | Power BI                         | Tak                | Podgląd, RSA 2048-bit | -                  |
 | **Analiza**                    |                    |                    |                    |
-| Azure Stream Analytics           | Tak                | -                  | -                  |
-| Usługa Event Hubs                       | Tak                | Tak, wszystkie długości RSA. | -                  |
+| Usługa Azure Stream Analytics           | Tak                | -                  | -                  |
+| Event Hubs                       | Tak                | Tak, wszystkie długości RSA. | -                  |
 | Funkcje                        | Tak                | Tak, wszystkie długości RSA. | -                  |
 | Azure Analysis Services          | Tak                | -                  | -                  |
 | Azure Data Catalog               | Tak                | -                  | -                  |

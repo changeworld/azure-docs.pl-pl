@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: f299b13baf5811b92bdc2e40b027868617d7574c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00dcef4ae0f04fc7f550859238ae8c7e1ad19384
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368523"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549067"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Obracanie certyfikatów w usłudze Azure Kubernetes Service (AKS)
 
@@ -32,7 +32,7 @@ Usługa AKS generuje i używa następujących certyfikatów, urzędów certyfika
 * Każdy kubelet tworzy również żądanie podpisywania certyfikatów (CSR), które jest podpisane przez urząd certyfikacji klastra, w celu komunikacji z kubelet do serwera interfejsu API.
 * Magazyn wartości klucza etcd ma certyfikat podpisany przez urząd certyfikacji klastra do komunikacji z etcd do serwera interfejsu API.
 * Magazyn wartości klucza etcd tworzy urząd certyfikacji, który podpisuje certyfikaty do uwierzytelniania i autoryzowania replikacji danych między replikami itp.
-* Agregator interfejsu API używa urzędu certyfikacji klastra do wystawiania certyfikatów do komunikacji z innymi interfejsami API, takimi jak Open Service Broker for Azure. Agregator interfejsu API może również mieć własny urząd certyfikacji do wystawiania tych certyfikatów, ale obecnie używa urzędu certyfikacji klastra.
+* Agregator interfejsu API używa urzędu certyfikacji klastra do wystawiania certyfikatów do komunikacji z innymi interfejsami API. Agregator interfejsu API może również mieć własny urząd certyfikacji do wystawiania tych certyfikatów, ale obecnie używa urzędu certyfikacji klastra.
 * Każdy węzeł używa tokenu konta usługi (SA), który jest podpisany przez urząd certyfikacji klastra.
 * Klient `kubectl` ma certyfikat do komunikowania się z klastrem AKS.
 

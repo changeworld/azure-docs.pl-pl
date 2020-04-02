@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: dbc17620cda836ec0ac5c4ebc5a709fb0605c958
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1ad8390bc5db72636c637c2ffb817e34674d0fa
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240038"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548847"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Wdrażanie klastra usługi Azure Data Explorer w sieci wirtualnej
 
@@ -171,7 +171,7 @@ Wdrażanie klastra Usługi Azure Data Explorer w podsieci umożliwia konfigurowa
 | Europa Zachodnia | 23.97.212.5 |
 | Indie Zachodnie | 23.99.5.162 |
 | Zachodnie stany USA | 23.99.5.162 |
-| Zachodnie stany USA 2 | 23.99.5.162 |    
+| Zachodnie stany USA 2 | 23.99.5.162, 104.210.32.14 |    
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Adresy punktów końcowych konfiguracji usługi Azure Monitor
 

@@ -5,18 +5,23 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
-ms.custom: fasttrack-edit
-ms.openlocfilehash: f16b10f13c945dd7f1ae4fdc3f4e02dcd7c5a018
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: 0fe436b1da551bbc8a0064cb3cfdff864d8f9eb8
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437940"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520695"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service i usłudze Azure Functions
 
 > [!NOTE]
 > W tej chwili [usługa Azure Active Directory w wersji 2.0](../active-directory/develop/v2-overview.md) (w tym [MSAL)](../active-directory/develop/msal-overview.md)nie jest obsługiwana dla usługi Azure App Service i usługi Azure Functions. Sprawdź aktualizacje.
+>
+> [!NOTE]
+> Obecnie ASP.NET Core nie obsługuje obecnie wypełniania bieżącego użytkownika funkcją Uwierzytelnianie/Autoryzacja.
 >
 
 Usługa Azure App Service zapewnia wbudowaną obsługę uwierzytelniania i autoryzacji, dzięki czemu można logować się do użytkowników i uzyskiwać dostęp do danych, zapisując minimalny lub żaden kod w aplikacji sieci Web, interfejsie API RESTful i mobilnym zapleczu, a także [usłudze Azure Functions.](../azure-functions/functions-overview.md) W tym artykule opisano, jak usługa App Service pomaga uprościć uwierzytelnianie i autoryzację aplikacji.
@@ -132,11 +137,17 @@ Za pomocą tej opcji nie trzeba pisać żadnego kodu uwierzytelniania w aplikacj
 > [!CAUTION]
 > Ograniczenie dostępu w ten sposób ma zastosowanie do wszystkich wywołań aplikacji, co może nie być pożądane dla aplikacji, które chcą publicznie dostępnej strony głównej, jak w wielu aplikacjach jednostronicowych.
 
+> [!NOTE]
+> Uwierzytelnianie/autoryzacja było wcześniej znane jako Easy Auth.
+>
+
 ## <a name="more-resources"></a>Więcej zasobów
 
 [Samouczek: Uwierzytelnij i autoryzuj użytkowników end-to-end w usłudze Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)  
 [Samouczek: Uwierzytelnij i autoryzuj użytkowników end-to-end w usłudze Azure App Service dla systemu Linux](containers/tutorial-auth-aad.md)  
-[Dostosowywanie uwierzytelniania i autoryzacji w usłudze aplikacji](app-service-authentication-how-to.md)
+[Dostosowywanie uwierzytelniania i autoryzacji w usłudze App Service](app-service-authentication-how-to.md)
+[.NET Core integracji usługi Azure AppService EasyAuth (3rd party)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+[Uzyskiwanie uwierzytelniania usługi Azure App Service pracy z .NET Core (3rd party)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 Przewodniki dotyczące inaucyjek specyficznych dla dostawcy:
 

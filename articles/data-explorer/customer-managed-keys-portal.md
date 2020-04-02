@@ -7,18 +7,18 @@ ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: c014ed2c25711677617d3bf8ff5d2f0f968a3b14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 180196f2c368207b76811700fd845406098600df
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80301046"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529435"
 ---
 # <a name="configure-customer-managed-keys-using-the-azure-portal"></a>Konfigurowanie kluczy zarządzanych przez klienta za pomocą portalu Azure
 
 > [!div class="op_single_selector"]
 > * [Portal](customer-managed-keys-portal.md)
-> * [C #](customer-managed-keys-csharp.md)
+> * [C#](customer-managed-keys-csharp.md)
 > * [Szablon usługi Azure Resource Manager](customer-managed-keys-resource-manager.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
@@ -46,7 +46,7 @@ W tym artykule pokazano, jak włączyć szyfrowanie kluczy zarządzanych przez k
 
     ![Zapisywanie klucza zarządzanego przez klienta](media/customer-managed-keys-portal/cmk-encryption-setting.png)
 
-Włączając klucze zarządzane przez klienta dla klastra usługi Azure Data Explorer, będziesz tworzyć tożsamość przypisaną do systemu dla klastra, jeśli nie istnieje. Ponadto będziesz dostarczać wymagane uprawnienia do wyświetlania do klastra usługi Azure Data Explorer w wybranym magazynie kluczy i uzyskać właściwości usługi Key Vault. 
+Włączając klucze zarządzane przez klienta dla klastra usługi Azure Data Explorer, będziesz tworzyć tożsamość przypisaną do systemu dla klastra, jeśli nie istnieje. Ponadto będziesz dostarczać wymagane uprawnienia get, wrapKey i unwarpKey do klastra usługi Azure Data Explorer w wybranym magazynie kluczy i uzyskać właściwości usługi Key Vault. 
 
 > [!NOTE]
 > Wybierz **opcję Wyłączone,** aby usunąć klucz zarządzany przez klienta po jego utworzeniu.

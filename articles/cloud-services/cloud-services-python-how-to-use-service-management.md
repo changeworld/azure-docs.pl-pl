@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: 50501413a63921a9a34be1c04ed259990922b686
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae44ce77ce480cc1bc56ead5547e003d7d4bb39c
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70141462"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547579"
 ---
 # <a name="use-service-management-from-python"></a>Korzystanie z zarządzania usługami z języka Python
 W tym przewodniku pokazano, jak programowo wykonywać typowe zadania zarządzania usługami z języka Python. **ServiceManagementService** Klasy w [azure SDK dla języka Python](https://github.com/Azure/azure-sdk-for-python) obsługuje dostęp programowy do większości funkcji związanych z zarządzaniem usługami, który jest dostępny w [witrynie Azure portal][management-portal]. Za pomocą tej funkcji można tworzyć, aktualizować i usuwać usługi w chmurze, wdrożenia, usługi zarządzania danymi i maszyny wirtualne. Ta funkcja może być przydatna w tworzeniu aplikacji, które wymagają programowego dostępu do zarządzania usługami.
@@ -30,10 +30,10 @@ Interfejs API zarządzania usługami azure zapewnia programowy dostęp do dużej
 Aby korzystać z interfejsu API zarządzania usługami, należy [utworzyć konto platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="concepts"></a><a name="Concepts"> </a>Pojęcia
-Zestaw Azure SDK dla języka Python zawija [interfejs API zarządzania usługami,][svc-mgmt-rest-api]który jest interfejsem API REST. Wszystkie operacje interfejsu API są wykonywane za pośrednictwem SSL i wzajemnie uwierzytelnione przy użyciu certyfikatów X.509 v3. Usługa zarządzania można uzyskać z poziomu usługi uruchomionej na platformie Azure. Można również uzyskać dostęp bezpośrednio przez Internet z dowolnej aplikacji, która może wysłać żądanie HTTPS i otrzymać odpowiedź HTTPS.
+Zestaw Azure SDK dla języka Python zawija [interfejs API zarządzania usługami,][svc-mgmt-rest-api]który jest interfejsem API REST. Wszystkie operacje interfejsu API są wykonywane za pośrednictwem protokołu TLS i wzajemnie uwierzytelnione przy użyciu certyfikatów X.509 v3. Usługa zarządzania można uzyskać z poziomu usługi uruchomionej na platformie Azure. Można również uzyskać dostęp bezpośrednio przez Internet z dowolnej aplikacji, która może wysłać żądanie HTTPS i otrzymać odpowiedź HTTPS.
 
 ## <a name="installation"></a><a name="Installation"> </a>Instalacja
-Wszystkie funkcje opisane w tym artykule są dostępne w `azure-servicemanagement-legacy` pakiecie, który można zainstalować za pomocą pip. Aby uzyskać więcej informacji na temat instalacji (na przykład, jeśli jesteś nowy w Pythonie), zobacz [Instalowanie języka Python i pakietu Azure SDK](/azure/python/python-sdk-azure-install).
+Wszystkie funkcje opisane w tym artykule są dostępne w `azure-servicemanagement-legacy` pakiecie, który można zainstalować za pomocą pip. Aby uzyskać więcej informacji na temat instalacji (na przykład, jeśli jesteś nowy w Pythonie), zobacz [Instalowanie języka Python i pakietu Azure SDK](/azure/developer/python/azure-sdk-install).
 
 ## <a name="connect-to-service-management"></a><a name="Connect"> </a>Łączenie się z zarządzaniem usługami
 Aby połączyć się z punktem końcowym zarządzania usługami, potrzebujesz identyfikatora subskrypcji platformy Azure i prawidłowego certyfikatu zarządzania. Identyfikator subskrypcji można uzyskać za pośrednictwem [witryny Azure portal][management-portal].

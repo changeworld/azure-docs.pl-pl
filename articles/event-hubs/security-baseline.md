@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f16f6ef38b221e525340858fc7ba131f8a1bdf5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10fc822f9f36512405dd4e3b5aba6270b53e163f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289578"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549029"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Usługa Azure Security Baseline dla centrów zdarzeń
 
@@ -72,7 +72,7 @@ Opis zabezpieczeń sieci dostarczanych przez usługę Azure Security Center:http
 
 **Wskazówki:** Włącz standard ochrony przed atakami DDoS w sieciach wirtualnych skojarzonych z centrami zdarzeń, aby chronić się przed rozproszonymi atakami typu "odmowa usługi" (DDoS). Usługa Azure Security Center Integrated Threat Intelligence umożliwia odmawianie komunikacji ze znanymi złośliwymi lub nieużywanym internetowymi adresami IP.
 
-Jak skonfigurować ochronę przed atakami DDoS:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+Jak skonfigurować ochronę przed atakami DDoS:[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](/azure/virtual-network/manage-ddos-protection)
 
 Aby uzyskać więcej informacji na temat zintegrowanej analizy zagrożeń usługi Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
@@ -106,7 +106,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 Jak dodać regułę zapory w Centrach zdarzeń dla określonego adresu IP:
 
- https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls#add-firewall-for-specified-ip
+ https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
 **Monitorowanie usługi Azure Security Center:** jeszcze niedostępne
 
@@ -140,7 +140,7 @@ Wbudowane zasady platformy Azure dla obszaru nazw centrów zdarzeń:https://docs
 
 
 
-Przykłady zasad platformy Azure dla sieci:https://docs.microsoft.com/azure/governance/policy/samples/#network
+Przykłady zasad platformy Azure dla sieci:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 
 
 
@@ -373,10 +373,7 @@ Jak włączyć usługę MFA na platformie Azure:https://docs.microsoft.com/azure
 
 **Wskazówki:** Użyj usługi Azure Active Directory (AD) Uprzywilejowane zarządzanie tożsamościami (PIM) do generowania dzienników i alertów, gdy podejrzane lub niebezpieczne działania występuje w środowisku. Użyj wykrywania ryzyka usługi Azure AD, aby wyświetlić alerty i raporty dotyczące ryzykownych zachowań użytkowników. Aby uzyskać dodatkowe rejestrowanie, wyślij alerty wykrywania ryzyka usługi Azure Security Center do usługi Azure Monitor i skonfiguruj niestandardowe alerty/powiadomienia przy użyciu grup akcji.
 
-
-
 Jak wdrożyć zarządzanie tożsamościami uprzywilejowanymi (PIM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
-
 
 Poznaj wykrywanie ryzyka usługi Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
@@ -780,7 +777,7 @@ Jak skonfigurować dostęp warunkowy, aby zablokować dostęp do usługi Azure R
 
 - Centrum zdarzeń powinno używać punktu końcowego usługi sieci wirtualnej
 
-Wbudowane zasady platformy Azure dla obszaru https://docs.microsoft.com/en-\ nazw centrów zdarzeń: nas/azure/governance/policy/samples/wbudowane zasady#event-hub
+Wbudowane zasady platformy Azure dla obszaru nazw centrów zdarzeń:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
 Jak wyświetlić dostępne aliasy zasad platformy Azure:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -961,7 +958,7 @@ Ochrona przed złośliwym oprogramowaniem firmy Microsoft jest włączona na pod
 
 **Wskazówki:** Konfigurowanie odzyskiwania po awarii geograficznej dla usługi Azure Event Hubs. Gdy całe regiony platformy Azure lub centra danych (jeśli nie są używane strefy dostępności) występują przestoje, ważne jest, aby przetwarzanie danych nadal działało w innym regionie lub centrum danych. W związku z tym odzyskiwanie po awarii geograficznej i replikacja geograficzna są ważnymi funkcjami dla każdego przedsiębiorstwa. Usługa Azure Event Hubs obsługuje zarówno odzyskiwanie po awarii geograficznej, jak i replikację geograficzną na poziomie obszaru nazw. 
 
-Poznaj odzyskiwanie po awarii geograficznej dla usługi Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones-preview
+Poznaj odzyskiwanie po awarii geograficznej dla usługi Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones
 
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
 

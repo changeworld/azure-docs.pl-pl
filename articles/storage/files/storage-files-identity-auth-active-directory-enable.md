@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.author: rogarana
-ms.openlocfilehash: b7820bc3d1b14e87064e4120edcffb6762041db9
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: dbcc204f71a9bfe4f48f51ab6af36014e130cb7f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411483"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548947"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Włączanie uwierzytelniania usługi Active Directory za pomocą smb dla udziałów plików platformy Azure
 
@@ -63,11 +63,7 @@ Przed włączeniem uwierzytelniania usługi AD dla udziałów plików platformy 
 
 ## <a name="regional-availability"></a>Dostępność regionalna
 
-Uwierzytelnianie usługi Azure Files AD (wersja zapoznawcza) jest dostępne w [większości regionów publicznych](https://azure.microsoft.com/global-infrastructure/regions/).
-
-Uwierzytelnianie usługi Azure Files AD nie jest dostępne w:
-- Zachodnie stany USA
-
+Uwierzytelnianie usługi Azure Files AD (wersja zapoznawcza) jest dostępne we [wszystkich regionach chmury publicznej.](https://azure.microsoft.com/global-infrastructure/regions/)
 
 ## <a name="workflow-overview"></a>Omówienie przepływu pracy
 

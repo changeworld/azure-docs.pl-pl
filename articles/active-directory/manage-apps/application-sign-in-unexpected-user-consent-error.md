@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dff3be9a9bc7fd897f340e5fe6a4775a4914810
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea14e02920cf7ba6c5e0a7b415cb92137c915576
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65824943"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519704"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Nieoczekiwany błąd podczas wykonywania zgody na aplikację
 
@@ -33,8 +33,11 @@ Niektóre warunki muszą być spełnione dla użytkownika do wyrażenia zgody na
 
 ## <a name="requesting-not-authorized-permissions-error"></a>Żądanie błędu nieautoryzowanych uprawnień
 * **AADSTS90093:** &lt;clientAppDisplayName&gt; żąda co najmniej jednego uprawnienia, które nie są autoryzowane do przyznania. Skontaktuj się z administratorem, który może wyrazić zgodę na tę aplikację w Twoim imieniu.
+* **AADSTS90094:** &lt;clientAppDisplayName&gt; potrzebuje uprawnień dostępu do zasobów w organizacji, które tylko administrator może udzielić. Poproś administratora o udzielenie uprawnienia do tej aplikacji, aby można było z niej korzystać.
 
 Ten błąd występuje, gdy użytkownik, który nie jest administratorem firmy próbuje użyć aplikacji, która żąda uprawnień, które tylko administrator może udzielić. Ten błąd może zostać rozwiązany przez administratora udzielającego dostępu do aplikacji w imieniu swojej organizacji.
+
+Ten błąd może również wystąpić, gdy użytkownik nie może wyrazić zgody na aplikację z powodu wykrycia przez firmę Microsoft, że żądanie uprawnień jest ryzykowne. W takim przypadku zdarzenie inspekcji zostanie również zarejestrowane z kategorią "Zarządzanie aplikacjami", typem działania "Zgoda na aplikację" i powodem stanu "Wykryto ryzykowną aplikację".
 
 ## <a name="policy-prevents-granting-permissions-error"></a>Zasady zapobiegają udzielaniu błędów uprawnień
 * **AADSTS90093:** Administrator &lt;tenantDisplayName&gt; ustawił zasadę, która uniemożliwia &lt;przyznanie nazwy&gt; aplikacji, której żąda. Skontaktuj się &lt;z administratorem&gt;tenantDisplayName , który może udzielić uprawnień do tej aplikacji w Twoim imieniu.

@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: 03329252c0ed4231585d1717d9361a2aef35b36f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cea3245176e6c38137d68e3ad4b47477bedc78be
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187008"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529188"
 ---
 Aby zarejestrować aplikację w dzierżawie usługi Azure AD B2C, można użyć **bieżącego środowiska aplikacji** lub naszego nowego środowiska rejestracji aplikacji ujednoliconej **(w wersji zapoznawczej).** [Dowiedz się więcej na temat nowego środowiska](https://aka.ms/b2cappregintro).
 
@@ -37,4 +37,10 @@ Aby zarejestrować aplikację w dzierżawie usługi Azure AD B2C, można użyć 
 1. W obszarze **Zarządzanie**wybierz pozycję **Uwierzytelnianie**.
 1. Wybierz **wypróbuj nowe środowisko** (jeśli jest to pokazane).
 1. W obszarze **Domyślny typ klienta**wybierz opcję **Tak,** aby traktować aplikację jako klienta publicznego. To ustawienie jest wymagane dla przepływu ROPC.
+1. Wybierz **pozycję Zapisz**.
+1. W menu po lewej stronie wybierz **pozycję Manifest,** aby otworzyć edytor manifestów. 
+1. Ustaw atrybut **oauth2AllowImplicitFlow** na *true:*
+    ```json
+    "oauth2AllowImplicitFlow": true,
+    ```
 1. Wybierz **pozycję Zapisz**.

@@ -1,14 +1,14 @@
 ---
 title: Zarządzanie zasobami delegowanymi na platformie Azure
 description: Oferty usług zarządzanych umożliwiają dostawcom usług sprzedawanie ofert zarządzania zasobami klientom w portalu Azure Marketplace.
-ms.date: 01/30/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 15814b1ca3b1b78de521033836e3614d18fd0c71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9f562ca4f42d1c1d85eeac44495a8ec7e01beb
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76904320"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548420"
 ---
 # <a name="azure-delegated-resource-management"></a>Zarządzanie zasobami delegowanymi na platformie Azure
 
@@ -23,11 +23,11 @@ Zarządzanie zasobami delegowanymi platformy Azure umożliwia logiczne projekcji
 
 Dzięki zarządzania zasobami delegowanymi platformy Azure autoryzowani użytkownicy mogą pracować bezpośrednio w kontekście subskrypcji klienta bez posiadania konta w dzierżawie tego klienta lub bycia współwłaścicielem dzierżawy klienta. Mogą również [wyświetlać i zarządzać wszystkimi delegowanymi subskrypcjami klientów na nowej stronie **Moi klienci** ](../how-to/view-manage-customers.md) w witrynie Azure portal.
 
-[Środowisko zarządzania między dzierżawcami](cross-tenant-management-experience.md) ułatwia wydajniejszą pracę z usługami zarządzania platformy Azure, takimi jak Azure Policy, Azure Security Center i inne. Cała aktywność dostawcy usług jest śledzona w dzienniku aktywności, który jest przechowywany zarówno w dzierżawach dostawcy usług, jak i klienta. Oznacza to, że zarówno klient, jak i dostawca usług mogą łatwo zidentyfikować użytkownika skojarzonego z wszelkimi zmianami.
+[Środowisko zarządzania między dzierżawcami](cross-tenant-management-experience.md) ułatwia wydajniejszą pracę z usługami zarządzania platformy Azure, takimi jak Azure Policy, Azure Security Center i inne. Wszystkie działania dostawcy usług są śledzone w dzienniku działań, który jest przechowywany w dzierżawie klienta (i mogą być wyświetlane przez użytkowników w dzierżawie zarządzającej). Oznacza to, że zarówno klient, jak i dostawca usług mogą łatwo zidentyfikować użytkownika skojarzonego z wszelkimi zmianami.
 
 Po pokładzie klienta do usługi Azure zarządzania zasobami delegowanymi, będą mieli dostęp do nowej strony **dostawców usług** w witrynie Azure portal, gdzie mogą [potwierdzić i zarządzać swoimi ofertami, dostawcami usług i delegowanymi zasobami](../how-to/view-manage-service-providers.md). Jeśli klient kiedykolwiek chce odwołać dostęp dla usługodawcy, może to zrobić tutaj w dowolnym momencie.
 
-Nowy [typ oferty usług zarządzanych można opublikować w portalu Azure Marketplace,](../how-to/publish-managed-services-offers.md) aby łatwo dołączać klientów do zarządzania zasobami delegowanymi platformy Azure. Alternatywnie można [ukończyć proces dołączania, wdrażając szablony usługi Azure Resource Manager](../how-to/onboard-customer.md).
+Nowy [typ oferty usługi zarządzanej można opublikować w portalu Azure Marketplace,](../how-to/publish-managed-services-offers.md) aby łatwo dołączać klientów do zarządzania zasobami delegowanymi platformy Azure. Alternatywnie można [ukończyć proces dołączania, wdrażając szablony usługi Azure Resource Manager](../how-to/onboard-customer.md).
 
 ## <a name="how-azure-delegated-resource-management-works"></a>Jak działa zarządzanie delegowanymi zasobami platformy Azure
 

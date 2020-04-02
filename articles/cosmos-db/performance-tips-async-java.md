@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 89df941eb6ebaad6e078c278f1ed883db5528c7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b892b1f4ff73679ab425d0e97f5361e0f3712252
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152565"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549185"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Porady dotyczące wydajności usługi Azure Cosmos DB i języka Async Java
 
@@ -26,7 +26,7 @@ Usługa Azure Cosmos DB to szybka i elastyczna rozproszona baza danych, która b
 
 Więc jeśli pytasz "Jak mogę poprawić wydajność mojej bazy danych?" rozważ następujące opcje:
 
-## <a name="networking"></a>Obsługa sieci
+## <a name="networking"></a>Networking
 
 * **Tryb połączenia: użyj trybu direct**
 <a id="direct-connection"></a>
@@ -112,7 +112,7 @@ Więc jeśli pytasz "Jak mogę poprawić wydajność mojej bazy danych?" rozważ
 
         + **Użyj wielowątkowej w aplikacji do wydajnego transferu danych TCP** — po złożeniu żądania aplikacja powinna subskrybować odbieranie danych w innym wątku. Nie wymusza to niezamierzone "pół dupleksu" operacji i kolejne żądania są blokowane oczekiwania na odpowiedź poprzedniego żądania.
 
-        + **Wykonywanie obciążeń intensywnie korzystających z mocy obliczeniowej w dedykowanym wątku** — z powodów podobnych do poprzedniej końcówki operacje, takie jak złożone przetwarzanie danych, są najlepiej umieszczane w osobnym wątku. Żądanie, które pobiera dane z innego magazynu danych (na przykład jeśli wątek korzysta z usługi Azure Cosmos DB i spark magazynów danych jednocześnie) może wystąpić zwiększone opóźnienie i zaleca się spawn dodatkowy wątek, który oczekuje na odpowiedź z innych przechowywania danych.
+        + **Wykonywanie obciążeń intensywnie korzystających z mocy obliczeniowej w dedykowanym wątku** — z powodów podobnych do poprzedniej końcówki operacje, takie jak złożone przetwarzanie danych, są najlepiej umieszczane w osobnym wątku. Żądanie, które pobiera dane z innego magazynu danych (na przykład jeśli wątek korzysta z usługi Azure Cosmos DB i spark magazynów danych jednocześnie) może wystąpić zwiększone opóźnienie i zaleca się zdyskwisuj dodatkowy wątek, który oczekuje na odpowiedź z innego magazynu danych.
 
             + Podstawowa sieć We/Wy w async Java SDK jest zarządzany przez Netty, zobacz te [wskazówki dotyczące unikania wzorców kodowania, które blokują wątki We/Wy Netty](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread).
 
@@ -230,9 +230,9 @@ Więc jeśli pytasz "Jak mogę poprawić wydajność mojej bazy danych?" rozważ
     * - nofile 100000
     ```
 
-* **Użyj natywnej implementacji SSL dla netty**
+* **Użyj implementacji natywnego protokołu TLS/SSL dla netty**
 
-    Netty można użyć OpenSSL bezpośrednio dla stosu implementacji SSL, aby osiągnąć lepszą wydajność. W przypadku braku tej konfiguracji netty powróci do domyślnej implementacji SSL java.
+    Netty można użyć OpenSSL bezpośrednio dla stosu implementacji TLS, aby osiągnąć lepszą wydajność. W przypadku braku tej konfiguracji netty powróci do domyślnej implementacji TLS java.
 
     na Ubuntu:
     ```bash

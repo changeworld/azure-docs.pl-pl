@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 03/31/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ec32990513d9199c4aaccf1bcfcbf76f348f877b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d224bd9e9e7b1f8fc9eb45d85e78811d8642fc78
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75867503"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519561"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Przypisywanie roli RBAC w celu uzyskania dostępu do danych obiektów blob i kolejek za pomocą witryny Azure Portal
 
@@ -23,13 +23,13 @@ Usługa Azure Active Directory (Azure AD) autoryzuje prawa dostępu do zabezpiec
 
 Gdy rola RBAC jest przypisana do podmiotu zabezpieczeń usługi Azure AD, platforma Azure udziela dostępu do tych zasobów dla tego podmiotu zabezpieczeń. Dostęp może być ograniczony do poziomu subskrypcji, grupy zasobów, konta magazynu lub pojedynczego kontenera lub kolejki. Podmiot zabezpieczeń usługi Azure AD może być użytkownikiem, grupą, jednostką usługi aplikacji lub [tożsamością zarządzaną dla zasobów platformy Azure.](../../active-directory/managed-identities-azure-resources/overview.md)
 
-W tym artykule opisano sposób przypisywania ról RBAC za pomocą portalu Azure. Portal Azure zawiera prosty interfejs do przypisywania ról RBAC i zarządzania dostępem do zasobów magazynu. Można również przypisać role RBAC dla zasobów obiektów blob i kolejek przy użyciu narzędzi wiersza polecenia platformy Azure lub interfejsów API zarządzania usługą Azure Storage. Aby uzyskać więcej informacji na temat ról RBAC dla zasobów magazynu, zobacz [Uwierzytelnianie dostępu do obiektów blob i kolejek platformy Azure przy użyciu usługi Azure Active Directory](storage-auth-aad.md). 
+W tym artykule opisano sposób przypisywania ról RBAC za pomocą portalu Azure. Portal Azure zawiera prosty interfejs do przypisywania ról RBAC i zarządzania dostępem do zasobów magazynu. Można również przypisać role RBAC dla zasobów obiektów blob i kolejek przy użyciu narzędzi wiersza polecenia platformy Azure lub interfejsów API zarządzania usługą Azure Storage. Aby uzyskać więcej informacji na temat ról RBAC dla zasobów magazynu, zobacz [Uwierzytelnianie dostępu do obiektów blob i kolejek platformy Azure przy użyciu usługi Azure Active Directory](storage-auth-aad.md).
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>Role RBAC dla obiektów blob i kolejek
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>Określanie zakresu zasobów 
+## <a name="determine-resource-scope"></a>Określanie zakresu zasobów
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
@@ -52,11 +52,11 @@ W poniższych sekcjach opisano każdy z tych kroków bardziej szczegółowo.
 
 Przed przypisaniem roli do podmiotu zabezpieczeń należy wziąć pod uwagę zakres przyznanych uprawnień. Przejrzyj sekcję [Określanie zakresu zasobów,](#determine-resource-scope) aby zdecydować o odpowiednim zakresie.
 
-Procedura pokazana w tym miejscu przypisuje rolę o zakresie do kontenera, ale można wykonać te same kroki, aby przypisać rolę o zakresie do kolejki: 
+Procedura pokazana w tym miejscu przypisuje rolę o zakresie do kontenera, ale można wykonać te same kroki, aby przypisać rolę o zakresie do kolejki:
 
 1. W [witrynie Azure portal](https://portal.azure.com)przejdź do konta magazynu i wyświetl **omówienie** konta.
-1. W obszarze Usługi wybierz pozycję **Blobs**. 
-1. Znajdź kontener, dla którego chcesz przypisać rolę, i wyświetl ustawienia kontenera. 
+1. W obszarze Usługi wybierz pozycję **Blobs**.
+1. Znajdź kontener, dla którego chcesz przypisać rolę, i wyświetl ustawienia kontenera.
 1. Wybierz **formę kontroli dostępu (IAM),** aby wyświetlić ustawienia kontroli dostępu dla kontenera. Wybierz kartę **Przypisania ról,** aby wyświetlić listę przypisań ról.
 
     ![Zrzut ekranu przedstawiający ustawienia kontroli dostępu do kontenera](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)

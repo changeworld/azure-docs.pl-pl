@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bd305d2943d1b12756171748f28d32300081d71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42337fe958a881ee263d16c866dda69f13fe09c1
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443391"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519623"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurowanie sposobu wyrażania zgody użytkowników końcowych na aplikacje
 
@@ -143,9 +143,53 @@ Moduł azure ad powershell preview[(AzureADPreview)](https://docs.microsoft.com/
     }
     ```
 
+## <a name="configure-risk-based-step-up-consent"></a>Konfigurowanie zgody na step-up oparte na analizie ryzyka
+
+Zgoda na stopniowe działanie oparte na ryzyku pomaga zmniejszyć narażenie użytkowników na złośliwe aplikacje, które [żądają nielegalnej zgody.](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) Jeśli firma Microsoft wykryje ryzykowne żądanie zgody użytkownika końcowego, żądanie będzie wymagać "step-up" do zgody administratora zamiast. Ta funkcja jest domyślnie włączona, ale spowoduje zmianę zachowania tylko wtedy, gdy włączona jest zgoda użytkownika końcowego.
+
+Po wykryciu ryzykownego żądania zgody monit o zgodę wyświetli komunikat informujący, że potrzebne jest zatwierdzenie administratora. Jeśli [przepływ pracy żądania zgody administratora](configure-admin-consent-workflow.md) jest włączony, użytkownik może wysłać żądanie do administratora do dalszego przeglądu bezpośrednio z monitu o zgodę. Jeśli opcja ta nie jest włączona, zostanie wyświetlony następujący komunikat:
+
+* **AADSTS90094:** &lt;clientAppDisplayName&gt; potrzebuje uprawnień dostępu do zasobów w organizacji, które tylko administrator może udzielić. Poproś administratora o udzielenie uprawnienia do tej aplikacji, aby można było z niej korzystać.
+
+W takim przypadku zdarzenie inspekcji zostanie również zarejestrowane z kategorią "Zarządzanie aplikacjami", typem działania "Zgoda na aplikację" i powodem stanu "Wykryto ryzykowną aplikację".
+
+> [!IMPORTANT]
+> Administratorzy powinni dokładnie [ocenić wszystkie żądania zgody](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent) przed zatwierdzeniem, zwłaszcza gdy firma Microsoft wykryła ryzyko.
+
+### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Wyłączanie lub ponowne włączanie zgody na step-up oparte na ryzyku przy użyciu programu PowerShell
+
+Za pomocą modułu Azure AD PowerShell Preview[(AzureADPreview)](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)można wyłączyć step-up do zgody administratora wymagane w przypadkach, gdy firma Microsoft wykrywa ryzyko lub ponownie włączyć go, jeśli został wcześniej wyłączony.
+
+Można to zrobić przy użyciu tych samych kroków, jak pokazano powyżej do [konfigurowania zgody właściciela grupy za pomocą programu PowerShell](#configure-group-owner-consent-using-powershell), ale zastąpienie innej wartości ustawień. Istnieją trzy różnice w krokach: 
+
+1. Zrozumienie wartości ustawień zgody na step-up na podstawie ryzyka:
+
+    | Ustawienie       | Typ         | Opis  |
+    | ------------- | ------------ | ------------ |
+    | _BlockUserConsentForRiskyApps_   | Wartość logiczna |  Flaga wskazująca, czy zgoda użytkownika zostanie zablokowana po wykryciu ryzykownego żądania. |
+
+2. Zastąpić następującą wartość w kroku 3:
+
+    ```powershell
+    $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
+    ```
+3. Zastąpić jeden z następujących w kroku 5:
+
+    ```powershell
+    # Disable risk-based step-up consent entirely
+    $riskBasedConsentEnabledValue.Value = "False"
+    ```
+
+    ```powershell
+    # Re-enable risk-based step-up consent, if disabled previously
+    $riskBasedConsentEnabledValue.Value = "True"
+    ```
+
 ## <a name="next-steps"></a>Następne kroki
 
 [Konfigurowanie przepływu pracy zgody administratora](configure-admin-consent-workflow.md)
+
+[Dowiedz się, jak zarządzać zgodą aplikacji i oceniać żądania zgody](manage-consent-requests.md)
 
 [Udzielanie zgody administratora dla całej dzierżawy na aplikację](grant-admin-consent.md)
 

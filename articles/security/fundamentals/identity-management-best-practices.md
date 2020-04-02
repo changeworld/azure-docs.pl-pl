@@ -3,7 +3,7 @@ title: Najważniejsze wskazówki dotyczące zabezpieczeń dotyczące tożsamośc
 description: Ten artykuł zawiera zestaw najlepszych rozwiązań dotyczących zarządzania tożsamościami i kontroli dostępu przy użyciu wbudowanych funkcji platformy Azure.
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: RKarlin
 editor: TomSh
 ms.assetid: 07d8e8a8-47e8-447c-9c06-3a88d2713bc1
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
-ms.author: barclayn
-ms.openlocfilehash: 52ef3a9b1df058d5d2e954b424094f9dbaeba15b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: ffd9919092cdf2481767e58f10ba6525d56ca4a8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73053339"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548456"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure Identity Management and access control security best practices (Zarządzanie tożsamościami na platformie Azure i najlepsze rozwiązania dotyczące kontroli dostępu)
 
@@ -269,7 +269,7 @@ Oceń konta, które są przypisane lub kwalifikują się do roli administratora 
 **Najlepsze rozwiązanie:** Wymagaj, aby wszystkie krytyczne konta administratorów były bez hasła (preferowane) lub wymagały uwierzytelniania wieloskładnikowego.
 **Szczegóły:** Użyj [aplikacji Microsoft Authenticator,](/azure/active-directory/authentication/howto-authentication-phone-sign-in) aby zalogować się do dowolnego konta usługi Azure AD bez użycia hasła. Podobnie jak [Windows Hello dla firm,](/windows/security/identity-protection/hello-for-business/hello-identity-verification)program Microsoft Authenticator używa uwierzytelniania opartego na kluczach, aby włączyć poświadczenia użytkownika powiązane z urządzeniem i używają uwierzytelniania biometrycznego lub numeru PIN.
 
-Wymagaj uwierzytelniania wieloskładnikowego platformy Azure podczas logowania dla wszystkich indywidualnych użytkowników, którzy są trwale przypisani do jednej lub więcej ról administratora usługi Azure AD: administratora globalnego, administratora ról uprzywilejowanych, administratora usługi Exchange Online i usługi SharePoint Online Administratora. Włącz [uwierzytelnianie wieloskładnikowe dla kont administratora](/azure/active-directory/authentication/howto-mfa-userstates) i upewnij się, że użytkownicy kont administratora się zarejestrowali.
+Wymagaj uwierzytelniania wieloskładnikowego platformy Azure podczas logowania dla wszystkich indywidualnych użytkowników, którzy są trwale przypisani do jednej lub więcej ról administratora usługi Azure AD: administratora globalnego, administratora ról uprzywilejowanych, administratora usługi Exchange Online i administratora usługi SharePoint Online. Włącz [uwierzytelnianie wieloskładnikowe dla kont administratora](/azure/active-directory/authentication/howto-mfa-userstates) i upewnij się, że użytkownicy kont administratora się zarejestrowali.
 
 **Najlepsze rozwiązanie:** W przypadku krytycznych kont administratorów należy mieć stację roboczą administratora, na której zadania produkcyjne nie są dozwolone (na przykład przeglądanie i poczta e-mail). Pozwoli to chronić konta administratorów przed wektorami ataków, które używają przeglądania i poczty e-mail, i znacznie zmniejszy ryzyko poważnego incydentu.
 **Szczegóły:** Użyj stacji roboczej administratora. Wybierz poziom zabezpieczeń stacji roboczej:

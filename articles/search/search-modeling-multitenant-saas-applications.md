@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113277"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549015"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Wzorce projektowe dla wielodostępnych aplikacji SaaS i usługi Azure Cognitive Search
 Aplikacja wielodostępna to taka, która zapewnia te same usługi i możliwości dowolnej liczbie dzierżawców, którzy nie mogą wyświetlać ani udostępniać danych innej dzierżawy. W tym dokumencie omówiono strategie izolacji dzierżawy dla aplikacji wielodostępnych utworzonych za pomocą usługi Azure Cognitive Search.
@@ -37,7 +37,7 @@ Dodawanie i usuwanie partycji i replik w pozwoli pojemność usługi wyszukiwani
 ### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Limity usług i indeksów w usłudze Azure Cognitive Search
 Istnieje kilka różnych [warstw cenowych](https://azure.microsoft.com/pricing/details/search/) w usłudze Azure Cognitive Search, każda z warstw ma różne [limity i przydziały.](search-limits-quotas-capacity.md) Niektóre z tych limitów są na poziomie usługi, niektóre są na poziomie indeksu, a niektóre są na poziomie partycji.
 
-|  | Podstawowa (Basic) | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Podstawowy | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Maksymalna liczba replik na usługę |3 |12 |12 |12 |12 |
 | Maksymalna liczba partycji na usługę |1 |12 |12 |12 |3 |
@@ -51,7 +51,7 @@ W warstwie cenowej S3 usługi Azure Cognitive Search istnieje opcja dla trybu wy
 
 S3 HD pozwala na wiele małych indeksów, które mają być pakowane pod zarządzanie jednej usługi wyszukiwania, handlu możliwość skalowania indeksów w poziomie przy użyciu partycji dla możliwości hostowania więcej indeksów w jednej usłudze.
 
-Konkretnie, usługa S3 może mieć od 1 do 200 indeksów, które łącznie mogą pomieścić do 1,4 miliarda dokumentów. S3 HD z drugiej strony pozwoliłoby poszczególnych indeksów tylko przejść do 1 miliona dokumentów, ale może obsługiwać do 1000 indeksów na partycję (do 3000 na usługę) z całkowitą liczbą dokumentów 200 milionów na partycję (do 600 milionów na usługę).
+Usługa S3 jest przeznaczona do obsługi stałej liczby indeksów (maksymalnie 200) i zezwalania na skalowanie każdego indeksu w poziomie w miarę dodawania nowych partycji do usługi. Dodanie partycji do usług S3 HD zwiększa maksymalną liczbę indeksów, które usługa może obsługiwać. Idealny maksymalny rozmiar dla pojedynczego indeksu S3HD wynosi około 50 - 80 GB, chociaż nie ma twardego limitu rozmiaru dla każdego indeksu nałożonego przez system.
 
 ## <a name="considerations-for-multitenant-applications"></a>Zagadnienia dotyczące aplikacji wielodostępnych
 Aplikacje wielodostępne muszą skutecznie dystrybuować zasoby między dzierżawcami, zachowując pewien poziom prywatności między różnymi dzierżawcami. Istnieje kilka zagadnień podczas projektowania architektury dla takiej aplikacji:
@@ -78,7 +78,7 @@ W modelu indeksu na dzierżawę wielu dzierżaw zajmują jedną usługę Azure C
 
 Dzierżawcy osiągnąć izolację danych, ponieważ wszystkie żądania wyszukiwania i operacje dokumentu są wydawane na poziomie indeksu w usłudze Azure Cognitive Search. W warstwie aplikacji istnieje świadomość potrzeby kierowania ruchu różnych dzierżaw do odpowiednich indeksów, a także zarządzania zasobami na poziomie usług we wszystkich dzierżawców.
 
-Kluczowym atrybutem modelu indeksu na dzierżawcę jest możliwość dla dewelopera aplikacji do oversubscribe pojemności usługi wyszukiwania wśród dzierżaw aplikacji. Jeśli dzierżawcy mają nierównomierny rozkład obciążenia, optymalna kombinacja dzierżaw może być rozdzielona między indeksy usługi wyszukiwania, aby pomieścić szereg wysoce aktywnych, zasobochłonnych dzierżaw, jednocześnie obsługując długi ogon mniej aktywnych najemców. Kompromis jest niezdolność modelu do obsługi sytuacji, w których każdy dzierżawy jest jednocześnie bardzo aktywny.
+Kluczowym atrybutem modelu indeksu na dzierżawcę jest możliwość dla dewelopera aplikacji do oversubscribe pojemności usługi wyszukiwania wśród dzierżaw aplikacji. Jeśli dzierżawcy mają nierównomierny rozkład obciążenia, optymalna kombinacja dzierżaw mogą być dystrybuowane między indeksami usługi wyszukiwania, aby pomieścić szereg bardzo aktywnych, zasobochłonnych dzierżaw jednocześnie obsługujących długi ogon mniej aktywnych dzierżaw. Kompromis jest niezdolność modelu do obsługi sytuacji, w których każdy dzierżawy jest jednocześnie bardzo aktywny.
 
 Model indeksu na dzierżawę stanowi podstawę dla modelu kosztu zmiennego, w którym cała usługa Azure Cognitive Search jest kupowana z góry, a następnie wypełniona dzierżawcami. Pozwala to na nieużywane zdolności produkcyjne przeznaczone dla wersji próbnych i bezpłatnych kont.
 

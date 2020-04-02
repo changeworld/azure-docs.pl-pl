@@ -7,12 +7,12 @@ ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/15/2020
-ms.openlocfilehash: 796b37f98fed7e389fa71a15b5e6697a14db1a16
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 1b9d593b0f0895e2ba75fae7ab7e78ea883c8907
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397215"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521674"
 ---
 # <a name="microsoft-flow-connector-preview-usage-examples"></a>Przykłady użycia łącznika programu Microsoft Flow (Wersja zapoznawcza)
 
@@ -24,8 +24,6 @@ Aby uzyskać więcej informacji, zobacz [Łącznik usługi Microsoft Flow (Wersj
 * [Wypychanie danych do zestawu danych usługi Power BI](#push-data-to-power-bi-dataset)
 * [Zapytania warunkowe](#conditional-queries)
 * [Wysyłanie poczty e-mail do wielu wykresów przepływu usługi Azure Data Explorer](#email-multiple-azure-data-explorer-flow-charts)
-* [Wysyłanie innej wiadomości e-mail do różnych kontaktów](#send-a-different-email-to-different-contacts)
-* [Tworzenie niestandardowej tabeli HTML](#create-a-custom-html-table)
 
 ## <a name="microsoft-flow-connector-and-sql"></a>Łącznik i sql usługi Microsoft Flow
 
@@ -101,23 +99,21 @@ Wizualizuj te informacje jako wykres kołowy i wyślij go pocztą e-mail do zesp
 
 ## <a name="email-multiple-azure-data-explorer-flow-charts"></a>Wysyłanie poczty e-mail do wielu wykresów przepływu usługi Azure Data Explorer
 
-1. Utwórz nowy przepływ za pomocą wyzwalacza "Cykl" i zdefiniuj interwał przepływu i częstotliwości. 
+1. Utwórz nowy przepływ za pomocą wyzwalacza cyklu i zdefiniuj interwał przepływu i częstotliwości. 
 1. Dodaj nowy krok, z jednym lub więcej Kusto - Uruchom kwerendę i wizualizuj akcje wyników. 
 
     ![Uruchamianie kilku zapytań w przepływie](./media/flow-usage/flow-severalqueries.png)
 1. Dla każdego Kusto - Uruchom kwerendę i wizualizuj wynik, zdefiniuj następujące pola:
-    * Adres URL klastra (w polu *Nazwa klastra)*
+    * Adres URL klastra
     * Nazwa bazy danych
-    * Typ kwerendy i wykresu (tabela HTML/ wykres kołowy/ wykres czasu/ wykres słupkowy/ wprowadź wartość niestandardową).
+    * Typ kwerendy i wykresu (tabela HTML, wykres kołowy, wykres czasu, wykres słupkowy lub wprowadź wartość niestandardową).
 
     ![Wizualizuj wyniki za pomocą wielu załączników](./media/flow-usage/flow-visualizeresultsmultipleattachments.png)
 
-    > [!IMPORTANT]
-    > W polach *Nazwa klastra* wprowadź adres URL klastra.
-
-1. Dodaj akcję Wyślij wiadomość e-mail. 
-    * W polu *Treść* wstaw wymaganą treść, aby zwizualizowany wynik kwerendy został uwzględniony w treści wiadomości e-mail.
-    * Aby dodać załącznik do wiadomości e-mail, dodaj nazwę załącznika i zawartość załącznika.
+1. Dodaj akcję Wyślij wiadomość e-mail (w wersji 2):Add a Send an email (v2) action: 
+    1. W sekcji treści wybierz ikonę widoku kodu.
+    1. W polu **Treść** wstaw wymaganą karmę, aby zwizualizowany wynik kwerendy został uwzględniony w treści wiadomości e-mail.
+    1. Aby dodać załącznik do wiadomości e-mail, dodaj nazwę załącznika i zawartość załącznika.
     
     ![Wysyłanie wiadomości e-mail z wieloma załącznikami](./media/flow-usage/flow-email-multiple-attachments.png)
 
@@ -128,68 +124,6 @@ Wyniki:
 [![](./media/flow-usage/flow-resultsmultipleattachments.png "Results of multiple attachments")](./media/flow-usage/flow-resultsmultipleattachments.png#lightbox)
 
 [![](./media/flow-usage/flow-resultsmultipleattachments2.png "Results of multiple attachments")](./media/flow-usage/flow-resultsmultipleattachments2.png#lightbox)
-
-## <a name="send-a-different-email-to-different-contacts"></a>Wysyłanie innej wiadomości e-mail do różnych kontaktów
-
-Usługa Microsoft Flow umożliwia wysyłanie różnych niestandardowych wiadomości e-mail do różnych kontaktów. Adresy e-mail i zawartość wiadomości e-mail są wynikiem zapytania Kusto.
-
-Przykład:
-
-![Dynamiczna poczta e-mail za pomocą zapytania Kusto](./media/flow-usage/flow-dynamicemailkusto.png)
-
-> [!IMPORTANT]
-> W polu *Nazwa klastra* wprowadź adres URL klastra.
-
-![Dynamiczna wiadomość e-mail w akcji przepływu](./media/flow-usage/flow-dynamicemail.png)
-
-## <a name="create-a-custom-html-table"></a>Tworzenie niestandardowej tabeli HTML
-
-Można korzystać z usługi Microsoft Flow do tworzenia i używania niestandardowych elementów HTML, takich jak niestandardowa tabela HTML.
-
-W poniższym przykładzie pokazano, jak utworzyć niestandardową tabelę HTML. Tabela HTML będzie miała swoje wiersze kolorowe według poziomu dziennika (tak samo jak w Eksploratorze danych platformy Azure).
-
-Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć podobny przepływ:
-
-1. Utwórz nową akcję Kusto - Uruchom kwerendę i listę wyników.
-
-    ![Wyświetlanie wyników dla tabeli HTML](./media/flow-usage/flow-listresultforhtmltable.png)
-
-> [!IMPORTANT]
-> W polu *Nazwa klastra* wprowadź adres URL klastra.
-
-1. Pętla nad wynikami kwerendy i tworzenie treści tabeli HTML: 
-    1. Aby utworzyć zmienną do przechowywania ciągu HTML, wybierz pozycję **Nowy krok**
-    1. Wybierz **pozycję Dodaj akcję** i wyszukaj zmienne. 
-    1. Wybierz **zmienne — inicjuj zmienną**. 
-    1. Zainicjować zmienną ciągu w następujący sposób:
-
-    ![Inicjowanie zmiennej](./media/flow-usage/flow-initializevariable.png)
-
-1. Pętla nad wynikami:
-    1. Wybierz pozycję **Nowy krok**.
-    1. Wybierz pozycję **Dodaj akcję**.
-    1. Wyszukaj zmienne. 
-    1. Wybierz **zmienne — dołączanie do zmiennej ciągu**. 
-    1. Wybierz nazwę zmiennej, która została zainicjowana wcześniej, i utwórz wiersze tabeli HTML przy użyciu wyników kwerendy. 
-    Podczas wybierania wyników kwerendy zastosuj do każdego z nich jest automatycznie dodawany.
-
-    W poniższym przykładzie `if` wyrażenie służy do definiowania stylu każdego wiersza:
-
-    ```if(equals(items('Apply_to_each')?['Level'], 'Warning'), 'Yellow', if(equals(items('Apply_to_each')?['Level'], 'Error'), 'red', 'white'))```
-
-    [![](./media/flow-usage/flow-createhtmltableloopcontent.png "Create HTML table loop content")](./media/flow-usage/flow-createhtmltableloopcontent.png#lightbox)
-
-1. Utwórz pełną zawartość HTML: 
-    1. Dodaj nową akcję poza Zastosuj do każdej z nich. 
-    W poniższym przykładzie użytą akcją jest Wyślij wiadomość e-mail.
-    1. Zdefiniuj tabelę HTML przy użyciu zmiennej z poprzednich kroków. 
-    1. Jeśli wysyłasz wiadomość e-mail, wybierz pozycję **Pokaż opcje zaawansowane,** a w obszarze Jest HTML wybierz pozycję **Tak**.
-
-    ![Niestandardowa wiadomość e-mail tabeli HTML](./media/flow-usage/flow-customhtmltablemail.png)
-
-Wynik:
-
-![Niestandardowy wynik wiadomości e-mail tabeli HTML](./media/flow-usage/flow-customhtmltableresult.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

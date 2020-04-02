@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: fc2b1bbe0a3249014e663d43ee4db87cab5eedcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 715f1028597d76915d833b0ade66bc03d939030d
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063261"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546447"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Jak skonfigurować parametry serwera w usłudze Azure Database dla MySQL przy użyciu witryny Azure portal
 
@@ -39,8 +39,8 @@ Rozmiar puli buforów InnoDB nie jest konfigurowalny i powiązany z [warstwą ce
 
 |**Warstwa cenowa**|**vCore(s)**|**Rozmiar puli buforów InnoDB w MB <br>(serwery obsługujące pamięć masową o pojemności do 4 TB)**| **Rozmiar puli buforów InnoDB w MB <br>(serwery obsługujące pamięć masową o pojemności do 16 TB)**|
 |:---|---:|---:|---:|
-|Podstawowa (Basic)| 1| 832| |
-|Podstawowa (Basic)| 2| 2560| |
+|Podstawowy| 1| 832| |
+|Podstawowy| 2| 2560| |
 |Ogólnego przeznaczenia| 2| 3584| 7168|
 |Ogólnego przeznaczenia| 4| 7680| 15360|
 |Ogólnego przeznaczenia| 8| 15360| 30720|
@@ -68,10 +68,10 @@ Inne parametry serwera, które nie są wymienione w tym miejscu są ustawione na
 
 ### <a name="populating-the-time-zone-tables"></a>Wypełnianie tabel stref czasowych
 
-Tabele stref czasowych na serwerze `az_load_timezone` można wypełnić, wywołując procedurę składowaną za pomocą narzędzia, takiego jak wiersz polecenia MySQL lub MySQL Workbench.
+Tabele stref czasowych na serwerze `mysql.az_load_timezone` można wypełnić, wywołując procedurę składowaną za pomocą narzędzia, takiego jak wiersz polecenia MySQL lub MySQL Workbench.
 
 > [!NOTE]
-> Jeśli `az_load_timezone` używasz polecenia z mysql workbench, może być konieczne wyłączenie `SET SQL_SAFE_UPDATES=0;`trybu bezpiecznej aktualizacji przy użyciu .
+> Jeśli `mysql.az_load_timezone` używasz polecenia z mysql workbench, może być konieczne wyłączenie `SET SQL_SAFE_UPDATES=0;`trybu bezpiecznej aktualizacji przy użyciu .
 
 ```sql
 CALL mysql.az_load_timezone();

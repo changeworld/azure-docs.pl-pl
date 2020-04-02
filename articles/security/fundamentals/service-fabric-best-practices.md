@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: befe8945468d220a04ec7f0b515f22159cb72b0f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75548823"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549245"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń usługi Azure Service Fabric
 Wdrażanie aplikacji na platformie Azure jest szybkie, łatwe i ekonomiczne. Przed wdrożeniem aplikacji w chmurze w procesach produkcyjnych zapoznaj się z naszą listą najważniejszych i zalecanych najlepszych rozwiązań dotyczących implementowania bezpiecznych klastrów w aplikacji.
@@ -32,7 +32,7 @@ Zaleca się następujące najlepsze rozwiązania dotyczące zabezpieczeń sieci 
 -   Użyj certyfikatów X.509.
 -   Konfigurowanie zasad zabezpieczeń.
 -   Zaimplementuj konfigurację zabezpieczeń reliable actors.
--   Konfigurowanie ssl dla sieci szkieletowej usług Azure.
+-   Konfigurowanie protokołu TLS dla sieci szkieletowej usług Azure.
 -   Użyj izolacji sieci i zabezpieczeń z siecią szkieletową usług Azure.
 -   Skonfiguruj usługę Azure Key Vault pod kątem zabezpieczeń.
 -   Przypisz użytkowników do ról.
@@ -118,13 +118,13 @@ Każdy aktor jest zdefiniowany jako wystąpienie typu aktora, identyczne ze spos
 [Konfiguracje zabezpieczeń replikatora](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md) służą do zabezpieczania kanału komunikacyjnego używanego podczas replikacji. Ta konfiguracja uniemożliwia usługom wyświetlanie wzajemnego ruchu replikacji i zapewnia bezpieczeństwo danych o wysokiej dostępności. Domyślnie pusta sekcja konfiguracji zabezpieczeń uniemożliwia bezpieczeństwo replikacji.
 Konfiguracje replikatora skonfigurować replikatora, który jest odpowiedzialny za uczynienie stan dostawcy stanu aktora wysoce niezawodne.
 
-## <a name="configure-ssl-for-azure-service-fabric"></a>Konfigurowanie usługi SSL dla sieci szkieletowej usług Azure
-Proces uwierzytelniania serwera [uwierzytelnia](../../service-fabric/service-fabric-cluster-creation-via-arm.md) punkty końcowe zarządzania klastrem do klienta zarządzania. Klient zarządzania następnie rozpoznaje, że rozmawia z prawdziwym klastrem. Ten certyfikat zapewnia również protokół [SSL](../../service-fabric/service-fabric-cluster-creation-via-arm.md) dla interfejsu API zarządzania HTTPS i Eksploratora sieci szkieletowej usług za pośrednictwem protokołu HTTPS.
+## <a name="configure-tls-for-azure-service-fabric"></a>Konfigurowanie sieci szkieletowej usługi TLS dla usługi Azure
+Proces uwierzytelniania serwera [uwierzytelnia](../../service-fabric/service-fabric-cluster-creation-via-arm.md) punkty końcowe zarządzania klastrem do klienta zarządzania. Klient zarządzania następnie rozpoznaje, że rozmawia z prawdziwym klastrem. Ten certyfikat zapewnia również [protokół TLS](../../service-fabric/service-fabric-cluster-creation-via-arm.md) dla interfejsu API zarządzania HTTPS i Eksploratora sieci szkieletowej usług za pośrednictwem protokołu HTTPS.
 Musisz uzyskać niestandardową nazwę domeny dla klastra. Podczas żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną dla klastra.
 
-Aby skonfigurować ssl dla aplikacji, należy najpierw uzyskać certyfikat SSL, który został podpisany przez urząd certyfikacji. Urząd certyfikacji jest zaufaną stroną trzecią, która wystawia certyfikaty dla celów zabezpieczeń SSL. Jeśli nie masz jeszcze certyfikatu SSL, musisz go uzyskać od firmy, która sprzedaje certyfikaty SSL.
+Aby skonfigurować TLS dla aplikacji, należy najpierw uzyskać certyfikat SSL/TLS, który został podpisany przez urząd certyfikacji. Urząd certyfikacji jest zaufaną stroną trzecią, która wystawia certyfikaty dla celów zabezpieczeń TLS. Jeśli nie masz jeszcze certyfikatu SSL/TLS, musisz go uzyskać od firmy, która sprzedaje certyfikaty SSL/TLS.
 
-Certyfikat musi spełniać następujące wymagania dotyczące certyfikatów SSL na platformie Azure:
+Certyfikat musi spełniać następujące wymagania dotyczące certyfikatów SSL/TLS na platformie Azure:
 -   Certyfikat musi zawierać klucz prywatny.
 
 -   Certyfikat musi zostać utworzony w celu wymiany kluczy i można go wyeksportować do pliku wymiany informacji osobistych (.pfx).
@@ -135,13 +135,13 @@ Certyfikat musi spełniać następujące wymagania dotyczące certyfikatów SSL 
     - Zażądaj certyfikatu od urzędu certyfikacji o nazwie podmiotu zgodnej z niestandardową nazwą domeny usługi. Jeśli na przykład niestandardową nazwą domeny jest __contoso__**.com,** certyfikat urzędu certyfikacji powinien mieć nazwę podmiotu **.contoso.com** lub __www__**.contoso.com**.
 
     >[!NOTE]
-    >Nie można uzyskać certyfikatu SSL od urzędu certyfikacji dla domeny **.net** __aplikacji cloudapp.__
+    >Nie można uzyskać certyfikatu SSL/TLS od urzędu certyfikacji dla domeny **.net** __aplikacji cloudapp.__
 
 -   Certyfikat musi używać szyfrowania 2048-bitowego.
 
 Protokół HTTP jest niezabezpieczony i podlega atakom podsłuchowym. Dane przesyłane za pośrednictwem protokołu HTTP są wysyłane jako zwykły tekst z przeglądarki sieci web do serwera sieci web lub między innymi punktami końcowymi. Osoby atakujące mogą przechwytywać i wyświetlać poufne dane przesyłane za pośrednictwem protokołu HTTP, takie jak dane karty kredytowej i loginy do kont. Gdy dane są wysyłane lub publikowane za pośrednictwem przeglądarki za pośrednictwem protokołu HTTPS, protokół SSL zapewnia szyfrowanie poufnych informacji i zabezpieczenie ich przed przechwyceniem.
 
-Aby dowiedzieć się więcej na temat używania certyfikatów SSL, zobacz [Konfigurowanie ssl dla aplikacji platformy Azure](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
+Aby dowiedzieć się więcej na temat używania certyfikatów SSL/TLS, zobacz [Konfigurowanie protokołu TLS dla aplikacji na platformie Azure](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Korzystanie z izolacji i zabezpieczeń sieci w sieci szkieletowej usług Azure
 Skonfiguruj bezpieczny klaster typu 3 węzłów przy użyciu [szablonu usługi Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) jako przykładu. Kontroluj przychodzący i wychodzący ruch sieciowy za pomocą szablonu i grup zabezpieczeń sieci.

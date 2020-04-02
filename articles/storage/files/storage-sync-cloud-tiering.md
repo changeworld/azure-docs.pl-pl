@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 11f9097fc4875f0a4300ac56dafe7af9a0b00c97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8a8502b40410df221886cde2fa5f3db15bf3eed
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454622"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549174"
 ---
 # <a name="cloud-tiering-overview"></a>Omówienie warstw w chmurze
 Warstwa chmury to opcjonalna funkcja synchronizacji plików platformy Azure, w której często używane pliki są buforowane lokalnie na serwerze, podczas gdy wszystkie inne pliki są warstwowe do usługi Azure Files na podstawie ustawień zasad. Gdy plik jest warstwowy, filtr systemu plików synchronizacji plików azure (StorageSync.sys) zastępuje plik lokalnie wskaźnikiem lub punktem ponownejparacji. Punkt ponownejparieny reprezentuje adres URL pliku w usłudze Azure Files. Plik warstwowy ma zarówno atrybut "offline", jak i atrybut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS w systemie plików NTFS, dzięki czemu aplikacje innych firm mogą bezpiecznie identyfikować pliki warstwowe.
@@ -51,7 +51,22 @@ Gdy na woluminie znajduje się więcej niż jeden punkt końcowy serwera, efekty
 
 <a id="date-tiering-policy"></a>
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Jak działają zasady obsługi warstw dat w połączeniu z zasadami obsługi poziomów wolnego miejsca na woluminie? 
-Po włączeniu warstw w chmurze w punkcie końcowym serwera, można ustawić zasady wolnego miejsca woluminu. Zawsze ma pierwszeństwo przed innymi zasadami, w tym zasadami dotyczącymi dat. Opcjonalnie można włączyć zasady daty dla każdego punktu końcowego serwera na tym woluminie, co oznacza, że tylko pliki, do których uzyskuje się dostęp (czyli do odczytu lub zapisane) w ciągu dni, które opisano w tej zasadie, będą przechowywane lokalnie, przy czym wszystkie pliki stali będą warstwowe. Należy pamiętać, że zasady wolnego miejsca na woluminie zawsze mają pierwszeństwo, a gdy nie ma wystarczającej ilości wolnego miejsca na woluminie, aby zachować tyle dni plików, zgodnie z zasadami daty, usługa Azure File Sync będzie kontynuować tworzenie warstw najzimniejszych plików, dopóki wolumin nie będzie wolny. procent miejsca.
+Po włączeniu warstw w chmurze w punkcie końcowym serwera, można ustawić zasady wolnego miejsca woluminu. Zawsze ma pierwszeństwo przed innymi zasadami, w tym zasadami dotyczącymi dat. Opcjonalnie można włączyć zasady daty dla każdego punktu końcowego serwera na tym woluminie. Ta zasada zarządza, że tylko pliki, do których uzyskuje się dostęp (czyli odczytywane lub zapisywane) w ciągu dni, które opisano w tych zasadach, będą przechowywane lokalnie. Pliki, do które nie są dostępne z określoną liczbą dni, będą warstwowe. 
+
+Warstwa w chmurze używa ostatniego czasu dostępu do określenia, które pliki powinny być warstwowe. Sterownik filtru warstwowego chmury (storagesync.sys) śledzi czas ostatniego dostępu i rejestruje informacje w magazynie ciepła warstwowego chmury. Magazyn ciepła można wyświetlić przy użyciu lokalnego polecenia cmdlet programu PowerShell.
+
+```powershell
+Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
+Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
+```
+
+> [!IMPORTANT]
+> Sygnatura czasowa ostatniego dostępu nie jest właściwością śledzona przez system NTFS i dlatego nie jest domyślnie widoczna w Eksploratorze plików. Nie używaj sygnatury czasowej ostatniej modyfikacji w pliku, aby sprawdzić, czy zasady daty działają zgodnie z oczekiwaniami. Ten sygnatura czasowa tylko śledzi zapisy, a nie odczytuje. Użyj polecenia cmdlet pokazane, aby uzyskać ostatnio dostępne sygnatury czasowej dla tej oceny.
+
+> [!WARNING]
+> Nie włączaj funkcji NTFS śledzenia ostatnio dostępnej sygnatury czasowej dla plików i folderów. Ta funkcja jest domyślnie wyłączona, ponieważ ma duży wpływ na wydajność. Usługa Azure File Sync będzie śledzić czasy ostatniego dostępu automatycznie i bardzo wydajnie i nie korzysta z tej funkcji NTFS.
+
+Należy pamiętać, że zasady wolnego miejsca na woluminie zawsze ma pierwszeństwo, a gdy nie ma wystarczającej ilości wolnego miejsca na woluminie, aby zachować tyle dni wartości plików, zgodnie z zasadami daty, usługa Azure File Sync będzie kontynuować warstwy najzimniejszych plików, dopóki nie zostanie spełniony procent wolnego miejsca.
 
 Załóżmy na przykład, że masz zasadę warstwową opartą na dacie wynoszącą 60 dni i zasady wolnego miejsca na woluminach wynoszące 20%. Jeśli po zastosowaniu zasad daty na woluminie jest mniej niż 20% wolnego miejsca, zasady wolnego miejsca woluminu zostaną włączone i zastąpią zasady daty. Spowoduje to, że więcej plików jest warstwowych, tak, że ilość danych przechowywanych na serwerze może zostać zmniejszona z 60 dni danych do 45 dni. Z drugiej strony ta zasada wymusi warstwowanie plików, które mieszczą się poza zakresem czasu, nawet jeśli nie osiągnąłeś progu wolnego miejsca — więc plik, który ma 61 dni, będzie warstwowy, nawet jeśli wolumin jest pusty.
 

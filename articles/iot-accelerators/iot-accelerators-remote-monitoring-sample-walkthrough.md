@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 33005bc286f7dc2c0ebed74bd9df0309e71346f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73824830"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546311"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Omówienie akceleratora rozwiązania do monitorowania zdalnego
 
@@ -118,16 +118,13 @@ Dane referencyjne grup urządzeń są używane do identyfikowania grupy reguł, 
 
 Zadania ASA dostarczają dane telemetryczne z podłączonych urządzeń do usługi Time Series Insights do przechowywania i analizy.
 
-### <a name="azure-stream-analytics"></a>Azure Stream Analytics
+### <a name="azure-stream-analytics"></a>Usługa Azure Stream Analytics
 
 [Usługa Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) to aparat przetwarzania zdarzeń, który umożliwia sprawdzanie dużej ilości przesyłania strumieniowego danych z urządzeń.
 
 ### <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
 [Usługa Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/) przechowuje dane telemetryczne z urządzeń podłączonych do akceleratora rozwiązań. Umożliwia również wizualizację i wyszukiwanie danych telemetrycznych urządzenia w interfejsie użytkownika sieci web rozwiązania.
-
-> [!NOTE]
-> Usługa Time Series Insights nie jest obecnie dostępna w chmurze platformy Azure w Chinach. Nowe wdrożenia akceleratora rozwiązań do zdalnego monitorowania w chmurze azure chiny używać usługi Cosmos DB dla wszystkich magazynu.
 
 ### <a name="configuration-microservice"></a>Mikrousługa konfiguracji
 

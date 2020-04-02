@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 4025c620aea49dfb26ab203630c121d29d88d9d7
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: f02046d1e2ee558ca4ea4472a03fddb5d0a6a16f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474533"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549320"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Tworzenie zestawów danych usługi Azure Machine Learning
 
@@ -82,7 +82,7 @@ Aby utworzyć zestawy danych z [magazynu danych platformy Azure](how-to-access-d
 
 #### <a name="create-a-tabulardataset"></a>Tworzenie zestawu tabelaryczne dane
 
-[`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) Metoda w `TabularDatasetFactory` klasie służy do odczytywania plików w formacie csv lub .tsv oraz do tworzenia niezarejestrowanego zestawu tabelaryczne. Jeśli czytasz z wielu plików, wyniki zostaną zagregowane w jedną reprezentację tabelaryczne. 
+[`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) Metoda w `TabularDatasetFactory` klasie służy do odczytywania plików w formacie csv lub .tsv oraz do tworzenia niezarejestrowanego zestawu tabelaryczne. Jeśli czytasz z wielu plików, wyniki zostaną zagregowane w jedną reprezentację tabelaryczne. 
 
 ```Python
 from azureml.core import Workspace, Datastore, Dataset
@@ -164,7 +164,7 @@ sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'
 
 W tabelaryczne zestawy danych można określić sygnaturę czasową z kolumny w danych lub z dowolnego miejsca, w której są przechowywane dane wzorca ścieżki, aby włączyć cechę szeregów czasowych. Ta specyfikacja pozwala na łatwe i wydajne filtrowanie według czasu.
 
-Użyj [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) metody w`TabularDataset` klasie, aby określić kolumnę sygnatury czasowej i włączyć filtrowanie według czasu. Aby uzyskać więcej informacji, zobacz [tabelaryczne demo interfejsu API związane z szeregami czasowymi z danymi pogodowymi NOAA](https://aka.ms/azureml-tsd-notebook).
+Użyj [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) metody w`TabularDataset` klasie, aby określić kolumnę sygnatury czasowej i włączyć filtrowanie według czasu. Aby uzyskać więcej informacji, zobacz [tabelaryczne demo interfejsu API związane z szeregami czasowymi z danymi pogodowymi NOAA](https://aka.ms/azureml-tsd-notebook).
 
 ```Python
 # create a TabularDataset with time series trait

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: 56c31e03eeec0c81207dc402e864eadec2d768bd
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 224526efc2152e0b788c5cbc7f3bd60bb3363c1a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474060"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545708"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Łączenie sieci laboratorium z siecią wirtualną równorzędną w usługach Azure Lab Services 
 Ten artykuł zawiera informacje dotyczące komunikacji równorzędnej sieci laboratoriów z inną siecią. 
@@ -34,7 +34,7 @@ W niektórych scenariuszach, w tym w następujących scenariuszach, może być k
 Niektóre sieci lokalne są połączone z usługą Azure Virtual Network za pośrednictwem [usługi ExpressRoute](../../expressroute/expressroute-introduction.md) lub [bramy sieci wirtualnej.](../../vpn-gateway/vpn-gateway-about-vpngateways.md) Te usługi muszą być skonfigurowane poza usługami Azure Lab Services. Aby dowiedzieć się więcej na temat łączenia sieci lokalnej z platformą Azure przy użyciu usługi ExpressRoute, zobacz [Omówienie usługi ExpressRoute](../../expressroute/expressroute-introduction.md). W przypadku łączności lokalnej przy użyciu bramy sieci wirtualnej brama, określona sieć wirtualna i konto laboratorium muszą znajdować się w tym samym regionie.
 
 > [!NOTE]
-> Podczas tworzenia sieci wirtualnej platformy Azure, która będzie równorzędna z kontem laboratoryjnym, ważne jest, aby zrozumieć, jak region sieci wirtualnej wpływa na środowisko, w którym tworzone są laboratoria w klasie.  Aby uzyskać więcej informacji, zapoznaj się z sekcją przewodnika administratora na temat [regionów\lokalizacji](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regions-or-locations).
+> Podczas tworzenia sieci wirtualnej platformy Azure, która będzie równorzędna z kontem laboratoryjnym, ważne jest, aby zrozumieć, jak region sieci wirtualnej wpływa na środowisko, w którym tworzone są laboratoria w klasie.  Aby uzyskać więcej informacji, zapoznaj się z sekcją przewodnika administratora na temat [regionów\lokalizacji](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations).
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurowanie w momencie tworzenia konta w laboratorium
 Podczas tworzenia nowego konta laboratorium można wybrać istniejącą sieć wirtualną, która jest wyświetlana na liście rozwijanej **sieci wirtualnej równorzędnej** na karcie **Zaawansowane.** Wybrana sieć wirtualna jest połączona (równorzędna) z laboratoriami utworzonymi w ramach konta laboratorium. Wszystkie maszyny wirtualne w laboratoriach, które są tworzone po wykonywując tę zmianę będzie miał dostęp do zasobów w sieci wirtualnej równorzędnej. 

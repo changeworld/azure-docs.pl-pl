@@ -5,21 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 01/22/2020
+ms.date: 04/01/2020
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 0df38533afe97f010d1050c3ee2a4a69a54d4cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e8a5960da394b1eac1578d7f757b25995ff8faa
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335096"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80573184"
 ---
 | Zasób | Limit |
 | --- | --- |
 | Przepływność danych |30 Gb/s<sup>1</sup> |
 |Reguły|10,000. Wszystkie typy reguł połączone.|
-|Maksymalne reguły DNAT|299|
+|Maksymalne reguły DNAT|298<br>Jeśli protokół reguły jest skonfigurowany dla protokołu TCP i UDP, jest on liczony jako dwie reguły.|
 |Minimalny rozmiar usługi AzureFirewallSubnet |/26|
 |Zakres portów w regułach sieci i aplikacji|0-64,000. Trwają prace nad złagodzeniem tego ograniczenia.|
 |Publiczne adresy IP|Maksymalnie 100 (obecnie porty SNAT są dodawane tylko dla pierwszych pięciu publicznych adresów IP).|

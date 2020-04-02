@@ -1,22 +1,15 @@
 ---
 title: 'Samouczek: Przeglądanie wypowiedzi punktów końcowych — usługa LUIS'
-titleSuffix: Azure Cognitive Services
 description: W tym samouczku ulepsz prognozowanie aplikacji, weryfikując lub korygując wypowiedzi odebrane za pośrednictwem punktu końcowego usługi LUIS HTTP, o którym nie ma pewności. Niektóre wypowiedzi mogą wymagać weryfikacji pod kątem intencji, a inne — pod kątem jednostki.
 services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 06f51ca83449b39861e7565cc9accc29efbece3f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76843977"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548721"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Samouczek: Napraw niewiążące prognozy, przeglądając wypowiedzi punktów końcowych
 W tym samouczku ulepsz prognozowanie aplikacji, weryfikując lub korygując wypowiedzi odebrane za pośrednictwem punktu końcowego HTTPS usługi LUIS, o którym usługa LUIS nie ma pewności. Należy przejrzeć wypowiedzi punktu końcowego jako regularną część zaplanowanej konserwacji usługi LUIS.
@@ -46,15 +39,11 @@ Aby zaimportować aplikację, należy wykonać następujące czynności.
 
 1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true).
 
-1. W [portalu usługi LUIS w wersji zapoznawczej](https://preview.luis.ai)zaimportuj plik .json do nowej aplikacji.
+[!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-1. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `review`.
+## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Trenuj aplikację, aby zastosować zmiany encji do aplikacji
 
-    > [!TIP]
-    > Klonowanie do nowej wersji jest najlepszym rozwiązaniem przed zmodyfikowaniem aplikacji. Po zakończeniu wersji wyeksportuj wersję (jako plik .json lub .lu) i sprawdź plik do systemu kontroli źródła.
-
-
-1. Aby wyszkolić aplikację, wybierz opcję **Pociąg**.
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Publikowanie aplikacji w celu uzyskania do niej dostępu z punktu końcowego HTTP
 
@@ -66,7 +55,7 @@ W tej aplikacji masz intencje i jednostki, ale nie masz żadnego użycia punktu 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Użyj punktu końcowego, aby dodać następujące wypowiedzi.
+1. Przejdź na koniec adresu URL na pasku adresu i zastąp _YOUR_QUERY_HERE_ wypowiedziami w poniższej tabeli. Dla każdej wypowiedź, prześlij wypowiedź i uzyskać wynik. Następnie zastąp wypowiedź na końcu następną wypowiedź.
 
     |Wypowiedź punktu końcowego|Aligned intent (Intencja wyrównana)|
     |--|--|
@@ -110,9 +99,9 @@ Przejrzyj wypowiedzi punktu końcowego dla poprawnie wyrównanej intencji. Choci
 
 Aby sprawdzić poprawnie wyrównane wypowiedzi przykład poprawiła przewidywania aplikacji, spróbuj wypowiedź blisko skorygowanej wypowiedź.
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Przejdź na koniec tego adresu URL i wprowadź ciąg `Are there any natural language processing jobs in my department right now?`. Ostatnim parametrem querystring jest `q` **kwerenda**wypowiedź .
+1. Przejdź na koniec adresu URL na pasku adresu i `Are there any natural language processing jobs in my department right now?`zastąp _YOUR_QUERY_HERE_ .
 
    ```json
     {

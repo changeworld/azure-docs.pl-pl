@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: b0af19ec740e96cd572ffe37285d7e58ead83b25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d23a59e97ee3fc935a0d0954bc70b547b727fddc
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76774857"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546596"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Architektura łączności w bazie danych azure dla postgreSQL
 W tym artykule opisano architekturę łączności usługi Azure Database for PostgreSQL, a także sposób, w jaki ruch jest kierowany do bazy danych Azure Database for PostgreSQL wystąpienie z klientów zarówno na platformie Azure, jak i poza nią.
@@ -35,14 +35,14 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze pliki IP bramy usługi Az
 | Brazylia Południowa | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Kanada Środkowa |40.85.224.249  |
 | Kanada Wschodnia | 40.86.226.166    |
-| Środkowe stany USA | 23.99.160.139, 13.67.215.62   |
+| Środkowe stany USA | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
 | Chiny Wschodnie | 139.219.130.35    |
 | Chiny Wschodnie 2 | 40.73.82.1  |
 | Chiny Północne | 139.219.15.17    |
 | Chiny Północne 2 | 40.73.50.0     |
 | Azja Wschodnia | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
 | Wschodnie stany USA | 40.121.158.30, 191.238.6.43  |
-| Wschodnie stany USA 2 |40.79.84.180, 191.239.224.107, 52.177.185.181   |
+| Wschodnie stany USA 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | Francja Środkowa | 40.79.137.0, 40.79.129.1  |
 | Niemcy Środkowe | 51.4.144.100     |
 | Niemcy Północny wschód | 51.5.144.179  |
@@ -54,7 +54,7 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze pliki IP bramy usługi Az
 | Korea Środkowa | 52.231.32.42   |
 | Korea Południowa | 52.231.200.86    |
 | Północno-środkowe stany USA | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
-| Europa Północna | 40.113.93.91, 191.235.193.75    |
+| Europa Północna | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
 | Republika Południowej Afryki Północ  | 102.133.152.0    |
 | Republika Południowej Afryki Zachód | 102.133.24.0   |
 | Południowo-środkowe stany USA |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
@@ -64,7 +64,7 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze pliki IP bramy usługi Az
 | Południowe Zjednoczone Królestwo | 51.140.184.11   |
 | Zachodnie Zjednoczone Królestwo | 51.141.8.11  |
 | Zachodnio-środkowe stany USA | 13.78.145.25     |
-| Europa Zachodnia | 40.68.37.158, 191.237.232.75     |
+| Europa Zachodnia | 40.68.37.158, 191.237.232.75, 13.69.105.208  |
 | Zachodnie stany USA | 104.42.238.205, 23.99.34.75  |
 | Zachodnie stany USA 2 | 13.66.226.202  |
 ||||

@@ -3,16 +3,16 @@ title: Limity i przydziały IoT Plug and Play Preview | Dokumenty firmy Microsof
 description: Opis limitów, przydziałów i ograniczania przepustowości, które mają zastosowanie podczas korzystania z wersji Zapoznawczej i odtworzania IoT.
 author: miagdp
 ms.author: miag
-ms.date: 12/26/2019
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 48ecaaba6d956efd9da75d0582fa06d231cb3f80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75531381"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518168"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>Limity podglądu i przepustnice IoT Plug and Play, przydziały i ograniczenia
 
@@ -27,7 +27,7 @@ W przypadku publicznej wersji zapoznawczej do centrum IoT hub mają zastosowanie
 | Liczba modeli możliwości urządzenia (DCM) lub interfejsów, które można zarejestrować na koncentrator | 1500 ||
 | Maksymalna liczba interfejsów, które można zarejestrować na urządzenie | 40 ||
 | Maksymalna liczba dcmów, które mogą być rejestrowane na urządzenie | 1 ||
-| Maksymalny rozmiar pliku interfejsu/kontrolera domeny | 512 znaków ||
+| Maksymalny rozmiar pliku interfejsu/kontrolera domeny | 512 KB ||
 | Maksymalny rozmiar nazwy interfejsu | 256 znaków ||
 | Maksymalny rozmiar nazwy właściwości  | 64 bajty, 7 poziomów głębokości (a pierwszy `$iotin`poziom jest zarezerwowany dla) | Dozwolone znaki: a-z, A-Z, 0-9 (nie jako pierwszy znak) i podkreślenia. |
 | Maksymalny rozmiar wartości właściwości | 512 bajtów ||
@@ -39,7 +39,7 @@ W przypadku publicznej wersji zapoznawczej do centrum IoT hub mają zastosowanie
 
 W przypadku publicznej wersji zapoznawczej do repozytorium modelu mają zastosowanie następujące limity i przydziały:
 
-| Limity, ograniczenia i ograniczenia| Wartość |
+| Limity, ograniczenia i ograniczenia | Wartość |
 |-----|-----|
 | Liczba repozytoriów modeli firmy na dzierżawę usługi Azure Active Directory | 1 |
 | Liczba kluczy autoryzacji na repozytorium modelu | 10  |

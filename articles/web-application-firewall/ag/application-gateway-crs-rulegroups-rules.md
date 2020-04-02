@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 563aa701c1403a1ef26c6073496e7e59c7c5096c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279249"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521839"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Grupy i reguły zasad zapory zapory aplikacji sieci Web
 
@@ -281,6 +281,7 @@ Następujące grupy reguł i reguły są dostępne podczas korzystania z Zapory 
 |---|---|
 |942100|Atak iniekcji SQL wykryty przez libinjection|
 |942110|Atak iniekcji SQL: Wykryto typowe testy iniekcji|
+|942120|Atak iniekcji SQL: Wykryto operatora SQL|
 |942130|Atak iniekcji SQL: Wykryto tautologię SQL.|
 |942140|Atak iniekcji SQL = wykryto typowe nazwy baz danych|
 |942150|Atak iniekcji SQL|

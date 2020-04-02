@@ -8,12 +8,12 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4684daf2a1095a40c478170be37edcae788868ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284839"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546189"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Właściwości agenta usługi IoT Edge i bliźniaczy modułów koncentratora usługi IoT Edge
 
@@ -55,6 +55,7 @@ Bliźniacza reprezentacja modułu dla `$edgeAgent` agenta usługi IoT Edge jest 
 | Moduły. {identyfikator modułu}.stan | {"bieganie" \| "zatrzymane"} | Tak |
 | Moduły. {moduleId}.restartPolicy | {"nigdy" \| "on-failure" \| "on-unhealthy" \| "always"} | Tak |
 | Moduły. {moduleId}.imagePullPolicy | {"on-create" \| "never"} | Nie |
+| Moduły. {moduleId}.env | Lista zmiennych środowiskowych do przekazania do modułu. Przyjmuje format`"<name>": {"value": "<value>"}` | Nie |
 | Moduły. {moduleId}.settings.image | Identyfikator URI do obrazu modułu. | Tak |
 | Moduły. {moduleId}.settings.createOptions | Stringified JSON zawierające opcje tworzenia kontenera modułu. [Opcje tworzenia platformy Docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nie |
 | Moduły. {moduleId}.configuration.id | Identyfikator wdrożenia, które wdrożyło ten moduł. | Centrum IoT ustawia tę właściwość, gdy manifest jest stosowany przy użyciu wdrożenia. Nie jest częścią manifestu wdrażania. |

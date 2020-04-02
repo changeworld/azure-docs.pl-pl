@@ -1,22 +1,14 @@
 ---
 title: 'Samouczek: Jednostka wyrażenia regularnego — usługa LUIS'
-titleSuffix: Azure Cognitive Services
 description: Wyodrębnij konsekwentnie sformatowane dane z wypowiedź przy użyciu jednostki wyrażenia regularnego.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 0ca6f2a67e01e4c604c2dcc8f8eaa9ffe8bad045
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 5b585ee52880c474d3f2736b34a267012b390aad
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75381532"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545834"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Samouczek: Uzyskaj dobrze sformatowane dane z wypowiedź
 W tym samouczku utwórz jednostkę wyrażenia regularnego, aby wyodrębnić konsekwentnie sformatowane dane z wypowiedź.
@@ -100,11 +92,9 @@ Utwórz encję wyrażenia regularnego, aby dopasować go do numeru tekstowego. T
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-2. Przejdź na koniec adresu URL w adresie i wprowadź następujący wypowiedź:
+1. Przejdź na koniec adresu URL na pasku adresu i zastąp _YOUR_QUERY_HERE:_
 
     `Text my pizza delivery to x23456 x234567 x12345`
-
-    Ostatnim parametrem querystring jest `query` **kwerenda**wypowiedź .
 
     ```json
     {

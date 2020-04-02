@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: c3e4c2f2bac45f2e366764473a34b0536bb4cc44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43d834f0c834696cd4a836466c9663fe7c31a392
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76990457"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520499"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Tworzenie hosta bastionu platformy Azure przy użyciu programu Azure PowerShell
 
@@ -35,7 +35,7 @@ Ta sekcja ułatwia tworzenie nowego zasobu bastionu platformy Azure przy użyciu
    ```azurepowershell-interactive
    $subnetName = "AzureBastionSubnet"
    $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-   $vnet = New-AzVirtualNetwork -Name "myVnet" -ResourceGroupName " myBastionRG " -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+   $vnet = New-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myBastionRG" -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
    ```
 
 2. Utwórz publiczny adres IP dla bastionu platformy Azure. Publiczny adres IP jest publicznym adresem IP zasobu Bastion, na którym będzie dostępny protokół RDP/SSH (za port 443). Publiczny adres IP musi znajdować się w tym samym regionie co zasób Bastion, który tworzysz.
@@ -47,7 +47,7 @@ Ta sekcja ułatwia tworzenie nowego zasobu bastionu platformy Azure przy użyciu
 3. Utwórz nowy zasób Bastion platformy Azure w sieci AzureBastionSubnet sieci wirtualnej. Tworzenie i wdrażanie zasobu Bastion zajmuje około 5 minut.
 
    ```azurepowershell-interactive
-   $bastion = New-AzBastion -ResourceGroupName " myBastionRG " -Name "myBastion" -PublicIpAddress $publicip -VirtualNetwork $vnet
+   $bastion = New-AzBastion -ResourceGroupName "myBastionRG" -Name "myBastion" -PublicIpAddress $publicip -VirtualNetwork $vnet
    ```
 
 ## <a name="next-steps"></a>Następne kroki

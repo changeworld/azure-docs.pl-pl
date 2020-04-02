@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 7e8a1793a329a863c9df97ae5ddcbee6cef10e8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4819eaf2a65cf542029cf36f262d0cea5be75f2e
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76964350"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521945"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołączanie środowiska Azure SSIS Integration Runtime do sieci wirtualnej
 
@@ -129,7 +129,7 @@ Po wybraniu podsieci:
 
 Jeśli chcesz wprowadzić własne statyczne publiczne adresy IP dla usługi Azure-SSIS IR podczas łączenia go do sieci wirtualnej, upewnij się, że spełniają one następujące wymagania:
 
-- Dokładnie dwa nieużywane te, które nie są już skojarzone z innymi zasobami platformy Azure powinny być dostarczone. Dodatkowy będzie używany podczas okresowego uaktualniania usługi Azure-SSIS IR.
+- Dokładnie dwa nieużywane te, które nie są już skojarzone z innymi zasobami platformy Azure powinny być dostarczone. Dodatkowy będzie używany podczas okresowego uaktualniania usługi Azure-SSIS IR. Należy zauważyć, że jeden publiczny adres IP nie może być współużytkowane przez aktywne usługi Azure-SSIS IRs.
 
 - Oba powinny być statyczne typu standardowego. Aby uzyskać więcej informacji, zapoznaj się [z jednostkami SKU publicznego adresu IP.](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku)
 
@@ -191,10 +191,55 @@ Na przykład, jeśli usługa Azure-SSIS `UK South` IR znajduje się na stronie i
 > [!NOTE]
 > Takie podejście wiąże się z dodatkowymi kosztami konserwacji. Regularnie sprawdzaj zakres adresów IP i dodawaj nowe zakresy adresów IP do konta UDR, aby uniknąć złamania identyfikatora IR usługi Azure-SSIS. Zalecamy sprawdzanie zakresu IP co miesiąc, ponieważ gdy nowy adres IP pojawi się w tagu usługi, adres IP zajmie kolejny miesiąc. 
 
+Aby ułatwić konfigurację reguł UDR, można uruchomić następujący skrypt programu Powershell, aby dodać reguły UDR dla usług azure batch management services:
+```powershell
+$Location = "[location of your Azure-SSIS IR]"
+$RouteTableResourceGroupName = "[name of Azure resource group that contains your Route Table]"
+$RouteTableResourceName = "[resource name of your Azure Route Table ]"
+$RouteTable = Get-AzRouteTable -ResourceGroupName $RouteTableResourceGroupName -Name $RouteTableResourceName
+$ServiceTags = Get-AzNetworkServiceTag -Location $Location
+$BatchServiceTagName = "BatchNodeManagement." + $Location
+$UdrRulePrefixForBatch = $BatchServiceTagName
+if ($ServiceTags -ne $null)
+{
+    $BatchIPRanges = $ServiceTags.Values | Where-Object { $_.Name -ieq $BatchServiceTagName }
+    if ($BatchIPRanges -ne $null)
+    {
+        Write-Host "Start to add rule for your route table..."
+        for ($i = 0; $i -lt $BatchIPRanges.Properties.AddressPrefixes.Count; $i++)
+        {
+            $UdrRuleName = "$($UdrRulePrefixForBatch)_$($i)"
+            Add-AzRouteConfig -Name $UdrRuleName `
+                -AddressPrefix $BatchIPRanges.Properties.AddressPrefixes[$i] `
+                -NextHopType "Internet" `
+                -RouteTable $RouteTable `
+                | Out-Null
+            Write-Host "Add rule $UdrRuleName to your route table..."
+        }
+        Set-AzRouteTable -RouteTable $RouteTable
+    }
+}
+else
+{
+    Write-Host "Failed to fetch service tags, please confirm that your Location is valid."
+}
+```
+
 Aby urządzenie zapory zezwalać na ruch wychodzący, musisz zezwolić na ruch wychodzący poniżej portów taki sam jak wymagania w regułach wychodzących sieciowej sieciowej.
 -   Port 443 z miejscem docelowym jako usługami w chmurze azure.
 
-    Jeśli używasz Zapory platformy Azure, możesz określić regułę sieci za pomocą tagu usługi AzureCloud, w przeciwnym razie możesz zezwolić na miejsce docelowe, jak wszystko w urządzeniu zapory.
+    Jeśli używasz Zapory platformy Azure, możesz określić regułę sieci za pomocą tagu usługi AzureCloud. W przypadku zapory innych typów można po prostu zezwolić na miejsce docelowe jako wszystkie dla portu 443 lub zezwolić na poniżej sieci FQDN na podstawie typu środowiska platformy Azure:
+    | Środowisko platformy Azure | Punkty końcowe                                                                                                                                                                                                                                                                                                                                                              |
+    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Azure — publiczna      | <ul><li><b>Usługa Azure Data Factory (zarządzanie)</b></li><li style="list-style-type:none"><ul><li>\*frontend.clouddatahub.net .frontend.clouddatahub.net</li></ul></li><li><b>Usługa Azure Storage (zarządzanie)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.windows.net</li><li>\*table.core.windows.net .table.core.windows.net</li></ul></li><li><b>Usługa Azure Container Registry (konfiguracja niestandardowa)</b></li><li style="list-style-type:none"><ul><li>\*azurecr.io .azurecr.io</li></ul></li><li><b>Centrum zdarzeń (rejestrowanie)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>Usługa rejestrowania firmy Microsoft (użycie wewnętrzne)</b></li><li style="list-style-type:none"><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
+    | Azure Government  | <ul><li><b>Usługa Azure Data Factory (zarządzanie)</b></li><li style="list-style-type:none"><ul><li>\*frontend.datamovement.azure.us .</li></ul></li><li><b>Usługa Azure Storage (zarządzanie)</b></li><li style="list-style-type:none"><ul><li>\*blob.core.usgovcloudapi.net .blob.core.usgovcloudapi.net</li><li>\*table.core.usgovcloudapi.net .table.core.usgovcloudapi.net</li></ul></li><li><b>Usługa Azure Container Registry (konfiguracja niestandardowa)</b></li><li style="list-style-type:none"><ul><li>\*azurecr.us .</li></ul></li><li><b>Centrum zdarzeń (rejestrowanie)</b></li><li style="list-style-type:none"><ul><li>\*servicebus.usgovcloudapi.net .</li></ul></li><li><b>Usługa rejestrowania firmy Microsoft (użycie wewnętrzne)</b></li><li style="list-style-type:none"><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
+    | Azure w Chinach — 21Vianet     | <ul><li><b>Usługa Azure Data Factory (zarządzanie)</b></li><li style="list-style-type:none"><ul><li>\*frontend.datamovement.azure.cn .frontend.datamovement.azure.cn</li></ul></li><li><b>Usługa Azure Storage (zarządzanie)</b></li><li style="list-style-type:none"><ul><li>\*blob.core.chinacloudapi.cn .</li><li>\*table.core.chinacloudapi.cn .table.core.chinacloudapi.cn</li></ul></li><li><b>Usługa Azure Container Registry (konfiguracja niestandardowa)</b></li><li style="list-style-type:none"><ul><li>\*azurecr.cn .</li></ul></li><li><b>Centrum zdarzeń (rejestrowanie)</b></li><li style="list-style-type:none"><ul><li>\*servicebus.chinacloudapi.cn .</li></ul></li><li><b>Usługa rejestrowania firmy Microsoft (użycie wewnętrzne)</b></li><li style="list-style-type:none"><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul>
+
+    Jeśli chodzi o nazwy FQDN usługi Azure Storage, Azure Container Registry i Event Hub, można również włączyć następujące punkty końcowe usługi dla sieci wirtualnej, tak aby ruch sieciowy do tych punktów końcowych przechodzi przez sieć szkieletową platformy Azure zamiast być kierowane do urządzenia zapory:
+    -  Microsoft.Storage
+    -  Microsoft.ContainerRegistry
+    -  Microsoft.EventHub
+
 
 -   Port 80 z miejscem docelowym jako witrynami do pobierania CRL.
 
@@ -219,7 +264,7 @@ Aby urządzenie zapory zezwalać na ruch wychodzący, musisz zezwolić na ruch w
     Jeśli używasz Zapory platformy Azure, można określić regułę sieci za pomocą tagu usługi magazynu, w przeciwnym razie można zezwolić na miejsce docelowe jako określony adres URL magazynu plików platformy Azure w urządzeniu zapory.
 
 > [!NOTE]
-> W przypadku usług Azure SQL i Storage, jeśli skonfigurujesz punkty końcowe usługi sieci wirtualnej w podsieci, ruch między usługą Azure-SSIS IR i azure SQL w tym samym regionie \ Usługa Azure Storage w tym samym regionie lub sparowanym regionie zostanie przekierowana bezpośrednio do sieci szkieletowej platformy Microsoft Azure zamiast urządzenia zapory.
+> W przypadku usługi Azure SQL i usługi Storage, jeśli skonfigurujesz punkty końcowe usługi sieci wirtualnej w podsieci, ruch między usługą Azure-SSIS IR i azure SQL w tym samym regionie \ Usługa Azure Storage w tym samym regionie lub sparowanym regionie zostanie przekierowany bezpośrednio do sieci szkieletowej platformy Microsoft Azure zamiast urządzenia zapory.
 
 Jeśli nie potrzebujesz możliwości sprawdzania ruchu wychodzącego usługi Azure-SSIS IR, możesz po prostu zastosować trasę, aby wymusić cały ruch do następnego typu przeskoku **Internet:**
 
@@ -241,7 +286,7 @@ Usługa Azure-SSIS IR musi utworzyć pewne zasoby sieciowe w ramach tej samej gr
 > [!NOTE]
 > Teraz możesz przynieść własne statyczne publiczne adresy IP dla usługi Azure-SSIS IR. W tym scenariuszu utworzymy tylko moduł równoważenia obciążenia platformy Azure i grupę zabezpieczeń sieci w ramach tej samej grupy zasobów, co statyczne publiczne adresy IP zamiast sieci wirtualnej.
 
-Te zasoby zostaną utworzone po uruchomieniu usługi Azure-SSIS IR. Zostaną one usunięte po zatrzymaniu usługi Azure-SSIS IR. Jeśli wprowadzisz własne statyczne publiczne adresy IP dla usługi Azure-SSIS IR, nie zostaną usunięte po zatrzymaniu usługi Azure-SSIS IR. Aby uniknąć blokowania zatrzymania usługi Azure-SSIS IR, nie należy ponownie używać tych zasobów sieciowych w innych zasobach. 
+Te zasoby zostaną utworzone po uruchomieniu usługi Azure-SSIS IR. Zostaną one usunięte po zatrzymaniu usługi Azure-SSIS IR. Jeśli wprowadzisz własne statyczne publiczne adresy IP dla usługi Azure-SSIS IR, twoje własne statyczne publiczne adresy IP nie zostaną usunięte po zatrzymaniu usługi Azure-SSIS IR. Aby uniknąć blokowania zatrzymania usługi Azure-SSIS IR, nie należy ponownie używać tych zasobów sieciowych w innych zasobach.
 
 Upewnij się, że nie masz blokady zasobów w grupie zasobów/subskrypcji, do której należą sieci wirtualne/statyczne publiczne adresy IP. Jeśli skonfigurujesz blokadę tylko do odczytu/usunięcia, uruchamianie i zatrzymywanie usługi Azure-SSIS IR zakończy się niepowodzeniem lub przestanie odpowiadać.
 
@@ -249,6 +294,8 @@ Upewnij się, że nie masz zasad platformy Azure, które uniemożliwiają tworze
 - Microsoft.Network/LoadBalancers 
 - Microsoft.Network/NetworkSecurityGroups 
 - Microsoft.Network/PublicIPAddresses 
+
+Upewnij się, że przydział zasobów subskrypcji jest wystarczający dla powyższych trzech zasobów sieciowych. W szczególności dla każdego środowiska Azure-SSIS IR utworzonego w sieci wirtualnej należy zarezerwować dwa przydziały wolne dla każdego z powyższych trzech zasobów sieciowych. Dodatkowy jeden przydział będzie używany podczas okresowego uaktualniania usługi Azure-SSIS IR.
 
 ### <a name="faq"></a><a name="faq"></a>FAQ
 
@@ -262,7 +309,7 @@ Upewnij się, że nie masz zasad platformy Azure, które uniemożliwiają tworze
 
   Teraz możesz przynieść własne statyczne publiczne adresy IP dla usługi Azure-SSIS IR. W takim przypadku można dodać adresy IP do listy dozwolonych zapory dla źródeł danych. Można również rozważyć inne opcje poniżej, aby zabezpieczyć dostęp do danych z usługi Azure-SSIS IR w zależności od scenariusza:
 
-  - Jeśli źródło danych znajduje się lokalnie, po podłączeniu sieci wirtualnej do sieci lokalnej i połączeniu urządzenia Azure-SSIS IR z podsiecią sieci wirtualnej, można następnie dodać prywatny zakres adresów IP tej podsieci do listy dozwolonych zapory dla źródła danych .
+  - Jeśli źródło danych jest lokalne, po podłączeniu sieci wirtualnej do sieci lokalnej i połączeniu urządzenia Azure-SSIS IR z podsiecią sieci wirtualnej, można następnie dodać zakres prywatnych adresów IP tej podsieci do listy dozwolonych zapory dla źródła danych.
   - Jeśli źródłem danych jest usługa platformy Azure, która obsługuje punkty końcowe usługi sieci wirtualnej, można skonfigurować punkt końcowy usługi sieci wirtualnej w podsieci sieci wirtualnej i dołączyć do usługi Azure-SSIS IR do tej podsieci. Następnie można dodać regułę sieci wirtualnej z tą podsiecią do zapory dla źródła danych.
   - Jeśli źródło danych jest usługą w chmurze nienądrową, można użyć udr do kierowania ruchu wychodzącego z usługi Azure-SSIS IR do zapory NVA/Azure za pośrednictwem statycznego publicznego adresu IP. Następnie można dodać statyczny publiczny adres IP zapory NVA/Azure do listy dozwolonych zapory dla źródła danych.
   - Jeśli żadna z powyższych opcji nie spełnia Twoich potrzeb, należy rozważyć [skonfigurowanie samodzielnego podczerwania jako serwera proxy dla usługi Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis). Następnie można dodać statyczny publiczny adres IP komputera, na którym znajduje się samodzielna podczerwona wy, do listy dozwolonych zapory dla źródła danych.

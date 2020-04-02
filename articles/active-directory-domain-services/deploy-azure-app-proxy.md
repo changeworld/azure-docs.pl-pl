@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/6/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: c6e4e6a45fbbeab64184d8ae4b0684ba055d7735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3fb731736941293a82baba86165a1205bd8a05c5
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613988"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519046"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Wdrażanie serwera proxy aplikacji usługi Azure AD w celu bezpiecznego dostępu do aplikacji wewnętrznych w domenie zarządzanej usług ad.in.
 
@@ -25,8 +25,6 @@ Dzięki usługom domeny usługi Azure AD (Azure AD DS) można przenosić starsze
 Jeśli jesteś nowym serwerem proxy aplikacji usługi Azure AD i chcesz dowiedzieć się więcej, zobacz [Jak zapewnić bezpieczny dostęp zdalny do aplikacji wewnętrznych.](../active-directory/manage-apps/application-proxy.md)
 
 W tym artykule pokazano, jak utworzyć i skonfigurować łącznik serwera proxy aplikacji usługi Azure AD, aby zapewnić bezpieczny dostęp do aplikacji w domenie zarządzanej usług Azure AD DS.
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

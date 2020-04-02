@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: f103db1d0de7a9d538f56b8ade331dc856b26bce
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76899847"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547022"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Wybieranie warstwy cenowej dla usługi Azure Cognitive Search
 
@@ -41,7 +41,9 @@ Poziomy są zróżnicowane przez:
 
 Wybrana warstwa określa stawkę do zaliczania. Poniższy zrzut ekranu z witryny Azure portal przedstawia dostępne warstwy minus cennik (który można znaleźć w portalu i na [stronie cennika](https://azure.microsoft.com/pricing/details/search/). **Bezpłatne**, **Podstawowe**i **Standard** są najpopularniejszymi poziomami.
 
-**Free** tworzy ograniczoną usługę wyszukiwania w klastrze, współużytkowaną innym subskrybentom. Można ukończyć małe projekty, w tym szybki start i samouczki, ale nie można skalować usługi ani uruchamiać znaczących obciążeń. **Podstawowe** i **standardowe** są najczęściej używanymi warstwami rozliczanymi, przy czym **standard** jest wartością domyślną.
+**Free** tworzy ograniczoną usługę wyszukiwania dla mniejszych projektów, w tym szybki start i samouczki. Wewnętrznie repliki i partycje współużytkowane przez wielu subskrybentów. Nie można skalować bezpłatnej usługi ani uruchamiać znaczących obciążeń.
+
+**Podstawowe** i **standardowe** są najczęściej używanymi warstwami rozliczanymi, przy czym **standard** jest wartością domyślną. Dzięki dedykowanym zasobom pod kontrolą można wdrażać większe projekty, optymalizować wydajność i ustawiać pojemność.
 
 ![Warstwy cenowe usługi Azure Cognitive Search](media/search-sku-tier/tiers.png "Warstwy cenowe usługi Azure Cognitive Search")
 
@@ -55,10 +57,10 @@ Więcej informacji na temat różnych warstw można znaleźć na [stronie cennik
 
 Rozwiązanie oparte na usłudze Azure Cognitive Search może ponieść koszty w następujący sposób:
 
-+ Podstawowy koszt usługi przy minimalnej konfiguracji (utwórz usługę)
++ Stały koszt samej usługi, działającej 24x7, przy minimalnej konfiguracji (jedna partycja i replika)
 + Koszt przyrostowy podczas skalowania w górę (dodawanie replik lub partycji)
 + Opłaty za przepustowość (transfer danych wychodzących) 
-+ Wyszukiwanie kognitywnye (dołącz usługi Cognitive Services do wzbogacania sztucznej inteligencji, magazyn platformy Azure dla magazynu wiedzy)
++ Wyszukiwanie poznawcze (dołączanie usług Cognitive Services do wzbogacania sztucznej inteligencji lub używanie magazynu platformy Azure dla magazynu wiedzy)
 
 ### <a name="service-costs"></a>Koszty serwisu
 
@@ -106,13 +108,13 @@ Większość klientów przynosi tylko część całkowitej pojemności online, t
 
 Poniższe sugestie mogą pomóc w utrzymaniu kosztów na minimalnym poziomie:
 
-- Utwórz wszystkie zasoby w tym samym regionie lub w jak najmniejszej liczby regionów, aby zminimalizować lub wyeliminować obciążenia przepustowością.
++ Utwórz wszystkie zasoby w tym samym regionie lub w jak najmniejszej liczby regionów, aby zminimalizować lub wyeliminować obciążenia przepustowością.
 
-- Skonsoliduj wszystkie usługi w jedną grupę zasobów, taką jak Azure Cognitive Search, Cognitive Services i inne usługi platformy Azure używane w rozwiązaniu. W witrynie Azure portal znajdź grupę zasobów i użyj poleceń **zarządzania kosztami,** aby uzyskać wgląd w rzeczywiste i przewidywane wydatki.
++ Skonsoliduj wszystkie usługi w jedną grupę zasobów, taką jak Azure Cognitive Search, Cognitive Services i inne usługi platformy Azure używane w rozwiązaniu. W witrynie Azure portal znajdź grupę zasobów i użyj poleceń **zarządzania kosztami,** aby uzyskać wgląd w rzeczywiste i przewidywane wydatki.
 
-- Należy wziąć pod uwagę usługi Azure Web App dla aplikacji front-end, tak aby żądania i odpowiedzi pozostają w granicach centrum danych.
++ Należy wziąć pod uwagę usługi Azure Web App dla aplikacji front-end, tak aby żądania i odpowiedzi pozostają w granicach centrum danych.
 
-- Skalowanie w górę dla operacji intensywnie korzystających z zasobów, takich jak indeksowanie, a następnie dostosować w dół dla regularnych obciążeń zapytań. Rozpocznij od minimalnej konfiguracji usługi Azure Cognitive Search (jedna usługa SU składająca się z jednej partycji i jednej repliki), a następnie monitoruj aktywność użytkownika w celu zidentyfikowania wzorców użycia, które wskazują na potrzebę zwiększenia pojemności. Jeśli istnieje przewidywalny wzorzec, może być w stanie zsynchronizować skalę z aktywnością (należy napisać kod, aby zautomatyzować to).
++ Skalowanie w górę dla operacji intensywnie korzystających z zasobów, takich jak indeksowanie, a następnie dostosować w dół dla regularnych obciążeń zapytań. Rozpocznij od minimalnej konfiguracji usługi Azure Cognitive Search (jedna usługa SU składająca się z jednej partycji i jednej repliki), a następnie monitoruj aktywność użytkownika w celu zidentyfikowania wzorców użycia, które wskazują na potrzebę zwiększenia pojemności. Jeśli istnieje przewidywalny wzorzec, może być w stanie zsynchronizować skalę z aktywnością (należy napisać kod, aby zautomatyzować to).
 
 Ponadto odwiedź stronę [Rozliczenia i zarządzanie kosztami,](https://docs.microsoft.com/azure/billing/billing-getting-started) aby uzyskać wbudowane narzędzia i funkcje związane z wydatkami.
 
@@ -130,7 +132,6 @@ W usłudze Azure Cognitive Search pojemność jest skonstruowana jako *repliki* 
 
 > [!NOTE]
 > Wszystkie warstwy zoptymalizowane pod kątem standardowego i magazynu obsługują [elastyczne kombinacje replik i partycji,](search-capacity-planning.md#chart) dzięki czemu można [zoptymalizować system pod kątem szybkości lub pamięci masowej,](search-performance-optimization.md) zmieniając wagę. Warstwa Basic oferuje do trzech replik o wysokiej dostępności, ale ma tylko jedną partycję. Warstwy bezpłatne nie zapewniają dedykowanych zasobów: zasoby obliczeniowe są współużytkowane przez wielu subskrybentów.
-
 
 ### <a name="evaluating-capacity"></a>Ocena zdolności produkcyjnych
 
@@ -152,7 +153,7 @@ Jednym z podejść do szacowania pojemności jest rozpoczęcie od warstwy bezpł
 
 + [Utwórz bezpłatną usługę](search-create-service-portal.md).
 + Przygotuj mały, reprezentatywny zestaw danych.
-+ [Tworzenie początkowego indeksu w portalu](search-create-index-portal.md) i zanotuj jego rozmiar. Funkcje i atrybuty mają wpływ na magazyn. Na przykład dodanie sugestów (typeahead) zwiększy wymagania dotyczące magazynu. Korzystając z tego samego zestawu danych, można spróbować utworzyć wiele wersji indeksu, z różnymi atrybutami w każdym polu, aby zobaczyć, jak zmieniają się wymagania dotyczące magazynu. Aby uzyskać więcej informacji, zobacz ["Implikacje magazynu" w tworzenie indeksu podstawowego](search-what-is-an-index.md#index-size).
++ [Tworzenie początkowego indeksu w portalu](search-create-index-portal.md) i zanotuj jego rozmiar. Funkcje i atrybuty mają wpływ na magazyn. Na przykład dodanie sugestów (kwerendy typu search-as-you- type) zwiększy wymagania dotyczące magazynu. Korzystając z tego samego zestawu danych, można spróbować utworzyć wiele wersji indeksu, z różnymi atrybutami w każdym polu, aby zobaczyć, jak zmieniają się wymagania dotyczące magazynu. Aby uzyskać więcej informacji, zobacz ["Implikacje magazynu" w tworzenie indeksu podstawowego](search-what-is-an-index.md#index-size).
 
 Przybliżonym oszacowaniu w ręku można podwoić tę kwotę do budżetu dla dwóch indeksów (rozwoju i produkcji), a następnie odpowiednio wybrać warstwę.
 
@@ -196,7 +197,7 @@ Funkcje warstwy bezpłatnej i wersji zapoznawczej nie zapewniają [umów na pozi
 
 + Zezwalaj metrykom na tworzenie wokół zapytań i zbieraj dane wokół wzorców użycia (zapytania w godzinach pracy, indeksowanie poza godzinami szczytu). Użyj tych danych, aby informować o decyzjach dotyczących aprowizacji usług. Chociaż nie jest to praktyczne w rytmie godzinowym lub dziennym, można dynamicznie dostosowywać partycje i zasoby, aby uwzględnić planowane zmiany w woluminach zapytań. Można również pomieścić nieplanowane, ale trwałe zmiany, jeśli poziomy posiadają wystarczająco długo, aby uzasadnić podjęcie działań.
 
-+ Należy pamiętać, że jedyną wadą niedoprocesowania jest to, że może być konieczne zburzenie usługi, jeśli rzeczywiste wymagania są większe niż przewidywanie. Aby uniknąć zakłóceń w działaniu usługi, należy utworzyć nową usługę w wyższej warstwie i uruchomić ją obok siebie, dopóki wszystkie aplikacje i żądania docelowe nowego punktu końcowego.
++ Należy pamiętać, że jedyną wadą w ramach inicjowania obsługi administracyjnej jest, że może być konieczne zburzyć usługi, jeśli rzeczywiste wymagania są większe niż prognoz. Aby uniknąć zakłóceń w działaniu usługi, należy utworzyć nową usługę w wyższej warstwie i uruchomić ją obok siebie, dopóki wszystkie aplikacje i żądania docelowe nowego punktu końcowego.
 
 ## <a name="next-steps"></a>Następne kroki
 

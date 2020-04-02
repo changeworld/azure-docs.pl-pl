@@ -8,17 +8,17 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/05/2020
-ms.openlocfilehash: bc7e77cc498958b2f8f0c5b2d5ab2d59db97a235
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 79deb2f33a11e8ccb6f059bde7590b7cc0fe20c0
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240408"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521141"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Szybki start: tworzenie konta, bazy danych, kontenerów i elementów usługi Azure Cosmos z witryny Azure portal
 
 > [!div class="op_single_selector"]
-> * [Portal Azure](create-cosmosdb-resources-portal.md)
+> * [Azure Portal](create-cosmosdb-resources-portal.md)
 > * [.NET](create-sql-api-dotnet.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
@@ -26,7 +26,7 @@ ms.locfileid: "79240408"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Usługi Azure Cosmos DB można używać do szybkiego tworzenia i wykonywania zapytań o bazy danych klucz/wartość, bazy danych dokumentów i baz danych wykresów, z których wszystkie korzystają z możliwości dystrybucji globalnej i skali poziomej w rdzeniu usługi Azure Cosmos DB. 
+Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Usługi Azure Cosmos DB można używać do szybkiego tworzenia i wykonywania zapytań o bazy danych klucz/wartość, bazy danych dokumentów i baz danych wykresów, z których wszystkie korzystają z możliwości dystrybucji globalnej i skali poziomej w rdzeniu usługi Azure Cosmos DB. 
 
 Ten przewodnik Szybki start pokazuje, jak używać portalu Azure portal do tworzenia konta [interfejsu API SQL](sql-api-introduction.md) usługi Azure Cosmos DB, tworzenia bazy danych dokumentów i kontenera oraz dodawania danych do kontenera. 
 
@@ -40,7 +40,38 @@ Subskrypcja platformy Azure lub bezpłatne konto próbne usługi Azure Cosmos DB
 <a id="create-account"></a>
 ## <a name="create-an-azure-cosmos-db-account"></a>Tworzenie konta usługi Azure Cosmos DB
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+Przejdź do witryny [Azure Portal](https://portal.azure.com/), aby utworzyć konto usługi Azure Cosmos DB. Wyszukaj i wybierz usługę **Azure Cosmos DB**.
+
+   ![Okienko Bazy danych w witrynie Azure Portal](./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png)
+
+1. Wybierz pozycję **Dodaj**.
+1. Na stronie **Tworzenie konta usługi Azure Cosmos DB** wprowadź podstawowe ustawienia nowego konta usługi Azure Cosmos. 
+
+    |Ustawienie|Wartość|Opis |
+    |---|---|---|
+    |Subskrypcja|Nazwa subskrypcji|Wybierz subskrypcję platformy Azure, której chcesz użyć dla tego konta usługi Azure Cosmos. |
+    |Grupa zasobów|Nazwa grupy zasobów|Wybierz grupę zasobów lub wybierz pozycję **Utwórz nową**, a następnie wprowadź unikatową nazwę nowej grupy zasobów. |
+    |Nazwa konta|Unikatowa nazwa|Wprowadź nazwę, która będzie identyfikować konto usługi Azure Cosmos. Ponieważ adres *documents.azure.com* jest dołączany do podanej nazwy w celu utworzenia identyfikatora URI, użyj unikatowej nazwy.<br><br>Nazwa może zawierać tylko małe litery, cyfry i znaki łącznika (-). Musi mieć długość od 3 do 31 znaków.|
+    |interfejs API|Typ konta do utworzenia|Wybierz pozycję **Core (SQL)**, aby utworzyć bazę danych dokumentów i wykonać zapytanie przy użyciu składni języka SQL. <br><br>Interfejs API określa typ konta do utworzenia. Usługa Azure Cosmos DB udostępnia pięć interfejsów API: Core (SQL) i MongoDB dla danych dokumentu, Gremlin dla danych wykresu, Tabela platformy Azure i Cassandra. Obecnie dla każdego interfejsu API należy utworzyć oddzielne konto. <br><br>[Dowiedz się więcej o interfejsie API SQL](introduction.md).|
+    |Zastosuj rabat bezpłatny poziom|Zastosuj lub nie stosuj|Dzięki bezpłatnej warstwie usługi Azure Cosmos DB otrzymasz pierwsze 400 ru/s i 5 GB miejsca na koncie. Dowiedz się więcej o [warstwie bezpłatnej](https://azure.microsoft.com/pricing/details/cosmos-db/).|
+    |Lokalizacja|Region najbliżej Twoich użytkowników|Wybierz lokalizację geograficzną, w której będzie hostowane konto usługi Azure Cosmos DB. Użyj lokalizacji znajdującej się najbliżej Twoich użytkowników, aby zapewnić im najszybszy dostęp do danych.|
+    |Typ konta|Produkcja lub nieprodukcja|Wybierz **opcję Produkcja,** jeśli konto będzie używane dla obciążenia produkcyjnego. Wybierz **opcję Nieprodukcja,** jeśli konto będzie używane do nieprodukcji, np. Jest to ustawienie tagu zasobów platformy Azure, które umożliwia dostrojenie środowiska portalu, ale nie wpływa na podstawowe konto usługi Azure Cosmos DB. Tę wartość można zmienić w dowolnym momencie.|
+
+
+> [!NOTE]
+> Możesz mieć maksymalnie jedno bezpłatne konto usługi Azure Cosmos DB na subskrypcję platformy Azure i musisz wyrazić zgodę podczas tworzenia konta. Jeśli nie widzisz opcji zastosowania rabatu warstwy bezpłatnej, oznacza to, że inne konto w subskrypcji zostało już włączone z warstwą bezpłatną.
+   
+   ![Strona nowego konta usługi Azure Cosmos DB](./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png)
+
+1. Wybierz pozycję **Przegląd + utwórz**. Sekcje **Sieć** i **Tagi** możesz pominąć.
+
+1. Przejrzyj ustawienia konta, a następnie wybierz pozycję **Utwórz**. Utworzenie konta trwa kilka minut. Poczekaj na wyświetlenie komunikatu **Wdrożenie zostało ukończone** na stronie portalu. 
+
+    ![Okienko Powiadomienia w witrynie Azure Portal](./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png)
+
+1. Wybierz pozycję **Przejdź do zasobu**, aby przejść do strony konta usługi Azure Cosmos DB. 
+
+    ![Strona konta usługi Azure Cosmos DB](./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png)
 
 <a id="create-container-database"></a>
 ## <a name="add-a-database-and-a-container"></a>Dodawanie bazy danych i kontenera 

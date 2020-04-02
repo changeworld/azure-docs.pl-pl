@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 05db717f5d3adc2429431503f588f2cc7f79aef6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e00fee8841a2d5a817a00b942bfe0733a80b2cfc
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266782"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546323"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Szyfrowanie dysków platformy Azure dla maszyn wirtualnych z systemem Windows 
 
@@ -30,11 +30,13 @@ Podstawy szyfrowania dysków platformy Azure dla systemu Windows można poznać 
 
 ## <a name="supported-vms-and-operating-systems"></a>Obsługiwane maszyny wirtualne i systemy operacyjne
 
-### <a name="supported-vm-sizes"></a>Obsługiwane rozmiary maszyn wirtualnych
+### <a name="supported-vms"></a>Obsługiwane maszyny wirtualne
 
 Maszyny wirtualne z systemem Windows są dostępne w [różnych rozmiarach](sizes-general.md). Szyfrowanie dysków platformy Azure nie jest dostępne na [maszynach wirtualnych podstawowych i maszynach wirtualnych](https://azure.microsoft.com/pricing/details/virtual-machines/series/)z pamięcią mniejszą niż 2 GB.
 
 Szyfrowanie dysków platformy Azure jest również dostępne dla maszyn wirtualnych z magazynu w stanie Premium.
+
+Szyfrowanie dysków platformy Azure nie jest dostępne na [maszynach wirtualnych generacji 2)](generation-2.md#generation-1-vs-generation-2-capabilities)i [maszynach wirtualnych z serii Lsv2](../lsv2-series.md)). Aby uzyskać więcej wyjątków, zobacz [Szyfrowanie dysków platformy Azure: Nieobsługiwowane scenariusze](disk-encryption-windows.md#unsupported-scenarios).
 
 ### <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 

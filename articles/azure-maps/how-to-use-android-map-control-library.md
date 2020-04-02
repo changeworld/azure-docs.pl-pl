@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 55bfb5030d0a168e7556240212fcd5f3be30a289
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e0f0f311b7ec8adae6ddb25e01046141adadfa4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335360"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548535"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Wprowadzenie do usługi Azure Maps Android SDK
 
@@ -267,6 +267,29 @@ Oto przykład usługi Azure Maps z językiem ustawionym na "fr-FR" i widokiem re
 </center>
 
 Pełna lista obsługiwanych języków i widoków regionalnych jest udokumentowana [tutaj](supported-languages.md).
+
+## <a name="navigating-the-map"></a>Poruszanie się po mapie
+
+Istnieje kilka różnych sposobów powiększania, przesuwania, obracania i rozbijania mapy. Poniżej przedstawiono wszystkie sposoby poruszania się po mapie.
+
+**Powiększanie mapy**
+
+- Dotknij mapy dwoma palcami i zsuń się, aby pomniejszyć lub rozłożyć palce, aby powiększyć.
+- Stuknij dwukrotnie mapę, aby powiększyć jeden poziom.
+- Naciśnij dwukrotnie dwoma palcami, aby powiększyć mapę o jeden poziom.
+- Dotknij dwukrotnie; przy drugim dotknięciu przytrzymaj palec na mapie i przeciągnij w górę, aby powiększyć lub w dół, aby pomniejszyć widok.
+
+**Przesuwanie mapy**
+
+- Dotknij mapy i przeciągnij w dowolnym kierunku.
+
+**Obracanie mapy**
+
+- Dotknij mapy dwoma palcami i obróć.
+
+**Rozbij mapę**
+
+- Dotknij mapy dwoma palcami i przeciągnij je razem w górę lub w dół.
 
 ## <a name="next-steps"></a>Następne kroki
 

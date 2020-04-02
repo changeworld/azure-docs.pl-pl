@@ -1,5 +1,5 @@
 ---
-title: 'Współdziałanie w funkcjach łączności zaplecza platformy Azure: Konfiguracja testowa | Dokumenty firmy Microsoft'
+title: 'Współdziałanie na platformie Azure: Konfiguracja testów | Dokumenty firmy Microsoft'
 description: W tym artykule opisano konfigurację testu, której można użyć do analizowania współdziałania między usługą ExpressRoute, sieci VPN typu lokacja-lokacja i komunikacji równorzędnej w sieci wirtualnej na platformie Azure.
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 0cbd4b620a03ed26e95679cf7cb1abef277a9471
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3aec41a145d2c94a45a453393831902069b9c41b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873799"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518191"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Współdziałanie w funkcjach łączności zaplecza platformy Azure: konfiguracja testowa
+# <a name="interoperability-in-azure--test-setup"></a>Współdziałanie na platformie Azure: konfiguracja testowa
 
 W tym artykule opisano konfigurację testu, której można użyć do analizy sposobu współdziałania usług sieciowych platformy Azure na poziomie płaszczyzny sterowania i płaszczyzny danych. Przyjrzyjmy się pokrótce składnikom sieci platformy Azure:
 

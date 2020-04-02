@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 894ec4e543f0c68cc652141d2c1578cda61d7f42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c1f0bb715b3c3bf9b3a3350ab11e26834aa84c8
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594754"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528655"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Najważniejsze wskazówki dotyczące ciągłości działania i odzyskiwania po awarii w usłudze Azure Kubernetes (AKS)
 
@@ -59,7 +59,7 @@ Aby uzyskać informacje na temat konfigurowania punktów końcowych i routingu, 
 
 ### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Routing aplikacji warstwy 7 z usługą Azure Front Door Service
 
-Usługa Traffic Manager używa systemu DNS (warstwa 3) do kształtowania ruchu. [Usługa Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) udostępnia opcję routingu HTTP/HTTPS (warstwa 7). Dodatkowe funkcje usługi Azure Front Door Service obejmują zakończenie SSL, domenę niestandardową, zaporę aplikacji sieci web, przepisywanie adresów URL i koligacje sesji. Przejrzyj potrzeby ruchu aplikacji, aby dowiedzieć się, które rozwiązanie jest najbardziej odpowiednie.
+Usługa Traffic Manager używa systemu DNS (warstwa 3) do kształtowania ruchu. [Usługa Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) udostępnia opcję routingu HTTP/HTTPS (warstwa 7). Dodatkowe funkcje usługi Azure Front Door Service obejmują zakończenie protokołu TLS, domenę niestandardową, zaporę aplikacji sieci web, przepisywanie adresów URL i koligacji sesji. Przejrzyj potrzeby ruchu aplikacji, aby dowiedzieć się, które rozwiązanie jest najbardziej odpowiednie.
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Wzajemne połączenia regionów z globalną komunikacją równorzędnie sieci wirtualnej
 
@@ -122,7 +122,7 @@ Typową strategią jest zapewnienie wspólnego punktu magazynu, w którym aplika
 Jeśli używasz dysków zarządzanych platformy Azure, możesz wybrać rozwiązania replikacji i odzyskiwania po awarii, takie jak:
 
 * [Velero na platformie Azure](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
-* [Odzyskiwanie witryny platformy Azure](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
+* [Azure Site Recovery](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
 
 ### <a name="application-based-asynchronous-replication"></a>Replikacja asynchronizacyjna oparta na aplikacji
 

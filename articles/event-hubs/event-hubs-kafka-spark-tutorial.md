@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 8cb767e7d0616d806f8ced33a07e6de4db9d85ed
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 70f55891874b474de4120d8b41594fb9bee74e8d
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80280732"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521658"
 ---
 # <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>Łączenie aplikacji Apache Spark z usługą Azure Event Hubs
 W tym samouczku można przejść przez łączenie aplikacji Spark z centrum zdarzeń w celu przesyłania strumieniowego w czasie rzeczywistym. Ta integracja umożliwia przesyłanie strumieniowe bez konieczności zmiany klientów protokołu czy uruchamiania własnych klastrów platformy Kafka lub Zookeeper. Ten samouczek wymaga oprogramowania Apache Spark w wersji 2.4+ i Apache Kafka w wersji 2.0+.
@@ -44,7 +44,7 @@ Przed rozpoczęciem tego samouczka upewnij się, że masz następujące elementy
 
 
 ## <a name="create-an-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
-Przestrzeń nazw usługi Event Hubs jest wymagana do wysyłania i odbierania zdarzeń z dowolnej usługi Event Hubs. Aby uzyskać instrukcje uzyskiwania punktu końcowego platformy Kafka w usłudze Event Hubs, zobacz [Creating a Kafka enabled Event Hub](event-hubs-create.md) (Tworzenie centrum zdarzeń z obsługą platformy Kafka). Pobierz parametry połączenia usługi Event Hubs i w pełni kwalifikowaną nazwę domeny (FQDN) w celu późniejszego użycia. Aby uzyskać instrukcje, zobacz [Get an Event Hubs connection string](event-hubs-get-connection-string.md) (Pobieranie parametrów połączenia usługi Event Hubs). 
+Przestrzeń nazw usługi Event Hubs jest wymagana do wysyłania i odbierania zdarzeń z dowolnej usługi Event Hubs. Zobacz [Tworzenie centrum zdarzeń,](event-hubs-create.md) aby uzyskać instrukcje tworzenia obszaru nazw i centrum zdarzeń. Pobierz parametry połączenia usługi Event Hubs i w pełni kwalifikowaną nazwę domeny (FQDN) w celu późniejszego użycia. Aby uzyskać instrukcje, zobacz [Get an Event Hubs connection string](event-hubs-get-connection-string.md) (Pobieranie parametrów połączenia usługi Event Hubs). 
 
 ## <a name="clone-the-example-project"></a>Klonowanie projektu przykładowego
 Sklonuj repozytorium usługi Azure Event Hubs i przejdź do podfolderu `tutorials/spark`:
@@ -114,7 +114,7 @@ Aby dowiedzieć się więcej na temat usługi Event Hubs i usługi Event Hubs dl
 
 - [Dowiedz się więcej na temat usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Usługa Event Hubs dla platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Jak utworzyć centra Event Hubs z obsługą platformy Kafka](event-hubs-create.md)
+- [Tworzenie centrum zdarzeń](event-hubs-create.md)
 - [Przesyłanie strumieniowe do usługi Event Hubs z aplikacji platformy Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Dublowanie brokera platformy Kafka w centrum zdarzeń](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Łączenie platformy Apache Flink z centrum zdarzeń](event-hubs-kafka-flink-tutorial.md)

@@ -9,12 +9,12 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: bd1c2ca182ae8be8425246f691dca805bf38637b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1ad7677607d625f673546a6ea29ea58b80a8d1b5
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064034"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546750"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Importowanie danych do projektanta usługi Azure Machine Learning (wersja zapoznawcza)
 
@@ -60,7 +60,7 @@ Szczegółowe informacje na temat używania modułu Importuj dane można znaleź
 
 ## <a name="supported-sources"></a>Obsługiwane źródła
 
-W tej sekcji wymieniono źródła danych obsługiwane przez projektanta. Dane są wchodzące do projektanta z magazynu danych lub z [tabelaryczny zestaw danych](how-to-create-register-datasets.md#dataset-types).
+W tej sekcji wymieniono źródła danych obsługiwane przez projektanta. Dane są dochodzące do projektanta z magazynu danych lub z [tabelaryczny zestaw danych](how-to-create-register-datasets.md#dataset-types).
 
 ### <a name="datastore-sources"></a>Źródła magazynu danych
 Aby uzyskać listę obsługiwanych źródeł magazynu danych, zobacz [Dostęp do danych w usługach magazynu platformy Azure](how-to-access-data.md#supported-data-storage-service-types).

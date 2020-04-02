@@ -3,7 +3,7 @@ title: Najważniejsze wskazówki dotyczące zabezpieczeń dla obciążeń usług
 description: " Migracja obciążeń do usługi Azure IaaS daje możliwości ponownej oceny naszych projektów "
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: rkarlin
 editor: TomSh
 ms.assetid: 02c5b7d2-a77f-4e7f-9a1e-40247c57e7e2
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
-ms.author: barclayn
-ms.openlocfilehash: 0a4daf61d6b791a01f5bfb18e6cfca8118b2f421
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: fadf07f312c86f8ca15f5a97ebbe99e84bcffc89
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255937"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548230"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące zabezpieczeń dla obciążeń IaaS na platformie Azure
 W tym artykule opisano najważniejsze wskazówki dotyczące zabezpieczeń dla maszyn wirtualnych i systemów operacyjnych.

@@ -8,15 +8,15 @@ ms.service: virtual-machines-linux
 ms.subservice: monitoring
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 3281b4dafa5436c9df760ac8aa3fc82f535b4286
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0971b542065972a8f150083245e4ed31e42e2c67
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944866"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521629"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa metadanych wystąpienia platformy Azure
 
@@ -689,11 +689,15 @@ openssl x509 -noout -issuer -in signer.pem
 openssl x509 -noout -subject -in intermediate.pem
 # Verify the issuer for the intermediate certificate
 openssl x509 -noout -issuer -in intermediate.pem
-# Verify the certificate chain
+# Verify the certificate chain, for Azure China 21Vianet the intermediate certificate will be from DigiCert Global Root CA
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
-W przypadkach, gdy nie można pobrać certyfikatu pośredniego z powodu ograniczeń sieciowych podczas sprawdzania poprawności, certyfikat pośredni można przypiąć. Jednak platforma Azure będzie przewracać certyfikaty zgodnie ze standardową praktyką infrastruktury kluczy publicznych. Przypięte certyfikaty będą musiały zostać zaktualizowane po przerzucie. Za każdym razem, gdy planowana jest zmiana w celu zaktualizowania certyfikatu pośredniego, blog platformy Azure zostanie zaktualizowany, a klienci platformy Azure zostaną powiadomieni. Certyfikaty pośrednie można znaleźć [tutaj](https://www.microsoft.com/pki/mscorp/cps/default.htm). Certyfikaty pośrednie dla każdego z regionów mogą być różne.
+W przypadkach, gdy nie można pobrać certyfikatu pośredniego z powodu ograniczeń sieciowych podczas sprawdzania poprawności, certyfikat pośredni można przypiąć. Jednak platforma Azure będzie przewracać certyfikaty zgodnie ze standardową praktyką infrastruktury kluczy publicznych. Przypięte certyfikaty będą musiały zostać zaktualizowane, gdy nastąpi przerzucie. Za każdym razem, gdy planowana jest zmiana w celu zaktualizowania certyfikatu pośredniego, blog platformy Azure zostanie zaktualizowany, a klienci platformy Azure zostaną powiadomieni. Certyfikaty pośrednie można znaleźć [tutaj](https://www.microsoft.com/pki/mscorp/cps/default.htm). Certyfikaty pośrednie dla każdego z regionów mogą być różne.
+
+> [!NOTE]
+>Certyfikat pośredni dla platformy Azure China 21Vianet będzie pochodził z głównego urzędu certyfikacji DigiCert zamiast z Baltimore.
+Również jeśli przypięte certyfikaty pośrednie dla platformy Azure w Chinach w ramach zmiany urzędu łańcucha głównego, certyfikaty pośrednie będą musiały zostać zaktualizowane.
 
 ### <a name="storage-profile"></a>Profil magazynu
 
@@ -828,7 +832,7 @@ Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
 Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 Puppet | https://github.com/keirans/azuremetadata
 
-## <a name="faq"></a>Najczęściej zadawane pytania
+## <a name="faq"></a>Często zadawane pytania
 
 1. Pojawia się błąd `400 Bad Request, Required metadata header not specified`. Co to oznacza?
    * Usługa metadanych wystąpienia `Metadata: true` wymaga, aby nagłówek był przekazywany w żądaniu. Przekazywanie tego nagłówka w wywołaniu REST umożliwia dostęp do usługi metadanych wystąpienia.

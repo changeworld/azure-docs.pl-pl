@@ -3,7 +3,7 @@ title: Zalecenia dotyczące zabezpieczeń dla obrazów w portalu Azure Marketpla
 description: Ten artykuł zawiera zalecenia dotyczące obrazów uwzględnionych na rynku
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: barbkess
 ms.assetid: ''
 ms.service: security
@@ -11,13 +11,13 @@ ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
-ms.author: barclayn
-ms.openlocfilehash: b82cf957f4bd74cb2c63bfd5a7fe73899b395df6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: 3925e39824d1702ff43a6b981ac997ddab658b96
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73795808"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548655"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Zalecenia dotyczące zabezpieczeń dla obrazów portalu Azure Marketplace
 
@@ -40,13 +40,13 @@ Przed przesłaniem obrazu należy zawsze uruchamiać wykrywanie luk w zabezpiecz
 | Zabezpieczenia                                                     | Należy unikać stosowania LVM.                                                                                                                                                                                                                                            |
 | Zabezpieczenia                                                     | Dołącz najnowsze wersje wymaganych bibliotek: </br> - OpenSSL v1.0 lub większy </br> - Python 2.5 lub wyższy (Python 2.6+ jest wysoce zalecane) </br> - Pakiet Python pyasn1, jeśli nie jest jeszcze zainstalowany </br> - d.OpenSSL v 1.0 lub więcej                                                                |
 | Zabezpieczenia                                                     | Wyczyść wpisy historii bash/shell.                                                                                                                                                                                                                                             |
-| Obsługa sieci                                                   | Domyślnie uwzględnij serwer SSH. Ustaw SSH zachować przy życiu do sshd config z następującą opcją: ClientAliveInterval 180.                                                                                                                                                        |
-| Obsługa sieci                                                   | Usuń dowolną niestandardową konfigurację sieci z obrazu. Usuń resolv.conf: `rm /etc/resolv.conf`.                                                                                                                                                                                |
-| wdrażania                                                   | Zainstaluj najnowszego agenta systemu Azure Linux.</br> - Zainstaluj za pomocą pakietu RPM lub Deb.  </br> - Można również użyć procesu instalacji ręcznej, ale pakiety instalatora są zalecane i preferowane. </br> - Jeśli instalujesz agenta ręcznie z repozytorium `waagent` GitHub, najpierw skopiuj plik do `/usr/sbin` i uruchom (jako root): </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>Plik konfiguracyjny `/etc/waagent.conf`agenta jest umieszczany w punkcie . |
-| wdrażania                                                   | Upewnij się, że pomoc techniczna platformy Azure może zapewnić naszym partnerom dane wyjściowe konsoli szeregowej w razie potrzeby i zapewnić odpowiedni limit czasu do montażu dysku systemu operacyjnego z magazynu w chmurze. Dodaj następujące parametry do linii rozruchowej `console=ttyS0 earlyprintk=ttyS0 rootdelay=300`jądra obrazu: . |
-| wdrażania                                                   | Brak partycji wymiany na dysku systemu operacyjnego. Swap można zażądać do utworzenia na dysku zasobów lokalnych przez agenta systemu Linux.         |
-| wdrażania                                                   | Utwórz pojedynczą partycję główną dla dysku systemu operacyjnego.      |
-| wdrażania                                                   | Tylko 64-bitowy system operacyjny.                                                                                                                                                                                                                                                          |
+| Networking                                                   | Domyślnie uwzględnij serwer SSH. Ustaw SSH zachować przy życiu do sshd config z następującą opcją: ClientAliveInterval 180.                                                                                                                                                        |
+| Networking                                                   | Usuń dowolną niestandardową konfigurację sieci z obrazu. Usuń resolv.conf: `rm /etc/resolv.conf`.                                                                                                                                                                                |
+| Wdrożenie                                                   | Zainstaluj najnowszego agenta systemu Azure Linux.</br> - Zainstaluj za pomocą pakietu RPM lub Deb.  </br> - Można również użyć procesu instalacji ręcznej, ale pakiety instalatora są zalecane i preferowane. </br> - Jeśli instalujesz agenta ręcznie z repozytorium `waagent` GitHub, najpierw skopiuj plik do `/usr/sbin` i uruchom (jako root): </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>Plik konfiguracyjny `/etc/waagent.conf`agenta jest umieszczany w punkcie . |
+| Wdrożenie                                                   | Upewnij się, że pomoc techniczna platformy Azure może zapewnić naszym partnerom dane wyjściowe konsoli szeregowej w razie potrzeby i zapewnić odpowiedni limit czasu do montażu dysku systemu operacyjnego z magazynu w chmurze. Dodaj następujące parametry do linii rozruchowej `console=ttyS0 earlyprintk=ttyS0 rootdelay=300`jądra obrazu: . |
+| Wdrożenie                                                   | Brak partycji wymiany na dysku systemu operacyjnego. Swap można zażądać do utworzenia na dysku zasobów lokalnych przez agenta systemu Linux.         |
+| Wdrożenie                                                   | Utwórz pojedynczą partycję główną dla dysku systemu operacyjnego.      |
+| Wdrożenie                                                   | Tylko 64-bitowy system operacyjny.                                                                                                                                                                                                                                                          |
 
 ## <a name="windows-server-based-images"></a>Obrazy z systemem Windows Server
 
@@ -63,7 +63,7 @@ Przed przesłaniem obrazu należy zawsze uruchamiać wykrywanie luk w zabezpiecz
 | Zabezpieczenia                                                         | Obraz VHD zawiera tylko niezbędne zablokowane konta, które nie mają domyślnych haseł, które umożliwiają interaktywne logowanie; brak tylnych drzwi.                             |
 | Zabezpieczenia                                                         | Wyłącz reguły zapory, chyba że aplikacja funkcjonalnie polega na nich, takich jak urządzenie zapory.                                                               |
 | Zabezpieczenia                                                         | Usuń wszystkie poufne informacje z obrazu VHD, w tym pliki HOSTS, pliki dziennika i niepotrzebne certyfikaty.                                              |
-| wdrażania                                                       | Tylko 64-bitowy system operacyjny.                            |
+| Wdrożenie                                                       | Tylko 64-bitowy system operacyjny.                            |
 
 Nawet jeśli twoja organizacja nie ma obrazów w portalu Azure Marketplace, należy rozważyć sprawdzenie konfiguracji obrazu systemu Windows i systemu Linux pod kątem tych zaleceń.
 

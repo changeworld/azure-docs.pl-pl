@@ -15,12 +15,12 @@ ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 8aedc78772858815a18425fb1e6cb36a4600f647
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 09d5b7a126a1b8832bfe40e2e25dd4000d5d9155
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385099"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548284"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Rozwiązywanie problemów z usługą Azure RBAC
 
@@ -80,7 +80,7 @@ $ras.Count
 
 ## <a name="access-denied-or-permission-errors"></a>Odmowa dostępu lub błędy uprawnień
 
-- Jeśli podczas próby utworzenia zasobu pojawia się błąd uprawnień "Klient z identyfikatorem obiektu nie ma autoryzacji do wykonywania akcji w zakresie (kod: AuthorizationFailed)" podczas próby utworzenia zasobu, sprawdź, czy aktualnie zalogowano się z użytkownikiem, który ma przypisaną rolę, która ma zapis uprawnienia do zasobu w wybranym zakresie. Na przykład do zarządzania maszynami wirtualnymi w grupie zasobów musisz mieć rolę [Współautor maszyny wirtualnej](built-in-roles.md#virtual-machine-contributor) w grupie zasobów (lub zakresie nadrzędnym). Aby uzyskać listę uprawnień dla każdej roli wbudowanej, zobacz [Role wbudowane dla zasobów platformy Azure](built-in-roles.md).
+- Jeśli podczas próby utworzenia zasobu zostanie wyświetlony błąd uprawnień "Klient z identyfikatorem obiektu nie ma autoryzacji do wykonywania akcji w zakresie (kod: AuthorizationFailed)", podczas próby utworzenia zasobu, sprawdź, czy aktualnie zalogowano się z użytkownikiem, który ma przypisaną rolę, która ma uprawnienia do zapisu do zasobu w wybranym zakresie. Na przykład do zarządzania maszynami wirtualnymi w grupie zasobów musisz mieć rolę [Współautor maszyny wirtualnej](built-in-roles.md#virtual-machine-contributor) w grupie zasobów (lub zakresie nadrzędnym). Aby uzyskać listę uprawnień dla każdej roli wbudowanej, zobacz [Role wbudowane dla zasobów platformy Azure](built-in-roles.md).
 - Jeśli podczas próby utworzenia lub zaktualizowania biletu pomocy technicznej zostanie wyświetlony błąd uprawnień "Nie masz uprawnień do tworzenia żądania pomocy technicznej", sprawdź, `Microsoft.Support/supportTickets/write` czy aktualnie zalogowano się u użytkownika, do którego przypisano rolę, która ma uprawnienie, na przykład [Współautor żądania pomocy technicznej.](built-in-roles.md#support-request-contributor)
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Przypisania ról z nieznanym podmiotem zabezpieczeń
@@ -179,7 +179,7 @@ Te elementy wymagają dostępu do **zapisu** do **planu usługi app service,** k
 
 Te elementy wymagają dostępu do **zapisu** do całej **grupy zasobów,** która zawiera witrynę sieci Web:  
 
-* Certyfikaty i powiązania SSL (certyfikaty SSL mogą być współużytkowane między lokacjami w tej samej grupie zasobów i lokalizacji geograficznej)  
+* Certyfikaty i powiązania TLS/SSL (certyfikaty TLS/SSL mogą być współużytkowane między lokacjami w tej samej grupie zasobów i lokalizacji geograficznej)  
 * Reguły alertów  
 * Ustawienia skalowania automatycznego  
 * Składniki szczegółowych informacji o aplikacjach  

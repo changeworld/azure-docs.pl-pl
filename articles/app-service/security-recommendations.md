@@ -1,18 +1,18 @@
 ---
 title: Zalecenia dotyczące zabezpieczeń
 description: Zaimplementuj zalecenia dotyczące zabezpieczeń, aby pomóc w wypełnieniu zobowiązań w zakresie bezpieczeństwa określonych w naszym modelu wspólnej odpowiedzialności. Zwiększ bezpieczeństwo aplikacji.
-author: barclayn
+author: msmbaldwin
 manager: barbkess
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.author: barclayn
+ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: e3f901fd78436b42729607d38f0ddb533f31cd30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50e2666aa533a5111055a095c612b58bfe6f9db4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74684109"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546697"
 ---
 # <a name="security-recommendations-for-app-service"></a>Zalecenia dotyczące zabezpieczeń dla usługi app service
 
@@ -43,7 +43,7 @@ Ten artykuł zawiera zalecenia dotyczące zabezpieczeń usługi Azure App Servic
 | Korzystanie z FTPS | Usługa App Service obsługuje zarówno ftp, jak i FTPS do wdrażania plików. W miarę możliwości należy używać ftps zamiast ftp. Jeśli jeden lub oba z tych protokołów nie są używane, należy [je wyłączyć](deploy-ftp.md#enforce-ftps). |
 | Zabezpieczanie danych aplikacji | Nie przechowuj wpisów tajnych aplikacji, takich jak poświadczenia bazy danych, tokeny interfejsu API lub klucze prywatne w kodzie lub plikach konfiguracyjnych. Powszechnie akceptowane podejście jest dostęp do nich jako [zmienne środowiskowe](https://wikipedia.org/wiki/Environment_variable) przy użyciu wzorca standardowego w wybranym języku. W usłudze Azure App Service można definiować zmienne środowiskowe za pomocą [ustawień aplikacji](web-sites-configure.md) i [ciągów połączeń](web-sites-configure.md). Ustawienia aplikacji i parametry połączenia są przechowywane zaszyfrowane na platformie Azure. Ustawienia aplikacji są odszyfrowywane tylko przed wstrzyknięciem do pamięci procesu aplikacji po uruchomieniu aplikacji. Klucze szyfrowania są regularnie obracane. Alternatywnie można zintegrować aplikację usługi Azure App Service z [usługą Azure Key Vault](/azure/key-vault/) w celu zaawansowanego zarządzania wpisami tajnymi. Uzyskując [dostęp do usługi Key Vault za pomocą tożsamości zarządzanej,](../key-vault/tutorial-web-application-keyvault.md)aplikacja usługi App Service może bezpiecznie uzyskiwać dostęp do potrzebnych wpisów tajnych. |
 
-## <a name="networking"></a>Obsługa sieci
+## <a name="networking"></a>Networking
 
 | Zalecenie | Komentarze |
 |-|-|

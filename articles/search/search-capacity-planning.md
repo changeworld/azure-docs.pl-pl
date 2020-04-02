@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: e2ba5301b81b1a6f5de696ab4587cd8ff43e3c68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 270ff3c3e8e4cffbb1f4b1987ee497530d0c0982
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462568"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546264"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>Dostosowywanie pojemności w usłudze Azure Cognitive Search
 
@@ -38,7 +38,8 @@ Pojedyncza usługa musi mieć wystarczające zasoby do obsługi wszystkich obci�
 
 Zgodnie z ogólną zasadą aplikacje wyszukiwania zwykle potrzebują więcej replik niż partycje, szczególnie gdy operacje usługi są stronnicze w kierunku obciążeń zapytań. Sekcja dotycząca [wysokiej dostępności](#HA) wyjaśnia, dlaczego.
 
-Dodanie większej liczby replik lub partycji zwiększa koszt uruchomienia usługi. Pamiętaj, aby sprawdzić [kalkulator cen,](https://azure.microsoft.com/pricing/calculator/) aby zrozumieć implikacje rozliczeniowe związane z dodawaniem większej liczby węzłów. Poniższy [wykres](#chart) może pomóc w dowiązaniu do liczby jednostek wyszukiwania wymaganych dla określonej konfiguracji.
+> [!NOTE]
+> Dodanie większej liczby replik lub partycji zwiększa koszt uruchomienia usługi i może wprowadzić niewielkie różnice w sposobie zamawiania wyników. Pamiętaj, aby sprawdzić [kalkulator cen,](https://azure.microsoft.com/pricing/calculator/) aby zrozumieć implikacje rozliczeniowe związane z dodawaniem większej liczby węzłów. Poniższy [wykres](#chart) może pomóc w dowiązaniu do liczby jednostek wyszukiwania wymaganych dla określonej konfiguracji. Aby uzyskać więcej informacji na temat wpływu dodatkowych replik na przetwarzanie kwerendy, zobacz [Kolejność wyników](search-pagination-page-layout.md#ordering-results).
 
 ## <a name="how-to-allocate-replicas-and-partitions"></a>Jak przydzielić repliki i partycje
 

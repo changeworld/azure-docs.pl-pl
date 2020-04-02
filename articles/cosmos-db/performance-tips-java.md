@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 3b7d221c2afc952f40da035c6e2c282b3b932aa5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a20b7d91a927d48a14812110ca714491cd726071
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69616759"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548775"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Porady dotyczące wydajności usługi Azure Cosmos DB i języka Java
 
@@ -26,7 +26,7 @@ Usługa Azure Cosmos DB to szybka i elastyczna rozproszona baza danych, która b
 
 Więc jeśli pytasz "Jak mogę poprawić wydajność mojej bazy danych?" rozważ następujące opcje:
 
-## <a name="networking"></a>Obsługa sieci
+## <a name="networking"></a>Networking
 <a id="direct-connection"></a>
 
 1. **Tryb połączenia: używanie funkcji DirectHttps**
@@ -38,7 +38,7 @@ Więc jeśli pytasz "Jak mogę poprawić wydajność mojej bazy danych?" rozważ
 
       Tryb bramy jest obsługiwany na wszystkich platformach SDK i jest skonfigurowany domyślnie.  Jeśli aplikacja działa w sieci firmowej ze ścisłymi ograniczeniami zapory, Gateway jest najlepszym wyborem, ponieważ używa standardowego portu HTTPS i jednego punktu końcowego. Kompromisem wydajności jest jednak to, że tryb bramy obejmuje dodatkowy przeskok sieciowy za każdym razem, gdy dane są odczytywane lub zapisywane w usłudze Azure Cosmos DB. Z tego powodu tryb DirectHttps oferuje lepszą wydajność ze względu na mniejszą liczbę przeskoków sieciowych. 
 
-      Java SDK używa protokołu HTTPS jako protokołu transportu. Protokół HTTPS używa protokołu SSL do uwierzytelniania początkowego i szyfrowania ruchu. Podczas korzystania z java SDK musi być otwarty tylko port HTTPS 443. 
+      Java SDK używa protokołu HTTPS jako protokołu transportu. Protokół HTTPS używa protokołu TLS do uwierzytelniania początkowego i szyfrowania ruchu. Podczas korzystania z java SDK musi być otwarty tylko port HTTPS 443. 
 
       ConnectionMode jest skonfigurowany podczas budowy DocumentClient wystąpienie z ConnectionPolicy parametru. 
 

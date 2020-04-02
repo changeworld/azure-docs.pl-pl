@@ -1,5 +1,5 @@
 ---
-title: 'Współdziałanie w funkcjach łączności zaplecza platformy Azure: analiza płaszczyzny danych | Dokumenty firmy Microsoft'
+title: 'Interoperacyjność na platformie Azure: Analiza płaszczyzny danych'
 description: Ten artykuł zawiera analizę płaszczyzny danych konfiguracji testu, której można użyć do analizowania współdziałania między usługą ExpressRoute, sieci VPN typu lokacja-lokacja i komunikacji równorzędnej w sieci wirtualnej na platformie Azure.
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 815976c672272270e465610e17fef3aea79387f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe7b74b0d4d065d4f222fefbbdc4a1d434d1163b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77526641"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518260"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Współdziałanie w funkcjach łączności zaplecza platformy Azure: analiza płaszczyzny danych
+# <a name="interoperability-in-azure--data-plane-analysis"></a>Interoperacyjność na platformie Azure: Analiza płaszczyzny danych
 
 W tym artykule opisano analizę płaszczyzny danych [konfiguracji testu][Setup]. Można również przejrzeć [konfigurację konfiguracji testu][Configuration] i [analizę płaszczyzny sterowania][Control-Analysis] konfiguracji testu.
 

@@ -7,25 +7,25 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f9592f5d2666684e0cf5eef687b1e69cfb55066c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 900bf815917a4b7c9841860d663a2183b1ab71b3
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065564"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529672"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Konfigurowanie tożsamości zarządzanych dla klastra usługi Azure Data Explorer
 
 [Tożsamość zarządzana z usługi Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) umożliwia klastrowi łatwy dostęp do innych zasobów chronionych przez usługę AAD, takich jak usługa Azure Key Vault. Tożsamość jest zarządzana przez platformę Azure i nie wymaga aprowidizacji ani obracania żadnych wpisów tajnych. W tym artykule pokazano, jak utworzyć tożsamość zarządzaną dla klastrów usługi Azure Data Explorer. Konfiguracja tożsamości zarządzanej jest obecnie obsługiwana tylko w celu [włączenia kluczy zarządzanych przez klienta dla klastra](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault).
 
 > [!Note]
-> Tożsamości zarządzane dla Usługi Azure Data Explorer nie będą zachowywać się zgodnie z oczekiwaniami, jeśli aplikacja jest migrowana między subskrypcjami lub dzierżawami. Aplikacja będzie musiała uzyskać nową tożsamość, co można zrobić, [wyłączając](#remove-a-system-assigned-identity) i [ponownie włączając](#add-a-system-assigned-identity) tę funkcję. Aby użyć nowej tożsamości, konieczne będzie również zaktualizowanie zasad dostępu do zasobów niższego szczebla.
+> Tożsamości zarządzane dla Usługi Azure Data Explorer nie będą zachowywać się zgodnie z oczekiwaniami, jeśli klaster usługi Azure Data Explorer jest migrowany między subskrypcjami lub dzierżawami. Aplikacja będzie musiała uzyskać nową tożsamość, co można zrobić, [wyłączając](#disable-a-system-assigned-identity) i [ponownie włączając](#add-a-system-assigned-identity) tę funkcję. Aby użyć nowej tożsamości, konieczne będzie również zaktualizowanie zasad dostępu do zasobów niższego szczebla.
 
 ## <a name="add-a-system-assigned-identity"></a>Dodawanie tożsamości przypisanej do systemu
                                                                                                     
 Przypisz tożsamość przypisaną systemowi, która jest powiązana z klastrem i jest usuwana, jeśli klaster zostanie usunięty. Klaster może mieć tylko jedną tożsamość przypisaną do systemu. Tworzenie klastra z tożsamością przypisaną do systemu wymaga ustawienia dodatkowej właściwości w klastrze. Tożsamość przypisana do systemu jest dodawana przy użyciu szablonów Języka C#, ARM lub witryny Azure portal, jak opisano poniżej.
 
-# <a name="azure-portal"></a>[Portal Azure](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 ### <a name="add-a-system-assigned-identity-using-the-azure-portal"></a>Dodawanie tożsamości przypisanej do systemu przy użyciu portalu Azure
 
@@ -56,7 +56,7 @@ Przypisz tożsamość przypisaną systemowi, która jest powiązana z klastrem i
 
     ![Tożsamość przypisaną przez system na](media/managed-identities/system-assigned-identity-on.png)
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 ### <a name="add-a-system-assigned-identity-using-c"></a>Dodawanie tożsamości przypisanej do systemu przy użyciu języka C #
 
@@ -164,13 +164,13 @@ Po utworzeniu klastra ma następujące właściwości dodatkowe:
 
 ---
 
-## <a name="remove-a-system-assigned-identity"></a>Usuwanie tożsamości przypisanej przez system
+## <a name="disable-a-system-assigned-identity"></a>Wyłączanie tożsamości przypisanej systemowi
 
 Usunięcie tożsamości przypisanej przez system spowoduje również usunięcie jej z usługi AAD. Tożsamości przypisane do systemu są również automatycznie usuwane z usługi AAD po usunięciu zasobu klastra. Tożsamość przypisaną do systemu można usunąć, wyłączając tę funkcję.  Tożsamość przypisana do systemu jest usuwana przy użyciu szablonów języka C#, ARM lub witryny Azure portal, jak opisano poniżej.
 
-# <a name="azure-portal"></a>[Portal Azure](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-### <a name="remove-a-system-assigned-identity-using-the-azure-portal"></a>Usuwanie tożsamości przypisanej przez system przy użyciu witryny Azure portal
+### <a name="disable-a-system-assigned-identity-using-the-azure-portal"></a>Wyłączanie tożsamości przypisanej przez system przy użyciu witryny Azure portal
 
 1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 1. Wybierz **pozycję Ustawienia** > **tożsamości** w lewym okienku portalu.
@@ -181,7 +181,7 @@ Usunięcie tożsamości przypisanej przez system spowoduje również usunięcie 
 
     ![Tożsamość przypisana do systemu wyłączona](media/managed-identities/system-assigned-identity.png)
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 ### <a name="remove-a-system-assigned-identity-using-c"></a>Usuwanie tożsamości przypisanej przez system przy użyciu języka C #
 

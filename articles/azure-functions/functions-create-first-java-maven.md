@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: ad3b38a12020c56c31e03879b3fbcb9a8dda25f1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d0f30272a4e605449c946ca402db4f3ba00735bc
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79136871"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520537"
 ---
 # <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>Szybki start: tworzenie i publikowanie funkcji na platformie Azure za pomocą funkcji Java i Maven/Gradle
 
@@ -67,13 +67,10 @@ Maven prosi o wartości potrzebne do zakończenia generowania projektu podczas w
 | **artifactId (ida artefaktu)** | Wartość, która jest nazwą słoika, bez numeru wersji. Przykłady w tym użyczynaniu przewodnika `fabrikam-functions`Szybki start . |
 | **Wersja** | Wybierz wartość domyślną . `1.0-SNAPSHOT` |
 | **Pakiet** | Wartość, która jest pakietem Java dla wygenerowanego kodu funkcji. Użyj wartości domyślnej. Przykłady w tym użyczynaniu przewodnika `com.fabrikam.functions`Szybki start . |
-| **Appname** | Globalnie unikatowa nazwa identyfikująca nową aplikację funkcji na platformie Azure. Użyj wartości domyślnej, która jest _artifactId_ dołączone z numerem losowym. Zanotuj tę wartość, będziesz jej potrzebować później. |
-| **appRegion** | Wybierz [region](https://azure.microsoft.com/regions/) w swojej okolicy lub w pobliżu innych usług, do których Twoje funkcje uzyskują dostęp. Wartość domyślna to `westus`. Uruchom to polecenie [interfejsu wiersza polecenia platformy Azure,] aby uzyskać listę wszystkich regionów:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
-| **grupa zasobów** | Nazwa nowej [grupy zasobów,](../azure-resource-manager/management/overview.md) w której ma być utworzona aplikacja funkcji. Użyj `myResourceGroup`, który jest używany przez przykłady w tym przewodniku Szybki start. Grupa zasobów musi być unikatowa dla subskrypcji platformy Azure.|
 
 Wpisz `Y` lub naciśnij klawisz Enter, aby potwierdzić.
 
-Maven tworzy pliki projektu w nowym folderze o nazwie _artifactId_, który w tym przykładzie jest `fabrikam-functions`. Uruchom następujące polecenie, aby zmienić katalog na utworzony folder projektu.
+Maven tworzy pliki projektu w nowym folderze o nazwie **artifactId**, który w tym przykładzie jest `fabrikam-functions`. Uruchom następujące polecenie, aby zmienić katalog na utworzony folder projektu.
 ```bash
 cd fabrikam-function
 ```
@@ -236,4 +233,4 @@ Utworzono projekt funkcji Java z funkcją wyzwalaną http, uruchom go na kompute
 
 
 [Interfejs wiersza polecenia platformy Azure]: /cli/azure
-[Portal Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

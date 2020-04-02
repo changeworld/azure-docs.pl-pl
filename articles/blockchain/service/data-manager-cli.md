@@ -1,15 +1,15 @@
 ---
 title: Konfigurowanie menedżera danych blockchain przy użyciu interfejsu wiersza polecenia platformy Azure — usługa Azure Blockchain
 description: Tworzenie menedżera danych blockchain dla usługi Azure Blockchain i zarządzanie nim przy użyciu interfejsu wiersza polecenia platformy Azure
-ms.date: 11/04/2019
+ms.date: 03/30/2020
 ms.topic: article
-ms.reviewer: chroyal
-ms.openlocfilehash: a8061aad6d6a1513de70e7c2bc57aa109c666611
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: 5ceca96f760ab62ca7f3df9ad26139b9b4a3e5be
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74455940"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529587"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Konfigurowanie menedżera danych łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -26,7 +26,7 @@ Aby skonfigurować wystąpienie menedżera danych blockchain, należy:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Zainstaluj najnowszą [platformę](https://docs.microsoft.com/cli/azure/install-azure-cli) Cli `az login`platformy Azure i zalogowano się przy użyciu programu .
-* Ukończ [szybki start: łączenie się z siecią konsorcjum usługi Azure Blockchain Service za pomocą kodu programu Visual Studio](connect-vscode.md)
+* Ukończ [szybki start: Łączenie się z siecią konsorcjum usługi Azure Blockchain Service za pomocą programu Visual Studio Code.](connect-vscode.md) Warstwa *Standard* Standard usługi Azure Blockchain Service jest zalecana podczas korzystania z Menedżera danych blockchain.
 * Tworzenie [tematu siatki zdarzeń](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
 * Dowiedz się więcej o [programach obsługi zdarzeń w usłudze Azure Event Grid](../../event-grid/event-handlers.md)
 

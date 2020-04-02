@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 1fddbe908ccebc1384dcccde0810366f1a6d5da7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 662619e101b45d1dd8b34ea97e31f214b254124a
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73796238"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521883"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Rozwiązywanie problemów dotyczących komunikacji równorzędnej sieci wirtualnych
 
@@ -234,6 +234,15 @@ Aby rozwiązać ten problem, usuń komunikację równorzędnej z obu sieci wirtu
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>Nie można równorzędnie sieci wirtualnej Databricks
 
 Aby rozwiązać ten problem, skonfiguruj komunikację równorzędnej sieci wirtualnej w obszarze **Azure Databricks,** a następnie określ docelową sieć wirtualną przy użyciu **identyfikatora zasobu**. Aby uzyskać więcej informacji, zobacz [Równorzędne sieci wirtualnej Databricks do zdalnej sieci wirtualnej](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
+
+### <a name="the-remote-virtual-network-lacks-a-gateway"></a>W zdalnej sieci wirtualnej brakuje bramy
+
+Ten problem występuje, gdy sieci wirtualne równorzędne `Use Remote Gateways`z różnych dzierżawców, a później chcesz skonfigurować . Ograniczeniem witryny Azure portal jest to, że nie można sprawdzić poprawność obecności bramy sieci wirtualnej w sieci wirtualnej innej dzierżawy.
+
+Problem można rozwiązać na dwa sposoby:
+
+ * Usuń komunikację równorzędną i aktywuj `Use Remote Gateways` tę opcję podczas tworzenia nowej komunikacji równorzędnej.
+ * Użyj programu PowerShell lub CLI zamiast witryny `Use Remote Gateways`Azure Portal, aby włączyć program .
 
 ## <a name="next-steps"></a>Następne kroki
 

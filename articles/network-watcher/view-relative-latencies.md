@@ -1,5 +1,5 @@
 ---
-title: Wyświetlanie względnych opóźnień w regionach platformy Azure z określonych lokalizacji | Dokumenty firmy Microsoft
+title: Wyświetlanie względnych opóźnień w regionach platformy Azure z określonych lokalizacji
 description: Dowiedz się, jak wyświetlać względne opóźnienia między dostawcami internetu w regionach platformy Azure z określonych lokalizacji.
 services: network-watcher
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: c3a85de3a201a89d6d9500e4f4b2df9e667e3537
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39f81731f20566d1a39f3f0931ff52c4e8b43ec0
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840540"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521392"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Wyświetlanie względnego opóźnienia do regionów platformy Azure z określonych lokalizacji
 

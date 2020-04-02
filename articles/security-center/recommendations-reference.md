@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: f0e74a366e8dbb515f2f50748eb4a5c76088a723
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 8f4703330190d3907e9a6e3aead8892fe69e7c13
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398026"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521220"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Zalecenia dotyczące zabezpieczeń - przewodnik referencyjny
 
@@ -105,7 +105,7 @@ Twój wynik secure jest oparty na liczbie ukończonych rekomendacji w centrum za
 |**Zmienne konta automatyzacji powinny być szyfrowane**|Włącz szyfrowanie zasobów zmiennych kont automatyzacji podczas przechowywania poufnych danych.<br>(Powiązane zasady: szyfrowanie powinno być włączone w zmiennych konta automatyzacji)|Wysoka|Nie|Zasoby obliczeniowe (konto automatyzacji)|
 |**Szyfrowanie dysku powinno być stosowane na maszynach wirtualnych**|Szyfruj dyski maszyn wirtualnych przy użyciu szyfrowania dysków platformy Azure zarówno dla maszyn wirtualnych systemu Windows, jak i systemu Linux. Usługa Azure Disk Encryption (ADE) wykorzystuje standardową w branży funkcję funkcji funkcji BitLocker systemu Windows i funkcję DM-Crypt systemu Linux, aby zapewnić szyfrowanie systemu operacyjnego i dysku danych, aby chronić i chronić dane oraz pomagać w spełnianiu zobowiązań dotyczących zabezpieczeń i zgodności w magazynie kluczy platformy Azure klienta. Gdy wymagania dotyczące zgodności i zabezpieczeń wymagają szyfrowania danych od końca do końca przy użyciu kluczy szyfrowania, w tym szyfrowania efemerycznego (lokalnie dołączonego tymczasowego) dysku, użyj szyfrowania dysku platformy Azure. Alternatywnie domyślnie dyski zarządzane są szyfrowane w stanie spoczynku domyślnie przy użyciu szyfrowania usługi Azure Storage Service, gdzie klucze szyfrowania są kluczami zarządzanymi przez firmę Microsoft na platformie Azure. Jeśli spełnia to wymagania dotyczące zgodności i zabezpieczeń, można wykorzystać domyślne szyfrowanie dysku zarządzanego, aby spełnić wymagania.<br>(Powiązane zasady: szyfrowanie dysków powinno być stosowane na maszynach wirtualnych)|Wysoka|Nie|Maszyna|
 |**Maszyny wirtualne powinny zostać zmigrowane do nowych zasobów usługi Azure Resource Manager**|Usługa Azure Resource Manager dla maszyn wirtualnych zapewnia ulepszenia zabezpieczeń, takie jak: silniejsza kontrola dostępu (RBAC), lepsza inspekcja, wdrażanie i zarządzanie oparte na menedżerze zasobów, dostęp do zarządzanych tożsamości, dostęp do magazynu kluczy dla kluczy dla kluczy, uwierzytelnianie oparte na usłudze Azure AD oraz obsługa tagów i grup zasobów w celu łatwiejszego zarządzania zabezpieczeniami.<br>(Powiązane zasady: maszyny wirtualne powinny zostać zmigrowane do nowych zasobów usługi Azure Resource Manager)|Małe|Nie|Maszyna|
-|**Rozwiązanie do oceny luk w zabezpieczeniach powinno być zainstalowane na maszynach wirtualnych**|Instalowanie rozwiązania do oceny luk w zabezpieczeniach na maszynach wirtualnych<br>(Powiązane zasady: Ocena luk w zabezpieczeniach powinna być zainstalowana na maszynach wirtualnych)|Medium|Nie|Maszyna|
+|**Rozwiązanie do oceny luk w zabezpieczeniach powinno być zainstalowane na maszynach wirtualnych**|Instalowanie rozwiązania do oceny luk w zabezpieczeniach na maszynach wirtualnych<br>(Powiązane zasady: Luki w zabezpieczeniach powinny zostać naprawione przez rozwiązanie do oceny luk w zabezpieczeniach)|Medium|Nie|Maszyna|
 |**Luki w zabezpieczeniach powinny zostać naprawione przez rozwiązanie do oceny luk w zabezpieczeniach**|Maszyny wirtualne, dla których wdrożono rozwiązanie 3rd party oceny luk w zabezpieczeniach, są stale oceniane pod kątem luk w zabezpieczeniach aplikacji i systemu operacyjnego. Za każdym razem, gdy takie luki zostaną znalezione, są one dostępne w celu uzyskania więcej informacji w ramach zalecenia.<br>(Powiązane zasady: Luki w zabezpieczeniach powinny zostać naprawione przez rozwiązanie do oceny luk w zabezpieczeniach)|Wysoka|Nie|Maszyna|
 |**Luki w zabezpieczeniach konfiguracji na komputerach powinny zostać naprawione**|Usuwanie luk w zabezpieczeniach konfiguracji na komputerach w celu ochrony przed atakami.<br>(Powiązane zasady: Luki w konfiguracji zabezpieczeń na komputerach powinny zostać naprawione)|Małe|Nie|Maszyna|
 |**Luki w zabezpieczeniach kontenerów powinny zostać naprawione**|Usuwanie luk w zabezpieczeniach konfiguracji na komputerach z zainstalowanym programem Docker w celu ochrony przed atakami.<br>(Powiązane zasady: Luki w zabezpieczeniach kontenerów powinny zostać naprawione)|Wysoka|Nie|Maszyna|

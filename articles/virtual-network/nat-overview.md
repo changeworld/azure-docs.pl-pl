@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 4b34d4208d8686cdac3f8164d2cf7efb2d881346
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 50fc8b9cefe88a80f3f954ce363139b6a4a38589
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79409902"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548384"
 ---
 # <a name="what-is-virtual-network-nat"></a>Co to jest nat sieci wirtualnej?
 
@@ -40,11 +40,11 @@ Virtual Network NAT (translacja adresów sieciowych) upraszcza połączenie inte
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>Statyczne adresy IP dla wychodzących
 
-Łączność wychodzącą można zdefiniować dla każdej podsieci za pomocą translatora z napisem NAT.  Wiele podsieci w tej samej sieci wirtualnej może mieć różne translatory adresów sieciowych. Podsieć jest konfigurowana przez określenie [zasobu bramy NAT](./nat-gateway-resource.md) do użycia. Wszystkie przepływy wychodzące UDP i TCP z dowolnego wystąpienia maszyny wirtualnej będą używać translatora adresów sieciowych. 
+Łączność wychodzącą można zdefiniować dla każdej podsieci za pomocą translatora z napisem NAT.  Wiele podsieci w tej samej sieci wirtualnej może mieć różne translatory adresów sieciowych. Podsieć jest konfigurowana przez określenie zasobu bramy NAT do użycia. Wszystkie przepływy wychodzące UDP i TCP z dowolnego wystąpienia maszyny wirtualnej będą używać translatora adresów sieciowych. 
 
-Translator adresów sieciowych jest zgodny ze standardowymi [zasobami publicznego adresu IP](./virtual-network-ip-addresses-overview-arm.md#standard) jednostki SKU lub [publicznymi zasobami prefiksów IP](./public-ip-address-prefix.md) lub kombinacją obu tych zasobów.  Publiczny prefiks IP można używać bezpośrednio lub rozpowszechniać publiczne adresy IP prefiksu w wielu zasobach bramy TRANSLATORA. NAT będzie oczyszczenie całego ruchu do zakresu adresów IP prefiksu.  Wszystkie białe listy adresów IP wdrożeń jest teraz łatwe.
+Translator adresów sieciowych jest zgodny ze standardowymi zasobami publicznego adresu IP jednostki SKU lub publicznymi zasobami prefiksów IP lub kombinacją obu tych zasobów.  Publiczny prefiks IP można używać bezpośrednio lub rozpowszechniać publiczne adresy IP prefiksu w wielu zasobach bramy TRANSLATORA. NAT będzie oczyszczenie całego ruchu do zakresu adresów IP prefiksu.  Wszystkie białe listy adresów IP wdrożeń jest teraz łatwe.
 
-Cały ruch wychodzący dla podsieci jest przetwarzany przez translatora zabezpieczeń automatycznie bez konfiguracji klienta.  Trasy zdefiniowane przez użytkownika nie są konieczne. Translator adresów sieciowych ma pierwszeństwo przed innymi [scenariuszami wychodzącymi](../load-balancer/load-balancer-outbound-connections.md) i zastępuje domyślne miejsce docelowe w Sieci w podsieci.
+Cały ruch wychodzący dla podsieci jest przetwarzany przez translatora zabezpieczeń automatycznie bez konfiguracji klienta.  Trasy zdefiniowane przez użytkownika nie są konieczne. Translator adresów sieciowych ma pierwszeństwo przed innymi scenariuszami wychodzącymi i zastępuje domyślne miejsce docelowe w Sieci w podsieci.
 
 ## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>SNAT na żądanie z wieloma adresami IP do skalowania
 
@@ -60,9 +60,9 @@ W przeciwieństwie do wychodzącego modułu SNAT modułu równoważenia obciąż
 
 Translator z artykułu nd.
 
-- [Moduł równoważenia obciążenia](../load-balancer/load-balancer-overview.md)
-- [Publiczny adres IP](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- [Prefiks publicznego adresu IP](../virtual-network/public-ip-address-prefix.md)
+- Moduł równoważenia obciążenia
+- Publiczny adres IP
+- Prefiks publicznego adresu IP
 
 W połączeniu z translatorem adresów sieciowych zasoby te zapewniają przychodzące połączenie z Internetem do podsieci. Translator adresów sieciowych zapewnia wszystkie wychodzące połączenia internetowe z podsieci.
 

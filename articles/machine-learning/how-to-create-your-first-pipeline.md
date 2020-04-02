@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f62be94c901b383e34608508baa87ea37c893af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0a5bfe921687ad964e9321e3874de37ccf9b98
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283604"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549312"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoków uczenia maszynowego za pomocą zestawu SDK usługi Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Potoki ml, które tworzysz są widoczne dla członków [obszaru roboczego](how-t
 
 Potoki ml używają zdalnych celów obliczeniowych do obliczeń i przechowywania danych pośrednich i końcowych skojarzonych z tym potokiem. Mogą odczytywać i zapisywać dane do i z obsługiwanych lokalizacji [usługi Azure Storage.](https://docs.microsoft.com/azure/storage/)
 
-Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -118,7 +118,7 @@ output_data1 = PipelineData(
 
 Jeśli w pliku lub zestawie plików są przechowywane dane tabelaryczne, zestaw danych `DataReference` [tabelaryczne](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) jest skuteczną alternatywą dla pliku . `TabularDataset`obiekty obsługują przechowywanie wersji, różnice i statystyki podsumowania. `TabularDataset`s są leniwie oceniane (jak generatory Pythona) i jest to skuteczne, aby podzdjąć je przez dzielenie lub filtrowanie. Klasa `FileDataset` zawiera podobne dane lazily oceniane reprezentujące jeden lub więcej plików. 
 
-Tworzenie `TabularDataset` przy użyciu metod, takich jak [from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-).
+Tworzenie `TabularDataset` przy użyciu metod, takich jak [from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-).
 
 ```python
 from azureml.data import TabularDataset

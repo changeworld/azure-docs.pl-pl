@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/01/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: c5f65adfe401f2f6e99234d08b8e8dabeff7d5db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1ee8e90d1d690315b2727a050e0383d7d28dc03
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264117"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546141"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Jak: Użyj portalu, aby utworzyć aplikację i jednostkę usługi Azure AD, która może uzyskiwać dostęp do zasobów
 
@@ -99,7 +99,7 @@ Wyeksportuj ten certyfikat do pliku przy użyciu przystawki Program MMC [Zarząd
 
 1. Aby wyświetlić certyfikaty, w obszarze **Certyfikaty — bieżący użytkownik** w lewym okienku rozwiń katalog **osobisty.**
 1. Kliknij prawym przyciskiem myszy utworzony certyfikat, wybierz pozycję **Wszystkie zadania >Eksportuj**.
-1. Postępuj zgodnie z kreatorem eksportu certyfikatów.  Wyeksportuj klucz prywatny, określ hasło do pliku certyfikatu i wyeksportuj go do pliku.
+1. Postępuj zgodnie z kreatorem eksportu certyfikatów.  Nie należy eksportować klucza prywatnego i eksportować do pliku . CER.
 
 Aby przesłać certyfikat:
 
@@ -148,7 +148,7 @@ Musisz mieć wystarczające uprawnienia, aby zarejestrować aplikację w dzierż
 1. W lewym okienku wybierz **pozycję Ustawienia użytkownika**.
 1. Sprawdź ustawienie **Rejestracje aplikacji.** Tę wartość może ustawić tylko administrator. Jeśli ustawiona jest **na Tak,** każdy użytkownik w dzierżawie usługi Azure AD może zarejestrować aplikację.
 
-Jeśli ustawienie rejestracji aplikacji jest ustawione na **Nie,** tylko użytkownicy z rolą administratora mogą rejestrować tego typu aplikacje. Zobacz [dostępne role](../users-groups-roles/directory-assign-admin-roles.md#available-roles) i uprawnienia do [ról,](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) aby dowiedzieć się więcej o dostępnych rolach administratora i określonych uprawnieniach w usłudze Azure AD, które są nadane każdej roli. Jeśli twojemu kontu przypisano rolę Użytkownik, ale ustawienie rejestracji aplikacji jest ograniczone do użytkowników administratorów, poproś administratora o przypisanie jednej z ról administratora, które mogą tworzyć i zarządzać wszystkimi aspektami rejestracji aplikacji, lub aby umożliwić użytkownikom rejestrację Aplikacje.
+Jeśli ustawienie rejestracji aplikacji jest ustawione na **Nie,** tylko użytkownicy z rolą administratora mogą rejestrować tego typu aplikacje. Zobacz [dostępne role](../users-groups-roles/directory-assign-admin-roles.md#available-roles) i uprawnienia do [ról,](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) aby dowiedzieć się więcej o dostępnych rolach administratora i określonych uprawnieniach w usłudze Azure AD, które są nadane każdej roli. Jeśli twojemu kontu jest przypisana rola Użytkownik, ale ustawienie rejestracji aplikacji jest ograniczone do użytkowników administratorów, poproś administratora o przypisanie jednej z ról administratora, które mogą tworzyć i zarządzać wszystkimi aspektami rejestracji aplikacji, lub aby umożliwić użytkownikom rejestrowanie aplikacji.
 
 ### <a name="check-azure-subscription-permissions"></a>Sprawdzanie uprawnień subskrypcji platformy Azure
 
@@ -158,7 +158,7 @@ Aby sprawdzić uprawnienia subskrypcji:
 
 1. Wyszukaj i wybierz **subskrypcje**lub wybierz **subskrypcje** na stronie **głównej.**
 
-   ![Wyszukiwanie](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Wyszukaj](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Wybierz subskrypcję, w której chcesz utworzyć jednostkę usługi.
 

@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3deb87fec8241ad6126314f3f6ce5fb9600ad1fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 477bb5430214b497f90e3cb6d5df69f9fcf4035f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128559"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546161"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co to jest zarządzanie upoważnieniami w usłudze Azure AD?
 
@@ -101,7 +101,7 @@ Na poniższym diagramie przedstawiono przykład różnych elementów w zarządza
 
 Pakiety dostępu nie zastępują innych mechanizmów przypisywania dostępu.  Są one najbardziej odpowiednie w sytuacjach takich jak:
 
-- Pracownicy potrzebują ograniczonego w czasie dostępu do określonego zadania.  Na przykład można użyć licencjonowania opartego na grupach i grupy dynamicznej, aby upewnić się, że wszyscy pracownicy mają skrzynkę pocztową usługi Exchange Online, a następnie używać pakietów dostępu w sytuacjach, w których pracownicy potrzebują dodatkowego dostępu, na przykład do odczytywania zasobów działów z innego Dział.
+- Pracownicy potrzebują ograniczonego w czasie dostępu do określonego zadania.  Na przykład można użyć licencjonowania opartego na grupach i grupy dynamicznej, aby upewnić się, że wszyscy pracownicy mają skrzynkę pocztową usługi Exchange Online, a następnie użyć pakietów dostępu w sytuacjach, w których pracownicy potrzebują dodatkowego dostępu, na przykład do odczytu zasobów działów z innego działu.
 - Dostęp musi być zatwierdzony przez kierownika pracownika lub inne wyznaczone osoby.
 - Działy chcą zarządzać własnymi zasadami dostępu dla swoich zasobów bez udziału działu IT.  
 - Co najmniej dwie organizacje współpracują nad projektem, w związku z czym wielu użytkowników z jednej organizacji będzie musiało zostać wniesionych za pośrednictwem usługi Azure AD B2B, aby uzyskać dostęp do zasobów innej organizacji.
@@ -132,15 +132,16 @@ Aby lepiej zrozumieć zarządzanie uprawnieniami i jego dokumentację, można od
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-Wyspecjalizowane chmury, takie jak Azure Government, Azure Germany i Azure China 21Vianet, nie są obecnie dostępne do użycia.
+Wyspecjalizowane chmury, takie jak Azure Germany i Azure China 21Vianet, nie są obecnie dostępne do użycia.
 
 ### <a name="how-many-licenses-must-you-have"></a>Ile masz licencji?
 
-Upewnij się, że katalog ma co najmniej tyle licencji usługi Azure AD Premium P2, jak masz pracowników, którzy będą wykonywać następujące zadania:
+Upewnij się, że twój katalog ma co najmniej tyle licencji usługi Azure AD Premium P2, jak masz:
 
 - Użytkownicy członkowskie, którzy **mogą zażądać** pakietu dostępu.
 - Użytkownicy członkowskie i goście, którzy zażądają pakietu dostępu.
 - Użytkownicy członkowskie i goście, którzy zatwierdzają żądania pakietu dostępu.
+- Użytkownicy członkowskie i goście, którzy mają bezpośrednie przypisanie do pakietu dostępu.
 
 Licencje usługi Azure AD Premium P2 **nie** są wymagane do następujących zadań:
 

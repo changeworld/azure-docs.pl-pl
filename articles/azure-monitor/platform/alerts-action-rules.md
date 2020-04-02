@@ -4,16 +4,18 @@ description: Opis reguł akcji w usłudze Azure Monitor oraz sposobu konfigurowa
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 42f8d9cd30caa48376cda049f6404aa897a6866c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0498325984641641d6dfc9ee6b89f66800b5c7d2
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668472"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546482"
 ---
 # <a name="action-rules-preview"></a>Reguły akcji (wersja zapoznawcza)
 
 Reguły akcji ułatwiządefiniowanie lub pomijanie akcji w dowolnym zakresie usługi Azure Resource Manager (subskrypcja platformy Azure, grupa zasobów lub zasób docelowy). Mają różne filtry, które pomagają zawęzić określony podzbiór wystąpień alertów, które chcesz działać na.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4qXeL]
 
 ## <a name="why-and-when-should-you-use-action-rules"></a>Dlaczego i kiedy należy używać reguł akcji?
 
@@ -158,7 +160,7 @@ Aby najlepiej używać alertów dziennika z regułami akcji, należy utworzyć a
 
 ![Reguły akcji i alerty dziennika (liczba wyników)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
-## <a name="faq"></a>Najczęściej zadawane pytania
+## <a name="faq"></a>Często zadawane pytania
 
 ### <a name="while-im-configuring-an-action-rule-id-like-to-see-all-the-possible-overlapping-action-rules-so-that-i-avoid-duplicate-notifications-is-it-possible-to-do-that"></a>Podczas konfigurowania reguły akcji, chciałbym zobaczyć wszystkie możliwe nakładające się reguły akcji, aby uniknąć zduplikowanych powiadomień. Czy jest to możliwe?
 

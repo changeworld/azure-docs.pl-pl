@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: d0e66cefac496f3a54690b17a1e3de705f39c7fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 861961bb66adc7ed9509eab973516a964cb67492
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337051"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521064"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostyka usługi Load Balancer w warstwie Standardowa przy użyciu metryk, alertów i kondycji zasobów
 
@@ -71,6 +71,21 @@ Aby uzyskać wskazówki dotyczące interfejsu API dotyczące pobierania wielowym
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Typowe scenariusze diagnostyczne i zalecane widoki
 
+### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Konfigurowanie alertów dla metryk wielowymiarowych ###
+
+Azure Standard Load Balancer obsługuje łatwe konfigurowalne alerty dla metryk wielowymiarowych. Skonfiguruj niestandardowe progi dla określonych metryk, aby wyzwalać alerty o różnym poziomie ważności, aby umożliwić monitorowanie zasobów bezdotykowych.
+
+Aby skonfigurować alerty:
+1. Przejdź do podraźnika alertu dla modułu równoważenia obciążenia
+1. Tworzenie nowej reguły alertu
+    1.  Konfigurowanie stanu alertu
+    1.  (Opcjonalnie) Dodaj grupę akcji do automatycznej naprawy
+    1.  Przypisywanie ważności alertu, nazwy i opisu, które umożliwiają intuicyjną reakcję
+
+
+  >[!NOTE]
+  >Okno konfiguracji stanu alertu wyświetli szeregi czasowe dla historii sygnału. Istnieje możliwość filtrowania tych szeregów czasowych według wymiarów, takich jak adres IP wewnętrznej bazy danych. Spowoduje to filtrowanie wykresu szeregów czasowych, ale **nie** samego alertu. Nie można skonfigurować alertów dla określonych adresów IP wewnętrznej bazy danych.
+  
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Czy ścieżka danych jest dostępna dla mojego modułu VIP równoważenia obciążenia?
 
 Metryka dostępności programu VIP opisuje kondycję ścieżki danych w regionie do hosta obliczeniowego, na którym znajdują się maszyny wirtualne. Metryka jest odzwierciedleniem kondycji infrastruktury platformy Azure. Metryki można użyć do:

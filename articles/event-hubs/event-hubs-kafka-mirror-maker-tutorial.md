@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 6dc902b6a26c175713381b4fce88934dca3f409e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e0339cf4431d3ed36f50b43134803079e30b101
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283586"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521738"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Użyj programu Kafka MirrorMaker z centrami zdarzeń dla platformy Apache Kafka
 
-W tym samouczku pokazano, jak dublować brokera platformy Kafka w centrum zdarzeń z włączoną platformą Kafka przy użyciu programu Kafka MirrorMaker.
+W tym samouczku pokazano, jak dublować brokera platformy Kafka w centrum zdarzeń przy użyciu programu Kafka MirrorMaker.
 
    ![Kafka MirrorMaker z centrami zdarzeń](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
@@ -38,7 +38,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 ## <a name="introduction"></a>Wprowadzenie
 Jedną z głównych kwestii dla nowoczesnych aplikacji skalowania chmury jest możliwość aktualizacji, poprawy i zmiany infrastruktury bez przerywania usługi. W tym samouczku pokazano, jak centrum zdarzeń i program Kafka MirrorMaker można zintegrować istniejący potok platformy Kafka do platformy Azure przez "dublowanie" strumienia wejściowego platformy Kafka w usłudze Usługi Centrum zdarzeń. 
 
-Punkt końcowy usługi Azure Event Hubs Kafka umożliwia łączenie się z centrum zdarzeń platformy Azure przy użyciu protokołu Platformy Kafka (czyli klientów platformy Kafka). W celu wniesienia minimalnych zmian w aplikacji platformy Kafka można połączyć się z centrum zdarzeń platformy Azure i korzystać z zalet ekosystemu platformy Azure. Usługa Event Hubs z włączoną funkcją platformy Kafka obsługuje obecnie protokół Kafka w wersji 1.0 i nowszej.
+Punkt końcowy usługi Azure Event Hubs Kafka umożliwia łączenie się z centrum zdarzeń platformy Azure przy użyciu protokołu Platformy Kafka (czyli klientów platformy Kafka). W celu wniesienia minimalnych zmian w aplikacji platformy Kafka można połączyć się z centrum zdarzeń platformy Azure i korzystać z zalet ekosystemu platformy Azure. Usługa Event Hubs obsługuje obecnie platformę Kafka w wersji 1.0 lub nowszej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -56,11 +56,11 @@ Aby ukończyć kroki tego samouczka, upewnij się, że dysponujesz następujący
 
 ## <a name="create-an-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
 
-Przestrzeń nazw usługi Event Hubs jest wymagana do wysyłania i odbierania zdarzeń z dowolnej usługi Event Hubs. Aby uzyskać instrukcje uzyskiwania punktu końcowego platformy Kafka w usłudze Event Hubs, zobacz [Creating a Kafka enabled Event Hub](event-hubs-create.md) (Tworzenie centrum zdarzeń z obsługą platformy Kafka). Pamiętaj, aby skopiować parametry połączenia usługi Event Hubs do późniejszego użycia.
+Przestrzeń nazw usługi Event Hubs jest wymagana do wysyłania i odbierania zdarzeń z dowolnej usługi Event Hubs. Zobacz [Tworzenie centrum zdarzeń,](event-hubs-create.md) aby uzyskać instrukcje tworzenia obszaru nazw i centrum zdarzeń. Pamiętaj, aby skopiować parametry połączenia usługi Event Hubs do późniejszego użycia.
 
 ## <a name="clone-the-example-project"></a>Klonowanie projektu przykładowego
 
-Teraz, gdy masz ciąg połączenia usługi Event Hubs z włączoną funkcją platformy Kafka, `mirror-maker` sklonuj usługi Azure Event Hubs dla repozytorium platformy Kafka i przejdź do podfolderu:
+Teraz, gdy masz parametry połączenia usługi Event Hubs, sklonuj usługi Azure Event `mirror-maker` Hubs dla repozytorium platformy Kafka i przejdź do podfolderu:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -118,7 +118,7 @@ bin/kafka-mirror-maker.sh --consumer.config source-kafka.config --num.streams 1 
 
 Aby sprawdzić, czy zdarzenia docierają do centrum zdarzeń, zobacz statystyki transferu danych przychodzących w [witrynie Azure portal](https://azure.microsoft.com/features/azure-portal/)lub uruchom konsumenta względem centrum zdarzeń.
 
-Po uruchomieniu programu MirrorMaker wszystkie zdarzenia wysyłane do źródłowego klastra platformy Kafka są odbierane zarówno przez klaster platformy Kafka, jak i z dublowanym programem Platformy Kafka włączoną usługą centrum zdarzeń. Za pomocą MirrorMaker i punktu końcowego platformy Kafka centrów zdarzeń, można migrować istniejący potok platformy Kafka do zarządzanej usługi Usługi Azure Event Hubs bez zmiany istniejącego klastra lub przerywania bieżącego przepływu danych.
+Po uruchomieniu programu MirrorMaker wszystkie zdarzenia wysyłane do źródłowego klastra platformy Kafka są odbierane zarówno przez klaster platformy Kafka, jak i centrum zdarzeń dublowanych. Za pomocą MirrorMaker i punktu końcowego platformy Kafka centrów zdarzeń, można migrować istniejący potok platformy Kafka do zarządzanej usługi Usługi Azure Event Hubs bez zmiany istniejącego klastra lub przerywania bieżącego przepływu danych.
 
 ## <a name="samples"></a>Samples
 Zobacz następujące przykłady w usłudze GitHub:

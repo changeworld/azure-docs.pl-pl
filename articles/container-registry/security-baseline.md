@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2970ebf42acb87e93f8b827b3687b219da5867c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9225cfd9793a84f371387d6450a3dfa80ba74de3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80244294"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547539"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Usługa Azure Security Baseline dla rejestru kontenerów platformy Azure
 
@@ -68,7 +68,6 @@ Ochrona zasobów sieciowych:https://docs.microsoft.com/azure/security-center/sec
 Możesz użyć dostępu do sieci usługi Azure Security Center just in time, aby skonfigurować sieciowe sieciowe, aby ograniczyć ekspozycję punktów końcowych na zatwierdzone adresy IP przez ograniczony okres. Ponadto użyj narzędzia Azure Security Center Adaptive Network Hardening, aby polecić konfiguracje sieciowej grupy zabezpieczeń, które ograniczają porty i źródłowe interfejsy IP na podstawie analizy rzeczywistego ruchu i zagrożeń.
 
 Jak skonfigurować ochronę przed atakami DDoS:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
-
 
 Jak wdrożyć Zaporę platformy Azure:https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 

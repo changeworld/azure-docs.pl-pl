@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b344886e89a10a027cba169e92056a6dda443d8d
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: c56e6729307a1cad998a060202f51cb8f29bf94a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421943"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548318"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów usługi Azure Resource Manager
 
@@ -332,7 +332,7 @@ Usługa platformy Azure: [zarządzanie interfejsami API](../api-management/index
 > | Akcja | Microsoft.ApiManagement/service/read | Odczytywanie metadanych wystąpienia usługi zarządzania interfejsami API |
 > | Akcja | Microsoft.ApiManagement/service/delete Microsoft.ApiManagement/service/delete Microsoft.ApiManagement/service/delete Microsoft. | Usuń wystąpienie usługi zarządzania interfejsami API |
 > | Akcja | Microsoft.ApiManagement/service/updatehostname/action | Konfigurowanie, aktualizowanie lub usuwanie niestandardowych nazw domen usługi zarządzania interfejsami API |
-> | Akcja | Microsoft.ApiManagement/service/updatecertificate/action | Przekazywanie certyfikatu SSL dla usługi zarządzania interfejsami API |
+> | Akcja | Microsoft.ApiManagement/service/updatecertificate/action | Przekazywanie certyfikatu TLS/SSL dla usługi zarządzania interfejsem API |
 > | Akcja | Microsoft.ApiManagement/service/backup/action | Tworzenie kopii zapasowych usługi zarządzania interfejsami API do określonego kontenera na koncie magazynu podanym przez użytkownika |
 > | Akcja | Microsoft.ApiManagement/service/restore/action | Przywracanie usługi zarządzania interfejsami API z określonego kontenera na koncie magazynu dostarczonym przez użytkownika |
 > | Akcja | Microsoft.ApiManagement/service/managedeployments/action Microsoft.ApiManagement/service/managedeployments/action Microsoft.ApiManagement/service/managedeployments/action Microsoft. | Zmienianie jednostki SKU/jednostek, dodawanie/usuwanie regionalnych wdrożeń usługi api Management Service |
@@ -10044,7 +10044,7 @@ Usługa platformy Azure: [Azure DevOps](https://docs.microsoft.com/azure/devops/
 > | Akcja | Microsoft.VisualStudio/Rozszerzenie/Zapis | Ustaw rozszerzenie |
 > | Akcja | Microsoft.VisualStudio/Rozszerzenie/Usuń | Usuń rozszerzenie |
 > | Akcja | Microsoft.VisualStudio/Rozszerzenie/Odczyt | Rozszerzenie odczytu |
-> |  | **Project** |  |
+> |  | **Projekt** |  |
 > | Akcja | Microsoft.VisualStudio/Projekt/Zapis | Ustaw projekt |
 > | Akcja | Microsoft.VisualStudio/Projekt/Usuń | Usuń projekt |
 > | Akcja | Microsoft.VisualStudio/Projekt/Odczyt | Przeczytaj projekt |

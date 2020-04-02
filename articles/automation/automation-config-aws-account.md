@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 596dc334a412b3e0839d7661a23af771e5cd7394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 891db5d17ddde681f75845fdca6c9252c5b32b86
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75366944"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520832"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Uwierzytelnianie elementów Runbook w usłudze Amazon Web Services
 
@@ -26,7 +26,7 @@ Aby wykonać uwierzytelnienie w usłudze AWS, należy określić zestaw poświad
 
 Aby usługa Azure Automation mogła się komunikować z usługą AWS, musisz najpierw pobrać poświadczenia usługi AWS i przechowywać je jako zasoby w usłudze Azure Automation. Wykonaj następujące czynności opisane w dokumencie usługi AWS [Zarządzanie kluczami dostępu konta usługi AWS](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html), aby utworzyć klucz dostępu i skopiować **identyfikator klucza dostępu** i **tajny klucz dostępu** (ewentualnie pobierz plik klucza, aby go bezpiecznie przechować w innym miejscu).
 
-Po utworzeniu i skopiowaniu kluczy zabezpieczeń usługi AWS musisz utworzyć zasób poświadczeń przy użyciu konta usługi Azure Automation, aby bezpiecznie je przechowywać i odwoływać się do nich z poziomu elementów Runbook. Wykonaj kroki opisane w sekcji: **Aby utworzyć nowe poświadczenia** w [zasobach poświadczeń w usłudze Azure Automation](shared-resources/credentials.md#to-create-a-new-credential-asset-with-the-azure-portal) i wprowadź następujące informacje:
+Po utworzeniu i skopiowaniu kluczy zabezpieczeń usługi AWS musisz utworzyć zasób poświadczeń przy użyciu konta usługi Azure Automation, aby bezpiecznie je przechowywać i odwoływać się do nich z poziomu elementów Runbook. Wykonaj kroki opisane w sekcji: **Aby utworzyć nowe poświadczenia** w [zasobach poświadczeń w usłudze Azure Automation](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal) i wprowadź następujące informacje:
 
 1. W polu **Nazwa** wprowadź **AWScred** lub wartość odpowiadającą Twoim standardom nazewnictwa.
 2. W polu **Nazwa użytkownika** wpisz swój **identyfikator dostępu** i tajny **klucz dostępu** w polu **Hasło** i **Potwierdź hasło.**

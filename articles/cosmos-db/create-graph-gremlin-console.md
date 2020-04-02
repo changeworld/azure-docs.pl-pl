@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: 78dfbabdcddaafefe77711e8f7b0ea1028f15c58
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 597766774be15abdc7cb7836f2a23ef490b11926
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77117916"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547199"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Szybki start: tworzenie, wykonywanie zapytań i przechodzenie przez bazę danych wykresów usługi Azure Cosmos DB przy użyciu konsoli Gremlin
 
@@ -59,7 +59,7 @@ Należy również zainstalować [konsolę Gremlin](https://tinkerpop.apache.org/
     port|443|Ustaw wartość 443.
     nazwa użytkownika|*Twoja nazwa użytkownika*|Zasób w postaci `/dbs/<db>/colls/<coll>`, gdzie `<db>` jest nazwą bazy danych, a `<coll>` oznacza nazwę kolekcji.
     hasło|*Twój klucz podstawowy*| Zobacz drugi zrzut ekranu poniżej. To jest klucz podstawowy, który można pobrać ze strony Klucze w witrynie Azure Portal, z pola Klucz podstawowy. Aby skopiować wartość, użyj przycisku kopiowania po lewej stronie pola.
-    connectionPool|{enableSsl: true}|Ustawienie puli połączeń protokołu SSL.
+    connectionPool|{enableSsl: true}|Ustawienie puli połączeń dla protokołu TLS.
     serializer|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Ustaw tę wartość i usuń wszystkie podziały wiersza `\n` podczas wklejania w wartości.
 
     Jako wartość hostów skopiuj wartość **Identyfikator URI Gremlin** ze strony **Przegląd**: ![Wyświetl i skopiuj wartość identyfikatora URI Gremlin ze strony Przegląd w witrynie Azure Portal](./media/create-graph-gremlin-console/gremlin-uri.png)

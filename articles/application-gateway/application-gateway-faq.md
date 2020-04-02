@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: 290467d5d20a74f8b8b2c23f6da0dcadfd74cc56
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411027"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544502"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące bramy aplikacji
 
@@ -112,7 +112,15 @@ Większość wdrożeń, które używają jednostki SKU w wersji 2 trwa około 6 
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Czy mogę używać programu Exchange Server jako wewnętrznej bazy danych z bramą aplikacji?
 
-Nie. Brama aplikacji nie obsługuje protokołów poczty e-mail, takich jak SMTP, IMAP i POP3. 
+Nie. Brama aplikacji nie obsługuje protokołów poczty e-mail, takich jak SMTP, IMAP i POP3.
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Czy dostępne są wskazówki dotyczące migracji z jednostki SKU w wersji 1 do jednostki SKU w wersji 2?
+
+Tak. Aby uzyskać szczegółowe informacje, zobacz [Migrowanie bramy aplikacji platformy Azure i Zapory aplikacji sieci Web z wersji 1 do wersji 2](migrate-v1-v2.md).
+
+### <a name="will-the-application-gateway-v1-sku-continue-to-be-supported"></a>Czy jednostka SKU bramy aplikacji w wersji 1 będzie nadal obsługiwana?
+
+Tak. Jednostka SKU bramy aplikacji w wersji 1 będzie nadal obsługiwana. Jednak zdecydowanie zaleca się przejście do wersji 2, aby skorzystać z aktualizacji funkcji w tej jednostce SKU. Aby uzyskać więcej informacji, zobacz [Skalowanie automatyczne i Brama aplikacji nadmiarowa strefowa w wersji 2](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="performance"></a>Wydajność
 
@@ -203,10 +211,6 @@ Tak. Zobacz [ograniczanie dostępu do określonych źródłowych usług IP](http
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Czy mogę używać tego samego portu zarówno dla słuchaczy publicznych, jak i prywatnych?
 
 Nie.
-
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Czy dostępne są wskazówki dotyczące migracji z jednostki SKU w wersji 1 do jednostki SKU w wersji 2?
-
-Tak. Aby uzyskać szczegółowe informacje, zobacz [Migrowanie bramy aplikacji platformy Azure i Zapory aplikacji sieci Web z wersji 1 do wersji 2](migrate-v1-v2.md).
 
 ### <a name="does-application-gateway-support-ipv6"></a>Czy brama aplikacji obsługuje IPv6?
 
@@ -329,10 +333,6 @@ Aby uzyskać więcej informacji, zobacz [Luki w zabezpieczeniach OWASP top-10](h
 ### <a name="does-waf-support-ddos-protection"></a>Czy WAF obsługuje ochronę DDoS?
 
 Tak. Ochronę przed atakami DDoS można włączyć w sieci wirtualnej, w której wdrożono bramę aplikacji. To ustawienie gwarantuje, że usługa Ochrony przed atakami DDoS platformy Azure chroni również wirtualny adres IP (VIP) bramy aplikacji.
-
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Czy dostępne są wskazówki dotyczące migracji z jednostki SKU w wersji 1 do jednostki SKU w wersji 2?
-
-Tak. Aby uzyskać szczegółowe informacje, zobacz [Migrowanie bramy aplikacji platformy Azure i Zapory aplikacji sieci Web z wersji 1 do wersji 2](migrate-v1-v2.md).
 
 ## <a name="configuration---ingress-controller-for-aks"></a>Konfiguracja — kontroler transferu danych przychodzących dla usługi AKS
 

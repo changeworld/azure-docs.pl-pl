@@ -1,19 +1,19 @@
 ---
 title: Dostosowywanie konfiguracji klastra usługi Azure HDInsight przy użyciu narzędzia bootstrap
-description: Dowiedz się, jak programowo dostosowywać konfigurację klastra USŁUGI HDInsight przy użyciu szablonów .Net, PowerShell i Resource Manager.
+description: Dowiedz się, jak programowo dostosowywać konfigurację klastra HDInsight przy użyciu szablonów .NET, PowerShell i Resource Manager.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/21/2019
-ms.openlocfilehash: e641340ac04415ee4a20cda2bc09bbdbef9802a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 796dbc53d1adf310028e06dea319b9a60d5cf54b
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272528"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529345"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Dostosowywanie klastrów HDInsight przy użyciu bootstrap
 
@@ -125,6 +125,18 @@ W szablonie Menedżera zasobów można użyć boottrapu:
 ```
 
 ![Hadoop dostosowuje szablon usługi Azure Resource Manager z zestawem inautu](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+
+Przykładowy fragment szablonu Menedżera zasobów, aby przełączyć konfigurację w domyślnych spark2, aby okresowo czyścić dzienniki zdarzeń z magazynu.  
+
+```json
+"configurations": {
+    "spark2-defaults": {
+        "spark.history.fs.cleaner.enabled": "true",
+        "spark.history.fs.cleaner.interval": "7d",
+        "spark.history.fs.cleaner.maxAge": "90d"
+    }
+}
+```
 
 ## <a name="see-also"></a>Zobacz też
 

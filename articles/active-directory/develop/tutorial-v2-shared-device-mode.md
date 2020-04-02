@@ -15,12 +15,12 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: bf7e6bb22ce89d6be3f79efad1f1a3679e8780e7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e74ff320f26a4b6fa7d1caf3d4effca5e10669f4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77086059"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546231"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Samouczek: Użyj trybu udostępnionego urządzenia w aplikacji na Androida
 
@@ -96,9 +96,9 @@ Jeśli ustawisz `"account_mode":"SINGLE"` w pliku konfiguracyjnym MSAL, można `
 ```java
 private ISingleAccountPublicClientApplication mSingleAccountApp;
 
-/*Configure your sample app and save state for this activity*/ 
+/*Configure your sample app and save state for this activity*/
 PublicClientApplication.create(this.getApplicationCOntext(),
-  R.raw.auth_config, 
+  R.raw.auth_config,
   new PublicClientApplication.ApplicationCreatedListener(){
   @Override
   public void onCreated(IPublicClientApplication application){
@@ -109,7 +109,7 @@ PublicClientApplication.create(this.getApplicationCOntext(),
   public void onError(MsalException exception{
   /*Fail to initialize PublicClientApplication */
   }
-});  
+});
 ```
 
 ### <a name="detect-single-vs-multiple-account-mode"></a>Wykrywanie trybu pojedynczego i wielokrotnego konta
@@ -134,7 +134,7 @@ private IPublicClientApplication mApplication;
 
 Metoda `loadAccount` pobiera konto zalogowanego użytkownika. Metoda `onAccountChanged` określa, czy zalogowany użytkownik zmienił się, a jeśli tak, wyczyść:
 
-```java 
+```java
 private void loadAccount()
 {
   mSingleAccountApp.getCurrentAccountAsync(new ISingleAccountPublicClientApplication.CurrentAccountCallback()
@@ -157,12 +157,12 @@ private void loadAccount()
         updateSingedOutUI();
       }
     }
-    @Override 
-    public void onError(@NonNull Exception exception) 
+    @Override
+    public void onError(@NonNull Exception exception)
     {
     }
   }
-}  
+}
 ```
 
 ### <a name="globally-sign-in-a-user"></a>Globalnie zaloguj się do użytkownika
@@ -233,7 +233,7 @@ Uruchom aplikację Authenticator i przejdź do strony konta głównego. Po wyśw
 ![Ekran dodawania konta przez wystawcę uwierzytelniającego](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
 
  Przejdź do okienka **Ustawienia** za pomocą paska menu po prawej stronie. Wybierz **pozycję Rejestracja urządzenia** w obszarze Konta & **szkolne**.
- 
+
  ![Ekran dodawania konta przez wystawcę uwierzytelniającego](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
 
  Po kliknięciu tego przycisku zostaniesz poproszony o autoryzację dostępu do kontaktów urządzenia. Wynika to z integracji konta Androida na urządzeniu. Wybierz **pozycję Zezwalaj**.
@@ -260,10 +260,10 @@ Po umieszczeniu urządzenia w trybie udostępnionym staje się znane organizacji
 
 ## <a name="running-the-sample-app"></a>Uruchamianie przykładowej aplikacji
 
-Przykładowa aplikacja to prosta aplikacja, która wywoła interfejs API wykresu w organizacji. n Pierwszy bieg zostanie wyświetlony monit o wyrażenie zgody, ponieważ aplikacja jest nowa na koncie pracownika.
+Przykładowa aplikacja to prosta aplikacja, która wywoła interfejs API wykresu w organizacji. Przy pierwszym uruchomieniu zostanie wyświetlony monit o wyrażenie zgody, ponieważ aplikacja jest nowa na koncie pracownika.
 
 ![Ekran informacji o konfiguracji aplikacji](media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o trybie udostępnionym w [trybie urządzenia udostępnionego dla urządzeń z systemem Android](shared-device-mode.md)
+Dowiedz się więcej o trybie udostępnionym w [trybie urządzenia udostępnionego dla urządzeń z systemem Android](msal-android-shared-devices.md)
