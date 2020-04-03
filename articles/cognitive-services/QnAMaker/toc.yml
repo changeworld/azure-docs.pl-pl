@@ -22,6 +22,8 @@
       href: Quickstarts/quickstart-sdk.md
 - name: Samouczki
   items:
+    - name: Integracja z agentem usługi Power Virtual Agents
+      href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - name: Testowanie przy użyciu pliku wsadowego
       href: Quickstarts/batch-testing.md
 - name: Pojęcia

@@ -24,17 +24,11 @@
           href: quickstarts/ruby.md
         - name: Korzystanie z języka Go
           href: quickstarts/go.md
-    - name: SDK
+    - name: Biblioteka kliencka
       expanded: true
       items:
-        - name: 'Przy użyciu języka C#'
-          href: visual-search-sdk-c-sharp.md
-        - name: Używanie środowiska Node.js
-          href: visual-search-sdk-node.md
-        - name: Korzystanie z języka Python
-          href: visual-search-sdk-python.md
-        - name: Korzystanie z języka Java
-          href: visual-search-sdk-java.md
+        - name: Biblioteki klienckie wyszukiwania wizualnego Bing
+          href: ./quickstarts/client-libraries.md
 - name: Samouczki
   items:
     - name: Przekazywanie obrazu

@@ -56,7 +56,7 @@
     - name: Dostosowywanie
       items:
         - name: Przygotowywanie danych dla usługi Custom Speech
-          href: how-to-custom-speech-test-data.md
+          href: how-to-custom-speech-test-and-train.md
         - name: Inspekcja danych usługi Custom Speech
           href: how-to-custom-speech-inspect-data.md
         - name: Ocena dokładności usługi Custom Speech
@@ -67,10 +67,6 @@
           href: how-to-custom-speech-deploy-model.md
         - name: Tworzenie transkrypcji oznaczonych etykietą przez użytkownika
           href: how-to-custom-speech-human-labeled-transcriptions.md
-        - name: Wskazówki dotyczące nazewnictwa niestandardowych słów kluczowych
-          href: speech-devices-sdk-kws-guidelines.md
-        - name: Wykrywanie niestandardowych słów kluczowych
-          href: speech-devices-sdk-create-kws.md
     - name: Dokumentacja
       items:
         - name: Interfejsy API zestawu SDK usługi Mowa
@@ -448,6 +444,10 @@
         - name: Kontenery usługi Mowa w wystąpieniach kontenerów na platformie Azure
           displayName: 'ACI,azure container instances,container instances,containers'
           href: deploy-speech-on-container-instances.md
+    - name: Zasoby
+      items:
+        - name: Kontenery — często zadawane pytania
+          href: speech-container-faq.md
 - name: Zestaw SDK rozpoznawania mowy
   items:
     - name: Omówienie
