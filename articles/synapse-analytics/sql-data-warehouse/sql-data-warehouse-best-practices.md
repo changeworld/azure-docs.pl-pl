@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d0b32fb2b52d2dbb126053247cff83f05781ba5e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 44dbc03a41cfde94c344ae331b21d7536778050c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350882"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619097"
 ---
 # <a name="best-practices-for-sql-analytics-in-azure-synapse-analytics-formerly-sql-dw"></a>Najważniejsze wskazówki dotyczące analizy SQL w usłudze Azure Synapse Analytics (dawniej SQL DW)
 
-Ten artykuł zawiera zestawienie najlepszych rozwiązań ułatwiające osiągnięcie optymalnej wydajności z wdrożenia [usługi SQL Analytics.](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)  Celem tego artykułu jest udzielenie kilku podstawowych wskazówek i wyróżnienie ważnych obszarów zainteresowania.  Każda sekcja wprowadza do koncepcji, a następnie wskazuje bardziej szczegółowe artykuły, które obejmują koncepcję bardziej szczegółowo. Kolejność tematów jest w kolejności ważności. 
+Ten artykuł zawiera zestawienie najlepszych rozwiązań ułatwiające osiągnięcie optymalnej wydajności z wdrożenia [usługi SQL Analytics.](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)  Celem tego artykułu jest udzielenie kilku podstawowych wskazówek i wyróżnienie ważnych obszarów zainteresowania.  Każda sekcja wprowadza do koncepcji, a następnie wskazuje bardziej szczegółowe artykuły, które obejmują koncepcję bardziej szczegółowo. Kolejność tematów jest w kolejności ważności. 
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Obniżenie kosztów dzięki wstrzymaniu i skalowaniu
 
@@ -115,7 +115,7 @@ Jeśli wiersze są zapisywane w tabelach magazynu kolumn przy dużym wykorzystan
 
 Ponieważ segmenty magazynu kolumn wysokiej jakości są ważne, warto używać identyfikatorów użytkowników, które znajdują się w klasie średnich lub dużych zasobów do ładowania danych. Korzystanie z [niższych jednostek magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) oznacza, że chcesz przypisać większą klasę zasobów do użytkownika ładującego.
 
-Ponieważ tabele magazynu kolumn zazwyczaj nie wypchują danych do skompresowanego segmentu magazynu kolumn, dopóki nie będzie więcej niż 1 miliona wierszy na tabelę, a każda tabela usługi SQL Analytics zostanie podzielona na 60 tabel, zgodnie z zasadą tabele magazynu kolumn nie będą korzystać z kwerendy, chyba że tabela ma ponad 60 milionów wierszy.  Stosowanie indeksu magazynu kolumn może nie mieć sensu w przypadku tabel z mniej niż 60 milionami wierszy.  Jego użycie nie przyniesie też jednak niekorzystnych skutków.  
+Ponieważ tabele magazynu kolumn zazwyczaj nie wypychają danych do skompresowanego segmentu magazynu kolumn, dopóki nie będzie więcej niż 1 miliona wierszy na tabelę, a każda tabela usługi SQL Analytics jest podzielona na 60 tabel, zgodnie z zasadą tabele magazynu kolumn nie będą korzystać z kwerendy, chyba że tabela ma więcej niż 60 milionów wierszy.  Stosowanie indeksu magazynu kolumn może nie mieć sensu w przypadku tabel z mniej niż 60 milionami wierszy.  Jego użycie nie przyniesie też jednak niekorzystnych skutków.  
 
 Ponadto w przypadku partycjonowania danych warto wziąć pod uwagę, że każda partycja będzie musiała mieć milion wierszy, aby można było odnieść korzyść z zastosowania klastrowanego indeksu magazynu kolumn.  Jeśli tabela ma 100 partycji, będzie musiała mieć co najmniej 6 miliardów wierszy, aby skorzystanie z klastrowanego magazynu kolumn przyniosło korzyść (60 dystrybucji * 100 partycji * 1 milion wierszy).  
 

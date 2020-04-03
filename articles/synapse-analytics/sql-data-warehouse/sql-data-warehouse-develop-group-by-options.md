@@ -1,6 +1,6 @@
 ---
 title: Korzystanie z opcji grupowanie według
-description: Porady dotyczące implementowania grupy według opcji w usłudze Azure SQL Data Warehouse do tworzenia rozwiązań.
+description: Porady dotyczące implementowania grupy według opcji w puli języka SQL Synapse.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,28 +11,28 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f77445e80e701053b7fbfa1aa559248cf505353c
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 28ac075d043f7605b6dfdac6879063fbe9308123
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350526"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619059"
 ---
-# <a name="group-by-options-in-sql-data-warehouse"></a>Grupowanie według opcji w magazynie danych SQL
-Porady dotyczące implementowania grupy według opcji w usłudze Azure SQL Data Warehouse do tworzenia rozwiązań.
+# <a name="group-by-options-in-synapse-sql-pool"></a>Grupowanie według opcji w puli sql synapse
+
+W tym artykule znajdziesz wskazówki dotyczące implementowania grupy według opcji w puli SQL.
 
 ## <a name="what-does-group-by-do"></a>Do czego działa GRUPA BY?
 
-Klauzula [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL agreguje dane do zestawu podsumowań wierszy. GRUPA WEDŁUG ma kilka opcji, których usługa SQL Data Warehouse nie obsługuje. Te opcje mają obejścia.
-
-Opcje te są
+Klauzula [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL agreguje dane do zestawu podsumowań wierszy. GRUPA WEDŁUG ma kilka opcji, które nie obsługuje puli SQL. Te opcje mają obejścia, które są następujące:
 
 * GRUPA WEDŁUG Z ROLLUP
 * ZESTAWY GRUPOWANIA
 * GRUPA WEDŁUG Z CUBE
 
 ## <a name="rollup-and-grouping-sets-options"></a>Opcje zestawów zestawienia i grupowania
-Najprostszą opcją w tym miejscu jest użycie UNION ALL zamiast do wykonywania zestawienia, a nie poleganie na jawnej składni. Wynik jest dokładnie taki sam
+
+Najprostszą opcją w tym miejscu jest użycie UNION ALL do wykonywania zestawienia, a nie polegania na jawnej składni. Wynik jest dokładnie taki sam.
 
 Poniższy przykład przy użyciu instrukcji GROUP BY z opcją ROLLUP:
 ```sql
@@ -84,11 +84,11 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 Aby zastąpić ZESTAWY GRUPOWANIA, stosuje się zasadę próbki. Wystarczy utworzyć wszystkie sekcje UNION dla poziomów agregacji, które mają być wyświetlane.
 
 ## <a name="cube-options"></a>Opcje modułu
-Istnieje możliwość utworzenia GROUP BY WITH CUBE przy użyciu podejścia UNION ALL. Problem polega na tym, że kod może szybko stać się uciążliwe i nieporęczne. Aby to złagodzić, można użyć tego bardziej zaawansowanego podejścia.
+Możliwe jest utworzenie GRUPY PRZEZ Z CUBE przy użyciu podejścia UNION ALL. Problem polega na tym, że kod może szybko stać się uciążliwe i nieporęczne. Aby rozwiązać ten problem, można użyć tego bardziej zaawansowanego podejścia.
 
-Użyjmy powyższego przykładu.
+Przy użyciu poprzedniego przykładu pierwszym krokiem jest zdefiniowanie "moduł", który definiuje wszystkie poziomy agregacji, które chcemy utworzyć. 
 
-Pierwszym krokiem jest zdefiniowanie "modułu", który definiuje wszystkie poziomy agregacji, które chcemy utworzyć. Ważne jest, aby wziąć pod uwagę CROSS JOIN dwóch tabel pochodnych. To generuje wszystkie poziomy dla nas. Reszta kodu jest naprawdę tam do formatowania.
+Zanotuj CROSS JOIN dwóch tabel pochodnych, ponieważ generuje to wszystkie poziomy dla nas. Reszta kodu służy do formatowania:
 
 ```sql
 CREATE TABLE #Cube
@@ -119,7 +119,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Poniżej przedstawiono wyniki CTAS:
+Na poniższej ilustracji przedstawiono wyniki CTAS:
 
 ![Grupowanie według kostki](./media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
@@ -146,7 +146,7 @@ WITH
 ;
 ```
 
-Trzecim krokiem jest pętla nad naszym modułem kolumn wykonujących agregację. Kwerenda będzie uruchamiana raz dla każdego wiersza w #Cube tabeli tymczasowej i przechowywać wyniki w tabeli temp #Results
+Trzecim krokiem jest pętla nad naszym modułem kolumn wykonujących agregację. Kwerenda zostanie uruchomiony raz dla każdego wiersza w tabeli tymczasowej #Cube. Wyniki są przechowywane w tabeli temp #Results:
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -170,7 +170,7 @@ BEGIN
 END
 ```
 
-Wreszcie, możesz zwrócić wyniki, po prostu czytając z #Results tabeli tymczasowej
+Na koniec można zwrócić wyniki, czytając z #Results tabeli tymczasowej:
 
 ```sql
 SELECT *

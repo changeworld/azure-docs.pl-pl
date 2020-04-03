@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Ładowanie danych nowojorskiej taksówki'
-description: Samouczek używa witryny Azure portal i sql server management studio do ładowania danych taksówek w Nowym Jorku z globalnego obiektu blob platformy Azure dla usługi SQL Analytics.
+description: Samouczek używa witryny Azure portal i SQL Server Management Studio do ładowania danych nowojorskiej taksówki z globalnego obiektu blob platformy Azure dla synapse SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f1614538f6ab735720d090f66fee0e017e96cf72
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e17b5be0f4f3d568bd5ec836659c4444b384b2fa
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346722"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583750"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Samouczek: Ładowanie zestawu danych Nowojorskiej taksówki
 
@@ -148,7 +148,7 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
     | Typ serwera    | Aparat bazy danych                            | Ta wartość jest wymagana                                       |
     | Nazwa serwera    | W pełni kwalifikowana nazwa serwera            | Nazwa powinna być mniej więcej taka: **mynewserver-20180430.database.windows.net**. |
-    | Uwierzytelnianie | Uwierzytelnianie programu SQL Server                  | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
+    | Authentication | Uwierzytelnianie programu SQL Server                  | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
     | Logowanie          | Konto administratora serwera                   | To konto określono podczas tworzenia serwera. |
     | Hasło       | Hasło konta administratora serwera | To hasło określono podczas tworzenia serwera. |
 

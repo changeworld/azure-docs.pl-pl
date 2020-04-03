@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: c717a8d5baa57ce780fbbc0d25e67c2509ca86fc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 94be0ec16aedc317f1be41998356bc52b66f7e86
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75441945"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619213"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Szybki start: tworzenie aplikacji konsoli przy użyciu interfejsu API usługi Azure Cosmos DB dla mongodb i golang SDK
 
@@ -93,7 +93,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku main.go.
 
 ### <a name="connecting-the-go-app-to-cosmos-db"></a>Łączenie aplikacji języka Go z usługą Cosmos DB
 
-Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje połączenie z protokołem SSL. Aby się połączyć, musisz zdefiniować funkcję **DialServer** w klasie [mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) i wykorzystać funkcję [tls.*Dial*](https://golang.org/pkg/crypto/tls#Dial) do nawiązania połączenia.
+Interfejs API usługi Azure Cosmos DB dla usługi MongoDB obsługuje połączenie z obsługą protokołu TLS. Aby się połączyć, musisz zdefiniować funkcję **DialServer** w klasie [mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) i wykorzystać funkcję [tls.*Dial*](https://golang.org/pkg/crypto/tls#Dial) do nawiązania połączenia.
 
 Następujący fragment kodu w języku Golang łączy aplikację w języku Go z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB. Klasa *DialInfo* przechowuje opcje do ustanowienia sesji.
 
@@ -129,7 +129,7 @@ defer session.Close()
 session.SetSafe(&mgo.Safe{})
 ```
 
-Metoda **mgo.Dial()** jest używana w przypadku braku połączenia SSL. W przypadku połączenia SSL wymagana jest metoda **mgo.DialWithInfo()**.
+**Mgo. Dial()** metoda jest używana, gdy nie ma połączenia TLS. Dla połączenia TLS, **mgo. DialWithInfo().**
 
 Do utworzenia obiektu sesji używane jest wystąpienie obiektu **DialWithInfo{}**. Po ustanowieniu sesji można uzyskać dostęp do kolekcji, używając poniższego fragmentu kodu:
 

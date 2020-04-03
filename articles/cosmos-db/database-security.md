@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 30991f17970eefe1a140cdd70e1f6b305160349c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 345fc329df1c57cab7dd66c609bf3701fa3a6124
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537333"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619143"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Zabezpieczenia w usłudze Azure Cosmos DB — omówienie
 
@@ -48,7 +48,7 @@ Zalecamy następującą listę kontrolną wymagań dotyczących porównywania sy
 I chociaż może się to wydawać oczywiste, ostatnie [naruszenia bazy danych na dużą skalę](https://thehackernews.com/2017/01/mongodb-database-security.html) przypominają nam o prostym, ale krytycznym znaczeniu następujących wymagań:
 
 - Poprawione serwery, które są aktualne
-- Domyślnie https/szyfrowanie SSL
+- Domyślnie https/szyfrowanie TLS
 - Konta administracyjne z silnymi hasłami
 
 ## <a name="how-does-azure-cosmos-db-secure-my-database"></a>W jaki sposób usługa Azure Cosmos DB zabezpiecza moją bazę danych
@@ -76,7 +76,7 @@ Przyjmijmy się szczegółowo każdego z nich.
 |Szyfrowanie HTTPS/SSL/TLS|Wszystkie połączenia z usługą Azure Cosmos DB obsługują protokół HTTPS. Usługa Azure Cosmos DB obsługuje również protokół TLS 1.2.<br>Istnieje możliwość wymuszenia minimalnej wersji TLS po stronie serwera. W tym celu [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)należy skontaktować się z firmą .|
 |Szyfrowanie w spoczynku|Wszystkie dane przechowywane w usłudze Azure Cosmos DB są szyfrowane w spoczynku. Dowiedz się więcej w [usłudze Azure Cosmos DB w spoczynku](./database-encryption-at-rest.md)|
 |Poprawione serwery|Jako zarządzana baza danych usługi Azure Cosmos DB eliminuje konieczność zarządzania i instalowania poprawek serwerów, co odbywa się automatycznie.|
-|Konta administracyjne z silnymi hasłami|Trudno uwierzyć, że nawet trzeba wspomnieć o tym wymaganiu, ale w przeciwieństwie do niektórych naszych konkurentów, nie można mieć konta administracyjnego bez hasła w usłudze Azure Cosmos DB.<br><br> Domyślnie można uwierzytelniania opartego na zabezpieczeniach za pośrednictwem protokołu SSL i HMAC w ramach tajnego uwierzytelniania.|
+|Konta administracyjne z silnymi hasłami|Trudno uwierzyć, że nawet trzeba wspomnieć o tym wymaganiu, ale w przeciwieństwie do niektórych naszych konkurentów, nie można mieć konta administracyjnego bez hasła w usłudze Azure Cosmos DB.<br><br> Bezpieczeństwo za pośrednictwem TLS i uwierzytelniania opartego na tajnym kodze HMAC jest domyślnie pieczone.|
 |Certyfikaty bezpieczeństwa i ochrony danych| Aby uzyskać najbardziej aktualną listę certyfikatów, zobacz ogólną [witrynę zgodności platformy Azure,](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) a także najnowszy [dokument zgodności platformy Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ze wszystkimi certyfikatami (wyszukiwanie usługi Cosmos). Aby uzyskać bardziej skoncentrowany odczyt, zapoznaj się z postem z 25 kwietnia 2018 r. [Azure #CosmosDB: Bezpieczny, prywatny, zgodny z normami, który zawiera SOCS 1/2 Typu 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP High i wiele innych.
 
 Na poniższym zrzucie ekranu przedstawiono, jak można ![używać rejestrowania inspekcji i dzienników aktywności do monitorowania konta: Dzienniki aktywności dla usługi Azure Cosmos DB](./media/database-security/nosql-database-security-application-logging.png)

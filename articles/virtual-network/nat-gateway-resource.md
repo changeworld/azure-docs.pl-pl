@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: allensu
-ms.openlocfilehash: 8234bb82ba1f4ff9bd7aea9887121d9c703ac4a3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 405d9bc09462f2940567080ec86775baf066d70d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473291"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584566"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Projektowanie sieci wirtualnych z zasobami bramy NAT
 
@@ -67,19 +67,18 @@ Poniższy przykład jest fragment z szablonu usługi Azure Resource Manager.  Te
 - **natgatewayname** - Nazwa bramy NAT.
 - **lokalizacja** — region platformy Azure, w którym znajduje się zasób.
 - **publicipname** — nazwa wychodzącego publicznego adresu IP skojarzonego z bramą NAT.
-- **publicipprefixname** — nazwa wychodzącego prefiksu publicznego adresu IP skojarzonego z bramą NAT.
 - **vnetname** - Nazwa sieci wirtualnej.
 - **podsieci** — nazwa podsieci skojarzonej z bramą NAT.
 
 Całkowita liczba adresów IP podanych przez wszystkie zasoby adresów IP i prefiksów nie może przekroczyć 16 adresów IP. Dozwolona jest dowolna liczba adresów IP z zakresu od 1 do 16.
 
-:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="256-281":::
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="81-96":::
 
 Po utworzeniu zasobu bramy NAT można go używać w jednej lub kilku podsieciach sieci wirtualnej. Określ, które podsieci używają tego zasobu bramy TRANSLATORA. Brama NAT nie może obejmować więcej niż jednej sieci wirtualnej. Nie jest wymagane przypisanie tej samej bramy NAT do wszystkich podsieci sieci wirtualnej. Poszczególne podsieci można skonfigurować z różnymi zasobami bramy NAT.
 
 Scenariusze, które nie używają stref dostępności będą regionalne (nie określono strefy). Jeśli używasz stref dostępności, możesz określić strefę, która ma być izolowana dla translatora z translatora i ciągłego ładowania do określonej strefy. Nadmiarowość stref nie jest obsługiwana. Przejrzyj [strefy dostępności](#availability-zones)NAT .
 
-:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="225-255" highlight="239-251":::
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="1-146" highlight="81-96":::
 
 Bramy NAT są definiowane za pomocą właściwości w podsieci w sieci wirtualnej. Przepływy utworzone przez maszyny wirtualne **podsieci podsieci** nazwy **sieci wirtualnej** sieci wirtualnej będą używać bramy NAT. Wszystkie połączenia wychodzące będą używać adresów IP skojarzonych z **natgatewayname** jako źródłowego adresu IP.
 

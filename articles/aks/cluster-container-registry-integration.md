@@ -5,18 +5,18 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: f83faf05eb7099557d5b653e0b24591062c44d11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 514cc25e1959145c65fe60cd3054cec4ed28f44d
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368455"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617421"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Uwierzytelnianie za pomocą usługi Azure Container Registry z poziomu usługi Azure Kubernetes Service
 
-Podczas korzystania z usługi Azure Container Registry (ACR) z usługą Azure Kubernetes Service (AKS), należy ustanowić mechanizm uwierzytelniania. W tym artykule przedstawiono przykłady konfigurowania uwierzytelniania między tymi dwiema usługami platformy Azure.
+Podczas korzystania z usługi Azure Container Registry (ACR) z usługą Azure Kubernetes Service (AKS), należy ustanowić mechanizm uwierzytelniania. W tym artykule przedstawiono przykłady konfigurowania uwierzytelniania między tymi dwiema usługami platformy Azure. 
 
-Można skonfigurować AKS do integracji ACR w kilku prostych poleceń z interfejsu wiersza polecenia platformy Azure.
+Można skonfigurować AKS do integracji ACR w kilku prostych poleceń z interfejsu wiersza polecenia platformy Azure. Ta integracja przypisuje rolę AcrPull do jednostki usługi skojarzonej z klastrem AKS.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -33,7 +33,7 @@ Integrację aks i ACR można skonfigurować podczas początkowego tworzenia klas
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
-MYACR=myContainerRegistry
+$MYACR=myContainerRegistry
 
 # Run the following line to create an Azure Container Registry if you do not already have one
 az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic

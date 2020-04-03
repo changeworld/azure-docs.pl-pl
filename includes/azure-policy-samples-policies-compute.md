@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: 1acbcdf1aeed383591626c083f3335d9d7cf61c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0fb6bd68026684599d94270906f1792e084ec5f6
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79382196"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80624430"
 ---
 |Nazwa |Opis |Efekt(-y) |Wersja |GitHub |
 |---|---|---|---|---|
@@ -23,4 +23,4 @@ ms.locfileid: "79382196"
 |[Należy zainstalować tylko zatwierdzone rozszerzenia maszyn wirtualnych](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc0e996f8-39cf-4af9-9f45-83fbde810432) |Ta zasada reguluje rozszerzenia maszyny wirtualnej, które nie zostały zatwierdzone. |Inspekcja, Odmowa, Wyłączona |1.0.0 |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VirtualMachines_ApprovedExtensions_Audit.json)
 |[Wymagaj automatycznego poprawiania obrazu systemu operacyjnego w zestawach skalowania maszyn wirtualnych](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F465f0161-0087-490a-9ad9-ad6217f4f43a) |Ta zasada wymusza włączanie automatycznego poprawiania obrazu systemu operacyjnego w zestawach skalowania maszyn wirtualnych, aby zawsze chronić maszyny wirtualne, bezpiecznie stosując najnowsze poprawki zabezpieczeń co miesiąc. |Odmów |1.0.0 |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSSOSUpgradeHealthCheck_Deny.json)
 |[Dyski niezałączone powinny być szyfrowane](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fb2) |Ta zasada przeprowadza inspekcję dowolnego nieprzyłączonego dysku bez włączonego szyfrowania. |Inspekcja, wyłączone |1.0.0 |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/UnattachedDisk_Encryption_Audit.json)
-|[Maszyny wirtualne powinny zostać zmigrowane do nowych zasobów usługi Azure Resource Manager](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |Użyj nowego usługi Azure Resource Manager dla maszyn wirtualnych, aby zapewnić ulepszenia zabezpieczeń, takie jak: silniejsza kontrola dostępu (RBAC), lepsza inspekcja, wdrażanie i zarządzanie oparte na usłudze Azure Resource Manager, dostęp do tożsamości zarządzanych, dostęp do magazynu kluczy wpisy tajne, uwierzytelnianie oparte na usłudze Azure AD i obsługa tagów i grup zasobów w celu łatwiejszego zarządzania zabezpieczeniami |Inspekcja, Odmowa, Wyłączona |1.0.0 |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)
+|[Maszyny wirtualne powinny zostać zmigrowane do nowych zasobów usługi Azure Resource Manager](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |Użyj nowego usługi Azure Resource Manager dla maszyn wirtualnych, aby zapewnić ulepszenia zabezpieczeń, takie jak: silniejsza kontrola dostępu (RBAC), lepsza inspekcja, wdrażanie i zarządzanie oparte na usłudze Azure Resource Manager, dostęp do zarządzanych tożsamości, dostęp do magazynu kluczy dla kluczy dla kluczy, uwierzytelnianie oparte na usłudze Azure AD oraz obsługa tagów i grup zasobów w celu łatwiejszego zarządzania zabezpieczeniami |Inspekcja, Odmowa, Wyłączona |1.0.0 |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)

@@ -2,17 +2,17 @@
 title: 'Bastion platformy Azure: wyświetlanie sesji maszyny wirtualnej: na pełnym ekranie'
 description: W tym artykule dowiesz się, jak zmienić widok na pełnoekranowy.
 services: bastion
-author: cherylmc
+author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.author: cherylmc
-ms.openlocfilehash: ff19fd056aa81ca8a1f53c387a208d35fb9a3265
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: 2e72eb9ffc3affa0bf09692ac0780f9310308521
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76989437"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619292"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>Przejście na widok pełnoekranowy dla sesji maszyny wirtualnej: Bastion platformy Azure
 

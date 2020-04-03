@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8987cbe6860422ff92119a9f3b13a0a365e6d1a4
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246190"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618317"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Przechowywanie danych i ruch przychodzący w usłudze Azure Time Series Insights Preview
 
@@ -91,7 +91,7 @@ Ogólnie rzecz biorąc, współczynniki transferu ruchu przychodzącego są wyś
 
 *  **Liczba urządzeń** × **Częstotliwość emisji zdarzeń** × Rozmiar każdego **zdarzenia**.
 
-Domyślnie usługa Time Series Insights umożliwia pozyskiwania przychodzących danych z szybkością **do 1 megabajta na sekundę (MB/s) w środowisku usługi Time Series Insights**.
+Domyślnie usługa Time Series Insights umożliwia pozyskiwania przychodzących danych z szybkością **do 1 megabajta na sekundę (MB/s) w środowisku usługi Time Series Insights**. Istnieją dodatkowe ograniczenia [na partycję koncentratora](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#hub-partitions-and-per-partition-limits).
 
 > [!TIP] 
 > * Na życzenie można zapewnić obsługę środowiska dla pozyskiwania prędkości do 16 MB/s.
@@ -99,7 +99,7 @@ Domyślnie usługa Time Series Insights umożliwia pozyskiwania przychodzących 
  
 * **Przykład 1:**
 
-    Contoso Shipping ma 100 000 urządzeń, które emitują zdarzenie trzy razy na minutę. Rozmiar zdarzenia wynosi 200 bajtów. Używają Centrum zdarzeń z czterema partycjami jako źródło zdarzeń usługi Time Series Insights.
+    Contoso Shipping ma 100 000 urządzeń, które emitują zdarzenie trzy razy na minutę. Rozmiar zdarzenia wynosi 200 bajtów. Używają centrum Iot z czterema partycjami jako źródłem zdarzeń usługi Time Series Insights.
 
     * Szybkość pozyskiwania dla ich środowiska Time Series Insights wynosi: **100 000 urządzeń * 200 bajtów/zdarzenie * (zdarzenie 3/60/s) = 1 MB/s**.
     * Szybkość pozyskiwania na partycję wynosi 0,25 MB/s.
@@ -107,11 +107,11 @@ Domyślnie usługa Time Series Insights umożliwia pozyskiwania przychodzących 
 
 * **Przykład 2:**
 
-    Contoso Fleet Analytics ma 60 000 urządzeń, które emitują zdarzenie co sekundę. Używają liczby partycji Usługi IoT Hub 24 4 jako źródła zdarzeń usługi Time Series Insights. Rozmiar zdarzenia wynosi 200 bajtów.
+    Contoso Fleet Analytics ma 60 000 urządzeń, które emitują zdarzenie co sekundę. Używają Centrum zdarzeń z liczbą partycji 4 jako źródło zdarzeń usługi Time Series Insights. Rozmiar zdarzenia wynosi 200 bajtów.
 
-    * Szybkość pozyskiwania środowiska wynosi: **20 000 urządzeń * 200 bajtów/zdarzenie * 1 zdarzenie/s = 4 MB/s**.
-    * Stawka za partycję wynosi 1 MB/s.
-    * Contoso Fleet Analytics można przesłać żądanie do usługi Time Series Insights za pośrednictwem witryny Azure portal, aby zwiększyć szybkość pozyskiwania dla swojego środowiska.
+    * Szybkość pozyskiwania środowiska wynosi: **60 000 urządzeń * 200 bajtów/zdarzenie * 1 zdarzenie/s = 12 MB/s**.
+    * Stawka za partycję wynosi 3 MB/s.
+    * Szybkość pozyskiwania przez firmę Contoso Fleet Analytics jest prześcigzona w granicach środowiska i partycji. Mogą przesłać żądanie do usługi Time Series Insights za pośrednictwem witryny Azure portal, aby zwiększyć szybkość pozyskiwania dla swojego środowiska i utworzyć Centrum zdarzeń z większą liczoną partycją, która ma mieszczeć się w granicach wersji zapoznawczej.
 
 #### <a name="hub-partitions-and-per-partition-limits"></a>Partycje koncentratora i limity partycji
 

@@ -1,6 +1,6 @@
 ---
 title: Tworzenie kluczy zastępczych za pomocą funkcji TOŻSAMOŚCI
-description: Zalecenia i przykłady dotyczące używania właściwości IDENTITY do tworzenia kluczy zastępczych w tabelach w usłudze SQL Analytics.
+description: Zalecenia i przykłady dotyczące używania właściwości IDENTITY do tworzenia kluczy zastępczych w tabelach w puli SQL Synapse.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ab8f4a64f7273f0fa15c20f324e132003d5afe32
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d4a9880ed7ab26d0127026f49c0bc781cfc2a941
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351308"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586331"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>Tworzenie kluczy zastępczych w usłudze SQL Analytics za pomocą funkcji IDENTITY
+# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Tworzenie kluczy zastępczych w puli SQL Synapse za pomocą funkcji TOŻSAMOŚCI
 
-Zalecenia i przykłady dotyczące używania właściwości IDENTITY do tworzenia kluczy zastępczych w tabelach w usłudze SQL Analytics.
+Zalecenia i przykłady dotyczące używania właściwości IDENTITY do tworzenia kluczy zastępczych w tabelach w puli SQL Synapse.
 
 ## <a name="what-is-a-surrogate-key"></a>Co to jest klucz zastępczy
 
-Klucz zastępczy w tabeli to kolumna z unikatowym identyfikatorem dla każdego wiersza. Klucz nie jest generowany na podstawie danych tabeli. Modelarze danych lubią tworzyć klucze zastępcze na swoich tabelach podczas projektowania modeli usługi SQL Analytics. Można użyć identity właściwości, aby osiągnąć ten cel w prosty i skuteczny sposób bez wpływu na wydajność obciążenia.  
+Klucz zastępczy w tabeli to kolumna z unikatowym identyfikatorem dla każdego wiersza. Klucz nie jest generowany na podstawie danych tabeli. Modelarze danych lubią tworzyć klucze zastępcze na swoich tabelach podczas projektowania modeli magazynu danych. Można użyć identity właściwości, aby osiągnąć ten cel w prosty i skuteczny sposób bez wpływu na wydajność obciążenia.  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Tworzenie tabeli z kolumną TOŻSAMOŚĆ
 
-Właściwość IDENTITY jest przeznaczona do skalowania w poziomie we wszystkich dystrybucjach w bazie danych sql analytics bez wpływu na wydajność ładowania. W związku z tym wdrożenie TOŻSAMOŚCI jest ukierunkowane na osiągnięcie tych celów.
+Właściwość IDENTITY jest przeznaczona do skalowania w poziomie we wszystkich dystrybucjach w puli Synapse SQL bez wpływu na wydajność obciążenia. W związku z tym wdrożenie TOŻSAMOŚCI jest ukierunkowane na osiągnięcie tych celów.
 
 Tabelę można zdefiniować jako zawierającą właściwość IDENTITY przy pierwszym utworzeniu tabeli przy użyciu składni podobnej do następującej instrukcji:
 
@@ -50,7 +50,7 @@ W dalszej części tej sekcji przedstawiono niuanse implementacji, aby pomóc Ci
 
 ### <a name="allocation-of-values"></a>Alokacja wartości
 
-Właściwość IDENTITY nie gwarantuje kolejności, w której są przydzielane wartości zastępcze, co odzwierciedla zachowanie programu SQL Server i bazy danych SQL Azure. Jednak w sql analytics brak gwarancji jest bardziej widoczne.
+Właściwość IDENTITY nie gwarantuje kolejności, w której są przydzielane wartości zastępcze, co odzwierciedla zachowanie programu SQL Server i bazy danych SQL Azure. Jednak w puli SQL Synapse brak gwarancji jest bardziej wyraźny.
 
 Poniższy przykład jest ilustracją:
 
@@ -100,7 +100,7 @@ UTWÓRZ TABELĘ AS SELECT (CTAS) jest zgodne z tym samym zachowaniem programu SQ
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Jawne wstawianie wartości do kolumny TOŻSAMOŚCI
 
-Usługa SQL `SET IDENTITY_INSERT <your table> ON|OFF` Analytics obsługuje składnię. Tej składni można użyć do jawnego wstawiania wartości do kolumny TOŻSAMOŚĆ.
+Pula SQL synapsy obsługuje `SET IDENTITY_INSERT <your table> ON|OFF` składnię. Tej składni można użyć do jawnego wstawiania wartości do kolumny TOŻSAMOŚĆ.
 
 Wielu modelarzy danych lubi używać wstępnie zdefiniowanych wartości ujemnych dla niektórych wierszy w ich wymiarach. Przykładem jest wiersz -1 lub "nieznany element członkowski".
 
@@ -161,7 +161,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > Nie można używać `CREATE TABLE AS SELECT` obecnie podczas ładowania danych do tabeli z kolumną TOŻSAMOŚCI.
 >
 
-Aby uzyskać więcej informacji na temat ładowania danych, zobacz [Projektowanie wyodrębniania, ładowania i przekształcania (ELT) dla analizy SQL](design-elt-data-loading.md) i ładowanie najlepszych [rozwiązań.](guidance-for-loading-data.md)
+Aby uzyskać więcej informacji na temat ładowania danych, zobacz [Projektowanie wyodrębniania, ładowania i przekształcania (ELT) dla puli sql synapse](design-elt-data-loading.md) i [najlepsze wskazówki dotyczące ładowania](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Widoki systemowe
 
@@ -195,7 +195,7 @@ Nie można użyć właściwości IDENTITY:
 - Gdy kolumna jest również kluczem dystrybucji
 - Gdy tabela jest tabelą zewnętrzną
 
-Następujące powiązane funkcje nie są obsługiwane w usłudze SQL Analytics:
+Następujące powiązane funkcje nie są obsługiwane w puli języka SYNAPSE SQL:
 
 - [TOŻSAMOŚĆ()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)

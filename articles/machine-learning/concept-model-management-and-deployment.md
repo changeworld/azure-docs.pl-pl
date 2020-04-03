@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 40e335ee0377c560b15a588269cbdb39cdebca82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5aaf8adf33d27f8ebb99c8ca3a873d958632a4f
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477361"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616847"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MlOps: Zarządzanie modelami, wdrażanie i monitorowanie za pomocą usługi Azure Machine Learning
 
@@ -24,7 +24,7 @@ W tym artykule dowiesz się, jak używać usługi Azure Machine Learning do zarz
 
 ## <a name="what-is-mlops"></a>Co to jest MLOps?
 
-Operacje uczenia maszynowego (MLOps) opiera się na zasadach i [praktykach DevOps,](https://azure.microsoft.com/overview/what-is-devops/) które zwiększają wydajność przepływów pracy. Na przykład ciągła integracja, dostarczanie i wdrażanie. MlOps stosuje te podmioty do procesu uczenia maszynowego, w celu:
+Operacje uczenia maszynowego (MLOps) opiera się na zasadach i [praktykach DevOps,](https://azure.microsoft.com/overview/what-is-devops/) które zwiększają wydajność przepływów pracy. Na przykład ciągła integracja, dostarczanie i wdrażanie. MlOps stosuje te zasady do procesu uczenia maszynowego, w celu:
 
 * Szybsze eksperymentowanie i rozwój modeli
 * Szybsze wdrażanie modeli w produkcji

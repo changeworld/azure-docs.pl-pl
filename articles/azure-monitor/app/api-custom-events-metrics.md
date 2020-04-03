@@ -3,12 +3,12 @@ title: Interfejs API usługi Application Insights dla zdarzeń niestandardowych 
 description: Wstaw kilka wierszy kodu w urządzeniu lub aplikacji klasycznej, na stronie sieci Web lub w usłudze, aby śledzić użycie i diagnozować problemy.
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 4275d3ea3a340f0a4083ab929eb7f7872f3311e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06bd8bd0958afd26e1256a010b08c908c59aaf7d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295030"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585876"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
 
@@ -58,9 +58,9 @@ Uzyskaj wystąpienie `TelemetryClient` (z wyjątkiem języka JavaScript na stron
 
 W przypadku aplikacji [ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) i aplikacji innych niż HTTP/Worker dla aplikacji [.NET/.NET Core](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) zaleca się uzyskanie wystąpienia `TelemetryClient` z kontenera iniekcji zależności, jak wyjaśniono w ich odpowiedniej dokumentacji.
 
-Jeśli używasz AzureFunctions v2+ lub Azure WebJobs v3+ — postępuj zgodnie z tym dokumentem:https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-3
+Jeśli używasz AzureFunctions v2+ lub Azure WebJobs v3+ — postępuj zgodnie z tym dokumentem:https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
 
-*C #*
+*C#*
 
 ```csharp
 private TelemetryClient telemetry = new TelemetryClient();
@@ -89,7 +89,7 @@ TelemetryClient jest bezpieczne dla wątków.
 
 W przypadku projektów ASP.NET i Java przychodzące żądania HTTP są przechwytywane automatycznie. Można utworzyć dodatkowe wystąpienia TelemetryClient dla innego modułu aplikacji. Na przykład może mieć jedno wystąpienie TelemetryClient w klasie oprogramowania pośredniczącego do raportowania zdarzeń logiki biznesowej. Można ustawić właściwości, takie jak Identyfikator użytkownika i Identyfikator urządzenia, aby zidentyfikować komputer. Te informacje są dołączone do wszystkich zdarzeń, które wysyła wystąpienie.
 
-*C #*
+*C#*
 
 ```csharp
 TelemetryClient.Context.User.Id = "...";
@@ -119,7 +119,7 @@ Na przykład w aplikacji do gier wysyłaj zdarzenie za każdym razem, gdy użytk
 appInsights.trackEvent({name:"WinGame"});
 ```
 
-*C #*
+*C#*
 
 ```csharp
 telemetry.TrackEvent("WinGame");
@@ -153,7 +153,7 @@ Jeśli [próbkowanie](../../azure-monitor/app/sampling.md) jest w działaniu, it
 
 ### <a name="examples"></a>Przykłady
 
-*C #*
+*C#*
 
 ```csharp
 namespace User.Namespace.Example01
@@ -263,7 +263,7 @@ Aby wysłać pojedynczą wartość metryki:
 appInsights.trackMetric("queueLength", 42.0);
  ```
 
-*C #*
+*C#*
 
 ```csharp
 var sample = new MetricTelemetry();
@@ -305,7 +305,7 @@ Dane użytkownika i sesji są wysyłane jako właściwości wraz z widokami stro
 appInsights.trackPageView("tab1");
 ```
 
-*C #*
+*C#*
 
 ```csharp
 telemetry.TrackPageView("GameReviewPage");
@@ -398,7 +398,7 @@ Zobacz [korelacji telemetrii w usłudze Application Insights, aby](../../azure-m
 
 Podczas ręcznego śledzenia telemetrii, najprostszy sposób, aby zapewnić korelację telemetrii przy użyciu tego wzorca:
 
-*C #*
+*C#*
 
 ```csharp
 // Establish an operation context and associated telemetry item:
@@ -448,7 +448,7 @@ Wysyłaj wyjątki do usługi Application Insights:
 
 Raporty zawierają ślady stosu.
 
-*C #*
+*C#*
 
 ```csharp
 try
@@ -543,7 +543,7 @@ W [.NET Log karty](../../azure-monitor/app/asp-net-trace-logs.md) używają tego
 
 W języku Java dla [rejestratorów standardowych, takich jak Log4J, Logback](../../azure-monitor/app/java-trace-logs.md) używać aplikacji Insights Log4j lub Logback Appenders do wysyłania dzienników innych firm do portalu.
 
-*C #*
+*C#*
 
 ```csharp
 telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
@@ -586,7 +586,7 @@ Zaletą TrackTrace jest to, że można umieścić stosunkowo długie dane w wiad
 
 Ponadto można dodać poziom ważności do wiadomości. Podobnie jak inne dane telemetryczne, można dodać wartości właściwości, aby ułatwić filtrowanie lub wyszukiwanie różnych zestawów śladów. Przykład:
 
-*C #*
+*C#*
 
 ```csharp
 var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
@@ -615,7 +615,7 @@ Jeśli [próbkowanie](../../azure-monitor/app/sampling.md) jest w działaniu, it
 
 Użyj TrackDependency wywołania do śledzenia czasów odpowiedzi i wskaźników powodzenia wywołań do zewnętrznego fragmentu kodu. Wyniki są wyświetlane na wykresach zależności w portalu. Fragment kodu poniżej należy dodać wszędzie tam, gdzie jest wywoływane zależności.
 
-*C #*
+*C#*
 
 ```csharp
 var success = false;
@@ -706,7 +706,7 @@ dependencies
 
 Zwykle zestaw SDK wysyła dane w stałych odstępach czasu (zazwyczaj 30 sekund) lub gdy bufor jest pełny (zazwyczaj 500 elementów). Jednak w niektórych przypadkach można opróżnić bufor — na przykład, jeśli używasz SDK w aplikacji, która zostanie zamknięta.
 
-*C #*
+*C#*
 
  ```csharp
 telemetry.Flush();
@@ -812,7 +812,7 @@ appInsights.trackPageView
         );
 ```
 
-*C #*
+*C#*
 
 ```csharp
 // Set up some properties and metrics:
@@ -913,7 +913,7 @@ Należy zauważyć, że:
 
 Czasami chcesz wykres, jak długo trwa do wykonania akcji. Na przykład warto wiedzieć, jak długo użytkownicy rozważają wybór w grze. W tym celu można użyć parametru pomiaru.
 
-*C #*
+*C#*
 
 ```csharp
 var stopwatch = System.Diagnostics.Stopwatch.StartNew();
@@ -956,7 +956,7 @@ telemetry.trackEvent("SignalProcessed", properties, metrics);
 
 Jeśli chcesz ustawić domyślne wartości właściwości dla niektórych zdarzeń niestandardowych, które piszesz, można ustawić je w telemetryClient wystąpienia. Są one dołączone do każdego elementu telemetrii, który jest wysyłany z tego klienta.
 
-*C #*
+*C#*
 
 ```csharp
 using Microsoft.ApplicationInsights.DataContracts;
@@ -1022,7 +1022,7 @@ Można napisać kod do przetwarzania danych telemetrycznych, zanim jest wysyłan
 
 Aby *dynamicznie zatrzymać i rozpocząć* zbieranie i przesyłanie danych telemetrycznych:
 
-*C #*
+*C#*
 
 ```csharp
 using  Microsoft.ApplicationInsights.Extensibility;
@@ -1062,7 +1062,7 @@ Aby wyłączyć te moduły zbierające po zainicjowaniu, użyj obiektu Konfigura
 
 Podczas debugowania warto przyspieszyć dane telemetryczne za pośrednictwem potoku, dzięki czemu można natychmiast wyświetlić wyniki. Można również uzyskać dodatkowe komunikaty, które ułatwiają śledzenie wszelkich problemów z telemetrii. Wyłącz go w produkcji, ponieważ może to spowolnić aplikację.
 
-*C #*
+*C#*
 
 ```csharp
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
@@ -1087,7 +1087,7 @@ applicationInsights.defaultClient.config.maxBatchSize = 0;
 
 ## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a>Ustawianie klawisza instrumentacji dla wybranych niestandardowych danych telemetrycznych
 
-*C #*
+*C#*
 
 ```csharp
 var telemetry = new TelemetryClient();
@@ -1101,7 +1101,7 @@ Aby uniknąć mieszania danych telemetrycznych ze środowisk deweloperskich, tes
 
 Zamiast owyzależniania klucza instrumentacji z pliku konfiguracyjnego, można go ustawić w kodzie. Ustaw klucz w metodzie inicjowania, takiej jak global.aspx.cs w usłudze ASP.NET:
 
-*C #*
+*C#*
 
 ```csharp
 protected void Application_Start()
@@ -1187,8 +1187,8 @@ Aby ustalić, jak długo dane są przechowywane, zobacz [Przechowywanie danych i
 * [Zestaw SDK platformy ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
 * [ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Pakiety systemu Windows Server](https://github.com/Microsoft/applicationInsights-dotnet-server)
-* [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
-* [Node.js SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
+* [Zestaw SDK Java](https://github.com/Microsoft/ApplicationInsights-Java)
+* [Zestaw SDK dla platformy Node.js](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [Zestaw SDK dla języka JavaScript](https://github.com/Microsoft/ApplicationInsights-JS)
 
 

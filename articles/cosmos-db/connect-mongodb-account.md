@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e3ab6282a3c61e12dce5dd17bc0859c0d73a7724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cba16d79b6506f9809a76f0128938a68afd15c92
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051709"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617050"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Łączenie aplikacji bazy danych MongoDB z usługą Azure Cosmos DB
 
@@ -51,11 +51,11 @@ Ten samouczek opisuje dwa sposoby pobierania informacji o parametrach połączen
 ## <a name="connection-string-requirements"></a>Wymagania dotyczące ciągu połączenia
 
 > [!Important]
-> usługa Azure Cosmos DB ma ścisłe wymagania i standardy dotyczące bezpieczeństwa. Konta usługi Azure Cosmos DB wymagają uwierzytelniania i bezpiecznej komunikacji za pośrednictwem *protokołu SSL.* 
+> usługa Azure Cosmos DB ma ścisłe wymagania i standardy dotyczące bezpieczeństwa. Konta usługi Azure Cosmos DB wymagają uwierzytelniania i bezpiecznej komunikacji za pośrednictwem *protokołu TLS.* 
 >
 >
 
-Usługa Azure Cosmos DB obsługuje standardowy format identyfikatora URI ciągu połączenia MongoDB z kilkoma określonymi wymaganiami: konta usługi Azure Cosmos DB wymagają uwierzytelniania i bezpiecznej komunikacji za pośrednictwem protokołu SSL. Tak więc format ciągu połączenia jest:
+Usługa Azure Cosmos DB obsługuje standardowy format identyfikatora URI ciągu połączenia MongoDB z kilkoma określonymi wymaganiami: konta usługi Azure Cosmos DB wymagają uwierzytelniania i bezpiecznej komunikacji za pośrednictwem protokołu TLS. Tak więc format ciągu połączenia jest:
 
     mongodb://username:password@host:port/[database]?ssl=true
 

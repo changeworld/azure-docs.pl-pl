@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c8eba538a7015648611e6054ce85b381dcfc9105
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a80fb97810fee04a4eb50c43178c168e66f29173
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76761002"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618725"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Włączanie dzienników diagnostyki dla magistrali usługOwej
 
@@ -76,10 +76,10 @@ Następujące operacje zarządzania są przechwytywane w dziennikach operacyjnyc
 
 | Zakres | Operacja|
 |-------| -------- |
-| Przestrzeń nazw | <ul> <li> Tworzenie obszaru nazw</li> <li> Aktualizowanie obszaru nazw </li> <li> Usuń obszar nazw </li>  </ul> | 
-| Kolejka | <ul> <li> Utwórz kolejkę</li> <li> Kolejka aktualizacji</li> <li> Usuń kolejkę </li> </ul> | 
-| Temat | <ul> <li> Utwórz temat </li> <li> Temat aktualizacji </li> <li> Usuń temat </li> </ul> |
-| Subskrypcja | <ul> <li> Tworzenie subskrypcji </li> <li> Aktualizuj subskrypcję </li> <li> Usuń subskrypcję </li> </ul> |
+| Przestrzeń nazw | <ul> <li> Tworzenie obszaru nazw</li> <li> Aktualizowanie obszaru nazw </li> <li> Usuń obszar nazw </li> <li> Aktualizowanie zasad sharedaccess obszaru nazw </li> </ul> | 
+| Kolejka | <ul> <li> Utwórz kolejkę</li> <li> Kolejka aktualizacji</li> <li> Usuń kolejkę </li> <li> Kolejka usuwania autodeletu </li> </ul> | 
+| Temat | <ul> <li> Utwórz temat </li> <li> Temat aktualizacji </li> <li> Usuń temat </li> <li> Temat usuwania autodeletu </li> </ul> |
+| Subskrypcja | <ul> <li> Tworzenie subskrypcji </li> <li> Aktualizuj subskrypcję </li> <li> Usuń subskrypcję </li> <li> Subskrypcja usuwania autodeletu </li> </ul> |
 
 > [!NOTE]
 > Obecnie operacje *odczytu* nie są śledzone w dziennikach operacyjnych.

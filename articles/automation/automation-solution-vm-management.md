@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: cef3176c99cd57ae229b602feb3c825081fcfe3e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 906c7728365cc902549bd46c57972e1c90af979c
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548367"
+ms.locfileid: "80607475"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Rozwiązanie umożliwiające uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu w usłudze Azure Automation
 
@@ -116,7 +116,7 @@ Wszystkie nadrzędne elementy runbook zawierają parametr _WhatIf._ Po ustawieni
 |AutoStop_VM_Child_ARM | Element WebHookData |Wywoływana z nadrzędnego egonatu. Reguły alertów wywołać ten projekt uruchamiany, aby zatrzymać maszynę wirtualną.  |
 |ScheduledStartStop_Base_Classic | Nazwa usługi w chmurze<br> Działanie: Uruchamianie lub zatrzymywać<br> Lista maszyn wirtualnych  | Ten projekt runbook używany do wykonywania akcji start lub stop w klasycznej grupie maszyn wirtualnych przez usługi w chmurze.<br> Lista maszyn wirtualnych: oddzielona przecinkami lista maszyn wirtualnych. Na przykład _vm1, vm2, vm3_. |
 |ScheduledStartStop_Child | VMName <br> Działanie: Uruchamianie lub zatrzymywać <br> ResourceGroupName | Wywoływana z nadrzędnego egonatu. Wykonuje akcję rozpoczęcia lub zatrzymania dla zaplanowanego zatrzymania.|
-|ScheduledStartStop_Child_Classic | VMName<br> Działanie: Uruchamianie lub zatrzymywać<br> ResourceGroupName | Wywoływana z nadrzędnego egonatu. Wykonuje akcję start lub stop dla zaplanowanego zatrzymania dla klasycznych maszyn wirtualnych. |
+|ScheduledStartStop_Child_Classic | VMName<br> Działanie: Uruchamianie lub zatrzymywać<br> ResourceGroupName | Wywoływana z nadrzędnego egonatu. Wykonuje akcję uruchamiania lub zatrzymywania dla zaplanowanego zatrzymania dla klasycznych maszyn wirtualnych. |
 |ScheduledStartStop_Parent | Działanie: Uruchamianie lub zatrzymywać <br>Lista maszyn wirtualnych <br> CoIf: Prawda lub Fałsz | To ustawienie ma wpływ na wszystkie maszyny wirtualne w subskrypcji. Edytuj **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupNames,** aby wykonywać tylko w tych docelowych grupach zasobów. Można również wykluczyć określonych maszyn wirtualnych, aktualizując **zmienną External_ExcludeVMNames.**<br> Lista maszyn wirtualnych: oddzielona przecinkami lista maszyn wirtualnych. Na przykład _vm1, vm2, vm3_.<br> _WhatIf_ sprawdza poprawność logiki uruchomieniu bez wykonywania.|
 |SequencedStartStop_Parent | Działanie: Uruchamianie lub zatrzymywać <br> CoIf: Prawda lub Fałsz<br>Lista maszyn wirtualnych| Utwórz znaczniki o nazwie **sequencestart** i **sequencestop** na każdej maszynie wirtualnej, dla której chcesz sekwencjonować działanie start/stop. W tych nazwach tagów rozróżniana jest wielkość liter. Wartość znacznika powinna być dodatnią liczą całkowitą (1, 2, 3), która odpowiada kolejności, w jakiej chcesz rozpocząć lub zatrzymać. <br> Lista maszyn wirtualnych: oddzielona przecinkami lista maszyn wirtualnych. Na przykład _vm1, vm2, vm3_. <br> _WhatIf_ sprawdza poprawność logiki uruchomieniu bez wykonywania. <br> **Uwaga:** Maszyny wirtualne muszą znajdować się w grupach zasobów zdefiniowanych jako External_Start_ResourceGroupNames, External_Stop_ResourceGroupNames i External_ExcludeVMNames w zmiennych usługi Azure Automation. Muszą mieć odpowiednie tagi, aby akcje zaczęły obowiązywać.|
 
@@ -140,8 +140,8 @@ W poniższej tabeli wymieniono zmienne utworzone na koncie automatyzacji. Modyfi
 |External_Stop_ResourceGroupNames | Określa jedną lub więcej grup zasobów, oddzielając wartości za pomocą przecinka, przeznaczonych dla akcji zatrzymania.|
 |External_WaitTimeForVMRetrySeconds |Czas oczekiwania w sekundach dla akcji, które mają być wykonywane na maszynach wirtualnych dla sekwencjonowane start/stop runbook.<br> Wartość domyślna to 2100 sekund i obsługuje konfigurowanie do maksymalnej wartości 10800 lub trzy godziny.|
 |Internal_AutomationAccountName | Określa nazwę konta automatyzacji.|
-|Internal_AutoSnooze_ARM_WebhookURI | Określa identyfikator URI elementu webhook wywoływany dla scenariusza Autostop dla klasycznych maszyn wirtualnych.|
-|Internal_AutoSnooze_WebhookUri | Określa identyfikator URI elementu webhook wywoływany dla scenariusza Autostop.|
+|Internal_AutoSnooze_ARM_WebhookURI | Określa identyfikator URI elementu webhook wywoływany dla scenariusza Autostop dla maszyn wirtualnych.|
+|Internal_AutoSnooze_WebhookUri | Określa identyfikator URI elementu webhook wywoływany dla scenariusza Autostop dla klasycznych maszyn wirtualnych.|
 |Internal_AzureSubscriptionId | Określa identyfikator subskrypcji platformy Azure.|
 |Internal_ResourceGroupName | Określa nazwę grupy zasobów konta automatyzacji.|
 

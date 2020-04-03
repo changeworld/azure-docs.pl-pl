@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 01/21/2020
-ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 06242af6cb00e3adebbc80da722898fb8e348e36
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268784"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585370"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co to jest wystąpienie zarządzane usługi Azure SQL Database?
 
@@ -42,11 +42,11 @@ Wystąpienie zarządzane łączy najlepsze funkcje, które są dostępne zarówn
 > [!IMPORTANT]
 > Wystąpienie zarządzane jest uruchamiane ze wszystkimi funkcjami najnowszej wersji programu SQL Server, w tym operacjami online, automatycznymi korektami planu i innymi ulepszeniami wydajności przedsiębiorstwa. Porównanie dostępnych funkcji jest wyjaśnione w [porównanie funkcji: Usługa Azure SQL Database vs SQL Server](sql-database-features.md).
 
-| **Korzyści PaaS** | **Ciągłość działalności biznesowej:** |
+| **Korzyści PaaS** | **Ciągłość działalności biznesowej** |
 | --- | --- |
 |Brak zakupu sprzętu i zarządzania nim <br>Brak kosztów zarządzania zarządzaniem podstawową infrastrukturą <br>Szybkie udostępnianie obsługi administracyjnej i skalowanie usług <br>Automatyczne łatanie i uaktualnianie wersji <br>Integracja z innymi usługami danych PaaS |99.99% umowy SLA o czasie pracy bez przestojów  <br>Zbudowany w [wysokiej dostępności](sql-database-high-availability.md) <br>Dane chronione za pomocą [automatycznych kopii zapasowych](sql-database-automated-backups.md) <br>Okres przechowywania kopii zapasowych z konfigurowaniem przez klienta <br>[Kopie zapasowe](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) inicjowane przez użytkownika <br>[Funkcja przywracania bazy danych w czasie](sql-database-recovery-using-backups.md#point-in-time-restore) |
 |**Bezpieczeństwo i zgodność** | **Zarządzanie**|
-|Środowisko izolowane[(integracja sieci wirtualnej,](sql-database-managed-instance-connectivity-architecture.md)usługa pojedynczej dzierżawy, dedykowane obliczenia i magazynowanie) <br>[Przezroczyste szyfrowanie danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Podmioty serwera usługi Azure AD (loginy)</a>  <br>Przestrzega standardów zgodności tak samo jak baza danych SQL usługi Azure <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) |Interfejs API usługi Azure Resource Manager do automatyzacji inicjowania obsługi administracyjnej i skalowania usług <br>Funkcja portalu Azure do ręcznego inicjowania obsługi administracyjnej i skalowania <br>Usługa Data Migration Service
+|Środowisko izolowane[(integracja sieci wirtualnej,](sql-database-managed-instance-connectivity-architecture.md)usługa pojedynczej dzierżawy, dedykowane obliczenia i magazynowanie) <br>[Przezroczyste szyfrowanie danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Podmioty serwera usługi Azure AD (loginy)</a>  <br>Przestrzega standardów zgodności tak samo jak baza danych SQL usługi Azure <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Zaawansowana ochrona przed zagrożeniami](sql-database-managed-instance-threat-detection.md) |Interfejs API usługi Azure Resource Manager do automatyzacji inicjowania obsługi administracyjnej i skalowania usług <br>Funkcja portalu Azure do ręcznego inicjowania obsługi administracyjnej i skalowania <br>Usługa Data Migration Service
 
 > [!IMPORTANT]
 > Usługa Azure SQL Database (wszystkie opcje wdrażania) została certyfikowana zgodnie z wieloma standardami zgodności. Aby uzyskać więcej informacji, zobacz [Centrum zaufania platformy Microsoft Azure,](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) gdzie można znaleźć najnowszą listę certyfikatów zgodności bazy danych SQL.
@@ -67,7 +67,7 @@ Najważniejsze funkcje wystąpień zarządzanych są pokazane w poniższej tabel
 | Obsługa portalu | Tak|
 | Wbudowana usługa integracji (SSIS) | Nie — SSIS jest częścią [usługi Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Wbudowana usługa analizy (SSAS) | Nie - SSAS jest [oddzielnym PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
-| Wbudowana usługa raportowania (SSRS) | Nie - użyj usługi Power BI lub SSRS IaaS |
+| Wbudowana usługa raportowania (SSRS) | Nie — zamiast tego użyj [raportów na strony podziałów usługi Power BI](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) lub hosta SSRS na maszynie wirtualnej platformy Azure. Chociaż wystąpienie zarządzane nie może uruchomić SSRS jako usługi, może obsługiwać bazy danych wykazu SSRS 2019 dla zewnętrznego serwera raportowania przy użyciu uwierzytelniania programu SQL Server. |
 |||
 
 ## <a name="vcore-based-purchasing-model"></a>Model zakupów oparty na rdzeniach wirtualnych
@@ -146,10 +146,10 @@ W poniższej tabeli podsumowano operacje i typowe całkowite czasy trwania:
 
 |Kategoria  |Operacja  |Segment długotrwały  |Szacowany czas trwania  |
 |---------|---------|---------|---------|
-|**wdrażania** |Pierwsze wystąpienie w pustej podsieci|Tworzenie klastra wirtualnego|90% operacji kończy się w ciągu 4 godzin|
-|wdrażania |Pierwsze wystąpienie innego generowania sprzętu w niepustej podsieci (na przykład pierwsze wystąpienie gen 5 w podsieci z wystąpieniami gen 4)|Tworzenie klastra wirtualnego*|90% operacji kończy się w ciągu 4 godzin|
-|wdrażania |Tworzenie 4 ładowań wirtualnych w pustej lub niepustej podsieci|Tworzenie klastra wirtualnego**|90% operacji kończy się w ciągu 4 godzin|
-|wdrażania |Kolejne tworzenie wystąpień w niepustej podsieci (drugie, trzecie wystąpienie itp.)|Zmiana rozmiaru klastra wirtualnego|90% operacji kończy się w ciągu 2,5 godziny|
+|**Wdrożenie** |Pierwsze wystąpienie w pustej podsieci|Tworzenie klastra wirtualnego|90% operacji kończy się w ciągu 4 godzin|
+|Wdrożenie |Pierwsze wystąpienie innego generowania sprzętu w niepustej podsieci (na przykład pierwsze wystąpienie gen 5 w podsieci z wystąpieniami gen 4)|Tworzenie klastra wirtualnego*|90% operacji kończy się w ciągu 4 godzin|
+|Wdrożenie |Tworzenie 4 ładowań wirtualnych w pustej lub niepustej podsieci|Tworzenie klastra wirtualnego**|90% operacji kończy się w ciągu 4 godzin|
+|Wdrożenie |Kolejne tworzenie wystąpień w niepustej podsieci (drugie, trzecie wystąpienie itp.)|Zmiana rozmiaru klastra wirtualnego|90% operacji kończy się w ciągu 2,5 godziny|
 |**Aktualizacja** |Zmiana właściwości wystąpienia (hasło administratora, logowanie AAD, flaga usługi Azure Hybrid Benefit)|Nie dotyczy|Do 1 minuty|
 |Aktualizacja |Skalowanie magazynu wystąpień w górę/w dół (warstwa usług ogólnego przeznaczenia)|Dołączanie plików bazy danych|90% operacji kończy się w 5 minut|
 |Aktualizacja |Skalowanie magazynu wystąpień w górę/w dół (warstwa usługi o znaczeniu krytycznym dla firmy)|- Zmiana rozmiaru wirtualnego klastra<br>- Zawsze na rozstawienie grupy dostępności|90% operacji kończy się w 2,5 godziny + czas na wysiew wszystkich baz danych (220 GB / godzinę)|
@@ -187,7 +187,7 @@ W poniższej tabeli podsumowano możliwość anulowania określonych operacji za
 
 Kategoria  |Operacja  |Cancelable  |Szacowany czas trwania anuluj  |
 |---------|---------|---------|---------|
-|wdrażania |Tworzenie wystąpienia |Nie |  |
+|Wdrożenie |Tworzenie wystąpienia |Nie |  |
 |Aktualizacja |Skalowanie magazynu wystąpień w górę/w dół (ogólnego przeznaczenia) |Nie |  |
 |Aktualizacja |Skalowanie magazynu wystąpień w górę/w dół (krytyczne dla firmy) |Tak |90% operacji kończy się w 5 minut |
 |Aktualizacja |Skalowanie obliczeń instancji (vCore) w górę i w dół (ogólnego przeznaczenia) |Tak |90% operacji kończy się w 5 minut |
@@ -247,7 +247,7 @@ Migracja zaszyfrowanej bazy danych do wystąpienia zarządzanego jest obsługiwa
 
 ## <a name="azure-active-directory-integration"></a>Integracja z usługą Azure Active Directory
 
-Opcja wdrażania wystąpienia zarządzanego obsługuje tradycyjne logowania i logowania aparatu bazy danych serwera SQL zintegrowane z usługą Azure Active Directory (AAD). Podmioty serwera usługi Azure AD (logowania)**(publiczna wersja zapoznawcza)** to lokalna wersja danych logowania do lokalnej bazy danych w chmurze platformy Azure, której używasz w środowisku lokalnym. Podmioty serwera usługi Azure AD (loginy) umożliwiają określenie użytkowników i grup z dzierżawy usługi Azure Active Directory jako podmiotów o określonym zakresie wystąpienia, zdolnych do wykonywania dowolnej operacji na poziomie wystąpienia, w tym zapytań między bazami danych w ramach tego samego zarządzanego Wystąpienie.
+Opcja wdrażania wystąpienia zarządzanego obsługuje tradycyjne logowania i logowania aparatu bazy danych serwera SQL zintegrowane z usługą Azure Active Directory (AAD). Podmioty serwera usługi Azure AD (logowania)**(publiczna wersja zapoznawcza)** to lokalna wersja danych logowania do lokalnej bazy danych w chmurze platformy Azure, której używasz w środowisku lokalnym. Podmioty serwera usługi Azure AD (logowania) umożliwiają określenie użytkowników i grup z dzierżawy usługi Azure Active Directory jako podmiotów o określonym zakresie wystąpienia, zdolnych do wykonywania operacji na poziomie wystąpienia, w tym zapytań między bazami danych w tym samym wystąpieniu zarządzanym.
 
 Wprowadzono nową składnię do tworzenia podmiotów serwera usługi Azure AD (loginów) **z zewnętrznego dostawcy**. Aby uzyskać więcej informacji na temat składni, zobacz <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">TWORZENIE LOGOWANIA</a>i przejrzyj [artykuł Aprowizuj administratora usługi Azure Active Directory dla wystąpienia zarządzanego.](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)
 
@@ -255,7 +255,7 @@ Wprowadzono nową składnię do tworzenia podmiotów serwera usługi Azure AD (l
 
 Opcja wdrażania wystąpienia zarządzanego umożliwia centralne zarządzanie tożsamościami użytkowników bazy danych i innych usług firmy Microsoft za pomocą [integracji usługi Azure Active Directory.](sql-database-aad-authentication.md) Ta funkcja upraszcza zarządzanie uprawnieniami i zwiększa bezpieczeństwo. Usługa Azure Active Directory obsługuje [uwierzytelnianie wieloskładnikowe](sql-database-ssms-mfa-authentication-configure.md) (MFA, Multi-Factor Authentication) w celu zwiększenia bezpieczeństwa danych i aplikacji, korzystając z procesu jednokrotnego logowania.
 
-### <a name="authentication"></a>Uwierzytelnianie
+### <a name="authentication"></a>Authentication
 
 Uwierzytelnianie wystąpienia zarządzanego odnosi się do sposobu, w jaki użytkownicy potwierdzają swoją tożsamość podczas łączenia się z bazą danych. Usługa SQL Database obsługuje dwa typy uwierzytelniania:  
 

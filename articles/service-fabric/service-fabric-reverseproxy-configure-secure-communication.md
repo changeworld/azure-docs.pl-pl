@@ -5,12 +5,12 @@ author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 4cfeaf34a39231ffa91ea970a61f66632bae40c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282252"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617109"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Connect to a secure service with the reverse proxy (Łączenie z bezpieczną usługą przy użyciu zwrotnego serwera proxy)
 
@@ -77,7 +77,7 @@ Określ **ApplicationCertificateValidationPolicy** z wartością **Brak** w [**A
 
    Aby określić listę nazwy pospolitej usługi i odciski palców wystawcy, dodaj [**applicationgateway/http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) sekcji w **fabricSettings**, jak pokazano poniżej. W tablicy **parametrów** można dodać wiele nazw pospolitych certyfikatów i par odcisków palców wystawcy. 
 
-   Jeśli odwrotny serwer proxy punktu końcowego łączy się z przedstawia certyfikat, który ma wspólną nazwę i odcisk palca wystawcy pasuje do dowolnej wartości określonej w tym miejscu, ustanawia się kanał SSL. 
+   Jeśli odwrotny serwer proxy punktu końcowego łączy się z przedstawia certyfikat, który ma wspólną nazwę i odcisk palca wystawcy pasuje do dowolnej wartości określonej w tym miejscu, ustanawia się kanał TLS.
    W przypadku niepowodzenia dopasowania szczegółów certyfikatu odwrotny serwer proxy nie powiedzie się żądanie klienta z kodem stanu 502 (Bad Gateway). Wiersz stanu HTTP będzie również zawierał frazę "Nieprawidłowy certyfikat SSL". 
 
    ```json
@@ -143,7 +143,7 @@ Określ **ApplicationCertificateValidationPolicy** z wartością **Brak** w [**A
    }
    ```
 
-   Jeśli odcisk palca certyfikatu serwera znajduje się na liście w tym wpisie konfiguracji, serwer proxy wsteczny zakończy się pomyślnie połączeniem SSL. W przeciwnym razie kończy połączenie i kończy pracę żądania klienta za pomocą 502 (Bad Gateway). Wiersz stanu HTTP będzie również zawierał frazę "Nieprawidłowy certyfikat SSL".
+   Jeśli odcisk palca certyfikatu serwera znajduje się na liście w tym wpisie konfiguracji, serwer proxy wsteczny zakończy się pomyślnie połączeniem TLS. W przeciwnym razie kończy połączenie i kończy pracę żądania klienta za pomocą 502 (Bad Gateway). Wiersz stanu HTTP będzie również zawierał frazę "Nieprawidłowy certyfikat SSL".
 
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>Logika wyboru punktu końcowego, gdy usługi ujawniają bezpieczne i niezabezpieczone punkty końcowe
 Sieci szkieletowej usług obsługuje konfigurowanie wielu punktów końcowych dla usługi. Aby uzyskać więcej informacji, zobacz [Określanie zasobów w manifeście usługi](service-fabric-service-manifest-resources.md).
@@ -173,12 +173,12 @@ Odwrócony serwer proxy wybiera jeden z punktów końcowych do przekazania żąd
 > Podczas pracy w **SecureOnlyMode**, jeśli klient określił **ListenerName** odpowiadające http(niezabezpieczone) punkt końcowy, odwrotny serwer proxy nie powiedzie się żądanie z 404 (Nie znaleziono) kod stanu HTTP.
 
 ## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>Konfigurowanie uwierzytelniania certyfikatu klienta za pośrednictwem odwrotnego serwera proxy
-Zakończenie SSL odbywa się na serwerze proxy odwrotnej i wszystkie dane certyfikatu klienta są tracone. Aby usługi przeprowadzały uwierzytelnianie certyfikatów klienta, określ ustawienie **ForwardClientCertificate** w sekcji [**ApplicationGateway/Http.**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp)
+Zakończenie protokołu TLS odbywa się na serwerze proxy odwrotnym i wszystkie dane certyfikatu klienta są tracone. Aby usługi przeprowadzały uwierzytelnianie certyfikatów klienta, określ ustawienie **ForwardClientCertificate** w sekcji [**ApplicationGateway/Http.**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp)
 
-1. Gdy **forwardClientCertificate** jest ustawiona na **false,** reverse proxy nie zażąda certyfikatu klienta podczas uzgadniania SSL z klientem.
+1. Gdy **forwardClientCertificate** jest ustawiona na **false,** reverse proxy nie zażąda certyfikatu klienta podczas uzgadniania TLS z klientem.
 Jest to zachowanie domyślne.
 
-2. Gdy **forwardClientCertificate** jest ustawiona na **true,** reverse proxy żąda certyfikatu klienta podczas uzgadniania SSL z klientem.
+2. Gdy **forwardClientCertificate** jest ustawiona na **true,** reverse proxy żąda certyfikatu klienta podczas jego uzgadniania TLS z klientem.
 Następnie przekaże dane certyfikatu klienta w niestandardowym nagłówku HTTP o nazwie **X-Client-Certificate**. Wartość nagłówka jest ciągiem formatu PEM zakodowanego w formacie PEM base64 certyfikatu klienta. Usługa może zakończyć się powodzeniem/niepowodzeniem żądania z odpowiednim kodem stanu po sprawdzeniu danych certyfikatu.
 Jeśli klient nie przedstawi certyfikatu, reverse proxy przesyła dalej pusty nagłówek i zezwala na obsługę sprawy przez usługę.
 

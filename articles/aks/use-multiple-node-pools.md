@@ -4,12 +4,12 @@ description: Dowiedz się, jak tworzyć wiele pul węzłów dla klastra w usłud
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 607419787bc0bab243d6cc2b8cbaa0ec22921e87
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 87f066ed17e5274439082956803d269bdd5853f5
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422314"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616519"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Tworzenie wielu pul węzłów dla klastra w usłudze Azure Kubernetes (AKS) i zarządzanie nimi
 
@@ -41,7 +41,7 @@ Podczas tworzenia klastrów AKS i zarządzania nimi obowiązują następujące o
 Aby rozpocząć, należy utworzyć klaster AKS z pulą jednego węzła. W poniższym przykładzie użyto polecenia [create grupy az][az-group-create] do utworzenia grupy zasobów o nazwie *myResourceGroup* w regionie *eastus.* Klaster AKS o nazwie *myAKSCluster* jest następnie tworzony za pomocą polecenia [az aks create.][az-aks-create] *Wersja --kubernetes* *1.15.7* służy do pokazywalenia sposobu aktualizowania puli węzłów w następnym kroku. Można określić dowolną [obsługiwani wersję kubernetes][supported-versions].
 
 > [!NOTE]
-> *Podstawowa jednostka* SKU modułu równoważenia obciążenia nie jest **obsługiwana** podczas korzystania z wielu pul węzłów. Domyślnie klastry AKS są tworzone przy za pomocą *standardowej* jednostki SKU równoważenia obciążenia z interfejsu wiersza polecenia platformy Azure i witryny Azure portal.
+> *Podstawowa jednostka* SKU modułu równoważenia obciążenia nie jest **obsługiwana** podczas korzystania z wielu pul węzłów. Domyślnie klastry AKS są tworzone przy pomocą *standardowej* jednostki SKU równoważenia obciążenia z interfejsu wiersza polecenia platformy Azure i witryny Azure portal.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -420,7 +420,7 @@ Harmonogram Kubernetes można używać taints i tolerancji, aby ograniczyć, jak
 
 Aby uzyskać więcej informacji na temat korzystania z zaawansowanych zaplanowanych funkcji kubernetes, zobacz [Najważniejsze wskazówki dotyczące zaawansowanych funkcji harmonogramu w ustroju AKS][taints-tolerations]
 
-W tym przykładzie zastosuj skazę do węzła opartego na procesorze GPU za pomocą polecenia --node-taints. Określ nazwę węzła opartego na procesorze `kubectl get nodes` GPU z danych wyjściowych poprzedniego polecenia. Skażenie jest stosowane jako *klucz:wartość,* a następnie opcja planowania. W poniższym przykładzie użyto pary *sku=gpu* i definiuje zasobników, w przeciwnym razie mają zdolność *NoSchedule:*
+W tym przykładzie zastosuj skazę do węzła opartego na procesorze GPU za pomocą polecenia --node-taints. Określ nazwę węzła opartego na procesorze `kubectl get nodes` GPU z danych wyjściowych poprzedniego polecenia. Skażenie jest stosowane jako para *klucz=wartość,* a następnie opcja planowania. W poniższym przykładzie użyto pary *sku=gpu* i definiuje zasobników, w przeciwnym razie mają zdolność *NoSchedule:*
 
 ```console
 az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
@@ -480,7 +480,7 @@ Events:
   Normal  Started    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Started container
 ```
 
-Tylko zasobników, które mają ten taint stosowane mogą być zaplanowane w węzłach w *gpunodepool*. Każdy inny zasobnik zostanie zaplanowany w puli węzłów *nodepool1.* Jeśli utworzysz dodatkowe pule węzłów, można użyć dodatkowych skazy i tolerancji, aby ograniczyć, jakie zasobniki można zaplanować w tych zasobach węzła.
+Tylko zasobników, które mają tę tolerancję stosowane mogą być zaplanowane w węzłach w *gpunodepool*. Każdy inny zasobnik zostanie zaplanowany w puli węzłów *nodepool1.* Jeśli utworzysz dodatkowe pule węzłów, można użyć dodatkowych skazy i tolerancji, aby ograniczyć, jakie zasobniki można zaplanować w tych zasobach węzła.
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Określanie skazy, etykiety lub znacznika dla puli węzłów
 
