@@ -1,6 +1,6 @@
 ---
 title: Elementy języka T-SQL
-description: Łącza do dokumentacji instrukcji T-SQL obsługiwanych w usłudze SQL Analytics.
+description: Łącza do dokumentacji instrukcji T-SQL obsługiwanych w puli języka SQL Synapse.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,17 +11,19 @@ ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 040a6d519896d71227777168ea9de9612f97ca6e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f27a0a351e4a446dc950ac13f850bd14b2b3c65a
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351413"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586395"
 ---
-# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>Elementy języka T-SQL obsługiwane w usłudze SQL Analytics
-Łącza do dokumentacji elementów języka T-SQL obsługiwanych w usłudze SQL Analytics.
+# <a name="t-sql-language-elements-supported-in-synapse-sql-pool"></a>Elementy języka T-SQL obsługiwane w puli języka Synapse SQL
+
+Łącza do dokumentacji elementów języka T-SQL obsługiwanych w puli języka SYNAPSE SQL.
 
 ## <a name="core-elements"></a>Podstawowe elementy
+
 * [konwencje składni](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
 * [reguły nazewnictwa obiektów](https://msdn.microsoft.com/library/ms175874.aspx)
 * [zastrzeżone słowa kluczowe](https://msdn.microsoft.com/library/ms189822.aspx)
@@ -37,6 +39,7 @@ ms.locfileid: "80351413"
 * [Używać](https://msdn.microsoft.com/library/ms188366.aspx)
 
 ## <a name="batches-control-of-flow-and-variables"></a>Partie, kontrola przepływu i zmienne
+
 * [Rozpocząć... Końcu](https://msdn.microsoft.com/library/ms190487.aspx)
 * [Przerwy](https://msdn.microsoft.com/library/ms181271.aspx)
 * [Zadeklarować@local_variable](https://msdn.microsoft.com/library/ms188927.aspx)
@@ -48,6 +51,7 @@ ms.locfileid: "80351413"
 * [Podczas](https://msdn.microsoft.com/library/ms178642.aspx)
 
 ## <a name="operators"></a>Operatory
+
 * [+ (Dodaj)](https://msdn.microsoft.com/library/ms178565.aspx)
 * [+ (Łączenie ciągów)](https://msdn.microsoft.com/library/ms177561.aspx)
 * [- (Ujemne)](https://msdn.microsoft.com/library/ms189480.aspx)
@@ -57,6 +61,7 @@ ms.locfileid: "80351413"
 * [Modulo](https://msdn.microsoft.com/library/ms190279.aspx)
 
 ## <a name="wildcard-characters-to-match"></a>Symbole wieloznaczne do dopasowania
+
 * [= (Równa się)](https://msdn.microsoft.com/library/ms175118.aspx)
 * [> (większa niż)](https://msdn.microsoft.com/library/ms178590.aspx)
 * [< (mniej niż)](https://msdn.microsoft.com/library/ms179873.aspx)
@@ -74,6 +79,7 @@ ms.locfileid: "80351413"
 * [Lub](https://msdn.microsoft.com/library/ms188361.aspx)
 
 ### <a name="bitwise-operators"></a>Operatory bitowe
+
 * [& (bitowy I)](https://msdn.microsoft.com/library/ms174965.aspx)
 * [| (Bitowe LUB)](https://msdn.microsoft.com/library/ms186714.aspx)
 * [^ (Bitwise wyłączne OR)](https://msdn.microsoft.com/library/ms190277.aspx)
@@ -83,6 +89,7 @@ ms.locfileid: "80351413"
 * [&= (bitowy i równy)](https://msdn.microsoft.com/library/cc627427.aspx)
 
 ## <a name="functions"></a>Funkcje
+
 * [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)
 * [@@ERROR](https://msdn.microsoft.com/library/ms188790.aspx)
 * [@@LANGUAGE](https://msdn.microsoft.com/library/ms177557.aspx)
@@ -227,12 +234,15 @@ ms.locfileid: "80351413"
 * [Xact_state](https://msdn.microsoft.com/library/ms189797.aspx)
 
 ## <a name="transactions"></a>Transakcje
+
 * [Transakcji](https://msdn.microsoft.com/library/mt204031.aspx)
 
 ## <a name="diagnostic-sessions"></a>Sesje diagnostyczne
+
 * [TWORZENIE SESJI DIAGNOSTYCZNEJ](https://msdn.microsoft.com/library/mt204029.aspx)
 
 ## <a name="procedures"></a>Procedury
+
 * [Sp_addrolemember](https://msdn.microsoft.com/library/ms187750.aspx)
 * [Sp_columns](https://msdn.microsoft.com/library/ms176077.aspx)
 * [Sp_configure](https://msdn.microsoft.com/library/ms188787.aspx)
@@ -256,6 +266,7 @@ ms.locfileid: "80351413"
 * [sp_unprepare](https://msdn.microsoft.com/library/ff848735.aspx)
 
 ## <a name="set-statements"></a>Instrukcje SET
+
 * [ZESTAW ANSI_DEFAULTS](https://msdn.microsoft.com/library/ms188340.aspx)
 * [ZESTAW ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
 * [ZESTAW ANSI_NULL_DFLT_ON](https://msdn.microsoft.com/library/ms187375.aspx)
@@ -278,5 +289,6 @@ ms.locfileid: "80351413"
 * [ZESTAW XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji referencyjnych, zobacz [Instrukcje T-SQL w usłudze SQL Analytics](sql-data-warehouse-reference-tsql-statements.md)i [Widoki systemowe w usłudze SQL Analytics](sql-data-warehouse-reference-tsql-system-views.md).
+
+Aby uzyskać więcej informacji, zobacz [Instrukcje T-SQL w puli Synapse SQL](sql-data-warehouse-reference-tsql-statements.md)i [Widoki systemowe w puli Synapse SQL](sql-data-warehouse-reference-tsql-system-views.md).
 

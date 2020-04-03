@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 477bb5430214b497f90e3cb6d5df69f9fcf4035f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 65100e8584eba5c31edc2f9fd8c57ad8bd14c0d1
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546161"
+ms.locfileid: "80582539"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co to jest zarządzanie upoważnieniami w usłudze Azure AD?
 
@@ -43,7 +43,7 @@ Te problemy są potęgowane dla użytkowników, którzy potrzebują dostępu z i
 - Nikt nie może znać wszystkich konkretnych osób w katalogach innych organizacji, aby móc ich zaprosić
 - Nawet jeśli byli w stanie zaprosić tych użytkowników, nikt w tej organizacji nie może pamiętać, aby zarządzać wszystkimi dostępami użytkownika konsekwentnie
 
-Zarządzanie uprawnieniami usługi Azure AD może pomóc w rozwiązaniu tych problemów.  Aby dowiedzieć się więcej o tym, jak klienci korzystali z zarządzania uprawnieniami usługi Azure AD, możesz przeczytać [studium przypadku firmy Avanade](https://aka.ms/AvanadeELMCase) i [studium przypadku firmy Centrica.](https://aka.ms/CentricaELMCase)  Ten film wideo zawiera omówienie zarządzania uprawnieniami i jego wartości:
+Zarządzanie uprawnieniami usługi Azure AD może pomóc w rozwiązaniu tych problemów.  Aby dowiedzieć się więcej o tym, jak klienci korzystali z zarządzania uprawnieniami usługi Azure AD, możesz przeczytać [studium przypadku firmy Avanade](https://customers.microsoft.com/story/avanade-professional-services-azure-canada) i [studium przypadku firmy Centrica.](https://customers.microsoft.com/story/757467-centrica-energy-azure)  Ten film wideo zawiera omówienie zarządzania uprawnieniami i jego wartości:
 
 >[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f73fbbc42085b3a0cb6ab7dd1c0e32838a166ccf
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 39501cef3bb2f7e4a0e061968520f687cf97ecc5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350637"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584201"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Ciągła integracja i wdrażanie w zakresie magazynowania danych
 
@@ -62,7 +62,7 @@ W tym momencie masz proste środowisko, w którym wszelkie zaewidencjonowania do
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Poznaj [architekturę MPP usługi SQL Analytics](massively-parallel-processing-mpp-architecture.md)
+- Poznaj [architekturę MPP puli SQL Synapse](massively-parallel-processing-mpp-architecture.md)
 - Szybkie [tworzenie puli SQL](create-data-warehouse-portal.md)
 - [Ładowanie przykładowych danych](load-data-from-azure-blob-storage-using-polybase.md)
 - Przeglądaj [filmy](/azure/sql-data-warehouse/sql-data-warehouse-videos)

@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: f4212ad8c4492cb975a0af14ba054b15cd7fa284
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 14ef9a4eeb5f3c906a2121b63413685df3bdbe50
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79381649"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80624536"
 ---
 |Nazwa |Opis |Efekt(-y) |Wersja |GitHub |
 |---|---|---|---|---|
@@ -19,4 +19,4 @@ ms.locfileid: "79381649"
 |[Magazyn geograficznie nadmiarowy powinien być włączony dla kont magazynu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbf045164-79ba-4215-8f95-f8048dc1780b) |Ta zasada przeprowadza inspekcję dowolnego konta magazynu z niewłączona pamięćą geograficzno nadmiarową. |Inspekcja, wyłączone |1.0.0 |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/GeoRedundant_StorageAccounts_Audit.json)
 |[Należy włączyć bezpieczny transfer na konta magazynu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F404c3081-a854-4457-ae30-26a93ef643f9) |Wymagania dotyczące inspekcji bezpiecznego transferu na koncie magazynu. Bezpieczny transfer to opcja, która zmusza konto magazynu do akceptowania żądań tylko z bezpiecznych połączeń (HTTPS). Korzystanie z protokołu HTTPS zapewnia uwierzytelnianie między serwerem a usługą i chroni przesyłane dane przed atakami warstw sieciowych, takimi jak man-in-the-middle, podsłuchiwanie i przejmowanie sesji |Inspekcja, Odmowa, Wyłączona |1.0.1 |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_AuditForHTTPSEnabled_Audit.json)
 |[Konta magazynu powinny zezwalać na dostęp z zaufanych usług firmy Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc9d007d0-c057-4772-b18c-01e546713bcd) |Niektóre usługi firmy Microsoft, które współdziałają z kontami magazynu, działają z sieci, do których nie można uzyskać dostępu za pośrednictwem reguł sieciowych. Aby ułatwić pracę tego typu usługi zgodnie z oczekiwaniami, zezwalaj zestawowi zaufanych usług firmy Microsoft na pomijanie reguł sieciowych. Te usługi będą następnie używać silnego uwierzytelniania, aby uzyskać dostęp do konta magazynu. |Inspekcja, Odmowa, Wyłączona |1.0.0 |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccess_TrustedMicrosoftServices_Audit.json)
-|[Konta magazynu powinny zostać zmigrowane do nowych zasobów usługi Azure Resource Manager](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F37e0d2fe-28a5-43d6-a273-67d37d1f5606) |Użyj nowego usługi Azure Resource Manager dla kont magazynu, aby zapewnić ulepszenia zabezpieczeń, takie jak: silniejsza kontrola dostępu (RBAC), lepsza inspekcja, wdrażanie i zarządzanie oparte na usłudze Azure Resource Manager, dostęp do tożsamości zarządzanych, dostęp do magazynu kluczy wpisy tajne, uwierzytelnianie oparte na usłudze Azure AD i obsługa tagów i grup zasobów w celu łatwiejszego zarządzania zabezpieczeniami |Inspekcja, Odmowa, Wyłączona |1.0.0 |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Classic_AuditForClassicStorages_Audit.json)
+|[Konta magazynu powinny zostać zmigrowane do nowych zasobów usługi Azure Resource Manager](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F37e0d2fe-28a5-43d6-a273-67d37d1f5606) |Użyj nowego usługi Azure Resource Manager dla kont magazynu, aby zapewnić ulepszenia zabezpieczeń, takie jak: silniejsza kontrola dostępu (RBAC), lepsza inspekcja, wdrażanie i zarządzanie oparte na usłudze Azure Resource Manager, dostęp do zarządzanych tożsamości, dostęp do magazynu kluczy dla kluczy dla kluczy, uwierzytelnianie oparte na usłudze Azure AD oraz obsługa tagów i grup zasobów w celu łatwiejszego zarządzania zabezpieczeniami |Inspekcja, Odmowa, Wyłączona |1.0.0 |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Classic_AuditForClassicStorages_Audit.json)

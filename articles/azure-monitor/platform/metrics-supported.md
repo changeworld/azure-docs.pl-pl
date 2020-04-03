@@ -1,20 +1,23 @@
 ---
 title: Obsługiwane dane usługi Azure Monitor według typu zasobu
 description: Lista metryk dostępnych dla każdego typu zasobu za pomocą usługi Azure Monitor.
-author: anirudhcavale
+author: rboucher
 services: azure-monitor
 ms.topic: reference
 ms.date: 03/17/2020
-ms.author: ancav
+ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 674321878cfce2d05189700a8b5118e233d9044d
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 79bae9712cea04425cc36414ec56fdddd4345eab
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520704"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586024"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki za pomocą usługi Azure Monitor
+
+> [!NOTE]
+> Ta lista jest w dużej mierze generowane automatycznie z interfejsu API REST metryki usługi Azure Monitor. Wszelkie modyfikacje tej listy za pośrednictwem Github mogą być zapisywane bez ostrzeżenia. Skontaktuj się z autorem tego artykułu, aby uzyskać szczegółowe informacje na temat wprowadzania stałych aktualizacji.
 
 Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym wykresów w portalu, uzyskiwanie do nich dostępu za pośrednictwem interfejsu API REST lub wykonywanie zapytań o nie przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Poniżej znajduje się pełna lista wszystkich metryk obecnie dostępnych w potoku metryki usługi Azure Monitor. Inne metryki mogą być dostępne w portalu lub przy użyciu starszych interfejsów API. Ta lista poniżej zawiera tylko metryki dostępne przy użyciu skonsolidowanego potoku metryk usługi Azure Monitor. Metryki są zorganizowane według obszaru nazw. Aby uzyskać listę usług i obszarów nazw, które do nich należą, zobacz [Dostawcy zasobów dla usług platformy Azure](../../azure-resource-manager/management/azure-services-resource-providers.md). Aby uzyskać zapytania i uzyskać dostęp do tych metryk programowo, użyj [wersji api 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 
@@ -24,10 +27,6 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 > *Na przykład*: metrykę „Komunikaty przychodzące” w centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak w przypadku eksportowania za pomocą ustawień diagnostycznych metryka ta jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejkach w centrum zdarzeń.
 >
 > Aby uzyskać listę metryk platformy, które można eksportować za pomocą ustawień diagnostycznych, zobacz [ten artykuł](metrics-supported-export-diagnostic-settings.md).
-
-
-
-
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisSługa/serwery
@@ -565,7 +564,7 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Bajty zapisu na dysku/s|Bajty zapisu dysku danych/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|SlotId (SlotId)|
 |Operacje odczytu dysku/s|Operacje odczytu dysku danych/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|SlotId (SlotId)|
 |Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku podczas monitorowania|SlotId (SlotId)|
-|Na dysk QD|[QD dysku danych [(przestarzałe)](portal-disk-metrics-deprecation.md)](portal-disk-metrics-deprecation.md)|Liczba|Średnia|Głębokość kolejki dysku danych(lub długość kolejki)|SlotId (SlotId)|
+|Na dysk QD|QD dysku danych [(przestarzałe)](portal-disk-metrics-deprecation.md)](portal-disk-metrics-deprecation.md)|Liczba|Średnia|Głębokość kolejki dysku danych(lub długość kolejki)|SlotId (SlotId)|
 |Bajty odczytu systemu operacyjnego na dysk/s|Bajty odczytu dysku systemu operacyjnego/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
 |Bajty zapisu systemu operacyjnego na dysk/s|Bajty zapisu dysku systemu operacyjnego/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Bajty/S zapisane na jednym dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
 |Operacje odczytu systemu operacyjnego na dysku/s|Operacje odczytu dysku systemu operacyjnego/s [(przestarzałe)](portal-disk-metrics-deprecation.md)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
@@ -1974,8 +1973,6 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 
 
 
-
-
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/serwery/bazy danych
 
 |Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
@@ -2002,8 +1999,8 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |dwu_used|DWU używany|Liczba|Maksimum|DWU używane. Dotyczy tylko magazynów danych.|Brak|
 |cache_hit_percent|Procent trafienia w pamięci podręcznej|Wartość procentowa|Maksimum|Procent trafienia w pamięci podręcznej. Dotyczy tylko magazynów danych.|Brak|
 |cache_used_percent|Wartość procentowa używanej pamięci podręcznej|Wartość procentowa|Maksimum|Pamięć podręczna używana procent. Dotyczy tylko magazynów danych.|Brak|
-|sqlserver_process_core_percent|Procent rdzenia procesu programu SQL Server|Wartość procentowa|Maksimum|Użycie procesora CPU jako procent procesu bazy danych SQL. Nie dotyczy hurtowni danych.|Brak|
-|sqlserver_process_memory_percent|Procent pamięci procesu programu SQL Server|Wartość procentowa|Maksimum|Użycie pamięci jako procent procesu bazy danych SQL. Nie dotyczy hurtowni danych.|Brak|
+|sqlserver_process_core_percent|Procent rdzenia procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia procesora CPU dla procesu programu SQL Server, mierzony przez system operacyjny.|Brak|
+|sqlserver_process_memory_percent|Procent pamięci procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia pamięci dla procesu programu SQL Server, mierzony przez system operacyjny.|Brak|
 |tempdb_data_size|Kilobajty rozmiaru pliku danych tempdb|Liczba|Maksimum|Kilobajty o rozmiarze pliku danych tempdb. Nie dotyczy hurtowni danych.|Brak|
 |tempdb_log_size|Kilobajty rozmiaru pliku dziennika tempdb|Liczba|Maksimum|Kilobajty o rozmiarze pliku dziennika tempdb. Nie dotyczy hurtowni danych.|Brak|
 |tempdb_log_used_percent|Używany dziennik procentu tempdb|Wartość procentowa|Maksimum|Używany dziennik procentu tempdb. Nie dotyczy hurtowni danych.|Brak|
@@ -2060,8 +2057,8 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |database_cpu_limit|Limit procesora|Liczba|Średnia|Limit procesora|DataResourceId|
 |cpu_used|Używany procesor|Liczba|Średnia|Używany procesor. Dotyczy elastycznych pul opartych na pulach opartych na pulach typu vCore.|Brak|
 |database_cpu_used|Używany procesor|Liczba|Średnia|Używany procesor|DataResourceId|
-|sqlserver_process_core_percent|Procent rdzenia procesu programu SQL Server|Wartość procentowa|Maksimum|Użycie procesora CPU jako procent procesu bazy danych SQL. Dotyczy basenów elastycznych.|Brak|
-|sqlserver_process_memory_percent|Procent pamięci procesu programu SQL Server|Wartość procentowa|Maksimum|Użycie pamięci jako procent procesu bazy danych SQL. Dotyczy basenów elastycznych.|Brak|
+|sqlserver_process_core_percent|Procent rdzenia procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia procesora CPU dla procesu programu SQL Server, mierzony przez system operacyjny. Dotyczy basenów elastycznych.|Brak|
+|sqlserver_process_memory_percent|Procent pamięci procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia pamięci dla procesu programu SQL Server, mierzony przez system operacyjny. Dotyczy basenów elastycznych.|Brak|
 |tempdb_data_size|Kilobajty rozmiaru pliku danych tempdb|Liczba|Maksimum|Kilobajty rozmiaru pliku danych tempdb|Brak|
 |tempdb_log_size|Kilobajty rozmiaru pliku dziennika tempdb|Liczba|Maksimum|Kilobajty rozmiaru pliku dziennika tempdb|Brak|
 |tempdb_log_used_percent|Używany dziennik procentu tempdb|Wartość procentowa|Maksimum|Używany dziennik procentu tempdb|Brak|
@@ -2351,15 +2348,6 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Wartość procentowa|Średnia|Wykorzystanie procesora CPU. Ta wartość jest raportowana w 100% reprezentującym wszystkie rdzenie procesora w systemie. Na przykład 2-drożna maszyna wirtualna używająca 50% systemu czterordzeniowego całkowicie używa dwóch rdzeni.|Brak|
 |PercentageCpuReady (ProcentcpuReady)|Procentowa gotowość procesora|Milisekund|Łącznie|Czas gotowości to czas oczekiwania na udostępnienie procesorów CPU w poprzednim przedziale aktualizacji.|Brak|
 
-
-
-
-
-
-
-
-
-
 ## <a name="microsoftwebserverfarms"></a>Microsoft.Web/farmy serwerów
 
 |Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
@@ -2380,7 +2368,7 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |TcpLastAck (TcpLastAck)|TCP Ostatni Ack|Liczba|Średnia|TCP Ostatni Ack|Wystąpienie|
 |TcpTimeWait (TcpTimeWait)|Oczekiwanie czasu TCP|Liczba|Średnia|Oczekiwanie czasu TCP|Wystąpienie|
 
-## <a name="microsoftwebsites"></a>Microsoft.Web/witryny
+## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/sites (z wyłączeniem funkcji) 
 
 > [!NOTE]
 > **Użycie systemu plików** to nowa metryka wdrażana globalnie, nie oczekuje się żadnych danych, chyba że zostałasz na białej liście do prywatnej wersji zapoznawczej.
@@ -2410,6 +2398,37 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |Połączenia z aplikacjami|Połączenia|Liczba|Średnia|Połączenia|Wystąpienie|
 |Handles|Liczba dojść|Liczba|Średnia|Liczba dojść|Wystąpienie|
 |Wątki|Liczba wątków|Liczba|Średnia|Liczba wątków|Wystąpienie|
+|Bajty prywatne|Bajty prywatne|Bajty|Średnia|Bajty prywatne|Wystąpienie|
+|IoReadBytesPerSekund|Bajty odczytu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Bajty odczytu we/wy na sekundę|Wystąpienie|
+|IoWriteBytesPerSekund|Bajty zapisu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Bajty zapisu we/wy na sekundę|Wystąpienie|
+|IoOtherBytesPerSekund|IO inne bajty na sekundę|PrzeztówPerSekunda|Łącznie|IO inne bajty na sekundę|Wystąpienie|
+|IoReadOperationsPerSecond|Operacje odczytu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Operacje odczytu we/wy na sekundę|Wystąpienie|
+|IoWriteOperationsPerSecond|Operacje zapisu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Operacje zapisu we/wy na sekundę|Wystąpienie|
+|IoOtherOperationsPerSecond|Inne operacje we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Inne operacje we/wy na sekundę|Wystąpienie|
+|RequestsInApplicationQueue|Żądania w kolejce aplikacji|Liczba|Średnia|Żądania w kolejce aplikacji|Wystąpienie|
+|CurrentAssemblies|Bieżące złożenia|Liczba|Średnia|Bieżące złożenia|Wystąpienie|
+|TotalAppDomains (TotalAppDomains)|Łączna liczba domen aplikacji|Liczba|Średnia|Łączna liczba domen aplikacji|Wystąpienie|
+|TotalAppDomainsNiezaładkłano|Całkowita liczba niezaładowanych domen aplikacji|Liczba|Średnia|Całkowita liczba niezaładowanych domen aplikacji|Wystąpienie|
+|Gen0Kolekcje|Odpady odśmieskowe Gen 0|Liczba|Łącznie|Odpady odśmieskowe Gen 0|Wystąpienie|
+|Gen1Kolekcje|Wyrzucanie elementów bezużytecznych gen 1|Liczba|Łącznie|Wyrzucanie elementów bezużytecznych gen 1|Wystąpienie|
+|Gen2Kolekcje|Odpady odśmieskowe gen 2|Liczba|Łącznie|Odpady odśmieskowe gen 2|Wystąpienie|
+|Stan zdrowiaSeksus|Stan kontroli kondycji|Liczba|Średnia|Stan kontroli kondycji|Wystąpienie|
+|System PlikówUsage|Użycie systemu plików|Bajty|Średnia|Użycie systemu plików|Brak|
+
+## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (funkcje)
+
+> [!NOTE]
+> **Użycie systemu plików** to nowa metryka wdrażana globalnie, nie oczekuje się żadnych danych, chyba że zostałasz na białej liście do prywatnej wersji zapoznawczej.
+
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|Bytesreceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
+|Bajtów|Wyjście danych|Bajty|Łącznie|Wyjście danych|Wystąpienie|
+|Protokół Http5xx|Błędy serwera http|Liczba|Łącznie|Błędy serwera http|Wystąpienie|
+|Zestaw pamięci|Zestaw roboczy pamięci|Bajty|Średnia|Zestaw roboczy pamięci|Wystąpienie|
+|ŚredniaZapraca Zestaw|Zestaw pracy średniej pamięci|Bajty|Średnia|Zestaw pracy średniej pamięci|Wystąpienie|
+|Jednostki funkcyjne|Jednostki wykonawcze funkcji|MB / Milisekundy|Łącznie|[Jednostki wykonawcze funkcji](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Wystąpienie|
+|FunkcjaWykonaniaLicznik|Liczba wykonania funkcji|Liczba|Łącznie|Liczba wykonania funkcji|Wystąpienie|
 |Bajty prywatne|Bajty prywatne|Bajty|Średnia|Bajty prywatne|Wystąpienie|
 |IoReadBytesPerSekund|Bajty odczytu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Bajty odczytu we/wy na sekundę|Wystąpienie|
 |IoWriteBytesPerSekund|Bajty zapisu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Bajty zapisu we/wy na sekundę|Wystąpienie|
@@ -2510,3 +2529,4 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 * [Przeczytaj o metrykach w usłudze Azure Monitor](data-platform.md)
 * [Tworzenie alertów dotyczących metryk](alerts-overview.md)
 * [Eksportowanie danych do magazynu, Centrum zdarzeń lub analizy dzienników](platform-logs-overview.md)
+

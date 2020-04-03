@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: fb2f9ff5af68575d9f9d29e9a6aca83d603395b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ff9e62ed145b7892d2997193dae8e171ae49c98
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672416"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585382"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Tworzenie ustawień diagnostycznych w celu zbierania dzienników i metryk platformy na platformie Azure
 [Dzienniki platformy](platform-logs-overview.md) na platformie Azure, w tym dzienniki aktywności platformy Azure i dzienniki zasobów, zawierają szczegółowe informacje diagnostyczne i inspekcji dla zasobów platformy Azure i platformy Azure, na których zależą. Ten artykuł zawiera szczegółowe informacje na temat tworzenia i konfigurowania ustawień diagnostycznych do wysyłania dzienników platformy do różnych miejsc docelowych.
@@ -53,7 +53,7 @@ Ustawienia diagnostyczne można skonfigurować w witrynie Azure portal z menu Us
     
         ![Ustawienia diagnostyczne](media/diagnostic-settings/menu-monitor.png)
 
-    - W przypadku dziennika aktywności kliknij pozycję **Dziennik aktywności** w menu **Azure Monitor,** a następnie **w ustawieniach diagnostycznych**. Upewnij się, że wyłączysz wszystkie starsze konfiguracje dziennika aktywności. Zobacz [Wyłączanie istniejących ustawień,](diagnostic-settings-legacy.md#disable-existing-settings) aby uzyskać szczegółowe informacje.
+    - W przypadku dziennika aktywności kliknij pozycję **Dziennik aktywności** w menu **Azure Monitor,** a następnie **w ustawieniach diagnostycznych**. Upewnij się, że wyłączysz wszystkie starsze konfiguracje dziennika aktywności. Zobacz [Wyłączanie istniejących ustawień,](/azure/azure-monitor/platform/activity-log-collect#collecting-activity-log) aby uzyskać szczegółowe informacje.
 
         ![Ustawienia diagnostyczne](media/diagnostic-settings/menu-activity-log.png)
 

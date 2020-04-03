@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/07/2019
 ms.author: sngun
-ms.openlocfilehash: 2a33a59ae0184e6c41fe7121560bc5df3a69cffd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 65d34d1e82a46cc5b3d7b0ad3239836acaee6f97
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73888947"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585339"
 ---
 # <a name="azure-cosmos-dbnet-v3-sdk-microsoftazurecosmos-examples-for-the-sql-api"></a>Przykłady DB.NET interfejsu SDK usługi Azure Cosmos DB.NET V3 (Microsoft.Azure.Cosmos) dla interfejsu API SQL
 
@@ -55,7 +55,7 @@ Subskrypcja platformy Azure lub bezpłatne konto próbne usługi Cosmos DB
 
 [RunDatabaseDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L65-L91) metoda przykładowego projektu *DatabaseManagement* pokazuje, jak wykonać następujące zadania. Aby dowiedzieć się więcej o bazach danych usługi Azure Cosmos przed uruchomieniem następujących przykładów, zobacz [Praca z bazami danych, kontenerami i elementami](databases-containers-items.md).
 
-| Zadanie | Odwołanie API |
+| Zadanie | Dokumentacja interfejsu API |
 | --- | --- |
 | [Tworzenie bazy danych](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L68) |[CosmosClient.CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync?view=azure-dotnet) |
 | [Odczytywanie bazy danych na podstawie identyfikatora](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L80) |[Database.ReadAsync](/dotnet/api/microsoft.azure.cosmos.database.readasync?view=azure-dotnet) |
@@ -66,7 +66,7 @@ Subskrypcja platformy Azure lub bezpłatne konto próbne usługi Cosmos DB
 
 [RunContainerDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L69-L89) metoda przykładowego projektu *ContainerManagement* pokazuje, jak wykonać następujące zadania. Aby dowiedzieć się więcej o kontenerach usługi Azure Cosmos przed uruchomieniem następujących przykładów, zobacz [Praca z bazami danych, kontenerami i elementami.](databases-containers-items.md)
 
-| Zadanie | Odwołanie API |
+| Zadanie | Dokumentacja interfejsu API |
 | --- | --- |
 | [Tworzenie kontenera](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L97-L107) |[Database.CreateContainerIfNotExistAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet) |
 | [Tworzenie kontenera z niestandardowymi zasadami indeksu](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L111-L127) |[Database.CreateContainerIfNotExistAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet) |
@@ -79,9 +79,9 @@ Subskrypcja platformy Azure lub bezpłatne konto próbne usługi Cosmos DB
 
 [RunItemsDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L119-L130) metoda przykładowego projektu *ItemManagement* pokazuje, jak wykonać następujące zadania. Aby dowiedzieć się więcej o elementach usługi Azure Cosmos przed uruchomieniem następujących przykładów, zobacz [Praca z bazami danych, kontenerami i elementami](databases-containers-items.md).
 
-| Zadanie | Odwołanie API |
+| Zadanie | Dokumentacja interfejsu API |
 | --- | --- |
-| [Tworzenie elementu](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L161-L200) |[Container.CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet) |
+| [Tworzenie elementu](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L161-L200) |[Container.CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet) |
 | [Odczytywanie elementów na podstawie Identyfikatora](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L203-L241) |[Kontenera. ReadItemAsync (Lek ReadItemAsync)](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet) |
 | [Kwerenda dla elementów](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L244-L320) |[Kontenera. GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.getitemqueryiterator?view=azure-dotnet) |
 | [Zastępowanie elementu](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L323-L363) |[Kontenera. Zastępujkowanie](/dotnet/api/microsoft.azure.cosmos.container.replaceitemasync?view=azure-dotnet) |
@@ -93,7 +93,7 @@ Subskrypcja platformy Azure lub bezpłatne konto próbne usługi Cosmos DB
 
 [RunIndexDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L108-L122) metoda przykładowego projektu *IndexManagement* pokazuje, jak wykonać następujące zadania. Aby dowiedzieć się więcej o indeksowaniu w usłudze Azure Cosmos DB przed uruchomieniem następujących przykładów, zobacz [zasady indeksu,](index-policy.md) [typy indeksów](index-types.md)i [ścieżki indeksu](index-paths.md). 
 
-| Zadanie | Odwołanie API |
+| Zadanie | Dokumentacja interfejsu API |
 | --- | --- |
 | [Wykluczanie elementu z indeksu](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L130-L186) |[IndexingDirective.Exclude](/dotnet/api/microsoft.azure.cosmos.indexingdirective?view=azure-dotnet) |
 | [Korzystanie z indeksowania z opóźnieniem](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L198-L220) |[Tryb indeksowaniaPolicy.IndexingMode](/dotnet/api/microsoft.azure.cosmos.indexingpolicy.indexingmode?view=azure-dotnet) |
@@ -103,7 +103,7 @@ Subskrypcja platformy Azure lub bezpłatne konto próbne usługi Cosmos DB
 
 [RunDemoAsync](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L76-L96) metoda przykładowego projektu *kwerendy* pokazuje, jak wykonać następujące zadania przy użyciu gramatyki zapytań SQL, dostawcy LINQ z kwerendą i Lambda. Aby dowiedzieć się więcej o odwołaniu do kwerendy SQL w usłudze Azure Cosmos DB przed uruchomieniem następujących przykładów, zobacz [przykłady zapytań SQL dla usługi Azure Cosmos DB](how-to-sql-query.md).
 
-| Zadanie | Odwołanie API |
+| Zadanie | Dokumentacja interfejsu API |
 | --- | --- |
 | [Kwerenda elementów z jednej partycji](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L154-L186) |[Kontenera. GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.getitemqueryiterator?view=azure-dotnet) |
 | [Kwerenda elementów z wielu partycji](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L215-L275) |[Kontenera. GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.getitemqueryiterator?view=azure-dotnet) |
@@ -113,7 +113,7 @@ Subskrypcja platformy Azure lub bezpłatne konto próbne usługi Cosmos DB
 
 [RunBasicChangeFeed](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs#L91-L119) Metoda przykładowego projektu *ChangeFeed* pokazuje, jak wykonać następujące zadania. Aby dowiedzieć się więcej o zestawieniu zmian w usłudze Azure Cosmos DB przed uruchomieniem następujących przykładów, zobacz [Odczyt kanału informacyjnego usługi Azure Cosmos DB i](read-change-feed.md) procesor kanału [informacyjnego Change feed](change-feed-processor.md).
 
-| Zadanie | Odwołanie API |
+| Zadanie | Dokumentacja interfejsu API |
 | --- | --- |
 | [Podstawowa funkcja kanału informacyjnego zmian](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs#L91-L119) |[Container.GetChangeFeedProcessorBuilder](/dotnet/api/microsoft.azure.cosmos.container.getchangefeedprocessorbuilder?view=azure-dotnet) |
 | [Odczytywanie pliku danych o zmianach z określonego czasu](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs#L127-L162) |[Container.GetChangeFeedProcessorBuilder](/dotnet/api/microsoft.azure.cosmos.container.getchangefeedprocessorbuilder?view=azure-dotnet) |
@@ -124,7 +124,7 @@ Subskrypcja platformy Azure lub bezpłatne konto próbne usługi Cosmos DB
 
 Metoda [RunDemoAsync](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ServerSideScripts/Program.cs#L72-L102) przykładowego projektu *ServerSideScripts* pokazuje, jak wykonać następujące zadania. Aby dowiedzieć się więcej o programowaniu po stronie serwera w usłudze Azure Cosmos DB przed uruchomieniem następujących przykładów, zobacz [Procedury przechowywane, wyzwalacze i funkcje zdefiniowane przez użytkownika](stored-procedures-triggers-udfs.md).
 
-| Zadanie | Odwołanie API |
+| Zadanie | Dokumentacja interfejsu API |
 | --- | --- |
 | [Tworzenie procedury składowanej](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ServerSideScripts/Program.cs#L116) |[Skrypts.CreateStoredProcedureAsync](/dotnet/api/microsoft.azure.cosmos.scripts.scripts.createstoredprocedureasync?view=azure-dotnet) |
 | [Wykonywanie procedury składowanej](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ServerSideScripts/Program.cs#L135) |[Skrypts.ExecuteStoredProcedureAsync](/dotnet/api/microsoft.azure.cosmos.scripts.scripts.executestoredprocedureasync?view=azure-dotnet) |

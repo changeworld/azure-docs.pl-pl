@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f2019f8538b6997d8fe802a1e90069e88274eb0c
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8e0515727c2155b91f18398bd9def700f4a15b34
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349121"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619408"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Arkusz kodu dla usługi Azure Synapse Analytics (dawniej SQL DW)
 
@@ -115,7 +115,7 @@ Grupy zasobów są używane jako sposób przydzielania pamięci do kwerend. Jeś
 
 Jeśli zauważysz, że wykonywanie zapytań trwa zbyt długo, sprawdź, czy użytkownicy nie stosują uruchamiania w dużych klasach zasobów. Duże klasy zasobów używają wielu miejsc współbieżności. Może to powodować powstanie kolejki innych zasobów.
 
-Na koniec przy użyciu Gen2 [puli SQL,](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)każda klasa zasobów pobiera 2,5 razy więcej pamięci niż Gen1.
+Na koniec przy użyciu Gen2 [puli SQL,](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)każda klasa zasobów pobiera 2,5 razy więcej pamięci niż Gen1.
 
 Dowiedz się więcej, jak pracować z [klasami zasobów i współbieżnością](resource-classes-for-workload-management.md).
 

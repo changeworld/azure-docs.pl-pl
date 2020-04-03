@@ -20,6 +20,7 @@
             - name: Interfejs wiersza polecenia platformy Azure
               href: service-bus-quickstart-cli.md
             - name: Szablon ARM
+              displayName: Resource Manager
               href: service-bus-resource-manager-namespace-queue.md
         - name: Wysyłanie i odbieranie komunikatów
           items:

@@ -1,6 +1,6 @@
 ---
 title: Klucze podstawowe, obce i unikatowe
-description: Obsługa ograniczeń tabel w usłudze SQL Analytics w usłudze Azure Synapse Analytics
+description: Obsługa ograniczeń tabeli w puli sql synapse w usłudze Azure Synapse Analytics
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,28 +11,30 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b9336a5e230e90e1abd7f2d40d431b988385c009
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 881e4f0110e3c0f35301e2ae6be40f2510f42539
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350033"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583492"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-sql-analytics"></a>Klucz podstawowy, klucz obcy i unikatowy klucz w usłudze SQL Analytics
+# <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>Klucz podstawowy, klucz obcy i unikatowy klucz w puli SQL Synapse
 
-Dowiedz się więcej o ograniczeniach tabeli w usłudze SQL Analytics, w tym kluczu podstawowym, klucza obcego i klucza unikatowego.
+Dowiedz się więcej o ograniczeniach tabeli w puli sql synapse, w tym klucza podstawowego, klucza obcego i klucza unikatowego.
 
-## <a name="table-constraints"></a>Ograniczenia tabeli 
-Usługa SQL Analytics obsługuje następujące ograniczenia tabeli: 
+## <a name="table-constraints"></a>Ograniczenia tabeli
+
+Puli SQL Synapse obsługuje te ograniczenia tabeli: 
 - Klucz podstawowy jest obsługiwany tylko wtedy, gdy są używane nieklastrowane i niewymnaczone.    
-- Ograniczenie UNIQUE jest obsługiwane tylko z nieegzekwowane jest używany.   
+- Ograniczenie UNIQUE jest obsługiwane tylko z nieegzekwowane jest używany.
 
-Ograniczenie FOREIGN KEY nie jest obsługiwane w usłudze SQL Analytics.  
+Ograniczenie KLUCZA OBCEGO nie jest obsługiwane w puli języka SQL Synapse.  
 
 ## <a name="remarks"></a>Uwagi
-Posiadanie klucza podstawowego i/lub klucza unikatowego umożliwia aparatowi sql analytics wygenerowanie optymalnego planu wykonania kwerendy.  Wszystkie wartości w kolumnie klucza podstawowego lub kolumnie unikatowego ograniczenia powinny być unikatowe. 
 
-Po utworzeniu tabeli z kluczem podstawowym lub unikatowym ograniczeniem w usłudze SQL Analytics użytkownicy muszą upewnić się, że wszystkie wartości w tych kolumnach są unikatowe.  Naruszenie tego może spowodować kwerendy do zwrócenia niedokładne wyniki.  W tym przykładzie pokazano, jak kwerenda może zwrócić niedokładny wynik, jeśli klucz podstawowy lub kolumna ograniczeń unikatowych zawiera zduplikowane wartości.  
+Posiadanie klucza podstawowego i/lub klucza unikatowego umożliwia aparat puli Synapse SQL do generowania optymalnego planu wykonania kwerendy.  Wszystkie wartości w kolumnie klucza podstawowego lub kolumnie unikatowego ograniczenia powinny być unikatowe.
+
+Po utworzeniu tabeli z kluczem podstawowym lub unikatowym ograniczeniem w puli Synapse SQL użytkownicy muszą upewnić się, że wszystkie wartości w tych kolumnach są unikatowe.  Naruszenie tego może spowodować kwerendy do zwrócenia niedokładne wyniki.  W tym przykładzie pokazano, jak kwerenda może zwrócić niedokładny wynik, jeśli klucz podstawowy lub kolumna ograniczeń unikatowych zawiera zduplikowane wartości.  
 
 ```sql
  -- Create table t1
@@ -158,12 +160,13 @@ a1          total
 ```
 
 ## <a name="examples"></a>Przykłady
-Tworzenie tabeli analizy SQL z kluczem podstawowym: 
+
+Tworzenie tabeli puli Synapse SQL z kluczem podstawowym: 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-Tworzenie tabeli analizy SQL z unikatowym ograniczeniem:
+Utwórz tabelę puli Synapse SQL z unikatowym ograniczeniem:
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -171,4 +174,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po utworzeniu tabel dla bazy danych usługi SQL Analytics następnym krokiem jest załadowanie danych do tabeli. Aby zapoznać się z samouczkiem ładowania, zobacz [Ładowanie danych do baz danych usługi SQL Analytics](load-data-wideworldimportersdw.md).
+Po utworzeniu tabel dla puli SQL Synapse następnym krokiem jest załadowanie danych do tabeli. Aby zapoznać się z samouczkiem ładowania, zobacz [Ładowanie danych do puli SQL Synapse](load-data-wideworldimportersdw.md).

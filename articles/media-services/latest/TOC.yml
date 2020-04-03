@@ -40,7 +40,7 @@
     - name: Dynamiczne szyfrowanie przy użyciu usługi DRM
       displayName: 'PlayReady, Widevine, FairPlay'
       href: protect-with-drm.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady usługi Media Services w wersji 3
       displayName: '.NET, Java'
@@ -199,7 +199,7 @@
           displayName: naming
 - name: Przewodniki z instrukcjami
   items:
-    - name: Wprowadzenie
+    - name: Rozpoczęcie pracy
       items:
         - name: Tworzenie konta
           href: create-account-howto.md
@@ -377,7 +377,7 @@
       href: media-services-community.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
-    - name: Ceny
+    - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
     - name: Filmy wideo
       href: 'https://azure.microsoft.com/resources/videos/index/?services=media-services'

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: f31c24c96732ec3311ea904fc9c63344e2d14109
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f08cfab8f8de9183e6bee241959f7feabc31c8e3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371236"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585901"
 ---
 # <a name="application-gateway-configuration-overview"></a>Omówienie konfiguracji bramy aplikacji
 
@@ -168,8 +168,6 @@ Wybierz http lub HTTPS:
 
 - Jeśli wybierzesz http, ruch między klientem a bramą aplikacji jest niezaszyfrowany.
 
-- Wybierz protokół HTTPS, jeśli chcesz, aby [szyfrowanie TLS było przerywane](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination) lub [kompleksowe.](https://docs.microsoft.com/azure/application-gateway/ssl-overview) Ruch między klientem a bramą aplikacji jest szyfrowany. Połączenie TLS kończy się na bramie aplikacji. Jeśli chcesz szyfrowanie TLS end-to-end, należy wybrać protokół HTTPS i skonfigurować ustawienie **HTTP zaplecza.** Gwarantuje to, że ruch jest ponownie szyfrowany podczas przesuń z bramy aplikacji do zaplecza.
-
 - Wybierz protokół HTTPS, jeśli chcesz, aby [szyfrowanie TLS było przerywane](features.md#secure-sockets-layer-ssltls-termination) lub [kompleksowe.](https://docs.microsoft.com/azure/application-gateway/ssl-overview) Ruch między klientem a bramą aplikacji jest szyfrowany. Połączenie TLS kończy się na bramie aplikacji. Jeśli chcesz szyfrowanie TLS end-to-end, należy wybrać protokół HTTPS i skonfigurować ustawienie **HTTP zaplecza.** Gwarantuje to, że ruch jest ponownie szyfrowany podczas przesuń z bramy aplikacji do zaplecza.
 
 
@@ -296,7 +294,7 @@ Brama aplikacji kieruje ruch do serwerów zaplecza przy użyciu konfiguracji okr
 
 ### <a name="cookie-based-affinity"></a>Koligacja na podstawie pliku cookie
 
-Usługa Azure Application Gateway używa plików cookie zarządzanych przez bramę do obsługi sesji użytkownika. Gdy użytkownik wysyła pierwsze żądanie do bramy aplikacji, ustawia plik cookie koligacji w odpowiedzi z wartością mieszania, która zawiera szczegóły sesji, dzięki czemu kolejne żądania zawierające plik cookie koligacji będą kierowane do tego samego serwera wewnętrznej bazy danych dla utrzymanie lepkości. 
+Usługa Azure Application Gateway używa plików cookie zarządzanych przez bramę do obsługi sesji użytkownika. Gdy użytkownik wysyła pierwsze żądanie do bramy aplikacji, ustawia plik cookie koligacji w odpowiedzi z wartością mieszania, która zawiera szczegóły sesji, dzięki czemu kolejne żądania zawierające plik cookie koligacji będą kierowane do tego samego serwera wewnętrznej bazy danych w celu zachowania lepkości. 
 
 Ta funkcja jest przydatna, gdy chcesz zachować sesję użytkownika na tym samym serwerze i gdy stan sesji jest zapisywany lokalnie na serwerze dla sesji użytkownika. Jeśli aplikacja nie może obsłużyć koligacji opartej na plikach cookie, nie można użyć tej funkcji. Aby go użyć, upewnij się, że klienci obsługują pliki cookie.
 

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9d41aa3447caebfeeffc05c36b5073f57c3e16cd
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 6354390c44c0991b0d6bf36cba8efd4272f9c73d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350803"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583762"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Szybki start: tworzenie klasyfikatora obciążenia przy użyciu funkcji T-SQL
 
@@ -25,7 +25,7 @@ W tym przewodniku Szybki start szybko utworzysz klasyfikator obciążenia o duż
 Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne](https://azure.microsoft.com/free/) konto przed rozpoczęciem.
 
 > [!NOTE]
-> Utworzenie wystąpienia usługi SQL Analytics w usłudze Azure Synapse Analytics może spowodować powstanie nowej usługi podlegającej rozliczaniu.  Aby uzyskać więcej informacji, zobacz [Ceny usługi Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Utworzenie wystąpienia puli SQL Synapse w usłudze Azure Synapse Analytics może spowodować powstanie nowej usługi podlegającej rozliczaniu.  Aby uzyskać więcej informacji, zobacz [Ceny usługi Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 >
 >
 
@@ -109,5 +109,5 @@ Wykonaj następujące kroki, aby oczyścić zasoby.
 ## <a name="next-steps"></a>Następne kroki
 
 - Teraz utworzono klasyfikator obciążenia. Uruchom kilka zapytań jako TheCEO, aby zobaczyć, jak działają. Zobacz [sys.dm_pdw_exec_requests,](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) aby wyświetlić zapytania i przypisane znaczenie.
-- Aby uzyskać więcej informacji na temat zarządzania obciążeniami usługi SQL Analytics, zobacz [Ważność obciążenia](sql-data-warehouse-workload-importance.md) i [klasyfikacja obciążeń](sql-data-warehouse-workload-classification.md).
+- Aby uzyskać więcej informacji na temat zarządzania obciążeniami Synapse SQL, zobacz [Ważność obciążenia](sql-data-warehouse-workload-importance.md) i [klasyfikacja obciążeń](sql-data-warehouse-workload-classification.md).
 - Zobacz artykuły infigurajnokonfigurowanie [ważność obciążenia](sql-data-warehouse-how-to-configure-workload-importance.md) oraz sposób [zarządzania zarządzaniem obciążeniami i monitorowania.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)

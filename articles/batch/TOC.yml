@@ -31,7 +31,7 @@
       href: tutorial-batch-functions.md
     - name: Skrypty w języku Python przy użyciu usługi Data Factory
       href: tutorial-run-python-batch-azure-data-factory.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu
       items:
@@ -43,7 +43,7 @@
       href: cli-samples.md
 - name: Pojęcia
   items:
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Punkt odniesienia zabezpieczeń
           href: security-baseline.md
@@ -53,7 +53,7 @@
       href: batch-apis-tools.md
     - name: Wykrywanie i obsługa błędów usługi Batch
       href: batch-retry-after-errors.md
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       href: best-practices.md
     - name: Limity przydziału i ograniczenia
       href: batch-quota-limit.md
@@ -69,6 +69,8 @@
   items:
     - name: Zarządzanie kontami usługi Batch
       items:
+        - name: Zarządzanie kontem
+          href: batch-manage-account-basics.md
         - name: Zarządzanie kontami usługi Batch przy użyciu portalu
           href: batch-account-create-portal.md
         - name: Zarządzanie kontami Batch przy użyciu funkcji zarządzania partiami platformy .NET
@@ -83,8 +85,12 @@
           href: batch-aad-auth-management.md
         - name: Bezpieczny dostęp do usługi Key Vault za pomocą usługi Batch
           href: credential-access-key-vault.md
+    - name: Korzystanie z pakietów aplikacji
+      href: batch-application-packages.md
     - name: Kopiowanie plików i aplikacji do węzłów puli
       items:
+        - name: Kopiowanie aplikacji i danych do węzłów puli
+          href: batch-applications-to-pool-nodes.md
         - name: Korzystanie z pakietów aplikacji
           href: batch-application-packages.md
         - name: Tworzenie plików zasobów
@@ -245,7 +251,7 @@
       href: 'https://blogs.technet.microsoft.com/windowshpc/'
     - name: Obliczenia HPC na platformie Azure
       href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
-    - name: Ceny
+    - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

@@ -81,14 +81,10 @@
           href: howto-create-personal-dashboards.md
         - name: Uruchamianie zadania
           href: howto-run-a-job.md
-        - name: Wersjonowanie szablonu urządzenia
-          href: howto-version-device-template.md
     - name: Przekształcanie
       items:
         - name: Eksportowanie danych do miejsc docelowych na platformie Azure
           href: howto-export-data.md
-        - name: Eksplorowanie interfejsów API usługi IoT Central
-          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
         - name: Tworzenie elementów webhook w regułach
           href: howto-create-webhooks.md
         - name: Łączenie grup akcji usługi Azure Monitor w regułach

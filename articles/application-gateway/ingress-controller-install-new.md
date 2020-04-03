@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: a0bc6aef1becd53217be0eeb8c865b5c78a5d69f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239459"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585898"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Jak zainstalować kontroler transferu danych (AGIC) przy użyciu nowej bramy aplikacji
 
@@ -263,7 +263,7 @@ Aby zainstalować tożsamość zasobnika usługi AAD w klastrze:
 
 
    > [!NOTE]
-   > I `identityResourceID` `identityClientID` są wartości, które zostały utworzone podczas [tworzenia](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-new.md#create-an-identity) tożsamości kroki i można uzyskać ponownie za pomocą następującego polecenia:
+   > Wartości `identityResourceID` `identityClientID` i są, które zostały utworzone podczas [wdrażania składników](ingress-controller-install-new.md#deploy-components) kroki i można uzyskać ponownie za pomocą następującego polecenia:
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```

@@ -3,12 +3,12 @@ title: Omówienie funkcji zabezpieczeń
 description: Dowiedz się więcej o funkcjach zabezpieczeń w usłudze Azure Backup, które pomagają chronić dane kopii zapasowej i spełniać potrzeby firmy w zakresie bezpieczeństwa.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 91a0f29862b0c9c35e562c143e28ebbc6c39cf94
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 2eec3ee50f1de695b5432ee50b0900e35b81a6eb
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80423186"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585815"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Omówienie funkcji zabezpieczeń w usłudze Azure Backup
 
@@ -66,6 +66,8 @@ Usługa Azure Backup używa agenta usług odzyskiwania platformy Microsoft Azure
 * Dodatkowa warstwa uwierzytelniania jest dodawana za każdym razem, gdy wykonywana jest operacja krytyczna, taka jak zmiana hasła. Ta weryfikacja ma na celu zapewnienie, że takie operacje mogą być wykonywane tylko przez użytkowników, którzy mają prawidłowe poświadczenia platformy Azure. [Dowiedz się więcej o funkcjach zapobiegające atakom](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#prevent-attacks).
 
 * Usunięte dane kopii zapasowej są przechowywane przez dodatkowe 14 dni od daty usunięcia. Zapewnia to możliwość odzyskania danych w danym okresie czasu, więc nie ma utraty danych, nawet jeśli dojdzie do ataku. Ponadto większa liczba minimalnych punktów odzyskiwania są utrzymywane w celu ochrony przed uszkodzonymi danymi. [Dowiedz się więcej o odzyskiwaniu usuniętych danych kopii zapasowej](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#recover-deleted-backup-data).
+
+* W przypadku kopii zapasowej danych przy użyciu agenta usług odzyskiwania platformy Microsoft Azure (MARS) hasło jest używane w celu zapewnienia, że dane są szyfrowane przed przesłaniem do usługi Azure Backup i odszyfrowywane dopiero po pobraniu z usługi Azure Backup. Szczegóły hasła są dostępne tylko dla użytkownika, który utworzył hasło i agenta, który jest skonfigurowany z nim. Nic nie jest przesyłane ani udostępniane usłudze. Zapewnia to pełne bezpieczeństwo danych, ponieważ wszelkie dane, które są ujawniane przypadkowo (na przykład atak typu man-in-the-middle w sieci) są bezużyteczne bez hasła, a hasło nie jest wysyłane w sieci.
 
 ## <a name="compliance-with-standardized-security-requirements"></a>Zgodność ze znormalizowanymi wymogami bezpieczeństwa
 

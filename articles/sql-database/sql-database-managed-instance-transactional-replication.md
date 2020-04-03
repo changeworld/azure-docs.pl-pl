@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: 41dd336bdb74fbe745ab48ebd3c168af0492ae2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a048ddefbcd76193436da13cd3ba68b8b6ffb0a
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75691014"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607593"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacja transakcyjna z pojedynczymi, pulowanymi i wystąpieniami baz danych w bazie danych SQL usługi Azure
 
@@ -95,7 +95,7 @@ Istnieją różne [typy replikacji:](https://docs.microsoft.com/sql/relational-d
 - Połączenie korzysta z uwierzytelniania SQL między uczestnikami replikacji. 
 - Udział konta usługi Azure Storage dla katalogu roboczego używanego przez replikację. 
 - Port 445 (TCP wychodzących) musi być otwarty w regułach zabezpieczeń podsieci wystąpienia zarządzanego, aby uzyskać dostęp do udziału plików platformy Azure. 
-- Port 1433 (TCP wychodzących) musi zostać otwarty, jeśli wydawca/dystrybutor znajdują się w wystąpieniu zarządzanym, a subskrybent jest lokalny.
+- Port 1433 (TCP wychodzących) musi zostać otwarty, jeśli wydawca/dystrybutor znajdują się w wystąpieniu zarządzanym, a subskrybent nie jest. Może być również konieczna zmiana reguły zabezpieczeń wychodzących wychodzących wystąpienia zarządzanego dla `allow_linkedserver_outbound` `virtualnetwork` **znacznika usługi docelowej** portu 1433 z do . `internet` 
 - Wszystkie typy uczestników replikacji (Wydawca, Dystrybutor, Pull Subskrybent i Push Subskrybent) mogą być umieszczane w wystąpieniach zarządzanych, ale wydawca i dystrybutor muszą być zarówno w chmurze, jak i lokalnie.
 - Jeśli wydawca, dystrybutor i/lub subskrybent istnieją w różnych sieciach wirtualnych, między każdą jednostką musi istnieć komunikacja równorzędna sieci VPN, tak aby między wydawcą a dystrybutorem istniała komunikacja równorzędna sieci VPN i/lub między dystrybutorem a subskrybentem była komunikacja równorzędna sieci VPN. 
 
@@ -124,7 +124,7 @@ Wydawca i dystrybutor są konfigurowani w ramach jednego wystąpienia zarządzan
 
 ### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Wydawca z dystrybutorem zdalnym w wystąpieniu zarządzanym
 
-W tej konfiguracji jedno wystąpienie zarządzane publikuje zmiany w dystrybutorze umieszczone w innym wystąpieniu zarządzanym, które mogą obsługiwać wiele wystąpień zarządzanych źródła i dystrybuować zmiany do jednego lub wielu obiektów docelowych w wystąpieniu zarządzanym, pojedynczej bazie danych, puli bazy danych lub SQL Server.
+W tej konfiguracji jedno wystąpienie zarządzane publikuje zmiany w dystrybutorze umieszczone w innym wystąpieniu zarządzanym, które mogą obsługiwać wiele wystąpień zarządzanych źródła i dystrybuować zmiany do jednego lub wielu obiektów docelowych w wystąpieniu zarządzanym, pojedynczej bazie danych, puli bazy danych lub programie SQL Server.
 
 ![Oddzielne wystąpienia wydawcy i dystrybutora](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 

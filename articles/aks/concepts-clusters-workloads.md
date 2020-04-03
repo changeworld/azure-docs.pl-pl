@@ -4,12 +4,12 @@ description: Poznaj podstawowe składniki klastra i obciążenia usługi Kuberne
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 019c886aba1c8fe34211e73e4d960b14e79303b9
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259645"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617439"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Podstawowe pojęcia kubernetes dla usługi Azure Kubernetes Service (AKS)
 
@@ -65,9 +65,9 @@ Do uruchamiania aplikacji i usług pomocniczych potrzebny jest *węzeł*Kubernet
 
 ![Maszyna wirtualna platformy Azure i zasoby pomocnicze dla węzła Kubernetes](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
-Rozmiar maszyny Wirtualnej platformy Azure dla węzłów definiuje liczbę procesorów, ilość pamięci oraz rozmiar i typ dostępnego magazynu (na przykład dysk SSD o wysokiej wydajności lub zwykły dysk twardy). Jeśli przewidujesz potrzebę aplikacji, które wymagają dużych ilości procesora CPU i pamięci lub magazynu o wysokiej wydajności, należy odpowiednio zaplanować rozmiar węzła. Można również skalować w górę liczbę węzłów w klastrze AKS, aby zaspokoić zapotrzebowanie.
+Rozmiar maszyny Wirtualnej platformy Azure dla węzłów definiuje liczbę procesorów, ilość pamięci oraz rozmiar i typ dostępnego magazynu (na przykład dysk SSD o wysokiej wydajności lub zwykły dysk twardy). Jeśli przewidujesz potrzebę aplikacji, które wymagają dużych ilości procesora CPU i pamięci lub magazynu o wysokiej wydajności, należy odpowiednio zaplanować rozmiar węzła. Można również skalować w poziomie liczbę węzłów w klastrze AKS, aby zaspokoić zapotrzebowanie.
 
-W usłudze AKS obraz maszyny Wirtualnej dla węzłów w klastrze jest obecnie oparty na Ubuntu Linux lub Windows Server 2019. Podczas tworzenia klastra AKS lub skalowania w górę liczby węzłów platforma Azure tworzy żądaną liczbę maszyn wirtualnych i konfiguruje je. Nie ma ręcznej konfiguracji do wykonania. Węzły agenta są rozliczane jako standardowe maszyny wirtualne, więc wszelkie rabaty dotyczące używanego rozmiaru maszyny wirtualnej (w tym [rezerwacji platformy Azure)][reservation-discounts]są automatycznie stosowane.
+W usłudze AKS obraz maszyny Wirtualnej dla węzłów w klastrze jest obecnie oparty na Ubuntu Linux lub Windows Server 2019. Podczas tworzenia klastra AKS lub skalowania w poziomie liczby węzłów platforma Azure tworzy żądaną liczbę maszyn wirtualnych i konfiguruje je. Nie ma ręcznej konfiguracji do wykonania. Węzły agenta są rozliczane jako standardowe maszyny wirtualne, więc wszelkie rabaty dotyczące używanego rozmiaru maszyny wirtualnej (w tym [rezerwacji platformy Azure)][reservation-discounts]są automatycznie stosowane.
 
 Jeśli chcesz użyć innego systemu operacyjnego hosta, środowiska wykonawczego kontenera lub dołączyć pakiety niestandardowe, możesz wdrożyć własny klaster Kubernetes przy użyciu [aks-engine][aks-engine]. Nadrzędny `aks-engine` zwalnia funkcje i udostępnia opcje konfiguracji, zanim zostaną oficjalnie obsługiwane w klastrach AKS. Na przykład jeśli chcesz użyć środowiska uruchomieniowego kontenera innego `aks-engine` niż Moby, można użyć do skonfigurowania i wdrożenia klastra Kubernetes, który spełnia bieżące potrzeby.
 
@@ -96,7 +96,7 @@ Aby zachować wydajność i funkcjonalność węzła, zasoby są zarezerwowane w
 
 1. Demon kubelet jest zainstalowany na wszystkich węzłach agenta Kubernetes do zarządzania tworzeniem i zakończeniem kontenera. Domyślnie w przypadku AKS ten demon ma następującą regułę eksmisji: *memory.available<750Mi*, co oznacza, że węzeł musi zawsze mieć co najmniej 750 Mi allocatable przez cały czas.  Gdy host jest poniżej tego progu dostępnej pamięci, kubelet zakończy jeden z uruchomionych zasobników, aby zwolnić pamięć na komputerze hosta i chronić go. Jest to działanie reaktywne, gdy dostępna pamięć zmniejsza się powyżej progu 750Mi.
 
-2. Drugą wartością jest progresywna szybkość rezerwacji pamięci dla demona kubelet poprawnie działać (kube-reserved).
+2. Druga wartość to regresywna szybkość rezerwacji pamięci dla demona kubelet poprawnie działać (kube-reserved).
     - 25% z pierwszych 4 GB pamięci
     - 20% z następnych 4 GB pamięci (do 8 GB)
     - 10% z następnych 8 GB pamięci (do 16 GB)

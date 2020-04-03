@@ -2,24 +2,23 @@
 title: 'Szablon usługi Azure ExpressRoute: tworzenie obwodu usługi ExpressRoute'
 description: Tworzenie, inicjowania obsługi administracyjnej, usuwania i usuwania obsługi administracyjnej obwodu usługi ExpressRoute.
 services: expressroute
-author: cherylmc
+author: charwen
 ms.service: expressroute
 ms.topic: article
 ms.date: 11/13/2019
-ms.author: cherylmc
-ms.reviewer: ganesr
-ms.openlocfilehash: 78da84a462566cca1a2800174849159ace8dd6dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: ac2fb2f884feb0fbe6fbb1731ebe7c8bdad5114b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75981137"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616504"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Tworzenie obwodu usługi ExpressRoute przy użyciu szablonu usługi Azure Resource Manager
 
 > [!div class="op_single_selector"]
-> * [Portal Azure](expressroute-howto-circuit-portal-resource-manager.md)
-> * [Powershell](expressroute-howto-circuit-arm.md)
+> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Interfejs wiersza polecenia platformy Azure](howto-circuit-cli.md)
 > * [Szablon usługi Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
 > * [Klip wideo — portal Platformy Azure](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
@@ -64,7 +63,7 @@ Aby utworzyć obwód usługi ExpressRoute przez wdrożenie szablonu:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **Warstwa SKU** określa, czy obwód usługi ExpressRoute to [Lokalny,](expressroute-faqs.md#expressroute-local)Standardowy czy [Premium.](expressroute-faqs.md#expressroute-premium) Można określić *lokalne,* *standardowe* lub *premium*.
+   * **Warstwa SKU** określa, czy obwód usługi ExpressRoute to [Local,](expressroute-faqs.md#expressroute-local)Standard lub [Premium](expressroute-faqs.md#expressroute-premium). Można określić *lokalny*, *Standard lub *Premium*.
    * **Rodzina jednostek SKU** określa typ rozliczeń. Można określić *Dane metereddata* dla taryfowego planu danych i *nieograniczone dane* dla nieograniczonego planu danych. Typ rozliczeń można zmienić z *Metereddata* na *Unlimiteddata*, ale nie można zmienić typu z *Unlimiteddata* na *Metereddata*. Obwód *lokalny* jest tylko *nieograniczonedane.*
    * **Lokalizacja komunikacji równorzędnej** to fizyczna lokalizacja, w której można komunikacji równorzędnej z firmą Microsoft.
 

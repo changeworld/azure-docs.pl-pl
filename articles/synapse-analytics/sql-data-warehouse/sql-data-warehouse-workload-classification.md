@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7661981f07799592f9fdfcab3fb402336d48b4d4
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 67f863826a2e9eb1bffcb316754ad5c40a2f2bb1
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349971"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583134"
 ---
 # <a name="azure-synapse-analytics-workload-classification"></a>Klasyfikacja obciążenia usługi Azure Synapse Analytics
 
-W tym artykule opisano proces klasyfikacji obciążenia przypisywania grupy obciążenia i ważność do żądań przychodzących za pomocą usługi SQL Analytics w usłudze Azure Synapse.
+W tym artykule opisano proces klasyfikacji obciążenia przypisywania grupy obciążenia i ważność do żądań przychodzących za pomocą puli Sql Synapse w usłudze Azure Synapse.
 
 ## <a name="classification"></a>Klasyfikacja
 
@@ -36,7 +36,7 @@ Nie wszystkie instrukcje są klasyfikowane, ponieważ nie wymagają zasobów lub
 
 ## <a name="classification-process"></a>Proces klasyfikacji
 
-Klasyfikacja dla analizy SQL w usłudze Azure Synapse jest osiągana dzisiaj przez przypisanie użytkowników do roli, która ma przypisaną do niej odpowiednią klasę zasobów przy użyciu [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). Możliwość scharakteryzowania żądań poza logowaniem do klasy zasobów jest ograniczona dzięki tej możliwości. Bogatsza metoda klasyfikacji jest teraz dostępna ze składnią [CREATE WORKLOAD CLASSIFIER.](/sql/t-sql/statements/create-workload-classifier-transact-sql)  W tej składni użytkownicy usługi SQL Analytics mogą przypisywać ważność i `workload_group` ilość zasobów systemowych przypisanych do żądania za pośrednictwem parametru. 
+Klasyfikacja puli SQL Synapse w usłudze Azure Synapse jest osiągana dzisiaj przez przypisanie użytkowników do roli, która ma przypisaną do niej odpowiednią klasę zasobów przy użyciu [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). Możliwość scharakteryzowania żądań poza logowaniem do klasy zasobów jest ograniczona dzięki tej możliwości. Bogatsza metoda klasyfikacji jest teraz dostępna ze składnią [CREATE WORKLOAD CLASSIFIER.](/sql/t-sql/statements/create-workload-classifier-transact-sql)  W tej składni użytkownicy puli Synapse SQL mogą przypisywać ważność i `workload_group` ilość zasobów systemowych przypisanych do żądania za pośrednictwem parametru. 
 
 > [!NOTE]
 > Klasyfikacja jest oceniana na podstawie żądania. Wiele żądań w jednej sesji można sklasyfikować inaczej.
@@ -87,7 +87,7 @@ JOIN    sys.database_principals AS m ON rm.member_principal_id = m.principal_id
 WHERE   r.name IN ('mediumrc','largerc','xlargerc','staticrc10','staticrc20','staticrc30','staticrc40','staticrc50','staticrc60','staticrc70','staticrc80');
 
 --for each row returned run
-sp_droprolemember ‘[Resource Class]’, membername
+sp_droprolemember '[Resource Class]', membername
 ```
 
 ## <a name="next-steps"></a>Następne kroki

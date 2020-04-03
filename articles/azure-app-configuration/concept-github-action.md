@@ -1,19 +1,19 @@
 ---
-title: Używanie akcji GitHub z synchronizacją konfiguracji aplikacji platformy Azure
-description: Używanie akcji usługi GitHub do wyzwalania aktualizacji wystąpienia konfiguracji aplikacji podczas aktualizowania repozytorium usługi GitHub
+title: Synchronizowanie repozytorium Usługi GitHub z konfiguracją aplikacji
+description: Użyj akcji GitHub, aby automatycznie zaktualizować wystąpienie konfiguracji aplikacji podczas aktualizowania repozytorium Usługi GitHub.
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 46d4aa4d4d37e9cac928e8d1a9e5e77ca0f30f18
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 602ccddf97938022df3c5903b573608558fe5d35
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384062"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585477"
 ---
-# <a name="sync-your-app-configuration-instance-using-github-actions"></a>Synchronizowanie wystąpienia usługi App Configuration przy użyciu funkcji GitHub Actions
+# <a name="sync-your-github-repository-to-app-configuration"></a>Synchronizowanie repozytorium Usługi GitHub z konfiguracją aplikacji
 
 Zespoły, które chcą nadal korzystać z istniejących praktyk kontroli źródła, mogą używać akcji Usługi GitHub do automatycznej synchronizacji repozytorium GitHub z ich magazynem konfiguracji aplikacji. Dzięki temu można wprowadzać zmiany w plikach konfiguracyjnych w zwykły sposób, podczas gdy uzyskanie korzyści konfiguracji aplikacji, takich jak: <br>
 &nbsp;&nbsp;&nbsp;&nbsp;• Scentralizowana konfiguracja poza kodem <br>

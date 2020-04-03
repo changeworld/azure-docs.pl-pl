@@ -4,12 +4,12 @@ description: W tym samouczku utworzysz klaster Kubernetes z usługą Azure Kuber
 keywords: azure devops terraform aks kubernetes
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 0a193c8da6441a04f742894797521fe92f26b2e1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b7a84d7562e99e53ff7be75b7d40795cd3f9e203
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78945307"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618937"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Samouczek: Tworzenie klastra Kubernetes za pomocą usługi Azure Kubernetes przy użyciu terraform
 
@@ -28,7 +28,7 @@ W tym samouczku dowiesz się, jak wykonać następujące zadania:
 
 - **Skonfiguruj narzędzie Terraform**: postępuj zgodnie ze wskazówkami w artykule [Terraform and configure access to Azure](terraform-install-configure.md) (Terraform i konfigurowanie dostępu do platformy Azure).
 
-- **Jednostka usługi platformy Azure**: postępuj zgodnie z instrukcjami w sekcji dotyczącej **tworzenia jednostki usługi** artykułu [Tworzenie jednostki usługi platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Zapisz wartości pozycji appId, displayName, password i tenant.
+- **Jednostki usługi azure:** Postępuj zgodnie ze wskazówkami w **sekcji Tworzenie jednostki usługi** w artykule Tworzenie [jednostki usługi platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure.](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) Zapisz wartości pozycji appId, displayName, password i tenant.
 
 ## <a name="create-the-directory-structure"></a>Tworzenie struktury katalogów
 
@@ -303,7 +303,7 @@ W tej sekcji dowiesz się, jak wykonać następujące zadania:
 
 ## <a name="create-the-kubernetes-cluster"></a>Tworzenie klastra Kubernetes
 
-W tej sekcji dowiesz się, jak za pomocą polecenia `terraform init` utworzyć zasoby zdefiniowane w plikach konfiguracji, które zostały utworzone w poprzednich sekcjach.
+W tej sekcji zobaczysz, jak `terraform init` użyć polecenia do utworzenia zasobów zdefiniowanych w plikach konfiguracyjnych utworzonych w poprzednich sekcjach.
 
 1. W usłudze Cloud Shell zaizeluje terraform. Zastąp symbole zastępcze odpowiednimi wartościami dla danego środowiska.
 

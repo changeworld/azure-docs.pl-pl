@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 504dfb721c7b87d5497c73851d0694601b253d5c
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 2270ee7c850c528bd24fa2e58c2b1684acfc24d6
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529691"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585297"
 ---
 # <a name="troubleshoot"></a>Rozwiązywanie problemów
 
@@ -19,7 +19,7 @@ Ten artykuł zawiera rozwiązania typowych problemów z usługą Azure FarmBeats
 ## <a name="install-issues"></a>Problemy z instalacją
 
   > [!NOTE]
-  > Jeśli instalacja jest ponownie uruchamiana z powodu błędu, przed ponownym wyzwoleniem instalacji należy usunąć grupę zasobów lub usunąć wszystkie zasoby z grupy zasobów.
+  > Jeśli instalacja jest ponownie uruchamiana z powodu błędu, przed ponownym wyzwoleniem instalacji należy usunąć **grupę zasobów** lub usunąć wszystkie zasoby z grupy zasobów.
 
 ### <a name="invalid-sentinel-credentials"></a>Nieprawidłowe poświadczenia wartownika
 
@@ -31,7 +31,7 @@ Zwiększ przydział lub usuń nieużywane konta wsadowe i uruchom ponownie insta
 
 ### <a name="invalid-resource-group-location"></a>Nieprawidłowa lokalizacja grupy zasobów
 
-Upewnij się, że grupa zasobów znajduje się w tej samej lokalizacji co region określony podczas instalacji.
+Upewnij się, że **grupa zasobów** znajduje się w tej samej lokalizacji co **region** określony podczas instalacji.
 
 ### <a name="other-install-issues"></a>Inne problemy z instalacją
 
@@ -39,11 +39,11 @@ Skontaktuj się z nami, podjąc następujące szczegóły:
 
 - Twój identyfikator subskrypcji
 - Nazwa grupy zasobów
-- Dołącz plik dziennika dla błędu wdrożenia, wykonując poniższe czynności:
+- Wykonaj poniższe kroki, aby dołączyć plik dziennika dla błędu wdrożenia:
 
-    1. Przejdź do grupy zasobów w witrynie Azure portal.
-    2. Wybierz pozycję Wdrożenia w sekcji Ustawienia po lewej stronie.
-    3. Dla każdego wdrożenia, które pokazuje "Nie powiodło się", kliknij, aby uzyskać szczegółowe informacje i pobrać szczegóły wdrożenia. Dołącz ten plik do poczty.
+    1. Przejdź do **grupy zasobów** w witrynie Azure portal.
+    2. Wybierz **pozycję Wdrożenia** w sekcji **Ustawienia** po lewej stronie.
+    3. Dla każdego wdrożenia, które pokazuje **failed**, wybierz do szczegółów i pobierz szczegóły wdrożenia. Dołącz ten plik do poczty.
 
 ## <a name="sensor-telemetry"></a>Telemetria czujnika
 
@@ -51,11 +51,12 @@ Skontaktuj się z nami, podjąc następujące szczegóły:
 
 **Symptom:** Urządzenia lub czujniki są wdrażane i zostały połączone FarmBeats z partnerem urządzenia, ale nie można uzyskać ani wyświetlić danych telemetrycznych na FarmBeats.
 
-**Działania naprawcze:**
+**Działania naprawcze**
 
 1. Przejdź do grupy zasobów FarmBeats Datahub.
 2. Wybierz **Centrum zdarzeń** (DatafeedEventHubNamespace), a następnie sprawdź liczbę wiadomości przychodzących.
 3. Wykonaj jedną z następujących czynności:
+
    - Jeśli *nie ma żadnych przychodzących wiadomości,* skontaktuj się z partnerem urządzenia.  
    - Jeśli są *przychodzące wiadomości,* skontaktuj się z nami z dziennikami datahub i akceleratora oraz przechwyconymi danymi telemetrycznymi.
 
@@ -65,9 +66,9 @@ Aby dowiedzieć się, jak pobierać dzienniki, przejdź do sekcji ["Ręczne zbie
 
 **Symptom:** Urządzenia lub czujniki są wdrażane i utworzono urządzenia/czujniki na FarmBeats i pochłonął dane telemetryczne do EventHub, ale nie można uzyskać lub wyświetlić dane telemetryczne na FarmBeats.
 
-**Działania naprawcze:**
+**Działania naprawcze**
 
-1. Upewnij się, że poprawnie dokonałeś rejestracji partnera — możesz to sprawdzić, przechodząc do witryny datahub, przejdź do /Partner API, Zrób get i sprawdź, czy partner jest zarejestrowany. Jeśli nie, wykonaj [kroki tutaj,](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) aby dodać partnera.
+1. Upewnij się, że poprawnie dokonałeś rejestracji partnera — możesz to sprawdzić, przechodząc do witryny datahub, przejdź do /Partner API, Zrób get i sprawdź, czy partner jest zarejestrowany. Jeśli nie, wykonaj następujące [kroki,](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) aby dodać partnera.
 
 2. Upewnij się, że użyto poprawnego formatu wiadomości telemetrycznych:
 
@@ -96,7 +97,7 @@ Aby dowiedzieć się, jak pobierać dzienniki, przejdź do sekcji ["Ręczne zbie
 
 ### <a name="dont-have-the-azure-event-hubs-connection-string"></a>Nie masz ciągu połączenia usługi Azure Event Hubs
 
-**Działania naprawcze:**
+**Działania naprawcze**
 
 1. W usłudze Datahub Swagger przejdź do interfejsu API partnera.
 2. Wybierz **pozycję Wypróbuj** > **go.** > **Execute**
@@ -113,7 +114,7 @@ Aby dowiedzieć się, jak pobierać dzienniki, przejdź do sekcji ["Ręczne zbie
 
 **Symptomy:** Urządzenia są zainstalowane i zostały połączone FarmBeats z partnerem urządzenia. Urządzenia są w trybie online i wysyłają dane telemetryczne, ale są wyświetlane w trybie offline.
 
-**Działania naprawcze:** interwał raportowania nie jest skonfigurowany dla tego urządzenia. Aby ustawić interwał raportowania, skontaktuj się z producentem urządzenia. 
+**Działania naprawcze** Interwał raportowania nie jest skonfigurowany dla tego urządzenia. Aby ustawić interwał raportowania, skontaktuj się z producentem urządzenia. 
 
 ### <a name="error-deleting-a-device"></a>Błąd podczas usuwania urządzenia
 
@@ -123,7 +124,7 @@ Podczas usuwania urządzenia może wystąpić jeden z następujących typowych s
 
 **Znaczenie:** Urządzenie jest skojarzone z wieloma czujnikami, które są wdrażane w farmie.
 
-**Działania naprawcze:**  
+**Działania naprawcze**  
 
 1. Usuń czujniki skojarzone z urządzeniem za pomocą akceleratora.  
 2. Jeśli chcesz skojarzyć czujniki z innym urządzeniem, poproś partnera urządzenia, aby zrobił to samo.  
@@ -140,15 +141,15 @@ Podczas usuwania urządzenia może wystąpić jeden z następujących typowych s
 
     > [!NOTE]
     > Nie można usunąć urządzenia, jeśli są z nim skojarzone czujniki. Aby uzyskać więcej informacji na temat usuwania skojarzonych czujników, zobacz sekcję **Usuwanie czujników** w [sekcji Pobierz dane z czujników od partnerów czujników](get-sensor-data-from-sensor-partner.md).
-    > Partnerzy nie mają dostępu do usuwania urządzenia lub czujnika. Tylko administratorzy mają dostęp do tego samego.
+    > Partnerzy nie mają uprawnień do usuwania urządzenia lub czujnika. Tylko administratorzy mają uprawnienia do usuwania.
 
 ## <a name="issues-with-jobs"></a>Problemy z zadaniami
 
 ### <a name="farmbeats-internal-error"></a>Błąd wewnętrzny FarmBeats
 
-**Komunikat**: "Błąd wewnętrzny FarmBeats, zobacz przewodnik rozwiązywania problemów, aby uzyskać więcej informacji".
+**Komunikat**: "Błąd wewnętrzny FarmBeats, zobacz przewodnik rozwiązywania problemów, aby uzyskać więcej informacji."
 
-**Działania naprawcze:** Ten problem może wynikać z tymczasowego błędu w potoku danych. Utwórz zadanie ponownie. Jeśli błąd będzie się powtarzał, skontaktuj się z nami z komunikatem o błędzie / dziennikami.
+**Działania naprawcze** Ten problem może wynikać z tymczasowego błędu w potoku danych. Utwórz zadanie ponownie. Jeśli błąd będzie się powtarzał, skontaktuj się z nami z komunikatem o błędzie/dziennikami.
 
 ## <a name="accelerator-troubleshooting"></a>Rozwiązywanie problemów z akceleratorem
 
@@ -158,15 +159,15 @@ Podczas usuwania urządzenia może wystąpić jeden z następujących typowych s
 
 **Komunikat**: "Nie znaleziono pasujących użytkowników".
 
-**Działanie naprawcze:** sprawdź identyfikator wiadomości e-mail, dla którego próbujesz dodać przypisanie roli. Identyfikator wiadomości e-mail musi być dokładnym dopasowaniem identyfikatora, który jest zarejestrowany dla tego użytkownika w usłudze Active Directory. Jeśli błąd będzie się powtarzał, skontaktuj się z nami z komunikatem o błędzie / dziennikami.
+**Działania naprawcze** Sprawdź identyfikator wiadomości e-mail, dla którego próbujesz dodać przypisanie roli. Identyfikator wiadomości e-mail musi być dokładnym dopasowaniem identyfikatora, który jest zarejestrowany dla tego użytkownika w usłudze Active Directory. Jeśli błąd będzie się powtarzał, skontaktuj się z nami z komunikatem o błędzie/dziennikami.
 
 ### <a name="unable-to-log-in-to-accelerator"></a>Nie można zalogować się do akceleratora
 
 **Komunikat**: "Błąd: Nie masz autoryzacji do wywołania usługi. Skontaktuj się z administratorem w celu autoryzacji."
 
-**Działania naprawcze:** Poproś administratora o autoryzację dostępu do wdrożenia FarmBeats. Można to zrobić, wykonując post interfejsów API roleAssignment lub za pośrednictwem kontroli dostępu w okienku **Ustawienia** w akceleratorze.  
+**Działania naprawcze** Poproś administratora o autoryzację dostępu do wdrożenia FarmBeats. Można to zrobić, wykonując post interfejsów API roleAssignment lub za pośrednictwem kontroli dostępu w okienku **Ustawienia** w akceleratorze.  
 
-Jeśli masz już przyznany dostęp i masz do czynienia z tym błędem, spróbuj ponownie, odświeżając stronę. Jeśli błąd będzie się powtarzał, skontaktuj się z nami z komunikatem o błędzie / dziennikami.
+Jeśli masz już przyznany dostęp i wystąpił z tym błędem, spróbuj ponownie odświeżając stronę. Jeśli błąd będzie się powtarzał, skontaktuj się z nami z komunikatem o błędzie/dziennikami.
 
 ![Projekt FarmBeats](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
 
@@ -176,13 +177,11 @@ Jeśli masz już przyznany dostęp i masz do czynienia z tym błędem, spróbuj 
 
 **Komunikat**: "Błąd: wystąpił nieznany błąd".
 
-**Działanie naprawcze:** Ten błąd występuje, jeśli strona jest bezczynna zbyt długo. Odśwież stronę.  
-
-Jeśli błąd będzie się powtarzał, skontaktuj się z nami z komunikatem o błędzie / dziennikami.
+**Działania naprawcze** Ten błąd występuje, jeśli strona jest bezczynna zbyt długo. Odśwież stronę. Jeśli błąd będzie się powtarzał, skontaktuj się z nami z komunikatem o błędzie/dziennikami.
 
 **Problem:** Akcelerator FarmBeats nie pokazuje najnowszej wersji, nawet po uaktualnieniu FarmBeatsDeployment.
 
-**Akcja naprawcza:** Ten błąd występuje z powodu trwałości pracownika serwisu w przeglądarce. Wykonaj następujące czynności:
+**Działania naprawcze** Ten błąd występuje z powodu trwałości procesu roboczego usługi w przeglądarce. Wykonaj następujące czynności:
 
 1. Zamknij wszystkie karty przeglądarki z otwartym akceleratorem i zamknij okno przeglądarki.
 2. Uruchom nowe wystąpienie przeglądarki i ponownie załaduj identyfikator URI akceleratora. Ta akcja ładuje nową wersję akceleratora.
@@ -193,30 +192,30 @@ Jeśli błąd będzie się powtarzał, skontaktuj się z nami z komunikatem o b�
 
 **Komunikat o niepowodzeniu zadania:**"Pełne uwierzytelnianie jest wymagane, aby uzyskać dostęp do tego zasobu."
 
-**Działania naprawcze:**
+**Działania naprawcze**: Wykonaj jedną z następujących czynności:
 
-Wykonaj jedną z następujących czynności:
+- Zaktualizuj FarmBeats za pomocą poprawnej nazwy użytkownika/hasła, wykonując poniższe kroki i ponów próbę wykonania zadania.
 
-- Zaktualizuj FarmBeats za pomocą poprawnej nazwy użytkownika / hasła, wykonując poniższe czynności i ponów próbę wykonania zadania.
+  **Aktualizacja nazwy użytkownika sentinel**
 
-    *Zaktualizuj nazwę użytkownika sentinel*
     1. Zaloguj się do [witryny Azure portal](https://portal.azure.com).
     2. W polu **Wyszukiwania** wyszukaj grupę zasobów FarmBeats Datahub.
-    3. Wybierz opcję Magazynowanie konta***** -> Kontenery -> pliki prep-prep -> to_vm -> config.ini
-    4. Kliknij pozycję Edytuj
+    3. Wybierz miejsce do przechowywania konta magazynu***** > **kontenery** > **prep-files** > **to_vm** > **config.ini**
+    4. Wybierz **pozycję Edytuj**
     5. Aktualizowanie nazwy użytkownika w sekcji sentinel_account
 
-    *Aktualizacja hasła wartownika*
+  **Aktualizacja hasła sentinel**
+
     1. Zaloguj się do [witryny Azure portal](https://portal.azure.com).
     2. W polu **Wyszukiwania** wyszukaj grupę zasobów FarmBeats Datahub.
     3. Wybierz keyvault-*****
     4. Wybieranie zasad dostępu w obszarze Ustawienia
-    5. Kliknij "Dodaj zasady dostępu"
-    6. Użyj "Zarządzanie tajne" dla konfigurowania z szablonu i dodać siebie do podmiotu zabezpieczeń
-    7. Kliknij pozycję Dodaj, a następnie kliknij pozycję Zapisz na stronie Zasady dostępu
-    8. Kliknij pozycję Wpisy tajne w obszarze Ustawienia
-    9. Kliknij sentinel-hasło
-    10. Tworzenie nowej wersji wartości i włączanie jej
+    5. Wybierz **pozycję Dodaj zasady dostępu**
+    6. Użyj **zarządzania kluczem tajnym** do konfigurowania z szablonu i dodaj siebie do podmiotu zabezpieczeń
+    7. Wybierz pozycję **Dodaj**, a następnie wybierz pozycję **Zapisz** na stronie **Zasady dostępu**
+    8. Wybieranie **wpisów tajnych** w obszarze **Ustawienia**
+    9. Wybierz **sentinel-hasło**
+    10. Utwórz nową wersję wartości i włącz ją.
 
 - Uruchom ponownie zadanie nie powiodło się lub uruchom zadanie indeksów satelitarnych dla zakresu dat od 5 do 7 dni, a następnie sprawdź, czy zadanie zakończyło się pomyślnie.
 
@@ -269,10 +268,11 @@ Ten problem może wystąpić, jeśli wszelkie działania konserwacyjne są wykon
 
 ### <a name="soil-moisture-map-has-white-areas"></a>Gleba Wilgotność mapa ma białe obszary
 
-**Problem**: Wygenerowano mapę Wilgotność gleby, ale mapa ma głównie białe obszary.
+**Problem**: **Wygenerowano mapę Wilgotność gleby,** ale mapa ma głównie białe obszary.
 
 **Działania naprawcze:** Ten problem może wystąpić, jeśli indeksy satelitarne wygenerowane dla czasu, dla którego mapa została zażądana, mają wartości NDVI, które są mniejsze niż 0,3. Aby uzyskać więcej informacji, odwiedź [przewodnik techniczny firmy Sentinel](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm).
-1. Uruchom ponownie zadanie dla innego zakresu dat i sprawdź, czy wartości NDVI w indeksach satelitarnych są większe niż 0,3
+
+1. Uruchom ponownie zadanie dla innego zakresu dat i sprawdź, czy wartości NDVI w indeksach satelitarnych są większe niż 0,3.
 
 ## <a name="collect-logs-manually"></a>Ręczne zbieranie dzienników
 

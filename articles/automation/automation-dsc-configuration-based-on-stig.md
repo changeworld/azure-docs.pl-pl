@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 275b3bd25f931b73e8a378433899ef9ade4d47c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6d257198fcae54b1214d77f6b905d876d2687f5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76028281"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585527"
 ---
 # <a name="configuration-based-on-stig"></a>Konfiguracja oparta na metodologii STIG
 
@@ -37,7 +37,7 @@ Wiele organizacji musi [dokumentować wyjątki od](https://github.com/microsoft/
 PowerSTIG rozwiązuje ten problem, udostępniając [zasoby złożone w](https://github.com/microsoft/powerstig#powerstigdsc) celu rozwiązania każdego obszaru konfiguracji, zamiast próbować rozwiązać cały zakres ustawień w jednym dużym pliku.
 
 Po wygenerowaniu konfiguracji można użyć [skryptów konfiguracji DSC](/powershell/scripting/dsc/configurations/configurations) do generowania plików MOF i [przekazywania plików MOF do usługi Azure Automation.](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)
-Następnie zarejestruj serwery z [lokalnego](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) lub [na platformie Azure,](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) aby pobierać konfiguracje.
+Następnie zarejestruj serwery z [lokalnego](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) lub [na platformie Azure,](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) aby pobierać konfiguracje.
 
 Aby wypróbować program PowerSTIG, odwiedź [galerię programu PowerShell](https://www.powershellgallery.com) i pobierz rozwiązanie lub kliknij "Witryna projektu", aby wyświetlić [dokumentację.](https://github.com/microsoft/powerstig)
 

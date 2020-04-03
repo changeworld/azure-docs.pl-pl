@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: b0dc974185ad616d57327e9cc3743db9ecb20e54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 803783eddfbffd5c3dbab7353ee00dd7f11a09e5
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302733"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618899"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Usługa Azure HDInsight: błędy tworzenia klastra
 
@@ -157,7 +157,7 @@ Jeśli planujesz używać sieciowych grup zabezpieczeń do kontrolowania ruchu s
 
 ---
 
-## <a name="error-code-storagepermissionsblockedformsi"></a>Kod błędu: StoragePermissionsBlockedForMsi  
+## <a name="error-code-storagepermissionsblockedformsi"></a>Kod błędu: StoragePermissionsBlockedForMsi
 
 ### <a name="error"></a>Błąd
 
@@ -178,11 +178,11 @@ Aby uzyskać więcej informacji, zobacz [Konfigurowanie uprawnień dla tożsamo�
 
 ---
 
-## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>Kod błędu: InvalidNetworkSecuritySecurityRules  
+## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>Kod błędu: InvalidNetworkSecuritySecurityRules
 
 ### <a name="error"></a>Błąd
 
-"Reguły zabezpieczeń w sieciowej grupie\<zabezpieczeń\>/subskrypcje/ SubscriptionID /resourceGroups/<Nazwa\> grupy zasobów domyślna/dostawcy/Microsoft.Network/network Security\<Group Nazwa\> \<skonfigurowana\>z podsiecią /subskrypcje/ SubscriptionID /resourceGroups/\<Nazwa\> grupy zasobów RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Nazwa\>sieci\</podsieci/\> Nazwa podsieci nie zezwala na wymaganą łączność przychodzącą i/lub wychodzącą. Aby uzyskać więcej informacji, odwiedź stronę [Planowanie sieci wirtualnej dla usługi Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)lub skontaktuj się z pomocą techniczną."
+"Reguły zabezpieczeń w sieciowej grupie\<zabezpieczeń\>\> /subskrypcje/ SubscriptionID /resourceGroups/<Nazwa grupy\<zasobów domyślna/providers/Microsoft.Network/networkSecurityGroups/ Nazwa\> \<sieciowej\>grupy zabezpieczeń\<skonfigurowana\> z podsiecią /subskrypcje/ Identyfikator subskrypcji /resourceGroup nazwa grupy zasobów\<RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/ Virtual Network Name\>/subnets/\<Nazwa podsieci nie\> zezwala na wymaganą łączność przychodzącą i/lub wychodzącą. Aby uzyskać więcej informacji, odwiedź stronę [Planowanie sieci wirtualnej dla usługi Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)lub skontaktuj się z pomocą techniczną."
 
 ### <a name="cause"></a>Przyczyna
 
@@ -195,12 +195,12 @@ Jeśli planujesz używać sieciowych grup zabezpieczeń do kontrolowania ruchu s
 - Zidentyfikuj region platformy Azure, którego zamierzasz użyć dla usługi HDInsight, i utwórz bezpieczną listę adresów IP dla swojego regionu. Aby uzyskać więcej informacji, zobacz [Usługi w zakresie kondycji i zarządzania: Określone regiony](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions).
 - Zidentyfikuj adresy IP, których wymaga usługa HDInsight. Aby uzyskać więcej informacji, zobacz [Adresy IP zarządzania hdinsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
 - Utwórz lub zmodyfikuj sieciowe grupy zabezpieczeń podsieci, w której zamierzasz zainstalować usługę HDInsight. W przypadku sieciowych grup zabezpieczeń zezwalaj na ruch przychodzący na porcie 443 z adresów IP. Ta konfiguracja gwarantuje, że usługi zarządzania hdinsight mogą dotrzeć do klastra spoza sieci wirtualnej.
-  
+
 ---
 
 ## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>Kod błędu: instalacja klastra nie może zainstalować składników na co najmniej jednym hostie
 
-###  <a name="error"></a>Błąd
+### <a name="error"></a>Błąd
 
 "Instalacja klastra nie może zainstalować składników na co najmniej jednym hostie. Ponów próbę złożenia wniosku."
 
@@ -211,6 +211,42 @@ Zazwyczaj ten błąd jest generowany, gdy występuje przejściowy problem lub aw
 ### <a name="resolution"></a>Rozwiązanie
 
 Sprawdź stronę [stanu platformy Azure](https://status.azure.com) pod kątem wszelkich awarii platformy Azure, które mogą mieć wpływ na wdrożenie klastra. Jeśli nie ma żadnych awarii, ponów próbę wdrożenia klastra.
+
+---
+
+## <a name="error-code-failedtoconnectwithclustererrorcode"></a>Kod błędu: FailedToConnectWithClusterErrorCode
+
+### <a name="error"></a>Błąd
+
+Nie można połączyć się z punktem końcowym zarządzania klastrem. Spróbuj ponownie później.
+
+### <a name="cause"></a>Przyczyna
+
+Usługa HDInsight nie może połączyć się z klastrem podczas próby utworzenia klastra
+
+### <a name="resolution"></a>Rozwiązanie
+
+Jeśli używasz niestandardowej sieci wirtualnej grupy zabezpieczeń (NSG) i tras zdefiniowanych przez użytkownika (UDR), upewnij się, że klaster może komunikować się z usługami zarządzania HDInsight. Aby uzyskać dodatkowe informacje, zobacz [adresy IP zarządzania hdinsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+
+---
+
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Kod błędu: Wdrożenia nie powiodły się z<Resource URI>powodu naruszenia zasad: "Zasób" został niedozwolony przez zasady. Identyfikatory zasad: "[{"policyAssignment":{"name":"<Policy Name> ","id":"/providers/Microsoft.Management/managementGroups/<Management Group Name> providers/Microsoft.Authorization/policyAssignments/<Policy Name>"},"policyDefinition":<Policy Definition>
+
+### <a name="cause"></a>Przyczyna
+
+Zasady platformy Azure oparte na subskrypcji mogą odmówić utworzenia publicznych adresów IP. Do utworzenia klastra usługi HDInsight wymagane są dwa publiczne adresy IP.
+
+Następujące zasady mają zazwyczaj wpływ na tworzenie klastra:
+
+* Zasady, które uniemożliwiają tworzenie adresów IP lub modułów równoważenia obciążenia w ramach subskrypcji.
+* Zasady, które uniemożliwiają tworzenie kont magazynu.
+* Zasady, które uniemożliwiają usuwanie zasobów sieciowych, takich jak adresy IP lub moduły równoważenia obciążenia.
+
+### <a name="resolution"></a>Rozwiązanie
+
+Usuń lub wyłącz zasady platformy Azure oparte na subskrypcji podczas tworzenia klastra USŁUGI HDInsight.
+
+---
 
 ## <a name="next-steps"></a>Następne kroki
 

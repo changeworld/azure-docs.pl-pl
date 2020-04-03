@@ -246,6 +246,8 @@
       items:
         - name: Azure Portal
           href: howto-data-encryption-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: howto-data-encryption-cli.md
     - name: Integracja z usługą Azure AD
       items:
         - name: Konfigurowanie integracji z usługą Azure AD

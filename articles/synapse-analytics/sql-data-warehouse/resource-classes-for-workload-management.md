@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47fd30fbb6e6836d6edf18ac68164d515f3aeb93
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8ac9ff1f46e1d2d0ddaa313499340b4723c7da07
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350745"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584265"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Zarządzanie obciążeniami z klasami zasobów w usłudze Azure Synapse Analytics
 
-Wskazówki dotyczące używania klas zasobów do zarządzania pamięcią i współbieżnością dla zapytań usługi SQL Analytics w usłudze Azure Synapse.  
+Wskazówki dotyczące używania klas zasobów do zarządzania pamięcią i współbieżnością zapytań puli SQL synapse w usłudze Azure Synapse.  
 
 ## <a name="what-are-resource-classes"></a>Co to są klasy zasobów
 
-Pojemność wydajności kwerendy jest określana przez klasę zasobów użytkownika.  Klasy zasobów są wstępnie określone limity zasobów w usłudze SQL Analytics, które regulują zasoby obliczeniowe i współbieżności do wykonywania kwerend. Klasy zasobów mogą pomóc w skonfigurowaniu zasobów dla kwerend, ustawiając limity liczby zapytań uruchamianych jednocześnie i zasobów obliczeniowych przypisanych do każdej kwerendy.  Istnieje kompromis między pamięcią a współbieżnością.
+Pojemność wydajności kwerendy jest określana przez klasę zasobów użytkownika.  Klasy zasobów są wstępnie określone limity zasobów w puli SQL Synapse, które regulują zasoby obliczeniowe i współbieżności do wykonywania kwerend. Klasy zasobów mogą pomóc w skonfigurowaniu zasobów dla kwerend, ustawiając limity liczby zapytań uruchamianych jednocześnie i zasobów obliczeniowych przypisanych do każdej kwerendy.  Istnieje kompromis między pamięcią a współbieżnością.
 
 - Mniejsze klasy zasobów zmniejszyć maksymalną pamięć na kwerendę, ale zwiększyć współbieżność.
 - Większe klasy zasobów zwiększają maksymalną ilość pamięci na kwerendę, ale zmniejszają współbieżność.
@@ -82,7 +82,7 @@ Alokacja pamięci dla każdej klasy zasobów jest następująca.
 
 Domyślnie każdy użytkownik jest członkiem klasy zasobów dynamicznych **smallrc**.
 
-Klasa zasobów administratora usługi jest ustalona na smallrc i nie można zmienić.  Administrator usługi jest użytkownikiem utworzonym podczas procesu inicjowania obsługi administracyjnej.  Administrator usługi w tym kontekście jest login określony dla "Logowania administratora serwera" podczas tworzenia nowego wystąpienia usługi SQL Analytics z nowym serwerem.
+Klasa zasobów administratora usługi jest ustalona na smallrc i nie można zmienić.  Administrator usługi jest użytkownikiem utworzonym podczas procesu inicjowania obsługi administracyjnej.  Administrator usługi w tym kontekście jest login określony dla "Logowania administratora serwera" podczas tworzenia nowej puli SYNAPSE SQL z nowym serwerem.
 
 > [!NOTE]
 > Użytkownicy lub grupy zdefiniowane jako administrator usługi Active Directory są również administratorami usług.
@@ -594,5 +594,5 @@ GO
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat zarządzania użytkownikami bazy danych i zabezpieczeniami, zobacz [Zabezpieczanie bazy danych w usłudze SQL Analytics](sql-data-warehouse-overview-manage-security.md). Aby uzyskać więcej informacji o tym, jak większe klasy zasobów mogą poprawić jakość indeksu klastrowanego magazynu kolumn, zobacz [Optymalizacje pamięci dotyczące kompresji magazynu kolumn.](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
+Aby uzyskać więcej informacji na temat zarządzania użytkownikami bazy danych i zabezpieczeniami, zobacz [Zabezpieczanie bazy danych w synapse SQL](sql-data-warehouse-overview-manage-security.md). Aby uzyskać więcej informacji o tym, jak większe klasy zasobów mogą poprawić jakość indeksu klastrowanego magazynu kolumn, zobacz [Optymalizacje pamięci dotyczące kompresji magazynu kolumn.](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 

@@ -3,14 +3,14 @@ title: Często zadawane pytania
 description: Odpowiedzi na często zadawane pytania związane z usługą Azure Container Registry
 author: sajayantony
 ms.topic: article
-ms.date: 07/02/2019
+ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7452b5dd3c952a13a28566914d2fe513689d4751
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78403212"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618792"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Często zadawane pytania dotyczące rejestru kontenerów platformy Azure
 
@@ -104,7 +104,8 @@ Propagowanie zmian reguł zapory zajmuje trochę czasu. Po zmianie ustawień zap
 - [Jak włączyć TLS 1.2?](#how-to-enable-tls-12)
 - [Czy usługa Azure Container Registry obsługuje zaufanie do zawartości?](#does-azure-container-registry-support-content-trust)
 - [Jak udzielić dostępu do obrazów ściągania lub wypychania bez uprawnień do zarządzania zasobem rejestru?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
-- [Jak włączyć automatyczną kwarantannę obrazu dla rejestru](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [Jak włączyć automatyczną kwarantannę obrazu dla rejestru?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [Jak włączyć anonimowy dostęp do ściągania?](#how-do-i-enable-anonymous-pull-access)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Jak uzyskać dostęp do interfejsu API HTTP w 2 rejestru platformy Docker?
 
@@ -251,13 +252,18 @@ Przy użyciu tylko `AcrPull` lub `AcrPush` roli, cesjonariusz nie ma uprawnień 
 
 Kwarantanna obrazu jest obecnie funkcją podglądu ACR. Można włączyć tryb kwarantanny rejestru, tak aby tylko te obrazy, które pomyślnie przeszły skanowanie zabezpieczeń były widoczne dla zwykłych użytkowników. Aby uzyskać szczegółowe informacje, zobacz [repozytorium ACR GitHub](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
+### <a name="how-do-i-enable-anonymous-pull-access"></a>Jak włączyć anonimowy dostęp do ściągania?
+
+Konfigurowanie rejestru kontenerów platformy Azure dla dostępu ściągania anonimowego (publicznego) jest obecnie funkcją w wersji zapoznawczej. Aby umożliwić publiczny dostęp, otwórz https://aka.ms/acr/support/create-ticketbilet pomocy technicznej pod adresem . Aby uzyskać szczegółowe informacje, zobacz [Forum opinii platformy Azure](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+
+
 ## <a name="diagnostics-and-health-checks"></a>Diagnostyka i kontrole zdrowia
 
 - [Sprawdź stan zdrowia za pomocą`az acr check-health`](#check-health-with-az-acr-check-health)
 - [ściąganie docker kończy się niepowodzeniem z powodu błędu: net/http: żądanie anulowane podczas oczekiwania na połączenie (limit czasu klienta przekroczony podczas oczekiwania na nagłówki)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [wypychanie platformy docker powiedzie się, ale ściąganie platformy docker kończy się niepowodzeniem z powodu błędu: nieautoryzowane: wymagane uwierzytelnianie](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
 - [`az acr login`powiedzie się, ale polecenia platformy docker nie powiedzie się z powodu błędu: nieautoryzowane: wymagane uwierzytelnianie](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
-- [Włączanie i odciąganie dzienników debugowania demona docker](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
+- [Włączanie i odciąganie dzienników debugowania demona docker](#enable-and-get-the-debug-logs-of-the-docker-daemon)    
 - [Nowe uprawnienia użytkownika mogą nie obowiązywać natychmiast po aktualizacji](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Informacje o uwierzytelnianiu nie są podane w prawidłowym formacie w bezpośrednich wywołaniach interfejsu API REST](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Dlaczego portal Azure nie zawiera listy wszystkich moich repozytoriów lub tagów?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
@@ -323,13 +329,13 @@ Szczegóły `--signature-verification` można znaleźć, `man dockerd`uruchamiaj
 
 Upewnij się, że używasz na przykład wszystkich `docker push myregistry.azurecr.io/myimage:latest`małych adresów URL serwera, nawet jeśli nazwa `myRegistry`zasobu rejestru jest wielką lub mieszaną literą, na przykład .
 
-### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Włączanie i odciąganie dzienników debugowania demona platformy Docker  
+### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Włączanie i odciąganie dzienników debugowania demona platformy Docker    
 
 Zacznij `dockerd` od `debug` opcji. Najpierw utwórz plik konfiguracyjny`/etc/docker/daemon.json`demona platformy Docker ( ), `debug` jeśli nie istnieje, i dodaj opcję:
 
 ```json
-{   
-    "debug": true   
+{    
+    "debug": true    
 }
 ```
 
@@ -339,12 +345,12 @@ Następnie uruchom ponownie demona. Na przykład z Ubuntu 14.04:
 sudo service docker restart
 ```
 
-Szczegółowe informacje można znaleźć w dokumentacji platformy [Docker](https://docs.docker.com/engine/admin/#enable-debugging). 
+Szczegółowe informacje można znaleźć w dokumentacji platformy [Docker](https://docs.docker.com/engine/admin/#enable-debugging).    
 
- * Dzienniki mogą być generowane w różnych lokalizacjach, w zależności od systemu. Na przykład dla Ubuntu 14.04 `/var/log/upstart/docker.log`jest to .   
+ * Dzienniki mogą być generowane w różnych lokalizacjach, w zależności od systemu. Na przykład dla Ubuntu 14.04 `/var/log/upstart/docker.log`jest to .    
 Szczegółowe informacje można znaleźć w [dokumentacji platformy Docker.](https://docs.docker.com/engine/admin/#read-the-logs)    
 
- * W przypadku platformy Docker dla systemu Windows dzienniki są generowane w obszarze %LOCALAPPDATA%/docker/. Jednak nie może zawierać wszystkie informacje debugowania jeszcze.   
+ * W przypadku platformy Docker dla systemu Windows dzienniki są generowane w obszarze %LOCALAPPDATA%/docker/. Jednak nie może zawierać wszystkie informacje debugowania jeszcze.    
 
    Aby uzyskać dostęp do pełnego dziennika demona, może być kilka dodatkowych kroków:
 

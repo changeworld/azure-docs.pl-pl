@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 3/13/2020
+ms.date: 4/2/2020
 ms.author: swmachan
-ms.openlocfilehash: 4180dc6127fb2d31465400b1b25fb7e2d68f4754
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fcbaabac0961f1269a929fb4a56f81ac282bae29
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369169"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619161"
 ---
 # <a name="translator-text-api-v30"></a>Interfejs API tekstu tłumacza w wersji 3.0
 
@@ -48,7 +48,7 @@ Aby wymusić, że żądanie ma być obsługiwane przez określoną lokalizację 
 |Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Azja i Pacyfik|    api-apc.cognitive.microsofttranslator.com|
 
-## <a name="authentication"></a>Uwierzytelnianie
+## <a name="authentication"></a>Authentication
 
 Subskrybuj interfejs API tekstu translatora lub [usługi Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) w wielu usługach w usłudze Azure Cognitive Services i użyj klucza subskrypcji (dostępnego w witrynie Azure portal) do uwierzytelniania. 
 
@@ -75,7 +75,7 @@ Oto przykładowe żądanie wywołania interfejsu API translatora przy użyciu za
 
 ```curl
 // Pass secret key using headers
-curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=es" \
      -H "Ocp-Apim-Subscription-Key:<your-key>" \
      -H "Content-Type: application/json" \
      -d "[{'Text':'Hello, what is your name?'}]"
@@ -95,7 +95,7 @@ Oto przykładowe żądanie wywołania interfejsu API translatora przy użyciu za
 
 ```curl
 // Pass secret key and region using headers
-curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=es" \
      -H "Ocp-Apim-Subscription-Key:<your-key>" \
      -H "Ocp-Apim-Subscription-Region:<your-region>" \
      -H "Content-Type: application/json" \

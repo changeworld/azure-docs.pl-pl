@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 85fa6a989ae1a6214392914ffd46cd12af27a8d2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4aa0e7da1e77334a8b9048dab4a461133f220bd1
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350492"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582464"
 ---
 # <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Konfigurowanie ważności obciążenia w usłudze Azure Synapse Analytics
 
-Ustawienie ważności w usłudze SQL Analytics for Azure Synapse umożliwia wpływ na planowanie zapytań. Kwerendy o wyższym znaczeniu będą zaplanowane do uruchomienia przed kwerendami o niższym znaczeniu. Aby przypisać znaczenie do kwerend, należy utworzyć klasyfikator obciążenia.
+Ustawienie ważności w Synapse SQL dla platformy Azure Synapse umożliwia wpływ na planowanie zapytań. Kwerendy o wyższym znaczeniu będą zaplanowane do uruchomienia przed kwerendami o niższym znaczeniu. Aby przypisać znaczenie do kwerend, należy utworzyć klasyfikator obciążenia.
 
 ## <a name="create-a-workload-classifier-with-importance"></a>Tworzenie klasyfikatora obciążenia z ważnością
 

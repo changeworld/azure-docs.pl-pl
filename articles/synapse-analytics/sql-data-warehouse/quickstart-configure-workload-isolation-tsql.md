@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 555d437fb0ee898473b37febb1774924b55bfa1d
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c4920b2a5b4ff0b1a94fa8fa0e83f72761802b97
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350844"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583793"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Szybki start: konfigurowanie izolacji obciążenia przy użyciu funkcji T-SQL
 
@@ -25,13 +25,13 @@ W tym przewodniku Szybki start szybko utworzysz grupę obciążenia i klasyfikuj
 Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne](https://azure.microsoft.com/free/) konto przed rozpoczęciem.
 
 > [!NOTE]
-> Utworzenie wystąpienia usługi SQL Analytics w usłudze Azure Synapse Analytics może spowodować powstanie nowej usługi podlegającej rozliczaniu.  Aby uzyskać więcej informacji, zobacz [Ceny usługi Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Utworzenie puli SQL Synapse w usłudze Azure Synapse Analytics może spowodować powstanie nowej usługi podlegającej rozliczaniu.  Aby uzyskać więcej informacji, zobacz [Ceny usługi Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 >
 >
 
 ## <a name="prerequisites"></a>Wymagania wstępne
  
-Ten przewodnik Szybki start zakłada, że masz już wystąpienie usługi SQL Analytics w usłudze Azure Synapse i masz uprawnienia do bazy danych CONTROL. Jeżeli chcesz utworzyć taki magazyn, skorzystaj z przewodnika [Szybki start: tworzenie i łączenie — portal](create-data-warehouse-portal.md), aby utworzyć magazyn danych o nazwie **mySampleDataWarehouse**.
+Ten przewodnik Szybki start zakłada, że masz już pulę SQL Synapse w usłudze Azure Synapse i masz uprawnienia do bazy danych CONTROL. Jeżeli chcesz utworzyć taki magazyn, skorzystaj z przewodnika [Szybki start: tworzenie i łączenie — portal](create-data-warehouse-portal.md), aby utworzyć magazyn danych o nazwie **mySampleDataWarehouse**.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -39,7 +39,7 @@ Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-login-for-dataloads"></a>Tworzenie logowania dla danychloads
 
-Utwórz logowanie uwierzytelniania `master` programu SQL Server w bazie danych przy użyciu [create login](/sql/t-sql/statements/create-login-transact-sql) dla 'ELTLogin'.
+Utwórz logowanie uwierzytelniania `master` programu SQL Server w bazie danych przy użyciu [create login](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dla 'ELTLogin'.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'ELTLogin')
@@ -51,7 +51,7 @@ END
 
 ## <a name="create-user"></a>Tworzenie użytkownika
 
-[Tworzenie użytkownika](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest), "ELTLogin", w mySampleDataWarehouse
+[Tworzenie użytkownika](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), "ELTLogin", w mySampleDataWarehouse
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'ELTLogin')
@@ -62,7 +62,7 @@ END
 ```
 
 ## <a name="create-a-workload-group"></a>Tworzenie grupy obciążenia
-Utwórz [grupę obciążeń](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) dla danychloadów z izolacją 20%.
+Utwórz [grupę obciążeń](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dla danychloadów z izolacją 20%.
 ```sql
 CREATE WORKLOAD GROUP DataLoads
 WITH ( MIN_PERCENTAGE_RESOURCE = 20   
@@ -73,7 +73,7 @@ WITH ( MIN_PERCENTAGE_RESOURCE = 20
 
 ## <a name="create-a-workload-classifier"></a>Tworzenie klasyfikatora obciążenia
 
-Utwórz [klasyfikator obciążenia](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) do mapowania ELTLogin do grupy obciążenia DataLoads.
+Utwórz [klasyfikator obciążenia](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) do mapowania ELTLogin do grupy obciążenia DataLoads.
 
 ```sql
 CREATE WORKLOAD CLASSIFIER [wgcELTLogin]
@@ -128,5 +128,5 @@ Wykonaj następujące kroki, aby oczyścić zasoby.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Utworzono grupę obciążenia. Uruchom kilka zapytań jako ELTLogin, aby zobaczyć, jak działają. Zobacz [sys.dm_pdw_exec_requests,](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) aby wyświetlić kwerendy i przypisaną grupę obciążenia.
-- Aby uzyskać więcej informacji na temat zarządzania obciążeniami usługi SQL Analytics, zobacz [Zarządzanie obciążeniami](sql-data-warehouse-workload-management.md) i [izolacja obciążenia](sql-data-warehouse-workload-isolation.md).
+- Utworzono grupę obciążenia. Uruchom kilka zapytań jako ELTLogin, aby zobaczyć, jak działają. Zobacz [sys.dm_pdw_exec_requests,](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) aby wyświetlić kwerendy i przypisaną grupę obciążenia.
+- Aby uzyskać więcej informacji na temat zarządzania obciążeniami synapse SQL, zobacz [Zarządzanie obciążeniem](sql-data-warehouse-workload-management.md) i [izolacja obciążenia](sql-data-warehouse-workload-isolation.md).

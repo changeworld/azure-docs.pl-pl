@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 9252e3e41d0c639231a2abe20202499c6b3ee32a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5820778d46f5701b82bb289192350a9e13739d37
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444856"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619438"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK: Pobieranie i wydawanie informacji
 
@@ -26,7 +26,7 @@ ms.locfileid: "75444856"
 > * [Java (asynchroniczny)](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Reszta](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Wykonawca zbiorczy - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -34,9 +34,9 @@ ms.locfileid: "75444856"
 
 |   |   |
 |---|---|
-|**Pobieranie SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
+|**Pobieranie SDK**|[Nuget](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**Dokumentacja interfejsu API**|[Dokumentacja referencyjna interfejsu API biblioteki danych danych](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**Wprowadzenie**|[Wprowadzenie do procesora danych strumieniowych zmian .NET SDK](change-feed.md)|
+|**Rozpoczęcie pracy**|[Wprowadzenie do procesora danych strumieniowych zmian .NET SDK](change-feed.md)|
 |**Obecne obsługiwane ramy**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 > [!NOTE]
@@ -45,6 +45,10 @@ ms.locfileid: "75444856"
 ## <a name="release-notes"></a>Informacje o wersji
 
 ### <a name="v2-builds"></a>kompilacje w wersji 2
+
+### <a name="230"></a><a name="2.3.0"/>2.3.0
+* Dodano nową `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` metodę i `ICheckpointPartitionProcessorFactory`odpowiedni interfejs publiczny . Dzięki temu implementacja `IPartitionProcessor` interfejsu do korzystania z wbudowanego mechanizmu punktu kontrolnego. Nowa fabryka jest podobna do `IPartitionProcessorFactory` `Create` istniejącej , `ILeaseCheckpointer` z tą różnicą, że jej metoda również przyjmuje parametr.
+* Tylko jedna z dwóch metod, albo `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` lub `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`, `ChangeFeedProcessorBuilder` może być używana dla tego samego wystąpienia.
 
 ### <a name="228"></a><a name="2.2.8"/>2.2.8
 * Ulepszenia stabilności i diagnozy:
@@ -88,7 +92,7 @@ ms.locfileid: "75444856"
 
 ### <a name="220"></a><a name="2.2.0"/>2.2.0
 * Dodano obsługę kolekcji dzierżawy podzielonej na partycje. Klucz partycji musi być zdefiniowany jako /id.
-* Drobne zmiany podziału: metody IChangeFeedDocumentClient interfejsu i ChangeFeedDocumentClient klasy zostały zmienione w celu uwzględnienia RequestOptions i CancellationToken parametry. IChangeFeedDocumentClient to zaawansowany punkt rozszerzalności, który pozwala zapewnić niestandardową implementację klienta dokumentu do użytku z procesorem pliku danych zmian, np. Itp. W tej aktualizacji kod, który implementuje IChangeFeedDocumentClient trzeba będzie zmienić, aby uwzględnić nowe parametry w implementacji.
+* Drobne zmiany podziału: metody IChangeFeedDocumentClient interfejsu i ChangeFeedDocumentClient klasy zostały zmienione w celu uwzględnienia RequestOptions i CancellationToken parametry. IChangeFeedDocumentClient jest zaawansowanym punktem rozszerzalności, który pozwala zapewnić niestandardową implementację klienta dokumentu do użycia z procesorem kanału informacyjnego Zmian, np. W tej aktualizacji kod, który implementuje IChangeFeedDocumentClient trzeba będzie zmienić, aby uwzględnić nowe parametry w implementacji.
 * Drobne ulepszenia diagnostyczne.
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
@@ -182,6 +186,7 @@ Każde żądanie do usługi Cosmos DB przy użyciu wycofanego SDK zostanie odrzu
 
 | Wersja | Data wydania | Data przejścia na emeryturę |
 | --- | --- | --- |
+| [2.3.0](#2.3.0) |2 kwietnia 2020 r. |--- |
 | [2.2.8](#2.2.8) |28 października 2019 r. |--- |
 | [2.2.7](#2.2.7) |14 maja 2019 r. |--- |
 | [2.2.6](#2.2.6) |29 stycznia 2019 r. |--- |
@@ -198,7 +203,7 @@ Każde żądanie do usługi Cosmos DB przy użyciu wycofanego SDK zostanie odrzu
 | [1.1.0](#1.1.0) |13 sierpnia 2017 r. |--- |
 | [1.0.0](#1.0.0) |7 lipca 2017 r. |--- |
 
-## <a name="faq"></a>Najczęściej zadawane pytania
+## <a name="faq"></a>Często zadawane pytania
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

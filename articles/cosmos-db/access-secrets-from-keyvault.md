@@ -9,14 +9,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 55e6bbc338c1ac6f9ef935b4a3a05c32f2b5e9f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 225221635f978e3d70cec4ce7e9d78d6b100b4fd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72755224"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618770"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Zabezpieczanie kluczy usługi Azure Cosmos przy użyciu usługi Azure Key Vault 
+
+>[!IMPORTANT]
+> Zalecane rozwiązanie dostępu do kluczy usługi Azure Cosmos DB jest użycie [tożsamości zarządzanej przypisanej](managed-identity-based-authentication.md)przez system. Jeśli usługa nie może korzystać z zarządzanych tożsamości, użyj [rozwiązania opartego na cert](certificate-based-authentication.md). Jeśli zarówno rozwiązanie oparte na tożsamości zarządzanej, jak i rozwiązanie oparte na cert nie spełniają Twoich potrzeb, użyj poniższego rozwiązania magazynu kluczy.
 
 Korzystając z usługi Azure Cosmos DB dla aplikacji, można uzyskać dostęp do bazy danych, kolekcje, dokumenty przy użyciu punktu końcowego i klucza w pliku konfiguracji aplikacji.  Jednak nie jest bezpieczne, aby umieścić klucze i adres URL bezpośrednio w kodzie aplikacji, ponieważ są one dostępne w formacie zwykłego tekstu dla wszystkich użytkowników. Należy zapewnić dostępność punktu końcowego i kluczy, ale za pomocą bezpiecznego mechanizmu. Usługa Azure Key Vault pomaga w bezpiecznym przechowywaniu wpisów tajnych aplikacji i zarządzaniu nimi.
 
@@ -30,7 +33,7 @@ Następujące kroki są wymagane do przechowywania i odczytywania kluczy dostęp
 
 ## <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy
 
-1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com/).  
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/).  
 2. Wybierz **pozycję Utwórz zasób > zabezpieczenia > przechowalnią kluczy**.  
 3. W sekcji **Tworzenie magazynu kluczy** podaj następujące informacje:  
    * **Nazwa:** Podaj unikatową nazwę magazynu kluczy.  

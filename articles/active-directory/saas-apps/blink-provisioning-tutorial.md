@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 455036652836c6cfd2055e9a747f30b6dfe41295
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b19052b8a71b582b47308c41d170f50352d643e2
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77059154"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618355"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie migania do automatycznego inicjowania obsługi administracyjnej przez użytkowników
 
-Celem tego samouczka jest zademonstrowanie kroków, które należy wykonać w blink i usłudze Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD do automatycznego inicjowania obsługi administracyjnej i usuwania z obsługi administracyjnej użytkowników i/lub grup do blink.
+Celem tego samouczka jest zademonstrowanie kroków, które należy wykonać w blink i usłudze Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD do automatycznego inicjowania obsługi administracyjnej i usuwania z obsługi administracyjnej użytkowników blink.
 
 > [!NOTE]
 > W tym samouczku opisano łącznik utworzony na podstawie usługi inicjowania obsługi administracyjnej użytkowników usługi Azure AD. Aby uzyskać ważne informacje na temat działania tej usługi, działania i często zadawanych pytań, zobacz [Automatyzacja inicjowania obsługi administracyjnej i usuwania obsługi administracyjnej aplikacji SaaS za pomocą usługi Azure Active Directory](../app-provisioning/user-provisioning.md).
@@ -41,9 +41,9 @@ Scenariusz opisany w tym samouczku zakłada, że masz już następujące wymagan
 
 ## <a name="assigning-users-to-blink"></a>Przypisywanie użytkowników do blink
 
-Usługa Azure Active Directory używa koncepcji o nazwie *przydziały,* aby określić, którzy użytkownicy powinni otrzymać dostęp do wybranych aplikacji. W kontekście automatycznego inicjowania obsługi administracyjnej użytkowników tylko użytkownicy i/lub grupy, które zostały przypisane do aplikacji w usłudze Azure AD są synchronizowane.
+Usługa Azure Active Directory używa koncepcji o nazwie *przydziały,* aby określić, którzy użytkownicy powinni otrzymać dostęp do wybranych aplikacji. W kontekście automatycznego inicjowania obsługi administracyjnej użytkowników tylko użytkownicy i/lub członkowie grupy, którzy zostali przypisani do aplikacji w usłudze Azure AD są synchronizowane.
 
-Przed skonfigurowaniem i włączeniem automatycznego inicjowania obsługi administracyjnej użytkowników należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD potrzebują dostępu do blink. Po podjęciu decyzji, można przypisać tych użytkowników i / lub grup do Blink, postępując zgodnie z instrukcjami tutaj:
+Przed skonfigurowaniem i włączeniem automatycznego inicjowania obsługi administracyjnej użytkowników należy zdecydować, którzy użytkownicy i/lub członkowie grupy w usłudze Azure AD potrzebują dostępu do blink. Po podjęciu decyzji, można przypisać tych użytkowników i / lub grup do Blink, postępując zgodnie z instrukcjami tutaj:
 * [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](../manage-apps/assign-user-or-group-access-portal.md)
 
 ## <a name="important-tips-for-assigning-users-to-blink"></a>Ważne wskazówki dotyczące przypisywania użytkowników do blink
@@ -54,7 +54,7 @@ Przed skonfigurowaniem i włączeniem automatycznego inicjowania obsługi admini
 
 ## <a name="setup-blink-for-provisioning"></a>Instalator Blink do inicjowania obsługi administracyjnej
 
-1. Zaloguj [się pomocy technicznej](https://help.joinblink.com/hc/requests/new) lub support@joinblink.com e-mail wsparcia **Blink** na żądanie tokenu SCIM. .
+1. Zaloguj [się pomocy technicznej](https://support.joinblink.com) lub support@joinblink.com e-mail wsparcia **Blink** na żądanie tokenu SCIM. .
 
 2.  Skopiuj **token uwierzytelniania SCIM**. Ta wartość zostanie wprowadzona w polu Tajny token na karcie Inicjowanie obsługi administracyjnej aplikacji Blink w witrynie Azure portal.
 
@@ -82,7 +82,7 @@ Przed skonfigurowaniem Blink do automatycznego inicjowania obsługi administracy
 
 ## <a name="configuring-automatic-user-provisioning-to-blink"></a>Konfigurowanie automatycznego inicjowania obsługi administracyjnej dla funkcji Miganie 
 
-W tej sekcji można przejść przez kroki konfigurowania usługi inicjowania obsługi administracyjnej usługi Azure AD do tworzenia, aktualizowania i wyłączania użytkowników i/lub grup w blink na podstawie przypisania użytkownika i/lub grupy w usłudze Azure AD.
+W tej sekcji można przejść przez kroki konfigurowania usługi inicjowania obsługi administracyjnej usługi Azure AD do tworzenia, aktualizowania i wyłączania użytkowników w blink na podstawie przypisania użytkownika i/lub grupy w usłudze Azure AD.
 
 > [!TIP]
 > Można również włączyć samoogniwowe logowanie oparte na SAML dla Blink , postępując zgodnie z instrukcjami podanymi w [samouczku blink logowania jednokrotnego.](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial) Logowanie jednokrotne można skonfigurować niezależnie od automatycznego inicjowania obsługi administracyjnej przez użytkowników, chociaż te dwie funkcje wzajemnie się uzupełniają
@@ -137,7 +137,7 @@ W tej sekcji można przejść przez kroki konfigurowania usługi inicjowania obs
 
     ![Zapisywanie konfiguracji inicjowania obsługi administracyjnej](common/provisioning-configuration-save.png)
 
-Ta operacja rozpoczyna początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia.** Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, o ile jest uruchomiona usługa inicjowania obsługi administracyjnej usługi Azure AD. Za pomocą sekcji **Szczegóły synchronizacji** można monitorować postęp i śledzić łącza do raportu aktywności inicjowania obsługi administracyjnej, w którym opisano wszystkie akcje wykonywane przez usługę inicjowania obsługi administracyjnej usługi Azure AD w programie Blink.
+Ta operacja rozpoczyna początkową synchronizację wszystkich użytkowników zdefiniowanych w **zakresie** w sekcji **Ustawienia.** Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, o ile jest uruchomiona usługa inicjowania obsługi administracyjnej usługi Azure AD. Za pomocą sekcji **Szczegóły synchronizacji** można monitorować postęp i śledzić łącza do raportu aktywności inicjowania obsługi administracyjnej, w którym opisano wszystkie akcje wykonywane przez usługę inicjowania obsługi administracyjnej usługi Azure AD w programie Blink.
 
 Aby uzyskać więcej informacji na temat sposobu zapoznania się z dziennikami inicjowania obsługi administracyjnej usługi Azure AD, zobacz [Raportowanie automatycznego inicjowania obsługi administracyjnej konta użytkownika.](../app-provisioning/check-status-user-account-provisioning.md)
 

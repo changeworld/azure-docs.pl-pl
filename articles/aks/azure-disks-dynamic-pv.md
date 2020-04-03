@@ -4,12 +4,12 @@ description: Dowiedz się, jak dynamicznie tworzyć wolumin trwały za pomocą d
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 37fea36567866af69e832a1f7e3caff2a68477a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f16a6134b1d2065668952ea11c0cab7398a3559a
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596967"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617470"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamiczne tworzenie i używanie woluminu trwałego z dyskami platformy Azure w usłudze Azure Kubernetes Service (AKS)
 
@@ -33,7 +33,7 @@ Klasa magazynu służy do definiowania dynamicznego tworzenia jednostki magazynu
 Każdy klaster AKS zawiera dwie wstępnie utworzone klasy magazynu, obie skonfigurowane do pracy z dyskami platformy Azure:
 
 * *Domyślna* klasa magazynu apowich standardowego dysku platformy Azure.
-    * Standardowa pamięć masowa jest wspierana przez dyski twarde i zapewnia ekonomiczną pamięć masową, a jednocześnie jest wydajna. Dyski w warstwie Standardowa idealnie nadają się do ekonomicznej obsługi obciążeń tworzenia i testowania.
+    * Standardowa pamięć masowa jest wspierana przez dyski twarde i zapewnia ekonomiczną pamięć masową, a jednocześnie jest wydajna. Dyski standardowe są idealne dla ekonomicznego obciążenia dewelopernego i testowego.
 * Klasa *magazynu w wersji zarządzanej w wersji premium* udostępnia dysk platformy Azure w wersji premium.
     * Dyski w warstwie Premium są wspierane przez oparty na technologii SSD dysk o wysokiej wydajności i niskim opóźnieniu. Idealnie nadają się one dla maszyn wirtualnych z uruchomionym obciążeniem produkcyjnym. Jeśli węzły usługi AKS w klastrze używają magazynu w wersji premium, wybierz klasę *managed-premium.*
     

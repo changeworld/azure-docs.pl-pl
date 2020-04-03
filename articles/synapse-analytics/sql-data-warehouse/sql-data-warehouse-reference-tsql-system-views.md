@@ -1,6 +1,6 @@
 ---
 title: Widoki systemowe
-description: Łącza do dokumentacji widoków systemowych obsługiwanych w usłudze SQL Analytics.
+description: Łącza do dokumentacji widoków systemowych obsługiwanych w puli języka SQL Synapse.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,17 +11,18 @@ ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b3089cfbd0abb4bafe160b07fd75df877d61741b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 1cc6627599a533238aae742b0358c13e1a7eab8a
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350265"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586358"
 ---
-# <a name="system-views-supported-in-sql-analytics"></a>Widoki systemowe obsługiwane w usłudze SQL Analytics
-Łącza do dokumentacji instrukcji T-SQL obsługiwanych w usłudze SQL Analytics.
+# <a name="system-views-supported-in-synapse-sql-pool"></a>Widoki systemowe obsługiwane w puli programu Synapse SQL
 
-## <a name="sql-analytics-catalog-views"></a>Widoki wykazu analizy SQL
+Łącza do dokumentacji instrukcji T-SQL obsługiwanych w puli języka SQL Synapse.
+
+## <a name="synapse-sql-pool-catalog-views"></a>Widoki katalogu puli puli Synapse SQL
 * [sys.pdw_column_distribution_properties](https://msdn.microsoft.com/library/mt204022.aspx)
 * [sys.pdw_distributions](https://msdn.microsoft.com/library/mt203892.aspx)
 * [sys.pdw_index_mappings](https://msdn.microsoft.com/library/mt203912.aspx)
@@ -45,6 +46,7 @@ ms.locfileid: "80350265"
 * [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql)
 
 ## <a name="sql-data-warehouse-dynamic-management-views-dmvs"></a>Widoki dynamicznego zarządzania magazynem danych SQL (DMV)
+
 * [sys.dm_pdw_dms_cores](https://msdn.microsoft.com/library/mt203911.aspx)
 * [sys.dm_pdw_dms_external_work](https://msdn.microsoft.com/library/mt204024.aspx)
 * [sys.dm_pdw_dms_workers](https://msdn.microsoft.com/library/mt203878.aspx)
@@ -65,14 +67,16 @@ ms.locfileid: "80350265"
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 * [sys.dm_workload_management_workload_groups_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql) (Wersja zapoznawcza)
 
-## <a name="sql-server-dmvs-applicable-to-sql-analytics"></a>Dmv programu SQL Server mające zastosowanie do usługi SQL Analytics
-Następujące dmvs mają zastosowanie do analizy SQL Analytics, ale muszą być wykonywane przez połączenie z **główną** bazą danych.
+## <a name="sql-server-dmvs-applicable-to-synapse-sql-pool"></a>Moduły DMV programu SQL Server mające zastosowanie do puli sql synapse
+
+Następujące dmv mają zastosowanie do puli Synapse SQL, ale muszą być wykonywane przez połączenie z **główną** bazą danych.
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
 * [sys.fn_helpcollations()](https://msdn.microsoft.com/library/ms187963.aspx)
 
 ## <a name="sql-server-catalog-views"></a>Widoki wykazu programu SQL Server
+
 * [sys.all_columns](https://msdn.microsoft.com/library/ms177522.aspx)
 * [sys.all_objects](https://msdn.microsoft.com/library/ms178618.aspx)
 * [sys.all_parameters](https://msdn.microsoft.com/library/ms190340.aspx)
@@ -145,17 +149,18 @@ Następujące dmvs mają zastosowanie do analizy SQL Analytics, ale muszą być 
 * [Sys.types](https://msdn.microsoft.com/library/ms188021.aspx)
 * [Sys.views](https://msdn.microsoft.com/library/ms190334.aspx)
 
-## <a name="sql-server-dmvs-available-in-sql-analytics"></a>Dmv programu SQL Server dostępne w usłudze SQL Analytics
-Usługa SQL Analytics udostępnia wiele widoków dynamicznego zarządzania programu SQL Server (DMV). Te widoki, gdy kwerendy w sql analytics, zgłaszają stan baz danych SQL uruchomionych w dystrybucjach.
+## <a name="sql-server-dmvs-available-in-synapse-sql-pool"></a>DmVs programu SQL Server dostępne w puli Synapse SQL
 
-Usługa SQL Analytics i parallel data warehouse (PDW) używają tych samych widoków systemowych. Każdy DMV ma kolumnę o nazwie pdw_node_id, który jest identyfikatorem węzła Compute. 
+Puli SQL Synapse udostępnia wiele widoków zarządzania dynamicznego programu SQL Server (DMV). Te widoki, gdy kwerendy w puli SQL Synapse, zgłaszają stan baz danych SQL uruchomionych w dystrybucjach.
+
+Pula SQL synapse i równoległy magazyn danych (PDW) używają tych samych widoków systemowych. Każdy DMV ma kolumnę o nazwie pdw_node_id, który jest identyfikatorem węzła Compute. 
 
 > [!NOTE]
 > Aby użyć tych widoków, wstaw nazwę "pdw_nodes_", jak pokazano w poniższej tabeli:
 > 
 > 
 
-| Nazwa DMV w usłudze SQL Analytics | Sql Server Transact-SQL artykuł|
+| Nazwa DMV w puli SQL Synapse | Sql Server Transact-SQL artykuł|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 
@@ -217,8 +222,9 @@ Usługa SQL Analytics i parallel data warehouse (PDW) używają tych samych wido
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](https://msdn.microsoft.com/library/ms188739.aspx) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](https://msdn.microsoft.com/library/ms188778.aspx) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-analytics"></a>Moduły DMV polybase programu SQL Server 2016 dostępne w usłudze SQL Analytics
-Następujące dmvs mają zastosowanie do analizy SQL Analytics, ale muszą być wykonywane przez połączenie z **główną** bazą danych.
+## <a name="sql-server-2016-polybase-dmvs-available-in-synapse-sql-pool"></a>Moduły DMV polybase programu SQL Server 2016 dostępne w puli synapse SQL
+
+Następujące dmv mają zastosowanie do puli Synapse SQL, ale muszą być wykonywane przez połączenie z **główną** bazą danych.
 
 * [sys.dm_exec_compute_node_errors](https://msdn.microsoft.com/library/mt146380.aspx)
 * [sys.dm_exec_compute_node_status](https://msdn.microsoft.com/library/mt146382.aspx)
@@ -232,6 +238,7 @@ Następujące dmvs mają zastosowanie do analizy SQL Analytics, ale muszą być 
 * [sys.dm_exec_external_work](https://msdn.microsoft.com/library/mt146375.aspx)
 
 ## <a name="sql-server-information_schema-views"></a>Widoki INFORMATION_SCHEMA programu SQL Server
+
 * [Check_constraints](https://msdn.microsoft.com/library/ms189772.aspx)
 * [Kolumny](https://msdn.microsoft.com/library/ms188348.aspx)
 * [Parametry](https://msdn.microsoft.com/library/ms173796.aspx)
@@ -243,4 +250,5 @@ Następujące dmvs mają zastosowanie do analizy SQL Analytics, ale muszą być 
 * [Widoki](https://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji referencyjnych, zobacz [Instrukcje T-SQL w usłudze SQL Analytics](sql-data-warehouse-reference-tsql-statements.md)i [elementy języka T-SQL w usłudze SQL Analytics](sql-data-warehouse-reference-tsql-language-elements.md).
+
+Aby uzyskać więcej informacji, zobacz [Instrukcje T-SQL w puli Synapse SQL](sql-data-warehouse-reference-tsql-statements.md)i [elementy języka T-SQL w puli synapse SQL](sql-data-warehouse-reference-tsql-language-elements.md).

@@ -11,15 +11,16 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 05d5e4f7334c6a9ef7a4f9e8ce7acbdf007a6a44
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f3d5076b8ca4e1c79451bfe3bcd1dbe554b17a88
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351432"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586473"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Partnerzy zarządzania danymi usługi Azure Synapse Analytics
-Aby utworzyć rozwiązanie do magazynu danych przy użyciu funkcji sql analytics platformy Azure Synapse, masz szeroką gamę wiodących w branży narzędzi do wyboru. W tym artykule przedstawiono firmy partnerskie firmy Microsoft za pomocą narzędzi do zarządzania danymi i rozwiązań obsługujących platformę Azure Synapse.
+
+Aby utworzyć rozwiązanie magazynu danych przy użyciu funkcji puli SQL Synapse platformy Azure Synapse, masz szeroką gamę wiodących w branży narzędzi do wyboru. W tym artykule przedstawiono firmy partnerskie firmy Microsoft za pomocą narzędzi do zarządzania danymi i rozwiązań obsługujących platformę Azure Synapse.
 
 ## <a name="data-management-partners"></a>Partnerzy zarządzania danymi
 | Partner | Opis | Link do strony internetowej/produktu |

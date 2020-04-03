@@ -11,17 +11,19 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 08df8266cc3ef8ba1b20efcf135e502a9df69e80
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 587b2aa23aa822f44d7763cbfec21eb36055b091
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351490"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583710"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Partnerzy integracji danych usługi Azure Synapse Analytics
-Aby utworzyć rozwiązanie do magazynu danych przy użyciu funkcji sql analytics platformy Azure Synapse, można wybierać spośród wielu wiodących w branży narzędzi. W tym artykule przedstawiono firmy partnerskie firmy Microsoft z oficjalnymi rozwiązaniami integracji danych, które obsługują platformę Azure Synapse.
+
+Aby utworzyć rozwiązanie magazynu danych przy użyciu funkcji puli SQL Synapse platformy Azure Synapse, można wybrać jedną z wielu wiodących w branży narzędzi. W tym artykule przedstawiono firmy partnerskie firmy Microsoft z oficjalnymi rozwiązaniami integracji danych, które obsługują platformę Azure Synapse.
 
 ## <a name="data-integration-partners"></a>Partnerzy integracji danych
+
 | Partner | Opis | Link do strony internetowej/produktu |
 | ------- | ----------- | -------------------- |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma to rozwiązanie wyodrębniania, przekształcania i ładowania (ETL), które umożliwia zespołom danych integrowanie, wzbogacanie i przesyłanie strumieniowe danych z różnych silosów danych do magazynu danych Usługi Azure Synapse w czasie rzeczywistym. |[Strona produktu](https://www.alooma.com/) |

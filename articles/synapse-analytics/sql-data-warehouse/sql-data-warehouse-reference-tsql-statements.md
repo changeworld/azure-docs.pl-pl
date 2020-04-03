@@ -1,6 +1,6 @@
 ---
 title: Instrukcje języka T-SQL
-description: Łącza do dokumentacji instrukcji T-SQL obsługiwanych w usłudze SQL Analytics.
+description: Łącza do dokumentacji instrukcji T-SQL obsługiwanych w puli języka SQL Synapse.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,17 +11,19 @@ ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 53609049f69f0a3d50430ef512a5bf4a8ffd6d82
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 011a850a44948bf5eee28a40d59dcf7672d866e8
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351350"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586366"
 ---
-# <a name="t-sql-statements-supported-in-sql-analytics"></a>Instrukcje T-SQL obsługiwane w usłudze SQL Analytics
-Łącza do dokumentacji instrukcji T-SQL obsługiwanych w usłudze SQL Analytics.
+# <a name="t-sql-statements-supported-in-synapse-sql-pool"></a>Instrukcje T-SQL obsługiwane w puli języka SYNAPSE SQL
+
+Łącza do dokumentacji instrukcji T-SQL obsługiwanych w puli języka SQL Synapse.
 
 ## <a name="data-definition-language-ddl-statements"></a>Instrukcje języka DDL (Data Definition Language)
+
 * [ZMIEŃ BAZĘ DANYCH](https://msdn.microsoft.com/library/mt204042.aspx)
 * [ALTER INDEX](https://msdn.microsoft.com/library/ms188388.aspx)
 * [ALTER MATERIALIZED VIEW](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) (Podgląd) 
@@ -60,11 +62,13 @@ ms.locfileid: "80351350"
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)
 
 ## <a name="data-manipulation-language-dml-statements"></a>Instrukcje języka DML (Data Manipulation Language)
+
 * [Usunąć](https://msdn.microsoft.com/library/ms189835.aspx)
-* [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)
+* [Wstawić](https://msdn.microsoft.com/library/ms174335.aspx)
 * [Aktualizacji](https://msdn.microsoft.com/library/ms177523.aspx)
 
 ## <a name="database-console-commands"></a>Polecenia konsoli bazy danych
+
 * [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
 * [DBCC DROPRESULTSETCACHE](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest) (Wersja zapoznawcza)
 * [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
@@ -77,6 +81,7 @@ ms.locfileid: "80351350"
 * [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
 
 ## <a name="query-statements"></a>Instrukcje kwerend
+
 * [Wybierz](https://msdn.microsoft.com/library/ms189499.aspx)
 * [Z common_table_expression](https://msdn.microsoft.com/library/ms175972.aspx)
 * [Z WYJĄTKIEM I KRZYŻOWANIA](https://msdn.microsoft.com/library/ms188055.aspx)
@@ -95,6 +100,7 @@ ms.locfileid: "80351350"
 * [Podkwerend](https://msdn.microsoft.com/library/mt631613.aspx)
 
 ## <a name="security-statements"></a>Instrukcje zabezpieczeń
+
 * Uprawnienia: [GRANT](https://msdn.microsoft.com/library/ms187965.aspx), [DENY](https://msdn.microsoft.com/library/ms188338.aspx), [REVOKE](https://msdn.microsoft.com/library/ms187728.aspx)
 * [ZMIEŃ AUTORYZACJĘ](https://msdn.microsoft.com/library/ms187359.aspx)
 * [ZMIEŃ CERTYFIKAT](https://msdn.microsoft.com/library/ms189511.aspx)
@@ -120,4 +126,5 @@ ms.locfileid: "80351350"
 * [OTWÓRZ KLUCZ GŁÓWNY](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji, zobacz [Elementy języka T-SQL w usłudze SQL Analytics](sql-data-warehouse-reference-tsql-language-elements.md)i Widoki [systemowe w usłudze SQL Analytics](sql-data-warehouse-reference-tsql-system-views.md).
+
+Aby uzyskać więcej informacji, zobacz [Elementy języka T-SQL w puli Synapse SQL](sql-data-warehouse-reference-tsql-language-elements.md)i Widoki [systemowe w puli Synapse SQL](sql-data-warehouse-reference-tsql-system-views.md).

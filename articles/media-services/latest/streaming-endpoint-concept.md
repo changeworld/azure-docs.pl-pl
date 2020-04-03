@@ -12,18 +12,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: a8674714451f3cc686acb74d6c66ac6800b75936
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478086"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582725"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Punkty końcowe przesyłania strumieniowego (Origin) w usłudze Azure Media Services
 
 W usłudze Microsoft Azure Media Services [punkt końcowy przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingendpoints) reprezentuje dynamiczną (just-in-time) usługę pakowania i pochodzenia, która może dostarczać zawartość na żywo i na żądanie bezpośrednio do aplikacji odtwarzacza klienckiego przy użyciu jednego ze wspólnych protokołów multimediów strumieniowych (HLS lub DASH). Ponadto punkt **końcowy przesyłania strumieniowego** zapewnia dynamiczne szyfrowanie (just-in-time) do wiodących w branży pamięci DRM. 
 
-Podczas tworzenia konta usługi Media Services **domyślny** punkt końcowy przesyłania strumieniowego jest tworzony w stanie zatrzymania. Nie można usunąć **domyślnego** punktu końcowego przesyłania strumieniowego. Więcej punktów końcowych przesyłania strumieniowego można utworzyć w ramach konta (zobacz [Przydziały i ograniczenia).](limits-quotas-constraints.md)
+Podczas tworzenia konta usługi Media Services **domyślny** punkt końcowy przesyłania strumieniowego jest tworzony w stanie zatrzymania. Nie można usunąć **domyślnego** punktu końcowego przesyłania strumieniowego. Więcej punktów końcowych przesyłania strumieniowego można utworzyć w ramach konta (zobacz [Przydziały i limity).](limits-quotas-constraints.md)
 
 > [!NOTE]
 > Aby rozpocząć przesyłanie strumieniowe wideo, należy uruchomić **punkt końcowy przesyłania strumieniowego,** z którego chcesz przesyłać strumieniowo wideo.
@@ -43,7 +43,7 @@ W przypadku korzystania z `servicename` domyślnego punktu końcowego `{accountn
 * Nazwa punktu końcowego przesyłania strumieniowego ma maksymalną wartość 24 znaków.
 * Nazwa powinna być zgodna z `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`tym wzorem [wyrażenia regularnego:](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) .
 
-## <a name="types"></a>Types
+## <a name="types"></a>Typy
 
 Istnieją dwa typy **punktów końcowych przesyłania strumieniowego:** **standardowy** (wersja zapoznawcza) i **Premium**. Typ jest definiowany przez liczbę`scaleUnits`jednostek skalowania ( ) przydzielanych dla punktu końcowego przesyłania strumieniowego.
 

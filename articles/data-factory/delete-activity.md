@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: d061a132699e733e78a7d717ee32222b158d73b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f265cdc955becd53ae7ba61ad827b2be69b92907
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927534"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618264"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Działanie usuwania w usłudze Azure Data Factory
 
 Za pomocą funkcji Usuń działanie w usłudze Azure Data Factory można usunąć pliki lub foldery z lokalnych magazynów magazynu lub magazynów magazynu w chmurze. To działanie służy do czyszczenia lub archiwizowania plików, gdy nie są już potrzebne.
 
 > [!WARNING]
-> Usuniętych plików lub folderów nie można przywrócić. Należy zachować ostrożność przy usuwaniu plików lub folderów za pomocą działania usuwania.
+> Usuniętych plików lub folderów nie można przywrócić (chyba że magazyn ma włączone usuwanie programowe). Należy zachować ostrożność przy usuwaniu plików lub folderów za pomocą działania usuwania.
 
 ## <a name="best-practices"></a>Najlepsze rozwiązania
 
@@ -40,7 +40,7 @@ Oto kilka zaleceń dotyczących używania działania Usuwanie:
 
 ## <a name="supported-data-stores"></a>Obsługiwane magazyny danych
 
--   [Magazyn obiektów Blob platformy Azure](connector-azure-blob-storage.md)
+-   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [Usługa Azure Data Lake Storage 1. generacji](connector-azure-data-lake-store.md)
 -   [Usługa Azure Data Lake Storage 2. generacji](connector-azure-data-lake-storage.md)
 -   [Azure File Storage](connector-azure-file-storage.md)
@@ -327,7 +327,7 @@ Można utworzyć potok, aby oczyścić stare lub wygasłe pliki, korzystając z 
 Plik można przenieść za pomocą działania kopiowania, aby skopiować plik, a następnie usunąć plik w potoku.  Aby przenieść wiele plików, możesz użyć działania GetMetadata + Działanie filtru + Działanie Foreach + Skopiuj działanie + Usuń działanie, jak w poniższym przykładzie:
 
 > [!NOTE]
-> Jeśli chcesz przenieść cały folder, definiując zestaw danych zawierający tylko ścieżkę folderu, a następnie używając działania kopiowania i działania Usuń w odniesieniu do tego samego zestawu danych reprezentującego folder, należy zachować szczególną ostrożność. To dlatego, że trzeba upewnić się, że nie będzie nowych plików przybywających do folderu między kopiowania operacji i usuwania operacji.  Jeśli do folderu przychodzą nowe pliki w momencie, gdy działanie kopiowania zostało właśnie wykonane, ale działanie Usuń nie zostało werzone, możliwe jest, że działanie Usuń usunie ten nowy przychodzący plik, który NIE został skopiowany do miejsce docelowe, usuwając cały folder. 
+> Jeśli chcesz przenieść cały folder, definiując zestaw danych zawierający tylko ścieżkę folderu, a następnie używając działania kopiowania i działania Usuń w odniesieniu do tego samego zestawu danych reprezentującego folder, należy zachować szczególną ostrożność. To dlatego, że trzeba upewnić się, że nie będzie nowych plików przybywających do folderu między kopiowania operacji i usuwania operacji.  Jeśli do folderu pojawiają się nowe pliki w momencie, gdy działanie kopiowania zostało właśnie wykonane, ale działanie Usuń nie zostało werione, możliwe jest, że działanie Usuń usunie ten nowy plik przychodzący, który NIE został skopiowany do miejsca docelowego, usuwając cały folder. 
 
 #### <a name="sample-pipeline"></a>Przykładowy potok
 

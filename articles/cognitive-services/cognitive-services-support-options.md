@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 692f70e4666416f34a6e3f32fd5804d4aeb63a5b
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: d7ce77404359b32effcc7a5da3f9429e9fdf7005
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477829"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618578"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Opcje pomocy technicznej i opinii usługi Azure Cognitive Services
 
-Czy dopiero zaczynasz eksplorować funkcjonalność usług Azure Cognitive Services? Być może implementujesz nową funkcję w aplikacji. Lub po skorzystaniu z usługi, czy masz sugestie, jak ją poprawić? Oto opcje, w których możesz uzyskać pomoc techniczną, być na bieżąco i przekazywać opinie dotyczące usług Cognitive Services.
+Czy dopiero zaczynasz eksplorować funkcjonalność usług Azure Cognitive Services? Być może implementujesz nową funkcję w aplikacji. Lub po skorzystaniu z usługi, czy masz sugestie, jak ją poprawić? Oto opcje, w których możesz uzyskać pomoc techniczną, być na bieżąco, przekazywać opinie i zgłaszać błędy dla usług Cognitive Services.
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
@@ -83,7 +83,7 @@ Informacje o wersji usług Cognitive Services są aktualizowane w miarę udostę
 
  - [Custom Vision](custom-vision-service/release-notes.md)
  - [Rozpoznawanie twarzy](face/releasenotes.md)
- - [Language Understanding (LUIS)](luis/whats-new.md)
+ - [Language Understanding (LUIS)](LUIS/whats-new.md)
  - [Usługi mowy](speech-service/releasenotes.md)
  - [SDK usług mowy](speech-service/devices-sdk-release-notes.md)
  - [Analiza tekstu](text-analytics/whats-new.md)

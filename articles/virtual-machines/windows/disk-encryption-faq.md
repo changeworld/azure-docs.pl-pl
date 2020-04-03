@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: ea2a66a6b012664a9596a02ea32c1a0b677ee3ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cc6a3d8d736209f762959bca6f8ad379c14203f
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74384265"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582709"
 ---
 # <a name="azure-disk-encryption-for-windows-vms-faq"></a>Szyfrowanie dysków platformy Azure dla maszyn wirtualnych z systemem Windows — często zadawane pytania
 
@@ -36,7 +36,7 @@ Aby rozpocząć, przeczytaj [omówienie szyfrowania dysków platformy Azure](dis
 
 ## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Jakie rozmiary maszyn wirtualnych i systemy operacyjne obsługują szyfrowanie dysków platformy Azure?
 
-W [artykule Omówienie szyfrowania dysków platformy Azure](disk-encryption-overview.md) wymieniono [rozmiary maszyn wirtualnych](disk-encryption-overview.md#supported-vm-sizes) i systemy operacyjne [maszyn wirtualnych](disk-encryption-overview.md#supported-operating-systems) obsługujące szyfrowanie dysków platformy Azure.
+W [artykule Omówienie szyfrowania dysków platformy Azure](disk-encryption-overview.md) wymieniono [rozmiary maszyn wirtualnych](disk-encryption-overview.md#supported-vms) i systemy operacyjne [maszyn wirtualnych](disk-encryption-overview.md#supported-operating-systems) obsługujące szyfrowanie dysków platformy Azure.
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Czy mogę szyfrować zarówno woluminy rozruchowe, jak i ilości danych za pomocą szyfrowania dysków platformy Azure?
 

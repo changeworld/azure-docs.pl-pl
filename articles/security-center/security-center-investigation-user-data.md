@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 9e4c6577f0b8b18aff343ac54b31ff292632f5d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa262b0be3902f6e143a53f8f1302156fc5aede6
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979241"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582984"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Zarządzanie danymi użytkownika znalezionymi w badaniu usługi Azure Security Center
 Ten artykuł zawiera informacje dotyczące zarządzania danymi użytkownika znalezionymi w funkcji badania usługi Azure Security Center. Dane badania są przechowywane w [dziennikach usługi Azure Monitor](../log-analytics/log-analytics-overview.md) i udostępniane w usłudze Security Center. Zarządzanie danymi użytkownika obejmuje możliwość usuwania lub eksportowania danych.
@@ -26,7 +26,7 @@ Ten artykuł zawiera informacje dotyczące zarządzania danymi użytkownika znal
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Wyszukiwanie i identyfikowanie danych osobowych
-W witrynie Azure portal można użyć [funkcji badania](../security-center/security-center-investigation.md) usługi Security Center do wyszukiwania danych osobowych. Funkcja dochodzenia jest dostępna w obszarze **Alerty zabezpieczeń**.
+W witrynie Azure portal można użyć funkcji badania usługi Security Center do wyszukiwania danych osobowych. Funkcja dochodzenia jest dostępna w obszarze **Alerty zabezpieczeń**.
 
 Funkcja dochodzenia pokazuje wszystkie jednostki, informacje o użytkowniku i dane na karcie **Jednostki.**
 

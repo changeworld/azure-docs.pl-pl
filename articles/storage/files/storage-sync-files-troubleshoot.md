@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ebe5ddf72e13b1a66ded7a90976e0b6209a26dfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d46f513fccf9921d4cf47835bc9d5be4c6ffe241
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060965"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607488"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Użyj usługi Azure File Sync, aby scentralizować udziały plików organizacji w usłudze Azure Files, zachowując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu dostępnego w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Możesz mieć tyle pamięci podręcznych, ile potrzebujesz na całym świecie.
@@ -187,7 +187,7 @@ Set-AzStorageSyncServerEndpoint `
 
 Ten problem może wystąpić, jeśli proces Monitora synchronizacji magazynu (AzureStorageSyncMonitor.exe) nie jest uruchomiony lub serwer nie może uzyskać dostępu do usługi Azure File Sync.
 
-Na serwerze wyświetlanym jako "Pojawia się w trybie offline" w portalu, spójrz na identyfikator zdarzenia 9301 w dzienniku zdarzeń Telemetria (znajdującym się w obszarze Aplikacje i usługi\Microsoft\FileSync\Agent w Podglądzie zdarzeń), aby ustalić, dlaczego serwer nie może uzyskać dostępu do synchronizacji plików platformy Azure Usługi. 
+Na serwerze, który jest wyświetlany jako "Pojawia się w trybie offline" w portalu, spójrz na identyfikator zdarzenia 9301 w dzienniku zdarzeń telemetrii (znajduje się w obszarze Aplikacje i usługi\Microsoft\FileSync\Agent w Podglądzie zdarzeń), aby ustalić, dlaczego serwer nie może uzyskać dostępu do usługi Azure File Sync. 
 
 - Jeśli **GetNextJob zakończone ze stanem: 0** jest zalogowany, serwer może komunikować się z usługą Azure File Sync. 
     - Otwórz Menedżera zadań na serwerze i upewnij się, że proces programu Storage Sync Monitor (AzureStorageSyncMonitor.exe) jest uruchomiony. Jeśli proces nie jest uruchomiony, najpierw spróbuj uruchomić ponownie serwer. Jeśli ponowne uruchomienie serwera nie rozwiąże problemu, uaktualnij agenta usługi Azure File Sync do najnowszej [wersji](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes). 
@@ -588,7 +588,7 @@ Jeśli ten błąd będzie się powtarzał dłużej niż kilka godzin, utwórz ż
 | **Ciąg błędu** | CERT_E_UNTRUSTEDROOT |
 | **Wymagane korygowanie** | Tak |
 
-Ten błąd może wystąpić, jeśli Twoja organizacja korzysta z serwera proxy przerywania protokołu SSL lub jeśli złośliwy podmiot przechwytuje ruch między serwerem i usługą Azure File Sync. Jeśli masz pewność, że jest to oczekiwane zachowanie (ponieważ Twoja organizacja korzysta z serwera proxy przerywania protokołu SSL), możesz pominąć weryfikację certyfikatu, przesłaniając ustawienie za pomocą wartości rejestru.
+Ten błąd może się zdarzyć, jeśli organizacja używa serwera proxy zakończenia protokołu TLS lub jeśli złośliwa jednostka przechwytuje ruch między serwerem a usługą Azure File Sync. Jeśli masz pewność, że jest to oczekiwane (ponieważ organizacja używa serwera proxy zakończenia protokołu TLS), pomijasz weryfikację certyfikatu z zastąpieniem rejestru.
 
 1. Utwórz wartość rejestru SkipVerifyingPinnedRootCertificate.
 
@@ -602,7 +602,7 @@ Ten błąd może wystąpić, jeśli Twoja organizacja korzysta z serwera proxy p
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Po ustawieniu tej wartości rejestru agent usługi Azure File Sync zaakceptuje każdy lokalnie zaufany certyfikat SSL podczas transferu danych między serwerem a usługą w chmurze.
+Ustawiając tę wartość rejestru, agent usługi Azure File Sync zaakceptuje dowolny lokalnie zaufany certyfikat TLS/SSL podczas przesyłania danych między serwerem a usługą w chmurze.
 
 <a id="-2147012894"></a>**Nie można ustanowić połączenia z usługą.**  
 
@@ -894,7 +894,7 @@ Ten błąd występuje, gdy operacja pozyskiwania danych przekracza limit czasu. 
 4. Wybierz połączone konto magazynu. Jeśli to łącze nie powiedzie się, konto magazynu, do którego istnieje odwołanie, zostało usunięte.
     ![Zrzut ekranu przedstawiający okienko szczegółów punktu końcowego chmury z łączem do konta magazynu.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 # Variables for you to populate based on your configuration
 $region = "<Az_Region>"
@@ -975,7 +975,7 @@ if ($storageAccount -eq $null) {
 2. Wybierz **pozycję Pliki,** aby wyświetlić listę udziałów plików.
 3. Sprawdź, czy udział plików, do którego odwołuje się punkt końcowy chmury, pojawia się na liście udziałów plików (należy to zauważyć w kroku 1 powyżej).
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.AzureFileShareName -and
@@ -1002,7 +1002,7 @@ if ($fileShare -eq $null) {
     - W polu **Rola** wybierz **pozycję Czytnik i dostęp do danych**.
     - W polu **Wybierz** wpisz **microsoft.StorageSync**, wybierz rolę i kliknij przycisk **Zapisz**.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
 $role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Microsoft.StorageSync" }
 

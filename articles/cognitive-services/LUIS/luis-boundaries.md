@@ -1,22 +1,14 @@
 ---
 title: Limity — usługa LUIS
-titleSuffix: Azure Cognitive Services
 description: Ten artykuł zawiera znane limity zrozumienia języka usługi Azure Cognitive Services (LUIS). Usługa LUIS ma kilka obszarów granicznych. Granica modelu kontroluje intencje, jednostki i funkcje w usłudze LUIS. Limity przydziałów na podstawie typu klucza. Kombinacja klawiatury steruje witryną sieci Luis w sieci Web.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/07/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 6c021e68f8b76d8b0d3e6e9ff21c242580f53313
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 04/02/2020
+ms.openlocfilehash: 4aa69cb0fd36fe5bf4ea2928022aea602b8830d6
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520941"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618864"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Granice modelu usługi LUIS i kluczy
 Usługa LUIS ma kilka obszarów granicznych. Pierwszym z nich jest [granica modelu](#model-boundaries), który kontroluje intencje, jednostki i funkcje w usłudze LUIS. Drugi obszar to [limity przydziałów](#key-limits) na podstawie typu klucza. Trzeci obszar granic to [kombinacja klawiatury](#keyboard-controls) do sterowania witryną sieci Luis. Czwarty obszar to [mapowanie regionu świata](luis-reference-regions.md) między witryną sieci Web tworzenia usługi LUIS a interfejsami API [punktu końcowego](luis-glossary.md#endpoint) usługi LUIS.
@@ -40,7 +32,7 @@ Jeśli aplikacja przekracza limity i granice modelu usługi LUIS, należy rozwa�
 | [Podgląd — elementy listy dynamicznej](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 listy ~1k na żądanie punktu końcowego prognozowania kwerendy|
 | [Wzorce](luis-concept-patterns.md)|500 wzorów na aplikację.<br>Maksymalna długość wzoru wynosi 400 znaków.<br>3 Pattern.any elementów na wzorzec<br>Maksymalnie 2 zagnieżdżone teksty opcjonalne we wzorze|
 | [Wzór.any](./luis-concept-entity-types.md)|100 na aplikację, 3 pattern.any jednostek na wzorzec |
-| [Lista fraz][phrase-list]|500 list fraz. 10 globalnych list fraz ze względu na model jako limit funkcji. Lista frazeów niewymiennych ma maksymalnie 5000 fraz. Wymienna lista frazeów ma maksymalnie 50 000 fraz. Maksymalna liczba fraz na aplikację 500 000 fraz.|
+| [Lista fraz][phrase-list]|500 list fraz. 10 globalnych list fraz ze względu na model jako limit funkcji. Lista fraz niewymiennych ma maksymalnie 5000 fraz. Lista wymiennych fraz zawiera maksymalnie 50 000 fraz. Maksymalna liczba fraz na aplikację 500 000 fraz.|
 | [Wstępnie utworzone jednostki](./luis-prebuilt-entities.md) | bez limitu|
 | [Jednostki wyrażenia regularnego](./luis-concept-entity-types.md)|20 podmiotów<br>500 znaków max. na wzorzec jednostki wyrażenia regularnego|
 | [Role](luis-concept-roles.md)|300 ról na aplikację. 10 ról na encję|
@@ -77,26 +69,41 @@ Nie należy używać następujących znaków w następujących nazwach.
 |Nazwy intencji, encji i ról|`:`<br>`$` <br> `&`|
 |Nazwa wersji|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
-## <a name="key-usage"></a>Użycie klucza
+## <a name="resource-usage-and-limits"></a>Użycie zasobów i limity
 
-Language Understand ma oddzielne klucze, jeden typ do tworzenia i jeden typ do wykonywania zapytań o punkt końcowy przewidywania. Aby dowiedzieć się więcej o różnicach między typami kluczy, zobacz [Tworzenie i przewidywanie zapytań kluczy końcowych punktów końcowych w usłudze LUIS](luis-concept-keys.md).
+Language Understand ma oddzielne zasoby, jeden typ do tworzenia i jeden typ do wykonywania zapytań o punkt końcowy przewidywania. Aby dowiedzieć się więcej o różnicach między typami kluczy, zobacz [Tworzenie i przewidywanie zapytań kluczy końcowych punktów końcowych w usłudze LUIS](luis-concept-keys.md).
 
 <a name="key-limits"></a>
 
-## <a name="resource-key-limits"></a>Limity kluczy zasobów
+### <a name="authoring-resource-limits"></a>Tworzenie limitów zasobów
 
-Klucze zasobów mają różne limity tworzenia i punktu końcowego. Klucz punktu końcowego kwerendy przewidywania usługi LUIS jest prawidłowy tylko dla kwerend końcowych.
+Użyj _rodzaju_ `LUIS.Authoring`, , podczas filtrowania zasobów w witrynie Azure portal. Usługa LUIS ogranicza 500 aplikacji na zasób tworzenia platformy Azure.
 
-* 500 aplikacji na zasób autorski platformy Azure
+|Tworzenie zasobu|Tworzenie TPS|
+|--|--|
+|Starter (początkowy)|1 milion/miesiąc, 5/sekundę|
+|F0 - Warstwa bezpłatna |1 milion/miesiąc, 5/sekundę|
 
-|Klucz|Tworzenie|Endpoint|Przeznaczenie|
-|--|--|--|--|
-|Starter (początkowy)|1 milion/miesiąc, 5/sekundę|1 tysiąc/miesiąc, 5/sekundę|Tworzenie aplikacji usługi LUIS|
-|F0 - Warstwa bezpłatna |1 milion/miesiąc, 5/sekundę|10 tysięcy/miesiąc, 5/sekundę|Wykonywanie zapytań o punkt końcowy usługi LUIS|
-|S0 — warstwa podstawowa|-|50/sekundę|Wykonywanie zapytań o punkt końcowy usługi LUIS|
-|S0 — warstwa standardowa|-|50/sekundę|Wykonywanie zapytań o punkt końcowy usługi LUIS|
-|[Integracja analizy tonacji](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|Dodawanie informacji o tonacji, w tym wyodrębniania danych fraz kluczowych, jest dostarczane bez konieczności tworzenia innego zasobu platformy Azure. |
-|[Integracja mowy](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|1 tysiąc żądań punktu końcowego na koszt jednostkowy|Konwertowanie wypowiedzi na wypowiedź tekstową i zwracanie wyników usługi LUIS|
+* TPS = Transakcje na sekundę
+
+[Dowiedz się więcej o cenach.][pricing]
+
+### <a name="query-prediction-resource-limits"></a>Limity zasobów prognozowania kwerend
+
+Użyj _rodzaju_ `LUIS`, , podczas filtrowania zasobów w witrynie Azure portal. Zasób punktu końcowego przewidywania kwerend usługi LUIS, używany w czasie wykonywania, jest prawidłowy tylko dla kwerend punktu końcowego.
+
+|Zasób przewidywanie kwerend|Zapytanie TPS|
+|--|--|
+|F0 - Warstwa bezpłatna |10 tysięcy/miesiąc, 5/sekundę|
+|S0 — warstwa standardowa|50/sekundę|
+
+### <a name="sentiment-analysis"></a>Analiza tonacji
+
+[Integracja analizy tonacji](luis-how-to-publish-app.md#enable-sentiment-analysis), która zawiera informacje o tonacji, jest dostarczana bez konieczności innego zasobu platformy Azure.
+
+### <a name="speech-integration"></a>Integracja mowy
+
+[Integracja mowy](../speech-service/how-to-recognize-intents-from-speech-csharp.md) zapewnia 1 tysiąc żądań punktu końcowego na koszt jednostkowy.
 
 [Dowiedz się więcej o cenach.][pricing]
 

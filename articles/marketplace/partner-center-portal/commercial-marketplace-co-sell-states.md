@@ -1,26 +1,26 @@
 ---
-title: Kody stanu co-sell | Azure Marketplace
-description: Użyj tych kodów stanu/prowincji, podając informacje kontaktowe na stronie Co-sell oferty.
+title: Kody stanu i prowincji co-sell | Azure Marketplace
+description: Użyj tych kodów stanu i prowincji, gdy podaj informacje kontaktowe na stronie Co-sell oferty.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: f87014a599afd6d1c56d175b92d4da1ea49d9470
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277043"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619359"
 ---
-# <a name="co-sell-state-codes"></a>Kody stanu co-sell
+# <a name="co-sell-state-and-province-codes"></a>Kody stanu i prowincji co-sell
 
 Jeśli ma to zastosowanie, użyj tych kodów, aby podać informacje o stanie/prowincji, [podając informacje kontaktowe na stronie Co-sell oferty.](commercial-marketplace-co-sell.md#contacts)
 
-## <a name="stateprovince-table"></a>Tabela stan/prowincja
+## <a name="us-states-and-territories"></a>Stany i terytoria USA
 
-|   Nazwa stanu/prowincji               |   Code    |
+|   Nazwa państwa i terytorium          |   Code    |
 |-------------------------------------|-----------|
 | Alabama                             | Stany Zjednoczone-AL     |
 | Alaska                              | Stany Zjednoczone-AK     |
@@ -78,7 +78,40 @@ Jeśli ma to zastosowanie, użyj tych kodów, aby podać informacje o stanie/pro
 | Mariany Północne            | Amerykański poseł do Parlamentu Europejskiego     |
 | Portoryko                         | US-PR     |
 | Stany Zjednoczone Minor Outlying Islands | Stany Zjednoczone-UM    |
-|Wyspy Dziewicze Stanów Zjednoczonych                 | Stany Zjednoczone-VI     |
+| Wyspy Dziewicze Stanów Zjednoczonych                 | Stany Zjednoczone-VI    |
+
+## <a name="canadian-provinces-and-territories"></a>Kanadyjskie prowincje i terytoria
+
+|   Nazwa prowincji i terytorium       |   Code    |
+|-------------------------------------|-----------|
+| Alberta                             |  CA-AB    |
+| Kolumbia Brytyjska                    |  CA-BC    |
+| Manitoba                            |  CA-MB    |
+| Nowy Brunszwik                       |  CA-NB    |
+| Nowa Fundlandia i Labrador           |  CA-NL    |
+| Nowa Szkocja                         |  CA-NS    |
+| Ontario                             |  CA-ON    |
+| Wyspa Księcia Edwarda                |  CA-PE    |
+| Quebec                              |  CA-QC    |
+| Saskatchewan                        |  CA-SK    |
+| Terytoria Północno-Zachodnie               |  CA-NT    |
+| Nunavut                             |  CA-NU    |
+| Jukon                               |  CA-YT    |
+
+
+## <a name="australian-states-and-territories"></a>Australijskie stany i terytoria
+
+|   Nazwa państwa i terytorium          |   Code    |
+|-------------------------------------|-----------|
+| Nowa Południowa Walia                     |  AU-NSW   |
+| Queensland                          |  AU-QLD   |
+| Australia Południowa                     |  AU-SA    |
+| Tasmania                            |  AU-TAS   |
+| Wiktoria                            |  AU-VIC   |
+| Australia Zachodnia                   |  AU-WA    |
+| Australijskie Terytorium Stołeczne        |  AU-ACT   |
+| Terytorium Północne                  |  AU-NT    |
+
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -7,18 +7,21 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: e3f8445f68ec959ce1bb0d1ba4029807bd25907a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65f404b52a5fc06d8fa5bb5aad291e57fde8caba
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257431"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617201"
 ---
-# <a name="application-gateway-high-traffic-support"></a>Obsługa dużych ruchu bramy aplikacji 
+# <a name="application-gateway-high-traffic-support"></a>Obsługa dużego natężenia ruchu usługi Application Gateway
 
-W tym artykule opisano kilka sugerowanych wskazówek ułatwiające konfigurowanie bramy aplikacji do obsługi dodatkowego ruchu ze względu na scenariusze dużej liczby ruchów, takie jak sytuacja COVID-19. Bramy aplikacji z zaporą aplikacji sieci Web (WAF) można użyć do skalowalnego i bezpiecznego zarządzania ruchem do aplikacji sieci web. 
+>[!NOTE]
+> W tym artykule opisano kilka sugerowanych wskazówek, które pomogą Ci skonfigurować bramę aplikacji do obsługi dodatkowego ruchu z powodu dużej ilości ruchu, który może wystąpić z powodu kryzysu COVID-19.
 
-Poniższe sugestie ułatwiają skonfigurowanie bramy aplikacji z waf do obsługi dodatkowego ruchu. 
+Bramy aplikacji z zaporą aplikacji sieci Web (WAF) można użyć do skalowalnego i bezpiecznego zarządzania ruchem do aplikacji sieci web.
+
+Poniższe sugestie ułatwiają skonfigurowanie bramy aplikacji z waf do obsługi dodatkowego ruchu.
 
 ## <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Użyj jednostki SKU w wersji 2 w wersji 1, aby uzyskać możliwości skalowania automatycznego i korzyści z wydajności
 Jednostka SKU w wersji 2 oferuje skalowanie automatyczne, aby upewnić się, że brama aplikacji może być skalowana w górę wraz ze wzrostem ruchu. Oferuje również inne znaczące korzyści z wydajności, takie jak 5-krotnie lepsza wydajność odciążania TLS, szybsze wdrażanie i aktualizowanie, nadmiarowość strefy i inne w porównaniu z wersjami 1. Aby uzyskać więcej informacji, zapoznaj się z naszą [dokumentacją v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant). 

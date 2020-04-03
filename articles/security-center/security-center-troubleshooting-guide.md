@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b5a85f8ae1564d724b826c809261e56577f4783a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 47502e693b897a57517d267924cc6c2752c10440
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435526"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585325"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów z usługą Azure Security Center
 
@@ -148,7 +148,6 @@ W tym dokumencie przedstawiono konfigurowanie zasad zabezpieczeń w Centrum zabe
 * [Walidacja alertów w usłudze Azure Security Center](security-center-alert-validation.md)
 * [Powiadomienia e-mail w usłudze Azure Security Center](security-center-provide-security-contact-details.md)
 * [Obsługa zdarzeń naruszenia zabezpieczeń w usłudze Azure Security Center](security-center-incident.md)
-* [Badanie zdarzeń i alertów w usłudze Azure Security Center](security-center-investigation.md)
 * [Funkcje wykrywania usługi Azure Security Center](security-center-detection-capabilities.md)
 * [Monitorowanie rozwiązań partnerskich za pomocą usługi Azure Security Center](security-center-partner-solutions.md) — dowiedz się, jak monitorować stan kondycji rozwiązań partnerskich.
 * [Często zadawane pytania dotyczące usługi Azure Security Center](faq-general.md) — znajdowanie często zadawanych pytań dotyczących korzystania z usługi

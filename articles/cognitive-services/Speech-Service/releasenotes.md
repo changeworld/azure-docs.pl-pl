@@ -3,25 +3,57 @@ title: Informacje o wersji — usługa mowy
 titleSuffix: Azure Cognitive Services
 description: Uruchomiony dziennik wersji funkcji usługi mowy, ulepszeń, poprawek błędów i znanych problemów.
 services: cognitive-services
-author: brianem
+author: oliversc
 manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: brianem
+ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: cbe9c7cbd0f402e38d1163050d77b055f89948ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7bab0a28ba2b75903b6bdf4708e6aa0a98bdc9e5
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219644"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607405"
 ---
 # <a name="release-notes"></a>Informacje o wersji
+## <a name="speech-sdk-1110-2020-march-release"></a>SDK mowy 1.11.0: wydanie 2020-marzec
+
+**Nowe funkcje**
+
+- Linux: Dodano obsługę Red Hat Enterprise Linux (RHEL) / CentOS 7 x64 z [instrukcjami,](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7) jak skonfigurować system dla SDK mowy.
+- Linux: Dodano obsługę .NET Core C# na Linuksach ARM32 i ARM64. Czytaj więcej [tutaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux). 
+- C#, C++: `UtteranceId` `ConversationTranscriptionResult`Dodano w , spójny identyfikator we wszystkich półproduktów i końcowego wyniku rozpoznawania mowy. Szczegółowe informacje dotyczące [języka C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult).
+- Python: Dodano `Language ID`obsługę . Zobacz speech_sample.py w [repozytorium GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console).
+- Windows: Dodano obsługę skompresowanego formatu wejściowego audio na platformie Windows dla wszystkich aplikacji konsoli win32. Szczegóły [tutaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams). 
+- JavaScript: Obsługa syntezy mowy (zamiana tekstu na mowę) w NodeJS. Dowiedz się więcej [tutaj](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech). 
+- JavaScript: Dodaj nowe interfejsy API, aby umożliwić kontrolę wszystkich wiadomości wysyłanych i odbieranych. Dowiedz się więcej [tutaj](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript). 
+        
+**Poprawki błędów**
+
+- C#, C++: Rozwiązaliśmy `SendMessageAsync` problem, więc teraz wysyła wiadomość binarną jako typ binarny. Szczegółowe informacje dotyczące [języka C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection).
+- C#, C++: Rozwiązano `Connection MessageReceived` problem polegający `Recognizer` na tym, `Connection` że używanie zdarzenia mogło spowodować awarię, jeśli zostanie usunięte przed obiektem. Szczegółowe informacje dotyczące [języka C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived).
+- Android: rozmiar buforu audio z mikrofonu zmniejszył się z 800ms do 100ms, aby poprawić opóźnienie.
+- Android: Rozwiązano [problem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563) z emulatorem androida x86 w Android Studio.
+- JavaScript: Dodano obsługę regionów w `fromSubscription` Chinach za pomocą interfejsu API. Szczegóły [tutaj](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#fromsubscription-string--string-). 
+- JavaScript: Dodaj więcej informacji o błędach dla awarii połączenia z NodeJS.
+        
+**Samples**
+
+- Jedność: Intencja rozpoznawania próbki publicznej jest stała, gdzie import json usługi LUIS nie powiódł się. Szczegóły [tutaj](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/369).
+- Python: Próbka `Language ID`dodana dla . Szczegóły [tutaj](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py).
+    
+**Skrócone testy Covid19**
+
+Ze względu na pracę zdalną w ciągu ostatnich kilku tygodni, nie mogliśmy zrobić tyle ręcznych testów weryfikacji urządzeń, jak zwykle. Przykładem tego jest testowanie wejścia mikrofonu i wyjścia głośnika w systemach Linux, iOS i macOS. Nie wnieśliśmy żadnych zmian, które naszym zdaniem mogły spowodować złamanie czegokolwiek na tych platformach, a nasze zautomatyzowane testy przeszły. W mało prawdopodobnym przypadku, gdy coś nam umknęło, poinformuj nas o tym na [GitHubie](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen).<br> Dziękuję za nieutrzymane wsparcie. Jak zawsze, prosimy pisać pytania lub opinie na [Temat GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen) lub [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/731).<br>
+Zachowaj zdrowie!
+
 ## <a name="speech-sdk-1100-2020-february-release"></a>Speech SDK 1.10.0: wydanie 2020-luty
 
 **Nowe funkcje**
+
  - Dodano pakiety Pythona do obsługi nowej wersji 3.8 Pythona.
  - Obsługa systemu Red Hat Enterprise Linux (RHEL)/CentOS 8 x64 (C++, C#, Java, Python).
    > [!NOTE] 
@@ -33,6 +65,7 @@ ms.locfileid: "79219644"
  - Zaktualizowano modele rozpoznawania mowy dla 19 ustawień regionalnych dla średniego poziomu błędu słowa o 18,6% (es-ES, es-MX, fr-CA, fr-FR, it-IT, ja-JP, ko-KR, pt-BR, zh-CN, zh-HK, nb-NO, fi-FL, ru-RU, pl-PL, ca-ES, zh-TW, th-TH, pt-PT, tr-TR). Nowe modele wprowadzają znaczące ulepszenia w wielu domenach, w tym dyktowanie, transkrypcję centrum obsługi telefonicznej i indeksowanie wideo scenariuszy.
 
 **Poprawki błędów**
+
  - Naprawiono błąd, który powodował, że transcriber konwersacji nie czekał poprawnie w interfejsach API java 
  - Android x86 emulator naprawić problem Xamarin [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363)
  - Dodaj brak (Pobierz| Set)Metody właściwości audioconfig
@@ -40,10 +73,12 @@ ms.locfileid: "79219644"
  - Używanie punktu końcowego bez regionu spowodowałoby błędy USP dla translatora konwersacji
  - Generowanie identyfikatorów w uniwersalnych aplikacjach systemu Windows używa teraz odpowiednio unikatowego algorytmu GUID; wcześniej i nieumyślnie domyślnie do implementacji stubbed, które często produkowane kolizji przez duże zestawy interakcji.
  
- **Próbki**
+ **Samples**
+ 
  - Przykład Unity do korzystania z zestawu SDK mowy z [mikrofonem Unity i strumieniowaniem w trybie push](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone)
 
 **Inne zmiany**
+
  - [Zaktualizowano dokumentację konfiguracją OpenSSL dla systemu Linux](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)
 
 ## <a name="speech-sdk-190-2020-january-release"></a>Speech SDK 1.9.0: wydanie 2020-styczeń
@@ -59,13 +94,11 @@ ms.locfileid: "79219644"
 - JavaScript: Dodano `FromHost API` obsługę, aby ułatwić korzystanie z kontenerów na prem i suwerennych chmur. Zobacz dokumentację [tutaj](speech-container-howto.md).
 - JavaScript: Teraz `NODE_TLS_REJECT_UNAUTHORIZED` honor dzięki wkład z [orgads](https://github.com/orgads). Zobacz szczegóły [tutaj](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75).
 
-
 **Fundamentalne zmiany**
 
 - `OpenSSL`został zaktualizowany do wersji 1.1.1b i jest statycznie połączony z biblioteką rdzenia SDK mowy dla systemu Linux. Może to spowodować przerwę, `OpenSSL` jeśli skrzynka `/usr/lib/ssl` odbiorcza nie została zainstalowana w katalogu w systemie. Zapoznaj się z [naszą dokumentacją](how-to-configure-openssl-linux.md) w obszarze Dokumenty SDK mowy, aby obejść ten problem.
 - Zmieniliśmy typ danych zwrócony `WordLevelTimingResult.Offset` dla `int` `long` języka C# `WordLevelTimingResults` z do, aby umożliwić dostęp do, gdy dane mowy jest dłuższy niż 2 minuty.
 - `PushAudioInputStream`a `PullAudioInputStream` teraz wysyłać informacje nagłówka wav do usługi mowy na `AudioStreamFormat`podstawie , opcjonalnie określone, kiedy zostały utworzone. Klienci muszą teraz korzystać z [obsługiwanego formatu wejścia audio](how-to-use-audio-input-streams.md). Wszelkie inne formaty uzyskają nieoptymalne wyniki rozpoznawania lub mogą powodować inne problemy. 
-
 
 **Poprawki błędów**
 
@@ -81,13 +114,11 @@ ms.locfileid: "79219644"
 - JavaScript: dodano obsługę ustawiania właściwości usługi, jak dodano w 1.7.
 - JavaScript: rozwiązał problem polegający na tym, że błąd połączenia mógł spowodować ciągłe, nieudane próby ponownego połączenia w sieci Web.
 
-
-**Próbki**
+**Samples**
 
 - Dodano przykład rozpoznawania słów kluczowych dla [Androida tutaj](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo).
 - Dodano próbkę TTS dla scenariusza serwera [tutaj](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs).
 - Dodano szybkie uruchamianie konwersacji na wielu urządzeniach dla języka C# i C++ [tutaj](quickstarts/multi-device-conversation.md).
-
 
 **Inne zmiany**
 
@@ -114,7 +145,7 @@ ms.locfileid: "79219644"
 
 - Napraw awarię, `KeywordRecognizer` jeśli lokalny jest używany bez prawidłowego klucza subskrypcji usługi mowy
 
-**Próbki**
+**Samples**
 
 - Próbka xamarin dla`KeywordRecognizer`
 - Próbka jedności dla`KeywordRecognizer`
@@ -145,7 +176,7 @@ ms.locfileid: "79219644"
 - `DialogServiceConnector`rozpocznie się sesja będzie teraz poprawnie dostarczać zdarzenia, w tym podczas `ListenOnceAsync()``StartKeywordRecognitionAsync()`
 - Rozwiązano problem związany `DialogServiceConnector` z odbieraniem działań
 
-**Próbki**
+**Samples**
 
 - Szybki start dla platformy Xamarin
 - Zaktualizowano skrócony start CPP z informacjami o systemie Linux ARM64
@@ -153,7 +184,7 @@ ms.locfileid: "79219644"
 
 ## <a name="speech-sdk-160-2019-june-release"></a>Speech SDK 1.6.0: wydanie 2019-Czerwiec
 
-**Próbki**
+**Samples**
 
 - Przykłady szybkiego startu dla tekstu do mowy na platformie uniwersalnej systemu wyu według platformy uniwersalnej systemu i jedności
 - Próbka szybkiego startu dla programu Swift w iOS
@@ -202,7 +233,7 @@ Jest to wydanie poprawki błędów i dotyczy tylko natywnego/zarządzanego SDK. 
 - Funkcja transkrypcji konwersacji jest dostępna za pośrednictwem sdk. Zobacz [tutaj](conversation-transcription-service.md).
 - Dodaj obsługę asystentów głosowych za pomocą kanału Direct Line Speech.
 
-**Próbki**
+**Samples**
 
 - Dodano przykłady nowych funkcji lub nowych usług obsługiwanych przez zestaw SDK.
 
@@ -238,7 +269,7 @@ Jest to wersja dostępna tylko w języku JavaScript. Nie dodano żadnych funkcji
 - JavaScript: Obsługa mikrofonu nie domyślnego jako urządzenia wejściowego.
 - JavaScript: Obsługa serwera proxy dla pliku Node.js.
 
-**Próbki**
+**Samples**
 
 - Dodano przykłady użycia zestawu SDK mowy w języku C++ i z objectiveem C w systemie macOS.
 - Dodano przykłady przedstawiające użycie usługi zamiany tekstu na mowę.
@@ -271,7 +302,7 @@ Jest to wydanie poprawki błędów i dotyczy tylko natywnego/zarządzanego SDK. 
 - Zestaw SDK mowy obsługuje teraz unity w wersji beta. Przekazywać opinie za pośrednictwem sekcji problemu w [przykładowym repozytorium GitHub](https://aka.ms/csspeech/samples). Ta wersja obsługuje unity w systemach Windows x86 i x64 (aplikacje dla komputerów stacjonarnych lub uniwersalnych platformy systemu Windows) i android (ARM32/64, x86). Więcej informacji można znaleźć w naszym [przewodniku Unity Quickstart.](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity)
 - Plik `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (dostarczany w poprzednich wersjach) nie jest już potrzebny. Funkcja jest teraz zintegrowana z podstawowym SDK.
 
-**Próbki**
+**Samples**
 
 W naszym [przykładowym repozytorium](https://aka.ms/csspeech/samples)dostępna jest następująca nowa zawartość:
 
@@ -354,7 +385,7 @@ Jest to wersja dostępna tylko w języku JavaScript. Nie dodano żadnych funkcji
 - JavaScript: Ustaw domyślny format wyjściowy na "prosty" w . `SpeechConfig`
 - JavaScript: Usuwanie niespójności między właściwościami obiektu konfiguracyjnego w języku JavaScript i innych językach.
 
-**Próbki**
+**Samples**
 
 - Zaktualizowano i poprawiono kilka próbek (na przykład głosy wyjściowe do tłumaczenia itp.).
 - Dodano przykłady node.js w [przykładowym repozytorium](https://aka.ms/csspeech/samples).
@@ -386,7 +417,7 @@ Jest to wersja dostępna tylko w języku JavaScript. Nie dodano żadnych funkcji
 - Naprawiono błąd uniemożliwiający `EndpointId` ustawienie (w niektórych przypadkach) w języku JavaScript.
 - Zmieniono kolejność parametrów w addintent `AddIntent` w języku JavaScript i dodano brakujący podpis JavaScript.
 
-**Próbki**
+**Samples**
 
 - Dodano przykłady języka C++ i C# do użycia strumienia ściągania i wypychania w [repozytorium próbek.](https://aka.ms/csspeech/samples)
 

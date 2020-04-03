@@ -1,6 +1,6 @@
 ---
 title: Strojenie wydajności za pomocą buforowania zestawu wyników
-description: Omówienie funkcji buforowania zestawu wyników dla usługi SQL Analytics w usłudze Azure Synapse Analytics
+description: Omówienie funkcji buforowania zestawu wyników dla puli sql synapse w usłudze Azure Synapse Analytics
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,26 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: da476dc14949ebab1a054a9624d91acb25b9f2b4
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ef5be63b2068297aedf4cf12d914da09b1efed41
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474483"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583818"
 ---
-# <a name="performance-tuning-with-result-set-caching"></a>Strojenie wydajności za pomocą buforowania zestawu wyników  
-Gdy buforowanie zestawu wyników jest włączone, sql analytics automatycznie buforuje wyniki kwerendy w bazie danych użytkowników do powtarzalnego użycia.  Dzięki temu kolejne wykonania kwerendy, aby uzyskać wyniki bezpośrednio z utrwalonych pamięci podręcznej, więc ponowneuwkomczenie nie jest potrzebne.   Buforowanie zestawu wyników zwiększa wydajność zapytań i zmniejsza użycie zasobów obliczeniowych.  Ponadto kwerendy przy użyciu zestawu wyników buforowanych nie używają żadnych gniazd współbieżności i w związku z tym nie są wliczane do istniejących limitów współbieżności. Dla zabezpieczeń użytkownicy mogą uzyskiwać dostęp do wyników w pamięci podręcznej tylko wtedy, gdy mają takie same uprawnienia dostępu do danych, jak użytkownicy tworzący wyniki w pamięci podręcznej.  
+# <a name="performance-tuning-with-result-set-caching"></a>Strojenie wydajności za pomocą buforowania zestawu wyników
+
+Gdy buforowanie zestawu wyników jest włączone, pula Synapse SQL automatycznie buforuje wyniki kwerendy w bazie danych użytkowników do powtarzalnego użycia.  Dzięki temu kolejne wykonania kwerendy, aby uzyskać wyniki bezpośrednio z utrwalonych pamięci podręcznej, więc ponowneuwkomczenie nie jest potrzebne.   Buforowanie zestawu wyników zwiększa wydajność zapytań i zmniejsza użycie zasobów obliczeniowych.  Ponadto kwerendy przy użyciu zestawu wyników buforowanych nie używają żadnych gniazd współbieżności i w związku z tym nie są wliczane do istniejących limitów współbieżności. Dla zabezpieczeń użytkownicy mogą uzyskiwać dostęp do wyników w pamięci podręcznej tylko wtedy, gdy mają takie same uprawnienia dostępu do danych, jak użytkownicy tworzący wyniki w pamięci podręcznej.  
 
 ## <a name="key-commands"></a>Polecenia klawiszy
-[Włączanie/WYŁĄCZanie buforowania zestawu wyników dla bazy danych użytkowników](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
 
-[Włączanie/WYŁĄCZanie buforowania zestawu wyników dla sesji](https://docs.microsoft.com/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)
+[Włączanie/WYŁĄCZanie buforowania zestawu wyników dla bazy danych użytkowników](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-[Sprawdzanie rozmiaru zestawu wyników buforowanych](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest)  
+[Włączanie/WYŁĄCZanie buforowania zestawu wyników dla sesji](/sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-[Czyszczenie pamięci podręcznej](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)
+[Sprawdzanie rozmiaru zestawu wyników buforowanych](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
+
+[Czyszczenie pamięci podręcznej](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="whats-not-cached"></a>Co nie jest buforowane  
 
@@ -39,7 +41,7 @@ Po włączeniu buforowania zestawu wyników dla bazy danych wyniki są buforowan
 - Kwerendy zwracające dane o rozmiarze wiersza większym niż 64 KB
 
 > [!IMPORTANT]
-> Operacje tworzenia pamięci podręcznej zestawu wyników i pobierania danych z pamięci podręcznej odbywać się w węźle sterowania wystąpienia usługi SQL Analytics.
+> Operacje tworzenia pamięci podręcznej zestawu wyników i pobierania danych z pamięci podręcznej odbywały się w węźle kontrolnym wystąpienia puli SQL Synapse.
 > Gdy buforowanie zestawu wyników jest włączone, uruchamianie kwerend zwracających duży zestaw wyników (na przykład >1 mln wierszy) może spowodować wysokie użycie procesora CPU w węźle sterowania i spowolnić ogólną odpowiedź zapytania w wystąpieniu.  Te zapytania są powszechnie używane podczas eksploracji danych lub operacji ETL. Aby uniknąć stresu węzła sterowania i spowodować problem z wydajnością, użytkownicy powinni wyłączyć buforowanie zestawu wyników w bazie danych przed uruchomieniem tych typów zapytań.  
 
 Uruchom tę kwerendę dla czasu pobranego przez operacje buforowania zestawu wyników dla kwerendy:
@@ -76,7 +78,7 @@ WHERE request_id = <'Your_Query_Request_ID'>
 
 Maksymalny rozmiar pamięci podręcznej zestawu wyników wynosi 1 TB na bazę danych.  Buforowane wyniki są automatycznie unieważniane po zmianie danych kwerendy źródłowej.  
 
-Eksmisja pamięci podręcznej jest zarządzana przez usługę SQL Analytics automatycznie zgodnie z tym harmonogramem: 
+Eksmisja pamięci podręcznej jest zarządzana automatycznie zgodnie z tym harmonogramem: 
 - Co 48 godzin, jeśli zestaw wyników nie został użyty lub został unieważniony. 
 - Gdy pamięć podręczna zestawu wyników zbliża się do maksymalnego rozmiaru.
 
@@ -87,4 +89,5 @@ Użytkownicy mogą ręcznie opróżnić całą pamięć podręczną zestawu wyni
 Wstrzymanie bazy danych nie spowoduje opróżnienia zestawu wyników w pamięci podręcznej.  
 
 ## <a name="next-steps"></a>Następne kroki
+
 Aby uzyskać więcej wskazówek dotyczących rozwoju, zobacz [omówienie rozwoju](sql-data-warehouse-overview-develop.md). 

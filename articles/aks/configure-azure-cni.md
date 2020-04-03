@@ -4,12 +4,12 @@ description: Dowiedz się, jak skonfigurować sieć Azure CNI (zaawansowane) w u
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 400d5a46ad62f8ac391c573eb64a7eb22dc4062c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f194cb97850fcb24e4789ac0ba39b6f03d99e6e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047991"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617379"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurowanie sieci CNI platformy Azure w usłudze Azure Kubernetes (AKS)
 
@@ -27,6 +27,7 @@ W tym artykule pokazano, jak używać sieci *CNI platformy Azure* do tworzenia i
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 * Zamiast jednostki usługi można użyć systemu przypisanego tożsamości zarządzanej dla uprawnień. Aby uzyskać więcej informacji, zobacz [Używanie tożsamości zarządzanych](use-managed-identity.md).
+* Podsieć przypisana do puli węzłów AKS nie może być [delegowaną podsiecią](../virtual-network/subnet-delegation-overview.md).
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>Planowanie adresowania IP dla klastra
 
@@ -70,7 +71,7 @@ Możesz skonfigurować maksymalną liczbę zasobników na węzeł *tylko w czasi
 
 Minimalna wartość maksymalnej zasobników na węzeł jest wymuszana, aby zagwarantować miejsce dla zasobników systemowych krytycznych dla kondycji klastra. Minimalna wartość, która może być ustawiona dla maksymalnej zasobników na węzeł wynosi 10, jeśli i tylko wtedy, gdy konfiguracja każdej puli węzłów ma miejsce dla co najmniej 30 zasobników. Na przykład ustawienie maksymalnej zasobników na węzeł na minimum 10 wymaga, aby każda pula poszczególnych węzłów miała co najmniej 3 węzły. To wymaganie ma zastosowanie dla każdej nowej puli węzłów utworzonych, jak również, więc jeśli 10 jest zdefiniowany jako maksymalna zasobników na węzeł każdej kolejnej puli węzłów dodane musi mieć co najmniej 3 węzłów.
 
-| Obsługa sieci | Minimalne | Maksimum |
+| Networking | Minimalne | Maksimum |
 | -- | :--: | :--: |
 | Azure CNI | 10 | 250 |
 | Okręg wyborczy Kubenet | 10 | 110 |

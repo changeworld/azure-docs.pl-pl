@@ -87,13 +87,13 @@
           href: service-fabric-tutorial-standalone-install-an-application.md
         - name: 4 — Czyszczenie klastra i usuwanie infrastruktury
           href: service-fabric-tutorial-standalone-clean-up.md
-- name: Najlepsze praktyki
+- name: Najlepsze rozwiązania
   items:
     - name: Omówienie najlepszych rozwiązań usługi Service Fabric
       href: service-fabric-best-practices-overview.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       href: service-fabric-best-practices-security.md
-    - name: Sieć
+    - name: Networking
       href: service-fabric-best-practices-networking.md
     - name: Planowanie i skalowanie obliczeń
       href: service-fabric-best-practices-capacity-scaling.md
@@ -105,7 +105,7 @@
       href: service-fabric-best-practices-applications.md
     - name: Lista kontrolna gotowości do produkcji
       href: service-fabric-production-readiness-checklist.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu
       href: 'https://docs.microsoft.com/samples/browse/'
@@ -123,7 +123,7 @@
       href: service-fabric-application-scenarios.md
     - name: Architektura
       href: service-fabric-architecture.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Zabezpieczenia usługi Service Fabric
           href: service-fabric-best-practices-security.md
@@ -236,7 +236,7 @@
               items:
                 - name: Omówienie uaktualnienia aplikacji
                   href: service-fabric-application-upgrade.md
-                - name: Konfiguracja
+                - name: Konfigurowanie
                   href: service-fabric-visualstudio-configure-upgrade.md
                 - name: Parametry uaktualniania aplikacji
                   href: service-fabric-application-upgrade-parameters.md
@@ -362,7 +362,7 @@
   items:
     - name: Konfigurowanie środowiska projektowego
       items:
-        - name: System Windows
+        - name: Windows
           href: service-fabric-get-started.md
         - name: Linux
           href: service-fabric-get-started-linux.md
@@ -404,8 +404,6 @@
           items:
             - name: Wdrażanie aplikacji wykonywalnej gościa
               href: service-fabric-deploy-existing-app.md
-            - name: Wdrażanie wielu aplikacji wykonywalnych gości
-              href: service-fabric-deploy-multiple-apps.md
         - name: Tworzenie usługi kontenera
           items:
             - name: Docker Compose (wersja zapoznawcza)
@@ -623,7 +621,7 @@
       items:
         - name: Klastry na platformie Azure
           items:
-            - name: Tworzenie
+            - name: Utwórz
               items:
                 - name: Planowanie wdrożenia klastra
                   href: service-fabric-cluster-azure-deployment-preparation.md
@@ -679,7 +677,7 @@
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
         - name: Klastry autonomiczne
           items:
-            - name: Tworzenie
+            - name: Utwórz
               items:
                 - name: Tworzenie lokalnie
                   href: service-fabric-cluster-creation-for-windows-server.md
@@ -777,7 +775,7 @@
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.servicefabric/
-    - name: Program PowerShell
+    - name: PowerShell
       href: /powershell/module/servicefabric/?view=azureservicefabricps
     - name: Interfejs wiersza polecenia platformy Azure (az sf)
       href: /cli/azure/sf
@@ -880,7 +878,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
     - name: Zabezpieczenia dotyczące wdrażania usługi Azure Resource Manager
       href: service-fabric-azure-resource-manager-guardrails.md
-    - name: Ceny
+    - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

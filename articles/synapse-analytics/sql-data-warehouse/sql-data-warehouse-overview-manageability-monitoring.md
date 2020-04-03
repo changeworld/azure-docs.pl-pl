@@ -1,6 +1,6 @@
 ---
 title: Łatwość zarządzania i monitorowanie - przegląd
-description: Omówienie monitorowania i zarządzania dla wykorzystania zasobów, rejestrowania i wykonywania zapytań, zaleceń i ochrony danych (tworzenie kopii zapasowych i przywracanie) z pulą SQL.
+description: Omówienie monitorowania i zarządzania dla wykorzystania zasobów, rejestrowania i wykonywania zapytań, zaleceń i ochrony danych (tworzenie kopii zapasowych i przywracanie) z puli Synapse SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 26e74b7b2cabfe7080c624569b5e2189a86770ea
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e41bf003af7d0926aab04ffed86bf6ec5031c4f7
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350296"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586418"
 ---
-# <a name="manageability-and-monitoring-with-sql-pool"></a>Możliwość zarządzania i monitorowania za pomocą puli SQL
+# <a name="manageability-and-monitoring-with-synapse-sql-pool"></a>Możliwość zarządzania i monitorowania za pomocą puli Synapse SQL
 
-Usługa SQL Analytics umożliwia aprowizycję magazynu danych za pośrednictwem puli SQL. Następujące artykuły pomogą Ci zarządzać magazynem danych i monitorować go. Dowiesz się również, jak zoptymalizować użycie i wydajność magazynu danych.
+Synapse SQL umożliwia aprowizycję magazynu danych za pośrednictwem puli SQL. Następujące artykuły pomogą Ci zarządzać magazynem danych i monitorować go. Dowiesz się również, jak zoptymalizować użycie i wydajność magazynu danych.
 
 ## <a name="overview"></a>Omówienie
 

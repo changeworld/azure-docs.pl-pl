@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 03/26/2020
-ms.openlocfilehash: c8743385f8c3c801b2f06e4a30a8672d1d80acc4
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 18c926d16319eb8a8736a51d5f10e434b94d0ebe
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422520"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582499"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Konfiguracja klucza zarządzanego przez klienta usługi Azure Monitor 
 
@@ -50,11 +50,11 @@ Połkniętych danych w ciągu ostatnich 14 dni jest również przechowywany w go
 
 Usługa Azure Monitor wykorzystuje przypisaną do systemu tożsamość zarządzaną, aby udzielić dostępu do usługi Azure Key Vault.Tożsamości zarządzanej przypisanej do systemu można skojarzyć tylko z jednym zasobem platformy Azure. Tożsamość magazynu danych usługi Azure Monitor (klaster ADX) jest obsługiwana na poziomie klastra i nakazuje to, że funkcja CMK jest dostarczana w dedykowanym klastrze ADX. Aby obsługiwać cmk w wielu obszarach roboczych, nowy zasób usługi Log Analytics *(Klaster)* wykonuje jako pośrednie połączenie tożsamości między magazynem kluczy a obszarami roboczymi usługi Log Analytics. Ta koncepcja jest zgodna z ograniczeniem tożsamości przypisanym przez system, a tożsamość jest zachowywana między klastrem ADX a zasobem *klastra analizy* dzienników, podczas gdy dane wszystkich skojarzonych obszarów roboczych są chronione za pomocą klucza Usługi Key Vault. Podkładanie magazynu klastra ADX używa\'tożsamości zarządzanej skojarzonej z zasobem *klastra* do uwierzytelniania usługi Azure Key Vault za pośrednictwem usługi Azure Active Directory i uzyskiwania do niego dostępu.
 
-![Przegląd CMK](media/customer-managed-keys/cmk-overview.png)
-1.  Magazyn kluczy klienta.
-2.  Zasób *klastra* analizy dzienników klienta, który zarządzał tożsamością z uprawnieniami do usługi Key Vault — tożsamość jest obsługiwana na poziomie magazynu danych (klaster ADX).
-3.  Dedykowany klaster ADX usługi Azure Monitor.
-4.  Obszary robocze klienta skojarzone z zasobem *klastra* do szyfrowania CMK.
+![Przegląd CMK](media/customer-managed-keys/cmk-overview-8bit.png)
+1.    Magazyn kluczy klienta.
+2.    Zasób *klastra* analizy dzienników klienta, który zarządzał tożsamością z uprawnieniami do usługi Key Vault — tożsamość jest obsługiwana na poziomie magazynu danych (klaster ADX).
+3.    Dedykowany klaster ADX usługi Azure Monitor.
+4.    Obszary robocze klienta skojarzone z zasobem *klastra* do szyfrowania CMK.
 
 ## <a name="encryption-keys-management"></a>Zarządzanie kluczami szyfrowania
 
@@ -210,7 +210,7 @@ Zaktualizuj magazyn kluczy o nową zasadę dostępu, która przyznaje uprawnieni
 - Uprawnienia klucza: wybierz uprawnienia "Get", "Wrap Key" i "Unwrap Key".
 - Wybierz jednostkę: wprowadź wartość identyfikatora głównego, który zwrócił w odpowiedzi w poprzednim kroku.
 
-![udzielanie uprawnień Usługi Magazynu kluczy](media/customer-managed-keys/grant-key-vault-permissions.png)
+![udzielanie uprawnień Usługi Magazynu kluczy](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
 Uprawnienie *Pobierz* jest wymagane, aby sprawdzić, czy magazyn kluczy jest skonfigurowany jako możliwe do odzyskania w celu ochrony klucza i dostępu do danych usługi Azure Monitor.
 

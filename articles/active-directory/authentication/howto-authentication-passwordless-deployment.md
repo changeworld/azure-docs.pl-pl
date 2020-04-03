@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c9933e75a39af43af9e2745d5f7732d40027b34
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136538"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582472"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planowanie wdrożenia uwierzytelniania bez hasła w usłudze Azure Active Directory
 
@@ -59,7 +59,7 @@ Metody uwierzytelniania bez hasła firmy Microsoft umożliwiają różne scenari
 | **Logowanie do aplikacji sieci Web:** <br> z urządzenia mobilnego lub innego niż windows | **Tak** | **Nie** | **Nie** |
 | **Logowanie komputera:** <br> Komputer z systemem windows | **Nie** | **Nie** | **Nie** |
 
-Aby uzyskać informacje na temat wybierania najlepszej metody dla organizacji, zobacz [Podejmowanie decyzji o metodzie bez hasła](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#deciding-a-passwordless-method).
+Aby uzyskać informacje na temat wybierania najlepszej metody dla organizacji, zobacz [Podejmowanie decyzji o metodzie bez hasła](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#choose-a-passwordless-method).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -97,7 +97,7 @@ W poniższej tabeli przedstawiono przypadki użycia, które mają być zaimpleme
 | --- | --- |
 | **Dostęp** | Logowanie bez hasła jest dostępne na urządzeniu firmowym lub osobistym w sieci firmowej lub poza nią. |
 | **Inspekcja** | Dane użycia są dostępne dla administratorów do inspekcji w czasie zbliżonym do rzeczywistego. <br> Dane użycia są pobierane do systemów firmowych co najmniej co 29 dni lub używane jest narzędzie SIEM. |
-| **Zarządzania** | Cykl życia przypisania użytkowników do odpowiedniej metody uwierzytelniania i skojarzonych grup jest definiowany i monitorowany. |
+| **Nadzór** | Cykl życia przypisania użytkowników do odpowiedniej metody uwierzytelniania i skojarzonych grup jest definiowany i monitorowany. |
 | **Zabezpieczenia** | Dostęp do odpowiedniej metody uwierzytelniania jest kontrolowany za pomocą przypisań użytkowników i grup. <br> Tylko autoryzowani użytkownicy mogą używać logowania bez hasła. |
 | **Wydajność** | Terminy propagacji przydziałów dostępu są dokumentowane i monitorowane. <br> Czas logowania jest mierzony w celu ułatwienia użytkowania. |
 | **Doświadczenie użytkownika** | Użytkownicy są świadomi zgodności urządzeń przenośnych. <br> Użytkownicy mogą skonfigurować logowanie bez hasła aplikacji Authenticator. |
@@ -132,7 +132,7 @@ Zobacz [najważniejsze wskazówki dotyczące programu pilotażowego](https://aka
 
 Aplikacja Microsoft Authenticator jest bezpłatna do pobrania z Google Play lub Apple App Store. [Dowiedz się więcej o pobieraniu aplikacji Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6). Niech użytkownicy pobierzą aplikację Microsoft Authenticator. i postępuj zgodnie ze wskazówkami, aby włączyć logowanie się przez telefon. 
 
-Zamienia dowolny telefon z systemem iOS lub Android w silne, bez hasła poświadczenia. Użytkownicy logują się do dowolnej platformy lub przeglądarki, uzyskując powiadomienie na swój telefon, dopasowując numer wyświetlany na ekranie do numeru w telefonie, a następnie używając danych biometrycznych lub kodu PIN do potwierdzenia. [Zobacz szczegółowe informacje o tym, jak działa aplikacja Microsoft Authenticator](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in). 
+Zamienia dowolny telefon z systemem iOS lub Android w silne, bez hasła poświadczenia. Użytkownicy logują się do dowolnej platformy lub przeglądarki, uzyskując powiadomienie na swój telefon, dopasowując numer wyświetlany na ekranie do numeru w telefonie, a następnie używając danych biometrycznych lub kodu PIN do potwierdzenia. [Zobacz szczegółowe informacje o tym, jak działa aplikacja Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#microsoft-authenticator-app).
 
 ![logowanie się za pomocą aplikacji Authenticator](./media/howto-authentication-passwordless-deployment/passwordless-dp-sign-in.png)
 

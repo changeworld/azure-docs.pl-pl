@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4cf940e38a84ea2eeb1896c8f7c628c8d5734374
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03e1d4aa74d2f71ab2f32ac55f4ad3d46f672f5c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247133"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618540"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie eksperymentów zautomatyzowanego uczenia maszynowego w języku Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -166,7 +166,7 @@ Oto niektóre przykłady:
       automl_regressor = AutoMLConfig(
       task='regression',
       experiment_timeout_minutes=60,
-      whitelist_models=['kNN regressor'],
+      whitelist_models=['KNN'],
       primary_metric='r2_score',
       training_data=train_data,
       label_column_name=label,
@@ -245,7 +245,7 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 ### <a name="ensemble-configuration"></a><a name="ensemble"></a>Konfiguracja zespołu
 
-Modele zespołu są domyślnie włączone i są wyświetlane jako iteracje końcowego uruchomienia w automatycznym uruchomieniu uczenia maszynowego. Obecnie obsługiwane metody zespołu są głosowania i układania. Głosowanie jest realizowane jako głosowanie miękkie przy użyciu średnich ważonych, a implementacja układania jest przy użyciu dwuwarstwowej implementacji, gdzie pierwsza warstwa ma te same modele co zespół głosowania, a drugi model warstwy służy do znalezienia optymalnej kombinacji modeli z pierwszej warstwy. Jeśli używasz modeli ONNX **lub** masz włączoną funkcję wytłumaczenia modelu, układanie zostanie wyłączone i zostanie wykorzystane tylko głosowanie.
+Modele zespołu są domyślnie włączone i są wyświetlane jako iteracje końcowego uruchomienia w automatycznym uruchomieniu uczenia maszynowego. Obecnie obsługiwane metody zespołu są głosowania i układania. Głosowanie jest implementowane jako głosowanie miękkie przy użyciu średnich ważonych, a implementacja układania używa implementacji dwuwarstwowej, gdzie pierwsza warstwa ma te same modele co zespół głosowania, a drugi model warstwy służy do znajdowania optymalnej kombinacji modeli z pierwszej warstwy. Jeśli używasz modeli ONNX **lub** masz włączoną funkcję wytłumaczenia modelu, układanie zostanie wyłączone i zostanie wykorzystane tylko głosowanie.
 
 Istnieje wiele domyślnych argumentów, `kwargs` które `AutoMLConfig` mogą być dostarczone jako w obiekcie, aby zmienić domyślne zachowanie zespołu stosu.
 

@@ -9,18 +9,18 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 11/17/2019
 ms.author: yelevin
-ms.openlocfilehash: 7d42ff28ddd2d883feb25139096d781efe64d50f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b82ddfef57efaaca0ae43750cd306a63a772b911
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588573"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616821"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Łączenie danych z usługi Azure AD Identity Protection
 
 
 
-Dzienniki [usługi Azure AD Identity Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) można przesyłać strumieniowo do usługi Azure Sentinel, aby przesyłać strumieniowo alerty do usługi Azure Sentinel w celu wyświetlania pulpitów nawigacyjnych, tworzenia niestandardowych alertów i usprawnienia badania. Usługa Azure Active Directory Identity Protection zapewnia skonsolidowany widok użytkowników ryzyka, wykrywanie ryzyka i luki w zabezpieczeniach, z możliwością natychmiastowego korygować ryzyko i ustawiania zasad w celu automatycznego korygowanie przyszłych zdarzeń. Usługa jest oparta na doświadczeniu firmy Microsoft w ochronie tożsamości konsumentów i zyskuje ogromną dokładność z sygnału z ponad 13 miliardów logowań dziennie. 
+Dzienniki [usługi Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) można przesyłać strumieniowo do usługi Azure Sentinel, aby przesyłać strumieniowo alerty do usługi Azure Sentinel w celu wyświetlania pulpitów nawigacyjnych, tworzenia niestandardowych alertów i usprawnienia badania. Usługa Azure Active Directory Identity Protection zapewnia skonsolidowany widok użytkowników ryzyka, wykrywanie ryzyka i luki w zabezpieczeniach, z możliwością natychmiastowego korygować ryzyko i ustawiania zasad w celu automatycznego korygowanie przyszłych zdarzeń. Usługa jest oparta na doświadczeniu firmy Microsoft w ochronie tożsamości konsumentów i zyskuje ogromną dokładność z sygnału z ponad 13 miliardów logowań dziennie. 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne

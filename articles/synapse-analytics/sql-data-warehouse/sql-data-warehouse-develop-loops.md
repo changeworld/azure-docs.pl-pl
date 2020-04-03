@@ -1,6 +1,6 @@
 ---
 title: Korzystanie z pętli T-SQL
-description: Porady dotyczące korzystania z pętli T-SQL i zastępowania kursorów w usłudze Azure SQL Data Warehouse w celu opracowywania rozwiązań.
+description: Porady dotyczące tworzenia rozwiązań przy użyciu pętli T-SQL i zastępowania kursorów w puli SQL Synapse.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,28 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: afb2160cb9b4e34d3d17db86bac9cd3be79886d0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4cec4801f2a15ebf858f50377c9718fdacac4e29
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351591"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618998"
 ---
-# <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Korzystanie z pętli T-SQL w magazynie danych SQL
-Porady dotyczące korzystania z pętli T-SQL i zastępowania kursorów w usłudze Azure SQL Data Warehouse w celu opracowywania rozwiązań.
+# <a name="using-t-sql-loops-in-synapse-sql-pool"></a>Korzystanie z pętli T-SQL w puli Synapse SQL
+W tym artykule znajdują się wskazówki dotyczące tworzenia rozwiązań puli SQL przy użyciu pętli T-SQL i zastępowania kursorów.
 
 ## <a name="purpose-of-while-loops"></a>Przeznaczenie pętli WHILE
 
-Usługa SQL Data Warehouse obsługuje [while](/sql/t-sql/language-elements/while-transact-sql) pętli wielokrotnie wykonywania bloków instrukcji. Ta pętla WHILE jest kontynuowana tak długo, jak długo określone warunki są prawdziwe lub dopóki kod specjalnie kończy pętlę przy użyciu break słowa kluczowego. Pętle są przydatne do zastępowania kursorów zdefiniowanych w kodzie SQL. Na szczęście prawie wszystkie kursory, które są napisane w kodzie SQL są szybko do przodu, tylko do odczytu odmiany. W związku z tym [WHILE] pętle są doskonałą alternatywą dla zastępowania kursorów.
+Puli SQL Synapse obsługuje [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) pętli wielokrotnie wykonywania bloków instrukcji. Ta pętla WHILE jest kontynuowana tak długo, jak długo określone warunki są prawdziwe lub dopóki kod specjalnie kończy pętlę przy użyciu break słowa kluczowego. 
 
-## <a name="replacing-cursors-in-sql-data-warehouse"></a>Zastępowanie kursorów w magazynie danych SQL
-Jednak przed nurkowaniem w głowie najpierw należy zadać sobie następujące pytanie: "Czy ten kursor może być przepisany do korzystania z operacji opartych na zestawach?". W wielu przypadkach odpowiedź brzmi tak i często jest najlepszym podejściem. Operacja oparta na zestawie często wykonuje szybciej niż iteracyjne podejście wiersz po wierszu.
+Pętle są przydatne do zastępowania kursorów zdefiniowanych w kodzie SQL. Na szczęście prawie wszystkie kursory, które są napisane w kodzie SQL są szybko do przodu, tylko do odczytu odmiany. Tak, PODCZAS pętli są doskonałą alternatywą dla wymiany kursorów.
 
-Kursory tylko do odczytu do przodu można łatwo zastąpić konstrukcją pętli. Poniżej znajduje się prosty przykład. W tym przykładzie kodu aktualizuje statystyki dla każdej tabeli w bazie danych. Przez iteracji nad tabelami w pętli, każde polecenie wykonuje w sekwencji.
+## <a name="replacing-cursors-in-synapse-sql-pool"></a>Zastępowanie kursorów w puli SQL Synapse
+Jednak przed nurkowaniem w głowie najpierw należy zadać sobie następujące pytanie: "Czy ten kursor może być przepisany do korzystania z operacji opartych na zestawach?" 
+
+W wielu przypadkach odpowiedź brzmi tak i często jest najlepszym podejściem. Operacja oparta na zestawie często wykonuje szybciej niż iteracyjne podejście wiersz po wierszu.
+
+Kursory tylko do odczytu do przodu można łatwo zastąpić konstrukcją pętli. Poniższy przykład jest prosty. W tym przykładzie kodu aktualizuje statystyki dla każdej tabeli w bazie danych. Przez iteracji nad tabelami w pętli, każde polecenie wykonuje w sekwencji.
 
 Najpierw utwórz tabelę tymczasową zawierającą unikatowy numer wiersza używany do identyfikowania poszczególnych instrukcji:
 

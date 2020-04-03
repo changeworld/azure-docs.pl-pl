@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: f8f5ab99086ee38e2f56247ce31f8ac0e7affc81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6191e67f097b5ab471c5b31eff11a0e570d1c990
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129007"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617022"
 ---
 # <a name="authentication-basics"></a>Podstawowe informacje o uwierzytelnianiu
 
@@ -32,7 +32,7 @@ W tym artykule omówiono wiele pojęć uwierzytelniania, które należy zrozumie
 
 Zamiast tworzyć aplikacje, które przechowują własne informacje o nazwie użytkownika i hasła, co wiąże się z dużym obciążeniem administracyjnym, gdy trzeba dodać lub usunąć użytkowników w wielu aplikacjach, aplikacje mogą delegować tę odpowiedzialność do scentralizowanego dostawcy tożsamości.
 
-Usługa Azure Active Directory (Azure AD) jest scentralizowanym dostawcą tożsamości w chmurze. Delegowanie uwierzytelniania i autoryzacji do niego umożliwia scenariusze, takie jak zasady dostępu warunkowego, które wymagają, aby użytkownik był w określonej lokalizacji, korzystanie z uwierzytelniania wieloskładnikowego, a także umożliwiając użytkownikowi zalogowanie się raz, a następnie automatycznie zalogowano się do wszystkich aplikacji sieci web, które współużytkują ten sam scentralizowany katalog. Ta funkcja jest określana jako logowanie jednokrotne(Logowanie jednokrotne).
+Usługa Azure Active Directory (Azure AD) jest scentralizowanym dostawcą tożsamości w chmurze. Delegowanie uwierzytelniania i autoryzacji do niego umożliwia scenariusze, takie jak zasady dostępu warunkowego, które wymagają, aby użytkownik był w określonej lokalizacji, korzystanie z uwierzytelniania wieloskładnikowego, a także umożliwiając użytkownikowi zalogowanie się raz, a następnie automatycznie zalogowany do wszystkich aplikacji sieci web, które współużytkują ten sam scentralizowany katalog. Ta funkcja jest określana jako logowanie jednokrotne(Logowanie jednokrotne).
 
 Scentralizowany dostawca tożsamości jest jeszcze ważniejszy dla aplikacji, które mają użytkowników znajdujących się na całym świecie, którzy niekoniecznie logują się z sieci przedsiębiorstwa. Usługa Azure AD uwierzytelnia użytkowników i udostępnia tokeny dostępu. [Token dostępu](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#access-token) jest tokenem zabezpieczającym wystawionym przez serwer autoryzacji. Zawiera informacje o użytkowniku i aplikacji, dla której token jest przeznaczony; które mogą być używane do uzyskiwania dostępu do interfejsów API sieci Web i innych chronionych zasobów.
 
@@ -170,7 +170,7 @@ Ten atrybut powoduje, ASP.NET, aby sprawdzić obecność pliku cookie sesji zawi
 Uwierzytelnianie użytkownika odbywa się za pośrednictwem przeglądarki. Protokół OpenID używa standardowych komunikatów protokołu HTTP.
 * Aplikacja sieci web wysyła HTTP 302 (przekierowanie) do przeglądarki do korzystania z usługi Azure AD.
 * Gdy użytkownik jest uwierzytelniony, usługa Azure AD wysyła token do aplikacji sieci web przy użyciu przekierowania za pośrednictwem przeglądarki.
-* Przekierowanie jest dostarczane przez aplikację sieci web w postaci identyfikatora URI przekierowania. Ten identyfikator URI przekierowania jest zarejestrowany w obiekcie aplikacji usługi Azure AD. Może istnieć kilka identyfikatorów URL przekierowania, ponieważ aplikacja może zostać wdrożona przy kilku adresach URL. Tak więc aplikacja internetowa będzie również musiał określić przekierowanie URi do użycia.
+* Przekierowanie jest dostarczane przez aplikację sieci web w postaci identyfikatora URI przekierowania. Ten identyfikator URI przekierowania jest zarejestrowany w obiekcie aplikacji usługi Azure AD. Może istnieć kilka identyfikatorów URL przekierowania, ponieważ aplikacja może zostać wdrożona przy kilku adresach URL. Dlatego aplikacja sieci web będzie również musiał określić identyfikator URI przekierowania do użycia.
 * Usługa Azure AD sprawdza, czy identyfikator URI przekierowania wysyłany przez aplikację sieci web jest jednym z zarejestrowanych identyfikatorów URI przekierowania dla aplikacji.
 
 ## <a name="desktop-and-mobile-app-sign-in-flow-with-azure-ad"></a>Przepływ logowania do aplikacji komputerowej i mobilnej za pomocą usługi Azure AD

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: fcdb8af770fa0068e8413d4609a56223a9a20ce2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345894"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582194"
 ---
 # <a name="manage-assets"></a>Zarządzanie elementami zawartości
 
@@ -60,7 +60,7 @@ Po przekazaniu plików cyfrowych do magazynu i skojarzeniu z zasobem mogą być 
 
     **AssetContainerSas.listContainerSas** przyjmuje parametr [ListContainerSasInput,](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) `expiryTime`na którym ustawiono plik . Czas powinien być ustawiony na < 24 godziny.
 
-    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) zwraca wiele adresów URL Sygnatury dostępu Współdzielonego, ponieważ dla każdego konta magazynu są dwa klucze konta magazynu. Konto magazynu ma dwa klucze, ponieważ umożliwia bezproblemowe obracanie kluczy konta magazynu (na przykład zmień jeden podczas korzystania z drugiego, a następnie zacznij używać nowego klucza i obróć drugi klucz). Adres URL 1 sygnatury dostępu Współdzielonego reprezentuje klucz magazynu1 i drugi klucz magazynu2.
+    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) zwraca wiele adresów URL Sygnatury dostępu Współdzielonego, ponieważ dla każdego konta magazynu są dwa klucze konta magazynu. Konto magazynu ma dwa klucze, ponieważ pomaga w pracy awaryjnej i bezproblemowym rotacji kluczy konta magazynu. Pierwszy adres URL sygnatury dostępu Współdzielonego reprezentuje pierwszy klucz konta magazynu, a drugi adres URL sygnatury dostępu Współdzielonego reprezentuje drugi klucz.
 3. Użyj interfejsów API usługi Azure Storage lub zestawów SDK (na przykład [interfejsu API REST magazynu](../../storage/common/storage-rest-api-auth.md) lub [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)), aby przekazać pliki do kontenera zasobów.
 4. W celu utworzenia przekształcenia i zadania przetwarzającego element zawartości „input” należy użyć interfejsów API usługi Media Services w wersji 3. Aby uzyskać więcej informacji, zobacz [Przekształcenia i zadania](transform-concept.md).
 5. Przesyłaj strumieniowo zawartość z zasobu "output".

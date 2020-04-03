@@ -1,6 +1,6 @@
 ---
 title: Indeksowanie tabel
-description: Zalecenia i przykłady indeksowania tabel w usłudze SQL Analytics.
+description: Zalecenia i przykłady indeksowania tabel w puli Synapse SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ced965f94808bdc672f694bede5c239178891f97
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d5acc2b69ed521af4fd4777dc9f3496290078379
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351283"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583266"
 ---
-# <a name="indexing-tables-in-sql-analytics"></a>Indeksowanie tabel w usłudze SQL Analytics
+# <a name="indexing-tables-in-synapse-sql-pool"></a>Indeksowanie tabel w puli SQL Synapse
 
-Zalecenia i przykłady indeksowania tabel w usłudze SQL Analytics.
+Zalecenia i przykłady indeksowania tabel w puli Synapse SQL.
 
 ## <a name="index-types"></a>Typy indeksów
 
-SQL Analytics oferuje kilka opcji indeksowania, w tym [indeksy klastrowanego magazynu kolumn,](/sql/relational-databases/indexes/columnstore-indexes-overview) [indeksy klastrowane i indeksy nieklastrowane](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)oraz opcję nieindeksową znaną również jako [sterty.](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)  
+Pula SQL Synapse oferuje kilka opcji indeksowania, w tym [indeksy klastrowanego magazynu kolumn,](/sql/relational-databases/indexes/columnstore-indexes-overview) [indeksy klastrowane i indeksy nieklastrowane](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)oraz opcję nieindeksową znaną również jako [sterty.](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)  
 
-Aby utworzyć tabelę z indeksem, zobacz dokumentację [TWORZENIA TABELI (SQL Analytics).](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+Aby utworzyć tabelę z indeksem, zobacz tworzenie [tabeli (puli SYNAPSE SQL)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) dokumentacji.
 
 ## <a name="clustered-columnstore-indexes"></a>Indeksy klastrowanego magazynu kolumn
 
-Domyślnie usługa SQL Analytics tworzy indeks klastrowanego magazynu kolumn, gdy w tabeli nie określono żadnych opcji indeksu. Klastrowane tabele magazynu kolumn oferują zarówno najwyższy poziom kompresji danych, jak i najlepszą ogólną wydajność zapytań.  Klastrowane tabele magazynu kolumn zazwyczaj przewyższają tabele indeksu klastrowanego lub sterty i są zwykle najlepszym wyborem dla dużych tabel.  Z tych powodów klastrowany magazyn kolumn jest najlepszym miejscem do rozpoczęcia, gdy nie masz pewności, jak indeksować tabelę.  
+Domyślnie pula Synapse SQL tworzy indeks klastrowanego magazynu kolumn, gdy w tabeli nie określono żadnych opcji indeksu. Klastrowane tabele magazynu kolumn oferują zarówno najwyższy poziom kompresji danych, jak i najlepszą ogólną wydajność zapytań.  Klastrowane tabele magazynu kolumn zazwyczaj przewyższają tabele indeksu klastrowanego lub sterty i są zwykle najlepszym wyborem dla dużych tabel.  Z tych powodów klastrowany magazyn kolumn jest najlepszym miejscem do rozpoczęcia, gdy nie masz pewności, jak indeksować tabelę.  
 
 Aby utworzyć tabelę magazynu kolumn klastrowanych, wystarczy określić indeks klastra kolumn w klauzuli WITH lub pozostawić klauzulę WITH wyłączona:
 
@@ -52,7 +52,7 @@ Istnieje kilka scenariuszy, w których klastrowany magazyn kolumn może nie być
 
 ## <a name="heap-tables"></a>Tabele sterty
 
-Gdy tymczasowo wyładowujesz dane w usłudze SQL Analytics, może się okazać, że użycie tabeli sterty przyspiesza ogólny proces. Jest to spowodowane obciążenia do sterty są szybsze niż do tabel indeksu i w niektórych przypadkach kolejny odczyt można wykonać z pamięci podręcznej.  Jeśli ładujesz dane tylko do etapu przed uruchomieniem więcej przekształceń, ładowanie tabeli do tabeli sterty jest znacznie szybsze niż ładowanie danych do tabeli magazynu kolumn klastrowanych. Ponadto ładowanie danych do [tabeli tymczasowej](sql-data-warehouse-tables-temporary.md) ładuje się szybciej niż ładowanie tabeli do magazynu trwałego.  
+Podczas tymczasowego lądowania danych w puli Synapse SQL, może się okazać, że przy użyciu tabeli sterty sprawia, że ogólny proces szybciej. Jest to spowodowane obciążenia do sterty są szybsze niż do tabel indeksu i w niektórych przypadkach kolejny odczyt można wykonać z pamięci podręcznej.  Jeśli ładujesz dane tylko do etapu przed uruchomieniem więcej przekształceń, ładowanie tabeli do tabeli sterty jest znacznie szybsze niż ładowanie danych do tabeli magazynu kolumn klastrowanych. Ponadto ładowanie danych do [tabeli tymczasowej](sql-data-warehouse-tables-temporary.md) ładuje się szybciej niż ładowanie tabeli do magazynu trwałego.  
 
 W przypadku małych tabel odnośników mniej niż 60 milionów wierszy często tabele sterty mają sens.  Tabele magazynu kolumn klastra zaczynają osiągać optymalną kompresję, gdy istnieje więcej niż 60 milionów wierszy.
 
@@ -190,7 +190,7 @@ Te czynniki mogą powodować indeks magazynu kolumn mają znacznie mniej niż op
 
 ### <a name="memory-pressure-when-index-was-built"></a>Ciśnienie pamięci podczas budowy indeksu
 
-Liczba wierszy na skompresowaną grupę wierszy jest bezpośrednio związana z szerokością wiersza i ilością pamięci dostępnej do przetworzenia grupy wierszy.  Jeśli wiersze są zapisywane w tabelach magazynu kolumn przy dużym wykorzystaniu pamięci, może to spowodować obniżenie jakości segmentów w magazynie kolumn.  W związku z tym najlepszym rozwiązaniem jest, aby dać sesji, która zapisuje do tabel indeksu magazynu kolumn dostęp do jak najwięcej pamięci, jak to możliwe.  Ponieważ istnieje kompromis między pamięcią a współbieżnością, wskazówki dotyczące właściwej alokacji pamięci zależą od danych w każdym wierszu tabeli, jednostek SQL Analytics przydzielonych do systemu i liczby gniazd współbieżności, które można podać sesji, która jest zapisywania danych do tabeli.
+Liczba wierszy na skompresowaną grupę wierszy jest bezpośrednio związana z szerokością wiersza i ilością pamięci dostępnej do przetworzenia grupy wierszy.  Jeśli wiersze są zapisywane w tabelach magazynu kolumn przy dużym wykorzystaniu pamięci, może to spowodować obniżenie jakości segmentów w magazynie kolumn.  W związku z tym najlepszym rozwiązaniem jest, aby dać sesji, która zapisuje do tabel indeksu magazynu kolumn dostęp do jak najwięcej pamięci, jak to możliwe.  Ponieważ istnieje kompromis między pamięcią a współbieżnością, wskazówki dotyczące alokacji pamięci prawo zależy od danych w każdym wierszu tabeli, jednostek magazynu danych przydzielonych do systemu i liczby gniazd współbieżności można podać do sesji, która zapisuje dane do tabeli.
 
 ### <a name="high-volume-of-dml-operations"></a>Duża ilość operacji DML
 
@@ -204,13 +204,13 @@ Operacje aktualizacji i wstawiania wsadowe, które przekraczają próg zbiorczy 
 
 ### <a name="small-or-trickle-load-operations"></a>Małe lub strużka operacji obciążenia
 
-Małe obciążenia, które przepływają do baz danych usługi SQL Analytics są również czasami nazywane obciążeniami ściekowymi. Zazwyczaj reprezentują one prawie stały strumień danych są pozyskiwania przez system. Jednak ponieważ ten strumień jest w pobliżu ciągłego woluminu wierszy nie jest szczególnie duży. Częściej niż nie dane są znacznie poniżej progu wymaganego dla bezpośredniego obciążenia do formatu magazynu kolumn.
+Małe obciążenia, które przepływają do puli SQL Synapse są również czasami nazywane obciążeniami ściekowymi. Zazwyczaj reprezentują one prawie stały strumień danych są pozyskiwania przez system. Jednak ponieważ ten strumień jest w pobliżu ciągłego woluminu wierszy nie jest szczególnie duży. Częściej niż nie dane są znacznie poniżej progu wymaganego dla bezpośredniego obciążenia do formatu magazynu kolumn.
 
 W takich sytuacjach często lepiej jest wylądować dane najpierw w magazynie obiektów blob platformy Azure i pozwolić mu gromadzić się przed załadowaniem. Technika ta jest często znana jako *mikro-batching*.
 
 ### <a name="too-many-partitions"></a>Zbyt wiele partycji
 
-Inną rzeczą do rozważenia jest wpływ partycjonowania na tabelach magazynu kolumn klastrowanych.  Przed partycjonowanie, SQL Analytics już dzieli dane na 60 baz danych.  Partycjonowanie dodatkowo dzieli dane.  Jeśli partycji danych, a następnie należy wziąć pod uwagę, że **każda** partycja potrzebuje co najmniej 1 mln wierszy, aby korzystać z indeksu klastrowanego magazynu kolumn.  Jeśli podzielasz tabelę na 100 partycji, tabela potrzebuje co najmniej 6 miliardów wierszy, aby korzystać z indeksu klastrowanego magazynu kolumn (60 dystrybucji *100 partycji* 1 milion wierszy). Jeśli tabela 100 partycji nie ma 6 miliardów wierszy, zmniejsz liczbę partycji lub rozważ użycie tabeli sterty.
+Inną rzeczą do rozważenia jest wpływ partycjonowania na tabelach magazynu kolumn klastrowanych.  Przed partycjonowanie, Synapse PULI SQL już dzieli dane na 60 baz danych.  Partycjonowanie dodatkowo dzieli dane.  Jeśli partycji danych, a następnie należy wziąć pod uwagę, że **każda** partycja potrzebuje co najmniej 1 mln wierszy, aby korzystać z indeksu klastrowanego magazynu kolumn.  Jeśli podzielasz tabelę na 100 partycji, tabela potrzebuje co najmniej 6 miliardów wierszy, aby korzystać z indeksu klastrowanego magazynu kolumn (60 dystrybucji *100 partycji* 1 milion wierszy). Jeśli tabela 100 partycji nie ma 6 miliardów wierszy, zmniejsz liczbę partycji lub rozważ użycie tabeli sterty.
 
 Po załadowaniu tabel z niektórych danych, wykonaj poniższe kroki, aby zidentyfikować i odbudować tabele z sub-optymalne indeksy klastrowanego magazynu kolumn.
 
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Odbudowanie indeksu w usłudze SQL Analytics jest operacją w trybie offline.  Aby uzyskać więcej informacji na temat odbudowy indeksów, zobacz sekcję ALTER INDEX REBUILD w [kolumnie Indeksy defragmentacji](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)i [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql).
+Odbudowanie indeksu w puli SQL Synapse jest operacją w trybie offline.  Aby uzyskać więcej informacji na temat odbudowy indeksów, zobacz sekcję ALTER INDEX REBUILD w [kolumnie Indeksy defragmentacji](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)i [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql).
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: Sprawdź, czy poprawiła się jakość segmentu klastrowanego magazynu kolumn
 
@@ -283,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-Aby uzyskać więcej informacji na temat ponownego tworzenia partycji przy użyciu CTAS, zobacz [Korzystanie z partycji w usłudze SQL Analytics](sql-data-warehouse-tables-partition.md).
+Aby uzyskać więcej informacji na temat ponownego tworzenia partycji przy użyciu CTAS, zobacz [Używanie partycji w puli programu Synapse SQL](sql-data-warehouse-tables-partition.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

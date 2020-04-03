@@ -1,6 +1,6 @@
 ---
 title: Wskazówki dotyczące projektowania tabel rozproszonych
-description: Zalecenia dotyczące projektowania tabel rozproszonych i okrężnych w usłudze SQL Analytics.
+description: Zalecenia dotyczące projektowania tabel rozproszonych i okrężnych w puli SQL synapse.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,19 +11,21 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 35106e73a3a4a143bf22c72c4fe8ac6798ac5219
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8a93f3ada8e56853b78321bdc7d99a667cee6158
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351339"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583518"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>Wskazówki dotyczące projektowania tabel rozproszonych w usłudze SQL Analytics
-Zalecenia dotyczące projektowania tabel rozproszonych i okrężnych w usłudze SQL Analytics.
+# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Wskazówki dotyczące projektowania tabel rozproszonych w puli Synapse SQL
 
-W tym artykule założono, że znasz pojęcia dotyczące dystrybucji danych i przenoszenia danych w usłudze SQL Analytics.Aby uzyskać więcej informacji, zobacz [SQL Analytics masowo równoległego przetwarzania (MPP) architektura](massively-parallel-processing-mpp-architecture.md). 
+Zalecenia dotyczące projektowania tabel rozproszonych i okrężnych w pulach synapse SQL.
+
+W tym artykule założono, że znasz pojęcia dotyczące dystrybucji danych i przenoszenia danych w puli SQL Synapse.Aby uzyskać więcej informacji, zobacz [Architektura przetwarzania masowo równoległego usługi Azure Synapse Analytics (MPP).](massively-parallel-processing-mpp-architecture.md) 
 
 ## <a name="what-is-a-distributed-table"></a>Co to jest tabela rozproszona?
+
 Tabela rozproszona jest wyświetlana jako pojedyncza tabela, ale wiersze są faktycznie przechowywane w 60 dystrybucjach. Wiersze są dystrybuowane za pomocą algorytmu mieszania lub okrężnego.  
 
 **Tabele rozproszone skrótami** zwiększają wydajność kwerend w dużych tabelach faktów i są głównym tematem tego artykułu. **Stoły okrężne** są przydatne do poprawy szybkości ładowania. Te opcje projektowania mają znaczący wpływ na poprawę wydajności zapytań i ładowania.
@@ -34,15 +36,16 @@ W ramach projektowania tabeli, zrozumieć jak najwięcej o danych i jak dane są
 
 - Jak duży jest stół?   
 - Jak często tabela jest odświeżana?   
-- Czy w bazie danych usługi SQL Analytics są wylić tabele faktów i wymiarów?   
+- Czy mam tabele faktów i wymiarów w puli SQL Synapse?   
 
 
 ### <a name="hash-distributed"></a>Mieszanie dystrybuowane
+
 Tabela rozproszona mieszania rozmieszcza wiersze tabeli w węzłach obliczeniowych za pomocą deterministycznej funkcji mieszania, aby przypisać każdy wiersz do jednej [dystrybucji](massively-parallel-processing-mpp-architecture.md#distributions). 
 
 ![Tabela rozproszona](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Tabela rozproszona")  
 
-Ponieważ identyczne wartości zawsze mieszają się do tej samej dystrybucji, usługa SQL Analytics ma wbudowaną wiedzę na temat lokalizacji wierszy. Usługa SQL Analytics wykorzystuje tę wiedzę do zminimalizowania przenoszenia danych podczas kwerend, co zwiększa wydajność zapytań. 
+Ponieważ identyczne wartości zawsze mieszają do tej samej dystrybucji, magazyn danych ma wbudowaną wiedzę na temat lokalizacji wierszy. W puli SQL Synapse ta wiedza jest używana do minimalizowania przenoszenia danych podczas kwerend, co zwiększa wydajność kwerend. 
 
 Tabele rozproszone skrótami działają dobrze w przypadku dużych tabel faktów w schemacie gwiazdy. Mogą mieć bardzo dużą liczbę wierszy i nadal osiągnąć wysoką wydajność. Istnieją, oczywiście, pewne zagadnienia projektowe, które pomogą Ci uzyskać wydajność rozproszonego systemu jest przeznaczony do zapewnienia. Wybór dobrej kolumny dystrybucji jest jednym z takich rozważań, które jest opisane w tym artykule. 
 
@@ -52,6 +55,7 @@ Należy rozważyć użycie tabeli rozproszonej skrótu, gdy:
 - Tabela ma częste operacje wstawiania, aktualizowania i usuwania. 
 
 ### <a name="round-robin-distributed"></a>Dystrybuowane okrężne
+
 Tabela rozproszona okrężnym rozmieszcza wiersze tabeli równomiernie we wszystkich dystrybucjach. Przypisanie wierszy do dystrybucji jest losowe. W przeciwieństwie do tabel rozproszonych mieszania wiersze o równych wartościach nie są gwarantowane do przypisania do tego samego rozkładu. 
 
 W rezultacie system czasami musi wywołać operację przenoszenia danych, aby lepiej zorganizować dane, zanim będzie można rozwiązać kwerendę.  Ten dodatkowy krok może spowolnić zapytania. Na przykład dołączenie do tabeli okrężnego zwykle wymaga przetasowania wierszy, co jest trafieniem wydajności.
@@ -65,7 +69,7 @@ Rozważ użycie dystrybucji okrężkowej dla tabeli w następujących scenariusz
 - Jeśli sprzężenie jest mniej istotne niż inne sprzężenia w kwerendzie
 - Gdy tabela jest tymczasową tabelą przemieszczania
 
-Samouczek [Załaduj dane taksówek w Nowym Jorku](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) podaje przykład ładowania danych do tabeli przejściowej okrężnej w usłudze SQL Analytics.
+Samouczek [Załaduj dane taksówek w Nowym Jorku](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) podaje przykład ładowania danych do tabeli przejściowej okrężnej.
 
 
 ## <a name="choosing-a-distribution-column"></a>Wybieranie kolumny dystrybucji
@@ -109,7 +113,7 @@ Aby zrównoważyć przetwarzanie równoległe, wybierz kolumnę dystrybucyjną, 
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Wybieranie kolumny dystrybucyjnej minimalizowanie przenoszenia danych
 
-Aby uzyskać poprawne kwerendy wynik kwerendy mogą przenosić dane z jednego węzła obliczeniowego do innego. Przenoszenie danych często dzieje się, gdy kwerendy mają sprzężenia i agregacji w tabelach rozproszonych. Wybranie kolumny dystrybucyjnej, która pomaga zminimalizować przenoszenie danych, jest jedną z najważniejszych strategii optymalizacji wydajności bazy danych sql analytics.
+Aby uzyskać poprawne kwerendy wynik kwerendy mogą przenosić dane z jednego węzła obliczeniowego do innego. Przenoszenie danych często dzieje się, gdy kwerendy mają sprzężenia i agregacji w tabelach rozproszonych. Wybranie kolumny dystrybucji, która pomaga zminimalizować przenoszenie danych jest jedną z najważniejszych strategii optymalizacji wydajności puli SQL Synapse.
 
 Aby zminimalizować przenoszenie danych, wybierz kolumnę dystrybucyjną, która:
 
@@ -217,7 +221,7 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Aby utworzyć tabelę rozproszoną, użyj jednej z następujących instrukcji:
 
-- [TWORZENIE TABELI (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [TWORZENIE TABELI JAKO WYBIERZ (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [TWORZENIE TABELI (pula SQL Synapse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [UTWÓRZ TABELĘ JAKO WYBIERZ (Pula SQL Synapse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

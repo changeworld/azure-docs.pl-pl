@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c868d8c159bca0c8462acde48225dc45003cf84e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c427c832eb613dddbff33ef6e67af63112e2f136
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351001"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586066"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Limity pamięci i współbieżności dla usługi Azure Synapse Analytics
 Wyświetlanie limitów pamięci i współbieżności przydzielonych do różnych poziomów wydajności i klas zasobów w usłudze Azure Synapse Analytics.  
@@ -73,7 +73,7 @@ Wraz z [wprowadzeniem grup obciążenia](sql-data-warehouse-workload-isolation.m
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Maksymalne wartości współbieżności dla klas zasobów
-Aby upewnić się, że każda kwerenda ma wystarczającą ilość zasobów do wydajnej pracy, usługa SQL Analytics w usłudze Azure Synapse śledzi wykorzystanie zasobów przez przypisywanie gniazd współbieżności do każdej kwerendy. System umieszcza zapytania w kolejce na podstawie znaczeń znaczeń i współbieżności. Kwerendy czekać w kolejce, aż dostępna jest wystarczająca liczba gniazd współbieżności. [Znaczenie](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) i współbieżność szczeliny określają priorytety procesora CPU. Aby uzyskać więcej informacji, zobacz [Analizowanie obciążenia](analyze-your-workload.md)
+Aby upewnić się, że każda kwerenda ma wystarczającą ilość zasobów do wykonania wydajnie, wykorzystanie zasobów jest śledzone przez przypisanie gniazd współbieżności do każdej kwerendy. System umieszcza zapytania w kolejce na podstawie znaczeń znaczeń i współbieżności. Kwerendy czekać w kolejce, aż dostępna jest wystarczająca liczba gniazd współbieżności. [Znaczenie](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) i współbieżność szczeliny określają priorytety procesora CPU. Aby uzyskać więcej informacji, zobacz [Analizowanie obciążenia](analyze-your-workload.md)
 
 **Statyczne klasy zasobów**
 

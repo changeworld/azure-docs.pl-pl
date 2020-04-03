@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 2df83e3b62994381895315b2ef100299e40b745e
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 9fa93af72c2869efd7b6d2f1e8b96b0e667f8b16
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366507"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607549"
 ---
 # <a name="sql-database-release-notes"></a>Informacje o wersji bazy danych SQL
 
@@ -78,6 +78,7 @@ Następujące funkcje są włączone w modelu wdrażania wystąpienia zarządzan
 
 |Problem  |Data odnaleziona  |Stan  |Data rozwiązana  |
 |---------|---------|---------|---------|
+|[Uprawnienia do grupy zasobów niestosowano do wystąpienia zarządzanego](#permissions-on-resource-group-not-applied-to-managed-instance)|Luty 2020 r.|Ma obejście||
 |[Ograniczenie ręcznego pracy awaryjnej za pośrednictwem portalu dla grup trybu failover](#limitation-of-manual-failover-via-portal-for-failover-groups)|Styczeń 2020 r.|Ma obejście||
 |[Role agenta SQL wymagają jawnych uprawnień EXECUTE dla logowania innych niż sysadmin](#in-memory-oltp-memory-limits-are-not-applied)|Grudzień 2019 r.|Ma obejście||
 |[Zadania programu SQL Agent mogą zostać przerwane przez ponowne uruchomienie procesu agenta](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|Grudzień 2019 r.|Brak obejścia|Mar 2020|
@@ -101,6 +102,12 @@ Następujące funkcje są włączone w modelu wdrażania wystąpienia zarządzan
 |Przywracanie bazy danych w czasie z warstwy Krytyczne dla firmy do warstwy ogólnego przeznaczenia nie powiedzie się, jeśli źródłowa baza danych zawiera obiekty OLTP w pamięci.||Resolved|Październik 2019 r.|
 |Funkcja Poczty bazy danych z zewnętrznymi serwerami poczty (nienawiązanego z platformą Azure) przy użyciu bezpiecznego połączenia||Resolved|Październik 2019 r.|
 |Zawarte bazy danych nie są obsługiwane w wystąpieniu zarządzanym||Resolved|Sierpień 2019 r.|
+
+### <a name="permissions-on-resource-group-not-applied-to-managed-instance"></a>Uprawnienia do grupy zasobów niestosowano do wystąpienia zarządzanego
+
+Rola RBAC współautora wystąpienia zarządzanego po zastosowaniu do grupy zasobów (RG) nie jest stosowana do wystąpienia zarządzanego i nie ma wpływu.
+
+**Obejście:** Konfigurowanie roli współautora wystąpienia zarządzanego dla użytkowników na poziomie subskrypcji.
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>Ograniczenie ręcznego pracy awaryjnej za pośrednictwem portalu dla grup trybu failover
 

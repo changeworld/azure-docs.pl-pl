@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z łącznością
-description: Rozwiązywanie problemów z łącznością w usłudze SQL Analytics.
+description: Rozwiązywanie problemów z łącznością w puli sql synapse.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 689a2e549c2627c607b6549f164e55a73318f63e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2b0e144220e36de6157101190adb838ae651d7c4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350042"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583322"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Rozwiązywanie problemów z łącznością
 
-W tym artykule wymieniono typowe techniki rozwiązywania problemów związane z łączeniem się z bazą danych usługi SQL Analytics.
+W tym artykule wymieniono typowe techniki rozwiązywania problemów związane z nawiązywaniem połączenia z pulą SQL synapse.
 - [Sprawdź dostępność usługi](sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [Sprawdzanie istnienia wstrzymania lub operacji skalowania](sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [Sprawdzanie ustawień zapory](sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -32,33 +32,33 @@ W tym artykule wymieniono typowe techniki rozwiązywania problemów związane z 
 
 ## <a name="check-service-availability"></a>Sprawdź dostępność usługi
 
-Sprawdź, czy usługa jest dostępna. W witrynie Azure portal przejdź do bazy danych usługi SQL Analytics, z którą próbujesz się połączyć. W lewym panelu TOC kliknij **przycisk Diagnozuj i rozwiązuj problemy**.
+Sprawdź, czy usługa jest dostępna. W witrynie Azure portal przejdź do puli sql synapse, z którą próbujesz się połączyć. W lewym panelu TOC kliknij **przycisk Diagnozuj i rozwiązuj problemy**.
 
 ![Wybierz kondycję zasobów](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-Tutaj zostanie wyświetlony stan usługi SQL Analytics. Jeśli usługa nie jest wyświetlana jako **Dostępna,** sprawdź dalsze kroki.
+Tutaj zostanie wyświetlony stan puli SQL Synapse. Jeśli usługa nie jest wyświetlana jako **Dostępna,** sprawdź dalsze kroki.
 
 ![Dostępna usługa](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Jeśli kondycja zasobów pokazuje, że wystąpienie usługi SQL Analytics jest wstrzymane lub skalowanie, postępuj zgodnie ze wskazówkami, aby wznowić wystąpienie.
+Jeśli kondycja zasobu pokazuje, że wystąpienie puli Synapse SQL jest wstrzymane lub skalowanie, postępuj zgodnie ze wskazówkami, aby wznowić wystąpienie.
 
 ![Usługa wstrzymana](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) Dodatkowe informacje o kondycji zasobów można znaleźć tutaj.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Sprawdzanie istnienia wstrzymania lub operacji skalowania
 
-Sprawdź w portalu, czy wystąpienie usługi SQL Analytics jest wstrzymane lub skalowanie.
+Sprawdź w portalu, czy wystąpienie puli synapse SQL jest wstrzymane lub skalowanie.
 
 ![Usługa wstrzymana](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Jeśli widzisz, że usługa jest wstrzymana lub skalowanie, sprawdź, czy nie jest w harmonogramie konserwacji. W portalu *przeglądu*analizy SQL zobaczysz wybrany harmonogram konserwacji.
+Jeśli widzisz, że usługa jest wstrzymana lub skalowanie, sprawdź, czy nie jest w harmonogramie konserwacji. W portalu dla puli synapse SQL *przegląd puli*, zobaczysz wybrany harmonogram konserwacji.
 
 ![Harmonogram konserwacji przeglądowej](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-W przeciwnym razie skontaktuj się z administratorem IT, aby sprawdzić, czy ta konserwacja nie jest zaplanowanym wydarzeniem. Aby wznowić wystąpienie usługi SQL Analytics, wykonaj kroki opisane [w tym miejscu](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute).
+W przeciwnym razie skontaktuj się z administratorem IT, aby sprawdzić, czy ta konserwacja nie jest zaplanowanym wydarzeniem. Aby wznowić wystąpienie puli Sql Synapse, wykonaj kroki opisane [w tym miejscu](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute).
 
 ## <a name="check-your-firewall-settings"></a>Sprawdzanie ustawień zapory
 
-Baza danych SQL Analytics komunikuje się za pośrednictwem portu 1433.Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. W takim przypadku nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 1433. Dodatkowe informacje na temat konfiguracji zapory można znaleźć [tutaj](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
+Puli SQL Synapse komunikuje się za pośrednictwem portu 1433.Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. W takim przypadku nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 1433. Dodatkowe informacje na temat konfiguracji zapory można znaleźć [tutaj](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Sprawdzanie ustawień sieci wirtualnej/punktu końcowego usługi
 
@@ -68,7 +68,7 @@ Jeśli otrzymujesz błędy 40914 i 40615, zobacz [opis błędu i rozdzielczość
 
 ### <a name="software"></a>Oprogramowanie
 
-Upewnij się, że korzystasz z najnowszych narzędzi do łączenia się z bazą danych usługi SQL Analytics:
+Sprawdź, czy używasz najnowszych narzędzi do łączenia się z pulą SQL Synapse:
 
 * SSMS
 * Azure Data Studio
@@ -113,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Sporadyczne problemy z połączeniami
 
-Sprawdź, czy serwer nie jest mocno obciążony, a w kolejce nie ma dużej liczby żądań. Może być konieczne skalowanie w górę wystąpienia usługi SQL Analytics w celu uzyskania dodatkowych zasobów.
+Sprawdź, czy serwer nie jest mocno obciążony, a w kolejce nie ma dużej liczby żądań. Może być konieczne skalowanie w górę puli SQL Synapse dla dodatkowych zasobów.
 
 ## <a name="common-error-messages"></a>Typowe komunikaty o błędach
 

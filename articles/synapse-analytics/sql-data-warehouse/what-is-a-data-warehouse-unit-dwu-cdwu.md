@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a7f27215c7ba053933d9d12658253ea92aefa526
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: ace4bc2e46d9e1926da18dedb163657d4f343979
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351108"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586312"
 ---
 # <a name="data-warehouse-units-dwus"></a>Jednostki magazynu danych (DWU)
 
@@ -24,7 +24,7 @@ Zalecenia dotyczące wyboru idealnej liczby jednostek magazynu danych (DWU) w ce
 
 ## <a name="what-are-data-warehouse-units"></a>Co to są jednostki magazynu danych
 
-[Pula SQL](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) reprezentuje zbiór zasobów analitycznych, które są aprowizacji podczas korzystania z [usługi SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse). Zasoby analityczne są definiowane jako połączenie procesora CPU, pamięci i we/wy. Te trzy zasoby są powiązane z jednostkami skali obliczeniowej o nazwie Jednostki hurtowni danych (DWU). Jednostka DWU to abstrakcyjna, znormalizowana miara zasobów obliczeniowych i wydajności. Zmiana poziomu usług zmienia liczbę jednostek DU dostępnych dla systemu, co z kolei dostosowuje wydajność i koszt systemu.
+[A Synapse puli SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) reprezentuje zbiór zasobów analitycznych, które są aprowizacji. Zasoby analityczne są definiowane jako połączenie procesora CPU, pamięci i we/wy. Te trzy zasoby są powiązane z jednostkami skali obliczeniowej o nazwie Jednostki hurtowni danych (DWU). Jednostka DWU to abstrakcyjna, znormalizowana miara zasobów obliczeniowych i wydajności. Zmiana poziomu usług zmienia liczbę jednostek DU dostępnych dla systemu, co z kolei dostosowuje wydajność i koszt systemu.
 
 Aby uzyskać wyższą wydajność, można zwiększyć liczbę jednostek magazynu danych. Aby zmniejszyć wydajność, zmniejsz jednostki magazynu danych. Koszty magazynu i mocy obliczeniowej są rozliczane osobno, więc zmiana liczby jednostek magazynu danych nie ma wpływu na koszty magazynu.
 
@@ -99,7 +99,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ## <a name="change-data-warehouse-units"></a>Zmienianie jednostek magazynu danych
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Aby zmienić jednostki DWU:
 

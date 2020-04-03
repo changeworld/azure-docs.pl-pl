@@ -1,6 +1,6 @@
 ---
-title: Nawiązywanie połączenia z usługą Azure SQL Data Warehouse
-description: Połącz się z usługą Azure SQL Data Warehouse.
+title: Łączenie się z pulą SQL synapse
+description: Połącz się z pulą SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,28 +11,30 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 72825f588ff92383858020cdbcd92c7de3078ed5
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 70dd1ae883ee1f44672dccb802c0e770d7676440
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350657"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619082"
 ---
-# <a name="connect-to-azure-sql-data-warehouse"></a>Nawiązywanie połączenia z usługą Azure SQL Data Warehouse
-Połącz się z usługą Azure SQL Data Warehouse.
+# <a name="connect-to-synapse-sql-pool"></a>Łączenie się z pulą SQL synapse
+Połącz się z pulą SQL.
 
 ## <a name="find-your-server-name"></a>Znajdowanie nazwy serwera
-Nazwa serwera w poniższym przykładzie jest samplesvr.database.windows.net. Aby znaleźć w pełni kwalifikowaną nazwę serwera:
+Nazwa serwera w poniższym przykładzie jest sqlpoolservername.database.windows.net. Aby znaleźć w pełni kwalifikowaną nazwę serwera:
 
-1. Przejdź do [witryny Azure portal][Azure portal].
-2. Kliknij pozycję **Magazyny danych SQL**.
-3. Kliknij magazyn danych, z którym chcesz nawiązać połączenie.
+1. Przejdź do [witryny Azure portal](https://portal.azure.com).
+2. Kliknij **usługę Azure Synapse Analytics**.
+3. Kliknij pulę SQL, z którą chcesz się połączyć.
 4. Znajdź pełną nazwę serwera.
    
     ![Pełna nazwa serwera](media/sql-data-warehouse-connect-overview/server-connect.PNG)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Obsługiwane sterowniki i parametry połączenia
-Usługa Azure SQL Data Warehouse obsługuje sterowniki [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] i [JDBC][JDBC]. Aby znaleźć najnowszą wersję i dokumentację, kliknij jeden z poprzednich sterowników. Aby automatycznie wygenerować parametry połączenia dla sterownika, którego używasz z witryny Azure portal, kliknij **pokaż parametry połączenia bazy danych** z poprzedniego przykładu. Poniżej przedstawiono również przykłady parametrów połączenia dla każdego sterownika.
+Pula SQL obsługuje [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)i [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Aby znaleźć najnowszą wersję i dokumentację, kliknij jeden z poprzednich sterowników. 
+
+Aby automatycznie wygenerować parametry połączenia dla sterownika, którego używasz z witryny Azure portal, kliknij **pokaż parametry połączenia bazy danych** z poprzedniego przykładu. Poniżej przedstawiono również przykłady parametrów połączenia dla każdego sterownika.
 
 > [!NOTE]
 > Rozważ ustawienie limitu czasu połączenia na wartość 300 sekund, aby połączenie nie zostało zakończone mimo krótkich okresów niedostępności.
@@ -60,36 +62,15 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ```
 
 ## <a name="connection-settings"></a>Ustawienia połączenia
-Usługa SQL Data Warehouse standaryzuje niektóre ustawienia podczas tworzenia połączenia i obiektu. Tych ustawień nie można zastąpić i obejmują one:
+Pula SQL standaryzuje niektóre ustawienia podczas tworzenia połączenia i obiektu. Tych ustawień nie można zastąpić i obejmują one:
 
 | Ustawienia bazy danych | Wartość |
 |:--- |:--- |
-| [ANSI_NULLS][ANSI_NULLS] |ON |
-| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |ON |
-| [DATEFORMAT][DATEFORMAT] |mdy |
-| [DATEFIRST][DATEFIRST] |7 |
+| [ANSI_NULLS](https://msdn.microsoft.com/library/ms188048.aspx) |ON |
+| [QUOTED_IDENTIFIERS](https://msdn.microsoft.com/library/ms174393.aspx) |ON |
+| [DATEFORMAT](https://msdn.microsoft.com/library/ms189491.aspx) |mdy |
+| [DATEFIRST](https://msdn.microsoft.com/library/ms181598.aspx) |7 |
 
 ## <a name="next-steps"></a>Następne kroki
-Aby nawiązać połączenie i rozpocząć tworzenie zapytań przy użyciu programu Visual Studio, zobacz artykuł [Query with Visual Studio][Query with Visual Studio] (Wykonywanie zapytań przy użyciu programu Visual Studio). Aby dowiedzieć się więcej na temat opcji uwierzytelniania, zobacz [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] (Uwierzytelnianie w usłudze Azure SQL Data Warehouse).
-
-<!--Articles-->
-[Query with Visual Studio]:sql-data-warehouse-query-visual-studio.md
-[Authentication to Azure SQL Data Warehouse]:sql-data-warehouse-authentication.md
-
-<!--MSDN references-->
-[ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
-[ODBC]: https://msdn.microsoft.com/library/jj730314.aspx
-[PHP]: https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396
-[JDBC]: https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx
-[ANSI_NULLS]: https://msdn.microsoft.com/library/ms188048.aspx
-[QUOTED_IDENTIFIERS]: https://msdn.microsoft.com/library/ms174393.aspx
-[DATEFORMAT]: https://msdn.microsoft.com/library/ms189491.aspx
-[DATEFIRST]: https://msdn.microsoft.com/library/ms181598.aspx
-
-<!--Other-->
-[Azure portal]: https://portal.azure.com
-
-<!--Image references-->
-[1]: media/sql-data-warehouse-connect-overview/server-connect.PNG
-
+Aby nawiązać połączenie i rozpocząć tworzenie zapytań przy użyciu programu Visual Studio, zobacz artykuł [Query with Visual Studio](sql-data-warehouse-query-visual-studio.md) (Wykonywanie zapytań przy użyciu programu Visual Studio). Aby dowiedzieć się więcej o opcjach uwierzytelniania, zobacz [Uwierzytelnianie w usłudze Azure Synapse Analytics](sql-data-warehouse-authentication.md).
 

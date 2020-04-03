@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a382ef2d93f10e69569ecbbed1399f256a7afbb3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d10a642f9309e4bb93368564488fc75be15fa27c
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351217"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586082"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Analizowanie obciążenia w usłudze Azure Synapse Analytics
 
-Techniki analizowania obciążenia usługi SQL Analytics w usłudze Azure Synapse Analytics.
+Techniki analizowania obciążenia usługi Synapse SQL w usłudze Azure Synapse Analytics.
 
 ## <a name="resource-classes"></a>Klasy zasobów
 
-Usługa SQL Analytics udostępnia klasy zasobów do przypisywania zasobów systemowych do kwerend.  Aby uzyskać więcej informacji na temat klas zasobów, zobacz [Klasy zasobów & zarządzanie obciążeniem .](resource-classes-for-workload-management.md)  Kwerendy będą czekać, jeśli klasa zasobów przypisana do kwerendy potrzebuje więcej zasobów niż są obecnie dostępne.
+Synapse SQL udostępnia klasy zasobów do przypisywania zasobów systemowych do kwerend.  Aby uzyskać więcej informacji na temat klas zasobów, zobacz [Klasy zasobów & zarządzanie obciążeniem .](resource-classes-for-workload-management.md)  Kwerendy będą czekać, jeśli klasa zasobów przypisana do kwerendy potrzebuje więcej zasobów niż są obecnie dostępne.
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Wykrywanie zapytań w kolejce i inne dmvs
 
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-Usługa SQL Analytics ma następujące typy oczekiwania:
+Synapse SQL ma następujące typy oczekiwania:
 
 * **LocalQueriesConcurrencyResourceType:** Zapytania, które znajdują się poza ramą gniazda współbieżności. Zapytania DMV i funkcje `SELECT @@VERSION` systemowe, takie jak przykłady zapytań lokalnych.
 * **UserConcurrencyResourceType:** Zapytania, które znajdują się wewnątrz struktury gniazda współbieżności. Kwerendy względem tabel użytkowników końcowych reprezentują przykłady, które mogłyby używać tego typu zasobu.
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat zarządzania użytkownikami bazy danych i zabezpieczeniami, zobacz [Zabezpieczanie bazy danych w usłudze SQL Analytics](sql-data-warehouse-overview-manage-security.md). Aby uzyskać więcej informacji o tym, jak większe klasy zasobów mogą poprawić jakość indeksu magazynu kolumn klastrowanych, zobacz [Odbudowanie indeksów w celu poprawy jakości segmentu](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Aby uzyskać więcej informacji na temat zarządzania użytkownikami bazy danych i zabezpieczeniami, zobacz [Zabezpieczanie bazy danych w synapse SQL](sql-data-warehouse-overview-manage-security.md). Aby uzyskać więcej informacji o tym, jak większe klasy zasobów mogą poprawić jakość indeksu magazynu kolumn klastrowanych, zobacz [Odbudowanie indeksów w celu poprawy jakości segmentu](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

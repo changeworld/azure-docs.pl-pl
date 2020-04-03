@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a640f2f260c94cd7502aa79badb32bd26abebb11
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 81191fd3b654f612f2621757f3006268276477de
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350317"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586529"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maksymalizacja jakości grupy wierszy dla magazynu kolumn
 
@@ -89,7 +89,7 @@ gdzie kolumny ciągów krótkich używają typów danych ciągów <= 32 bajtów 
 
 Długie ciągi są kompresowane za pomocą metody kompresji przeznaczonej do kompresji tekstu. Ta metoda kompresji używa *słownika* do przechowywania wzorców tekstu. Maksymalny rozmiar słownika to 16 MB. Istnieje tylko jeden słownik dla każdej długiej kolumny ciągu w grupie wierszy.
 
-Aby zapoznać się z dogłębną omówieniem wymagań dotyczących pamięci magazynu kolumn, zobacz skalowanie analizy SQL [wideo: konfiguracja i wskazówki](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
+Aby zapoznać się z dogłębną omówieniem wymagań dotyczących pamięci magazynu kolumn, zobacz klip wideo [Skalowanie SQL Synapse: konfiguracja i wskazówki](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Sposoby zmniejszania wymagań dotyczących pamięci
 
@@ -141,4 +141,4 @@ Dwu rozmiar i klasa zasobów użytkownika razem określić, ile pamięci jest do
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby znaleźć więcej sposobów zwiększenia wydajności usługi SQL Analytics, zobacz [omówienie wydajności](cheat-sheet.md).
+Aby znaleźć więcej sposobów na zwiększenie wydajności programu Synapse SQL, zobacz [omówienie wydajności](cheat-sheet.md).

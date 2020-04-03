@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 0541b12d73cc5b5f7fdf713c759069e2ecbd8c18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13985b07b4903504fde6b58031a532337d3b1971
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299635"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584594"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Szyfrowanie po stronie serwera dysków zarządzanych platformy Azure
 
@@ -34,7 +34,11 @@ Domyślnie dyski zarządzane używają kluczy szyfrowania zarządzanych przez pl
 
 ## <a name="customer-managed-keys"></a>Klucze zarządzane przez klienta
 
-Można zarządzać szyfrowaniem na poziomie każdego dysku zarządzanego za pomocą własnych kluczy. Szyfrowanie po stronie serwera dla dysków zarządzanych za pomocą kluczy zarządzanych przez klienta oferuje zintegrowane środowisko z usługą Azure Key Vault. Klucze [RSA](../../key-vault/key-vault-hsm-protected-keys.md) można zaimportować do magazynu kluczy lub wygenerować nowe klucze RSA w usłudze Azure Key Vault. Dyski zarządzane platformy Azure obsługują szyfrowanie i odszyfrowywanie w pełni przejrzysty sposób przy użyciu [szyfrowania kopert.](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique) Szyfruje dane przy użyciu klucza szyfrowania danych opartego na [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 (DEK), który z kolei jest chroniony za pomocą kluczy. Musisz udzielić dostępu do dysków zarządzanych w magazynie kluczy, aby używać kluczy do szyfrowania i odszyfrowywania pliku DEK. Pozwala to na pełną kontrolę nad danymi i kluczami. Klucze można wyłączyć lub odwołać dostęp do dysków zarządzanych w dowolnym momencie. Można również przeprowadzić inspekcję użycia klucza szyfrowania za pomocą monitorowania usługi Azure Key Vault, aby upewnić się, że tylko dyski zarządzane lub inne zaufane usługi platformy Azure uzyskują dostęp do kluczy.
+Można zarządzać szyfrowaniem na poziomie każdego dysku zarządzanego za pomocą własnych kluczy. Szyfrowanie po stronie serwera dla dysków zarządzanych za pomocą kluczy zarządzanych przez klienta oferuje zintegrowane środowisko z usługą Azure Key Vault. Klucze [RSA](../../key-vault/key-vault-hsm-protected-keys.md) można zaimportować do magazynu kluczy lub wygenerować nowe klucze RSA w usłudze Azure Key Vault. 
+
+Dyski zarządzane platformy Azure obsługują szyfrowanie i odszyfrowywanie w pełni przejrzysty sposób przy użyciu [szyfrowania kopert.](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique) Szyfruje dane przy użyciu klucza szyfrowania danych opartego na [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 (DEK), który z kolei jest chroniony za pomocą kluczy. Usługa Storage generuje klucze szyfrowania danych i szyfruje je za pomocą kluczy zarządzanych przez klienta przy użyciu szyfrowania RSA. Szyfrowanie kopert umożliwia okresowe obracanie (zmienianie) kluczy zgodnie z zasadami zgodności bez wpływu na maszyny wirtualne. Po obróceniu kluczy usługa Storage ponownie szyfruje klucze szyfrowania danych za pomocą nowych kluczy zarządzanych przez klienta. 
+
+Musisz udzielić dostępu do dysków zarządzanych w magazynie kluczy, aby używać kluczy do szyfrowania i odszyfrowywania pliku DEK. Pozwala to na pełną kontrolę nad danymi i kluczami. Klucze można wyłączyć lub odwołać dostęp do dysków zarządzanych w dowolnym momencie. Można również przeprowadzić inspekcję użycia klucza szyfrowania za pomocą monitorowania usługi Azure Key Vault, aby upewnić się, że tylko dyski zarządzane lub inne zaufane usługi platformy Azure uzyskują dostęp do kluczy.
 
 W przypadku dysków SSD premium, standardowych dysków SSD i standardowych dysków twardych: po wyłączeniu lub usunięciu klucza wszystkie maszyny wirtualne z dyskami używającymi tego klucza zostaną automatycznie zamknięte. Po tym, maszyny wirtualne nie będzie można było ować, chyba że klucz jest włączony ponownie lub przypisać nowy klucz.
 
@@ -238,6 +242,32 @@ $VMSS = Add-AzVmssDataDisk -VirtualMachineScaleSet $VMSS -CreateOption Empty -Lu
 $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
 
 New-AzVmss -VirtualMachineScaleSet $VMSS -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMScaleSetName
+```
+
+#### <a name="change-the-key-of-a-diskencryptionset-to-rotate-the-key-for-all-the-resources-referencing-the-diskencryptionset"></a>Zmienianie klucza zestawu DiskEncryptionSet w celu obracania klucza dla wszystkich zasobów odwołujących się do zestawu DiskEncryptionSet
+
+```PowerShell
+$ResourceGroupName="yourResourceGroupName"
+$keyVaultName="yourKeyVaultName"
+$keyName="yourKeyName"
+$diskEncryptionSetName="yourDiskEncryptionSetName"
+
+$keyVault = Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $ResourceGroupName
+
+$keyVaultKey = Get-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName
+
+Update-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName -SourceVaultId $keyVault.ResourceId -KeyUrl $keyVaultKey.Id
+```
+
+#### <a name="find-the-status-of-server-side-encryption-of-a-disk"></a>Znajdowanie stanu szyfrowania po stronie serwera dysku
+
+```PowerShell
+$ResourceGroupName="yourResourceGroupName"
+$DiskName="yourDiskName"
+
+$disk=Get-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $DiskName
+$disk.Encryption.Type
+
 ```
 
 > [!IMPORTANT]

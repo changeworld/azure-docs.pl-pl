@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d121d6c198cb0d92cd098a40096e2f2300f65537
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14f513306b3f0bc0c06a4143e5174c3ecddaef62
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76758993"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617161"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>Scenariusz: aplikacja internetowa, która wywołuje internetowe interfejsy API
 
@@ -48,7 +48,7 @@ Dlatego rejestrują klucz tajny (hasło lub certyfikat aplikacji) w usłudze Azu
 > [!NOTE]
 > Dodawanie logowania do aplikacji sieci web polega na ochronie samej aplikacji sieci web. Tę ochronę uzyskuje się przy użyciu bibliotek *oprogramowania pośredniczącego,* a nie biblioteki uwierzytelniania firmy Microsoft (MSAL). W poprzednim [scenariuszu, aplikacja sieci Web, która loguje się w użytkowników,](scenario-web-app-sign-user-overview.md)omówione tego tematu.
 >
-> W tym scenariuszu opisano sposób wywoływania interfejsów API sieci web z aplikacji sieci web. Musisz uzyskać tokeny dostępu dla tych interfejsów API sieci web. Aby uzyskać te tokeny, należy użyć bibliotek MSAL do uzyskania tych tokenów.
+> W tym scenariuszu opisano sposób wywoływania interfejsów API sieci web z aplikacji sieci web. Musisz uzyskać tokeny dostępu dla tych interfejsów API sieci web. Biblioteki MSAL służy do uzyskania tych tokenów.
 
 Program w tym scenariuszu obejmuje te konkretne zadania:
 

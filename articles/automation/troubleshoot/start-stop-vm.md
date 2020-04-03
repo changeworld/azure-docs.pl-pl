@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73a9680cc570179c47b527a4844488da69193cb3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78851378"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586094"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Rozwiązywanie problemów z maszynami wirtualnymi start/stop w godzinach wolnych od pracy
 
@@ -137,7 +137,7 @@ Ten błąd może być spowodowany jedną z następujących przyczyn:
 
 Przejrzyj następującą listę potencjalnych rozwiązań problemu lub miejsc, w których warto szukać:
 
-* Podczas korzystania ze [scenariusza sekwencji](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags) Start/Stop VM w godzinach pracy rozwiązania, należy upewnić się, że każda maszyna wirtualna, którą chcesz uruchomić lub zatrzymać ma odpowiedni tag. Upewnij się, że maszyny wirtualne, `sequencestart` które chcesz uruchomić, mają tag i `sequencestop` maszyny wirtualne, które chcesz zatrzymać, mają tag. Oba znaczniki wymagają dodatniej wartości całkowitej. Można użyć kwerendy podobne do poniższego przykładu, aby wyszukać wszystkie maszyny wirtualne z tagów i ich wartości.
+* Podczas korzystania ze [scenariusza sekwencji](../automation-solution-vm-management.md) Start/Stop VM w godzinach pracy rozwiązania, należy upewnić się, że każda maszyna wirtualna, którą chcesz uruchomić lub zatrzymać ma odpowiedni tag. Upewnij się, że maszyny wirtualne, `sequencestart` które chcesz uruchomić, mają tag i `sequencestop` maszyny wirtualne, które chcesz zatrzymać, mają tag. Oba znaczniki wymagają dodatniej wartości całkowitej. Można użyć kwerendy podobne do poniższego przykładu, aby wyszukać wszystkie maszyny wirtualne z tagów i ich wartości.
 
   ```powershell-interactive
   Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
@@ -187,7 +187,7 @@ Należy wykonać następujące kroki, aby upewnić się, że rozwiązanie jest p
 2. Upewnij się, że grupy zasobów dla maszyn wirtualnych, `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` które mają zostać uruchomione lub zatrzymane, znajdują się w zmiennych lub w zależności od sytuacji.
 3. Przetestuj zmiany, `SequencedStartStop_Parent` wykonując runbook z parametrem WHATIF ustawionym na True, aby wyświetlić podgląd zmian.
 
-Aby uzyskać bardziej szczegółowe i dodatkowe instrukcje dotyczące używania rozwiązania do uruchamiania i zatrzymywania maszyn wirtualnych w [sekwencji, zobacz Uruchamianie/zatrzymywania maszyn wirtualnych w kolejności](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags).
+Aby uzyskać bardziej szczegółowe i dodatkowe instrukcje dotyczące używania rozwiązania do uruchamiania i zatrzymywania maszyn wirtualnych w [sekwencji, zobacz Uruchamianie/zatrzymywania maszyn wirtualnych w kolejności](../automation-solution-vm-management.md).
 
 ## <a name="scenario-startstop-vm-job-fails-with-403-forbidden-status"></a><a name="403"></a>Scenariusz: zadanie uruchamiania/zatrzymywania maszyny wirtualnej kończy się niepowodzeniem z 403 zabronionym stanem
 

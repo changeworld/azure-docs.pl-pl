@@ -5,14 +5,14 @@ services: vnf-manager
 author: ganesr
 ms.service: vnf-manager
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 04/02/2020
 ms.author: ganesr
-ms.openlocfilehash: d04032075166d2edd273c7f22bfb0d54aeccd8b3
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 2f2311adc231eac4260e26f0d5d1f2115f43d2eb
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545814"
+ms.locfileid: "80618720"
 ---
 # <a name="about-azure-edge-zones---preview"></a>Informacje o strefach usługi Azure Edge — wersja zapoznawcza
 
@@ -132,11 +132,13 @@ Mamy bogaty ekosystem dostawców VNF, dostawców oprogramowania i partnerów MSP
 | Globalne si i operatorów | Operatorzy komórkowi |
 | --- | --- |
 | Amdocs ( amdocs )                       | Etisalat ( Etisalat )             |
-| Wieża Amerykańska               | Rogers               |
-| Expeto ( Expeto )                       | Singtel ( Singtel )              |
-| Łączność bezprzewodowa federacyjne           | Vodafone             |
-| Infosys                      |      *                |
-| Tech Mahindra                |      *                |
+| Wieża Amerykańska               | NTT Communications   |
+| Link stulecia                 | Proximus             |
+| Expeto ( Expeto )                       | Rogers               |
+| Łączność bezprzewodowa federacyjne           | SK Telekomunikacja           |
+| Infosys                      | Telefonica           |
+| Tech Mahindra                | Telstra              |
+|        *                     | Vodafone             |
 
 [Skontaktuj się z zespołem Private Edge Zones,](https://aka.ms/EdgeZonesPartner) aby uzyskać więcej informacji na temat zostania partnerem.
 

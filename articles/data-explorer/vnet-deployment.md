@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: c1ad8390bc5db72636c637c2ffb817e34674d0fa
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: b0530ddada68cc9d07753a3b8ab30bff642e26dd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548847"
+ms.locfileid: "80618667"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Wdrażanie klastra usługi Azure Data Explorer w sieci wirtualnej
 
@@ -106,7 +106,7 @@ Wdrażanie klastra Usługi Azure Data Explorer w podsieci umożliwia konfigurowa
 | BrazyliaSouth | 191.233.25.183 |
 | Kanada Środkowa | 40.82.188.208 |
 | Kanada Wschodnia | 40.80.255.12 |
-| Indie Środkowe | 40.81.249.251 |
+| Indie Środkowe | 40.81.249.251, 104.211.98.159 |
 | Środkowe stany USA | 40.67.188.68 |
 | Centralna amerykańska EUAP | 40.89.56.69 |
 | Azja Wschodnia | 20.189.74.103 |
@@ -125,12 +125,12 @@ Wdrażanie klastra Usługi Azure Data Explorer w podsieci umożliwia konfigurowa
 | Republika Południowej Afryki Zachód | 102.133.0.97 |
 | Południowo-środkowe stany USA | 20.45.3.60 |
 | Azja Południowo-Wschodnia | 40.119.203.252 |
-| Indie Południowe | 40.81.72.110 |
+| Indie Południowe | 40.81.72.110, 104.211.224.189 |
 | Południowe Zjednoczone Królestwo | 40.81.154.254 |
 | Zachodnie Zjednoczone Królestwo | 40.81.122.39 |
 | Zachodnio-środkowe stany USA | 52.159.55.120 |
 | Europa Zachodnia | 51.145.176.215 |
-| Indie Zachodnie | 40.81.88.112 |
+| Indie Zachodnie | 40.81.88.112, 104.211.160.120 |
 | Zachodnie stany USA | 13.64.38.225 |
 | Zachodnie stany USA 2 | 40.90.219.23 |
 

@@ -1,6 +1,6 @@
 ---
-title: Ładowanie danych detalicznych contoso do magazynu danych usługi SQL Analytics
-description: Polecenia PolyBase i T-SQL umożliwia załadowanie dwóch tabel z danych detalicznych contoso do usługi Azure SQL Analytics.
+title: Ładowanie danych detalicznych contoso do magazynu danych Synapse SQL
+description: Polecenia PolyBase i T-SQL umożliwia załadowanie dwóch tabel z danych detalicznych contoso do programu Synapse SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62105b783577d70ae975cf514304d2c564357641
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7460a59dd2a7a5906a483195929136391657fa50
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351477"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584004"
 ---
-# <a name="load-contoso-retail-data-to-a-sql-analytics-data-warehouse"></a>Ładowanie danych detalicznych contoso do magazynu danych usługi SQL Analytics
+# <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>Ładowanie danych detalicznych contoso do magazynu danych Synapse SQL
 
-W tym samouczku nauczysz się używać poleceń PolyBase i T-SQL do ładowania dwóch tabel z danych detalicznych Contoso do magazynu danych usługi SQL Analytics. 
+W tym samouczku nauczysz się używać poleceń PolyBase i T-SQL do ładowania dwóch tabel z danych detalicznych Contoso do magazynu danych Synapse SQL.
 
 W tym poradniku będziesz:
 
@@ -30,11 +30,11 @@ W tym poradniku będziesz:
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Aby uruchomić ten samouczek, potrzebujesz konta platformy Azure, które ma już magazyn danych usługi SQL Analytics. Jeśli nie masz aprowizowanego magazynu danych, zobacz [Tworzenie magazynu danych i ustawianie reguły zapory na poziomie serwera](create-data-warehouse-portal.md).
+Aby uruchomić ten samouczek, potrzebujesz konta platformy Azure, które ma już magazyn danych Synapse SQL. Jeśli nie masz aprowizowanego magazynu danych, zobacz [Tworzenie magazynu danych i ustawianie reguły zapory na poziomie serwera](create-data-warehouse-portal.md).
 
 ## <a name="configure-the-data-source"></a>Konfigurowanie źródła danych
 
-PolyBase używa obiektów zewnętrznych T-SQL do definiowania lokalizacji i atrybutów danych zewnętrznych. Definicje obiektów zewnętrznych są przechowywane w magazynie danych usługi SQL Analytics. Dane są przechowywane zewnętrznie.
+PolyBase używa obiektów zewnętrznych T-SQL do definiowania lokalizacji i atrybutów danych zewnętrznych. Definicje obiektów zewnętrznych są przechowywane w magazynie danych Synapse SQL. Dane są przechowywane zewnętrznie.
 
 ## <a name="create-a-credential"></a>Tworzenie poświadczenia
 
@@ -121,7 +121,7 @@ GO
 
 ## <a name="create-the-external-tables"></a>Tworzenie tabel zewnętrznych
 
-Uruchom następujący skrypt, aby utworzyć tabele zewnętrzne DimProduct i FactOnlineSales. Wszystko, co robisz w tym miejscu, to definiowanie nazw kolumn i typów danych i powiązanie ich z lokalizacją i formatem plików magazynu obiektów blob platformy Azure. Definicja jest przechowywana w magazynie danych usługi SQL Analytics, a dane są nadal w obiekcie blob usługi Azure Storage.
+Uruchom następujący skrypt, aby utworzyć tabele zewnętrzne DimProduct i FactOnlineSales. Wszystko, co robisz w tym miejscu, to definiowanie nazw kolumn i typów danych i powiązanie ich z lokalizacją i formatem plików magazynu obiektów blob platformy Azure. Definicja jest przechowywana w magazynie danych, a dane są nadal w obiekcie blob usługi Azure Storage.
 
 Parametr **LOKALIZACJA** jest folderem w folderze głównym w obiekcie Blob usługi Azure Storage. Każda tabela znajduje się w innym folderze.
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>Optymalizacja kompresji magazynu kolumn
 
-Domyślnie magazyn danych usługi SQL Analytics przechowuje tabelę jako indeks klastrowanego magazynu kolumn. Po zakończeniu ładowania niektóre wiersze danych mogą nie zostać skompresowane do magazynu kolumn.  Istnieją różne powody, dla których może się to zdarzyć. Aby dowiedzieć się więcej, zobacz [zarządzanie indeksami magazynu kolumn](sql-data-warehouse-tables-index.md).
+Domyślnie magazyn danych Synapse SQL przechowuje tabelę jako indeks klastrowanego magazynu kolumn. Po zakończeniu ładowania niektóre wiersze danych mogą nie zostać skompresowane do magazynu kolumn.  Istnieją różne powody, dla których może się to zdarzyć. Aby dowiedzieć się więcej, zobacz [zarządzanie indeksami magazynu kolumn](sql-data-warehouse-tables-index.md).
 
 Aby zoptymalizować wydajność kwerend i kompresji magazynu kolumn po obciążeniu, odbuduj tabelę, aby wymusić indeks magazynu kolumn do kompresji wszystkich wierszy. 
 

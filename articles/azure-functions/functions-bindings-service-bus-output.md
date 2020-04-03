@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 7e00d03a8b3ec7ef56935ff7714fd932bc343cd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02d9ce87d45c5f1c9a123aae18f7d710b268f03e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277442"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582257"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Powiązanie danych wyjściowych usługi Azure Service Bus dla funkcji platformy Azure
 
@@ -21,7 +21,7 @@ Aby uzyskać informacje na temat szczegółów konfiguracji i konfiguracji, zoba
 
 ## <a name="example"></a>Przykład
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 W poniższym przykładzie pokazano [funkcję Języka C#,](functions-dotnet-class-library.md) która wysyła komunikat kolejki usługi Service Bus:
 
@@ -227,7 +227,7 @@ Funkcje java można również zapisywać w temacie usługi Service Bus. W poniż
 
 ## <a name="attributes-and-annotations"></a>Atrybuty i adnotacje
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 W [bibliotekach klas języka C#](functions-dotnet-class-library.md)użyj [atrybutu ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
 
@@ -295,7 +295,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 W usłudze Azure Functions 1.x środowisko wykonawcze tworzy kolejkę, `accessRights` `manage`jeśli nie istnieje i ustawiono . W funkcji w wersji 2.x lub nowszej kolejka lub temat musi już istnieć; Jeśli określisz kolejkę lub temat, który nie istnieje, funkcja zakończy się niepowodzeniem. 
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Użyj następujących typów parametrów dla powiązania wyjściowego:
 
@@ -345,7 +345,7 @@ Użyj [zestawu SDK usługi Azure Service Bus,](https://docs.microsoft.com/azure/
 
 ## <a name="exceptions-and-return-codes"></a>Wyjątki i kody zwrotne
 
-| Wiązanie | Tematy pomocy |
+| Wiązanie | Dokumentacja |
 |---|---|
 | Service Bus | [Kody błędów magistrali usług](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
 | Service Bus | [Limity magistrali usług](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
@@ -383,6 +383,7 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
+|Konto prefetch|0|Pobiera lub ustawia liczbę komunikatów, które odbiorca wiadomości może jednocześnie żądać.|
 |maxAutoRenewOderzenie|00:05:00|Maksymalny czas trwania, w którym blokada wiadomości zostanie automatycznie odnowiona.|
 |Autouzupełniania|true|Czy wyzwalacz powinien natychmiast oznaczyć wiadomość jako ukończoną (autouzupełnianie) lub czekać na zakończenie funkcji, aby zakończyć połączenie.|
 |Maxconcurrentcalls|16|Maksymalna liczba równoczesnych wywołań wywołania zwrotnego, które pompa wiadomości powinna zainicjować. Domyślnie środowisko wykonawcze Functions przetwarza wiele komunikatów jednocześnie. Aby skierować środowisko uruchomieniowe do przetwarzania tylko jednej `maxConcurrentCalls` kolejki lub komunikatu tematu w czasie, należy ustawić na 1. |

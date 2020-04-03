@@ -4,12 +4,12 @@ description: Dowiedz się, jak zainstalować i skonfigurować kontroler transfer
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 10422595b85c71020225df694778e6b8ae7e0185
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e79bbe76a751097acd5c9d3c42dbd4020b6866b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78191354"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617286"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Tworzenie kontrolera transferu danych przychodzących ze statycznym publicznym adresem IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -48,7 +48,12 @@ Następnie utwórz publiczny adres IP z metodą alokacji *statycznej* przy użyc
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
 ```
 
-Teraz wdrożyć *wykres nginx-ingress* z Helm. Dodaj `--set controller.service.loadBalancerIP` parametr i określ własny publiczny adres IP utworzony w poprzednim kroku. W celu zwiększenia nadmiarowości za pomocą parametru `--set controller.replicaCount` wdrażane są dwie repliki kontrolerów wejściowych NGINX. Aby w pełni korzystać z uruchamiania replik kontrolera transferu danych przychodzących, upewnij się, że w klastrze usługi AKS znajduje się więcej niż jeden węzeł.
+Teraz wdrożyć *wykres nginx-ingress* z Helm. W celu zwiększenia nadmiarowości za pomocą parametru `--set controller.replicaCount` wdrażane są dwie repliki kontrolerów wejściowych NGINX. Aby w pełni korzystać z uruchamiania replik kontrolera transferu danych przychodzących, upewnij się, że w klastrze usługi AKS znajduje się więcej niż jeden węzeł.
+
+Należy przekazać dwa dodatkowe parametry do wersji Helm, aby kontroler transferu danych przychodzących został poinformowany zarówno o statycznym adresie IP modułu równoważenia obciążenia, który ma zostać przydzielony do usługi kontrolera transferu danych przychodzących, jak i o etykiecie nazwy DNS stosowanej do publicznego zasobu adresu IP. Aby certyfikaty HTTPS działały poprawnie, etykieta nazwy DNS jest używana do konfigurowania nazwy FQDN dla adresu IP kontrolera transferu danych przychodzących.
+
+1. Dodaj `--set controller.service.loadBalancerIP` parametr. Określ własny publiczny adres IP, który został utworzony w poprzednim kroku.
+1. Dodaj `--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"` parametr. Określ etykietę nazwy DNS, która ma być stosowana do publicznego adresu IP utworzonego w poprzednim kroku.
 
 Kontroler wejściowy należy również zaplanować w węźle z systemem Linux. Węzły systemu Windows Server (obecnie w wersji zapoznawczej w usłudze AKS) nie powinny uruchamiać kontrolera transferu danych przychodzących. Za pomocą parametru `--set nodeSelector` podaje się selektor węzła, który nakazuje harmonogramowi usługi Kubernetes uruchomienie kontrolera wejściowego NGINX w węźle opartym na systemie Linux.
 
@@ -57,6 +62,8 @@ Kontroler wejściowy należy również zaplanować w węźle z systemem Linux. W
 
 > [!TIP]
 > Jeśli chcesz włączyć [zachowanie adresu IP źródła klienta][client-source-ip] dla żądań do kontenerów w klastrze, dodaj `--set controller.service.externalTrafficPolicy=Local` do polecenia instalacji helm. Adres IP źródła klienta jest przechowywany w nagłówku żądania w obszarze *X-Forwarded-For*. W przypadku korzystania z kontrolera transferu danych przychodzących z włączoną obsługą ochrony adresów IP źródła klienta przekazywanie protokołu SSL nie będzie działać.
+
+Zaktualizuj następujący skrypt za pomocą **adresu IP** kontrolera danych przychodzących i **unikatowej nazwy,** której chcesz użyć w prefiksie FQDN:
 
 ```console
 # Create a namespace for your ingress resources
@@ -69,6 +76,7 @@ helm install nginx-ingress stable/nginx-ingress \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set controller.service.loadBalancerIP="40.121.63.72"
+    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="demo-aks-ingress"
 ```
 
 Po utworzeniu usługi modułu równoważenia obciążenia Kubernetes dla kontrolera transferu danych przychodzących NGINX przypisany jest statyczny adres IP, jak pokazano w poniższym przykładzie danych wyjściowych:
@@ -83,27 +91,14 @@ nginx-ingress-default-backend               ClusterIP      10.0.95.248   <none> 
 
 Nie utworzono jeszcze żadnych reguł ruchu przychodzącego, więc domyślna strona kontrolera 404 kontrolera transferu danych przychodzących NGINX jest wyświetlana po przejmuje się do publicznego adresu IP. Reguły transferu danych przychodzących są konfigurowane w następujących krokach.
 
-## <a name="configure-a-dns-name"></a>Konfigurowanie nazwy DNS
-
-Aby certyfikaty HTTPS działały poprawnie, skonfiguruj numer FQDN dla adresu IP kontrolera transferu danych przychodzących. Zaktualizuj następujący skrypt za pomocą adresu IP kontrolera transferu danych przychodzących i unikatowej nazwy, której chcesz użyć w sieci FQDN:
+Można sprawdzić, czy etykieta nazwy DNS została zastosowana, odpytując nazwę FQDN na publiczny adres IP w następujący sposób:
 
 ```azurecli-interactive
 #!/bin/bash
-
-# Public IP address of your ingress controller
-IP="40.121.63.72"
-
-# Name to associate with public IP address
-DNSNAME="demo-aks-ingress"
-
-# Get the resource-id of the public ip
-PUBLICIPID=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)
-
-# Update public ip address with DNS name
-az network public-ip update --ids $PUBLICIPID --dns-name $DNSNAME
+az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query $("[?name=='myAKSPublicIP'].[dnsSettings.fqdn]") -o tsv
 ```
 
-Kontroler transferu danych przychodzących jest teraz dostępny za pośrednictwem sieci FQDN.
+Kontroler transferu danych przychodzących jest teraz dostępny za pośrednictwem adresu IP lub sieci FQDN.
 
 ## <a name="install-cert-manager"></a>Instalowanie narzędzia cert-manager
 

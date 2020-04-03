@@ -1,6 +1,6 @@
 ---
 title: Ładowanie danych samouczka z usługi Azure Data Lake Storage
-description: Użyj tabel zewnętrznych PolyBase, aby załadować dane z usługi Azure Data Lake Storage do analizy SQL.
+description: Użyj tabel zewnętrznych PolyBase, aby załadować dane z usługi Azure Data Lake Storage dla synapse SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,15 @@ ms.date: 03/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b9e28f41b251ea526044bf88dc3e79c0374fe369
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7d599ce121b4c53662b91e5aab94130b0f3f4458
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350367"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583934"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Ładowanie danych z usługi Azure Data Lake Storage for SQL Analytics
+# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Ładowanie danych z usługi Azure Data Lake Storage dla synapse SQL
+
 W tym przewodniku opisano, jak używać tabel zewnętrznych PolyBase do ładowania danych z usługi Azure Data Lake Storage. Mimo że można uruchamiać kwerendy adhoc na danych przechowywanych w magazynie usługi Data Lake, zaleca się importowanie danych w celu uzyskania najlepszej wydajności. 
 
 > [!NOTE]  

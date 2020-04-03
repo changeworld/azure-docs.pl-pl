@@ -1,5 +1,5 @@
 ---
-title: Przewodnik planowania i obsługi usługi Security Center | Microsoft Docs
+title: Przewodnik po planowaniu i operacjach centrum zabezpieczeń
 description: Ten dokument ułatwia planowanie przed wdrożeniem Centrum zabezpieczeń Azure oraz zawiera informacje o jego codziennych operacjach.
 services: security-center
 author: memildin
@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 46994413ba765e18a826eebfe85a38bb65efc749
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 8244a0f164c8578bf9f79e4b66beb529b6a15f67
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435617"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586017"
 ---
-# <a name="azure-security-center-planning-and-operations-guide"></a>Przewodnik planowania i obsługi usługi Azure Security Center
+# <a name="planning-and-operations-guide"></a>Przewodnik po planowaniu i operacjach
 Ten przewodnik jest przeznaczony dla specjalistów technologii informatycznych,architektów IT, analityków zabezpieczeń informacji i administratorów chmury planujących korzystanie z usługi Azure Security Center.
 
 
@@ -135,7 +135,7 @@ Usługa Azure Security Center używa agenta usługi Log Analytics — jest to te
 
 ### <a name="agent"></a>Agent
 
-Gdy automatyczne inicjowanie obsługi administracyjnej jest włączone w zasadach zabezpieczeń, agent usługi Log Analytics (dla [systemu Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) lub [Linux)](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)jest zainstalowany na wszystkich obsługiwanych maszynach wirtualnych platformy Azure i wszystkich nowych, które są tworzone. Jeśli maszyna wirtualna lub komputer ma już zainstalowanego agenta usługi Log Analytics, usługa Azure Security Center wykorzysta bieżącego zainstalowanego agenta. Proces agenta został tak zaprojektowany, aby był nieinwazyjny i miał minimalny wpływ na wydajność maszyny wirtualnej.
+Gdy automatyczne inicjowanie obsługi administracyjnej jest włączone w zasadach zabezpieczeń, agent usługi Log Analytics (dla [systemu Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) lub [Linux)](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)jest zainstalowany na wszystkich obsługiwanych maszynach wirtualnych platformy Azure i wszystkich nowych, które są tworzone. Jeśli maszyna wirtualna lub komputer ma już zainstalowanego agenta usługi Log Analytics, usługa Azure Security Center wykorzysta bieżącego zainstalowanego agenta. Proces agenta jest zaprojektowany tak, aby był nieinwazyjny i miał bardzo minimalny wpływ na wydajność maszyny wirtualnej.
 
 Agent analizy dzienników dla systemu Windows wymaga użycia portu TCP 443. Przeczytaj [artykuł na temat rozwiązywania problemów](security-center-troubleshooting-guide.md), aby uzyskać więcej informacji.
 
@@ -181,7 +181,7 @@ Po wykonaniu wszystkich zaleceń sekcja **Zapobieganie** powinna być zielona dl
 
 Sekcja **Wykrywanie** jest bardziej reaktywna. Zawiera ona alerty dotyczące problemów, które występują teraz lub wystąpiły w przeszłości, wykrytych przez kontrolki usługi Security Center i systemy innych firm. Kafelek Alerty zabezpieczeń wyświetli wykresy słupkowe reprezentujące liczbę alertów znalezionych w każdym dniu i ich rozkład między różnymi kategoriami ważności (niski, średni, wysoki). Więcej informacji na temat alertów zabezpieczeń znajduje się w artykule [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w Centrum zabezpieczeń Azure](security-center-managing-and-responding-alerts.md).
 
-Zaplanuj odwiedzenie opcji [analizy zagrożeń](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) jako część codziennych operacji zabezpieczeń. Możesz tam zidentyfikować zagrożenia bezpieczeństwa środowiska, takie jak ustalenie, czy dany komputer jest częścią botnetu.
+Zaplanuj odwiedzenie opcji analizy zagrożeń jako część codziennych operacji zabezpieczeń. Możesz tam zidentyfikować zagrożenia bezpieczeństwa środowiska, takie jak ustalenie, czy dany komputer jest częścią botnetu.
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>Monitorowanie nowych lub zmodyfikowanych zasobów
 Większość środowisk platformy Azure są dynamiczne, z zasobów regularnie tworzone, obracane w górę lub w dół, ponownie skonfigurowane i zmienione. Usługa Security Center pomaga zagwarantować widoczność stanu zabezpieczeń nowych zasobów.
@@ -213,7 +213,7 @@ W ramach operacji zabezpieczeń należy również zastosować środki zapobiegaw
 ## <a name="incident-response"></a>Reagowanie na zdarzenia
 Usługa Security Center wykrywa zagrożenia i powiadamia o nich, gdy tylko wystąpią. Firmy powinny śledzić pojawianie się nowych alertów zabezpieczeń i w razie potrzeby podejmować działania w celu zbadania ataku lub usunięcia jego skutków. Aby uzyskać więcej informacji na temat działania ochrony przed zagrożeniami w centrum zabezpieczeń, przeczytaj [artykuł Jak usługa Azure Security Center wykrywa zagrożenia i reaguje na nie](security-center-alerts-overview.md#detect-threats).
 
-Ponieważ celem tego artykułu nie jest pomoc w tworzeniu Twojego planu reagowania na zdarzenia, jako podstawy dla etapów reagowania na zdarzenia użyjemy funkcji Microsoft Azure Security Response w cyklu życia chmury. Poszczególne etapy przedstawiono na poniższym diagramie:
+Chociaż w tym artykule nie ma zamiaru pomóc w tworzeniu własnego planu reagowania na incydenty, będziemy używać microsoft Azure Security Response w cyklu życia chmury jako podstawa dla etapów reagowania na zdarzenia. Poszczególne etapy przedstawiono na poniższym diagramie:
 
 ![Podejrzane działania](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
@@ -235,7 +235,7 @@ W poniższym przykładzie pokazano podejrzane działanie w protokole RDP:
 
 Ta strona pokazuje szczegóły dotyczące godziny, o której nastąpił atak, nazwy hosta źródłowego, docelowej maszyny wirtualnej oraz poszczególnych kroków zaleceń. W niektórych okolicznościach informacje źródłowe ataku mogą być puste. Więcej informacji na temat działania tego typu znajduje się w artykule [Missing Source Information in Azure Security Center Alerts](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) (Brakujące informacje źródłowe w alertach Centrum zabezpieczeń Azure).
 
-Na tej stronie możesz również uruchomić [dochodzenie](https://docs.microsoft.com/azure/security-center/security-center-investigation), aby lepiej zrozumieć oś czasu ataku, sposób przeprowadzenia ataku, które systemy zostały potencjalnie naruszone, które poświadczenia zostały użyte i zobaczyć graficzną reprezentację całego łańcucha ataku.
+Na tej stronie możesz również uruchomić dochodzenie, aby lepiej zrozumieć oś czasu ataku, sposób przeprowadzenia ataku, które systemy zostały potencjalnie naruszone, które poświadczenia zostały użyte i zobaczyć graficzną reprezentację całego łańcucha ataku.
 
 Po zidentyfikowaniu systemu, którego bezpieczeństwo zostało naruszone, można uruchomić [automatyzację przepływu pracy,](workflow-automation.md) która została wcześniej utworzona. Są to kolekcje procedur, które mogą być wykonywane z usługi Security Center po wyzwoleniu przez alert.
 

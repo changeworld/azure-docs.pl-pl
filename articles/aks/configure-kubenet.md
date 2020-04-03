@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/26/2019
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 3fe1d36b859884ab19a645e5693c7e7931fe5c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 119265efa7b6504f3faf2e89cb68b9e9bd70bf9f
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368472"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617247"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Użyj sieci kubenet z własnymi zakresami adresów IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -25,7 +25,7 @@ W tym artykule pokazano, jak używać sieci *kubenet* do tworzenia i używania p
 * Sieć wirtualna klastra AKS musi zezwalać na wychodzące połączenie z Internetem.
 * Nie należy tworzyć więcej niż jeden klaster AKS w tej samej podsieci.
 * Klastry usługi AKS `169.254.0.0/16` `172.30.0.0/16`mogą `172.31.0.0/16`nie `192.0.2.0/24` używać , lub dla zakresu adresów usługi Kubernetes.
-* Podmiot zabezpieczeń usługi używany przez klaster AKS musi mieć co najmniej uprawnienia [współautora sieci](../role-based-access-control/built-in-roles.md#network-contributor) w podsieci w sieci wirtualnej. Jeśli chcesz zdefiniować [rolę niestandardową](../role-based-access-control/custom-roles.md) zamiast wbudowanej roli współautora sieci, wymagane są następujące uprawnienia:
+* Podmiot zabezpieczeń usługi używany przez klaster AKS musi mieć co najmniej rolę [współautora sieci](../role-based-access-control/built-in-roles.md#network-contributor) w podsieci w sieci wirtualnej. Jeśli chcesz zdefiniować [rolę niestandardową](../role-based-access-control/custom-roles.md) zamiast wbudowanej roli współautora sieci, wymagane są następujące uprawnienia:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
@@ -195,7 +195,7 @@ az aks create \
     --client-secret <password>
 ```
 
-Podczas tworzenia klastra AKS tworzone są sieciowe grupy zabezpieczeń i tabela tras. Te zasoby sieciowe są zarządzane przez płaszczyznę sterowania AKS. Sieciowa grupa zabezpieczeń jest automatycznie skojarzona z wirtualnymi kartami sieciowymi w węzłach. Tabela tras jest automatycznie skojarzona z podsiecią sieci wirtualnej. Reguły sieciowej grupy zabezpieczeń i tabele tras i są automatycznie aktualizowane podczas tworzenia i ujawniania usług.
+Podczas tworzenia klastra AKS tworzone są sieciowe grupy zabezpieczeń i tabela tras. Te zasoby sieciowe są zarządzane przez płaszczyznę sterowania AKS. Sieciowa grupa zabezpieczeń jest automatycznie skojarzona z wirtualnymi kartami sieciowymi w węzłach. Tabela tras jest automatycznie skojarzona z podsiecią sieci wirtualnej. Reguły sieciowej grupy zabezpieczeń i tabele tras są automatycznie aktualizowane podczas tworzenia i ujawniania usług.
 
 ## <a name="next-steps"></a>Następne kroki
 

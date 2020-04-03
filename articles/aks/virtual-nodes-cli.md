@@ -4,12 +4,12 @@ description: Dowiedz się, jak używać interfejsu wiersza polecenia platformy A
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 31e8b5aceb356ca1415419650a9df3070462bde0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05e32b6b0017e945044bc7593d4d6dbc543a5b64
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475531"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616461"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Tworzenie i konfigurowanie klastra usług Kubernetes platformy Azure (AKS) w celu używania węzłów wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -19,7 +19,7 @@ W tym artykule pokazano, jak utworzyć i skonfigurować zasoby sieci wirtualnej 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Węzły wirtualne umożliwiają komunikację sieciową między zasobnikami uruchamianym w aci i klastrze AKS. Aby zapewnić tę komunikację, tworzona jest podsieć sieci wirtualnej i przypisywane są uprawnienia delegowane. Węzły wirtualne działają tylko z klastrami AKS utworzonymi przy użyciu *zaawansowanej* sieci. Domyślnie klastry AKS są tworzone z *podstawową* siecią. W tym artykule pokazano, jak utworzyć sieć wirtualną i podsieci, a następnie wdrożyć klaster AKS korzystający z sieci zaawansowanych.
+Węzły wirtualne umożliwiają komunikację sieciową między zasobnikami uruchamianym w instancjach kontenera azure (ACI) i klastrze AKS. Aby zapewnić tę komunikację, tworzona jest podsieć sieci wirtualnej i przypisywane są uprawnienia delegowane. Węzły wirtualne działają tylko z klastrami AKS utworzonymi przy użyciu *zaawansowanej* sieci. Domyślnie klastry AKS są tworzone z *podstawową* siecią. W tym artykule pokazano, jak utworzyć sieć wirtualną i podsieci, a następnie wdrożyć klaster AKS korzystający z sieci zaawansowanych.
 
 Jeśli wcześniej nie korzystano z usługi ACI, zarejestruj dostawcę usług w swojej subskrypcji. Stan rejestracji dostawcy usługi ACI można sprawdzić za pomocą polecenia [listy dostawców az,][az-provider-list] jak pokazano w poniższym przykładzie:
 
@@ -30,9 +30,9 @@ az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" 
 Dostawca *microsoft.containerinstance* powinien zgłosić jako *zarejestrowany,* jak pokazano w poniższym przykładzie danych wyjściowych:
 
 ```output
-Namespace                    RegistrationState
----------------------------  -------------------
-Microsoft.ContainerInstance  Registered
+Namespace                    RegistrationState    RegistrationPolicy
+---------------------------  -------------------  --------------------
+Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
 Jeśli dostawca jest wyświetlany jako *NotRegistered*, zarejestruj dostawcę przy użyciu [rejestru dostawcy az,][az-provider-register] jak pokazano w poniższym przykładzie:
@@ -155,7 +155,7 @@ Klaster AKS można wdrożyć w podsieci AKS utworzonej w poprzednim kroku. Pobie
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-Utwórz klaster AKS za pomocą polecenia [az aks create][az-aks-create]. W poniższym przykładzie pokazano tworzenie klastra o nazwie *myAKSCluster* z jednym węzłem. Wymień `<subnetId>` identyfikator uzyskany w poprzednim `<appId>` kroku, a następnie i `<password>` na 
+Utwórz klaster AKS za pomocą polecenia [az aks create][az-aks-create]. W poniższym przykładzie pokazano tworzenie klastra o nazwie *myAKSCluster* z jednym węzłem. Zamień `<subnetId>` identyfikator uzyskany w poprzednim `<appId>` kroku, a następnie i `<password>` z wartościami zebranymi w poprzedniej sekcji.
 
 ```azurecli-interactive
 az aks create \
@@ -302,7 +302,7 @@ Jeśli nie chcesz już używać węzłów wirtualnych, możesz je wyłączyć za
 
 Jeśli to konieczne, przejdź do [https://shell.azure.com](https://shell.azure.com) otwierania usługi Azure Cloud Shell w przeglądarce.
 
-Najpierw usuń helloworld pod uruchomiony w węźle wirtualnym:
+Najpierw usuń `aci-helloworld` zasobnik uruchomiony w węźle wirtualnym:
 
 ```console
 kubectl delete -f virtual-node.yaml

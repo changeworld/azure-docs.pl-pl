@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: b285daa465c8d069b359e94c9203c1ffbea24c06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f3d6580b738a77de9654de0df9b4ce1120fc6eb
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970680"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584039"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Szyfrowanie dysków platformy Azure dla maszyn wirtualnych IaaS — często zadawane pytania
 
@@ -37,7 +37,7 @@ Aby rozpocząć, przeczytaj [omówienie szyfrowania dysków platformy Azure](dis
 
 ## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Jakie rozmiary maszyn wirtualnych i systemy operacyjne obsługują szyfrowanie dysków platformy Azure?
 
-W [artykule Omówienie szyfrowania dysków platformy Azure](disk-encryption-overview.md) wymieniono [rozmiary maszyn wirtualnych](disk-encryption-overview.md#supported-vm-sizes) i systemy operacyjne [maszyn wirtualnych](disk-encryption-overview.md#supported-operating-systems) obsługujące szyfrowanie dysków platformy Azure.
+W [artykule Omówienie szyfrowania dysków platformy Azure](disk-encryption-overview.md) wymieniono [rozmiary maszyn wirtualnych](disk-encryption-overview.md#supported-vms) i systemy operacyjne [maszyn wirtualnych](disk-encryption-overview.md#supported-operating-systems) obsługujące szyfrowanie dysków platformy Azure.
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Czy mogę szyfrować zarówno woluminy rozruchowe, jak i ilości danych za pomocą szyfrowania dysków platformy Azure?
 
@@ -93,7 +93,7 @@ Użyj najnowszej wersji zestawu SDK programu Azure PowerShell, aby skonfigurowa�
 > [!NOTE]
 > Rozszerzenie podglądu szyfrowania dysku systemu Linux Azure "Microsoft.OSTCExtension.AzureDiskEncryptionForLinux" jest przestarzałe. To rozszerzenie zostało opublikowane w wersji zapoznawczej szyfrowania dysku platformy Azure. Nie należy używać wersji zapoznawczej rozszerzenia w testowaniu lub wdrożeniu produkcyjnym.
 
-> W przypadku scenariuszy wdrażania, takich jak Usługa Azure Resource Manager (ARM), w których konieczne jest wdrożenie rozszerzenia szyfrowania dysków platformy Azure dla maszyny Wirtualnej systemu Linux w celu włączenia szyfrowania na maszynie wirtualnej IaaS systemu Linux, należy użyć obsługiwanego rozszerzenia produkcji szyfrowania dysków platformy Azure " Microsoft.Azure.Security.AzureDiskEncryptionForLinux".
+> W scenariuszach wdrażania, takich jak Usługa Azure Resource Manager (ARM), w których konieczne jest wdrożenie rozszerzenia szyfrowania dysku platformy Azure dla maszyny Wirtualnej systemu Linux, aby włączyć szyfrowanie na maszynie wirtualnej IaaS systemu Linux, należy użyć obsługiwanego rozszerzenia produkcji szyfrowania dysków platformy Azure "Microsoft.Azure.Security.AzureDiskEncryptionForLinux".
 
 ## <a name="can-i-apply-azure-disk-encryption-on-my-custom-linux-image"></a>Czy mogę zastosować szyfrowanie dysków platformy Azure na niestandardowym obrazie systemu Linux?
 

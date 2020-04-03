@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: 78081329b70edff5ed2c728cb2f7c3e562a44e56
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: bcdd938365e50da1f5ae0e830e86692f1b915123
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346284"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618912"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Praca zdalna przy użyciu usług sieciowych platformy Azure
 
@@ -29,8 +29,6 @@ Nie wszystkie sieci (na przykład prywatna sieć WAN i firmowe sieci podstawowe)
 
 Planiści sieci mogą pomóc złagodzić wąskie gardła i zmniejszyć przeciążenie sieci, pamiętając, że różne rodzaje ruchu ruchu wymagają różnych priorytetów leczenia sieci oraz przez inteligentne przekierowanie/dystrybucję obciążenia. Na przykład, w czasie rzeczywistym tele-medecine ruchu interakcji lekarz-pacjent ma duże znaczenie i opóźnienie / jitter wrażliwe. Podczas gdy replikacja tego samego ruchu między magazynami nie jest z opóźnieniem poufne. Poprzedni ruch musi być kierowany przez najbardziej optymalną ścieżkę sieciową o wyższej jakości usług; dopuszczalne jest kierowanie późniejszego ruchu drogą nieoptymalnej.
 
->[!NOTE] 
->Pod koniec tego artykułu znajdują się łącza do artykułów wykorzystujących różne funkcje sieci platformy Azure i ekosystemy do obsługi użytkowników pracujących zdalnie.
 
 
 ## <a name="sharing-our-best-practices---azure-network-is-designed-for-elasticity-and-high-availability"></a>Udostępnianie naszych najlepszych praktyk — sieć platformy Azure została zaprojektowana z myślą o elastyczności i wysokiej dostępności
@@ -45,17 +43,18 @@ Sieć firmy Microsoft została zaprojektowana tak, aby spełniać wymagania i za
 
 ## <a name="enable-employees-to-work-remotely"></a>Umożliwianie pracownikom pracy zdalnej
 
-Brama sieci VPN platformy Azure obsługuje zarówno połączenia sieci VPN typu "punkt-lokacja" i "Lokacja lokacja" (S2S). Za pomocą bramy sieci VPN platformy Azure można skalować połączenia pracownika, aby bezpiecznie uzyskiwać dostęp zarówno do zasobów wdrożonych na platformie Azure, jak i zasobów lokalnych. Aby uzyskać więcej informacji, zobacz [Jak umożliwić użytkownikom pracę zdalną](https://go.microsoft.com/fwlink/?linkid=2123770). 
+Brama sieci VPN platformy Azure obsługuje zarówno połączenia sieci VPN typu "punkt-lokacja" i "Lokacja lokacja" (S2S). Za pomocą bramy sieci VPN platformy Azure można skalować połączenia pracownika, aby bezpiecznie uzyskiwać dostęp zarówno do zasobów wdrożonych na platformie Azure, jak i zasobów lokalnych. Aby uzyskać więcej informacji, zobacz [Jak umożliwić użytkownikom pracę zdalną](../vpn-gateway/work-remotely-support.md). 
 
-Jeśli używasz protokołu SSTP (Secure Sockets Tunneling Protocol), liczba równoczesnych połączeń jest ograniczona do 128. Aby uzyskać większą liczbę połączeń, sugerujemy przejście do OpenVPN lub IKEv2. Aby uzyskać więcej informacji, zobacz [Przejście do protokołu OpenVPN lub IKEv2 z protokołu SSTP](https://go.microsoft.com/fwlink/?linkid=2124112).
+Jeśli używasz protokołu SSTP (Secure Sockets Tunneling Protocol), liczba równoczesnych połączeń jest ograniczona do 128. Aby uzyskać większą liczbę połączeń, sugerujemy przejście do OpenVPN lub IKEv2. Aby uzyskać więcej informacji, zobacz [Przejście do protokołu OpenVPN lub IKEv2 z protokołu SSTP](../vpn-gateway/ikev2-openvpn-from-sstp.md
+).
 
-Aby uzyskać dostęp do zasobów wdrożonych na platformie Azure, deweloperzy zdalni mogą używać rozwiązania Azure Bastion zamiast połączenia sieci VPN, aby uzyskać bezpieczny dostęp do powłoki (RDP lub SSH) bez konieczności uzyskiwania publicznych wiadomości IP na maszynach wirtualnych, do których są uzyskiwane dostęp. Aby uzyskać więcej informacji, zobacz [Praca zdalnie przy użyciu usługi Azure Bastion](https://go.microsoft.com/fwlink/?linkid=2123939).
+Aby uzyskać dostęp do zasobów wdrożonych na platformie Azure, deweloperzy zdalni mogą używać rozwiązania Azure Bastion zamiast połączenia sieci VPN, aby uzyskać bezpieczny dostęp do powłoki (RDP lub SSH) bez konieczności uzyskiwania publicznych wiadomości IP na maszynach wirtualnych, do których są uzyskiwane dostęp. Aby uzyskać więcej informacji, zobacz [Praca zdalnie przy użyciu usługi Azure Bastion](../bastion/work-remotely-support.md).
 
-Do agregowania połączeń vpn na dużą skalę, do obsługi dowolnych połączeń między zasobami w różnych lokalnych lokalizacjach globalnych, w różnych regionalnych sieciach centralnych i sieciach wirtualnych, oraz w celu optymalizacji wykorzystania wielu domowych sieci szerokopasmowych można użyć wirtualnej sieci WAN platformy Azure. Aby uzyskać więcej informacji, zobacz [Walka z zaspokajaniem potrzeb domowych? Oto, gdzie azure wirtualna sieć WAN może pomóc](https://go.microsoft.com/fwlink/?linkid=2123769).
+Do agregowania połączenia sieci VPN na dużą skalę, do obsługi dowolnych połączeń między zasobami w różnych lokalnych lokalizacjach globalnych, w różnych regionalnych sieciach centralnych i sieciach wirtualnych, oraz w celu optymalizacji wykorzystania wielu domowych sieci szerokopasmowych można użyć wirtualnej sieci WAN platformy Azure. Aby uzyskać więcej informacji, zobacz [Walka z zaspokajaniem potrzeb domowych? Oto, gdzie azure wirtualna sieć WAN może pomóc](../virtual-wan/work-remotely-support.md).
 
 Innym sposobem obsługi zdalnej siły roboczej jest wdrożenie infrastruktury pulpitu wirtualnego (VDI) hostowanego w sieci wirtualnej platformy Azure, zabezpieczonego za pomocą zapory platformy Azure. Na przykład pulpit wirtualny systemu Windows (WVD) to usługa wirtualizacji pulpitu i aplikacji, która działa na platformie Azure. Dzięki pulpitowi wirtualnemu systemu Windows można skonfigurować skalowalny i elastyczny środowisko w ramach subskrypcji platformy Azure bez konieczności uruchamiania dodatkowych serwerów bramy. Użytkownik jest odpowiedzialny tylko za maszyny wirtualne WVD w sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [Pomoc techniczna usługi azure firewall pracy zdalnej](../firewall/remote-work-support.md). 
 
-Platforma Azure ma również bogaty zestaw partnerów systemu ekologicznego. Nasi partnerzy Network Virtual Appliances na platformie Azure mogą również pomóc w skalowaniu łączności sieci VPN. Aby uzyskać więcej informacji, zobacz [Zagadnienia dotyczące pracy zdalnej (Network Virtual Appliance, NVA).](https://go.microsoft.com/fwlink/?linkid=2123771)
+Platforma Azure ma również bogaty zestaw partnerów systemu ekologicznego. Nasi partnerzy Network Virtual Appliances na platformie Azure mogą również pomóc w skalowaniu łączności sieci VPN. Aby uzyskać więcej informacji, zobacz [Zagadnienia dotyczące pracy zdalnej (Network Virtual Appliance, NVA).](../vpn-gateway/nva-work-remotely-support.md)
 
 ## <a name="extend-employees-connection-to-access-globally-distributed-resources"></a>Rozszerzanie połączeń pracowników w celu uzyskania dostępu do globalnie rozproszonych zasobów
 
@@ -71,7 +70,7 @@ Następujące usługi platformy Azure mogą pomóc pracownikom w dostępie do za
 
 ## <a name="scale-customer-connectivity-to-frontend-resources"></a>Skalowanie łączności z klientem do zasobów frontendu
 
-W czasach, gdy więcej osób przechodzi do trybu online, wiele firmowych witryn sieci Web doświadcza zwiększonego ruchu klientów. Usługa Azure Application Gateway może pomóc w zarządzaniu tym zwiększonym obciążeniem frontendu. Aby uzyskać więcej informacji, zobacz [Obsługa dużych ruchu bramy aplikacji](https://go.microsoft.com/fwlink/?linkid=2123940).
+W czasach, gdy więcej osób przechodzi do trybu online, wiele firmowych witryn sieci Web doświadcza zwiększonego ruchu klientów. Usługa Azure Application Gateway może pomóc w zarządzaniu tym zwiększonym obciążeniem frontendu. Aby uzyskać więcej informacji, zobacz [Obsługa dużych ruchu bramy aplikacji](../application-gateway/high-traffic-support.md).
 
 ## <a name="microsoft-support-for-multi-cloud-traffic"></a>Pomoc techniczna firmy Microsoft w zakresie ruchu w wielu chmurach
 
@@ -83,13 +82,13 @@ W poniższych artykułach omówiono, jak różne funkcje sieci platformy Azure m
 
 | **Artykułu** | **Ostatnia aktualizacja** |
 | --- | --- |
-| [Jak umożliwić użytkownikom pracę zdalną](https://go.microsoft.com/fwlink/?linkid=2123770) | 23 marca 2020 r. |
-| [Starasz się zaspokoić potrzeby związane z pracą w domu? Oto, gdzie wirtualna sieć WAN platformy Azure może pomóc](https://go.microsoft.com/fwlink/?linkid=2123769) | 23 marca 2020 r. |
-| [Obsługa dużych ruchu bramy aplikacji](https://go.microsoft.com/fwlink/?linkid=2123940) | 23 marca 2020 r. |
-| [Zagadnienia dotyczące sieciowego urządzenia wirtualnego (NVA) dla pracy zdalnej](https://go.microsoft.com/fwlink/?linkid=2123771)| 23 marca 2020 r. |
+| [Jak umożliwić użytkownikom pracę zdalną](../vpn-gateway/work-remotely-support.md) | 23 marca 2020 r. |
+| [Starasz się zaspokoić potrzeby związane z pracą w domu? Oto, gdzie wirtualna sieć WAN platformy Azure może pomóc](../virtual-wan/work-remotely-support.md) | 23 marca 2020 r. |
+| [Obsługa dużego natężenia ruchu usługi Application Gateway](../application-gateway/high-traffic-support.md) | 23 marca 2020 r. |
+| [Zagadnienia dotyczące sieciowego urządzenia wirtualnego (NVA) dla pracy zdalnej](../vpn-gateway/nva-work-remotely-support.md)| 23 marca 2020 r. |
 | [Przejście do protokołu OpenVPN lub IKEv2 z protokołu SSTP](https://go.microsoft.com/fwlink/?linkid=2124112) | 23 marca 2020 r. |
-| [Praca zdalna przy użyciu usługi Azure Bastion](https://go.microsoft.com/fwlink/?linkid=2123939) | 23 marca 2020 r. |
-| [Tworzenie łączności hybrydowej przy użyciu usługi Azure ExpressRoute w celu obsługi użytkowników zdalnych](https://go.microsoft.com/fwlink/?linkid=2123768) | 23 marca 2020 r. |
+| [Praca zdalna przy użyciu usługi Azure Bastion](../bastion/work-remotely-support.md) | 23 marca 2020 r. |
+| [Tworzenie łączności hybrydowej przy użyciu usługi Azure ExpressRoute w celu obsługi użytkowników zdalnych](../expressroute/work-remotely-support.md) | 23 marca 2020 r. |
 | [Obsługa pracy zdalnej w zaporze platformy Azure](../firewall/remote-work-support.md)|25 marca 2020 r.|
 
 <!--Link References-->

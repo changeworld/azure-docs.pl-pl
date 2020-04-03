@@ -1,6 +1,6 @@
 ---
-title: Przydziały i ograniczenia w usłudze Azure Media Services
-description: W tym temacie opisano przydziały i ograniczenia w usługach Microsoft Azure Media Services.
+title: Przydziały i limity w usłudze Azure Media Services
+description: W tym temacie opisano przydziały i limity w usługach Microsoft Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: 6fb2f8f9172533a2c7f4aa03e99bd08e16a1f1dc
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 2d4f5f83335f6f115362bcf66cf69d7f9de7eaa5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545926"
+ms.locfileid: "80582317"
 ---
 # <a name="azure-media-services-quotas-and-limits"></a>Przydziały i limity usługi Azure Media Services
 
@@ -79,7 +79,7 @@ Każdy rekord zadania na koncie starszym niż 90 dni zostanie automatycznie usun
 | Wyjścia na żywo na wydarzenie na żywo |3 <sup>(5)</sup> |
 | Maksymalny czas trwania wyjścia na żywo | 25 godzin |
 
-<sup>4</sup> Aby uzyskać szczegółowe informacje na temat ograniczeń zdarzeń na [żywo,](live-event-types-comparison.md)zobacz porównanie typów zdarzeń na żywo i ograniczenia .
+<sup>4</sup> Aby uzyskać szczegółowe informacje na temat limitów zdarzeń na żywo, zobacz [porównanie typów zdarzeń na żywo i limity](live-event-types-comparison.md).
 
 <sup>5</sup> Wyjścia na żywo rozpoczynają się podczas tworzenia i zatrzymują się po usunięciu.
 
@@ -87,7 +87,7 @@ Każdy rekord zadania na koncie starszym niż 90 dni zostanie automatycznie usun
 
 | Zasób | Limit domyślny | 
 | --- | --- | 
-| [Przesyłanie strumieniowe punktów końcowych (zatrzymane](streaming-endpoint-concept.md) lub uruchomione) na konto usługi Media Services|2 (stała)|
+| [Przesyłanie strumieniowe punktów końcowych (zatrzymane](streaming-endpoint-concept.md) lub uruchomione) na konto usługi Media Services|2 |
 | [Filtry manifestów dynamicznych](filters-dynamic-manifest-overview.md)|100|
 | [Zasady przesyłania strumieniowego](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | Unikatowe [lokalizatory przesyłania strumieniowego skojarzone](streaming-locators-concept.md) z zasobem jednocześnie | 100<sup>(7)</sup> (stała) |

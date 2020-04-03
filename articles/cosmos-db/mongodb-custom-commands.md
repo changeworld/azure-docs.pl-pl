@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: f57b274715eb1c8a4d517f5655c09c366574d412
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f99c4d096bcbe1fbdc42cac80a491d6017266cb2
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445216"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583578"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Polecenia rozszerzenia MongoDB do zarządzania danymi przechowywanymi w interfejsie API usługi Azure Cosmos DB dla usługi MongoDB 
 
 Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB można komunikować się przy użyciu dowolnego [sterownika klienta mongodb](https://docs.mongodb.org/ecosystem/drivers)typu open source. Interfejs API usługi Azure Cosmos DB dla mongodb umożliwia korzystanie z istniejących sterowników klienta, stosując się do [protokołu przewodowego MongoDB](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
-Korzystając z interfejsu API usługi Azure Cosmos DB dla mongodb, możesz korzystać z zalet usługi Cosmos DB, takich jak dystrybucja globalna, automatyczne dzielenie na fragmenty, wysoka dostępność, gwarancje opóźnienia, automatyczne, szyfrowanie w spoczynku, kopie zapasowe i wiele innych, przy jednoczesnym zachowaniu inwestycji w aplikacji MongoDB.
+Korzystając z interfejsu API usługi Azure Cosmos DB dla mongodb, można korzystać z korzyści usługi Cosmos DB, takich jak dystrybucja globalna, automatyczne dzielenie na fragmenty, wysoka dostępność, gwarancje opóźnienia, automatyczne, szyfrowanie w spoczynku, kopie zapasowe i wiele innych, przy jednoczesnym zachowaniu inwestycji w aplikacji MongoDB.
 
 ## <a name="mongodb-protocol-support"></a>Obsługa protokołu MongoDB
 
-Domyślnie interfejs API usługi Azure Cosmos DB dla mongodb jest zgodny z serwerem MongoDB w wersji 3.2, aby uzyskać więcej informacji, zobacz [obsługiwane funkcje i składnię](mongodb-feature-support.md). Funkcje lub operatory zapytań dodane w mongodb w wersji 3.4 są obecnie dostępne jako wersja zapoznawcza w interfejsie API usługi Azure Cosmos DB dla mongodb. Następujące polecenia rozszerzenia obsługują funkcję specyficzne dla usługi Azure Cosmos DB podczas wykonywania operacji CRUD na danych przechowywanych w interfejsie API usługi Azure Cosmos DB dla usługi MongoDB:
+Domyślnie interfejs API usługi Azure Cosmos DB dla mongodb jest zgodny z serwerem MongoDB w wersji 3.2, aby uzyskać więcej informacji, zobacz [obsługiwane funkcje i składnię](mongodb-feature-support.md). Funkcje lub operatory zapytań dodane w mongodb w wersji 3.4 są obecnie dostępne jako wersja zapoznawcza w interfejsie API usługi Azure Cosmos DB dla mongodb. Następujące polecenia rozszerzenia obsługują określone funkcje usługi Azure Cosmos DB podczas wykonywania operacji CRUD na danych przechowywanych w interfejsie API usługi Azure Cosmos DB dla usługi MongoDB:
 
 * [Tworzenie bazy danych](#create-database)
 * [Aktualizuj bazę danych](#update-database)
@@ -160,12 +160,12 @@ Polecenie utwórz rozszerzenie kolekcji tworzy nową kolekcję MongoDB. Nazwa ba
 
 W poniższej tabeli opisano parametry w poleceniu:
 
-|**Pole**|**Typ** |**Opis** |
-|---------|---------|---------|
-| customAction (akcją)    | ciąg | Nazwa polecenia niestandardowego. Musi być "CreateCollection"     |
-|  — kolekcja      | ciąg | Nazwa kolekcji                                   |
-| ofertaWyjęcie | int    | Aprowizowana przepływność do ustawionego w bazie danych. Jest to parametr opcjonalny |
-| shardKey        | ciąg | Ścieżka klucza niezależnego fragmentu, aby utworzyć kolekcję podzieloną na fragmenty. Jest to parametr opcjonalny |
+| **Pole** | **Typ** | **Wymagane** | **Opis** |
+|---------|---------|---------|---------|
+| customAction (akcją) | ciąg | Wymagany | Nazwa polecenia niestandardowego. Musi być "CreateCollection".|
+|  — kolekcja | ciąg | Wymagany | Nazwa kolekcji. Znaki specjalne nie są dozwolone.|
+| ofertaWyjęcie | int | Opcjonalnie* | Aprowizowana przepływność do skonfigurowania w bazie danych. Jeśli ten parametr nie jest podany, domyślnie będzie minimalny, 400 RU/s. * Aby określić przepływność powyżej 10 000 RU/s, `shardKey` wymagany jest parametr.|
+| shardKey | ciąg | Opcjonalnie* | Ścieżka do klucza niezależnego fragmentu dla kolekcji podzielonej na fragmenty. Ten parametr jest wymagany, jeśli ustawisz więcej niż 10 `offerThroughput`000 RU/s w .  Jeśli zostanie określony, wszystkie wstawione dokumenty będą wymagać tej wartości. |
 
 ### <a name="output"></a>Dane wyjściowe
 
@@ -184,7 +184,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 **Tworzenie kolekcji podzielonej na fragmenty**
 
-Aby utworzyć kolekcję podzieloną na fragmenty o nazwie "testCollection" i aprowizowaną przepływność 1000 procesorów RU, należy użyć następującego polecenia:
+Aby utworzyć kolekcję podzieloną na fragmenty o nazwie "testCollection" i aprowizowaną przepływność 1000 procesorów RU i właściwość shardkey "a.b", należy użyć następującego polecenia:
 
 ```shell
 use test

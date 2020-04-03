@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 1f923db5c730f6dec15f4fc211ab7acbd009ac7f
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 4a760fe1e5df7cf614a68f8fa8a05926326d3edf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521414"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583218"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Funkcje Centrum Bezpieczeństwa (lipiec 2019)
 
@@ -97,7 +97,7 @@ Wszystkie funkcje pulpitu nawigacyjnego **dostępu do tożsamości &** w usłudz
 
 ## <a name="security-events-map"></a>Mapa zdarzeń bezpieczeństwa<a name="menu_securityeventsmap"></a>
 
-Usługa Security Center udostępnia [mapę alertów zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) ułatwiające identyfikację zagrożeń bezpieczeństwa. Przycisk **Przejdź do mapy zdarzeń zabezpieczeń** na tej mapie otwiera pulpit nawigacyjny, który umożliwia wyświetlanie nieprzetworzonych zdarzeń zabezpieczeń w wybranym obszarze roboczym.
+Usługa Security Center udostępnia mapę alertów zabezpieczeń ułatwiające identyfikację zagrożeń bezpieczeństwa. Przycisk **Przejdź do mapy zdarzeń zabezpieczeń** na tej mapie otwiera pulpit nawigacyjny, który umożliwia wyświetlanie nieprzetworzonych zdarzeń zabezpieczeń w wybranym obszarze roboczym.
 
 Usunęliśmy przycisk **Przejdź do mapy zdarzeń bezpieczeństwa** i pulpit nawigacyjny obszaru roboczego.
 
@@ -136,7 +136,7 @@ Aby uzyskać więcej informacji na temat wycofywania alertów niestandardowych, 
 
 ## <a name="security-alerts-investigation"></a>Badanie alertów zabezpieczeń<a name="menu_investigate"></a>
 
-[Funkcja Dochodzenie](https://docs.microsoft.com/azure/security-center/security-center-investigation) w Centrum zabezpieczeń pomaga klasyfikować potencjalne zdarzenie zabezpieczeń. Funkcja pozwala zrozumieć zakres zdarzenia i wyśledzić jego główną przyczynę. Usunęliśmy tę funkcję z usługi Security Center, ponieważ została ona zastąpiona ulepszonym działaniem [usługi Azure Sentinel.](https://azure.microsoft.com/services/azure-sentinel/)
+Funkcja Dochodzenie w Centrum zabezpieczeń pomaga klasyfikować potencjalne zdarzenie zabezpieczeń. Funkcja pozwala zrozumieć zakres zdarzenia i wyśledzić jego główną przyczynę. Usunęliśmy tę funkcję z usługi Security Center, ponieważ została ona zastąpiona ulepszonym działaniem [usługi Azure Sentinel.](https://azure.microsoft.com/services/azure-sentinel/)
 
 ![Zdarzenie naruszenia zabezpieczeń][14]
 

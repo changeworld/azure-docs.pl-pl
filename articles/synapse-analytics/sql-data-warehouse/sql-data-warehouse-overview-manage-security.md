@@ -1,7 +1,6 @@
 ---
 title: Zabezpieczanie bazy danych
-description: Porady dotyczące zabezpieczania bazy danych i tworzenia rozwiązań w zasobie puli SQL analytics.
-services: synapse-analytics
+description: Porady dotyczące zabezpieczania bazy danych i tworzenia rozwiązań w zasobie puli SQL Synapse.
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -12,25 +11,27 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6ae9580803563971764eec4bd18fcc2430cee06d
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 46d32fdca615833bd602480ac182585da898ab98
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350202"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586440"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Zabezpieczanie bazy danych w usłudze Azure Synapse
+
 > [!div class="op_single_selector"]
 > * [Omówienie zabezpieczeń](sql-data-warehouse-overview-manage-security.md)
-> * [Uwierzytelnianie](sql-data-warehouse-authentication.md)
+> * [Authentication](sql-data-warehouse-authentication.md)
 > * [Szyfrowanie (portal)](sql-data-warehouse-encryption-tde.md)
 > * [Szyfrowanie (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 > 
 > 
 
-W tym artykule przejdziesz przez podstawy zabezpieczania puli SQL w ramach analizy SQL Analytics. W szczególności w tym artykule rozpoczynasz pracę z zasobami w celu ograniczenia dostępu, ochrony danych i monitorowania działań w bazie danych aprowizowana przy użyciu puli SQL.
+W tym artykule przejdziesz przez podstawy zabezpieczania puli SQL Synapse. W szczególności w tym artykule rozpoczynasz pracę z zasobami w celu ograniczenia dostępu, ochrony danych i monitorowania działań w bazie danych aprowizowana przy użyciu puli SQL.
 
 ## <a name="connection-security"></a>Zabezpieczenia połączeń
+
 Zabezpieczenia połączeń dotyczą sposobu ograniczania i zabezpieczania połączeń z bazą danych przy użyciu reguł zapory i szyfrowania połączeń.
 
 Reguły zapory są używane zarówno przez serwer, jak i bazę danych do odrzucania prób połączenia z adresów IP, które nie zostały jawnie wpisane na białą listę. Aby zezwolić na połączenia z publicznego adresu IP aplikacji lub komputera klienckiego, należy najpierw utworzyć regułę zapory na poziomie serwera przy użyciu witryny Azure portal, interfejsu API REST lub programu PowerShell. 
@@ -41,7 +42,8 @@ Usługa Azure Synapse Analytics używa reguł zapory IP na poziomie serwera. Nie
 
 Połączenia z pulą SQL są domyślnie szyfrowane.  Modyfikowanie ustawień połączenia w celu wyłączenia szyfrowania jest ignorowane.
 
-## <a name="authentication"></a>Uwierzytelnianie
+## <a name="authentication"></a>Authentication
+
 Uwierzytelnianie to sposób potwierdzenia tożsamości podczas nawiązywania połączenia z bazą danych. Pula SQL obsługuje obecnie uwierzytelnianie programu SQL Server z nazwą użytkownika i hasłem oraz z usługą Azure Active Directory. 
 
 Po utworzeniu serwera logicznego bazy danych należy określić nazwę logowania „server admin” przy użyciu nazwy użytkownika i hasła. Za pomocą tych poświadczeń można uwierzytelnić do dowolnej bazy danych na tym serwerze jako właściciel bazy danych lub "dbo" za pośrednictwem uwierzytelniania programu SQL Server.

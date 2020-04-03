@@ -3,12 +3,12 @@ title: Uprawnienia do repozytoriów w rejestrze kontenerów platformy Azure
 description: Tworzenie tokenu z uprawnieniami o zakresie określonymi repozytoriami w rejestrze w celu ściągania lub wypychania obrazów lub wykonywania innych akcji
 ms.topic: article
 ms.date: 02/13/2020
-ms.openlocfilehash: 7d390bf4d97561e374c70f184534ac4f98a40611
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9004c45401833d3070266055dd7eb99a2bb43bde
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444315"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618825"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Tworzenie tokenu z uprawnieniami o zakresie repozytorium
 
@@ -27,6 +27,7 @@ Scenariusze tworzenia tokenu obejmują:
 
 * Ta funkcja jest dostępna tylko w rejestrze kontenerów **premium.** Aby uzyskać informacje na temat warstw i limitów usług rejestru, zobacz [Jednostki SKU rejestru kontenerów platformy Azure](container-registry-skus.md).
 * Obecnie nie można przypisać uprawnień o zakresie repozytorium do tożsamości usługi Azure Active Directory, takiej jak podmiot usługi lub tożsamość zarządzana.
+* Nie można utworzyć mapy zakresu w rejestrze włączonym dla [anonimowego dostępu ściąganego](container-registry-faq.md#how-do-i-enable-anonymous-pull-access).
 
 ## <a name="concepts"></a>Pojęcia
 

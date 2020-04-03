@@ -4,24 +4,24 @@ description: Dowiedz się, jak tworzyć, publikować i skalować aplikacje w śr
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 01/01/2020
+ms.date: 3/26/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8a73c1998203a8696b67a5e7eb3af23898239265
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477623"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586134"
 ---
 # <a name="use-an-app-service-environment"></a>Używanie środowiska usługi App Service
 
 Środowisko usługi aplikacji (ASE) to wdrożenie usługi Azure App Service w podsieci w wystąpieniu sieci wirtualnej platformy Azure klienta. ASE składa się z:
 
-- **Front ends**: Gdzie protokół HTTP lub HTTPS kończy się w środowisku usługi aplikacji.
-- **Pracownicy:** zasoby, które hostują aplikacje.
-- **Baza danych**: Przechowuje informacje definiujące środowisko.
-- **Magazyn:** służy do hostowania aplikacji opublikowanych przez klienta.
+- **Front ends**: Gdzie protokół HTTP lub HTTPS kończy się w środowisku usługi aplikacji
+- **Pracownicy:** zasoby hostują aplikacje
+- **Baza danych**: Przechowuje informacje definiujące środowisko
+- **Magazyn:** służy do obsługi aplikacji opublikowanych przez klienta
 
 Program ASE można wdrożyć z zewnętrznym lub wewnętrznym wirtualnym adresem IP (VIP) w celu uzyskania dostępu do aplikacji. Wdrożenie z zewnętrznym elementem VIP jest powszechnie nazywane *zewnętrznym ASE.* Wdrożenie z wewnętrznym elementem VIP jest nazywane *ase równoważenia obciążenia,* ponieważ używa wewnętrznego modułu równoważenia obciążenia (ILB). Aby dowiedzieć się więcej o ase równoważenia obciążenia, zobacz [Tworzenie i używanie ASE ILB][MakeILBASE].
 
@@ -120,6 +120,22 @@ Aby uzyskać informacje dotyczące tworzenia ase ILB, zobacz [Tworzenie i używa
 
 Adres URL SCM jest używany do uzyskiwania dostępu do konsoli Kudu lub do publikowania aplikacji przy użyciu narzędzia Web Deploy. Aby uzyskać informacje na temat konsoli Kudu, zobacz [konsolę Kudu dla usługi Azure App Service][Kudu]. Konsola Kudu udostępnia internetowy interfejs użytkownika do debugowania, przekazywania plików, edytowania plików i wielu innych.
 
+### <a name="dns-configuration"></a>Konfiguracja usługi DNS 
+
+Podczas korzystania z zewnętrznego ase, aplikacje wykonane w ase są rejestrowane w usłudze Azure DNS. Za pomocą ase równoważenia obciążenia sieciowego należy zarządzać własnym systemem DNS. 
+
+Aby skonfigurować system DNS przy takze ase równoważenia obciążenia sieciowego:
+
+    create a zone for <ASE name>.appserviceenvironment.net
+    create an A record in that zone that points * to the ILB IP address
+    create an A record in that zone that points @ to the ILB IP address
+    create a zone in <ASE name>.appserviceenvironment.net named scm
+    create an A record in the scm zone that points * to the ILB IP address
+
+Ustawienia DNS domyślnego sufiksu domeny ASE nie ograniczają aplikacji do dostępu tylko do tych nazw. Niestandardową nazwę domeny można ustawić bez sprawdzania poprawności aplikacji w ase równoważenia obciążenia sieciowego. Jeśli następnie chcesz utworzyć strefę o nazwie *contoso.net*, możesz to zrobić i wskazać jej adres IP równoważenia obciążenia. Niestandardowa nazwa domeny działa dla żądań aplikacji, ale nie dla witryny scm. Strona scm jest dostępna tylko w * &lt;appname&gt;.scm.&lt; asename&gt;.appserviceenvironment.net*. 
+
+Strefa o nazwie *.&lt; asename&gt;.appserviceenvironment.net* jest unikatowa na całym świecie. Przed majem 2019 r. klienci mogli określić sufiks domeny ase ILB. Jeśli chcesz użyć *.contoso.com* dla sufiksu domeny, można było to zrobić i to będzie zawierać witryny scm. Były wyzwania związane z tym modelem, w tym; zarządzanie domyślnym certyfikatem SSL, brak logowania jednokrotnego w lokacji scm i wymóg używania certyfikatu wieloznacznego. Domyślny proces uaktualniania certyfikatu ASE przy przywęzowaniu równoważenia obciążenia sieciowego był również zakłócający działanie i powodował ponowne uruchomienie aplikacji. Aby rozwiązać te problemy, zachowanie ASE równoważenia obciążenia sieciowego zostało zmienione w celu użycia sufiksu domeny na podstawie nazwy programu ASE i sufiksu należącego do firmy Microsoft. Zmiana zachowania ASE ILB dotyczy tylko ases ILB wprowadzone po maju 2019. Istniejące ases równoważenia obciążenia sieciowego i nadal muszą zarządzać domyślnym certyfikatem ASE i ich konfiguracją DNS.
+
 ## <a name="publishing"></a>Publikowanie
 
 W ase, podobnie jak w przypadku usługi aplikacji wielodostępnej, można opublikować za pomocą następujących metod:
@@ -132,7 +148,7 @@ W ase, podobnie jak w przypadku usługi aplikacji wielodostępnej, można opubli
 
 W przypadku zewnętrznego ase te opcje publikowania działają w ten sam sposób. Aby uzyskać więcej informacji, zobacz [Wdrażanie w usłudze Azure App Service][AppDeploy].
 
-Publikowanie znacznie różni się od ase ILB, dla których punkty końcowe publikowania są dostępne tylko za pośrednictwem równoważenia obciążenia sieciowego. Równoważenie obciążenia sieciowego znajduje się na prywatnym adresie IP w podsieci ASE w sieci wirtualnej. Jeśli nie masz dostępu do sieci do równoważenia obciążenia sieciowego, nie możesz publikować żadnych aplikacji na tym ASE. Jak wspomniano w [Tworzenie i używać ASE ILB][MakeILBASE], należy skonfigurować DNS dla aplikacji w systemie. Wymóg ten obejmuje punkt końcowy SCM. Jeśli punkty końcowe nie są poprawnie zdefiniowane, nie można opublikować. Interfejsy adresowe muszą mieć również dostęp do sieci do równoważenia obciążenia sieciowego, aby publikować je bezpośrednio.
+W ase ILB, punkty końcowe publikowania są dostępne tylko za pośrednictwem równoważenia obciążenia sieciowego. Równoważenie obciążenia sieciowego znajduje się na prywatnym adresie IP w podsieci ASE w sieci wirtualnej. Jeśli nie masz dostępu do sieci do równoważenia obciążenia sieciowego, nie możesz publikować żadnych aplikacji na tym ASE. Jak wspomniano w [Tworzenie i używać ASE ILB][MakeILBASE], należy skonfigurować DNS dla aplikacji w systemie. Wymóg ten obejmuje punkt końcowy SCM. Jeśli punkty końcowe nie są poprawnie zdefiniowane, nie można opublikować. Interfejsy adresowe muszą mieć również dostęp do sieci do równoważenia obciążenia sieciowego, aby publikować je bezpośrednio.
 
 Bez dodatkowych zmian internetowe systemy ciągłej integracji, takie jak GitHub i Azure DevOps, nie działają z ase ilb, ponieważ punkt końcowy publikowania nie jest dostępny w Internecie. Można włączyć publikowanie do środowiska ASE równoważenia obciążenia współużytka z usługi Azure DevOps, instalując agenta wydania hostowanego samodzielnie w sieci wirtualnej, która zawiera środowisko ASE równoważenia obciążenia sieciowego. Możesz też użyć systemu ciągłej integracji, który korzysta z modelu ściągania, takiego jak Dropbox.
 
@@ -169,7 +185,18 @@ Aby włączyć logowanie na ase:
 
 ![Ustawienia dziennika diagnostycznego ASE][4]
 
-Jeśli integrujesz się z usługą Log Analytics, można zobaczyć dzienniki, wybierając **dzienniki** z portalu ASE i tworząc kwerendę względem **AppServiceEnvironmentPlatformLogs**.
+Jeśli integrujesz się z usługą Log Analytics, można zobaczyć dzienniki, wybierając **dzienniki** z portalu ASE i tworząc kwerendę względem **AppServiceEnvironmentPlatformLogs**. Dzienniki są emitowane tylko wtedy, gdy program ASE ma zdarzenie, które go wyzwoli. Jeśli twój ASE nie ma takiego zdarzenia, nie będzie żadnych dzienników. Aby szybko wyświetlić przykład dzienników w obszarze roboczym usługi Log Analytics, wykonaj operację skalowania z jednym z planów usługi App Service w ase. Następnie można uruchomić kwerendę względem **AppServiceEnvironmentPlatformLogs,** aby wyświetlić te dzienniki. 
+
+**Tworzenie alertu**
+
+Aby utworzyć alert przed dziennikami, postępuj zgodnie z instrukcjami w [obszarze Tworzenie, wyświetlanie i zarządzanie alertami dziennika za pomocą usługi Azure Monitor.][logalerts] W skrócie:
+
+* Otwórz stronę Alerty w portalu ASE
+* Wybierz **nową regułę alertu**
+* Wybierz zasób jako obszar roboczy usługi Log Analytics
+* Ustaw swój warunek za pomocą niestandardowego wyszukiwania dziennika, aby użyć zapytania, takiego jak "AppServiceEnvironmentPlatformLogs | gdzie ResultDescription zawiera "rozpoczął skalowanie" lub cokolwiek chcesz. Ustaw próg odpowiednio. 
+* Dodaj lub utwórz grupę akcji zgodnie z potrzebami. Grupa akcji to miejsce, w którym definiujesz odpowiedź na alert, na przykład wysyłając wiadomość e-mail lub wiadomość SMS
+* Nazwij swój alert i zapisz go.
 
 ## <a name="upgrade-preference"></a>Preferencja uaktualniania
 
@@ -245,3 +272,4 @@ Aby usunąć ASE:
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[logalerts]: ../../azure-monitor/platform/alerts-log.md

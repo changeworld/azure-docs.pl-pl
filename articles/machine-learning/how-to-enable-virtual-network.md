@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: 6e300bbec097201b33f0c576db91c2ca720fb921
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 4d845514965a8d60c636902660ce838926cbf3c9
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437315"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607612"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpieczanie zadań eksperymentowania i wnioskowania usługi Azure w ramach sieci wirtualnej platformy Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Ten artykuł zawiera również szczegółowe informacje o *zaawansowanych ustawi
 > O ile nie zostanie to wyraźnie wywołane, przy użyciu zasobów, takich jak konta magazynu lub obiekty docelowe obliczeniowe wewnątrz sieci wirtualnej będzie działać zarówno z potoków uczenia maszynowego i przepływów pracy bez potoku, takich jak uruchamia skrypt.
 
 > [!WARNING]
-> Firma Microsoft nie obsługuje używania projektanta usługi Azure Machine Learning lub zautomatyzowanego uczenia maszynowego (ze studia) z zasobami w sieci wirtualnej.
+> Firma Microsoft nie obsługuje korzystania z funkcji usługi Azure Machine Learning Studio, takich jak zautomatyzowane ml, zestawy danych, etykiety danych, projektant i notesy, jeśli podstawowy magazyn ma włączoną sieć wirtualną.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
