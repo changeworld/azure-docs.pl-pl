@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: 306d847c2bc5af72d37dbf8bf472a5bae63e9fd5
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528502"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637770"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Często zadawane pytania dotyczące usługi Azure Monitor
 
@@ -177,7 +177,7 @@ Określ istniejącą lub nową [grupę akcji,](platform/action-groups.md) aby gd
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Jakie są wymagania zapory dla agentów usługi Azure Monitor?
-Aby uzyskać szczegółowe informacje na temat wymagań zapory, zobacz [Wymagania zapory](platform/log-analytics-agent.md#firewall-requirements)sieciowej.
+Aby uzyskać szczegółowe informacje na temat wymagań zapory, zobacz [Wymagania zapory](platform/log-analytics-agent.md#network-requirements)sieciowej.
 
 
 ## <a name="visualizations"></a>Wizualizacje
@@ -284,7 +284,7 @@ Z innych źródeł, jeśli je skonfigurujesz:
 
 * [Diagnostyka platformy Azure](platform/diagnostics-extension-to-application-insights.md)
 * [Importowanie do analizy](platform/data-collector-api.md)
-* [Analiza dzienników](platform/data-collector-api.md)
+* [Log Analytics](platform/data-collector-api.md)
 * [Logstash](platform/data-collector-api.md)
 
 ### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Czy mogę odfiltrować lub zmodyfikować niektóre dane telemetryczne?
@@ -718,7 +718,7 @@ W tym warunku zostanie wyświetlony monit z opcją **Wypróbuj teraz** po otwarc
 ## <a name="next-steps"></a>Następne kroki
 Jeśli na twoje pytanie nie ma odpowiedzi, możesz zapoznać się z poniższymi forami, aby uzyskać dodatkowe pytania i odpowiedzi.
 
-- [Analiza dzienników](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
+- [Log Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
 - [Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
 
 Aby uzyskać ogólne opinie na temat usługi Azure Monitor, odwiedź [forum opinii](https://feedback.azure.com/forums/34192--general-feedback).

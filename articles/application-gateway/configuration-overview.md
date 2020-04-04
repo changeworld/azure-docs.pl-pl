@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: f08cfab8f8de9183e6bee241959f7feabc31c8e3
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585901"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632186"
 ---
 # <a name="application-gateway-configuration-overview"></a>Omówienie konfiguracji bramy aplikacji
 
@@ -118,7 +118,7 @@ W tym scenariuszu należy użyć grup zabezpieczeń w podsieci bramy aplikacji. 
 
   **Scenariusz 1:** UDR dla urządzeń wirtualnych
 
-  Każdy scenariusz, w którym 0.0.0.0/0 musi zostać przekierowany za pośrednictwem dowolnego urządzenia wirtualnego, sieci wirtualnej koncentratora/szprychy lub lokalnego (tunelowanie wymuszone) nie jest obsługiwany w publicznej wersji zapoznawczej w wersji 2. 
+  Każdy scenariusz, w którym 0.0.0.0/0 musi zostać przekierowany za pośrednictwem dowolnego urządzenia wirtualnego, sieci wirtualnej koncentratora/szprychy lub lokalnego (tunelowanie wymuszone) nie jest obsługiwany dla wersji 2.
 
 ## <a name="front-end-ip"></a>Adres IP front-endu
 

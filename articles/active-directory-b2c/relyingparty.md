@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 04/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 90ac6f35cafbe63e8c6cdb77450089d00c0e3099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 221ed3169fff78a2721e91023036593570fbd723
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264351"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637791"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -125,7 +125,7 @@ Element **DefaultUserJourney** zawiera następujący atrybut:
 
 | Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Zakres | Tak | Zakres zachowania logowania jednokrotnego. Możliwe `Suppressed`wartości: `Tenant` `Application`, `Policy`, , lub . Wartość `Suppressed` wskazuje, że zachowanie jest pomijane. Na przykład w przypadku sesji logowania jednokrotnego nie jest zachowywana dla użytkownika, a użytkownik jest zawsze monitowany o wybór dostawcy tożsamości. Wartość `TrustFramework` wskazuje, że zachowanie jest stosowane dla wszystkich zasad w ramach zaufania. Na przykład użytkownik przechodzący przez dwie podróże zasad dla struktury zaufania nie jest monitowany o wybór dostawcy tożsamości. Wartość `Tenant` wskazuje, że zachowanie jest stosowane do wszystkich zasad w dzierżawie. Na przykład użytkownik przechodzący przez dwie podróże zasad dla dzierżawcy nie jest monitowany o wybór dostawcy tożsamości. Wartość `Application` wskazuje, że zachowanie jest stosowane do wszystkich zasad dla aplikacji składającej żądanie. Na przykład użytkownik przechodzący przez dwie podróże zasad dla aplikacji nie jest monitowany o wybór dostawcy tożsamości. Wartość `Policy` wskazuje, że zachowanie dotyczy tylko zasad. Na przykład użytkownik przechodzący przez dwie podróże zasad dla struktury zaufania jest monitowany o wybór dostawcy tożsamości podczas przełączania między zasadami. |
+| Zakres | Tak | Zakres zachowania logowania jednokrotnego. Możliwe `Suppressed`wartości: `Tenant` `Application`, `Policy`, , lub . Wartość `Suppressed` wskazuje, że zachowanie jest pomijane, a użytkownik jest zawsze monitowany o wybór dostawcy tożsamości.  Wartość `Tenant` wskazuje, że zachowanie jest stosowane do wszystkich zasad w dzierżawie. Na przykład użytkownik przechodzący przez dwie podróże zasad dla dzierżawcy nie jest monitowany o wybór dostawcy tożsamości. Wartość `Application` wskazuje, że zachowanie jest stosowane do wszystkich zasad dla aplikacji składającej żądanie. Na przykład użytkownik przechodzący przez dwie podróże zasad dla aplikacji nie jest monitowany o wybór dostawcy tożsamości. Wartość `Policy` wskazuje, że zachowanie dotyczy tylko zasad. Na przykład użytkownik przechodzący przez dwie podróże zasad dla struktury zaufania jest monitowany o wybór dostawcy tożsamości podczas przełączania między zasadami. |
 | KeepAliveInDays (KeepAliveInDays) | Tak | Określa, jak długo użytkownik pozostaje zalogowany. Ustawienie wartości 0 powoduje wyłączenie funkcji KMSI. Aby uzyskać więcej informacji, zobacz [Nie loguj się .](custom-policy-keep-me-signed-in.md) |
 |EnforceIdTokenHintOnLogout| Nie|  Wymuś przekazanie wcześniej wystawionego tokenu identyfikatora do punktu końcowego wylogowania jako wskazówka dotycząca bieżącej uwierzytelnionej sesji użytkownika końcowego z klientem. Możliwe wartości: `false` (domyślnie) lub `true`. Aby uzyskać więcej informacji, zobacz [Logowanie do sieci Web za pomocą openid connect](openid-connect.md).  |
 
@@ -190,7 +190,7 @@ Element **Protokołu** zawiera następujący atrybut:
 
 | Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Nazwa | Tak | Nazwa prawidłowego protokołu obsługiwanego przez usługę Azure AD B2C, który jest używany jako część profilu technicznego. Możliwe `OpenIdConnect` wartości: `SAML2`lub . Wartość `OpenIdConnect` reprezentuje standard protokołu OpenID Connect 1.0 zgodnie ze specyfikacją fundamentu OpenID. Reprezentuje `SAML2` standard protokołu SAML 2.0 zgodnie ze specyfikacją OASIS. Nie należy używać tokenu SAML w produkcji. |
+| Nazwa | Tak | Nazwa prawidłowego protokołu obsługiwanego przez usługę Azure AD B2C, który jest używany jako część profilu technicznego. Możliwe `OpenIdConnect` wartości: `SAML2`lub . Wartość `OpenIdConnect` reprezentuje standard protokołu OpenID Connect 1.0 zgodnie ze specyfikacją fundamentu OpenID. Reprezentuje `SAML2` standard protokołu SAML 2.0 zgodnie ze specyfikacją OASIS. |
 
 ## <a name="outputclaims"></a>OutputClaims (Roszczenia wyjściowe)
 

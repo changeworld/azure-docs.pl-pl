@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 1287eb5de1391f40c4409d5d10522d8979ae4207
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 72e9334b4df58b1b90288cb7363a7d94bb531661
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78383847"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658825"
 ---
 Aby utworzyć projekt programu Visual Studio dla środowiska deweloperskiego języka C++, należy skonfigurować opcje rozwoju programu Visual Studio, utworzyć projekt, wybrać architekturę docelową i zainstalować zestaw SDK mowy.
 
@@ -77,4 +77,4 @@ Na koniec zainstaluj [pakiet NuGet zestawu SDK mowy](https://aka.ms/csspeech/nug
 
 1. W oknie **dialogowym Podgląd zmian** wybierz przycisk **OK**.
 
-1. W oknie dialogowym **Akceptacja licencji** wyświetl licencję, a następnie wybierz pozycję **Akceptuję**. Rozpocznie się instalacja pakietu, a **Output** po zakończeniu instalacji w okienku `Successfully installed 'Microsoft.CognitiveServices.Speech 1.10.0' to helloworld`Wyjście zostanie wyświetlony komunikat podobny do następującego tekstu: .
+1. W oknie dialogowym **Akceptacja licencji** wyświetl licencję, a następnie wybierz pozycję **Akceptuję**. Rozpocznie się instalacja pakietu, a **Output** po zakończeniu instalacji w okienku `Successfully installed 'Microsoft.CognitiveServices.Speech 1.11.0' to helloworld`Wyjście zostanie wyświetlony komunikat podobny do następującego tekstu: .

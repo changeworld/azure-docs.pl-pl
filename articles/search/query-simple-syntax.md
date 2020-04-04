@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 04/03/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3d5a4ddf863115747c27efbca1808d51444aac8c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152673"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656164"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Składnia kwerend prostych w usłudze Azure Cognitive Search
 
@@ -68,9 +68,15 @@ Operator NOT jest znakiem minus. Na przykład, będzie `wifi –luxury` wyszukiw
 > [!NOTE]  
 >  Opcja `searchMode` określa, czy termin z operatorem NOT jest ANDed lub ORed z `+` innymi `|` warunkami w kwerendzie w przypadku braku lub operatora. Przypomnijmy, że `searchMode` można `any` ustawić albo `all`(domyślnie) lub . Jeśli używasz `any`, zwiększy wycofywanie zapytań, dołączając więcej `-` wyników, a domyślnie będą interpretowane jako "LUB NIE". Na przykład `wifi -luxury` będzie pasować do dokumentów, które zawierają termin `wifi` `luxury`lub te, które nie zawierają terminu . Jeśli użyjesz `all`, zwiększy dokładność zapytań, dołączając mniej wyników, a domyślnie - będą interpretowane jako "I NIE". Na przykład `wifi -luxury` będzie pasować do `wifi` dokumentów, które zawierają termin i nie zawierają terminu "luksus". Jest to prawdopodobnie bardziej intuicyjne zachowanie `-` dla operatora. W związku z tym `searchMode=all` należy `searchMode=any` rozważyć użycie zamiast, jeśli chcesz zoptymalizować wyszukiwania dla precyzji `-` zamiast odwołania, *a* użytkownicy często używają operatora w wyszukiwaniach.
 
-## <a name="suffix-operator"></a>Operator sufiksu
+<a name="prefix-search"></a>
 
-Operator sufiksu jest `*`gwiazdką . Na przykład `lux*` wyszuka dokumenty, które mają `lux`termin rozpoczynający się od , ignorując przypadek.  
+## <a name="suffix--operator-for-prefix-search"></a>Operator sufiksu `*` wyszukiwania prefiksów
+
+Operator sufiksu jest `*`gwiazdką . Na przykład `cap*` wyszuka dokumenty, które mają `cap`termin rozpoczynający się od , ignorując przypadek. 
+
+Podobnie jak filtry, kwerenda prefiks szuka dopasowania dokładnego. W związku z tym nie ma znaczenia punktacji (wszystkie wyniki otrzymują wynik wyszukiwania 1.0). Kwerendy prefiksu może być powolny, zwłaszcza jeśli indeks jest duży, a prefiks składa się z niewielkiej liczby znaków. 
+
+Jeśli chcesz wykonać kwerendę sufiks, pasujące w ostatniej części ciągu, użyj [wyszukiwania symboli wieloznacznych](query-lucene-syntax.md#bkmk_wildcard) i pełnej składni Lucene.
 
 ## <a name="phrase-search-operator"></a>Operator wyszukiwania fraz
 

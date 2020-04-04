@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 243530b4badb9b19d288a91f247eefbcf622fb87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 9d057a4be02d8d93d3ef02ee3153baebe9146ff1
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536415"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632713"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Jak skonfigurować parametry serwera w usłudze Azure Database for MariaDB przy użyciu witryny Azure portal
 
@@ -39,8 +39,8 @@ Pula buforów InnoDB i połączenia Max nie są konfigurowalne i powiązane z [w
 
 |**Warstwa cenowa**| **vCore(s)**|**Pula buforów InnoDB (MB)**|
 |---|---|---|
-|Podstawowa (Basic)| 1| 1024|
-|Podstawowa (Basic)| 2| 2560|
+|Podstawowy| 1| 1024|
+|Podstawowy| 2| 2560|
 |Ogólnego przeznaczenia| 2| 3584|
 |Ogólnego przeznaczenia| 4| 7680|
 |Ogólnego przeznaczenia| 8| 15360|
@@ -68,10 +68,10 @@ Inne parametry serwera, które nie są wymienione w tym miejscu są ustawione na
 
 ### <a name="populating-the-time-zone-tables"></a>Wypełnianie tabel stref czasowych
 
-Tabele stref czasowych na serwerze `az_load_timezone` można wypełnić, wywołując procedurę składowaną za pomocą narzędzia, takiego jak wiersz polecenia MySQL lub MySQL Workbench.
+Tabele stref czasowych na serwerze `mysql.az_load_timezone` można wypełnić, wywołując procedurę składowaną za pomocą narzędzia, takiego jak wiersz polecenia MySQL lub MySQL Workbench.
 
 > [!NOTE]
-> Jeśli `az_load_timezone` używasz polecenia z mysql workbench, może być konieczne wyłączenie `SET SQL_SAFE_UPDATES=0;`trybu bezpiecznej aktualizacji przy użyciu .
+> Jeśli `mysql.az_load_timezone` używasz polecenia z mysql workbench, może być konieczne wyłączenie `SET SQL_SAFE_UPDATES=0;`trybu bezpiecznej aktualizacji przy użyciu .
 
 ```sql
 CALL mysql.az_load_timezone();

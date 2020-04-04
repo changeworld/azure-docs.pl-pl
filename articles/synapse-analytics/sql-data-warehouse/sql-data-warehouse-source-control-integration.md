@@ -10,22 +10,22 @@ ms.subservice: ''
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9898addfa840752e27de8716d2185e767aac809b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0ffa33811957af95fc10396ffecef0b3de7959fe
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350089"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633021"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>Integracja kontroli źródła dla puli SQL
 
-W tym samouczku opisano, jak zintegrować projekt bazy danych narzędzi danych programu SQL Server (SSDT) z kontrolą źródła.  Integracja kontroli źródła jest pierwszym krokiem w tworzeniu potoku ciągłej integracji i wdrażania z zasobem puli SQL w usłudze Azure Synapse Analytics. 
+W tym samouczku opisano, jak zintegrować projekt bazy danych narzędzi danych programu SQL Server (SSDT) z kontrolą źródła.  Integracja kontroli źródła jest pierwszym krokiem w tworzeniu potoku ciągłej integracji i wdrażania z zasobem puli SQL w usłudze Azure Synapse Analytics.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 - Zarejestruj się w [organizacji Azure DevOps](https://azure.microsoft.com/services/devops/)
-- Przejdź przez samouczek [Tworzenie i łączenie](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal)
--  [Instalowanie programu Visual Studio 2019](https://visualstudio.microsoft.com/vs/older-downloads/) 
+- Przejdź przez samouczek [Tworzenie i łączenie](create-data-warehouse-portal.md)
+- [Instalowanie programu Visual Studio 2019](https://visualstudio.microsoft.com/vs/older-downloads/)
 
 ## <a name="set-up-and-connect-to-azure-devops"></a>Konfigurowanie programów DevOps i łączenie się z nią
 
@@ -53,7 +53,7 @@ W tym samouczku opisano, jak zintegrować projekt bazy danych narzędzi danych p
 
    ![Importowanie projektu](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "Importowanie projektu")  
 
-3. W eksploratorze zespołu w programie Visual Studio zaaproponuj wszystkie zmiany w lokalnym repozytorium Git 
+3. W eksploratorze zespołu w programie Visual Studio zaaproponuj wszystkie zmiany w lokalnym repozytorium Git
 
    ![Zatwierdzenie](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Zatwierdzenie")  
 
@@ -63,7 +63,7 @@ W tym samouczku opisano, jak zintegrować projekt bazy danych narzędzi danych p
 
    ![Synchronizacja i wypychanie](./media/sql-data-warehouse-source-control-integration/7.5-commit-push-changes.png "Synchronizacja i wypychanie")  
 
-## <a name="validation"></a>Sprawdzanie poprawności
+## <a name="validation"></a>Walidacja
 
 1. Sprawdź, czy zmiany zostały wypychane do repozytorium usługi Azure, aktualizując kolumnę tabeli w projekcie bazy danych za pomocą narzędzia danych programu Visual Studio SQL Server Data Tools (SSDT)
 

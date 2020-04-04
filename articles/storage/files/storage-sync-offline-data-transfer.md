@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9398aceeb7465392e82aeaa5760f6c0504f8e33d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d0331419de89775062f1309c5d854cd7325c68e4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159527"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656768"
 ---
-# <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Migrowanie danych zbiorczych do synchronizacji plików platformy Azure za pomocą usługi Azure DataBox
+# <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Migrowanie danych zbiorczych do usługi Azure File Sync za pomocą usługi Azure DataBox
 Dane zbiorcze można migrować do usługi Azure File Sync na dwa sposoby:
 
 * **Przekaż swoje pliki przy użyciu usługi Azure File Sync.** Jest to najprostsza metoda. Przenieś swoje pliki lokalnie do systemu Windows Server 2012 R2 lub nowszego i zainstaluj agenta usługi Azure File Sync. Po skonfigurowaniu synchronizacji pliki zostaną przesłane z serwera. (Nasi klienci doświadczają obecnie średniej prędkości wysyłania 1 TiB około co dwa dni). Aby upewnić się, że serwer nie zużywa zbyt dużej przepustowości dla centrum danych, można skonfigurować [harmonogram ograniczania przepustowości.](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter)
@@ -25,7 +25,7 @@ W tym artykule wyjaśniono, jak migrować pliki w trybie offline w sposób zgodn
 ## <a name="migration-tools"></a>Narzędzia migracji
 Proces, który opisujemy w tym artykule działa nie tylko dla data box, ale także dla innych narzędzi migracji w trybie offline. Działa również dla narzędzi, takich jak AzCopy, Robocopy, lub narzędzi i usług partnerskich, które działają prosto przez Internet. Jednak aby przezwyciężyć początkowe wyzwanie przekazywania, wykonaj kroki opisane w tym artykule, aby użyć tych narzędzi w sposób zgodny z synchronizacją plików platformy Azure.
 
-W niektórych przypadkach należy przenieść się z jednego systemu Windows Server do innego systemu Windows Server przed przyjęciem usługi Azure File Sync. [Usługa migracji pamięci masowej](https://aka.ms/storagemigrationservice) (SMS) może w tym pomóc. Niezależnie od tego, czy chcesz przeprowadzić migrację do wersji systemu operacyjnego Serwera obsługiwanej przez usługę Azure File Sync (Windows Server 2012R2 i nowsze), czy po prostu musisz przeprowadzić migrację, ponieważ kupujesz nowy system synchronizacji plików platformy Azure, program SMS ma wiele funkcji i zalet, które pomogą ci uzyskać migracji odbywa się płynnie.
+W niektórych przypadkach należy przenieść się z jednego systemu Windows Server do innego systemu Windows Server przed przyjęciem usługi Azure File Sync. [Usługa migracji pamięci masowej](https://aka.ms/storagemigrationservice) (SMS) może w tym pomóc. Niezależnie od tego, czy chcesz przeprowadzić migrację do wersji systemu operacyjnego Serwera obsługiwanej przez usługę Azure File Sync (Windows Server 2012R2 i nowsze), czy po prostu musisz przeprowadzić migrację, ponieważ kupujesz nowy system synchronizacji plików platformy Azure, program SMS ma wiele funkcji i zalet, które pomogą bezproblemowo przeprowadzić migrację.
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>Korzyści z używania narzędzia do przesyłania danych w trybie offline
 Oto główne zalety korzystania z narzędzia transferu, takiego jak Data Box do migracji w trybie offline:
@@ -53,14 +53,17 @@ Aby skonfigurować synchronizację plików platformy Azure w sposób zgodny z na
 |---|---------------------------------------------------------------------------------------|
 | ![Krok 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Zamów swoje pole danych](../../databox/data-box-deploy-ordered.md). Rodzina Data Box oferuje [kilka produktów](https://azure.microsoft.com/services/storage/databox/data) spełnianych Przez Państwa potrzeby. Po otrzymaniu pola danych należy postępować zgodnie z jego [dokumentacją, aby skopiować dane](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) do tej ścieżki UNC w polu data: * \\<DeviceIPAddres\>\<StorageAccountName_AzFile\>\<ShareName\>*. W tym miejscu *ShareName* jest nazwą udziału przemieszczania. Wyślij pole danych z powrotem na platformę Azure. |
 | ![Krok 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Poczekaj, aż pliki pojawią się w udziałach plików platformy Azure, które zostały wybrane jako tymczasowe udziały przejściowe. *Nie należy włączać synchronizacji z tymi udziałami.* |
-| ![Krok 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Utwórz nowy pusty udział dla każdego udziału plików utworzonego dla Ciebie. Ten nowy udział powinien znajdować się na tym samym koncie magazynu, co udział data box. [Jak utworzyć nowy udział plików platformy Azure](storage-how-to-create-file-share.md). |
-| ![Krok 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Utwórz grupę synchronizacji](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) w usłudze synchronizacji magazynu. Odwołanie się do pustego udziału jako punktu końcowego chmury. Powtórz ten krok dla każdego udziału plików Data Box. [Konfigurowanie usługi Azure File Sync](storage-sync-files-deployment-guide.md). |
-| ![Krok 5](media/storage-sync-files-offline-data-transfer/bullet_5.png) | [Dodaj katalog serwerów na żywo jako punkt końcowy serwera](storage-sync-files-deployment-guide.md#create-a-server-endpoint). W procesie określ, że pliki zostały przeniesione na platformę Azure i odwołaj się do udziałów przejściowych. W razie potrzeby można włączyć lub wyłączyć warstwowanie w chmurze. Podczas tworzenia punktu końcowego serwera na serwerze na żywo odwołaj się do udziału przejściowego. W bloku **Dodaj punkt końcowy serwera** w obszarze Transfer danych w **trybie offline**wybierz pozycję Włączone , a następnie wybierz udział **przejściowy,** który musi znajdować się na tym samym koncie magazynu co punkt końcowy w chmurze. W tym miejscu lista dostępnych udziałów jest filtrowana według konta magazynu i udziałów, które nie są jeszcze synchronizowane. |
+| ![Krok 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | <ul><li>Utwórz nowy pusty udział dla każdego udziału plików utworzonego dla Ciebie. Ten nowy udział powinien znajdować się na tym samym koncie magazynu, co udział data box. [Jak utworzyć nowy udział plików platformy Azure](storage-how-to-create-file-share.md).</li><li>[Utwórz grupę synchronizacji](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) w usłudze synchronizacji magazynu. Odwołanie się do pustego udziału jako punktu końcowego chmury. Powtórz ten krok dla każdego udziału plików Data Box. [Konfigurowanie usługi Azure File Sync](storage-sync-files-deployment-guide.md).</li></ul> |
+| ![Krok 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Dodaj katalog serwerów na żywo jako punkt końcowy serwera](storage-sync-files-deployment-guide.md#create-a-server-endpoint). W procesie określ, że pliki zostały przeniesione na platformę Azure i odwołaj się do udziałów przejściowych. W razie potrzeby można włączyć lub wyłączyć warstwowanie w chmurze. Podczas tworzenia punktu końcowego serwera na serwerze na żywo odwołaj się do udziału przejściowego. W bloku **Dodaj punkt końcowy serwera** w obszarze Transfer danych w **trybie offline**wybierz pozycję Włączone , a następnie wybierz udział **przejściowy,** który musi znajdować się na tym samym koncie magazynu co punkt końcowy w chmurze. W tym miejscu lista dostępnych udziałów jest filtrowana według konta magazynu i udziałów, które nie są jeszcze synchronizowane. Zrzut ekranu po tej tabeli pokazuje, jak odwoływać się do udziału DataBox podczas tworzenia punktu końcowego serwera w witrynie Azure portal. |
+| ![Krok 5](media/storage-sync-files-offline-data-transfer/bullet_5.png) | Po dodaniu punktu końcowego serwera w poprzednim kroku dane uruchamia się automatycznie z odpowiedniego źródła. Sekcja [Synchronizacja udziału](#syncing-the-share) wyjaśnia, kiedy dane przepływają z udziału DataBox lub z systemu Windows Server |
+| |
 
 ![Zrzut ekranu przedstawiający interfejs użytkownika portalu Azure, przedstawiający sposób włączania transferu danych w trybie offline podczas tworzenia nowego punktu końcowego serwera](media/storage-sync-files-offline-data-transfer/data-box-integration-2-600.png)
 
 ## <a name="syncing-the-share"></a>Synchronizowanie udziału
 Po utworzeniu punktu końcowego serwera rozpocznie się synchronizacja. Proces synchronizacji określa, czy każdy plik na serwerze istnieje również w udziale przejściowym, w którym data box zdeponowane pliki. Jeśli plik istnieje, proces synchronizacji kopiuje plik z udziału przemieszczania, a nie przesyła go z serwera. Jeśli plik nie istnieje w udziale przejściowym lub jeśli nowsza wersja jest dostępna na serwerze lokalnym, proces synchronizacji przekazuje plik z serwera lokalnego.
+
+Podczas synchronizacji udziału synchronizacja scali brakujące atrybuty plików, uprawnienia lub sygnatury czasowe z wariantów plików na serwerze lokalnym, łącząc je z ich odpowiednikami plików z udziału DataBox. Dzięki temu każdy plik i folder dociera z wszystkich możliwych wierności plików w udziale plików platformy Azure.
 
 > [!IMPORTANT]
 > Tryb migracji zbiorczej można włączyć tylko podczas tworzenia punktu końcowego serwera. Po ustanowieniu punktu końcowego serwera nie można zintegrować danych zmigrowanych zbiorczo z już synchronizującego się serwera z obszarem nazw.

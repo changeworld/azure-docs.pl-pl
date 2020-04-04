@@ -4,14 +4,14 @@ description: Wymagania wstępne dotyczące korzystania z pamięci podręcznej HP
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6da35cb60dc5f22be01ae25393bd62327db64867
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271852"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655661"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Wymagania wstępne dotyczące pamięci podręcznej HPC usługi Azure
 
@@ -113,7 +113,7 @@ Więcej informacji znajduje się w [rozwiązaniu problemu z konfiguracją serwer
 
   Upewnij się, że wszystkie porty zwrócone przez kwerendę zezwalają ``rpcinfo`` na nieograniczony ruch z podsieci pamięci podręcznej HPC platformy Azure.
 
-  * Oprócz portów zwracanych `rpcinfo` przez polecenie upewnij się, że te powszechnie używane porty zezwalają na ruch przychodzący i wychodzący:
+  * Jeśli nie możesz użyć `rpcinfo` tego polecenia, upewnij się, że te powszechnie używane porty zezwalają na ruch przychodzący i wychodzący:
 
     | Protocol (Protokół) | Port  | Usługa  |
     |----------|-------|----------|
@@ -122,6 +122,8 @@ Więcej informacji znajduje się w [rozwiązaniu problemu z konfiguracją serwer
     | Protokół TCP/UDP  | 4045  | nlockmgr |
     | Protokół TCP/UDP  | 4046  | zamontowany   |
     | Protokół TCP/UDP  | 4047  | status   |
+
+    Niektóre systemy używają różnych numerów portów dla tych usług - zapoznaj się z dokumentacją systemu pamięci masowej, aby upewnić się.
 
   * Sprawdź ustawienia zapory, aby upewnić się, że zezwalają one na ruch na wszystkich wymaganych portach. Sprawdź zapory używane na platformie Azure, a także zapory lokalne w centrum danych.
 
@@ -132,7 +134,7 @@ Więcej informacji znajduje się w [rozwiązaniu problemu z konfiguracją serwer
 
   Dowiedz się więcej o dostępie do listy katalogów w [artykule rozwiązywanie problemów z](troubleshoot-nas.md#enable-export-listing)docelowym magazynem plików NFS .
 
-* **Dostęp do roota:** Pamięć podręczna łączy się z systemem zaplecza jako identyfikator użytkownika 0. Sprawdź te ustawienia w systemie pamięci masowej:
+* **Dostęp do roota** (odczyt/zapis): Pamięć podręczna łączy się z systemem zaplecza jako identyfikator użytkownika 0. Sprawdź te ustawienia w systemie pamięci masowej:
   
   * Włącz `no_root_squash`plik . Ta opcja gwarantuje, że zdalny użytkownik root może uzyskać dostęp do plików należących do roota.
 

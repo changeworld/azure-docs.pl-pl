@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 147f43148c0f804adf70f1a792ba1b8a772fdae4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8da8cd7110cd17d0aadd52cce1263c7c0fcfdf5c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294489"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632170"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Dziesięć czynności, które można wykonać na maszynie wirtualnej do nauki o danych systemu Windows
 
@@ -803,16 +803,6 @@ pd.read_sql(queryString, connection)
 ```
 
 ![Górne wiersze danych z tabeli](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
-
-#### <a name="read-data-from-hdi-by-using-azure-machine-learning-studio-classic-reader-module"></a>Odczytywanie danych z interfejsu HDI przy użyciu usługi Azure Machine Learning Studio (klasyczny): moduł czytnika
-
-Można również użyć modułu czytnika w usłudze Azure Machine Learning Studio (klasyczny) do uzyskiwania dostępu do bazy danych w klastrze Hadoop. Podłącz poświadczenia klastrów HDI i konta magazynu platformy Azure, aby umożliwić tworzenie modeli uczenia maszynowego przy użyciu bazy danych w klastrach HDI.
-
-![Właściwości modułu czytnika](./media/vm-do-ten-things/AML_Reader_Hive.PNG)
-
-Następnie można wyświetlić zestaw danych z ocenami:
-
-![Wyświetlanie zestawu danych z ocenami](./media/vm-do-ten-things/AML_Model_Results.PNG)
 
 ### <a name="azure-sql-data-warehouse-and-databases"></a>Usługa Azure SQL Data Warehouse i bazy danych
 Usługa Azure SQL Data Warehouse to elastyczny magazyn danych jako usługa z systemem SQL Server klasy korporacyjnej.

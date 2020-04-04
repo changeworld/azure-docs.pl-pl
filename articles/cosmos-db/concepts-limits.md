@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: bd384f2b4dd879c30fafd2b765dd9ba0efb12447
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/03/2020
+ms.openlocfilehash: 343e94fe681d398b695e0e24c22544bca470d75a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348389"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652188"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Przydziały usługi Usługi Azure Cosmos DB
 
@@ -152,6 +152,9 @@ Usługa Cosmos DB obsługuje wykonywanie zapytań o elementy przy użyciu progra
 | Maksymalna liczba jonów na kwerendę| 5<sup>*</sup>|
 | Maksymalna liczba plików UDF na kwerendę| 10<sup>*</sup>|
 | Maksymalna liczba punktów na wielokąt| 4096 |
+| Maksymalna liczba uwzględnionych ścieżek na kontener| 500 |
+| Maksymalna wykluczona ścieżka na kontener| 500 |
+| Maksymalne właściwości w indeksie złożonym| 8 |
 
 <sup>*</sup>Te limity zapytań SQL można zwiększyć, kontaktując się z pomocą techniczną platformy Azure.
 
@@ -163,7 +166,7 @@ W poniższej tabeli wymieniono limity specyficzne dla obsługi funkcji MongoDB. 
 
 | Zasób | Limit domyślny |
 | --- | --- |
-| Maksymalny rozmiar pamięci kwerendy MongoDB | 40 MB |
+| Maksymalny rozmiar pamięci kwerendy MongoDB (to ograniczenie dotyczy tylko wersji serwera 3.2) | 40 MB |
 | Maksymalny czas wykonania operacji MongoDB| Lata 30. |
 | Limit czasu połączenia bezczynnego dla zamknięcia połączenia po stronie serwera* | 30 minut |
 

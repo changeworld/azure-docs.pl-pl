@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 03/04/2020
+ms.date: 04/03/2020
 ms.author: labrenne
 ms.custom: include file
-ms.openlocfilehash: e9460108499ca76d1b149b61cebe3d3081bf6544
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc08dcded6418208751edbffcb5d263db059ec01
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086252"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657471"
 ---
 ### <a name="general-requirements"></a>Wymagania ogólne
 
@@ -65,7 +65,7 @@ Podsieć musi zezwalać na komunikację przychodzącą z usługi Batch, aby móc
 
 #### <a name="network-security-groups-specifying-subnet-level-rules"></a>Sieciowe grupy zabezpieczeń: określanie reguł na poziomie podsieci
 
-Nie jest wymagane określenie sieciowych grup zabezpieczeń na poziomie podsieci sieci wirtualnej, ponieważ usługa Batch konfiguruje własne sieciowe sieciowe (patrz wyżej). Jeśli z podsiecią skojarzoną jest grupa zabezpieczeń sieciowych, w której wdrożono węzły obliczeniowe usługi Batch lub chcesz zastosować niestandardowe reguły sieciowej grupy zabezpieczeń w celu zastąpienia zastosowanych wartości domyślnych, należy skonfigurować tę grupę zabezpieczeń z co najmniej przychodzącymi i wychodzącymi regułami zabezpieczeń, jak pokazano na poniższej stronie Tabel.
+Nie jest wymagane określenie sieciowych grup zabezpieczeń na poziomie podsieci sieci wirtualnej, ponieważ usługa Batch konfiguruje własne sieciowe sieciowe (patrz wyżej). Jeśli z podsiecią skojarzoną jest grupa zabezpieczeń sieciowych, w której wdrożono węzły obliczeniowe usługi Batch lub chcesz zastosować niestandardowe reguły sieciowej grupy zabezpieczeń w celu zastąpienia zastosowanych wartości domyślnych, należy skonfigurować tę grupę zabezpieczeń z co najmniej przychodzącymi i wychodzącymi regułami zabezpieczeń, jak pokazano w poniższych tabelach.
 
 Skonfiguruj ruch przychodzący na porcie 3389 (Windows) lub 22 (Linux) tylko wtedy, gdy musisz zezwolić na zdalny dostęp do węzłów obliczeniowych ze źródeł zewnętrznych. Może być konieczne włączenie reguł portu 22 w systemie Linux, jeśli wymagana jest obsługa zadań wielu wystąpień z określonymi środowiskami uruchomieniowymi MPI. Zezwalanie na ruch na tych portach nie jest ściśle wymagane dla węzłów obliczeniowych puli, które mają być użyteczne.
 
@@ -75,6 +75,9 @@ Skonfiguruj ruch przychodzący na porcie 3389 (Windows) lub 22 (Linux) tylko wte
 | --- | --- | --- | --- | --- | --- | --- |
 | Nie dotyczy | `BatchNodeManagement`[Tag usługi](../articles/virtual-network/security-overview.md#service-tags) (jeśli używa się wariantu regionalnego, w tym samym regionie co konto usługi Batch) | * | Dowolne | 29876-29877 | TCP | Zezwalaj |
 | W razie potrzeby serwery IP źródła użytkownika do zdalnego uzyskiwania dostępu do węzłów obliczeniowych i/lub podsieci węzłów obliczeniowych dla zadań wielu wystąpień systemu Linux. | Nie dotyczy | * | Dowolne | 3389 (Windows), 22 (Linux) | TCP | Zezwalaj |
+
+> [!WARNING]
+> Adresy IP usługi wsadowej mogą się zmieniać wraz z czasem. W związku z tym zaleca się `BatchNodeManagement` korzystanie z tagu usługi (lub wariantu regionalnego) dla reguł sieciowej grupy płciowych. Nie zaleca się wypełniania reguł sieciowej grupy danych bezpośrednio adresami IP usługi wsadowej.
 
 **Reguły zabezpieczeń dla ruchu wychodzącego**
 

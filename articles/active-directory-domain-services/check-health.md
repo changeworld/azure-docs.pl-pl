@@ -8,15 +8,15 @@ ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: fa1cba2d791cd40a46f8ad182c123a726143faec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 27ab14af25704a4f7fb46aa5e86cdaf881c49442
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614251"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655636"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Sprawdzanie kondycji domeny zarządzanej usług domenowych Usługi domenowe Active Directory platformy Azure
 
@@ -53,7 +53,7 @@ Stan kondycji domeny zarządzanej usług Azure AD DS pokazuje dwa typy informacj
 
 Monitory to obszary domeny zarządzanej usług Azure AD DS, które są regularnie sprawdzane. Jeśli istnieją aktywne alerty dla domeny zarządzanej usługi Azure AD DS, może to spowodować, że jeden z monitorów zgłosić problem. Usługi domenowe usługi Azure AD mają obecnie monitory dla następujących obszarów:
 
-* Tworzenie kopii zapasowych
+* Backup
 * Synchronizacja z usługą Azure AD
 
 #### <a name="backup-monitor"></a>Monitor kopii zapasowych

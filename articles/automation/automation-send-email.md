@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: tutorial
-ms.openlocfilehash: 6acb68b7bbaa54db2e4143a42e43aede2caed35f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 332d7e4cae3b65d794d48d208b54db3809b78a8f
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75420705"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632364"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>Samouczek: Wysyłanie wiadomości e-mail z uruchomieniu usługi Azure Automation
 
@@ -149,7 +149,7 @@ W tym przykładzie można utworzyć projekt runbook o nazwie **Send-GridMailMess
 
 7. Wybierz **pozycję Publikuj,** aby zapisać i opublikować projekt runbook.
 
-Aby sprawdzić, czy projekt runbook jest wykonywany pomyślnie, można wykonać kroki w obszarze [Testowanie żyła lub](manage-runbooks.md#test-a-runbook) [Uruchamianie żyła .](start-runbooks.md)
+Aby sprawdzić, czy projekt runbook jest wykonywany pomyślnie, można wykonać kroki w obszarze [Testowanie żyła lub](manage-runbooks.md#testing-a-runbook) [Uruchamianie żyła .](start-runbooks.md)
 Jeśli początkowo nie widzisz testowej poczty e-mail, sprawdź foldery **Wiadomości-śmieci** i **Spam.**
 
 ## <a name="clean-up"></a>Czyszczenie
