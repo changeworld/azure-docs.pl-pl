@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 03b279ead6b1f5d26ae92b63a8780a61dfd711bb
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 887f9e100a60561271a4c15777e7131ea1f1f722
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420567"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631429"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Co to jest IPv6 dla sieci wirtualnej platformy Azure?
 
@@ -31,7 +31,7 @@ Na poniższym diagramie przedstawiono proste wdrożenie podwójnego stosu (IPv4/
 
 ![Diagram wdrażania sieci IPv6](./media/ipv6-support-overview/ipv6-sample-diagram.png)
 
-## <a name="benefits"></a>Korzyści
+## <a name="benefits"></a>Zalety
 
 IPv6 dla korzyści sieci wirtualnej platformy Azure:
 
@@ -57,7 +57,8 @@ Usługa IPv6 dla sieci wirtualnej platformy Azure zawiera następujące możliwo
     - Opcjonalne reguły ruchu wychodzącego, które zapewniają pełną kontrolę deklaratywną nad łącznością wychodzącą, aby skalować i dostroić tę możliwość do określonych potrzeb.
     - Opcjonalnie wiele konfiguracji front-end, które umożliwiają jeden moduł równoważenia obciążenia do korzystania z wielu publicznych adresów IP IPv6- ten sam protokół frontendu i portu mogą być ponownie używane w adresach frontendu.
     - Opcjonalne porty IPv6 mogą być ponownie używane w wystąpieniach wewnętrznej bazy danych przy użyciu funkcji *Przestawne ip* reguł równoważenia obciążenia 
-- [Standardowa obsługa wewnętrznego modułu równoważenia obciążenia IPv6](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) w celu tworzenia odpornych aplikacji wielowarstwowych w ramach sieci wirtualnych platformy Azure.  
+    - Uwaga: Równoważenie obciążenia nie wykonuje żadnego tłumaczenia protokołu (bez NAT64). 
+- [Standardowa obsługa wewnętrznego modułu równoważenia obciążenia IPv6](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) w celu tworzenia odpornych aplikacji wielowarstwowych w ramach sieci wirtualnych platformy Azure.   
 - Podstawowa obsługa publicznego modułu równoważenia obciążenia IPv6 w celu zapewnienia zgodności z starszymi wdrożeniami
 - [Zarezerwowane publiczne adresy IP i zakresy adresów IPv6](ipv6-public-ip-address-prefix.md) zapewniają stabilne i przewidywalne adresy IPv6, które ułatwiają umieszczanie aplikacji hostowanych na platformie azure dla twojej firmy i klientów.
 - Publiczny adres IP na poziomie wystąpienia zapewnia łączność z Internetem IPv6 bezpośrednio do poszczególnych maszyn wirtualnych.
@@ -72,8 +73,9 @@ IPv6 for Azure VNET to podstawowy zestaw funkcji, który umożliwia klientom hos
 
 ## <a name="limitations"></a>Ograniczenia
 Bieżąca wersja usługi IPv6 dla sieci wirtualnej platformy Azure ma następujące ograniczenia:
-- Usługa Wirtualna IPv6 dla platformy Azure jest dostępna we wszystkich globalnych regionach platformy Azure, ale tylko w globalnej platformie Azure — nie jest jeszcze dostępna w chmurach rządowych.
-- Bramy usługi ExpressRoute i VPN nie mogą być używane w sieci wirtualnej z włączoną funkcją Protokołu IPv6, bezpośrednio lub w równorzędnie z "UseRemoteGateway". 
+- Usługa Wirtualna IPv6 dla platformy Azure jest dostępna we wszystkich globalnych regionach komercyjnych platformy Azure przy użyciu wszystkich metod wdrażania.  Wdrażanie w chmurze instytucji rządowych USA jest tymczasowo ograniczone do szablonu ARM (JSON), interfejsu wiersza polecenia (CLI) i programu Powershell.  Wsparcie IPv6 w portalu chmury rządu USA będzie wkrótce dostępne.  
+- Bramy usługi ExpressRoute MOGĄ być używane do ruchu tylko dla IPv4 w sieci wirtualnej z włączoną obsługą IPv6.  Obsługa ruchu IPv6 jest na naszej mapie drogowej.   
+- Bramy sieci VPN NIE MOGĄ być używane w sieci wirtualnej z włączoną iPv6, bezpośrednio lub w równorzędnie z "UseRemoteGateway".
 - Platforma Azure (AKS itp.) nie obsługuje komunikacji IPv6 dla kontenerów.  
 
 ## <a name="pricing"></a>Cennik

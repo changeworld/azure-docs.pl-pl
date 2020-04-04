@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 225ee7028b9610a4974f9bee05da667d78d3355e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/02/2020
+ms.openlocfilehash: 1d044ddaea0a2c7a1d489523cc9aa4515df0728a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73903732"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632658"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Zainstaluj notebook Jupyter na komputerze i połącz się z Apache Spark na hdinsight
 
-W tym artykule dowiesz się, jak zainstalować notebook Jupyter, z niestandardowymi jądrami PySpark (dla Pythona) i Apache Spark (dla Scali) z magią Spark i podłączyć notes do klastra HDInsight. Może być wiele powodów, aby zainstalować Jupyter na komputerze lokalnym, i może być kilka wyzwań, jak również. Aby uzyskać więcej informacji na ten temat, zobacz sekcję [Dlaczego należy zainstalować Jupyter na moim komputerze](#why-should-i-install-jupyter-on-my-computer) na końcu tego artykułu.
+W tym artykule dowiesz się, jak zainstalować notes Jupyter z niestandardowymi jądrami PySpark (dla Pythona) i Apache Spark (dla Scali) za pomocą magii Spark. Następnie należy podłączyć notes do klastra HDInsight.
 
 Istnieją cztery kluczowe kroki związane z instalacją Jupyter i łączeniem się z Apache Spark na HDInsight.
 
@@ -26,17 +26,17 @@ Istnieją cztery kluczowe kroki związane z instalacją Jupyter i łączeniem si
 * Zainstaluj jądra PySpark i Spark za pomocą magii Iskry.
 * Skonfiguruj magię platformy Spark, aby uzyskać dostęp do klastra Platformy Spark w programie HDInsight.
 
-Aby uzyskać więcej informacji na temat niestandardowych jąder i magii Spark dostępnych dla notebooków Jupyter z klastrem HDInsight, zobacz [Jądra dostępne dla notebooków Jupyter z klastrami Apache Spark Linux w programie HDInsight](apache-spark-jupyter-notebook-kernels.md).
+Aby uzyskać więcej informacji na temat niestandardowych jąder i magii Spark, zobacz [Jądra dostępne dla notebooków Jupyter z klastrami Apache Spark Linux w programie HDInsight](apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md). Jest to warunek wstępny podłączenia notebooka Jupyter do klastra HDInsight po zainstalowaniu notesu.
+* Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md). Notes lokalny łączy się z klastrem HDInsight.
 
 * Znajomość zagadnień dotyczących używania notesów Jupyter za pomocą platformy Spark w usłudze HDInsight.
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>Instalowanie notebooka Jupyter na komputerze
 
-Przed zainstalowaniem notesów Jupyter należy zainstalować pythona. Dystrybucja [Anaconda](https://www.anaconda.com/download/) zainstaluje zarówno Python, jak i Notebook Jupyter.
+Zainstaluj Pythona przed zainstalowaniem notebooków Jupyter. Dystrybucja [Anaconda](https://www.anaconda.com/download/) zainstaluje zarówno Python, jak i Notebook Jupyter.
 
 Pobierz [instalator Anaconda](https://www.anaconda.com/download/) dla swojej platformy i uruchom instalatora. Podczas uruchamiania kreatora konfiguracji upewnij się, że wybrano opcję dodawania anakondy do zmiennej PATH.  Zobacz też: [Instalowanie programu Jupyter przy użyciu programu Anaconda](https://jupyter.readthedocs.io/en/latest/install.html).
 
@@ -63,9 +63,9 @@ Pobierz [instalator Anaconda](https://www.anaconda.com/download/) dla swojej pla
     pip show sparkmagic
     ```
 
-    Następnie zmień katalog roboczy na lokalizację zidentyfikowaną za pomocą powyższego polecenia.
+    Następnie zmień katalog roboczy na **lokalizację** zidentyfikowaną za pomocą powyższego polecenia.
 
-1. W nowym katalogu roboczym wprowadź jedno lub więcej poniższych poleceń, aby zainstalować żądane jądro:
+1. W nowym katalogu roboczym wprowadź jedno lub więcej poniższych poleceń, aby zainstalować poszukiwane jądro(
 
     |Jądro | Polecenie |
     |---|---|
@@ -90,7 +90,7 @@ W tej sekcji można skonfigurować magii Platformy Spark, który został zainsta
     python
     ```
 
-2. Informacje o konfiguracji Jupyter są zazwyczaj przechowywane w katalogu domowym użytkowników. Wprowadź następujące polecenie, aby zidentyfikować katalog macierzysty, i utwórz folder o nazwie **.sparkmagic**.  Zostanie wysuń pełną ścieżkę.
+2. Informacje o konfiguracji Jupyter są zazwyczaj przechowywane w katalogu domowym użytkowników. Wprowadź następujące polecenie, aby zidentyfikować katalog macierzysty, i utwórz folder o nazwie ** \.sparkmagic**.  Zostanie wysuń pełną ścieżkę.
 
     ```python
     import os
@@ -146,7 +146,7 @@ W tej sekcji można skonfigurować magii Platformy Spark, który został zainsta
     jupyter notebook
     ```
 
-6. Sprawdź, czy możesz użyć magii Iskry dostępnej z jądrami. Wykonaj poniższe kroki.
+6. Sprawdź, czy możesz użyć magii Iskry dostępnej z jądrami. Wykonaj poniższe czynności.
 
     a. Utwórz nowy notes. W prawym rogu wybierz pozycję **Nowy**. Powinieneś zobaczyć domyślne jądro **Python 2** lub **Python 3** i zainstalowane jądra. Rzeczywiste wartości mogą się różnić w zależności od opcji instalacji.  Wybierz **PySpark**.
 
@@ -168,9 +168,9 @@ W tej sekcji można skonfigurować magii Platformy Spark, który został zainsta
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Dlaczego warto zainstalować jupyter na komputerze?
 
-Może istnieć wiele powodów, dla których warto zainstalować jupyter na komputerze, a następnie podłączyć go do klastra Apache Spark w programie HDInsight.
+Powody, aby zainstalować Jupyter na komputerze, a następnie podłączyć go do klastra Apache Spark w programie HDInsight:
 
-* Mimo że notesy Jupyter są już dostępne w klastrze Platformy Spark w usłudze Azure HDInsight, zainstalowanie usługi Jupyter na komputerze umożliwia lokalne tworzenie notesów, testowanie aplikacji względem uruchomionego klastra, a następnie przekazywanie notesów do klastra. Aby przekazać notesy do klastra, można je przekazać za pomocą uruchomionego notesu Jupyter lub klastra lub zapisać je w folderze /HdiNotebooks na koncie magazynu skojarzonym z klastrem. Aby uzyskać więcej informacji na temat przechowywania notesów w klastrze, zobacz [Gdzie są przechowywane notesy jupyter?](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)
+* Umożliwia lokalne tworzenie notesów, testowanie aplikacji względem uruchomionego klastra, a następnie przekazywanie notesów do klastra. Aby przekazać notesy do klastra, można przekazać je przy użyciu uruchomionego notesu Jupyter `/HdiNotebooks` lub klastra lub zapisać je w folderze na koncie magazynu skojarzonym z klastrem. Aby uzyskać więcej informacji na temat przechowywania notesów w klastrze, zobacz [Gdzie są przechowywane notesy jupyter?](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)
 * Dzięki notesom dostępnym lokalnie można łączyć się z różnymi klastrami platformy Spark na podstawie wymagań aplikacji.
 * Za pomocą gitHub można zaimplementować system kontroli źródła i mieć kontrolę wersji dla notesów. Można również mieć środowisko współpracy, w którym wielu użytkowników może pracować z tym samym notesem.
 * Można pracować z notesami lokalnie, nawet bez konieczności klastra. Wystarczy klaster do testowania notesów, a nie do ręcznego zarządzania notesami lub środowiskiem programistycznym.
@@ -182,5 +182,5 @@ Może istnieć wiele powodów, dla których warto zainstalować jupyter na kompu
 ## <a name="next-steps"></a>Następne kroki
 
 * [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
-* [Apache Spark z analizą biznesową: wykonywanie interaktywnej analizy danych przy użyciu funkcji Spark w funkcji HDInsight za pomocą narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
+* [Apache Spark z analizą analizy biznesowej: analizowanie danych platformy Spark apache przy użyciu usługi Power BI w programie HDInsight](apache-spark-use-bi-tools.md)
 * [Apache Spark z uczeniem maszynowym: użyj platformy Spark w hdinsight do analizowania temperatury budynku przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)

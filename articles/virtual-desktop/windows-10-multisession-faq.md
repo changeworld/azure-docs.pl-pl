@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4301aaed0152e07eb2a941b56637239b66c33878
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7ea99e2ee8e2882c211ee17acec70222dc058a8
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127355"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637101"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Wiele sesji systemu Windows 10 Enterprise — często zadawane pytania
 
@@ -39,7 +39,7 @@ Windows 10 Enterprise multi-session nie można uruchomić w lokalnych środowisk
 
 Maszynę wirtualną (VM) można uruchomić na platformie Azure za pomocą systemu Windows 10 Windows 10 Enterprise i dostosować ją, instalując aplikacje LOB, sysprep/generalize, a następnie utworzyć obraz za pomocą portalu Azure.  
  
-Aby rozpocząć, utwórz maszynę wirtualną na platformie Azure z systemem Windows 10 Windows 10 Enterprise multi-session. Zamiast uruchamiania maszyny Wirtualnej na platformie Azure, można pobrać wirtualną wersję dysku twardego bezpośrednio. Następnie możesz użyć pobranego dysku VHD, aby utworzyć nową maszynę wirtualną generacji 1 na komputerze z systemem Windows 10 z włączoną funkcją Hyper-V.
+Aby rozpocząć, utwórz maszynę wirtualną na platformie Azure za pomocą systemu Windows 10 Enterprise multi-session. Zamiast uruchamiania maszyny Wirtualnej na platformie Azure, można pobrać wirtualną wersję dysku twardego bezpośrednio. Następnie możesz użyć pobranego dysku VHD, aby utworzyć nową maszynę wirtualną generacji 1 na komputerze z systemem Windows 10 z włączoną funkcją Hyper-V.
 
 Dostosuj obraz do swoich potrzeb, instalując aplikacje LOB i sysprep obrazu. Po zakończeniu dostosowywania przekaż obraz na platformę Azure z wirtualnym dyskiem wirtualnym wewnątrz. Następnie pobierz pulpit wirtualny systemu Windows z portalu Azure Marketplace i użyj go do wdrożenia nowej puli hostów z obrazem dostosowanym.
  

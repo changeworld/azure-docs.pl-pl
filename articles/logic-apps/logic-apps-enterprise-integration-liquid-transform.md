@@ -7,23 +7,23 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 08/16/2018
-ms.openlocfilehash: fb9f9cfdba07ebe0bc5800def6d93950869e9727
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 0ab9297e772a3b75a077da1c2ae74e5058b2731f
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75456647"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657344"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Wykonywanie zaawansowanych przekształceń JSON za pomocą szablonów liquid w usłudze Azure Logic Apps
 
-Podstawowe przekształcenia JSON można wykonywać w aplikacjach logiki za pomocą natywnych akcji operacji danych, takich jak **Compose** lub **Parse JSON**. Aby przeprowadzić zaawansowane transformacje JSON, można tworzyć szablony lub mapy za pomocą [liquidu](https://shopify.github.io/liquid/), który jest językiem szablonów typu open source dla elastycznych aplikacji internetowych. Szablon Liquid definiuje sposób przekształcania danych wyjściowych JSON i obsługuje bardziej złożone przekształcenia JSON, takie jak iteracje, przepływy sterowania, zmienne i tak dalej. 
+Podstawowe przekształcenia JSON można wykonywać w aplikacjach logiki za pomocą natywnych akcji operacji danych, takich jak **Compose** lub **Parse JSON**. Aby przeprowadzić zaawansowane transformacje JSON, można tworzyć szablony lub mapy za pomocą [liquidu](https://shopify.github.io/liquid/), który jest językiem szablonów typu open source dla elastycznych aplikacji internetowych. Szablon Liquid definiuje sposób przekształcania danych wyjściowych JSON i obsługuje bardziej złożone przekształcenia JSON, takie jak iteracje, przepływy sterowania, zmienne i tak dalej.
 
-Przed wykonaniem płynnej transformacji w aplikacji logiki, należy najpierw zdefiniować mapowanie JSON do JSON z szablonem Liquid i przechowywać tę mapę na koncie integracji. W tym artykule pokazano, jak utworzyć i używać tego szablonu lub mapy Liquid. 
+Przed wykonaniem płynnej transformacji w aplikacji logiki, należy najpierw zdefiniować mapowanie JSON do JSON z szablonem Liquid i przechowywać tę mapę na koncie integracji. W tym artykule pokazano, jak utworzyć i używać tego szablonu lub mapy Liquid.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, możesz [rozpocząć pracę z bezpłatnym kontem platformy Azure](https://azure.microsoft.com/free/). Możesz też [zarejestrować się w ramach subskrypcji Pay-As-You-Go](https://azure.microsoft.com/pricing/purchase-options/).
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
 * Podstawowa wiedza na temat [tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -33,7 +33,7 @@ Przed wykonaniem płynnej transformacji w aplikacji logiki, należy najpierw zde
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Tworzenie szablonu lub mapy Liquid dla konta integracyjnego
 
-1. W tym przykładzie utwórz przykładowy szablon cieczy opisany w tym kroku. W szablonie Liquid można użyć [filtrów cieczy,](https://shopify.github.io/liquid/basics/introduction/#filters)które używają konwencji nazewnictwa [DotLiquid](https://dotliquidmarkup.org/) i C#. 
+1. W tym przykładzie utwórz przykładowy szablon cieczy opisany w tym kroku. W szablonie Liquid można użyć [filtrów cieczy,](https://shopify.github.io/liquid/basics/introduction/#filters)które używają konwencji nazewnictwa [DotLiquid](https://dotliquidmarkup.org/) i C#.
 
    > [!NOTE]
    > Upewnij się, że nazwy filtrów używają *wielkości liter* w szablonie. W przeciwnym razie filtry nie będą działać. Ponadto mapy mają [limity rozmiaru pliku](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits).
@@ -57,41 +57,40 @@ Przed wykonaniem płynnej transformacji w aplikacji logiki, należy najpierw zde
    }
    ```
 
-2. Zaloguj się do [Portalu Azure](https://portal.azure.com). W głównym menu platformy Azure wybierz pozycję **Wszystkie zasoby**. W polu wyszukiwania znajdź i wybierz swoje konto integracyjne.
+1. W [witrynie Azure portal](https://portal.azure.com)— w `integration accounts`polu wyszukiwania platformy Azure wprowadź i wybierz pozycję **Konta integracji**.
+
+   ![Znajdź "Konta integracji"](./media/logic-apps-enterprise-integration-liquid-transform/find-integration-accounts.png)
+
+1. Znajdź i wybierz swoje konto integracyjne.
 
    ![Wybierz konto integracji](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
-3.  W obszarze **Komponenty**wybierz pozycję **Mapy**.
+1. W okienku **Przegląd** w obszarze **Komponenty**wybierz pozycję **Mapy**.
 
-    ![Wybierz mapy](./media/logic-apps-enterprise-integration-liquid-transform/add-maps.png)
+    ![Wybierz kafelek "Mapy"](./media/logic-apps-enterprise-integration-liquid-transform/select-maps-tile.png)
 
-4. Wybierz **pozycję Dodaj** i podaj te szczegóły dla mapy:
+1. W okienku **Mapy** wybierz pozycję **Dodaj** i podaj te szczegóły dla mapy:
 
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
-   | **Nazwa** | Płyta JsonToJsonTemplate | Nazwa mapy, która jest "JsonToJsonTemplate" w tym przykładzie | 
+   | **Nazwa** | `JsonToJsonTemplate` | Nazwa mapy, która jest "JsonToJsonTemplate" w tym przykładzie | 
    | **Typ mapy** | **Cieczy** | Typ mapy. W przypadku transformacji JSON do JSON należy wybrać **płynny**plik . | 
-   | **Mapę** | "SimpleJsonToJsonTemplate.liquid" | Istniejący szablon cieczy lub plik mapy do użycia do transformacji, który jest "SimpleJsonToJsonTemplate.liquid" w tym przykładzie. Aby znaleźć ten plik, można użyć selektora plików. Aby zapoznać się z limitami rozmiaru mapy, zobacz [Limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
+   | **Mapę** | `SimpleJsonToJsonTemplate.liquid` | Istniejący szablon cieczy lub plik mapy do użycia do transformacji, który jest "SimpleJsonToJsonTemplate.liquid" w tym przykładzie. Aby znaleźć ten plik, można użyć selektora plików. Aby zapoznać się z limitami rozmiaru mapy, zobacz [Limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
    ||| 
 
-   ![Dodaj szablon cieczy](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
+   ![Dodaj szablon Liquid](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
     
 ## <a name="add-the-liquid-action-for-json-transformation"></a>Dodawanie akcji Płynna dla transformacji JSON
 
 1. W witrynie Azure portal wykonaj następujące kroki, aby [utworzyć pustą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-2. W projektancie aplikacji logiki dodaj [wyzwalacz żądania](../connectors/connectors-native-reqres.md#add-request) do aplikacji logiki.
+1. W projektancie aplikacji logiki dodaj [wyzwalacz żądania](../connectors/connectors-native-reqres.md#add-request) do aplikacji logiki.
 
-3. W obszarze wyzwalacza wybierz pozycję **Nowy krok**. 
-   W polu wyszukiwania wpisz "liquid" jako filtr i wybierz tę akcję: **Przekształć JSON do JSON - Liquid**
+1. W obszarze wyzwalacza wybierz pozycję **Nowy krok**. W polu wyszukiwania `liquid` wprowadź jako filtr i wybierz tę akcję: **Przekształć JSON do JSON - Liquid**
 
    ![Znajdowanie i wybieranie akcji Płynna](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
-4. Kliknij wewnątrz **pola Zawartość,** aby wyświetlić dynamiczną listę zawartości, a następnie wybierz token **Treści.**
-  
-   ![Wybierz obiekt](./media/logic-apps-enterprise-integration-liquid-transform/select-body.png)
- 
-5. Z listy **Mapa** wybierz szablon Liquid, który jest "JsonToJsonTemplate" w tym przykładzie.
+1. Otwórz listę **Mapa** i wybierz szablon Liquid, który jest "JsonToJsonTemplate" w tym przykładzie.
 
    ![Wybierz mapę](./media/logic-apps-enterprise-integration-liquid-transform/select-map.png)
 
@@ -100,9 +99,21 @@ Przed wykonaniem płynnej transformacji w aplikacji logiki, należy najpierw zde
 
    1. W menu aplikacji logiki wybierz pozycję **Ustawienia przepływu pracy**.
 
-   2. Z listy **Wybierz konto integracji** wybierz konto integracyjne i wybierz pozycję **Zapisz**.
+   1. Z listy **Wybierz konto integracji** wybierz konto integracyjne i wybierz pozycję **Zapisz**.
 
       ![Łączenie aplikacji logiki z kontem integracji](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
+
+1. Teraz dodaj **content** właściwości do tej akcji. Otwórz listę **Dodaj nowy parametr** i wybierz pozycję **Zawartość**.
+
+   ![Dodaj właściwość "Zawartość" do akcji](./media/logic-apps-enterprise-integration-liquid-transform/add-content-property-to-action.png)
+
+1. Aby ustawić wartość właściwości **Zawartość,** kliknij wewnątrz pola **Zawartość,** aby wyświetlić dynamiczną listę zawartości. Wybierz **Body** token, który reprezentuje dane wyjściowe zawartości treści z wyzwalacza.
+
+   ![Wybierz token "Treść" dla wartości właściwości "Zawartość"](./media/logic-apps-enterprise-integration-liquid-transform/select-body.png)
+
+   Gdy wszystko będzie gotowe, akcja będzie wyglądać jak następujący przykład:
+
+   ![Zakończono akcję "Transform JSON to JSON"](./media/logic-apps-enterprise-integration-liquid-transform/finished-transform-action.png)
 
 ## <a name="test-your-logic-app"></a>Testowanie aplikacji logiki
 

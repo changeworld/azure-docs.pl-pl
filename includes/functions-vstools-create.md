@@ -5,25 +5,25 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/06/2020
+ms.date: 03/26/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 034e966d259f1ca5f22eec5935013de32c883b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 477f3cf270377bc1341e65ab500093e05277afa8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80056555"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657523"
 ---
 Szablon projektu usługi Azure Functions w programie Visual Studio tworzy projekt, który można opublikować w aplikacji funkcji na platformie Azure. Za pomocą aplikacji funkcji można grupować funkcje jako jednostkę logiczną w celu łatwiejszego zarządzania, wdrażania, skalowania i udostępniania zasobów.
 
-1. W programie Visual Studio w menu **Plik** wybierz polecenie **Nowy** > **projekt**.
+1. Z menu Programu Visual Studio wybierz polecenie **Plik** > **nowego** > **projektu**.
 
-1. W **obszarze Tworzenie nowego projektu**wprowadź *funkcje* w polu wyszukiwania, a następnie wybierz szablon **Usługi Azure.**
+1. W **obszarze Tworzenie nowego projektu**wprowadź *funkcje* w polu wyszukiwania, wybierz szablon **Usługi Azure,** a następnie wybierz pozycję **Dalej**.
 
 1. W **obszarze Konfigurowanie nowego projektu**wprowadź nazwę **projektu** dla projektu, a następnie wybierz pozycję **Utwórz**. Nazwa aplikacji funkcji musi być prawidłową nazwą przestrzeni nazw C#, dlatego nie należy używać znaków podkreślenia, łączników ani znaków innych niż alfanumeryczne.
 
-1. W przypadku **nowego &lt;projektu&gt; —** ustawienia nazwy projektu należy użyć wartości w poniższej tabeli:
+1. W przypadku tworzenia nowych ustawień **aplikacji funkcji platformy Azure** należy użyć wartości w poniższej tabeli:
 
     | Ustawienie      | Wartość  | Opis                      |
     | ------------ |  ------- |----------------------------------------- |
@@ -38,4 +38,4 @@ Szablon projektu usługi Azure Functions w programie Visual Studio tworzy projek
 
     Upewnij się, że ustawiłeś **prawa dostępu** na **Anonimowy**. Jeśli wybierzesz domyślny poziom **funkcji,** musisz przedstawić [klucz funkcyjny](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) w żądaniach dostępu do punktu końcowego funkcji.
 
-1. Wybierz **przycisk OK,** aby utworzyć projekt funkcji i funkcję wyzwalaną przez HTTP.
+1. Wybierz **pozycję Utwórz,** aby utworzyć projekt funkcji i funkcję wyzwalacza HTTP.

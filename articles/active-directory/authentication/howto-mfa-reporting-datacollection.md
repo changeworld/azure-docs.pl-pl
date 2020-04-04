@@ -4,19 +4,19 @@ description: Jakie informacje są używane do uwierzytelniania użytkowników za
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848293"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653629"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Zbieranie danych użytkowników uwierzytelniania wieloskładnikowego usługi Azure
 
@@ -141,7 +141,7 @@ W przypadku serwera usługi MFA w wersji 8.0 lub nowszej następujący proces um
 - Wyszukaj `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` i\<wszelkie kopie zapasowe dla " nazwa użytkownika>" (uwzględnić cytaty w wyszukiwaniu), aby znaleźć wszystkie wystąpienia rekordu użytkownika dodawane lub zmieniane.
    - Te rekordy mogą być ograniczone (ale nie wyeliminowane) przez odznaczenie **"Zaloguj zmiany użytkownika"** w ux serwera usługi MFA, rejestrowanie sekcji, log files kartę.
    - Jeśli syslog jest skonfigurowany, a **"Log zmiany użytkownika"** jest zaznaczone w UX serwera mfa, rejestrowanie sekcji, karta Syslog, a następnie wpisy dziennika mogą być zbierane z syslog zamiast.
-- Inne wystąpienia nazwy użytkownika w MultiFactorAuthSvc.log i innych plików dziennika serwera usługi MFA odnoszących się do prób uwierzytelniania są uważane za operacyjne i powielające się do informacji dostarczonych przy użyciu eksportu MultiFactorAuthGdpr.exe lub SDK usługi sieci Web GetUserGdpr.
+- Inne wystąpienia nazwy użytkownika w MultiFactorAuthSvc.log i innych plików dziennika serwera usługi MFA odnoszących się do prób uwierzytelniania są uważane za operacyjne i powielające się do informacji dostarczonych przy użyciu multifactorAuthGdpr.exe eksportu lub usługi sieci Web GetUserGdpr.
 
 ## <a name="delete-data-from-mfa-server"></a>Usuwanie danych z serwera usługi MFA
 

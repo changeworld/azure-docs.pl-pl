@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 0a9c32affc50a6d357d4160e00486c896d762e3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75385817"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652092"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Dostosowywanie cyklu życia roli sieci Web lub pracownika w sieci .NET
 Podczas tworzenia roli procesu roboczego rozszerza się klasa [RoleEntryPoint,](/previous-versions/azure/reference/ee758619(v=azure.100)) która udostępnia metody zastępowania, które umożliwiają reagowanie na zdarzenia cyklu życia. Dla ról sieci web ta klasa jest opcjonalna, więc należy jej używać do reagowania na zdarzenia cyklu życia.
@@ -23,7 +23,7 @@ Klasa [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100))
 
 Podczas rozszerzania **programu RoleEntryPoint**należy pamiętać o następujących zachowaniach metod:
 
-* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) i [OnStop](/previous-versions/azure/reference/ee772844(v=azure.100)) metody zwracają wartość logiczną, więc jest możliwe do zwrócenia **false** z tych metod.
+* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) Metoda zwraca wartość logiczną, więc jest możliwe do zwrócenia **false** z tej metody.
   
    Jeśli kod zwraca **false**, proces roli jest nagle zakończony, bez uruchamiania sekwencji zamykania może mieć w miejscu. Ogólnie rzecz biorąc należy unikać zwracania **false** z **OnStart** metody.
 * Każdy nieprześlicony wyjątek w ramach przeciążenia metody **Programu RoleEntryPoint** jest traktowany jako nieobsługiowany wyjątek.

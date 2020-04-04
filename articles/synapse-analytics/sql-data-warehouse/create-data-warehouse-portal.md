@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 5d5b2509b212172758fa867d9f27b829f43aeeaa
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 685d6970b0e88032fe503bf97a139c0b8c0f8a73
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349114"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631346"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Szybki start: tworzenie i wykonywanie zapytań o pulę SQL Synapse przy użyciu portalu Azure
 
@@ -29,7 +29,7 @@ Szybko twórz i wysyłaj zapytania do puli SQL Synapse (hurtownia danych) w usł
    > [!NOTE]
    > Utworzenie puli SQL w usłudze Azure Synapse może spowodować nową usługę podlegającą rozliczaniu. Aby uzyskać więcej informacji, zobacz [Ceny usługi Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
-2. Pobierz i zainstaluj najnowszą wersję programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
+2. Pobierz i zainstaluj najnowszą wersję programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -37,7 +37,7 @@ Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-sql-pool"></a>Tworzenie puli SQL
 
-Magazyny danych są tworzone przy użyciu puli SQL w usłudze Azure Synapse Analytics. Pula SQL jest tworzona ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-concurrency-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../../azure-resource-manager/management/overview.md) oraz na [serwerze logicznym SQL platformy Azure](../../sql-database/sql-database-servers.md).
+Magazyny danych są tworzone przy użyciu puli SQL w usłudze Azure Synapse Analytics. Pula SQL jest tworzona ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-concurrency-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oraz na [serwerze logicznym SQL platformy Azure](../../sql-database/sql-database-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 Wykonaj następujące kroki, aby utworzyć pulę SQL, która zawiera przykładowe dane **AdventureWorksDW.**
 
@@ -54,9 +54,9 @@ Wykonaj następujące kroki, aby utworzyć pulę SQL, która zawiera przykładow
    | Ustawienie | Sugerowana wartość | Opis |
    | :------ | :-------------- | :---------- |
    | **Subskrypcja** | Twoja subskrypcja | Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions). |
-   | **Grupa zasobów** | myResourceGroup | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). |
-   | **Nazwa puli SQL** | Dowolna unikatowa nazwa globalnie (przykładem jest *mySampleDataWarehouse)* | Aby zapoznać się z prawidłową nazwymi baz danych, zobacz [Identyfikatory baz danych](/sql/relational-databases/databases/database-identifiers). Uwaga: pula SQL jest jednym z typów bazy danych. |
-   | **Serwer** | Dowolna nazwa unikatowa w skali globalnej | Wybierz istniejący serwer lub utwórz nową nazwę serwera, wybierz pozycję **Utwórz nowy**. Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). |
+   | **Grupa zasobów** | myResourceGroup | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Reguły i ograniczenia nazewnictwa). |
+   | **Nazwa puli SQL** | Dowolna unikatowa nazwa globalnie (przykładem jest *mySampleDataWarehouse)* | Aby zapoznać się z prawidłową nazwymi baz danych, zobacz [Identyfikatory baz danych](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Uwaga: pula SQL jest jednym z typów bazy danych. |
+   | **Serwer** | Dowolna nazwa unikatowa w skali globalnej | Wybierz istniejący serwer lub utwórz nową nazwę serwera, wybierz pozycję **Utwórz nowy**. Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Reguły i ograniczenia nazewnictwa). |
 
    ![tworzenie podstawowych szczegółów magazynu danych](./media/create-data-warehouse-portal/create-sql-pool-basics.png)
 
@@ -78,7 +78,7 @@ Wykonaj następujące kroki, aby utworzyć pulę SQL, która zawiera przykładow
 
 ## <a name="create-a-server-level-firewall-rule"></a>Tworzenie reguły zapory na poziomie serwera
 
-Usługa Azure Synapse tworzy zaporę na poziomie serwera. Ta zapora uniemożliwia zewnętrznym aplikacjom i narzędziom łączenie się z serwerem lub bazami danych na serwerze. Aby umożliwić łączność, możesz dodać reguły zezwalające na połączenia dla konkretnych adresów IP. Wykonaj następujące kroki, aby utworzyć [regułę zapory na poziomie serwera](../../sql-database/sql-database-firewall-configure.md) dla Twojego adresu IP klienta.
+Usługa Azure Synapse tworzy zaporę na poziomie serwera. Ta zapora uniemożliwia zewnętrznym aplikacjom i narzędziom łączenie się z serwerem lub bazami danych na serwerze. Aby umożliwić łączność, możesz dodać reguły zezwalające na połączenia dla konkretnych adresów IP. Wykonaj następujące kroki, aby utworzyć [regułę zapory na poziomie serwera](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) dla Twojego adresu IP klienta.
 
 > [!NOTE]
 > Usługa Azure Synapse komunikuje się za pośrednictwem portu 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. Jeśli nastąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 1433.
@@ -124,7 +124,7 @@ Uzyskaj w pełni kwalifikowaną nazwę serwera dla swojego serwera SQL w witryni
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Nawiąż połączenie z serwerem jako administrator serwera
 
-W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) do nawiązywania połączenia z serwerem SQL platformy Azure.
+W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) do nawiązywania połączenia z serwerem SQL platformy Azure.
 
 1. Otwórz program SQL Server Management Studio.
 
@@ -134,18 +134,18 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
    | :------ | :-------------- | :---------- |
    | Typ serwera | Aparat bazy danych | Ta wartość jest wymagana |
    | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Oto przykład: **sqlpoolservername.database.windows.net**. |
-   | Uwierzytelnianie | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
+   | Authentication | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
    | Logowanie | Konto administratora serwera | Konto określone podczas tworzenia serwera. |
    | Hasło | Hasło konta administratora serwera | Hasło określone podczas tworzenia serwera. |
    ||||
 
    ![łączenie z serwerem](./media/create-data-warehouse-portal/connect-to-server-ssms.png)
 
-3. wybierz **połącz**. W programie SSMS zostanie otwarte okno Eksplorator obiektów. 
+3. wybierz **połącz**. W programie SSMS zostanie otwarte okno Eksplorator obiektów.
 
 4. W Eksploratorze obiektów rozwiń pozycję **Bazy danych**. Następnie rozwiń pozycję **mySampleDatabase**, aby wyświetlić obiekty w nowej bazy danych.
 
-   ![obiekty bazy danych](./media/create-data-warehouse-portal/connected-ssms.png) 
+   ![obiekty bazy danych](./media/create-data-warehouse-portal/connected-ssms.png)
 
 ## <a name="run-some-queries"></a>Uruchamianie zapytań
 
@@ -163,7 +163,7 @@ Usługa SQL Data Warehouse używa T-SQL jako języka zapytań. Aby otworzyć okn
 
    ![Wykonywanie zapytań kierowanych do baz danych](./media/create-data-warehouse-portal/query-databases.png)
 
-4. Aby zobaczyć trochę danych, wpisz następujące polecenie w celu wyświetlenia liczby klientów o nazwisku Adams, którzy mają trójkę dzieci. Wynikiem jest lista z sześcioma klientami. 
+4. Aby zobaczyć trochę danych, wpisz następujące polecenie w celu wyświetlenia liczby klientów o nazwisku Adams, którzy mają trójkę dzieci. Wynikiem jest lista z sześcioma klientami.
 
     ```sql
     SELECT LastName, FirstName FROM dbo.dimCustomer
@@ -196,4 +196,4 @@ Wykonaj następujące kroki, aby oczyścić zasoby, które nie są już potrzebn
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat ładowania danych do puli SQL, przejdź do artykułu [Załaduj dane do puli SQL.](load-data-from-azure-blob-storage-using-polybase.md) 
+Aby dowiedzieć się więcej na temat ładowania danych do puli SQL, przejdź do artykułu [Załaduj dane do puli SQL.](load-data-from-azure-blob-storage-using-polybase.md)

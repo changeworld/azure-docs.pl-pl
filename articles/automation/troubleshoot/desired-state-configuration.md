@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 99220fdf5dfb47f235637f83ba9be4ec015758bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f33dc9528d5f7043dda2c6fad207a9a51347a2b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294439"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631489"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Rozwiązywanie problemów z konfiguracją żądanego stanu usługi Azure Automation (DSC)
 
@@ -48,7 +48,7 @@ Aby uzyskać informacje na temat używania xDscDiagnostics, zobacz [Używanie di
 
 ### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. Upewnij się, że węzły i obszar roboczy automatyzacji mają wymagane moduły
 
-DSC zależy od modułów zainstalowanych w węźle. Korzystając z konfiguracji stanu automatyzacji platformy Azure, zaimportuj wszystkie wymagane moduły do konta automatyzacji, wykonując kroki wymienione w module [importu](../shared-resources/modules.md#import-modules). Konfiguracje mogą również mieć zależność od określonych wersji modułów. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z modułami](shared-resources.md#modules).
+DSC zależy od modułów zainstalowanych w węźle. Korzystając z konfiguracji stanu automatyzacji platformy Azure, zaimportuj wszystkie wymagane moduły do konta automatyzacji, wykonując kroki wymienione w module [importu](../shared-resources/modules.md#importing-modules). Konfiguracje mogą również mieć zależność od określonych wersji modułów. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z modułami](shared-resources.md#modules).
 
 ## <a name="common-errors-when-working-with-dsc"></a>Typowe błędy podczas pracy z DSC
 

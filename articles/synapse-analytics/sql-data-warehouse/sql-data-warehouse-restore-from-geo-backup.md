@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4390ed39c86e041d3fbd776415f0ffbe71f605bd
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 68d53d2a33b7ab705dfa88f03618a5d5a3d1bced
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350165"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633039"
 ---
 # <a name="geo-restore-for-sql-pool"></a>Przywracanie geograficzne dla puli SQL
 
@@ -38,12 +38,12 @@ Aby przywrócić z kopii zapasowej geograficznej, należy użyć polecenia cmdle
 
 1. Przed rozpoczęciem należy zainstalować [program Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 2. Otwórz program PowerShell.
-2. Połącz się ze swoim kontem platformy Azure i wymień wszystkie subskrypcje skojarzone z Twoim kontem.
-3. Wybierz subskrypcję zawierającą magazyn danych, który ma zostać przywrócony.
-4. Pobierz magazyn danych, który chcesz odzyskać.
-5. Utwórz żądanie odzyskiwania dla magazynu danych.
-6. Sprawdź stan magazynu danych przywróconych geograficznie.
-7. Aby skonfigurować magazyn danych po zakończeniu przywracania, zobacz [Konfigurowanie bazy danych po odzyskaniu]( ../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
+3. Połącz się ze swoim kontem platformy Azure i wymień wszystkie subskrypcje skojarzone z Twoim kontem.
+4. Wybierz subskrypcję zawierającą magazyn danych, który ma zostać przywrócony.
+5. Pobierz magazyn danych, który chcesz odzyskać.
+6. Utwórz żądanie odzyskiwania dla magazynu danych.
+7. Sprawdź stan magazynu danych przywróconych geograficznie.
+8. Aby skonfigurować magazyn danych po zakończeniu przywracania, zobacz [Konfigurowanie bazy danych po odzyskaniu]( ../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
@@ -77,24 +77,25 @@ Odzyskana baza danych będzie włączona TDE, jeśli źródłowa baza danych jes
 Wykonaj kroki opisane poniżej, aby przywrócić pulę SQL z kopii zapasowej geograficznej:
 
 1. Zaloguj się do swojego konta [w witrynie Azure portal.](https://portal.azure.com/)
-1. Kliknij **pozycję + Utwórz zasób**. 
+2. Kliknij **pozycję + Utwórz zasób**.
 
-![Nowy DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
+   ![Nowy DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
 3. Kliknij **pozycję Bazy danych,** a następnie **Usługa Azure Synapse Analytics (dawniej SQL DW) **.
 
-![Nowy DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
+   ![Nowy DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
 
 4. Wypełnij wymagane informacje na karcie **Podstawy** i kliknij przycisk **Dalej: Dodatkowe ustawienia**.
 
-![Podstawy](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+   ![Podstawy](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
 5. W obszarze **Użyj istniejącego** parametru danych wybierz **pozycję Kopia zapasowa** i wybierz odpowiednią kopię zapasową z opcji przewijania w dół. Kliknij **pozycję Recenzja + Utwórz**.
- 
-![kopia zapasowa](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
+
+   ![kopia zapasowa](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 
 6. Po przywróceniu magazynu danych sprawdź, czy **stan** jest w trybie online.
 
 ## <a name="next-steps"></a>Następne kroki
+
 - [Przywracanie istniejącej puli SQL](sql-data-warehouse-restore-active-paused-dw.md)
 - [Przywracanie usuniętej puli SQL](sql-data-warehouse-restore-deleted-dw.md)

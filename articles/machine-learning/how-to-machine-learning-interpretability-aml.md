@@ -8,35 +8,47 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
-ms.reviewer: trbye
-ms.date: 10/25/2019
-ms.openlocfilehash: a479982eeac325c9774e3858ec51643e8ba699c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: Luis.Quintanilla
+ms.date: 04/02/2020
+ms.openlocfilehash: 1ff42149ccb629a0a7094e6dfede422d4dd7f61f
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064041"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632022"
 ---
 # <a name="model-interpretability-for-local-and-remote-runs"></a>Możliwość interpretacji modelu dla przebiegów lokalnych i zdalnych
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-W tym artykule nauczysz się używać pakietu interpretability zestawu SDK języka Azure Machine Learning Python, aby zrozumieć, dlaczego model dokonał jego prognoz. Omawiane kwestie:
+W tym przewodniku instrukcja, nauczyć się używać pakietu interpretability pakietu azure machine learning python SDK do wykonywania następujących zadań:
 
-* Interpretowanie modeli uczenia maszynowego przeszkolonych zarówno lokalnie, jak i na zdalnych zasobach obliczeniowych.
-* Przechowuj lokalne i globalne wyjaśnienia w historii uruchamiania platformy Azure.
-* Wyświetlanie wizualizacji interpretacyjnych w [studiu usługi Azure Machine Learning.](https://ml.azure.com)
-* Wdrażanie objaśnienia oceniania za pomocą modelu.
 
-Aby uzyskać więcej informacji, zobacz [możliwość interpretacji modelu w usłudze Azure Machine Learning](how-to-machine-learning-interpretability.md).
+* Wyjaśnij zachowanie całego modelu lub indywidualne prognozy na komputerze osobistym lokalnie.
 
-## <a name="local-interpretability"></a>Lokalna interpretacja
+* Włącz techniki interpretowania dla obiektów inżynierów.
 
-W poniższym przykładzie pokazano, jak używać pakietu interpretability lokalnie bez kontaktowania się z usługami platformy Azure.
+* Wyjaśnij zachowanie całego modelu i poszczególnych prognoz na platformie Azure.
 
-1. W razie `pip install azureml-interpret` potrzeby użyj, aby uzyskać pakiet interpretability.
+ 
+* Użyj pulpitu nawigacyjnego wizualizacji, aby wchodzić w interakcje z objaśnieniami modelu.
 
-1. Trenuj przykładowy model w lokalnym notatniku Jupyter.
+* Wdrażanie objaśnienia oceniania wraz z modelem, aby obserwować objaśnienia podczas wnioskowania.
+
+
+
+Aby uzyskać więcej informacji na temat obsługiwanych technik interpretowania i modeli uczenia maszynowego, zobacz [Modelowanie w usłudze Azure Machine Learning](how-to-machine-learning-interpretability.md) i [przykładowych notesach.](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
+
+## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Generowanie wartości ważności funkcji na komputerze osobistym 
+W poniższym przykładzie pokazano, jak używać pakietu interpretability na komputerze osobistym bez kontaktowania się z usługami platformy Azure.
+
+1. `azureml-interpret` Instalacja `azureml-interpret-contrib` i pakiety.
+    ```bash
+    pip install azureml-interpret
+    pip install azureml-interpret-contrib
+    ```
+
+2. Trenuj przykładowy model w lokalnym notatniku Jupyter.
 
     ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
@@ -56,7 +68,7 @@ W poniższym przykładzie pokazano, jak używać pakietu interpretability lokaln
     model = clf.fit(x_train, y_train)
     ```
 
-1. Zadzwoń do objaśnienia lokalnie.
+3. Zadzwoń do objaśnienia lokalnie.
    * Aby zainicjować obiekt objaśnienia, przekaż model i niektóre dane szkoleniowe do konstruktora objaśnienia.
    * Aby twoje wyjaśnienia i wizualizacje były bardziej pouczające, można wybrać przekazywanie nazw funkcji i nazw klas wyjściowych, jeśli robi klasyfikację.
 
@@ -111,9 +123,9 @@ W poniższym przykładzie pokazano, jak używać pakietu interpretability lokaln
                              classes=classes)
     ```
 
-### <a name="overall-global-feature-importance-values"></a>Ogólnie rzecz biorąc, globalne wartości ważności funkcji
+### <a name="explain-the-entire-model-behavior-global-explanation"></a>Objaśnienie całego zachowania modelu (wyjaśnienie globalne) 
 
-Zapoznaj się z poniższym przykładem, aby ułatwić uzyskanie globalnych wartości ważności funkcji.
+Zapoznaj się z poniższym przykładem, aby ułatwić uzyskanie agregujących (globalnych) wartości ważności funkcji.
 
 ```python
 
@@ -132,9 +144,8 @@ dict(zip(sorted_global_importance_names, sorted_global_importance_values))
 global_explanation.get_feature_importance_dict()
 ```
 
-### <a name="instance-level-local-feature-importance-values"></a>Wartości ważności funkcji na poziomie wystąpienia, lokalne wartości elementów
-
-Pobierz lokalne wartości ważności funkcji, wywołując objaśnienia dla pojedynczego wystąpienia lub grupy wystąpień.
+### <a name="explain-an-individual-prediction-local-explanation"></a>Wyjaśnienie indywidualnego przewidywania (wyjaśnienie lokalne)
+Pobierz wartości ważności poszczególnych funkcji różnych punktów danych, wywołując objaśnienia dla pojedynczego wystąpienia lub grupy wystąpień.
 > [!NOTE]
 > `PFIExplainer`nie obsługuje lokalnych wyjaśnień.
 
@@ -147,67 +158,7 @@ sorted_local_importance_names = local_explanation.get_ranked_local_names()
 sorted_local_importance_values = local_explanation.get_ranked_local_values()
 ```
 
-## <a name="interpretability-for-remote-runs"></a>Możliwość interpretacji dla przebiegów zdalnych
-
-Poniższy przykład pokazuje, jak `ExplanationClient` można użyć klasy, aby włączyć interpretację modelu dla zdalnych przebiegów. Jest koncepcyjnie podobny do procesu lokalnego, z wyjątkiem Ciebie:
-
-* Użyj `ExplanationClient` w zdalnym uruchomieniu, aby przekazać kontekst interpretalności.
-* Pobierz kontekst później w środowisku lokalnym.
-
-1. W razie `pip install azureml-contrib-interpret` potrzeby użyj, aby uzyskać niezbędny pakiet.
-
-1. Tworzenie skryptu szkoleniowego w lokalnym notesie Jupyter. Na przykład `train_explain.py`.
-
-    ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
-    from azureml.core.run import Run
-    from interpret.ext.blackbox import TabularExplainer
-
-    run = Run.get_context()
-    client = ExplanationClient.from_run(run)
-
-    # write code to get and split your data into train and test sets here
-    # write code to train your model here 
-
-    # explain predictions on your local machine
-    # "features" and "classes" fields are optional
-    explainer = TabularExplainer(model, 
-                                 x_train, 
-                                 features=feature_names, 
-                                 classes=classes)
-
-    # explain overall model predictions (global explanation)
-    global_explanation = explainer.explain_global(x_test)
-    
-    # uploading global model explanation data for storage or visualization in webUX
-    # the explanation can then be downloaded on any compute
-    # multiple explanations can be uploaded
-    client.upload_model_explanation(global_explanation, comment='global explanation: all features')
-    # or you can only upload the explanation object with the top k feature info
-    #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
-    ```
-
-1. Skonfiguruj obliczenia usługi Azure Machine Learning jako cel obliczeniowy i prześlij przebieg szkolenia. Aby uzyskać [instrukcje, zobacz konfigurowanie obiektów docelowych obliczeń dla szkolenia modelu.](how-to-set-up-training-targets.md#amlcompute) Przykładowe [notesy](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) mogą również okazać się pomocne.
-
-1. Pobierz wyjaśnienie w lokalnym notesie Jupyter.
-
-    ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
-    
-    client = ExplanationClient.from_run(run)
-    
-    # get model explanation data
-    explanation = client.download_model_explanation()
-    # or only get the top k (e.g., 4) most important features with their importance values
-    explanation = client.download_model_explanation(top_k=4)
-    
-    global_importance_values = explanation.get_ranked_global_values()
-    global_importance_names = explanation.get_ranked_global_names()
-    print('global importance values: {}'.format(global_importance_values))
-    print('global importance names: {}'.format(global_importance_names))
-    ```
-
-## <a name="raw-feature-transformations"></a>Przekształcenia operacji nieprzetworzonych
+### <a name="raw-feature-transformations"></a>Przekształcenia operacji nieprzetworzonych
 
 Możesz zdecydować się na uzyskanie wyjaśnień w zakresie surowych, nieprzetworzonych funkcji, a nie zaprojektowanych funkcji. W przypadku tej opcji potok transformacji funkcji należy `train_explain.py`przekazać do objaśnienia w programie . W przeciwnym razie objaśnienie zawiera wyjaśnienia w zakresie funkcji inżynierii.
 
@@ -281,31 +232,96 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
                                      transformations=transformations)
 ```
 
+## <a name="generate-feature-importance-values-via-remote-runs"></a>Generowanie wartości ważności operacji za pomocą zdalnych przebiegów
+
+Poniższy przykład pokazuje, jak `ExplanationClient` można użyć klasy, aby włączyć interpretację modelu dla zdalnych przebiegów. Jest koncepcyjnie podobny do procesu lokalnego, z wyjątkiem Ciebie:
+
+* Użyj `ExplanationClient` w zdalnym uruchomieniu, aby przekazać kontekst interpretalności.
+* Pobierz kontekst później w środowisku lokalnym.
+
+1. `azureml-interpret` Instalacja `azureml-interpret-contrib` i pakiety.
+    ```bash
+    pip install azureml-interpret
+    pip install azureml-interpret-contrib
+    ```
+1. Tworzenie skryptu szkoleniowego w lokalnym notesie Jupyter. Na przykład `train_explain.py`.
+
+    ```python
+    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.core.run import Run
+    from interpret.ext.blackbox import TabularExplainer
+
+    run = Run.get_context()
+    client = ExplanationClient.from_run(run)
+
+    # write code to get and split your data into train and test sets here
+    # write code to train your model here 
+
+    # explain predictions on your local machine
+    # "features" and "classes" fields are optional
+    explainer = TabularExplainer(model, 
+                                 x_train, 
+                                 features=feature_names, 
+                                 classes=classes)
+
+    # explain overall model predictions (global explanation)
+    global_explanation = explainer.explain_global(x_test)
+    
+    # uploading global model explanation data for storage or visualization in webUX
+    # the explanation can then be downloaded on any compute
+    # multiple explanations can be uploaded
+    client.upload_model_explanation(global_explanation, comment='global explanation: all features')
+    # or you can only upload the explanation object with the top k feature info
+    #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
+    ```
+
+1. Skonfiguruj obliczenia usługi Azure Machine Learning jako cel obliczeniowy i prześlij przebieg szkolenia. Aby uzyskać [instrukcje, zobacz konfigurowanie obiektów docelowych obliczeń dla szkolenia modelu.](how-to-set-up-training-targets.md#amlcompute) Przykładowe [notesy](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) mogą również okazać się pomocne.
+
+1. Pobierz wyjaśnienie w lokalnym notesie Jupyter.
+
+    ```python
+    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    
+    client = ExplanationClient.from_run(run)
+    
+    # get model explanation data
+    explanation = client.download_model_explanation()
+    # or only get the top k (e.g., 4) most important features with their importance values
+    explanation = client.download_model_explanation(top_k=4)
+    
+    global_importance_values = explanation.get_ranked_global_values()
+    global_importance_names = explanation.get_ranked_global_names()
+    print('global importance values: {}'.format(global_importance_values))
+    print('global importance names: {}'.format(global_importance_names))
+    ```
+
+
 ## <a name="visualizations"></a>Wizualizacje
 
 Po pobraniu wyjaśnień w lokalnym notesie Jupyter można użyć pulpitu nawigacyjnego wizualizacji, aby zrozumieć i zinterpretować model.
 
-### <a name="global-visualizations"></a>Globalne wizualizacje
+### <a name="understand-entire-model-behavior-global-explanation"></a>Opis całego zachowania modelu (wyjaśnienie globalne) 
 
-Poniższe wykresy zapewniają globalny widok wyszkolonego modelu wraz z jego prognoz i wyjaśnień.
+Poniższe wykresy zapewniają ogólny widok wyszkolonego modelu wraz z jego prognoz i wyjaśnień.
 
 |Działka|Opis|
 |----|-----------|
 |Eksploracja danych| Wyświetla przegląd zestawu danych wraz z wartościami przewidywania.|
-|Globalne znaczenie|Pokazuje najlepsze K (konfigurowalne K) ważne funkcje na całym świecie. Pomaga zrozumieć globalne zachowanie modelu.|
+|Globalne znaczenie|Agreguje wartości ważności funkcji poszczególnych punktów danych, aby pokazać model ogólny top K (konfigurowalne K) ważne funkcje. Pomaga zrozumieć ogólne zachowanie modelu źródłowego.|
 |Eksploracja wyjaśnień|Pokazuje, jak funkcja wpływa na zmianę wartości prognozowania modelu lub prawdopodobieństwo wartości prognozowania. Pokazuje wpływ interakcji funkcji.|
-|Znaczenie podsumowania|Używa lokalnych, wartości ważności funkcji we wszystkich punktach danych, aby pokazać rozkład wpływu każdej funkcji na wartość prognozowania.|
+|Znaczenie podsumowania|Używa poszczególnych wartości ważności funkcji we wszystkich punktach danych, aby pokazać rozkład wpływu każdej funkcji na wartość prognozowania. Za pomocą tego diagramu można zbadać, w jakim kierunku wartości funkcji wpływa na wartości przewidywania.
+|
 
 [![Pulpit nawigacyjny wizualizacji globalny](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
 
-### <a name="local-visualizations"></a>Wizualizacje lokalne
+### <a name="understand-individual-predictions-local-explanation"></a>Zrozumienie poszczególnych prognoz (wyjaśnienie lokalne) 
 
-Wykres lokalnego, charakterystycznego dla dowolnego punktu danych można załadować, wybierając pojedynczy punkt danych na wykresie.
+Wykres ważności poszczególnych operacji można załadować dla dowolnego punktu danych, klikając dowolny z poszczególnych punktów danych w dowolnym z ogólnych wykresów.
 
 |Działka|Opis|
 |----|-----------|
-|Znaczenie lokalne|Pokazuje najlepsze funkcje K (konfigurowalne K) na całym świecie. Pomaga zilustrować lokalne zachowanie modelu źródłowego w określonym punkcie danych.|
-|Eksploracja perturbacji|Umożliwia zmiany wartości elementów wybranego punktu danych i obserwować wynikające z tego zmiany wartości przewidywania.|
+|Znaczenie lokalne|Pokazuje najlepsze K (konfigurowalne K) ważne funkcje dla indywidualnego przewidywania. Pomaga zilustrować lokalne zachowanie modelu źródłowego w określonym punkcie danych.|
+|Badanie perturbacji (co jeśli analiza)|Umożliwia zmiany wartości elementów wybranego punktu danych i obserwować wynikające z tego zmiany wartości przewidywania.|
 |Indywidualne oczekiwania warunkowe (ICE)| Umożliwia zmianę wartości operacji z wartości minimalnej na wartość maksymalną. Pomaga zilustrować, jak zmienia się przewidywanie punktu danych po zmianie funkcji.|
 
 [![Znaczenie funkcji lokalnego pulpitu nawigacyjnego wizualizacji](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
@@ -343,14 +359,9 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Wizualizacja w studiu usługi Azure Machine Learning
 
-Po wykonaniu kroków [zdalnej interpretacji](#interpretability-for-remote-runs) można wyświetlić pulpit nawigacyjny wizualizacji w [studiu usługi Azure Machine Learning.](https://ml.azure.com) Ten pulpit nawigacyjny jest prostszą wersją pulpitu nawigacyjnego wizualizacji wyjaśnioną powyżej. Obsługuje tylko dwie karty:
+Po wykonaniu kroków [zdalnej interpretacji](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) (przekazywanie wygenerowanego wyjaśnienia do historii przebiegu usługi Azure Machine Learning) można wyświetlić pulpit nawigacyjny wizualizacji w [studiu usługi Azure Machine Learning.](https://ml.azure.com) Ten pulpit nawigacyjny jest prostszą wersją pulpitu nawigacyjnego wizualizacji wyjaśnioną powyżej (eksploracja objaśnień i wykresy ICE są wyłączone, ponieważ w studio nie ma aktywnych obliczeń, które mogą wykonywać swoje obliczenia w czasie rzeczywistym).
 
-|Działka|Opis|
-|----|-----------|
-|Globalne znaczenie|Pokazuje najlepsze K (konfigurowalne K) ważne funkcje na całym świecie. Pomaga zrozumieć globalne zachowanie modelu.|
-|Znaczenie podsumowania|Używa lokalnych, wartości ważności funkcji we wszystkich punktach danych, aby pokazać rozkład wpływu każdej funkcji na wartość prognozowania.|
-
-Jeśli dostępne są objaśnienia globalne i lokalne, dane wypełnia obie karty. Jeśli dostępne jest tylko wyjaśnienie globalne, karta Ważność podsumowania jest wyłączona.
+Jeśli zestaw danych, globalne i lokalne wyjaśnienia są dostępne, dane wypełnia wszystkie karty (z wyjątkiem eksploracji perturbacji i ICE). Jeśli dostępne jest tylko wyjaśnienie globalne, karta Ważność podsumowania i wszystkie lokalne karty objaśnień są wyłączone.
 
 Postępuj zgodnie z jedną z tych ścieżek, aby uzyskać dostęp do pulpitu nawigacyjnego wizualizacji w studio usługi Azure Machine Learning:
 
@@ -367,7 +378,7 @@ Postępuj zgodnie z jedną z tych ścieżek, aby uzyskać dostęp do pulpitu naw
 
 ## <a name="interpretability-at-inference-time"></a>Możliwość interpretacji w czasie wnioskowania
 
-Można wdrożyć objaśnienia wraz z oryginalnego modelu i użyć go w czasie wnioskowania, aby zapewnić lokalne informacje objaśnienia. Oferujemy również objaśnienia punktacji o lżejszej wadze, aby poprawić wydajność tłumaczenia w czasie wnioskowania. Proces wdrażania objaśnienia punktacji o mniejszej masie jest podobny do wdrażania modelu i zawiera następujące kroki:
+Można wdrożyć objaśnienia wraz z oryginalnego modelu i używać go w czasie wnioskowania, aby zapewnić poszczególne wartości ważności funkcji (lokalne wyjaśnienie) dla nowych nowych punktów danych. Oferujemy również objaśnienia punktacji o lżejszej wadze, aby poprawić wydajność tłumaczenia w czasie wnioskowania. Proces wdrażania objaśnienia punktacji o mniejszej masie jest podobny do wdrażania modelu i zawiera następujące kroki:
 
 1. Utwórz obiekt objaśnienia. Można na przykład `TabularExplainer`użyć:
 
@@ -385,7 +396,7 @@ Można wdrożyć objaśnienia wraz z oryginalnego modelu i użyć go w czasie wn
 1. Utwórz objaśnienie oceniania za pomocą obiektu objaśnienia.
 
    ```python
-   from azureml.contrib.interpret.scoring.scoring_explainer import KernelScoringExplainer, save
+   from azureml.interpret.scoring.scoring_explainer import KernelScoringExplainer, save
 
    # create a lightweight explainer at scoring time
    scoring_explainer = KernelScoringExplainer(explainer)
@@ -411,7 +422,7 @@ Można wdrożyć objaśnienia wraz z oryginalnego modelu i użyć go w czasie wn
 1. Jako krok opcjonalny można pobrać objaśnienie oceniania z chmury i przetestować objaśnienia.
 
    ```python
-   from azureml.contrib.interpret.scoring.scoring_explainer import load
+   from azureml.interpret.scoring.scoring_explainer import load
 
    # retrieve the scoring explainer model from cloud"
    scoring_explainer_model = Model(ws, 'my_scoring_explainer')
@@ -559,3 +570,6 @@ Można wdrożyć objaśnienia wraz z oryginalnego modelu i użyć go w czasie wn
 ## <a name="next-steps"></a>Następne kroki
 
 [Dowiedz się więcej o interpretacji modelu](how-to-machine-learning-interpretability.md)
+
+[Zapoznaj się z przykładowymi notesami usługi Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
+

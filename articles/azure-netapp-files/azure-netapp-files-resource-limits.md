@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/13/2020
+ms.date: 04/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 36b2d50722a1840e461d6907f440d859c7c82117
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ac660b20d519e49e832e979603f763fa672757a5
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408831"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637399"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Limity zasobów dla usługi Azure NetApp Files
 
@@ -36,7 +36,7 @@ W poniższej tabeli opisano limity zasobów dla plików NetApp platformy Azure:
 |  Liczba woluminów na pulę pojemności     |    500   |    Tak     |
 |  Liczba migawek na wolumin       |    255     |    Nie        |
 |  Liczba podsieci delegowanych do plików NetApp platformy Azure (Microsoft.NetApp/volumes) na sieć wirtualną platformy Azure    |   1   |    Nie    |
-|  Liczba używanych usług IP w sieci wirtualnej (w tym natychmiast równorzędne sieci wirtualne) z plikami NetApp platformy Azure   |    1000   |    Tak   |
+|  Liczba używanych usług IP w sieci wirtualnej (w tym natychmiast równorzędne sieci wirtualne) z plikami NetApp platformy Azure   |    1000   |    Nie   |
 |  Minimalny rozmiar pojedynczej puli pojemności   |  4 TiB     |    Nie  |
 |  Maksymalny rozmiar puli pojedynczej pojemności    |  500 TiB   |   Nie   |
 |  Minimalny rozmiar pojedynczej objętości    |    100 Gib    |    Nie    |

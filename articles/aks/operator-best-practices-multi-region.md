@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3c1f0bb715b3c3bf9b3a3350ab11e26834aa84c8
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 6aff60cbc4a4cab557e6e202ea1181d5b20bbd20
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528655"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655873"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Najważniejsze wskazówki dotyczące ciągłości działania i odzyskiwania po awarii w usłudze Azure Kubernetes (AKS)
 
-Podczas zarządzania klastrami w usłudze Azure Kubernetes Service (AKS) czas pracy aplikacji staje się ważny. Usługa AKS zapewnia wysoką dostępność przy użyciu wielu węzłów w zestawie dostępności. Jednak te wiele węzłów nie chroni systemu przed awarią regionu. Aby zmaksymalizować czas pracy bez przestojów, zaplanuj z wyprzedzeniem, aby zachować ciągłość działania i przygotować się do odzyskiwania po awarii.
+Podczas zarządzania klastrami w usłudze Azure Kubernetes Service (AKS) czas pracy aplikacji staje się ważny. Domyślnie usługa AKS zapewnia wysoką dostępność przy użyciu wielu węzłów w [zestawie skalowania maszyny wirtualnej (VMSS).](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) Jednak te wiele węzłów nie chroni systemu przed awarią regionu. Aby zmaksymalizować czas pracy bez przestojów, zaplanuj z wyprzedzeniem, aby zachować ciągłość działania i przygotować się do odzyskiwania po awarii.
 
 W tym artykule skupiono się na tym, jak zaplanować ciągłość działania i odzyskiwanie po awarii w udręki WA. Omawiane kwestie:
 

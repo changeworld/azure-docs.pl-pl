@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów — hybrydowe procesy ceł ceł usługi Azure Automation
-description: Ten artykuł zawiera informacje dotyczące rozwiązywania problemów z hybrydowymi procesami owymi pracowników cebook systemu Azure Automation
+description: Ten artykuł zawiera informacje dotyczące rozwiązywania problemów z hybrydowymi procesami owymi workers w usłudze Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 33e3e162892f1e2a148258273160ca26fa9c2efd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2587af0ada18b5c4271e7411783fe60211a3479
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153526"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637863"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Rozwiązywanie problemów z hybrydowymi pracownikami uruchomieniu
 
@@ -131,7 +131,9 @@ Początkowa faza rejestracji pracownika kończy się niepowodzeniem i pojawia si
 #### <a name="cause"></a>Przyczyna
 
 Oto możliwe przyczyny:
+
 * W ustawieniach agenta znajduje się błędnie wpisany identyfikator obszaru roboczego lub klucz obszaru roboczego (podstawowy). 
+
 * Hybrydowy pracownik ujeżdna nie może pobrać konfiguracji, powodując błąd łączenia konta. Gdy platforma Azure włącza rozwiązania, obsługuje tylko niektóre regiony do łączenia obszaru roboczego usługi Log Analytics i konta automatyzacji. Jest również możliwe, że na komputerze ustawiona jest nieprawidłowa data i/lub godzina. Jeśli czas wynosi +/-15 minut od bieżącego czasu, dołączanie kończy się niepowodzeniem.
 
 #### <a name="resolution"></a>Rozwiązanie
@@ -143,7 +145,7 @@ Aby sprawdzić, czy identyfikator obszaru roboczego agenta lub klucz obszaru rob
 
 Obszar roboczy usługi Log Analytics i konto automatyzacji muszą znajdować się w regionie połączonym. Aby uzyskać listę obsługiwanych regionów, zobacz [Mapowania obszarów roboczych usługi Azure Automation i Log Analytics](../how-to/region-mappings.md).
 
-Może być również konieczne zaktualizowanie daty lub strefy czasowej komputera. Jeśli wybierzesz niestandardowy zakres czasu, upewnij się, że zakres jest w czasie UTC, który może się różnić od lokalnej strefy czasowej.
+Może być również konieczne zaktualizowanie daty i/lub strefy czasowej komputera. Jeśli wybierzesz niestandardowy zakres czasu, upewnij się, że zakres jest w czasie UTC, który może się różnić od lokalnej strefy czasowej.
 
 ## <a name="linux"></a>Linux
 
@@ -220,6 +222,35 @@ Ten problem może być spowodowany przez serwer proxy lub zaporę sieciową blok
 Dzienniki są przechowywane lokalnie na każdym hybrydowym uczynku roboczym w **witrynie C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes**. Można sprawdzić, czy w dziennikach zdarzeń aplikacji i usług występują zdarzenia ostrzegawcze lub zdarzenia **błędów\Microsoft-SMA\Operacje** i **dzienniki aplikacji i usług\Dzienniki operacji programu Operations Manager.** Te dzienniki wskazują łączność lub inny typ problemu, który wpływa na dołączanie roli do usługi Azure Automation lub problem napotkany w normalnych operacjach. Aby uzyskać dodatkową pomoc dotyczącą rozwiązywania problemów z agentem usługi Log Analytics, zobacz [Rozwiązywanie problemów z agentem systemu Windows usługi Log Analytics](../../azure-monitor/platform/agent-windows-troubleshoot.md).
 
 Hybrydowe procesy pracy procesowe wysyłają [dane wyjściowe i wiadomości](../automation-runbook-output-and-messages.md) w usłudze Azure Automation w taki sam sposób, w jaki zadania uruchomieniu uruchomione w chmurze wysyłają dane wyjściowe i wiadomości. Strumienie pełne i postępowe można włączyć tak samo, jak w przypadku śmigieł.
+
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Scenariusz: Orchestrator.Sandbox.exe nie może połączyć się z usługą Office 365 za pośrednictwem serwera proxy
+
+#### <a name="issue"></a>Problem
+
+Skrypt uruchomiony w hybrydowym urzędzie roboczym systemu Windows nie może połączyć się zgodnie z oczekiwaniami z pakietem Office 365 w piaskownicy programu Orchestrator. Skrypt używa [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) dla połączenia. 
+
+Jeśli dostosujesz **Orchestrator.Sandbox.exe.config,** aby ustawić serwer proxy i listę pomijania, piaskownica nadal nie łączy się poprawnie. Plik **Powershell_ise.exe.config** z tymi samymi ustawieniami listy proxy i bypass wydaje się działać zgodnie z oczekiwaniami. Dzienniki automatyzacji zarządzania usługami (SMA) i dzienniki programu PowerShell nie zawierają żadnych informacji dotyczących serwera proxy.
+
+#### <a name="cause"></a>Przyczyna
+
+Połączenie z usługami federacyjnymi Active Directory (ADFS) na serwerze nie może ominąć serwera proxy. Należy pamiętać, że piaskownica programu PowerShell działa jako zalogowany użytkownik. Jednak piaskownica programu Orchestrator jest mocno dostosowana i może ignorować ustawienia pliku **Orchestrator.Sandbox.exe.config.** Posiada specjalny kod do obsługi komputera lub ustawienia serwera proxy MMA, ale nie do obsługi innych niestandardowych ustawień serwera proxy. 
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Można rozwiązać ten problem dla piaskownicy programu Orchestrator, migrując skrypt, aby użyć modułów usługi Azure AD zamiast modułu MSOnline dla poleceń cmdlet programu PowerShell. Zobacz [Migrowanie z programu Orchestrator do usługi Azure Automation (Beta)](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration).
+
+Jeśli chcesz nadal korzystać z poleceń cmdlet modułu MSOnline, zmień skrypt, aby użyć [invoke-command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7). Określ wartości `ComputerName` `Credential` i parametry. 
+
+```powershell
+$Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential
+Invoke-Command -ComputerName $env:COMPUTERNAME -Credential $Credential 
+{ Connect-MsolService … }
+```
+
+Ta zmiana kodu rozpoczyna całkowicie nową sesję programu PowerShell w kontekście określonych poświadczeń. Powinien włączyć ruch do przepływu przez serwer proxy, który uwierzytelnia aktywnego użytkownika.
+
+>[!NOTE]
+>To rozwiązanie sprawia, że nie ma potrzeby manipulowania plikiem konfiguracji piaskownicy. Nawet jeśli uda ci się, aby plik konfiguracji działał ze skryptem, plik zostanie wymazany za każdym razem, gdy agent hybrydowego procesu roboczego uruchomieniu zostanie zaktualizowany.
 
 ### <a name="scenario-hybrid-runbook-worker-not-reporting"></a><a name="corrupt-cache"></a>Scenariusz: Hybrydowy pracownik ujeżdny nieraportujący
 

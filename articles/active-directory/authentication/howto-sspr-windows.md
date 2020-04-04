@@ -4,19 +4,19 @@ description: Jak włączyć samoobsługowe resetowanie hasła przy użyciu zapom
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a8675756aeef1140dbebd94023d7f7fb4c7af99
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77370072"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652255"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Jak: Włącz resetowanie hasła z ekranu logowania systemu Windows
 
@@ -97,7 +97,7 @@ Dziennik inspekcji usługi Azure AD zawiera informacje dotyczące adresu IP i ty
 
 ![Przykładowe resetowanie hasła systemu Windows 7 w dzienniku inspekcji usługi Azure AD](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-Gdy użytkownicy resetują swoje hasło z ekranu logowania urządzenia z systemem `defaultuser1` Windows 10, tworzone jest tymczasowe konto o niskich uprawnieniach. To konto jest używane, aby zapewnić bezpieczeństwo procesu resetowania hasła. Samo konto ma losowo wygenerowane hasło, nie jest widoczne dla logowania urządzenia i zostanie automatycznie usunięte po zresetowaniu hasła użytkownika. Istnieje `defaultuser` wiele profili, ale można je bezpiecznie zignorować.
+Gdy użytkownicy resetują swoje hasło z ekranu logowania urządzenia z systemem `defaultuser1` Windows 10, tworzone jest tymczasowe konto o niskich uprawnieniach. To konto jest używane, aby zapewnić bezpieczeństwo procesu resetowania hasła. Samo konto ma losowo wygenerowane hasło, nie jest wyświetlane do logowania urządzenia i zostanie automatycznie usunięte po zresetowaniu hasła przez użytkownika. Istnieje `defaultuser` wiele profili, ale można je bezpiecznie zignorować.
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Resetowanie hasła w systemie Windows 7, 8 i 8.1
 
@@ -141,8 +141,8 @@ Jeśli wymagane jest dodatkowe rejestrowanie, można zmienić klucz rejestru na 
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- Aby włączyć pełne rejestrowanie, utwórz `REG_DWORD: “EnableLogging”`plik , i ustaw go na 1.
-- Aby wyłączyć pełne rejestrowanie, zmień `REG_DWORD: “EnableLogging”` na 0.
+- Aby włączyć pełne rejestrowanie, utwórz `REG_DWORD: "EnableLogging"`plik , i ustaw go na 1.
+- Aby wyłączyć pełne rejestrowanie, zmień `REG_DWORD: "EnableLogging"` na 0.
 
 ## <a name="what-do-users-see"></a>Co widzą użytkownicy
 

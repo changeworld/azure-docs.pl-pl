@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6354390c44c0991b0d6bf36cba8efd4272f9c73d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: bcac6af9efd18ef8abeea7d82961fd8f2fe70ba3
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583762"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633747"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Szybki start: tworzenie klasyfikatora obciążenia przy użyciu funkcji T-SQL
 
@@ -39,7 +39,7 @@ Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-login-for-theceo"></a>Tworzenie logowania do TheCEO
 
-Utwórz logowanie uwierzytelniania `master` programu SQL Server w bazie danych przy użyciu [create login](/sql/t-sql/statements/create-login-transact-sql) dla 'TheCEO'.
+Utwórz logowanie uwierzytelniania `master` programu SQL Server w bazie danych przy użyciu [create login](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dla 'TheCEO'.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')
@@ -51,7 +51,7 @@ END
 
 ## <a name="create-user"></a>Tworzenie użytkownika
 
-[Tworzenie użytkownika](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest), "TheCEO", w mySampleDataWarehouse
+[Tworzenie użytkownika](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), "TheCEO", w mySampleDataWarehouse
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'THECEO')
@@ -63,7 +63,7 @@ END
 
 ## <a name="create-a-workload-classifier"></a>Tworzenie klasyfikatora obciążenia
 
-Tworzenie [klasyfikatora obciążenia](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) dla "TheCEO" o dużej ważności.
+Tworzenie [klasyfikatora obciążenia](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dla "TheCEO" o dużej ważności.
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO];
@@ -108,6 +108,6 @@ Wykonaj następujące kroki, aby oczyścić zasoby.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Teraz utworzono klasyfikator obciążenia. Uruchom kilka zapytań jako TheCEO, aby zobaczyć, jak działają. Zobacz [sys.dm_pdw_exec_requests,](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) aby wyświetlić zapytania i przypisane znaczenie.
+- Teraz utworzono klasyfikator obciążenia. Uruchom kilka zapytań jako TheCEO, aby zobaczyć, jak działają. Zobacz [sys.dm_pdw_exec_requests,](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) aby wyświetlić zapytania i przypisane znaczenie.
 - Aby uzyskać więcej informacji na temat zarządzania obciążeniami Synapse SQL, zobacz [Ważność obciążenia](sql-data-warehouse-workload-importance.md) i [klasyfikacja obciążeń](sql-data-warehouse-workload-classification.md).
 - Zobacz artykuły infigurajnokonfigurowanie [ważność obciążenia](sql-data-warehouse-how-to-configure-workload-importance.md) oraz sposób [zarządzania zarządzaniem obciążeniami i monitorowania.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)

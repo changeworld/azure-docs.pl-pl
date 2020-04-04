@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: b48c37a6e607d121416ebae4d74e58f39670b79a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dbcf953ad5f70c6ddf2a73eef2ea712f1e1278c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73821925"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632077"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Powiadomienia e-mail do automatycznego dostrajania
 
@@ -69,7 +69,7 @@ Następnym krokiem jest utworzenie likmy w usłudze Azure Automation, wewnątrz 
 Wykonaj następujące kroki, aby utworzyć nowy projekt owy usługi Azure Automation:
 
 - Dostęp do konta usługi Azure Automation utworzonego w poprzednim kroku
-- Po wejściu do okienka konta automatyzacji kliknij element menu **"Runbooks"** po lewej stronie, aby utworzyć nowy element runbook usługi Azure Automation ze skryptem programu PowerShell. Aby dowiedzieć się więcej o tworzeniu śmięty automatyzacji, zobacz [Tworzenie nowego uruchomieniu .](../automation/manage-runbooks.md#create-a-runbook)
+- Po wejściu do okienka konta automatyzacji kliknij element menu **"Runbooks"** po lewej stronie, aby utworzyć nowy element runbook usługi Azure Automation ze skryptem programu PowerShell. Aby dowiedzieć się więcej o tworzeniu śmięty automatyzacji, zobacz [Tworzenie nowego uruchomieniu .](../automation/manage-runbooks.md#creating-a-runbook)
 - Aby dodać nowy element runbook, kliknij opcję menu "**+Dodaj element runbook**", a następnie kliknij przycisk "**Szybkie tworzenie — utwórz nowy element runbook**".
 - W okienku Runbook wpisz nazwę przewodniczącego (na potrzeby tego przykładu jest używana "**AutomaticTuningEmailAutomation"),** wybierz typ przewodniczącego jako **program PowerShell** i napisz opis tego żyjącego łańca, aby opisać jego przeznaczenie.
 - Kliknij przycisk **Utwórz,** aby zakończyć tworzenie nowego ekscesu
@@ -88,7 +88,7 @@ W przypadku kilku subskrypcji można dodać je jako przecinki rozdzielone do wł
 ```powershell
 # PowerShell script to retrieve Azure SQL Database Automatic tuning recommendations.
 #
-# Provided “as-is” with no implied warranties or support.
+# Provided "as-is" with no implied warranties or support.
 # The script is released to the public domain.
 #
 # Replace <SUBSCRIPTION_ID_WITH_DATABASES> in the header with your Azure subscription ID.
@@ -225,7 +225,7 @@ Następnym krokiem jest dodanie trzech zadań (tworzenie, pobierz dane wyjściow
    - Ukończ tworzenie tej akcji, klikając "**Zapisz przepływ**"
 
 > [!TIP]
-> Aby wysyłać automatyczne wiadomości e-mail do różnych adresatów, należy utworzyć oddzielne przepływy. W tych dodatkowych przepływach zmień adres e-mail adresata w polu "Do" oraz wiersz tematu wiadomości e-mail w polu "Temat". Tworzenie nowych niestandardowych niestandardowych niestandardowych niestandardowych skryptów programu PowerShell (na przykład ze zmianą identyfikatora subskrypcji platformy Azure) umożliwia dalsze dostosowywanie zautomatyzowanych scenariuszy, takich jak na przykład wysyłanie wiadomości e-mail do oddzielnych adresatów w przypadku automatycznego dostrajania zalecenia dotyczące oddzielnych subskrypcji.
+> Aby wysyłać automatyczne wiadomości e-mail do różnych adresatów, należy utworzyć oddzielne przepływy. W tych dodatkowych przepływach zmień adres e-mail adresata w polu "Do" oraz wiersz tematu wiadomości e-mail w polu "Temat". Tworzenie nowych niestandardowych niestandardowych niestandardowych niestandardowych skryptów programu PowerShell (na przykład ze zmianą identyfikatora subskrypcji platformy Azure) umożliwia dalsze dostosowywanie zautomatyzowanych scenariuszy, takich jak na przykład wysyłanie wiadomości e-mail oddzielnych adresatów w zaleceniach automatycznego dostrajania dla oddzielnych subskrypcji.
 >
 
 Powyższe określa kroki wymagane do skonfigurowania przepływu pracy zadania dostarczania poczty e-mail. Cały przepływ składający się z trzech zbudowanych akcji jest pokazany na poniższej ilustracji.

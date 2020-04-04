@@ -4,12 +4,12 @@ description: Dowiedz się, jak zainstalować i skonfigurować kontroler transfer
 services: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: 4d0edcac86bebb77495907ec43debf077448b8ac
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: ece117d60ae3d7fd70c0972bb463340c5d38c9e1
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617225"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637267"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Tworzenie kontrolera transferu danych przychodzących HTTPS w usłudze Azure Kubernetes (AKS)
 
@@ -163,7 +163,7 @@ spec:
 Aby utworzyć wystawcę, użyj `kubectl apply` polecenia.
 
 ```console
-kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+kubectl apply -f cluster-issuer.yaml
 ```
 
 ## <a name="run-demo-applications"></a>Uruchamianie aplikacji demonstracyjnych

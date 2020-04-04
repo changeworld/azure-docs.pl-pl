@@ -8,12 +8,12 @@ ms.date: 12/08/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6ddda38d887cdfe30b449847e2f625ba17f33898
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff9415ca20b859468528b56d27355430c4fc5a0f
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76510808"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652065"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Łączenie urządzenia podrzędnego z bramą usługi Azure IoT Edge
 
@@ -182,7 +182,7 @@ W tej sekcji przedstawiono przykładową aplikację do łączenia klienta urząd
 
 W tej sekcji przedstawiono przykładową aplikację do łączenia klienta urządzenia Usługi Azure IoT Python z bramą usługi IoT Edge.
 
-1. Pobierz przykład dla **send_message** z [zestawu SDK urządzenia Usługi Azure IoT dla przykładów języka Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios).
+1. Pobierz przykład dla **send_message** z [zestawu SDK urządzenia Usługi Azure IoT dla przykładów języka Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios).
 2. Upewnij się, że są uruchomione w kontenerze usługi IoT Edge `EdgeHubConnectionString` lub `EdgeModuleCACertificateFile` w scenariuszu debugowania, mają i środowiska zmienne ustawione.
 3. Zapoznaj się z dokumentacją SDK, aby uzyskać instrukcje dotyczące uruchamiania próbki na urządzeniu.
 

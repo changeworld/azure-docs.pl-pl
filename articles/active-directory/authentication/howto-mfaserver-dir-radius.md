@@ -4,19 +4,19 @@ description: Wdrażanie uwierzytelniania usługi RADIUS i serwera Azure Multi-Fa
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38341613c98bf85df8cb47ccafc3df5709a1fd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 552226c35d4d129f73b96b689871708950b7ffb1
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425213"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652948"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>Integrowanie uwierzytelniania usługi RADIUS z serwerem usługi Azure Multi-Factor Authentication
 
@@ -77,9 +77,9 @@ Pobieranie serwera usługi Azure Multi-Factor Authentication zakończyło się p
 
 Aby skonfigurować klienta RADIUS, skorzystaj z następujących wskazówek:
 
-* Skonfiguruj uwierzytelnianie urządzenia/serwera pod adresem IP serwera usługi Azure Multi-Factor Authentication (który działa jako serwer RADIUS) za pośrednictwem usługi RADIUS.
+* Skonfiguruj urządzenie/serwer do uwierzytelniania za pośrednictwem usługi RADIUS na adres IP serwera uwierzytelniania wieloskładnikowego platformy Azure, który działa jako serwer RADIUS.
 * Użyj tego samego wspólnego klucza tajnego, który został skonfigurowany wcześniej.
-* Limit czasu usługi RADIUS ustaw na 30–60 sekund, aby zapewnić czas na przeprowadzenie walidacji poświadczeń użytkownika, przeprowadzenie weryfikacji dwuetapowej, odebranie odpowiedzi i przesłanie odpowiedzi na żądanie dostępu usługi RADIUS.
+* Skonfiguruj limit czasu radius do 30-60 sekund, aby sprawdzić poprawność poświadczeń użytkownika, przeprowadzić weryfikację dwuetapową, otrzymać odpowiedź, a następnie odpowiedzieć na żądanie dostępu USŁUGI RADIUS.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,25 +1,25 @@
 ---
 title: Korzystanie z zewnętrznych magazynów metadanych — Azure HDInsight
-description: Użyj zewnętrznych magazynów metadanych z klastrami usługi Azure HDInsight i najlepszymi rozwiązaniami.
+description: Użyj zewnętrznych magazynów metadanych z klastrami usługi Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: edb2d256d3e5d98c52dbdff1162e0e030ebe2be3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/03/2020
+ms.openlocfilehash: 0cadf3930008868fe223e6e1024a2d14d17d8131
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272164"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657121"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Korzystanie z zewnętrznych magazynów metadanych w usłudze Azure HDInsight
 
-Usługa HDInsight umożliwia przejęcie kontroli nad danymi i metadanymi przez wdrażanie kluczowych rozwiązań metadanych i baz danych zarządzania w zewnętrznych magazynach danych. Ta funkcja jest obecnie dostępna dla [apache hive metastore](#custom-metastore), [Apache Oozie metastore](#apache-oozie-metastore) i [Apache Ambari bazy danych.](#custom-ambari-db)
+Usługa HDInsight umożliwia przejęcie kontroli nad danymi i metadanymi za pomocą zewnętrznych magazynów danych. Ta funkcja jest dostępna dla [apache hive metastore](#custom-metastore), [Apache Oozie metastore](#apache-oozie-metastore)i [Apache Ambari bazy danych](#custom-ambari-db).
 
-Metastore Apache Hive w HDInsight jest istotną częścią architektury Apache Hadoop. Magazyn metasekonu jest centralnym repozytorium schematów, które mogą być używane przez inne narzędzia dostępu do dużych zbiorów danych, takie jak Apache Spark, Interactive Query (LLAP), Presto lub Apache Pig. Usługa HDInsight używa bazy danych SQL Azure jako magazynu meteoru.
+Metastore Apache Hive w HDInsight jest istotną częścią architektury Apache Hadoop. Magazyn metasekonu jest centralnym repozytorium schematów. Metasklep jest używany przez inne narzędzia dostępu do dużych zbiorów danych, takie jak Apache Spark, Interactive Query (LLAP), Presto lub Apache Pig. Usługa HDInsight używa bazy danych SQL Azure jako magazynu meteoru.
 
 ![Architektura magazynu metadanych gałęzi HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
 
@@ -39,7 +39,7 @@ Domyślnie usługa HDInsight tworzy magazyn metasklepu przy każdym typie klastr
 * Nie można udostępnić domyślnego magazynu metasklepu innym klastrom.
 
 * Domyślny magazyn metastore używa podstawowej usługi Azure SQL DB, która ma limit pięciu jednostek transakcji jednostek DTU (jednostki transakcji bazy danych).
-Ten domyślny magazyn metasa przez zwykle jest używany dla stosunkowo prostych obciążeń, które nie wymagają wielu klastrów i nie wymagają metadanych zachowanych poza cyklem życia klastra.
+Ten domyślny magazyn metasa przez zwykle jest używany dla stosunkowo prostych obciążeń. Obciążenia, które nie wymagają wielu klastrów i nie potrzebują metadanych zachowanych poza cyklem życia klastra.
 
 ## <a name="custom-metastore"></a>Niestandardowy sklep metasklepu
 
@@ -61,11 +61,9 @@ Usługa HDInsight obsługuje również niestandardowe metasklepy, które są zal
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Tworzenie i konfiguralizy azure sql database dla niestandardowego magazynu metastore
 
-Przed skonfigurowaniem niestandardowego magazynu hive dla klastra HDInsight należy utworzyć lub utworzyć istniejącą bazę danych SQL Azure.  Aby uzyskać więcej informacji, zobacz [Szybki start: Tworzenie pojedynczej bazy danych w bazie danych SQL usługi Azure](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
+Utwórz lub utwórz istniejącą usługę Azure SQL Database przed skonfigurowaniem niestandardowego magazynu mete hive dla klastra HDInsight.  Aby uzyskać więcej informacji, zobacz [Szybki start: Tworzenie pojedynczej bazy danych w bazie danych SQL usługi Azure](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
 
-Aby upewnić się, że klaster USŁUGI HDInsight może uzyskać dostęp do połączonej bazy danych SQL Database platformy Azure, skonfiguruj reguły zapory usługi Azure SQL Database, aby umożliwić dostęp do serwera usługom i zasobom platformy Azure.
-
-Tę opcję można włączyć w witrynie Azure portal, klikając pozycję **Ustaw zaporę serwera**i klikając **pozycję Włącz** pod **poniżej Zezwalaj na usługi i zasoby platformy Azure, aby uzyskać dostęp do tego serwera** dla serwera lub bazy danych usługi Azure SQL Database. Aby uzyskać więcej informacji, zobacz [Tworzenie reguł zapory IP i zarządzanie nimi](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+Skonfiguruj reguły zapory usługi Azure SQL Database, aby umożliwić dostęp do serwera usługom i zasobom platformy Azure. Włącz tę opcję w witrynie Azure portal, wybierając **pozycję Ustaw zaporę serwera**. Następnie wybierz **w obszarze** **Zezwalaj na usługi i zasoby platformy Azure, aby uzyskać dostęp do tego serwera** dla serwera lub bazy danych usługi Azure SQL Database. Aby uzyskać więcej informacji, zobacz [Tworzenie reguł zapory IP i zarządzanie nimi](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
 ![przycisk zapory serwera](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 
@@ -73,13 +71,11 @@ Tę opcję można włączyć w witrynie Azure portal, klikając pozycję **Ustaw
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Wybieranie niestandardowego magazynu metastore podczas tworzenia klastra
 
-Podczas tworzenia klastra można skierować klaster na wcześniej utworzoną usługę Azure SQL Database lub skonfigurować bazę danych SQL po utworzeniu klastra. Ta opcja jest określona w **ustawieniach magazynu > metastore** podczas tworzenia nowego klastra Hadoop, Spark lub interaktywnego klastra hive z witryny Azure portal.
+W dowolnym momencie można skierować klaster do wcześniej utworzonej usługi Azure SQL Database. W przypadku tworzenia klastra za pośrednictwem portalu opcja jest określona w **ustawieniach magazynu > metasklepu**.
 
 ![Portal Azure magazynu metadanych usługi HDInsight](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
 
-## <a name="hive-metastore-best-practices"></a>Najważniejsze wskazówki dotyczące metastore hive
-
-Oto kilka ogólnych najlepszych rozwiązań w metastore HDInsight Hive:
+## <a name="hive-metastore-guidelines"></a>Wskazówki dotyczące metastore hive
 
 * W miarę możliwości należy użyć niestandardowego magazynu metastore, aby w każdym możliwym celu oddzielić zasoby obliczeniowe (uruchomiony klaster) i metadane (przechowywane w magazynie meteożynowym).
 
@@ -89,19 +85,19 @@ Oto kilka ogólnych najlepszych rozwiązań w metastore HDInsight Hive:
 
 * Okresowo owak owak owak owacj ą niestandardowych metasklepów. Usługa Azure SQL Database generuje kopie zapasowe automatycznie, ale przedział czasu przechowywania kopii zapasowych jest różny. Aby uzyskać więcej informacji, zobacz [Dowiedz się więcej o automatycznych kopiach zapasowych bazy danych SQL](../sql-database/sql-database-automated-backups.md).
 
-* Znajdź swój klaster metastore i HDInsight w tym samym regionie, aby uzyskać najwyższą wydajność i najniższe opłaty za wyjście sieciowe.
+* Znajdź swój klaster metastore i HDInsight w tym samym regionie. Ta konfiguracja zapewni najwyższą wydajność i najniższe opłaty za wyjście sieci.
 
-* Monitoruj swój metastore pod kątem wydajności i dostępności za pomocą narzędzi do monitorowania bazy danych SQL platformy Azure, takich jak witryna Azure portal lub dzienniki usługi Azure Monitor.
+* Monitoruj swój metastore pod kątem wydajności i dostępności za pomocą narzędzi do monitorowania bazy danych SQL platformy Azure lub dzienników usługi Azure Monitor.
 
-* Gdy nowa, wyższa wersja usługi Azure HDInsight jest tworzony względem istniejącej bazy danych niestandardowych metastore, system uaktualnia schemat metastore, który jest nieodwracalny bez przywracania bazy danych z kopii zapasowej.
+* Gdy nowa, wyższa wersja usługi Azure HDInsight jest tworzony względem istniejącej bazy danych niestandardowych metastore, system uaktualnia schemat metastore. Uaktualnienie jest nieodwracalne bez przywracania bazy danych z kopii zapasowej.
 
 * Jeśli udostępniasz magazyn meta w wielu klastrach, upewnij się, że wszystkie klastry są tej samej wersji HDInsight. Różne wersje hive używają różnych schematów bazy danych magazynu metastore. Na przykład nie można udostępnić magazynu meta w klastrach hive 2.1 i Hive 3.1.
 
-* W programie HDInsight 4.0 spark i hive używają niezależnych katalogów do uzyskiwania dostępu do tabel SparkSQL lub Hive. Tabela utworzona przez spark znajduje się w katalogu Platformy Spark. Tabela utworzona przez Hive znajduje się w katalogu hive. Jest to inne niż HDInsight 3.6, gdzie Hive i Spark współużytkowane wspólny katalog. Integracja hive i spark w programie HDInsight 4.0 zależy od łącznika magazynu hive (HWC). HWC działa jako pomost między Spark i Hive. [Dowiedz się więcej o łączniku magazynu hive](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
+* W programie HDInsight 4.0 spark i hive używają niezależnych katalogów do uzyskiwania dostępu do tabel SparkSQL lub Hive. Tabela utworzona przez spark mieszka w katalogu Spark. Tabela utworzona przez Hive mieszka w katalogu Hive. To zachowanie różni się od hdinsight 3.6, gdzie Hive i Spark udostępnione wspólnego katalogu. Integracja hive i spark w programie HDInsight 4.0 zależy od łącznika magazynu hive (HWC). HWC działa jako pomost między Spark i Hive. [Dowiedz się więcej o łączniku magazynu hive](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
 
 ## <a name="apache-oozie-metastore"></a>Apache Oozie metastore
 
-Apache Oozie to system koordynacji przepływu pracy, który zarządza zadaniami na platformie Hadoop.  Oozie obsługuje zadania Hadoop dla Apache MapReduce, Pig, Hive i innych.  Oozie używa magazynu metastore do przechowywania szczegółów dotyczących bieżących i zakończonych przepływów pracy. Aby zwiększyć wydajność podczas korzystania z usługi Oozie, można użyć usługi Azure SQL Database jako niestandardowego magazynu metastore. Metasklep może również zapewnić dostęp do danych zadania Oozie po usunięciu klastra.
+Apache Oozie to system koordynacji przepływu pracy, który zarządza zadaniami na platformie Hadoop. Oozie obsługuje zadania Hadoop dla Apache MapReduce, Pig, Hive i innych.  Oozie używa magazynu metastore do przechowywania szczegółów dotyczących przepływów pracy. Aby zwiększyć wydajność podczas korzystania z usługi Oozie, można użyć usługi Azure SQL Database jako niestandardowego magazynu metastore. Magazyn metastore zapewnia dostęp do danych zadania Oozie po usunięciu klastra.
 
 Aby uzyskać instrukcje dotyczące tworzenia metasklepu Oozie za pomocą usługi Azure SQL Database, zobacz [Używanie apache Oozie dla przepływów pracy](hdinsight-use-oozie-linux-mac.md).
 

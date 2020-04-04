@@ -1,6 +1,6 @@
 ---
 title: Parametry połączeń
-description: Parametry połączeń dla magazynu danych SQL
+description: Parametry połączenia dla puli SQL Synapse
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,15 +11,17 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f64c584ea5a32f371f84facc195cd02ef6ffdff0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4c3f73fb763fa28ac826ebb97c3c325a2408542c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350621"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633575"
 ---
-# <a name="connection-strings-for-azure-sql-data-warehouse"></a>Parametry połączeń dla usługi Azure SQL Data Warehouse
-Można połączyć się z magazynem danych SQL za pomocą kilku różnych protokołów aplikacji, takich jak [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] i [JDBC][JDBC]. Poniżej znajduje się kilka przykładów połączeń ciągów dla każdego protokołu.  Można również użyć witryny Azure portal do tworzenia ciągu połączenia.  Aby utworzyć parametry połączenia przy użyciu portalu Azure portal, przejdź do bloku bazy danych, w obszarze *Podstawowe* elementy kliknij *pozycję Pokaż parametry połączenia bazy danych*.
+# <a name="connection-strings-for-synapse-sql-pool"></a>Parametry połączenia dla puli SQL Synapse
+Można połączyć się z pulą SQL za pomocą kilku różnych protokołów aplikacji, takich jak [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)i [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Poniżej znajduje się kilka przykładów połączeń ciągów dla każdego protokołu.  Można również użyć witryny Azure portal do tworzenia ciągu połączenia.  
+
+Aby utworzyć parametry połączenia przy użyciu portalu Azure portal, przejdź do bloku bazy danych, w obszarze *Podstawowe* elementy kliknij *pozycję Pokaż parametry połączenia bazy danych*.
 
 ## <a name="sample-adonet-connection-string"></a>Przykładowy ADO.NET parametry połączenia
 ```csharp
@@ -47,17 +49,4 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 > 
 
 ## <a name="next-steps"></a>Następne kroki
-Aby rozpocząć tworzenie zapytań względem magazynu danych przy użyciu programu Visual Studio i innych aplikacji, zobacz artykuł [Query with Visual Studio][Query with Visual Studio] (Wykonywanie zapytań przy użyciu programu Visual Studio).
-
-<!--Image references-->
-
-<!--Azure.com references-->
-[Query with Visual Studio]:sql-data-warehouse-query-visual-studio.md
-
-<!--MSDN references-->
-[ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
-[ODBC]: https://msdn.microsoft.com/library/jj730314.aspx
-[PHP]: https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396
-[JDBC]: https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx
-
-<!--Other references-->
+Aby rozpocząć wykonywanie zapytań o pulę SQL za pomocą programu Visual Studio i innych aplikacji, zobacz [Kwerenda w programie Visual Studio](sql-data-warehouse-query-visual-studio.md).

@@ -6,15 +6,15 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: e7caacf23cb489da6f9f85748ae839bc4babff8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6acf9301367ae2c6947f6935c43f420d3d7cac65
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77917309"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655012"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrowanie usług domenowych usługi Azure AD z klasycznego modelu sieci wirtualnej do Menedżera zasobów
 
@@ -158,7 +158,7 @@ Migracja do modelu wdrażania Menedżera zasobów i sieci wirtualnej jest podzie
 
 | Krok    | Wykonywane przez  | Szacowany czas  | Downtime (Przestoje)  | Wycofać/przywrócić? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [Krok 1 - Aktualizacja i zlokalizowanie nowej sieci wirtualnej](#update-and-verify-virtual-network-settings) | Portal Azure | 15 minut | Nie są wymagane przestoje | Nie dotyczy |
+| [Krok 1 - Aktualizacja i zlokalizowanie nowej sieci wirtualnej](#update-and-verify-virtual-network-settings) | Azure Portal | 15 minut | Nie są wymagane przestoje | Nie dotyczy |
 | [Krok 2 — przygotowanie domeny zarządzanej usług Ad DS do migracji](#prepare-the-managed-domain-for-migration) | PowerShell | Średnio 15 – 30 minut | Przestoje usług Azure AD DS rozpoczyna się po zakończeniu tego polecenia. | Wycofaj i przywróć dostępne. |
 | [Krok 3 — Przenoszenie domeny zarządzanej usług Azure AD DS do istniejącej sieci wirtualnej](#migrate-the-managed-domain) | PowerShell | Średnio 1 – 3 godziny | Jeden kontroler domeny jest dostępny po zakończeniu tego polecenia, czas przestoju kończy się. | W przypadku awarii dostępne są zarówno wycofywanie (samoobsługa), jak i przywracanie. |
 | [Krok 4 - Testowanie i oczekiwanie na replikę kontrolera domeny](#test-and-verify-connectivity-after-the-migration)| Program PowerShell i witryna Azure portal | 1 godzina lub więcej, w zależności od liczby testów | Oba kontrolery domeny są dostępne i powinny działać normalnie. | Nie dotyczy. Po pomyślnej migracji pierwszej maszyny Wirtualnej nie ma opcji wycofywania lub przywracania. |

@@ -5,33 +5,40 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 21fa1c4faa4a080b9b495e1481fdadcd7e8bea10
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a8d6d25a2ba7f0040b13982f14f3d6081ac32f15
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619476"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637991"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Obsługa modułu Az w usłudze Azure Automation
 
-Usługa Azure Automation obsługuje korzystanie z [modułu Azure PowerShell Az](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) w twoich uruchomieniu. ysieci. Moduł Az zestawienia nie jest importowany automatycznie na żadnych nowych lub istniejących kontach automatyzacji. 
+Usługa Azure Automation obsługuje korzystanie z [modułu Az programu Azure PowerShell](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) w uruchomieniu. 105. Moduł Az zestawienia nie jest importowany automatycznie na żadnych nowych lub istniejących kontach automatyzacji. 
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-Istnieje wiele rzeczy, które należy wziąć pod uwagę podczas korzystania z modułu Az zestawienia w usłudze Azure Automation. Elementy runbook i moduły mogą być używane przez rozwiązania wyższego poziomu na koncie automatyzacji. Edytowanie ekscesów lub uaktualnianie modułów może potencjalnie powodować problemy z uruchomieniu. kamiłębień. Przed zaimportowaniem nowych modułów Az należy dokładnie przetestować wszystkie elementy runbook i rozwiązania na osobnym koncie automatyzacji. Wszelkie modyfikacje modułów mogą negatywnie wpłynąć na rozwiązanie [Start/Stop.](automation-solution-vm-management.md) Nie zaleca się zmieniania modułów i śmigieł na kontach automatyzacji, które zawierają rozwiązania. To zachowanie nie jest specyficzne dla modułów Az. Należy wziąć to pod uwagę przy wprowadzaniu jakichkolwiek zmian na koncie automatyzacji.
+Istnieje kilka rzeczy, które należy wziąć pod uwagę podczas korzystania z modułów Az w usłudze Azure Automation:
 
-Importowanie modułu Az na koncie automatyzacji nie powoduje automatycznego importowania modułu w sesji programu PowerShell używanej przez elementy runbook. Moduły są importowane do sesji programu PowerShell w następujących sytuacjach:
+* Rozwiązania wyższego poziomu na koncie automatyzacji mogą używać życzek i modułów. W związku z tym edytowanie książek runbook lub uaktualnianie modułów może potencjalnie powodować problemy z rozwiązaniami. Przed zaimportowaniem nowych modułów Az należy dokładnie przetestować wszystkie elementy runbook i rozwiązania na osobnym koncie automatyzacji. 
 
-* Gdy projekt runbook wywołuje polecenie cmdlet z modułu
-* Gdy projekt runbook zaimportuje `Import-Module` moduł jawnie z poleceniem cmdlet
-* Gdy program runbook importuje inny moduł w zależności od modułu
+* Wszelkie modyfikacje modułów mogą negatywnie wpłynąć na rozwiązanie [Start/Stop.](automation-solution-vm-management.md) 
+
+* Importowanie modułu Az na koncie automatyzacji nie powoduje automatycznego importowania modułu w sesji programu PowerShell używanej przez elementy runbook. Moduły są importowane do sesji programu PowerShell w następujących sytuacjach:
+
+    * Gdy projekt runbook wywołuje polecenie cmdlet z modułu
+    * Gdy projekt runbook zaimportuje `Import-Module` moduł jawnie z poleceniem cmdlet
+    * Gdy program runbook importuje inny moduł w zależności od modułu
+
+> [!NOTE]
+> Nie zaleca się zmieniania modułów i śmigieł na kontach automatyzacji, które zawierają rozwiązania. Ten przepis nie jest specyficzny dla modułów Az. Należy wziąć to pod uwagę przy wprowadzaniu jakichkolwiek zmian na koncie automatyzacji.
 
 > [!IMPORTANT]
 > Upewnij się, że elementy runbook na koncie automatyzacji importują moduły Az lub [moduły AzureRM,](https://www.powershellgallery.com/packages/AzureRM/6.13.1) ale nie oba, do sesji programu PowerShell. Jeśli system runbook importuje moduły Az przed modułami AzureRM, system runbook zostanie ukończony. Jednak błąd odwołujący się do polecenia cmdlet [Get_SerializationSettings](troubleshoot/runbooks.md#get-serializationsettings) pojawia się w strumieniach zadań i polecenia cmdlet może nie zostać poprawnie wykonane. Jeśli system runbook importuje moduły AzureRM przed modułami Az, system runbook również kończy. W takim przypadku jednak pojawia się błąd w strumieniach zadań stwierdzające, że nie można zaimportować zarówno usługi Az, jak i AzureRM w tej samej sesji lub użyć w tym samym uruchomieniu. Chybienia.
 
 ## <a name="migrating-to-az-modules"></a>Migracja do modułów Az
 
-Zaleca się przetestowanie migracji do modułów Az na koncie automatyzacji testu. Po utworzeniu tego konta można użyć instrukcji w tej sekcji, aby pracować z modułami.
+Zaleca się przetestowanie migracji do modułów Az na koncie automatyzacji testu. Po utworzeniu konta można użyć instrukcji w tej sekcji, aby pracować z modułami.
 
 ### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>Zatrzymywać i odcinać wszystkie programy runbook korzystające z modułów AzureRM
 

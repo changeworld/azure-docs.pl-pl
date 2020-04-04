@@ -6,13 +6,13 @@ tags: azure-service-management
 ms.topic: sample
 ms.date: 01/04/2019
 ms.author: tomfitz
-ms.custom: mvc
-ms.openlocfilehash: b1d5f20ccd2f2c637d7db668af10ef331947d018
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, fasttrack-edit
+ms.openlocfilehash: 2d77dcbd07a67e3ba50d70770515416b45fbc7a3
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74971200"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637903"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>Szablony usługi Azure Resource Manager dla usługi App Service
 
@@ -28,11 +28,12 @@ Aby poznać składnię JSON i właściwości dla zasobów usługi App Services, 
 | [Aplikacja połączona z repozytorium GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-github-deploy)| Wdraża aplikację usługi App Service, która ściąga kod z usługi GitHub. |
 | [Aplikacja z niestandardowymi miejscami wdrożenia](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots)| Wdraża aplikację usługi App Service z niestandardowymi środowiskami/miejscami wdrożenia. |
 |**Konfigurowanie aplikacji**||
-| [Certyfikat aplikacji z magazynu Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| Wdraża certyfikat aplikacji usługi App Service z wpisu tajnego magazynu Azure Key Vault i używa go na potrzeby powiązania SSL. |
+| [Certyfikat aplikacji z magazynu Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| Wdraża certyfikat aplikacji usługi App Service z klucza tajnego usługi Azure Key Vault i używa go do powiązania TLS/SSL. |
 | [Aplikacja z domeną niestandardową](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain)| Wdraża aplikację usługi App Service z niestandardową nazwą hosta. |
-| [Aplikacja z protokołem SSL i domeną niestandardową](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| Wdraża aplikację usługi App Service z niestandardową nazwą hosta, a następnie pobiera certyfikat aplikacji z magazynu Key Vault na potrzeby powiązania SSL. |
+| [Aplikacja z protokołem SSL i domeną niestandardową](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| Wdraża aplikację usługi App Service o niestandardowej nazwie hosta i pobiera certyfikat aplikacji z usługi Key Vault dla powiązania TLS/SSL. |
 | [Aplikacja z rozszerzeniem GoLang](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Wdraża aplikację usługi App Service z rozszerzeniem lokacji Golang. Umożliwia to uruchamianie aplikacji internetowych opracowanych przy użyciu oprogramowania Golang na platformie Azure. |
 | [Aplikacja z rozwiązaniami Java 8 i Tomcat 8](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| Wdraża aplikację usługi App Service z włączoną obsługą rozwiązań Java 8 i Tomcat 8. Umożliwia to uruchamianie aplikacji w języku Java na platformie Azure. |
+| [Aplikacja z regionalną integracją sieci wirtualnej](https://github.com/Azure/azure-quickstart-templates/tree/master/101-app-service-regional-vnet-integration)| Wdraża aplikację usługi App Service z włączoną regionalną integracją sieci wirtualnej. |
 |**Ochrona aplikacji**||
 | [Aplikacja zintegrowana z bramą aplikacji platformy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-app-gateway-v2)| Wdraża aplikację usługi App Service i bramę aplikacji i izoluje ruch przy użyciu punktu końcowego usługi i ograniczeń dostępu. |
 |**Aplikacja systemu Linux z połączonymi zasobami**||
@@ -47,5 +48,5 @@ Aby poznać składnię JSON i właściwości dla zasobów usługi App Services, 
 |**Środowisko usługi aplikacji**||
 | [Tworzenie środowiska usługi App Service w wersji 2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | Tworzy środowisko usługi App Service w wersji 2 w sieci wirtualnej. |
 | [Tworzenie środowiska usługi App Service w wersji 2 przy użyciu adresu wewnętrznego modułu równoważenia obciążenia](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) | Tworzy środowisko usługi App Service w wersji 2 w sieci wirtualnej przy użyciu prywatnego adresu wewnętrznego modułu równoważenia obciążenia. |
-| [Konfigurowanie domyślnego certyfikatu SSL dla środowiska usługi App Service wewnętrznego modułu równoważenia obciążenia lub środowiska usługi App Service wewnętrznego modułu równoważenia obciążenia w wersji 2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl) | Konfiguruje domyślny certyfikat SSL dla środowiska usługi App Service wewnętrznego modułu równoważenia obciążenia lub środowiska usługi App Service wewnętrznego modułu równoważenia obciążenia w wersji 2. |
+| [Konfigurowanie domyślnego certyfikatu SSL dla środowiska usługi App Service wewnętrznego modułu równoważenia obciążenia lub środowiska usługi App Service wewnętrznego modułu równoważenia obciążenia w wersji 2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl) | Konfiguruje domyślny certyfikat TLS/SSL dla środowiska usługi aplikacji równoważenia obciążenia obciążenia lub środowiska usługi aplikacji równoważenia obciążenia sieciowego w wersji 2. |
 | | |

@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 525c20f5b6e24811ab092a63fa84fe6ebbd7b618
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42ace2444c7d8e790c7575a7c1a7b3b1219d090a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72808193"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656424"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Tworzenie prostego zapytania w usłudze Azure Cognitive Search
 
-W usłudze Azure Cognitive Search [składnia kwerendy proste](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) wywołuje domyślny analizator kwerendy do wykonywania kwerend wyszukiwania pełnotekstowego względem indeksu. Ten analizator jest szybki i obsługuje typowe scenariusze, w tym wyszukiwanie pełnotekstowe, wyszukiwanie filtrowane i apektowane oraz wyszukiwanie geograficzne. 
+W usłudze Azure Cognitive Search [składnia kwerendy proste](query-simple-syntax.md) wywołuje domyślny analizator kwerendy do wykonywania kwerend wyszukiwania pełnotekstowego względem indeksu. Ten analizator jest szybki i obsługuje typowe scenariusze, w tym wyszukiwanie pełnotekstowe, wyszukiwanie filtrowane i apektowane oraz wyszukiwanie geograficzne. 
 
 W tym artykule używamy przykładów do zilustrowania prostej składni.
 
-Alternatywną składnią kwerendy jest [Pełna lucen](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), obsługująca bardziej złożone struktury zapytań, takie jak wyszukiwanie rozmyte i wieloznaczne, co może zająć dodatkowy czas na przetworzenie. Aby uzyskać więcej informacji i przykładów demonstrujących pełną składnię, zobacz [Użyj pełnej składni luceny](search-query-lucene-examples.md).
+Alternatywną składnią kwerendy jest [Pełna lucen](query-lucene-syntax.md), obsługująca bardziej złożone struktury zapytań, takie jak wyszukiwanie rozmyte i wieloznaczne, co może zająć dodatkowy czas na przetworzenie. Aby uzyskać więcej informacji i przykładów demonstrujących pełną składnię, zobacz [Użyj pełnej składni luceny](search-query-lucene-examples.md).
 
 ## <a name="formulate-requests-in-postman"></a>Formułowanie żądań w listonoszu
 

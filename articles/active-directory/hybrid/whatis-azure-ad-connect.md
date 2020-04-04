@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11c57065e21c48a23148cacd91a42737edc13538
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1e60c35a32152d4adec72fb507becc0db535036f
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80049405"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631722"
 ---
 # <a name="what-is-azure-ad-connect"></a>Co to jest program Azure AD Connect?
 
@@ -26,7 +26,7 @@ Azure AD Connect to narzędzie firmy Microsoft, które umożliwia spełnienie wy
 - [Uwierzytelnianie przekazywane](how-to-connect-pta.md) — metoda logowania, która pozwala użytkownikom używać tego samego hasła w infrastrukturze lokalnej i w chmurze, ale nie wymaga dodatkowej infrastruktury w środowisku federacyjnym.
 - [Integracja federacyjna](how-to-connect-fed-whatis.md) — usługi federacyjne to opcjonalny składnik programu Azure AD Connect, za pomocą którego można skonfigurować środowisko hybrydowe przy użyciu lokalnej infrastruktury usług AD FS. Składnik ten udostępnia również funkcje zarządzania usługami AD FS, takie jak odnawianie certyfikatów i dodatkowe wdrożenia serwera usług AD FS.
 - [Synchronizacja](how-to-connect-sync-whatis.md) — odpowiada za tworzenie użytkowników, grup i innych obiektów.  Odpowiada też za zapewnienie zgodności informacji o tożsamości lokalnych użytkowników i grup z informacjami w chmurze.  Synchronizacja dotyczy również skrótów haseł.
--      [Monitorowanie kondycji](whatis-hybrid-identity-health.md) — usługa Azure AD Connect Health może zapewnić niezawodne monitorowanie i zapewnić centralną lokalizację w witrynie Azure portal, aby wyświetlić to działanie. 
+- [Monitorowanie kondycji](whatis-hybrid-identity-health.md) — usługa Azure AD Connect Health może zapewnić niezawodne monitorowanie i zapewnić centralną lokalizację w witrynie Azure portal, aby wyświetlić to działanie. 
 
 
 ![Co to jest program Azure AD Connect](./media/whatis-hybrid-identity/arch.png)

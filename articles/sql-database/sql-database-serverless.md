@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 3/11/2020
-ms.openlocfilehash: 00b9da150569db2972289468b1405e5087ee3321
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 4/3/2020
+ms.openlocfilehash: 07f29a01ae0128ba0a35504dea54ba1ae2dde944
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549152"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657059"
 ---
 # <a name="azure-sql-database-serverless"></a>Bezserwerowa baza danych SQL azure
 
@@ -151,13 +151,13 @@ Opóźnienie autoresume i autopause bezserwerowej bazy danych jest zazwyczaj w k
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Zarządzane przez klienta przezroczyste szyfrowanie danych (BYOK)
 
-Jeśli przy użyciu [zarządzanego przez klienta przezroczystego szyfrowania danych](transparent-data-encryption-byok-azure-sql.md) (BYOK) i bezserwerowej bazy danych jest automatycznie wstrzymana po usunięciu lub odwołaniu klucza, baza danych pozostaje w stanie automatycznego wstrzymania.  W takim przypadku po następnego wznowienia bazy danych baza danych staje się niedostępna w ciągu około 10 minut.  Gdy baza danych staje się niedostępna, proces odzyskiwania jest taki sam jak dla aprowizacji baz danych obliczeniowych.  Jeśli baza danych bezserwerowa jest w trybie online, gdy występuje usunięcie lub cofnięcie klucza, baza danych staje się również niedostępna po około 10 minutach lub mniej w taki sam sposób, jak w przypadku aprowizacji baz danych obliczeniowych.
+Jeśli przy użyciu [zarządzanego przez klienta przezroczystego szyfrowania danych](transparent-data-encryption-byok-azure-sql.md) (BYOK) i bezserwerowej bazy danych jest automatycznie wstrzymana po usunięciu lub odwołaniu klucza, baza danych pozostaje w stanie automatycznego wstrzymania.  W takim przypadku po następnego wznowienia bazy danych baza danych staje się niedostępna w ciągu około 10 minut.  Gdy baza danych staje się niedostępna, proces odzyskiwania jest taki sam jak dla aprowizacji baz danych obliczeniowych.  Jeśli baza danych bezserwerowa jest w trybie online, gdy występuje usunięcie lub cofnięcie klucza, baza danych również staje się niedostępna w ciągu około 10 minut w taki sam sposób, jak w przypadku aprowizacji baz danych obliczeniowych.
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Dołączanie do warstwy obliczeniowej bezserwerowej
 
 Tworzenie nowej bazy danych lub przenoszenie istniejącej bazy danych do warstwy obliczeniowej bezserwerowej jest zgodne z tym samym wzorcem, co tworzenie nowej bazy danych w warstwie obliczeniowej aprowizowana i obejmuje następujące dwa kroki.
 
-1. Określ nazwę celu usługi. Cel usługi określa warstwę usług, generowanie sprzętu i max vCores. W poniższej tabeli przedstawiono opcje celu usługi:
+1. Określ cel usługi. Cel usługi określa warstwę usług, generowanie sprzętu i max vCores. W poniższej tabeli przedstawiono opcje celu usługi:
 
    |Nazwa celu usługi|Warstwa usług|Generowanie sprzętu|Max vCores (Max vCores)|
    |---|---|---|---|
@@ -176,12 +176,12 @@ Tworzenie nowej bazy danych lub przenoszenie istniejącej bazy danych do warstwy
    |Parametr|Wybór wartości|Wartość domyślna|
    |---|---|---|---|
    |Min.|Zależy od maksymalnej konfiguracji vCores - zobacz [limity zasobów](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).|0,5 r. rw|
-   |Opóźnienie autopause|Minimum: 60 minut (1 godzina)<br>Maksymalnie: 10080 minut (7 dni)<br>Przyrosty: 60 minut<br>Wyłącz autopause: -1|60 min.|
+   |Opóźnienie autopause|Minimum: 60 minut (1 godzina)<br>Maksymalnie: 10080 minut (7 dni)<br>Przyrosty: 10 minut<br>Wyłącz autopause: -1|60 min.|
 
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Tworzenie nowej bazy danych w warstwie obliczeniowej bezserwerowej 
 
-Poniższe przykłady utworzyć nową bazę danych w warstwie obliczeniowej bez serwera. Przykłady jawnie określają min vCores, max vCores i opóźnienie autopause.
+Poniższe przykłady utworzyć nową bazę danych w warstwie obliczeniowej bez serwera.
 
 #### <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal
 
@@ -205,7 +205,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Użyj usługi Transact-SQL (T-SQL)
 
-Poniższy przykład tworzy nową bazę danych w warstwie obliczeniowej bez serwera.
+Podczas korzystania z T-SQL, wartości domyślne są stosowane do min vcores i opóźnienie autopause.
 
 ```sql
 CREATE DATABASE testdb
@@ -216,7 +216,7 @@ Aby uzyskać szczegółowe informacje, zobacz [TWORZENIE BAZY DANYCH](/sql/t-sql
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Przenoszenie bazy danych z aprowizowanego poziomu obliczeniowego do warstwy obliczeniowej bezserwerowej
 
-Poniższe przykłady przenieść bazę danych z aprowizowanego warstwy obliczeniowej do warstwy obliczeniowej bez serwera. Przykłady jawnie określają min vCores, max vCores i opóźnienie autopause.
+Poniższe przykłady przenieść bazę danych z aprowizowanego warstwy obliczeniowej do warstwy obliczeniowej bez serwera.
 
 #### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
@@ -237,7 +237,7 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Użyj usługi Transact-SQL (T-SQL)
 
-Poniższy przykład przenosi bazę danych z aprowizowanego warstwy obliczeniowej do warstwy obliczeniowej bez serwera.
+Podczas korzystania z T-SQL, wartości domyślne są stosowane do min vcores i opóźnienie autopause.
 
 ```sql
 ALTER DATABASE testdb 

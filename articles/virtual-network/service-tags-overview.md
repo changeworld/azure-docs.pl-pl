@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 568fc880711d42941fd9aef2ea19b8ac3123793a
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 7da20a0bf87b33f05ea7f1d457157c5b7ee2ec7b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384249"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631526"
 ---
 # <a name="virtual-network-service-tags"></a>Tagi usługi sieci wirtualnej
 <a name="network-service-tags"></a>
@@ -46,7 +46,7 @@ Domyślnie tagi usługi odzwierciedlają zakresy dla całej chmury. Niektóre ta
 | **ApiManagement (ApiManagement)** | Ruch zarządzania dla wdrożeń dedykowanych usługi Azure API Management. <br/><br/>*Uwaga:* Ten tag reprezentuje punkt końcowy usługi Usługi Azure API Management dla płaszczyzny kontroli na region. Dzięki temu klienci mogą wykonywać operacje zarządzania na interfejsach API, operacje, zasady, NamedValues skonfigurowane w usłudze zarządzania interfejsami API.  | Przychodzący | Tak | Tak |
 | **AplikacjaInsightsDostępność** | Dostępność usługi Application Insights. | Przychodzący | Nie | Nie |
 | **Konfiguracja aplikacji** | Konfiguracja aplikacji. | Wychodzący | Nie | Nie |
-| **AppService**    | Azure App Service. Ten tag jest zalecany dla reguł zabezpieczeń wychodzących do frontonomi aplikacji sieci web. | Wychodzący | Tak | Tak |
+| **AppService**    | Usługa aplikacji platformy Azure. Ten tag jest zalecany dla reguł zabezpieczeń wychodzących do frontonomi aplikacji sieci web. | Wychodzący | Tak | Tak |
 | **AppServiceManagement (Usługi w aplikacjach)** | Ruch zarządzania dla wdrożeń dedykowanych środowisku usługi app service. | Obie | Nie | Tak |
 | **Usługa AzureActiveDirectory** | Azure Active Directory. | Wychodzący | Nie | Tak |
 | **Usługi AzureActiveDirectoryDomainServices** | Ruch zarządzania dla wdrożeń dedykowanych usługom domenowym Active Directory platformy Azure. | Obie | Nie | Tak |
@@ -76,10 +76,10 @@ Domyślnie tagi usługi odzwierciedlają zakresy dla całej chmury. Niektóre ta
 | **AzurePlatformLKM** | Licencjonowanie systemu Windows lub usługa zarządzania kluczami.<br/><br/>Za pomocą tego tagu można wyłączyć ustawienia domyślne dla licencjonowania. Należy zachować ostrożność podczas korzystania z tego tagu. Zalecamy zapoznanie się z [zagadnieniami dotyczących platformy Azure.](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)  Zaleca się również przeprowadzenie testów przed użyciem tego tagu. | Wychodzący | Nie | Nie |
 | **AzureResourceManager** | Azure Resource Manager. | Wychodzący | Nie | Nie |
 | **Usługa AzureSignalR** | Azure SignalR. | Wychodzący | Nie | Nie |
-| **Usługa AzureSiteRecovery** | Azure Site Recovery.<br/><br/>*Uwaga:* Ten tag ma zależność od **azureactivedirectory**, **AzureKeyVault**, **EventHub**,**GuestAndHybridManagement** i **storage** tagów. | Wychodzący | Nie | Nie |
+| **Usługa AzureSiteRecovery** | Odzyskiwanie witryny platformy Azure.<br/><br/>*Uwaga:* Ten tag ma zależność od **azureactivedirectory**, **AzureKeyVault**, **EventHub**,**GuestAndHybridManagement** i **storage** tagów. | Wychodzący | Nie | Nie |
 | **AzureTrafficManager** | Usługa Azure Traffic Manager sonduje adresy IP.<br/><br/>Aby uzyskać więcej informacji na temat adresów IP sondy usługi Traffic Manager, zobacz [Często zadawane pytania dotyczące usługi Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). | Przychodzący | Nie | Tak |  
 | **PartiaNodeZarządzanie** | Ruch zarządzania dla wdrożeń dedykowanych usłudze Azure Batch. | Obie | Nie | Tak |
-| **CognitiveServicesManagement (Usługi poznawcze)** | Zakresy adresów dla ruchu dla usług Azure Cognitive Services. | Wychodzący | Nie | Nie |
+| **CognitiveServicesManagement (Usługi poznawcze)** | Zakresy adresów dla ruchu dla usług Azure Cognitive Services. | Obie | Nie | Nie |
 | **DataFactory (DaneFactory)**  | Azure Data Factory | Obie | Nie | Nie |
 | **DataFactoryManagement (DaneFactoryManagement)** | Ruch zarządzania dla usługi Azure Data Factory. | Wychodzący | Nie | Nie |
 | **Dynamics365ForMarketingEmail** | Zakresy adresów dla marketingowej usługi poczty e-mail dynamics 365. | Wychodzący | Tak | Nie |
@@ -124,7 +124,7 @@ Można uzyskać bieżący tag usługi i informacje o zakresie, które mają być
 ### <a name="use-the-service-tag-discovery-api-public-preview"></a>Korzystanie z interfejsu API odnajdowania znaczników usługi (publiczna wersja zapoznawcza)
 Można programowo pobrać bieżącą listę tagów usługi wraz ze szczegółami zakresu adresów IP:
 
-- [Reszta](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
+- [REST](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
 - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag?view=azps-2.8.0&viewFallbackFrom=azps-2.3.2)
 - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags)
 
