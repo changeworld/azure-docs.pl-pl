@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/04/2020
-ms.openlocfilehash: e2e1ddd031041f49107545cd0b3d3de4eaebcd6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: a5244086c185c111762496086f8044f12f52be14
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77472132"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632595"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Rozwiązywanie problemów z przepływami danych w usłudze Azure Data Factory
 
@@ -55,6 +55,18 @@ W tym artykule opisano typowe metody rozwiązywania problemów z przepływami da
 - **Komunikat:** Nazwa kolumny musi być określona w kwerendzie, ustaw alias, jeśli używasz funkcji SQL
 - **Przyczyny**: Nie określono nazwy kolumny
 - **Zalecenie:** Ustaw alias, jeśli używasz funkcji SQL, takiej jak min()/max(), itp.
+
+### <a name="error-code-getcommand-outputasync-failed"></a>Kod błędu: GetCommand OutputAsync nie powiodło się
+
+- **Komunikat**: Podczas debugowania przepływu danych i podglądu danych: GetCommand OutputAsync nie powiodło się z ...
+- **Przyczyny:** Jest to błąd usługi zaplecza. Można ponowić próbę wykonania operacji, a także ponownie uruchomić sesję debugowania.
+- **Zalecenie:** Jeśli ponowić próbę i ponownie uruchomić nie rozwiąż problemu, skontaktuj się z działem obsługi klienta.
+
+### <a name="error-code-hit-unexpected-exception-and-execution-failed"></a>Kod błędu: Trafienie nieoczekiwanego wyjątku i wykonanie nie powiodło się
+
+- **Komunikat:** Podczas wykonywania działania przepływu danych: Trafienie nieoczekiwanego wyjątku i wykonanie nie powiodło się.
+- **Przyczyny:** Jest to błąd usługi zaplecza. Można ponowić próbę wykonania operacji, a także ponownie uruchomić sesję debugowania.
+- **Zalecenie:** Jeśli ponowić próbę i ponownie uruchomić nie rozwiąż problemu, skontaktuj się z działem obsługi klienta.
 
 ## <a name="general-troubleshooting-guidance"></a>Ogólne wskazówki dotyczące rozwiązywania problemów
 

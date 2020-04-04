@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 4b42f0966288e4ee72b689ddce6313a41e91f13e
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: dbbe58df4f1cfe93555b494e525fad18f5b02664
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438033"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632566"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurowanie usługi aplikacji lub aplikacji Usługi Azure Functions do używania logowania usługi Azure AD
 
@@ -78,7 +78,7 @@ Wykonaj poniższe czynności:
 1. Po utworzeniu rejestracji aplikacji skopiuj **identyfikator aplikacji (klienta)** i **identyfikator katalogu (dzierżawy)** na później.
 1. Wybierz pozycję **Uwierzytelnianie**. W obszarze **Niejawne przyznanie**włącz **tokeny identyfikatorów,** aby zezwolić na logowanie użytkowników OpenID Connect z usługi App Service.
 1. (Opcjonalnie) Wybierz **opcję Znakowanie**. W **polu URL strony głównej**wprowadź adres URL aplikacji App Service i wybierz pozycję **Zapisz**.
-1. Wybierz **pozycję Uwidaczniaj** > **zestaw**interfejsu API . Wklej adres URL aplikacji Usługi App Service i wybierz pozycję **Zapisz**.
+1. Wybierz **pozycję Uwidaczniaj** > **zestaw**interfejsu API . W przypadku aplikacji z jedną dzierżawą wklej adres URL aplikacji Usługi App Service i wybierz pozycję **Zapisz** i dla aplikacji z wieloma dzierżawami, wklej adres URL oparty na jednej z zweryfikowanych domen dzierżawy, a następnie wybierz pozycję **Zapisz**.
 
    > [!NOTE]
    > Ta wartość jest **identyfikatorem URI** identyfikatora aplikacji rejestracji aplikacji. Jeśli aplikacja sieci web wymaga dostępu do interfejsu API w chmurze, podczas konfigurowania zasobu usługi App Service w chmurze potrzebny jest **identyfikator URI identyfikatora aplikacji** sieci web. Można użyć tego, na przykład, jeśli chcesz, aby usługa w chmurze jawnie udzielić dostępu do aplikacji sieci web.

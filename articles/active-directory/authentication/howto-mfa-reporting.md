@@ -4,19 +4,19 @@ description: W tym artykule opisano sposób korzystania z funkcji uwierzytelnian
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/30/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b47e6bac031a5f2cffc8734fee976fbf8dadc666
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5d5354f5bca7a4c9ab00066167ad19890536629
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129079"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653617"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Raporty w usłudze Azure uwierzytelniania wieloskładnikowego
 
@@ -90,7 +90,7 @@ Raporty działania logowania dla usługi MFA umożliwiają dostęp do następuj�
       - połączenie telefoniczne przekierowane do poczty głosowej
       - numer telefonu ma nieprawidłowy format
       - błąd usługi
-      - nie można skontaktować się z numerem telefonu użytkownika
+      - nie można skontaktować się z telefonem użytkownika
       - nie można wysłać powiadomienia aplikacji mobilnej do urządzenia
       - nie można wysłać powiadomienia aplikacji mobilnej
       - uwierzytelnienie odrzucone przez użytkownika

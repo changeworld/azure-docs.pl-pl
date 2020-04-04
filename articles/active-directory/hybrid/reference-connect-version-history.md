@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/01/2020
+ms.date: 04/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01956c2fee1c15bc86e8d80aa05c70db647bf593
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 60dca30496aa17ad7add00ca4eca914cb58fddd7
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616881"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655978"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Usługa Azure AD Connect: historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje usługę Azure AD Connect o nowe funkcje i funkcje. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -57,7 +57,7 @@ Nie wszystkie wersje usługi Azure AD Connect zostaną udostępnione do automaty
 ### <a name="functional-changes-adsyncautoupgrade"></a>Zmiany funkcjonalne ADSyncAutoUpgrade 
 
 - Dodano obsługę funkcji mS-DS-ConsistencyGuid dla obiektów grupy. Dzięki temu można przenosić grupy między lasami lub ponownie połączyć grupy w usłudze AD do usługi Azure AD, gdzie obiekt grupy usługi ADid został zmieniony, na przykład, gdy serwer usługi AD jest przebudowywany po katastrofie. Aby uzyskać więcej informacji, zobacz [Przenoszenie grup między lasami](how-to-connect-migrate-groups.md).
-- Atrybut mS-DS-ConsistencyGuid jest automatycznie ustawiany na grupach zsynchronizowanych w sieci i nie trzeba nic robić, aby włączyć tę funkcję. 
+- Atrybut mS-DS-ConsistencyGuid jest automatycznie ustawiany na wszystkich zsynchronizowanych grupach i nie trzeba nic robić, aby włączyć tę funkcję. 
 - Usunięto Get-ADSyncRunProfile, ponieważ nie jest już używany. 
 - Zmieniono ostrzeżenie widoczne podczas próby użycia konta administratora przedsiębiorstwa lub administratora domeny dla konta łącznika usług AD DS w celu zapewnienia większego kontekstu. 
 - Dodano nowe polecenie cmdlet w celu usunięcia obiektów z obszaru łącznika stare narzędzie CSDelete.exe jest usuwane i jest zastępowane nowym poleceniem cmdlet Remove-ADSyncCSObject. Polecenie cmdlet Remove-ADSyncCSObject przyjmuje polecenie CsObject jako dane wejściowe. Ten obiekt można pobrać za pomocą polecenia cmdlet Get-ADSyncCSObject.

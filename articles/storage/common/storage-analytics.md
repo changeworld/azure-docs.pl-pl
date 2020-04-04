@@ -8,12 +8,12 @@ ms.date: 03/03/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 86b399879807e480176ee9a3ca3feaba1ec5dd85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ad9f13bcdf36b67400adb62d58ee260ff256bb3
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250878"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637144"
 ---
 # <a name="storage-analytics"></a>Analityka magazynu
 
@@ -26,8 +26,6 @@ Zagregowane dane są przechowywane w dobrze znanym obiekcie blob (do rejestrowan
 Usługa Storage Analytics ma limit 20 TB ilości przechowywanych danych, która jest niezależna od całkowitego limitu dla twojego konta magazynu. Aby uzyskać więcej informacji na temat limitów kont magazynu, zobacz [Cele skalowalności i wydajności dla standardowych kont magazynu](scalability-targets-standard-account.md).
 
 Aby uzyskać szczegółowy przewodnik dotyczący korzystania z analizy magazynu i innych narzędzi do identyfikowania, diagnozowania i rozwiązywania problemów związanych z usługą Azure Storage, zobacz [Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="billing-for-storage-analytics"></a>Rozliczenia za analizę pamięci masowej
 

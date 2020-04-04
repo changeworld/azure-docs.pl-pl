@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 5c184e7f1dc828c3f9ff8d449d29ab3aaa4d1cf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 830668a78929a5e6a7e131ade5c62b81e6d725c3
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525825"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631365"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Referencje: Maszyna wirtualna do nauki o danych Ubuntu (Linux)
 
@@ -239,9 +239,9 @@ Dostęp do [portalu Azure](https://portal.azure.com) można uzyskać za pomocą 
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 
-Usługa Azure Machine Learning to w pełni zarządzana usługa w chmurze, która umożliwia tworzenie, wdrażanie i udostępnianie rozwiązań analizy predykcyjnej. Eksperymenty i modele można tworzyć z usługi Azure Machine Learning Studio (klasyczne). Dostęp do niego można uzyskać za pomocą przeglądarki sieci Web na maszynie wirtualnej do nauki o danych, odwiedzając usługę [Microsoft Azure Machine Learning](https://studio.azureml.net).
+Usługa Azure Machine Learning to w pełni zarządzana usługa w chmurze, która umożliwia tworzenie, wdrażanie i udostępnianie rozwiązań analizy predykcyjnej. Eksperymenty i modele można tworzyć w usłudze Azure Machine Learning studio (wersja zapoznawcza). Dostęp do niego można uzyskać za pomocą przeglądarki sieci Web na maszynie wirtualnej do nauki o danych, odwiedzając usługę [Microsoft Azure Machine Learning](https://ml.azure.com).
 
-Po zalogowaniu się do usługi Azure Machine Learning Studio (klasyczne), można użyć kanwy eksperymentów do tworzenia przepływu logicznego dla algorytmów uczenia maszynowego. Masz również dostęp do notesu Jupyter, który jest obsługiwany w usłudze Azure Machine Learning i można bezproblemowo pracować z eksperymentów w usłudze Azure Machine Learning Studio (klasyczny). 
+Po zalogowaniu się do studia usługi Azure Machine Learning można użyć kanwy eksperymentów, aby utworzyć przepływ logiczny dla algorytmów uczenia maszynowego. Masz również dostęp do notesu Jupyter, który jest hostowany w usłudze Azure Machine Learning i można bezproblemowo pracować z eksperymentów w usłudze Azure Machine Learning studio. 
 
 Operacjonalizacja modeli uczenia maszynowego, które zostały utworzone przez zawijanie ich w interfejsie usługi sieci web. Operacjonalizacja modeli uczenia maszynowego umożliwia klientom napisanym w dowolnym języku wywoływanie prognoz z tych modeli. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
 

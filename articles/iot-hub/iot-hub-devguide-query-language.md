@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: ad8b4b39e582d10c2a3b6003bfa07138f4697b71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499190"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632926"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Język zapytań usługi IoT Hub dla urządzeń i bliźniaczych reprezentacji modułów, zadań i routingu komunikatów
 
@@ -481,7 +481,7 @@ W warunkach tras obsługiwane są następujące funkcje sprawdzania i odlewania 
 | AS_NUMBER | Konwertuje ciąg wejściowy na liczbę. `noop`jeśli dane wejściowe są liczbą; `Undefined` jeśli ciąg nie reprezentuje liczby.|
 | IS_ARRAY | Zwraca wartość logiczną wskazującą, czy typem określonego wyrażenia jest tablica. |
 | IS_BOOL | Zwraca wartość logiczną wskazującą, czy typem określonego wyrażenia jest wartość logiczna. |
-| IS_DEFINED | Zwraca wartość logiczną wskazującą, do właściwości przypisano wartość. |
+| IS_DEFINED | Zwraca wartość logiczną wskazującą, do właściwości przypisano wartość. Jest to obsługiwane tylko wtedy, gdy wartość jest typem pierwotnym. Typy pierwotne obejmują ciąg, wartość logiczną, numeryczną lub `null`. DateTime, typy obiektów i tablice nie są obsługiwane. |
 | IS_NULL | Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia ma wartość null. |
 | IS_NUMBER | Zwraca wartość logiczną wskazującą, czy typem określonego wyrażenia jest liczba. |
 | IS_OBJECT | Zwraca wartość logiczną wskazującą, czy typem określonego wyrażenia jest obiekt JSON. |

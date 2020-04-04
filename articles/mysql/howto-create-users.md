@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: c4e95164badaf0b255f5ee76d0fec7686c2abf8b
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.date: 4/2/2020
+ms.openlocfilehash: 99b614de87c666d1cb1fb8a34eaafadf6fa82849
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382872"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632564"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>Tworzenie użytkowników w bazie danych platformy Azure dla serwera MySQL
 
@@ -19,9 +19,12 @@ W tym artykule opisano, jak można tworzyć użytkowników w bazie danych azure 
 
 Podczas pierwszego tworzenia bazy danych usługi Azure database dla MySQL podano nazwę użytkownika logowania administratora serwera i hasło. Aby uzyskać więcej informacji, możesz śledzić [przewodnik Szybki start](quickstart-create-mysql-server-database-using-azure-portal.md). Nazwę użytkownika logowania administratora serwera można zlokalizować w witrynie Azure Portal.
 
-Użytkownik administratora serwera otrzymuje pewne uprawnienia dla serwera, jak na liście: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ReLOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION KLIENT, TWORZENIE WIDOKU, WYŚWIETLANIE WIDOKU, TWORZENIE PROCEDURY, ZMIENIANIE PROCEDURY, TWORZENIE UŻYTKOWNIKA, ZDARZENIE, WYZWALACZ
+Administrator serwera otrzymuje pewne uprawnienia dla serwera na liście: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER
 
 Po utworzeniu serwera usługi Azure Database for MySQL można użyć pierwszego konta administratora serwera, aby utworzyć dodatkowych użytkowników i udzielić im dostępu administratora. Ponadto konto administratora serwera może służyć do tworzenia mniej uprzywilejowanych użytkowników, którzy mają dostęp do poszczególnych schematów bazy danych.
+
+> [!NOTE]
+> Uprawnienie SUPER i rola DBA nie są obsługiwane. Przejrzyj [uprawnienia](concepts-limits.md#privilege-support) w artykule ograniczenia, aby zrozumieć, co nie jest obsługiwane w usłudze.
 
 ## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>Jak utworzyć dodatkowych administratorów w usłudze Azure Database dla MySQL
 

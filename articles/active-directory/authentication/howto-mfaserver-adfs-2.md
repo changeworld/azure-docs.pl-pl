@@ -4,19 +4,19 @@ description: Ta strona dotyczy usługi Azure Multi-Factor Authentication i zawie
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e71c1d28a90af72890b2399d5da24d08885f3cce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c79a42bbd60d7a1857649cffc97ed7f0103fa16
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051211"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653518"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Konfigurowanie serwera usługi Azure Multi-Factor Authentication do współdziałania z usługami AD FS 2.0
 
@@ -59,7 +59,7 @@ Aby zabezpieczyć usługi AD FS 2.0 za pomocą serwera proxy, zainstaluj serwer 
 13. Po wykonaniu tej czynności kliknij przycisk **OK**, aby wrócić do okna dialogowego Dodawanie witryny sieci Web opartej na formularzach.
 14. Kliknij przycisk **OK**, aby zamknąć okno dialogowe.
 15. Po wykryciu lub wprowadzeniu adresu URL i zmiennych na stronie dane witryny sieci Web wyświetlane są w panelu Oparte na formularzach.
-16. Aby skonfigurować odpowiedni poziom wtyczki IIS, kliknij kartę **Moduł macierzysty** i wybierz serwer, witrynę sieci Web, w ramach której działa serwer proxy usług AD FS (taką jak „Domyślna witryna sieci Web”), lub aplikację serwera proxy usług AD FS (taką jak „ls” w obszarze „adfs”).
+16. Kliknij kartę **Moduł macierzysty** i wybierz serwer, witrynę sieci Web, w obszarze w niej uruchomiony serwer proxy usług AD FS (na przykład "Domyślna witryna sieci Web") lub aplikację serwera proxy usług AD FS (na przykład "ls" w obszarze "adfs"), aby włączyć wtyczkę usług IIS na żądanym poziomie.
 17. Kliknij pole **Włącz uwierzytelnianie usług IIS** w górnej części ekranu.
 
 Uwierzytelnianie usług IIS zostało włączone.
@@ -85,8 +85,8 @@ Uwierzytelnianie usług IIS zostało włączone, ale aby przeprowadzić uwierzyt
 
 1. Następnie kliknij ikonę **Ustawienia firmy** i wybierz kartę **Rozpoznawanie nazw użytkowników.**
 2. Wybierz **atrybut Użyj unikatowego identyfikatora LDAP dla pasującego** przycisku opcji nazwy użytkowników.
-3. Jeśli użytkownicy wprowadzają swoje nazwy użytkowników w formacie „domena\nazwa_użytkownika”, serwer musi być w stanie oddzielić domenę od nazwy użytkownika podczas tworzenia zapytania LDAP. Można to skonfigurować za pomocą ustawienia rejestru.
-4. W przypadku serwera 64-bitowego otwórz Edytor rejestru i przejdź do klucza HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor. W przypadku serwera 32-bitowego klucz nie zawiera elementu „Wow6432Node”. Utwórz klucz rejestru typu DWORD o nazwie „UsernameCxz_stripPrefixDomain” i ustaw jego wartość na 1. Po wykonaniu tych czynności serwer proxy usług AD FS jest chroniony przez usługę Azure Multi-Factor Authentication.
+3. Jeśli użytkownicy wejdą swoją nazwę użytkownika w formacie "domena\nazwa użytkownika", serwer musi mieć możliwość odsuń domenę od nazwy użytkownika podczas tworzenia kwerendy LDAP. Można to skonfigurować za pomocą ustawienia rejestru.
+4. W przypadku serwera 64-bitowego otwórz Edytor rejestru i przejdź do klucza HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor. Jeśli na serwerze 32-bitowym, weź "Wow6432Node" ze ścieżki. Utwórz klucz rejestru DWORD o nazwie "UsernameCxz_stripPrefixDomain" i ustaw wartość 1. Po wykonaniu tych czynności serwer proxy usług AD FS jest chroniony przez usługę Azure Multi-Factor Authentication.
 
 Upewnij się, że zaimportowano użytkowników z usługi Active Directory na serwer. Zobacz [sekcję Zaufane adresy IP,](#trusted-ips) jeśli chcesz zezwolić na wewnętrzne adresy IP, aby weryfikacja dwuetapowa nie była wymagana podczas logowania się do witryny sieci Web z tych lokalizacji.
 
@@ -107,7 +107,7 @@ Jeśli serwer proxy usług AD FS nie jest używany, można zabezpieczyć usługi
    ![Bezpośrednie używanie usług AD FS 2.0 bez serwera proxy](./media/howto-mfaserver-adfs-2/noproxy.png)
 
 8. Kliknij przycisk **OK**.
-9. Aby włączyć wtyczkę usług IIS na odpowiednim poziomie, kliknij kartę **Moduł macierzysty** i wybierz serwer, witrynę sieci Web (taką jak „Domyślna witryna sieci Web”) lub aplikację usług AD FS (taką jak „ls” w obszarze „adfs”).
+9. Kliknij kartę **Moduł macierzysty** i wybierz serwer, witrynę sieci Web (na przykład "Domyślna witryna sieci Web") lub aplikację AD FS (na przykład "ls" w obszarze "adfs"), aby włączyć wtyczkę usług IIS na żądanym poziomie.
 10. Kliknij pole **Włącz uwierzytelnianie usług IIS** w górnej części ekranu.
 
 Po wykonaniu tych czynności usługi AD FS są chronione przez usługę Azure Multi-Factor Authentication.

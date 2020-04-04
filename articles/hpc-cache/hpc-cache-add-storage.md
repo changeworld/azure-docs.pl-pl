@@ -4,18 +4,18 @@ description: Jak zdefiniować obiekty docelowe magazynu, aby pamięć podręczna
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3fbc4e683c2b0e72c3a084a59793dbf9eb4b658c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271891"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657431"
 ---
 # <a name="add-storage-targets"></a>Dodawanie lokalizacji docelowych magazynu
 
-*Obiekty docelowe magazynu* są magazynem zaplecza dla plików, które są dostępne za pośrednictwem wystąpienia pamięci podręcznej HPC platformy Azure. Można dodać magazyn systemu plików NFS (np. lokalny system sprzętowy) lub przechowywać dane w usłudze Azure Blob.
+*Obiekty docelowe magazynu* są magazynem zaplecza dla plików, które są dostępne za pośrednictwem pamięci podręcznej HPC platformy Azure. Można dodać magazyn systemu plików NFS (np. lokalny system sprzętowy) lub przechowywać dane w usłudze Azure Blob.
 
 Można zdefiniować maksymalnie dziesięć różnych obiektów docelowych magazynu dla jednej pamięci podręcznej. Pamięć podręczna przedstawia wszystkie obiekty docelowe magazynu w jednym zagregowanym obszarze nazw.
 
@@ -35,9 +35,9 @@ Nowy obiekt docelowy magazynu obiektów Blob wymaga pustego kontenera obiektów 
 
 Możesz utworzyć nowy kontener z tej strony tuż przed dodaniem.
 
-Aby zdefiniować kontener obiektów blob platformy Azure, wprowadź te informacje.
-
 ![zrzut ekranu przedstawiający stronę docelową dodawania magazynu wypełnionego informacjami o nowym docelowym magazynie obiektów Blob platformy Azure](media/hpc-cache-add-blob.png)
+
+Aby zdefiniować kontener obiektów blob platformy Azure, wprowadź te informacje.
 
 * **Nazwa obiektu docelowego magazynu** — ustaw nazwę identyfikującą ten obiekt docelowy magazynu w pamięci podręcznej HPC platformy Azure.
 * **Typ docelowy** — wybierz **obiekt blob**.
@@ -79,7 +79,7 @@ Kroki, aby dodać role RBAC:
 1. W polu **Wybierz** wyszukaj hasło "hpc".  Ten ciąg powinien być zgodny z jedną jednostką usługi o nazwie "DOSTAWCA ZASOBÓW PAMIĘCI PODRĘCZNEJ HPC". Kliknij tego podmiotu, aby go zaznaczyć.
 
    > [!NOTE]
-   > Jeśli wyszukiwanie "hpc" nie działa, spróbuj użyć ciągu "storagecache". Użytkownicy, którzy dołączyli do wersji zapoznawców (przed GA) może być konieczne użycie starszej nazwy dla jednostki usługi.
+   > Jeśli wyszukiwanie "hpc" nie działa, spróbuj użyć ciągu "storagecache". Użytkownicy, którzy uczestniczyli w wersji zapoznawczej (przed GA) może być konieczne użycie starszej nazwy dla jednostki usługi.
 
 1. Kliknij przycisk **Zapisz** u dołu.
 
@@ -91,7 +91,10 @@ Kroki, aby dodać role RBAC:
 
 Miejsce docelowe magazynu NFS ma więcej pól niż miejsce docelowe magazynu obiektów Blob. Te pola określają, jak dotrzeć do eksportu magazynu i jak skutecznie buforować swoje dane. Ponadto obiekt docelowy magazynu NFS umożliwia tworzenie wielu ścieżek obszaru nazw, jeśli host systemu plików NFS ma więcej niż jeden eksport dostępny.
 
-![Zrzut ekranu przedstawiający stronę docelową dodawania magazynu ze zdefiniowanym obiektem docelowym systemu plików NFS](media/hpc-cache-add-nfs-target.png)
+![Zrzut ekranu przedstawiający stronę docelową dodawania magazynu ze zdefiniowanym obiektem docelowym systemu plików NFS](media/add-nfs-target.png)
+
+> [!NOTE]
+> Przed utworzeniem obiektu docelowego magazynu systemu plików NFS upewnij się, że system magazynu jest dostępny z pamięci podręcznej HPC platformy Azure i spełnia wymagania dotyczące uprawnień. Tworzenie obiektu docelowego magazynu zakończy się niepowodzeniem, jeśli pamięć podręczna nie może uzyskać dostępu do systemu magazynu. Przeczytaj [wymagania dotyczące pamięci masowej NFS](hpc-cache-prereqs.md#nfs-storage-requirements) i [rozwiąż problemy z konfiguracją serwera NAS i docelowymi problemami z pamięcią masową NFS,](troubleshoot-nas.md) aby uzyskać szczegółowe informacje.
 
 Podaj te informacje dla obiektu docelowego magazynu wspieranego przez system NFS:
 
@@ -126,7 +129,7 @@ Po zakończeniu kliknij przycisk **OK,** aby dodać miejsce docelowe magazynu.
 ### <a name="choose-a-usage-model"></a>Wybieranie modelu użycia
 <!-- referenced from GUI - update aka.ms link if you change this heading -->
 
-Podczas tworzenia miejsca docelowego magazynu, który wskazuje system magazynu NFS, należy wybrać *model użycia* dla tego obiektu docelowego. Ten model określa sposób buforowania danych.
+Podczas tworzenia miejsca docelowego magazynu, który wskazuje system magazynu NFS, należy wybrać model użycia dla tego obiektu docelowego. Ten model określa sposób buforowania danych.
 
 Dostępne są trzy opcje:
 
@@ -138,7 +141,7 @@ Dostępne są trzy opcje:
 
 * **Więcej niż 15% zapisów** — ta opcja przyspiesza wydajność odczytu i zapisu. Korzystając z tej opcji, wszyscy klienci muszą uzyskać dostęp do plików za pośrednictwem pamięci podręcznej HPC platformy Azure zamiast instalować bezpośrednio magazyn zaplecza. Buforowane pliki będą miały ostatnie zmiany, które nie są przechowywane na zapleczu.
 
-  W tym modelu użycia pliki w pamięci podręcznej nie są sprawdzane względem plików w magazynie zaplecza. Zakłada się, że buforowana wersja pliku jest bardziej aktualna. Zmodyfikowany plik w pamięci podręcznej jest zapisywany w systemie magazynu zaplecza tylko wtedy, gdy był w pamięci podręcznej przez godzinę bez żadnych dodatkowych zmian.
+  W tym modelu użycia pliki w pamięci podręcznej nie są sprawdzane względem plików w magazynie zaplecza. Zakłada się, że buforowana wersja pliku jest bardziej aktualna. Zmodyfikowany plik w pamięci podręcznej jest zapisywany w systemie magazynu zaplecza po tym, jak był w pamięci podręcznej przez godzinę bez żadnych dodatkowych zmian.
 
 * **Klienci zapisują do obiektu docelowego systemu plików NFS, pomijając pamięć podręczną** — wybierz tę opcję, jeśli klienci w przepływie pracy zapisują dane bezpośrednio do systemu magazynu bez uprzedniego zapisu w pamięci podręcznej. Pliki, które żądają klienci są buforowane, ale wszelkie zmiany tych plików z klienta są przekazywane z powrotem do systemu magazynu zaplecza natychmiast.
 

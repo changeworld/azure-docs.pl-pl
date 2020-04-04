@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8f2e2081ee31e2ce7b21677bd261ed7eda705334
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de0cf260207747f4acb02a377819a13de8b8ba22
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79486118"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80628415"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -26,9 +26,8 @@ ms.locfileid: "79486118"
 
 ## <a name="portal"></a>Portal
 
-Aby utworzyć i skonfigurować migawki przyrostowe w globalnej witrynie [https://aka.ms/incrementalsnapshots](https://aka.ms/incrementalsnapshots)Azure portal, należy użyć następującego łącza: . Tworzenie migawki przyrostowej nie jest jeszcze dostępne w globalnej witrynie Azure portal.
 
-1. Zaloguj się do [witryny Azure portal](https://aka.ms/incrementalsnapshots) za pomocą podanego łącza i przejdź do dysku, który chcesz migać.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) i przejdź do dysku, który chcesz migać.
 1. Na dysku wybierz pozycję **Utwórz migawkę**
 
     :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-snapshot-button-incremental.png" alt-text="Zrzut ekranu. Blok dysku z podświetleną **+Create snapshot** , ponieważ należy to wybrać.":::

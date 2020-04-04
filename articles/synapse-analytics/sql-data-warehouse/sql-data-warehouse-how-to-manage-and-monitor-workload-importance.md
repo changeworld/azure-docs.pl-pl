@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 114f8d637a927a899807a676fb3e1b45f5c7687c
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 3efd8a776542616a9ceefba331b06406540905a8
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585763"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633322"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>Zarządzanie i monitorowanie znaczenia obciążenia w usłudze Azure Synapse Analytics
 
@@ -24,7 +24,7 @@ Zarządzanie i monitorowanie zarządzania poziomem zarządzania żądaniem Synap
 
 ## <a name="monitor-importance"></a>Monitorowanie ważności
 
-Monitorowanie ważności przy użyciu nowej kolumny ważności w widoku zarządzania dynamicznego [sys.dm_pdw_exec_requests.](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest)
+Monitorowanie ważności przy użyciu nowej kolumny ważności w widoku zarządzania dynamicznego [sys.dm_pdw_exec_requests.](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 Poniższa kwerenda monitorująca pokazuje czas przesyłania i czas rozpoczęcia kwerend. Przejrzyj czas przesyłania i czas rozpoczęcia wraz ze znaczeniem, aby zobaczyć, jak ważne wpłynęło planowanie.
 
 ```sql
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-Widok katalogu [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest)zawiera informacje o parametrach używanych do tworzenia klasyfikatora.  Poniższa kwerenda pokazuje, że ExecReportsClassifier został utworzony na ```membername``` parametr dla wartości z ExecutiveReports:
+Widok katalogu [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)zawiera informacje o parametrach używanych do tworzenia klasyfikatora.  Poniższa kwerenda pokazuje, że ExecReportsClassifier został utworzony na ```membername``` parametr dla wartości z ExecutiveReports:
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value
@@ -69,6 +69,7 @@ GO
 ```
 
 ## <a name="next-steps"></a>Następne kroki
+
 - Aby uzyskać więcej informacji na temat klasyfikacji, zobacz [Klasyfikacja obciążeń](sql-data-warehouse-workload-classification.md).
 - Aby uzyskać więcej informacji na temat ważności, zobacz [Znaczenie obciążenia pracą](sql-data-warehouse-workload-importance.md)
 

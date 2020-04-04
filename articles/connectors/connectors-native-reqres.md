@@ -7,12 +7,12 @@ ms.reviewers: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: d65b81f18d4dcb0ee97a21a7edec885e308bd8d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1885d7f8713b3801ce0c9846b7a8509b3864032a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297303"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656300"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Odbieranie i odpowiadanie na przychodzące żądania HTTPS w usłudze Azure Logic Apps
 
@@ -25,7 +25,7 @@ Dzięki [usłudze Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbud
 > [!NOTE]
 > Wyzwalacz żądania obsługuje *tylko* transport warstwy zabezpieczeń (TLS) 1.2 dla połączeń przychodzących. Połączenia wychodzące nadal obsługują TLS 1.0, 1.1 i 1.2. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemu z TLS 1.0](https://docs.microsoft.com/security/solving-tls1-problem).
 >
-> Jeśli widzisz błędy uzgadniania SSL, upewnij się, że używasz protokołu TLS 1.2. W przypadku połączeń przychodzących oto obsługiwane mechanizmy szyfrowania:
+> Jeśli widzisz błędy uzgadniania TLS, upewnij się, że używasz protokołu TLS 1.2. W przypadku połączeń przychodzących oto obsługiwane mechanizmy szyfrowania:
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256

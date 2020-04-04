@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b83592aa069b5262961f5e41a909821786a178b6
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 1da862a7994d7db5ee8c9f090119e14f19c6b13a
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528548"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637892"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Szybki start: zbieranie danych z komputera z systemem Linux w środowisku hybrydowym za pomocą usługi Azure Monitor
 
 [Usługa Azure Monitor](../overview.md) może zbierać dane bezpośrednio z fizycznych lub wirtualnych komputerów z systemem Linux w danym środowisku do obszaru roboczego usługi Log Analytics w celu szczegółowej analizy i korelacji. Instalowanie [agenta usługi Log Analytics](../platform/log-analytics-agent.md) umożliwia platformie Azure Monitor zbieranie danych z centrum danych lub innego środowiska w chmurze. Ten przewodnik Szybki start pokazuje, jak skonfigurować i zbierać dane z serwera Linux za pomocą kilku prostych kroków. Aby uzyskać informacje na temat maszyn wirtualnych z systemem Azure Linux, zobacz [Zbieranie danych o maszynach wirtualnych platformy Azure](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
-Aby zapoznać się z obsługiwana konfiguracją, zobacz [Obsługiwane systemy operacyjne Windows](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) i [konfiguracja zapory sieciowej](../../azure-monitor/platform/log-analytics-agent.md#firewall-requirements).
+Aby zapoznać się z obsługiwana konfiguracją, zobacz [Obsługiwane systemy operacyjne Windows](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) i [konfiguracja zapory sieciowej](../../azure-monitor/platform/log-analytics-agent.md#network-requirements).
  
 Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 

@@ -16,17 +16,17 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d08cb09b343300a667ea821ee75847f1fd9b1c13
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 81ade6f02b38a0a4d5ed04c8190b99216638c45d
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80423088"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637845"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application-spa"></a>Zaloguj użytkowników i wywołać microsoft graph API z angular aplikacji jednostronicowej (SPA)
 
 > [!IMPORTANT]
-> Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Wersje zapoznawcze są udostępniane pod warunkiem, że zgadzasz się na [dodatkowe warunki użytkowania][warunki użytkowania]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+> Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 
 W tym przewodniku pokazano, jak aplikacja jednostronicowa angular (SPA) może:
 - Zaloguj się na konta osobiste, a także konta służbowe i szkolne

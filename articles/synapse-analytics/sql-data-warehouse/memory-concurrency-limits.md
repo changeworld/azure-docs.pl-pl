@@ -11,17 +11,19 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c427c832eb613dddbff33ef6e67af63112e2f136
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586066"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632684"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Limity pamięci i współbieżności dla usługi Azure Synapse Analytics
+
 Wyświetlanie limitów pamięci i współbieżności przydzielonych do różnych poziomów wydajności i klas zasobów w usłudze Azure Synapse Analytics.  
 
 ## <a name="data-warehouse-capacity-settings"></a>Ustawienia pojemności magazynu danych
+
 W poniższych tabelach przedstawiono maksymalną pojemność magazynu danych na różnych poziomach wydajności. Aby zmienić poziom wydajności, zobacz [Skalowanie obliczeń — portal](quickstart-scale-compute-portal.md).
 
 ### <a name="service-levels"></a>Poziomy usług
@@ -50,7 +52,8 @@ Poziomy usług wahają się od DW100c do DW30000c.
 Maksymalny poziom usług to DW30000c, który ma 60 węzłów obliczeniowych i jedną dystrybucję na węzeł obliczeniowy. Na przykład magazyn danych o pojemności 600 TB w dw30000c przetwarza około 10 TB na węzeł obliczeniowy.
 
 ## <a name="concurrency-maximums-for-workload-groups"></a>Maksymalne wartości współbieżności dla grup obciążenia
-Wraz z [wprowadzeniem grup obciążenia](sql-data-warehouse-workload-isolation.md)pojęcie gniazda współbieżności nie ma już zastosowania.  Zasoby na żądanie są przydzielane w procentach i określone w definicji grupy obciążenia.  Jednak nawet przy usuwaniu gniazd współbieżności istnieją minimalne ilości zasobów potrzebnych dla zapytań na podstawie poziomu usługi.  W poniższej tabeli zdefiniowano minimalną ilość zasobów potrzebnych na zapytanie między poziomami usług i skojarzoną współbieżność, którą można osiągnąć. 
+
+Wraz z [wprowadzeniem grup obciążenia](sql-data-warehouse-workload-isolation.md)pojęcie gniazda współbieżności nie ma już zastosowania.  Zasoby na żądanie są przydzielane w procentach i określone w definicji grupy obciążenia.  Jednak nawet przy usuwaniu gniazd współbieżności istnieją minimalne ilości zasobów potrzebnych dla zapytań na podstawie poziomu usługi.  W poniższej tabeli zdefiniowano minimalną ilość zasobów potrzebnych na zapytanie między poziomami usług i skojarzoną współbieżność, którą można osiągnąć.
 
 |Poziom usług|Maksymalna liczba równoczesnych zapytań|Min % wspieranych dla REQUEST_MIN_RESOURCE_GRANT_PERCENT|
 |---|---|---|
@@ -73,7 +76,8 @@ Wraz z [wprowadzeniem grup obciążenia](sql-data-warehouse-workload-isolation.m
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Maksymalne wartości współbieżności dla klas zasobów
-Aby upewnić się, że każda kwerenda ma wystarczającą ilość zasobów do wykonania wydajnie, wykorzystanie zasobów jest śledzone przez przypisanie gniazd współbieżności do każdej kwerendy. System umieszcza zapytania w kolejce na podstawie znaczeń znaczeń i współbieżności. Kwerendy czekać w kolejce, aż dostępna jest wystarczająca liczba gniazd współbieżności. [Znaczenie](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) i współbieżność szczeliny określają priorytety procesora CPU. Aby uzyskać więcej informacji, zobacz [Analizowanie obciążenia](analyze-your-workload.md)
+
+Aby upewnić się, że każda kwerenda ma wystarczającą ilość zasobów do wydajnej pracy, usługa SQL Analytics w usłudze Azure Synapse śledzi wykorzystanie zasobów przez przypisywanie gniazd współbieżności do każdej kwerendy. System umieszcza zapytania w kolejce na podstawie znaczeń znaczeń i współbieżności. Kwerendy czekać w kolejce, aż dostępna jest wystarczająca liczba gniazd współbieżności. [Znaczenie](sql-data-warehouse-workload-importance.md) i współbieżność szczeliny określają priorytety procesora CPU. Aby uzyskać więcej informacji, zobacz [Analizowanie obciążenia](analyze-your-workload.md)
 
 **Statyczne klasy zasobów**
 
@@ -121,11 +125,11 @@ W poniższej tabeli przedstawiono maksymalną liczbę równoczesnych zapytań i 
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-
-Gdy nie ma wystarczającej liczby gniazd współbieżności wolne do rozpoczęcia wykonywania kwerendy, kwerendy są umieszczane w kolejce i wykonywane na podstawie ważności.  Jeśli istnieje równoważne znaczenie, kwerendy są wykonywane na zasadzie pierwszego w, pierwszego wyjścia.  Po zakończeniu kwerendy i liczba zapytań i gniazd spadnie poniżej limitów, USŁUGA SQL Data Warehouse zwalnia zapytania w kolejce. 
+Gdy nie ma wystarczającej liczby gniazd współbieżności wolne do rozpoczęcia wykonywania kwerendy, kwerendy są umieszczane w kolejce i wykonywane na podstawie ważności.  Jeśli istnieje równoważne znaczenie, kwerendy są wykonywane na zasadzie pierwszego w, pierwszego wyjścia.  Po zakończeniu kwerendy i liczba zapytań i gniazd spadnie poniżej limitów, USŁUGA SQL Data Warehouse zwalnia zapytania w kolejce.
 
 ## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat wykorzystania klas zasobów w celu dalszej optymalizacji obciążenia, zapoznaj się z następującymi artykułami:
+
 * [Klasy zasobów do zarządzania obciążeniem](resource-classes-for-workload-management.md)
 * [Analizowanie obciążenia](analyze-your-workload.md)

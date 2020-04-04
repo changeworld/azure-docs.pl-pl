@@ -11,28 +11,32 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 81191fd3b654f612f2621757f3006268276477de
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 8e78ad26701bae1357ef6a2a0a03dff1319f0efe
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586529"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633167"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maksymalizacja jakości grupy wierszy dla magazynu kolumn
 
 Jakość grupy wierszy zależy od liczby wierszy w grupie wierszy. Zwiększenie dostępnej pamięci można zmaksymalizować liczbę wierszy indeksu magazynu kolumn kompresuje do każdej grupy wierszy.  Użyj tych metod, aby poprawić szybkość kompresji i wydajność zapytań dla indeksów magazynu kolumn.
 
 ## <a name="why-the-rowgroup-size-matters"></a>Dlaczego rozmiar grupy wierszy ma znaczenie
-Ponieważ indeks magazynu kolumn skanuje tabelę, skanując segmenty kolumn poszczególnych grup wierszy, maksymalizacja liczby wierszy w każdej grupie wierszy zwiększa wydajność kwerendy. Gdy grupy wierszy mają dużą liczbę wierszy, kompresja danych poprawia się, co oznacza, że jest mniej danych do odczytu z dysku.
+Ponieważ indeks magazynu kolumn skanuje tabelę, skanując segmenty kolumn poszczególnych grup wierszy, maksymalizacja liczby wierszy w każdej grupie wierszy zwiększa wydajność kwerendy. 
+
+Gdy grupy wierszy mają dużą liczbę wierszy, kompresja danych poprawia się, co oznacza, że jest mniej danych do odczytu z dysku.
 
 Aby uzyskać więcej informacji na temat grup wierszy, zobacz [Przewodnik indeksów magazynu kolumn](https://msdn.microsoft.com/library/gg492088.aspx).
 
 ## <a name="target-size-for-rowgroups"></a>Rozmiar docelowy dla grup wierszy
-Aby uzyskać najlepszą wydajność kwerendy, celem jest zmaksymalizowanie liczby wierszy na grupę wierszy w indeksie magazynu kolumn. Grupa wierszy może mieć maksymalnie 1 048 576 wierszy. Nie ma maksymalnej liczby wierszy na grupę wierszy. Indeksy magazynu kolumn osiągają dobrą wydajność, gdy grupy wierszy mają co najmniej 100 000 wierszy.
+Aby uzyskać najlepszą wydajność kwerendy, celem jest zmaksymalizowanie liczby wierszy na grupę wierszy w indeksie magazynu kolumn. Grupa wierszy może mieć maksymalnie 1 048 576 wierszy. 
+
+Nie ma maksymalnej liczby wierszy na grupę wierszy. Indeksy magazynu kolumn osiągają dobrą wydajność, gdy grupy wierszy mają co najmniej 100 000 wierszy.
 
 ## <a name="rowgroups-can-get-trimmed-during-compression"></a>Grupy wierszy mogą zostać przycięte podczas kompresji
 
-Podczas zbiorczego ładowania lub przebudowy indeksu magazynu kolumn czasami nie ma wystarczającej ilości pamięci, aby skompresować wszystkie wiersze wyznaczone dla każdej grupy wierszy. Gdy występuje ciśnienie pamięci, indeksy magazynu kolumn przyciąć rozmiary grupy wierszy, więc kompresji do magazynu kolumn może zakończyć się pomyślnie. 
+Podczas zbiorczego ładowania lub przebudowy indeksu magazynu kolumn czasami nie ma wystarczającej ilości pamięci, aby skompresować wszystkie wiersze wyznaczone dla każdej grupy wierszy. Gdy ciśnienie pamięci jest obecny, indeksy magazynu kolumn przyciąć rozmiary grupy wierszy, więc kompresji do magazynu kolumn może zakończyć się pomyślnie. 
 
 Jeśli nie ma wystarczającej ilości pamięci, aby skompresować co najmniej 10 000 wierszy do każdej grupy wierszy, zostanie wygenerowany błąd.
 
@@ -40,7 +44,9 @@ Aby uzyskać więcej informacji na temat ładowania [zbiorczego, zobacz Ładowan
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Jak monitorować jakość grupy wierszy
 
-DmV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) zawiera definicję widoku pasujące SQL DB), który udostępnia przydatne informacje, takie jak liczba wierszy w grupach wierszy i powodem przycinania, jeśli nie było przycinanie. Można utworzyć następujący widok jako przydatny sposób na zapytanie tego DMV, aby uzyskać informacje na temat przycinania grup wierszy.
+DmV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) zawiera definicję widoku pasujące SQL DB), który udostępnia przydatne informacje, takie jak liczba wierszy w grupach wierszy i powód przycinania, jeśli nie było przycinania. 
+
+Można utworzyć następujący widok jako przydatny sposób na zapytanie tego DMV, aby uzyskać informacje na temat przycinania grup wierszy.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -85,18 +91,21 @@ Maksymalna wymagana pamięć do skompresu jednej grupy wierszy wynosi około
 - \#wiersze \* \#kolumny krótkie \* 32 bajtów +
 - \#długie kolumny ciągów \* 16 MB do kompresji słownika
 
-gdzie kolumny ciągów krótkich używają typów danych ciągów <= 32 bajtów i długich kolumn ciągów używają typów danych ciągów > 32 bajtów.
+> [!NOTE]
+> Kolumny ciągów krótkich używają typów danych ciągów <= 32 bajtów i długich kolumn ciągów używają typów danych ciągów > 32 bajtów.
 
 Długie ciągi są kompresowane za pomocą metody kompresji przeznaczonej do kompresji tekstu. Ta metoda kompresji używa *słownika* do przechowywania wzorców tekstu. Maksymalny rozmiar słownika to 16 MB. Istnieje tylko jeden słownik dla każdej długiej kolumny ciągu w grupie wierszy.
 
-Aby zapoznać się z dogłębną omówieniem wymagań dotyczących pamięci magazynu kolumn, zobacz klip wideo [Skalowanie SQL Synapse: konfiguracja i wskazówki](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
+Aby zapoznać się z dogłębną omówieniem wymagań dotyczących pamięci magazynu kolumn, zobacz klip wideo [Skalowanie puli puli synapse SQL: konfiguracja i wskazówki](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Sposoby zmniejszania wymagań dotyczących pamięci
 
 Poniższe techniki można zmniejszyć wymagania dotyczące pamięci dotyczące kompresji grup wierszy do indeksów magazynu kolumn.
 
 ### <a name="use-fewer-columns"></a>Użyj mniejszej liczby kolumn
-Jeśli to możliwe, zaprojektuj tabelę z mniejszą liczbą kolumn. Gdy grupa wierszy jest skompresowana do magazynu kolumn, indeks magazynu kolumn kompresuje każdy segment kolumny oddzielnie. W związku z tym wymagania dotyczące pamięci do kompresji rowgroup zwiększyć wraz ze wzrostem liczby kolumn.
+Jeśli to możliwe, zaprojektuj tabelę z mniejszą liczbą kolumn. Gdy grupa wierszy jest skompresowana do magazynu kolumn, indeks magazynu kolumn kompresuje każdy segment kolumny oddzielnie. 
+
+W związku z tym wymagania dotyczące pamięci do kompresji grupy wierszy zwiększają się wraz ze wzrostem liczby kolumn.
 
 
 ### <a name="use-fewer-string-columns"></a>Użyj mniejszej liczby kolumn ciągów
@@ -109,19 +118,28 @@ Dodatkowe wymagania dotyczące pamięci dla kompresji ciągów:
 
 ### <a name="avoid-over-partitioning"></a>Unikaj nadmiernej partycjonowania
 
-Indeksy magazynu kolumn tworzą co najmniej jedną grupę wierszy na partycję. W przypadku hurtowni danych w usłudze Azure Synapse Analytics liczba partycji szybko rośnie, ponieważ dane są dystrybuowane, a każda dystrybucja jest podzielona na partycje. Jeśli tabela ma zbyt wiele partycji, może nie być wystarczającej liczby wierszy, aby wypełnić rowgroups. Brak wierszy nie tworzy ciśnienia pamięci podczas kompresji, ale prowadzi do rowgroups, które nie osiągają najlepszą wydajność kwerendy magazynu kolumn.
+Indeksy magazynu kolumn tworzą co najmniej jedną grupę wierszy na partycję. W przypadku puli SQL w usłudze Azure Synapse Analytics liczba partycji szybko rośnie, ponieważ dane są dystrybuowane, a każda dystrybucja jest podzielona na partycje. 
 
-Innym powodem, aby uniknąć nadmiernej partycjonowania jest istnieje obciążenie pamięci do ładowania wierszy do indeksu magazynu kolumn w tabeli podzielonej na partycje. Podczas ładowania wiele partycji może odbierać przychodzące wiersze, które są przechowywane w pamięci, dopóki każda partycja ma wystarczająco dużo wierszy do skompresowania. Posiadanie zbyt wielu partycji tworzy dodatkowe ciśnienie pamięci.
+Jeśli tabela ma zbyt wiele partycji, może nie być wystarczającej liczby wierszy, aby wypełnić rowgroups. Brak wierszy nie powoduje nacisku pamięci podczas kompresji. Ale prowadzi do rowgroups, które nie osiągają najlepszą wydajność kwerendy magazynu kolumn.
+
+Innym powodem, aby uniknąć nadmiernej partycjonowania jest istnieje obciążenie pamięci do ładowania wierszy do indeksu magazynu kolumn w tabeli podzielonej na partycje. 
+
+Podczas ładowania wiele partycji może odbierać przychodzące wiersze, które są przechowywane w pamięci, dopóki każda partycja ma wystarczająco dużo wierszy do skompresowania. Posiadanie zbyt wielu partycji tworzy dodatkowe ciśnienie pamięci.
 
 ### <a name="simplify-the-load-query"></a>Uproszczenie kwerendy wczytywowej
 
 Baza danych udostępnia grant pamięci dla kwerendy między wszystkimi operatorami w kwerendzie. Gdy kwerenda obciążenia ma złożone sortuje i sprzężenia, pamięć dostępna do kompresji jest zmniejszona.
 
-Zaprojektuj kwerendę ładowania, aby skupić się tylko na załadowaniu kwerendy. Jeśli chcesz uruchomić przekształcenia na danych, uruchom je oddzielnie od kwerendy obciążenia. Na przykład etap danych w tabeli sterty, uruchom przekształcenia, a następnie załadować tabelę przemieszczania do indeksu magazynu kolumn. Można również załadować dane, a następnie użyć systemu MPP do przekształcenia danych.
+Zaprojektuj kwerendę ładowania, aby skupić się tylko na załadowaniu kwerendy. Jeśli chcesz uruchomić przekształcenia na danych, uruchom je oddzielnie od kwerendy obciążenia. Na przykład etap danych w tabeli sterty, uruchom przekształcenia, a następnie załadować tabelę przemieszczania do indeksu magazynu kolumn. 
+
+> [!TIP]
+> Można również załadować dane, a następnie użyć systemu MPP do przekształcenia danych.
 
 ### <a name="adjust-maxdop"></a>Dopasowywanie MAXDOP
 
-Każda dystrybucja kompresuje rowgroups do magazynu kolumn równolegle, gdy istnieje więcej niż jeden rdzeń procesora CPU dostępne dla dystrybucji. Równoległość wymaga dodatkowych zasobów pamięci, co może prowadzić do ciśnienia pamięci i przycinania grupy wierszy.
+Każda dystrybucja kompresuje rowgroups do magazynu kolumn równolegle, gdy istnieje więcej niż jeden rdzeń procesora CPU dostępne dla dystrybucji. 
+
+Równoległość wymaga dodatkowych zasobów pamięci, co może prowadzić do ciśnienia pamięci i przycinania grupy wierszy.
 
 Aby zmniejszyć ciśnienie w pamięci, można użyć wskazówki kwerendy MAXDOP, aby wymusić operację ładowania do uruchomienia w trybie szeregowym w ramach każdej dystrybucji.
 
@@ -134,11 +152,13 @@ OPTION (MAXDOP 1);
 
 ## <a name="ways-to-allocate-more-memory"></a>Sposoby przydzielania większej ilości pamięci
 
-Dwu rozmiar i klasa zasobów użytkownika razem określić, ile pamięci jest dostępna dla kwerendy użytkownika. Aby zwiększyć przyznanie pamięci dla kwerendy obciążenia, można zwiększyć liczbę jednostek DU lub zwiększyć klasę zasobów.
+Dwu rozmiar i klasa zasobów użytkownika razem określić, ile pamięci jest dostępna dla kwerendy użytkownika. 
+
+Aby zwiększyć przyznanie pamięci dla kwerendy obciążenia, można zwiększyć liczbę jednostek DU lub zwiększyć klasę zasobów.
 
 - Aby zwiększyć jednostu DWU, zobacz [Jak skalować wydajność?](quickstart-scale-compute-portal.md)
 - Aby zmienić klasę zasobów kwerendy, zobacz [Zmienianie przykładu klasy zasobów użytkownika](resource-classes-for-workload-management.md#change-a-users-resource-class).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby znaleźć więcej sposobów na zwiększenie wydajności programu Synapse SQL, zobacz [omówienie wydajności](cheat-sheet.md).
+Aby znaleźć więcej sposobów zwiększenia wydajności puli SQL, zobacz [omówienie wydajności](cheat-sheet.md).

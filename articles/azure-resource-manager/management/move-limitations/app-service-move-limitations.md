@@ -3,12 +3,12 @@ title: Przenoszenie zasobów usługi Azure App Service
 description: Usługa Azure Resource Manager umożliwia przenoszenie zasobów usługi App Service do nowej grupy zasobów lub subskrypcji.
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.openlocfilehash: 338b0559a5de9468ff60024b88d0f676a9fc3e8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d0ecd117bdcda9238e310a3020dba19a6871a3fc
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75479802"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655783"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>Przenoszenie wskazówek dotyczących zasobów usługi App Service
 
@@ -21,10 +21,10 @@ Podczas przenoszenia aplikacji sieci Web między subskrypcjami stosuje się nast
 - Docelowa grupa zasobów nie może mieć żadnych istniejących zasobów usługi App Service. Zasoby usługi App Service obejmują:
     - Web Apps
     - Plany usługi App Service
-    - Przesłane lub zaimportowane certyfikaty SSL
+    - Przesłane lub zaimportowane certyfikaty TLS/SSL
     - Środowiska usługi App Service
 - Wszystkie zasoby usługi App Service w grupie zasobów muszą zostać przeniesione razem. Należy zauważyć, że środowiska usługi app service nie można przenieść do nowej grupy zasobów ani do nowej subskrypcji.
-- Certyfikat powiązany z siecią Web można przenieść do sieci Web bez usuwania powiązań SSL, o ile certyfikat jest przenoszony ze wszystkimi innymi zasobami w grupie zasobów.
+- Certyfikat powiązany z siecią Web można przenieść do sieci Web bez usuwania powiązań TLS, o ile certyfikat jest przenoszony ze wszystkimi innymi zasobami w grupie zasobów.
 - Zasoby usługi App Service można przenosić tylko z grupy zasobów, w której zostały pierwotnie utworzone. Jeśli zasób usługi App Service nie znajduje się już w oryginalnej grupie zasobów, przenieś go z powrotem do pierwotnej grupy zasobów. Następnie przenieść zasób między subskrypcjami.
 
 Jeśli nie pamiętasz oryginalnej grupy zasobów, możesz ją znaleźć za pomocą diagnostyki. W przypadku aplikacji internetowej wybierz pozycję **Diagnozuj i rozwiązuj problemy**. Następnie wybierz **opcję Konfiguracja i zarządzanie**.

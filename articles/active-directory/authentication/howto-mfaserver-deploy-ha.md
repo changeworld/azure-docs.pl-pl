@@ -4,19 +4,19 @@ description: Wdrażanie wielu wystąpień serwera uwierzytelniania wieloskładni
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7b2df4e87dddcfedd10682e4e3ab6c014ad7bbb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e7b5f6bef5358acf0709f994b85215e505fa4db
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848191"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653385"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Konfigurowanie serwera uwierzytelniania wieloskładnikowego platformy Azure w celu zapewnienia wysokiej dostępności
 
@@ -41,7 +41,7 @@ Po pomyślnym uwierzytelnieniu za pomocą usługi AD serwer usługi MFA będzie 
 
 Jeśli serwer główny usługi MFA przejdzie w tryb offline, uwierzytelnianie nadal mogą być przetwarzane, ale operacje, które wymagają zmian w bazie danych usługi MFA, nie mogą być przetwarzane. (Przykłady obejmują: dodanie użytkowników, samoobsługowe zmiany numeru PIN, zmianę informacji o użytkowniku lub dostęp do portalu użytkownika)
 
-## <a name="deployment"></a>wdrażania
+## <a name="deployment"></a>Wdrożenie
 
 Należy wziąć pod uwagę następujące ważne punkty równoważenia obciążenia usługi Azure MFA Server i jego powiązanych składników.
 

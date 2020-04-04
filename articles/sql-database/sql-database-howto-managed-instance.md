@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: 906ae2a970ce1d5b82302d0277ca45bd93c23011
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b56375388f6293d27bcd2f2548d8b20205a92b15
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256915"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638031"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Jak używać wystąpienia zarządzanego w bazie danych SQL usługi Azure
 
@@ -43,6 +43,7 @@ W tym artykule można znaleźć różne przewodniki, skrypty i wyjaśnienia, kt�
 
 - [Replikacja transakcyjna](replication-with-sql-database-managed-instance.md) umożliwia replikowanie danych między wystąpieniami zarządzanymi lub z lokalnego programu SQL Server do wystąpienia zarządzanego i odwrotnie. Więcej informacji na temat używania i konfigurowania replikacji transakcji można znaleźć w tym przewodniku.
 - [Skonfiguruj wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) — [wykrywanie zagrożeń](sql-database-threat-detection-overview.md) to wbudowana funkcja usługi Azure SQL Database, która wykrywa różne potencjalne ataki, takie jak iniekcja SQL lub dostęp z podejrzanych lokalizacji. W tym przewodniku dowiesz się, jak włączyć i skonfigurować [wykrywanie zagrożeń](sql-database-threat-detection-overview.md) dla wystąpienia zarządzanego.
+- [Tworzenie alertów](sql-database-managed-instance-alerts.md) umożliwia konfigurowanie alertów na monitorowanych metrykach, takich jak wykorzystanie procesora CPU, zużycie miejsca do magazynowania, usługi We/Wy i inne dla wystąpienia zarządzanego. W tym przewodniku dowiesz się, jak włączyć i skonfigurować alerty dla wystąpienia zarządzanego.
 
 ## <a name="next-steps"></a>Następne kroki
 

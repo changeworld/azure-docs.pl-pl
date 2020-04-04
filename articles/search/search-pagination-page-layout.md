@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 8543894f3f518df6b9b0054973ca1683b82e38f1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: df80668f5e4a31d6247e9e9806e3de0667fd9036
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549006"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656010"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracować z wynikami wyszukiwania w usłudze Azure Cognitive Search
 
@@ -39,7 +39,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 > [!NOTE]
 > Jeśli chcesz dołączyć pliki obrazów w wyniku, takie jak zdjęcie produktu lub logo, należy przechowywać je poza usługą Azure Cognitive Search, ale dołącz pole w indeksie, aby odwołać się do adresu URL obrazu w dokumencie wyszukiwania. Przykładowe indeksy, które obsługują obrazy w wynikach obejmują **demo realestate-sample-us,** prezentowane w tym [przewodniku Szybki start,](search-create-app-portal.md)oraz [aplikację demonstracyjną New York City Jobs.](https://aka.ms/azjobsdemo)
 
-## <a name="results-returned"></a>Zwrócone wyniki
+## <a name="paging-results"></a>Stronicowanie wyników
 
 Domyślnie wyszukiwarka zwraca do pierwszych 50 dopasowań, zgodnie z wynikiem wyszukiwania, jeśli kwerenda jest wyszukiwanie pełnotekstowe lub w dowolnej kolejności dla zapytań dopasowania ścisłego.
 
@@ -74,19 +74,19 @@ Należy zauważyć, że dokument 2 jest pobierany dwa razy. Dzieje się tak dlat
 
 ## <a name="ordering-results"></a>Porządkowanie wyników
 
-W przypadku zapytań tekstowych wyniki są automatycznie klasyfikowane według wyniku wyszukiwania, obliczanego na podstawie częstotliwości terminów i bliskości w dokumencie, przy czym wyższe wyniki są kierowane do dokumentów mających więcej lub silniejsze dopasowania w wyszukiwanym terminie. Wyniki wyszukiwania oddają ogólne poczucie trafności w stosunku do innych dokumentów w tym samym zestawie wyników i nie są gwarantowane, aby być spójne z jednego zapytania do następnego.
+W przypadku zapytań tekstowych wyniki są automatycznie klasyfikowane według wyniku wyszukiwania, obliczanego na podstawie częstotliwości terminów i bliskości w dokumencie, przy czym wyższe wyniki są kierowane do dokumentów mających więcej lub silniejsze dopasowania w wyszukiwanym terminie. 
 
-Podczas pracy z kwerendami można zauważyć niewielkie rozbieżności w uporządkowanych wynikach. Istnieje kilka wyjaśnień, dlaczego może to nastąpić.
+Wyniki wyszukiwania dają ogólne poczucie trafności, odzwierciedlając siłę dopasowania w porównaniu z innymi dokumentami w tym samym zestawie wyników. Wyniki nie zawsze są spójne z jednego zapytania do następnego, więc podczas pracy z kwerendami można zauważyć niewielkie rozbieżności w sposobie zamawiania dokumentów wyszukiwania. Istnieje kilka wyjaśnień, dlaczego może to nastąpić.
 
-| Warunek | Opis |
+| Przyczyna | Opis |
 |-----------|-------------|
 | Zmienność danych | Zawartość indeksu różni się w miarę dodawania, modyfikowania lub usuwania dokumentów. Częstotliwości terminów będą się zmieniać w miarę przetwarzania aktualizacji indeksu w czasie, co wpływa na wyniki wyszukiwania pasujących dokumentów. |
-| Lokalizacja wykonania kwerendy | W przypadku usług korzystających z wielu replik zapytania są wystawiane równolegle dla każdej repliki. Statystyki indeksu używane do obliczania wyniku wyszukiwania są obliczane na podstawie repliki, a wyniki są scalane i uporządkowane w odpowiedzi na zapytanie. Repliki są głównie lustrami siebie nawzajem, ale statystyki mogą się różnić ze względu na niewielkie różnice w stanie. Na przykład jedna replika mogła usunąć dokumenty przyczyniające się do ich statystyk, które zostały scalone z innych replik. Ogólnie rzecz biorąc różnice w statystykach dla repliki są bardziej zauważalne w mniejszych indeksach. |
-| Zerwanie remisu między identycznymi wynikami wyszukiwania | Rozbieżności w uporządkowanych wynikach mogą również wystąpić, gdy dokumenty wyszukiwania mają identyczne wyniki. W takim przypadku podczas ponownego uruchomienia tej samej kwerendy nie ma żadnej gwarancji, który dokument pojawi się jako pierwszy. |
+| Wiele replik | W przypadku usług korzystających z wielu replik zapytania są wystawiane równolegle dla każdej repliki. Statystyki indeksu używane do obliczania wyniku wyszukiwania są obliczane na podstawie repliki, a wyniki są scalane i uporządkowane w odpowiedzi na zapytanie. Repliki są głównie lustrami siebie nawzajem, ale statystyki mogą się różnić ze względu na niewielkie różnice w stanie. Na przykład jedna replika mogła usunąć dokumenty przyczyniające się do ich statystyk, które zostały scalone z innych replik. Zazwyczaj różnice w statystykach dla repliki są bardziej zauważalne w mniejszych indeksach. |
+| Identyczne wyniki | Jeśli wiele dokumentów ma ten sam wynik, każdy z nich może pojawić się jako pierwszy.  |
 
 ### <a name="consistent-ordering"></a>Spójne porządkowanie
 
-Biorąc pod uwagę flex w wynikach wyszukiwania, można zbadać inne opcje, jeśli spójność w zamówieniach wyników jest wymaganiem aplikacji. Najprostszym rozwiązaniem jest sortowanie według wartości pola, takiej jak ocena lub data. W przypadku scenariuszy, w których chcesz sortować według określonego pola, takiego jak klasyfikacja lub data, można jawnie zdefiniować [ `$orderby` wyrażenie](query-odata-filter-orderby-syntax.md), które można zastosować do dowolnego pola, które jest indeksowane jako **sortowalne**.
+Biorąc pod uwagę flex w kolejności wyników, można zbadać inne opcje, jeśli spójność jest wymaganiem aplikacji. Najprostszym rozwiązaniem jest sortowanie według wartości pola, takiej jak ocena lub data. W przypadku scenariuszy, w których chcesz sortować według określonego pola, takiego jak klasyfikacja lub data, można jawnie zdefiniować [ `$orderby` wyrażenie](query-odata-filter-orderby-syntax.md), które można zastosować do dowolnego pola, które jest indeksowane jako **sortowalne**.
 
 Inną opcją jest użycie [niestandardowego profilu oceniania](index-add-scoring-profiles.md). Profile punktacji dają większą kontrolę nad rankingiem elementów w wynikach wyszukiwania, z możliwością promowania dopasowań znalezionych w określonych polach. Dodatkowa logika oceniania może pomóc zastąpić drobne różnice między replikami, ponieważ wyniki wyszukiwania dla każdego dokumentu są dalej od siebie. Zalecamy [algorytm rankingu](index-ranking-similarity.md) dla tego podejścia.
 

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 719a1985aeb0db7b0cf7f55a10762bf3ebb3e045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8118ecde698b54213547e717d25613c0c3e0d3fd
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250194"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631552"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotowywanie dysku VHD lub VHDX systemu Windows do przekazania na platformę Azure
 
-Przed przekazaniem maszyny wirtualnej systemu Windows (VM) z lokalnego na platformę Azure, należy przygotować wirtualny dysk twardy (VHD lub VHDX). Platforma Azure obsługuje maszyny wirtualne generacji 1 i 2 generacji, które są w formacie VHD i mają dysk o stałym rozmiarze. Maksymalny rozmiar dla VHD wynosi 1023 GB. 
+Przed przekazaniem maszyny wirtualnej systemu Windows (VM) z lokalnego na platformę Azure, należy przygotować wirtualny dysk twardy (VHD lub VHDX). Platforma Azure obsługuje maszyny wirtualne generacji 1 i 2 generacji, które są w formacie VHD i mają dysk o stałym rozmiarze. Maksymalny rozmiar dozwolony dla VHD wynosi 2 TB.
 
 Na maszynie wirtualnej generacji 1 można przekonwertować system plików VHDX na dysk VHD. Można również przekonwertować dynamicznie rozwijający się dysk na dysk o stałym rozmiarze. Ale nie można zmienić generacji maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [Czy utworzyć maszynę wirtualną generacji 1 lub 2 w funkcji Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) [Azure support for generation 2 VMs (preview)](generation-2.md)
 
@@ -400,7 +400,7 @@ Najlepiej, jeśli urządzenie powinno być aktualizowane na *poziomie plastra.* 
 |                         | vmstorfl.sys   | 6.3.9600.18907 - KB4072650                | 6.3.9600.18080 - KB3063109                  | 6.3.9600.18907 - KB4072650         | 10.0.14393.2007 - KB4345418                             | 10.0.15063.850 - KB4345419 | 10.0.16299.371 - KB4345420                      | -                                               |
 |                         | Plik Fveapi.dll     | 6.1.7601.23311 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.18294 - KB3172614         | 10.0.14393.576 - KB4022715                              | -                          | -                                               | -                                               |
 |                         | Plik Fveapibase.dll | 6.1.7601.23403 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.17415 - KB3172614         | 10.0.14393.206 - KB4022715                              | -                          | -                                               | -                                               |
-| Network (Sieć)                 | netvsc.sys     | -                                         | -                                           | -                                  | 10.0.14393.1198 - KB4022715                             | 10.0.15063.250 - KB4020001 | -                                               | -                                               |
+| Sieć                 | netvsc.sys     | -                                         | -                                           | -                                  | 10.0.14393.1198 - KB4022715                             | 10.0.15063.250 - KB4020001 | -                                               | -                                               |
 |                         | mrxsmb10.sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.22108 - KB4022724                  | 6.3.9600.18603 - KB4022726         | 10.0.14393.479 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | mrxsmb20.sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.21548 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | mrxsmb.sys     | 6.1.7601.23816 - KB4022722                | 6.2.9200.22074 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |

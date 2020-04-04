@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b5d326d02587d6b5bd8fd73dcccfefdb13c47d57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26c5c5b31d5f3f9e1a642c0bafb947190e479055
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500920"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632627"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z błędami elementów runbook
 
@@ -33,7 +33,7 @@ Jeśli masz błędy podczas wykonywania elementów runbook w usłudze Azure Auto
 
 3. **Upewnij się, że węzły i obszar roboczy automatyzacji mają wymagane moduły.** 
 
-    Jeśli program runbook importuje wszystkie moduły, sprawdź, czy są one dostępne dla twojego konta automatyzacji, wykonując kroki wymienione w module [Importuj](../shared-resources/modules.md#import-modules). Zaktualizuj moduły do najnowszej wersji, postępując zgodnie z instrukcjami dotyczącymi [aktualizacji modułów platformy Azure w usłudze Azure Automation.](..//automation-update-azure-modules.md) Aby uzyskać więcej informacji dotyczących rozwiązywania problemów, zobacz [Rozwiązywanie problemów z modułami](shared-resources.md#modules).
+    Jeśli program runbook importuje wszystkie moduły, sprawdź, czy są one dostępne dla twojego konta automatyzacji, wykonując kroki wymienione w module [Importuj](../shared-resources/modules.md#importing-modules). Zaktualizuj moduły do najnowszej wersji, postępując zgodnie z instrukcjami dotyczącymi [aktualizacji modułów platformy Azure w usłudze Azure Automation.](..//automation-update-azure-modules.md) Aby uzyskać więcej informacji dotyczących rozwiązywania problemów, zobacz [Rozwiązywanie problemów z modułami](shared-resources.md#modules).
 
 4. **Czy jeśli system runbook jest zawieszony lub nieoczekiwanie nie powiedzie się.**
 
@@ -284,7 +284,7 @@ Ten błąd występuje z powodu jednego z następujących problemów:
 
 ### <a name="resolution"></a>Rozwiązanie
 
-* Limit pamięci, gniazda sieciowe. Sugerowane sposoby pracy w granicach pamięci to dzielenie obciążenia między wiele traktów, przetwarzanie mniejszej ilości danych w pamięci, unikanie zapisywania niepotrzebnych danych wyjściowych z tekstów runbook i rozważenie liczby punktów kontrolnych zapisanych w przepływie pracy programu PowerShell Elementów runbook. Użyj clear metody, `$myVar.clear`takich jak , aby `[GC]::Collect` usunąć zmienne i użyć do uruchomienia wyrzucania elementów bezużytecznych natychmiast. Te akcje zmniejszają zużycie pamięci przez runbook podczas wykonywania.
+* Limit pamięci, gniazda sieciowe. Sugerowane sposoby pracy w granicach pamięci to dzielenie obciążenia między wiele tekstów trakcyjnych, przetwarzanie mniejszej ilości danych w pamięci, unikanie zapisywania niepotrzebnych danych wyjściowych z tekstów runbook i rozważenie liczby punktów kontrolnych zapisanych w elementach runbook przepływu pracy programu PowerShell. Użyj clear metody, `$myVar.clear`takich jak , aby `[GC]::Collect` usunąć zmienne i użyć do uruchomienia wyrzucania elementów bezużytecznych natychmiast. Te akcje zmniejszają zużycie pamięci przez runbook podczas wykonywania.
 
 * Moduł niezgodny. Zaktualizuj moduły platformy Azure, wykonując kroki opisane w [programie Jak zaktualizować moduły programu Azure PowerShell w usłudze Azure Automation.](../automation-update-azure-modules.md)
 

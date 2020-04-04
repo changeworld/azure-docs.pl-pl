@@ -1,6 +1,6 @@
 ---
 title: Projektowanie tabel
-description: Wprowadzenie do projektowania tabel w usłudze Azure SQL Data Warehouse.
+description: Wprowadzenie do projektowania tabel w puli SQL Synapse.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,83 +11,97 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f116897bdaffa765404aa47fda4ae32a49fa99ac
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4c5964bc944cd50e05d548eb731450a4944e854d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351264"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631261"
 ---
-# <a name="designing-tables-in-azure-sql-data-warehouse"></a>Projektowanie tabel w magazynie danych SQL usługi Azure
+# <a name="design-tables-in-synapse-sql-pool"></a>Tabele projektowania w puli sql synapse
 
-Poznaj kluczowe pojęcia dotyczące projektowania tabel w usłudze Azure SQL Data Warehouse. 
+Ten artykuł zawiera kluczowe pojęcia wprowadzające do projektowania tabel w puli SQL.
 
-## <a name="determine-table-category"></a>Określanie kategorii tabeli 
+## <a name="determine-table-category"></a>Określanie kategorii tabeli
 
-[Schemat gwiazdy](https://en.wikipedia.org/wiki/Star_schema) organizuje dane w tabelach faktów i wymiarów. Niektóre tabele są używane do integracji lub przemieszczania danych, zanim zostaną przesunie się do tabeli faktów lub wymiarów. Podczas projektowania tabeli zdecyduj, czy dane tabeli należą do tabeli faktów, wymiarów czy integracji. Niniejsza decyzja informuje o odpowiedniej strukturze i dystrybucji tabeli. 
+[Schemat gwiazdy](https://en.wikipedia.org/wiki/Star_schema) organizuje dane w tabelach faktów i wymiarów. Niektóre tabele są używane do integracji lub przemieszczania danych, zanim zostaną przesunie się do tabeli faktów lub wymiarów. Podczas projektowania tabeli zdecyduj, czy dane tabeli należą do tabeli faktów, wymiarów czy integracji. Niniejsza decyzja informuje o odpowiedniej strukturze i dystrybucji tabeli.
 
-- **Tabele faktów** zawierają dane ilościowe, które są zwykle generowane w systemie transakcyjnym, a następnie ładowane do magazynu danych. Na przykład firma detaliczna generuje transakcje sprzedaży codziennie, a następnie ładuje dane do tabeli faktów magazynu danych do analizy.
+- **Tabele faktów** zawierają dane ilościowe, które są często generowane w systemie transakcyjnym, a następnie ładowane do puli SQL. Na przykład firma detaliczna generuje transakcje sprzedaży codziennie, a następnie ładuje dane do tabeli faktów puli SQL do analizy.
 
-- **Tabele wymiarów** zawierają dane atrybutów, które mogą ulec zmianie, ale zwykle zmieniają się rzadko. Na przykład nazwa i adres klienta są przechowywane w tabeli wymiarów i aktualizowane tylko wtedy, gdy profil klienta się zmieni. Aby zminimalizować rozmiar dużej tabeli faktów, nazwa i adres odbiorcy nie muszą znajdować się w każdym wierszu tabeli faktów. Zamiast tego tabela faktów i tabela wymiarów mogą współużytkować identyfikator klienta. Kwerenda może dołączyć do dwóch tabel, aby skojarzyć profil klienta i transakcje. 
+- **Tabele wymiarów** zawierają dane atrybutów, które mogą ulec zmianie, ale zwykle zmieniają się rzadko. Na przykład nazwa i adres klienta są przechowywane w tabeli wymiarów i aktualizowane tylko wtedy, gdy profil klienta się zmieni. Aby zminimalizować rozmiar dużej tabeli faktów, nazwa i adres odbiorcy nie muszą znajdować się w każdym wierszu tabeli faktów. Zamiast tego tabela faktów i tabela wymiarów mogą współużytkować identyfikator klienta. Kwerenda może dołączyć do dwóch tabel, aby skojarzyć profil klienta i transakcje.
 
 - **Tabele integracji** zapewniają miejsce do integracji lub przemieszczania danych. Tabelę integracji można utworzyć jako zwykłą tabelę, tabelę zewnętrzną lub tabelę tymczasową. Na przykład można załadować dane do tabeli przemieszczania, wykonać przekształcenia na danych w przemieszczania, a następnie wstawić dane do tabeli produkcyjnej.
 
 ## <a name="schema-and-table-names"></a>Nazwy schematów i tabel
-Schematy są dobrym sposobem na grupowanie tabel, używane w podobny sposób, razem.  W przypadku migracji wielu baz danych z rozwiązania prem do magazynu sql data najlepiej jest przeprowadzić migrację wszystkich tabel faktów, wymiarów i integracji do jednego schematu w magazynie danych SQL. Na przykład można przechowywać wszystkie tabele w hurtowni danych próbki [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) w jednym schemacie o nazwie wwi. Poniższy kod tworzy [schemat zdefiniowany przez użytkownika](/sql/t-sql/statements/create-schema-transact-sql) o nazwie wwi.
+
+Schematy są dobrym sposobem na grupowanie tabel, używane w podobny sposób, razem.  Jeśli migrujesz wiele baz danych z rozwiązania prem do puli SQL, najlepiej jest przeprowadzić migrację wszystkich tabel faktów, wymiarów i integracji do jednego schematu w puli SQL.
+
+Na przykład można przechowywać wszystkie tabele w [wideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) przykładowej puli SQL w jednym schemacie o nazwie wwi. Poniższy kod tworzy [schemat zdefiniowany przez użytkownika](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) o nazwie wwi.
 
 ```sql
 CREATE SCHEMA wwi;
 ```
 
-Aby wyświetlić organizację tabel w magazynie danych SQL, można użyć fakt, dim i int jako prefiksy do nazw tabel. W poniższej tabeli przedstawiono niektóre nazwy schematów i tabel dla programu WideWorldImportersDW.  
+Aby wyświetlić organizację tabel w puli SQL, można użyć fakt, dim i int jako prefiksy do nazw tabel. W poniższej tabeli przedstawiono niektóre nazwy schematów i tabel dla programu WideWorldImportersDW.  
 
-| WideWorldImportersDW tabela  | Typ tabeli | SQL Data Warehouse |
+| WideWorldImportersDW tabela  | Typ tabeli | Pula SQL |
 |:-----|:-----|:------|:-----|
 | Miasto | Wymiar | Wwi. DimCity (DimCity) |
 | Zamówienie | Fact | Wwi. FactOrder (FactOrder) |
 
+## <a name="table-persistence"></a>Trwałość tabeli
 
-## <a name="table-persistence"></a>Trwałość tabeli 
-
-Tabele przechowują dane na stałe w usłudze Azure Storage, tymczasowo w usłudze Azure Storage lub w magazynie danych zewnętrznym do magazynu danych.
+Tabele przechowują dane na stałe w usłudze Azure Storage, tymczasowo w usłudze Azure Storage lub w magazynie danych zewnętrznym do puli SQL.
 
 ### <a name="regular-table"></a>Zwykła tabela
 
-Zwykła tabela przechowuje dane w usłudze Azure Storage jako część magazynu danych. Tabela i dane utrzymują się niezależnie od tego, czy sesja jest otwarta.  W tym przykładzie tworzy zwykłą tabelę z dwiema kolumnami. 
+Zwykła tabela przechowuje dane w usłudze Azure Storage jako część puli SQL. Tabela i dane utrzymują się niezależnie od tego, czy sesja jest otwarta.  Poniższy przykład tworzy zwykłą tabelę z dwiema kolumnami.
 
 ```sql
 CREATE TABLE MyTable (col1 int, col2 int );  
 ```
 
 ### <a name="temporary-table"></a>Tabela tymczasowa
-Tabela tymczasowa istnieje tylko na czas trwania sesji. Można użyć tabeli tymczasowej, aby uniemożliwić innym użytkownikom wyświetlanie tymczasowych wyników, a także zmniejszyć potrzebę oczyszczania.  Tabele tymczasowe wykorzystują magazyn lokalny, aby zapewnić efektywną wydajność.  Aby uzyskać więcej informacji, zobacz [Tabele tymczasowe](sql-data-warehouse-tables-temporary.md).
+
+Tabela tymczasowa istnieje tylko na czas trwania sesji. Można użyć tabeli tymczasowej, aby uniemożliwić innym użytkownikom wyświetlanie tymczasowych wyników, a także zmniejszyć potrzebę oczyszczania.  
+
+Tabele tymczasowe wykorzystują magazyn lokalny, aby zapewnić efektywną wydajność.  Aby uzyskać więcej informacji, zobacz [Tabele tymczasowe](sql-data-warehouse-tables-temporary.md).
 
 ### <a name="external-table"></a>Tabela zewnętrzna
-Tabela zewnętrzna wskazuje dane znajdujące się w obiekcie blob usługi Azure Storage lub sklepie Azure Data Lake Store. W połączeniu z instrukcją CREATE TABLE AS SELECT wybranie z tabeli zewnętrznej powoduje zaimportowanie danych do magazynu danych SQL. Tabele zewnętrzne są zatem przydatne do ładowania danych. Aby zapoznać się z samouczkiem ładowania, zobacz [PolyBase do ładowania danych z magazynu obiektów blob platformy Azure](load-data-from-azure-blob-storage-using-polybase.md).
+
+Tabela zewnętrzna wskazuje dane znajdujące się w obiekcie blob usługi Azure Storage lub sklepie Azure Data Lake Store. W połączeniu z instrukcją CREATE TABLE AS SELECT wybranie z tabeli zewnętrznej powoduje importowanie danych do puli SQL.
+
+W związku z tym tabele zewnętrzne są przydatne do ładowania danych. Aby zapoznać się z samouczkiem ładowania, zobacz [PolyBase do ładowania danych z magazynu obiektów blob platformy Azure](load-data-from-azure-blob-storage-using-polybase.md).
 
 ## <a name="data-types"></a>Typy danych
-Usługa SQL Data Warehouse obsługuje najczęściej używane typy danych. Aby uzyskać listę obsługiwanych typów danych, zobacz [typy danych w odwołaniu DO TWORZENIA TABELI](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes) w instrukcji CREATE TABLE. Aby uzyskać wskazówki dotyczące używania typów danych, zobacz [Typy danych](sql-data-warehouse-tables-data-types.md).
+
+Pula SQL obsługuje najczęściej używane typy danych. Aby uzyskać listę obsługiwanych typów danych, zobacz [typy danych w odwołaniu DO TWORZENIA TABELI](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes) w instrukcji CREATE TABLE. Aby uzyskać wskazówki dotyczące używania typów danych, zobacz [Typy danych](sql-data-warehouse-tables-data-types.md).
 
 ## <a name="distributed-tables"></a>Rozproszone tabele
-Podstawową cechą usługi SQL Data Warehouse jest sposób przechowywania i działania na tabelach w [różnych dystrybucjach.](massively-parallel-processing-mpp-architecture.md#distributions)  Usługa SQL Data Warehouse obsługuje trzy metody dystrybucji danych, okrężne (domyślne), mieszania i replikowane.
+
+Podstawową cechą puli SQL jest sposób, w jaki może przechowywać i działać na tabelach w [różnych dystrybucjach.](massively-parallel-processing-mpp-architecture.md#distributions)  Pula SQL obsługuje trzy metody dystrybucji danych: okrężne (domyślne), mieszanie i replikowane.
 
 ### <a name="hash-distributed-tables"></a>Tabele dystrybuowane przy użyciu skrótu
-Tabela rozproszona mieszania dystrybuuje wiersze na podstawie wartości w kolumnie dystrybucji. Tabela rozproszona mieszania jest przeznaczony do osiągnięcia wysokiej wydajności dla zapytań w dużych tabelach. Istnieje kilka czynników, które należy wziąć pod uwagę przy wyborze kolumny dystrybucji. 
+
+Tabela rozproszona mieszania dystrybuuje wiersze na podstawie wartości w kolumnie dystrybucji. Tabela rozproszona mieszania jest przeznaczony do osiągnięcia wysokiej wydajności dla zapytań w dużych tabelach. Istnieje kilka czynników, które należy wziąć pod uwagę przy wyborze kolumny dystrybucji.
 
 Aby uzyskać więcej informacji, zobacz [Wskazówki dotyczące projektowania tabel rozproszonych](sql-data-warehouse-tables-distribute.md).
 
 ### <a name="replicated-tables"></a>Zreplikowane tabele
-Replikowana tabela ma pełną kopię tabeli dostępnej w każdym węźle obliczeniowym. Kwerendy są uruchamiane szybko w tabelach replikowanych, ponieważ sprzężenia w tabelach replikowanych nie wymagają przenoszenia danych. Replikacja wymaga dodatkowego magazynu, choć i nie jest praktyczne dla dużych tabel. 
+
+Replikowana tabela ma pełną kopię tabeli dostępnej w każdym węźle obliczeniowym. Kwerendy są uruchamiane szybko w tabelach replikowanych, ponieważ sprzężenia w tabelach replikowanych nie wymagają przenoszenia danych. Replikacja wymaga dodatkowego miejsca do magazynowania i nie jest praktyczna w przypadku dużych tabel.
 
 Aby uzyskać więcej informacji, zobacz [Wskazówki dotyczące projektowania tabel replikowanych](design-guidance-for-replicated-tables.md).
 
 ### <a name="round-robin-tables"></a>Stoły okrężne
-Tabela okrężna rozmieszcza wiersze tabeli równomiernie we wszystkich dystrybucjach. Wiersze są rozdzielane losowo. Ładowanie danych do tabeli okrężne jest szybkie.  Jednak kwerendy mogą wymagać więcej przenoszenia danych niż inne metody dystrybucji. 
+
+Tabela okrężna rozmieszcza wiersze tabeli równomiernie we wszystkich dystrybucjach. Wiersze są rozdzielane losowo. Ładowanie danych do tabeli okrężne jest szybkie.  Należy pamiętać, że kwerendy mogą wymagać więcej przenoszenia danych niż inne metody dystrybucji.
 
 Aby uzyskać więcej informacji, zobacz [Wskazówki dotyczące projektowania tabel rozproszonych](sql-data-warehouse-tables-distribute.md).
 
 ### <a name="common-distribution-methods-for-tables"></a>Typowe metody dystrybucji dla tabel
-Kategoria tabeli często określa, którą opcję wybrać do dystrybucji tabeli. 
+
+Kategoria tabeli często określa, którą opcję wybrać do dystrybucji tabeli.
 
 | Kategoria tabeli | Zalecana opcja dystrybucji |
 |:---------------|:--------------------|
@@ -96,61 +110,77 @@ Kategoria tabeli często określa, którą opcję wybrać do dystrybucji tabeli.
 | Przygotowanie        | Użyj okrężnego dla tabeli przemieszczania. Obciążenie ctas jest szybkie. Gdy dane są w tabeli przemieszczania, należy użyć INSERT... WYBIERZ, aby przenieść dane do tabel produkcyjnych. |
 
 ## <a name="table-partitions"></a>Partycje tabeli
-Tabela podzielona na partycje przechowuje i wykonuje operacje w wierszach tabeli zgodnie z zakresami danych. Na przykład tabela może być podzielony na partycje według dnia, miesiąca lub roku. Można zwiększyć wydajność kwerendy poprzez eliminację partycji, co ogranicza skanowanie kwerendy do danych w ramach partycji. Można również zachować dane za pomocą przełączania partycji. Ponieważ dane w magazynie danych SQL jest już rozmieszczona, zbyt wiele partycji może spowolnić wydajność kwerendy. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące partycjonowania](sql-data-warehouse-tables-partition.md).  Podczas przełączania partycji do partycji tabeli, które nie są puste, należy rozważyć użycie opcji TRUNCATE_TARGET w instrukcji [TABELA ALTER,](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) jeśli istniejące dane mają być obcięty. Poniższy kod przełącza się w przekształconych danych dziennych do SalesFact zastąpienie istniejących danych. 
+
+Tabela podzielona na partycje przechowuje i wykonuje operacje w wierszach tabeli zgodnie z zakresami danych. Na przykład tabela może być podzielony na partycje według dnia, miesiąca lub roku. Można zwiększyć wydajność kwerendy poprzez eliminację partycji, co ogranicza skanowanie kwerendy do danych w ramach partycji. Można również zachować dane za pomocą przełączania partycji. Ponieważ dane w magazynie danych SQL jest już rozmieszczona, zbyt wiele partycji może spowolnić wydajność kwerendy. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące partycjonowania](sql-data-warehouse-tables-partition.md).  Podczas przełączania partycji do partycji tabeli, które nie są puste, należy rozważyć użycie opcji TRUNCATE_TARGET w instrukcji [TABELA ALTER,](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) jeśli istniejące dane mają być obcięty. Poniższy kod przełącza się w przekształconych danych dziennych do SalesFact zastąpienie istniejących danych.
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
 ```
 
 ## <a name="columnstore-indexes"></a>Indeksy magazynu kolumn
-Domyślnie magazyn danych SQL przechowuje tabelę jako indeks klastrowanego magazynu kolumn. Ta forma magazynu danych osiąga wysoką kompresję danych i wydajność zapytań w dużych tabelach.  Indeks klastrowanego magazynu kolumn jest zwykle najlepszym wyborem, ale w niektórych przypadkach indeks klastrowany lub sterty jest odpowiednią strukturą magazynu.  Tabela sterty może być szczególnie przydatna do ładowania danych przejściowych, takich jak tabela przejściowa, która jest przekształcana w tabelę końcową.
+
+Domyślnie pula SQL przechowuje tabelę jako indeks klastrowanego magazynu kolumn. Ta forma magazynu danych osiąga wysoką kompresję danych i wydajność zapytań w dużych tabelach.  
+
+Indeks klastrowanego magazynu kolumn jest zwykle najlepszym wyborem, ale w niektórych przypadkach indeks klastrowany lub sterty jest odpowiednią strukturą magazynu.  
+
+> [!TIP]
+> Tabela sterty może być szczególnie przydatna do ładowania danych przejściowych, takich jak tabela przejściowa, która jest przekształcana w tabelę końcową.
 
 Aby uzyskać listę funkcji magazynu kolumn, zobacz [Co nowego w indeksach magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Aby poprawić wydajność indeksu magazynu kolumn, zobacz [Maksymalizacja jakości grup wierszy dla indeksów magazynu kolumn](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statystyki
-Optymalizator kwerendy używa statystyk na poziomie kolumny, gdy tworzy plan wykonywania kwerendy. Aby zwiększyć wydajność kwerendy, ważne jest, aby mieć statystyki dla poszczególnych kolumn, zwłaszcza kolumn używanych w sprzężeniach kwerendy. [Tworzenie statystyk](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) odbywa się automatycznie.  Jednak aktualizowanie statystyk nie odbywa się automatycznie. Aktualizuj statystyki po dodaniu lub zmianie znacznej liczby wierszy. Na przykład zaktualizować statystyki po załadowaniu. Aby uzyskać więcej informacji, zobacz [Wskazówki dotyczące statystyk](sql-data-warehouse-tables-statistics.md).
+
+Optymalizator kwerendy używa statystyk na poziomie kolumny, gdy tworzy plan wykonywania kwerendy.
+
+Aby zwiększyć wydajność kwerendy, ważne jest, aby mieć statystyki dla poszczególnych kolumn, zwłaszcza kolumn używanych w sprzężeniach kwerendy. [Tworzenie statystyk](sql-data-warehouse-tables-statistics.md#automatic-creation-of-statistic) odbywa się automatycznie.  
+
+Aktualizowanie statystyk nie odbywa się automatycznie. Aktualizuj statystyki po dodaniu lub zmianie znacznej liczby wierszy. Na przykład zaktualizować statystyki po załadowaniu. Aby uzyskać więcej informacji, zobacz [Wskazówki dotyczące statystyk](sql-data-warehouse-tables-statistics.md).
 
 ## <a name="primary-key-and-unique-key"></a>Klucz podstawowy i klucz unikatowy
-Klucz podstawowy jest obsługiwany tylko wtedy, gdy są używane nieklastrowane i niewymnaczone.  Ograniczenie UNIQUE jest obsługiwane tylko z nieegzekwowane jest używany.  Sprawdź [ograniczenia tabeli magazynu danych SQL](sql-data-warehouse-table-constraints.md).
+
+Klucz podstawowy jest obsługiwany tylko wtedy, gdy są używane nieklastrowane i niewymnaczone.  Ograniczenie UNIQUE jest obsługiwane tylko z nieegzekwowane jest używany.  Sprawdź [ograniczenia tabeli puli SQL](sql-data-warehouse-table-constraints.md).
 
 ## <a name="commands-for-creating-tables"></a>Polecenia do tworzenia tabel
+
 Tabelę można utworzyć jako nową pustą tabelę. Można również utworzyć i wypełnić tabelę z wynikami instrukcji select. Poniżej przedstawiono polecenia T-SQL służące do tworzenia tabeli.
 
 | Instrukcja T-SQL | Opis |
 |:----------------|:------------|
 | [UTWÓRZ TABELĘ](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | Tworzy pustą tabelę, definiując wszystkie kolumny i opcje tabeli. |
-| [TWORZENIE TABELI ZEWNĘTRZNEJ](/sql/t-sql/statements/create-external-table-transact-sql) | Tworzy tabelę zewnętrzną. Definicja tabeli jest przechowywana w magazynie danych SQL. Dane tabeli są przechowywane w magazynie obiektów Blob platformy Azure lub w magazynie usługi Azure Data Lake Store. |
+| [TWORZENIE TABELI ZEWNĘTRZNEJ](/sql/t-sql/statements/create-external-table-transact-sql) | Tworzy tabelę zewnętrzną. Definicja tabeli jest przechowywana w puli SQL. Dane tabeli są przechowywane w magazynie obiektów Blob platformy Azure lub w magazynie usługi Azure Data Lake Store. |
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) | Wypełnia nową tabelę wynikami instrukcji select. Kolumny tabeli i typy danych są oparte na wynikach instrukcji select. Aby zaimportować dane, ta instrukcja można wybrać z tabeli zewnętrznej. |
 | [TWORZENIE TABELI ZEWNĘTRZNEJ JAKO WYBIERZ](/sql/t-sql/statements/create-external-table-as-select-transact-sql) | Tworzy nową tabelę zewnętrzną, eksportując wyniki instrukcji select do lokalizacji zewnętrznej.  Lokalizacja jest magazyn obiektów Blob platformy Azure lub usługi Azure Data Lake Store. |
 
-## <a name="aligning-source-data-with-the-data-warehouse"></a>Wyrównywanie danych źródłowych do magazynu danych
+## <a name="aligning-source-data-with-the-sql-pool"></a>Wyrównywanie danych źródłowych do puli SQL
 
-Tabele magazynu danych są wypełniane przez ładowanie danych z innego źródła danych. Aby wykonać pomyślne obciążenie, liczba i typy danych kolumn w danych źródłowych muszą być zgodne z definicją tabeli w magazynie danych. Wprowadzenie danych do wyrównania może być najtrudniejszą częścią projektowania tabel. 
+Tabele puli SQL są wypełniane przez ładowanie danych z innego źródła danych. Aby wykonać pomyślne obciążenie, liczba i typy danych kolumn w danych źródłowych muszą być zgodne z definicją tabeli w puli SQL. Wprowadzenie danych do wyrównania może być najtrudniejszą częścią projektowania tabel.
 
-Jeśli dane pochodzą z wielu magazynów danych, można przenieść dane do magazynu danych i przechowywać je w tabeli integracji. Gdy dane są w tabeli integracji, można użyć mocy usługi SQL Data Warehouse do wykonywania operacji transformacji. Po przygotowaniu danych można je wstawić do tabel produkcyjnych.
+Jeśli dane pochodzą z wielu magazynów danych, należy załadować dane do puli SQL i przechowywać je w tabeli integracji. Gdy dane znajdują się w tabeli integracji, można użyć mocy puli SQL do wykonywania operacji transformacji. Po przygotowaniu danych można je wstawić do tabel produkcyjnych.
 
 ## <a name="unsupported-table-features"></a>Nieobsługiwały funkcje tabeli
-Usługa SQL Data Warehouse obsługuje wiele, ale nie wszystkie, funkcji tabeli oferowanych przez inne bazy danych.  Na poniższej liście przedstawiono niektóre funkcje tabeli, które nie są obsługiwane w programie SQL Data Warehouse.
 
-- Klucz obcy, Sprawdź [ograniczenia tabeli](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
-- [Kolumny obliczane](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql)
-- [Widoki indeksowane](/sql/relational-databases/views/create-indexed-views)
-- [Sequence](/sql/t-sql/statements/create-sequence-transact-sql)
-- [Rozrzedzone kolumny](/sql/relational-databases/tables/use-sparse-columns)
+Pula SQL obsługuje wiele, ale nie wszystkie, funkcji tabeli oferowanych przez inne bazy danych.  Na poniższej liście przedstawiono niektóre funkcje tabeli, które nie są obsługiwane w puli SQL:
+
+- Klucz obcy, Sprawdź [ograniczenia tabeli](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Kolumny obliczane](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Widoki indeksowane](/sql/relational-databases/views/create-indexed-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Sequence](/sql/t-sql/statements/create-sequence-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Rozrzedzone kolumny](/sql/relational-databases/tables/use-sparse-columns?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - Klucze zastępcze. Zaimplementuj za pomocą [pliku Identity](sql-data-warehouse-tables-identity.md).
-- [Synonimy](/sql/t-sql/statements/create-synonym-transact-sql)
-- [Wyzwalacze](/sql/t-sql/statements/create-trigger-transact-sql)
-- [Unikalne indeksy](/sql/t-sql/statements/create-index-transact-sql)
-- [Typy zdefiniowane przez użytkownika](/sql/relational-databases/native-client/features/using-user-defined-types)
+- [Synonimy](/sql/t-sql/statements/create-synonym-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Wyzwalacze](/sql/t-sql/statements/create-trigger-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Unikalne indeksy](/sql/t-sql/statements/create-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Typy zdefiniowane przez użytkownika](/sql/relational-databases/native-client/features/using-user-defined-types?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="table-size-queries"></a>Kwerendy rozmiaru tabeli
+
 Jednym z prostych sposobów identyfikowania miejsca i wierszy zużywanych przez tabelę w każdej z 60 dystrybucji, jest użycie [PDW_SHOWSPACEUSED DBCC](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql).
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-Jednak za pomocą poleceń DBCC może być dość ograniczające.  Dynamiczne widoki zarządzania (DMV) pokazują więcej szczegółów niż polecenia DBCC. Zacznij od utworzenia tego widoku.
+Jednak za pomocą poleceń DBCC może być dość ograniczające.  Dynamiczne widoki zarządzania (DMV) pokazują więcej szczegółów niż polecenia DBCC. Zacznij od utworzenia tego widoku:
 
 ```sql
 CREATE VIEW dbo.vTableSizes
@@ -158,7 +188,7 @@ AS
 WITH base
 AS
 (
-SELECT 
+SELECT
  GETDATE()                                                             AS  [execution_time]
 , DB_NAME()                                                            AS  [database_name]
 , s.name                                                               AS  [schema_name]
@@ -179,15 +209,15 @@ SELECT
 , nps.[partition_number]                                               AS  [partition_nmbr]
 , nps.[reserved_page_count]                                            AS  [reserved_space_page_count]
 , nps.[reserved_page_count] - nps.[used_page_count]                    AS  [unused_space_page_count]
-, nps.[in_row_data_page_count] 
-    + nps.[row_overflow_used_page_count] 
+, nps.[in_row_data_page_count]
+    + nps.[row_overflow_used_page_count]
     + nps.[lob_used_page_count]                                        AS  [data_space_page_count]
-, nps.[reserved_page_count] 
- - (nps.[reserved_page_count] - nps.[used_page_count]) 
- - ([in_row_data_page_count] 
+, nps.[reserved_page_count]
+ - (nps.[reserved_page_count] - nps.[used_page_count])
+ - ([in_row_data_page_count]
          + [row_overflow_used_page_count]+[lob_used_page_count])       AS  [index_space_page_count]
 , nps.[row_count]                                                      AS  [row_count]
-from 
+from
     sys.schemas s
 INNER JOIN sys.tables t
     ON s.[schema_id] = t.[schema_id]
@@ -260,17 +290,17 @@ SELECT
 ,  ([index_space_page_count]  * 8.0)/1000000000                        AS [index_space_TB]
 FROM base
 )
-SELECT * 
+SELECT *
 FROM size
 ;
 ```
 
 ### <a name="table-space-summary"></a>Podsumowanie miejsca w tabeli
 
-Ta kwerenda zwraca wiersze i spację według tabeli.  Pozwala zobaczyć, które tabele są największymi tabelami i czy są one okrężne, replikowane lub rozproszone skrótem.  W przypadku tabel rozproszonych mieszania kwerenda pokazuje kolumnę dystrybucyjną.  
+Ta kwerenda zwraca wiersze i spację według tabeli.  Pozwala zobaczyć, które tabele są największe tabele i czy są one okrężne, replikowane lub mieszania -distributed.  W przypadku tabel rozproszonych mieszania kwerenda pokazuje kolumnę dystrybucyjną.  
 
 ```sql
-SELECT 
+SELECT
      database_name
 ,    schema_name
 ,    table_name
@@ -283,9 +313,9 @@ SELECT
 ,    SUM(data_space_GB)             as table_data_space_GB
 ,    SUM(index_space_GB)            as table_index_space_GB
 ,    SUM(unused_space_GB)           as table_unused_space_GB
-FROM 
+FROM
     dbo.vTableSizes
-GROUP BY 
+GROUP BY
      database_name
 ,    schema_name
 ,    table_name
@@ -300,7 +330,7 @@ ORDER BY
 ### <a name="table-space-by-distribution-type"></a>Przestrzeń tabeli według typu dystrybucji
 
 ```sql
-SELECT 
+SELECT
      distribution_policy_name
 ,    SUM(row_count)                as table_type_row_count
 ,    SUM(reserved_space_GB)        as table_type_reserved_space_GB
@@ -315,7 +345,7 @@ GROUP BY distribution_policy_name
 ### <a name="table-space-by-index-type"></a>Spacja tabeli według typu indeksu
 
 ```sql
-SELECT 
+SELECT
      index_type_desc
 ,    SUM(row_count)                as table_type_row_count
 ,    SUM(reserved_space_GB)        as table_type_reserved_space_GB
@@ -330,7 +360,7 @@ GROUP BY index_type_desc
 ### <a name="distribution-space-summary"></a>Podsumowanie przestrzeni dystrybucyjnej
 
 ```sql
-SELECT 
+SELECT
     distribution_id
 ,    SUM(row_count)                as total_node_distribution_row_count
 ,    SUM(reserved_space_MB)        as total_node_distribution_reserved_space_MB
@@ -344,4 +374,5 @@ ORDER BY    distribution_id
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Po utworzeniu tabel dla magazynu danych następnym krokiem jest załadowanie danych do tabeli.  Aby zapoznać się z samouczkiem ładowania, zobacz [Ładowanie danych do magazynu danych SQL](load-data-wideworldimportersdw.md).
+
+Po utworzeniu tabel dla puli SQL następnym krokiem jest załadowanie danych do tabeli.  Aby zapoznać się z samouczkiem ładowania, zobacz [Ładowanie danych do puli SQL](load-data-wideworldimportersdw.md).

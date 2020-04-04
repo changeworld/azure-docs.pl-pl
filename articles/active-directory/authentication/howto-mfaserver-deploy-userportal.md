@@ -4,19 +4,19 @@ description: Wprowadzenie do usługi Azure MFA i portalu użytkowników.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e68c2a75254d1b387c45e31c5830849c6127756
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1869fac973cd4cd68e1e91be89c25fdf1427f6a5
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051196"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653210"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Portal użytkowników serwera usługi Azure Multi-Factor Authentication
 
@@ -162,9 +162,9 @@ Jeśli wybierze on metodę weryfikacji Połączenie głosowe lub jeśli usługa 
 
 ![Rejestrowanie podstawowych i zapasowych numerów telefonów](./media/howto-mfaserver-deploy-userportal/backupphone.png)
 
-Jeśli podczas uwierzytelniania wymagane jest wprowadzenie przez użytkownika numeru PIN, na stronie wyświetla się także monit o utworzenie numeru PIN. Po wprowadzeniu swoich numerów telefonu i kodu PIN (jeśli dotyczy), użytkownik kliknie przycisk **Zadzwoń do mnie teraz, aby uwierzytelnić.** Usługa Azure Multi-Factor Authentication przeprowadza weryfikację w drodze połączenia telefonicznego z podstawowym numerem telefonu użytkownika. Użytkownik musi odebrać połączenie i wprowadzić numer PIN (jeśli ma zastosowanie), a następnie nacisnąć klawisz #, aby przejść do następnego kroku procesu samodzielnej rejestracji.
+Jeśli podczas uwierzytelniania wymagane jest wprowadzenie przez użytkownika numeru PIN, na stronie wyświetla się także monit o utworzenie numeru PIN. Po wprowadzeniu swoich numerów telefonu i kodu PIN (jeśli dotyczy), użytkownik kliknie przycisk **Zadzwoń do mnie teraz, aby uwierzytelnić.** Uwierzytelnianie wieloskładnikowe platformy Azure przeprowadza weryfikację połączenia telefonicznego na podstawowy numer telefonu użytkownika. Użytkownik musi odebrać połączenie i wprowadzić numer PIN (jeśli ma zastosowanie), a następnie nacisnąć klawisz #, aby przejść do następnego kroku procesu samodzielnej rejestracji.
 
-Jeśli użytkownik wybierze metodę weryfikacji Wiadomość SMS lub jeśli wstępna konfiguracja zakłada użycie tej metody, na stronie jest wyświetlany monit o wprowadzenie numeru telefonu komórkowego. Jeśli podczas uwierzytelniania wymagane jest wprowadzenie przez użytkownika numeru PIN, na stronie wyświetla się także monit o wprowadzenie numeru PIN.  Po wprowadzeniu numeru telefonu i kodu PIN (jeśli dotyczy), użytkownik kliknie przycisk **Wyślij tekst teraz, aby uwierzytelnić.** Usługa Azure Multi-Factor Authentication przeprowadza weryfikację SMS z użyciem telefonu komórkowego użytkownika. Użytkownik otrzymuje wiadomość SMS z jednorazowym kodem dostępu, a następnie w odpowiedzi na wiadomość podaje ten kod oraz numer PIN (jeśli dotyczy).
+Jeśli użytkownik wybierze metodę weryfikacji Wiadomość SMS lub jeśli wstępna konfiguracja zakłada użycie tej metody, na stronie jest wyświetlany monit o wprowadzenie numeru telefonu komórkowego. Jeśli podczas uwierzytelniania wymagane jest wprowadzenie przez użytkownika numeru PIN, na stronie wyświetla się także monit o wprowadzenie numeru PIN.  Po wprowadzeniu numeru telefonu i kodu PIN (jeśli dotyczy), użytkownik kliknie przycisk **Wyślij tekst teraz, aby uwierzytelnić.** Uwierzytelnianie wieloskładnikowe platformy Azure przeprowadza weryfikację wiadomości SMS na telefon komórkowy użytkownika. Użytkownik otrzymuje wiadomość SMS z jednorazowym kodem dostępu, a następnie w odpowiedzi na wiadomość podaje ten kod oraz numer PIN (jeśli dotyczy).
 
 ![Weryfikacja portalu użytkownika za pomocą wiadomości SMS](./media/howto-mfaserver-deploy-userportal/text.png)
 
@@ -175,7 +175,7 @@ Jeśli użytkownik wybierze metodę weryfikacji z użyciem aplikacji mobilnej, n
 
 Na stronie zostanie wyświetlony kod aktywacji oraz adres URL wraz z obrazem kodu kreskowego. Jeśli podczas uwierzytelniania wymagane jest wprowadzenie przez użytkownika numeru PIN, na stronie wyświetla się dodatkowo monit o wprowadzenie numeru PIN. Użytkownik wprowadza kod aktywacji i adres URL w aplikacji Microsoft Authenticator lub korzysta ze skanera kodów kreskowych w celu zeskanowania obrazu kodu kreskowego, a następnie klika przycisk Aktywuj.
 
-Po zakończeniu aktywacji użytkownik klika przycisk **Uwierzytelnij mnie teraz**. Usługa Azure Multi-Factor Authentication przeprowadza weryfikację z użyciem aplikacji mobilnej używanej przez użytkownika. Użytkownik musi wprowadzić numer PIN (jeśli ma zastosowanie), a następnie nacisnąć przycisk Uwierzytelnij w aplikacji mobilnej, aby przejść do następnego kroku procesu samodzielnej rejestracji.
+Po zakończeniu aktywacji użytkownik klika przycisk **Uwierzytelnij mnie teraz**. Uwierzytelnianie wieloskładnikowe platformy Azure przeprowadza weryfikację w aplikacji mobilnej użytkownika. Użytkownik musi wprowadzić numer PIN (jeśli ma zastosowanie), a następnie nacisnąć przycisk Uwierzytelnij w aplikacji mobilnej, aby przejść do następnego kroku procesu samodzielnej rejestracji.
 
 Jeśli administrator skonfigurował serwer usługi Azure Multi-Factor Authentication pod kątem gromadzenia pytań zabezpieczających oraz odpowiedzi na nie, użytkownik zostaje następnie przeniesiony na stronę pytań zabezpieczających. Użytkownik musi wybrać cztery pytania zabezpieczające i podać odpowiedzi na nie.
 

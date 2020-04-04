@@ -9,15 +9,15 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: c28b63749cfdbcd16b94cbd3ca7dd4023f46a351
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1703853f42b52dccc80fdfadaa09b67e18a19db8
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78897725"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632893"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Typowe problemy z weryfikacją dwuskładnikową i kontem służbowym
 
@@ -99,6 +99,8 @@ Hasła aplikacji zastępują zwykłe hasło dla starszych aplikacji klasycznych,
 ## <a name="i-cant-turn-two-factor-verification-off"></a>Nie mogę wyłączyć weryfikacji dwuskładnikowej
 
 Jeśli korzystasz z weryfikacji dwuskładnikowej na koncie służbowym (na przykład), najprawdopodobniej oznacza to, że twoja organizacja zdecydowała, alain@contoso.comże musisz użyć tej dodatkowej funkcji zabezpieczeń. Ponieważ organizacja zdecydowała, że należy użyć tej funkcji, nie ma możliwości jej indywidualnego wyłączenia. Jeśli jednak korzystasz z weryfikacji dwuskładnikowej alain@outlook.comza pomocą konta osobistego, na przykład, masz możliwość włączania i wyłączania tej funkcji. Aby uzyskać instrukcje dotyczące kontrolowania weryfikacji dwuskładnikowej dla kont osobistych, zobacz [Włączanie lub wyłączanie weryfikacji dwuskładnikowej dla konta Microsoft.](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)
+
+Jeśli nie można wyłączyć weryfikacji dwuskładnikowej, może to być również spowodowane domyślnymi ustawieniami zabezpieczeń, które zostały zastosowane na poziomie organizacji. Aby uzyskać więcej informacji na temat wartości domyślnych zabezpieczeń, zobacz [Co to są defulta zabezpieczeń?](../fundamentals/concept-fundamentals-security-defaults.md)
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Nie znalazłem odpowiedzi na mój problem
 

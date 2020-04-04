@@ -3,12 +3,12 @@ title: Przenoszenie zasobów do nowej subskrypcji lub grupy zasobów
 description: Usługa Azure Resource Manager umożliwia przenoszenie zasobów do nowej grupy zasobów lub subskrypcji.
 ms.topic: conceptual
 ms.date: 03/02/2020
-ms.openlocfilehash: 40432c55a7f7e289d2e5cbc8afe94847074e4ca8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248855"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631505"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -107,7 +107,7 @@ W celach ilustracyjnych mamy tylko jeden zasób zależny.
 
 * Krok 1: Jeśli zasoby zależne są rozdzielane między różne grupy zasobów, najpierw przenieś je do jednej grupy zasobów.
 * Krok 2: Przenieś zasobów i zasobów zależnych razem z subskrypcji źródłowej do subskrypcji docelowej.
-* Krok 3: Opcjonalnie redystrybuuj zasoby zależne do różnych grup zasobów w ramach subskrypcji docelowej. 
+* Krok 3: Opcjonalnie redystrybuuj zasoby zależne do różnych grup zasobów w ramach subskrypcji docelowej.
 
 ## <a name="validate-move"></a>Sprawdzanie poprawności przenoszenia
 
@@ -260,8 +260,9 @@ Podczas przenoszenia zasobu jego zasoby zależne muszą istnieć w docelowej gru
 Na przykład przeniesienie maszyny wirtualnej może wymagać przeniesienia siedmiu typów zasobów z trzema różnymi dostawcami zasobów. Te dostawców zasobów i typy są:
 
 * Microsoft.Compute
-   * wirtualnematyny
-   * Dysków
+
+  * wirtualnematyny
+  * Dysków
 * Microsoft.Network
   * siećPowierzchnie
   * publicYSadresy

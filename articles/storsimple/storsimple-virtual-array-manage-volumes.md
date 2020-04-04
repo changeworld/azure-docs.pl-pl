@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: a233a9deb58a7c1abc87a622a4f1f2581ee2e477
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2dbbe6bcd4957a108cc3eae4d41816b130cf8f07
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62125801"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633863"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Use StorSimple Device Manager service to manage volumes on the StorSimple Virtual Array (Zarządzanie wirtualną tablicą woluminów za pomocą usługi StorSimple Device Manager)
 
@@ -44,7 +44,7 @@ Zobacz poniższą tabelę, aby uzyskać maksymalną pojemność aprowizacji dla 
 | Minimalny rozmiar woluminu warstwowego                            | 500 GB        |
 | Maksymalny rozmiar woluminu warstwowego                            | 5 TB          |
 | Minimalny rozmiar woluminu przypiętego lokalnie                    | 50 GB         |
-| Maksymalny rozmiar woluminu przypiętego lokalnie                    | 500 GB        |
+| Maksymalny rozmiar woluminu przypiętego lokalnie                    | 200 GB        |
 
 ## <a name="the-volumes-blade"></a>Ostrze Woluminy
 Menu **Woluminy** w bloku podsumowania usługi StorSimple wyświetla listę woluminów magazynu w danej macierzy StorSimple i umożliwia zarządzanie nimi.

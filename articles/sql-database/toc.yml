@@ -780,6 +780,8 @@
           href: sql-database-managed-instance-threat-detection.md
         - name: Łączenie aplikacji
           href: sql-database-managed-instance-connect-app.md
+        - name: Tworzenie alertów
+          href: sql-database-managed-instance-alerts.md
     - name: Samples
       items:
         - name: Interfejs wiersza polecenia platformy Azure

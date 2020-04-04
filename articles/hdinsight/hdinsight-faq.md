@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a37e1b9bc4a0b953dc727dbab2813dd938ed576
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720354"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652214"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Usługa Azure HDInsight: często zadawane pytania
 
@@ -135,7 +135,7 @@ Tak, można migrować magazyn metepułk z usługi ESP do klastra innych niż ESP
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>Jak oszacować rozmiar bazy danych sieci metestore hive?
 
-A Hive metastore służy do przechowywania metadanych dla źródeł danych, które są używane przez serwer hive. Wymagania dotyczące rozmiaru zależą częściowo od liczby i złożoności źródeł danych hive i nie można ich oszacować z góry. Jak opisano w [uli metastore najlepszych praktyk,](hdinsight-use-external-metadata-stores.md#hive-metastore-best-practices)można rozpocząć od warstwy S2, która zapewnia 50 DTU i 250 GB miejsca do magazynowania, a jeśli widzisz wąskie gardło, można skalować w górę bazy danych.
+A Hive metastore służy do przechowywania metadanych dla źródeł danych, które są używane przez serwer hive. Wymagania dotyczące rozmiaru zależą częściowo od liczby i złożoności źródeł danych hive i nie można ich oszacować z góry. Zgodnie z [wytycznymi dotyczącymi magazynu metastore hive](hdinsight-use-external-metadata-stores.md#hive-metastore-guidelines)można rozpocząć od warstwy S2, która zapewnia 50 identyfikatorów DTU i 250 GB pamięci masowej, a jeśli zobaczysz wąskie gardło, możesz skalować bazę danych.
 
 ### <a name="do-you-support-any-other-database-other-than-azure-sql-database-as-an-external-metastore"></a>Czy obsługujesz inną bazę danych inną niż Azure SQL Database jako zewnętrzny magazyn metastore?
 

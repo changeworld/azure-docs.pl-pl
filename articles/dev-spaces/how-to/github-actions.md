@@ -1,17 +1,17 @@
 ---
 title: Akcje Usługi GitHub & usłudze Azure Kubernetes (wersja zapoznawcza)
 services: azure-dev-spaces
-ms.date: 02/04/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 description: Przeglądanie i testowanie zmian z żądania ściągania bezpośrednio w usłudze Azure Kubernetes przy użyciu akcji Usługi GitHub i usługi Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontenery, Akcje GitHub, Helm, siatka usługi, routing siatki usług, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252379"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637943"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akcje Usługi GitHub & usłudze Azure Kubernetes (wersja zapoznawcza)
 
@@ -101,6 +101,11 @@ Przejdź do rozwidlonego repozytorium i kliknij pozycję *Ustawienia*. Kliknij n
 > Wszystkie te wpisy są używane przez akcję GitHub i są konfigurowane w [pliku .github/workflows/bikes.yml][github-action-yaml].
 
 Opcjonalnie, jeśli chcesz zaktualizować przestrzeń główną po scaleniu funkcji PR, dodaj *GATEWAY_HOST* klucz tajny, który ma postać *<MASTER_SPACE>.gateway.<HOST_SUFFIX>*, który w tym przykładzie jest *dev.gateway.fedcab0987.eus.azds.io*. Po scaleniu zmian z gałęzią główną w rozwidleniu zostanie uruchomione kolejna akcja, aby odbudować i uruchomić całą aplikację w głównym miejscu deweloperskim. W tym przykładzie przestrzeń główna jest *dev*. Ta akcja jest skonfigurowana w [pliku .github/workflows/bikesharing.yml][github-action-bikesharing-yaml].
+
+Ponadto jeśli chcesz, aby zmiany w komputerze-specielnym były uruchamiane w przestrzeni wnuków, zaktualizuj *wpisy* tajne MASTER_SPACE i *HOST.* Na przykład jeśli aplikacja jest uruchomiona w *dev* z deweloperem przestrzeni *podrzędnej/azureuser1*, aby mieć pr uruchomić w przestrzeni podrzędnej *dev/azureuser1:*
+
+* Zaktualizuj *MASTER_SPACE* do przestrzeni podrzędnej, która ma być przestrzenią nadrzędną, w tym *przykładzie azureuser1*.
+* W *HOST* tym *przykładzie*dev.bikesharingweb.fedcab0987.eus.azds.io dev.bikesharingweb.fedcab0987.eus.azds.io>HOST_SUFFIX>HOST_SUFFIX<GRANDPARENT_SPACE *APP_NAME>.<> <<*.
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Tworzenie nowej gałęzi dla zmian kodu
 

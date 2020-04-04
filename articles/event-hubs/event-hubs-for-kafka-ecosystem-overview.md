@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 6dcbf0ad0f6678d892c5c02446cac09b4325384c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d3525bc7a25550a79ceeb008e3c69c77a56aa0a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283654"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632867"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Korzystanie z usługi Azure Event Hubs z aplikacji Apache Kafka
 Usługa Event Hubs udostępnia punkt końcowy platformy Kafka, który może być używany przez istniejące aplikacje oparte na platformie Kafka jako alternatywa dla uruchamiania własnego klastra platformy Kafka. Usługa Event Hubs obsługuje [protokół Apache Kafka 1.0 lub nowszych](https://kafka.apache.org/documentation/)oraz współpracuje z istniejącymi aplikacjami platformy Kafka, w tym z programem MirrorMaker.  
@@ -94,16 +94,6 @@ Oto lista funkcji platformy Kafka, które nie są jeszcze obsługiwane:
 *   Strumienie kafka
 
 ## <a name="next-steps"></a>Następne kroki
-
-Ten artykuł zawiera wprowadzenie do centrów zdarzeń dla platformy Kafka. Aby dowiedzieć się więcej, zobacz następujące łącza:
-
-- [Jak utworzyć centrum zdarzeń](event-hubs-create.md)
-- [Przesyłanie strumieniowe do usługi Event Hubs z aplikacji platformy Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Dublowanie brokera platformy Kafka w centrum zdarzeń](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Łączenie platformy Apache Spark z centrum zdarzeń](event-hubs-kafka-spark-tutorial.md)
-- [Łączenie platformy Apache Flink z centrum zdarzeń](event-hubs-kafka-flink-tutorial.md)
-- [Integracja platformy Kafka Connect z centrum zdarzeń](event-hubs-kafka-connect-tutorial.md)
-- [Łączenie strumieni Akka z centrum zdarzeń](event-hubs-kafka-akka-streams-tutorial.md)
-- [Eksplorowanie przykładów w witrynie GitHub](https://github.com/Azure/azure-event-hubs-for-kafka)
+Ten artykuł zawiera wprowadzenie do centrów zdarzeń dla platformy Kafka. Aby dowiedzieć się więcej, zobacz [Apache Kafka developer guide for Azure Event Hubs](apache-kafka-developer-guide.md).
 
 

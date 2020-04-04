@@ -4,17 +4,18 @@ description: Celem tego dokumentu jest pomoc użytkownikowi w weryfikacji przep�
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
+manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: a88e339e82484c2ec1cd2276f6218fa718b990f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75860490"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631768"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Jak zweryfikować przepływność sieci VPN do sieci wirtualnej
 
@@ -242,7 +243,7 @@ Wspomniano o podsieciach zakresów lokalnych, do których platforma Azure ma dot
 
 * **Brama oparta na zasadach:** Sieci VPN oparte na zasadach szyfrują i kierują pakiety za pośrednictwem tuneli IPsec na podstawie kombinacji prefiksów adresów między siecią lokalną a siecią wirtualną platformy Azure. Zasady (lub selektor ruchu) są zazwyczaj zdefiniowane jako lista dostępu w konfiguracji VPN.
 
-* **Użyj PołączeniaPolcyBasedTrafficSelector:** ("UsePolicyBasedTrafficSelectors", aby $True na połączenie skonfiguruje bramę sieci VPN platformy Azure, aby łączyć się z zaporą sieci VPN opartą na zasadach w środowisku lokalnym. Jeśli włączysz policybasedtrafficSelectors, musisz upewnić się, że urządzenie SIECI VPN ma pasujące selektory ruchu zdefiniowane ze wszystkimi kombinacjami prefiksów sieci lokalnej (bramy sieci lokalnej) do i z prefiksów sieci wirtualnej platformy Azure, zamiast w dowolnym momencie.
+* **Użyj PołączeniaPolcyBasedTrafficSelector:** ("UsePolicyBasedTrafficSelectors", aby $True na połączenie skonfiguruje bramę sieci VPN platformy Azure, aby łączyć się z zaporą sieci VPN opartą na zasadach w środowisku lokalnym. Jeśli włączysz policybasedTrafficSelectors, należy upewnić się, że urządzenie sieci VPN ma pasujące selektory ruchu zdefiniowane ze wszystkimi kombinacjami prefiksów sieci lokalnej (bramy sieci lokalnej) do i z prefiksów sieci wirtualnej platformy Azure, a nie do dowolnego.
 
 Niewłaściwa konfiguracja może prowadzić do częstych rozłączeń w tunelu, spadków pakietów, złej przepływności i opóźnienia.
 

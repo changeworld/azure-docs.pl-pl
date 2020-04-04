@@ -1,38 +1,71 @@
 ---
-title: Dopasowywki i znaki specjalne
+title: Terminy częściowe, wzorce i znaki specjalne
 titleSuffix: Azure Cognitive Search
-description: Użyj wieloznacznych i zapytań prefiksów, aby dopasować na całe lub częściowe terminy w żądaniu zapytania usługi Azure Cognitive Search. Trudne do dopasowania wzorce, które zawierają znaki specjalne można rozpoznać za pomocą pełnej składni kwerendy i analizatorów niestandardowych.
+description: Użyj wieloznacznych, wyrażenia regularnego i zapytań prefiksów, aby dopasować je w całości lub częściowych terminach w żądaniu zapytania usługi Azure Cognitive Search. Trudne do dopasowania wzorce, które zawierają znaki specjalne można rozpoznać za pomocą pełnej składni kwerendy i analizatorów niestandardowych.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/14/2020
-ms.openlocfilehash: f78ba5b351a3da46d7b8b3780cf00772c4f3b2ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 3e0e0291ff855b4502224466e17696a4fe668c2a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289315"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656002"
 ---
-# <a name="match-on-patterns-and-special-characters-dashes"></a>Dopasowywuj się do wzorów i znaków specjalnych (kresek)
+# <a name="partial-term-search-in-azure-cognitive-search-queries-wildcard-regex-fuzzy-search-patterns"></a>Częściowe wyszukiwanie terminów w zapytaniach usługi Azure Cognitive Search (symbol wieloznaczny, wyrażenie regularne, wyszukiwanie rozmyte, wzorce)
 
-W przypadku kwerend zawierających`-, *, (, ), /, \, =`znaki specjalne ( ) lub wzorców zapytań opartych na terminach częściowych w większym terminie, zazwyczaj potrzebne są dodatkowe kroki konfiguracji, aby upewnić się, że indeks zawiera oczekiwaną zawartość w odpowiednim formacie. 
+*Częściowe wyszukiwanie terminów* odnosi się do zapytań składających się z fragmentów terminów, takich jak pierwsza, ostatnia lub wewnętrzna część ciągu lub wzorzec składający się z kombinacji fragmentów, często oddzielonych znakami specjalnymi, takimi jak kreski lub ukośniki. Typowe przypadki użycia obejmują wykonywanie zapytań dotyczących fragmentów numeru telefonu, adresu URL, osób lub kodów produktów lub słów złożonych.
 
-Domyślnie numer telefonu `+1 (425) 703-6214` jest tokenizowany `"425"` `"703"`jako `"6214"` `"1"`, , . Jak można sobie wyobrazić, wyszukiwanie na `"3-62"`, częściowe terminy, które zawierają myślnik, zakończy się niepowodzeniem, ponieważ ta zawartość w rzeczywistości nie istnieje w indeksie. 
+Wyszukiwanie częściowe może być problematyczne, ponieważ sam indeks zazwyczaj nie przechowuje terminów w sposób, który sprzyja częściowym dopasowywaniu ciągów i wzorców. Podczas fazy analizy tekstu indeksowania znaki specjalne są odrzucane, ciągi złożone i złożone są dzielone, co powoduje niepowodzenie kwerend wzorca, gdy nie zostanie znalezione dopasowanie. Na `+1 (425) 703-6214`przykład numer telefonu, taki `"1"`jak `"425"` `"703"`(tokenized as , , , `"6214"`) nie będzie się wyświetlał w `"3-62"` kwerendzie, ponieważ ta zawartość w rzeczywistości nie istnieje w indeksie. 
 
-Jeśli trzeba wyszukiwać na ciągach częściowych lub znakach specjalnych, można zastąpić domyślny analizator za pomocą niestandardowego analizatora, który działa w ramach prostszych reguł tokenizacji, zachowując całe terminy, niezbędne, gdy ciągi zapytania zawierają części terminu lub specjalne Znaków. Robiąc krok wstecz, podejście wygląda następująco:
+Rozwiązaniem jest przechowywanie wersji tych ciągów w indeksie, dzięki czemu można obsługiwać scenariusze wyszukiwania częściowego. Tworzenie dodatkowego pola dla nienaruszonego ciągu, a także przy użyciu analizatora zachowania zawartości, jest podstawą rozwiązania.
 
-+ Wybierz wstępnie zdefiniowany analizator lub zdefiniuj analizator niestandardowy, który wytwarza żądane dane wyjściowe
+## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Co to jest wyszukiwanie częściowe w usłudze Azure Cognitive Search
+
+W usłudze Azure Cognitive Search wyszukiwanie częściowe jest dostępne w następujących formach:
+
++ [Wyszukiwanie prefiksów](query-simple-syntax.md#prefix-search), takie jak `search=cap*`, pasujące do "Cap'n Jack's Waterfront Inn" lub "Gacc Capital". Można użyć po prostu składni kwerendy do wyszukiwania prefiksów.
++ [Wyszukiwanie symboli wieloznacznych](query-lucene-syntax.md#bkmk_wildcard) lub wyrażenia regularne, które [wyszukują](query-lucene-syntax.md#bkmk_regex) wzorzec lub części osadzonego ciągu, w tym sufiks. Na przykład, biorąc pod uwagę termin "alfanumeryczny",`search=/.*numeric.*/`należy użyć wyszukiwania symboli wieloznacznych ( ) dla dopasowania zapytania sufiksu w tym okresie. Symbol wieloznaczny i wyrażenia regularne wymagają pełnej składni lucene.
+
+Gdy którykolwiek z powyższych typów zapytań są potrzebne w aplikacji klienckiej, wykonaj kroki opisane w tym artykule, aby upewnić się, że istnieje niezbędna zawartość w indeksie.
+
+## <a name="solving-partial-search-problems"></a>Rozwiązywanie problemów z wyszukiwaniem częściowym
+
+Gdy trzeba wyszukiwać wzorce lub znaki specjalne, można zastąpić analizatora domyślnego z analizatora niestandardowego, który działa w ramach prostszych reguł tokenizacji, zachowując cały ciąg. Robiąc krok wstecz, podejście wygląda następująco:
+
++ Zdefiniuj pole do przechowywania nienaruszonej wersji ciągu (przy założeniu, że chcesz przeanalizować i nie analizować tekstu)
++ Wybierz wstępnie zdefiniowany analizator lub zdefiniuj analizator niestandardowy, aby wyprokować nienaruszony ciąg
 + Przypisywanie analizatora do pola
-+ Tworzenie indeksu i testowanie
-
-W tym artykule otrzymasz od tych zadań. Podejście opisane w tym miejscu jest przydatne w innych scenariuszach: wieloznaczne i zapytania wyrażenia regularnego również potrzebują całych terminów jako podstawy do dopasowywania wzorców. 
++ Tworzenie i testowanie indeksu
 
 > [!TIP]
-> Ocena analyers jest iteracyjnych proces, który wymaga częste przebudowy indeksu. Ten krok można ułatwić, używając funkcji Postman, interfejsów API REST dla [tworzenia indeksu,](https://docs.microsoft.com/rest/api/searchservice/create-index) [indeksu](https://docs.microsoft.com/rest/api/searchservice/delete-index)[usuwania, ładowania dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)i [wyszukiwania dokumentów.](https://docs.microsoft.com/rest/api/searchservice/search-documents) W przypadku ładowania dokumentów treść żądania powinna zawierać mały reprezentatywny zestaw danych, który chcesz przetestować (na przykład pole z numerami telefonów lub kodami produktów). Za pomocą tych interfejsów API w tej samej kolekcji postman, można szybko przełączać się między tymi krokami.
+> Analizowanie analizatorów jest procesem iteracyjnym, który wymaga częstego przebudowy indeksu. Ten krok można ułatwić, używając funkcji Postman, interfejsów API REST dla [tworzenia indeksu,](https://docs.microsoft.com/rest/api/searchservice/create-index) [indeksu](https://docs.microsoft.com/rest/api/searchservice/delete-index)[usuwania, ładowania dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)i [wyszukiwania dokumentów.](https://docs.microsoft.com/rest/api/searchservice/search-documents) W przypadku ładowania dokumentów treść żądania powinna zawierać mały reprezentatywny zestaw danych, który chcesz przetestować (na przykład pole z numerami telefonów lub kodami produktów). Za pomocą tych interfejsów API w tej samej kolekcji postman, można szybko przełączać się między tymi krokami.
 
-## <a name="choosing-an-analyzer"></a>Wybieranie analizatora
+## <a name="duplicate-fields-for-different-scenarios"></a>Duplikuj pola dla różnych scenariuszy
+
+Analizatory są przypisywane na podstawie pola, co oznacza, że można tworzyć pola w indeksie w celu optymalizacji dla różnych scenariuszy. W szczególności można zdefiniować "featureCode" i "featureCodeRegex", aby obsługiwać regularne wyszukiwanie pełnotekstowego w pierwszym i zaawansowane dopasowanie wzorca w drugim.
+
+```json
+{
+  "name": "featureCode",
+  "type": "Edm.String",
+  "retrievable": true,
+  "searchable": true,
+  "analyzer": null
+},
+{
+  "name": "featureCodeRegex",
+  "type": "Edm.String",
+  "retrievable": true,
+  "searchable": true,
+  "analyzer": "my_customanalyzer"
+},
+```
+
+## <a name="choose-an-analyzer"></a>Wybieranie analizatora
 
 Wybierając analizator, który produkuje tokeny całego okresu, następujące analizatory są typowe wybory:
 
@@ -42,7 +75,9 @@ Wybierając analizator, który produkuje tokeny całego okresu, następujące an
 | [Odstępu](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Oddziela tylko na białych przestrzeniach. Terminy, które zawierają kreski lub inne znaki są traktowane jako pojedynczy token. |
 | [analizator niestandardowy](index-add-custom-analyzers.md) | (zalecane) Tworzenie analizatora niestandardowego umożliwia określenie zarówno tokenizatora i filtru tokenów. Poprzednie analizatory muszą być używane w stanie— jest. Analizator niestandardowy umożliwia wybranie tokenizatorów i filtrów tokenów do użycia. <br><br>Zalecaną kombinacją jest [tokenizator słów kluczowych](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) z [filtrem tokenów o mniejszej litery.](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html) Sam [analizator wstępnie zdefiniowanych słów kluczowych](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) nie wykonuje wielkich liter bez żadnych wielkich liter, co może spowodować niepowodzenie kwerend. Analizator niestandardowy zapewnia mechanizm dodawania filtru tokenu dolnoślądkowych. |
 
-Jeśli używasz narzędzia do testowania interfejsu API sieci web, takiego jak Postman, możesz dodać [wywołanie REST analizatora testów,](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) aby sprawdzić tokenizowane dane wyjściowe. Biorąc pod uwagę istniejący indeks i pole zawierające myślniki lub terminy częściowe, można wypróbować różne analizatory w określonych terminach, aby zobaczyć, jakie tokeny są emitowane.  
+Jeśli używasz narzędzia do testowania interfejsu API sieci web, takiego jak Postman, możesz dodać [wywołanie REST analizatora testów,](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) aby sprawdzić tokenizowane dane wyjściowe.
+
+Musisz mieć istniejący indeks do pracy z. Biorąc pod uwagę istniejący indeks i pole zawierające myślniki lub terminy częściowe, można wypróbować różne analizatory w określonych terminach, aby zobaczyć, jakie tokeny są emitowane.  
 
 1. Sprawdź standardowy analizator, aby zobaczyć, jak terminy są tokenizowane domyślnie.
 
@@ -105,15 +140,15 @@ Jeśli używasz narzędzia do testowania interfejsu API sieci web, takiego jak P
     }
     ```
 > [!Important]
-> Należy pamiętać, że analizatory zapytań często małe litery w wyrażeniu wyszukiwania podczas tworzenia drzewa kwerendy. Jeśli używasz analizatora, który nie wprowadza małe litery tekstu i nie otrzymujesz oczekiwanych wyników, może to być przyczyną. Rozwiązaniem jest dodanie filtru tokenu lwower-case.
+> Należy pamiętać, że analizatory zapytań często małe litery w wyrażeniu wyszukiwania podczas tworzenia drzewa kwerendy. Jeśli używasz analizatora, który nie wprowadza małe litery tekstu i nie otrzymujesz oczekiwanych wyników, może to być przyczyną. Rozwiązaniem jest dodanie filtru tokenu małe litery, zgodnie z opisem w sekcji "Użyj analizatorów niestandardowych" poniżej.
 
-## <a name="analyzer-definitions"></a>Definicje analizatora
+## <a name="configure-an-analyzer"></a>Konfigurowanie analizatora
  
 Niezależnie od tego, czy oceniasz analizatory, czy przechodzisz do przodu z określoną konfiguracją, musisz określić analizator w definicji pola i ewentualnie skonfigurować sam analizator, jeśli nie używasz wbudowanego analizatora. Podczas wymiany analizatorów, zazwyczaj należy odbudować indeks (upuść, ponownie utworzyć i przeładować). 
 
 ### <a name="use-built-in-analyzers"></a>Używanie wbudowanych analizatorów
 
-Wbudowane lub wstępnie zdefiniowane analizatory mogą być `analyzer` określone przez nazwę na właściwości definicji pola, bez dodatkowej konfiguracji wymagane w indeksie. W poniższym przykładzie pokazano, `whitespace` jak można ustawić analizatora w polu.
+Wbudowane lub wstępnie zdefiniowane analizatory mogą być `analyzer` określone przez nazwę na właściwości definicji pola, bez dodatkowej konfiguracji wymagane w indeksie. W poniższym przykładzie pokazano, `whitespace` jak można ustawić analizatora w polu. Aby uzyskać więcej informacji na temat dostępnych wbudowanych analizatorów, zobacz [wstępnie zdefiniowane analizatory listy](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
 
 ```json
     {
@@ -125,16 +160,15 @@ Wbudowane lub wstępnie zdefiniowane analizatory mogą być `analyzer` określon
       "analyzer": "whitespace"
     }
 ```
-Aby uzyskać więcej informacji na temat wszystkich dostępnych wbudowanych analizatorów, zobacz [wstępnie zdefiniowane analizatory listy](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
 
 ### <a name="use-custom-analyzers"></a>Korzystanie z analizatorów niestandardowych
 
-Jeśli używasz [analizatora niestandardowego,](index-add-custom-analyzers.md)zdefiniuj go w indeksie za pomocą zdefiniowanej przez użytkownika kombinacji tokenizatora, tokenfiltera z możliwymi ustawieniami konfiguracji. Następnie odwołaj się do niego w definicji pola, tak jak wbudowany analizator.
+Jeśli używasz [analizatora niestandardowego,](index-add-custom-analyzers.md)zdefiniuj go w indeksie za pomocą zdefiniowanej przez użytkownika kombinacji tokenizatora, filtru tokenów z możliwymi ustawieniami konfiguracji. Następnie odwołaj się do niego w definicji pola, tak jak wbudowany analizator.
 
 Gdy celem jest tokenizacji całego okresu, analizator niestandardowy, który składa się z **tokenizatora słów kluczowych** i **filtr tokenu małe litery** jest zalecane.
 
 + Tokenizator słów kluczowych tworzy pojedynczy token dla całej zawartości pola.
-+ Filtr tokenu małych liter przekształca wielkie litery w tekst małych liter. Analizatory zapytań zazwyczaj małe litery wszelkie wielkie dane wejściowe tekstu. Małe przysłów homogenizuje dane wejściowe z tokenizowanych terminów.
++ Filtr tokenu małych liter przekształca wielkie litery w tekst małych liter. Analizatory zapytań zazwyczaj małe litery wszelkie wielkie dane wejściowe tekstu. Dolna obudowa homogenizuje dane wejściowe za pomocą terminów tokenizowanych.
 
 Poniższy przykład ilustruje analizatora niestandardowego, który udostępnia tokenizator słów kluczowych i filtr tokenu małych liter.
 
@@ -169,6 +203,22 @@ Poniższy przykład ilustruje analizatora niestandardowego, który udostępnia t
 
 > [!NOTE]
 > Tokenizator `keyword_v2` i `lowercase` filtr tokenów są znane systemowi i przy użyciu ich domyślnych konfiguracji, dlatego można odwoływać się do nich według nazwy bez konieczności definiowania ich najpierw.
+
+## <a name="build-and-test"></a>Skompiluj i testuj
+
+Po zdefiniowaniu indeksu z analizatorów i definicje pól, które obsługują scenariusz, załadować dokumenty, które mają reprezentatywne ciągi, dzięki czemu można przetestować kwerendy ciągów częściowych. 
+
+W poprzednich sekcjach wyjaśniono logikę. W tej sekcji kroki za pośrednictwem każdego interfejsu API, który należy wywołać podczas testowania rozwiązania. Jak wcześniej wspomniano, jeśli używasz interaktywnego narzędzia do testowania sieci Web, takiego jak Postman, możesz szybko przejść przez te zadania.
+
++ [Usuń indeks](https://docs.microsoft.com/rest/api/searchservice/delete-index) usuwa istniejący indeks o tej samej nazwie, dzięki czemu można go odtworzyć.
+
++ [Utwórz indeks](https://docs.microsoft.com/rest/api/searchservice/create-index) tworzy strukturę indeksu w usłudze wyszukiwania, w tym definicje analizatora i pola ze specyfikacją analizatora.
+
++ [Załaduj dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) importuje dokumenty o takiej samej strukturze jak indeks, a także zawartość z wyszukuj. Po tym kroku indeks jest gotowy do kwerendy lub testowania.
+
++ [Analizator testów](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) został wprowadzony w [Wybierz analizator](#choose-an-analyzer). Przetestuj niektóre ciągi w indeksie przy użyciu różnych analizatorów, aby zrozumieć, jak terminy są tokenizowane.
+
++ [W dokumentach wyszukiwania wyjaśniono,](https://docs.microsoft.com/rest/api/searchservice/search-documents) jak skonstruować żądanie kwerendy przy użyciu [prostej składni](query-simple-syntax.md) lub [pełnej składni lucene](query-lucene-syntax.md) dla symboli wieloznacznych i wyrażeń regularnych.
 
 ## <a name="tips-and-best-practices"></a>Wskazówki i najlepsze rozwiązania
 
@@ -227,27 +277,6 @@ Aby określić analizę specyficzną dla roli, można ustawić `indexAnalyzer` `
 "name": "featureCode",
 "indexAnalyzer":"my_customanalyzer",
 "searchAnalyzer":"standard",
-```
-
-### <a name="duplicate-fields-for-different-scenarios"></a>Duplikuj pola dla różnych scenariuszy
-
-Inna opcja wykorzystuje przypisanie analizatora na pole do optymalizacji pod kątem różnych scenariuszy. W szczególności można zdefiniować "featureCode" i "featureCodeRegex", aby obsługiwać regularne wyszukiwanie pełnotekstowego w pierwszym i zaawansowane dopasowanie wzorca w drugim.
-
-```json
-{
-  "name": "featureCode",
-  "type": "Edm.String",
-  "retrievable": true,
-  "searchable": true,
-  "analyzer": null
-},
-{
-  "name": "featureCodeRegex",
-  "type": "Edm.String",
-  "retrievable": true,
-  "searchable": true,
-  "analyzer": "my_customanalyzer"
-},
 ```
 
 ## <a name="next-steps"></a>Następne kroki

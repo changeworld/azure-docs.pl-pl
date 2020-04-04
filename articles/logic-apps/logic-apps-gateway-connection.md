@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: 29c1aaf18ea45d869d32a8817aeb03faa3b67c32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 02/14/2020
+ms.openlocfilehash: 096943ff796f9c12c7f8715cadce5c3085965d4d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75456571"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657135"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Connect to on-premises data sources from Azure Logic Apps (Łączenie z lokalnymi źródłami danych z usługi Azure Logic Apps)
 
@@ -59,6 +59,9 @@ Usługa Azure Logic Apps obsługuje operacje odczytu i zapisu za pośrednictwem 
 * Instalacja bramy nie jest jeszcze zarejestrowana i zgłoszone przez inny zasób bramy platformy Azure.
 
   Podczas tworzenia zasobu bramy w witrynie Azure portal, należy wybrać instalację bramy, która łączy się z zasobem bramy i tylko tego zasobu bramy. W usłudze Azure Logic Apps lokalne wyzwalacze i akcje używają zasobu bramy do łączenia się z lokalnymi źródłami danych. W tych wyzwalaczy i akcji wybierz subskrypcję platformy Azure i skojarzony zasób bramy, który chcesz użyć. Każdy zasób bramy łączy się tylko z jedną instalacją bramy, która łączy tylko jedno konto platformy Azure.
+
+  > [!NOTE]
+  > Tylko administrator bramy może utworzyć zasób bramy w witrynie Azure portal. Obecnie jednostki usługi nie są obsługiwane. 
 
 <a name="create-gateway-resource"></a>
 

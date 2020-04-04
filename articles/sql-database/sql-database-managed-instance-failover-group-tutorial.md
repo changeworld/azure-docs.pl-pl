@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: bf83155e971061f22e5f5fc33d216b58621c9249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f1a56fa6ea38acd8061180407eb47fe416b61e9
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462653"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631713"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Samouczek: Dodawanie wystąpienia zarządzanego bazy danych SQL do grupy trybu failover
 
@@ -42,7 +42,7 @@ Aby ukończyć kroki tego samouczka, upewnij się, że dysponujesz następujący
 - Subskrypcja platformy Azure. [Utwórz bezpłatne konto,](https://azure.microsoft.com/free/) jeśli jeszcze go nie masz.
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Aby ukończyć samouczek, upewnij się, że masz następujące elementy:
 
 - Subskrypcja platformy Azure. [Utwórz bezpłatne konto,](https://azure.microsoft.com/free/) jeśli jeszcze go nie masz.
@@ -75,7 +75,7 @@ Utwórz grupę zasobów i podstawowe wystąpienie zarządzane za pomocą witryny
 1. Pozostaw pozostałe ustawienia przy wartościach domyślnych i wybierz **pozycję Przejrzyj + utwórz,** aby przejrzeć ustawienia wystąpienia zarządzanego. 
 1. Wybierz **pozycję Utwórz,** aby utworzyć główne wystąpienie zarządzane. 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Utwórz grupę zasobów i podstawowe wystąpienie zarządzane za pomocą programu PowerShell. 
 
@@ -433,7 +433,7 @@ Aby utworzyć sieć wirtualną, wykonaj następujące czynności:
 
     ![Dodatkowe wartości sieci wirtualnej](media/sql-database-managed-instance-failover-group-tutorial/secondary-virtual-network.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Ten krok jest konieczne tylko wtedy, gdy używasz witryny Azure Portal do wdrażania wystąpienia zarządzanego. Przejdź do kroku 3, jeśli używasz programu PowerShell. 
 
@@ -482,7 +482,7 @@ Utwórz pomocnicze wystąpienie zarządzane przy użyciu witryny Azure Portal.
 1. Wybierz **pozycję Przejrzyj + utwórz,** aby przejrzeć ustawienia pomocniczego wystąpienia zarządzanego. 
 1. Wybierz **pozycję Utwórz,** aby utworzyć pomocnicze wystąpienie zarządzane. 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Utwórz pomocnicze wystąpienie zarządzane przy użyciu programu PowerShell. 
 
@@ -756,7 +756,7 @@ Utwórz bramę dla sieci wirtualnej podstawowego wystąpienia zarządzanego przy
     | --- | --- |
     | **Subskrypcja** |  Subskrypcja, w której znajduje się główne wystąpienie zarządzane. |
     | **Nazwa** | Nazwa bramy sieci wirtualnej, `primary-mi-gateway`na przykład . | 
-    | **Region** | Region, w którym znajduje się pomocnicze wystąpienie zarządzane. |
+    | **Region** | Region, w którym znajduje się główne wystąpienie zarządzane. |
     | **Typ bramy** | wybierz pozycję **VPN**. |
     | **Typ sieci VPN** | Wybierz **trasę opartą na trasie** |
     | **Numer jednostki magazynowej**| Pozostaw `VpnGw1`domyślnie . |
@@ -773,7 +773,7 @@ Utwórz bramę dla sieci wirtualnej podstawowego wystąpienia zarządzanego przy
 1. Wybierz **pozycję Utwórz,** aby utworzyć nową bramę sieci wirtualnej. 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Utwórz bramę dla sieci wirtualnej podstawowego wystąpienia zarządzanego przy użyciu programu PowerShell. 
 
@@ -851,7 +851,7 @@ Korzystając z witryny Azure portal, powtórz kroki opisane w poprzedniej sekcji
    ![Ustawienia bramy pomocniczej](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Utwórz bramę dla sieci wirtualnej pomocniczego wystąpienia zarządzanego przy użyciu programu PowerShell. 
 
@@ -933,7 +933,7 @@ Połącz dwie bramy przy użyciu witryny Azure portal.
 1. Na karcie **Podsumowanie** przejrzyj ustawienia połączenia dwukierunkowego, a następnie wybierz przycisk **OK,** aby utworzyć połączenie. 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Połącz dwie bramy za pomocą programu PowerShell. 
 
@@ -984,7 +984,7 @@ Utwórz grupę trybu failover przy użyciu witryny Azure portal.
 1. Po zakończeniu wdrażania grupy trybu failover zostaniesz przejmąc się z powrotem do strony **grupy trybu failover.** 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Utwórz grupę trybu failover przy użyciu programu PowerShell. 
 
    ```powershell-interactive
@@ -1027,7 +1027,7 @@ Przetestuj przewija po awarii przy użyciu witryny Azure portal.
 1. Przejdź do nowego _pomocniczego_ wystąpienia zarządzanego i wybierz opcję **Przewijanie awaryjne** ponownie, aby zakończyć niepowodzeniem wystąpienia podstawowego z powrotem do roli podstawowej. 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Przetestuj przewijaniec awaryjny przy użyciu programu PowerShell. 
 
    ```powershell-interactive
@@ -1083,7 +1083,7 @@ Oczyść zasoby, najpierw usuwając wystąpienie zarządzane, następnie klaster
 1. Usuń wszystkie pozostałe zasoby. Wpisz `yes` pole tekstowe, aby potwierdzić, że chcesz usunąć zasób, a następnie wybierz pozycję **Usuń**. 
 1. Usuń grupę zasobów, wybierając pozycję **Usuń grupę zasobów,** wpisując nazwę grupy zasobów, `myResourceGroup`a następnie wybierając polecenie **Usuń**. 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Należy usunąć grupę zasobów dwa razy. Usunięcie grupy zasobów po raz pierwszy spowoduje usunięcie wystąpienia zarządzanego i klastrów `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.`wirtualnych, ale spowoduje niepowodzenie z komunikatem o błędzie . Uruchom polecenie Usuń-AzResourceGroup po raz drugi, aby usunąć wszystkie zasoby resztkowe, a także grupę zasobów.
 
@@ -1104,7 +1104,7 @@ Ta część samouczka używa następującego polecenia cmdlet programu PowerShel
 
 ## <a name="full-script"></a>Pełny skrypt
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1 "Add managed instance to a failover group")]
 
 W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.

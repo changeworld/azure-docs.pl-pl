@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 84f432c45729091be1264bff85d1e32fac10f3ef
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 2c8617cffaa81da6423011a494b8dbc82c42d218
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583154"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632453"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Znaczenie obciążenia usługi Azure Synapse Analytics
 
@@ -64,6 +64,6 @@ Ponieważ Q5 jest mediumrc, wymaga dwóch gniazd współbieżności. Q5 musi cze
 
 - Aby uzyskać więcej informacji na temat tworzenia klasyfikatora, zobacz [CREAT WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql).  
 - Aby uzyskać więcej informacji na temat klasyfikacji obciążeń, zobacz [Klasyfikacja obciążeń](sql-data-warehouse-workload-classification.md).  
-- Zobacz [klasyfikator tworzenia obciążenia](quickstart-create-a-workload-classifier-tsql.md) szybki start, aby dowiedzieć się, jak utworzyć klasyfikator obciążenia. 
+- Zobacz [klasyfikator tworzenia obciążenia](quickstart-create-a-workload-classifier-tsql.md) szybki start, aby dowiedzieć się, jak utworzyć klasyfikator obciążenia.
 - Zobacz artykuły infigurajnokonfigurowanie [ważność obciążenia](sql-data-warehouse-how-to-configure-workload-importance.md) oraz sposób [zarządzania zarządzaniem obciążeniami i monitorowania.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
 - Zobacz [sys.dm_pdw_exec_requests,](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) aby wyświetlić zapytania i przypisane znaczenie.

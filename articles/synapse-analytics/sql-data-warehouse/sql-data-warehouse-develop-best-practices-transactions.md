@@ -11,12 +11,12 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d97a388477c895a4a8632d7ab3d06dc4c8982857
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 0139c581e6660622f1ab6db9f407725816377a6d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582139"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633559"
 ---
 # <a name="optimizing-transactions-in-synapse-sql"></a>Optymalizacja transakcji w synapse SQL
 
@@ -24,7 +24,7 @@ Dowiedz się, jak zoptymalizować wydajność kodu transakcyjnego w Synapse SQL,
 
 ## <a name="transactions-and-logging"></a>Transakcje i rejestrowanie
 
-Transakcje są ważnym składnikiem aparatu relacyjnej bazy danych. Transakcje są używane podczas modyfikacji danych. Te transakcje mogą być jawne lub niejawne. Instrukcje POJEDYNCZE INSERT, UPDATE i DELETE są przykładami niejawnych transakcji. Jawne transakcje używają BEGIN TRAN, COMMIT TRAN lub ROLLBACK TRAN. Jawne transakcje są zazwyczaj używane, gdy wiele instrukcji modyfikacji muszą być powiązane ze sobą w jednej jednostce atomowej. 
+Transakcje są ważnym składnikiem aparatu relacyjnej bazy danych. Transakcje są używane podczas modyfikacji danych. Te transakcje mogą być jawne lub niejawne. Instrukcje POJEDYNCZE INSERT, UPDATE i DELETE są przykładami niejawnych transakcji. Jawne transakcje używają BEGIN TRAN, COMMIT TRAN lub ROLLBACK TRAN. Jawne transakcje są zazwyczaj używane, gdy wiele instrukcji modyfikacji muszą być powiązane ze sobą w jednej jednostce atomowej.
 
 Zmiany w bazie danych są śledzone przy użyciu dzienników transakcji. Każda dystrybucja ma swój własny dziennik transakcji. Zapisy dziennika transakcji są automatyczne. Nie jest wymagana konfiguracja. Jednak podczas gdy ten proces gwarantuje zapis wprowadza obciążenie w systemie. Można zminimalizować ten wpływ, pisząc transakcyjnie wydajny kod. Transakcyjnie skuteczny kod zasadniczo dzieli się na dwie kategorie.
 
@@ -39,9 +39,7 @@ W przeciwieństwie do w pełni zalogowanych operacji, które używają dziennika
 Limity bezpieczeństwa transakcji dotyczą tylko w pełni zarejestrowanych operacji.
 
 > [!NOTE]
-> Minimalnie rejestrowane operacje mogą uczestniczyć w jawnych transakcjach. Ponieważ wszystkie zmiany w strukturach alokacji są śledzone, możliwe jest wycofanie minimalnie zarejestrowanych operacji. 
-> 
-> 
+> Minimalnie rejestrowane operacje mogą uczestniczyć w jawnych transakcjach. Ponieważ wszystkie zmiany w strukturach alokacji są śledzone, możliwe jest wycofanie minimalnie zarejestrowanych operacji.
 
 ## <a name="minimally-logged-operations"></a>Minimalnie rejestrowane operacje
 
@@ -64,10 +62,9 @@ Następujące operacje mogą być rejestrowane minimalnie:
 
 > [!NOTE]
 > Limit bezpieczeństwa transakcji nie ma wpływu na wewnętrzne operacje przenoszenia danych (takie jak BROADCAST i SHUFFLE).
-> 
-> 
 
 ## <a name="minimal-logging-with-bulk-load"></a>Minimalne rejestrowanie przy obciążeniu masowym
+
 CTAS i INSERT... SELECT są zarówno operacje obciążenia zbiorczego. Jednak oba są pod wpływem definicji tabeli docelowej i zależą od scenariusza obciążenia. W poniższej tabeli wyjaśniono, kiedy operacje masowe są rejestrowane w całości lub minimalnie:  
 
 | Indeks podstawowy | Scenariusz obciążenia | Tryb rejestrowania |
@@ -83,11 +80,11 @@ Warto zauważyć, że wszelkie zapisy do aktualizacji indeksów pomocniczych lub
 
 > [!IMPORTANT]
 > Baza danych puli SQL Synapse ma 60 dystrybucji. W związku z tym przy założeniu, że wszystkie wiersze są równomiernie rozłożone i lądowania w jednej partycji, partia będzie musiał zawierać 6,144,000 wierszy lub większe, aby być minimalnie rejestrowane podczas zapisywania do indeksu klastrowanego magazynu kolumn. Jeśli tabela jest podzielony na partycje i wiersze są wstawiane zakres granic partycji, a następnie trzeba będzie 6,144,000 wierszy na granicę partycji przy założeniu, że nawet dystrybucji danych. Każda partycja w każdej dystrybucji musi niezależnie przekraczać próg wiersza 102 400, aby wstawić było minimalnie zalogowane do dystrybucji.
-> 
 
 Ładowanie danych do tabeli niepuste z indeksem klastrowanym często może zawierać mieszaninę wierszy w pełni rejestrowane i minimalnie rejestrowane. Indeks klastrowany jest zbilansowanym drzewem (b-drzewo) stron. Jeśli strona zapisywana jest już zawiera wiersze z innej transakcji, a następnie te zapisy będą w pełni rejestrowane. Jeśli jednak strona jest pusta, zapis na tej stronie będzie minimalnie rejestrowany.
 
 ## <a name="optimizing-deletes"></a>Optymalizacja usuwania
+
 DELETE jest w pełni zarejestrowaną operacją.  Jeśli chcesz usunąć dużą ilość danych w tabeli lub partycji, `SELECT` często ma większy sens do danych, które chcesz zachować, które mogą być uruchamiane jako minimalnie rejestrowane operacji.  Aby wybrać dane, utwórz nową tabelę z [programem CTAS](sql-data-warehouse-develop-ctas.md).  Po utworzeniu użyj [funkcji ZMIEŃ nazwę,](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) aby zamienić starą tabelę na nowo utworzoną tabelę.
 
 ```sql
@@ -98,7 +95,7 @@ CREATE TABLE [dbo].[FactInternetSales_d]
 WITH
 (    CLUSTERED COLUMNSTORE INDEX
 ,    DISTRIBUTION = HASH([ProductKey])
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20000101, 20010101, 20020101, 20030101, 20040101, 20050101
                                                 ,    20060101, 20070101, 20080101, 20090101, 20100101, 20110101
                                                 ,    20120101, 20130101, 20140101, 20150101, 20160101, 20170101
@@ -113,12 +110,13 @@ WHERE    [PromotionKey] = 2
 OPTION (LABEL = 'CTAS : Delete')
 ;
 
---Step 02. Rename the Tables to replace the 
+--Step 02. Rename the Tables to replace the
 RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>Optymalizacja aktualizacji
+
 UPDATE jest w pełni zarejestrowaną operacją.  Jeśli trzeba zaktualizować dużą liczbę wierszy w tabeli lub partycji, często może być znacznie bardziej wydajne użycie minimalnie rejestrowane operacji, takich jak [CTAS,](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) aby to zrobić.
 
 W poniższym przykładzie pełna aktualizacja tabeli została przekonwertowana na CTAS, dzięki czemu możliwe jest minimalne rejestrowanie.
@@ -126,12 +124,12 @@ W poniższym przykładzie pełna aktualizacja tabeli została przekonwertowana n
 W takim przypadku retrospektywnie dodajemy kwotę rabatu do sprzedaży w tabeli:
 
 ```sql
---Step 01. Create a new table containing the "Update". 
+--Step 01. Create a new table containing the "Update".
 CREATE TABLE [dbo].[FactInternetSales_u]
 WITH
 (    CLUSTERED INDEX
 ,    DISTRIBUTION = HASH([ProductKey])
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20000101, 20010101, 20020101, 20030101, 20040101, 20050101
                                                 ,    20060101, 20070101, 20080101, 20090101, 20100101, 20110101
                                                 ,    20120101, 20130101, 20140101, 20150101, 20160101, 20170101
@@ -140,15 +138,15 @@ WITH
                                                 )
                 )
 )
-AS 
+AS
 SELECT
     [ProductKey]  
-,    [OrderDateKey] 
+,    [OrderDateKey]
 ,    [DueDateKey]  
-,    [ShipDateKey] 
-,    [CustomerKey] 
-,    [PromotionKey] 
-,    [CurrencyKey] 
+,    [ShipDateKey]
+,    [CustomerKey]
+,    [PromotionKey]
+,    [CurrencyKey]
 ,    [SalesTerritoryKey]
 ,    [SalesOrderNumber]
 ,    [SalesOrderLineNumber]
@@ -165,7 +163,7 @@ SELECT
          END AS MONEY),0) AS [SalesAmount]
 ,    [TaxAmt]
 ,    [Freight]
-,    [CarrierTrackingNumber] 
+,    [CarrierTrackingNumber]
 ,    [CustomerPONumber]
 FROM    [dbo].[FactInternetSales]
 OPTION (LABEL = 'CTAS : Update')
@@ -181,10 +179,9 @@ DROP TABLE [dbo].[FactInternetSales_old]
 
 > [!NOTE]
 > Ponowne tworzenie dużych tabel może korzystać z funkcji zarządzania obciążeniem puli Synapse SQL. Aby uzyskać więcej informacji, zobacz [Klasy zasobów do zarządzania obciążeniem](resource-classes-for-workload-management.md).
-> 
-> 
 
 ## <a name="optimizing-with-partition-switching"></a>Optymalizacja za pomocą przełączania partycji
+
 W przypadku modyfikacji na dużą skalę wewnątrz [partycji tabeli,](sql-data-warehouse-tables-partition.md)to wzorzec przełączania partycji ma sens. Jeśli modyfikacja danych jest znacząca i obejmuje wiele partycji, iteracja za pośrednictwem partycji osiąga ten sam wynik.
 
 Kroki wykonywania przełącznika partycji są następujące:
@@ -223,11 +220,11 @@ SELECT     s.name                            AS [schema_name]
 FROM        sys.schemas                    AS s
 JOIN        sys.tables                    AS t    ON  s.[schema_id]        = t.[schema_id]
 JOIN        sys.indexes                    AS i    ON     t.[object_id]        = i.[object_id]
-JOIN        sys.partitions                AS p    ON     i.[object_id]        = p.[object_id] 
-                                                AND i.[index_id]        = p.[index_id] 
+JOIN        sys.partitions                AS p    ON     i.[object_id]        = p.[object_id]
+                                                AND i.[index_id]        = p.[index_id]
 JOIN        sys.partition_schemes        AS h    ON     i.[data_space_id]    = h.[data_space_id]
 JOIN        sys.partition_functions        AS f    ON     h.[function_id]        = f.[function_id]
-LEFT JOIN    sys.partition_range_values    AS r     ON     f.[function_id]        = r.[function_id] 
+LEFT JOIN    sys.partition_range_values    AS r     ON     f.[function_id]        = r.[function_id]
                                                 AND r.[boundary_id]        = p.[partition_number]
 WHERE i.[index_id] <= 1
 )
@@ -246,7 +243,7 @@ Ta procedura maksymalizuje ponowne użycie kodu i utrzymuje przykład przełącz
 Poniższy kod demonstruje kroki wymienione wcześniej, aby osiągnąć pełną procedurę przełączania partycji.
 
 ```sql
---Create a partitioned aligned empty table to switch out the data 
+--Create a partitioned aligned empty table to switch out the data
 IF OBJECT_ID('[dbo].[FactInternetSales_out]') IS NOT NULL
 BEGIN
     DROP TABLE [dbo].[FactInternetSales_out]
@@ -256,7 +253,7 @@ CREATE TABLE [dbo].[FactInternetSales_out]
 WITH
 (    DISTRIBUTION = HASH([ProductKey])
 ,    CLUSTERED COLUMNSTORE INDEX
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20020101, 20030101
                                                 )
                 )
@@ -278,20 +275,20 @@ CREATE TABLE [dbo].[FactInternetSales_in]
 WITH
 (    DISTRIBUTION = HASH([ProductKey])
 ,    CLUSTERED COLUMNSTORE INDEX
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20020101, 20030101
                                                 )
                 )
 )
-AS 
+AS
 SELECT
     [ProductKey]  
-,    [OrderDateKey] 
+,    [OrderDateKey]
 ,    [DueDateKey]  
-,    [ShipDateKey] 
-,    [CustomerKey] 
-,    [PromotionKey] 
-,    [CurrencyKey] 
+,    [ShipDateKey]
+,    [CustomerKey]
+,    [PromotionKey]
+,    [CurrencyKey]
 ,    [SalesTerritoryKey]
 ,    [SalesOrderNumber]
 ,    [SalesOrderLineNumber]
@@ -308,7 +305,7 @@ SELECT
          END AS MONEY),0) AS [SalesAmount]
 ,    [TaxAmt]
 ,    [Freight]
-,    [CarrierTrackingNumber] 
+,    [CarrierTrackingNumber]
 ,    [CustomerPONumber]
 FROM    [dbo].[FactInternetSales]
 WHERE    OrderDateKey BETWEEN 20020101 AND 20021231
@@ -347,9 +344,10 @@ DROP TABLE #ptn_data
 ```
 
 ## <a name="minimize-logging-with-small-batches"></a>Minimalizowanie rejestrowania za pomocą małych partii
+
 W przypadku operacji modyfikacji dużych danych może mieć sens dzielenie operacji na fragmenty lub partie w celu zakresu jednostki pracy.
 
-Poniższy kod jest przykładem roboczym. Rozmiar partii został ustawiony na trywialną liczbę, aby wyróżnić technikę. W rzeczywistości wielkość partii byłaby znacznie większa. 
+Poniższy kod jest przykładem roboczym. Rozmiar partii został ustawiony na trywialną liczbę, aby wyróżnić technikę. W rzeczywistości wielkość partii byłaby znacznie większa.
 
 ```sql
 SET NO_COUNT ON;
@@ -409,12 +407,10 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>Wskazówki dotyczące wstrzymywania i skalowania
 
-Synapse SQL umożliwia [wstrzymanie, wznowienie i skalowanie](sql-data-warehouse-manage-compute-overview.md) puli SQL na żądanie. Po wstrzymaniu lub skalowaniu puli SQL ważne jest, aby zrozumieć, że wszelkie transakcje w locie są natychmiast zakończone; powoduje, że wszelkie otwarte transakcje mają zostać wycofane. Jeśli obciążenie zostało wystawione długo działa i niekompletne modyfikacji danych przed wstrzymanie lub skalowania operacji, a następnie tej pracy należy cofnąć. To cofanie może mieć wpływ na czas potrzebny do wstrzymania lub skalowania puli SQL. 
+Synapse SQL umożliwia [wstrzymanie, wznowienie i skalowanie](sql-data-warehouse-manage-compute-overview.md) puli SQL na żądanie. Po wstrzymaniu lub skalowaniu puli SQL ważne jest, aby zrozumieć, że wszelkie transakcje w locie są natychmiast zakończone; powoduje, że wszelkie otwarte transakcje mają zostać wycofane. Jeśli obciążenie zostało wystawione długo działa i niekompletne modyfikacji danych przed wstrzymanie lub skalowania operacji, a następnie tej pracy należy cofnąć. To cofanie może mieć wpływ na czas potrzebny do wstrzymania lub skalowania puli SQL.
 
 > [!IMPORTANT]
-> Zarówno `UPDATE` `DELETE` i są w pełni rejestrowane operacje, a więc te operacje cofania/ponawiania może trwać znacznie dłużej niż równoważne minimalnie rejestrowane operacje. 
-> 
-> 
+> Zarówno `UPDATE` `DELETE` i są w pełni rejestrowane operacje, a więc te operacje cofania/ponawiania może trwać znacznie dłużej niż równoważne minimalnie rejestrowane operacje.
 
 Najlepszym scenariuszem jest umożliwienie transakcji modyfikacji danych lotu przed wstrzymaniem lub skalowaniem puli SQL. Jednak ten scenariusz nie zawsze może być praktyczne. Aby zmniejszyć ryzyko długotrwałego wycofywania, należy wziąć pod uwagę jedną z następujących opcji:
 
@@ -424,4 +420,3 @@ Najlepszym scenariuszem jest umożliwienie transakcji modyfikacji danych lotu pr
 ## <a name="next-steps"></a>Następne kroki
 
 Zobacz [Transakcje w Synapse SQL,](sql-data-warehouse-develop-transactions.md) aby dowiedzieć się więcej o poziomach izolacji i limitach transakcyjnych.  Aby zapoznać się z omówieniem innych sprawdzonych rozwiązań, zobacz [Najważniejsze wskazówki dotyczące magazynu danych SQL](sql-data-warehouse-best-practices.md).
-

@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 56975c52b22b90840fb1534187e99f6efa19469e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 3ba06ea592d51eedbe827e1ab6418f65722d579c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527677"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632305"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Dostosowywanie parametrów konfiguracji serwera przy użyciu interfejsu wiersza polecenia platformy Azure
 Można wyświetlić, wyświetlić i zaktualizować parametry konfiguracji dla serwera usługi Azure Database dla MariaDB przy użyciu narzędzia interfejsu wiersza polecenia platformy Azure, narzędzia wiersza polecenia platformy Azure. Podzbiór konfiguracji aparatu jest narażony na poziomie serwera i może być modyfikowany.
@@ -59,10 +59,10 @@ Ten kod resetuje konfigurację **\_\_dziennika kwerendy powolnej** do wartości 
 
 ### <a name="populating-the-time-zone-tables"></a>Wypełnianie tabel stref czasowych
 
-Tabele stref czasowych na serwerze `az_load_timezone` można wypełnić, wywołując procedurę składowaną za pomocą narzędzia, takiego jak wiersz polecenia MariaDB lub MariaDB Workbench.
+Tabele stref czasowych na serwerze `mysql.az_load_timezone` można wypełnić, wywołując procedurę składowaną za pomocą narzędzia, takiego jak wiersz polecenia MariaDB lub MariaDB Workbench.
 
 > [!NOTE]
-> Jeśli `az_load_timezone` polecenie jest uruchomione z programu MariaDB Workbench, może być `SET SQL_SAFE_UPDATES=0;`konieczne wyłączenie trybu bezpiecznej aktualizacji przy użyciu programu .
+> Jeśli `mysql.az_load_timezone` polecenie jest uruchomione z programu MariaDB Workbench, może być `SET SQL_SAFE_UPDATES=0;`konieczne wyłączenie trybu bezpiecznej aktualizacji przy użyciu programu .
 
 ```sql
 CALL mysql.az_load_timezone();

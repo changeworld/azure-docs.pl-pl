@@ -5,22 +5,25 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 23e3c9db6302d2db597283358ff71c3693ecf435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/2/2020
+ms.openlocfilehash: 1b79a49b2fb87ebf180aaaa40447f40c5a982c2e
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530176"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632287"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Tworzenie kont użytkowników w usłudze Azure Database for MariaDB 
 W tym artykule opisano, jak można tworzyć użytkowników w usłudze Azure Database dla MariaDB.
 
 Podczas pierwszego tworzenia bazy danych usługi Azure database dla MariaDB, podano nazwę użytkownika logowania administratora serwera i hasło. Aby uzyskać więcej informacji, możesz śledzić [przewodnik Szybki start](quickstart-create-mariadb-server-database-using-azure-portal.md). Nazwę użytkownika logowania administratora serwera można zlokalizować w witrynie Azure Portal.
 
-Użytkownik administratora serwera otrzymuje pewne uprawnienia dla serwera, jak na liście: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ReLOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION KLIENT, TWORZENIE WIDOKU, WYŚWIETLANIE WIDOKU, TWORZENIE PROCEDURY, ZMIENIANIE PROCEDURY, TWORZENIE UŻYTKOWNIKA, ZDARZENIE, WYZWALACZ
+Administrator serwera otrzymuje pewne uprawnienia dla serwera na liście: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER
 
 Po utworzeniu serwera usługi Azure Database for MariaDB można użyć pierwszego konta administratora serwera, aby utworzyć dodatkowych użytkowników i udzielić im dostępu administratora. Ponadto konto administratora serwera może służyć do tworzenia mniej uprzywilejowanych użytkowników, którzy mają dostęp do poszczególnych schematów bazy danych.
+
+> [!NOTE]
+> Uprawnienie SUPER i rola DBA nie są obsługiwane. Przejrzyj [uprawnienia](concepts-limits.md#privilege-support) w artykule ograniczenia, aby zrozumieć, co nie jest obsługiwane w usłudze.
 
 ## <a name="create-additional-admin-users"></a>Tworzenie dodatkowych użytkowników administratorów
 1. Pobierz informacje o połączeniu i nazwę użytkownika administratora.

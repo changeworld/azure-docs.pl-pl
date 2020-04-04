@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: bb907ee59891e5a9a1ffc9c8c6eee34d3e71ad2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 18f227c1888e0565eebb640fa61ced56dc994865
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531944"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632344"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Ograniczenia w usłudze Azure Database dla mariadb
 W poniższych sekcjach opisano pojemność, obsługę aparatu magazynu, obsługę uprawnień, obsługę instrukcji manipulowania danymi i limity funkcjonalności w usłudze bazy danych.
@@ -24,8 +24,8 @@ Minimalne i maksymalne wartości kilku popularnych parametrów serwera są okre�
 
 |**Warstwa cenowa**|**vCore(s)**|**Wartość domyślna**|**Wartość min.**|**Wartość maksymalna**|
 |---|---|---|---|---|
-|Podstawowa (Basic)|1|50|10|50|
-|Podstawowa (Basic)|2|100|10|100|
+|Podstawowy|1|50|10|50|
+|Podstawowy|2|100|10|100|
 |Ogólnego przeznaczenia|2|300|10|600|
 |Ogólnego przeznaczenia|4|625|10|1250|
 |Ogólnego przeznaczenia|8|1250|10|2500|
@@ -54,8 +54,8 @@ Przejrzyj [dokumentację MariaDB,](https://mariadb.com/kb/en/server-system-varia
 
 |**Warstwa cenowa**|**vCore(s)**|**Wartość domyślna**|**Wartość min.**|**Wartość maksymalna**|
 |---|---|---|---|---|
-|Podstawowa (Basic)|1|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
-|Podstawowa (Basic)|2|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
+|Podstawowy|1|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
+|Podstawowy|2|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
 |Ogólnego przeznaczenia|2|0|0|16777216|
 |Ogólnego przeznaczenia|4|0|0|33554432|
 |Ogólnego przeznaczenia|8|0|0|67108864|
@@ -74,8 +74,8 @@ Przejrzyj [dokumentację MariaDB,](https://mariadb.com/kb/en/server-system-varia
 
 |**Warstwa cenowa**|**vCore(s)**|**Wartość domyślna**|**Wartość min.**|**Wartość maksymalna**|
 |---|---|---|---|---|
-|Podstawowa (Basic)|1|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
-|Podstawowa (Basic)|2|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
+|Podstawowy|1|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
+|Podstawowy|2|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
 |Ogólnego przeznaczenia|2|524288|32768|4194304|
 |Ogólnego przeznaczenia|4|524288|32768|8388608|
 |Ogólnego przeznaczenia|8|524288|32768|16777216|
@@ -94,8 +94,8 @@ Przejrzyj [dokumentację MariaDB,](https://mariadb.com/kb/en/server-system-varia
 
 |**Warstwa cenowa**|**vCore(s)**|**Wartość domyślna**|**Wartość min.**|**Wartość maksymalna**|
 |---|---|---|---|---|
-|Podstawowa (Basic)|1|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
-|Podstawowa (Basic)|2|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
+|Podstawowy|1|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
+|Podstawowy|2|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
 |Ogólnego przeznaczenia|2|262144|128|268435455|
 |Ogólnego przeznaczenia|4|262144|128|536870912|
 |Ogólnego przeznaczenia|8|262144|128|1073741824|
@@ -114,8 +114,8 @@ Przejrzyj [dokumentację MariaDB,](https://mariadb.com/kb/en/server-system-varia
 
 |**Warstwa cenowa**|**vCore(s)**|**Wartość domyślna**|**Wartość min.**|**Wartość maksymalna**|
 |---|---|---|---|---|
-|Podstawowa (Basic)|1|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
-|Podstawowa (Basic)|2|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
+|Podstawowy|1|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
+|Podstawowy|2|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
 |Ogólnego przeznaczenia|2|16777216|16384|268435455|
 |Ogólnego przeznaczenia|4|16777216|16384|536870912|
 |Ogólnego przeznaczenia|8|16777216|16384|1073741824|
@@ -134,8 +134,8 @@ Przejrzyj [dokumentację MariaDB,](https://mariadb.com/kb/en/server-system-varia
 
 |**Warstwa cenowa**|**vCore(s)**|**Wartość domyślna**|**Wartość min.**|**Wartość maksymalna**|
 |---|---|---|---|---|
-|Podstawowa (Basic)|1|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
-|Podstawowa (Basic)|2|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
+|Podstawowy|1|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
+|Podstawowy|2|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
 |Ogólnego przeznaczenia|2|16777216|1024|67108864|
 |Ogólnego przeznaczenia|4|16777216|1024|134217728|
 |Ogólnego przeznaczenia|8|16777216|1024|268435456|
@@ -147,6 +147,10 @@ Przejrzyj [dokumentację MariaDB,](https://mariadb.com/kb/en/server-system-varia
 |Optymalizacja pod kątem pamięci|8|16777216|1024|536870912|
 |Optymalizacja pod kątem pamięci|16|16777216|1024|1073741824|
 |Optymalizacja pod kątem pamięci|32|16777216|1024|1073741824|
+
+### <a name="time_zone"></a>time_zone
+
+Tabele stref czasowych można `mysql.az_load_timezone` wypełniać, wywołując procedurę składowaną z narzędzia, takiego jak wiersz polecenia MySQL lub MySQL Workbench. Zapoznaj się z artykułami [portalu Azure](howto-server-parameters.md#working-with-the-time-zone-parameter) lub [interfejsu wiersza polecenia platformy Azure,](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) aby dowiedzieć się, jak wywołać procedurę składowaną i ustawić strefy czasowe na poziomie globalnym lub sesji.
 
 ## <a name="storage-engine-support"></a>Obsługa silnika pamięci masowej
 

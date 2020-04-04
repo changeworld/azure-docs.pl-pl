@@ -4,26 +4,26 @@ description: Wdrażanie uwierzytelniania systemu Windows i serwera Azure Multi-F
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faab28a714b1a62e1e34de5b07119aa3018db24e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4abfb970ca322724adb0f8919b7509bc8a641378
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263662"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652803"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Uwierzytelnianie systemu Windows i serwer usługi Azure Multi-Factor Authentication
 
 Sekcja Uwierzytelnianie systemu Windows w ramach serwera Azure Multi-Factor Authentication umożliwia włączenie i skonfigurowanie uwierzytelniania systemu Windows dla aplikacji. Przed skonfigurowaniem uwierzytelniania systemu Windows weź pod uwagę kwestie wymienione na poniższej liście:
 
 * Aby usługi terminalowe zaczęły działać, po konfiguracji należy ponownie uruchomić usługę Azure Multi-Factor Authentication.
-* Jeśli zaznaczono opcję „Wymagaj dopasowania użytkownika usługi Azure Multi-Factor Authentication”, a nazwy użytkownika nie ma na liście, zalogowanie się na komputerze po ponownym rozruchu nie będzie możliwe.
+* Jeśli pole wyboru "Wymagaj dopasowania użytkownika uwierzytelniania wieloskładnikowego platformy Azure" i nie znajdujesz się na liście użytkowników, nie będzie można zalogować się do komputera po ponownym uruchomieniu komputera.
 * To, czy adresy IP są zaufane, zależy od tego, czy aplikacja może uwierzytelnić adres IP klienta. Obecnie są obsługiwane wyłącznie usługi terminalowe.  
 
 > [!IMPORTANT]

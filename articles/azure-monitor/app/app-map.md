@@ -4,12 +4,12 @@ description: Monitorowanie złożonych topologii aplikacji za pomocą mapy aplik
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: dce2fdbe7e0c390309be38d2ebab4c73dbb4ed2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0823dd5d880c778f9b7a231ac14f1cbba1940927
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666279"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657389"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikacji: Aplikacje rozproszone triage
 
@@ -85,7 +85,7 @@ Aby wyświetlić aktywne alerty i podstawowe reguły, które powodują wyzwoleni
 
 Mapa aplikacji używa właściwości **nazwa roli chmury** do identyfikowania składników na mapie. SDK usługi Application Insights automatycznie dodaje właściwość nazwy roli chmury do danych telemetrycznych emitowanych przez składniki. Na przykład SDK doda nazwę witryny sieci web lub nazwę roli usługi do właściwości nazwy roli w chmurze. Istnieją jednak przypadki, w których można zastąpić wartość domyślną. Aby zastąpić nazwę roli w chmurze i zmienić to, co zostanie wyświetlone na mapie aplikacji:
 
-### <a name="netnet-core"></a>Rdzeń .NET/.NET
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
 **Napisz niestandardowy telemetryInitializer jak poniżej.**
 
@@ -153,7 +153,26 @@ Dla [aplikacji ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) dodaw
 }
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="java"></a>[Java](#tab/java)
+
+Począwszy od aplikacji Application Insights Java SDK 2.5.0, `<RoleName>` można `ApplicationInsights.xml` określić nazwę roli w chmurze, dodając do pliku, np.
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
+Jeśli używasz Spring Boot z rozrusznikiem spring boot aplikacji Insights, jedyną wymaganą zmianą jest ustawienie nazwy niestandardowej aplikacji w pliku application.properties.
+
+`spring.application.name=<name-of-app>`
+
+Rozrusznik rozruchu sprężyny automatycznie przypisze nazwę roli w chmurze do wartości wprowadzonej dla właściwości spring.application.name.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -174,26 +193,7 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 });
 ```
 
-### <a name="java"></a>Java
-
-Począwszy od aplikacji Application Insights Java SDK 2.5.0, `<RoleName>` można `ApplicationInsights.xml` określić nazwę roli w chmurze, dodając do pliku, np.
-
-```XML
-<?xml version="1.0" encoding="utf-8"?>
-<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
-   <RoleName>** Your role name **</RoleName>
-   ...
-</ApplicationInsights>
-```
-
-Jeśli używasz Spring Boot z rozrusznikiem spring boot aplikacji Insights, jedyną wymaganą zmianą jest ustawienie nazwy niestandardowej aplikacji w pliku application.properties.
-
-`spring.application.name=<name-of-app>`
-
-Rozrusznik rozruchu sprężyny automatycznie przypisze nazwę roli w chmurze do wartości wprowadzonej dla właściwości spring.application.name.
-
-### <a name="clientbrowser-side-javascript"></a>JavaScript po stronie klienta/przeglądarki
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 appInsights.queue.push(() => {
@@ -203,6 +203,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+---
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>Opis nazwy roli chmury w kontekście mapy aplikacji
 
@@ -254,7 +255,7 @@ Jeśli masz problemy z uzyskaniem mapy aplikacji do pracy zgodnie z oczekiwaniam
 
 Mapa aplikacji konstruuje węzeł aplikacji dla każdej unikatowej nazwy roli chmury obecnej w danych telemetrycznych żądania i węzła zależności dla każdej unikatowej kombinacji typu, obiektu docelowego i nazwy roli w chmurze w telemetrii zależności. Jeśli w danych telemetrycznych znajduje się więcej niż 10 000 węzłów, mapa aplikacji nie będzie mogła pobrać wszystkich węzłów i łączy, więc mapa będzie niekompletna. W takim przypadku podczas przeglądania mapy pojawi się komunikat ostrzegawczy.
 
-Ponadto mapa aplikacji obsługuje tylko do 1000 oddzielnych węzłów rozgrupowanych renderowanych jednocześnie. Mapa aplikacji zmniejsza złożoność wizualną, grupując zależności razem, które mają ten sam typ i wywołujących, ale jeśli dane telemetryczne mają zbyt wiele unikatowych nazw ról w chmurze lub zbyt wiele typów zależności, to grupowanie będzie niewystarczające, a mapa nie będzie w stanie Renderowania.
+Ponadto mapa aplikacji obsługuje tylko do 1000 oddzielnych węzłów rozgrupowanych renderowanych jednocześnie. Mapa aplikacji zmniejsza złożoność wizualną, grupując zależności razem, które mają ten sam typ i wywołania, ale jeśli dane telemetryczne ma zbyt wiele unikatowych nazw ról w chmurze lub zbyt wiele typów zależności, to grupowanie będzie niewystarczające, a mapa nie będzie można renderować.
 
 Aby rozwiązać ten problem, musisz zmienić instrumentację, aby poprawnie ustawić nazwę roli w chmurze, typ zależności i pola docelowe zależności.
 

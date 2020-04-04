@@ -8,15 +8,15 @@ ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: c634b1288727ae045d1fb8b6f6cdff4a80e757ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d08552dcae51c897f2419d94e5e61e857247f09a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78298909"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655238"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Dołączanie maszyny wirtualnej systemu CentOS z systemem Linux do domeny zarządzanej usług ad-domenowych usługi Azure
 
@@ -42,7 +42,7 @@ Jeśli masz istniejącą maszynę wirtualną CentOS z systemem Linux na platform
 
 Jeśli chcesz utworzyć maszynę wirtualną CentOS z systemem Linux lub chcesz utworzyć testową maszynę wirtualną do użycia w tym artykule, możesz użyć jednej z następujących metod:
 
-* [Portal Azure](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Interfejs wiersza polecenia platformy Azure](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 

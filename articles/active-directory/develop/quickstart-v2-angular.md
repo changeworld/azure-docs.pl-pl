@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 95db8115a80dcf4be74ef0463bbf915578dd9dae
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 61a098b92db13b8422d9cfebb19610c5de7685cd
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80423102"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631761"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-spa"></a>Szybki start: zaloguj użytkowników i uzyskaj token dostępu w angular SPA
 
@@ -68,7 +68,7 @@ W tym przewodniku Szybki start można użyć przykładu kodu, aby dowiedzieć si
 >[!div renderon="docs"]
 >Aby uruchomić projekt z serwerem sieci web przy https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular użyciu node.js, sklonuj lub [pobierz](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip) podstawowe pliki projektu. Otwórz pliki przy użyciu edytora, takiego jak Visual Studio Code.
 
-> [!div renderon="portal" id="autoupdate" class="sxs-lookup" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [Pobierz przykładowy kod](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip)
 
 > [!div renderon="docs"]

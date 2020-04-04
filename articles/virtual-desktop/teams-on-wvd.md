@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ea9bfd21e7f3b92c99600a2492a809a0fc051ed9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b9b33076a2c2cea27fea181b760a721488682c9
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159620"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657021"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Korzystanie z usługi Microsoft Teams na pulpicie wirtualnym systemu Windows
 
@@ -33,15 +33,25 @@ Aby można było korzystać z usługi Microsoft Teams na pulpicie wirtualnym sys
 
 Nieoptymizowane usługi Microsoft Teams można używać w środowiskach pulpitu wirtualnego systemu Windows, aby korzystać z funkcji pełnego czatu i współpracy w usłudze Microsoft Teams, a także połączeń audio. Jakość dźwięku w połączeniach będzie się różnić w zależności od konfiguracji hosta, ponieważ nieoptymalizowane wywołania zużywają więcej procesora hosta.
 
+### <a name="prepare-your-image-for-teams"></a>Przygotowanie obrazu do pracy w zespołach
+
+Aby włączyć instalację usługi Teams na komputerze, ustaw następujący klucz rejestru na hoście:
+
+```shell
+  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams\IsWVDEnvironment]
+  Type: REG_DWORD
+  Value: 0x1
+```
+
 ### <a name="install-microsoft-teams"></a>Instalowanie usługi Microsoft Teams
 
-Aby zainstalować usługę Microsoft Teams w środowisku pulpitu wirtualnego systemu Windows:
+Aplikację klasyczną Teams można wdrożyć przy użyciu instalacji na komputerze. Aby zainstalować usługę Microsoft Teams w środowisku pulpitu wirtualnego systemu Windows:
 
 1. Pobierz [pakiet MSI teams,](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) który pasuje do Twojego środowiska. Zalecamy użycie instalatora 64-bitowego w 64-bitowym systemie operacyjnym.
 2. Uruchom to polecenie, aby zainstalować msi na maszynie wirtualnej hosta.
 
       ```shell
-      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSER=1
+      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSERS=1
       ```
 
       Spowoduje to zainstalowanie aplikacji Teams na pliki programów lub pliki programów (x86). Przy następnym logowanie i uruchamianie usługi Teams aplikacja poprosi o podanie poświadczeń.
@@ -56,4 +66,4 @@ Aby zainstalować usługę Microsoft Teams w środowisku pulpitu wirtualnego sys
       ```
 
       > [!NOTE]
-      > Jeśli zainstalujesz teams z ustawieniem MSI ALLUSER=1, automatyczne aktualizacje zostaną wyłączone. Zalecamy, aby aktualizować zespoły co najmniej raz w miesiącu.
+      > Jeśli zainstalujesz teams z ustawieniem MSI ALLUSERS=1, automatyczne aktualizacje zostaną wyłączone. Zalecamy, aby aktualizować zespoły co najmniej raz w miesiącu.

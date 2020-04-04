@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 72aefb8de57e27718b14dba6a6d82deb8b63466f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3bbfe26f336a25ee85f2223226d6eb513ae21736
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367282"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632156"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Edytowanie tekstów tekstów w usłudze Azure Automation
 
@@ -22,7 +22,7 @@ Edytor tekstu w usłudze Azure Automation może być używany do edytowania [śm
 
 Edytor tekstu zawiera funkcję wstawiania kodu poleceń cmdlet, zasobów i elementów runbook podrzędnych do elementu runbook. Zamiast wpisywać w kodzie samodzielnie, można wybrać z listy dostępnych zasobów i edytor wstawia odpowiedni kod do emuńczy.
 
-Każdy projekt runbook w usłudze Azure Automation ma dwie wersje, Wersja robocza i Opublikowane. Edytuj wersję roboczą likścień, a następnie publikujesz ją, aby można było ją wykonać. Nie można edytować wersji opublikowanej. Aby uzyskać więcej informacji, zobacz [Publikowanie likmy](manage-runbooks.md#publish-a-runbook).
+Każdy projekt runbook w usłudze Azure Automation ma dwie wersje, Wersja robocza i Opublikowane. Edytuj wersję roboczą likścień, a następnie publikujesz ją, aby można było ją wykonać. Nie można edytować wersji opublikowanej. Aby uzyskać więcej informacji, zobacz [Publikowanie likmy](manage-runbooks.md#publishing-a-runbook).
 
 Ten artykuł zawiera szczegółowe kroki wykonywania różnych funkcji za pomocą tego edytora. Nie mają one zastosowania do [graficznych śmięty.](automation-runbook-types.md#graphical-runbooks) Aby pracować z tymi elementami runbook, zobacz [Tworzenie graficzne w usłudze Azure Automation](automation-graphical-authoring-intro.md).
 
@@ -84,7 +84,7 @@ Export-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automation
 
 ### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>Zmienianie zawartości życióru przy użyciu programu Windows PowerShell
 
-Poniższe przykładowe polecenia pokazują, jak zastąpić istniejącą zawartość elementów runbook zawartością pliku skryptu. Jest to ta sama przykładowa procedura, jak w [polu Aby zaimportować program runbook z pliku skryptu za pomocą programu Windows PowerShell](manage-runbooks.md#import-a-runbook).
+Poniższe przykładowe polecenia pokazują, jak zastąpić istniejącą zawartość elementów runbook zawartością pliku skryptu. Jest to ta sama przykładowa procedura, jak w [polu Aby zaimportować program runbook z pliku skryptu za pomocą programu Windows PowerShell](manage-runbooks.md#importing-a-runbook).
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"

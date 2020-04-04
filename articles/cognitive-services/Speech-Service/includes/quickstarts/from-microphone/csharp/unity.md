@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: be8497cb07bd3c761c59bfc55e773b5dcc937c50
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 209242f723032c9e93f3dd6b20fac77c6a2badce
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925673"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658305"
 ---
 > [!NOTE]
 > Zestaw SDK mowy dla unity obsługuje komputery Windows Desktop (x86 i x64) lub uniwersalną platformę windows (x86, x64, ARM/ARM64), android (x86, ARM32/64) i iOS (symulator x64, ARM32 i ARM64)
@@ -133,4 +133,4 @@ Aby uzyskać więcej informacji, zobacz nasze [przykładowe repozytorium](https:
 
 ## <a name="next-steps"></a>Następne kroki
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [footer](../footer.md)]

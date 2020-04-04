@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 785a8a031a10232a37b235711ba919fdc1df35d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7be99959c2ae420cff667491f68c40dfa0862a9
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77061429"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652383"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset"></a>Planowanie samoobsługowego resetowania hasła usługi Azure Active Directory
 
@@ -66,7 +66,7 @@ Aby uzyskać więcej informacji na temat cen, zobacz [Cennik usługi Azure Activ
 
 ### <a name="training-resources"></a>Zasoby szkoleniowe
 
-| Resources| Łącze i opis |
+| Zasoby| Łącze i opis |
 | - | - |
 | Filmy wideo| [Zapewnij użytkownikom lepszą skalowalność IT](https://youtu.be/g9RpRnylxS8) 
 | |[Co to jest samoobsługowe resetowanie hasła?](https://youtu.be/hc97Yx5PJiM)|
@@ -79,7 +79,7 @@ Aby uzyskać więcej informacji na temat cen, zobacz [Cennik usługi Azure Activ
 |Samouczki |[przeprowadzanie pilotażowego wdrożenia samoobsługowego resetowania hasła usługi Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot) |
 | |[włączanie zapisywania zwrotnego haseł](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback) |
 | |[Resetowanie hasła usługi Azure AD z ekranu logowania dla systemu Windows 10](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows) |
-| Najczęściej zadawane pytania|[Często zadawane pytania dotyczące zarządzania hasłami](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
+| Często zadawane pytania|[Często zadawane pytania dotyczące zarządzania hasłami](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
 
 
 ### <a name="solution-architecture"></a>Architektura rozwiązania

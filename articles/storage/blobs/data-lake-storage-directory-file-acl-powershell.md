@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/02/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 9be3b2c9b2624d4cd758081703373a433861e4a7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 58548c5cb1aa6aba6dda09d5d420b36bb8154726
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585310"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656396"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Zarządzanie katalogami, plikami i listami ALs w usłudze Azure Data Lake Storage Gen2 za pomocą programu PowerShell (wersja zapoznawcza)
 
@@ -131,8 +131,8 @@ $dir.ACL
 $dir.Permissions
 $dir.Group
 $dir.Owner
-$dir.Metadata
 $dir.Properties
+$dir.Properties.Metadata
 ```
 
 ## <a name="rename-or-move-a-directory"></a>Zmienianie nazwy lub przenoszenie katalogu
@@ -199,9 +199,7 @@ $dirname = "my-directory/"
 Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Path $dirname -OutputUserPrincipalName
 ```
 
-W tym przykładzie nie `ACL`zwraca `Permissions` `Group`wartości `Owner` dla , , i właściwości. Aby uzyskać te wartości, należy użyć parametru. `-FetchProperty` 
-
-Poniższy przykład zawiera listę zawartości tego samego katalogu, `-FetchProperty` ale używa również `ACL`parametru do zwracania wartości dla , `Permissions`, `Group`i `Owner` właściwości. 
+Poniższy przykład `ACL`zawiera `Permissions` `Group`listę `Owner` , , i właściwości każdego elementu w katalogu. Parametr `-FetchProperty` jest wymagany do uzyskania `ACL` wartości dla właściwości. 
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -234,8 +232,9 @@ W tym przykładzie przekazuje ten sam plik, ale następnie ustawia uprawnienia, 
 ```powershell
 $file = New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $destPath -Source $localSrcFile -Permission rwxrwxrwx -Umask ---rwx--- -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 $file1
-$file1.File.Metadata
-$file1.File.Properties
+$file1.Properties
+$file1.Properties.Metadata
+
 ```
 
 ## <a name="show-file-properties"></a>Pokaż właściwości pliku
@@ -251,8 +250,8 @@ $file.ACL
 $file.Permissions
 $file.Group
 $file.Owner
-$file.Metadata
 $file.Properties
+$file.Properties.Metadata
 ```
 
 ## <a name="delete-a-file"></a>Usuwanie pliku
@@ -324,7 +323,7 @@ $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw-
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
 Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Acl $acl
-$filesystem = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
+$filesystem = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName
 $filesystem.ACL
 ```
 
@@ -369,7 +368,7 @@ $filesystemName = "my-file-system"
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
-Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -FetchProperty | Update-AzDataLakeGen2Item -Acl $acl
+Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse | Update-AzDataLakeGen2Item -Acl $acl
 ```
 <a id="gen1-gen2-map" />
 

@@ -45,7 +45,7 @@
       href: concepts-architecture.md
     - name: Co to są szablony aplikacji?
       href: concepts-app-templates.md
-    - name: Łączenie się
+    - name: Łączność urządzeń
       href: concepts-get-connected.md
     - name: Łączenie urządzeń usługi IoT Edge
       href: concepts-iot-edge.md

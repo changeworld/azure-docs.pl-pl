@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 8087baf7595bfd2497f97fbff4822b356cd1b146
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 622c0cb8d58dddcdb13c7dc9412ada3f2e2d93e4
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274569"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632988"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Zarządzanie grupami zasobów usługi Azure Resource Manager przy użyciu portalu Azure
 
@@ -29,7 +29,6 @@ Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania pl
 
 Grupa zasobów przechowuje metadane dotyczące zasobów. Z tego powodu określając lokalizację dla grupy zasobów, określasz miejsce, w którym przechowywane są metadane. Dla zachowania zgodności może być konieczne upewnienie się, że dane są przechowywane w odpowiednim regionie.
 
-Grupa zasobów przechowuje metadane dotyczące zasobów. Po określeniu lokalizacji dla grupy zasobów, określasz, gdzie te metadane są przechowywane.
 
 ## <a name="create-resource-groups"></a>Tworzenie grup zasobów
 

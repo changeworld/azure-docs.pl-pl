@@ -4,19 +4,19 @@ description: Włączanie logowania się bez użycia hasła do usługi Azure AD p
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e088d239a91edeff34ecd1a7dc5be7a9f8628da3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8574fcdff12e61f7039174ed6297d0558a66dc4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129157"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653937"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Włączanie logowania bez hasła (wersja zapoznawcza)
 
@@ -70,7 +70,7 @@ Funkcje rejestracji metod uwierzytelniania bez hasła zależą od połączonej w
 1. Wybierz **urządzenie USB** lub urządzenie **NFC**.
 1. Przygotuj klucz i wybierz pozycję **Dalej**.
 1. Pojawi się okno i poprosi użytkownika o utworzenie/wprowadzenie kodu PIN dla klucza zabezpieczeń, a następnie wykonanie wymaganego gestu dla klucza, biometrycznego lub dotykowego.
-1. Użytkownik zostanie zwrócony do połączonego środowiska rejestracji i poproszony o podanie znaczącej nazwy klucza, dzięki czemu użytkownik może zidentyfikować, który z nich ma wiele. Kliknij przycisk **alej**.
+1. Użytkownik zostanie zwrócony do połączonego środowiska rejestracji i poproszony o podanie znaczącej nazwy klucza, dzięki czemu użytkownik może zidentyfikować, który z nich ma wiele. Kliknij przycisk **Dalej**.
 1. Kliknij **przycisk Gotowe,** aby zakończyć proces.
 
 ## <a name="sign-in-with-passwordless-credential"></a>Logowanie się przy użyciu poświadczeń bez hasła
@@ -95,7 +95,7 @@ Jeśli chcesz udostępnić opinię lub napotkasz problemy podczas wyświetlania 
 
 Administrator inicjowania obsługi administracyjnej i usuwania obsługi administracyjnej kluczy zabezpieczeń nie jest dostępna w publicznej wersji zapoznawczej.
 
-### <a name="upn-changes"></a>Zmiany w upn
+### <a name="upn-changes"></a>Zmiany nazwy UPN
 
 Pracujemy nad obsługą funkcji, która umożliwia zmianę sieci UPN na hybrydowych urządzeniach przyłączonych do usługi Azure AD i przyłączonych do usługi Azure AD. Jeśli numer UPN użytkownika ulegnie zmianie, nie można już modyfikować kluczy zabezpieczeń FIDO2 w celu uwzględnienia tej zmiany. Rozdzielczość jest zresetować urządzenie i użytkownik musi ponownie zarejestrować.
 

@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28ac075d043f7605b6dfdac6879063fbe9308123
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 25e6770fb38d13591186754bc5e6a7641083a899
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619059"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633511"
 ---
 # <a name="group-by-options-in-synapse-sql-pool"></a>Grupowanie według opcji w puli sql synapse
 
@@ -24,7 +24,7 @@ W tym artykule znajdziesz wskazówki dotyczące implementowania grupy według op
 
 ## <a name="what-does-group-by-do"></a>Do czego działa GRUPA BY?
 
-Klauzula [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL agreguje dane do zestawu podsumowań wierszy. GRUPA WEDŁUG ma kilka opcji, które nie obsługuje puli SQL. Te opcje mają obejścia, które są następujące:
+Klauzula [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL agreguje dane do zestawu podsumowań wierszy. GRUPA WEDŁUG ma kilka opcji, które nie obsługuje puli SQL. Te opcje mają obejścia, które są następujące:
 
 * GRUPA WEDŁUG Z ROLLUP
 * ZESTAWY GRUPOWANIA
@@ -35,6 +35,7 @@ Klauzula [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL agreg
 Najprostszą opcją w tym miejscu jest użycie UNION ALL do wykonywania zestawienia, a nie polegania na jawnej składni. Wynik jest dokładnie taki sam.
 
 Poniższy przykład przy użyciu instrukcji GROUP BY z opcją ROLLUP:
+
 ```sql
 SELECT [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
@@ -84,9 +85,10 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 Aby zastąpić ZESTAWY GRUPOWANIA, stosuje się zasadę próbki. Wystarczy utworzyć wszystkie sekcje UNION dla poziomów agregacji, które mają być wyświetlane.
 
 ## <a name="cube-options"></a>Opcje modułu
+
 Możliwe jest utworzenie GRUPY PRZEZ Z CUBE przy użyciu podejścia UNION ALL. Problem polega na tym, że kod może szybko stać się uciążliwe i nieporęczne. Aby rozwiązać ten problem, można użyć tego bardziej zaawansowanego podejścia.
 
-Przy użyciu poprzedniego przykładu pierwszym krokiem jest zdefiniowanie "moduł", który definiuje wszystkie poziomy agregacji, które chcemy utworzyć. 
+Przy użyciu poprzedniego przykładu pierwszym krokiem jest zdefiniowanie "moduł", który definiuje wszystkie poziomy agregacji, które chcemy utworzyć.
 
 Zanotuj CROSS JOIN dwóch tabel pochodnych, ponieważ generuje to wszystkie poziomy dla nas. Reszta kodu służy do formatowania:
 
@@ -182,5 +184,5 @@ ORDER BY 1,2,3
 Rozbijając kod na sekcje i generowania konstrukcji pętli, kod staje się łatwiejsze w zarządzaniu i utrzymania.
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej wskazówek dotyczących rozwoju, zobacz [omówienie rozwoju](sql-data-warehouse-overview-develop.md).
 
+Aby uzyskać więcej wskazówek dotyczących rozwoju, zobacz [omówienie rozwoju](sql-data-warehouse-overview-develop.md).

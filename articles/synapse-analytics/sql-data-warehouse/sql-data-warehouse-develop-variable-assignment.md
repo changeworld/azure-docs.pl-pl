@@ -1,6 +1,6 @@
 ---
 title: Przypisywanie zmiennych
-description: Porady dotyczące przypisywania zmiennych T-SQL w usłudze Azure SQL Data Warehouse do tworzenia rozwiązań.
+description: W tym artykule znajdziesz podstawowe wskazówki dotyczące przypisywania zmiennych T-SQL w puli SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0adcd9bdf92b7ec649b7d91ca0e655fc006b3549
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2dcf706ea59657abc2718a69e59191604dc2849d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351660"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633408"
 ---
-# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Przypisywanie zmiennych w magazynie danych SQL usługi Azure
+# <a name="assign-variables-in-synapse-sql-pool"></a>Przypisywanie zmiennych w puli SQL Synapse
 
-Porady dotyczące przypisywania zmiennych T-SQL w usłudze Azure SQL Data Warehouse do tworzenia rozwiązań.
+W tym artykule znajdziesz podstawowe wskazówki dotyczące przypisywania zmiennych T-SQL w puli SQL.
 
-## <a name="setting-variables-with-declare"></a>Ustawianie zmiennych za pomocą DECLARE
+## <a name="set-variables-with-declare"></a>Ustawianie zmiennych za pomocą DECLARE
 
-Zmienne w magazynie danych SQL `DECLARE` są `SET` ustawiane przy użyciu instrukcji lub instrukcji. Inicjowanie zmiennych za pomocą declare jest jednym z najbardziej elastycznych sposobów ustawiania wartości zmiennej w magazynie danych SQL.
+Zmienne w puli SQL `DECLARE` są ustawiane przy użyciu instrukcji lub `SET` instrukcji. Inicjowanie zmiennych za pomocą declare jest jednym z najbardziej elastycznych sposobów ustawiania wartości zmiennej w puli SQL.
 
 ```sql
 DECLARE @v  int = 0
@@ -39,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Nie można zainicjować i użyć zmiennej w tej samej instrukcji DECLARE. Aby zilustrować punkt, poniższy **not** przykład nie @p1 jest dozwolone, ponieważ jest inicjowany i używany w tej samej instrukcji DECLARE. Poniższy przykład zawiera błąd.
+Nie można zainicjować i użyć zmiennej w tej samej instrukcji DECLARE. Aby zilustrować punkt, poniższy **not** przykład nie @p1 jest dozwolone, ponieważ jest inicjowany i używany w tej samej instrukcji DECLARE. W związku z tym następujący przykład zawiera błąd:
 
 ```sql
 DECLARE @p1 int = 0
@@ -47,7 +47,7 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="setting-values-with-set"></a>Ustawianie wartości za pomocą SET
+## <a name="set-values-with-set"></a>Ustawianie wartości za pomocą zestawu
 
 SET jest powszechną metodą ustawiania pojedynczej zmiennej.
 
@@ -64,7 +64,7 @@ Za pomocą SET można ustawić tylko jedną zmienną naraz. Jednakże podmioty p
 
 ## <a name="limitations"></a>Ograniczenia
 
-Nie można użyć update dla przypisania zmiennych.
+Nie można użyć UPDATE do przypisania zmiennych.
 
 ## <a name="next-steps"></a>Następne kroki
 

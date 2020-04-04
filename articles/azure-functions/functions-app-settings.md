@@ -3,12 +3,12 @@ title: Dokumentacja ustawień aplikacji dla usługi Azure Functions
 description: Dokumentacja dotycząca ustawień aplikacji usługi Azure Functions lub zmiennych środowiskowych.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2d168d8828d17e13f875e3b2555c7db0d4ba32d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277832"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656799"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Dokumentacja ustawień aplikacji dla usługi Azure Functions
 
@@ -20,11 +20,19 @@ Istnieją inne opcje konfiguracji globalnej w pliku [host.json](functions-host-j
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Klucz instrumentacji usługi Application Insights, jeśli używasz usługi Application Insights. Zobacz [Monitoruj funkcje platformy Azure](functions-monitoring.md).
+Klucz instrumentacji dla usługi Application Insights. Używaj tylko `APPINSIGHTS_INSTRUMENTATIONKEY` `APPLICATIONINSIGHTS_CONNECTIONSTRING`jednego z . Aby uzyskać więcej informacji, zobacz [Monitorowanie funkcji platformy Azure](functions-monitoring.md). 
 
 |Klucz|Wartość przykładowa|
 |---|------------|
-|APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
+|APPINSIGHTS_INSTRUMENTATIONKEY|55555555-af77-484b-9032-64f83bb83bb|
+
+## <a name="applicationinsights_connectionstring"></a>APPLICATIONINSIGHTS_CONNECTIONSTRING
+
+Parametry połączenia dla usługi Application Insights. Użyj `APPLICATIONINSIGHTS_CONNECTIONSTRING` zamiast `APPINSIGHTS_INSTRUMENTATIONKEY` gdy aplikacja funkcji wymaga dodanych dostosowań obsługiwanych przy użyciu ciągu połączenia. Aby uzyskać więcej informacji, zobacz [Parametry połączenia](../azure-monitor/app/sdk-connection-string.md). 
+
+|Klucz|Wartość przykładowa|
+|---|------------|
+|APPLICATIONINSIGHTS_CONNECTIONSTRING|InstrumentationKey=[key];IngestionEndpoint=[url]; LiveEndpoint=[url]; ProfilerEndpoint=[url]; SnapshotEndpoint=[url];|
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: d35c96657f48905f37c9ebe246d81ebb9545cf27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1392f69bea09996e46ad4c112474f9067ff5a63d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283136"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656912"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Składnia kwerendy lucene w usłudze Azure Cognitive Search
 
@@ -161,16 +161,17 @@ Poniższy przykład pomaga zilustrować różnice. Załóżmy, że istnieje prof
 ##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a>Wyszukiwanie wyrażeń regularnych  
  Wyszukiwanie wyrażeń regularnych znajduje dopasowanie na podstawie zawartości między ukośnikami "/", zgodnie z dokumentami w [klasie RegExp](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html).  
 
- Na przykład, aby znaleźć dokumenty zawierające "motel" `/[mh]otel/`lub "hotel", określ .  Wyszukiwania wyrażeń regularnych są dopasowywane do pojedynczych słów.   
+ Na przykład, aby znaleźć dokumenty zawierające "motel" `/[mh]otel/`lub "hotel", określ . Wyszukiwania wyrażeń regularnych są dopasowywane do pojedynczych słów.
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>Wyszukiwanie symboli wieloznacznych  
- Można użyć ogólnie rozpoznaną składni dla wielu (*) lub pojedynczych symboli wieloznacznych. Należy zauważyć, że analizator zapytania Lucene obsługuje użycie tych symboli z jednym terminem, a nie frazą.  
+ Można użyć ogólnie rozpoznaną składni dla wielu (*) lub pojedynczych symboli wieloznacznych. Należy zauważyć, że analizator zapytania Lucene obsługuje użycie tych symboli z jednym terminem, a nie frazą.
 
- Na przykład, aby znaleźć dokumenty zawierające słowa z prefiksem "uwaga", takie jak "notatnik" lub "notatnik", określ "uwaga*".  
+Wyszukiwanie prefiksów używa również`*`znaku gwiazdki ( ). Na przykład wyrażenie kwerendy `search=note*` zwraca "notebook" lub "notatnik". Pełna składnia lucene nie jest wymagana do wyszukiwania prefiksów. Prosta składnia obsługuje ten scenariusz.
+
+Wyszukiwanie sufiksów, gdzie `*` lub `?` poprzedza ciąg, wymaga pełnej składni Lucene i wyrażenia regularnego (nie można użyć * lub ? jako pierwszy znak wyszukiwania). Biorąc pod uwagę termin "alfanumeryczny",`search=/.*numeric.*/`wyrażenie zapytania ( ) znajdzie dopasowanie.
 
 > [!NOTE]  
->  Nie można użyć * lub ? jako pierwszy znak wyszukiwania.  
->  W kwerendach wyszukiwania z symbolami wieloznacznych nie jest przeprowadzana żadna analiza tekstu. W czasie kwerendy terminy kwerendy wieloznaczne są porównywane z analizowanymi terminami w indeksie wyszukiwania i rozwiniętymi.
+> Podczas analizowania kwerend kwerend kwerendy sformułowane jako prefiks, sufiks, symbol wieloznaczny lub wyrażenia regularne są przekazywane jako —jest do drzewa kwerend, z pominięciem [analizy leksykalne](search-lucene-query-architecture.md#stage-2-lexical-analysis). Dopasowania zostaną znalezione tylko wtedy, gdy indeks zawiera ciągi w formacie określonym przez zapytanie. W większości przypadków będzie potrzebny alternatywny analizator podczas indeksowania, który zachowuje integralność ciągu, dzięki czemu częściowe dopasowanie termin i wzorzec powiedzie się. Aby uzyskać więcej informacji, zobacz [Częściowe wyszukiwanie terminów w kwerendach usługi Azure Cognitive Search](search-query-partial-matching.md).
 
 ## <a name="see-also"></a>Zobacz też  
 

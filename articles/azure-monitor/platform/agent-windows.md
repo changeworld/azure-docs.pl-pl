@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 65a6f51d0eef28ea33adcc755d3d51f1e06a5341
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 70fa66a96291e0c2a638bf69bdce7da531d32bb7
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528336"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637471"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Łączenie komputerów z systemem Windows z monitorem platformy Azure
 
@@ -32,7 +32,7 @@ Agent może być zainstalowany przy użyciu jednej z następujących metod. W wi
 
 Jeśli trzeba skonfigurować agenta do raportowania do więcej niż jednego obszaru roboczego, nie można tego wykonać podczas wstępnej konfiguracji, dopiero później, [aktualizując](agent-manage.md#adding-or-removing-a-workspace)ustawienia z Panelu sterowania lub programu PowerShell zgodnie z opisem w temacie Dodawanie lub usuwanie obszaru roboczego .  
 
-Aby poznać obsługiwaną konfigurację, przejrzyj tematy dotyczące [obsługiwanych systemów operacyjnych Windows](log-analytics-agent.md#supported-windows-operating-systems) oraz [konfiguracji zapory sieciowej](log-analytics-agent.md#firewall-requirements).
+Aby poznać obsługiwaną konfigurację, przejrzyj tematy dotyczące [obsługiwanych systemów operacyjnych Windows](log-analytics-agent.md#supported-windows-operating-systems) oraz [konfiguracji zapory sieciowej](log-analytics-agent.md#network-requirements).
 
 ## <a name="obtain-workspace-id-and-key"></a>Uzyskiwanie identyfikatora i klucza obszaru roboczego
 Przed zainstalowaniem agenta usługi Log Analytics dla systemu Windows potrzebny jest identyfikator obszaru roboczego i klucz obszaru roboczego usługi Log Analytics.  Te informacje są wymagane podczas instalacji z każdej metody instalacji, aby poprawnie skonfigurować agenta i upewnić się, że może pomyślnie komunikować się z usługą Azure Monitor w chmurze komercyjnej platformy Azure i us government. 
@@ -136,44 +136,44 @@ Poniższy przykład instaluje agenta 64-bitowego, identyfikowanego przez `URI` w
 Aby pobrać kod produktu bezpośrednio z pakietu instalacji agenta, można użyć programu Orca.exe ze [składników zestawu Windows SDK dla deweloperów instalatora windows,](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) który jest składnikiem zestawu Windows Software Development Kit lub przy użyciu programu PowerShell zgodnie z [przykładowym skryptem](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) napisanym przez microsoft valuable professional (MVP).  Dla obu podejść należy najpierw wyodrębnić plik **MOMagent.msi** z pakietu instalacyjnego MMASetup.  Jest to pokazane wcześniej w pierwszym kroku w sekcji [Zainstaluj agenta za pomocą wiersza polecenia](#install-the-agent-using-the-command-line).  
 
 1. Zaimportuj moduł xPSDesiredStateConfiguration DSC z [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) usługi Azure Automation.  
-1. Tworzenie zasobów zmiennych usługi Azure Automation dla *OPSINSIGHTS_WS_ID* i *OPSINSIGHTS_WS_KEY*. Ustaw *OPSINSIGHTS_WS_ID* identyfikator obszaru roboczego usługi Log Analytics i ustaw *OPSINSIGHTS_WS_KEY* klucza podstawowego obszaru roboczego.
-1. Skopiuj skrypt i zapisz go jako MMAgent.ps1.
+2.    Tworzenie zasobów zmiennych usługi Azure Automation dla *OPSINSIGHTS_WS_ID* i *OPSINSIGHTS_WS_KEY*. Ustaw *OPSINSIGHTS_WS_ID* identyfikator obszaru roboczego usługi Log Analytics i ustaw *OPSINSIGHTS_WS_KEY* klucza podstawowego obszaru roboczego.
+3.    Skopiuj skrypt i zapisz go jako MMAgent.ps1.
 
-   ```powershell
-   Configuration MMAgent
-   {
-       $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
-       $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
-       $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
+```powershell
+Configuration MMAgent
+{
+    $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
+    $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
+    $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
 
-       Import-DscResource -ModuleName xPSDesiredStateConfiguration
-       Import-DscResource -ModuleName PSDesiredStateConfiguration
+    Import-DscResource -ModuleName xPSDesiredStateConfiguration
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
 
-       Node OMSnode {
-           Service OIService
-           {
-               Name = "HealthService"
-               State = "Running"
-               DependsOn = "[Package]OI"
-           }
+    Node OMSnode {
+        Service OIService
+        {
+            Name = "HealthService"
+            State = "Running"
+            DependsOn = "[Package]OI"
+        }
 
-           xRemoteFile OIPackage {
-               Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
-               DestinationPath = $OIPackageLocalPath
-           }
+        xRemoteFile OIPackage {
+            Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
+            DestinationPath = $OIPackageLocalPath
+        }
 
-           Package OI {
-               Ensure = "Present"
-               Path  = $OIPackageLocalPath
-               Name = "Microsoft Monitoring Agent"
-               ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
-               Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + '      OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
-               DependsOn = "[xRemoteFile]OIPackage"
-           }
-       }
-   }
+        Package OI {
+            Ensure = "Present"
+            Path  = $OIPackageLocalPath
+            Name = "Microsoft Monitoring Agent"
+            ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
+            Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
+            DependsOn = "[xRemoteFile]OIPackage"
+        }
+    }
+}
 
-   ```
+```
 
 4. Zaktualizuj `ProductId` wartość w skrypcie za pomocą kodu produktu wyodrębnionego z najnowszej wersji pakietu instalacji agenta przy użyciu metod zalecanych wcześniej. 
 5. [Zaimportuj skrypt konfiguracyjny MMAgent.ps1](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) do swojego konta automatyzacji. 

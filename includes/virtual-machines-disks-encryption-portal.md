@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/11/2020
+ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6077db0a09b09f7e4bfb859902da53b173845e55
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: b8073240bdda38757a5e4feee66c9f54746966c4
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520757"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632044"
 ---
 ### <a name="portal"></a>Portal
 
@@ -21,7 +21,7 @@ Konfigurowanie kluczy zarządzanych przez klienta dla dysków będzie wymagało 
 
 #### <a name="setting-up-your-azure-key-vault"></a>Konfigurowanie usługi Azure Key Vault
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) i wyszukaj usługę Key Vault
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/).
 1. Wyszukaj i wybierz **przechowalnię kluczy**.
 
     [![sse-key-vault-portal-search.png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
@@ -30,7 +30,7 @@ Konfigurowanie kluczy zarządzanych przez klienta dla dysków będzie wymagało 
     > Magazyn kluczy platformy Azure, zestaw szyfrowania dysku, maszyna wirtualna, dyski i migawki muszą znajdować się w tym samym regionie i subskrypcji, aby wdrożenie zakończyło się pomyślnie.
 
 1. Wybierz **+Dodaj,** aby utworzyć nową przechowalnię kluczy.
-1. Tworzenie nowej grupy zasobów
+1. Utwórz nową grupę zasobów.
 1. Wprowadź nazwę magazynu kluczy, wybierz region i wybierz warstwę cenową.
 1. Wybierz **pozycję Recenzja + Utwórz**, sprawdź swoje wybory, a następnie wybierz pozycję **Utwórz**.
 
@@ -38,7 +38,7 @@ Konfigurowanie kluczy zarządzanych przez klienta dla dysków będzie wymagało 
 
 1. Po zakończeniu wdrażania magazynu kluczy wybierz go.
 1. Wybierz **pozycję Klawisze** w obszarze **Ustawienia**.
-1. Wybierz **pozycję Generuj/Importuj**
+1. Wybierz **pozycję Generuj/Importuj**.
 
     ![Zrzut ekranu przedstawiający okienko ustawień zasobu magazynu kluczy. Pokazuje przycisk generowania/importowania wewnątrz ustawień.](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
@@ -49,15 +49,8 @@ Konfigurowanie kluczy zarządzanych przez klienta dla dysków będzie wymagało 
 
 #### <a name="setting-up-your-disk-encryption-set"></a>Konfigurowanie zestawu szyfrowania dysku
 
-Aby utworzyć i skonfigurować zestawy szyfrowania dysków, należy użyć następującego łącza: https://aka.ms/diskencryptionsets. Jeśli korzystasz z regionów instytucji rządowych platformy Microsoft Azure, [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)musisz użyć tego łącza: . Tworzenie zestawu szyfrowania dysku nie jest jeszcze dostępne w globalnej witrynie Azure portal.
-
-1. Otwórz łącze zestawów szyfrowania dysku odpowiednie dla danego regionu:
-
-    Regiony publiczne:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Regiony platformy Azure dla instytucji rządowych:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
-    
-1. Wybierz **+Dodaj**.
+1. Wyszukaj **zestawy szyfrowania dysków** i wybierz je.
+1. W bloku **Zestawy szyfrowania dysku** wybierz **+Dodaj**.
 
     ![Zrzut ekranu przedstawiający główny ekran portalu szyfrowania dysku. Wyróżnianie przycisku Dodaj](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
 
@@ -82,12 +75,6 @@ Dwa powiadomienia powinny pojawić się i zakończyć się powodzeniem. W ten sp
 Po utworzeniu i skonfigurowaniu magazynu kluczy i zestawu szyfrowania dysku można wdrożyć maszynę wirtualną przy użyciu szyfrowania.
 Proces wdrażania maszyny Wirtualnej jest podobny do standardowego procesu wdrażania, jedynymi różnicami są to, że trzeba wdrożyć maszynę wirtualną w tym samym regionie, co inne zasoby i zdecydujesz się użyć klucza zarządzanego przez klienta.
 
-1. Otwórz łącze zestawów szyfrowania dysku odpowiednie dla danego regionu:
-
-    Regiony publiczne:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Regiony platformy Azure dla instytucji rządowych:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
-
 1. Wyszukaj **maszyny wirtualne** i wybierz **+ Dodaj,** aby utworzyć maszynę wirtualną.
 1. Na karcie **Podstawowe** wybierz ten sam region, co zestaw szyfrowania dysku i usługę Azure Key Vault.
 1. Wypełnij inne wartości na karcie **Podstawowe,** jak chcesz.
@@ -102,16 +89,8 @@ Proces wdrażania maszyny Wirtualnej jest podobny do standardowego procesu wdra�
 
 #### <a name="enable-on-an-existing-disk"></a>Włączanie na istniejącym dysku
 
-Aby zarządzać szyfrowaniem dysku i konfigurować je na istniejących https://aka.ms/diskencryptionsetsdyskach, należy użyć następującego łącza: . Włączanie kluczy zarządzanych przez klienta na istniejących dyskach nie jest jeszcze dostępne w globalnej witrynie Azure portal.
-
 > [!CAUTION]
 > Włączenie szyfrowania dysku na wszystkich dyskach podłączonych do maszyny Wirtualnej będzie wymagało zatrzymania maszyny Wirtualnej.
-
-1. Otwórz łącze zestawów szyfrowania dysku odpowiednie dla danego regionu:
-
-    Regiony publiczne:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Regiony platformy Azure dla instytucji rządowych:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
     
 1. Przejdź do maszyny Wirtualnej, która znajduje się w tym samym regionie co jeden z zestawów szyfrowania dysku.
 1. Otwórz maszynę wirtualną i wybierz **pozycję Zatrzymaj**.

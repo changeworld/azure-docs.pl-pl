@@ -1,53 +1,42 @@
 ---
-title: 'Szybki start: rozpoznawanie mowy z mikrofonu, C++ (Windows) — usługa mowy'
-titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak rozpoznawać mowę w języku C++ na komputerze z systemem Windows przy użyciu zestawu SDK usługi Mowa
-services: cognitive-services
-author: wolfma61
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
-ms.author: wolfma
-ms.openlocfilehash: 416c2893ebf07cd638f3f1c06c709db2586245d1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/03/2020
+ms.author: dapine
+ms.openlocfilehash: 9e7716acfe95371c9e9734b6962b66c405bd47e4
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925985"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80659232"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Zanim zaczniesz:
 
 > [!div class="checklist"]
-> * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Tworzenie zasobu mowy platformy Azure<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * Upewnij się, że masz dostęp do mikrofonu do przechwytywania dźwięku
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="source-code"></a>Kod źródłowy
 
-1. Otwórz plik źródłowy **helloworld.cpp**.
+Utwórz plik źródłowy języka C++ o nazwie *helloworld.cpp*i wklej do niego następujący kod.
 
-1. Zastąp cały kod następującym fragmentem kodu:
+[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-microphone/helloworld/helloworld.cpp#code)]
 
-   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-microphone/helloworld/helloworld.cpp#code)]
+[!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-1. W tym samym pliku zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji.
+## <a name="code-explanation"></a>Wyjaśnienie kodu
 
-1. Zastąp ciąg `YourServiceRegion` **identyfikatorem Region** z [regionu skojarzonego](https://aka.ms/speech/sdkregion) z subskrypcją (na przykład `westus` dla bezpłatnej subskrypcji próbnej).
+[!INCLUDE [code explanation](../code-explanation.md)]
 
-1. Na pasku menu wybierz pozycję Zapisz**wszystkie** **pliki** > .
-
-> [!NOTE]
-> SDK mowy domyślnie rozpoznaje przy użyciu en-us dla języka, zobacz [Określanie języka źródłowego mowy do tekstu, aby](../../../../how-to-specify-source-language.md) uzyskać informacje na temat wybierania języka źródłowego.
-
-## <a name="build-and-run-the-application"></a>Kompilowanie i uruchamianie aplikacji
+## <a name="build-and-run-app"></a>Tworzenie i uruchamianie aplikacji
 
 1. Na pasku menu **wybierz** > build**build solution,** aby utworzyć aplikację. Kod powinien teraz zostać skompilowany bez błędów.
 
-1. Wybierz **debugowanie** > **rozpocznij debugowanie** (lub naciśnij klawisz **F5),** aby uruchomić aplikację **helloworld.**
+1. Wybierz **debugowanie** > **rozpocznij debugowanie** (lub naciśnij klawisz <kbd>F5),</kbd>aby uruchomić aplikację **helloworld.**
 
 1. Wypowiedz zwrot lub zdanie w języku angielskim. Aplikacja przesyła mowy do usługi mowy, która transkrybuje tekst i wysyła go z powrotem do aplikacji do wyświetlania.
 
@@ -55,4 +44,4 @@ Zanim zaczniesz:
 
 ## <a name="next-steps"></a>Następne kroki
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [footer](../footer.md)]

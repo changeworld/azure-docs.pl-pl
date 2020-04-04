@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ace4bc2e46d9e1926da18dedb163657d4f343979
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 01a05755fc18a85a95e9c1bec1c470d37af656d1
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586312"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632231"
 ---
 # <a name="data-warehouse-units-dwus"></a>Jednostki magazynu danych (DWU)
 
@@ -24,14 +24,18 @@ Zalecenia dotyczące wyboru idealnej liczby jednostek magazynu danych (DWU) w ce
 
 ## <a name="what-are-data-warehouse-units"></a>Co to są jednostki magazynu danych
 
-[A Synapse puli SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) reprezentuje zbiór zasobów analitycznych, które są aprowizacji. Zasoby analityczne są definiowane jako połączenie procesora CPU, pamięci i we/wy. Te trzy zasoby są powiązane z jednostkami skali obliczeniowej o nazwie Jednostki hurtowni danych (DWU). Jednostka DWU to abstrakcyjna, znormalizowana miara zasobów obliczeniowych i wydajności. Zmiana poziomu usług zmienia liczbę jednostek DU dostępnych dla systemu, co z kolei dostosowuje wydajność i koszt systemu.
+[A Synapse puli SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) reprezentuje zbiór zasobów analitycznych, które są aprowizacji. Zasoby analityczne są definiowane jako kombinacja procesora CPU, pamięci i we/wy. 
+
+Te trzy zasoby są powiązane z jednostkami skali obliczeniowej o nazwie Jednostki hurtowni danych (DWU). Jednostka DWU to abstrakcyjna, znormalizowana miara zasobów obliczeniowych i wydajności. 
+
+Zmiana poziomu usług zmienia liczbę jednostek DU dostępnych dla systemu, co z kolei dostosowuje wydajność i koszt systemu.
 
 Aby uzyskać wyższą wydajność, można zwiększyć liczbę jednostek magazynu danych. Aby zmniejszyć wydajność, zmniejsz jednostki magazynu danych. Koszty magazynu i mocy obliczeniowej są rozliczane osobno, więc zmiana liczby jednostek magazynu danych nie ma wpływu na koszty magazynu.
 
 Wydajność jednostek magazynu danych jest oparta na tych metrykach obciążenia:
 
-- Jak szybko standardowe zapytanie hurtowni danych może skanować dużą liczbę wierszy, a następnie wykonywać agregację złożoną. Ta operacja jest intensywnie we/wy i procesora CPU.
-- Jak szybko magazyn danych może pozyskiwania danych z obiektów blob usługi Azure Storage lub usługi Azure Data Lake. Ta operacja jest intensywnie sieciowa i obciążana procesorem.
+- Jak szybko standardowe zapytanie puli SQL można skanować dużą liczbę wierszy, a następnie wykonać agregację złożoną. Ta operacja jest intensywnie we/wy i procesora CPU.
+- Jak szybko pula SQL może pozyskiwania danych z obiektów blob usługi Azure Storage lub usługi Azure Data Lake. Ta operacja jest intensywnie sieciowa i obciążana procesorem.
 - Jak szybko [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) polecenie T-SQL może kopiować tabelę. Ta operacja polega na odczytywaniu danych z magazynu, dystrybucji ich w węzłach urządzenia i ponownym zapisaniu do magazynu. Ta operacja jest procesora CPU, We/Wy i sieci intensywnie.
 
 Zwiększenie DWUs:
@@ -42,7 +46,7 @@ Zwiększenie DWUs:
 
 ## <a name="service-level-objective"></a>Cel poziomu usług
 
-Cel poziomu usług (SLO) to ustawienie skalowalności, które określa poziom kosztów i wydajności magazynu danych. Poziomy usług dla puli SQL Gen2 są mierzone w jednostkach magazynu danych (DWU), na przykład DW2000c.
+Cel poziomu usług (SLO) to ustawienie skalowalności, które określa poziom kosztów i wydajności puli SQL. Poziomy usług dla puli SQL Gen2 są mierzone w jednostkach magazynu danych (DWU), na przykład DW2000c.
 
 W języku T-SQL ustawienie SERVICE_OBJECTIVE określa poziom usługi dla puli SQL.
 
@@ -56,7 +60,7 @@ CREATE DATABASE mySQLDW
 
 ## <a name="capacity-limits"></a>Limity pojemności
 
-Każdy serwer SQL (na przykład myserver.database.windows.net) ma przydział [jednostki DTU (Database Transaction Unit),](../../sql-database/sql-database-service-tiers-dtu.md) który umożliwia określoną liczbę jednostek magazynu danych. Aby uzyskać więcej informacji, zobacz [limity pojemności zarządzania obciążeniem](sql-data-warehouse-service-capacity-limits.md#workload-management).
+Każdy serwer SQL (na przykład myserver.database.windows.net) ma przydział [jednostki DTU (Database Transaction Unit),](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) który umożliwia określoną liczbę jednostek magazynu danych. Aby uzyskać więcej informacji, zobacz [limity pojemności zarządzania obciążeniem](sql-data-warehouse-service-capacity-limits.md#workload-management).
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>Ile jednostek magazynu danych potrzebuję
 
@@ -68,7 +72,9 @@ Kroki, aby znaleźć najlepszy DWU dla obciążenia:
 2. Monitoruj wydajność aplikacji podczas testowania wczytywania danych do systemu, obserwując liczbę jednostek DU wybranych w porównaniu z obserwowaną wydajnością.
 3. Określ wszelkie dodatkowe wymagania dotyczące okresowych okresów szczytowej aktywności. Obciążenia, które wykazują znaczne szczyty i koryta w aktywności może być konieczne często skalowane.
 
-SQL Analytics to system skalowania w poziomie, który może aprowizować ogromne ilości danych obliczeniowych i zapytań. Aby wyświetlić jego prawdziwe możliwości skalowania, zwłaszcza w większych jednostek DWU, zaleca się skalowanie zestawu danych podczas skalowania, aby upewnić się, że masz wystarczającą ilość danych do źródła procesorów. Do testowania skali zaleca się użycie co najmniej 1 TB.
+Pula SQL to system skalowania w poziomie, który może aprowizować ogromne ilości danych obliczeniowych i zapytań. 
+
+Aby wyświetlić jego prawdziwe możliwości skalowania, zwłaszcza w większych jednostek DWU, zaleca się skalowanie zestawu danych podczas skalowania, aby upewnić się, że masz wystarczającą ilość danych do źródła procesorów. Do testowania skali zaleca się użycie co najmniej 1 TB.
 
 > [!NOTE]
 >
@@ -172,7 +178,7 @@ Aby sprawdzić stan zmian DWU:
     FROM      sys.databases
     ;
     ```
-    
+
 1. Prześlij następującą kwerendę, aby sprawdzić stan operacji
 
     ```sql
@@ -182,7 +188,7 @@ Aby sprawdzić stan zmian DWU:
     AND       major_resource_id = 'MySQLDW'
     ;
     ```
-    
+
 Ten dmv zwraca informacje o różnych operacji zarządzania w puli SQL, takich jak operacja i stan operacji, który jest IN_PROGRESS lub zakończone.
 
 ## <a name="the-scaling-workflow"></a>Przepływ pracy skalowania

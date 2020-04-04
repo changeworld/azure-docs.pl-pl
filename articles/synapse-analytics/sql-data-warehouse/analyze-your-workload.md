@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d10a642f9309e4bb93368564488fc75be15fa27c
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586082"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631237"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Analizowanie obciążenia w usłudze Azure Synapse Analytics
 
@@ -68,7 +68,7 @@ Synapse SQL ma następujące typy oczekiwania:
 * **LocalQueriesConcurrencyResourceType:** Zapytania, które znajdują się poza ramą gniazda współbieżności. Zapytania DMV i funkcje `SELECT @@VERSION` systemowe, takie jak przykłady zapytań lokalnych.
 * **UserConcurrencyResourceType:** Zapytania, które znajdują się wewnątrz struktury gniazda współbieżności. Kwerendy względem tabel użytkowników końcowych reprezentują przykłady, które mogłyby używać tego typu zasobu.
 * **DmsConcurrencyResourceType**: Oczekiwania wynikające z operacji przenoszenia danych.
-* **BackupConcurrencyResourceType:** Ten czas oczekiwania wskazuje, że kopia zapasowa bazy danych jest kopią zapasową. Maksymalna wartość dla tego typu zasobu wynosi 1. Jeśli w tym samym czasie zażądano wielu kopii zapasowych, pozostałe kolejki. Ogólnie zaleca się minimalny czas między kolejnymi migawkami 10 minut. 
+* **BackupConcurrencyResourceType:** Ten czas oczekiwania wskazuje, że kopia zapasowa bazy danych jest kopią zapasową. Maksymalna wartość dla tego typu zasobu wynosi 1. Jeśli w tym samym czasie zażądano wielu kopii zapasowych, pozostałe kolejki. Ogólnie zaleca się minimalny czas między kolejnymi migawkami 10 minut.
 
 DMV `sys.dm_pdw_waits` można użyć, aby zobaczyć, które zasoby żądanie oczekuje na.
 

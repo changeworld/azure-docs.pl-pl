@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5f0432cafee07dbed071d24aa8c24ee9b2176967
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 251fdb83e848aaac3a5391320df23149ce1bce33
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350176"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633049"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Przywracanie usuniętej puli SQL przy użyciu usługi Azure Synapse Analytics
 
@@ -39,16 +39,16 @@ Aby przywrócić usuniętą pulę SQL, użyj polecenia cmdlet [Restore-AzSqlData
 5. Pobierz określony magazyn usuniętych danych.
 6. Przywracanie usuniętego magazynu danych
     1. Aby przywrócić usunięty magazyn danych SQL na inny serwer logiczny, należy określić inną nazwę serwera logicznego.  Ten serwer logiczny może również znajdować się w innej grupie zasobów i regionie.
-    1. Aby przywrócić do innej subskrypcji, użyj przycisku [Przenieś,](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#use-the-portal) aby przenieść serwer logiczny do innej subskrypcji.
-1. Sprawdź, czy przywrócony magazyn danych jest w trybie online.
-1. Po zakończeniu przywracania można skonfigurować magazyn odzyskanych danych, wykonując [konfigurację bazy danych po odzyskaniu](../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
+    1. Aby przywrócić do innej subskrypcji, użyj przycisku [Przenieś,](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal) aby przenieść serwer logiczny do innej subskrypcji.
+7. Sprawdź, czy przywrócony magazyn danych jest w trybie online.
+8. Po zakończeniu przywracania można skonfigurować magazyn odzyskanych danych, wykonując [konfigurację bazy danych po odzyskaniu](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
 #$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different logical server.
-#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>" 
+#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
 
@@ -86,5 +86,6 @@ $RestoredDatabase.status
     ![Określ nazwę bazy danych](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>Następne kroki
+
 - [Przywracanie istniejącej puli SQL](sql-data-warehouse-restore-active-paused-dw.md)
 - [Przywracanie z puli SQL kopii zapasowej geograficznej](sql-data-warehouse-restore-from-geo-backup.md)

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/10/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 2d4c8c2c831bd6ef16f60c34a6353f4a742798f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5608683578a796ae0fffff7544a749043e8698fd
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76159019"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656215"
 ---
 | Zasób | Limit |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -38,7 +38,7 @@ ms.locfileid: "76159019"
 <sup>2.</sup> Rozmiar pamięci podręcznej jednostki zależy od warstwy cenowej. Aby wyświetlić warstwy cenowe i ich limity skalowania, zobacz [Cennik zarządzania interfejsami API](https://azure.microsoft.com/pricing/details/api-management/).<br/>
 <sup>3</sup> Połączenia są łączone i ponownie, chyba że jawnie zamknięte przez zapleczu.<br/>
 <sup>4</sup> Ten limit jest na jednostkę warstw Basic, Standard i Premium. Warstwa Deweloper jest ograniczona do 1024. Ten limit nie ma zastosowania do warstwy Zużycie.<br/>
-<sup>5</sup> Ten limit dotyczy warstw Basic, Standard i Premium. W warstwie Zużycie rozmiar dokumentu zasad jest ograniczony do 4 KiB.<br/>
+<sup>5</sup> Ten limit dotyczy warstw Basic, Standard i Premium. W warstwie Zużycie rozmiar dokumentu zasad jest ograniczony do 16 KiB.<br/>
 <sup>6</sup> Ten zasób jest dostępny tylko w warstwie Premium.<br/>
 <sup>7</sup> Ten zasób ma zastosowanie tylko do warstwy Zużycie.<br/>
 <sup>8</sup> Dotyczy tylko warstwy Zużycie. Zawiera ciąg zapytania o długości do 2048 bajtów.<br/>

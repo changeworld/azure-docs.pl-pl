@@ -4,19 +4,19 @@ description: Dowiedz się, jak włączyć logowanie się bez użycia hasła do z
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b29f84931c169ffe1c2c81d5e32201cbc63fc88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 181e8192170cd7394d6817edd655f4e8257b48a4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942875"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654042"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Włączanie logowania bez hasła do zasobów lokalnych za pomocą usługi Azure Active Directory (wersja zapoznawcza)
 

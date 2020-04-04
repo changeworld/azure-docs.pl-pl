@@ -8,15 +8,15 @@ ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 0b6e28fc92361fe20fc34e92386bf17199b19617
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 42b26911c12b1e7c62444a6fb2ee68720b02a56b
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519026"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654606"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Opis stanów kondycji i rozwiązywania problemów z zawieszonymi domenami w usługach domenowych Usługi domenowe Active Directory platformy Azure
 

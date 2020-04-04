@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7460a59dd2a7a5906a483195929136391657fa50
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: c93dab2f6086b10e1e8d75c4fc3334a95c3fcafa
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584004"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633269"
 ---
 # <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>Ładowanie danych detalicznych contoso do magazynu danych Synapse SQL
 
@@ -77,41 +77,40 @@ WITH (
 
 ## <a name="create-the-external-data-source"></a>Tworzenie zewnętrznego źródła danych
 
-Użyj tego polecenia [UTWÓRZ ZEWNĘTRZNE ŹRÓDŁO DANYCH,](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?view=sql-server-ver15) aby zapisać lokalizację danych i typ danych. 
+Użyj tego polecenia [UTWÓRZ ZEWNĘTRZNE ŹRÓDŁO DANYCH,](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) aby zapisać lokalizację danych i typ danych.
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
-WITH 
+WITH
 (  
-    TYPE = Hadoop 
+    TYPE = Hadoop
 ,   LOCATION = 'wasbs://contosoretaildw-tables@contosoretaildw.blob.core.windows.net/'
-); 
+);
 ```
 
 > [!IMPORTANT]
-> Jeśli zdecydujesz się udostępnić kontenery magazynu obiektów blob azure publicznych, należy pamiętać, że jako właściciel danych będzie naliczana opłata za transfer danych wychodzących, gdy dane opuszcza centrum danych. 
-> 
+> Jeśli zdecydujesz się udostępnić kontenery magazynu obiektów blob azure publicznych, należy pamiętać, że jako właściciel danych będzie naliczana opłata za transfer danych wychodzących, gdy dane opuszcza centrum danych.
 
 ## <a name="configure-the-data-format"></a>Konfigurowanie formatu danych
 
 Dane są przechowywane w plikach tekstowych w magazynie obiektów blob platformy Azure, a każde pole jest oddzielone ogranicznikiem. W systemie SSMS uruchom następujące polecenie CREATE EXTERNAL FILE FORMAT, aby określić format danych w plikach tekstowych. Dane Contoso są nieskompresowane i rozdzielane potokami.
 
 ```sql
-CREATE EXTERNAL FILE FORMAT TextFileFormat 
-WITH 
+CREATE EXTERNAL FILE FORMAT TextFileFormat
+WITH
 (   FORMAT_TYPE = DELIMITEDTEXT
 ,    FORMAT_OPTIONS    (   FIELD_TERMINATOR = '|'
                     ,    STRING_DELIMITER = ''
                     ,    DATE_FORMAT         = 'yyyy-MM-dd HH:mm:ss.fff'
-                    ,    USE_TYPE_DEFAULT = FALSE 
+                    ,    USE_TYPE_DEFAULT = FALSE
                     )
 );
-``` 
+```
 
-## <a name="create-the-external-tables"></a>Tworzenie tabel zewnętrznych
-Po określeniu źródła danych i formatu pliku można przystąpić do tworzenia tabel zewnętrznych. 
+## <a name="create-the-schema-for-the-external-tables"></a>Tworzenie schematu dla tabel zewnętrznych
 
-## <a name="create-a-schema-for-the-data"></a>Tworzenie schematu dla danych
+Po określeniu źródła danych i formatu pliku można przystąpić do tworzenia schematu dla tabel zewnętrznych.
+
 Aby utworzyć miejsce do przechowywania danych Contoso w bazie danych, należy utworzyć schemat.
 
 ```sql
@@ -163,7 +162,7 @@ CREATE EXTERNAL TABLE [asb].DimProduct (
 )
 WITH
 (
-    LOCATION='/DimProduct/' 
+    LOCATION='/DimProduct/'
 ,   DATA_SOURCE = AzureStorage_west_public
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE
@@ -172,7 +171,7 @@ WITH
 ;
 
 --FactOnlineSales
-CREATE EXTERNAL TABLE [asb].FactOnlineSales 
+CREATE EXTERNAL TABLE [asb].FactOnlineSales
 (
     [OnlineSalesKey] [int]  NOT NULL,
     [DateKey] [datetime] NOT NULL,
@@ -198,7 +197,7 @@ CREATE EXTERNAL TABLE [asb].FactOnlineSales
 )
 WITH
 (
-    LOCATION='/FactOnlineSales/' 
+    LOCATION='/FactOnlineSales/'
 ,   DATA_SOURCE = AzureStorage_west_public
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE
@@ -208,9 +207,10 @@ WITH
 ```
 
 ## <a name="load-the-data"></a>Ładowanie danych
+
 Istnieją różne sposoby uzyskiwania dostępu do danych zewnętrznych.  Można wyszukiwać dane bezpośrednio z tabel zewnętrznych, ładować dane do nowych tabel w magazynie danych lub dodawać dane zewnętrzne do istniejących tabel magazynu danych.  
 
-###  <a name="create-a-new-schema"></a>Tworzenie nowego schematu
+### <a name="create-a-new-schema"></a>Tworzenie nowego schematu
 
 CTAS tworzy nową tabelę, która zawiera dane.  Najpierw utwórz schemat dla contoso danych.
 
@@ -221,11 +221,11 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>Ładowanie danych do nowych tabel
 
-Aby załadować dane z magazynu obiektów blob platformy Azure do tabeli magazynu danych, należy użyć instrukcji [CREATE TABLE AS SELECT (Transact-SQL).](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7) Ładowanie za pomocą [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md) wykorzystuje silnie wpisane tabele zewnętrzne, które zostały utworzone. Aby załadować dane do nowych tabel, należy użyć jednej instrukcji CTAS na tabelę. 
- 
+Aby załadować dane z magazynu obiektów blob platformy Azure do tabeli magazynu danych, należy użyć instrukcji [CREATE TABLE AS SELECT (Transact-SQL).](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Ładowanie za pomocą [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md) wykorzystuje silnie wpisane tabele zewnętrzne, które zostały utworzone. Aby załadować dane do nowych tabel, należy użyć jednej instrukcji CTAS na tabelę.
+
 CTAS tworzy nową tabelę i wypełnia ją wynikami instrukcji select. CTAS definiuje nową tabelę, aby mieć te same kolumny i typy danych, jak wyniki select instrukcji. Jeśli wybierzesz wszystkie kolumny z tabeli zewnętrznej, nowa tabela będzie repliką kolumn i typów danych w tabeli zewnętrznej.
 
-W tym przykładzie tworzymy zarówno wymiar, jak i tabelę faktów jako tabele rozproszone skrótu. 
+W tym przykładzie tworzymy zarówno wymiar, jak i tabelę faktów jako tabele rozproszone skrótu.
 
 ```sql
 SELECT GETDATE();
@@ -237,7 +237,7 @@ CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey
 
 ### <a name="track-the-load-progress"></a>Śledzenie postępu obciążenia
 
-Postęp obciążenia można śledzić za pomocą dynamicznych widoków zarządzania (DMV). 
+Postęp obciążenia można śledzić za pomocą dynamicznych widoków zarządzania (DMV).
 
 ```sql
 -- To see all requests
@@ -254,13 +254,13 @@ SELECT
     r.command,
     s.request_id,
     r.status,
-    count(distinct input_name) as nbr_files, 
+    count(distinct input_name) as nbr_files,
     sum(s.bytes_processed)/1024/1024/1024 as gb_processed
 FROM
     sys.dm_pdw_exec_requests r
     inner join sys.dm_pdw_dms_external_work s
         on r.request_id = s.request_id
-WHERE 
+WHERE
     r.[label] = 'CTAS : Load [cso].[DimProduct]             '
     OR r.[label] = 'CTAS : Load [cso].[FactOnlineSales]        '
 GROUP BY
@@ -276,7 +276,7 @@ ORDER BY
 
 Domyślnie magazyn danych Synapse SQL przechowuje tabelę jako indeks klastrowanego magazynu kolumn. Po zakończeniu ładowania niektóre wiersze danych mogą nie zostać skompresowane do magazynu kolumn.  Istnieją różne powody, dla których może się to zdarzyć. Aby dowiedzieć się więcej, zobacz [zarządzanie indeksami magazynu kolumn](sql-data-warehouse-tables-index.md).
 
-Aby zoptymalizować wydajność kwerend i kompresji magazynu kolumn po obciążeniu, odbuduj tabelę, aby wymusić indeks magazynu kolumn do kompresji wszystkich wierszy. 
+Aby zoptymalizować wydajność kwerend i kompresji magazynu kolumn po obciążeniu, odbuduj tabelę, aby wymusić indeks magazynu kolumn do kompresji wszystkich wierszy.
 
 ```sql
 SELECT GETDATE();
@@ -290,7 +290,7 @@ Aby uzyskać więcej informacji na temat obsługi indeksów magazynu kolumn, zob
 
 ## <a name="optimize-statistics"></a>Optymalizacja statystyk
 
-Najlepiej jest utworzyć statystyki jednokolumnowe natychmiast po załadowaniu. Jeśli wiesz, że niektóre kolumny nie będą w predykatach kwerendy, możesz pominąć tworzenie statystyk dla tych kolumn. Jeśli utworzysz statystyki jednokolumnowe dla każdej kolumny, odbudowanie wszystkich statystyk może zająć dużo czasu. 
+Najlepiej jest utworzyć statystyki jednokolumnowe natychmiast po załadowaniu. Jeśli wiesz, że niektóre kolumny nie będą w predykatach kwerendy, możesz pominąć tworzenie statystyk dla tych kolumn. Jeśli utworzysz statystyki jednokolumnowe dla każdej kolumny, odbudowanie wszystkich statystyk może zająć dużo czasu.
 
 Jeśli zdecydujesz się utworzyć statystyki jednokolumnowe dla każdej kolumny każdej tabeli, możesz użyć przykładu `prc_sqldw_create_stats` kodu procedury składowanej w [artykule statystyk.](sql-data-warehouse-tables-statistics.md)
 
@@ -339,6 +339,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 ```
 
 ## <a name="achievement-unlocked"></a>Osiągnięcie odblokowane!
+
 Pomyślnie załadowano dane publiczne do magazynu danych. Świetna robota!
 
 Teraz możesz rozpocząć wykonywanie zapytań do tabel w celu eksplorowania danych. Uruchom następującą kwerendę, aby dowiedzieć się, czy łączna sprzedaż na markę:
@@ -352,5 +353,6 @@ GROUP BY p.[BrandName]
 ```
 
 ## <a name="next-steps"></a>Następne kroki
+
 Aby załadować pełny zestaw danych, uruchom [przykładowy moduł ładowania pełnego magazynu danych sieci sprzedaży Contoso](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md) z repozytorium przykładów programu Microsoft SQL Server.
 Aby uzyskać więcej wskazówek dotyczących programowania, zobacz [Projektowanie decyzji i technik kodowania dla magazynów danych.](sql-data-warehouse-overview-develop.md)

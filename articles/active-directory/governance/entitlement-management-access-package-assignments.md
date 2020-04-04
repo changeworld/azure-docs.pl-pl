@@ -16,16 +16,23 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5a2107974cd63c0d02aaeb555430453c39990bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12e3b86f41e7188778393ab717554907ef5d44ec
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262024"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631743"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Wyświetlanie, dodawanie i usuwanie przydziałów dla pakietu dostępu w zarządzaniu uprawnieniami usługi Azure AD
 
 W zarządzania uprawnieniami usługi Azure AD można zobaczyć, kto został przypisany do pakietów dostępu, ich zasad i stanu. Jeśli pakiet dostępu ma odpowiednie zasady, można również bezpośrednio przypisać użytkownika do pakietu dostępu. W tym artykule opisano sposób wyświetlania, dodawania i usuwania przypisań dla pakietów dostępu.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Aby korzystać z zarządzania uprawnieniami usługi Azure AD i przypisywać użytkowników do dostępu do pakietów, musisz mieć jedną z następujących licencji:
+
+- Usługa Azure AD — warstwa Premium P2
+- Licencja Enterprise Mobility + Security (EMS) E5
 
 ## <a name="view-who-has-an-assignment"></a>Wyświetlanie, kto ma przypisanie
 

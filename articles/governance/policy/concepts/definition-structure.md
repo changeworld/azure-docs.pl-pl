@@ -1,14 +1,14 @@
 ---
 title: Szczegóły struktury definicji zasad
 description: W tym artykule opisano, jak definicje zasad są używane do ustanawiania konwencji dla zasobów platformy Azure w organizacji.
-ms.date: 02/26/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7cb1ab7d045a0595f6949052ecedba6cd1bf694
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6b1d5c43f290fc2dd953492440670608a15faca
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239984"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638074"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -361,7 +361,7 @@ W tym przykładzie reguły zasad użyto **wartości** do sprawdzenia, czy wynik 
     "policyRule": {
         "if": {
             "value": "[less(length(field('tags')), 3)]",
-            "equals": true
+            "equals": "true"
         },
         "then": {
             "effect": "deny"
@@ -578,6 +578,9 @@ Wszystkie [funkcje szablonu Menedżera zasobów](../../../azure-resource-manager
 - identyfikator zasobu()
 - zmiennych()
 
+> [!NOTE]
+> Te funkcje są `details.deployment.properties.template` nadal dostępne w ramach części wdrożenia szablonu w **deployIfNotExists** definicji zasad.
+
 Następująca funkcja jest dostępna do użycia w regule zasad, ale różni się od użycia w szablonie usługi Azure Resource Manager:
 
 - `utcNow()`- W przeciwieństwie do szablonu Menedżera zasobów, może to być używane poza defaultValue.
@@ -593,10 +596,9 @@ Następujące funkcje są dostępne tylko w regułach zasad:
   - Zwraca wartość tego pola z zasobu, który jest oceniany przez warunek If
   - `field`jest używany głównie z **AuditIfNotExists** i **DeployIfNotExists** do odwoływania się do pól w zasobie, które są oceniane. Przykład tego zastosowania można zobaczyć w [deployIfNotExists przykład](effects.md#deployifnotexists-example).
 - `requestContext().apiVersion`
-  - Zwraca wersję interfejsu API żądania, która wyzwoliła `2019-09-01`ocenę zasad (przykład: ). Będzie to wersja interfejsu API, która została użyta w żądaniu PUT/PATCH do oceny tworzenia/aktualizacji zasobów. Najnowsza wersja interfejsu API jest zawsze używana podczas oceny zgodności istniejących zasobów.
+  - Zwraca wersję interfejsu API żądania, która wyzwoliła `2019-09-01`ocenę zasad (przykład: ).
+    Będzie to wersja interfejsu API, która została użyta w żądaniu PUT/PATCH do oceny tworzenia/aktualizacji zasobów. Najnowsza wersja interfejsu API jest zawsze używana podczas oceny zgodności istniejących zasobów.
   
-
-
 #### <a name="policy-function-example"></a>Przykład funkcji zasad
 
 W tym przykładzie `resourceGroup` reguły zasad użyto funkcji zasobu, aby uzyskać `like` właściwość **name** w połączeniu z funkcją `concat` tablicy i obiektu w celu utworzenia warunku, który wymusza nazwę zasobu, aby rozpocząć od nazwy grupy zasobów.
@@ -707,8 +709,6 @@ Ta przykładowa reguła sprawdza, czy wszystkie dopasowania **ipRules\[\*\].valu
     }
 }
 ```
-
-
 
 Aby uzyskać więcej informacji, zobacz [ocenę aliasu\*[ ].](../how-to/author-policies-for-arrays.md#evaluating-the--alias)
 

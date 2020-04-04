@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.author: spelluru
-ms.openlocfilehash: 4cabd63dc39590a9bf728528f3e7b3aa5d3f6b04
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 9c678a91b88b87acb438311b4968be4cae46733b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521754"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632805"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Samouczek: Przetwarzanie apache kafka dla zdarzeń centrum zdarzeń przy użyciu analizy strumienia 
 W tym artykule pokazano, jak przesyłać strumieniowo dane do centrów zdarzeń i przetwarzać go za pomocą usługi Azure Stream Analytics. Przeprowadzi Cię przez następujące kroki: 
@@ -181,15 +181,4 @@ Po skonfigurowaniu zadania usługi Stream Analytics do odczytu przychodzącego s
 
 
 ## <a name="next-steps"></a>Następne kroki
-W tym artykule dowiesz się, jak przesyłać strumieniowo do centrów zdarzeń bez zmiany klientów protokołu lub uruchamiania własnych klastrów. Aby dowiedzieć się więcej na temat usługi Event Hubs i usługi Event Hubs dla platformy Kafka, zobacz następujący temat:  
-
-- [Dowiedz się więcej na temat usługi Event Hubs](event-hubs-what-is-event-hubs.md)
-- [Usługa Event Hubs dla platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Tworzenie centrum zdarzeń](event-hubs-create.md)
-- [Przesyłanie strumieniowe do usługi Event Hubs z aplikacji platformy Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Dublowanie brokera platformy Kafka w centrum zdarzeń](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Łączenie platformy Apache Spark z centrum zdarzeń](event-hubs-kafka-spark-tutorial.md)
-- [Łączenie platformy Apache Flink z centrum zdarzeń](event-hubs-kafka-flink-tutorial.md)
-- [Integracja platformy Kafka Connect z centrum zdarzeń](event-hubs-kafka-connect-tutorial.md)
-- [Łączenie strumieni Akka z centrum zdarzeń](event-hubs-kafka-akka-streams-tutorial.md)
-- [Eksplorowanie przykładów w witrynie GitHub](https://github.com/Azure/azure-event-hubs-for-kafka) 
+W tym artykule dowiesz się, jak przesyłać strumieniowo do centrów zdarzeń bez zmiany klientów protokołu lub uruchamiania własnych klastrów. Aby dowiedzieć się więcej o centrach zdarzeń dla platformy Apache Kafka, zobacz [Apache Kafka developer guide for Azure Event Hubs](apache-kafka-developer-guide.md). 

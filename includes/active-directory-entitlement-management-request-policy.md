@@ -5,15 +5,15 @@ services: active-directory
 author: msaburnley
 ms.service: active-directory
 ms.topic: include
-ms.date: 11/11/2019
+ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: c73a62b2d5feeae42a5ea35c88073dd5fcc0d78c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd716be397d9ef6b9d6132cd4470f653f3cea0f
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77193026"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655935"
 ---
 ## <a name="for-users-in-your-directory"></a>Dla użytkowników w katalogu
 
@@ -153,7 +153,7 @@ Aby dodać osoby zatwierdzające, należy wykonać następujące czynności po w
 
     Uzasadnienie jest widoczne dla innych osób zatwierdzających i osoby wnioskującej.
 
-### <a name="2-stage-approval-preview"></a>Homologacja dwustopniowa (wersja zapoznawcza)
+### <a name="2-stage-approval"></a>Homologacja dwustopniowa
 
 Jeśli wybrano zatwierdzenie dwuetapowe, musisz dodać drugą osobę zatwierdzającej.
 
@@ -206,4 +206,4 @@ Jeśli na przykład alicja i Robert są wymieniane jako osoby zatwierdzające ja
 
     ![Pakiet dostępu — zasady — włączanie ustawień zasad](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
-1. Kliknij przycisk **alej**.
+1. Kliknij przycisk **Dalej**.

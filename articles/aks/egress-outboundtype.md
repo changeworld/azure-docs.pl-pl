@@ -4,12 +4,12 @@ description: Dowiedz się, jak zdefiniować niestandardową trasę wychodzącą 
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: fa64294939ea487b3123d1db5ef6c8a5f30fcf72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30b7b6bae92221b268d40977f5b299e9b0b267b0
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129389"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637822"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Dostosowywanie wyjścia klastra za pomocą trasy zdefiniowanej przez użytkownika (wersja zapoznawcza)
 
@@ -360,6 +360,12 @@ CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
 az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/32
 
 ```
+
+ Użyj polecenia [az aks get-credentials][az-aks-get-credentials], `kubectl` aby skonfigurować połączenie z nowo utworzonym klastrem Kubernetes. 
+
+ ```azure-cli
+ az aks get-credentials -g $RG -n $AKS_NAME
+ ```
 
 ### <a name="setup-the-internal-load-balancer"></a>Ustawianie wewnętrznego modułu równoważenia obciążenia
 

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c4920b2a5b4ff0b1a94fa8fa0e83f72761802b97
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d3d1b9af0b26fa775beb78b313937890cb9287b3
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583793"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633773"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Szybki start: konfigurowanie izolacji obciążenia przy użyciu funkcji T-SQL
 
@@ -25,13 +25,11 @@ W tym przewodniku Szybki start szybko utworzysz grupę obciążenia i klasyfikuj
 Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne](https://azure.microsoft.com/free/) konto przed rozpoczęciem.
 
 > [!NOTE]
-> Utworzenie puli SQL Synapse w usłudze Azure Synapse Analytics może spowodować powstanie nowej usługi podlegającej rozliczaniu.  Aby uzyskać więcej informacji, zobacz [Ceny usługi Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
->
->
+> Utworzenie wystąpienia usługi SQL Analytics w usłudze Azure Synapse Analytics może spowodować powstanie nowej usługi podlegającej rozliczaniu.  Aby uzyskać więcej informacji, zobacz [Ceny usługi Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
- 
-Ten przewodnik Szybki start zakłada, że masz już pulę SQL Synapse w usłudze Azure Synapse i masz uprawnienia do bazy danych CONTROL. Jeżeli chcesz utworzyć taki magazyn, skorzystaj z przewodnika [Szybki start: tworzenie i łączenie — portal](create-data-warehouse-portal.md), aby utworzyć magazyn danych o nazwie **mySampleDataWarehouse**.
+
+Ten przewodnik Szybki start zakłada, że masz już wystąpienie usługi SQL Analytics w usłudze Azure Synapse i masz uprawnienia do bazy danych CONTROL. Jeżeli chcesz utworzyć taki magazyn, skorzystaj z przewodnika [Szybki start: tworzenie i łączenie — portal](create-data-warehouse-portal.md), aby utworzyć magazyn danych o nazwie **mySampleDataWarehouse**.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -62,12 +60,14 @@ END
 ```
 
 ## <a name="create-a-workload-group"></a>Tworzenie grupy obciążenia
+
 Utwórz [grupę obciążeń](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dla danychloadów z izolacją 20%.
+
 ```sql
 CREATE WORKLOAD GROUP DataLoads
-WITH ( MIN_PERCENTAGE_RESOURCE = 20   
+WITH ( MIN_PERCENTAGE_RESOURCE = 20
       ,CAP_PERCENTAGE_RESOURCE = 100
-      ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 5) 
+      ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 5)
 ;
 ```
 
@@ -86,15 +86,15 @@ WITH (WORKLOAD_GROUP = 'DataLoads'
 
 ```sql
 --Workload groups
-SELECT * FROM 
+SELECT * FROM
 sys.workload_management_workload_groups
 
 --Workload classifiers
-SELECT * FROM 
+SELECT * FROM
 sys.workload_management_workload_classifiers
 
 --Run-time values
-SELECT * FROM 
+SELECT * FROM
 sys.dm_workload_management_workload_groups_stats
 ```
 

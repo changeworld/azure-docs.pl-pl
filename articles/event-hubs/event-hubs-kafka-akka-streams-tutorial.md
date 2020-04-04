@@ -4,21 +4,19 @@ description: Ten artykuł zawiera informacje dotyczące sposobu łączenia strum
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
-manager: timlt
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
-ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 04/02/2020
 ms.author: shvija
-ms.openlocfilehash: c53fcc7b4b99e77237ba7ea9219aef4182f2af61
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 0b96f1448fd223aae2dde77c5c05a8c9bd74ee9b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521835"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632855"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Używanie programu Akka Streams z usługą Event Hubs dla platformy Apache Kafka
 W tym samouczku pokazano, jak połączyć strumienie Akka z centrum zdarzeń bez zmiany klientów protokołu lub uruchamiania własnych klastrów. Usługa Azure Event Hubs for the Kafka obsługuje [apache kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html)
@@ -140,22 +138,11 @@ Jeśli centrum zdarzeń zawiera zdarzenia (na przykład, jeśli producent jest r
 Zapoznaj się z [Akka Strumienie Kafka Przewodnik](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) bardziej szczegółowe informacje na temat Strumieni Akka.
 
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku dowiesz się, jak połączyć strumienie Akka z centrum zdarzeń bez zmiany klientów protokołu lub uruchamiania własnych klastrów. Usługa Azure Event Hubs for the Kafka obsługuje [apache kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html). W ramach tego samouczka wykonaliśmy następujące czynności: 
+Aby dowiedzieć się więcej o centrach zdarzeń dla platformy Kafka, zobacz następujące artykuły:  
 
-> [!div class="checklist"]
-> * Tworzenie przestrzeni nazw usługi Event Hubs
-> * Klonowanie projektu przykładowego
-> * Uruchom producenta strumieni Akka 
-> * Uruchom konsumenta strumieni Akka
-
-Aby dowiedzieć się więcej na temat usługi Event Hubs i usługi Event Hubs dla platformy Kafka, zobacz następujący temat:  
-
-- [Dowiedz się więcej na temat usługi Event Hubs](event-hubs-what-is-event-hubs.md)
-- [Usługa Event Hubs dla platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Jak utworzyć centrum zdarzeń](event-hubs-create.md)
-- [Przesyłanie strumieniowe do usługi Event Hubs z aplikacji platformy Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Dublowanie brokera platformy Kafka w centrum zdarzeń](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Łączenie platformy Apache Spark z centrum zdarzeń](event-hubs-kafka-spark-tutorial.md)
 - [Łączenie platformy Apache Flink z centrum zdarzeń](event-hubs-kafka-flink-tutorial.md)
 - [Integracja platformy Kafka Connect z centrum zdarzeń](event-hubs-kafka-connect-tutorial.md)
 - [Eksplorowanie przykładów w witrynie GitHub](https://github.com/Azure/azure-event-hubs-for-kafka)
+- [Apache Kafka — przewodnik dla deweloperów usługi Azure Event Hubs](apache-kafka-developer-guide.md)

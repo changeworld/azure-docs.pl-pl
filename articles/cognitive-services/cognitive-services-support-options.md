@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: d7ce77404359b32effcc7a5da3f9429e9fdf7005
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 5f9ad827fa947e645f7eb4850f90a73c61a45cd3
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618578"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637106"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Opcje pomocy technicznej i opinii usługi Azure Cognitive Services
 
@@ -87,6 +87,7 @@ Informacje o wersji usług Cognitive Services są aktualizowane w miarę udostę
  - [Usługi mowy](speech-service/releasenotes.md)
  - [SDK usług mowy](speech-service/devices-sdk-release-notes.md)
  - [Analiza tekstu](text-analytics/whats-new.md)
+ - [Indeksator wideo](../media-services/video-indexer/release-notes.md)
 
 ### <a name="azure-blog"></a>Blog platformy Azure
 

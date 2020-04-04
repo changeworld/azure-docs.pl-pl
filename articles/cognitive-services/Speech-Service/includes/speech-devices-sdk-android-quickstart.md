@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
-ms.openlocfilehash: 2ee6b12923bfd0e06343e8f185226cb72280d806
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 4dbaaad4b75e6d706d77522f45a2d596c49bea79
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78383886"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80659361"
 ---
 W tym przewodniku Szybki start dowiesz się, jak używać SDK urządzeń mowy dla systemu Android do tworzenia produktu obsługującego mowę lub używania go jako urządzenia [do transkrypcji konwersacji.](../conversation-transcription-service.md)
 
@@ -96,7 +96,7 @@ Aby sprawdzić poprawność konfiguracji zestawu deweloperskiego, skompiluj i za
     Zaktualizuj **build.gradle(Module:app),** dodając ten wiersz do sekcji zależności. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.10.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.11.0'
     ```
     
 1. Dodaj klucz subskrypcji mowy do kodu źródłowego. Jeśli chcesz spróbować rozpoznawania intencji, należy również dodać klucz subskrypcji [usługi language understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) i identyfikator aplikacji.

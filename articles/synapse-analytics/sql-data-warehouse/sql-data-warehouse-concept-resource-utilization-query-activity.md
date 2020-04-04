@@ -11,21 +11,20 @@ ms.date: 03/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 0b7accec9fdce1ad81a08aee17b37d655409948b
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: 61c823aee5d8a6755a3bd7971cd7cca952cbb911
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607557"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633618"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorowanie wykorzystania zasobów i aktywności zapytań w usłudze Azure Synapse Analytics
 
-Usługa Azure Synapse Analytics zapewnia zaawansowane środowisko monitorowania w witrynie Azure portal, aby uzyskać szczegółowe informacje dotyczące obciążenia magazynu danych. Portal Azure jest zalecanym narzędziem podczas monitorowania magazynu danych, ponieważ zapewnia konfigurowalne okresy przechowywania, alerty, zalecenia i dostosowywane wykresy i pulpity nawigacyjne dla metryk i dzienników. Portal umożliwia również integrację z innymi usługami monitorowania platformy Azure, takimi jak Azure Monitor (dzienniki) z analizą dzienników, aby zapewnić całościowe środowisko monitorowania nie tylko dla magazynu danych, ale także całej platformy analitycznej platformy Azure w celu zintegrowanego monitorowania. W tej dokumentacji opisano, jakie funkcje monitorowania są dostępne do optymalizacji i zarządzania platformą analityczną. 
+Usługa Azure Synapse Analytics zapewnia zaawansowane środowisko monitorowania w witrynie Azure portal, aby uzyskać szczegółowe informacje dotyczące obciążenia magazynu danych. Portal Azure jest zalecanym narzędziem podczas monitorowania magazynu danych, ponieważ zapewnia konfigurowalne okresy przechowywania, alerty, zalecenia i dostosowywane wykresy i pulpity nawigacyjne dla metryk i dzienników. Portal umożliwia również integrację z innymi usługami monitorowania platformy Azure, takimi jak Azure Monitor (dzienniki) z analizą dzienników, aby zapewnić całościowe środowisko monitorowania nie tylko dla magazynu danych, ale także całej platformy analitycznej platformy Azure w celu zintegrowanego monitorowania. W tej dokumentacji opisano, jakie funkcje monitorowania są dostępne do optymalizacji platformy analitycznej i zarządzania nią za pomocą usługi SQL Analytics.
 
 ## <a name="resource-utilization"></a>Wykorzystanie zasobów
 
-Następujące metryki są dostępne w witrynie Azure portal dla synapse SQL. Te metryki są widoczne za pośrednictwem [usługi Azure Monitor.](../../azure-monitor/platform/data-collection.md#metrics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-
+Następujące metryki są dostępne w witrynie Azure portal dla usługi SQL Analytics. Te metryki są widoczne za pośrednictwem [usługi Azure Monitor.](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)
 
 | Nazwa metryki             | Opis                                                  | Typ agregacji |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
@@ -55,16 +54,16 @@ Co należy wziąć pod uwagę podczas wyświetlania danych i ustawiania alertów
 
 ## <a name="query-activity"></a>Działanie kwerendy
 
-Aby uzyskać środowisko programowe podczas monitorowania Synapse SQL za pośrednictwem T-SQL, usługa zapewnia zestaw dynamicznych widoków zarządzania (DMV). Widoki te są przydatne, gdy aktywnie rozwiązywania problemów i identyfikowanie wąskich gardeł wydajności z obciążeniem.
+Aby uzyskać środowisko programowe podczas monitorowania analizy SQL za pośrednictwem protokołu T-SQL, usługa udostępnia zestaw dynamicznych widoków zarządzania (DMV). Widoki te są przydatne, gdy aktywnie rozwiązywania problemów i identyfikowanie wąskich gardeł wydajności z obciążeniem.
 
-Aby wyświetlić listę dmvs, które mają zastosowanie do Synapse SQL, zapoznaj się z tą [dokumentacją](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs). 
+Aby wyświetlić listę dmvs, które sql analytics zapewnia, zapoznaj się z tą [dokumentacją](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs).
 
 ## <a name="metrics-and-diagnostics-logging"></a>Rejestrowanie metryk i informacji diagnostycznych
 
-Zarówno metryki, jak i dzienniki mogą być eksportowane do usługi Azure Monitor, w szczególności składnik [dzienników usługi Azure Monitor](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) i mogą być programowo dostępne za pomocą [zapytań dziennika.](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Opóźnienie dziennika dla Synapse SQL wynosi około 10-15 minut. Aby uzyskać więcej informacji na temat czynników wpływających na opóźnienie, odwiedź następującą dokumentację.
+Zarówno metryki, jak i dzienniki mogą być eksportowane do usługi Azure Monitor, w szczególności składnik [dzienników usługi Azure Monitor](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) i mogą być programowo dostępne za pomocą [zapytań dziennika.](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Opóźnienie dziennika dla usługi SQL Analytics wynosi około 10-15 minut. Aby uzyskać więcej informacji na temat czynników wpływających na opóźnienie, odwiedź następującą dokumentację.
 
 ## <a name="next-steps"></a>Następne kroki
 
 W poniższych przewodnikach opisano typowe scenariusze i przypadki użycia podczas monitorowania magazynu danych i zarządzania nim:
 
-- [Monitorowanie obciążenia magazynu danych za pomocą rejestratorów DMV](/sql-data-warehouse/sql-data-warehouse-manage-monitor?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
+- [Monitorowanie obciążenia magazynu danych za pomocą rejestratorów DMV](sql-data-warehouse-manage-monitor.md)

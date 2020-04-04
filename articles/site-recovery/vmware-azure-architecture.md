@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: ccf258594aa68fc9b5d0189c9ada640078e0ba6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77b4dd4c0efbe6d03e64865f18c2c87614aaecb5
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76514871"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632525"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektura odzyskiwania po awarii vMware na platformie Azure
 
@@ -35,7 +35,6 @@ Poniższa tabela i grafika zapewniają widok wysokiego poziomu składników uży
 ![Składniki](./media/vmware-azure-architecture/arch-enhanced.png)
 
 
-
 ## <a name="replication-process"></a>Proces replikacji
 
 1. Po włączeniu replikacji dla maszyny Wirtualnej rozpoczyna się replikacja początkowa do magazynu platformy Azure przy użyciu określonych zasad replikacji. Pamiętaj o następujących kwestiach:
@@ -43,10 +42,10 @@ Poniższa tabela i grafika zapewniają widok wysokiego poziomu składników uży
     - Stosowane są wszystkie ustawienia zasad replikacji:
         - **próg RPO**. To ustawienie nie ma wpływu na replikację. Pomaga w monitorowaniu. Zdarzenie jest wywoływane i opcjonalnie wysłany e-mail, jeśli bieżący cel ochrony danych przekracza limit progu, który określisz.
         - **Retencja punktów odzyskiwania**. To ustawienie określa, jak daleko wstecz w czasie, który ma się udać, gdy wystąpi zakłócenie. Maksymalne przechowywanie w magazynie w wersji premium wynosi 24 godziny. W przypadku standardowego przechowywania jest to 72 godziny. 
-        - **Migawki spójne z aplikacjami**. Migawka spójna z aplikacjami może trwać co 1 do 12 godzin, w zależności od potrzeb aplikacji. Migawki są standardowe migawki obiektów blob platformy Azure. Agent mobilności uruchomiony na maszynie wirtualnej żąda migawki usługi VSS zgodnie z tym ustawieniem i zakładki, że punkt w czasie jako spójny punkt aplikacji w strumieniu replikacji.
+        - **Migawki spójne z aplikacjami**. Migawka spójna z aplikacjami może być pobierana co 1 do 12 godzin, w zależności od potrzeb aplikacji. Migawki są standardowe migawki obiektów blob platformy Azure. Agent mobilności uruchomiony na maszynie wirtualnej żąda migawki usługi VSS zgodnie z tym ustawieniem i zakładki, że punkt w czasie jako spójny punkt aplikacji w strumieniu replikacji.
 
 2. Ruch jest replikowane do publicznych punktów końcowych magazynu platformy Azure przez Internet. Alternatywnie można użyć usługi Azure ExpressRoute z [komunikacją równorzędową firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering). Replikowanie ruchu za pośrednictwem wirtualnej sieci prywatnej lokacji (VPN) z lokacji lokalnej na platformę Azure nie jest obsługiwane.
-3. Po zakończeniu replikacji początkowej rozpoczyna się replikacja zmian różnicowych na platformie Azure. Śledzone zmiany dla komputera są wysyłane do serwera przetwarzania.
+3. Operacja replikacji początkowej zapewnia, że całe dane na komputerze w czasie włączania replikacji są wysyłane do platformy Azure. Po zakończeniu replikacji początkowej rozpoczyna się replikacja zmian różnicowych na platformie Azure. Śledzone zmiany dla komputera są wysyłane do serwera przetwarzania.
 4. Komunikacja odbywa się w następujący sposób:
 
     - Maszyny wirtualne komunikują się z lokalnym serwerem konfiguracji na porcie HTTPS 443 przychodzącym w celu zarządzania replikacją.
@@ -55,12 +54,21 @@ Poniższa tabela i grafika zapewniają widok wysokiego poziomu składników uży
     - Serwer przetwarzania odbiera dane replikacji, optymalizuje je i szyfruje oraz wysyła do magazynu platformy Azure za pomocą portu 443 wychodzącego.
 5. Dzienniki danych replikacji najpierw lądują na koncie magazynu pamięci podręcznej na platformie Azure. Te dzienniki są przetwarzane, a dane są przechowywane w dysku zarządzanym platformy Azure (nazywanym dyskiem źródłowym asr). Punkty odzyskiwania są tworzone na tym dysku.
 
-
-
-
 **Proces replikacji VMware do platformy Azure**
 
 ![Proces replikacji](./media/vmware-azure-architecture/v2a-architecture-henry.png)
+
+## <a name="resynchronization-process"></a>Proces ponownej synchronizowania
+
+1. Czasami podczas replikacji początkowej lub podczas przesyłania zmian różnicowych mogą wystąpić problemy z łącznością sieciową między komputerem źródłowym do przetwarzania serwera lub między serwerem przetwarzania na platformę Azure. Każda z nich może prowadzić do awarii transferu danych do platformy Azure na chwilę.
+2. Aby uniknąć problemów z integralnością danych i zminimalizować koszty transferu danych, usługa Site Recovery oznacza maszynę do ponownej synchronizacji.
+3. Maszyna może być również oznaczona do ponownej synchronizowania w sytuacjach takich jak obserwowanie, aby zachować spójność między maszyną źródłową a danymi przechowywanymi na platformie Azure
+    - Jeśli maszyna ulega wymusić wyłączenie
+    - Jeśli komputer ulega zmianom konfiguracyjnym, takim jak zmiana rozmiaru dysku (modyfikowanie rozmiaru dysku z 2 TB do 4 TB)
+4. Ponowna synchronizacja wysyła tylko dane delta do platformy Azure. Transfer danych między środowiskiem lokalnym a platformą Azure przez zminimalizowanie przez przetwarzanie sum kontrolnych danych między komputerem źródłowym a danymi przechowywanymi na platformie Azure.
+5. Domyślnie ponowna synchronizacja jest zaplanowana do automatycznego uruchamiania poza godzinami pracy biura. Jeśli nie chcesz czekać na domyślną ponowną synchronizację poza godzinami, możesz ponownie zsynchronizować maszynę wirtualną ręcznie. Aby to zrobić, przejdź do witryny Azure portal, wybierz maszynę wirtualną > **Resynchronize**.
+6. Jeśli domyślna ponowna synchronizacja kończy się niepowodzeniem poza godzinami pracy i wymagana jest ręczna interwencja, na określonym komputerze w witrynie Azure portal jest generowany błąd. Można rozwiązać ten błąd i ręcznie wyzwolić ponowną synchronizację.
+7. Po zakończeniu ponownej synchronizacji zostanie wznowiona replikacja zmian różnicowych.
 
 ## <a name="failover-and-failback-process"></a>Proces pracy w trybie failover i podczas powrotu po awarii
 

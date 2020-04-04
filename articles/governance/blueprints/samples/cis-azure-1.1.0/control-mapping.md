@@ -3,12 +3,12 @@ title: Przykładowe kontrole planu wzorcowego FUNDACJI CIS Microsoft Azure Found
 description: Mapowanie rekomendacji przykładowego planu wzorca fundacji FUNDACJI CIS Microsoft Azure do zasad platformy Azure.
 ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74707429"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656966"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Mapowanie rekomendacji przykładowego planu wzorca fundacji CIS Microsoft Azure Foundations
 
@@ -245,7 +245,7 @@ Ten plan przypisuje definicje [zasad platformy Azure,](../../../policy/overview.
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4.11 Upewnij się, że opcja "Wymuszanie połączenia SSL" jest ustawiona na "WŁĄCZONE" dla serwera bazy danych MySQL
 
-Ten plan przypisuje definicję [zasad platformy Azure,](../../../policy/overview.md) która pomaga zapewnić, że serwery bazy danych MySQL wymuszają połączenia SSL.
+Ten plan przypisuje definicję [zasad platformy Azure,](../../../policy/overview.md) która pomaga zapewnić, że serwery bazy danych MySQL wymuszają połączenia TLS/SSL.
 
 - Wymuszanie połączenia SSL powinno być włączone dla serwerów bazy danych MySQL
 
@@ -257,7 +257,7 @@ Ten plan przypisuje definicji [zasad platformy Azure,](../../../policy/overview.
 
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4.13 Upewnij się, że opcja "Wymuszanie połączenia SSL" jest ustawiona na "WŁĄCZONE" dla serwera bazy danych PostgreSQL
 
-Ten plan przypisuje definicję [zasad platformy Azure,](../../../policy/overview.md) która pomaga zapewnić, że serwery bazy danych PostgreSQL wymuszają połączenia SSL.
+Ten plan przypisuje definicję [zasad platformy Azure,](../../../policy/overview.md) która pomaga zapewnić, że serwery bazy danych PostgreSQL wymuszają połączenia TLS/SSL.
 
 - Wymuszanie połączenia SSL powinno być włączone dla serwerów bazy danych PostgreSQL
 

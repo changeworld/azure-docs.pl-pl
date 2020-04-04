@@ -11,23 +11,22 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 39501cef3bb2f7e4a0e061968520f687cf97ecc5
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 20afa3f37bb85fd268962aea03107f0eaeb9bea2
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584201"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633593"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Ciągła integracja i wdrażanie w zakresie magazynowania danych
 
-W tym prostym samouczku opisano, jak zintegrować projekt bazy danych narzędzi danych programu SQL Server (SSDT) z platformą Azure DevOps i wykorzystać usługi Azure Pipelines do skonfigurowania ciągłej integracji i wdrażania. Ten samouczek jest drugim krokiem w tworzeniu potoku ciągłej integracji i wdrażania dla hurtowni danych. 
+W tym prostym samouczku opisano, jak zintegrować projekt bazy danych narzędzi danych programu SQL Server (SSDT) z platformą Azure DevOps i wykorzystać usługi Azure Pipelines do skonfigurowania ciągłej integracji i wdrażania. Ten samouczek jest drugim krokiem w tworzeniu potoku ciągłej integracji i wdrażania dla hurtowni danych.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-- Przejdź przez [samouczek integracji kontroli źródła](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration)
+- Przejdź przez [samouczek integracji kontroli źródła](sql-data-warehouse-source-control-integration.md)
 
 - Konfigurowanie programów DevOps i łączenie się z nią
-
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Ciągła integracja z kompilacją programu Visual Studio
 
@@ -37,7 +36,7 @@ W tym prostym samouczku opisano, jak zintegrować projekt bazy danych narzędzi 
 
 2. Wybierz repozytorium kodu źródłowego (Azure Repos Git) i wybierz szablon aplikacji .NET Desktop.
 
-      ![Ustawienia potoku](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "Ustawienia potoku") 
+      ![Ustawienia potoku](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "Ustawienia potoku")
 
 3. Edytuj plik YAML, aby użyć odpowiedniej puli agenta. Twój plik YAML powinien wyglądać mniej więcej tak:
 
@@ -45,10 +44,9 @@ W tym prostym samouczku opisano, jak zintegrować projekt bazy danych narzędzi 
 
 W tym momencie masz proste środowisko, w którym wszelkie zaewidencjonowania do gałęzi głównej repozytorium formantu źródła powinny automatycznie wyzwalać pomyślną kompilację programu Visual Studio projektu bazy danych. Sprawdź poprawność automatyzacji działa od końca do końca, wszedło w projekcie lokalnej bazy danych i zaewidencjonowanie tej zmiany w gałęzi głównej.
 
-
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Ciągłe wdrażanie za pomocą zadania wdrażania usługi Azure SQL Data Warehouse (lub Database)
 
-1. Dodaj nowe zadanie przy użyciu [zadania wdrażania usługi Azure SQL Database](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) i wypełnij wymagane pola, aby połączyć się z docelowym magazynem danych. Po uruchomieniu tego zadania DACPAC generowane z poprzedniego procesu kompilacji jest wdrażany w magazynie danych docelowych. Można również użyć [zadania wdrażania usługi Azure SQL Data Warehouse](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment). 
+1. Dodaj nowe zadanie przy użyciu [zadania wdrażania usługi Azure SQL Database](/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) i wypełnij wymagane pola, aby połączyć się z docelowym magazynem danych. Po uruchomieniu tego zadania DACPAC generowane z poprzedniego procesu kompilacji jest wdrażany w magazynie danych docelowych. Można również użyć [zadania wdrażania usługi Azure SQL Data Warehouse](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment).
 
       ![Zadanie wdrażania](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Zadanie wdrażania")
 

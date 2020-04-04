@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/17/2020
+ms.date: 04/03/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: ed27097d29f3a10e708044ad7e2e30736e2c60e6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a8930af1366fef3d8c4491fca5e9403905648de1
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471850"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638011"
 ---
 # <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
@@ -61,7 +61,7 @@ Można centralnie tworzyć reguły filtrowania sieci (*zezwalania* lub *blokowan
 
 ## <a name="fqdn-tags"></a>Tagi w pełni kwalifikowanych nazw domen
 
-Tagi w pełni kwalifikowanych nazw domen zezwalają na znany ruch sieciowy usługi Azure przez zaporę. Załóżmy na przykład, że chcesz zezwolić na ruch sieciowy z witryny Windows Update przez zaporę. Tworzysz regułę aplikacji i dołączasz tag „Windows Update”. Teraz ruch sieciowy z witryny Windows Update może przechodzić przez zaporę.
+Tagi FQDN ułatwiają zezwalanie na dobrze znany ruch sieciowy usługi platformy Azure za pośrednictwem zapory. Załóżmy na przykład, że chcesz zezwolić na ruch sieciowy z witryny Windows Update przez zaporę. Tworzysz regułę aplikacji i dołączasz tag „Windows Update”. Teraz ruch sieciowy z witryny Windows Update może przechodzić przez zaporę.
 
 ## <a name="service-tags"></a>Tagi usługi
 
@@ -118,7 +118,8 @@ Reguły filtrowania dla protokołów innych niż TCP/UDP (na przykład ICMP) nie
 |Obsługa filtrowania FQDN SQL tylko w trybie proxy (port 1433)|W przypadku usługi Azure SQL Database, usługi Azure SQL Data Warehouse i wystąpienia zarządzanego sql platformy Azure:<br><br>Podczas podglądu filtrowanie FQDN SQL jest obsługiwane tylko w trybie proxy (port 1433).<br><br>W przypadku usługi Azure SQL IaaS:<br><br>Jeśli używasz portów niestandardowych, można określić te porty w regułach aplikacji.|W przypadku języka SQL w trybie przekierowania, który jest domyślnym elementem łączącym się z poziomu platformy Azure, można zamiast tego filtrować dostęp przy użyciu tagu usługi SQL jako część reguł sieciowych zapory platformy Azure.
 |Ruch wychodzący na porcie TCP 25 jest niedozwolony| Wychodzące połączenia SMTP korzystające z portu TCP 25 są blokowane. Port 25 jest używany głównie do nieuwierzyleni dostarczania wiadomości e-mail. Jest to domyślne zachowanie platformy dla maszyn wirtualnych. Aby uzyskać więcej informacji, zobacz więcej [Rozwiązywanie problemów z łącznością smtp wychodzących na platformie Azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). Jednak w przeciwieństwie do maszyn wirtualnych obecnie nie jest możliwe włączenie tej funkcji w zaporze platformy Azure.|Postępuj zgodnie z zalecaną metodą wysyłania wiadomości e-mail zgodnie z dokumentami w artykule dotyczącym rozwiązywania problemów z smtp. Możesz też wykluczyć maszynę wirtualną, która potrzebuje wychodzącego dostępu SMTP z domyślnej trasy do zapory, a zamiast tego skonfiguruj dostęp wychodzący bezpośrednio do Internetu.
 |Aktywny ftp nie jest obsługiwany|Aktywny protokół FTP jest wyłączony w zaporze platformy Azure w celu ochrony przed atakami odbijania FTP za pomocą polecenia FTP PORT.|Zamiast tego można użyć pasywnego FTP. Nadal należy jawnie otworzyć porty TCP 20 i 21 na zaporze.
-|Wskaźnik wykorzystania portów SNAT pokazuje 0%|Metryka wykorzystania portu SNAT zapory platformy Azure może wykazywać 0% użycia nawet wtedy, gdy są używane porty SNAT. W takim przypadku przy użyciu metryki jako część metryki kondycji zapory zapewnia niepoprawny wynik.|Ten problem został rozwiązany i wdrożenie do produkcji jest ukierunkowane na maj 2020. W niektórych przypadkach ponowne wdrożenie zapory rozwiązuje problem, ale nie jest spójne. Jako obejście pośrednie należy używać tylko stanu kondycji zapory, aby wyszukać *stan=zdegradowany*, nie dla *stanu=w złej kondycji*. Wyczerpanie portu będzie wyświetlane jako *zdegradowane*. *Nie w dobrej kondycji* jest zarezerwowany do wykorzystania w przyszłości, gdy są bardziej metryki, aby wpłynąć na kondycję zapory. 
+|Wskaźnik wykorzystania portów SNAT pokazuje 0%|Metryka wykorzystania portu SNAT zapory platformy Azure może wykazywać 0% użycia nawet wtedy, gdy są używane porty SNAT. W takim przypadku przy użyciu metryki jako część metryki kondycji zapory zapewnia niepoprawny wynik.|Ten problem został rozwiązany i wdrożenie do produkcji jest ukierunkowane na maj 2020. W niektórych przypadkach ponowne wdrożenie zapory rozwiązuje problem, ale nie jest spójne. Jako obejście pośrednie należy używać tylko stanu kondycji zapory, aby wyszukać *stan=zdegradowany*, nie dla *stanu=w złej kondycji*. Wyczerpanie portu będzie wyświetlane jako *zdegradowane*. *Nie w dobrej kondycji* jest zarezerwowany do wykorzystania w przyszłości, gdy są bardziej metryki, aby wpłynąć na kondycję zapory.
+|Protokół DNAT nie jest obsługiwany z włączoną funkcją tunelowania wymuszonego|Zapory wdrożone z włączoną obsługą tunelowania wymuszonego nie obsługują dostępu przychodzącego z Internetu z powodu routingu asymetrycznego.|Jest to zgodnie z projektem ze względu na routing asymetryczny. Ścieżka powrotu dla połączeń przychodzących przechodzi przez zaporę lokalną, która nie została nawiązana.
 
 ## <a name="next-steps"></a>Następne kroki
 

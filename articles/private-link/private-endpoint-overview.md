@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: fd389c1e909e6875ead8410b5ca692b82c79e0de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6782d745bfced576fe06019b0d41af86c8c63ed4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063073"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656271"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co to jest prywatny punkt końcowy platformy Azure?
 
@@ -60,19 +60,21 @@ Zasób łącza prywatnego jest miejscem docelowym danego prywatnego punktu końc
 |**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseKonta kont | Sql, MongoDB, Cassandra, Gremlin, Tabela|
 |**Usługa Azure Database for PostgreSQL -Single server** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | serwer mysqlServer |
-|**Usługa Azure Database dla mariadb** | Microsoft.DBforMariaDB/serwery    | mariadbServer (MariadbServer) |
+|**Azure Database for MariaDB** | Microsoft.DBforMariaDB/serwery    | mariadbServer (MariadbServer) |
 |**Azure Key Vault** | Microsoft.KeyVault/przechowalnia    | magazyn |
 |**Usługa Kubernetes platformy Azure — interfejs API usługi Kubernetes** | Microsoft.ContainerService/managedClusters | managedCluster |
 |**Azure Search** | Microsoft.Search/searchService (Wyszukiwanie/wyszukiwanie)| wyszukiwanie Usługa|  
 |**Rejestr kontenerów platformy Azure** | Microsoft.ContainerRegistry/rejestry  | registry |
 |**Azure App Configuration** | Microsoft.Appconfiguration/configurationStores   | konfiguracjaSklep |
-|**Kopia zapasowa platformy Azure** | Microsoft.RecoverySługs/vaults   | magazyn |
+|**Azure Backup** | Microsoft.RecoverySługs/vaults   | magazyn |
 |**Centrum zdarzeń Azure** | Microsoft.EventHub/przestrzenie nazw    | namespace |
 |**Azure Service Bus** | Microsoft.ServiceBus/przestrzenie nazw | namespace |
 |**Azure Relay** | Microsoft.Relay/przestrzenie nazw | namespace |
 |**Azure Event Grid** | Microsoft.EventGrid/tematy  | temat |
 |**Azure Event Grid** | Microsoft.EventGrid/domeny | domena |
-|**Azure WebApps** | Microsoft.Web/witryny    | lokacje |
+|**Azure WebApps** | Microsoft.Web/witryny    | lokacja |
+|**Uczenie maszynowe platformy Azure** | Microsoft.MachineLearningUsługi/obszary robocze  | obszar roboczy |
+  
  
 ## <a name="network-security-of-private-endpoints"></a>Bezpieczeństwo sieci prywatnych punktów końcowych 
 Podczas korzystania z prywatnych punktów końcowych dla usług platformy Azure ruch jest zabezpieczony do określonego zasobu łącza prywatnego. Platforma wykonuje kontrolę dostępu, aby sprawdzić poprawność połączeń sieciowych docierających tylko do określonego zasobu łącza prywatnego. Aby uzyskać dostęp do dodatkowych zasobów w ramach tej samej usługi platformy Azure, wymagane są dodatkowe prywatne punkty końcowe. 
@@ -143,6 +145,7 @@ W przypadku usług platformy Azure należy używać zalecanych nazw stref zgodni
 |Usługa Azure Event Grid (Microsoft.EventGrid/topics)   | temat | Temat. {region}.privatelink.eventgrid.azure.net|
 |Usługa Azure Event Grid (Microsoft.EventGrid/domains) | domena | Domeny. {region}.privatelink.eventgrid.azure.net |
 |Azure WebApps(Microsoft.Web/sites) | lokacja | privatelink.azurewebsites.net |
+|Azure Machine Learning(Microsoft.MachineLearningServices/workspaces)   | obszar roboczy | privatelink.api.azureml.ms |
  
 Platforma Azure utworzy rekord DNS nazwy kanonicznej (CNAME) w publicznym systemie DNS, aby przekierować rozdzielczość do sugerowanych nazw domen. Rozdzielczość można zastąpić prywatnym adresem IP prywatnych punktów końcowych. 
  

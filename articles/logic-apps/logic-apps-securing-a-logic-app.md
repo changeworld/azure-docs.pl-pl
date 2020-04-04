@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: cc349e5851627ee830196982509f91a83198dfe0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4fc4960eb3af8a3d3c9902c9b24505bb5610b709
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349577"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657175"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Bezpieczny dostęp i dane w usłudze Azure Logic Apps
 
@@ -27,7 +27,7 @@ Aby kontrolować dostęp i chronić dane w usłudze Azure Logic Apps, można sko
 
 ## <a name="access-to-request-based-triggers"></a>Dostęp do wyzwalaczy opartych na żądaniach
 
-Jeśli aplikacja logiki używa wyzwalacza opartego na żądaniu, który odbiera przychodzące wywołania lub żądania, takie jak [żądanie](../connectors/connectors-native-reqres.md) lub [webhook](../connectors/connectors-native-webhook.md) wyzwalacza, można ograniczyć dostęp, dzięki czemu tylko autoryzowani klienci mogą wywołać aplikację logiki. Wszystkie żądania odebrane przez aplikację logiki są szyfrowane i zabezpieczone protokołem SSL (Secure Sockets Layer).
+Jeśli aplikacja logiki używa wyzwalacza opartego na żądaniu, który odbiera przychodzące wywołania lub żądania, takie jak [żądanie](../connectors/connectors-native-reqres.md) lub [webhook](../connectors/connectors-native-webhook.md) wyzwalacza, można ograniczyć dostęp, dzięki czemu tylko autoryzowani klienci mogą wywołać aplikację logiki. Wszystkie żądania odebrane przez aplikację logiki są szyfrowane i zabezpieczone protokołem TLS (Transport Layer Security), wcześniej znanym jako Secure Sockets Layer (SSL).
 
 Oto opcje, które mogą pomóc w zabezpieczeniu dostępu do tego typu wyzwalacza:
 
@@ -110,7 +110,7 @@ Wraz z sygnaturą dostępu współdzielonego (SAS) można w szczególności ogra
 
 1. W obszarze **Zakresy adresów IP dla wyzwalaczy**określ zakresy adresów IP akceptowane przez wyzwalacz.
 
-   A valid IP range uses these formats: *x.x.x.x/x* or *x.x.x.x-x.x.x.x*
+   Prawidłowy zakres adresów IP używa następujących formatów: *x.x.x.x/x* lub *x.x.x.x.x.x.x*
 
 Jeśli chcesz, aby aplikacja logiki wyzwalała tylko jako zagnieżdżoną aplikację logiki, z listy **Dozwolone przychodzące adresy IP** wybierz pozycję **Tylko inne aplikacje logiki**. Ta opcja zapisuje pustą tablicę do zasobu aplikacji logiki. W ten sposób tylko wywołania z usługi Logic Apps (nadrzędne aplikacje logiki) mogą wyzwalać zagnieżdżoną aplikację logiki.
 
@@ -210,7 +210,7 @@ Można ograniczyć dostęp do danych wejściowych i wyjściowych w historii uruc
 
 1. W obszarze **Zakresy adresów IP dla zawartości**określ zakresy adresów IP, które mogą uzyskiwać dostęp do zawartości z wejść i wyjść. 
 
-   A valid IP range uses these formats: *x.x.x.x/x* or *x.x.x.x-x.x.x.x*
+   Prawidłowy zakres adresów IP używa następujących formatów: *x.x.x.x/x* lub *x.x.x.x.x.x.x*
 
 #### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>Ograniczanie zakresów adresów IP w szablonie usługi Azure Resource Manager
 
@@ -609,7 +609,7 @@ Punkty końcowe HTTP i HTTPS obsługują różne rodzaje uwierzytelniania. Na po
 
 | Typ uwierzytelniania | Obsługiwane przez |
 |---------------------|--------------|
-| [Podstawowa (Basic)](#basic-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Webhook |
+| [Podstawowy](#basic-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Webhook |
 | [Certyfikat klienta](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Usługa Azure API Management, usługi azure app services, usługi azure, protokół HTTP, HTTP + Swagger, interfejs http webhook |
 | [Nieprzetworzone](#raw-authentication) | Usługa Azure API Management, usługi azure app services, usługi azure, protokół HTTP, HTTP + Swagger, interfejs http webhook |
@@ -624,7 +624,7 @@ Jeśli opcja [Basic](../active-directory-b2c/secure-rest-api.md) jest dostępna,
 
 | Właściwość (projektant) | Właściwość (JSON) | Wymagany | Wartość | Opis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Uwierzytelnianie** | `type` | Tak | Podstawowa (Basic) | Typ uwierzytelniania, którego można użyć |
+| **Authentication** | `type` | Tak | Podstawowy | Typ uwierzytelniania, którego można użyć |
 | **Nazwę użytkownika** | `username` | Tak | <*nazwa użytkownika*>| Nazwa użytkownika do uwierzytelniania dostępu do docelowego punktu końcowego usługi |
 | **Hasło** | `password` | Tak | <*Hasło*> | Hasło do uwierzytelniania dostępu do docelowego punktu końcowego usługi |
 ||||||
@@ -655,7 +655,7 @@ Jeśli opcja [Certyfikat klienta](../active-directory/authentication/active-dire
 
 | Właściwość (projektant) | Właściwość (JSON) | Wymagany | Wartość | Opis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Uwierzytelnianie** | `type` | Tak | **Certyfikat klienta** <br>lub <br>`ClientCertificate` | Typ uwierzytelniania używany dla certyfikatów klienta SSL (Secure Sockets Layer). Podczas gdy certyfikaty z podpisem własnym są obsługiwane, certyfikaty z podpisem własnym dla SSL nie są obsługiwane. |
+| **Authentication** | `type` | Tak | **Certyfikat klienta** <br>lub <br>`ClientCertificate` | Typ uwierzytelniania używany dla certyfikatów klientów TLS/SSL. Podczas gdy certyfikaty z podpisem własnym są obsługiwane, certyfikaty z podpisem własnym dla protokołu TLS/SSL nie są obsługiwane. |
 | **Pfx** | `pfx` | Tak | <*zakodowana zawartość pliku pfx*> | Zawartość zakodowana w bazie 64 z pliku wymiany informacji osobistych (PFX) <p><p>Aby przekonwertować plik PFX na format zakodowany w formacie base64, można użyć programu PowerShell, wykonując następujące czynności: <p>1. Zapisz zawartość certyfikatu w zmiennej: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Przekonwertuj `ToBase64String()` zawartość certyfikatu za pomocą funkcji i zapisz tę zawartość w pliku tekstowym: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Hasło** | `password`| Nie | <*hasło-dla-pfx-file*> | Hasło dostępu do pliku PFX |
 |||||
@@ -684,7 +684,7 @@ Aby uzyskać więcej informacji na temat zabezpieczania usług przy użyciu uwie
 * [Zwiększ bezpieczeństwo usług zaplecza przy użyciu uwierzytelniania certyfikatów klienta w usłudze Azure API Management](../api-management/api-management-howto-mutual-certificates.md)
 * [Zwiększ bezpieczeństwo usługi RESTfuL przy użyciu certyfikatów klientów](../active-directory-b2c/secure-rest-api.md)
 * [Poświadczenia certyfikatu do uwierzytelniania aplikacji](../active-directory/develop/active-directory-certificate-credentials.md)
-* [Używanie certyfikatu SSL w kodzie aplikacji w usłudze Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
+* [Używanie certyfikatu TLS/SSL w kodzie w usłudze Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
 
 <a name="azure-active-directory-oauth-authentication"></a>
 
@@ -694,7 +694,7 @@ Jeśli dostępna jest opcja [OAuth usługi Active Directory,](../active-director
 
 | Właściwość (projektant) | Właściwość (JSON) | Wymagany | Wartość | Opis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Uwierzytelnianie** | `type` | Tak | **Active Directory OAuth** <br>lub <br>`ActiveDirectoryOAuth` | Typ uwierzytelniania do użycia. Logic Apps jest obecnie zgodna z [protokołem OAuth 2.0](../active-directory/develop/v2-overview.md). |
+| **Authentication** | `type` | Tak | **Active Directory OAuth** <br>lub <br>`ActiveDirectoryOAuth` | Typ uwierzytelniania do użycia. Logic Apps jest obecnie zgodna z [protokołem OAuth 2.0](../active-directory/develop/v2-overview.md). |
 | **Urząd** | `authority` | Nie | <*Adres URL dla organu-token-wystawca*> | Adres URL urzędu, który udostępnia token uwierzytelniania. Domyślnie ta wartość `https://login.windows.net`to . |
 | **Dzierżawa** | `tenant` | Tak | <*identyfikator dzierżawy*> | Identyfikator dzierżawy dzierżawy usługi Azure AD |
 | **Grupy odbiorców** | `audience` | Tak | <*zasobów do autoryzacji*> | Zasób, którego chcesz użyć do autoryzacji, na przykład`https://management.core.windows.net/` |
@@ -748,7 +748,7 @@ W wyzwalaczu lub akcji obsługującej uwierzytelnianie nieprzetworzone określ n
 
 | Właściwość (projektant) | Właściwość (JSON) | Wymagany | Wartość | Opis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Uwierzytelnianie** | `type` | Tak | Nieprzetworzone | Typ uwierzytelniania, którego można użyć |
+| **Authentication** | `type` | Tak | Nieprzetworzone | Typ uwierzytelniania, którego można użyć |
 | **Wartość** | `value` | Tak | <*autoryzacja-header-wartość*> | Wartość nagłówka autoryzacji używana do uwierzytelniania |
 ||||||
 
@@ -783,7 +783,7 @@ Jeśli opcja [Tożsamość zarządzana](../active-directory/managed-identities-a
 
    | Właściwość (projektant) | Właściwość (JSON) | Wymagany | Wartość | Opis |
    |---------------------|-----------------|----------|-------|-------------|
-   | **Uwierzytelnianie** | `type` | Tak | **Tożsamość zarządzana** <br>lub <br>`ManagedServiceIdentity` | Typ uwierzytelniania, którego można użyć |
+   | **Authentication** | `type` | Tak | **Tożsamość zarządzana** <br>lub <br>`ManagedServiceIdentity` | Typ uwierzytelniania, którego można użyć |
    | **Tożsamość zarządzana** | `identity` | Tak | * **Tożsamości zarządzanej przypisanej do systemu** <br>lub <br>`SystemAssigned` <p><p>* <*nazwa tożsamości przypisana przez użytkownika*> | Tożsamość zarządzana do użycia |
    | **Grupy odbiorców** | `audience` | Tak | <*identyfikator zasobu docelowego*> | Identyfikator zasobu docelowego, do którego chcesz uzyskać dostęp. <p>Na przykład `https://storage.azure.com/` sprawia, że tokeny dostępu do uwierzytelniania prawidłowe dla wszystkich kont magazynu. Można jednak również określić adres URL `https://fabrikamstorageaccount.blob.core.windows.net` usługi głównej, na przykład dla określonego konta magazynu. <p>**Uwaga:** **Właściwość Odbiorca** może być ukryta w niektórych wyzwalaczach lub działaniach. Aby ta właściwość była widoczna, w wyzwalaczu lub akcji otwórz listę **Dodaj nowy parametr** i wybierz pozycję Grupa **odbiorców**. <p><p>**Ważne:** Upewnij się, że ten identyfikator zasobu *docelowego dokładnie odpowiada* wartości, której oczekuje usługa Azure AD, w tym wszelkie wymagane końcowe ukośniki. Tak więc `https://storage.azure.com/` identyfikator zasobu dla wszystkich kont usługi Azure Blob Storage wymaga końcowego ukośnika. Jednak identyfikator zasobu dla określonego konta magazynu nie wymaga ukośnika końcowego. Aby znaleźć te identyfikatory zasobów, zobacz [usługi platformy Azure obsługujące usługę Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
    |||||
