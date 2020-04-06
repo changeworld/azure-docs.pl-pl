@@ -3,12 +3,12 @@ title: Funkcje zabezpieczeń ułatwiające ochronę obciążeń w chmurze
 description: Dowiedz się, jak korzystać z funkcji zabezpieczeń w usłudze Azure Backup, aby uczynić kopie zapasowe bezpieczniejszymi.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 57c9fd76ae32aea49f480f2a88d8296538d8052d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd7c86e18114513a264a0f9252589533fb7ff2d3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156076"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668738"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkcje zabezpieczeń ułatwiające ochronę obciążeń w chmurze korzystających z usługi Azure Backup
 
@@ -34,7 +34,7 @@ Usuwanie nietrwałe dla maszyn wirtualnych chroni kopie zapasowe maszyn wirtualn
 
 ### <a name="supported-regions"></a>Obsługiwane regiony
 
-Usuwanie miękkie jest obecnie obsługiwane w zachodnio-środkowych stanach USA, Azji Wschodniej, Kanadzie Środkowej, Kanadzie Wschodniej, Francji Środkowej, Francji Południowej, Korei Środkowej, Korei Południowej, Południowej, Południowej, Południowej, Południowej, Australii Zachodniej, Australii Południowo-Wschodniej, Europie Północnej, Zachodnich Stanach Zjednoczonych, Zachodnich STANACH ZJEDNOCZONYCH2, Środkowych Stanach Zjednoczonych, Południowej Azja Wschodnia, Północno-Środkowe stany USA, Południowo-Środkowe Stany Zjednoczone, Japonia Wschodnia, Japonia Zachodnia, Indie Południowe, Indie Środkowe, Indie Zachodnie, Wschodnie STANY USA 2, Szwajcaria Północna, Szwajcaria Zachód i wszystkie regiony narodowe.
+Usuwanie miękkie jest obecnie obsługiwane w zachodnio-środkowych stanach USA, Azji Wschodniej, Kanadzie Środkowej, Kanadzie Wschodniej, Francji Środkowej, Francji Południowej, Korei Środkowej, Korei Południowej, Południowej, Południowej, Południowej, Wielkiej Brytanii, Australii Zachodniej, Australii Południowo-Wschodniej, Europie Północnej, Zachodnich Stanach Zjednoczonych, Zachodnich Stanach Zjednoczonych, Azji Środkowej, Azji Południowo-Wschodniej, Północno-Środkowej USA, Południowo-Środkowo-Środkowych Stanach Zjednoczonych, Japonii Wschodniej, Japonii Zachodniej, Indiach Południowych, Indiach Południowych, Indiach Zachodnich, Indiach Zachodnich, Wschodnich Stanach Zjednoczonych 2 , Szwajcaria Północ, Szwajcaria Zachód, Norwegia Zachodnia, Norwegia Wschodnia i wszystkie regiony narodowe.
 
 ### <a name="soft-delete-for-vms-using-azure-portal"></a>Usuwanie nietrwałe dla maszyn wirtualnych przy użyciu witryny Azure portal
 
@@ -264,7 +264,7 @@ Podczas tworzenia kopii zapasowej maszyn wirtualnych platformy Azure można tera
 
 ### <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Tworzenie kopii zapasowych maszyn wirtualnych z dysku zarządzanego zaszyfrowanych przy użyciu kluczy zarządzanych przez klienta
 
-Usługa Azure Backup umożliwia również tworzenie kopii zapasowych maszyn wirtualnych platformy Azure, które używają klucza do szyfrowania po stronie serwera. Klucz używany do szyfrowania dysków jest przechowywany w magazynie azure key vault i zarządzany przez Ciebie. Szyfrowanie po stronie serwera przy użyciu kluczy zarządzanych przez klienta różni się od szyfrowania dysków Azure, ponieważ usługa ADE wykorzystuje funkcje BitLocker (dla Windows) i DM-Crypt (dla systemu Linux) do szyfrowania w trybie rzeczywistym, SSE szyfruje dane w usłudze przechowywania, umożliwiając korzystanie z dowolnego systemu operacyjnego lub obrazów maszyn wirtualnych. Aby uzyskać więcej informacji, zapoznaj się [z informacjami dotyczącymi szyfrowania dysków zarządzanych za pomocą kluczy zarządzanych](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) przez klienta.
+Usługa Azure Backup umożliwia również tworzenie kopii zapasowych maszyn wirtualnych platformy Azure, które używają klucza do szyfrowania po stronie serwera. Klucz używany do szyfrowania dysków jest przechowywany w magazynie azure key vault i zarządzany przez Ciebie. Szyfrowanie po stronie serwera przy użyciu kluczy zarządzanych przez klienta różni się od szyfrowania dysków Azure, ponieważ usługa ADE wykorzystuje funkcje BitLocker (dla systemu Windows) i DM-Crypt (dla systemu Linux) do szyfrowania w trybie rzeczywistym, SSE szyfruje dane w usłudze magazynu, umożliwiając używanie dowolnego systemu operacyjnego lub obrazów dla maszyn wirtualnych. Aby uzyskać więcej informacji, zapoznaj się [z informacjami dotyczącymi szyfrowania dysków zarządzanych za pomocą kluczy zarządzanych](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) przez klienta.
 
 ### <a name="backup-of-vms-encrypted-using-ade"></a>Tworzenie kopii zapasowych maszyn wirtualnych zaszyfrowanych przy użyciu usługi ADE
 

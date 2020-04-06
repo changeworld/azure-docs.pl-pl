@@ -4,16 +4,16 @@ description: Używanie urządzenia usługi Azure IoT Edge jako przezroczystej br
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/30/2019
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6069e0782f69d0dfb73d9be2998cbb11d59d7d22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b3aeff595671c5f924d01599b572b6b938ef09d
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529173"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666659"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurowanie urządzenia usługi IoT Edge, aby działało jako przezroczysta brama
 
@@ -42,7 +42,7 @@ Można utworzyć dowolną infrastrukturę certyfikatów, która umożliwia zaufa
 >[!NOTE]
 >Termin "główny urząd certyfikacji" używany w tym artykule odnosi się do najwyższego certyfikatu urzędu publicznego łańcucha certyfikatów infrastruktury kluczy publicznych, a niekoniecznie do katalogu głównego certyfikatu syndykatu urzędu certyfikacji. W wielu przypadkach jest to w rzeczywistości pośredni certyfikat publiczny urzędu certyfikacji.
 
-Brama przedstawia swój certyfikat urzędu certyfikacji urządzenia usługi IoT Edge do urządzenia podrzędnego podczas inicjowania połączenia. Urządzenie podrzędne sprawdza, czy certyfikat urzędu certyfikacji urządzenia IoT Edge jest podpisany przez główny certyfikat urzędu certyfikacji. Ten proces umożliwia urządzeniu podrzędnemu potwierdzenie, że brama pochodzi z zaufanego źródła.
+Demon zabezpieczeń usługi IoT Edge używa certyfikatu urzędu certyfikacji urządzenia usługi IoT Edge do podpisywania certyfikatu urzędu certyfikacji obciążenia, który z kolei podpisuje certyfikat serwera dla centrum Usługi IoT Edge. Brama przedstawia swój certyfikat serwera do urządzenia podrzędnego podczas inicjowania połączenia. Urządzenie podrzędne sprawdza, czy certyfikat serwera jest częścią łańcucha certyfikatów, który jest przekażnie do głównego certyfikatu urzędu certyfikacji. Ten proces umożliwia urządzeniu podrzędnemu potwierdzenie, że brama pochodzi z zaufanego źródła. Aby uzyskać więcej informacji, zobacz [Opis sposobu używania certyfikatów przez usługę Azure IoT Edge.](iot-edge-certs.md)
 
 Poniższe kroki przebiegają przez proces tworzenia certyfikatów i instalowania ich we właściwych miejscach na bramie. Do wygenerowania certyfikatów można użyć dowolnego komputera, a następnie skopiować je na urządzenie usługi IoT Edge.
 
@@ -115,7 +115,7 @@ Aby uzyskać więcej informacji na temat routingu wiadomości, zobacz [Wdrażani
 
 Począwszy od [wersji 1.0.4](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) środowiska wykonawczego usługi IoT Edge, urządzenie bramy i urządzenia podrzędne łączące się z nim można skonfigurować do rozszerzonej pracy w trybie offline.
 
-Dzięki tej funkcji moduły lokalne lub urządzenia podrzędne mogą ponownie uwierzytelniać się za pomocą urządzenia Usługi IoT Edge w razie potrzeby i komunikować się ze sobą za pomocą wiadomości i metod, nawet po odłączeniu od centrum IoT hub. Aby uzyskać więcej informacji, zobacz [Opis rozszerzonych funkcji offline dla urządzeń, modułów i urządzeń podrzędnych usługi IoT Edge.](offline-capabilities.md)
+Dzięki tej funkcji moduły lokalne lub urządzenia podrzędne mogą ponownie uwierzytelniać się za pomocą urządzenia usługi IoT Edge w razie potrzeby i komunikować się ze sobą za pomocą wiadomości i metod, nawet po odłączeniu od centrum IoT hub. Aby uzyskać więcej informacji, zobacz [Opis rozszerzonych funkcji offline dla urządzeń, modułów i urządzeń podrzędnych usługi IoT Edge.](offline-capabilities.md)
 
 Aby włączyć rozszerzone możliwości w trybie offline, należy ustanowić relację nadrzędny-podrzędny między urządzeniem bramy usługi IoT Edge a urządzeniami podrzędnymi, które będą się z nim łączyć. Te kroki są wyjaśnione bardziej szczegółowo w [uwierzytelnij urządzenie podrzędne do usługi Azure IoT Hub.](how-to-authenticate-downstream-device.md)
 

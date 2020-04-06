@@ -12,14 +12,14 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: a4cfcf20fc7a6a3532f65c3e797da6c876844d2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 349a9920adc0d9353ee8e8e821f54bc2ea2f2616
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76985565"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666980"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Samouczek: Integracja rejestracji jednokrotnej usługi Azure Active Directory (Logowanie jednokrotne) z usługą Wdesk
 
@@ -181,6 +181,10 @@ W tej sekcji można włączyć Britta Simon do korzystania z usługi Azure logow
 
     ![Konfigurowanie logowania jednokrotnego](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
+1. W obszarze **Ustawienia identyfikatora użytkownika SAML**sprawdź, czy **identyfikator użytkownika SAML to Nazwa użytkownika firmy Wdesk**.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/wdesk-tutorial/wdesk-username.png)
+
 4. W obszarze **Ustawienia ogólne**zaznacz opcję **Włącz logowanie jednokrotne SAML:**
 
     ![Konfigurowanie logowania jednokrotnego](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
@@ -223,7 +227,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogowanie się do usługi Wdesk
    
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/wdesk-tutorial/createuser1.png)  
 
-5. W polu tekstowym **Użytkownik** wprowadź brittasimon@contoso.com nazwę użytkownika polub i kliknij przycisk **Kontynuuj.**
+5. W polu tekstowym **Użytkownik** wprowadź b.simon@contoso.com nazwę użytkownika polub i kliknij przycisk **Kontynuuj.**
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/wdesk-tutorial/createuser3.png)
 
@@ -231,9 +235,9 @@ Aby umożliwić użytkownikom usługi Azure AD zalogowanie się do usługi Wdesk
   
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/wdesk-tutorial/createuser4.png)
  
-    a. W polu **tekstowym Wiadomości e-mail** brittasimon@contoso.comwprowadź adres e-mail użytkownika w stylu .
+    a. W polu **tekstowym Wiadomości e-mail** b.simon@contoso.comwprowadź adres e-mail użytkownika w stylu .
 
-    b. W polu tekstowym **First Name** (Imię) wprowadź imię użytkownika, na przykład **Britta**.
+    b. W polu **tekstowym Imię** wprowadź imię użytkownika, takiego jak **B**.
 
     d. W polu **tekstowym Nazwisko** wprowadź nazwisko użytkownika, takiego jak **Simon**.
 

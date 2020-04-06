@@ -9,12 +9,12 @@ ms.date: 03/06/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 48c8179af4a4b69924fb943ac98918b48d3a2008
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4d247f151240da8c3f0d38bbd22e43e230a1b95
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537364"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668612"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Tworzenie i aprowizyja na urządzeniu Usługi IoT Edge przy użyciu certyfikatów X.509
 
@@ -72,6 +72,9 @@ Jeśli chcesz aprowizować wiele urządzeń IoT Edge, wykonaj kroki opisane w na
 Podczas tworzenia rejestracji w dps, masz możliwość zadeklarowania **stanu bliźniaczej reprezentacji urządzenia początkowego**. W bliźniaczej reprezentacji urządzenia można ustawić znaczniki, aby grupować urządzenia według dowolnej metryki potrzebnej w rozwiązaniu, takiej jak region, środowisko, lokalizacja lub typ urządzenia. Tagi te są używane do tworzenia [wdrożeń automatycznych](how-to-deploy-monitor.md).
 
 Aby uzyskać więcej informacji na temat rejestracji w usłudze inicjowania obsługi administracyjnej urządzeń, zobacz [Jak zarządzać rejestracjami urządzeń](../iot-dps/how-to-manage-enrollments.md).
+
+   > [!TIP]
+   > W wierszu polecenia platformy Azure można utworzyć [rejestrację](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) lub [grupę rejestracji](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) i użyć flagi **obsługującej krawędź,** aby określić, że urządzenie lub grupa urządzeń jest urządzeniem usługi IoT Edge.
 
 1. W [witrynie Azure portal](https://portal.azure.com)przejdź do wystąpienia usługi inicjowania obsługi administracyjnej urządzeń usługi IoT Hub.
 

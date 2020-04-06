@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6684df42971b91975f6a7f5aeded9326cef3f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d2324343a31c3f3930975eea47659d023b9bbb94
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72969805"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667596"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>Samouczek: Integracja rejestracji jednokrotnej usługi Azure Active Directory (Logowanie jednokrotne) z usługą Paylocity
 
@@ -45,6 +44,8 @@ Aby rozpocząć, potrzebujesz następujących elementów:
 W tym samouczku można skonfigurować i przetestować samouszeńców usługi Azure AD w środowisku testowym.
 
 * Paylocity obsługuje jednostkę SSO inicjowane przez **SP i IDP**
+
+* Po skonfigurowaniu paylocity można wymusić kontrole sesji, które chronią eksfiltracji i infiltracji poufnych danych organizacji w czasie rzeczywistym. Formanty sesji rozciągają się od dostępu warunkowego. [Dowiedz się, jak wymusić kontrolę nad sesją za pomocą programu Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad).
 
 ## <a name="adding-paylocity-from-the-gallery"></a>Dodawanie paylocity z galerii
 
@@ -82,8 +83,6 @@ Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azu
 
 1. W sekcji **Podstawowa konfiguracja protokołu SAML** użytkownik nie musi wykonywać żadnych kroków, ponieważ aplikacja jest już wstępnie zintegrowana z platformą Azure.
 
-    ![Informacje o domenie i adresach URL paylocity](common/preintegrated.png)
-
 1. Kliknij **pozycję Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowanym w sp: **SP**
 
     W polu **tekstowym "Podpisywanie adresu URL"** wpisz adres URL:`https://access.paylocity.com/`
@@ -98,13 +97,24 @@ Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azu
 
     | Nazwa |  Atrybut źródłowy|
     | ---------------| --------------- |
-    | PartnerID (PartnerID) | <"PartnerID" > |
-    | PłatnalokalizacjaUżycie | <"PaylocityUser"> |
-    | PaylocityEntity (Płatność) | <"PaylocityEntity"> |
+    | PartnerID (PartnerID) | `P8000010` |
+    | PłatnalokalizacjaUżycie | `user.mail`|
+    | PaylocityEntity (Płatność) | < `PaylocityEntity` > |
+
+    > [!NOTE]
+    > PaylocityEntity jest identyfikatorem firmy Paylocity.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** w sekcji **Certyfikat podpisywania SAML** znajdź kod **XML metadanych federacji** i wybierz pozycję **Pobierz,** aby pobrać certyfikat i zapisać go na komputerze.
 
     ![Link do pobierania certyfikatu](common/metadataxml.png)
+
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** w sekcji **Certyfikat podpisywania SAML** kliknij pozycję **Edytuj ikonę**.
+
+    ![Edycja certyfikatu podpisywania SAML](./media/paylocity-tutorial/edit-samlassertion.png)
+
+1. Wybierz **opcję podpisywania** jako **odpowiedź i asercja PODPISz SAML,** a następnie kliknij przycisk **Zapisz**.
+
+    ![Edycja certyfikatu podpisywania SAML](./media/paylocity-tutorial/saml-assertion.png)
 
 1. W sekcji **Konfigurowanie lokalizacji płatności** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
@@ -163,3 +173,7 @@ Po kliknięciu kafelka Paylocity w Panelu dostępu należy automatycznie zalogow
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Wypróbuj usługę Paylocity w usłudze Azure AD](https://aad.portal.azure.com/)
+
+* [Co to jest kontrola sesji w usłudze Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+* [Jak chronić Paylocity dzięki zaawansowanej widoczności i kontrolom](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

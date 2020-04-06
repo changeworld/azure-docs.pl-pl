@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f7d14da6c7436120e013c979b108f61b82640d13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cabfc84d2bc0c9d08a457e67c0182d7550f04ceb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75647887"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668884"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurowanie jednego lub więcej odbiorników grupy zawsze włączone — Menedżer zasobów
 W tym temacie pokazano, jak:
@@ -58,9 +58,13 @@ Jeśli ograniczasz dostęp za pomocą grupy zabezpieczeń sieciowej platformy Az
 
 ## <a name="determine-the-load-balancer-sku-required"></a>Określ wymaganą jednostkę SKU modułu równoważenia obciążenia
 
-[Moduł równoważenia obciążenia platformy Azure](../../../load-balancer/load-balancer-overview.md) jest dostępny w 2 jednostkach SKU: Basic & Standard. Zaleca się standardowy moduł równoważenia obciążenia. Jeśli maszyny wirtualne są w zestawie dostępności, podstawowy moduł równoważenia obciążenia jest dozwolony. Standardowy moduł równoważenia obciążenia wymaga, aby wszystkie adresy IP maszyn wirtualnych używały standardowych adresów IP.
+[Moduł równoważenia obciążenia platformy Azure](../../../load-balancer/load-balancer-overview.md) jest dostępny w 2 jednostkach SKU: Basic & Standard. Zaleca się standardowy moduł równoważenia obciążenia. Jeśli maszyny wirtualne są w zestawie dostępności, podstawowy moduł równoważenia obciążenia jest dozwolony. Jeśli maszyny wirtualne znajdują się w strefie dostępności, wymagany jest standardowy moduł równoważenia obciążenia. Standardowy moduł równoważenia obciążenia wymaga, aby wszystkie adresy IP maszyn wirtualnych używały standardowych adresów IP.
 
 Bieżący [szablon firmy Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) dla grupy dostępności używa podstawowego modułu równoważenia obciążenia z podstawowymi adresami IP.
+
+   > [!NOTE]
+   > Należy skonfigurować punkt [końcowy usługi,](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) jeśli używasz standardowego modułu równoważenia obciążenia i usługi Azure Storage dla monitora chmury. 
+
 
 Przykłady w tym artykule określają standardowy moduł równoważenia obciążenia. W przykładach skrypt zawiera `-sku Standard`.
 
@@ -226,6 +230,8 @@ Należy zwrócić uwagę na następujące wskazówki dotyczące odbiornika grup 
 * Za pomocą wewnętrznego modułu równoważenia obciążenia można uzyskać dostęp tylko do odbiornika z tej samej sieci wirtualnej.
 
 * Jeśli ograniczasz dostęp za pomocą grupy zabezpieczeń sieciowej platformy Azure, upewnij się, że reguły zezwalania obejmują adresy IP maszyny Wirtualnej programu SQL Server zaplecza i zmienne adresy IP modułu równoważenia obciążenia dla odbiornika AG i podstawowy adres IP klastra, jeśli ma to zastosowanie.
+
+* Tworzenie punktu końcowego usługi przy użyciu standardowego modułu równoważenia obciążenia za pomocą usługi Azure Storage dla monitora chmury. Aby uzyskać więcej informacji, zobacz [Udzielanie dostępu z sieci wirtualnej](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
 
 ## <a name="for-more-information"></a>Więcej informacji
 Aby uzyskać więcej informacji, zobacz [ręczne konfigurowanie grupy dostępności zawsze włączone w usłudze Azure VM](virtual-machines-windows-portal-sql-availability-group-tutorial.md).

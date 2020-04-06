@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1392f69bea09996e46ad4c112474f9067ff5a63d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ed7686bbef7dc1342528475226d11b8b8b8fb640
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656912"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668609"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Składnia kwerendy lucene w usłudze Azure Cognitive Search
 
@@ -104,7 +104,7 @@ Grupowanie pól jest podobne, ale obejmuje grupowanie do jednego pola. Na przyk�
 
 ### <a name="or-operator-or-or-"></a>lub `OR` operator lub`||`
 
-Operator OR jest pionowym znakiem pręta lub rury. Na przykład: `wifi || luxury` będzie wyszukiwać dokumenty zawierające "wifi" lub "luksus" lub oba. Ponieważ OR jest domyślnym operatorem spójnika, można `wifi luxury` również pominąć go, taki, który jest odpowiednikiem `wifi || luxuery`.
+Operator OR jest pionowym znakiem pręta lub rury. Na przykład: `wifi || luxury` będzie wyszukiwać dokumenty zawierające "wifi" lub "luksus" lub oba. Ponieważ OR jest domyślnym operatorem spójnika, można `wifi luxury` również pominąć go, taki, który jest odpowiednikiem `wifi || luxury`.
 
 ### <a name="and-operator-and--or-"></a>i `AND`operator `&&` , lub`+`
 
@@ -162,6 +162,8 @@ Poniższy przykład pomaga zilustrować różnice. Załóżmy, że istnieje prof
  Wyszukiwanie wyrażeń regularnych znajduje dopasowanie na podstawie zawartości między ukośnikami "/", zgodnie z dokumentami w [klasie RegExp](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html).  
 
  Na przykład, aby znaleźć dokumenty zawierające "motel" `/[mh]otel/`lub "hotel", określ . Wyszukiwania wyrażeń regularnych są dopasowywane do pojedynczych słów.
+
+Niektóre narzędzia i języki nakładają dodatkowe wymagania dotyczące znaków ucieczki. Dla JSON ciągi, które zawierają ukośnik do przodu są wysuwane z ukośnikiem wstecznym: "microsoft.com/azure/" staje się, `search=/.*microsoft.com\/azure\/.*/` gdy `search=/.* <string-placeholder>.*/` konfiguruje wyrażenie regularne i `microsoft.com\/azure\/` jest ciągiem z ukośnikiem do przodu.
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>Wyszukiwanie symboli wieloznacznych  
  Można użyć ogólnie rozpoznaną składni dla wielu (*) lub pojedynczych symboli wieloznacznych. Należy zauważyć, że analizator zapytania Lucene obsługuje użycie tych symboli z jednym terminem, a nie frazą.

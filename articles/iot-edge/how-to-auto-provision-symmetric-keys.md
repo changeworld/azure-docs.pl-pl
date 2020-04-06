@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 10/04/2019
+ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9944308d00c9cfecbd38a6443efb49913148806
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 139a2cafe137d000b991cbad8b8567e005ffc728
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535922"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668668"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Tworzenie i inicjowania obsługi administracyjnej urządzenia usługi IoT Edge przy użyciu zaświadczania klucza symetrycznego
 
@@ -71,6 +71,9 @@ Podczas tworzenia rejestracji w dps, masz możliwość zadeklarowania **stanu bl
    1. Jeśli chcesz, podaj identyfikator **urządzenia usługi IoT Hub** dla swojego urządzenia. Identyfikatory urządzeń można użyć do kierowania poszczególnych urządzeń do wdrożenia modułu. Jeśli nie podasz identyfikatora urządzenia, zostanie użyty identyfikator rejestracji.
 
    1. Wybierz **wartość True,** aby zadeklarować, że rejestracja dotyczy urządzenia ZoT. W przypadku rejestracji w grupie wszystkie urządzenia muszą być urządzeniami IoT Edge lub żadne z nich nie może być.
+
+   > [!TIP]
+   > W wierszu polecenia platformy Azure można utworzyć [rejestrację](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) lub [grupę rejestracji](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) i użyć flagi **obsługującej krawędź,** aby określić, że urządzenie lub grupa urządzeń jest urządzeniem usługi IoT Edge.
 
    1. Zaakceptuj wartość domyślną z zasad alokacji usługi inicjowania obsługi administracyjnej urządzeń, **aby przypisać urządzenia do koncentratorów** lub wybrać inną wartość specyficzną dla tej rejestracji.
 

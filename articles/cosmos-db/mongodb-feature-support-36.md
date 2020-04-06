@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: cde731f9d9e673446bc4d08117004b028db2a7f9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fe80b7343f67b06981707081931e35142985688e
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77462466"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668794"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB (wersja 3.6): obsługiwane funkcje i składnia
 
@@ -44,7 +44,7 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 |getPrevError | Nie  |
 |insert  |   Tak  |
 |parallelCollectionScan  | Tak   |
-|resetError |   Nie  |
+|resetError |    Nie  |
 |update  |   Tak  |
 |[Zmiana strumieni](mongodb-change-streams.md)  |  Tak  |
 |GridFS (FS) |   Tak  |
@@ -88,7 +88,7 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|buildInfo       |   Tak      |
+|buildInfo         |   Tak      |
 |collStats    |  Tak       |
 |connPoolStats (connPoolStats)     |  Nie       |
 |connectionStatus     |  Nie       |
@@ -99,7 +99,7 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 |wyjaśnić: executionStats     |     Nie    |
 |funkcje     |    Nie     |
 |hostInfo     |   Nie      |
-|listDatabases       |   Tak      |
+|listDatabases         |   Tak      |
 |listaZakłady     |  Nie       |
 |Profiler     |  Nie       |
 |status serwera     |  Nie       |
@@ -123,31 +123,31 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$collStats |Nie|
-|$project   |Tak|
-|$match |Tak|
-|$redact|   Tak|
-|$limit |Tak|
-|$skip  |Tak|
-|$unwind|   Tak|
-|$group |   Tak|
-|$sample|       Tak|
-|$sort  |Tak|
-|$geoNear|  Nie|
-|$lookup    |   Tak|
-|$out       |Tak|
-|$indexStats|       Nie|
-|$facet |Nie|
-|$bucket|   Nie|
-|$bucketAuto|   Nie|
-|$sortByCount|  Tak|
-|$addFields |Tak|
-|$replaceRoot|  Tak|
-|$count |Tak|
+|$collStats    |Nie|
+|$project    |Tak|
+|$match    |Tak|
+|$redact|    Tak|
+|$limit    |Tak|
+|$skip    |Tak|
+|$unwind|    Tak|
+|$group    |    Tak|
+|$sample|        Tak|
+|$sort    |Tak|
+|$geoNear|    Nie|
+|$lookup    |    Tak|
+|$out        |Tak|
+|$indexStats|        Nie|
+|$facet    |Nie|
+|$bucket|    Nie|
+|$bucketAuto|    Nie|
+|$sortByCount|    Tak|
+|$addFields    |Tak|
+|$replaceRoot|    Tak|
+|$count    |Tak|
 |$currentOp|    Nie|
-|$listLocalSessions |Nie|
-|$listSessions  |Nie|
-|$graphLookup   |Nie|
+|$listLocalSessions    |Nie|
+|$listSessions    |Nie|
+|$graphLookup    |Nie|
 
 ### <a name="boolean-expressions"></a>Wyrażenia logiczne
 
@@ -174,14 +174,14 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 |Polecenie  |Obsługiwane |
 |---------|---------|
 |$cmp     |  Tak       |
-|$eq|   Tak| 
-|$gt |  Tak| 
-|$gte|  Tak| 
+|$eq|    Tak| 
+|$gt |    Tak| 
+|$gte|    Tak| 
 |$lt    |Tak|
-|$lte|  Tak| 
-|$ne    |   Tak| 
-|$in    |   Tak| 
-|$nin   |   Tak| 
+|$lte|    Tak| 
+|$ne    |    Tak| 
+|$in    |    Tak| 
+|$nin    |    Tak| 
 
 ### <a name="arithmetic-expressions"></a>Wyrażenia arytmetyczne
 
@@ -230,66 +230,66 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$arrayElemAt   |   Tak|
+|$arrayElemAt    |    Tak|
 |$arrayToObject|    Tak|
-|$concatArrays  |   Tak|
-|$filter    |   Tak|
-|$indexOfArray  |Tak|
-|$isArray   |   Tak|
-|$objectToArray |Tak|
-|$range |Tak|
-|$reverseArray  |   Tak|
-|$reduce|   Tak|
-|$size  |   Tak|
-|$slice |   Tak|
-|$zip   |   Tak|
-|$in    |   Tak|
+|$concatArrays    |    Tak|
+|$filter    |    Tak|
+|$indexOfArray    |Tak|
+|$isArray    |    Tak|
+|$objectToArray    |Tak|
+|$range    |Tak|
+|$reverseArray    |    Tak|
+|$reduce|    Tak|
+|$size    |    Tak|
+|$slice    |    Tak|
+|$zip    |    Tak|
+|$in    |    Tak|
 
 ### <a name="variable-operators"></a>Operatory zmiennych
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$map   |Nie|
-|$let   |Tak|
+|$map    |Nie|
+|$let    |Tak|
 
 ### <a name="system-variables"></a>Zmienne systemu
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$CURRENT usd| Tak|
-|$DESCEND usd|     Tak|
-|$KEEP usd     |Tak|
-|$PRUNE usd    |   Tak|
-|$REMOVE usd   |Tak|
-|$ROOT usd     |Tak|
+|$CURRENT usd|    Tak|
+|$DESCEND usd|        Tak|
+|$KEEP usd        |Tak|
+|$PRUNE usd    |    Tak|
+|$REMOVE usd    |Tak|
+|$ROOT usd        |Tak|
 
 ### <a name="literal-operator"></a>Operator dosłowny
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$literal   |Tak|
+|$literal    |Tak|
 
 ### <a name="date-expressions"></a>Wyrażenia daty
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$dayOfYear |Tak    |
-|$dayOfMonth|   Tak |
-|$dayOfWeek |Tak    |
-|$year  |Tak    |
-|$month |Tak|   
-|$week  |Tak    |
-|$hour  |Tak    |
-|$minute|   Tak|    
+|$dayOfYear    |Tak    |
+|$dayOfMonth|    Tak    |
+|$dayOfWeek    |Tak    |
+|$year    |Tak    |
+|$month    |Tak|    
+|$week    |Tak    |
+|$hour    |Tak    |
+|$minute|    Tak|    
 |$second    |Tak    |
-|$millisecond|  Tak|    
-|$dateToString  |Tak    |
-|$isoDayOfWeek  |Tak    |
-|$isoWeek   |Tak    |
-|$dateFromParts|    Nie| 
-|$dateToParts   |Nie |
-|$dateFromString|   Nie|
-|$isoWeekYear   |Tak    |
+|$millisecond|    Tak|    
+|$dateToString    |Tak    |
+|$isoDayOfWeek    |Tak    |
+|$isoWeek    |Tak    |
+|$dateFromParts|    Nie|    
+|$dateToParts    |Nie    |
+|$dateFromString|    Nie|
+|$isoWeekYear    |Tak    |
 
 ### <a name="conditional-expressions"></a>Wyrażenia warunkowe
 
@@ -309,16 +309,16 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$sum   |Tak    |
-|$avg   |Tak    |
+|$sum    |Tak    |
+|$avg    |Tak    |
 |$first|    Tak|
-|$last  |Tak    |
-|$max   |Tak    |
-|$min   |Tak    |
-|$push| Tak|
-|$addToSet| Tak|
-|$stdDevPop|    Nie  |
-|$stdDevSamp|   Nie|
+|$last    |Tak    |
+|$max    |Tak    |
+|$min    |Tak    |
+|$push|    Tak|
+|$addToSet|    Tak|
+|$stdDevPop|    Nie    |
+|$stdDevSamp|    Nie|
 
 ### <a name="merge-operator"></a>Operator scalania
 
@@ -330,25 +330,25 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|Double |Tak    |
-|Ciąg |Tak    |
-|Obiekt |Tak    |
-|Tablica  |Tak    |
-|Dane binarne    |Tak|   
-|ObjectId   |Tak    |
+|Double    |Tak    |
+|Ciąg    |Tak    |
+|Obiekt    |Tak    |
+|Tablica    |Tak    |
+|Dane binarne    |Tak|    
+|ObjectId    |Tak    |
 |Wartość logiczna    |Tak    |
-|Data   |Tak    |
-|Null   |Tak    |
-|32-bitowa ćda (int)   |Tak    |
-|Znacznik czasu  |Tak    |
-|64-bitowa ć całkowita (długa)  |Tak    |
-|MinKey (Klucz min.) |Tak    |
-|Klawisz MaxKey |Tak    |
-|Dziesiętny128 |Tak|   
-|Wyrażenie regularne |Tak|
-|JavaScript |Tak|
-|JavaScript (z zakresem)|   Tak |
-|Niezdefiniowane  |Tak    |
+|Data    |Tak    |
+|Null    |Tak    |
+|32-bitowa ćda (int)    |Tak    |
+|Znacznik czasu    |Tak    |
+|64-bitowa ć całkowita (długa)    |Tak    |
+|MinKey (Klucz min.)    |Tak    |
+|Klawisz MaxKey    |Tak    |
+|Dziesiętny128    |Tak|    
+|Wyrażenie regularne    |Tak|
+|JavaScript    |Tak|
+|JavaScript (z zakresem)|    Tak    |
+|Niezdefiniowane    |Tak    |
 
 ## <a name="indexes-and-index-properties"></a>Indeksy i właściwości indeksu
 
@@ -356,23 +356,23 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|Indeks pojedynczego pola |Tak    |
-|Indeks złożony |Tak    |
-|Indeks multikey |Tak    |
-|Indeks tekstu |Nie|
-|Sfera 2dsphere   |Tak    |
-|Indeks 2d   |Nie |
-|Indeks mieszania   | Tak|
+|Indeks pojedynczego pola    |Tak    |
+|Indeks złożony    |Tak    |
+|Indeks multikey    |Tak    |
+|Indeks tekstu    |Nie|
+|Sfera 2dsphere    |Tak    |
+|Indeks 2d    |Nie    |
+|Indeks mieszania    | Tak|
 
 ### <a name="index-properties"></a>Właściwości indeksu
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|TTL|   Tak |
-|Unikatowe |Tak|
-|Częściowo|   Nie|
-|Bez uwzględniania wielkości liter   |Nie|
-|Rozrzedzone |Nie |
+|TTL|    Tak    |
+|Unikatowe    |Tak|
+|Częściowo|    Nie|
+|Bez uwzględniania wielkości liter    |Nie|
+|Rozrzedzone    |Nie |
 |Tło|    Tak |
 
 ## <a name="operators"></a>Operatory
@@ -381,28 +381,28 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$or    |   Tak|
-|$and   |   Tak|
-|$not   |   Tak|
-|$nor   |   Tak| 
+|$or    |    Tak|
+|$and    |    Tak|
+|$not    |    Tak|
+|$nor    |    Tak| 
 
 ### <a name="element-operators"></a>Operatory elementów
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$exists|   Tak|
-|$type  |   Tak|
+|$exists|    Tak|
+|$type    |    Tak|
 
 ### <a name="evaluation-query-operators"></a>Operatory zapytań ewaluacyjnych
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$expr  |   Nie|
-|$jsonSchema    |   Nie|
-|$mod   |   Tak|
-|$regex |   Tak|
-|$text  | Nie (nie jest obsługiwany. Zamiast tego użyj $regex).)| 
-|$where |Nie| 
+|$expr    |    Nie|
+|$jsonSchema    |    Nie|
+|$mod    |    Tak|
+|$regex |    Tak|
+|$text    | Nie (nie jest obsługiwany. Zamiast tego użyj $regex).)| 
+|$where    |Nie| 
 
 W kwerendach $regex wyrażenia zakotwiczone w lewo umożliwiają wyszukiwanie indeksu. Jednak użycie modyfikatora „i” (wielkość liter nie ma znaczenia) oraz modyfikatora „m” (wiele wierszy) powoduje skanowanie kolekcji we wszystkich wyrażeniach.
 
@@ -430,9 +430,9 @@ $comment |Tak|
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$elemMatch |Tak|
-|$meta| Nie|
-|$slice | Tak|
+|$elemMatch    |Tak|
+|$meta|    Nie|
+|$slice    | Tak|
 
 ### <a name="update-operators"></a>Operatory aktualizacji
 
@@ -440,28 +440,28 @@ $comment |Tak|
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$inc   |   Tak|
-|$mul   |   Tak|
-|$rename    |   Tak|
-|$setOnInsert|  Tak|
-|$set   |Tak|
+|$inc    |    Tak|
+|$mul    |    Tak|
+|$rename    |    Tak|
+|$setOnInsert|    Tak|
+|$set    |Tak|
 |$unset| Tak|
-|$min   |Tak|
-|$max   |Tak|
-|$currentDate   | Tak|
+|$min    |Tak|
+|$max    |Tak|
+|$currentDate    | Tak|
 
 #### <a name="array-update-operators"></a>Operatory do aktualizacji tablic
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$  |Tak|
-|$[]|   Tak|
-|$[<identifier>]|   Tak|
-|$addToSet  |Tak|
-|$pop   |Tak|
-|$pullAll|  Tak|
-|$pull  |Tak|
-|$push  |Tak|
+|$    |Tak|
+|$[]|    Tak|
+|$[<identifier>]|    Tak|
+|$addToSet    |Tak|
+|$pop    |Tak|
+|$pullAll|    Tak|
+|$pull    |Tak|
+|$push    |Tak|
 |$pushAll| Tak|
 
 
@@ -469,20 +469,20 @@ $comment |Tak|
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$each  |   Tak|
-|$slice |Tak|
-|$sort  |Tak|
-|$position  |Tak|
+|$each    |    Tak|
+|$slice    |Tak|
+|$sort    |Tak|
+|$position    |Tak|
 
 #### <a name="bitwise-update-operator"></a>Operator do aktualizacji Bitwise
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-| $bit  |   Tak|    
-|$bitsAllSet    |   Nie|
-|$bitsAnySet    |   Nie|
-|$bitsAllClear  |Nie|
-|$bitsAnyClear  |Nie|
+| $bit    |    Tak|    
+|$bitsAllSet    |    Nie|
+|$bitsAnySet    |    Nie|
+|$bitsAllClear    |Nie|
+|$bitsAnyClear    |Nie|
 
 ### <a name="geospatial-operators"></a>Operatory danych geoprzestrzennych
 
@@ -504,37 +504,37 @@ $polygon |  Tak |
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|cursor.batchSize() |   Tak|
-|kursor.close() |Tak|
-|kursor.isClosed()|     Tak|
+|cursor.batchSize()    |    Tak|
+|kursor.close()    |Tak|
+|kursor.isClosed()|        Tak|
 |kursor.sortation()|    Nie|
-|kursor.comment()   |Tak|
-|kursor.count() |Tak|
-|kursor.explain()|  Nie|
-|kursor.forEach()   |Tak|
-|kursor.hasNastępny()   |Tak|
-|kursor.hint()  |Tak|
-|kursor.isWyczesane()|  Tak|
-|kursor.itcount()   |Tak|
-|kursor.limit() |Tak|
-|kursor.map()   |Tak|
-|cursor.maxScan()   |Tak|
+|kursor.comment()    |Tak|
+|kursor.count()    |Tak|
+|kursor.explain()|    Nie|
+|kursor.forEach()    |Tak|
+|kursor.hasNastępny()    |Tak|
+|kursor.hint()    |Tak|
+|kursor.isWyczesane()|    Tak|
+|kursor.itcount()    |Tak|
+|kursor.limit()    |Tak|
+|kursor.map()    |Tak|
+|cursor.maxScan()    |Tak|
 |cursor.maxTimeMS()|    Tak|
-|kursor.max()   |Tak|
-|kursor.min()   |Tak|
-|kursor.next()| Tak|
-|plik cursor.noCursorTimeout()   |Nie|
-|kursor.objsLeftInBatch()   |Tak|
-|kursor.pretty()|   Tak|
-|kursor.readConcern()|  Tak|
-|plik cursor.readPref()      |Tak|
-|plik cursor.returnKey() |Nie|
-|kursor.showRecordId()| Nie|
-|kursor.size()  |Nes|
-|kursor.skip()  |Tak|
-|cursor.sort()  |   Tak|
-|kursor.tailable()| Nie|
-|kurs.toArray()   |Tak|
+|kursor.max()    |Tak|
+|kursor.min()    |Tak|
+|kursor.next()|    Tak|
+|plik cursor.noCursorTimeout()    |Nie|
+|kursor.objsLeftInBatch()    |Tak|
+|kursor.pretty()|    Tak|
+|kursor.readConcern()|    Tak|
+|plik cursor.readPref()        |Tak|
+|plik cursor.returnKey()    |Nie|
+|kursor.showRecordId()|    Nie|
+|kursor.size()    |Tak|
+|kursor.skip()    |Tak|
+|cursor.sort()    |    Tak|
+|kursor.tailable()|    Nie|
+|kurs.toArray()    |Tak|
 
 ## <a name="sort-operations"></a>Operacje sortowania
 
@@ -542,7 +542,7 @@ W przypadku używania operacji `findOneAndUpdate` obsługiwane są operacje sort
 
 ## <a name="unique-indexes"></a>Indeksy unikatowe
 
-Indeksy unikatowe zapewniają, że wartości w danym polu nie dublują się we wszystkich dokumentach w kolekcji; również klucz domyślny „_id” jest kluczem unikatowym. W usłudze Cosmos DB można tworzyć niestandardowe indeksy, używając polecenia createIndex, w którym można stosować ograniczenie „unique”.
+Unikatowe indeksy zapewniają, że określone pole nie ma zduplikowanych wartości we wszystkich dokumentach w kolekcji, podobnie jak unikatowość jest zachowywana na domyślnym kluczu "_id". Indeksy niestandardowe można tworzyć w usłudze Cosmos DB za pomocą polecenia createIndex, w tym ograniczenia "unikatowy".
 
 ## <a name="time-to-live-ttl"></a>Czas wygaśnięcia (TTL)
 

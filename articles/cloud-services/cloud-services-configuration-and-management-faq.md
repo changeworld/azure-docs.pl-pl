@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5821c72ae1be4759cf5aa76ff1f5af43337749c0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77656929"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668578"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy z konfiguracją i zarządzaniem usługami w chmurze Azure: często zadawane pytania (często zadawane pytania)
 
@@ -30,11 +30,11 @@ Ten artykuł zawiera często zadawane pytania dotyczące problemów z konfigurac
 
 **Certyfikaty**
 
-- [Dlaczego łańcuch certyfikatów mojego certyfikatu SSL usługi w chmurze jest niekompletny?](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
+- [Dlaczego łańcuch certyfikatów mojego certyfikatu TLS/SSL usługi w chmurze jest niekompletny?](#why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete)
 - [Jaki jest cel certyfikatu szyfrowania narzędzi systemu Windows Azure dla rozszerzeń?](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
 - [Jak wygenerować żądanie podpisania certyfikatu (CSR) bez "RDP-ing" w wystąpieniu?](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [Mój certyfikat zarządzania usługą w chmurze wygasa. Jak go odnowić?](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
-- [Jak zautomatyzować instalację głównego certyfikatu SSL(.pfx) i certyfikatu pośredniego(.p7b)?](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- [Jak zautomatyzować instalację głównego certyfikatu TLS/SSL(.pfx) i certyfikatu pośredniego(.p7b)?](#how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b)
 - [Jaki jest cel certyfikatu "Microsoft Azure Service Management for MachineKey"?](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **Monitorowanie i rejestrowanie**
@@ -75,7 +75,7 @@ Ten artykuł zawiera często zadawane pytania dotyczące problemów z konfigurac
 
 ## <a name="certificates"></a>Certyfikaty
 
-### <a name="why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete"></a>Dlaczego łańcuch certyfikatów mojego certyfikatu SSL usługi w chmurze jest niekompletny?
+### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>Dlaczego łańcuch certyfikatów mojego certyfikatu TLS/SSL usługi w chmurze jest niekompletny?
     
 Zaleca się, aby klienci instalowali pełny łańcuch certyfikatów (certyfikat liściowy, certyfikaty pośrednie i certyfikat główny) zamiast tylko certyfikatu liścia. Po zainstalowaniu tylko certyfikatu liścia, można polegać na systemie Windows do tworzenia łańcucha certyfikatów przez przejście CTL. Jeśli sporadyczne problemy z siecią lub usługą DNS występują na platformie Azure lub w witrynie Windows Update, gdy system Windows próbuje zweryfikować certyfikat, certyfikat może zostać uznany za nieprawidłowy. Instalując pełny łańcuch certyfikatów, można uniknąć tego problemu. Blog w [jak zainstalować łańcuchowy certyfikat SSL](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) pokazuje, jak to zrobić.
 
@@ -103,7 +103,7 @@ Aby odnowić certyfikaty zarządzania, można użyć następujących poleceń pr
 
 **Plik Get-AzurePublishSettingsFile** utworzy nowy certyfikat zarządzania w**certyfikatach zarządzania** **subskrypcjami** > w portalu Azure. Nazwa nowego certyfikatu wygląda jak "YourSubscriptionNam]-[CurrentDate]-credentials".
 
-### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Jak zautomatyzować instalację głównego certyfikatu SSL(.pfx) i certyfikatu pośredniego(.p7b)?
+### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>Jak zautomatyzować instalację głównego certyfikatu TLS/SSL(.pfx) i certyfikatu pośredniego(.p7b)?
 
 To zadanie można zautomatyzować przy użyciu skryptu startowego (batch/cmd/PowerShell) i zarejestrować ten skrypt startowy w pliku definicji usługi. Dodaj skrypt startowy i certyfikat (plik p7b) w folderze projektu tego samego katalogu skryptu startowego.
 
@@ -183,7 +183,7 @@ Aby skonfigurować statyczny adres IP, należy utworzyć zastrzeżony adres IP. 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Jakie są funkcje i możliwości, które zapewnia podstawowe usługi IPS/IDS platformy Azure i DDOS?
 Platforma Azure ma usługi IPS/IDS na serwerach fizycznych centrum danych w celu ochrony przed zagrożeniami. Ponadto klienci mogą wdrażać rozwiązania zabezpieczeń innych firm, takie jak zapory aplikacji sieci web, zapory sieciowe, ochrona przed złośliwym oprogramowaniem, wykrywanie włamań, systemy zapobiegania (IDS/IPS) i inne. Aby uzyskać więcej informacji, zobacz [Ochrona danych i zasobów oraz zgodność z globalnymi standardami bezpieczeństwa](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity).
 
-Firma Microsoft stale monitoruje serwery, sieci i aplikacje w celu wykrywania zagrożeń. Wielokierunkowe podejście platformy Azure do zarządzania zagrożeniami wykorzystuje wykrywanie włamań, zapobieganie atakom rozproszonym typu "odmowa usługi" (DDoS), testowanie penetracji, analizę behawioralną, wykrywanie anomalii i uczenie maszynowe, aby stale wzmacniać swoją obronę i zmniejszyć ryzyko. Ochrona przed złośliwym oprogramowaniem firmy Microsoft dla platformy Azure chroni usługi w chmurze Azure i maszyny wirtualne. Ponadto można wdrożyć rozwiązania zabezpieczeń innych firm, takie jak ściany przeciwpożarowe aplikacji sieci web, zapory sieciowe, ochrona przed złośliwym oprogramowaniem, systemy wykrywania włamań i zapobiegania włamaniom (IDS/IPS) i inne.
+Firma Microsoft stale monitoruje serwery, sieci i aplikacje w celu wykrywania zagrożeń. Wielozadaniowe podejście platformy Azure do zarządzania zagrożeniami wykorzystuje wykrywanie włamań, zapobieganie atakom rozproszonych typu "odmowa usługi", testowanie penetracji, analizę behawioralną, wykrywanie anomalii i uczenie maszynowe, aby stale wzmacniać swoją obronę i zmniejszać ryzyko. Ochrona przed złośliwym oprogramowaniem firmy Microsoft dla platformy Azure chroni usługi w chmurze Azure i maszyny wirtualne. Ponadto można wdrożyć rozwiązania zabezpieczeń innych firm, takie jak ściany przeciwpożarowe aplikacji sieci web, zapory sieciowe, ochrona przed złośliwym oprogramowaniem, systemy wykrywania włamań i zapobiegania włamaniom (IDS/IPS) i inne.
 
 ### <a name="how-to-enable-http2-on-cloud-services-vm"></a>Jak włączyć http/2 na maszynie wirtualnej usług w chmurze?
 

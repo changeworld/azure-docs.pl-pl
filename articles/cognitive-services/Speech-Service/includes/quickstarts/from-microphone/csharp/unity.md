@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 209242f723032c9e93f3dd6b20fac77c6a2badce
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 6b3c8c62382d548d8a1bc7d5f611cdfbe2fd72fb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80658305"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671261"
 ---
 > [!NOTE]
 > Zestaw SDK mowy dla unity obsługuje komputery Windows Desktop (x86 i x64) lub uniwersalną platformę windows (x86, x64, ARM/ARM64), android (x86, ARM32/64) i iOS (symulator x64, ARM32 i ARM64)
@@ -25,7 +25,7 @@ Zanim zaczniesz:
 
 > [!div class="checklist"]
 > * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
-> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=unity)
+> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=unity&pivots=programming-language-csharp)
 > * Upewnij się, że masz dostęp do mikrofonu do przechwytywania dźwięku
 
 Jeśli już to zrobiłeś, świetnie. Chodźmy dalej.

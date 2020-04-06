@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: 9c3216af283ebd9d84a5469d4d50d18c19f67534
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71121951"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668573"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Certyfikat serwera zaplecza nie jest umieszczony na białej liście bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia ze środowiskiem usługi aplikacji
 
-W tym artykule rozwiązano następujące problemy: Certyfikat nie jest umieszczany na białej liście podczas tworzenia bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia (ILB) wraz ze środowiskiem usługi aplikacji (ASE) na zapleczu podczas korzystania z kompleksowego ssl na platformie Azure.
+W tym artykule rozwiązano następujące problemy: Certyfikat nie jest umieszczany na białej liście podczas tworzenia bramy aplikacji przy użyciu modułu Wewnętrznego Równoważenia obciążenia (ILB) wraz ze środowiskiem usługi aplikacji (ASE) na zapleczu podczas korzystania z end-to-end TLS na platformie Azure.
 
 ## <a name="symptoms"></a>Objawy
 
@@ -68,7 +68,7 @@ Jeśli używasz w pełni kwalifikowanej nazwy domeny (FQDN) do uzyskiwania dost�
 
 - Wyczyść opcję **Użyj dla usługi aplikacji** dla bramy aplikacji w przypadku, gdy używasz adresu IP równoważenia obciążenia sieciowego.
 
-Aby zmniejszyć obciążenie, można przekazać certyfikat równoważenia obciążenia w ustawieniach HTTP, aby ścieżka sondy działała. (Ten krok jest tylko dla białej listy. Nie będzie używany do komunikacji SSL.) Certyfikat Wewnętrznego można pobrać, uzyskując dostęp do ilb z jego adresem IP z przeglądarki na https, a następnie eksportując certyfikat SSL w formacie CER zakodowanym base-64 i przesyłając certyfikat w odpowiednich ustawieniach HTTP.
+Aby zmniejszyć obciążenie, można przekazać certyfikat równoważenia obciążenia w ustawieniach HTTP, aby ścieżka sondy działała. (Ten krok jest tylko dla białej listy. Nie będzie używany do komunikacji TLS.) Certyfikat Wewnętrznego można pobrać, uzyskując dostęp do ilb z jego adresem IP z przeglądarki na https, a następnie eksportując certyfikat TLS/SSL w formacie CER zakodowanym base-64 i przesyłając certyfikat w odpowiednich ustawieniach HTTP.
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1445d74e3050ffd6da7c45037df552f4bee9acf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39f1137638f9cd4926b712bdd18e681d90adcdc4
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116676"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668546"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Często zadawane pytania dotyczące migracji usługi Azure Storage
 
@@ -269,7 +269,7 @@ Aby zapewnić innym osobom dostęp do zasobów magazynu:
 
 **Jak używać domeny niestandardowej HTTPS z kontem magazynu? Na przykład, jak sprawić,\/aby "https: /mystorageaccountname.blob.core.windows.net/images/image.gif" były\/wyświetlane jako "https: /www.contoso.com/images/image.gif"?**
 
-SSL nie jest obecnie obsługiwany na kontach magazynu z domenami niestandardowymi.
+TLS/SSL nie jest obecnie obsługiwany na kontach magazynu z domenami niestandardowymi.
 Można jednak używać domen niestandardowych innych niż HTTPS. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowej nazwy domeny dla punktu końcowego magazynu obiektów Blob](../blobs/storage-custom-domain-name.md).
 
 ## <a name="access-to-storage"></a>Dostęp do pamięci masowej

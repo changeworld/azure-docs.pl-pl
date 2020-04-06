@@ -7,20 +7,24 @@ ms.topic: overview
 ms.date: 03/10/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3a7bb7939921bfcc3a870193cb9025a8f3dff72c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aff6f99c119ba2854fd7923d2a15efb2e1a6b601
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78969134"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666795"
 ---
 # <a name="what-is-azure-files"></a>Co to jest usługa Azure Files?
 Usługa Azure Files oferuje w pełni zarządzane udziały plików w chmurze, dostępne za pośrednictwem [protokołu Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx), będącego standardem branżowym. Udziały plików platformy Azure można instalować współbieżnie za pośrednictwem chmurowych lub lokalnych wdrożeń systemów Windows, Linux i macOS. Ponadto udziały plików platformy Azure mogą być buforowane w systemach Windows Server za pomocą usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko miejsca, w którym dane są używane.
 
 ## <a name="videos"></a>Filmy wideo
-| Wprowadzenie do usługi Azure File Sync (2 m) | Usługa Azure Files z synchronizacją (konferencja Ignite 2017) (85 m)  |
+| Wprowadzenie do synchronizacji plików platformy Azure | Usługa Azure Files with Sync (Ignite 2019)  |
 |-|-|
-| [![Screencast z wprowadzeniem Azure File Sync wideo - kliknij, aby odtworzyć!](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Screencast prezentacji Usługi Azure Files with Sync — kliknij, aby grać!](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/watch?v=GMzh2M66E9o) |
+| [![Screencast z wprowadzeniem Azure File Sync wideo - kliknij, aby odtworzyć!](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Screencast prezentacji Usługi Azure Files with Sync — kliknij, aby grać!](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/embed/6E2p28XwovU) |
+
+Oto kilka klipów wideo dotyczących typowych przypadków użycia plików platformy Azure:
+* [Zastąp serwer plików bezserwerowym udziałem plików platformy Azure](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
+* [Wprowadzenie do kontenerów profilu FSLogix w plikach azure w systemie Windows Virtual Desktop z wykorzystaniem uwierzytelniania usługi AD](https://www.youtube.com/embed/9S5A1IJqfOQ)
 
 ## <a name="why-azure-files-is-useful"></a>Na czym polega przydatność usługi Azure Files
 Udziały plików platformy Azure mogą być używane w następujących celach:

@@ -1,17 +1,18 @@
 ---
-title: Samouczek — wdrażanie z usługi GitHub do usługi Azure Kubernetes (AKS) w usłudze Jenkins
+title: Wdrażanie z usługi GitHub w usłudze AKS w usłudze Jenkins
+titleSuffix: Azure Kubernetes Service
 description: Konfigurowanie usługi Jenkins dla ciągłej integracji (CI) z usługi GitHub i ciągłego wdrażania (CD) do usługi Azure Kubernetes Service (AKS)
 services: container-service
 author: zr-msft
 ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: eb48a8558aab6c7a832efe45650686d9df0d7426
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a93cfc77178ff7638217663c2ceda500aae4cfd7
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77624750"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668634"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Samouczek: Wdrażanie z usługi GitHub w usłudze Azure Kubernetes (AKS) dzięki ciągłej integracji i wdrażaniu usługi Jenkins
 

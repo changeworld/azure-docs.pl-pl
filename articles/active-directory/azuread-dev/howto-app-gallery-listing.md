@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 969193b2c0843c4eb217d2bdb9f9ad9a40ccf9af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154971"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666941"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -49,9 +49,9 @@ Możesz uzyskać bezpłatne konto testowe ze wszystkimi funkcjami usługi Azure 
 
 ## <a name="submit-the-request-in-the-portal"></a>Prześlij żądanie w portalu
 
-Po przetestowaniu, czy integracja aplikacji współpracuje z usługą Azure AD, prześlij żądanie dostępu w [portalu sieci aplikacji.](https://microsoft.sharepoint.com/teams/apponboarding/Apps) Jeśli masz konto usługi Office 365, użyj go, aby zalogować się do tego portalu. Jeśli nie, zaloguj się za pomocą konta Microsoft, takiego jak Outlook lub Hotmail.
+Po przetestowaniu, czy integracja aplikacji współpracuje z usługą Azure AD, prześlij żądanie aplikacji w [portalu sieci Microsoft Application Network](https://microsoft.sharepoint.com/teams/apponboarding/Apps).
 
-Jeśli po zalogowaniu się pojawi się następująca strona, skontaktuj się z [zespołem integracji logowania sytuane usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Podaj konto e-mail, którego chcesz użyć do przesłania żądania. Zespół usługi Azure AD doda konto w portalu sieci Microsoft Application Network.
+Jeśli po zalogowaniu się pojawi się następująca strona, skontaktuj się z [zespołem integracji logowania sytuane usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Podaj konto e-mail, którego chcesz użyć do przesłania żądania. Preferowany [name@yourbusiness.com](mailto:name@yourbusiness.com) jest biznesowy adres e-mail. Zespół usługi Azure AD doda konto w portalu sieci Microsoft Application Network.
 
 ![Komunikat żądania dostępu w portalu programu SharePoint](./media/howto-app-gallery-listing/errorimage.png)
 

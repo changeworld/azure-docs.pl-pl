@@ -1,15 +1,16 @@
 ---
-title: Używanie własnych certyfikatów TLS dla transferu przychodzącego za pomocą klastra usługi Azure Kubernetes Service (AKS)
+title: Używanie certyfikatów TLS do transferu przychodzącego
+titleSuffix: Azure Kubernetes Service
 description: Dowiedz się, jak zainstalować i skonfigurować kontroler transferu danych przychodzących NGINX, który używa własnych certyfikatów w klastrze usługi Azure Kubernetes (AKS).
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: e567f5384cdd1e40ea67284713a29a92ee87af7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec6a398b52424c142b3d7ee82625c10c733456ab
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595505"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668472"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Tworzenie kontrolera ruchu przychodzącego HTTPS i używanie własnych certyfikatów protokołu TLS w usłudze Azure Kubernetes Service (AKS)
 

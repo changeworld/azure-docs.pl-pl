@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 839e13dffc7d15b8cd258dd4b7dda6776223d052
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37ddf57057b736cd76a74276e5593a865e7df8cc
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051734"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666865"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Dostosowywanie interfejsu użytkownika w usłudze Azure Active Directory B2C
 
@@ -91,7 +91,10 @@ Przed użyciem własnych plików HTML i CSS do dostosowania interfejsu użytkown
 
 Korzystając z własnych plików HTML i CSS, aby dostosować interfejs użytkownika, można hostować zawartość interfejsu użytkownika w dowolnym publicznie dostępnym punkcie końcowym HTTPS obsługującym cors. Na przykład [magazyn obiektów Blob platformy Azure](../storage/blobs/storage-blobs-introduction.md), serwery sieci web, sieci CDN, AWS S3 lub systemy udostępniania plików.
 
-Ważne jest to, że zawartość jest hostowana w publicznie dostępnym punkcie końcowym HTTPS z włączoną funkcją CORS. Podczas określania go w treści należy użyć bezwzględnego adresu URL.
+Ważne jest to, że zawartość jest hostowana w publicznie dostępnym punkcie końcowym HTTPS z [włączoną funkcją CORS](https://enable-cors.org/server.html). Podczas określania go w treści należy użyć bezwzględnego adresu URL.
+
+> [!NOTE]
+> Aby uzyskać szczegółowe informacje na temat tworzenia zawartości HTML, przekazywania zawartości do magazynu obiektów Blob platformy Azure i konfigurowania usługi CORS, zobacz [sekcję instruktażową zawartości strony niestandardowej](custom-policy-ui-customization.md#custom-page-content-walkthrough) w artykule dostosowywania interfejsu użytkownika.
 
 ## <a name="get-started-with-custom-html-and-css"></a>Wprowadzenie do niestandardowego kodu HTML i CSS
 

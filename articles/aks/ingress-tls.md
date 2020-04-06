@@ -1,15 +1,16 @@
 ---
-title: Tworzenie transferu przychodzącego HTTPS za pomocą klastra usługi Azure Kubernetes (AKS)
+title: Tworzenie transferu przychodzącego za pomocą automatycznego protokołu TLS
+titleSuffix: Azure Kubernetes Service
 description: Dowiedz się, jak zainstalować i skonfigurować kontroler transferu danych przychodzących NGINX, który używa szyfrowania Let's do automatycznego generowania certyfikatów TLS w klastrze usługi Azure Kubernetes (AKS).
 services: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: ece117d60ae3d7fd70c0972bb463340c5d38c9e1
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: c98310bc5dc6b8f17403505cbcdd7e51355ca2b7
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637267"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668426"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Tworzenie kontrolera transferu danych przychodzących HTTPS w usłudze Azure Kubernetes (AKS)
 

@@ -2,21 +2,21 @@
 author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/04/2020
 ms.author: dapine
-ms.openlocfilehash: 230a2328a2d03d2167cb1312eb2f02d4b2cedd64
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: e9c829ca672e2681e7321b47a40fa0ace2dae85b
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79296288"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671371"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Zanim zaczniesz, upewnij się, że:
 
 > [!div class="checklist"]
-> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=vs&pivots=programmming-language-csharp)
+> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programmming-language-csharp)
 > * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
 > * [Przekazywanie pliku źródłowego do obiektu blob platformy Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 

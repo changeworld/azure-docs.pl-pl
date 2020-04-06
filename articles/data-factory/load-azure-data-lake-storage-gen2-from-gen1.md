@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: f782985d975dd137aa2da48d12757685b47e62b1
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 81f8577592f1d53627bc09a2f9ace8c060ad4660
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421263"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668848"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Kopiowanie danych z usługi Azure Data Lake Storage Gen1 do gen2 za pomocą usługi Azure Data Factory
 
@@ -137,7 +137,7 @@ W tym artykule pokazano, jak używać narzędzia do kopiowania danych w fabryce 
 
 ## <a name="best-practices"></a>Najlepsze rozwiązania
 
-Aby ocenić uaktualnienie z usługi Azure Data Lake Storage Gen1 do usługi Azure Data Lake Storage Gen2 w ogóle, zobacz [Uaktualnianie rozwiązań do analizy dużych zbiorów danych z usługi Azure Data Lake Storage Gen1 do usługi Azure Data Lake Storage Gen2.](../storage/blobs/data-lake-storage-upgrade.md) W poniższych sekcjach przedstawiono najlepsze rozwiązania dotyczące używania usługi Data Factory do uaktualnienia danych z usługi Data Lake Storage Gen1 do Data Lake Storage Gen2.
+Aby ocenić uaktualnienie z usługi Azure Data Lake Storage Gen1 do usługi Azure Data Lake Storage Gen2 w ogóle, zobacz [Uaktualnianie rozwiązań do analizy dużych zbiorów danych z usługi Azure Data Lake Storage Gen1 do usługi Azure Data Lake Storage Gen2.](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md) W poniższych sekcjach przedstawiono najlepsze rozwiązania dotyczące używania usługi Data Factory do uaktualnienia danych z usługi Data Lake Storage Gen1 do Data Lake Storage Gen2.
 
 ### <a name="data-partition-for-historical-data-copy"></a>Partycja danych do kopiowania danych historycznych
 

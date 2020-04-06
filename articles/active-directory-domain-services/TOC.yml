@@ -93,6 +93,8 @@
           href: security-audit-events.md
         - name: Analizowanie zdarzeń inspekcji przy użyciu skoroszytów usługi Azure Monitor
           href: use-azure-monitor-workbooks.md
+        - name: Bezpieczny dostęp zdalny do maszyn wirtualnych
+          href: secure-remote-vm-access.md
     - name: Dołączanie maszyn wirtualnych do domeny
       items:
         - name: Maszyna wirtualna z systemem Windows Server na podstawie szablonu
@@ -143,13 +145,9 @@
       href: faqs.md
     - name: Aktualizacje usług
       href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'
-    - name: Zgodne oprogramowanie innych firm
-      href: compatible-software.md
     - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/active-directory-ds/'
     - name: Forum z opiniami na temat usługi Azure AD
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: Skontaktuj się z nami
-      href: contact-us.md
     - name: Korzystanie z usług Azure AD Domain Services w ramach subskrypcji Azure CSP
       href: csp.md

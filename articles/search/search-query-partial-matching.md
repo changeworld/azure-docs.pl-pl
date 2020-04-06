@@ -8,29 +8,32 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 3e0e0291ff855b4502224466e17696a4fe668c2a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7f001a0d443e4ec668aedaabb7505884163bf37e
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656002"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666783"
 ---
-# <a name="partial-term-search-in-azure-cognitive-search-queries-wildcard-regex-fuzzy-search-patterns"></a>Częściowe wyszukiwanie terminów w zapytaniach usługi Azure Cognitive Search (symbol wieloznaczny, wyrażenie regularne, wyszukiwanie rozmyte, wzorce)
+# <a name="partial-term-search-and-patterns-with-special-characters---azure-cognitive-search-wildcard-regex-patterns"></a>Częściowe wyszukiwanie terminów i wzorce ze znakami specjalnymi — Usługa Azure Cognitive Search (symbol wieloznaczny, wyrażenie regularne, wzorce)
 
-*Częściowe wyszukiwanie terminów* odnosi się do zapytań składających się z fragmentów terminów, takich jak pierwsza, ostatnia lub wewnętrzna część ciągu lub wzorzec składający się z kombinacji fragmentów, często oddzielonych znakami specjalnymi, takimi jak kreski lub ukośniki. Typowe przypadki użycia obejmują wykonywanie zapytań dotyczących fragmentów numeru telefonu, adresu URL, osób lub kodów produktów lub słów złożonych.
+*Wyszukiwanie terminów częściowych* odnosi się do zapytań składających się z fragmentów terminów, takich jak pierwsza, ostatnia lub wewnętrzna część ciągu. *Wzorzec* może łączyć fragmenty, czasami ze znakami specjalnymi, takimi jak kreski lub ukośniki, które są częścią kwerendy. Typowe przypadki użycia obejmują wykonywanie zapytań dotyczących fragmentów numeru telefonu, adresu URL, osób lub kodów produktów lub słów złożonych.
 
-Wyszukiwanie częściowe może być problematyczne, ponieważ sam indeks zazwyczaj nie przechowuje terminów w sposób, który sprzyja częściowym dopasowywaniu ciągów i wzorców. Podczas fazy analizy tekstu indeksowania znaki specjalne są odrzucane, ciągi złożone i złożone są dzielone, co powoduje niepowodzenie kwerend wzorca, gdy nie zostanie znalezione dopasowanie. Na `+1 (425) 703-6214`przykład numer telefonu, taki `"1"`jak `"425"` `"703"`(tokenized as , , , `"6214"`) nie będzie się wyświetlał w `"3-62"` kwerendzie, ponieważ ta zawartość w rzeczywistości nie istnieje w indeksie. 
+Wyszukiwanie częściowe może być problematyczne, jeśli indeks nie ma terminów w formacie wymaganym do dopasowywania wzorców. Podczas fazy analizy tekstu indeksowania, przy użyciu domyślnego analizatora standardowego, znaki specjalne są odrzucane, ciągi kompozytowe i złożone są dzielone, co powoduje, że kwerendy wzorca nie powiodą się, gdy nie zostanie znalezione dopasowanie. Na `+1 (425) 703-6214`przykład numer telefonu, taki `"1"`jak `"425"` `"703"`(tokenized as , , , `"6214"`) nie będzie się wyświetlał w `"3-62"` kwerendzie, ponieważ ta zawartość w rzeczywistości nie istnieje w indeksie. 
 
-Rozwiązaniem jest przechowywanie wersji tych ciągów w indeksie, dzięki czemu można obsługiwać scenariusze wyszukiwania częściowego. Tworzenie dodatkowego pola dla nienaruszonego ciągu, a także przy użyciu analizatora zachowania zawartości, jest podstawą rozwiązania.
+Rozwiązaniem jest wywołanie analizatora, który zachowuje pełny ciąg, w tym spacje i znaki specjalne, jeśli to konieczne, dzięki czemu można obsługiwać częściowe terminy i wzorce. Tworzenie dodatkowego pola dla nienaruszonego ciągu, a także przy użyciu analizatora zachowania zawartości, jest podstawą rozwiązania.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Co to jest wyszukiwanie częściowe w usłudze Azure Cognitive Search
 
-W usłudze Azure Cognitive Search wyszukiwanie częściowe jest dostępne w następujących formach:
+W usłudze Azure Cognitive Search częściowe wyszukiwanie i wzorzec są dostępne w następujących formach:
 
 + [Wyszukiwanie prefiksów](query-simple-syntax.md#prefix-search), takie jak `search=cap*`, pasujące do "Cap'n Jack's Waterfront Inn" lub "Gacc Capital". Można użyć po prostu składni kwerendy do wyszukiwania prefiksów.
-+ [Wyszukiwanie symboli wieloznacznych](query-lucene-syntax.md#bkmk_wildcard) lub wyrażenia regularne, które [wyszukują](query-lucene-syntax.md#bkmk_regex) wzorzec lub części osadzonego ciągu, w tym sufiks. Na przykład, biorąc pod uwagę termin "alfanumeryczny",`search=/.*numeric.*/`należy użyć wyszukiwania symboli wieloznacznych ( ) dla dopasowania zapytania sufiksu w tym okresie. Symbol wieloznaczny i wyrażenia regularne wymagają pełnej składni lucene.
 
-Gdy którykolwiek z powyższych typów zapytań są potrzebne w aplikacji klienckiej, wykonaj kroki opisane w tym artykule, aby upewnić się, że istnieje niezbędna zawartość w indeksie.
++ [Wyszukiwanie symboli wieloznacznych](query-lucene-syntax.md#bkmk_wildcard) lub wyrażenia regularne, które [wyszukują](query-lucene-syntax.md#bkmk_regex) wzorzec lub części osadzonego ciągu, w tym sufiks. Symbol wieloznaczny i wyrażenia regularne wymagają pełnej składni lucene. 
+
+  Niektóre przykłady częściowego wyszukiwania terminów są następujące. W przypadku kwerendy sufiks, biorąc pod uwagę termin "alfanumeryczny", należy użyć wyszukiwania symboli wieloznacznych (`search=/.*numeric.*/`) aby znaleźć dopasowanie. W przypadku terminu częściowego zawierającego znaki, takie jak fragment adresu URL, może być konieczne dodanie znaków ucieczki. W JSON ukośnik do przodu jest wysunął `/` się z ukośnikiem `\`do tyłu . Jako takie, `search=/.*microsoft.com\/azure\/.*/` jest składnia fragmentu adresu URL "microsoft.com/azure/".
+
+Jak wspomniano, wszystkie powyższe wymagają, aby indeks zawiera ciągi w formacie sprzyjającym dopasowywaniu wzorców, którego standardowy analizator nie zapewnia. Wykonując kroki opisane w tym artykule, można upewnić się, że istnieje zawartość niezbędna do obsługi tych scenariuszy.
 
 ## <a name="solving-partial-search-problems"></a>Rozwiązywanie problemów z wyszukiwaniem częściowym
 

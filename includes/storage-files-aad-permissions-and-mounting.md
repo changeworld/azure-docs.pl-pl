@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 23550c83e76631e44d5036e0a038f01b61a79f1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f71c039aa6666cec1b871a158d84a6f5a2a107c
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79208245"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666810"
 ---
-## <a name="assign-access-permissions-to-an-identity"></a>Przypisywanie uprawnień dostępu do tożsamości
+## <a name="2-assign-access-permissions-to-an-identity"></a>2. Przypisywanie uprawnień dostępu do tożsamości
 
-Aby uzyskać dostęp do zasobów usługi Azure Files z uwierzytelnianiem opartym na tożsamości, tożsamość (użytkownik, grupa lub podmiot usługi) musi mieć niezbędne uprawnienia na poziomie udziału. Ten proces jest podobny do określania uprawnień udziału systemu Windows, w którym można określić typ dostępu określonego użytkownika do udziału plików. Wskazówki w tej sekcji pokazuje, jak przypisać uprawnienia do odczytu, zapisu lub usunięcia dla udziału plików do tożsamości.
+Aby uzyskać dostęp do zasobów usługi Azure Files z uwierzytelnianiem opartym na tożsamości, tożsamość (użytkownik, grupa lub podmiot usługi) musi mieć niezbędne uprawnienia na poziomie udziału. Ten proces jest podobny do określania uprawnień udziału systemu Windows, w którym można określić typ dostępu określonego użytkownika do udziału plików. Ogólne zalecenie jest użycie uprawnień na poziomie udziału do zarządzania dostępem wysokiego poziomu do zespołu lub grupy, a następnie wykorzystać uprawnienia NTFS do szczegółowej kontroli dostępu na poziomie katalogu/pliku. Wskazówki w tej sekcji pokazuje, jak przypisać uprawnienia do odczytu, zapisu lub usunięcia dla udziału plików do tożsamości. 
 
 Wprowadziliśmy trzy wbudowane role platformy Azure do udzielania użytkownikom uprawnień na poziomie udziału:
 
@@ -33,7 +33,7 @@ Za pomocą witryny Azure Portal, PowerShell lub interfejsu wiersza polecenia pla
 > [!NOTE]
 > Pamiętaj, aby zsynchronizować poświadczenia usługi AD z usługą Azure AD, jeśli planujesz używać usługi AD do uwierzytelniania. Synchronizacja skrótu hasła z usługi AD do usługi Azure AD jest opcjonalna. Uprawnienia na poziomie udziału zostaną przyznane tożsamości usługi Azure AD, która jest synchronizowana z usługą AD.
 
-#### <a name="azure-portal"></a>Portal Azure
+#### <a name="azure-portal"></a>Azure Portal
 Aby przypisać rolę RBAC do tożsamości usługi Azure AD przy użyciu [witryny Azure portal,](https://portal.azure.com)wykonaj następujące kroki:
 
 1. W witrynie Azure portal przejdź do udziału plików lub [Utwórz udział plików](../articles/storage/files/storage-how-to-create-file-share.md).
@@ -68,7 +68,7 @@ Przed uruchomieniem następującego przykładowego skryptu należy pamiętać o 
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="configure-ntfs-permissions-over-smb"></a>Konfigurowanie uprawnień ntfs za zgodą za mb/ smb 
+## <a name="3-configure-ntfs-permissions-over-smb"></a>3. Konfigurowanie uprawnień NTFS za 600 000 
 Po przypisaniu uprawnień na poziomie udziału do funkcji RBAC należy przypisać odpowiednie uprawnienia NTFS na poziomie głównym, katalogu lub pliku. Pomyśl o uprawnieniach na poziomie udziału jako strażnik wysokiego poziomu, który określa, czy użytkownik może uzyskać dostęp do udziału. Uprawnienia NTFS działają na bardziej szczegółowym poziomie, aby określić, jakie operacje użytkownik może wykonać na poziomie katalogu lub pliku.
 
 Usługa Azure Files obsługuje pełny zestaw podstawowych i zaawansowanych uprawnień systemu NTFS. Uprawnienia NTFS do katalogów i plików w udziale plików platformy Azure można wyświetlać i konfigurować, montując udział, a następnie używając Eksploratora plików systemu Windows lub uruchamiając polecenie [Icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) lub [Set-ACL.](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) 
@@ -113,9 +113,9 @@ Eksploratora plików systemu Windows umożliwia przyznanie pełnych uprawnień w
 8.  Na karcie Zabezpieczenia wybierz wszystkie uprawnienia, które chcesz przyznać nowo dodanej użytkownikowi
 9.  Kliknij na **Zastosuj**
 
-## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Instalowanie udziału plików z maszyny wirtualnej przyłączanej do domeny
+## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. Instalowanie udziału plików z maszyny wirtualnej przyłączanej do domeny
 
-Następujący proces sprawdza, czy twój udział plików i uprawnienia dostępu zostały poprawnie skonfigurowane i czy można uzyskać dostęp do udziału plików platformy Azure z maszyny Wirtualnej przyłączone do domeny:
+Poniższy proces sprawdza, czy udział plików i uprawnienia dostępu zostały skonfigurowane poprawnie i czy można uzyskać dostęp do udziału pliku platformy Azure z maszyny wirtualnej przyłączone do domeny. Należy pamiętać, że przypisanie roli RBAC na poziomie udziału może zająć trochę czasu, aby wejść w życie. 
 
 Zaloguj się do maszyny Wirtualnej przy użyciu tożsamości usługi Azure AD, do której udzielono uprawnień, jak pokazano na poniższej ilustracji. Jeśli włączono uwierzytelnianie usługi AD dla plików platformy Azure, użyj poświadczeń usługi AD. W przypadku uwierzytelniania usług Ad DS usługi Azure zaloguj się przy użyciu poświadczeń usługi Azure AD.
 

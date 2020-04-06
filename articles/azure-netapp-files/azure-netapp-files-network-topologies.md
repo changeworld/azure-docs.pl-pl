@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73242475"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667876"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Wytyczne dotyczące planowania sieci usługi Azure NetApp Files
 
@@ -39,10 +39,11 @@ Poniższe funkcje są obecnie nieobsługiwały dla usługi Azure NetApp Files:
 * Trasy zdefiniowane przez użytkownika (UDR) z prefiksem adresu jako podsieci plików NetApp platformy Azure
 * Zasady platformy Azure (na przykład niestandardowe zasady nazewnictwa) w interfejsie plików NetApp platformy Azure
 * Moduły równoważenia obciążenia dla ruchu plików NetApp platformy Azure
+* Usługa Azure NetApp Files nie jest obsługiwana w wirtualnej sieci WAN platformy Azure
 
 Następujące ograniczenia sieciowe dotyczą plików NetApp platformy Azure:
 
-* Liczba obiektów IP używanych w sieci wirtualnej z plikami NetApp platformy Azure (w tym równorzędnych sieci wirtualnych) nie może przekraczać 1000. Pracujemy nad zwiększeniem tego limitu, aby sprostać wymaganiom klientów. W międzyczasie, jeśli potrzebujesz więcej wiadomości IP, skontaktuj się z naszym zespołem pomocy technicznej z przypadkiem użycia i wymaganym limitem.
+* Liczba obiektów IP używanych w sieci wirtualnej z plikami NetApp platformy Azure (w tym równorzędnych sieci wirtualnych) nie może przekraczać 1000. Pracujemy nad zwiększeniem tego limitu, aby sprostać wymaganiom klientów. 
 * W każdej sieci wirtualnej Azure Virtual Network (VNet) można delegować tylko jedną podsieć do usługi Azure NetApp Files.
 
 
@@ -123,8 +124,8 @@ W topologii zilustrowane powyżej sieci lokalnej jest podłączony do sieci wirt
 * Zasoby lokalne Maszyny Wirtualne 1 i VM 2 mogą łączyć się z woluminem 2 lub woluminem 3 za pośrednictwem sieci VPN między lokacjami i regionalnej komunikacji równorzędnej sieci wirtualnej.
 * Maszyna wirtualna 3 w sieci wirtualnej koncentratora może łączyć się z woluminem 2 w sieci wirtualnej szprychy 1 i woluminie 3 w sieci wirtualnej szprychy 2.
 * Maszyna wirtualna 4 z szprychy VNet 1 i VM 5 z szprychy VNet 2 można połączyć się z woluminu 1 w sieci wirtualnej koncentratora.
-
-VM 4 w szprychowej sieci wirtualnej 1 nie może połączyć się z woluminem 3 w sieci wirtualnej szprychy 2. Ponadto VM 5 w szprychy VNet2 nie może połączyć się z woluminem 2 w szprychy VNet 1. Dzieje się tak, ponieważ sieci wirtualne szprychy nie są równorzędne, a _routing tranzytowy nie jest obsługiwany przez komunikację równorzędnie sieci wirtualnej_.
+* VM 4 w szprychowej sieci wirtualnej 1 nie może połączyć się z woluminem 3 w sieci wirtualnej szprychy 2. Ponadto VM 5 w szprychy VNet2 nie może połączyć się z woluminem 2 w szprychy VNet 1. Dzieje się tak, ponieważ sieci wirtualne szprychy nie są równorzędne, a _routing tranzytowy nie jest obsługiwany przez komunikację równorzędnie sieci wirtualnej_.
+* W powyższej architekturze, jeśli istnieje brama w sieci wirtualnej szprychy, jak również, łączność z woluminem ANF z on-prem łączenia za dodatkową bramę w centrum zostaną utracone. Zgodnie z projektem preferowane będzie brama w sieci wirtualnej szprychy i tak tylko maszyny łączące się przez tę bramę można połączyć się z woluminem ANF.
 
 ## <a name="next-steps"></a>Następne kroki
 

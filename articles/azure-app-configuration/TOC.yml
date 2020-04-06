@@ -120,7 +120,7 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
         - name: Zestaw Azure SDK dla języka JavaScript
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
-        - name: REST
+        - name: Interfejs API REST
           href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
     - name: Zarządzanie funkcjami
       items:
@@ -128,6 +128,10 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2091700'
         - name: Biblioteka filtru platformy .NET Core
           href: 'https://go.microsoft.com/fwlink/?linkid=2091601'
+    - name: Zarządzanie magazynem konfiguracji
+      items:
+        - name: Interfejs API REST
+          href: 'https://docs.microsoft.com/rest/api/appconfiguration/'
 - name: Zasoby
   items:
     - name: Cennik

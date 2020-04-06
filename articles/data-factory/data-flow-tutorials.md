@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 03/24/2020
-ms.openlocfilehash: cc0feff48e7da35535e30c6741994f48750d931a
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: a4f9d48934bcb08147de4c6487629d552c252282
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80293503"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668699"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Samouczki wideo dotyczące przepływów mapowania danych
 
@@ -19,7 +19,7 @@ Poniżej znajduje się lista samouczków przepływu danych mapowania wideo utwor
 
 Ponieważ aktualizacje są stale do produktu, niektóre funkcje zostały dodane lub różne funkcje w bieżącym środowiska użytkownika usługi Azure Data Factory.
 
-## <a name="getting-started"></a>Wprowadzenie
+## <a name="getting-started"></a>Getting Started
 
 [Wprowadzenie do mapowania przepływów danych w usłudze Azure Data Factory](http://youtu.be/MFw7t_8tuV4)
 
@@ -92,6 +92,8 @@ Ponieważ aktualizacje są stale do produktu, niektóre funkcje zostały dodane 
 [Partycjonowanie plików w aplikacji Data Lake](https://youtu.be/VNWv-MvLQ_0)
 
 [Wzorzec ładowania magazynu danych](https://www.youtube.com/watch?v=7mLqwtmeQFg)
+
+[Opcje danych lake plików wyjściowych](https://www.youtube.com/watch?v=NAPSbjvSQA8)
 
 ## <a name="optimizing-mapping-data-flows"></a>Optymalizacja przepływów danych mapowania
 

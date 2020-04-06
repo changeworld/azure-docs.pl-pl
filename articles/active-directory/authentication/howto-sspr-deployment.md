@@ -1,6 +1,6 @@
 ---
-title: Samoobsługowe resetowanie haseł — usługa Azure Active Directory
-description: Strategia pomyślnego wdrożenia samoobsługowego resetowania hasła usługi Azure AD
+title: Zagadnienia dotyczące wdrażania samoobsługowego resetowania hasła usługi Azure Active Directory
+description: Dowiedz się więcej o zagadnieniach dotyczących wdrażania i strategii pomyślnego wdrożenia samoobsługowego resetowania hasła usługi Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,27 +11,34 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7be99959c2ae420cff667491f68c40dfa0862a9
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: cd5b9e1f2640e68f7c819a49ad34d9c051c582c5
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652383"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667329"
 ---
-# <a name="plan-an-azure-active-directory-self-service-password-reset"></a>Planowanie samoobsługowego resetowania hasła usługi Azure Active Directory
+# <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Planowanie samoobsługowego resetowania hasła usługi Azure Active Directory
 
-> [!NOTE]
-> Ten plan wdrażania zawiera wskazówki dotyczące planowania i najlepsze rozwiązania dotyczące wdrażania samoobsługowego resetowania haseł usługi Azure AD(SSPR). <br>**Jeśli szukasz narzędzia SSPR, aby wrócić na swoje [https://aka.ms/sspr](https://aka.ms/sspr)konto, przejdź do **.
+> [!IMPORTANT]
+> Ten plan wdrażania zawiera wskazówki i najlepsze rozwiązania dotyczące wdrażania samoobsługowego resetowania haseł usługi Azure AD(SSPR).
+>
+> **Jeśli jesteś i użytkownik końcowy i musisz wrócić na [https://aka.ms/sspr](https://aka.ms/sspr)swoje konto, przejdź do **.
 
-[Samoobsługowe resetowanie haseł (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) to funkcja usługi Azure Active Directory (AD), która umożliwia użytkownikom resetowanie haseł bez kontaktowania się z personelem IT w celu uzyskania pomocy. Użytkownicy mogą szybko odblokować się i kontynuować pracę bez względu na to, gdzie się znajdują i porę dnia. Umożliwiając pracownikom odblokowanie się, organizacja może skrócić czas nieprodukcyjny i wysokie koszty pomocy technicznej w przypadku najczęstszych problemów związanych z hasłem. 
+[Samoobsługowe resetowanie haseł (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) to funkcja usługi Azure Active Directory (AD), która umożliwia użytkownikom resetowanie haseł bez kontaktowania się z personelem IT w celu uzyskania pomocy. Użytkownicy mogą szybko odblokować się i kontynuować pracę bez względu na to, gdzie się znajdują i porę dnia. Umożliwiając pracownikom odblokowanie się, organizacja może skrócić czas nieprodukcyjny i wysokie koszty pomocy technicznej w przypadku najczęstszych problemów związanych z hasłem.
 
 Wiele z tych funkcji ma następujące kluczowe możliwości:
 
 * Samoobsługa umożliwia użytkownikom końcowym resetowanie wygasłych lub nieokreślonych haseł bez kontaktowania się z administratorem lub działem pomocy technicznej w celu uzyskania pomocy technicznej.
-
 * [Funkcja Password Writeback](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback) umożliwia zarządzanie hasłami lokalnymi i rozpoznawanie blokady konta w chmurze.
-
 * Raporty aktywności zarządzania hasłami dają administratorom wgląd w resetowanie haseł i rejestrację występujących w ich organizacji.
+
+W tym przewodniku wdrażania pokazano, jak zaplanować, a następnie przetestować wdrożenie samowzdronie samowzdronie.
+
+Aby szybko wyświetlić wiele łajdaków SSPR w działaniu, a następnie wrócić do zrozumienia dodatkowych zagadnień dotyczących wdrażania:
+
+> [!div class="nextstepaction"]
+> [Włączanie samoobsługowego resetowania hasła (SSPR)](tutorial-enable-sspr.md)
 
 ## <a name="learn-about-sspr"></a>Dowiedz się więcej o SSPR
 
@@ -66,7 +73,7 @@ Aby uzyskać więcej informacji na temat cen, zobacz [Cennik usługi Azure Activ
 
 ### <a name="training-resources"></a>Zasoby szkoleniowe
 
-| Zasoby| Łącze i opis |
+| Resources| Łącze i opis |
 | - | - |
 | Filmy wideo| [Zapewnij użytkownikom lepszą skalowalność IT](https://youtu.be/g9RpRnylxS8) 
 | |[Co to jest samoobsługowe resetowanie hasła?](https://youtu.be/hc97Yx5PJiM)|
@@ -134,7 +141,7 @@ Komunikacja ma kluczowe znaczenie dla powodzenia każdej nowej usługi. Należy 
 
 ### <a name="plan-a-pilot"></a>Planowanie pilotażu
 
-Zaleca się, aby początkowa konfiguracja sspru w środowisku testowym. Rozpocznij od grupy pilotażowej, włączając wiele numer SSPR dla podzbioru użytkowników w organizacji. Zobacz [Najważniejsze wskazówki dotyczące programu pilotażowego](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans).
+Zaleca się, że początkowa konfiguracja sspr jest w środowisku testowym. Rozpocznij od grupy pilotażowej, włączając wiele numer SSPR dla podzbioru użytkowników w organizacji. Zobacz [Najważniejsze wskazówki dotyczące programu pilotażowego](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans).
 
 Aby utworzyć grupę, zobacz, jak [utworzyć grupę i dodać członków usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal). 
 
@@ -213,7 +220,7 @@ Zaleca się, aby nie synchronizować kont administratorów usługi Active Direct
 
 ### <a name="environments-with-multiple-identity-management-systems"></a>Środowiska z wieloma systemami zarządzania tożsamościami
 
-Niektóre środowiska mają wiele systemów zarządzania tożsamościami. Menedżerowie tożsamości, tacy jak Oracle AM i SiteMinder, wymagają synchronizacji z usługą AD dla haseł. Można to zrobić za pomocą narzędzia, takiego jak usługa powiadamiania o zmianie hasła (PCNS) z programem Microsoft Identity Manager (MIM). Aby znaleźć informacje na temat tego bardziej złożonego scenariusza, zobacz artykuł [Wdrażanie usługi powiadamiania o zmianie hasła mim na kontrolerze domeny](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller).
+Niektóre środowiska mają wiele systemów zarządzania tożsamościami. Lokalni menedżerowie tożsamości, tacy jak Oracle AM i SiteMinder, wymagają synchronizacji z usługą AD dla haseł. Można to zrobić za pomocą narzędzia, takiego jak usługa powiadamiania o zmianie hasła (PCNS) z programem Microsoft Identity Manager (MIM). Aby znaleźć informacje na temat tego bardziej złożonego scenariusza, zobacz artykuł [Wdrażanie usługi powiadamiania o zmianie hasła mim na kontrolerze domeny](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller).
 
 ## <a name="plan-testing-and-support"></a>Planowanie testowania i pomocy technicznej
 
@@ -255,7 +262,7 @@ Aby umożliwić zespołowi pomocy technicznej sukces, możesz utworzyć często 
 | Użytkownik nie może ustawić nowego hasła| Użytkownik kończy weryfikację podczas resetowania hasła, ale nie może ustawić nowego hasła. |
 | Użytkownik nie widzi łącza Resetowanie hasła na urządzeniu z systemem Windows 10| Użytkownik próbuje zresetować hasło z ekranu blokady systemu Windows 10, ale urządzenie nie jest połączone z usługą Azure AD lub zasady urządzenia usługi Intune nie są włączone |
 
-### <a name="plan-roll-back"></a>Wycofaj plan
+### <a name="plan-rollback"></a>Planowanie wycofywania
 
 Aby wycofać wdrożenie:
 
@@ -336,7 +343,7 @@ Dzienniki inspekcji rejestracji i resetowania hasła są dostępne przez 30 dni.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby rozpocząć wdrażanie samoobsługowego resetowania haseł, zobacz [Finalowanie wdrażania pilotażowego samoobsługowego resetowania haseł usługi Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot)
+* Aby rozpocząć wdrażanie samoobsługowego resetowania haseł, zobacz [Włączanie samoobsługowego resetowania haseł usługi Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr.md)
 
 * [Rozważ wdrożenie ochrony hasłem usługi Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
 

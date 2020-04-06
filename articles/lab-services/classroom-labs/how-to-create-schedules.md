@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e3cf302437c3e4954ac977ac3f4ff6b2021a760
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4887b4359451ca5ce85042b4de42d5376bf4a730
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72330538"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667761"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Tworzenie harmonogramów laboratoriów w laboratoriach w usłudze Azure Lab Services i zarządzanie nimi 
 Harmonogramy umożliwiają skonfigurowanie laboratorium w klasie w taki sposób, aby maszyny wirtualne w laboratorium automatycznie uruchamiane i zamykane w określonym czasie. Można zdefiniować harmonogram jednorazowy lub harmonogram cykliczny. Poniższe procedury umożliwiają tworzenie harmonogramów dla laboratorium w klasie i zarządzanie nimi: 
@@ -28,6 +28,12 @@ Harmonogramy umożliwiają skonfigurowanie laboratorium w klasie w taki sposób,
 
 ## <a name="set-a-schedule-for-the-lab"></a>Ustawianie harmonogramu laboratorium
 Utwórz zaplanowane zdarzenie dla laboratorium, tak aby maszyny wirtualne w laboratorium były automatycznie uruchamiane/zatrzymywane o określonych porach. Przydział użytkownika określony wcześniej jest dodatkowy czas przypisany do każdego użytkownika poza tym zaplanowanym czasie. 
+
+> [!NOTE]
+> Zanim zaczniemy, oto jak harmonogramy wpływają na maszyny wirtualne w laboratorium: 
+>- Maszyna wirtualna szablonu nie jest uwzględniona w harmonogramach. 
+>- Uruchamiane są tylko przypisane maszyny wirtualne. Oznacza to, że jeśli maszyna nie zostanie odebrana przez użytkownika końcowego (studenta), urządzenie nie zostanie uruchomiony w zaplanowanych godzinach. 
+>- Wszystkie maszyny wirtualne (niezależnie od tego, czy zostały zgłoszone przez użytkownika, czy nie) są zatrzymywane na podstawie harmonogramu laboratorium. 
 
 1. Przełącz się do strony **Harmonogramy** i wybierz pozycję **Dodaj zaplanowane zdarzenie** na pasku narzędzi. 
 

@@ -1,15 +1,16 @@
 ---
-title: Tworzenie kontrolera transferu danych przychodzących HTTP ze statycznym adresem IP w usłudze Azure Kubernetes Service (AKS)
+title: Używanie kontrolera transferu danych przychodzących ze statycznym adresem IP
+titleSuffix: Azure Kubernetes Service
 description: Dowiedz się, jak zainstalować i skonfigurować kontroler transferu danych przychodzących NGINX ze statycznym publicznym adresem IP w klastrze usługi Azure Kubernetes (AKS).
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 3e79bbe76a751097acd5c9d3c42dbd4020b6866b
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: fe7f1070ce233c204d9658d4a75c5e1c7a189f12
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617286"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668519"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Tworzenie kontrolera transferu danych przychodzących ze statycznym publicznym adresem IP w usłudze Azure Kubernetes Service (AKS)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e2e3c7763a13c8850554b079a426ed4172b74d28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb173bcbf7cd163dca16c211d45018e0fe056edd
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77599277"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666850"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Włączanie uwierzytelniania usług domenowych Active Directory platformy Azure w plikach platformy Azure
 
@@ -61,22 +61,22 @@ Przed włączeniem uwierzytelniania usług Ad DS platformy Azure za pomocą smb 
 
 Następnie wykonaj następujące czynności, aby udzielić dostępu do zasobów usługi Azure Files przy użyciu poświadczeń usługi Azure AD:
 
-- Włącz uwierzytelnianie usług Azure AD DS za pomocą usługi SMB dla konta magazynu, aby zarejestrować konto magazynu przy użyciu skojarzonego wdrożenia usług Azure AD DS.
-- Przypisywanie uprawnień dostępu do udziału do tożsamości usługi Azure AD (użytkownika, grupy lub jednostki usługi).
-- Konfigurowanie uprawnień NTFS za kątem SMB dla katalogów i plików.
-- Zainstaluj udział plików platformy Azure z maszyny wirtualnej przyłączone do domeny.
+1. Włącz uwierzytelnianie usług Azure AD DS za pomocą usługi SMB dla konta magazynu, aby zarejestrować konto magazynu przy użyciu skojarzonego wdrożenia usług Azure AD DS.
+2. Przypisywanie uprawnień dostępu do udziału do tożsamości usługi Azure AD (użytkownika, grupy lub jednostki usługi).
+3. Konfigurowanie uprawnień NTFS za kątem SMB dla katalogów i plików.
+4. Zainstaluj udział plików platformy Azure z maszyny wirtualnej przyłączone do domeny.
 
 Na poniższym diagramie przedstawiono kompleksowy przepływ pracy umożliwiający uwierzytelnianie usług Azure AD DS za pomocą smb dla usług Azure Files.
 
 ![Diagram przedstawiający usługę Azure AD za pomocą przestawu pracy SMB dla usług Azure Files](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
-## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>Włączanie uwierzytelniania usług Ad DS dla swojego konta
+## <a name="1-enable-azure-ad-ds-authentication-for-your-account"></a>1. Włącz uwierzytelnianie usług Ad DS dla swojego konta
 
 Aby włączyć uwierzytelnianie usług Azure AD DS za pośrednictwem SMB dla usług Azure Files, można ustawić właściwość na kontach magazynu przy użyciu witryny Azure portal, Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Ustawienie tej właściwości niejawnie "domena łączy" konto magazynu ze skojarzonym wdrożeniem usług Azure AD DS. Uwierzytelnianie usług Ad DS platformy Azure za pomocą SMB jest następnie włączone dla wszystkich nowych i istniejących udziałów plików na koncie magazynu.
 
 Należy pamiętać, że można włączyć uwierzytelnianie usług Ad DS platformy Azure za pomocą SMB tylko po pomyślnym wdrożeniu usług Azure AD DS w dzierżawie usługi Azure AD. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](#prerequisites).
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Aby włączyć uwierzytelnianie usług Azure AD DS za pomocą usługi SMB w [witrynie Azure portal,](https://portal.azure.com)wykonaj następujące kroki:
 
@@ -135,11 +135,11 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 
 [!INCLUDE [storage-files-aad-permissions-and-mounting](../../../includes/storage-files-aad-permissions-and-mounting.md)]
 
-Teraz pomyślnie włączono uwierzytelnianie usług Azure AD DS za pomocą usługi SMB i przypisano rolę niestandardową, która zapewnia dostęp do udziału plików platformy Azure za pomocą tożsamości usługi Azure AD. Aby udzielić dodatkowym użytkownikom dostępu do udziału plików, postępuj zgodnie z instrukcjami w sekcji [Przypisywanie uprawnień dostępu](#assign-access-permissions-to-an-identity) do używania tożsamości i [konfigurowania uprawnień NTFS za pomocą sekcji SMB](#configure-ntfs-permissions-over-smb).
+Teraz pomyślnie włączono uwierzytelnianie usług Azure AD DS za pomocą usługi SMB i przypisano rolę niestandardową, która zapewnia dostęp do udziału plików platformy Azure za pomocą tożsamości usługi Azure AD. Aby udzielić dodatkowym użytkownikom dostępu do udziału plików, postępuj zgodnie z instrukcjami w sekcji [Przypisywanie uprawnień dostępu](#2-assign-access-permissions-to-an-identity) do używania tożsamości i [konfigurowania uprawnień NTFS za pomocą sekcji SMB](#3-configure-ntfs-permissions-over-smb).
 
 ## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat usług Azure Files i sposobu korzystania z usługi Azure AD za pomocą usługi SMB, zobacz następujące zasoby:
 
 - [Omówienie obsługi uwierzytelniania opartego na tożsamościach usługi Azure Files dla dostępu do SMB](storage-files-active-directory-overview.md)
-- [Najczęściej zadawane pytania](storage-files-faq.md)
+- [Często zadawane pytania](storage-files-faq.md)

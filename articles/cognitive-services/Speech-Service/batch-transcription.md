@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: ee7fbddade055c11f5870aa5a588a2fd02f10a23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb39f1ec83416ee8ab2a33b514971110db0c0b17
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131601"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668833"
 ---
 # <a name="what-is-batch-transcription"></a>Co to jest transkrypcja partii?
 
@@ -304,9 +304,6 @@ Usługa transkrypcji może obsługiwać dużą liczbę przesłanych transkrypcji
 ## <a name="sample-code"></a>Przykładowy kod
 
 Kompletne przykłady są dostępne w [repozytorium próbek usługi GitHub](https://aka.ms/csspeech/samples) wewnątrz podkatalogu. `samples/batch`
-
-> [!NOTE]
-> Funkcja transkrypcji partii jest widoczna za pośrednictwem interfejsu API REST opisanego powyżej. W związku z tym transkrypcji partii może służyć z prawie każdego języka programowania lub środowiska, które obsługuje REST. Poniższe przykłady i przykłady w usłudze GitHub są jedynie reprezentatywne i **nie** oznaczają limitów, w których można użyć interfejsu API.
 
 Należy dostosować przykładowy kod z informacjami o subskrypcji, region usługi, identyfikator URI sygnatury dostępu Współdzielonego wskazujący plik audio do transkrypcji i identyfikatory modelu w przypadku, gdy chcesz użyć niestandardowego modelu akustycznego lub językowego.
 

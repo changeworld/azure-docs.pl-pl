@@ -1,15 +1,16 @@
 ---
-title: Najważniejsze wskazówki dotyczące operatora — magazyn w usługach Kubernetes platformy Azure (AKS)
+title: Najważniejsze wskazówki dotyczące przechowywania i tworzenia kopii zapasowych
+titleSuffix: Azure Kubernetes Service
 description: Poznaj najważniejsze wskazówki dotyczące obsługi operatora klastra dotyczące magazynu, szyfrowania danych i tworzenia kopii zapasowych w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: b1336d10b091be4f3eb2a711401cafd3f58221fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 90abf2e36fd46c707904d87f00362091fe931743
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399474"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668115"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Najważniejsze wskazówki dotyczące magazynu i tworzenia kopii zapasowych w usłudze Azure Kubernetes Service (AKS)
 

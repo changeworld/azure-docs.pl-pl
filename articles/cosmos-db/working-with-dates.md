@@ -5,13 +5,13 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: 92fa35fbe8e5eef4dbdc8b6c47a9055affd449a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/03/2020
+ms.openlocfilehash: 174279e4bd241ee9b336fc1ce7e0af389d2297a3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273185"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667006"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Praca z datami w usłudze Azure Cosmos DB
 
@@ -21,7 +21,9 @@ Oprócz podstawowych typów wiele aplikacji potrzebuje typu DateTime do reprezen
 
 ## <a name="storing-datetimes"></a>Przechowywanie dat
 
-Usługa Azure Cosmos DB obsługuje typy JSON, takie jak - ciąg, liczba, wartość logiczna, null, tablica, obiekt. Nie obsługuje bezpośrednio typu DateTime. Obecnie usługa Azure Cosmos DB nie obsługuje lokalizacji dat. Tak, trzeba przechowywać DateTimes jako ciągi. Zalecany format ciągów DateTime w usłudze `YYYY-MM-DDThh:mm:ss.sssZ` Azure Cosmos DB jest zgodny ze standardem ISO 8601 UTC. Zaleca się przechowywanie wszystkich dat w usłudze Azure Cosmos DB jako UTC. Konwersja ciągów daty do tego formatu pozwoli na sortowanie dat leksykograficznie. Jeśli są przechowywane daty inne niż UTC, logika musi być obsługiwana po stronie klienta. Aby przekonwertować lokalny DateTime do czasu UTC, przesunięcie musi być znane/przechowywane jako właściwość w JSON i klient może użyć przesunięcia do obliczenia wartości DATATime UTC.
+Usługa Azure Cosmos DB obsługuje typy JSON, takie jak - ciąg, liczba, wartość logiczna, null, tablica, obiekt. Nie obsługuje bezpośrednio typu DateTime. Obecnie usługa Azure Cosmos DB nie obsługuje lokalizacji dat. Tak, trzeba przechowywać DateTimes jako ciągi. Zalecany format ciągów DateTime w usłudze `YYYY-MM-DDThh:mm:ss.fffffffZ` Azure Cosmos DB jest zgodny ze standardem ISO 8601 UTC. Zaleca się przechowywanie wszystkich dat w usłudze Azure Cosmos DB jako UTC. Konwersja ciągów daty do tego formatu pozwoli na sortowanie dat leksykograficznie. Jeśli są przechowywane daty inne niż UTC, logika musi być obsługiwana po stronie klienta. Aby przekonwertować lokalny DateTime do czasu UTC, przesunięcie musi być znane/przechowywane jako właściwość w JSON i klient może użyć przesunięcia do obliczenia wartości DATATime UTC.
+
+Zakres zapytań z ciągami DateTime jako filtry są obsługiwane tylko wtedy, gdy ciągi DateTime są w czasie UTC i tej samej długości. W usłudze Azure Cosmos DB funkcja systemu [GetCurrentDateTime](sql-query-getcurrentdatetime.md) zwróci bieżącą datę i godzinę UTC `YYYY-MM-DDThh:mm:ss.fffffffZ`wartość ciągu ISO 8601 w formacie: .
 
 Większość aplikacji może używać domyślnej reprezentacji ciągu datetime z następujących powodów:
 
@@ -47,7 +49,7 @@ Na przykład następujący fragment kodu przechowuje obiekt zawierający `Order`
         {
             Id = "09152014101",
             OrderDate = DateTime.UtcNow.AddDays(-30),
-            ShipDate = DateTime.UtcNow.AddDays(-14), 
+            ShipDate = DateTime.UtcNow.AddDays(-14),
             Total = 113.39
         });
 ```
@@ -76,7 +78,7 @@ Zestaw SDK sql.net automatycznie obsługuje wykonywanie zapytań o dane przechow
 Przetłumaczone na następującą instrukcję SQL i wykonane w usłudze Azure Cosmos DB:
 
 ```sql
-    SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
+    SELECT * FROM root WHERE (root["ShipDate"] >= "2014-09-30T23:14:25.7251173Z")
 ```
 
 Więcej informacji na temat języka zapytań SQL usługi Azure Cosmos DB i dostawcy LINQ można dowiedzieć się więcej o języku aplikacji Azure [Cosmos DB w witrynie LINQ.](sql-query-linq-to-sql.md)

@@ -1,5 +1,5 @@
-- name: Dokumentacja dotycząca usługi SQL Server Stretch Database
-  href: index.md
+- name: Dokumentacja usługi Azure SQL Server Stretch Database
+  href: index.yml
 - name: Omówienie
   items:
     - name: Co to jest Stretch Database?
@@ -46,7 +46,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Blog
       href: 'https://blogs.technet.microsoft.com/dataplatforminsider/tag/stretch-database/'
-    - name: Ceny
+    - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/sql-server-stretch-database/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

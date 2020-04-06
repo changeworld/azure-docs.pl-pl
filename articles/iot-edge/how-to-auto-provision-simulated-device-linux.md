@@ -4,16 +4,16 @@ description: Użyj symulowanego modułu TPM na maszynie Wirtualnej systemu Linux
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/01/2019
+ms.date: 3/2/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6bb1282212ccff45f179b8750e3ed8aec27d129e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b62f551e2532e0205159358b3618695524ae85c8
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76511063"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666703"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Tworzenie i aprowizyja na urządzeniu usługi IoT Edge za pomocą wirtualnego modułu TPM na maszynie wirtualnej systemu Linux
 
@@ -156,6 +156,9 @@ Po uruchomieniu usługi inicjowania obsługi administracyjnej urządzeń skopiuj
 Pobierz informacje aprowizacji z maszyny wirtualnej i użyj ich do utworzenia indywidualnej rejestracji w usłudze inicjowania obsługi administracyjnej urządzeń.
 
 Podczas tworzenia rejestracji w dps, masz możliwość zadeklarowania **stanu bliźniaczej reprezentacji urządzenia początkowego**. W bliźniaczej reprezentacji urządzenia można ustawić znaczniki, aby grupować urządzenia według dowolnej metryki potrzebnej w rozwiązaniu, takiej jak region, środowisko, lokalizacja lub typ urządzenia. Tagi te są używane do tworzenia [wdrożeń automatycznych](how-to-deploy-monitor.md).
+
+> [!TIP]
+> W wierszu polecenia platformy Azure można utworzyć [rejestrację](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) lub [grupę rejestracji](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) i użyć flagi **obsługującej krawędź,** aby określić, że urządzenie lub grupa urządzeń jest urządzeniem usługi IoT Edge.
 
 1. W [witrynie Azure portal](https://portal.azure.com)przejdź do wystąpienia usługi inicjowania obsługi administracyjnej urządzeń usługi IoT Hub.
 

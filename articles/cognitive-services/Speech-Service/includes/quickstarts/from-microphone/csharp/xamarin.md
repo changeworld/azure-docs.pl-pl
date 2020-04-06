@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 98181bac7cf9aca85766d78fcd753ad8bdabc3ee
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 699bbea9d50c24558f6c9d4671cb6035e4718a43
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80659045"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671494"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -23,7 +23,7 @@ Zanim zaczniesz:
 
 > [!div class="checklist"]
 > * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
-> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=xamarin)
+> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=xamarin&pivots=programming-language-csharp)
 > * Upewnij się, że masz dostęp do mikrofonu do przechwytywania dźwięku
 
 Jeśli już to zrobiłeś, świetnie. Chodźmy dalej.

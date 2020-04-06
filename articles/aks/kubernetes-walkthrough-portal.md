@@ -1,16 +1,17 @@
 ---
-title: Przewodnik Szybki start — Tworzenie klastra usługi Azure Kubernetes Service (AKS) w portalu
+title: Tworzenie klastra usługi AKS w portalu
+titleSuffix: Azure Kubernetes Service
 description: Dowiedz się, jak szybko utworzyć klaster Kubernetes, wdrożyć aplikację i monitorować wydajność w usłudze Azure Kubernetes Service (AKS) przy użyciu witryny Azure Portal.
 services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: f4885bea686267ce0397e9ca6f3e2c0ac8640971
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e91e5e2701b02ab4c705cd80117dfc7689c7d054
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240618"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668451"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Szybki start: wdrażanie klastra usługi Azure Kubernetes (AKS) przy użyciu witryny Azure portal
 

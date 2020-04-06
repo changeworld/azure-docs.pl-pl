@@ -1,15 +1,16 @@
 ---
-title: Najważniejsze rozwiązania dotyczące operatora — tożsamość w usługach Kubernetes platformy Azure (AKS)
+title: Najważniejsze wskazówki dotyczące zarządzania tożsamością
+titleSuffix: Azure Kubernetes Service
 description: Zapoznaj się z najlepszymi rozwiązaniami operatorów klastra dotyczącymi zarządzania uwierzytelnianiem i autoryzacją klastrów w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 5ff5bdaced46a20dec3e7c5d7fb029f9428a12f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e3569be769fcf70a65cbfee62a3b80a5abdc3b5
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594774"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668314"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Najważniejsze wskazówki dotyczące uwierzytelniania i autoryzacji w usłudze Azure Kubernetes (AKS)
 

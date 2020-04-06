@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 38f9f85a7e961d426b66a24bb4a5c63f9f0301da
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80638062"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667306"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Omówienie platformy Azure FarmBeats (wersja zapoznawcza)
 
@@ -59,9 +59,9 @@ Administrator może dodać wielu partnerów jako dostawców danych do usługi Az
 | ---- | -------- | -------- |
 | Partner czujnika  |   Tworzenie, odczytywanie, aktualizowanie <br/> <br/> Odczyt, aktualizowanie | DeviceModel, Urządzenie, CzujnikModel, Czujnik <br/> <br/> Rozszerzony typ |
 | Partner w zdjęciach  |   Tworzenie, odczytywanie, aktualizowanie <br/> <br/> Odczyt, aktualizowanie <br/> <br/> Odczyt | Scena, SceneFile <br/> <br/> Rozszerzony typ <br/> <br/> Gospodarstwa |
-| Partner w zdjęciach  |   Tworzenie, odczytywanie, aktualizowanie <br/> <br/> Odczyt, aktualizowanie <br/> <br/> Odczyt | WeatherDataModel, PogodaDataLocation, JobType <br/> <br/> Rozszerzony typ <br/> <br/> Gospodarstwa |
+| Partner pogodowy* <br/> <br/>  (* Już wkrótce) |   Tworzenie, odczytywanie, aktualizowanie <br/> <br/> Odczyt, aktualizowanie <br/> <br/> Odczyt | WeatherDataModel, PogodaDataLocation, JobType <br/> <br/> Rozszerzony typ <br/> <br/> Gospodarstwa |
 
-## <a name="resources"></a>Zasoby
+## <a name="resources"></a>Resources
 
 Usługa Azure FarmBeats jest oferowana bez dodatkowych opłat i płacisz tylko za zasoby platformy Azure, których używasz. Możesz użyć poniższych zasobów, aby dowiedzieć się więcej o ofercie:
 

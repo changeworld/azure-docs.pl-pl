@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie uwierzytelniania wieloskładnikowego platformy Azure — usługa Azure Active Directory
-description: Planowanie wdrażania uwierzytelniania wieloskładnikowego platformy Microsoft Azure
+title: Zagadnienia dotyczące wdrażania uwierzytelniania wieloskładnikowego platformy Azure
+description: Dowiedz się więcej o zagadnieniach dotyczących wdrażania i strategii pomyślnej implementacji uwierzytelniania wieloskładnikowego platformy Azure
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,18 +11,25 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ae58482ced524958ffcdd6094ae57856d088eaf
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a70c6ae3ebc7f5b39550508594bd4d4907e68a67
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653954"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667341"
 ---
-# <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planowanie wdrożenia usługi Azure Multi-Factor Authentication opartej na chmurze
+# <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Planowanie wdrożenia uwierzytelniania wieloskładnikowego platformy Azure
 
 Ludzie łączą się z zasobami organizacyjnymi w coraz bardziej skomplikowanych scenariuszach. Użytkownicy łączą się z urządzeniami należącymi do organizacji, osobistymi i publicznymi w sieci firmowej i poza nią za pomocą smartfonów, tabletów, komputerów i laptopów, często na wielu platformach. W tym zawsze połączonym, wielo-i wieloplatformowym świecie bezpieczeństwo kont użytkowników jest ważniejsze niż kiedykolwiek. Hasła, bez względu na ich złożoność, używane na różnych urządzeniach, w sieciach i platformach nie są już wystarczające, aby zapewnić bezpieczeństwo konta użytkownika, zwłaszcza gdy użytkownicy mają tendencję do ponownego użycia haseł na różnych kontach. Zaawansowane ataki phishingowe i inne ataki na inżynierię społeczną mogą spowodować publikowanie i sprzedawanie nazw użytkowników i haseł w ciemnej sieci.
 
 [Uwierzytelnianie wieloskładnikowe usługi Azure (MFA)](concept-mfa-howitworks.md) pomaga chronić dostęp do danych i aplikacji. Zapewnia dodatkową warstwę zabezpieczeń przy użyciu drugiej formy uwierzytelniania. Organizacje mogą używać [dostępu warunkowego,](../conditional-access/overview.md) aby dopasować rozwiązanie do ich specyficznych potrzeb.
+
+W tym przewodniku wdrażania pokazano, jak zaplanować, a następnie przetestować wdrożenie uwierzytelniania wieloskładnikowego platformy Azure.
+
+Aby szybko wyświetlić uwierzytelnianie wieloskładnikowe platformy Azure w działaniu, a następnie wrócić do zapoznania się z dodatkowymi zagadnieniami związanymi z wdrażaniem:
+
+> [!div class="nextstepaction"]
+> [Włączanie usługi Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -173,7 +180,7 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-
 
 Jeśli użytkownicy zostali włączeni przy użyciu uwierzytelniania wieloskładnikowego platformy Azure z włączoną i wymuszoną usługą Azure, następujący program PowerShell może pomóc w konwersji na uwierzytelnianie wieloskładnikowe azure na podstawie dostępu warunkowego.
 
-Uruchom ten program PowerShell w oknie ISE lub zapisz jako . ps1, aby uruchomić lokalnie.
+Uruchom ten program PowerShell w oknie `.PS1` ISE lub zapisz jako plik do uruchomienia lokalnie.
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -317,7 +324,7 @@ Na każdym serwerze usług AD FS na komputerze lokalnym mój sklep będzie podpi
 
 Jeśli okres ważności certyfikatów zbliża się do wygaśnięcia, [wygeneruj i zweryfikuj nowy certyfikat usługi MFA na każdym serwerze usług AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
 
-Poniższe wskazówki dotyczące zarządzania certyfikatami usługi Azure MFA na serwerach usług AD FS. Podczas konfigurowania usług AD FS za pomocą usługi `New-AdfsAzureMfaTenantCertificate` Azure MFA certyfikaty generowane za pośrednictwem polecenia cmdlet programu PowerShell są ważne przez 2 lata. Odnów i zainstaluj odnowione certyfikaty przed wygaśnięciem do ovoid zakłóceń w usłudze MFA.
+Poniższe wskazówki dotyczące zarządzania certyfikatami usługi Azure MFA na serwerach usług AD FS. Podczas konfigurowania usług AD FS za pomocą usługi `New-AdfsAzureMfaTenantCertificate` Azure MFA certyfikaty generowane za pośrednictwem polecenia cmdlet programu PowerShell są ważne przez dwa lata. Odnów i zainstaluj odnowione certyfikaty przed wygaśnięciem do ovoid zakłóceń w usłudze MFA.
 
 ## <a name="implement-your-plan"></a>Zaimplementuj swój plan
 
@@ -357,6 +364,7 @@ Rozwiązania typowych problemów z usługą Azure MFA można znaleźć w [artyku
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Co to są metody uwierzytelniania?](concept-authentication-methods.md)
-* [Włączanie rejestracji konwergentnej dla uwierzytelniania wieloskładnikowego platformy Azure i samoobsługowego resetowania hasła usługi Azure AD](concept-registration-mfa-sspr-converged.md)
-* Dlaczego użytkownik został poproszony lub nie został poproszony o wykonanie usługi MFA? Zobacz sekcję [Raport logowania usługi Azure AD w raporcie Raporty w dokumencie uwierzytelniania wieloskładnikowego platformy Azure](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+Aby wyświetlić usługę Azure Multi-Factor Authentication w akcji, wykonaj następujący samouczek:
+
+> [!div class="nextstepaction"]
+> [Włączanie usługi Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md)

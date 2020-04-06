@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: a2ff4a94c1b2941f645cd7032ef476d33dffdb00
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 440944033e4b6a8fb29cf9ace6ad784b91316526
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656718"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668767"
 ---
 # <a name="about-the-speech-sdk"></a>Informacje o zestawie SDK usługi Mowa
 
@@ -69,21 +69,11 @@ Kilka języków programowania SDK mowy obsługuje kodek skompresowane strumienie
 
 ## <a name="rest-api"></a>Interfejs API REST
 
-Podczas gdy SDK mowy obejmuje wiele funkcji funkcji usługi mowy, w niektórych scenariuszach można użyć interfejsu API REST. Na przykład zarządzanie punktami końcowymi jest udostępniane tylko za pośrednictwem interfejsu API REST.
-
-> [!TIP]
-> Korzystając z interfejsu API REST, użyj Edytora Swagger do automatycznego generowania bibliotek klienckich. Na przykład, aby wygenerować bibliotekę klienta transkrypcji partii.
-> 1. Skopiuj przykładowy adres URL poniżej:
->     ```http
->     https://westus.cris.ai/docs/v2.0/swagger
->     ```
-> 1. Przejdź do <a href="https://editor.swagger.io/" target="_blank">edytora <span class="docon docon-navigate-external x-hidden-focus"></span> Swagger</a>
-> 1. Wybierz**adres URL importu** **pliku** > i wklej adres URL
-> 1. Wybierz **pozycję Generuj klienta** i wybierz żądany język programowania
+Podczas gdy SDK mowy obejmuje wiele funkcji funkcji usługi mowy, w niektórych scenariuszach można użyć interfejsu API REST.
 
 ### <a name="batch-transcription"></a>Transkrypcja wsadowa
 
-[Transkrypcja wsadowa](batch-transcription.md) umożliwia asynchronizowe transkrypcji mowy do tekstu dużych ilości danych. Transkrypcja partii jest możliwa tylko z interfejsu API REST.
+[Transkrypcja wsadowa](batch-transcription.md) umożliwia asynchronizowe transkrypcji mowy do tekstu dużych ilości danych. Transkrypcja partii jest możliwa tylko z interfejsu API REST. Oprócz konwersji dźwięku mowy na tekst, wsadowa zamiana mowy na tekst umożliwia również diarization i analizy tonacji.
 
 ## <a name="customization"></a>Dostosowywanie
 

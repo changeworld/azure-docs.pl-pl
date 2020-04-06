@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z certyfikatami domeny i SSL
-description: Znajdź rozwiązania typowych problemów, które mogą wystąpić podczas konfigurowania domeny lub certyfikatu SSL w usłudze Azure App Service.
+title: Rozwiązywanie problemów z certyfikatami domeny i protokołu TLS/SSL
+description: Znajdź rozwiązania typowych problemów, które mogą wystąpić podczas konfigurowania domeny lub certyfikatu TLS/SSL w usłudze Azure App Service.
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75966973"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668026"
 ---
-# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Rozwiązywanie problemów z domeną i certyfikatami SSL w usłudze Azure App Service
+# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Rozwiązywanie problemów z domeną i certyfikatami TLS/SSL w usłudze Azure App Service
 
-W tym artykule wymieniono typowe problemy, które mogą wystąpić podczas konfigurowania domeny lub certyfikatu SSL dla aplikacji sieci web w usłudze Azure App Service. Opisano również możliwe przyczyny i rozwiązania tych problemów.
+W tym artykule wymieniono typowe problemy, które mogą wystąpić podczas konfigurowania domeny lub certyfikatu TLS/SSL dla aplikacji sieci web w usłudze Azure App Service. Opisano również możliwe przyczyny i rozwiązania tych problemów.
 
 Jeśli potrzebujesz więcej pomocy w dowolnym momencie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie można zgłosić zdarzenie pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję Uzyskaj pomoc **techniczną**.
 
@@ -26,17 +26,17 @@ Jeśli potrzebujesz więcej pomocy w dowolnym momencie tego artykułu, możesz s
 
 ## <a name="certificate-problems"></a>Problemy z certyfikatem
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-an-app"></a>Nie można dodać powiązania certyfikatu SSL do aplikacji 
+### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>Nie można dodać powiązania certyfikatu TLS/SSL do aplikacji 
 
 #### <a name="symptom"></a>Objaw
 
-Po dodaniu powiązania SSL zostanie wyświetlony następujący komunikat o błędzie:
+Po dodaniu powiązania TLS zostanie wyświetlony następujący komunikat o błędzie:
 
 "Nie można dodać powiązania SSL. Nie można ustawić certyfikatu dla istniejącego adresu VIP, ponieważ inny adres VIP już używa tego certyfikatu."
 
 #### <a name="cause"></a>Przyczyna
 
-Ten problem może wystąpić, jeśli masz wiele powiązań SSL opartych na protokosze dla tego samego adresu IP w wielu aplikacjach. Na przykład aplikacja A ma protokół SSL oparty na protokoi z certyfikatem IP ze starym certyfikatem. Aplikacja B ma protokół SSL oparty na protokoi z nowym certyfikatem dla tego samego adresu IP. Po zaktualizowaniu powiązania SSL aplikacji z nowym certyfikatem, nie powiedzie się z tym błędem, ponieważ ten sam adres IP jest używany dla innej aplikacji. 
+Ten problem może wystąpić, jeśli masz wiele powiązań SSL opartych na protokosze dla tego samego adresu IP w wielu aplikacjach. Na przykład aplikacja A ma protokół SSL oparty na protokoi z certyfikatem IP ze starym certyfikatem. Aplikacja B ma protokół SSL oparty na protokoi z nowym certyfikatem dla tego samego adresu IP. Po zaktualizowaniu powiązania TLS aplikacji z nowym certyfikatem, nie powiedzie się z tym błędem, ponieważ ten sam adres IP jest używany dla innej aplikacji. 
 
 #### <a name="solution"></a>Rozwiązanie 
 
@@ -51,7 +51,7 @@ Aby rozwiązać ten problem, należy użyć jednej z następujących metod:
 
 Podczas próby usunięcia certyfikatu pojawia się następujący komunikat o błędzie:
 
-"Nie można usunąć certyfikatu, ponieważ jest on obecnie używany w powiązaniu SSL. Powiązanie SSL musi zostać usunięte, zanim będzie można usunąć certyfikat."
+"Nie można usunąć certyfikatu, ponieważ jest on obecnie używany w powiązaniu TLS/SSL. Powiązanie TLS musi zostać usunięte, zanim będzie można usunąć certyfikat."
 
 #### <a name="cause"></a>Przyczyna
 
@@ -59,7 +59,7 @@ Ten problem może wystąpić, jeśli inna aplikacja używa certyfikatu.
 
 #### <a name="solution"></a>Rozwiązanie
 
-Usuń powiązanie SSL dla tego certyfikatu z aplikacji. Następnie spróbuj usunąć certyfikat. Jeśli nadal nie można usunąć certyfikatu, wyczyść pamięć podręczną przeglądarki internetowej i otwórz ponownie witrynę Azure portal w nowym oknie przeglądarki. Następnie spróbuj usunąć certyfikat.
+Usuń powiązanie TLS dla tego certyfikatu z aplikacji. Następnie spróbuj usunąć certyfikat. Jeśli nadal nie można usunąć certyfikatu, wyczyść pamięć podręczną przeglądarki internetowej i otwórz ponownie witrynę Azure portal w nowym oknie przeglądarki. Następnie spróbuj usunąć certyfikat.
 
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>Nie można kupić certyfikatu usługi app service 
 
@@ -69,7 +69,7 @@ Nie można kupić [certyfikatu usługi Azure App Service](./configure-ssl-certif
 #### <a name="cause-and-solution"></a>Przyczyna i roztwór
 Ten problem może wystąpić z następujących powodów:
 
-- Plan usługi aplikacji jest bezpłatny lub udostępniony. Te warstwy cenowe nie obsługują ssl. 
+- Plan usługi aplikacji jest bezpłatny lub udostępniony. Te warstwy cenowe nie obsługują protokołu TLS. 
 
     **Rozwiązanie:** Uaktualnij plan usługi app dla aplikacji do standardu.
 
@@ -165,7 +165,7 @@ Jeśli domena została usunięta mniej niż siedem dni temu, domena nie rozpocz�
 
 ## <a name="domain-problems"></a>Problemy z domeną
 
-### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>Zakupiono certyfikat SSL dla niewłaściwej domeny
+### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>Zakupiono certyfikat TLS/SSL dla niewłaściwej domeny
 
 #### <a name="symptom"></a>Objaw
 
@@ -266,7 +266,7 @@ Ten problem występuje z jednego z następujących powodów:
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>Najczęściej zadawane pytania
+## <a name="faq"></a>Często zadawane pytania
 
 **Czy muszę skonfigurować domenę niestandardową dla mojej witryny sieci Web po jej zakupie?**
 
@@ -306,7 +306,7 @@ W przypadku zakupu domeny nie są naliczane opłaty za okres pięciu dni, w tym 
 
 **Czy mogę używać domeny w innej aplikacji usługi Azure App Service w mojej subskrypcji?**
 
-Tak. Po dodaniu dostępu do domen niestandardowych i bloku SSL w witrynie Azure portal, zobaczysz domeny, które zostały zakupione. Możesz skonfigurować aplikację tak, aby używała dowolnej z tych domen.
+Tak. Po dodaniu dostępu do domen niestandardowych i TLS bloku w witrynie Azure portal, zobaczysz domeny, które zostały zakupione. Możesz skonfigurować aplikację tak, aby używała dowolnej z tych domen.
 
 **Czy mogę przenieść domenę z jednej subskrypcji do innej subskrypcji?**
 

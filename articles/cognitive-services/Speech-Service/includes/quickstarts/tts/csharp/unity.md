@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 9/19/2019
+ms.date: 04/04/2020
 ms.author: yinhew
-ms.openlocfilehash: 73a4477547c562a9960fe72b352e906676eadae5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3a40dd445384ac35749ff2b016c672fb3c40dfb0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925175"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671907"
 ---
 > [!NOTE]
 > Unity obsługuje windows desktop (x86 i x64) lub uniwersalną platformę windows (x86, x64, ARM/ARM64), Android (x86, ARM32/64) i iOS (symulator x64, ARM32 i ARM64).
@@ -26,7 +26,7 @@ Zanim zaczniesz, upewnij się, że:
 
 > [!div class="checklist"]
 > * [Tworzenie zasobu mowy platformy Azure](../../../../get-started.md)
-> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=unity)
+> * [Konfigurowanie środowiska programistycznego i tworzenie pustego projektu](../../../../quickstarts/setup-platform.md?tabs=unity&pivots=programming-language-csharp)
 
 ## <a name="add-a-ui"></a>Dodawanie interfejsu użytkownika
 

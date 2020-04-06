@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c251569cfe6a2f27f86421ffe6a446ace52b435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f884f4c0ea3a610f28a8fdbb34b081f0b0a64d08
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051153"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666944"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrowanie istniejącej infrastruktury NPS z usługą Azure Multi-Factor Authentication
 
@@ -64,7 +64,7 @@ Biblioteki te są instalowane automatycznie z rozszerzeniem.
 
 Moduł usługi Microsoft Azure Active Directory dla programu Windows PowerShell jest zainstalowany, jeśli nie jest jeszcze obecny, za pomocą skryptu konfiguracji uruchomionego w ramach procesu instalacji. Nie ma potrzeby instalowania tego modułu z wyprzedzeniem, jeśli nie jest jeszcze zainstalowany.
 
-### <a name="azure-active-directory"></a>Usługa Azure Active Directory
+### <a name="azure-active-directory"></a>Azure Active Directory
 
 Wszystkie osoby korzystające z rozszerzenia serwera NPS muszą być synchronizowane z usługą Azure Active Directory przy użyciu usługi Azure AD Connect i muszą być zarejestrowane dla usługi MFA.
 
@@ -78,6 +78,7 @@ Serwer NPS musi być w stanie komunikować się z następującymi adresami URL z
 
 - https:\//adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
+- https:\//credentials.azure.com
 
 Ponadto łączność z następującymi adresami URL jest wymagana do ukończenia [konfiguracji karty przy użyciu dostarczonego skryptu programu PowerShell](#run-the-powershell-script)
 
@@ -125,7 +126,7 @@ Istnieją dwa czynniki, które wpływają na to, które metody uwierzytelniania 
       > [!NOTE]
       > Podczas wdrażania rozszerzenia NPS, użyj tych czynników, aby ocenić, które metody są dostępne dla użytkowników. Jeśli klient radius obsługuje pap, ale środowisko użytkownika klienta nie ma pól wejściowych dla kodu weryfikacyjnego, a następnie połączenia telefonicznego i powiadomienia aplikacji mobilnej są dwie obsługiwane opcje.
       >
-      > Ponadto jeśli środowisko użytkownika klienta sieci VPN obsługuje pole wejściowe i skonfigurowano zasady dostępu do sieci — uwierzytelnianie może zakończyć się pomyślnie, jednak żaden z atrybutów RADIUS skonfigurowanych w zasadach sieciowych nie zostanie zastosowany do ani urządzenia dostępu sieciowego, jak serwer RRAS, ani klient sieci VPN. W rezultacie klient sieci VPN może mieć większy dostęp niż żądany lub mniej do braku dostępu.
+      > Ponadto jeśli środowisko użytkownika klienta sieci VPN obsługuje pole wejściowe i skonfigurowano zasady dostępu do sieci — uwierzytelnianie może zakończyć się pomyślnie, jednak żaden z atrybutów RADIUS skonfigurowanych w zasadach sieciowych nie zostanie zastosowany ani do urządzenia dostępu sieciowego, takiego jak serwer RRAS, ani do klienta sieci VPN. W rezultacie klient sieci VPN może mieć większy dostęp niż żądany lub mniej do braku dostępu.
       >
 
 2. Metody wprowadzania, które aplikacja kliencka (VPN, serwer Netscaler lub inne) może obsłużyć. Na przykład, czy klient sieci VPN ma jakieś środki, aby umożliwić użytkownikowi wpisywać kod weryfikacyjny z tekstu lub aplikacji mobilnej?
