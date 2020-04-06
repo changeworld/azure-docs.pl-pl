@@ -143,12 +143,18 @@
           href: how-to-auto-provision-x509-certs.md
         - name: Zaświadczanie klucza symetrycznego
           href: how-to-auto-provision-symmetric-keys.md
-    - name: Programowanie i debugowanie modułów niestandardowych
+    - name: Opracowywanie niestandardowych modułów
       items:
-        - name: Visual Studio 2019
+        - name: Programowanie w programie Visual Studio 2019
           href: how-to-visual-studio-develop-module.md
-        - name: Visual Studio Code
+        - name: Programowanie w programie Visual Studio Code
           href: how-to-vs-code-develop-module.md
+        - name: Konfiguracja modułu – createOptions
+          items:
+            - name: Opis i zastosowanie polecenia createOptions
+              href: how-to-use-create-options.md
+            - name: Zapewnianie modułom dostępu do magazynu lokalnego na urządzeniu
+              href: how-to-access-host-storage-from-module.md
     - name: Wdrażanie modułów
       items:
         - name: Wdrażanie na poszczególnych urządzeniach
@@ -183,11 +189,9 @@
           href: deploy-modbus-gateway.md
     - name: Konfigurowanie obsługi serwera proxy
       href: how-to-configure-proxy-support.md
-    - name: Przechowywanie danych na brzegu
+    - name: Usługa Azure Blob Storage w usłudze IoT Edge
       items:
-        - name: Zapewnianie modułom dostępu do magazynu lokalnego na urządzeniu
-          href: how-to-access-host-storage-from-module.md
-        - name: Usługa Azure Blob Storage w usłudze IoT Edge
+        - name: Opis magazynu obiektów blob na krawędzi
           href: how-to-store-data-blob.md
         - name: Wdrażanie modułów usługi Blob Storage
           href: how-to-deploy-blob.md

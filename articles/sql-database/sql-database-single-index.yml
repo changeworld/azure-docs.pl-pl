@@ -1,129 +1,87 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure SQL Database
+### YamlMime:Landing
+title: Znajdź dokumentację dotyczącą pojedynczych baz danych usługi SQL Azure, serwerów baz danych i pul elastycznych
+summary: Znajdź pojęcia, przewodniki Szybki start, samouczki i przykłady dla pojedynczych baz danych, elastycznych pul i serwerów baz danych usługi Azure SQL Database.
 metadata:
-  title: 'Dokumentacja — pojedyncza baza danych, serwer bazy danych, elastyczna pula'
-  description: 'Znajdź przewodniki Szybki start, samouczki i przykłady dla pojedynczych baz danych, elastycznych pul i serwerów baz danych usługi Azure SQL Database.'
+  title: Dokumentacja
+  description: Znajdź dokumentację dotyczącą usługi Azure SQL Database, relacyjnej bazy danych jako usługi (DBaaS) opartej na najnowszej stabilnej wersji programu Microsoft SQL Server.
   services: sql-database
-  requires-business-manager-approval: false
   ms.service: sql-database
   ms.subservice: single-database
-  ms.topic: overview
-  author: jovanpop-msft
-  ms.author: jovanpop
+  ms.topic: landing-page
+  author: stevestein
+  ms.author: sstein
   ms.reviewer: carlrab
-  manager: craigg
-  ms.date: 04/26/2019
-abstract:
-  description: 'Azure SQL Database to relacyjna baza danych jako usługa (DBaaS) oparta na najnowszej stabilnej wersji aparatu bazy danych programu Microsoft SQL Server. Usługa SQL Database to wysokowydajna, łatwa w użyciu, niezawodna i bezpieczna baza danych, za pomocą której można tworzyć nowe aplikacje, witryny internetowe i mikrousługi w wybranym języku programowania, bez zarządzania infrastrukturą. Dowiedz się, jak używać usługi SQL Database, korzystając z przewodników Szybki Start, samouczków i przykładów.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png'
-      width: 250
-    title: 'Tworzenie pojedynczej bazy danych SQL na platformie Azure (3:12)'
-    href: 'https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - title: Pule elastyczne
-            href: /azure/sql-database/sql-database-elastic-pool
-            html: '<p>Pule elastyczne usługi SQL Database to proste i niedrogie rozwiązanie do zarządzania i skalowania wielu baz danych, które mają różne i nieprzewidywalne wymagania dotyczące użycia.</p>'
-            image:
-              src: media/index/i_elasticpool.svg
-          - title: Serwer usługi SQL Database
-            href: /azure/sql-database/sql-database-servers
-            html: '<p>Serwer SQL Database to centralny punkt administracji służący do konfigurowania zabezpieczeń, dostrajania, zasad kopii zapasowych i innych właściwości konfiguracji w zestawie baz danych (osobnych lub połączonych w pulę) na serwerze.</p>'
-            image:
-              src: media/index/i_mi.svg
-          - title: Cena i warstwy usług
-            href: /azure/sql-database/sql-database-service-tiers
-            html: '<p>Dopasuj stosunek ceny do wydajności zgodnie ze swoimi potrzebami dzięki elastycznym warstwom usług obejmującym szeroki zakres opcji, od przystępnych cenowo (5 USD miesięcznie) po zaawansowane (bazy danych korzystające z 80 rdzeni).</p>'
-            image:
-              src: media/index/i_perftier.svg
-          - title: Skalowalność
-            href: /azure/sql-database/sql-database-scale-resources
-            html: '<p>Łatwo skaluj bazę danych w górę, aby zwiększyć wydajność aplikacji.</p>'
-            image:
-              src: media/index/i_scale.svg
-          - title: Platforma jako usługa
-            href: /azure/sql-database/sql-database-paas
-            html: '<p>Wbudowana wysoka dostępność, automatyczne kopie zapasowe i replikacja geograficzna pozwalają łatwiej zapewnić, że operacje konserwacji czy awarie infrastruktury lub sprzętu nie zatrzymają Twojej firmy.</p>'
-            image:
-              src: media/index/gear.svg
-          - title: Zaawansowane zabezpieczenia
-            href: /azure/sql-database/sql-database-security-index
-            html: '<p>Zabezpiecz bazę danych przy użyciu uwierzytelniania usługi Azure AD, sieci wirtualnych, zapór i zawsze szyfrowanych połączeń. Identyfikowanie zagrożeń i luk w zabezpieczeniach za pomocą wbudowanych zabezpieczeń.</p>'
-            image:
-              src: media/index/i_security.svg
-  - title: Pięciominutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Usługa Azure SQL Database pozwala wykonywać podstawowe zadania zarządzania przy użyciu witryny Azure Portal, interfejsu wiersza polecenia platformy Azure i programu Azure PowerShell. Dowiedz się, jak wykonywać podstawowe zadania zarządzania dzięki przykładom z poniższych przewodników Szybki start:'
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/portal.svg
-            title: Azure Portal
-          - image:
-              src: media/index/cli.svg
-            title: Interfejs wiersza polecenia platformy Azure
-          - image:
-              src: media/index/logo_powershell.svg
-            title: PowerShell
-          - image:
-              src: media/index/logo_arm.svg
-            title: Szablon usługi Azure Resource Manager
-        rows:
-          - title: Tworzenie bazy danych
-            values:
-              - href: /azure/sql-database/sql-database-single-database-get-started
-              - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
-              - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
-              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create'
-          - title: Tworzenie puli elastycznej
-            values:
-              - href: /azure/sql-database/sql-database-elastic-pool-manage
-              - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
-              - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
-              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create'
-          - title: Skalowanie bazy danych
-            values:
-              - href: null
-              - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
-              - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
-              - href: null
-          - title: Skalowanie puli elastycznej
-            values:
-              - href: null
-              - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
-              - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-pool-powershell
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak tworzyć i migrować bazy danych oraz zarządzać nimi za pomocą usługi Azure SQL Database.'
-      - type: list
-        style: ordered
-        items:
-          - html: Tworzenie i projektowanie schematu dla nowej bazy danych SQL przy użyciu platformy <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> lub <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>.
-          - html: Migrowanie istniejącej bazy danych do platformy Azure za pomocą <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Asystenta migracji bazy danych</a> lub <a href="/azure/sql-database/sql-database-import">funkcji importowania pliku BACPAC</a>.
-          - html: <a href="/azure/sql-database/sql-database-security-tutorial">Zabezpieczanie bazy danych SQL</a>.
-          - html: Globalne dystrybuowanie danych przy użyciu <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">rozproszonej geograficznie bazy danych</a>.
-          - html: 'Znajdź więcej <a href="sql-database-howto-single-database.md">przewodników z instrukcjami</a>, które ułatwią skonfigurowanie bazy danych.'
-  - title: Samples
-    items:
-      - type: paragraph
-        text: Znajdowanie skryptów umożliwiających zarządzanie typowymi zadaniami.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
-          - html: <a href="/azure/sql-database/sql-database-cli-samples">Interfejs wiersza polecenia platformy Azure</a>
+  ms.date: 03/30/2020
+  ms.openlocfilehash: 1aa091dadce4f45db93e97640f5705524d72879e
+  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "80421243"
+landingContent:
+- title: Pojedyncza baza danych
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Co to jest SQL Database?
+      url: sql-database-technical-overview.md
+    - text: Którą opcję usługi SQL Database wybrać?
+      url: sql-database-paas-vs-sql-server-iaas.md
+    - text: Opcje zakupu
+      url: sql-database-purchase-models.md
+    - text: Warstwy usług
+      url: sql-database-service-tiers-general-purpose-business-critical.md
+- title: Pule elastyczne
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Pule elastyczne
+      url: sql-database-elastic-pool.md
+    - text: Zarządzanie elastycznymi pulami
+      url: sql-database-elastic-pool-manage.md
+    - text: Skalowanie elastycznych pul
+      url: sql-database-elastic-pool-scale.md
+- title: Serwer usługi SQL Database
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Serwery usługi SQL Database
+      url: sql-database-servers.md
+    - text: Ustawienia łączności
+      url: sql-database-connectivity-settings.md
+    - text: Reguły zapory
+      url: sql-database-server-level-firewall-rule.md
+- title: Zaawansowane zabezpieczenia
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Możliwości zabezpieczeń
+      url: sql-database-security-overview.md
+    - text: Najlepsze rozwiązania dotyczące zabezpieczeń
+      url: sql-database-security-best-practice.md
+    - text: Identyfikatory logowania, konta użytkowników, role i uprawnienia
+      url: sql-database-manage-logins.md
+    - text: Usługa Azure Active Directory
+      url: sql-database-aad-authentication.md
+- title: Skalowalność
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Dynamiczne skalowanie w górę lub w dół
+      url: sql-database-scale-resources.md
+    - text: Skalowanie odczytu w poziomie
+      url: sql-database-read-scale-out.md
+    - text: Zadania obejmujące wiele baz danych
+      url: sql-database-elastic-jobs-overview.md
+- title: Ceny i warstwy usług
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Modele zakupów
+      url: sql-database-purchase-models.md
+    - text: Warstwy usług
+      url: sql-database-service-tiers-general-purpose-business-critical.md
+    - text: Praca bezserwerowa
+      url: sql-database-serverless.md
+    - text: Hiperskala
+      url: sql-database-service-tier-hyperscale.md

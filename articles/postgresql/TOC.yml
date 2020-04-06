@@ -149,6 +149,8 @@
           items:
             - name: Repliki do odczytu
               href: concepts-read-replicas.md
+            - name: Dekodowanie logiczne
+              href: concepts-logical.md
     - name: Hiperskala (Citus)
       items:
         - name: Węzły
@@ -269,6 +271,8 @@
           items:
             - name: Azure Portal
               href: howto-data-encryption-portal.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: howto-data-encryption-cli.md
         - name: Ponowne uruchamianie serwera
           items:
             - name: Azure Portal

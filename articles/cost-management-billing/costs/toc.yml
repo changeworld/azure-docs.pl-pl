@@ -32,6 +32,8 @@
           href: migrate-cost-management-api.md
     - name: Przewodniki z instrukcjami
       items:
+        - name: Zapobieganie i analizowanie nieoczekiwanych opłat
+          href: ../manage/getting-started.md
         - name: Przypisywanie dostępu do danych
           href: assign-access-acm-data.md
         - name: Korzystanie z analizy kosztów na potrzeby typowych zadań

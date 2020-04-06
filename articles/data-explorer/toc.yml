@@ -67,7 +67,13 @@
     - name: Pozyskiwanie danych
       items:
         - name: Pozyskiwanie jednym kliknięciem
-          href: ingest-data-one-click.md
+          items:
+            - name: Omówienie pozyskiwania jednym kliknięciem
+              href: ingest-data-one-click.md
+            - name: Pozyskiwanie jednym kliknięciem do nowej tabeli
+              href: one-click-ingestion-new-table.md
+            - name: Pozyskiwanie jednym kliknięciem do istniejącej tabeli
+              href: one-click-ingestion-existing-table.md
         - name: Pozyskiwanie danych za pośrednictwem przesyłania strumieniowego
           href: ingest-data-streaming.md
         - name: Używanie programu LightIngest
@@ -188,6 +194,8 @@
               href: customer-managed-keys-csharp.md
             - name: Szablon usługi Azure Resource Manager
               href: customer-managed-keys-resource-manager.md
+        - name: Tworzenie aplikacji usługi Azure AD
+          href: provision-azure-ad-app.md
     - name: Zarządzanie
       items:
         - name: Klaster
@@ -208,6 +216,8 @@
                   href: cluster-principal-python.md
                 - name: Szablon usługi Azure Resource Manager
                   href: cluster-principal-resource-manager.md
+            - name: Zarządzanie rozszerzeniami językowymi klastra
+              href: language-extensions.md
         - name: baza danych
           items:
             - name: Bazy danych obserwujących
@@ -240,6 +250,8 @@
           href: using-diagnostic-logs.md
         - name: Monitorowanie kondycji klastra przy użyciu metryk
           href: using-metrics.md
+        - name: Monitorowanie kondycji klastra przy użyciu kondycji zasobów
+          href: monitor-with-resource-health.md
     - name: Integracja z innymi narzędziami
       items:
         - name: Azure Data Factory
@@ -264,6 +276,8 @@
           href: connect-from-databricks.md
         - name: Analizowanie danych w rozwiązaniach Jupyter Notebooks i Kqlmagic
           href: kqlmagic.md
+        - name: Analizowanie danych w usłudze Azure Notebooks
+          href: azure-notebooks.md
         - name: Azure Pipelines
           href: devops.md
     - name: Rozwiązywanie problemów

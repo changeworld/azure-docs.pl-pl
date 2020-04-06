@@ -13,11 +13,13 @@
       href: quick-create-cli.md
     - name: Tworzenie przy użyciu programu Azure PowerShell
       href: quick-create-powershell.md
-    - name: Tworzenie przy użyciu szablonu
+    - name: Tworzenie szablonu usługi Resource Manager
       items:
         - name: Zestaw skalowania dla systemu Linux
+          displayName: 'ARM, resource manager'
           href: quick-create-template-linux.md
         - name: Zestaw skalowania dla systemu Windows
+          displayName: 'ARM, resource manager'
           href: quick-create-template-windows.md
 - name: Samouczki
   items:
@@ -55,11 +57,11 @@
           href: tutorial-autoscale-powershell.md
         - name: Szablon
           href: tutorial-autoscale-template.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: cli-samples.md
-    - name: Program PowerShell
+    - name: PowerShell
       href: powershell-samples.md
 - name: Pojęcia
   items:
@@ -149,13 +151,13 @@
         - name: Kopia zapasowa i odzyskiwanie po awarii dla dysków
           href: ../virtual-machines/windows/backup-and-disaster-recovery-for-azure-iaas-disks.md
           maintainContext: true
-    - name: Sieć
+    - name: Networking
       href: ../virtual-machines/windows/network-overview.md
       maintainContext: true
     - name: Automatyzacja infrastruktury
       href: ../virtual-machines/windows/infrastructure-automation.md
       maintainContext: true
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Zabezpieczenia i zasady
           href: ../virtual-machines/windows/security-policy.md
@@ -264,7 +266,7 @@
               href: shared-image-galleries.md
             - name: Interfejs wiersza polecenia
               href: shared-images-cli.md
-            - name: Program PowerShell
+            - name: PowerShell
               href: shared-images-powershell.md
             - name: Udostępnianie obrazów między dzierżawami
               href: share-images-across-tenants.md
@@ -305,11 +307,11 @@
   items:
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: Ceny
+    - name: Cennik
       items:
         - name: Linux
           href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/'
-        - name: System Windows
+        - name: Windows
           href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

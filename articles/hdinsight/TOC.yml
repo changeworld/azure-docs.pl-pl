@@ -697,6 +697,10 @@
       items:
         - name: Analizowanie danych za pomocą zapytania interakcyjnego
           href: ./interactive-query/interactive-query-tutorial-analyze-flight-data.md
+    - name: Pojęcia
+      items:
+        - name: Najlepsze rozwiązania dotyczące bramy
+          href: ./interactive-query/gateway-best-practices.md
     - name: Instrukcje
       items:
         - name: Programowanie
@@ -816,6 +820,8 @@
       items:
         - name: Zapisywanie w magazynie za pomocą systemu Apache Storm
           href: ./storm/apache-storm-write-data-lake-store.md
+        - name: Apache Kafka i Apache Storm (Java)
+          href: ./hdinsight-apache-storm-with-kafka.md
     - name: Instrukcje
       items:
         - name: Migrowanie systemu Storm na platformę Spark
@@ -836,10 +842,6 @@
                   href: ./storm/apache-storm-example-topology.md
             - name: Potoki przesyłania strumieniowego
               items:
-                - name: Apache Kafka i Apache Storm (Java)
-                  href: ./hdinsight-apache-storm-with-kafka.md
-                - name: 'Usługi Event Hub, Storage i Data Lake Storage (Java)'
-                  href: 'https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/'
                 - name: 'Usługi Event Hub i Apache Storm (C# i Java)'
                   href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
         - name: Zarządzanie

@@ -102,6 +102,8 @@
               href: how-to-enable-nested-virtualization-template-vm-using-script.md
         - name: Przygotowywanie maszyny wirtualnej szablonu z systemem Windows
           href: how-to-prepare-windows-template.md
+        - name: Sterowanie zachowaniem zamykania systemu Windows
+          href: how-to-windows-shutdown.md
         - name: Wyświetlanie informacji o pomocy technicznej (instruktor)
           href: lab-creator-support-information.md
     - name: Łączenie się z maszynami wirtualnymi w laboratoriach na potrzeby zajęć (uczeń)
