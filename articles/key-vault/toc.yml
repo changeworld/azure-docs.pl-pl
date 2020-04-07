@@ -75,6 +75,8 @@
           href: overview-security.md
         - name: Punkt odniesienia zabezpieczeń
           href: security-baseline.md
+        - name: Wbudowane zabezpieczenia
+          href: key-vault-security-controls.md
         - name: Środowiska zabezpieczeń
           href: key-vault-ovw-security-worlds.md
         - name: Zabezpieczanie własnego magazynu kluczy

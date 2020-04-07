@@ -77,6 +77,8 @@
           href: troubleshoot-guide-critical-process-died.md
         - name: Niepowodzenie usługi o znaczeniu krytycznym
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: Maszyna wirtualna nie odpowiada podczas stosowania zasad dotyczących użytkowników i grup lokalnych
+          href: troubleshoot-vm-unresponsive-group-policy-local-users.md
         - name: To nie jest dysk rozruchowy
           href: troubleshoot-guide-not-bootable-disk.md
         - name: Ponowne uruchamianie pętli
@@ -87,6 +89,8 @@
           href: troubleshoot-vm-boot-configure-update.md
         - name: Nie można uruchomić maszyny wirtualnej ze względu na menedżera rozruchu systemu Windows
           href: troubleshoot-guide-windows-boot-manager-menu.md
+        - name: Maszyna wirtualna nie odpowiada z powodu aktualizacji
+          href: unresponsive-vm-apply-windows-update.md
 - name: Nie można nawiązać połączenia z maszyną wirtualną
   items:
     - name: RDP

@@ -7,6 +7,8 @@
       href: what-is-application-management.md
     - name: Co to jest serwer proxy aplikacji dla aplikacji lokalnych?
       href: what-is-application-proxy.md
+    - name: Typowe scenariusze zarządzania aplikacjami
+      href: common-scenarios.md
     - name: Co to jest aprowizowanie aplikacji?
       href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: Przewodniki Szybki start

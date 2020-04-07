@@ -456,8 +456,6 @@
           href: speech-sdk.md
         - name: Dostępność scenariusza
           href: scenario-availability.md
-        - name: Dostarczanie aplikacji
-          href: ship-application.md
     - name: Szybki start
       items:
         - name: Konfigurowanie zestawu SDK usługi Mowa
@@ -472,6 +470,9 @@
         - name: Konfigurowanie biblioteki OpenSSL dla systemu Linux
           displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
           href: how-to-configure-openssl-linux.md
+        - name: Konfigurowanie systemu RHEL/CentOS 7
+          href: how-to-configure-rhel-centos-7.md
+          displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentOS'
     - name: Samples
       items:
         - name: Przykłady dla zestawu SDK usługi Mowa (GitHub)

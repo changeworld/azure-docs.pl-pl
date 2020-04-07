@@ -18,6 +18,14 @@
       items:
         - name: Zapora aplikacji internetowej w usłudze Azure CDN
           href: ./cdn/cdn-overview.md
+- name: Przewodniki Szybki start
+  expanded: true
+  items:
+    - name: Application Gateway
+      items:
+        - name: Wdrażanie zapory aplikacji internetowej w wersji 2 — szablon usługi Resource Manager
+          displayName: Resource Manager
+          href: ./ag/quick-create-template.md
 - name: Samouczki
   items:
     - name: Application Gateway

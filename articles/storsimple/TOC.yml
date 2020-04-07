@@ -87,7 +87,7 @@
           href: storsimple-ova-web-ui-admin.md
     - name: Informacje o wersji
       items:
-        - name: Aktualizacja 1.2
+        - name: Aktualizacja Update 1.2 — bieżąca
           href: storsimple-virtual-array-update-12-release-notes.md
         - name: Aktualizacja 1.1
           href: storsimple-virtual-array-update-11-release-notes.md
@@ -316,6 +316,8 @@
           items:
             - name: Subskrypcje i konta magazynu
               href: storsimple-8000-migrate-classic-azure-portal.md
+            - name: Z urządzeń serii 8000
+              href: storsimple-8000-migration-from-8000-options.md
             - name: Z urządzeń serii 5000/7000
               href: storsimple-8000-migration-options.md
               items:
@@ -327,13 +329,17 @@
               href: 'https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf'
         - name: Aktualizacja
           items:
-            - name: Instalowanie aktualizacji Update 5 — bieżącej
+            - name: Instalowanie aktualizacji Update 5.1 — bieżącej
+              href: storsimple-8000-install-update-51.md
+            - name: Instalowanie aktualizacji Update 5
               href: storsimple-8000-install-update-5.md
             - name: Instalowanie aktualizacji Update 4
               href: storsimple-8000-install-update-4.md
     - name: Informacje o wersji
       items:
-        - name: Aktualizacja Update 5 — bieżąca
+        - name: Aktualizacja Update 5.1 — bieżąca
+          href: storsimple-update51-release-notes.md
+        - name: Aktualizacja Update 5
           href: storsimple-update5-release-notes.md
         - name: Update 4
           href: storsimple-update4-release-notes.md

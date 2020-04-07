@@ -193,10 +193,10 @@
       href: luis-how-to-publish-app.md
     - name: Zarządzanie aplikacją
       items:
-        - name: Tworzenie i klucze środowiska uruchomieniowego
+        - name: Zasoby platformy Azure
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
-        - name: Migrowanie do klucza tworzenia
+        - name: Migrowanie do zasobu tworzenia
           items:
             - name: Omówienie
               href: luis-migration-authoring.md
