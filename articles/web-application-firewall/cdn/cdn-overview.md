@@ -7,19 +7,19 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 559ce4d1500dc5f1b67a3b3dbdbeb5d8dda7e487
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79485853"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754282"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Zapora aplikacji sieci Web platformy Azure w sieci dostarczania zawartości platformy Azure
 
-Zapora aplikacji sieci Web platformy Azure (WAF) w usłudze Azure Content Delivery Network (CDN) zapewnia scentralizowaną ochronę zawartości sieci Web. WAF chroni twoje usługi internetowe przed typowymi exploitami i lukami w zabezpieczeniach. Zapewnia wysoką dostęp do usługi dla użytkowników i pomaga spełnić wymagania dotyczące zgodności.
+Zapora aplikacji sieci Web azure (WAF) w usłudze Azure Content Delivery Network (CDN) firmy Microsoft zapewnia scentralizowaną ochronę zawartości sieci Web. WAF chroni twoje usługi internetowe przed typowymi exploitami i lukami w zabezpieczeniach. Zapewnia wysoką dostęp do usługi dla użytkowników i pomaga spełnić wymagania dotyczące zgodności.
 
 > [!IMPORTANT]
-> Usługa WAF na platformie Azure CDN jest obecnie w publicznej wersji zapoznawczej i jest dostarczana z umową dotyczącą poziomu usług w wersji zapoznawczej. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.  Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> WAF na platformie Azure CDN firmy Microsoft jest obecnie w publicznej wersji zapoznawczej i jest dostarczany z umową dotyczącą poziomu usługi w wersji zapoznawczej. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.  Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Usługa WAF na platformie Azure CDN to globalne i scentralizowane rozwiązanie. Jest wdrażany w lokalizacjach brzegowych sieci platformy Azure na całym świecie. WAF zatrzymuje złośliwe ataki w pobliżu źródeł ataku, zanim dotrą do twojego pochodzenia. Otrzymujesz globalną ochronę na dużą skalę bez utraty wydajności. 
 

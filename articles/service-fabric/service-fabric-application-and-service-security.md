@@ -3,12 +3,12 @@ title: Dowiedz się więcej o zabezpieczeniach aplikacji usługi Azure Service F
 description: Omówienie sposobu bezpiecznego uruchamiania aplikacji mikrousług w sieci szkieletowej usług. Dowiedz się, jak uruchamiać usługi i skrypt startowy na różnych kontach zabezpieczeń, uwierzytelniać i autoryzować użytkowników, zarządzać wpisami tajnymi aplikacji, bezpieczną komunikacją usługi, używać bramy interfejsu API i zabezpieczać dane aplikacji w spoczynku.
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9b4a1209838bdd5eee401b0defb01839b5cf684
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452250"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756241"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Zabezpieczenia aplikacji i usług sieci szkieletowej usług
 Architektura mikrousług może przynieść [wiele korzyści.](service-fabric-overview-microservices.md) Zarządzanie zabezpieczeniami mikrousług jest jednak wyzwaniem i różni się od zarządzania zabezpieczeniami tradycyjnych aplikacji monolitycznych. 
@@ -20,7 +20,7 @@ Ten artykuł nie jest przewodnikiem po zabezpieczeniach mikrousług, istnieje wi
 ## <a name="authentication-and-authorization"></a>Uwierzytelnianie i autoryzacja
 Często jest konieczne, aby zasoby i interfejsy API udostępniane przez usługę były ograniczone do niektórych zaufanych użytkowników lub klientów. Uwierzytelnianie to proces niezawodnego ustalania tożsamości użytkownika.  Autoryzacja to proces, który udostępnia interfejsy API lub usługi niektórym uwierzytelnionym użytkownikom, ale nie innym.
 
-### <a name="authentication"></a>Uwierzytelnianie
+### <a name="authentication"></a>Authentication
 Pierwszym krokiem do podejmowania decyzji zaufania na poziomie interfejsu API jest uwierzytelnianie. Uwierzytelnianie to proces niezawodnego ustalania tożsamości użytkownika.  W scenariuszach mikrousług uwierzytelnianie jest zazwyczaj obsługiwane centralnie. Jeśli używasz bramy interfejsu API, można [odciążyć uwierzytelnianie](/azure/architecture/patterns/gateway-offloading) do bramy. Jeśli używasz tej metody, upewnij się, że poszczególne usługi nie można uzyskać bezpośrednio (bez bramy interfejsu API), chyba że dodatkowe zabezpieczenia są w miejscu do uwierzytelniania wiadomości, czy pochodzą one z bramy, czy nie.
 
 Jeśli usługi są dostępne bezpośrednio, usługa uwierzytelniania, takich jak azure active directory lub dedykowane mikrousługi uwierzytelniania działające jako usługa tokenu zabezpieczającego (STS) może służyć do uwierzytelniania użytkowników. Decyzje dotyczące zaufania są współużytkowane przez usługi za pomocą tokenów zabezpieczających lub plików cookie. 
@@ -33,7 +33,7 @@ Po uwierzytelnieniu usługi muszą autoryzować dostęp użytkownika lub określ
 [ASP.NET Autoryzacja podstawowa](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications) może być wykonywana na podstawie ról użytkowników lub na podstawie zasad niestandardowych, które mogą obejmować inspekcję oświadczeń lub innych heurystyki.
 
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>Ograniczanie i bezpieczne uzyskiwanie dostępu przy użyciu bramy interfejsu API
-Aplikacje w chmurze zwykle potrzebują bramy frontonu, aby udostępniać pojedynczy punkt danych przychodzących dla użytkowników, urządzeń lub innych aplikacji. [Brama interfejsu API](/azure/architecture/microservices/gateway) znajduje się między klientami i usługami i jest punktem wejścia do wszystkich usług, które aplikacja jest dostarczana. Działa jako odwrotny serwer proxy, routingu żądań od klientów do usług. Może również wykonywać różne zadania przekrojowe, takie jak uwierzytelnianie i autoryzacja, zakończenie SSL i ograniczanie szybkości. Jeśli nie wdrożysz bramy, klienci muszą wysyłać żądania bezpośrednio do usług front-end.
+Aplikacje w chmurze zwykle potrzebują bramy frontonu, aby udostępniać pojedynczy punkt danych przychodzących dla użytkowników, urządzeń lub innych aplikacji. [Brama interfejsu API](/azure/architecture/microservices/gateway) znajduje się między klientami i usługami i jest punktem wejścia do wszystkich usług, które aplikacja jest dostarczana. Działa jako odwrotny serwer proxy, routingu żądań od klientów do usług. Może również wykonywać różne zadania przekrojowe, takie jak uwierzytelnianie i autoryzacja, zakończenie TLS i ograniczanie szybkości. Jeśli nie wdrożysz bramy, klienci muszą wysyłać żądania bezpośrednio do usług front-end.
 
 W sieci szkieletowej usług brama może być dowolną usługą bezstanową, taką jak [aplikacja ASP.NET Core,](service-fabric-reliable-services-communication-aspnetcore.md)lub inną usługą przeznaczoną do transferu danych przychodzących, taką jak [Traefik](https://docs.traefik.io/), [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT Hub](https://docs.microsoft.com/azure/iot-hub/)lub Azure API [Management](https://docs.microsoft.com/azure/api-management).
 

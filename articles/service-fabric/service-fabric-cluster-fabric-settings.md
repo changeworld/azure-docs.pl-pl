@@ -3,12 +3,12 @@ title: Zmienianie ustawień klastra sieci szkieletowej usług Azure
 description: W tym artykule opisano ustawienia sieci szkieletowej i zasady uaktualniania sieci szkieletowej, które można dostosować.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 8ca40791e625f1ea5904c4e2516e3f211ba551cf
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 3eb558c7d0745ada43696fd4189a7ac663867849
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477898"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80753980"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosowywanie ustawień klastra usługi Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej klastra sieci szkieletowej usług, które można dostosować. W przypadku klastrów hostowanych na platformie Azure można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Uaktualnianie konfiguracji klastra platformy Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych można dostosować ustawienia, aktualizując plik *ClusterConfig.json* i wykonując uaktualnienie konfiguracji w klastrze. Aby uzyskać więcej informacji, zobacz [Uaktualnianie konfiguracji autonomicznego klastra](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -29,7 +29,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |Rozmiar bodyChunkSize |Uint, wartość domyślna to 16384 |Dynamiczny| Podaje rozmiar fragmentu w bajtach używanych do odczytu treści. |
 |Żużel w crlchecking|uint, domyślnie jest 0x40000000 |Dynamiczny| Flagi do sprawdzania poprawności łańcucha certyfikatów aplikacji/usługi; na przykład sprawdzanie crl 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY Ustawienie 0 wyłącza sprawdzanie CRL Pełna lista obsługiwanych wartości jest udokumentowana przez dwFlags certGetCertificateChain:https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |Domyślny limit czasuhttprequest |Czas w sekundach. domyślnie wynosi 120 |Dynamiczny|Określ czas w sekundach.  Daje domyślny limit czasu żądania dla żądań http przetwarzanych w bramie aplikacji http. |
-|Certyfikat ForwardClientCertificate|bool, domyślnie jest FALSE|Dynamiczny|Po ustawieniu na false, reverse proxy nie zażąda certyfikatu klienta. Po ustawieniu na wartość true, reverse proxy zażąda certyfikatu klienta podczas uzgadniania SSL i przekazuje ciąg formatu PEM zakodowany base64 do usługi w nagłówku o nazwie X-Client-Certificate.Usługa może zakończyć się niepowodzeniem żądania z odpowiednim kodem stanu po sprawdzeniu danych certyfikatu. Jeśli jest to prawda, a klient nie przedstawia certyfikatu, odwrócony serwer proxy prześli pusty nagłówek i pozwoli serwisowi obsłużyć sprawę. Odwrócony serwer proxy będzie działał jako warstwa przezroczysta. Aby dowiedzieć się więcej, zobacz [Konfigurowanie uwierzytelniania certyfikatów klienta](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
+|Certyfikat ForwardClientCertificate|bool, domyślnie jest FALSE|Dynamiczny|Po ustawieniu na false, reverse proxy nie zażąda certyfikatu klienta. Po ustawieniu na wartość true, reverse proxy zażąda certyfikatu klienta podczas uzgadniania TLS i przekazuje ciąg formatu PEM zakodowanego base64 do usługi w nagłówku o nazwie X-Client-Certificate.Usługa może zakończyć się niepowodzeniem żądania z odpowiednim kodem stanu po sprawdzeniu danych certyfikatu. Jeśli jest to prawda, a klient nie przedstawia certyfikatu, odwrócony serwer proxy prześli pusty nagłówek i pozwoli serwisowi obsłużyć sprawę. Odwrócony serwer proxy będzie działał jako warstwa przezroczysta. Aby dowiedzieć się więcej, zobacz [Konfigurowanie uwierzytelniania certyfikatów klienta](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
 |GatewayAuthCredentialType |ciąg, domyślnie jest "Brak" |Statyczny| Wskazuje typ poświadczeń zabezpieczeń do użycia w punkcie końcowym bramy aplikacji http Prawidłowe wartości to Brak/X509. |
 |GatewayX509CertificateFindType |ciąg, domyślnie jest "FindByThumbprint" |Dynamiczny| Wskazuje sposób wyszukiwania certyfikatu w magazynie określonym przez GatewayX509CertificateStoreName obsługiwana wartość: FindByThumbprint; ZnajdźNazjectName. |
 |GatewayX509CertificateFindValue | ciąg, domyślnie jest "" |Dynamiczny| Wartość filtru wyszukiwania używana do lokalizowania certyfikatu bramy aplikacji http. Ten certyfikat jest skonfigurowany w punkcie końcowym https i może również służyć do weryfikacji tożsamości aplikacji, jeśli jest to potrzebne przez usługi. Najpierw wyszukuje się wartość FindValue; a jeśli tak nie jest; FindValueSecondary jest spojrzał w górę. |
@@ -832,7 +832,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 | --- | --- | --- | --- |
 |Propertygroup|X509NameMap, domyślnie jest Brak|Dynamiczny|Jest to lista pary "Nazwa" i "Wartość". Każda "Nazwa" ma nazwę pospolitą podmiotu lub DnsName certyfikatów X509 autoryzowanych do operacji serwera. Dla danej "Nazwa", "Wartość" jest przecinek oddzielna lista odcisków palców certyfikatu dla przypinania wystawcy, jeśli nie jest pusty, bezpośredni wystawca certyfikatów serwera musi znajdować się na liście.|
 
-## <a name="setup"></a>Konfiguracja
+## <a name="setup"></a>Konfigurowanie
 
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |

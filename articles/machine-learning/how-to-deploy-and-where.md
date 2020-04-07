@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: f6bab532b872a0974993f708edcb252d8bb54432
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 3fe13dcb35e6985d160f52b7ee3f9da4accd7806
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529709"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756669"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Wdrażanie modeli za pomocą usługi Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -1121,6 +1121,16 @@ def run(request):
 > ```shell
 > pip install azureml-contrib-services
 > ```
+
+Klasa `AMLRequest` umożliwia dostęp tylko do nieprzetworzonych opublikowanych danych w score.py, nie ma składnika po stronie klienta. Od klienta publikujesz dane w zwykły sposób. Na przykład następujący kod języka Python odczytuje plik obrazu i publikuje dane:
+
+```python
+import requests
+# Load image data
+data = open('example.jpg', 'rb').read()
+# Post raw data to scoring URI
+res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
+```
 
 <a id="cors"></a>
 

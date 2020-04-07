@@ -4,12 +4,12 @@ description: Podsumowuje obsługę odzyskiwania po awarii maszyn wirtualnych pla
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: 0b4a654093e0842e66e1f8b0924edfa6c9c215e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f61f32ddc0a1cc6575907bc72522228b77552947
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276652"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673802"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Macierz pomocy technicznej dla odzyskiwania po awarii maszyny Wirtualnej platformy Azure między regionami platformy Azure
 
@@ -18,12 +18,12 @@ W tym artykule podsumowano pomoc techniczną i wymagania wstępne dotyczące odz
 
 ## <a name="deployment-method-support"></a>Obsługa metod wdrażania
 
-**wdrażania** |  **Pomoc techniczna**
+**Wdrożenie** |  **Pomoc techniczna**
 --- | ---
-**Portal Azure** | Obsługiwane.
-**Powershell** | Obsługiwane. [Dowiedz się więcej](azure-to-azure-powershell.md)
-**INTERFEJS API ODPOCZYNKU** | Obsługiwane.
-**Cli** | Nie jest obecnie obsługiwana.
+**Azure Portal** | Obsługiwane.
+**PowerShell** | Obsługiwane. [Dowiedz się więcej](azure-to-azure-powershell.md)
+**Interfejs API REST** | Obsługiwane.
+**Interfejs wiersza polecenia** | Nie jest obecnie obsługiwana.
 
 
 ## <a name="resource-support"></a>Pomoc techniczna dla zasobów
@@ -36,7 +36,7 @@ W tym artykule podsumowano pomoc techniczną i wymagania wstępne dotyczące odz
 **Migrowanie maszyn wirtualnych między regionami w obsługiwanych klastrach geograficznych (w ramach subskrypcji i między subskrypcjami)** | Obsługiwane w ramach tej samej dzierżawy usługi Azure Active Directory.
 **Migrowanie maszyn wirtualnych w tym samym regionie** | Bez pomocy technicznej.
 
-## <a name="region-support"></a>Wsparcie regionu
+## <a name="region-support"></a>Obsługa regionów
 
 Maszyny wirtualne można replikować i odzyskiwać między dowolnymi dwoma regionami w obrębie tego samego klastra geograficznego. Klastry geograficzne są zdefiniowane, pamiętając o opóźnieniu i suwerenności danych.
 
@@ -44,13 +44,13 @@ Maszyny wirtualne można replikować i odzyskiwać między dowolnymi dwoma regio
 **Klaster geograficzny** | **Regiony platformy Azure**
 -- | --
 Ameryce | Kanada Wschodnia, Kanada Środkowe, Południowo-Środkowe STANY USA, Środkowe Stany Zjednoczone, Wschodnie stany USA, Wschodnie stany USA 2, Zachodnie stany USA, Zachodnie stany USA 2, Środkowe stany USA, Północno-Środkowe stany USA
-Europa | Wielka Brytania Zachodnia, Wielka Brytania Południowa, Europa Północna, Europa Zachodnia, Francja Środkowa, Francja Południowa, Republika Południowej Afryki Zachód, Republika Południowej Afryki Północ, Norwegia Wschodnia, Norwegia Zachodnia
-Azja | Indie Południowe, Indie Środkowe, Indie Zachodnie, Azja Południowo-Wschodnia, Azja Wschodnia, Japonia Wschodnia, Japonia Zachodnia, Korea Środkowa, Korea Południowa, Zjednoczone Emiraty Zjednoczone Emiraty Zjednoczone Emiraty Zjednoczone Emiraty Zjednoczone Emiraty Zjednoczone Ameryki Północnej
+Europa | Wielka Brytania Zachodnia, Wielka Brytania Południowa, Europa Północna, Europa Zachodnia, Republika Południowej Afryki Zachód, Republika Południowej Afryki Północ, Norwegia Wschodnia, Norwegia Zachodnia
+Azja | Indie Południowe, Indie Środkowe, Indie Zachodnie, Azja Południowo-Wschodnia, Azja Wschodnia, Japonia Wschodnia, Japonia Zachodnia, Korea Środkowa, Korea Południowa
 Australia    | Australia Wschodnia, Australia Południowo-Wschodnia, Australia Środkowa, Australia Środkowa 2
 Azure Government    | US GOV Virginia, US GOV Iowa, US GOV Arizona, US GOV Texas, US DOD East, US DOD Central
 Niemcy    | Niemcy Środkowe, Niemcy Północno-Wschodnie
 Chiny | Chiny Wschodnie, Chiny Północne, Chiny Północne2, Chiny Wschodnie2
-Regiony ograniczone zarezerwowane do odzyskiwania po awarii w kraju |Niemcy Północ zastrzeżone dla Niemiec Środkowo-Wschodnie, Szwajcaria Zachód zarezerwowane dla Szwajcarii Północnej, Francja Południowa zarezerwowane dla klientów France Central
+Regiony ograniczone zarezerwowane do odzyskiwania po awarii w kraju |Niemcy Północ zastrzeżone dla Niemiec Środkowo-Wschodnie, Szwajcaria Zachód zarezerwowane dla Szwajcarii Północnej, Francja Południowa zarezerwowane dla France Central, ZEA Central ograniczone dla klientów ZEA North
 
 >[!NOTE]
 >

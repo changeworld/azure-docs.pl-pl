@@ -3,16 +3,16 @@ title: Najczęstsze zastosowania analizy kosztów w usłudze Azure Cost Manageme
 description: W tym artykule wyjaśniono, jak uzyskać wyniki dla typowych zadań analizy kosztów w usłudze Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/21/2020
+ms.date: 03/31/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 901f271ac401cb985e59c434b9e6d7f8db03889f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a333cad51e6fc089e7e6994c7b89210b12686cd5
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203104"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520876"
 ---
 # <a name="common-cost-analysis-uses"></a>Najczęstsze zastosowania analizy kosztów
 
@@ -26,7 +26,7 @@ Wyświetlanie kosztów według usługi platformy Azure może pomóc w lepszym zr
 1. Wybierz pozycję **Koszt według usługi**, a następnie grupuj według **warstwy usług**.
 1. Zmień widok na **Tabela**.
 
-![Podział kosztów według usługi platformy Azure](./media/cost-analysis-common-uses/breakdown-by-service.png)
+[![Podział kosztów według usługi platformy Azure](./media/cost-analysis-common-uses/breakdown-by-service.png)](./media/cost-analysis-common-uses/breakdown-by-service.png#lightbox)
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>Wyświetlanie podziału kosztów według zasobu platformy Azure
 
@@ -36,7 +36,7 @@ Usługi są tworzone za pomocą zasobów platformy Azure. Przeglądanie kosztów
 1. Wybierz pozycję **Koszt według zasobu**.
 1. Zmień widok na **Tabela**.
 
-![Wyświetlanie podziału kosztów według zasobu platformy Azure](./media/cost-analysis-common-uses/cost-by-resource.png)
+[![Wyświetlanie podziału kosztów według zasobu platformy Azure](./media/cost-analysis-common-uses/cost-by-resource.png)](./media/cost-analysis-common-uses/cost-by-resource.png#lightbox)
 
 ## <a name="view-cost-breakdown-by-selected-dimensions"></a>Wyświetlanie podziału kosztów według wybranych wymiarów
 
@@ -44,19 +44,70 @@ Wymiary umożliwiają organizowanie kosztów w oparciu o różne wartości metad
 
 1. W witrynie Azure Portal przejdź do analizy kosztów dla swojego zakresu. Przykład: **Zarządzanie kosztami i rozliczenia** > **Zarządzanie kosztami** > **Analiza kosztów**.
 1. Wybierz filtr **Grupuj według**.  
-    ![Wybierz pozycję Grupuj według elementu](./media/cost-analysis-common-uses/group-by.png)
+    [![Wybierz pozycję Grupuj według elementu](./media/cost-analysis-common-uses/group-by.png)](./media/cost-analysis-common-uses/group-by.png#lightbox)
 1. Opcjonalnie zapisz widok do późniejszego użycia.
 1. Kliknij wykres kołowy pod wykresem, aby wyświetlić bardziej szczegółowe dane.  
-    ![Wyświetlanie podziału kosztów według wybranych wymiarów](./media/cost-analysis-common-uses/drill-down.png)
+    [![Wyświetlanie podziału kosztów według wybranych wymiarów](./media/cost-analysis-common-uses/drill-down.png)](./media/cost-analysis-common-uses/drill-down.png#lightbox)
 
 ## <a name="view-costs-per-day-or-by-month"></a>Wyświetlanie kosztów w rozbiciu dziennym i miesięcznym
 
-Analiza dziennych i miesięcznych kosztów może pomóc lepiej zrozumieć, czy istnieją części tygodnia lub roku, kiedy koszty są wyższe. Jeśli notujesz większy ruch klientów w okresie świątecznym, czy przekłada się to na wzrost kosztów platformy Azure? Czy piątek jest bardziej kosztowny od poniedziałku?
+Analiza dziennych i miesięcznych kosztów może ułatwić określenie, czy istnieją części tygodnia lub roku, kiedy koszty są wyższe. Jeśli notujesz większy ruch klientów w okresie świątecznym, czy przekłada się to na wzrost kosztów platformy Azure? Czy piątek jest bardziej kosztowny od poniedziałku?
 
 1. W witrynie Azure Portal przejdź do analizy kosztów dla swojego zakresu. Przykład: **Zarządzanie kosztami i rozliczenia** > **Zarządzanie kosztami** > **Analiza kosztów**.
 1. Ustaw **Poziom szczegółowości** na **Miesięczny** lub **Dzienny**.
 
-![Wyświetlanie kosztów w rozbiciu dziennym](./media/cost-analysis-common-uses/daily-granularity.png)
+[![Wyświetlanie kosztów w rozbiciu dziennym](./media/cost-analysis-common-uses/daily-granularity.png)](./media/cost-analysis-common-uses/daily-granularity.png#lightbox)
+
+
+## <a name="view-your-spot-vm-charges"></a>Wyświetlanie opłat za maszynę wirtualną typu spot
+
+Maszyny wirtualne typu spot mogą zapewnić duże oszczędności w przypadku obciążeń, które obsługują przerwy. Obciążenia są uruchamiane w ramach nieużywanej pojemności platformy Azure. Ze względu na to, że maszyny wirtualne typu spot mogą zostać wykluczone w dowolnym momencie, są one dostępne ze znacznym rabatem. Użyj następujących kroków, aby wyświetlić swoje opłaty za maszyny wirtualne typu spot.
+
+1. W witrynie Azure Portal przejdź do analizy kosztów dla swojego zakresu. Na przykład **Zarządzanie kosztami i rozliczenia** > **Zarządzanie kosztami** > **Analiza kosztów**.
+2. Dodaj filtr **Model cen: Spot**.
+
+![Przykład przedstawiający filtr maszyn wirtualnych typu spot](./media/cost-analysis-common-uses/spot-vm-filter.png)
+
+Wymiar Model cen jest także używany do wyświetlania opłat za zasoby na żądanie i rezerwacje.
+
+## <a name="view-your-reservation-charges"></a>Wyświetlanie opłat związanych z rezerwacją
+
+Wystąpienia zarezerwowane umożliwiają oszczędności finansowe na platformie Azure. Rezerwacja oznacza wydanie pieniędzy z góry za określoną ilość zasobów używanych w określonym czasie. Analiza kosztów pokazuje opłaty tak jak są one wyświetlane na rachunku. Opłaty są pokazywane jako koszty rzeczywiste lub amortyzowane w okresie rezerwacji.
+
+1. W witrynie Azure Portal przejdź do analizy kosztów dla swojego zakresu. Na przykład **Zarządzanie kosztami i rozliczenia** > **Zarządzanie kosztami** > **Analiza kosztów**.
+1. Dodaj filtr **Model cen: Rezerwacja**.
+1. W obszarze **Zakres** i obok wyświetlonego kosztu kliknij symbol strzałki w dół i wybierz metrykę **Koszt rzeczywisty** lub **Koszt amortyzowany**.
+
+![Wybieranie metryki kosztu](./media/cost-analysis-common-uses/metric-cost.png)
+
+Każda metryka wpływa na sposób wyświetlania danych dla opłat za rezerwację.
+
+**Koszt rzeczywisty** — pokazuje zakup tak jak jest on umieszczony na rachunku. Jeśli na przykład zakupiono jednoroczną rezerwację za 1200 USD w styczniu, analiza kosztów wykazuje dla rezerwacji koszt 1200 USD w stycznia. Nie pokazuje kosztu rezerwacji dla innych miesięcy roku. Jeśli pogrupujesz rzeczywiste koszty według maszyny wirtualnej, to maszyna wirtualna, która otrzymała korzyść rezerwacji w danym miesiącu, będzie mieć zerowy koszt dla danego miesiąca.
+
+**Koszt amortyzowany** — pokazuje zakup rezerwacji podzielony jako koszt amortyzowany na okres rezerwacji. Korzystając z tego samego przykładu, analiza kosztów przedstawia koszt 100 USD koszt dla każdego miesiąca w ciągu roku, jeśli zakupiono jednoroczną rezerwację za 1200 USD w styczniu. Jeśli pogrupujesz koszty według maszyny wirtualnej dla tego przykładu, zobaczysz koszt przypisany do każdej maszyny wirtualnej, która otrzymała korzyść rezerwacji.
+
+## <a name="view-your-reservation-utilization"></a>Wyświetlanie wykorzystania rezerwacji
+
+Po zakupieniu rezerwacji ważne jest, aby śledzić jej wykorzystanie, aby uzyskać to, za co się zapłaciło. Na przykład jeśli zakupiono 10 maszyn wirtualnych na rok i tylko pięć z nich będzie używanych, to połowa zakupu zostanie zmarnowana. Istnieją dwa różne sposoby oceny wykorzystania:
+
+### <a name="view-unused-ri-costs-in-cost-analysis"></a>Wyświetlanie kosztów nieużywanych wystąpień zarezerwowanych w analizie kosztów
+
+Aby określić, jaka kwota jest obecnie marnowana każdego miesiąca dla zakupu rezerwacji, wykonaj poniższe kroki.
+
+1. W witrynie Azure Portal przejdź do analizy kosztów dla zakresu, w którym zastosowano rezerwację. Na przykład **Zarządzanie kosztami i rozliczenia** > **Zarządzanie kosztami** > **Analiza kosztów**.
+1. Dodaj filtr **Model cen: Rezerwacja**.
+1. Wybierz widok **Koszt amortyzowany**.
+1. Ustaw poziom szczegółowości na wartość **Miesięczny**.
+1. Ustaw okres na bieżący rok lub termin rezerwacji.
+1. Ustaw typ wykresu na **Skumulowany kolumnowy**.
+1. Zgrupuj opłaty według pola **Typ opłaty**.
+1. Przejrzyj wyniki dla wartości `unusedreservation`.
+
+[![Obraz przedstawiający użycie rezerwacji](./media/cost-analysis-common-uses/view-reservation-cost.png)](./media/cost-analysis-common-uses/view-reservation-cost.png#lightbox)
+
+### <a name="view-utilization-in-reservations"></a>Wyświetlanie wykorzystania w obszarze Rezerwacje
+
+Aby uzyskać szczegółowe instrukcje, zobacz [Optymalizacja użycia rezerwacji](../reservations/manage-reserved-vm-instance.md#optimize-reservation-use).
 
 ## <a name="view-costs-for-a-specific-tag"></a>Wyświetlanie kosztów dla określonego tagu
 
@@ -67,7 +118,7 @@ Obsługa tagów dotyczy użycia zgłaszanego *po tym*, gdy tag został zastosowa
 1. W witrynie Azure Portal przejdź do analizy kosztów dla swojego zakresu. Przykład: **Zarządzanie kosztami i rozliczenia** > **Zarządzanie kosztami** > **Analiza kosztów**.
 1. Wybierz pozycję **Grupuj według** dla tagu.
 
-![Wyświetlanie kosztów dla określonego tagu](./media/cost-analysis-common-uses/tag.png)
+[![Wyświetlanie kosztów dla określonego tagu](./media/cost-analysis-common-uses/tag.png)](./media/cost-analysis-common-uses/tag.png#lightbox)
 
 ## <a name="download-your-usage-details"></a>Pobieranie szczegółowego zestawienia użycia
 
@@ -75,7 +126,7 @@ Plik raportu szczegółów użycia w formacie CSV zawiera podział wszystkich op
 
 1. W witrynie Azure Portal przejdź do karty **Użycie i opłaty** dla konta rozliczeniowego lub subskrypcji. Przykład: **Zarządzanie kosztami i rozliczenia** > **Rozliczenia** > **Użycie i opłaty**.
 1. Wybierz element wiersza do pobrania, a następnie kliknij symbol pobierania.  
-    ![Pobieranie użycia i opłat](./media/cost-analysis-common-uses/download1.png)
+    [![Pobieranie użycia i opłat](./media/cost-analysis-common-uses/download1.png)](./media/cost-analysis-common-uses/download1.png#lightbox)
 1.  Wybierz plik użycia, który chcesz pobrać.  
     ![Wybieranie pliku użycia do pobrania](./media/cost-analysis-common-uses/download2.png)
 
@@ -88,13 +139,13 @@ Koszty są wyświetlane tylko dla aktywnej rejestracji. W przypadku przeniesieni
 
 1. W witrynie Azure Portal przejdź do obszaru **Zarządzanie kosztami i rozliczenia** > **Omówienie**.
 1. Kliknij pozycję **Podział** dla bieżącego miesiąca i wyświetl podział zobowiązania pieniężnego.  
-    ![Przegląd kosztów umowy EA — podsumowanie z podziałem](./media/cost-analysis-common-uses/breakdown1.png)
+    [![Przegląd kosztów umowy EA — podsumowanie z podziałem](./media/cost-analysis-common-uses/breakdown1.png)](./media/cost-analysis-common-uses/breakdown1.png#lightbox)
 1.  Kliknij kartę **Użycie i opłaty** i wyświetl podział dla poprzedniego miesiąca w wybranym przedziale czasu.  
-    ![Karta Użycie i opłaty](./media/cost-analysis-common-uses/breakdown2.png)
+    [![Karta Użycie i opłaty](./media/cost-analysis-common-uses/breakdown2.png)](./media/cost-analysis-common-uses/breakdown2.png#lightbox)
 
 ## <a name="view-enrollment-monthly-cost-by-term"></a>Wyświetlanie miesięcznego kosztu rejestracji według okresu
 
-Skorzystaj z graficznego widoku miesięcznych kosztów rejestracji, aby zrozumieć trendy kosztowe i zafakturowane kwoty w danym okresie.
+Skorzystaj z graficznego widoku miesięcznych kosztów rejestracji, aby zrozumieć trendy kosztów i kwoty faktur w danym okresie.
 
 1. W witrynie Azure Portal przejdź do analizy kosztów dla swojego zakresu. Przykład: **Zarządzanie kosztami i rozliczenia** > **Zarządzanie kosztami** > **Analiza kosztów**.
 1. Wybierz rejestrację i ustaw okres rejestracji.
@@ -102,7 +153,7 @@ Skorzystaj z graficznego widoku miesięcznych kosztów rejestracji, aby zrozumie
 
 Można grupować i filtrować dane pod kątem ich bardziej szczegółowej analizy.
 
-![Miesięczny koszt rejestracji według okresu](./media/cost-analysis-common-uses/enrollment-term1.png)
+[![Miesięczny koszt rejestracji według okresu](./media/cost-analysis-common-uses/enrollment-term1.png)](./media/cost-analysis-common-uses/enrollment-term1.png#lightbox)
 
 ## <a name="view-ea-enrollment-accumulated-costs"></a>Wyświetlanie skumulowanych kosztów rejestracji w ramach umowy EA
 
@@ -111,7 +162,7 @@ Wyświetl łączne opłaty netto na przestrzeni czasu, aby poznać ogólne wydat
 1. W witrynie Azure Portal przejdź do analizy kosztów dla swojego zakresu. Przykład: **Zarządzanie kosztami i rozliczenia** > **Zarządzanie kosztami** > **Analiza kosztów**.
 1. Wybierz rejestrację, a następnie wyświetl bieżące skumulowane koszty.
 
-![Skumulowane koszty rejestracji](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
+[![Skumulowane koszty rejestracji](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)](./media/cost-analysis-common-uses/cost-analysis-enrollment.png#lightbox)
 
 ## <a name="next-steps"></a>Następne kroki
 - Jeśli pierwszy przewodnik Szybki start dla usługi Cost Management nie został jeszcze przez Ciebie ukończony, przeczytaj go w temacie [Rozpoczęcie analizowania kosztów](quick-acm-cost-analysis.md).

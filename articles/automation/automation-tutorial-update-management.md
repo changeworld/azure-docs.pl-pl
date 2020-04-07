@@ -4,14 +4,14 @@ description: Ten artykuł zawiera omówienie sposobu używania usługi Azure Aut
 services: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 03/04/2020
+ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: b5b03efafbed3439e5f8fdf98e2cd5b2d63a3d45
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 888dc99162551482afc715f1a793614d2c866384
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411044"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677033"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych platformy Azure
 
@@ -118,12 +118,12 @@ W obszarze **Nowe wdrożenie aktualizacji** podaj następujące informacje:
 
    |System operacyjny  |Typ  |
    |---------|---------|
-   |Windows     | Aktualizacje krytyczne</br>Aktualizacje zabezpieczeń</br>Pakiety zbiorcze aktualizacji</br>Pakiety funkcji</br>Dodatki Service Pack</br>Aktualizacje definicji</br>narzędzia</br>Aktualizacje<br>Sterownik        |
+   |Windows     | Aktualizacje krytyczne</br>Aktualizacje zabezpieczeń</br>Pakiety zbiorcze aktualizacji</br>Pakiety funkcji</br>Dodatki Service Pack</br>Aktualizacje definicji</br>Narzędzia</br>Aktualizacje<br>Sterownik        |
    |Linux     | Aktualizacje krytyczne i zabezpieczeń</br>Inne aktualizacje       |
 
    Aby uzyskać opisy typów klasyfikacji, zobacz [Aktualizowanie klasyfikacji](automation-view-update-assessments.md#update-classifications).
 
-* **Aktualizacje do uwzględnienia/wykluczenia** — otwiera stronę Dołącz/Wyklucz. Aktualizacje, które mają zostać uwzględnione lub wykluczone, znajdują się na osobnych kartach.
+* **Aktualizacje do uwzględnienia/wykluczenia** — otwiera stronę Dołącz/Wyklucz. Aktualizacje, które mają zostać uwzględnione lub wykluczone, znajdują się na oddzielnych kartach, określając numery identyfikatorów artykułu KB. Określając jeden lub więcej numerów identyfikatorów, należy usunąć lub odznakować wszystkie klasyfikacje za pomocą wdrożenia aktualizacji. Gwarantuje to, że żadne inne aktualizacje nie są zawarte w pakiecie aktualizacji podczas określania identyfikatorów aktualizacji.
 
 > [!NOTE]
 > Ważne jest, aby wiedzieć, że wykluczenia zastępują inkluzje. Na przykład, jeśli zdefiniujesz regułę wykluczenia `*`, Zarządzanie aktualizacjami nie instaluje żadnych poprawek ani pakietów, ponieważ wszystkie są wykluczone. Wykluczone poprawki nadal są wyświetlane jako brakujące w maszynie. W przypadku komputerów z systemem Linux jeśli zostanie dołączyć pakiet, który ma pakiet zależny, który został wykluczony, zarządzanie aktualizacjami nie instaluje pakietu głównego.

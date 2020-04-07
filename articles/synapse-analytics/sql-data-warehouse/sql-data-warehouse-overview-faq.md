@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9ce87bac6fbcc3833684dc540c542bc14c9b4955
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: dcefe6a6144c9a8f9c6ab7daf5b34b2d81a73c3f
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586528"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743004"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Usługa Azure Synapse Analytics (dawniej SQL DW) Często zadawane pytania
 
@@ -35,7 +35,7 @@ A. Pula SQL synapse odnosi się do funkcji magazynowania danych przedsiębiorstw
 
 PYTANIE: Jak rozpocząć korzystanie z usługi Azure Synapse?
 
-A. Możesz rozpocząć pracę z [bezpłatnym kontem platformy Azure](https://azure.microsoft.com/free/sql-data-warehouse/) lub [skontaktować się ze sprzedażą, aby uzyskać więcej informacji.](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html) 
+A. Możesz rozpocząć pracę z [bezpłatnym kontem platformy Azure](https://azure.microsoft.com/free/sql-data-warehouse/) lub [skontaktować się ze sprzedażą, aby uzyskać więcej informacji.](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html)
 
 PYTANIE: Co oferuje usługa Azure Synapse w zakresie bezpieczeństwa danych?
 
@@ -43,7 +43,8 @@ A. Usługa Azure Synapse oferuje kilka rozwiązań do ochrony danych, takich jak
 
 PYTANIE: Gdzie mogę dowiedzieć się, z jakimi standardami prawnymi lub biznesowymi usługa Azure Synapse jest zgodna z normą?
 
-A. Odwiedź stronę [Zgodności firmy Microsoft, aby](https://www.microsoft.com/trustcenter/compliance/complianceofferings) uzyskać różne oferty zgodności według produktów, takich jak SOC i ISO. Najpierw wybierz według tytułu zgodności. Następnie rozwiń platformę Azure w sekcji usługi w chmurze firmy Microsoft po prawej stronie strony, aby zobaczyć, jakie usługi są zgodne z usługą Azure Synapse.
+A. Odwiedź stronę [Zgodności firmy Microsoft, aby](https://www.microsoft.com/trustcenter/compliance/complianceofferings) uzyskać różne oferty zgodności według produktów, takich jak SOC i ISO.
+Najpierw wybierz według tytułu zgodności. Następnie rozwiń platformę Azure w sekcji usługi w chmurze firmy Microsoft po prawej stronie strony, aby zobaczyć, jakie usługi są zgodne z usługą Azure Synapse.
 
 PYTANIE: Czy mogę podłączyć program Power BI?
 
@@ -51,7 +52,7 @@ A. Tak! Chociaż usługa Power BI obsługuje bezpośrednie zapytanie za pomocą 
 
 PYTANIE: Co to są limity pojemności puli synapse SQL?
 
-A. Zobacz naszą aktualną stronę [limitów pojemności.](sql-data-warehouse-service-capacity-limits.md) 
+A. Zobacz naszą aktualną stronę [limitów pojemności.](sql-data-warehouse-service-capacity-limits.md)
 
 PYTANIE: Dlaczego moje skalowanie/pauza/wznawianie trwa tak długo?
 
@@ -65,13 +66,13 @@ A. Jeśli masz prośbę o funkcję, prześlij ją na naszą stronę [UserVoice](
 
 PYTANIE: Jak mogę zrobić x?
 
-A. Aby uzyskać pomoc dotyczącą tworzenia za pomocą usługi Azure Synapse, możesz zadawać pytania na naszej stronie [Przepełnienie stosu.](https://stackoverflow.com/questions/tagged/azure-sqldw) 
+A. Aby uzyskać pomoc dotyczącą tworzenia za pomocą usługi Azure Synapse, możesz zadawać pytania na naszej stronie [Przepełnienie stosu.](https://stackoverflow.com/questions/tagged/azure-sqldw)
 
 PYTANIE: Jak przesłać zgłoszenie do pomocy technicznej?
 
 A. [Bilety pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) można składać za pośrednictwem witryny Azure portal.
 
-## <a name="sql-languagefeature-support"></a>Obsługa języka/funkcji SQL 
+## <a name="sql-languagefeature-support"></a>Obsługa języka/funkcji SQL
 
 PYTANIE: Jakie typy danych są obsługiwane?
 
@@ -85,7 +86,7 @@ A. Wiele funkcji są obsługiwane. Funkcje, które nie są obsługiwane, można 
 
 PYTANIE: Czy puli Synapse SQL obsługuje interfejsy API REST?
 
-A. Tak. Większość funkcji REST, które mogą być używane z bazy danych SQL jest również dostępna z puli Synapse SQL. Informacje o interfejsie API można znaleźć na stronach dokumentacji REST lub [MSDN](https://msdn.microsoft.com/library/azure/mt163685.aspx).
+A. Tak. Większość funkcji REST, które mogą być używane z bazy danych SQL jest również dostępna z puli Synapse SQL. Informacje o interfejsie API można znaleźć na stronach dokumentacji REST lub [bazach danych](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="loading"></a>Ładowania
 
@@ -97,17 +98,17 @@ Pyt.: Jakie formaty plików są obsługiwane przez PolyBase?
 
 O: Ork, RC, Parkiet i tekst z płaskim rozdzielanym
 
-Pyt.: Z jakimi źródłami danych można się połączyć przy użyciu Bazy PolyBase? 
+Pyt.: Z jakimi źródłami danych można się połączyć przy użyciu Bazy PolyBase?
 
 Odp.: [Usługa Azure Data Lake Storage](sql-data-warehouse-load-from-azure-data-lake-store.md) i obiekty [blob usługi Azure Storage](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 
-Pyt.: Czy możliwe jest przesunięcia w dół obliczeń podczas łączenia się z obiektami blob usługi Azure Storage lub ADLS? 
+Pyt.: Czy możliwe jest przesunięcia w dół obliczeń podczas łączenia się z obiektami blob usługi Azure Storage lub ADLS?
 
-Odp.: Nie, PolyBase współdziała tylko ze składnikami magazynu. 
+Odp.: Nie, PolyBase współdziała tylko ze składnikami magazynu.
 
 P: Czy mogę połączyć się z HDI?
 
-O: HDI może używać ADLS lub WASB jako warstwy HDFS. Jeśli masz jedną z warstw HDFS, możesz załadować te dane do puli SQL Synapse. Nie można jednak wygenerować obliczeń wypychania w dół do wystąpienia HDI. 
+O: HDI może używać ADLS lub WASB jako warstwy HDFS. Jeśli masz jedną z warstw HDFS, możesz załadować te dane do puli SQL Synapse. Nie można jednak wygenerować obliczeń wypychania w dół do wystąpienia HDI.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -3,12 +3,12 @@ title: Konfigurowanie raportów usługi Azure Backup
 description: Konfigurowanie i wyświetlanie raportów dla usługi Azure Backup przy użyciu usługi Log Analytics i skoroszytów platformy Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 497d70c1bcc577faa467720b959eb828e785a26a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78161205"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672664"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurowanie raportów usługi Azure Backup
 
@@ -21,7 +21,7 @@ Obecnie usługa Azure Backup udostępnia rozwiązanie do raportowania, które wy
 * Raporty kopii zapasowych są obsługiwane dla maszyn wirtualnych platformy Azure, SQL w maszynach wirtualnych platformy Azure, SAP HANA/ASE na maszynach wirtualnych platformy Azure, agenta azure backup agent (MARS), serwera kopii zapasowych Azure (MABS) i programu DPM centrum systemu.
 * W przypadku obciążeń programu DPM raporty kopii zapasowych są obsługiwane dla programu DPM w wersji 5.1.363.0 i wyższej oraz agenta w wersji 2.0.9127.0 i wyższej.
 * W przypadku obciążeń mabs raporty kopii zapasowych są obsługiwane dla systemu MABS w wersji 13.0.415.0 i wyższej oraz agenta w wersji 2.0.9170.0 i wyższej.
-* Raporty kopii zapasowej można wyświetlać we wszystkich elementach kopii zapasowej, magazynach, subskrypcjach i regionach, o ile ich dane są wysyłane do obszaru roboczego usługi Log Analytics (LA), do których użytkownik ma dostęp. 
+* Raporty kopii zapasowej można wyświetlać we wszystkich elementach kopii zapasowej, magazynach, subskrypcjach i regionach, o ile ich dane są wysyłane do obszaru roboczego usługi Log Analytics (LA), do których użytkownik ma dostęp. Należy zauważyć, że aby wyświetlić raporty dla zestawu magazynów, wystarczy mieć **dostęp czytelnika do obszaru roboczego LA Workspace,** do którego magazyny wysyłają swoje dane. **Nie musisz** mieć dostępu do poszczególnych magazynów.
 * Jeśli jesteś użytkownikiem [latarni morskiej platformy Azure](https://docs.microsoft.com/azure/lighthouse/) z delegowanym dostępem do subskrypcji klientów, możesz użyć tych raportów za pomocą latarni morskiej platformy Azure, aby wyświetlić raporty we wszystkich dzierżawach.
 * Dane dla zadań tworzenia kopii zapasowych dziennika nie są obecnie wyświetlane w raportach.
 

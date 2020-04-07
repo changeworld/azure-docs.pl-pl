@@ -3,16 +3,16 @@ title: Importowanie i eksportowanie planów za pomocą programu PowerShell
 description: Dowiedz się, jak pracować z definicjami planu jako kodem. Udostępniaj, kontroluj źródła i zarządzaj nimi za pomocą poleceń eksportu i importu.
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: fc7b9818072665d79deaf8a456868943e8428730
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873203"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677132"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Importowanie i eksportowanie definicji planu za pomocą programu PowerShell
 
-Plany platformy Azure można w pełni zarządzać za pośrednictwem witryny Azure portal. W miarę jak organizacje posuwają się naprzód w korzystaniu z planów, powinny zacząć myśleć o definicjach planu jako kodach zarządzanych. Ta koncepcja jest często określana jako infrastruktura jako kod (IaC). Traktowanie definicji planu jako kodu oferuje dodatkowe korzyści wykraczające poza to, co oferuje witryna Azure portal. Korzyści te obejmują:
+Plany platformy Azure można w pełni zarządzać za pośrednictwem witryny Azure portal. W miarę postępów organizacji w korzystaniu z planów platformy Azure, powinny zacząć myśleć o definicjach planu jako kod zarządzany. Ta koncepcja jest często określana jako infrastruktura jako kod (IaC). Traktowanie definicji planu jako kodu oferuje dodatkowe korzyści wykraczające poza to, co oferuje witryna Azure portal. Korzyści te obejmują:
 
 - Udostępnianie definicji planu
 - Tworzenie kopii zapasowej definicji planu

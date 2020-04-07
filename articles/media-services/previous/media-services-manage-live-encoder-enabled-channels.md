@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0569907537f91f7e84b8156dffa0f313461f6e1
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162535"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677017"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Transmisja strumieniowa na żywo korzystająca z usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji bitów
 
@@ -167,7 +167,7 @@ Kanał zawiera wejściowy punkt końcowy (adres URL pozyskiwania), który można
 
 Po utworzeniu kanału możesz uzyskać adresy URL pozyskiwania. Aby uzyskać te adresy URL, kanał nie musi być w stanie **uruchamiania.** Gdy wszystko będzie gotowe do rozpoczęcia wypychania danych do kanału, musi być w stanie **uruchamiania.** Po uruchomieniu kanału pozyskiwania danych można wyświetlić podgląd strumienia za pomocą adresu URL wersji zapoznawczej.
 
-Masz możliwość pozyskiwania fragmentarycznego mp4 (Smooth Streaming) strumień na żywo za połączenie SSL. Aby łowić ssl, upewnij się, że można zaktualizować adres URL pozyskiwania do protokołu HTTPS. Obecnie usługa AMS nie obsługuje ssl z domenami niestandardowymi.  
+Masz możliwość pozyskiwania fragmentarycznego mp4 (Smooth Streaming) strumień na żywo za połączenie TLS. Aby nalecieć za pośrednictwem protokołu TLS, należy zaktualizować adres URL pozyskiwania do protokołu HTTPS. Obecnie usługa AMS nie obsługuje protokołu TLS z domenami niestandardowymi.  
 
 ### <a name="allowed-ip-addresses"></a>Dozwolone adresy IP
 Można zdefiniować adresy IP, które mogą publikować wideo na tym kanale. Dozwolone adresy IP można określić jako pojedynczy adres IP (na przykład "10.0.0.1"), zakres ADRESÓW IP przy użyciu adresu IP i maski podsieci CIDR (na przykład "10.0.0.1/22") lub zakres IP przy użyciu adresu IP i kropkowanego podsieci dziesiętnej (na przykład '10.0.0.1(255.255.252.0)").
@@ -205,7 +205,7 @@ Możesz określić źródło sygnałów znaczników reklam. Wartością domyśln
 Opcjonalna flaga informująca kodera na żywo o ignorowaniu wszystkich danych podpisów CEA 708 osadzonych w przychodzącym filmie wideo. Gdy flaga jest ustawiona na false (domyślnie), koder wykryje i ponownie wstawi dane CEA 708 do strumieni wideo wyjściowych.
 
 #### <a name="index"></a>Indeks
-Zaleca się wysyłanie w jednym strumieniu transportu programu (SPTS). Jeśli strumień wejściowy zawiera wiele programów, koder na żywo w kanale analizuje tabelę map programu (PMT) w danych wejściowych, identyfikuje wejścia, które mają nazwę typu strumienia MPEG-2 AAC ADTS lub AC-3 System-A lub AC-3 System-B lub MPEG-2 Private PES lub MPEG-1 Audio lub MPEG-2 Audio i rozmieszcza je w kolejności określonej w PMT. Indeks oparty na wartości zero jest następnie używany do pobrania n-ty wpis w tym układzie.
+Zaleca się wysyłanie w jednym strumieniu transportu programu (SPTS). Jeśli strumień wejściowy zawiera wiele programów, koder na żywo w kanale analizuje tabelę map programu (PMT) na danych wejściowych, identyfikuje wejścia, które mają nazwę typu strumienia MPEG-2 AAC ADTS lub AC-3 System-A lub AC-3 System-B lub MPEG-2 Private PES lub MPEG-1 Audio lub MPEG-2 Audio i rozmieszcza je w kolejności określonej w PMT. Indeks oparty na wartości zero jest następnie używany do pobrania n-ty wpis w tym układzie.
 
 #### <a name="language"></a>Język
 Identyfikator języka strumienia audio, zgodny z normą ISO 639-2, na przykład ENG. Jeśli nie jest obecny, domyślnie jest UND (undefined).

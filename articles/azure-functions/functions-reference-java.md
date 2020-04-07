@@ -3,12 +3,12 @@ title: Odwołanie do dewelopera języka Java dla usług Azure Functions
 description: Dowiedz się, jak tworzyć funkcje za pomocą języka Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4af2a860657f6066112146e1f88d81861d9430ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b1f39ff4fd48a3ed99b34391e9cc6efdad86a5d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276753"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673002"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Przewodnik dla deweloperów języka Java w usłudze Azure Functions
 
@@ -16,7 +16,7 @@ ms.locfileid: "79276753"
 
 Jak to się dzieje w innych językach, aplikacja funkcji może mieć jedną lub więcej funkcji. Funkcja Java jest `public` metodą, ozdobioną adnotacją `@FunctionName`. Ta metoda definiuje wpis dla funkcji Java i musi być unikatowa w określonym pakiecie. Jedna aplikacja funkcji napisana w języku Java może mieć `@FunctionName`wiele klas z wieloma metodami publicznymi z adnotacją .
 
-W tym artykule założono, że zostały już odczytane [odwołanie dewelopera usługi Azure Functions.](functions-reference.md) Należy również ukończyć szybki start funkcji, aby utworzyć pierwszą funkcję, przy użyciu [programu Visual Studio Code](functions-create-first-function-vs-code.md) lub [Maven](functions-create-first-java-maven.md).
+W tym artykule założono, że zostały już odczytane [odwołanie dewelopera usługi Azure Functions.](functions-reference.md) Należy również ukończyć szybki start funkcji, aby utworzyć pierwszą funkcję, przy użyciu [programu Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) lub [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java).
 
 ## <a name="programming-model"></a>Model programowania 
 
@@ -30,7 +30,7 @@ Aby ułatwić tworzenie funkcji języka Java, istnieją narzędzia oparte na mav
 
 Następujące środowiska deweloperskie mają narzędzia usługi Azure Functions, które umożliwiają tworzenie projektów funkcji Java: 
 
-+ [Kod programu Visual Studio](https://code.visualstudio.com/docs/java/java-azurefunctions)
++ [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)
 + [Eclipse](functions-create-maven-eclipse.md)
 + [IntelliJ](functions-create-maven-intellij.md)
 
@@ -38,28 +38,31 @@ Powyższe łącza do artykułu pokazują, jak utworzyć pierwsze funkcje przy u�
 
 ### <a name="project-scaffolding"></a>Rusztowania projektu
 
-Jeśli wolisz tworzenie wiersza polecenia z terminala, najprostszym sposobem tworzenia projektów `Apache Maven` funkcji opartych na javie jest użycie archetypów. Obecnie istnieją dwa archetypy funkcji dla Maven:
+Jeśli wolisz tworzenie wiersza polecenia z terminala, najprostszym sposobem tworzenia projektów `Apache Maven` funkcji opartych na javie jest użycie archetypów. Archetyp Java Maven dla usług Azure Functions jest publikowany pod _następującym groupId:__artifactId_: [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
 
-+ **Archetype Java:** opublikowane w ramach następujących groupId i artifactId [com.microsoft.azure:azure-functions-archetype:](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/)
+Następujące polecenie generuje nowy projekt funkcji Java przy użyciu tego archetypu:
 
-    ```
-    mvn archetype:generate \
-        -DarchetypeGroupId=com.microsoft.azure \
-        -DarchetypeArtifactId=azure-functions-archetype 
-    ```
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-archetype 
+```
 
-    Aby rozpocząć korzystanie z tego archetypu, zobacz [szybki start języka Java](functions-create-first-java-maven.md). 
+Aby rozpocząć korzystanie z tego archetypu, zobacz [szybki start języka Java](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java). 
 
-+ **Archetyp Kotlin (wersja zapoznawcza)** opublikowany pod następującym groupId i artifactId [com.microsoft.azure:azure-functions-kotlin-archetype:](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/)
+## <a name="create-kotlin-functions-preview"></a>Tworzenie funkcji Kotlina (podgląd)
 
-    ```
-    mvn archetype:generate \
-        -DarchetypeGroupId=com.microsoft.azure \
-        -DarchetypeArtifactId=azure-functions-kotlin-archetype
-    ```
+Istnieje również archetyp Maven do generowania funkcji Kotlin. Ten archetyp, obecnie w wersji zapoznawczej, jest publikowany pod _następującym groupId:__artifactId_: [com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/). 
 
-Kod źródłowy tych archetypów można znaleźć w [repozytorium Azure Maven Archetypes GitHub.](https://github.com/microsoft/azure-maven-archetypes)
+Następujące polecenie generuje nowy projekt funkcji Java przy użyciu tego archetypu:
 
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-kotlin-archetype
+```
+
+Aby rozpocząć korzystanie z tego archetypu, zobacz [Szybki start kotlin](functions-create-first-kotlin-maven.md).
 
 ## <a name="folder-structure"></a>Struktura folderów
 
@@ -156,7 +159,7 @@ Funkcje umożliwiają dostosowanie maszyny wirtualnej Java (JVM) używanej do ur
 
 Dodatkowe argumenty można podać w `JAVA_OPTS`ustawieniach aplikacji o nazwie . Ustawienia aplikacji można dodać do aplikacji funkcji wdrożonej na platformie Azure w witrynie Azure portal lub interfejsu wiersza polecenia platformy Azure.
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Azure Portal
 
 W [witrynie Azure portal](https://portal.azure.com)użyj karty `JAVA_OPTS` Ustawienia [aplikacji,](functions-how-to-use-azure-function-app-settings.md#settings) aby dodać to ustawienie.
 

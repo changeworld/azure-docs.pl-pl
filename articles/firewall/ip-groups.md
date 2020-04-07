@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 74e5a427d62d5249ffe6b0426b62a3577e43462f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0638cbccd5e3bc282dbdd7d3b5918e29081a12b
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444487"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757165"
 ---
 # <a name="ip-groups-preview-in-azure-firewall"></a>Grupy IP (wersja zapoznawcza) w Zaporze platformy Azure
 
@@ -54,7 +54,7 @@ Możesz zobaczyć wszystkie adresy IP w grupie IP oraz reguły lub zasoby, któr
 
 1. Aby wyświetlić lub edytować adresy IP, wybierz pozycję **Adresy IP** w obszarze **Ustawienia** w lewym okienku.
 2. Aby dodać jeden lub wiele adresów IP, wybierz **pozycję Dodaj adresy IP**. Spowoduje to otwarcie strony **Przeciągnij lub Przejrzyj** w celu przesłania lub możesz wprowadzić adres ręcznie.
-3.  Wybranie elipsy (**...**) w prawo, aby edytować lub usunąć adresy IP. Aby edytować lub usunąć wiele adresów IP, zaznacz pola i wybierz pozycję **Edytuj** lub **Usuń** u góry.
+3.    Wybranie elipsy (**...**) w prawo, aby edytować lub usunąć adresy IP. Aby edytować lub usunąć wiele adresów IP, zaznacz pola i wybierz pozycję **Edytuj** lub **Usuń** u góry.
 4. Na koniec można wyeksportować plik w formacie CSV.
 
 > [!NOTE]
@@ -72,24 +72,47 @@ Podczas tworzenia reguł DNAT, aplikacji lub reguł sieciowych usługi Azure Fir
 
 ## <a name="region-availability"></a>Dostępność w danym regionie
 
-Grupy IP są obecnie dostępne w następujących regionach:
+Grupy IP są dostępne we wszystkich regionach chmury publicznej.
 
-- Zachodnie stany USA
-- Zachodnie stany USA 2
-- Wschodnie stany USA
-- Wschodnie stany USA 2
-- Środkowe stany USA
-- Północno-środkowe stany USA
-- Zachodnio-środkowe stany USA
-- Południowo-środkowe stany USA
-- Kanada Środkowa
-- Europa Północna
-- Europa Zachodnia
-- Francja Środkowa
-- Południowe Zjednoczone Królestwo
-- Australia Wschodnia
-- Australia Środkowa
-- Australia Południowo-Wschodnia
+## <a name="ip-address-limits"></a>Limity adresów IP
+
+W przypadku maksymalnie 50 grup adresów IP można mieć maksymalnie 5000 pojedynczych adresów IP na wystąpienie zapory. W przypadku grup adresów IP od 51 do 100 można mieć 500 indywidualnych adresów IP na każde wystąpienie zapory.
+
+### <a name="examples"></a>Przykłady
+
+#### <a name="example-1-supported"></a>Przykład 1: obsługiwane
+
+|Grupy adresów IP  |# Adresy IP  |Notacja  |Reguła  |
+|---------|---------|---------|---------|
+|Grupa IP1 |4096     |10.0.0.0/20  |Reguła1|
+|Grupa IPGroup2     |3|196.0.0.0 - 196.0.0.2|Reguła1|
+|Grupa IP3     |1|1.2.3.4|Reguła1|
+|     |**Ogółem 4100**|         |         |
+|     |         |         |         |
+
+#### <a name="example-2-supported"></a>Przykład 2: obsługiwane
+
+|Grupy adresów IP  |# Adresy IP  |Notacja  |Reguła  |
+|---------|---------|---------|---------|
+|Grupa IP1 |4096     |10.0.0.0/20  |Reguła1|
+|Grupa IPGroup2     |4096|11.0.0.0/20|Reguła1|
+|     |**Ogółem 8192**|         |         |
+
+#### <a name="example-3-not-supported"></a>Przykład 3: nie jest obsługiwany
+
+|Grupy adresów IP  |# Adresy IP  |Notacja  |Reguła  |
+|---------|---------|---------|---------|
+|Grupa IP1 |8192     |10.0.0.0/20, 11.0.0.0/20  |Reguła1|
+|     |**Ogółem 8192**|||
+
+#### <a name="example-4-supported"></a>Przykład 4: obsługiwane
+
+|Grupy adresów IP  |# Adresy IP  |Notacja  |Reguła  |
+|---------|---------|---------|---------|
+|Grupa IP1 |4096     |10.0.0.0/20  |Reguła1|
+|Grupa IPGroup2     |4096|11.0.0.0/20|Reguła2|
+|     |**Ogółem 8192**|         |         |
+
 
 ## <a name="related-azure-powershell-cmdlets"></a>Pokrewne polecenia cmdlet programu Azure PowerShell
 

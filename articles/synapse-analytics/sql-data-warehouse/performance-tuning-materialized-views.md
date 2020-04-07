@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28dbe66d27ac75bee2ceecd160ead3dea6538034
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6e942130d9acf803665e52498ef6a4976cc9ade7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633812"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743173"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Strojenie wydajności za pomocą zmaterializowanych widoków
 
@@ -32,7 +32,7 @@ Widok standardowy oblicza swoje dane za każdym razem, gdy widok jest używany. 
 
 Zmaterializowany widok wstępnie oblicza, przechowuje i przechowuje swoje dane w puli SQL, podobnie jak w tabeli.  Za każdym razem, gdy używany jest zmaterialowany widok, nie jest wymagana żadna ponowna obliczenie.  Dlatego kwerendy, które używają wszystkich lub podzbiór danych w widokach materializowanych można uzyskać większą wydajność.  Co więcej, kwerendy można użyć zmaterializowanego widoku bez bezpośredniego odwoływania się do niego, więc nie ma potrzeby zmiany kodu aplikacji.  
 
-Większość wymagań dotyczących widoku standardowego nadal ma zastosowanie do widoku zmaterializowanego. Szczegółowe informacje na temat składni widoku materializowanego i innych wymagań można znaleźć w [1944 R. Tworzenie zmaterializowanego widoku jako wybierz](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).
+Większość wymagań dotyczących widoku standardowego nadal ma zastosowanie do widoku zmaterializowanego. Szczegółowe informacje na temat składni widoku materializowanego i innych wymagań można znaleźć w [1939 R.](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 | Porównanie                     | Widok                                         | Zmaterializowany widok
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -58,8 +58,8 @@ Zmaterializowane widoki zaimplementowane w puli SQL zapewniają również nastę
 W porównaniu z innymi dostawcami magazynu danych zmaterializowane widoki zaimplementowane w usłudze Azure SQL Data Warehouse zapewniają również następujące dodatkowe korzyści:
 
 - Automatyczne i synchroniczne odświeżanie danych ze zmianami danych w tabelach bazowych. Nie jest wymagana żadna akcja użytkownika.
-- Szeroka obsługa funkcji agregujących. Zobacz [TWORZENIE ZMATERIALIZOWANEGO WIDOKU JAKO SELECT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).
-- Obsługa zalecenia zmaterializowanego widoku specyficzne dla kwerendy.  Zobacz [OBJAŚNIENIE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest).
+- Szeroka obsługa funkcji agregujących. Zobacz [TWORZENIE ZMATERIALIZOWANEGO WIDOKU JAKO SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Obsługa zalecenia zmaterializowanego widoku specyficzne dla kwerendy.  Zobacz [OBJAŚNIENIE (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="common-scenarios"></a>Typowe scenariusze  
 

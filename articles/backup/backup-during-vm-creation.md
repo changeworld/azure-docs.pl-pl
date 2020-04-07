@@ -3,12 +3,12 @@ title: Włączanie tworzenia kopii zapasowej przy tworzeniu maszyny wirtualnej p
 description: W tym artykule opisano, jak włączyć tworzenie kopii zapasowej podczas tworzenia maszyny Wirtualnej platformy Azure za pomocą usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247854"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672820"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Włączanie tworzenia kopii zapasowej przy tworzeniu maszyny wirtualnej platformy Azure
 
@@ -64,6 +64,8 @@ Uwagi do uwag:
 5. Nazwę RG można edytować, modyfikując zasady, jeśli i kiedy jest to wymagane. Jeśli wzorzec nazwy zostanie zmieniony, nowe serwery RP zostaną utworzone w nowym RG. Jednak stare punkty RR nadal będą znajdować się w starym RG i nie zostaną przeniesione, ponieważ kolekcja RP nie obsługuje przenoszenia zasobów. Ostatecznie dostawcy usług internetowych otrzymają śmieci zbierane w miarę wygasania punktów.
 ![Zmienianie nazwy podczas modyfikowania zasad](./media/backup-during-vm-creation/modify-policy.png)
 6. Zaleca się, aby nie blokować grupy zasobów utworzonej do użytku przez usługę Kopia zapasowa.
+
+Aby skonfigurować grupę zasobów usługi Azure Backup dla maszyn wirtualnych przy użyciu programu PowerShell, zobacz [Tworzenie grupy zasobów usługi Azure Backup podczas przechowywania migawek](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention).
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Rozpoczynanie tworzenia kopii zapasowej po utworzeniu maszyny Wirtualnej
 

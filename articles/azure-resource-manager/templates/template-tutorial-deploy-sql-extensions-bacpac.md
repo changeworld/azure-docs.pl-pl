@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e65ebbfa0971bf2156165b55ca18eee3cc74bc9
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 83108c056035b16d26343d82c721b275ebcad0c5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239275"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754328"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Samouczek: Importowanie plików SQL BACPAC za pomocą szablonów ARM
 
-Dowiedz się, jak za pomocą rozszerzeń bazy danych SQL platformy Azure zaimportować plik BACPAC za pomocą szablonów usługi Azure Resource Manager (ARM). Artefakty wdrażania to wszystkie pliki, oprócz głównych plików szablonów, które są potrzebne do ukończenia wdrożenia. Plik BACPAC jest tu artefaktem. 
+Dowiedz się, jak za pomocą rozszerzeń bazy danych SQL platformy Azure zaimportować plik BACPAC za pomocą szablonów usługi Azure Resource Manager (ARM). Artefakty wdrażania to wszystkie pliki, oprócz głównych plików szablonów, które są potrzebne do ukończenia wdrożenia. Plik BACPAC jest tu artefaktem.
 
 W tym samouczku utworzysz szablon do wdrożenia serwera SQL platformy Azure i bazy danych SQL i zaimportowania pliku BACPAC. Aby uzyskać informacje dotyczące wdrażania rozszerzeń maszyn wirtualnych platformy Azure przy użyciu szablonów ARM, zobacz [Samouczek: Wdrażanie rozszerzeń maszyn wirtualnych za pomocą szablonów ARM](./template-tutorial-deploy-vm-extensions.md).
 
@@ -255,7 +255,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku wdrożono serwer SQL i bazę danych SQL i zaimportowano plik BACPAC. Plik BACPAC jest przechowywany na koncie usługi Azure Storage. Każda osoba dysponująca adresem URL może uzyskać dostęp do tego pliku. Aby dowiedzieć się, jak zabezpieczyć plik BACPAC (artefakt), zobacz:
+W tym samouczku wdrożono serwer SQL i bazę danych SQL i zaimportowano plik BACPAC. Aby dowiedzieć się, jak rozwiązywać problemy z wdrażaniem szablonów, zobacz:
 
 > [!div class="nextstepaction"]
-> [Zabezpieczanie artefaktów](./template-tutorial-secure-artifacts.md)
+> [Rozwiązywanie problemów z wdrożeniami szablonów ARM](./template-tutorial-troubleshoot.md)

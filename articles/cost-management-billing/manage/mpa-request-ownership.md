@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: c4366b272aab160828afca927f6432c98a8fecd7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: da16e0898f08e1cca602ca5927bce82ed32353fe
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79370733"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437859"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Uzyskiwanie własności rozliczeń subskrypcji platformy Azure dla konta umowy partnerskiej firmy Microsoft
 
@@ -139,7 +139,7 @@ Produkty z witryny Azure Marketplace, które są dostępne dla subskrypcji zarz�
 
 ### <a name="azure-reservations-transfer"></a>Przenoszenie rezerwacji platformy Azure
 
-Rezerwacje platformy Azure nie są automatycznie przenoszone wraz z subskrypcjami. Możesz zachować rezerwację w ramach umowy EA dla innych subskrypcji lub [anulować rezerwację](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) i umożliwić partnerowi ponowny zakup w programie CSP. 
+Rezerwacje platformy Azure nie są automatycznie przenoszone wraz z subskrypcjami. Możesz zachować rezerwację w ramach umowy EA dla innych subskrypcji lub [anulować rezerwację](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) i umożliwić partnerowi ponowny zakup od dostawcy CSP. 
 
 ### <a name="access-to-azure-services"></a>Dostęp do usług platformy Azure
 

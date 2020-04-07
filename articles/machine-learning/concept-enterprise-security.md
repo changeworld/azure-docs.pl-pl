@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 359fd7fc787db5710deca75dd562215d25ed9148
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 4fbb3e83692ec058c03b22654e82d4093fe3541d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437489"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756570"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Zabezpieczenia przedsiębiorstwa dla usługi Azure Machine Learning
 
@@ -112,7 +112,7 @@ Można również włączyć azure private link dla obszaru roboczego. Łącze pr
 > [!TIP]
 > Można połączyć sieć wirtualną i łącze prywatne, aby chronić komunikację między obszarem roboczym a innymi zasobami platformy Azure. Jednak niektóre kombinacje wymagają obszaru roboczego w wersji Enterprise. Poniższa tabela służy do zrozumienia, jakie scenariusze wymagają wersji Enterprise:
 >
-> | Scenariusz | Enterprise</br>Edition | Podstawowa (Basic)</br>Edition |
+> | Scenariusz | Enterprise</br>Edition | Podstawowy</br>Edition |
 > | ----- |:-----:|:-----:| 
 > | Brak sieci wirtualnej lub łącza prywatnego | ✔ | ✔ |
 > | Obszar roboczy bez łącza prywatnego. Inne zasoby (z wyjątkiem usługi Azure Container Registry) w sieci wirtualnej | ✔ | ✔ |
@@ -134,7 +134,15 @@ Można również włączyć azure private link dla obszaru roboczego. Łącze pr
 ### <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
 
 > [!IMPORTANT]
-> Jeśli obszar roboczy zawiera poufne dane, zaleca się ustawienie [flagi hbi_workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) podczas tworzenia obszaru roboczego. Służy to sterowaniu ilością danych gromadzonych przez firmę Microsoft w celach diagnostycznych i umożliwia dodatkowe szyfrowanie w środowiskach zarządzanych przez firmę Microsoft.
+> Jeśli obszar roboczy zawiera poufne dane, zaleca się ustawienie [flagi hbi_workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) podczas tworzenia obszaru roboczego. 
+
+Flaga `hbi_workspace` steruje ilością danych zbieranych przez firmę Microsoft do celów diagnostycznych i umożliwia dodatkowe szyfrowanie w środowiskach zarządzanych firmy Microsoft. Ponadto umożliwia następujące czynności:
+
+* Rozpoczyna szyfrowanie lokalnego dysku magazynującego w klastrze Amlcompute, pod warunkiem że nie utworzono żadnych poprzednich klastrów w tej subskrypcji. W przeciwnym razie musisz podnieść bilet pomocy technicznej, aby włączyć szyfrowanie dysku odchrapania klastrów obliczeniowych 
+* Czyści lokalny dysk odchrapania między przebiegami
+* Bezpiecznie przekazuje poświadczenia dla konta magazynu, rejestru kontenerów i konta SSH z warstwy wykonania do klastrów obliczeniowych przy użyciu magazynu kluczy
+* Umożliwia filtrowanie adresów IP w celu zapewnienia, że podstawowe pule partii nie mogą być wywoływane przez żadne usługi zewnętrzne inne niż AzureMachineLearningService
+
 
 Aby uzyskać więcej informacji na temat działania szyfrowania w spoczynku na platformie Azure, zobacz [Szyfrowanie danych platformy Azure w spoczynku.](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
 

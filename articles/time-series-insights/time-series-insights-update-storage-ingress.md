@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8987cbe6860422ff92119a9f3b13a0a365e6d1a4
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 95a579cacc339360295f5f25fa6415ab29cd68ff
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618317"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673896"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Przechowywanie danych i ruch przychodzący w usłudze Azure Time Series Insights Preview
 
@@ -42,7 +42,7 @@ Usługa Azure Time Series Insights Preview obsługuje następujące źródła zd
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Usługa Azure Time Series Insights Preview obsługuje maksymalnie dwa źródła zdarzeń na wystąpienie.
+Usługa Azure Time Series Insights Preview obsługuje maksymalnie dwa źródła zdarzeń na wystąpienie. Po podłączeniu źródła zdarzeń środowisko TSI odczyta wszystkie zdarzenia aktualnie przechowywane w centrum Iot lub Event Hub, począwszy od najstarszego zdarzenia. 
 
 > [!IMPORTANT] 
 > * Podczas dołączania źródła zdarzeń do środowiska w wersji zapoznawczej może wystąpić duże opóźnienie początkowe. 

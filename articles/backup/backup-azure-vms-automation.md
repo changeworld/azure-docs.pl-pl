@@ -3,12 +3,12 @@ title: Generowanie kopii zapasowych i odzyskiwanie maszyn wirtualnych platformy 
 description: W tym artykule opisano sposób tworzenia kopii zapasowych i odzyskiwania maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup za pomocą programu PowerShell
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 733a06a84aa170f1361ea74d126ec9752586fce2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d1074eea3d530b17904e2f49fba7c0d24e84e59
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247984"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743291"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Tworzenie kopii zapasowych i przywracanie maszyn wirtualnych platformy Azure za pomocą programu PowerShell
 
@@ -199,7 +199,7 @@ Zasady ochrony kopii zapasowej jest skojarzony z co najmniej jedną zasadą prze
 Domyślnie godzina rozpoczęcia jest zdefiniowana w obiekcie zasad harmonogramu. Użyj poniższego przykładu, aby zmienić czas rozpoczęcia na żądany czas rozpoczęcia. Żądany czas rozpoczęcia powinien być również w czasie UTC. Poniższy przykład zakłada, że żądana godzina rozpoczęcia to 01:00 AM UTC dla codziennych kopii zapasowych.
 
 ```powershell
-$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" -VaultId $targetVault.ID
+$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
 $UtcTime = Get-Date -Date "2019-03-20 01:00:00Z"
 $UtcTime = $UtcTime.ToUniversalTime()
 $schpol.ScheduleRunTimes[0] = $UtcTime
@@ -211,7 +211,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 W poniższym przykładzie przechowuje zasady harmonogramu i zasady przechowywania w zmiennych. W przykładzie użyto tych zmiennych do zdefiniowania parametrów podczas tworzenia zasad ochrony *NewPolicy*.
 
 ```powershell
-$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" -VaultId $targetVault.ID
+$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "AzureVM" -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $targetVault.ID
 ```
 
@@ -324,6 +324,20 @@ Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVau
 ````
 
 Wartość domyślna będzie 2, użytkownik może ustawić wartość z min 1 i max 5. W przypadku cotygodniowych zasad tworzenia kopii zapasowych okres jest ustawiony na 5 i nie można go zmienić.
+
+#### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>Tworzenie grupy zasobów usługi Azure Backup podczas przechowywania migawki
+
+> [!NOTE]
+> Począwszy od usługi Azure PS w wersji 3.7.0 można utworzyć i edytować grupę zasobów utworzoną do przechowywania migawek błyskawicznych.
+
+Aby dowiedzieć się więcej o regułach tworzenia grup zasobów i innych istotnych szczegółach, zapoznaj się z [dokumentacją grupy zasobów usługi Azure Backup dla maszyn wirtualnych.](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)
+
+```powershell
+$bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -name "DefaultPolicyForVMs"
+$bkpPol.AzureBackupRGName="Contosto_"
+$bkpPol.AzureBackupRGNameSuffix="ForVMs"
+Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+```
 
 ### <a name="trigger-a-backup"></a>Wyzwalanie kopii zapasowej
 

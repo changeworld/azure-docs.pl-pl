@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: cd0c74c8aa40b3e96716ef37aa27b08b5f6aece1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76547544"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754392"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Planowanie systemu Avere vFXT
 
@@ -142,7 +142,7 @@ Klaster Avere vFXT for Azure znajduje się w podsieci prywatnej, a klaster nie m
 
 Opcje dostępu obejmują:
 
-* Host szybkiego dostępu — przypisz publiczny adres IP do oddzielnej maszyny Wirtualnej w sieci prywatnej i użyj jej do utworzenia tunelu SSL do węzłów klastra.
+* Host szybkiego dostępu — przypisz publiczny adres IP do oddzielnej maszyny Wirtualnej w sieci prywatnej i użyj go do utworzenia tunelu TLS do węzłów klastra.
 
   > [!TIP]
   > Jeśli ustawisz publiczny adres IP na kontrolerze klastra, można go użyć jako hosta szybkiego dostępu. Przeczytaj [kontroler klastra jako hosta szybkiego dostępu, aby](#cluster-controller-as-jump-host) uzyskać więcej informacji.

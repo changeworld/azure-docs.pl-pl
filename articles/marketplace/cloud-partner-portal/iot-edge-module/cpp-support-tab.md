@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 439de17ef9eb9c0c2c264884652236d47600b8ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 306f13cbc83c0c48ce1c90581762275a86dfcb90
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286510"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743974"
 ---
 # <a name="iot-edge-module-support-tab"></a>Karta Obsługa modułu IoT Edge
+
+>[!Important]
+>Od 30 marca 2020 r. rozpoczniemy przenoszenie zarządzania ofertami modułu IoT Edge do Centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [tworzenie oferty modułu IoT Edge,](https://aka.ms/AzureCreateIoT) aby zarządzać zmigrowanymi ofertami.
 
 Użyj karty **Pomoc techniczna** na stronie **Nowa oferta,** aby zapewnić zasoby pomocy technicznej i pomocy technicznej dla swojej oferty.  W formularzu Pomocy technicznej znajdują się następujące obszary wejściowe: **Kontakt inżynierski,** **Obsługa klienta**i **Adresy URL pomocy technicznej.** Gwiazdka (*) dołączona do nazwy pola wskazuje, że jest ona wymagana.
 

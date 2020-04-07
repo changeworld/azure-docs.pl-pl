@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: 787d88d336abcf3b0ba9b14c3d3798850b665eca
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73097099"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745094"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Korzystanie z widoku programu Hive narzędzia Apache Ambari z usługą Apache Hadoop w usłudze HDInsight
 
@@ -23,14 +23,13 @@ Dowiedz się, jak uruchamiać zapytania hive przy użyciu apache Ambari Hive Vie
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klaster Hadoop na HDInsight. Zobacz [Wprowadzenie do HDInsight w systemie Linux](./apache-hadoop-linux-tutorial-get-started.md).
-* Przeglądarka internetowa
+Klaster Hadoop na HDInsight. Zobacz [Wprowadzenie do HDInsight w systemie Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="run-a-hive-query"></a>Uruchomienie zapytania programu Hive
 
-1. Z [witryny Azure portal](https://portal.azure.com/)wybierz swój klaster.  Zobacz [Lista i pokaż klastry,](../hdinsight-administer-use-portal-linux.md#showClusters) aby uzyskać instrukcje. Klaster jest otwierany w nowym bloku portalu.
+1. Z [witryny Azure portal](https://portal.azure.com/)wybierz swój klaster.  Zobacz [Lista i pokaż klastry,](../hdinsight-administer-use-portal-linux.md#showClusters) aby uzyskać instrukcje. Klaster jest otwierany w nowym widoku portalu.
 
-1. Z **pulpitów nawigacyjnych klastra**wybierz **widoki Ambari**. Po wyświetleniu monitu o uwierzytelnienie `admin`użyj nazwy konta i hasła logowania klastra (domyślnie) podanej podczas tworzenia klastra. Alternatywnie przejdź `https://CLUSTERNAME.azurehdinsight.net/#/main/views` do przeglądarki, `CLUSTERNAME` gdzie jest nazwa klastra.
+1. Z **pulpitów nawigacyjnych klastra**wybierz **widoki Ambari**. Po wyświetleniu monitu o uwierzytelnienie `admin`użyj nazwy konta i hasła logowania klastra (domyślnie) podanej podczas tworzenia klastra. Można również przejść `https://CLUSTERNAME.azurehdinsight.net/#/main/views` do przeglądarki, gdzie `CLUSTERNAME` jest nazwa klastra.
 
 1. Z listy widoków wybierz pozycję __Widok gałęzi__.
 
@@ -61,16 +60,13 @@ Dowiedz się, jak uruchamiać zapytania hive przy użyciu apache Ambari Hive Vie
 
     Te instrukcje wykonują następujące akcje:
 
-   * `DROP TABLE`: Usuwa tabelę i plik danych, jeśli tabela już istnieje.
-
-   * `CREATE EXTERNAL TABLE`: Tworzy nową tabelę "zewnętrzną" w obszarze Hive.
-     Tabele zewnętrzne przechowują tylko definicję tabeli w obszarze Gałęzi. Dane są pozostawione w oryginalnej lokalizacji.
-
-   * `ROW FORMAT`: Pokazuje sposób formatowania danych. W takim przypadku pola w każdym dzienniku są oddzielone spacją.
-
-   * `STORED AS TEXTFILE LOCATION`: Pokazuje, gdzie dane są przechowywane i czy są przechowywane jako tekst.
-
-   * `SELECT`: Wybiera liczbę wszystkich wierszy, w których kolumna t4 zawiera wartość [BŁĄD].
+    |Instrukcja | Opis |
+    |---|---|
+    |TABELA UPUSZCZANIA|Usuwa tabelę i plik danych, w przypadku, gdy tabela już istnieje.|
+    |TWORZENIE TABELI ZEWNĘTRZNEJ|Tworzy nową tabelę "zewnętrzną" w obszarze Hive. Tabele zewnętrzne przechowują tylko definicję tabeli w obszarze Gałęzi. Dane są pozostawione w oryginalnej lokalizacji.|
+    |FORMAT WIERSZA|Pokazuje, jak dane są sformatowane. W takim przypadku pola w każdym dzienniku są oddzielone spacją.|
+    |PRZECHOWYWANE JAKO LOKALIZACJA PLIKU TEKSTOWEGO|Pokazuje, gdzie dane są przechowywane i że są przechowywane jako tekst.|
+    |SELECT|Wybiera liczbę wszystkich wierszy, w których kolumna t4 zawiera wartość [BŁĄD].|
 
    > [!IMPORTANT]  
    > Pozostaw __domyślny__wybór __bazy danych__ . Przykłady w tym dokumencie użyć domyślnej bazy danych dołączonej do usługi HDInsight.
@@ -116,7 +112,7 @@ Za pomocą karty __Tabele__ można pracować z tabelami w bazie danych hive.
 
 Na karcie **Kwerenda** można opcjonalnie zapisywać kwerendy. Po zapisaniu kwerendy można ją ponownie użyć na karcie __Zapisane kwerendy.__
 
-![Karta Zapisane kwerendy w widoku gałęzi Apache](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Karta Zapisane kwerendy w widokach gałęzi Apache](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > Zapisane kwerendy są przechowywane w domyślnym magazynie klastra. Zapisane zapytania można znaleźć pod `/user/<username>/hive/scripts`ścieżką . Są one przechowywane jako `.hql` pliki zwykłego tekstu.
@@ -131,7 +127,7 @@ Deklarowanie i zapisywanie zestawu plików UDF przy użyciu karty **UDF** w gór
 
 ![Wyświetlanie karty UDF widoku gałęzi Apache](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-Po dodaniu UDF do widoku gałęzi u dołu **Edytora zapytań**pojawi się przycisk **Wstaw udfs.** Wybranie tego wpisu powoduje wyświetlenie listy rozwijanej plików UDF zdefiniowanych w widoku gałęzi. Wybranie UDF dodaje instrukcje HiveQL do kwerendy, aby włączyć UDF.
+U dołu **Edytora zapytań**pojawi się przycisk **Wstaw udfs** . Ten wpis wyświetla listę rozwijaną plików UDF zdefiniowanych w widoku gałęzi. Wybranie UDF dodaje instrukcje HiveQL do kwerendy, aby włączyć UDF.
 
 Na przykład, jeśli zdefiniowano UDF z następującymi właściwościami:
 
@@ -155,13 +151,13 @@ Następnie można użyć UDF w zapytaniu. Na przykład `SELECT myawesomeudf(name
 Aby uzyskać więcej informacji na temat korzystania z plików UDF z gałęzią w programie HDInsight, zobacz następujące artykuły:
 
 * [Korzystanie z Pythona z ula Apache i Świnia Apache w HDInsight](python-udf-hdinsight.md)
-* [Jak dodać niestandardowy Apache Hive UDF do HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Używanie dysku Java UDF z gałęzią Apache w funkcji HDInsight](./apache-hadoop-hive-java-udf.md)
 
 ## <a name="hive-settings"></a>Ustawienia gałęzi
 
 Można zmienić różne ustawienia gałęzi, takie jak zmiana aparatu wykonywania dla hive z Tez (domyślnie) na MapReduce.
 
-## <a name="next-steps"></a><a id="nextsteps"></a>Następne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać ogólne informacje na temat hive w hdinsight:
 

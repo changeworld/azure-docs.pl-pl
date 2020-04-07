@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a6d46c2adf1d886f804a3a542a208558d7f935b9
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: dd867d4aa9a9ef5ed73e78a46826a8cd5239039b
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632389"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744222"
 ---
 # <a name="what-is-workload-management"></a>Co to jest zarządzanie obciążeniem pracą?
 
@@ -44,7 +44,7 @@ Na przykład przyznanie członkostwa roli użytkownika ad hoc smallrc pozwoliło
 
 Zarządzanie obciążeniem puli SQL synapse w usłudze Azure Synapse składa się z trzech koncepcji wysokiego poziomu: [klasyfikacja obciążenia,](sql-data-warehouse-workload-classification.md) [ważność obciążenia](sql-data-warehouse-workload-importance.md) i [izolacja obciążenia.](sql-data-warehouse-workload-isolation.md)  Te możliwości zapewniają większą kontrolę nad tym, jak obciążenie wykorzystuje zasoby systemowe.
 
-Klasyfikacja obciążenia to koncepcja przypisywania żądania do grupy obciążenia i ustawiania poziomów ważności.  Historycznie, to zadanie zostało wykonane poprzez członkostwo roli przy użyciu [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Można to teraz zrobić za pomocą [pliku CREATE WORKLOAD CLASSIFER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  Możliwość klasyfikacji zapewnia bogatszy zestaw opcji, takich jak etykieta, sesja i czas klasyfikowania żądań.
+Klasyfikacja obciążenia to koncepcja przypisywania żądania do grupy obciążenia i ustawiania poziomów ważności.  Historycznie, to zadanie zostało wykonane poprzez członkostwo roli przy użyciu [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Można to teraz zrobić za pomocą [pliku CREATE WORKLOAD CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Możliwość klasyfikacji zapewnia bogatszy zestaw opcji, takich jak etykieta, sesja i czas klasyfikowania żądań.
 
 Znaczenie obciążenia wpływa na kolejność, w której żądanie uzyskuje dostęp do zasobów.  W systemie zajęty żądanie o wyższym znaczeniu ma pierwszy dostęp do zasobów.  Znaczenie może również zapewnić uporządkowany dostęp do zamków.
 

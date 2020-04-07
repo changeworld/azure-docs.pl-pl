@@ -1,15 +1,15 @@
 ---
 title: Limity usługi Azure Blockchain
 description: Omówienie limitów usług i funkcjonalności w usłudze Azure Blockchain
-ms.date: 03/30/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: c728e617ac37795988cd596c7cb0c5025aac4ccf
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529575"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676514"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Limity w usłudze Blockchain platformy Azure
 
@@ -35,7 +35,6 @@ Zmiana warstwy cenowej między podstawową a standardową po utworzeniu elementu
 Maksymalna ilość miejsca do magazynowania, który może być używany na węzeł dla danych księgi i dzienników wynosi 1,8 terabajtów.
 
 Zmniejszanie rozmiaru magazynu księgi i dziennika nie jest obsługiwane.
-
 ## <a name="consortium-limits"></a>Limity konsorcjum
 
 * **Nazwy konsorcjum i członków muszą być unikatowe** od innych nazw konsorcjum i członków w usłudze Azure Blockchain.
@@ -59,6 +58,12 @@ Zmniejszanie rozmiaru magazynu księgi i dziennika nie jest obsługiwane.
 * **Wszyscy członkowie konsorcjum muszą używać tej samej wersji księgi**
 
     Aby uzyskać więcej informacji na temat poprawek, aktualizacji i wersji księgi dostępnych w usłudze Azure Blockchain, zobacz [Łatanie, aktualizacje i wersje](ledger-versions.md).
+
+## <a name="performance"></a>Wydajność
+
+Nie należy używać *funkcji eth.estimate* gazu dla każdego zgłoszenia transakcji. *Eth.estimate* Funkcja jest intensywnie pamięci. Wywołanie funkcji wiele razy zmniejsza transakcje na sekundę drastycznie.
+
+Jeśli to możliwe, użyj konserwatywnej wartości gazu do składania transakcji i zminimalizuj użycie *eth.estimate*.
 
 ## <a name="next-steps"></a>Następne kroki
 

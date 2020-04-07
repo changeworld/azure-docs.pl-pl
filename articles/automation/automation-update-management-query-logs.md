@@ -3,14 +3,14 @@ title: Kwerenda usługi Azure Update Management dzienniki
 description: W tym artykule opisano sposób wykonywania zapytań o dzienniki dotyczące zarządzania aktualizacjami w obszarze roboczym usługi Log Analytics.
 services: automation
 ms.subservice: update-management
-ms.date: 03/31/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 863016bbeda9b4aec3bf2b4e12830bd30098150f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 81e12e775306cc8637dedd534f50e8a14bc09a26
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437843"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743874"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Rekordy aktualizacji kwerend dla zarządzania aktualizacjami w dziennikach monitora platformy Azure
 
@@ -39,7 +39,7 @@ Tworzony jest rekord `RequiredUpdate` z typem, który reprezentuje aktualizacje 
 | TenantId | Unikatowy identyfikator reprezentujący wystąpienie usługi Azure Active Directory w organizacjach. | 
 | TimeGenerated | Data i godzina utworzenia rekordu. | 
 | Typ | *Aktualizacja* | 
-| Klasyfikacja aktualizacji | Wskazuje typ aktualizacji, które można zastosować. W przypadku systemu Windows:<br> *Aktualizacje krytyczne*<br> *Aktualizacje zabezpieczeń*<br> *Pakiety zbiorcze aktualizacji*<br> *Pakiety funkcji*<br> *Dodatki Service Pack*<br> *Aktualizacje definicji*<br> *narzędzia*<br> *Aktualizacje*. Dla Linuksa:<br> *Aktualizacje krytyczne i zabezpieczeń*<br> *Inne* |
+| Klasyfikacja aktualizacji | Wskazuje typ aktualizacji, które można zastosować. W przypadku systemu Windows:<br> *Aktualizacje krytyczne*<br> *Aktualizacje zabezpieczeń*<br> *Pakiety zbiorcze aktualizacji*<br> *Pakiety funkcji*<br> *Dodatki Service Pack*<br> *Aktualizacje definicji*<br> *Narzędzia*<br> *Aktualizacje*. Dla Linuksa:<br> *Aktualizacje krytyczne i zabezpieczeń*<br> *Inne* |
 | AktualizacjaEverity | Ocena ważności usterki. Wartości to:<br> *Krytyczny*<br> *Ważne*<br> *Średni*<br> *Niskie* |
 | Tytuł aktualizacji | Tytuł aktualizacji.|
 
@@ -112,7 +112,7 @@ Tworzony `UpdateRunProgress` jest rekord z typem, który zapewnia stan wdrożeni
 | CorrelationId | Unikatowy identyfikator zadania runbooka uruchamianego dla aktualizacji. |
 | EndTime | Czas zakończenia procesu synchronizacji. | 
 | BłądWynik | Kod błędu usługi Windows Update wygenerowany, jeśli aktualizacja nie powiedzie się. | 
-| Stan instalacji | Możliwe stany instalacji aktualizacji na komputerze klienckim, *W toku*, *Powiodło się*, Częściowo nie *powiodło się*. |
+| Stan instalacji | Możliwe stany instalacji aktualizacji na komputerze klienckim,<br> *NotStarted* - zadanie nie jest jeszcze wyzwalane.<br> *FailedToStart* - nie można uruchomić zadania na komputerze.<br> *Nie powiodło się* — zadanie rozpoczęto, ale nie powiodło się z wyjątkiem.<br> *InProgress* - zadanie w toku.<br> *MaintenanceWindowExceeded* — jeśli wykonanie pozostało, ale osiągnięto interwał okna konserwacji.<br> *Udało się* - zadanie się powiodło.<br> *InstallFailed* — aktualizacja nie może pomyślnie zainstalować.<br> *Nie jest wliczony w cenę*<br> *Wykluczone* |
 | KBID | Identyfikator artykułu bazy wiedzy Dla aktualizacji systemu Windows. | 
 | ManagementGroupName | Nazwa grupy zarządzania programu Operations Manager lub obszaru roboczego Usługi Log Analytics. |
 | OSType | Określa typ systemu *operacyjnego, Windows* lub *Linux*. | 

@@ -3,12 +3,12 @@ title: 'Szybki start: tworzenie planu za pomocą interfejsu API REST'
 description: W tym przewodniku Szybki start można użyć planów platformy Azure do tworzenia, definiowania i wdrażania artefaktów przy użyciu interfejsu API REST.
 ms.date: 02/26/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 93c9aef9efd826b88da59cdb77dedfb10fb11262
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241542"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676570"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Szybki start: definiowanie i przypisywanie planu azure za pomocą interfejsu API REST
 
@@ -25,7 +25,7 @@ Znajomość sposobu tworzenia i przypisywania strategii umożliwia definiowanie 
 
 Jeśli jeszcze nie znasz interfejsu API REST, zacznij od przejrzenia [dokumentacji interfejsu API REST platformy Azure](/rest/api/azure/), aby uzyskać ogólny opis interfejsu API REST, a w szczególności identyfikatora URI żądania i treści żądania. W tym artykule te pojęcia służą do podawania wskazówek dotyczących pracy z usługą Azure Blueprints, dlatego praktyczna wiedza na ich temat jest niezbędna. Narzędzia, między innymi takie jak [ARMClient](https://github.com/projectkudu/ARMClient), mogą automatycznie obsługiwać autoryzację i są zalecane dla początkujących.
 
-Aby uzyskać informacje o specyfikacjach strategii, zobacz [Interfejs API REST usługi Azure Blueprints](/rest/api/blueprints/).
+Aby uzyskać specyfikacje planów platformy Azure, zobacz [Interfejs API REST planów platformy Azure.](/rest/api/blueprints/)
 
 ### <a name="rest-api-and-powershell"></a>Interfejs API REST i program PowerShell
 
@@ -406,7 +406,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
      **Tożsamość zarządzana przypisana przez użytkownika** może należeć do dowolnej subskrypcji i grupy zasobów, do której użytkownik przypisujący strategię ma uprawnienia.
 
      > [!IMPORTANT]
-     > Strategie nie zarządzają tożsamością przypisaną przez użytkownika. Użytkownicy są odpowiedzialni za przypisywanie wystarczających ról i uprawnień — w przeciwnym razie przypisanie strategii kończy się niepowodzeniem.
+     > Usługa Azure Blueprints nie zarządza tożsamością zarządzaną przypisaną przez użytkownika. Użytkownicy są odpowiedzialni za przypisywanie wystarczających ról i uprawnień — w przeciwnym razie przypisanie strategii kończy się niepowodzeniem.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

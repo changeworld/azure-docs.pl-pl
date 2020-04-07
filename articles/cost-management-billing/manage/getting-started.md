@@ -1,19 +1,19 @@
 ---
-title: Zapobieganie nieoczekiwanym kosztom i zarządzanie rozliczeniami na platformie Azure
-description: Dowiedz się, jak unikać nieoczekiwanych opłat na rachunku za korzystanie z platformy Azure. Używaj funkcji śledzenia kosztów i zarządzania dla konta platformy Azure.
+title: Zapobieganie nieoczekiwanym opłatom i analizowanie ich za pomocą strony Zarządzanie kosztami i rozliczenia platformy Azure
+description: Dowiedz się, jak uniknąć nieoczekiwanych opłat na rachunku platformy Azure oraz korzystać z funkcji śledzenia kosztów i zarządzania nimi dla konta platformy Azure.
 author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 3/11/2020
+ms.date: 3/30/2020
 ms.author: banders
-ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 79af6f78e8e9bf93c49deafe79f6a421cbb77d1a
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238146"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475263"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Zapobieganie nieoczekiwanym opłatom w rozliczeniach platformy Azure i zarządzanie kosztami
 
@@ -112,11 +112,6 @@ Wybierz pozycję **Koszty** po lewej stronie. Zobaczysz praktyczne zalecenia na 
 
 Zapoznaj się z samouczkiem [Optymalizowanie kosztów na podstawie rekomendacji](../costs/tutorial-acm-opt-recommendations.md), aby dowiedzieć się, jak korzystać z rekomendacji dotyczących oszczędzania kosztów usługi Advisor.
 
-## <a name="review-charges-against-your-latest-invoice"></a>Porównywanie opłat z ostatnią fakturą
-
-Faktura jest dostępna na koniec cyklu rozliczeniowego. Możesz [pobrać faktury i pliki ze szczegółami użycia](download-azure-invoice-daily-usage-date.md) oraz porównać je, aby upewnić się, że opłaty zostały naliczone poprawnie. Aby uzyskać więcej informacji na temat porównywania dziennego użycia z fakturą, zobacz [Informacje o rachunku za korzystanie z platformy Microsoft Azure](../understand/review-individual-bill.md).
-
-Jeśli korzystasz z platformy Azure za pośrednictwem umowy klienta firmy Microsoft (MCA), możesz również [porównać fakturę z transakcjami](../understand/review-customer-agreement-bill.md#review-invoiced-transactions-in-the-azure-portal), aby zrozumieć opłaty na fakturze.
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Integrowanie z interfejsami API rozliczeń i użycia
 
@@ -178,9 +173,65 @@ W przypadku niektórych usług obowiązują wymagania wstępne dotyczące umowy 
 
 Aby uzyskać więcej informacji, zobacz [Umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/) oraz dokumentację [podsumowania umów SLA dla usług platformy Azure](https://azure.microsoft.com/support/legal/sla/summary/).
 
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
+## <a name="analyze-unexpected-charges"></a>Analizowanie nieoczekiwanych opłat
 
-Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://go.microsoft.com/fwlink/?linkid=2083458).
+Infrastruktura zasobów w chmurze utworzona dla organizacji jest prawdopodobnie złożona. Na platformie Azure danego typu zasobu mogą dotyczyć różne typy opłat. Zasoby platformy Azure mogą należeć do różnych zespołów w organizacji i mogą być objęte różnymi typami modeli rozliczeń, które stosują się do różnych zasobów. Aby lepiej zrozumieć opłaty, rozpocznij ich analizowanie przy użyciu jednej lub kilku strategii opisanych w poniższych sekcjach.
+
+### <a name="review-your-invoice-and-identify-the-resource-that-is-responsible-for-the-charge"></a>Przeglądanie faktury i określanie zasobu odpowiedzialnego za opłatę
+
+Sposób kupowania usług platformy Azure pomaga określić metodologię i narzędzia dostępne na potrzeby identyfikowania zasobu skojarzonego z opłatą. Aby określić metodologię, która dotyczy Ciebie, najpierw [określ typ oferty platformy Azure](../costs/understand-cost-mgt-data.md#determine-your-offer-type). Następnie określ swoją kategorię klienta na liście [obsługiwanych ofert platformy Azure](../costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers).
+
+Poniższe artykuły zawierają szczegółowe kroki przeglądania rachunku na podstawie typu klienta. W każdym artykule znajdują się instrukcje dotyczące pobierania pliku CSV zawierającego dane użycia i szczegóły kosztów dla danego okresu rozliczeniowego.
+
+- [Proces przeglądania rachunku dla płatności zgodnie z rzeczywistym użyciem](../understand/review-individual-bill.md#compare-invoiced-charges-with-usage-file)
+- [Proces przeglądania rachunku dla umowy Enterprise Agreement](../understand/review-enterprise-agreement-bill.md)
+- [Proces przeglądania dla Umowy z Klientem Microsoft](../understand/review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
+- [Proces przeglądania dla umowy Microsoft Partner Agreement](../understand/review-partner-agreement-bill.md#analyze-your-azure-usage-charges)
+
+Rachunek platformy Azure agreguje miesięczne opłaty dla _poszczególnych mierników_. Mierniki są używane do śledzenia użycia zasobu w czasie i obliczenia rachunku. Podczas tworzenia pojedynczego zasobu platformy Azure, takiego jak maszyna wirtualna, zostanie dla niego utworzone co najmniej jedno wystąpienie miernika.
+
+Przefiltruj plik CSV użycia na podstawie wartości _MeterName_ znajdującej się na rachunku do analizy, aby zobaczyć wszystkie pozycje dotyczące miernika. Wartość _InstanceID_ dla pozycji odpowiada rzeczywistemu zasobowi platformy Azure, który wygenerował opłatę.
+
+Po zidentyfikowaniu zasobu można użyć funkcji analizy kosztów w usłudze Azure Cost Management, aby dalej analizować koszty związane z zasobem. Aby dowiedzieć się więcej o korzystaniu z analizy kosztów, zobacz [Rozpoczęcie analizowania kosztów](../costs/quick-acm-cost-analysis.md).
+
+### <a name="identify-spikes-in-cost-over-time"></a>Identyfikowanie skoków kosztów w czasie
+
+Czasem możesz nie wiedzieć, jakie ostatnio poniesione koszty spowodowały zmiany w opłatach na rachunku. Aby poznać zmiany, możesz użyć analizy kosztów do [wyświetlenia dziennego lub miesięcznego podziału kosztów w czasie](../costs/cost-analysis-common-uses.md#view-costs-per-day-or-by-month). Po utworzeniu widoku pogrupuj opłaty według **usługi** lub **zasobu**, aby zidentyfikować zmiany. Możesz także zmienić widok na wykres **liniowy**, aby lepiej zwizualizować dane.
+
+![Przykład przedstawiający koszty w ramach analizy kosztów](./media/getting-started/costs-over-time.png)
+
+### <a name="determine-resource-pricing-and-understand-its-billing-model"></a>Określanie ceny zasobu i interpretacja jego modelu rozliczeń
+
+Pojedynczy zasób może spowodować naliczenie opłat w ramach wielu produktów i usług platformy Azure. Aby dowiedzieć się więcej o cenach dla każdej usługi platformy Azure, zobacz [cennik platformy Azure według produktu](https://azure.microsoft.com/pricing/#product-pricing). Na przykład pojedyncza maszyna wirtualna utworzona na platformie Azure może mieć utworzone następujące mierniki do śledzenia jej użycia. Każdego może dotyczyć inna cena.
+
+- Godziny obliczeniowe
+- Godziny korzystania z adresu IP
+- Transfer danych przychodzących
+- Transfer danych wychodzących
+- Dysk zarządzany w warstwie Standardowa
+- Operacje na dyskach zarządzanych w warstwie Standardowa
+- Standardowe we/wy — dysk
+- Standardowe we/wy — odczyt dla blokowych obiektów blob
+- Standardowe we/wy — zapis dla blokowych obiektów blob
+- Standardowe we/wy — usuwanie dla blokowych obiektów blob
+
+Po utworzeniu maszyny wirtualnej każdy miernik rozpoczyna emitowanie rekordów użycia. Użycie i cena miernika są śledzone w systemie pomiarów platformy Azure. Liczniki, które zostały użyte do obliczenia rachunku, są pokazywane w pliku CSV użycia.
+
+### <a name="find-the-people-responsible-for-the-resource-and-engage-them"></a>Znajdowanie osób odpowiedzialnych za zasób i kontaktowanie się z nimi
+
+Często zespół odpowiedzialny za dany zasób będzie wiedzieć o zmianach wprowadzonych dla zasobu. Skontaktowanie się z nim jest przydatne podczas określania opłat, które mogą się pojawić. Na przykład zespół będący właścicielem mógł niedawno utworzyć zasób, zaktualizować jego jednostkę SKU (zmieniając w związku z tym współczynnik zasobu) lub zwiększyć obciążenie zasobu z powodu zmian w kodzie. Kontynuuj czytanie kolejnych sekcji, aby uzyskać informacje na temat innych technik określania właściciela zasobu.
+
+#### <a name="analyze-the-audit-logs-for-the-resource"></a>Analizowanie dzienników inspekcji dla zasobu
+
+Jeśli masz uprawnienia do wyświetlania zasobu, powinno to także wystarczyć do uzyskania dostępu do jego dzienników inspekcji. Przejrzyj dzienniki, aby znaleźć użytkownika odpowiedzialnego za ostatnie zmiany w zasobie. Aby dowiedzieć się więcej, zobacz [Wyświetlanie i pobieranie zdarzeń dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-log-view.md).
+
+#### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>Analizowanie uprawnień użytkowników do nadrzędnego zakresu zasobu
+
+Osoby z dostępem do zapisu do subskrypcji lub grupy zasobów zwykle mają informacje o utworzonych zasobach. Powinny być w stanie wyjaśnić przeznaczenie zasobu lub wskazać osobę, która je zna. Aby zidentyfikować osoby z uprawnieniami do zakresu subskrypcji, zobacz [Wyświetlanie przypisań ról](../../role-based-access-control/check-access.md#view-role-assignments). Podobnego procesu możesz użyć dla grup zasobów.
+
+### <a name="get-help-to-identify-charges"></a>Uzyskiwanie pomocy w związku z identyfikowaniem opłat
+
+Jeśli powyższe strategie są już Ci znane i nadal nie rozumiesz źródła opłaty lub potrzebujesz innej pomocy dotyczącej problemu z rozliczeniem, [utwórz wniosek o pomoc techniczną](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o korzystaniu z [limitów wydatków](spending-limit.md), aby zapobiec nadmiernym kosztom.

@@ -11,32 +11,36 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fdbffba7bee84c32d11f8b60431a35f185d9e637
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: d9578653ff8074fee8336df447caf119f79febe0
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633424"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745272"
 ---
 # <a name="use-transactions-in-synapse-sql-pool"></a>Używanie transakcji w puli SQL Synapse
+
 Ten artykuł zawiera wskazówki dotyczące implementowania transakcji i tworzenia rozwiązań w puli SQL.
 
 ## <a name="what-to-expect"></a>Czego się spodziewać
-Zgodnie z oczekiwaniami pula SQL obsługuje transakcje w ramach obciążenia magazynu danych. Jednak aby upewnić się, że pula SQL jest utrzymywana na dużą skalę, niektóre funkcje są ograniczone w porównaniu do programu SQL Server. W tym artykule przedstawiono różnice. 
+
+Zgodnie z oczekiwaniami pula SQL obsługuje transakcje w ramach obciążenia magazynu danych. Jednak aby upewnić się, że pula SQL jest utrzymywana na dużą skalę, niektóre funkcje są ograniczone w porównaniu do programu SQL Server. W tym artykule przedstawiono różnice.
 
 ## <a name="transaction-isolation-levels"></a>Poziomy izolacji transakcji
+
 Pula SQL implementuje transakcje ACID. Poziom izolacji obsługi transakcyjnej jest domyślnie do odczytu niezatwierdzone.  Można go zmienić na ODCZYT COMMITTED MIGAWKI IZOLACJI, włączając opcję READ_COMMITTED_SNAPSHOT bazy danych dla bazy danych użytkownika po połączeniu z główną bazą danych.  
 
-Po włączeniu wszystkie transakcje w tej bazie danych są wykonywane w obszarze IZOLACJA MIGAWKI ODCZYTU POPEŁNIONE I ustawienie ODCZYTU NIEZATWIERDZONE na poziomie sesji nie będą honorowane. Szczegółowe informacje można [znaleźć w opcji ZESTAWU ALTER DATABASE SET (Transact-SQL).](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
+Po włączeniu wszystkie transakcje w tej bazie danych są wykonywane w obszarze IZOLACJA MIGAWKI ODCZYTU POPEŁNIONE I ustawienie ODCZYTU NIEZATWIERDZONE na poziomie sesji nie będą honorowane. Szczegółowe informacje można [znaleźć w opcji ZESTAWU ALTER DATABASE SET (Transact-SQL).](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="transaction-size"></a>Rozmiar transakcji
-Pojedyncza transakcja modyfikacji danych jest ograniczona rozmiarem. Limit jest stosowany dla rozkładu. W związku z tym całkowita alokacja może być obliczana przez pomnożenie limitu przez liczbę dystrybucji. 
+
+Pojedyncza transakcja modyfikacji danych jest ograniczona rozmiarem. Limit jest stosowany dla rozkładu. W związku z tym całkowita alokacja może być obliczana przez pomnożenie limitu przez liczbę dystrybucji.
 
 Aby przybliżyć maksymalną liczbę wierszy w transakcji, należy podzielić limit dystrybucji przez całkowity rozmiar każdego wiersza. W przypadku kolumn o zmiennej długości należy rozważyć zastosowanie średniej długości kolumny, a nie przy użyciu maksymalnego rozmiaru.
 
 W poniższej tabeli przyjęto dwa założenia:
 
-* Doszło do równomiernego rozkładu danych 
+* Doszło do równomiernego rozkładu danych
 * Średnia długość wiersza wynosi 250 bajtów
 
 ## <a name="gen2"></a>Gen2
@@ -77,26 +81,24 @@ W poniższej tabeli przyjęto dwa założenia:
 | DW3000 |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
 | DW6000 |45 |60 |2,700 |180,000,000 |10,800,000,000 |
 
-Limit rozmiaru transakcji jest stosowany dla każdej transakcji lub operacji. Nie jest stosowany we wszystkich równoczesnych transakcji. W związku z tym każda transakcja może zapisać tę ilość danych w dzienniku. 
+Limit rozmiaru transakcji jest stosowany dla każdej transakcji lub operacji. Nie jest stosowany we wszystkich równoczesnych transakcji. W związku z tym każda transakcja może zapisać tę ilość danych w dzienniku.
 
 Aby zoptymalizować i zminimalizować ilość danych zapisanych w dzienniku, zapoznaj się z [transactions best practices](sql-data-warehouse-develop-best-practices-transactions.md) artykułu.
 
 > [!WARNING]
 > Maksymalny rozmiar transakcji można osiągnąć tylko dla hash lub ROUND_ROBIN tabel rozproszonych, gdzie rozprzestrzenianie danych jest równe. Jeśli transakcja zapisuje dane w sposób skośny do dystrybucji, a następnie limit prawdopodobnie zostanie osiągnięty przed maksymalny rozmiar transakcji.
 > <!--REPLICATED_TABLE-->
-> 
-> 
 
 ## <a name="transaction-state"></a>Stan transakcji
+
 Pula SQL używa funkcji XACT_STATE() do zgłaszania nieudanej transakcji przy użyciu wartości -2. Ta wartość oznacza, że transakcja nie powiodła się i jest oznaczona tylko do wycofywania.
 
 > [!NOTE]
-> Użycie -2 przez funkcję XACT_STATE do oznaczania nieudanej transakcji reprezentuje inne zachowanie do programu SQL Server. SQL Server używa wartości -1 do reprezentowania transakcji nieprzywiązywalne. SQL Server może tolerować niektóre błędy wewnątrz transakcji bez konieczności być oznaczone jako nieprzymiotalne. Na przykład `SELECT 1/0` może spowodować błąd, ale nie wymusić transakcji w stanie nieprzywiązywalne. 
+> Użycie -2 przez funkcję XACT_STATE do oznaczania nieudanej transakcji reprezentuje inne zachowanie do programu SQL Server. SQL Server używa wartości -1 do reprezentowania transakcji nieprzywiązywalne. SQL Server może tolerować niektóre błędy wewnątrz transakcji bez konieczności być oznaczone jako nieprzymiotalne. Na przykład `SELECT 1/0` może spowodować błąd, ale nie wymusić transakcji w stanie nieprzywiązywalne.
 
-SQL Server zezwala również odczyty w transakcji nieprzywiązywalne. Jednak pula SQL nie pozwala to zrobić. Jeśli wystąpi błąd wewnątrz transakcji puli SQL, automatycznie przejdzie do stanu -2 i nie będzie można dokonać żadnych dalszych instrukcji select, dopóki instrukcja nie zostanie wycofana. 
+SQL Server zezwala również odczyty w transakcji nieprzywiązywalne. Jednak pula SQL nie pozwala to zrobić. Jeśli wystąpi błąd wewnątrz transakcji puli SQL, automatycznie przejdzie do stanu -2 i nie będzie można dokonać żadnych dalszych instrukcji select, dopóki instrukcja nie zostanie wycofana.
 
 W związku z tym należy sprawdzić, czy kod aplikacji, aby sprawdzić, czy używa XACT_STATE(), jak może być konieczne, aby wprowadzić modyfikacje kodu.
-
 
 Na przykład w programie SQL Server może zostać wyświetlenie transakcji wygląda następująco:
 
@@ -184,11 +186,13 @@ Oczekiwane zachowanie jest teraz obserwowane. Błąd w transakcji jest zarządza
 Wszystko, co się zmieniło jest to, że wycofywanie transakcji musiało się zdarzyć przed odczytem informacji o błędzie w bloku CATCH.
 
 ## <a name="error_line-function"></a>Error_Line() , funkcja
-Warto również zauważyć, że pula SQL nie implementuje ani nie obsługuje funkcji ERROR_LINE(). Jeśli masz to w kodzie, należy usunąć go, aby były zgodne z puli SQL. 
+
+Warto również zauważyć, że pula SQL nie implementuje ani nie obsługuje funkcji ERROR_LINE(). Jeśli masz to w kodzie, należy usunąć go, aby były zgodne z puli SQL.
 
 Zamiast tego użyj etykiet zapytań w kodzie, aby zaimplementować równoważne funkcje. Aby uzyskać więcej informacji, zobacz artykuł [LABEL.](sql-data-warehouse-develop-label.md)
 
 ## <a name="using-throw-and-raiserror"></a>Korzystanie z THROW i RAISERROR
+
 THROW jest bardziej nowoczesna implementacja do podnoszenia wyjątków w puli SQL, ale RAISERROR jest również obsługiwany. Istnieje kilka różnic, które warto zwrócić uwagę na jednak.
 
 * Numery komunikatów o błędach zdefiniowanych przez użytkownika nie mogą znajdować się w zakresie 100 000 - 150 000 dla throw
@@ -196,6 +200,7 @@ THROW jest bardziej nowoczesna implementacja do podnoszenia wyjątków w puli SQ
 * Korzystanie z pliku sys.messages nie jest obsługiwane
 
 ## <a name="limitations"></a>Ograniczenia
+
 Pula SQL ma kilka innych ograniczeń, które odnoszą się do transakcji.
 
 Są one następujące:
@@ -208,5 +213,5 @@ Są one następujące:
 * Brak obsługi DDL, takich jak TWORZENIE TABELI wewnątrz transakcji zdefiniowanej przez użytkownika
 
 ## <a name="next-steps"></a>Następne kroki
-Aby dowiedzieć się więcej na temat optymalizacji transakcji, zobacz [Najważniejsze wskazówki dotyczące transakcji](sql-data-warehouse-develop-best-practices-transactions.md). Aby dowiedzieć się więcej o innych najlepszych rozwiązaniach dotyczących puli SQL, zobacz [Najważniejsze wskazówki dotyczące puli SQL](sql-data-warehouse-best-practices.md).
 
+Aby dowiedzieć się więcej na temat optymalizacji transakcji, zobacz [Najważniejsze wskazówki dotyczące transakcji](sql-data-warehouse-develop-best-practices-transactions.md). Aby dowiedzieć się więcej o innych najlepszych rozwiązaniach dotyczących puli SQL, zobacz [Najważniejsze wskazówki dotyczące puli SQL](sql-data-warehouse-best-practices.md).

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: a0547243ddf114d5c9f7034f182a5e76d8c3e016
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 872eec62e7a629d76533aa6c9906cbdb64c32236
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75369426"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745561"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Wprowadzenie do funkcji okienowania usługi Stream Analytics
 
@@ -35,7 +35,7 @@ Funkcje okien powtarzanych powodują przeskoki w czasie do przodu o stały okres
 ![Okno przeskakiwania usługi Stream Analytics](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>Okno przesuwne
-Funkcje okna przesuwnego, w przeciwieństwie do okien Tumbling lub Hopping, generują dane wyjściowe **tylko** wtedy, gdy wystąpi zdarzenie. Z każdym oknem jest powiązane co najmniej jedno zdarzenie, a okno stale przesuwa się do przodu o wartość € (epsilon). Podobnie jak w przypadku okien powtarzanych, zdarzenia mogą należeć do więcej niż jednego okna przewijania.
+Funkcje okna przesuwnego, w przeciwieństwie do okien Tumbling lub Hopping, generują dane wyjściowe **tylko** wtedy, gdy wystąpi zdarzenie. Każde okno będzie miało co najmniej jedno zdarzenie, a okno jest stale przesuwane do przodu przez ε (epsilon). Podobnie jak w przypadku okien powtarzanych, zdarzenia mogą należeć do więcej niż jednego okna przewijania.
 
 ![Okno przesuwne usługi Stream Analytics](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 

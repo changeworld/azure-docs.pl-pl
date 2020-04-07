@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: e5fe58891aa901509dc44d3b2465c794bd92b22d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f13ab3cd6ff765bc3b1bee8e8fad7e7273f6c7d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476573"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673929"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Poprzednie generacje rozmiarów maszyn wirtualnych
 
@@ -66,6 +66,7 @@ Buforowanie magazynu w wersji Premium: obsługiwane
 MB/s = 10^6 bajtów na sekundę, GiB = 1024^3 bajtów.
 
 <sup>1</sup> Maksymalna przepustowość dysku (IOPS lub MBPS) możliwa w maszynach wirtualnych serii FS może być ograniczona przez liczbę, rozmiar i rozkład dysku podłączonego(-ych).  Aby uzyskać szczegółowe informacje, zobacz projektowanie wysokiej wydajności dla [systemu Windows](windows/premium-storage-performance.md) lub [Linux](linux/premium-storage-performance.md).  
+
 
 ## <a name="nvv2-series"></a>Seria NVv2
 
@@ -339,6 +340,30 @@ Buforowanie magazynu w wersji Premium: nie jest obsługiwane
 | &nbsp;Standard_G5<sup>1</sup> | 32 | 448 | 6144 | 96000/1500/750| 64/64x500 | 8/20000 |
 
 <sup>1</sup> Wystąpienie jest izolowane do sprzętu dedykowanego jednemu klientowi.
+<br>
+
+# <a name="nv-series"></a>Seria NV
+**Nowsze polecanie rozmiaru:** [seria NVv3](nvv3-series.md) i [seria NVv4](nvv4-series.md)
+
+Maszyny wirtualne z serii NV są zasilane przez procesory graficzne [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) i technologię NVIDIA GRID dla aplikacji akcelerowanych na komputerach stacjonarnych i pulpitów wirtualnych, w których klienci są w stanie wizualizować swoje dane lub symulacje. Użytkownicy są w stanie wizualizować swoje grafiki intensywne przepływy pracy w wystąpieniach NV, aby uzyskać doskonałe możliwości grafiki i dodatkowo uruchomić pojedyncze obciążenia precyzji, takie jak kodowanie i renderowanie. Maszyny wirtualne z serii NV są również obsługiwane przez procesory Intel Xeon E5-2690 v3 (Haswell).
+
+Każdy procesor graficzny w wystąpieniach NV jest wyposażony w licencję GRID. Ta licencja zapewnia elastyczność używania wystąpienia NV jako wirtualnej stacji roboczej dla pojedynczego użytkownika lub 25 równoczesnych użytkowników może połączyć się z maszyną wirtualną w przypadku scenariusza aplikacji wirtualnej.
+
+Pamięć masowa w wersji Premium: nie jest obsługiwana
+
+Buforowanie magazynu w wersji Premium: nie jest obsługiwane
+
+Migracja na żywo: nie jest obsługiwana
+
+Aktualizacje zachowywania pamięci: nie są obsługiwane
+
+| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych | Wirtualne stacje robocze | Aplikacje wirtualne |
+|---|---|---|---|---|---|---|---|---|---|
+| Standardowa_NV6  | 6  | 56  | 340  | 1 | 8  | 24 | 1 | 1 | 25  |
+| Standardowa_NV12 | 12 | 112 | 680  | 2 | 16 | 48 | 2 | 2 | 50  |
+| Standardowa_NV24 | 24 | 224 | 1440 | 4 | 32 | 64 | 4 | 4 | 100 |
+
+1 procesor GPU = połowa karty M60.
 <br>
 
 ## <a name="other-sizes"></a>Inne rozmiary

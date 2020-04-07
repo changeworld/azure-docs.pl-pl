@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0c994caf094918b39204437b5194d81a64affc66
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 114c632d43dbb254222def2437fbffc22ec84688
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545655"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672458"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -640,7 +640,7 @@ Dane wyjściowe powyższego profilu pokazują, ile czasu poświęca się na uzys
 
 ## <a name="cassandra-api"></a><a id="cassandra"></a>Cassandra API
 
-### <a name="what-is-the-protocol-version-supported-by-azure-cosmso-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Jaka jest wersja protokołu obsługiwana przez interfejs API Cassandra DB usługi Azure Cosmso? Czy istnieje plan obsługi innych protokołów?
+### <a name="what-is-the-protocol-version-supported-by-azure-cosmos-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Jaka jest wersja protokołu obsługiwana przez interfejs API Cassandra usługi Azure Cosmos DB Cassandra? Czy istnieje plan obsługi innych protokołów?
 
 Apache Cassandra API dla usługi Azure Cosmos DB obsługuje dziś CQL w wersji 4. Jeśli masz opinię na temat obsługi innych protokołów, daj nam znać [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)za pośrednictwem [opinii głosowej użytkownika](https://feedback.azure.com/forums/263030-azure-cosmos-db) lub wyślij wiadomość e-mail na adres .
 

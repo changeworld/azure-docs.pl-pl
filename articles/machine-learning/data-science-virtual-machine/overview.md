@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: 074b547917b65a411d2b1d1b2f094156828eef78
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 03bfee258fe96d90c32b6a305b99856a11d9a087
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631378"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754981"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Co to jest maszyna wirtualna do nauki o danych platformy Azure dla systemów Linux i Windows?
 
@@ -26,7 +26,7 @@ DSVM jest dostępny na:
 + **Windows Server 2019**
 + **Ubuntu 18.04 LTS**
 + Windows Server 2016
-+ Ubuntu 16.04 LTS i CentOS 7.4
++ Ubuntu 16.04 LTS
 
 > [!NOTE]
 > Wszystkie narzędzia maszyn wirtualnych do uczenia głębokiego zostały złożone w maszynie wirtualnej do nauki o danych. 
@@ -68,9 +68,9 @@ Za pomocą dsvm do oceny lub uczenia się nowych [narzędzi](./tools-included.md
 
 W dsvm modeli szkoleniowych można używać algorytmów uczenia głębokiego na sprzęcie, który jest oparty na procesorach graficznych (GPU). Korzystając z możliwości skalowania maszyny Wirtualnej platformy Azure, dsvm pomaga używać sprzętu opartego na procesorze GPU w chmurze zgodnie z potrzebami. Maszynę wirtualną opartą na procesorze GPU można przełączyć podczas szkolenia dużych modeli lub gdy potrzebujesz szybkich obliczeń przy zachowaniu tego samego dysku systemu operacyjnego. Można wybrać dowolną z jednostek SKU maszyny wirtualnej obsługującej maszyny gpu serii N z dsvm. Należy pamiętać, że bezpłatne konta platformy Azure nie obsługują jednostek SKU obsługujących maszyny wirtualne z obsługą procesora GPU.
 
-Wersja dsvm systemu Windows Server 2016 jest fabrycznie zainstalowana ze sterownikami GPU, strukturami i wersjami procesorów GPU w ramach uczenia głębokiego. W wersji Linux głębokie uczenie na procesorach gpu jest włączone zarówno na systemach DVM CentOS, jak i Ubuntu. 
+Wersje systemu Windows dsvm jest fabrycznie zainstalowany ze sterownikami GPU, struktur i wersji GPU deep learning struktur. W wersji Linux głębokie uczenie na procesorach gpu jest włączone na edvmach Ubuntu. 
 
-Można również wdrożyć Ubuntu, CentOS lub Windows 2016 wersja DSVM do maszyny wirtualnej platformy Azure, która nie jest oparta na procesorach GPU. W takim przypadku wszystkie struktury uczenia głębokiego powrócą do trybu procesora CPU.
+Można również wdrożyć wersje Ubuntu lub Windows dsvm na maszynie wirtualnej platformy Azure, która nie jest oparta na procesorach GPU. W takim przypadku wszystkie struktury uczenia głębokiego powrócą do trybu procesora CPU.
 
 [Dowiedz się więcej o dostępnych platformach uczenia głębokiego i si.](dsvm-tools-deep-learning-frameworks.md)
 
@@ -89,5 +89,4 @@ Dowiedz się więcej z tych artykułów:
 
 + W systemie Linux:
   + [Konfigurowanie systemu Linux DSVM (Ubuntu)](dsvm-ubuntu-intro.md)
-  + [Konfigurowanie systemu Linux DSVM (CentOS)](linux-dsvm-intro.md)
   + [Analityka danych na linuxowym dsvm](linux-dsvm-walkthrough.md)

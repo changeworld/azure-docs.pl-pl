@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: 1f0e6694e596dc60264dfe0789a2f80090e0da3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aed0bcb79dedf057c5943cea9f4b4399b2f630cb
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269135"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677465"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Zaawansowane zabezpieczenia danych dla usługi Azure SQL Database
 
@@ -26,8 +26,8 @@ Zaawansowane zabezpieczenia danych to ujednolicony pakiet dla zaawansowanych fun
 
 Zaawansowane zabezpieczenia danych (ADS) zapewniają zestaw zaawansowanych funkcji zabezpieczeń SQL, w tym odnajdowania danych & klasyfikacji, ocenie luk w zabezpieczeniach i zaawansowanej ochronie przed zagrożeniami.
 
-- [Odnajdowanie danych & klasyfikacji](sql-database-data-discovery-and-classification.md) zapewnia możliwości wbudowane w usługę Azure SQL Database do odnajdowania, klasyfikowania, etykietowania & ochrony poufnych danych w bazach danych. Za jej pomocą można zapewniać wgląd w stan klasyfikacji bazy danych oraz śledzić dostęp do danych poufnych w bazie danych i poza jej granicami.
-- [Ocena luk w zabezpieczeniach](sql-vulnerability-assessment.md) to łatwa w konfiguracji usługa, która może wykrywać, śledzić i pomagać w korygowania potencjalnych luk w zabezpieczeniach bazy danych. Zapewnia wgląd w stan zabezpieczeń i zapewnia kroki, które można wykonać w celu rozwiązania problemów z zabezpieczeniami oraz zwiększenia bezpieczeństwa bazy danych.
+- [Odnajdowanie danych & Klasyfikacja](sql-database-data-discovery-and-classification.md) zapewnia możliwości wbudowane w usługę Azure SQL Database do odnajdowania, klasyfikowania, etykietowania & raportowania poufnych danych w bazach danych. Za jej pomocą można zapewniać wgląd w stan klasyfikacji bazy danych oraz śledzić dostęp do danych poufnych w bazie danych i poza jej granicami.
+- [Ocena luk w zabezpieczeniach](sql-vulnerability-assessment.md) to łatwa do skonfigurowania usługa umożliwiająca odnajdywanie i śledzenie potencjalnych luk w zabezpieczeniach bazy danych oraz pomagająca w ich usuwaniu. Zapewnia wgląd w stan zabezpieczeń i zapewnia kroki, które można wykonać w celu rozwiązania problemów z zabezpieczeniami oraz zwiększenia bezpieczeństwa bazy danych.
 - Usługa [Advanced Threat Protection](sql-database-threat-detection-overview.md) wykrywa nietypowe działania wskazujące na nieprawidłowe i potencjalnie szkodliwe próby uzyskania dostępu do bazy danych lub wykorzystania jej. Stale monitoruje Twoją bazę danych pod kątem podejrzanych działań i zapewnia natychmiastowe alerty zabezpieczeń dotyczące potencjalnych luk w zabezpieczeniach, ataków polegających na wstrzyknięciu kodu SQL oraz anomalii we wzorcach dostępu do bazy danych. Alerty usługi Advanced Threat Protection zawierają szczegółowe informacje o podejrzanych działaniach i zalecane czynności dotyczące sposobu badania i ograniczenia zagrożenia.
 
 Włącz usługę SQL ADS raz, aby włączyć wszystkie te dołączone funkcje. Za pomocą jednego kliknięcia można włączyć usługi ADS dla wszystkich baz danych na serwerze bazy danych SQL lub wystąpieniu zarządzanym. Włączanie ustawień ADS lub zarządzanie nimi wymaga przynależności do roli [menedżera zabezpieczeń SQL,](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) roli administratora bazy danych SQL lub roli administratora serwera SQL. 
@@ -62,7 +62,7 @@ Aby wyświetlić ustawienia usługi ADS i zarządzać nimi, przejdź do pozycji 
 
 ## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. Zarządzanie ustawieniami ADS dla bazy danych SQL
 
-Aby zastąpić ustawienia ADS dla określonej bazy danych, zaznacz pole wyboru **Włącz zaawansowane zabezpieczenia danych na poziomie bazy danych.** Tej opcji należy używać tylko wtedy, gdy istnieje szczególne wymagania dotyczące otrzymywania oddzielnych alertów zaawansowanej ochrony przed zagrożeniami lub wyników oceny luk w zabezpieczeniach dla poszczególnych baz danych, zamiast lub oprócz alertów i wyników otrzymanych dla wszystkich baz danych na serwera bazy danych lub wystąpienia zarządzanego.
+Aby zastąpić ustawienia ADS dla określonej bazy danych, zaznacz pole wyboru **Włącz zaawansowane zabezpieczenia danych na poziomie bazy danych.** Tej opcji należy używać tylko wtedy, gdy istnieje określone wymaganie, aby otrzymywać oddzielne alerty zaawansowanej ochrony przed zagrożeniami lub wyniki oceny luk w zabezpieczeniach dla poszczególnych baz danych, zamiast lub oprócz alertów i wyników otrzymanych dla wszystkich baz danych na serwerze bazy danych lub wystąpieniu zarządzanym.
 
 Po wybraniu pola wyboru można następnie skonfigurować odpowiednie ustawienia dla tej bazy danych.
  
@@ -77,4 +77,4 @@ Zaawansowane ustawienia zabezpieczeń danych serwera bazy danych lub wystąpieni
 - Dowiedz się więcej o [klasyfikacji & odnajdowania danych](sql-database-data-discovery-and-classification.md) 
 - Dowiedz się więcej o [ocenie luk w zabezpieczeniach](sql-vulnerability-assessment.md) 
 - Dowiedz się więcej o [zaawansowanej ochronie przed zagrożeniami](sql-database-threat-detection.md)
-- Dowiedz się więcej o [Centrum zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Dowiedz się więcej o [usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

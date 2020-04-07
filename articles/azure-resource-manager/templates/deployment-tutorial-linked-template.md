@@ -4,12 +4,12 @@ description: Dowiedz się, jak wdrożyć szablon połączony
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70a09315b0947f41e7602e630460cb3e674a7bf8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 177a994450b6ffe5489a8c95c3b484521fd9b77b
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80082244"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672917"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Samouczek: Wdrażanie połączonego szablonu
 
@@ -91,7 +91,10 @@ Aby wdrożyć szablon prywatny na koncie magazynu, wygeneruj token sygnatury dos
 
 Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](./deployment-tutorial-local-template.md#create-resource-group).
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+> [!NOTE]
+> W poniższym kodzie interfejsu wiersza polecenia platformy Azure parametr daty -d byłby nieprawidłowym argumentem w systemie macOS. Więc użytkownicy macOS, aby dodać 2 godziny do bieżącego czasu w terminalu na macOS należy użyć -v + 2H.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 

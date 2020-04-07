@@ -3,21 +3,24 @@ title: Przywracanie plików platformy Azure za pomocą programu PowerShell
 description: W tym artykule dowiesz się, jak przywrócić usługi Azure Files przy użyciu usługi Azure Backup i programu PowerShell.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12bff49bc249b23542534d218b13b517411f461b
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086824"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756193"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Przywracanie plików platformy Azure za pomocą programu PowerShell
 
-W tym artykule wyjaśniono, jak przywrócić cały udział plików lub określonych plików z punktu przywracania utworzonego przez usługę [Azure Backup](backup-overview.md) przy użyciu programu Azure Powershell.
+W tym artykule wyjaśniono, jak przywrócić cały udział plików lub określonych plików z punktu przywracania utworzonego przez usługę [Azure Backup](backup-overview.md) przy użyciu programu Azure PowerShell.
 
 Można przywrócić cały udział plików lub określone pliki w udziale. Można przywrócić do oryginalnej lokalizacji lub do lokalizacji alternatywnej.
 
 > [!WARNING]
-> Upewnij się, że wersja PS jest uaktualniona do minimalnej wersji dla "Az.RecoveryServices 2.6.0" dla kopii zapasowych AFS. Aby uzyskać więcej informacji, zapoznaj się [z sekcją](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) przedstawiającą wymagania dotyczące tej zmiany.
+> Upewnij się, że wersja PS jest uaktualniona do minimalnej wersji dla "Az.RecoveryServices 2.6.0" dla kopii zapasowych AFS. Aby uzyskać więcej informacji, zobacz [sekcję](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) przedstawiającą wymagania dotyczące tej zmiany.
+
+>[!NOTE]
+>Usługa Azure Backup obsługuje teraz przywracanie wielu plików lub folderów do oryginalnej lub alternatywnej lokalizacji przy użyciu programu PowerShell. Zapoznaj się z [tą sekcją](#restore-multiple-files-or-folders-to-original-or-alternate-location) dokumentu, aby dowiedzieć się, jak to zrobić.
 
 ## <a name="fetch-recovery-points"></a>Pobieranie punktów odzyskiwania
 
@@ -102,17 +105,67 @@ To polecenie zwraca zadanie z identyfikatorem do śledzenia, jak pokazano w popr
 
 Po przywróceniu do oryginalnej lokalizacji nie trzeba określać parametrów związanych z miejscem docelowym i docelowym. Należy podać **tylko ResolveConflict.**
 
-#### <a name="overwrite-an-azure-file-share"></a>Zastępowanie udziału plików platformy Azure
+### <a name="overwrite-an-azure-file-share"></a>Zastępowanie udziału plików platformy Azure
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite
 ```
 
-#### <a name="overwrite-an-azure-file"></a>Zastępowanie pliku platformy Azure
+### <a name="overwrite-an-azure-file"></a>Zastępowanie pliku platformy Azure
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
 ```
+
+## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Przywracanie wielu plików lub folderów do lokalizacji oryginalnej lub alternatywnej
+
+Użyj polecenia [Restore-AzRecoveryServicesBackupItem,](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) przekazując ścieżkę wszystkich plików lub folderów, które chcesz przywrócić jako wartość parametru **MultipleSourceFilePath.**
+
+### <a name="restore-multiple-files"></a>Przywracanie wielu plików
+
+W poniższym skrypcie próbujemy przywrócić pliki *FileSharePage.png* i *MyTestFile.txt.*
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
+
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -Status Registered -FriendlyName "afsaccount" -VaultId $vault.ID
+
+$BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "azurefiles"
+
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID
+
+$files = ("FileSharePage.png", "MyTestFile.txt")
+
+Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -MultipleSourceFilePath $files -SourceFileType File -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+### <a name="restore-multiple-directories"></a>Przywracanie wielu katalogów
+
+W poniższym skrypcie próbujemy przywrócić *katalogi zrs1_restore* i *Przywróć.*
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
+
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -Status Registered -FriendlyName "afsaccount" -VaultId $vault.ID
+
+$BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "azurefiles"
+
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID
+
+$files = ("Restore","zrs1_restore")
+
+Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -MultipleSourceFilePath $files -SourceFileType Directory -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+Dane wyjściowe będą mieć postać podobną do następującej:
+
+```output
+WorkloadName         Operation         Status          StartTime                EndTime       JobID
+------------         ---------         ------          ---------                -------       -----
+azurefiles           Restore           InProgress      4/5/2020 8:01:24 AM                    cd36abc3-0242-44b1-9964-0a9102b74d57
+```
+
+Jeśli chcesz przywrócić wiele plików lub folderów do lokalizacji alternatywnej, użyj skryptów powyżej, określając docelowe wartości parametrów związanych z lokalizacją, jak wyjaśniono powyżej w [przywróć plik platformy Azure do lokalizacji alternatywnej](#restore-an-azure-file-to-an-alternate-location).
 
 ## <a name="next-steps"></a>Następne kroki
 

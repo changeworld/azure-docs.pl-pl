@@ -3,15 +3,15 @@ title: Tworzenie funkcji przy użyciu platformy Azure for Students Starter
 description: Dowiedz się, jak utworzyć funkcję platformy Azure z poziomu subskrypcji platformy Azure dla studentów starter
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 author: alexkarcher-msft
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 189a0bc80ab2894b2888b496b3beb45249d859f6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c7dd88bf0ead558a0c4951baf38543566d805caa
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75921131"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756462"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Tworzenie funkcji przy użyciu platformy Azure for Students Starter
 
@@ -50,7 +50,7 @@ Do obsługi wykonywania funkcji potrzebna jest aplikacja funkcji. Aplikacja funk
     | **[Grupa zasobów](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Nazwa nowej grupy zasobów, w której ma zostać utworzona aplikacja funkcji. |
    | **[Plan/lokalizacja usługi aplikacji](./functions-scale.md)** | Nowa | Plan hostingu, który kontroluje region, w jakim jest wdrażana aplikacja funkcji i gęstość zasobów. Wiele aplikacji funkcji wdrożonych w tym samym planie będzie współużytkować to samo pojedyncze wolne wystąpienie. Jest to ograniczenie planu Student Starter. Pełne opcje hostingu są [wyjaśnione tutaj.](./functions-scale.md)|
     | **Stos środowiska uruchomieniowego** | Preferowany język | Wybierz środowisko uruchomieniowe, które obsługuje ulubiony język programowania funkcji. Wybierz **.NET** dla funkcji w językach C# i F#. |
-    |**[Wgląd w aplikacje](./functions-monitoring.md)**| Enabled (Włączony) | Usługa Application Insights służy do przechowywania i analizowania dzienników aplikacji funkcji. Jest ona domyślnie włączona, jeśli wybierzesz lokalizację, która obsługuje usługę Application Insights. Usługa Application Insights można włączyć dla dowolnej funkcji, ręcznie wybierając pobliski region do wdrożenia usługi Application Insights. Bez usługi Application Insights będzie można wyświetlać tylko dzienniki przesyłania strumieniowego na żywo.
+    |**[Application Insights](./functions-monitoring.md)**| Enabled (Włączony) | Usługa Application Insights służy do przechowywania i analizowania dzienników aplikacji funkcji. Jest ona domyślnie włączona, jeśli wybierzesz lokalizację, która obsługuje usługę Application Insights. Usługa Application Insights można włączyć dla dowolnej funkcji, ręcznie wybierając pobliski region do wdrożenia usługi Application Insights. Bez usługi Application Insights będzie można wyświetlać tylko dzienniki przesyłania strumieniowego na żywo.
 
 3. Wybierz **plan/lokalizację usługi aplikacji** powyżej, aby wybrać inną lokalizację
 

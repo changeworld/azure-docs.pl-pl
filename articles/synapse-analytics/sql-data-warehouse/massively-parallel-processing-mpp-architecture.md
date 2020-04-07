@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: e321df3f27defdceab31fe3b425a4169928ba3f6
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 0d768581b8f1a177190da08986af8b60b4861432
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631952"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744213"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architektura usługi Azure Synapse Analytics (dawniej SQL DW)
 
@@ -66,7 +66,7 @@ Węzeł Control jest mózgiem architektury. Jest to fronton współdziałający 
 
 Węzły obliczeniowe zapewniają moc obliczeniową. Dystrybucje są mapowane do węzłów obliczeniowych do przetwarzania. Ponieważ płacisz za więcej zasobów obliczeniowych, dystrybucje są mapowane na dostępne węzły obliczeniowe. Liczba węzłów obliczeniowych waha się od 1 do 60 i jest określana przez poziom usługi dla Synapse SQL.
 
-Każdy węzeł obliczeniowy ma identyfikator węzła, który jest widoczny w widokach systemu. Identyfikator węzła obliczeń można wyświetlić, wyszukując kolumnę node_id w widokach systemowych, których nazwy zaczynają się od pliku sys.pdw_nodes. Aby uzyskać listę tych widoków systemu, zobacz [Widoki systemu MPP](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
+Każdy węzeł obliczeniowy ma identyfikator węzła, który jest widoczny w widokach systemu. Identyfikator węzła obliczeń można wyświetlić, wyszukując kolumnę node_id w widokach systemowych, których nazwy zaczynają się od pliku sys.pdw_nodes. Aby uzyskać listę tych widoków systemu, zobacz [Widoki systemu MPP](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="data-movement-service"></a>Usługa przenoszenia danych
 

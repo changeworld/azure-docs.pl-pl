@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4c5964bc944cd50e05d548eb731450a4944e854d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 2802c62acef0d78f8cfa7dd7f06bc34d8eecca4c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631261"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742628"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>Tabele projektowania w puli sql synapse
 
@@ -111,7 +111,7 @@ Kategoria tabeli często określa, którą opcję wybrać do dystrybucji tabeli.
 
 ## <a name="table-partitions"></a>Partycje tabeli
 
-Tabela podzielona na partycje przechowuje i wykonuje operacje w wierszach tabeli zgodnie z zakresami danych. Na przykład tabela może być podzielony na partycje według dnia, miesiąca lub roku. Można zwiększyć wydajność kwerendy poprzez eliminację partycji, co ogranicza skanowanie kwerendy do danych w ramach partycji. Można również zachować dane za pomocą przełączania partycji. Ponieważ dane w magazynie danych SQL jest już rozmieszczona, zbyt wiele partycji może spowolnić wydajność kwerendy. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące partycjonowania](sql-data-warehouse-tables-partition.md).  Podczas przełączania partycji do partycji tabeli, które nie są puste, należy rozważyć użycie opcji TRUNCATE_TARGET w instrukcji [TABELA ALTER,](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) jeśli istniejące dane mają być obcięty. Poniższy kod przełącza się w przekształconych danych dziennych do SalesFact zastąpienie istniejących danych.
+Tabela podzielona na partycje przechowuje i wykonuje operacje w wierszach tabeli zgodnie z zakresami danych. Na przykład tabela może być podzielony na partycje według dnia, miesiąca lub roku. Można zwiększyć wydajność kwerendy poprzez eliminację partycji, co ogranicza skanowanie kwerendy do danych w ramach partycji. Można również zachować dane za pomocą przełączania partycji. Ponieważ dane w magazynie danych SQL jest już rozmieszczona, zbyt wiele partycji może spowolnić wydajność kwerendy. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące partycjonowania](sql-data-warehouse-tables-partition.md).  Podczas przełączania partycji do partycji tabeli, które nie są puste, należy rozważyć użycie opcji TRUNCATE_TARGET w instrukcji [TABELA ALTER,](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) jeśli istniejące dane mają być obcięty. Poniższy kod przełącza się w przekształconych danych dziennych do SalesFact zastąpienie istniejących danych.
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -126,7 +126,7 @@ Indeks klastrowanego magazynu kolumn jest zwykle najlepszym wyborem, ale w niekt
 > [!TIP]
 > Tabela sterty może być szczególnie przydatna do ładowania danych przejściowych, takich jak tabela przejściowa, która jest przekształcana w tabelę końcową.
 
-Aby uzyskać listę funkcji magazynu kolumn, zobacz [Co nowego w indeksach magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Aby poprawić wydajność indeksu magazynu kolumn, zobacz [Maksymalizacja jakości grup wierszy dla indeksów magazynu kolumn](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Aby uzyskać listę funkcji magazynu kolumn, zobacz [Co nowego w indeksach magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Aby poprawić wydajność indeksu magazynu kolumn, zobacz [Maksymalizacja jakości grup wierszy dla indeksów magazynu kolumn](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statystyki
 
@@ -146,10 +146,10 @@ Tabelę można utworzyć jako nową pustą tabelę. Można również utworzyć i
 
 | Instrukcja T-SQL | Opis |
 |:----------------|:------------|
-| [UTWÓRZ TABELĘ](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | Tworzy pustą tabelę, definiując wszystkie kolumny i opcje tabeli. |
-| [TWORZENIE TABELI ZEWNĘTRZNEJ](/sql/t-sql/statements/create-external-table-transact-sql) | Tworzy tabelę zewnętrzną. Definicja tabeli jest przechowywana w puli SQL. Dane tabeli są przechowywane w magazynie obiektów Blob platformy Azure lub w magazynie usługi Azure Data Lake Store. |
-| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) | Wypełnia nową tabelę wynikami instrukcji select. Kolumny tabeli i typy danych są oparte na wynikach instrukcji select. Aby zaimportować dane, ta instrukcja można wybrać z tabeli zewnętrznej. |
-| [TWORZENIE TABELI ZEWNĘTRZNEJ JAKO WYBIERZ](/sql/t-sql/statements/create-external-table-as-select-transact-sql) | Tworzy nową tabelę zewnętrzną, eksportując wyniki instrukcji select do lokalizacji zewnętrznej.  Lokalizacja jest magazyn obiektów Blob platformy Azure lub usługi Azure Data Lake Store. |
+| [UTWÓRZ TABELĘ](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Tworzy pustą tabelę, definiując wszystkie kolumny i opcje tabeli. |
+| [TWORZENIE TABELI ZEWNĘTRZNEJ](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Tworzy tabelę zewnętrzną. Definicja tabeli jest przechowywana w puli SQL. Dane tabeli są przechowywane w magazynie obiektów Blob platformy Azure lub w magazynie usługi Azure Data Lake Store. |
+| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Wypełnia nową tabelę wynikami instrukcji select. Kolumny tabeli i typy danych są oparte na wynikach instrukcji select. Aby zaimportować dane, ta instrukcja można wybrać z tabeli zewnętrznej. |
+| [TWORZENIE TABELI ZEWNĘTRZNEJ JAKO WYBIERZ](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Tworzy nową tabelę zewnętrzną, eksportując wyniki instrukcji select do lokalizacji zewnętrznej.  Lokalizacja jest magazyn obiektów Blob platformy Azure lub usługi Azure Data Lake Store. |
 
 ## <a name="aligning-source-data-with-the-sql-pool"></a>Wyrównywanie danych źródłowych do puli SQL
 
@@ -174,7 +174,7 @@ Pula SQL obsługuje wiele, ale nie wszystkie, funkcji tabeli oferowanych przez i
 
 ## <a name="table-size-queries"></a>Kwerendy rozmiaru tabeli
 
-Jednym z prostych sposobów identyfikowania miejsca i wierszy zużywanych przez tabelę w każdej z 60 dystrybucji, jest użycie [PDW_SHOWSPACEUSED DBCC](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql).
+Jednym z prostych sposobów identyfikowania miejsca i wierszy zużywanych przez tabelę w każdej z 60 dystrybucji, jest użycie [PDW_SHOWSPACEUSED DBCC](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');

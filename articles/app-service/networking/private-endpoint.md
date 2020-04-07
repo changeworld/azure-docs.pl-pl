@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c2717b1f29af39c6fdc4602b11acba131d959f03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534392"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756278"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Korzystanie z prywatnych punktów końcowych dla aplikacji Azure Web App (Wersja zapoznawcza)
 
@@ -25,7 +25,7 @@ Za pomocą prywatnego punktu końcowego dla aplikacji Azure Web App można zezwo
 
 Korzystanie z prywatnego punktu końcowego dla aplikacji sieci Web umożliwia:
 
-- Zabezpiecz aplikację sieci Web, konfigurując punkt końcowy usługi, eliminując publiczne narażenie.
+- Zabezpiecz aplikację sieci Web, konfigurując prywatny punkt końcowy, eliminując publiczne narażenie.
 - Bezpiecznie połącz się z aplikacją Sieci Web z sieci lokalnych łączących się z siecią wirtualną przy użyciu prywatnej komunikacji równorzędnej sieci VPN lub usługi ExpressRoute.
 
 Jeśli potrzebujesz bezpiecznego połączenia między siecią wirtualną a aplikacją sieci Web, punkt końcowy usługi jest najprostszym rozwiązaniem. Jeśli musisz również dotrzeć do aplikacji sieci web z lokalnego za pośrednictwem bramy platformy Azure, regionalnie równorzędnej sieci wirtualnej lub globalnie równorzędnej sieci wirtualnej, rozwiązaniem jest prywatny punkt końcowy.  

@@ -3,17 +3,17 @@ title: Tworzenie klastra usługi Service Fabric w witrynie Azure Portal
 description: Dowiedz się, jak skonfigurować bezpieczny klaster sieci szkieletowej usług na platformie Azure przy użyciu witryny Azure portal i usługi Azure Key Vault.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2de920ce9517e156934a636559a6fd6f5a71eb5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258800"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754107"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Tworzenie klastra sieci szkieletowej usług na platformie Azure przy użyciu portalu Azure
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Portal Azure](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -36,13 +36,13 @@ Jeśli jest to pierwszy raz, gdy tworzysz klaster sieci szkieletowej usług lub 
 Ten certyfikat jest wymagany do zabezpieczenia klastra i zapobiegania nieautoryzowanemu dostępowi do niego. Zapewnia bezpieczeństwo klastra na kilka sposobów:
 
 * **Uwierzytelnianie klastra:** Uwierzytelnia komunikację węzeł-węzeł dla federacji klastra. Tylko węzły, które mogą udowodnić swoją tożsamość za pomocą tego certyfikatu, mogą dołączyć do klastra.
-* **Uwierzytelnianie serwera:** Uwierzytelnia punkty końcowe zarządzania klastrem do klienta zarządzania, dzięki czemu klient zarządzania wie, że rozmawia z prawdziwym klastrem. Ten certyfikat zapewnia również protokół SSL dla interfejsu API zarządzania HTTPS i Eksploratora sieci szkieletowej usług za pośrednictwem protokołu HTTPS.
+* **Uwierzytelnianie serwera:** Uwierzytelnia punkty końcowe zarządzania klastrem do klienta zarządzania, dzięki czemu klient zarządzania wie, że rozmawia z prawdziwym klastrem. Ten certyfikat zapewnia również protokół TLS dla interfejsu API zarządzania HTTPS i Eksploratora sieci szkieletowej usług za pośrednictwem protokołu HTTPS.
 
 Aby służyć tym celom, świadectwo musi spełniać następujące wymagania:
 
 * Certyfikat musi zawierać klucz prywatny.
 * Certyfikat musi zostać utworzony w celu wymiany kluczy, który można wyeksportować do pliku wymiany informacji osobistych (pfx).
-* Nazwa podmiotu certyfikatu **musi być zgodna z domeną** używaną do uzyskiwania dostępu do klastra sieci szkieletowej usług. Jest to wymagane do zapewnienia protokołu SSL dla punktów końcowych zarządzania HTTPS klastra i Eksploratora sieci szkieletowej usług. Nie można uzyskać certyfikatu SSL od urzędu `.cloudapp.azure.com` certyfikacji (CA) dla domeny. Uzyskaj niestandardową nazwę domeny dla klastra. Podczas żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną dla klastra.
+* Nazwa podmiotu certyfikatu **musi być zgodna z domeną** używaną do uzyskiwania dostępu do klastra sieci szkieletowej usług. Jest to wymagane do zapewnienia protokołu TLS dla punktów końcowych zarządzania HTTPS klastra i Eksploratora sieci szkieletowej usług. Nie można uzyskać certyfikatu TLS/SSL od urzędu `.cloudapp.azure.com` certyfikacji (CA) dla domeny. Uzyskaj niestandardową nazwę domeny dla klastra. Podczas żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną dla klastra.
 
 #### <a name="client-authentication-certificates"></a>Certyfikaty uwierzytelniania klienta
 Dodatkowe certyfikaty klientów uwierzytelniają administratorów dla zadań zarządzania klastrami. Sieci szkieletowej usług ma dwa poziomy dostępu: **administrator** i **tylko do odczytu użytkownika**. Należy co najmniej użyć jednego certyfikatu dostępu administracyjnego. Aby uzyskać dodatkowy dostęp na poziomie użytkownika, należy dostarczyć oddzielny certyfikat. Aby uzyskać więcej informacji na temat ról dostępu, zobacz [kontrola dostępu oparta na rolach dla klientów sieci szkieletowej usług][service-fabric-cluster-security-roles].

@@ -3,12 +3,12 @@ title: Funkcje szablonu — zasoby
 description: W tym artykule opisano funkcje używane w szablonie usługi Azure Resource Manager do pobierania wartości dotyczących zasobów.
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 641602218aa19b790eb6e7feabdb7b46a520b590
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 23c0463649e748b35917c959a73536147e91f60b
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478278"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744994"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkcje zasobów dla szablonów ARM
 
@@ -444,12 +444,12 @@ Zwraca obiekt reprezentujący stan środowiska wykonawczego zasobu.
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | nazwa zasobu lub zasóbIdentyfikator |Tak |ciąg |Nazwa lub unikatowy identyfikator zasobu. Podczas odwoływania się do zasobu w bieżącym szablonie podaj tylko nazwę zasobu jako parametr. Podczas odwoływania się do wcześniej wdrożonego zasobu lub gdy nazwa zasobu jest niejednoznaczna, podaj identyfikator zasobu. |
-| apiVersion |Nie |ciąg |Wersja interfejsu API określonego zasobu. Uwzględnij ten parametr, gdy zasób nie jest aprowizowany w ramach tego samego szablonu. Zazwyczaj w formacie **yyyy-mm-dd**. Aby uzyskać prawidłowe wersje interfejsu API dla zasobu, zobacz [odwołanie do szablonu](/azure/templates/). |
+| apiVersion |Nie |ciąg |Wersja interfejsu API określonego zasobu. **Ten parametr jest wymagany, gdy zasób nie jest aprowizowany w ramach tego samego szablonu.** Zazwyczaj w formacie **yyyy-mm-dd**. Aby uzyskać prawidłowe wersje interfejsu API dla zasobu, zobacz [odwołanie do szablonu](/azure/templates/). |
 | "Pełna" |Nie |ciąg |Wartość określająca, czy ma zwrócić pełny obiekt zasobu. Jeśli nie określisz, `'Full'`zwracany jest tylko obiekt właściwości zasobu. Pełny obiekt zawiera wartości, takie jak identyfikator zasobu i lokalizacja. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Każdy typ zasobu zwraca różne właściwości funkcji referencyjnej. Funkcja nie zwraca pojedynczego, wstępnie zdefiniowanego formatu. Ponadto zwracana wartość różni się w zależności od tego, czy określono pełny obiekt. Aby wyświetlić właściwości typu zasobu, zwróć obiekt w sekcji dane wyjściowe, jak pokazano w przykładzie.
+Każdy typ zasobu zwraca różne właściwości funkcji referencyjnej. Funkcja nie zwraca pojedynczego, wstępnie zdefiniowanego formatu. Ponadto zwracana wartość różni się w `'Full'` zależności od wartości argumentu. Aby wyświetlić właściwości typu zasobu, zwróć obiekt w sekcji dane wyjściowe, jak pokazano w przykładzie.
 
 ### <a name="remarks"></a>Uwagi
 
@@ -514,7 +514,7 @@ Podczas odwoływania się do zasobu, który jest wdrażany w tym samym szablonie
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-Podczas odwoływania się do zasobu, który nie jest wdrożony w tym samym szablonie, podaj identyfikator zasobu.
+Podczas odwoływania się do zasobu, który nie jest wdrożony `apiVersion`w tym samym szablonie, podaj identyfikator zasobu i .
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"

@@ -3,12 +3,12 @@ title: Jak zarządzać przydziałami za pomocą programu PowerShell
 description: Dowiedz się, jak zarządzać przydziałami planu za pomocą oficjalnego modułu programu Azure Blueprints PowerShell, Az.Blueprint.
 ms.date: 09/30/2019
 ms.topic: how-to
-ms.openlocfilehash: b16cf887ba8bfc51616839db5f4af87944ec686d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0868e5e207202511c1981a930870bfdc68a77a8f
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247405"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677422"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Jak zarządzać przydziałami za pomocą programu PowerShell
 
@@ -27,12 +27,12 @@ Moduł Azure Blueprints wymaga następującego oprogramowania:
 
 ### <a name="install-the-module"></a>Instalowanie modułu
 
-Moduł Blueprints dla programu PowerShell to **Az.Blueprint**.
+Moduł Azure Blueprints dla programu PowerShell to **Az.Blueprint**.
 
 1. Za pomocą monitu **administracyjnego** programu PowerShell uruchom następujące polecenie:
 
    ```azurepowershell-interactive
-   # Install the Blueprints module from PowerShell Gallery
+   # Install the Azure Blueprints module from PowerShell Gallery
    Install-Module -Name Az.Blueprint
    ```
 

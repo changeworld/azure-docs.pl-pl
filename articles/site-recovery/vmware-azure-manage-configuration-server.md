@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 692834903899448707200b24a955301e29e14f90
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478454"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672733"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Zarządzanie serwerem konfiguracji odzyskiwania po awarii VMware VMware VMware VM/server physical server
 
@@ -45,7 +45,7 @@ Dostęp do serwera konfiguracji można uzyskać w następujący sposób:
 
 Poświadczenia można również modyfikować za pośrednictwem pliku CSPSConfigtool.exe.
 
-1. Zaloguj się na serwer konfiguracji i uruchom CSPSConfigtool.exe
+1. Zaloguj się do serwera konfiguracji i uruchom cspsconfigtool.exe
 2. Wybierz konto, które chcesz zmodyfikować, i kliknij przycisk **Edytuj**.
 3. Wprowadź zmodyfikowane poświadczenia i kliknij przycisk **Ok**
 
@@ -93,6 +93,32 @@ Szablon Format otwartej wirtualizacji (OVF) wdraża maszynę wirtualną serwera 
 - Można [dodać dodatkową kartę do maszyny Wirtualnej](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter), ale należy ją dodać przed zarejestrowaniem serwera konfiguracji w przechowalni.
 - Aby dodać kartę po zarejestrowaniu serwera konfiguracji w przechowalni, dodaj kartę we właściwościach maszyny Wirtualnej. Następnie należy [ponownie zarejestrować](#reregister-a-configuration-server-in-the-same-vault) serwer w przechowalni.
 
+## <a name="how-to-renew-ssl-certificates"></a>Jak odnowić certyfikaty SSL
+
+Serwer konfiguracji ma wbudowany serwer sieci web, który organizuje działania agentów mobilności na wszystkich chronionych komputerach, wbudowanych/skalowanych w poziomie serwerach procesów i połączonych z nim głównych serwerów docelowych. Serwer sieci web używa certyfikatu SSL do uwierzytelniania klientów. Certyfikat wygasa po trzech latach i może zostać odnowiony w dowolnym momencie.
+
+### <a name="check-expiry"></a>Sprawdź wygaśnięcie
+
+Data wygaśnięcia jest wyświetlana w obszarze **Kondycja serwera konfiguracji**. W przypadku wdrożeń serwerów konfiguracji przed majem 2016 r. wygaśnięcie certyfikatu zostało ustawione na jeden rok. Jeśli masz certyfikat, który wygaśnie, wystąpią następujące zdarzenia:
+
+- Gdy data wygaśnięcia wynosi co najmniej dwa miesiące, usługa rozpoczyna wysyłanie powiadomień w portalu i pocztą e-mail (jeśli zasubskrybujesz powiadomienia o odzyskiwaniu witryn).
+- Baner powiadomień pojawi się na stronie zasobu przechowalni. Aby uzyskać więcej informacji, wybierz baner.
+- Jeśli zostanie wyświetlony przycisk **Uaktualnij teraz,** oznacza to, że niektóre składniki w twoim środowisku nie zostały uaktualnione do wersji 9.4.xxxx.x lub nowszych. Uaktualnij składniki przed odnowieniem certyfikatu. Nie można odnowić w starszych wersjach.
+
+### <a name="if-certificates-are-yet-to-expire"></a>Jeśli certyfikaty jeszcze nie wygasną
+
+1. Aby odnowić w przechowalni, otwórz serwer konfiguracji **infrastruktury odzyskiwania lokacji** > **Configuration Server**. Wybierz wymagany serwer konfiguracji.
+2. Upewnij się, że wszystkie składniki skalowane w poziomie serwerów procesów, główne serwery docelowe i agentów mobilności na wszystkich chronionych komputerach są w najnowszych wersjach i są w stanie połączenia.
+3. Teraz wybierz pozycję **Odnów certyfikaty**.
+4. Uważnie postępuj zgodnie z instrukcjami na tej stronie i kliknij przycisk w porządku, aby odnowić certyfikaty na wybranym serwerze konfiguracji i skojarzonych z nim składnikach.
+
+### <a name="if-certificates-have-already-expired"></a>Jeśli certyfikaty już wygasły
+
+1. Po wygaśnięciu certyfikaty **nie mogą być odnawiane z witryny Azure portal**. Przed kontynuowaniem upewnij się, że wszystkie składniki skalują się w poziomie serwerów procesów, główne serwery docelowe i agentów mobilności na wszystkich chronionych komputerach są w najnowszych wersjach i są w stanie połączenia.
+2. **Tę procedurę należy wykonać tylko wtedy, gdy certyfikaty już wygasły.** Zaloguj się do serwera konfiguracji, przejdź do dysku C > Program Data > Site Recovery > home > svsystems > bin i wykonaj narzędzie wykonawcze "RenewCerts" jako administrator.
+3. Okno wykonywania programu PowerShell wyskakuje i wyzwala odnowienie certyfikatów. Może to potrwać maksymalnie 15 minut. Nie zamykaj okna do czasu zakończenia odnowienia.
+
+:::image type="content" source="media/vmware-azure-manage-configuration-server/renew-certificates.png" alt-text="Odnawianie certyfikatów":::
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>Ponowne rejestrowanie serwera konfiguracji w tym samym magazynie
 
@@ -112,7 +138,7 @@ W razie potrzeby można ponownie zarejestrować serwer konfiguracji w tym samym 
    ```
 
     >[!NOTE]
-    >Aby **pobierać najnowsze certyfikaty** z serwera konfiguracji do serwera procesów skalowanych w poziomie, wykonaj polecenie *"\<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>" --registermt*
+    >Aby **pobierać najnowsze certyfikaty** z serwera konfiguracji do serwera procesów skalowanych w poziomie, wykonaj polecenie *"\<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>"--registermt*
 
 8. Na koniec uruchom ponownie oszurzaj, wykonując następujące polecenie.
    ```
@@ -269,24 +295,6 @@ Opcjonalnie można usunąć serwer konfiguracji przy użyciu programu PowerShell
 2. Aby zmienić katalog na folder bin, wykonaj polecenie **cd %ProgramData%\ASR\home\svsystems\bin**
 3. Aby wygenerować plik hasła, wykonaj **plik genpassphrase.exe -v > MobSvc.passphrase**.
 4. Hasło będzie przechowywane w pliku znajdującym się pod adresem **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**.
-
-## <a name="renew-tlsssl-certificates"></a>Odnawianie certyfikatów TLS/SSL
-
-Serwer konfiguracji ma wbudowany serwer sieci web, który organizuje działania usługi mobilności, serwery przetwarzania i główne serwery docelowe podłączone do niego. Serwer sieci web używa certyfikatu TLS/SSL do uwierzytelniania klientów. Certyfikat wygasa po trzech latach i może zostać odnowiony w dowolnym momencie.
-
-### <a name="check-expiry"></a>Sprawdź wygaśnięcie
-
-W przypadku wdrożeń serwerów konfiguracji przed majem 2016 r. wygaśnięcie certyfikatu zostało ustawione na jeden rok. Jeśli masz certyfikat, który wygaśnie, wystąpią następujące zdarzenia:
-
-- Gdy data wygaśnięcia wynosi co najmniej dwa miesiące, usługa rozpoczyna wysyłanie powiadomień w portalu i pocztą e-mail (jeśli zasubskrybujesz powiadomienia o odzyskiwaniu witryn).
-- Baner powiadomień pojawi się na stronie zasobu przechowalni. Aby uzyskać więcej informacji, wybierz baner.
-- Jeśli zostanie wyświetlony przycisk **Uaktualnij teraz,** oznacza to, że niektóre składniki w twoim środowisku nie zostały uaktualnione do wersji 9.4.xxxx.x lub nowszych. Uaktualnij składniki przed odnowieniem certyfikatu. Nie można odnowić w starszych wersjach.
-
-### <a name="renew-the-certificate"></a>Odnawianie certyfikatu
-
-1. W przechowalni otwórz serwer konfiguracji **infrastruktury odzyskiwania lokacji** > **Configuration Server**. Wybierz wymagany serwer konfiguracji.
-2. Data wygaśnięcia jest wyświetlana w obszarze **Kondycja serwera konfiguracji**.
-3. Wybierz **pozycję Odnów certyfikaty**.
 
 ## <a name="refresh-configuration-server"></a>Serwer konfiguracji odświeżania
 

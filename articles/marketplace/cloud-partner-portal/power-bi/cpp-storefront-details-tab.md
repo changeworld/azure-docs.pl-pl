@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b69ef8aa57393c5be8d23aaf4af1821697295235
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bcf06056dd7fdaf22716409f53d86da7321b94d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281684"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745589"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>Karta Szczegóły sklepu aplikacji Power BI
+
+>[!Important]
+>Od 30 marca 2020 r. rozpoczniemy przenoszenie zarządzania ofertami aplikacji Usługi Power BI do Centrum partnerów. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami zawartymi w [omówienie tworzenia aplikacji usługi Power BI,](https://aka.ms/AzureCreatePBIServiceApp) aby zarządzać zmigrowanymi ofertami.
 
 Na stronie **Nowa oferta** użyj karty **Szczegóły sklepu,** aby dostarczać informacje marketingowe, sprzedażowe i prawne potencjalnym klientom. Na tej karcie można również skonfigurować zarządzanie dla potencjalnych klientów, które generuje portal Azure Marketplace. Ten długi formularz jest podzielony na sześć sekcji: **Szczegóły oferty**, **Szczegóły aukcji,** **Artefakty marketingowe,** **Prawne,** **Obsługa klienta**i **Zarządzanie ołowiem.**  Gwiazdka (*) na końcu etykiety pola oznacza, że pole jest wymagane.
 
@@ -74,7 +77,7 @@ Aby uzupełnić pola w tej sekcji, użyj poniższej tabeli. Wymagane pola są os
 | **Plik**                             | Prześlij plik PDF.                             |
 | *Zrzuty ekranu\**                      | Dodaj do pięciu zrzutów ekranu.                        |
 | **Nazwa**                             | Wprowadź nazwę lub tytuł zrzutu ekranu.                                       |
-| **Obrazu**                            | Prześlij zrzut ekranu PNG. Jego rozdzielczość musi wynosić 1280 x 720 px.  | 
+| **Image (Obraz)**                            | Prześlij zrzut ekranu PNG. Jego rozdzielczość musi wynosić 1280 x 720 px.  | 
 |   |   |
 
 Logo przesłane do [portalu Cloud Partner Portal](https://cloudpartner.azure.com) *nie*powinno:
@@ -115,7 +118,7 @@ W sekcji **Zarządzanie potencjalnymi klientami** skonfiguruj system w celu zbie
 | **Dynamics CRM Online** | Określ [Dynamics 365](https://dynamics.microsoft.com/) przy użyciu adresu URL i poświadczeń uwierzytelniania. |
 | **Punkt końcowy HTTPS**     | Określ punkt końcowy HTTPS przy użyciu ładunku JSON.   |
 | **Marketo**            | Określ [wystąpienie Marketo](https://www.marketo.com/) przy użyciu identyfikatora serwera, identyfikatora munchkin i identyfikatora formularza.   |
-| **Salesforce**         | Określ [salesforce](https://www.salesforce.com/) przy użyciu identyfikatora obiektu. |
+| **SalesForce**         | Określ [salesforce](https://www.salesforce.com/) przy użyciu identyfikatora obiektu. |
 |  |  |
 
 Po opublikowaniu oferty połączenie potencjalnego klienta jest sprawdzane, a potencjalny klient testowy jest automatycznie wysyłany do określonego miejsca docelowego. Ciągłe zarządzanie informacjami o potencjalnych klientach i szybkie aktualizowanie ustawień w celu odzwierciedlenia bieżącej architektury zarządzania klientami.

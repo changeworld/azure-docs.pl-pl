@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 45276884d59ac8d1d876e2225ac02bb51c3f74fc
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 5ddbb58837fbda0f14a07186d5a3053055954454
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437730"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677451"
 ---
 # <a name="azure-firewall-faq"></a>Zapora platformy Azure – często zadawane pytania
 
@@ -212,4 +212,8 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Dlaczego ping TCP i podobne narzędzia mogą pomyślnie połączyć się z docelową siecią FQDN, nawet jeśli żadna reguła w zaporze platformy Azure nie zezwala na ten ruch?
 
-Ping TCP nie łączy się z docelową siecią FQDN. Dzieje się tak, ponieważ przezroczysty serwer proxy usługi Azure Firewall nasłuchuje na porcie 80/443 dla ruchu wychodzącego. Ping TCP ustanawia połączenie z zaporą, która następnie porzuca pakiet i rejestruje połączenie. To zachowanie nie ma żadnego wpływu na bezpieczeństwo. Aby jednak uniknąć nieporozumień, badamy potencjalne zmiany w tym zachowaniu. 
+Ping TCP nie łączy się z docelową siecią FQDN. Dzieje się tak, ponieważ przezroczysty serwer proxy usługi Azure Firewall nasłuchuje na porcie 80/443 dla ruchu wychodzącego. Ping TCP ustanawia połączenie z zaporą, która następnie porzuca pakiet i rejestruje połączenie. To zachowanie nie ma żadnego wpływu na bezpieczeństwo. Aby jednak uniknąć nieporozumień, badamy potencjalne zmiany w tym zachowaniu.
+
+## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Czy istnieją limity liczby adresów IP obsługiwanych przez grupy adresów IP?
+
+Tak. Aby uzyskać więcej informacji, zobacz [Limity subskrypcji i usług platformy Azure, przydziały i ograniczenia](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)

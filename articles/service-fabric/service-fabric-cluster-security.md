@@ -4,12 +4,12 @@ description: Dowiedz się więcej o scenariuszach zabezpieczeń klastra sieci sz
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 92d2c4d03075eaafce039f94b4f03c0791985b40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5912f98f6a1c82250a66ec4d9fe39f2f69b1cc8f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258683"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80753798"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scenariusze zabezpieczeń klastra sieci szkieletowej usług
 
@@ -74,7 +74,7 @@ W przypadku klastrów uruchomionych na platformie Azure można również zabezpi
 W przypadku klastrów usługi Service Fabric wdrożonych w sieci publicznej hostowanej na platformie Azure zalecenia dla wzajemnego uwierzytelniania klienta i węzła są następujące:
 
 * Używanie usługi Azure Active Directory na potrzeby określania tożsamości klienta
-* Certyfikat na potrzeby potwierdzania tożsamości serwera oraz szyfrowania SSL komunikacji HTTP
+* Certyfikat dla tożsamości serwera i szyfrowania TLS komunikacji http
 
 W przypadku klastrów sieci szkieletowej usług wdrożonych w sieci publicznej hostowanych na platformie Azure zalecenie dotyczące zabezpieczeń między węzłami polega na użyciu certyfikatu klastra do uwierzytelniania węzłów.
 
@@ -103,13 +103,13 @@ Kilka ważnych rzeczy do rozważenia:
 
 Te certyfikaty (jeden podstawowy i opcjonalnie pomocniczy) są wymagane do zabezpieczenia klastra i zapobiegania nieautoryzowanemu dostępowi do niego. Certyfikaty te zapewniają uwierzytelnianie klastra i serwera.
 
-Uwierzytelnianie klastra uwierzytelnia komunikację między węzłami dla federacji klastra. Tylko węzły, które mogą udowodnić swoją tożsamość za pomocą tego certyfikatu, mogą dołączyć do klastra. Uwierzytelnianie serwera uwierzytelnia punkty końcowe zarządzania klastrem do klienta zarządzania, dzięki czemu klient zarządzania wie, że rozmawia z prawdziwym klastrem, a nie z "człowiekiem w środku". Ten certyfikat zapewnia również protokół SSL dla interfejsu API zarządzania HTTPS i Eksploratora sieci szkieletowej usług za pośrednictwem protokołu HTTPS. Gdy klient lub węzeł uwierzytelnia węzeł, jednym z początkowych kontroli jest wartość nazwy pospolitej w polu **Temat.** Ta nazwa pospolita lub jedna z alternatywnych nazw przedmiotów certyfikatów (SAN) musi znajdować się na liście dozwolonych nazw pospolitych.
+Uwierzytelnianie klastra uwierzytelnia komunikację między węzłami dla federacji klastra. Tylko węzły, które mogą udowodnić swoją tożsamość za pomocą tego certyfikatu, mogą dołączyć do klastra. Uwierzytelnianie serwera uwierzytelnia punkty końcowe zarządzania klastrem do klienta zarządzania, dzięki czemu klient zarządzania wie, że rozmawia z prawdziwym klastrem, a nie z "człowiekiem w środku". Ten certyfikat zapewnia również protokół TLS dla interfejsu API zarządzania HTTPS i Eksploratora sieci szkieletowej usług za pośrednictwem protokołu HTTPS. Gdy klient lub węzeł uwierzytelnia węzeł, jednym z początkowych kontroli jest wartość nazwy pospolitej w polu **Temat.** Ta nazwa pospolita lub jedna z alternatywnych nazw przedmiotów certyfikatów (SAN) musi znajdować się na liście dozwolonych nazw pospolitych.
 
 Certyfikat musi spełniać następujące wymagania:
 
 * Certyfikat musi zawierać klucz prywatny. Certyfikaty te zazwyczaj mają rozszerzenia .pfx lub .pem  
 * Certyfikat musi zostać utworzony w celu wymiany kluczy, który można wyeksportować do pliku wymiany informacji osobistych (pfx).
-* **Nazwa podmiotu certyfikatu musi być zgodna z domeną używaną do uzyskiwania dostępu do klastra sieci szkieletowej usług**. To dopasowanie jest wymagane do zapewnienia protokołu SSL dla punktu końcowego zarządzania HTTPS klastra i Eksploratora sieci szkieletowej usług. Nie można uzyskać certyfikatu SSL od urzędu certyfikacji (CA) dla domeny *.cloudapp.azure.com. Musisz uzyskać niestandardową nazwę domeny dla klastra. W przypadku żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną dla danego klastra.
+* **Nazwa podmiotu certyfikatu musi być zgodna z domeną używaną do uzyskiwania dostępu do klastra sieci szkieletowej usług**. To dopasowanie jest wymagane do zapewnienia protokołu TLS dla punktu końcowego zarządzania HTTPS klastra i Eksploratora sieci szkieletowej usług. Nie można uzyskać certyfikatu TLS/SSL od urzędu certyfikacji (CA) dla domeny *.cloudapp.azure.com. Musisz uzyskać niestandardową nazwę domeny dla klastra. W przypadku żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną dla danego klastra.
 
 Kilka innych rzeczy do rozważenia:
 

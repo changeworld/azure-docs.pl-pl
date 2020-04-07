@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 04/06/2020
 ms.author: radeltch
-ms.openlocfilehash: c594ef3a62d45fb68002ec2b21fb89115f7a30af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b584341931299e408b596bd6a66d1da4580cfffe
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77565812"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754775"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Wdrażanie systemu skalowania w poziomie SAP HANA z węzłem wstrzymania na maszynach wirtualnych platformy Azure przy użyciu plików NetApp platformy Azure na serwerze SUSE Linux Enterprise Server 
 
@@ -83,7 +83,6 @@ Przed rozpoczęciem należy zapoznać się z następującymi uwagami i dokumenta
 * [SUSE SAP HA Best Practice Guides][suse-ha-guide]: Zawiera wszystkie wymagane informacje do skonfigurowania NetWeaver High Availability i SAP HANA System Replication on-premise (do wykorzystania jako ogólny punkt odniesienia; zawierają one znacznie bardziej szczegółowe informacje)
 * [Informacje o wersji SUSE High Availability Extension 12 SP3][suse-ha-12sp3-relnotes]
 * [Aplikacje SAP NetApp na platformie Microsoft Azure przy użyciu plików NetApp platformy Azure][anf-sap-applications-azure]
-* [SAP HANA w systemach NetApp z systemem plików sieciowych (NFS)](https://www.netapp.com/us/media/tr-4435.pdf): Przewodnik konfiguracji zawierający informacje o tym, jak skonfigurować system SAP HANA przy użyciu usługi Azure NFS przez NetApp
 
 
 ## <a name="overview"></a>Omówienie
@@ -334,7 +333,7 @@ Skonfiguruj i przygotuj system operacyjny, wykonując następujące czynności:
 
     Uruchom ponownie maszynę wirtualną, aby aktywować zmiany.  
 
-3. **[A]** Przygotuj system operacyjny do uruchomienia SAP HANA w systemach NetApp z systemem NFS, zgodnie z opisem w [SAP HANA na NetApp AFF Systems z przewodnikiem konfiguracji NFS](https://www.netapp.com/us/media/tr-4435.pdf). Utwórz plik konfiguracyjny */etc/sysctl.d/netapp-hana.conf* dla ustawień konfiguracji NetApp.  
+3. **[A]** Przygotuj system operacyjny do uruchamiania sap HANA w systemach NetApp z systemem NFS, zgodnie z opisem w [aplikacji NetApp SAP na platformie Microsoft Azure przy użyciu plików NetApp platformy Azure.][anf-sap-applications-azure] Utwórz plik konfiguracyjny */etc/sysctl.d/netapp-hana.conf* dla ustawień konfiguracji NetApp.  
 
     <pre><code>
     vi /etc/sysctl.d/netapp-hana.conf
@@ -368,7 +367,7 @@ Skonfiguruj i przygotuj system operacyjny, wykonując następujące czynności:
     vm.swappiness=10
     </code></pre>
 
-4. **[A]** Dostosuj ustawienia sunrpc, zgodnie z zaleceniami [sap HANA na NetApp AFF Systems z przewodnikiem konfiguracji NFS](https://www.netapp.com/us/media/tr-4435.pdf).  
+4. **[A]** Dostosuj ustawienia sunrpc, zgodnie z zaleceniami aplikacji [NetApp SAP na platformie Microsoft Azure przy użyciu plików NetApp platformy Azure][anf-sap-applications-azure].  
 
     <pre><code>
     vi /etc/modprobe.d/sunrpc.conf
@@ -637,7 +636,7 @@ W tym przykładzie wdrażania sap HANA w konfiguracji skalowania w poziomie z w�
    - `async_write_submit_active` **on**
    - `async_write_submit_blocks`**wszystkie**
 
-   Aby uzyskać więcej informacji, zobacz [SAP HANA w systemach NetApp AFF z przewodnikiem konfiguracji systemu NFS](https://www.netapp.com/us/media/tr-4435.pdf). 
+   Aby uzyskać więcej informacji, zobacz [NetApp SAP Applications na platformie Microsoft Azure przy użyciu plików NetApp platformy Azure][anf-sap-applications-azure]. 
 
    Począwszy od systemów SAP HANA 2.0, `global.ini`można ustawić parametry w . Aby uzyskać więcej informacji, zobacz UWAGA SAP [1999930](https://launchpad.support.sap.com/#/notes/1999930).  
    
@@ -855,5 +854,4 @@ W tym przykładzie wdrażania sap HANA w konfiguracji skalowania w poziomie z w�
 * [Planowanie i implementacja maszyn wirtualnych platformy Azure dla systemu SAP][planning-guide]
 * [Wdrożenie maszyn wirtualnych platformy Azure dla systemu SAP][deployment-guide]
 * [Wdrożenie usługi DBMS maszyn wirtualnych platformy Azure dla systemu SAP][dbms-guide]
-* Aby dowiedzieć się, jak ustalić wysoką dostępność i zaplanować odzyskiwanie po awarii sap HANA na platformie Azure (duże wystąpienia), zobacz [SAP HANA (duże wystąpienia) wysoka dostępność i odzyskiwanie po awarii na platformie Azure.](hana-overview-high-availability-disaster-recovery.md)
 * Aby dowiedzieć się, jak ustalić wysoką dostępność i zaplanować odzyskiwanie po awarii usługi SAP HANA na maszynach wirtualnych platformy Azure, zobacz [Wysoka dostępność sap HANA na maszynach wirtualnych platformy Azure (VM)][sap-hana-ha].

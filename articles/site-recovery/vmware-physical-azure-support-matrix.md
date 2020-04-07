@@ -3,12 +3,12 @@ title: Macierz obsługi odzyskiwania po awarii VMware/fizycznej w usłudze Azure
 description: Podsumowuje obsługę odzyskiwania po awarii maszyn wirtualnych VMware i serwera fizycznego na platformie Azure przy użyciu usługi Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: b4cf19f4f74ba24951efb806a9f2e3d88fcad7bc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: fbd5d87b219cbb482569dc5e45adc9c81181670c
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478426"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672429"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych vmware i serwerów fizycznych na platformie Azure
 
@@ -36,7 +36,7 @@ Hosty vSphere | Wersja 6.7, 6.5, 6.0 lub 5.5 | Zaleca się, aby hosty vSphere i 
 
 Serwer konfiguracji jest komputerem lokalnym, na który są uruchamiane składniki usługi Site Recovery, w tym serwer konfiguracji, serwer przetwarzania i główny serwer docelowy.
 
-- W przypadku maszyn wirtualnych VMware serwer konfiguracji jest ustawiany przez pobranie szablonu OVF w celu utworzenia maszyny wirtualnej VMware.
+- W przypadku maszyn wirtualnych VMware serwer konfiguracji można ustawić, pobierając szablon OVF w celu utworzenia maszyny wirtualnej VMware.
 - W przypadku serwerów fizycznych komputer konfiguracyjny jest ręczny.
 
 **Składnik** | **Wymagania**
@@ -51,7 +51,7 @@ Ustawienia regionalne systemu operacyjnego | Angielski (en-us)
 [PowerCLI (WYCHOWA)](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Nie jest potrzebny do konfiguracji serwera w wersji [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) lub nowszej.
 Role systemu Windows Server | Nie włączaj Usług domenowych Active Directory; internetowych usług informacyjnych (IIS) lub funkcji Hyper-V.
 Zasady grupy| - Uniemożliwić dostęp do wiersza polecenia. <br/> - Uniemożliwić dostęp do narzędzi do edycji rejestru. <br/> - Logika zaufania dla załączników plików. <br/> - Włącz wykonywanie skryptów. <br/> - [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | Upewnij się, że:<br/><br/> - Nie masz wcześniej istniejącej domyślnej strony internetowej <br/> - Włącz [uwierzytelnianie anonimowe](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br/> - Włącz ustawienie [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10))  <br/> - Nie masz wcześniej istniejącej strony internetowej / aplikacji nasłuchując na porcie 443<br/>
+IIS | Upewnij się, że:<br/><br/> - Nie masz wcześniej istniejącej domyślnej witryny <br/> - Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> - Włącz ustawienie [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br/> - Nie masz wcześniej istniejącej strony internetowej / aplikacji nasłuchując na porcie 443<br/>
 Typ karty sieciowej | VMXNET3 (po wdrożeniu jako maszyna wirtualna VMware)
 Typ adresu IP | Statyczny
 Porty | 443 używany do aranżacji kanału sterującego<br/>9443 dla transportu danych
@@ -66,7 +66,8 @@ Usługa Site Recovery obsługuje replikację dowolnego obciążenia uruchomioneg
 **Składnik** | **Szczegóły**
 --- | ---
 Ustawienia komputera | Maszyny replikowane na platformę Azure muszą spełniać [wymagania platformy Azure.](#azure-vm-requirements)
-Obciążenie komputera | Usługa Site Recovery obsługuje replikację dowolnego obciążenia uruchomionego na obsługiwanym komputerze. [Dowiedz się więcej](site-recovery-workload.md).
+Obciążenie komputera | Usługa Site Recovery obsługuje replikację dowolnego obciążenia uruchomionego na obsługiwanym komputerze. [Dowiedz się więcej](https://aka.ms/asr_workload).
+Nazwa maszyny | Upewnij się, że wyświetlana nazwa komputera nie należeć do [nazw zastrzeżonych zasobów platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-reserved-resource-name)<br/><br/> W nazwach woluminów logicznych nie rozróżnia się wielkość liter. Upewnij się, że żadne dwa woluminy na urządzeniu nie mają tej samej nazwy. Przykład: Woluminy o nazwach "voLUME1", "volume1" nie mogą być chronione za pośrednictwem usługi Azure Site Recovery.
 Windows Server 2019 | Obsługiwane z [pakietu zbiorczego aktualizacji 34](https://support.microsoft.com/help/4490016) (wersja 9.22 usługi mobilności) i dalej.
 Windows Server 2016 64-bitowy | Obsługiwane dla Server Core, Server with Desktop Experience.
 Windows Server 2012 R2 / Windows Server 2012 | Obsługiwane.
@@ -118,16 +119,16 @@ Debian 8 | [9.29][9.29 UR] | 3.16.0-4-amd64 do 3.16.0-10-amd64, 4.9.0-0.bpo.4-am
 
 **Release** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3,SP4) | [9.32][9.32 UR] | Obsługiwane są [wszystkie jądra SUSE 12 SP1, SP2, SP3,SP4.](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)</br></br> 4.4.138-4.7-azure do 4.4.180-4.31-azure,</br>4.12.14-6.3-lazurowe do 4.12.14-6.34-azure  |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3,SP4) | [9.31][9.31 UR] | Obsługiwane są [wszystkie jądra SUSE 12 SP1, SP2, SP3,SP4.](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)</br></br> 4.4.138-4.7-azure do 4.4.180-4.31-azure,</br>4.12.14-6.3-lazurowe do 4.12.14-6.29-azure  |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3,SP4) | [9.30][9.30 UR] | Obsługiwane są [wszystkie jądra SUSE 12 SP1, SP2, SP3,SP4.](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)</br></br> 4.4.138-4.7-azure do 4.4.180-4.31-azure,</br>4.12.14-6.3-lazurowe do 4.12.14-6.26-azure  |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3,SP4) | [9.29][9.29 UR] | Obsługiwane są [wszystkie jądra SUSE 12 SP1, SP2, SP3,SP4.](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)</br></br> 4.4.138-4.7-azure do 4.4.180-4.31-azure,</br>4.12.14-6.3-azure do 4.12.14-6.23-azure  |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.28][9.28 UR] | Sp1 3.12.49-11-domyślnie 3.12.74-60.64.40 domyślnie</br></br> SP1(LTSS) 3.12.74-60.64.45 domyślnie dla 3.12.74-60.64.118 domyślnie</br></br> Sp2 4.4.21-69 domyślnie 4.4.120-92.70 domyślnie</br></br>SP2(LTSS) 4.4.121-92.73 domyślnie dla 4.4.121-92.117 domyślnie</br></br>Sp3 4.4.73-5 domyślnie dla 4.4.180-94.100-default</br></br>Sp3 4.4.138-4.7-azure do 4.4.180-4.31-azure</br></br>Sp4 4.12.14-94.41 domyślnie dla 4.12.14-95.29 domyślnie</br>Sp4 4.12.14-6.3-azure do 4.12.14-6.23-azure |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.27][9.27 UR] | Sp1 3.12.49-11-domyślnie 3.12.74-60.64.40 domyślnie</br></br> SP1(LTSS) 3.12.74-60.64.45 domyślnie dla 3.12.74-60.64.115 domyślnie</br></br> Sp2 4.4.21-69 domyślnie 4.4.120-92.70 domyślnie</br></br>SP2(LTSS) 4.4.121-92.73 domyślnie dla 4.4.121-92.114 domyślnie</br></br>Sp3 4.4.73-5 domyślnie dla 4.4.180-94.97 domyślnie</br></br>Sp3 4.4.138-4.7-azure do 4.4.180-4.31-azure</br></br>Sp4 4.12.14-94.41 domyślnie dla 4.12.14-95.19 domyślnie</br>Sp4 4.12.14-6.3-azure do 4.12.14-6.15-azure |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.26][9.26 UR] | Sp1 3.12.49-11-domyślnie 3.12.74-60.64.40 domyślnie</br></br> SP1(LTSS) 3.12.74-60.64.45 domyślnie dla 3.12.74-60.64.110 domyślnie</br></br> Sp2 4.4.21-69 domyślnie 4.4.120-92.70 domyślnie</br></br>SP2(LTSS) 4.4.121-92.73 domyślnie dla 4.4.121-92.109 domyślnie</br></br>Sp3 4.4.73-5 domyślnie dla 4.4.178-94.91 domyślnie</br></br>Sp3 4.4.138-4.7-azure do 4.4.178-4.28-azure</br></br>Sp4 4.12.14-94.41 domyślnie dla 4.12.14-95.16 domyślnie</br>Sp4 4.12.14-6.3-azure do 4.12.14-6.9-azure |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.25][9.25 UR] | Sp1 3.12.49-11-domyślnie 3.12.74-60.64.40 domyślnie</br></br> SP1(LTSS) 3.12.74-60.64.45 domyślnie dla 3.12.74-60.64.107 domyślnie</br></br> Sp2 4.4.21-69 domyślnie 4.4.120-92.70 domyślnie</br></br>SP2(LTSS) 4.4.121-92.73 domyślnie dla 4.4.121-92.104 domyślnie</br></br>Sp3 4.4.73-5 domyślnie dla 4.4.176-94.88 domyślnie</br></br>Sp3 4.4.138-4.7-azure do 4.4.176-4.25-azure</br></br>Sp4 4.12.14-94.41 domyślnie dla 4.12.14-95.13 domyślnie</br>Sp4 4.12.14-6.3-azure do 4.12.14-6.9-azure |
 
 ### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux Enterprise Server 15 obsługiwane wersje jądra
 
 **Release** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 i 15 SP1 | 9.32 | Wszystkie [zapasy SUSE 15 i 15 jądra](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15) są obsługiwane.</br></br> 4.12.14-5.5-lazurowe do 4.12.14-8.22-azure |
+SUSE Linux Enterprise Server 15 i 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | Wszystkie [zapasy SUSE 15 i 15 jądra](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15) są obsługiwane. </br></br> 4.12.14-5.5-lazurowe do 4.12.14-8.22-azure
 
 ## <a name="linux-file-systemsguest-storage"></a>Systemy plików Linux/pamięć gościnna
 
@@ -138,8 +139,8 @@ Menedżer woluminów | - LVM jest obsługiwany.<br/> - /boot na LVM jest obsług
 Parawirualizowane urządzenia pamięci masowej | Urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
 Urządzenia we/wy bloków wielokanlatowych | Bez pomocy technicznej.
 Serwery fizyczne z kontrolerem pamięci masowej HP CCISS | Bez pomocy technicznej.
-Konwencja nazewnictwa punktów instalacji/instalacji | Nazwa urządzenia lub nazwa punktu instalacji powinny być unikatowe.<br/> Upewnij się, że żadne dwa urządzenia/punkty instalacji nie mają nazw z uwzględnieniem wielkości liter. Na przykład urządzenia nazewnictwa dla tej samej maszyny Wirtualnej jako *device1* i *Device1* nie jest obsługiwany.
-Katalogi | Jeśli korzystasz z wersji usługi mobilności wcześniejszej niż wersja 9.20 (wydana w [zestawie zbiorczym aktualizacji 31),](https://support.microsoft.com/help/4478871/)obowiązują następujące ograniczenia:<br/><br/> - Te katalogi (jeśli są skonfigurowane jako oddzielne partycje/systemy plików) muszą znajdować się na tym samym dysku systemu operacyjnego na serwerze źródłowym: /(root), /boot, /usr, /usr/local, /var, /etc.</br> - Katalog /boot powinien znajdować się na partycji dysku i nie być woluminem LVM.<br/><br/> Od wersji 9.20 ograniczenia te nie mają zastosowania.
+Konwencja nazewnictwa punktów instalacji/instalacji | Nazwa urządzenia lub nazwa punktu instalacji powinny być unikatowe.<br/> Upewnij się, że żadne dwa urządzenia/punkty instalacji nie mają nazw z uwzględnieniem wielkości liter. Na przykład nazewnictwo urządzeń dla tej samej maszyny Wirtualnej jako *device1* i *Device1* nie jest obsługiwany.
+Katalogi | Jeśli korzystasz z wersji usługi mobilności wcześniejszej niż wersja 9.20 (wydana w [zestawie zbiorczym aktualizacji 31),](https://support.microsoft.com/help/4478871/)obowiązują następujące ograniczenia:<br/><br/> - Te katalogi (jeśli są skonfigurowane jako oddzielne partycje/systemy plików) muszą znajdować się na tym samym dysku systemu operacyjnego na serwerze źródłowym: /(root), /boot, /usr, /usr/local, /var, /etc.</br> - Katalog /boot powinien znajdować się na partycji dysku i nie być woluminem LVM.<br/><br/> Od wersji 9.20 ograniczenia te nie mają zastosowania. 
 Katalog rozruchowy | - Dyski rozruchowe nie mogą być w formacie partycji GPT. Jest to ograniczenie architektury platformy Azure. Dyski GPT są obsługiwane jako dyski danych.<br/><br/> Wiele dysków rozruchowych na maszynie wirtualnej nie jest obsługiwanych<br/><br/> - /boot na woluminie LVM na więcej niż jednym dysku nie jest obsługiwany.<br/> - Nie można replikować komputera bez dysku rozruchowego.
 Wymagania dotyczące wolnego miejsca| 2 GB na partycji /root <br/><br/> 250 MB w folderze instalacyjnym
 XFSv5 | Funkcje XFSv5 w systemach plików XFS, takie jak suma kontrolna metadanych, są obsługiwane (usługa mobilności w wersji 9.10).<br/> Użyj narzędzia xfs_info, aby sprawdzić superblok XFS dla partycji. Jeśli `ftype` jest ustawiona na 1, funkcje XFSv5 są w użyciu.
@@ -231,7 +232,7 @@ Chłodne przechowywanie | Nie
 Przechowywanie na gorąco| Nie
 Blokowe obiekty blob | Nie
 Szyfrowanie w spoczynku (SSE)| Tak
-Szyfrowanie w spoczynku (CMK)| Tak (za pomocą modułu Powershell Az 3.3.0)
+Szyfrowanie w spoczynku (CMK)| Tak (za pośrednictwem modułu PowerShell Az 3.3.0)
 Premium Storage | Tak
 Usługa importu/eksportu | Nie
 Zapory usługi Azure Storage dla sieci wirtualnych | Tak.<br/> Skonfigurowany na docelowym koncie magazynu/pamięci podręcznej (używanym do przechowywania danych replikacji).

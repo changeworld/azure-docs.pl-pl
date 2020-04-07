@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/09/2020
 ms.author: glenga
-ms.openlocfilehash: d53c41752d57a27ebea9bd60f7e723dab1e7308a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 749b733039e89421ac33ef76a11f3291b296e718
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78190875"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673176"
 ---
 ## <a name="run-the-function-locally"></a>Lokalne uruchamianie funkcji
 
@@ -25,6 +25,13 @@ func start
 ```
 npm install
 npm start
+```
+::: zone-end
+
+::: zone pivot="programming-language-java"
+```
+mvn clean package 
+mvn azure-functions:run
 ```
 ::: zone-end
 
@@ -44,12 +51,12 @@ Http Functions:
 </pre>
 
 >[!NOTE]  
-> Jeśli httpExample nie jest wyświetlany, jak pokazano poniżej, prawdopodobnie uruchomiono hosta z poziomu folderu *HttpExample.* W takim przypadku użyj **klawisza Ctrl**+**C,** aby zatrzymać hosta, przejdź do nadrzędnego folderu *LocalFunctionProj* i ponownie uruchom poprzednie polecenie.
+> Jeśli httpExample nie jest wyświetlany, jak pokazano poniżej, prawdopodobnie uruchomiono hosta spoza folderu głównego projektu. W takim przypadku użyj **klawisza Ctrl**+**C,** aby zatrzymać hosta, przejść do folderu głównego projektu i ponownie uruchomić poprzednie polecenie.
 
 Skopiuj `HttpExample` adres URL funkcji z tego danych `?name=<your-name>`wyjściowych do przeglądarki `http://localhost:7071/api/HttpExample?name=Functions`i dołącz ciąg zapytania, tworząc pełny adres URL, taki jak . Przeglądarka powinna wyświetlać `Hello Functions`komunikat w stylu:
 
 ![Wynik uruchomienia funkcji lokalnie w przeglądarce](./media/functions-run-function-test-local-cli/function-test-local-browser.png)
 
-Terminal, w którym `func start` uruchomiono również pokazuje dane wyjściowe dziennika podczas składania żądań.
+Terminal, w którym uruchomiono projekt, pokazuje również dane wyjściowe dziennika podczas składania żądań.
 
 Gdy będziesz gotowy, użyj **klawisza Ctrl**+**C** i zatrzymaj `y` hosta funkcji.

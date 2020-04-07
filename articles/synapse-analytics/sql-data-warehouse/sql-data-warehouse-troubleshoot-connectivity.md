@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 08fb0a6675d18370482abe9b1d7b9a0d9ee5c364
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 8aaca40961b1294336b236305ecdffcc92c5a4d9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633003"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742580"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Rozwiązywanie problemów z łącznością
 
@@ -79,14 +79,14 @@ Sprawdź, czy używasz najnowszych narzędzi do łączenia się z pulą SQL Syna
 
 Upewnij się, że używasz najnowszych wersji sterowników.Korzystanie ze starszej wersji sterowników może spowodować nieoczekiwane zachowania, ponieważ starsze sterowniki mogą nie obsługiwać nowych funkcji.
 
-- [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server)
-- [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
-- [OLE DB](/sql/connect/oledb/download-oledb-driver-for-sql-server)
-- [PHP](/sql/connect/php/download-drivers-php-sql-server)
+- [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [OLE DB](/sql/connect/oledb/download-oledb-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [PHP](/sql/connect/php/download-drivers-php-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="check-your-connection-string"></a>Sprawdzanie parametrów połączenia
 
-Upewnij się, że parametry połączenia zostały prawidłowo ustawione.  Poniżej znajduje się kilka przykładów.  Dodatkowe informacje na temat [parametrów połączeń można znaleźć tutaj](/sql-data-warehouse/sql-data-warehouse-connection-strings.md).
+Upewnij się, że parametry połączenia zostały prawidłowo ustawione.  Poniżej znajduje się kilka przykładów.  Dodatkowe informacje na temat [parametrów połączeń można znaleźć tutaj](sql-data-warehouse-connection-strings.md).
 
 Parametry połączenia sterownika ADO.NET
 
@@ -122,4 +122,4 @@ Błędy 40914 i 40615, zobacz [opis błędu i rozdzielczość tutaj](../../sql-d
 
 ## <a name="still-having-connectivity-issues"></a>Nadal masz problemy z łącznością?
 
-Utwórz [bilet pomocy technicznej,](/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md) aby zespół inżynierów mógł Cię wspierać.
+Utwórz [bilet pomocy technicznej,](sql-data-warehouse-get-started-create-support-ticket.md) aby zespół inżynierów mógł Cię wspierać.

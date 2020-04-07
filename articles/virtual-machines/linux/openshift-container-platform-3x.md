@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/14/2019
+ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 615d9a3c5c359174ef15028e82044a85da0dd733
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd1c381ecd2b7dba4c77a025cb0332ace4147bf
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75561290"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673661"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Wdrażanie platformy kontenerowej OpenShift 3.11 na platformie Azure
 
@@ -303,7 +303,7 @@ Różne wersje mogą mieć różne parametry, więc sprawdź niezbędne parametr
 | `masterClusterType` | Określ, czy klaster używa prywatnych czy publicznych węzłów głównych. Jeśli wybrano opcję prywatna, węzły główne nie będą udostępniane w Internecie za pośrednictwem publicznego adresu IP. Zamiast tego użyje prywatnego ip określonego w`masterPrivateClusterIp` | public <br> private | public |
 | `masterPrivateClusterIp` | Jeśli wybrano prywatne węzły główne, prywatny adres IP musi być określony do użycia przez wewnętrzny moduł równoważenia obciążenia dla węzłów głównych. Ten statyczny adres IP musi znajdować się w bloku CIDR dla podsieci głównej i nie jest jeszcze używany. Jeśli wybrane są publiczne węzły główne, ta wartość nie będzie używana, ale nadal musi być określona |  | 10.1.0.200 |
 | `routerClusterType` | Określ, czy klaster używa prywatnych czy publicznych węzłów podczerwień. Jeśli wybrano opcję prywatna, węzły podczerwień nie będą udostępniane w Internecie za pośrednictwem publicznego adresu IP. Zamiast tego użyje prywatnego ip określonego w`routerPrivateClusterIp` | public <br> private | public |
-| `routerPrivateClusterIp` | Jeśli wybrano prywatne węzły podczerwieni, prywatny adres IP musi być określony do użycia przez wewnętrzny moduł równoważenia obciążenia dla węzłów podczerwone. Ten statyczny adres IP musi znajdować się w bloku CIDR dla podsieci głównej i nie jest jeszcze używany. Jeśli zaznaczone są publiczne węzły podczerwień, ta wartość nie będzie używana, ale nadal musi być określona |  | 10.2.0.200 |
+| `routerPrivateClusterIp` | Jeśli wybrano prywatne węzły podczerwieni, prywatny adres IP musi być określony do użycia przez wewnętrzny moduł równoważenia obciążenia dla węzłów podczerwone. Ten statyczny adres IP musi znajdować się w bloku CIDR dla podsieci podsieci i nie jest jeszcze używany. Jeśli zaznaczone są publiczne węzły podczerwień, ta wartość nie będzie używana, ale nadal musi być określona |  | 10.2.0.200 |
 | `routingCertType` | Używanie certyfikatu niestandardowego do routingu domeny lub domyślnego certyfikatu z podpisem własnym — postępuj zgodnie z instrukcjami w sekcji **Certyfikaty niestandardowe** | selfsigned <br> niestandardowy | selfsigned |
 | `masterCertType` | Używanie certyfikatu niestandardowego dla domeny głównej lub domyślnego certyfikatu z podpisem własnym — postępuj zgodnie z instrukcjami w sekcji **Certyfikaty niestandardowe** | selfsigned <br> niestandardowy | selfsigned |
 

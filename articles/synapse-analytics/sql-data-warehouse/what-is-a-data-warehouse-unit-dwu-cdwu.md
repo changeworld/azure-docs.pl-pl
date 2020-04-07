@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 01a05755fc18a85a95e9c1bec1c470d37af656d1
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 62cf1f369cbde372e82e7c3ffe26473f09668bc7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632231"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742543"
 ---
 # <a name="data-warehouse-units-dwus"></a>Jednostki magazynu danych (DWU)
 
@@ -24,9 +24,9 @@ Zalecenia dotyczące wyboru idealnej liczby jednostek magazynu danych (DWU) w ce
 
 ## <a name="what-are-data-warehouse-units"></a>Co to są jednostki magazynu danych
 
-[A Synapse puli SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) reprezentuje zbiór zasobów analitycznych, które są aprowizacji. Zasoby analityczne są definiowane jako kombinacja procesora CPU, pamięci i we/wy. 
+[A Synapse puli SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) reprezentuje zbiór zasobów analitycznych, które są aprowizacji. Zasoby analityczne są definiowane jako kombinacja procesora CPU, pamięci i we/wy.
 
-Te trzy zasoby są powiązane z jednostkami skali obliczeniowej o nazwie Jednostki hurtowni danych (DWU). Jednostka DWU to abstrakcyjna, znormalizowana miara zasobów obliczeniowych i wydajności. 
+Te trzy zasoby są powiązane z jednostkami skali obliczeniowej o nazwie Jednostki hurtowni danych (DWU). Jednostka DWU to abstrakcyjna, znormalizowana miara zasobów obliczeniowych i wydajności.
 
 Zmiana poziomu usług zmienia liczbę jednostek DU dostępnych dla systemu, co z kolei dostosowuje wydajność i koszt systemu.
 
@@ -72,7 +72,7 @@ Kroki, aby znaleźć najlepszy DWU dla obciążenia:
 2. Monitoruj wydajność aplikacji podczas testowania wczytywania danych do systemu, obserwując liczbę jednostek DU wybranych w porównaniu z obserwowaną wydajnością.
 3. Określ wszelkie dodatkowe wymagania dotyczące okresowych okresów szczytowej aktywności. Obciążenia, które wykazują znaczne szczyty i koryta w aktywności może być konieczne często skalowane.
 
-Pula SQL to system skalowania w poziomie, który może aprowizować ogromne ilości danych obliczeniowych i zapytań. 
+Pula SQL to system skalowania w poziomie, który może aprowizować ogromne ilości danych obliczeniowych i zapytań.
 
 Aby wyświetlić jego prawdziwe możliwości skalowania, zwłaszcza w większych jednostek DWU, zaleca się skalowanie zestawu danych podczas skalowania, aby upewnić się, że masz wystarczającą ilość danych do źródła procesorów. Do testowania skali zaleca się użycie co najmniej 1 TB.
 
@@ -82,7 +82,7 @@ Aby wyświetlić jego prawdziwe możliwości skalowania, zwłaszcza w większych
 
 ## <a name="permissions"></a>Uprawnienia
 
-Zmiana jednostek magazynu danych wymaga uprawnień opisanych w [alter database](/sql/t-sql/statements/alter-database-transact-sql).
+Zmiana jednostek magazynu danych wymaga uprawnień opisanych w [alter database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 Wbudowane role dla zasobów platformy Azure, takich jak SQL DB Contributor i SQL Server Contributor, mogą zmieniać ustawienia DWU.
 
@@ -134,7 +134,7 @@ Za pomocą T-SQL można wyświetlać bieżące ustawienia DWU, zmieniać ustawie
 Aby zmienić jednostki DWU:
 
 1. Połącz się z główną bazą danych skojarzoną z serwerem logicznej bazy danych SQL.
-2. Użyj instrukcji [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL. W poniższym przykładzie ustawia cel poziomu usługi dw1000c dla bazy danych MySQLDW.
+2. Użyj instrukcji [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL. W poniższym przykładzie ustawia cel poziomu usługi dw1000c dla bazy danych MySQLDW.
 
 ```Sql
 ALTER DATABASE MySQLDW

@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 3ff65a637c1d3722e773ab27f051b3b5bc109a23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4290bad405ddab6d89cac5ef7bfd185247d41da1
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281735"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745117"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Karta Marketplace modułu IoT Edge
+
+>[!Important]
+>Od 30 marca 2020 r. rozpoczniemy przenoszenie zarządzania ofertami modułu IoT Edge do Centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [tworzenie oferty modułu IoT Edge,](https://aka.ms/AzureCreateIoT) aby zarządzać zmigrowanymi ofertami.
 
 Karta **Marketplace** na stronie **Nowa oferta** umożliwia dostarczanie potencjalnym klientom informacji marketingowych, sprzedażowych i prawnych oraz umów oraz zarządzanie potencjalnymi klientami generowanymi z rynku. Ten długi formularz jest podzielony na cztery sekcje: **Przegląd**, **Artefakty marketingowe,** **Zarządzanie ołowiem**i **Prawne**.
 
@@ -86,13 +89,13 @@ W tej sekcji znajduje się podsekcja: **Logos**, **Screenshot**i **Filmy.**
 |  ---------                |     ---------------                                                          |
 | *Logo*  | Zobacz poprzednie zrzuty ekranu, aby zobaczyć, jak i gdzie będą używane Twoje logo.  |
 | **Small\***                 | Format PNG o rozmiarze 40x40 pikseli                                                     |
-| **Średni\***                | Format PNG 90x90 pikseli                                                     |
+| **Medium\***                | Format PNG 90x90 pikseli                                                     |
 | **Large\***                 | Format PNG o rozmiarze 115x115 pikseli                                                  |
 | **Szeroki\***                  | Format PNG o 255 x 115 pikseli                                                   |
 | **Bohater**                  | Format PNG o rozmiarze 815x290 pikseli.  Opcjonalnie jednak po przesłaniu ikony bohatera nie można usunąć. |
 | *Zrzuty ekranu*  | Zrzuty ekranu są wyświetlane na stronie szczegółów produktu. Są one dobrym sposobem wizualnego komunikowania, co robi moduł IoT Edge i jak to działa. Można wyświetlić diagramy architektury lub ilustracje przypadków użycia na przykład. Opcjonalnie, ale maksymalnie pięć zrzutów ekranu na jednostkę SKU. |
 | **Nazwa**                  | Nazwa lub tytuł. Maksymalna długość 100 znaków.                             |
-| **Obrazu**                 | Obraz przechwytywania ekranu w formacie PNG o rozmiarze 533 x 324 pikseli                               |
+| **Image (Obraz)**                 | Obraz przechwytywania ekranu w formacie PNG o rozmiarze 533 x 324 pikseli                               |
 | *Filmy wideo*  | Filmy są wyświetlane na stronie szczegółów produktu. Są one dobrym sposobem wizualnego komunikowania, co robi moduł IoT Edge i jak to działa. |
 | **Nazwa**                  | Nazwa lub tytuł. Maksymalna długość 100 znaków.                             |
 | **Link**                  | Adres URL filmu, hostowany w YouTube lub Vimeo                                        |

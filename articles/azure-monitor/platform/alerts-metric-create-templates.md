@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
-ms.openlocfilehash: fe1f1d2700619bfcac4512bb0e631262edf8401c
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398094"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677010"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Tworzenie alertu metryki za pomocą szablonu usługi Resource Manager
 
@@ -563,7 +563,7 @@ az group deployment create \
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>Szablon alertu metryki progu statycznego, który monitoruje wiele kryteriów
 
-Nowsze alerty metryki obsługują alerty dotyczące metryk wielowymiarowych, a także obsługuje wiele kryteriów. Za pomocą następującego szablonu można utworzyć bardziej zaawansowaną regułę alertu metryki dotyczące metryk wymiarowych i określić wiele kryteriów.
+Nowsze alerty metryki obsługują alerty dotyczące metryk wielowymiarowych, a także obsługują definiowanie wielu kryteriów (do 5 kryteriów na regułę alertu). Za pomocą następującego szablonu można utworzyć bardziej zaawansowaną regułę alertu metryki dotyczące metryk wymiarowych i określić wiele kryteriów.
 
 Należy zwrócić uwagę na następujące ograniczenia podczas używania wymiarów w regule alertu zawierającej wiele kryteriów:
 - Można wybrać tylko jedną wartość na wymiar w ramach każdego kryterium.

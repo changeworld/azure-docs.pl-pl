@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 39747ac0a7133562bed526f44e30bf4a656127c0
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387652"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673607"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Podręcznik do rozwiązywania typowych wymagań dotyczących zabezpieczeń za pomocą usługi Azure SQL Database
 
@@ -63,7 +63,7 @@ O ile nie określono inaczej, zalecamy przestrzeganie wszystkich najlepszych pra
 
 Planujemy nadal aktualizować zalecenia i najlepsze rozwiązania wymienione tutaj. Podaj dane wejściowe lub wszelkie poprawki dla tego dokumentu za pomocą łącza **Opinie** u dołu tego artykułu.
 
-## <a name="authentication"></a>Uwierzytelnianie
+## <a name="authentication"></a>Authentication
 
 Uwierzytelnianie jest procesem udowodnienia, że użytkownik jest tym, za kogo się podają. Usługa Azure SQL Database obsługuje dwa typy uwierzytelniania:
 
@@ -451,7 +451,7 @@ Szyfrowanie może służyć jako sposób, aby upewnić się, że tylko określon
 - Użyj szyfrowania na poziomie komórki (CLE). Zobacz [artykuł, Szyfruj kolumnę danych, aby](https://docs.microsoft.com/sql/relational-databases/security/encryption/encrypt-a-column-of-data) uzyskać szczegółowe informacje. 
 - Użyj zawsze zaszyfrowane, ale należy pamiętać o jego ograniczenia. Ograniczenia są wymienione poniżej.
 
-**Najważniejsze wskazówki**
+**Najlepsze rozwiązania**
 
 W przypadku korzystania z CLE:
 
@@ -466,7 +466,7 @@ W przypadku korzystania z CLE:
 
 Należy pamiętać, że always encrypted jest przeznaczony przede wszystkim do ochrony poufnych danych używanych przez użytkowników o wysokich uprawnieniach usługi Azure SQL Database (operatorów chmury, dbA) - zobacz [Ochrona poufnych danych w użyciu przed wysokiej uprzywilejowanych, nieautoryzowanych użytkowników](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users). Należy pamiętać o następujących wyzwaniach podczas korzystania zawsze szyfrowane do ochrony danych przed użytkownikami aplikacji:
 
-- Domyślnie wszystkie sterowniki klienckie firmy Microsoft obsługujące zawsze szyfrowane utrzymują globalną (po jednym na aplikację) pamięć podręczną kluczy szyfrowania kolumn. Gdy sterownik klienta uzyskuje klucz szyfrowania kolumny w postaci zwykłego tekstu, kontaktując się z magazynem kluczy zawierającym klucz główny kolumny, klucz szyfrowania kolumny zwykłego tekstu jest buforowany. To sprawia, że izolowanie danych od użytkowników aplikacji dla wielu użytkowników jest trudne. Jeśli aplikacja podszywa się pod użytkowników końcowych podczas interakcji z magazynem kluczy (np. usługa Azure Key Vault), po tym jak zapytanie użytkownika wypełnia pamięć podręczną kluczem szyfrowania kolumny, kolejne zapytanie, które wymaga tego samego klucza, ale jest wyzwalane przez innego użytkownika, użyje buforowanego klucza. Sterownik nie zadzwoni do magazynu kluczy i nie sprawdzi, czy drugi użytkownik ma uprawnienia dostępu do klucza szyfrowania kolumny. W rezultacie użytkownik będzie mógł zobaczyć zaszyfrowane dane, nawet jeśli użytkownik nie ma dostępu do kluczy. Aby osiągnąć izolację użytkowników w aplikacji dla wielu użytkowników, można wyłączyć buforowanie kluczy szyfrowania kolumn. Wyłączenie buforowania spowoduje dodatkowe koszty ogólne wydajności, ponieważ sterownik będzie musiał skontaktować się z magazynem kluczy dla każdej operacji szyfrowania lub odszyfrowywania danych.
+- Domyślnie wszystkie sterowniki klienckie firmy Microsoft obsługujące zawsze szyfrowane utrzymują globalną (po jednym na aplikację) pamięć podręczną kluczy szyfrowania kolumn. Gdy sterownik klienta uzyskuje klucz szyfrowania kolumny w postaci zwykłego tekstu, kontaktując się z magazynem kluczy zawierającym klucz główny kolumny, klucz szyfrowania kolumny zwykłego tekstu jest buforowany. To sprawia, że izolowanie danych od użytkowników aplikacji dla wielu użytkowników jest trudne. Jeśli aplikacja personifikuje użytkowników końcowych podczas interakcji z magazynem kluczy (takich jak Usługa Azure Key Vault), po kwerendzie użytkownika wypełnia pamięć podręczną kluczem szyfrowania kolumny, kolejne zapytanie, które wymaga tego samego klucza, ale jest wyzwalane przez innego użytkownika użyje klucza buforowanego. Sterownik nie zadzwoni do magazynu kluczy i nie sprawdzi, czy drugi użytkownik ma uprawnienia dostępu do klucza szyfrowania kolumny. W rezultacie użytkownik będzie mógł zobaczyć zaszyfrowane dane, nawet jeśli użytkownik nie ma dostępu do kluczy. Aby osiągnąć izolację użytkowników w aplikacji dla wielu użytkowników, można wyłączyć buforowanie kluczy szyfrowania kolumn. Wyłączenie buforowania spowoduje dodatkowe koszty ogólne wydajności, ponieważ sterownik będzie musiał skontaktować się z magazynem kluczy dla każdej operacji szyfrowania lub odszyfrowywania danych.
 
 ### <a name="protect-data-against-unauthorized-viewing-by-application-users-while-preserving-data-format"></a>Ochrona danych przed nieautoryzowanym przeglądaniem przez użytkowników aplikacji przy jednoczesnym zachowaniu formatu danych
 Inną techniką zapobiegania nieautoryzowanym użytkownikom przeglądania danych jest zaciemnianie lub maskowanie danych przy jednoczesnym zachowaniu typów i formatów danych, aby zapewnić, że aplikacje użytkownika mogą nadal obsługiwać i wyświetlać dane.
@@ -735,7 +735,7 @@ Monitoruj, kto uzyskuje dostęp do poufnych danych i przechwytuj zapytania dotyc
 **Jak wdrożyć**:
 
 - Użyj inspekcji SQL i klasyfikacji danych w połączeniu. 
-  - W dzienniku [inspekcji bazy danych SQL](sql-database-auditing.md) można śledzić dostęp specjalnie do poufnych danych. Można również wyświetlić informacje, takie jak dane, które zostały uzyskiczone, a także jego etykiety czułości. Aby uzyskać więcej informacji, zobacz [Inspekcja dostępu do poufnych danych](sql-database-data-discovery-and-classification.md#subheading-3). 
+  - W dzienniku [inspekcji bazy danych SQL](sql-database-auditing.md) można śledzić dostęp specjalnie do poufnych danych. Można również wyświetlić informacje, takie jak dane, które zostały uzyskiczone, a także jego etykiety czułości. Aby uzyskać więcej informacji, zobacz [Odnajdywanie danych & Klasyfikacja](sql-database-data-discovery-and-classification.md) i [Inspekcja dostępu do poufnych danych](sql-database-data-discovery-and-classification.md#audit-sensitive-data). 
 
 **Najważniejsze wskazówki:**
 

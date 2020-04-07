@@ -3,23 +3,23 @@ title: Samouczek — tworzenie reguł i zarządzanie nimi w aplikacji Azure IoT 
 description: W tym samouczku pokazano, jak reguły usługi Azure IoT Central umożliwiają monitorowanie urządzeń w czasie zbliżonym do rzeczywistego i automatyczne wywoływanie akcji, takich jak wysyłanie wiadomości e-mail, gdy reguła wyzwala.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 04/06/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f61a41fa89c7006341db928472f6b20d272bc550
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0d55bafc513ef7553952ee2096ea32db65d6205d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77167410"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673771"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Samouczek: Tworzenie reguły i konfigurowanie powiadomień w aplikacji Azure IoT Central
 
 *Ten artykuł dotyczy operatorów, konstruktorów i administratorów.*
 
-Za pomocą usługi Azure IoT Central można zdalnie monitorować podłączone urządzenia. Reguły usługi Azure IoT Central umożliwiają monitorowanie urządzeń w czasie zbliżonym do rzeczywistego i automatyczne wywoływanie akcji, takich jak wysyłanie wiadomości e-mail. Za pomocą kilku kliknięć można zdefiniować warunek monitorowania danych telemetrycznych z urządzeń i skonfigurować odpowiednią akcję. W tym artykule wyjaśniono, jak utworzyć reguły do monitorowania danych telemetrycznych wysyłanych przez urządzenie.
+Za pomocą usługi Azure IoT Central można zdalnie monitorować podłączone urządzenia. Reguły usługi Azure IoT Central umożliwiają monitorowanie urządzeń w czasie zbliżonym do rzeczywistego i automatyczne wywoływanie akcji, takich jak wysyłanie wiadomości e-mail. W tym artykule wyjaśniono, jak utworzyć reguły do monitorowania danych telemetrycznych wysyłane przez urządzenia.
 
 Urządzenia używają danych telemetrycznych do wysyłania danych liczbowych z urządzenia. Reguła wyzwala, gdy wybrana telemetria urządzenia przekroczy określony próg.
 
@@ -38,7 +38,7 @@ Przed rozpoczęciem należy ukończyć [tworzenie aplikacji Azure IoT Central](.
 
 ## <a name="create-a-rule"></a>Tworzenie reguły
 
-Aby utworzyć regułę telemetrii, szablon urządzenia musi mieć zdefiniowany co najmniej jeden pomiar telemetryczny. W tym samouczku użyto czujnika środowiskowego, które wysyła dane telemetryczne temperatury i wilgotności. Dodano ten szablon urządzenia i utworzono symulowane urządzenie w przewodniku Szybki start [aplikacji Dodaj symulowane do aplikacji IoT Central.](./quick-create-pnp-device.md) Reguła monitoruje temperaturę zgłaszaną przez urządzenie i wysyła wiadomość e-mail, gdy przekracza ona 70 stopni.
+Aby utworzyć regułę telemetrii, szablon urządzenia musi zawierać co najmniej jedną wartość telemetryczną. W tym samouczku użyto symulowanego urządzenia **MXChip IoT DevKit,** które wysyła dane telemetryczne temperatury i wilgotności. Dodano ten szablon urządzenia i utworzono symulowane urządzenie w przewodniku Szybki start [aplikacji Dodaj symulowane do aplikacji IoT Central.](./quick-create-pnp-device.md) Reguła monitoruje temperaturę zgłaszaną przez urządzenie i wysyła wiadomość e-mail, gdy przekracza ona 70 stopni.
 
 1. W lewym okienku wybierz pozycję **Reguły**.
 
@@ -66,8 +66,8 @@ Warunki określają kryteria, które monitoruje reguła. W tym samouczku można 
 
 1. Opcjonalnie można ustawić **agregację czasu**. Po wybraniu agregacji czasu należy również wybrać typ agregacji, taki jak średnia lub suma z listy rozwijanej agregacji.
 
-    * Bez agregacji reguła wyzwala dla każdego punktu danych telemetrii, który spełnia warunek. Na przykład jeśli reguła jest skonfigurowana do wyzwalania, gdy temperatura przekracza 70, reguła wyzwala się niemal natychmiast, gdy urządzenie zgłasza temperaturę > 70.
-    * W przypadku agregacji reguła wyzwala, jeśli łączna wartość punktów danych telemetrycznych w oknie czasu spełnia warunek. Na przykład jeśli reguła jest skonfigurowana do wyzwalania, gdy temperatura jest powyżej 70, agregacja czasu jest ustawiona na 10 minut, a typ agregacji jest średni, reguła wyzwala, gdy urządzenie zgłasza średnią temperaturę > 70, obliczoną w przedziale 10 minut.
+    * Bez agregacji reguła wyzwala dla każdego punktu danych telemetrii, który spełnia warunek. Na przykład jeśli skonfigurujesz regułę do wyzwalania, gdy temperatura przekracza 70, reguła wyzwala się niemal natychmiast, gdy temperatura urządzenia przekroczy tę wartość.
+    * W przypadku agregacji reguła wyzwala, jeśli łączna wartość punktów danych telemetrycznych w oknie czasu spełnia warunek. Na przykład jeśli skonfigurujesz regułę do wyzwalania, gdy temperatura jest powyżej 70 i ze średnią agregacją czasu 10 minut, reguła wyzwala, gdy urządzenie zgłasza średnią temperaturę większą niż 70, obliczoną w odstępie 10 minut.
 
      ![Warunek agregacji](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 
@@ -100,11 +100,11 @@ Jeśli reguła nie jest już potrzebna, usuń ją, otwierając ją i wybierając
 
 ## <a name="enable-or-disable-a-rule"></a>Włączanie lub wyłączanie reguły
 
-Wybierz regułę, którą chcesz włączyć lub wyłączyć. Przełącz przycisk **Włącz** lub **Wyłącz** w regule, aby włączyć lub wyłączyć regułę dla wszystkich urządzeń, które mają zakres w regule.
+Wybierz regułę, którą chcesz włączyć lub wyłączyć. Przełącz przycisk **Włączone/Wyłączone** w regule, aby włączyć lub wyłączyć regułę dla wszystkich urządzeń, które mają zakres w regule.
 
-## <a name="enable-or-disable-a-rule-for-a-device"></a>Włączanie lub wyłączanie reguły dla urządzenia
+## <a name="enable-or-disable-a-rule-for-specific-devices"></a>Włączanie lub wyłączanie reguły dla określonych urządzeń
 
-Wybierz regułę, którą chcesz włączyć lub wyłączyć. Dodaj filtr w sekcji **Zakresy,** aby uwzględnić lub wykluczyć określone urządzenie w szablonie urządzenia.
+Wybierz regułę, którą chcesz dostosować. Użyj co najmniej jednego filtru w sekcji **Urządzenia docelowe,** aby zawęzić zakres reguły do urządzeń, które mają być monitorowane.
 
 ## <a name="next-steps"></a>Następne kroki
 

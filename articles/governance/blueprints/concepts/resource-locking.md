@@ -3,12 +3,12 @@ title: Opis blokowania zasobów
 description: Dowiedz się więcej o opcjach blokowania w planach platformy Azure, aby chronić zasoby podczas przypisywania planu.
 ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 86897ae6665f7a339b51aaae5f1c00144d8b7309
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 9c4e2f4c6fd8f5fb574002217ca71d1e7d130ff7
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437746"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676747"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Opis blokowania zasobów w planach platformy Azure
 
@@ -20,20 +20,20 @@ Tworzenie spójnych środowisk na dużą skalę jest naprawdę cenne tylko wtedy
 ## <a name="locking-modes-and-states"></a>Tryby i stany blokowania
 
 Tryb blokowania ma zastosowanie do przypisania planu i ma trzy opcje: **Nie blokuj**, **Nie tylko do odczytu**lub **Nie usuwaj**. Tryb blokowania jest skonfigurowany podczas wdrażania artefaktów podczas przypisywania planu. Inny tryb blokowania można ustawić, aktualizując przypisanie planu.
-Tryby blokowania nie można jednak zmienić poza schematami.
+Tryby blokowania nie można jednak zmienić poza planami platformy Azure.
 
 Zasoby utworzone przez artefakty w przypisaniu planu mają cztery stany: **Nie zablokowany,** Nie można **edytować,** **usuwać**lub **nie można usunąć**. Każdy typ artefaktu może być w stanie **Nie zablokowany.** Poniższa tabela może służyć do określenia stanu zasobu:
 
 |Tryb|Typ zasobu artefaktu|Stan|Opis|
 |-|-|-|-|
-|Nie zamykaj|*|Nie zablokowany|Zasoby nie są chronione przez plany. Ten stan jest również używany dla zasobów dodanych do artefaktu grupy tylko do **odczytu** lub **Nie usuwaj** z zewnątrz przypisania planu.|
+|Nie zamykaj|*|Nie zablokowany|Zasoby nie są chronione przez plany platformy Azure. Ten stan jest również używany dla zasobów dodanych do artefaktu grupy tylko do **odczytu** lub **Nie usuwaj** z zewnątrz przypisania planu.|
 |Tylko do odczytu|Grupa zasobów|Nie można edytować / usunąć|Grupa zasobów jest tylko do odczytu i nie można modyfikować znaczników w grupie zasobów. Nie zablokowane zasoby mogą być **dodawane,** przenoszone, zmieniane lub usuwane z tej grupy zasobów.|
 |Tylko do odczytu|Grupa niebędąca zasobami|Tylko do odczytu|Zasobu nie można w żaden sposób zmienić — bez zmian i nie można go usunąć.|
 |Nie usuwaj|*|Nie można usunąć|Zasoby można zmienić, ale nie można ich usunąć. Nie zablokowane zasoby mogą być **dodawane,** przenoszone, zmieniane lub usuwane z tej grupy zasobów.|
 
 ## <a name="overriding-locking-states"></a>Zastępowanie stanów blokowania
 
-Zazwyczaj jest możliwe dla kogoś z odpowiedniej [kontroli dostępu opartej](../../../role-based-access-control/overview.md) na rolach (RBAC) w subskrypcji, takich jak "Właściciel" roli, aby mieć możliwość zmiany lub usunięcia dowolnego zasobu. Ten dostęp nie jest w przypadku, gdy plany stosuje blokowanie jako część wdrożonego przypisania. Jeśli przypisanie zostało ustawione za pomocą opcji **Tylko do odczytu** lub **Nie usuwaj,** nawet właściciel subskrypcji nie może wykonać zablokowanej akcji na chronionym zasobie.
+Zazwyczaj jest możliwe dla kogoś z odpowiedniej [kontroli dostępu opartej](../../../role-based-access-control/overview.md) na rolach (RBAC) w subskrypcji, takich jak "Właściciel" roli, aby mieć możliwość zmiany lub usunięcia dowolnego zasobu. Ten dostęp nie jest w przypadku, gdy plany azure stosuje blokowanie w ramach wdrożonego przypisania. Jeśli przypisanie zostało ustawione za pomocą opcji **Tylko do odczytu** lub **Nie usuwaj,** nawet właściciel subskrypcji nie może wykonać zablokowanej akcji na chronionym zasobie.
 
 Ten środek zabezpieczeń chroni spójność zdefiniowanego planu i środowiska, które zostało zaprojektowane do tworzenia przed przypadkowym lub programowym usunięciem lub zmianą.
 
@@ -97,11 +97,11 @@ Jeśli konieczne staje się zmodyfikowanie lub usunięcie zasobu chronionego prz
 - Aktualizowanie przypisania planu do trybu blokowania **nie blokuj**
 - Usuwanie przypisania planu
 
-Po usunięciu przypisania blokady utworzone przez plany są usuwane. Jednak zasób pozostaje w tyle i musiałby zostać usunięty za pomocą zwykłych środków.
+Po usunięciu przypisania blokady utworzone przez plany platformy Azure są usuwane. Jednak zasób pozostaje w tyle i musiałby zostać usunięty za pomocą zwykłych środków.
 
 ## <a name="how-blueprint-locks-work"></a>Jak działają blokady planu
 
-Akcja [odmowy odmowy rbac](../../../role-based-access-control/deny-assignments.md) jest stosowana do zasobów artefaktów podczas przypisywania planu, jeśli w zadaniu wybrano opcję **Tylko do odczytu** lub **Nie usuwaj.** Akcja odmowy jest dodawana przez zarządzaną tożsamość przypisania planu i może zostać usunięta z zasobów artefaktu tylko przez tę samą tożsamość zarządzaną. Ten środek zabezpieczeń wymusza mechanizm blokowania i zapobiega usunięciu blokady planu poza planami.
+Akcja [odmowy odmowy rbac](../../../role-based-access-control/deny-assignments.md) jest stosowana do zasobów artefaktów podczas przypisywania planu, jeśli w zadaniu wybrano opcję **Tylko do odczytu** lub **Nie usuwaj.** Akcja odmowy jest dodawana przez zarządzaną tożsamość przypisania planu i może zostać usunięta z zasobów artefaktu tylko przez tę samą tożsamość zarządzaną. Ten środek zabezpieczeń wymusza mechanizm blokowania i zapobiega usunięciu blokady planu poza planami platformy Azure.
 
 ![Przypisanie odmowy planu w grupie zasobów](../media/resource-locking/blueprint-deny-assignment.png)
 

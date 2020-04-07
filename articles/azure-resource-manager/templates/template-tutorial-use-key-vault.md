@@ -6,12 +6,12 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: a305914c5c870543e16c515880955693c2634044
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: e49fafc2889b98d013d77471f8177fd85a307cc8
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239175"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754881"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Samouczek: Integracja usługi Azure Key Vault we wdrożeniu szablonu ARM
 
@@ -198,7 +198,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku pobrano klucz tajny z magazynu kluczy platformy Azure. Następnie użyto klucza tajnego we wdrożeniu szablonu. Aby dowiedzieć się, jak tworzyć połączone szablony, zobacz:
+W tym samouczku pobrano klucz tajny z magazynu kluczy platformy Azure. Następnie użyto klucza tajnego we wdrożeniu szablonu. Aby dowiedzieć się, jak wykonać zadania po wdrożeniu przy użyciu rozszerzenia maszyny wirtualnej, zobacz:
 
 > [!div class="nextstepaction"]
-> [Create linked templates (Tworzenie połączonych szablonów)](./template-tutorial-create-linked-templates.md)
+> [Wdrażanie rozszerzeń maszyny wirtualnej](./template-tutorial-deploy-vm-extensions.md)

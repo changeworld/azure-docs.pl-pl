@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: fe2cb04f36026740dc54f4668d3c3188592bd8ae
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314695"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754230"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Porty używane przez usługi Apache Hadoop w programie HDInsight
 
@@ -21,9 +21,9 @@ Ten dokument zawiera listę portów używanych przez usługi Apache Hadoop uruch
 
 ## <a name="public-ports-vs-non-public-ports"></a>Porty publiczne a porty niepubliczne
 
-Klastry HDInsight oparte na systemie Linux udostępniają tylko trzy porty publicznie w Internecie; 22, 23 i 443. Porty te są używane do bezpiecznego dostępu do klastra przy użyciu protokołu SSH i usług ujawnionych za pośrednictwem bezpiecznego protokołu HTTPS.
+Klastry HDInsight oparte na systemie Linux udostępniają publicznie tylko trzy porty: 22, 23 i 443. Te porty bezpieczne dostęp do klastra przy użyciu protokołu SSH i usług narażonych za pośrednictwem bezpiecznego protokołu HTTPS.
 
-Wewnętrznie usługa HDInsight jest implementowana przez kilka maszyn wirtualnych platformy Azure (węzłów w klastrze) uruchomionych w sieci wirtualnej platformy Azure. Z poziomu sieci wirtualnej można uzyskać dostęp do portów nieumieszczonych przez Internet. Na przykład jeśli połączysz się z jednym z węzłów głównego przy użyciu SSH, z węzła głównego można następnie bezpośrednio uzyskać dostęp do usług uruchomionych w węzłach klastra.
+Usługa HDInsight jest implementowana przez kilka maszyn wirtualnych platformy Azure (węzłów klastra) uruchomionych w sieci wirtualnej platformy Azure. Z poziomu sieci wirtualnej można uzyskać dostęp do portów nieumieszczonych przez Internet. Jeśli łączysz się za pośrednictwem protokołu SSH z węzłem głównym, możesz bezpośrednio uzyskiwać dostęp do usług uruchomionych w węzłach klastra.
 
 > [!IMPORTANT]  
 > Jeśli nie określisz sieci wirtualnej platformy Azure jako opcji konfiguracji dla usługi HDInsight, zostanie utworzona automatycznie. Jednak nie można dołączyć do innych maszyn (takich jak inne maszyny wirtualne platformy Azure lub maszyny deweloperskiej klienta) do tej sieci wirtualnej.
@@ -32,7 +32,7 @@ Aby dołączyć do dodatkowych maszyn do sieci wirtualnej, należy najpierw utwo
 
 ## <a name="public-ports"></a>Porty publiczne
 
-Wszystkie węzły w klastrze HDInsight znajdują się w sieci wirtualnej platformy Azure i nie można uzyskać do nich bezpośredniego dostępu z Internetu. Brama publiczna zapewnia dostęp do Internetu do następujących portów, które są wspólne dla wszystkich typów klastrów HDInsight.
+Wszystkie węzły w klastrze HDInsight znajdują się w sieci wirtualnej platformy Azure. Węzłów nie można uzyskać bezpośrednio z Internetu. Brama publiczna zapewnia dostęp do Internetu do następujących portów, które są wspólne dla wszystkich typów klastrów HDInsight.
 
 | Usługa | Port | Protocol (Protokół) | Opis |
 | --- | --- | --- | --- |
@@ -49,13 +49,13 @@ Dla określonych typów klastrów dostępne są następujące elementy:
 
 | Usługa | Port | Protocol (Protokół) | Typ klastra | Opis |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |HBase |Interfejs API REST bazy HBase. Zobacz [Wprowadzenie do korzystania z apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| `Stargate` |443 |HTTPS |HBase |Interfejs API REST bazy HBase. Zobacz [Wprowadzenie do korzystania z apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |platforma Spark |Interfejs API spark REST. Zobacz [Przekazywanie zadań Apache Spark zdalnie przy użyciu Apache Livy](spark/apache-spark-livy-rest-interface.md) |
 | Serwer Spark Thrift |443 |HTTPS |platforma Spark |Serwer Spark Thrift używany do przesyłania zapytań hive. Zobacz [Korzystanie z beeline z ula Apache na HDInsight](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Interfejs użytkownika sieci Storm. Zobacz [Wdrażanie i zarządzanie topologią apache Storm w programie HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md) |
 | Kafka Rest proxy |443 |HTTPS |Kafka |Interfejs API REST platformy Kafka. Zobacz [Interakcja z klastrami platformy Apache w usłudze Azure HDInsight przy użyciu serwera proxy REST](kafka/rest-proxy.md) |
 
-### <a name="authentication"></a>Uwierzytelnianie
+### <a name="authentication"></a>Authentication
 
 Wszystkie usługi publicznie udostępniane w Internecie muszą być uwierzytelnione:
 
@@ -89,7 +89,7 @@ Przykłady:
 | --- | --- | --- | --- | --- |
 | Interfejs użytkownika sieci NameNode web |Węzły głowy |30070 |HTTPS |Interfejs użytkownika sieci Web do wyświetlania stanu |
 | NameNode usługa metadanych |węzły głowy |8020 |Ipc |Metadane systemu plików |
-| DataNode (Nie ma) |Wszystkie węzły procesu roboczego |30075 |HTTPS |Interfejs użytkownika sieci Web do wyświetlania stanu, dzienników itp. |
+| DataNode (Nie ma) |Wszystkie węzły procesu roboczego |30075 |HTTPS |Interfejs użytkownika sieci Web do wyświetlania stanu, dzienniki i tak dalej. |
 | DataNode (Nie ma) |Wszystkie węzły procesu roboczego |30010 |&nbsp; |Transfer danych |
 | DataNode (Nie ma) |Wszystkie węzły procesu roboczego |30020 |Ipc |Operacje metadanych |
 | Nazwa pomocniczaNode |Węzły głowy |50090 |HTTP |Punkt kontrolny dla metadanych NameNode |
@@ -100,7 +100,7 @@ Przykłady:
 | --- | --- | --- | --- | --- |
 | Interfejs użytkownika sieci Web Menedżera zasobów |Węzły głowy |8088 |HTTP |Interfejs użytkownika sieci Web dla Menedżera zasobów |
 | Interfejs użytkownika sieci Web Menedżera zasobów |Węzły głowy |8090 |HTTPS |Interfejs użytkownika sieci Web dla Menedżera zasobów |
-| Interfejs administratora Menedżera zasobów |węzły głowy |8141 |Ipc |Do składania wniosków (Hive, Hive server, Pig, itp.) |
+| Interfejs administratora Menedżera zasobów |węzły głowy |8141 |Ipc |W przypadku przesyłania wniosków (hive, hive server, Pig, itd.) |
 | Harmonogram Menedżera zasobów |węzły głowy |8030 |HTTP |Interfejs administracyjny |
 | Interfejs aplikacji Menedżera zasobów |węzły głowy |8050 |HTTP |Adres interfejsu menedżera aplikacji |
 | Menedżer węzłów |Wszystkie węzły procesu roboczego |30050 |&nbsp; |Adres menedżera kontenerów |

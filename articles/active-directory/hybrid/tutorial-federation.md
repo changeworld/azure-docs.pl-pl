@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a123a85d653415f7b067e0c144c90ed79f2d081
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: e3a17eb7fdde6840ce04fb0cbce13ec3f1a121e0
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80330993"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673703"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Samouczek: Podawanie pojedynczego środowiska lasu usługi AD do chmury
 
@@ -145,7 +145,7 @@ $ForestMode = "WinThreshold"
 $LogPath = "c:\windows\NTDS"
 $SysVolPath = "c:\windows\SYSVOL"
 $featureLogPath = "c:\poshlog\featurelog.txt" 
-$Password = "Pass1w0rd"
+$Password = ConvertTo-SecureString "Passw0rd" -AsPlainText -Force
 
 #Install AD DS, DNS and GPMC 
 start-job -Name addFeature -ScriptBlock { 
@@ -246,7 +246,7 @@ Nadszedł czas, aby pobrać i zainstalować program Azure AD Connect.  Po zainst
 
 1. Na ekranie Łączenie z usługą Azure AD wprowadź nazwę użytkownika i hasło administratora globalnego utworzonego powyżej, a następnie kliknij przycisk **Dalej**.
 2. Na ekranie Podłączanie katalogów kliknij pozycję **Dodaj katalog**.  Następnie wybierz pozycję **Utwórz nowe konto usługi AD** i wprowadź nazwę użytkownika oraz hasło konta contoso\Administrator, a następnie kliknij przycisk **OK**.
-3. Kliknij przycisk **alej**.
+3. Kliknij przycisk **Dalej**.
 4. Na ekranie Konfiguracja logowania się w usłudze Azure AD wybierz pozycję **Kontynuuj bez dopasowania wszystkich sufiksów nazw UPN do zweryfikowanych domen** i kliknij przycisk **Dalej**.
 5. Na ekranie Filtrowanie domen i jednostek organizacyjnych kliknij przycisk **Dalej**.
 6. Na ekranie Unikatowa identyfikacja użytkowników kliknij przycisk **Dalej**.
@@ -256,10 +256,10 @@ Nadszedł czas, aby pobrać i zainstalować program Azure AD Connect.  Po zainst
 10. Na ekranie farmy usług AD FS upewnij się, że jest wybrana opcja **Konfiguruj nową farmę usług AD FS**.
 11. Wybierz pozycję **Użyj certyfikatu zainstalowanego na serwerach federacyjnych** i kliknij przycisk **Przeglądaj**.
 12. W polu wyszukiwania wprowadź DC1 i wybierz tę pozycję, gdy zostanie znaleziona.  Kliknij przycisk **OK**.
-13. Z listy rozwijanej **Plik certyfikatu** wybierz opcję **adfs.contoso.com**, czyli certyfikat utworzony powyżej.  Kliknij przycisk **alej**.
+13. Z listy rozwijanej **Plik certyfikatu** wybierz opcję **adfs.contoso.com**, czyli certyfikat utworzony powyżej.  Kliknij przycisk **Dalej**.
 ![Federacja](media/tutorial-federation/fed2.png)
 
-1. Na ekranie Serwer AD FS kliknij przycisk **Przeglądaj** i w polu wyszukiwania wprowadź DC1 i wybierz tę pozycję, gdy zostanie znaleziona.  Kliknij przycisk **OK**.  Kliknij przycisk **alej**.
+1. Na ekranie Serwer AD FS kliknij przycisk **Przeglądaj** i w polu wyszukiwania wprowadź DC1 i wybierz tę pozycję, gdy zostanie znaleziona.  Kliknij przycisk **OK**.  Kliknij przycisk **Dalej**.
 ![Federacja](media/tutorial-federation/fed3.png)
 
 1. Na ekranie Serwery proxy aplikacji internetowych kliknij przycisk **Dalej**.

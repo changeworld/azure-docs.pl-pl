@@ -1,16 +1,16 @@
 ---
 title: Tworzenie funkcji platformy Azure w systemie Linux przy użyciu niestandardowego obrazu
 description: Informacje o sposobie tworzenia usługi Azure Functions działającej w niestandardowym obrazie systemu Linux.
-ms.date: 01/15/2020
+ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 8c074c677c645dd03e3cf5288d82aa3e65720e8b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 44ca8f721967b90be283f867f8656344ec3f1906
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239630"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673411"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Tworzenie funkcji w systemie Linux przy użyciu kontenera niestandardowego
 
@@ -31,236 +31,158 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 > * Włącz połączenia SSH z kontenerem.
 > * Dodaj powiązanie danych wyjściowych magazynu kolejki. 
 
-Możesz wykonać ten samouczek na dowolnym komputerze z systemem Windows, Mac OS lub Linux. Ukończenie samouczka spowoduje poniesienie kosztów w wysokości kilku usd na koncie platformy Azure.
+Możesz wykonać ten samouczek na dowolnym komputerze z systemem Windows, macOS lub Linux. Ukończenie samouczka spowoduje poniesienie kosztów w wysokości kilku usd na koncie platformy Azure.
 
-## <a name="prerequisites"></a>Wymagania wstępne
+[!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 
-- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto za darmo](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Podstawowe narzędzia azure functions](./functions-run-local.md#v2) w wersji 2.7.1846 lub nowszej
-- Interfejsu [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) w wersji 2.0.77 lub nowszej
-- [Środowisko wykonawcze usługi Azure Functions 2.x](functions-versions.md)
-- Następujące składniki środowiska wykonawczego języka:
-    ::: zone pivot="programming-language-csharp"
-    - [.NET Core 2.2.x lub nowszy](https://dotnet.microsoft.com/download)
-    ::: zone-end
-    ::: zone pivot="programming-language-javascript"
-    - [Node.js](https://nodejs.org/en/download/)
-    ::: zone-end
-    ::: zone pivot="programming-language-powershell"
-    - [Powershell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)
-    ::: zone-end
-    ::: zone pivot="programming-language-python"
-    - [Python 3.6 - 64 bit](https://www.python.org/downloads/release/python-3610/) lub [Python 3.7 - 64 bit](https://www.python.org/downloads/release/python-376/)
-    ::: zone-end
-    ::: zone pivot="programming-language-typescript"
-    - [Node.js](https://nodejs.org/en/download/)
-    - [TypeScript](http://www.typescriptlang.org/#download-links)
-    ::: zone-end
-- [Docker](https://docs.docker.com/install/)
-- Identyfikator [platformy Docker](https://hub.docker.com/signup)
+<!---Requirements specific to Docker --->
++ [Docker](https://docs.docker.com/install/)  
 
-### <a name="prerequisite-check"></a>Sprawdzanie pod warunkiem
++ Identyfikator [platformy Docker](https://hub.docker.com/signup)
 
-1. W oknie terminala lub `func --version` polecenia uruchom, aby sprawdzić, czy podstawowe narzędzia usługi Azure Functions są w wersji 2.7.1846 lub nowszej.
-1. Uruchom, `az --version` aby sprawdzić, czy wersja interfejsu wiersza polecenia platformy Azure jest 2.0.76 lub nowsza.
-1. Uruchom, `az login` aby zalogować się na platformie Azure i zweryfikować aktywną subskrypcję.
-1. Uruchom, `docker login` aby zalogować się do platformy Docker. To polecenie kończy się niepowodzeniem, jeśli docker nie jest uruchomiony, w którym to przypadku uruchomić dokowane i ponowić próbę polecenia.
+[!INCLUDE [functions-cli-verify-prereqs](../../includes/functions-cli-verify-prereqs.md)]
+
++ Uruchom, `docker login` aby zalogować się do platformy Docker. To polecenie kończy się niepowodzeniem, jeśli docker nie jest uruchomiony, w którym to przypadku uruchomić dokowane i ponowić próbę polecenia.
+
+[!INCLUDE [functions-cli-create-venv](../../includes/functions-cli-create-venv.md)]
 
 ## <a name="create-and-test-the-local-functions-project"></a>Tworzenie i testowanie projektu funkcji lokalnych
 
-1. W wierszu polecenia terminalu lub polecenia utwórz folder dla tego samouczka w odpowiedniej lokalizacji, a następnie przejdź do tego folderu.
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+W wierszu polecenia terminala lub polecenia uruchom następujące polecenie dla wybranego języka, `LocalFunctionsProject`aby utworzyć projekt aplikacji funkcji w folderze o nazwie .  
+::: zone-end  
+::: zone pivot="programming-language-csharp"  
+```
+func init LocalFunctionsProject --worker-runtime dotnet --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
+```
+func init LocalFunctionsProject --worker-runtime node --language javascript --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-powershell"  
+```
+func init LocalFunctionsProject --worker-runtime powershell --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-python"  
+```
+func init LocalFunctionsProject --worker-runtime python --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
+```
+func init LocalFunctionsProject --worker-runtime node --language typescript --docker
+```
+::: zone-end
+::: zone pivot="programming-language-java"  
+W pustym folderze uruchom następujące polecenie, aby wygenerować projekt usługi Functions z [archetypu narzędzia Maven](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
 
-1. Postępuj zgodnie z instrukcjami [dotyczącymi Tworzenie i aktywowanie środowiska wirtualnego](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv) w celu utworzenia środowiska wirtualnego do użycia w tym samouczku.
+# <a name="bash"></a>[Bash](#tab/bash)
+```bash
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
+```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+```powershell
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```cmd
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+```
+---
 
-1. Uruchom następujące polecenie dla wybranego języka, aby utworzyć projekt `LocalFunctionsProject`aplikacji funkcji w folderze o nazwie . Opcja `--docker` generuje `Dockerfile` dla projektu, który definiuje odpowiedni kontener niestandardowy do użytku z usługą Azure Functions i wybranego środowiska wykonawczego.
+Maven prosi o wartości potrzebne do zakończenia generowania projektu podczas wdrażania.   
+Po wyświetleniu monitu podaj następujące wartości:
 
-    ::: zone pivot="programming-language-csharp"
-    ```
-    func init LocalFunctionsProject --worker-runtime dotnet --docker
-    ```
-    ::: zone-end
+| Monit | Wartość | Opis |
+| ------ | ----- | ----------- |
+| **groupId** | `com.fabrikam` | Wartość, która jednoznacznie identyfikuje projekt we wszystkich projektach, zgodnie z [regułami nazewnictwa pakietów](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) dla języka Java. |
+| **artifactId (ida artefaktu)** | `fabrikam-functions` | Wartość, która jest nazwą słoika, bez numeru wersji. |
+| **Wersja** | `1.0-SNAPSHOT` | Wybierz wartość domyślną. |
+| **Pakiet** | `com.fabrikam.functions` | Wartość, która jest pakietem Java dla wygenerowanego kodu funkcji. Użyj wartości domyślnej. |
 
-    ::: zone pivot="programming-language-javascript"
-    ```
-    func init LocalFunctionsProject --worker-runtime node --language javascript --docker
-    ```
-    ::: zone-end
+Wpisz `Y` lub naciśnij klawisz Enter, aby potwierdzić.
 
-    ::: zone pivot="programming-language-powershell"
-    ```
-    func init LocalFunctionsProject --worker-runtime powershell --docker
-    ```
-    ::: zone-end
+Maven tworzy pliki projektu w nowym folderze o nazwie _artifactId_, który w tym przykładzie jest `fabrikam-functions`. 
+::: zone-end
+Opcja `--docker` generuje `Dockerfile` dla projektu, który definiuje odpowiedni kontener niestandardowy do użytku z usługą Azure Functions i wybranego środowiska wykonawczego.
 
-    ::: zone pivot="programming-language-python"
-    ```
-    func init LocalFunctionsProject --worker-runtime python --docker
-    ```
-    ::: zone-end
+Przejdź do folderu projektu:
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+```
+cd LocalFunctionsProject
+```
+::: zone-end  
+::: zone pivot="programming-language-java"  
+```
+cd fabrikam-functions
+```
+::: zone-end  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
+Dodaj funkcję do projektu za pomocą następującego `--name` polecenia, gdzie argument jest `--template` unikatową nazwą funkcji, a argument określa wyzwalacz funkcji. `func new`utworzyć podfolder pasujący do nazwy funkcji zawierającej plik kodu odpowiedni dla wybranego języka projektu i plik konfiguracyjny o nazwie *function.json*.
 
-    ::: zone pivot="programming-language-typescript"
-    ```
-    func init LocalFunctionsProject --worker-runtime node --language typescript --docker
-    ```
-    ::: zone-end
-    
-1. Przejdź do folderu projektu:
+```
+func new --name HttpExample --template "HTTP trigger"
+```
+::: zone-end  
+Aby przetestować funkcję lokalnie, uruchom lokalny host środowiska uruchomieniowego usługi Azure Functions w katalogu głównym folderu projektu: 
+::: zone pivot="programming-language-csharp"  
+```
+func start --build  
+```
+::: zone-end  
+::: zone pivot="programming-language-javascript,programming-language-powershell,programming-language-python"   
+```
+func start  
+```
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
+```
+npm install
+npm start
+```
+::: zone-end  
+::: zone pivot="programming-language-java"  
+```
+mvn clean package  
+mvn azure-functions:run
+```
+::: zone-end
+Po wyświetleniu `HttpExample` punktu końcowego na wyjściu przejdź do pozycji [`http://localhost:7071/api/HttpExample?name=Functions`](http://localhost:7071/api/HttpExample?name=Functions). Przeglądarka powinna wyświetlać komunikat "hello", `Functions`który odbija się `name` echem , wartość dostarczoną do parametru zapytania.
 
-    ```
-    cd LocalFunctionsProject
-    ```
-    
-1. Dodaj funkcję do projektu za pomocą następującego `--name` polecenia, gdzie argument jest `--template` unikatową nazwą funkcji, a argument określa wyzwalacz funkcji. `func new`utworzyć podfolder pasujący do nazwy funkcji zawierającej plik kodu odpowiedni dla wybranego języka projektu i plik konfiguracyjny o nazwie *function.json*.
-
-    ```
-    func new --name HttpExample --template "HTTP trigger"
-    ```
-
-1. Aby przetestować funkcję lokalnie, uruchom lokalnego hosta środowiska uruchomieniowego usługi Azure Functions w folderze *LocalFunctionsProject:*
-   
-    ::: zone pivot="programming-language-csharp"
-    ```
-    func start --build
-    ```
-    ::: zone-end
-
-    ::: zone pivot="programming-language-javascript"
-    ```
-    func start
-    ```
-    ::: zone-end
-
-    ::: zone pivot="programming-language-powershell"
-    ```
-    func start
-    ```
-    ::: zone-end
-
-    ::: zone pivot="programming-language-python"
-    ```
-    func start
-    ```
-    ::: zone-end    
-
-    ::: zone pivot="programming-language-typescript"
-    ```
-    npm install
-    ```
-
-    ```
-    npm start
-    ```
-    ::: zone-end
-
-1. Po wyświetleniu `HttpExample` punktu końcowego na wyjściu przejdź do pozycji `http://localhost:7071/api/HttpExample?name=Functions`. Przeglądarka powinna wyświetlać komunikat "Hello, Functions" (różni się nieznacznie w zależności od wybranego języka programowania).
-
-1. Użyj **klawisza Ctrl**-**C,** aby zatrzymać hosta.
+Użyj **klawisza Ctrl**-**C,** aby zatrzymać hosta.
 
 ## <a name="build-the-container-image-and-test-locally"></a>Tworzenie obrazu kontenera i testowanie lokalnie
 
-1. (Opcjonalnie) Sprawdź *Dockerfile" w folderze *LocalFunctionsProj.* Dockerfile opisuje wymagane środowisko do uruchomienia aplikacji funkcji w systemie Linux: 
+(Opcjonalnie) Sprawdź *Dockerfile" w katalogu głównym folderu projektu. Dockerfile opisuje wymagane środowisko do uruchomienia aplikacji funkcji w systemie Linux.  Pełną listę obsługiwanych obrazów podstawowych dla usługi Azure Functions można znaleźć na [stronie obrazu podstawowego usługi Azure Functions](https://hub.docker.com/_/microsoft-azure-functions-base).
+    
+W głównym folderze projektu uruchom polecenie [kompilacji platformy docker](https://docs.docker.com/engine/reference/commandline/build/) i podaj nazwę i `azurefunctionsimage`tag, `v1.0.0`. Zastąp ciąg `<DOCKER_ID>` identyfikatorem konta usługi Docker Hub. To polecenie powoduje skompilowanie obrazu platformy Docker dla kontenera.
 
-    ::: zone pivot="programming-language-csharp"
-    ```Dockerfile
-    FROM microsoft/dotnet:2.2-sdk AS installer-env
+```
+docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
+```
 
-    COPY . /src/dotnet-function-app
-    RUN cd /src/dotnet-function-app && \
-        mkdir -p /home/site/wwwroot && \
-        dotnet publish *.csproj --output /home/site/wwwroot
+Po zakończeniu polecenia można uruchomić nowy kontener lokalnie.
     
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/dotnet:2.0-appservice 
-    FROM mcr.microsoft.com/azure-functions/dotnet:2.0
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
-    ```
-    ::: zone-end
+Aby przetestować kompilację, uruchom obraz w kontenerze lokalnym za `<DOCKER_ID` pomocą polecenia [uruchamiania platformy docker,](https://docs.docker.com/engine/reference/commandline/run/) zastępując ponownie identyfikator platformy Docker i dodając argument portów,: `-p 8080:80`
 
-    ::: zone pivot="programming-language-javascript"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
-    FROM mcr.microsoft.com/azure-functions/node:2.0
-    
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY . /home/site/wwwroot
-    
-    RUN cd /home/site/wwwroot && \
-    npm install    
-    ```
-    ::: zone-end
+```
+docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
+```
 
-    ::: zone pivot="programming-language-powershell"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/powershell:2.0-appservice
-    FROM mcr.microsoft.com/azure-functions/powershell:2.0
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY . /home/site/wwwroot    
-    ```
-    ::: zone-end
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+Gdy obraz jest uruchomiony w kontenerze lokalnym, otwórz przeglądarkę, aby , który powinien wyświetlić `http://localhost:8080`obraz zastępczy pokazany poniżej. Obraz pojawia się w tym momencie, ponieważ funkcja jest uruchomiona w kontenerze lokalnym, tak jak na platformie Azure, co `"authLevel": "function"` oznacza, że jest chroniony przez klucz dostępu zdefiniowany w *function.json* z właściwością. Kontener nie został jeszcze opublikowany w aplikacji funkcji na platformie Azure, więc klucz nie jest jeszcze dostępny. Jeśli chcesz przetestować dla kontenera lokalnego, zatrzymaj `"authLevel": "anonymous"`dokceny, zmień właściwość autoryzacji na , odbuduj obraz i uruchom ponownie dokowane. Następnie `"authLevel": "function"` zresetuj w *function.json*. Aby uzyskać więcej informacji, zobacz [klucze autoryzacji](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    ::: zone pivot="programming-language-python"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7-appservice
-    FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7
-    
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY requirements.txt /
-    RUN pip install -r /requirements.txt
-    
-    COPY . /home/site/wwwroot    
-    ```
-    ::: zone-end
+![Obraz zastępczy wskazujący, że kontener działa lokalnie](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-    ::: zone pivot="programming-language-typescript"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
-    FROM mcr.microsoft.com/azure-functions/node:2.0
-    
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY . /home/site/wwwroot
-    
-    RUN cd /home/site/wwwroot && \
-    npm install    
-    ```
-    ::: zone-end
+::: zone-end
+::: zone pivot="programming-language-java"  
+Gdy obraz jest uruchomiony w kontenerze [`http://localhost:8080/api/HttpExample?name=Functions`](http://localhost:8080/api/HttpExample?name=Functions)lokalnym, przejdź do , który powinien wyświetlać taką samą wiadomość "hello", jak poprzednio. Ponieważ archetyp Maven generuje funkcję wyzwalaną http, która używa autoryzacji anonimowej, nadal można wywołać funkcję, nawet jeśli jest uruchomiona w kontenerze. 
+::: zone-end  
 
-    > [!NOTE]
-    > Pełną listę obsługiwanych obrazów podstawowych dla usługi Azure Functions można znaleźć na [stronie obrazu podstawowego usługi Azure Functions](https://hub.docker.com/_/microsoft-azure-functions-base).
-    
-1. W folderze *LocalFunctionsProject* uruchom polecenie [kompilacji platformy docker](https://docs.docker.com/engine/reference/commandline/build/) i podaj nazwę i `azurefunctionsimage`tag , `v1.0.0`. Zastąp ciąg `<docker_id>` identyfikatorem konta usługi Docker Hub. To polecenie powoduje skompilowanie obrazu platformy Docker dla kontenera.
-
-    ```
-    docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
-    ```
-    
-    Po zakończeniu polecenia można uruchomić nowy kontener lokalnie.
-    
-1. Aby przetestować kompilację, uruchom obraz w kontenerze lokalnym za `<docker_id>` pomocą polecenia [uruchamiania platformy docker,](https://docs.docker.com/engine/reference/commandline/run/) zastępując ponownie identyfikator platformy Docker i dodając argument portów,: `-p 8080:80`
-
-    ```
-    docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
-    ```
-    
-1. Gdy obraz jest uruchomiony w kontenerze lokalnym, otwórz przeglądarkę, aby , który powinien wyświetlić `http://localhost:8080`obraz zastępczy pokazany poniżej. Obraz pojawia się w tym momencie, ponieważ funkcja jest uruchomiona w kontenerze lokalnym, tak jak na platformie Azure, co `"authLevel": "function"` oznacza, że jest chroniony przez klucz dostępu zdefiniowany w *function.json* z właściwością. Kontener nie został jeszcze opublikowany w aplikacji funkcji na platformie Azure, więc klucz nie jest jeszcze dostępny. Jeśli chcesz przetestować lokalnie, zatrzymaj dokowane, zmień właściwość autoryzacji na `"authLevel": "anonymous"`, odbuduj obraz i uruchom ponownie dokowane. Następnie `"authLevel": "function"` zresetuj w *function.json*. Aby uzyskać więcej informacji, zobacz [klucze autoryzacji](functions-bindings-http-webhook-trigger.md#authorization-keys).
-
-    ![Obraz zastępczy wskazujący, że kontener działa lokalnie](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
-
-1. Po zweryfikowaniu aplikacji funkcji w kontenerze, zatrzymaj dok. z **ctrl**+**C**.
+Po zweryfikowaniu aplikacji funkcji w kontenerze zatrzymaj **Ctrl**+**C**dok.
 
 ## <a name="push-the-image-to-docker-hub"></a>Wypychanie obrazu do centrum platformy Docker
 
@@ -349,18 +271,18 @@ Aplikacja funkcji na platformie Azure zarządza wykonywaniem funkcji w planie ho
 
 1. Funkcja może teraz używać tego ciągu połączenia, aby uzyskać dostęp do konta magazynu.
 
-> [!TIP]
-> W bash, można użyć zmiennej powłoki do przechwytywania ciągu połączenia zamiast korzystania ze schowka. Najpierw użyj następującego polecenia, aby utworzyć zmienną z ciągiem połączenia:
-> 
-> ```bash
-> storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
-> ```
-> 
-> Następnie należy zapoznać się ze zmienną w drugim poleceniu:
-> 
-> ```azurecli
-> az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
-> ```
+    > [!TIP]
+    > W bash, można użyć zmiennej powłoki do przechwytywania ciągu połączenia zamiast korzystania ze schowka. Najpierw użyj następującego polecenia, aby utworzyć zmienną z ciągiem połączenia:
+    > 
+    > ```bash
+    > storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
+    > ```
+    > 
+    > Następnie należy zapoznać się ze zmienną w drugim poleceniu:
+    > 
+    > ```azurecli
+    > az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
+    > ```
 
 > [!NOTE]    
 > Jeśli publikujesz obraz niestandardowy na koncie kontenera prywatnego, należy użyć zmiennych środowiskowych w Dockerfile dla ciągu połączenia zamiast tego. Więcej informacji można znaleźć w [instrukcji ENV](https://docs.docker.com/engine/reference/builder/#env). Należy również ustawić `DOCKER_REGISTRY_SERVER_USERNAME` zmienne `DOCKER_REGISTRY_SERVER_PASSWORD`i . Aby użyć wartości, należy odbudować obraz, wypchnąć obraz do rejestru, a następnie ponownie uruchomić aplikację funkcji na platformie Azure.
@@ -499,7 +421,7 @@ Protokół SSH umożliwia bezpieczną komunikację między kontenerem i klientem
 
 1. W przeglądarce `https://<app_name>.scm.azurewebsites.net/`otwórz `<app_name>` , zastępując swoją unikalną nazwą. Ten adres URL jest punktem końcowym zaawansowanych narzędzi (Kudu) dla kontenera aplikacji funkcji.
 
-1. Zaloguj się do konta platformy Azure, a następnie wybierz **SSH,** aby ustanowić połączenie z kontenerem. Łączenie może potrwać kilka chwil, jeśli platforma Azure jest nadal w trakcie aktualizowania obrazu kontenera.
+1. Zaloguj się do konta platformy Azure, a następnie wybierz **SSH,** aby ustanowić połączenie z kontenerem. Łączenie może potrwać kilka chwil, jeśli platforma Azure nadal aktualizuje obraz kontenera.
 
 1. Po nawiązaniu połączenia z kontenerem `top` uruchom polecenie, aby wyświetlić aktualnie uruchomione procesy. 
 
@@ -511,347 +433,47 @@ Usługa Azure Functions umożliwia łączenie funkcji z innymi usługami platfor
 
 W tej sekcji pokazano, jak zintegrować funkcję z kolejką usługi Azure Storage. Powiązanie danych wyjściowych, które można dodać do tej funkcji zapisuje dane z żądania HTTP do wiadomości w kolejce.
 
-## <a name="retrieve-the-azure-storage-connection-string"></a>Pobieranie ciągu połączenia usługi Azure Storage
+[!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 
-Wcześniej utworzono konto usługi Azure Storage do użycia przez aplikację funkcji. Parametry połączenia dla tego konta są bezpiecznie przechowywane w ustawieniach aplikacji na platformie Azure. Pobierając to ustawienie do pliku *local.settings.json,* można użyć tego zapisu połączenia do kolejki magazynu na tym samym koncie podczas lokalnego uruchamiania funkcji. 
+[!INCLUDE [functions-register-storage-binding-extension-csharp](../../includes/functions-register-storage-binding-extension-csharp.md)]
 
-1. W katalogu głównym projektu uruchom następujące polecenie, zastępując `<app_name>` nazwą aplikacji funkcji z poprzedniego przewodnika Szybki start. To polecenie zastąpi wszystkie istniejące wartości w pliku.
+[!INCLUDE [functions-add-output-binding-cli](../../includes/functions-add-output-binding-cli.md)]
 
-    ```
-    func azure functionapp fetch-app-settings <app_name>
-    ```
-    
-1. Otwórz *local.settings.json* i znajdź `AzureWebJobsStorage`wartość o nazwie , która jest ciągiem połączenia konta magazynu. Nazwy `AzureWebJobsStorage` i ciągu połączenia należy użyć w innych sekcjach tego artykułu.
-
-> [!IMPORTANT]
-> Ponieważ *local.settings.json* zawiera wpisy tajne pobrane z platformy Azure, zawsze wyklucz ten plik z kontroli źródła. Plik *.gitignore* utworzony za pomocą projektu funkcji lokalnych domyślnie wyklucza plik.
-
-### <a name="add-an-output-binding-to-functionjson"></a>Dodawanie powiązania wyjściowego do pliku function.json
-
-W usłudze Azure Functions każdy `direction` `type`typ powiązania `name` wymaga , i unikatowy do zdefiniowania w pliku *function.json.* Twój *function.json* zawiera już powiązanie danych wejściowych dla typu "httpTrigger" i powiązanie danych wyjściowych dla odpowiedzi HTTP. Aby dodać powiązanie do kolejki magazynu, zmodyfikuj plik w następujący sposób, co dodaje powiązanie wyjściowe `msg`dla typu "kolejka", gdzie kolejka pojawia się w kodzie jako argument wejściowy o nazwie . Powiązanie kolejki wymaga również nazwy kolejki do użycia, w tym przypadku, `outqueue`i nazwy ustawień, `AzureWebJobStorage`które przechowują ciąg połączenia, w tym przypadku .
-
-::: zone pivot="programming-language-csharp"
-
-W projekcie biblioteki klas języka C# powiązania są definiowane jako atrybuty powiązania w metodzie funkcji. Plik *function.json* jest następnie automatyczniegenerowany na podstawie tych atrybutów.
-
-1. Dla powiązania kolejki uruchom następujące [polecenie dotnet dodaj pakiet,](/dotnet/core/tools/dotnet-add-package) aby dodać pakiet rozszerzenia magazynu do projektu.
-
-    ```
-    dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
-    ```
-
-1. Otwórz plik *HttpTrigger.cs* i dodaj następującą `using` instrukcję:
-
-    ```cs
-    using Microsoft.Azure.WebJobs.Extensions.Storage;
-    ```
-    
-1. Dodaj następujący parametr `Run` do definicji metody:
-    
-    ```csharp
-    [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg
-    ```
-    
-    Definicja `Run` metody powinna teraz być zgodna z następującym kodem:
-    
-    ```csharp
-    [FunctionName("HttpTrigger")]
-    public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-        [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
-    ```
-
-Parametr `msg` jest `ICollector<T>` typem, który reprezentuje zbiór komunikatów, które są zapisywane do powiązania danych wyjściowych po zakończeniu funkcji. W takim przypadku dane wyjściowe `outqueue`to kolejka magazynu o nazwie . Parametry połączenia dla konta Magazyn jest `StorageAccountAttribute`ustawiany przez plik . Ten atrybut wskazuje ustawienie, które zawiera parametry połączenia konta magazynu i może być stosowane na poziomie klasy, metody lub parametru. W takim przypadku można `StorageAccountAttribute` pominąć, ponieważ używasz już domyślnego konta magazynu.
-
-::: zone-end
-
-::: zone pivot="programming-language-javascript"
-
-Zaktualizuj *plik function.json,* aby dopasować następujące elementy, dodając powiązanie kolejki po wiązaniu HTTP:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
-
-::: zone pivot="programming-language-powershell"
-
-Zaktualizuj *plik function.json,* aby dopasować następujące elementy, dodając powiązanie kolejki po wiązaniu HTTP:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "Request",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "Response"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
-
-::: zone pivot="programming-language-python"
-
-Zaktualizuj *plik function.json,* aby dopasować następujące elementy, dodając powiązanie kolejki po wiązaniu HTTP:
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
-
-::: zone pivot="programming-language-typescript"
-
-Zaktualizuj *plik function.json,* aby dopasować następujące elementy, dodając powiązanie kolejki po wiązaniu HTTP:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "Request",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "Response"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
+::: zone pivot="programming-language-csharp"  
+[!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]  
+::: zone-end  
+::: zone pivot="programming-language-java" 
+[!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
+::: zone-end  
 
 ## <a name="add-code-to-use-the-output-binding"></a>Dodaj kod, aby użyć powiązania danych wyjściowych
 
-Po zdefiniowaniu powiązania nazwa powiązania, w tym `msg`przypadku, pojawia się w kodzie `context` funkcji jako argument (lub w obiekcie w językach JavaScript i TypeScript). Następnie można użyć tej zmiennej do zapisywania wiadomości do kolejki. Należy napisać dowolny kod do uwierzytelniania, uzyskiwania odwołania do kolejki lub zapisywania danych. Wszystkie te zadania integracji są wygodnie obsługiwane w usłudze Azure Functions powiązania środowiska wykonawczego i danych wyjściowych kolejki.
+Po zdefiniowaniu powiązania kolejki można teraz zaktualizować `msg` funkcję, aby odbierać parametr wyjściowy i zapisywać komunikaty do kolejki.
 
-::: zone pivot="programming-language-csharp"
-```csharp
-[FunctionName("HttpTrigger")]
-public static async Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-    [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
-{
-    log.LogInformation("C# HTTP trigger function processed a request.");
+::: zone pivot="programming-language-python"     
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
+::: zone-end  
 
-    string name = req.Query["name"];
+::: zone pivot="programming-language-javascript"  
+[!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
+::: zone-end  
 
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-    dynamic data = JsonConvert.DeserializeObject(requestBody);
-    name = name ?? data?.name;
+::: zone pivot="programming-language-typescript"  
+[!INCLUDE [functions-add-output-binding-ts](../../includes/functions-add-output-binding-ts.md)]
+::: zone-end  
 
-    if (!string.IsNullOrEmpty(name))
-    {
-        // Add a message to the output collection.
-        msg.Add(string.Format("Name passed to the function: {0}", name));
-    }
-    
-    return name != null
-        ? (ActionResult)new OkObjectResult($"Hello, {name}")
-        : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
-}
-```
+::: zone pivot="programming-language-powershell"  
+[!INCLUDE [functions-add-output-binding-powershell](../../includes/functions-add-output-binding-powershell.md)]  
 ::: zone-end
 
-::: zone pivot="programming-language-javascript"
-```js
-module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
+::: zone pivot="programming-language-csharp"  
+[!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+::: zone-end 
 
-    if (req.query.name || (req.body && req.body.name)) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " +
-            (req.query.name || req.body.name);
+::: zone pivot="programming-language-java"
+[!INCLUDE [functions-add-output-binding-java-code](../../includes/functions-add-output-binding-java-code.md)]
 
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-```
-::: zone-end
-
-::: zone pivot="programming-language-powershell"
-```powershell
-using namespace System.Net
-
-# Input bindings are passed in via param block.
-param($Request, $TriggerMetadata)
-
-# Write to the Azure Functions log stream.
-Write-Host "PowerShell HTTP trigger function processed a request."
-
-# Interact with query parameters or the body of the request.
-$name = $Request.Query.Name
-if (-not $name) {
-    $name = $Request.Body.Name
-}
-
-if ($name) {
-    $outputMsg = "Name passed to the function: $name"
-    Push-OutputBinding -name msg -Value $outputMsg
-
-    $status = [HttpStatusCode]::OK
-    $body = "Hello $name"
-}
-else {
-    $status = [HttpStatusCode]::BadRequest
-    $body = "Please pass a name on the query string or in the request body."
-}
-
-# Associate values to output bindings by calling 'Push-OutputBinding'.
-Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
-    StatusCode = $status
-    Body = $body
-})
-```
-::: zone-end
-
-::: zone pivot="programming-language-python"
-```python
-import logging
-
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        msg.set(name)
-        return func.HttpResponse(f"Hello {name}!")
-    else:
-        return func.HttpResponse(
-            "Please pass a name on the query string or in the request body",
-            status_code=400
-        )
-```
-::: zone-end
-
-::: zone pivot="programming-language-typescript"
-```typescript
-import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-
-const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    context.log('HTTP trigger function processed a request.');
-    const name = (req.query.name || (req.body && req.body.name));
-
-    if (name) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " +
-            (req.query.name || req.body.name);
-        
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-
-export default httpTrigger;
-```
+[!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 ::: zone-end
 
 ### <a name="update-the-image-in-the-registry"></a>Aktualizowanie obrazu w rejestrze
@@ -874,71 +496,7 @@ export default httpTrigger;
 
 W przeglądarce użyj tego samego adresu URL, co poprzednio, aby wywołać funkcję. Przeglądarka powinna wyświetlać taką samą odpowiedź jak poprzednio, ponieważ nie zmodyfikowałeś tej części kodu funkcji. Dodany kod napisał jednak wiadomość używającą `name` parametru `outqueue` ADRESU URL do kolejki magazynu.
 
-Kolejkę można wyświetlić w [witrynie Azure portal](../storage/queues/storage-quickstart-queues-portal.md) lub w [Eksploratorze magazynu platformy Microsoft Azure](https://storageexplorer.com/). Kolejkę można również wyświetlić w wierszu polecenia platformy Azure zgodnie z opisem w następujących krokach:
-
-1. Otwórz plik *local.setting.json* projektu funkcji i skopiuj wartość ciągu połączenia. W oknie terminala lub polecenia uruchom następujące polecenie, `AZURE_STORAGE_CONNECTION_STRING`aby utworzyć zmienną środowiskową `<connection_string>`o nazwie , wklejając określony ciąg połączenia zamiast pliku . (Ta zmienna środowiskowa oznacza, że nie trzeba podawać ciągu `--connection-string` połączenia do każdego kolejnego polecenia przy użyciu argumentu).
-
-    # <a name="bash"></a>[Bash](#tab/bash)
-    
-    ```bash
-    AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
-    ```
-    
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
-    
-    ```powershell
-    $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
-    ```
-    
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-    
-    ```cmd
-    set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
-    ```
-    
-    ---
-    
-1. (Opcjonalnie) Użyj [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) polecenia, aby wyświetlić kolejki magazynu na koncie. Dane wyjściowe z tego polecenia `outqueue`powinny zawierać kolejkę o nazwie , która została utworzona, gdy funkcja napisała swój pierwszy komunikat do tej kolejki.
-    
-    # <a name="bash"></a>[Bash](#tab/bash)
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-    
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-    
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-    
-    ---
-
-1. Użyj [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) polecenia, aby wyświetlić wiadomości w tej kolejce, która powinna być pierwszą nazwą używaną podczas testowania funkcji wcześniej. Polecenie pobiera pierwszą wiadomość w kolejce w [kodowaniu base64,](functions-bindings-storage-queue-trigger.md#encoding)więc należy również zdekodować wiadomość, aby wyświetlić jako tekst.
-
-    # <a name="bash"></a>[Bash](#tab/bash)
-    
-    ```bash
-    echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
-    ```
-    
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
-    
-    ```powershell
-    [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
-    ```
-    
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-    
-    Ponieważ należy wyłuskać kolekcji wiadomości i dekodować z base64, uruchom program PowerShell i użyj polecenia programu PowerShell.
-
-    ---
+[!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

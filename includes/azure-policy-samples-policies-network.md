@@ -2,18 +2,18 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/02/2020
+ms.date: 04/03/2020
 ms.author: dacoulte
-ms.openlocfilehash: 3b40f4740d4d7aedc6a4997662a4738293721817
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: ecca4208d8c3d471e3ff4d1fc951888dcf18255d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80624472"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758205"
 ---
 |Nazwa |Opis |Efekt(-y) |Wersja |GitHub |
 |---|---|---|---|---|
-|[Niestandardowe zasady protokołu IPsec/IKE muszą być stosowane do wszystkich połączeń bramy sieci wirtualnej platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Ta zasada gwarantuje, że wszystkie połączenia bramy sieci wirtualnej platformy Azure korzystają z niestandardowych zasad zabezpieczeń (Ipsec) i wymiany kluczy internetowych(IKE) w zakresie niestandardowych protokołów internetowych. Obsługiwane algorytmy i kluczowe mocne strony -https://aka.ms/AA62kb0 |Inspekcja, wyłączone |1.0.0 |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json)
+|[Niestandardowe zasady protokołu IPsec/IKE muszą być stosowane do wszystkich połączeń bramy sieci wirtualnej platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Ta zasada gwarantuje, że wszystkie połączenia bramy sieci wirtualnej platformy Azure korzystają z niestandardowych zasad zabezpieczeń (Ipsec) i wymiany kluczy internetowych(IKE) w zakresie niestandardowych protokołów internetowych. Obsługiwane algorytmy i kluczowe mocne strony -[https://aka.ms/AA62kb0](https://aka.ms/AA62kb0) |Inspekcja, wyłączone |1.0.0 |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json)
 |[Usługa app service powinna używać punktu końcowego usługi sieci wirtualnej](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d21331d-a4c2-4def-a9ad-ee4e1e023beb) |Ta zasada przeprowadza inspekcję dowolnej usługi App Service, która nie jest skonfigurowana do używania punktu końcowego usługi sieci wirtualnej. |AuditIfNotExists, Wyłączone |1.0.0 |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_AppService_AuditIfNotExists.json)
 |[Bramy sieci VPN platformy Azure nie powinny używać "podstawowej" jednostki SKU](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345b6c3-24bd-4c93-9bbb-7e5e49a17b78) |Ta zasada gwarantuje, że bramy sieci VPN nie używają "podstawowej" jednostki SKU. |Inspekcja, wyłączone |1.0.0 |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_BasicSKU_Audit.json)
 |[Rejestr kontenerów powinien używać punktu końcowego usługi sieci wirtualnej](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78) |Ta zasada przeprowadza inspekcję rejestru kontenerów, który nie jest skonfigurowany do używania punktu końcowego usługi sieci wirtualnej. |Inspekcja, wyłączone |1.0.0-podgląd |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_ContainerRegistry_Audit.json)

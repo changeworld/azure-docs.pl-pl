@@ -3,15 +3,15 @@ title: Przeglądanie użycia zasobów usług platformy Azure przy użyciu interf
 description: Dowiedz się, jak używać interfejsów API REST platformy Azure do przeglądania użycia zasobów usług platformy Azure.
 author: lleonard-msft
 ms.service: cost-management-billing
-ms.topic: article
-ms.date: 02/12/2020
+ms.topic: reference
+ms.date: 03/31/2020
 ms.author: banders
-ms.openlocfilehash: 337523c489089eeae5d669252b61cc61478ae1b3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 60a9e17b16f0b539693beb987b4d0610d11a3050
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202849"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521197"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Przeglądanie użycia zasobów platformy Azure przy użyciu interfejsu API REST
 
@@ -32,7 +32,9 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-Parametr `{subscriptionGuid}` jest wymagany i powinien zawierać identyfikator subskrypcji, który można odczytać przy użyciu poświadczeń podanych w tokenie interfejsu API. `{reportName}`
+Parametr `{subscriptionGuid}` jest wymagany i powinien zawierać identyfikator subskrypcji, który można odczytać przy użyciu poświadczeń podanych w tokenie interfejsu API. 
+
+Parametr `{reportName}` określa nazwę raportu. Aby uzyskać listę nazw raportów, można użyć operacji Reports_List: `/subscriptions/{subscriptionId}/providers/Microsoft.CostManagement/reports`. Wyświetl przykładowe dane wyjściowe w [witrynie GitHub](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/cost-management/resource-manager/Microsoft.CostManagement/preview/2018-08-01-preview/examples/ReportList.json).
 
 Wymagane są następujące nagłówki:
 

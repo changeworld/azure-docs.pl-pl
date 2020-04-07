@@ -7,23 +7,23 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 24f7a81b267e858d16ae0805f9c7ab384be3b2fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 81b6b8a7024de9ff3361e24cb14190d479e50681
+ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200646"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80258060"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Konfigurowanie konta rozliczeniowego dla umowy klienta firmy Microsoft
 
 Jeśli Twoja rejestracja umowy Enterprise Agreement wygasła lub wkrótce wygaśnie, możesz podpisać umowę klienta firmy Microsoft, aby odnowić rejestrację. W tym artykule opisano zmiany w istniejących rozliczeniach po skonfigurowaniu i procedurę konfigurowania nowego konta rozliczeniowego. Procedura odnowienia obejmuje następujące kroki:
 
 1. Zaakceptowanie nowej umowy klienta firmy Microsoft. Skontaktowanie się z przedstawicielem firmy Microsoft w celu poznania szczegółów nowej umowy i zaakceptowania jej.
-2. Skonfigurowanie nowego konta rozliczeniowego utworzonego dla nowej umowy klienta firmy Microsoft.
+2. Skonfigurowanie nowego konta rozliczeniowego utworzonego dla nowej Umowy z Klientem Microsoft.
 
 Aby skonfigurować konto rozliczeniowe, musisz przenieść rozliczanie Twoich subskrypcji platformy Azure z rejestracji umowy Enterprise Agreement do nowego konta. Konfiguracja nie wpływa na usługi platformy Azure, które działają w ramach Twoich subskrypcji. Jednak zmienia sposób zarządzania rozliczeniami dla subskrypcji.
 
-- Zamiast w witrynie [EA Portal](https://ea.azure.com) będziesz zarządzać usługami i rozliczeniami platformy Azure w witrynie [Azure Portal](https://portal.azure.com).
+- Zamiast w witrynie [EA Portal](https://ea.azure.com), będziesz zarządzać usługami i rozliczeniami platformy Azure w witrynie [Azure Portal](https://portal.azure.com).
 - Będziesz otrzymywać miesięczne faktury cyfrowe z naliczonymi opłatami. Fakturę możesz wyświetlić i przeanalizować na stronie Zarządzanie kosztami i rozliczenia platformy Azure.
 - Zamiast działów i konta w ramach rejestracji umowy Enterprise Agreement będziesz używać struktury i zakresów rozliczeń z nowego konta do zarządzania rozliczeniami i organizowania ich.
 
@@ -115,7 +115,7 @@ Kontakty dla powiadomień otrzymują wiadomości e-mail dotyczące umowy Enterpr
 
 ### <a name="spending-quotas"></a>Limity przydziału wydatków
 
-Limity przydziału wydatków ustawione dla działów w rejestracji umowy Enterprise Agreement są zastępowane budżetami na nowym koncie rozliczeniowym. Dla każdego limitu przydziału wydatków ustawionego dla działów w rejestracji jest tworzony budżet. Aby uzyskać więcej informacji na temat budżetów, zobacz [Tworzenie budżetów platformy Azure i zarządzanie nimi](../cloudyn/manage-budgets.md).
+Limity przydziału wydatków ustawione dla działów w rejestracji umowy Enterprise Agreement są zastępowane budżetami na nowym koncie rozliczeniowym. Dla każdego limitu przydziału wydatków ustawionego dla działów w rejestracji jest tworzony budżet. Aby uzyskać więcej informacji na temat budżetów, zobacz [Samouczek: Tworzenie budżetów platformy Azure i zarządzanie nimi](../costs/tutorial-acm-create-budgets.md).
 
 ### <a name="cost-centers"></a>Centra kosztów
 

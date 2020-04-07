@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 6f1c211a8110d95adb5e6802313c5b7deafe3864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1e5c0a714a8b66d83c19acc53f6a680a9196a90
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276465"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673421"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Szybki start: tworzenie projektu usługi Azure Functions przy użyciu kodu programu Visual Studio
 
@@ -26,7 +26,7 @@ Zanim zaczniesz, upewnij się, że masz następujące wymagania:
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
 + [Node.js](https://nodejs.org/), wymagane przez system Windows dla npm. Tylko [aktywne wersje LTS i konserwacji LTS ](https://nodejs.org/about/releases/). Użyj `npm --version` polecenia, aby sprawdzić wersję.
-    Nie jest wymagane dla lokalnego rozwoju w systemach MacOS i Linux.   
+    Nie jest wymagane dla lokalnego rozwoju w systemach macOS i Linux.   
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
 + [Node.js](https://nodejs.org/), Active LTS i konserwacja wersji LTS (10.14.1 zalecane). Użyj `npm --version` polecenia, aby sprawdzić wersję.
@@ -39,6 +39,11 @@ Zanim zaczniesz, upewnij się, że masz następujące wymagania:
 
 + .NET [Core SDK 2.2+](https://www.microsoft.com/net/download)  
 ::: zone-end  
+::: zone pivot="programming-language-java"  
++ [Zestaw Java Developer Kit](https://aka.ms/azure-jdks), wersja 8.
+
++ [Apache Maven](https://maven.apache.org), wersja 3.0 lub wyższa.
+::: zone-end  
 + [Visual Studio Code](https://code.visualstudio.com/) na jednej z [obsługiwanych platform](https://code.visualstudio.com/docs/supporting/requirements#_platforms).  
 ::: zone pivot="programming-language-csharp"  
 + [Rozszerzenie języka C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) dla programu Visual Studio Code.  
@@ -47,7 +52,10 @@ Zanim zaczniesz, upewnij się, że masz następujące wymagania:
 + [Rozszerzenie Języka Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) dla programu Visual Studio Code.  
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"
-+ [Rozszerzenie programu PowerShell dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).  
++ [Rozszerzenie programu PowerShell dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell). 
+::: zone-end  
+::: zone pivot="programming-language-java"  
++ [Pakiet rozszerzeń Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
 ::: zone-end  
 
 + [Rozszerzenie usługi Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) dla kodu programu Visual Studio. 
@@ -85,21 +93,35 @@ W tej sekcji używasz Visual Studio Code do utworzenia lokalnego projektu usług
     + **Wybierz alias Języka Python, aby utworzyć środowisko wirtualne:** wybierz lokalizację interpretera języka Python. Jeśli lokalizacja nie jest wyświetlana, wpisz pełną ścieżkę do pliku binarnego języka Python.  
     ::: zone-end
 
+    ::: zone pivot="programming-language-java"  
+    + **Wybierz język dla projektu**funkcji `Java`: Wybierz .
+
+    + **Podaj identyfikator**grupy `com.function`: Wybierz .
+
+    + **Podaj identyfikator artefaktu:** Wybierz `myFunction`.
+
+    + **Podaj**wersję `1.0-SNAPSHOT`: Wybierz .
+
+    + **Podaj nazwę** `com.function`pakietu : Wybierz .
+
+    + **Podaj nazwę** `myFunction-12345`aplikacji : Wybierz .
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
     + **Wybierz szablon dla pierwszej funkcji projektu** `HTTP trigger`: Wybierz .
     
     + **Podaj nazwę** `HttpExample`funkcji : Type .
-    
+    ::: zone-end  
     ::: zone pivot="programming-language-csharp"
     + **Podaj obszar nazw:** Wpisz `My.Functions`. 
-    ::: zone-end
-
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
     + **Poziom autoryzacji:** Wybierz `Anonymous`, który umożliwia każdemu wywołanie punktu końcowego funkcji. Aby dowiedzieć się więcej o poziomie autoryzacji, zobacz [Klucze autoryzacji](functions-bindings-http-webhook-trigger.md#authorization-keys).
-
+    ::: zone-end  
     + **Wybierz sposób otwierania projektu**: `Add to workspace`Wybierz .
 
 1. Korzystając z tych informacji, Visual Studio Code generuje projekt usługi Azure Functions z wyzwalaczem HTTP. Pliki projektu lokalnego można wyświetlić w Eksploratorze. Aby dowiedzieć się więcej o tworzonych plikach, zobacz [Generowane pliki projektu](functions-develop-vs-code.md#generated-project-files). 
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python,programming-language-java"
 
 [!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
@@ -119,7 +141,7 @@ Po sprawdzeniu, że funkcja działa poprawnie na komputerze lokalnym, nadszedł 
 
 ## <a name="run-the-function-in-azure"></a>Uruchamianie funkcji na platformie Azure
 
-1. Powrót do obszaru **Azure: Functions** na pasku bocznym rozwiń nową aplikację funkcji w ramach subskrypcji. Rozwiń **polecenie Rozwiń funkcje**, kliknij prawym przyciskiem myszy (Windows) lub Ctrl + kliknij (MacOS) na **stronie HttpExample**, a następnie wybierz polecenie **Kopiuj adres URL funkcji**.
+1. Powrót do obszaru **Azure: Functions** na pasku bocznym rozwiń nową aplikację funkcji w ramach subskrypcji. Rozwiń **polecenie Rozwiń funkcje**, kliknij prawym przyciskiem myszy (Windows) lub Ctrl + kliknij (macOS) na **stronie HttpExample**, a następnie wybierz polecenie **Kopiuj adres URL funkcji**.
 
     ![Skopiuj adres URL funkcji dla nowego wyzwalacza HTTP](./media/functions-create-first-function-vs-code/function-copy-endpoint-url.png)
 

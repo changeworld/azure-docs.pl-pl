@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d5acc2b69ed521af4fd4777dc9f3496290078379
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 0d63f2c29bfdbdf320185647bd33ec30500ed874
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583266"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742695"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>Indeksowanie tabel w puli SQL Synapse
 
@@ -24,9 +24,9 @@ Zalecenia i przykłady indeksowania tabel w puli Synapse SQL.
 
 ## <a name="index-types"></a>Typy indeksów
 
-Pula SQL Synapse oferuje kilka opcji indeksowania, w tym [indeksy klastrowanego magazynu kolumn,](/sql/relational-databases/indexes/columnstore-indexes-overview) [indeksy klastrowane i indeksy nieklastrowane](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)oraz opcję nieindeksową znaną również jako [sterty.](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)  
+Pula SQL Synapse oferuje kilka opcji indeksowania, w tym [indeksy klastrowanego magazynu kolumn,](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [indeksy klastrowane i indeksy nieklastrowane](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)oraz opcję nieindeksową znaną również jako [sterty.](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
 
-Aby utworzyć tabelę z indeksem, zobacz tworzenie [tabeli (puli SYNAPSE SQL)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) dokumentacji.
+Aby utworzyć tabelę z indeksem, zobacz tworzenie [tabeli (puli SYNAPSE SQL)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dokumentacji.
 
 ## <a name="clustered-columnstore-indexes"></a>Indeksy klastrowanego magazynu kolumn
 
@@ -230,7 +230,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 
 Zaloguj się jako użytkownik z kroku 1 (np. LoadUser), który jest teraz przy użyciu wyższej klasy zasobów i wykonać alter index instrukcji. Upewnij się, że ten użytkownik ma uprawnienie ALTER do tabel, w których indeks jest przebudowywany. Te przykłady pokazują, jak odbudować cały indeks magazynu kolumn lub jak odbudować pojedynczą partycję. W dużych tabelach jest bardziej praktyczne, aby odbudować indeksy pojedynczej partycji naraz.
 
-Alternatywnie zamiast przebudowy indeksu, można skopiować tabelę do nowej tabeli [przy użyciu CTAS](sql-data-warehouse-develop-ctas.md). W którą stronę jest najlepsza? W przypadku dużych ilości danych, CTAS jest zwykle szybszy niż [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). W przypadku mniejszych ilości danych alter index jest łatwiejszy w użyciu i nie wymaga wymiany tabeli.
+Alternatywnie zamiast przebudowy indeksu, można skopiować tabelę do nowej tabeli [przy użyciu CTAS](sql-data-warehouse-develop-ctas.md). W którą stronę jest najlepsza? W przypadku dużych ilości danych, CTAS jest zwykle szybszy niż [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). W przypadku mniejszych ilości danych alter index jest łatwiejszy w użyciu i nie wymaga wymiany tabeli.
 
 ```sql
 -- Rebuild the entire clustered index
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Odbudowanie indeksu w puli SQL Synapse jest operacją w trybie offline.  Aby uzyskać więcej informacji na temat odbudowy indeksów, zobacz sekcję ALTER INDEX REBUILD w [kolumnie Indeksy defragmentacji](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)i [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql).
+Odbudowanie indeksu w puli SQL Synapse jest operacją w trybie offline.  Aby uzyskać więcej informacji na temat odbudowy indeksów, zobacz sekcję ALTER INDEX REBUILD w [kolumnie Indeksy defragmentacji](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)i [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: Sprawdź, czy poprawiła się jakość segmentu klastrowanego magazynu kolumn
 
@@ -260,7 +260,7 @@ Uruchom ponownie kwerendę, która zidentyfikowała tabelę o niskiej jakości s
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Przebudowywanie indeksów z CTAS i przełączaniem partycji
 
-W tym przykładzie użyto [instrukcji CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) i przełączania partycji w celu odbudowania partycji tabeli.
+W tym przykładzie użyto [instrukcji CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) i przełączania partycji w celu odbudowania partycji tabeli.
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS

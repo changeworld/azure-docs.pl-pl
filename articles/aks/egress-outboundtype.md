@@ -4,12 +4,12 @@ description: Dowiedz się, jak zdefiniować niestandardową trasę wychodzącą 
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 30b7b6bae92221b268d40977f5b299e9b0b267b0
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 3780680c485aebf1ffc654d31c577821a9b96fff
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637822"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676501"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Dostosowywanie wyjścia klastra za pomocą trasy zdefiniowanej przez użytkownika (wersja zapoznawcza)
 
@@ -361,7 +361,7 @@ az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/
 
 ```
 
- Użyj polecenia [az aks get-credentials][az-aks-get-credentials], `kubectl` aby skonfigurować połączenie z nowo utworzonym klastrem Kubernetes. 
+ Użyj polecenia [az aks get-credentials,][az-aks-get-credentials] aby skonfigurować `kubectl` łączenie się z nowo utworzonym klastrem Kubernetes. 
 
  ```azure-cli
  az aks get-credentials -g $RG -n $AKS_NAME
@@ -542,3 +542,6 @@ Powinien zostać wyświetlony obraz aplikacji do głosowania platformy Azure.
 Zobacz [omówienie UDR sieci platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
 
 Zobacz, [jak utworzyć, zmienić lub usunąć tabelę marszrut](https://docs.microsoft.com/azure/virtual-network/manage-route-table).
+
+<!-- LINKS - internal -->
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials

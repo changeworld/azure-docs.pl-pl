@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 6782d745bfced576fe06019b0d41af86c8c63ed4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: b8f55b0693b7ffdf10516cfb19b67ccc5a94dc5a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656271"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742896"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co to jest prywatny punkt końcowy platformy Azure?
 
@@ -144,7 +144,7 @@ W przypadku usług platformy Azure należy używać zalecanych nazw stref zgodni
 |Azure Relay (Microsoft.Relay/namespaces) | namespace |privatelink.servicebus.windows.net|
 |Usługa Azure Event Grid (Microsoft.EventGrid/topics)   | temat | Temat. {region}.privatelink.eventgrid.azure.net|
 |Usługa Azure Event Grid (Microsoft.EventGrid/domains) | domena | Domeny. {region}.privatelink.eventgrid.azure.net |
-|Azure WebApps(Microsoft.Web/sites) | lokacja | privatelink.azurewebsites.net |
+|Usługi Azure WebApps (microsoft.web/sites)    | lokacja | privatelink.azurewebsites.net |
 |Azure Machine Learning(Microsoft.MachineLearningServices/workspaces)   | obszar roboczy | privatelink.api.azureml.ms |
  
 Platforma Azure utworzy rekord DNS nazwy kanonicznej (CNAME) w publicznym systemie DNS, aby przekierować rozdzielczość do sugerowanych nazw domen. Rozdzielczość można zastąpić prywatnym adresem IP prywatnych punktów końcowych. 

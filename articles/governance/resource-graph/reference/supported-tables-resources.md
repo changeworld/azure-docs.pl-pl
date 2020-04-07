@@ -1,14 +1,14 @@
 ---
 title: Obsługiwane typy zasobów Menedżera zasobów
 description: Podaj listę typów zasobów Menedżera zasobów obsługiwanych przez usługę Azure Resource Graph i historia zmian.
-ms.date: 03/23/2020
+ms.date: 04/06/2020
 ms.topic: reference
-ms.openlocfilehash: 64fd860090cc15cc6914ee926772146b98477edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85cab92981568f5ea3770e1102c3480ae4f3e638
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130609"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677054"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Tabela i odwołanie do typu zasobu azure
 
@@ -188,6 +188,7 @@ Usługa Azure Resource Graph obsługuje następujące **typy zasobów** [usługi
 - microsoft.eventhub/klastry
 - microsoft.eventhub/przestrzenie nazw
 - microsoft.experimentation/experimentworkspaces
+- microsoft.falcon/przestrzenie nazw
 - microsoft.gaming/tytuły
 - microsoft.genomics/accounts
 - microsoft.guestconfiguration/automanagedaccounts
@@ -290,6 +291,7 @@ Usługa Azure Resource Graph obsługuje następujące **typy zasobów** [usługi
 - microsoft.network/networkexperimentprofiles microsoft.network/networkexperimentprofiles microsoft.network/networkexperimentprofiles microsoft.
 - microsoft.network/networkintentpolicies
 - microsoft.network/networkinterfaces
+- microsoft.network/networkmanagers
 - microsoft.network/networkprofiles microsoft.network/networkprofiles microsoft.network/networkprofiles
 - microsoft.network/networksecuritygroups
 - microsoft.network/networkvirtualappliances
@@ -446,6 +448,7 @@ Usługa Azure Resource Graph obsługuje następujące **typy zasobów** [usługi
 - wandisco.fusion/fusiongrupy
 - wandisco.fusion/fusiongroups/azurezones
 - wandisco.fusion/fusiongroups/azurezones/plugins
+- wandisco.fusion/fusiongroups/hivereplicationrules
 - wandisco.fusion/fusiongroups/managedonpremzones
 - wandisco.fusion/fusiongroups/onpremzones
 - wandisco.fusion/fusiongroups/replicationrules

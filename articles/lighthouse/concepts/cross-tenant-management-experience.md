@@ -1,14 +1,14 @@
 ---
 title: Środowiska zarządzania wieloma dzierżawami
 description: Zarządzanie zasobami delegowanymi platformy Azure umożliwia środowisko zarządzania między dzierżawami.
-ms.date: 03/12/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0e55923e688d1062adc5838a88e8d3202864282a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ac5d62fbf6b6ee418cd4b2f2b00dfc12e05f809
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218387"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754135"
 ---
 # <a name="cross-tenant-management-experiences"></a>Środowiska zarządzania wieloma dzierżawami
 
@@ -21,7 +21,7 @@ Jako dostawca usług możesz używać [zarządzania zasobami delegowanymi platfo
 
 Dzierżawa usługi Azure Active Directory (Azure AD) jest reprezentacją organizacji. Jest to dedykowane wystąpienie usługi Azure AD, które organizacja otrzymuje podczas tworzenia relacji z firmą Microsoft, rejestrując się na platformie Azure, usłudze Microsoft 365 lub innych usługach. Każda dzierżawa usługi Azure AD jest odrębna i oddzielona od innych dzierżaw usługi Azure AD i ma własny identyfikator dzierżawy (identyfikator GUID). Aby uzyskać więcej informacji, zobacz [Co to jest usługa Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
 
-Zazwyczaj, aby zarządzać zasobami platformy Azure dla klienta, dostawcy usług musieliby zalogować się do witryny Azure portal przy użyciu konta skojarzonego z dzierżawą tego klienta, wymagając od administratora w dzierżawie klienta tworzenia kont użytkowników i zarządzania nimi dla usługodawcy.
+Zazwyczaj w celu zarządzania zasobami platformy Azure dla klienta dostawcy usług będą musieli zalogować się do witryny Azure portal przy użyciu konta skojarzonego z dzierżawą tego klienta, wymagając od administratora w dzierżawie klienta tworzenia kont użytkowników dla dostawcy usług i zarządzania nimi.
 
 W przypadku zarządzania zasobami delegowanymi platformy Azure proces dołączania określa użytkowników w dzierżawie dostawcy usług, którzy będą mogli uzyskiwać dostęp do subskrypcji, grup zasobów i zasobów w dzierżawie klienta oraz zarządzać nimi. Ci użytkownicy mogą następnie zalogować się do witryny Azure portal przy użyciu własnych poświadczeń. W witrynie Azure portal mogą zarządzać zasobami należącymi do wszystkich klientów, do których mają dostęp. Można to zrobić, odwiedzając [stronę Moi klienci](../how-to/view-manage-customers.md) w witrynie Azure portal lub pracując bezpośrednio w kontekście subskrypcji tego klienta, w witrynie Azure portal lub za pośrednictwem interfejsów API.
 
@@ -141,6 +141,7 @@ We wszystkich scenariuszach należy pamiętać o następujących bieżących ogr
 - Przypisania ról muszą używać [wbudowanych ról](../../role-based-access-control/built-in-roles.md)kontroli dostępu opartej na rolach (RBAC). Wszystkie wbudowane role są obecnie obsługiwane za pomocą usługi Azure zarządzanie zasobami delegowanymi, z wyjątkiem właściciela lub dowolnych wbudowanych ról z [uprawnieniami DataActions.](../../role-based-access-control/role-definitions.md#dataactions) Rola Administratora dostępu użytkownika jest obsługiwana tylko w przypadku ograniczonego wykorzystania [ról do tożsamości zarządzanych](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Role niestandardowe i [klasyczne role administratora subskrypcji](../../role-based-access-control/classic-administrators.md) nie są obsługiwane.
 - Chociaż można dołączać subskrypcje, które używają usługi Azure Databricks, użytkownicy w dzierżawie zarządzania nie można uruchomić obszarów roboczych usługi Azure Databricks w ramach subskrypcji delegowanej w tej chwili.
 - Chociaż można dołączać subskrypcje i grupy zasobów dla zarządzania zasobami delegowanymi platformy Azure, które mają blokady zasobów, te blokady nie uniemożliwią wykonywania akcji przez użytkowników w dzierżawie zarządzającej. [Odmów przydziałów,](../../role-based-access-control/deny-assignments.md) które chronią zasoby zarządzane przez system, takie jak te utworzone przez aplikacje zarządzane platformy Azure lub plany platformy Azure (przypisane do systemu przypisane przypisane przypisane przypisane przypisane przypisane przypisane przypisane przypisane przypisane przypisane przypisane do nich przypisane przypisane przypisane przypisane do nich przypisane przydziały, uniemożliwiają użytkownikom w dzierżawie zarządzającej działanie na tych zasobach; jednak w tej chwili użytkownicy w dzierżawie klienta nie mogą tworzyć własnych przypisań odmowy (przypisanych przez użytkownika przypisań odmowy).
+- Użytkownicy w dzierżawie zarządzającej nie będą mieli dostępu do wyświetlania informacji rozliczeniowych dla delegowanej subskrypcji klienta, nawet jeśli mają wbudowaną rolę, która zazwyczaj zezwala na dostęp. Dzieje się tak, ponieważ dostęp do informacji rozliczeniowych wymaga dodatkowych kroków, które są obecnie obsługiwane tylko dla użytkowników w ramach tej samej dzierżawy.
 
 ## <a name="next-steps"></a>Następne kroki
 

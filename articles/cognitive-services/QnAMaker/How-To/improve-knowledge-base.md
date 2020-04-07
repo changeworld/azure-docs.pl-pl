@@ -2,13 +2,13 @@
 title: Poprawa bazy wiedzy - QnA Maker
 description: Popraw jakość swojej bazy wiedzy dzięki aktywnemu uczeniu się. Przeglądaj, akceptuj lub odrzucaj, dodawaj bez usuwania lub zmieniania istniejących pytań.
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 1eb0ed42f700c14350a5e4f1eff9b7592cbf8ef6
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 04/06/2020
+ms.openlocfilehash: 7fafc23eaf21099ebb974da226d07c351fa19699
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474883"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756754"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Akceptowanie pytań sugerowanych w aktywnej nauce w bazie wiedzy
 
@@ -17,7 +17,7 @@ ms.locfileid: "80474883"
 
 Usługa Active Learning zmienia bazę wiedzy lub usługę wyszukiwania po zatwierdzeniu sugestii, a następnie zapisywanie i szkolenie. Jeśli zatwierdzisz sugestię, zostanie ono dodane jako pytanie alternatywne.
 
-## <a name="turn-on-active-learning"></a>Włączanie aktywnego uczenia się
+## <a name="turn-on-active-learning"></a>Włącz uczenie aktywne
 
 Aby wyświetlić sugerowane pytania, musisz [włączyć aktywne uczenie się](use-active-learning.md) zasobu QnA Maker.
 
@@ -33,7 +33,7 @@ Aby wyświetlić sugerowane pytania, musisz [włączyć aktywne uczenie się](us
 
 1. Każda para QnA sugeruje nowe alternatywy pytań `✔` ze znacznikiem wyboru, aby zaakceptować pytanie lub `x` odrzucić sugestie. Zaznacz znacznik wyboru, aby dodać pytanie.
 
-    [![Wybierz lub odrzuć zalecane przez aktywne uczenie się alternatywy pytań, wybierając zielony znacznik wyboru lub czerwony znacznik usuwania.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![Wybierz lub odrzuć zalecane przez aktywne uczenie się alternatywy pytań, wybierając zielony znacznik wyboru lub czerwony znacznik usuwania.](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     Wszystkie _sugestie_ można dodać lub usunąć, zaznaczając pozycję **Dodaj wszystkie** lub **Odrzuć wszystkie** na pasku narzędzi kontekstowych.
 

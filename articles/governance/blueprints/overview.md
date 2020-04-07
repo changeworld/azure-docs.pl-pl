@@ -3,12 +3,12 @@ title: Omówienie usługi Azure Blueprints
 description: Dowiedz się, jak usługa Azure Blueprints umożliwia tworzenie, definiowanie i wdrażanie artefaktów w środowisku platformy Azure.
 ms.date: 11/21/2019
 ms.topic: overview
-ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4787f2d559daffcbf5d4057ac381f0f7e1ae0c57
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74321765"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677413"
 ---
 # <a name="what-is-azure-blueprints"></a>Czym jest usługa Azure Blueprints?
 
@@ -22,17 +22,17 @@ Usługa Blueprints umożliwia deklaratywne organizowanie i wdrażanie różnych 
 - Grupy zasobów
 
 Usługa Azure Blueprints jest wspierana przez globalnie dystrybuowaną [usługę Azure Cosmos DB](../../cosmos-db/introduction.md).
-Obiekty strategii są replikowane w wielu regionach świadczenia usługi Azure. Ta replikacja zapewnia małe opóźnienia, wysoką dostępność oraz spójny dostęp do obiektów strategii niezależnie od regionu, w którym usługa Blueprints wdraża Twoje zasoby.
+Obiekty strategii są replikowane w wielu regionach świadczenia usługi Azure. Ta replikacja zapewnia małe opóźnienia, wysoką dostępność i spójny dostęp do obiektów planu, niezależnie od regionu, w którym usługa Azure Blueprints wdraża zasoby.
 
 ## <a name="how-its-different-from-resource-manager-templates"></a>W czym różni się ona od szablonów usługi Resource Manager
 
 Usługa została zaprojektowana w celu ułatwienia _konfiguracji środowiska_. Ta konfiguracja często składa się z zestawu grup zasobów, zasad, przypisań ról i wdrożeń szablonów usługi Resource Manager. Strategia usługi Blueprints to pakiet umożliwiający połączenie każdego z tych typów _artefaktów_ w jedną całość. Pakiety można tworzyć i kontrolować ich wersje — w tym za pośrednictwem potoku ciągłej integracji/ciągłego wdrażania. Każdy pakiet jest ostatecznie przypisywany do subskrypcji w ramach jednej operacji, którą można poddawać inspekcji i śledzić.
 
-Prawie wszystkie elementy możliwe do uwzględnienia podczas wdrażania za pomocą usługi Blueprints można wdrożyć przy użyciu szablonów usługi Resource Manager. Szablony usługi Resource Manager są jednak dokumentami, które nie istnieją natywnie na platformie Azure — każdy z nich jest przechowywany lokalnie lub w kontroli źródła. Szablon jest używany na potrzeby wdrożenia jednego lub większej liczby zasobów platformy Azure, ale po wdrożeniu tych zasobów nie ma aktywnego połączenia z wykorzystanym szablonem ani relacji z nim.
+Prawie wszystko, co chcesz uwzględnić do wdrożenia w planach platformy Azure można wykonać za pomocą szablonu Menedżera zasobów. Szablony usługi Resource Manager są jednak dokumentami, które nie istnieją natywnie na platformie Azure — każdy z nich jest przechowywany lokalnie lub w kontroli źródła. Szablon jest używany na potrzeby wdrożenia jednego lub większej liczby zasobów platformy Azure, ale po wdrożeniu tych zasobów nie ma aktywnego połączenia z wykorzystanym szablonem ani relacji z nim.
 
-Dzięki użyciu usługi Blueprints relacja między definicją strategii (to, co _powinno zostać_ wdrożone) i przypisaniem strategii (to, co _zostało_ wdrożone) jest zachowywana. To połączenie obsługuje ulepszone śledzenie i inspekcję wdrożeń. Strategie umożliwiają również uaktualnienie jednocześnie kilku subskrypcji, które są zarządzane przez tę samą strategię.
+Za pomocą planów platformy Azure relacja między definicją planu (co _należy wdrożyć)_ a przypisaniem planu (co _zostało_ wdrożone) jest zachowywana. To połączenie obsługuje ulepszone śledzenie i inspekcję wdrożeń. Plany platformy Azure można również uaktualnić kilka subskrypcji jednocześnie, które są regulowane przez ten sam plan.
 
-Nie ma potrzeby dokonywania wyboru między szablonem usługi Resource Manager i strategią. Każda strategia może zawierać dowolną liczbę _artefaktów_ szablonu usługi Resource Manager. Tego rodzaju pomoc oznacza, że podejmowane poprzednio wysiłki mające na celu utworzenie i utrzymanie biblioteki szablonów usługi Resource Manager można wykorzystywać wielokrotnie w usłudze Blueprints.
+Nie ma potrzeby dokonywania wyboru między szablonem usługi Resource Manager i strategią. Każda strategia może zawierać dowolną liczbę _artefaktów_ szablonu usługi Resource Manager. Ta pomoc techniczna oznacza, że wcześniejsze wysiłki na rzecz opracowania i utrzymania biblioteki szablonów Usługi Resource Manager są wielokrotnego użycia w planach platformy Azure.
 
 ## <a name="how-its-different-from-azure-policy"></a>W czym różni się ona od usługi Azure Policy
 
@@ -46,7 +46,7 @@ Zasady mogą być dołączane jako jedne z wielu _artefaktów_ w definicji strat
 
 ## <a name="blueprint-definition"></a>Definicja strategii
 
-Strategia składa się z _artefaktów_. Usługa Blueprints obsługuje obecnie następujące zasoby jako artefakty:
+Strategia składa się z _artefaktów_. Plany platformy Azure obsługują obecnie następujące zasoby jako artefakty:
 
 |Zasób  | Opcje hierarchii| Opis  |
 |---------|---------|---------|

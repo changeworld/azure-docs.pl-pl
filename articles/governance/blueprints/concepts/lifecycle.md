@@ -3,17 +3,16 @@ title: Zrozumienie cyklu życia planu
 description: Dowiedz się więcej o cyklu życia, przez który przechodzi definicja planu i szczegóły dotyczące każdego etapu, w tym aktualizowanie i usuwanie przypisań planu.
 ms.date: 07/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4dd5cb7d085744377cf12998f14c994fb1dcd2d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46da42ec97f16af91ef8e41362a085d466bbb887
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74404593"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677386"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Opis cyklu życia planu azure
 
-Podobnie jak wiele zasobów w ramach platformy Azure, plan w planach platformy Azure ma typowy i naturalny cykl życia. Są one tworzone, wdrażane i ostatecznie usuwane, gdy nie są już potrzebne lub istotne.
-Plany obsługuje standardowe operacje cyklu życia. Następnie opiera się na nich, aby zapewnić dodatkowe poziomy stanu, które obsługują wspólną ciągłą integrację i ciągłe potoki wdrażania dla organizacji, które zarządzają swoją infrastrukturą jako kod — kluczowym elementem w DevOps.
+Podobnie jak wiele zasobów w ramach platformy Azure, plan w planach platformy Azure ma typowy i naturalny cykl życia. Są one tworzone, wdrażane i ostatecznie usuwane, gdy nie są już potrzebne lub istotne. Usługa Azure Blueprints obsługuje standardowe operacje cyklu życia. Następnie opiera się na nich, aby zapewnić dodatkowe poziomy stanu, które obsługują wspólną ciągłą integrację i ciągłe potoki wdrażania dla organizacji, które zarządzają swoją infrastrukturą jako kod — kluczowym elementem w DevOps.
 
 Aby w pełni zrozumieć plan i etapy, omówimy standardowy cykl życia:
 

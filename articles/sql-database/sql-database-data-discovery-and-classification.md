@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: 98b21969ce86f84b20fbe78dbdf3002769ef65f5
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: b3a08eb351d29fd71889807c9a21d03b564117a7
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387873"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673748"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Odnajdowanie danych & klasyfikacji dla usługi Azure SQL Database i usługi Azure Synapse Analytics
 
@@ -35,7 +35,7 @@ Odnajdowanie danych & Klasyfikacja jest częścią oferty [Zaawansowane bezpiecz
 > [!NOTE]
 > Ten dokument dotyczy usługi Azure SQL Database i Usługi Azure Synapse. Dla uproszczenia bazy danych SQL jest używany podczas odwoływania się do bazy danych SQL i platformy Azure Synapse. Dla programu SQL Server (lokalnie) zobacz [Odnajdowanie i klasyfikacja danych SQL](https://go.microsoft.com/fwlink/?linkid=866999).
 
-## <a name="what-is-data-discovery--classification"></a><a id="subheading-1"></a>Co to jest klasyfikacja & odnajdowania danych
+## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Co to jest klasyfikacja & odnajdowania danych
 
 Odnajdowanie danych & Klasyfikacja wprowadza zestaw zaawansowanych usług i nowych możliwości SQL, tworząc nowy paradygmat ochrony informacji SQL mające na celu ochronę danych, a nie tylko bazy danych:
 
@@ -55,14 +55,14 @@ Odnajdowanie danych & Klasyfikacja wprowadza zestaw zaawansowanych usług i nowy
 
   Stan klasyfikacji bazy danych można wyświetlić na szczegółowym pulpicie nawigacyjnym w portalu. Ponadto można pobierać raporty (w formacie programu Excel), których można używać w celu zapewnienia zgodności i inspekcji, a także do innych celów.
 
-## <a name="discover-classify--label-sensitive-columns"></a><a id="subheading-2"></a>Odnajduj, klasyfikuj kolumny & etykiet
+## <a name="discover-classify--label-sensitive-columns"></a><a id="discover-classify-columns"></a>Odnajduj, klasyfikuj kolumny & etykiet
 
 W poniższej sekcji opisano kroki dotyczące odnajdywania, klasyfikowania i etykietowania kolumn zawierających poufne dane w bazie danych, a także wyświetlania bieżącego stanu klasyfikacji bazy danych i eksportowania raportów.
 
 Klasyfikacja zawiera dwa atrybuty metadanych:
 
-- Etykiety — główne atrybuty klasyfikacji, używane do definiowania poziomu czułości danych przechowywanych w kolumnie.  
-- Typy informacji — zapewniają dodatkowe ziarnistość do typu danych przechowywanych w kolumnie.
+- **Etykiety** — główne atrybuty klasyfikacji, używane do definiowania poziomu czułości danych przechowywanych w kolumnie.  
+- **Typy informacji** — zapewniają dodatkowe ziarnistość do typu danych przechowywanych w kolumnie.
 
 ## <a name="define-and-customize-your-classification-taxonomy"></a>Definiowanie i dostosowywanie taksonomii klasyfikacji
 
@@ -70,8 +70,8 @@ Odnajdowanie danych & Klasyfikacja jest wyposażony w wbudowany zestaw etykiet c
 
 Definiowanie i dostosowywanie taksonomii klasyfikacji odbywa się w jednym centralnym miejscu dla całej dzierżawy platformy Azure. Ta lokalizacja znajduje się w [usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), w ramach zasad zabezpieczeń. Tylko osoba z uprawnieniami administracyjnymi w głównej grupie zarządzania dzierżawcy może wykonać to zadanie.
 
-W ramach zarządzania zasadami ochrony informacji można definiować etykiety niestandardowe, klasyfikować je i kojarzyć z wybranym zestawem typów informacji. Można również dodawać własne niestandardowe typy informacji i konfigurować je za pomocą wzorców ciągów, które są dodawane do logiki odnajdywania na potrzeby identyfikowania tego typu danych w bazach danych.
-Dowiedz się więcej o dostosowywaniu zasad i zarządzaniu nimi w [przewodniku po zasadach ochrony informacji](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
+W ramach zarządzania zasadami ochrony informacji SQL można definiować etykiety niestandardowe, klasyfikować je i kojarzyć z wybranym zestawem typów informacji. Można również dodawać własne niestandardowe typy informacji i konfigurować je za pomocą wzorców ciągów, które są dodawane do logiki odnajdywania na potrzeby identyfikowania tego typu danych w bazach danych.
+Dowiedz się więcej o dostosowywaniu zasad i zarządzaniu nimi w [przewodniku po zasadach ochrony informacji SQL](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
 
 Po zdefiniowaniu zasad dla całej dzierżawy można kontynuować klasyfikację poszczególnych baz danych przy użyciu niestandardowych zasad.
 
@@ -111,13 +111,13 @@ Po zdefiniowaniu zasad dla całej dzierżawy można kontynuować klasyfikację p
 
 8. Aby ukończyć klasyfikację i trwale oznaczyć (oznaczyć) kolumny bazy danych nowymi metadanymi klasyfikacji, kliknij **przycisk Zapisz** w górnym menu okna.
 
-## <a name="auditing-access-to-sensitive-data"></a><a id="subheading-3"></a>Inspekcja dostępu do poufnych danych
+## <a name="auditing-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Inspekcja dostępu do poufnych danych
 
 Ważnym aspektem paradygmatu ochrony informacji jest możliwość monitorowania dostępu do poufnych danych. [Usługa Azure SQL Database Auditing](sql-database-auditing.md) została rozszerzona o nowe pole w dzienniku inspekcji o nazwie *data_sensitivity_information*, które rejestruje klasyfikacje czułości (etykiety) rzeczywistych danych, które zostały zwrócone przez kwerendę.
 
 ![Dziennik inspekcji](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a name="permissions"></a><a id="subheading-4"></a>Uprawnienia
+## <a name="permissions"></a><a id="permissions"></a>Uprawnienia
 
 Następujące wbudowane role mogą odczytywać klasyfikację danych `Owner` `Reader`bazy `Contributor` `SQL Security Manager` danych `User Access Administrator`SQL platformy Azure: , , i .
 
@@ -125,9 +125,9 @@ Następujące wbudowane role mogą modyfikować klasyfikację danych `Owner`bazy
 
 Dowiedz się więcej o [zasobach RBAC dla platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-## <a name="manage-classifications"></a><a id="subheading-5"></a>Zarządzanie klasyfikacjami
+## <a name="manage-classifications"></a><a id="manage-classification"></a>Zarządzanie klasyfikacjami
 
-# <a name="t-sql"></a>[T-SQL](#tab/azure-t-sql)
+### <a name="using-t-sql"></a>Korzystanie z języka T-SQL
 Za pomocą języka T-SQL można dodawać/usuwać klasyfikacje kolumn, a także pobierać wszystkie klasyfikacje dla całej bazy danych.
 
 > [!NOTE]
@@ -137,8 +137,8 @@ Za pomocą języka T-SQL można dodawać/usuwać klasyfikacje kolumn, a także p
 - Usuwanie klasyfikacji z jednej lub więcej kolumn: [KLASYFIKACJA WRAŻLIWOŚCI UPUŚCIEŃ](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Wyświetl wszystkie klasyfikacje w bazie danych: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-# <a name="rest-apis"></a>[Interfejsy API odpoczynku](#tab/azure-rest-api)
-Interfejsy API REST można używać do programowego zarządzania klasyfikacjami i zaleceniami. Opublikowane interfejsy API REST obsługują następujące operacje:
+### <a name="using-rest-api"></a>Korzystanie z interfejsu API odpoczynku
+Interfejs API REST umożliwia programowe zarządzanie klasyfikacjami i zaleceniami. Opublikowany interfejs API REST obsługuje następujące operacje:
 
 - [Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) — tworzy lub aktualizuje etykietę czułości danej kolumny
 - [Usuń](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) — usuwa etykietę czułości danej kolumny
@@ -148,10 +148,10 @@ Interfejsy API REST można używać do programowego zarządzania klasyfikacjami 
 - [Lista bieżących według bazy danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) — pobiera bieżące etykiety czułości danej bazy danych
 - [Lista zalecana przez bazę danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) — pobiera zalecane etykiety czułości danej bazy danych
 
-# <a name="powershell-cmdlet"></a>[PowerShell Cmdlet](#tab/azure-powelshell)
+### <a name="using-powershell-cmdlet"></a>Korzystanie z polecenia cmdlet programu PowerShell
 Program PowerShell służy do zarządzania klasyfikacjami i zaleceniami dla bazy danych SQL azure i wystąpienia zarządzanego.
 
-### <a name="powershell-cmdlet-for-azure-sql-database"></a>Polecenie cmdlet programu PowerShell dla bazy danych SQL platformy Azure
+#### <a name="powershell-cmdlet-for-azure-sql-database"></a>Polecenie cmdlet programu PowerShell dla bazy danych SQL platformy Azure
 - [Klasyfikacja jakościOwa Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityKlasyfikacja](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Usuń-AzSqlDatabaseSensitivityKlasyfikacja](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
@@ -159,7 +159,7 @@ Program PowerShell służy do zarządzania klasyfikacjami i zaleceniami dla bazy
 - [Enable-AzSqlDatabaSesensitivityReommendation Enable-AzSqlDatabaSesensitivityReommendation Enable-AzSqlDatabaSesensitivityRecommendation Enable-](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
 - [Wyłącz-AzSqlDatabaseSensitivityRekomemagnięć](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
-### <a name="powershell-cmdlets-for-managed-instance"></a>Polecenia cmdlet programu PowerShell dla wystąpienia zarządzanego
+#### <a name="powershell-cmdlets-for-managed-instance"></a>Polecenia cmdlet programu PowerShell dla wystąpienia zarządzanego
 - [Klasyfikacja informacji o adresach dźwiękowych Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
 - [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
 - [Usuń-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
@@ -167,18 +167,9 @@ Program PowerShell służy do zarządzania klasyfikacjami i zaleceniami dla bazy
 - [Enable-AzSqlInstanceDatabaseSensitivityReommendation Enable-AzSqlInstanceDatabaseSensitivityRecommendation Enable-AzSqlInstanceDatabaseSensitivityRecommendation Enable-](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
 - [Wyłącz-AzSqlInstanceDatabaseSensitivityReommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
----
 
-## <a name="next-steps"></a><a id="subheading-6"></a>Następne kroki
+## <a name="next-steps"></a><a id="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [zaawansowanym bezpieczeństwie danych](sql-database-advanced-data-security.md).
 - Należy rozważyć skonfigurowanie [usługi Azure SQL Database Auditing](sql-database-auditing.md) do monitorowania i inspekcji dostępu do niejawnych poufnych danych.
-- Aby uzyskać prezentację YouTube zawierającą odnajdowanie danych & klasyfikacja, zobacz [Odnajdywanie, klasyfikowanie, etykietowanie & ochrona danych SQL | Ujawniono dane](https://www.youtube.com/watch?v=itVi9bkJUNc).
-
-<!--Anchors-->
-[What is data discovery & classification]: #subheading-1
-[Discovering, classifying & labeling sensitive columns]: #subheading-2
-[Auditing access to sensitive data]: #subheading-3
-[Permissions]: #subheading-4
-[Manage classifications]: #subheading-5
-[Next Steps]: #subheading-6
+- Aby uzyskać prezentację zawierającą odnajdowanie danych & klasyfikacja, zobacz [Odnajdywanie, klasyfikowanie, etykietowanie & ochrona danych SQL | Ujawniono dane](https://www.youtube.com/watch?v=itVi9bkJUNc).

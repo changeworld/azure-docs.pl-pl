@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82efa70b30e829cfedd0b1fa7a21fd06949aa6d5
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220854"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744147"
 ---
 # <a name="language-and-region-support-for-luis"></a>Obsługa języka i regionu usługi LUIS
 
@@ -35,18 +35,25 @@ Usługa LUIS rozumie wypowiedzi w następujących językach:
 | amerykański angielski |`en-US` | ✔ | ✔  |✔|✔|
 | Arabski (podgląd - nowoczesny standard arabski) |`ar-AR`|-|-|-|-|
 | *[Chiński](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Niderlandzki |`nl-NL` |✔|  -   |-|✔|
+| Niderlandzki |`nl-NL` |✔|-|-|✔|
 | Francuski (Francja) |`fr-FR` |✔| ✔ |✔ |✔|
-| francuski (Kanada) |`fr-CA` |-|   -   |-|✔|
+| francuski (Kanada) |`fr-CA` |-|-|-|✔|
 | Niemiecki |`de-DE` |✔| ✔ |✔ |✔|
-| Hindi | `hi-IN`|-|-|-|-|
+| Gudżarati | `gu-IN`|-|-|-|-|
+| Hindi | `hi-IN`|-|✔|-|-|
 | Włoski |`it-IT` |✔| ✔ |✔|✔|
 | *[Japoński](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Tylko fraza kluczowa|
-| Koreański |`ko-KR` |✔|   -   |-|Tylko fraza kluczowa|
+| Koreański |`ko-KR` |✔|-|-|Tylko fraza kluczowa|
+| Marathi | `mr-IN`|-|-|-|-|
 | portugalski (Brazylia) |`pt-BR` |✔| ✔ |✔ |nie wszystkie podkultury|
 | hiszpański (Hiszpania) |`es-ES` |✔| ✔ |✔|✔|
-| Hiszpański (Meksyk)|`es-MX` |-|  -   |✔|✔|
-| Turecki | `tr-TR` |✔|-|-|Tylko sentyment|
+| Hiszpański (Meksyk)|`es-MX` |-|-|✔|✔|
+| Tamilski | `ta-IN`|-|-|-|-|
+| Telugu | `te-IN`|-|-|-|-|
+| Turecki | `tr-TR` |✔|✔|-|Tylko sentyment|
+
+
+
 
 Obsługa języka różni się w przypadku [wstępnie utworzonych jednostek](luis-reference-prebuilt-entities.md) i [wstępnie utworzonych domen](luis-reference-prebuilt-domains.md).
 
@@ -77,22 +84,28 @@ Języki hybrydowe łączą słowa z dwóch kultur, takich jak angielski i chińs
 ## <a name="tokenization"></a>Tokenizacja
 Aby wykonać uczenie maszynowe, usługa LUIS dzieli wypowiedź na [tokeny](luis-glossary.md#token) na podstawie kultury.
 
-|Język|  każda przestrzeń lub znak specjalny | poziom znaku|wyrazy złożone|[tokenizowana jednostka zwrócona](luis-concept-data-extraction.md#tokenized-entity-returned)
-|--|:--:|:--:|:--:|:--:|
-|Arabski|||||
-|Chiński||✔||✔|
-|Niderlandzki|||✔|✔|
-|Angielski (en-us)|✔ ||||
-|Francuski (fr-FR)|✔||||
-|Francuski (fr-CA)|✔||||
-|Niemiecki|||✔|✔|
-| Hindi |✔|-|-|-|-|
-|Włoski|✔||||
-|Japoński||||✔|
-|Koreański||✔||✔|
-|portugalski (Brazylia)|✔||||
-|Hiszpański (es-ES)|✔||||
-|Hiszpański (es-MX)|✔||||
+|Język|  każda przestrzeń lub znak specjalny | poziom znaku|wyrazy złożone
+|--|:--:|:--:|:--:|
+|Arabski|✔|||
+|Chiński||✔||
+|Niderlandzki|✔||✔|
+|Angielski (en-us)|✔ |||
+|Francuski (fr-FR)|✔|||
+|Francuski (fr-CA)|✔|||
+|Niemiecki|✔||✔|
+|Gudżarati|✔|||
+|Hindi|✔|||
+|Włoski|✔|||
+|Japoński|||✔
+|Koreański||✔||
+|Marathi|✔|||
+|portugalski (Brazylia)|✔|||
+|Hiszpański (es-ES)|✔|||
+|Hiszpański (es-MX)|✔|||
+|Tamilski|✔|||
+|Telugu|✔|||
+|Turecki|✔|||
+
 
 ### <a name="custom-tokenizer-versions"></a>Niestandardowe wersje tokenizatora
 
@@ -101,7 +114,10 @@ Następujące kultury mają niestandardowe wersje tokenizatora:
 |Culture|Wersja|Przeznaczenie|
 |--|--|--|
 |Niemiecki<br>`de-de`|1.0.0|Tokenizes wyrazów przez dzielenie ich przy użyciu tokenizatora opartego na uczeniu maszynowym, który próbuje podzielić wyrazy złożone na ich pojedyncze składniki.<br>Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, zostanie `Ich fahre einen kranken wagen`on przekierowyny do . Zezwalanie na `kranken` `wagen` oznaczanie i niezależnie jako różne podmioty.|
-|Niemiecki<br>`de-de`|1.0.2|Tokenizes wyrazy przez dzielenie ich na przestrzenie.<br> jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, pozostaje pojedynczym tokenem. W `krankenwagen` ten sposób jest oznaczony jako jeden podmiot. |
+|Niemiecki<br>`de-de`|1.0.2|Tokenizes wyrazy przez dzielenie ich na przestrzenie.<br> Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, pozostaje pojedynczy token. W `krankenwagen` ten sposób jest oznaczony jako jeden podmiot. |
+|Niderlandzki<br>`de-de`|1.0.0|Tokenizes wyrazów przez dzielenie ich przy użyciu tokenizatora opartego na uczeniu maszynowym, który próbuje podzielić wyrazy złożone na ich pojedyncze składniki.<br>Jeśli użytkownik wprowadzi `Ik ga naar de kleuterschool` jako wypowiedź, zostanie `Ik ga naar de kleuter school`on przekierowyny do . Zezwalanie na `kleuter` `school` oznaczanie i niezależnie jako różne podmioty.|
+|Niderlandzki<br>`de-de`|1.0.1|Tokenizes wyrazy przez dzielenie ich na przestrzenie.<br> Jeśli użytkownik wprowadzi `Ik ga naar de kleuterschool` jako wypowiedź, pozostaje pojedynczy token. W `kleuterschool` ten sposób jest oznaczony jako jeden podmiot. |
+
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migracja między wersjami tokenizatora
 <!--

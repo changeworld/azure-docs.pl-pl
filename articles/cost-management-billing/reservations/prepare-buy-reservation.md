@@ -1,20 +1,20 @@
 ---
-title: Przygotowanie do zakupu rezerwacji platformy Azure
-description: Uzyskaj informacje na temat ważnych kwestii przed zakupem rezerwacji platformy Azure.
+title: Kupowanie rezerwacji platformy Azure
+description: Uzyskaj informacje na temat ważnych kwestii, które ułatwią Ci zakup rezerwacji platformy Azure.
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 1f5ca2d43356eab98cffe8414c00d97e5744739a
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 3a45a04786bb9976a42269191c8b24282905f96f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235647"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436985"
 ---
-# <a name="prepare-to-buy-a-reservation"></a>Przygotowanie do zakupu rezerwacji
+# <a name="buy-a-reservation"></a>Kupowanie rezerwacji
 
 Rezerwacje platformy Azure pomagają zaoszczędzić pieniądze dzięki rocznym lub 3-letnim planom dla wielu zasobów platformy Azure. Przed zobowiązaniem się do zakupu rezerwacji zapoznaj się z poniższymi sekcjami, aby przygotować się do zakupu.
 
@@ -50,6 +50,17 @@ Zakres można zaktualizować w dowolnym momencie po zakupie rezerwacji. W tym ce
 
 ![Przykład pokazujący zmianę zakresu rezerwacji](./media/prepare-buy-reservation/rescope-reservation-resource-group.png)
 
+## <a name="discounted-subscription-and-offer-types"></a>Subskrypcje z rabatem i typy ofert
+
+Rabaty na rezerwacje dotyczą następujących kwalifikujących się subskrypcji i typów ofert.
+
+- Umowy Enterprise Agreement (oferty o numerach: MS-AZR-0017P i MS-AZR-0148P)
+- Subskrypcje w ramach umów klienta firmy Microsoft
+- Indywidualne plany ze stawką płatności zgodnie z rzeczywistym użyciem (oferty o numerach: MS-AZR-0003P i MS-AZR-0023P)
+- Subskrypcje CSP
+
+Zasoby działające w ramach subskrypcji z innymi typami ofert nie otrzymują rabatu na rezerwację.
+
 ## <a name="purchase-reservations"></a>Zakup rezerwacji
 
 Rezerwacje można kupić w witrynie Azure Portal, interfejsach API, programie PowerShell i interfejsie wiersza polecenia. Przeczytaj następujące artykuły, które Cię dotyczą, gdy wszystko będzie gotowe do zakupu rezerwacji:
@@ -66,6 +77,54 @@ Rezerwacje można kupić w witrynie Azure Portal, interfejsach API, programie Po
 - [SQL Database](../../sql-database/sql-database-reserved-capacity.md)
 - [SQL Data Warehouse](prepay-sql-data-warehouse-charges.md)
 - [Maszyny wirtualne](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+
+## <a name="buy-reservations-with-monthly-payments"></a>Kupowanie rezerwacji platformy Azure z płatnościami miesięcznymi
+
+Możesz płacić za rezerwacje przy użyciu płatności miesięcznych. W przeciwieństwie do zakupu z góry, gdy płacisz pełną kwotę, opcja płatności miesięcznych umożliwia równe podzielenie łącznego kosztu rezerwacji między wszystkie miesiące w danym okresie. Łączny koszt rezerwacji w przypadku płatności z góry i miesięcznych rat jest taki sam, a wybór płatności miesięcznych nie pociąga za sobą dodatkowych opłat.
+
+Jeśli rezerwacja została zakupiona w ramach umowy klienta firmy Microsoft, miesięczna kwota płatności może różnić się w zależności od obowiązującego w danym miesiącu rynkowego kursu wymiany waluty lokalnej.
+
+Miesięczne płatności nie są dostępne w przypadku następujących rozwiązań: Databricks, rezerwacje systemu SUSE Linux, plany oprogramowania Red Hat i Azure Red Hat OpenShift Compute.
+
+### <a name="view-payments-made"></a>Wyświetlanie dokonanych płatności
+
+Możesz wyświetlić płatności, które zostały dokonane przy użyciu interfejsów API, danych użycia i analizy kosztów. W przypadku rezerwacji płaconych miesięcznie wartość częstotliwości jest pokazywana jako **cykliczne** w przypadku danych użycia i interfejsu API opłat za rezerwację. W przypadku rezerwacji zapłaconych z góry wartość jest wyświetlana jako **jednorazowa**.
+
+Analiza kosztów pokazuje w widoku domyślnym zakupy miesięczne. Zastosuj filtr **zakup** w polu **Typ opłaty** i **cykliczne** w polu **Częstotliwość**, aby zobaczyć wszystkie zakupy. Aby wyświetlić tylko rezerwacje, zastosuj filtr **Rezerwacja**.
+
+![Przykład przedstawiający koszty zakupu rezerwacji w analizie kosztów](./media/prepare-buy-reservation/cost-analysis.png)
+
+### <a name="exchange-and-refunds"></a>Wymiana i zwroty
+
+Podobnie jak w przypadku innych rezerwacji, można uzyskiwać zwroty rezerwacji zakupionych w ramach rozliczeń miesięcznych lub wymieniać te rezerwacje. 
+
+Podczas wymiany rezerwacji opłacanej miesięcznie łączny koszt okresu istnienia nowego zakupu powinien być większy niż pozostałe płatności, które są anulowane dla zwróconej rezerwacji. Nie istnieją inne limity ani opłaty dotyczące wymian. Możesz wymienić rezerwację płatną z góry, aby kupić nową rezerwację, która jest rozliczana miesięcznie. Jednak wartość okresu istnienia nowej rezerwacji powinna być większa niż proporcjonalna wartość zwracanej rezerwacji.
+
+Jeśli anulujesz rezerwację opłacaną miesięcznie, anulowane przyszłe płatności są wliczane do limitu zwrotu wynoszącego 50 000 USD.
+
+Aby uzyskać więcej informacji o wymianach i zwrotach, zobacz temat [Self-service exchanges and refunds for Azure Reservations](exchange-and-refund-azure-reservations.md) (Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure).
+
+## <a name="reservation-notifications"></a>Powiadomienia dotyczące rezerwacji
+
+W zależności od tego, jak płacisz za subskrypcję platformy Azure, powiadomienia o rezerwacji są wysyłane pocztą e-mail do następujących użytkowników w organizacji. Wysyłane są powiadomienia dotyczące różnych zdarzeń, takich jak: 
+
+- Zakup
+- Zbliżające się wygaśnięcie rezerwacji
+- Wygaśnięcie
+- Odnowienie
+- Anulowanie
+- Zmiana zakresu
+
+W przypadku klientów z subskrypcjami EA:
+
+- Powiadomienia są wysyłane tylko do kontaktów dla powiadomień ustawionych w ramach umowy EA.
+- Użytkownicy dodani do rezerwacji przy użyciu uprawnień RBAC (Zarządzanie dostępem i tożsamościami) nie otrzymują żadnych powiadomień e-mail.
+
+W przypadku klientów z subskrypcjami indywidualnymi:
+
+- Kupujący otrzymuje powiadomienie o zakupie.
+- W momencie zakupu właściciel konta rozliczenia subskrypcji otrzymuje powiadomienie o zakupie.
+- Właściciel konta otrzymuje wszystkie inne powiadomienia.
 
 ## <a name="next-steps"></a>Następne kroki
 

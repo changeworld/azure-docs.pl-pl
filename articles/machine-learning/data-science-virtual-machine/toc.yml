@@ -17,8 +17,6 @@
       href: provision-vm.md
     - name: Tworzenie maszyny Data Science Virtual Machine z systemem Ubuntu
       href: dsvm-ubuntu-intro.md
-    - name: Tworzenie maszyny Data Science Virtual Machine z systemem CentOS
-      href: linux-dsvm-intro.md
     - name: Tworzenie maszyny Geo AI Data Science Virtual Machine
       href: provision-geo-ai-dsvm.md
 - name: Pojęcia
@@ -39,7 +37,7 @@
       href: dsvm-tools-productivity.md
     - name: Wskazówki i zabezpieczenia dotyczące przedsiębiorstwa
       href: dsvm-enterprise-overview.md
-- name: Przykłady
+- name: Samples
   href: dsvm-samples-and-walkthroughs.md
 - name: Przewodniki z instrukcjami
   items:
@@ -67,8 +65,6 @@
   items:
     - name: Maszyna Data Science Virtual Machine z systemem Ubuntu
       href: reference-ubuntu-vm.md
-    - name: Maszyna Data Science Virtual Machine z systemem CentOS
-      href: reference-centos-vm.md
     - name: Informacje o wersji
       href: release-notes.md
     - name: Znane problemy
