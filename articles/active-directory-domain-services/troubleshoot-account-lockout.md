@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 04/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 2e274aa353f6c3e485ae10a6a67ee2940eb88b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246323"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743455"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Rozwiązywanie problemów z blokadą konta w domenie zarządzanej usług domenowych usługi AZURE AD
 
@@ -33,11 +33,11 @@ Domyślne progi blokady konta są konfigurowane przy użyciu zasad haseł ziarni
 
 ### <a name="fine-grained-password-policy"></a>Zasady dotyczące haseł drobnoziarnistych
 
-Szczegółowe zasady haseł (FGPPs) umożliwiają stosowanie określonych ograniczeń dla zasad blokowania haseł i kont do różnych użytkowników w domenie. FGPP dotyczy tylko użytkowników utworzonych w usłudze Azure AD DS. Zasady haseł nie mają wpływu na użytkowników chmury i użytkowników domeny zsynchronizowanych z domeną usług Azure AD DS.
+Szczegółowe zasady haseł (FGPPs) umożliwiają stosowanie określonych ograniczeń dla zasad blokowania haseł i kont do różnych użytkowników w domenie. FGPP dotyczy tylko użytkowników w domenie zarządzanej usług Azure AD DS. Zasady haseł w usługach Azure AD DS mają wpływ tylko użytkownicy chmury i użytkownicy domeny zsynchronizowani z domeną usług Azure AD DS. Ich konta w usłudze Azure AD lub katalogu lokalnym nie mają wpływu.
 
 Zasady są dystrybuowane za pośrednictwem skojarzenia grupy w domenie zarządzanej usługi Azure AD DS, a wszelkie wprowadzone zmiany są stosowane przy następnym logowanie użytkownika. Zmiana zasad nie odblokowuje konta użytkownika, które jest już zablokowane.
 
-Aby uzyskać więcej informacji na temat zasad haseł precyzyjnych, zobacz [Konfigurowanie zasad blokowania haseł i kont][configure-fgpp].
+Aby uzyskać więcej informacji na temat zasad haseł precyzyjnych i różnic między użytkownikami utworzonymi bezpośrednio w usługach Azure AD DS w porównaniu z synchronizacją z usługi Azure AD, zobacz [Konfigurowanie zasad blokowania haseł i kont.][configure-fgpp]
 
 ## <a name="common-account-lockout-reasons"></a>Typowe przyczyny blokady konta
 

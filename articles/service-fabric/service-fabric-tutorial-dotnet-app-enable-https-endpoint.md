@@ -4,12 +4,12 @@ description: W ramach tego samouczka dowiesz się, jak dodać punkt końcowy HTT
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0e8b79a88fc173674caa0ca65e394e21d58d5f2f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238930"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756097"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Samouczek: Dodawanie punktu końcowego HTTPS do usługi frontonu internetowego interfejsu API platformy ASP.NET Core za pomocą usługi Kestrel
 
@@ -20,7 +20,7 @@ Część trzecia serii zawiera informacje na temat wykonywania następujących c
 > [!div class="checklist"]
 > * Definiowanie punktu końcowego HTTPS w usłudze
 > * Konfigurowanie usługi Kestrel do używania protokołu HTTPS
-> * Instalowanie certyfikatu SSL w węzłach klastra zdalnego
+> * Instalowanie certyfikatu TLS/SSL w węzłach klastra zdalnego
 > * Udzielanie dostępu USŁUGA SIECIOWA do klucza prywatnego certyfikatu
 > * Otwieranie portu 443 w module równoważenia obciążenia platformy Azure
 > * Wdrażanie aplikacji w klastrze zdalnym
@@ -396,7 +396,7 @@ W tej części samouczka zawarto informacje na temat wykonywania następujących
 > [!div class="checklist"]
 > * Definiowanie punktu końcowego HTTPS w usłudze
 > * Konfigurowanie usługi Kestrel do używania protokołu HTTPS
-> * Instalowanie certyfikatu SSL w węzłach klastra zdalnego
+> * Instalowanie certyfikatu TLS/SSL w węzłach klastra zdalnego
 > * Udzielanie dostępu USŁUGA SIECIOWA do klucza prywatnego certyfikatu
 > * Otwieranie portu 443 w module równoważenia obciążenia platformy Azure
 > * Wdrażanie aplikacji w klastrze zdalnym

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bf65f69d9dcaf6de2236c98b56b58ec7e021099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54e3821d269d11397ec4f9f5833e33ac6b555abc
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74025412"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755123"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrowanie połączeń kont LinkedIn w usłudze Azure Active Directory
 
@@ -26,8 +26,9 @@ Możesz zezwolić użytkownikom w organizacji na dostęp do swoich połączeń l
 
 > [!IMPORTANT]
 > Ustawienie połączenia kont LinkedIn jest obecnie wdrażane w organizacjach usługi Azure AD. Po włączeniu do organizacji jest domyślnie włączona.
-> 
+>
 > Wyjątki:
+>
 > * To ustawienie nie jest dostępne dla klientów korzystających z usługi Microsoft Cloud for US Government, Microsoft Cloud Germany lub Azure i Office 365 obsługiwanych przez firmę 21Vianet w Chinach.
 > * Ustawienie jest domyślnie wyłączone dla dzierżaw aprowizowanych w Niemczech. Należy zauważyć, że ustawienie nie jest dostępne dla klientów korzystających z usługi Microsoft Cloud Germany.
 > * Ustawienie jest domyślnie wyłączone dla dzierżaw aprowizowanych we Francji.
@@ -40,7 +41,7 @@ Połączenia kont LinkedIn można włączyć tylko dla użytkowników, do który
 
 1. Zaloguj się do [centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com/) przy za pomocą konta, które jest administratorem globalnym dla organizacji usługi Azure AD.
 1. Wybierz pozycję **Użytkownicy**.
-1. W bloku **Użytkownicy** wybierz pozycję **Ustawienia użytkownika**.
+1. Na stronie **Użytkownicy** wybierz pozycję **Ustawienia użytkownika**.
 1. W obszarze **Połączenia kont LinkedIn**zezwalaj użytkownikom na łączenie kont w celu uzyskania dostępu do połączeń LinkedIn w niektórych aplikacjach firmy Microsoft. Żadne dane nie są udostępniane, dopóki użytkownicy nie zgodzielą się na połączenie swoich kont.
 
     * Wybierz **tak,** aby włączyć usługę dla wszystkich użytkowników w organizacji
@@ -55,6 +56,7 @@ Połączenia kont LinkedIn można włączyć tylko dla użytkowników, do który
 > Integracja z serwisem LinkedIn nie jest w pełni włączona dla użytkowników, dopóki nie zgodzą się na połączenie swoich kont. Po włączeniu połączeń kont dla użytkowników nie są udostępniane żadne dane.
 
 ### <a name="assign-selected-users-with-a-group"></a>Przypisywanie wybranych użytkowników z grupą
+
 Zastąpiliśmy opcję "Wybranka", która określa listę użytkowników z opcją wyboru grupy użytkowników, dzięki czemu można włączyć możliwość łączenia kont LinkedIn i Microsoft dla jednej grupy zamiast wielu indywidualnych użytkowników. Jeśli nie masz włączonych połączeń kont LinkedIn dla wybranych użytkowników indywidualnych, nie musisz nic robić. Jeśli wcześniej włączono połączenia kont LinkedIn dla wybranych użytkowników indywidualnych, należy:
 
 1. Pobierz bieżącą listę poszczególnych użytkowników
@@ -64,15 +66,11 @@ Zastąpiliśmy opcję "Wybranka", która określa listę użytkowników z opcją
 > [!NOTE]
 > Nawet jeśli nie przeniesiesz aktualnie wybranych użytkowników indywidualnych do grupy, nadal będą mogli wyświetlać informacje o LinkedIn w aplikacjach firmy Microsoft.
 
-### <a name="get-the-current-list-of-selected-users"></a>Pobierz bieżącą listę wybranych użytkowników
+### <a name="move-currently-selected-users-to-a-group"></a>Przenoszenie aktualnie wybranych użytkowników do grupy
 
+1. Utwórz plik CSV użytkowników wybranych dla połączeń kont LinkedIn.
 1. Zaloguj się do usługi Microsoft 365 za pomocą konta administratora.
-1. Przejdź do pozycji https://linkedinselectedusermigration.azurewebsites.net/ (Plik > Nowy > Inny). Zostanie wyświetlona lista użytkowników wybranych do połączeń kont LinkedIn.
-1. Wyeksportuj listę do pliku CSV.
-
-### <a name="move-the-currently-selected-individual-users-to-a-group"></a>Przenoszenie aktualnie zaznaczonych użytkowników indywidualnych do grupy
-
-1. Uruchamianie programu PowerShell
+1. Uruchom program PowerShell.
 1. Zainstaluj moduł usługi Azure AD, uruchamiając`Install-Module AzureAD`
 1. Uruchom następujący skrypt:
 

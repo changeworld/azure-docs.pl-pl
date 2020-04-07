@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/20/2019
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 93c9ce45fd660f444146827e2f5bafaeb12fc471
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5aa1a677836be3f05269539d52abf7bd8704833d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310525"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757074"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Seria instruktażowych wideo dla witryny Azure Portal
 
@@ -22,18 +22,18 @@ Seria wideo indycjów witryny witryny azure portal pokazuje, jak pracować z us�
 
 ## <a name="featured-video"></a>Polecane wideo
 
-W tym filmie przedstawiono, aby zbadać, jak rozwiązać typowe problemy z maszynami wirtualnymi.
+W tym opisowym klipie wideo pokażemy, jak zaoszczędzić pieniądze na platformie Azure przy użyciu zaleceń dotyczących kosztów usługi Azure Advisor.
 
-> [!VIDEO https://www.youtube.com/embed/MAJrN-2IPY8]
+> [!VIDEO https://www.youtube.com/embed/ky2WS3KWuYs]
 
-[Rozwiązywanie typowych problemów z maszynami wirtualnymi](https://www.youtube.com/watch?v=MAJrN-2IPY8)
+[Jak używać zaleceń dotyczących kosztów w usłudze Azure Advisor](https://www.youtube.com/watch?v=ky2WS3KWuYs)
 
 Najgoń je wykorzystałeś do ostatnich filmów, które możesz przegapić:
 
 |   |   |   |
 | ------| ------ | ------ |
-| [![Obraz filmu w YouTube o tym, jak utworzyć aplikację funkcyjną](https://i.ytimg.com/vi/BEIZKCDElMs/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=BEIZKCDElMs) | [![Obraz filmu z YouTube o tym, jak korzystać z nowego ekranu głównego platformy Azure](https://i.ytimg.com/vi/Ddo__jkzgVo/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=Ddo__jkzgVo) | [![Obraz wideo z YouTube o wykorzystaniu w pełni usługi Azure Advisor](https://i.ytimg.com/vi/ANz3cCiFsJw/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=ANz3cCiFsJw) |
-| [Jak utworzyć aplikację funkcyjną](https://www.youtube.com/watch?v=BEIZKCDElMs) | [Jak korzystać z nowego domu platformy Azure](https://www.youtube.com/watch?v=Ddo__jkzgVo) | [Jak w pełni wykorzystać zakres usługi Azure Advisor](https://www.youtube.com/watch?v=ANz3cCiFsJw) |
+| [![Obraz wideo z YouTube dotyczący korzystania ze skoroszytów usługi Azure Monitor](https://i.ytimg.com/vi/Z5xRyy3HB8U/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=Z5xRyy3HB8U) | [![Obraz filmu w YouTube o filtrowaniu widoku listy zasobów w witrynie Azure portal](https://i.ytimg.com/vi/L3I-xOZKWcg/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=L3I-xOZKWcg) | [![Obraz filmu w YouTube o korzystaniu z automatycznego odświeżania pulpitów nawigacyjnych](https://i.ytimg.com/vi/tVoDXygZzWM/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=tVoDXygZzWM) |
+| [Używanie skoroszytów usługi Azure Monitor](https://www.youtube.com/watch?v=Z5xRyy3HB8U) | [Filtrowanie widoku listy zasobów w witrynie Azure portal](https://www.youtube.com/watch?v=L3I-xOZKWcg) | [Korzystanie z automatycznego odświeżania pulpitów nawigacyjnych](https://www.youtube.com/watch?v=tVoDXygZzWM) |
 
 ## <a name="video-playlist"></a>Lista odtwarzania wideo
 

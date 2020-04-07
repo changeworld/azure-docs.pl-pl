@@ -1,14 +1,14 @@
 ---
 title: Tworzenie aplikacji funkcji w systemie Linux z witryny Azure Portal
 description: Dowiedz się, jak utworzyć pierwszą funkcję platformy Azure do wykonywania bezserwerowego przy użyciu witryny Azure Portal.
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 02/28/2019
-ms.openlocfilehash: 1492188f72eb4a691ddceb78aa269601f192e467
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b2de36faf07ad661ff8817adc48b726f54990ceb
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76963839"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754114"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Tworzenie aplikacji funkcji w systemie Linux w planie usługi Azure App Service
 
@@ -45,7 +45,7 @@ Do obsługi wykonywania funkcji w systemie Linux potrzebna jest aplikacja funkcj
     | **Plan usługi App Service/lokalizacja** | Tworzenie planu | Wybierz **pozycję Utwórz nowy** i podaj nazwę planu usługi app **service.** Wybierz **lokalizację** w [regionie](https://azure.microsoft.com/regions/) w pobliżu lub w pobliżu innych usług, do których mają dostęp funkcje. Wybierz **[żądaną warstwę cenową](https://azure.microsoft.com/pricing/details/app-service/linux/)**. <br/>Nie można uruchomić aplikacji z funkcjami systemu Linux i Windows w tym samym planie usługi App Service. |
     | **Stos środowiska uruchomieniowego** | Preferowany język | Wybierz środowisko uruchomieniowe, które obsługuje ulubiony język programowania funkcji. Wybierz **.NET** dla funkcji w językach C# i F#. |
     | **[Magazyn](../storage/common/storage-account-create.md)** |  Nazwa unikatowa w skali globalnej |  Utwórz konto magazynu używane przez aplikację funkcji. Nazwy kont usługi Magazyn muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery. Możesz również użyć istniejącego konta, które musi spełniać [wymagania dotyczące konta magazynu](storage-considerations.md#storage-account-requirements). |
-    | **[Wgląd w aplikacje](functions-monitoring.md)** | Enabled (Włączony) | Usługa Application Insights jest domyślnie wyłączona. Zalecamy włączenie integracji usługi Application Insights teraz i wybranie lokalizacji hostingu w pobliżu lokalizacji planu usługi App Service. Jeśli chcesz to zrobić później, zobacz [Monitorowanie funkcji platformy Azure](functions-monitoring.md).  |
+    | **[Application Insights](functions-monitoring.md)** | Enabled (Włączony) | Usługa Application Insights jest domyślnie wyłączona. Zalecamy włączenie integracji usługi Application Insights teraz i wybranie lokalizacji hostingu w pobliżu lokalizacji planu usługi App Service. Jeśli chcesz to zrobić później, zobacz [Monitorowanie funkcji platformy Azure](functions-monitoring.md).  |
 
 3. Wybierz pozycję **Utwórz**, aby zaaprowizować aplikację funkcji i wdrożyć ją.
 

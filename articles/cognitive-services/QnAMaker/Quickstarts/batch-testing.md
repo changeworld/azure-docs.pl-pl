@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3bc095d8949f177ccb6c4cc111ba4b272027904e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77108995"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756701"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Szybki start: testowanie bazy wiedzy z pytaniami wsadowymi i oczekiwanymi odpowiedziami
 
@@ -149,7 +149,7 @@ Użyj poniższego wykresu, aby dowiedzieć się, jak znaleźć wartości pól dl
     |Ładowanie urządzenia Surface Pro 4|
     |Sprawdź poziom naładowania baterii|
 
-    Dwa zestawy QnA mają zestaw metadanych.
+    Dwie pary QnA mają ustawione metadane.
 
     > [!TIP]
     > Aby wyświetlić metadane i identyfikatory QnA każdego zestawu, wyeksportuj bazę wiedzy. Wybierz stronę **Ustawienia,** a następnie `.xls` wybierz pozycję **Eksportuj** jako plik. Znajdź ten pobrany plik i otwórz go za pomocą przeglądu metadanych i identyfikatorów programu Excel.
@@ -169,7 +169,7 @@ Istnieją dwa główne scenariusze testowania wsadowego:
 
 Poniższa procedura zakłada, że scenariusz polega na przetwarzaniu dzienników czatu
 
-1. Utwórz nowy plik testu wsadowego, aby uwzględnić dane opcjonalne, `batch-test-data-2.tsv`. Dodaj 6 wierszy z oryginalnego pliku wejściowego testu wsadowego, a następnie dodaj metadane, górę i identyfikator zestawu QnA dla każdego wiersza.
+1. Utwórz nowy plik testu wsadowego, aby uwzględnić dane opcjonalne, `batch-test-data-2.tsv`. Dodaj 6 wierszy z oryginalnego pliku wejściowego testu wsadowego, a następnie dodaj metadane, górę i identyfikator pary QnA dla każdego wiersza.
 
     Aby symulować zautomatyzowany proces sprawdzania nowego tekstu z dzienników czatu w bazie wiedzy, ustaw `topic:power`metadane dla każdej kolumny na tę samą wartość: .
 

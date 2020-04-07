@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1015734ac0da6b4641c0bf32049146e3820f4616
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ceef030d2c0176313cbce8f6817a89c06f134d3d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278539"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745680"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Oferta usługi konsultingowej Azure i Dynamics 365
+
+>[!Important]
+>Od 30 marca 2020 r. rozpoczniemy przenoszenie zarządzania ofertami usług konsultingowych do Centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [przeglądzie tworzenia usług konsultingowych,](https://aka.ms/AzureCreateConsultingService) aby zarządzać zmigrowanymi ofertami.
 
 W tym artykule wyjaśniono, jak opublikować ofertę usługi konsultingowej w <a href="https://azuremarketplace.microsoft.com">witrynie</a> Microsoft Azure Marketplace lub <a href="https://appsource.microsoft.com">AppSource.</a> Rozwiązania oparte na systemach Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365,</a> <a href="https://powerbi.microsoft.com">Power BI</a>i <a href="https://powerapps.microsoft.com">Power Apps</a> można wymienić w usłudze AppSource. Inne oferty oparte na innych <a href="https://azure.microsoft.com/services">usługach platformy</a> Microsoft Azure można wymienić w portalu Azure Marketplace.
 

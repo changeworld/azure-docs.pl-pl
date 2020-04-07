@@ -7,14 +7,14 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 3bb7a62433993f1af26b1ce8bcb4ed258c34623c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e05920e495dd4aa14be6c849590a37a2bafa33f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75973134"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757233"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Opłacanie planów oprogramowania platformy Azure z góry
 
@@ -38,6 +38,7 @@ W przypadku rezerwacji pobierana jest opłata za opłatę z góry za rezerwację
 4. Wybierz zakres. Zakres może obejmować jedną subskrypcję lub wiele subskrypcji (zakres udostępniony).
     - Pojedyncza subskrypcja — rabat planu jest stosowany do pasującego użycia w subskrypcji.
     - Udostępnione — rabat planu jest stosowany do pasujących wystąpień w dowolnej subskrypcji w kontekście rozliczeń. Dla klientów korporacyjnych kontekst rozliczeń jest rejestracją i obejmuje wszystkie subskrypcje w rejestracji. W przypadku planu indywidualnego z klientami cenowymi płatności zgodnie z rzeczywistym użyciem kontekst rozliczeń to wszystkie indywidualne plany z subskrypcjami cenowymi płatności zgodnie z rzeczywistym użyciem utworzonymi przez administratora konta.
+    - Pojedyncza grupa zasobów — stosuje rabat rezerwacji do pasujących zasobów tylko w wybranej grupie zasobów.
 5. Wybierz produkt, aby wybrać rozmiar maszyny Wirtualnej i typ obrazu. Rabat dotyczy tylko wybranego rozmiaru maszyny Wirtualnej.
 6. Wybierz okres jednego roku lub trzech lat.
 7. Wybierz ilość, która jest liczbą przedpłaconych wystąpień maszyn wirtualnych, które mogą uzyskać rabat rozliczeniowy.

@@ -10,12 +10,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: afbd9950c31bc1c40b01ec0aaf3d2bfffb8a6b94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09164580b8bdb249fc12d14e827ad799d51cab34
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78398271"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756577"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Wdrażanie modelu w wystąpieniach obliczeniowych usługi Azure Machine Learning
 
@@ -96,7 +96,7 @@ print("prediction:", resp.text)
 
 * [Jak wdrożyć model przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md)
 * [Rozwiązywanie problemów z wdrażaniem](how-to-troubleshoot-deployment.md)
-* [Bezpieczne usługi sieci Web usługi azure machine learning za pomocą ssl](how-to-secure-web-service.md)
+* [Zabezpieczanie usługi sieci web za pośrednictwem usługi Azure Machine Learning za pomocą protokołu TLS](how-to-secure-web-service.md)
 * [Korzystanie z modelu ml wdrożonego jako usługa sieci web](how-to-consume-web-service.md)
 * [Monitoruj swoje modele usługi Azure Machine Learning za pomocą usługi Application Insights](how-to-enable-app-insights.md)
 * [Zbieranie danych dla modeli w produkcji](how-to-enable-data-collection.md)

@@ -3,14 +3,14 @@ title: Kompilowanie konfiguracji w konfiguracji stanu automatyzacji platformy Az
 description: W tym artykule opisano sposób kompilowania konfiguracji konfiguracji żądanego stanu (DSC) dla usługi Azure Automation.
 services: automation
 ms.subservice: dsc
-ms.date: 09/10/2018
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 48593920bdfcf743fceaeaeec891c0d5c4f2e108
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b366777cce4dd4212a2e3ec0cdcd180e0d7164f4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80057629"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757179"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilowanie konfiguracji DSC w konfiguracji stanu automatyzacji platformy Azure
 
@@ -27,7 +27,7 @@ Konfiguracje konfiguracji żądanego stanu (DSC) można skompilować w konfigura
   - Praca z danymi węzłów i niewędników na dużą skalę
   - Znaczna poprawa wydajności
 
-Aby uzyskać szczegółowe informacje o kompilacji, zobacz [Rozszerzenie konfiguracji żądanego stanu za pomocą szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details).
+Można również użyć szablonów usługi Azure Resource Manager z rozszerzeniem konfiguracji żądanego stanu platformy Azure (DSC) do wypychania konfiguracji do maszyn wirtualnych platformy Azure. Rozszerzenie usługi Azure DSC używa struktury agenta maszyny wirtualnej platformy Azure do dostarczania, uchwalania i raportowania konfiguracji DSC uruchomionych na maszynach wirtualnych platformy Azure. Aby uzyskać szczegółowe informacje o kompilacji przy użyciu szablonów usługi Azure Resource Manager, zobacz [Rozszerzenie konfiguracji żądanego stanu z szablonami usługi Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details). 
 
 ## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>Kompilowanie konfiguracji DSC w konfiguracji stanu platformy Azure
 

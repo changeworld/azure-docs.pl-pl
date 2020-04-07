@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: rohink
-ms.openlocfilehash: b77248813463f51d4bd2c5186e421aec43ffaf52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cccd4a6b0b52608a6a17b73688e18f27088df5b0
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76939227"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757191"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Korzystanie z usług równoważenia obciążenia na platformie Azure
 
@@ -38,7 +38,7 @@ Na poziomie koncepcyjnym każda z tych usług odgrywa odrębną rolę w hierarch
   * Routing wielu wartości, który umożliwia wysyłanie adresów IP więcej niż jednego punktu końcowego aplikacji w jednej odpowiedzi DNS.
 
   Klient łączy się bezpośrednio z punktem końcowym zwróconym przez menedżera ruchu. Usługa Azure Traffic Manager wykrywa, gdy punkt końcowy jest w złej kondycji, a następnie przekierowuje klientów do innego wystąpienia w dobrej kondycji. Więcej informacji na temat usługi można znaleźć w dokumentacji usługi [Azure Traffic Manager.](traffic-manager-overview.md)
-* **Brama aplikacji** udostępnia kontroler dostarczania aplikacji (ADC) jako usługę, oferując różne możliwości równoważenia obciążenia warstwy 7 dla aplikacji. Umożliwia klientom optymalizację wydajności farmy internetowej poprzez odciążanie rozwiązania SSL intensywnie korzystającego z procesora CPU do bramy aplikacji. Inne funkcje routingu warstwy 7 obejmują dystrybucję ruchu przychodzącego okrężną, koligacji sesji opartej na plikach cookie, routing oparty na ścieżce adresów URL oraz możliwość hostowania wielu witryn sieci Web za jedną bramą aplikacji. Brama aplikacji może być skonfigurowana jako brama internetowa, brama wewnętrzna lub kombinacja obu tych bram. Brama aplikacji jest w pełni zarządzana, skalowalna i wysoce dostępna na platformie Azure. Zapewnia ona bogaty zestaw funkcji diagnostyki i rejestrowania, aby uprościć zarządzanie.
+* **Brama aplikacji** udostępnia kontroler dostarczania aplikacji (ADC) jako usługę, oferując różne możliwości równoważenia obciążenia warstwy 7 dla aplikacji. Umożliwia klientom optymalizację wydajności farmy internetowej przez odciążanie obciążającego procesora TLS zakończenia do bramy aplikacji. Inne funkcje routingu warstwy 7 obejmują dystrybucję ruchu przychodzącego okrężną, koligacji sesji opartej na plikach cookie, routing oparty na ścieżce adresów URL oraz możliwość hostowania wielu witryn sieci Web za jedną bramą aplikacji. Brama aplikacji może być skonfigurowana jako brama internetowa, brama wewnętrzna lub kombinacja obu tych bram. Brama aplikacji jest w pełni zarządzana, skalowalna i wysoce dostępna na platformie Azure. Zapewnia ona bogaty zestaw funkcji diagnostyki i rejestrowania, aby uprościć zarządzanie.
 * **Moduł równoważenia obciążenia** jest integralną częścią stosu SDN platformy Azure, zapewniając wysokiej wydajności, niskie opóźnienia warstwy 4 równoważenia obciążenia usług dla wszystkich protokołów UDP i TCP. Zarządza połączeniami przychodzącymi i wychodzącymi. Możesz skonfigurować publiczne i wewnętrzne punkty końcowe ze zrównoważonym obciążeniem i zdefiniować reguły mapowania połączeń przychodzących do miejsc docelowych w puli zaplecza, wykorzystując opcje badania kondycji protokołu TCP i HTTP do zarządzania dostępnością usługi.
 
 ## <a name="scenario"></a>Scenariusz
@@ -59,7 +59,7 @@ Na poniższym diagramie przedstawiono architekturę tego scenariusza:
 ![Diagram architektury równoważenia obciążenia](./media/traffic-manager-load-balancing-azure/scenario-diagram.png)
 
 > [!NOTE]
-> W tym przykładzie jest tylko jedną z wielu możliwych konfiguracji usług równoważenia obciążenia, które oferuje platforma Azure. Menedżer ruchu, brama aplikacji i moduł równoważenia obciążenia można mieszać i dopasowywać do potrzeb równoważenia obciążenia. Na przykład jeśli odciążanie SSL lub przetwarzanie warstwy 7 nie jest konieczne, moduł równoważenia obciążenia może być używany zamiast bramy aplikacji.
+> W tym przykładzie jest tylko jedną z wielu możliwych konfiguracji usług równoważenia obciążenia, które oferuje platforma Azure. Menedżer ruchu, brama aplikacji i moduł równoważenia obciążenia można mieszać i dopasowywać do potrzeb równoważenia obciążenia. Na przykład jeśli odciążanie protokołu TLS lub przetwarzanie warstwy 7 nie jest konieczne, moduł równoważenia obciążenia może być używany zamiast bramy aplikacji.
 
 ## <a name="setting-up-the-load-balancing-stack"></a>Konfigurowanie stosu równoważenia obciążenia
 

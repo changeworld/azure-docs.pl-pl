@@ -11,30 +11,34 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5857a10d0aaf0d0c37ab55a2d0d29e5315340c9f
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 9c4f08b143ab4a0d3e780f68f8d5ab823d4eae12
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633648"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745365"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Najlepsze rozwiązania dotyczące programowania puli sql synapse
-W tym artykule opisano wskazówki i najlepsze rozwiązania podczas opracowywania rozwiązania puli SQL. 
 
-## <a name="tune-query-performance-with-new-product-enhancements"></a>Dostosowywanie wydajności zapytań za pomocą nowych ulepszeń produktów  
+W tym artykule opisano wskazówki i najlepsze rozwiązania podczas opracowywania rozwiązania puli SQL.
+
+## <a name="tune-query-performance-with-new-product-enhancements"></a>Dostosowywanie wydajności zapytań za pomocą nowych ulepszeń produktów
+
 - [Strojenie wydajności za pomocą zmaterializowanych widoków](performance-tuning-materialized-views.md)
 - [Strojenie wydajności za pomocą uporządkowanego klastrowanego indeksu magazynu kolumn](performance-tuning-ordered-cci.md)
 - [Strojenie wydajności za pomocą buforowania zestawu wyników](performance-tuning-result-set-caching.md)
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Obniżenie kosztów dzięki wstrzymaniu i skalowaniu
-Aby uzyskać więcej informacji na temat zmniejszania kosztów poprzez wstrzymywanie i skalowanie, zobacz artykuł [Zarządzanie obliczeniami.](sql-data-warehouse-manage-compute-overview.md) 
+
+Aby uzyskać więcej informacji na temat zmniejszania kosztów poprzez wstrzymywanie i skalowanie, zobacz artykuł [Zarządzanie obliczeniami.](sql-data-warehouse-manage-compute-overview.md)
 
 ## <a name="maintain-statistics"></a>Prowadzenie statystyk
+
 Pula SQL można skonfigurować do automatycznego wykrywania i tworzenia statystyk kolumn.  Plany kwerend utworzonych przez optymalizator są tylko tak dobre, jak dostępne statystyki.  
 
-Zaleca się włączenie AUTO_CREATE_STATISTICS dla baz danych i aktualizowanie statystyk codziennie lub po każdym obciążeniu, aby upewnić się, że statystyki dotyczące kolumn używanych w kwerendach są zawsze aktualne. 
+Zaleca się włączenie AUTO_CREATE_STATISTICS dla baz danych i aktualizowanie statystyk codziennie lub po każdym obciążeniu, aby upewnić się, że statystyki dotyczące kolumn używanych w kwerendach są zawsze aktualne.
 
-Jeśli okaże się, że aktualizacja wszystkich statystyk trwa zbyt długo, możesz spróbować być bardziej selektywny, jeśli chodzi o kolumny wymagające częstych aktualizacji statystyk. Można na przykład aktualizować kolumny danych, w których codziennie mogą być dodawane nowe wartości. 
+Jeśli okaże się, że aktualizacja wszystkich statystyk trwa zbyt długo, możesz spróbować być bardziej selektywny, jeśli chodzi o kolumny wymagające częstych aktualizacji statystyk. Można na przykład aktualizować kolumny danych, w których codziennie mogą być dodawane nowe wartości.
 
 > [!TIP]
 > Najwięcej korzyści można uzyskać dzięki zaktualizowanym statystykom kolumn zaangażowanych w sprzężenia, kolumnom używanym w klauzuli WHERE i kolumnach znalezionych w polu GROUP BY.
@@ -42,6 +46,7 @@ Jeśli okaże się, że aktualizacja wszystkich statystyk trwa zbyt długo, moż
 Zobacz też [Zarządzanie statystykami tabeli](sql-data-warehouse-tables-statistics.md), [TWORZENIE STATYSTYK](sql-data-warehouse-tables-statistics.md)i [AKTUALIZOWANIE STATYSTYK](sql-data-warehouse-tables-statistics.md#update-statistics).
 
 ## <a name="hash-distribute-large-tables"></a>Dystrybucja dużych tabel z użyciem skrótów
+
 Domyślnym sposobem dystrybucji tabel jest działanie okrężne.  Ten projekt ułatwia użytkownikom rozpoczęcie tworzenia tabel bez konieczności decydowania o sposobie dystrybucji ich tabel.  
 
 Tabele wykorzystujące działanie okrężne mogą zapewniać wydajność wystarczającą dla niektórych obciążeń, ale w większości przypadków wybór kolumny dystrybucji sprawdzi się znacznie lepiej.  Najbardziej typowym przykładem sytuacji, w której zastosowanie dla tabeli dystrybucji według kolumny przyniesie znacznie lepsze wyniki niż zastosowanie tabeli z działaniem okrężnym, jest połączenie dwóch dużych tabel faktów.  
@@ -53,6 +58,7 @@ Podczas ładowania dystrybuowanej tabeli należy upewnić się, że dane przycho
 Zobacz też [omówienie tabeli](sql-data-warehouse-tables-overview.md), [Rozkład tabeli](sql-data-warehouse-tables-distribute.md), [Wybieranie rozkładu tabeli,](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/) [TWORZENIE TABELI](sql-data-warehouse-tables-overview.md)i [TWORZENIE TABELI JAKO WYBIERZ](sql-data-warehouse-develop-ctas.md)
 
 ## <a name="do-not-over-partition"></a>Unikanie nadmiernego partycjonowania
+
 Podczas partycjonowania danych może być skuteczne dla utrzymania danych za pośrednictwem przełączania partycji lub optymalizacji skanowania za pomocą eliminacji partycji, o zbyt wiele partycji może spowolnić zapytania.  
 
 Często strategia partycjonowania o wysokiej szczegółowości, która może działać dobrze na programie SQL Server, może nie działać dobrze w puli SQL.  Zbyt duża liczba partycji danych może także zmniejszyć skuteczność indeksów klastrowanego magazynu kolumn, jeśli każda partycja ma mniej niż milion wierszy.  
@@ -65,6 +71,7 @@ Należy pamiętać, że w kulisach puli SQL partycje danych dla Ciebie do 60 baz
 Zobacz też [Partycjonowanie tabeli](sql-data-warehouse-tables-partition.md).
 
 ## <a name="minimize-transaction-sizes"></a>Minimalizowanie rozmiarów transakcji
+
 Instrukcje INSERT, UPDATE i DELETE działają w obrębie transakcji i muszą zostać wycofane, jeśli zakończą się niepowodzeniem.  Aby zminimalizować ryzyko długiego czasu wycofywania, warto minimalizować rozmiary transakcji, gdy tylko jest to możliwe.  Można to zrobić poprzez podział instrukcji INSERT, UPDATE i DELETE na części.  
 
 Na przykład, jeśli masz INSERT, które spodziewasz się potrwać 1 godzinę, jeśli to możliwe, rozbić INSERT na cztery części, które będą uruchamiane w ciągu 15 minut.  Wykorzystaj specjalne przypadki minimalnego rejestrowania, takie jak CTAS, TRUNCATE, DROP TABLE lub INSERT do pustych tabel, aby zmniejszyć ryzyko wycofywania.  
@@ -73,9 +80,10 @@ Innym sposobem na eliminację procesu wycofywania zmian jest korzystanie z opera
 
 W przypadku tabel bez partycjonowania należy rozważyć użycie CTAS do zapisania danych, które mają być zachowane w tabeli, a nie przy użyciu delete.  Jeśli CTAS zajmuje taką samą ilość czasu, jest to znacznie bezpieczniejsza operacja do uruchomienia, ponieważ ma minimalny rejestrowanie transakcji i może zostać szybko anulowana w razie potrzeby.
 
-Zobacz też [Opis transakcji](sql-data-warehouse-develop-transactions.md), [Optymalizacja transakcji](sql-data-warehouse-develop-best-practices-transactions.md), [Partycjonowanie tabeli,](sql-data-warehouse-tables-partition.md) [OBCINANIE TABELI,](https://msdn.microsoft.com/library/ms177570.aspx) [ZMIEŃ TABELĘ](https://msdn.microsoft.com/library/ms190273.aspx)i [Utwórz tabelę jako wybierz (CTAS)](sql-data-warehouse-develop-ctas.md).
+Zobacz też [Opis transakcji](sql-data-warehouse-develop-transactions.md), [Optymalizacja transakcji](sql-data-warehouse-develop-best-practices-transactions.md), [Partycjonowanie tabeli,](sql-data-warehouse-tables-partition.md) [OBCINANIE TABELI,](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [ZMIEŃ TABELĘ](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)i [Utwórz tabelę jako wybierz (CTAS)](sql-data-warehouse-develop-ctas.md).
 
 ## <a name="use-the-smallest-possible-column-size"></a>Użycie możliwie najmniejszego rozmiaru kolumny
+
 Podczas definiowania DDL przy użyciu najmniejszego typu danych, który będzie obsługiwać dane poprawi wydajność kwerendy.  Takie podejście jest szczególnie ważne w przypadku kolumn CHAR i VARCHAR.  
 
 Jeśli najdłuższa wartość w kolumnie ma 25 znaków, należy zdefiniować typ kolumny jako VARCHAR(25).  Należy unikać domyślnego definiowania wszystkich kolumn znaków jako kolumn długich wartości.  Ponadto należy unikać stosowania kolumn NVARCHAR, jeśli zastosowanie typu VARCHAR spełni wymagania danego zastosowania.
@@ -83,6 +91,7 @@ Jeśli najdłuższa wartość w kolumnie ma 25 znaków, należy zdefiniować typ
 Zobacz też [omówienie tabeli](sql-data-warehouse-tables-overview.md), [Typy danych tabeli](sql-data-warehouse-tables-data-types.md)i [TWORZENIE TABELI](sql-data-warehouse-tables-overview.md).
 
 ## <a name="optimize-clustered-columnstore-tables"></a>Optymalizowanie tabel klastrowanego magazynu kolumn
+
 Indeksy klastrowanego magazynu kolumn są jednym z najbardziej efektywnych sposobów przechowywania danych w puli SQL.  Domyślnie tabele w puli SQL są tworzone jako klastrowane ColumnStore.  
 
 > [!NOTE]
@@ -98,16 +107,17 @@ Ponieważ tabele magazynu kolumn zazwyczaj nie wypychają danych do skompresowan
 
 Dla tabeli z mniej niż 60 milionów wierszy, może nie mieć żadnego sensu, aby mieć indeks magazynu kolumn.  Jego użycie nie przyniesie też jednak niekorzystnych skutków.  
 
-Ponadto w przypadku partycjonowania danych warto wziąć pod uwagę, że każda partycja będzie musiała mieć milion wierszy, aby można było odnieść korzyść z zastosowania klastrowanego indeksu magazynu kolumn.  Jeśli tabela ma 100 partycji, będzie musiała mieć co najmniej 6 miliardów wierszy, aby skorzystanie z klastrowanego magazynu kolumn przyniosło korzyść (60 dystrybucji * 100 partycji * 1 milion wierszy).  
+Ponadto w przypadku partycjonowania danych warto wziąć pod uwagę, że każda partycja będzie musiała mieć milion wierszy, aby można było odnieść korzyść z zastosowania klastrowanego indeksu magazynu kolumn.  Jeśli tabela ma 100 partycji, to będzie musiał mieć co najmniej 6 miliardów wierszy, aby korzystać z magazynu kolumn klastrowanych (60 dystrybucji *100 partycji* 1 milion wierszy).  
 
 Jeśli tabela w tym przykładzie nie ma 6 miliardów wierszy, zmniejsz liczbę partycji lub rozważ zastąpienie jej tabelą stosu.  Ponadto warto poeksperymentować, aby sprawdzić, czy lepszą wydajność można uzyskać, korzystając z tabeli stosu z indeksami pomocniczymi zamiast z tabeli magazynu kolumn.
 
 > [!TIP]
 > Podczas wykonywania zapytania odnoszącego się do tabeli magazynu kolumn kwerendy będą uruchamiane szybciej, jeśli wybrane zostaną tylko niezbędne kolumny.  
 
-Zobacz też [Indeksy tabel](sql-data-warehouse-tables-index.md), [Przewodnik po indeksach magazynu kolumn](https://msdn.microsoft.com/library/gg492088.aspx)i Przebudowa[indeksów magazynu kolumn](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Zobacz też [Indeksy tabel](sql-data-warehouse-tables-index.md), [Przewodnik po indeksach magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)i Przebudowa [indeksów magazynu kolumn](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
 
 ## <a name="next-steps"></a>Następne kroki
+
 Jeśli nie znajdziesz tego, czego szukasz w tym artykule, spróbuj użyć "Wyszukaj dokumenty" po lewej stronie tej strony, aby przeszukać wszystkie dokumenty usługi Azure Synapse.  
 
 [Forum Synapse platformy Azure](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) to miejsce, w które można publikować pytania innym użytkownikom i grupie produktów Usługi Azure Synapse.  Firma Microsoft aktywnie monitoruje to forum, aby mieć pewność, że użytkownicy uzyskują odpowiedzi od innych użytkowników lub pracowników firmy Microsoft.  
@@ -115,5 +125,3 @@ Jeśli nie znajdziesz tego, czego szukasz w tym artykule, spróbuj użyć "Wyszu
 Jeśli wolisz zadać pytanie w witrynie Stack Overflow, możesz także skorzystać z [tego forum usługi Azure SQL Data Warehouse](https://stackoverflow.com/questions/tagged/azure-sqldw).
 
 Strona [Opinie o synapsie platformy Azure](https://feedback.azure.com/forums/307516-sql-data-warehouse) służy do tworzenia żądań funkcji.  Dodawanie konkretnych propozycji lub głosowanie na już zgłoszone sugestie bardzo pomaga nam określać priorytety funkcji.
-
-

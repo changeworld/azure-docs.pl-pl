@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3299aa8ed85cff5c29d043d30aac08db45ffe5d4
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 13b1f33ffe653627bcf45f6c995e82e741de32ea
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632270"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742748"
 ---
 # <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Optymalizacja wydajności przez uaktualnienie puli SQL usługi Azure Synapse Analytics
 
@@ -210,7 +210,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Aby odzyskać bazę danych, należy użyć polecenia cmdlet [Restore-AzSqlDatabase.](/powershell/module/az.sql/restore-azsqldatabase)
+Aby odzyskać bazę danych, należy użyć polecenia cmdlet [Restore-AzSqlDatabase.](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 > [!NOTE]
 > Można wykonać geo-przywracanie do Gen2! W tym celu należy określić nazwę usługi Gen2 ServiceObjectiveName**c**(np.

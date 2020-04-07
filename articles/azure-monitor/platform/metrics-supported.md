@@ -4,15 +4,15 @@ description: Lista metryk dostępnych dla każdego typu zasobu za pomocą usług
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 03/17/2020
+ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 79bae9712cea04425cc36414ec56fdddd4345eab
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 846e8da889e3913c4a8eaab7808495bbd8afad29
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586024"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754665"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki za pomocą usługi Azure Monitor
 
@@ -1999,11 +1999,11 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |dwu_used|DWU używany|Liczba|Maksimum|DWU używane. Dotyczy tylko magazynów danych.|Brak|
 |cache_hit_percent|Procent trafienia w pamięci podręcznej|Wartość procentowa|Maksimum|Procent trafienia w pamięci podręcznej. Dotyczy tylko magazynów danych.|Brak|
 |cache_used_percent|Wartość procentowa używanej pamięci podręcznej|Wartość procentowa|Maksimum|Pamięć podręczna używana procent. Dotyczy tylko magazynów danych.|Brak|
-|sqlserver_process_core_percent|Procent rdzenia procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia procesora CPU dla procesu programu SQL Server, mierzony przez system operacyjny.|Brak|
-|sqlserver_process_memory_percent|Procent pamięci procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia pamięci dla procesu programu SQL Server, mierzony przez system operacyjny.|Brak|
-|tempdb_data_size|Kilobajty rozmiaru pliku danych tempdb|Liczba|Maksimum|Kilobajty o rozmiarze pliku danych tempdb. Nie dotyczy hurtowni danych.|Brak|
-|tempdb_log_size|Kilobajty rozmiaru pliku dziennika tempdb|Liczba|Maksimum|Kilobajty o rozmiarze pliku dziennika tempdb. Nie dotyczy hurtowni danych.|Brak|
-|tempdb_log_used_percent|Używany dziennik procentu tempdb|Wartość procentowa|Maksimum|Używany dziennik procentu tempdb. Nie dotyczy hurtowni danych.|Brak|
+|sqlserver_process_core_percent<sup>1</sup> |Procent rdzenia procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia procesora CPU dla procesu programu SQL Server, mierzony przez system operacyjny.|Brak|
+|sqlserver_process_memory_percent<sup>1</sup> |Procent pamięci procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia pamięci dla procesu programu SQL Server, mierzony przez system operacyjny.|Brak|
+|tempdb_data_size<sup>2</sup> |Kilobajty rozmiaru pliku danych tempdb|Liczba|Maksimum|Kilobajty o rozmiarze pliku danych tempdb.|Brak|
+|tempdb_log_size<sup>2</sup> |Kilobajty rozmiaru pliku dziennika tempdb|Liczba|Maksimum|Kilobajty o rozmiarze pliku dziennika tempdb.|Brak|
+|tempdb_log_used_percent<sup>2</sup> |Używany dziennik procentu tempdb|Wartość procentowa|Maksimum|Używany dziennik procentu tempdb.|Brak|
 |local_tempdb_usage_percent|Lokalny procent tempdb|Wartość procentowa|Średnia|Lokalny procent tempdb. Dotyczy tylko magazynów danych.|Brak|
 |app_cpu_billed|Obciążenie procesora aplikacji naliczane|Liczba|Łącznie|Obciążenie procesora aplikacji naliczane. Dotyczy baz danych bezserwerowych.|Brak|
 |app_cpu_percent|Procent procesora aplikacji|Wartość procentowa|Średnia|Procent procesora aplikacji. Dotyczy baz danych bezserwerowych.|Brak|
@@ -2028,6 +2028,9 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |snapshot_backup_size_bytes|Rozmiar magazynu kopii zapasowej migawki|Bajty|Maksimum|Skumulowany rozmiar magazynu kopii zapasowej migawki. Dotyczy baz danych na dużą skalę.|Brak|
 |base_blob_size_bytes|Rozmiar magazynu podstawowego obiektu blob|Bajty|Maksimum|Rozmiar magazynu podstawowego obiektu blob. Dotyczy baz danych na dużą skalę.|Brak|
 
+<sup>1</sup> Ta metryka jest dostępna dla baz danych przy użyciu modelu zakupu vCore z 2 vCore i wyższymi lub 200 DTU i wyższymi dla modeli zakupów opartych na UDW. 
+
+<sup>2</sup> Ta metryka jest dostępna dla baz danych przy użyciu modelu zakupu vCore z 2 vCore i wyższym lub 200 DTU i wyższym dla modeli zakupów opartych na DTU. Ta metryka nie jest obecnie dostępna dla baz danych hiperskali lub magazynów danych.
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
@@ -2057,14 +2060,19 @@ Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym 
 |database_cpu_limit|Limit procesora|Liczba|Średnia|Limit procesora|DataResourceId|
 |cpu_used|Używany procesor|Liczba|Średnia|Używany procesor. Dotyczy elastycznych pul opartych na pulach opartych na pulach typu vCore.|Brak|
 |database_cpu_used|Używany procesor|Liczba|Średnia|Używany procesor|DataResourceId|
-|sqlserver_process_core_percent|Procent rdzenia procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia procesora CPU dla procesu programu SQL Server, mierzony przez system operacyjny. Dotyczy basenów elastycznych.|Brak|
-|sqlserver_process_memory_percent|Procent pamięci procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia pamięci dla procesu programu SQL Server, mierzony przez system operacyjny. Dotyczy basenów elastycznych.|Brak|
-|tempdb_data_size|Kilobajty rozmiaru pliku danych tempdb|Liczba|Maksimum|Kilobajty rozmiaru pliku danych tempdb|Brak|
-|tempdb_log_size|Kilobajty rozmiaru pliku dziennika tempdb|Liczba|Maksimum|Kilobajty rozmiaru pliku dziennika tempdb|Brak|
-|tempdb_log_used_percent|Używany dziennik procentu tempdb|Wartość procentowa|Maksimum|Używany dziennik procentu tempdb|Brak|
+|sqlserver_process_core_percent<sup>1</sup>|Procent rdzenia procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia procesora CPU dla procesu programu SQL Server, mierzony przez system operacyjny. Dotyczy basenów elastycznych. |Brak|
+|sqlserver_process_memory_percent<sup>1</sup>|Procent pamięci procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia pamięci dla procesu programu SQL Server, mierzony przez system operacyjny. Dotyczy basenów elastycznych. |Brak|
+|tempdb_data_size<sup>2</sup>|Kilobajty rozmiaru pliku danych tempdb|Liczba|Maksimum|Kilobajty o rozmiarze pliku danych tempdb.|Brak|
+|tempdb_log_size<sup>2</sup>|Kilobajty rozmiaru pliku dziennika tempdb|Liczba|Maksimum|Kilobajty o rozmiarze pliku dziennika tempdb. |Brak|
+|tempdb_log_used_percent<sup>2</sup>|Używany dziennik procentu tempdb|Wartość procentowa|Maksimum|Używany dziennik procentu tempdb.|Brak|
 |allocated_data_storage|Przydzielone miejsce na dane|Bajty|Średnia|Przydzielone miejsce na dane|Brak|
 |database_allocated_data_storage|Przydzielone miejsce na dane|Bajty|Średnia|Przydzielone miejsce na dane|DataResourceId|
 |allocated_data_storage_percent|Procent przydzielonego miejsca na dane|Wartość procentowa|Maksimum|Procent przydzielonego miejsca na dane|Brak|
+
+<sup>1</sup> Ta metryka jest dostępna dla baz danych przy użyciu modelu zakupu vCore z 2 vCore i wyższymi lub 200 DTU i wyższymi dla modeli zakupów opartych na UDW. 
+
+<sup>2</sup> Ta metryka jest dostępna dla baz danych przy użyciu modelu zakupu vCore z 2 vCore i wyższym lub 200 DTU i wyższym dla modeli zakupów opartych na DTU. Ta metryka nie jest obecnie dostępna dla baz danych w hiperskali.
+
 
 ## <a name="microsoftsqlservers"></a>Microsoft.Sql/serwery
 

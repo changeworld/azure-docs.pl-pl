@@ -3,12 +3,12 @@ title: Opis kolejności sekwencji wdrażania
 description: Dowiedz się więcej o domyślnej kolejności, w jakiej artefakty planu są wdrażane podczas przypisywania planu, oraz o tym, jak dostosować kolejność wdrażania.
 ms.date: 08/22/2019
 ms.topic: conceptual
-ms.openlocfilehash: 51026862c989f15acf6d3e21702cfcfc8b2b27b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41b1b1ada5b7c6c919f227927001570332eeccbf
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74128818"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677560"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Opis sekwencji wdrażania w planach platformy Azure
 
@@ -42,7 +42,7 @@ W ramach każdego artefaktu **grupy zasobów** w ramach tej grupy zasobów używ
 
 ## <a name="customizing-the-sequencing-order"></a>Dostosowywanie kolejności sekwencjonowania
 
-Podczas tworzenia dużych definicji planu, może być konieczne dla zasobów, które mają być tworzone w określonej kolejności. Najbardziej typowy wzorzec użycia tego scenariusza jest, gdy definicja planu zawiera kilka szablonów usługi Azure Resource Manager. Plany obsługuje ten wzorzec, umożliwiając kolejność sekwencjonowania, które mają być zdefiniowane.
+Podczas tworzenia dużych definicji planu, może być konieczne dla zasobów, które mają być tworzone w określonej kolejności. Najbardziej typowy wzorzec użycia tego scenariusza jest, gdy definicja planu zawiera kilka szablonów usługi Azure Resource Manager. Plany platformy Azure obsługuje ten wzorzec, umożliwiając kolejność sekwencjonowania, które mają być zdefiniowane.
 
 Kolejność jest realizowana przez zdefiniowanie `dependsOn` właściwości w JSON. Definicja planu dla grup zasobów i obiektów artefaktów obsługuje tę właściwość. `dependsOn`jest tablicą ciągów nazw artefaktów, które należy utworzyć określonego artefaktu przed jego utworzeniem.
 

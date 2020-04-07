@@ -3,12 +3,12 @@ title: Korzystanie z ustawień diagnostyki dla magazynów usług odzyskiwania
 description: Artykuł opisujący sposób używania starych i nowych zdarzeń diagnostycznych dla usługi Azure Backup
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: e3919d120e5f741af6cd30dd27e5a1dfa2b06cf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d10bedf3818559971eff12624152d0e797f6c3cc
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136943"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672782"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Używanie ustawień diagnostyki dla magazynów usługi Recovery Services
 
@@ -39,28 +39,60 @@ Dostosowując się do mapy drogowej usługi Azure Log Analytics, usługa Azure B
 
 Aby wysłać dane diagnostyczne przechowalni do la:
 
-1.  Przejdź do skarbca i kliknij **ustawienia diagnostyczne**. Kliknij **przycisk + Dodaj ustawienie diagnostyczne**.
-2.  Nadaj nazwę ustawieniu Diagnostyka.
-3.  Zaznacz pole **Wyślij do usługi Log Analytics** i wybierz obszar roboczy usługi Log Analytics.
-4.  Wybierz opcję **Specyficzne dla zasobu** w przełączniku i sprawdź następujące sześć zdarzeń - **CoreAzureBackup**, **AddonAzureBackupAlerts**, **AddonAzureBackupProtecInstance**, **AddonAzureBackupJobs**, **AddonAzureBackupPolicy**i **AddonAzureBackupStorage**.
-5.  Kliknij **zapisz**.
+1.    Przejdź do skarbca i kliknij **ustawienia diagnostyczne**. Kliknij **przycisk + Dodaj ustawienie diagnostyczne**.
+2.    Nadaj nazwę ustawieniu Diagnostyka.
+3.    Zaznacz pole **Wyślij do usługi Log Analytics** i wybierz obszar roboczy usługi Log Analytics.
+4.    Wybierz opcję **Specyficzne dla zasobu** w przełączniku i sprawdź następujące sześć zdarzeń - **CoreAzureBackup**, **AddonAzureBackupAlerts**, **AddonAzureBackupProtecInstance**, **AddonAzureBackupJobs**, **AddonAzureBackupPolicy**i **AddonAzureBackupStorage**.
+5.    Kliknij **zapisz**.
 
 ![Tryb specyficzny dla zasobu](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
 
 Gdy dane przepływają do obszaru roboczego LA, dedykowane tabele dla każdego z tych zdarzeń są tworzone w obszarze roboczym. Można zbadać dowolną z tych tabel bezpośrednio, a także wykonać sprzężenia lub związki między tymi tabelami, jeśli to konieczne.
 
 > [!IMPORTANT]
-> Powyższe sześć zdarzeń, a mianowicie CoreAzureBackup, AddonAzureBackupAlerts, AddonAzureBackupProtectedInstance, AddonAzureBackupJobs, AddonAzureBackupPolicy i AddonAzureBackupStorage, są obsługiwane **tylko** w trybie specyficznym dla zasobu. **Należy pamiętać, że jeśli spróbujesz wysłać dane dla tych sześciu zdarzeń w trybie diagnostyki platformy Azure, żadne dane nie będą przepływać do obszaru roboczego LA.**
+> Powyższe sześć zdarzeń, a mianowicie CoreAzureBackup, AddonAzureBackupAlerts, AddonAzureBackupProtectedInstance, AddonAzureBackupJobs, AddonAzureBackupPolicy i AddonAzureBackupStorage, są obsługiwane **tylko** w trybie specyficznym dla zasobu w [raportach kopii zapasowych](https://docs.microsoft.com/azure/backup/configure-reports). **Należy pamiętać, że jeśli spróbujesz wysłać dane dla tych sześciu zdarzeń w trybie diagnostyki platformy Azure, żadne dane nie będą widoczne w raportach kopii zapasowej.**
 
 ## <a name="legacy-event"></a>Starsze zdarzenie
 
 Tradycyjnie wszystkie dane diagnostyczne związane z tworzeniem kopii zapasowych dla magazynu zostały zawarte w jednym zdarzeniu o nazwie "AzureBackupReport". Sześć zdarzeń opisanych powyżej są w istocie rozkładu wszystkich danych zawartych w usłudze AzureBackupReport. 
 
-Obecnie nadal obsługuje zdarzenie AzureBackupReport dla zgodności z powrotem, w przypadkach, gdy użytkownicy mają istniejące zapytania niestandardowe w tym zdarzeniu, na przykład alerty dziennika niestandardowego, wizualizacje niestandardowe itp. Jednak **zaleca się przejście do nowych zdarzeń tak wcześnie, jak to możliwe,** ponieważ dzięki temu dane znacznie łatwiejsze do pracy z w zapytaniach dziennika, zapewnia lepszą wykrywalność schematów i ich struktury, zwiększa wydajność zarówno w czasie opóźnienia pozyskiwania i zapytań. **Obsługa korzystania z trybu diagnostyki platformy Azure zostanie ostatecznie wycofana, a zatem wybranie nowych zdarzeń może pomóc uniknąć złożonych migracji w późniejszym terminie.**
+Obecnie nadal obsługuje zdarzenie AzureBackupReport dla zgodności z powrotem, w przypadkach, gdy użytkownicy mają istniejące zapytania niestandardowe w tym zdarzeniu, na przykład alerty dziennika niestandardowego, wizualizacje niestandardowe itp. Jednak **zaleca się przejście do [nowych zdarzeń](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users) tak wcześnie, jak to możliwe,** ponieważ dzięki temu dane znacznie łatwiejsze do pracy z w zapytaniach dziennika, zapewnia lepszą wykrywalność schematów i ich struktury, zwiększa wydajność zarówno w czasie opóźnienia pozyskiwania i zapytań. 
 
-Użyj wbudowanych zasad usługi Azure Backup, aby dodać nowe ustawienie diagnostyki z 6 nowymi zdarzeniami dla wszystkich magazynów w określonym zakresie: [Konfigurowanie ustawień diagnostyki przechowalni na dużą skalę](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
+**Starsze zdarzenie w trybie diagnostyki platformy Azure zostanie ostatecznie przestarzałe, a zatem wybranie nowych zdarzeń może pomóc uniknąć złożonych migracji w późniejszym terminie.** Nasze [rozwiązanie raportowania,](https://docs.microsoft.com/azure/backup/configure-reports) które wykorzystuje usługi Log Analytics, również przestanie obsługiwać dane ze starszego zdarzenia.
 
-Można utworzyć oddzielne ustawienia diagnostyki dla usługi AzureBackupReport i sześć nowych zdarzeń, dopóki nie zostaną zmigrowane wszystkie zapytania niestandardowe do korzystania z danych z nowych tabel. Poniższy obraz przedstawia przykład przechowalni z dwoma ustawieniami diagnostycznymi. Pierwsze ustawienie o nazwie **Setting1** wysyła dane zdarzenia AzureBackupReport do obszaru roboczego LA w trybie AzureDiagnostics. Drugie ustawienie o nazwie **Setting2** wysyła dane sześciu nowych zdarzeń usługi Azure Backup do obszaru roboczego LA w trybie specyficznym dla zasobu.
+### <a name="steps-to-move-to-new-diagnostics-settings-to-log-analytics-workspace"></a>Kroki, aby przejść do nowych ustawień diagnostycznych (do obszaru roboczego usługi Log Analytics)
+
+1. Określ, które magazyny wysyłają dane do obszaru roboczego usługi Log Analytics przy użyciu starszego zdarzenia i subskrypcji, do których należą. Uruchom poniższe obszary robocze, aby zidentyfikować te magazyny i subskrypcje:
+
+    ````Kusto
+    let RangeStart = startofday(ago(3d));
+    let VaultUnderAzureDiagnostics = (){
+        AzureDiagnostics
+        | where TimeGenerated >= RangeStart | where Category == "AzureBackupReport" and OperationName == "Vault" and SchemaVersion_s == "V2"
+        | summarize arg_max(TimeGenerated, *) by ResourceId    
+        | project ResourceId, Category};
+    let VaultUnderResourceSpecific = (){
+        CoreAzureBackup
+        | where TimeGenerated >= RangeStart | where OperationName == "Vault" 
+        | summarize arg_max(TimeGenerated, *) by ResourceId
+        | project ResourceId, Category};
+        // Some Workspaces will not have AzureDiagnostics Table, hence you need to use isFuzzy
+    let CombinedVaultTable = (){
+        CombinedTable | union isfuzzy = true 
+        (VaultUnderAzureDiagnostics() ),
+        (VaultUnderResourceSpecific() )
+        | distinct ResourceId, Category};
+    CombinedVaultTable | where Category == "AzureBackupReport"
+    | join kind = leftanti ( 
+    CombinedVaultTable | where Category == "CoreAzureBackup"
+    ) on ResourceId
+    | parse ResourceId with * "SUBSCRIPTIONS/" SubscriptionId:string "/RESOURCEGROUPS" * "MICROSOFT.RECOVERYSERVICES/VAULTS/" VaultName:string
+    | project ResourceId, SubscriptionId, VaultName
+    ````
+
+2. Użyj [wbudowanej usługi Azure Backup,](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics) aby dodać nowe ustawienie diagnostyki dla wszystkich magazynów w określonym zakresie. Ta zasada dodaje nowe ustawienie diagnostyki do tych magazynów, które albo nie mają ustawienia diagnostyki (lub) mają tylko ustawienie diagnostyki starszej wersji. Te zasady można przypisać do całej subskrypcji lub grupy zasobów w czasie. Należy pamiętać, że będziesz potrzebować dostępu "Właściciel" do każdej subskrypcji, do której jest przypisana zasada.
+
+Możesz wybrać oddzielne ustawienia diagnostyki dla usługi AzureBackupReport i sześć nowych zdarzeń, dopóki nie zostaną zmigrowane wszystkie zapytania niestandardowe, aby użyć danych z nowych tabel. Poniższy obraz przedstawia przykład przechowalni z dwoma ustawieniami diagnostycznymi. Pierwsze ustawienie o nazwie **Setting1** wysyła dane zdarzenia AzureBackupReport do obszaru roboczego LA w trybie AzureDiagnostics. Drugie ustawienie o nazwie **Setting2** wysyła dane sześciu nowych zdarzeń usługi Azure Backup do obszaru roboczego LA w trybie specyficznym dla zasobu.
 
 ![Dwa ustawienia](./media/backup-azure-diagnostics-events/two-settings-example.png)
 

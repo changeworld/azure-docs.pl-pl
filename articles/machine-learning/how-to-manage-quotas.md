@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 03/05/2020
-ms.openlocfilehash: 17a4652604c0faa804d24530869aac0848c972b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 530647c3d32b62f0cac250795ccce580b182fa92
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399138"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756606"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Zarządzanie przydziałami dla platformy Azure i żądanie ich
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,7 +60,7 @@ Dostępne zasoby:
 
 + Klastry na region mają domyślny limit 200. Są one współużytkowane między klastrem szkoleniowym a wystąpieniem obliczeniowym (które jest uważane za klaster pojedynczego węzła do celów przydziału). Skontaktuj się z pomocą techniczną platformy Azure, jeśli chcesz zażądać zwiększenia poza tym limitem.
 
-+ Istnieją ** inne ścisłe limity, których nie można przekroczyć po trafieniu.
++ Istnieją inne ścisłe limity, których nie można przekroczyć po trafieniu.
 
 | **Zasobów** | **Maksymalny limit** |
 | --- | --- |

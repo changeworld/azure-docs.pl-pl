@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e1d0c5cd850fa0dbacf104d3fcd72d83007df878
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6fa8bd42eb067124ab6ea1db77e2f3d6fba79638
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632252"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745216"
 ---
 # <a name="restore-an-existing-sql-pool"></a>Przywracanie istniejącej puli SQL
 
@@ -28,12 +28,12 @@ W tym artykule dowiesz się, jak przywrócić istniejącą pulę SQL w usłudze 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-1. Upewnij się, że [zainstalowano program Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
+1. Upewnij się, że [zainstalowano program Azure PowerShell](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Mieć istniejący punkt przywracania, który chcesz przywrócić. Jeśli chcesz utworzyć nowe przywracanie, zobacz [samouczek, aby utworzyć nowy punkt przywracania zdefiniowany przez użytkownika](sql-data-warehouse-restore-points.md).
 
 ## <a name="restore-an-existing-sql-pool-through-powershell"></a>Przywracanie istniejącej puli SQL za pośrednictwem programu PowerShell
 
-Aby przywrócić istniejącą pulę SQL z punktu przywracania, użyj polecenia cmdlet programu PowerShell [restore-AzSqlDatabase.](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)
+Aby przywrócić istniejącą pulę SQL z punktu przywracania, użyj polecenia cmdlet programu PowerShell [restore-AzSqlDatabase.](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 1. Otwórz program PowerShell.
 
@@ -45,7 +45,7 @@ Aby przywrócić istniejącą pulę SQL z punktu przywracania, użyj polecenia c
 
 5. Wybierz żądany punkt przywracania za pomocą przyrządu RestorePointCreationDate.
 
-6. Przywróć pulę SQL do żądanego punktu przywracania przy użyciu polecenia cmdlet programu PowerShell [restore-AzSqlDatabase.](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)
+6. Przywróć pulę SQL do żądanego punktu przywracania przy użyciu polecenia cmdlet programu PowerShell [restore-AzSqlDatabase.](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
         1. Aby przywrócić pulę SQL na inny serwer logiczny, należy określić inną nazwę serwera logicznego.  Ten serwer logiczny może również znajdować się w innej grupie zasobów i regionie.
         2. Aby przywrócić do innej subskrypcji, użyj przycisku "Przenieś", aby przenieść serwer logiczny do innej subskrypcji.
 

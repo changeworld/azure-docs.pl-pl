@@ -1,21 +1,14 @@
 ---
 title: 'Szybki start: wdrażanie aplikacji za pomocą portalu usługi LUIS'
-titleSuffix: Azure Cognitive Services
 description: Ten szybki start pokazuje, jak wdrożyć aplikację, tworząc zasób punktu końcowego prognozowania, przypisując zasób, szkolenia i publikując aplikację.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/27/2020
-ms.author: diberry
-ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/06/2020
+ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79241780"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756292"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Szybki start: wdrażanie aplikacji w portalu usługi LUIS
 
@@ -29,35 +22,13 @@ W tym przewodniku Szybki start nauczysz się wdrażać aplikację. Tworzenie zas
 * Ukończ [poprzednią aplikację Szybki start portalu](get-started-portal-build-app.md) lub pobierz i [zaimportuj aplikację](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
 * Jeśli masz aplikacje, które wstępnie datują uwierzytelnianie zasobów platformy Azure, [przemiń do zasobu platformy Azure](luis-migration-authoring.md). Niektóre strony portalu wyglądają inaczej, gdy obowiązuje uwierzytelnianie za pośrednictwem poczty e-mail.
 
-## <a name="create-the-endpoint-resource"></a>Tworzenie zasobu punktu końcowego
+<a name="create-the-endpoint-resource"></a>
 
-Tworzenie zasobu punktu końcowego prognozowania w witrynie Azure portal. Ten zasób powinien być używany tylko dla kwerend przewidywania punktu końcowego. Nie należy używać tego zasobu do tworzenia zmian w aplikacji.
-
-1. Zaloguj się i utwórz zasób w [witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne).
-
-1. Skonfiguruj subskrypcję przy następujących ustawieniach:
-
-   |Ustawienie|Wartość|Przeznaczenie|
-   |--|--|--|
-   |Nazwa|`my-luis-resource`|Nazwa zasobu platformy Azure. Ta nazwa jest potrzebna podczas przypisywania zasobu do aplikacji w portalu usługi LUIS.|
-   |Subskrypcja|Twoja subskrypcja|Wybierz jedną z subskrypcji skojarzonych z Twoim kontem.|
-   |Grupa zasobów|`my-resource-group`|Utwórz nową grupę zasobów dla wszystkich zasobów usług poznawczych. Po zakończeniu pracy z zasobami można usunąć grupę zasobów, aby wyczyścić subskrypcję. |
-   |Lokalizacja tworzenia|**Zachodnie stany USA**|Region platformy Azure do tworzenia.|
-   |Warstwa cenowa tworzenia|**F0**|Domyślna warstwa cenowa do tworzenia.|
-   |Lokalizacja środowiska uruchomieniowego|**Zachodnie stany USA**|Region platformy Azure do przewidywania zapytań o punkt końcowy.|
-   |Warstwa cenowa środowiska uruchomieniowego|**S0**|Ta warstwa cenowa zawiera witryny sieci Web o dużym natężeniu ruchu.|
-   | | | |
-
-
-   ![Wybór interfejsu API platformy Azure](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
-
-1. Wybierz **pozycję Utwórz,** aby utworzyć zasób platformy Azure.
-
-   W następnej sekcji dowiesz się, jak połączyć ten nowy zasób z aplikacją usługi LUIS w portalu usługi LUIS.
+[!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
 
 ## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>Przypisywanie klucza zasobu do aplikacji usługi LUIS w portalu usługi LUIS
 
-Za każdym razem, gdy tworzysz nowy zasób dla usługi LUIS, należy przypisać zasób do aplikacji usługi LUIS. Po jego przypisaniu nie trzeba będzie wykonać tego kroku ponownie, chyba że utworzysz nowy zasób. Można utworzyć nowy zasób, aby rozwinąć regiony aplikacji lub obsługiwać większą liczbę zapytań przewidywania.
+Za każdym razem, gdy tworzysz nowy zasób tworzenia lub przewidywania zapytań dla usługi LUIS, należy przypisać zasób do aplikacji usługi LUIS. Po jego przypisaniu nie trzeba będzie wykonać tego kroku ponownie, chyba że utworzysz nowy zasób. Można utworzyć nowy zasób, aby rozwinąć regiony aplikacji lub obsługiwać większą liczbę zapytań przewidywania.
 
 1. Zaloguj się do portalu usługi LUIS w [wersji zapoznawczej](https://preview.luis.ai) i wybierz aplikację **myEnglishApp** z listy aplikacji.
 

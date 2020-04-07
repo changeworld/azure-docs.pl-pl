@@ -3,12 +3,12 @@ title: Dzierżawcy, role i użytkownicy w scenariuszach latarni morskiej platfor
 description: Poznaj pojęcia dzierżaw, użytkowników i ról usługi Azure Active Directory, a także sposób ich użycia w scenariuszach usługi Azure Lighthouse.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4734f12c8b4b25bf75ecabc39d9e99d8ebe0951c
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 32d9214e4d0d204db39b6e6decab4665e9b55069
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668874"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754078"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Dzierżawcy, role i użytkownicy w scenariuszach latarni morskiej platformy Azure
 
@@ -41,7 +41,6 @@ Podczas tworzenia autoryzacji zalecamy następujące najlepsze rozwiązania:
 - Pamiętaj, aby przestrzegać zasady najmniejszych uprawnień, aby użytkownicy mieli tylko uprawnienia potrzebne do ukończenia zadania, co pomaga zmniejszyć ryzyko niezamierzonych błędów. Aby uzyskać więcej informacji, zobacz [Zalecane praktyki zabezpieczeń](../concepts/recommended-security-practices.md).
 - Dołącz użytkownika z [rolą usuwania przydziału rejestracji usług zarządzanych,](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) aby w razie potrzeby [usunąć dostęp do delegacji.](../how-to/onboard-customer.md#remove-access-to-a-delegation) Jeśli ta rola nie jest przypisana, delegowane zasoby mogą zostać usunięte tylko przez użytkownika w dzierżawie klienta.
 - Upewnij się, że każdy użytkownik, który musi [wyświetlić stronę Moi klienci w witrynie Azure portal](../how-to/view-manage-customers.md) ma rolę [czytnika](../../role-based-access-control/built-in-roles.md#reader) (lub inną wbudowaną rolę, która obejmuje dostęp do czytnika).
-- Użytkownicy w dzierżawie zarządzającej nie będą mieli dostępu do wyświetlania informacji rozliczeniowych dla delegowanej subskrypcji klienta, nawet jeśli mają wbudowaną rolę, która zazwyczaj zezwala na dostęp. Dzieje się tak, ponieważ dostęp do informacji rozliczeniowych wymaga dodatkowych kroków, które są obecnie obsługiwane tylko dla użytkowników w ramach tej samej dzierżawy.
 
 > [!IMPORTANT]
 > Aby dodać uprawnienia dla grupy usługi Azure AD, **typem grupy** musi być **security,** a nie **Office 365**. Ta opcja jest zaznaczona podczas tworzenia grupy. Aby uzyskać więcej informacji, zobacz [Tworzenie podstawowej grupy i dodawanie członków w usłudze Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).

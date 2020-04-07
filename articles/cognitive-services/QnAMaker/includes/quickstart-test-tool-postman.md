@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 46947579ea72e2199af116442472eec330b38009
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: dd44d9cb01ff072d89afeb4efc4a59071c621315
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77112279"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758188"
 ---
 W tym samouczku Szybki start opisano sposób uzyskiwania odpowiedzi z bazy wiedzy przy użyciu narzędzia Postman.
 
@@ -49,7 +49,7 @@ Ta procedura służy do konfigurowania listonosza, a następnie do odczytywania 
 
 ## <a name="use-metadata-to-filter-answer"></a>Filtrowanie odpowiedzi za pomocą metadanych
 
-W poprzednim przewodniku Szybki start metadane zostały dodane do dwóch zestawów QnA w celu rozróżnienia między dwoma różnymi pytaniami. Dodaj metadane do kwerendy, aby ograniczyć filtr tylko do odpowiedniego zestawu QnA.
+W poprzednim przewodniku Szybki start metadane zostały dodane do dwóch par QnA w celu rozróżnienia między dwoma różnymi pytaniami. Dodaj metadane do kwerendy, aby ograniczyć filtr tylko do odpowiedniej pary QnA.
 
 1. W polu Postman zmień tylko kwerendę `strictFilters` JSON, dodając właściwość z parą nazwa/wartość `service:qna_maker`pliku . Ciało JSON powinno być:
 

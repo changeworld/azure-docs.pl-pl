@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: d8e6f4b58cf17a7502e2c0d67e4fa67af7cdb3f5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 25b8df0d8565686737b33aac16d4bf698ce43280
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632953"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757212"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Szyfrowanie po stronie serwera dysków zarządzanych platformy Azure
 
@@ -91,6 +91,9 @@ Na razie klucze zarządzane przez klienta mają następujące ograniczenia:
 
     Podczas tworzenia wystąpienia magazynu kluczy należy włączyć ochronę usuwania nietrwałego i oczyszczania. Usuwanie nietrwałe zapewnia, że magazyn kluczy przechowuje usunięty klucz dla danego okresu przechowywania (domyślnie 90 dni). Ochrona przed przeczyszczaniem gwarantuje, że usunięty klucz nie może zostać trwale usunięty, dopóki nie upłynie okres przechowywania. Te ustawienia chronią przed utratą danych z powodu przypadkowego usunięcia. Te ustawienia są obowiązkowe w przypadku używania usługi Key Vault do szyfrowania dysków zarządzanych.
 
+    > [!IMPORTANT]
+    > Nie przypadku wielbłąda regionu, jeśli to zrobisz, mogą wystąpić problemy podczas przypisywania dodatkowych dysków do zasobu w witrynie Azure portal.
+    
     ```powershell
     $ResourceGroupName="yourResourceGroupName"
     $LocationName="westcentralus"

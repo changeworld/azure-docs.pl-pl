@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7e5f70d0323aa5c502491ab99db303fde31ade83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f0c4da7caf71670746e84d5cfaa457ebae57156
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528629"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755033"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migracja storsimple 8100 i 8600 do synchronizacji plików platformy Azure
 
@@ -146,7 +146,10 @@ Ogólny rozmiar danych jest mniejszy wąskim gardłem - jest to liczba elementó
 > Upewnij się, że maszyna wirtualna jest wdrażana w tym samym regionie platformy Azure co urządzenie wirtualne StorSimple 8020. Jeśli w ramach tej migracji, należy również zmienić region danych w chmurze z regionu, w którym są przechowywane w dniu dzisiejszym, można to zrobić w późniejszym kroku, podczas aprowizowania udziałów plików platformy Azure.
 
 > [!IMPORTANT]
-> Aby zoptymalizować pod kątem wydajności, należy wdrożyć **bardzo szybki dysk systemu operacyjnego** dla maszyny Wirtualnej w chmurze. Baza danych synchronizacji zostanie przechowywana na dysku systemu operacyjnego dla wszystkich woluminów danych. Ponadto upewnij się, że utworzono **duży dysk systemu operacyjnego**. W zależności od liczby elementów (plików i folderów) na woluminach StorSimple dysk systemu operacyjnego może potrzebować **kilkuset gib** miejsca, aby pomieścić bazę danych synchronizacji.
+> Często lokalnego systemu Windows Server jest używany do przodu lokalnego urządzenia StorSimple. W takiej konfiguracji można włączyć funkcję "[Deduplikacja danych](https://docs.microsoft.com/windows-server/storage/data-deduplication/install-enable)" na tym serwerze Windows Server. **Jeśli użyto deduplikacji danych z danymi StorSimple, upewnij się, że włączysz deduplikację danych również na tej maszynie wirtualnej platformy Azure.** Nie należy mylić tej deduplikacji na poziomie pliku z wbudowaną deduplikacją na poziomie bloku StorSimples, dla której nie jest konieczne żadne działanie.
+
+> [!IMPORTANT]
+> Aby zoptymalizować wydajność, należy wdrożyć **szybki dysk systemu operacyjnego** dla maszyny Wirtualnej w chmurze. Baza danych synchronizacji zostanie przechowywana na dysku systemu operacyjnego dla wszystkich woluminów danych. Ponadto upewnij się, że utworzono **duży dysk systemu operacyjnego**. W zależności od liczby elementów (plików i folderów) na woluminach StorSimple dysk systemu operacyjnego może potrzebować **kilkuset gib** miejsca, aby pomieścić bazę danych synchronizacji.
 
 ### <a name="expose-the-storsimple-8020-volumes-to-the-azure-vm"></a>Udostępnianie woluminów StorSimple 8020 na maszynie wirtualnej platformy Azure
 
@@ -424,7 +427,7 @@ Skonsultuj się z plikami dziennika robocopy, aby sprawdzić, czy pliki zostały
 
 Prawdopodobnie jest potrzebne do utworzenia udziałów SMB w systemie Windows Server, który miał na StorSimple danych przed. Możesz załadować ten krok z przodu i zrobić to wcześniej, aby nie stracić czasu tutaj, ale musisz upewnić się, że przed tym punktem nie nastąpią żadne zmiany w plikach na serwerze Windows.
 
-Jeśli masz wdrożenie DFS-N, możesz skierować obszary nazw DFN na nowe lokalizacje folderów serwera. Jeśli nie masz wdrożenia DFS-N i urządzenie 8100 8600 jest lokalnie połączone z systemem Windows Server, możesz wyłączyć ten serwer z domeny i dołączyć do nowej domeny systemu Windows Server z usługą AFS do domeny, nadaj mu taką samą nazwę serwera jak stary serwer i te same nazwy udziałów, a następnie wycięcie na nowym serwerze pozostaje przezroczyste dla użytkowników, zasad grupy lub skryptów.
+Jeśli masz wdrożenie DFS-N, możesz skierować obszary nazw DFN na nowe lokalizacje folderów serwera. Jeśli nie masz wdrożenia DFS-N i masz fronted 8100 8600 urządzenie lokalnie z systemem Windows Server, można wziąć ten serwer z domeny i domeny dołączyć do nowego systemu Windows Server z AFS do domeny, nadać mu taką samą nazwę serwera jak stary serwer, a te same nazwy udziału, a następnie cut-over do nowego serwera pozostaje przejrzysty dla użytkowników , zasady grupy lub skrypty.
 
 ## <a name="phase-7-deprovision"></a>Faza 7: Deprovision
 

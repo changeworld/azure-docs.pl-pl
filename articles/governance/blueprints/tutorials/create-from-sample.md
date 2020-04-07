@@ -3,18 +3,18 @@ title: 'Samouczek: Próbka planu do nowego środowiska'
 description: W tym samouczku można użyć przykład planu do utworzenia definicji planu, która konfiguruje dwie grupy zasobów i konfiguruje przypisanie roli dla każdego.
 ms.date: 03/25/2020
 ms.topic: tutorial
-ms.openlocfilehash: c4230282223b0a64f6254448fe069bf8f7ab9a15
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80282022"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677087"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Samouczek: Tworzenie środowiska na podstawie przykładu planu
 
 Przykładowe plany zawierają przykłady, co można zrobić za pomocą planów platformy Azure. Każdy z nich jest próbką o określonym zamiarze lub celu, ale nie tworzy kompletne środowisko przez siebie. Każdy z nich jest przeznaczony jako miejsce rozpoczęcia eksplorowania przy użyciu planów platformy Azure z różnymi kombinacjami dołączonych artefaktów, projektów i parametrów.
 
-Poniższy samouczek używa **grup zasobów z rbac** planu przykładu do zaprezentowania różnych aspektów usługi Plany. Następujące kroki są objęte:
+Poniższy samouczek używa grup zasobów z przykładem planu **RBAC** do zaprezentowania różnych aspektów usługi Azure Blueprints. Następujące kroki są objęte:
 
 > [!div class="checklist"]
 > - Tworzenie nowej definicji planu z przykładu

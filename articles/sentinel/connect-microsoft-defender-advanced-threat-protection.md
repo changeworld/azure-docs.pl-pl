@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: ee2c917d02a442ebabc0e1b40bc245982af794f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 831baabcc26130d9b2c730afd85f2ed4b3842690
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588216"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756353"
 ---
 # <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>Połącz alerty z zaawansowanej ochrony przed zagrożeniami usługi Microsoft Defender 
 
 
 > [!IMPORTANT]
-> Połknienie dzienników zaawansowanej ochrony przed zagrożeniami usługi Microsoft Defender jest obecnie dostępne w publicznej wersji zapoznawczej.
+> Połknienie alertów zaawansowanej ochrony przed zagrożeniami firmy Microsoft Defender jest obecnie dostępne w publicznej wersji zapoznawczej.
 > Ta funkcja jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana dla obciążeń produkcyjnych.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
 
-Alerty z [zaawansowanej ochrony przed zagrożeniami](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) usługi Microsoft Defender można przesyłać strumieniowo za pomocą jednego kliknięcia. To połączenie umożliwia przesyłanie strumieniowe alertów z zaawansowanej ochrony przed zagrożeniami usługi Microsoft Defender do usługi Azure Sentinel. 
+Łącznik [Zaawansowanej ochrony przed zagrożeniami usługi Microsoft Defender](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) umożliwia przesyłanie alertów z zaawansowanej ochrony przed zagrożeniami usługi Microsoft Defender do usługi Azure Sentinel. Umożliwi to bardziej kompleksową analizę zdarzeń zabezpieczeń w całej organizacji i tworzenie podręczników w celu uzyskania skutecznej i natychmiastowej reakcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Prawidłowa licencja dla zaawansowanej ochrony przed zagrożeniami usługi Microsoft Defender, która jest włączona zgodnie z opisem w [poprawność obsługi administracyjnej licencjonowania i pełna konfiguracja zaawansowanej ochrony przed zagrożeniami usługi Microsoft Defender](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing). 
+- Musisz mieć ważną licencję na zaawansowaną ochronę przed zagrożeniami usługi Microsoft Defender, zgodnie z opisem w [programie Konfigurowanie wdrożenia narzędzia Microsoft Defender ATP](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing). 
 - Musisz być administratorem lub administratorem zabezpieczeń w dzierżawie usługi Azure Sentinel.
 
 

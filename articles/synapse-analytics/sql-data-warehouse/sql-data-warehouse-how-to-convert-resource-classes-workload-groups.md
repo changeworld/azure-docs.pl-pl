@@ -11,12 +11,12 @@ ms.date: 11/4/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a249dfc4f04fbd7b6b73a0e9f37d53106bf82efd
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 8cee874106598c7d81b923d7dd32ba91902d9326
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633341"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745174"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Konwertuj klasy zasobów na grupy obciążeń
 
@@ -53,7 +53,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 
 ## <a name="create-the-classifier"></a>Tworzenie klasyfikatora
 
-Wcześniej mapowanie zapytań do klas zasobów zostało wykonane za pomocą [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Aby osiągnąć te same funkcje i mapować żądania do grup obciążeń, należy użyć składni [CREATE WORKLOAD CLASSIFIER.](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)  Korzystanie z sp_addrolemember umożliwia tylko mapowanie zasobów na żądanie na podstawie loginu.  Klasyfikator zapewnia dodatkowe opcje oprócz logowania, takie jak:
+Wcześniej mapowanie zapytań do klas zasobów zostało wykonane za pomocą [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Aby osiągnąć te same funkcje i mapować żądania do grup obciążeń, należy użyć składni [CREATE WORKLOAD CLASSIFIER.](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  Korzystanie z sp_addrolemember umożliwia tylko mapowanie zasobów na żądanie na podstawie loginu.  Klasyfikator zapewnia dodatkowe opcje oprócz logowania, takie jak:
     - label
     - sesja
     - czas Poniższy przykład przypisuje zapytania `AdfLogin` z logowania, które mają `factloads` również option `wgDataLoads` [label](sql-data-warehouse-develop-label.md) ustawiony na grupę obciążenia utworzone powyżej.

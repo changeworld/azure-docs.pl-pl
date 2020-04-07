@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: e0f8440686fc36d2cfcb493d97abaf44f81dd287
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab97fa33570ee59c918b2be776750644a7c8e3bd
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275921"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745421"
 ---
 # <a name="power-bi-app-offer"></a>Oferta aplikacji Power BI
+
+>[!Important]
+>Od 30 marca 2020 r. rozpoczniemy przenoszenie zarządzania ofertami aplikacji Usługi Power BI do Centrum partnerów. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami zawartymi w [omówienie tworzenia aplikacji usługi Power BI,](https://aka.ms/AzurePBIAppCreationOverview) aby zarządzać zmigrowanymi ofertami.
 
 |              |                                |
 |--------------|--------------------------------|

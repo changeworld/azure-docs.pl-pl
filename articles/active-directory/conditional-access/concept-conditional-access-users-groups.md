@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 04/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43ae866959dd2112bacbb6b56e5683e7b3b851a0
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631913"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755257"
 ---
 # <a name="conditional-access-users-and-groups"></a>Dostęp warunkowy: użytkownicy i grupy
 
@@ -35,9 +35,9 @@ Następujące opcje są dostępne do uwzględnienia podczas tworzenia zasad dost
 - Wszyscy użytkownicy
    - Wszyscy użytkownicy, którzy istnieją w katalogu, w tym goście B2B.
 - Wybieranie użytkowników i grup
-   - Wszyscy użytkownicy-goście i użytkownicy zewnętrzni (wersja zapoznawcza)
+   - Wszyscy użytkownicy -gościnni i zewnętrzni
       - Ten wybór obejmuje wszystkich gości B2B i `user type` użytkowników zewnętrznych, `guest`w tym każdego użytkownika z atrybutem ustawionym na . Ten wybór dotyczy również każdego użytkownika zewnętrznego zalogowanego z innej organizacji, takiej jak dostawca rozwiązań w chmurze (CSP). 
-   - Role katalogu (wersja zapoznawcza)
+   - Role katalogu
       - Umożliwia administratorom wybranie określonych ról katalogu usługi Azure AD używanych do określania przypisania. Na przykład organizacje mogą tworzyć bardziej restrykcyjne zasady dotyczące użytkowników przypisanych roli administratora globalnego.
    - Użytkownicy i grupy
       - Umożliwia kierowanie określonych zestawów użytkowników. Na przykład organizacje mogą wybrać grupę, która zawiera wszystkich członków działu HR, gdy aplikacja HR jest zaznaczona jako aplikacja w chmurze. Grupa może być dowolnym typem grupy w usłudze Azure AD, w tym dynamiczne lub przypisane grupy zabezpieczeń i dystrybucji.
@@ -51,9 +51,9 @@ Jeśli organizacje obejmują i wykluczają użytkownika lub grupę, użytkownik 
 
 Następujące opcje są dostępne do wykluczenia podczas tworzenia zasad dostępu warunkowego.
 
-- Wszyscy użytkownicy-goście i użytkownicy zewnętrzni (wersja zapoznawcza)
+- Wszyscy użytkownicy -gościnni i zewnętrzni
    - Ten wybór obejmuje wszystkich gości B2B i `user type` użytkowników zewnętrznych, `guest`w tym każdego użytkownika z atrybutem ustawionym na . Ten wybór dotyczy również każdego użytkownika zewnętrznego zalogowanego z innej organizacji, takiej jak dostawca rozwiązań w chmurze (CSP). 
-- Role katalogu (wersja zapoznawcza)
+- Role katalogu
    - Umożliwia administratorom wybranie określonych ról katalogu usługi Azure AD używanych do określania przypisania. Na przykład organizacje mogą tworzyć bardziej restrykcyjne zasady dotyczące użytkowników przypisanych roli administratora globalnego.
 - Użytkownicy i grupy
    - Umożliwia kierowanie określonych zestawów użytkowników. Na przykład organizacje mogą wybrać grupę, która zawiera wszystkich członków działu HR, gdy aplikacja HR jest zaznaczona jako aplikacja w chmurze. Grupa może być dowolnym typem grupy w usłudze Azure AD, w tym dynamiczne lub przypisane grupy zabezpieczeń i dystrybucji.

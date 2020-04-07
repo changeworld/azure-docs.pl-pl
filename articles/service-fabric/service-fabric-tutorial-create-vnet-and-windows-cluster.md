@@ -4,12 +4,12 @@ description: W tym samouczku dowiesz się, jak wdrożyć klaster sieci szkieleto
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75551730"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756036"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Samouczek: Wdrażanie klastra sieci szkieletowej usług z systemem Windows w sieci wirtualnej platformy Azure
 
@@ -156,7 +156,7 @@ Plik parametrów [azuredeploy.parameters.json][parameters] deklaruje wiele warto
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Konfigurowanie uwierzytelniania klienta za pomocą usługi Azure Active Directory
 W przypadku klastrów usługi Service Fabric wdrożonych w sieci publicznej hostowanej na platformie Azure zalecenia dla wzajemnego uwierzytelniania klienta i węzła są następujące:
 * Użyj usługi Azure Active Directory dla tożsamości klienta.
-* Użyj certyfikatu do szyfrowania tożsamości serwera i protokołu SSL komunikacji HTTP.
+* Użyj certyfikatu do szyfrowania tożsamości serwera i TLS komunikacji HTTP.
 
 Konfigurowanie usługi Azure Active Directory (Azure AD) w celu uwierzytelnienia klientów dla klastra sieci szkieletowej usług musi być wykonane przed [utworzeniem klastra](#createvaultandcert). Usługa Azure AD umożliwia organizacjom (znanym jako dzierżawy) zarządzanie dostępem użytkowników do aplikacji. 
 

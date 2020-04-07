@@ -2,13 +2,13 @@
 title: Wskazówki dotyczące formatu dokumentu importu — QnA Maker
 description: Dowiedz się, jak typy adresów URL są używane do importowania i tworzenia zestawów QnA.
 ms.topic: reference
-ms.date: 01/02/2020
-ms.openlocfilehash: 6a954f2fd607b70c6db256ab6dcc1dbcd7a5a473
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 1e006520ce5c61f2da3f425af2332b0d41cc3881
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651840"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754907"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>Wskazówki dotyczące formatowania importowanych dokumentów i adresów URL
 
@@ -20,6 +20,8 @@ Po zaimportowaniu pliku lub adresu URL program QnA Maker konwertuje i przechowuj
 
 Jeśli zawartość zostanie dodana lub edytowana bezpośrednio w bazie wiedzy, użyj **formatowania znaczników,** aby utworzyć zawartość tekstu sformatowania lub zmienić zawartość formatu znaczników, która jest już w odpowiedzi. Program QnA Maker obsługuje większość formatu znaczników, aby zapewnić zawartość funkcji tekstu sformatowego. Jednak aplikacja kliencka, taka jak czat bot może nie obsługiwać tego samego zestawu formatów znaczników. Ważne jest, aby przetestować wyświetlanie odpowiedzi aplikacji klienckiej.
 
+Zobacz pełną listę [typów zawartości i przykładów](./Concepts/content-types.md#file-and-url-data-types).
+
 ## <a name="basic-document-formatting"></a>Podstawowe formatowanie dokumentu
 
 QnA Maker identyfikuje sekcje i podsekcje oraz relacje w pliku na podstawie wizualnych wskazówek, takich jak:
@@ -28,12 +30,6 @@ QnA Maker identyfikuje sekcje i podsekcje oraz relacje w pliku na podstawie wizu
 * styl czcionki
 * Numeracja
 * kolory
-
-|Przykłady dotyczące dokumentów|
-|--|
-||
-
-
 
 ## <a name="product-manuals"></a>Instrukcje obsługi produktu
 
@@ -116,7 +112,8 @@ Importowanie bazy wiedzy zastępuje zawartość istniejącej bazy wiedzy. Import
 * Pierwszy znak nagłówka musi być kapitalizowany.
 * Nie końkwuj nagłówka `?`znakiem zapytania, .
 
+**Przykładowe dokumenty:**<br>[Surface Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Korzyści contoso (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Korzyści z contoso (pdf)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
 
-|Przykłady dotyczące dokumentów|
-|--|
-||
+## <a name="next-steps"></a>Następne kroki
+
+Zobacz pełną listę [typów zawartości i przykładów](./Concepts/content-types.md#file-and-url-data-types)

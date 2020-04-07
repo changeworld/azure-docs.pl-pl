@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: 3ef1c3d3fe0fd1ecad95e027b06ce14fd70d4d3f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: aa49b313f0fb10175dc6c0003f1a919f61731269
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437878"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743319"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Używanie skryptów wdrażania w szablonach (Wersja zapoznawcza)
 
@@ -33,6 +33,8 @@ Korzyści ze skryptu wdrażania:
 - Zezwalaj na określanie tożsamości, które są używane do wykonywania skryptów. Obecnie obsługiwana jest tylko [tożsamość zarządzana przypisana przez użytkownika platformy Azure.](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 - Zezwalaj na przekazywanie argumentów wiersza polecenia do skryptu.
 - Można określić dane wyjściowe skryptu i przekazać je z powrotem do wdrożenia.
+
+Zasób skryptu wdrażania jest dostępny tylko w regionach, w których jest dostępne wystąpienie kontenera platformy Azure.  Zobacz [Dostępność zasobów dla wystąpień kontenerów platformy Azure w regionach platformy Azure.](../../container-instances/container-instances-region-availability.md)
 
 > [!IMPORTANT]
 > Dwa zasoby skryptu wdrażania, konto magazynu i wystąpienie kontenera, są tworzone w tej samej grupie zasobów do wykonywania skryptów i rozwiązywania problemów. Te zasoby są zwykle usuwane przez usługę skryptu, gdy wykonanie skryptu wdrożenia zostanie w stanie terminala. Naliczane są naliczane za zasoby, dopóki zasoby nie zostaną usunięte. Aby dowiedzieć się więcej, zobacz [Oczyszczanie zasobów skryptu wdrażania](#clean-up-deployment-script-resources).
@@ -189,6 +191,8 @@ Oprócz skryptów wbudowanych można również używać zewnętrznych plików sk
 Aby zobaczyć przykład, wybierz [tutaj](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json).
 
 Pliki skryptów zewnętrznych muszą być dostępne.  Aby zabezpieczyć pliki skryptów przechowywane na kontach magazynu platformy Azure, zobacz [Samouczek: Bezpieczne artefakty we wdrożeniach szablonów usługi Azure Resource Manager](./template-tutorial-secure-artifacts.md).
+
+Użytkownik jest odpowiedzialny za zapewnienie integralności skryptów, do których odwołuje się skrypt wdrażania, **PrimaryScriptUri** lub **SupportingScriptUris**.  Odwoływanie się tylko do zaufanych skryptów.
 
 ## <a name="use-supporting-scripts"></a>Używanie skryptów pomocniczych
 

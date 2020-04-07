@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 1c519533625835677ddae0a274c9ce9f10edc6dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: db7c7ae9889d26479f51a7714e7e9fb04b444628
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73097994"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757111"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Przetwarzanie i analizowanie dokumentów JSON przy użyciu gałęzi Apache w usłudze Azure HDInsight
 
@@ -58,6 +58,9 @@ Dowiedz się, jak przetwarzać i analizować pliki notacji obiektów JavaScript 
 Plik można znaleźć `wasb://processjson@hditutorialdata.blob.core.windows.net/`pod adresem . Aby uzyskać więcej informacji na temat korzystania z magazynu obiektów Blob platformy Azure z usługą HDInsight, zobacz [Używanie magazynu obiektów blob platformy Azure zgodnym z usługą HDFS z apache Hadoop w usłudze HDInsight.](../hdinsight-hadoop-use-blob-storage.md) Można skopiować plik do domyślnego kontenera klastra.
 
 W tym artykule używasz konsoli Gałąź Apache. Aby uzyskać instrukcje dotyczące otwierania konsoli Hive, zobacz [Korzystanie z apache Ambari Hive View with Apache Hadoop w programie HDInsight](apache-hadoop-use-hive-ambari-view.md).
+
+> [!NOTE]  
+> Widok gałęzi nie jest już dostępny w umiań HDInsight 4.0.
 
 ## <a name="flatten-json-documents"></a>Spłaszczanie dokumentów JSON
 
@@ -105,7 +108,7 @@ Hive udostępnia trzy różne mechanizmy uruchamiania zapytań w dokumentach JSO
 
 ### <a name="use-the-get_json_object-udf"></a>Korzystanie z get_json_object UDF
 
-Hive zapewnia wbudowany UDF o nazwie [get_json_object,](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) które mogą wykonywać zapytania JSON w czasie wykonywania. Ta metoda przyjmuje dwa argumenty — nazwę tabeli i nazwę metody, która ma spłaszczony dokument JSON i pole JSON, które musi zostać przeanalizowane. Spójrzmy na przykład, aby zobaczyć, jak działa ten UDF.
+Hive zapewnia wbudowany UDF o nazwie [get_json_object,](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) który wysyła zapytania JSON w czasie wykonywania. Ta metoda przyjmuje dwa argumenty: nazwę tabeli i nazwę metody. Nazwa metody ma spłaszczony dokument JSON i pole JSON, które musi zostać przeanalizowane. Spójrzmy na przykład, aby zobaczyć, jak działa ten UDF.
 
 Następująca kwerenda zwraca imię i nazwisko dla każdego ucznia:
 
@@ -118,18 +121,18 @@ FROM StudentsOneLine;
 
 Oto dane wyjściowe po uruchomieniu tej kwerendy w oknie konsoli:
 
-![Apache Hive uzyskać json obiektu UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
+![Apache Hive dostaje json obiektu UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
 Istnieją ograniczenia get_json_object UDF:
 
 * Ponieważ każde pole w kwerendzie wymaga ponownego wykonania kwerendy, wpływa na wydajność.
 * **FUNKCJA\_GET JSON_OBJECT()** zwraca reprezentację ciągu tablicy. Aby przekonwertować tę tablicę na tablicę Hive, należy użyć wyrażeń regularnych, aby zastąpić nawiasy kwadratowe "[" i "]", a następnie należy również wywołać split, aby uzyskać tablicę.
 
-Dlatego wiki Hive zaleca korzystanie z **json_tuple**.  
+Ta konwersja jest powodem, dla którego wiki Hive zaleca korzystanie z **json_tuple**.  
 
 ### <a name="use-the-json_tuple-udf"></a>Korzystanie z json_tuple UDF
 
-Inny UDF dostarczony przez Hive nazywa [się json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple), który działa lepiej niż [get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Ta metoda przyjmuje zestaw kluczy i ciąg JSON i zwraca krotę wartości przy użyciu jednej funkcji. Następująca kwerenda zwraca identyfikator ucznia i ocenę z dokumentu JSON:
+Inny UDF dostarczone przez Hive nazywa [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple), który ma lepiej niż [get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Ta metoda przyjmuje zestaw kluczy i ciąg JSON. Następnie zwraca krotki wartości. Następująca kwerenda zwraca identyfikator ucznia i ocenę z dokumentu JSON:
 
 ```sql
 SELECT q1.StudentId, q1.Grade
@@ -142,7 +145,7 @@ Dane wyjściowe tego skryptu w konsoli hive:
 
 ![Apache Hive json wyniki kwerendy](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-json_tuple UDF używa składni [widoku bocznego](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) w gałęzi, która umożliwia\_json krople utworzyć tabelę wirtualną, stosując funkcję UDT do każdego wiersza oryginalnej tabeli. Złożone JSONy stają się zbyt nieporęczne z powodu wielokrotnego korzystania z **widoku bocznego**. Ponadto **JSON_TUPLE** nie może obsłużyć zagnieżdżonych sieci JSON.
+UDF używa składni [widoku bocznego](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) w gałęzi, która\_umożliwia json krotki do tworzenia tabeli wirtualnej przez zastosowanie funkcji UDT do każdego wiersza oryginalnej tabeli. `json_tuple` Złożone JSONy stają się zbyt nieporęczne z powodu wielokrotnego korzystania z **widoku bocznego**. Ponadto **JSON_TUPLE** nie może obsłużyć zagnieżdżonych sieci JSON.
 
 ### <a name="use-a-custom-serde"></a>Używanie niestandardowego serde
 
@@ -150,7 +153,7 @@ SerDe jest najlepszym wyborem do analizowania zagnieżdżonych dokumentów JSON.
 
 ## <a name="summary"></a>Podsumowanie
 
-Podsumowując typ operatora JSON w gałęzi, który wybierzesz zależy od scenariusza. Jeśli masz prosty dokument JSON i masz tylko jedno pole do wyszukania, możesz użyć **get_json_object**Hive UDF . Jeśli masz więcej niż jeden klucz do wyszukania, możesz użyć **json_tuple**. Jeśli masz zagnieżdżony dokument, należy użyć **pliku JSON SerDe**.
+Typ operatora JSON w gałęzi, który wybierzesz zależy od scenariusza. Za pomocą prostego dokumentu JSON i jednego pola do wyszukania wybierz **get_json_object UDF**hive . Jeśli masz więcej niż jeden klucz do wyszukania, możesz użyć **json_tuple**. W przypadku dokumentów zagnieżdżonych należy użyć pliku **JSON SerDe**.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 90adb3b973b6952d10ef89e4b40d0fc68489e224
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8701fe6857e95334a5e1d24bfe70feb130d5512c
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061106"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756033"
 ---
 # <a name="get-started-with-azcopy"></a>Wprowadzenie do narzędzia AzCopy
 
@@ -21,7 +21,7 @@ AzCopy to narzędzie wiersza polecenia, za pomocą którego można kopiować obi
 > [!NOTE]
 > AzCopy **V10** jest obecnie obsługiwaną wersją AzCopy.
 >
-> Jeśli chcesz użyć AzCopy **v8.1**, zobacz [użyj poprzedniej wersji AzCopy](#previous-version) sekcji tego artykułu.
+> Jeśli chcesz użyć poprzedniej wersji programu AzCopy, zobacz sekcję [Użyj poprzedniej wersji programu AzCopy](#previous-version) w tym artykule.
 
 <a id="download-and-install-azcopy" />
 
@@ -308,11 +308,11 @@ Eksplorator magazynu używa klucza konta do wykonywania operacji, więc po zalog
 
 ## <a name="use-the-previous-version-of-azcopy"></a>Użyj poprzedniej wersji programu AzCopy
 
-Jeśli chcesz użyć poprzedniej wersji programu AzCopy (AzCopy v8.1), zobacz jeden z następujących łączy:
+Jeśli chcesz użyć poprzedniej wersji programu AzCopy, zobacz jeden z następujących łączy:
 
 - [Narzędzie AzCopy w systemie Windows (wersja 8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy)
 
-- [Narzędzie AzCopy w systemie Linux (wersja 8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
+- [AzCopy na Linuksie (v7)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
 
 ## <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurowanie, optymalizowanie i rozwiązywanie problemów z programem AzCopy
 

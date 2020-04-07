@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 68d53d2a33b7ab705dfa88f03618a5d5a3d1bced
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 7e0980a9142dc966916d5a4df898ea53b0ddeae5
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633039"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745082"
 ---
 # <a name="geo-restore-for-sql-pool"></a>Przywracanie geograficzne dla puli SQL
 
@@ -30,13 +30,13 @@ W tym artykule nauczysz się przywracać pulę SQL z kopii zapasowej geograficzn
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Przywracanie z regionu geograficznego platformy Azure za pośrednictwem programu PowerShell
 
-Aby przywrócić z kopii zapasowej geograficznej, należy użyć polecenia cmdlet [Get-AzSqlDatabaseGeoBackup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasegeobackup) i [Restore-AzSqlDatabase.](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)
+Aby przywrócić z kopii zapasowej geograficznej, należy użyć polecenia cmdlet [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) i [Restore-AzSqlDatabase.](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 > [!NOTE]
 > Można wykonać geo-przywracanie do Gen2! W tym celu należy określić nazwę usługi Gen2 ServiceObjectiveName**c**(np.
 >
 
-1. Przed rozpoczęciem należy zainstalować [program Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
+1. Przed rozpoczęciem należy zainstalować [program Azure PowerShell](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Otwórz program PowerShell.
 3. Połącz się ze swoim kontem platformy Azure i wymień wszystkie subskrypcje skojarzone z Twoim kontem.
 4. Wybierz subskrypcję zawierającą magazyn danych, który ma zostać przywrócony.

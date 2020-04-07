@@ -32,8 +32,6 @@
       href: tutorial-sql-backup.md
     - name: Tworzenie kopii zapasowych baz danych platformy SAP HANA na maszynach wirtualnych platformy Azure
       href: tutorial-backup-sap-hana-db.md
-    - name: Tworzenie kopii zapasowej udziałów plików usługi Azure Files
-      href: tutorial-backup-azure-files.md
     - name: Tworzenie kopii zapasowych serwera z systemem Windows
       href: tutorial-backup-windows-server-to-azure.md
     - name: Przywracanie plików do systemu Windows Server

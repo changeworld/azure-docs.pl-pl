@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 4a71f50a130bd9b22965d39fa942b47c70857a86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71aa937536f35c9af44adb5822ce7a2bb8f3a9eb
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265040"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756003"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Schemat zdarzenia usługi Azure Event Grid dla magazynu obiektów Blob
 
@@ -21,7 +21,7 @@ Ten artykuł zawiera właściwości i schemat zdarzeń magazynu obiektów blob.A
 Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [Źródło zdarzenia Magazynu](event-sources.md#storage).
 
 >[!NOTE]
-> Tylko konta magazynu typu **StorageV2 (ogólnego przeznaczenia w wersji 2)** i integracji zdarzeń obsługi **BlobStorage.** **Magazyn (genral purpose v1)** *nie* obsługuje integracji z siatką zdarzeń.
+> Tylko konta magazynu typu **StorageV2 (ogólnego przeznaczenia v2),** **BlockBlobStorage**i **BlobStorage** obsługują integrację zdarzeń. **Magazyn (genral purpose v1)** *nie* obsługuje integracji z siatką zdarzeń.
 
 ## <a name="list-of-events-for-blob-rest-apis"></a>Lista zdarzeń dla interfejsów API REST obiektów blob
 
@@ -37,7 +37,7 @@ Te zdarzenia są wyzwalane, gdy klient tworzy, zastępuje lub usuwa obiekt blob,
 
 ## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Lista zdarzeń dla interfejsów API REST usługi Azure Data Storage Gen 2
 
-Te zdarzenia są wyzwalane po włączeniu hierarchicznego obszaru nazw na koncie magazynu, a klienci będą wywoływać interfejsy API REST usługi Azure Data Lake Storage Gen2.
+Te zdarzenia są wyzwalane po włączeniu hierarchicznego obszaru nazw na koncie magazynu, a klienci będą wywoływać interfejsy API REST usługi Azure Data Lake Storage Gen2. Aby uzyskać więcej informacji na temat usługi Azure Data Lake Storage Gen2, zobacz [Wprowadzenie do usługi Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
 
 |Nazwa wydarzenia|Opis|
 |----------|-----------|

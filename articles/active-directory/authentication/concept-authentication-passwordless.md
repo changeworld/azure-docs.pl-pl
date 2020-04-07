@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07ba38a5d7e8e8a89ba122efb1734c1f13a94d48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 402eaecbf03fd52fbb5e871fdd196da2bc9a3e1f
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332183"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743535"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Opcje uwierzytelniania bez hasła dla usługi Azure Active Directory
 
@@ -97,7 +97,7 @@ Następujący proces jest używany, gdy użytkownik loguje się za pomocą klucz
 8. Usługa Azure AD weryfikuje podpisane umowynie z wykorzystaniem klucza publicznego FIDO2.
 9. Usługa Azure AD zwraca PRT, aby umożliwić dostęp do zasobów lokalnych.
 
-Chociaż istnieje wiele kluczy, które są certyfikowane przez FIDO2 Alliance, Microsoft wymaga pewnych opcjonalnych rozszerzeń fido2 client-to-Authenticator Protocol (CTAP) specyfikacji do wdrożenia przez dostawcę w celu zapewnienia maksymalnego bezpieczeństwa i najlepszych Doświadczenie.
+Chociaż istnieje wiele kluczy, które są CERTYFIKOWANE FIDO2 przez FIDO Alliance, Firma Microsoft wymaga niektórych opcjonalnych rozszerzeń fido2 client-to-Authenticator Protocol (CTAP) specyfikacji mają być zaimplementowane przez dostawcę w celu zapewnienia maksymalnego bezpieczeństwa i najlepsze środowisko.
 
 Klucz zabezpieczeń **MUSI** implementować następujące funkcje i rozszerzenia z protokołu CTAP FIDO2, aby były zgodne z firmą Microsoft:
 
@@ -162,7 +162,7 @@ Skorzystaj z poniższej tabeli, aby wybrać metodę, która będzie obsługiwać
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Włączanie opcji bez hasła klucza zabezpieczeń FIDO2 w organizacji](howto-authentication-passwordless-security-key.md)
+[Włączanie opcji bez hasła bez hasła klucza zabezpieczeń FIDO2 w organizacji](howto-authentication-passwordless-security-key.md)
 
 [Włączanie opcji bez hasła w organizacji opartych na telefonie](howto-authentication-passwordless-phone.md)
 

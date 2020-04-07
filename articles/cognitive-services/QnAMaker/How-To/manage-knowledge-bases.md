@@ -3,12 +3,12 @@ title: Zarządzanie bazami wiedzy - QnA Maker
 description: QnA Maker umożliwia zarządzanie bazami wiedzy, zapewniając dostęp do ustawień bazy wiedzy i zawartości.
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 57839125011016daed5f0b3d441a83e8db488198
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80071145"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756804"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Tworzenie bazy wiedzy i zarządzanie ustawieniami
 
@@ -107,5 +107,5 @@ Jeśli udostępniasz swoją bazę wiedzy współpracownikom,](współpraca-wiedz
 
 Dowiedz się więcej o [zarządzaniu językiem](language-knowledge-base.md) wszystkich baz wiedzy w zasobie.
 
-* Edycja zestawów QnA
+* Edytuj pary QnA
 * Zarządzanie zasobami platformy Azure używanymi przez program QnA Maker

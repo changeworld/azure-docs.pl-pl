@@ -3,12 +3,12 @@ title: Baza wiedzy projektowej - QnA Maker
 description: Baza wiedzy QnA Maker składa się z zestawu zestawów pytań i odpowiedzi (QnA) i opcjonalnych metadanych skojarzonych z każdą parą QnA.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: cb71de0f6a3e372d8c1c1fede67ba0c0354532ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d24434d1343f4174cfbfeb3a30c36737b213168
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76844324"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756786"
 ---
 # <a name="question-and-answer-set-concepts"></a>Pojęcia zestawu pytań i odpowiedzi
 
@@ -33,7 +33,7 @@ Każdy zestaw jest reprezentowany przez **identyfikator**.
 
 ## <a name="editorially-add-to-knowledge-base"></a>Edytorze dodaj do bazy wiedzy
 
-Jeśli nie masz wcześniej istniejącej zawartości do zapełnienia bazy wiedzy, możesz dodać zestawy QnA redakcyjnie w portalu QnA Maker. Dowiedz się, jak zaktualizować swoją bazę wiedzy [tutaj](../How-To/edit-knowledge-base.md).
+Jeśli nie masz wcześniej istniejącej zawartości do zapełnienia bazy wiedzy, możesz dodać pary QnA zgodnie z artykułem w portalu QnA Maker. Dowiedz się, jak zaktualizować swoją bazę wiedzy [tutaj](../How-To/edit-knowledge-base.md).
 
 ## <a name="editing-your-knowledge-base-locally"></a>Lokalna edycja bazy wiedzy
 

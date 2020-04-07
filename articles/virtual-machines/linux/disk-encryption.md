@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 20aa55f9fc4ea65da1973628aeec313a5367816a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f7eb63d0bbdce86f4a7195430dc15d6873e9f6e6
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632059"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754300"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Szyfrowanie po stronie serwera dysków zarządzanych platformy Azure
 
@@ -90,10 +90,13 @@ Na razie klucze zarządzane przez klienta mają następujące ograniczenia:
 
     Podczas tworzenia wystąpienia magazynu kluczy należy włączyć ochronę usuwania nietrwałego i oczyszczania. Usuwanie nietrwałe zapewnia, że magazyn kluczy przechowuje usunięty klucz dla danego okresu przechowywania (domyślnie 90 dni). Ochrona przed przeczyszczaniem gwarantuje, że usunięty klucz nie może zostać trwale usunięty, dopóki nie upłynie okres przechowywania. Te ustawienia chronią przed utratą danych z powodu przypadkowego usunięcia. Te ustawienia są obowiązkowe w przypadku używania usługi Key Vault do szyfrowania dysków zarządzanych.
 
+    > [!IMPORTANT]
+    > Nie przypadku wielbłąda regionu, jeśli to zrobisz, mogą wystąpić problemy podczas przypisywania dodatkowych dysków do zasobu w witrynie Azure portal.
+
     ```azurecli
     subscriptionId=yourSubscriptionID
     rgName=yourResourceGroupName
-    location=WestCentralUS
+    location=westcentralus
     keyVaultName=yourKeyVaultName
     keyName=yourKeyName
     diskEncryptionSetName=yourDiskEncryptionSetName
@@ -134,7 +137,7 @@ Na razie klucze zarządzane przez klienta mają następujące ograniczenia:
 ```azurecli
 rgName=yourResourceGroupName
 vmName=yourVMName
-location=WestCentralUS
+location=westcentralus
 vmSize=Standard_DS3_V2
 image=UbuntuLTS 
 diskEncryptionSetName=yourDiskencryptionSetName
@@ -162,7 +165,7 @@ az disk update -n $diskName -g $rgName --encryption-type EncryptionAtRestWithCus
 ```azurecli
 rgName=yourResourceGroupName
 vmssName=yourVMSSName
-location=WestCentralUS
+location=westcentralus
 vmSize=Standard_DS3_V2
 image=UbuntuLTS 
 diskEncryptionSetName=yourDiskencryptionSetName
@@ -179,7 +182,7 @@ rgName=yourResourceGroupName
 diskName=yourDiskName
 diskSkuName=Premium_LRS
 diskSizeinGiB=30
-location=WestCentralUS
+location=westcentralus
 diskLUN=2
 diskEncryptionSetName=yourDiskEncryptionSetName
 

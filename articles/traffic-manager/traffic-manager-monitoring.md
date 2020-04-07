@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: rohink
-ms.openlocfilehash: fcc9c5333b37c041342c2d20a53cf5d3908d1a26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938552"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757261"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorowanie punktu końcowego usługi Traffic Manager
 
@@ -25,7 +25,7 @@ Usługa Azure Traffic Manager zawiera wbudowane monitorowanie punktów końcowyc
 
 Aby skonfigurować monitorowanie punktów końcowych, należy określić następujące ustawienia w profilu usługi Traffic Manager:
 
-* **protokołu**. Wybierz protokół HTTP, HTTPS lub TCP jako protokół używany przez program Traffic Manager podczas sondowania punktu końcowego w celu sprawdzenia jego kondycji. Monitorowanie protokołu HTTPS nie sprawdza, czy certyfikat SSL jest prawidłowy — sprawdza tylko, czy certyfikat jest obecny.
+* **protokołu**. Wybierz protokół HTTP, HTTPS lub TCP jako protokół używany przez program Traffic Manager podczas sondowania punktu końcowego w celu sprawdzenia jego kondycji. Monitorowanie protokołu HTTPS nie sprawdza, czy certyfikat TLS/SSL jest prawidłowy — sprawdza tylko, czy certyfikat jest obecny.
 * **Port**. Wybierz port używany dla żądania.
 * **Ścieżka**. To ustawienie konfiguracji jest prawidłowe tylko dla protokołów HTTP i HTTPS, dla których wymagane jest określenie ustawienia ścieżki. Podanie tego ustawienia dla protokołu monitorowania TCP powoduje błąd. W przypadku protokołu HTTP i HTTPS podaj ścieżkę względną i nazwę strony sieci Web lub pliku, do który uzyskuje dostęp monitorujący. Ukośnik do przodu (/) jest prawidłowym wpisem dla ścieżki względnej. Ta wartość oznacza, że plik znajduje się w katalogu głównym (domyślnie).
 * **Niestandardowe ustawienia nagłówka** To ustawienie konfiguracji ułatwia dodawanie określonych nagłówków HTTP do kontroli kondycji wysyłanych przez Menedżera ruchu do punktów końcowych w profilu. Nagłówki niestandardowe można określić na poziomie profilu, który ma zastosowanie do wszystkich punktów końcowych w tym profilu i / lub na poziomie punktu końcowego mającego zastosowanie tylko do tego punktu końcowego. Nagłówki niestandardowe można użyć do sprawdzania kondycji do punktów końcowych w środowisku wielodostępnym być kierowane poprawnie do miejsca docelowego, określając nagłówek hosta. Tego ustawienia można również użyć, dodając unikatowe nagłówki, które mogą służyć do identyfikowania żądań http(s) pochodzących z usługi Traffic Manager i przetwarza je w inny sposób. Można określić maksymalnie osiem par nagłówków:wartość oddzielonych przecinkiem. Na przykład "header1:value1,header2:value2". 

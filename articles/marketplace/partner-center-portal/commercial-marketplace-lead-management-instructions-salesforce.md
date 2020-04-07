@@ -7,16 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: dsindona
-ms.openlocfilehash: 1720026b4beff941b02a60cd1c755a043d66bdb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b59181f7c1b24a7bc00ab579bbe67a70f499c92
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281497"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755383"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Konfigurowanie zarządzania potencjalnymi klientami dla Salesforce
 
-W tym artykule opisano sposób konfigurowania systemu Salesforce do przetwarzania potencjalnych klientów z oferty marketplace.
+W tym artykule opisano sposób konfigurowania systemu Salesforce do przetwarzania potencjalnych klientów z oferty komercyjnego rynku.
+
+> [!Note]
+> Marketplace nie obsługuje wstępnie wypełnionych list, takich jak lista wartości dla pola **Kraj.** Przed kontynuowaniem upewnij się, że nie skonfigurowane są żadne listy. Alternatywnie można skonfigurować [punkt końcowy HTTPS](./commercial-marketplace-lead-management-instructions-https.md) lub [tabelę platformy Azure](./commercial-marketplace-lead-management-instructions-azure-table.md) do odbierania potencjalnych klientów.
 
 ## <a name="set-up-your-salesforce-system"></a>Konfigurowanie systemu Salesforce
 
@@ -26,14 +29,16 @@ W tym artykule opisano sposób konfigurowania systemu Salesforce do przetwarzani
     ![Konfiguracja salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
     1. Na stronie Ustawienia przejdź przez lewą nawigację do **platform Narzędzia >Ustawienia funkcji >Marketing->Web-to-Lead**.
-    ![Salesforce Web-to-Lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
+
+        ![Salesforce Web-to-Lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
 3. Jeśli korzystasz z usługi Salesforce Classic:
     1. Wybierz **pozycję Ustawienia** ze strony głównej salesforce.
     ![Konfiguracja klasyczna Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
     1. Na stronie Ustawienia przejdź przez lewą nawigację do **build ->Customize->Leads->Web-to-Lead**.
-    ![Salesforce klasyczny web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
+
+        ![Salesforce klasyczny web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
 Pozostałe instrukcje są takie same, niezależnie od tego, którego doświadczenia Salesforce używasz.
 

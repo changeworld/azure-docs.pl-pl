@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 150801fe66da1ea8c6f10d437c6d7616a77b544e
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 2ee1a2c7037bde68b7858b57a03c78bd2016ff1c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411006"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743552"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Samouczek: Dodawanie wyjść do szablonu ARM
 
@@ -77,7 +77,7 @@ az deployment group create \
 
 ---
 
-W danych wyjściowych dla polecenia wdrożenia zobaczysz obiekt podobny do:
+W danych wyjściowych dla polecenia wdrożenia zobaczysz obiekt podobny do poniższego przykładu tylko wtedy, gdy dane wyjściowe są w formacie JSON:
 
 ```json
 {
@@ -99,7 +99,7 @@ Zrobiłeś wiele w ciągu ostatnich sześciu tutoriali. Poświęćmy chwilę, ab
 
 Teraz przyjrzyjmy się grupie zasobów i historii wdrażania.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. W menu po lewej stronie wybierz pozycję **Grupy zasobów**.
 1. Wybierz grupę zasobów, do której została wdrożona.
 1. W zależności od czynności, które wykonasz, powinien mieć co najmniej jedno i być może kilka kont magazynu w grupie zasobów.

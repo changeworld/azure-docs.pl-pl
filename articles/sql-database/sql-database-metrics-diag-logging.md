@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 880072c9865e38e181869506e35968767fa95e8a
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.date: 04/06/2020
+ms.openlocfilehash: 9c9f069ad38c65aa0bbfdcde9eef3fed32585d9e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387907"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756416"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>Konfigurowanie eksportu przesyłania strumieniowego danych telemetrycznych diagnostycznych usługi Azure SQL Database
 
@@ -25,7 +25,7 @@ W tym artykule dowiesz się o metryki wydajności i dzienniki zasobów dla usłu
 Dowiesz się również o miejscach docelowych, do których można przesyłać strumieniowo tę telemetrię diagnostyczną i jak wybrać jedną z tych opcji. Dostępne opcje to:
 
 - [Analiza dzienników i analiza SQL](#stream-into-sql-analytics)
-- [Centra zdarzeń](#stream-into-event-hubs)
+- [Event Hubs](#stream-into-event-hubs)
 - [Azure Storage](#stream-into-azure-storage)
 
 ## <a name="diagnostic-telemetry-for-export-for-azure-sql-database"></a>Dane telemetryczne diagnostyczne do eksportowania bazy danych SQL usługi Azure
@@ -77,7 +77,7 @@ Ta telemetria diagnostyczna przesyłana strumieniowo do jednego z tych miejsc do
 
 Można włączyć metryki i rejestrowanie danych telemetrycznych i zarządzać nimi przy użyciu jednej z następujących metod:
 
-- Portal Azure
+- Azure Portal
 - PowerShell
 - Interfejs wiersza polecenia platformy Azure
 - Interfejs API REST usługi Azure Monitor
@@ -95,7 +95,7 @@ Można użyć menu **Ustawienia diagnostyki** w witrynie Azure portal, aby włą
 
 Wybierz jedną z następujących kart, aby uzyskać wskazówki krok po kroku dotyczące konfigurowania eksportu danych logowania do przesyłania strumieniowego danych telemetrycznych w portalu Azure i skryptów do wykonania tego samego za pomocą programu PowerShell i interfejsu wiersza polecenia platformy Azure.
 
-# <a name="azure-portal"></a>[Portal Azure](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 ### <a name="elastic-pools"></a>Pule elastyczne
 
@@ -225,7 +225,7 @@ Aby włączyć przesyłanie strumieniowe danych telemetrycznych diagnostycznych 
 > [!TIP]
 > Powtórz te kroki dla każdej bazy danych wystąpień, którą chcesz monitorować.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -454,9 +454,15 @@ Szczegółowe informacje na temat zaawansowanych metryk można znaleźć w poni�
 
 |**Metryka**|**Metryka Nazwa wyświetlana**|**Opis**|
 |---|---|---|
-|tempdb_data_size| Kilobajty rozmiaru pliku danych tempdb |Kilobajty o rozmiarze pliku danych tempdb. Nie dotyczy hurtowni danych. Ta metryka będzie dostępna dla baz danych przy użyciu modelu zakupu vCore z 2 vCore i wyższymi lub 200 DTU i wyższymi dla modeli zakupów opartych na UDW. Ta metryka nie jest obecnie dostępna dla baz danych w hiperskali.|
-|tempdb_log_size| Kilobajty rozmiaru pliku dziennika tempdb |Kilobajty o rozmiarze pliku dziennika tempdb. Nie dotyczy hurtowni danych. Ta metryka będzie dostępna dla baz danych przy użyciu modelu zakupu vCore z 2 vCore i wyższymi lub 200 DTU i wyższymi dla modeli zakupów opartych na UDW. Ta metryka nie jest obecnie dostępna dla baz danych w hiperskali.|
-|tempdb_log_used_percent| Używany dziennik procentu tempdb |Używany dziennik procentu tempdb. Nie dotyczy hurtowni danych. Ta metryka będzie dostępna dla baz danych przy użyciu modelu zakupu vCore z 2 vCore i wyższymi lub 200 DTU i wyższymi dla modeli zakupów opartych na UDW. Ta metryka nie jest obecnie dostępna dla baz danych w hiperskali.|
+|sqlserver_process_core_percent<sup>1</sup>|Procent rdzenia procesu programu SQL Server|Procent użycia procesora CPU dla procesu programu SQL Server, mierzony przez system operacyjny.|
+|sqlserver_process_memory_percent<sup>1</sup> |Procent pamięci procesu programu SQL Server|Procent użycia pamięci dla procesu programu SQL Server, mierzony przez system operacyjny.|
+|tempdb_data_size<sup>2</sup>| Kilobajty rozmiaru pliku danych tempdb |Kilobajty o rozmiarze pliku danych tempdb.|
+|tempdb_log_size<sup>2</sup>| Kilobajty rozmiaru pliku dziennika tempdb |Kilobajty o rozmiarze pliku dziennika tempdb.|
+|tempdb_log_used_percent<sup>2</sup>| Używany dziennik procentu tempdb |Używany dziennik procentu tempdb.|
+
+<sup>1</sup> Ta metryka jest dostępna dla baz danych przy użyciu modelu zakupu vCore z 2 vCore i wyższymi lub 200 DTU i wyższymi dla modeli zakupów opartych na UDW. 
+
+<sup>2</sup> Ta metryka jest dostępna dla baz danych przy użyciu modelu zakupu vCore z 2 vCore i wyższym lub 200 DTU i wyższym dla modeli zakupów opartych na DTU. Ta metryka nie jest obecnie dostępna dla baz danych hiperskali lub magazynów danych.
 
 ### <a name="basic-logs"></a>Podstawowe dzienniki
 

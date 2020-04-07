@@ -4,12 +4,12 @@ description: Dowiedz się, jak połączyć usługi Azure Functions z kolejką us
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 22f7df52e90a35a3ed9a26a7672f8354efc173e3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c32f98fc1b3de98592f8e7ceb43c17aa8a9049f7
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241332"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673445"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Łączenie funkcji platformy Azure z usługą Azure Storage przy użyciu kodu programu Visual Studio
 
@@ -52,9 +52,13 @@ W [poprzednim artykule szybki start](functions-create-first-function-vs-code.md)
 
 Ponieważ używasz powiązania danych wyjściowych magazynu kolejki, przed uruchomieniem projektu musi być zainstalowane rozszerzenie powiązania magazynu. 
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+Projekt został skonfigurowany do używania [pakietów rozszerzeń,](functions-bindings-register.md#extension-bundles)które automatycznie instalują wstępnie zdefiniowany zestaw pakietów rozszerzeń. 
+
+Pakiety rozszerzeń są włączone w pliku host.json w katalogu głównym projektu, który wygląda następująco:
+
+:::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
 ::: zone-end
 
@@ -74,7 +78,7 @@ Teraz można dodać powiązanie danych wyjściowych magazynu do projektu.
 
 W funkcji, każdy typ `direction`powiązania `type`wymaga , `name` i unikatowy do zdefiniowania w pliku function.json. Sposób definiowania tych atrybutów zależy od języka aplikacji funkcji.
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -83,6 +87,12 @@ W funkcji, każdy typ `direction`powiązania `type`wymaga , `name` i unikatowy d
 ::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+[!INCLUDE [functions-add-output-binding-java](../../includes/functions-add-output-binding-java.md)]
 
 ::: zone-end
 
@@ -111,8 +121,20 @@ Po zdefiniowaniu powiązania można użyć `name` powiązania, aby uzyskać do n
 ::: zone-end
 
 ::: zone pivot="programming-language-csharp"  
+
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+
 ::: zone-end  
+
+::: zone pivot="programming-language-java"  
+
+[!INCLUDE [functions-add-storage-binding-java-code](../../includes/functions-add-storage-binding-java-code.md)]
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end  
+
+<!--- Local testing section --->
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
@@ -127,6 +149,12 @@ Po zdefiniowaniu powiązania można użyć `name` powiązania, aby uzyskać do n
 ::: zone-end
 
 Nowa kolejka o nazwie **outqueue** jest tworzony na koncie magazynu przez środowisko uruchomieniowe functions, gdy po raz pierwszy używane jest powiązanie danych wyjściowych. Użyjesz Eksploratora magazynu, aby sprawdzić, czy kolejka została utworzona wraz z nową wiadomością.
+
+::: zone pivot="programming-language-java"  
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end
 
 ### <a name="connect-storage-explorer-to-your-account"></a>Łączenie Eksploratora usługi Storage z kontem
 

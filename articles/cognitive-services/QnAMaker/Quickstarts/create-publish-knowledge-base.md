@@ -3,12 +3,12 @@ title: 'Szybki start: tworzenie, szkolenie i publikowanie bazy wiedzy - QnA Make
 description: Na podstawie własnej zawartości, takiej jak często zadawane pytania lub podręczniki produktów, możesz utworzyć bazę wiedzy usługi QnA Maker. Ten artykuł zawiera przykład tworzenia bazy wiedzy QnA Maker na prostej stronie faq, aby odpowiedzieć na pytania QnA Maker.
 ms.topic: conceptual
 ms.date: 02/08/2020
-ms.openlocfilehash: b1f80006e2dc72b5b623f4c29c093c734dc1efea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220579"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756821"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Szybki start: tworzenie, szkolenie i publikowanie bazy wiedzy programu QnA Maker
 
@@ -135,7 +135,7 @@ Po wprowadzeniu zmian w bazie wiedzy i ponownemu opublikowaniu nie trzeba podejm
 
 ## <a name="what-did-you-accomplish"></a>Co udało ci się osiągnąć?
 
-Utworzono nową bazę wiedzy, dodano publiczny adres URL do bazy wiedzy, dodano własny zestaw QnA, przeszkolony, przetestowany i opublikowane bazy wiedzy.
+Utworzono nową bazę wiedzy, dodano publiczny adres URL do bazy wiedzy, dodano własną parę QnA, przeszkolony, przetestowany i opublikowane bazy wiedzy.
 
 Po opublikowaniu bazy wiedzy utworzono bota i przetestowano bota.
 

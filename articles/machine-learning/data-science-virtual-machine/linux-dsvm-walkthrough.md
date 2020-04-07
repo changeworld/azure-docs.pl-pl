@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 7292064a1df8aa9bfffcd9a19a03f7b332c0615e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 1298d5fe1d7407e836f454c2130a913dde6f8eec
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632729"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755148"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Analiza danych za pomocą maszyny wirtualnej do nauki o danych w systemie Linux na platformie Azure
 
@@ -39,7 +39,7 @@ Aby można było używać systemu DSVM systemu Linux, należy mieć następując
 Zestaw danych [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) to stosunkowo mały zestaw danych zawierający 4601 przykładów. Zestaw danych jest wygodny rozmiar do wykazania niektórych kluczowych funkcji DSVM, ponieważ utrzymuje skromne wymagania zasobów.
 
 > [!NOTE]
-> Ten instruktaż został utworzony przy użyciu D2 v2-rozmiar Linux DSVM (CentOS Edition). Ten rozmiar można użyć do wykonania procedur, które zostały zademonstrowane w tym instruktażu.
+> Ten instruktaż został utworzony przy użyciu D2 v2-rozmiar Linux DSVM (Ubuntu 18.04 Edition). Ten rozmiar można użyć do wykonania procedur, które zostały zademonstrowane w tym instruktażu.
 
 Jeśli potrzebujesz więcej miejsca, możesz utworzyć dodatkowe dyski i dołączyć je do dsvm. Dyski używają trwałego magazynu platformy Azure, więc ich dane są zachowywane, nawet jeśli serwer jest ponownie aprowiowany z powodu zmiany rozmiaru lub jest zamknięty. Aby dodać dysk i dołączyć go do maszyny DSVM, wykonaj czynności opisane w sekcji [Dodawanie dysku do maszyny Wirtualnej systemu Linux](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Kroki dodawania dysku użyj interfejsu wiersza polecenia platformy Azure, który jest już zainstalowany na dsvm. Kroki można wykonać całkowicie z samego DSVM. Inną opcją zwiększenia pamięci masowej jest użycie [usługi Azure Files](../../storage/files/storage-how-to-use-files-linux.md).
 

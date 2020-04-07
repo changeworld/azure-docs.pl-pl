@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 44d7b4196e53bfcc89105236e446c74d50e7812a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 0c30294f2ca139a602074a980810e7c6737c4e2d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633114"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742990"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Zabezpieczanie bazy danych w usłudze Azure Synapse
 
@@ -81,9 +81,9 @@ Konto administratora serwera, za pomocą którego nawiązujesz połączenie, jes
 
 Istnieją sposoby dalszego ograniczenia tego, co użytkownik może zrobić w bazie danych:
 
-* Szczegółowe uprawnienia umożliwiają kontrolowanie operacji, które można wykonywać na poszczególnych kolumnach, tabelach, widokach, [schematach,](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine?view=sql-server-ver15) procedurach i innych obiektach w bazie danych. Użyj szczegółowych uprawnień, aby mieć jak najwięcej kontroli i udzielić minimalnych niezbędnych uprawnień.
-* [Role bazy danych](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15) inne niż db_datareader i db_datawriter mogą służyć do tworzenia bardziej zaawansowanych kont użytkowników aplikacji lub mniej zaawansowanych kont zarządzania. Wbudowane role stałej bazy danych zapewniają łatwy sposób udzielania uprawnień, ale może spowodować przyznanie więcej uprawnień niż są to konieczne.
-* [Procedury składowane](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine?redirectedfrom=MSDN&view=sql-server-ver15) umożliwiają ograniczenie czynności wykonywanych w bazie danych.
+* Szczegółowe uprawnienia umożliwiają kontrolowanie operacji, które można wykonywać na poszczególnych kolumnach, tabelach, widokach, [schematach,](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) procedurach i innych obiektach w bazie danych. Użyj szczegółowych uprawnień, aby mieć jak najwięcej kontroli i udzielić minimalnych niezbędnych uprawnień.
+* [Role bazy danych](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) inne niż db_datareader i db_datawriter mogą służyć do tworzenia bardziej zaawansowanych kont użytkowników aplikacji lub mniej zaawansowanych kont zarządzania. Wbudowane role stałej bazy danych zapewniają łatwy sposób udzielania uprawnień, ale może spowodować przyznanie więcej uprawnień niż są to konieczne.
+* [Procedury składowane](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) umożliwiają ograniczenie czynności wykonywanych w bazie danych.
 
 Poniższy przykład udziela dostępu do odczytu do schematu zdefiniowanego przez użytkownika.
 
@@ -92,13 +92,13 @@ Poniższy przykład udziela dostępu do odczytu do schematu zdefiniowanego przez
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Zarządzanie bazami danych i serwerami logicznymi z witryny Azure portal lub przy użyciu interfejsu API usługi Azure Resource Manager jest kontrolowane przez przypisania ról konta użytkownika portalu. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach w witrynie Azure portal](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure).
+Zarządzanie bazami danych i serwerami logicznymi z witryny Azure portal lub przy użyciu interfejsu API usługi Azure Resource Manager jest kontrolowane przez przypisania ról konta użytkownika portalu. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach w witrynie Azure portal](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="encryption"></a>Szyfrowanie
 
 Transparent Data Encryption (TDE) pomaga chronić przed zagrożeniem złośliwą aktywnością, szyfrując i odszyfrowując dane w spoczynku. Podczas szyfrowania bazy danych skojarzone kopie zapasowe i pliki dziennika transakcji są szyfrowane bez konieczności żadnych zmian w aplikacjach. Technologia TDE szyfruje magazyn całej bazy danych przy użyciu klucza symetrycznego nazywanego kluczem szyfrowania bazy danych.
 
-W bazie danych SQL klucz szyfrowania bazy danych jest chroniony przez wbudowany certyfikat serwera. Wbudowany certyfikat serwera jest unikatowy dla każdego serwera bazy danych SQL. Firma Microsoft automatycznie obraca te certyfikaty co najmniej co 90 dni. Algorytm szyfrowania używany jest AES-256. Aby uzyskać ogólny opis TDE, zobacz [Przezroczyste szyfrowanie danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15).
+W bazie danych SQL klucz szyfrowania bazy danych jest chroniony przez wbudowany certyfikat serwera. Wbudowany certyfikat serwera jest unikatowy dla każdego serwera bazy danych SQL. Firma Microsoft automatycznie obraca te certyfikaty co najmniej co 90 dni. Algorytm szyfrowania używany jest AES-256. Aby uzyskać ogólny opis TDE, zobacz [Przezroczyste szyfrowanie danych](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 Bazę danych można zaszyfrować za pomocą [portalu Azure](sql-data-warehouse-encryption-tde.md) lub [T-SQL](sql-data-warehouse-encryption-tde-tsql.md).
 

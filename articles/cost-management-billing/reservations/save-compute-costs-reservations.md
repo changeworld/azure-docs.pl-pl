@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 6277a7e7dc5891a3bc67c298a31344284c92e31d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 97bd03fb2aa8f5b486ef87a04f260fec43eb81bd
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235636"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396694"
 ---
 # <a name="what-are-azure-reservations"></a>Co to jest Azure Reservations?
 
@@ -20,7 +20,7 @@ Rezerwacje platformy Azure pomagają zaoszczędzić pieniądze dzięki rocznym l
 
 Za rezerwację można zapłacić z góry lub w miesięcznych ratach. Łączny koszt rezerwacji w przypadku płatności z góry i miesięcznych rat jest taki sam, a wybór płatności miesięcznych nie pociąga za sobą dodatkowych opłat. Opcja płatności miesięcznych jest dostępna w przypadku rezerwacji platformy Azure, a nie produktów innych firm.
 
-Rezerwację można kupić w witrynie [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
+Rezerwację można kupić w witrynie Azure Portal pod adresem [https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
 ## <a name="why-buy-a-reservation"></a>Dlaczego warto kupić rezerwację?
 
@@ -34,6 +34,48 @@ Aby uzyskać więcej informacji na temat sposobu stosowania rabatu, zobacz [Stos
 
 Aby uzyskać więcej informacji o tym, jak działa zakres rezerwacji, zobacz [Określanie zakresu rezerwacji](prepare-buy-reservation.md#scope-reservations).
 
+## <a name="determine-what-to-purchase"></a>Określanie, co kupić 
+
+Wszystkie rezerwacje, z wyjątkiem usługi Azure Databricks, są stosowane godzinowo. Rozważaj zakupy rezerwacji na podstawie swojego stałego użycia podstawowego. Rezerwację do zakupu możesz określić, analizując dane użycia lub używając rekomendacji dotyczących rezerwacji. Rekomendacje są dostępne w:
+
+- usłudze Azure Advisor (tylko maszyny wirtualne)
+- środowisku zakupu rezerwacji w witrynie Azure Portal
+- aplikacji Cost Management w usłudze Power BI
+- Interfejsy API 
+
+Aby uzyskać więcej informacji, zobacz  [Określanie rezerwacji do zakupu](determine-reservation-purchase.md) 
+
+## <a name="buying-a-reservation"></a>Kupowanie rezerwacji 
+
+Rezerwacje można kupić w witrynie Azure Portal, za pomocą interfejsów API, programu PowerShell i interfejsu wiersza polecenia. 
+
+Przejdź do witryny Azure Portal, aby dokonać zakupu (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) 
+
+Aby uzyskać więcej informacji, zobacz  [Kupowanie rezerwacji](prepare-buy-reservation.md) 
+
+## <a name="how-is-a-reservation-billed"></a>Jak jest rozliczana rezerwacja? 
+
+Kosztem rezerwacji jest obciążana forma płatności powiązana z subskrypcją. Koszt rezerwacji jest odejmowany od salda zobowiązania pieniężnego, jeśli jest dostępne. Gdy saldo zobowiązania pieniężnego nie pokrywa kosztu rezerwacji, są naliczane opłaty za użycie nadwyżkowe. Jeśli masz subskrypcję z planu indywidualnego z płatnością zgodnie z rzeczywistym użyciem, karta kredytowa powiązana z kontem jest obciążana natychmiast w przypadku zakupów płatnych z góry. Płatności miesięczne są widoczne na fakturze, a karta kredytowa jest obciążana co miesiąc. W przypadku rozliczania z użyciem faktury opłaty pojawią się na następnej fakturze. 
+
+## <a name="permissions-to-view-and-manage-reservations"></a>Uprawnienia do wyświetlania rezerwacji i zarządzania nimi 
+
+Użytkownik, który kupił rezerwację, i administrator konta subskrypcji używanej do rozliczania rezerwacji uzyskują rolę właściciela dla zamówienia rezerwacji i rezerwacji.
+
+Zarządzanie rezerwacją możesz delegować, dodając osoby do ról w rezerwacji lub zamówieniu rezerwacji. Role są przypisywane w witrynie Azure Portal przy użyciu interfejsów API i programu PowerShell. 
+
+Aby uzyskać więcej informacji, zobacz  [Dodawanie lub zmienianie użytkowników, którzy mogą zarządzać rezerwacją](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation) 
+
+## <a name="get-reservation-details-and-utilization-after-purchase"></a>Pobierz szczegóły i wykorzystanie rezerwacji po zakupie
+
+Jeśli masz uprawnienie do wyświetlania rezerwacji, możesz zobaczyć ją i jej użycie w witrynie Azure Portal. Dane możesz też pobrać przy użyciu interfejsów API. 
+
+Aby uzyskać więcej informacji na temat sposobu wyświetlania rezerwacji w witrynie Azure Portal, zobacz  [Wyświetlanie rezerwacji w witrynie Azure Portal](view-reservations.md) 
+
+## <a name="manage-reservations-after-purchase"></a>Zarządzanie rezerwacjami po zakupie 
+
+Po zakupieniu rezerwacji platformy Azure możesz zaktualizować zakres, aby zastosować rezerwację do innej subskrypcji, zmienić osoby zarządzające rezerwacją, podzielić rezerwację na mniejsze części lub zmienić elastyczność rozmiaru wystąpienia. 
+
+Aby uzyskać więcej informacji, zobacz  [Zarządzanie rezerwacjami zasobów platformy Azure](manage-reserved-vm-instance.md) 
 
 ## <a name="flexibility-with-azure-reservations"></a>Elastyczność dzięki rezerwacjom platformy Azure
 
@@ -54,7 +96,7 @@ Aby uzyskać więcej informacji, zobacz temat [Self-service exchanges and refund
 - **Azure Database for MySQL** — w rezerwacji są uwzględniane tylko koszty obliczeń. Rezerwacja nie obejmuje opłat za oprogramowanie, sieć ani magazyn związane z serwerem bazy danych MySQL.
 - **Azure Database for PostgreSQL** — w rezerwacji są uwzględniane tylko koszty obliczeń. Rezerwacja nie obejmuje opłat za oprogramowanie, sieć ani magazyn związane z serwerami bazy danych PostgreSQL.
 - **Azure Database for MariaDB** — w rezerwacji są uwzględniane tylko koszty obliczeń. Rezerwacja nie obejmuje opłat za oprogramowanie, sieć ani magazyn związane z serwerem bazy danych MariaDB.
-- **Azure Data Explorer** — rezerwacja obejmuje opłaty za znaczniki. Rezerwacja nie obejmuje opłat za obliczenia, sieć ani magazyn związane z klastrami.
+- **Azure Data Explorer** — rezerwacja obejmuje opłaty za znaczniki. Rezerwacja nie dotyczy opłat za zasoby obliczeniowe, sieć ani magazyn związane z klastrami.
 - **Azure Cache for Redis** — w rezerwacji są uwzględniane tylko koszty obliczeń. Rezerwacja nie obejmuje opłat za sieć ani magazyn związanych z wystąpieniami pamięci podręcznej Redis Cache.
 - **Azure Dedicated Host** — host dedykowany obejmuje tylko koszty obliczeń.
 - **Rezerwacje usługi Azure Disk Storage** — rezerwacja obejmuje tylko dyski SSD w warstwie Premium o rozmiarze P30 lub większym. Nie obejmuje żadnych innych typów dysków ani rozmiarów mniejszych niż P30.
