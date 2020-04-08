@@ -130,7 +130,7 @@
               href: ./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md
         - name: Szczegółowe informacje o sprzedawcy
           items:
-            - name: Wprowadzenie
+            - name: Getting Started
               href: ./cloud-partner-portal-orig/si-getting-started.md
             - name: Co nowego
               href: ./cloud-partner-portal-orig/si-changes.md
@@ -453,6 +453,12 @@
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: Interfejs API do dołączania
               href: ./partner-center-portal/azure-app-apis.md
+        - name: Usługi konsultingowe
+          items:
+            - name: Wymagania wstępne
+              href: ./partner-center-portal/consulting-service-prerequisites.md
+            - name: Tworzenie oferty usługi konsultingowej
+              href: ./partner-center-portal/create-consulting-service-offer.md
         - name: Oferty Dynamics 365
           items:
             - name: Tworzenie oferty Dynamics 365 for Customer Engagement & PowerApps
@@ -461,6 +467,22 @@
               href: ./partner-center-portal/create-new-operations-offer.md
             - name: Tworzenie oferty Dynamics 365 Business Central
               href: ./partner-center-portal/create-new-business-central-offer.md
+        - name: Oferty modułu usługi IoT Edge
+          items:
+            - name: Przygotowywanie zasobów technicznych dla modułu usługi IoT Edge
+              href: ./partner-center-portal/create-iot-edge-module-asset.md
+            - name: Tworzenie oferty modułu usługi IoT Edge
+              href: ./partner-center-portal/azure-iot-edge-module-creation.md
+        - name: Oferty usługi zarządzanej
+          items:
+            - name: Tworzenie oferty usługi zarządzanej
+              href: ./partner-center-portal/create-new-managed-service-offer.md
+        - name: Oferty aplikacji Power BI
+          items:
+            - name: Omówienie publikowania
+              href: ./partner-center-portal/create-power-bi-app-overview.md
+            - name: Tworzenie oferty aplikacji Power BI
+              href: ./partner-center-portal/create-power-bi-app-offer.md
         - name: Oferty SaaS
           items:
             - name: Lista kontrolna tworzenia oferty SaaS

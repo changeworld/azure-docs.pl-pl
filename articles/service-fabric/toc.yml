@@ -366,7 +366,7 @@
           href: service-fabric-get-started.md
         - name: Linux
           href: service-fabric-get-started-linux.md
-        - name: Mac OS
+        - name: macOS
           href: service-fabric-get-started-mac.md
         - name: Konfigurowanie interfejsu wiersza polecenia usługi Service Fabric
           href: service-fabric-cli.md
@@ -675,6 +675,8 @@
                   href: service-fabric-cluster-security-update-certs-azure.md
                 - name: Łączenie się zdalne z maszyną wirtualną węzła klastra
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+                - name: Uaktualnianie węzłów klastra w celu używania dysków zarządzanych
+                  href: upgrade-managed-disks.md
         - name: Klastry autonomiczne
           items:
             - name: Utwórz

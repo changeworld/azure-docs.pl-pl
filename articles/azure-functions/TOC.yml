@@ -22,8 +22,6 @@
           href: functions-create-your-first-function-visual-studio.md
         - name: Wiersz polecenia
           href: functions-create-first-azure-function-azure-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-create-first-java-maven.md
     - name: Łączenie z magazynem
       items:
         - name: Visual Studio Code
@@ -32,8 +30,6 @@
           href: functions-add-output-binding-storage-queue-vs.md
         - name: Wiersz polecenia
           href: functions-add-output-binding-storage-queue-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-add-output-binding-storage-queue-java.md
 - name: Samouczki
   items:
     - name: Funkcje z aplikacjami logiki
@@ -175,10 +171,16 @@
                   href: create-visual-studio.md
                 - name: Visual Studio Code
                   href: create-visual-studio-code.md
+                - name: Języka Java w środowisku Gradle
+                  href: functions-create-first-java-gradle.md
                 - name: Język Java w środowisku Eclipse
                   href: functions-create-maven-eclipse.md
                 - name: Język Java w środowisku IntelliJ IDEA
                   href: functions-create-maven-intellij.md
+                - name: Język Kotlin w środowisku Maven
+                  href: functions-create-first-kotlin-maven.md
+                - name: Język Kotlin w środowisku IntelliJ
+                  href: functions-create-maven-kotlin-intellij.md
                 - name: Plan usługi App Service w systemie Linux
                   href: create-function-app-linux-app-service-plan.md
                 - name: Plan Zużycie w systemie Linux
@@ -205,6 +207,8 @@
               href: add-output-binding-storage-queue-vs-code.md
             - name: Magazyn — Visual Studio
               href: add-output-binding-storage-queue-vs.md
+            - name: Magazyn — Java/Gradle
+              href: functions-add-output-binding-storage-queue-java.md
         - name: Debugowanie i testowanie
           items:
             - name: Testowanie funkcji

@@ -1,0 +1,6 @@
+- name: Azure Remote Rendering — informacje
+  href: about.md
+- name: Wymagania systemowe
+  href: system-requirements.md
+- name: Funkcje
+  href: features/toc.yml

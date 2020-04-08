@@ -21,8 +21,10 @@
   items:
     - name: Łączenie się
       items:
-        - name: Łączenie urządzenia
-          href: tutorial-connect-device.md
+        - name: Łączenie urządzenia (Node.js)
+          href: tutorial-connect-device-nodejs.md
+        - name: Łączenie urządzenia (Python)
+          href: tutorial-connect-device-python.md
         - name: Łączenie urządzenia Plug and Play (wersja zapoznawcza)
           href: tutorial-connect-pnp-device.md
         - name: Tworzenie szablonu urządzenia bramy

@@ -83,7 +83,7 @@
         - name: 3 — Tworzenie potoku
           displayName: Devop
           href: deployment-tutorial-pipeline.md
-    - name: Zaawansowane
+    - name: Szablony zaawansowane
       items:
         - name: Dokumentacja dotycząca korzystania z szablonów
           href: template-tutorial-use-template-reference.md
@@ -101,23 +101,21 @@
         - name: Integrowanie usługi Key Vault
           displayName: secrets
           href: template-tutorial-use-key-vault.md
-        - name: Tworzenie połączonych szablonów
-          href: template-tutorial-create-linked-templates.md
         - name: Wdrażanie rozszerzeń maszyn wirtualnych
           displayName: virtual machine extensions
           href: template-tutorial-deploy-vm-extensions.md
         - name: Wdrażanie rozszerzeń SQL
           href: template-tutorial-deploy-sql-extensions-bacpac.md
-        - name: Artefakty zabezpieczeń
-          href: template-tutorial-secure-artifacts.md
+        - name: Rozwiązywanie problemów z wdrażaniem szablonu
+          href: template-tutorial-troubleshoot.md
+    - name: Menedżer wdrożenia
+      items:
         - name: Korzystanie z praktyk bezpiecznego wdrażania
           displayName: adm
           href: deployment-manager-tutorial.md
         - name: Używanie kontroli kondycji w usłudze Deployment Manager
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-        - name: Rozwiązywanie problemów z wdrażaniem szablonu
-          href: template-tutorial-troubleshoot.md
 - name: Samples
   items:
     - name: Szablony przewodników Szybki start platformy Azure
