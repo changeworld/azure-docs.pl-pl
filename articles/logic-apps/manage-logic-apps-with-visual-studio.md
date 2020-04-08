@@ -7,16 +7,18 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
-ms.openlocfilehash: 6319d2d72df69cc9633bd2b2ff8e777c2a48966a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73df5b7f10e038b6894996eb83dec7b6914a4536
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270253"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803194"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Zarządzanie aplikacjami logiki w programie Visual Studio
 
 Chociaż można tworzyć, edytować, zarządzać i wdrażać aplikacje logiki w [witrynie Azure Portal,](https://portal.azure.com)można również użyć programu Visual Studio, jeśli chcesz dodać aplikacje logiki do kontroli źródła, publikować różne wersje i tworzyć szablony [usługi Azure Resource Manager](../azure-resource-manager/management/overview.md) dla różnych środowisk wdrażania. Za pomocą programu Visual Studio Cloud Explorer można znaleźć aplikacje logiki i zarządzać nimi wraz z innymi zasobami platformy Azure. Na przykład można otwierać, pobierać, edytować, uruchamiać, wyświetlać historię uruchamiania, wyłączać i włączać aplikacje logiki, które są już wdrożone w witrynie Azure Portal. Jeśli jesteś nowy w pracy z usługi Azure Logic Apps w programie Visual Studio, dowiedz się, [jak tworzyć aplikacje logiki za pomocą programu Visual Studio.](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+
+Można również [zarządzać aplikacjami logiki w witrynie Azure portal](manage-logic-apps-with-azure-portal.md).
 
 > [!IMPORTANT]
 > Wdrażanie lub publikowanie aplikacji logiki z programu Visual Studio zastępuje wersję tej aplikacji w witrynie Azure Portal. Jeśli więc wprowadzać zmiany w witrynie Azure portal, które chcesz zachować, upewnij się, że [odświeżyć aplikację logiki w programie Visual Studio](#refresh) z witryny Azure portal przed następnym wdrożeniem lub opublikowaniem z programu Visual Studio.

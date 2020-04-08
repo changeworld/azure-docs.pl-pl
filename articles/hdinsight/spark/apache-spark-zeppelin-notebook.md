@@ -7,22 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/18/2020
-ms.openlocfilehash: e313048986beca1991e38ce2e65ea12f954170d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.openlocfilehash: 3c1369e813ba6518f6cd4b27082020ae36a24c82
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598276"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811203"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Korzystanie z notesów Apache Zeppelin z klastrem Apache Spark w usłudze Azure HDInsight
 
-Klastry platformy SPARK usługi HDInsight obejmują notesy [Apache Zeppelin,](https://zeppelin.apache.org/) których można używać do uruchamiania zadań [Platformy Apache Spark.](https://spark.apache.org/) W tym artykule dowiesz się, jak używać notesu Zeppelin w klastrze HDInsight.
+Klastry HDInsight Spark obejmują notebooki [Apache Zeppelin.](https://zeppelin.apache.org/) Użyj notesów, aby uruchamiać zadania [programu Apache Spark.](https://spark.apache.org/) W tym artykule dowiesz się, jak używać notesu Zeppelin w klastrze HDInsight.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Schemat identyfikatorów URI dla magazynu podstawowego klastrów. Byłoby to `wasb://` dla usługi Azure `abfs://` Blob Storage, dla `adl://` usługi Azure Data Lake Storage Gen2 lub dla usługi Azure Data Lake Storage Gen1. Jeśli bezpieczny transfer jest włączony dla magazynu obiektów `wasbs://`blob, identyfikator URI będzie .  Aby uzyskać więcej informacji, zobacz [Wymaganie bezpiecznego transferu w usłudze Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
+* Schemat identyfikatorów URI dla magazynu podstawowego klastrów. Schemat będzie `wasb://` dla usługi Azure `abfs://` Blob Storage, dla `adl://` usługi Azure Data Lake Storage Gen2 lub azure data lake storage gen1. Jeśli bezpieczny transfer jest włączony dla magazynu obiektów `wasbs://`blob, identyfikator URI będzie .  Aby uzyskać więcej informacji, zobacz [Wymaganie bezpiecznego transferu w usłudze Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Uruchamianie notebooka Apache Zeppelin
 
@@ -80,7 +80,7 @@ Klastry platformy SPARK usługi HDInsight obejmują notesy [Apache Zeppelin,](ht
     > [!NOTE]  
     > Interpreter %spark2 nie jest obsługiwany w notesach zeppelin we wszystkich wersjach programu HDInsight, a interpreter %sh nie będzie obsługiwany od programu HDInsight 4.0.
 
-5. Teraz można uruchomić instrukcje `hvac` PROGRAMU SPARK SQL w tabeli. Wklej następującą kwerendę w nowym akapicie. Kwerenda pobiera identyfikator budynku i różnicę między wartością docelową a rzeczywistą temperaturą dla każdego budynku w danym dniu. Naciśnij **klawisz SHIFT + ENTER**.
+5. Teraz można uruchomić instrukcje `hvac` PROGRAMU SPARK SQL w tabeli. Wklej następującą kwerendę w nowym akapicie. Kwerenda pobiera identyfikator budynku. Również różnica między wartością docelową a rzeczywistą temperaturą dla każdego budynku w danym dniu. Naciśnij **klawisz SHIFT + ENTER**.
 
     ```sql
     %sql
@@ -89,7 +89,7 @@ Klastry platformy SPARK usługi HDInsight obejmują notesy [Apache Zeppelin,](ht
 
     Instrukcja **%sql** na początku informuje notes o użyciu interpretera Livy Scala.
 
-6. Wybierz ikonę **Wykres słupkowy,** aby zmienić wyświetlanie.  **ustawienia**, które pojawiają się po **wybraniu wykresu słupkowego,** umożliwia **wybranie opcji Klawisze**i **Wartości**.  Poniższy zrzut ekranu przedstawia dane wyjściowe.
+6. Wybierz ikonę **Wykres słupkowy,** aby zmienić wyświetlanie.  **ustawienia**, pojawiają się po **wybraniu wykresu słupkowego,** umożliwia **wybranie opcji Klawisze**i **Wartości**.  Poniższy zrzut ekranu przedstawia dane wyjściowe.
 
     ![Uruchamianie instrukcji SQL platformy Spark przy użyciu notesu1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Uruchamianie instrukcji SQL platformy Spark przy użyciu notesu1")
 
@@ -113,7 +113,7 @@ Klastry platformy SPARK usługi HDInsight obejmują notesy [Apache Zeppelin,](ht
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Jak używać pakietów zewnętrznych z notebookiem?
 
-Notes zeppelin w klastrze Apache Spark można skonfigurować w programie HDInsight, aby używać zewnętrznych pakietów współtworzonych przez społeczność, które nie są zawierane w klastrze. Pełną listę pakietów, które są dostępne, można przeszukać [repozytorium Maven.](https://search.maven.org/) Można również uzyskać listę dostępnych pakietów z innych źródeł. Na przykład pełna lista pakietów udostępnionych przez społeczność jest dostępna w [pakietach Spark Packages.](https://spark-packages.org/)
+Notes zeppelin w klastrze Apache Spark w programie HDInsight może używać zewnętrznych pakietów współtworzonych przez społeczność, które nie są uwzględnione w klastrze. Wyszukaj w [repozytorium Maven](https://search.maven.org/) pełną listę pakietów, które są dostępne. Można również uzyskać listę dostępnych pakietów z innych źródeł. Na przykład pełna lista pakietów udostępnionych przez społeczność jest dostępna w [pakietach Spark Packages.](https://spark-packages.org/)
 
 W tym artykule dowiesz się, jak używać pakietu [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) z notesem Jupyter.
 
@@ -149,14 +149,15 @@ Notesy Zeppelin są zapisywane w węzłach głównych klastra. Tak więc, jeśli
 
 ![Pobierz notes](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "Pobierz notes")
 
-Spowoduje to zapisanie notesu jako pliku JSON w lokalizacji pobierania.
+Ta akcja zapisuje notes jako plik JSON w lokalizacji pobierania.
 
-## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Użyj shiro, aby skonfigurować dostęp do interpreterów Zeppelin w klastrach pakietów zabezpieczeń przedsiębiorstwa (ESP)
-Jak wspomniano powyżej, `%sh` tłumacz nie jest obsługiwany od hdinsight 4.0. Ponadto, ponieważ `%sh` interpreter wprowadza potencjalne problemy z zabezpieczeniami, takie jak klucze dostępu przy użyciu poleceń powłoki, został on usunięty z klastrów USŁUGI HDInsight 3.6 ESP. Oznacza `%sh` to, że interpreter nie jest dostępny po kliknięciu **przycisku Utwórz nową notatkę** lub domyślnie w interfejsie użytkownika interpretera. 
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Służy `Shiro` do konfigurowania dostępu do interpreterów zeppelin w klastrach pakietów zabezpieczeń przedsiębiorstwa (ESP)
 
-Użytkownicy domeny uprzywilejowanej `Shiro.ini` mogą korzystać z pliku, aby kontrolować dostęp do interfejsu użytkownika interpretera. W związku z tym `%sh` tylko ci użytkownicy mogą `%sh` tworzyć nowe interpretery i ustawiać uprawnienia dla każdego nowego interpretera. Aby kontrolować dostęp `shiro.ini` za pomocą pliku, należy wykonać następujące czynności:
+Jak wspomniano powyżej, `%sh` interpreter nie jest obsługiwany od hdinsight 4.0. Ponadto, ponieważ `%sh` interpreter wprowadza potencjalne problemy z zabezpieczeniami, takie jak klucze dostępu przy użyciu poleceń powłoki, został on usunięty z klastrów USŁUGI HDInsight 3.6 ESP. Oznacza `%sh` to, że interpreter nie jest dostępny po kliknięciu **przycisku Utwórz nową notatkę** lub domyślnie w interfejsie użytkownika interpretera.
 
-1. Zdefiniuj nową rolę przy użyciu istniejącej nazwy grupy domen. W poniższym `adminGroupName` przykładzie jest grupa uprzywilejowanych użytkowników w UAD. Nie należy używać znaków specjalnych ani spacji w nazwie grupy. Znaki po `=` nadać uprawnienia dla tej roli. `*`oznacza, że grupa ma pełne uprawnienia.
+Użytkownicy domeny uprzywilejowanej `Shiro.ini` mogą używać tego pliku do kontrolowania dostępu do interfejsu użytkownika interpretera. Tylko ci użytkownicy `%sh` mogą tworzyć nowe interpretatory `%sh` i ustawiać uprawnienia dla każdego nowego interpretera. Aby kontrolować dostęp `shiro.ini` za pomocą pliku, należy wykonać następujące czynności:
+
+1. Zdefiniuj nową rolę przy użyciu istniejącej nazwy grupy domen. W poniższym `adminGroupName` przykładzie jest grupa uprzywilejowanych użytkowników w UAD. Nie używaj znaków specjalnych ani spacji w nazwie grupy. Znaki po `=` nadać uprawnienia dla tej roli. `*`oznacza, że grupa ma pełne uprawnienia.
 
     ```
     [roles]
@@ -172,9 +173,9 @@ Użytkownicy domeny uprzywilejowanej `Shiro.ini` mogą korzystać z pliku, aby k
 
 ## <a name="livy-session-management"></a>Zarządzanie sesjami Livy
 
-Po uruchomieniu pierwszego akapitu kodu w notesie Zeppelin w klastrze platformy HDInsight Spark zostanie utworzona nowa sesja Livy. Ta sesja jest współużytkowana we wszystkich notesach zeppelin, które następnie tworzysz. Jeśli z jakiegoś powodu sesja Livy zostanie zabita (ponowne uruchomienie klastra itd.), nie będzie można uruchamiać zadań z notesu Zeppelin.
+Pierwszy akapit kodu w notesie Zeppelin tworzy nową sesję Livy w klastrze. Ta sesja jest współużytkowana we wszystkich notesach zeppelin, które później tworzysz. Jeśli sesja Livy zostanie zabita z jakiegokolwiek powodu, zadania nie będą uruchamiane z notesu Zeppelin.
 
-W takim przypadku należy wykonać następujące kroki, aby można było rozpocząć uruchamianie zadań z notesu zeppelin.  
+W takim przypadku należy wykonać następujące kroki, aby rozpocząć uruchamianie zadań z notesu Zeppelin.  
 
 1. Uruchom ponownie tłumacza Livy z notesu Zeppelin. Aby to zrobić, otwórz ustawienia tłumacza, wybierając zalogowaną nazwę użytkownika w prawym górnym rogu, a następnie wybierz **interpreter**.
 
@@ -184,7 +185,7 @@ W takim przypadku należy wykonać następujące kroki, aby można było rozpocz
 
     ![Ponowne uruchamianie interpretera Livy](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Ponowne uruchamianie tłumacza zeppelin")
 
-3. Uruchom komórkę kodu z istniejącego notesu Zeppelin. Spowoduje to utworzenie nowej sesji Livy w klastrze HDInsight.
+3. Uruchom komórkę kodu z istniejącego notesu Zeppelin. Ten kod tworzy nową sesję Livy w klastrze HDInsight.
 
 ## <a name="general-information"></a>Informacje ogólne
 
@@ -206,7 +207,7 @@ Aby sprawdzić poprawność usługi z wiersza polecenia, SSH do węzła główne
 |---|---|
 |zeppelin-serwer|/usr/hdp/current/zeppelin-server/|
 |Dzienniki serwera|/var/log/zeppelin|
-|Interpreter konfiguracji, Shiro, site.xml, log4j|/usr/hdp/current/zeppelin-server/conf or /etc/zeppelin/conf|
+|Interpreter konfiguracji, `Shiro`, site.xml, log4j|/usr/hdp/current/zeppelin-server/conf or /etc/zeppelin/conf|
 |Katalog PID|/var/run/zeppelin|
 
 ### <a name="enable-debug-logging"></a>Włączanie rejestrowania debugowania
@@ -227,7 +228,7 @@ Aby sprawdzić poprawność usługi z wiersza polecenia, SSH do węzła główne
 
 ### <a name="scenarios"></a>Scenariusze
 
-* [Apache Spark z analizą biznesową: wykonywanie interaktywnej analizy danych przy użyciu funkcji Spark w funkcji HDInsight za pomocą narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
+* [Apache Spark z analizą danych BI: Interaktywna analiza danych przy użyciu platformy Spark w funkcji HDInsight za pomocą narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
 * [Apache Spark z uczeniem maszynowym: użyj platformy Spark w hdinsight do analizowania temperatury budynku przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark z uczeniem maszynowym: użyj iskry w hdinsight, aby przewidzieć wyniki inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
 * [Analiza dziennika strony internetowej przy użyciu platformy Apache Spark w hdinsight](apache-spark-custom-library-website-log-analysis.md)

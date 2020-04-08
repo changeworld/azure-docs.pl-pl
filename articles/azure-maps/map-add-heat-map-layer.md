@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19765bd28f365cc6f6d5b06646896613dd3e3e87
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77208543"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804558"
 ---
 # <a name="add-a-heat-map-layer"></a>Dodawanie warstwy mapy cieplnej
 
@@ -98,11 +98,11 @@ Domyślnie promienie punktów danych renderowanych w warstwie mapy cieplnej maj�
 
 Użyj `zoom` wyrażenia, aby skalować promień dla każdego poziomu powiększenia, tak aby każdy punkt danych obejmował ten sam obszar fizyczny mapy. To wyrażenie sprawia, że warstwa mapy ciepła wygląda bardziej statycznie i spójnie. Każdy poziom powiększenia mapy ma dwa razy więcej pikseli w pionie i poziomie niż poprzedni poziom powiększenia. 
 
-Skalowanie promienia tak, aby podwajał się przy każdym poziomie powiększenia, tworzy mapę cieplną, która wygląda spójnie na wszystkich poziomach powiększenia. Aby zastosować to skalowanie, należy `zoom` `exponential interpolation` użyć wyrażenia podstawowego 2, jak pokazano w poniższym przykładzie. Powiększ mapę, aby zobaczyć, jak mapa ciepła jest skalowana z poziomem powiększenia.
+Skalowanie promienia tak, aby podwajał się przy każdym poziomie powiększenia, tworzy mapę cieplną, która wygląda spójnie na wszystkich poziomach powiększenia. Aby zastosować tę skalę, należy `zoom` `exponential interpolation` użyć wyrażenia bazowego 2, z promieniem pikseli ustawionym dla minimalnego `2 * Math.pow(2, minZoom - maxZoom)` poziomu powiększenia i skalowanym promieniem dla maksymalnego poziomu powiększenia obliczonego, jak pokazano w poniższej próbce. Powiększ mapę, aby zobaczyć, jak mapa ciepła jest skalowana z poziomem powiększenia.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Spójna mapa cieplna z zoomem" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Spójna mapa cieplna z zoomem" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zobacz <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>mapę cieplną</a> z funkcją<a href='https://codepen.io/azuremaps'>@azuremaps</a>Pen Consistent według usługi Azure Maps ( ) na <a href='https://codepen.io'>funkcji CodePen</a>.
 </iframe>
 

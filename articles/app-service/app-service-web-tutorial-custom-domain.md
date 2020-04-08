@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/06/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2e62062fabfbb7c320bbeaf473979ccef96b0ba3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: adc9b60ce1c31076a91ec44b9656752b464e024d
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80047210"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811784"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Samouczek: Mapowanie istniejącej niestandardowej nazwy DNS na usługę Azure App Service
 
@@ -151,7 +151,7 @@ Może upłynąć trochę czasu, aby nowa domena niestandardowa została odzwierc
 ![Dodany rekord CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> Etykieta **Nie bezpieczny** dla domeny niestandardowej oznacza, że nie jest jeszcze powiązana z certyfikatem SSL, a każde żądanie HTTPS od przeglądarki do domeny niestandardowej zostanie odebrane, a błąd lub ostrzeżenie, w zależności od przeglądarki. Aby dodać powiązanie SSL, zobacz [Zabezpieczanie niestandardowej nazwy DNS za pomocą powiązania SSL w usłudze Azure App Service](configure-ssl-bindings.md).
+> Etykieta **Nie bezpieczny** dla domeny niestandardowej oznacza, że nie jest jeszcze powiązana z certyfikatem TLS/SSL, a każde żądanie HTTPS od przeglądarki do domeny niestandardowej zostanie odebrane, a błąd lub ostrzeżenie, w zależności od przeglądarki. Aby dodać powiązanie TLS, zobacz [Zabezpieczanie niestandardowej nazwy DNS za pomocą powiązania TLS/SSL w usłudze Azure App Service](configure-ssl-bindings.md).
 
 Jeśli pominięto jakiś krok lub popełniono gdzieś błąd w pisowni, w dolnej części strony zostanie wyświetlony komunikat o błędzie weryfikacji.
 
@@ -235,7 +235,7 @@ Może upłynąć trochę czasu, aby nowa domena niestandardowa została odzwierc
 ![Dodany rekord A](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> Etykieta **Nie bezpieczny** dla domeny niestandardowej oznacza, że nie jest jeszcze powiązana z certyfikatem SSL, a każde żądanie HTTPS od przeglądarki do domeny niestandardowej zostanie odebrane, a błąd lub ostrzeżenie, w zależności od przeglądarki. Aby dodać powiązanie SSL, zobacz [Zabezpieczanie niestandardowej nazwy DNS za pomocą powiązania SSL w usłudze Azure App Service](configure-ssl-bindings.md).
+> Etykieta **Nie bezpieczny** dla domeny niestandardowej oznacza, że nie jest jeszcze powiązana z certyfikatem TLS/SSL, a każde żądanie HTTPS od przeglądarki do domeny niestandardowej zostanie odebrane, a błąd lub ostrzeżenie, w zależności od przeglądarki. Aby dodać powiązanie TLS, zobacz [Zabezpieczanie niestandardowej nazwy DNS za pomocą powiązania TLS/SSL w usłudze Azure App Service](configure-ssl-bindings.md).
 
 Jeśli pominięto jakiś krok lub popełniono gdzieś błąd w pisowni, w dolnej części strony zostanie wyświetlony komunikat o błędzie weryfikacji.
 
@@ -290,7 +290,7 @@ Ponownie **+** wybierz ikonę, aby dodać inną domenę niestandardową, która 
 ![Dodany rekord CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> Etykieta **Note Secure** dla domeny niestandardowej oznacza, że nie jest jeszcze powiązana z certyfikatem SSL, a każde żądanie HTTPS od przeglądarki do domeny niestandardowej zostanie odebrane, a błąd lub ostrzeżenie, w zależności od przeglądarki. Aby dodać powiązanie SSL, zobacz [Zabezpieczanie niestandardowej nazwy DNS za pomocą powiązania SSL w usłudze Azure App Service](configure-ssl-bindings.md).
+> Etykieta **Note Secure** dla domeny niestandardowej oznacza, że nie jest jeszcze powiązana z certyfikatem TLS/SSL, a każde żądanie HTTPS od przeglądarki do domeny niestandardowej zostanie odebrane, a błąd lub ostrzeżenie, w zależności od przeglądarki. Aby dodać powiązanie TLS, zobacz [Zabezpieczanie niestandardowej nazwy DNS za pomocą powiązania TLS/SSL w usłudze Azure App Service](configure-ssl-bindings.md).
 
 ## <a name="test-in-browser"></a>Testowanie w przeglądarce
 
@@ -366,7 +366,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Przekierowywanie domyślnego adresu URL do katalogu niestandardowego
 > * Automatyzacja mapowania domen przy użyciu skryptów
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak powiązać niestandardowy certyfikat SSL z aplikacją internetową.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak powiązać niestandardowy certyfikat TLS/SSL z aplikacją sieci web.
 
 > [!div class="nextstepaction"]
-> [Zabezpieczanie niestandardowej nazwy DNS przy użyciu powiązania SSL w usłudze Azure App Service](configure-ssl-bindings.md)
+> [Zabezpiecz niestandardową nazwę DNS za pomocą powiązania TLS/SSL w usłudze Azure App Service](configure-ssl-bindings.md)

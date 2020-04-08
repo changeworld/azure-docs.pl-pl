@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6754393bdeabcd67dcf6514102e3c825a26fc3e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 878960738830dbe2f94b977e98215a681c4a79d2
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239084"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802556"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Samouczek: ręczne konfigurowanie urządzeń dołączonych hybrydowo do usługi Azure Active Directory
 
@@ -85,7 +85,7 @@ Skorzystaj z poniższej tabeli, aby uzyskać przegląd kroków wymaganych dla da
 | Konfigurowanie punktu połączenia usługi | ![Zaznacz][1] | ![Zaznacz][1] | ![Zaznacz][1] |
 | Konfigurowanie wystawiania oświadczeń |     | ![Zaznacz][1] | ![Zaznacz][1] |
 | Włączanie urządzeń z systemem innym niż Windows 10 |       |        | ![Zaznacz][1] |
-| Weryfikowanie dołączonych urządzeń | ![Zaznacz][1] | ![Zaznacz][1] | [Sprawdzić][1] |
+| Weryfikowanie dołączonych urządzeń | ![Zaznacz][1] | ![Zaznacz][1] | ![Zaznacz][1] |
 
 ## <a name="configure-a-service-connection-point"></a>Konfigurowanie punktu połączenia usługi
 

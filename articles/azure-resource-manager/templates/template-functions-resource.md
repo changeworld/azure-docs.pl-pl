@@ -2,13 +2,13 @@
 title: Funkcje szablonu — zasoby
 description: W tym artykule opisano funkcje używane w szablonie usługi Azure Resource Manager do pobierania wartości dotyczących zasobów.
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 23c0463649e748b35917c959a73536147e91f60b
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.date: 04/06/2020
+ms.openlocfilehash: 90cee78c29c26c88d808cdef798e74a2184a5fcf
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744994"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804762"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkcje zasobów dla szablonów ARM
 
@@ -496,7 +496,9 @@ Użyj, `'Full'` gdy potrzebujesz wartości zasobów, które nie są częścią s
 
 ### <a name="valid-uses"></a>Prawidłowe zastosowania
 
-Funkcja odwołania może być używana tylko we właściwościach definicji zasobu i sekcji dane wyjściowe szablonu lub wdrożenia. W przypadku użycia z [iteracją właściwości](copy-properties.md)można `input` użyć funkcji odwołania, ponieważ wyrażenie jest przypisane do właściwości zasobu. Nie można go używać, `count` ponieważ liczba musi być określona przed rozpoznawaniem funkcji odwołania.
+Funkcja odwołania może być używana tylko we właściwościach definicji zasobu i sekcji dane wyjściowe szablonu lub wdrożenia. W przypadku użycia z [iteracją właściwości](copy-properties.md)można `input` użyć funkcji odwołania, ponieważ wyrażenie jest przypisane do właściwości zasobu.
+
+Nie można użyć funkcji odwołania, aby ustawić `count` wartość właściwości w pętli kopiowania. Można użyć do ustawiania innych właściwości w pętli. Odwołanie jest blokowany dla właściwości count, ponieważ ta właściwość musi być określona przed rozpoznawaniem funkcji odwołania.
 
 Nie można użyć funkcji odwołania w danych wyjściowych [szablonu zagnieżdżonego,](linked-templates.md#nested-template) aby zwrócić zasób wdrożony w szablonie zagnieżdżonego. Zamiast tego użyj [połączonego szablonu](linked-templates.md#linked-template).
 

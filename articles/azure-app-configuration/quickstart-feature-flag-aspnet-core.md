@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: d8582dfc796fe3e87b8bdc5be763dddfb5d0176b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b3579d12981e2b0add916a280bac7b4f9392d8ba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245416"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803147"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Szybki start: dodawanie flag funkcji do aplikacji ASP.NET Core
 
@@ -126,13 +126,13 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
 
     Dostęp do tego klucza tajnego można uzyskać za pomocą interfejsu API konfiguracji aplikacji. Dwukropek (:) działa w nazwie konfiguracji z interfejsem API konfiguracji aplikacji na wszystkich obsługiwanych platformach. Zobacz [Konfiguracja według środowiska](https://docs.microsoft.com/aspnet/core/fundamentals/configuration).
 
-1. Zaktualizuj metodę, `CreateWebHostBuilder` aby `config.AddAzureAppConfiguration()` użyć konfiguracji aplikacji, wywołując metodę.
-    
+1. W *Program.cs*, zaktualizuj `CreateWebHostBuilder` metodę, `config.AddAzureAppConfiguration()` aby użyć konfiguracji aplikacji, wywołując metodę.
+
     > [!IMPORTANT]
     > `CreateHostBuilder`zastępuje `CreateWebHostBuilder` w .NET Core 3.0.  Wybierz poprawną składnię na podstawie środowiska.
 
     #### <a name="net-core-2x"></a>[.NET Rdzeń 2.x](#tab/core2x)
-    
+
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
@@ -148,7 +148,7 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
     ```
 
     #### <a name="net-core-3x"></a>[.NET Rdzeń 3.x](#tab/core3x)
-    
+
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -188,12 +188,12 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
         services.AddControllersWithViews();
         services.AddFeatureManagement();
     }
-    ```
+
     ---
 
-1. Zaktualizuj `Configure` metodę, aby dodać oprogramowanie pośredniczące, aby umożliwić odświeżanie wartości flagi funkcji w cyklicznym odstępie czasu, podczas gdy aplikacja sieci web ASP.NET Core nadal odbiera żądania.
-    
-    #### <a name="net-core-2x"></a>[.NET Rdzeń 2.x](#tab/core2x)
+1. Update the `Configure` method to add a middleware to allow the feature flag values to be refreshed at a recurring interval while the ASP.NET Core web app continues to receive requests.
+
+    #### [.NET Core 2.x](#tab/core2x)
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
@@ -351,7 +351,7 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
     Twoja przeglądarka powinna wyświetlać stronę podobną do poniższej.
     ![Lokalne uruchamianie aplikacji z przewodnika Szybki start](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com). Wybierz **pozycję Wszystkie zasoby**i wybierz wystąpienie sklepu konfiguracja aplikacji utworzone w przewodniku Szybki start.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz **pozycję Wszystkie zasoby**i wybierz wystąpienie sklepu konfiguracja aplikacji utworzone w przewodniku Szybki start.
 
 1. Wybierz **pozycję Menedżer funkcji**i zmień stan klucza **beta** na **Włączone**.
 

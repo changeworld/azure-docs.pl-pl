@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie usługi SSL dla usługi w chmurze | Dokumenty firmy Microsoft
-description: Dowiedz się, jak określić punkt końcowy HTTPS dla roli sieci web i jak przekazać certyfikat SSL w celu zabezpieczenia aplikacji. W tych przykładach użyto witryny Azure portal.
+title: Konfigurowanie protokołu TLS dla usługi w chmurze | Dokumenty firmy Microsoft
+description: Dowiedz się, jak określić punkt końcowy HTTPS dla roli sieci web i jak przekazać certyfikat TLS/SSL w celu zabezpieczenia aplikacji. W tych przykładach użyto witryny Azure portal.
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -8,16 +8,16 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
-ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d397279ac7e5949398d695db615d9a003ab7acd
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273139"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811683"
 ---
-# <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurowanie ssl dla aplikacji na platformie Azure
+# <a name="configuring-tls-for-an-application-in-azure"></a>Konfigurowanie protokołu TLS dla aplikacji na platformie Azure
 
-Szyfrowanie SSL (Secure Socket Layer) jest najczęściej stosowaną metodą zabezpieczania danych przesyłanych przez Internet. W tym typowym zadaniu omówiono sposób określania punktu końcowego protokołu HTTPS dla roli sieci web i przekazywania certyfikatu SSL w celu zabezpieczenia aplikacji.
+Transport Layer Security (TLS), wcześniej znany jako szyfrowanie SSL (Secure Socket Layer), jest najczęściej stosowaną metodą zabezpieczania danych przesyłanych przez Internet. W tym typowym zadaniu omówiono sposób określania punktu końcowego protokołu HTTPS dla roli sieci web i przekazywania certyfikatu TLS/SSL w celu zabezpieczenia aplikacji.
 
 > [!NOTE]
 > Procedury w tym zadaniu dotyczą usług w chmurze azure; w przypadku usług app services, zobacz [ten](../app-service/configure-ssl-bindings.md)plik .
@@ -27,14 +27,14 @@ To zadanie używa wdrożenia produkcyjnego. Informacje na temat korzystania z wd
 
 Przeczytaj [to](cloud-services-how-to-create-deploy-portal.md) najpierw, jeśli nie utworzono jeszcze usługi w chmurze.
 
-## <a name="step-1-get-an-ssl-certificate"></a>Krok 1: Uzyskaj certyfikat SSL
-Aby skonfigurować ssl dla aplikacji, należy najpierw uzyskać certyfikat SSL podpisany przez urząd certyfikacji (CA), zaufaną firmę trzecią, która wystawia w tym celu certyfikaty. Jeśli jeszcze go nie masz, musisz go uzyskać od firmy, która sprzedaje certyfikaty SSL.
+## <a name="step-1-get-a-tlsssl-certificate"></a>Krok 1: Uzyskaj certyfikat TLS/SSL
+Aby skonfigurować TLS dla aplikacji, należy najpierw uzyskać certyfikat TLS/SSL podpisany przez urząd certyfikacji (CA), zaufaną stronę trzecią, która wystawia w tym celu certyfikaty. Jeśli jeszcze go nie masz, musisz go uzyskać od firmy, która sprzedaje certyfikaty TLS/SSL.
 
-Certyfikat musi spełniać następujące wymagania dotyczące certyfikatów SSL na platformie Azure:
+Certyfikat musi spełniać następujące wymagania dotyczące certyfikatów TLS/SSL na platformie Azure:
 
 * Certyfikat musi zawierać klucz prywatny.
 * Certyfikat musi zostać utworzony w celu wymiany kluczy, który można wyeksportować do pliku wymiany informacji osobistych (pfx).
-* Nazwa podmiotu certyfikatu musi być zgodna z domeną używaną do uzyskiwania dostępu do usługi w chmurze. Nie można uzyskać certyfikatu SSL od urzędu certyfikacji (CA) dla domeny cloudapp.net. Musisz uzyskać niestandardową nazwę domeny, aby używać podczas uzyskiwania dostępu do usługi. Podczas żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną do uzyskiwania dostępu do aplikacji. Na przykład, jeśli niestandardowa nazwa domeny jest **contoso.com** żądanie certyfikatu od urzędu certyfikacji dla ***.contoso.com** lub **www\.contoso.com**.
+* Nazwa podmiotu certyfikatu musi być zgodna z domeną używaną do uzyskiwania dostępu do usługi w chmurze. Nie można uzyskać certyfikatu TLS/SSL od urzędu certyfikacji (CA) dla domeny cloudapp.net. Musisz uzyskać niestandardową nazwę domeny, aby używać podczas uzyskiwania dostępu do usługi. Podczas żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną do uzyskiwania dostępu do aplikacji. Na przykład, jeśli niestandardowa nazwa domeny jest **contoso.com** żądanie certyfikatu od urzędu certyfikacji dla ***.contoso.com** lub **www\.contoso.com**.
 * Certyfikat musi używać szyfrowania 2048-bitowego.
 
 Do celów testowych można [utworzyć](cloud-services-certs-create.md) i używać certyfikatu z podpisem własnym. Certyfikat z podpisem własnym nie jest uwierzytelniony za pośrednictwem urzędu certyfikacji i może używać domeny cloudapp.net jako adresu URL witryny sieci Web. Na przykład następujące zadanie używa certyfikatu z podpisem własnym, w którym nazwa pospolita (CN) używana w certyfikacie jest **sslexample.cloudapp.net**.
@@ -166,7 +166,7 @@ Teraz, gdy wdrożenie jest uruchomione na platformie Azure, można połączyć s
    ![Podgląd witryny](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > Jeśli chcesz użyć SSL dla wdrożenia przejściowego zamiast wdrożenia produkcyjnego, musisz najpierw określić adres URL używany do wdrożenia przejściowego. Po wdrożeniu usługi w chmurze adres URL środowiska przejściowego jest określany przez identyfikator **guiD identyfikatora wdrożenia** w tym formacie:`https://deployment-id.cloudapp.net/`  
+   > Jeśli chcesz użyć protokołu TLS dla wdrożenia przejściowego zamiast wdrożenia produkcyjnego, musisz najpierw określić adres URL używany do wdrożenia przejściowego. Po wdrożeniu usługi w chmurze adres URL środowiska przejściowego jest określany przez identyfikator **guiD identyfikatora wdrożenia** w tym formacie:`https://deployment-id.cloudapp.net/`  
    >
    > Utwórz certyfikat o nazwie pospolitej (CN) równej adresowi URL opartemu na identyfikatorze GUID (na przykład **328187776e774ceda8fc57609d404462.cloudapp.net**). Użyj portalu, aby dodać certyfikat do usługi w chmurze etapowej. Następnie dodaj informacje o certyfikacie do plików CSDEF i CSCFG, przepakuj aplikację i zaktualizuj wdrożenie etapowe, aby użyć nowego pakietu.
    >

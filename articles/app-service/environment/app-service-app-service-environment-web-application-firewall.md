@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 51375c13d842bda2450a83e1bbc48b741adba39b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 987228c5cf0f5231006726718684528a777e92fd
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80057447"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804473"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurowanie zapory aplikacji internetowych za pomocą środowiska App Service Environment
 ## <a name="overview"></a>Omówienie
@@ -23,7 +23,7 @@ Oprócz usługi Azure Application Gateway istnieje wiele innych opcji, takich ja
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
-## <a name="setup"></a>Konfiguracja
+## <a name="setup"></a>Konfigurowanie
 W przypadku tego dokumentu konfigurujemy środowisko App Service Environment za wieloma wystąpieniami zapory aplikacji internetowych Barracuda ze zrównoważonym obciążeniem tak, aby tylko ruch z zapory aplikacji internetowych mógł docierać do środowiska App Service Environment i był niedostępny od sieci obwodowej. Mamy również usługę Azure Traffic Manager przed wystąpieniami zapory aplikacji internetowych Barracuda w celu zrównoważenia obciążenia w centrach danych i regionach platformy Azure. Diagram konfiguracji wysokiego poziomu będzie wyglądać podobnie jak na poniższej ilustracji:
 
 ![Architektura][Architecture] 
@@ -71,7 +71,7 @@ Kliknięcie karty **Usługi** umożliwia skonfigurowanie zapory aplikacji intern
 ![Zarządzanie — dodawanie usług][ManagementAddServices]
 
 > [!NOTE]
-> W zależności od sposobu konfiguracji aplikacji i funkcji używanych w środowisku App Service Environment należy przekazywać ruch do portów protokołu TCP innych niż 80 i 443, jeśli na przykład w przypadku aplikacji usługi App Service jest stosowana konfiguracja połączenia SSL z adresu IP. Listę portów używanych w środowiskach App Service Environment można znaleźć w sekcji dotyczącej portów sieciowych w [dokumentacji funkcji sterowania ruchem przychodzącym](app-service-app-service-environment-control-inbound-traffic.md).
+> W zależności od tego, jak aplikacje są skonfigurowane i jakie funkcje są używane w środowisku usługi app service, należy przekazywać ruch dla portów TCP innych niż 80 i 443, na przykład, jeśli masz konfigurację protokołu IP TLS dla aplikacji usługi App Service. Listę portów używanych w środowiskach App Service Environment można znaleźć w sekcji dotyczącej portów sieciowych w [dokumentacji funkcji sterowania ruchem przychodzącym](app-service-app-service-environment-control-inbound-traffic.md).
 > 
 > 
 

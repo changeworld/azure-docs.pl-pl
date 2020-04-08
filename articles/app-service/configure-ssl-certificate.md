@@ -1,19 +1,19 @@
 ---
-title: Dodawanie certyfikatów SSL i zarządzanie nimi
+title: Dodawanie certyfikatów TLS/SSL i zarządzanie nimi
 description: Utwórz bezpłatny certyfikat, zaimportuj certyfikat usługi App Service, zaimportuj certyfikat usługi Key Vault lub kup certyfikat usługi App Service w usłudze Azure App Service.
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4edf710e575bbb26fb0e247e59ff5c796f16226e
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239763"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810593"
 ---
-# <a name="add-an-ssl-certificate-in-azure-app-service"></a>Dodawaj certyfikat SSL w usłudze Azure App Service
+# <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Dodawanie certyfikatu TLS/SSL w usłudze Azure App Service
 
 [Usługa Azure App Service](overview.md) zapewnia wysoce skalowalną, samoładującą się usługę hostingu. W tym artykule pokazano, jak utworzyć, przekazać lub zaimportować certyfikat prywatny lub certyfikat publiczny do usługi App Service. 
 
@@ -47,7 +47,7 @@ Aby postępować zgodnie z tym przewodnikiem:
 * Zawiera klucz prywatny o długości co najmniej 2048 bitów
 * Zawiera wszystkie certyfikaty pośrednie w łańcuchu certyfikatów
 
-Aby zabezpieczyć domenę niestandardową w powiązaniu SSL, certyfikat ma dodatkowe wymagania:
+Aby zabezpieczyć domenę niestandardową w powiązaniu TLS, certyfikat ma dodatkowe wymagania:
 
 * Zawiera [rozszerzone użycie klucza](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Extensions_informing_a_specific_usage_of_a_certificate) do uwierzytelniania serwera (OID = 1.3.6.1.5.5.7.3.1)
 * Podpisany przez zaufany urząd certyfikacji
@@ -59,7 +59,7 @@ Aby zabezpieczyć domenę niestandardową w powiązaniu SSL, certyfikat ma dodat
 
 ## <a name="create-a-free-certificate-preview"></a>Tworzenie bezpłatnego certyfikatu (wersja zapoznawcza)
 
-Bezpłatny certyfikat zarządzany usługi App Service to pod klucz rozwiązanie do zabezpieczania niestandardowej nazwy DNS w usłudze App Service. Jest to w pełni funkcjonalny certyfikat SSL, który jest zarządzany przez usługę App Service i odnawiany automatycznie. Bezpłatny certyfikat ma następujące ograniczenia:
+Bezpłatny certyfikat zarządzany usługi App Service to pod klucz rozwiązanie do zabezpieczania niestandardowej nazwy DNS w usłudze App Service. Jest to w pełni funkcjonalny certyfikat TLS/SSL, który jest zarządzany przez usługę App Service i odnawiany automatycznie. Bezpłatny certyfikat ma następujące ograniczenia:
 
 - Nie obsługuje certyfikatów wieloznacznych.
 - Nie obsługuje domen nagich.
@@ -237,7 +237,7 @@ Utwórz plik scalonego certyfikatu o nazwie _mergedcertificate.crt_. W edytorze 
 
 ### <a name="export-certificate-to-pfx"></a>Eksportowanie certyfikatu do pliku PFX
 
-Wyeksportuj scalony certyfikat protokołu SSL z kluczem prywatnym, przy użyciu którego zostało wygenerowane żądanie certyfikatu.
+Wyeksportuj scalony certyfikat TLS/SSL za pomocą klucza prywatnego, za pomocą których wygenerowano żądanie certyfikatu.
 
 Jeśli żądanie certyfikatu zostało wygenerowane przy użyciu biblioteki OpenSSL, został utworzony plik klucza prywatnego. Aby wyeksportować certyfikat do pliku PFX, uruchom następujące polecenie. Zastąp symbole zastępcze _ &lt;>pliku klucza prywatnego_ i _ &lt;>scalonym plikiem certyfikatu_ ścieżkami do klucza prywatnego i scalonego pliku certyfikatu.
 
@@ -245,7 +245,7 @@ Jeśli żądanie certyfikatu zostało wygenerowane przy użyciu biblioteki OpenS
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
 ```
 
-Po wyświetleniu monitu określ hasło eksportu. To hasło będzie później używane podczas przekazywania certyfikatu protokołu SSL do usługi App Service.
+Po wyświetleniu monitu określ hasło eksportu. Użyjesz tego hasła podczas przekazywania certyfikatu TLS/SSL do usługi App Service później.
 
 Jeśli używasz usług IIS lub programu _Certreq.exe_ do wygenerowania swojego żądania certyfikatu, zainstaluj certyfikat na komputerze lokalnym, a następnie [wyeksportuj certyfikat do pliku PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
 
@@ -363,16 +363,16 @@ Teraz możesz usunąć certyfikat usługi App Service. W lewej nawigacji wybierz
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Więcej zasobów
 
-* [Zabezpiecz niestandardową nazwę DNS za pomocą powiązania SSL](configure-ssl-bindings.md)
+* [Zabezpiecz niestandardową nazwę DNS za pomocą powiązania TLS/SSL w usłudze Azure App Service](configure-ssl-bindings.md)
 * [Wymuszanie protokołu HTTPS](configure-ssl-bindings.md#enforce-https)
 * [Wymuszanie protokołu TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
-* [Używanie certyfikatu SSL w kodzie aplikacji](configure-ssl-certificate-in-code.md)
+* [Używanie certyfikatu TLS/SSL w kodzie w usłudze Azure App Service](configure-ssl-certificate-in-code.md)
 * [Często zadawane pytania: Certyfikaty usługi aplikacji](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

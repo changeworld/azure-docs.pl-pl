@@ -1,17 +1,18 @@
 ---
-title: Najważniejsze rozwiązania dla deweloperów — zabezpieczenia zasobników w usługach Kubernetes platformy Azure (AKS)
+title: Najważniejsze wskazówki dotyczące zabezpieczeń
+titleSuffix: Azure Kubernetes Service
 description: Zapoznaj się z najlepszymi rozwiązaniami dla deweloperów dotyczących zabezpieczania zasobników w usłudze Azure Kubernetes (AKS)
 services: container-service
 author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 2ee41770f9993da381215f03ebf67aea3cc7dd9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f093b5276ee7ab334043e57f97a108267c32c87
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475582"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804388"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Najważniejsze wskazówki dotyczące zabezpieczeń zasobników w usłudze Azure Kubernetes Service (AKS)
 

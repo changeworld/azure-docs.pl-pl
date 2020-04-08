@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: 550c315023c0ae907c369778c81b16e137004bec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: afb30a17d7a1450f169402c18f41ce249415e89d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067265"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804830"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>Limity zasobów bazy danych SQL i zarządzanie zasobami
 
@@ -103,7 +103,7 @@ Aby wymusić limity zasobów, usługa Azure SQL Database używa implementacji ł
 
 Oprócz używania Gubernator zasobów do regulowania zasobów w ramach procesu SQL Server, usługa Azure SQL Database używa również [obiektów zadań](https://docs.microsoft.com/windows/win32/procthread/job-objects) systemu Windows do zarządzania zasobami na poziomie procesu i Menedżera zasobów serwera plików systemu Windows [(FSRM)](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview) do zarządzania przydziałami magazynu.
 
-Zarządzanie zasobami usługi Azure SQL Database ma charakter hierarchiczny. Od góry do dołu limity są wymuszane na poziomie systemu operacyjnego i na poziomie woluminu magazynu przy użyciu mechanizmów zarządzania zasobami systemu operacyjnego i Resource Governor, następnie na poziomie puli zasobów przy użyciu Resource Governor, a następnie na poziomie grupy obciążenia przy użyciu Gubernator zasobów. Limity ładu zasobów obowiązujące dla bieżącej bazy danych lub puli elastycznej są wyświetlane w widoku [sys.dm_user_db_resource_governance.](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 
+Zarządzanie zasobami usługi Azure SQL Database ma charakter hierarchiczny. Od góry do dołu limity są wymuszane na poziomie systemu operacyjnego i na poziomie woluminu magazynu przy użyciu mechanizmów zarządzania zasobami systemu operacyjnego i Resource Governor, następnie na poziomie puli zasobów przy użyciu Resource Governor, a następnie na poziomie grupy obciążenia przy użyciu Resource Governor. Limity ładu zasobów obowiązujące dla bieżącej bazy danych lub puli elastycznej są wyświetlane w widoku [sys.dm_user_db_resource_governance.](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 
 
 ### <a name="data-io-governance"></a>Zarządzanie we/wy danych
 
@@ -134,7 +134,7 @@ Jak rekordy dziennika są generowane, każda operacja jest oceniane i oceniane p
 
 Rzeczywiste szybkości generowania dziennika nałożone w czasie wykonywania mogą być również pod wpływem mechanizmów sprzężenia zwrotnego, tymczasowo zmniejszając dopuszczalne stawki dziennika, dzięki czemu system może się ustabilizować. Zarządzanie przestrzenią plików dziennika, unikanie wbiegania z warunków miejsca dziennika i mechanizmów replikacji grupy dostępności może tymczasowo zmniejszyć ogólne limity systemowe.
 
-Kształtowanie ruchu regulatora szybkości dzienników jest widoczne za pośrednictwem następujących typów oczekiwania (ujawnionych w [pliku sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV):
+Kształtowanie ruchu przez regulatora szybkości dzienników jest widoczne za pomocą następujących typów oczekiwania (ujawnionych w [widokach sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) i [sys.dm_os_wait_stats):](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)
 
 | Typ oczekiwania | Uwagi |
 | :--- | :--- |
@@ -143,6 +143,7 @@ Kształtowanie ruchu regulatora szybkości dzienników jest widoczne za pośredn
 | INSTANCE_LOG_RATE_GOVERNOR | Ograniczanie poziomu wystąpienia |  
 | HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Kontrola opinii, fizyczna replikacja grupy dostępności w wersji Premium/Business Critical nie nadąża za |  
 | HADR_THROTTLE_LOG_RATE_LOG_SIZE | Kontrola sprzężenia zwrotnego, ograniczenie szybkości w celu uniknięcia stanu przestrzeni poza dziennikiem |
+| HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO | Kontrola sprzężenia zwrotnego replikacji geograficznej, ograniczająca szybkość dzienników w celu uniknięcia dużych opóźnień danych i niedostępności geo-pomocniczych|
 |||
 
 W przypadku napotkania limitu szybkości dziennika, który utrudnia żądaną skalowalność, należy wziąć pod uwagę następujące opcje:

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 3f15033095b02dd35c2d8d7bda60ca184df64c9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6009a655adcc26ebef31588eff2332a05f3a001
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475023"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804728"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Wyrażenia stylu oparte na danych (web SDK)
 
@@ -837,7 +837,7 @@ Wyrażenie `zoom` jest używane do pobierania bieżącego poziomu powiększenia 
 
 **Przykład**
 
-Domyślnie promienie punktów danych renderowanych w warstwie mapy cieplnej mają stały promień pikseli dla wszystkich poziomów powiększenia. W miarę powiększania mapy dane są agregowane, a warstwa mapy skupień wygląda inaczej. Wyrażenie `zoom` może służyć do skalowania promienia dla każdego poziomu powiększenia w taki sposób, aby każdy punkt danych obejmował ten sam obszar fizyczny mapy. Sprawi to, że warstwa mapy ciepła będzie wyglądać bardziej statycznie i spójnie. Każdy poziom powiększenia mapy ma dwa razy więcej pikseli w pionie i poziomie niż poprzedni poziom powiększenia. Skalowanie promienia, tak aby podwajał się z każdym poziomem powiększenia, spowoduje utworzenie mapy skupień, która wygląda spójnie na wszystkich poziomach powiększenia. Można to osiągnąć za `zoom` pomocą `base 2 exponential interpolation` wyrażenia z wyrażeniem, jak pokazano poniżej. 
+Domyślnie promienie punktów danych renderowanych w warstwie mapy cieplnej mają stały promień pikseli dla wszystkich poziomów powiększenia. W miarę powiększania mapy dane są agregowane, a warstwa mapy skupień wygląda inaczej. Wyrażenie `zoom` może służyć do skalowania promienia dla każdego poziomu powiększenia w taki sposób, aby każdy punkt danych obejmował ten sam obszar fizyczny mapy. Sprawi to, że warstwa mapy ciepła będzie wyglądać bardziej statycznie i spójnie. Każdy poziom powiększenia mapy ma dwa razy więcej pikseli w pionie i poziomie niż poprzedni poziom powiększenia. Skalowanie promienia, tak aby podwajał się z każdym poziomem powiększenia, spowoduje utworzenie mapy skupień, która wygląda spójnie na wszystkich poziomach powiększenia. Można to osiągnąć za `zoom` pomocą `base 2 exponential interpolation` wyrażenia z wyrażeniem, z promieniem piksela ustawionym dla minimalnego poziomu `2 * Math.pow(2, minZoom - maxZoom)` powiększenia i skalowanym promieniem dla maksymalnego poziomu powiększenia obliczonego, jak pokazano poniżej.
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -849,8 +849,8 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
         //For zoom level 1 set the radius to 2 pixels.
         10, 2,
 
-        //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 10,000 pixels.
-        19, 10000
+        //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * Math.pow(2, 19 - 1) pixels (524,288 pixels).
+        19, 2 * Math.pow(2, 19 - 1)
     ]
 };
 ```

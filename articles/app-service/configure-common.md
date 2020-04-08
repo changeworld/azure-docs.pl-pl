@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18469c94b66acab27b58243e8d15eb924843319b
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280172"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811122"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurowanie aplikacji usługi App Service w witrynie Azure portal
 
@@ -96,10 +96,11 @@ W przypadku stosów innych języków lepiej jest używać [ustawień aplikacji,]
 
 W czasie wykonywania parametry połączenia są dostępne jako zmienne środowiskowe, poprzedzone następującymi typami połączeń:
 
-* SQL Server:`SQLCONNSTR_`
-* Mysql:`MYSQLCONNSTR_`
-* Baza danych SQL:`SQLAZURECONNSTR_`
+* Sqlserver:`SQLCONNSTR_`  
+* Mysql:`MYSQLCONNSTR_` 
+* SQLAzure:`SQLAZURECONNSTR_` 
 * Niestandardowe:`CUSTOMCONNSTR_`
+* Postgresql:`POSTGRESQLCONNSTR_`  
 
 Na przykład ciąg połączenia MySql o nazwie *connectionstring1* jest `MYSQLCONNSTR_connectionString1`dostępny jako zmienna środowiskowa . Aby zapoznać się z określonymi krokami dotyczącymi stosu językowego, zobacz:
 
@@ -173,7 +174,7 @@ W tym miejscu można skonfigurować niektóre typowe ustawienia dla aplikacji. N
     - **Wersja potoku zarządzanego:** [tryb potoku]usług IIS . Ustaw go na **klasyczny,** jeśli masz starszą aplikację, która wymaga starszej wersji iIS.
     - **Wersja HTTP**: Ustaw na **2.0,** aby włączyć obsługę protokołu [HTTPS/2.](https://wikipedia.org/wiki/HTTP/2)
     > [!NOTE]
-    > Większość nowoczesnych przeglądarek obsługuje protokół HTTP/2 tylko za pośrednictwem protokołu TLS, podczas gdy ruch niezaszyfrowany nadal używa protokołu HTTP/1.1. Aby upewnić się, że przeglądarki klienckie łączą się z aplikacją za pomocą protokołu HTTP/2, [zabezpiecz niestandardową nazwę DNS za pomocą powiązania SSL w usłudze Azure App Service.](configure-ssl-bindings.md)
+    > Większość nowoczesnych przeglądarek obsługuje protokół HTTP/2 tylko za pośrednictwem protokołu TLS, podczas gdy ruch niezaszyfrowany nadal używa protokołu HTTP/1.1. Aby upewnić się, że przeglądarki klienckie łączą się z aplikacją za pomocą protokołu HTTP/2, zabezpiecz niestandardową nazwę DNS. Aby uzyskać więcej informacji, zobacz [Zabezpieczanie niestandardowej nazwy DNS za pomocą powiązania TLS/SSL w usłudze Azure App Service](configure-ssl-bindings.md).
     - **Koligacja ARR:** We wdrożeniu wielu wystąpień upewnij się, że klient jest kierowany do tego samego wystąpienia przez cały okres sesji. Tę opcję można ustawić na **Wyłączone** dla aplikacji bezstanowych.
 - **Debugowanie:** Włącz zdalne debugowanie dla [aplikacji ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)lub [Node.js.](containers/configure-language-nodejs.md#debug-remotely) Ta opcja wyłącza się automatycznie po 48 godzinach.
 - **Przychodzące certyfikaty klienta:** wymagają certyfikatów klienta w [uwierzytelnianiu wzajemnym](app-service-web-configure-tls-mutual-auth.md).
@@ -248,7 +249,7 @@ Zobacz [Konfigurowanie niestandardowego kontenera systemu Linux dla usługi Azur
 
 - [Konfigurowanie niestandardowej nazwy domeny w usłudze Azure App Service]
 - [Konfigurowanie środowisk przejściowych w usłudze Azure App Service]
-- [Zabezpieczanie niestandardowej nazwy DNS przy użyciu powiązania SSL w usłudze Azure App Service](configure-ssl-bindings.md)
+- [Zabezpiecz niestandardową nazwę DNS za pomocą powiązania TLS/SSL w usłudze Azure App Service](configure-ssl-bindings.md)
 - [Włączanie dzienników diagnostycznych](troubleshoot-diagnostic-logs.md)
 - [Skalowanie aplikacji w usłudze Azure App Service]
 - [Podstawy monitorowania w usłudze Azure App Service]

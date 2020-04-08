@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 75890efebc42b74c56fb95ed1803152b516588b9
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 55c6d374c8a3c308323c0d003726492477e33ff8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385218"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811240"
 ---
 # <a name="develop-a-secure-web-app"></a>Tworzenie bezpiecznej aplikacji internetowej
 
@@ -77,7 +77,7 @@ Na przykład iniekcji SQL w poprzednim modelu zagrożenia danych wyjściowych je
 
 Deweloperzy poprawić ogólne bezpieczeństwo systemu poprzez łagodzenie każdego z zagrożeń w danych wyjściowych modelu zagrożenia.
 
-## <a name="deployment"></a>wdrażania
+## <a name="deployment"></a>Wdrożenie
 
 Następujące opcje umożliwiają uruchamianie systemu Linux w usłudze Azure App Service:
 
@@ -95,7 +95,7 @@ Istnieje wiele sposobów wdrażania aplikacji na platformie Azure, w tym:
 - Szablony usługi Azure Resource Manager
 - PowerShell
 - Interfejs wiersza polecenia platformy Azure
-- Portal Azure
+- Azure Portal
 - Azure DevOps
 
 Ta aplikacja używana:
@@ -104,11 +104,11 @@ Ta aplikacja używana:
 - [Narzędzie wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) do wdrożenia.
 - [Centrum platformy Docker](https://hub.docker.com/) jako rejestr kontenerów.
 
-## <a name="security-considerations"></a>Zagadnienia dotyczące bezpieczeństwa
+## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
 
-### <a name="network"></a>Network (Sieć)
+### <a name="network"></a>Sieć
 
-Przykładowa aplikacja używa szyfrowania SSL end-to-end do przesyłania danych przesyłanych do i z sieci. Brama jest skonfigurowana z certyfikatem z podpisem własnym.
+Przykładowa aplikacja używa szyfrowania TLS/SSL end-to-end do przesyłania danych przesyłanych do i z sieci. Brama jest skonfigurowana z certyfikatem z podpisem własnym.
 > [!IMPORTANT]
 > W tej demonstracji jest używany certyfikat z podpisem własnym. W środowisku produkcyjnym należy uzyskać certyfikaty od zweryfikowanego urzędu certyfikacji(CA).
 
@@ -363,7 +363,7 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
-Aby uzyskać więcej informacji na temat konfigurowania weryfikacji SSL i Urzędu certyfikacji (CA) dla postgreSQL, zobacz [Konfigurowanie łączności SSL w usłudze Azure Database dla postgreSQL](/azure/postgresql/concepts-ssl-connection-security).
+Aby uzyskać więcej informacji na temat konfigurowania weryfikacji protokołu TLS i urzędu certyfikacji (CA) dla postgreSQL, zobacz [Konfigurowanie łączności TLS w usłudze Azure Database dla postgreSQL](/azure/postgresql/concepts-ssl-connection-security).
 
 Certyfikat główny znajduje się w kontenerze. Kroki podjęte w celu uzyskania certyfikatu są następujące:
 
@@ -375,7 +375,7 @@ Certyfikat główny znajduje się w kontenerze. Kroki podjęte w celu uzyskania 
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-Przeczytaj więcej o tym, jak skonfigurować zabezpieczenia SSL dla PostgreSQL tutaj [Konfiguruj zabezpieczenia połączeń SSL](/azure/postgresql/concepts-ssl-connection-security).
+Przeczytaj więcej o tym, jak skonfigurować zabezpieczenia TLS dla PostgreSQL tutaj [Konfiguruj zabezpieczenia połączeń TLS](/azure/postgresql/concepts-ssl-connection-security).
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>Wdrażanie aplikacji Azure Web Apps w systemie Linux
 
@@ -991,5 +991,5 @@ Bezpieczeństwo jest podobną aplikacją, która sprawdza zależności. Można g
 Poniższe artykuły mogą pomóc w projektowaniu, opracowywaniu i wdrażaniu bezpiecznych aplikacji.
 
 - [Projekt](secure-design.md)
-- [Opracowywanie](secure-develop.md)
+- [Programowanie](secure-develop.md)
 - [Wdróż](secure-deploy.md)

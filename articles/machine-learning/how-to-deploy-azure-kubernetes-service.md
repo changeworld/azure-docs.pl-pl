@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: 792964f28ddb3fcb10932b8de9499a9c7027960f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: aec1b7f7bf60be34d21d52ca652a776cf3275fe8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475381"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811767"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Wdrażanie modelu w klastrze usługi Azure Kubernetes
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -135,7 +135,7 @@ Jeśli ustawisz `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, klaster 
 
 Aby uzyskać więcej informacji na temat tworzenia klastra AKS przy użyciu interfejsu wiersza polecenia lub portalu platformy Azure, zobacz następujące artykuły:
 
-* [Tworzenie klastra AKS (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
+* [Tworzenie klastra AKS (interfejs wiersza polecenia)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [Tworzenie klastra AKS (portal)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
 Poniższe przykłady pokazują, jak dołączyć istniejący klaster usługi AKS do obszaru roboczego:
@@ -233,10 +233,28 @@ Aby uzyskać informacje na temat korzystania z programu VS Code, zobacz [wdraża
 > Wdrażanie za pośrednictwem programu VS Code wymaga klastra AKS, który ma zostać utworzony lub dołączony do obszaru roboczego z wyprzedzeniem.
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Wdrażanie modeli w udręki AKS przy użyciu kontrolowanego wdrażania (wersja zapoznawcza)
-Analizuj i promuj wersje modeli w sposób kontrolowany przy użyciu punktów końcowych. Wdrożenie do 6 wersji za jednym punktem końcowym i skonfigurować % ruchu oceniania do każdej wdrożonej wersji. Można włączyć wgląd w aplikacje, aby wyświetlić metryki operacyjne punktów końcowych i wdrożonych wersji.
+
+Analizuj i promuj wersje modeli w sposób kontrolowany przy użyciu punktów końcowych. Można wdrożyć maksymalnie sześć wersji za jednym punktem końcowym. Punkty końcowe zapewniają następujące możliwości:
+
+* Skonfiguruj __procent ruchu oceniania wysyłanego do każdego punktu końcowego__. Na przykład kierowanie 20% ruchu do punktu końcowego "test" i 80% do "produkcji".
+
+    > [!NOTE]
+    > Jeśli nie konto dla 100% ruchu, wszystkie pozostałe wartości procentowe są kierowane do __domyślnej__ wersji punktu końcowego. Na przykład jeśli skonfigurujesz wersję punktu końcowego "test", aby uzyskać 10% ruchu i "prod" dla 30%, pozostałe 60% jest wysyłany do domyślnej wersji punktu końcowego.
+    >
+    > Pierwsza utworzona wersja punktu końcowego jest automatycznie konfigurowana jako domyślna. Można to zmienić, ustawiając `is_default=True` podczas tworzenia lub aktualizowania wersji punktu końcowego.
+     
+* Oznacz wersję punktu końcowego jako __formant__ lub __leczenie__. Na przykład bieżąca wersja produkcyjnego punktu końcowego może być formantem, podczas gdy potencjalne nowe modele są wdrażane jako wersje leczenia. Po ocenie wydajności wersji obróbki, jeśli jeden przewyższa bieżącej kontroli, może być promowany do nowej produkcji/kontroli.
+
+    > [!NOTE]
+    > Możesz mieć tylko __jedną__ kontrolę. Możesz mieć wiele zabiegów.
+
+Można włączyć wgląd w aplikacje, aby wyświetlić metryki operacyjne punktów końcowych i wdrożonych wersji.
 
 ### <a name="create-an-endpoint"></a>Tworzenie punktu końcowego
-Gdy będziesz gotowy do wdrożenia modeli, utwórz punkt końcowy oceniania i wdrożyć pierwszą wersję. Poniższy krok pokazuje, jak wdrożyć i utworzyć punkt końcowy przy użyciu SDK. Pierwsze wdrożenie zostanie zdefiniowane jako wersja domyślna, co oznacza, że nieokreślony percentyl ruchu we wszystkich wersjach przejdzie do wersji domyślnej.  
+Gdy będziesz gotowy do wdrożenia modeli, utwórz punkt końcowy oceniania i wdrożyć pierwszą wersję. W poniższym przykładzie pokazano, jak wdrożyć i utworzyć punkt końcowy przy użyciu SDK. Pierwsze wdrożenie zostanie zdefiniowane jako wersja domyślna, co oznacza, że nieokreślony percentyl ruchu we wszystkich wersjach przejdzie do wersji domyślnej.  
+
+> [!TIP]
+> W poniższym przykładzie konfiguracja ustawia początkową wersję punktu końcowego do obsługi 20% ruchu. Ponieważ jest to pierwszy punkt końcowy, jest to również wersja domyślna. A ponieważ nie mamy żadnych innych wersji dla pozostałych 80% ruchu, jest on również kierowany do domyślnego. Dopóki inne wersje, które zajmują procent ruchu są wdrażane, ten skutecznie odbiera 100% ruchu.
 
 ```python
 import azureml.core,
@@ -247,8 +265,8 @@ from azureml.core.compute import ComputeTarget
 compute = ComputeTarget(ws, 'myaks')
 namespace_name= endpointnamespace
 # define the endpoint and version name
-endpoint_name = "mynewendpoint",
-version_name= "versiona",
+endpoint_name = "mynewendpoint"
+version_name= "versiona"
 # create the deployment config and define the scoring traffic percentile for the first deployment
 endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
                                                               enable_app_insights = True,
@@ -258,11 +276,16 @@ endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, m
                                                               traffic_percentile = 20)
  # deploy the model and endpoint
  endpoint = Model.deploy(ws, endpoint_name, [model], inference_config, endpoint_deployment_config, compute)
+ # Wait for he process to complete
+ endpoint.wait_for_deployment(True)
  ```
 
 ### <a name="update-and-add-versions-to-an-endpoint"></a>Aktualizowanie i dodawanie wersji do punktu końcowego
 
-Dodaj inną wersję do punktu końcowego i skonfiguruj percentyl ruchu oceniania przechodzący do wersji. Istnieją dwa typy wersji, kontroli i wersji leczenia. Może istnieć wiele wersji leczenia, aby pomóc porównać z pojedynczą wersją kontrolną.
+Dodaj inną wersję do punktu końcowego i skonfiguruj percentyl ruchu oceniania przechodzący do wersji. Istnieją dwa typy wersji, kontroli i wersji leczenia. Może istnieć wiele wersji leczenia, aby pomóc w porównaniu z pojedynczą wersją kontrolną.
+
+> [!TIP]
+> Druga wersja, utworzona przez poniższy fragment kodu, akceptuje 10% ruchu. Pierwsza wersja jest skonfigurowana dla 20%, więc tylko 30% ruchu jest skonfigurowany dla określonych wersji. Pozostałe 70% jest wysyłane do pierwszej wersji punktu końcowego, ponieważ jest również wersją domyślną.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -275,9 +298,13 @@ endpoint.create_version(version_name = version_name_add,
                         tags = {'modelVersion':'b'},
                         description = "my second version",
                         traffic_percentile = 10)
+endpoint.wait_for_deployment(True)
 ```
 
-Zaktualizuj istniejące wersje lub usuń je w punkcie końcowym. Można zmienić domyślny typ wersji, typ formantu i percentyl ruchu.
+Zaktualizuj istniejące wersje lub usuń je w punkcie końcowym. Można zmienić domyślny typ wersji, typ formantu i percentyl ruchu. W poniższym przykładzie druga wersja zwiększa ruch do 40% i jest teraz domyślna.
+
+> [!TIP]
+> Po poniższym fragmentie kodu druga wersja jest teraz domyślna. Jest teraz skonfigurowany dla 40%, podczas gdy oryginalna wersja jest nadal skonfigurowana dla 20%. Oznacza to, że 40% ruchu nie jest rozliczane przez konfiguracje wersji. Pozostały ruch zostanie przekierowany do drugiej wersji, ponieważ jest teraz domyślny. Skutecznie otrzymuje 80% ruchu.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -288,7 +315,8 @@ endpoint.update_version(version_name=endpoint.versions["versionb"].name,
                         traffic_percentile=40,
                         is_default=True,
                         is_control_version_type=True)
-
+# Wait for the process to complete before deleting
+endpoint.wait_for_deployment(true)
 # delete a version in an endpoint
 endpoint.delete_version(version_name="versionb")
 

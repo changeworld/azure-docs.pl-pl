@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 2293618b0685fe71ae553a95797fe8bfe1fe968c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75749938"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811080"
 ---
 # <a name="azure-network-security-overview"></a>Omówienie zabezpieczeń sieci platformy Azure
 
@@ -160,7 +160,7 @@ Można włączyć poszczególnych deweloperów lub pracowników operacyjnych do 
 
 Połączenie sieci VPN typu punkt-lokacja umożliwia skonfigurowanie prywatnego i bezpiecznego połączenia między użytkownikiem a siecią wirtualną. Po nawiązaniu połączenia sieci VPN użytkownik może łącze RDP lub SSH za pośrednictwem łącza VPN do dowolnej maszyny wirtualnej w sieci wirtualnej. (Zakłada się, że użytkownik może uwierzytelnić się i jest autoryzowany).) Sieć VPN typu punkt-lokacja obsługuje:
 
-* Secure Socket Tunneling Protocol (SSTP), zastrzeżony protokół VPN oparty na SSL. Rozwiązanie SSL VPN może przenikać przez zapory, ponieważ większość zapór otwiera port TCP 443, którego używa SSL. Protokół SSTP jest obsługiwany tylko na urządzeniach z systemem Windows. Platforma Azure obsługuje wszystkie wersje systemu Windows z protokółem SSTP (Windows 7 lub nowszym).
+* Secure Socket Tunneling Protocol (SSTP), zastrzeżony protokół VPN oparty na SSL. Rozwiązanie SSL VPN może przenikać przez zapory, ponieważ większość zapór otwiera port TCP 443, którego używa TLS/SSL. Protokół SSTP jest obsługiwany tylko na urządzeniach z systemem Windows. Platforma Azure obsługuje wszystkie wersje systemu Windows z protokółem SSTP (Windows 7 lub nowszym).
 
 * Sieć VPN z protokołem IKEv2 to oparte na standardach rozwiązanie sieci VPN korzystające z protokołu IPsec. Sieci VPN z protokołem IKEv2 można używać do łączenia z urządzeniami Mac (z systemem OSX 10.11 lub nowszym).
 
@@ -232,7 +232,7 @@ Organizacje, które uruchamiają usługi internetowe, często pragną mieć modu
 Usługa Azure Application Gateway zapewnia równoważenie obciążenia oparte na protoke dla usług internetowych oparte na protokocz. Brama aplikacji obsługuje:
 
 * Koligacja sesji oparta na plikach cookie. Ta funkcja zapewnia, że połączenia nawiązane do jednego z serwerów odpowiedzialnych za ten moduł równoważenia obciążenia pozostają nienaruszone między klientem a serwerem. Zapewnia to stabilność transakcji.
-* Odciążanie SSL. Gdy klient łączy się z modułem równoważenia obciążenia, sesja ta jest szyfrowana przy użyciu protokołu HTTPS (SSL). Aby jednak zwiększyć wydajność, można użyć protokołu HTTP (niezaszyfrowanego) do łączenia się między modułem równoważenia obciążenia a serwerem sieci web za modułem równoważenia obciążenia. Jest to określane jako "odciążanie SSL", ponieważ serwery sieci web za moduł równoważenia obciążenia nie występują obciążenie procesora związane z szyfrowaniem. Serwery sieci web mogą zatem szybciej wysyłać żądania usługi.
+* Odciążanie TLS. Gdy klient łączy się z modułem równoważenia obciążenia, sesja ta jest szyfrowana przy użyciu protokołu HTTPS (TLS). Aby jednak zwiększyć wydajność, można użyć protokołu HTTP (niezaszyfrowanego) do łączenia się między modułem równoważenia obciążenia a serwerem sieci web za modułem równoważenia obciążenia. Jest to określane jako "odciążanie TLS", ponieważ serwery sieci web za moduł równoważenia obciążenia nie występują obciążenie procesora związane z szyfrowaniem. Serwery sieci web mogą zatem szybciej wysyłać żądania usługi.
 * Routing zawartości oparty na adresie URL. Ta funkcja umożliwia modułowi równoważenia obciążenia podejmowanie decyzji o tym, gdzie można przesyłać dalej połączenia na podstawie docelowego adresu URL. Zapewnia to o wiele większą elastyczność niż rozwiązania, które podejmują decyzje dotyczące równoważenia obciążenia na podstawie adresów IP.
 
 Więcej informacji:
@@ -336,7 +336,7 @@ Więcej informacji:
 
 ## <a name="azure-front-door"></a>Azure Front Door
 
-Usługa Azure Front Door Service umożliwia definiowanie, zarządzanie i monitorowanie globalnego routingu ruchu internetowego. Optymalizuje routing ruchu, aby uzyskać najlepszą wydajność i wysoką dostępność. Usługa Azure Front Door umożliwia tworzenie reguł zapory aplikacji internetowej w celu kontrolowania dostępu, aby chronić obciążenia protokołów HTTP/HTTPS przed wykorzystywaniem w oparciu o adresy IP, kod kraju i parametry protokołu HTTP klientów. Ponadto drzwiami frontowymi umożliwiają również tworzenie reguł ograniczających szybkość do walki ze złośliwym ruchem botów, obejmuje on odciążanie SSL i żądanie HTTP/HTTPS na przetwarzanie warstwy aplikacji.
+Usługa Azure Front Door Service umożliwia definiowanie, zarządzanie i monitorowanie globalnego routingu ruchu internetowego. Optymalizuje routing ruchu, aby uzyskać najlepszą wydajność i wysoką dostępność. Usługa Azure Front Door umożliwia tworzenie reguł zapory aplikacji internetowej w celu kontrolowania dostępu, aby chronić obciążenia protokołów HTTP/HTTPS przed wykorzystywaniem w oparciu o adresy IP, kod kraju i parametry protokołu HTTP klientów. Ponadto drzwiami frontowymi umożliwiają również tworzenie reguł ograniczających szybkość do walki ze złośliwym ruchem botów, w tym odciążanie TLS i żądanie HTTP/HTTPS na przetwarzanie warstwy aplikacji.
 
 Sama platforma Front Door jest chroniona przez usługę Azure DDoS Protection w warstwie Podstawowa. W celu zastosowania dalszej ochrony przez atakami w warstwie sieci (protokół TCP/UDP) za pośrednictwem funkcji automatycznego dostrajania i ograniczania ryzyka można włączyć usługę Azure DDoS Protection w warstwie Standardowa w sieciach wirtualnych i zasobach zabezpieczeń. Drzwi frontowe to odwrotny serwer proxy warstwy 7, który umożliwia tylko ruch internetowy, aby przechodzić przez serwery zaplecza i domyślnie blokować inne typy ruchu.
 

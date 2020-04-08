@@ -3,12 +3,12 @@ title: Rozwiązywanie problemów z brakiem danych — usługa Application Insigh
 description: Nie widzisz danych w usłudze Azure Application Insights? Spróbuj tutaj.
 ms.topic: conceptual
 ms.date: 07/23/2018
-ms.openlocfilehash: 2627fde55f4177798d04aab02db169f3117d32dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34fc51f8f656ec0f630bd984ac1b28fbaa5e4dae
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665905"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802590"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Rozwiązywanie problemów z braku danych — usługa Application Insights for .NET/.NET Core
 
@@ -241,12 +241,16 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 W razie potrzeby można zmodyfikować następujące parametry:
 - **MaxCollectSec**. Ustaw ten parametr, aby zapobiec programowi PerfView działającemu przez czas nieokreślony i wpływającemu na wydajność serwera.
 - **TylkoZapewniacze**. Ustaw ten parametr tylko zbierać dzienniki z zestawu SDK. Tę listę można dostosować na podstawie konkretnych badań. 
-- **NoGui**. Ustaw ten parametr tak, aby zbierał dzienniki bez Gui.
+- **NoGui**. Ustaw ten parametr tak, aby zbierał dzienniki bez graficznego interfejsu użytkownika.
 
 
 Aby uzyskać więcej informacji,
 - [Rejestrowanie śladów wydajności za pomocą programu PerfView](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
 - [Źródła zdarzeń usługi Application Insights](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+
+## <a name="how-to-remove-application-insights"></a>Jak usunąć usługa Application Insights
+
+Dowiedz się, jak usunąć aplikację Insights w programie Visual Studio, wykonując kroki opisane w [artykule](../../azure-monitor/app/remove-application-insights.md)usuwania .
 
 ## <a name="still-not-working"></a>Nadal nie działa...
 * [Forum usługi Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

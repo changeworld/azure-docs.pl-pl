@@ -4,12 +4,12 @@ description: Instrukcje dotyczące przenoszenia magazynu usług odzyskiwania w s
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: fed42c578da2e4f27f42e11d5ac67d698bbcd939
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3cfd442d49de2661d68de3c4e4b3575119504eb4
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77120715"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804422"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Przenoszenie magazynu usług odzyskiwania w subskrypcjach i grupach zasobów platformy Azure
 
@@ -17,7 +17,7 @@ W tym artykule wyjaśniono, jak przenieść magazyn usług odzyskiwania skonfigu
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Ruch zasobów dla magazynu Usług odzyskiwania jest obsługiwany w Australii Wschodniej, Australii Południowo-Wschodniej, Kanadzie Środkowej, Kanadzie Wschodniej, Azji Południowo-Wschodniej, Azji Wschodniej, Środkowo-Wschodniej, Północno-Środkowych Stanach Zjednoczonych, Wschodnich stanach USA, Wschodnich stanach USA2, południowo-środkowych stanach USA, zachodnio-środkowych stanach USA, Indie Środkowe, Indie Południowe, Japonia Wschodnia, Japonia Zachodnia, Korea Środkowa, Korea Południowa, Europa Północna, Europa Zachodnia, Republika Południowej Afryki Północna, Republika Południowej Afryki Zachód, Wielka Brytania Południowa i Wielka Brytania Zachodnia.
+Ruch zasobów dla skarbca Usługi odzyskiwania jest obsługiwany w Australii Wschód, Australia Południowy Wschód, Kanada Środkowa, Kanada Wschód, Południowo-Wschodnia Azja, Azja Wschodnia, Środkowe STANY USA, Północno-Środkowe US, Wschodnie US2, Południowo-środkowe US, West Central US2, West Central US, Indie Środkowe, Indie Południowe, Japonia Wschodnia, Japonia Zachodnia, Korea Środkowa, Korea Południowa, Europa Północna, Europa Zachodnia, Republika Południowej Afryki Północnej , Republika Południowej Afryki Zachodnia, Wielka Brytania Południowa i Wielka Brytania Zachodnia.
 
 ## <a name="unsupported-regions"></a>Nieobsługiwane regiony
 
@@ -27,7 +27,7 @@ Francja Środkowa, Francja Południowa, Niemcy Północno-Wschodnie, Niemcy Śro
 
 - Podczas przenoszenia przechowalni między grupami zasobów zarówno źródłowe, jak i docelowe grupy zasobów są zablokowane, uniemożliwiając operacje zapisu i usuwania. Aby uzyskać więcej informacji, zobacz ten [artykuł](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 - Tylko subskrypcja administracyjna ma uprawnienia do przenoszenia przechowalni.
-- W przypadku przenoszenia magazynu między subskrypcjami subskrypcja docelowa musi znajdować się w tej samej dzierżawie co subskrypcja źródłowa i jej stan powinien być włączony.
+- W przypadku przenoszenia magazynów między subskrypcjami subskrypcja docelowa musi znajdować się w tej samej dzierżawie co subskrypcja źródłowa i jej stan powinien być włączony.
 - Musisz mieć uprawnienia do wykonywania operacji zapisu w docelowej grupie zasobów.
 - Przenoszenie przechowalni zmienia tylko grupę zasobów. Magazyn usług odzyskiwania będzie znajdować się w tej samej lokalizacji i nie można go zmienić.
 - W jednym czasie można przenosić tylko jeden magazyn usług odzyskiwania dla jednego regionu.
@@ -37,18 +37,18 @@ Francja Środkowa, Francja Południowa, Niemcy Północno-Wschodnie, Niemcy Śro
 - Aby przenieść maszynę wirtualną z dyskami zarządzanymi, zobacz ten [artykuł](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
 - Opcje przenoszenia zasobów wdrożonych za pośrednictwem modelu klasycznego różnią się w zależności od tego, czy przenosisz zasoby w ramach subskrypcji, czy do nowej subskrypcji. Aby uzyskać więcej informacji, zobacz ten [artykuł](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 - Zasady tworzenia kopii zapasowych zdefiniowane dla magazynu są zachowywane po przechowalniprzejmuje się między subskrypcjami lub do nowej grupy zasobów.
-- Przenoszenie magazynu za pomocą usługi Azure Files, Azure File Sync lub SQL w maszynach wirtualnych IaaS w różnych subskrypcjach i grupach zasobów nie jest obsługiwane.
+- Przenoszenie magazynów z plikami Azure, synchronizacją plików azure lub sql na maszynach wirtualnych IaaS w różnych subskrypcjach i grupach zasobów nie jest obsługiwane.
 - Jeśli przeniesiesz magazyn zawierający dane kopii zapasowej maszyny Wirtualnej w ramach subskrypcji, musisz przenieść maszyny wirtualne do tej samej subskrypcji i użyć tej samej docelowej nazwy grupy zasobów maszyny Wirtualnej (jak w starej subskrypcji), aby kontynuować tworzenie kopii zapasowych.
 
 > [!NOTE]
->
-> Magazyny usług odzyskiwania skonfigurowane do używania z **usługą Azure Site Recovery** nie mogą się jeszcze przenieść. Jeśli skonfigurowano wszystkie maszyny wirtualne (Azure IaaS, Hyper-V, VMware) lub fizyczne maszyny do odzyskiwania po awarii przy użyciu **usługi Azure Site Recovery,** operacja przenoszenia zostanie zablokowana. Funkcja przenoszenia zasobów dla usługi site recovery nie jest jeszcze dostępna.
+> Przenoszenie magazynów usług odzyskiwania dla usługi Azure Backup w regionach platformy Azure nie jest obsługiwane.<br><br>
+> Jeśli skonfigurowano wszystkie maszyny wirtualne (Azure IaaS, Hyper-V, VMware) lub fizyczne maszyny do odzyskiwania po awarii przy użyciu **usługi Azure Site Recovery,** operacja przenoszenia zostanie zablokowana. Jeśli chcesz przenieść magazyny dla usługi Azure Site Recovery, zapoznaj się z [tym artykułem,](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) aby dowiedzieć się więcej o ręcznym przenoszeniu magazynów.
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Przenoszenie magazynu usług odzyskiwania do innej grupy zasobów za pomocą witryny Azure portal
 
 Aby przenieść magazyn usług odzyskiwania i skojarzone z nim zasoby do innej grupy zasobów
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Otwórz listę **magazynów usług odzyskiwania** i wybierz przechowalnię, którą chcesz przenieść. Po otwarciu pulpitu nawigacyjnego przechowalni jest on wyświetlany w sposób pokazany na poniższej ilustracji.
 
    ![Otwórz magazyn usługi Recover](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -77,7 +77,7 @@ Aby przenieść magazyn usług odzyskiwania i skojarzone z nim zasoby do innej g
 
 Magazyn usług odzyskiwania i skojarzone z nim zasoby można przenieść do innej subskrypcji
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Otwórz listę magazynów usług odzyskiwania i wybierz przechowalnię, którą chcesz przenieść. Po otwarciu pulpitu nawigacyjnego przechowalni jest wyświetlany w następujący sposób.
 
     ![Otwórz magazyn usługi Recover](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)

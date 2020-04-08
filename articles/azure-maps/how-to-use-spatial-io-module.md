@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5bcfeebc1fcb96cfdf6ea802293eb4027f339815
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335210"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804643"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Jak korzystać z modułu Usługi we/wy usługi Azure Maps
 
@@ -26,6 +26,13 @@ Zestaw Azure Maps Web SDK udostępnia **moduł IO przestrzennego,** który integ
 - [Korzystaj z szybkiego kodu XML i rozdzielanych klas czytnika plików i modułu zapisującego.](spatial-io-core-operations.md)
 
 W tym przewodniku dowiemy się, jak zintegrować i używać modułu Przestrzenne we/wy w aplikacji sieci web.
+
+Ten klip wideo zawiera omówienie modułu we/wy przestrzennej w zestawie Azure Maps Web SDK.
+
+<br/>
+
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0" title="Łatwa integracja danych przestrzennych z usługą Azure Maps — Microsoft Channel 9 Video"></iframe>
+
 
 > [!WARNING]
 > Używaj tylko danych i usług pochodzących z zaufanego źródła, zwłaszcza jeśli odwołujesz się do niego z innej domeny. Moduł we/wy przestrzennej wykonuje kroki w celu zminimalizowania ryzyka, jednak najbezpieczniejsze podejście jest zbyt nie zezwala na żadnych danagerous danych do aplikacji, aby rozpocząć. 

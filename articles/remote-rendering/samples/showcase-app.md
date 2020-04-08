@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 04/01/2020
 ms.topic: sample
-ms.openlocfilehash: 0410e7ea79f087c8dadd603ba8e394ca949de792
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: e1e91a892a1c8b69b3dc7f6c79109377e13bd7ae
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679492"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804456"
 ---
 # <a name="unity-showcase-application"></a>Aplikacja unity showcase
 
@@ -20,7 +20,7 @@ Aplikacja unity showcase to przykładowa aplikacja oparta na unity, która zadem
 
 ## <a name="source-repository"></a>Repozytorium źródeł
 
-Kod źródłowy dla tej aplikacji wraz z instrukcjami kompilacji/wdrażania można znaleźć w [repozytorium próbek ARR](https://github.com/Azure/azure-remote-rendering).
+Kod źródłowy dla tej aplikacji wraz z instrukcjami kompilacji/wdrażania można znaleźć w [repozytorium próbek ARR](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/AzureRemoteRenderingShowcase).
 
 ## <a name="next-steps"></a>Następne kroki
 

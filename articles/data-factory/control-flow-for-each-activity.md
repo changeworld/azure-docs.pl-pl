@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: b8f95f22553a3b4639b1aba6576ce844116ae20b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71528385563b29ce70edf396434be0174beac105
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73679875"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804847"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach działania w usłudze Azure Data Factory
 ForEach Działania definiuje powtarzający się przepływ sterowania w potoku. To działanie służy do wykonywania iteracji po kolekcji i wykonuje określone działania w pętli. Implementacja pętli tego działania przypomina strukturę pętli Foreach w językach programowania.
@@ -73,7 +73,7 @@ Właściwość | Opis | Dozwolone wartości | Wymagany
 name | Nazwa działania dla każdego. | Ciąg | Tak
 type | Musi być ustawiona **na ForEach** | Ciąg | Tak
 isSekwencja | Określa, czy pętla ma być wykonywana sekwencyjnie czy równolegle.  Maksymalnie 20 iteracji pętli może być wykonywanych jednocześnie równolegle). Na przykład jeśli masz ForEach działania iteracji nad działaniem kopiowania z 10 różnych źródeł i ujścia zestawów danych z **isSequential** ustawiony na False, wszystkie kopie są wykonywane jednocześnie. Wartość domyślna to False. <br/><br/> Jeśli "isSequential" jest ustawiona na False, upewnij się, że istnieje poprawna konfiguracja do uruchamiania wielu plików wykonywalnych. W przeciwnym razie ta właściwość powinna być używana z ostrożnością, aby uniknąć ponoszenia konfliktów zapisu. Aby uzyskać więcej informacji, zobacz [sekcję wykonywania równoległego.](#parallel-execution) | Wartość logiczna | Nie. Wartość domyślna to False.
-liczba partii | Liczba partii, która ma być używana do kontrolowania liczby wykonywania równoległego (gdy isSequential jest ustawiona na false). | Liczba całkowita (maksymalnie 50) | Nie. Wartość domyślna to 20.
+liczba partii | Liczba partii, która ma być używana do kontrolowania liczby wykonywania równoległego (gdy isSequential jest ustawiona na false). Jest to górny limit współbieżności, ale dla każdego działania nie zawsze będzie wykonywane pod tym numerem | Liczba całkowita (maksymalnie 50) | Nie. Wartość domyślna to 20.
 Items | Wyrażenie, które zwraca tablicy JSON do iteracyjne ponad. | Wyrażenie (które zwraca tablicę JSON) | Tak
 Działania | Działania, które mają zostać wykonane. | Lista działań | Tak
 

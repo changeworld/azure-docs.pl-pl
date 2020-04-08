@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8b9b33076a2c2cea27fea181b760a721488682c9
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 702df1bfaf0701a40e514f8a47151f96917adf38
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657021"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811599"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Korzystanie z usługi Microsoft Teams na pulpicie wirtualnym systemu Windows
 
@@ -51,7 +51,7 @@ Aplikację klasyczną Teams można wdrożyć przy użyciu instalacji na komputer
 2. Uruchom to polecenie, aby zainstalować msi na maszynie wirtualnej hosta.
 
       ```shell
-      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSERS=1
+      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSER=1
       ```
 
       Spowoduje to zainstalowanie aplikacji Teams na pliki programów lub pliki programów (x86). Przy następnym logowanie i uruchamianie usługi Teams aplikacja poprosi o podanie poświadczeń.

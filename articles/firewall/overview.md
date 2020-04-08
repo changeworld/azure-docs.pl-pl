@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/03/2020
+ms.date: 04/07/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: a8930af1366fef3d8c4491fca5e9403905648de1
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 951396afc95a215a6ff9f4885f83fcdf6efdeb72
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80638011"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810336"
 ---
 # <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
@@ -120,6 +120,7 @@ Reguły filtrowania dla protokołów innych niż TCP/UDP (na przykład ICMP) nie
 |Aktywny ftp nie jest obsługiwany|Aktywny protokół FTP jest wyłączony w zaporze platformy Azure w celu ochrony przed atakami odbijania FTP za pomocą polecenia FTP PORT.|Zamiast tego można użyć pasywnego FTP. Nadal należy jawnie otworzyć porty TCP 20 i 21 na zaporze.
 |Wskaźnik wykorzystania portów SNAT pokazuje 0%|Metryka wykorzystania portu SNAT zapory platformy Azure może wykazywać 0% użycia nawet wtedy, gdy są używane porty SNAT. W takim przypadku przy użyciu metryki jako część metryki kondycji zapory zapewnia niepoprawny wynik.|Ten problem został rozwiązany i wdrożenie do produkcji jest ukierunkowane na maj 2020. W niektórych przypadkach ponowne wdrożenie zapory rozwiązuje problem, ale nie jest spójne. Jako obejście pośrednie należy używać tylko stanu kondycji zapory, aby wyszukać *stan=zdegradowany*, nie dla *stanu=w złej kondycji*. Wyczerpanie portu będzie wyświetlane jako *zdegradowane*. *Nie w dobrej kondycji* jest zarezerwowany do wykorzystania w przyszłości, gdy są bardziej metryki, aby wpłynąć na kondycję zapory.
 |Protokół DNAT nie jest obsługiwany z włączoną funkcją tunelowania wymuszonego|Zapory wdrożone z włączoną obsługą tunelowania wymuszonego nie obsługują dostępu przychodzącego z Internetu z powodu routingu asymetrycznego.|Jest to zgodnie z projektem ze względu na routing asymetryczny. Ścieżka powrotu dla połączeń przychodzących przechodzi przez zaporę lokalną, która nie została nawiązana.
+|Wychodzący pasywny protokół FTP nie działa w przypadku zapór z wieloma publicznymi adresami IP.|Pasywny FTP ustanawia różne połączenia dla kanałów sterowania i transmisji danych. Gdy Zapora z wieloma publicznymi adresami IP wysyła dane wychodzące, losowo wybiera jeden ze swoich publicznych adresów IP dla źródłowego adresu IP. Protokół FTP kończy się niepowodzeniem, gdy kanały danych i kontroli używają różnych źródłowych adresów IP.|Planowana jest jawna konfiguracja SNAT. W międzyczasie należy rozważyć użycie jednego adresu IP w tej sytuacji.|
 
 ## <a name="next-steps"></a>Następne kroki
 

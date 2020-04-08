@@ -2,13 +2,13 @@
 title: Obsługa tagów dla zasobów
 description: Pokazuje, które typy zasobów platformy Azure obsługują tagi. Zawiera szczegółowe informacje dotyczące wszystkich usług platformy Azure.
 ms.topic: conceptual
-ms.date: 02/26/2020
-ms.openlocfilehash: 6100c667c7df0b3e1740777565d260af9fa818a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: e012126995136bec15dc360be5e91007b6f69f09
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77657577"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802496"
 ---
 # <a name="tag-support-for-azure-resources"></a>Obsługa tagów dla zasobów platformy Azure
 W tym artykule opisano, czy typ zasobu obsługuje [znaczniki](tag-resources.md). Kolumna oznaczona **tagami Obsługuje** wskazuje, czy typ zasobu ma właściwość dla tagu. Kolumna oznaczona etykietą **Znacznik w raporcie kosztów** wskazuje, czy ten typ zasobu przekazuje znacznik do raportu kosztów. Koszty można wyświetlać według tagów w [analizie kosztów zarządzania kosztami](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) oraz [fakturach rozliczeniowych platformy Azure i danych dotyczących dziennego użycia](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -38,6 +38,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > - [Rozliczenia firmy Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
 > - [Łańcuch bloków firmy Microsoft.Blockchain](#microsoftblockchain)
+> - [Microsoft.BlockchainTokens](#microsoftblockchaintokens)
 > - [Plan firmy Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
 > - [Pamięć podręczna firmy Microsoft.Cache](#microsoftcache)
@@ -55,7 +56,6 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > - [Insstancja kontenera firmy Microsoft](#microsoftcontainerinstance)
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
 > - [Usługa kontenera firmy Microsoft.ContainerService](#microsoftcontainerservice)
-> - [Microsoft.CortanaAnalityka](#microsoftcortanaanalytics)
 > - [Zarządzanie kosztami firmy Microsoft](#microsoftcostmanagement)
 > - [Microsoft.CustomerLockbox (Skrzynka z blokadą klienta firmy Microsoft)](#microsoftcustomerlockbox)
 > - [Usługi niestandardowe firmy Microsoft.Custom](#microsoftcustomproviders)
@@ -83,6 +83,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
+> - [Microsoft.Falcon](#microsoftfalcon)
 > - [Microsoft.Features](#microsoftfeatures)
 > - [Galeria Microsoft.Gallery](#microsoftgallery)
 > - [Microsoft.Genomics](#microsoftgenomics)
@@ -99,11 +100,13 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > - [Centrum IoT Firmy Microsoft](#microsoftiotcentral)
 > - [Przestrzenie IoT firmy Microsoft](#microsoftiotspaces)
 > - [Usługa Microsoft.KeyVault](#microsoftkeyvault)
+> - [Microsoft.Kubernetes](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [Logika firmy Microsoft.Logic](#microsoftlogic)
 > - [Uczenie się maszyn firmy Microsoft.Machine](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
+> - [Microsoft.Maintenance](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
 > - [Usługi zarządzane przez firmę Microsoft.Managed](#microsoftmanagedservices)
 > - [Zarządzanie microsoftem](#microsoftmanagement)
@@ -129,6 +132,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > - [Program Microsoft.PowerBI](#microsoftpowerbi)
 > - [Program Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
 > - [Microsoft.ProjectBabylon](#microsoftprojectbabylon)
+> - [Microsoft.Quantum](#microsoftquantum)
 > - [Usługi Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Aplikacja Microsoft.RemoteApp](#microsoftremoteapp)
@@ -220,9 +224,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | alertyMetaData | Nie | Nie |
 > | alertySummary | Nie | Nie |
 > | alertsSummaryList | Nie | Nie |
-> | Opinie | Nie | Nie |
 > | zasady inteligentnego FiltraAlert | Tak | Tak |
-> | smartDetectorRuntimeŚrodowienia | Nie | Nie |
 > | grupy smartGroups | Nie | Nie |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.analysisservices
@@ -331,7 +333,6 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | ------------- | ----------- | ----------- |
 > | hybridDataManagers | Tak | Tak |
 > | PostgresInstances (PostgresInstances) | Tak | Tak |
-> | sqlBigDaclusters | Tak | Tak |
 > | SqlInstances (Instancje sql) | Tak | Tak |
 > | Sqlserverregistrations | Tak | Tak |
 > | sqlServerRegistrations / sqlServers | Nie | Nie |
@@ -341,10 +342,10 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje znaczniki | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
+> | cloudManifestFiles | Nie | Nie |
 > | Rejestracji | Tak | Tak |
 > | rejestracje / customerSubscriptions | Nie | Nie |
 > | rejestracje / produkty | Nie | Nie |
-> | verificationKeys (Klawisze) | Nie | Nie |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -459,6 +460,17 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | cordaPoczęcie | Tak | Tak |
 > | Obserwatorów | Tak | Tak |
 
+## <a name="microsoftblockchaintokens"></a>Microsoft.BlockchainTokens
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Obsługuje znaczniki | Tag w raporcie kosztów |
+> | ------------- | ----------- | ----------- |
+> | Usługi TokenServices | Tak | Tak |
+> | TokenServices / BlockchainNetworks | Nie | Nie |
+> | TokenServices / Grupy | Nie | Nie |
+> | TokenServices / Grupy / Konta | Nie | Nie |
+> | TokenServices / TokenTemplates | Nie | Nie |
+
 ## <a name="microsoftblueprint"></a>Plan firmy Microsoft.Blueprint
 
 > [!div class="mx-tableFixed"]
@@ -528,6 +540,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | Profile | Tak | Tak |
 > | profile / punkty końcowe | Tak | Tak |
 > | profile / punkty końcowe / customdoains | Nie | Nie |
+> | profile / punkty końcowe / grupy origin | Nie | Nie |
 > | profile / punkty końcowe / początki | Nie | Nie |
 > | validateProbe (validateProbe) | Nie | Nie |
 
@@ -648,9 +661,12 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | proximityPlacementGrupy | Tak | Tak |
 > | restorePointCollections (RestorePointCollections) | Tak | Tak |
 > | restorePointCollections / restorePoints | Nie | Nie |
+> | sharedVMWysekcje | Tak | Tak |
+> | sharedVMWysekcje / wersje | Nie | Nie |
 > | sharedVMImages | Tak | Tak |
 > | sharedVMImages / wersje | Nie | Nie |
 > | Migawki | Tak | Tak |
+> | sshPublicKeys (Klucze publiczne) | Tak | Tak |
 > | wirtualnematyny | Tak | Tak |
 > | virtualMachines / rozszerzenia | Tak | Tak |
 > | virtualMachines / metrykaDefinicje | Nie | Nie |
@@ -701,6 +717,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje znaczniki | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | Rejestrów | Tak | Tak |
+> | rejestry / agentPools | Tak | Tak |
 > | rejestry / buduje | Nie | Nie |
 > | rejestry / buduje / anulują | Nie | Nie |
 > | rejestry / buduje / getLogLink | Nie | Nie |
@@ -739,13 +756,6 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | kontenerSługi | Tak | Tak |
 > | zarządzaneKlustery | Tak | Tak |
 > | openShiftManagedClusters | Tak | Tak |
-
-## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalityka
-
-> [!div class="mx-tableFixed"]
-> | Typ zasobu | Obsługuje znaczniki | Tag w raporcie kosztów |
-> | ------------- | ----------- | ----------- |
-> | accounts | Tak | Tak |
 
 ## <a name="microsoftcostmanagement"></a>Zarządzanie kosztami firmy Microsoft
 
@@ -939,6 +949,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | serwery / virtualNetworkRules | Nie | Nie |
 > | serwery / waitStatistics | Nie | Nie |
 > | serweryv2 | Tak | Tak |
+> | singleServers | Tak | Tak |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
@@ -1075,13 +1086,22 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | przestrzenie nazw / eventhubs / grupy konsumentów | Nie | Nie |
 > | przestrzenie nazw / zasady sieciowe | Nie | Nie |
 
+## <a name="microsoftfalcon"></a>Microsoft.Falcon
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Obsługuje znaczniki | Tag w raporcie kosztów |
+> | ------------- | ----------- | ----------- |
+> | Obszary nazw | Tak | Tak |
+
 ## <a name="microsoftfeatures"></a>Microsoft.Features
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje znaczniki | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
+> | funkcjaProvidery | Nie | Nie |
 > | funkcje | Nie | Nie |
 > | dostawców | Nie | Nie |
+> | subskrypcjaFeatureRegistrations | Nie | Nie |
 
 ## <a name="microsoftgallery"></a>Galeria Microsoft.Gallery
 
@@ -1216,6 +1236,13 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | przechowalnia / eventGridFilters | Nie | Nie |
 > | skarbce / sekrety | Nie | Nie |
 
+## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Obsługuje znaczniki | Tag w raporcie kosztów |
+> | ------------- | ----------- | ----------- |
+> | connectedClusters (łączonykwierarze) | Tak | Tak |
+
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
@@ -1227,6 +1254,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | klastry / bazy danych / połączenia danych | Nie | Nie |
 > | klastry / bazy danych / eventhubconnections | Nie | Nie |
 > | klastry / bazy danych / principalassignments | Nie | Nie |
+> | klastry / połączenia danych | Nie | Nie |
 > | klastry / główne przypisania | Nie | Nie |
 > | klastry / współużytkowania | Nie | Nie |
 
@@ -1268,6 +1296,16 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | obszary robocze / obliczenia | Nie | Nie |
 > | obszary robocze / eventGridFilters | Nie | Nie |
 
+## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Obsługuje znaczniki | Tag w raporcie kosztów |
+> | ------------- | ----------- | ----------- |
+> | applyUpdates (stosowaniewzszy i poucza | Nie | Nie |
+> | konfiguracjaAssignments | Nie | Nie |
+> | konfiguracje obsługi | Tak | Tak |
+> | aktualizacje | Nie | Nie |
+
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
@@ -1304,6 +1342,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | ------------- | ----------- | ----------- |
 > | accounts | Tak | Tak |
 > | konta / eventGridFilters | Nie | Nie |
+> | konta / privateAtlases | Tak | Tak |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
 
@@ -1320,10 +1359,13 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | offerTypes / wydawcy / oferty / plany / configs / importImage | Nie | Nie |
 > | privategalleryitems | Nie | Nie |
 > | privateStoreClient (Magazyn prywatnyClient) | Nie | Nie |
+> | prywatneSklepy | Nie | Nie |
+> | privateStores / oferty | Nie | Nie |
 > | Produktów | Nie | Nie |
 > | Wydawców | Nie | Nie |
 > | wydawcy / oferty | Nie | Nie |
 > | wydawcy / oferty / poprawki | Nie | Nie |
+> | zarejestruj | Nie | Nie |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -1390,7 +1432,6 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | obiektUnderstandingKontacje | Tak | Tak |
 > | konta zdalnegorenderingu | Tak | Tak |
 > | przestrzenne Konta na kontach | Tak | Tak |
-> | powierzchniRekonstrukcjaKonta | Tak | Tak |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp (Microsoft.NetApp)
 
@@ -1398,6 +1439,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje znaczniki | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | netAppKony | Tak | Nie |
+> | netAppKony / kontoBackups | Nie | Nie |
 > | netAppKony / pojemnośćPuly | Tak | Nie |
 > | netAppKony / pojemnośćPuly / woluminy | Tak | Nie |
 > | netAppAccounts / pojemnośćPuly / woluminy / migawki | Nie | Nie |
@@ -1536,9 +1578,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | obszary robocze / daneRozprzemysł | Nie | Nie |
 > | obszary robocze / daneŹródła | Nie | Nie |
 > | obszary robocze / linkedServices | Nie | Nie |
-> | obszary robocze / privateEndpointConnectionProxies | Nie | Nie |
-> | obszary robocze / privateEndpointConnections | Nie | Nie |
-> | obszary robocze / privateLinkResources | Nie | Nie |
+> | obszary robocze / linkedStorageKony | Nie | Nie |
 > | obszary robocze / kwerenda | Nie | Nie |
 > | obszary robocze / scopedPrivateLinkProxies | Nie | Nie |
 
@@ -1604,6 +1644,13 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje znaczniki | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | accounts | Tak | Tak |
+
+## <a name="microsoftquantum"></a>Microsoft.Quantum
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Obsługuje znaczniki | Tag w raporcie kosztów |
+> | ------------- | ----------- | ----------- |
+> | Obszary robocze | Tak | Tak |
 
 ## <a name="microsoftrecoveryservices"></a>Usługi Microsoft.RecoveryServices
 
@@ -1726,6 +1773,10 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | zgodność z przepisamiStandardy | Nie | Nie |
 > | zgodność z przepisamiStandardy / regulatoryComplianceControls | Nie | Nie |
 > | regulatoryComplianceStandards / regulatoryComplianceControls / regulatoryComplianceAssessments | Nie | Nie |
+> | secureScoreControlDefinitions | Nie | Nie |
+> | secureScoreControls | Nie | Nie |
+> | secureScores (bezpieczneszechanie) | Nie | Nie |
+> | secureScores / secureScoreControls | Nie | Nie |
 > | securityContacts | Nie | Nie |
 > | zabezpieczeniaRozwiązywanie | Nie | Nie |
 > | zabezpieczeniaSolutionsReferenceData | Nie | Nie |
@@ -1998,6 +2049,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | zmień nazwę | Nie | Nie |
 > | SubskrypcjeDefinicje | Nie | Nie |
 > | Działanie subskrypcji | Nie | Nie |
+> | Subskrypcji | Nie | Nie |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -2028,6 +2080,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | Dostawców | Nie | Nie |
 > | sprzedawcy / skus | Nie | Nie |
 > | dostawców / vnfs | Nie | Nie |
+> | virtualNetworkFunctionSkus | Nie | Nie |
 > | vnfs ( vnfs ) | Tak | Tak |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
@@ -2055,6 +2108,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | hostingŚrodowiska / eventGridFilters | Nie | Nie |
 > | hostingŚrodowiska / baseny wielozadaniowe | Nie | Nie |
 > | hostingŚrodowiska / pracownicy Baseny | Nie | Nie |
+> | kubeŚrodowiska | Tak | Tak |
 > | publikowanieUżytnicy | Nie | Nie |
 > | zalecenia | Nie | Nie |
 > | zasobyHealthMetadata | Nie | Nie |

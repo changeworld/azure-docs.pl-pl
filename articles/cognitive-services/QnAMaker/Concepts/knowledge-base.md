@@ -3,12 +3,12 @@ title: Importowanie ze źródeł danych — QnA Maker
 description: Baza wiedzy QnA Maker składa się z zestawu zestawów pytań i odpowiedzi (QnA) i opcjonalnych metadanych skojarzonych z każdą parą QnA.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: e7772b2c76dfb92ced4d2c0d4b8dae97a59d1b83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f648e15be803159dadb3f8bd047b2f46885eec91
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79457825"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804286"
 ---
 # <a name="importing-from-data-sources"></a>Importowanie ze źródeł danych
 
@@ -56,7 +56,7 @@ Kolumna dla wielu `.tsv`zakrętów, specyficznych dla wielu **zakrętów,** to M
 
 ## <a name="export-as-example"></a>Eksport jako przykład
 
-Jeśli nie masz pewności, jak reprezentować `.tsv` zestaw QnA w pliku:
+Jeśli nie masz pewności, jak reprezentować `.tsv` parę QnA w pliku:
 * Użyj tego [przykładu do pobrania z gitHub](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)
 * Możesz też utworzyć zestaw w portalu QnA Maker, zapisać, a następnie wyeksportować bazę wiedzy, aby uzyskać przykład reprezentowania zestawu.
 
@@ -72,9 +72,9 @@ Użyj odwołania QnA Maker [Markdown,](../reference-markdown-format.md) aby pom�
 [Omówienie usługi QnA Maker](../Overview/overview.md)
 
 Tworzenie i edytowanie bazy wiedzy za pomocą:
-* [INTERFEJS API ODPOCZYNKU](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
-* [Zestaw SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
+* [Interfejs API REST](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
+* [Zestaw SDK .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
 Wygeneruj odpowiedź za pomocą:
-* [INTERFEJS API ODPOCZYNKU](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
-* [Zestaw SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)
+* [Interfejs API REST](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
+* [Zestaw SDK .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

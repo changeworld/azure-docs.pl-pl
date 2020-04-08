@@ -10,15 +10,17 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 7d3525bc7a25550a79ceeb008e3c69c77a56aa0a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 91e2d70bab8c1be4b3e5b400ce21122eccb1e9eb
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632867"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811379"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Korzystanie z usługi Azure Event Hubs z aplikacji Apache Kafka
 Usługa Event Hubs udostępnia punkt końcowy platformy Kafka, który może być używany przez istniejące aplikacje oparte na platformie Kafka jako alternatywa dla uruchamiania własnego klastra platformy Kafka. Usługa Event Hubs obsługuje [protokół Apache Kafka 1.0 lub nowszych](https://kafka.apache.org/documentation/)oraz współpracuje z istniejącymi aplikacjami platformy Kafka, w tym z programem MirrorMaker.  
+
+> [!VIDEO https://www.youtube.com/embed/UE1WgB96_fc]
 
 ## <a name="what-does-event-hubs-for-kafka-provide"></a>Co zapewniają centra zdarzeń dla platformy Kafka?
 
@@ -71,7 +73,7 @@ sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
-#### <a name="samples"></a>Samples 
+#### <a name="samples"></a>Przykłady 
 Aby uzyskać **samouczek** z instrukcjami krok po kroku, aby utworzyć centrum zdarzeń i uzyskać do niego dostęp przy użyciu sas lub OAuth, zobacz [Szybki start: Przesyłanie strumieniowe danych z centrum zdarzeń przy użyciu protokołu Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md).
 
 Aby uzyskać więcej **przykładów,** które pokazują, jak używać OAuth z Centrum zdarzeń dla platformy Kafka, zobacz [przykłady w usłudze GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth).

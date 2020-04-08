@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 783343dd8877bdf18e783494960c3052c293cc7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 173f5c698ab44ea269995665bcbc33c726d4f03a
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248140"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811461"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Certificates overview for Azure Cloud Services (Omówienie certyfikatów usług Azure Cloud Services)
 Certyfikaty są używane na platformie Azure dla usług w chmurze[(certyfikaty usług)](#what-are-service-certificates)i do uwierzytelniania za pomocą interfejsu API zarządzania[(certyfikaty zarządzania).](#what-are-management-certificates) W tym temacie przedstawiono ogólne omówienie obu typów certyfikatów, jak [je utworzyć](#create) i wdrożyć na platformie Azure.
@@ -55,7 +55,7 @@ Za pomocą dowolnego dostępnego narzędzia można utworzyć certyfikat z podpis
 * Utworzono do wymiany kluczy (plik pfx).
 * Nazwa podmiotu musi być zgodna z domeną używaną do uzyskiwania dostępu do usługi w chmurze.
 
-    > Nie można uzyskać certyfikatu SSL dla cloudapp.net (lub dla dowolnej domeny związanej z platformą Azure); nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną do uzyskiwania dostępu do aplikacji. Na przykład **contoso.net**, nie **contoso.cloudapp.net**.
+    > Nie można uzyskać certyfikatu TLS/SSL dla cloudapp.net (lub dla dowolnej domeny związanej z platformą Azure); nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną do uzyskiwania dostępu do aplikacji. Na przykład **contoso.net**, nie **contoso.cloudapp.net**.
 
 * Minimum szyfrowanie 2048-bitowe.
 * **Tylko certyfikat serwisowy:** Certyfikat po stronie klienta musi znajdować się w magazynie certyfikatów *osobistych.*

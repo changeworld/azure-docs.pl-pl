@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0643ae792c890b65f239d9a0c16a05639dd4f8b9
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77138017"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811478"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpieczanie wdrożeń typu PaaS
 
@@ -100,8 +100,8 @@ W poniższej tabeli wymieniono zagrożenia STRIDE i podano kilka przykładowych 
 
 | Zagrożenie | Właściwość zabezpieczeń | Potencjalne środki zaradcze platformy Azure |
 | --- | --- | --- |
-| Fałszowanie zawartości | Uwierzytelnianie | Wymagaj połączeń HTTPS. |
-| Manipulowanie | Integralność | Sprawdzanie poprawności certyfikatów SSL. |
+| Fałszowanie zawartości | Authentication | Wymagaj połączeń HTTPS. |
+| Manipulowanie | Integralność | Sprawdzanie poprawności certyfikatów TLS/SSL. |
 | Odrzucenie | Brak odrzucenia | Włącz [monitorowanie i diagnostykę](/azure/architecture/best-practices/monitoring)platformy Azure . |
 | Ujawnianie informacji | Poufność | Szyfruj poufne dane w spoczynku przy użyciu [certyfikatów usług](/rest/api/appservice/certificates). |
 | Odmowa usługi | Dostępność | Monitoruj metryki wydajności pod kątem potencjalnych warunków typu "odmowa usługi". Implementowanie filtrów połączeń. |
@@ -153,7 +153,7 @@ Testy fuzz to metoda znajdowania błędów programu (błędów kodu) przez dosta
 ## <a name="next-steps"></a>Następne kroki
 W tym artykule skupiliśmy się na zaletach zabezpieczeń wdrożenia usługi Azure PaaS i najlepszych praktyk w zakresie zabezpieczeń dla aplikacji w chmurze. Następnie zapoznaj się z zalecanymi praktykami dotyczącymi zabezpieczania rozwiązań sieci Web i mobilnych PaaS przy użyciu określonych usług platformy Azure. Zaczniemy od usługi Azure App Service, usługi Azure SQL Database i usługi Azure SQL Data Warehouse oraz usługi Azure Storage. W miarę dostępności artykułów na temat zalecanych rozwiązań dla innych usług platformy Azure łącza będą dostępne na następującej liście:
 
-- [Usługa aplikacji platformy Azure](paas-applications-using-app-services.md)
+- [Azure App Service](paas-applications-using-app-services.md)
 - [Usługa Azure SQL Database i usługa Azure SQL Data Warehouse](paas-applications-using-sql.md)
 - [Azure Storage](paas-applications-using-storage.md)
 - Azure Cache for Redis

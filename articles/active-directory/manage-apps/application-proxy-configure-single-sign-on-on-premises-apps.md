@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccf34b52e06e369fe4dd459ff9dfa2880596fb35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3d2117e913f292e92f37f31d2e123587c70a189
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481351"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803301"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Saml logowanie jednokrotne dla aplikacji lokalnych z pełnomocnikiem aplikacji
 
@@ -74,14 +74,14 @@ Aby można było podać opcję SSO dla aplikacji lokalnych, należy włączyć s
 
 2. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** przejdź do **nagłówka Konfiguracja podstawowego SAML** i wybierz jego ikonę **Edycji** (ołówek). Upewnij się, że **zewnętrzny adres URL** skonfigurowany w serwerze proxy aplikacji jest wypełniany w polach **Identyfikator**, Adres **URL odpowiedzi**i Adres **URL wylogowywania.** Te adresy URL są wymagane do prawidłowego działania serwera proxy aplikacji. 
 
-3. Edytuj adres **URL odpowiedzi** skonfigurowany wcześniej, tak aby jego domena była osiągalna przez serwer proxy aplikacji. Jeśli na przykład **zewnętrzny adres URL** jest `https://contosotravel.com/acs` `https://contosotravel-f128.msappproxy.net` i oryginalny **adres URL odpowiedzi** był , musisz zaktualizować oryginalny adres URL **odpowiedzi** do `https://contosotravel-f128.msappproxy.net/acs`. 
+3. Edytuj **adres URL odpowiedzi** skonfigurowany wcześniej, tak aby jego domena była osiągalna w Internecie za pośrednictwem serwera proxy aplikacji. Jeśli na przykład **zewnętrzny adres URL** jest `https://contosotravel.com/acs` `https://contosotravel-f128.msappproxy.net` i oryginalny **adres URL odpowiedzi** był , musisz zaktualizować oryginalny adres URL **odpowiedzi** do `https://contosotravel-f128.msappproxy.net/acs`.
 
     ![Wprowadzanie podstawowych danych konfiguracyjnych SAML](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
 
 4. Zaznacz pole wyboru obok zaktualizowanego **adresu URL odpowiedzi,** aby oznaczyć je jako domyślne.
 
-   * Jeśli wymagany **adres URL odpowiedzi** jest już wyświetlany, oznacz ten **adres URL odpowiedzi** jako domyślny i usuń wcześniej skonfigurowany adres URL **odpowiedzi**.
+   * Po oznaczeniu wymaganego **adresu URL odpowiedzi** jako domyślnego można również usunąć wcześniej skonfigurowany adres URL **odpowiedzi,** który używał wewnętrznego adresu URL.
 
    * W przypadku przepływu inicjowanego przez sp, upewnij się, że aplikacja zaplecza określa poprawny **adres URL odpowiedzi** lub adres URL usługi konsumenta oświadczeń do odbierania tokenu uwierzytelniania.
 

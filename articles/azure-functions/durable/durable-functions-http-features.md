@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 29d837446960b7535b26284efdfab7a1c59ea968
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fece1155d2f707f11dda9f3896bd8a08deff1557
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132496"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802387"
 ---
 # <a name="http-features"></a>Funkcje HTTP
 
@@ -41,11 +41,11 @@ Zobacz [artykuł interfejsów API HTTP,](durable-functions-http-api.md) aby uzys
 
 [Powiązanie klienta aranżacji](durable-functions-bindings.md#orchestration-client) udostępnia interfejsy API, które mogą generować wygodne ładunki odpowiedzi HTTP. Na przykład można utworzyć odpowiedź zawierającą łącza do interfejsów API zarządzania dla określonego wystąpienia aranżacji. Poniższe przykłady pokazują funkcję wyzwalacza HTTP, która pokazuje, jak używać tego interfejsu API dla nowego wystąpienia aranżacji:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **indeks.js**
 
@@ -114,7 +114,7 @@ Począwszy od funkcji trwałych 2.0, aranżacje mogą natywnie korzystać z inte
 
 Poniższy przykładowy kod pokazuje funkcję koordynatora, która tworzy wychodzące żądanie HTTP:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -134,7 +134,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -172,7 +172,7 @@ Funkcje trwałe natywnie obsługuje wywołania interfejsów API, które akceptuj
 
 Poniższy kod jest przykładem funkcji orkiestra .NET. Funkcja sprawia, że uwierzytelnione wywołania ponownego uruchomienia maszyny wirtualnej przy użyciu usługi Azure Resource Manager [maszyny interfejsu API REST](https://docs.microsoft.com/rest/api/compute/virtualmachines).
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -198,7 +198,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -232,7 +232,7 @@ W czasie wykonywania skonfigurowane źródło tokenu automatycznie zwraca token 
 * Tokeny nigdy nie są przechowywane w stanie trwałej aranżacji.
 * Nie trzeba pisać żadnego kodu do zarządzania pozyskiwaniem tokenów.
 
-Bardziej kompletny przykład można znaleźć w [przykładzie wstępnie skompilowanych programów RestartVMs języka C#.](https://github.com/Azure/azure-functions-durable-extension/blob/v2/samples/v2/precompiled/RestartVMs.cs)
+Bardziej kompletny przykład można znaleźć w [przykładzie wstępnie skompilowanych programów RestartVMs języka C#.](https://github.com/Azure/azure-functions-durable-extension/blob/dev/samples/precompiled/RestartVMs.cs)
 
 Tożsamości zarządzane nie są ograniczone do zarządzania zasobami platformy Azure. Za pomocą tożsamości zarządzanych można uzyskać dostęp do dowolnego interfejsu API, który akceptuje tokeny nośnika usługi Azure AD, w tym usługi platformy Azure od firmy Microsoft i aplikacje sieci Web od partnerów. Aplikacja internetowa partnera może być nawet inną aplikacją funkcyjną. Aby uzyskać listę usług platformy Azure firmy Microsoft obsługujących uwierzytelnianie za pomocą usługi Azure AD, zobacz [usługi platformy Azure obsługujące uwierzytelnianie usługi Azure AD.](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 

@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 8244a0f164c8578bf9f79e4b66beb529b6a15f67
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: f31c084be2fb017c0db521328e4ccdff9dd2aa25
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586017"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810475"
 ---
-# <a name="planning-and-operations-guide"></a>Przewodnik po planowaniu i operacjach
+# <a name="planning-and-operations-guide"></a>Przewodnik dotyczący planowania i operacji
 Ten przewodnik jest przeznaczony dla specjalistów technologii informatycznych,architektów IT, analityków zabezpieczeń informacji i administratorów chmury planujących korzystanie z usługi Azure Security Center.
 
 
@@ -25,7 +25,7 @@ W tym przewodniku omówiono zadania, które można wykonać w celu optymalizacji
 * Role zabezpieczeń i kontrola dostępu
 * Zasady zabezpieczeń i zalecenia w tym zakresie
 * Zbieranie i przechowywanie danych
-* Bieżące zasoby spoza platformy Azure
+* Dołączanie zasobów innych niż platformy Azure
 * Bieżące monitorowanie zabezpieczeń
 * Reagowanie na zdarzenia
 

@@ -2,13 +2,13 @@
 title: Zasoby bez limitu 800
 description: Wyświetla listę typów zasobów platformy Azure, które mogą mieć więcej niż 800 wystąpień w grupie zasobów.
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 8644bec1a68acebff18cf83d17acb014784dc964
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937952"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804779"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Zasoby nie ograniczone do 800 wystąpień na grupę zasobów
 
@@ -26,7 +26,6 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 * Rejestracji
 * rejestracje/customerSubscriptions
 * rejestracje/produkty
-* verificationKeys (Klawisze)
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -35,6 +34,9 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 * Dysków
+* Galerie
+* galerie/obrazy
+* galerie/obrazy/wersje
 * images
 * Migawki
 * wirtualnematyny
@@ -67,6 +69,11 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 * Servergroups
 * Serwerów
 * serweryv2
+* singleServers
+
+## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
+
+* harmonogramy — domyślnie ograniczone do 800 wystąpień. Limit ten można zwiększyć, kontaktując się ze wsparciem.
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
@@ -90,7 +97,7 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 * softwareUpdateProfile
 * oprogramowanieUpdy
 
-## <a name="microsoftinsights"></a>Microsoft.Insights
+## <a name="microsoftinsights"></a>microsoft.insights
 
 * metryczne certyfikaty
 

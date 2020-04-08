@@ -3,12 +3,12 @@ title: Integracja z innymi aplikacjami - QnA Maker
 description: QnA Maker integruje się z aplikacjami klienckimi, takimi jak czat boty, a także z innymi usługami przetwarzania języka naturalnego, takimi jak Language Understanding (LUIS).
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1edbfb6badfb73ce08a99709da0f8bfb61b7dc3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300523"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804192"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>Projektowanie bazy wiedzy dla aplikacji klienckich
 
@@ -24,7 +24,7 @@ Po opublikowaniu bazy wiedzy utwórz bota na stronie **Publikowanie,** wybieraj�
 
 ## <a name="providing-multi-turn-conversations"></a>Prowadzenie rozmów w wielu turach
 
-Klient bota zapewnia najlepszą wybraną odpowiedź z bazy wiedzy i może dostarczyć monitów uzupełniających, jeśli odpowiedź jest częścią zestawu QnA z wieloma kolejkami. Dowiedz [się, jak](../how-to/multiturn-conversation.md) dodać zestawy pytań i odpowiedzi do konwersacji z wieloma kolejami do bazy wiedzy.
+Klient bota zapewnia najlepszą wybraną odpowiedź z bazy wiedzy i może dostarczyć monitów uzupełniających, jeśli odpowiedź jest częścią wieloezwracać pary QnA. Dowiedz [się, jak](../how-to/multiturn-conversation.md) dodać zestawy pytań i odpowiedzi do konwersacji z wieloma kolejami do bazy wiedzy.
 
 ## <a name="natural-language-processing"></a>Przetwarzanie języka naturalnego
 

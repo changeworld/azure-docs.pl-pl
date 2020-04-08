@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: a349be9ada756742f5fd5ba4819caa1d2a2d3268
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e5be8c9441be5ca441a5c0f7c4444c2edbdc7a95
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80373168"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811217"
 ---
 # <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>Tworzenie wystąpienia zarządzanego w bazie danych SQL usługi Azure database za pomocą dodatku PowerShell z szablonem usługi Azure Resource Manager
 
@@ -77,7 +77,7 @@ Następującą zawartość należy umieścić w pliku reprezentującym szablon, 
                 "Description":"GP Instance with custom instance collation - Serbian_Cyrillic_100_CS_AS"
             },
             "sku": {
-                "name": "GP_Gen4",
+                "name": "GP_Gen5",
                 "tier": "GeneralPurpose"
             },
             "properties": {
@@ -87,7 +87,7 @@ Następującą zawartość należy umieścić w pliku reprezentującym szablon, 
                 "storageSizeInGB": 256,
                 "vCores": 8,
                 "licenseType": "LicenseIncluded",
-                "hardwareFamily": "Gen4",
+                "hardwareFamily": "Gen5",
                 "collation": "Serbian_Cyrillic_100_CS_AS"
             },
             "type": "Microsoft.Sql/managedInstances",

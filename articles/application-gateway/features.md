@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: 550d9f4f5396b2165260e39cd28222b083dd6756
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279990"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810228"
 ---
 # <a name="azure-application-gateway-features"></a>Funkcje usługi Azure Application Gateway
 
@@ -26,7 +26,7 @@ Brama aplikacji zawiera następujące funkcje:
 - [Automatyczne skalowanie](#autoscaling)
 - [Nadmiarowość stref](#zone-redundancy)
 - [Statyczny VIP](#static-vip)
-- [Zapora aplikacji sieci Web](#web-application-firewall)
+- [Zapora aplikacji internetowej](#web-application-firewall)
 - [Kontroler ruchu przychodzącego dla usługi AKS](#ingress-controller-for-aks)
 - [Routing oparty na adresie URL](#url-based-routing)
 - [Hostowanie wielu witryn](#multiple-site-hosting)
@@ -160,6 +160,10 @@ W poniższej tabeli przedstawiono średnią przepływność wydajności dla każ
 
 > [!NOTE]
 > Są to przybliżone wartości przepływności bramy aplikacji. Rzeczywista przepływność zależy od różnorodnych szczegółów środowiska, takich jak średni rozmiar strony, lokalizacja wystąpień zaplecza i czas przetwarzania potrzebny do obsługi strony. Aby uzyskać dokładne wartości wydajności, należy przeprowadzić własne testy. Te wartości są podane tylko jako wskazówki na potrzeby planowania pojemności.
+
+## <a name="version-feature-comparison"></a>Porównanie funkcji wersji
+
+Aby zapoznać się z porównaniem funkcji bramy aplikacji w wersji 1-2, zobacz [Skalowanie automatyczne i brama aplikacji nadmiarowa strefowa w wersji 2](application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)
 
 ## <a name="next-steps"></a>Następne kroki
 

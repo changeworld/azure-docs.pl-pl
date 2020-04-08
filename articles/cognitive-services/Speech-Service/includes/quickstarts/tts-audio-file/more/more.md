@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/30/2020
 ms.author: dapine
-ms.openlocfilehash: 7ee1880d17b915d4412a89a8ebf330dd0492728b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: cdfde5d1538d597bd1efce11d1a248a5048859b9
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419127"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80813835"
 ---
 ## <a name="additional-language-and-platform-support"></a>Dodatkowa obsługa języka i platformy
 
@@ -20,7 +20,7 @@ Jeśli klikniesz tę kartę, prawdopodobnie nie widzisz szybkiego startu w ulubi
 | C# | [Do głośnika][1-speaker] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
 | C++ | [Do głośnika][2-speaker] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
 | Java | [Do głośnika][3-speaker] | [Android][java-android], [JRE][java-jre] |
-| JavaScript |  | [Windows, Linux, macOS][js-code] |
+| JavaScript | [Node.js do pliku audio][js-node] | [Windows, Linux, macOS][js-code] |
 | Obiektowy C | [iOS do głośnika,][obj-iOS-qck] [od macOS do głośnika][obj-macOS-qck] | [iOS][obj-iOS], [macOS][obj-macOS] |
 | Python | [Do głośnika][4-speaker] | [Windows, Linux, macOS][python] |
 | Swift | [iOS do głośnika,][swift-iOS-qck] [od macOS do głośnika][swift-macOS-qck] | [iOS][swift-iOS], [macOS][swift-macOS] |
@@ -44,6 +44,7 @@ Jeśli klikniesz tę kartę, prawdopodobnie nie widzisz szybkiego startu w ulubi
 [java-android]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android
 [java-jre]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre
 
+[js-node]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech
 [js-code]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript
 
 [obj-iOS-qck]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/ios/text-to-speech

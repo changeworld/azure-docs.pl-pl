@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 5c37d92504af78cb62cfa17057e089128ca8ad35
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 947bfe88443489084a20653d835ab849087ac92d
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80046855"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810566"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Samouczek: Tworzenie aplikacji Node.js i MongoDB na platformie Azure
 
@@ -198,7 +198,7 @@ module.exports = {
 };
 ```
 
-Opcja `ssl=true` jest wymagana, ponieważ [usługa Cosmos DB wymaga protokołu SSL](../cosmos-db/connect-mongodb-account.md#connection-string-requirements). 
+Opcja `ssl=true` jest wymagana ze względu na [wymagania dotyczące ciągu połączenia](../cosmos-db/connect-mongodb-account.md#connection-string-requirements). 
 
 Zapisz zmiany.
 

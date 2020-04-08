@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0de94cdce1d7f0e9da9d2844b300956ad6f6970
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80330835"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803164"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Włącz opcję Zachowaj zalogowanie się (KMSI) w usłudze Azure Active Directory B2C
 
@@ -54,7 +54,7 @@ Aby włączyć funkcję KMSI, `DataUri` ustaw element definicji zawartości na [
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>Dodawanie metadanych do samodzielnie potwierdzonego profilu technicznego
 
-Aby dodać pole wyboru KMSI do strony rejestracji i logowania, ustaw metadane na `setting.enableRememberMe` false. Zastąp profile techniczne SelfAsserted-LocalAcCountSignin-Email w pliku rozszerzenia.
+Aby dodać pole wyboru KMSI do strony rejestracji i logowania, ustaw metadane na `setting.enableRememberMe` true. Zastąp profile techniczne SelfAsserted-LocalAcCountSignin-Email w pliku rozszerzenia.
 
 1. Znajdź ClaimsProviders element. Jeśli element nie istnieje, dodaj go.
 1. Dodaj następującego dostawcę oświadczeń do elementu ClaimsProviders:

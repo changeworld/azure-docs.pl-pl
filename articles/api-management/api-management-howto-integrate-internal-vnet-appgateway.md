@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 2b8cf66afa1d8aa592d5755ebab70cd6ad2e75fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298058"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811175"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integracja zarządzania interfejsami API w wewnętrznej sieci wirtualnej z bramą aplikacji
 
@@ -64,7 +64,7 @@ W przykładzie pierwszej konfiguracji wszystkie interfejsy API są zarządzane t
 * **Pula serwerów zaplecza:** Jest to wewnętrzny wirtualny adres IP usługi api Management.
 * **Ustawienia puli serwerów zaplecza:** Każda pula ma ustawienia, takie jak port, protokół i koligacja oparta na plikach cookie. Te ustawienia są stosowane do wszystkich serwerów w puli.
 * **Port front-end:** Jest to port publiczny, który jest otwarty na bramie aplikacji. Ruch, który go uderza, zostanie przekierowany do jednego z serwerów zaplecza.
-* **Słuchacz:** Odbiornik ma port front-end, protokół (Http lub Https, te wartości są rozróżniane wielkość liter) i nazwę certyfikatu SSL (jeśli konfigurowanie odciążania SSL).
+* **Słuchacz:** Odbiornik ma port front-end, protokół (Http lub Https, te wartości są rozróżniane wielkość liter) i nazwę certyfikatu TLS/SSL (jeśli konfiguruje odciążanie TLS).
 * **Zasada:** Reguła wiąże odbiornika z pulą serwerów zaplecza.
 * **Niestandardowa sonda kondycji:** Brama aplikacji domyślnie używa sond opartych na adresie IP, aby dowiedzieć się, które serwery w backendAddressPool są aktywne. Usługa api Management odpowiada tylko na żądania z nagłówkiem hosta poprawne, w związku z tym domyślne sondy nie powiodą się. Niestandardowa sonda kondycji musi zostać zdefiniowana, aby brama aplikacji nie była w stanie określić, że usługa jest żywa i powinna przesyłać dalej żądania.
 * **Certyfikaty domeny niestandardowej:** Aby uzyskać dostęp do zarządzania interfejsami API z Internetu, należy utworzyć mapowanie CNAME jego nazwy hosta na nazwę DNS frontonia bramy aplikacji. Gwarantuje to, że nagłówek nazwy hosta i certyfikat wysłany do bramy aplikacji, który jest przekazytywał do usługi API Management jest jeden interfejs APIM można rozpoznać jako prawidłowy. W tym przykładzie użyjemy dwóch certyfikatów — dla wewnętrznej bazy danych i portalu dewelopera.  
@@ -271,7 +271,7 @@ $certPortal = New-AzApplicationGatewaySslCertificate -Name "cert02" -Certificate
 
 ### <a name="step-5"></a>Krok 5
 
-Tworzenie odbiorników HTTP dla bramy aplikacji. Przypisz do nich konfigurację frontu IP, port i certyfikaty SSL.
+Tworzenie odbiorników HTTP dla bramy aplikacji. Przypisz do nich konfigurację frontu IP, port i certyfikaty TLS/SSL.
 
 ```powershell
 $listener = New-AzApplicationGatewayHttpListener -Name "listener01" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $cert -HostName $gatewayHostname -RequireServerNameIndication true
@@ -280,7 +280,7 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>Krok 6
 
-Tworzenie niestandardowych sond do `ContosoApi` punktu końcowego domeny serwera proxy usługi api Management. Ścieżka `/status-0123456789abcdef` jest domyślnym punktem końcowym kondycji hostowanym we wszystkich usługach zarządzania interfejsami API. Ustaw `api.contoso.net` jako niestandardową nazwa hosta sondy, aby zabezpieczyć ją za pomocą certyfikatu SSL.
+Tworzenie niestandardowych sond do `ContosoApi` punktu końcowego domeny serwera proxy usługi api Management. Ścieżka `/status-0123456789abcdef` jest domyślnym punktem końcowym kondycji hostowanym we wszystkich usługach zarządzania interfejsami API. Ustaw `api.contoso.net` jako niestandardową nazwa hosta sondy, aby zabezpieczyć ją za pomocą certyfikatu TLS/SSL.
 
 > [!NOTE]
 > Nazwa hosta `contosoapi.azure-api.net` jest domyślną nazwę hosta serwera `contosoapi` proxy skonfigurowany, gdy usługa o nazwie jest tworzona w publicznej platformy Azure.
@@ -293,7 +293,7 @@ $apimPortalProbe = New-AzApplicationGatewayProbeConfig -Name "apimportalprobe" -
 
 ### <a name="step-7"></a>Krok 7
 
-Przekaż certyfikat, który ma być używany w zasobach puli wewnętrznej bazy danych z obsługą SSL. Jest to ten sam certyfikat, który został podany w kroku 4 powyżej.
+Przekaż certyfikat, który ma być używany w zasobach puli wewnętrznej bazy danych z obsługą protokołu TLS. Jest to ten sam certyfikat, który został podany w kroku 4 powyżej.
 
 ```powershell
 $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile $gatewayCertCerPath

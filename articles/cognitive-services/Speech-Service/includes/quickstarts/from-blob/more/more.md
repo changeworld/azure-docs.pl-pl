@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/30/2020
 ms.author: dapine
-ms.openlocfilehash: c5d004fc499b9d20c5f64503b04a0e68791d32c5
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: eee515697985da174969308bcf48003818fbbc82
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419193"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80813769"
 ---
 ## <a name="additional-language-and-platform-support"></a>Dodatkowa obsługa języka i platformy
 
@@ -48,7 +48,7 @@ Jeśli klikniesz tę kartę, prawdopodobnie nie widzisz szybkiego startu w ulubi
 [java-jre]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre
 
 [js-browser]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser
-[js-node]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node
+[js-node]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/from-file
 [js-code]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript
 
 [obj-iOS-qck]: ~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md

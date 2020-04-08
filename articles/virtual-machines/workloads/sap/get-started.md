@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/06/2020
+ms.date: 04/07/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: df7461443fc9e89209545e8a2dfb9ad0addf3f3e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 86c5f572ba66845467a7e3f4412b8da8368fe772
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757139"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811250"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Używanie platformy Azure do hostowaniu i uruchamianiu scenariuszy obciążenia SAP
 
@@ -110,6 +110,7 @@ Aby uzyskać informacje na temat integracji usług platformy Azure ze składnika
 
 
 ## <a name="change-log"></a>Dziennik zmian
+- 04/07/2020: Zmiana [w konfigurowaniu rozrusznika serca na SLES na platformie Azure w](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) celu wyjaśnienia instrukcji cloud-netconfig-azure
 - 04/06/2020: Zmiany w [skali w poziomie sap HANA z węzłem gotowości na maszynach wirtualnych platformy Azure z usługą Azure NetApp Files na SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) i w skali W skali SAP [HANA z węzłem gotowości na maszynach wirtualnych platformy Azure z plikami NetApp usługi Azure na RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) w celu usunięcia odwołań do systemu NetApp [TR-4435](https://www.netapp.com/us/media/tr-4746.pdf) (zastąpiony przez [TR-4746)](https://www.netapp.com/us/media/tr-4746.pdf)
 - 31.03.2020: Zmiana [wysokiej dostępności sap HANA na maszynach wirtualnych platformy Azure w systemie SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) i wysoka dostępność sap [HANA na maszynach wirtualnych platformy Azure w programie RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) w celu dodania instrukcji określania rozmiaru paska podczas tworzenia woluminów rozłożonych
 - 27.03.2020: Zmiana [wysokiej dostępności sap NW na maszynach wirtualnych platformy Azure w sles z aplikacjami ANF dla SAP,](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) aby wyrównać opcje montażu systemu plików do NetApp TR-4746 (usuń opcję instalacji synchronizacji)

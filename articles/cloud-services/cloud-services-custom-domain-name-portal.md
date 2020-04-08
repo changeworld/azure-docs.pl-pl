@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: b1f75a5f7a97907bf5b8bb460ff2df420d053f9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e764e6a474b9843d43f9e8af9cf3b6a8ddf37189
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386803"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811651"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurowanie niestandardowej nazwy domeny dla usługi w chmurze platformy Azure
 Podczas tworzenia usługi w chmurze platforma Azure przypisuje ją do poddomeny **cloudapp.net**. Jeśli na przykład usługa w chmurze nosi nazwę "contoso", użytkownicy będą `http://contoso.cloudapp.net`mogli uzyskiwać dostęp do aplikacji pod adresem URL, takim jak . Platforma Azure przypisuje również wirtualny adres IP.
@@ -30,7 +30,7 @@ Czy już rozumiesz, czym są rekordy CNAME i A? [Przeskocz obok wyjaśnienia](#a
 <p/>
 
 > [!TIP]
-> Szybsze działania — skorzystaj z nowego [przewodnika platformy](https://support.microsoft.com/kb/2990804)Azure!  To sprawia, że skojarzenie niestandardowej nazwy domeny i zabezpieczania komunikacji (SSL) z usługami w chmurze azure lub witryn platformy Azure w sieci Web przystosowywanie.
+> Szybsze działania — skorzystaj z nowego [przewodnika platformy](https://support.microsoft.com/kb/2990804)Azure!  To sprawia, że skojarzenie niestandardowej nazwy domeny i zabezpieczania komunikacji (TLS) z usługami Azure Cloud Services lub witryn platformy Azure w sieci Web przystosowywania.
 > 
 > 
 
@@ -128,14 +128,14 @@ W tym przykładzie pokazano tworzenie rekordu A dla domeny głównej. Jeśli chc
 * [Jak zamapować zawartość usługi CDN na domenę niestandardową](../cdn/cdn-map-content-to-custom-domain.md)
 * [Ogólna konfiguracja usługi w chmurze](cloud-services-how-to-configure-portal.md).
 * Dowiedz się, jak [wdrożyć usługę w chmurze](cloud-services-how-to-create-deploy-portal.md).
-* Konfigurowanie [certyfikatów ssl](cloud-services-configure-ssl-certificate-portal.md).
+* Konfigurowanie [certyfikatów TLS/SSL](cloud-services-configure-ssl-certificate-portal.md).
 
 [Expose Your Application on a Custom Domain]: #access-app
 [Add a CNAME Record for Your Custom Domain]: #add-cname
 [Expose Your Data on a Custom Domain]: #access-data
 [VIP swaps]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 [Create a CNAME record that associates the subdomain with the storage account]: #create-cname
-[Portal Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
 

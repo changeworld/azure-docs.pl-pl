@@ -3,12 +3,12 @@ title: Aktywne propozycje edukacyjne - QnA Maker
 description: Aktywne sugestie dotyczące uczenia się pozwalają poprawić jakość bazy wiedzy, proponując alternatywne pytania, na podstawie zgłoszeń użytkowników, do pary pytań i odpowiedzi.
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: af4f6b399bfd537b38ea741d03e59371ee81e588
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edbe06b12fbb97473b28ccca968fd3e7d8366152
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053155"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804224"
 ---
 # <a name="active-learning-suggestions"></a>Aktywne sugestie dotyczące uczenia się
 
@@ -27,13 +27,13 @@ Obie metody zapewniają ranker z podobnych zapytań, które są klastrowane.
 
 ## <a name="how-active-learning-works"></a>Jak działa aktywne uczenie się
 
-Aktywne uczenie się jest wyzwalane na podstawie wyników kilku najlepszych odpowiedzi zwróconych przez QnA Maker. Jeśli różnice wyników między zestawami QnA, które pasują do kwerendy, mieszczą się w małym zakresie, kwerenda jest uważana za możliwą sugestię (jako pytanie alternatywne) dla każdej z możliwych par QnA. Po zaakceptowaniu sugerowanego pytania dla konkretnej pary QnA, zostanie ono odrzucone dla innych par. Musisz pamiętać, aby zapisać i trenować, po zaakceptowaniu sugestii.
+Aktywne uczenie się jest wyzwalane na podstawie wyników kilku najlepszych odpowiedzi zwróconych przez QnA Maker. Jeśli różnice wyników między parami QnA, które pasują do kwerendy, mieszczą się w małym zakresie, kwerenda jest uważana za możliwą sugestię (jako pytanie alternatywne) dla każdej z możliwych par QnA. Po zaakceptowaniu sugerowanego pytania dla konkretnej pary QnA, zostanie ono odrzucone dla innych par. Musisz pamiętać, aby zapisać i trenować, po zaakceptowaniu sugestii.
 
 Aktywne uczenie daje najlepsze możliwe sugestie w przypadkach, gdy punkty końcowe są coraz rozsądną ilość i różnorodność zapytań użycia. Gdy 5 lub więcej podobnych zapytań jest klastrowanych, co 30 minut program QnA Maker sugeruje projektantowi bazy wiedzy pytania oparte na użytkowniku, aby je zaakceptował lub odrzucił. Wszystkie sugestie są grupowane razem według podobieństwa, a najlepsze sugestie dotyczące pytań alternatywnych są wyświetlane na podstawie częstotliwości określonych zapytań przez użytkowników końcowych.
 
 Gdy pytania zostaną zasugerowane w portalu QnA Maker, musisz przejrzeć i zaakceptować lub odrzucić te sugestie. Nie ma interfejsu API do zarządzania sugestiami.
 
-## <a name="turn-on-active-learning"></a>Włączanie aktywnego uczenia się
+## <a name="turn-on-active-learning"></a>Włącz uczenie aktywne
 
 Domyślnie aktywne uczenie się jest **wyłączone**.
 Aby korzystać z aktywnego uczenia się:

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: 5136a00421aebaa72998b1dfcdf75feb935851c6
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: a502541a5a01ec3304338054239fc3b50f4d3c61
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435454"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810307"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Zaawansowana ochrona przed zagrożeniami usługi Microsoft Defender za pomocą usługi Azure Security Center
 
@@ -36,7 +36,7 @@ Korzystając z usługi Microsoft Defender ATP, otrzymujesz:
 
 Następujące funkcje są teraz dostępne w usłudze Azure Security Center:
 
-- **Automatyczne dołączanie:** czujnik Narzędzia ATP usługi Microsoft Defender jest automatycznie włączany dla serwerów systemu Windows, które są dołączane do usługi Azure Security Center.
+- **Automatyczne dołączanie:** Czujnik Narzędzia Atp usługi Microsoft Defender jest automatycznie włączany dla serwerów systemu Windows, które są dołączane do usługi Azure Security Center (z wyjątkiem serwerów z systemem Windows Server 2019).
 
 - **Pojedyncze okienko szkła:** w konsoli usługi Azure Security Center są wyświetlane alerty usługi Microsoft Defender ATP.
 
@@ -107,11 +107,11 @@ Aby wygenerować łagodny alert testowy narzędzia Microsoft Defender ATP:
 
    ![Okno wiersza polecenia z powyższym poleceniem](media/security-center-wdatp/image4.jpeg)
 
-3. Jeśli polecenie zakończy się pomyślnie, zobaczysz nowy alert na pulpicie nawigacyjnym usługi Azure Security Center i portalu Microsoft Defender ATP. Ten alert może potrwać kilka minut.
+1. Jeśli polecenie zakończy się pomyślnie, zobaczysz nowy alert na pulpicie nawigacyjnym usługi Azure Security Center i portalu Microsoft Defender ATP. Ten alert może potrwać kilka minut.
 
-4. Aby przejrzeć alert w Centrum zabezpieczeń, przejdź do **pozycji Alerty** > zabezpieczeń**Suspicious PowerShell CommandLine**.
+1. Aby przejrzeć alert w Centrum zabezpieczeń, przejdź do **pozycji Alerty** > zabezpieczeń**Suspicious PowerShell CommandLine**.
 
-5. W oknie badania wybierz łącze, aby przejść do portalu Microsoft Defender ATP.
+1. W oknie badania wybierz łącze, aby przejść do portalu Microsoft Defender ATP.
 
 ## <a name="next-steps"></a>Następne kroki
 

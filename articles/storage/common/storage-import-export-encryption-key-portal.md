@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ca1327a547e8550e47ff37e4ba100fcbd2b7a79f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7077b5e94800d93833f259fefd0cd4c168ec867
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282464"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811445"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Używanie kluczy zarządzanych przez klienta w usłudze Azure Key Vault do importowania/eksportowania usługi
 
@@ -103,7 +103,7 @@ Jeśli zostanie wyświetlony błąd związany z kluczem zarządzanym przez klien
 | CmkErrorAccessRevoked | Zastosowano klucz zarządzany przez klienta, ale dostęp do klucza jest obecnie odwołany. Aby uzyskać więcej informacji, zobacz jak [włączyć dostęp do klucza](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).                                                      | Tak, sprawdź, czy: <ol><li>Magazyn kluczy nadal ma MSI w zasadach dostępu.</li><li>Zasady dostępu zapewniają uprawnienia do Get, Wrap, Unwrap.</li><li>Jeśli magazyn kluczy znajduje się w sieci wirtualnej za zaporą, sprawdź, czy jest włączona **opcja Zezwalaj na zaufane usługi firmy Microsoft.**</li></ol>                                                                                            |
 | CmkErrorDisabled ( CmkErrorDisabled )      | Zastosowano klucz zarządzany przez klienta, ale klucz jest wyłączony. Aby uzyskać więcej informacji, zobacz jak [włączyć klucz](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate).                                                                             | Tak, włączając wersję klucza     |
 | CmkErrorNotFound      | Zastosowano klucz zarządzany przez klienta, ale nie można go znaleźć. <br>Jeśli klucz zostanie usunięty i usunięty po upływie okresu przechowywania, nie można odzyskać klucza. Jeśli kopia zapasowa klucza, można przywrócić klucz, aby rozwiązać ten problem. | Nie, klucz został usunięty, a także został usunięty po okresie przechowywania. <br>Tak, tylko wtedy, gdy klient ma kopię zapasową klucza i przywraca go.  |
-| CmkErrorVaultNieznajduje | Zastosowano klucz zarządzany przez klienta, ale nie można odnaleźć magazynu kluczy skojarzonego z kluczem.<br>Jeśli magazyn kluczy został usunięty, nie można odzyskać klucza zarządzanego przez klienta.  Jeśli magazyn kluczy został zmigrowany do innej dzierżawy, zobacz [Zmienianie identyfikatora dzierżawy magazynu kluczy po przeniesieniu subskrypcji.](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix) |   Nie, jeśli klient usunął magazyn kluczy.<br> Tak, jeśli magazyn kluczy przeszedł migrację dzierżawy, wykonaj jedną z: <ol><li>przenieść z powrotem magazynu kluczy do starego dzierżawy.</li><li>set Identity = None, a następnie z powrotem do tożsamości = SystemAssigned, spowoduje to usunięcie i ponowne utworzenie tożsamości</li></ol><br>Uwaga: Przypadek migracji dzierżawy opiera się na ograniczonej wiedzy, trzeba przetestować i potwierdzić rzeczywiste zachowanie, może zostać zmieniona później. |
+| CmkErrorVaultNieznajduje | Zastosowano klucz zarządzany przez klienta, ale nie można odnaleźć magazynu kluczy skojarzonego z kluczem.<br>Jeśli magazyn kluczy został usunięty, nie można odzyskać klucza zarządzanego przez klienta.  Jeśli magazyn kluczy został zmigrowany do innej dzierżawy, zobacz [Zmienianie identyfikatora dzierżawy magazynu kluczy po przeniesieniu subskrypcji.](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix) |   Nie, jeśli klient usunął magazyn kluczy.<br> Tak, jeśli magazyn kluczy przeszedł migrację dzierżawy, wykonaj jedną z: <ol><li>przenieść z powrotem magazynu kluczy do starego dzierżawy.</li><li>set Identity = None, a następnie z powrotem do tożsamości = SystemAssigned, spowoduje to usunięcie i ponowne utworzenie tożsamości</li></ol>|
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: e65681aefc047ba540d4ad0d91ef6e4d2af5f3ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190262"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804575"
 ---
 # <a name="clustering-point-data"></a>Dane punktu klastrowania
 
@@ -62,7 +62,7 @@ Aby wyświetlić rozmiar klastra na wierzchu polana, użyj warstwy symboli z tek
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Klastrowanie warstw bąbelkowych podstawowych" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Klastrowanie warstw bąbelkowych podstawowych" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zobacz <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>klastrowanie warstw bąbelkowych Pióra podstawowego</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na funkcji <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -74,7 +74,7 @@ Klastrowanie służy do pokazywania gęstości punktów danych przy zachowaniu c
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Warstwa symboli klastrowanych" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Warstwa symboli klastrowanych" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zobacz <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>warstwę symboli klastrowanych</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>pióra według usługi Azure Maps ( ) na <a href='https://codepen.io'>funkcji CodePen</a>.
 </iframe>
 
@@ -84,7 +84,7 @@ Mapy skupień to świetny sposób na wyświetlanie gęstości danych na mapie. T
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Ważony mapę cieplną klastra" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Ważony mapę cieplną klastra" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zobacz mapę <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>cieplną ważoną klastra</a> piór przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na funkcji <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -103,7 +103,7 @@ W tym przykładzie przyjmuje warstwę bąbelkową, która renderuje punkty klast
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Klaster getClusterRozwińZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Klaster getClusterRozwińZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zobacz <a href='https://codepen.io/azuremaps/pen/moZWeV/'>getClusterRozwiń zzoom klastra</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>piórowego przez usługi Azure Maps ( ) na <a href='https://codepen.io'>funkcji CodePen</a>.
 </iframe>
 
@@ -113,7 +113,7 @@ Dane punktowe, które reprezentuje klaster, są rozłożone na obszar. W tym prz
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="Powierzchnia gromady wypukła kadłub" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+ <iframe height="500" style="width: 100%;" scrolling="no" title="Powierzchnia gromady wypukła kadłub" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zobacz <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>obszar klastra pióra wypukły kadłub</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -123,7 +123,7 @@ Często klastry są reprezentowane przy użyciu symbolu z liczbą punktów, któ
 
 Poniższy przykład używa wyrażenia agregacji. Kod oblicza liczbę na podstawie właściwości typu jednostki każdego punktu danych w klastrze. Gdy użytkownik kliknie klaster, pojawi się okno podręczne z dodatkowymi informacjami o klastrze.
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Agregaty klastra" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Agregaty klastra" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zobacz <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>agregacje klastra</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>piór przez usługi Azure Maps ( ) na <a href='https://codepen.io'>funkcji CodePen</a>.
 </iframe>
 

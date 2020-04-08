@@ -2,13 +2,13 @@
 title: Przenoszenie obsługi operacji według typu zasobu
 description: Wyświetla listę typów zasobów platformy Azure, które można przenieść do nowej grupy zasobów lub subskrypcji.
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 2250283136608161956716abadb63b9f706bf581
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 90fbec4dc076feb1fee8c38cf9757d3c5ddbafaf
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460419"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804796"
 ---
 # <a name="move-operation-support-for-resources"></a>Obsługa operacji przenoszenia dla zasobów
 W tym artykule wymieniono, czy typ zasobu platformy Azure obsługuje operację przenoszenia. Zawiera również informacje o specjalnych warunkach, które należy wziąć pod uwagę podczas przenoszenia zasobu.
@@ -35,6 +35,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > - [Microsoft.BingMaps](#microsoftbingmaps)
 > - [Usługi Microsoft.BizTalkServices](#microsoftbiztalkservices)
 > - [Łańcuch bloków firmy Microsoft.Blockchain](#microsoftblockchain)
+> - [Microsoft.BlockchainTokens](#microsoftblockchaintokens)
 > - [Plan firmy Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
 > - [Pamięć podręczna firmy Microsoft.Cache](#microsoftcache)
@@ -43,6 +44,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > - [Microsoft.ClassicCompute](#microsoftclassiccompute)
 > - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
 > - [Program Microsoft.ClassicStorage](#microsoftclassicstorage)
+> - [Microsoft.Cognition](#microsoftcognition)
 > - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Compute](#microsoftcompute)
 > - [Zużycie przez firmę Microsoft](#microsoftconsumption)
@@ -72,6 +74,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > - [Microsoft.DBforMySQL](#microsoftdbformysql)
 > - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
 > - [Microsoft.DeploymentManager](#microsoftdeploymentmanager)
+> - [Microsoft.DesktopWirtualizacja](#microsoftdesktopvirtualization)
 > - [Urządzenia firmy Microsoft.Devices](#microsoftdevices)
 > - [Microsoft.DevOps](#microsoftdevops)
 > - [Microsoft.DevSpaces](#microsoftdevspaces)
@@ -82,6 +85,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
+> - [Eksperymenty firmy Microsoft](#microsoftexperimentation)
 > - [Microsoft.Falcon](#microsoftfalcon)
 > - [Microsoft.Genomics](#microsoftgenomics)
 > - [Konfiguracja witryny Microsoft.GuestConfiguration](#microsoftguestconfiguration)
@@ -90,11 +94,13 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > - [Microsoft.HealthcareApis](#microsofthealthcareapis)
 > - [Microsoft.HybridCompute](#microsofthybridcompute)
 > - [Microsoft.HybridDana](#microsofthybriddata)
+> - [Microsoft.Hydra](#microsofthydra)
 > - [Microsoft.ImportEksport](#microsoftimportexport)
 > - [microsoft.insights](#microsoftinsights)
 > - [Centrum IoT Firmy Microsoft](#microsoftiotcentral)
 > - [Przestrzenie IoT firmy Microsoft](#microsoftiotspaces)
 > - [Usługa Microsoft.KeyVault](#microsoftkeyvault)
+> - [Microsoft.Kubernetes](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [Microsoft.LocationBasedServices](#microsoftlocationbasedservices)
@@ -106,7 +112,9 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > - [Microsoft.MachineLearningModelModelManagement](#microsoftmachinelearningmodelmanagement)
 > - [Microsoft.MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
+> - [Microsoft.Maintenance](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
+> - [Microsoft.ManagedNetwork](#microsoftmanagednetwork)
 > - [Usługi zarządzane przez firmę Microsoft.Managed](#microsoftmanagedservices)
 > - [Microsoft.Maps (Mapy firmy Microsoft)](#microsoftmaps)
 > - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
@@ -128,7 +136,9 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > - [Microsoft.ProjectBabylon](#microsoftprojectbabylon)
 > - [Microsoft.ProjectOxford](#microsoftprojectoxford)
 > - [Microsoft.ProviderHub](#microsoftproviderhub)
+> - [Microsoft.Quantum](#microsoftquantum)
 > - [Usługi Microsoft.RecoveryServices](#microsoftrecoveryservices)
+> - [Zmiana redhatopensau w systemie Microsoft.RedHatOpenShift](#microsoftredhatopenshift)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.ResourceGraph](#microsoftresourcegraph)
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
@@ -149,6 +159,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.SqlVM](#microsoftsqlvm)
 > - [Microsoft.Storage](#microsoftstorage)
+> - [Usługa Microsoft.StorageCache](#microsoftstoragecache)
 > - [Microsoft.StorageSync](#microsoftstoragesync)
 > - [System Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
 > - [Program Microsoft.StorageSyncInt](#microsoftstoragesyncint)
@@ -157,13 +168,17 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > - [Microsoft.StreamAnalyticsExplorer](#microsoftstreamanalyticsexplorer)
 > - [Subskrypcja firmy Microsoft.Subscription](#microsoftsubscription)
 > - [pomoc techniczna firmy microsoft.support](#microsoftsupport)
+> - [Microsoft.Synapse](#microsoftsynapse)
 > - [Witryna Microsoft.TerraformOSS](#microsoftterraformoss)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Token firmy Microsoft.Token](#microsofttoken)
+> - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
 > - [microsoft.visualstudio](#microsoftvisualstudio)
 > - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [Menedżer microsoft.Vnf](#microsoftvnfmanager)
 > - [Usługa Microsoft.VSOnline](#microsoftvsonline)
 > - [Microsoft.Web](#microsoftweb)
+> - [Microsoft.WindowsESU](#microsoftwindowsesu)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
 > - [Microsoft.WorkloadMonitor](#microsoftworkloadmonitor)
 
@@ -344,7 +359,15 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
 > | członkowie łańcucha bloków | Nie | Nie |
+> | cordamembers | Nie | Nie |
 > | Obserwatorów | Nie | Nie |
+
+## <a name="microsoftblockchaintokens"></a>Microsoft.BlockchainTokens
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | usługi tokenów | Nie | Nie |
 
 ## <a name="microsoftblueprint"></a>Plan firmy Microsoft.Blueprint
 
@@ -423,6 +446,13 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > [!IMPORTANT]
 > Zobacz [wskazówki dotyczące przenoszenia wdrażania klasycznego](./move-limitations/classic-model-move-limitations.md). Klasyczne zasoby wdrażania można przenosić między subskrypcjami za pomocą operacji specyficznej dla tego scenariusza.
 
+## <a name="microsoftcognition"></a>Microsoft.Cognition
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | konta syntetyków | Nie | Nie |
+
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
@@ -446,6 +476,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | images | Tak | Tak |
 > | grupy bliskozami | Tak | Tak |
 > | przystawki punktów przywracania | Nie | Nie |
+> | sharedvmextensions | Nie | Nie |
 > | sharedvmimages | Nie | Nie |
 > | sharedvmimages / wersje | Nie | Nie |
 > | Migawki | Tak | Tak |
@@ -506,6 +537,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
 > | Rejestrów | Tak | Tak |
+> | rejestry / biura agentów | Nie | Nie |
 > | rejestry / buduj zadania | Tak | Tak |
 > | rejestry / replikacje | Tak | Tak |
 > | rejestry / zadania | Tak | Tak |
@@ -700,6 +732,15 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | servicetopologies / usługi / jednostki serwisowe | Tak | Tak |
 > | kroki | Tak | Tak |
 
+## <a name="microsoftdesktopvirtualization"></a>Microsoft.DesktopWirtualizacja
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | grupy aplikacji | Nie | Nie |
+> | hostpoole | Nie | Nie |
+> | obszary robocze | Nie | Nie |
+
 ## <a name="microsoftdevices"></a>Urządzenia firmy Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
@@ -774,6 +815,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | eventubscriptions | Nie - nie można przenosić niezależnie, ale automatycznie przenosić za pomocą subskrybowanego zasobu. | Nie - nie można przenosić niezależnie, ale automatycznie przenosić za pomocą subskrybowanego zasobu. |
 > | extensiontopics (przedłużacze) | Nie | Nie |
 > | przestrzenie partnerów | Tak | Tak |
+> | rejestracje partnerów | Nie | Nie |
 > | partnertopics | Tak | Tak |
 > | systemtopics | Tak | Tak |
 > | Tematy | Tak | Tak |
@@ -785,6 +827,13 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | ------------- | ----------- | ---------- |
 > | Klastrów | Tak | Tak |
 > | Obszary nazw | Tak | Tak |
+
+## <a name="microsoftexperimentation"></a>Eksperymenty firmy Microsoft
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | przestrzenie ekspperacyjnie | Nie | Nie |
 
 ## <a name="microsoftfalcon"></a>Microsoft.Falcon
 
@@ -805,6 +854,8 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
+> | konta automanagedackonu | Nie | Nie |
+> | automanagedvmkonfiguracje profile | Nie | Nie |
 > | znaki konfiguracyjne gości | Nie | Nie |
 > | Oprogramowania | Nie | Nie |
 > | profil softwareupdate | Nie | Nie |
@@ -852,6 +903,14 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | ------------- | ----------- | ---------- |
 > | menedżerów danych | Tak | Tak |
 
+## <a name="microsofthydra"></a>Microsoft.Hydra
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | Składniki | Nie | Nie |
+> | szesnaskopy sieciowe | Nie | Nie |
+
 ## <a name="microsoftimportexport"></a>Microsoft.ImportEksport
 
 > [!div class="mx-tableFixed"]
@@ -871,10 +930,12 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | Linii bazowej | Nie | Nie |
 > | obliczanie linii bazowej | Nie | Nie |
 > | Składniki | Tak | Tak |
+> | zasady zbiorów danych | Nie | Nie |
 > | diagnostyki | Nie | Nie |
 > | diagnostykikategorii | Nie | Nie |
 > | typy zdarzeń | Nie | Nie |
 > | rozszerzone diagnozy | Nie | Nie |
+> | guestdiagnosticsettings | Nie | Nie |
 > | logdefinitions | Nie | Nie |
 > | dzienniki | Nie | Nie |
 > | metryczne certyfikaty | Nie | Nie |
@@ -883,6 +944,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | metricnamespaces | Nie | Nie |
 > | metrics | Nie | Nie |
 > | myworkbooks | Nie | Nie |
+> | grupy powiadomień | Nie | Nie |
 > | privatelinkscopes | Tak | Tak |
 > | zasady zaplanowane | Tak | Tak |
 > | topology | Nie | Nie |
@@ -915,10 +977,18 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
+> | baseny hsmpools | Nie | Nie |
 > | Sklepienia | Tak | Tak |
 
 > [!IMPORTANT]
 > Magazyny kluczy używane do szyfrowania dysku nie mogą być przenoszone do grupy zasobów w tej samej subskrypcji lub w ramach subskrypcji.
+
+## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | połączone zgromadą | Nie | Nie |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
@@ -965,7 +1035,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | plany zobowiązań | Tak | Tak |
+> | plany zobowiązań | Nie | Nie |
 > | Webservices | Tak | Nie |
 > | obszary robocze | Tak | Tak |
 
@@ -1010,6 +1080,16 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | obszary robocze | Nie | Nie |
 > | obszary robocze / obliczenia | Nie | Nie |
 
+## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | 10. | Nie | Nie |
+> | konfiguracjassignments | Nie | Nie |
+> | konfiguracje konserwacji | Tak | Tak |
+> | aktualizacje | Nie | Nie |
+
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
@@ -1017,6 +1097,16 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | ------------- | ----------- | ---------- |
 > | Tożsamości | Nie | Nie |
 > | identyfikatory przypisane przez użytkownika | Nie | Nie |
+
+## <a name="microsoftmanagednetwork"></a>Microsoft.ManagedNetwork
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | sieci zarządzanych | Nie | Nie |
+> | managednetworks / managednetworkgroups | Nie | Nie |
+> | zarządzane sieci / zarządzanenetworkpeeringpolicies | Nie | Nie |
+> | powiadomienie | Nie | Nie |
 
 ## <a name="microsoftmanagedservices"></a>Usługi zarządzane przez firmę Microsoft.Managed
 
@@ -1032,6 +1122,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
 > | accounts | Tak | Tak |
+> | konta / privateatlases | Tak | Tak |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -1063,6 +1154,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | ------------- | ----------- | ---------- |
 > | ocenyprojektów | Tak | Tak |
 > | migrowanieprojektów | Tak | Tak |
+> | transfery | Nie | Nie |
 > | Projektów | Nie | Nie |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp (Microsoft.NetApp)
@@ -1155,6 +1247,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
+> | Klastrów | Nie | Nie |
 > | magazynowaniewskości | Nie | Nie |
 > | obszary robocze | Tak | Tak |
 
@@ -1238,6 +1331,13 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | ------------- | ----------- | ---------- |
 > | Wdrożenia | Nie | Nie |
 
+## <a name="microsoftquantum"></a>Microsoft.Quantum
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | obszary robocze | Nie | Nie |
+
 ## <a name="microsoftrecoveryservices"></a>Usługi Microsoft.RecoveryServices
 
 > [!div class="mx-tableFixed"]
@@ -1249,6 +1349,13 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 
 > [!IMPORTANT]
 > Zobacz [wskazówki dotyczące przenoszenia usług odzyskiwania](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
+
+## <a name="microsoftredhatopenshift"></a>Zmiana redhatopensau w systemie Microsoft.RedHatOpenShift
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | otwarte łączki przesuwowe | Nie | Nie |
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
@@ -1374,6 +1481,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
 > | aplikacje | Tak | Tak |
+> | grupy kontenerowe | Nie | Nie |
 > | Bramy | Tak | Tak |
 > | Sieci | Tak | Tak |
 > | wpisy tajne | Tak | Tak |
@@ -1449,6 +1557,13 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | ------------- | ----------- | ---------- |
 > | konta magazynowe | Tak | Tak |
 
+## <a name="microsoftstoragecache"></a>Usługa Microsoft.StorageCache
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | Buforuje | Nie | Nie |
+
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
 > [!div class="mx-tableFixed"]
@@ -1512,6 +1627,15 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | ------------- | ----------- | ---------- |
 > | bilety pomocnicze | Nie | Nie |
 
+## <a name="microsoftsynapse"></a>Microsoft.Synapse
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | obszary robocze | Nie | Nie |
+> | obszary robocze / bigdatapools | Nie | Nie |
+> | obszary robocze / sqlpools | Nie | Nie |
+
 ## <a name="microsoftterraformoss"></a>Witryna Microsoft.TerraformOSS
 
 > [!div class="mx-tableFixed"]
@@ -1536,6 +1660,13 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | ------------- | ----------- | ---------- |
 > | Sklepy | Tak | Tak |
 
+## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | płyty obrazów | Nie | Nie |
+
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 
 > [!div class="mx-tableFixed"]
@@ -1557,6 +1688,14 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | usługi dedykowanecloud | Nie | Nie |
 > | maszyny wirtualne | Nie | Nie |
 
+## <a name="microsoftvnfmanager"></a>Menedżer microsoft.Vnf
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | urządzenia | Nie | Nie |
+> | vnfs ( vnfs ) | Nie | Nie |
+
 ## <a name="microsoftvsonline"></a>Usługa Microsoft.VSOnline
 
 > [!div class="mx-tableFixed"]
@@ -1575,6 +1714,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | Połączenia | Tak | Tak |
 > | customapis | Tak | Tak |
 > | hostingśrodowiska | Nie | Nie |
+> | kubeenvironments | Tak | Tak |
 > | farmy serwerowe | Tak | Tak |
 > | lokacje | Tak | Tak |
 > | strony / premieraddons | Tak | Tak |
@@ -1583,6 +1723,13 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 
 > [!IMPORTANT]
 > Zobacz [wskazówki dotyczące przenoszenia usługi app service](./move-limitations/app-service-move-limitations.md).
+
+## <a name="microsoftwindowsesu"></a>Microsoft.WindowsESU
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | klucze multipleaktywacji | Nie | Nie |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 

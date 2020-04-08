@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: 11bf7c0ae05c2e52d59efb32be47ce6bd96fac4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599c4a31840b47294b43c4c4d1f0200b17f04540
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937976"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810536"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Tworzenie bezpiecznej aplikacji dla aplikacji usługi Azure AD
 ## <a name="overview"></a>Omówienie
@@ -228,7 +228,7 @@ $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile "C:
 
 $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
 
-#Upload the certificate to be used on the SSL-enabled back-end pool resources
+#Upload the certificate to be used on the TLS/SSL-enabled back-end pool resources
 
 #$authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
 
@@ -246,7 +246,7 @@ $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basi
 
 $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
-#Configure the SSL policy to be used on the application gateway
+#Configure the TLS/SSL policy to be used on the application gateway
 
 $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
 
@@ -276,7 +276,7 @@ Usługa Azure App Service umożliwia tworzenie i hostowania aplikacji sieci web 
 
 ## <a name="guidance-and-recommendations"></a>Wytyczne i zalecenia
 
-### <a name="network"></a>Network (Sieć)
+### <a name="network"></a>Sieć
 Po zakończeniu wdrażania masz bramę aplikacji z włączoną zaporą aplikacji sieci web.
 
 Wystąpienie bramy udostępnia port 443 dla protokołu HTTPS. Ta konfiguracja zapewnia, że nasza aplikacja jest dostępna tylko na porcie 443 za pośrednictwem protokołu HTTPS.
@@ -361,7 +361,7 @@ Następujące technologie zapewniają możliwości zarządzania dostępem do dan
 - Usługa Azure Active Directory to usługa zarządzania katalogami i tożsamościami opartymi na wielu dzierżawach firmy Microsoft. Wszyscy użytkownicy tego rozwiązania są tworzone w usłudze Azure Active Directory, w tym użytkownicy uzyskujący dostęp do aplikacji Azure WebApp.
 - Kontrola dostępu oparta na rolach platformy Azure umożliwia administratorom definiowanie uprawnień dostępu szczegółowej, aby udzielić tylko ilości dostępu, której użytkownicy potrzebują do wykonywania swoich zadań. Zamiast udzielać każdemu użytkownikowi nieograniczonych uprawnień do zasobów platformy Azure, administratorzy mogą zezwalać tylko na niektóre akcje dostępu do danych posiadacza karty. Dostęp do subskrypcji jest ograniczony do administratora subskrypcji.
 - Zarządzanie tożsamościami uprzywilejowanymi usługi Azure Active Directory umożliwia klientom zminimalizowanie liczby użytkowników, którzy mają dostęp do określonych informacji, takich jak dane posiadacza karty. Administratorzy mogą używać zarządzania tożsamościami uprzywilejowanymi usługi Azure Active Directory do odnajdywanie, ograniczanie i monitorowanie tożsamości uprzywilejowanych i ich dostępu do zasobów. Ta funkcja może również służyć do wymuszania dostępu administracyjnego na żądanie, just-in-time w razie potrzeby.
-- Usługa Azure Active Directory Identity Protection wykrywa potencjalne luki w zabezpieczeniach wpływających na tożsamość organizacji, konfiguruje automatyczne odpowiedzi na wykryte podejrzane akcje związane z tożsamościami organizacji i bada podejrzane incydentów w celu podjęcia odpowiednich działań w celu ich rozwiązania.
+- Usługa Azure Active Directory Identity Protection wykrywa potencjalne luki w zabezpieczeniach wpływających na tożsamość organizacji, konfiguruje automatyczne odpowiedzi na wykryte podejrzane akcje związane z tożsamościami organizacji i bada podejrzane zdarzenia w celu podjęcia odpowiednich działań w celu ich rozwiązania.
 ### <a name="secrets-management"></a>Zarządzanie wpisami tajnymi
 Rozwiązanie używa usługi Azure Key Vault do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Poniższe funkcje usługi Azure Key Vault pomagają klientom chronić i uzyskiwać do nich dostęp
    - Zaawansowane zasady dostępu są konfigurowane na podstawie potrzeb.
@@ -380,7 +380,7 @@ Dzięki usłudze Azure Security Center klienci mogą centralnie stosować zasady
    - Usługa Azure Security Center udostępnia priorytetowe alerty zabezpieczeń i zdarzenia, co ułatwia klientom wykrywanie i rozwiązywanie potencjalnych problemów z zabezpieczeniami. Raport analizy zagrożeń jest generowany dla każdego wykrytego zagrożenia, aby pomóc zespołom reagowania na incydenty w badaniu i korygowaniu zagrożeń.
 ### <a name="azure-application-gateway"></a>Azure Application Gateway 
    Architektura zmniejsza ryzyko luk w zabezpieczeniach przy użyciu bramy aplikacji platformy Azure z skonfigurowaną zaporą aplikacji sieci web i włączonym zestawem reguł OWASP. Dodatkowe możliwości obejmują
-   - End-to-end-SSL.
+   - End-to-end TLS.
    - Wyłącz TLS v1.0 i v1.1.
    - Włącz TLSv1.2.
    - Zapora aplikacji sieci Web (tryb zapobiegania).
@@ -560,5 +560,5 @@ Aby utworzyć ten obszar roboczy
    Poniższe artykuły mogą pomóc w projektowaniu, opracowywaniu i wdrażaniu bezpiecznych aplikacji.
 
 - [Projekt](secure-design.md)
-- [Opracowywanie](secure-develop.md)
+- [Programowanie](secure-develop.md)
 - [Wdróż](secure-deploy.md)

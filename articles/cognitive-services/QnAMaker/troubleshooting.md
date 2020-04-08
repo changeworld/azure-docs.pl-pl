@@ -4,12 +4,12 @@ description: Wyselekcjonowana lista najczęściej zadawanych pytań dotyczących
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: diberry
-ms.openlocfilehash: 310cfe0cc8c1f647c09b8e0efb435a1ab326ff62
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 7847e21dbcf07f669d6802fffdd1e43623a72340
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474962"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804354"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Rozwiązywanie problemów dla programu QnA Maker
 
@@ -142,7 +142,7 @@ Wszystkie usunięcia są trwałe, w tym pary pytań i odpowiedzi, pliki, adresy 
 * Pliki — nie są obsługiwane
 
 #### <a name="answer-text-in-markdown"></a>Odpowiedz na tekst w znacznikach
-Gdy zestawy QnA znajdują się w bazie wiedzy, można edytować tekst znacznika odpowiedzi, aby uwzględnić łącza do multimediów dostępnych z publicznych adresów URL.
+Gdy pary QnA znajdują się w bazie wiedzy, można edytować tekst znaczników odpowiedzi, aby uwzględnić łącza do multimediów dostępnych z publicznych adresów URL.
 
 
 </details>

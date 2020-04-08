@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 50dbca0b3a761b72134eaa6cfed57e231be4ef13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6f61de23ab4b637cfb5b8ee365ddea9764bf515
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421034"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810209"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Wdrażanie usługi scalania dzielonego w celu przenoszenia danych między podzielonymi bazami danych
 
@@ -150,7 +150,7 @@ Należy pamiętać, że w przypadku wdrożeń produkcyjnych dla urzędu certyfik
 
 ## <a name="troubleshoot-the-deployment"></a>Rozwiązywanie problemów z wdrażaniem
 
-Jeśli rola sieci Web nie przejdzie do trybu online, prawdopodobnie wystąpił problem z konfiguracją zabezpieczeń. Sprawdź, czy ssl jest skonfigurowany w sposób opisany powyżej.
+Jeśli rola sieci Web nie przejdzie do trybu online, prawdopodobnie wystąpił problem z konfiguracją zabezpieczeń. Sprawdź, czy TLS/SSL jest skonfigurowany w sposób opisany powyżej.
 
 Jeśli rola pracownika nie przejdzie do trybu online, ale rola sieci web zakończy się pomyślnie, najprawdopodobniej występuje problem z połączeniem się z wcześniej utworzoną bazą danych o stanie.
 
@@ -254,7 +254,7 @@ Pliki skryptów zawarte są:
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. Wykonaj *skrypt ExecuteSampleSplitMerge.ps1,* aby wykonać operację podziału (przeniesienie połowy danych na pierwszy fragment do drugiego fragmentu), a następnie operację scalania (przeniesienie danych z powrotem na pierwszy fragment). Jeśli skonfigurowano protokół SSL i wyłączono punkt końcowy http, upewnij się, że zamiast tego używasz https:// punktu końcowego.
+5. Wykonaj *skrypt ExecuteSampleSplitMerge.ps1,* aby wykonać operację podziału (przeniesienie połowy danych na pierwszy fragment do drugiego fragmentu), a następnie operację scalania (przeniesienie danych z powrotem na pierwszy fragment). Jeśli skonfigurowano protokół TLS i wyłączono punkt końcowy http, upewnij się, że zamiast tego używasz https:// punktu końcowego.
 
    Przykładowy wiersz polecenia:
 
@@ -333,7 +333,7 @@ Po uruchomieniu przykładowych skryptów programu PowerShell może zostać wyśw
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 
-Ten błąd oznacza, że certyfikat SSL nie jest poprawnie skonfigurowany. Postępuj zgodnie z instrukcjami w sekcji "Łączenie się z przeglądarką internetową".
+Ten błąd oznacza, że certyfikat TLS/SSL nie jest poprawnie skonfigurowany. Postępuj zgodnie z instrukcjami w sekcji "Łączenie się z przeglądarką internetową".
 
 Jeśli nie możesz przesłać żądań, możesz zobaczyć:
 

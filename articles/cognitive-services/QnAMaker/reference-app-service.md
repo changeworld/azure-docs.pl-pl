@@ -3,12 +3,12 @@ title: Konfiguracja usługi — QnA Maker
 description: Dowiedz się, jak i gdzie skonfigurować zasoby.
 ms.topic: reference
 ms.date: 02/21/2020
-ms.openlocfilehash: 8ef6fecbfeb119d0c68ec5bc3bbc90ec449dbb7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3be32d1778604121c2acac88415cbfbc4bdbca3d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651862"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804264"
 ---
 # <a name="service-configuration"></a>Konfiguracja usługi
 
@@ -27,8 +27,8 @@ Można ustawić indywidualne ustawienie za pomocą listy Ustawienia aplikacji lu
 
 |Zasób|Ustawienie|
 |--|--|
-|Narzędzie AzureSearchAdminKey|Wyszukiwanie poznawcze - używane do przechowywania zestawu QnA i #1 Ranker|
-|Usługa AzureSearchName|Wyszukiwanie poznawcze - używane do przechowywania zestawu QnA i #1 Ranker|
+|Narzędzie AzureSearchAdminKey|Wyszukiwanie poznawcze - używane do przechowywania par QnA i ranker #1|
+|Usługa AzureSearchName|Wyszukiwanie poznawcze - używane do przechowywania par QnA i ranker #1|
 |Domyślnaaaaarwer|Tekst odpowiedzi, gdy nie znaleziono dopasowania|
 |Identyfikator UserAppInsightsAppId|Dziennik czatu i telemetria|
 |Klawisz UserAppInsightsKey|Dziennik czatu i telemetria|

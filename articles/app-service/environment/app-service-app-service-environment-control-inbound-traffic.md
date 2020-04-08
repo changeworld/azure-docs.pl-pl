@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 857b2b00aadced567bc8ac191cdd9908f7bea7a3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687391"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804405"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Jak kontrolować ruch przychodzący do środowiska usługi aplikacji
 ## <a name="overview"></a>Omówienie
 Środowisko usługi aplikacji można utworzyć **w** sieci wirtualnej usługi Azure Resource Manager **lub** w klasycznej [sieci wirtualnej][virtualnetwork]modelu wdrażania.  Nową sieć wirtualną i nową podsieć można zdefiniować w momencie tworzenia środowiska usługi aplikacji.  Alternatywnie środowisko usługi aplikacji można utworzyć w istniejącej sieci wirtualnej i istniejącej podsieci.  Po zmianie wprowadzonej w czerwcu 2016 r. środowiska ASE można również wdrożyć w sieciach wirtualnych korzystających z zakresów adresów publicznych lub przestrzeni adresowych RFC1918 (tj. adresów prywatnych).  Aby uzyskać więcej informacji na temat tworzenia środowiska usługi aplikacji, zobacz [Jak utworzyć środowisko usługi app service][HowToCreateAnAppServiceEnvironment].
 
-Środowisko usługi aplikacji musi być zawsze tworzone w podsieci, ponieważ podsieć zapewnia granicę sieci, która może służyć do blokowania ruchu przychodzącego za urządzeniami i usługami nadrzędnymi, tak aby ruch HTTP i HTTPS był akceptowany tylko z określonego nadrzędnego adresów IP.
+Środowisko usługi aplikacji musi być zawsze tworzone w podsieci, ponieważ podsieć zapewnia granicę sieci, która może służyć do blokowania ruchu przychodzącego za urządzeniami i usługami nadrzędnymi, tak aby ruch HTTP i HTTPS był akceptowany tylko z określonych nadrzędnych adresów IP.
 
 Przychodzący i wychodzący ruch sieciowy w podsieci jest kontrolowany za pomocą [sieciowej grupy zabezpieczeń][NetworkSecurityGroups]. Kontrolowanie ruchu przychodzącego wymaga utworzenia reguł zabezpieczeń sieci w sieciowej grupie zabezpieczeń, a następnie przypisania sieciowej grupy zabezpieczeń podsieci zawierającej środowisko usługi app service.
 
@@ -31,10 +31,10 @@ Przed zablokowaniem przychodzącego ruchu sieciowego z sieciową grupą zabezpie
 
 Poniżej znajduje się lista portów używanych przez środowisko usługi aplikacji. Wszystkie porty są **TCP**, chyba że wyraźnie zaznaczono inaczej:
 
-* 454: **Wymagany port** używany przez infrastrukturę platformy Azure do zarządzania i obsługi środowisk usługi app service za pośrednictwem protokołu SSL.  Nie blokuj ruchu do tego portu.  Ten port jest zawsze związany z publicznym adresem VIP ase.
-* 455: **Wymagany port** używany przez infrastrukturę platformy Azure do zarządzania i obsługi środowisk usługi app service za pośrednictwem protokołu SSL.  Nie blokuj ruchu do tego portu.  Ten port jest zawsze związany z publicznym adresem VIP ase.
+* 454: **Wymagany port** używany przez infrastrukturę platformy Azure do zarządzania i obsługi środowisk usługi app service za pośrednictwem protokołu TLS.  Nie blokuj ruchu do tego portu.  Ten port jest zawsze związany z publicznym adresem VIP ase.
+* 455: **Wymagany port** używany przez infrastrukturę platformy Azure do zarządzania i obsługi środowisk usługi app service za pośrednictwem protokołu TLS.  Nie blokuj ruchu do tego portu.  Ten port jest zawsze związany z publicznym adresem VIP ase.
 * 80: Domyślny port dla przychodzącego ruchu HTTP do aplikacji działających w planach usługi app service w środowisku usługi aplikacji.  W ase z włączoną funkcją ILB ten port jest powiązany z adresem ILB ase.
-* 443: Domyślny port dla przychodzącego ruchu SSL do aplikacji działających w planach usługi app service w środowisku usługi aplikacji.  W ase z włączoną funkcją ILB ten port jest powiązany z adresem ILB ase.
+* 443: Domyślny port dla przychodzącego ruchu TLS do aplikacji działających w planach usługi app service w środowisku usługi aplikacji.  W ase z włączoną funkcją ILB ten port jest powiązany z adresem ILB ase.
 * 21: Kanał sterowania dla FTP.  Ten port można bezpiecznie zablokować, jeśli ftp nie jest używany.  W przypadku ase z włączoną funkcją ILB ten port może być powiązany z adresem równoważenia obciążenia sieciowego dla ase.
 * 990: Kanał sterowania dla FTPS.  Ten port można bezpiecznie zablokować, jeśli ftps nie jest używany.  W przypadku ase z włączoną funkcją ILB ten port może być powiązany z adresem równoważenia obciążenia sieciowego dla ase.
 * 10001-10020: Kanały danych dla FTP.  Podobnie jak w przypadku kanału sterującego, porty te mogą być bezpiecznie blokowane, jeśli ftp nie jest używany.  W ase z włączoną funkcją ILB ten port może być powiązany z adresem równoważenia obciążenia sieciowego ASE.
@@ -62,7 +62,7 @@ Poniżej przedstawiono tworzenie sieciowej grupy zabezpieczeń:
 
 Po utworzeniu sieciowej grupy zabezpieczeń dodawana jest do niej co najmniej jedna reguła zabezpieczeń sieciowych.  Ponieważ zestaw reguł może się zmieniać w czasie, zaleca się rozmieszczenie schematu numeracji używanego dla priorytetów reguł, aby ułatwić wstawianie dodatkowych reguł w czasie.
 
-W poniższym przykładzie przedstawiono regułę, która jawnie udziela dostępu do portów zarządzania potrzebnych przez infrastrukturę platformy Azure do zarządzania i obsługi środowiska usługi app service.  Należy zauważyć, że wszystkie przepływy ruchu zarządzania za pomocą ssl i jest zabezpieczony przez certyfikaty klientów, więc nawet jeśli porty są otwarte są niedostępne przez dowolną jednostkę inną niż infrastruktura zarządzania platformy Azure.
+W poniższym przykładzie przedstawiono regułę, która jawnie udziela dostępu do portów zarządzania potrzebnych przez infrastrukturę platformy Azure do zarządzania i obsługi środowiska usługi app service.  Należy zauważyć, że wszystkie przepływy ruchu zarządzania za pomocą protokołu TLS i jest zabezpieczony przez certyfikaty klientów, więc nawet jeśli porty są otwarte są niedostępne przez dowolną jednostkę inną niż infrastruktura zarządzania platformy Azure.
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 843c179826b2064a1be24d3cee84b398987b4aed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 787640ef08ee91220f42065af155c372247f0136
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274218"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804609"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Archiwizuj dzienniki zasobów platformy Azure na koncie magazynu
 [Dzienniki platformy](platform-logs-overview.md) na platformie Azure, w tym dzienniki aktywności platformy Azure i dzienniki zasobów, zawierają szczegółowe informacje diagnostyczne i inspekcji dla zasobów platformy Azure i platformy Azure, na których zależą.  W tym artykule opisano zbieranie dzienników platformy do konta magazynu platformy Azure w celu zachowania danych do archiwizacji.
@@ -20,6 +20,8 @@ ms.locfileid: "79274218"
 ## <a name="prerequisites"></a>Wymagania wstępne
 Musisz [utworzyć konto magazynu platformy Azure,](../../storage/common/storage-account-create.md) jeśli jeszcze go nie masz. Konto magazynu nie musi znajdować się w tej samej subskrypcji co dzienniki wysyłania zasobu, o ile użytkownik, który konfiguruje to ustawienie, ma odpowiedni dostęp RBAC do obu subskrypcji.
 
+> [!IMPORTANT]
+> Aby wysłać dane do niezmiennego magazynu, ustaw niezmienne zasady dla konta magazynu, zgodnie z opisem w [polu Ustaw zasady niezmienności dla magazynu obiektów Blob i zarządzaj nimi](../../storage/blobs/storage-blob-immutability-policies-manage.md). Należy wykonać wszystkie kroki opisane w tym artykule, w tym włączenie chronionych zapisów identyfikatorów blob dołączania.
 
 > [!IMPORTANT]
 > Konta usługi Azure Data Lake Storage Gen2 nie są obecnie obsługiwane jako miejsce docelowe dla ustawień diagnostycznych, nawet jeśli mogą być wymienione jako prawidłowa opcja w witrynie Azure portal.

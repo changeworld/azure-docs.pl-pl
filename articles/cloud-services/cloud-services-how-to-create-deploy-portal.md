@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 53f53976b20359afc45abe1b25ca60325b5d6a2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386174"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811341"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Jak utworzyć i wdrożyć usługę w chmurze
 Portal Azure zawiera dwa sposoby tworzenia i wdrażania usługi w chmurze: *Szybkie tworzenie* i *tworzenie niestandardowe*.
@@ -42,7 +42,7 @@ Przed wdrożeniem usługi w chmurze należy utworzyć pakiet usługi w chmurze (
 
 Trzy funkcje usługi w chmurze wymagają specjalnych konfiguracji przed wyeksportem pakietu usług:
 
-* Jeśli chcesz wdrożyć usługę w chmurze, która używa secure sockets layer (SSL) do szyfrowania danych, [skonfiguruj aplikację](cloud-services-configure-ssl-certificate-portal.md#modify) dla SSL.
+* Jeśli chcesz wdrożyć usługę w chmurze, która używa zabezpieczeń warstwy transportowej (TLS), wcześniej znaną jako Secure Sockets Layer (SSL), do szyfrowania danych, [skonfiguruj aplikację](cloud-services-configure-ssl-certificate-portal.md#modify) dla protokołu TLS.
 * Jeśli chcesz skonfigurować połączenia pulpitu zdalnego do wystąpień ról, [skonfiguruj role pulpitu](cloud-services-role-enable-remote-desktop-new-portal.md) zdalnego.
 * Jeśli chcesz skonfigurować pełne monitorowanie usługi w chmurze, włącz diagnostykę platformy Azure dla usługi w chmurze. *Minimalne monitorowanie* (domyślny poziom monitorowania) używa liczników wydajności zebranych z systemów operacyjnych hosta dla wystąpień ról (maszyn wirtualnych). *Pełne monitorowanie* gromadzi dodatkowe metryki na podstawie danych dotyczących wydajności w wystąpieniach roli, aby umożliwić ściślejszą analizę problemów występujących podczas przetwarzania aplikacji. Aby dowiedzieć się, jak włączyć diagnostykę platformy Azure, zobacz [Włączanie diagnostyki na platformie Azure.](cloud-services-dotnet-diagnostics.md)
 
@@ -70,7 +70,7 @@ Aby utworzyć usługę w chmurze z wdrożeniami ról sieci web lub ról procesu 
 ## <a name="upload-a-certificate"></a>Przekazywanie certyfikatu
 Jeśli pakiet wdrażania został [skonfigurowany do używania certyfikatów,](cloud-services-configure-ssl-certificate-portal.md#modify)można przekazać certyfikat teraz.
 
-1. Wybierz **pozycję Certyfikaty**i w okienku **Dodawanie certyfikatów** wybierz plik PFX certyfikatu SSL, a następnie podaj **hasło** certyfikatu,
+1. Wybierz **pozycję Certyfikaty**i w okienku **Dodawanie certyfikatów** wybierz plik PFX certyfikatu TLS/SSL, a następnie podaj **hasło** certyfikatu,
 2. Kliknij **pozycję Dołącz certyfikat**, a następnie kliknij przycisk **OK** w okienku **Dodawanie certyfikatów.**
 3. Kliknij **pozycję Utwórz** w okienku **Usługi w chmurze.** Po osiągnięciu stanu **Gotowości** wdrożenia można przejść do następnych kroków.
 
@@ -90,7 +90,7 @@ Jeśli pakiet wdrażania został [skonfigurowany do używania certyfikatów,](cl
 * [Ogólna konfiguracja usługi w chmurze](cloud-services-how-to-configure-portal.md).
 * Konfigurowanie [niestandardowej nazwy domeny](cloud-services-custom-domain-name-portal.md).
 * [Zarządzanie usługą w chmurze](cloud-services-how-to-manage-portal.md).
-* Konfigurowanie [certyfikatów ssl](cloud-services-configure-ssl-certificate-portal.md).
+* Konfigurowanie [certyfikatów TLS/SSL](cloud-services-configure-ssl-certificate-portal.md).
 
 
 

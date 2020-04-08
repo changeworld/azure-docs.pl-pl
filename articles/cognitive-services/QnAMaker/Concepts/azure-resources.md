@@ -3,12 +3,12 @@ title: Zasoby platformy Azure — QnA Maker
 description: Program QnA Maker używa kilku źródeł platformy Azure, z których każdy ma inny cel. Zrozumienie, w jaki sposób są one używane indywidualnie, pozwala zaplanować i wybrać właściwą warstwę cenową lub wiedzieć, kiedy zmienić warstwę cenową. Zrozumienie, jak są one używane w połączeniu pozwala znaleźć i rozwiązać problemy, gdy wystąpią.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 8a5cc0f4889e31470514015035a92d230c40ed43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bd491ecbd878cb7bb05a7eaa5712c75653f2cba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284249"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804303"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Zasoby platformy Azure dla programu QnA Maker
 
@@ -47,14 +47,14 @@ W poniższej tabeli przedstawiono kilka wskazówek wysokiego poziomu.
 |                        | Zarządzanie producentami QnA | App Service | Azure Cognitive Search | Ograniczenia                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | Eksperymentowanie        | Bezpłatna jednostka SKU             | Warstwa bezpłatna   | Warstwa bezpłatna    | Opublikuj do 2 KB, rozmiar 50 MB  |
-| Środowisko deweloperów/testów   | Standardowy SKU         | Udostępnione      | Podstawowa (Basic)        | Opublikuj do 14 KB, rozmiar 2 GB    |
-| Środowisko produkcyjne | Standardowy SKU         | Podstawowa (Basic)       | Standardowa     | Opublikuj do 49 KB, rozmiar 25 GB |
+| Środowisko deweloperów/testów   | Standardowy SKU         | Udostępnione      | Podstawowy        | Opublikuj do 14 KB, rozmiar 2 GB    |
+| Środowisko produkcyjne | Standardowy SKU         | Podstawowy       | Standardowa     | Opublikuj do 49 KB, rozmiar 25 GB |
 
 ## <a name="when-to-change-a-pricing-tier"></a>Kiedy zmienić warstwę cenową
 
 |Uaktualnienie|Przyczyna|
 |--|--|
-|[Uaktualnienie](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) Usługa SKU zarządzania QnA Maker|Chcesz mieć więcej zestawów QnA lub źródeł dokumentów w bazie wiedzy.|
+|[Uaktualnienie](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) Usługa SKU zarządzania QnA Maker|Chcesz mieć więcej par QnA lub źródeł dokumentów w swojej bazie wiedzy.|
 |[Uaktualnienie](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) Usługa App Service SKU i sprawdź warstwę Wyszukiwania poznawczego i [utwórz repliki wyszukiwania funkcji Cognitive Search](../../../search/search-capacity-planning.md)|Baza wiedzy musi obsługiwać więcej żądań z aplikacji klienckiej, takich jak czat bot.|
 |[Uaktualnienie](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Usługa Azure Cognitive Search|Planujesz mieć wiele baz wiedzy.|
 
@@ -95,8 +95,8 @@ Każdy zasób platformy Azure utworzony za pomocą programu QnA Maker ma określ
 
 [Zasób Wyszukiwania poznawczego](../../../search/index.yml) jest używany do:
 
-* Przechowywanie zestawów QnA
-* Podaj wstępny ranking (ranker #1) zestawów QnA w czasie wykonywania
+* Przechowywanie par QnA
+* Podaj wstępny ranking (ranker #1) par QnA w czasie wykonywania
 
 #### <a name="index-usage"></a>Użycie indeksu
 
@@ -110,7 +110,7 @@ Pierwsza baza wiedzy utworzona w zasobie QnA Maker służy do określania _zesta
 
 ### <a name="qna-maker-resource"></a>Zasób QnA Maker
 
-Zasób QnA Maker zapewnia dostęp do interfejsów API tworzenia i publikowania, a także do drugiej warstwy klasyfikacji (ranker #2) zestawów QnA w czasie wykonywania.
+Zasób QnA Maker zapewnia dostęp do interfejsów API tworzenia i publikowania, a także do drugiej warstwy rankingu (ranker #2) par QnA w czasie wykonywania.
 
 Drugi ranking stosuje inteligentne filtry, które mogą zawierać metadane i monity uzupełniające.
 
@@ -164,7 +164,7 @@ Użyj tych kluczy podczas tworzenia żądań do usługi za pośrednictwem interf
 
 |Nazwa|Lokalizacja|Przeznaczenie|
 |--|--|--|
-|Klucz tworzenia|[Portal Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Te klucze są używane do uzyskiwania dostępu do [interfejsów API usługi zarządzania QnA Maker](https://go.microsoft.com/fwlink/?linkid=2092179). Te interfejsy API umożliwiają edytowanie pytań i odpowiedzi w bazie wiedzy oraz publikowanie bazy wiedzy. Klucze te są tworzone podczas tworzenia nowej usługi QnA Maker.<br><br>Znajdź te klucze w zasobie **usług Cognitive Services** na stronie **Klucze.**|
+|Klucz tworzenia|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Te klucze są używane do uzyskiwania dostępu do [interfejsów API usługi zarządzania QnA Maker](https://go.microsoft.com/fwlink/?linkid=2092179). Te interfejsy API umożliwiają edytowanie pytań i odpowiedzi w bazie wiedzy oraz publikowanie bazy wiedzy. Klucze te są tworzone podczas tworzenia nowej usługi QnA Maker.<br><br>Znajdź te klucze w zasobie **usług Cognitive Services** na stronie **Klucze.**|
 |Klucz punktu końcowego kwerendy|[Portal usługi QnA Maker](https://www.qnamaker.ai)|Te klucze są używane do kwerendy opublikowanego punktu końcowego bazy wiedzy, aby uzyskać odpowiedź na pytanie użytkownika. Zazwyczaj używasz tego punktu końcowego kwerendy w botie czatu lub w kodzie aplikacji klienckiej, który łączy się z usługą QnA Maker. Te klucze są tworzone podczas publikowania bazy wiedzy QnA Maker.<br><br>Znajdź te klawisze na stronie **Ustawienia usługi.** Znajdź tę stronę z menu użytkownika w prawym górnym rogu strony w menu rozwijanym.|
 
 ### <a name="subscription-keys"></a>Klucze subskrypcji

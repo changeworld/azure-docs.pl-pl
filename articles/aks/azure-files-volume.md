@@ -1,15 +1,16 @@
 ---
-title: Tworzenie woluminu statycznego dla wielu zasobników w usłudze Azure Kubernetes (AKS)
+title: Ręczne tworzenie udziału usługi Azure Files
+titleSuffix: Azure Kubernetes Service
 description: Dowiedz się, jak ręcznie utworzyć wolumin za pomocą usługi Azure Files do użytku z wieloma równoczesnymi zasobnikami w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 084ab5cd6736c9148bcab1faf048d3d9081855d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 412b7158ea366eefb1c3e9c1d2586d54c316aa6c
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596406"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803453"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ręczne tworzenie i używanie woluminu z udziałem usługi Azure Files w usłudze Azure Kubernetes Service (AKS)
 
@@ -132,7 +133,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Mount options (Opcje instalacji)
 
-Domyślną wartością *fileMode* i *dirMode* jest *0755* dla Kubernetes w wersji 1.9.1 i nowszej. W przypadku korzystania z klastra z kuberetes w wersji 1.8.5 lub większej i statycznie tworzenia trwałego obiektu woluminu, należy określić opcje instalacji na *PersistentVolume* obiektu. Poniższy przykład ustawia *0777*:
+Domyślną wartością *fileMode* i *dirMode* jest *0755* dla Kubernetes w wersji 1.9.1 i nowszej. Jeśli używasz klastra z programem Kubernetes w wersji 1.8.5 lub nowszej i statycznie tworzy obiekt woluminu trwałego, opcje instalacji muszą być określone w obiekcie *PersistentVolume.* Poniższy przykład ustawia *0777*:
 
 ```yaml
 apiVersion: v1

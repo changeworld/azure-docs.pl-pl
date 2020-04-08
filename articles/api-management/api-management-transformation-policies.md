@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 34a70a4698b69881a06cfb7a7017fa0c30647197
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81b7fb687bb6ef88d1ed436923d0e5ff7561c22b
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047693"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803249"
 ---
 # <a name="api-management-transformation-policies"></a>Zasady przekształcania w usłudze API Management
 Ten temat zawiera odwołanie do następujących zasad zarządzania interfejsami API. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [Zasady w zarządzania interfejsami API](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -540,17 +540,12 @@ OriginalUrl.
 </set-query-parameter>
 ```
 
-### <a name="examples"></a>Przykłady
-
 #### <a name="example"></a>Przykład
 
 ```xml
 
-<set-query-parameter>
-  <parameter name="api-key" exists-action="skip">
-    <value>12345678901</value>
-  </parameter>
-  <!-- for multiple parameters with the same name add additional value elements -->
+<set-query-parameter name="api-key" exists-action="skip">
+  <value>12345678901</value>
 </set-query-parameter>
 
 ```
@@ -596,7 +591,7 @@ OriginalUrl.
 
 - Adres URL żądania -`http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
 
-  Ta zasada może być używana, gdy adres URL przyjazny dla ludzi i/lub przeglądarki powinien zostać przekształcony w format adresu URL oczekiwany przez usługę sieci web. Ta zasada musi być stosowana tylko podczas ujawniania alternatywnego formatu adresu URL, takiego jak czyste adresy URL, ponowne adresy URL, przyjazne dla użytkownika adresy URL lub adresy URL przyjazne dla SEO, które są czysto strukturalnymi adresami URL, które nie zawierają ciągu zapytania i zamiast tego zawierają tylko ścieżkę zasobu ( po programie i organie). Często odbywa się to w celach estetycznych, użyteczności lub optymalizacji pod kątem wyszukiwarek (SEO).
+  Ta zasada może być używana, gdy adres URL przyjazny dla ludzi i/lub przeglądarki powinien zostać przekształcony w format adresu URL oczekiwany przez usługę sieci web. Ta zasada musi być stosowana tylko podczas ujawniania alternatywnego formatu adresu URL, takiego jak czyste adresy URL, ponowne adresy URL, przyjazne dla użytkownika adresy URL lub adresy URL przyjazne dla SEO, które są czysto strukturalnymi adresami URL, które nie zawierają ciągu zapytania i zamiast tego zawierają tylko ścieżkę zasobu (po schemacie i urzędzie). Często odbywa się to w celach estetycznych, użyteczności lub optymalizacji pod kątem wyszukiwarek (SEO).
 
 > [!NOTE]
 >  Parametry ciągu kwerendy można dodawać tylko przy użyciu zasad. Nie można dodać dodatkowych parametrów ścieżki szablonu w adresie URL ponownego zapisu.

@@ -3,12 +3,12 @@ title: Wdrażanie aplikacji w usłudze Azure Spring Cloud przy użyciu narzędzi
 description: Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure w potoku ciągłej integracji i wdrażania w celu wdrażania mikrousług w usłudze Azure Spring Cloud
 ms.topic: tutorial
 ms.date: 01/07/2020
-ms.openlocfilehash: 67ad97bb762ed302ef52c404d47c5755ea4b245b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bc48eecc9e73b95fd9112d645135409c24369e10
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75734978"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810223"
 ---
 # <a name="tutorial-deploy-apps-to-azure-spring-cloud-using-jenkins-and-the-azure-cli"></a>Samouczek: Wdrażanie aplikacji w chmurze Azure Spring Cloud przy użyciu usługi Jenkins i interfejsu wiersza polecenia platformy Azure
 
@@ -28,7 +28,7 @@ W tym samouczku przyjęto założenie, że wiedza pośrednia na temat podstawowy
 >[!Note]
 > Usługa Azure Spring Cloud jest obecnie oferowana jako publiczna wersja zapoznawcza. Publiczne oferty w wersji zapoznawczej umożliwiają klientom eksperymentowanie z nowymi funkcjami przed ich oficjalną premierą.  Publiczne funkcje i usługi w wersji zapoznawczej nie są przeznaczone do użytku w wersji produkcyjnej.  Aby uzyskać więcej informacji na temat pomocy technicznej podczas wersji zapoznawców, zapoznaj się z [często zadawanymi pytaniami](https://azure.microsoft.com/support/faq/) lub złóż [wniosek o pomoc techniczną,](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) aby dowiedzieć się więcej.
 
-[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 * Konto usługi GitHub. Jeśli nie masz konta GitHub, utwórz [bezpłatne konto](https://github.com/) przed rozpoczęciem.
 

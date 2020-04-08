@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5b247e8f4a611ace227f5adcef7e0e27de341c96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 578d00d4bd65b3ffbfb6cdac439762344604e6b8
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454639"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804881"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji agenta usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -35,9 +35,7 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 | Pakiet zbiorczy aktualizacji z czerwca 2019 r. — [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13 czerwca 2019 r. | Obsługiwane — wersja agenta wygaśnie 21 kwietnia 2020 r. |
 | Pakiet zbiorczy aktualizacji z maja 2019 r. — [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7 maja 2019 r. | Obsługiwane — wersja agenta wygaśnie 21 kwietnia 2020 r. |
 | Wydanie V6 - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21 kwietnia 2019 r. | Obsługiwane — wersja agenta wygaśnie 21 kwietnia 2020 r. |
-| Pakiet zbiorczy aktualizacji z kwietnia 2019 r. — [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4 kwietnia 2019 r. | Obsługiwane — wersja agenta wygaśnie 18 marca 2020 r. |
-| Pakiet zbiorczy aktualizacji z marca 2019 r. — [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7 marca 2019 r. | Obsługiwane — wersja agenta wygaśnie 18 marca 2020 r. |
-| Wersja V5 - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12 lutego 2019 r. | Obsługiwane — wersja agenta wygaśnie 18 marca 2020 r. |
+| Wydanie V5 | 5.0.2.0 - 5.2.0.0 | Nie dotyczy | Nie obsługiwane — wersje agenta wygasły 18 marca 2020 r. |
 | Wersja V4 | 4.0.1.0 - 4.3.0.0 | Nie dotyczy | Nie obsługiwane — wersje agenta wygasły 6 listopada 2019 r. |
 | Wersja V3 | 3.1.0.0 - 3.4.0.0 | Nie dotyczy | Nie obsługiwane — wersje agenta wygasły 19 sierpnia 2019 r. |
 | Agenci Pre-GA | 1.1.0.0 - 3.0.13.0 | Nie dotyczy | Nie obsługiwane — wersje agenta wygasły 1 października 2018 r. |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: e4dd6bab6198546dc5acab78ec59d92387328dbb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d9c666fd6fcf020908b6fc5bdd639261853ad9c6
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754999"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811545"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagowanie na zdarzenia usługi Blob Storage
 
@@ -98,7 +98,7 @@ Aplikacje obsługujące zdarzenia magazynu obiektów Blob powinny stosować się
 > * Podobnie sprawdź, czy eventType jest jednym jesteś przygotowany do przetworzenia i nie zakładaj, że wszystkie zdarzenia, które otrzymasz będą typy, których oczekujesz.
 > * Ponieważ wiadomości mogą docierać po pewnym opóźnieniu, użyj pól etag, aby dowiedzieć się, czy informacje o obiektach są nadal aktualne. Aby dowiedzieć się, jak korzystać z pola etag, zobacz [Zarządzanie współbieżnością w magazynie obiektów Blob](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage). 
 > * Ponieważ wiadomości mogą być dostarczane poza kolejnością, użyj pól sekwencera, aby zrozumieć kolejność zdarzeń na dowolnym określonym obiekcie. Pole sekwencera jest wartością ciągu reprezentującą logiczną sekwencję zdarzeń dla określonej nazwy obiektu blob. Można użyć standardowego porównania ciągów, aby zrozumieć względną sekwencję dwóch zdarzeń o tej samej nazwie obiektu blob.
-> Zdarzenia magazynu gwarantuje co najmniej raz dostarczanie do subskrybentów, co zapewnia, że wszystkie wiadomości są przesyłane. Jednak ze względu na ponownych prób lub dostępności subskrypcji, zduplikowane wiadomości mogą czasami wystąpić.
+> * Zdarzenia magazynu gwarantuje co najmniej raz dostarczanie do subskrybentów, co zapewnia, że wszystkie wiadomości są przesyłane. Jednak ze względu na ponownych prób lub dostępności subskrypcji, zduplikowane wiadomości mogą czasami wystąpić. Aby dowiedzieć się więcej o dostarczaniu i ponawianiu prób wiadomości, zobacz [Dostarczanie wiadomości w uchorzyć i ponowić próbę](../../event-grid/delivery-and-retry.md).
 > * Użyj pola blobType, aby zrozumieć, jakiego typu operacje są dozwolone w obiekcie blob i typy biblioteki klienta, których należy użyć do uzyskania dostępu do obiektu blob. Prawidłowe wartości `BlockBlob` to `PageBlob`jeden lub . 
 > * Użyj pola adresu `CloudBlockBlob` URL `CloudAppendBlob` z i konstruktorów, aby uzyskać dostęp do obiektu blob.
 > * Ignoruj pola, których nie rozumiesz. Ta praktyka pomoże Ci zachować odporność na nowe funkcje, które mogą być dodawane w przyszłości.

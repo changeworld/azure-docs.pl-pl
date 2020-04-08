@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 741cbc82f2ed3ffffb553b146d981b4e35a273f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726677"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811428"
 ---
 # <a name="azure-customer-data-protection"></a>Ochrona danych klientów platformy Azure   
 Domyślnie odmawia się dostępu do danych klientów przez operacje firmy Microsoft i personel pomocy technicznej. Po udzieleniu dostępu do danych klienta wymagana jest zgoda kierownictwa, a następnie dostęp jest starannie zarządzany i rejestrowany. Wymagania dotyczące kontroli dostępu są ustanawiane przez następujące zasady zabezpieczeń platformy Azure:
@@ -45,7 +45,7 @@ Platforma Azure zapewnia klientom silne zabezpieczenia danych, zarówno domyśln
 - Klient i chmura.
 - Wewnętrznie między systemami platformy Azure i centrami danych.
 
-**Szyfrowanie**: Szyfrowanie danych w magazynie i podczas przesyłania może być wdrażane przez klientów jako najlepszą praktykę zapewniającą poufność i integralność danych. Klienci mogą skonfigurować swoje usługi w chmurze platformy Azure do używania ssl do ochrony komunikacji z Internetu, a nawet między maszynami wirtualnymi hostowanymi na platformie Azure.
+**Szyfrowanie**: Szyfrowanie danych w magazynie i podczas przesyłania może być wdrażane przez klientów jako najlepszą praktykę zapewniającą poufność i integralność danych. Klienci mogą skonfigurować swoje usługi w chmurze platformy Azure do używania protokołu TLS do ochrony komunikacji z Internetu, a nawet między maszynami wirtualnymi hostowanymi na platformie Azure.
 
 **Nadmiarowość danych:** firma Microsoft pomaga zapewnić ochronę danych w przypadku cyberataku lub fizycznego uszkodzenia centrum danych. Klienci mogą zdecydować się na:
 

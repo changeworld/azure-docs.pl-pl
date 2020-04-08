@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190364"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804371"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrona interfejsu API przy użyciu protokołu OAuth 2.0 za pomocą usługi Azure Active Directory i usługi API Management
 
@@ -137,7 +137,7 @@ W tym przykładzie Konsola dewelopera jest aplikacją kliencką. W poniższych k
 
 1. Jeśli używasz punktów końcowych **w wersji 1,** dodaj parametr treści o nazwie **zasób**. Dla wartości tego parametru należy użyć **identyfikatora aplikacji** zaplecza. 
 
-1. Jeśli używasz punktów końcowych **w wersji 2,** użyj zakresu utworzonego dla aplikacji wewnętrznej bazy danych w polu **Zakres domyślny.**
+1. Jeśli używasz punktów końcowych **w wersji 2,** użyj zakresu utworzonego dla aplikacji wewnętrznej bazy danych w polu **Zakres domyślny.** Ponadto upewnij się, aby ustawić [`accessTokenAcceptedVersion`](/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) wartość `2` właściwości w [manifeście aplikacji](/azure/active-directory/develop/reference-app-manifest).
 
 1. Następnie określ poświadczenia klienta. Są to poświadczenia dla aplikacji klienckiej.
 

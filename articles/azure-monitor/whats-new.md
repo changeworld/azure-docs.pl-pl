@@ -6,15 +6,79 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 03/05/2020
-ms.openlocfilehash: c29790035ec4e971957784e826a1e8bd8e0c9329
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a2e6d2a459a6713aa9372496fc3a933c0a886ed9
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79500497"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802608"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Co nowego w dokumentacji usługi Azure Monitor?
 Ten artykuł zawiera listę artykułów usługi Azure Monitor, które są nowe lub zostały znacznie zaktualizowane. Zostanie odświeżony w pierwszym tygodniu każdego miesiąca, aby uwzględnić aktualizacje artykułów z poprzedniego miesiąca.
+
+## <a name="march-2020"></a>Marzec 2020 r.
+
+### <a name="general"></a>Ogólne
+- [Omówienie usługi Azure Monitor](overview.md) — dodano omówienie usługi Azure Monitor.
+- [Konfiguracja klucza zarządzanego przez klienta usługi Azure Monitor](platform/customer-managed-keys.md) — ogólne aktualizacje.
+- [Odwołanie do danych usługi Azure Monitor](/azure/azure-monitor/reference) — nowa lokacja.
+
+### <a name="alerts"></a>Alerty
+
+- [Tworzenie, wyświetlanie i zarządzanie alertami dziennika aktywności w usłudze Azure Monitor](platform/alerts-activity-log.md) — dodatkowe wyjaśnienie szablonu Menedżera zasobów.
+- [Dowiedz się, jak działają alerty metryk w usłudze Azure Monitor.](platform/alerts-metric-overview.md) - Aktualizacja o wsparcie rządowe.
+- [Rozwiązywanie problemów z alertami i powiadomieniami usługi Azure Monitor](platform/alerts-troubleshoot.md) — nowy artykuł
+
+### <a name="application-insights"></a>Application Insights
+- [Automatyzacja usługi Azure Application Insights za pomocą programu PowerShell](app/powershell.md) — dodano przykłady ARMClient.
+- [Ciągły eksport danych telemetrycznych z usługi Application Insights](app/export-telemetry.md) — dodaj tabelę ze szczegółami struktury eksportu.
+- [Włącz debuger migawek dla aplikacji platformy .NET w usłudze Azure App Service](app/snapshot-debugger-appservice.md) — przykład szablonu Dodano Menedżera zasobów.
+- [Zarządzanie użyciem i kosztami usługi Azure Application Insights](app/pricing.md) — dodano informacje o alertach o korcie danych.
+- [Monitoruj aplikacje języka Python za pomocą usługi Azure Monitor (wersja zapoznawcza)](app/opencensus-python.md) — dodano standardowe metryki.
+- [Źródło mapy obsługi aplikacji JavaScript — Usługa Azure Monitor Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/source-map-support) — nowy artykuł.
+
+
+### <a name="containers"></a>Containers
+- [Często zadawane pytania dotyczące usługi Azure Monitor](faq.md) — aktualizacja dla usługi Azure Monitor dla kontenerów.
+- [Konfigurowanie monitorowania procesora GPU za pomocą usługi Azure Monitor dla kontenerów](insights/container-insights-gpu-monitoring.md) — nowy artykuł
+
+### <a name="insights"></a>Insights
+- [Rozwiązanie do zarządzania usługą Office 365 na platformie Azure](insights/solution-office-365.md) — zaktualizowana data wycofania.
+
+### <a name="logs"></a>Dzienniki
+- [Optymalizuj zapytania dziennika w usłudze Azure Monitor](log-query/query-optimization.md) — dodano warunek procesora CPU do analizowania formatu XML i JSON.
+- [Usuwanie i odzyskiwanie obszaru roboczego usługi Azure Log Analytics](platform/delete-workspace.md) — dodano rozwiązywanie problemów.
+- [Użyj dzienników usługi Azure Monitor z aplikacjami logiki azure i automatyzacji zasilania](platform/logicapp-flow-connector.md) — zaktualizowane dla nowego łącznika usługi Azure Monitor.
+
+### <a name="metrics"></a>Metryki
+- [Wycofanie metryk dysku w witrynie Azure portal](https://docs.microsoft.com/azure/azure-monitor/platform/portal-disk-metrics-deprecation) — nowy artykuł.
+- [Samouczek — tworzenie wykresu metryk w usłudze Azure Monitor](learn/tutorial-metrics-explorer.md) — dodano wideo.
+
+### <a name="platform-logs"></a>Dzienniki platformy
+- [Zbieranie i analizowanie dziennika aktywności platformy Azure w usłudze Azure Monitor](platform/activity-log-collect.md) — przepisaj, aby lepiej wyjaśnić zbieranie dziennika aktywności za pomocą ustawień diagnostycznych.
+
+### <a name="virtual-machines"></a>Maszyny wirtualne
+- [Monitoruj maszyny wirtualne platformy Azure za pomocą usługi Azure Monitor](insights/monitor-vm-azure.md) — nowy artykuł.
+- [Szybki start: monitorowanie maszyn wirtualnych platformy Azure za pomocą usługi Azure Monitor](learn/quick-monitor-azure-vm.md) — zaktualizowano w celu dodania usługi Azure Monitor dla maszyn wirtualnych.
+- [Alerty z usługi Azure Monitor dla maszyn wirtualnych](insights/vminsights-alerts.md) — nowy artykuł
+- [Włącz omówienie usługi Azure Monitor dla maszyn wirtualnych](insights/vminsights-enable-overview.md) — zaktualizowane łącza pobierania agenta.
+
+
+Ogólne aktualizacje dotyczące ogólnej dostępności usługi Azure Monitor dla maszyn wirtualnych
+- [Co to jest usługa Azure Monitor dla maszyn wirtualnych?](insights/vminsights-overview.md)
+- [Często zadawane pytania dotyczące usługi Azure Monitor for VM (GA)](insights/vminsights-ga-release-faq.md) 
+- [Włącz usługę Azure Monitor dla maszyn wirtualnych przy użyciu zasad platformy Azure](insights/vminsights-enable-at-scale-policy.md) 
+- [Jak wykres wydajności z usługi Azure Monitor dla maszyn wirtualnych](insights/vminsights-performance.md)
+- [Jak kwerendy dzienników z usługi Azure Monitor dla maszyn wirtualnych](insights/vminsights-log-search.md)
+- [Wyświetlanie zależności aplikacji za pomocą usługi Azure Monitor dla maszyn wirtualnych](insights/vminsights-maps.md) 
+
+
+### <a name="visualizations"></a>Wizualizacje
+- [Wizualizacja danych z usługi Azure Monitor](visualizations.md) — zaktualizowano, aby zanotować planowane wycofanie projektanta widoku.
+
+
+
+
 
 ## <a name="february-2020"></a>Luty 2020 r.
 

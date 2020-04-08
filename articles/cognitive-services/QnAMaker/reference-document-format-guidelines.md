@@ -1,14 +1,14 @@
 ---
 title: Wskazówki dotyczące formatu dokumentu importu — QnA Maker
-description: Dowiedz się, jak typy adresów URL są używane do importowania i tworzenia zestawów QnA.
+description: Dowiedz się, jak typy adresów URL są używane do importowania i tworzenia par QnA.
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: 1e006520ce5c61f2da3f425af2332b0d41cc3881
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 799e85e2200d3caa29c9b76bc57a62fc883d246d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754907"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804337"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>Wskazówki dotyczące formatowania importowanych dokumentów i adresów URL
 

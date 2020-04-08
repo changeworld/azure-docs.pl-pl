@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 8b0db4a1e55b53165e40e176834d66b62926e24b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7eb1670ee911895bdba23921845b8795f4998af
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421556"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811301"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Przenoszenie danych między skalowanymi bazami danych w chmurze
 
@@ -62,7 +62,7 @@ Narzędzie do scalania podziału działa jako usługa sieci web platformy Azure.
 
 - **Usługi hostowane przez klienta**
 
-  Scalanie podziału jest dostarczane jako usługa hostowana przez klienta. Należy wdrożyć i hostować usługę w ramach subskrypcji platformy Microsoft Azure. Pakiet pobrany z NuGet zawiera szablon konfiguracji, aby uzupełnić informacje dotyczące określonego wdrożenia. Zobacz [samouczek scalania podziału, aby](sql-database-elastic-scale-configure-deploy-split-and-merge.md) uzyskać szczegółowe informacje. Ponieważ usługa działa w ramach subskrypcji platformy Azure, można kontrolować i konfigurować większość aspektów zabezpieczeń usługi. Szablon domyślny zawiera opcje konfigurowania protokołu SSL, uwierzytelnianie klienta oparte na certyfikatach, szyfrowanie przechowywanych poświadczeń, ochronę DoS i ograniczenia ip. Więcej informacji na temat aspektów zabezpieczeń można znaleźć w następującej [konfiguracji zabezpieczeń scalania podzielonego](sql-database-elastic-scale-split-merge-security-configuration.md)dokumentu .
+  Scalanie podziału jest dostarczane jako usługa hostowana przez klienta. Należy wdrożyć i hostować usługę w ramach subskrypcji platformy Microsoft Azure. Pakiet pobrany z NuGet zawiera szablon konfiguracji, aby uzupełnić informacje dotyczące określonego wdrożenia. Zobacz [samouczek scalania podziału, aby](sql-database-elastic-scale-configure-deploy-split-and-merge.md) uzyskać szczegółowe informacje. Ponieważ usługa działa w ramach subskrypcji platformy Azure, można kontrolować i konfigurować większość aspektów zabezpieczeń usługi. Szablon domyślny zawiera opcje konfigurowania protokołu TLS, uwierzytelnianie klienta oparte na certyfikatach, szyfrowanie przechowywanych poświadczeń, ochronę DoS i ograniczenia ip. Więcej informacji na temat aspektów zabezpieczeń można znaleźć w następującej [konfiguracji zabezpieczeń scalania podzielonego](sql-database-elastic-scale-split-merge-security-configuration.md)dokumentu .
 
   Domyślna wdrożona usługa jest uruchamiana z jednym pracownikiem i jedną rolą sieci web. Każdy używa rozmiaru maszyny Wirtualnej A1 w usługach w chmurze azure. Chociaż nie można zmodyfikować tych ustawień podczas wdrażania pakietu, można je zmienić po pomyślnym wdrożeniu w uruchomionej usłudze w chmurze (za pośrednictwem witryny Azure portal). Należy zauważyć, że rola procesu roboczego nie może być skonfigurowana dla więcej niż jednego wystąpienia z przyczyn technicznych.
 
@@ -72,7 +72,7 @@ Narzędzie do scalania podziału działa jako usługa sieci web platformy Azure.
 
 - **Spójne połączenia shardlet**
 
-  Po rozpoczęciu przenoszenia danych dla nowej partii shardlets, wszelkie mapy niezależnego od fragmentu pod warunkiem, że zależne od danych połączeń routingu do fragmentu przechowywania shardlet są zabijane i kolejne połączenia z interfejsów API mapy niezależnego fragmentu do shardlets są blokowane, podczas gdy ruch danych jest w celu uniknięcia niespójności. Połączenia z innymi shardlets na tym samym fragment również zostanie zabity, ale zakończy się ponownie natychmiast po ponawianie próby. Po przeniesieniu partii shardlets są oznaczone w trybie online ponownie dla niezależnego fragmentu docelowego i dane źródłowe są usuwane z niezależnego fragmentu. Usługa przechodzi przez te kroki dla każdej partii, dopóki wszystkie shardlets zostały przeniesione. Doprowadzi to do kilku operacji zabicia połączenia w trakcie pełnej operacji podziału/scalania/przenoszenia.  
+  Po rozpoczęciu przenoszenia danych dla nowej partii shardlets, wszelkie mapy niezależnego od fragmentu pod warunkiem, że zależne od danych połączeń routingu do niezależnego fragmentu przechowywania shardlet są zabijane i kolejne połączenia z interfejsów API mapy niezależnego fragmentu do shardlets są blokowane, gdy ruch danych jest w toku w celu uniknięcia niespójności. Połączenia z innymi shardlets na tym samym fragment również zostanie zabity, ale zakończy się ponownie natychmiast po ponawianie próby. Po przeniesieniu partii shardlets są oznaczone w trybie online ponownie dla niezależnego fragmentu docelowego i dane źródłowe są usuwane z niezależnego fragmentu. Usługa przechodzi przez te kroki dla każdej partii, dopóki wszystkie shardlets zostały przeniesione. Doprowadzi to do kilku operacji zabicia połączenia w trakcie pełnej operacji podziału/scalania/przenoszenia.  
 
 - **Zarządzanie dostępnością shardletu**
 

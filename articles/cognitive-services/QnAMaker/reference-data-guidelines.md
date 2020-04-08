@@ -1,14 +1,14 @@
 ---
 title: Importowanie i eksportowanie danych referencyjnych — QnA Maker
-description: Dowiedz się, jak typy adresów URL są używane do importowania i tworzenia zestawów QnA.
+description: Dowiedz się, jak typy adresów URL są używane do importowania i tworzenia par QnA.
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: 6560a43a6fbcf9fbd2ce021d782f00f916442bfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4a423ef9478cd39181c6440801f9fe954dc896c
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651851"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804247"
 ---
 # <a name="import-and-export-data-reference"></a>Importowanie i eksportowanie danych referencyjnych
 

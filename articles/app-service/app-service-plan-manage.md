@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d40f5db65ce9ca90ae978bac4491bdebccc2a328
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280757"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811712"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Zarządzanie planem usługi app service na platformie Azure
 
@@ -61,7 +61,7 @@ Aplikację można przenieść do innego planu usługi App Service, o ile plan ź
 4. Jeśli tworzysz plan, możesz wybrać warstwę cenową nowego planu. W **warstwie cenowej**wybierz istniejącą warstwę, aby ją zmienić. 
    
    > [!IMPORTANT]
-   > Jeśli przenosisz aplikację z planu wyższego poziomu do planu niższego poziomu, takiego jak **D1** do **F1,** aplikacja może utracić pewne możliwości w planie docelowym. Jeśli na przykład aplikacja korzysta z certyfikatów SSL, może zostać wyświetlony ten komunikat o błędzie:
+   > Jeśli przenosisz aplikację z planu wyższego poziomu do planu niższego poziomu, takiego jak **D1** do **F1,** aplikacja może utracić pewne możliwości w planie docelowym. Jeśli na przykład aplikacja korzysta z certyfikatów TLS/SSL, może zostać wyświetlony ten komunikat o błędzie:
    >
    > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
 
