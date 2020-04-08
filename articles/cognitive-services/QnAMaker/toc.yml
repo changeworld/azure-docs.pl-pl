@@ -87,9 +87,9 @@
           displayName: 'metadata, pair'
         - name: Testowanie
           href: How-To/test-knowledge-base.md
-    - name: Zarządzanie zestawami pytań i odpowiedzi
+    - name: Zarządzanie parami pytań i odpowiedzi
       items:
-        - name: Edytowanie zestawu pytań i odpowiedzi
+        - name: Edytowanie pary pytania i odpowiedzi
           href: How-To/edit-knowledge-base.md
         - name: Dodawanie monitów uzupełniających
           href: How-To/multiturn-conversation.md
