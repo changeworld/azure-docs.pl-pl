@@ -39,6 +39,8 @@
       href: streaming-technologies.md
     - name: Wybieranie narzędzia do tworzenia zadań
       href: feature-comparison.md
+    - name: Opracowywanie w środowisku lokalnym
+      href: develop-locally.md
     - name: Typy wejść zadania
       items:
         - name: Przegląd danych wejściowych
