@@ -2,13 +2,13 @@
 title: Przegląd szablonów
 description: W tym artykule opisano korzyści przy użyciu szablonów usługi Azure Resource Manager do wdrażania zasobów.
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 4570f5471ef6baf6f3f4a920be4d93c3f5a90438
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 02602b4d12ae4333c88b352e4c13923d67f2c591
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258128"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885739"
 ---
 # <a name="what-are-arm-templates"></a>Co to są szablony usługi ARM?
 
@@ -30,11 +30,17 @@ Jeśli próbujesz zdecydować między używaniem szablonów ARM a jedną z innyc
 
    ![Porównanie wdrażania szablonów](./media/overview/template-processing.png)
 
-* **Wbudowana weryfikacja:** Szablon jest wdrażany tylko po przejściu sprawdzania poprawności. Menedżer zasobów sprawdza szablon przed rozpoczęciem wdrażania, aby upewnić się, że wdrożenie zakończy się pomyślnie. Wdrożenie jest mniej prawdopodobne, aby zatrzymać w stanie półukończonym.
-
 * **Pliki modułowe**: Szablony można podzielić na mniejsze składniki wielokrotnego pożytezania i połączyć je ze sobą w czasie wdrażania. Można również zagnieżdżać jeden szablon wewnątrz innych szablonów.
 
 * **Utwórz dowolny zasób platformy Azure:** możesz natychmiast używać nowych usług i funkcji platformy Azure w szablonach. Jak tylko dostawca zasobów wprowadza nowe zasoby, można wdrożyć te zasoby za pomocą szablonów. Nie trzeba czekać na narzędzia lub moduły, które mają być aktualizowane przed użyciem nowych usług.
+
+* **Rozszerzalność:** Za pomocą [skryptów wdrażania](deployment-script-template.md)można dodać skrypty programu PowerShell lub Bash do szablonów. Skrypty wdrażania rozszerzają możliwość konfigurowania zasobów podczas wdrażania. Skrypt może być dołączony do szablonu lub przechowywany w źródle zewnętrznym i odwołuje się do szablonu. Skrypty wdrażania umożliwiają ukończenie konfiguracji środowiska typu end-to-end w jednym szablonie ARM.
+
+* **Testowanie:** Możesz upewnić się, że szablon jest zgodny z zalecanymi wytycznymi, testując go za pomocą zestawu narzędzi szablonu ARM (arm-ttk). Ten zestaw testowy to skrypt programu PowerShell, który można pobrać z [GitHub.](https://github.com/Azure/arm-ttk) Zestaw narzędzi ułatwia rozwijanie wiedzy specjalistycznej przy użyciu języka szablonów.
+
+* **Podgląd zmian:** Przed wdrożeniem szablonu można użyć [operacji co jeśli,](template-deploy-what-if.md) aby uzyskać podgląd zmian. W przypadku co jeśli zostanie wyświetlone zasoby, które zostaną utworzone, zaktualizowane lub usunięte, a także wszystkie właściwości zasobów, które ulegną zmianie. Operacja co jeśli sprawdza bieżący stan środowiska i eliminuje konieczność zarządzania stanem.
+
+* **Wbudowana weryfikacja:** Szablon jest wdrażany tylko po przejściu sprawdzania poprawności. Menedżer zasobów sprawdza szablon przed rozpoczęciem wdrażania, aby upewnić się, że wdrożenie zakończy się pomyślnie. Wdrożenie jest mniej prawdopodobne, aby zatrzymać w stanie półukończonym.
 
 * **Śledzone wdrożenia:** W witrynie Azure portal można przejrzeć historię wdrażania i uzyskać informacje o wdrożeniu szablonu. Można zobaczyć szablon, który został wdrożony, wartości parametrów przekazywane w i wszystkie wartości wyjściowe. Inna infrastruktura jako usługi kodu nie są śledzone za pośrednictwem portalu.
 

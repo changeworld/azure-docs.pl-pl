@@ -2,27 +2,22 @@
 title: Platforma tożsamości firmy Microsoft & przepływ potwierdzenia na okaziciela SAML | Azure
 description: Dowiedz się, jak pobierać dane z programu Microsoft Graph bez monitowania użytkownika o poświadczenia przy użyciu przepływu potwierdzenia nośnika SAML.
 services: active-directory
-documentationcenter: ''
 author: umeshbarapatre
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 16f30473ded5f1de5dc94c1cff9da96165b1a01c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cd79b1f9e4cd3afadee250da0c184c0c5b8ac07
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76700213"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886181"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Platforma tożsamości firmy Microsoft i przepływ potwierdzenia na okaziciela OAuth 2.0 SAML
 Przepływ potwierdzenia na okaziciela OAuth 2.0 SAML umożliwia żądanie tokenu dostępu OAuth przy użyciu potwierdzenia SAML, gdy klient musi użyć istniejącej relacji zaufania. Podpis zastosowany do potwierdzenia SAML zapewnia uwierzytelnianie autoryzowanej aplikacji. Twierdzenie SAML jest tokenem zabezpieczającym XML wystawionym przez dostawcę tożsamości i wykorzystanym przez dostawcę usług. Usługodawca polega na swojej treści, aby zidentyfikować temat twierdzenia do celów związanych z bezpieczeństwem.
