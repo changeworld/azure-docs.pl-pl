@@ -1,5 +1,5 @@
 ---
-title: Przewodnik dotyczący rozwiązywania problemów z usługą Azure Service Bus | Dokumenty firmy Microsoft
+title: Usługa Azure Service Bus — wyjątki obsługi wiadomości | Dokumenty firmy Microsoft
 description: Ten artykuł zawiera listę wyjątków obsługi wiadomości usługi Azure Service Bus i sugerowane akcje do wykonania w przypadku wystąpienia wyjątku.
 services: service-bus-messaging
 documentationcenter: na
@@ -14,20 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: fb27befadcf8e6d201d020e758cfd1ef9b695f41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d04902a8d53397b7e7d9712a1c75ce44cc7aa7ad
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240800"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880792"
 ---
-# <a name="troubleshooting-guide-for-azure-service-bus"></a>Przewodnik dotyczący rozwiązywania problemów z usługą Azure Service Bus
-Ten artykuł zawiera niektóre wyjątki platformy .NET generowane przez interfejsy API programu Service Bus .NET Framework, a także inne wskazówki dotyczące rozwiązywania problemów. 
+# <a name="service-bus-messaging-exceptions"></a>Wyjątki obsługi wiadomości usługi Service Bus
+W tym artykule wymieniono wyjątki platformy .NET generowane przez interfejsy API programu .NET Framework. 
 
-## <a name="service-bus-messaging-exceptions"></a>Wyjątki obsługi wiadomości usługi Service Bus
-W tej sekcji wymieniono wyjątki platformy .NET generowane przez interfejsy API programu .NET Framework. 
-
-### <a name="exception-categories"></a>Kategorie wyjątków
+## <a name="exception-categories"></a>Kategorie wyjątków
 Interfejsy API obsługi wiadomości generują wyjątki, które mogą należeć do następujących kategorii, wraz ze skojarzoną akcją, którą można wykonać, aby spróbować je naprawić. Znaczenie i przyczyny wyjątku mogą się różnić w zależności od typu jednostki obsługi wiadomości:
 
 1. Błąd kodowania użytkownika ([System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)). Ogólne działanie: spróbuj naprawić kod przed kontynuowaniem.
@@ -35,7 +32,7 @@ Interfejsy API obsługi wiadomości generują wyjątki, które mogą należeć d
 3. Wyjątki przejściowe ([Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception), [Microsoft.ServiceBus.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)). Ogólne działanie: ponów próbę wykonania operacji lub powiadomienie użytkowników. Klasa `RetryPolicy` w sdk klienta można skonfigurować do obsługi ponownych prób automatycznie. Aby uzyskać więcej informacji, zobacz [Wskazówki dotyczące ponawiania prób](/azure/architecture/best-practices/retry-service-specific#service-bus).
 4. Inne wyjątki ([System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx), [Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception), [Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception)). Działanie ogólne: specyficzne dla typu wyjątku; patrz tabela w poniższej sekcji: 
 
-### <a name="exception-types"></a>Typy wyjątków
+## <a name="exception-types"></a>Typy wyjątków
 W poniższej tabeli wymieniono typy wyjątków obsługi wiadomości i ich przyczyny oraz uwagi sugerowane działania, które można podjąć.
 
 | **Typ wyjątku** | **Opis/Przyczyna/Przykłady** | **Sugerowana akcja** | **Uwaga dotycząca automatycznego/natychmiastowego ponowiania prób** |
@@ -64,10 +61,10 @@ W poniższej tabeli wymieniono typy wyjątków obsługi wiadomości i ich przycz
 | [TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx) |Transakcja otoczenia (*Transaction.Current*) jest nieprawidłowa. Być może został on ukończony lub przerwany. Wyjątek wewnętrzny może dostarczyć dodatkowych informacji. | |Ponów próbę nie pomoże. |
 | [Transactionindoubtexception](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) |Operacja jest podejmowana na transakcji, która jest wątpliwa, lub podejmowana jest próba zatwierdzenia transakcji i transakcja staje się wątpliwa. |Aplikacja musi obsługiwać ten wyjątek (jako przypadek szczególny), ponieważ transakcja mogła już zostać zatwierdzona. |- |
 
-### <a name="quotaexceededexception"></a>Quotaexceededexception
+## <a name="quotaexceededexception"></a>Quotaexceededexception
 Wyjątek [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) wskazuje, że przekroczono limit przydziału dla określonej jednostki.
 
-#### <a name="queues-and-topics"></a>Kolejki i tematy
+### <a name="queues-and-topics"></a>Kolejki i tematy
 W przypadku kolejek i tematów często jest to rozmiar kolejki. Właściwość komunikatu o błędzie zawiera dalsze szczegóły, jak w poniższym przykładzie:
 
 ```Output
@@ -79,7 +76,7 @@ Message: The maximum entity size has been reached or exceeded for Topic: 'xxx-xx
 
 Komunikat stwierdza, że temat przekroczył limit rozmiaru, w tym przypadku 1 GB (domyślny limit rozmiaru). 
 
-#### <a name="namespaces"></a>Namespaces
+### <a name="namespaces"></a>Namespaces
 
 W przypadku obszarów nazw [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) może wskazywać, że aplikacja przekroczyła maksymalną liczbę połączeń z obszarem nazw. Przykład:
 
@@ -90,7 +87,7 @@ System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]:
 ConnectionsQuotaExceeded for namespace xxx.
 ```
 
-#### <a name="common-causes"></a>Najczęstsze przyczyny
+### <a name="common-causes"></a>Najczęstsze przyczyny
 Istnieją dwie typowe przyczyny tego błędu: kolejki utraconych wiadomości i niedziałających odbiorników komunikatów.
 
 1. **[Kolejka utraconych wiadomości](service-bus-dead-letter-queues.md)** Czytnik nie może ukończyć wiadomości i wiadomości są zwracane do kolejki/tematu po wygaśnięciu blokady. Może się zdarzyć, jeśli czytelnik napotka wyjątek, który uniemożliwia mu [wywołanie BrokeredMessage.Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.complete). Po 10-krotnym odczytie wiadomości jest on domyślnie przenoszony do kolejki utraconych wiadomości. To zachowanie jest kontrolowane przez [właściwość QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) i ma wartość domyślną 10. Gdy wiadomości piętrzą się w kolejce martwych liter, zajmują miejsce.
@@ -98,70 +95,14 @@ Istnieją dwie typowe przyczyny tego błędu: kolejki utraconych wiadomości i n
     Aby rozwiązać ten problem, przeczytaj i uzupełnij wiadomości z kolejki utraconych wiadomości, tak jak z każdej innej kolejki. Można użyć [FormatDeadLetterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formatdeadletterpath) metody, aby pomóc sformatować ścieżkę kolejki utraconych wiadomości.
 2. **Odbiornik zatrzymany**. Odbiorca przestał odbierać wiadomości z kolejki lub subskrypcji. Sposób zidentyfikowania tego jest spojrzenie na [QueueDescription.MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) właściwości, która pokazuje pełny podział wiadomości. Jeśli [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) właściwość jest wysoka lub rośnie, a następnie wiadomości nie są odczytywane tak szybko, jak są one zapisywane.
 
-### <a name="timeoutexception"></a>Timeoutexception
+## <a name="timeoutexception"></a>Timeoutexception
 [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) wskazuje, że operacja inicjowana przez użytkownika trwa dłużej niż limit czasu operacji. 
 
 Należy sprawdzić wartość [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) właściwości, jak naciśnięcie tego limitu może również spowodować [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx).
 
-#### <a name="queues-and-topics"></a>Kolejki i tematy
+### <a name="queues-and-topics"></a>Kolejki i tematy
 W przypadku kolejek i tematów limit czasu jest określony we właściwości [MessagingFactorySettings.OperationTimeout,](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) jako część ciągu połączenia lub za pośrednictwem [usługi ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder). Sam komunikat o błędzie może się różnić, ale zawsze zawiera wartość limitu czasu określoną dla bieżącej operacji. 
 
-## <a name="connectivity-certificate-or-timeout-issues"></a>Problemy z łącznością, certyfikatem lub limitem czasu
-Poniższe kroki mogą pomóc w rozwiązywaniu problemów z łącznością/certyfikatem/limitem czasu dla wszystkich usług w obszarze *.servicebus.windows.net. 
-
-- Przejdź do lub [wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/`. Pomaga sprawdzić, czy masz filtrowanie IP lub problemy z siecią wirtualną lub łańcuchem certyfikatów (najczęściej podczas korzystania z java SDK).
-
-    Przykład pomyślnej wiadomości:
-    
-    ```xml
-    <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
-    ```
-    
-    Przykład komunikatu o błędzie błędu:
-
-    ```json
-    <Error>
-        <Code>400</Code>
-        <Detail>
-            Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
-        </Detail>
-    </Error>
-    ```
-- Uruchom następujące polecenie, aby sprawdzić, czy jakikolwiek port jest zablokowany na zaporze. Używane porty to 443 (HTTPS), 5671 (AMQP) i 9354 (Net Messaging/SBMP). W zależności od używanej biblioteki używane są również inne porty. Oto przykładowe polecenie, które sprawdza, czy port 5671 jest zablokowany. 
-
-    ```powershell
-    tnc <yournamespacename>.servicebus.windows.net -port 5671
-    ```
-
-    W systemie Linux:
-
-    ```shell
-    telnet <yournamespacename>.servicebus.windows.net 5671
-    ```
-- W przypadku wystąpienia sporadyczne problemy z łącznością, uruchom następujące polecenie, aby sprawdzić, czy istnieją jakieś porzucone pakiety. To polecenie spróbuje ustanowić 25 różnych połączeń TCP co 1 sekundę z usługą. Następnie można sprawdzić, ile z nich zakończyło się pomyślnie/nie powiodło się, a także wyświetlić opóźnienie połączenia TCP. Możesz pobrać `psping` narzędzie [stąd](/sysinternals/downloads/psping).
-
-    ```shell
-    .\psping.exe -n 25 -i 1 -q <yournamespace>.servicebus.windows.net:5671 -nobanner     
-    ```
-    Można użyć równoważnych poleceń, jeśli używasz `tnc` `ping`innych narzędzi, takich jak , i tak dalej. 
-- Uzyskaj śledzenie sieci, jeśli poprzednie kroki nie pomagają i analizować go za pomocą narzędzi, takich jak [Wireshark](https://www.wireshark.org/). W razie potrzeby skontaktuj się z [pomocą techniczną firmy Microsoft.](https://support.microsoft.com/) 
-
-## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Problemy, które mogą wystąpić podczas uaktualniania/ponownego uruchamiania usługi
-Uaktualnienia i ponowne uruchomienie usługi wewnętrznej bazy danych mogą mieć następujący wpływ na aplikacje:
-
-- Żądania mogą być chwilowo ograniczone.
-- Może wystąpić spadek przychodzących wiadomości/żądań.
-- Plik dziennika może zawierać komunikaty o błędach.
-- Aplikacje mogą być odłączone od usługi na kilka sekund.
-
-Jeśli kod aplikacji korzysta z SDK, zasady ponawiania próby jest już wbudowany i aktywny. Aplikacja połączy się ponownie bez znaczącego wpływu na aplikację/przepływ pracy.
-
 ## <a name="next-steps"></a>Następne kroki
-
 Aby uzyskać pełne odwołanie do interfejsu API usługi Service Bus .NET, zobacz [odwołanie do interfejsu API platformy Azure .NET](/dotnet/api/overview/azure/service-bus).
-
-Aby dowiedzieć się więcej o [usłudze Service Bus,](https://azure.microsoft.com/services/service-bus/)zobacz następujące artykuły:
-
-* [Omówienie obsługi wiadomości usługi Service Bus](service-bus-messaging-overview.md)
-* [Architektura usługi Service Bus](service-bus-architecture.md)
-
+Aby uzyskać wskazówki dotyczące [rozwiązywania problemów,](service-bus-troubleshooting-guide.md) zobacz przewodnik rozwiązywania problemów

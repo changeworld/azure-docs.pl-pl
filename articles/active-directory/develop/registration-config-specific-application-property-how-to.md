@@ -2,25 +2,21 @@
 title: Pola rejestracji portalu Azure dla aplikacji opracowanych na zamówienie
 description: Wskazówki dotyczące rejestrowania niestandardowej aplikacji opracowanej za pomocą usługi Azure AD
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.openlocfilehash: 36d74b9926639bb4ec49821a3d73b5d615016394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c44575ca43063388d5c65855542cf15700d2cb5a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702678"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883172"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Pola rejestracji portalu Azure dla aplikacji opracowanych na zamówienie
 
@@ -60,7 +56,7 @@ Po wypełnieniu powyższych pól aplikacja jest zarejestrowana w witrynie Azure 
 | Prześlij nowe logo | Można użyć tego, aby przesłać logo dla aplikacji. Logo musi być w formacie .bmp, jpg lub png, a rozmiar pliku powinien być mniejszy niż 100 KB. Wymiary obrazu powinny wynosić 215x215 pikseli, z centralnymi wymiarami obrazu 94x94 pikseli.|
 | Adres URL strony głównej   | Jest to adres URL logowania określony podczas rejestracji aplikacji.|
 
-### <a name="authentication"></a>Uwierzytelnianie
+### <a name="authentication"></a>Authentication
 
 | Pole           | Opis        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

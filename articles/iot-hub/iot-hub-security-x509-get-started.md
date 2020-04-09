@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a22808b1d7ab2b2451f50470e8da3770d07407a5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271176"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985664"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Konfigurowanie zabezpieczeń X.509 w usłudze Azure IoT Hub
 
@@ -38,6 +38,9 @@ Możesz wybrać dowolny z następujących sposobów uzyskania certyfikatów:
 * Utwórz własne certyfikaty X.509 za pomocą narzędzia innej firmy, takiego jak [OpenSSL.](https://www.openssl.org/) Ta technika jest w porządku do celów testowych i rozwojowych. Aby uzyskać informacje na temat generowania testowych certyfikatów urzędu certyfikacji przy użyciu programu PowerShell lub Bash, zobacz [Zarządzanie testowymi certyfikatami urzędu certyfikacji dla przykładów i samouczków.](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) Pozostała część tego samouczka używa certyfikatów urzędu certyfikacji testowych wygenerowanych przez przestrzeganie instrukcji [w temacie Zarządzanie testowymi certyfikatami urzędu certyfikacji dla przykładów i samouczków.](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)
 
 * Wygeneruj [certyfikat pośredniego urzędu certyfikacji X.509](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust) podpisany przez istniejący certyfikat głównego urzędu certyfikacji i przekaż go do koncentratora. Po przesłaniu i zweryfikowaniu certyfikatu pośredniego, zgodnie z poniższą instrukcją, może być używany w miejscu certyfikatu głównego urzędu certyfikacji wymienionego poniżej. Narzędzia takie jak OpenSSL ([openssl req](https://www.openssl.org/docs/man1.1.0/man1/req.html) i [openssl ca](https://www.openssl.org/docs/man1.1.0/man1/ca.html)) mogą być używane do generowania i podpisywania pośredniego certyfikatu urzędu certyfikacji.
+
+> [!NOTE]
+> Nie przesyłaj katalogu głównego innej firmy, jeśli nie jest on unikatowy dla Użytkownika, ponieważ umożliwiłoby to innym klientom innej firmy łączenie ich urządzeń z centrum IoT Hub.
 
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>Rejestrowanie certyfikatów urzędu certyfikacji X.509 w centrum IoT
 

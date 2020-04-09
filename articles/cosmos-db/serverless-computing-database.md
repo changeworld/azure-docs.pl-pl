@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 70545020899b69508a4cedb0fd7cf5495c847104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462449"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985256"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Przetwarzanie bezserwerowych baz danych przy użyciu usługi Azure Cosmos DB i usługi Azure Functions
 
@@ -110,7 +110,7 @@ We wszystkich tych przypadkach użycia, ponieważ funkcja została oddzielona od
 
 Natywna integracja między usługą Azure Cosmos DB i usługi Azure Functions jest dostępna w witrynie Azure portal i w programie Visual Studio 2019.
 
-* W portalu usług Azure Functions można utworzyć wyzwalacz. Aby uzyskać instrukcje szybkiego startu, zobacz [Tworzenie wyzwalacza usługi Azure Functions dla usługi Cosmos DB w witrynie Azure portal.](https://aka.ms/cosmosdbtriggerportalfunc)
+* W portalu usług Azure Functions można utworzyć wyzwalacz. Aby uzyskać instrukcje szybkiego startu, zobacz [Tworzenie wyzwalacza usługi Azure Functions dla usługi Cosmos DB w witrynie Azure portal.](../azure-functions/functions-create-cosmos-db-triggered-function.md)
 * W portalu usługi Azure Cosmos DB można dodać wyzwalacz usługi Azure Functions dla usługi Cosmos DB do istniejącej aplikacji funkcji platformy Azure w tej samej grupie zasobów.
 * W programie Visual Studio 2019 można utworzyć wyzwalacz przy użyciu [narzędzi funkcji platformy Azure:](../azure-functions/functions-develop-vs.md)
 
@@ -146,6 +146,6 @@ Jeśli nie masz pewności, czy przepływ, aplikacje logiki, usługi Azure Functi
 
 Teraz połączmy usługę Azure Cosmos DB i usługi Azure Functions w celu rzeczywistego: 
 
-* [Tworzenie wyzwalacza usługi Azure Functions dla usługi Cosmos DB w witrynie Azure portal](https://aka.ms/cosmosdbtriggerportalfunc)
-* [Tworzenie wyzwalacza HTTP usługi Azure Functions przy użyciu powiązania danych wejściowych usługi Azure Cosmos DB](https://aka.ms/cosmosdbinputbind)
+* [Tworzenie wyzwalacza usługi Azure Functions dla usługi Cosmos DB w witrynie Azure portal](../azure-functions/functions-create-cosmos-db-triggered-function.md)
+* [Tworzenie wyzwalacza HTTP usługi Azure Functions przy użyciu powiązania danych wejściowych usługi Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb.md?tabs=csharp)
 * [Powiązania i wyzwalacze usługi Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md)

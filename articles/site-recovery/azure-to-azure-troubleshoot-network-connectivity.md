@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 49d2d3d3e8829198a57aaf2feb40e89f105667bd
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804864"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884872"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Rozwiązywanie problemów z łącznością sieciową platformy Azure z platformą Azure
 
@@ -18,8 +18,8 @@ W tym artykule opisano typowe problemy związane z łącznością sieciową podc
 
 Aby replikacja usługi Site Recovery działała, z maszyny wirtualnej wymagana jest łączność wychodząca z określonymi adresami URL lub zakresami adresów IP. Jeśli maszyna wirtualna znajduje się za zaporą lub używa reguł sieciowej grupy zabezpieczeń (NSG) do kontrolowania łączności wychodzącej, może napotkać jeden z tych problemów.
 
-| **Adres URL** | **Szczegóły** |
-| --- | --- |
+| Adres URL | Szczegóły |
+|---|---|
 | `*.blob.core.windows.net` | Wymagane, aby dane mogły być zapisywane na koncie magazynu pamięci podręcznej w regionie źródłowym z maszyny Wirtualnej. Jeśli znasz wszystkie konta magazynu pamięci podręcznej dla maszyn wirtualnych, możesz użyć listy dozwolonych dla określonych adresów URL kont magazynu. Na przykład `cache1.blob.core.windows.net` `cache2.blob.core.windows.net` i zamiast `*.blob.core.windows.net`. |
 | `login.microsoftonline.com` | Wymagane do autoryzacji i uwierzytelniania adresów URL usługi site recovery. |
 | `*.hypervrecoverymanager.windowsazure.com` | Wymagane, aby komunikacja usługi odzyskiwania witryny mogła wystąpić z maszyny Wirtualnej. Można użyć odpowiedniego _adresu IP odzyskiwania witryny,_ jeśli serwer proxy zapory obsługuje adresy IP. |
@@ -82,7 +82,7 @@ W tym przykładzie pokazano, jak skonfigurować reguły sieciowej grupy danych s
 
 1. Utwórz reguły wychodzące portu HTTPS 443 dla adresów IP odzyskiwania lokacji, które odpowiadają lokalizacji docelowej:
 
-   | **Lokalizacja** | **Adres IP odzyskiwania witryny** |  **Adres IP monitorowania odzyskiwania witryny** |
+   | Lokalizacja | Adres IP odzyskiwania witryny | Adres IP monitorowania odzyskiwania witryny |
    | --- | --- | --- |
    | Środkowe stany USA | 40.69.144.231 | 52.165.34.144 |
 
@@ -102,7 +102,7 @@ W tym przykładzie te reguły sieciowej grupy ndg są wymagane, aby replikacja m
 
 1. Utwórz reguły wychodzące portu HTTPS 443 dla adresów IP odzyskiwania lokacji, które odpowiadają lokalizacji źródłowej:
 
-   |**Lokalizacja** | **Adres IP odzyskiwania witryny** |  **Adres IP monitorowania odzyskiwania witryny** |
+   | Lokalizacja | Adres IP odzyskiwania witryny | Adres IP monitorowania odzyskiwania witryny |
    | --- | --- | --- |
    | Wschodnie stany USA | 13.82.88.226 | 104.45.147.24 |
 
@@ -138,7 +138,8 @@ Niestandardowe ustawienia serwera proxy są nieprawidłowe, a agent usługi Azur
    Port=567
    ```
 
-1. Agent usługi Azure Site Recovery Mobility obsługuje tylko **nieuwierzyliowane serwery proxy.**
+> [!NOTE]
+> Agent usługi Azure Site Recovery Mobility obsługuje tylko **nieuwierzyliowane serwery proxy.**
 
 ### <a name="fix-the-problem"></a>Rozwiązywanie problemu
 
@@ -146,4 +147,4 @@ Aby [zezwolić na wymagane adresy URL](azure-to-azure-about-networking.md#outbou
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Replikowanie maszyn wirtualnych platformy Azure](site-recovery-replicate-azure-to-azure.md)
+[Replikowanie maszyn wirtualnych platformy Azure do innego regionu platformy Azure](azure-to-azure-how-to-enable-replication.md)

@@ -5,12 +5,12 @@ description: Poznaj najważniejsze wskazówki dotyczące obsługi operatora klas
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 90abf2e36fd46c707904d87f00362091fe931743
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668115"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877902"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Najważniejsze wskazówki dotyczące magazynu i tworzenia kopii zapasowych w usłudze Azure Kubernetes Service (AKS)
 
@@ -40,7 +40,7 @@ W poniższej tabeli przedstawiono dostępne typy magazynu i ich możliwości:
 
 Dwa podstawowe typy magazynu dostępne dla woluminów w usłudze AKS są wspierane przez dyski azure lub usługi Azure Files. Aby zwiększyć bezpieczeństwo, oba typy magazynu domyślnie używają szyfrowania usługi Azure Storage Service Encryption (SSE), które szyfruje dane w spoczynku. Dysków nie można obecnie szyfrować przy użyciu szyfrowania dysków platformy Azure na poziomie węzła AKS.
 
-Usługa Azure Files są obecnie dostępne w warstwie wydajności Standardowa. Dyski platformy Azure są dostępne w warstwach wydajności Standard i Premium:
+Pliki azure i dyski platformy Azure są dostępne w warstwach wydajności standard i Premium:
 
 - Dyski *premium* są wspierane przez wysokowydajne dyski PÓŁPRZEWODNIKOWE (SSD). Dyski premium są zalecane dla wszystkich obciążeń produkcyjnych.
 - *Dyski standardowe* są wspierane przez zwykłe dyski wirujące (HDD) i są dobre dla archiwalnych lub rzadko dostępnych danych.

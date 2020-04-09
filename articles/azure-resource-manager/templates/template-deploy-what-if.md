@@ -3,29 +3,68 @@ title: Co-jeśli (Wersja zapoznawcza) wdrożenia szablonu
 description: Określ, jakie zmiany nastąpią w zasobach przed wdrożeniem szablonu usługi Azure Resource Manager.
 author: mumian
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: bc42585204e5cc2c3ece5293a3934fd22fe8507b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e0d0d572e08961b585a93e66e400b8c2e54bf7f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156450"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886844"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Co do jeśli— wdrożenie szablonu ARM (wersja zapoznawcza)
 
 Przed wdrożeniem szablonu usługi Azure Resource Manager (ARM) można wyświetlić podgląd zmian, które nastąpią. Usługa Azure Resource Manager zapewnia operację co jeśli, aby zobaczyć, jak zasoby zmienią się po wdrożeniu szablonu. Operacja co jeśli nie wprowadzać żadnych zmian w istniejących zasobach. Zamiast tego przewiduje zmiany, jeśli określony szablon jest wdrażany.
 
 > [!NOTE]
-> Operacja co jeśli jest obecnie w wersji zapoznawczej. Aby go użyć, musisz [zarejestrować się w wersji zapoznawczej](https://aka.ms/armtemplatepreviews). W wersji zapoznawczej wyniki mogą czasami pokazać, że zasób zmieni się, gdy faktycznie nie nastąpi żadna zmiana. Pracujemy nad ograniczeniem tych problemów, ale potrzebujemy Twojej pomocy. Prosimy o zgłoszenie [https://aka.ms/whatifissues](https://aka.ms/whatifissues)tych problemów na poziomie .
+> Operacja co jeśli jest obecnie w wersji zapoznawczej. W wersji zapoznawczej wyniki mogą czasami pokazać, że zasób zmieni się, gdy faktycznie nie nastąpi żadna zmiana. Pracujemy nad ograniczeniem tych problemów, ale potrzebujemy Twojej pomocy. Prosimy o zgłoszenie [https://aka.ms/whatifissues](https://aka.ms/whatifissues)tych problemów na poziomie .
 
 Można użyć operacji co jeśli z poleceniami programu PowerShell lub operacjami interfejsu API REST.
+
+## <a name="install-powershell-module"></a>Instalowanie modułu programu PowerShell
+
+Aby użyć co jeśli w programie PowerShell, zainstaluj wersję zapoznawczą modułu Az.Resources z galerii programu PowerShell.
+
+### <a name="uninstall-alpha-version"></a>Odinstaluj wersję alfa
+
+Jeśli wcześniej zainstalowano wersję alfa modułu co do-jeśli, odinstaluj ten moduł. Wersja alfa była dostępna tylko dla użytkowników, którzy zarejestrowali się we wczesnej wersji zapoznawczej. Jeśli ta wersja zapoznawcza nie została zainstalowana, możesz pominąć tę sekcję.
+
+1. Uruchom program PowerShell jako administrator.
+1. Sprawdź zainstalowane wersje modułu Az.Resources.
+
+   ```powershell
+   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
+   ```
+
+1. Jeśli masz zainstalowaną wersję z numerem wersji w formacie **2.x.x-alpha,** odinstaluj tę wersję.
+
+   ```powershell
+   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
+   ```
+
+1. Wyrejestruj repozytorium co jeśli użyte do zainstalowania wersji zapoznawczej.
+
+   ```powershell
+   Unregister-PSRepository -Name WhatIfRepository
+   ```
+
+### <a name="install-preview-version"></a>Instalowanie wersji zapoznawczej
+
+Aby zainstalować moduł podglądu, należy użyć:
+
+```powershell
+Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+```
+
+Możesz użyć co jeśli.
+
+## <a name="see-results"></a>Zobacz wyniki
 
 W programie PowerShell dane wyjściowe zawierają wyniki oznaczone kolorami, które ułatwią wyświetlanie różnych typów zmian.
 
 ![Wdrożenie szablonu Menedżera zasobów co do operacji fullresourcepayload i typy zmian](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
-Tekst ouptput jest:
+Dane wyjściowe tekstu to:
 
 ```powershell
 Resource and property changes are indicated with these symbols:
@@ -72,11 +111,8 @@ Można też użyć `-Confirm` parametru switch, aby wyświetlić podgląd zmian 
 
 Poprzednie polecenia zwracają podsumowanie tekstu, które można ręcznie sprawdzić. Aby uzyskać obiekt, który można programowo sprawdzić pod kątem zmian, należy użyć:
 
-* `$results = Get-AzResourceGroupDeploymentWhatIf`dla wdrożeń grup zasobów
-* `$results = Get-AzSubscriptionDeploymentWhatIf`lub `$results = Get-AzDeploymentWhatIf` dla wdrożeń na poziomie subskrypcji
-
-> [!NOTE]
-> Przed wydaniem wersji 2.0.1-alpha5 użyto `New-AzDeploymentWhatIf` tego polecenia. To polecenie zostało zastąpione `Get-AzResourceGroupDeploymentWhatIf`przez `Get-AzSubscriptionDeploymentWhatIf` polecenie `Get-AzDeploymentWhatIf`, i polecenia. Jeśli użyto wcześniejszej wersji, należy zaktualizować tę składnię. Parametr `-ScopeType` został usunięty.
+* `$results = Get-AzResourceGroupDeploymentWhatIfResult`dla wdrożeń grup zasobów
+* `$results = Get-AzSubscriptionDeploymentWhatIfResult`lub `$results = Get-AzDeploymentWhatIfResult` dla wdrożeń na poziomie subskrypcji
 
 ### <a name="azure-rest-api"></a>Interfejs API REST platformy Azure
 
@@ -170,7 +206,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="test-modification"></a>Modyfikacja testu
 
-Po zakończeniu wdrażania można przystąpić do testowania operacji co jeśli. Tym razem wdrożyć [szablon, który zmienia sieć wirtualną](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json). Brakuje jednego oryginalnego znacznika, podsieć została usunięta, a prefiks adresu został zmieniony.
+Po zakończeniu wdrażania można przystąpić do testowania operacji co jeśli. Tym razem wdrożyć [szablon, który zmienia sieć wirtualną](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json). Brakuje jednego z oryginalnych tagów, podsieć została usunięta, a prefiks adresu został zmieniony.
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -223,7 +259,7 @@ Niektóre właściwości, które są wymienione jako usunięte faktycznie nie zm
 Teraz programowo oceńmy wyniki warunkowe, ustawiając polecenie na zmienną.
 
 ```azurepowershell
-$results = Get-AzResourceGroupDeploymentWhatIf `
+$results = Get-AzResourceGroupDeploymentWhatIfResult `
   -ResourceGroupName ExampleGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```

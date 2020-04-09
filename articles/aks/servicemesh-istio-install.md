@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: f0fe4ab46bfe5c0c0c2ea67aa2e2694321628be5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1d02cb42a86023e5c341daab678c39f22f75dda
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136367"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877698"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Instalowanie i używanie programu Istio w usłudze Azure Kubernetes (AKS)
 
@@ -97,7 +97,10 @@ Podejście do instalacji [Helm][helm] dla Istio zostanie przestarzałe w przysz�
 > Istio obecnie musi być zaplanowane do uruchomienia w węzłach Systemu Linux. Jeśli masz węzły systemu Windows Server w klastrze, należy upewnić się, że zasobniki Istio są zaplanowane tylko do uruchomienia w węzłach systemu Linux. Użyjemy [selektorów węzłów,][kubernetes-node-selectors] aby upewnić się, że zasobniki są zaplanowane do odpowiednich węzłów.
 
 > [!CAUTION]
-> Funkcje [SDS (secret discovery service)][istio-feature-sds] i [Istio CNI][istio-feature-cni] Istio są obecnie w [Alfa][istio-feature-stages], więc należy pomyśleć, zanim je włączą. Ponadto funkcja Kubernetes [projekcji woluminu tokenu usługi][kubernetes-feature-sa-projected-volume] (wymóg dla usługi SDS) nie jest włączona w bieżących wersjach usługi AKS.
+> Funkcje [SDS (secret discovery service)][istio-feature-sds] i [Istio CNI][istio-feature-cni] Istio są obecnie w [Alfa][istio-feature-stages], więc należy pomyśleć, zanim je włączą. 
+>
+> Należy zauważyć, że funkcja Kubernetes [projekcji woluminu tokenu usługi][kubernetes-feature-sa-projected-volume] (wymóg dla SDS) jest teraz **włączona** dla wszystkich wersji Kubernetes 1.13 i nowszych w usłudze AKS.
+
 Utwórz plik `istio.aks.yaml` wywoływany z następującą zawartością. Ten plik będzie zawierać szczegóły [specyfikacji płaszczyzny sterowania Istio][istio-control-plane] do konfigurowania Istio.
 
 ```yaml

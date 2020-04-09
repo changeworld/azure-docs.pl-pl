@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
-ms.openlocfilehash: 74d696c19ac2a2d0d367f5a018fde8cd3a0eedb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 454138f8e0d92935126f446455810a444b0a053a
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535208"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984150"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Adresy IP używane przez usługi Application Insights i Log Analytics
 Usługa [Usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) używa wielu adresów IP. Może być konieczne poznanie tych adresów, jeśli monitorowana aplikacja jest hostowana za zaporą.
@@ -55,6 +55,8 @@ Konfiguracja monitora stanu — wymagana tylko podczas wprowadzania zmian.
 ## <a name="availability-tests"></a>Testy dostępności
 Jest to lista adresów, z których są uruchamiane [testy sieci web dostępności.](../../azure-monitor/app/monitor-web-app-availability.md) Jeśli chcesz uruchomić testy sieci web w aplikacji, ale twój serwer sieci web jest ograniczony do obsługi określonych klientów, musisz zezwolić na ruch przychodzący z naszych serwerów testowych dostępności.
 
+### <a name="service-tag"></a>Tag usługi
+
 Jeśli używasz grup zabezpieczeń sieciowej platformy Azure, po prostu dodaj **regułę portu przychodzącego,** aby zezwolić na przenoszenie z testów dostępności usługi Application Insights, wybierając **tag usługi** jako **źródło** i **dostępność aplikacji** jako tag **usługi źródłowej.**
 
 >[!div class="mx-imgBorder"]
@@ -64,6 +66,11 @@ Jeśli używasz grup zabezpieczeń sieciowej platformy Azure, po prostu dodaj **
 >![Karta Dodawanie przychodzącej reguły zabezpieczeń](./media/ip-addresses/add-inbound-security-rule2.png)
 
 Otwarte porty 80 (http) i 443 (https) dla ruchu przychodzącego z tych adresów (adresy IP są pogrupowane według lokalizacji):
+
+### <a name="addresses-grouped-by-location"></a>Adresy pogrupowane według lokalizacji
+
+> [!NOTE]
+> Adresy te są wyświetlane przy użyciu notacji CIDR (Classless Inter-Domain Routing). Oznacza to, że `51.144.56.112/28` wpis podobny do wpisu `51.144.56.112` odpowiada 16 adresom IP, począwszy od momentu zakończenia o . `51.144.56.127`
 
 ```
 Australia East

@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: c2f384370c3ceaf24164e4a27adc05b1a1e1ddf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294958"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892261"
 ---
 # <a name="what-is-distributed-tracing"></a>Co to jest śledzenie rozproszone?
 
@@ -27,17 +27,17 @@ Usługa Azure Monitor oferuje również widok [mapy aplikacji,](https://docs.mic
 
 ## <a name="how-to-enable-distributed-tracing"></a>Jak włączyć śledzenie rozproszone
 
-Włączanie śledzenia rozproszonego w usługach w aplikacji jest tak proste, jak dodanie właściwego sdk lub biblioteki do każdej usługi, na podstawie języka, w jakim usługa została zaimplementowana.
+Włączanie śledzenia rozproszonego w usługach w aplikacji jest tak proste, jak dodanie odpowiedniego agenta, SDK lub biblioteki do każdej usługi, na podstawie języka, w jakim usługa została zaimplementowana.
 
-## <a name="enabling-via-application-insights-sdks"></a>Włączanie za pomocą sdk usługi Application Insights
+## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>Włączanie za pośrednictwem usługi Application Insights za pomocą automatycznego instrumentacji lub zestawów SDK
 
-SDK usługi Application Insights dla .NET, .NET Core, Java, Node.js i JavaScript obsługują śledzenie rozproszone natywnie. Instrukcje dotyczące instalowania i konfigurowania każdego zestawu SDK usługi Application Insights są dostępne poniżej:
+Agenci usługi Application Insights i/lub SDK dla platformy .NET, .NET Core, Java, Node.js i JavaScript obsługują śledzenie rozproszone natywnie. Instrukcje dotyczące instalowania i konfigurowania każdego zestawu SDK usługi Application Insights są dostępne poniżej:
 
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
-* [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
+* [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
-* [Javascript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
 * [Python](opencensus-python.md)
 
 Po zainstalowaniu i skonfigurowaniu odpowiedniego sdk usługi Application Insights, informacje o śledzeniu są automatycznie zbierane dla popularnych struktur, bibliotek i technologii przez auto-modułów zbierających zależności SDK. Pełna lista obsługiwanych technologii jest dostępna w [dokumentacji automatycznego zbierania zależności.](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)

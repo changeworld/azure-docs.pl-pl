@@ -2,24 +2,21 @@
 title: Tworzenie aplikacji klasycznej, która wywołuje internetowe interfejsy API — platforma tożsamości firmy Microsoft | Azure
 description: Dowiedz się, jak utworzyć aplikację klasyczną, która wywołuje internetowe interfejsy API (omówienie)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 196102769c1f5f68df316918a63079b09baad32d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09cc43dec2eff48754f5a6e693badd6bb1907cce
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702151"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883005"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Scenariusz: aplikacja komputerowa, która wywołuje internetowe interfejsy API
 
@@ -29,7 +26,7 @@ Dowiedz się wszystkiego, czego potrzebujesz, aby utworzyć aplikację klasyczn�
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 Jeśli jeszcze tego nie zrobiłeś, utwórz pierwszą aplikację, wykonując szybki start pulpitu platformy .NET, szybki szybki start platformy uniwersalnej systemu Windows (UWP) lub szybki start aplikacji natywnej dla systemu macOS:
 

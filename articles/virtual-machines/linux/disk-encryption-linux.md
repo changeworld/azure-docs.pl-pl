@@ -8,18 +8,19 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: cf6f53639cff23a9e709b44a1ddf1332df2164b7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d860b557c5c2d6b73fad53cdf84ee8b32182d1ee
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586041"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985460"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scenariusze usługi Azure Disk Encryption na maszynach wirtualnych z systemem Linux
 
-Usługa Azure Disk Encryption korzysta z funkcji DM-Crypt systemu Linux w celu zapewnienia szyfrowania woluminów dla systemu operacyjnego i dysków danych maszyn wirtualnych platformy Azure (VM) i jest zintegrowana z usługą Azure Key Vault, aby ułatwić kontrolowanie kluczy i wpisów tajnych szyfrowania dysku i zarządzanie nimi. Aby zapoznać się z omówieniem usługi, zobacz [Szyfrowanie dysków platformy Azure dla maszyn wirtualnych z systemem Linux](disk-encryption-overview.md).
 
-Istnieje wiele scenariuszy szyfrowania dysku, a kroki mogą się różnić w zależności od scenariusza. W poniższych sekcjach opisano scenariusze bardziej szczegółowo dla maszyn wirtualnych z systemem Linux.
+Usługa Azure Disk Encryption for Linux (VMs) korzysta z funkcji DM-Crypt systemu Linux, aby zapewnić pełne szyfrowanie dysku systemu operacyjnego i dysków z danymi. Ponadto zapewnia szyfrowanie dysku zasobów efemeryczny podczas korzystania z funkcji EncryptFormatAll.
+
+Usługa Azure Disk Encryption jest [zintegrowana z usługą Azure Key Vault,](disk-encryption-key-vault.md) która ułatwia kontrolowanie kluczy szyfrowania dysku i zarządzanie nimi. Aby zapoznać się z omówieniem usługi, zobacz [Szyfrowanie dysków platformy Azure dla maszyn wirtualnych z systemem Windows](disk-encryption-overview.md).
 
 Szyfrowanie dysku można stosować tylko do maszyn wirtualnych [obsługiwanych rozmiarów maszyn wirtualnych i systemów operacyjnych](disk-encryption-overview.md#supported-vms-and-operating-systems). Należy również spełnić następujące wymagania wstępne:
 

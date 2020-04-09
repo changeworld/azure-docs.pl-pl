@@ -5,16 +5,19 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 2270ee7c850c528bd24fa2e58c2b1684acfc24d6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 74522502f5405b56a3a604f20a695de83ef3c3a5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585297"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886487"
 ---
 # <a name="troubleshoot"></a>Rozwiązywanie problemów
 
 Ten artykuł zawiera rozwiązania typowych problemów z usługą Azure FarmBeats. Aby uzyskać dodatkową pomoc, skontaktuj się farmbeatssupport@microsoft.comz naszym Forum Pomocy [technicznej](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) lub napisz do nas na adres .
+
+> [!NOTE]
+  > Jeśli zainstalowano FarmBeats w kwietniu, a zadania nie mają miejsca z pustym komunikatem o błędzie, instalacja może nie zostały przydzielone żadnych przydziału partii ze względu na wszystkie zasoby są kierowane do nagłych wypadków, opieki zdrowotnej i innych krytycznych potrzeb. Należy zażądać, aby maszyny wirtualne zostały przydzielone do konta usługi Batch.
 
 ## <a name="install-issues"></a>Problemy z instalacją
 
@@ -280,7 +283,7 @@ Ten problem może wystąpić, jeśli wszelkie działania konserwacyjne są wykon
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Zbieranie dzienników zadań usługi Azure Data Factory lub dzienników usługi App Service w usłudze Datahub
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. W polu **Wyszukiwania** wyszukaj grupę zasobów FarmBeats Datahub.
 3. Na **pulpicie nawigacyjnym grupy zasobów** wyszukaj konto magazynu *datahublogs.\* * Na przykład *datahublogsmvxmq*.  
 4. W kolumnie **Nazwa** wybierz konto magazynu, aby wyświetlić pulpit nawigacyjny **konta magazynu.**
@@ -292,7 +295,7 @@ Ten problem może wystąpić, jeśli wszelkie działania konserwacyjne są wykon
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Zbieranie dzienników zadań usługi Azure Data Factory lub dzienników usługi App Service dla akceleratora
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. W polu **Wyszukiwania** wyszukaj grupę zasobów Akceleratora FarmBeats.
 3. Na **pulpicie nawigacyjnym grupy zasobów** *wyszukaj\* * konto magazynu. Na przykład *storagedop4k\**.
 4. Wybierz konto magazynu w kolumnie **Nazwa,** aby wyświetlić pulpit nawigacyjny **konta magazynu.**

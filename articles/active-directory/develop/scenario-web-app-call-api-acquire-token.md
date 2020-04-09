@@ -2,24 +2,21 @@
 title: Pobierz token w aplikacji sieci web, która wywołuje internetowe interfejsy API — platforma tożsamości firmy Microsoft | Azure
 description: Dowiedz się, jak uzyskać token dla aplikacji sieci web, która wywołuje internetowe interfejsy API
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: abf7d800eda376c21dfdd672032ddb65e27355be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 196d941c5c3b18b737f7a11c25ebbb9eab91be1e
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76759078"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885042"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Aplikacja internetowa, która wywołuje internetowe interfejsy API: uzyskaj token dla aplikacji
 

@@ -2,24 +2,21 @@
 title: Konfigurowanie aplikacji jednostronicowej — platforma tożsamości firmy Microsoft | Azure
 description: Dowiedz się, jak utworzyć aplikację jednostronicową (konfiguracja kodu aplikacji)
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: c1799b25ec1adf44342d2305d3b2a29039c39cd4
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: f159105046231ba5fb4e458cdd70d930a411a920
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419717"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882339"
 ---
 # <a name="single-page-application-code-configuration"></a>Aplikacja jednostronicowa: konfiguracja kodu
 
@@ -31,7 +28,7 @@ Platforma tożsamości firmy Microsoft udostępnia następujące biblioteki bibl
 
 | Biblioteka MSAL | Opis |
 |--------------|--------------|
-| ![msal.js](media/sample-v2-code/logo_js.png) <br/> [msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Biblioteka JavaScript do użytku w dowolnej aplikacji sieci Web po stronie klienta, która jest zbudowana za pośrednictwem javascript lub struktur SPA, takich jak Angular, Vue.js i React.js. |
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Biblioteka JavaScript do użytku w dowolnej aplikacji sieci Web po stronie klienta, która jest zbudowana za pośrednictwem javascript lub struktur SPA, takich jak Angular, Vue.js i React.js. |
 | ![MSAL Kątowy](media/sample-v2-code/logo_angular.png) <br/> [MSAL Kątowy](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Otoka podstawowej biblioteki MSAL.js, aby uprościć użycie w aplikacjach jednostronicowych, które są tworzone za pośrednictwem struktury kątowej. |
 
 ## <a name="application-code-configuration"></a>Konfiguracja kodu aplikacji

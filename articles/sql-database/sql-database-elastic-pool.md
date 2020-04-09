@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 3c476393153f6bc1d18d5c163bcd69484583eb15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8139ed8f4f4799a963a051eed96dd87c4ac38aec
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256278"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981430"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastyczne pule pozwalają na zarządzanie wieloma bazami danych Azure SQL oraz ich skalowanie
 
@@ -37,7 +37,7 @@ Pule elastyczne rozwiązać ten problem, zapewniając, że bazy danych uzyskać 
 > [!IMPORTANT]
 > W przypadku pule elastycznych nie pobierana jest opłata za bazę danych. Opłaty są naliczane za każdą godzinę, gdy pula istnieje przy najwyższych eDTU lub punktach wirtualnych, niezależnie od użycia lub tego, czy pula była aktywna przez mniej niż godzinę.
 
-Pule elastyczne umożliwiają deweloperowi zakup zasobów dla puli współużytkowanych przez wiele baz danych, aby pomieścić nieprzewidywalne okresy użycia przez poszczególne bazy danych. Zasoby dla puli można skonfigurować na podstawie [modelu zakupu opartego](sql-database-service-tiers-dtu.md) na UU lub [modelu zakupu opartego na parcie wirtualnym](sql-database-service-tiers-vcore.md). Zapotrzebowanie na zasoby dla puli zależy od zagregowanego wykorzystania jego baz danych. Ilość zasobów dostępnych dla puli jest kontrolowana przez budżet dewelopera. Deweloper po prostu dodaje bazy danych do puli, ustawia minimalne i maksymalne zasoby dla baz danych (minimalne i maksymalne DTU lub minimalne lub maksymalne pole wirtualne w zależności od wybranego modelu pozyskiwania zasobów), a następnie ustawia zasoby puli na podstawie ich Budżetu. Korzystając z pul, deweloper może bezproblemowo rozwijać swoją usługę od niewielkiego startupu do dojrzałego biznesu w coraz większej skali.
+Pule elastyczne umożliwiają deweloperowi zakup zasobów dla puli współużytkowanych przez wiele baz danych, aby pomieścić nieprzewidywalne okresy użycia przez poszczególne bazy danych. Zasoby dla puli można skonfigurować na podstawie [modelu zakupu opartego](sql-database-service-tiers-dtu.md) na UU lub [modelu zakupu opartego na parcie wirtualnym](sql-database-service-tiers-vcore.md). Zapotrzebowanie na zasoby dla puli zależy od zagregowanego wykorzystania jego baz danych. Ilość zasobów dostępnych dla puli jest kontrolowana przez budżet dewelopera. Deweloper po prostu dodaje bazy danych do puli, ustawia minimalne i maksymalne zasoby dla baz danych (minimalnych i maksymalnych DTU lub minimalnych lub maksymalnych procesorów wirtualnych w zależności od wybranego modelu pozyskiwania zasobów), a następnie ustawia zasoby puli na podstawie ich budżetu. Korzystając z pul, deweloper może bezproblemowo rozwijać swoją usługę od niewielkiego startupu do dojrzałego biznesu w coraz większej skali.
 
 Poszczególne bazy danych w ramach puli mają możliwość elastycznego skalowania automatycznego w określonym zakresie parametrów. Pod dużym obciążeniem bazy danych może zużywać więcej zasobów, aby zaspokoić zapotrzebowanie. Bazy danych przy lekkich obciążeniach zużywają mniej, a bazy danych bez obciążenia nie zużywają żadnych zasobów. Aprowizacja zasobów dla całej puli zamiast pojedynczych baz danych upraszcza zadania związane z zarządzaniem. Dodatkowo masz przewidywalny budżet na pulę. Dodatkowe zasoby można dodać do istniejącej puli bez przestojów bazy danych, z tą różnicą, że bazy danych mogą wymagać przeniesienia w celu zapewnienia dodatkowych zasobów obliczeniowych dla nowej rezerwacji jednostek eDTU. Podobnie jeśli dodatkowe zasoby nie są już potrzebne, można je usunąć z istniejącej puli w dowolnym momencie. Można również dodawać bazy danych do puli lub odejmować je z niej. Jeśli baza danych przewidywalnie niewystarczająco wykorzystuje zasoby, należy ją przenieść.
 
@@ -224,7 +224,6 @@ Aby uzyskać więcej informacji, zobacz [tworzenie alertów bazy danych SQL w wi
 
 - Aby uzyskać informacje o cenach, zobacz [Ceny puli elastycznej](https://azure.microsoft.com/pricing/details/sql-database/elastic).
 - Aby skalować pule elastyczne, zobacz [Skalowanie basenów elastycznych](sql-database-elastic-pool-scale.md) i [Skaluj pulę elastyczną — przykładowy kod](scripts/sql-database-monitor-and-scale-pool-powershell.md)
-- Aby uzyskać film wideo, zobacz [kurs wideo z programu Microsoft Virtual Academy na temat elastycznych funkcji usługi Azure SQL Database](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - Aby dowiedzieć się więcej na temat wzorców projektowych dla aplikacji SaaS wykorzystujących pule elastyczne, zobacz artykuł [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) (Wzorce projektowe dla wielodostępnych aplikacji SaaS korzystających z usługi Azure SQL Database).
 - Aby uzyskać samouczek SaaS przy użyciu basenów elastycznych, zobacz [Wprowadzenie do aplikacji SaaS Wingtip](sql-database-wtp-overview.md).
 - Aby dowiedzieć się więcej o zarządzaniu zasobami w pulach elastycznych z wieloma bazami danych, zobacz [Zarządzanie zasobami w gęstych pulach elastycznych](sql-database-elastic-pool-resource-management.md).

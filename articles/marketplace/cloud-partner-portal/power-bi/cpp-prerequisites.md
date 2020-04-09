@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 5e8f63d63739f15d6d140b1eff510e6e006955b8
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ac27a2c95789eac3e824e4ecb31138a6720868a6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744264"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981651"
 ---
 # <a name="power-bi-app-offer-prerequisites"></a>Wymagania wstępne oferty aplikacji usługi Power BI
 
 >[!Important]
->Od 30 marca 2020 r. rozpoczniemy przenoszenie zarządzania ofertami aplikacji Usługi Power BI do Centrum partnerów. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami zawartymi w [omówienie tworzenia aplikacji usługi Power BI,](https://aka.ms/AzurePBIAppCreationOverview) aby zarządzać zmigrowanymi ofertami.
+>Od 13 kwietnia 2020 r. zaczniemy przenosić zarządzanie ofertami aplikacji Power BI do Centrum partnerów. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami zawartymi w [omówienie tworzenia aplikacji usługi Power BI,](https://aka.ms/AzurePBIAppCreationOverview) aby zarządzać zmigrowanymi ofertami.
 
 Ten artykuł zawiera wymagania techniczne i biznesowe, które należy spełnić, zanim będzie można opublikować ofertę aplikacji Usługi Power BI w portalu AppSource marketplace.  Jeśli jeszcze tego nie zrobiłeś, zapoznaj się z [przewodnikiem publikowania ofert office 365, Dynamics 365, PowerApps i Power BI .](../../appsource-offer-publishing-guide.md)
 

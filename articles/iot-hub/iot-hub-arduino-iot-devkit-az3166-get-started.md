@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 5d6ba2bd52d8f4af4244e8ce1babeb7bc9d37fe4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 326b79e1aca6fa82b3275249401c755428a8b71d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235673"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878565"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Łączenie zestawu IoT DevKit AZ3166 z centrum Usługi Azure IoT Hub
 
@@ -82,7 +82,13 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
     ```
 
    > [!NOTE]
-   > Jeśli zostanie wyświetlony `device-identity`błąd podczas uruchamiania, zainstaluj [rozszerzenie IOT platformy Azure dla interfejsu wiersza polecenia platformy Azure, aby](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md) uzyskać więcej informacji.
+   > Jeśli zostanie wyświetlony `device-identity`błąd podczas działania, zainstaluj [rozszerzenie IoT usługi Azure dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md).
+   > Uruchom następujące polecenie, aby dodać rozszerzenie IoT usługi Microsoft Azure dla interfejsu wiersza polecenia platformy Azure do wystąpienia usługi Cloud Shell. Rozszerzenie IoT dodaje polecenia, które są specyficzne dla Usługi IoT Hub, usługi IoT Edge i usługi inicjowania obsługi administracyjnej urządzeń IoT (DPS) do interfejsu wiersza polecenia platformy Azure.
+   > 
+   > ```azurecli-interactive
+   > az extension add --name azure-iot
+   >  ```
+   >
   
 1. Uruchom następujące polecenia w usłudze Azure Cloud Shell, aby uzyskać _parametry połączenia urządzenia_ dla urządzenia, które właśnie zostało zarejestrowane:
 

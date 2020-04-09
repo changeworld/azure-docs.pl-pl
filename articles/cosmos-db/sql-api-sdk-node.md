@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 181f43e060e3b4b41babeee375365a97e1d224aa
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 03f79535b3a62fbb4d0309ae86a142bd842cc308
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411283"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982892"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Zestaw SDK węzła.js usługi Azure Cosmos DB dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "80411283"
 
 |Zasób  |Link  |
 |---------|---------|
-|Pobierz SDK  |   [Npm](https://www.npmjs.com/package/@azure/cosmos) 
+|Pobierz SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |Dokumentacja api  |  [Dokumentacja referencyjna sdk javascript](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |Instrukcje instalacji SDK  |  [Instrukcje instalacji](https://github.com/Azure/azure-cosmos-js#installation)
 |Współtworzenie sdk | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
@@ -295,14 +295,14 @@ Nie zawsze najbardziej widoczne zmiany, ale pomagają naszemu zespołowi szybcie
 
 ### <a name=""></a><a name="1.14.0"/>1.14.0</a>
 * Dodaje obsługę spójności sesji.
-* Ta wersja SDK wymaga najnowszej wersji emulatora usługi https://aka.ms/cosmosdb-emulatorAzure Cosmos DB dostępnej do pobrania z .
+* Ta wersja SDK wymaga najnowszej wersji [emulatora usługi Azure Cosmos DB.](https://aka.ms/cosmosdb-emulator)
 
 ### <a name=""></a><a name="1.13.0"/>1.13.0</a>
 * Podzielone sprawdzane zapytania partycji krzyżowej.
 * Dodaje podpory dla łącza zasobów z ukośnikami wiodącymi i kończącymi (i odpowiednimi testami).
 
 ### <a name=""></a><a name="1.12.2"/>1.12.2</a>
-*   dokumentacji npm naprawiono.
+*    dokumentacji npm naprawiono.
 
 ### <a name=""></a><a name="1.12.1"/>1.12.1</a>
 * Naprawiono błąd w executeStoredProcedure, gdzie dokumenty zaangażowane miał specjalne znaki Unicode (LS, PS).

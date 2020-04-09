@@ -3,12 +3,12 @@ title: Tabela obsługi usługi Azure Backup
 description: Zawiera podsumowanie ustawień obsługi i ograniczeń dotyczących usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: d036e527880a98d323e8de2f3a8721d7e12dbb07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 120882b15dcf9f27c280984ff6d0df31e38ebb73
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273269"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878956"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Macierz pomocy technicznej dla usługi Azure Backup
 
@@ -151,7 +151,7 @@ Usługa Azure Backup dodała funkcję Przywracania między regionami, aby zwięk
 
 | Typ zarządzania kopiami zapasowymi | Obsługiwane                                                    |  Obsługiwane regiony |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Maszyna wirtualna platformy Azure               | Tak. Publiczna ograniczona wersja zapoznawcza Obsługiwane dla zaszyfrowanych maszyn wirtualnych i maszyn wirtualnych z dyskami mniejszymi niż 4 TB | Zachodnio-środkowe stany USA   |
+| Maszyna wirtualna platformy Azure               | Tak.   Obsługiwane dla zaszyfrowanych maszyn wirtualnych i maszyn wirtualnych z dyskami mniejszymi niż 4 TB | Wszystkie regiony publiczne platformy Azure.  |
 | Mars Agent/W środowisku lokalnym | Nie                                                           | Nie dotyczy               |
 | SQL /SAP HANA          | Nie                                                           | Nie dotyczy               |
 | Afs                    | Nie                                                           | Nie dotyczy               |

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f1877ae630919ba7da5a851b5f8291ade2d165
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 343671c1d9ee82950a9822648f9831588da7e9f8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76897582"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876188"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Dodawanie informacji o ochronie prywatności organizacji przy użyciu usługi Azure Active Directory
 W tym artykule wyjaśniono, jak administrator dzierżawy może dodawać informacje związane z prywatnością do dzierżawy usługi Azure Active Directory (Azure AD) w organizacji za pośrednictwem witryny Azure Portal.
@@ -32,15 +32,15 @@ Dodaj informacje o prywatności organizacji w obszarze **Właściwości** usług
 
 ### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>Aby uzyskać dostęp do obszaru Właściwości i dodać informacje o prywatności
 
-1.  Zaloguj się do witryny Azure portal jako administrator dzierżawy.
+1.    Zaloguj się do witryny Azure portal jako administrator dzierżawy.
 
-2.  Na lewym pasku nawigacyjnym wybierz pozycję **Azure Active Directory**, a następnie wybierz pozycję **Właściwości**.
+2.    Na lewym pasku nawigacyjnym wybierz pozycję **Azure Active Directory**, a następnie wybierz pozycję **Właściwości**.
 
     Pojawi się obszar **Właściwości.**
 
     ![Obszar Właściwości usługi Azure AD z wyróżnioniem obszaru informacji o prywatności](media/active-directory-properties-area/properties-area.png)
 
-3.  Dodaj informacje o prywatności dla swoich pracowników:
+3.    Dodaj informacje o prywatności dla swoich pracowników:
 
     - **Kontakt techniczny.** Wpisz adres e-mail osoby, z którą ma się skontaktować w celu uzyskania pomocy technicznej w organizacji.
     
@@ -53,8 +53,8 @@ Dodaj informacje o prywatności organizacji w obszarze **Właściwości** usług
 
         ![B2B Collaboration Review Permissions pole z komunikatem](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.  Wybierz **pozycję Zapisz**.
+4.    Wybierz **pozycję Zapisz**.
 
 ## <a name="next-steps"></a>Następne kroki
-- [Realizacja zaproszenia do współpracy usługi Azure Active Directory B2B](https://aka.ms/b2bredemption)
+- [Realizacja zaproszenia do współpracy usługi Azure Active Directory B2B](../b2b/redemption-experience.md)
 - [Dodawanie lub zmienianie informacji o profilu dla użytkownika w usłudze Azure Active Directory](active-directory-users-profile-azure-portal.md)

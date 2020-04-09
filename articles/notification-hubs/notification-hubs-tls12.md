@@ -5,27 +5,25 @@ services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: ''
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/30/2020
+ms.date: 04/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
-ms.openlocfilehash: 87309e20efd9d6f8bd1a659451e5a603e6b95bc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4da96df50e961f4291029a37e883fdcf88c6c87f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76908529"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885756"
 ---
 # <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
-Aby zapewnić wyższy poziom zabezpieczeń, 30 kwietnia 2020 r. centra powiadomień wyłączą obsługę protokołu TLS w wersji 1.0 i 1.1. Te starsze protokoły zapewniają słabą kryptografię i są narażone na ataki BESTII i PUDEL. Zmiany te nie mają wpływu na aplikacje wdrożone na urządzeniach z systemem Android w wersji 5 lub większej lub iOS w wersji 5 lub większej, ponieważ te systemy operacyjne obsługują tls 1.2, a klient i serwer będą negocjować najwyższą wzajemnie obsługiwaną wersję protokołu po podłączeniu.
+Aby zapewnić wyższy poziom zabezpieczeń, centra powiadomień wyłączą obsługę protokołu TLS w wersjach 1.0 i 1.1 31 maja 2020 r. (rozszerzone z 30 kwietnia 2020 r.). Te starsze protokoły zapewniają słabą kryptografię i są narażone na ataki BESTII i PUDEL. Ta zmiana nie ma wpływu na aplikacje wdrożone na urządzeniach z systemem Android w wersji 5 lub większej lub w systemie iOS w wersji 5 lub większej, ponieważ te systemy operacyjne obsługują protokół TLS 1.2, a klient i serwer będą negocjować najwyższą wzajemnie obsługiwaną wersję protokołu po połączeniu.
 
 Zaleca się przejrzenie wszystkich aplikacji korzystających z usługi Azure Notification Hubs, aby upewnić się, że używają one najbardziej odpowiednich bibliotek i stosów TLS obsługujących usługę TLS 1.2.
 

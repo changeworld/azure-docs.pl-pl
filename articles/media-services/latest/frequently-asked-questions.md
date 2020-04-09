@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: 11123ee04dd02a60dff0b88e2e6e85fcd613a7d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a4f4bd6eaa07907dd672abe068b515b5127adac9
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80068013"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886827"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Często zadawane pytania dotyczące usługi Media Services w wersji 3
 
@@ -166,6 +166,112 @@ Aby uzyskać więcej informacji, zobacz [Migrowanie do usługi Media Services w 
 ### <a name="where-did-client-side-storage-encryption-go"></a>Gdzie było szyfrowanie pamięci masowej po stronie klienta?
 
 Teraz zaleca się użycie szyfrowania magazynu po stronie serwera (które jest domyślnie włączone). Aby uzyskać więcej informacji, zobacz [Szyfrowanie usługi Azure Storage Service dla danych w spoczynku](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+
+## <a name="offline-streaming"></a>Przesyłanie strumieniowe w trybie offline
+
+### <a name="fairplay-streaming-for-ios"></a>Przesyłanie strumieniowe FairPlay dla systemu iOS
+
+Poniższe często zadawane pytania zapewniają pomoc w rozwiązywaniu problemów z przesyłaniem strumieniowym FairPlay w trybie offline dla systemu iOS:
+
+#### <a name="why-does-only-audio-play-but-not-video-during-offline-mode"></a>Dlaczego odtwarzany jest tylko dźwięk, ale nie wideo w trybie offline?
+
+To zachowanie wydaje się być według projektu przykładowej aplikacji. Gdy w trybie offline występuje alternatywna ścieżka audio (co ma miejsce w przypadku HLS), zarówno system iOS 10, jak i iOS 11 domyślnie mają alternatywną ścieżkę audio. Aby skompensować to zachowanie w trybie offline FPS, usuń alternatywną ścieżkę audio ze strumienia. Aby to zrobić w umiań multimediów, dodaj filtr manifestu dynamicznego "audio-only=false". Innymi słowy adres URL HLS kończy się na .ism/manifest(format=m3u8-aapl,audio-only=false). 
+
+#### <a name="why-does-it-still-play-audio-only-without-video-during-offline-mode-after-i-add-audio-onlyfalse"></a>Dlaczego nadal odtwarza dźwięk tylko bez wideo w trybie offline po dodaniu tylko audio = false?
+
+W zależności od projektu klucza pamięci podręcznej sieci dostarczania zawartości (CDN) zawartość może być buforowana. Przeczyść pamięć podręczną.
+
+#### <a name="is-fps-offline-mode-also-supported-on-ios-11-in-addition-to-ios-10"></a>Czy tryb offline FPS jest również obsługiwany w iOS 11 oprócz systemu iOS 10?
+
+Tak. Tryb offline FPS jest obsługiwany dla iOS 10 i iOS 11.
+
+#### <a name="why-cant-i-find-the-document-offline-playback-with-fairplay-streaming-and-http-live-streaming-in-the-fps-server-sdk"></a>Dlaczego nie mogę znaleźć dokumentu "Odtwarzanie w trybie offline z przesyłaniem strumieniowym FairPlay i strumieniowaniem na żywo HTTP" w SDK serwera FPS?
+
+Od czasu, gdy program FPS Server SDK w wersji 4, ten dokument został scalony w "FairPlay Streaming Programming Guide".
+
+#### <a name="what-is-the-downloadedoffline-file-structure-on-ios-devices"></a>Jaka jest struktura pobranych/offline na urządzeniach z systemem iOS?
+
+Pobrana struktura plików na urządzeniu z systemem iOS wygląda następująco na poniższym zrzucie ekranu. Folder `_keys` przechowuje pobrane licencje FPS z jednym plikiem sklepu dla każdego hosta usługi licencji. W `.movpkg` folderze jest przechowywane treści audio i wideo. Pierwszy folder o nazwie, która kończy się kreską, po której następuje numericzna zawartość wideo. Wartością liczbową jest PeakBandwidth wersji wideo. Drugi folder o nazwie, która kończy się kreską, po której następuje 0, zawiera zawartość audio. Trzeci folder o nazwie "Dane" zawiera główną listę odtwarzania zawartości FPS. Na koniec plik boot.xml zawiera `.movpkg` pełny opis zawartości folderu. 
+
+![Struktura przykładowych plików aplikacji w trybie Offline FairPlay na iOS](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
+
+Przykładowy plik boot.xml:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
+  <Version>1.0</Version>
+  <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>
+  <Streams>
+    <Stream ID="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" Path="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(127000)/Manifest(aac_eng_2_127,format=m3u8-aapl)">
+      <Complete>YES</Complete>
+    </Stream>
+    <Stream ID="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" Path="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(161000)/Manifest(video,format=m3u8-aapl)">
+      <Complete>YES</Complete>
+    </Stream>
+  </Streams>
+  <MasterPlaylist>
+    <NetworkURL>https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/manifest(format=m3u8-aapl,audio-only=false)</NetworkURL>
+  </MasterPlaylist>
+  <DataItems Directory="Data">
+    <DataItem>
+      <ID>CB50F631-8227-477A-BCEC-365BBF12BCC0</ID>
+      <Category>Playlist</Category>
+      <Name>master.m3u8</Name>
+      <DataPath>Playlist-master.m3u8-CB50F631-8227-477A-BCEC-365BBF12BCC0.data</DataPath>
+      <Role>Master</Role>
+    </DataItem>
+  </DataItems>
+</HLSMoviePackage>
+```
+
+### <a name="widevine-streaming-for-android"></a>Widevine streaming dla Androida
+
+#### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-key"></a>Jak dostarczać licencje trwałe (z obsługą w trybie offline) dla niektórych klientów/użytkowników i licencje nietrwałe (wyłączone w trybie offline) dla innych? Czy muszę powielać zawartość i używać oddzielnego klucza zawartości?
+
+Ponieważ usługa Media Services w wersji 3 umożliwia zasobu mieć wiele streaminglocators. Możesz mieć
+
+* Jeden ContentKeyPolicy z license_type = "trwałe", ContentKeyPolicyRestriction z roszczeniem na "trwałe", a jego StreamingLocator;
+* Inny ContentKeyPolicy z license_type="nonpersistent", ContentKeyPolicyRestriction z oświadczeń na "nonpersistent" i jego StreamingLocator.
+* Dwa streamingLocators mają różne ContentKey.
+
+W zależności od logiki biznesowej niestandardowego STS różne oświadczenia są wystawiane w tokenie JWT. Za pomocą tokenu można uzyskać tylko odpowiednią licencję i można odtworzyć tylko odpowiedni adres URL.
+
+#### <a name="what-is-the-mapping-between-the-widevine-and-media-services-drm-security-levels"></a>Co to jest mapowanie między poziomami zabezpieczeń Widevine i Media Services DRM?
+
+Google "Widevine DRM Architecture Overview" definiuje trzy różne poziomy zabezpieczeń. Jednak w [dokumentacji usługi Azure Media Services na szablonie licencji Widevine](widevine-license-template-overview.md)przedstawiono pięć różnych poziomów zabezpieczeń. W tej sekcji wyjaśniono, jak mapy poziomów zabezpieczeń.
+
+Dokument Google "Widevine DRM Architecture Review" określa następujące trzy poziomy zabezpieczeń:
+
+* Poziom zabezpieczeń 1: Wszystkie przetwarzanie zawartości, kryptografia i kontrola są wykonywane w środowisku zaufanego wykonywania (TEE). W niektórych modelach implementacji przetwarzanie zabezpieczeń może być wykonywane w różnych układach.
+* Poziom zabezpieczeń 2: Wykonuje kryptografię (ale nie przetwarzanie wideo) w tee: odszyfrowane bufory są zwracane do domeny aplikacji i przetwarzane za pośrednictwem oddzielnego sprzętu wideo lub oprogramowania. Jednak na poziomie 2 informacje kryptograficzne są nadal przetwarzane tylko w ramach TEE.
+* Poziom zabezpieczeń 3 Nie ma tee na urządzeniu. Można podjąć odpowiednie środki w celu ochrony informacji kryptograficznych i odszyfrowanej zawartości w systemie operacyjnym hosta. Implementacja poziomu 3 może również zawierać sprzętowy aparat kryptograficzny, ale to tylko zwiększa wydajność, a nie bezpieczeństwo.
+
+W tym samym czasie w [dokumentacji usługi Azure Media Services w szablonie licencji Widevine](widevine-license-template-overview.md)security_level właściwości content_key_specs może mieć następujące pięć różnych wartości (wymagania dotyczące niezawodności klienta dla odtwarzania):
+
+* Wymagane jest oparte na oprogramowaniu krypto white-box.
+* Wymagane jest oprogramowanie krypto i zaciemniony dekoder.
+* Kluczowe materiały i operacje kryptograficzne muszą być wykonywane w ramach tee wspieranego sprzętowo.
+* Krypto i dekodowanie zawartości muszą być wykonywane w ramach tee wspieranego sprzętowo.
+* Krypto, dekodowanie i cała obsługa nośnika (skompresowanego i nieskompresowanego) muszą być obsługiwane w ramach tee wspieranego sprzętowo.
+
+Oba poziomy zabezpieczeń są definiowane przez Google Widevine. Różnica polega na jego poziomie użycia: poziom architektury lub poziom interfejsu API. Pięć poziomów zabezpieczeń są używane w interfejsie API Widevine. Obiekt content_key_specs, który zawiera security_level jest deserializowany i przekazywany do globalnej usługi dostarczania Widevine przez usługę licencjonowania Azure Media Services Widevine. W poniższej tabeli przedstawiono mapowanie między dwoma zestawami poziomów zabezpieczeń.
+
+| **Poziomy zabezpieczeń zdefiniowane w architekturze Widevine** |**Poziomy zabezpieczeń używane w interfejsie API Widevine**|
+|---|---| 
+| **Poziom zabezpieczeń 1:** Wszystkie przetwarzanie zawartości, kryptografia i kontrola są wykonywane w środowisku zaufanego wykonywania (TEE). W niektórych modelach implementacji przetwarzanie zabezpieczeń może być wykonywane w różnych układach.|**security_level=5**: Krypto, dekodowanie i cała obsługa nośnika (skompresowanego i nieskompresowanego) muszą być obsługiwane w tee ze sprzętem.<br/><br/>**security_level=4**: Krypto i dekodowanie zawartości muszą być wykonywane w ramach tee wspieranego sprzętowo.|
+**Poziom zabezpieczeń 2:** Wykonuje kryptografię (ale nie przetwarzanie wideo) w tee: odszyfrowane bufory są zwracane do domeny aplikacji i przetwarzane za pośrednictwem oddzielnego sprzętu wideo lub oprogramowania. Jednak na poziomie 2 informacje kryptograficzne są nadal przetwarzane tylko w ramach TEE.| **security_level=3**: Materiał klucza i operacje kryptograficzne muszą być wykonywane w tee kopii sprzętowej. |
+| **Poziom zabezpieczeń 3:** Nie ma tee na urządzeniu. Można podjąć odpowiednie środki w celu ochrony informacji kryptograficznych i odszyfrowanej zawartości w systemie operacyjnym hosta. Implementacja poziomu 3 może również zawierać sprzętowy aparat kryptograficzny, ale to tylko zwiększa wydajność, a nie bezpieczeństwo. | **security_level=2**: Wymagane jest krypto oprogramowania i zaciemniony dekoder.<br/><br/>**security_level=1**: Wymagane jest oparte na oprogramowaniu krypto white-box.|
+
+#### <a name="why-does-content-download-take-so-long"></a>Dlaczego pobieranie zawartości trwa tak długo?
+
+Istnieją dwa sposoby poprawy szybkości pobierania:
+
+* Włącz sieć CDN, aby użytkownicy końcowi częściej trafiali do sieci CDN zamiast punktu końcowego pochodzenia/przesyłania strumieniowego w celu pobrania zawartości. Jeśli użytkownik osiągnie punkt końcowy przesyłania strumieniowego, każdy segment HLS lub dash fragment jest dynamicznie pakowane i szyfrowane. Mimo że to opóźnienie jest w skali milisekund dla każdego segmentu/fragmentu, gdy masz godzinny film wideo, skumulowane opóźnienie może być duże, co powoduje dłuższe pobieranie.
+* Zapewnij użytkownikom końcowym możliwość selektywnego pobierania warstw jakości wideo i ścieżek audio zamiast całej zawartości. W trybie offline nie ma sensu pobierać wszystkich warstw jakości. Istnieją dwa sposoby osiągnięcia tego celu:
+
+   * Kontrolowane przez klienta: aplikacja odtwarzacza automatycznie wybiera lub użytkownik wybiera warstwę jakości wideo i ścieżki audio do pobrania;
+   * Sterowana usługą: można użyć funkcji manifestu dynamicznego w usłudze Azure Media Services, aby utworzyć (globalny) filtr, który ogranicza listę odtwarzania HLS lub DASH MPD do jednej warstwy jakości wideo i wybranych ścieżek audio. Następnie adres URL pobierania prezentowany użytkownikom końcowym będzie zawierał ten filtr.
 
 ## <a name="next-steps"></a>Następne kroki
 

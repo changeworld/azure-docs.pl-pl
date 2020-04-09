@@ -3,25 +3,22 @@ title: Przygotowywanie interfejsów API sieci web do wywoływania aplikacji mobi
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak utworzyć aplikację mobilną, która wywołuje internetowe interfejsy API. (Przygotowanie aplikacji do produkcji).
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
-ms.reviwer: jmprieur
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1ea19b8b76f4eb4a2c984f0e39eb0fd373c8b83c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 28ace84f9a80b71209d7963d02b66317292b151b
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77132386"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882543"
 ---
 # <a name="prepare-mobile-apps-for-production"></a>Przygotowywanie aplikacji mobilnych do produkcji
 

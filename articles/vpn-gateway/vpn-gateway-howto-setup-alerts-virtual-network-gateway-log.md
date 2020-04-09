@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: b587fa31f1aa42e8dbd5a9d2430c0117891f2091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49510b26e0b2a9c69dd65faf0f343e86d1a068db
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239784"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878905"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Konfigurowanie alertów dotyczących zdarzeń dziennika diagnostycznego z bramy sieci VPN
 
@@ -26,7 +26,7 @@ Następujące dzienniki są dostępne na platformie Azure:
 |TunnelDiagnosticLog | Zawiera zdarzenia zmiany stanu tunelu. Zdarzenia połączenia/rozłączania tunelu mają podsumowaną przyczynę zmiany stanu, jeśli ma to zastosowanie |
 |Dziennik diagnostyki trasy | Rejestruje zmiany tras statycznych i zdarzeń BGP, które występują w bramie |
 |IKEDiagnosticLog | Rejestruje komunikaty sterujące IKE i zdarzenia na bramie |
-|P2SDiagnosticLog | Rejestruje komunikaty kontrolne typu "punkt-lokacja" i zdarzenia w bramie |
+|P2SDiagnosticLog | Rejestruje komunikaty kontrolne typu "punkt-lokacja" i zdarzenia w bramie. Informacje o źródle połączenia są dostępne tylko dla połączeń IKEv2 |
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a><a name="setup"></a>Konfigurowanie alertów w witrynie Azure portal
 

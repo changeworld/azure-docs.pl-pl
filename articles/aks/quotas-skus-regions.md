@@ -1,15 +1,16 @@
 ---
-title: Przydziały, jednostki SKU i dostępność regionów w usłudze Azure Kubernetes Service (AKS)
+title: Limity zasobów, jednostek SKU, regionów
+titleSuffix: Azure Kubernetes Service
 description: Dowiedz się więcej o domyślnych przydziałach, rozmiarach jednostek SKU maszyn wirtualnych z ograniczeniami i dostępności regionu usługi Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.openlocfilehash: 03e7396932f0813ef4bd00d644dcdaddfe229e6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 054d6ff4fc105d84192ac81feda97515f6cfae49
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252833"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886776"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Przydziały, ograniczenia rozmiaru maszyny wirtualnej i dostępność regionu w usłudze Azure Kubernetes (AKS)
 

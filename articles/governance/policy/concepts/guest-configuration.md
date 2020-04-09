@@ -3,12 +3,12 @@ title: Dowiedz się, jak przeprowadzać inspekcje zawartości maszyn wirtualnych
 description: Dowiedz się, jak usługa Azure Policy używa agenta konfiguracji gościa do inspekcji ustawień wewnątrz maszyn wirtualnych.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: cc2ba11f75da5f993b99c90e5d0cc1030003203e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 889e99e94b2c81a6654fcbe7851e93c40163a0c6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257260"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985324"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Opis konfiguracji gościa zasad platformy Azure
 
@@ -18,7 +18,7 @@ Oprócz inspekcji i [korygowania](../how-to/remediate-resources.md) zasobów pla
 - Konfiguracja lub obecność aplikacji
 - Ustawienia środowiska
 
-Aktualnie konfiguracja gościa usługi Azure Policy umożliwia przeprowadzanie tylko inspekcji ustawień wewnątrz maszyny. Stosowanie konfiguracji nie jest obsługiwane.
+W tej chwili większość zasad konfiguracji gościa zasad usługi Azure Policy tylko inspekcji ustawień wewnątrz komputera. Nie stosują konfiguracji. Wyjątkiem jest jedna wbudowana [zasada, do którą odwołuje się poniżej](#applying-configurations-using-guest-configuration).
 
 ## <a name="extension-and-client"></a>Rozszerzenie i klient
 
@@ -62,11 +62,12 @@ W poniższej tabeli przedstawiono listę narzędzi lokalnych używanych w każdy
 |System operacyjny|Narzędzie sprawdzania poprawności|Uwagi|
 |-|-|-|
 |Windows|[Konfiguracja żądanego stanu programu Windows PowerShell](/powershell/scripting/dsc/overview/overview) w wersji 2| |
-|Linux|[Szef kuchni InSpec](https://www.chef.io/inspec/)| Ruby i Python są instalowane przez rozszerzenie konfiguracji gościa. |
+|Linux|[Szef kuchni InSpec](https://www.chef.io/inspec/)| Jeśli Ruby i Python nie są na komputerze, są one instalowane przez rozszerzenie konfiguracji gościa. |
 
 ### <a name="validation-frequency"></a>Częstotliwość sprawdzania poprawności
 
-Klient konfiguracji gościa sprawdza dostępność nowej zawartości co 5 minut. Po odebraniu przypisania gościa ustawienia są sprawdzane w odstępie 15 minut. Wyniki są wysyłane do dostawcy zasobów konfiguracji gościa zaraz po zakończeniu inspekcji. Po wystąpieniu [wyzwalacza oceny](../how-to/get-compliance-data.md#evaluation-triggers) zasad stan komputera jest zapisywany do dostawcy zasobów konfiguracji gościa. Ta aktualizacja powoduje, że zasady platformy Azure do oceny właściwości usługi Azure Resource Manager. Ocena zasad platformy Azure na żądanie pobiera najnowszą wartość od dostawcy zasobów konfiguracji gościa. Jednak nie wyzwala nowy audyt konfiguracji w komputerze.
+Klient konfiguracji gościa sprawdza dostępność nowej zawartości co 5 minut. Po odebraniu przypisania gościa ustawienia tej konfiguracji są ponownie sprawdzane w odstępie 15 minut.
+Wyniki są wysyłane do dostawcy zasobów konfiguracji gościa po zakończeniu inspekcji. Po wystąpieniu [wyzwalacza oceny](../how-to/get-compliance-data.md#evaluation-triggers) zasad stan komputera jest zapisywany do dostawcy zasobów konfiguracji gościa. Ta aktualizacja powoduje, że zasady platformy Azure do oceny właściwości usługi Azure Resource Manager. Ocena zasad platformy Azure na żądanie pobiera najnowszą wartość od dostawcy zasobów konfiguracji gościa. Jednak nie wyzwala nowy audyt konfiguracji w komputerze.
 
 ## <a name="supported-client-types"></a>Obsługiwane typy klientów
 
@@ -78,12 +79,9 @@ W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych n
 |Credativ ( Credativ )|Debian|8, 9|
 |Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
 |Microsoft|Klient systemu Windows|Windows 10|
-|OpenLogic|CentOS|7.3, 7.4, 7.5|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6|
+|OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
+|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7|
 |Suse|SLES|12 SP3|
-
-> [!IMPORTANT]
-> Konfiguracja gościa może przeprowadzać inspekcję węzłów z obsługiwanym systemem operacyjnym. Jeśli chcesz przeprowadzić inspekcję maszyn wirtualnych, które używają obrazu niestandardowego, należy zduplikować **definicję DeployIfNotExists** i zmodyfikować sekcję **If,** aby uwzględnić właściwości obrazu.
 
 ### <a name="unsupported-client-types"></a>Nieobsługiwały typy klientów
 
@@ -139,10 +137,6 @@ Zasady inspekcji dostępne dla konfiguracji gościa obejmują typ zasobu **Micro
 ### <a name="multiple-assignments"></a>Wiele przypisań
 
 Zasady konfiguracji gościa obsługują obecnie tylko przypisywanie tego samego przypisania gościa raz na komputer, nawet jeśli przypisanie zasad używa różnych parametrów.
-
-## <a name="built-in-resource-modules"></a>Wbudowane moduły zasobów
-
-Podczas instalowania rozszerzenia konfiguracji gościa moduł programu PowerShell "GuestConfiguration" jest dołączony do najnowszej wersji modułów zasobów DSC. Ten moduł można pobrać z Galerii programu PowerShell za pomocą linku "Ręczne pobieranie" ze strony modułu [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/). Format pliku '.nupkg' można zmienić na '.zip', aby odsunąć i przejrzeć.
 
 ## <a name="client-log-files"></a>Pliki dziennika klienta
 

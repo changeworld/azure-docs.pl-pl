@@ -3,12 +3,12 @@ title: Monitorowanie delegowanych zasobów na dużą skalę
 description: Dowiedz się, jak skutecznie korzystać z dzienników usługi Azure Monitor w skalowalny sposób w przypadku dzierżawców klientów, których zarządzasz.
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 217df3c55ab54b6569bae8cacb338764ecb7125d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a600cec524c9f715ada9da09dea35f3baa98151
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77122898"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985205"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Monitorowanie delegowanych zasobów na dużą skalę
 
@@ -28,7 +28,7 @@ Obszar roboczy usługi Log Analytics można utworzyć przy użyciu [portalu Azur
 
 Po utworzeniu obszarów roboczych usługi Log Analytics można wdrożyć [zasady platformy Azure](../../governance/policy/index.yml) w hierarchiach klientów, aby dane diagnostyczne były wysyłane do odpowiedniego obszaru roboczego w każdej dzierżawie. Dokładne zasady, które można wdrożyć może się różnić w zależności od typów zasobów, które chcesz monitorować.
 
-Aby dowiedzieć się więcej na temat tworzenia zasad, zobacz [Samouczek: Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności](../../governance/policy/tutorials/create-and-manage.md). To [narzędzie społeczności](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/azure-diagnostics-policy-generator) udostępnia skrypt ułatwiające tworzenie zasad służących do monitorowania określonych typów zasobów.
+Aby dowiedzieć się więcej na temat tworzenia zasad, zobacz [Samouczek: Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności](../../governance/policy/tutorials/create-and-manage.md). To [narzędzie społeczności](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/azure-diagnostics-policy-generator) udostępnia skrypt ułatwiające tworzenie zasad służących do monitorowania określonych typów zasobów.
 
 Po określeniu zasad, które należy wdrożyć, można [je wdrożyć w delegowanych subskrypcji na dużą skalę.](policy-at-scale.md)
 

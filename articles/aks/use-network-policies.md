@@ -1,15 +1,16 @@
 ---
-title: Bezpieczne zasobniki z zasadami sieciowymi w usłudze Azure Kubernetes (AKS)
+title: Zabezpiecz ruch zasobników za pomocą zasad sieciowych
+titleSuffix: Azure Kubernetes Service
 description: Dowiedz się, jak zabezpieczyć ruch, który przepływa do i z zasobników przy użyciu zasad sieciowych Kubernetes w usłudze Azure Kubernetes (AKS)
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 37b6ebd1c8b147db0a9cead4678a0b2bb4ed234d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01ba9e7353b6783d1b4fd1649291a64405fd9382
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473612"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886708"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Bezpieczny ruch między zasobnikami przy użyciu zasad sieciowych w usłudze Azure Kubernetes (AKS)
 
@@ -24,7 +25,7 @@ Potrzebujesz zainstalowanego i skonfigurowany interfejsu wiersza polecenia platf
 > [!TIP]
 > Jeśli funkcja zasad sieciowych była używana podczas podglądu, zaleca się [utworzenie nowego klastra](#create-an-aks-cluster-and-enable-network-policy).
 > 
-> Jeśli chcesz nadal używać istniejących klastrów testowych, które używały zasad sieciowych podczas wersji zapoznawczej, uaktualnij klaster do nowych wersji usługi Kubernetes dla najnowszej wersji ga, a następnie wydrąż następujący manifest YAML, aby naprawić ulegający awarii serwer metryk i kubernetes Pulpitu nawigacyjnego. Ta poprawka jest wymagana tylko dla klastrów, które korzystały z aparatu zasad sieciowych Calico.
+> Jeśli chcesz nadal używać istniejących klastrów testowych, które używały zasad sieciowych podczas wersji zapoznawczej, uaktualnij klaster do nowych wersji kubernetes dla najnowszej wersji ga, a następnie wdrożyć następujący manifest YAML, aby naprawić serwer metryk ulegających awarii i pulpit nawigacyjny kubernetes. Ta poprawka jest wymagana tylko dla klastrów, które korzystały z aparatu zasad sieciowych Calico.
 >
 > Ze względów bezpieczeństwa [przejrzyj zawartość tego manifestu YAML,][calico-aks-cleanup] aby zrozumieć, co jest wdrażane w klastrze AKS.
 >

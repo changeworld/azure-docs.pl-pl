@@ -6,19 +6,19 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 04/07/2020
 author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: 88500ecbc56b34551a0cbd3ca94727ba4bbcda9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e736cc95628bd0e15bdb7ffd425608278788c353
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930642"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879273"
 ---
-# <a name="set-variable-activity-in-azure-data-factory"></a>Ustawianie aktywności zmiennej w fabryce danych platformy Azure
+# <a name="set-variable-activity-in-azure-data-factory"></a>Ustawianie aktywności zmiennej w usłudze Azure Data Factory
 
 Użyj działania Ustaw zmienną, aby ustawić wartość istniejącej zmiennej typu String, Bool lub Array zdefiniowanej w potoku fabryki danych.
 
@@ -26,11 +26,73 @@ Użyj działania Ustaw zmienną, aby ustawić wartość istniejącej zmiennej ty
 
 Właściwość | Opis | Wymagany
 -------- | ----------- | --------
-name | Nazwa działania w potoku | Tak
+name | Nazwa działania w potoku | tak
 description | Tekst opisujący działanie | nie
-type | Typ działania jest SetVariable | tak
-value | Wartość obiektu literału ciągu lub wyrażenia używana do ustawiania określonej zmiennej | tak
+type | Musi być ustawiona na **SetVariable** | tak
+value | Wartość obiektu literału ciągu lub wyrażenia, do których zostanie przypisana zmienna | tak
 Variablename | Nazwa zmiennej, która zostanie ustawiona przez to działanie | tak
+
+## <a name="incrementing-a-variable"></a>Zwiększanie zmiennej
+
+Typowy scenariusz obejmujący zmienne w usłudze Azure Data Factory używa zmiennej jako iteratora w ramach działania do lub foreach. W ustawienym działaniu zmiennej nie można `value` odwoływać się do zmiennej ustawionej w tym polu. Aby obejść to ograniczenie, ustaw zmienną tymczasową, a następnie utwórz działanie zmiennej drugiego zestawu. Działanie zmiennej drugiego zestawu ustawia wartość iteratora na zmienną tymczasową. 
+
+Poniżej znajduje się przykład tego wzorca:
+
+![Zmienna przyrostu](media/control-flow-set-variable-activity/increment-variable.png "Zmienna przyrostu")
+
+``` json
+{
+    "name": "pipeline3",
+    "properties": {
+        "activities": [
+            {
+                "name": "Set I",
+                "type": "SetVariable",
+                "dependsOn": [
+                    {
+                        "activity": "Increment J",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "variableName": "i",
+                    "value": {
+                        "value": "@variables('j')",
+                        "type": "Expression"
+                    }
+                }
+            },
+            {
+                "name": "Increment J",
+                "type": "SetVariable",
+                "dependsOn": [],
+                "userProperties": [],
+                "typeProperties": {
+                    "variableName": "j",
+                    "value": {
+                        "value": "@string(add(int(variables('i')), 1))",
+                        "type": "Expression"
+                    }
+                }
+            }
+        ],
+        "variables": {
+            "i": {
+                "type": "String",
+                "defaultValue": "0"
+            },
+            "j": {
+                "type": "String",
+                "defaultValue": "0"
+            }
+        },
+        "annotations": []
+    }
+}
+```
 
 
 ## <a name="next-steps"></a>Następne kroki

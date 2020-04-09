@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 887f9e100a60561271a4c15777e7131ea1f1f722
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 312e9db594983f85372285bdff415a2d5dc76ed3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631429"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984014"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Co to jest IPv6 dla sieci wirtualnej platformy Azure?
 
@@ -73,7 +73,7 @@ IPv6 for Azure VNET to podstawowy zestaw funkcji, który umożliwia klientom hos
 
 ## <a name="limitations"></a>Ograniczenia
 Bieżąca wersja usługi IPv6 dla sieci wirtualnej platformy Azure ma następujące ograniczenia:
-- Usługa Wirtualna IPv6 dla platformy Azure jest dostępna we wszystkich globalnych regionach komercyjnych platformy Azure przy użyciu wszystkich metod wdrażania.  Wdrażanie w chmurze instytucji rządowych USA jest tymczasowo ograniczone do szablonu ARM (JSON), interfejsu wiersza polecenia (CLI) i programu Powershell.  Wsparcie IPv6 w portalu chmury rządu USA będzie wkrótce dostępne.  
+- Usługa Wirtualna IPv6 dla platformy Azure jest dostępna we wszystkich globalnych regionach komercyjnych platformy Azure przy użyciu wszystkich metod wdrażania.  Wdrażanie w chmurze instytucji rządowych USA jest tymczasowo ograniczone do szablonu ARM (JSON), interfejsu wiersza polecenia (CLI) i programu Powershell.  Pomoc techniczna IPv6 w portalu chmurowym rządu USA będzie dostępna wkrótce.  
 - Bramy usługi ExpressRoute MOGĄ być używane do ruchu tylko dla IPv4 w sieci wirtualnej z włączoną obsługą IPv6.  Obsługa ruchu IPv6 jest na naszej mapie drogowej.   
 - Bramy sieci VPN NIE MOGĄ być używane w sieci wirtualnej z włączoną iPv6, bezpośrednio lub w równorzędnie z "UseRemoteGateway".
 - Platforma Azure (AKS itp.) nie obsługuje komunikacji IPv6 dla kontenerów.  

@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898510"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878973"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Uwierzytelnianie wychodzące dla harmonogramu platformy Azure
 
@@ -47,8 +47,8 @@ Podczas dodawania `ClientCertificate` uwierzytelniania przy użyciu modelu, nale
 
 | Element | Wymagany | Opis |
 |---------|----------|-------------|
-| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania przy użyciu certyfikatu klienta SSL |
-| **Typu** | Tak | Typ uwierzytelniania. W przypadku certyfikatów klientów SSL wartość to `ClientCertificate`. |
+| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania przy użyciu certyfikatu klienta SSL/TLS |
+| **Typu** | Tak | Typ uwierzytelniania. W przypadku certyfikatów klientów SSL/TLS wartość to `ClientCertificate`. |
 | **Pfx** | Tak | Zakodowana w base64 zawartość pliku PFX |
 | **hasło** | Tak | Hasło dostępu do pliku PFX |
 ||| 
@@ -59,8 +59,8 @@ Gdy żądanie jest wysyłane z informacjami uwierzytelniania, odpowiedź zawiera
 
 | Element | Opis | 
 |---------|-------------| 
-| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania przy użyciu certyfikatu klienta SSL |
-| **Typu** | Typ uwierzytelniania. W przypadku certyfikatów klientów SSL wartość to `ClientCertificate`. |
+| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania przy użyciu certyfikatu klienta SSL/TLS |
+| **Typu** | Typ uwierzytelniania. W przypadku certyfikatów klientów SSL/TLS wartość to `ClientCertificate`. |
 | **certificateThumbprint** |Odcisk palca certyfikatu |
 | **certificateSubjectName** |Nazwa wyróżniająca podmiotu certyfikatu |
 | **certyfikatExpiration** | Data ważności certyfikatu |
@@ -159,7 +159,7 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 }
 ```
 
-## <a name="basic"></a>Podstawowa (Basic)
+## <a name="basic"></a>Podstawowy
 
 ### <a name="request-body---basic"></a>Treść żądania — podstawowa
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 4603240a76ec72223b88853c63ed11152707201c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d74ea2b967112a794cda204cbbfcac707e1d7c4
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76281295"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879466"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Mapa gotowości usługi Azure Security Center
 Ten dokument zapewnia mapę gotowości, która będzie pomocna w rozpoczynaniu pracy z usługą Azure Security Center.
@@ -37,16 +37,14 @@ Filmy wideo
 * [Omówienie możliwości związanych z zapobieganiem, wykrywaniem i reagowaniem usługi Security Center](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
 
 ## <a name="planning-and-operations"></a>Planowanie i operacje
+
 Aby w pełni wykorzystać zalety usługi Security Center, trzeba zrozumieć, w jak różny sposób będą używać usługi poszczególne osoby i zespoły w organizacji, gdyż umożliwi to spełnienie wymagań związanych z bezpieczeństwem obsługi, monitorowaniem, zarządzaniem i reagowaniem na zdarzenia.
 
 Użyj następujących zasobów, aby uzyskać pomoc w procesach planowania i obsługi.
 
-
 Artykuł
 * [Przewodnik planowania i obsługi usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 
-Film wideo
-* [Ochrona obciążeń w chmurze hybrydowej przy użyciu usługi Security Center](https://mva.microsoft.com/training-courses/hybrid-cloud-workload-protection-with-azure-security-center-18173?l=X4WqTA3jE_1106218965)
 
 ### <a name="onboarding-computers-to-security-center"></a>Dołączanie komputerów do usługi Security Center
 Usługa Security Center automatycznie wykrywa wszelkie subskrypcje i obszary robocze platformy Azure nie włączone do standardu usługi Security Center. Obejmuje to subskrypcje platformy Azure korzystające z usługi Security Center w warstwie bezpłatnej oraz obszary robocze, które nie mają włączonego rozwiązania w zakresie zabezpieczeń.
@@ -71,15 +69,15 @@ Artykuły
 * [Ochrona usługi Azure SQL i danych w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
 
 
-Film wideo   
+Film wideo    
 * [Zmniejszenie zagrożeń dla bezpieczeństwa przy użyciu usługi Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
 
 ### <a name="security-center-for-incident-response"></a>Korzystanie z usługi Security Center w celu reagowania na zdarzenia
-Aby zmniejszyć koszty i straty, ważne jest dysponowanie planem reagowania na takie zdarzenia jeszcze przed wystąpieniem ataku. Usługi Azure Security Center można używać na różnych etapach reagowania na zdarzenia.
+Aby zmniejszyć koszty i uszkodzenia, przed atakiem należy wprowadzić plan reagowania na incydenty. Usługi Azure Security Center można używać na różnych etapach reagowania na zdarzenia.
 
 Użyj następujących zasobów, aby zrozumieć sposób dołączenia usługi Security Center do procesu reagowania na zdarzenia.
 
-Filmy wideo  
+Filmy wideo    
 * [Usługa Azure Security Center na potrzeby reagowania na zdarzenia](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Security-Center-in-Incident-Response)
 * [Szybkie reagowanie na zagrożenia przy użyciu zabezpieczeń, obsługi i badań nowej generacji](https://youtu.be/e8iFCz5RM4g)
 
@@ -93,7 +91,7 @@ Maszyny wirtualne platformy Azure mogą wykorzystywać zaawansowane możliwości
 
 Użyj następujących zasobów, aby dowiedzieć się, jak korzystać z tych możliwości w usłudze Security Center.
 
-Filmy wideo  
+Filmy wideo    
 * [Usługa Azure Security Center — dostęp do maszyny wirtualnej just-in-time](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center — funkcje adaptacyjnego sterowania aplikacjami](https://youtu.be/wWWekI1Y9ck)
 

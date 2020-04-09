@@ -1,6 +1,6 @@
 ---
 title: Charakterystyka interakcji z wieloma dzierżawcami — usługa Azure AD | Dokumenty firmy Microsoft
-description: Zarządzanie dzierżawami dzierżawy usługi Azure Active przez zrozumienie dzierżaw jako w pełni niezależnych zasobów
+description: Opis dzierżaw usługi Azure Active Directory jako w pełni niezależnych organizacji
 services: active-tenant
 documentationcenter: ''
 author: curtand
@@ -9,45 +9,50 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 04/07/2020
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4eb09ab7fa31af5edf14b113a6a88e08df2d115
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 175d9ce7db1657e0e654f46adaf8a8d8ef28c25e
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562262"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878123"
 ---
-# <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Dowiedz się, jak wielu dzierżaw usługi Azure Active Directory wchodzi w interakcje
+# <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>Dowiedz się, jak wiele organizacji usługi Azure Active Directory współdziała
 
-W usłudze Azure Active Directory (Azure AD) każda dzierżawa jest w pełni niezależnym zasobem: elementem równorzędnym, który jest logicznie niezależny od innych dzierżaw, którymi zarządzasz. Nie ma relacji nadrzędny podrzędny między dzierżawcami. Ta niezależność między najemcami obejmuje niezależność zasobów, niezależność administracyjną i niezależność synchronizacji.
+W usłudze Azure Active Directory (Azure AD) każda dzierżawa jest w pełni niezależną organizacją: element równorzędny, który jest logicznie niezależny od innych organizacji usługi Azure AD, którymi zarządzasz. Ta niezależność między organizacjami obejmuje niezależność zasobów, niezależność administracyjną i niezależność synchronizacji. Nie ma relacji nadrzędny podrzędny między organizacjami.
 
 ## <a name="resource-independence"></a>Niezależność zasobów
-* Jeśli utworzysz lub usuniesz zasób w jednej dzierżawie, nie ma on wpływu na żaden zasób w innej dzierżawie, z częściowym wyjątkiem użytkowników zewnętrznych. 
-* Jeśli używasz jednej z nazw domen z jedną dzierżawą, nie można jej używać z żadną inną dzierżawą.
+
+* Jeśli utworzysz lub usuniesz zasób usługi Azure AD w jednej organizacji, nie ma on wpływu na żaden zasób w innej organizacji, z częściowym wyjątkiem użytkowników zewnętrznych.
+* Jeśli zarejestrujesz jedną z nazw domen w jednej organizacji, nie będzie mogła być używana przez żadną inną organizację.
 
 ## <a name="administrative-independence"></a>Niezależność administracyjna
-Jeśli użytkownik nieadawidacyjny dzierżawy "Contoso" tworzy dzierżawę testową "Test", a następnie:
 
-* Domyślnie użytkownik, który tworzy dzierżawę jest dodawany jako użytkownik zewnętrzny w tej nowej dzierżawy i przypisany rolę administratora globalnego w tej dzierżawie.
-* Administratorzy dzierżawy "Contoso" nie mają żadnych bezpośrednich uprawnień administracyjnych do dzierżawy "Test", chyba że administrator "Test" specjalnie przyznaje im te uprawnienia. Jednak administratorzy "Contoso" mogą kontrolować dostęp do dzierżawy "Test", jeśli kontrolują konto użytkownika, który utworzył "Test".
-* Jeśli dodasz/usuniesz rolę administratora dla użytkownika w jednej dzierżawie, zmiana nie wpłynie na role administratora, które użytkownik ma w innej dzierżawie.
+Jeśli użytkownik nieadawidacyjny organizacji "Contoso" utworzy organizację testową "Test", wówczas:
+
+* Domyślnie użytkownik tworzący organizację jest dodawany jako użytkownik zewnętrzny w tej nowej organizacji i przypisywany roli administratora globalnego w tej organizacji.
+* Administratorzy organizacji "Contoso" nie mają bezpośrednich uprawnień administracyjnych do organizacji "Test", chyba że administrator "Testuj" wyraźnie przyznaje im te uprawnienia. Jednak administratorzy "Contoso" mogą kontrolować dostęp do organizacji "Test", jeśli kontrolują konto użytkownika, które utworzyło "Test".
+* Jeśli dodasz lub usuniesz rolę usługi Azure AD dla użytkownika w jednej organizacji, zmiana nie wpłynie na role, które użytkownik jest przypisany w innej organizacji usługi Azure AD.
 
 ## <a name="synchronization-independence"></a>Niezależność synchronizacji
-Każdej dzierżawy usługi Azure AD można skonfigurować niezależnie, aby uzyskać dane zsynchronizowane z jednego wystąpienia:
+
+Każdą organizację usługi Azure AD można skonfigurować niezależnie, aby uzyskać dane zsynchronizowane z jednego wystąpienia:
 
 * Narzędzie Azure AD Connect do synchronizowania danych z pojedynczym lasem usługi AD.
-* Usługa Azure Active dzierżawy łącznika dla menedżera tożsamości forefront, aby zsynchronizować dane z co najmniej jednego lasu lokalnego i/lub nie-Azure AD źródeł danych.
+* Usługa Azure Active Directory Connector for Forefront Identity Manager, aby zsynchronizować dane z co najmniej jednym lasem lokalnym i/lub źródłami danych usługi AD innej niż azure.
 
-## <a name="add-an-azure-ad-tenant"></a>Dodawanie dzierżawy usługi Azure AD
-Aby dodać dzierżawę usługi Azure AD w portalu Azure, zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy za pomocą konta, które jest globalnym administratorem usługi Azure AD, a po lewej stronie wybierz pozycję **Nowy**.
+## <a name="add-an-azure-ad-organization"></a>Dodawanie organizacji usługi Azure AD
+
+Aby dodać organizację usługi Azure AD w witrynie Azure portal, zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy za pomocą konta, które jest globalnym administratorem usługi Azure AD, i wybierz pozycję **Nowy**.
 
 > [!NOTE]
-> W przeciwieństwie do innych zasobów platformy Azure dzierżawy nie są podrzędnymi zasobami subskrypcji platformy Azure. Jeśli subskrypcja platformy Azure została anulowana lub wygasła, nadal można uzyskać dostęp do danych dzierżawy przy użyciu programu Azure PowerShell, interfejsu API programu Microsoft Graph lub centrum administracyjnego usługi Microsoft 365. Można również [skojarzyć inną subskrypcję z dzierżawą](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+> W przeciwieństwie do innych zasobów platformy Azure organizacje usługi Azure AD nie są zasobami podrzędnymi subskrypcji platformy Azure. Jeśli subskrypcja platformy Azure została anulowana lub wygasła, nadal można uzyskać dostęp do danych organizacji usługi Azure AD przy użyciu programu Azure PowerShell, interfejsu API programu Microsoft Graph lub centrum administracyjnego usługi Microsoft 365. Można również [skojarzyć inną subskrypcję z organizacją](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
 >
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać ogólne omówienie problemów z licencjonowaniem usługi Azure AD i najlepszych rozwiązań, zobacz [Co to jest licencjonowanie dzierżawy usługi Azure Active?](../fundamentals/active-directory-licensing-whatis-azure-portal.md).
+
+Aby zapoznać się z zagadnieniami i najlepszymi rozwiązaniami w zakresie licencjonowania usługi Azure AD, zobacz [Co to jest licencjonowanie usługi Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md).

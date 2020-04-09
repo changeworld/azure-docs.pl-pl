@@ -8,16 +8,22 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f3d6580b738a77de9654de0df9b4ce1120fc6eb
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: ae3743530440c9df9094a0b9784922d2d6a3dfdf
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584039"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985409"
 ---
-# <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Szyfrowanie dysków platformy Azure dla maszyn wirtualnych IaaS — często zadawane pytania
+# <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Szyfrowanie dysków platformy Azure dla maszyn wirtualnych systemu Linux — często zadawane pytania
 
-Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące szyfrowania dysków platformy Azure dla maszyn wirtualnych z systemem Linux. Aby uzyskać więcej informacji na temat tej usługi, zobacz [Omówienie szyfrowania dysków platformy Azure](disk-encryption-overview.md).
+Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące szyfrowania dysków platformy Azure dla maszyn wirtualnych systemu Linux. Aby uzyskać więcej informacji na temat tej usługi, zobacz [Omówienie szyfrowania dysków platformy Azure](disk-encryption-overview.md).
+
+## <a name="what-is-azure-disk-encryption-for-linux-vms"></a>Co to jest szyfrowanie dysków Azure dla maszyn wirtualnych z systemem Linux?
+
+Usługa Azure Disk Encryption for Linux VMs używa funkcji dm-crypt systemu Linux, aby zapewnić pełne szyfrowanie dysku systemu operacyjnego* i dysków z danymi. Ponadto zapewnia szyfrowanie dysku zasobów efemeryczny podczas korzystania z [funkcji EncryptFormatAll](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms). Przepływy zawartości zaszyfrowane z maszyny Wirtualnej do wewnętrznej bazy danych magazynu. W ten sposób zapewnia szyfrowanie end-to-end za pomocą klucza zarządzanego przez klienta.
+ 
+Zobacz [Obsługiwane maszyny wirtualne i systemy operacyjne](disk-encryption-overview.md#supported-vms-and-operating-systems).
 
 ## <a name="where-is-azure-disk-encryption-in-general-availability-ga"></a>Gdzie jest szyfrowanie dysków azure w ogólnej dostępności (GA)?
 
@@ -48,6 +54,20 @@ Po zaszyfrowaniu woluminu systemu operacyjnego wyłączenie szyfrowania na wolum
 ## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Czy mogę zaszyfrować niezamontowany wolumin za pomocą szyfrowania dysków platformy Azure?
 
 Nie, szyfrowanie dysków platformy Azure szyfruje tylko zainstalowane woluminy.
+
+## <a name="what-is-storage-server-side-encryption"></a>Co to jest szyfrowanie po stronie serwera magazynu?
+
+Szyfrowanie po stronie serwera magazynu szyfruje dyski zarządzane platformy Azure w usłudze Azure Storage. Dyski zarządzane są domyślnie szyfrowane za pomocą szyfrowania po stronie serwera za pomocą klucza zarządzanego przez platformę (stan na 10 czerwca 2017 r.). Szyfrowanie dysków zarządzanych za pomocą własnych kluczy można zarządzać, określając klucz zarządzany przez klienta. Aby uzyskać więcej informacji, zobacz: [Szyfrowanie po stronie serwera dysków zarządzanych platformy Azure](disk-encryption.md).
+ 
+## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Czym różni się szyfrowanie dysków platformy Azure od szyfrowania po stronie magazynu za pomocą klucza zarządzanego przez klienta i kiedy należy używać każdego rozwiązania?
+
+Usługa Azure Disk Encryption zapewnia szyfrowanie end-to-end dla dysku systemu operacyjnego, dysków danych i efemerycznego dysku zasobów z kluczem zarządzanym przez klienta.
+- Jeśli twoje wymagania obejmują szyfrowanie wszystkich powyższych i end-to-end szyfrowania, należy użyć szyfrowania dysków platformy Azure. 
+- Jeśli wymagania obejmują szyfrowanie tylko danych w pozostałej części za pomocą klucza zarządzanego przez klienta, użyj [szyfrowania po stronie serwera z kluczami zarządzanymi przez klienta](disk-encryption.md). Nie można zaszyfrować dysku przy pomocą szyfrowania po stronie serwera azure disk i magazynu za pomocą kluczy zarządzanych przez klienta. 
+- Jeśli twoja dystrybucja systemu Linux nie jest wymieniona w [obsługiwanych systemach operacyjnych dla szyfrowania dysków azure](disk-encryption-overview.md#supported-operating-systems) lub używasz scenariusza wywoływanego w [nieobsługiwana scenariusze dla systemu Windows,](disk-encryption-linux.md#unsupported-scenarios)należy wziąć pod uwagę [szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta](disk-encryption.md).
+- Jeśli zasady organizacji umożliwiają szyfrowanie zawartości w spoczynku za pomocą klucza zarządzanego przez platformę Azure, nie jest wymagana żadna akcja — zawartość jest domyślnie szyfrowana. W przypadku dysków zarządzanych zawartość wewnątrz magazynu jest domyślnie szyfrowana za pomocą szyfrowania po stronie serwera za pomocą klucza zarządzanego przez platformę. Kluczem jest zarządzana przez usługę Azure Storage. 
+
+
 
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Jak obrócić wpisy tajne lub klucze szyfrowania?
 

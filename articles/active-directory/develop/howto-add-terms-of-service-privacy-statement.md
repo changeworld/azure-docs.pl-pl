@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
-ms.reviwer: lenalepa, sureshja
+ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 8fc85781f139b45e9e37f6e0f7cc36974041352d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40e7a05505bc501c1c622e627a6d97cc57db1cfa
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300013"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884243"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Jak: Konfigurowanie warunków korzystania z usługi i zasad zachowania poufności informacji dla aplikacji
 
@@ -55,10 +55,10 @@ Gdy warunki świadczenia usług i zasady zachowania poufności informacji są go
 * [Korzystanie z obiektu aplikacji JSON](#app-object-json)
 * [Korzystanie z interfejsu API programu Microsoft Graph](#msgraph-rest-api)
 
-### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Korzystanie z witryny Azure portal
+### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Korzystanie z witryny Azure Portal
 Wykonaj następujące kroki w witrynie Azure portal.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Przejdź do sekcji **Rejestracje aplikacji** i wybierz aplikację.
 3. Otwórz **okienko Znakowanie.**
 4. Wypełnij pola **Adresu URL warunków korzystania z usługi** i zasady zachowania poufności **informacji.**

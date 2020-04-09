@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 11/06/2019
-ms.openlocfilehash: da45c0db027dffc89bd058b70331a4bd6d093b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 0cefa78b6f52cc67df8817f68a9b793ab86b2a7f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336960"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878582"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co to są potoki usługi Azure Machine Learning?
 
@@ -64,7 +64,7 @@ Za pomocą usługi Azure Machine Learning można używać różnych zestawów na
 
 [Metryki eksperymentów potoku](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments) można śledzić bezpośrednio w witrynie Azure portal lub [na stronie docelowej obszaru roboczego (wersja zapoznawcza).](https://ml.azure.com) Po opublikowaniu potoku można skonfigurować punkt końcowy REST, który umożliwia ponowne uruchomienie potoku z dowolnej platformy lub stosu.
 
-Krótko mówiąc, wszystkie złożone zadania cyklu życia uczenia maszynowego mogą być wspomagane rurociągami. Inne technologie potoku platformy Azure mają swoje własne zalety, takie jak [potoki usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) do pracy z danymi i [potoki platformy Azure](https://azure.microsoft.com/services/devops/pipelines/) w celu ciągłej integracji i wdrażania. Ale jeśli koncentrujesz się na uczeniu maszynowym, potoki usługi Azure Machine Learning prawdopodobnie będą najlepszym wyborem dla twoich potrzeb związanych z przepływem pracy. 
+Krótko mówiąc, wszystkie złożone zadania cyklu życia uczenia maszynowego mogą być wspomagane rurociągami. Inne technologie potoku platformy Azure mają swoje mocne strony. [Potoki usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) doskonale sprawdzają się w pracy z danymi, a usługa Azure [Pipelines](https://azure.microsoft.com/services/devops/pipelines/) jest właściwym narzędziem do ciągłej integracji i wdrażania. Ale jeśli koncentrujesz się na uczeniu maszynowym, potoki usługi Azure Machine Learning prawdopodobnie będą najlepszym wyborem dla twoich potrzeb związanych z przepływem pracy. 
 
 ## <a name="what-are-azure-ml-pipelines"></a>Co to są potoki usługi Azure ML?
 
@@ -126,7 +126,7 @@ Podczas wizualnego projektowania potoków, dane wejściowe i wyjściowe kroku s�
 
 Kroki w potoku może mieć zależności w innych krokach. Usługa potoku usługi Azure ML wykonuje pracę analizowania i organizowania tych zależności. Węzły w wynikowym "wykresie wykonywania" są etapy przetwarzania. Każdy krok może obejmować tworzenie lub ponowne stosowanie określonej kombinacji sprzętu i oprogramowania, ponowneużywanie wyników w pamięci podręcznej i tak dalej. Aranżacji usługi i optymalizacji tego wykresu wykonywania może znacznie przyspieszyć fazę ML i zmniejszyć koszty. 
 
-Ponieważ kroki są uruchamiane niezależnie, obiekty do przechowywania danych wejściowych i wyjściowych, które przepływa między krokami muszą być zdefiniowane zewnętrznie. Jest to rola [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)i skojarzonych klas. Te obiekty danych są skojarzone z obiektem [magazynu danych,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) który hermetyzuje ich konfiguracji magazynu. Klasa `PipelineStep` podstawowa jest zawsze `name` tworzona `inputs`z ciągiem, `outputs`listą i listą . Zwykle ma również listę `arguments` i często będzie miał `resource_inputs`listę . Podklasy zazwyczaj mają również dodatkowe argumenty `PythonScriptStep` (na przykład wymaga uruchomienia nazwy pliku i ścieżki skryptu). 
+Ponieważ kroki są uruchamiane niezależnie, obiekty do przechowywania danych wejściowych i wyjściowych, które przepływa między krokami muszą być zdefiniowane zewnętrznie. Jest to rola [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)i [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), obiektów. Te obiekty danych są skojarzone z obiektem [magazynu danych,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) który hermetyzuje ich konfiguracji magazynu. Klasa `PipelineStep` podstawowa jest zawsze `name` tworzona `inputs`z ciągiem, `outputs`listą i listą . Zwykle ma również listę `arguments` i często będzie miał `resource_inputs`listę . Podklasy zazwyczaj mają również dodatkowe argumenty `PythonScriptStep` (na przykład wymaga uruchomienia nazwy pliku i ścieżki skryptu). 
 
 Wykres wykonywania jest acykliczny, ale potoki mogą być uruchamiane zgodnie z harmonogramem cyklicznym i mogą uruchamiać skrypty języka Python, które mogą zapisywać informacje o stanie w systemie plików, umożliwiając tworzenie złożonych profili. Jeśli projektujesz potok tak, aby niektóre kroki mogły być uruchamiane równolegle lub asynchronicznie, usługa Azure Machine Learning w sposób przejrzysty obsługuje analizę zależności i koordynację funkcji wyjęciech z wentylatorem i obsługą wentylatora. Zazwyczaj nie trzeba zajmować się szczegóły wykresu wykonywania, ale jest on dostępny za pośrednictwem [pipeline.graph](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py#attributes) atrybutu. 
 
@@ -141,19 +141,16 @@ blob_store = Datastore(ws, "workspaceblobstore")
 compute_target = ws.compute_targets["STANDARD_NC6"]
 experiment = Experiment(ws, 'MyExperiment') 
 
-input_data = DataReference(
-    datastore=Datastore(ws, blob_store),
-    data_reference_name="test_data",
-    path_on_datastore="20newsgroups/20news.pkl")
+input_data = Dataset.File.from_files(
+    DataPath(datastore, '20newsgroups/20news.pkl'))
 
-output_data = PipelineData(
-    "output_data",
-    datastore=blob_store,
-    output_name="output_data1")
+output_data = PipelineData("output_data", datastore=blob_store)
+
+input_named = input_data.as_named_input('input')
 
 steps = [ PythonScriptStep(
     script_name="train.py",
-    arguments=["--input", input_data, "--output", output_data],
+    arguments=["--input", input_named.as_download(), "--output", output_data],
     inputs=[input_data],
     outputs=[output_data],
     compute_target=compute_target,
@@ -168,7 +165,7 @@ pipeline_run.wait_for_completion()
 
 Fragment kodu rozpoczyna się od wspólnych obiektów usługi `Workspace`Azure `Datastore`Machine Learning, a , `Experiment`a , [a ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)i . Następnie kod tworzy obiekty do `input_data` `output_data`przechowywania i . Tablica `steps` zawiera jeden element, który `PythonScriptStep` będzie używać obiektów `compute_target`danych i uruchomić na . Następnie kod wystąpienia samego `Pipeline` obiektu, przekazywanie w obszarze roboczym i steps tablicy. Wywołanie `experiment.submit(pipeline)` rozpoczyna uruchamianie potoku usługi Azure ML. Wywołanie `wait_for_completion()` do blokowania, aż potok zostanie zakończony. 
 
-Aby dowiedzieć się więcej o łączeniu potoku z danymi, zobacz artykuły [Jak uzyskać dostęp do danych](how-to-access-data.md) i jak [zarejestrować zestawy danych](how-to-create-register-datasets.md). 
+Aby dowiedzieć się więcej na temat łączenia potoku z danymi, zobacz artykuły [Dostęp do danych w usłudze Azure Machine Learning](concept-data.md) i [przenoszenie danych do i między krokami potoku ml (Python)](how-to-move-data-in-out-of-pipelines.md). 
 
 ## <a name="best-practices-when-using-pipelines"></a>Najważniejsze wskazówki dotyczące korzystania z potoków
 
@@ -207,9 +204,9 @@ Najważniejsze zalety korzystania z potoków dla przepływów pracy uczenia masz
 
 ### <a name="choosing-the-proper-pipelinestep-subclass"></a>Wybór odpowiedniej podklasy PipelineStep
 
-Jest `PythonScriptStep` najbardziej elastyczną podklasą streszczenia `PipelineStep`. Inne podklasy, `EstimatorStep` takie jak `DataTransferStep` podklasy i można wykonać określone zadania z mniej kodu. Na przykład `EstimatorStep` można utworzyć, po prostu przekazując w `Estimator`nazwie kroku, , i obliczeń docelowych. Można też zastąpić dane wejściowe i wyjściowe, parametry potoku i argumenty. Aby uzyskać więcej informacji, zobacz [Szkolenie modeli z usługą Azure Machine Learning przy użyciu estymatora.](how-to-train-ml-models.md) 
+Jest `PythonScriptStep` najbardziej elastyczną podklasą streszczenia `PipelineStep`. Inne podklasy, `EstimatorStep` takie jak `DataTransferStep` podklasy i można wykonać określone zadania z mniej kodu. Na przykład `EstimatorStep` można utworzyć tylko przez przekazanie w nazwie `Estimator`kroku, , i obliczeń docelowych. Można też zastąpić dane wejściowe i wyjściowe, parametry potoku i argumenty. Aby uzyskać więcej informacji, zobacz [Szkolenie modeli z usługą Azure Machine Learning przy użyciu estymatora.](how-to-train-ml-models.md) 
 
-Ułatwia `DataTransferStep` przenoszenie danych między źródłami danych i pochłaniaczami. Kod do wykonania tego ręcznie jest prosty, ale powtarzalny. Zamiast tego można po `DataTransferStep` prostu utworzyć z nazwą, odwołania do źródła danych i ujścia danych oraz miejsce docelowe obliczeń. Potok [usługi Azure Machine Learning notesu z danymi TransferferStep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) demonstruje tę elastyczność.
+Ułatwia `DataTransferStep` przenoszenie danych między źródłami danych i pochłaniaczami. Kod do wykonania tego transferu ręcznie jest prosty, ale powtarzalny. Zamiast tego można po `DataTransferStep` prostu utworzyć z nazwą, odwołania do źródła danych i ujścia danych oraz miejsce docelowe obliczeń. Potok [usługi Azure Machine Learning notesu z danymi TransferferStep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) demonstruje tę elastyczność.
 
 ## <a name="modules"></a>Moduły
 

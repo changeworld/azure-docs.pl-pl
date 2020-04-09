@@ -4,12 +4,12 @@ description: Pojęcia dotyczące dostępu do danych i zabezpieczeń usługi Azur
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 989d9f2afad30517a85185878d694c0b6640e987
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982225"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879602"
 ---
 # <a name="azure-blockchain-service-security"></a>Zabezpieczenia usługi Azure Blockchain
 
@@ -25,9 +25,9 @@ Zasoby usługi Azure Blockchain Service są izolowane w prywatnej sieci wirtualn
 
 Dane użytkownika są przechowywane w magazynie platformy Azure. Dane użytkownika są szyfrowane w ruchu i w spoczynku ze względów bezpieczeństwa i poufności. Aby uzyskać więcej informacji, zobacz: [Przewodnik po zabezpieczeniach usługi Azure Storage](../../storage/blobs/security-recommendations.md).
 
-## <a name="authentication"></a>Uwierzytelnianie
+## <a name="authentication"></a>Authentication
 
-Transakcje mogą być wysyłane do węzłów łańcucha bloków za pośrednictwem punktu końcowego RPC. Klienci komunikują się z węzłem transakcji przy użyciu odwrotnego serwera proxy, który obsługuje uwierzytelnianie użytkowników i szyfruje dane za pośrednictwem SSL.
+Transakcje mogą być wysyłane do węzłów łańcucha bloków za pośrednictwem punktu końcowego RPC. Klienci komunikują się z węzłem transakcji przy użyciu odwrotnego serwera proxy, który obsługuje uwierzytelnianie użytkowników i szyfruje dane za pośrednictwem protokołu TLS.
 
 ![Diagram uwierzytelniania](./media/data-security/authentication.png)
 

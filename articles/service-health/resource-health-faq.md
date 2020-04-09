@@ -3,12 +3,12 @@ title: Usługa Azure Resource Health – często zadawane pytania
 description: Omówienie kondycji zasobów platformy Azure
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7459a29dca01dc186d75b4545f89068569975607
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75912789"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985035"
 ---
 # <a name="azure-resource-health-faq"></a>Usługa Azure Resource Health – często zadawane pytania
 Zapoznaj się z odpowiedziami na często zadawane pytania dotyczące usługi Azure Resource Health.
@@ -37,7 +37,7 @@ Stan kondycji jest ustawiony na nieznany, gdy kondycja zasobu przestaje odbiera�
 ## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>Jak uzyskać pomoc dotyczącą zasobu, który jest niedostępny?
 Można przesłać żądanie pomocy technicznej z zasobu kondycji bloku. Nie potrzebujesz umowy pomocy technicznej z firmą Microsoft, aby otworzyć żądanie, gdy zasób jest niedostępny, ponieważ zdarzenia platformy.
 
-## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>Czy Resource Health odróżnić niedostępność cased przez problemy platformy w porównaniu do czegoś zrobiłem?
+## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>Czy kondycja zasobów rozróżnia niedostępność spowodowaną problemami z platformą a czymś, co zrobiłem?
 Tak, gdy zasób jest niedostępny, kondycja zasobów identyfikuje główną przyczynę w jednej z następujących kategorii: 
 -   Akcja inicjowana przez użytkownika
 -   Planowane wydarzenie 

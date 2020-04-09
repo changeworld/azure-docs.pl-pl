@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 0d768581b8f1a177190da08986af8b60b4861432
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d204477818ce2733d9f6d1e3dcc7455018456bcb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744213"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884836"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architektura usługi Azure Synapse Analytics (dawniej SQL DW)
 
@@ -79,8 +79,6 @@ Dystrybucja to podstawowa jednostka magazynowania i przetwarzania zapytań równ
 Każdy z 60 mniejszych zapytań jest uruchamiany w jednej z dystrybucji danych. Każdy węzeł obliczeniowy zarządza jedną lub kilkoma z 60 dystrybucji. Pula SQL z maksymalnymi zasobami obliczeniowymi ma jedną dystrybucję na węzeł obliczeniowy. Pula SQL z minimalnymi zasobami obliczeniowymi ma wszystkie dystrybucje w jednym węźle obliczeniowym.  
 
 ## <a name="hash-distributed-tables"></a>Tabele dystrybuowane przy użyciu skrótu
-
-Tabela dystrybuowana przy użyciu skrótu może zapewniać najwyższą wydajność zapytań w przypadku sprzężeń i agregacji w dużych tabelach.
 
 Tabela dystrybuowana przy użyciu skrótu może zapewniać najwyższą wydajność zapytań w przypadku sprzężeń i agregacji w dużych tabelach.
 

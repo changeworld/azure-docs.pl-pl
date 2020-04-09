@@ -1,31 +1,31 @@
 ---
 title: Kod usługi Azure HDInsight dla programu Visual Studio
-description: Dowiedz się, jak tworzyć i przesyłać zapytania i skrypty za pomocą narzędzi hive (Azure HDInsight) platformy & Spark (Azure HDInsight) dla programu Visual Studio Code.
+description: Dowiedz się, jak używać narzędzi spark & hive tools (Azure HDInsight) dla programu Visual Studio Code. Narzędzia służy do tworzenia i przesyłania zapytań i skryptów.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 9a81868d678b4c0277e904e879c73185a378bf70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.openlocfilehash: de433d85c2f04a7140fbcb918730218ac3a05e54
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75435680"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878633"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Korzystanie z narzędzi gałęzi spark & dla kodu programu Visual Studio
 
-Dowiedz się, jak używać narzędzi hive & programu Spark dla programu Visual Studio code do tworzenia i przesyłania zadań wsadowych gałąź apache, interaktywnych zapytań hive i skryptów PySpark dla platformy Apache Spark. Najpierw opiszemy sposób instalowania narzędzi spark & hive w programie Visual Studio Code, a następnie przejdziemy przez sposób przesyłania zadań do programu Spark & Hive Tools.  
+Dowiedz się, jak używać apache Spark & narzędzia gałęzi dla programu Visual Studio Code. Narzędzia służy do tworzenia i przesyłania zadań wsadowych Apache Hive, interaktywnych zapytań hive i skryptów PySpark dla platformy Apache Spark. Najpierw opiszemy, jak zainstalować narzędzia hive & Spark w programie Visual Studio Code. Następnie przejdziemy przez sposób przesyłania zadań do platformy Spark & Hive Tools.  
 
-Narzędzia spark & Hive mogą być instalowane na platformach obsługiwanych przez program Visual Studio Code, które obejmują systemy Windows, Linux i macOS. Należy zwrócić uwagę na następujące wymagania wstępne dla różnych platform.
+Narzędzia spark & Hive mogą być instalowane na platformach obsługiwanych przez program Visual Studio Code. Należy zwrócić uwagę na następujące wymagania wstępne dla różnych platform.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do wykonania czynności opisanych w tym artykule wymagane są następujące elementy:
 
 - Klaster usługi Azure HDInsight. Aby utworzyć klaster, zobacz [Wprowadzenie do usługi HDInsight](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md). Lub użyj klastra Platformy Spark i Hive, który obsługuje punkt końcowy Apache Livy.
-- [Program Visual Studio Code](https://code.visualstudio.com/)
+- [Visual Studio Code](https://code.visualstudio.com/).
 - [Mono](https://www.mono-project.com/docs/getting-started/install/). Mono jest wymagane tylko dla systemów Linux i macOS.
 - [Interaktywne środowisko PySpark dla programu Visual Studio Code](set-up-pyspark-interactive-environment.md).
 - Katalog lokalny. W tym artykule użyto **języka C:\HD\HDexample**.
@@ -50,7 +50,7 @@ Po spełnieniu wymagań wstępnych można zainstalować narzędzia gałęzi plat
 
 Aby otworzyć folder roboczy i utworzyć plik w programie Visual Studio Code, wykonaj następujące kroki:
 
-1. Na pasku menu przejdź do pozycji **Folder otwierania** > **pliku...**  >  **C:\HD\HDexample**, a następnie wybierz przycisk **Wybierz folder.** Folder pojawi się w widoku **Eksploratora** po lewej stronie.
+1. Na pasku menu przejdź do **pozycji Folder otwierania** > **pliku...**  >  **C:\HD\HDexample**, a następnie wybierz przycisk **Wybierz folder.** Folder pojawi się w widoku **Eksploratora** po lewej stronie.
 
 2. W widoku **Eksploratora** wybierz folder **HDexample,** a następnie wybierz ikonę **Nowy plik** obok folderu roboczego:
 
@@ -70,7 +70,7 @@ W przypadku użytkownika chmury krajowej wykonaj następujące kroki, aby najpie
 
 ## <a name="connect-to-an-azure-account"></a>Łączenie się z kontem platformy Azure
 
-Aby można było przesłać skrypty do klastrów z programu Visual Studio Code, należy połączyć się z kontem platformy Azure lub połączyć się z klastrem (przy użyciu poświadczeń nazwy użytkownika i hasła Apache Ambari lub konta przyłączanego do domeny). Wykonaj następujące kroki, aby połączyć się z platformą Azure:
+Aby można było przesłać skrypty do klastrów z programu Visual Studio Code, należy połączyć się z kontem platformy Azure lub połączyć klaster. Użyj poświadczeń nazwy użytkownika i hasła Apache Ambari lub konta przyłączanego do domeny. Wykonaj następujące kroki, aby połączyć się z platformą Azure:
 
 1. Na pasku menu przejdź do **pozycji Wyświetl** > **paletę poleceń...** i wprowadź **platformę Azure: Zaloguj się:**
 
@@ -115,7 +115,7 @@ Możesz połączyć normalny klaster przy użyciu nazwy użytkownika zarządzane
 
 4. Wybierz typ autoryzacji **Podstawowy** lub **Brak**.  W przypadku **wybrania**opcji Podstawowe :  
     &emsp;A. Wpisz swoją nazwę użytkownika Ambari; domyślnie jest **admin**.  
-    &emsp;b. Wprowadź hasło Ambari.
+    &emsp;B. Wprowadź hasło Ambari.
 
 5. Przejrzyj widok **DANE wyjściowe** w celu weryfikacji.
 
@@ -269,7 +269,7 @@ Metoda 1
 2. W polu **Ustawienia wyszukiwania** wprowadź **hdinsight Job Submission: Livy Conf**.  
 3. Wybierz **pozycję Edytuj w pliku settings.json** dla odpowiedniego wyniku wyszukiwania.
 
-Metoda 2 Prześlij plik i zwróć uwagę, że folder vscode jest automatycznie dodawany do folderu roboczego. Możesz zobaczyć konfigurację Livy, wybierając **.vscode\settings.json**.
+Metoda 2 Prześlij plik `.vscode` i zwróć uwagę, że folder jest automatycznie dodawany do folderu roboczego. Możesz zobaczyć konfigurację Livy, wybierając **.vscode\settings.json**.
 
 + Ustawienia projektu:
 
@@ -283,7 +283,7 @@ Metoda 2 Prześlij plik i zwróć uwagę, że folder vscode jest automatycznie d
     **POST /partie** Treść żądania
 
     | name | description | type |
-    | :- | :- | :- |
+    | --- | --- | --- |
     |  — plik | Plik zawierający aplikację do wykonania | Ścieżka (wymagana) |
     | proxyUżytnik | Użytkownik do personifikacji podczas uruchamiania zadania | Ciąg |
     | Classname | Aplikacja Java/Spark klasa główna | Ciąg |
@@ -304,8 +304,8 @@ Metoda 2 Prześlij plik i zwróć uwagę, że folder vscode jest automatycznie d
     Treść odpowiedzi Utworzony obiekt partii.
 
     | name | description | type |
-    | :- | :- | :- |
-    | id | Identyfikator sesji | int |
+    | --- | ---| --- |
+    | ID | Identyfikator sesji | int |
     | appId | Identyfikator aplikacji tej sesji | Ciąg |
     | appInfo | Szczegółowe informacje o aplikacji | Mapa key=val |
     | Dziennik | Wiersze dziennika | Lista ciągów |
@@ -340,8 +340,8 @@ Tabela gałęzi można wyświetlić podgląd w klastrach bezpośrednio za pośre
 
 - Panel WIADOMOŚCI
    1. Gdy liczba wierszy w tabeli jest większa niż 100, zostanie wyświetlony następujący komunikat: "Pierwsze 100 wierszy są wyświetlane dla tabeli Gałąź".
-   2. Gdy liczba wierszy w tabeli jest mniejsza lub równa 100, zostanie wyświetlony komunikat w następujący sposób: "60 wierszy są wyświetlane dla tabeli Hive."
-   3. Jeśli w tabeli nie ma zawartości, zostanie wyświetlony następujący komunikat: "0 wierszy jest wyświetlanych dla tabeli Gałąź".
+   2. Gdy liczba wierszy w tabeli jest mniejsza lub równa 100, zostanie wyświetlony następujący komunikat: "60 wierszy są wyświetlane dla tabeli Hive."
+   3. Jeśli w tabeli nie ma zawartości, zostanie wyświetlony`0 rows are displayed for Hive table.`następujący komunikat: " "
 
         >[!NOTE]
         >
@@ -364,7 +364,7 @@ Spark & Hive for Visual Studio Code obsługuje również następujące funkcje:
 
 ## <a name="reader-only-role"></a>Rola tylko do czytnika
 
-Użytkownicy, którym przypisano rolę tylko do czytnika dla klastra, nie mogą już przesyłać zadań do klastra HDInsight ani nie mogą wyświetlać bazy danych hive. Skontaktuj się z administratorem klastra, aby uaktualnić rolę do [**operatora klastra USŁUGI HDInsight**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user) w [witrynie Azure portal](https://ms.portal.azure.com/). Jeśli masz prawidłowe poświadczenia Ambari, możesz ręcznie połączyć klaster, korzystając z następujących wskazówek.
+Użytkownicy, którym przypisano rolę tylko do czytnika dla klastra, nie mogą przesyłać zadań do klastra HDInsight ani wyświetlać bazy danych hive. Skontaktuj się z administratorem klastra, aby uaktualnić rolę do [**operatora klastra USŁUGI HDInsight**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user) w [witrynie Azure portal](https://ms.portal.azure.com/). Jeśli masz prawidłowe poświadczenia Ambari, możesz ręcznie połączyć klaster, korzystając z następujących wskazówek.
 
 ### <a name="browse-the-hdinsight-cluster"></a>Przeglądanie klastra USŁUGI HDInsight  
 
@@ -393,11 +393,11 @@ Podczas przesyłania zadania do klastra HDInsight zostanie wyświetlony monit o 
 
 ### <a name="browse-a-data-lake-storage-gen2-account"></a>Przeglądanie konta Data Lake Storage Gen2
 
-Po wybraniu eksploratora usługi Azure HDInsight, aby rozwinąć konto Usługi Data Lake Storage Gen2, zostanie wyświetlony monit o wprowadzenie klucza dostępu do magazynu, jeśli twoje konto platformy Azure nie ma dostępu do magazynu Gen2. Po sprawdzeniu poprawności klucza dostępu konto Data Lake Storage Gen2 jest automatycznie rozszerzane.
+Wybierz Eksploratora usługi Azure HDInsight, aby rozwinąć konto Data Lake Storage Gen2. Zostanie wyświetlony monit o wprowadzenie klucza dostępu do magazynu, jeśli twoje konto platformy Azure nie ma dostępu do magazynu Gen2. Po sprawdzeniu poprawności klucza dostępu konto Data Lake Storage Gen2 jest automatycznie rozszerzane.
 
 ### <a name="submit-jobs-to-an-hdinsight-cluster-with-data-lake-storage-gen2"></a>Przesyłanie zadań do klastra usługi HDInsight z pamięcią data lake storage gen2
 
-Podczas przesyłania zadania do klastra HDInsight przy użyciu usługi Data Lake Storage Gen2, zostanie wyświetlony monit o wprowadzenie klucza dostępu do magazynu, jeśli konto platformy Azure nie ma dostępu do zapisu do magazynu Gen2. Po sprawdzeniu poprawności klucza dostępu zadanie zostanie pomyślnie przesłane.
+Prześlij zadanie do klastra HDInsight przy użyciu usługi Data Lake Storage Gen2. Zostanie wyświetlony monit o wprowadzenie klucza dostępu do magazynu, jeśli twoje konto platformy Azure nie ma dostępu do zapisu do magazynu Gen2. Po sprawdzeniu poprawności klucza dostępu zadanie zostanie pomyślnie przesłane.
 
 ![Narzędzia gałęzi & platformy Spark dla klucza dostępu do kodu programu Visual Studio](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png)
 

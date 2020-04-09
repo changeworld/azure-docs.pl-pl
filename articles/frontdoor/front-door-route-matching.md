@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 605974e76c3ca878784129f7c9827a78d0642da6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471595"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878599"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Jak drzwi frontowe dopasowywać żądania do reguły routingu
 
-Po nawiązaniu połączenia i wykonaniu uzgadniania SSL, gdy żądanie wyląduje w środowisku drzwi frontowych, jedną z pierwszych rzeczy, które drzwi frontowe nie jest określenie ze wszystkich konfiguracji, które określone reguły routingu, aby dopasować żądanie do, a następnie biorąc zdefiniowanej akcji. W poniższym dokumencie wyjaśniono, jak drzwi frontowe określają konfigurację trasy, której należy używać podczas przetwarzania żądania HTTP.
+Po ustanowieniu połączenia i wykonaniu uzgadniania TLS, gdy żądanie ląduje w środowisku drzwiami frontowymi, jedną z pierwszych rzeczy, które nie są dostępne w drzwiach frontowych, jest określenie ze wszystkich konfiguracji, która określona reguła routingu jest zgodna z żądaniem, a następnie podjęcie zdefiniowanej akcji. W poniższym dokumencie wyjaśniono, jak drzwi frontowe określają konfigurację trasy, której należy używać podczas przetwarzania żądania HTTP.
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Struktura konfiguracji trasy drzwi wejściowych
 Konfiguracja reguły wyznaczania drzwi przednich składa się z dwóch głównych części: "po lewej stronie" i "prawej strony". Dopasujemy przychodzące żądanie do lewej strony trasy, podczas gdy po prawej stronie określa sposób przetwarzania żądania.

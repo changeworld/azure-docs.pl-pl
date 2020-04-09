@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 4290bad405ddab6d89cac5ef7bfd185247d41da1
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: df51a408cc47908a240ceb66bf510fe3df3ce87f
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745117"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983402"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Karta Marketplace modułu IoT Edge
 
 >[!Important]
->Od 30 marca 2020 r. rozpoczniemy przenoszenie zarządzania ofertami modułu IoT Edge do Centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [tworzenie oferty modułu IoT Edge,](https://aka.ms/AzureCreateIoT) aby zarządzać zmigrowanymi ofertami.
+>Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami modułu IoT Edge do Centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [tworzenie oferty modułu IoT Edge,](https://aka.ms/AzureCreateIoT) aby zarządzać zmigrowanymi ofertami.
 
 Karta **Marketplace** na stronie **Nowa oferta** umożliwia dostarczanie potencjalnym klientom informacji marketingowych, sprzedażowych i prawnych oraz umów oraz zarządzanie potencjalnymi klientami generowanymi z rynku. Ten długi formularz jest podzielony na cztery sekcje: **Przegląd**, **Artefakty marketingowe,** **Zarządzanie ołowiem**i **Prawne**.
 

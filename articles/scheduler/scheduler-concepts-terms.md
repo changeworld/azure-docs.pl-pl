@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898571"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878395"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Pojęcia, terminologia i jednostki w usłudze Azure Scheduler
 
@@ -66,7 +66,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 Usługa Azure Scheduler obsługuje wiele typów zadań: 
 
-* Zadania HTTP, w tym zadania protokołu HTTPS, które obsługują protokół SSL, używane w scenariuszach, gdy znany jest punkt końcowy dla istniejącej usługi lub istniejącego obciążenia
+* Zadania HTTP, w tym zadania HTTPS obsługujące protokół TLS, gdy masz punkt końcowy dla istniejącej usługi lub obciążenia
 * Zadania kolejki usługi Storage dla obciążeń korzystających z kolejek usługi Storage, takich jak publikowanie komunikatów w kolejkach usługi Storage
 * Zadania kolejki usługi Service Bus dla obciążeń korzystających z kolejek usługi Service Bus
 * Zadania tematów usługi Service Bus dla obciążeń korzystających z tematów usługi Service Bus

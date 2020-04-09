@@ -11,14 +11,15 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: fa0a5bfe921687ad964e9321e3874de37ccf9b98
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: d175a2cea685585da3767acdb0ab77a99c541d09
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549312"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873875"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoków uczenia maszynowego za pomocą zestawu SDK usługi Azure Machine Learning
+
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 W tym artykule dowiesz się, jak tworzyć, publikować, uruchamiać i śledzić [potok uczenia maszynowego](concept-ml-pipelines.md) przy użyciu [sdk usługi Azure Machine Learning.](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)  Użyj **potoków uczenia maszynowego,** aby utworzyć przepływ pracy, który łączy różne fazy ml, a następnie opublikować ten potok w obszarze roboczym usługi Azure Machine Learning, aby uzyskać dostęp później lub udostępnić innym osobom.  Potoki ml są idealne dla scenariuszy oceniania partii, przy użyciu różnych obliczeń, ponownego użycia kroków zamiast ponownego uruchamiania ich, a także udostępniania przepływów pracy ml z innymi.
@@ -48,14 +49,13 @@ from azureml.core import Workspace, Datastore
 ws = Workspace.from_config()
 ```
 
-
 ## <a name="set-up-machine-learning-resources"></a>Konfigurowanie zasobów uczenia maszynowego
 
 Utwórz zasoby wymagane do uruchomienia potoku uczenia maszynowego:
 
 * Skonfiguruj magazyn danych używany do uzyskiwania dostępu do danych potrzebnych w krokach potoku.
 
-* Skonfiguruj obiekt, `DataReference` aby wskazywał dane, które są dostępne w magazynie danych lub są dostępne w magazynie danych.
+* Skonfiguruj obiekt, `Dataset` aby wskazywał na dane trwałe, które są dostępne w magazynie danych lub są dostępne w magazynie danych. Skonfiguruj `PipelineData` obiekt dla danych tymczasowych przekazywanych między krokami potoku. 
 
 * Skonfiguruj [obiekty docelowe obliczeń,](concept-azure-machine-learning-architecture.md#compute-targets) na których będą uruchamiane kroki potoku.
 
@@ -90,17 +90,18 @@ Potok składa się z co najmniej jednego kroki. Krok jest jednostką uruchamian�
 
 Aby dowiedzieć się więcej o łączeniu potoku z danymi, zobacz artykuły [Jak uzyskać dostęp do danych](how-to-access-data.md) i jak [zarejestrować zestawy danych](how-to-create-register-datasets.md). 
 
-### <a name="configure-data-reference"></a>Konfigurowanie odwołania do danych
+### <a name="configure-data-using-dataset-and-pipelinedata-objects"></a>Konfigurowanie danych `Dataset` `PipelineData` i obiektów
 
-Właśnie utworzono źródło danych, do którego można odwoływać się w potoku jako dane wejściowe do kroku. Źródło danych w potoku jest reprezentowana przez [obiekt DataReference.](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) Obiekt `DataReference` wskazuje dane, które są dostępne w magazynie danych lub są dostępne z magazynu danych.
+Właśnie utworzono źródło danych, do którego można odwoływać się w potoku jako dane wejściowe do kroku. Preferowanym sposobem dostarczania danych do potoku jest obiekt [zestawu danych.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.Dataset) Obiekt `Dataset` wskazuje dane, które są dostępne w magazynie danych lub w adresie URL sieci Web. Klasa `Dataset` jest abstrakcyjna, więc utworzysz wystąpienie `FileDataset` (odnoszące się do jednego `TabularDataset` lub więcej plików) lub utworzonego przez jeden lub więcej plików z rozdzielanych kolumn danych.
+
+`Dataset`obiekty obsługują przechowywanie wersji, różnice i statystyki podsumowania. `Dataset`s są leniwie oceniane (jak generatory Pythona) i jest to skuteczne, aby podzdjąć je przez dzielenie lub filtrowanie. 
+
+Tworzenie `Dataset` przy użyciu metod, takich jak [from_file](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) lub [from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-).
 
 ```python
-from azureml.data.data_reference import DataReference
+from azureml.core import Dataset
 
-blob_input_data = DataReference(
-    datastore=def_blob_store,
-    data_reference_name="test_data",
-    path_on_datastore="20newsgroups/20news.pkl")
+iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 'train-dataset/tabular/iris.csv')])
 ```
 
 Dane pośrednie (lub dane wyjściowe kroku) są reprezentowane przez obiekt [PipelineData.](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) `output_data1`jest produkowany jako wyjście kroku i używany jako wejście jednego lub więcej przyszłych kroków. `PipelineData`wprowadza zależność danych między krokami i tworzy niejawną kolejność wykonywania w potoku. Ten obiekt będzie używany później podczas tworzenia kroków potoku.
@@ -114,25 +115,11 @@ output_data1 = PipelineData(
     output_name="output_data1")
 ```
 
-### <a name="configure-data-using-datasets"></a>Konfigurowanie danych przy użyciu zestawów danych
+Więcej szczegółów i przykładowy kod do pracy z zestawami danych i danymi potoku można znaleźć w [ruchomych danych do i między krokami potoku ML (Python)](how-to-move-data-in-out-of-pipelines.md).
 
-Jeśli w pliku lub zestawie plików są przechowywane dane tabelaryczne, zestaw danych `DataReference` [tabelaryczne](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) jest skuteczną alternatywą dla pliku . `TabularDataset`obiekty obsługują przechowywanie wersji, różnice i statystyki podsumowania. `TabularDataset`s są leniwie oceniane (jak generatory Pythona) i jest to skuteczne, aby podzdjąć je przez dzielenie lub filtrowanie. Klasa `FileDataset` zawiera podobne dane lazily oceniane reprezentujące jeden lub więcej plików. 
+## <a name="set-up-a-compute-target"></a>Konfigurowanie obiektu docelowego obliczeń
 
-Tworzenie `TabularDataset` przy użyciu metod, takich jak [from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-).
-
-```python
-from azureml.data import TabularDataset
-
-iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 'train-dataset/tabular/iris.csv')])
-```
-
- Tworzysz `FileDataset` [from_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)za pomocą .
-
- Możesz dowiedzieć się więcej o pracy z zestawami danych z [add & register datasets](how-to-create-register-datasets.md) lub [this sample notebook](https://aka.ms/train-datasets).
-
-## <a name="set-up-compute-target"></a>Konfigurowanie obiektu docelowego obliczeń
-
-W usłudze Azure Machine Learning termin __oblicza__ (lub __obiekt docelowy obliczeń)__ odnosi się do maszyn lub klastrów, które wykonują kroki obliczeniowe w potoku uczenia maszynowego.   Aby uzyskać pełną listę celów obliczeniowych i tworzenie i dołączanie ich do obszaru roboczego, zobacz [obiekty docelowe obliczeń](how-to-set-up-training-targets.md) dla szkoleń dla modelu.  Proces tworzenia i lub dołączania obiektu docelowego obliczeń jest taki sam, niezależnie od tego, czy trenujesz model, czy uruchamiasz krok potoku. Po utworzeniu i dołączeniu obiektu `ComputeTarget` docelowego obliczeń należy użyć obiektu w [kroku potoku](#steps).
+W usłudze Azure Machine Learning termin __obliczeń__ (lub __cel obliczeniowy)__ odnosi się do maszyn lub klastrów, które wykonują kroki obliczeniowe w potoku uczenia maszynowego.   Aby uzyskać pełną listę celów obliczeniowych i tworzenie i dołączanie ich do obszaru roboczego, zobacz [obiekty docelowe obliczeń](how-to-set-up-training-targets.md) dla szkoleń dla modelu.  Proces tworzenia i lub dołączania obiektu docelowego obliczeń jest taki sam, niezależnie od tego, czy trenujesz model, czy uruchamiasz krok potoku. Po utworzeniu i dołączeniu obiektu `ComputeTarget` docelowego obliczeń należy użyć obiektu w [kroku potoku](#steps).
 
 > [!IMPORTANT]
 > Wykonywanie operacji zarządzania na obiekty docelowe obliczeń nie jest obsługiwane z wewnątrz zadań zdalnych. Ponieważ potoki uczenia maszynowego są przesyłane jako zadanie zdalne, nie należy używać operacji zarządzania na obiekty docelowe obliczeń z wewnątrz potoku.
@@ -287,13 +274,16 @@ Po utworzeniu i dołączeniu obiektu docelowego obliczeń do obszaru roboczego m
 ```python
 from azureml.pipeline.steps import PythonScriptStep
 
+ds_input = my_dataset.as_named_input('input1')
+
 trainStep = PythonScriptStep(
     script_name="train.py",
-    arguments=["--input", blob_input_data, "--output", output_data1],
-    inputs=[blob_input_data],
+    arguments=["--input", ds_input.as_download(), "--output", output_data1],
+    inputs=[ds_input],
     outputs=[output_data1],
     compute_target=compute_target,
-    source_directory=project_folder
+    source_directory=project_folder,
+    allow_reuse=True
 )
 ```
 
@@ -339,8 +329,6 @@ pipeline1 = Pipeline(workspace=ws, steps=steps)
 
 ### <a name="use-a-dataset"></a>Używanie zestawu danych 
 
-Aby użyć pliku `TabularDataset` `FileDataset` z potokiem lub w jego potoku, należy przekształcić go w obiekt [DatasetConsumptionConfig,](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_consumption_config.datasetconsumptionconfig?view=azure-ml-py) wywołując [as_named_input(name)](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#as-named-input-name-). Przekaż ten `DatasetConsumptionConfig` obiekt jako `inputs` jeden z kroku do potoku. 
-
 Zestawy danych utworzone na podstawie magazynu obiektów Blob platformy Azure, plików Azure, usługi Azure Data Lake Storage Gen1, usługi Azure Data Lake Storage Gen2, bazy danych SQL Azure i bazy danych azure dla postgreSQL mogą być używane jako dane wejściowe do dowolnego kroku potoku. Z wyjątkiem zapisywania danych wyjściowych do [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) lub [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py), dane wyjściowe[(PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)) mogą być zapisywane tylko w magazynach danych udostępniania obiektów Blob platformy Azure i azure file.
 
 ```python
@@ -363,7 +351,15 @@ iris_dataset = run_context.input_datasets['iris_data']
 dataframe = iris_dataset.to_pandas_dataframe()
 ```
 
-Aby uzyskać więcej informacji, zobacz [pakiet kroków potoku azure](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) i odwołanie do [klasy potoku.](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py)
+Linia `Run.get_context()` jest warta podkreślenia. Ta funkcja pobiera `Run` reprezentujący bieżącego przebiegu eksperymentalnego. W powyższym przykładzie używamy go do pobrania zarejestrowanego zestawu danych. Innym typowym `Run` zastosowaniem obiektu jest pobranie zarówno samego eksperymentu, jak i obszaru roboczego, w którym znajduje się eksperyment: 
+
+```python
+# Within a PythonScriptStep
+
+ws = Run.get_context().experiment.workspace
+```
+
+Aby uzyskać więcej szczegółów, w tym alternatywne sposoby przekazywania i uzyskiwania dostępu do danych, zobacz [Przenoszenie danych do i między krokami potoku ml (Python)](how-to-move-data-in-out-of-pipelines.md).
 
 ## <a name="submit-the-pipeline"></a>Prześlij potok
 
@@ -387,7 +383,7 @@ Po pierwszym uruchomieniu potoku usługi Azure Machine Learning:
 * Pobiera migawkę projektu do miejsca docelowego obliczeń z magazynu obiektów Blob skojarzonego z obszarem roboczym.
 * Tworzy obraz platformy Docker odpowiadający każdemu krokowi w potoku.
 * Pobiera obraz platformy Docker dla każdego kroku do obiektu docelowego obliczeń z rejestru kontenerów.
-* Montuje magazyn danych, `DataReference` jeśli obiekt jest określony w kroku. Jeśli instalacja nie jest obsługiwana, dane są kopiowane do obiektu docelowego obliczeń.
+* Konfiguruje `Dataset` dostęp `PipelineData` do obiektów i ich obiekty. Jako `as_mount()` tryb dostępu FUSE służy do zapewnienia wirtualnego dostępu. Jeśli instalacja nie jest obsługiwana lub `as_download()`jeśli użytkownik określił dostęp jako , dane są kopiowane do obiektu docelowego obliczeń.
 * Uruchamia krok w celu obliczeń określonych w definicji kroku. 
 * Tworzy artefakty, takie jak dzienniki, stdout i stderr, metryki i dane wyjściowe określone przez krok. Te artefakty są następnie przekazywane i przechowywane w domyślnym magazynie danych użytkownika.
 
@@ -464,6 +460,7 @@ response = requests.post(published_pipeline1.endpoint,
 ```
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>Tworzenie wersji dla punktu końcowego potoku
+
 Można utworzyć punkt końcowy potoku z wielu opublikowanych potoków za nim. Może to być używane jak opublikowany potok, ale daje stały punkt końcowy REST podczas iteracji i aktualizacji potoków ml.
 
 ```python
@@ -475,19 +472,24 @@ pipeline_endpoint = PipelineEndpoint.publish(workspace=ws, name="PipelineEndpoin
 ```
 
 ### <a name="submit-a-job-to-a-pipeline-endpoint"></a>Przesyłanie zadania do punktu końcowego potoku
+
 Zadanie można przesłać do domyślnej wersji punktu końcowego potoku:
+
 ```python
 pipeline_endpoint_by_name = PipelineEndpoint.get(workspace=ws, name="PipelineEndpointTest")
 run_id = pipeline_endpoint_by_name.submit("PipelineEndpointExperiment")
 print(run_id)
 ```
+
 Zadanie można również przesłać do określonej wersji:
+
 ```python
 run_id = pipeline_endpoint_by_name.submit("PipelineEndpointExperiment", pipeline_version="0")
 print(run_id)
 ```
 
 To samo można osiągnąć za pomocą interfejsu API REST:
+
 ```python
 rest_endpoint = pipeline_endpoint_by_name.endpoint
 response = requests.post(rest_endpoint, 
@@ -512,19 +514,17 @@ Można również uruchomić opublikowany potok ze studia:
 
 1. Wybierz określony potok do uruchomienia, zużycia lub przeglądu wyników poprzednich przebiegów punktu końcowego potoku.
 
-
 ### <a name="disable-a-published-pipeline"></a>Wyłączanie opublikowanego potoku
 
 Aby ukryć potok z listy opublikowanych potoków, należy go wyłączyć w studio lub w zestawie SDK:
 
-```
+```python
 # Get the pipeline by using its ID from Azure Machine Learning studio
 p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
 Można go włączyć `p.enable()`ponownie za pomocą pliku . Aby uzyskać więcej informacji, zobacz [PublishedPipeline class](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py) reference.
-
 
 ## <a name="caching--reuse"></a>Buforowanie & ponowne użycie  
 

@@ -2,13 +2,13 @@
 title: Funkcje szablonów
 description: W tym artykule opisano funkcje używane w szablonie usługi Azure Resource Manager do pobierania wartości, pracy z ciągami i numerykami oraz pobierania informacji o wdrożeniu.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 1d2789e59c091b4e6c39be48b83fe610a592abe1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: fbd82f89ed9a97a3f376a9ed6eaa8ae3760759ff
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156263"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982382"
 ---
 # <a name="arm-template-functions"></a>Funkcje szablonu ARM
 
@@ -77,6 +77,13 @@ Menedżer zasobów udostępnia kilka funkcji do dokonywania porównań w szablon
 <a id="deployment" aria-hidden="true" />
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
+
+## <a name="date-functions"></a>Funkcje daty
+
+Menedżer zasobów udostępnia następujące funkcje do pracy z datami.
+
+* [dateTimeAdd](template-functions-date.md#datetimeadd)
+* [Utcnow](template-functions-date.md#utcnow)
 
 ## <a name="deployment-value-functions"></a>Funkcje wartości wdrażania
 
@@ -224,7 +231,6 @@ Menedżer zasobów udostępnia następujące funkcje do pracy z ciągami:
 * [Identyfikator uri](template-functions-string.md#uri)
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
-* [Utcnow](template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Następne kroki
 

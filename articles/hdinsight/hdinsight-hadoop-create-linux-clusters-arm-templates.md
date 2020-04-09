@@ -5,32 +5,28 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/18/2019
-ms.openlocfilehash: 9498f2cf56f0bfe20d0806e5dc9872403dabb180
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/07/2020
+ms.openlocfilehash: 67d5481b82b7469c5ae55704768ce494dbc9dca5
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979108"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879143"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Tworzenie klastrów Apache Hadoop w usłudze HDInsight przy użyciu szablonów Menedżera zasobów
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-W tym artykule dowiesz się kilka sposobów tworzenia klastrów usługi Azure HDInsight przy użyciu szablonów usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Wdrażanie aplikacji za pomocą szablonu usługi Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md). Aby dowiedzieć się więcej o innych narzędziach i funkcjach tworzenia klastra, kliknij selektor kart u góry tej strony lub zobacz [Metody tworzenia klastra](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).
+W tym artykule dowiesz się, jak utworzyć klastry usługi Azure HDInsight przy użyciu [szablonów usługi Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md). Aby dowiedzieć się więcej o innych narzędziach i funkcjach tworzenia klastra, kliknij selektor kart u góry tej strony. Zobacz też metody [tworzenia klastra](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="prerequisites"></a>Wymagania wstępne
-
-* [Subskrypcja platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Narzędzie Azure PowerShell i/lub interfejsu wiersza polecenia platformy Azure.
-
-### <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
+## <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
 
 Szablon Menedżera zasobów ułatwia tworzenie następujących zasobów dla aplikacji w jednej, skoordynowanej operacji:
+
 * Klastry HDInsight i ich zasoby zależne (takie jak domyślne konto magazynu).
 * Inne zasoby (takie jak Azure SQL Database do [używania Apache Sqoop](https://sqoop.apache.org/)).
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 1cfee9749bf2eb30799efb05ac875843bcde6651
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fe5d245d629c731a47ca5441afd2a3388a22de4
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372611"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878021"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Często zadawane pytania dotyczące usług Azure Front Door
 
@@ -34,7 +34,7 @@ Usługa Azure Front Door to usługa sieci dostarczania aplikacji (ADN) oferując
 
 ### <a name="what-features-does-azure-front-door-support"></a>Jakie funkcje obsługują usługi Azure Front Door?
 
-Usługa Azure Front Door obsługuje dynamiczne przyspieszanie witryny (DSA), odciążanie SSL i odwrót od końca do końca SSL, zapora aplikacji sieci Web, koligację sesji opartą na plikach cookie, routing oparty na ścieżce adresów URL, bezpłatne certyfikaty i zarządzanie wieloma domenami i inne. Aby uzyskać pełną listę obsługiwanych funkcji, zobacz [Omówienie drzwi frontowych platformy Azure](front-door-overview.md).
+Usługa Azure Front Door obsługuje dynamiczne przyspieszanie witryny (DSA), odciążanie TLS/SSL i odwrót TLS od końca do końca, zapora aplikacji sieci Web, koligację sesji opartą na plikach cookie, routing oparty na ścieżce adresów URL, bezpłatne certyfikaty i zarządzanie wieloma domenami i inne. Aby uzyskać pełną listę obsługiwanych funkcji, zobacz [Omówienie drzwi frontowych platformy Azure](front-door-overview.md).
 
 ### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Jaka jest różnica między drzwiami frontowymi platformy Azure a bramą aplikacji platformy Azure?
 
@@ -46,7 +46,7 @@ Kluczowe scenariusze, dla których należy używać bramy aplikacji za drzwiami 
 
 - Drzwi frontowe mogą wykonywać równoważenie obciążenia oparte na ścieżce tylko na poziomie globalnym, ale jeśli chcesz jeszcze bardziej załadować ruch równoważenia w sieci wirtualnej (VNET), należy użyć bramy aplikacji.
 - Ponieważ drzwi frontowe nie działa na poziomie maszyny Wirtualnej/kontenera, więc nie można wykonać opróżniania połączenia. Jednak brama aplikacji umożliwia opróżnianie połączenia. 
-- Dzięki bramie aplikacji za afd, można osiągnąć 100% odciążanie SSL i trasy tylko żądania HTTP w ich sieci wirtualnej (VNET).
+- Dzięki bramie aplikacji za afd, można osiągnąć 100% odciążanie TLS/SSL i trasy tylko żądania HTTP w ich sieci wirtualnej (VNET).
 - Drzwi frontowe i brama aplikacji obsługują koligalności sesji. Drzwi frontowe mogą kierować kolejny ruch z sesji użytkownika do tego samego klastra lub wewnętrznej bazy danych w danym regionie, brama aplikacji może kierować affinitize ruchu do tego samego serwera w klastrze.  
 
 ### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Czy możemy wdrożyć moduł równoważenia obciążenia platformy Azure za drzwiami frontowymi?
@@ -118,7 +118,7 @@ Dowiedz się więcej o [obsługiwanych przez drzwi frontowe nagłówkach HTTP](f
 
 Nowe tworzenie drzwi frontowych lub wszelkie aktualizacje istniejących drzwi frontowych trwa około 3 do 5 minut dla wdrożenia globalnego. Oznacza to, że w ciągu około 3 do 5 minut konfiguracja drzwi frontowych zostanie wdrożona we wszystkich naszych klientach na całym świecie.
 
-Uwaga — niestandardowe aktualizacje certyfikatów SSL trwa około 30 minut do wdrożenia na całym świecie.
+Uwaga — niestandardowe aktualizacje certyfikatów TLS/SSL zajmują około 30 minut do wdrożenia na całym świecie.
 
 Wszelkie aktualizacje tras lub pul zaplecza itp są bezproblemowe i spowoduje zero przestojów (jeśli nowa konfiguracja jest poprawna). Aktualizacje certyfikatów są również niepodzielne i nie powodują żadnych awarii, chyba że przejście z "AfD Managed" na "Użyj własnego certyfikatu" lub odwrotnie.
 
@@ -139,7 +139,7 @@ Dowiedz się więcej o wszystkich [udokumentowanych limitach czasu i limitach dl
 
 Usługa Azure Front Door to globalnie rozproszona platforma wielodostępna o dużej pojemności, która zaspokaja potrzeby aplikacji w zakresie skalowalności. Dostarczane z krawędzi globalnej sieci firmy Microsoft, drzwi frontowe zapewnia globalne możliwości równoważenia obciążenia, który pozwala na awaryjne nad całą aplikacją lub nawet poszczególnych mikrousług w regionach lub różnych chmurach.
 
-## <a name="ssl-configuration"></a>Konfiguracja SSL
+## <a name="tls-configuration"></a>Konfiguracja protokołu TLS
 
 ### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Jakie wersje TLS są obsługiwane przez usługi Azure Front Door?
 
@@ -150,12 +150,12 @@ Drzwi wejściowe obsługują TLS w wersjach 1.0, 1.1 i 1.2. TLS 1.3 nie jest jes
 ### <a name="what-certificates-are-supported-on-azure-front-door"></a>Jakie certyfikaty są obsługiwane w usłudze Azure Front Door?
 
 Aby włączyć protokół HTTPS do bezpiecznego dostarczania zawartości w domenie niestandardowej drzwiami frontowymi, można użyć certyfikatu zarządzanego przez usługi Azure Front Door lub użyć własnego certyfikatu.
-Opcja zarządzana drzwiami frontowymi udostępnia standardowy certyfikat SSL za pośrednictwem digicert i jest przechowywana w magazynie kluczy drzwi nych. Jeśli zdecydujesz się użyć własnego certyfikatu, możesz dołączać certyfikat z obsługiwanego urzędu certyfikacji i może być standardowym ssl, certyfikatem rozszerzonej weryfikacji, a nawet certyfikatem wieloznacznym. Certyfikaty z podpisem własnym nie są obsługiwane. Dowiedz [się, jak włączyć protokół HTTPS dla domeny niestandardowej](https://aka.ms/FrontDoorCustomDomainHTTPS).
+Opcja zarządzana drzwiami frontowymi udostępnia standardowy certyfikat TLS/SSL za pośrednictwem digicert i jest przechowywana w przechowalni kluczy do drzwi przednich. Jeśli zdecydujesz się użyć własnego certyfikatu, możesz dołączać certyfikat z obsługiwanego urzędu certyfikacji i może być standardowym certyfikatem TLS, certyfikatem rozszerzonej weryfikacji, a nawet certyfikatem wieloznacznym. Certyfikaty z podpisem własnym nie są obsługiwane. Dowiedz [się, jak włączyć protokół HTTPS dla domeny niestandardowej](https://aka.ms/FrontDoorCustomDomainHTTPS).
 
 ### <a name="does-front-door-support-autorotation-of-certificates"></a>Czy drzwi frontowe obsługują autorotację certyfikatów?
 
 W przypadku opcji certyfikatu zarządzanego drzwiami frontowymi certyfikaty są autorotated przez drzwiami frontowymi. Jeśli używasz certyfikatu zarządzanego drzwiami frontowymi i widzisz, że data wygaśnięcia certyfikatu jest mniejsza niż 60 dni, złóż bilet pomocy technicznej.
-</br>W przypadku własnego niestandardowego certyfikatu SSL autorotacja nie jest obsługiwana. Podobnie jak po raz pierwszy skonfigurowano ją dla danej domeny niestandardowej, należy wskazać drzwiami frontowymi na właściwą wersję certyfikatu w magazynie kluczy i upewnić się, że podmiot usługi dla drzwi y frontowej nadal ma dostęp do magazynu kluczy. Ta zaktualizowana operacja wdrażania certyfikatów przez drzwiami frontowymi jest niepodzielna i nie powoduje żadnego wpływu na produkcję, pod warunkiem, że nazwa podmiotu lub sieci SAN dla certyfikatu nie ulegnie zmianie.
+</br>W przypadku własnego niestandardowego certyfikatu TLS/SSL autorotacja nie jest obsługiwana. Podobnie jak po raz pierwszy skonfigurowano ją dla danej domeny niestandardowej, należy wskazać drzwiami frontowymi na właściwą wersję certyfikatu w magazynie kluczy i upewnić się, że podmiot usługi dla drzwi y frontowej nadal ma dostęp do magazynu kluczy. Ta zaktualizowana operacja wdrażania certyfikatów przez drzwiami frontowymi jest niepodzielna i nie powoduje żadnego wpływu na produkcję, pod warunkiem, że nazwa podmiotu lub sieci SAN dla certyfikatu nie ulegnie zmianie.
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Jakie są bieżące mechanizmy szyfrowania obsługiwane przez usługi Azure Front Door?
 
@@ -182,13 +182,13 @@ Poniżej przedstawiono bieżące mechanizmy szyfrowania obsługiwane przez usłu
 - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 - TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>Czy mogę skonfigurować zasady protokołu SSL do sterowania wersjami protokołu SSL?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>Czy mogę skonfigurować zasady TLS do kontrolowania wersji protokołu TLS?
 
 Minimalną wersję protokołu TLS można skonfigurować w drzwiach frontowych platformy Azure w ustawieniach HTTPS domeny niestandardowej za pośrednictwem witryny Azure portal lub [interfejsu API rest platformy Azure.](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion) Obecnie można wybierać między 1.0 i 1.2.
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Czy mogę skonfigurować drzwi frontowe tak, aby obsługiwać tylko określone mechanizmy szyfrowania?
 
-Nie, konfigurowanie drzwi frontowych dla określonych zestawów szyfrowania nie jest obsługiwane. Możesz jednak uzyskać własny niestandardowy certyfikat SSL od urzędu certyfikacji (na przykład Verisign, Entrust lub Digicert) i mieć określone mechanizmy szyfrowania oznaczone na certyfikacie, gdy go wygenerowano. 
+Nie, konfigurowanie drzwi frontowych dla określonych zestawów szyfrowania nie jest obsługiwane. Można jednak uzyskać własny niestandardowy certyfikat TLS/SSL od urzędu certyfikacji (na przykład Verisign, Entrust lub Digicert) i mieć określone mechanizmy szyfrowania oznaczone na certyfikacie, gdy go wygenerowano. 
 
 ### <a name="does-front-door-support-ocsp-stapling"></a>Czy drzwi frontowe obsługują zszywanie OCSP?
 
@@ -196,20 +196,20 @@ Tak, zszywanie OCSP jest domyślnie obsługiwane przez drzwi frontowe i nie jest
 
 ### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Czy usługi Azure Front Door obsługują również ponowne szyfrowanie ruchu do wewnętrznej bazy danych?
 
-Tak, usługi Azure Front Door obsługuje odciążanie SSL i end to end SSL, który ponownie szyfruje ruch do wewnętrznej bazy danych. W rzeczywistości, ponieważ połączenia z wewnętrznej bazy danych zdarzyć za pośrednictwem jego publicznych adresów IP, zaleca się skonfigurować drzwi frontowe do używania protokołu HTTPS jako protokołu przekazywania.
+Tak, usługi Azure Front Door obsługuje odciążanie protokołu TLS/SSL i end to end TLS, który ponownie szyfruje ruch do wewnętrznej bazy danych. W rzeczywistości, ponieważ połączenia z wewnętrznej bazy danych zdarzyć za pośrednictwem jego publicznych adresów IP, zaleca się skonfigurować drzwi frontowe do używania protokołu HTTPS jako protokołu przekazywania.
 
 ### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Czy drzwiami frontowymi obsługują certyfikaty z podpisem własnym w wewnętrznej bazy danych dla połączenia HTTPS?
 
 Nie, certyfikaty z podpisem własnym nie są obsługiwane w drzwiach frontowych i ograniczenie dotyczy obu:
 
 1. **Zaplecze:** Nie można używać certyfikatów z podpisem własnym podczas przekazywania ruchu jako sondy kondycji HTTPS lub HTTPS lub wypełniania pamięci podręcznej dla reguł od początku do routingu z włączoną buforowanie.
-2. **Frontend:** Nie można używać certyfikatów z podpisem własnym podczas używania własnego niestandardowego certyfikatu SSL do włączania protokołu HTTPS w domenie niestandardowej.
+2. **Frontend:** Nie można używać certyfikatów z podpisem własnym podczas używania własnego niestandardowego certyfikatu TLS/SSL do włączania protokołu HTTPS w domenie niestandardowej.
 
 ### <a name="why-is-https-traffic-to-my-backend-failing"></a>Dlaczego ruch HTTPS do wewnętrznej bazy danych nie działa?
 
 W przypadku pomyślnych połączeń HTTPS z zapleczem, czy dla sond kondycji lub przekazywania żądań, mogą istnieć dwa powody, dla których ruch HTTPS może zakończyć się niepowodzeniem:
 
-1. **Niezgodność nazwy podmiotu certyfikatu:** W przypadku połączeń HTTPS drzwiami frontowymi oczekują, że wewnętrznej bazy danych jest prezentowany certyfikat z prawidłowego urzędu certyfikacji o nazwie podmiotu odpowiadającej nazwie hosta wewnętrznej bazy danych. Na przykład jeśli nazwa hosta wewnętrznej bazy `myapp-centralus.contosonews.net` danych jest ustawiona i certyfikat, który jest prezentowy `myapp-centralus.contosonews.net` w `*myapp-centralus*.contosonews.net` wewnętrznej bazy danych podczas uzgadniania SSL, nie ma ani w nazwie podmiotu, drzwi frontowe odmówią połączenia i doprowadzą do błędu. 
+1. **Niezgodność nazwy podmiotu certyfikatu:** W przypadku połączeń HTTPS drzwiami frontowymi oczekują, że wewnętrznej bazy danych jest prezentowany certyfikat z prawidłowego urzędu certyfikacji o nazwie podmiotu odpowiadającej nazwie hosta wewnętrznej bazy danych. Na przykład jeśli nazwa hosta wewnętrznej bazy `myapp-centralus.contosonews.net` danych jest ustawiona i certyfikat, który znajduje się `myapp-centralus.contosonews.net` w `*myapp-centralus*.contosonews.net` wewnętrznej bazy danych podczas uzgadniania TLS ani nie ma ani w nazwie podmiotu, drzwi frontowe odmówią połączenia i spowoduje błąd. 
     1. **Rozwiązanie:** Chociaż nie jest to zalecane z punktu widzenia zgodności, można obejść ten błąd, wyłączając sprawdzanie nazwy podmiotu certyfikatu dla drzwi frontowych. Jest to obecne w obszarze Ustawienia w witrynie Azure portal i w obszarze BackendPoolsSettings w interfejsie API.
 2. **Certyfikat hosta zaplecza z nieprawidłowego urzędu certyfikacji:** Tylko certyfikaty z [prawidłowych urzędów certyfikacji](/azure/frontdoor/front-door-troubleshoot-allowed-ca) mogą być używane w wewnętrznej bazy danych z drzwiami frontowymi. Certyfikaty z wewnętrznych certyfikatów kasowych lub certyfikatów z podpisem własnym są niedozwolone.
 
