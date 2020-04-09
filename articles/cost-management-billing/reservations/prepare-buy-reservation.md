@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/07/2020
 ms.author: banders
-ms.openlocfilehash: 3a45a04786bb9976a42269191c8b24282905f96f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 1f44b0a0e2278bfcfbbf7cde1a3605fe334eaa3f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436985"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886521"
 ---
 # <a name="buy-a-reservation"></a>Kupowanie rezerwacji
 
@@ -43,8 +43,6 @@ Podczas stosowania rabatów na rezerwację w stosunku do użycia platforma Azure
 1. Rezerwacje, których zakres jest ograniczony do grupy zasobów
 2. Rezerwacje pojedynczego zakresu
 3. Rezerwacje zakresu udostępnionego
-
-Jedna grupa zasobów może uzyskać rabaty na rezerwację z wielu rezerwacji, w zależności od sposobu określania zakresu rezerwacji.
 
 Zakres można zaktualizować w dowolnym momencie po zakupie rezerwacji. W tym celu należy przejść do rezerwacji, kliknąć pozycję **Konfiguracja** i ponownie określić zakres. Zmiana zakresu rezerwacji nie jest transakcją handlową. Okres rezerwacji nie jest zmieniany. Aby uzyskać więcej informacji o aktualizowaniu zakresu, [zobacz Aktualizowanie zakresu po zakupie rezerwacji.](manage-reserved-vm-instance.md#change-the-reservation-scope)
 
