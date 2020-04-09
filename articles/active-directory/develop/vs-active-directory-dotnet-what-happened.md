@@ -3,7 +3,6 @@ title: Zmiany wprowadzone w projekcie MVC podczas łączenia się z usługą Azu
 description: W tym artykule opisano, co dzieje się z projektem MVC podczas łączenia się z usługą Azure AD przy użyciu połączonych usług programu Visual Studio
 author: ghogen
 manager: jillfra
-ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
@@ -11,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: ac38adba4ca0d978dd48a546bed1b1faf4fe40fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d42d905bf35c015213e76bc50c4bc339a5c4a062
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79036955"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886113"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Co się stało z moim projektem MVC (usługa połączona z usługą Visual Studio Azure Active Directory)?
 
@@ -32,7 +31,7 @@ Aby uzyskać informacje na temat pracy z połączoną usługą, zobacz [Wprowadz
 
 Wpływa na plik projektu (odwołania*.NET) i `packages.config` (odwołania NuGet).
 
-| Typ | Tematy pomocy |
+| Typ | Dokumentacja |
 | --- | --- |
 | .NET; Nuget | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; Nuget | Microsoft.Owin |
@@ -47,7 +46,7 @@ Wpływa na plik projektu (odwołania*.NET) i `packages.config` (odwołania NuGet
 
 Dodatkowe odwołania, jeśli wybrano opcję **Odczyt danych katalogu:**
 
-| Typ | Tematy pomocy |
+| Typ | Dokumentacja |
 | --- | --- |
 | .NET; Nuget | Elementframework |
 | .NET        | EntityFramework.SqlServer (tylko program Visual Studio 2015) |
@@ -61,7 +60,7 @@ Dodatkowe odwołania, jeśli wybrano opcję **Odczyt danych katalogu:**
 
 Następujące odwołania są usuwane (ASP.NET tylko 4 projekty, jak w programie Visual Studio 2015):
 
-| Typ | Tematy pomocy |
+| Typ | Dokumentacja |
 | --- | --- |
 | .NET; Nuget | Microsoft.AspNet.Identity.Core |
 | .NET; Nuget | Microsoft.AspNet.Identity.EntityFramework |

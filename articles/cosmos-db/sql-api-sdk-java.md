@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: sngun
-ms.openlocfilehash: 514982727509788918c159e07f8061962df32336
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e57029e53365fbf99054e2d926296ccca3360663
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77558932"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983606"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Zestaw JavaDK usługi Azure Cosmos DB dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "77558932"
 > * [Java (asynchroniczny)](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Reszta](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Wykonawca zbiorczy - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -37,9 +37,9 @@ Zestaw SDK java interfejsu API SQL obsługuje operacje synchroniczne. Aby uzyska
 |**Pobieranie SDK**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**Dokumentacja interfejsu API**|[Dokumentacja referencyjna interfejsu API w języku Java](/java/api/com.microsoft.azure.documentdb)|
 |**Współtworzenie sdk**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
-|**Wprowadzenie**|[Wprowadzenie do sdk Java SDK](sql-api-java-get-started.md)|
+|**Rozpoczęcie pracy**|[Wprowadzenie do sdk Java SDK](sql-api-java-get-started.md)|
 |**Samouczek aplikacji sieci Web**|[Tworzenie aplikacji sieci Web za pomocą usługi Azure Cosmos DB](sql-api-java-application.md)|
-|**Minimalny obsługiwany czas wykonywania**|[Zestaw java development (JDK) 7+](https://aka.ms/azure-jdks)|
+|**Minimalny obsługiwany czas wykonywania**|[Zestaw java development (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>Informacje o wersji
 
@@ -131,7 +131,7 @@ Zestaw SDK java interfejsu API SQL obsługuje operacje synchroniczne. Aby uzyska
 
 ### <a name="1150"></a><a name="1.15.0"/>1.15.0
 * Poprawiono wydajność serializacji Json.
-* Ta wersja SDK wymaga najnowszej wersji emulatora usługi https://aka.ms/cosmosdb-emulatorAzure Cosmos DB dostępnej do pobrania z .
+* Ta wersja SDK wymaga najnowszej wersji [emulatora usługi Azure Cosmos DB.](https://aka.ms/cosmosdb-emulator)
 
 ### <a name="1140"></a><a name="1.14.0"/>1.14.0
 * Zmiany wewnętrzne w bibliotekach znajomych firmy Microsoft.
@@ -317,7 +317,7 @@ Każde żądanie do usługi Cosmos DB przy użyciu wycofanego SDK zostanie odrzu
 | 0.9.1-prelease |19 grudnia 2014 r. |29 lutego 2016 r. |
 | 0.9.0-prelease |10 grudnia 2014 r. |29 lutego 2016 r. |
 
-## <a name="faq"></a>Najczęściej zadawane pytania
+## <a name="faq"></a>Często zadawane pytania
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Zobacz też

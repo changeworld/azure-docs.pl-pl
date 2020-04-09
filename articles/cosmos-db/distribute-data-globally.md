@@ -6,16 +6,16 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 84cd201cd758293082a61a87528332c7d8c58811
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef511c203caa11aad4dea1047c982158810c4038
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264309"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982127"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globalna dystrybucja danych przy użyciu usługi Azure Cosmos DB — przegląd
 
-Dzisiejsze aplikacje muszą być bardzo dynamiczne i zawsze w trybie online. Aby zapewnić małe opóźnienia i wysoką dostępność, wystąpienia tych aplikacji powinny być wdrażane w centrach danych, które są blisko ich użytkowników. Te aplikacje są zazwyczaj wdrażane w wielu centrach danych i są wywoływane globalnie rozproszone. Globalnie dystrybuowane aplikacje muszą mieć globalnie dystrybuowaną bazę danych, która może w sposób przezroczysty replikować dane w dowolnym miejscu na świecie, aby umożliwić aplikacjom działanie na kopii danych znajdującej się blisko użytkowników. 
+Dzisiejsze aplikacje muszą być bardzo responsywne i zawsze online. Aby zapewnić małe opóźnienia i wysoką dostępność, wystąpienia tych aplikacji powinny być wdrażane w centrach danych, które są blisko ich użytkowników. Te aplikacje są zazwyczaj wdrażane w wielu centrach danych i są wywoływane globalnie rozproszone. Globalnie dystrybuowane aplikacje muszą mieć globalnie dystrybuowaną bazę danych, która może w sposób przezroczysty replikować dane w dowolnym miejscu na świecie, aby umożliwić aplikacjom działanie na kopii danych znajdującej się blisko użytkowników. 
 
 Usługa Azure Cosmos DB to globalnie rozproszona usługa bazy danych, która została zaprojektowana w celu zapewnienia małych opóźnień, elastycznej skalowalności przepływności, dobrze zdefiniowanej semantyki dla spójności danych i wysokiej dostępności. Krótko mówiąc, jeśli aplikacja wymaga gwarantowanego czasu szybkiej odpowiedzi w dowolnym miejscu na świecie, jeśli jest to wymagane, aby być zawsze w trybie online i wymaga nieograniczonej i elastycznej skalowalności przepływności i magazynu, należy utworzyć aplikację na usługi Azure Cosmos DB.
 
@@ -41,7 +41,7 @@ Za pomocą azure Cosmos DB multi-homilii interfejsów API, aplikacja jest świad
 
 **Zachowaj ciągłość działania podczas regionalnych awarii.** Usługa Azure Cosmos DB obsługuje [automatyczne tryb failover](how-to-manage-database-account.md#automatic-failover) podczas regionalnej awarii. Podczas regionalnej awarii usługa Azure Cosmos DB nadal utrzymuje swoje opóźnienia, dostępność, spójność i łącze SLA przepływności. Aby upewnić się, że cała aplikacja jest wysoce dostępna, usługa Cosmos DB oferuje ręczny interfejs API trybu failover w celu symulowania regionalnej awarii. Za pomocą tego interfejsu API, można przeprowadzić regularne ćwiczenia ciągłości biznesowej.
 
-**Skaluj przepływność odczytu i zapisu globalnie.** Można włączyć każdy region do zapisu i elastycznie skalować odczyty i zapisy na całym świecie. Przepływność, którą aplikacja konfiguruje w bazie danych usługi Azure Cosmos lub kontener jest gwarantowana do dostarczenia we wszystkich regionach skojarzonych z kontem usługi Azure Cosmos. Aprowizowana przepustowość jest gwarantowana przez [zabezpieczone finansowo dl.](https://aka.ms/acdbsla)
+**Skaluj przepływność odczytu i zapisu globalnie.** Można włączyć każdy region do zapisu i elastycznie skalować odczyty i zapisy na całym świecie. Przepływność, którą aplikacja konfiguruje w bazie danych usługi Azure Cosmos lub kontener jest gwarantowana do dostarczenia we wszystkich regionach skojarzonych z kontem usługi Azure Cosmos. Aprowizowana przepustowość jest gwarantowana przez [zabezpieczone finansowo dl.](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)
 
 **Wybierz jeden z kilku dobrze zdefiniowanych modeli spójności.** Protokół replikacji usługi Azure Cosmos DB oferuje pięć dobrze zdefiniowanych, praktycznych i intuicyjnych modeli spójności. Każdy model ma kompromis między spójności i wydajności. Użyj tych modeli spójności do tworzenia globalnie rozproszonych aplikacji z łatwością.
 

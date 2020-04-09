@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 83164a615cacc067e5f1ea6a1dd6ce0f0fd9d540
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adba282a96f9d250569e090e186859c04e89ebda
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298852"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981549"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -183,8 +183,8 @@ Wybierz następujące opcje, jak pokazano na rysunku:
 
 1. Wybierz *włącz* dla **stanu**
 2. Wybierz *wersję 2* dla **wersji dzienników przepływu**. Wersja 2 zawiera statystyki sesji przepływu (bajty i pakiety)
-3. Wybierz istniejące konto magazynu do przechowywania dzienników przepływu. Jeśli chcesz przechowywać dane na zawsze, ustaw wartość *0*. Opłaty usługi Azure Storage za konto magazynu. Upewnij się, że magazyn nie ma ustawionej wartości true "Data Lake Storage Gen2 Hierarchiical Namespace enabled".
-4. Ustaw **retencję** na liczbę dni, dla których chcesz przechowywać dane.
+3. Wybierz istniejące konto magazynu do przechowywania dzienników przepływu. Upewnij się, że magazyn nie ma ustawionej wartości true "Data Lake Storage Gen2 Hierarchiical Namespace enabled".
+4. Ustaw **retencję** na liczbę dni, dla których chcesz przechowywać dane. Jeśli chcesz przechowywać dane na zawsze, ustaw wartość *0*. Opłaty usługi Azure Storage za konto magazynu. 
 5. Wybierz *pozycję Wł.* **Dla stanu analizy ruchu**.
 6. Wybierz interwał przetwarzania. Zgodnie z wybranym wyborem dzienniki przepływu będą zbierane z konta magazynu i przetwarzane przez Traffic Analytics. Możesz wybrać interwał przetwarzania co 1 godzinę lub co 10 minut. 
 7. Wybierz istniejący obszar roboczy usługi Log Analytics (OMS) lub wybierz pozycję **Utwórz nowy obszar roboczy,** aby utworzyć nowy obszar roboczy. Obszar roboczy usługi Log Analytics jest używany przez usługi Traffic Analytics do przechowywania zagregowanych i indeksowanych danych, które są następnie używane do generowania analizy. Jeśli wybierzesz istniejący obszar roboczy, musi on istnieć w jednym z [obsługiwanych regionów](#supported-regions-log-analytics-workspaces) i został uaktualniony do nowego języka zapytań. Jeśli nie chcesz uaktualnić istniejącego obszaru roboczego lub nie masz obszaru roboczego w obsługiwanym regionie, utwórz nowy. Aby uzyskać więcej informacji na temat języków zapytań, zobacz [Uaktualnienie usługi Azure Log Analytics do nowego wyszukiwania dzienników](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).

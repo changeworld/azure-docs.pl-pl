@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 3c7ff0061a57d1a1a7525ec03b4f77c117415ca5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: 929b9548661fe48fe90a55f0cacef234c3078cda
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80155854"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887269"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopiowanie i przekształcanie danych w usłudze Azure Data Lake Storage Gen2 przy użyciu usługi Azure Data Factory
 
@@ -44,10 +44,8 @@ W przypadku działania kopiowania za pomocą tego łącznika można:
 >[!IMPORTANT]
 >Jeśli włączysz opcję **Zezwalaj zaufanym usługom firmy Microsoft** na dostęp do tego konta magazynu w ustawieniach zapory usługi Azure Storage i chcesz połączyć się ze środowiskiem pamięci masowej Usługi Data Lake Gen2, musisz użyć [uwierzytelniania tożsamości zarządzanej](#managed-identity) dla usługi ADLS Gen2.
 
->[!TIP]
->Jeśli włączysz hierarchiczną przestrzeń nazw, obecnie nie ma współdziałania operacji między interfejsami API obiektów Blob i Data Lake Storage Gen2. Jeśli natkniesz się na błąd "ErrorCode=FilesystemNotFound" z komunikatem "Określony system plików nie istnieje", jest to spowodowane przez określony system plików ujścia, który został utworzony za pośrednictwem interfejsu API obiektów Blob zamiast interfejsu API Data Lake Storage Gen2 w innym miejscu. Aby rozwiązać ten problem, należy określić nowy system plików o nazwie, która nie istnieje jako nazwa kontenera obiektów Blob. Następnie Data Factory automatycznie tworzy ten system plików podczas kopiowania danych.
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 >[!TIP]
 >Aby zapoznać się z instrukcjami dotyczącymi używania łącznika Data Lake Storage Gen2, zobacz [Ładowanie danych do usługi Azure Data Lake Storage Gen2](load-azure-data-lake-storage-gen2.md).

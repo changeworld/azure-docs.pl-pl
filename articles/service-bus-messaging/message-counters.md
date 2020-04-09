@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/08/2020
 ms.author: aschhab
-ms.openlocfilehash: 3a4fca0b3b60fcb76bcdc4f5f2d53df816c5053b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8020b12ca892fbf7dec6fed6259526d958fb110f
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756384"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891768"
 ---
 # <a name="message-counters"></a>Liczniki komunikatów
 
@@ -43,6 +43,11 @@ Znajomość liczby aktywnych wiadomości jest przydatna w określaniu, czy kolej
 -   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): Wiadomości oczekujące na przeniesienie do innej kolejki lub tematu.
 
 Jeśli aplikacja chce skalować zasoby na podstawie długości kolejki, należy to zrobić z zmierzonym tempem. Nabycie liczników komunikatów jest kosztowną operacją wewnątrz brokera komunikatów, a wykonywanie jej często bezpośrednio i niekorzystnie wpływa na wydajność jednostki.
+
+> [!NOTE]
+> Wiadomości, które są wysyłane do tematu usługi Service Bus są przekazywane do subskrypcji dla tego tematu. Tak więc liczba aktywnych wiadomości na temat jest 0, ponieważ te wiadomości zostały pomyślnie przekazane do subskrypcji. Pobierz liczbę wiadomości w ramach subskrypcji i sprawdź, czy jest większa niż 0. Mimo że wiadomości są widoczne w subskrypcji, są one faktycznie przechowywane w magazynie należącym do tematu. 
+
+Jeśli spojrzysz na subskrypcje, to będą one miały niezerową liczbę wiadomości (które dodają do 323MB miejsca dla całej tej jednostki).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/21/2018
 ms.author: ramkris
-ms.openlocfilehash: 3dc2a2d7c0e9fae425340ab1aa91790070708cd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a5de2647df5b8092fdcf8e6233f1fddc1690b03
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73606189"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981328"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Biblioteka wykonawca zbiorczy Java: Pobierz informacje
 
@@ -25,7 +25,7 @@ ms.locfileid: "73606189"
 > * [Java (asynchroniczny)](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Reszta](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Wykonawca zbiorczy - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -37,6 +37,6 @@ ms.locfileid: "73606189"
 |**Pobieranie SDK**|[Maven](https://search.maven.org/#search%7Cga%7C1%7Cdocumentdb-bulkexecutor)|
 |**Biblioteka wykonawców zbiorczych w usłudze GitHub**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **Dokumentacja interfejsu API**| [Dokumentacja referencyjna interfejsu API w języku Java](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
-|**Wprowadzenie**|[Wprowadzenie do biblioteki zbiorczej biblioteki wykonawczej Java SDK](bulk-executor-java.md)|
-|**Minimalny obsługiwany czas wykonywania**|[Zestaw java development (JDK) 7+](https://aka.ms/azure-jdks)|
+|**Rozpoczęcie pracy**|[Wprowadzenie do biblioteki zbiorczej biblioteki wykonawczej Java SDK](bulk-executor-java.md)|
+|**Minimalny obsługiwany czas wykonywania**|[Zestaw java development (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
 

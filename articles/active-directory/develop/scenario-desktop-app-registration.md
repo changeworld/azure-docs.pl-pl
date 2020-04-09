@@ -2,26 +2,21 @@
 title: Rejestrowanie aplikacji klasycznych wywołujących internetowe interfejsy API — platforma tożsamości firmy Microsoft | Azure
 description: Dowiedz się, jak utworzyć aplikację klasyczną, która wywołuje internetowe interfejsy API (rejestracja aplikacji)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c55fc9eb94a88dba1ab9fc915fe84bc2dd7d4d40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599603ba867e21694392e38e9692280f010e08eb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702185"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885161"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Aplikacja komputerowa, która wywołuje internetowe interfejsy API: rejestracja aplikacji
 
@@ -52,7 +47,7 @@ Identyfikatory URI przekierowania do użycia w aplikacji klasycznej zależą od 
 
 - Jeśli tworzysz natywną aplikację Objective-C lub Swift dla systemu macOS, zarejestruj identyfikator URI przekierowania na podstawie identyfikatora pakietu aplikacji w następującym formacie: msauth.<your.app.bundle.id>://auth. Zamień <your.app.bundle.id> identyfikatorem pakietu aplikacji.
 - Jeśli aplikacja używa tylko zintegrowanego uwierzytelniania systemu Windows lub nazwy użytkownika i hasła, nie trzeba rejestrować identyfikatora URI przekierowania dla aplikacji. Przepływy te wykonują podróż w obie strony do punktu końcowego platformy tożsamości firmy Microsoft w wersji 2.0. Aplikacja nie zostanie wywołana z powrotem na żadnym określonym identyfikatorze URI.
-- Aby odróżnić przepływ kodu urządzenia, zintegrowane uwierzytelnianie systemu Windows oraz nazwę użytkownika i hasło od poufnego przepływu aplikacji klienckiej, który nie ma przekierowanych identyfikatorów URI (przepływ poświadczeń klienta używany w aplikacjach demonów), należy wyrazić to aplikacja jest publiczną aplikacją kliencką. Aby osiągnąć tę konfigurację, przejdź do sekcji **Uwierzytelnianie** dla aplikacji. W podsekcji **Ustawienia zaawansowane** w akapicie **Domyślny typ klienta** wybierz pozycję **Tak** dla **aplikacji Traktuj jako klienta publicznego**.
+- Aby odróżnić przepływ kodu urządzenia, zintegrowane uwierzytelnianie systemu Windows oraz nazwę użytkownika i hasło od poufnego przepływu aplikacji klienckiej, który nie ma przekierowanych identyfikatorów URI (przepływ poświadczeń klienta używany w aplikacjach demonów), należy wyrazić, że aplikacja jest publiczną aplikacją kliencką. Aby osiągnąć tę konfigurację, przejdź do sekcji **Uwierzytelnianie** dla aplikacji. W podsekcji **Ustawienia zaawansowane** w akapicie **Domyślny typ klienta** wybierz pozycję **Tak** dla **aplikacji Traktuj jako klienta publicznego**.
 
   ![Zezwalaj na klienta publicznego](media/scenarios/default-client-type.png)
 

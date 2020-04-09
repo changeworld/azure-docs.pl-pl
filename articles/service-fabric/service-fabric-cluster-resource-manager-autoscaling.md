@@ -5,12 +5,12 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 3660ece7add8f279292340aae9ab445b682fe045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edcf2774873cc23a74a47cc1c9a12e2daa2ed419
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452087"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984541"
 ---
 # <a name="introduction-to-auto-scaling"></a>Wprowadzenie do skalowania automatycznego
 Skalowanie automatyczne to dodatkowa funkcja sieci szkieletowej usług do dynamicznego skalowania usług na podstawie obciążenia, które usługi zgłaszają, lub na podstawie ich użycia zasobów. Automatyczne skalowanie zapewnia dużą elastyczność i umożliwia inicjowanie obsługi administracyjnej dodatkowych wystąpień lub partycji usługi na żądanie. Cały proces skalowania automatycznego jest zautomatyzowany i przejrzysty, a po skonfigurowaniu zasad w usłudze nie ma potrzeby ręcznego skalowania operacji na poziomie usługi. Automatyczne skalowanie można włączyć w czasie tworzenia usługi lub w dowolnym momencie, aktualizując usługę.
@@ -136,6 +136,9 @@ Tak samo jak w przypadku mechanizmu, który używa skalowania przez dodanie lub 
 
 ### <a name="using-application-manifest"></a>Korzystanie z manifestu aplikacji
 ``` xml
+<NamedPartition>
+    <Partition Name="0" />
+</NamedPartition>
 <ServiceScalingPolicies>
     <ScalingPolicy>
         <AverageServiceLoadScalingTrigger MetricName="servicefabric:/_MemoryInMB" LowerLoadThreshold="300" UpperLoadThreshold="500" ScaleIntervalInSeconds="600"/>

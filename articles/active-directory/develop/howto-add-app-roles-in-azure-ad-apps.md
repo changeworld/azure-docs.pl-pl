@@ -3,7 +3,6 @@ title: Dodawanie ról aplikacji i wyładowywanych z tokenu | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak dodać role aplikacji w aplikacji zarejestrowanej w usłudze Azure Active `roles` Directory, przypisać użytkowników i grupy do tych ról i otrzymać je w żądaniu w tokenie.
 services: active-directory
-documentationcenter: ''
 author: kkrishna
 manager: CelesteDG
 ms.service: active-directory
@@ -14,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3a911db36fd03ebcb5e0fc53d4d7f36d68648249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 144fad249011d547ac6a8cf2d404cb3f8fe74f96
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399079"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884260"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Jak: Dodawanie ról aplikacji w aplikacji i odbieranie ich w tokenie
 
@@ -35,7 +34,7 @@ Te role aplikacji są zdefiniowane w [witrynie Azure portal](https://portal.azur
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Deklarowanie ról aplikacji przy użyciu witryny Azure portal
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Wybierz ikonę **Katalog + Subskrypcja** na pasku narzędzi portalu.
 1. Na liście **Ulubione** lub **Wszystkie katalogi** wybierz dzierżawę usługi Active Directory, w której chcesz zarejestrować aplikację.
 1. W witrynie Azure portal wyszukaj i wybierz pozycję **Azure Active Directory**.

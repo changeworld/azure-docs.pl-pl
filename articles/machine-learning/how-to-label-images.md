@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 2e14b669aadeec4c6a7245be8940051ec604059b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 371b99c794feb4a64eb3e9af389020e25d14eedb
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79409562"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879432"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Oznaczanie obrazów w projekcie etykietowania
 
-Po administrator projektu [tworzy projekt etykietowania](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) w usłudze Azure Machine Learning, można użyć narzędzia etykietowania, aby szybko przygotować dane dla projektu usługi Machine Learning. W tym artykule opisano:
+Po administrator projektu [tworzy projekt etykietowania](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) w usłudze Azure Machine Learning, można użyć narzędzia etykietowania (podgląd publiczny) szybko przygotować dane dla projektu usługi Machine Learning. W tym artykule opisano:
 
 > [!div class="checklist"]
 > * Jak uzyskać dostęp do projektów etykietowania
@@ -45,7 +45,9 @@ Przejdź do **zobacz szczegółowe instrukcje**. Te instrukcje są specyficzne d
 
 We wszystkich zadaniach etykietowania obrazów można wybrać odpowiedni znacznik lub znaczniki z zestawu określonego przez administratora projektu. Pierwsze dziewięć tagów można wybrać za pomocą klawiszy numerycznych na klawiaturze.  
 
-W zadaniach klasyfikacji obrazów można wybrać wyświetlanie wielu obrazów jednocześnie. Użyj ikon nad obszarem obrazu, aby wybrać układ. Aby zaznaczyć wszystkie wyświetlane obrazy jednocześnie, użyj opcji **Zaznacz wszystkie**. Aby wybrać poszczególne obrazy, użyj okrągłego przycisku zaznaczenia w prawym górnym rogu obrazu. Aby zastosować znacznik, należy wybrać co najmniej jeden obraz. Jeśli wybierzesz wiele obrazów, każdy wybrany znacznik zostanie zastosowany do wszystkich zaznaczonych obrazów.
+W zadaniach klasyfikacji obrazów można wybrać wyświetlanie wielu obrazów jednocześnie. Użyj ikon nad obszarem obrazu, aby wybrać układ. 
+
+Aby zaznaczyć wszystkie wyświetlane obrazy jednocześnie, użyj opcji **Zaznacz wszystkie**. Aby wybrać poszczególne obrazy, użyj okrągłego przycisku zaznaczenia w prawym górnym rogu obrazu. Aby zastosować znacznik, należy wybrać co najmniej jeden obraz. Jeśli wybierzesz wiele obrazów, każdy wybrany znacznik zostanie zastosowany do wszystkich zaznaczonych obrazów.
 
 Tutaj wybraliśmy układ dwa na dwa i mamy zamiar zastosować tag "Ssak" do obrazów niedźwiedzia i orki. Obraz rekina został już oznaczony jako "Chrzęstna ryba", a legwan nie został jeszcze oznaczony.
 

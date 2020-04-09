@@ -2,20 +2,22 @@
 title: Zbieranie & analizowanie dzienników zasobów
 description: Dowiedz się, jak wysyłać dzienniki zasobów i dane zdarzeń z grup kontenerów w wystąpieniach kontenerów platformy Azure do dzienników usługi Azure Monitor
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 04/07/2020
 ms.author: danlep
-ms.openlocfilehash: 304e98fff386911b878877d2f03d489d0eef5dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75770547"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892397"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Rejestrowanie grup kontenerów i wystąpień za pomocą dzienników usługi Azure Monitor
 
 Obszary robocze usługi Log Analytics zapewniają scentralizowaną lokalizację do przechowywania i wykonywania zapytań o dane dziennika nie tylko z zasobów platformy Azure, ale także lokalnych zasobów i zasobów w innych chmurach. Wystąpienia kontenera platformy Azure zawiera wbudowaną obsługę wysyłania dzienników i danych zdarzeń do dzienników usługi Azure Monitor.
 
-Aby wysłać dane dziennika grupy kontenerów i zdarzeń do dzienników usługi Azure Monitor, określ istniejący identyfikator obszaru roboczego usługi Log Analytics i klucz obszaru roboczego podczas tworzenia grupy kontenerów. W poniższych sekcjach opisano sposób tworzenia grupy kontenerów z włączoną funkcją rejestrowania i sposobu wykonywania zapytań o dzienniki.
+Aby wysłać dane dziennika grupy kontenerów i zdarzeń do dzienników usługi Azure Monitor, określ istniejący identyfikator obszaru roboczego usługi Log Analytics i klucz obszaru roboczego podczas konfigurowania grupy kontenerów. 
+
+W poniższych sekcjach opisano sposób tworzenia grupy kontenerów z włączoną funkcją rejestrowania i sposobu wykonywania zapytań o dzienniki. Można również [zaktualizować grupę kontenerów](container-instances-update.md) za pomocą identyfikatora obszaru roboczego i klucza obszaru roboczego, aby włączyć rejestrowanie.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

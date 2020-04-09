@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 2a7f5d5eacb2d03e64ae95d34e1cf0bd37bbc7f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07b071b0e8efc5d664dada133a214d778c6531d0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259255"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984950"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Najlepsze rozwiązania dotyczące izolowania aplikacji od wyłączeń i awarii usługi Service Bus
 
@@ -33,7 +33,7 @@ Usługa Service Bus Premium obsługuje odzyskiwanie po awarii geograficznej na p
 
 ### <a name="availability-zones"></a>Strefy dostępności
 
-Usługa Service Bus Premium SKU obsługuje [strefy dostępności,](../availability-zones/az-overview.md)zapewniając lokalizacje izolowane od błędów w tym samym regionie platformy Azure.
+Usługa Service Bus Premium SKU obsługuje [strefy dostępności,](../availability-zones/az-overview.md)zapewniając lokalizacje izolowane od błędów w tym samym regionie platformy Azure. Usługa Service Bus zarządza trzema kopiami magazynu wiadomości (1 podstawowy i 2 pomocniczy). Usługa Service Bus synchronizuje wszystkie trzy kopie w celu obsługi operacji zarządzania danymi i zarządzaniem. Jeśli kopia podstawowa nie powiedzie się, jedna z kopii pomocniczych jest podyzywana do podstawowego bez postrzeganego przestoju. Jeśli aplikacje zobacz przejściowe rozłącza z usługą Service Bus, logiki ponawiania w SDK automatycznie ponownie połączy się z usługą Service Bus. 
 
 > [!NOTE]
 > Obsługa stref dostępności usługi Azure Service Bus Premium jest dostępna tylko w [regionach platformy Azure,](../availability-zones/az-overview.md#services-support-by-region) w których znajdują się strefy dostępności.

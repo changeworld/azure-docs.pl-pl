@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: efa498ba600a664beab4b9a49eae2b2c3f1c8397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2355cb7ab995cab3060c7a94c9e7ea344bd9e92b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298311"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984644"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Szybki start: wprowadzenie do usługi Application Insights w projekcie sieci Web Java
 
@@ -25,7 +25,7 @@ Application Insights jest rozszerzalną usługą analizy dla deweloperów sieci 
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Uzyskiwanie klucza instrumentacji usługi Application Insights
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. W witrynie Azure Portalutwórz zasób usługi Application Insights. Jako typ aplikacji ustaw wartość Aplikacja internetowa Java.
 
 3. Znajdź klucz instrumentacji nowego zasobu. Wkrótce będzie trzeba wkleić ten klucz do projektu kodu.
@@ -223,7 +223,7 @@ I do automatycznego nazewnictwa operacji.
 
 Zestaw Java SDK usługi Application Insights obsługuje teraz [śledzenie rozproszone W3C.](https://w3c.github.io/trace-context/)
 
-Przychodzące konfiguracji SDK jest wyjaśnione w dalszej części naszego artykułu na [korelacji](correlation.md#telemetry-correlation-in-the-java-sdk).
+Przychodzące konfiguracji SDK jest wyjaśnione w dalszej części naszego artykułu na [korelacji](correlation.md).
 
 Wychodząca konfiguracja SDK jest zdefiniowana w pliku [AI-Agent.xml.](java-agent.md)
 
@@ -258,7 +258,7 @@ Możesz określić dodatkowe liczniki wydajności do zbierania danych.
 * `displayName` — nazwa wyświetlana w portalu Application Insights.
 * `objectName` — nazwa obiektu JMX.
 * `attribute` — atrybut nazwy obiektu JMX do pobrania.
-* `type` (opcjonalnie) — typ atrybutu obiektu JMX:
+* `type`(opcjonalnie) - Typ atrybutu obiektu JMX:
   * wartość domyślna: typ prosty, np. int lub long.
   * `composite`: dane licznika wydajności są w formacie „Atrybut.Dane”
   * `tabular`: dane licznika wydajności są w formacie wiersza tabeli

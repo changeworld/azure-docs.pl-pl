@@ -3,7 +3,6 @@ title: Korzystanie z usługi połączonej z usługą Active Directory (Visual St
 description: Dodawanie usługi Azure Active Directory przy użyciu okna dialogowego Dodawanie połączonych usług w programie Visual Studio
 author: ghogen
 manager: jillfra
-ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.custom: aaddev, vs-azure
@@ -11,12 +10,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: f139fc8cb59c40ea169e195312326773296b0592
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3d068a8100cf78ccffac6d537fe71942239f383
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77159629"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886164"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Dodawanie usługi Azure Active Directory przy użyciu usług połączonych w programie Visual Studio
 
@@ -60,7 +59,7 @@ Obecnie usługa połączona z usługą Active Directory nie obsługuje aplikacji
 1. Po zakończeniu procesu program Visual Studio otwiera przeglądarkę do jednego z następujących artykułów, odpowiednio do typu projektu:
 
     - [Rozpoczynanie pracy z projektami .NET MVC](vs-active-directory-dotnet-getting-started.md)
-    - [Wprowadzenie do projektów WebAPI](vs-active-directory-webapi-getting-started.md)
+    - [Rozpoczynanie pracy z projektami WebAPI](vs-active-directory-webapi-getting-started.md)
 
 1. Domenę usługi Active Directory można również wyświetlić w [witrynie Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 

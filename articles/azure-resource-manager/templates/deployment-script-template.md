@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: aa49b313f0fb10175dc6c0003f1a919f61731269
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: f84707adfa406011989c8f9bfdf1e8d9270698a6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743319"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984797"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Używanie skryptów wdrażania w szablonach (Wersja zapoznawcza)
 
@@ -313,7 +313,7 @@ Cykl życia tych zasobów jest kontrolowany przez następujące właściwości w
 
 Wykonanie skryptu wdrażania jest operacją idempotentną. Jeśli żadna z właściwości zasobu deploymentScripts (w tym skrypt wbudowany) nie zostanie zmieniona, skrypt nie zostanie wykonany po ponownej rozmieszczeniu szablonu. Usługa skryptu wdrażania porównuje nazwy zasobów w szablonie z istniejącymi zasobami w tej samej grupie zasobów. Istnieją dwie opcje, jeśli chcesz wykonać ten sam skrypt wdrażania wiele razy:
 
-- Zmień nazwę zasobu deploymentScripts. Na przykład użyj funkcji szablonu [utcNow](./template-functions-string.md#utcnow) jako nazwy zasobu lub jako części nazwy zasobu. Zmiana nazwy zasobu powoduje utworzenie nowego zasobu deploymentScripts. Jest to dobre dla utrzymania historii wykonywania skryptu.
+- Zmień nazwę zasobu deploymentScripts. Na przykład użyj funkcji szablonu [utcNow](./template-functions-date.md#utcnow) jako nazwy zasobu lub jako części nazwy zasobu. Zmiana nazwy zasobu powoduje utworzenie nowego zasobu deploymentScripts. Jest to dobre dla utrzymania historii wykonywania skryptu.
 
     > [!NOTE]
     > Funkcja utcNow może być używana tylko w wartości domyślnej parametru.

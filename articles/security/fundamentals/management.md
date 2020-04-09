@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2019
+ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: e50eb561bcbb924ea093722d6c61bbe51747b328
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811272"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981311"
 ---
 # <a name="security-management-in-azure"></a>Zarządzanie zabezpieczeniami na platformie Azure
 Subskrybenci platformy Azure mogą zarządzać środowiskami chmury przy użyciu wielu urządzeń, łącznie ze stacjami roboczymi do zarządzania, komputerami deweloperów, a nawet urządzeniami uprzywilejowanych użytkowników końcowych, którzy mają uprawnienia specyficzne dla zadania. W niektórych przypadkach funkcje administracyjne są wykonywane za pośrednictwem konsol sieci Web, takich jak [Azure Portal](https://azure.microsoft.com/features/azure-portal/). W innych przypadkach mogą istnieć bezpośrednie połączenia z platformą Azure z systemów lokalnych za pośrednictwem wirtualnych sieci prywatnych (VPN), usług terminalowych, protokołów aplikacji klienckich lub (programowo) interfejsu API zarządzania usługami Azure (SMAPI, Service Management API). Ponadto punkty końcowe klienta mogą być przyłączone do domeny lub odizolowane i niezarządzane (np. tablety lub smartfony).
@@ -145,9 +145,6 @@ Zalecamy trzy podstawowe konfiguracje stacji roboczych ze wzmocnionymi zabezpiec
 | - | Przejrzysty podział obowiązków | - |
 | Komputer firmowy jako maszyna wirtualna |Niższe koszty sprzętu | - |
 | - | Podział ról i aplikacji | - |
-| Windows To Go z szyfrowaniem dysków przy użyciu funkcji BitLocker |Zgodność z większością komputerów |Śledzenie zasobów |
-| - | Efektywność kosztowa i przenośność | - |
-| - | Izolowane środowisko zarządzania |- |
 
 Stacja robocza ze wzmocnionymi zabezpieczeniami musi być hostem, a nie gościem, bez żadnych składników między systemem operacyjnym hosta a sprzętem. Zgodnie z „zasadą czystego źródła” (zwaną również „bezpiecznym pochodzeniem”) host musi mieć najlepsze zabezpieczenia. W przeciwnym razie stacja robocza ze wzmocnionymi zabezpieczeniami (gość) jest podatna na ataki na system, w którym jest hostowana.
 
@@ -170,15 +167,6 @@ Jeśli nie można użyć oddzielnej autonomicznej stacji roboczej ze wzmocnionym
 Aby uniknąć kilku zagrożeń wynikających z użycia pojedynczej stacji roboczej do zarządzania systemami i wykonywania innych codziennych zadań, na stacji roboczej ze wzmocnionymi zabezpieczeniami można wdrożyć maszynę wirtualną z funkcją Hyper-V systemu Windows. Ta maszyna wirtualna może być używana jako komputer firmowy. Środowisko komputera firmowego może pozostać odizolowane od hosta. Umożliwia to ograniczenie obszaru narażonego na ataki i oddzielenie czynności wykonywanych codziennie przez użytkowników (takich jak korzystanie z poczty e-mail) od ważnych zadań administracyjnych.
 
 Maszyna wirtualna komputera firmowego jest uruchomiona w obszarze chronionym i udostępnia aplikacje użytkownika. Host pozostaje „czystym źródłem” i wymusza ścisłe zasady sieci w głównym systemie operacyjnym (na przykład blokowanie dostępu RDP z maszyny wirtualnej).
-
-### <a name="windows-to-go"></a>Windows To Go
-Inną alternatywą dla stosowania autonomicznej stacji roboczej ze wzmocnionymi zabezpieczeniami jest użycie funkcji dysku [Windows To Go](https://technet.microsoft.com/library/hh831833.aspx), która umożliwia rozruch przy użyciu dysku USB po stronie klienta. Korzystając z funkcji Windows To Go, użytkownicy mogą uruchamiać zgodny komputer przy użyciu izolowanego obrazu systemu z zaszyfrowanego dysku flash USB. Takie rozwiązanie zapewnia dodatkową kontrolę dla punktów końcowych zdalnej administracji, ponieważ firmowa grupa IT może w pełni zarządzać obrazem, korzystając ze ścisłych zasad zabezpieczeń, minimalnej konfiguracji systemu operacyjnego i obsługi modułu TPM.
-
-Przenośny obraz przedstawiony na poniższej ilustracji jest systemem przyłączonym do domeny, wstępnie skonfigurowanym do łączenia się tylko z platformą Azure, wymagającym uwierzytelniania wieloskładnikowego i blokującym cały ruch, który nie jest związany z zarządzaniem. Jeśli użytkownik uruchomi ten sam komputer przy użyciu standardowego obrazu firmowego i spróbuje uzyskać dostęp do bramy usług pulpitu zdalnego w celu skorzystania z narzędzi do zarządzania platformą Azure, sesja zostanie zablokowana. Funkcja Windows To Go staje się głównym systemem operacyjnym i nie są wymagane żadne dodatkowe warstwy (system operacyjny hosta, hypervisor, maszyna wirtualna), które mogą być bardziej podatne na ataki zewnętrzne.
-
-![](./media/management/hardened-workstation-using-windows-to-go-on-a-usb-flash-drive.png)
-
-Pamiętaj, że prawdopodobieństwo utraty dysku flash USB jest wyższe niż prawdopodobieństwo utraty przeciętnego komputera stacjonarnego. Zaszyfrowanie całego woluminu przy użyciu funkcji BitLocker i silnego hasła utrudnia osobie atakującej wykorzystanie obrazu dysku do szkodliwych celów. Ponadto jeśli dysk flash USB zostanie utracony, odwołanie i [wystawienie nowego certyfikatu zarządzania](https://technet.microsoft.com/library/hh831574.aspx) oraz szybkie zresetowanie hasła może ograniczyć zagrożenie. Dzienniki inspekcji administracyjnej znajdują się na platformie Azure, a nie na kliencie, co dodatkowo ogranicza ryzyko utraty danych.
 
 ## <a name="best-practices"></a>Najlepsze rozwiązania
 Podczas zarządzania aplikacjami i danymi na platformie Azure należy uwzględnić poniższe dodatkowe zalecenia.
@@ -215,7 +203,7 @@ Minimalizacja liczby zadań, które administratorzy mogą wykonywać na stacji r
 * Zasady grupy. Utwórz globalne zasady administracyjne stosowane do każdej stacji roboczej w domenie używanej do zarządzania (i zablokuj dostęp ze wszystkich pozostałych) oraz do kont użytkowników uwierzytelnionych na tych stacjach roboczych.
 * Bezpieczna aprowizacja. Chroń podstawowy obraz stacji roboczej ze wzmocnionymi zabezpieczeniami przed nieautoryzowaną modyfikacją. Do przechowywania obrazów, maszyn wirtualnych i skryptów stosuj środki ochrony, takie jak szyfrowanie i izolacja, oraz ogranicz dostęp (można użyć procesu zaewidencjonowania/wyewidencjonowania podlegającego inspekcji).
 * Stosowanie poprawek. Zachowaj spójną konfigurację (lub utwórz oddzielne obrazy dla projektowania, działań operacyjnych i innych zadań administracyjnych), regularnie skanuj w celu wykrycia zmian i złośliwego oprogramowania, aktualizuj konfigurację i uaktywniaj komputery tylko wtedy, gdy są potrzebne.
-* Szyfrowanie. Upewnij się, że stacje robocze używane do zarządzania są wyposażone w moduł TPM umożliwiający bardziej bezpieczne korzystanie z [systemu szyfrowania plików](https://technet.microsoft.com/library/cc700811.aspx) (EFS, Encrypting File System) i funkcji BitLocker. Jeśli jest używana funkcja Windows To Go, korzystaj wyłącznie z zaszyfrowanych dysków USB wraz z funkcją BitLocker.
+* Szyfrowanie. Upewnij się, że stacje robocze używane do zarządzania są wyposażone w moduł TPM umożliwiający bardziej bezpieczne korzystanie z [systemu szyfrowania plików](https://technet.microsoft.com/library/cc700811.aspx) (EFS, Encrypting File System) i funkcji BitLocker.
 * Zarządzanie. Używaj obiektów zasad grupy usług AD DS do kontrolowania wszystkich interfejsów systemu Windows administratorów, takich jak udostępnianie plików. Uwzględnij stacje robocze używane do zarządzania w procesach inspekcji, monitorowania i rejestrowania. Śledź dostęp i używanie przez wszystkich administratorów i deweloperów.
 
 ## <a name="summary"></a>Podsumowanie

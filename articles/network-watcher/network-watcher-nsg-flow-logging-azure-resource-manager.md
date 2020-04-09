@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 35d185a625a81a259c366a45999769ecf76c6a7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 104311904b99cadbbc8c0267a98f2709443608ea
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77538162"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891462"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Konfigurowanie dzienników przepływu sieciowych z szablonu usługi Azure Resource Manager
 
 > [!div class="op_single_selector"]
-> - [Portal Azure](network-watcher-nsg-flow-logging-portal.md)
-> - [Powershell](network-watcher-nsg-flow-logging-powershell.md)
+> - [Portal platformy Azure](network-watcher-nsg-flow-logging-portal.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Interfejs wiersza polecenia platformy Azure](network-watcher-nsg-flow-logging-cli.md)
-> - [INTERFEJS API ODPOCZYNKU](network-watcher-nsg-flow-logging-rest.md)
+> - [Interfejs API REST](network-watcher-nsg-flow-logging-rest.md)
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 
@@ -169,6 +169,8 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 
 Istnieje kilka sposobów, aby sprawdzić, czy wdrożenie zakończyło się pomyślnie. Konsola programu PowerShell powinna być pouczona jako "Stan obsługi administracyjnej" jako "Powodzenie". Ponadto można odwiedzić [stronę portalu dzienników przepływu nsg,](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) aby potwierdzić zmiany. Jeśli wystąpiły problemy z wdrożeniem, zapoznaj się z [rozwiązywaniem typowych błędów wdrażania platformy Azure za pomocą usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors).
 
+## <a name="deleting-your-resource"></a>Usuwanie zasobu
+Platforma Azure umożliwia usuwanie zasobów w trybie wdrażania "Kompletny". Aby usunąć zasób Dzienniki przepływu, należy określić wdrożenie w trybie complete bez uwzględniania zasobu, który chcesz usunąć. Dowiedz się więcej o [trybie wdrażania zakończonego](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes#complete-mode)
 
 ## <a name="next-steps"></a>Następne kroki
 

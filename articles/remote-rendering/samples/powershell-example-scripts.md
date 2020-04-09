@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: d7238c899301d76edde86d52c6db74468ffe18ad
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679478"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891496"
 ---
 # <a name="example-powershell-scripts"></a>Przykładowe skrypty programu PowerShell
 
@@ -37,7 +37,10 @@ Aby wykonać przykładowe skrypty, potrzebujesz funkcjonalnej konfiguracji [prog
 
 1. Zaloguj się do subskrypcji zawierającej konto zdalnego renderowania platformy Azure:
     1. Otwieranie programu PowerShell
-    1. Uruchomić:`Connect-AzAccount -Subscription "<your Azure subscription id>"`
+    1. Uruchom: `Connect-AzAccount` i postępuj zgodnie ze wskazówkami wyświetlanymi na ekranie.
+
+> [!NOTE]
+> W przypadku, gdy organizacja ma więcej niż jedną subskrypcję, może być konieczne określenie argumentów Identyfikator subskrypcji i Dzierżawa. Szczegółowe informacje można znaleźć w [dokumentacji Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
 
 1. Pobierz folder *Skrypty* z [repozytorium GithHub renderowania zdalnego azure](https://github.com/Azure/azure-remote-rendering).
 

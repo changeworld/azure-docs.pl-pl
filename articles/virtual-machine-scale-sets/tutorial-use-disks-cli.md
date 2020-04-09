@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 12bde51222e1e648f97476d5dab039b4ad2adfe8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3accb1bb8c79d1842c4effe3b99fe2a904fa832
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067059"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878871"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Samouczek: tworzenie dysków i używanie ich z zestawem skalowania maszyn wirtualnych za pośrednictwem interfejsu wiersza polecenia platformy Azure
 Zestawy skalowania maszyn wirtualnych przechowują aplikacje, dane oraz systemy operacyjne wystąpień maszyn wirtualnych na dyskach. Ważne jest, aby podczas tworzenia zestawu skalowania i zarządzania nim wybrać taki rozmiar dysku i konfigurację, które odpowiadają oczekiwanemu obciążeniu. W tym samouczku omówiono tworzenie dysków maszyn wirtualnych i zarządzanie nimi. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -51,18 +51,7 @@ Podczas tworzenia lub skalowania zestawu skalowania do każdego wystąpienia mas
 
 
 ## <a name="azure-data-disks"></a>Dyski z danymi platformy Azure
-W przypadku konieczności instalowania aplikacji i przechowywania danych można dodać kolejne dyski z danymi. Dyski z danymi powinny być używane w sytuacji, gdy potrzebny jest trwały i dynamiczny magazyn danych. Każdy dysk z danymi ma maksymalną pojemność wynoszącą 4 TB. Liczba dysków z danymi, które można dołączyć, zależy od rozmiaru wystąpienia maszyny wirtualnej. Na każdy procesor wirtualny maszyny wirtualnej można dołączyć dwa dyski z danymi.
-
-### <a name="max-data-disks-per-vm"></a>Maksymalna liczba dysków z danymi na maszynę wirtualną
-| Typ | Typowe rozmiary | Maksymalna liczba dysków z danymi na maszynę wirtualną |
-|----|----|----|
-| [Zastosowania ogólne](../virtual-machines/linux/sizes-general.md) | Seria A, B i D | 64 |
-| [Optymalizacja pod kątem obliczeń](../virtual-machines/linux/sizes-compute.md) | Seria F | 64 |
-| [Optymalizacja pod kątem pamięci](../virtual-machines/linux/sizes-memory.md) | Seria D, E, G i M | 64 |
-| [Optymalizacja pod kątem magazynu](../virtual-machines/linux/sizes-storage.md) | Seria L | 64 |
-| [Procesor GPU](../virtual-machines/linux/sizes-gpu.md) | Seria N | 64 |
-| [Wysoka wydajność](../virtual-machines/linux/sizes-hpc.md) | Seria A i H | 64 |
-
+W przypadku konieczności instalowania aplikacji i przechowywania danych można dodać kolejne dyski z danymi. Dyski z danymi powinny być używane w sytuacji, gdy potrzebny jest trwały i dynamiczny magazyn danych. Każdy dysk z danymi ma maksymalną pojemność wynoszącą 4 TB. Liczba dysków z danymi, które można dołączyć, zależy od rozmiaru wystąpienia maszyny wirtualnej. Dla każdej maszyny wirtualnej maszyny Wirtualnej można podłączyć dwa dyski danych maksymalnie do 64 dysków na maszynę wirtualną.
 
 ## <a name="vm-disk-types"></a>Typy dysków maszyny wirtualnej
 Na platformie Azure dostępne są dwa typy dysków.

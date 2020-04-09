@@ -5,14 +5,14 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 064a7b8adaec6f47a153743b58f4e1caf50db723
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 38116efc9e87eca8e2514a0a84045a69b8d42326
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681508"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887048"
 ---
-# <a name="use-the-model-conversion-rest-api"></a>Korzystanie z interfejsu API REST konwersji modelu
+# <a name="use-the-model-conversion-rest-api"></a>Używanie interfejsu API REST konwersji modelu
 
 Usługa [konwersji modelu](model-conversion.md) jest kontrolowana za pomocą [interfejsu API REST](https://en.wikipedia.org/wiki/Representational_state_transfer). W tym artykule opisano szczegóły interfejsu API usługi konwersji.
 
@@ -47,7 +47,7 @@ Konto zdalnego renderowania platformy Azure musi mieć dostęp do podanego konta
 
 | Endpoint | Metoda |
 |-----------|:-----------|
-| /v1/accounts/accountID /conversion/create**accountID** | POST |
+| /v1/accounts/accountID /conversions/create /v1/accounts/accountID /conversions/create **/v1/accounts/accountID**/conversions/create /v | POST |
 
 Zwraca identyfikator trwającej konwersji, zawinięty w dokumencie JSON. Nazwa pola to "conversionId".
 
@@ -77,7 +77,7 @@ Jeśli konto ARR nie jest połączone z kontem magazynu, ten interfejs REST umo�
 
 | Endpoint | Metoda |
 |-----------|:-----------|
-| /v1/accounts/ accountID /conversion/createWithSharedAccessSignature /v1/accounts/**accountID**/conversion/createWithSharedAccessSignature /v1/accountID /conversion/createWithSharedAccessSignature /v1/ | POST |
+| /v1/accounts/ accountID /conversions/createWithSharedAccessSignature /v1/accounts/**accountID**/conversions/createWithSharedAccessSignature /v1/accountID /conversions/createWithSharedAccessSignature /v1/ | POST |
 
 Zwraca identyfikator trwającej konwersji, zawinięty w dokumencie JSON. Nazwa pola to "conversionId".
 

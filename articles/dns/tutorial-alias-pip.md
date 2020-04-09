@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: d4517314742f3ec8e9968d20745ffb697d96f324
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77149936"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985443"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Samouczek: konfigurowanie rekordu aliasu w celu odwoływania się do publicznego adresu IP platformy Azure 
 
@@ -20,8 +20,8 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 > [!div class="checklist"]
 > * Tworzenie infrastruktury sieci.
-> * Tworzenie maszyny wirtualnej serwera internetowego.
-> * Tworzenie rekordu aliasu.
+> * Utwórz maszynę wirtualną serwera sieci web z publicznym adresem IP.
+> * Utwórz rekord aliasu, który wskazuje publiczny adres IP.
 > * Testowanie rekordu aliasu.
 
 
@@ -48,7 +48,7 @@ Najpierw utwórz sieć wirtualną i podsieć, aby umieścić w nich serwery inte
 4. W obszarze **Ustawienia** wybierz sieć wirtualną **VNet-Servers** i podsieć **SN-Web**. W przypadku publicznych portów przychodzących wybierz opcję **HTTP** > **HTTP HTTPS** > **RDP (3389),** a następnie wybierz **przycisk OK**.
 5. Na stronie **Podsumowanie** wybierz pozycję **Utwórz**.
 
-Wykonanie tej procedury trwa kilka minut.
+Wykonanie tej procedury trwa kilka minut. Maszyna wirtualna będzie miała dołączoną kartę sieciową, która będzie miała podstawowy dynamiczny publiczny adres IP o nazwie Web-01-ip. Publiczny adres IP zmieni się przy każdym ponownym uruchomieniu maszyny wirtualnej.
 
 ### <a name="install-iis"></a>Instalowanie usług IIS
 

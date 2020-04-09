@@ -4,12 +4,12 @@ description: Poniżej opisano, jak włączyć obsługę tożsamości zarządzany
 ms.topic: article
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: cb6e4ab00afd80cba41881e46296f7046a905919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 396978546b301884087c4ea51e242258d64a6b0b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934947"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983810"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>Konfigurowanie obsługi tożsamości zarządzanych w istniejącym klastrze sieci szkieletowej usług (wersja zapoznawcza)
 
@@ -40,7 +40,7 @@ Aby włączyć usługę tokenu tożsamości zarządzanej w istniejącym klastrze
 ]
 ```
 
-Aby zmiany zostały wprowadzone, należy również zmienić zasady uaktualniania, aby określić silne ponowne uruchomienie środowiska uruchomieniowego sieci szkieletowej usług w każdym węźle w miarę postępu uaktualniania za pośrednictwem klastra. To ponowne uruchomienie gwarantuje, że nowo włączona usługa systemowa jest uruchomiona i uruchomiona w każdym węźle. We poniższym urywek `forceRestart` jest podstawowym ustawieniem; użyj istniejących wartości dla pozostałych ustawień.  
+Aby zmiany zostały wprowadzone, należy również zmienić zasady uaktualniania, aby określić silne ponowne uruchomienie środowiska uruchomieniowego sieci szkieletowej usług w każdym węźle w miarę postępu uaktualniania za pośrednictwem klastra. To ponowne uruchomienie gwarantuje, że nowo włączona usługa systemowa jest uruchomiona i uruchomiona w każdym węźle. We we wyliciach poniżej jest podstawowe ustawienie, `forceRestart` aby włączyć ponowne uruchomienie. W przypadku pozostałych parametrów należy użyć wartości opisanych poniżej lub użyć istniejących wartości niestandardowych już określonych dla zasobu klastra. Ustawienia niestandardowe zasad uaktualniania sieci szkieletowej ("upgradeDescription") można wyświetlić w witrynie Azure Portal, wybierając opcję "Uaktualnienia sieci szkieletowej" w zasobie sieci szkieletowej usług lub resources.azure.com. Domyślne opcje zasad uaktualniania ("upgradeDescription") nie są widoczne z programu PowerShell lub resources.azure.com. Aby uzyskać dodatkowe informacje, zobacz [ClusterUpgradePolicy.](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet)  
 
 ```json
 "upgradeDescription": {

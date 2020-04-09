@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 03/26/2020
-ms.openlocfilehash: 18c926d16319eb8a8736a51d5f10e434b94d0ebe
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.date: 04/08/2020
+ms.openlocfilehash: 5b99e2f31d82630e2adc138c11485201a617af81
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582499"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892329"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Konfiguracja klucza zarządzanego przez klienta usługi Azure Monitor 
 
@@ -111,6 +111,34 @@ Token można uzyskać przy użyciu jednej z następujących metod:
     1. Skopiuj i dodaj go do wywołania interfejsu API według poniższych przykładów.
 3. Przejdź do witryny dokumentacji usługi Azure REST. Naciśnij przycisk "Wypróbuj" na dowolnym interfejsie API i skopiuj token na okaziciela.
 
+### <a name="asynchronous-operations-and-status-check"></a>Operacje asynchroniczne i sprawdzanie stanu
+
+Niektóre operacje w tej procedurze konfiguracji są uruchamiane asynchronicznie, ponieważ nie można ich szybko wykonać. Odpowiedź dla operacji asynchroniiowej początkowo zwraca kod stanu HTTP 200 (OK) i nagłówek z *azure-AsyncOperation* właściwości po zaakceptowaniu:
+```json
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview"
+```
+
+Można sprawdzić stan operacji asynchroniiowej, wysyłając żądanie GET do wartości nagłówka *Azure-AsyncOperation:*
+```rst
+GET "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview
+Authorization: Bearer <token>
+```
+
+Treść odpowiedzi z operacji zawiera informacje o operacji i *Status* właściwość wskazuje jego stan. Operacje asynchroniczne w tej procedurze konfiguracji i ich stany są:
+
+**Tworzenie zasobu *klastra***
+* Inicjowanie obsługi administracyjnejKontowanie — klaster ADX jest w inicjowaniu obsługi administracyjnej 
+* Powiodło się — aprowizacji klastra ADX została zakończona
+
+**Udzielanie uprawnień do magazynu kluczy**
+* Trwa aktualizacja aktualizacji -- Szczegóły kluczowego identyfikatora
+* Zakończono pomyślnie aktualizację
+
+**Kojarzenie obszarów roboczych usługi Log Analytics**
+* Trwa łączenie — skojarzenie obszaru roboczego z klastrem jest w toku
+* Powiodło się - Stowarzyszenie zakończone
+
+
 ### <a name="subscription-whitelisting"></a>Biała lista subskrypcji
 
 Funkcja CMK jest funkcją wczesnego dostępu. Subskrypcje, w których planujesz utworzyć zasoby *klastra,* muszą być wcześniej wpisane na białą listę przez grupę produktów platformy Azure. Użyj kontaktów w firmie Microsoft, aby podać identyfikatory subskrypcji.
@@ -136,6 +164,8 @@ Podczas tworzenia zasobu *klastra* należy określić poziom rezerwacji pojemno�
 
 **Utwórz**
 
+To żądanie Menedżera zasobów jest operacją asynchronizacyjną.
+
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 Authorization: Bearer <token>
@@ -159,10 +189,11 @@ Tożsamość jest przypisywana do zasobu *klastra* w czasie tworzenia.
 
 **Odpowiedzi**
 
-202 Zaakceptowane. Jest to standardowa odpowiedź Menedżera zasobów dla operacji asynchronicznych.
-
+200 OK i nagłówek po zaakceptowaniu.
 >[!Important]
-> Trwa inicjowanie obsługi administracyjnej klastra underly ADX chwilę, aby zakończyć. Można sprawdzić stan inicjowania obsługi administracyjnej podczas wykonywania wywołania interfejsu API GET REST w zasobie *klastra* i przeglądanie wartości *provisioningState.* Jest *inicjowanie obsługi administracyjnejKontowanie* podczas inicjowania obsługi administracyjnej i *po pomyślnym* zakończeniu.
+> W okresie wczesnego dostępu funkcji klaster ADX jest aprowizowany ręcznie. Chociaż trwa inicjowanie obsługi administracyjnej klastra underly ADX chwilę, aby zakończyć, można sprawdzić stan inicjowania obsługi administracyjnej na dwa sposoby:
+> 1. Skopiuj wartość adresu URL *Azure-AsyncOperation* z odpowiedzi i użyj jej do sprawdzania stanu operacji w [operacjach asynchronicznych](#asynchronous-operations-and-status-check)
+> 2. Wyślij żądanie GET w zasobie *klastra* i przyjrzyj się *wartością provisioningState.* Jest *inicjowanie obsługi administracyjnejKontowanie* podczas inicjowania obsługi administracyjnej i *po pomyślnym* zakończeniu.
 
 ### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Inicjowanie obsługi administracyjnej magazynu danych usługi Azure Monitor (klaster ADX)
 
@@ -177,6 +208,7 @@ Authorization: Bearer <token>
 > Skopiuj i zapisz odpowiedź, ponieważ będziesz potrzebować jej szczegółów w późniejszych krokach
 
 **Odpowiedzi**
+
 ```json
 {
   "identity": {
@@ -216,7 +248,7 @@ Uprawnienie *Pobierz* jest wymagane, aby sprawdzić, czy magazyn kluczy jest sko
 
 ### <a name="update-cluster-resource-with-key-identifier-details"></a>Aktualizowanie zasobu klastra za pomocą szczegółów identyfikatora klucza
 
-Ten krok ma zastosowanie do aktualizacji wersji klucza początkowego i przyszłego w magazynie kluczy. Informuje usługę Azure Monitor Storage o wersji klucza, która ma być używana do szyfrowania danych. Po zaktualizowaniu nowy klucz jest używany do zawijania i odwijania do klucza magazynu (AEK).
+Ten krok jest wykonywany podczas początkowych i przyszłych aktualizacji wersji klucza w magazynie kluczy. Informuje usługę Azure Monitor Storage o wersji klucza, która ma być używana do szyfrowania danych. Po zaktualizowaniu nowy klucz jest używany do zawijania i odwijania do klucza magazynu (AEK).
 
 Aby zaktualizować zasób *klastra* o szczegóły *identyfikatora klucza przechowalni* kluczy, wybierz bieżącą wersję klucza w usłudze Azure Key Vault, aby uzyskać szczegółowe informacje o identyfikatorze klucza.
 
@@ -225,6 +257,8 @@ Aby zaktualizować zasób *klastra* o szczegóły *identyfikatora klucza przecho
 Zaktualizuj właściwości keyvaultproperties *zasobu klastra* o szczegóły identyfikatora klucza.
 
 **Aktualizacja**
+
+To żądanie Menedżera zasobów jest operacją asynchronizacyjną.
 
 >[!Warning]
 > W aktualizacji zasobów *klastra* należy podać pełną treść, która zawiera *tożsamość,* *sku,* *KeyVaultProperties* i *lokalizację.* Brak szczegółów *KeyVaultProperties* spowoduje usunięcie identyfikatora klucza z zasobu *klastra* i [spowodowanie odwołania klucza](#cmk-kek-revocation).
@@ -256,6 +290,14 @@ Content-type: application/json
 
 **Odpowiedzi**
 
+200 OK i nagłówek po zaakceptowaniu.
+>[!Important]
+> Zajmuje propagacji key identyfikatora kilka minut, aby zakończyć. Stan inicjowania obsługi administracyjnej można sprawdzić na dwa sposoby:
+> 1. Skopiuj wartość adresu URL *Azure-AsyncOperation* z odpowiedzi i użyj jej do sprawdzania stanu operacji w [operacjach asynchronicznych](#asynchronous-operations-and-status-check)
+> 2. Wyślij żądanie GET w zasobie *klastra* i spójrz na *właściwości KeyVaultProperties.* Ostatnio zaktualizowane szczegóły identyfikatora klucza powinny zostać wrócone w odpowiedzi.
+
+Odpowiedź na żądanie GET w zasobie *klastra* powinna wyglądać następująco po zakończeniu aktualizacji identyfikatora klucza:
+
 ```json
 {
   "identity": {
@@ -286,19 +328,22 @@ Content-type: application/json
 ```
 
 ### <a name="workspace-association-to-cluster-resource"></a>Skojarzenie obszaru roboczego z zasobem *klastra*
-
 W przypadku konfiguracji CMK usługi Application Insights postępuj zgodnie z zawartością dodatku dla tego kroku.
 
-> [!IMPORTANT]
-> Ten krok należy wykonać tylko po inicjowaniu obsługi administracyjnej klastra ADX. Jeśli skojarzone obszary robocze i pozyskiwania danych przed inicjowania obsługi administracyjnej, pochłonięte dane zostaną usunięte i nie będzie można odzyskać.
-> Aby sprawdzić, czy klaster ADX jest aprowidyfikowany, wykonaj interfejs API Pobierz rest *zasobu klastra* i sprawdź, czy wartość *aprowizowaniaState* *powiodła się*.
+To żądanie Menedżera zasobów jest operacją asynchronizacyjną.
 
 Aby wykonać tę operację, musisz mieć uprawnienia "zapisu" zarówno do obszaru roboczego, jak i *zasobu klastra,* które obejmują następujące akcje:
 
 - W obszarze roboczym: Microsoft.OperationalInsights/workspaces/write
 - W *zasobie klastra:* Microsoft.OperationalInsights/clusters/write
 
+> [!IMPORTANT]
+> Ten krok należy wykonać tylko po inicjowaniu obsługi administracyjnej klastra ADX. Jeśli skojarzone obszary robocze i pozyskiwania danych przed inicjowania obsługi administracyjnej, pochłonięte dane zostaną usunięte i nie będzie można odzyskać.
+
 **Kojarzenie obszaru roboczego**
+
+To żądanie Menedżera zasobów jest operacją asynchronizacyjną.
+
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
 Authorization: Bearer <token>
@@ -313,21 +358,12 @@ Content-type: application/json
 
 **Odpowiedzi**
 
-```json
-{
-  "properties": {
-    "WriteAccessResourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
-    },
-  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name/linkedservices/cluster",
-  "name": "workspace-name/cluster",
-  "type": "microsoft.operationalInsights/workspaces/linkedServices",
-}
-```
+200 OK i nagłówek po zaakceptowaniu.
+>[!Important]
+> Może działać do 90 minut, aby zakończyć. Dane przynajmowane do obszarów roboczych są przechowywane szyfrowane przy pomocą klucza zarządzanego tylko po pomyślnym skojarzeniu obszarów roboczych.
+> Aby sprawdzić stan skojarzenia obszaru roboczego, skopiuj wartość adresu URL *Azure-AsyncOperation* z odpowiedzi i użyj jej do sprawdzania stanu operacji w [operacjach asynchronicznych](# asynchronous-operations-and-status-check)
 
-Skojarzenie obszaru roboczego jest wykonywane za pośrednictwem operacji asynchronicznych Menedżera zasobów, co może potrwać do 90 minut. W następnym kroku pokazano, jak można sprawdzić stan skojarzenia obszaru roboczego. Po skojarzeniu obszarów roboczych dane pozyskiwania do obszarów roboczych są przechowywane szyfrowane przy pomocą klucza zarządzanego.
-
-### <a name="workspace-association-verification"></a>Weryfikacja skojarzenia obszaru roboczego
-Można sprawdzić, czy obszar roboczy jest skojarzony z zasobem *klastra,* patrząc na [obszary robocze — Pobierz](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) odpowiedź. Skojarzone obszary robocze będą miały właściwość "clusterResourceId" o identyfikatorze zasobu *klastra.*
+Zasób *klastra* skojarzony z obszarem roboczym można sprawdzić, wysyłając żądanie GET do [obszarów roboczych — Pobierz](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) i obserwując odpowiedź. *Identyfikator klastraResourceId* wskazuje na identyfikator zasobu *klastra.*
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview

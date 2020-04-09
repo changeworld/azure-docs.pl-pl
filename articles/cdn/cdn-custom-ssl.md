@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f27adb6098ac339ee188b3e84e1c225faa9f72a6
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238720"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892499"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w domenie niestandardowej usługi Azure CDN
 
@@ -58,8 +58,8 @@ Ponadto należy skojarzyć domenę niestandardową usługi Azure CDN w punkcie k
 
 ---
 
-## <a name="ssl-certificates"></a>Certyfikaty SSL
-Aby włączyć funkcję HTTPS w celu bezpiecznego dostarczania zawartości w domenie niestandardowej usługi Azure CDN, należy użyć certyfikatu SSL. Możesz użyć certyfikatu zarządzanego przez usługę Azure CDN lub własnego certyfikatu.
+## <a name="tlsssl-certificates"></a>Certyfikaty TLS/SSL
+Aby włączyć protokół HTTPS do bezpiecznego dostarczania zawartości w domenie niestandardowej usługi Azure CDN, należy użyć certyfikatu TLS/SSL. Możesz użyć certyfikatu zarządzanego przez usługę Azure CDN lub własnego certyfikatu.
 
 
 # <a name="option-1-default-enable-https-with-a-cdn-managed-certificate"></a>[Opcja 1 (domyślna): włączanie funkcji HTTPS przy użyciu certyfikatu zarządzanego przez usługę Azure CDN](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
@@ -99,7 +99,7 @@ Aby włączyć protokół HTTPS w domenie niestandardowej, wykonaj następujące
 > Ta opcja jest dostępna tylko w **usłudze Azure CDN firmy Microsoft** i **azure CDN z** profilów Verizon. 
 >
  
-Możesz włączyć funkcję HTTPS przy użyciu własnego certyfikatu. Ten proces odbywa się dzięki integracji z usługą Azure Key Vault, umożliwiającą bezpieczne przechowywanie certyfikatów. Ten bezpieczny mechanizm, używany w usłudze Azure CDN do pobrania certyfikatu, wymaga wykonania kilku dodatkowych czynności. Tworząc certyfikat SSL, musisz korzystać z dozwolonego urzędu certyfikacji (CA). W przeciwnym razie, jeśli skorzystasz z niedozwolonego urzędu certyfikacji, żądanie zostanie odrzucone. Aby uzyskać listę dozwolonych urzędów certyfikacji, zobacz [Dozwolone urzędy certyfikacji dotyczące włączania niestandardowego protokołu HTTPS w usłudze Azure CDN](cdn-troubleshoot-allowed-ca.md). W przypadku **usługi Azure CDN firmy Verizon**każdy ważny urząd certyfikacji zostanie zaakceptowany. 
+Możesz włączyć funkcję HTTPS przy użyciu własnego certyfikatu. Ten proces odbywa się dzięki integracji z usługą Azure Key Vault, umożliwiającą bezpieczne przechowywanie certyfikatów. Ten bezpieczny mechanizm, używany w usłudze Azure CDN do pobrania certyfikatu, wymaga wykonania kilku dodatkowych czynności. Podczas tworzenia certyfikatu TLS/SSL należy go utworzyć z dozwolonym urzędem certyfikacji(CA). W przeciwnym razie, jeśli skorzystasz z niedozwolonego urzędu certyfikacji, żądanie zostanie odrzucone. Aby uzyskać listę dozwolonych urzędów certyfikacji, zobacz [Dozwolone urzędy certyfikacji dotyczące włączania niestandardowego protokołu HTTPS w usłudze Azure CDN](cdn-troubleshoot-allowed-ca.md). W przypadku **usługi Azure CDN firmy Verizon**każdy ważny urząd certyfikacji zostanie zaakceptowany. 
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Przygotowywanie certyfikatu i konta usługi Azure Key Vault
  
@@ -308,7 +308,7 @@ W poniższej tabeli przedstawiono postęp operacji w przypadku wyłączenia prot
 
 4. *Czy używanie certyfikatu SAN jest mniejsze bezpieczne niż certyfikatu dedykowanego?*
     
-    Certyfikat SAN działa zgodnie z tymi samymi standardami szyfrowania i zabezpieczeń, co certyfikat dedykowany. Wszystkie wystawiane certyfikaty SSL używają algorytmu SHA-256, który pozwala na stosowanie rozszerzonych zabezpieczeń serwerów.
+    Certyfikat SAN działa zgodnie z tymi samymi standardami szyfrowania i zabezpieczeń, co certyfikat dedykowany. Wszystkie wystawione certyfikaty TLS/SSL używają protokołu SHA-256 w celu zwiększenia bezpieczeństwa serwera.
 
 5. *Czy muszę mieć rekord autoryzacji urzędu certyfikacji z moim dostawcą DNS?*
 
@@ -320,7 +320,7 @@ W poniższej tabeli przedstawiono postęp operacji w przypadku wyłączenia prot
 
 7. *Jak działają odnowienia certyfikatów z własnym certyfikatem?*
 
-    Aby upewnić się, że nowszy certyfikat jest wdrażany w infrastrukturze PoP, wystarczy przekazać nowy certyfikat do usługi Azure KeyVault, a następnie w ustawieniach SSL w usłudze Azure CDN, wybierz najnowszą wersję certyfikatu i naciśnij zapisz. Usługa Azure CDN będzie następnie propagować nowy zaktualizowany certyfikat. 
+    Aby upewnić się, że nowszy certyfikat jest wdrażany w infrastrukturze PoP, wystarczy przekazać nowy certyfikat do usługi Azure KeyVault, a następnie w ustawieniach TLS w usłudze Azure CDN, wybierz najnowszą wersję certyfikatu i naciśnij zapisz. Usługa Azure CDN będzie następnie propagować nowy zaktualizowany certyfikat. 
 
 ## <a name="next-steps"></a>Następne kroki
 

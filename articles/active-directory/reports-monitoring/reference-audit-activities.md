@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 843f12d14120a7becdc1e8b15bfcc65948602c44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74007746"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891513"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Informacje o działaniach inspekcji usługi Azure AD
 
@@ -135,11 +135,11 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie aplikacjami|AdminPolicyDatas-SetResources|
 |Zarządzanie aplikacjami|AdminUserJourneys-GetResources|
 |Zarządzanie aplikacjami|AdminUserJourneys-RemoveResources|
-|Uwierzytelnianie|AdminUserJourneys-SetResources|
-|Uwierzytelnianie|Tworzenie dostawcy IdentityProvider|
-|Uwierzytelnianie|Tworzenie aplikacji w wersji 1|
-|Uwierzytelnianie|Tworzenie aplikacji w wersji 2|
-|Uwierzytelnianie|Tworzenie domen niestandardowych w ramach dzierżawy|
+|Authentication|AdminUserJourneys-SetResources|
+|Authentication|Tworzenie dostawcy IdentityProvider|
+|Authentication|Tworzenie aplikacji w wersji 1|
+|Authentication|Tworzenie aplikacji w wersji 2|
+|Authentication|Tworzenie domen niestandardowych w ramach dzierżawy|
 |Autoryzacja|Tworzenie nowego elementu AdminUserJourney|
 |Autoryzacja|Tworzenie zlokalizowanego pliku JSON zasobu|
 |Autoryzacja|Tworzenie nowego niestandardowego dostawcy tożsamości|
@@ -370,8 +370,8 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie aplikacjami|Edytowanie warunków użytkowania|
 |Zarządzanie aplikacjami|Publikowanie warunków użytkowania|
 |Zarządzanie aplikacjami|Cofanie publikacji warunków użytkowania|
-|Zarządzanie aplikacjami|Dodawanie certyfikatu SSL aplikacji|
-|Zarządzanie aplikacjami|Usuwanie powiązania SSL|
+|Zarządzanie aplikacjami|Dodawanie certyfikatu TLS/SSL aplikacji|
+|Zarządzanie aplikacjami|Usuwanie powiązania TLS|
 |Zarządzanie aplikacjami|Rejestrowanie łącznika|
 |Zarządzanie aplikacjami|AdminPolicyDatas-RemoveResources|
 |Zarządzanie aplikacjami|AdminPolicyDatas-SetResources|

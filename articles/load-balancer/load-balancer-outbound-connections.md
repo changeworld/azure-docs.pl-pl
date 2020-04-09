@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 55fa14f367dbf24e951fde8e9075a34499a510b1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f8f21405a79a6fcf70adef9815ba06a229d6954d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547074"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886980"
 ---
 # <a name="outbound-connections-in-azure"></a>Połączenia wychodzące na platformie Azure
 
@@ -193,11 +193,11 @@ Alokacje portów SNAT są specyficzne dla protokołu transportu IP (TCP i UDP s�
 Ta sekcja ma na celu ograniczenie wyczerpania SNAT i może wystąpić w przypadku połączeń wychodzących na platformie Azure.
 
 ### <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>Zarządzanie wyczerpaniem portu SNAT (PAT)
-[Porty efemeryczne](#preallocatedports) używane dla [PAT](#pat) są zasobem wyczerpującym, jak opisano w [autonomicznej maszynie wirtualnej bez publicznego adresu IP](#defaultsnat) i [maszyny wirtualnej z równoważenia obciążenia bez publicznego adresu IP](#lb).
+[Porty efemeryczne](#preallocatedports) używane dla [PAT](#pat) są zasobem wyczerpującym, jak opisano w [autonomicznej maszynie wirtualnej bez publicznego adresu IP](#defaultsnat) i [maszyny wirtualnej z równoważenia obciążenia bez publicznego adresu IP](#lb). Możesz monitorować użycie portów tymczasowych i porównać z bieżącą alokacją, aby określić ryzyko lub potwierdzić ekshumację SNAT za pomocą [tego](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) przewodnika.
 
 Jeśli wiesz, że inicjujesz wiele wychodzących połączeń TCP lub UDP do tego samego docelowego adresu IP i portu, a użytkownik obserwuje nieudane połączenia wychodzące lub jest informowany przez obsługę, że wyczerpujesz porty SNAT (wstępnie przydzielone [porty efemeryczne](#preallocatedports) używane przez [PAT),](#pat)masz kilka ogólnych opcji ograniczania ryzyka. Przejrzyj te opcje i zdecyduj, co jest dostępne i najlepsze dla twojego scenariusza. Jest możliwe, że jeden lub więcej może pomóc w zarządzaniu tym scenariuszem.
 
-Jeśli masz problemy ze zrozumieniem zachowania połączenia wychodzącego, możesz użyć statystyk stosu IP (netstat). Lub może być pomocne obserwować zachowania połączeń za pomocą przechwytywania pakietów. Można wykonać te przechwytywanie pakietów w trybie operacyjnym gościa wystąpienia lub użyć [funkcji Kontrola sieci do przechwytywania pakietów](../network-watcher/network-watcher-packet-capture-manage-portal.md).
+Jeśli masz problemy ze zrozumieniem zachowania połączenia wychodzącego, możesz użyć statystyk stosu IP (netstat). Lub może być pomocne obserwować zachowania połączeń za pomocą przechwytywania pakietów. Można wykonać te przechwytywanie pakietów w trybie operacyjnym gościa wystąpienia lub użyć [funkcji Kontrola sieci do przechwytywania pakietów](../network-watcher/network-watcher-packet-capture-manage-portal.md). 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>Modyfikowanie aplikacji w celu ponownego użycia połączeń 
 Można zmniejszyć zapotrzebowanie na porty efemeryczne, które są używane dla SNAT przez ponowne użycie połączeń w aplikacji. Jest to szczególnie ważne w przypadku protokołów takich jak HTTP/1.1, gdzie ponowne użycie połączenia jest ustawieniem domyślnym. I inne protokoły, które używają HTTP jako ich transportu (na przykład REST) mogą korzystać z kolei. 

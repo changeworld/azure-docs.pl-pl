@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: 71e1f8be2af5556d86996175e8a1ddbccc9c7de1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a16120194b1b8015466005f42336828c2b4ace6c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72001667"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983844"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Rozwiązywanie problemów ze zdrowiem zaplecza w bramie aplikacji
 ==================================================
@@ -170,7 +170,7 @@ Sprawdź również, czy jakiekolwiek NSG /UDR/Firewall blokuje dostęp do ip i p
 
 **Komunikat:** Kod stanu odpowiedzi\'HTTP wewnętrznej bazy danych nie był zgodny z ustawieniem sondy. Oczekiwano:{HTTPStatusCode0} Odebrane:{HTTPStatusCode1}.
 
-**Przyczyna:** Po nawiązaniu połączenia TCP i wykonaniu uzgadniania SSL (jeśli protokół SSL jest włączony), brama aplikacji wyśle sondę jako żądanie HTTP GET do serwera wewnętrznej bazy danych. Jak opisano wcześniej, domyślną \<sondą\>będzie protokół ://127.0.0.1:\<port\>/, i uznaje kody stanu odpowiedzi w rage 200 do 399 jako zdrowy. Jeśli serwer zwraca inny kod stanu, zostanie oznaczony jako w złej kondycji z tej wiadomości.
+**Przyczyna:** Po nawiązaniu połączenia TCP i wykonaniu uzgadniania TLS (jeśli protokół TLS jest włączony), brama aplikacji wyśle sondę jako żądanie HTTP GET do serwera wewnętrznej bazy danych. Jak opisano wcześniej, domyślną \<sondą\>będzie protokół ://127.0.0.1:\<port\>/, i uznaje kody stanu odpowiedzi w rage 200 do 399 jako zdrowy. Jeśli serwer zwraca inny kod stanu, zostanie oznaczony jako w złej kondycji z tej wiadomości.
 
 **Rozwiązanie:** W zależności od kodu odpowiedzi serwera wewnętrznej bazy danych można wykonać następujące kroki. Kilka wspólnych kodów stanu są wymienione tutaj:
 
@@ -208,7 +208,7 @@ Dowiedz się więcej o [dopasowywaniu sondy bramy aplikacji](https://docs.micros
 **Komunikat:** Certyfikat serwera używany przez zaplecze nie jest podpisany przez dobrze znany urząd certyfikacji (CA). Umieszczaj na białej liście wewnętrznej bazy danych w bramie aplikacji, przekazując certyfikat główny certyfikatu serwera używanego przez wewnętrznej bazy danych.
 
 **Przyczyna:** Kompleksowy ssl z bramą aplikacji w wersji 2 wymaga weryfikacji certyfikatu serwera wewnętrznej bazy danych w celu uznania serwera za zdrowy.
-Aby certyfikat SSL był zaufany, ten certyfikat serwera wewnętrznej bazy danych musi być wystawiony przez urząd certyfikacji, który znajduje się w zaufanym magazynie bramy aplikacji. Jeśli certyfikat nie został wystawiony przez zaufany urząd certyfikacji (na przykład, jeśli użyto certyfikatu z podpisem własnym), użytkownicy powinni przekazać certyfikat wystawcy do bramy aplikacji.
+Aby certyfikat TLS/SSL miał być zaufany, ten certyfikat serwera wewnętrznej bazy danych musi być wystawiony przez urząd certyfikacji, który znajduje się w zaufanym magazynie bramy aplikacji. Jeśli certyfikat nie został wystawiony przez zaufany urząd certyfikacji (na przykład, jeśli użyto certyfikatu z podpisem własnym), użytkownicy powinni przekazać certyfikat wystawcy do bramy aplikacji.
 
 **Rozwiązanie:** Wykonaj następujące kroki, aby wyeksportować i przekazać zaufany certyfikat główny do bramy aplikacji. (Te kroki są przeznaczone dla klientów systemu Windows).
 
@@ -241,7 +241,7 @@ Aby uzyskać więcej informacji na temat wyodrębniania i przekazywania zaufanyc
 **Komunikat:** Certyfikat główny certyfikatu serwera używanego przez wewnętrznej bazy danych nie jest zgodny z zaufanym certyfikatem głównym dodanym do bramy aplikacji. Upewnij się, że dodasz poprawny certyfikat główny, aby dodać do białej listy wewnętrznej bazy danych
 
 **Przyczyna:** Kompleksowy ssl z bramą aplikacji w wersji 2 wymaga weryfikacji certyfikatu serwera wewnętrznej bazy danych w celu uznania serwera za zdrowy.
-Aby certyfikat SSL był zaufany, certyfikat serwera wewnętrznej bazy danych musi być wystawiony przez urząd certyfikacji, który znajduje się w zaufanym magazynie bramy aplikacji. Jeśli certyfikat nie został wystawiony przez zaufany urząd certyfikacji (na przykład użyto certyfikatu z podpisem własnym), użytkownicy powinni przekazać certyfikat wystawcy do bramy aplikacji.
+Aby certyfikat TLS/SSL miał być zaufany, certyfikat serwera wewnętrznej bazy danych musi być wystawiony przez urząd certyfikacji, który znajduje się w zaufanym magazynie bramy aplikacji. Jeśli certyfikat nie został wystawiony przez zaufany urząd certyfikacji (na przykład użyto certyfikatu z podpisem własnym), użytkownicy powinni przekazać certyfikat wystawcy do bramy aplikacji.
 
 Certyfikat przekazany do ustawień HTTP bramy aplikacji musi być zgodny z certyfikatem głównym certyfikatu serwera wewnętrznej bazy danych.
 
@@ -280,7 +280,7 @@ Jeśli dane wyjściowe nie pokazują pełnego łańcucha zwracanego certyfikatu,
 
 **Komunikat:** Nazwa pospolita (CN) certyfikatu wewnętrznej bazy danych nie jest zgodna z nagłówkiem hosta sondy.
 
-**Przyczyna:** Brama aplikacji sprawdza, czy nazwa hosta określona w ustawieniach HTTP wewnętrznej bazy danych jest zgodna z nazwą cn przedstawioną przez certyfikat SSL serwera wewnętrznej bazy danych. Jest to zachowanie Standard_v2 i WAF_v2 jednostki SKU. Standardowe i WAF SKU's Server Name Indication (SNI) jest ustawiona jako FQDN w adresie puli wewnętrznej bazy danych.
+**Przyczyna:** Brama aplikacji sprawdza, czy nazwa hosta określona w ustawieniach HTTP wewnętrznej bazy danych jest zgodna z nazwą cn przedstawioną przez certyfikat TLS/SSL serwera wewnętrznej bazy danych. Jest to zachowanie Standard_v2 i WAF_v2 jednostki SKU. Standardowe i WAF SKU's Server Name Indication (SNI) jest ustawiona jako FQDN w adresie puli wewnętrznej bazy danych.
 
 W jednostce SKU w wersji 2, jeśli istnieje domyślna sonda (nie skonfigurowano i nie skojarzono niestandardowej sondy), SNI zostanie ustawiona na podstawie nazwy hosta wymienionej w ustawieniach HTTP. Lub jeśli "Wybierz nazwę hosta z adresu wewnętrznej bazy danych" jest wymieniony w ustawieniach HTTP, gdzie pula adresów wewnętrznej bazy danych zawiera prawidłową nazwę FQDN, to ustawienie zostanie zastosowane.
 
@@ -321,9 +321,9 @@ Dla Linuksa za pomocą OpenSSL:
 
 **Komunikat:** Certyfikat wewnętrznej bazy danych jest nieprawidłowy. Bieżąca data nie \"mieści\" \"się\" w zakresie Ważny od i Ważny do daty na certyfikacie.
 
-**Przyczyna:** Każdy certyfikat jest wyposażony w zakres ważności, a połączenie HTTPS nie będzie bezpieczne, chyba że certyfikat SSL serwera jest ważny. Bieżące dane muszą znajdować się w **zakresie prawidłowym od** i **prawidłowym do** zakresu. Jeśli tak nie jest, certyfikat jest uważany za nieprawidłowy, a to spowoduje utworzenie problemu zabezpieczeń, w którym brama aplikacji oznacza serwer wewnętrznej bazy danych jako w złej kondycji.
+**Przyczyna:** Każdy certyfikat jest wyposażony w zakres ważności, a połączenie HTTPS nie będzie bezpieczne, chyba że certyfikat TLS/SSL serwera jest ważny. Bieżące dane muszą znajdować się w **zakresie prawidłowym od** i **prawidłowym do** zakresu. Jeśli tak nie jest, certyfikat jest uważany za nieprawidłowy, a to spowoduje utworzenie problemu zabezpieczeń, w którym brama aplikacji oznacza serwer wewnętrznej bazy danych jako w złej kondycji.
 
-**Rozwiązanie:** Jeśli certyfikat SSL wygasł, odnowi certyfikat u dostawcy i zaktualizuj ustawienia serwera o nowy certyfikat. Jeśli jest to certyfikat z podpisem własnym, należy wygenerować prawidłowy certyfikat i przekazać certyfikat główny do ustawień HTTP bramy aplikacji. W tym celu wykonaj następujące kroki:
+**Rozwiązanie:** Jeśli certyfikat TLS/SSL wygasł, odnowi certyfikat u dostawcy i zaktualizuj ustawienia serwera o nowy certyfikat. Jeśli jest to certyfikat z podpisem własnym, należy wygenerować prawidłowy certyfikat i przekazać certyfikat główny do ustawień HTTP bramy aplikacji. W tym celu wykonaj następujące kroki:
 
 1.  Otwórz ustawienia HTTP bramy aplikacji w portalu.
 
@@ -333,7 +333,7 @@ Dla Linuksa za pomocą OpenSSL:
 
 #### <a name="certificate-verification-failed"></a>Weryfikacja certyfikatu nie powiodła się
 
-**Komunikat:** Nie można zweryfikować ważności certyfikatu wewnętrznej bazy danych. Aby znaleźć przyczynę, sprawdź otwórz diagnostykę SSL dla wiadomości skojarzonej z kodem błędu {errorCode}
+**Komunikat:** Nie można zweryfikować ważności certyfikatu wewnętrznej bazy danych. Aby znaleźć przyczynę, sprawdź diagnostykę OpenSSL dla wiadomości skojarzonej z kodem błędu {errorCode}
 
 **Przyczyna:** Ten błąd występuje, gdy brama aplikacji nie może zweryfikować ważności certyfikatu.
 

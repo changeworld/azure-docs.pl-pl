@@ -16,12 +16,12 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5486a8d8bd4c295f49e0ab847daf45d0fcab47ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300540"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983079"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Funkcje usługi synchronizacji programu Azure AD Connect
 
@@ -89,12 +89,14 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 ## <a name="synchronize-userprincipalname-updates"></a>Synchronizowanie aktualizacji userPrincipalName
 
-W przeszłości aktualizacje atrybutu UserPrincipalName przy użyciu usługi synchronizacji z lokalnego oprogramowania zostały zablokowane, chyba że oba te warunki są spełnione:
+W przeszłości aktualizacje atrybutu UserPrincipalName przy użyciu usługi synchronizacji z lokalnego oprogramowania zostały zablokowane, chyba że oba te warunki były spełnione:
 
 * Użytkownik jest zarządzany (niefederowany).
 * Użytkownikowi nie przypisano licencji.
 
-Aby uzyskać więcej informacji, zobacz [Nazwy użytkowników w usłudze Office 365, platformie Azure lub usłudze Intune nie są zgodne z lokalną siecią UPN lub alternatywnym identyfikatorem logowania.](https://support.microsoft.com/kb/2523192)
+> [!NOTE]
+> Od marca 2019 r. synchronizowanie zmian w nazwy UPN dla federowanych kont użytkowników jest dozwolone.
+> 
 
 Włączenie tej funkcji umożliwia aparatowi synchronizacji aktualizowanie userPrincipalName po zmianie w środowisku lokalnym i użycie synchronizacji hash hasła lub uwierzytelniania przekazywanego.
 

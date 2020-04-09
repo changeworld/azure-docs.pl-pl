@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 0079c5a9409aafd4d6341ec9febb5115dc4023a1
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 90317591b2666f48363c2ee636e36822e2083ed3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745407"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984814"
 ---
 # <a name="create-power-bi-app-offer-technical-assets"></a>Tworzenie zasobów technicznych aplikacji Power BI
 
 >[!Important]
->Od 30 marca 2020 r. rozpoczniemy przenoszenie zarządzania ofertami aplikacji Usługi Power BI do Centrum partnerów. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami zawartymi w [omówienie tworzenia aplikacji usługi Power BI,](https://aka.ms/AzureCreatePBIServiceApp) aby zarządzać zmigrowanymi ofertami.
+>Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami aplikacji Usługi Power BI do Centrum partnerów. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami zawartymi w [omówienie tworzenia aplikacji usługi Power BI,](https://aka.ms/AzureCreatePBIServiceApp) aby zarządzać zmigrowanymi ofertami.
 
 Podstawowym zasobem technicznym potrzebnym dla tego typu oferty jest aplikacja usługi Power BI. Aplikacja Power BI to zbiór podstawowych zestawów danych, raportów lub pulpitów nawigacyjnych oraz opcjonalnych połączonych usług i osadzonych zestawów danych. Ewoluowała od typu zasobu wcześniej znanego jako [pakiet zawartości](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction). Aby uzyskać więcej informacji na temat tworzenia tego typu aplikacji, zobacz [Co to są aplikacje szablonów usługi Power BI?](https://go.microsoft.com/fwlink/?linkid=2028636).
 

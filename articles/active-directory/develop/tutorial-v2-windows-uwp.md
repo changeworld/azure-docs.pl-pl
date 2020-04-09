@@ -2,25 +2,21 @@
 title: Rozpoczęcie pracy platformy tożsamości firmy Microsoft | Azure
 description: Jak aplikacje platformy uniwersalnej systemu Windows (UWP) można wywołać interfejs API, który wymaga tokenów dostępu przez punkt końcowy platformy tożsamości firmy Microsoft.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6e7ee1b03dda30bea15a837b6daf6469e00e46d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129880"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886402"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Wywoływanie interfejsu API programu Microsoft Graph z aplikacji XAML (Universal Windows Platform)
 
@@ -346,7 +342,7 @@ Dodaj następującą nową metodę do *MainPage.xaml.cs:*
 
 Teraz musisz zarejestrować swoją aplikację:
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Wybierz**rejestracje aplikacji** **usługi Azure Active Directory** > .
 1. Wybierz **pozycję Nowa rejestracja**. Wprowadź znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład *UWP-App-calling-MSGraph*.
 1. W obszarze **Obsługiwane typy kont**wybierz **pozycję Konta w dowolnym katalogu organizacji i osobistych kontach Microsoft (np.** **Register**

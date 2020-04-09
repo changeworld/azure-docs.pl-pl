@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b25409c63806e203bd841b0373543b7cc2b96d9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4877b136f197f226f142f5ad5eb4035c63c07d7a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79212936"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887014"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Zarządzanie udziałami w witrynie Azure Data Box Edge za pomocą witryny Azure Portal
 
@@ -29,11 +29,11 @@ Aby przenieść dane na platformę Azure, musisz utworzyć udziały w usłudze A
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
+>
 > * Dodawanie udziału
 > * Usuwanie udziału
 > * Odświeżanie udziałów
 > * Synchronizowanie klucza magazynu
-
 
 ## <a name="add-a-share"></a>Dodawanie udziału
 
@@ -57,14 +57,14 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby utworzyć udział.
    > Upewnij się, że konto usługi Azure Storage, którego używasz, nie ma zasad niezmienności ustawionych na nim, jeśli używasz go z urządzeniem usługi Azure Stack Edge lub Data Box Gateway. Aby uzyskać więcej informacji, zobacz [Ustawianie zasad niezmienności i zarządzanie nimi dla magazynu obiektów blob](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
 6. Ten krok zależy od tego, czy tworzysz udział SMB, czy udział NFS.
-    - **W przypadku tworzenia udziału SMB** — w polu **Użytkownik lokalny ze wszystkimi uprawnieniami** wybierz pozycję **Utwórz nowy** lub **Użyj istniejącego**. W przypadku tworzenia nowego użytkownika lokalnego podaj **nazwę użytkownika**, **hasło**, a następnie potwierdź hasło. Spowoduje to przypisanie uprawnień do użytkownika lokalnego. Po przypisaniu uprawnień w tym miejscu możesz następnie zmodyfikować te uprawnienia przy użyciu Eksploratora plików.
+   - **W przypadku tworzenia udziału SMB** — w polu **Użytkownik lokalny ze wszystkimi uprawnieniami** wybierz pozycję **Utwórz nowy** lub **Użyj istniejącego**. W przypadku tworzenia nowego użytkownika lokalnego podaj **nazwę użytkownika**, **hasło**, a następnie potwierdź hasło. Spowoduje to przypisanie uprawnień do użytkownika lokalnego. Po przypisaniu uprawnień w tym miejscu możesz następnie zmodyfikować te uprawnienia przy użyciu Eksploratora plików.
 
-        ![Dodawanie udziału SMB](media/data-box-edge-manage-shares/add-smb-share.png)
+      ![Dodawanie udziału SMB](media/data-box-edge-manage-shares/add-smb-share.png)
 
         Jeśli zaznaczysz opcję Zezwalaj tylko na operacje odczytu dla tego udziału danych, możesz określić użytkowników z uprawnieniami tylko do odczytu.
-    - **W przypadku tworzenia udziału NFS** — należy podać **adresy IP dozwolonych klientów**, którzy mogą uzyskiwać dostęp do udziału.
+   - **W przypadku tworzenia udziału NFS** — należy podać **adresy IP dozwolonych klientów**, którzy mogą uzyskiwać dostęp do udziału.
 
-        ![Dodawanie udziału NFS](media/data-box-edge-manage-shares/add-nfs-share.png)
+      ![Dodawanie udziału NFS](media/data-box-edge-manage-shares/add-nfs-share.png)
 
 7. Aby łatwo uzyskać dostęp do udziałów z modułów obliczeniowych edge, użyj lokalnego punktu instalacji. Wybierz **opcję Użyj udziału z obliczeniami edge,** tak aby udział był automatycznie montowany po jego utworzeniu. Po wybraniu tej opcji moduł Edge może również używać obliczeń z lokalnym punktem instalacji.
 
@@ -74,7 +74,7 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby utworzyć udział.
 
 1. W witrynie Azure portal przejdź do zasobu usługi Data Box Edge, a następnie przejdź do **udziału > bramy.** Wybierz **+ Dodaj udział** na pasku poleceń.
 
-    ![Wybierz dodaj udział](media/data-box-edge-manage-shares/add-local-share-1.png)
+   ![Wybierz dodaj udział](media/data-box-edge-manage-shares/add-local-share-1.png)
 
 2. W obszarze **Dodawanie udziału** określ ustawienia udziału. Podaj unikatową nazwę udziału.
     
@@ -90,40 +90,39 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby utworzyć udział.
 
 7. Wybierz **pozycję Utwórz**. 
 
-    ![Tworzenie udziału lokalnego](media/data-box-edge-manage-shares/add-local-share-2.png)
+   ![Tworzenie udziału lokalnego](media/data-box-edge-manage-shares/add-local-share-2.png)
 
     Zostanie wyświetlone powiadomienie, że tworzenie udziału jest w toku. Po utworzeniu udziału z określonymi ustawieniami blok **Udziały** zostanie zaktualizowany, aby odzwierciedlić nowy udział.
 
-    ![Zobacz aktualizacje Udziały bloku](media/data-box-edge-manage-shares/add-local-share-3.png)
+   ![Zobacz aktualizacje Udziały bloku](media/data-box-edge-manage-shares/add-local-share-3.png)
     
     Wybierz udział, aby wyświetlić lokalny punkt instalacji dla modułów obliczeniowych Edge dla tego udziału.
 
-    ![Wyświetlanie szczegółów udziału lokalnego](media/data-box-edge-manage-shares/add-local-share-4.png)
+   ![Wyświetlanie szczegółów udziału lokalnego](media/data-box-edge-manage-shares/add-local-share-4.png)
 
 ## <a name="mount-a-share"></a>Montowanie udziału
 
 Jeśli utworzony jest udział przed skonfigurowaniem obliczeń na urządzeniu data box edge, należy zainstalować udział. Aby zainstalować udział, należy wykonać następujące czynności.
 
-
 1. W witrynie Azure portal przejdź do zasobu usługi Data Box Edge, a następnie przejdź do **udziału > bramy.** Z listy udziałów wybierz udział, który chcesz zainstalować. Kolumna **Używane dla obliczeń** wyświetli stan **Jako Wyłączony** dla wybranego udziału.
 
-    ![Wybieranie udziału](media/data-box-edge-manage-shares/select-share-mount.png)
+   ![Wybieranie udziału](media/data-box-edge-manage-shares/select-share-mount.png)
 
 2. Wybierz **pozycję Zamontuj**.
 
-    ![Wybierz uchwyt](media/data-box-edge-manage-shares/select-mount.png)
+   ![Wybierz uchwyt](media/data-box-edge-manage-shares/select-mount.png)
 
 3. Po wyświetleniu monitu o potwierdzenie wybierz pozycję **Tak**. Spowoduje to zainstalowanie udziału.
 
-    ![Potwierdź montaż](media/data-box-edge-manage-shares/confirm-mount.png)
+   ![Potwierdź montaż](media/data-box-edge-manage-shares/confirm-mount.png)
 
 4. Po zamontowaniu akcji przejdź do listy akcji. Zobaczysz, że kolumna **Używane dla obliczeń** pokazuje stan udziału jako **Włączone**.
 
-    ![Współdzielenie zamontowane](media/data-box-edge-manage-shares/share-mounted.png)
+   ![Współdzielenie zamontowane](media/data-box-edge-manage-shares/share-mounted.png)
 
 5. Wybierz ponownie udział, aby wyświetlić lokalny punkt instalacji dla udziału. Moduł obliczeniowy krawędzi używa tej lokalnej punktu instalacji dla udziału.
 
-    ![Lokalny punkt instalacji dla udziału](media/data-box-edge-manage-shares/share-mountpoint.png)
+   ![Lokalny punkt instalacji dla udziału](media/data-box-edge-manage-shares/share-mountpoint.png)
 
 ## <a name="unmount-a-share"></a>Odinstalowywszę udział
 
@@ -131,19 +130,19 @@ Wykonaj następujące kroki w witrynie Azure portal, aby odinstalować udział.
 
 1. W witrynie Azure portal przejdź do zasobu usługi Data Box Edge, a następnie przejdź do **udziału > bramy.**
 
-    ![Wybieranie udziału](media/data-box-edge-manage-shares/select-share-unmount.png)
+   ![Wybieranie udziału](media/data-box-edge-manage-shares/select-share-unmount.png)
 
 2. Z listy udziałów wybierz udział, który chcesz odinstalować. Chcesz upewnić się, że udział, który odinstalujesz, nie jest używany przez żadne moduły. Jeśli udział jest używany przez moduł, zobaczysz problemy z odpowiednim modułem. Wybierz **opcję Odłącz**.
 
-    ![Wybierz opcję odinstaluj](media/data-box-edge-manage-shares/select-unmount.png)
+   ![Wybierz opcję odinstaluj](media/data-box-edge-manage-shares/select-unmount.png)
 
 3. Po wyświetleniu monitu o potwierdzenie wybierz pozycję **Tak**. Spowoduje to odinstalowanie udziału.
 
-    ![Potwierdź odinstalowanie](media/data-box-edge-manage-shares/confirm-unmount.png)
+   ![Potwierdź odinstalowanie](media/data-box-edge-manage-shares/confirm-unmount.png)
 
 4. Po odinstalowyniu akcji przejdź do listy udziałów. Zobaczysz, że **kolumna Używane dla obliczeń** pokazuje stan udziału jako **Wyłączone**.
 
-    ![Udostępnianie niezamontowane](media/data-box-edge-manage-shares/share-unmounted.png)
+   ![Udostępnianie niezamontowane](media/data-box-edge-manage-shares/share-unmounted.png)
 
 ## <a name="delete-a-share"></a>Usuwanie udziału
 
@@ -151,49 +150,48 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby usunąć udział.
 
 1. Na liście udziałów kliknij udział, który chcesz usunąć.
 
-    ![Wybieranie udziału](media/data-box-edge-manage-shares/delete-share-1.png)
+   ![Wybieranie udziału](media/data-box-edge-manage-shares/delete-share-1.png)
 
 2. Kliknij **pozycję Usuń**.
 
-    ![Klikanie polecenia Usuń](media/data-box-edge-manage-shares/delete-share-2.png)
+   ![Klikanie polecenia Usuń](media/data-box-edge-manage-shares/delete-share-2.png)
 
 3. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **Tak**.
 
-    ![Potwierdzenie usunięcia](media/data-box-edge-manage-shares/delete-share-3.png)
+   ![Potwierdzenie usunięcia](media/data-box-edge-manage-shares/delete-share-3.png)
 
 Lista udostępnień jest aktualizowana w celu odzwierciedlenia usunięcia.
-
 
 ## <a name="refresh-shares"></a>Odświeżanie udziałów
 
 Funkcja odświeżania umożliwia odświeżenie zawartości udziału. Podczas odświeżania udziału inicjowane jest wyszukiwanie w celu odnalezienia wszystkich obiektów platformy Azure, w tym obiektów blob i plików, które zostały dodane do chmury po ostatnio przeprowadzonym odświeżaniu. Te dodatkowe pliki są następnie pobierane w celu odświeżenia zawartości udziału na urządzeniu.
 
 > [!IMPORTANT]
+>
 > - Nie można odświeżyć udziałów lokalnych.
 > - Uprawnienia i listy kontroli dostępu (Listy kontroli dostępu) nie są zachowywane w całej operacji odświeżania. 
 
 Wykonaj następujące czynności w witrynie Azure Portal, aby odświeżyć udział.
 
-1.   W witrynie Azure Portal przejdź do sekcji **Udziały**. Kliknij udział, który chcesz odświeżyć.
+1. W witrynie Azure Portal przejdź do sekcji **Udziały**. Kliknij udział, który chcesz odświeżyć.
 
-    ![Wybieranie udziału](media/data-box-edge-manage-shares/refresh-share-1.png)
+   ![Wybieranie udziału](media/data-box-edge-manage-shares/refresh-share-1.png)
 
-2.   Kliknij przycisk **Odśwież**. 
+2. Kliknij przycisk **Odśwież**.
 
-    ![Klikanie przycisku Odśwież](media/data-box-edge-manage-shares/refresh-share-2.png)
+   ![Klikanie przycisku Odśwież](media/data-box-edge-manage-shares/refresh-share-2.png)
  
-3.   Po wyświetleniu monitu o potwierdzenie kliknij przycisk **Tak**. Zadanie rozpoczyna odświeżanie zawartości udziału lokalnego.
+3. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **Tak**. Zadanie rozpoczyna odświeżanie zawartości udziału lokalnego.
 
-    ![Potwierdzanie odświeżania](media/data-box-edge-manage-shares/refresh-share-3.png)
- 
-4.   W trakcie odświeżania opcja odświeżania jest wyszarzona w menu kontekstowym. Kliknij powiadomienie o zadaniu, aby wyświetlić stan zadania odświeżania.
+   ![Potwierdzanie odświeżania](media/data-box-edge-manage-shares/refresh-share-3.png)
 
-5.   Czas odświeżania zależy od liczby plików w kontenerze platformy Azure, a także od liczby plików znajdujących się na urządzeniu. Po pomyślnym zakończeniu odświeżania znacznik czasu udziału zostanie zaktualizowany. Nawet w przypadku częściowego niepowodzenia odświeżania operacja zostanie uznana za zakończoną, a znacznik czasu zostanie zaktualizowany. Dzienniki błędów odświeżania są również aktualizowane.
+4. W trakcie odświeżania opcja odświeżania jest wyszarzona w menu kontekstowym. Kliknij powiadomienie o zadaniu, aby wyświetlić stan zadania odświeżania.
 
-    ![Zaktualizowany znacznik czasu](media/data-box-edge-manage-shares/refresh-share-4.png)
+5. Czas odświeżania zależy od liczby plików w kontenerze platformy Azure, a także od liczby plików znajdujących się na urządzeniu. Po pomyślnym zakończeniu odświeżania znacznik czasu udziału zostanie zaktualizowany. Nawet w przypadku częściowego niepowodzenia odświeżania operacja zostanie uznana za zakończoną, a znacznik czasu zostanie zaktualizowany. Dzienniki błędów odświeżania są również aktualizowane.
+
+   ![Zaktualizowany znacznik czasu](media/data-box-edge-manage-shares/refresh-share-4.png)
  
 W przypadku awarii zostanie zgłoszony alert. Alert zawiera szczegółowe informacje o przyczynie awarii oraz zalecenia dotyczące rozwiązania problemu. Alert wskazuje również plik, który zawiera pełne podsumowanie awarii — w tym pliki, których nie udało się zaktualizować lub usunąć.
-
 
 ## <a name="sync-storage-keys"></a>Synchronizowanie kluczy magazynu
 
@@ -213,7 +211,6 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby zsynchronizować k
 
 >[!NOTE]
 > Wystarczy zrobić to raz dla danego konta magazynu. Nie trzeba powtarzać tej czynności dla wszystkich udziałów powiązanych z tym samym kontem magazynu.
-
 
 ## <a name="next-steps"></a>Następne kroki
 

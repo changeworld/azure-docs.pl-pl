@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 5a5305ffd388d2573d250d93131c1fed236008b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9356ab0aec375a046a8f200838df296b2cf74bce
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76771631"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984984"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Interfejs API .NET tabeli usługi Azure Cosmos DB: informacje o pobieraniu i wydawaniu
 
@@ -26,8 +26,8 @@ ms.locfileid: "76771631"
 
 |   |   |
 |---|---|
-|**Pobieranie SDK**|[NuGet](https://aka.ms/acdbtablenuget)|
-|**Quickstart**|[Usługa Azure Cosmos DB: Tworzenie aplikacji za pomocą platformy .NET i interfejsu API tabeli](create-table-dotnet.md)|
+|**Pobieranie SDK**|[Nuget](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)|
+|**Szybki start**|[Usługa Azure Cosmos DB: Tworzenie aplikacji za pomocą platformy .NET i interfejsu API tabeli](create-table-dotnet.md)|
 |**Samouczek**|[Azure Cosmos DB: programowanie za pomocą interfejsu Table API na platformie .NET](tutorial-develop-table-dotnet.md)|
 |**Obecne obsługiwane ramy**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
@@ -118,7 +118,7 @@ podczas próby użycia pakietu Microsoft.Azure.CosmosDB.Table NuGet, masz dwie o
     
 * Korzystając z preferowanego narzędzia do zarządzania pakietami NuGet, zainstaluj pakiet Microsoft.Azure.Storage.Common NuGet przed zainstalowaniem witryny Microsoft.Azure.CosmosDB.Table.
 
-## <a name="faq"></a>Najczęściej zadawane pytania
+## <a name="faq"></a>Często zadawane pytania
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

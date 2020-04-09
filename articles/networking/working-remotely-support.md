@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: bcdd938365e50da1f5ae0e830e86692f1b915123
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618912"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982858"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Praca zdalna przy użyciu usług sieciowych platformy Azure
 
@@ -80,16 +80,16 @@ W przypadku wdrożeń w innych chmurach publicznych firma Microsoft może zapewn
 
 W poniższych artykułach omówiono, jak różne funkcje sieci platformy Azure mogą służyć do skalowania użytkowników do pracy zdalnej:
 
-| **Artykułu** | **Ostatnia aktualizacja** |
+| **Artykułu** | **Opis** |
 | --- | --- |
-| [Jak umożliwić użytkownikom pracę zdalną](../vpn-gateway/work-remotely-support.md) | 23 marca 2020 r. |
-| [Starasz się zaspokoić potrzeby związane z pracą w domu? Oto, gdzie wirtualna sieć WAN platformy Azure może pomóc](../virtual-wan/work-remotely-support.md) | 23 marca 2020 r. |
-| [Obsługa dużego natężenia ruchu usługi Application Gateway](../application-gateway/high-traffic-support.md) | 23 marca 2020 r. |
-| [Zagadnienia dotyczące sieciowego urządzenia wirtualnego (NVA) dla pracy zdalnej](../vpn-gateway/nva-work-remotely-support.md)| 23 marca 2020 r. |
-| [Przejście do protokołu OpenVPN lub IKEv2 z protokołu SSTP](https://go.microsoft.com/fwlink/?linkid=2124112) | 23 marca 2020 r. |
-| [Praca zdalna przy użyciu usługi Azure Bastion](../bastion/work-remotely-support.md) | 23 marca 2020 r. |
-| [Tworzenie łączności hybrydowej przy użyciu usługi Azure ExpressRoute w celu obsługi użytkowników zdalnych](../expressroute/work-remotely-support.md) | 23 marca 2020 r. |
-| [Obsługa pracy zdalnej w zaporze platformy Azure](../firewall/remote-work-support.md)|25 marca 2020 r.|
+| [Jak umożliwić użytkownikom pracę zdalną](../vpn-gateway/work-remotely-support.md) | Przejrzyj dostępne opcje konfigurowania dostępu zdalnego dla użytkowników lub uzupełniania istniejących rozwiązań o dodatkową pojemność dla organizacji.|
+| [Starasz się zaspokoić potrzeby związane z pracą w domu? Oto, gdzie wirtualna sieć WAN platformy Azure może pomóc](../virtual-wan/work-remotely-support.md) | Użyj wirtualnej sieci WAN platformy Azure, aby zaspokoić potrzeby związane z łącznością zdalną w organizacji.|
+| [Obsługa dużego natężenia ruchu usługi Application Gateway](../application-gateway/high-traffic-support.md) | Użyj bramy aplikacji z zaporą aplikacji sieci Web (WAF), aby uzyskać skalowalny i bezpieczny sposób zarządzania ruchem do aplikacji sieci web. |
+| [Zagadnienia dotyczące sieciowego urządzenia wirtualnego (NVA) dla pracy zdalnej](../vpn-gateway/nva-work-remotely-support.md)|Przejrzyj wskazówki dotyczące wykorzystywania obiektów na platformie Azure w celu zapewnienia rozwiązań dostępu zdalnego. |
+| [Przejście do protokołu OpenVPN lub IKEv2 z protokołu SSTP](https://go.microsoft.com/fwlink/?linkid=2124112) | Pokonaj limit równoczesnych połączeń 128 SSTP, przechodząc do protokołu OpenVPN lub IKEv2.|
+| [Praca zdalna przy użyciu usługi Azure Bastion](../bastion/work-remotely-support.md) | Zapewnij bezpieczną i bezproblemową łączność RDP/SSH z maszynami wirtualnymi w sieci wirtualnej platformy Azure bezpośrednio w witrynie Azure portal, bez użycia publicznego adresu IP. |
+| [Tworzenie łączności hybrydowej przy użyciu usługi Azure ExpressRoute w celu obsługi użytkowników zdalnych](../expressroute/work-remotely-support.md) | Użyj usługi ExpressRoute dla łączności hybrydowej, aby umożliwić użytkownikom w organizacji pracę zdalną.|
+| [Obsługa pracy zdalnej w zaporze platformy Azure](../firewall/remote-work-support.md)|Chroń zasoby sieci wirtualnej platformy Azure przy użyciu Zapory platformy Azure. |
 
 <!--Link References-->
 [VNet-peer]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview

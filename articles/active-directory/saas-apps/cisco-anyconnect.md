@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 03/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1497b757d77d12cb5b963953224fa8929e987853
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 4af7dc5d55e451e4f6873df42e2b740fd1e5cd56
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385501"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891712"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>Samouczek: Integracja rejestracji jednokrotnej usługi Azure Active Directory (Logowanie jednokrotne) z usługą Cisco AnyConnect
 
@@ -96,6 +96,9 @@ Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azu
 1. W sekcji **Konfigurowanie cisco AnyConnect** skopiuj odpowiednie adresy URL na podstawie wymagań użytkownika.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+
+> [!NOTE]
+> Jeśli chcesz na pokładzie wielu TGTs serwera, to musisz dodać wiele wystąpień aplikacji Cisco AnyConnect z galerii. Również można przekazać własny certyfikat w usłudze Azure AD dla wszystkich tych wystąpień aplikacji. W ten sposób możesz mieć ten sam certyfikat dla aplikacji, ale można skonfigurować inny identyfikator i adres URL odpowiedzi dla każdej aplikacji.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 

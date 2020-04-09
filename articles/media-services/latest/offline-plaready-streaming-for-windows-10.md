@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: ceb6de6556968385d88ac799c11bdb6393072864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 151aadadb5674f7f144d42b1f9d5115501ed381d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513120"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887235"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Przesyłanie strumieniowe playready w trybie offline dla systemu Windows 10 z usługą Media Services w wersji 3
 
@@ -121,10 +121,6 @@ Podsumowując, osiągnęliśmy tryb offline w usłudze Azure Media Services:
 * Zawartość może być hostowana w usłudze Azure Media Services lub usłudze Azure Storage do pobierania progresywnego;
 * Dostarczanie licencji PlayReady może pochodzić z usługi Azure Media Services lub w innym miejscu;
 * Przygotowana płynna zawartość strumieniowa może być nadal używana do przesyłania strumieniowego online za pośrednictwem DASH lub płynnego z PlayReady jako DRM.
-
-## <a name="additional-notes"></a>Uwagi dodatkowe
-
-* Widevine jest usługą świadczoną przez Google Inc. i podlega warunkom korzystania z usługi oraz Polityce prywatności Firmy Google, Inc.
 
 ## <a name="next-steps"></a>Następne kroki
 

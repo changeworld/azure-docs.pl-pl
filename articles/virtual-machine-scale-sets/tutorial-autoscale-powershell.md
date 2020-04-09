@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 50fb0c1c13ceba88b1894fa0f3165dd40b8e23cf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2376f039b93ca22d3d5a988818538419489d2456
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278412"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985613"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Samouczek: skalowanie automatyczne zestawu skalowania maszyn wirtualnych przy użyciu programu Azure PowerShell
 
@@ -209,7 +209,7 @@ Aby narzędzie**CPU Stress** mogło kontynuować działanie, pozostaw otwarte ob
 
 
 ## <a name="monitor-the-active-autoscale-rules"></a>Monitorowanie aktywnych reguł skalowania automatycznego
-Do monitorowania liczby wystąpień maszyn wirtualnych w zestawie skalowania służy pętla **while**. Po upływie pięciu minut reguły skalowania automatycznego rozpoczynają proces skalowania w poziomie w odpowiedzi na obciążenie procesora CPU wygenerowane przez narzędzie **CPU Stress* na poszczególnych wystąpieniach maszyn wirtualnych:
+Do monitorowania liczby wystąpień maszyn wirtualnych w zestawie skalowania służy pętla **while**. Trwa 5 minut dla skalowania automatycznego, aby rozpocząć proces skalowania w poziomie w odpowiedzi na obciążenie procesora cpu generowane przez **CPUStress** na każdym z wystąpień maszyny Wirtualnej:
 
 ```azurepowershell-interactive
 while (1) {Get-AzureRmVmssVM `

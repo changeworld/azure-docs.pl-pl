@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 04/07/2020
 ms.author: alzam
-ms.openlocfilehash: 9250464e3d28bdac20840aa9f69cfac707f73b30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7bc28a03476e773325d14808e1c7ac99103b2d5d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371488"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879449"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurowanie klienta sieci VPN dla połączeń protokołu P2S OpenVPN: uwierzytelnianie usługi Azure AD
 
@@ -154,7 +154,7 @@ Te kroki pomagają skonfigurować połączenie do automatycznego łączenia się
 
     ![Zdiagnozować](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
-## <a name="faq"></a>Najczęściej zadawane pytania
+## <a name="faq"></a>Często zadawane pytania
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Jak dodać sufiksy DNS do klienta sieci VPN?
 
@@ -230,6 +230,16 @@ Można zmodyfikować pobrany plik XML profilu i dodać ** \<wykluczenia \<>\<mar
 </clientconfig>
 </azvpnprofile>
 ```
+
+### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>Czy mogę zaimportować profil z wiersza polecenia?
+
+Profil można zaimportować z wiersza polecenia, umieszczając pobrany plik **azurevpnconfig.xml** w **%userprofile%\AppData\Local\Packages\Microsoft.AzureVpn_8wekyb3d8bbwe\LocalState** i uruchamiając następujące polecenie:
+
+```
+azurevpn -i azurevpnconfig.xml 
+```
+aby wymusić import, użyj przełącznika **-f,** jak również
+
 
 ## <a name="next-steps"></a>Następne kroki
 

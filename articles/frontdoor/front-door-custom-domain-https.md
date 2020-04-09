@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: fae4206e555c85fe0555ce1c4366cd57dd386f1e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: efe2c96c619aaf92efc5b4abf76b6b89c96ebd37
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79471833"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878038"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w niestandardowej domenie usługi Front Door
 
@@ -37,7 +37,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 > [!div class="checklist"]
 > - Włączanie protokołu HTTPS w domenie niestandardowej
 > - Używanie certyfikatu zarządzanego przez usługę AFD 
-> - Używanie własnego certyfikatu (niestandardowego certyfikatu SSL)
+> - Użyj własnego certyfikatu, czyli niestandardowego certyfikatu TLS/SSL
 > - Weryfikowanie domeny
 > - Wyłączanie protokołu HTTPS w domenie niestandardowej
 
@@ -48,9 +48,9 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 Przed wykonaniem kroków opisanych w tym samouczku należy utworzyć usługę Front Door z co najmniej jedną dołączoną domeną niestandardową. Aby uzyskać więcej informacji, zobacz [Samouczek: dodawanie do usługi Front Door domeny niestandardowej](front-door-custom-domain.md).
 
-## <a name="ssl-certificates"></a>Certyfikaty SSL
+## <a name="tlsssl-certificates"></a>Certyfikaty TLS/SSL
 
-Aby włączyć protokół HTTPS w celu bezpiecznego dostarczania zawartości w niestandardowej domenie usługi Front Door, należy użyć certyfikatu SSL. Można użyć certyfikatu zarządzanego przez usługi Azure Front Door lub użyć własnego certyfikatu.
+Aby włączyć protokół HTTPS do bezpiecznego dostarczania zawartości w domenie niestandardowej drzwiami frontowymi, należy użyć certyfikatu TLS/SSL. Można użyć certyfikatu zarządzanego przez usługi Azure Front Door lub użyć własnego certyfikatu.
 
 
 ### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>Opcja 1 (ustawienie domyślne): użycie certyfikatu zarządzanego przez usługę Front Door
@@ -72,7 +72,7 @@ Aby włączyć protokół HTTPS w domenie niestandardowej, wykonaj następujące
 
 ### <a name="option-2-use-your-own-certificate"></a>Opcja 2: użycie własnego certyfikatu
 
-Możesz włączyć funkcję HTTPS przy użyciu własnego certyfikatu. Ten proces odbywa się dzięki integracji z usługą Azure Key Vault, umożliwiającą bezpieczne przechowywanie certyfikatów. Usługa Azure Front Door używa tego bezpiecznego mechanizmu, aby uzyskać certyfikat i wymaga kilku dodatkowych kroków. Tworząc certyfikat SSL, musisz korzystać z dozwolonego urzędu certyfikacji (CA). W przeciwnym razie, jeśli skorzystasz z niedozwolonego urzędu certyfikacji, żądanie zostanie odrzucone. Aby uzyskać listę dozwolonych urzędów certyfikacji, zobacz [Dozwolone urzędy certyfikacji dotyczące włączania niestandardowego protokołu HTTPS w drzwiach frontowych platformy Azure](front-door-troubleshoot-allowed-ca.md).
+Możesz włączyć funkcję HTTPS przy użyciu własnego certyfikatu. Ten proces odbywa się dzięki integracji z usługą Azure Key Vault, umożliwiającą bezpieczne przechowywanie certyfikatów. Usługa Azure Front Door używa tego bezpiecznego mechanizmu, aby uzyskać certyfikat i wymaga kilku dodatkowych kroków. Podczas tworzenia certyfikatu TLS/SSL należy go utworzyć z dozwolonym urzędem certyfikacji(CA). W przeciwnym razie, jeśli skorzystasz z niedozwolonego urzędu certyfikacji, żądanie zostanie odrzucone. Aby uzyskać listę dozwolonych urzędów certyfikacji, zobacz [Dozwolone urzędy certyfikacji dotyczące włączania niestandardowego protokołu HTTPS w drzwiach frontowych platformy Azure](front-door-troubleshoot-allowed-ca.md).
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Przygotowywanie certyfikatu i konta usługi Azure Key Vault
  
@@ -84,7 +84,7 @@ Możesz włączyć funkcję HTTPS przy użyciu własnego certyfikatu. Ten proces
 2. Certyfikaty usługi Azure Key Vault: jeśli masz już certyfikat, możesz przekazać go bezpośrednio na konto usługi Azure Key Vault lub utworzyć nowy certyfikat bezpośrednio za pomocą usługi Azure Key Vault za pośrednictwem jednego z partnerskich urzędów certyfikacji, z którymi zintegrowana jest usługa Azure Key Vault. Przekaż certyfikat jako obiekt **certyfikatu,** a nie **jako tajny**.
 
 > [!NOTE]
-> W przypadku własnego certyfikatu SSL drzwiami frontowymi nie obsługują certyfikatów z algorytmami kryptografii EC.
+> W przypadku własnego certyfikatu TLS/SSL drzwiami frontowymi nie obsługują certyfikatów z algorytmami kryptografii EC.
 
 #### <a name="register-azure-front-door"></a>Rejestrowanie drzwi y frontowej platformy Azure
 
@@ -260,7 +260,7 @@ W poniższej tabeli przedstawiono postęp operacji w przypadku wyłączenia prot
 
 4. *Czy używanie certyfikatu SAN jest mniejsze bezpieczne niż certyfikatu dedykowanego?*
     
-    Certyfikat SAN działa zgodnie z tymi samymi standardami szyfrowania i zabezpieczeń, co certyfikat dedykowany. Wszystkie wystawiane certyfikaty SSL używają algorytmu SHA-256, który pozwala na stosowanie rozszerzonych zabezpieczeń serwerów.
+    Certyfikat SAN działa zgodnie z tymi samymi standardami szyfrowania i zabezpieczeń, co certyfikat dedykowany. Wszystkie wystawione certyfikaty TLS/SSL używają protokołu SHA-256 w celu zwiększenia bezpieczeństwa serwera.
 
 5. *Czy muszę mieć rekord autoryzacji urzędu certyfikacji z moim dostawcą DNS?*
 

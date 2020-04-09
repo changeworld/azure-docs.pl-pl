@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie autonomicznego wystąpienia Prometeusza w klastrze OpenShift usługi Azure Red Hat | Dokumenty firmy Microsoft
+title: Wdrażanie wystąpienia Prometeusza w klastrze OpenShift usługi Azure Red Hat
 description: Utwórz wystąpienie Prometheus w klastrze Azure Red Hat OpenShift, aby monitorować metryki aplikacji.
 author: makdaam
 ms.author: b-lejaku
@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: prometeusz, aro, openshift, metryki, czerwony kapelusz
-ms.openlocfilehash: f81a993caa31578e689fb3a90108f3cf0ca81fc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f22df587f51af735e0ea663e53f6eef14d60692
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69875136"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886892"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Wdrażanie autonomicznego wystąpienia Prometeusza w klastrze OpenShift usługi Azure Red Hat
 

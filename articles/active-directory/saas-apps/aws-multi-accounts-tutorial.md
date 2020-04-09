@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracja usługi Azure Active Directory z usługami Amazon Web Services (AWS) w celu połączenia wielu kont | Dokumenty firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure AD a wieloma kontami usług Amazon Web Services (AWS).
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure AD i Amazon Web Services (AWS) (Starszy samouczek).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,21 +11,20 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2019
+ms.date: 04/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edd54352b1328c95ae2c3e466003b64eaa0fcfde
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a6ab13dea1a1db96cbb2f2ac70b9779eca60591
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368004"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885391"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Samouczek: Integracja usługi Azure Active Directory z wieloma kontami amazon web services (AWS)
+# <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Samouczek: Integracja usługi Azure Active Directory z usługami Amazon Web Services (AWS) (starszy samouczek)
 
-W tym samouczku dowiesz się, jak zintegrować usługę Azure Active Directory (Azure AD) z wieloma kontami amazon web services (AWS).
+W tym samouczku dowiesz się, jak zintegrować usługę Azure Active Directory (Azure AD) z usługami Amazon Web Services (AWS) (Starszy samouczek).
 
 Integracja usług Amazon Web Services (AWS) z usługą Azure AD daje następujące korzyści:
 
@@ -37,8 +36,8 @@ Jeśli chcesz dowiedzieć się więcej szczegółów na temat integracji aplikac
 
 ![Usługi Amazon Web Services (AWS) na liście wyników](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
->[!NOTE]
->Należy pamiętać, łącząc jedną aplikację AWS do wszystkich kont AWS nie jest naszym zalecanym podejściem. Zamiast tego zaleca się użycie [tej](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) metody do skonfigurowania wielu wystąpień konta AWS do wielu wystąpień aplikacji AWS w usłudze Azure AD.
+> [!NOTE]
+> Należy pamiętać, łącząc jedną aplikację AWS do wszystkich kont AWS nie jest naszym zalecanym podejściem. Zamiast tego zaleca się użycie [tej](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) metody do skonfigurowania wielu wystąpień konta AWS do wielu wystąpień aplikacji AWS w usłudze Azure AD. Tego [podejścia](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) należy używać tylko wtedy, gdy jest w nim bardzo mniejsza liczba kont AWS i ról. [ten](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) model nie jest skalowalny w miarę wzrostu liczby kont AWS i ról wewnątrz tych kont. Również [takie](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) podejście nie używa funkcji importowania roli AWS przy użyciu inicjowania obsługi administracyjnej użytkowników usługi Azure AD i dlatego należy ręcznie dodać/zaktualizować/usunąć role. Aby uzyskać inne ograniczenia dotyczące [tego](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) podejścia, zapoznaj się z poniższymi szczegółami.
 
 **Należy pamiętać, że nie zaleca się stosowania tego podejścia z następujących powodów:**
 
@@ -70,32 +69,22 @@ Aby przetestować czynności opisane w tym samouczku, należy postępować zgodn
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
 * Usługi Amazon Web Services (AWS) obsługują logowanie jednokrotne inicjowane przez **dostawcę usługi i dostawcę tożsamości**
+* Po skonfigurowaniu amazon web services (AWS) można wymusić kontrolę sesji, które chronią eksfiltracji i infiltracji poufnych danych organizacji w czasie rzeczywistym. Kontrola sesji rozciąga się od dostępu warunkowego. [Dowiedz się, jak wymusić kontrolę nad sesją za pomocą programu Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>Dodawanie usług Amazon Web Services (AWS) z galerii
 
 Aby skonfigurować integrację usług Amazon Web Services (AWS) z usługą Azure AD, należy dodać usługi Amazon Web Services (AWS) z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać usługi Amazon Web Services (AWS) z galerii, wykonaj następujące kroki:**
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta służbowego lub konta firmy Microsoft.
+1. W lewym okienku nawigacji wybierz usługę **Azure Active Directory.**
+1. Przejdź do **aplikacji korporacyjnych,** a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **Amazon Web Services (AWS)** w polu wyszukiwania.
+1. Wybierz **Amazon Web Services (AWS)** z panelu wyników, a następnie dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. Po dodaniu aplikacji przejdź do strony **Właściwości** i skopiuj **identyfikator obiektu**.
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
-
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
-
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
-
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
-
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
-
-4. W polu wyszukiwania wpisz **Amazon Web Services (AWS)**, wybierz pozycję **Amazon Web Services (AWS)** na panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
-
-     ![Usługi Amazon Web Services (AWS) na liście wyników](common/search-new-app.png)
-
-5. Po dodaniu aplikacji przejdź do strony **Właściwości** i skopiuj **identyfikator obiektu**.
-
-    ![Usługi Amazon Web Services (AWS) na liście wyników](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_properties.png)
+    ![Usługi Amazon Web Services (AWS) na liście wyników](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-properties.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
@@ -129,9 +118,7 @@ W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure 
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. W sekcji **Podstawowa konfiguracja protokołu SAML** użytkownik nie musi wykonywać żadnych kroków, ponieważ aplikacja jest już wstępnie zintegrowana z platformą Azure.
-
-    ![image](common/preintegrated.png)
+4. W sekcji **Podstawowa konfiguracja SAML** użytkownik nie musi wykonywać żadnego kroku, ponieważ aplikacja jest już wstępnie zintegrowana z platformą Azure i kliknij przycisk **Zapisz**.
 
 5. Aplikacja usług Amazon Web Services (AWS) oczekuje asercji SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty i oświadczenia użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą narzędzia SAML** kliknij przycisk **Edytuj,** aby otworzyć okno dialogowe **Atrybuty & oświadczenia użytkownika.**
 
@@ -141,9 +128,9 @@ W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure 
 
     | Nazwa  | Atrybut źródłowy  | Przestrzeń nazw |
     | --------------- | --------------- | --------------- |
-    | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
-    | Rola            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
-    | SessionDuration             | „podaj wartość z zakresu od 900 sekund (15 minut) do 43200 sekund (12 godzin)” |  https://aws.amazon.com/SAML/Attributes |
+    | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
+    | Rola            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
+    | SessionDuration             | „podaj wartość z zakresu od 900 sekund (15 minut) do 43200 sekund (12 godzin)” |  `https://aws.amazon.com/SAML/Attributes` |
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
@@ -171,19 +158,19 @@ W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure 
 
 1. W innym oknie przeglądarki zaloguj się do usług Amazon Web Services (AWS) jako administrator.
 
-2. Kliknij pozycję **AWS Home** (Strona główna usług AWS).
+1. Kliknij pozycję **AWS Home** (Strona główna usług AWS).
 
     ![Konfigurowanie logowania jednokrotnego — strona główna][11]
 
-3. Kliknij pozycję **Identity and Access Management** (Zarządzanie tożsamościami i dostępem).
+1. Kliknij pozycję **Identity and Access Management** (Zarządzanie tożsamościami i dostępem).
 
     ![Konfigurowanie logowania jednokrotnego — tożsamość][12]
 
-4. Kliknij pozycję **Identity Providers** (Dostawcy tożsamości), a następnie pozycję **Create Provider** (Utwórz dostawcę).
+1. Kliknij pozycję **Identity Providers** (Dostawcy tożsamości), a następnie pozycję **Create Provider** (Utwórz dostawcę).
 
     ![Konfigurowanie logowania jednokrotnego — dostawca][13]
 
-5. Na stronie okna dialogowego **Configure Provider** (Konfigurowanie dostawcy) wykonaj następujące kroki:
+1. Na stronie okna dialogowego **Configure Provider** (Konfigurowanie dostawcy) wykonaj następujące kroki:
 
     ![Okno dialogowe Configure Single Sign-On (Konfigurowanie logowania jednokrotnego)][14]
 
@@ -195,15 +182,15 @@ W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure 
 
     d. Kliknij pozycję **Next Step** (Następny krok).
 
-6. Na stronie okna dialogowego **Verify Provider Information** (Weryfikowanie informacji o dostawcy) kliknij pozycję **Create** (Utwórz).
+1. Na stronie okna dialogowego **Verify Provider Information** (Weryfikowanie informacji o dostawcy) kliknij pozycję **Create** (Utwórz).
 
     ![Konfigurowanie logowania jednokrotnego — weryfikowanie][15]
 
-7. Kliknij pozycję **Roles** (Role), a następnie **Create role** (Utwórz rolę).
+1. Kliknij pozycję **Roles** (Role), a następnie **Create role** (Utwórz rolę).
 
     ![Konfigurowanie logowania jednokrotnego — role][16]
 
-8. Na stronie **Create role** (Tworzenie roli) wykonaj następujące kroki:  
+1. Na stronie **Create role** (Tworzenie roli) wykonaj następujące kroki:  
 
     ![Konfigurowanie logowania jednokrotnego — zaufanie][19]
 
@@ -215,51 +202,72 @@ W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure 
   
     d. Kliknij **przycisk Dalej: Uprawnienia**.
 
-9. W oknie dialogowym **Attach Permissions Policies** (Dołączanie zasad uprawnień) dołącz zasady odpowiednie dla Twojej organizacji. Kliknij **przycisk Dalej: Recenzja**.  
+1. Szukaj **w programie Access administratora** na pasku wyszukiwania i zaznacz pole wyboru **AdministratorAkcesa,** a następnie kliknij przycisk **Dalej: Znaczniki**.
 
-    ![Konfigurowanie logowania jednokrotnego — zasady][33]
+    ![Wybierz pozycję Dostęp administratora](./media/aws-multi-accounts-tutorial/administrator-access.png)
 
-10. W oknie dialogowym **Review** (Przegląd) wykonaj następujące kroki:
+1. W sekcji **Dodawanie znaczników (opcjonalnie)** wykonaj następujące czynności:
+
+    ![Wybierz pozycję Dostęp administratora](./media/aws-multi-accounts-tutorial/config2.png)
+
+    a. W obszarze **tekstowym Klucz** wprowadź nazwę klucza dla ex: Azureadtest.
+
+    b. W polu **tekstowym Wartość (opcjonalnie)** wprowadź wartość `accountname-aws-admin`klucza w następującym formacie . Nazwa konta powinna być w małych literach.
+
+    d. Kliknij **dalej: Recenzja**.
+
+1. W oknie dialogowym **Review** (Przegląd) wykonaj następujące kroki:
 
     ![Konfigurowanie logowania jednokrotnego — przegląd][34]
 
-    a. W polu tekstowym **Role name** (Nazwa roli) podaj nazwę roli.
+    a. W polu tekstowym **Nazwa roli** wprowadź wartość `accountname-aws-admin`w następującym wzorzec .
 
-    b. W polu tekstowym **Role description** (Opis roli) podaj opis.
+    b. W polu tekstowym **Opis roli** wprowadź tę samą wartość, która została użyta dla nazwy roli.
 
     d. Kliknij pozycję **Create Role** (Utwórz rolę).
 
     d. Utwórz potrzebną liczbę ról i zamapuj je na dostawcę tożsamości.
 
-11. Wyloguj się z bieżącego konta AWS i zaloguj się przy innym koncie, na którym chcesz skonfigurować logowanie jednokrotne za pomocą usługi Azure AD.
+    > [!NOTE]
+    > Podobnie utworzyć pozostałe inne role, takie jak accountname-finance-admin, accountname-read-only-user, accountname-devops-user, accountname-tpm-user z różnymi zasadami, które mają być dołączone. Później również te zasady roli można zmienić zgodnie z wymaganiami na konto AWS, ale zawsze lepiej zachować te same zasady dla każdej roli na kontach AWS.
 
-12. Wykonaj krok od 2 do kroku 10, aby utworzyć wiele ról, które chcesz skonfigurować dla tego konta. Jeśli masz więcej niż dwa konta, wykonaj te same kroki dla wszystkich kont, aby utworzyć dla nich role.
+1. Proszę zanotować identyfikator konta dla tego konta AWS albo z właściwości EC2 lub pulpit nawigacyjny IAM, jak zaznaczono poniżej:
 
-13. Po utworzeniu wszystkich ról na kontach są one wyświetlane na liście **Role** dla tych kont.
+    ![Wybierz pozycję Dostęp administratora](./media/aws-multi-accounts-tutorial/aws-accountid.png)
 
-    ![Konfiguracja ról](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_listofroles.png)
+1. Teraz zaloguj się do [witryny Azure portal](https://portal.azure.com/) i przejdź do **grupy**.
 
-14. Musimy przechwycić wszystkie arn roli i zaufanych jednostek dla wszystkich ról na wszystkich kontach, które musimy mapować ręcznie za pomocą aplikacji usługi Azure AD.
+1. Utwórz nowe grupy o takiej samej nazwie jak role IAM utworzone wcześniej i zanotuj **identyfikatory obiektów** tych nowych grup.
 
-15. Kliknij role, aby skopiować wartości **ARN** roli i **zaufanych jednostek.** Te wartości są potrzebne dla wszystkich ról, które należy utworzyć w usłudze Azure AD.
+    ![Wybierz pozycję Dostęp administratora](./media/aws-multi-accounts-tutorial/copy-objectids.png)
 
-    ![Konfiguracja ról](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_role_summary.png)
+1. Wyloguj się z bieżącego konta AWS i zaloguj się przy innym koncie, na którym chcesz skonfigurować logowanie jednokrotne za pomocą usługi Azure AD.
 
-16. Wykonaj powyższy krok dla wszystkich ról na wszystkich kontach i przechowuj wszystkie z nich w formacie **Role ARN,Zaufane jednostki** w notatniku.
+1. Po utworzeniu wszystkich ról na kontach są one wyświetlane na liście **Role** dla tych kont.
 
-17. Otwórz [Eksploratora wykresów firmy Microsoft](https://developer.microsoft.com/graph/graph-explorer) w innym oknie.
+    ![Konfiguracja ról](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-listofroles.png)
 
-    a. Zaloguj się do witryny Eksploratora wykresów przy użyciu poświadczeń administratora globalnego/współadministratora dla dzierżawy.
+1. Musimy przechwycić wszystkie arn roli i zaufanych jednostek dla wszystkich ról na wszystkich kontach, które musimy mapować ręcznie za pomocą aplikacji usługi Azure AD.
+
+1. Kliknij role, aby skopiować wartości **ARN** roli i **zaufanych jednostek.** Te wartości są potrzebne dla wszystkich ról, które należy utworzyć w usłudze Azure AD.
+
+    ![Konfiguracja ról](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-role-summary.png)
+
+1. Wykonaj powyższy krok dla wszystkich ról na wszystkich kontach i przechowuj wszystkie z nich w formacie **Role ARN,Zaufane jednostki** w notatniku.
+
+1. Otwórz [Eksploratora wykresów firmy Microsoft](https://developer.microsoft.com/graph/graph-explorer) w innym oknie.
+
+    a. Zaloguj się do witryny Eksploratora wykresu firmy Microsoft przy użyciu poświadczeń administratora globalnego/współadministratora dla dzierżawy.
 
     b. Musisz mieć wystarczające uprawnienia do tworzenia ról. Kliknij na **zmodyfikowanie uprawnień,** aby uzyskać wymagane uprawnienia.
 
-    ![Okno dialogowe Eksplorator wykresu](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
+    ![Okno dialogowe Eksploratora wykresów firmy Microsoft](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
     d. Wybierz następujące uprawnienia z listy (jeśli jeszcze ich nie masz) i kliknij "Modyfikuj uprawnienia" 
 
-    ![Okno dialogowe Eksplorator wykresu](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
+    ![Okno dialogowe Eksploratora wykresów firmy Microsoft](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
 
-    d. Spowoduje to poproszenie o ponowne zalogowanie się i zaakceptowanie zgody. Po zaakceptowaniu zgody użytkownik jest ponownie zalogowany do Eksploratora wykresów.
+    d. Spowoduje to poproszenie o ponowne zalogowanie się i zaakceptowanie zgody. Po zaakceptowaniu zgody użytkownik jest ponownie zalogowany do Eksploratora wykresów firmy Microsoft.
 
     e. Zmień wersję rozwijanej na **wersję beta**. Aby pobrać wszystkie jednostki usługi z dzierżawy, należy użyć następującej kwerendy:
 
@@ -267,17 +275,17 @@ W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure 
 
     Jeśli używasz wielu katalogów, możesz użyć następującego wzorca, który ma swoją domenę podstawową`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
-    ![Okno dialogowe Eksplorator wykresu](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
+    ![Okno dialogowe Eksploratora wykresów firmy Microsoft](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
     f. Z listy podmiotów usługi pobrane, pobierz ten, który należy zmodyfikować. Można również użyć Ctrl +F do wyszukiwania aplikacji ze wszystkich wymienionych ServicePrincipals. Następujące zapytanie można użyć przy użyciu **identyfikatora obiektu,** który został skopiowany z usługi Azure AD Właściwości strony, aby uzyskać do odpowiedniego jednostki usługi.
 
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-    ![Okno dialogowe Eksplorator wykresu](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
+    ![Okno dialogowe Eksploratora wykresów firmy Microsoft](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
     g. Wyodrębnij właściwość appRoles z obiektu jednostki usługi.
 
-    ![Okno dialogowe Eksplorator wykresu](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
+    ![Okno dialogowe Eksploratora wykresów firmy Microsoft](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
     h. Teraz należy wygenerować nowe role dla aplikacji. 
 
@@ -325,22 +333,22 @@ W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure 
     > [!Note]
     > Nowe role można dodawać tylko po **msiam_access** dla operacji poprawki. Ponadto można dodać dowolną liczbę ról, ile chcesz, aby według potrzeb organizacji. Usługa Azure AD wyśle **wartość** tych ról jako wartość oświadczenia w odpowiedzi SAML.
 
-    j. Wróć do Eksploratora grafu firmy Microsoft i zmień metodę z **GET** na **PATCH**. Popraw obiekt service principal, aby mieć żądane role, aktualizując właściwość appRoles podobną do pokazanej powyżej w przykładzie. Kliknij **przycisk Uruchom kwerendę,** aby wykonać operację poprawki. Komunikat o sukcesie potwierdza utworzenie roli aplikacji Amazon Web Services.
+    j. Wróć do Eksploratora wykresu Microsoft i zmień metodę z **GET** na **PATCH**. Popraw obiekt service principal, aby mieć żądane role, aktualizując właściwość appRoles podobną do pokazanej powyżej w przykładzie. Kliknij **przycisk Uruchom kwerendę,** aby wykonać operację poprawki. Komunikat o sukcesie potwierdza utworzenie roli aplikacji Amazon Web Services.
 
-    ![Okno dialogowe Eksploratora programu Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+    ![Okno dialogowe Eksploratora wykresów firmy Microsoft](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
-18. Po załataniu jednostki usługi z większą liczą się ról, można przypisać użytkowników/grup do odpowiednich ról. Można to zrobić, przechodząc do portalu i przechodząc do aplikacji Amazon Web Services. Kliknij kartę **Użytkownicy i grupy** u góry.
+1. Po załataniu jednostki usługi z większą liczą się ról, można przypisać użytkowników/grup do odpowiednich ról. Można to zrobić, przechodząc do portalu i przechodząc do aplikacji Amazon Web Services. Kliknij kartę **Użytkownicy i grupy** u góry.
 
-19. Zalecamy utworzenie nowych grup dla każdej roli usługi AWS, aby można było przypisać tę konkretną rolę w tej grupie. Należy zauważyć, że jest to od jednego do jednego mapowania dla jednej grupy do jednej roli. Następnie można dodać członków, którzy należą do tej grupy.
+1. Zalecamy utworzenie nowych grup dla każdej roli usługi AWS, aby można było przypisać tę konkretną rolę w tej grupie. Należy zauważyć, że jest to od jednego do jednego mapowania dla jednej grupy do jednej roli. Następnie można dodać członków, którzy należą do tej grupy.
 
-20. Po utworzeniu grup wybierz grupę i przypisz ją do aplikacji.
+1. Po utworzeniu grup wybierz grupę i przypisz ją do aplikacji.
 
     ![Konfigurowanie dodawania logowania jednokrotnego](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
 
     > [!Note]
     > Grupy zagnieżdżone nie są obsługiwane podczas przypisywania grup.
 
-21. Aby przypisać rolę do grupy, wybierz rolę i kliknij przycisk **Przypisz** u dołu strony.
+1. Aby przypisać rolę do grupy, wybierz rolę i kliknij przycisk **Przypisz** u dołu strony.
 
     ![Konfigurowanie dodawania logowania jednokrotnego](./media/aws-multi-accounts-tutorial/graph-explorer-new6.png)
 
@@ -353,19 +361,21 @@ W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure A
 
 Po kliknięciu kafelka Amazon Web Services (AWS) w Panelu dostępu należy uzyskać stronę aplikacji Amazon Web Services (AWS) z opcją wyboru roli.
 
-![Konfigurowanie dodawania logowania jednokrotnego](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_screen.png)
+![Konfigurowanie dodawania logowania jednokrotnego](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-screen.png)
 
 Można również sprawdzić odpowiedź SAML, aby wyświetlić role przekazywane jako oświadczenia.
 
-![Konfigurowanie dodawania logowania jednokrotnego](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_saml.png)
+![Konfigurowanie dodawania logowania jednokrotnego](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-saml.png)
 
 Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Jak skonfigurować inicjowanie obsługi administracyjnej przy użyciu interfejsów API programu Microsoft Graph](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
+* [Jak skonfigurować inicjowanie obsługi administracyjnej przy użyciu interfejsów API programu MS Graph](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
 * [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Co to jest kontrola sesji w usłudze Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+* [Jak chronić Amazon Web Services (AWS) dzięki zaawansowanej widoczności i kontroli](https://docs.microsoft.com/cloud-app-security/protect-aws)
 
 <!--Image references-->
 
@@ -380,11 +390,11 @@ Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie d
 [19]: ./media/aws-multi-accounts-tutorial/ic795025.png
 [32]: ./media/aws-multi-accounts-tutorial/ic7950251.png
 [33]: ./media/aws-multi-accounts-tutorial/ic7950252.png
-[35]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_provisioning.png
-[34]: ./media/aws-multi-accounts-tutorial/ic7950253.png
-[36]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_securitycredentials.png
-[37]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_securitycredentials_continue.png
-[38]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_createnewaccesskey.png
-[39]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_provisioning_automatic.png
-[40]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_provisioning_testconnection.png
+[35]: ./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-provisioning.png
+[34]: ./media/aws-multi-accounts-tutorial/config3.png
+[36]: ./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-securitycredentials.png
+[37]: ./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-securitycredentials-continue.png
+[38]: ./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-createnewaccesskey.png
+[39]: ./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-provisioning-automatic.png
+[40]: ./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-provisioning-testconnection.png
 [41]: ./media/aws-multi-accounts-tutorial/

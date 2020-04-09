@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3738da806ff36cdb7e8d561b88a457a5264eb76
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086986"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886929"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Tworzenie zasad zapory aplikacji sieci Web dla bramy aplikacji
 
@@ -24,6 +24,8 @@ Jeśli brama aplikacji ma zastosowaną zasadę, a następnie zastosuj inną zasa
 
    > [!NOTE]
    > Zasady WAF dla witryn i identyfikatorów URI są w publicznej wersji zapoznawczej. Oznacza to, że ta funkcja podlega dodatkowym Warunkom użytkowania firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+   > [!NOTE]
+   > Gdy zasady zapory jest skojarzony z WAF, zawsze musi być zasady skojarzone z tym WAF. Możesz zastąpić tę zasadę, ale całkowite odłączenie zasad od WAF nie jest obsługiwane. 
 
 Wszystkie nowe ustawienia WAF zapory aplikacji sieci Web (reguły niestandardowe, zarządzane konfiguracje rulset, wykluczenia itp.) znajdują się wewnątrz zasad WAF. Jeśli masz istniejący WAF, te ustawienia mogą nadal istnieć w konfiguracji WAF. Aby uzyskać instrukcje dotyczące przechodzenia do nowych zasad WAF, zobacz [Migrowanie configa WAF do zasad WAF](#migrate) w dalszej części tego artykułu. 
 

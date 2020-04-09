@@ -2,26 +2,21 @@
 title: Tworzenie demona wielodostępnego, który korzysta z punktu końcowego platformy tożsamości firmy Microsoft
 description: W tym samouczku dowiesz się, jak wywołać ASP.NET internetowy interfejs API chroniony przez usługę Azure Active Directory z aplikacji pulpitu systemu Windows (WPF). Klient WPF uwierzytelnia użytkownika, żąda tokenu dostępu i wywołuje internetowy interfejs API.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 635b12cc2ffc4d318eaaa74fffc17e4ce4d58c0b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a4d7030f7a58a6252c6e596fc2c248163694a1e8
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129951"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880877"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Samouczek: Tworzenie demona wielodostępnego, który używa punktu końcowego platformy tożsamości firmy Microsoft
 
@@ -216,7 +211,7 @@ Ten projekt ma projekty aplikacji sieci web i interfejsu API sieci Web. Aby wdro
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Tworzenie i publikowanie dotnet-web-daemon-v2 w witrynie sieci Web platformy Azure
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. W lewym górnym rogu wybierz pozycję **Utwórz zasób**.
 1. Wybierz **pozycję Web** > **Web App**, a następnie nadaj swojej witrynie nazwę. Na przykład nadaj jej nazwę **dotnet-web-daemon-v2-contoso.azurewebsites.net**.
 1. Wybierz informacje o **subskrypcji,** **grupie zasobów**oraz **planie i lokalizacji usługi aplikacji**. **System operacyjny** to **Windows**, a **Publish** to **Code**.

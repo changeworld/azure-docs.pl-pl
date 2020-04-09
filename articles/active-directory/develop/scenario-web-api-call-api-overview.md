@@ -2,24 +2,21 @@
 title: Tworzenie internetowego interfejsu API, który wywołuje internetowe interfejsy API — platforma tożsamości firmy Microsoft | Azure
 description: Dowiedz się, jak utworzyć internetowy interfejs API, który wywołuje podrzędne interfejsy API sieci Web (omówienie).
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 467ff2f789cc83bc5651d831838da0b5c922c839
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88a0177755fbd913bdaaf0ecf3e12c62dee294c1
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76701743"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885076"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>Scenariusz: internetowy interfejs API, który wywołuje internetowe interfejsy API
 
@@ -44,4 +41,4 @@ Część rejestracji aplikacji, która jest związana z uprawnieniami interfejsu
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Rejestrowanie aplikacji](scenario-web-api-call-api-app-registration.md)
+> [Rejestracja aplikacji](scenario-web-api-call-api-app-registration.md)

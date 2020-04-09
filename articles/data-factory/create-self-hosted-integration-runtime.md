@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 03/10/2020
-ms.openlocfilehash: 6302a7d6ffe7218d339121ec98a624f8e98356f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 3fe5a58046776d00ce68189cf724a995380869eb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065593"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887310"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska Integration Runtime
 
@@ -62,11 +62,14 @@ Poniższe kroki można wykonać, aby utworzyć samodzielnie hostowane podczerwon
 
    ![Tworzenie środowiska Integration Runtime](media/create-self-hosted-integration-runtime/new-integration-runtime.png)
 
-1. W oknie **Ustawienia środowiska wykonawczego integracji** wybierz pozycję **Wykonaj działania związane z przenoszeniem i wysyłaniem danych do obliczeń zewnętrznych,** a następnie wybierz pozycję **Kontynuuj**.
+1. Na stronie **Ustawienia środowiska wykonawczego integracji** wybierz pozycję **Azure, Self-Hosted**, a następnie wybierz pozycję **Kontynuuj**. 
+
+1. Na następnej stronie wybierz **pozycję Hostowane samodzielnie,** aby utworzyć samodzielną ir, a następnie wybierz pozycję **Kontynuuj**.
+   ![Tworzenie samodzielnego podczerwony](media/create-self-hosted-integration-runtime/new-selfhosted-ir.png)
 
 1. Wprowadź nazwę podczerwonego konta IR i wybierz pozycję **Utwórz**.
 
-1. Wybierz łącze w **obszarze Opcja 1,** aby otworzyć konfigurację ekspresową na komputerze. Możesz też wykonać czynności opisane w **obszarze Opcja 2,** aby skonfigurować je ręcznie. Poniższe instrukcje są oparte na konfiguracji ręcznej:
+1. Na stronie **Ustawienia środowiska wykonawczego integracji** wybierz łącze w obszarze **Opcja 1,** aby otworzyć konfigurację ekspresową na komputerze. Możesz też wykonać czynności opisane w **obszarze Opcja 2,** aby skonfigurować je ręcznie. Poniższe instrukcje są oparte na konfiguracji ręcznej:
 
    ![Instalacja środowiska Integration Runtime](media/create-self-hosted-integration-runtime/integration-runtime-setting-up.png)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: b9b66c379714c2f4fa2421876fda3bdb500ce6c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9e86706ecd4e5b2526e1d801dda45ed6b345c6
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250388"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887252"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Monitorowanie usługi Azure Cosmos DB
 Jeśli masz krytyczne aplikacje i procesy biznesowe korzystające z zasobów platformy Azure, chcesz monitorować te zasoby pod kątem ich dostępności, wydajności i działania. W tym artykule opisano dane monitorowania generowane przez bazy danych usługi Azure Cosmos i jak można używać funkcji usługi Azure Monitor do analizowania i ostrzegania o tych danych.
@@ -38,7 +38,7 @@ Poniższe sekcje opierają się na tym artykule, opisując określone dane zebra
 
 ## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Wyświetlanie metryk poziomu operacji dla usługi Azure Cosmos DB
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. Wybierz **pozycję Monitor** z lewego paska nawigacyjnego i wybierz pozycję **Metryki**.
 
@@ -63,10 +63,6 @@ Można również filtrować metryki i wykres wyświetlany przez określony **Naz
 Metryki można grupować za pomocą opcji **Zastosuj podział.** Na przykład można pogrupować jednostki żądań według typu operacji i wyświetlić wykres dla wszystkich operacji jednocześnie, jak pokazano na poniższej ilustracji:
 
 ![Dodaj zastosuj filtr podziału](./media/monitor-cosmos-db/apply-metrics-splitting.png)
-
-Oto kolejny przykład, aby wyświetlić metryki opóźnienia po stronie serwera dla określonej bazy danych, kontenera lub operacji:
-
-![Metryki opóźnienia po stronie serwera](./media/monitor-cosmos-db/serverside-latency-metric.png)
 
 ## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>Monitorowanie danych zebranych z usługi Azure Cosmos DB
 

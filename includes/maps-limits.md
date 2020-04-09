@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/29/2018
 ms.author: jinzh
 ms.custom: include file
-ms.openlocfilehash: 2bf9f75442ccf57aa28e6a12f415fb6e4ede78ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1ce91aede9328237aef8e5d5b7d74a3b72f10d50
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67183625"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887425"
 ---
 W poniższej tabeli przedstawiono limit użycia dla warstwy cenowej Usługi Azure Maps S0. Limit użycia zależy od warstwy cenowej. 
 
@@ -26,6 +26,6 @@ W poniższej tabeli przedstawiono limit rozmiaru danych dla usługi Azure Maps. 
 
 | Zasób                              | Limit |
 |---------------------------------------|:---------------------:|
-| Maksymalny rozmiar danych |   50 MB  |
+| Maksymalny rozmiar danych |   1 GB  |
 
 Aby uzyskać więcej informacji na temat warstw cenowych usługi Azure Maps, zobacz [Cennik usługi Azure Maps](https://azure.microsoft.com/pricing/details/azure-maps/).

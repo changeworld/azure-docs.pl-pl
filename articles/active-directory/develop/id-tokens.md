@@ -1,5 +1,5 @@
 ---
-title: Odwołanie do tokenu identyfikatora platformy tożsamości firmy Microsoft | Dokumenty firmy Microsoft
+title: Odwołanie do tokenu identyfikatora platformy tożsamości firmy Microsoft
 description: Dowiedz się, jak używać id_tokens emitowanych przez punkty końcowe platformy Azure AD w wersji 1.0 i platformy tożsamości firmy Microsoft (w wersji 2.0).
 services: active-directory
 author: rwike77
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 1efd027edb85cabcfdc2a170771ef19182b5c9f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ede70719c124caebc541df8578ab2720fc68cd5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160954"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885518"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny identyfikatorów platformy tożsamości firmy Microsoft
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442166"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982707"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Używanie zbiorczego executora wykresu .NET library do wykonywania operacji zbiorczych w interfejsie API gremlin usługi Azure Cosmos DB
 
 Ten samouczek zawiera instrukcje dotyczące używania zbiorczego executora usługi Azure CosmosDB biblioteki .NET do importowania i aktualizowania obiektów wykresu do kontenera interfejsu API usługi Azure Cosmos DB Gremlin. Ten proces korzysta z Graph klasy w [bibliotece executor zbiorczej](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) do tworzenia vertex i Krawędzi obiektów programowo, a następnie wstawić wiele z nich na żądanie sieciowe. To zachowanie można skonfigurować za pośrednictwem biblioteki zbiorczego executora, aby optymalnie wykorzystać zasoby bazy danych i pamięci lokalnej.
 
-W przeciwieństwie do wysyłania zapytań Gremlin do bazy danych, gdzie polecenie jest oceniane, a następnie wykonywane po jednym na raz, przy użyciu biblioteki executor zbiorczej zamiast tego będzie wymagać tworzenia i sprawdzania poprawności obiektów lokalnie. Po utworzeniu obiektów ta biblioteka umożliwia sekwencyjne wysłanie obiektów grafów do usługi bazy danych. Dzięki tej metodzie pozyskiwanie danych może być nawet stukrotnie szybsze, dzięki czemu jest to idealna metoda do początkowej migracji danych lub okresowych operacji przenoszenia danych. Dowiedz się więcej, odwiedzając stronę GitHub [zbiorczej aplikacji wykonawcy programu Azure Cosmos Db Graph.](https://aka.ms/graph-bulkexecutor-sample)
+W przeciwieństwie do wysyłania zapytań Gremlin do bazy danych, gdzie polecenie jest oceniane, a następnie wykonywane po jednym na raz, przy użyciu biblioteki executor zbiorczej zamiast tego będzie wymagać tworzenia i sprawdzania poprawności obiektów lokalnie. Po utworzeniu obiektów ta biblioteka umożliwia sekwencyjne wysłanie obiektów grafów do usługi bazy danych. Dzięki tej metodzie pozyskiwanie danych może być nawet stukrotnie szybsze, dzięki czemu jest to idealna metoda do początkowej migracji danych lub okresowych operacji przenoszenia danych. Dowiedz się więcej, odwiedzając stronę GitHub [zbiorczej aplikacji wykonawcy programu Azure Cosmos Db Graph.](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started)
 
 ## <a name="bulk-operations-with-graph-data"></a>Wykonywanie operacji zbiorczych z użyciem danych grafów
 
@@ -120,7 +120,7 @@ e.AddProperty("customProperty", "value");
 * Usługa Git. Aby uzyskać więcej informacji, zapoznaj się ze [stroną plików do pobrania usługi Git](https://git-scm.com/downloads).
 
 ### <a name="clone-the-sample-application"></a>Klonowanie przykładowej aplikacji
-W tym samouczku wykonaj kroki, aby rozpocząć przy użyciu [przykładowego wykonawcy zbiorczego programu Azure Cosmos Db Graph](https://aka.ms/graph-bulkexecutor-sample) hostowanego w usłudze GitHub. Ta aplikacja składa się z rozwiązania platformy .NET, które losowo generuje obiekty krawędzi i wierzchołków, a następnie wykonuje zbiorcze wstawienia do określonego konta bazy danych grafów. Aby uzyskać aplikację, uruchom poniższe polecenie `git clone`:
+W tym samouczku wykonaj kroki, aby rozpocząć przy użyciu [przykładowego wykonawcy zbiorczego programu Azure Cosmos Db Graph](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started) hostowanego w usłudze GitHub. Ta aplikacja składa się z rozwiązania platformy .NET, które losowo generuje obiekty krawędzi i wierzchołków, a następnie wykonuje zbiorcze wstawienia do określonego konta bazy danych grafów. Aby uzyskać aplikację, uruchom poniższe polecenie `git clone`:
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started.git

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 673c20355e9ad4abf2c8318b3eb2ebbcc36ed8fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ac3ee8d44d68f5c7929c2f93f1a1182c7f6083b
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128230"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891258"
 ---
 # <a name="connect-with-the-macos-client"></a>Nawiązywanie połączenia z klientem systemu macOS
 
@@ -31,11 +31,11 @@ Subskrybuj kanał, który podał twój administrator, aby uzyskać listę zarzą
 
 Aby zasubskrybować kanał:
 
-1. Wybierz **pozycję Dodaj kanał informacyjny** na stronie głównej, aby połączyć się z usługą i pobrać zasoby.
+1. Wybierz **pozycję Dodaj obszar roboczy** na stronie głównej, aby połączyć się z usługą i pobrać zasoby.
 2. Wprowadź adres URL kanału informacyjnego. Może to być adres URL lub adres e-mail:
    - Jeśli używasz adresu URL, użyj adresu URL, który podał Ci administrator. Zwykle adres URL <https://rdweb.wvd.microsoft.com>to .
    - Aby korzystać z poczty e-mail, wpisz swój adres e-mail. To nakazuje klientowi wyszukać adres URL skojarzony z twoim adresem e-mail, jeśli administrator skonfigurował serwer w ten sposób.
-3. Wybierz **pozycję Subskrybuj**.
+3. Wybierz pozycję **Dodaj**.
 4. Zaloguj się przy za pomocą konta użytkownika po wyświetleniu monitu.
 
 Po zalogowaniu się powinna zostać wyświetlona lista dostępnych zasobów.

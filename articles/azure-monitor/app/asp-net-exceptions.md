@@ -3,12 +3,12 @@ title: Diagnozowanie błędów i wyjątków za pomocą usługi Azure Application
 description: Przechwytywanie wyjątków od ASP.NET aplikacji wraz z telemetrią żądania.
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: ccfcb354e27d36f40810b114a1729cf6addf8fb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294686"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892346"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnozowanie wyjątków w aplikacjach internetowych za pomocą usługi Application Insights
 Wyjątki w aplikacji sieci web na żywo są zgłaszane przez [usługa Application Insights](../../azure-monitor/app/app-insights-overview.md). Można skorelować żądania nie powiodło się z wyjątkami i innych zdarzeń na kliencie i serwerze, dzięki czemu można szybko zdiagnozować przyczyny.
@@ -19,7 +19,7 @@ Wyjątki w aplikacji sieci web na żywo są zgłaszane przez [usługa Applicatio
   * Aplikacje hostowane przez usługi IIS: dodawanie rozszerzenia [monitorowania aplikacji](../../azure-monitor/app/azure-vm-vmss-apps.md)
   * Zainstaluj [sdk usługi Application Insights](../../azure-monitor/app/asp-net.md) w kodzie aplikacji lub
   * Serwery sieci Web usług IIS: [uruchamianie agenta usługi Application Insights](../../azure-monitor/app/monitor-performance-live-website-now.md); Lub
-  * Aplikacje internetowe Java: Instalowanie [agenta Java](../../azure-monitor/app/java-agent.md)
+  * Aplikacje internetowe Java: Włączanie [agenta Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 * Zainstaluj [fragment kodu JavaScript](../../azure-monitor/app/javascript.md) na swoich stronach internetowych, aby wychwycić wyjątki przeglądarki.
 * W niektórych strukturach aplikacji lub z pewnymi ustawieniami należy wykonać kilka dodatkowych kroków, aby złapać więcej wyjątków:
   * [Formularze internetowe](#web-forms)

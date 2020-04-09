@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 22283833ebb414372de16cbe4ce7d3986cd400a9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 04c6ddf03f1c0433ad4e2d0808f118f42670ee08
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238706"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891275"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Samouczek: dodawanie domeny niestandardowej do punktu końcowego usługi Azure CDN
 W tym samouczku przedstawiono sposób dodawania domeny niestandardowej do punktu końcowego usługi Azure Content Delivery Network (CDN). W przypadku dostarczania zawartości przy użyciu punktu końcowego usługi CDN domena niestandardowa jest niezbędna, jeśli chcesz, aby nazwa Twojej domeny była widoczna w adresie URL usługi CDN. Widoczna nazwa domeny może być wygodna dla klientów i przydatna dla celów związanych ze znakowaniem. 
@@ -50,7 +50,7 @@ Przed rozpoczęciem używania domeny niestandardowej z punktem końcowym usługi
 Domenę niestandardową i jej domenę podrzędną można skojarzyć tylko z jednym punktem końcowym równocześnie. Można jednak używać różnych domen podrzędnych z tej samej domeny niestandardowej dla różnych punktów końcowych platformy Azure, korzystając z wielu rekordów CNAME. Można również mapować domenę niestandardową z różnymi domenami podrzędnymi do tego samego punktu końcowego usługi CDN.
 
 > [!NOTE]
-> Dowolnego typu rekordu aliasu można używać w domenach niestandardowych, jeśli używasz usługi Azure DNS jako dostawcy domeny. W tym instruktażu użyto typu rekordu CNAME. Jeśli używasz typów rekordów A lub AAAA, wykonaj te same czynności poniżej i zastąp CNAME wybranym typem rekordu. Jeśli używasz rekordu aliasu do dodania domeny głównej jako domeny niestandardowej i chcesz włączyć ssl, musisz użyć ręcznej weryfikacji zgodnie z opisem w [tym artykule](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint). Aby uzyskać więcej informacji, zobacz [Punkt strefy wierzchołek do punktów końcowych usługi Azure CDN](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints).
+> Dowolnego typu rekordu aliasu można używać w domenach niestandardowych, jeśli używasz usługi Azure DNS jako dostawcy domeny. W tym instruktażu użyto typu rekordu CNAME. Jeśli używasz typów rekordów A lub AAAA, wykonaj te same czynności poniżej i zastąp CNAME wybranym typem rekordu. Jeśli używasz rekordu aliasu do dodania domeny głównej jako domeny niestandardowej i chcesz włączyć funkcję TLS, musisz użyć ręcznej weryfikacji zgodnie z opisem w [tym artykule](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint). Aby uzyskać więcej informacji, zobacz [Punkt strefy wierzchołek do punktów końcowych usługi Azure CDN](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints).
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>Mapowanie tymczasowej domeny podrzędnej cdnverify
 

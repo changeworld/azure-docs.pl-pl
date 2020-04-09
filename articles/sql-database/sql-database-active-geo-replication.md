@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 1f339d987d67047f5857679b440e93e6c3730059
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: cc9d129894cefaf2fab853d2099d754d68238e5f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810451"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887354"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Tworzenie i używanie aktywnej replikacji geograficznej
 
@@ -113,14 +113,11 @@ Aby upewnić się, że aplikacja może natychmiast uzyskać dostęp do nowej pod
 
 ## <a name="configuring-secondary-database"></a>Konfigurowanie pomocniczej bazy danych
 
-Bazy danych podstawowych i pomocniczych muszą mieć tę samą warstwę usług. Zdecydowanie zaleca się również utworzenie pomocniczej bazy danych o tym samym rozmiarze obliczeniowym (DTU lub vCores) co podstawowa. Jeśli podstawowa baza danych występuje duże obciążenie zapisu, pomocniczy o mniejszym rozmiarze obliczeń może nie być w stanie nadążyć za nim. Spowoduje to ponowne opóźnienie na wtórne, i potencjalna niedostępność wtórnego. Pomocnicza baza danych, która pozostaje w tyle za podstawową również ryzyko utraty dużych danych, jeśli wymuszone pracy awaryjnej być wymagane. Aby ograniczyć te zagrożenia, aktywna replikacja geograficzna ograniczy szybkość dziennika podstawowego, jeśli to konieczne, aby umożliwić jego pomocniczym nadrobić zaległości. 
+Bazy danych podstawowych i pomocniczych muszą mieć tę samą warstwę usług. Zdecydowanie zaleca się również utworzenie pomocniczej bazy danych o tym samym rozmiarze obliczeniowym (DTU lub vCores) co podstawowa. Jeśli podstawowa baza danych występuje duże obciążenie zapisu, pomocniczy o mniejszym rozmiarze obliczeń może nie być w stanie nadążyć za nim. Spowoduje to ponowne opóźnienie na wtórne, i potencjalna niedostępność wtórnego. Aby ograniczyć te zagrożenia, aktywna replikacja geograficzna ograniczy szybkość dziennika transakcji podstawowej, jeśli to konieczne, aby umożliwić jego pomocnicze pliki do nadrobienia zaległości. 
 
-Inną konsekwencją nierównoważnej konfiguracji pomocniczej jest to, że po przemijania awaryjnego wydajność aplikacji może ucierpieć z powodu niewystarczającej pojemności obliczeniowej nowej podstawowej. W takim przypadku konieczne będzie skalowanie celu usługi bazy danych do niezbędnego poziomu, co może zająć dużo czasu i zasobów obliczeniowych i będzie wymagać [wysokiej dostępności](sql-database-high-availability.md) pracy awaryjnej na końcu procesu skalowania w górę.
+Inną konsekwencją nierównowagi konfiguracji pomocniczej jest to, że po pracy awaryjnej wydajność aplikacji może ucierpieć z powodu niewystarczającej pojemności obliczeniowej nowej podstawowej. W takim przypadku konieczne będzie skalowanie celu usługi bazy danych do niezbędnego poziomu, co może zająć dużo czasu i zasobów obliczeniowych i będzie wymagać [wysokiej dostępności](sql-database-high-availability.md) pracy awaryjnej na końcu procesu skalowania w górę.
 
-> [!IMPORTANT]
-> Opublikowana 5-sekundowa umowy SLA RPO nie może być zagwarantowana, chyba że pomocnicza baza danych jest skonfigurowana z takim samym lub wyższym rozmiarem obliczeń jak podstawowa. 
-
-Jeśli zdecydujesz się utworzyć pomocniczy o mniejszym rozmiarze obliczeń, wykres procentowy we/wy dziennika w witrynie Azure portal zapewnia dobry sposób oszacowania minimalnego rozmiaru obliczeń pomocniczego, który jest wymagany do utrzymania obciążenia replikacji. Na przykład jeśli podstawowa baza danych jest P6 (1000 DTU), a jego procent zapisu dziennika wynosi 50%, pomocniczy musi być co najmniej P4 (500 DTU). Aby pobrać dane we/wy dziennika historycznego, użyj widoku [sys.resource_stats.](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Aby pobrać dane zapisu dziennika ostatnich o wyższej szczegółowości, która lepiej odzwierciedla krótkoterminowe skoki w log rate, użyj [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) widoku. 
+Jeśli zdecydujesz się utworzyć pomocniczy o mniejszym rozmiarze obliczeń, wykres procentowy we/wy dziennika w witrynie Azure portal zapewnia dobry sposób oszacowania minimalnego rozmiaru obliczeń pomocniczego, który jest wymagany do utrzymania obciążenia replikacji. Na przykład jeśli podstawowa baza danych jest P6 (1000 DTU), a jego procent zapisu dziennika wynosi 50%, pomocniczy musi być co najmniej P4 (500 DTU). Aby pobrać dane we/wy dziennika historycznego, użyj widoku [sys.resource_stats.](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Aby pobrać dane zapisu dziennika ostatnich o wyższej szczegółowości, która lepiej odzwierciedla krótkoterminowe skoki w log rate, użyj [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) widoku.
 
 Ograniczanie szybkości dziennika transakcji na poziomie podstawowym ze względu na niższy rozmiar obliczeń w pomocniczym jest zgłaszane przy użyciu typu oczekiwania HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO, widoczne w widokach bazy danych [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) i [sys.dm_os_wait_stats.](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 
 

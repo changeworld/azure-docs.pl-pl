@@ -2,13 +2,13 @@
 title: Funkcje szablonu — ciąg znaków
 description: W tym artykule opisano funkcje używane w szablonie usługi Azure Resource Manager do pracy z ciągami.
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: 070133c3db538e5df76644b62c25ced916adc4af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: c0517375b273384f263e8ba421995d4afb6c193b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156280"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982418"
 ---
 # <a name="string-functions-for-arm-templates"></a>Funkcje ciągów dla szablonów ARM
 
@@ -46,7 +46,6 @@ Menedżer zasobów udostępnia następujące funkcje do pracy z ciągami w szabl
 * [Identyfikator uri](#uri)
 * [uriComponent](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
-* [Utcnow](#utcnow)
 
 ## <a name="base64"></a>base64
 
@@ -1097,6 +1096,8 @@ Tej funkcji można używać tylko w wyrażeniu dla domyślnej wartości parametr
 
 NewGuid funkcja różni się od funkcji [guid,](#guid) ponieważ nie ma żadnych parametrów. Podczas wywoływania guid z tym samym parametrem, zwraca ten sam identyfikator za każdym razem. Identyfikator guid należy używać, gdy trzeba niezawodnie wygenerować ten sam identyfikator GUID dla określonego środowiska. Użyj newGuid, gdy potrzebujesz innego identyfikatora za każdym razem, takich jak wdrażanie zasobów w środowisku testowym.
 
+Funkcja newGuid używa [guid struktury](/dotnet/api/system.guid) w .NET Framework do generowania globalnie unikatowy identyfikator.
+
 Jeśli [użyjesz opcji, aby ponownie wdrożyć wcześniejsze pomyślne wdrożenie](rollback-on-error.md), a wcześniejsze wdrożenie zawiera parametr, który używa newGuid, parametr nie jest ponownie oceniony. Zamiast tego wartość parametru z wcześniejszego wdrożenia jest automatycznie ponownie w wdrożeniu wycofywania.
 
 W środowisku testowym może być konieczne wielokrotne wdrażanie zasobów, które są dostępne tylko przez krótki czas. Zamiast konstruowania unikatowych nazw, można użyć newGuid z [uniqueString](#uniquestring) do tworzenia unikatowych nazw.
@@ -1876,7 +1877,7 @@ W poniższym przykładzie pokazano, jak utworzyć unikatową nazwę konta magazy
     ...
 ```
 
-Jeśli trzeba utworzyć nową unikatową nazwę za każdym razem, gdy wdrażasz szablon i nie zamierzasz aktualizować zasobu, możesz użyć funkcji [utcNow](#utcnow) z uniqueString. Można użyć tego podejścia w środowisku testowym. Na przykład zobacz [utcNow](#utcnow).
+Jeśli trzeba utworzyć nową unikatową nazwę za każdym razem, gdy wdrażasz szablon i nie zamierzasz aktualizować zasobu, możesz użyć funkcji [utcNow](template-functions-date.md#utcnow) z uniqueString. Można użyć tego podejścia w środowisku testowym. Na przykład zobacz [utcNow](template-functions-date.md#utcnow).
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -2093,115 +2094,6 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 | uriOutput | Ciąg | `http://contoso.com/resources/nested/azuredeploy.json` |
 | składnikOutput | Ciąg | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
 | toStringOutput | Ciąg | `http://contoso.com/resources/nested/azuredeploy.json` |
-
-## <a name="utcnow"></a>Utcnow
-
-`utcNow(format)`
-
-Zwraca bieżącą (UTC) wartość datetime w określonym formacie. Jeśli nie podano żadnego formatu, używany jest format ISO 8601 (yyyyMMddTHHmmssZ). **Ta funkcja może być używana tylko w wartości domyślnej parametru.**
-
-### <a name="parameters"></a>Parametry
-
-| Parametr | Wymagany | Typ | Opis |
-|:--- |:--- |:--- |:--- |
-| format |Nie |ciąg |Wartość zakodowana w identyfikatorze URI do konwersji na ciąg. Użyj [ciągów w formacie standardowym](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [ciągów formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
-
-### <a name="remarks"></a>Uwagi
-
-Tej funkcji można używać tylko w wyrażeniu dla domyślnej wartości parametru. Użycie tej funkcji w dowolnym miejscu w szablonie zwraca błąd. Funkcja nie jest dozwolona w innych częściach szablonu, ponieważ zwraca inną wartość za każdym razem, gdy jest wywoływana. Wdrożenie tego samego szablonu o tych samych parametrach nie będzie niezawodnie dawać takie same wyniki.
-
-Jeśli [użyjesz opcji, aby ponownie wdrożyć wcześniejsze pomyślne wdrożenie](rollback-on-error.md), a wcześniejsze wdrożenie zawiera parametr, który używa utcNow, parametr nie jest ponownie oceniony. Zamiast tego wartość parametru z wcześniejszego wdrożenia jest automatycznie ponownie w wdrożeniu wycofywania.
-
-Należy zachować ostrożność ponownego rozmieszczenia szablonu, który opiera się na funkcji utcNow dla wartości domyślnej. Po ponownym wedniesieniu i nie podasz wartości parametru, funkcja jest ponownie indeksowana. Jeśli chcesz zaktualizować istniejący zasób, a nie utworzyć nowy, przekaż wartość parametru z wcześniejszego wdrożenia.
-
-### <a name="return-value"></a>Wartość zwracana
-
-Bieżąca wartość datatime UTC.
-
-### <a name="examples"></a>Przykłady
-
-Poniższy przykładowy szablon przedstawia różne formaty dla wartości datetime.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcValue": {
-            "type": "string",
-            "defaultValue": "[utcNow()]"
-        },
-        "utcShortValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "utcCustomValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('M d')]"
-        }
-    },
-    "resources": [
-    ],
-    "outputs": {
-        "utcOutput": {
-            "type": "string",
-            "value": "[parameters('utcValue')]"
-        },
-        "utcShortOutput": {
-            "type": "string",
-            "value": "[parameters('utcShortValue')]"
-        },
-        "utcCustomOutput": {
-            "type": "string",
-            "value": "[parameters('utcCustomValue')]"
-        }
-    }
-}
-```
-
-Dane wyjściowe z poprzedniego przykładu różnią się dla każdego wdrożenia, ale będą podobne do:
-
-| Nazwa | Typ | Wartość |
-| ---- | ---- | ----- |
-| utcOutput (Polski) | ciąg | 20190305T175318Z |
-| utcShortOutput | ciąg | 03/05/2019 |
-| utcCustomOutput | ciąg | 3 5 |
-
-W następnym przykładzie pokazano, jak używać wartości z funkcji podczas ustawiania wartości znacznika.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcShort": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "rgName": {
-            "type": "string"
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
-            "name": "[parameters('rgName')]",
-            "location": "westeurope",
-            "tags":{
-                "createdDate": "[parameters('utcShort')]"
-            },
-            "properties":{}
-        }
-    ],
-    "outputs": {
-        "utcShort": {
-            "type": "string",
-            "value": "[parameters('utcShort')]"
-        }
-    }
-}
-```
 
 ## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać opis sekcji w szablonie usługi Azure Resource Manager, zobacz [Tworzenie szablonów usługi Azure Resource Manager](template-syntax.md).

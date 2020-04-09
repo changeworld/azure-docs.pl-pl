@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 03/01/2020
-ms.openlocfilehash: d39cf8745c6f53cb11bb12561fd452325fe52ac6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6723992ac3335e6abdd78f2008130dfe136f7df
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79296952"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873892"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Tworzenie projektu etykietowania danych i eksportowanie etykiet 
 
@@ -20,14 +20,14 @@ ms.locfileid: "79296952"
 
 Etykietowanie obszernych danych w projektach uczenia maszynowego jest często bólem głowy. Projekty, które mają składnik widzenia komputerowego, takie jak klasyfikacja obrazów lub wykrywanie obiektów, zazwyczaj wymagają etykiet dla tysięcy obrazów.
  
-[Usługa Azure Machine Learning](https://ml.azure.com/) zapewnia centralne miejsce do tworzenia projektów etykietowania, zarządzania nimi i monitorowania ich. Służy do koordynowania danych, etykiet i członków zespołu, aby skutecznie zarządzać zadaniami etykietowania. Uczenie maszynowe obsługuje klasyfikację obrazów, wieloznakową lub wieloklasową oraz identyfikację obiektów z ograniczonymi polami.
+[Usługa Azure Machine Learning](https://ml.azure.com/) zapewnia centralne miejsce do tworzenia projektów etykietowania, zarządzania nimi i monitorowania ich (publiczna wersja zapoznawcza). Służy do koordynowania danych, etykiet i członków zespołu, aby skutecznie zarządzać zadaniami etykietowania. Uczenie maszynowe obsługuje klasyfikację obrazów, wieloznakową lub wieloklasową oraz identyfikację obiektów z ograniczonymi polami.
 
 Uczenie maszynowe śledzi postępy i utrzymuje kolejkę niekompletnych zadań etykietowania. Labelers nie potrzebują konta platformy Azure do udziału. Po uwierzytelnieniu za pomocą konta Microsoft lub [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)mogą wykonać tyle etykietowania, ile pozwala na to ich czas.
 
 Rozpoczynasz i zatrzymujesz projekt, dodajesz i usuwasz labelery i zespoły oraz monitorujesz postęp etykietowania. Dane oznaczone etykietami można eksportować w formacie COCO lub jako zestaw danych usługi Azure Machine Learning.
 
 > [!Important]
-> Obecnie obsługiwane są tylko projekty klasyfikacji obrazów i oznaczania obiektów. Ponadto obrazy danych muszą być dostępne w magazynie danych obiektów blob platformy Azure. (Jeśli nie masz istniejącego magazynu danych, możesz przekazywać obrazy podczas tworzenia projektu). 
+> Obecnie obsługiwane są tylko projekty klasyfikacji obrazów i oznaczania obiektów. Ponadto obrazy danych muszą być dostępne w magazynie danych obiektów blob platformy Azure. (Jeśli nie masz istniejącego magazynu danych, możesz przekazywać obrazy podczas tworzenia projektu).
 
 W tym artykule dowiesz się, jak:
 
@@ -41,6 +41,7 @@ W tym artykule dowiesz się, jak:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
+
 * Dane, które chcesz oznaczyć w plikach lokalnych lub w magazynie obiektów blob platformy Azure.
 * Zestaw etykiet, które chcesz zastosować.
 * Instrukcje dotyczące etykietowania.
@@ -51,11 +52,12 @@ W tym artykule dowiesz się, jak:
 
 Projekty etykietowania są administrowane z usługi Azure Machine Learning. Strona **Projekty etykietowania** służy do zarządzania projektami i osobami. Projekt ma przypisany do niego jeden lub więcej zespołów, a zespół ma przypisaną do niego jedną lub więcej osób.
 
-Jeśli dane są już w magazynie obiektów Blob platformy Azure, należy udostępnić je jako magazyn danych przed utworzeniem projektu etykietowania. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie i rejestrowanie magazynów danych](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores).
+Jeśli dane są już w magazynie obiektów Blob platformy Azure, należy udostępnić je jako magazyn danych przed utworzeniem projektu etykietowania. Na przykład przy użyciu magazynu danych, zobacz [Samouczek: Tworzenie pierwszego projektu klasyfikacji obrazów .](tutorial-labeling.md)
 
 Aby utworzyć projekt, wybierz pozycję **Dodaj projekt**. Nadaj projektowi odpowiednią nazwę i wybierz **opcję Etykietowanie typu zadania**.
 
 ![Kreator tworzenia projektu etykietowania](./media/how-to-create-labeling-projects/labeling-creation-wizard.png)
+
 
 * Wybierz **klasyfikację obrazów Wieloklasowa** dla projektów, jeśli chcesz zastosować tylko *jedną klasę* z zestawu klas do obrazu.
 * Wybierz **klasyfikację obrazów Multi-label** dla projektów, jeśli chcesz zastosować *jedną lub więcej* etykiet z zestawu klas do obrazu. Na przykład zdjęcie psa może być oznaczone zarówno *psem,* jak i *w ciągu dnia.*
@@ -168,9 +170,9 @@ Po zainicjowaniu projektu etykietowania niektóre aspekty projektu są niezmienn
 
 ## <a name="manage-teams-and-people"></a>Zarządzanie zespołami i osobami
 
-Domyślnie każdy projekt etykietowania, który tworzysz pobiera nowy zespół z Tobą jako członkiem. Ale zespoły mogą być również dzielone między projektami. A projekty mogą mieć więcej niż jeden zespół. Aby utworzyć zespół, wybierz **pozycję Dodaj drużynę** na stronie **Zespoły.**
+Domyślnie każdy projekt etykietowania, który tworzysz pobiera nowy zespół z Tobą jako członkiem. Ale zespoły mogą być również dzielone między projektami. A projekty mogą mieć więcej niż jeden zespół. Aby utworzyć zespół, wybierz **pozycję Dodaj drużynę** na stronie **Zespoły.** 
 
-Zarządzasz osobami na stronie **Kontakty.** Dodawanie i usuwanie osób według adresu e-mail. Każdy labeler musi uwierzytelnić się za pośrednictwem konta Microsoft lub usługi Azure Active Directory, jeśli go używasz.  
+Zarządzasz osobami na stronie **Labelers.** Dodawanie i usuwanie osób według adresu e-mail. Każdy labeler musi uwierzytelnić się za pośrednictwem konta Microsoft lub usługi Azure Active Directory, jeśli go używasz.  
 
 Po dodaniu osoby możesz przypisać tę osobę do jednego lub większej liczby zespołów: przejdź do strony **Zespoły,** wybierz zespół, a następnie wybierz pozycję **Przypisz osoby** lub **Usuń osoby**.
 
@@ -216,5 +218,6 @@ Plik COCO jest tworzony w domyślnym magazynie obiektów blob obszaru roboczego 
 
 ## <a name="next-steps"></a>Następne kroki
 
+* [Samouczek: Utwórz swój pierwszy projekt etykietowania klasyfikacji obrazów](tutorial-labeling.md).
 * Obrazy etykiet do [klasyfikacji obrazów lub wykrywania obiektów](how-to-label-images.md)
 * Dowiedz się więcej o [usłudze Azure Machine Learning i Machine Learning Studio (klasyczny)](compare-azure-ml-to-studio-classic.md)

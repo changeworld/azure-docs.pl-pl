@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 6bc7f45d84d525156a3d25bdceef4d1012844afa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2966f32fcf7f8be2a93d1639f0a63f49768c306
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931985"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981855"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Omówienie modułu IPv6 dla modułu równoważenia obciążenia platformy Azure
 
@@ -49,7 +49,7 @@ Natywna obsługa protokołu IPv6 dla maszyn wirtualnych wdrożonych za pośredni
 3. Natywne połączenia IPv6 inbound i wychodzące
 4. Obsługiwane protokoły, takie jak TCP, UDP i HTTP(S) umożliwiają pełny zakres architektur usług
 
-## <a name="benefits"></a>Korzyści
+## <a name="benefits"></a>Zalety
 
 Ta funkcja umożliwia następujące kluczowe korzyści:
 
@@ -81,6 +81,7 @@ Ograniczenia
 * Zmiana parametru loadDistributionMethod dla IPv6 nie jest **obecnie obsługiwana.**
 * Zarezerwowane adresy IPPv6 (gdzie IPAllocationMethod = static) nie są **obecnie obsługiwane**.
 * NAT64 (tłumaczenie IPv6 na IPv4) nie jest obsługiwany.
+* Dołączanie pomocniczej karty sieciowej, która odwołuje się do podsieci IPv6 do puli **zaplecza, nie**jest obecnie obsługiwane .
 
 ## <a name="next-steps"></a>Następne kroki
 

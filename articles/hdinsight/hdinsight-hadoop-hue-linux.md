@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/28/2019
-ms.openlocfilehash: 69acfd4f2edab9be1b1dcfbb52eafbd00aec712f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: dea7e8d5679c8c5a14d6a4253b8a4b36343e6ed8
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934563"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887099"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalowanie i używanie funkcji Hue w klastrach programu HDInsight Hadoop
 
@@ -51,7 +51,7 @@ Użyj informacji w poniższej tabeli dla akcji skryptu. Aby uzyskać szczegóło
 
 ## <a name="use-hue-with-hdinsight-clusters"></a>Używanie funkcji Barwa z klastrami HDInsight
 
-Tunelowanie SSH jest jedynym sposobem uzyskania dostępu do hue w klastrze po jego uruchomieniu. Tunelowanie przez SSH umożliwia ruch, aby przejść bezpośrednio do headnode klastra, w którym hue jest uruchomiony. Po zakończeniu inicjowania obsługi administracyjnej klastra należy wykonać następujące kroki, aby użyć funkcji Hue w klastrze HDInsight.
+W zwykłych klastrach można mieć tylko jedno konto użytkownika w barwie. Aby uzyskać dostęp dla wielu użytkowników, włącz [pakiet zabezpieczeń przedsiębiorstwa](./domain-joined/hdinsight-security-overview.md) w klastrze. Tunelowanie SSH jest jedynym sposobem, aby uzyskać dostęp hue w klastrze po jego uruchomieniu. Tunelowanie przez SSH umożliwia ruch, aby przejść bezpośrednio do headnode klastra, w którym hue jest uruchomiony. Po zakończeniu inicjowania obsługi administracyjnej klastra należy wykonać następujące kroki, aby użyć funkcji Hue w klastrze HDInsight.
 
 > [!NOTE]  
 > Zalecamy korzystanie z przeglądarki Firefox, aby postępować zgodnie z poniższymi instrukcjami.
@@ -113,9 +113,9 @@ Tunelowanie SSH jest jedynym sposobem uzyskania dostępu do hue w klastrze po je
 
 1. Podczas instalacji wiele usług Hadoop (HDFS, YARN, MR2, Oozie) jest ponownie uruchamianych w celu aktualizacji konfiguracji. Po zakończeniu instalacji skryptu może upłynąć trochę czasu, aby uruchomić inne usługi Hadoop. Może to początkowo wpłynąć na wydajność firmy Hue. Po uruchomieniu wszystkich usług, Hue będzie w pełni funkcjonalny.
 
-1. Hue nie rozumie apache Tez zadań, który jest bieżący domyślnie hive. Jeśli chcesz użyć MapReduce jako aparat wykonywania hive, zaktualizuj skrypt, aby użyć następującego polecenia w skrypcie:
+1. Hue nie rozumie apache Tez zadania, który jest bieżący domyślnie hive. Jeśli chcesz użyć MapReduce jako aparat wykonywania hive, zaktualizuj skrypt, aby użyć następującego polecenia w skrypcie:
 
-        set hive.execution.engine=mr;
+         set hive.execution.engine=mr;
 
 1. W klastrach systemu Linux może istnieć scenariusz, w którym usługi są uruchomione na głównym niu głównym, podczas gdy Menedżer zasobów może być uruchomiony w pomocniczym. Taki scenariusz może spowodować błędy (pokazane poniżej) podczas korzystania z Hue, aby wyświetlić szczegóły uruchomionych zadań w klastrze. Można jednak wyświetlić szczegóły zadania po zakończeniu zadania.
 

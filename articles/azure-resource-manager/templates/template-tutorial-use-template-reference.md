@@ -1,19 +1,19 @@
 ---
-title: Dokumentacja dotycząca korzystania z szablonów
-description: Skorzystaj z odwołania do szablonu usługi Azure Resource Manager, aby utworzyć szablon.
+title: Użyj odwołania do szablonu
+description: Użyj odwołania do szablonu usługi Azure Resource Manager, aby utworzyć szablon.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b742982121a20a2b057eba4211584b0386dde411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b713d508a5e28291778d3727c15e12972eea3a77
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80373428"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878513"
 ---
-# <a name="tutorial-utilize-the-arm-template-reference"></a>Samouczek: Korzystanie z odwołania do szablonu ARM
+# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Samouczek: Korzystanie z odwołania do szablonu Menedżera zasobów
 
 Dowiedz się, jak znaleźć informacje o schemacie szablonu i użyć tych informacji do utworzenia szablonów usługi Azure Resource Manager (ARM).
 
@@ -65,9 +65,13 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
     * **resources**: określ typy zasobów, które są wdrażane lub aktualizowane w grupie zasobów.
     * **outputs**: określ wartości, które są zwracane po wdrożeniu.
 
-1. Rozwiń element **resources**. Jest tam zdefiniowany zasób `Microsoft.Storage/storageAccounts`.
+1. Rozwiń element **resources**. Jest tam zdefiniowany zasób `Microsoft.Storage/storageAccounts`. Nazwa jednostki SKU używa wartości parametru.  Parametr nosi nazwę **storageAccountType**.
 
     ![Definicja konta magazynu szablonu usługi Resource Manager](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
+
+1. Rozwiń **parametry,** aby zobaczyć, jak jest definiowany **typ konta magazynu.** Parametr ma cztery dozwolone wartości. Znajdziesz inne dozwolone wartości, a następnie popraw definicję parametru.
+
+    ![Skus zasobów konta magazynu szablonów Menedżera zasobów Menedżera zasobów](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
 
 ## <a name="find-the-template-reference"></a>Znajdowanie dokumentacji szablonu
 
@@ -84,7 +88,7 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
     ![Wersje kont magazynu referencyjnych szablonów Menedżera zasobów](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
-1. Wybierz najnowszą wersję **magazynuZakład zasobu.**  Najnowsza wersja to **2019-06-01,** gdy ten artykuł jest napisany.
+1. Wybierz najnowszą wersję **magazynuZakład zasobu.** Najnowsza wersja to **2019-06-01,** gdy ten artykuł jest napisany. Upewnij się, że ta wersja jest zgodna z wersją używaną dla zasobu konta magazynu w szablonie. Jeśli zaktualizujesz wersję interfejsu API, sprawdź, czy definicja zasobu jest zgodna z odwołaniem do szablonu.
 
 1. Ta strona zawiera szczegółowe informacje o typie zasobu storageAccount.  Na przykład wyświetla listę dozwolonych wartości dla obiektu **Sku.** Jest więcej skus niż to, co jest wymienione w szablonie Szybkiego startu, który został otwarty wcześniej. Szablon przewodnika Szybki start można dostosować tak, aby zawierał wszystkie dostępne typy magazynu.
 
@@ -98,7 +102,21 @@ W programie Visual Studio Code dodaj dodatkowe typy kont magazynu, jak pokazano 
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
-Zapoznaj się z sekcją [Wdrażanie szablonu](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) przewodnika Szybki Start programu Visual Studio Code, aby uzyskać procedurę wdrażania. Podczas wdrażania szablonu określ parametr **storageAccountType** o nowo dodanej wartości, na przykład **Premium_ZRS**. Wdrożenie zakończy się niepowodzeniem, jeśli użyjesz oryginalnego szablonu szybkiego **startu,** ponieważ Premium_ZRS nie była dozwoloną wartością.
+Zapoznaj się z sekcją [Wdrażanie szablonu](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) przewodnika Szybki Start programu Visual Studio Code, aby uzyskać procedurę wdrażania. Podczas wdrażania szablonu określ parametr **storageAccountType** o nowo dodanej wartości, na przykład **Premium_ZRS**. Wdrożenie zakończy się niepowodzeniem, jeśli użyjesz oryginalnego szablonu szybkiego **startu,** ponieważ Premium_ZRS nie była dozwoloną wartością.  Aby przekazać wartość parametru, dodaj do polecenia wdrażania następujący przełącznik:
+
+# <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
+
+```azurecli
+--parameters storageAccountType='Premium_ZRS'
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+-storageAccountType "Premium_ZRS"
+```
+
+---
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

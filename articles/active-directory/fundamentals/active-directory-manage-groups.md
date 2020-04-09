@@ -13,19 +13,17 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89c4fa536994ecc8cecb50c907d43df2110be7df
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75768014"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982603"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Zarządzanie dostępem do aplikacji i zasobów za pomocą grup usługi Azure Active Directory
 Usługa Azure Active Directory (Azure AD) umożliwia korzystanie z grup do zarządzania dostępem do aplikacji opartych na chmurze, aplikacji lokalnych i zasobów. Zasoby mogą być częścią organizacji usługi Azure AD, takie jak uprawnienia do zarządzania obiektami za pośrednictwem ról w usłudze Azure AD lub zewnętrzne dla organizacji, takie jak aplikacje Software as a Service (SaaS), usługi platformy Azure, witryny programu SharePoint i zasoby lokalne.
 
 >[!NOTE]
->Aby korzystać z usługi Azure Active Directory, potrzebne jest konto platformy Azure. Jeśli nie masz konta, możesz [utworzyć bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
->
 > W witrynie Azure portal można wyświetlić niektóre grupy, których członkostwo i szczegóły grupy nie można zarządzać w portalu:
 >
 > - Grupami synchronizowanymi z lokalną usługą Active Directory można zarządzać tylko w lokalnej usłudze Active Directory.

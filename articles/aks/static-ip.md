@@ -1,15 +1,16 @@
 ---
-title: Używanie statycznego adresu IP i etykiety DNS za pomocą modułu równoważenia obciążenia usługi Azure Kubernetes (AKS)
+title: Używanie statycznego adresu IP z modułem równoważenia obciążenia
+titleSuffix: Azure Kubernetes Service
 description: Dowiedz się, jak utworzyć i używać statycznego adresu IP za pomocą modułu równoważenia obciążenia usługi Azure Kubernetes (AKS).
 services: container-service
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: 6c219976db21fb05ea1ad313b4effdf95906f986
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5051232f29ad51d9fee893a4a660fc81f6e60d77
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047966"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886742"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Używanie statycznego publicznego adresu IP i etykiety DNS za pomocą modułu równoważenia obciążenia usługi Azure Kubernetes (AKS)
 

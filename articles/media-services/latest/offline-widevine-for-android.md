@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 04/07/2020
 ms.author: willzhan
-ms.openlocfilehash: 64cd93acc78f4cb5b7ebc4266e7359aec662890c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94edec8261d9916b7575fb247e1698273f244130
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295418"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887201"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Przesyłanie strumieniowe widevine w trybie offline dla systemu Android z usługą Media Services w wersji 3
 
@@ -153,65 +153,13 @@ Powyższa aplikacja PWA typu open source jest autorem w pliku Node.js. Jeśli ch
     - Certyfikat musi mieć zaufany urząd certyfikacji, a certyfikat dewelopera z podpisem własnym nie działa
     - Certyfikat musi mieć cn pasujące do nazwy DNS serwera sieci web lub bramy
 
-## <a name="frequently-asked-questions"></a>Często zadawane pytania
+## <a name="faqs"></a>Często zadawane pytania
 
-### <a name="question"></a>Pytanie
-
-Jak dostarczać licencje trwałe (z obsługą w trybie offline) dla niektórych klientów/użytkowników i licencje nietrwałe (wyłączone w trybie offline) dla innych? Czy muszę powielać zawartość i używać oddzielnego klucza zawartości?
-
-### <a name="answer"></a>Odpowiedź
-Ponieważ usługa Media Services w wersji 3 umożliwia zasobu mieć wiele streaminglocators. Możesz mieć
-
-1.    Jeden ContentKeyPolicy z license_type = "trwałe", ContentKeyPolicyRestriction z roszczeniem na "trwałe", a jego StreamingLocator;
-2.    Inny ContentKeyPolicy z license_type="nonpersistent", ContentKeyPolicyRestriction z oświadczeń na "nonpersistent" i jego StreamingLocator.
-3.    Dwa streamingLocators mają różne ContentKey.
-
-W zależności od logiki biznesowej niestandardowego STS różne oświadczenia są wystawiane w tokenie JWT. Za pomocą tokenu można uzyskać tylko odpowiednią licencję i można odtworzyć tylko odpowiedni adres URL.
-
-### <a name="question"></a>Pytanie
-
-W przypadku poziomów zabezpieczeń Widevine dokument Google "Widevine DRM Architecture Overview" definiuje trzy różne poziomy zabezpieczeń. Jednak w [dokumentacji usługi Azure Media Services na szablonie licencji Widevine](widevine-license-template-overview.md)przedstawiono pięć różnych poziomów zabezpieczeń. Co to jest relacja lub mapowanie między dwoma różnymi zestawami poziomów zabezpieczeń?
-
-### <a name="answer"></a>Odpowiedź
-
-Dokument Google "Widevine DRM Architecture Review" określa następujące trzy poziomy zabezpieczeń:
-
-1.  Poziom zabezpieczeń 1: Wszystkie przetwarzanie zawartości, kryptografia i kontrola są wykonywane w środowisku zaufanego wykonywania (TEE). W niektórych modelach implementacji przetwarzanie zabezpieczeń może być wykonywane w różnych układach.
-2.  Poziom zabezpieczeń 2: Wykonuje kryptografię (ale nie przetwarzanie wideo) w tee: odszyfrowane bufory są zwracane do domeny aplikacji i przetwarzane za pośrednictwem oddzielnego sprzętu wideo lub oprogramowania. Jednak na poziomie 2 informacje kryptograficzne są nadal przetwarzane tylko w ramach TEE.
-3.  Poziom zabezpieczeń 3 Nie ma tee na urządzeniu. Można podjąć odpowiednie środki w celu ochrony informacji kryptograficznych i odszyfrowanej zawartości w systemie operacyjnym hosta. Implementacja poziomu 3 może również zawierać sprzętowy aparat kryptograficzny, ale to tylko zwiększa wydajność, a nie bezpieczeństwo.
-
-W tym samym czasie w [dokumentacji usługi Azure Media Services w szablonie licencji Widevine](widevine-license-template-overview.md)security_level właściwości content_key_specs może mieć następujące pięć różnych wartości (wymagania dotyczące niezawodności klienta dla odtwarzania):
-
-1.  Wymagane jest oparte na oprogramowaniu krypto white-box.
-2.  Wymagane jest oprogramowanie krypto i zaciemniony dekoder.
-3.  Kluczowe materiały i operacje kryptograficzne muszą być wykonywane w ramach tee wspieranego sprzętowo.
-4.  Krypto i dekodowanie zawartości muszą być wykonywane w ramach tee wspieranego sprzętowo.
-5.  Krypto, dekodowanie i cała obsługa nośnika (skompresowanego i nieskompresowanego) muszą być obsługiwane w ramach tee wspieranego sprzętowo.
-
-Oba poziomy zabezpieczeń są definiowane przez Google Widevine. Różnica polega na jego poziomie użycia: poziom architektury lub poziom interfejsu API. Pięć poziomów zabezpieczeń są używane w interfejsie API Widevine. Obiekt content_key_specs, który zawiera security_level jest deserializowany i przekazywany do globalnej usługi dostarczania Widevine przez usługę licencjonowania Azure Media Services Widevine. W poniższej tabeli przedstawiono mapowanie między dwoma zestawami poziomów zabezpieczeń.
-
-| **Poziomy zabezpieczeń zdefiniowane w architekturze Widevine** |**Poziomy zabezpieczeń używane w interfejsie API Widevine**|
-|---|---| 
-| **Poziom zabezpieczeń 1:** Wszystkie przetwarzanie zawartości, kryptografia i kontrola są wykonywane w środowisku zaufanego wykonywania (TEE). W niektórych modelach implementacji przetwarzanie zabezpieczeń może być wykonywane w różnych układach.|**security_level=5**: Krypto, dekodowanie i cała obsługa nośnika (skompresowanego i nieskompresowanego) muszą być obsługiwane w tee ze sprzętem.<br/><br/>**security_level=4**: Krypto i dekodowanie zawartości muszą być wykonywane w ramach tee wspieranego sprzętowo.|
-**Poziom zabezpieczeń 2:** Wykonuje kryptografię (ale nie przetwarzanie wideo) w tee: odszyfrowane bufory są zwracane do domeny aplikacji i przetwarzane za pośrednictwem oddzielnego sprzętu wideo lub oprogramowania. Jednak na poziomie 2 informacje kryptograficzne są nadal przetwarzane tylko w ramach TEE.| **security_level=3**: Materiał klucza i operacje kryptograficzne muszą być wykonywane w tee kopii sprzętowej. |
-| **Poziom zabezpieczeń 3:** Nie ma tee na urządzeniu. Można podjąć odpowiednie środki w celu ochrony informacji kryptograficznych i odszyfrowanej zawartości w systemie operacyjnym hosta. Implementacja poziomu 3 może również zawierać sprzętowy aparat kryptograficzny, ale to tylko zwiększa wydajność, a nie bezpieczeństwo. | **security_level=2**: Wymagane jest krypto oprogramowania i zaciemniony dekoder.<br/><br/>**security_level=1**: Wymagane jest oprogramowanie oparte na krypto whitebox.|
-
-### <a name="question"></a>Pytanie
-
-Dlaczego pobieranie zawartości trwa tak długo?
-
-### <a name="answer"></a>Odpowiedź
-
-Istnieją dwa sposoby poprawy szybkości pobierania:
-
-1.  Włącz sieć CDN, aby użytkownicy końcowi częściej trafiali do sieci CDN zamiast punktu końcowego pochodzenia/przesyłania strumieniowego w celu pobrania zawartości. Jeśli użytkownik osiągnie punkt końcowy przesyłania strumieniowego, każdy segment HLS lub dash fragment jest dynamicznie pakowane i szyfrowane. Mimo że to opóźnienie jest w skali milisekund dla każdego segmentu/fragmentu, gdy masz godzinny film wideo, skumulowane opóźnienie może być duże, co powoduje dłuższe pobieranie.
-2.  Zapewnij użytkownikom końcowym możliwość selektywnego pobierania warstw jakości wideo i ścieżek audio zamiast całej zawartości. W trybie offline nie ma sensu pobierać wszystkich warstw jakości. Istnieją dwa sposoby osiągnięcia tego celu:
-    1.  Kontrolowane przez klienta: aplikacja odtwarzacza automatycznie wybiera lub użytkownik wybiera warstwę jakości wideo i ścieżki audio do pobrania;
-    2.  Sterowana usługą: można użyć funkcji manifestu dynamicznego w usłudze Azure Media Services, aby utworzyć (globalny) filtr, który ogranicza listę odtwarzania HLS lub DASH MPD do jednej warstwy jakości wideo i wybranych ścieżek audio. Następnie adres URL pobierania prezentowany użytkownikom końcowym będzie zawierał ten filtr.
+Aby uzyskać więcej informacji, zobacz [Widevine często zadawane pytania](frequently-asked-questions.md#widevine-streaming-for-android).
 
 ## <a name="additional-notes"></a>Uwagi dodatkowe
 
-* Widevine jest usługą świadczoną przez Google Inc. i podlega warunkom korzystania z usługi oraz Polityce prywatności Firmy Google, Inc.
+Widevine jest usługą świadczoną przez Google Inc. i podlega warunkom korzystania z usługi oraz Polityce prywatności Firmy Google, Inc.
 
 ## <a name="summary"></a>Podsumowanie
 

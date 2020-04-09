@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: bb1042e15d4366923174996388eeb2fb99aef429
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b74338f22a82d76ef13126ee0862b841bd89a99
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74184612"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878888"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Wbudowana domena główna lub wierzchołowa w drzwiach frontowych
 Usługa Azure Front Door używa rekordów CNAME do sprawdzania poprawności własności domeny w celu dołączania domen niestandardowych. Ponadto drzwiami frontowymi nie uwidaczniają adresu IP frontonu skojarzonego z profilem drzwiami frontowymi, więc nie można mapować domeny wierzchołka na adres IP, jeśli celem jest dołączenie go do drzwi frontowych platformy Azure.
@@ -26,7 +26,7 @@ Mapowanie wierzchołka lub domeny głównej do profilu drzwi frontowych zasadnic
 > [!NOTE]
 > Istnieją również inni dostawcy dns, którzy obsługują spłaszczanie CNAME lub gonienie DNS, jednak usługa Azure Front Door zaleca używanie usługi Azure DNS dla swoich klientów do obsługi ich domen.
 
-Za pomocą witryny Azure Portal można użyć do wbudowanej domeny wierzchołka w drzwiach frontowych i włączyć https na nim, kojarząc go z certyfikatem zakończenia protokołu SSL. Domeny Apex są również określane jako domeny główne lub nagie.
+Za pomocą witryny Azure Portal można użyć do wbudowanej domeny wierzchołka w drzwiach frontowych i włączyć https na nim, kojarząc go z certyfikatem dla zakończenia TLS. Domeny Apex są również określane jako domeny główne lub nagie.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -65,7 +65,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 2. Wybierz **typ zarządzania certyfikatami,** aby _wybrać opcję "Użyj własnego certyfikatu"._
 
 > [!WARNING]
-> Typ zarządzania certyfikatami zarządzanymi przez drzwiami frontowymi nie jest obecnie obsługiwany dla domen wierzchołkowych lub głównych. Jedyną opcją dostępną do włączania protokołu HTTPS w domenie wierzchołkowej lub głównej dla drzwi ekwiwalom frontowym jest użycie własnego niestandardowego certyfikatu SSL hostowanego w usłudze Azure Key Vault.
+> Typ zarządzania certyfikatami zarządzanymi przez drzwiami frontowymi nie jest obecnie obsługiwany dla domen wierzchołkowych lub głównych. Jedyną opcją dostępną do włączania protokołu HTTPS w domenie wierzchołkowej lub głównej dla drzwi ekwiwalotowanych jest użycie własnego niestandardowego certyfikatu TLS/SSL hostowanego w usłudze Azure Key Vault.
 
 3. Upewnij się, że masz skonfigurowane odpowiednie uprawnienia dla drzwiach frontowych, aby uzyskać dostęp do magazynu kluczy, jak wspomniano w interfejsie użytkownika, przed przejściem do następnego kroku.
 4. Wybierz **konto Usługi Key Vault** z bieżącej subskrypcji, a następnie wybierz odpowiednią wersję **tajną** i **tajną,** aby zamapować na odpowiedni certyfikat.

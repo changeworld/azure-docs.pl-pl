@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1bcf06056dd7fdaf22716409f53d86da7321b94d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: f4fb5fba78cdea7996d006d34b2f07f3ac5e58fa
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745589"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981294"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>Karta Szczegóły sklepu aplikacji Power BI
 
 >[!Important]
->Od 30 marca 2020 r. rozpoczniemy przenoszenie zarządzania ofertami aplikacji Usługi Power BI do Centrum partnerów. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami zawartymi w [omówienie tworzenia aplikacji usługi Power BI,](https://aka.ms/AzureCreatePBIServiceApp) aby zarządzać zmigrowanymi ofertami.
+>Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami aplikacji Usługi Power BI do Centrum partnerów. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami zawartymi w [omówienie tworzenia aplikacji usługi Power BI,](https://aka.ms/AzureCreatePBIServiceApp) aby zarządzać zmigrowanymi ofertami.
 
 Na stronie **Nowa oferta** użyj karty **Szczegóły sklepu,** aby dostarczać informacje marketingowe, sprzedażowe i prawne potencjalnym klientom. Na tej karcie można również skonfigurować zarządzanie dla potencjalnych klientów, które generuje portal Azure Marketplace. Ten długi formularz jest podzielony na sześć sekcji: **Szczegóły oferty**, **Szczegóły aukcji,** **Artefakty marketingowe,** **Prawne,** **Obsługa klienta**i **Zarządzanie ołowiem.**  Gwiazdka (*) na końcu etykiety pola oznacza, że pole jest wymagane.
 

@@ -3,12 +3,12 @@ title: Zagadnienia dotyczące magazynu dla usług Azure Functions
 description: Dowiedz się więcej o wymaganiach dotyczących magazynowania usług Azure Functions i szyfrowaniu przechowywanych danych.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 3bacc93ad6c1851d9165e8efb7d27b427050e6f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48ff2dedd997cccb76b13acdadc895504f656ea3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276584"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984167"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Zagadnienia dotyczące magazynu dla usług Azure Functions
 
@@ -29,7 +29,7 @@ Usługa Azure Functions wymaga konta usługi Azure Storage podczas tworzenia wys
 
 Podczas tworzenia aplikacji funkcji, należy utworzyć lub łącze do ogólnego przeznaczenia konta usługi Azure Storage, który obsługuje blob, kolejki i magazynu tabel. Dzieje się tak, ponieważ funkcje opiera się na usłudze Azure Storage dla operacji, takich jak zarządzanie wyzwalania i rejestrowanie wykonywania funkcji. Niektóre konta magazynu nie obsługują kolejek i tabel. Te konta obejmują konta magazynu tylko dla obiektów blob, usługi Azure Premium Storage i konta magazynu ogólnego przeznaczenia z replikacją ZRS. Te nieobsługiwały konta są filtrowane z bloku Konto magazynu podczas tworzenia aplikacji funkcji.
 
-Aby dowiedzieć się więcej na temat typów kont magazynu, zobacz [Wprowadzenie do usług Azure Storage](../storage/common/storage-introduction.md#azure-storage-services). 
+Aby dowiedzieć się więcej na temat typów kont magazynu, zobacz [Wprowadzenie do usług Azure Storage](../storage/common/storage-introduction.md#core-storage-services). 
 
 Chociaż można użyć istniejącego konta magazynu z aplikacją funkcji, należy upewnić się, że spełnia te wymagania. Konta magazynu utworzone w ramach przepływu tworzenia aplikacji funkcji są gwarantowane, aby spełnić te wymagania dotyczące konta magazynu.  
 

@@ -4,12 +4,12 @@ description: Wprowadzenie do usługi Application Insights. Analizuj użycie, dos
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: e398f23559729580ae4ad8b6507c2f09328052b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275622"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985069"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Monitorowanie wydajności w aplikacjach internetowych
 
@@ -26,8 +26,7 @@ Jeśli usługa Application Insights nie została jeszcze dodana do projektu (ozn
 * [Aplikacje internetowe platformy ASP.NET](../../azure-monitor/app/asp-net.md)
   * [Dodawanie monitorowania wyjątków](../../azure-monitor/app/asp-net-exceptions.md)
   * [Dodawanie monitorowania zależności](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Aplikacje internetowe Java EE](../../azure-monitor/app/java-get-started.md)
-  * [Dodawanie monitorowania zależności](../../azure-monitor/app/java-agent.md)
+* [Aplikacje internetowe Java EE](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>Eksplorowanie wskaźników wydajności
 W [witrynie Azure portal](https://portal.azure.com)przejdź do zasobu usługi Application Insights skonfigurowany dla aplikacji. Blok przeglądu zawiera podstawowe dane dotyczące wydajności:
