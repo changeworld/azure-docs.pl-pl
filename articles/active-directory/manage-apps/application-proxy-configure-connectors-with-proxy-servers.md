@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fe3a63e119fed6825982b9de13bc78cb7da5415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481402"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877392"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Praca z istniejącymi lokalnymi serwerami proxy
 
@@ -27,6 +27,7 @@ Zaczynamy od przyjrzenia się tym głównym scenariuszom wdrażania:
 
 * Skonfiguruj łączniki, aby pominąć lokalne wychodzące serwery proxy.
 * Konfigurowanie łączników do używania wychodzącego serwera proxy w celu uzyskania dostępu do serwera proxy aplikacji usługi Azure AD.
+* Konfigurowanie przy użyciu serwera proxy między łącznikiem a aplikacją wewnętrznej bazy danych.
 
 Aby uzyskać więcej informacji na temat działania łączników, zobacz [Understand Azure AD Application Proxy connectors (Omówienie łączników serwerów proxy aplikacji usługi Azure AD)](application-proxy-connectors.md).
 
@@ -137,6 +138,23 @@ Uwierzytelnianie serwera proxy nie jest obecnie obsługiwane. Naszym obecnym zal
 #### <a name="tls-inspection"></a>Inspekcja TLS
 
 Nie należy używać inspekcji TLS dla ruchu łącznika, ponieważ powoduje to problemy dla ruchu łącznika. Łącznik używa certyfikatu do uwierzytelniania w usłudze Proxy aplikacji, a ten certyfikat może zostać utracony podczas inspekcji TLS.
+
+## <a name="configure-using-a-proxy-between-the-connector-and-backend-application"></a>Konfigurowanie przy użyciu serwera proxy między złączem a aplikacją wewnętrznej bazy danych
+Przy użyciu serwera proxy do przodu komunikacji do aplikacji wewnętrznej bazy danych może być specjalnym wymaganiem w niektórych środowiskach.
+Aby to włączyć, wykonaj następujące czynności:
+
+### <a name="step-1-add-the-required-registry-value-to-the-server"></a>Krok 1: Dodaj wymaganą wartość rejestru do serwera
+1. Aby włączyć używanie domyślnego serwera proxy, dodaj `UseDefaultProxyForBackendRequests = 1` następującą wartość rejestru (DWORD) do klucza rejestru konfiguracji łącznika znajdującego się w folderze "HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft AAD App Proxy Connector".
+
+### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>Krok 2: Konfigurowanie serwera proxy ręcznie za pomocą polecenia netsh
+1.  Włącz zasady grupy Umożliwianie ustawień serwera proxy na komputerze. Można je znaleźć w: Konfiguracja komputera\Zasady\Szablony administracyjne\Składniki systemu Windows\Internet Explorer. To musi być ustawione, a nie o tej zasady ustawione na użytkownika.
+2.  Uruchom `gpupdate /force` na serwerze lub uruchom ponownie serwer, aby upewnić się, że używa zaktualizowanych ustawień zasad grupy.
+3.  Uruchom wiersz polecenia z podwyższonym `control inetcpl.cpl`poziomem uprawnień z prawami administratora i wprowadź .
+4.  Skonfiguruj wymagane ustawienia serwera proxy. 
+
+Te ustawienia sprawiają, że łącznik używa tego samego serwera proxy do przodu do komunikacji na platformie Azure i do aplikacji wewnętrznej bazy danych. Jeśli łącznik do komunikacji platformy Azure nie wymaga przesyłania dalej serwera proxy lub innego serwera proxy do przodu, można skonfigurować to z modyfikowaniem pliku ApplicationProxyConnectorService.exe.config zgodnie z opisem w sekcjach Pomijanie wychodzących serwerów proxy lub Użyj wychodzącego serwera proxy.
+
+Usługa aktualizacji łącznika będzie również korzystać z serwera proxy komputera. To zachowanie można zmienić, modyfikując plik ApplicationProxyConnectorUpdaterService.exe.config.
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Rozwiązywanie problemów z serwerem proxy łączników i problemy z łącznością usługi
 

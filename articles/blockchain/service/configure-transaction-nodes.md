@@ -4,12 +4,12 @@ description: Jak skonfigurować węzły transakcji usługi Azure Blockchain Serv
 ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
-ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fa18496d0c1aa59beb55569e731967d5ebea427
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252261"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876933"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurowanie węzłów transakcji usługi Azure Blockchain Service
 
@@ -17,7 +17,7 @@ Węzły transakcji są używane do wysyłania transakcji łańcucha bloków do u
 
 Aby wyświetlić szczegóły węzła transakcji domyślnej:
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Przejdź do członka usługi Azure Blockchain Service. Wybierz **węzeł transakcji**.
 
     ![Wybierz domyślny węzeł transakcji](./media/configure-transaction-nodes/nodes.png)
@@ -54,7 +54,7 @@ Aby wyświetlić szczegóły punktu końcowego węzła transakcji:
 
     ![Punkty końcowe](./media/configure-transaction-nodes/endpoints.png)
 
-Punkty końcowe węzła transakcji są bezpieczne i wymagają uwierzytelniania. Możesz połączyć się z punktem końcowym transakcji przy użyciu uwierzytelniania usługi Azure AD, uwierzytelniania podstawowego HTTPS i przy użyciu klucza dostępu za pośrednictwem protokołu HTTPS lub Websocket za pośrednictwem protokołu SSL.
+Punkty końcowe węzła transakcji są bezpieczne i wymagają uwierzytelniania. Można połączyć się z punktem końcowym transakcji przy użyciu uwierzytelniania usługi Azure AD, uwierzytelniania podstawowego HTTPS i przy użyciu klucza dostępu za pośrednictwem protokołu HTTPS lub Websocket za pośrednictwem protokołu TLS.
 
 ### <a name="azure-active-directory-access-control"></a>Kontrola dostępu usługi Azure Active Directory
 

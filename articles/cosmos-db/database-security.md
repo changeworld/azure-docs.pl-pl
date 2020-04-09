@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 345fc329df1c57cab7dd66c609bf3701fa3a6124
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: c92f045f2c8d4443d596697596363bda3d0df975
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619143"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985290"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Zabezpieczenia w usłudze Azure Cosmos DB — omówienie
 
@@ -23,7 +23,7 @@ Szyfrowanie w stanie spoczynku jest teraz dostępne dla dokumentów i kopii zapa
 
 ## <a name="how-do-i-secure-my-database"></a>Jak zabezpieczyć bazę danych
 
-Bezpieczeństwo danych jest współużytkowana odpowiedzialność między Tobą, klientem i dostawcą bazy danych. W zależności od wybranego dostawcy bazy danych wysokość odpowiedzialności, którą ponosisz, może się różnić. Jeśli wybierzesz rozwiązanie lokalne, musisz zapewnić wszystko, od ochrony punktu końcowego do fizycznego bezpieczeństwa sprzętu - co nie jest łatwym zadaniem. Jeśli wybierzesz dostawcy bazy danych w chmurze PaaS, takich jak Usługi Azure Cosmos DB, obszar zainteresowania zmniejsza się znacznie. Na poniższej ilustracji, zapożyczone z pracy firmy Microsoft [współdzielonych dla przetwarzania w chmurze,](https://aka.ms/sharedresponsibility) pokazano, jak zmniejsza się odpowiedzialność z dostawcą PaaS, takich jak Usługa Azure Cosmos DB.
+Bezpieczeństwo danych jest współużytkowana odpowiedzialność między Tobą, klientem i dostawcą bazy danych. W zależności od wybranego dostawcy bazy danych wysokość odpowiedzialności, którą ponosisz, może się różnić. Jeśli wybierzesz rozwiązanie lokalne, musisz zapewnić wszystko, od ochrony punktu końcowego do fizycznego bezpieczeństwa sprzętu - co nie jest łatwym zadaniem. Jeśli wybierzesz dostawcy bazy danych w chmurze PaaS, takich jak Usługi Azure Cosmos DB, obszar zainteresowania zmniejsza się znacznie. Na poniższej ilustracji, zapożyczone z pracy firmy Microsoft [współdzielonych dla przetwarzania w chmurze,](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) pokazano, jak zmniejsza się odpowiedzialność z dostawcą PaaS, takich jak Usługa Azure Cosmos DB.
 
 ![Obowiązki klientów i dostawców baz danych](./media/database-security/nosql-database-security-responsibilities.png)
 
@@ -70,7 +70,7 @@ Przyjmijmy się szczegółowo każdego z nich.
 |Przywracanie usuniętych danych|Automatyczne kopie zapasowe online mogą być używane do odzyskiwania danych, które mogły zostać przypadkowo usunięte do ~30 dni po zdarzeniu. <br><br>Dowiedz się więcej w [sprawie Automatyczna kopia zapasowa i przywracanie online za pomocą usługi Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)|
 |Ochrona i izolowanie poufnych danych|Wszystkie dane w regionach wymienionych w co nowego? jest teraz szyfrowany w spoczynku.<br><br>Dane osobowe i inne poufne dane mogą być izolowane do określonego kontenera i odczytu i zapisu, lub dostęp tylko do odczytu może być ograniczony do określonych użytkowników.|
 |Monitoruj ataki|Korzystając z [rejestrowania inspekcji i dzienników aktywności,](logging.md)możesz monitorować swoje konto pod kątem normalnej i nietypowej aktywności. Można wyświetlić, jakie operacje zostały wykonane na zasoby, kto zainicjował operację, gdy wystąpiła operacja, stan operacji i wiele więcej, jak pokazano na zrzucie ekranu po tej tabeli.|
-|Reagowanie na ataki|Po skontaktowaniu się z pomocą techniczną platformy Azure w celu zgłoszenia potencjalnego ataku zostanie rozpoczęty 5-etapowy proces reagowania na incydenty. Celem 5-etapowego procesu jest przywrócenie normalnego bezpieczeństwa usługi i operacji tak szybko, jak to możliwe po wykryciu problemu i rozpoczęciu dochodzenia.<br><br>Dowiedz się więcej w [programie Microsoft Azure Security Response in the Cloud](https://aka.ms/securityresponsepaper).|
+|Reagowanie na ataki|Po skontaktowaniu się z pomocą techniczną platformy Azure w celu zgłoszenia potencjalnego ataku zostanie rozpoczęty 5-etapowy proces reagowania na incydenty. Celem 5-etapowego procesu jest przywrócenie normalnego bezpieczeństwa usługi i operacji tak szybko, jak to możliwe po wykryciu problemu i rozpoczęciu dochodzenia.<br><br>Dowiedz się więcej w [programie Microsoft Azure Security Response in the Cloud](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).|
 |Ogrodzenia geograficzne|Usługa Azure Cosmos DB zapewnia zarządzanie danymi dla suwerennych regionów (na przykład Niemcy, Chiny, us Gov).|
 |Obiekty chronione|Dane w usłudze Azure Cosmos DB są przechowywane na ssd w chronionych centrach danych platformy Azure.<br><br>Dowiedz się więcej w [globalnych centrach danych firmy Microsoft](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
 |Szyfrowanie HTTPS/SSL/TLS|Wszystkie połączenia z usługą Azure Cosmos DB obsługują protokół HTTPS. Usługa Azure Cosmos DB obsługuje również protokół TLS 1.2.<br>Istnieje możliwość wymuszenia minimalnej wersji TLS po stronie serwera. W tym celu [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)należy skontaktować się z firmą .|

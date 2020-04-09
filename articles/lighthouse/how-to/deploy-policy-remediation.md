@@ -3,12 +3,12 @@ title: Wdrażanie zasad, które można skorygować
 description: Dowiedz się, jak przywdzielić klienta do zarządzania zasobami delegowanymi platformy Azure, umożliwiając dostęp do jego zasobów i zarządzanie nimi za pośrednictwem własnej dzierżawy.
 ms.date: 10/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: c06ed4ea597808aee18d4a848bcfea7152b9cf8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b625e9e3c96866cfbc655a55b770c9ac07a626bd
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270643"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985171"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Wdrażanie zasad, które można skorygować w ramach subskrypcji delegowanej
 
@@ -40,7 +40,7 @@ W poniższym przykładzie pokazano **principalId,** który będzie miał rolę A
 
 Po utworzeniu użytkownika z niezbędnymi uprawnieniami, jak opisano powyżej, ten użytkownik może wdrożyć zasady w dzierżawie klienta, które używają zadań korygowania.
 
-Załóżmy na przykład, że chcesz włączyć diagnostykę zasobów usługi Azure Key Vault w dzierżawie klienta, jak pokazano w tym [przykładzie.](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring) Użytkownik w dzierżawie zarządzającej z odpowiednimi uprawnieniami (jak opisano powyżej) wdroży [szablon usługi Azure Resource Manager,](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) aby włączyć ten scenariusz.
+Załóżmy na przykład, że chcesz włączyć diagnostykę zasobów usługi Azure Key Vault w dzierżawie klienta, jak pokazano w tym [przykładzie.](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring) Użytkownik w dzierżawie zarządzającej z odpowiednimi uprawnieniami (jak opisano powyżej) wdroży [szablon usługi Azure Resource Manager,](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) aby włączyć ten scenariusz.
 
 Należy zauważyć, że tworzenie przypisania zasad do użycia z delegowaną subskrypcją musi być obecnie wykonywane za pośrednictwem interfejsów API, a nie w witrynie Azure portal. W ten sposób **apiVersion** musi być ustawiona na **2019-04-01-preview**, który zawiera nową **właściwośćlegedManagedIdentityResourceId.** Ta właściwość umożliwia dołączenie tożsamości zarządzanej, która znajduje się w dzierżawie klienta (w grupie subskrypcji lub zasobów, która została przyłączona do zarządzania zasobami delegowanymi platformy Azure).
 
@@ -62,7 +62,7 @@ W poniższym przykładzie pokazano przypisanie roli z **identyfikatorem delegowa
 ```
 
 > [!TIP]
-> [Podobny przykład](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-add-or-replace-tag) jest dostępny, aby zademonstrować sposób wdrażania zasad, które dodaje lub usuwa tag (przy użyciu efektu modyfikowania) do subskrypcji delegowanej.
+> [Podobny przykład](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-add-or-replace-tag) jest dostępny, aby zademonstrować sposób wdrażania zasad, które dodaje lub usuwa tag (przy użyciu efektu modyfikowania) do subskrypcji delegowanej.
 
 ## <a name="next-steps"></a>Następne kroki
 

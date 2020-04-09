@@ -11,21 +11,26 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/02/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
-ms.openlocfilehash: 0e2e16ccc04ff6df80597d646a00c40551e4cfd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd0b8a50d25cd8d1a66a8eb98e54ec231aa2c62f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302053"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878718"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Konfigurowanie bezpośrednich połączeń między platformą Azure a infrastrukturą Oracle Cloud Infrastructure  
 
-Aby stworzyć [zintegrowane środowisko wielochmurowe](oracle-oci-overview.md) (wersja zapoznawcza), firmy Microsoft i Oracle oferują bezpośrednie połączenia między platformą Azure i Oracle Cloud Infrastructure (OCI) za pośrednictwem [usług ExpressRoute](../../../expressroute/expressroute-introduction.md) i [FastConnect.](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) Dzięki połączeniu typu ExpressRoute i FastConnect klienci mogą doświadczyć małych opóźnień, dużej przepustowości i prywatnej łączności bezpośredniej między dwiema chmurami.
+Aby stworzyć [zintegrowane środowisko wielochmurowe,](oracle-oci-overview.md)firmy Microsoft i Oracle oferują bezpośrednie połączenia między platformą Azure a infrastrukturą Oracle Cloud Infrastructure (OCI) za pośrednictwem [usług ExpressRoute](../../../expressroute/expressroute-introduction.md) i [FastConnect.](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) Dzięki połączeniu typu ExpressRoute i FastConnect klienci mogą doświadczyć małych opóźnień, dużej przepustowości i prywatnej łączności bezpośredniej między dwiema chmurami.
 
 > [!IMPORTANT]
-> Połączenie między platformą Microsoft Azure i OCI znajduje się na etapie podglądu. Aby ustanowić łączność o małym opóźnieniu między platformą Azure i OCI, twoja subskrypcja platformy Azure musi najpierw zostać włączona dla tej możliwości. Aby zapisać się do wersji zapoznawczej, należy wypełnić ten krótki [formularz ankiety](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu). Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie możesz korzystać z tej funkcji, dopóki nie otrzymasz wiadomości e-mail z potwierdzeniem. Możesz również skontaktować się z przedstawicielem firmy Microsoft, aby włączyć tę wersję zapoznawczą. Dostęp do możliwości w wersji zapoznawczej jest zależny od dostępności i ograniczony przez firmę Microsoft według własnego uznania. Wypełnienie ankiety nie gwarantuje dostępu. Ta wersja zapoznawcza jest dostarczana bez umowy dotyczącej poziomu usług i nie powinna być używana dla obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Szczegółowe informacje można znaleźć w [dodatkowych warunkach użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) w wersji zapoznawczej platformy Microsoft Azure. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+> Oracle zaświadczy te aplikacje do uruchomienia na platformie Azure podczas korzystania z rozwiązania Azure / Oracle Cloud interconnect do maja 2020 r.
+> * Pakiet e-biznesowy
+> * JD Edwards EnterpriseOne
+> * Peoplesoft
+> * Aplikacje Oracle Retail
+> * Zarządzanie finansami Oracle Hyperion
 
 Na poniższej ilustracji przedstawiono ogólny przegląd połączeń wzajemnych:
 
@@ -36,8 +41,6 @@ Na poniższej ilustracji przedstawiono ogólny przegląd połączeń wzajemnych:
 * Aby ustanowić łączność między platformą Azure i OCI, musisz mieć aktywną subskrypcję platformy Azure i aktywny najem OCI.
 
 * Łączność jest możliwa tylko wtedy, gdy lokalizacja komunikacji równorzędnej usługi Azure ExpressRoute znajduje się w pobliżu lub w tej samej lokalizacji komunikacji równorzędnej co usługa OCI FastConnect. Zobacz [Dostępność regionu](oracle-oci-overview.md#region-availability).
-
-* Twoja subskrypcja platformy Azure musi być włączona dla tej możliwości w wersji zapoznawczej.
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>Konfigurowanie bezpośredniej łączności między programem ExpressRoute a fastconnect
 

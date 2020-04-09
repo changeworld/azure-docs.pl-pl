@@ -3,12 +3,12 @@ title: odwołanie host.json dla usługi Azure Functions 2.x
 description: Dokumentacja referencyjna dla pliku host.json usługi Azure functions ze środowiska wykonawczego w wersji 2.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 3d98be2dcc351aa88b9e126c883865079e407c2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a861d500f0b8cc31b8312d6c955916ab741b649
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473374"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878254"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>odwołanie host.json dla usługi Azure Functions 2.x i nowszych 
 
@@ -286,7 +286,7 @@ Steruje zachowaniami rejestrowania aplikacji funkcji, w tym usługi Application 
 
 ```json
 "logging": {
-    "fileLoggingMode": "debugOnly"
+    "fileLoggingMode": "debugOnly",
     "logLevel": {
       "Function.MyFunction": "Information",
       "default": "None"

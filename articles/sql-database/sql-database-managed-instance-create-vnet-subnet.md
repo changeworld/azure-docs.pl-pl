@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 9f115d51657993562642391a235de79420aa434a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ce88f9a61b8aa7c2588a6e077d694afa6fb8631
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823374"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878854"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Tworzenie sieci wirtualnej dla wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -29,13 +29,13 @@ Wystąpienie zarządzanej bazy danych SQL platformy Azure musi zostać wdrożone
 - Łączenie wystąpienia zarządzanego z serwerem połączonym lub innym lokalnym magazynem danych
 - Łączenie wystąpienia zarządzanego z zasobami platformy Azure  
 
-> [!Note]
+> [!NOTE]
 > Przed wdrożeniem pierwszego wystąpienia należy [określić rozmiar podsieci dla wystąpienia zarządzanego.](sql-database-managed-instance-determine-size-vnet-subnet.md) Nie można zmienić rozmiaru podsieci po umieszczeniu zasobów wewnątrz.
 >
 > Jeśli planujesz używać istniejącej sieci wirtualnej, należy zmodyfikować tę konfigurację sieci, aby pomieścić wystąpienie zarządzane. Aby uzyskać więcej informacji, zobacz [Modyfikowanie istniejącej sieci wirtualnej dla wystąpienia zarządzanego](sql-database-managed-instance-configure-vnet-subnet.md).
 >
-> Po utworzeniu wystąpienia zarządzanego przeniesienie wystąpienia zarządzanego lub sieci wirtualnej do innej grupy zasobów lub subskrypcji nie jest obsługiwane.
-
+> Po utworzeniu wystąpienia zarządzanego przeniesienie wystąpienia zarządzanego lub sieci wirtualnej do innej grupy zasobów lub subskrypcji nie jest obsługiwane.  Przeniesienie wystąpienia zarządzanego do innej podsieci również nie jest obsługiwane.
+>
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 

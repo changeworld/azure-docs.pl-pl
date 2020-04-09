@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 04/08/2020
 ms.author: juliako
-ms.openlocfilehash: e6f2ad2c5c30e3c75e8d3588e386ea14e8e3350b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a00f7c0ec76510cc521966acf98b7250e723697
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065942"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985902"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Wydarzenia na żywo i wyjścia na żywo w usługach media
 
@@ -112,8 +112,11 @@ Możesz użyć znaczących lub nieznaczących adresów URL.
 * Adres URL próżności
 
     Tryb próżności jest preferowany przez dużych nadawców multimedialnych, którzy używają koderów emisji sprzętowych i nie chcą ponownie konfigurować swoich koderów po uruchomieniu wydarzenia na żywo. Chcą predykcyjnego adresu URL pozyskiwania, który nie zmienia się w czasie.
+    
+    > [!NOTE]
+    > W witrynie Azure portal adres URL próżności nosi nazwę "*adres URL wprowadzania trwałego*".
 
-    Aby określić ten `vanityUrl` tryb, należy ustawić `true` `false`na czas tworzenia (domyślnie jest ). Należy również przekazać własny token`LiveEventInput.accessToken`dostępu ( ) w czasie tworzenia. Należy określić wartość tokenu, aby uniknąć losowego tokenu w adresie URL. Token dostępu musi być prawidłowym ciągiem GUID (z myślnikami lub bez nich). Po ustawieniu trybu nie można go zaktualizować.
+    Aby określić ten tryb `vanityUrl` w `true` interfejsie API, `false`ustaw na czas tworzenia (domyślnie jest ). Należy również przekazać własny token`LiveEventInput.accessToken`dostępu ( ) w czasie tworzenia. Należy określić wartość tokenu, aby uniknąć losowego tokenu w adresie URL. Token dostępu musi być prawidłowym ciągiem GUID (z myślnikami lub bez nich). Po ustawieniu trybu nie można go zaktualizować.
 
     Token dostępu musi być unikatowy w centrum danych. Jeśli aplikacja musi używać adresu URL próżności, zaleca się zawsze utworzyć nowe wystąpienie identyfikatora GUID dla tokenu dostępu (zamiast ponownego użycia istniejącego identyfikatora GUID).
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 23eb51428dcf4961febfb592bf957bb8beeeda57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40820170bae275f090c5f898387698fc562e59ae
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61463132"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985545"
 ---
 # <a name="scale-streaming-endpoints-with-the-azure-portal"></a>Skalowanie punktów końcowych przesyłania strumieniowego przy użyciu witryny Azure Portal
 ## <a name="overview"></a>Omówienie
@@ -33,7 +33,7 @@ Punkty końcowe przesyłania strumieniowego **Premium** są odpowiednie w przypa
  
 W tym temacie pokazano, jak skalować punkt końcowy przesyłania strumieniowego.
 
-Aby dowiedzieć się więcej o cenach, zobacz artykuł [Szczegółowe informacje o cenach usługi Media Services](https://go.microsoft.com/fwlink/?LinkId=275107).
+Aby dowiedzieć się więcej o cenach, zobacz artykuł [Szczegółowe informacje o cenach usługi Media Services](https://azure.microsoft.com/pricing/details/media-services/).
 
 ## <a name="scale-streaming-endpoints"></a>Skalowanie punktów końcowych przesyłania strumieniowego
 

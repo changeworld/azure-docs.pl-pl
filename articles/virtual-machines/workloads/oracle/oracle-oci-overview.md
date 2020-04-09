@@ -11,30 +11,30 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: e1249913300be532cc6514f1478bbc6f4183c001
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5d5ebda850163989e6ef1af94ec623d2d758f07
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300557"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878293"
 ---
-# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Rozwiązania oracle z aplikacjami integrujące microsoft azure i oracle cloud infrastructure (wersja zapoznawcza)
+# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Rozwiązania oracle z aplikacjami integrujące infrastrukturę Microsoft Azure i Oracle Cloud Infrastructure
 
 Firmy Microsoft i Oracle nawiązały współpracę w celu zapewnienia łączności między chmurami o niskich opóźnieniach i dużej przepustowości, co pozwala na korzystanie z najlepszych z obu chmur. 
 
 Korzystając z tej łączności między chmurami, można podzielić wielowarstwową aplikację do uruchamiania warstwy bazy danych w oracle cloud infrastructure (OCI) i aplikacji i innych warstw na platformie Microsoft Azure. Środowisko jest podobne do uruchamiania całego stosu rozwiązań w jednej chmurze. 
-
-> [!IMPORTANT]
-> Ta funkcja między chmurami jest obecnie w wersji zapoznawczej i [obowiązują ograniczenia.](#region-availability) Aby ustanowić łączność o małym opóźnieniu między platformą Azure i OCI, twoja subskrypcja platformy Azure musi najpierw zostać włączona dla tej możliwości. Aby zapisać się do wersji zapoznawczej, należy wypełnić ten krótki [formularz ankiety](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu). Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie możesz korzystać z tej funkcji, dopóki nie otrzymasz wiadomości e-mail z potwierdzeniem. Możesz również skontaktować się z przedstawicielem firmy Microsoft, aby włączyć tę wersję zapoznawczą. Dostęp do możliwości w wersji zapoznawczej jest zależny od dostępności i ograniczony przez firmę Microsoft według własnego uznania. Wypełnienie ankiety nie gwarantuje dostępu. Ta wersja zapoznawcza jest dostarczana bez umowy dotyczącej poziomu usług i nie powinna być używana dla obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Szczegółowe informacje można znaleźć w [dodatkowych warunkach użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) w wersji zapoznawczej platformy Microsoft Azure. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 
 Jeśli chcesz wdrożyć rozwiązania Oracle w całości w infrastrukturze platformy Azure, zobacz [obrazy maszyn wirtualnych Oracle i ich wdrożenie na platformie Microsoft Azure.](oracle-vm-solutions.md)
 
 ## <a name="scenario-overview"></a>Omówienie scenariusza
 
 Łączność między chmurami zapewnia rozwiązanie do uruchamiania wiodących w branży aplikacji Oracle i własnych aplikacji niestandardowych na maszynach wirtualnych platformy Azure, a jednocześnie korzysta z zalet hostowanych usług baz danych w OCI. 
+
+> [!IMPORTANT]
+> Oracle zaświadczy te aplikacje do uruchomienia na platformie Azure podczas korzystania z rozwiązania Azure / Oracle Cloud interconnect do maja 2020 r.
 
 Aplikacje, które można uruchamiać w konfiguracji między chmurami obejmują:
 
@@ -56,7 +56,7 @@ Poniższy diagram jest omówienie wysokiego poziomu połączonego rozwiązania. 
 * Azure Canada Central (canadacentral) & OCI Toronto (Kanada Południowo-Wschodnia)
 * Azure Europa Zachodnia (westeurope) & OCI Amsterdam (Holandia Północno-Zachodnia)
 
-## <a name="networking"></a>Obsługa sieci
+## <a name="networking"></a>Networking
 
 Klienci korporacyjni często decydują się na dywersyfikację i wdrażanie obciążeń w wielu chmurach z różnych powodów biznesowych i operacyjnych. Aby zdywersyfikować, klienci łączą sieci w chmurze za pomocą Internetu, sieci VPN IPSec lub korzystania z rozwiązania do łączności bezpośredniej dostawcy chmury za pośrednictwem sieci lokalnej. Wzajemne połączenia z sieciami w chmurze mogą wymagać znacznych inwestycji w czas, pieniądze, projektowanie, zaopatrzenie, instalację, testowanie i operacje. 
 

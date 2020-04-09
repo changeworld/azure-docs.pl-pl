@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 8b4ec003888d75a582d25feef8ed2ce010fa7996
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546248"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876296"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Przewodnik po operacjach zarządzania uwierzytelnianiem usługi Azure Active Directory
 
@@ -64,7 +64,7 @@ Skorzystaj z poniższej tabeli, aby znaleźć zalecane rozwiązanie problemu, kt
 | Brak mechanizmu ochrony przed słabymi hasłami | Włączanie [samoobsługowego resetowania haseł usługi](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) Azure AD i [ochrony hasłem](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) |
 | Brak mechanizmu wykrywania wyciekających haseł | Włącz [synchronizację skrótów haseł](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS) w celu uzyskania szczegółowych informacji |
 | Korzystanie z usług AD FS i nie można przejść do uwierzytelniania zarządzanego | Włącz [inteligentną blokadę dodatku AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) i/lub [blokadę inteligentną usługi Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout) |
-| Zasady haseł używają reguł opartych na złożoności, takich jak długość, wiele zestawów znaków lub wygaśnięcie | Rozważ ponownie na rzecz [zalecanych praktyk firmy Microsoft](https://aka.ms/passwordguidance) i przełącz swoje podejście do zarządzania hasłami i wdrażaj [ochronę hasłem usługi Azure AD.](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad) |
+| Zasady haseł używają reguł opartych na złożoności, takich jak długość, wiele zestawów znaków lub wygaśnięcie | Rozważ ponownie na rzecz [zalecanych praktyk firmy Microsoft](https://www.microsoft.com/research/publication/password-guidance/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F265143%2Fmicrosoft_password_guidance.pdf) i przełącz swoje podejście do zarządzania hasłami i wdrażaj [ochronę hasłem usługi Azure AD.](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad) |
 | Użytkownicy nie są zarejestrowani do korzystania z uwierzytelniania wieloskładnikowego (MFA) | [Zarejestruj wszystkie informacje zabezpieczające użytkownika,](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-mfa-policy) aby mogły być używane jako mechanizm weryfikacji tożsamości użytkownika wraz z hasłem |
 | Nie ma odwołania haseł ze względu na ryzyko użytkownika | Wdrażanie [zasad ryzyka użytkownika usługi](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy) Azure AD Identity Protection w celu wymuszenia zmian haseł w przypadku wyciekanych poświadczeń przy użyciu funkcji SSPR |
 | Nie ma mechanizmu inteligentnej blokady, który chronił złośliwe uwierzytelnianie przed złymi podmiotami pochodzącymi ze zidentyfikowanych adresów IP | Wdrażanie uwierzytelniania zarządzanego w chmurze za pomocą synchronizacji skrótów haseł lub [uwierzytelniania przekazywanego](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA) |
@@ -101,11 +101,11 @@ Jeśli w organizacji lokalnej brakuje strategii odporności awarii lub ma strate
 
 ![przepływ synchronizacji skrótu hasła](./media/active-directory-ops-guide/active-directory-ops-img5.png)
 
-Aby lepiej zrozumieć opcje uwierzytelniania, zobacz [Wybieranie właściwej metody uwierzytelniania dla rozwiązania do tożsamości hybrydowej usługi Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/hybrid/choose-ad-authn)
+Aby lepiej zrozumieć opcje uwierzytelniania, zobacz [Wybieranie właściwej metody uwierzytelniania dla rozwiązania do tożsamości hybrydowej usługi Azure Active Directory.](../hybrid/choose-ad-authn.md)
 
 ### <a name="programmatic-usage-of-credentials"></a>Programowe użycie poświadczeń
 
-Skrypty usługi Azure AD przy użyciu programu PowerShell lub aplikacji korzystających z interfejsu API programu Microsoft Graph wymagają bezpiecznego uwierzytelniania. Słabe zarządzanie poświadczeniami wykonujące te skrypty i narzędzia zwiększa ryzyko kradzieży poświadczeń. Jeśli używasz skryptów lub aplikacji, które opierają się na hasłach zakodowanych na stałe lub monitach o hasło, należy najpierw przejrzeć hasła w plikach konfiguracyjnych lub kodzie źródłowym, a następnie zastąpić te zależności i używać zarządzanych tożsamości platformy Azure, uwierzytelniania zintegrowanego systemu Windows lub [certyfikatów,](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates) gdy tylko jest to możliwe. W przypadku aplikacji, w których poprzednie rozwiązania nie są możliwe, należy rozważyć użycie [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+Skrypty usługi Azure AD przy użyciu programu PowerShell lub aplikacji korzystających z interfejsu API programu Microsoft Graph wymagają bezpiecznego uwierzytelniania. Słabe zarządzanie poświadczeniami wykonujące te skrypty i narzędzia zwiększa ryzyko kradzieży poświadczeń. Jeśli używasz skryptów lub aplikacji, które opierają się na hasłach zakodowanych na stałe lub monitach o hasło, należy najpierw przejrzeć hasła w plikach konfiguracyjnych lub kodzie źródłowym, a następnie zastąpić te zależności i używać zarządzanych tożsamości platformy Azure, uwierzytelniania zintegrowanego systemu Windows lub [certyfikatów,](../reports-monitoring/tutorial-access-api-with-certificates.md) gdy tylko jest to możliwe. W przypadku aplikacji, w których poprzednie rozwiązania nie są możliwe, należy rozważyć użycie [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
 Jeśli okaże się, że istnieją jednostki usługi z poświadczeniami hasła i nie masz pewności, jak te poświadczenia hasła są zabezpieczone przez skrypty lub aplikacje, skontaktuj się z właścicielem aplikacji, aby lepiej zrozumieć wzorce użycia.
 
@@ -115,7 +115,7 @@ Firma Microsoft zaleca również kontakt z właścicielami aplikacji, aby zrozum
 
 ### <a name="on-premises-authentication"></a>Uwierzytelnianie lokalne
 
-Uwierzytelnianie federacyjne ze zintegrowanym uwierzytelnianiem systemu Windows (IWA) lub bezproblemowym logowaniem jednokrotnym (SSO) za pomocą synchronizacji skrótów haseł lub uwierzytelniania przekazywanego jest najlepszym doświadczeniem użytkownika w sieci firmowej z kontrolerami domeny lokalnej. Minimalizuje zmęczenie poświadczeń i zmniejsza ryzyko, że użytkownicy padają ofiarą ataków phishingowych. Jeśli uwierzytelnianie zarządzane w chmurze jest już używane za pomocą phs lub PTA, ale użytkownicy nadal muszą wpisywać swoje hasło podczas uwierzytelniania lokalnego, należy natychmiast [wdrożyć bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso). Z drugiej strony, jeśli są obecnie federowane z planami, aby ostatecznie przeprowadzić migrację do uwierzytelniania zarządzanego w chmurze, należy zaimplementować bezproblemowe logowanie jednokrotne w ramach projektu migracji.
+Uwierzytelnianie federacyjne ze zintegrowanym uwierzytelnianiem systemu Windows (IWA) lub bezproblemowym logowaniem jednokrotnym (SSO) za pomocą synchronizacji skrótów haseł lub uwierzytelniania przekazywanego jest najlepszym doświadczeniem użytkownika w sieci firmowej z kontrolerami domeny lokalnej. Minimalizuje zmęczenie poświadczeń i zmniejsza ryzyko, że użytkownicy padają ofiarą ataków phishingowych. Jeśli uwierzytelnianie zarządzane w chmurze jest już używane za pomocą phs lub PTA, ale użytkownicy nadal muszą wpisywać swoje hasło podczas uwierzytelniania lokalnego, należy natychmiast [wdrożyć bezproblemowe logowanie jednokrotne](../hybrid/how-to-connect-sso.md). Z drugiej strony, jeśli są obecnie federowane z planami, aby ostatecznie przeprowadzić migrację do uwierzytelniania zarządzanego w chmurze, należy zaimplementować bezproblemowe logowanie jednokrotne w ramach projektu migracji.
 
 ### <a name="device-trust-access-policies"></a>Zasady dostępu zaufania do urządzeń
 
@@ -123,66 +123,66 @@ Podobnie jak użytkownik w organizacji, urządzenie jest podstawową tożsamośc
 
 - Unikanie tarcia, na przykład w przypadku usługi MFA, gdy urządzenie jest zaufane
 - Blokowanie dostępu z niezaufanych urządzeń
-- W przypadku urządzeń z systemem Windows 10 [bezproblemowo udostępniaj logowanie jednokrotne do zasobów lokalnych.](https://docs.microsoft.com/azure/active-directory/devices/azuread-join-sso)
+- W przypadku urządzeń z systemem Windows 10 [bezproblemowo udostępniaj logowanie jednokrotne do zasobów lokalnych.](../devices/azuread-join-sso.md)
 
 Ten cel można osiągnąć, wprowadzając tożsamości urządzeń i zarządzając nimi w usłudze Azure AD przy użyciu jednej z następujących metod:
 
 - Organizacje mogą używać [usługi Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) do zarządzania urządzeniem i wymuszania zasad zgodności, testowania kondycji urządzenia i ustawiania zasad dostępu warunkowego na podstawie tego, czy urządzenie jest zgodne. Usługa Microsoft Intune może zarządzać urządzeniami z systemem iOS, komputerami mac (integracja z JAMF), komputerami stacjonarnymi z systemem Windows (natywnie korzystającymi z zarządzania urządzeniami przenośnymi dla systemu Windows 10 oraz współzarządzaniem z programem Microsoft Endpoint Configuration Manager) i urządzeniami przenośnymi z systemem Android.
-- [Hybrydowe dołączanie do usługi AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) zapewnia zarządzanie za pomocą zasad grupy lub programu Microsoft Endpoint Configuration Manager w środowisku z urządzeniami komputerów przyłączonych do domeny usługi Active Directory. Organizacje mogą wdrażać środowisko zarządzane za pośrednictwem phs lub PTA z bezproblemowym logowaniem jednokrotnym. Przeniesienie urządzeń do usługi Azure AD maksymalizuje produktywność użytkowników za pośrednictwem jednokrotnego przysłowania jednocześnie w chmurze i w zasobach lokalnych, umożliwiając jednocześnie bezpieczny dostęp do zasobów w chmurze i lokalnie za pomocą [dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) warunkowego.
+- [Hybrydowe dołączanie do usługi AD](../devices/hybrid-azuread-join-managed-domains.md) zapewnia zarządzanie za pomocą zasad grupy lub programu Microsoft Endpoint Configuration Manager w środowisku z urządzeniami komputerów przyłączonych do domeny usługi Active Directory. Organizacje mogą wdrażać środowisko zarządzane za pośrednictwem phs lub PTA z bezproblemowym logowaniem jednokrotnym. Przeniesienie urządzeń do usługi Azure AD maksymalizuje produktywność użytkowników za pośrednictwem jednokrotnego przysłowania jednocześnie w chmurze i w zasobach lokalnych, umożliwiając jednocześnie bezpieczny dostęp do zasobów w chmurze i lokalnie za pomocą [dostępu](../conditional-access/overview.md) warunkowego.
 
-Jeśli masz urządzenia z systemem Windows przyłączone do domeny, które nie są zarejestrowane w chmurze lub urządzenia z systemem Windows przyłączone do domeny, które są zarejestrowane w chmurze, ale bez zasad dostępu warunkowego, należy zarejestrować niezarejestrowane urządzenia i w obu przypadkach [użyć hybrydowego sprzężenia usługi Azure AD jako formantu](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices) w zasadach dostępu warunkowego.
+Jeśli masz urządzenia z systemem Windows przyłączone do domeny, które nie są zarejestrowane w chmurze lub urządzenia z systemem Windows przyłączone do domeny, które są zarejestrowane w chmurze, ale bez zasad dostępu warunkowego, należy zarejestrować niezarejestrowane urządzenia i w obu przypadkach [użyć hybrydowego sprzężenia usługi Azure AD jako formantu](../conditional-access/require-managed-devices.md) w zasadach dostępu warunkowego.
 
 ![Zrzut ekranu przedstawiający przyznanie w zasadach dostępu warunkowego wymagających urządzenia hybrydowego](./media/active-directory-ops-guide/active-directory-ops-img6.png)
 
-Jeśli zarządzasz urządzeniami z mdm lub microsoft intune, ale nie używasz formantów urządzeń w zasadach dostępu warunkowego, zalecamy użycie [funkcji Wymagaj urządzenia, aby oznaczyć](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices#require-device-to-be-marked-as-compliant) je jako zgodne jako formant w tych zasadach.
+Jeśli zarządzasz urządzeniami z mdm lub microsoft intune, ale nie używasz formantów urządzeń w zasadach dostępu warunkowego, zalecamy użycie [funkcji Wymagaj urządzenia, aby oznaczyć](../conditional-access/require-managed-devices.md#require-device-to-be-marked-as-compliant) je jako zgodne jako formant w tych zasadach.
 
 ![Zrzut ekranu przedstawiający przyznanie w zasadach dostępu warunkowego wymagających zgodności z urządzeniami](./media/active-directory-ops-guide/active-directory-ops-img7.png)
 
 #### <a name="device-trust-access-policies-recommended-reading"></a>Zalecane jest czytanie zasad dostępu zaufania urządzenia
 
-- [Jak: Planowanie implementacji dołączania do hybrydowej usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
+- [Jak: Planowanie implementacji dołączania do hybrydowej usługi Azure Active Directory](../devices/hybrid-azuread-join-plan.md)
 - [Konfiguracje obsługi tożsamości i uzyskiwania dostępu do urządzeń](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello dla firm
 
 W systemie Windows 10 [funkcja Windows Hello dla firm](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification) zastępuje hasła silnym uwierzytelnianiem dwuskładnikowym na komputerach. Funkcja Windows Hello dla firm umożliwia użytkownikom usprawnienie korzystania z usługi MFA i zmniejsza zależność od haseł. Jeśli nie rozpoczęto wdrażania urządzeń z systemem Windows 10 lub tylko częściowo je wdrożyłeś, zalecamy uaktualnienie do systemu Windows 10 i [włączenie funkcji Windows Hello dla firm](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) na wszystkich urządzeniach.
 
-Jeśli chcesz dowiedzieć się więcej o uwierzytelnianiu bez użycia hasła, zobacz [Świat bez haseł w usłudze Azure Active Directory](https://aka.ms/passwordlessdoc).
+Jeśli chcesz dowiedzieć się więcej o uwierzytelnianiu bez użycia hasła, zobacz [Świat bez haseł w usłudze Azure Active Directory](../authentication/concept-authentication-passwordless.md).
 
 ## <a name="application-authentication-and-assignment"></a>Uwierzytelnianie i przypisywanie aplikacji
 
 ### <a name="single-sign-on-for-apps"></a>Logowanie jednokrotne dla aplikacji
 
-Zapewnienie ustandaryzowanego mechanizmu logowania jednokrotnego dla całego przedsiębiorstwa ma kluczowe znaczenie dla najlepszego doświadczenia użytkownika, zmniejszenia ryzyka, możliwości raportowania i zarządzania. Jeśli używasz aplikacji, które obsługują sytuowane usługi SSO z usługą Azure AD, ale są obecnie skonfigurowane do używania kont lokalnych, należy ponownie skonfigurować te aplikacje do używania usługi SSO z usługą Azure AD. Podobnie jeśli używasz żadnych aplikacji, które obsługują jedno i drugie z usługą Azure AD, ale są przy użyciu innego dostawcy tożsamości, należy ponownie skonfigurować te aplikacje do używania usługi SSO z usługą Azure AD, jak również. W przypadku aplikacji, które nie obsługują protokołów federacyjnych, ale obsługują uwierzytelnianie oparte na formularzach, zaleca się skonfigurowanie aplikacji do [używania przechowywania haseł](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting) za pomocą serwera proxy aplikacji usługi Azure AD.
+Zapewnienie ustandaryzowanego mechanizmu logowania jednokrotnego dla całego przedsiębiorstwa ma kluczowe znaczenie dla najlepszego doświadczenia użytkownika, zmniejszenia ryzyka, możliwości raportowania i zarządzania. Jeśli używasz aplikacji, które obsługują sytuowane usługi SSO z usługą Azure AD, ale są obecnie skonfigurowane do używania kont lokalnych, należy ponownie skonfigurować te aplikacje do używania usługi SSO z usługą Azure AD. Podobnie jeśli używasz żadnych aplikacji, które obsługują jedno i drugie z usługą Azure AD, ale są przy użyciu innego dostawcy tożsamości, należy ponownie skonfigurować te aplikacje do używania usługi SSO z usługą Azure AD, jak również. W przypadku aplikacji, które nie obsługują protokołów federacyjnych, ale obsługują uwierzytelnianie oparte na formularzach, zaleca się skonfigurowanie aplikacji do [używania przechowywania haseł](../manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md) za pomocą serwera proxy aplikacji usługi Azure AD.
 
 ![Logowanie oparte na hasłach AppProxy](./media/active-directory-ops-guide/active-directory-ops-img8.png)
 
 > [!NOTE]
 > Jeśli nie masz mechanizmu wykrywania niezarządzanych aplikacji w organizacji, zalecamy wdrożenie procesu odnajdywania przy użyciu rozwiązania brokera zabezpieczeń dostępu do chmury (CASB), takiego jak [Microsoft Cloud App Security .](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security)
 
-Na koniec, jeśli masz galerię aplikacji usługi Azure AD i używasz aplikacji obsługujących dane sytuacyjne z usługą Azure AD, zalecamy [umieszczenie aplikacji na liście w galerii aplikacji.](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)
+Na koniec, jeśli masz galerię aplikacji usługi Azure AD i używasz aplikacji obsługujących dane sytuacyjne z usługą Azure AD, zalecamy [umieszczenie aplikacji na liście w galerii aplikacji.](../azuread-dev/howto-app-gallery-listing.md)
 
 #### <a name="single-sign-on-recommended-reading"></a>Zalecane czytanie logowania jednokrotnego
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
 ### <a name="migration-of-ad-fs-applications-to-azure-ad"></a>Migracja aplikacji usług AD FS do usługi Azure AD
 
-[Migrowanie aplikacji z usług AD FS do usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-apps-to-azure) umożliwia dodatkowe możliwości w zakresie zabezpieczeń, bardziej spójne zarządzanie i lepsze środowisko współpracy. Jeśli masz aplikacje skonfigurowane w usługach AD FS, które obsługują sytą usługę Azure AD, należy ponownie skonfigurować te aplikacje do używania usługi SSO z usługą Azure AD. Jeśli masz aplikacje skonfigurowane w usługach AD FS z nietypowych konfiguracji nieobsługiwał przez usługę Azure AD, należy skontaktować się z właścicielami aplikacji, aby zrozumieć, czy specjalna konfiguracja jest bezwzględnym wymaganiem aplikacji. Jeśli nie jest to wymagane, należy ponownie skonfigurować aplikację do używania usługi SSO z usługą Azure AD.
+[Migrowanie aplikacji z usług AD FS do usługi Azure AD](../manage-apps/migrate-adfs-apps-to-azure.md) umożliwia dodatkowe możliwości w zakresie zabezpieczeń, bardziej spójne zarządzanie i lepsze środowisko współpracy. Jeśli masz aplikacje skonfigurowane w usługach AD FS, które obsługują sytą usługę Azure AD, należy ponownie skonfigurować te aplikacje do używania usługi SSO z usługą Azure AD. Jeśli masz aplikacje skonfigurowane w usługach AD FS z nietypowych konfiguracji nieobsługiwał przez usługę Azure AD, należy skontaktować się z właścicielami aplikacji, aby zrozumieć, czy specjalna konfiguracja jest bezwzględnym wymaganiem aplikacji. Jeśli nie jest to wymagane, należy ponownie skonfigurować aplikację do używania usługi SSO z usługą Azure AD.
 
 ![Usługa Azure AD jako podstawowy dostawca tożsamości](./media/active-directory-ops-guide/active-directory-ops-img9.png)
 
 > [!NOTE]
-> [Usługa Azure AD Connect Health dla usługi ADFS](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs) może służyć do zbierania szczegółów konfiguracji dotyczących każdej aplikacji, która może zostać zmigrowana do usługi Azure AD.
+> [Usługa Azure AD Connect Health dla usługi ADFS](../hybrid/how-to-connect-health-adfs.md) może służyć do zbierania szczegółów konfiguracji dotyczących każdej aplikacji, która może zostać zmigrowana do usługi Azure AD.
 
 ### <a name="assign-users-to-applications"></a>Przypisywanie użytkowników do aplikacji
 
-[Przypisywanie użytkowników do aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) najlepiej jest mapowane przy użyciu grup, ponieważ umożliwiają one większą elastyczność i możliwość zarządzania na dużą skalę. Korzyści płynące z używania grup obejmują [dynamiczne członkostwo w grupach oparte na atrybutach](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership) i [delegowanie do właścicieli aplikacji.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners) W związku z tym jeśli już używasz grup i zarządzasz nimi, zalecamy podjęcie następujących działań w celu poprawy zarządzania na dużą skalę:
+[Przypisywanie użytkowników do aplikacji](../manage-apps/assign-user-or-group-access-portal.md) najlepiej jest mapowane przy użyciu grup, ponieważ umożliwiają one większą elastyczność i możliwość zarządzania na dużą skalę. Korzyści płynące z używania grup obejmują [dynamiczne członkostwo w grupach oparte na atrybutach](../users-groups-roles/groups-dynamic-membership.md) i [delegowanie do właścicieli aplikacji.](../fundamentals/active-directory-accessmanagement-managing-group-owners.md) W związku z tym jeśli już używasz grup i zarządzasz nimi, zalecamy podjęcie następujących działań w celu poprawy zarządzania na dużą skalę:
 
 - Delegować zarządzanie grupami i zarządzanie do właścicieli aplikacji.
 - Zezwalaj na samoobsługowy dostęp do aplikacji.
 - Zdefiniuj grupy dynamiczne, jeśli atrybuty użytkownika mogą konsekwentnie określać dostęp do aplikacji.
-- Zaimplementuj zaświadczanie do grup używanych do dostępu do aplikacji przy użyciu [przeglądów dostępu usługi Azure AD](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview).
+- Zaimplementuj zaświadczanie do grup używanych do dostępu do aplikacji przy użyciu [przeglądów dostępu usługi Azure AD](../governance/access-reviews-overview.md).
 
 Z drugiej strony, jeśli znajdziesz aplikacje, które mają przypisanie do poszczególnych użytkowników, należy zaimplementować [zarządzania](https://docs.microsoft.com/azure/active-directory/governance/index) wokół tych aplikacji.
 
@@ -223,12 +223,12 @@ Jeśli posiadasz już licencje usługi Azure AD Premium P2, które obsługują r
 
 #### <a name="risk-based-access-policies-recommended-reading"></a>Zasady dostępu oparte na ryzyku zalecane
 
-- [Jak: Konfigurowanie zasad ryzyka logowania](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)
-- [Jak: Konfigurowanie zasad dotyczących ryzyka użytkownika](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)
+- [Jak: Konfigurowanie zasad ryzyka logowania](../identity-protection/howto-identity-protection-configure-risk-policies.md)
+- [Jak: Konfigurowanie zasad dotyczących ryzyka użytkownika](../identity-protection/howto-identity-protection-configure-risk-policies.md)
 
 ### <a name="client-application-access-policies"></a>Zasady dostępu do aplikacji klienckich
 
-Usługa Microsoft Intune Application Management (MAM) umożliwia wypychanie kontroli ochrony danych, takich jak szyfrowanie pamięci masowej, numer PIN, oczyszczanie magazynu zdalnego itp., do zgodnych aplikacji klienckich, takich jak Outlook Mobile. Ponadto można utworzyć zasady dostępu warunkowego, aby [ograniczyć dostęp](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) do usług w chmurze, takich jak Usługa Exchange Online, z zatwierdzonych lub zgodnych aplikacji.
+Usługa Microsoft Intune Application Management (MAM) umożliwia wypychanie kontroli ochrony danych, takich jak szyfrowanie pamięci masowej, numer PIN, oczyszczanie magazynu zdalnego itp., do zgodnych aplikacji klienckich, takich jak Outlook Mobile. Ponadto można utworzyć zasady dostępu warunkowego, aby [ograniczyć dostęp](../conditional-access/app-based-conditional-access.md) do usług w chmurze, takich jak Usługa Exchange Online, z zatwierdzonych lub zgodnych aplikacji.
 
 Jeśli pracownicy instalują aplikacje obsługujące usługę MAM, takie jak aplikacje mobilne pakietu Office, aby uzyskać dostęp do zasobów firmowych, takich jak Exchange Online lub SharePoint Online, a także obsługujesz usługę BYOD (przynieś własne urządzenie), zalecamy wdrożenie zasad usługi MAM aplikacji w celu zarządzania konfiguracją aplikacji na urządzeniach będących własnością osobistą bez rejestracji mdm, a następnie zaktualizowanie zasad dostępu warunkowego, aby zezwolić tylko na dostęp od klientów obsługujących usługę MAM.
 
@@ -245,10 +245,10 @@ Dostęp warunkowy jest podstawowym narzędziem służącym do poprawy postawy be
 - Unikaj używania **wszystkich użytkowników** jako filtru i nieumyślnego **dodawania**
 - **Migrowanie wszystkich "starszych" zasad do witryny Azure portal**
 - Złap wszystkie kryteria dla użytkowników, urządzeń i aplikacji
-- Użyj zasad dostępu warunkowego do [zaimplementowania usługi MFA,](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)a nie przy użyciu **usługi MFA dla użytkownika**
+- Użyj zasad dostępu warunkowego do [zaimplementowania usługi MFA,](../conditional-access/plan-conditional-access.md)a nie przy użyciu **usługi MFA dla użytkownika**
 - Mieć mały zestaw podstawowych zasad, które mogą mieć zastosowanie do wielu aplikacji
 - Definiowanie pustych grup wyjątków i dodawanie ich do zasad w celu strategii wyjątków
-- Planowanie rachunków [ze szkła łamania](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#break-glass-what-to-do-in-an-emergency) bez kontroli usługi MFA
+- Planowanie rachunków [ze szkła łamania](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) bez kontroli usługi MFA
 - Zapewnij spójne środowisko w aplikacjach klienckich usługi Office 365, na przykład w zespołach, usłudze OneDrive dla Firm, w programie Outlook itp.) poprzez wdrożenie tego samego zestawu formantów dla usług takich jak Exchange Online i Sharepoint Online
 - Przypisywanie do polityk powinno być realizowane za pośrednictwem grup, a nie osób
 - Czy regularne przeglądy grup wyjątków używanych w zasadach, aby ograniczyć czas użytkownicy są poza postawy zabezpieczeń. Jeśli jesteś właścicielem usługi Azure AD P2, możesz użyć recenzji dostępu, aby zautomatyzować proces

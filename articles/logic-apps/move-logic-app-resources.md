@@ -5,25 +5,27 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: f5944accb185f1311c811cf65a8ea8348fd569db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 065bbc62d65d7e91728b10cd9f95b2e73ea03abc
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77605612"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878735"
 ---
-# <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Przenoszenie zasobów aplikacji logiki do innych subskrypcji platformy Azure, grup zasobów lub regionów
+# <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Przenoszenie zasobów aplikacji logiki do innych grup zasobów, regionów lub subskrypcji platformy Azure
 
-Aby przeprowadzić migrację aplikacji logiki lub powiązanych zasobów do innej subskrypcji platformy Azure, grupy zasobów lub regionu, masz różne sposoby wykonywania tych zadań, takich jak witryna Azure portal, Azure PowerShell, interfejs wiersza polecenia platformy Azure i interfejs API REST. Przed przeniesieniem zasobów zapoznaj się z tymi zagadnieniami: 
+Aby przeprowadzić migrację aplikacji logiki lub powiązanych zasobów do innej grupy zasobów platformy Azure, regionu lub subskrypcji, masz różne sposoby wykonywania tych zadań, takich jak witryna Azure portal, Azure PowerShell, interfejs wiersza polecenia platformy Azure i interfejs API REST. Przed przeniesieniem zasobów zapoznaj się z tymi zagadnieniami: 
 
 * Można przenosić tylko [określone typy zasobów aplikacji logiki](../azure-resource-manager/management/move-support-resources.md#microsoftlogic) między grupami zasobów platformy Azure lub subskrypcjami.
 
 * Sprawdź [limity](../logic-apps/logic-apps-limits-and-config.md) liczby zasobów aplikacji logiki, które można mieć w subskrypcji platformy Azure i w każdym regionie platformy Azure. Te limity mają wpływ na to, czy można przenosić określone typy zasobów, gdy region pozostaje taki sam w subskrypcjach lub grupach zasobów. Na przykład można mieć tylko jedno bezpłatne konto integracji warstwy dla każdego regionu platformy Azure w każdej subskrypcji platformy Azure.
 
+* Podczas przenoszenia zasobów platforma Azure tworzy nowe identyfikatory zasobów. Dlatego upewnij się, że zamiast tego używasz nowych identyfikatorów i zaktualizuj wszystkie skrypty lub narzędzia skojarzone z przeniesionymi zasobami.
+
 * Po migracji aplikacji logiki między subskrypcjami, grupami zasobów lub regionami należy ponownie utworzyć lub ponownie autoryzować wszystkie połączenia wymagające uwierzytelniania otwartego (OAuth).
 
-* Za każdym razem, gdy przenosisz zasoby, platforma Azure tworzy nowe identyfikatory zasobów. Dlatego upewnij się, że zamiast tego używasz nowych identyfikatorów i zaktualizuj wszystkie skrypty lub narzędzia skojarzone z przeniesionymi zasobami.
+* Środowisko usługi [integracji (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) można przenieść tylko do innej grupy zasobów, która istnieje w tym samym regionie platformy Azure lub subskrypcji platformy Azure. Nie można przenieść ise do grupy zasobów, która istnieje w innym regionie platformy Azure lub subskrypcji platformy Azure. Ponadto po takim przeniesieniu należy zaktualizować wszystkie odwołania do ise w przepływach pracy aplikacji logiki, kont integracji, połączeń i tak dalej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -53,7 +55,7 @@ Aby przenieść zasób, taki jak aplikacja logiki lub konto integracji, do innej
 
 ## <a name="move-resources-between-resource-groups"></a>Przenoszenie zasobów między grupami zasobów
 
-Aby przenieść zasób, taki jak aplikacja logiki lub konto integracji, do innej grupy zasobów platformy Azure, można użyć witryny Azure Portal, Azure PowerShell, interfejsu wiersza polecenia interfejsu wiersza polecenia platformy Azure lub interfejsu API REST. Te kroki obejmują witrynę Azure portal, której można użyć, gdy region zasobu pozostaje taki sam. Aby uzyskać inne kroki i ogólne przygotowanie, zobacz [Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/management/move-resource-group-and-subscription.md).
+Aby przenieść zasób, taki jak aplikacja logiki, konto integracji lub [środowisko usługi integracji (ISE),](connect-virtual-network-vnet-isolated-environment-overview.md)do innej grupy zasobów platformy Azure, można użyć witryny Azure portal, Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST. Te kroki obejmują witrynę Azure portal, której można użyć, gdy region zasobu pozostaje taki sam. Aby uzyskać inne kroki i ogólne przygotowanie, zobacz [Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Przed faktycznym przeniesieniem zasobów między grupami można sprawdzić, czy można pomyślnie przenieść zasób do innej grupy. Aby uzyskać więcej informacji, zobacz [Sprawdzanie poprawności ruchu](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move).
 

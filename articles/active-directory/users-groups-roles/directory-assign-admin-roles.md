@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 02/28/2020
+ms.date: 04/07/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63e561ff1b976b3de993414607b694e621b1d536
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e097173712693754baab99912301c98ee336f64f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346946"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877919"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia ról administratorów w usłudze Azure Active Directory
 
 Korzystając z usługi Azure Active Directory (Azure AD), można wyznaczyć ograniczonych administratorów do zarządzania zadaniami tożsamości w rolach o mniej uprzywilejowanych. Administratorzy mogą być przypisywani do takich celów, jak dodawanie lub zmienianie użytkowników, przypisywanie ról administracyjnych, resetowanie haseł użytkowników, zarządzanie licencjami użytkowników i zarządzanie nazwami domen. Domyślne uprawnienia użytkownika można zmienić tylko w ustawieniach użytkownika w usłudze Azure AD.
 
-## <a name="limit-the-use-of-global-administrator"></a>Ograniczanie korzystania z administratora globalnego
+## <a name="limit-use-of-global-administrator"></a>Ogranicz użycie administratora globalnego
 
 Użytkownicy przypisani do roli administratora globalnego mogą odczytywać i modyfikować każde ustawienie administracyjne w organizacji usługi Azure AD. Domyślnie osobie, która zarejestruje się w ramach subskrypcji platformy Azure, jest przypisywana rola administratora globalnego dla organizacji usługi Azure AD. Tylko administratorzy globalni i administratorzy ról uprzywilejowanych mogą delegować role administratora. Aby zmniejszyć ryzyko dla firmy, zalecamy przypisanie tej roli do jak najmniejszej liczby osób w organizacji.
 
@@ -70,7 +70,8 @@ Użytkownicy w tej roli mogą tworzyć rejestracje aplikacji, gdy ustawienie "U�
 
 ### <a name="authentication-administrator"></a>[Administrator uwierzytelniania](#authentication-administrator-permissions)
 
-Użytkownicy w tej roli mogą ustawiać lub resetować poświadczenia niebędące hasłami, aktualizować hasła, wymagać ponownej rejestracji z istniejącymi poświadczeniami niebędącymi hasłami (na przykład MFA lub FIDO) i odwoływać **zapamiętywanie usługi MFA na urządzeniu** (który monituje o uwierzytelnianie podczas następnego logowania) użytkowników, którzy nie są administratorami lub przypisali tylko następujące role:
+Rola administratora uwierzytelniania jest obecnie w publicznej wersji zapoznawczej. Użytkownicy z tą rolą mogą ustawiać lub resetować poświadczenia niebędące hasłami i aktualizować hasła dla wszystkich użytkowników. Administratorzy uwierzytelniania mogą wymagać od użytkowników ponownego zarejestrowania się w oparciu o istniejące poświadczenia niebędące hasłami (na przykład uwierzytelnianie wieloskładnikowe lub FIDO) i odwoływanie **zapamiętania usługi MFA na urządzeniu,** co powoduje monitowanie o uwierzytelnianie wieloskładnikowe przy następnym loguniu użytkowników niebędących administratorami lub przypisanych tylko następujących ról:
+
 * Administrator uwierzytelniania
 * Czytniki katalogów
 * Zaproszony gość
@@ -113,7 +114,7 @@ Użytkownik może tworzyć klucze zasad i wpisy tajne i zarządzać nimi w zakre
 
 ### <a name="b2c-ief-policy-administrator"></a>[Administrator zasad IEF B2C](#b2c-ief-policy-administrator-permissions)
 
-Użytkownicy w tej roli mają możliwość tworzenia, odczytywania, aktualizowania i usuwania wszystkich zasad niestandardowych w usłudze Azure AD B2C i dlatego mają pełną kontrolę nad platformą środowiska tożsamości w odpowiedniej dzierżawie usługi Azure AD B2C. Edytując zasady, ten użytkownik może ustanowić bezpośrednią federację z zewnętrznymi dostawcami tożsamości, zmienić schemat katalogu, zmienić całą zawartość skierowaną do użytkownika (HTML, CSS, JavaScript), zmienić wymagania, aby zakończyć uwierzytelnianie, utworzyć nowych użytkowników, dane użytkownika do systemów zewnętrznych, w tym pełne migracje, i edytować wszystkie informacje o użytkowniku, w tym poufnych pól, takich jak hasła i numery telefonów. Z drugiej strony ta rola nie może zmienić kluczy szyfrowania ani edytować wpisów tajnych używanych dla federacji w dzierżawie.
+Użytkownicy w tej roli mają możliwość tworzenia, odczytywania, aktualizowania i usuwania wszystkich zasad niestandardowych w usłudze Azure AD B2C i dlatego mają pełną kontrolę nad platformą środowiska tożsamości w odpowiedniej dzierżawie usługi Azure AD B2C. Edytując zasady, ten użytkownik może ustanowić bezpośrednią federację z zewnętrznymi dostawcami tożsamości, zmienić schemat katalogu, zmienić całą zawartość skierowaną do użytkownika (HTML, CSS, JavaScript), zmienić wymagania, aby zakończyć uwierzytelnianie, utworzyć nowych użytkowników, wysłać dane użytkownika do systemów zewnętrznych, w tym pełne migracje, i edytować wszystkie informacje o użytkowniku, w tym poufne pola, takie jak hasła i numery telefonów. Z drugiej strony ta rola nie może zmienić kluczy szyfrowania ani edytować wpisów tajnych używanych dla federacji w dzierżawie.
 
 > [!IMPORTANT]
 > Administrator zasad IEF B2 jest bardzo wrażliwą rolą, która powinna być przypisana w bardzo ograniczonym stopniu dla dzierżawców w produkcji.Działania tych użytkowników powinny być ściśle kontrolowane, szczególnie dla dzierżawców w produkcji.
@@ -139,7 +140,7 @@ Użytkownicy w tej roli mogą włączać, wyłączać i usuwać urządzenia w us
 
 ### <a name="compliance-administrator"></a>[Administrator zgodności](#compliance-administrator-permissions)
 
-Użytkownicy z tą rolą mają uprawnienia do zarządzania funkcjami związanymi ze zgodnością w Centrum zgodności usługi Microsoft 365, centrum administracyjnym usługi Microsoft 365, platformie Azure i Centrum zgodności zabezpieczeń & usługi Office 365. Cesjonariusze mogą również tworzyć bilety pomocy technicznej dla platformy Azure i usługi Microsoft 365. Więcej informacji można znaleźć na [stronie Informacje o rolach administratorów usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+Użytkownicy z tą rolą mają uprawnienia do zarządzania funkcjami związanymi ze zgodnością w Centrum zgodności usługi Microsoft 365, centrum administracyjnym usługi Microsoft 365, platformie Azure i Centrum zgodności zabezpieczeń & usługi Office 365. Cesjonariusze mogą również zarządzać wszystkimi funkcjami w centrum administracyjnym programu Exchange i usługach Teams & centrach administracyjnych programu Skype dla firm oraz tworzyć bilety pomocy technicznej dla platformy Azure i usługi Microsoft 365. Więcej informacji można znaleźć na [stronie Informacje o rolach administratorów usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 W | Może to zrobić
 ----- | ----------
@@ -214,11 +215,11 @@ Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Exchang
 Ten administrator zarządza federacją między dzierżawami usługi Azure Active Directory a zewnętrznymi dostawcami tożsamości.Dzięki tej roli użytkownicy mogą dodawać nowych dostawców tożsamości i konfigurować wszystkie dostępne ustawienia (np. ścieżkę uwierzytelniania, identyfikator usługi, przypisane kontenery kluczy).Ten użytkownik może włączyć dzierżawy do zaufania uwierzytelniania od zewnętrznych dostawców tożsamości.Wynikowy wpływ na środowisko użytkownika końcowego zależy od typu dzierżawy:
 
 * Dzierżawy usługi Azure Active Directory dla pracowników i partnerów: dodanie federacji (np. w Gmailu) będzie miało natychmiastowy wpływ na wszystkie zaproszenia gości, które nie zostały jeszcze zrealizowane. Zobacz [Dodawanie Google jako dostawcy tożsamości dla użytkowników-gości B2B](https://docs.microsoft.com/azure/active-directory/b2b/google-federation).
-* Dzierżawy usługi Azure Active Directory B2C: dodanie federacji (na przykład z Facebookiem lub inną organizacją usługi Azure AD) nie wpływa natychmiast na przepływy użytkowników końcowych, dopóki dostawca tożsamości nie zostanie dodany jako opcja w przepływie użytkownika (nazywany również wbudowanym polityki zagranicznej). Zobacz [konfigurowanie konta Microsoft jako dostawcy tożsamości](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app) na przykład.Aby zmienić przepływy użytkowników, wymagana jest ograniczona rola "Administrator przepływu użytkownika B2C".
+* Dzierżawy usługi Azure Active Directory B2C: dodanie federacji (na przykład z Facebookiem lub inną organizacją usługi Azure AD) nie wpływa natychmiast na przepływy użytkowników końcowych, dopóki dostawca tożsamości nie zostanie dodany jako opcja w przepływie użytkownika (nazywany również wbudowaną zasadą). Zobacz [konfigurowanie konta Microsoft jako dostawcy tożsamości](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app) na przykład.Aby zmienić przepływy użytkowników, wymagana jest ograniczona rola "Administrator przepływu użytkownika B2C".
 
 ### <a name="global-administrator--company-administrator"></a>[Administrator globalny / Administrator firmy](#company-administrator-permissions)
 
-Użytkownicy z tą rolą mają dostęp do wszystkich funkcji administracyjnych w usłudze Azure Active Directory, a także do usług korzystających z tożsamości usługi Azure Active Directory, takich jak centrum zabezpieczeń usługi Microsoft 365, centrum zgodności usługi Microsoft 365, usługa Exchange Online, usługa SharePoint Online i Skype dla firm Online. Osoba, która zarejestruje się w dzierżawie usługi Azure Active Directory, staje się administratorem globalnym. W Twojej firmie może znajdować się więcej niż jeden administrator globalny. Administratorzy globalni mogą resetować hasła dla wszystkich użytkowników oraz wszystkich pozostałych administratorów.
+Użytkownicy z tą rolą mają dostęp do wszystkich funkcji administracyjnych w usłudze Azure Active Directory, a także do usług korzystających z tożsamości usługi Azure Active Directory, takich jak centrum zabezpieczeń usługi Microsoft 365, centrum zgodności usługi Microsoft 365, usługa Exchange Online, usługa SharePoint Online i usługa Skype dla firm Online. Osoba, która zarejestruje się w dzierżawie usługi Azure Active Directory, staje się administratorem globalnym. W Twojej firmie może znajdować się więcej niż jeden administrator globalny. Administratorzy globalni mogą resetować hasła dla wszystkich użytkowników oraz wszystkich pozostałych administratorów.
 
 > [!NOTE]
 > W interfejsie API programu Microsoft Graph i programie Azure AD PowerShell ta rola jest identyfikowana jako "Administrator firmy". Jest to "Administrator globalny" w [witrynie Azure portal](https://portal.azure.com).
@@ -764,7 +765,10 @@ Może odczytywać konfigurację i raporty zgodności i zarządzać nimi w usłud
 | microsoft.azure.supportTickets/allEntities/allTasks | Tworzenie biletów pomocy technicznej platformy Azure i zarządzanie nimi. |
 | microsoft.office365.webPortal/allEntities/basic/read | Odczytuj podstawowe właściwości wszystkich zasobów w witrynie microsoft.office365.webPortal. |
 | microsoft.office365.complianceManager/allEntities/allTasks | Zarządzanie wszystkimi aspektami Menedżera zgodności usługi Office 365 |
+| microsoft.office365.exchange/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Exchange Online. |
 | microsoft.office365.serviceOdwzdrowie/wszystkieEntności/wszystkieZadłużenia | Odczytuj i skonfiguruj kondycję usługi Office 365. |
+| microsoft.office365.sharepoint/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w programie microsoft.office365.sharepoint. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Skype dla firm Online. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie biletów pomocy technicznej usługi Office 365 i zarządzanie nimi. |
 
 ### <a name="compliance-data-administrator-permissions"></a>Uprawnienia administratora danych zgodności
@@ -784,7 +788,10 @@ Tworzy zawartość zgodności i zarządza nią.
 | microsoft.azure.supportTickets/allEntities/allTasks | Tworzenie biletów pomocy technicznej platformy Azure i zarządzanie nimi. |
 | microsoft.office365.webPortal/allEntities/basic/read | Odczytuj podstawowe właściwości wszystkich zasobów w witrynie microsoft.office365.webPortal. |
 | microsoft.office365.complianceManager/allEntities/allTasks | Zarządzanie wszystkimi aspektami Menedżera zgodności usługi Office 365 |
+| microsoft.office365.exchange/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Exchange Online. |
 | microsoft.office365.serviceOdwzdrowie/wszystkieEntności/wszystkieZadłużenia | Odczytuj i skonfiguruj kondycję usługi Office 365. |
+| microsoft.office365.sharepoint/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w programie microsoft.office365.sharepoint. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Skype dla firm Online. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie biletów pomocy technicznej usługi Office 365 i zarządzanie nimi. |
 
 ### <a name="conditional-access-administrator-permissions"></a>Uprawnienia administratora dostępu warunkowego
@@ -1755,8 +1762,31 @@ Następujące role nie powinny być używane. Zostały one przestarzałe i zosta
 * Administrator skrzynki pocztowej
 * Dołączanie do urządzenia w miejscu pracy
 
+## <a name="roles-not-shown-in-the-portal"></a>Role nie są wyświetlane w portalu
+
+Nie każda rola zwrócona przez interfejs API programu PowerShell lub MS Graph jest widoczna w witrynie Azure portal. W poniższej tabeli przedstawiono te różnice.
+
+Nazwa interfejsu API | Nazwa portalu platformy Azure | Uwagi
+-------- | ------------------- | -------------
+Administrator firmy | Administrator globalny | [Zmieniono nazwę dla lepszej jasności](directory-assign-admin-roles.md#role-template-ids)
+Administrator usługi CRM | Administrator dynamics 365 | [Odzwierciedla bieżącą markę produktu](directory-assign-admin-roles.md#role-template-ids)
+Dołącz do urządzenia | Przestarzałe | [Przestarzała dokumentacja ról](directory-assign-admin-roles.md#deprecated-roles)
+Menedżery urządzeń | Przestarzałe | [Przestarzała dokumentacja ról](directory-assign-admin-roles.md#deprecated-roles)
+Użytkownicy urządzeń | Przestarzałe | [Przestarzała dokumentacja ról](directory-assign-admin-roles.md#deprecated-roles)
+Konta synchronizacji katalogów | Nie pokazano, ponieważ nie powinien być używany | [Dokumentacja kont synchronizacji katalogów](directory-assign-admin-roles.md#directory-synchronization-accounts)
+Autorzy katalogów | Nie pokazano, ponieważ nie powinien być używany | [Dokumentacja modułów zapisu katalogów](directory-assign-admin-roles.md#directory-writers)
+Użytkownik-gość | Nie pokazano, ponieważ nie można go używać  | Nie dotyczy
+Administrator usługi programu Lync | Administrator programu Skype dla firm | [Odzwierciedla bieżącą markę produktu](directory-assign-admin-roles.md#role-template-ids)
+Wsparcie dla partnerów tier 1 | Nie pokazano, ponieważ nie powinien być używany | [Dokumentacja pomocy technicznej tier1 partnera](directory-assign-admin-roles.md#partner-tier1-support)
+Wsparcie dla partnerów tier 2 | Nie pokazano, ponieważ nie powinien być używany | [Dokumentacja pomocy technicznej warstwy partnerów Tier2](directory-assign-admin-roles.md#partner-tier2-support)
+Administrator drukarki | Work in progress | Work in progress
+Technik drukarki | Work in progress | Work in progress
+Ograniczony użytkownik-gość | Nie pokazano, ponieważ nie można go używać | Nie dotyczy
+Użytkownik | Nie pokazano, ponieważ nie można go używać | Nie dotyczy
+Dołączanie do urządzenia w miejscu pracy | Przestarzałe | [Przestarzała dokumentacja ról](directory-assign-admin-roles.md#deprecated-roles)
+
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby dowiedzieć się więcej o przypisywaniu użytkownika jako administratora subskrypcji platformy Azure, zobacz [Zarządzanie dostępem przy użyciu funkcji RBAC i portalu Azure](../../role-based-access-control/role-assignments-portal.md)
-* Aby dowiedzieć się więcej o kontrolowaniu dostępu do zasobów na platformie Microsoft Azure, zobacz [Understanding resource access in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md) (Opis dostępu do zasobów na platformie Azure).
+* Aby dowiedzieć się więcej o przypisywaniu użytkownika jako administratora subskrypcji platformy Azure, zobacz [Zarządzanie dostępem przy użyciu ról platformy Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
+* Aby dowiedzieć się więcej o tym, jak dostęp do zasobów jest kontrolowany na platformie Microsoft Azure, zobacz [Opis różnych ról](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Aby uzyskać więcej informacji dotyczących relacji między usługą Azure Active Directory i subskrypcją platformy Azure, zobacz [Jak subskrypcje platformy Azure są kojarzone z usługą Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md).

@@ -3,26 +3,21 @@ title: Rozwiązywanie problemów z TLS/SSL (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, co zrobić z różnymi problemami przy użyciu certyfikatów TLS/SSL z msal. Biblioteka Objective-C.
 services: active-directory
-documentationcenter: ''
 author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: marsma
-ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 42bd016a9d0882cc97eaa800235226b2de9569a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1507231c3ab395319d5ce95ec06dbb592c324aa6
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369400"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881081"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>Jak: Rozwiązywanie problemów z rozwiązaniami MSAL dla komputerów iOS TLS/SSL
 

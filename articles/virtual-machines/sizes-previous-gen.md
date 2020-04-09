@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 7f13ab3cd6ff765bc3b1bee8e8fad7e7273f6c7d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 6cf43df756e9bed0438169c9c01b868653d84b57
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673929"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985732"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Poprzednie generacje rozmiarów maszyn wirtualnych
 
@@ -342,7 +342,7 @@ Buforowanie magazynu w wersji Premium: nie jest obsługiwane
 <sup>1</sup> Wystąpienie jest izolowane do sprzętu dedykowanego jednemu klientowi.
 <br>
 
-# <a name="nv-series"></a>Seria NV
+## <a name="nv-series"></a>Seria NV
 **Nowsze polecanie rozmiaru:** [seria NVv3](nvv3-series.md) i [seria NVv4](nvv4-series.md)
 
 Maszyny wirtualne z serii NV są zasilane przez procesory graficzne [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) i technologię NVIDIA GRID dla aplikacji akcelerowanych na komputerach stacjonarnych i pulpitów wirtualnych, w których klienci są w stanie wizualizować swoje dane lub symulacje. Użytkownicy są w stanie wizualizować swoje grafiki intensywne przepływy pracy w wystąpieniach NV, aby uzyskać doskonałe możliwości grafiki i dodatkowo uruchomić pojedyncze obciążenia precyzji, takie jak kodowanie i renderowanie. Maszyny wirtualne z serii NV są również obsługiwane przez procesory Intel Xeon E5-2690 v3 (Haswell).

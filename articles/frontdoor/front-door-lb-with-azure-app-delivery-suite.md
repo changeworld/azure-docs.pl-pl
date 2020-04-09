@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 9f8d1959549eaddfb4a2c9ea271094db0073c788
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44af14a01e7b045b7abb6a84db89a67f3dd22445
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471714"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875286"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Równoważenie obciążenia za pomocą pakietu dostarczania aplikacji platformy Azure
 
@@ -37,7 +37,7 @@ Połączenie usług globalnych i regionalnych w aplikacji zapewnia kompleksowy n
 - Routing priorytetu, aby skierować cały ruch do wewnętrznej bazy danych, z innymi zapleczem jako kopią zapasową.
 - Ważona routing okrężny, który rozdziela ruch na podstawie wagi przypisanej do każdej wewnętrznej bazy danych.
 - Routing geograficzny w celu zapewnienia, że osoby żądające znajdujące się w określonych regionach geograficznych są kierowane do zaplecza mapowanych do tych regionów (na przykład wszystkie żądania z Hiszpanii powinny być kierowane do regionu France Central Azure)
-- Routing podsieci, który umożliwia mapowanie zakresów adresów IP do zaplecza, dzięki czemu żądania pochodzące z nich będą wysyłane do określonej wewnętrznej bazy danych (na przykład wszyscy użytkownicy łączący się z zakresu adresów IP głównej firmy powinni uzyskać inną zawartość sieci web niż ogólne użytkowników)
+- Routing podsieci, który umożliwia mapowanie zakresów adresów IP do zaplecza, dzięki czemu żądania pochodzące z nich będą wysyłane do określonej wewnętrznej bazy danych (na przykład wszyscy użytkownicy łączący się z zakresu adresów IP głównej firmy powinni uzyskać inną zawartość sieci Web niż użytkownicy generalni)
 
 Klient łączy się bezpośrednio z tym zapleczem. Usługa Azure Traffic Manager wykrywa, gdy wewnętrznej bazy danych jest w złej kondycji, a następnie przekierowuje klientów do innego wystąpienia w dobrej kondycji. Więcej informacji na temat usługi można znaleźć w dokumentacji usługi [Azure Traffic Manager.](../traffic-manager/traffic-manager-overview.md)
 
@@ -45,7 +45,7 @@ Klient łączy się bezpośrednio z tym zapleczem. Usługa Azure Traffic Manager
 Drzwi frontowe kończą żądania HTTP na krawędzi sieci firmy Microsoft i aktywnie sondują w celu wykrycia zmian kondycji lub opóźnienia aplikacji lub infrastruktury.  Drzwi frontowe następnie zawsze kieruje ruch do najszybszego i dostępnego (zdrowego) zaplecza. Aby dowiedzieć się więcej o usłudze, zapoznaj się ze szczegółami [architektury routingu](front-door-routing-architecture.md) drzwiami frontowymi i [metodami routingu ruchu.](front-door-routing-methods.md)
 
 ## <a name="regional-load-balancing"></a>Regionalne równoważenie obciążenia
-Brama aplikacji udostępnia kontroler dostarczania aplikacji (ADC) jako usługę, oferując różne możliwości równoważenia obciążenia warstwy 7 dla aplikacji. Umożliwia klientom optymalizację wydajności farmy internetowej poprzez odciążanie rozwiązania SSL intensywnie korzystającego z procesora CPU do bramy aplikacji. Inne funkcje routingu warstwy 7 obejmują dystrybucję ruchu przychodzącego okrężną, koligacji sesji opartej na plikach cookie, routing oparty na ścieżce adresów URL oraz możliwość hostowania wielu witryn sieci Web za jedną bramą aplikacji. Brama aplikacji może być skonfigurowana jako brama internetowa, brama wewnętrzna lub kombinacja obu tych bram. Brama aplikacji jest w pełni zarządzana, skalowalna i wysoce dostępna na platformie Azure. Zapewnia ona bogaty zestaw funkcji diagnostyki i rejestrowania, aby uprościć zarządzanie.
+Brama aplikacji udostępnia kontroler dostarczania aplikacji (ADC) jako usługę, oferując różne możliwości równoważenia obciążenia warstwy 7 dla aplikacji. Umożliwia klientom optymalizację wydajności farmy internetowej przez odciążanie obciążającego procesora TLS zakończenia do bramy aplikacji. Inne funkcje routingu warstwy 7 obejmują dystrybucję ruchu przychodzącego okrężną, koligacji sesji opartej na plikach cookie, routing oparty na ścieżce adresów URL oraz możliwość hostowania wielu witryn sieci Web za jedną bramą aplikacji. Brama aplikacji może być skonfigurowana jako brama internetowa, brama wewnętrzna lub kombinacja obu tych bram. Brama aplikacji jest w pełni zarządzana, skalowalna i wysoce dostępna na platformie Azure. Zapewnia ona bogaty zestaw funkcji diagnostyki i rejestrowania, aby uprościć zarządzanie.
 Moduł równoważenia obciążenia jest integralną częścią stosu SDN platformy Azure, zapewniając wysokiej wydajności, niskie opóźnienia warstwy 4 równoważenia obciążenia usług dla wszystkich protokołów UDP i TCP. Zarządza połączeniami przychodzącymi i wychodzącymi. Możesz skonfigurować publiczne i wewnętrzne punkty końcowe ze zrównoważonym obciążeniem i zdefiniować reguły mapowania połączeń przychodzących do miejsc docelowych w puli zaplecza, wykorzystując opcje badania kondycji protokołu TCP i HTTP do zarządzania dostępnością usługi.
 
 
@@ -58,7 +58,7 @@ Wybierając globalny moduł równoważenia obciążenia między usługą Traffic
 
 | Traffic Manager | Azure Front Door |
 | --------------- | ------------------------ |
-|**Dowolny protokół:** Ponieważ usługa Traffic Manager działa w warstwie DNS, można kierować dowolny typ ruchu sieciowego; HTTP, TCP, UDP itp. | **Akceleracja HTTP:** Z front door ruchu jest proxied na skraju sieci Firmy Microsoft.  W związku z tym żądania HTTP(S) zobacz opóźnienia i przepustowość ulepszenia zmniejszenie opóźnienia dla negocjacji SSL i przy użyciu gorących połączeń z afd do aplikacji.|
+|**Dowolny protokół:** Ponieważ usługa Traffic Manager działa w warstwie DNS, można kierować dowolny typ ruchu sieciowego; HTTP, TCP, UDP itp. | **Akceleracja HTTP:** Z front door ruchu jest proxied na skraju sieci Firmy Microsoft.  W związku z tym żądania HTTP(S) zobacz opóźnienia i przepustowość ulepszenia zmniejszenie opóźnienia dla negocjacji TLS i przy użyciu gorących połączeń z afd do aplikacji.|
 |**Routing lokalny:** W warstwie DNS ruch odbywa się z punktu do momentu.  Routing z oddziału do lokalnego centrum danych może przebiegać bezpośrednio; nawet we własnej sieci za pomocą Usługi Traffic Manager. | **Niezależna skalowalność:** Ponieważ drzwiami frontowymi współpracuje z żądaniem HTTP, żądania do różnych ścieżek adresów URL mogą być kierowane do różnych pul wewnętrznej bazy danych / regionalnych usług (mikrousług) na podstawie reguł i kondycji każdej mikrousług aplikacji.|
 |**Format rozliczeń:** Płatności oparte na systemie DNS są skalowane z użytkownikami i usługami z większą liczeną licze, aby zmniejszyć koszty przy wyższym użyciu. |**Zabezpieczenia wbudowane:** Drzwi frontowe umożliwia reguły, takie jak ograniczanie szybkości i IP ACL-ing, aby umożliwić ochronę zaplecza, zanim ruch dotrze do aplikacji. 
 
@@ -78,7 +78,7 @@ Na poniższym diagramie przedstawiono architekturę tego scenariusza:
 ![Szczegółowa architektura pakietu dostarczania aplikacji][2] 
 
 > [!NOTE]
-> W tym przykładzie jest tylko jedną z wielu możliwych konfiguracji usług równoważenia obciążenia, które oferuje platforma Azure. Menedżer ruchu, drzwi frontowe, brama aplikacji i moduł równoważenia obciążenia można mieszać i dopasowywać do potrzeb związanych z równoważeniem obciążenia. Na przykład jeśli odciążanie SSL lub przetwarzanie warstwy 7 nie jest konieczne, moduł równoważenia obciążenia może być używany zamiast bramy aplikacji.
+> W tym przykładzie jest tylko jedną z wielu możliwych konfiguracji usług równoważenia obciążenia, które oferuje platforma Azure. Menedżer ruchu, drzwi frontowe, brama aplikacji i moduł równoważenia obciążenia można mieszać i dopasowywać do potrzeb związanych z równoważeniem obciążenia. Na przykład jeśli odciążanie protokołu TLS/SSL lub przetwarzanie warstwy 7 nie jest konieczne, moduł równoważenia obciążenia może być używany zamiast bramy aplikacji.
 
 
 ## <a name="next-steps"></a>Następne kroki

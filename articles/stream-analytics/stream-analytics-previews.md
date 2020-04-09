@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 3e99263f6bf472c256e1747b8567249bbd62a445
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c265665be26dcc6868ea9a303b0c12c52dfe05b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969631"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878310"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkcje w wersji zapoznawczej usługi Azure Stream Analytics
 
@@ -47,9 +47,9 @@ Można przetestować zapytania względem danych na żywo na komputerze lokalnym 
 Zadania usługi Azure Stream Analytics można tworzyć w programie Visual Studio Code. Zobacz nasz [samouczek rozpoczynanie pracy z kodem VS](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code).
 
 
-### <a name="integration-with-azure-machine-learning"></a>Integracja z usługą Azure Machine Learning
+### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Ocena wysokiej wydajności w czasie rzeczywistym dzięki niestandardowym modelom uczenia maszynowego zarządzanym przez usługę Azure Machine Learning
 
-Zadania usługi Stream Analytics można skalować za pomocą funkcji uczenia maszynowego (ML). Aby dowiedzieć się więcej o tym, jak używać funkcji uczenia maszynowego w zadaniu usługi Stream Analytics, odwiedź stronę [Skalowanie zadania usługi Stream Analytics za pomocą funkcji usługi Azure Machine Learning.](stream-analytics-scale-with-machine-learning-functions.md) Zapoznaj się z rzeczywistym scenariuszem z [wykonywaniem analizy tonacji przy użyciu usługi Azure Stream Analytics i usługi Azure Machine Learning.](stream-analytics-machine-learning-integration-tutorial.md)
+Usługa Azure Stream Analytics obsługuje wysokiej wydajności, w czasie rzeczywistym oceniania przy użyciu niestandardowych wstępnie przeszkolonych modeli uczenia maszynowego zarządzanych przez usługę Azure Machine Learning i hostowane w usłudze Azure Kubernetes Service (AKS) lub Azure Container Instances (ACI), przy użyciu przepływu pracy, który nie wymaga pisania kodu. [Zarejestruj się w](https://aka.ms/asapreview1) wersji zapoznawczej
 
 
 ### <a name="live-data-testing-in-visual-studio"></a>Testowanie danych na żywo w programie Visual Studio
@@ -64,10 +64,6 @@ Za pomocą standardowych funkcji zdefiniowanych przez użytkownika platformy .NE
 ## <a name="other-previews"></a>Inne podglądy
 
 Następujące funkcje są również dostępne w wersji zapoznawczej na życzenie.
-
-### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Ocena wysokiej wydajności w czasie rzeczywistym dzięki niestandardowym modelom uczenia maszynowego zarządzanym przez usługę Azure Machine Learning
-
-Usługa Azure Stream Analytics obsługuje wysokowydajne ocenianie w czasie rzeczywistym przy użyciu niestandardowych wstępnie przeszkolonych modeli usługi Machine Learning zarządzanych przez usługę Azure Machine Learning i hostowanych w usłudze Azure Kubernetes Service (AKS) lub instancjach kontenerów platformy Azure (ACI) przy użyciu przepływu pracy który nie wymaga pisania kodu. [Zarejestruj się w](https://aka.ms/asapreview1) wersji zapoznawczej
 
 ### <a name="support-for-azure-stack"></a>Obsługa usługi Azure Stack
 Ta funkcja jest włączona w środowisku uruchomieniowym usługi Azure IoT Edge, wykorzystuje niestandardowe funkcje usługi Azure Stack, takie jak natywna obsługa lokalnych danych wejściowych i wyjść uruchomionych w usłudze Azure Stack (na przykład usługi Event Hubs, Centrum IoT, magazyn obiektów Blob). Ta nowa integracja umożliwia tworzenie architektur hybrydowych, które można analizować dane w pobliżu miejsca, w którym są generowane, obniżenie opóźnienia i maksymalizacji szczegółowych informacji.

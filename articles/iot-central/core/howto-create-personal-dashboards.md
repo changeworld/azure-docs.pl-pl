@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: db886006ff5b9adf3de0932951f6cce4958e8ebd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06225e284000d7f10f575be08cd683488abec339
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158133"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985494"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Tworzenie wielu pulpitów nawigacyjnych i zarządzanie nimi
 
-Pulpit **nawigacyjny** to strona, która ładuje się podczas pierwszej nawigacji do aplikacji. **Konstruktor** w aplikacji definiuje domyślny pulpit nawigacyjny aplikacji dla wszystkich użytkowników. Ten domyślny pulpit nawigacyjny można zastąpić własnym, spersonalizowanym pulpitem nawigacyjnym aplikacji. Możesz mieć kilka pulpitów nawigacyjnych, które wyświetlają różne dane i przełączają się między nimi. 
+Pulpit **nawigacyjny** to strona, która ładuje się podczas pierwszej nawigacji do aplikacji. **Konstruktor** w aplikacji definiuje domyślny pulpit nawigacyjny aplikacji dla wszystkich użytkowników. Możesz dodatkowo utworzyć własny, spersonalizowany pulpit nawigacyjny aplikacji. Możesz mieć kilka pulpitów nawigacyjnych, które wyświetlają różne dane i przełączają się między nimi.
 
 Jeśli jesteś **administratorem** aplikacji, możesz również utworzyć maksymalnie 10 pulpitów nawigacyjnych poziomu aplikacji, aby udostępnić je innym użytkownikom aplikacji. Tylko **administratorzy** mają możliwość tworzenia, edytowania i usuwania pulpitów nawigacyjnych na poziomie aplikacji. 
 

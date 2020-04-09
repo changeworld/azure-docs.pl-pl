@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7e96f9484c103ebe75e21705b94cf35b9e16c54f
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: b51f7a8b62d7131b7bbfc77101e60fab22e1f148
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529333"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985800"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scenariusze usługi Azure Disk Encryption na maszynach wirtualnych z systemem Windows
 
-Szyfrowanie dysków platformy Azure używa funkcji Ochrony kluczy zewnętrznych funkcji BitLocker w celu zapewnienia szyfrowania woluminów dla systemu operacyjnego i dysków danych maszyn wirtualnych platformy Azure (VM) i jest zintegrowane z usługą Azure Key Vault, aby ułatwić kontrolowanie kluczy i wpisów tajnych szyfrowania dysku i zarządzanie nimi. Aby zapoznać się z omówieniem usługi, zobacz [Szyfrowanie dysków platformy Azure dla maszyn wirtualnych z systemem Windows](disk-encryption-overview.md).
+Szyfrowanie dysków platformy Azure dla maszyn wirtualnych systemu Windows (VMs) używa funkcji funkcji bitlocker systemu Windows, aby zapewnić pełne szyfrowanie dysku i dysku danych WindOS. Ponadto zapewnia szyfrowanie dysku zasobów efemeryczny, gdy parametr VolumeType jest wszystko.
 
-Istnieje wiele scenariuszy szyfrowania dysku, a kroki mogą się różnić w zależności od scenariusza. W poniższych sekcjach opisano scenariusze bardziej szczegółowo dla maszyn wirtualnych z systemem Windows.
+Usługa Azure Disk Encryption jest [zintegrowana z usługą Azure Key Vault,](disk-encryption-key-vault.md) która ułatwia kontrolowanie kluczy szyfrowania dysku i zarządzanie nimi. Aby zapoznać się z omówieniem usługi, zobacz [Szyfrowanie dysków platformy Azure dla maszyn wirtualnych z systemem Windows](disk-encryption-overview.md).
 
 Szyfrowanie dysku można stosować tylko do maszyn wirtualnych [obsługiwanych rozmiarów maszyn wirtualnych i systemów operacyjnych](disk-encryption-overview.md#supported-vms-and-operating-systems). Należy również spełnić następujące wymagania wstępne:
 
@@ -39,9 +39,6 @@ Szyfrowanie dysku można stosować tylko do maszyn wirtualnych [obsługiwanych r
 
 ## <a name="enable-encryption-on-an-existing-or-running-windows-vm"></a>Włączanie szyfrowania na istniejącej lub uruchomionej maszynie Wirtualnej systemu Windows
 W tym scenariuszu można włączyć szyfrowanie przy użyciu szablonu Menedżera zasobów, poleceń cmdlet programu PowerShell lub poleceń interfejsu wiersza polecenia. Jeśli potrzebujesz informacji o schemacie rozszerzenia maszyny wirtualnej, zobacz artykuł [rozszerzenia Azure Disk Encryption for Windows.](../extensions/azure-disk-enc-windows.md)
-
-## <a name="enable-encryption-on-existing-or-running-iaas-windows-vms"></a>Włączanie szyfrowania na istniejących lub uruchomionych maszynach wirtualnych systemu IaaS systemu Windows
-Szyfrowanie można włączyć przy użyciu szablonu, poleceń cmdlet programu PowerShell lub poleceń interfejsu wiersza polecenia. Jeśli potrzebujesz informacji o schemacie rozszerzenia maszyny wirtualnej, zobacz artykuł [rozszerzenia Azure Disk Encryption for Windows.](../extensions/azure-disk-enc-windows.md)
 
 ### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a>Włączanie szyfrowania na istniejących lub uruchomionych maszynach wirtualnych za pomocą programu Azure PowerShell 
 Polecenie cmdlet [Set-AzVMMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) umożliwia szyfrowanie na uruchomionej maszynie wirtualnej IaaS na platformie Azure. 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 702df1bfaf0701a40e514f8a47151f96917adf38
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: cfec30e56b0fd523896cbc1a7e84e92f639075a8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811599"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879058"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Korzystanie z usługi Microsoft Teams na pulpicie wirtualnym systemu Windows
 
@@ -40,7 +40,7 @@ Aby włączyć instalację usługi Teams na komputerze, ustaw następujący kluc
 ```shell
   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams\IsWVDEnvironment]
   Type: REG_DWORD
-  Value: 0x1
+  Value: 1
 ```
 
 ### <a name="install-microsoft-teams"></a>Instalowanie usługi Microsoft Teams
@@ -66,4 +66,4 @@ Aplikację klasyczną Teams można wdrożyć przy użyciu instalacji na komputer
       ```
 
       > [!NOTE]
-      > Jeśli zainstalujesz teams z ustawieniem MSI ALLUSERS=1, automatyczne aktualizacje zostaną wyłączone. Zalecamy, aby aktualizować zespoły co najmniej raz w miesiącu.
+      > Jeśli zainstalujesz teams z ustawieniem MSI ALLUSER=1, automatyczne aktualizacje zostaną wyłączone. Zalecamy, aby aktualizować zespoły co najmniej raz w miesiącu.

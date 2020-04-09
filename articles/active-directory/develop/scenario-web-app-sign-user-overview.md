@@ -2,24 +2,21 @@
 title: Logowanie użytkowników z aplikacji sieci Web — platforma tożsamości firmy Microsoft | Azure
 description: Dowiedz się, jak utworzyć aplikację internetową, która loguje się do użytkowników (omówienie)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 403f589702fd7142f0515a3b6f19ee1b9bbb6420
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65d254cec5735c54e19f5adfde57fb6aed776a2c
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76701556"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881489"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Scenariusz: aplikacja sieci Web, która loguje się do użytkowników
 
@@ -85,21 +82,21 @@ W drugiej fazie można włączyć aplikację do wywoływania interfejsów API si
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
-> [Rejestrowanie aplikacji](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnetcore)
+> [Rejestracja aplikacji](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnetcore)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 > [!div class="nextstepaction"]
-> [Rejestrowanie aplikacji](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnet)
+> [Rejestracja aplikacji](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnet)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Rejestrowanie aplikacji](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=java)
+> [Rejestracja aplikacji](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=java)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Rejestrowanie aplikacji](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=python)
+> [Rejestracja aplikacji](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=python)
 
 ---

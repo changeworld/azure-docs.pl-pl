@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0938fbe94cb0d1e6dae3dcb84950a11f90dd9db8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256213"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878157"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Co to są pule wystąpień bazy danych SQL (wersja zapoznawcza)?
 
@@ -59,7 +59,7 @@ Poniższa lista zawiera główne przypadki użycia, w których należy wziąć p
 
 ## <a name="architecture-of-instance-pools"></a>Architektura pul wystąpień
 
-Pule wystąpień mają podobną architekturę do zwykłych wystąpień zarządzanych *(pojedyncze wystąpienia).* Aby obsługiwać [wdrożenia w sieciach wirtualnych platformy Azure (sieci wirtualne)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) oraz zapewnić izolację i bezpieczeństwo dla klientów, pule wystąpień również polegają na [klastrach wirtualnych.](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture) Klastry wirtualne reprezentują dedykowany zestaw izolowanych maszyn wirtualnych wdrożonych w podsieci sieci wirtualnej klienta.
+Pule wystąpień mają podobną architekturę do zwykłych wystąpień zarządzanych *(pojedyncze wystąpienia).* Aby obsługiwać [wdrożenia w sieciach wirtualnych platformy Azure (sieci wirtualne)](../virtual-network/virtual-network-for-azure-services.md) oraz zapewnić izolację i bezpieczeństwo dla klientów, pule wystąpień również polegają na [klastrach wirtualnych.](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture) Klastry wirtualne reprezentują dedykowany zestaw izolowanych maszyn wirtualnych wdrożonych w podsieci sieci wirtualnej klienta.
 
 Główną różnicą między dwoma modelami wdrażania jest to, że pule wystąpień zezwalają na wiele wdrożeń procesów programu SQL Server w tym samym węźle maszyny wirtualnej, które są zasobami zarządzanymi za pomocą [obiektów zadań systemu Windows,](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)podczas gdy pojedyncze wystąpienia są zawsze same w węźle maszyny wirtualnej.
 
@@ -112,7 +112,7 @@ Opcjonalne funkcje lub funkcje, które wymagają wybrania określonych wartości
 
 Chociaż wystąpienia zarządzane w pulach mają dedykowane komputery wirtualne i pamięć RAM, współużytkują dysk lokalny (dla użycia bazy danych tempdb) i zasoby sieciowe. Nie jest prawdopodobne, ale jest możliwe doświadczenie hałaśliwy efekt *sąsiada,* jeśli wiele wystąpień w puli mają wysokie zużycie zasobów w tym samym czasie. Jeśli obserwujesz to zachowanie, należy rozważyć wdrożenie tych wystąpień do większej puli lub jako pojedyncze wystąpienia.
 
-## <a name="security-considerations"></a>Zagadnienia dotyczące bezpieczeństwa
+## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
 
 Ponieważ wystąpienia wdrożone w puli współużytkują tę samą maszynę wirtualną, warto rozważyć wyłączenie funkcji, które wprowadzają wyższe zagrożenia bezpieczeństwa lub zdecydowane kontrolowanie uprawnień dostępu do tych funkcji. Na przykład integracja CLR, natywna kopia zapasowa i przywracanie, poczta e-mail bazy danych itp.
 

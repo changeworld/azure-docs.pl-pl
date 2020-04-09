@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92ac0417e9d8adca168dd68e1721a1c9c890de1c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 3b000776c04550e1deb883039d94deeb735061ce
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656926"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985885"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalowanie i hosting usługi Azure Functions
 
@@ -109,7 +109,7 @@ Nawet z włączoną opcję Zawsze włączone limit czasu `functionTimeout` wykon
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Określanie planu hostingowego istniejącej aplikacji
 
-Aby określić plan hostingu używany przez aplikację funkcji, zobacz **Plan usługi app service** na karcie **Przegląd** aplikacji funkcji w [witrynie Azure portal](https://portal.azure.com). Aby wyświetlić warstwę cenową, wybierz nazwę **planu usługi aplikacji,** a następnie wybierz pozycję **Właściwości** z lewego okienka.
+Aby określić plan hostingu używany przez aplikację funkcji, zobacz **Plan usługi app service / warstwa cenowa** na karcie **Przegląd** aplikacji funkcji w [witrynie Azure portal](https://portal.azure.com). W przypadku planów usługi app service jest również wskazana warstwa cenowa.
 
 ![Wyświetlanie planu skalowania w portalu](./media/functions-scale/function-app-overview-portal.png)
 
@@ -124,7 +124,7 @@ Gdy dane wyjściowe `dynamic`z tego polecenia jest, aplikacja funkcji znajduje s
 
 ## <a name="storage-account-requirements"></a>Wymagania konta magazynu
 
-W dowolnym planie aplikacja funkcji wymaga ogólnego konta usługi Azure Storage, które obsługuje usługi Azure Blob, queue, files i table storage. Dzieje się tak, ponieważ usługa Azure Functions opiera się na usłudze Azure Storage dla operacji, takich jak zarządzanie wyzwalaczami i wykonywanie funkcji rejestrowania, ale niektóre konta magazynu nie obsługują kolejek i tabel. Te konta, które obejmują konta magazynu tylko dla obiektów blob (w tym magazynu w wersji premium) i konta magazynu ogólnego przeznaczenia z replikacją magazynu nadmiarowego strefy, są filtrowane z istniejących opcji **konta magazynu** podczas tworzenia aplikacji funkcji.
+W dowolnym planie aplikacja funkcji wymaga ogólnego konta usługi Azure Storage, które obsługuje usługi Azure Blob, queue, files i table storage. Dzieje się tak, ponieważ funkcje opiera się na usłudze Azure Storage dla operacji, takich jak zarządzanie wyzwalania i rejestrowanie wykonywania funkcji, ale niektóre konta magazynu nie obsługują kolejek i tabel. Te konta, które obejmują konta magazynu tylko dla obiektów blob (w tym magazynu w wersji premium) i konta magazynu ogólnego przeznaczenia z replikacją magazynu nadmiarowego strefy, są filtrowane z istniejących opcji **konta magazynu** podczas tworzenia aplikacji funkcji.
 
 To samo konto magazynu używane przez aplikację funkcji może być również używane przez wyzwalacze i powiązania do przechowywania danych aplikacji. Jednak w przypadku operacji intensywnie korzystających z magazynu należy użyć oddzielnego konta magazynu.  
 
@@ -132,7 +132,7 @@ Z pewnością wiele aplikacji funkcji może udostępniać to samo konto magazynu
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
-Aby dowiedzieć się więcej o typach kont magazynu, zobacz [Wprowadzenie usług Usługi Azure Storage](../storage/common/storage-introduction.md#azure-storage-services).
+Aby dowiedzieć się więcej o typach kont magazynu, zobacz [Wprowadzenie usług Usługi Azure Storage](../storage/common/storage-introduction.md#core-storage-services).
 
 ## <a name="how-the-consumption-and-premium-plans-work"></a>Jak działają plany konsumpcji i premii
 
@@ -162,7 +162,7 @@ Skalowanie może się różnić w zależności od wielu czynników i skalować i
 
 Istnieje wiele aspektów aplikacji funkcji, które będą miały wpływ na to, jak dobrze będzie skalowany, w tym konfiguracji hosta, środowisko uruchomieniowe i efektywne gospodarowanie zasobami.  Aby uzyskać więcej informacji, zobacz [sekcję skalowalności artykułu poświęcone wydajności](functions-best-practices.md#scalability-best-practices). Należy również pamiętać, jak połączenia zachowują się jak aplikacja funkcji skaluje. Aby uzyskać więcej informacji, zobacz [Jak zarządzać połączeniami w usłudze Azure Functions](manage-connections.md).
 
-Aby uzyskać więcej informacji na temat skalowania w językach Python i Node.js, zobacz [Przewodnik dla deweloperów języka Azure Functions Python — skalowanie i współbieżność](functions-reference-python.md#scaling-and-concurrency) oraz [przewodnik dla deweloperów usługi Azure Functions Node.js — Skalowanie i współbieżność](functions-reference-node.md#scaling-and-concurrency).
+Aby uzyskać dodatkowe informacje na temat skalowania w językach Python i Node.js, zobacz [przewodnik dla deweloperów języka Azure Functions Python — skalowanie i współbieżność](functions-reference-python.md#scaling-and-concurrency) oraz [przewodnik dla deweloperów usługi Azure Functions Node.js — Skalowanie i współbieżność](functions-reference-node.md#scaling-and-concurrency).
 
 ### <a name="billing-model"></a>Model rozliczania
 

@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 04/08/2020
 ms.author: anavin
-ms.openlocfilehash: 12fb7e03062600745cd8511d37b439ce44f2ef78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9604d5567e74ef470c3e798b6a3df9e48d6fde5d
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75640724"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985307"
 ---
 # <a name="public-ip-address-prefix"></a>Prefiks publicznego adresu IP
 
@@ -34,7 +34,7 @@ Prefiks publicznego adresu IP można utworzyć w regionie platformy Azure i subs
 
 Podczas tworzenia publicznych zasobów adresów IP platforma Azure przypisuje dostępny publiczny adres IP z dowolnego zakresu używanego w regionie. Gdy platforma Azure przypisuje adres, wiesz, jaki jest adres, ale dopóki platforma Azure nie przypisze adresu, nie wiesz, jaki adres może zostać przypisany. Może to być problematyczne, gdy na przykład ty lub twoi partnerzy biznesowi konfiguruje reguły zapory, które zezwalają na określone adresy IP. Za każdym razem, gdy nowy publiczny adres IP do zasobu zostanie przypisany, adres ten musi zostać dodany do reguły zapory. Podczas przypisywania adresów do zasobów z prefiksu publicznego adresu IP reguły zapory nie muszą być aktualizowane za każdym razem, gdy przypisujesz jeden z adresów, ponieważ cały zakres może zostać dodany do reguły.
 
-## <a name="benefits"></a>Korzyści
+## <a name="benefits"></a>Zalety
 
 - Publiczne zasoby adresów IP można tworzyć z znanego zakresu.
 - Ty lub Twoi partnerzy biznesowi możecie tworzyć reguły zapory z zakresami zawierającymi obecnie przypisane publiczne adresy IP, a także adresy, które nie zostały jeszcze przypisane. Eliminuje to konieczność zmiany reguł zapory podczas przypisywania adresów IP do nowych zasobów.
@@ -56,7 +56,7 @@ Następujące zasoby można skojarzyć ze statycznym publicznym adresem IP z pre
 ## <a name="constraints"></a>Ograniczenia
 
 - Nie można określić adresów IP prefiksu. Platforma Azure przydziela adresy IP dla prefiksu na podstawie określonego rozmiaru.
-- Można utworzyć prefiks maksymalnie 16 adresów IP lub /28. Aby uzyskać więcej informacji, zobacz [limity platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+- Domyślnie można utworzyć prefiks do 16 adresów IP lub /28. Przejrzyj [limity sieciowe zwiększaj liczbę żądań](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) i [limity platformy Azure,](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) aby uzyskać więcej informacji.
 - Po utworzeniu prefiksu nie można zmienić zakresu.
 - Z zakresu prefiksu można przypisać tylko statyczne publiczne adresy IP utworzone za pomocą standardowej jednostki SKU. Aby dowiedzieć się więcej o publicznych jednostkach SKU dotyczących adresów IP, zobacz [publiczny adres IP](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
 - Adresy z zakresu można przypisać tylko do zasobów usługi Azure Resource Manager. Adresów nie można przypisać do zasobów w klasycznym modelu wdrażania.

@@ -2,26 +2,22 @@
 title: Kody błędów autoryzacji uwierzytelniania usługi Azure AD &
 description: Dowiedz się więcej o kodach błędów AADSTS, które są zwracane z usługi tokenu zabezpieczeń usługi Azure AD (STS).
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
-ms.date: 03/31/2020
+ms.date: 04/07/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 91d285e2a839a7d6266c5d58f52901a48a7a8c84
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 40a7406ea91c95daad2f180b9d0f4620cdbbf454
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473170"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875932"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kody błędów uwierzytelniania i autoryzacji usługi Azure AD
 
@@ -133,6 +129,7 @@ Wyszukaj numeryczną część zwracanego kodu błędu.  Na przykład, jeśli otr
 | AADSTS50180 | WindowsIntegratedAuthMissing — potrzebne jest zintegrowane uwierzytelnianie systemu Windows. Włącz dzierżawę dla bezproblemowego logowania jednokrotnego. |
 | AADSTS50187 | DeviceInformationNotProvided — usługa nie może wykonać uwierzytelniania urządzenia. |
 | AADSTS50196 | LoopDetected — wykryto pętlę klienta. Sprawdź logikę aplikacji, aby upewnić się, że buforowanie tokenów jest implementowane i że warunki błędu są obsługiwane poprawnie.  Aplikacja dokonała zbyt wiele tego samego żądania w zbyt krótkim okresie, wskazując, że jest w stanie błędnym lub jest obraźliwie żąda tokenów. |
+| AADSTS50197 | KonfliktNieżdities — nie można odnaleźć użytkownika. Spróbuj zalogować się ponownie. |
 | AADSTS50199 | CmsiInterrupt — ze względów bezpieczeństwa wymagane jest potwierdzenie użytkownika dla tego żądania.  Ponieważ jest to błąd "interaction_required", klient powinien wykonać interaktywną erę.  Dzieje się tak, ponieważ system webview został użyty do żądania tokenu dla aplikacji macierzystej — użytkownik musi zostać poproszony, aby zapytać, czy to rzeczywiście aplikacja, którą zamierzali się zalogować.|
 | AADSTS51000 | RequiredFeatureNotEnabled — funkcja jest wyłączona. |
 | AADSTS51001 | DomainHintMustbePresent — wskazówka domeny musi być obecny z lokalnym identyfikatorem zabezpieczeń lub lokalną siecią UPN. |

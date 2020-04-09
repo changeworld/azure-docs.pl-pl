@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 9/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 348633ffc91bc25a226b05743a18d2c87533a01d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2895944dea6417949488076186135680523e19db
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280647"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874963"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Udział partnera w zakresie użycia platformy Azure przez klienta
 
@@ -232,7 +232,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Raport
 
-Raport dotyczący atrybucji użycia klienta można znaleźć na pulpicie nawigacyjnym centrum partnerów analizy. ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Aby wyświetlić raport, musisz użyć poświadczeń Centrum partnerów, aby się zalogować. Jeśli wystąpią jakiekolwiek problemy z raportem lub zalogowaniem się, utwórz żądanie pomocy technicznej zgodnie z instrukcją w sekcji Uzyskaj pomoc techniczną.
+Raport dotyczący atrybucji użycia klienta można znaleźć[https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)na pulpicie nawigacyjnym Centrum partnerów ( ). Aby wyświetlić raport, musisz użyć poświadczeń Centrum partnerów, aby się zalogować. Jeśli wystąpią jakiekolwiek problemy z raportem lub zalogowaniem się, utwórz żądanie pomocy technicznej zgodnie z instrukcją w sekcji Uzyskaj pomoc techniczną.
 
 Wybierz pozycję Śledzony szablon na liście rozwijanej Typ skojarzenia partnerów, aby wyświetlić raport.
 
@@ -267,7 +267,7 @@ Jeśli potrzebujesz pomocy w zakresie dołączania do platformy Marketplace i/lu
 1. Wybierz **kategorię** problemu:
 
    - W przypadku problemów ze skojarzeniem użycia wybierz pozycję **Inne**.
-   - Aby uzyskać problemy z dostępem do CPP portalu Azure Marketplace, wybierz opcję **Problem z dostępem**.
+   - Aby uzyskać problemy z dostępem do portalu Azure Marketplace, wybierz pozycję **Problem z programem Access**.
 
      ![Wybierz kategorię problemu](media/marketplace-publishers-guide/lu-article-incident.png)
 
@@ -303,7 +303,7 @@ Wyświetlanie instrukcji krok po kroku ze [https://aka.ms/TechConsultInstruction
 
 Skontaktujemy się z Tobą konsultant techniczny partnera firmy Microsoft, aby skonfigurować połączenie do zakresu twoich potrzeb.
 
-## <a name="faq"></a>Najczęściej zadawane pytania
+## <a name="faq"></a>Często zadawane pytania
 
 **Jakie są korzyści z dodania identyfikatora GUID do szablonu?**
 
@@ -315,7 +315,7 @@ Tak, klient lub partner implementacjuje może dostosować szablon i może zmieni
 
 **Czy mogę śledzić szablony wdrożone z repozytorium firmy innych niż Microsoft, takiego jak GitHub?**
 
-Tak, tak długo, jak identyfikator GUID jest obecny podczas wdrażania szablonu, użycie jest śledzone. Partnerzy muszą mieć profil w CPP do rejestrowania identyfikatorów GUID używanych do wdrażania poza portalem Azure Marketplace.
+Tak, tak długo, jak identyfikator GUID jest obecny podczas wdrażania szablonu, użycie jest śledzone. Partnerzy muszą mieć profil w rejestrze portalu marketplace komercyjnym w Centrum partnerów, aby zarejestrować identyfikatory GUID używane do wdrożenia poza portalem Azure Marketplace.
 
 **Czy klient otrzymuje również raporty?**
 

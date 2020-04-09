@@ -7,22 +7,22 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: b7385ef27cd17705f2c86b6f57d4780511b6935c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1b8c033a3ec230d60c30f6168de8ce013a80ac6
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246861"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878004"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Tworzenie drzwi ekscesji z http do HTTPS za pomocą portalu Azure
 
-Za pomocą witryny Azure Portal można utworzyć [drzwi frontowe](front-door-overview.md) z certyfikatem zakończenia SSL. Reguła routingu służy do przekierowywania ruchu HTTP do protokołu HTTPS.
+Za pomocą witryny Azure Portal można utworzyć [drzwi frontowe](front-door-overview.md) z certyfikatem zakończenia protokołu TLS. Reguła routingu służy do przekierowywania ruchu HTTP do protokołu HTTPS.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Tworzenie drzwi ekwigowych z istniejącym zasobem aplikacji sieci Web
-> * Dodawanie domeny niestandardowej z certyfikatem SSL 
+> * Dodawanie domeny niestandardowej z certyfikatem TLS/SSL 
 > * Konfigurowanie przekierowania HTTPS w domenie niestandardowej
 
 Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
@@ -87,7 +87,7 @@ Po dodaniu tego rekordu CNAME strona rekordów DNS wygląda podobnie jak w nast�
 ### <a name="enable-https-on-your-custom-domain"></a>Włączanie protokołu HTTPS w domenie niestandardowej
 
 1. Kliknij domenę niestandardową, która została dodana i w sekcji **Domena niestandardowa HTTPS**zmień stan na **Włączone**.
-2. **Typ zarządzania certyfikatami** można pozostawić ustawiony na _Drzwi są zarządzane_ przez bezpłatne certyfikaty obsługiwane, zarządzane i autoryzowane przez drzwi frontowe. Można również użyć własnego niestandardowego certyfikatu SSL przechowywanego w usłudze Azure Key Vault. W tym samouczku przyjęto założenie, że użycie certyfikatu zarządzanego przez drzwiami frontowymi.
+2. **Typ zarządzania certyfikatami** można pozostawić ustawiony na _Drzwi są zarządzane_ przez bezpłatne certyfikaty obsługiwane, zarządzane i autoryzowane przez drzwi frontowe. Można również użyć własnego niestandardowego certyfikatu TLS/SSL przechowywanego w usłudze Azure Key Vault. W tym samouczku przyjęto założenie, że użycie certyfikatu zarządzanego przez drzwiami frontowymi.
 ![Włączanie protokołu HTTPS dla domeny niestandardowej](./media/front-door-url-redirect/front-door-custom-domain-https.png)
 
 3. Kliknij **przycisk Aktualizuj,** aby zapisać zaznaczenie, a następnie kliknij przycisk **Zapisz**.

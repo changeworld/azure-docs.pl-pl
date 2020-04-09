@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 04/01/2020
-ms.openlocfilehash: 0ab9297e772a3b75a077da1c2ae74e5058b2731f
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d2598dfe9d7972dcb764abf4a1239613a1e8417a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657344"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879177"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Wykonywanie zaawansowanych przekształceń JSON za pomocą szablonów liquid w usłudze Azure Logic Apps
 
@@ -33,7 +33,7 @@ Przed wykonaniem płynnej transformacji w aplikacji logiki, należy najpierw zde
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Tworzenie szablonu lub mapy Liquid dla konta integracyjnego
 
-1. W tym przykładzie utwórz przykładowy szablon cieczy opisany w tym kroku. W szablonie Liquid można użyć [filtrów cieczy,](https://shopify.github.io/liquid/basics/introduction/#filters)które używają konwencji nazewnictwa [DotLiquid](https://dotliquidmarkup.org/) i C#.
+1. W tym przykładzie utwórz przykładowy szablon cieczy opisany w tym kroku. W szablonie Liquid można użyć [filtrów cieczy,](https://shopify.github.io/liquid/basics/introduction/#filters)które używają konwencji nazewnictwa [DotLiquid](https://github.com/dotliquid/dotliquid) i C#.
 
    > [!NOTE]
    > Upewnij się, że nazwy filtrów używają *wielkości liter* w szablonie. W przeciwnym razie filtry nie będą działać. Ponadto mapy mają [limity rozmiaru pliku](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits).

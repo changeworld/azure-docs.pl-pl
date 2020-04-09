@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: cshoe
-ms.openlocfilehash: dd74fd5c38e5a8800d2092afc1db1b412b126861
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77649912"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878208"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Ciągłe dostarczanie za pomocą akcji GitHub
 
@@ -24,7 +24,7 @@ W przypadku przepływu pracy usługi Azure Functions plik składa się z trzech 
 
 | Sekcja | Zadania |
 | ------- | ----- |
-| **Uwierzytelnianie** | <ol><li>Zdefiniuj jednostkę usługi.</li><li>Pobierz profil publikowania.</li><li>Tworzenie klucza tajnego Usługi GitHub.</li></ol>|
+| **Authentication** | <ol><li>Zdefiniuj jednostkę usługi.</li><li>Pobierz profil publikowania.</li><li>Tworzenie klucza tajnego Usługi GitHub.</li></ol>|
 | **Kompilacja** | <ol><li>Skonfiguruj środowisko.</li><li>Tworzenie aplikacji funkcji.</li></ol> |
 | **Wdróż** | <ol><li>Wdrażanie aplikacji funkcji.</li></ol>|
 
@@ -69,13 +69,13 @@ GitHub można teraz uwierzytelnić do aplikacji funkcji na platformie Azure.
 
 Konfigurowanie środowiska odbywa się przy użyciu akcji konfiguracji publikowania specyficznej dla języka.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Poniższy przykład przedstawia część przepływu pracy, `actions/setup-node` która używa akcji do skonfigurowania środowiska:
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Node 10.x
@@ -90,7 +90,7 @@ Poniższy przykład przedstawia część przepływu pracy, `actions/setup-python
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Python 3.6
@@ -99,13 +99,13 @@ Poniższy przykład przedstawia część przepływu pracy, `actions/setup-python
         python-version: 3.6
 ```
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Poniższy przykład przedstawia część przepływu pracy, `actions/setup-dotnet` która używa akcji do skonfigurowania środowiska:
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Dotnet 2.2.300
@@ -120,7 +120,7 @@ Poniższy przykład przedstawia część przepływu pracy, `actions/setup-java` 
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Java 1.8.x
@@ -138,7 +138,7 @@ To zależy od języka i dla języków obsługiwanych przez usługi Azure Functio
 
 W poniższym przykładzie przedstawiono część przepływu pracy, która tworzy aplikację funkcji, która jest specyficzna dla języka:
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -167,7 +167,7 @@ W poniższym przykładzie przedstawiono część przepływu pracy, która tworzy
         popd
 ```
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 194da036260a78b27748dfc7f755212ab4f30b1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae5d5f2d282c546f5172ca1c8cb0e420d3b6e96b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78256030"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878055"
 ---
 # <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Znane problemy/ograniczenia migracji z migracji z mongodb do interfejsu API usługi Azure Cosmos DB dla mongodb
 
@@ -45,7 +45,7 @@ Znane problemy i ograniczenia związane z migracjami z MongoDB do interfejsu API
 
 | Przyczyna         | Rozwiązanie |
 | ------------- | ------------- |
-| Próba migracji do usługi Azure Cosmos DB z nieobsługiwałej wersji mongodb. | W miarę zwalniania nowych wersji bazy danych MongoDB są one testowane w celu zapewnienia zgodności z usługą migracji bazy danych Azure, a usługa jest okresowo aktualizowana w celu zaakceptowania najnowszych wersji. Jeśli istnieje natychmiastowa potrzeba migracji, jako obejście można wyeksportować bazy danych/kolekcje do usługi Azure Storage i punkt źródła do wynikowego zrzutu. Utwórz sygnatury dostępu Współdzielonego w kontenerze obiektów blob w Eksploratorze magazynu, a następnie użyj adresu URL z informacjami o kontenerze sygnatury dostępu Współdzielonego jako źródłowego ciągu połączenia szczegółów.<br><br> |
+| Próba migracji do usługi Azure Cosmos DB z nieobsługiwałej wersji mongodb. | W miarę zwalniania nowych wersji bazy danych MongoDB są one testowane w celu zapewnienia zgodności z usługą migracji bazy danych Azure, a usługa jest okresowo aktualizowana w celu zaakceptowania najnowszych wersji. Jeśli istnieje natychmiastowa potrzeba migracji, jako obejście można wyeksportować bazy danych/kolekcje do usługi Azure Storage, a następnie wskazać źródło na wynikowy zrzut. Utwórz sygnatury dostępu Współdzielonego w kontenerze obiektów blob w Eksploratorze magazynu, a następnie użyj adresu URL z informacjami o kontenerze sygnatury dostępu Współdzielonego jako źródłowego ciągu połączenia szczegółów.<br><br> |
 
 ## <a name="next-steps"></a>Następne kroki
 

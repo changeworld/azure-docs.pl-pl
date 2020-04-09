@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5fae2bba0acc4ab462c91f7272694d032fc6ceaa
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6f2af87cf5cef1b5a80bc16d962fba579b4ff309
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742663"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985868"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Statystyki tabeli w puli sql synapse
 
@@ -146,11 +146,11 @@ Aby uzyskać więcej informacji, zobacz ogólne wskazówki dotyczące [statystyk
 
 ## <a name="implementing-statistics-management"></a>Wdrażanie zarządzania statystykami
 
-Często jest dobrym pomysłem, aby rozszerzyć proces ładowania danych, aby upewnić się, że statystyki są aktualizowane na końcu obciążenia.
+Często jest dobrym pomysłem, aby rozszerzyć proces ładowania danych, aby upewnić się, że statystyki są aktualizowane na końcu obciążenia, aby uniknąć blokowania lub rywalizacji o zasoby między równoczesnych zapytań.  
 
 Obciążenie danych jest wtedy, gdy tabele najczęściej zmieniają swój rozmiar i/lub rozkład wartości. Ładowanie danych jest logicznym miejscem do implementacji niektórych procesów zarządzania.
 
-Następujące zasady przewodnie są przewidziane do aktualizacji statystyk podczas procesu ładowania:
+Do aktualizacji statystyk podano następujące zasady przewodnie:
 
 - Upewnij się, że każda załadowana tabela ma co najmniej jeden obiekt statystyk zaktualizowany. Spowoduje to zaktualizowanie informacji o rozmiarze tabeli (liczba wierszy i liczba stron) w ramach aktualizacji statystyk.
 - Skoncentruj się na kolumnach uczestniczących w klauzulach JOIN, GROUP BY, ORDER BY i DISTINCT.

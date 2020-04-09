@@ -11,18 +11,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
-ms.openlocfilehash: 6ab41182d59f8c96edfca4854aad5f9a13f53436
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 101cfc9edce8f4df1ad2388c08a5bd9702dffe68
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74806613"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878225"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Omówienie aplikacji i rozwiązań Oracle na platformie Azure
 
-W tym artykule przedstawiono możliwości uruchamiania rozwiązań Oracle przy użyciu infrastruktury platformy Azure. Zobacz też szczegółowe wprowadzenie do dostępnych [obrazów maszyn wirtualnych Oracle](oracle-vm-solutions.md) w portalu Azure Marketplace oraz możliwość łączenia platformy Azure w wersji zapoznawczej z [infrastrukturą Oracle Cloud Infrastructure (OCI).](oracle-oci-overview.md)
+W tym artykule przedstawiono możliwości uruchamiania rozwiązań Oracle przy użyciu infrastruktury platformy Azure. Zobacz także szczegółowe wprowadzenie do dostępnych [obrazów maszyn wirtualnych Oracle](oracle-vm-solutions.md) w portalu Azure Marketplace oraz możliwości [łączenia platformy Azure z infrastrukturą Oracle Cloud Infrastructure (OCI).](oracle-oci-overview.md)
 
 ## <a name="oracle-databases-on-azure-infrastructure"></a>Bazy danych Oracle w infrastrukturze platformy Azure
 
@@ -58,7 +58,7 @@ Uruchamiaj aplikacje dla przedsiębiorstw na platformie Azure w obsługiwanych s
 
 * Utwórz kopię zapasową bazy danych Oracle Database przy użyciu oracle RMAN i opcjonalnie użyj [usługi Azure Blob Fuse,](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) aby zainstalować [wysoce ponowne konto usługi Azure Blob Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy) i zapisać kopie zapasowe RMAN w celu zwiększenia odporności.
 
-## <a name="integration-of-azure-with-oci-preview"></a>Integracja platformy Azure z OCI (wersja zapoznawcza)
+## <a name="integration-of-azure-with-oci"></a>Integracja platformy Azure z OCI
 
 Uruchom aplikacje Oracle w infrastrukturze platformy Azure, połączone z bazami danych zaplecza w oracle cloud infrastructure (OCI). To rozwiązanie wykorzystuje następujące możliwości: 
 
@@ -67,7 +67,10 @@ Uruchom aplikacje Oracle w infrastrukturze platformy Azure, połączone z bazami
 
 ### <a name="deploy-oracle-applications-on-azure"></a>Wdrażanie aplikacji Oracle na platformie Azure
 
-Użyj szablonów Terraform, aby skonfigurować infrastrukturę platformy Azure i zainstalować aplikacje Oracle zatwierdzone i obsługiwane do uruchamiania w konfiguracji między chmurami:
+Szablony Terraform umożliwia konfigurowanie infrastruktury platformy Azure i instalowanie aplikacji Oracle Applications. 
+
+> [!IMPORTANT]
+> Oracle zaświadczy te aplikacje do uruchomienia na platformie Azure podczas korzystania z rozwiązania Azure / Oracle Cloud interconnect do maja 2020 r.
 
 * Pakiet e-biznesowy
 * JD Edwards EnterpriseOne

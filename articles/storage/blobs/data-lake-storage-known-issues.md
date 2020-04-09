@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4f8fae6580272ed53b8d440ba3e74c6a1ed1e61a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f69f17dc9d0cab2491a2c7f37b5bd082cc96b2d6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061508"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985426"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy z usługą Azure Data Lake Storage Gen2
 
 W tym artykule opisano ograniczenia i znane problemy usługi Azure Data Lake Storage Gen2.
 
-## <a name="supported-blob-storage-features"></a>Obsługiwane funkcje magazynu obiektów blob
+## <a name="supported-blob-storage-features"></a>Obsługiwane funkcje usługi Blob Storage
 
 Coraz więcej funkcji magazynu obiektów Blob działa teraz z kontami, które mają hierarchiczną przestrzeń nazw. Aby uzyskać pełną listę, zobacz [Funkcje magazynu obiektów blob dostępnych w usłudze Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md).
 
 ## <a name="supported-azure-service-integrations"></a>Obsługiwane integracje usług platformy Azure
 
-Usługa Data Lake Storage gen2 obsługuje kilka usług platformy Azure, których można używać do pozyskiwania danych, przeprowadzania analiz i tworzenia reprezentacji wizualnych. Aby uzyskać listę obsługiwanych usług platformy Azure, zobacz [usługi platformy Azure obsługujące usługę Azure Data Lake Storage Gen2.](data-lake-storage-supported-azure-services.md)
+Usługa Azure Data Lake Storage Gen2 obsługuje kilka usług platformy Azure, których można używać do pozyskiwania danych, przeprowadzania analiz i tworzenia reprezentacji wizualnych. Aby uzyskać listę obsługiwanych usług platformy Azure, zobacz [usługi platformy Azure obsługujące usługę Azure Data Lake Storage Gen2.](data-lake-storage-supported-azure-services.md)
 
 Zobacz [usługi platformy Azure, które obsługują usługę Azure Data Lake Storage Gen2](data-lake-storage-supported-azure-services.md).
 
@@ -112,11 +112,8 @@ Aplikacje innych firm, które używają interfejsów API REST do pracy będzie n
 
 Jeśli [anonimowy dostęp do odczytu](storage-manage-access-to-resources.md) został przyznany kontenerowi, listy ACL nie mają wpływu na ten kontener lub pliki w tym kontenerze.
 
-## <a name="windows-azure-storage-blob-wasb-driver"></a>Sterownik obiektów blob usługi Windows Azure Storage (WASB)
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-adls-gen2"></a>Sterownik obiektów blob usługi Windows Azure Storage (WASB) (nieobsługiwalony w usłudze ADLS Gen2)
 
-Obecnie istnieje kilka problemów związanych z używaniem sterownika WASB wraz z kontami, które mają hierarchiczną przestrzeń nazw. Zaleca się użycie sterownika [systemu plików obiektów Blob azure (ABFS)](data-lake-storage-abfs-driver.md) w obciążeniach. 
+Obecnie sterownik WASB — który został zaprojektowany do pracy tylko z interfejsem API obiektów Blob — napotyka problemy w kilku typowych scenariuszach, czyli gdy jest klientem konta magazynu z włączoną przestrzenią nazw. Należy zauważyć, że dostęp wieloprotokolowy (MPA) nie będzie ograniczać tych problemów, albo. 
 
-
-
-
-
+Na razie (i najprawdopodobniej w dającej się przewidzieć przyszłości) nie będziemy obsługiwać klientów korzystających ze sterownika WASB jako klienta na koncie magazynu z włączoną przestrzenią nazw. Zamiast tego zaleca się, aby zdecydować się na użycie sterownika [systemu plików obiektów Blob Azure (ABFS)](data-lake-storage-abfs-driver.md) w środowisku Hadoop. Jeśli próbujesz przeprowadzić migrację poza lokalnym środowisku Hadoop z wersją wcześniejszą niż Hadoop branch-3, otwórz bilet pomocy technicznej platformy Azure, abyśmy mogli skontaktować się z Tobą na właściwej drodze do przodu dla Ciebie i Twojej organizacji.

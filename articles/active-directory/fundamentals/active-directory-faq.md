@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb0b5e37843413667e51112f52e6a69534e3425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f4a961e601949689db89f8819f0a1fe1c5a7b3a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063632"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875796"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Często zadawane pytania dotyczące usługi Azure Active Directory
 Azure Active Directory (Azure AD) jest kompleksowym rozwiązaniem typu tożsamość jako usługa (IDaaS, Identity as a Service), które obejmuje wszystkie aspekty tożsamości, zarządzania dostępem i bezpieczeństwa.
@@ -27,16 +27,17 @@ Aby uzyskać więcej informacji, zobacz [Co to jest usługa Azure Active Directo
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>Uzyskiwanie dostępu do platformy Azure i usługi Azure Active Directory
-**Pytanie: dlaczego otrzymuję błąd „Nie znaleziono żadnych subskrypcji” podczas próby dostępu do usługi Azure AD w witrynie Azure Portal?**
+**Pyt.: Dlaczego podczas próby uzyskania dostępu do usługi Azure AD w witrynie Azure portal otrzymuję "Nie znaleziono żadnych subskrypcji"?**
 
-**Odpowiedź:** aby uzyskać dostęp do witryny Azure Portal, każdy użytkownik musi mieć uprawnienia w ramach subskrypcji platformy Azure. Jeśli masz płatną subskrypcję usługi Office 365 lub usługi Azure AD, przejdź do [https://aka.ms/accessAAD](https://aka.ms/accessAAD) kroku jednorazowej aktywacji. W przeciwnym razie należy aktywować bezpłatne [konto platformy Azure](https://azure.microsoft.com/pricing/free-trial/) lub płatną subskrypcję.
+**Odpowiedź:** aby uzyskać dostęp do witryny Azure Portal, każdy użytkownik musi mieć uprawnienia w ramach subskrypcji platformy Azure. Jeśli nie masz płatnej subskrypcji usługi Office 365 lub usługi Azure AD, musisz aktywować bezpłatne [konto platformy Azure](https://azure.microsoft.com/free/
+) lub płatną subskrypcję.
 
 Aby uzyskać więcej informacji, zobacz:
 
 * [Jak subskrypcje platformy Azure są kojarzone z usługą Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 
 ---
-**Pytanie: jaka jest relacja między usługami Azure AD, Office 365 i platformą Azure?**
+**Pyt.: Jaka jest relacja między usługą Azure AD, Office 365 i platformą Azure?**
 
 **Odpowiedź:** usługa Azure AD zawiera typowe funkcje związane z tożsamością i dostępem do wszystkich usług sieci Web. Niezależnie od tego, czy używasz usługi Office 365, Microsoft Azure, Intune lub innych, już używasz usługi Azure AD w celu umożliwienia logowania i zarządzania dostępem do tych wszystkich usług.
 
@@ -138,9 +139,9 @@ W przypadku kont usługi Azure AD administratorzy mogą zresetować hasło w jed
 
 Korzystamy z bardziej zaawansowanej strategii blokowania kont.  Jest ona oparta na adresie IP żądania i wprowadzonym haśle. Czas trwania blokady wydłuża się też w zależności od stopnia prawdopodobieństwa ataku.  
 
-**Pytanie: niektóre (typowe) hasła są odrzucane i jest wyświetlany komunikat z informacją o tym, że hasło zostało użyte zbyt wiele razy. Czy dotyczy to haseł używanych w bieżącej usłudze Active Directory?**
+**Pyt.: Niektóre (wspólne) hasła są odrzucane z wiadomościami "to hasło było używane wiele razy", czy odnosi się to do haseł używanych w bieżącym usłudze Active Directory?**
 
-Dotyczy to typowych haseł występujących globalnie, takich jak różne odmiany ciągów „Hasło” i „123456”.
+Odnosi się to do haseł, które są powszechnie spotykane na całym świecie, takich jak wszelkie warianty "Hasło" i "123456".
 
 **Pytanie: czy żądanie logowania z podejrzanych źródeł (botnety, punkt końcowy sieci Tor) zostanie zablokowane w dzierżawie B2C, czy wymaga to dzierżawy w warstwie Podstawowa lub Premium?**
 
@@ -157,7 +158,7 @@ Aby uzyskać pełną listę wstępnie zintegrowanych aplikacji, zobacz [Active D
 ---
 **Pytanie: co w przypadku, jeśli aplikacja, której potrzebuję, nie znajduje się w witrynie Azure AD Marketplace?**
 
-**Odpowiedź:** przy użyciu usługi Azure AD Premium możesz dodać i skonfigurować dowolną aplikację. W zależności od możliwości aplikacji i preferencji możesz skonfigurować logowanie jednokrotne i automatyczną aprowizację.  
+**Odpowiedź:** przy użyciu usługi Azure AD Premium możesz dodać i skonfigurować dowolną aplikację. W zależności od możliwości aplikacji i preferencji można skonfigurować funkcję SSO i automatyczne inicjowanie obsługi administracyjnej.  
 
 Aby uzyskać więcej informacji, zobacz:
 
@@ -188,7 +189,7 @@ Aby uzyskać więcej informacji, zobacz:
 * [Logowanie jednokrotne dla aplikacji w usłudze Azure AD](../manage-apps/what-is-single-sign-on.md)
 
 ---
-**Pytanie: czy mogę dodać aplikacje uruchamiane lokalnie?**
+**Pyt.: Czy mogę dodać aplikacje, które uruchamiam lokalnie?**
 
 **Odpowiedź:** serwer proxy aplikacji usługi Azure AD zapewnia prosty i bezpieczny dostęp do wybranych lokalnych aplikacji internetowych. Dostęp do tych aplikacji można uzyskiwać w taki sam sposób jak w przypadku aplikacji typu oprogramowanie jako usługa (SaaS) w usłudze Azure AD. Nie ma potrzeby stosowania sieci VPN ani zmiany infrastruktury sieciowej.  
 
@@ -199,7 +200,7 @@ Aby uzyskać więcej informacji, zobacz [How to provide secure remote access to 
 
 **Odp.:** Za pomocą usługi Azure AD Dostęp warunkowy, można przypisać unikatowe zasady dostępu dla każdej aplikacji. W zasadach możesz wymagać korzystania z uwierzytelniania wieloskładnikowego w każdym przypadku lub wtedy, gdy użytkownicy nie są połączeni z siecią lokalną.  
 
-Aby uzyskać więcej informacji, zobacz [Zabezpieczanie dostępu do usługi Office 365 i innych aplikacji podłączonych do usługi Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
+Aby uzyskać więcej informacji, zobacz [Zabezpieczanie dostępu do usługi Office 365 i innych aplikacji podłączonych do usługi Azure Active Directory](../conditional-access/overview.md).
 
 ---
 **Pyt.: Co to jest automatyczne inicjowanie obsługi administracyjnej dla aplikacji SaaS?**
@@ -211,4 +212,4 @@ Aby uzyskać więcej informacji, zobacz [Automate User Provisioning and Deprovis
 ---
 **Pytanie: czy mogę skonfigurować bezpieczne połączenie LDAP z usługą Azure AD?**
 
-**Odp.:**  №. Usługa Azure AD nie obsługuje bezpośrednio protokołu LDAP (Lightweight Directory Access Protocol) ani secure LDAP. Jednak jest możliwe, aby włączyć usługi azure ad usługi domenowe (Usługi Azure AD DS) wystąpienie w dzierżawie usługi Azure AD z prawidłowo skonfigurowanych grup zabezpieczeń sieci za pośrednictwem usługi Azure Networking do osiągnięcia łączności LDAP. Aby uzyskać więcej informacji, zobacz https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.
+**Odp.:**  №. Usługa Azure AD nie obsługuje bezpośrednio protokołu LDAP (Lightweight Directory Access Protocol) ani secure LDAP. Jednak jest możliwe, aby włączyć usługi azure ad usługi domenowe (Usługi Azure AD DS) wystąpienie w dzierżawie usługi Azure AD z prawidłowo skonfigurowanych grup zabezpieczeń sieci za pośrednictwem usługi Azure Networking do osiągnięcia łączności LDAP. Aby uzyskać więcej informacji, zobacz [Konfigurowanie bezpiecznego protokołu LDAP dla domeny zarządzanej usług domenowych usługi active directory platformy Azure](../../active-directory-domain-services/tutorial-configure-ldaps.md)
