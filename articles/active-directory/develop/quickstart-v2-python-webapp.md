@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: a8ef0f172a8e9118eef2d2f8a11f3efbce665171
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 0affae56ef6998efe4bb370287ff3688f83f3878
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473525"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873960"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Szybki start: dodawanie logowania za pomocą firmy Microsoft do aplikacji sieci Web języka Python
 
@@ -41,8 +41,7 @@ Aby uruchomić ten przykład, należy:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1. Zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
 >
-> 1. Przejdź do [witryny Azure portal — rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
-> 1. Wybierz **pozycję Nowa rejestracja**.
+> 1. Przejdź do [witryny Azure portal — rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs).
 > 1. Wprowadź nazwę aplikacji i wybierz pozycję **Zarejestruj**.
 > 1. Postępuj zgodnie z instrukcjami, aby pobrać i automatycznie skonfigurować nową aplikację.
 >
@@ -59,8 +58,11 @@ Aby uruchomić ten przykład, należy:
 > 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 >      - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `python-webapp`.
 >      - W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
->      - W sekcji **Przekierowanie identyfikatora URI** na liście rozwijanej wybierz platformę `http://localhost:5000/getAToken` **sieci Web,** a następnie ustaw wartość na .
->      - Wybierz pozycję **Zarejestruj**. Na stronie **Przegląd** aplikacji zanotuj wartość **identyfikatora aplikacji (klienta)** do późniejszego użycia.
+>      - Wybierz pozycję **Zarejestruj**.
+>      - Na stronie **Przegląd** aplikacji zanotuj wartość **identyfikatora aplikacji (klienta)** do późniejszego użycia.
+> 1. Wybierz **uwierzytelnianie** z menu, a następnie dodaj następujące informacje:
+>    - Dodaj konfigurację platformy **sieci Web.** Dodaj `http://localhost:5000/getAToken` jako **przekierowanie identyfikatorów URI**.
+>    - Wybierz **pozycję Zapisz**.
 > 1. W menu po lewej stronie wybierz **certyfikaty & wpisy tajne** i kliknij **nowy klucz tajny klienta** w sekcji **Tajemnice klienta:**
 >
 >      - Wpisz opis klucza (klucz tajny aplikacji instancji).
@@ -105,11 +107,11 @@ Aby uruchomić ten przykład, należy:
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-application"></a>Krok 3: Konfigurowanie aplikacji
-> 
+>
 > 1. Wyodrębnij plik zip do folderu lokalnego bliższego folderowi głównemu, na przykład **C:\Azure-Samples**
 > 1. Jeśli używasz zintegrowanego środowiska programistycznego, otwórz próbkę w swoim ulubionym ŚRODOWISKU IDE (opcjonalnie).
 > 1. Otwórz plik **app_config.py,** który można znaleźć w folderze głównym i zastąp następującym fragmentem kodu:
-> 
+>
 > ```python
 > CLIENT_ID = "Enter_the_Application_Id_here"
 > CLIENT_SECRET = "Enter_the_Client_Secret_Here"

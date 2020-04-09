@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c9447d356cff792d9a70e33cc2a5e35898d8982b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a0c80f18e9cd09b765804aaddbd178b4b3e32a9d
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80131895"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984456"
 ---
 # <a name="quickstart-create-arm-templates-by-using-visual-studio-code"></a>Szybki start: tworzenie szablonów ARM przy użyciu programu Visual Studio Code
 
@@ -26,7 +26,7 @@ Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://
 
 Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
-- [Program Visual Studio Code](https://code.visualstudio.com/)
+- [Visual Studio Code](https://code.visualstudio.com/).
 - Rozszerzenie Narzędzia usługi Resource Manager. Aby przeprowadzić instalację, wykonaj następujące kroki:
 
     1. Otwórz program Visual Studio Code.
@@ -94,11 +94,11 @@ Istnieje wiele metod wdrażania szablonów. Powłoka usługi Azure Cloud jest u�
 
 2. Wybierz preferowane środowisko, wybierając program **PowerShell** lub **Bash**(CLI) w lewym górnym rogu.  Po przełączeniu wymagane jest ponowne uruchomienie powłoki.
 
-    # <a name="cli"></a>[Cli](#tab/CLI)
+    # <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
     ![Interfejs wiersza polecenia usługi Cloud Shell w witrynie Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Powłoka usługi Azure portal w chmurze PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
 
@@ -106,11 +106,11 @@ Istnieje wiele metod wdrażania szablonów. Powłoka usługi Azure Cloud jest u�
 
 3. Wybierz pozycję **Przekaż/pobierz pliki**, a następnie wybierz pozycję **Przekaż**.
 
-    # <a name="cli"></a>[Cli](#tab/CLI)
+    # <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
     ![Przekazywanie pliku w usłudze Cloud Shell w witrynie Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Przekazywanie pliku w usłudze Cloud Shell w witrynie Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
 
@@ -120,32 +120,35 @@ Istnieje wiele metod wdrażania szablonów. Powłoka usługi Azure Cloud jest u�
 
     Opcjonalnie możesz skorzystać z poleceń **ls** i **cat**, aby sprawdzić, czy plik został przekazany pomyślnie.
 
-    # <a name="cli"></a>[Cli](#tab/CLI)
+    # <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
     ![Wyświetlanie listy plików w usłudze Cloud Shell w witrynie Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Wyświetlanie listy plików w usłudze Cloud Shell w witrynie Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
 
     ---
 4. W usłudze Cloud Shell uruchom poniższe polecenia. Wybierz kartę, aby wyświetlić kod programu PowerShell lub kod interfejsu wiersza polecenia.
 
-    # <a name="cli"></a>[Cli](#tab/CLI)
+    # <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
+
     ```azurecli
-    echo "Enter the Resource Group name:" &&
-    read resourceGroupName &&
+    echo "Enter a project name that is used to generate resource group name:" &&
+    read projectName &&
     echo "Enter the location (i.e. centralus):" &&
     read location &&
+    resourceGroupName="${projectName}rg" &&
     az group create --name $resourceGroupName --location "$location" &&
     az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
     ```
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
 
     New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
@@ -157,11 +160,11 @@ Istnieje wiele metod wdrażania szablonów. Powłoka usługi Azure Cloud jest u�
 
     Poniższy zrzut ekranu przedstawia przykładowe wdrożenie:
 
-    # <a name="cli"></a>[Cli](#tab/CLI)
+    # <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
     ![Wdrażanie szablonu w usłudze Cloud Shell w witrynie Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Wdrażanie szablonu w usłudze Cloud Shell w witrynie Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
 
@@ -171,7 +174,8 @@ Istnieje wiele metod wdrażania szablonów. Powłoka usługi Azure Cloud jest u�
 
 5. Uruchom następujące polecenie interfejsu wiersza polecenia lub programu PowerShell, aby wyświetlić nowo utworzone konto magazynu:
 
-    # <a name="cli"></a>[Cli](#tab/CLI)
+    # <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
+
     ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
@@ -180,7 +184,7 @@ Istnieje wiele metod wdrażania szablonów. Powłoka usługi Azure Cloud jest u�
     az storage account show --resource-group $resourceGroupName --name $storageAccountName
     ```
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

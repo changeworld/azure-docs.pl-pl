@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 37f7366d6622356017e458fb8f893b0be0851335
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b12aa860bee189f706bd98df63fc194a3a0cc71
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73825706"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874708"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Szybki start: przywracanie bazy danych do wystąpienia zarządzanego
 
@@ -46,7 +46,7 @@ Ten przewodnik Szybki start:
 
 W programie SSMS użyj następujących kroków, aby przywrócić bazę danych Wide World Importers do wystąpienia zarządzanego. Plik kopii zapasowej bazy danych znajduje na wstępnie skonfigurowanym koncie usługi Azure Blob Storage.
 
-1. Otwórz program SMSS i nawiąż połączenie z wystąpieniem zarządzanym.
+1. Otwórz ssms i połącz się z wystąpieniem zarządzanym.
 2. W menu po lewej stronie, kliknij prawym przyciskiem myszy wystąpienie zarządzane i wybierz pozycję **Nowe zapytanie**, aby otworzyć okno nowego zapytania.
 3. Uruchom poniższy skrypt SQL wykorzystujący wstępnie skonfigurowane konto magazynu i klucz SAS, aby [utworzyć poświadczenie](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql) w wystąpieniu zarządzanym.
 

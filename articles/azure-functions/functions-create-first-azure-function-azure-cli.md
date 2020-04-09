@@ -4,18 +4,25 @@ description: Dowiedz się, jak utworzyć funkcję z wiersza polecenia, a następ
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: a131feab91816a6fdd5075a903cf53651f0de555
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: c1e1b9912109ae8a7361c9d0d776ca1810a90d5c
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673211"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886640"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Szybki start: tworzenie funkcji na platformie Azure, która odpowiada na żądania HTTP
 
 W tym artykule za pomocą narzędzi wiersza polecenia można utworzyć funkcję odpowiadającą na żądania HTTP. Po przetestowaniu kodu lokalnie, można wdrożyć go w środowisku bezserwerowym usługi Azure Functions. Ukończenie tego przewodnika Szybki start wiąże się z niewielkim kosztem kilku centów USD lub mniej na koncie platformy Azure.
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
 Istnieje również wersja tego artykułu [oparta na kodzie programu Visual Studio.](functions-create-first-function-vs-code.md)
+::: zone-end  
+
+::: zone pivot="programming-language-java"  
+> [!NOTE]
+> Jeśli Maven nie jest preferowanym narzędziem do tworzenia, sprawdź nasze podobne tutoriale dla devlopers Java za pomocą [Gradle](/azure/azure-functions/functions-create-first-java-gradle), [IntelliJ IDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions) i [VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java).
+::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 

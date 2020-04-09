@@ -3,19 +3,19 @@ title: Obsługa kontenerów
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak kontenery platformy Docker mogą przybliżyć usługi Cognitive Services do danych.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: dapine
-ms.openlocfilehash: d75962b98543991a065f6b165279215614175925
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 7a38ec47d416027e8ea3fa772ae01e4f6264197a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219413"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876837"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Obsługa kontenerów w usługach Azure Cognitive Services
 
@@ -23,10 +23,10 @@ Obsługa kontenerów w usłudze Azure Cognitive Services umożliwia deweloperom 
 
 > [!div class="checklist"]
 > * [Narzędzie do wykrywania anomalii][ad-containers]
-> * [Wizja komputerowa][cv-containers]
+> * [Przetwarzanie obrazów][cv-containers]
 > * [Rozpoznawanie twarzy][fa-containers]
 > * [Rozpoznawanie formularzy][fr-containers]
-> * [Rozumienie języka (LUIS)][lu-containers]
+> * [Language Understanding (LUIS)][lu-containers]
 > * [Interfejs API usługi rozpoznawania mowy][sp-containers]
 > * [Analiza tekstu][ta-containers]
 
@@ -52,7 +52,7 @@ Kontenery usługi Azure Cognitive Services zawierają następujący zestaw konte
 | Usługa | Obsługiwana warstwa cenowa | Kontener | Opis |
 |---------|----------|----------|-------------|
 |[Wykrywacz anomalii][ad-containers] |F0, S0|**Wykrywacz anomalii** |Interfejs API detektora anomalii umożliwia monitorowanie i wykrywanie nieprawidłowości w danych szeregów czasowych za pomocą uczenia maszynowego.<br>[Żądanie dostępu](https://aka.ms/adcontainer)|
-|[Wizja komputerowa][cv-containers] |F0, S1|**Odczyt** |Wyodrębnia drukowany tekst z obrazów różnych obiektów o różnych powierzchniach i tłach, takich jak paragony, plakaty i wizytówki. Odczyt kontenera wykrywa również *odręczny tekst* w obrazach i zapewnia obsługę pdf/TIFF/wielostronicową.<br/><br/>**Ważne:** Odczyt kontenera obecnie działa tylko w języku angielskim.|
+|[Przetwarzanie obrazów][cv-containers] |F0, S1|**Odczyt** |Wyodrębnia drukowany tekst z obrazów różnych obiektów o różnych powierzchniach i tłach, takich jak paragony, plakaty i wizytówki. Odczyt kontenera wykrywa również *odręczny tekst* w obrazach i zapewnia obsługę pdf/TIFF/wielostronicową.<br/><br/>**Ważne:** Odczyt kontenera obecnie działa tylko w języku angielskim.|
 |[Rozpoznawanie twarzy][fa-containers] |F0, S0|**Rozpoznawanie twarzy** |Wykrywa ludzkie twarze na obrazach i identyfikuje atrybuty, w tym punkty orientacyjne twarzy (takie jak nosy i oczy), płeć, wiek i inne cechy twarzy przewidywane maszynowo. Oprócz wykrywania funkcja Face może sprawdzić, czy dwie ściany na tym samym obrazie lub na różnych obrazach są takie same, używając wyniku zaufania, lub porównać twarze z bazą danych, aby sprawdzić, czy ma już podobną lub identyczną twarz. Może również organizować podobne twarze w grupy, używając wspólnych cech wizualnych.<br>[Żądanie dostępu](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Aparat rozpoznawania formularzy][fr-containers] |F0, S0|**Rozpoznawanie formularzy** |Form Understanding stosuje technologię uczenia maszynowego do identyfikowania i wyodrębniania par klucza wartości i tabel z formularzy.<br>[Żądanie dostępu](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS][lu-containers] |F0, S0|**USŁUGA LUIS** ([obraz](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Ładuje przeszkolony lub opublikowany model zrozumienia języka, znany również jako aplikacja usługi LUIS, do kontenera platformy docker i zapewnia dostęp do prognoz kwerend z punktów końcowych interfejsu API kontenera. Można zbierać dzienniki zapytań z kontenera i przekazać je z powrotem do [portalu usługi LUIS,](https://www.luis.ai) aby zwiększyć dokładność przewidywania aplikacji.|

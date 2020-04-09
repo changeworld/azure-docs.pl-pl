@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 11/15/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 540dd51abf8b832194c3814c8198cb72cc60d348
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 0ee4ee722c781b8ee64c426d7b63aa9f680373b0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745454"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982246"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Porównanie funkcji produktu Azure CDN
 
@@ -57,7 +57,7 @@ W poniższej tabeli przedstawiono porównanie funkcji dostępnych w poszczególn
 | [Filtrowanie geograficzne](cdn-restrict-access-by-country.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Uwierzytelnianie przy użyciu tokenów](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 
 | [Ochrona przed DDOS](https://www.us-cert.gov/ncas/tips/ST04-015)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Użyj własnego certyfikatu](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
+| [Użyj własnego certyfikatu](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
 | Obsługiwane wersje TLS | TLS 1.2, TLS 1.0/1.1 - [Konfigurowalny](https://docs.microsoft.com/rest/api/cdn/customdomains/enablecustomhttps#usermanagedhttpsparameters) | TLS 1.2 | TLS 1.2 | TLS 1.2 |
 ||||
 | **Analiza i raportowanie** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** | 

@@ -3,18 +3,18 @@ title: Kontenery usług Cognitive Services często zadawane pytania (CZĘSTO ZAD
 titleSuffix: Azure Cognitive Services
 description: Często zadawane pytania i odpowiedzi.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.author: dapine
-ms.openlocfilehash: 33b99d50db4384c7de818a7dd0bb8492c86bef97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 8aae650065e8de11ccdc55a8a056c379a219fcb4
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73961890"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876510"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Kontenery usługi Azure Cognitive Services często zadawane pytania (często zadawane pytania)
 
@@ -26,10 +26,10 @@ ms.locfileid: "73961890"
 
 > [!div class="checklist"]
 > * [Narzędzie do wykrywania anomalii][ad-containers]
-> * [Wizja komputerowa][cv-containers]
+> * [Przetwarzanie obrazów][cv-containers]
 > * [Rozpoznawanie twarzy][fa-containers]
 > * [Rozpoznawanie formularzy][fr-containers]
-> * [Rozumienie języka (LUIS)][lu-containers]
+> * [Language Understanding (LUIS)][lu-containers]
 > * [Interfejs API usługi rozpoznawania mowy][sp-containers]
 > * [Analiza tekstu][ta-containers]
 
@@ -108,10 +108,10 @@ Zapoznaj się z poniższymi tagami, aby uzyskać potencjalne pytania i odpowiedz
 **Odp.:** Klienci są obciążani na podstawie zużycia, podobnie jak w chmurze usług Cognitive Services. Kontenery muszą być skonfigurowane do wysyłania danych pomiarowych na platformę Azure, a transakcje będą odpowiednio rozliczane. Zasoby używane w usługach hostowanych i lokalnych dodadzą do pojedynczego przydziału z warstwowymi cenami, licząc względem obu użycia. Aby uzyskać więcej informacji, zapoznaj się ze stroną z cenami odpowiedniej oferty.
 
 * [Narzędzie do wykrywania anomalii][ad-containers-billing]
-* [Wizja komputerowa][cv-containers-billing]
+* [Przetwarzanie obrazów][cv-containers-billing]
 * [Rozpoznawanie twarzy][fa-containers-billing]
 * [Rozpoznawanie formularzy][fr-containers-billing]
-* [Rozumienie języka (LUIS)][lu-containers-billing]
+* [Language Understanding (LUIS)][lu-containers-billing]
 * [Interfejs API usługi rozpoznawania mowy][sp-containers-billing]
 * [Analiza tekstu][ta-containers-billing]
 
@@ -135,10 +135,10 @@ Zapoznaj się z poniższymi tagami, aby uzyskać potencjalne pytania i odpowiedz
 **Odp.:** Kontenery usług Cognitive Services to kontenery oparte na x64, które mogą uruchamiać dowolny zgodny węzeł systemu Linux, maszynę wirtualną i urządzenie brzegowe obsługujące kontenery platformy Docker systemu Linux x64. Wszystkie one wymagają procesorów CPU. Minimalne i zalecane konfiguracje dla każdej oferty kontenerów są dostępne poniżej:
 
 * [Narzędzie do wykrywania anomalii][ad-containers-recommendations]
-* [Wizja komputerowa][cv-containers-recommendations]
+* [Przetwarzanie obrazów][cv-containers-recommendations]
 * [Rozpoznawanie twarzy][fa-containers-recommendations]
 * [Rozpoznawanie formularzy][fr-containers-recommendations]
-* [Rozumienie języka (LUIS)][lu-containers-recommendations]
+* [Language Understanding (LUIS)][lu-containers-recommendations]
 * [Interfejs API usługi rozpoznawania mowy][sp-containers-recommendations]
 * [Analiza tekstu][ta-containers-recommendations]
  

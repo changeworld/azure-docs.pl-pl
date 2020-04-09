@@ -3,19 +3,19 @@ title: Instalowanie kontenerów mowy — usługa mowy
 titleSuffix: Azure Cognitive Services
 description: Instalowanie i uruchamianie kontenerów mowy. Zamiana mowy na tekst umożliwia transkrypcję strumieni audio na tekst w czasie rzeczywistym, które mogą wykorzystywać lub wyświetlać aplikacje, narzędzia lub urządzenia. Zamiana tekstu na mowę konwertuje tekst wejściowy na mowę syntetyzowaną podobną do człowieka.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.author: dapine
-ms.openlocfilehash: 2beee81bc365d00e59a62cacabacc5f5d6b62a42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 2caae4fecdf13a1833f23cf9423cf3ded67f6f72
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474785"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879029"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Instalowanie i uruchamianie kontenerów usługi mowy (wersja zapoznawcza)
 
@@ -380,7 +380,7 @@ To polecenie:
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Kwerenda punktu końcowego przewidywania kontenera
 
-| Kontenery | Adres URL hosta SDK | Protocol (Protokół) |
+| Containers | Adres URL hosta SDK | Protocol (Protokół) |
 |--|--|--|
 | Zamiana mowy na tekst i niestandardowa zamiana mowy na tekst | `ws://localhost:5000` | WS |
 | Zamiana tekstu na mowę i niestandardowy tekst na mowę | `http://localhost:5000` | HTTP |

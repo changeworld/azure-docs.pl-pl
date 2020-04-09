@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 967d391d4ac9a9704688dce9636d9a71b2002549
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241423"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879364"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co to jest usługa Azure Virtual Network?
 
@@ -76,6 +76,15 @@ Platforma Azure domyślnie kieruje ruchem pomiędzy podsieciami, połączonymi s
 
 - **Tabele tras:** możesz utworzyć niestandardowe tabele tras z trasami kontrolującymi przekierowywanie ruchu do każdej podsieci. Dowiedz się więcej o [tabelach tras](virtual-networks-udr-overview.md#user-defined).
 - **Trasy protokołu BGP (Border Gateway Protocol):** jeśli łączysz sieć wirtualną z siecią lokalną przy użyciu bramy Azure VPN Gateway lub połączenia ExpressRoute, możesz propagować trasy lokalne BGP do sieci wirtualnych. Dowiedz się więcej o użyciu protokołu BGP z bramą [Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i usługą [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#dynamic-route-exchange).
+
+## <a name="virtual-network-integration-for-azure-services"></a>Integracja z siecią wirtualną dla usług platformy Azure
+
+Integracja usług platformy Azure z siecią wirtualną platformy Azure umożliwia prywatny dostęp do usługi z maszyn wirtualnych lub zasobów obliczeniowych w sieci wirtualnej.
+Usługi platformy Azure można zintegrować w sieci wirtualnej z następującymi opcjami:
+- Wdrażanie [dedykowanych wystąpień usługi](virtual-network-for-azure-services.md) w sieci wirtualnej. Usługi mogą być następnie dostępne prywatnie w sieci wirtualnej i z sieci lokalnych.
+- Korzystanie z [łącza prywatnego](../private-link/private-link-overview.md) w celu uzyskania prywatnego dostępu do określonego wystąpienia usługi z sieci wirtualnej i sieci lokalnych.
+- Można również uzyskać dostęp do usługi przy użyciu publicznych punktów końcowych, rozszerzając sieć wirtualną do usługi za pośrednictwem [punktów końcowych usługi](virtual-network-service-endpoints-overview.md). Punkty końcowe usługi umożliwiają zabezpieczenie zasobów usługi do sieci wirtualnej.
+ 
 
 ## <a name="azure-vnet-limits"></a>Limity sieci wirtualnej platformy Azure
 

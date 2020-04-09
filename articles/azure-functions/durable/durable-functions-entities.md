@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6ecf3bb5999296b2f5f8f5c25616fac8e0278cda
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4f45ac40e7df865bdb4722d086325096c377cd59
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80132519"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877546"
 ---
 # <a name="entity-functions"></a>Funkcje encji
 
@@ -55,7 +55,7 @@ Obecnie dwa różne interfejsy API do definiowania jednostek to:
 
 **Składnia oparta na klasach (tylko.NET)**, gdzie jednostki i operacje są reprezentowane przez klasy i metody. Ta składnia tworzy łatwiej czytelny kod i umożliwia wywoływanie operacji w sposób bezpieczny dla typu. Składnia oparta na klasach jest cienką warstwą na wierzchu składni opartej na funkcjach, więc oba warianty mogą być używane zamiennie w tej samej aplikacji.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>Przykład: Składnia oparta na funkcjach — C #
 
@@ -109,7 +109,7 @@ Stan tej encji jest obiektem typu `Counter`, który zawiera pole, które przecho
 
 Aby uzyskać więcej informacji na temat składni opartej na klasach i sposobu jej używania, zobacz [Definiowanie klas jednostek](durable-functions-dotnet-entities.md#defining-entity-classes).
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ### <a name="example-javascript-entity"></a>Przykład: Encja JavaScript
 
@@ -171,7 +171,7 @@ Poniższe przykłady ilustrują te różne sposoby uzyskiwania dostępu do jedno
 
 Aby uzyskać dostęp do jednostek ze zwykłej funkcji platformy Azure, która jest również nazywana funkcją klienta, należy użyć [powiązania klienta jednostki.](durable-functions-bindings.md#entity-client) W poniższym przykładzie przedstawiono funkcję wyzwalaną kolejką sygnalizującą jednostkę używającą tego powiązania.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 > [!NOTE]
 > Dla uproszczenia poniższe przykłady pokazują luźno wpisaną składnię uzyskiwania dostępu do jednostek. Ogólnie rzecz biorąc zaleca się [dostęp do jednostek za pośrednictwem interfejsów,](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) ponieważ zapewnia więcej sprawdzania typów.
@@ -189,7 +189,7 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -209,7 +209,7 @@ module.exports = async function (context) {
 
 Funkcje klienta mogą również badać stan jednostki, jak pokazano w poniższym przykładzie:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -223,7 +223,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -231,7 +231,7 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    const stateResponse = await context.df.readEntityState(entityId);
+    const stateResponse = await client.readEntityState(entityId);
     return stateResponse.entityState;
 };
 ```
@@ -244,7 +244,7 @@ Kwerendy o stan jednostki są wysyłane do magazynu śledzenia trwałe i zwracaj
 
 Funkcje aranżatora mogą uzyskiwać dostęp do jednostek przy użyciu interfejsów API w [powiązaniu wyzwalacza aranżacji.](durable-functions-bindings.md#orchestration-trigger) Poniższy przykładowy kod pokazuje funkcję koordynatora `Counter` wywołującą i sygnalizującą jednostkę.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -263,7 +263,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -291,7 +291,7 @@ Tylko aranżacji są w stanie wywołania jednostek i uzyskiwania odpowiedzi, kt�
 Funkcja jednostki może wysyłać sygnały do innych jednostek, a nawet do siebie, podczas wykonywania operacji.
 Na przykład możemy zmodyfikować `Counter` przykład poprzedniej jednostki, tak aby wysyłał sygnał "osiągnięty punkt kontrolny" do jakiejś jednostki monitora, gdy licznik osiągnie wartość 100.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -306,7 +306,7 @@ Na przykład możemy zmodyfikować `Counter` przykład poprzedniej jednostki, ta
         break;
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
     case "add":

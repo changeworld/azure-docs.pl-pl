@@ -3,19 +3,19 @@ title: Kontenery usługi mowy często zadawane pytania (CZĘSTO ZADAWANE PYTANIA
 titleSuffix: Azure Cognitive Services
 description: Instalowanie i uruchamianie kontenerów mowy. zamiana mowy na tekst transkrybuje strumienie audio do tekstu w czasie rzeczywistym, które mogą wykorzystywać lub wyświetlać aplikacje, narzędzia lub urządzenia. Zamiana tekstu na mowę konwertuje tekst wejściowy na mowę syntetyzowaną podobną do człowieka.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 2afb7c84c4d737703917d12a43aa7c3bb799836b
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 9b0fd89693517bdb63ba6f4265fddf2b0aa57ba5
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80537022"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874487"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Kontenery usługi mowy często zadawane pytania (CZĘSTO ZADAWANE PYTANIA)
 

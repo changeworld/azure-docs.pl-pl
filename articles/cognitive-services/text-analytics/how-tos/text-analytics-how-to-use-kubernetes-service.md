@@ -3,19 +3,19 @@ title: Uruchamianie usługi Azure Kubernetes — analiza tekstu
 titleSuffix: Azure Cognitive Services
 description: Wdrażanie obrazu kontenera analizy tekstu w usłudze Azure Kubernetes i testowanie go w przeglądarce sieci Web.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: dapine
-ms.openlocfilehash: 3264ec5a83277e6bb4befad46cd1337175e911c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 155f32ee76f69fe0f16e7698123381fdc12efd0e
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74383487"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877848"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Wdrażanie kontenera analizy tekstu w usłudze Azure Kubernetes
 

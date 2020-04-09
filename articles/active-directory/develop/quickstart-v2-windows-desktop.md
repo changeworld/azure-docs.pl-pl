@@ -1,5 +1,5 @@
 ---
-title: Szybka platforma tożsamości firmy Microsoft Dla komputerów Szybkiego startu dla systemu Windows | Dokumenty firmy Microsoft
+title: Szybki start platformy tożsamości firmy Microsoft dla systemu Windows
 description: Dowiedz się, jak aplikacja platformy .NET (XAML) dla pulpitu systemu Windows może uzyskać token dostępu i wywołać interfejs API chroniony przez punkt końcowy platformy tożsamości firmy Microsoft
 services: active-directory
 author: jmprieur
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f7b6a682498bfce55107ba139600b6c9ab688542
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: f202a6c06c2137501c2c6a1b47fbd086f80043a0
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473330"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883614"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Szybki start: uzyskiwanie tokenu i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji klasycznej w systemie Windows
 

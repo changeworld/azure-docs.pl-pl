@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 11201d6560319dd34ec829f1fb34bd13d45011d7
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: d2e7e157156a4049a5db37b1d5c0e02773adbcc3
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435821"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879551"
 ---
 # <a name="what-is-azure-security-center"></a>Co to jest Centrum zabezpieczeń Azure?
 
@@ -29,7 +29,7 @@ Utrzymywanie bezpieczeństwa zasobów to wspólna odpowiedzialność dostawcy us
 
 Azure Security Center rozwiązuje trzy najbardziej pilne problemy związane z zabezpieczeniami:
 
--   **Szybko zmieniające się obciążenia** — jest to mocna strona rozwiązań chmurowych, a jednocześnie wyzwanie. Z jednej strony przed użytkownikami końcowymi otwiera się więcej możliwości. Z drugiej jednak pojawia się problem — jak sprawić, by ciągle zmieniające się usługi, które tworzą i wykorzystują użytkownicy, spełniały standardy bezpieczeństwa i były zgodne z najlepszymi rozwiązaniami dotyczącymi bezpieczeństwa?
+-   **Szybko zmieniające się obciążenia —** to zarówno siła, jak i wyzwanie chmury. Z jednej strony przed użytkownikami końcowymi otwiera się więcej możliwości. Z drugiej jednak pojawia się problem — jak sprawić, by ciągle zmieniające się usługi, które tworzą i wykorzystują użytkownicy, spełniały standardy bezpieczeństwa i były zgodne z najlepszymi rozwiązaniami dotyczącymi bezpieczeństwa?
 
 -   **Coraz bardziej zaawansowane ataki** — wszędzie tam, gdzie pracujesz, ataki stają się coraz bardziej wyrafinowane. Trzeba zabezpieczyć pracę w chmurze publicznej, która jest połączona z Internetem, co sprawia, że jest jeszcze bardziej narażona na ataki w przypadku braku zastosowania najlepszych zabezpieczeń.
 
@@ -146,5 +146,7 @@ Rozbudowane kolekcje dzienników — dzienniki z systemów Windows i Linux są w
 ## <a name="next-steps"></a>Następne kroki
 
 - Do rozpoczęcia pracy z usługą Security Center jest wymagana subskrypcja platformy Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/).
-- Bezpłatna warstwa cenowa usługi Security Center jest włączona w ramach subskrypcji platformy Azure. Aby korzystać z zaawansowanych funkcji zarządzania zabezpieczeniami i ochrony przed zagrożeniami, należy uaktualnić do standardowej warstwy cenowej. Warstwa standardowa może być wypróbowana za darmo przez 30 dni. Aby uzyskać więcej informacji, zobacz [stronę cennika usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+
+- Bezpłatna warstwa cenowa usługi Security Center jest włączona we wszystkich bieżących subskrypcjach platformy Azure po raz pierwszy odwiedzić pulpit nawigacyjny Usługi Azure Security Center w witrynie Azure Portal lub jeśli jest włączona programowo za pośrednictwem interfejsu API. Aby korzystać z zaawansowanych funkcji zarządzania zabezpieczeniami i wykrywania zagrożeń, należy uaktualnić do standardowej warstwy cenowej. Warstwa standardowa może być wypróbowana za darmo przez 30 dni. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+
 - Jeśli chcesz teraz włączyć standard usługi Security Center, przewodnik [Szybki start: Dołączanie subskrypcji platformy Azure do standardu Usługi Security Center](security-center-get-started.md) przeprowadzi Cię przez te kroki.

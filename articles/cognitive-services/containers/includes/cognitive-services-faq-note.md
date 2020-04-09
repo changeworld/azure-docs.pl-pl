@@ -3,18 +3,18 @@ title: Uwaga dotycząca kontenerów usług Cognitive Services często zadawanych
 titleSuffix: Azure Cognitive Services
 description: Uwagi dotyczące często zadawanych pytań.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/24/2019
-ms.author: dapine
-ms.openlocfilehash: edaac31c54fd9cf97590b1e0843e2d56ea92daa6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 5d1c7f67ff8f21641a5e021a633f9dbf5b635ba7
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71316469"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875054"
 ---
 > [!TIP]
 > Aby uzyskać więcej informacji i wskazówek dotyczących rozwiązywania problemów, zobacz [Kontenery usług Cognitive Services często zadawane pytania (CZĘSTO ZADAWANE PYTANIA).](../container-faq.md)

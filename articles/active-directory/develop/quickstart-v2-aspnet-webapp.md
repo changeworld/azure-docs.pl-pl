@@ -4,7 +4,6 @@ description: Dowiedz się, jak zaimplementować logowanie firmy Microsoft w ASP.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
@@ -12,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: cf4967a05585cd6e1db83d469d30128cc253e6b4
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2946551233500a80c6fa7f02ad4c427f2d654b40
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473660"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883648"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Szybki start: dodawanie logowania na platformie tożsamości firmy Microsoft do ASP.NET aplikacji sieci Web
 W tym przewodniku Szybki start można użyć przykładu kodu, aby dowiedzieć się, jak ASP.NET aplikacji sieci web do logowania kont osobistych (hotmail.com, outlook.com, inne) oraz kont służbowych i szkolnych z dowolnego wystąpienia usługi Azure Active Directory (Azure AD).  (Zobacz [Jak działa przykład](#how-the-sample-works) dla ilustracji).

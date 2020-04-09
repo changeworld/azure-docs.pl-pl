@@ -3,19 +3,19 @@ title: Konfigurowanie kontenerów mowy
 titleSuffix: Azure Cognitive Services
 description: Usługa mowy udostępnia każdemu kontenerowi wspólną strukturę konfiguracji, dzięki czemu można łatwo skonfigurować i zarządzać pamięcią masową, rejestrowaniem i telemetrią oraz ustawieniami zabezpieczeń kontenerów.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.author: dapine
-ms.openlocfilehash: dd5a531e4a979cba9c2a766c7774762a0427ad02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 5c74aa48b18661236eb55278d1e5a05215b2432c
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037326"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877579"
 ---
 # <a name="configure-speech-service-containers"></a>Konfigurowanie kontenerów usługi mowy
 

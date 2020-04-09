@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: fb39f1ec83416ee8ab2a33b514971110db0c0b17
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 1f88df186526c2f9903337bb3331940be0989c3d
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668833"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892465"
 ---
 # <a name="what-is-batch-transcription"></a>Co to jest transkrypcja partii?
 
@@ -129,7 +129,7 @@ Użyj tych właściwości opcjonalnych, aby skonfigurować transkrypcję:
       `AddSentiment`
    :::column-end:::
    :::column span="2":::
-      Określa, czy analiza tonacji ma być stosowana do wypowiedź. Akceptowane wartości `true` mają włączyć `false` i (wartość domyślna) ją wyłączyć.
+      Określa, czy analiza tonacji ma być stosowana do wypowiedź. Akceptowane wartości `true` mają włączyć `false` i (wartość domyślna) ją wyłączyć. Aby uzyskać więcej [informacji,](#sentiment-analysis) zobacz Analiza tonacji.
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -218,12 +218,41 @@ W przypadku audio wejściowego mono tworzony jest jeden plik wyników transkrypc
 
 Wynik zawiera następujące formularze:
 
-| Formularz        | Zawartość                                                                                                                                                  |
-|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Lexical`   | Rzeczywiste słowa rozpoznane.                                                                                                                             |
-| `ITN`       | Znormalizowana forma rozpoznanego tekstu zwersycją zwerycjonowaną odwrotnością tekstu. Stosuje się skróty ("doktor smith" do "dr smith"), numery telefonów i inne przekształcenia. |
-| `MaskedITN` | Formularz ITN z zastosowanym maskowaniem wulgaryzmów.                                                                                                             |
-| `Display`   | Forma wyświetlania rozpoznanego tekstu. Dodano znaki interpunkcyjne i wielkie litery są uwzględniane.                                                             |
+:::row:::
+   :::column span="1":::
+      **Formularz**
+   :::column-end:::
+   :::column span="2":::
+      **Zawartość**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Lexical`
+   :::column-end:::
+   :::column span="2":::
+      Rzeczywiste słowa rozpoznane.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ITN`
+   :::column-end:::
+   :::column span="2":::
+      Znormalizowana forma rozpoznanego tekstu zwersycją zwerycjonowaną odwrotnością tekstu. Stosuje się skróty ("doktor smith" do "dr smith"), numery telefonów i inne przekształcenia.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `MaskedITN`
+   :::column-end:::
+   :::column span="2":::
+      Formularz ITN z zastosowanym maskowaniem wulgaryzmów.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Display`
+   :::column-end:::
+   :::column span="2":::
+      Forma wyświetlania rozpoznanego tekstu. Dodano znaki interpunkcyjne i wielkie litery są uwzględniane.
+:::row-end:::
 
 ## <a name="speaker-separation-diarization"></a>Separacja głośników (diarization)
 
@@ -260,6 +289,10 @@ Funkcja tonacji szacuje tonację wyrażoną w dźwięku. Sentyment jest wyrażan
 - Określ, co klienci lubią i czego nie lubią w produkcie lub usłudze
 
 Tonację jest oceniana na segment audio na podstawie postaci leksykalne. Cały tekst w tym segmencie audio jest używany do obliczania tonacji. Nie zagregowane nastroje są obliczane dla całej transkrypcji. Obecnie analiza nastrojów jest dostępna tylko dla języka angielskiego.
+
+> [!NOTE]
+> Zamiast tego zalecamy korzystanie z interfejsu API usługi Microsoft Text Analytics. Oferuje bardziej zaawansowane funkcje wykraczające poza analizę tonacji, takie jak wyodrębnianie fraz kluczowych, automatyczne wykrywanie języka i inne. Informacje i przykłady można znaleźć w [dokumentacji analizy tekstu](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
+>
 
 Przykład wyjściowy JSON wygląda poniżej:
 

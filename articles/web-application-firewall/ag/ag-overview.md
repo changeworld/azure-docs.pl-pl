@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 1a210ff7da57147762dcf13e1dda7fee26dbe5f0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8d43851a6a546bd23881c4d0a72185ca03e63092
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74384111"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983623"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Zapora aplikacji sieci Web platformy Azure w bramie aplikacji platformy Azure
 
@@ -32,7 +32,7 @@ Brama aplikacji działa jako kontroler dostarczania aplikacji (ADC). Oferuje zak
 
 Ulepszenia zabezpieczeń bramy aplikacji obejmują zarządzanie zasadami SSL i kompleksową obsługę SSL. Bezpieczeństwo aplikacji jest wzmacniane przez integrację WAF z bramą aplikacji. Połączenie chroni aplikacje internetowe przed typowymi lukami w zabezpieczeniach. Zapewnia łatwą do skonfigurowania centralną lokalizację do zarządzania.
 
-## <a name="benefits"></a>Korzyści
+## <a name="benefits"></a>Zalety
 
 W tej sekcji opisano podstawowe korzyści, które zapewnia w u portalu aplikacji w udziale sieci WAF.
 

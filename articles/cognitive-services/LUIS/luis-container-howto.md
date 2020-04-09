@@ -3,20 +3,20 @@ title: Kontenery platformy Docker — usługa LUIS
 titleSuffix: Azure Cognitive Services
 description: Kontener usługi LUIS ładuje uszkoloną lub opublikowaną aplikację do kontenera platformy docker i zapewnia dostęp do prognoz kwerend z punktów końcowych interfejsu API kontenera.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.author: dapine
-ms.openlocfilehash: 308a474970db54022e5351fdf349d9572fbafb0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: fec6b16eb7f80369904eefc407a9a9c8d6629c9a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219930"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879330"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Instalowanie i uruchamianie kontenerów platformy dokowanych usługi LUIS
  

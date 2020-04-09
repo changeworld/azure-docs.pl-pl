@@ -3,19 +3,19 @@ title: Wdrażanie wielu kontenerów za pomocą narzędzia Docker Compose
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak wdrożyć wiele kontenerów usług Cognitive Services. W tym artykule pokazano, jak zorganizować wiele obrazów kontenerów platformy Docker przy użyciu docker compose.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.author: dapine
-ms.openlocfilehash: bfbaa03469ee04ff900a215aadd8c814efcba761
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 458cda927a6a123fcd9962efc6ab705e13f43286
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037518"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878786"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Wdrażanie wielu kontenerów za pomocą narzędzia Docker Compose
 

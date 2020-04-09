@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 1d73f974e2452c225220bc6f610568a2cded9887
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 42b478b598fe3034f1a97fe41662a38bc265074d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473623"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875983"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Szybki start: dodawanie logowania za pomocą firmy Microsoft do aplikacji sieci Web Java
 
@@ -36,27 +36,27 @@ Aby uruchomić ten przykład, potrzebujesz:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1. Zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
 >
-> 1. Przejdź do [witryny Azure portal — rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
+> 1. Przejdź do [witryny Azure portal — środowisko](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs) szybkiego startu rejestracji aplikacji.
 > 1. Wprowadź nazwę aplikacji i wybierz pozycję **Zarejestruj**.
-> 1. Postępuj zgodnie z instrukcjami, aby pobrać i automatycznie skonfigurować nową aplikację.
+> 1. Postępuj zgodnie z instrukcjami w interfejsie szybkiego startu portalu, aby pobrać automatycznie skonfigurowany kod aplikacji.
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Opcja 2. Zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu
 >
 > #### <a name="step-1-register-your-application"></a>Krok 1. Rejestrowanie aplikacji
 >
-> Aby zarejestrować aplikację i ręcznie dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
+> Aby zarejestrować aplikację i ręcznie dodać informacje rejestracyjne aplikacji do aplikacji, wykonaj następujące czynności:
 >
 > 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta służbowego lub konta firmy Microsoft.
 > 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
 >
-> 1. Przejdź do platformy tożsamości firmy Microsoft dla deweloperów [Rejestracje aplikacji.](/azure/active-directory/develop/)
+> 1. Przejdź do platformy tożsamości firmy Microsoft dla deweloperów [Rejestracje aplikacji.](https://go.microsoft.com/fwlink/?linkid=2083908)
 > 1. Wybierz **pozycję Nowa rejestracja**.
 > 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 >    - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `java-webapp`.
->    - Pozostaw **przekierowanie identyfikatora URI** puste na razie i wybierz pozycję **Zarejestruj**.
+>    - Wybierz pozycję **Zarejestruj**.
 > 1. Na **stronie Przegląd** znajdź **identyfikator aplikacji (klienta)** i wartości **identyfikatora katalogu (dzierżawy)** aplikacji. Skopiuj te wartości na później.
 > 1. Wybierz **uwierzytelnianie** z menu, a następnie dodaj następujące informacje:
->    - W **przekieruj identyfikatory URI**, dodaj `https://localhost:8080/msal4jsample/secure/aad` i `https://localhost:8080/msal4jsample/graph/me`.
+>    - Dodaj konfigurację platformy **sieci Web.**  Dodaj `https://localhost:8080/msal4jsample/secure/aad` te `https://localhost:8080/msal4jsample/graph/me` i jako **Przekierowanie identyfikatorów URI**..
 >    - Wybierz **pozycję Zapisz**.
 > 1. Wybierz **certyfikaty & wpisy tajne** z menu i w sekcji **Wpisy tajne klienta,** kliknij **nowy klucz tajny klienta:**
 >
@@ -84,7 +84,7 @@ Aby uruchomić ten przykład, potrzebujesz:
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Pobierz projekt i wyodrębnij plik zip do folderu lokalnego bliżej folderu głównego - na przykład **C:\Azure-Samples**
-> 
+>
 > Aby użyć https z localhost, wprowadź właściwości server.ssl.key. Aby wygenerować certyfikat z podpisem własnym, użyj narzędzia keytool (zawartego w środowiskou JRE).
 >
 >  ```
@@ -97,7 +97,7 @@ Aby uruchomić ten przykład, potrzebujesz:
 >   server.ssl.key-alias=testCert
 >   ```
 >   Umieść wygenerowany plik magazynu kluczy w folderze "zasoby".
-   
+
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Pobierz przykładowy kod](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
@@ -157,8 +157,56 @@ Jeśli korzystasz z aplikacji sieci web z IDE, kliknij uruchom, a następnie prz
     - *Wyloguj :* wylogowuje bieżącego użytkownika z aplikacji i przekierowuje go na stronę główną.
     - *Pokaż informacje o użytkowniku:* Uzyskuje token dla programu Microsoft Graph i wywołuje program Microsoft Graph z żądaniem zawierającym token, który zwraca podstawowe informacje o zalogowanym użytkowniku.
 
+##### <a name="running-from-tomcat"></a>Bieganie z Tomcat
 
-   
+Jeśli chcesz wdrożyć przykład sieci web do tomcat, należy wprowadzić kilka zmian w kodzie źródłowym.
+
+1. Otwórz ms-identity-java-webapp/pom.xml
+    - W `<name>msal-web-sample</name>` obszarze Dodaj`<packaging>war</packaging>`
+    - Dodaj zależność:
+
+         ```xml
+         <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+          <scope>provided</scope>
+         </dependency>
+         ```
+
+2. Otwórz ms-identity-java-webapp/src/main/java/com.microsoft.azure.msalwebsample/MsalWebSampleApplication
+
+    - Usuń cały kod źródłowy i zastąp następującymi elementami:
+
+   ```Java
+    package com.microsoft.azure.msalwebsample;
+
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.boot.builder.SpringApplicationBuilder;
+    import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+    @SpringBootApplication
+    public class MsalWebSampleApplication extends SpringBootServletInitializer {
+
+     public static void main(String[] args) {
+      SpringApplication.run(MsalWebSampleApplication.class, args);
+     }
+
+     @Override
+     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+      return builder.sources(MsalWebSampleApplication.class);
+     }
+    }
+   ```
+
+3. Otwórz wiersz polecenia, przejdź do folderu głównego projektu i uruchom`mvn package`
+    - Spowoduje to `msal-web-sample-0.1.0.war` wygenerowanie pliku w katalogu /targets.
+    - Zmień nazwę tego pliku na`ROOT.war`
+    - Wdrożyć ten plik wojny przy użyciu Tomcat lub innego rozwiązania kontenera J2EE.
+        - Aby wdrożyć go w kontenerze Tomcat, skopiuj plik .war do folderu aplikacji webapps w ramach instalacji Tomcat, a następnie uruchom serwer Tomcat.
+
+Ta wojna zostanie automatycznie hostowana w . https://localhost:8080/
+
 > [!IMPORTANT]
 > Aplikacja w tym przewodniku Szybki start używa klucza tajnego klienta do identyfikowania się jako klienta poufnego. Ponieważ klucz tajny klienta jest dodawany jako zwykły tekst do plików projektu, ze względów bezpieczeństwa zaleca się użycie certyfikatu zamiast klucza tajnego klienta przed uznaniem aplikacji za aplikację produkcyjną. Aby uzyskać więcej informacji na temat używania certyfikatu, zobacz [Poświadczenia certyfikatu do uwierzytelniania aplikacji](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials).
 
@@ -173,6 +221,8 @@ MSAL for Java (MSAL4J) to biblioteka Java używana do logowania użytkowników i
 
 Dodaj MSAL4J do aplikacji za pomocą Maven lub Gradle do zarządzania zależnościami, wszedzając następujące zmiany w pliku pom.xml (Maven) lub build.gradle (Gradle).
 
+W pom.xml:
+
 ```XML
 <dependency>
     <groupId>com.microsoft.azure</groupId>
@@ -180,6 +230,8 @@ Dodaj MSAL4J do aplikacji za pomocą Maven lub Gradle do zarządzania zależnoś
     <version>1.0.0</version>
 </dependency>
 ```
+
+W build.gradle:
 
 ```$xslt
 compile group: 'com.microsoft.azure', name: 'msal4j', version: '1.0.0'
@@ -198,7 +250,7 @@ import com.microsoft.aad.msal4j.*;
 Dowiedz się więcej na temat uprawnień i wyrażania zgody:
 
 > [!div class="nextstepaction"]
-> [Uprawnienia i wyrażanie zgody](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
+> [Uprawnienia i zgoda](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
 
 Aby dowiedzieć się więcej na temat przepływu eru dla tego scenariusza, zobacz Przepływ kodu autoryzacji Oauth 2.0:
 

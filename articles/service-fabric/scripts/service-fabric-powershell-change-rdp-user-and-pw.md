@@ -1,5 +1,5 @@
 ---
-title: Aktualizowanie nazwy użytkownika i hasła protokołu RDP w programie Powershell
+title: Aktualizowanie nazwy użytkownika i hasła protokołu RDP w programie PowerShell
 description: Przykładowy skrypt programu Azure PowerShell — aktualizowanie nazwy użytkownika i hasła protokołu RDP dla wszystkich węzłów klastra usługi Service Fabric określonego typu węzła.
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 0cf9f8362d3fa683084aef840cf35cd9a843608a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b7f229162ed745408121d898f5af516d22a0c039
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614812"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984933"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Aktualizowanie nazwy użytkownika i hasła administratora maszyn wirtualnych w klastrze
 
@@ -42,6 +42,10 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | Pobiera właściwości typu węzła klastra (zestaw skalowania maszyn wirtualnych).   |
 | [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)| Dodaje rozszerzenie do zestawu skalowania maszyn wirtualnych.|
 | [Update-AzVmss](/powershell/module/az.compute/update-azvmss)|Aktualizuje stan zestawu skalowania maszyn wirtualnych do stanu obiektu lokalnego VMSS.|
+
+## <a name="duration"></a>Czas trwania
+
+Pojedynczy typ węzła z pięciu węzłów, na przykład ma czas trwania od 45 do 60 minut, aby zmienić nazwę użytkownika lub hasło. 
 
 ## <a name="next-steps"></a>Następne kroki
 

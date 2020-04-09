@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 084f32ec9c1574dfdaf29edc24a406444de9a91d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b1bf2c365229a418870250a78a733f9870fb5bb0
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679926"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892380"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Szybki start: konwertowanie modelu do renderowania
 
@@ -72,10 +72,10 @@ Wypełnij formularz w następujący sposób:
 * Utwórz nową grupę zasobów z łącza poniżej pola rozwijanego i nazwij tę **ARR_Tutorial**
 * W przypadku **nazwy konta magazynowania**wprowadź tutaj unikatową nazwę. **Ta nazwa musi być unikatowa globalnie**, w przeciwnym razie pojawi się monit informujący, że nazwa jest gotowa. W zakresie tego szybkiego startu, nazywamy go **arrtutorialstorage**. W związku z tym należy zastąpić go nazwą dla każdego wystąpienia w tym przewodniku Szybki start.
 * Wybierz **lokalizację** blisko ciebie. Najlepiej użyć tej samej lokalizacji, co do konfigurowania renderowania w innym przewodniku Szybki start.
-* **Wydajność** ustawiona na "Standardowa"
-* **Rodzaj konta** ustawiony na "StorageV2 (ogólnego przeznaczenia v2)"
-* **Replikacja ustawiona** na "Magazyn geograficzny dostępu do odczytu (RA-GRS)"
-* **Warstwa dostępu** ustawiona na "Gorąca"
+* **Wydajność ustawiona** na standardową
+* **Rodzaj konta** ustawiony na StorageV2 (ogólnego przeznaczenia v2)
+* **Replikacja ustawiona** na magazyn geograficzny dostępu do odczytu (RA-GRS)
+* **Warstwa dostępu** ustawiona na Gorąca
 
 Żadna z właściwości w innych kartach nie musi zostać zmieniona, więc możesz kontynuować **"Przejrzyj + utwórz",** a następnie wykonaj kroki, aby ukończyć konfigurację.
 
@@ -159,11 +159,14 @@ Po przekonwertowaniu modelu zostanie on zapisany z powrotem do kontenera magazyn
 
 Ustawienie konfiguracji **outputAssetFileName** określa nazwę przekonwertowanego zasobu - parametr jest opcjonalny, a wyjściowa nazwa pliku zostanie wydedukowana z nazwy pliku wejściowego w inny sposób. 
 
-Otwórz program PowerShell, upewnij się, że zainstalowano *program Azure PowerShell,* jak wspomniano w [wymaganiach wstępnych.](#prerequisites) Następnie zaloguj się do subskrypcji:
+Otwórz program PowerShell, upewnij się, że zainstalowano *program Azure PowerShell,* jak wspomniano w [wymaganiach wstępnych.](#prerequisites) Następnie zaloguj się do subskrypcji za pomocą następującego polecenia i postępuj zgodnie ze wskazówkami wyświetlanymi na ekranie:
 
 ```PowerShell
-Connect-AzAccount -Subscription "<your Azure subscription id>"
+Connect-AzAccount
 ```
+
+> [!NOTE]
+> W przypadku, gdy organizacja ma więcej niż jedną subskrypcję, może być konieczne określenie argumentów Identyfikator subskrypcji i Dzierżawa. Szczegółowe informacje można znaleźć w [dokumentacji Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
 
 Zmień katalog `azure-remote-rendering\Scripts` i uruchom skrypt konwersji:
 

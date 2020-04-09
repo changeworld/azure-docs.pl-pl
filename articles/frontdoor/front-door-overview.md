@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: 0ee35f4f0b4bd8c46a0445e2905ae3b50d11f721
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b2ee41324cfaefa4d5aec3aa02b2d0d8c75da78f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471656"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879126"
 ---
 # <a name="what-is-azure-front-door"></a>Co to jest Azure Front Door?
 Usługa Azure Front Door umożliwia definiowanie, zarządzanie i monitorowanie routingu globalnego dla ruchu internetowego przez optymalizację pod kątem najlepszej wydajności i natychmiastowej globalnej pracy awaryjnej w celu zapewnienia wysokiej dostępności. Dzięki drzwiom frontowym możesz przekształcić globalne (wieloregionowe) aplikacje konsumenckie i korporacyjne w niezawodne, wydajne, spersonalizowane nowoczesne aplikacje, interfejsy API i zawartość, które docierają do odbiorców na całym świecie za pomocą platformy Azure.
@@ -51,12 +51,12 @@ Podobnie można mieć dwie różne domeny `www.contoso.com` i `www.fabrikam.com`
 ## <a name="session-affinity"></a>Koligacja sesji
 Funkcja koligacji sesji na podstawie plików cookie jest przydatna, gdy chcesz zachować sesję użytkownika w tym samym zapleczu aplikacji. Dzięki plikom cookie zarządzanym przez usługę Front Door dalszy ruch z sesji użytkownika jest kierowany do tego samego zaplecza aplikacji na potrzeby przetwarzania. Ta funkcja jest ważna w przypadkach, w których stan sesji jest zapisywany lokalnie w zapleczu dla sesji użytkownika.
 
-## <a name="secure-sockets-layer-ssl-termination"></a>Kończenie żądań protokołu Secure Sockets Layer (SSL)
-Usługa Front Door obsługuje kończenie żądań SSL na brzegu sieci. Oznacza to, że poszczególni użytkownicy mogą skonfigurować połączenie SSL przy użyciu środowisk usługi Front Door, zamiast ustanawiać je za pośrednictwem połączeń o dalekim zasięgu w zapleczu aplikacji. Ponadto usługa Front Door obsługuje łączność za pośrednictwem protokołów HTTP i HTTPS między środowiskami usługi Front Door i zapleczami. Dlatego można również skonfigurować kompleksowe szyfrowanie za pośrednictwem protokołu SSL. Jeśli na przykład usługa Front Door dla obciążenia aplikacji otrzymuje ponad 5000 żądań w ciągu minuty, ze względu na ponowne użycie połączenia bez wyłączania zasilania, w przypadku aktywnych usług zostanie ustanowionych tylko około 500 połączeń z zapleczem aplikacji, co znacznie zmniejszy obciążenie z zapleczy.
+## <a name="tls-termination"></a>Zakończenie protokołu TLS
+Drzwi frontowe obsługuje zakończenie TLS na krawędzi, czyli poszczególni użytkownicy mogą skonfigurować połączenie TLS ze środowiskami drzwi przednich zamiast ustanawiać je za pomocą połączeń długodystansowych z zapleczem aplikacji. Ponadto usługa Front Door obsługuje łączność za pośrednictwem protokołów HTTP i HTTPS między środowiskami usługi Front Door i zapleczami. Można więc również skonfigurować szyfrowanie TLS end-to-end. Jeśli na przykład usługa Front Door dla obciążenia aplikacji otrzymuje ponad 5000 żądań w ciągu minuty, ze względu na ponowne użycie połączenia bez wyłączania zasilania, w przypadku aktywnych usług zostanie ustanowionych tylko około 500 połączeń z zapleczem aplikacji, co znacznie zmniejszy obciążenie z zapleczy.
 
 ## <a name="custom-domains-and-certificate-management"></a>Zarządzanie domenami niestandardowymi i certyfikatami
 W przypadku dostarczania zawartości przy użyciu usługi Front Door domena niestandardowa jest niezbędna, jeśli chcesz, aby nazwa Twojej domeny była widoczna w adresie URL usługi Front Door. Widoczna nazwa domeny może być wygodna dla klientów i przydatna dla celów związanych ze znakowaniem.
-Usługa Front Door obsługuje również protokół HTTPS w przypadku nazw domen niestandardowych. Użyj tej funkcji, wybierając certyfikaty zarządzane przez usługę Front Door dla ruchu lub przekazując własny niestandardowy certyfikat protokołu SSL.
+Usługa Front Door obsługuje również protokół HTTPS w przypadku nazw domen niestandardowych. Użyj tej funkcji, wybierając certyfikaty zarządzane drzwiami frontowymi dla ruchu lub przekazując własny niestandardowy certyfikat TLS/SSL.
 
 ## <a name="application-layer-security"></a>Zabezpieczenia warstwy aplikacji
 Usługa Azure Front Door umożliwia tworzenie niestandardowych reguł zapory aplikacji sieci Web (WAF) dla kontroli dostępu w celu ochrony obciążenia HTTP/HTTPS przed wykorzystywaniem na podstawie adresów IP klienta, kodu kraju i parametrów http. Ponadto usługa Front Door umożliwia również tworzenie reguł ograniczania szybkości, które pomagają zapobiegać ruchowi złośliwych botów. Aby uzyskać więcej informacji na temat Zapory aplikacji sieci Web, zobacz [Co to jest Zapora aplikacji sieci Web azure?](../web-application-firewall/overview.md)

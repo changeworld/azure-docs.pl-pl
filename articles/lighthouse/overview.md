@@ -3,12 +3,12 @@ title: Co to jest Azure Lighthouse?
 description: Usługa Azure Lighthouse umożliwia dostawcom usług świadczenie usług zarządzanych dla swoich klientów dzięki wyższej automatyzacji i wydajności na dużą skalę.
 ms.date: 11/11/2019
 ms.topic: overview
-ms.openlocfilehash: 0bec1f5b727ca3ecd604d2654358ca9a5507abe4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1d4d33238f30c2a579c6a0da6a39238207db4f4a
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75646198"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982790"
 ---
 # <a name="what-is-azure-lighthouse"></a>Co to jest Azure Lighthouse?
 
@@ -16,7 +16,7 @@ Usługa Azure Lighthouse oferuje dostawcom usług pojedynczą płaszczyznę ster
 
 ![Diagram przeglądowy latarni morskiej platformy Azure](media/azure-lighthouse-overview.jpg)
 
-## <a name="benefits"></a>Korzyści
+## <a name="benefits"></a>Zalety
 
 Latarnia morska platformy Azure pomaga w opłacalnym i wydajnym tworzeniu i dostarczaniu usług zarządzanych dla klientów. Korzyści:
 
@@ -32,7 +32,7 @@ Latarnia morska platformy Azure oferuje wiele sposobów, aby usprawnić zaangaż
 
 - **Zarządzanie zasobami delegowanymi platformy Azure:** bezpieczne zarządzanie zasobami platformy Azure klientów z poziomu własnej dzierżawy bez konieczności przełączania płaszczyzn kontekstu i sterowania nimi. Aby uzyskać więcej informacji, zobacz [Zarządzanie zasobami delegowanymi platformy Azure](concepts/azure-delegated-resource-management.md).
 - **Nowe środowiska portalu Azure:** wyświetlanie informacji między dzierżawcami na nowej stronie **Moi klienci** w [witrynie Azure portal](https://portal.azure.com). Odpowiedni **blok dostawców usług** umożliwia klientom wyświetlanie dostępu do usługodawcy i zarządzanie nim. Aby uzyskać więcej informacji, zobacz [Wyświetlanie i zarządzanie klientami](./how-to/view-manage-customers.md) oraz [Wyświetlanie dostawców usług i zarządzanie nimi](how-to/view-manage-service-providers.md).
-- **Szablony usługi Azure Resource Manager:** łatwiejsze wykonywanie zadań związanych z zarządzaniem, w tym dołączanie klientów do zarządzania zasobami delegowanymi platformy Azure. Aby uzyskać więcej informacji, zobacz nasze [przykładowe repozytorium](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates) i [wbudowane klienta do zarządzania zasobami delegowanymi platformy Azure.](how-to/onboard-customer.md)
+- **Szablony usługi Azure Resource Manager:** łatwiejsze wykonywanie zadań związanych z zarządzaniem, w tym dołączanie klientów do zarządzania zasobami delegowanymi platformy Azure. Aby uzyskać więcej informacji, zobacz nasze [przykładowe repozytorium](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates) i [wbudowane klienta do zarządzania zasobami delegowanymi platformy Azure.](how-to/onboard-customer.md)
 - **Oferty usług zarządzanych w portalu Azure Marketplace:** Zaoferuj swoje usługi klientom za pośrednictwem ofert prywatnych lub publicznych i automatycznie dołączaj je do zarządzania zasobami delegowanymi platformy Azure, jako alternatywę dla dołączania przy użyciu szablonów usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Oferty usług zarządzanych w portalu Azure Marketplace](concepts/managed-services-offers.md).
 - **Aplikacje zarządzane na platformie Azure:** aplikacje pakietowe i wysyłkowe, które są łatwe do wdrożenia i użycia w ich własnych subskrypcjach. Aplikacja jest wdrażana w grupie zasobów, do której uzyskujesz dostęp od dzierżawy, co pozwala zarządzać usługą w ramach ogólnego środowiska latarni morskiej platformy Azure. Aby uzyskać więcej informacji, zobacz [omówienie zarządzanych aplikacji platformy Azure](../azure-resource-manager/managed-applications/overview.md).
 
