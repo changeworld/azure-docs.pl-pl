@@ -71,7 +71,11 @@
           href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
         - name: Komunikacja równorzędna
           href: virtual-network-peering-overview.md
-        - name: Sieć wirtualna dla usług platformy Azure
+    - name: Integracja z usługami platformy Azure
+      items:
+        - name: Punkty końcowe usługi
+          href: virtual-network-service-endpoints-overview.md
+        - name: Wdrażanie dedykowanej usługi
           href: virtual-network-for-azure-services.md
     - name: Usługi protokołu IP
       items:
@@ -91,8 +95,6 @@
           href: application-security-groups.md
         - name: Tagi usługi
           href: service-tags-overview.md
-        - name: Punkty końcowe usługi
-          href: virtual-network-service-endpoints-overview.md
         - name: Zasady punktów końcowych usługi
           href: virtual-network-service-endpoint-policies-overview.md
         - name: Zasady sieciowe platformy Kubernetes

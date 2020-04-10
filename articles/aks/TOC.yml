@@ -140,10 +140,14 @@
           href: cluster-autoscaler.md
         - name: Korzystanie ze stref dostępności
           href: availability-zones.md
-        - name: Używanie wielu pul węzłów
-          href: use-multiple-node-pools.md
-        - name: Używanie pul węzłów typu spot (wersja zapoznawcza)
-          href: spot-node-pool.md
+        - name: Korzystanie z pul węzłów
+          items:
+            - name: Używanie wielu pul węzłów
+              href: use-multiple-node-pools.md
+            - name: Używanie pul węzłów typu spot (wersja zapoznawcza)
+              href: spot-node-pool.md
+            - name: Korzystanie z pul węzłów systemu
+              href: use-system-pools.md
         - name: Wdrażanie usługi AKS przy użyciu programu Terraform
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true

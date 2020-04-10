@@ -21,7 +21,7 @@
     - name: 'Dzierżawy, role i użytkownicy'
       displayName: 'Azure AD, Azure Active Directory'
       href: ./concepts/tenants-users-roles.md
-    - name: Oferty usług zarządzanych w witrynie Azure Marketplace
+    - name: Oferty usługi zarządzanej w witrynie Azure Marketplace
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
     - name: Zalecane najlepsze rozwiązania dotyczące zabezpieczeń
@@ -38,7 +38,7 @@
     - name: Dołączanie klienta do zarządzania zasobami delegowanymi na platformie Azure
       displayName: resource management
       href: ./how-to/onboard-customer.md
-    - name: Publikowanie ofert usług zarządzanych w witrynie Azure Marketplace
+    - name: Publikowanie ofert usługi zarządzanej w witrynie Azure Marketplace
       displayName: 'managed services offer, azure marketplace, publish, marketplace'
       href: ./how-to/publish-managed-services-offers.md
     - name: Wyświetlanie klientów i zarządzanie nimi

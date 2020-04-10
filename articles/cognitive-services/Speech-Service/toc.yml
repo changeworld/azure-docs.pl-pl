@@ -113,6 +113,8 @@
       items:
         - name: Co to jest zamiana tekstu na mowę?
           href: text-to-speech.md
+        - name: Podstawy zamiany tekstu na mowę
+          href: text-to-speech-basics.md
     - name: Szybki start
       items:
         - name: Syntetyzowanie mowy przy użyciu głośnika
@@ -545,6 +547,8 @@
       href: sovereign-clouds.md
     - name: Ceny i limity
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
     - name: Zgodność
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Szyfrowanie

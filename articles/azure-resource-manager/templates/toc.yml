@@ -85,7 +85,7 @@
           href: deployment-tutorial-pipeline.md
     - name: Szablony zaawansowane
       items:
-        - name: Dokumentacja dotycząca korzystania z szablonów
+        - name: Używanie dokumentacji szablonu
           href: template-tutorial-use-template-reference.md
         - name: Tworzenie wielu wystąpień
           displayName: 'iteration,copy'
@@ -291,6 +291,8 @@
           href: template-functions-array.md
         - name: Funkcje porównania
           href: template-functions-comparison.md
+        - name: Funkcje daty
+          href: template-functions-date.md
         - name: Funkcje wdrażania
           href: template-functions-deployment.md
         - name: Funkcje logiczne

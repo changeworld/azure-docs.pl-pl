@@ -213,6 +213,8 @@
     - name: Rozwiązywanie problemów
       items:
         - name: Przewodnik rozwiązywania problemów
+          href: service-bus-troubleshooting-guide.md
+        - name: Wyjątki obsługi komunikatów
           href: service-bus-messaging-exceptions.md
         - name: Wyjątki usługi Resource Manager
           href: service-bus-resource-manager-exceptions.md

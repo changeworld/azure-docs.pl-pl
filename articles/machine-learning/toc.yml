@@ -15,24 +15,27 @@
 - name: Samouczki
   expanded: true
   items:
-    - name: Studio i Projektant
+    - name: Studio
       items:
         - name: Projektant (przeciągnij i upuść)
           items:
-            - name: 'Projektant: 1. Trenowanie modelu regresji'
+            - name: 1. Trenowanie modelu regresji
               displayName: studio
               href: tutorial-designer-automobile-price-train-score.md
-            - name: 'Projektant: 2. Wdrażanie tego modelu'
+            - name: 2. Wdrażanie tego modelu
               displayName: studio
               href: tutorial-designer-automobile-price-deploy.md
         - name: Zautomatyzowane uczenie maszynowe (interfejs użytkownika)
           items:
-            - name: Tworzenie zautomatyzowanego eksperymentu uczenia maszynowego
+            - name: Tworzenie zautomatyzowanych eksperymentów uczenia maszynowego
               displayName: 'automl, automated, auto ml, portal, ui'
               href: tutorial-first-experiment-automated-ml.md
-            - name: Prognozowanie popytu przy użyciu zautomatyzowanego uczenia maszynowego (dane dotyczące wypożyczania rowerów)
+            - name: Prognozowanie popytu (dane dotyczące wypożyczania rowerów)
               displayName: 'automl, automated, auto ml, portal, ui'
               href: tutorial-automated-ml-forecast.md
+        - name: Dane etykiety obrazu
+          displayName: 'tag, tagging, images'
+          href: tutorial-labeling.md
     - name: Zestaw SDK dla języka Python
       items:
         - name: Tworzenie pierwszego eksperymentu uczenia maszynowego
@@ -78,14 +81,14 @@
     - name: Notesy programu Jupyter
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: Zestawy danych licencji Azure Open
-      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
     - name: Zestawy danych projektanta
       href: sample-designer-datasets.md
+    - name: Przykładowe potoki projektanta
+      href: samples-designer.md
     - name: Kompleksowe przykłady metodyki MLOps
       href: 'https://github.com/microsoft/MLOps'
-    - name: Potoki projektanta
-      href: samples-designer.md
+    - name: Open Datasets (wersja publiczna)
+      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Pojęcia
   items:
     - name: Workspace
@@ -118,7 +121,7 @@
     - name: Zautomatyzowane uczenie maszynowe
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
-    - name: Zarządzanie pułapkami związanymi z uczeniem maszynowym
+    - name: Nadmierne dopasowanie i niezrównoważone dane
       displayName: 'automl, auto ml, risks'
       href: concept-manage-ml-pitfalls.md
     - name: Wystąpienie obliczeniowe
@@ -351,6 +354,8 @@
       items:
         - name: Tworzenie potoków uczenia maszynowego (Python)
           href: how-to-create-your-first-pipeline.md
+        - name: Przenoszenie danych do kroków potoku uczenia maszynowego i między nimi (Python)
+          href: how-to-move-data-in-out-of-pipelines.md
         - name: Planowanie potoku (Python)
           href: how-to-schedule-pipelines.md
         - name: Wyzwalanie potoku

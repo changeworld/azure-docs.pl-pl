@@ -4,7 +4,7 @@
       href: oracle-overview.md
     - name: Rozwiązania na maszynach wirtualnych platformy Azure
       href: oracle-vm-solutions.md
-    - name: Rozwiązania z infrastrukturą OCI — wersja zapoznawcza
+    - name: Rozwiązania z infrastrukturą OCI
       href: oracle-oci-overview.md
 - name: Przewodniki Szybki start
   items:
@@ -32,7 +32,7 @@
       href: oracle-disaster-recovery.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Połączenie wzajemne platformy Azure i rozwiązania OCI — wersja zapoznawcza
+    - name: Połączenie wzajemne platformy Azure i rozwiązania OCI
       href: configure-azure-oci-networking.md
 - name: Zasoby
   items:

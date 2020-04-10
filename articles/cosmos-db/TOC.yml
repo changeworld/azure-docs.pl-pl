@@ -480,6 +480,8 @@
       items:
         - name: Omówienie zestawienia zmian
           href: change-feed.md
+        - name: Wzorce projektowe źródła zmian
+          href: change-feed-design-patterns.md
         - name: Odczytywanie zestawienia zmian
           href: read-change-feed.md
         - name: Procesor zestawienia zmian
@@ -1033,6 +1035,8 @@
       items:
         - name: Monitorowanie usługi Cosmos DB
           href: monitor-cosmos-db.md
+        - name: Monitorowanie opóźnienia po stronie serwera
+          href: monitor-server-side-latency.md
         - name: Monitorowanie za pomocą dzienników diagnostycznych
           href: cosmosdb-monitor-resource-logs.md
         - name: Inspekcja dzienników płaszczyzny sterowania
@@ -1155,7 +1159,7 @@
     - name: Ściągawka dotycząca zapytań
       href: query-cheat-sheet.md
     - name: SQL — informacje i testowanie
-      href: 'https://aka.ms/cosmos-db-playground'
+      href: 'https://www.documentdb.com/sql/demo'
     - name: Często zadawane pytania
       href: faq.md
     - name: Oficjalne dokumenty

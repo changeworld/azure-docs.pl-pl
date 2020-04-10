@@ -48,8 +48,10 @@
 - name: Przewodniki z instrukcjami
   expanded: true
   items:
-    - name: Reports
+    - name: Raporty
       items:
+        - name: Zarządzanie kontami nieaktywnych użytkowników w usłudze Azure AD
+          href: howto-manage-inactive-user-accounts.md
         - name: Znajdowanie raportów aktywności
           href: howto-find-activity-reports.md
         - name: Rozwiązywanie problemów z błędami logowania dla użytkownika
