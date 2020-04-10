@@ -12,12 +12,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5c8bd5accefceee042601c3cf7d71f5e9131e04e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 309e1278959a917f0cef2f419aec1f4f3afcef60
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80880826"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991028"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Samouczek: Zaloguj użytkowników i wywołać Microsoft Graph z aplikacji dla systemu Android 
 
@@ -583,8 +583,3 @@ Gdy nie jest już potrzebne, usuń obiekt aplikacji, który został utworzony w 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 
 Jeśli masz problemy z tym samouczkiem lub platformą tożsamości firmy Microsoft, odwiedź [stronę Pomocy i pomocy technicznej.](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options)
-
-Pomóż nam ulepszyć platformę tożsamości firmy Microsoft. Powiedz nam, co myślisz, wypełniając krótką ankietę z dwoma pytaniami.
-
-> [!div class="nextstepaction"]
-> [Ankieta na temat platformy tożsamości firmy Microsoft](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Znajdź odpowiedzi na niektóre z często zadawanych pytań dotyczących usługi Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Usługa Azure Kubernetes, kontenery, Helm, siatka usług, routing siatki usług, kubectl, k8s '
-ms.openlocfilehash: e7b4620faa01aa9f6d46c34bafb1c623c338beb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3ac6ec3c3ddbe8ff508befba2eb4a8423e66f07
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240500"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998729"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Często zadawane pytania dotyczące usługi Azure Dev Spaces
 
@@ -81,6 +81,14 @@ Podczas korzystania z programu Visual Studio do przygotowania projektu, masz mo�
 
 Obecnie usługa Azure Dev Spaces nie obsługuje [używania tożsamości zarządzanych zasobników][aks-pod-managed-id] w klastrach AKS z włączoną usługą Azure Dev Spaces. Jeśli masz zainstalowane tożsamości zarządzane i chcesz je odinstalować, możesz znaleźć więcej szczegółów w [notatkach dezinstalacji][aks-pod-managed-id-uninstall].
 
+## <a name="can-i-use-azure-dev-spaces-with-multiple-microservices-in-an-application"></a>Czy mogę używać usługi Azure Dev Spaces z wieloma mikrousługami w aplikacji?
+
+Tak, można użyć usługi Azure Dev Spaces w aplikacji z wieloma mikrousługami, ale należy przygotować i uruchomić poszczególne mikrousługi w ich katalogu głównym. Interfejs wiersza polecenia cli usługi Azure Dev Spaces, rozszerzenie usługi Azure Dev Spaces VS Code i obciążenie programu Visual Studio Azure Development oczekują, że plik *azds.yaml* będzie w katalogu głównym mikrousługi w celu uruchomienia i debugowania. Zobacz [przykładową aplikację udostępniania roweru,][bike-sharing] na przykład wielu mikrousług w jednej aplikacji.
+
+W programie Visual Studio Code można [otworzyć oddzielne projekty w jednym obszarze roboczym][vs-code-multi-root-workspaces] i debugować je oddzielnie za pośrednictwem usługi Azure Dev Spaces. Każdy z projektów musi być samodzielny i przygotowany dla usługi Azure Dev Spaces.
+
+W programie Visual Studio można skonfigurować rozwiązania .NET Core do debugowania za pośrednictwem usługi Azure Dev Spaces.
+
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
@@ -89,6 +97,7 @@ Obecnie usługa Azure Dev Spaces nie obsługuje [używania tożsamości zarządz
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
+[bike-sharing]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
 [dev-spaces-prep]: how-dev-spaces-works-prep.md
 [dev-spaces-routing]: how-dev-spaces-works-routing.md#how-routing-works
 [ingress-nginx]: how-to/ingress-https-nginx.md#configure-a-custom-nginx-ingress-controller
@@ -97,4 +106,5 @@ Obecnie usługa Azure Dev Spaces nie obsługuje [używania tożsamości zarządz
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https
 [quickstart-cli]: quickstart-cli.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
+[vs-code-multi-root-workspaces]: https://code.visualstudio.com/docs/editor/multi-root-workspaces
 [windows-containers]: how-to/run-dev-spaces-windows-containers.md

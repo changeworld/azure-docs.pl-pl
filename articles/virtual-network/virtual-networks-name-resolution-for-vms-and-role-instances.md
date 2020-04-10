@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
-ms.openlocfilehash: 20a5c4befaa30383c54ac9536a3fd26dce3db4d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: d7d0699718642a7eb9f85b2e8a86623092c34365
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80059983"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010566"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure
 
@@ -185,8 +186,7 @@ Jeśli przekazywanie zapytań na platformę Azure nie odpowiada Twoim potrzebom,
 * Być zabezpieczone przed dostępem z Internetu, aby złagodzić zagrożenia stwarzane przez agentów zewnętrznych.
 
 > [!NOTE]
-> Aby uzyskać najlepszą wydajność, gdy używasz maszyn wirtualnych platformy Azure jako serwerów DNS, protokół IPv6 powinien zostać wyłączony. Publiczny [adres IP](virtual-network-public-ip-address.md) powinien być przypisany do każdej maszyny Wirtualnej serwera DNS. 
-> 
+> Aby uzyskać najlepszą wydajność, gdy używasz maszyn wirtualnych platformy Azure jako serwerów DNS, protokół IPv6 powinien zostać wyłączony.
 
 ### <a name="web-apps"></a>Aplikacje internetowe
 Załóżmy, że należy wykonać rozpoznawanie nazw z aplikacji sieci web utworzonej przy użyciu usługi App Service, połączonej z siecią wirtualną, do maszyn wirtualnych w tej samej sieci wirtualnej. Oprócz konfigurowania niestandardowego serwera DNS, który ma usługę przesyłania dalej DNS, która przekazuje zapytania do platformy Azure (wirtualny adres IP 168.63.129.16), wykonaj następujące kroki:

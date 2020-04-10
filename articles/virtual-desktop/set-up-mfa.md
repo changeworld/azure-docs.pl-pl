@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0b3c47e1bbe5efdc5ee303305e52a785a49d0c00
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b470f9278bdca94d1fe98c64b11b070fb36cb075
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586875"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998476"
 ---
-# <a name="set-up-azure-multi-factor-authentication"></a>Konfigurowanie uwierzytelniania wieloskładnikowego platformy Azure
+# <a name="set-up-azure-multi-factor-authentication"></a>Konfiguracja usługi Azure Multi-Factor Authentication
 
 Klient systemu Windows dla pulpitu wirtualnego systemu Windows jest doskonałą opcją integracji pulpitu wirtualnego systemu Windows z komputerem lokalnym. Jednak podczas konfigurowania konta pulpitu wirtualnego systemu Windows do klienta systemu Windows istnieją pewne środki, które należy podjąć, aby zapewnić bezpieczeństwo sobie i użytkownikom.
 
@@ -32,7 +32,7 @@ Oto, czego potrzebujesz, aby rozpocząć:
   - Usługa Azure Active Directory Premium P1 lub P2
   - Mobilność w przedsiębiorstwie + bezpieczeństwo E3 lub E5
 - Grupa usługi Azure Active Directory z użytkownikami przypisanymi jako członkowie grupy.
-- Włącz usługę Azure MFA dla wszystkich użytkowników. Aby uzyskać więcej informacji na temat tego, jak to zrobić, zobacz [Jak wymagać weryfikacji dwuetapowej dla użytkownika](/active-directory/authentication/howto-mfa-userstates).
+- Włącz usługę Azure MFA dla wszystkich użytkowników. Aby uzyskać więcej informacji na temat tego, jak to zrobić, zobacz [Jak wymagać weryfikacji dwuetapowej dla użytkownika](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user).
 
 >[!NOTE]
 >Następujące ustawienie dotyczy również [klienta sieci Web pulpitu wirtualnego systemu Windows](https://rdweb.wvd.microsoft.com/webclient/index.html).

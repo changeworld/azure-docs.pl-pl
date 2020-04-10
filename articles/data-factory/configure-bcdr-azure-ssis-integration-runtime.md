@@ -11,13 +11,13 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/14/2018
-ms.openlocfilehash: 92f7d25a9c19409b220b6a71fba87da91e51a415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.openlocfilehash: 532258cecd823e10057ddc3536cd24071e444581
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74928497"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992066"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Konfigurowanie środowiska wykonawczego integracji platformy Azure-SSIS za pomocą replikacji geograficznej usługi Azure SQL Database i pracy awaryjnej
 
@@ -112,9 +112,11 @@ Gdy awaria usługi ADF lub Azure-SSIS IR występuje w bieżącym regionie, możn
 
 ### <a name="steps"></a>Kroki
 
-Wykonaj następujące kroki, aby zatrzymać usługę Azure-SSIS IR, przełączyć podczerwenie do nowego regionu i uruchomić go ponownie.
+Wykonaj następujące kroki, aby przenieść usługę Azure-SSIS IR do nowego regionu.
+> [!NOTE]
+> Krok 3 (tworzenie IR) musi być wykonane za pośrednictwem programu PowerShell. Usługa Azure portal zgłosi błąd informujący, że SSISDB już istnieje.
 
-1. Wykonaj procedurę składowaną, aby SSISDB został dołączony do ** \<new_data_factory_name\> ** lub ** \<new_integration_runtime_name\>**.
+1. Wykonaj procedurę składowaną, aby zaktualizować metadane w SSISDB, aby akceptować połączenia z ** \<new_data_factory_name\> ** i ** \<new_integration_runtime_name\>**.
    
   ```SQL
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0d55bafc513ef7553952ee2096ea32db65d6205d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 555da74da65f3b1897a276cf819a263334cfa053
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673771"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999059"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Samouczek: Tworzenie reguły i konfigurowanie powiadomień w aplikacji Azure IoT Central
 
@@ -34,11 +34,11 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem należy ukończyć [tworzenie aplikacji Azure IoT Central](./quick-deploy-iot-central.md) i dodać symulowane urządzenie do szybkiego startu aplikacji [IoT Central,](./quick-create-pnp-device.md) aby utworzyć szablon urządzenia **MXChip IoT DevKit** do pracy.
+Przed rozpoczęciem należy ukończyć [tworzenie aplikacji Azure IoT Central](./quick-deploy-iot-central.md) i dodać symulowane urządzenie do szybkiego startu aplikacji [IoT Central,](./quick-create-simulated-device.md) aby utworzyć szablon urządzenia **MXChip IoT DevKit** do pracy.
 
 ## <a name="create-a-rule"></a>Tworzenie reguły
 
-Aby utworzyć regułę telemetrii, szablon urządzenia musi zawierać co najmniej jedną wartość telemetryczną. W tym samouczku użyto symulowanego urządzenia **MXChip IoT DevKit,** które wysyła dane telemetryczne temperatury i wilgotności. Dodano ten szablon urządzenia i utworzono symulowane urządzenie w przewodniku Szybki start [aplikacji Dodaj symulowane do aplikacji IoT Central.](./quick-create-pnp-device.md) Reguła monitoruje temperaturę zgłaszaną przez urządzenie i wysyła wiadomość e-mail, gdy przekracza ona 70 stopni.
+Aby utworzyć regułę telemetrii, szablon urządzenia musi zawierać co najmniej jedną wartość telemetryczną. W tym samouczku użyto symulowanego urządzenia **MXChip IoT DevKit,** które wysyła dane telemetryczne temperatury i wilgotności. Dodano ten szablon urządzenia i utworzono symulowane urządzenie w przewodniku Szybki start [aplikacji Dodaj symulowane do aplikacji IoT Central.](./quick-create-simulated-device.md) Reguła monitoruje temperaturę zgłaszaną przez urządzenie i wysyła wiadomość e-mail, gdy przekracza ona 70 stopni.
 
 1. W lewym okienku wybierz pozycję **Reguły**.
 

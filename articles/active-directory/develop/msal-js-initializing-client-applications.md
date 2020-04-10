@@ -13,12 +13,12 @@ ms.date: 04/12/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbd700c787a844fa7538ed198f76ed5c06af2c28
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77084044"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010158"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Inicjowanie aplikacji klienckich przy użyciu pliku MSAL.js
 W tym artykule opisano inicjowanie biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL.js) z wystąpieniem aplikacji agenta użytkownika. Aplikacja user-agent jest formą publicznej aplikacji klienckiej, w której kod klienta jest wykonywany w agencie użytkownika, takim jak przeglądarka internetowa. Klienci ci nie przechowują wpisów tajnych, ponieważ kontekst przeglądarki jest otwarty. Aby dowiedzieć się więcej o typach aplikacji klienckich i opcjach konfiguracji aplikacji, przeczytaj [omówienie](msal-client-applications.md).
@@ -35,7 +35,7 @@ Przed zainicjowaniem aplikacji należy najpierw [zarejestrować ją w witrynie A
 
 W zwykłej aplikacji JavaScript/Typescript można używać w następujący sposób. Inicjowanie kontekstu uwierzytelniania `UserAgentApplication` MSAL przez wystąpienie z obiektem konfiguracji. Minimalna wymagana konfiguracja do zainicjowania msal.js jest clientID aplikacji, które należy uzyskać z portalu rejestracji aplikacji.
 
-W przypadku metod uwierzytelniania z przepływami przekierowania (`loginRedirect` i `acquireTokenRedirect`), należy `handleRedirectCallback()` jawnie zarejestrować wywołanie zwrotne dla sukcesu lub błędu za pomocą metody. Jest to konieczne, ponieważ przepływy przekierowania nie zwracają obietnic, jak metody z wyskakującym doświadczeniem.
+W przypadku metod uwierzytelniania z przepływami przekierowania (`loginRedirect` i `acquireTokenRedirect`), w msal.js 1.2.x lub `handleRedirectCallback()` starszym, należy jawnie zarejestrować wywołanie zwrotne dla sukcesu lub błędu za pomocą metody. Jest to konieczne, ponieważ przepływy przekierowania nie zwracają obietnic, jak metody z wyskakującym doświadczeniem. Stało się to opcjonalne w wersji 1.3.0 msal.js.
 
 ```javascript
 // Configuration object constructed

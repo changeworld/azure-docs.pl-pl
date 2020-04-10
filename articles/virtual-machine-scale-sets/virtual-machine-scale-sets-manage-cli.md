@@ -1,18 +1,18 @@
 ---
 title: Zarządzanie zestawami skalowania maszyn wirtualnych za pomocą interfejsu wiersza polecenia platformy Azure
 description: Typowe polecenia interfejsu wiersza polecenia platformy Azure do zarządzania zestawami skalowania maszyny wirtualnej, takie jak uruchamianie i zatrzymywania wystąpienia lub zmienianie pojemności zestawu skalowania.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: d8f40708cf5a9989146a72e2093de7bad47ffde9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: ad07a237dd40d836705b332c6c10356720901481
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275752"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011586"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Zarządzanie zestawem skalowania maszyny wirtualnej za pomocą interfejsu wiersza polecenia platformy Azure
 W całym cyklu życia zestawu skalowania maszyn wirtualnych konieczne może być uruchomienie jednego lub większej liczby zadań zarządzania. Ponadto może pojawić się potrzeba tworzenia skryptów automatyzujących różne zadania cyklu życia. W tym artykule opisano niektóre typowe polecenia interfejsu wiersza polecenia platformy Azure, które umożliwiają wykonywanie tych zadań.

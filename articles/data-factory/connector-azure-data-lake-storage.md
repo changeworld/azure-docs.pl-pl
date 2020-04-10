@@ -11,18 +11,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
-ms.openlocfilehash: 929b9548661fe48fe90a55f0cacef234c3078cda
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a061df302680488377c3006dcef57b818a101d67
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887269"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011535"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopiowanie i przekształcanie danych w usłudze Azure Data Lake Storage Gen2 przy użyciu usługi Azure Data Factory
 
 Usługa Azure Data Lake Storage Gen2 (ADLS Gen2) to zestaw funkcji dedykowanych do analizy dużych zbiorów danych wbudowanych w [magazyn obiektów Blob platformy Azure.](../storage/blobs/storage-blobs-introduction.md) Można go używać do interfejsu z danymi przy użyciu zarówno systemu plików, jak i paradygmatów przechowywania obiektów.
 
 W tym artykule opisano, jak używać działania kopiowania w usłudze Azure Data Factory do kopiowania danych z i do usługi Azure Data Lake Storage Gen2 oraz do przekształcania danych w usłudze Azure Data Lake Storage Gen2. Aby dowiedzieć się więcej o usłudze Azure Data Factory, przeczytaj [artykuł wprowadzający](introduction.md).
+
+>[!TIP]
+>W przypadku scenariusza migracji usługi data lake lub hurtowni danych dowiedz się więcej od [narzędzia Azure Data Factory do migracji danych z usługi Data Lake lub hurtowni danych na platformę Azure.](data-migration-guidance-overview.md)
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 

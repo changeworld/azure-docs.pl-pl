@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: a48e69f19db88c7823365964c2fe9c0629a078bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd2da798cae92a7e47bd879b69dd108618463402
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75412686"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010770"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Jak korzystać z narzędzia wiersza polecenia Redis z usługą Azure Cache for Redis
 
@@ -38,9 +38,9 @@ W tej sekcji pobierzesz klucze z witryny Azure portal.
 
 ## <a name="enable-access-for-redis-cliexe"></a>Włącz dostęp dla redis-cli.exe
 
-W przypadku usługi Azure Cache for Redis domyślnie włączono tylko port SSL (6380). Narzędzie `redis-cli.exe` wiersza polecenia nie obsługuje ssl. Masz dwie opcje konfiguracji, aby go używać:
+W przypadku usługi Azure Cache for Redis domyślnie włączono tylko port TLS (6380). Narzędzie `redis-cli.exe` wiersza polecenia nie obsługuje protokołu TLS. Masz dwie opcje konfiguracji, aby go używać:
 
-1. [Włącz port nienawiązywać się do protokołu SSL (6379)](cache-configure.md#access-ports) - **Ta konfiguracja nie jest zalecana,** ponieważ w tej konfiguracji klucze dostępu są wysyłane za pośrednictwem protokołu TCP w postaci zwykłego tekstu. Ta zmiana może naruszyć dostęp do pamięci podręcznej. Jedynym scenariuszem, w którym można rozważyć tę konfigurację jest, gdy jesteś tylko dostęp do pamięci podręcznej testów.
+1. [Włącz port nieobjęty TLS (6379)](cache-configure.md#access-ports) - **Ta konfiguracja nie jest zalecana,** ponieważ w tej konfiguracji klucze dostępu są wysyłane za pośrednictwem protokołu TCP w postaci zwykłego tekstu. Ta zmiana może naruszyć dostęp do pamięci podręcznej. Jedynym scenariuszem, w którym można rozważyć tę konfigurację jest, gdy jesteś tylko dostęp do pamięci podręcznej testów.
 
 2. Pobierz i zainstaluj [stunnel](https://www.stunnel.org/downloads.html).
 
@@ -74,7 +74,7 @@ redis-cli.exe -p 6380 -a YourAccessKey
 
 ![stunnel z redis-cli](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-Jeśli używasz pamięci podręcznej testowej z **niezabezpieczonym** portem `redis-cli.exe` innego niż SSL, uruchom i przekaż *nazwę hosta,* *port*i *klucz dostępu* (podstawowy lub pomocniczy), aby połączyć się z pamięcią podręczną testową.
+Jeśli używasz pamięci podręcznej testowej z **niezabezpieczonym** `redis-cli.exe` portem nienawiązanym TLS, uruchom i przekaż nazwę *hosta,* *port*i klucz *dostępu* (podstawowy lub pomocniczy), aby połączyć się z pamięcią podręczną testową.
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey

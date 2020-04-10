@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: c0eb043ce040f154050ef4c3675f165dad326e32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9fe6b494398337dd49bd8f0fe53b24666412a1b0
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929426"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991590"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopiowanie danych z Google BigQuery przy użyciu usługi Azure Data Factory
 
@@ -37,7 +37,7 @@ Usługa Data Factory udostępnia wbudowany sterownik umożliwiający łącznoś�
 >[!NOTE]
 >To złącze Google BigQuery jest zbudowany na szczycie Interfejsów API BigQuery. Należy pamiętać, że BigQuery ogranicza maksymalną szybkość przychodzących żądań i wymusza odpowiednie przydziały na podstawie projektu, odnoszą się do [limitów & przydziałów — żądania interfejsu API](https://cloud.google.com/bigquery/quotas#api_requests). Upewnij się, że nie wyzwolić zbyt wiele równoczesnych żądań do konta.
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -99,7 +99,7 @@ Ustaw właściwość "authenticationType" na **ServiceAuthentication**i określ 
 |:--- |:--- |:--- |
 | email | Identyfikator wiadomości e-mail konta usługi, który jest używany do ServiceAuthentication. Może być używany tylko w własnym czasie działania integracji.  | Nie |
 | keyFilePath | Pełna ścieżka do pliku klucza .p12, który jest używany do uwierzytelniania adresu e-mail konta usługi. | Nie |
-| trustedCertPath | Pełna ścieżka pliku pem zawierającego zaufane certyfikaty urzędu certyfikacji używane do weryfikacji serwera podczas łączenia się za pomocą ssl. Tę właściwość można ustawić tylko wtedy, gdy używasz SSL w samodzielnym czasie działania integracji. Wartością domyślną jest plik cacerts.pem zainstalowany wraz ze środowiska wykonawczego integracji.  | Nie |
+| trustedCertPath | Pełna ścieżka pliku pem zawierającego zaufane certyfikaty urzędu certyfikacji używane do weryfikacji serwera podczas łączenia się za pomocą protokołu TLS. Tę właściwość można ustawić tylko wtedy, gdy używasz protokołu TLS w samodzielnym czasie działania integracji. Wartością domyślną jest plik cacerts.pem zainstalowany wraz ze środowiska wykonawczego integracji.  | Nie |
 | useSystemTrustStore | Określa, czy certyfikat urzędu certyfikacji ma być używany z magazynu zaufania systemu, czy z określonego pliku pem. Wartość domyślna to **fałsz**.  | Nie |
 
 **Przykład:**

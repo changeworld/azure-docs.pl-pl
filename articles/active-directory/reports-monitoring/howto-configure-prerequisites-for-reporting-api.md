@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd3580ca03fa49d428904c6da78fdf9cda202c7
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399299"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991266"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Wymagania wstępne dostępu do interfejsu API raportowania usługi Azure Active Directory
 
@@ -33,9 +33,10 @@ Interfejs API raportowania używa [OAuth](https://docs.microsoft.com/azure/api-m
 Aby przygotować dostęp do interfejsu API raportowania, należy:
 
 1. [Przypisywanie ról](#assign-roles)
-2. [Zarejestruj zgłoszenie](#register-an-application)
-3. [Udzielenie uprawnień](#grant-permissions)
-4. [Zbieranie ustawień konfiguracji](#gather-configuration-settings)
+2. [Wymagania licencyjne](#license-requirements)
+3. [Rejestrowanie aplikacji](#register-an-application)
+4. [Udzielenie uprawnień](#grant-permissions)
+5. [Zbieranie ustawień konfiguracji](#gather-configuration-settings)
 
 ## <a name="assign-roles"></a>Przypisywanie ról
 
@@ -46,6 +47,10 @@ Aby uzyskać dostęp do danych raportowania za pośrednictwem interfejsu API, mu
 - Administrator zabezpieczeń
 
 - Administrator globalny
+
+## <a name="license-requirements"></a>Wymagania licencyjne
+
+Aby uzyskać dostęp do raportów logowania dla dzierżawy, dzierżawa usługi Azure AD musi mieć skojarzoną licencję usługi Azure AD Premium. Licencja usługi Azure AD Premium P1 (lub wyższej) jest wymagana do uzyskiwania dostępu do raportów logowania dla dowolnej dzierżawy usługi Azure AD. Alternatywnie, jeśli typem katalogu jest usługa Azure AD B2C, raporty logowania są dostępne za pośrednictwem interfejsu API bez żadnych dodatkowych wymagań licencyjnych. 
 
 
 ## <a name="register-an-application"></a>Rejestrowanie aplikacji

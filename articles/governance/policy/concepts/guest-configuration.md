@@ -3,12 +3,12 @@ title: Dowiedz się, jak przeprowadzać inspekcje zawartości maszyn wirtualnych
 description: Dowiedz się, jak usługa Azure Policy używa agenta konfiguracji gościa do inspekcji ustawień wewnątrz maszyn wirtualnych.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 889e99e94b2c81a6654fcbe7851e93c40163a0c6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9e8486af2a9b7ab9e18b8c16f08e51759d1123d7
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985324"
+ms.locfileid: "80998855"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Opis konfiguracji gościa zasad platformy Azure
 
@@ -91,6 +91,13 @@ System Windows Server Nano Server nie jest obsługiwany w żadnej wersji.
 
 Aby komunikować się z dostawcą zasobów konfiguracji gościa na platformie Azure, maszyny wymagają dostępu wychodzącego do centrów danych platformy Azure na porcie **443**. Jeśli używasz prywatnej sieci wirtualnej na platformie Azure, która nie zezwala na ruch wychodzący, skonfiguruj wyjątki za pomocą reguł [sieciowej grupy zabezpieczeń.](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)
 [Tag usługi](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" może służyć do odwoływania się do usługi konfiguracji gościa.
+
+## <a name="azure-managed-identity-requirements"></a>Wymagania dotyczące tożsamości zarządzanej platformy Azure
+
+**DeployIfNotExists** zasady, które dodają rozszerzenie do maszyn wirtualnych również włączyć system przypisany tożsamości zarządzanej, jeśli nie istnieje.
+
+> [!WARNING]
+> Należy unikać włączania tożsamości zarządzanej przypisanej przez użytkownika do maszyn wirtualnych w zakresie zasad, które umożliwiają tożsamości zarządzanej przypisanej przez system. Przypisana przez użytkownika tożsamość zostanie zastąpiona i może przestać odpowiadać.
 
 ## <a name="guest-configuration-definition-requirements"></a>Wymagania dotyczące definicji konfiguracji gościa
 

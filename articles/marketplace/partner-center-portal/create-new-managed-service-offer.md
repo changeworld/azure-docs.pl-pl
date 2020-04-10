@@ -8,17 +8,17 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: de6e08534722deccb8be11248dd8af3ca2e66739
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6baf5d77b70fa6e2717b492163826f27d80fbb88
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983216"
+ms.locfileid: "80991624"
 ---
 # <a name="create-a-new-managed-service-offer"></a>Tworzenie nowej oferty usługi zarządzanej
 
 > [!IMPORTANT]
-> Przenosimy zarządzanie ofertami zarządzanych usług z portalu Cloud Partner do Centrum partnerów. Dopóki oferty nie zostaną zmigrowane, postępuj zgodnie z instrukcjami w [obszarze Publikuj ofertę usługi zarządzanej w portalu Azure Marketplace,](../../lighthouse/how-to/publish-managed-services-offers.md) aby zarządzać ofertami.
+> Przenosimy zarządzanie ofertami usługi zarządzanej z portalu cloud partner do centrum partnerskiego. Dopóki oferty nie zostaną zmigrowane, postępuj zgodnie z instrukcjami w [obszarze Publikuj ofertę usługi zarządzanej w portalu Azure Marketplace,](../../lighthouse/how-to/publish-managed-services-offers.md) aby zarządzać ofertami w portalu cloud partner.
 
 Usługa zarządzana oferuje pomoc w włączanie scenariuszy [latarni morskiej platformy Azure.](../../lighthouse/overview.md) Gdy klient zaakceptuje ofertę usługi zarządzanej, będzie mógł dołączać zasoby do [zarządzania zasobami delegowanymi platformy Azure.](../../lighthouse/concepts/azure-delegated-resource-management.md)
 

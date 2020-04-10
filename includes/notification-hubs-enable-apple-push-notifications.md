@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77123135"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81007816"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generowanie pliku żądania podpisywania certyfikatów
 
@@ -74,11 +74,21 @@ Aby wysyłać powiadomienia wypychane do aplikacji na iOS, zarejestruj aplikacj�
 
 4. Na stronie **Certyfikaty identyfikatory & profile** w obszarze **Identyfikatory**znajdź utworzony właśnie element zamówienia identyfikator aplikacji i wybierz jego wiersz, aby wyświetlić ekran **Edytuj konfigurację identyfikatora aplikacji.**
 
-5. Przewiń w dół do zaznaczonej opcji **Powiadomień wypychanych,** a następnie wybierz pozycję **Konfiguruj,** aby utworzyć certyfikat.
+## <a name="creating-a-certificate-for-notification-hubs"></a>Tworzenie certyfikatu dla centrów powiadomień
+Certyfikat jest wymagany, aby włączyć centrum powiadomień do pracy z **apns**. Można to zrobić na jeden z dwóch sposobów:
+
+1. Utwórz **.p12,** który można przekazać bezpośrednio do Centrum powiadomień.  
+2. Utwórz **.p8,** który może być używany do [uwierzytelniania opartego na tokenie](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification) *(nowsze podejście).*
+
+Nowsze podejście ma wiele korzyści (w porównaniu do korzystania z certyfikatów) udokumentowanych w [uwierzytelnianiu opartym na tokenach (HTTP/2) dla usługi APNS.](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification) Jednakże przedstawiono kroki dla obu podejść. 
+
+### <a name="option-1-creating-a-p12-push-certificate-that-can-be-uploaded-directly-to-notification-hub"></a>OPCJA 1: Tworzenie certyfikatu wypychania .p12, który można przesłać bezpośrednio do Centrum powiadomień
+
+1. Przewiń w dół do zaznaczonej opcji **Powiadomień wypychanych,** a następnie wybierz pozycję **Konfiguruj,** aby utworzyć certyfikat.
 
     ![Edytowanie strony identyfikatorów aplikacji](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-6. Zostanie wyświetlone okno **Certyfikaty SSL usługi powiadomień wypychanych firmy Apple.** Wybierz przycisk **Utwórz certyfikat** w sekcji **Deweloperzy certyfikat SSL.**
+2. Zostanie wyświetlone okno **Certyfikaty SSL usługi powiadomień wypychanych firmy Apple.** Wybierz przycisk **Utwórz certyfikat** w sekcji **Deweloperzy certyfikat SSL.**
 
     ![Przycisk tworzenia certyfikatu dla identyfikatora aplikacji](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
@@ -87,9 +97,9 @@ Aby wysyłać powiadomienia wypychane do aplikacji na iOS, zarejestruj aplikacj�
     > [!NOTE]
     > Instrukcje w tym samouczku obejmują użycie certyfikatu deweloperskiego. Ten sam proces jest używany podczas rejestrowania certyfikatu produkcyjnego. Należy po prostu pamiętać, aby używać tego samego typu certyfikatu podczas wysyłania powiadomień.
 
-1. Wybierz **pozycję Wybierz plik**, przejdź do lokalizacji, w której plik CSR został zapisany z pierwszego zadania, a następnie kliknij dwukrotnie nazwę certyfikatu, aby go załadować. Następnie wybierz pozycję **Kontynuuj**.
+3. Wybierz **pozycję Wybierz plik**, przejdź do lokalizacji, w której plik CSR został zapisany z pierwszego zadania, a następnie kliknij dwukrotnie nazwę certyfikatu, aby go załadować. Następnie wybierz pozycję **Kontynuuj**.
 
-1. Po tym, jak portal utworzy certyfikat, wybierz przycisk **Pobierz.** Zapisz certyfikat i zapamiętaj lokalizację, w której został zapisany.
+4. Po tym, jak portal utworzy certyfikat, wybierz przycisk **Pobierz.** Zapisz certyfikat i zapamiętaj lokalizację, w której został zapisany.
 
     ![Strona pobierania wygenerowanego certyfikatu](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
@@ -100,14 +110,14 @@ Aby wysyłać powiadomienia wypychane do aplikacji na iOS, zarejestruj aplikacj�
     > [!NOTE]
     > Domyślnie pobrany certyfikat dewelopera nosi nazwę **aps_development.cer**.
 
-1. Kliknij dwukrotnie pobrany certyfikat powiadomień wypychanych **aps_development.cer**. Ta akcja powoduje zainstalowanie nowego certyfikatu w narzędziu Keychain, jak przedstawiono na poniższym rysunku:
+5. Kliknij dwukrotnie pobrany certyfikat powiadomień wypychanych **aps_development.cer**. Ta akcja powoduje zainstalowanie nowego certyfikatu w narzędziu Keychain, jak przedstawiono na poniższym rysunku:
 
     ![Lista certyfikatów narzędzia Keychain Access z nowym certyfikatem](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
     > [!NOTE]
     > Chociaż nazwa w certyfikacie może być inna, nazwa będzie poprzedzony **usługami push systemu Apple Development iOS**.
 
-1. W narzędziu Keychain Access kliknij prawym przyciskiem myszy nowy certyfikat powiadomień wypychanych utworzony w kategorii **Certyfikaty**. Wybierz **pozycję Eksportuj**, nazwij plik, wybierz format **p12,** a następnie wybierz pozycję **Zapisz**.
+6. W narzędziu Keychain Access kliknij prawym przyciskiem myszy nowy certyfikat powiadomień wypychanych utworzony w kategorii **Certyfikaty**. Wybierz **pozycję Eksportuj**, nazwij plik, wybierz format **p12,** a następnie wybierz pozycję **Zapisz**.
 
     ![Eksportowanie certyfikatu w formacie p12](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
@@ -115,6 +125,45 @@ Aby wysyłać powiadomienia wypychane do aplikacji na iOS, zarejestruj aplikacj�
 
     > [!NOTE]
     > Nazwa i lokalizacja pliku p12 może się różnić od tego, co jest na zdjęciu w tym samouczku.
+
+### <a name="option-2-creating-a-p8-certificate-that-can-be-used-for-token-based-authentication"></a>OPCJA 2: Tworzenie certyfikatu p8, który może być używany do uwierzytelniania opartego na tokenie
+
+1. Zanotuj następujące szczegóły:
+
+    - **Prefiks identyfikatora aplikacji** (jest to **identyfikator zespołu)**
+    - **Identyfikator pakietu**
+    
+2. Powrót w **certyfikatach, identyfikatory & profile**, kliknij przycisk **Klucze**.
+
+   > [!NOTE]
+   > Jeśli masz już klucz skonfigurowany dla **systemu APNS,** możesz ponownie użyć pobranego certyfikatu p8 zaraz po jego utworzeniu. Jeśli tak, możesz zignorować kroki **od 3** do **5**.
+
+3. Kliknij **+** przycisk (lub przycisk **Utwórz klawisz),** aby utworzyć nowy klucz.
+4. Podaj odpowiednią wartość **Nazwa klucza,** a następnie zaznacz opcję **Usługi powiadomień wypychanych Apple (APN),** a następnie kliknij przycisk **Kontynuuj**, a następnie **zarejestruj się** na następnym ekranie.
+5. Kliknij **pozycję Pobierz,** a następnie przenieś plik **p8** (poprzedzony *AuthKey_)* do bezpiecznego katalogu lokalnego, a następnie kliknij przycisk **Gotowe**.
+
+   > [!NOTE] 
+   > Pamiętaj, aby zachować plik p8 w bezpiecznym miejscu (i zapisać kopię zapasową). Po pobraniu klucza nie można go ponownie pobrać, ponieważ kopia serwera zostanie usunięta.
+  
+6. Na **keys**, kliknij na klucz, który właśnie utworzono (lub istniejący klucz, jeśli wybrałeś go zamiast tego).
+7. Zanotuj wartość **identyfikatora klucza.**
+8. Otwórz certyfikat .p8 w odpowiedniej aplikacji do wyboru, takich jak [**Visual Studio Code,**](https://code.visualstudio.com) a następnie zanotuj wartość klucza. Jest to wartość między **-----BEGIN KLUCZ PRYWATNY-----** i **-----END KLUCZ PRYWATNY-----** .
+
+    ```
+    -----BEGIN PRIVATE KEY-----
+    <key_value>
+    -----END PRIVATE KEY-----
+    ```
+
+    > [!NOTE]
+    > Jest to **wartość tokenu,** która będzie używana później do konfigurowania **Centrum powiadomień**. 
+
+Na końcu tych kroków powinny być dostępne następujące informacje do użycia w [dalszej części Konfigurowanie centrum powiadomień z informacjami o apn:](#configure-your-notification-hub-with-apns-information)
+
+- **Identyfikator zespołu** (patrz krok 1)
+- **Identyfikator pakietu** (patrz krok 1)
+- **Identyfikator klucza** (patrz krok 7)
+- **Wartość tokenu,** czyli wartość klucza .p8 (patrz krok 8)
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Tworzenie profilu inicjowania obsługi dla aplikacji
 
@@ -153,13 +202,18 @@ Aby wysyłać powiadomienia wypychane do aplikacji na iOS, zarejestruj aplikacj�
 
 ## <a name="create-a-notification-hub"></a>Tworzenie centrum powiadomień
 
-W tej sekcji utworzysz centrum powiadomień i konfigurujesz uwierzytelnianie za pomocą apn przy użyciu wcześniej utworzonego certyfikatu wypychania p12. Jeśli chcesz użyć utworzonego już centrum powiadomień, możesz przejść do kroku 5.
+W tej sekcji utworzysz centrum powiadomień i konfigurujesz uwierzytelnianie za pomocą apn przy użyciu certyfikatu wypychania p12 lub uwierzytelniania opartego na tokenie. Jeśli chcesz użyć utworzonego już centrum powiadomień, możesz przejść do kroku 5.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](notification-hubs-portal-create-new-hub.md)]
 
 ## <a name="configure-your-notification-hub-with-apns-information"></a>Konfigurowanie centrum powiadomień za pomocą informacji o sieciach APN
 
-1. W obszarze **Usługi powiadomień**wybierz pozycję **Apple (APNS)**.
+W obszarze **Usługi powiadomień**wybierz pozycję **Apple (APNS),** a następnie wykonaj odpowiednie kroki na podstawie podejścia wybranego wcześniej w sekcji [Tworzenie certyfikatu dla centrów powiadomień.](#creating-a-certificate-for-notification-hubs)  
+
+> [!NOTE]
+> Tryb **produkcji** **aplikacji** należy używać tylko wtedy, gdy chcesz wysyłać powiadomienia wypychane do użytkowników, którzy zakupili aplikację ze sklepu.
+
+### <a name="option-1-using-a-p12-push-certificate"></a>OPCJA 1: Korzystanie z certyfikatu wypychania .p12
 
 1. Wybierz pozycję **Certyfikat**.
 
@@ -169,10 +223,23 @@ W tej sekcji utworzysz centrum powiadomień i konfigurujesz uwierzytelnianie za 
 
 1. W razie potrzeby określ poprawne hasło.
 
-1. Wybierz tryb **Piaskownica**. Trybu **Produkcja** używaj wyłącznie wtedy, gdy chcesz wysyłać powiadomienia push do użytkowników, którzy kupili Twoją aplikację w sklepie.
+1. Wybierz tryb **Piaskownica**.
 
     ![Konfigurowanie certyfikacji APNs w witrynie Azure Portal](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
 
 1. Wybierz **pozycję Zapisz**.
+
+### <a name="option-2-using-token-based-authentication"></a>OPCJA 2: Korzystanie z uwierzytelniania opartego na tokenach
+
+1. Wybierz **token**.
+1. Wprowadź następujące wartości nabyte wcześniej:
+
+    - **Identyfikator klucza**
+    - **Identyfikator pakietu**
+    - **Identyfikator zespołu**
+    - **Tokenu** 
+
+1. Wybierz **piaskownicę**
+1. Wybierz **pozycję Zapisz**. 
 
 Centrum powiadomień zostało skonfigurowane za pomocą sieci APN. Masz również parametry połączenia, aby zarejestrować aplikację i wysyłać powiadomienia wypychane.

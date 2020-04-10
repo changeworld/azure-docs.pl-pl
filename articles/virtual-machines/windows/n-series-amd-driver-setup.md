@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 883dbc95ee77d03aee4c3231c6ab8c03f9f7f6e4
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 02213feb507e9a032a50241fddf31714b9dfd7ee
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387839"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011081"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Instalowanie sterowników procesorów graficznych AMD na maszynach wirtualnych z systemem Windows z systemem Windows
 
@@ -40,7 +40,7 @@ Aby uzyskać podstawowe specyfikacje, pojemność pamięci masowej i szczegóły
 
 2. Jeśli jesteś klientem w wersji zapoznawczej NVv4, zatrzymaj maszynę wirtualną i poczekaj, aż przejdzie do stanu zatrzymanego(cofniętego).
 
-3. Uruchom maszynę wirtualną i pobierz najnowsze [narzędzie AMD Cleanup Utility](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Odinstaluj istniejący sterownik, uruchamiając "amdcleanuputility-x64.exe". Proszę NIE używać żadnych exisitng narzędzie oczyszczania, który został zainstalowany z poprzedniego sterownika.  
+3. Uruchom maszynę wirtualną i pobierz najnowsze [narzędzie AMD Cleanup Utility](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Odinstaluj istniejący sterownik, uruchamiając "amdcleanuputility-x64.exe". PROSZĘ NIE używać żadnego istniejącego narzędzia do oczyszczania, które zostało zainstalowane z poprzednim sterownikiem.  
 
 4. Pobierz i zainstaluj najnowszy sterownik.
 
@@ -52,6 +52,12 @@ Instalację sterownika można zweryfikować w Menedżerze urządzeń. Poniższy 
 <br />
 ![Właściwości sterownika GPU](./media/n-series-amd-driver-setup/device-manager.png)
 
-Za pomocą dxdiag można zweryfikować właściwości wyświetlania gpu, w tym pamięć RAM wideo. W poniższym przykładzie przedstawiono partycję 1/8 karty Radeon Instinct MI25 na maszynie wirtualnej Azure NVv4.
+Za pomocą dxdiag można zweryfikować właściwości wyświetlania gpu, w tym pamięć RAM wideo. W poniższym przykładzie przedstawiono partycję 1/2 karty Radeon Instinct MI25 na maszynie wirtualnej Azure NVv4.
 <br />
-![Właściwości sterownika GPU](./media/n-series-amd-driver-setup/dxdiag.png)
+![Właściwości sterownika GPU](./media/n-series-amd-driver-setup/dxdiag-output.png)
+
+Jeśli korzystasz z systemu Windows 10 budować 1903 lub wyższy następnie dxdiag nie pokaże żadnych informacji w zakładce "Display". Użyj opcji "Zapisz wszystkie informacje" na dole, a plik wyjściowy pokaże informacje związane z procesorem graficznym AMD MI25.
+
+![Właściwości sterownika GPU](./media/n-series-amd-driver-setup/dxdiag-details.png)
+
+

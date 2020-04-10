@@ -3,18 +3,21 @@ title: Oznaczanie zasobów, grup zasobów i subskrypcji dla organizacji logiczne
 description: Pokazuje, jak stosować tagi do organizowania zasobów platformy Azure do rozliczeń i zarządzania.
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 76f9f61b3fe7002508bbd884f427efcfee698579
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 44759db59ef7e7556c8fbfca3bbc58ef84796198
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548491"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010804"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Organizowanie zasobów i hierarchii zarządzania za pomocą tagów
 
 Zastosuj tagi do zasobów platformy Azure, grup zasobów i subskrypcji, aby logicznie zorganizować je w taksonomię. Każdy tag składa się z pary nazw i wartości. Na przykład można zastosować nazwę „Środowisko” i wartość „Produkcyjne” do wszystkich zasobów w środowisku produkcyjnym.
 
 Aby uzyskać zalecenia dotyczące wdrażania strategii znakowania, zobacz Przewodnik po decyzjach dotyczących [nazewnictwa i oznaczania zasobów](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json).
+
+> [!IMPORTANT]
+> Nazwy tagów są niewrażliwe na argumenty. W wartościach tagowych rozróżniana jest wielkość liter.
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 

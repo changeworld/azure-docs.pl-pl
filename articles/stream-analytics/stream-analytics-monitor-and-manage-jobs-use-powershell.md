@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 7781f35fe7c17e4a0f307f559945caf648b23f6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 295141dfd9b84428e2ee69354ab0c249fa46d1b6
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75431698"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998881"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Monitorowanie zadań usługi Stream Analytics i zarządzanie nimi za pomocą poleceń cmdlet usługi Azure PowerShell
 Dowiedz się, jak monitorować zasoby usługi Stream Analytics i zarządzać nimi za pomocą poleceń cmdlet programu Azure PowerShell i skryptów programu PowerShell, które wykonują podstawowe zadania usługi Stream Analytics.
@@ -41,7 +41,7 @@ Program Azure PowerShell 1.0:
 # Log in to your Azure account
 Connect-AzAccount
 # Select the Azure subscription you want to use to create the resource group.
-Get-AzSubscription �SubscriptionName "your sub" | Select-AzSubscription
+Get-AzSubscription -SubscriptionName "your sub" | Select-AzSubscription
 # If Stream Analytics has not been registered to the subscription, remove remark symbol below (#)to run the Register-AzureProvider cmdlet to register the provider namespace.
 #Register-AzResourceProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
 # Create an Azure resource group
@@ -50,7 +50,7 @@ New-AzResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
 > [!NOTE]
-> Zadania usługi Stream Analytics utworzone programowo nie mają domyślnie włączonego monitorowania.  Monitorowanie można ręcznie włączyć w witrynie Azure Portal, przechodząc do strony Monitora zadań i klikając przycisk Włącz, lub można to zrobić programowo, wykonując kroki znajdujące się w [usłudze Azure Stream Analytics — programowo monitoruj zadania analizy strumienia.](stream-analytics-monitor-jobs.md)
+> Zadania usługi Stream Analytics utworzone programowo nie mają domyślnie włączonego monitorowania.  Monitorowanie można ręcznie włączyć w witrynie Azure Portal, przechodząc do strony Monitor zadania i klikając przycisk Włącz, lub można to zrobić programowo, wykonując kroki znajdujące się w [usłudze Azure Stream Analytics — programowo monitoruj zadania analizy strumienia.](stream-analytics-monitor-jobs.md)
 > 
 > 
 
@@ -133,13 +133,13 @@ To polecenie programu PowerShell zwraca informacje o wszystkich danych wejściow
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-Get-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name EntryStream
+Get-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EntryStream
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-Get-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name EntryStream
+Get-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EntryStream
 ```
 
 To polecenie programu PowerShell zwraca informacje o danych wejściowych o nazwie EntryStream zdefiniowanych w zadaniu StreamingJob.
@@ -168,13 +168,13 @@ To polecenie programu PowerShell zwraca informacje o wyjściach zdefiniowanych w
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-Get-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name Output
+Get-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-Get-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name Output
+Get-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 To polecenie programu PowerShell zwraca informacje o danych wyjściowych zdefiniowanych w zadaniu StreamingJob.
@@ -187,13 +187,13 @@ Pobiera informacje o przydział jednostkach przesyłania strumieniowego w okreś
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-Get-AzureStreamAnalyticsQuota �Location "Central US" 
+Get-AzureStreamAnalyticsQuota -Location "Central US" 
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-Get-AzStreamAnalyticsQuota �Location "Central US" 
+Get-AzStreamAnalyticsQuota -Location "Central US" 
 ```
 
 To polecenie programu PowerShell zwraca informacje o przydziałze i użyciu jednostek przesyłania strumieniowego w regionie Środkowe stany USA.
@@ -206,13 +206,13 @@ Pobiera informacje o określonej transformacji zdefiniowane w zadaniu usługi St
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-Get-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name StreamingJob
+Get-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name StreamingJob
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-Get-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name StreamingJob
+Get-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name StreamingJob
 ```
 
 To polecenie programu PowerShell zwraca informacje o transformacji o nazwie StreamingJob w zadaniu StreamingJob.
@@ -222,9 +222,9 @@ Tworzy nowe dane wejściowe w zadaniu usługi Stream Analytics lub aktualizuje i
 
 Nazwę danych wejściowych można określić w pliku .json lub w wierszu polecenia. Jeśli oba są określone, nazwa w wierszu polecenia musi być taka sama jak w pliku.
 
-Jeśli określisz dane wejściowe, które już istnieje i nie określisz parametru Force, polecenie cmdlet zapyta, czy zastąpić istniejące dane wejściowe.
+Jeśli określisz dane wejściowe, które już istnieje i nie określisz parametru -Force, polecenie cmdlet zapyta, czy zastąpić istniejące dane wejściowe.
 
-Jeśli określisz parametr Force i określisz istniejącą nazwę danych wejściowych, dane wejściowe zostaną zastąpione bez potwierdzenia.
+Jeśli określisz parametr -Force i określisz istniejącą nazwę danych wejściowych, dane wejściowe zostaną zastąpione bez potwierdzenia.
 
 Szczegółowe informacje na temat struktury i zawartości pliku JSON można znaleźć w sekcji [Tworzenie danych wejściowych (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input] [biblioteki referencyjnej interfejsu API REST][stream.analytics.rest.api.reference].
 
@@ -233,13 +233,13 @@ Szczegółowe informacje na temat struktury i zawartości pliku JSON można znal
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" 
+New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" 
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" 
+New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" 
 ```
 
 To polecenie programu PowerShell tworzy nowe dane wejściowe z pliku Input.json. Jeśli istniejące dane wejściowe o nazwie określonej w pliku definicji danych wejściowych są już zdefiniowane, polecenie cmdlet zapyta, czy go zastąpić.
@@ -249,13 +249,13 @@ To polecenie programu PowerShell tworzy nowe dane wejściowe z pliku Input.json.
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" �Name EntryStream
+New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" -Name EntryStream
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" �Name EntryStream
+New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" -Name EntryStream
 ```
 
 To polecenie programu PowerShell tworzy nowe dane wejściowe w zadaniu o nazwie EntryStream. Jeśli istniejące dane wejściowe o tej nazwie są już zdefiniowane, polecenie cmdlet zapyta, czy go zastąpić.
@@ -265,13 +265,13 @@ To polecenie programu PowerShell tworzy nowe dane wejściowe w zadaniu o nazwie 
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" �Name EntryStream -Force
+New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" -Name EntryStream -Force
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" �Name EntryStream -Force
+New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" -Name EntryStream -Force
 ```
 
 To polecenie programu PowerShell zastępuje definicję istniejącego źródła wejściowego o nazwie EntryStream definicją z pliku.
@@ -281,9 +281,9 @@ Tworzy nowe zadanie usługi Stream Analytics na platformie Microsoft Azure lub a
 
 Nazwę zadania można określić w pliku .json lub w wierszu polecenia. Jeśli oba są określone, nazwa w wierszu polecenia musi być taka sama jak w pliku.
 
-Jeśli określisz nazwę zadania, która już istnieje i nie określisz parametru Force, polecenie cmdlet zapyta, czy zastąpić istniejące zadanie.
+Jeśli określisz nazwę zadania, która już istnieje i nie określisz parametru -Force, polecenie cmdlet zapyta, czy zastąpić istniejące zadanie.
 
-Jeśli określisz parametr Force i określisz istniejącą nazwę zadania, definicja zadania zostanie zastąpiona bez potwierdzenia.
+Jeśli określisz parametr -Force i określisz istniejącą nazwę zadania, definicja zadania zostanie zastąpiona bez potwierdzenia.
 
 Aby uzyskać szczegółowe informacje na temat struktury i zawartości pliku JSON, zobacz sekcję [Tworzenie zadania analizy strumienia][msdn-rest-api-create-stream-analytics-job] [w bibliotece referencyjnej interfejsu API REST usługi Stream Analytics][stream.analytics.rest.api.reference]Management .
 
@@ -292,13 +292,13 @@ Aby uzyskać szczegółowe informacje na temat struktury i zawartości pliku JSO
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\JobDefinition.json" 
+New-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\JobDefinition.json" 
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\JobDefinition.json" 
+New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\JobDefinition.json" 
 ```
 
 To polecenie programu PowerShell tworzy nowe zadanie z definicji w pliku JobDefinition.json. Jeśli istniejące zadanie o nazwie określonej w pliku definicji zadania jest już zdefiniowane, polecenie cmdlet zapyta, czy go zastąpić.
@@ -308,13 +308,13 @@ To polecenie programu PowerShell tworzy nowe zadanie z definicji w pliku JobDefi
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\JobDefinition.json" �Name StreamingJob -Force
+New-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\JobDefinition.json" -Name StreamingJob -Force
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\JobDefinition.json" �Name StreamingJob -Force
+New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\JobDefinition.json" -Name StreamingJob -Force
 ```
 
 To polecenie programu PowerShell zastępuje definicję zadania dla streamingjob.
@@ -324,9 +324,9 @@ Tworzy nowe dane wyjściowe w zadaniu usługi Stream Analytics lub aktualizuje i
 
 Nazwę danych wyjściowych można określić w pliku .json lub w wierszu polecenia. Jeśli oba są określone, nazwa w wierszu polecenia musi być taka sama jak w pliku.
 
-Jeśli określisz dane wyjściowe, które już istnieje i nie określisz parametru Force, polecenie cmdlet zapyta, czy zastąpić istniejące dane wyjściowe.
+Jeśli określisz dane wyjściowe, które już istnieje i nie określisz parametru -Force, polecenie cmdlet zapyta, czy zastąpić istniejące dane wyjściowe.
 
-Jeśli określisz parametr Force i określisz istniejącą nazwę danych wyjściowych, dane wyjściowe zostaną zastąpione bez potwierdzenia.
+Jeśli określisz parametr -Force i określisz istniejącą nazwę danych wyjściowych, dane wyjściowe zostaną zastąpione bez potwierdzenia.
 
 Aby uzyskać szczegółowe informacje na temat struktury i zawartości pliku JSON, zobacz sekcję [Tworzenie danych wyjściowych (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output] [biblioteki referencyjnej interfejsu API REST][stream.analytics.rest.api.reference].
 
@@ -335,13 +335,13 @@ Aby uzyskać szczegółowe informacje na temat struktury i zawartości pliku JSO
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Output.json" �JobName StreamingJob �Name output
+New-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Output.json" -JobName StreamingJob -Name output
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Output.json" �JobName StreamingJob �Name output
+New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Output.json" -JobName StreamingJob -Name output
 ```
 
 To polecenie programu PowerShell tworzy nowe dane wyjściowe o nazwie "dane wyjściowe" w zadaniu StreamingJob. Jeśli istniejące dane wyjściowe o tej nazwie są już zdefiniowane, polecenie cmdlet zapyta, czy go zastąpić.
@@ -351,13 +351,13 @@ To polecenie programu PowerShell tworzy nowe dane wyjściowe o nazwie "dane wyj�
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Output.json" �JobName StreamingJob �Name output -Force
+New-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Output.json" -JobName StreamingJob -Name output -Force
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Output.json" �JobName StreamingJob �Name output -Force
+New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Output.json" -JobName StreamingJob -Name output -Force
 ```
 
 To polecenie programu PowerShell zastępuje definicję "dane wyjściowe" w zadaniu StreamingJob.
@@ -367,9 +367,9 @@ Tworzy nową transformację w zadaniu usługi Stream Analytics lub aktualizuje i
 
 Nazwę transformacji można określić w pliku .json lub w wierszu polecenia. Jeśli oba są określone, nazwa w wierszu polecenia musi być taka sama jak w pliku.
 
-Jeśli określisz transformację, która już istnieje i nie określisz parametru Force, polecenie cmdlet zapyta, czy zastąpić istniejącą transformację.
+Jeśli określisz transformację, która już istnieje i nie określisz parametru -Force, polecenie cmdlet zapyta, czy zastąpić istniejącą transformację.
 
-Jeśli określisz parametr Force i określisz istniejącą nazwę transformacji, transformacja zostanie zastąpiona bez potwierdzenia.
+Jeśli określisz parametr -Force i określisz istniejącą nazwę transformacji, transformacja zostanie zastąpiona bez potwierdzenia.
 
 Aby uzyskać szczegółowe informacje na temat struktury i zawartości pliku JSON, zobacz sekcję [Tworzenie transformacji (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] [biblioteki referencyjnej interfejsu API REST][stream.analytics.rest.api.reference].
 
@@ -378,13 +378,13 @@ Aby uzyskać szczegółowe informacje na temat struktury i zawartości pliku JSO
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Transformation.json" �JobName StreamingJob �Name StreamingJobTransform
+New-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Transformation.json" -JobName StreamingJob -Name StreamingJobTransform
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Transformation.json" �JobName StreamingJob �Name StreamingJobTransform
+New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Transformation.json" -JobName StreamingJob -Name StreamingJobTransform
 ```
 
 To polecenie programu PowerShell tworzy nową transformację o nazwie StreamingJobTransform w zadaniu StreamingJob. Jeśli istniejąca transformacja jest już zdefiniowana przy tej nazwie, polecenie cmdlet zapyta, czy ją zastąpić.
@@ -394,73 +394,73 @@ To polecenie programu PowerShell tworzy nową transformację o nazwie StreamingJ
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Transformation.json" �JobName StreamingJob �Name StreamingJobTransform -Force
+New-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Transformation.json" -JobName StreamingJob -Name StreamingJobTransform -Force
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Transformation.json" �JobName StreamingJob �Name StreamingJobTransform -Force
+New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Transformation.json" -JobName StreamingJob -Name StreamingJobTransform -Force
 ```
 
  To polecenie programu PowerShell zastępuje definicję StreamingJobTransform w zadaniu StreamingJob.
 
 ### <a name="remove-azurestreamanalyticsinput--remove-azstreamanalyticsinput"></a>Usuń-AzureStreamAnalyticsInput | Usuń-AzStreamAnalyticsInput
 Asynchronicznie usuwa określone dane wejściowe z zadania usługi Stream Analytics na platformie Microsoft Azure.  
-Jeśli określisz parametr Force, dane wejściowe zostaną usunięte bez potwierdzenia.
+Jeśli określisz parametr -Force, dane wejściowe zostaną usunięte bez potwierdzenia.
 
 **Przykład 1**
 
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-Remove-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name EventStream
+Remove-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EventStream
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-Remove-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name EventStream
+Remove-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EventStream
 ```
 
 To polecenie programu PowerShell usuwa wejście EventStream w zadaniu StreamingJob.  
 
 ### <a name="remove-azurestreamanalyticsjob--remove-azstreamanalyticsjob"></a>Usuń-AzureStreamAnalyticsOb | Usuń-AzStreamAnalyticsOb
 Asynchronicznie usuwa określone zadanie usługi Stream Analytics na platformie Microsoft Azure.  
-Jeśli określisz parametr Force, zadanie zostanie usunięte bez potwierdzenia.
+Jeśli określisz parametr -Force, zadanie zostanie usunięte bez potwierdzenia.
 
 **Przykład 1**
 
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-Remove-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �Name StreamingJob 
+Remove-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob 
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-Remove-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �Name StreamingJob 
+Remove-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob 
 ```
 
 To polecenie programu PowerShell usuwa zadanie StreamingJob.  
 
 ### <a name="remove-azurestreamanalyticsoutput--remove-azstreamanalyticsoutput"></a>Usuń-AzureStreamAnalyticsOutput | Usuń-AzStreamAnalyticsOutput
 Asynchronicznie usuwa określone dane wyjściowe z zadania usługi Stream Analytics na platformie Microsoft Azure.  
-Jeśli określisz parametr Force, dane wyjściowe zostaną usunięte bez potwierdzenia.
+Jeśli określisz parametr -Force, dane wyjściowe zostaną usunięte bez potwierdzenia.
 
 **Przykład 1**
 
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-Remove-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name Output
+Remove-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-Remove-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name Output
+Remove-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 To polecenie programu PowerShell usuwa dane wyjściowe w zadaniu StreamingJob.  
@@ -492,13 +492,13 @@ Asynchronicznie zatrzymuje zadanie usługi Stream Analytics z systemem na platfo
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-Stop-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �Name StreamingJob 
+Stop-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob 
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-Stop-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �Name StreamingJob 
+Stop-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob 
 ```
 
 To polecenie programu PowerShell zatrzymuje zadanie StreamingJob.  
@@ -511,13 +511,13 @@ Testuje możliwość stream analytics połączyć się z określonym wejściem.
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-Test-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name EntryStream
+Test-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EntryStream
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-Test-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name EntryStream
+Test-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EntryStream
 ```
 
 To polecenie programu PowerShell testuje stan połączenia wejściowego entrystream w streamingjob.  
@@ -530,13 +530,13 @@ Testuje możliwość stream analytics, aby połączyć się z określonym wyjśc
 Program Azure PowerShell 0.9.8:  
 
 ```powershell
-Test-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name Output
+Test-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 Program Azure PowerShell 1.0:  
 
 ```powershell
-Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name Output
+Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 To polecenie programu PowerShell testuje stan połączenia danych wyjściowych w pliku StreamingJob.  

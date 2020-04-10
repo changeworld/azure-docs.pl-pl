@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 0bdd8d454b979250b57cf657d347309b99a86ede
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31588f9657a883e9c4a5600d2d164125a5f68edf
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75892569"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991947"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopiowanie danych z mongodb przy użyciu usługi Azure Data Factory
 
@@ -65,7 +65,7 @@ Następujące właściwości są obsługiwane dla usługi połączonej MongoDB:
 | nazwa użytkownika |Konto użytkownika, aby uzyskać dostęp do MongoDB. |Tak (jeśli używane jest uwierzytelnianie podstawowe). |
 | hasło |Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) |Tak (jeśli używane jest uwierzytelnianie podstawowe). |
 | źródło authSource |Nazwa bazy danych MongoDB, której chcesz użyć do sprawdzenia poświadczeń w celu uwierzytelnienia. |Nie. W przypadku uwierzytelniania podstawowego domyślnie należy użyć konta administratora i bazy danych określonej przy użyciu właściwości databaseName. |
-| Enablessl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu ssl. Wartość domyślna to false.  | Nie |
+| Enablessl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu TLS. Wartość domyślna to false.  | Nie |
 | allowSelfSignedServerCert | Określa, czy zezwolić na certyfikaty z podpisem własnym z serwera. Wartość domyślna to false.  | Nie |
 | connectVia | [Środowisko wykonawcze integracji,](concepts-integration-runtime.md) które mają być używane do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [Wymagania wstępne.](#prerequisites) Jeśli nie zostanie określony, używa domyślnego środowiska wykonawczego integracji platformy Azure. |Nie |
 
@@ -181,7 +181,7 @@ Podczas kopiowania danych z mongodb, następujące mapowania są używane z typ�
 |:--- |:--- |
 | plików binarnych |Bajt[] |
 | Wartość logiczna |Wartość logiczna |
-| Data |DateTime |
+| Date |DateTime |
 | NumberDouble (LiczbaDouble) |Double |
 | LiczbaInt |Int32 |
 | LiczbaLong |Int64 |

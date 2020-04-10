@@ -1,27 +1,38 @@
 ---
 title: Funkcje zdefiniowane przez użytkownika (UDF) w usłudze Azure Cosmos DB
 description: Dowiedz się więcej o funkcjach zdefiniowanych przez użytkownika w usłudze Azure Cosmos DB.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.author: tisande
+ms.openlocfilehash: 455f44fb365152b75a3811563b646c6243f686db
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69614336"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011127"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Funkcje zdefiniowane przez użytkownika (UDF) w usłudze Azure Cosmos DB
 
 Interfejs API SQL zapewnia obsługę funkcji zdefiniowanych przez użytkownika (UDF). Za pomocą skalarnych plików UDF można przekazać w zeru lub wielu argumentach i zwrócić wynik pojedynczego argumentu. Interfejs API sprawdza każdy argument jako legalne wartości JSON.  
 
-Interfejs API rozszerza składnię SQL do obsługi niestandardowej logiki aplikacji przy użyciu plików UDF. Można zarejestrować pliki UDF za pomocą interfejsu API SQL i odwoływać się do nich w kwerendach SQL. Tak naprawdę funkcje zdefiniowane przez użytkownika są w sposób zaawansowany projektowane na potrzeby wywoływania z zapytań. W konsekwencji pliki UDF nie mają dostępu do obiektu kontekstowego, podobnie jak inne typy JavaScript, takie jak procedury składowane i wyzwalacze. Kwerendy są tylko do odczytu i można uruchomić na replikach podstawowych lub pomocniczych. Pliki UDF, w przeciwieństwie do innych typów JavaScript, są przeznaczone do uruchamiania w replikach pomocniczych.
+## <a name="udf-use-cases"></a>Przypadki użycia UDF
 
-Poniższy przykład rejestruje UDF w kontenerze towarów w bazie danych usługi Cosmos. W przykładzie utworzy się `REGEX_MATCH`UDF, którego nazwa jest . Akceptuje dwie wartości ciągu JSON `pattern`i , i sprawdza, `input` czy pierwszy pasuje do `string.match()` wzorca określonego w drugim przy użyciu funkcji JavaScript.
+Interfejs API rozszerza składnię SQL do obsługi niestandardowej logiki aplikacji przy użyciu plików UDF. Można zarejestrować pliki UDF za pomocą interfejsu API SQL i odwoływać się do nich w kwerendach SQL. W przeciwieństwie do procedur składowanych i wyzwalaczy, pliki UDF są tylko do odczytu.
+
+Za pomocą UDFs, można rozszerzyć język zapytań usługi Azure Cosmos DB. UDFs to świetny sposób na wyrażenie złożonej logiki biznesowej w projekcji kwerendy.
+
+Zaleca się jednak unikanie plików UDF, gdy:
+
+- Równoważna [funkcja systemu](sql-query-system-functions.md) już istnieje w usłudze Azure Cosmos DB. Funkcje systemowe zawsze będą używać mniejszej liczby ru niż równoważne UDF.
+- UDF jest jedynym filtrem `WHERE` w klauzuli kwerendy. UDF nie wykorzystują indeksu, więc ocena UDF będzie wymagać ładowania dokumentów. Połączenie dodatkowych predykatów filtru, które używają indeksu, `WHERE` w połączeniu z UDF, w klauzuli zmniejszy liczbę dokumentów przetwarzanych przez UDF.
+
+Jeśli należy używać tego samego UDF wiele razy w kwerendzie, należy odwołać się do UDF w [podkwerendy,](sql-query-subquery.md#evaluate-once-and-reference-many-times)co pozwala na użycie wyrażenia JOIN do oceny UDF raz, ale odwołać się do niego wiele razy.
 
 ## <a name="examples"></a>Przykłady
+
+Poniższy przykład rejestruje UDF w kontenerze towarów w bazie danych usługi Cosmos. W przykładzie utworzy się `REGEX_MATCH`UDF, którego nazwa jest . Akceptuje dwie wartości ciągu JSON `pattern`i , i sprawdza, `input` czy pierwszy pasuje do `string.match()` wzorca określonego w drugim przy użyciu funkcji JavaScript.
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction

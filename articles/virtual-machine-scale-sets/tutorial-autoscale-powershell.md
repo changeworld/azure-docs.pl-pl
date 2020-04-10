@@ -1,19 +1,19 @@
 ---
 title: Samouczek — automatyczne skalowanie zestawu skalowania za pomocą programu Azure PowerShell
 description: Dowiedz się, jak za pomocą programu Azure PowerShell automatycznie skalować zestaw skalowania maszyn wirtualnych w odpowiedzi na wzrosty i spadki zapotrzebowania na procesor CPU
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 2376f039b93ca22d3d5a988818538419489d2456
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b2451779119ab8fb6c1446631797ce32fd376146
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985613"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81009002"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Samouczek: skalowanie automatyczne zestawu skalowania maszyn wirtualnych przy użyciu programu Azure PowerShell
 

@@ -7,17 +7,17 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: aro, openshift, az aro, czerwony kapelusz, cli
-ms.openlocfilehash: 423f09c135da51b8401c1933a4a271d0becd2c8f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 9488ef593cf4ec8600dcb42ea4a2cefa4fcb1446
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349433"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998797"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Tworzenie klastra usługi Azure Red Hat OpenShift 4.3, uzyskiwanie do nich dostępu i zarządzanie nim
 
 > [!IMPORTANT]
-> Należy pamiętać, że usługa Azure Red Hat OpenShift 4.3 jest obecnie dostępna tylko w prywatnej wersji zapoznawczej we wschodnich stanach USA. Akceptacja prywatnej wersji zapoznawczej odbywa się wyłącznie na zaproszenie. Przed podjęciem próby włączenia tej funkcji należy zarejestrować subskrypcję: [rejestracja prywatna w wersji zapoznawczej Azure Red Hat OpenShift](https://aka.ms/aro-preview-register)
+> Należy pamiętać, że usługa Azure Red Hat OpenShift 4.3 jest obecnie dostępna tylko w prywatnej wersji zapoznawczej we wschodnich stanach USA i wschodnich stanach USA 2. Akceptacja prywatnej wersji zapoznawczej odbywa się wyłącznie na zaproszenie. Przed podjęciem próby włączenia tej funkcji należy zarejestrować subskrypcję: [rejestracja prywatna w wersji zapoznawczej Azure Red Hat OpenShift](https://aka.ms/aro-preview-register)
 
 > [!NOTE]
 > Funkcje w wersji zapoznawczej są samoobsługowe i są dostępne w stanie dostępności i są wyłączone z umowy dotyczącej poziomu usług (SLA) i ograniczonej gwarancji. W związku z tym funkcje nie są przeznaczone do użytku produkcyjnego.
@@ -65,7 +65,7 @@ Rozszerzenie `az aro` umożliwia tworzenie, dostęp i usuwanie klastrów Azure R
    az -v
    ...
    Extensions:
-   aro                                0.1.0
+   aro                                0.3.0
    ...
    ```
   
@@ -108,7 +108,7 @@ Wykonaj następujące kroki, aby utworzyć sieć wirtualną zawierającą dwie p
 4. Dodaj dwie puste podsieci do sieci wirtualnej.
 
    ```console
-    for subnet in "$CLUSTER-master" "$CLUSTER-worker"; do
+   for subnet in "$CLUSTER-master" "$CLUSTER-worker"; do
      az network vnet subnet create \
        -g "$RESOURCEGROUP" \
        --vnet-name vnet \
@@ -141,6 +141,8 @@ az aro create \
   --vnet vnet \
   --master-subnet "$CLUSTER-master" \
   --worker-subnet "$CLUSTER-worker" \
+  --cluster-resource-group "aro-$CLUSTER" \
+  --domain "$CLUSTER" \
   --pull-secret "$PULL_SECRET"
 ```
 

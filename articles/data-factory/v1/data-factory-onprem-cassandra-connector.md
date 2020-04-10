@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 05cee60fb1f4d43d1b4ce371aa9f22650b4782da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f96680f1ea91434c84d6606e3637c68c1cb5a84
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79281303"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991505"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Przenoszenie danych z lokalnej bazy danych Cassandra przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
@@ -75,7 +75,7 @@ Poniższa tabela zawiera opis elementów JSON specyficznych dla usługi połącz
 | encryptedCredential |Poświadczenia zaszyfrowane przez bramę. |Nie |
 
 >[!NOTE]
->Obecnie połączenie z cassandra przy użyciu SSL nie jest obsługiwane.
+>Obecnie połączenie z cassandra przy użyciu protokołu TLS nie jest obsługiwane.
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby uzyskać pełną listę sekcji & właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych.](data-factory-create-datasets.md) Sekcje, takie jak struktura, dostępność i zasady zestawu danych JSON są podobne dla wszystkich typów zestawów danych (Azure SQL, Azure blob, tabela platformy Azure itp.).

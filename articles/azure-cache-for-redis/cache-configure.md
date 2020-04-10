@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278742"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010311"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak skonfigurować pamięć podręczną platformy Azure dla programu Redis
 W tym temacie opisano konfiguracje dostępne dla pamięci podręcznej platformy Azure dla wystąpień Redis. W tym temacie opisano również domyślną konfigurację serwera Redis dla pamięci podręcznej azure dla wystąpień Redis.
@@ -30,7 +30,7 @@ Ustawienia usługi Azure Cache for Redis są wyświetlane i konfigurowane w **bl
 
 Za pomocą **menu zasobów**można wyświetlać i konfigurować następujące ustawienia.
 
-* [Przegląd](#overview)
+* [Omówienie](#overview)
 * [Dziennik aktywności](#activity-log)
 * [Kontrola dostępu (IAM)](#access-control-iam)
 * [Tagi](#tags)
@@ -39,12 +39,12 @@ Za pomocą **menu zasobów**można wyświetlać i konfigurować następujące us
     * [Klawisze dostępu](#access-keys)
     * [Ustawienia zaawansowane](#advanced-settings)
     * [Usługa Azure Cache dla redis advisor](#azure-cache-for-redis-advisor)
-    * [Skali](#scale)
+    * [Skalowanie](#scale)
     * [Rozmiar klastra](#cluster-size)
     * [Trwałość danych](#redis-data-persistence)
     * [Aktualizacje harmonogramu](#schedule-updates)
     * [Geo-replication](#geo-replication) (Replikacja geograficzna)
-    * [Sieć wirtualna](#virtual-network)
+    * [Virtual Network](#virtual-network)
     * [Zapora](#firewall)
     * [Właściwości](#properties)
     * [Blokady](#locks)
@@ -53,7 +53,7 @@ Za pomocą **menu zasobów**można wyświetlać i konfigurować następujące us
     * [Importowanie danych](#importexport)
     * [Eksportowanie danych](#importexport)
     * [Ponowne uruchamianie](#reboot)
-* [Monitorowania](#monitoring)
+* [Monitorowanie](#monitoring)
     * [Metryki Redis](#redis-metrics)
     * [Reguły alertów](#alert-rules)
     * [Diagnostyka](#diagnostics)
@@ -91,12 +91,12 @@ Sekcja **Ustawienia** umożliwia dostęp do następujących ustawień pamięci p
 * [Klawisze dostępu](#access-keys)
 * [Ustawienia zaawansowane](#advanced-settings)
 * [Usługa Azure Cache dla redis advisor](#azure-cache-for-redis-advisor)
-* [Skali](#scale)
+* [Skalowanie](#scale)
 * [Rozmiar klastra](#cluster-size)
 * [Trwałość danych](#redis-data-persistence)
 * [Aktualizacje harmonogramu](#schedule-updates)
 * [Geo-replication](#geo-replication) (Replikacja geograficzna)
-* [Sieć wirtualna](#virtual-network)
+* [Virtual Network](#virtual-network)
 * [Zapora](#firewall)
 * [Właściwości](#properties)
 * [Blokady](#locks)
@@ -117,10 +117,10 @@ Następujące ustawienia są skonfigurowane w bloku **Ustawienia zaawansowane.**
 * [Powiadomienia o przestrzeni kluczy (ustawienia zaawansowane)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>Porty dostępu
-Domyślnie dostęp inny niż za pomocą protokołu SSL jest zablokowany dla nowych pamięci podręcznych. Aby włączyć port nieobjęty SSL, kliknij przycisk **Nie** dla **zezwalaj na dostęp tylko za pośrednictwem protokołu SSL** w bloku **Ustawienia zaawansowane,** a następnie kliknij przycisk **Zapisz**.
+Domyślnie dostęp do nowych pamięci podręcznych innych niż TLS/SSL jest wyłączony. Aby włączyć port nieobjęty TLS, kliknij pozycję **Nie** dla **zezwalaj na dostęp tylko za pośrednictwem protokołu SSL** w bloku **Ustawienia zaawansowane,** a następnie kliknij przycisk **Zapisz**.
 
 > [!NOTE]
-> Dostęp SSL do usługi Azure Cache for Redis obsługuje obecnie protokół TLS 1.0, 1.1 i 1.2, ale wersje 1.0 i 1.1 są wkrótce wycofywane.  Więcej informacji można znaleźć na naszej [stronie Usuń TLS 1.0 i 1.1.](cache-remove-tls-10-11.md)
+> Dostęp TLS do usługi Azure Cache for Redis obsługuje obecnie protokół TLS 1.0, 1.1 i 1.2, ale wersje 1.0 i 1.1 są wkrótce wycofywane.  Więcej informacji można znaleźć na naszej [stronie Usuń TLS 1.0 i 1.1.](cache-remove-tls-10-11.md)
 
 ![Pamięć podręczna platformy Azure dla portów dostępu Redis](./media/cache-configure/redis-cache-access-ports.png)
 

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: f2e70a7b900ad918cda05ce34204e2de1e6e67ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47d26ad452b8494e591ee919076e5ade8bf19cd7
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75830194"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011399"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Rozdzielony format tekstu w usłudze Azure Data Factory
 
@@ -30,14 +30,14 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Właściwość typu zestawu danych musi być ustawiona na **Tekst Delimited**. | Tak      |
 | location         | Ustawienia lokalizacji plików. Każdy łącznik oparty na plikach ma swój własny `location`typ lokalizacji i obsługiwane właściwości w obszarze .  | Tak      |
-| columnDelimiter  | Znaki używane do oddzielania kolumn w pliku. Obecnie ogranicznik wielowzorowy jest obsługiwany tylko dla mapowania przepływu danych, ale nie działania kopiowania. <br>Wartością domyślną jest **przecinek `,` **, Gdy ogranicznik kolumny jest zdefiniowany jako pusty ciąg, co oznacza brak ogranicznika, cały wiersz jest traktowany jako pojedyncza kolumna. | Nie       |
-| rowDelimiter     | Pojedynczy znak lub "\r\n" używany do oddzielania wierszy w pliku.<br>Wartością domyślną jest dowolna z następujących wartości **odczytu: ["\r\n", "\r", "\n"]** i **"\n" lub "\r\n" przy zapisie** przez mapowanie przepływu danych i działania kopiowania. <br>Gdy `rowDelimiter` jest ustawiona na nie ogranicznik (pusty ciąg), `columnDelimiter` musi być ustawiona jako nie ogranicznik (pusty ciąg), co oznacza, że do traktowania całej zawartości jako pojedynczej wartości. | Nie       |
+| columnDelimiter  | Znaki używane do oddzielania kolumn w pliku. <br>Wartością domyślną jest **przecinek `,` **. Gdy ogranicznik kolumny jest zdefiniowany jako pusty ciąg, co oznacza brak ogranicznika, cała linia jest traktowana jako pojedyncza kolumna.<br>Obecnie ogranicznik kolumny jako pusty ciąg lub multi-char jest obsługiwany tylko dla mapowania przepływu danych, ale nie kopiuj działania.  | Nie       |
+| rowDelimiter     | Pojedynczy znak lub "\r\n" używany do oddzielania wierszy w pliku. <br>Wartością domyślną jest dowolna z następujących wartości **odczytu: ["\r\n", "\r", "\n"]** i **"\n" lub "\r\n" przy zapisie** przez mapowanie przepływu danych i działania kopiowania. <br>Gdy ogranicznik wiersza jest ustawiony na brak ogranicznika (pusty ciąg), ogranicznik kolumny musi być ustawiony jako nie ogranicznik (pusty ciąg), co oznacza, że cała zawartość jest traktowana jako pojedyncza wartość.<br>Obecnie ogranicznik wiersza jako pusty ciąg jest obsługiwany tylko dla mapowania przepływu danych, ale nie kopiuj działania. | Nie       |
 | quoteChar        | Pojedynczy znak do cytowania wartości kolumny, jeśli zawiera ogranicznik kolumny. <br>Wartością domyślną jest **podwójne cudzysłowy** `"`. <br>W przypadku mapowania przepływu danych `quoteChar` nie może być pustym ciągiem. <br>W przypadku działania `quoteChar` Kopiowanie, gdy jest zdefiniowany jako pusty ciąg, oznacza to, że nie ma znaku cudzysłowu, a wartość kolumny nie jest cytowana i `escapeChar` jest używana do ucieczki od ogranicznika kolumny i siebie. | Nie       |
 | escapeChar       | Pojedynczy znak do ucieczki cudzysłowów wewnątrz wartości cytowanej.<br>Wartością domyślną jest ** `\`ukośnik odwrotny **. <br>W przypadku mapowania przepływu danych `escapeChar` nie może być pustym ciągiem. <br/>W przypadku działania `escapeChar` Kopiowania, gdy `quoteChar` jest zdefiniowany jako pusty ciąg, musi być ustawiona jako pusty ciąg, jak również, w którym to przypadku upewnij się, że wszystkie wartości kolumn nie zawierają ograniczników. | Nie       |
 | firstRowAsHeader | Określa, czy pierwszy wiersz ma być traktowany/tworzyć jako wiersz nagłówka z nazwami kolumn.<br>Dozwolone wartości są **prawdziwe** i **fałszywe** (domyślnie). | Nie       |
 | nullValue        | Określa reprezentację ciągu wartości null. <br>Wartością domyślną jest **pusty ciąg**. | Nie       |
-| encodingName     | Typ kodowania używany do odczytu/zapisu plików testowych. <br>Dozwolone wartości są następujące: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", " IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149" , "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", " WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".<br>Przepływ danych mapowania notatki nie obsługuje kodowania UTF-7. | Nie       |
-| compressionCodec (kod kodu kompresji) | Koder-dekodusz kompresji używany do odczytu/zapisu plików tekstowych. <br>Dozwolone wartości to **bzip2**, **gzip**, **deflate**, **ZipDeflate**, **snappy**lub **lz4**. , aby użyć go podczas zapisywania pliku. <br>Uwaga obecnie Copy activity nie obsługuje "snappy" & "lz4", a mapowanie przepływu danych nie obsługuje "ZipDeflate". <br>Uwaga Podczas korzystania z działania kopiowania do dekompresji plików ZipDeflate i zapisu do magazynu `<path specified in dataset>/<folder named as source zip file>/`danych ujścia opartego na plikach pliki zostaną wyodrębnione do folderu: . | Nie       |
+| encodingName     | Typ kodowania używany do odczytu/zapisu plików testowych. <br>Allowed values are as follows: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149", "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13" , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".<br>Przepływ danych mapowania notatki nie obsługuje kodowania UTF-7. | Nie       |
+| compressionCodec (kod kodu kompresji) | Koder-dekodusz kompresji używany do odczytu/zapisu plików tekstowych. <br>Dozwolone wartości to **bzip2**, **gzip**, **deflate**, **ZipDeflate**, **snappy**lub **lz4**. Wartość domyślna nie jest skompresowana. <br>**Uwaga** obecnie Copy activity nie obsługuje "snappy" & "lz4", a mapowanie przepływu danych nie obsługuje "ZipDeflate". <br>**Uwaga** Podczas korzystania z działania kopiowania do dekompresji plików ZipDeflate i zapisu do magazynu `<path specified in dataset>/<folder named as source zip file>/`danych ujścia opartego na plikach pliki zostaną wyodrębnione do folderu: . | Nie       |
 | Compressionlevel | Stopień kompresji. <br>Dozwolone wartości są **optymalne** lub **najszybsze**.<br>- **Najszybszy:** Operacja kompresji powinna zakończyć się tak szybko, jak to możliwe, nawet jeśli wynikowy plik nie jest optymalnie skompresowany.<br>- **Optymalne**: Operacja kompresji powinna być optymalnie skompresowana, nawet jeśli operacja trwa dłużej. Aby uzyskać więcej informacji, zobacz temat [Poziom kompresji.](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) | Nie       |
 
 Poniżej znajduje się przykład rozdzielanego tekstowego zestawu danych w usłudze Azure Blob Storage:
@@ -60,6 +60,7 @@ Poniżej znajduje się przykład rozdzielanego tekstowego zestawu danych w usłu
             },
             "columnDelimiter": ",",
             "quoteChar": "\"",
+            "escapeChar": "\"",
             "firstRowAsHeader": true,
             "compressionCodec": "gzip"
         }

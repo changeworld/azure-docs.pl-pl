@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 214b2868f9733dfc6790c492543fb86a832f18b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.openlocfilehash: dd13a08b3c2f63baf509efbb730032edd4eba61a
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065506"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011552"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopiowanie i przekształcanie danych w magazynie obiektów blob platformy Azure przy użyciu usługi Azure Data Factory
 
@@ -25,7 +25,8 @@ ms.locfileid: "80065506"
 
 W tym artykule opisano, jak używać działania kopiowania w usłudze Azure Data Factory do kopiowania danych z magazynu obiektów Blob i do usługi Azure oraz do przekształcania danych w magazynie obiektów Blob platformy Azure. Aby dowiedzieć się więcej o usłudze Azure Data Factory, przeczytaj [artykuł wprowadzający](introduction.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+>[!TIP]
+>W przypadku scenariusza migracji usługi data lake lub hurtowni danych dowiedz się więcej od [narzędzia Azure Data Factory do migracji danych z usługi Data Lake lub hurtowni danych na platformę Azure.](data-migration-guidance-overview.md)
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -48,7 +49,7 @@ W przypadku działania Kopiowania ten łącznik magazynu obiektów Blob obsługu
 >[!IMPORTANT]
 >Jeśli włączysz opcję **Zezwalaj zaufanym usługom firmy Microsoft** na dostęp do tego konta magazynu w ustawieniach zapory usługi Azure Storage i chcesz połączyć się z magazynem tożsamości obiektów Blob za pomocą zarządzanego uwierzytelniania tożsamości, należy użyć [uwierzytelniania tożsamości zarządzanej.](#managed-identity)
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -64,7 +65,7 @@ W poniższych sekcjach znajdują się szczegółowe informacje o właściwościa
 - [Tożsamości zarządzane do uwierzytelniania zasobów platformy Azure](#managed-identity)
 
 >[!NOTE]
->Podczas ładowania danych do magazynu danych SQL za pomocą bazy danych, jeśli źródło lub przemieszczania magazynu obiektów Blob jest skonfigurowany z punktem końcowym sieci wirtualnej, należy użyć uwierzytelnienia tożsamości zarządzanej zgodnie z wymaganiami PolyBase i użyć środowiska uruchomieniowego integracji hostowanego z wersją 3.18 lub wyżej. Zobacz sekcję [uwierzytelniania tożsamości zarządzanej](#managed-identity) z więcej wymagań wstępnych konfiguracji.
+>Podczas korzystania z PolyBase do ładowania danych do magazynu danych SQL, jeśli źródło lub magazyn przemieszczania obiektów Blob jest skonfigurowany z punktem końcowym sieci wirtualnej, należy użyć uwierzytelnienia tożsamości zarządzanej zgodnie z wymaganiami PolyBase i używać self-hosted Integration Runtime w wersji 3.18 lub wyższej. Zobacz sekcję [uwierzytelniania tożsamości zarządzanej](#managed-identity) z więcej wymagań wstępnych konfiguracji.
 
 >[!NOTE]
 >Działania usługi HDInsights i usługi Azure Machine Learning obsługują tylko uwierzytelnianie klucza konta magazynu obiektów Blob platformy Azure.
@@ -136,11 +137,6 @@ Podpis dostępu współdzielonego zapewnia delegowany dostęp do zasobów na kon
 > [!NOTE]
 >- Usługa Data Factory obsługuje teraz zarówno **podpisy dostępu współdzielonego usługi,** jak i **podpisy dostępu współdzielonego na koncie.** Aby uzyskać więcej informacji na temat podpisów dostępu współdzielonego, zobacz [Udzielanie ograniczonego dostępu do zasobów usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego (SAS).](../storage/common/storage-sas-overview.md)
 >- W późniejszej konfiguracji zestawu danych ścieżka folderu jest ścieżką bezwzględną, zaczynając od poziomu kontenera. Należy skonfigurować jeden wyrównany ze ścieżką w identyfikatorze URI sygnatury dostępu Współdzielonego.
-
-> [!TIP]
-> Aby wygenerować podpis dostępu współdzielonego usługi dla konta magazynu, można wykonać następujące polecenia programu PowerShell. Wymień symbole zastępcze i przyznaj wymagane uprawnienia.
-> `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
-> `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 Aby korzystać z uwierzytelniania podpisu dostępu współdzielonego, obsługiwane są następujące właściwości:
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 74d56d553c4049a98b4401c66b27ae33e31da5c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40a16d559a96c88a864ef809d40d798b99746230
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927114"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992100"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopiowanie danych z Marketo przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Można skopiować dane z Marketo do dowolnego obsługiwanego magazynu danych uj�
 Usługa Azure Data Factory udostępnia wbudowany sterownik, aby włączyć łączność, w związku z tym nie trzeba ręcznie zainstalować żadnego sterownika przy użyciu tego łącznika.
 
 >[!NOTE]
->To złącze Marketo jest zbudowane na interfejsie API Marketo REST. Należy pamiętać, że Marketo ma [równoczesny limit żądań](https://developers.marketo.com/rest-api/) po stronie usługi. Jeśli trafisz błędy z napisem "Błąd podczas próby użycia interfejsu API REST: Maksymalny limit szybkości "100" przekroczony w '20' s (606)" lub "Błąd podczas próby użycia interfejsu API REST: Osiągnięty limit dostępu współbieżnego '10'", należy rozważyć zmniejszenie jednoczesnego działania kopiowania do uruchomień zmniejszyć liczbę żądań do usługi.
+>To złącze Marketo jest zbudowane na interfejsie API Marketo REST. Należy pamiętać, że Marketo ma [równoczesny limit żądań](https://developers.marketo.com/rest-api/) po stronie usługi. Jeśli trafisz błędy z napisem "Błąd podczas próby użycia interfejsu API REST: Maksymalny limit szybkości "100" przekroczony w '20' sek (606)" lub "Błąd podczas próby użycia interfejsu API REST: Osiągnięty limit dostępu współbieżnego '10'", należy rozważyć zmniejszenie równoczesnych uruchomień działania kopiowania w celu zmniejszenia liczby żądań do usługi.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -56,8 +56,8 @@ Następujące właściwości są obsługiwane dla usługi połączonej Marketo:
 | clientId | Identyfikator klienta twojej usługi Marketo.  | Tak |
 | clientSecret | Tajemnica klienta twojej usługi Marketo. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Tak |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartością domyślną jest true.  | Nie |
-| useHostVerification | Określa, czy nazwa hosta w certyfikacie serwera ma być zgodna z nazwą hosta serwera podczas łączenia się za ok. Wartością domyślną jest true.  | Nie |
-| usePeerVerification | Określa, czy podczas nawiązywania połączenia za łącze SSL należy sprawdzić tożsamość serwera. Wartością domyślną jest true.  | Nie |
+| useHostVerification | Określa, czy nazwa hosta w certyfikacie serwera ma być zgodna z nazwą hosta serwera podczas łączenia się za korzystając z protokołu TLS. Wartością domyślną jest true.  | Nie |
+| usePeerVerification | Określa, czy podczas nawiązywania połączenia zawersyfikowany przez TLS ma być weryfikowany przez tożsamość serwera. Wartością domyślną jest true.  | Nie |
 
 **Przykład:**
 

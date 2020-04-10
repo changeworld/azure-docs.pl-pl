@@ -1,21 +1,21 @@
 ---
 title: Omówienie autoskalowania w zestawach skalowania maszyn wirtualnych platformy Azure
 description: Dowiedz się więcej o różnych sposobach automatycznego skalowania zestawu skalowania maszyny wirtualnej platformy Azure na podstawie wydajności lub ustalonego harmonogramu
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb96be187502afcccfd3fb2c88f709facfbc3b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b3af40de107fd9273ec50425c58afc9772ea426
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278140"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010345"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Omówienie autoskalowania w zestawach skalowania maszyn wirtualnych platformy Azure
 Zestaw skalowania maszyny wirtualnej platformy Azure może automatycznie zwiększać lub zmniejszać liczbę wystąpień maszyn wirtualnych, które uruchamiają aplikację. To zautomatyzowane i elastyczne zachowanie zmniejsza obciążenie związane z zarządzaniem w celu monitorowania i optymalizacji wydajności aplikacji. Tworzenie reguł, które definiują dopuszczalną wydajność dla pozytywnego doświadczenia klienta. Po spełnieniu tych zdefiniowanych progów reguły skalowania automatycznego podejmują działania w celu dostosowania pojemności zestawu skalowania. Można również zaplanować zdarzenia, aby automatycznie zwiększać lub zmniejszać pojemność zestawu skalowania o ustalonych godzinach. Ten artykuł zawiera omówienie, które metryki wydajności są dostępne i jakie akcje można wykonać skalowanie automatyczne.
@@ -34,7 +34,7 @@ Można utworzyć reguły skalowania automatycznego, które wbudowane metryki hos
 
 Reguły automatycznego skalowania, które korzystają z metryk opartych na hoście, można utworzyć za pomocą jednego z następujących narzędzi:
 
-- [Portal Azure](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure Portal](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
 - [Interfejs wiersza polecenia platformy Azure](tutorial-autoscale-cli.md)
 - [Szablon Azure](tutorial-autoscale-template.md)

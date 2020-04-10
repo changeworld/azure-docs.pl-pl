@@ -4,18 +4,18 @@ description: Lista usług obsługujących tożsamości zarządzane dla zasobów 
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 04/03/2020
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c7a65df100cd58561ce12ac2ae01281eebd419a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 45a248300cd61a0e57b9f35c8905d7c335069a27
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656049"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991283"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Usługi obsługujące tożsamości zarządzane dla zasobów platformy Azure
 
@@ -109,7 +109,7 @@ Typ tożsamości zarządzanej | Wszystkie ogólnie dostępne<br>Globalne regiony
 Zapoznaj się z następującą listą, aby skonfigurować tożsamość zarządzaną dla usługi Azure Logic Apps (w regionach, jeśli są dostępne):
 
 - [Azure Portal](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
-- [Szablon usługi Azure Resource Manager](/azure/app-service/overview-managed-identity)
+- [Szablon usługi Azure Resource Manager](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 
@@ -270,6 +270,9 @@ Zapoznaj się z następującą listą, aby skonfigurować dostęp do usługi Azu
 | Azure Government | `https://*.asazure.usgovcloudapi.net` | ![Dostępne][check] |
 | Azure (Niemcy) | `https://*.asazure.cloudapi.de` | ![Dostępne][check] |
 | Azure w Chinach — 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![Dostępne][check] |
+
+> [!Note]
+> Usługa Microsoft Power BI obsługuje również [tożsamości zarządzane](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity).
 
 
 [check]: media/services-support-managed-identities/check.png "Dostępne"

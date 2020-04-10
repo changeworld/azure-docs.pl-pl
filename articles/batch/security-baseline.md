@@ -2,18 +2,17 @@
 title: Plan bazowy zabezpieczeń platformy Azure dla partii
 description: Plan bazowy zabezpieczeń platformy Azure dla partii
 author: msmbaldwin
-manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a9569c1f5de797c77f447b5df15e85a57e8be84b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fef1afb9748fd6f2f59b972c451d95ae1204ef70
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472932"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011637"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Plan bazowy zabezpieczeń platformy Azure dla partii
 
@@ -31,7 +30,6 @@ Aby uzyskać więcej informacji, zobacz [omówienie planów bazowych zabezpiecze
 
 **Wskazówki:** Wdrażanie puli partii azure w sieci wirtualnej. Aby umożliwić węzłom obliczeniowym puli bezpieczną komunikację z innymi maszynami wirtualnymi lub z siecią lokalną, można aprowizować pulę w podsieci sieci wirtualnej platformy Azure. Ponadto wdrażanie puli w sieci wirtualnej zapewnia kontrolę nad sieciową grupą zabezpieczeń (NSG) używaną do zabezpieczania interfejsów sieciowych poszczególnych węzłów, a także nad podsiecią. Skonfiguruj sieć sieciowej grupy danych, aby zezwalać na ruch tylko z zaufanych adresów IP/lokalizacji w Internecie.
 
-
 Jak utworzyć pulę wsadową platformy Azure w sieci wirtualnej:
 
 https://docs.microsoft.com/azure/batch/batch-virtual-network
@@ -44,16 +42,13 @@ https://docs.microsoft.com/azure/batch/batch-virtual-network
 
 **Wskazówki:** Użyj usługi Azure Security Center i korygować zalecenia dotyczące ochrony sieci związane z siecią wirtualną/ siecią grupy zabezpieczeń (NSG) skojarzoną z pulą usług Batch. Włącz dzienniki przepływu w grupie ndsg używanej do ochrony puli usług wsadowych i wysyłanie dzienników do konta usługi Azure Storage w celu inspekcji ruchu. Można również wysłać dzienniki przepływu nsg do obszaru roboczego usługi Azure Log Analytics i użyć usługi Azure Traffic Analytics, aby zapewnić wgląd w przepływ ruchu w chmurze platformy Azure. Niektóre zalety usługi Azure Traffic Analytics to możliwość wizualizacji aktywności sieciowej i identyfikowania punktów wyszukiwania, identyfikowania zagrożeń bezpieczeństwa, zrozumienia wzorców przepływu ruchu i określania błędnych konfiguracji sieci.
 
-
 Jak włączyć dzienniki przepływu nsg:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-
 Jak włączyć i korzystać z analizy ruchu:
 
 https://docs.microsoft.com/azure/network-watcher/traffic-analytics
-
 
 Poznaj zabezpieczenia sieci udostępniane przez usługę Azure Security Center:
 
@@ -65,7 +60,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ### <a name="13-protect-critical-web-applications"></a>1.3: Ochrona krytycznych aplikacji internetowych
 
-**Wskazówki:** Nie dotyczy, benchmark jest przeznaczony dla aplikacji sieci web działających w usłudze Azure App Service lub wystąpieniach IaaS.
+**Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla zasobów obliczeniowych.
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -75,11 +70,9 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 **Wskazówki:** Włącz usługę Azure DDoS (rozproszona odmowa usługi) Standardowa ochrona w sieci wirtualnej chroniąca pulę usługi Azure Batch w celu ochrony przed atakami DDoS. Usługa Azure Security Center Integrated Threat Intelligence umożliwia odmawianie komunikacji ze znanymi złośliwymi lub nieużywanym internetowymi adresami IP.
 
-
 Jak skonfigurować ochronę przed atakami DDoS:
 
 https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
-
 
 Poznaj zintegrowaną analizę zagrożeń w centrum zabezpieczeń platformy Azure:
 
@@ -93,7 +86,6 @@ https://docs.microsoft.com/azure/security-center/security-center-alerts-service-
 
 **Wskazówki:** Włącz dzienniki przepływu w sieciowej grupie zabezpieczeń (NSG) używanej do ochrony puli usługi Azure Batch i wysyłaniu dzienników do konta usługi Azure Storage w celu inspekcji ruchu.
 
-
 Jak włączyć dzienniki przepływu nsg:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
@@ -106,22 +98,17 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-loggin
 
 **Wskazówki:** Jeśli jest to wymagane do celów zgodności, wybierz wirtualne urządzenie sieciowe z portalu Azure Marketplace, które obsługuje systemy wykrywania włamań (IDS) i funkcje systemów zapobiegania włamaniom (IPS) z możliwością inspekcji ładunku.
 
-
 Jeśli wykrywanie włamań i/lub zapobieganie na podstawie inspekcji ładunku nie jest wymagane, można użyć zapory azure z analizą zagrożeń. Filtrowanie oparte na analizie zagrożeń zapory platformy Azure może ostrzegać i odmawiać ruchu do i ze znanych złośliwych adresów IP i domen. Adresy IP i domeny pochodzą z źródła danych microsoft Threat Intelligence.
 
-
 Wdrażanie zapory platformy Azure z publicznym adresem IP w tej samej sieci wirtualnej co węzły puli wsadowej platformy Azure. Konfigurowanie reguł tłumaczenia adresów sieciowych (NAT) między zaufanymi lokalizacjami w Internecie a prywatnymi adresami IP poszczególnych węzłów puli. Na zaporze platformy Azure w obszarze Analizy zagrożeń skonfiguruj "Alert i odmów", aby blokować alerty i blokowanie ruchu do/ze znanych złośliwych adresów IP i domen. Adresy IP i domeny pochodzą z źródła danych microsoft Threat Intelligence i uwzględniane są tylko rekordy najwyższego zaufania. 
-
 
 Jak utworzyć pulę wsadową platformy Azure w sieci wirtualnej:
 
 https://docs.microsoft.com/azure/batch/batch-virtual-network
 
-
 Jak wdrożyć Zaporę platformy Azure:
 
 https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
-
 
 Azure Marketplace:
 
@@ -143,7 +130,6 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 **Wskazówki:** Użyj tagów usługi sieci wirtualnej do definiowania kontroli dostępu do sieci w sieciowych grupach zabezpieczeń lub zapory platformy Azure skojarzonych z pulami usługi Azure Batch. Podczas tworzenia reguł zabezpieczeń można użyć tagów usługi zamiast konkretnych adresów IP. Określając nazwę tagu usługi (np. ApiManagement) w odpowiednim polu źródłowym lub docelowym reguły, można zezwolić lub odmówić ruchu dla odpowiedniej usługi. Firma Microsoft zarządza prefiksami adresów objętymi tagiem usługi i automatycznie aktualizuje tag usługi w miarę zmiany adresów.
 
-
 Zrozumienie tagów usług i używanie ich:
 
 https://docs.microsoft.com/azure/virtual-network/service-tags-overview
@@ -155,8 +141,6 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Obsługa standardowych konfiguracji zabezpieczeń dla urządzeń sieciowych
 
 **Wskazówki:** Definiowanie i implementowanie standardowych konfiguracji zabezpieczeń dla zasobów sieciowych skojarzonych z pulami usług Azure Batch za pomocą zasad platformy Azure. Użyj aliasów zasad platformy Azure w obszarach nazw "Microsoft.Batch" i "Microsoft.Network", aby utworzyć niestandardowe zasady do inspekcji lub wymuszenia konfiguracji sieciowej pul usługi Azure Batch.
-
-
 
 Jak skonfigurować zasady platformy Azure i zarządzać nimi:
 
@@ -170,22 +154,17 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Wskazówki:** Użyj tagów dla grup usług sieciowych (NSG) i innych zasobów związanych z zabezpieczeniami sieci i przepływem ruchu, które są skojarzone z pulami wsadowymi platformy Azure. W przypadku poszczególnych reguł sieciowej grupy danych sieciowych należy użyć pola "Opis", aby określić potrzeby biznesowe i/lub czas trwania (itp.) dla reguł umożliwiających ruch do/z sieci.
 
-
 Użyj dowolnej z wbudowanych definicji zasad platformy Azure związanych z tagowaniem, takich jak "Wymagaj tagu i jego wartości", aby upewnić się, że wszystkie zasoby są tworzone za pomocą tagów i powiadamiać o istniejących nieoznakowanych zasobach.
 
-
 Można użyć narzędzia Azure PowerShell lub interfejsu wiersza polecenia platformy Azure do wyszukiwania lub wykonywania akcji na podstawie zasobów na podstawie ich tagów.
-
 
 Jak tworzyć i używać tagów:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-
 Jak utworzyć sieć wirtualną:
 
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
-
 
 Jak utworzyć nsg:
 
@@ -223,8 +202,6 @@ Jak tworzyć alerty w usłudze Azure Monitor:https://docs.microsoft.com/azure/az
 
 **Wskazówki:** Wbudowane konto usługi Azure Batch w usłudze Azure Monitor w celu zagregowania danych zabezpieczeń generowanych przez urządzenia klastra. Korzystać z niestandardowych zapytań do wykrywania zagrożeń i reagowania na nie w środowisku.  W przypadku monitorowania na poziomie zasobów usługi Azure Batch należy użyć interfejsów API usługi Batch do monitorowania lub wykonywania zapytań o stan zasobów, w tym zadań, zadań, węzłów i pul.
 
-
-
 Jak przywdzielić konto usługi Azure Batch do usługi Azure Monitor:
 
 https://docs.microsoft.com/azure/batch/batch-diagnostics
@@ -237,14 +214,11 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 **Wskazówki:** W przypadku monitorowania poziomu konta usługi Azure Batch należy monitorować każde konto usługi Batch przy użyciu funkcji usługi Azure Monitor. Usługa Azure Monitor zbiera metryki i opcjonalnie dzienniki diagnostyczne dla zasobów o zakresie na poziomie konta usługi Batch, takich jak pule, zadania i zadania. Zbieraj i konsumuj te dane ręcznie lub programowo, aby monitorować działania na koncie usługi Batch i diagnozować problemy.
 
-
 W przypadku monitorowania poziomu zasobów usługi Azure Batch należy używać interfejsów API usługi Azure Batch do monitorowania lub wykonywania zapytań o stan zasobów, w tym zadań, zadań, węzłów i pul.
-
 
 Jak skonfigurować monitorowanie i rejestrowanie na poziomie konta usługi Azure Batch:
 
 https://docs.microsoft.com/azure/batch/monitoring-overview
-
 
 Zrozumienie monitorowania na poziomie zasobów wsadowych:
 
@@ -258,14 +232,11 @@ https://docs.microsoft.com/azure/batch/monitoring-overview#batch-resource-monito
 
 **Wskazówki:** Usługa Azure Monitor zbiera metryki i dzienniki diagnostyczne dla zasobów na koncie usługi Azure Batch. Zbieraj i korzystaj z tych danych na różne sposoby, aby monitorować konto usługi Azure Batch i diagnozować problemy. Można również skonfigurować alerty metryki, dzięki czemu otrzymywać powiadomienia, gdy metryka osiągnie określoną wartość.
 
-
 W razie potrzeby możesz połączyć się z poszczególnymi węzłami puli za pośrednictwem powłoki zabezpieczonej (SSH) lub protokołu RDP (Remote Desktop Protocol), aby uzyskać dostęp do dzienników lokalnego systemu operacyjnego.
-
 
 Jak zbierać dzienniki diagnostyczne z konta usługi Azure Batch:
 
 https://docs.microsoft.com/azure/batch/batch-diagnostics#batch-diagnostics
-
 
 Jak zdalnie połączyć się z węzłami puli usługi Azure Batch:
 
@@ -279,11 +250,9 @@ https://docs.microsoft.com/azure/batch/batch-api-basics#error-handling
 
 **Wskazówki:** Wbudowane konto wsadowe platformy Azure w usłudze Azure Monitor. Upewnij się, że używany obszar roboczy usługi Azure Log Analytics ma okres przechowywania dzienników ustawiony zgodnie z przepisami dotyczącymi zgodności obowiązującymi w organizacji
 
-
 Jak skonfigurować monitorowanie i rejestrowanie usługi Azure Batch:
 
 https://docs.microsoft.com/azure/batch/monitoring-overview
-
 
 Jak skonfigurować okres przechowywania obszaru roboczego usługi Azure Log Analytics:
 
@@ -297,7 +266,6 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage
 
 **Wskazówki:** Tworzenie alertów metryk usługi Azure Batch, które wyzwalają, gdy wartość określonej metryki przekroczy dany próg.
 
-
 Jak skonfigurować alerty metryki usługi Azure Batch:
 
 https://docs.microsoft.com/azure/batch/batch-diagnostics
@@ -309,7 +277,6 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Włącz alerty dla nietypowej aktywności
 
 **Wskazówki:** Tworzenie alertów metryk usługi Azure Batch, które wyzwalają, gdy wartość określonej metryki przekroczy dany próg.
-
 
 Jak skonfigurować alerty metryki usługi Azure Batch:
 
@@ -351,19 +318,15 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 **Wskazówki:** Obsługa rekordu lokalnego konta administracyjnego, który jest tworzony podczas inicjowania obsługi administracyjnej puli usługi Azure Batch, a także innych kont, które można utworzyć. Ponadto jeśli używana jest integracja usługi Azure Active Directory (AAD), usługa AAD ma wbudowane role, które muszą być jawnie przypisane i w związku z tym są możliwe do queryable. Moduł AAD PowerShell służy do wykonywania kwerend adhoc w celu odnajdowania kont, które są członkami grup administracyjnych.
 
-
 Ponadto można użyć zaleceń dotyczących tożsamości i zarządzania dostępem usługi Azure Security Center.
-
 
 Jak uzyskać rolę katalogu w ujrzeniu usługi AAD w programie PowerShell:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-
 Jak uzyskać członków roli katalogu w ujmowaniu w programie AAD za pomocą programu PowerShell:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
-
 
 Jak monitorować tożsamość i dostęp za pomocą usługi Azure Security Center:
 
@@ -377,7 +340,6 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Wskazówki:** Podczas inicjowania obsługi administracyjnej puli usługi Azure Batch, masz możliwość tworzenia kont komputera lokalnego. Nie ma żadnych domyślnych haseł do zmiany, jednak można określić różne hasła dla dostępu do zabezpieczonej powłoki (SSH) i protokołu RDP (Remote Desktop Protocol). Po skonfigurowaniu puli wsadowej platformy Azure można wygenerować losowego użytkownika dla poszczególnych węzłów w witrynie Azure portal lub za pośrednictwem interfejsu API usługi Azure Resource Manager.
 
-
 Jak dodać użytkownika do określonego węzła obliczeniowego:
 
 https://docs.microsoft.com/rest/api/batchservice/computenode/adduser
@@ -390,14 +352,11 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/adduser
 
 **Wskazówki:** Integruj uwierzytelnianie dla aplikacji wsadowych platformy Azure z usługą Azure Active Directory. Tworzenie zasad i procedur dotyczących korzystania z dedykowanych kont administracyjnych.
 
-
 Ponadto można użyć zaleceń dotyczących tożsamości i zarządzania dostępem usługi Azure Security Center.
-
 
 Jak uwierzytelnić aplikacje wsadowe za pomocą usługi Azure Active Directory:
 
 https://docs.microsoft.com/azure/batch/batch-aad-auth
-
 
 Jak monitorować tożsamość i dostęp za pomocą usługi Azure Security Center:
 
@@ -418,13 +377,12 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 ### <a name="35-use-multifactor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Użyj uwierzytelniania wieloskładnikowego dla wszystkich dostępu opartego na usłudze Azure Active Directory.
 
 **Wskazówki:** Integruj uwierzytelnianie dla aplikacji wsadowych platformy Azure z usługą Azure Active Directory (AAD). Włącz uwierzytelnianie wieloskładnikowe usługi AAD (MFA) i postępuj zgodnie z zaleceniami dotyczącymi zarządzania tożsamościami i dostępem usługi Azure Security Center.
- 
 
+ 
 
 Jak włączyć usługę MFA na platformie Azure:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
-
 
 Jak monitorować tożsamość i dostęp w usłudze Azure Security Center:
 
@@ -438,11 +396,9 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Wskazówki:** Użyj paws (uprzywilejowanych stacji roboczych dostępu) z uwierzytelnianiem wieloskładnikowym (MFA) skonfigurowany do logowania się i konfigurowania zasobów usługi Azure Batch.
 
-
 Dowiedz się więcej o stacjach roboczych z dostępem uprzywilejowanym:
 
 https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
-
 
 Jak włączyć usługę MFA na platformie Azure:
 
@@ -456,11 +412,9 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 **Wskazówki:** Jeśli masz zintegrowane uwierzytelnianie dla aplikacji wsadowych platformy Azure za pomocą usługi Azure Active Directory (AAD), użyj raportów zabezpieczeń usługi Azure Active Directory do generowania dzienników i alertów, gdy w środowisku występuje podejrzane lub niebezpieczne działanie. Usługa Azure Security Center służy do monitorowania tożsamości i dostępu do aktywności.
 
-
 Jak zidentyfikować użytkowników usługi Azure AD oflagowanych pod kątem ryzykownych działań:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
-
 
 Jak monitorować tożsamość użytkowników i dostęp do aktywności w usłudze Azure Security Center:
 
@@ -474,8 +428,6 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Wskazówki:** Jeśli masz zintegrowane uwierzytelnianie dla aplikacji wsadowych platformy Azure za pomocą usługi Azure Active Directory, możesz użyć lokalizacji nazwanych dostępu warunkowego, aby zezwolić na dostęp tylko z określonych grup logicznych zakresów adresów IP lub krajów/regionów.
 
-
-
 Jak skonfigurować nazwane lokalizacje na platformie Azure:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
@@ -488,11 +440,9 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-
 
 **Wskazówki:** Użyj usługi Azure Active Directory (AAD) jako centralnego systemu uwierzytelniania i autoryzacji i integruj uwierzytelnianie dla aplikacji wsadowych platformy Azure z usługą AAD. Usługa AAD chroni dane przy użyciu silnego szyfrowania danych w spoczynku i podczas przesyłania. AAD również sole, skróty i bezpiecznie przechowuje poświadczenia użytkownika.
 
-
 Jak utworzyć i skonfigurować wystąpienie AAD:
 
 https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
-
 
 Jak uwierzytelnić aplikacje partii za pomocą usługi AAD:
 
@@ -506,7 +456,6 @@ https://docs.microsoft.com/azure/batch/batch-aad-auth
 
 **Wskazówki:** Usługa Azure Active Directory(AAD) udostępnia dzienniki ułatwiające odnajdowanie starych kont. Ponadto można użyć przeglądów dostępu tożsamości platformy Azure do efektywnego zarządzania członkostwem w grupach, dostępem do aplikacji dla przedsiębiorstw i przypisaniami ról. Dostęp użytkowników można regularnie przeglądać, aby upewnić się, że tylko właściwi użytkownicy mają stały dostęp.
 
-
 Jak korzystać z przeglądów dostępu tożsamości platformy Azure:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
@@ -518,7 +467,6 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Monitorowanie prób uzyskania dostępu do dezaktywowanych kont
 
 **Wskazówki:** Tworzenie ustawień diagnostycznych dla kont użytkowników usługi Azure Active Directory, wysyłanie dzienników inspekcji i dzienników logowania do obszaru roboczego usługi Azure Log Analytics. Konfigurowanie żądanych alertów w obszarze roboczym usługi Azure Log Analytics.
-
 
 Jak zintegrować dzienniki aktywności platformy Azure z usługą Azure Monitor:
 
@@ -532,16 +480,13 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integ
 
 **Wskazówki:** Użyj funkcji wykrywania ryzyka i ochrony tożsamości usługi Azure Active Directory (AAD), aby skonfigurować automatyczne odpowiedzi na wykryte podejrzane akcje związane z tożsamościami użytkowników. Ponadto można pozyskiwania danych do usługi Azure Sentinel do dalszego badania.
 
-
 Jak wyświetlić ryzykowne logowania AAD:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-
 Jak skonfigurować i włączyć zasady ryzyka ochrony tożsamości:
 
 https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
-
 
 Jak ować wobec pokład Azure Wartownik:
 
@@ -553,7 +498,11 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 ### <a name="313-divprovide-microsoft-with-access-to-relevant-customer-data-during-support-scenariosbrdiv"></a>3.13: <div>Zapewnij firmie Microsoft dostęp do odpowiednich danych klienta podczas scenariuszy pomocy technicznej<br></div>
 
-**Wskazówki**: Niedostępne; Skrytka klienta nie jest jeszcze obsługiwana dla usługi Azure Batch. Lista obsługiwanych usług skrytki klienta:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+**Wskazówki**: Niedostępne; Skrytka klienta nie jest jeszcze obsługiwana dla usługi Azure Batch.
+ 
+Lista obsługiwanych usług skrytki klienta:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -567,7 +516,6 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Wskazówki:** Użyj tagów, aby pomóc w śledzeniu zasobów platformy Azure, które przechowują lub przetwarzają poufne informacje.
 
-
 Jak tworzyć i używać tagów:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
@@ -580,11 +528,9 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Wskazówki**: Implementowanie oddzielnych subskrypcji i/lub grup zarządzania do programowania, testowania i produkcji. Pule wsadowe platformy Azure powinny być oddzielone siecią wirtualną/podsiecią, odpowiednio oznakowane i zabezpieczone sieciowymi grupami zabezpieczeń (NSG). Dane usługi Azure Batch powinny znajdować się w zabezpieczonym koncie usługi Azure Storage.
 
-
 Jak utworzyć pulę wsadową platformy Azure w sieci wirtualnej:
 
 https://docs.microsoft.com/azure/batch/batch-virtual-network
-
 
 Jak zabezpieczyć konta usługi Azure Storage:
 
@@ -598,17 +544,13 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 **Wskazówki:** Dla kont usługi Azure Storage skojarzonych z pulami wsadowymi platformy Azure, które zawierają poufne informacje, oznacz je jako poufne przy użyciu tagów i zabezpiecz je za pomocą najlepszych rozwiązań platformy Azure.
 
-
 Funkcje identyfikacji, klasyfikacji i zapobiegania stratom nie są jeszcze dostępne dla usługi Azure Storage ani zasobów obliczeniowych. Implementowanie rozwiązania innych firm, jeśli jest to wymagane do celów zgodności.
 
-
 W przypadku podstawowej platformy, która jest zarządzana przez firmę Microsoft, firma Microsoft traktuje całą zawartość klienta jako wrażliwą i dokłga mierze chroni przed utratą i ekspozycją danych klientów. Aby zapewnić bezpieczeństwo danych klientów na platformie Azure, firma Microsoft wdrożyła i utrzymuje zestaw niezawodnych mechanizmów kontroli i możliwości ochrony danych.
-
 
 Poznaj ochronę danych klientów na platformie Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
 
 Jak zabezpieczyć konta usługi Azure Storage:
 
@@ -622,13 +564,11 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 **Wskazówki**: Szyfrowanie wszystkich poufnych informacji podczas przesyłania. Zasoby platformy Microsoft Azure będą domyślnie negocjować usługę TLS 1.2. Upewnij się, że klienci łączący się z pulami wsadowymi platformy Azure lub magazynami danych (konta usługi Azure Storage) mogą negocjować tls 1.2 lub więcej.
 
-
 Upewnij się, że protokół HTTPS jest wymagany do uzyskania dostępu do konta magazynu zawierającego dane usługi Azure Batch.
-
 
 Poznaj szyfrowanie konta usługi Azure Storage w trybie przesyłania:
 
-https://docs.microsoft.com/azure/storage/blobs/security-recommendations
+https://docs.microsoft.com/azure/storage/common/storage-security-guide#encryption-in-transit
 
 **Monitorowanie usługi Azure Security Center**: Tak
 
@@ -638,17 +578,13 @@ https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
 **Wskazówki:** Dla kont usługi Azure Storage skojarzonych z pulami wsadowymi platformy Azure, które zawierają poufne informacje, oznacz je jako poufne przy użyciu tagów i zabezpiecz je za pomocą najlepszych rozwiązań platformy Azure.
 
-
 Funkcje identyfikacji, klasyfikacji i zapobiegania stratom nie są jeszcze dostępne dla usługi Azure Storage ani zasobów obliczeniowych. Implementowanie rozwiązania innych firm, jeśli jest to wymagane do celów zgodności.
 
-
 W przypadku podstawowej platformy, która jest zarządzana przez firmę Microsoft, firma Microsoft traktuje całą zawartość klienta jako wrażliwą i dokłga mierze chroni przed utratą i ekspozycją danych klientów. Aby zapewnić bezpieczeństwo danych klientów na platformie Azure, firma Microsoft wdrożyła i utrzymuje zestaw niezawodnych mechanizmów kontroli i możliwości ochrony danych.
-
 
 Poznaj ochronę danych klientów na platformie Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
 
 Jak zabezpieczyć konta usługi Azure Storage:
 
@@ -662,11 +598,9 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 **Wskazówki:** Użyj kontroli dostępu opartej na rolach usługi Azure Active Directory (AAD), aby kontrolować dostęp do płaszczyzny zarządzania zasobami platformy Azure, w tym kontami wsadowymi, pulami partii i kontami magazynu.
 
-
 Poznaj usługę Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
-
 
 Jak skonfigurować rbac na platformie Azure:
 
@@ -680,11 +614,7 @@ https://docs.microsoft.com/azure/role-based-access-control/role-assignments-port
 
 **Wskazówki:** Funkcje identyfikacji, klasyfikacji i zapobiegania stratom danych nie są jeszcze dostępne dla usługi Azure Storage ani zasobów obliczeniowych. Implementowanie rozwiązania innych firm, jeśli jest to wymagane do celów zgodności.
 
-
-
 W przypadku podstawowej platformy, która jest zarządzana przez firmę Microsoft, firma Microsoft traktuje całą zawartość klienta jako wrażliwą i dokłga mierze chroni przed utratą i ekspozycją danych klientów. Aby zapewnić bezpieczeństwo danych klientów na platformie Azure, firma Microsoft wdrożyła i utrzymuje zestaw niezawodnych mechanizmów kontroli i możliwości ochrony danych.
-
-
 
 Poznaj ochronę danych klientów na platformie Azure:
 
@@ -698,8 +628,6 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Wskazówki:** W przypadku kont magazynu skojarzonych z kontem usługi Azure Batch zaleca się zezwolenie firmie Microsoft na zarządzanie kluczami szyfrowania, jednak w razie potrzeby można zarządzać własnymi kluczami.
 
-
-
 Jak zarządzać kluczami szyfrowania dla kont usługi Azure Storage:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
@@ -712,17 +640,11 @@ https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
 **Wskazówki:** Użyj usługi Azure Monitor z dziennikiem aktywności platformy Azure, aby utworzyć alerty dotyczące tego, kiedy zmiany mają miejsce w krytycznych zasobach platformy Azure związanych z kontami/pulami/pulami usługi Azure Batch lub skojarzonymi z nimi.
 
-
-
 Skonfiguruj ustawienia diagnostyczne dla kont magazynu skojarzonych z pulą wsadową platformy Azure, aby monitorować i rejestrować wszystkie operacje CRUD względem danych puli.
-
-
 
 Jak tworzyć alerty dla zdarzeń dziennika aktywności platformy Azure:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
-
-
 
 Jak włączyć dodatkowe rejestrowanie/inspekcję konta usługi Azure Storage:
 
@@ -740,7 +662,6 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 **Wskazówki:** W przypadku węzłów puli wsadowej platformy Azure użytkownik jest odpowiedzialny za zarządzanie rozwiązaniem do zarządzania lukami w zabezpieczeniach.
 
-
 Opcjonalnie, jeśli masz subskrypcję platformy Rapid7, Qualys lub inną platformę do zarządzania lukami, możesz ręcznie zainstalować agentów oceny luk w zabezpieczeniach w węzłach puli usługi Batch i zarządzać węzłami za pośrednictwem odpowiedniego portalu.
 
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
@@ -751,6 +672,7 @@ Opcjonalnie, jeśli masz subskrypcję platformy Rapid7, Qualys lub inną platfor
 
 **Wskazówki:** Firma Microsoft do obsługi i aktualizowania podstawowych obrazów węzłów puli wsadowej platformy Azure. Upewnij się, że system operacyjny węzłów puli wsadowej platformy Azure pozostaje poprawiony przez cały okres istnienia klastra, co może wymagać włączenia automatycznych aktualizacji, monitorowania węzłów lub wykonywania okresowych ponownych rozruchów.
 
+
 **Monitorowanie usługi Azure Security Center**: Tak
 
 **Odpowiedzialność**: Współdzielone
@@ -758,6 +680,7 @@ Opcjonalnie, jeśli masz subskrypcję platformy Rapid7, Qualys lub inną platfor
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Wdrożenie zautomatyzowanego rozwiązania do zarządzania poprawkami oprogramowania innych firm
 
 **Wskazówki:** Upewnij się, że aplikacje węzłów platformy Azure w puli wsadowej pozostają załatane przez cały okres istnienia klastra, co może wymagać włączenia automatycznych aktualizacji, monitorowania węzłów lub wykonywania okresowych ponownych rozruchów.
+
 
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
 
@@ -787,19 +710,15 @@ Opcjonalnie, jeśli masz subskrypcję platformy Rapid7, Qualys lub inną platfor
 
 **Wskazówki:** Użyj usługi Azure Resource Graph do wykonywania zapytań/odnajdywać wszystkie zasoby (takie jak zasoby obliczeniowe, magazyn, sieć itp.) w ramach subskrypcji. Upewnij się, że masz odpowiednie (odczytuj) uprawnienia w dzierżawie i możesz wyliczyć wszystkie subskrypcje platformy Azure, a także zasoby w ramach subskrypcji.
 
+Chociaż klasyczne zasoby platformy Azure mogą zostać wykryte za pomocą wykresu zasobów, zdecydowanie zaleca się tworzenie i używanie zasobów usługi Azure Resource Manager (ARM) w przyszłości.
 
-Chociaż klasyczne zasoby platformy Azure mogą zostać wykryte za pośrednictwem Eksploratora grafów zasobów platformy Azure, zdecydowanie zaleca się tworzenie i używanie zasobów usługi Azure Resource Manager (ARM) w przyszłości.
-
-
-Jak tworzyć zapytania za pomocą Eksploratora wykresów zasobów platformy Azure:
+Jak tworzyć zapytania za pomocą programu Azure Graph:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
 
 Jak wyświetlić subskrypcje platformy Azure:
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
-
 
 Poznaj usługę Azure RBAC:
 
@@ -813,7 +732,6 @@ https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Wskazówki:** Stosowanie tagów do zasobów platformy Azure, podając metadane logicznie zorganizować je w taksonomię.
 
-
 Jak tworzyć i używać tagów:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
@@ -826,21 +744,15 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Wskazówki:** W stosownych przypadkach należy używać tagowania, grup zarządzania i oddzielnych subskrypcji, aby organizować i śledzić zasoby. Regularnie uzgadniaj zapasy i upewnij się, że nieautoryzowane zasoby są usuwane z subskrypcji w odpowiednim czasie.
 
-
-
 Jak utworzyć dodatkowe subskrypcje platformy Azure:
 
 https://docs.microsoft.com/azure/billing/billing-create-subscription
-
-
 
 Jak utworzyć grupy zarządzania:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
-
-
-Jak tworzyć i używać tagów:
+Jak tworzyć i tagi użytkownika:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
@@ -851,6 +763,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 ### <a name="64-maintain-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Obsługa spisu zatwierdzonych zasobów platformy Azure i tytułów oprogramowania.
 
 **Wskazówki**: Definiowanie listy zatwierdzonych zasobów platformy Azure i zatwierdzonego oprogramowania dla zasobów obliczeniowych
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -863,14 +776,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - Niedozwolone typy zasobów
 - Dozwolone typy zasobów
 
-
 Użyj usługi Azure Resource Graph do wykonywania zapytań/odnajdywanie zasobów w ramach subskrypcji. Upewnij się, że wszystkie zasoby platformy Azure obecne w środowisku są zatwierdzone.
-
 
 Jak skonfigurować zasady platformy Azure i zarządzać nimi:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
+Jak tworzyć zapytania za pomocą programu Azure Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Jak tworzyć zapytania za pomocą Eksploratora wykresów zasobów platformy Azure:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
 
@@ -880,6 +791,7 @@ Jak tworzyć zapytania za pomocą Eksploratora wykresów zasobów platformy Azur
 
 **Wskazówki:** W przypadku węzłów usługi Azure Batch Pool należy zaimplementować rozwiązanie innej firmy do monitorowania węzłów klastra pod kątem niezatwierdzonych aplikacji.
 
+
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
 
 **Odpowiedzialność**: Klient
@@ -887,6 +799,7 @@ Jak tworzyć zapytania za pomocą Eksploratora wykresów zasobów platformy Azur
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Usuwanie niezatwierdzonych zasobów platformy Azure i aplikacji
 
 **Wskazówki:** W przypadku węzłów usługi Azure Batch Pool należy zaimplementować rozwiązanie innej firmy do monitorowania węzłów klastra pod kątem niezatwierdzonych aplikacji.
+
 
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
 
@@ -896,6 +809,7 @@ Jak tworzyć zapytania za pomocą Eksploratora wykresów zasobów platformy Azur
 
 **Wskazówki:** W przypadku węzłów usługi Azure Batch Pool należy zaimplementować rozwiązanie innej firmy, aby zapobiec wykonywaniu nieautoryzowanego oprogramowania.
 
+
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
 
 **Odpowiedzialność**: Klient
@@ -904,15 +818,13 @@ Jak tworzyć zapytania za pomocą Eksploratora wykresów zasobów platformy Azur
 
 **Wskazówki:** Użyj zasad platformy Azure, aby wprowadzić ograniczenia dotyczące typu zasobów, które można utworzyć w subskrypcjach klientów przy użyciu następujących wbudowanych definicji zasad:
 
-
 - Niedozwolone typy zasobów
 - Dozwolone typy zasobów
 
-
 Jak skonfigurować zasady platformy Azure i zarządzać nimi:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-
 Jak odmówić określonego typu zasobu za pomocą usługi Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+
 
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
 
@@ -922,6 +834,7 @@ Jak odmówić określonego typu zasobu za pomocą usługi Azure Policy:https://d
 
 **Wskazówki:** W przypadku węzłów usługi Azure Batch Pool należy zaimplementować rozwiązanie innej firmy, aby zapobiec wykonywaniu nieautoryzowanych typów plików.
 
+
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
 
 **Odpowiedzialność**: Klient
@@ -930,8 +843,8 @@ Jak odmówić określonego typu zasobu za pomocą usługi Azure Policy:https://d
 
 **Wskazówki:** Użyj dostępu warunkowego platformy Azure, aby ograniczyć użytkownikom możliwość interakcji z usługą Azure Resource Manager, konfigurując "Blokuj dostęp" dla aplikacji "Microsoft Azure Management".
 
-
 Jak skonfigurować dostęp warunkowy, aby zablokować dostęp do usługi Azure Resource Manager:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+
 
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
 
@@ -942,6 +855,7 @@ Jak skonfigurować dostęp warunkowy, aby zablokować dostęp do usługi Azure R
 **Wskazówki**: Nie dotyczy,
 
 Nie ma to zastosowania do usługi Azure Batch, ponieważ użytkownicy (nie-administratorzy) pul usługi Azure Batch nie potrzebują dostępu do poszczególnych węzłów do uruchamiania zadań. Administrator klastra ma już dostęp do wszystkich węzłów.
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -963,11 +877,9 @@ Nie ma to zastosowania do usługi Azure Batch, ponieważ użytkownicy (nie-admin
 
 **Wskazówki:** Użyj aliasów zasad platformy Azure w obszarze nazw "Microsoft.Batch", aby utworzyć niestandardowe zasady do inspekcji lub wymuszenia konfiguracji kont i pul usługi Azure Batch.
 
-
 Jak wyświetlić dostępne aliasy zasad platformy Azure:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
-
 
 Jak skonfigurować zasady platformy Azure i zarządzać nimi:
 
@@ -990,14 +902,15 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 **Wskazówki:** Użyj zasad platformy Azure [deny] i [deploy if not exist], aby wymusić bezpieczne ustawienia zasobów platformy Azure związanych z kontem i pulami usługi Batch (takimi jak sieci wirtualne, podsieci, zapory platformy Azure, konta usługi Azure Storage itp.). Do tworzenia niestandardowych zasad można użyć aliasów zasad platformy Azure z następujących obszarów nazw:
 
 - Microsoft.Batch
-- Microsoft.Storage
-- Microsoft.Network
 
+- Microsoft.Storage
+
+- Microsoft.Network
 
 Jak skonfigurować zasady platformy Azure i zarządzać nimi:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-
 Poznaj efekty zasad platformy Azure:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -1015,11 +928,9 @@ Poznaj efekty zasad platformy Azure:https://docs.microsoft.com/azure/governance/
 
 **Wskazówki:** Jeśli używasz niestandardowych definicji zasad platformy Azure dla kont usługi Azure Batch, pul lub powiązanych zasobów, użyj aplikacji Repo platformy Azure, aby bezpiecznie przechowywać kod i zarządzać nim.
 
-
 Jak przechowywać kod w usłudze Azure DevOps:
 
 https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
-
 
 Dokumentacja repozytorium platformy Azure:
 
@@ -1033,11 +944,9 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Wskazówki:** Jeśli używasz obrazów niestandardowych dla pul usługi Azure Batch, użyj kontroli dostępu opartej na rolach (RBAC), aby upewnić się, że tylko autoryzowani użytkownicy mogą uzyskiwać dostęp do obrazów.
 
-
 Poznaj rbac na platformie Azure:
 
 https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
-
 
 Jak skonfigurować rbac na platformie Azure:
 
@@ -1051,8 +960,6 @@ https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-rol
 
 **Wskazówki:** Użyj wbudowanych definicji zasad platformy Azure, aby ostrzegać, przeprowadzać inspekcje i wymuszać konfiguracje zasobów związanych z usługą Azure Batch.  Użyj aliasów zasad platformy Azure w obszarze nazw "Microsoft.Batch", aby utworzyć niestandardowe zasady dla kont i pul usługi Azure Batch. Ponadto opracuj proces i potok do zarządzania wyjątkami zasad.
 
-
-
 Jak skonfigurować zasady platformy Azure i zarządzać nimi:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
@@ -1065,6 +972,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Wskazówki:** Zaimplementuj rozwiązanie innej firmy, aby zachować żądany stan dla systemów operacyjnych węzłów usługi Azure Batch Pool.
 
+
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
 
 **Odpowiedzialność**: Klient
@@ -1073,12 +981,16 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Wskazówki:** Użyj aliasów zasad platformy Azure w obszarze nazw "Microsoft.Batch", aby utworzyć niestandardowe zasady do inspekcji lub wymuszenia konfiguracji wystąpienia usługi Azure Batch. Można również użyć wszelkich wbudowanych zasad utworzonych specjalnie dla usługi Azure Batch lub zasobów używanych przez usługę Azure Batch, takich jak:
 
-- Podsieci powinny być skojarzone z sieciową grupą zabezpieczeń — konta magazynu powinny używać punktu końcowego usługi sieci wirtualnej
+- Podsieci powinny być skojarzone z sieciową grupą zabezpieczeń
+
+-Konta magazynu powinny używać punktu końcowego usługi sieci wirtualnej
+
 - Dzienniki diagnostyczne na kontach usługi Batch powinny być włączone
 
 Jak wyświetlić dostępne aliasy zasad platformy Azure:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 Jak skonfigurować zasady platformy Azure i zarządzać nimi:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
@@ -1089,6 +1001,7 @@ Jak skonfigurować zasady platformy Azure i zarządzać nimi:https://docs.micros
 
 **Wskazówki:** Zaimplementuj rozwiązanie innej firmy do monitorowania stanu systemów operacyjnych węzłów usługi Azure Batch Pool.
 
+
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
 
 **Odpowiedzialność**: Klient
@@ -1097,16 +1010,13 @@ Jak skonfigurować zasady platformy Azure i zarządzać nimi:https://docs.micros
 
 **Wskazówki:** Usługa Azure Key Vault może być używana z wdrożeniami usługi Azure Batch do zarządzania kluczami do przechowywania puli na kontach usługi Azure Storage.
 
-
 Jak zintegrować się z tożsamościami zarządzanymi platformy Azure:
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-
 Jak utworzyć usługę Azure Key Vault:
 
 https://docs.microsoft.com/azure/key-vault/quick-create-portal
-
 
 Jak zapewnić uwierzytelnianie usługi Key Vault z tożsamością zarządzaną:
 
@@ -1119,6 +1029,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 ### <a name="712-securely-and-automatically-manage-identities"></a>7.12: Bezpieczne i automatyczne zarządzanie tożsamościami
 
 **Wskazówki:** Niedostępne, tożsamość usługi zarządzanej nie jest obsługiwana przez usługę Azure Batch
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -1142,6 +1053,7 @@ Jak skonfigurować Skaner poświadczeń:https://secdevtools.azurewebsites.net/he
 
 **Wskazówki:** Użyj usługi Windows Defender na poszczególnych węzłach puli usługi Azure Batch w przypadku systemów operacyjnych Windows lub podaj własne rozwiązanie chroniące przed złośliwym oprogramowaniem, jeśli używasz systemu Linux.
 
+
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
 
 **Odpowiedzialność**: Klient
@@ -1150,9 +1062,7 @@ Jak skonfigurować Skaner poświadczeń:https://secdevtools.azurewebsites.net/he
 
 **Wskazówki:** Ochrona przed złośliwym oprogramowaniem firmy Microsoft jest włączona na podstawowym hoście, który obsługuje usługi platformy Azure (na przykład usługa Azure Batch), jednak nie jest uruchamiana w zawartości klienta.
 
-
 Wstępnie skanuj wszystkie pliki przekazywane do nieobliczalnych zasobów platformy Azure, takich jak usługa App Service, magazyn usługi Data Lake, magazyn obiektów Blob itp. Firma Microsoft nie może uzyskać dostępu do danych klienta w tych przypadkach.
-
 
 Poznaj oprogramowanie antywirusowe firmy Microsoft dla usług w chmurze i maszyn wirtualnych platformy Azure:
 
@@ -1166,6 +1076,7 @@ https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 **Wskazówki:** Użyj usługi Windows Defender w poszczególnych węzłach puli usługi Azure Batch w przypadku systemów operacyjnych Windows i upewnij się, że automatyczna aktualizacja jest włączona. Podaj własne rozwiązanie chroniące przed złośliwym oprogramowaniem, jeśli używasz Linuksa.
 
+
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
 
 **Odpowiedzialność**: Klient
@@ -1177,7 +1088,6 @@ https://docs.microsoft.com/azure/security/fundamentals/antimalware
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Zapewnij regularne automatyczne zapasy zapasów
 
 **Wskazówki:** Podczas korzystania z konta usługi Azure Storage dla magazynu danych usługi Azure Batch Pool wybierz odpowiednią opcję nadmiarowości (LRS, ZRS, GRS, RA-GRS). 
-
 
 Jak skonfigurować nadmiarowość magazynu dla kont usługi Azure Storage:
 
@@ -1191,11 +1101,9 @@ https://docs.microsoft.com/azure/storage/common/storage-redundancy
 
 **Wskazówki:** Podczas korzystania z konta usługi Azure Storage dla magazynu danych usługi Azure Batch Pool wybierz odpowiednią opcję nadmiarowości (LRS, ZRS, GRS, RA-GRS).  Jeśli używasz usługi Azure Key Vault dla dowolnej części wdrożenia usługi Azure Batch, upewnij się, że klucze są archiwizowane.
 
-
 Jak skonfigurować nadmiarowość magazynu dla kont usługi Azure Storage:
 
 https://docs.microsoft.com/azure/storage/common/storage-redundancy
-
 
 Jak wykonać kopię zapasową kluczy magazynu kluczy na platformie Azure:
 
@@ -1209,11 +1117,9 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvau
 
 **Wskazówki:** Jeśli zarządzasz własnymi kluczami dla kont usługi Azure Storage lub innymi zasobami powiązanymi z implementacją usługi Azure Batch, okresowo testuj przywracanie kopii zapasowych kluczy.
 
-
 Jak wykonać kopię zapasową kluczy magazynu kluczy na platformie Azure:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
-
 
 Jak przywrócić klucz zarządzany przez klienta za pomocą programu PowerShell:
 
@@ -1226,7 +1132,6 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Zapewnienie ochrony kopii zapasowych i kluczy zarządzanych przez klienta
 
 **Wskazówki:** Jeśli usługa Azure Key Vault jest używana do przechowywania kluczy związanych z kontami usługi Azure Batch Pool Storage, włącz opcję usuwania programowego w usłudze Azure Key Vault, aby chronić klucze przed przypadkowym lub złośliwym usunięciem.
-
 
 Jak włączyć usuwanie nietrwałe w usłudze Azure Key Vault:
 
@@ -1243,8 +1148,6 @@ https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 ### <a name="101-create-incident-response-guide"></a>10.1: Tworzenie przewodnika po reagowaniu na incydenty
 
 **Wskazówki**: Upewnij się, że istnieją pisemne plany reagowania na incydenty, które definiują role personelu, a także fazy obsługi incydentów/zarządzania.
-
-
 
 Jak skonfigurować automatyzacje przepływu pracy w usłudze Azure Security Center:
 
@@ -1276,8 +1179,6 @@ Zapoznaj się z publikacją NIST: Przewodnik po testach, szkoleniach i programac
 
 **Wskazówki:** Informacje kontaktowe dotyczące zdarzenia zabezpieczeń będą używane przez firmę Microsoft do kontaktu się z Użytkownikiem, jeśli Centrum Microsoft Security Response Center (MSRC) odkryje, że dane użytkownika zostały uzyskiane przez osobę niezgodną z prawem lub nieautoryzowaną.
 
-
-
 Jak ustawić kontakt zabezpieczeń usługi Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
@@ -1290,11 +1191,9 @@ https://docs.microsoft.com/azure/security-center/security-center-provide-securit
 
 **Wskazówki:** Eksportuj alerty i zalecenia usługi Azure Security Center przy użyciu funkcji ciągłego eksportowania. Ciągły eksport umożliwia eksportowanie alertów i zaleceń ręcznie lub w sposób ciągły. Możesz użyć łącznika danych usługi Azure Security Center do przesyłania strumieniowego alertów do usługi Azure Sentinel.
 
-
 Jak skonfigurować eksport ciągły:
 
 https://docs.microsoft.com/azure/security-center/continuous-export
-
 
 Jak przesyłać strumieniowo alerty do usługi Azure Sentinel:
 
@@ -1307,8 +1206,6 @@ https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatyzacja reakcji na alerty bezpieczeństwa
 
 **Wskazówki:** Użyj funkcji automatyzacji przepływu pracy w usłudze Azure Security Center, aby automatycznie wyzwalać odpowiedzi za pośrednictwem "Aplikacji logiki" w alertach i zaleceniach dotyczących zabezpieczeń.
-
-
 
 Jak skonfigurować automatyzację przepływu pracy i aplikacje logiki:
 
@@ -1327,8 +1224,6 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 **Wskazówki:** Postępuj zgodnie z regułami zaangażowania firmy Microsoft, aby upewnić się, że testy penetracyjne nie naruszają zasad firmy Microsoft:
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
-
-
 
 Więcej informacji na temat strategii firmy Microsoft i wykonywania testów red teaming i testów penetracji witryn na żywo w oparciu o zarządzał infrastrukturą, usługami i aplikacjami firmy Microsoft w chmurze: 
 

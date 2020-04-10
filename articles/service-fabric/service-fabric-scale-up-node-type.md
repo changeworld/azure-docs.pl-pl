@@ -3,12 +3,12 @@ title: Skalowanie w górę typu węzła usługi Azure Service Fabric
 description: Dowiedz się, jak skalować klaster sieci szkieletowej usług, dodając zestaw skalowania maszyny wirtualnej.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 33d535cb093eeb95e0ce95bdd5722bfd21150a40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dbb9e4fbfeb27c5b8b13f70207888cf37bbb0e0
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464226"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998939"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Skalowanie w górę węzła klastra usługi Service Fabric podstawowego typu
 W tym artykule opisano sposób skalowania w górę typu węzła podstawowego klastra sieci szkieletowej usług przez zwiększenie zasobów maszyny wirtualnej. Klaster sieci szkieletowej usług to połączony z siecią zestaw maszyn wirtualnych lub fizycznych, na których mikrousługi są wdrażane i zarządzane. Maszyna lub maszyna wirtualna, która jest częścią klastra jest nazywany węzłem. Zestawy skalowania maszyny wirtualnej to zasób obliczeniowy platformy Azure używany do wdrażania i zarządzania kolekcją maszyn wirtualnych jako zestaw. Każdy typ węzła zdefiniowany w klastrze platformy Azure jest [łączona jako oddzielny zestaw skalowania.](service-fabric-cluster-nodetypes.md) Każdy typ węzła można następnie zarządzać oddzielnie. Po utworzeniu klastra sieci szkieletowej usług można skalować typ węzła klastra w pionie (zmieniać zasoby węzłów) lub uaktualnić system operacyjny maszyn wirtualnych typu węzła.  Klaster można skalować w dowolnym momencie, nawet gdy obciążenia są uruchomione w klastrze.  W miarę skalowania klastra aplikacje są również skalowane automatycznie.
@@ -34,7 +34,7 @@ Oto proces aktualizowania rozmiaru maszyny Wirtualnej i systemu operacyjnego mas
     Aby znaleźć nowy zestaw skalowania w szablonie, wyszukaj zasób "Microsoft.Compute/virtualMachineScaleSets" nazwany *parametrem vmNodeType2Name.*  Nowy zestaw skalowania jest dodawany do typu węzła podstawowego przy użyciu właściwości >virtualMachineProfile->extensionProfile->extensions->properties->settings->nodeTypeRef.
 4. Sprawdź kondycję klastra i sprawdź, czy wszystkie węzły są w dobrej kondycji.
 5. Wyłącz węzły w starym zestawie skalowania typu węzła podstawowego z zamiarem usunięcia węzła. Można wyłączyć wszystkie naraz, a operacje są umieszczane w kolejce. Poczekaj, aż wszystkie węzły zostaną wyłączone, co może zająć trochę czasu.  Ponieważ starsze węzły w typie węzła są wyłączone, usługi systemowe i węzły źródłowe migrują do maszyn wirtualnych nowego zestawu skalowania w typie węzła podstawowego.
-6. Usuń starszy zestaw skalowania z typu węzła podstawowego.
+6. Usuń starszy zestaw skalowania z typu węzła podstawowego. (Po wyłączenia węzłów, jak w kroku 5, w bloku zestawu skalowania maszyny wirtualnej w portalu Azure, przydziel węzły ze starego typu węzła jeden po drugim).
 7. Usuń moduł równoważenia obciążenia skojarzony ze starym zestawem skalowania. Klaster jest niedostępny, gdy nowy publiczny adres IP i moduł równoważenia obciążenia są skonfigurowane dla nowego zestawu skalowania.  
 8. Przechowuj ustawienia DNS publicznego adresu IP skojarzonego ze starym skalowaniem typu węzła podstawowego ustawionego w zmiennej i usuń ten publiczny adres IP.
 9. Zastąp ustawienia DNS publicznego adresu IP skojarzonego z nowym zestawem skalowania typu węzła podstawowego ustawieniami DNS usuniętego publicznego adresu IP.  Klaster jest teraz dostępny ponownie.

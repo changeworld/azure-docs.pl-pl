@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 7dac8d21e3b45307284ece15ca5ddbcc69db909b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b63dcfd6ed293cab9d0107a8b6a35c7ce358d429
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260646"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011688"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Format JSON w fabryce danych platformy Azure
 
@@ -30,9 +30,10 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Właściwość typu zestawu danych musi być ustawiona na **Json**. | Tak      |
 | location         | Ustawienia lokalizacji plików. Każdy łącznik oparty na plikach ma swój własny `location`typ lokalizacji i obsługiwane właściwości w obszarze . **Zobacz szczegóły w sekcji właściwości łącznika - > Dataset .** | Tak      |
-| encodingName     | Typ kodowania używany do odczytu/zapisu plików testowych. <br>Dozwolone wartości są następujące: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", " IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149" , "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", " WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| Nie       |
-| compressionCodec (kod kodu kompresji) | Koder-dekodusz kompresji używany do odczytu/zapisu plików tekstowych. <br>Dozwolone wartości to **bzip2**, **gzip**, **deflate**, **ZipDeflate**, **snappy**lub **lz4**. , aby użyć go podczas zapisywania pliku. <br>Uwaga obecnie Copy activity nie obsługuje "snappy" & "lz4".<br>Uwaga Podczas korzystania z działania kopiowania do dekompresji plików ZipDeflate i zapisu do magazynu `<path specified in dataset>/<folder named as source zip file>/`danych ujścia opartego na plikach pliki zostaną wyodrębnione do folderu: . | Nie       |
-| Compressionlevel | Stopień kompresji. <br>Dozwolone wartości są **optymalne** lub **najszybsze**.<br>- **Najszybszy:** Operacja kompresji powinna zakończyć się tak szybko, jak to możliwe, nawet jeśli wynikowy plik nie jest optymalnie skompresowany.<br>- **Optymalne**: Operacja kompresji powinna być optymalnie skompresowana, nawet jeśli operacja trwa dłużej. Aby uzyskać więcej informacji, zobacz temat [Poziom kompresji.](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) | Nie       |
+| encodingName     | Typ kodowania używany do odczytu/zapisu plików testowych. <br>Allowed values are as follows: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149", "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13" , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| Nie       |
+| kompresja | Grupa właściwości do skonfigurowania kompresji plików. Skonfiguruj tę sekcję, jeśli chcesz wykonać kompresję/dekompresję podczas wykonywania działania. | Nie |
+| type | Koder-dekodusz kompresji używany do odczytu/zapisu plików JSON. <br>Dozwolone wartości to **bzip2**, **gzip**, **deflate**, **ZipDeflate**, **snappy**lub **lz4**. , aby użyć go podczas zapisywania pliku. Wartość domyślna nie jest skompresowana.<br>**Uwaga** obecnie Copy activity nie obsługuje "snappy" & "lz4", a mapowanie przepływu danych nie obsługuje "ZipDeflate".<br>**Uwaga** Podczas korzystania z działania kopiowania do dekompresji plików ZipDeflate i zapisu do magazynu `<path specified in dataset>/<folder named as source zip file>/`danych ujścia opartego na plikach pliki zostaną wyodrębnione do folderu: . | Nie.  |
+| poziom | Stopień kompresji. <br>Dozwolone wartości są **optymalne** lub **najszybsze**.<br>- **Najszybszy:** Operacja kompresji powinna zakończyć się tak szybko, jak to możliwe, nawet jeśli wynikowy plik nie jest optymalnie skompresowany.<br>- **Optymalne**: Operacja kompresji powinna być optymalnie skompresowana, nawet jeśli operacja trwa dłużej. Aby uzyskać więcej informacji, zobacz temat [Poziom kompresji.](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) | Nie       |
 
 Poniżej znajduje się przykład zestawu danych JSON w usłudze Azure Blob Storage:
 
@@ -54,6 +55,7 @@ Poniżej znajduje się przykład zestawu danych JSON w usłudze Azure Blob Stora
             },
             "compression": {
                 "type": "gzip"
+            }
         }
     }
 }

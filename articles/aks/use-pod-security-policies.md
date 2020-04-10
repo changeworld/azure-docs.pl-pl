@@ -3,13 +3,13 @@ title: Używanie zasad zabezpieczeń zasobników w usłudze Azure Kubernetes Ser
 description: Dowiedz się, jak kontrolować przyjęć zasobników przy użyciu PodSecurityPolicy w usłudze Azure Kubernetes (AKS)
 services: container-service
 ms.topic: article
-ms.date: 04/17/2019
-ms.openlocfilehash: 74177136a7a61186ab1d273b57dbfce550a18ecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: 9e3a17e4775150247ef7924dffec68cc86a0bcac
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77914538"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998356"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>W wersji zapoznawczej — zabezpieczyć klaster przy użyciu zasad zabezpieczeń zasobników w usłudze Azure Kubernetes (AKS)
 
@@ -103,17 +103,17 @@ NAME         PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP  
 privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
-Zasady zabezpieczeń zasobnika *uprzywilejowanego* są stosowane do dowolnego uwierzytelnionego użytkownika w klastrze AKS. To przypisanie jest kontrolowane przez clusterroles i ClusterRoleBindings. Użyj [polecenia kubectl get clusterrolebindings][kubectl-get] i wyszukaj polecenie *default:privileged:* binding:
+Zasady zabezpieczeń zasobnika *uprzywilejowanego* są stosowane do dowolnego uwierzytelnionego użytkownika w klastrze AKS. To przypisanie jest kontrolowane przez clusterroles i ClusterRoleBindings. Użyj [polecenia kubectl get rolebindings][kubectl-get] i wyszukaj *powiązanie default:privileged:* w obszarze nazw *systemu kube:*
 
 ```console
-kubectl get clusterrolebindings default:privileged -o yaml
+kubectl get rolebindings default:privileged -n kube-system -o yaml
 ```
 
 Jak pokazano na poniższym skondensowanym wyjściu, *psp:restricted* ClusterRole jest przypisany do wszystkich *użytkowników systemowych:uwierzytelnionych.* Ta możliwość zapewnia podstawowy poziom ograniczeń bez definiowania własnych zasad.
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
+kind: RoleBinding
 metadata:
   [...]
   name: default:privileged
@@ -125,7 +125,7 @@ roleRef:
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
-  name: system:authenticated
+  name: system:masters
 ```
 
 Ważne jest, aby zrozumieć, jak te domyślne zasady współdziałają z żądaniami użytkowników, aby zaplanować zasobników przed rozpoczęciem tworzenia własnych zasad zabezpieczeń zasobnika. W następnych kilku sekcjach zaplanujmy niektóre zasobników, aby zobaczyć te domyślne zasady w działaniu.
@@ -195,7 +195,7 @@ Zasobnik nie może być zaplanowane, jak pokazano w poniższym przykładzie dany
 ```console
 $ kubectl-nonadminuser apply -f nginx-privileged.yaml
 
-Error from server (Forbidden): error when creating "nginx-privileged.yaml": pods "nginx-privileged" is forbidden: unable to validate against any pod security policy: [spec.containers[0].securityContext.privileged: Invalid value: true: Privileged containers are not allowed]
+Error from server (Forbidden): error when creating "nginx-privileged.yaml": pods "nginx-privileged" is forbidden: unable to validate against any pod security policy: []
 ```
 
 Zasobnik nie dociera do etapu planowania, więc nie ma żadnych zasobów do usunięcia przed przejściem dalej.
@@ -223,44 +223,15 @@ Utwórz zasobnik za pomocą polecenia [zastosuj kubectl][kubectl-apply] i okreś
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-Harmonogram Kubernetes akceptuje żądanie zasobnika. Jeśli jednak spojrzysz na stan zasobnika za pomocą `kubectl get pods`, występuje błąd:
+Zasobnik nie może być zaplanowane, jak pokazano w poniższym przykładzie danych wyjściowych:
 
 ```console
-$ kubectl-nonadminuser get pods
+$ kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 
-NAME                 READY   STATUS                       RESTARTS   AGE
-nginx-unprivileged   0/1     CreateContainerConfigError   0          26s
+Error from server (Forbidden): error when creating "nginx-unprivileged.yaml": pods "nginx-unprivileged" is forbidden: unable to validate against any pod security policy: []
 ```
 
-Użyj [polecenia kubectl describe pod,][kubectl-describe] aby przyjrzeć się zdarzeniam zasobnika. W poniższym przykładzie skondensowanym pokazano, że kontener i obraz wymagają uprawnień administratora, mimo że nie zażądaliśmy ich:
-
-```console
-$ kubectl-nonadminuser describe pod nginx-unprivileged
-
-Name:               nginx-unprivileged
-Namespace:          psp-aks
-Priority:           0
-PriorityClassName:  <none>
-Node:               aks-agentpool-34777077-0/10.240.0.4
-Start Time:         Thu, 28 Mar 2019 22:05:04 +0000
-[...]
-Events:
-  Type     Reason     Age                     From                               Message
-  ----     ------     ----                    ----                               -------
-  Normal   Scheduled  7m14s                   default-scheduler                  Successfully assigned psp-aks/nginx-unprivileged to aks-agentpool-34777077-0
-  Warning  Failed     5m2s (x12 over 7m13s)   kubelet, aks-agentpool-34777077-0  Error: container has runAsNonRoot and image will run as root
-  Normal   Pulled     2m10s (x25 over 7m13s)  kubelet, aks-agentpool-34777077-0  Container image "nginx:1.14.2" already present on machine
-```
-
-Mimo że nie zażądaliśmy żadnego uprzywilejowanego dostępu, obraz kontenera dla NGINX musi utworzyć powiązanie dla portu *80*. Aby powiązać porty *1024* i poniżej, użytkownik *root* jest wymagany. Gdy zasobnik próbuje uruchomić, zasady zabezpieczeń *ograniczone* zasobnika odrzuca to żądanie.
-
-W tym przykładzie pokazano, że domyślne zasady zabezpieczeń zasobników utworzone przez usługi AKS obowiązują i ograniczają akcje, które użytkownik może wykonać. Ważne jest, aby zrozumieć zachowanie tych zasad domyślnych, ponieważ nie można oczekiwać, że podstawowe zasobniki NGINX zostaną odrzucone.
-
-Przed przejściem do następnego kroku usuń ten test zasobnika za pomocą [polecenia kubectl delete pod:][kubectl-delete]
-
-```console
-kubectl-nonadminuser delete -f nginx-unprivileged.yaml
-```
+Zasobnik nie dociera do etapu planowania, więc nie ma żadnych zasobów do usunięcia przed przejściem dalej.
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>Testowanie tworzenia zasobnika z określonym kontekstem użytkownika
 
@@ -287,61 +258,15 @@ Utwórz zasobnik za pomocą polecenia [zastosuj kubectl][kubectl-apply] i okreś
 kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 ```
 
-Harmonogram Kubernetes akceptuje żądanie zasobnika. Jeśli jednak spojrzysz na stan zasobnika za pomocą `kubectl get pods`, występuje inny błąd niż w poprzednim przykładzie:
+Zasobnik nie może być zaplanowane, jak pokazano w poniższym przykładzie danych wyjściowych:
 
 ```console
-$ kubectl-nonadminuser get pods
+$ kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 
-NAME                         READY   STATUS              RESTARTS   AGE
-nginx-unprivileged-nonroot   0/1     CrashLoopBackOff    1          3s
+Error from server (Forbidden): error when creating "nginx-unprivileged-nonroot.yaml": pods "nginx-unprivileged-nonroot" is forbidden: unable to validate against any pod security policy: []
 ```
 
-Użyj [polecenia kubectl describe pod,][kubectl-describe] aby przyjrzeć się zdarzeniam zasobnika. Poniższy przykład skondensowany pokazuje zdarzenia zasobnika:
-
-```console
-$ kubectl-nonadminuser describe pods nginx-unprivileged
-
-Name:               nginx-unprivileged
-Namespace:          psp-aks
-Priority:           0
-PriorityClassName:  <none>
-Node:               aks-agentpool-34777077-0/10.240.0.4
-Start Time:         Thu, 28 Mar 2019 22:05:04 +0000
-[...]
-Events:
-  Type     Reason     Age                   From                               Message
-  ----     ------     ----                  ----                               -------
-  Normal   Scheduled  2m14s                 default-scheduler                  Successfully assigned psp-aks/nginx-unprivileged-nonroot to aks-agentpool-34777077-0
-  Normal   Pulled     118s (x3 over 2m13s)  kubelet, aks-agentpool-34777077-0  Container image "nginx:1.14.2" already present on machine
-  Normal   Created    118s (x3 over 2m13s)  kubelet, aks-agentpool-34777077-0  Created container
-  Normal   Started    118s (x3 over 2m12s)  kubelet, aks-agentpool-34777077-0  Started container
-  Warning  BackOff    105s (x5 over 2m11s)  kubelet, aks-agentpool-34777077-0  Back-off restarting failed container
-```
-
-Zdarzenia wskazują, że kontener został utworzony i uruchomiony. Nie ma nic od razu oczywiste, dlaczego strąk jest w stanie awarii. Spójrzmy na dzienniki zasobników za pomocą polecenia [logi kubectl:][kubectl-logs]
-
-```console
-kubectl-nonadminuser logs nginx-unprivileged-nonroot --previous
-```
-
-Poniższe przykładowe dane wyjściowe dziennika wskazuje, że w samej konfiguracji NGINX występuje błąd uprawnień, gdy usługa próbuje uruchomić. Ten błąd jest ponownie spowodowane koniecznością powiązania z portem 80. Chociaż specyfikacja zasobnika zdefiniowała zwykłe konto użytkownika, to konto użytkownika nie jest wystarczające na poziomie systemu operacyjnego, aby usługa NGINX została uruchamiana i powiązana z portem z ograniczeniami.
-
-```console
-$ kubectl-nonadminuser logs nginx-unprivileged-nonroot --previous
-
-2019/03/28 22:38:29 [warn] 1#1: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:2
-nginx: [warn] the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:2
-2019/03/28 22:38:29 [emerg] 1#1: mkdir() "/var/cache/nginx/client_temp" failed (13: Permission denied)
-nginx: [emerg] mkdir() "/var/cache/nginx/client_temp" failed (13: Permission denied)
-```
-
-Ponownie ważne jest, aby zrozumieć zachowanie domyślnych zasad zabezpieczeń zasobnika. Ten błąd był nieco trudniejszy do wyśledzenia i znowu możesz nie oczekiwać, że podstawowe pod NGINX zostanie odrzucone.
-
-Przed przejściem do następnego kroku usuń ten test zasobnika za pomocą [polecenia kubectl delete pod:][kubectl-delete]
-
-```console
-kubectl-nonadminuser delete -f nginx-unprivileged-nonroot.yaml
-```
+Zasobnik nie dociera do etapu planowania, więc nie ma żadnych zasobów do usunięcia przed przejściem dalej.
 
 ## <a name="create-a-custom-pod-security-policy"></a>Tworzenie niestandardowej zasady zabezpieczeń zasobników
 
@@ -383,7 +308,7 @@ $ kubectl get psp
 
 NAME                  PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
 privileged            true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *          configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
+psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *          
 ```
 
 ## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>Zezwalaj kontu użytkownika na używanie niestandardowych zasad zabezpieczeń zasobników

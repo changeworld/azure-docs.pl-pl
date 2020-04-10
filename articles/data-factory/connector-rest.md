@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca913a4c197e04e20c962c4a4a7a1e479a3cdf92
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75867366"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990892"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego REST przy użyciu usługi Azure Data Factory
 
@@ -46,7 +46,7 @@ W szczególności to ogólne złącze REST obsługuje:
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -60,7 +60,7 @@ Następujące właściwości są obsługiwane dla usługi połączonej REST:
 |:--- |:--- |:--- |
 | type | Właściwość **typu** musi być ustawiona na **RestService**. | Tak |
 | url | Podstawowy adres URL usługi REST. | Tak |
-| enableServerCertificateWwadacja | Czy podczas łączenia się z punktem końcowym ma być sprawdzana weryfikacja certyfikatu SSL po stronie serwera. | Nie<br /> (wartość domyślna jest **prawdziwa)** |
+| enableServerCertificateWwadacja | Czy podczas łączenia się z punktem końcowym ma być sprawdzana weryfikacja certyfikatu TLS/SSL po stronie serwera. | Nie<br /> (wartość domyślna jest **prawdziwa)** |
 | authenticationType | Typ uwierzytelniania używanego do łączenia się z usługą REST. Dozwolone wartości to **Anonimowe,** **Podstawowe,** **AadServicePrincipal** i **ManagedServiceIdentity**. Zapoznaj się z odpowiednimi sekcjami poniżej, aby uzyskać więcej właściwości i przykładów. | Tak |
 | connectVia | [Środowisko wykonawcze integracji](concepts-integration-runtime.md) do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [Wymagania wstępne.](#prerequisites) Jeśli nie zostanie określony, ta właściwość używa domyślnego środowiska wykonawczego integracji platformy Azure. |Nie |
 

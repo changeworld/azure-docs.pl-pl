@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0d63f2c29bfdbdf320185647bd33ec30500ed874
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 8cb4af8faccb68c455928c0d3c5405ef2d3e70df
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742695"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011025"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>Indeksowanie tabel w puli SQL Synapse
 
@@ -52,9 +52,9 @@ Istnieje kilka scenariuszy, w których klastrowany magazyn kolumn może nie być
 
 ## <a name="heap-tables"></a>Tabele sterty
 
-Podczas tymczasowego lądowania danych w puli Synapse SQL, może się okazać, że przy użyciu tabeli sterty sprawia, że ogólny proces szybciej. Jest to spowodowane obciążenia do sterty są szybsze niż do tabel indeksu i w niektórych przypadkach kolejny odczyt można wykonać z pamięci podręcznej.  Jeśli ładujesz dane tylko do etapu przed uruchomieniem więcej przekształceń, ładowanie tabeli do tabeli sterty jest znacznie szybsze niż ładowanie danych do tabeli magazynu kolumn klastrowanych. Ponadto ładowanie danych do [tabeli tymczasowej](sql-data-warehouse-tables-temporary.md) ładuje się szybciej niż ładowanie tabeli do magazynu trwałego.  
+Podczas tymczasowego lądowania danych w puli Synapse SQL, może się okazać, że przy użyciu tabeli sterty sprawia, że ogólny proces szybciej. Jest to spowodowane obciążenia do sterty są szybsze niż do tabel indeksu i w niektórych przypadkach kolejny odczyt można wykonać z pamięci podręcznej.  Jeśli ładujesz dane tylko do etapu przed uruchomieniem więcej przekształceń, ładowanie tabeli do tabeli sterty jest znacznie szybsze niż ładowanie danych do tabeli magazynu kolumn klastrowanych. Ponadto ładowanie danych do [tabeli tymczasowej](sql-data-warehouse-tables-temporary.md) ładuje się szybciej niż ładowanie tabeli do magazynu trwałego.  Po załadowaniu danych można utworzyć indeksy w tabeli, aby uzyskać szybszą wydajność kwerendy.  
 
-W przypadku małych tabel odnośników mniej niż 60 milionów wierszy często tabele sterty mają sens.  Tabele magazynu kolumn klastra zaczynają osiągać optymalną kompresję, gdy istnieje więcej niż 60 milionów wierszy.
+Tabele magazynu kolumn klastra zaczynają osiągać optymalną kompresję, gdy istnieje więcej niż 60 milionów wierszy.  W przypadku małych tabel odnośników mniej niż 60 milionów wierszy należy rozważyć użycie heap lub indeks klastrowany dla szybszej wydajności kwerendy. 
 
 Aby utworzyć tabelę sterty, wystarczy określić heap w with klauzuli:
 

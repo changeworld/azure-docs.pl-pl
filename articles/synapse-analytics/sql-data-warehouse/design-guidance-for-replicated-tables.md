@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 128b4203d34b99df8363ef19783baa4a7b608aa5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 654aeddbb305124ea00a883dbef9d8b5ad585a36
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631317"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990790"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>Wskazówki dotyczące projektowania dotyczące korzystania z tabel replikowanych w usłudze SQL Analytics
 
@@ -124,7 +124,7 @@ Ponownie `DimDate` utworzyliśmy `DimSalesTerritory` i jako zreplikowane tabele 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Zagadnienia dotyczące wydajności modyfikowania tabel replikowanych
 
-Sql Analytics implementuje replikowaną tabelę, utrzymując główną wersję tabeli. Kopiuje wersję główną do jednej bazy danych dystrybucji w każdym węźle obliczeniowym. W przypadku zmiany sql analytics najpierw aktualizuje tabelę główną. Następnie przebudowuje tabele w każdym węźle obliczeniowym. Przebudowa replikowanej tabeli obejmuje kopiowanie tabeli do każdego węzła obliczeniowego, a następnie tworzenie indeksów.  Na przykład replikowana tabela na DW400 ma 5 kopii danych.  Kopia wzorcowa i pełna kopia w każdym węźle obliczeniowym.  Wszystkie dane są przechowywane w bazach danych dystrybucji. Usługa SQL Analytics używa tego modelu do obsługi szybszych instrukcji modyfikacji danych i elastycznych operacji skalowania.
+Sql Analytics implementuje replikowaną tabelę, utrzymując główną wersję tabeli. Kopiuje wersję główną do pierwszej bazy danych dystrybucji w każdym węźle obliczeniowym. Gdy nastąpi zmiana, SQL Analytics najpierw aktualizuje wersję główną, a następnie odbudowuje tabele w każdym węźle obliczeniowym. Przebudowa replikowanej tabeli obejmuje kopiowanie tabeli do każdego węzła obliczeniowego, a następnie tworzenie indeksów.  Na przykład zreplikowana tabela na DW2000c ma 5 kopii danych.  Kopia wzorcowa i pełna kopia w każdym węźle obliczeniowym.  Wszystkie dane są przechowywane w bazach danych dystrybucji. Usługa SQL Analytics używa tego modelu do obsługi szybszych instrukcji modyfikacji danych i elastycznych operacji skalowania.
 
 Przebudowy są wymagane po:
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 9ef8d6a8d97b2f2c2cff62c629219efb43077c77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb0e20a96bebec22dff99d89c6be0a6d294c80a1
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75754140"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992151"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi HubSpot przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -55,8 +55,8 @@ Następujące właściwości są obsługiwane dla usługi połączonej HubSpot:
 | accessToken (dostępToken) | Token dostępu uzyskane podczas wstępnego uwierzytelniania integracji OAuth. Dowiedz się, jak uzyskać token dostępu z identyfikatorem klienta i kluczem tajnym [tutaj](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens). Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Tak |
 | odświeżanieDoken | Token odświeżania uzyskane podczas początkowego uwierzytelniania integracji OAuth. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Tak |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartością domyślną jest true.  | Nie |
-| useHostVerification | Określa, czy nazwa hosta w certyfikacie serwera ma być zgodna z nazwą hosta serwera podczas łączenia się za ok. Wartością domyślną jest true.  | Nie |
-| usePeerVerification | Określa, czy podczas nawiązywania połączenia za łącze SSL należy sprawdzić tożsamość serwera. Wartością domyślną jest true.  | Nie |
+| useHostVerification | Określa, czy nazwa hosta w certyfikacie serwera ma być zgodna z nazwą hosta serwera podczas łączenia się za korzystając z protokołu TLS. Wartością domyślną jest true.  | Nie |
+| usePeerVerification | Określa, czy podczas nawiązywania połączenia zawersyfikowany przez TLS ma być weryfikowany przez tożsamość serwera. Wartością domyślną jest true.  | Nie |
 
 **Przykład:**
 

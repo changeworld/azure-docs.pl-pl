@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: jingwang
-ms.openlocfilehash: b215531fdc1a1bb07b33c427623d5cd4f5f8219a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc81e66e609400c6558f00ee957ccaee715bd7fa
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252478"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991641"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Kopiowanie danych z serwera FTP przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
@@ -46,7 +46,7 @@ W szczególności to złącze FTP obsługuje:
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -62,7 +62,7 @@ Następujące właściwości są obsługiwane dla usługi połączonej FTP:
 | host | Określ nazwę lub adres IP serwera FTP. | Tak |
 | port | Określ port, na którym nasłuchuje serwer FTP.<br/>Dozwolone wartości to: całkowita, wartość domyślna to **21**. | Nie |
 | Enablessl | Określ, czy protokół FTP ma być używany przez kanał SSL/TLS.<br/>Dozwolone wartości to: **true** (default), **false**. | Nie |
-| enableServerCertificateWwadacja | Określ, czy podczas korzystania z kanału SSL/TLS należy włączyć sprawdzanie poprawności certyfikatu SSL serwera podczas korzystania z protokołu FTP za pośrednictwem kanału SSL/TLS.<br/>Dozwolone wartości to: **true** (default), **false**. | Nie |
+| enableServerCertificateWwadacja | Określ, czy podczas korzystania z kanału SSL/TLS należy włączyć sprawdzanie poprawności certyfikatu protokołu TLS/SSL serwera.<br/>Dozwolone wartości to: **true** (default), **false**. | Nie |
 | authenticationType | Określ typ uwierzytelniania.<br/>Dozwolone wartości to: **Podstawowe,** **Anonimowe** | Tak |
 | userName | Określ użytkownika, który ma dostęp do serwera FTP. | Nie |
 | hasło | Określ hasło użytkownika (nazwa użytkownika). Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Nie |

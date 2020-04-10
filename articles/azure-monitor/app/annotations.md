@@ -3,27 +3,23 @@ title: Dodawanie adnotacji do usługi Application Insights | Dokumenty firmy Mic
 description: Dodaj znaczniki wdrażania lub kompilacji do wykresów eksploratora metryk w usłudze Application Insights.
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: e0e2a106b276110e13b3c68889e4d1d349ba73a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666517"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010735"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Adnotacje na wykresach metryk w usłudze Application Insights
 
-Adnotacje na [wykresach Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md) pokazują, gdzie wdrożono nową kompilację lub inne znaczące zdarzenia. Adnotacje ułatwiają sprawdzenie, czy zmiany miały jakikolwiek wpływ na wydajność aplikacji. Mogą one być automatycznie tworzone przez system [kompilacji usługi Azure Potoki.](https://docs.microsoft.com/azure/devops/pipelines/tasks/) Można również utworzyć adnotacje do flagi dowolnego zdarzenia, tworząc je z programu PowerShell.
-
-> [!NOTE]
-> Ten artykuł odzwierciedla przestarzałe **klasyczne metryki**. Adnotacje są obecnie dostępne tylko w klasycznym doświadczeniu i w **[skoroszytach](../../azure-monitor/app/usage-workbooks.md)**. Aby dowiedzieć się więcej o bieżącym metryk, zobacz [Zaawansowane funkcje Usługi Azure Metrics Explorer](../../azure-monitor/platform/metrics-charts.md).
-
-![Przykład adnotacji](./media/annotations/0-example.png)
+Adnotacje pokazują, gdzie wdrożono nową kompilację lub inne znaczące zdarzenia. Adnotacje ułatwiają sprawdzenie, czy zmiany miały jakikolwiek wpływ na wydajność aplikacji. Mogą one być automatycznie tworzone przez system [kompilacji usługi Azure Potoki.](https://docs.microsoft.com/azure/devops/pipelines/tasks/) Można również utworzyć adnotacje do flagi dowolnego zdarzenia, tworząc je z programu PowerShell.
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Zwolnij adnotacje za pomocą kompilacji Potoki platformy Azure
 
 Adnotacje dotyczące wersji są funkcją usługi Azure Pipelines opartej na chmurze usługi Azure DevOps.
 
 ### <a name="install-the-annotations-extension-one-time"></a>Instalowanie rozszerzenia Adnotacje (jednorazowo)
+
 Aby móc tworzyć adnotacje dotyczące wersji, musisz zainstalować jedno z wielu rozszerzeń usługi Azure DevOps dostępnych w witrynie Visual Studio Marketplace.
 
 1. Zaloguj się do projektu [usługi Azure DevOps.](https://azure.microsoft.com/services/devops/)
@@ -74,11 +70,26 @@ Utwórz oddzielny klucz interfejsu API dla każdego szablonu wydania usługi Azu
 1. Wybierz **pozycję Zapisz** w głównym oknie szablonu wydania, aby zapisać szablon.
 
 ## <a name="view-annotations"></a>Wyświetlanie adnotacji
-Teraz za każdym razem, gdy używasz szablonu wydania do wdrażania nowej wersji, adnotacja jest wysyłana do usługi Application Insights. Adnotacje są wyświetlane na wykresach w **Eksploratorze metryk**.
 
-Wybierz dowolny znacznik adnotacji (strzałka jasnoszary), aby otworzyć szczegółowe informacje o wydaniu, w tym żądanie, gałąź kontroli źródła, potok zwalniania i środowisko.
 
-![Wybierz znacznik adnotacji wydania.](./media/annotations/8-release.png)
+   > [!NOTE]
+   > Adnotacje wersji nie są obecnie dostępne w okienku Metryki usługi Application Insights
+
+Teraz za każdym razem, gdy używasz szablonu wydania do wdrażania nowej wersji, adnotacja jest wysyłana do usługi Application Insights. Adnotacje można wyświetlać w następujących lokalizacjach:
+
+Okienko użycia, w którym można również ręcznie tworzyć adnotacje wersji:
+
+![Zrzut ekranu przedstawiający wykres słupkowy z liczbą wizyt użytkowników wyświetlanych w ciągu kilku godzin. Adnotacje wersji są wyświetlane jako zielone znaczniki wyboru nad wykresem wskazujące moment, w którym wystąpiło wydanie](./media/annotations/usage-pane.png)
+
+W dowolnej kwerendzie skoroszytu opartej na dzienniku, w której wizualizacja wyświetla czas wzdłuż osi x.
+
+![Zrzut ekranu przedstawiający okienko skoroszytów z kwerendą opartą na dziennikach szeregów czasowych z wyświetlonymi adnotacjami](./media/annotations/workbooks-annotations.png)
+
+Aby włączyć adnotacje w skoroszycie, przejdź do **ustawień zaawansowanych** i wybierz pozycję **Pokaż adnotacje**.
+
+![Zrzut ekranu przedstawiający menu Ustawienia zaawansowane ze słowami wyświetla adnotacje wyróżnione znacznikiem wyboru obok ustawienia, aby go włączyć.](./media/annotations/workbook-show-annotations.png)
+
+Wybierz dowolny znacznik adnotacji, aby otworzyć szczegółowe informacje o wydaniu, w tym żądający, gałąź kontroli źródła, potok wydania i środowisko.
 
 ## <a name="create-custom-annotations-from-powershell"></a>Tworzenie niestandardowych adnotacji z programu PowerShell
 Skrypt [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell z usługi GitHub służy do tworzenia adnotacji z dowolnego procesu, który ci się podoba, bez użycia usługi Azure DevOps. 

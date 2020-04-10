@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 7f001a0d443e4ec668aedaabb7505884163bf37e
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: faafc1e12f0703c38b4e602700b1e775bf13a061
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666783"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998344"
 ---
-# <a name="partial-term-search-and-patterns-with-special-characters---azure-cognitive-search-wildcard-regex-patterns"></a>Częściowe wyszukiwanie terminów i wzorce ze znakami specjalnymi — Usługa Azure Cognitive Search (symbol wieloznaczny, wyrażenie regularne, wzorce)
+# <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Częściowe wyszukiwanie terminów i wzory ze znakami specjalnymi (symbol wieloznaczny, wyrażenie regularne, wzory)
 
 *Wyszukiwanie terminów częściowych* odnosi się do zapytań składających się z fragmentów terminów, takich jak pierwsza, ostatnia lub wewnętrzna część ciągu. *Wzorzec* może łączyć fragmenty, czasami ze znakami specjalnymi, takimi jak kreski lub ukośniki, które są częścią kwerendy. Typowe przypadki użycia obejmują wykonywanie zapytań dotyczących fragmentów numeru telefonu, adresu URL, osób lub kodów produktów lub słów złożonych.
 
 Wyszukiwanie częściowe może być problematyczne, jeśli indeks nie ma terminów w formacie wymaganym do dopasowywania wzorców. Podczas fazy analizy tekstu indeksowania, przy użyciu domyślnego analizatora standardowego, znaki specjalne są odrzucane, ciągi kompozytowe i złożone są dzielone, co powoduje, że kwerendy wzorca nie powiodą się, gdy nie zostanie znalezione dopasowanie. Na `+1 (425) 703-6214`przykład numer telefonu, taki `"1"`jak `"425"` `"703"`(tokenized as , , , `"6214"`) nie będzie się wyświetlał w `"3-62"` kwerendzie, ponieważ ta zawartość w rzeczywistości nie istnieje w indeksie. 
 
-Rozwiązaniem jest wywołanie analizatora, który zachowuje pełny ciąg, w tym spacje i znaki specjalne, jeśli to konieczne, dzięki czemu można obsługiwać częściowe terminy i wzorce. Tworzenie dodatkowego pola dla nienaruszonego ciągu, a także przy użyciu analizatora zachowania zawartości, jest podstawą rozwiązania.
+Rozwiązaniem jest wywołanie analizatora, który zachowuje pełny ciąg, w tym spacje i znaki specjalne, jeśli to konieczne, dzięki czemu można dopasować na warunkach częściowych i wzorców. Tworzenie dodatkowego pola dla nienaruszonego ciągu, a także przy użyciu analizatora zachowania zawartości, jest podstawą rozwiązania.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Co to jest wyszukiwanie częściowe w usłudze Azure Cognitive Search
 
@@ -64,7 +64,7 @@ Analizatory są przypisywane na podstawie pola, co oznacza, że można tworzyć 
   "type": "Edm.String",
   "retrievable": true,
   "searchable": true,
-  "analyzer": "my_customanalyzer"
+  "analyzer": "my_custom_analyzer"
 },
 ```
 

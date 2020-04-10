@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 8f5065a0f4a2a96a747a45f64e00e86f7990bfb8
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 3a16a8263c80852127ca61db3c666ebf0f7f1e4c
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437793"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011705"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Kopiowanie i przekształcanie danych w bazie danych SQL usługi Azure przy użyciu usługi Azure Data Factory
 
@@ -493,7 +493,7 @@ BEGIN
 END
 ```
 
-**Wariant 2:** Można również [wywołać procedurę składowaną w ramach działania kopiowania](#invoke-a-stored-procedure-from-a-sql-sink). To podejście uruchamia każdy wiersz w tabeli źródłowej zamiast przy użyciu zbiorczego wstawiania jako domyślnego podejścia w działaniu kopiowania, co nie jest odpowiednie dla dużych skalowania upsert.
+**Wariant 2:** Można również [wywołać procedurę składowaną w ramach działania kopiowania](#invoke-a-stored-procedure-from-a-sql-sink). Takie podejście uruchamia każdą partię `writeBatchSize` (zgodnie z zasadami właściwości) w tabeli źródłowej zamiast przy użyciu zbiorczego wstawiania jako domyślnego podejścia w działaniu kopiowania.
 
 ### <a name="overwrite-the-entire-table"></a>Zastępowanie całej tabeli
 
@@ -508,10 +508,7 @@ Kroki zapisywania danych za pomocą logiki niestandardowej są podobne do opisan
 
 ## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a><a name="invoke-a-stored-procedure-from-a-sql-sink"></a>Wywoływanie procedury składowanej z ujścia SQL
 
-Podczas kopiowania danych do usługi Azure SQL Database można również skonfigurować i wywołać procedurę składowaną określoną przez użytkownika z dodatkowymi parametrami. Funkcja procedury składowanej korzysta z [parametrów wycenionych w tabeli](https://msdn.microsoft.com/library/bb675163.aspx).
-
-> [!TIP]
-> Wywoływanie procedury składowanej przetwarza wiersz danych według wiersza zamiast przy użyciu operacji zbiorczej, która nie jest zalecana dla kopiowania na dużą skalę. Dowiedz się więcej o [najlepszych praktykach dotyczących ładowania danych do usługi Azure SQL Database.](#best-practice-for-loading-data-into-azure-sql-database)
+Podczas kopiowania danych do usługi Azure SQL Database można również skonfigurować i wywołać procedurę składowaną określoną przez użytkownika z dodatkowymi parametrami dla każdej partii tabeli źródłowej. Funkcja procedury składowanej korzysta z [parametrów wycenionych w tabeli](https://msdn.microsoft.com/library/bb675163.aspx).
 
 Można użyć procedury składowanej, gdy wbudowane mechanizmy kopiowania nie służą do celu. Przykładem jest, gdy chcesz zastosować dodatkowe przetwarzanie przed ostatecznym wstawieniem danych źródłowych do tabeli docelowej. Niektóre dodatkowe przykłady przetwarzania są, gdy chcesz scalić kolumny, wyszukać dodatkowe wartości i wstawić do więcej niż jednej tabeli.
 

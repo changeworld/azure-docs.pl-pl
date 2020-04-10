@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 08/06/2019
-ms.openlocfilehash: 8139ed8f4f4799a963a051eed96dd87c4ac38aec
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/09/2020
+ms.openlocfilehash: 3252ecb030234e4c5543c07dfb4fc702f850a73e
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981430"
+ms.locfileid: "80998990"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastyczne pule pozwalają na zarządzanie wieloma bazami danych Azure SQL oraz ich skalowanie
 
@@ -110,9 +110,9 @@ Najlepszy rozmiar puli zależy od zasobów agregujących potrzebnych dla wszystk
 - Maksymalna ilość zasobów wykorzystywanych przez wszystkie bazy danych w puli (maksymalne DTU lub maksymalne wartości wirtualne w zależności od wybranego modelu pozyskiwania zasobów).
 - Maksymalna liczba bajtów magazynu wykorzystana przez wszystkie bazy danych w puli.
 
-Aby uzyskać dostępne warstwy usług dla każdego modelu zasobów, zobacz [model zakupu oparty na UTU](sql-database-service-tiers-dtu.md) lub model zakupów oparty na [parcie wirtualnym](sql-database-service-tiers-vcore.md).
+Aby uzyskać dostępne warstwy usług i limity dla każdego modelu zasobów, zobacz [model zakupu oparty na USŁUDZE DTU](sql-database-service-tiers-dtu.md) lub model zakupów oparty na [parcie wirtualnym](sql-database-service-tiers-vcore.md).
 
-W przypadkach, gdy nie można użyć narzędzi, skorzystanie z następujących instrukcji krok po kroku może ułatwić oszacowanie, czy pula jest bardziej opłacalna niż pojedyncza baza danych:
+Poniższe kroki mogą pomóc w oszacowaniu, czy pula jest bardziej opłacalna niż pojedyncze bazy danych:
 
 1. Oszacuj eDTU lub vCore potrzebne dla puli w następujący sposób:
 
@@ -126,6 +126,10 @@ W przypadkach, gdy nie można użyć narzędzi, skorzystanie z następujących i
 3. W przypadku modelu zakupów opartego na UJ należy przyjąć większą wartość szacunków eDTU z kroku 1 i 2. W przypadku modelu zakupu opartego na wynikach vCore należy wziąć oszacowanie koru wirtualnego z kroku 1.
 4. Zobacz [stronę cennika bazy danych SQL](https://azure.microsoft.com/pricing/details/sql-database/) i znajdź najmniejszy rozmiar puli, który jest większy niż szacowany krok 3.
 5. Porównaj cenę puli z kroku 5 z ceną przy użyciu odpowiednich rozmiarów obliczeń dla pojedynczych baz danych.
+
+> [!IMPORTANT]
+> Jeśli liczba baz danych w puli zbliża się do maksymalnej obsługiwanej, należy wziąć pod uwagę [zarządzanie zasobami w gęstych pulach elastycznych.](sql-database-elastic-pool-resource-management.md)
+> 
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>Korzystanie z innych funkcji bazy danych SQL z pulami elastycznymi
 
@@ -218,7 +222,7 @@ Aby uzyskać więcej informacji, zobacz [tworzenie alertów bazy danych SQL w wi
 
 - [Daxko/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 
-   Program Daxko/CSI używa pul elastycznych z usługą Azure SQL Database w celu przyspieszenia cyklu programowania i zwiększenia obsługi klienta i wydajności.   
+   Program Daxko/CSI używa pul elastycznych z usługą Azure SQL Database w celu przyspieszenia cyklu programowania i zwiększenia obsługi klienta i wydajności.    
 
 ## <a name="next-steps"></a>Następne kroki
 

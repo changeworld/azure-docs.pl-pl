@@ -1,18 +1,18 @@
 ---
 title: Praca z procedurami przechowywanymi, wyzwalaczami i plików UDF w usłudze Azure Cosmos DB
 description: W tym artykule przedstawiono pojęcia, takie jak procedury przechowywane, wyzwalacze i funkcje zdefiniowane przez użytkownika w usłudze Azure Cosmos DB.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: mjbrown
+ms.date: 04/09/2020
+ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 23a14e7590eca6f63c92acdf6336ffaef8b54381
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13256377b8a8aaebf59196df57eef67d3b960cb8
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065889"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010549"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Procedury przechowywane, wyzwalacze i funkcje zdefiniowane przez użytkownika
 
@@ -69,7 +69,7 @@ Procedury przechowywane i wyzwalacze są zawsze wykonywane w podstawowej repliki
 
 Wszystkie operacje usługi Azure Cosmos DB muszą zostać ukończone w określonym czasie. To ograniczenie dotyczy funkcji JavaScript — procedur przechowywanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika. Jeśli operacja nie zostanie ukończona w tym terminie, transakcja zostanie wycofana.
 
-Można upewnić się, że funkcje JavaScript zakończyć w terminie lub zaimplementować model oparty na kontynuacji do wykonywania partii/wznawiania. Aby uprościć opracowywanie procedur składowanych i wyzwalaczy do obsługi limitów czasowych, wszystkie funkcje w kontenerze usługi Azure Cosmos (na przykład tworzenie, odczytywanie, aktualizowanie i usuwanie elementów) zwracają wartość logiczną, która odpowiada, czy ta operacja będzie Kompletny. Jeśli ta wartość jest false, jest wskazanie, że procedura musi zakończyć wykonanie, ponieważ skrypt zużywa więcej czasu lub aprowizowana przepływność niż skonfigurowana wartość. Operacje w kolejce przed pierwszą operacją magazynu niezaakceptowane są gwarantowane do ukończenia, jeśli procedura składowana zakończy się w czasie i nie kolejkuje więcej żądań. W związku z tym operacje powinny być umieszczane w kolejce po jednym na raz przy użyciu konwencji wywołania zwrotnego JavaScript do zarządzania przepływem sterowania skryptu. Ponieważ skrypty są wykonywane w środowisku po stronie serwera, są ściśle regulowane. Skrypty, które wielokrotnie naruszają granice wykonywania mogą być oznaczone jako nieaktywne i nie mogą być wykonywane, i powinny być odtworzone w celu przestrzegania granic wykonywania.
+Można upewnić się, że funkcje JavaScript zakończyć w terminie lub zaimplementować model oparty na kontynuacji do wykonywania partii/wznawiania. Aby uprościć tworzenie procedur składowanych i wyzwalaczy do obsługi limitów czasowych, wszystkie funkcje w kontenerze usługi Azure Cosmos (na przykład tworzenie, odczytywanie, aktualizowanie i usuwanie elementów) zwracają wartość logiczną, która reprezentuje, czy ta operacja zostanie ukończona. Jeśli ta wartość jest false, jest wskazanie, że procedura musi zakończyć wykonanie, ponieważ skrypt zużywa więcej czasu lub aprowizowana przepływność niż skonfigurowana wartość. Operacje w kolejce przed pierwszą operacją magazynu niezaakceptowane są gwarantowane do ukończenia, jeśli procedura składowana zakończy się w czasie i nie kolejkuje więcej żądań. W związku z tym operacje powinny być umieszczane w kolejce po jednym na raz przy użyciu konwencji wywołania zwrotnego JavaScript do zarządzania przepływem sterowania skryptu. Ponieważ skrypty są wykonywane w środowisku po stronie serwera, są ściśle regulowane. Skrypty, które wielokrotnie naruszają granice wykonywania mogą być oznaczone jako nieaktywne i nie mogą być wykonywane, i powinny być odtworzone w celu przestrzegania granic wykonywania.
 
 Funkcje JavaScript również podlegają [aprowizowanej przepustowości.](request-units.md) Funkcje JavaScript może potencjalnie skończyć przy użyciu dużej liczby jednostek żądań w krótkim czasie i może być ograniczona szybkość, jeśli aprowizowana limit przepustowości zostanie osiągnięty. Należy pamiętać, że skrypty zużywają dodatkową przepływność oprócz przepływności wydanej na wykonywanie operacji bazy danych, chociaż te operacje bazy danych są nieco tańsze niż wykonywanie tych samych operacji od klienta.
 
@@ -90,7 +90,7 @@ Podobnie jak pre-wyzwalacze, po wyzwalaczach, są również skojarzone z operacj
 
 ## <a name="user-defined-functions"></a><a id="udfs"></a>Funkcje zdefiniowane przez użytkownika
 
-Funkcje zdefiniowane przez użytkownika (UDFs) są używane do rozszerzania składni języka zapytań interfejsu API interfejsu API i łatwego implementowania niestandardowej logiki biznesowej. Można je wywołać tylko w ramach kwerend. Pliki UDF nie mają dostępu do obiektu kontekstowego i mają być używane jako tylko javascript obliczeniowy. W związku z tym pliki UDF można uruchomić na replikach pomocniczych. Na przykład zobacz [Jak napisać funkcje zdefiniowane przez użytkownika](how-to-write-stored-procedures-triggers-udfs.md#udfs) artykułu.
+[Funkcje zdefiniowane przez użytkownika](sql-query-udfs.md) (UDFs) są używane do rozszerzania składni języka zapytań interfejsu API interfejsu API i łatwego implementowania niestandardowej logiki biznesowej. Można je wywołać tylko w ramach kwerend. Pliki UDF nie mają dostępu do obiektu kontekstowego i mają być używane jako tylko javascript obliczeniowy. W związku z tym pliki UDF można uruchomić na replikach pomocniczych. Na przykład zobacz [Jak napisać funkcje zdefiniowane przez użytkownika](how-to-write-stored-procedures-triggers-udfs.md#udfs) artykułu.
 
 ## <a name="javascript-language-integrated-query-api"></a><a id="jsqueryapi"></a>Interfejs API zapytań zintegrowany z językiem JavaScript
 

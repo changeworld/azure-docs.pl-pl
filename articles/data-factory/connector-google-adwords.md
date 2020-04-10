@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
-ms.openlocfilehash: b01dcad71747da6b7aa770e3993cb82892ae55fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d536b706db85603624e0fa2362df7c537958f6f2
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929434"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991607"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Kopiowanie danych z Google AdWords przy użyciu usługi Azure Data Factory
 
@@ -55,7 +55,7 @@ W usłudze połączonej z Google AdWords obsługiwane są następujące właści
 | clientSecret | Tajemnica klienta aplikacji google użyta do uzyskania tokenu odświeżania. Możesz zaznaczyć to pole jako SecureString, aby bezpiecznie przechowywać je w usłudze ADF lub przechowywać hasło w usłudze Azure Key Vault i pozwolić aktywność kopiowania ADF pobierać stamtąd podczas wykonywania kopiowania danych — dowiedz się więcej z [poświadczenia sklepu w magazynie kluczy](store-credentials-in-key-vault.md). | Nie |
 | email | Identyfikator wiadomości e-mail konta usługi, który jest używany do serviceAuthentication i może być używany tylko na własny hostowany iR.  | Nie |
 | keyFilePath | Pełna ścieżka do pliku klucza .p12, który jest używany do uwierzytelniania adresu e-mail konta usługi i może być używany tylko na samodzielnym podczerwem.  | Nie |
-| trustedCertPath | Pełna ścieżka pliku pem zawierającego zaufane certyfikaty urzędu certyfikacji do weryfikacji serwera podczas łączenia się za ok. Tę właściwość można ustawić tylko podczas korzystania z SSL na samodzielnym IR. Wartością domyślną jest plik cacerts.pem zainstalowany z podczerwień.  | Nie |
+| trustedCertPath | Pełna ścieżka pliku pem zawierającego zaufane certyfikaty urzędu certyfikacji do sprawdzania serwera podczas łączenia się za ok. Tę właściwość można ustawić tylko podczas korzystania z protokołu TLS na samodzielnym podczerwaniu. Wartością domyślną jest plik cacerts.pem zainstalowany z podczerwień.  | Nie |
 | useSystemTrustStore | Określa, czy certyfikat urzędu certyfikacji ma być używany z magazynu zaufania systemu, czy z określonego pliku PEM. Wartość domyślna to false.  | Nie |
 
 **Przykład:**

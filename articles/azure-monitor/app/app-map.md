@@ -4,12 +4,12 @@ description: Monitorowanie złożonych topologii aplikacji za pomocą mapy aplik
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 0823dd5d880c778f9b7a231ac14f1cbba1940927
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657389"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80989531"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikacji: Aplikacje rozproszone triage
 
@@ -155,7 +155,25 @@ Dla [aplikacji ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) dodaw
 
 # <a name="java"></a>[Java](#tab/java)
 
-Począwszy od aplikacji Application Insights Java SDK 2.5.0, `<RoleName>` można `ApplicationInsights.xml` określić nazwę roli w chmurze, dodając do pliku, np.
+**Agent Java**
+
+W przypadku [agenta Java 3.0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) nazwa roli w chmurze jest ustawiona w następujący sposób:
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "roleName": "my cloud role name"
+    }
+  }
+}
+```
+
+Nazwę roli w chmurze można również ```APPLICATIONINSIGHTS_ROLE_NAME```ustawić przy użyciu zmiennej środowiskowej .
+
+**Zestaw SDK Java**
+
+Jeśli używasz SDK, począwszy od application insights Java SDK 2.5.0, `<RoleName>` można `ApplicationInsights.xml` określić nazwę roli w chmurze, dodając do pliku, na przykład.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>

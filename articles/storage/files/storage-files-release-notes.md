@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 578d00d4bd65b3ffbfb6cdac439762344604e6b8
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 765decb8c65254d63ef5267cbc496d2320f58f6e
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804881"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991930"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji agenta usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -25,6 +25,7 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
 | Kamień milowy | Numer wersji agenta | Data wydania | Stan |
 |----|----------------------|--------------|------------------|
+| Wersja V10 - [KB4522359](https://support.microsoft.com/en-us/help/4522409/azure-file-sync-agent-v10-release-march-2020)| 10.0.0.0 | 9 kwietnia 2020 r. | Obsługiwane |
 | Pakiet zbiorczy aktualizacji z grudnia 2019 r. — [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 12 grudnia 2019 r. | Obsługiwane |
 | Wersja V9 - [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2 grudnia 2019 r. | Obsługiwane |
 | Wydanie V8 - [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8 października 2019 r. | Obsługiwane |
@@ -42,6 +43,87 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-10000"></a>Wersja agenta 10.0.0.0
+Poniższe informacje o wersji są dla wersji 10.0.0.0 agenta usługi Azure File Sync (wydany 9 kwietnia 2020 r.).
+
+### <a name="improvements-and-issues-that-are-fixed"></a>Ulepszenia i problemy, które zostały naprawione
+
+- Ulepszony postęp synchronizacji w portalu
+    - Wraz z wydaniem agenta v10 witryna Azure portal wkrótce rozpocznie wyświetlanie typu uruchomionej sesji synchronizacji. Na przykład pobieranie początkowe, regularne pobieranie, wycofywanie w tle (szybkie odzyskiwanie po awarii) i podobne. 
+
+- Ulepszone środowisko portalu warstwowego w chmurze
+    - Jeśli masz pliki, które nie są warstwy lub odwołania, można teraz wyświetlić błędy warstwowe we właściwości punktu końcowego serwera.
+    - Dodatkowe informacje o warstwie w chmurze są dostępne dla punktu końcowego serwera:
+        - Rozmiar lokalnej pamięci podręcznej
+        - Wydajność użycia pamięci podręcznej
+        - Szczegóły zasad warstwowych w chmurze: rozmiar woluminu, bieżąca ilość wolnego miejsca lub ostatni dostępny czas najstarszego pliku w lokalnej pamięci podręcznej.
+    - Te zmiany zostaną wysłane w witrynie Azure portal wkrótce po wydaniu agenta v10 początkowej.
+
+- Obsługa przenoszenia usługi synchronizacji magazynu i/lub konta magazynu do innej dzierżawy usługi Azure Active Directory (AAD)
+    - Usługa Azure File Sync obsługuje teraz przenoszenie konta usługi synchronizacji magazynu i/lub magazynu do innej grupy zasobów, subskrypcji lub dzierżawy usługi Azure AD.
+    
+- Narzędzie do oceny identyfikuje teraz pliki lub katalogi, które kończą się kropką
+    - [Narzędzie Ocena](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) zostało zaktualizowane w celu zidentyfikowania plików lub katalogów, które kończą się kropką. Pliki lub katalogi, które kończą się kropką, nie są obecnie obsługiwane przez usługę Azure File Sync. Aby użyć zaktualizowanej wersji [narzędzia Ewaluacja,](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)zainstaluj najnowszą wersję [modułu programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+ 
+- Różne ulepszenia wydajności i niezawodności
+    - Wykrywanie zmian w udziale plików platformy Azure może zakończyć się niepowodzeniem, jeśli reguły sieci wirtualnej (VNET) i zapory są skonfigurowane na koncie magazynu.
+    - Nie ma już limitu deskryptora zabezpieczeń 2 KB do synchronizowania uznaniowych list kontroli dostępu (DACL).  
+    - Mniejsze zużycie pamięci związane z wycofaniem. 
+    - Zwiększona wydajność podczas korzystania z polecenia cmdlet [Invoke-AzStorageSyncChangeDetection.](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection)
+    - Inne różne ulepszenia niezawodności. 
+    
+### <a name="evaluation-tool"></a>Narzędzie ewaluacyjne
+Przed wdrożeniem usługi Azure File Sync należy ocenić, czy jest on zgodny z systemem przy użyciu narzędzia do oceny synchronizacji plików azure. To narzędzie jest polecenie cmdlet programu Azure PowerShell, który sprawdza potencjalne problemy z systemem plików i zestawem danych, takich jak nieobsługiwały znaki lub nieobsługiwione wersji systemu operacyjnego. Aby uzyskać instrukcje instalacji i użytkowania, zobacz [sekcję Narzędzia ewaluacyjne w](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) przewodniku planowania. 
+
+### <a name="agent-installation-and-server-configuration"></a>Instalacja agenta i konfiguracja serwera
+Aby uzyskać więcej informacji na temat instalowania i konfigurowania agenta synchronizacji plików platformy Azure w systemie Windows Server, zobacz [Planowanie wdrożenia synchronizacji plików platformy Azure](storage-sync-files-planning.md) i jak [wdrożyć usługę Azure File Sync](storage-sync-files-deployment-guide.md).
+
+- Pakiet instalacyjny agenta musi być zainstalowany z uprawnieniami z podwyższonym poziomem uprawnień (administratora).
+- Agent nie jest obsługiwany w opcji wdrażania serwera Nano Server.
+- Agent jest obsługiwany tylko w systemach Windows Server 2019, Windows Server 2016 i Windows Server 2012 R2.
+- Agent wymaga co najmniej 2 GiB pamięci. Jeśli serwer jest uruchomiony na maszynie wirtualnej z włączoną pamięcią dynamiczną, maszyna wirtualna powinna być skonfigurowana z co najmniej 2048 MiB pamięci.
+- Usługa Agent synchronizacji magazynu (FileSyncSvc) nie obsługuje punktów końcowych serwera znajdujących się na woluminie, na który skompresowany jest katalog informacji o woluminie systemowym (SVI). Ta konfiguracja doprowadzi do nieoczekiwanych wyników.
+
+### <a name="interoperability"></a>Współdziałanie
+- Oprogramowanie antywirusowe, kopia zapasowa i inne aplikacje, które uzyskują dostęp do plików warstwowych, mogą spowodować niepożądane odwołania, chyba że przestrzegają one atrybutu offline i pomijają odczytywanie zawartości tych plików. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z synchronizacją plików platformy Azure](storage-sync-files-troubleshoot.md).
+- Osłony plików Menedżera zasobów serwera plików (FSRM) mogą powodować niekończące się błędy synchronizacji, gdy pliki są blokowane z powodu osłony plików.
+- Uruchamianie narzędzia sysprep na serwerze z zainstalowanym agentem usługi Azure File Sync nie jest obsługiwane i może prowadzić do nieoczekiwanych wyników. Agent usługi Azure File Sync powinien zostać zainstalowany po wdrożeniu obrazu serwera i zakończeniu miniinstalacji sysprep.
+
+### <a name="sync-limitations"></a>Ograniczenia synchronizacji
+Następujące elementy nie są synchronizowane, ale reszta systemu nadal normalnie działa:
+- Pliki z nieobsługiwałymi znakami. Zobacz [przewodnik rozwiązywania problemów,](storage-sync-files-troubleshoot.md#handling-unsupported-characters) aby uzyskać listę nieobsługiconych znaków.
+- Pliki lub katalogi, które kończą się kropką.
+- Ścieżki dłuższe niż 2048 znaków.
+- Część SACL (systemowa lista kontroli dostępu) deskryptora zabezpieczeń, która jest używana do przeprowadzania inspekcji.
+- Atrybuty rozszerzone.
+- Alternatywne strumienie danych.
+- Punkty ponownej analizy.
+- Twarde linki.
+- Kompresja (jeśli jest ustawiona w pliku serwera) nie jest zachowywana, gdy zmiany z innych punktów końcowych są synchronizowane z tym plikiem.
+- Każdy plik zaszyfrowany za pomocą systemu szyfrowania plików (lub innego szyfrowania trybu użytkownika), który uniemożliwia usłudze odczytywanie danych.
+
+    > [!Note]  
+    > Usługa Azure File Sync zawsze szyfruje dane podczas przesyłania. Dane magazynowane na platformie Azure są zawsze zaszyfrowane.
+ 
+### <a name="server-endpoint"></a>Punkt końcowy serwera
+- Punkt końcowy serwera można tworzyć tylko na woluminie NTFS. Systemy plików ReFS, FAT, FAT32 i inne nie są obecnie obsługiwane przez usługę Azure File Sync.
+- Obsługa warstw w chmurze nie jest dostępna na woluminie systemowym. Aby utworzyć punkt końcowy serwera na woluminie systemowym, wyłącz obsługę warstw w chmurze podczas tworzenia punktu końcowego serwera.
+- Klaster trybu failover jest obsługiwany tylko z dyskami klastrowanymi, ale nie z udostępnionymi woluminami klastra (CSV).
+- Punktu końcowego serwera nie można zagnieżdżać. Może on współistnieć na tym samym woluminie równolegle z innym punktem końcowym.
+- Nie należy przechowywać pliku stronicowania systemu operacyjnego lub aplikacji w lokalizacji punktu końcowego serwera.
+- Nazwa serwera w portalu nie jest aktualizowana, jeśli nazwa serwera została zmieniona.
+
+### <a name="cloud-endpoint"></a>Punkt końcowy chmury
+- Usługa Azure File Sync obsługuje wprowadzanie zmian w udziale plików platformy Azure bezpośrednio. Jednak wszelkie zmiany wprowadzone w udziale plików platformy Azure najpierw muszą zostać wykryte przez zadanie wykrywania zmian usługi Azure File Sync. Zadanie wykrywania zmian jest inicjowane dla punktu końcowego chmury raz na 24 godziny. Aby natychmiast zsynchronizować pliki, które zostały zmienione w udziale plików platformy Azure, polecenie cmdlet [invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) programu PowerShell może służyć do ręcznego inicjowania wykrywania zmian w udziale plików platformy Azure. Ponadto zmiany wprowadzone do udziału plików platformy Azure za pomocą protokołu REST nie zaktualizują czasu ostatniej modyfikacji protokołu SMB i nie będą postrzegane jako zmiana według synchronizacji.
+- Usługę synchronizacji magazynu i/lub konto magazynu można przenieść do innej grupy zasobów lub subskrypcji w ramach istniejącej dzierżawy usługi Azure AD. Jeśli konto magazynu zostanie przeniesione, należy przyznać usłudze hybrydowej synchronizacji plików dostęp do konta magazynu (zobacz [Upewnienie się, że usługa Azure File Sync ma dostęp do konta magazynu).](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)
+
+    > [!Note]  
+    > Podczas tworzenia punktu końcowego chmury, usługi synchronizacji magazynu i konta magazynu musi znajdować się w tej samej dzierżawy usługi Azure AD. Po utworzeniu punktu końcowego chmury, usługi synchronizacji magazynu i konta magazynu można przenieść do różnych dzierżaw usługi Azure AD.
+
+### <a name="cloud-tiering"></a>Obsługa warstw w chmurze
+- Jeśli plik warstwowy jest kopiowany do innej lokalizacji za pomocą rozszerzenia Robocopy, wynikowy plik nie będzie obsługiwany w warstwie. Atrybut offline może być ustawiony, ponieważ rozszerzenie Robocopy niepoprawnie dołącza ten atrybut podczas operacji kopiowania.
+- Podczas kopiowania plików za pomocą roboskopii użyj opcji /MIR, aby zachować sygnatury czasowe plików. Zapewni to, że starsze pliki są warstwowe wcześniej niż ostatnio dostępne pliki.
 
 ## <a name="agent-version-9100"></a>Agent w wersji 9.1.0.0
 Poniższe informacje o wersji są dla wersji 9.1.0.0 agenta usługi Azure File Sync wydany 12 grudnia 2019. Te uwagi są dodatkiem do informacji o wersji wymienionej dla wersji 9.0.0.0.

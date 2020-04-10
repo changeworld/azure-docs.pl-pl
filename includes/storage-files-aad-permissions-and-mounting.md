@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 8f71c039aa6666cec1b871a158d84a6f5a2a107c
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c88f5a4dd4f2997ce01b1f6a3ae192c62f530e76
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666810"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011428"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. Przypisywanie uprawnień dostępu do tożsamości
 
-Aby uzyskać dostęp do zasobów usługi Azure Files z uwierzytelnianiem opartym na tożsamości, tożsamość (użytkownik, grupa lub podmiot usługi) musi mieć niezbędne uprawnienia na poziomie udziału. Ten proces jest podobny do określania uprawnień udziału systemu Windows, w którym można określić typ dostępu określonego użytkownika do udziału plików. Ogólne zalecenie jest użycie uprawnień na poziomie udziału do zarządzania dostępem wysokiego poziomu do zespołu lub grupy, a następnie wykorzystać uprawnienia NTFS do szczegółowej kontroli dostępu na poziomie katalogu/pliku. Wskazówki w tej sekcji pokazuje, jak przypisać uprawnienia do odczytu, zapisu lub usunięcia dla udziału plików do tożsamości. 
+Aby uzyskać dostęp do zasobów usługi Azure Files z uwierzytelnianiem opartym na tożsamości, tożsamość (użytkownik, grupa lub podmiot usługi) musi mieć niezbędne uprawnienia na poziomie udziału. Ten proces jest podobny do określania uprawnień udziału systemu Windows, w którym można określić typ dostępu określonego użytkownika do udziału plików. Wskazówki w tej sekcji pokazuje, jak przypisać uprawnienia do odczytu, zapisu lub usunięcia dla udziału plików do tożsamości. 
 
 Wprowadziliśmy trzy wbudowane role platformy Azure do udzielania użytkownikom uprawnień na poziomie udziału:
 
@@ -32,6 +32,8 @@ Za pomocą witryny Azure Portal, PowerShell lub interfejsu wiersza polecenia pla
 
 > [!NOTE]
 > Pamiętaj, aby zsynchronizować poświadczenia usługi AD z usługą Azure AD, jeśli planujesz używać usługi AD do uwierzytelniania. Synchronizacja skrótu hasła z usługi AD do usługi Azure AD jest opcjonalna. Uprawnienia na poziomie udziału zostaną przyznane tożsamości usługi Azure AD, która jest synchronizowana z usługą AD.
+
+Ogólne zalecenie polega na użyciu uprawnień na poziomie udziału do zarządzania dostępem wysokiego poziomu do grupy usług AD reprezentującej grupę użytkowników i tożsamości, a następnie użyj uprawnień NTFS do szczegółowej kontroli dostępu na poziomie katalogu/pliku. 
 
 #### <a name="azure-portal"></a>Azure Portal
 Aby przypisać rolę RBAC do tożsamości usługi Azure AD przy użyciu [witryny Azure portal,](https://portal.azure.com)wykonaj następujące kroki:

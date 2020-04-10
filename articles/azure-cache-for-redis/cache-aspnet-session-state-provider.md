@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 25cef95e2d01012506148f03be45104e455e1fcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530278"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010906"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Dostawca stanu sesji ASP.NET dla usługi Azure Cache for Redis
 
@@ -82,10 +82,10 @@ Skomentowana sekcja zawiera przykład atrybutów i ustawień przykładowych dla 
 Skonfiguruj atrybuty z wartościami z bloku pamięci podręcznej w witrynie Microsoft Azure portal i skonfiguruj inne wartości zgodnie z potrzebami. Aby uzyskać instrukcje dotyczące uzyskiwania dostępu do właściwości pamięci podręcznej, zobacz [Konfigurowanie pamięci podręcznej azure dla ustawień Redis](cache-configure.md#configure-azure-cache-for-redis-settings).
 
 * **host** – określ punkt końcowy pamięci podręcznej.
-* **portu** – użyj portu innego niż SSL lub portu SSL, w zależności od ustawień ssl.
+* **portu** — w zależności od ustawień TLS należy użyć portu innego niż TLS/SSL lub portu TLS/SSL.
 * **accessKey** — użyj klucza podstawowego lub pomocniczego dla pamięci podręcznej.
-* **ssl** - prawda, jeśli chcesz zabezpieczyć komunikację pamięci podręcznej / klienta z ssl; w przeciwnym razie fałszywe. Pamiętaj, aby określić prawidłowy port.
-  * Port bez obsługi protokołu SSL jest domyślnie wyłączony w przypadku nowych pamięci podręcznych. Określ wartość true dla tego ustawienia, aby użyć portu SSL. Aby uzyskać więcej informacji na temat włączania portu nienawiązanego do SSL, zobacz sekcję [Porty dostępu](cache-configure.md#access-ports) w temacie [Konfigurowanie pamięci podręcznej.](cache-configure.md)
+* **ssl** - to prawda, jeśli chcesz zabezpieczyć komunikację pamięci podręcznej /klienta z TLS; w przeciwnym razie fałszywe. Pamiętaj, aby określić prawidłowy port.
+  * Port nieobjęty TLS jest domyślnie wyłączony dla nowych pamięci podręcznych. Określ wartość true dla tego ustawienia, aby użyć portu TLS. Aby uzyskać więcej informacji na temat włączania portu nienawiązanego TLS, zobacz sekcję [Porty dostępu](cache-configure.md#access-ports) w temacie [Konfigurowanie pamięci podręcznej.](cache-configure.md)
 * **throwOnError** — true, jeśli chcesz wyjątek, który ma zostać zgłoszony, jeśli występuje błąd lub false, jeśli chcesz, aby operacja nie powiodła się po cichu. Można sprawdzić błąd, sprawdzając statyczne Microsoft.Web.Redis.RedisSessionStateProvider.LastException właściwości. Wartość domyślna jest true.
 * **ponów TimeoutInMilliseconds** — operacje, które nie powiodą się w tym przedziale czasu, określone w milisekundach. Pierwsze ponawianie próby występuje po 20 milisekundach, a następnie ponownych prób występuje co sekundę, dopóki nie wygaśnie interwału retryoutInMilliseconds. Natychmiast po tym przedziale operacja jest ponawiana po raz ostatni. Jeśli operacja nadal nie powiedzie się, wyjątek jest zgłaszany z powrotem do wywołującego, w zależności od throwOnError ustawienie. Wartość domyślna to 0, co oznacza brak ponownych prób.
 * **databaseId** — określa, która baza danych ma być używana dla danych wyjściowych pamięci podręcznej. Jeśli nie zostanie określona, używana jest wartość domyślna 0.

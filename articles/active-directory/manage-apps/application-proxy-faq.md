@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: ec9eeb0c35d96ee777771260686178faa536e909
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: d1929f937d86001a0f2a399b1ebd92e47bbd2c86
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877307"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990909"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Często zadawane pytania dotyczące serwera proxy aplikacji usługi Active Directory (Azure AD)
 
@@ -52,6 +52,9 @@ Aby uzyskać zalecenia, zobacz [Wysoka dostępność i równoważenie obciążen
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Czy zakończenie protokołu TLS (inspekcja lub przyspieszanie protokołu TLS/HTTPS) jest obsługiwane w ruchu z serwerów łączników na platformie Azure?
 
 Łącznik serwera proxy aplikacji wykonuje uwierzytelnianie oparte na certyfikatach na platformie Azure. Zakończenie protokołu TLS (inspekcja lub przyspieszenie protokołu TLS/HTTPS) przerywa tę metodę uwierzytelniania i nie jest obsługiwane. Ruch z łącznika do platformy Azure należy pominąć wszystkie urządzenia, które wykonują zakończenie TLS.  
+
+### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Czy można umieścić urządzenie proxy do przodu między serwerami łączników a serwerem aplikacji zaplecza?
+Tak, ten scenariusz jest obsługiwany począwszy od wersji łącznika 1.5.1526.0. Zobacz [Praca z istniejącymi lokalnymi serwerami proxy](application-proxy-configure-connectors-with-proxy-servers.md).
 
 ### <a name="should-i-create-a-dedicated-account-to-register-the-connector-with-azure-ad-application-proxy"></a>Czy należy utworzyć dedykowane konto, aby zarejestrować łącznik za pomocą serwera proxy aplikacji usługi Azure AD?
 

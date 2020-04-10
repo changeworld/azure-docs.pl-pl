@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: 38f5778e363a16117bab482a758666ec81352afd
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 62c10a2ada9ff7d3bf7090028dd9684192517d02
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887569"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991418"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>Jak monitorować opóźnienie po stronie serwera pod kątem operacji w kontenerze lub koncie usługi Azure Cosmos DB
 
@@ -35,11 +35,11 @@ Można wyszukać dziennik diagnostyczny, aby zobaczyć rozmiar zwracanych danych
 
 1. W okienku **Metryki** > **Wybierz zasób** > wybierz wymaganą **subskrypcję**i **grupę zasobów**. W przypadku **typu zasobu**wybierz pozycję **Konta usługi Azure Cosmos DB**, wybierz jedno z istniejących kont usługi Azure Cosmos i wybierz pozycję **Zastosuj**.
    
-   ![Wybieranie konta usługi Cosmos DB w celu wyświetlenia danych](./media/monitor-server-side-latency/select-cosmosdb-account.png)
+   ![Wybieranie konta usługi Cosmos DB w celu wyświetlenia danych](./media/monitor-server-side-latency/select-cosmos-db-account.png)
 
 1. Następnie wybierz metrykę **opóźnienie strony serwera** z listy dostępnych metryk. Aby dowiedzieć się szczegółowo o wszystkich dostępnych danych na tej liście, zobacz [Metryki według](monitor-cosmos-db-reference.md) kategorii artykułu. W tym przykładzie wybierzmy opóźnienie **po stronie serwera** i **Średnia** jako wartość agregacji. Oprócz tych szczegółów można również wybrać **zakres czasu** i **szczegółowość czasu** metryk. Maksymalnie możesz wyświetlać dane z ostatnich 30 dni.  Po zastosowaniu filtru wykres jest wyświetlany na podstawie filtru. Można zobaczyć średnią liczbę jednostek żądań zużytych na minutę dla wybranego okresu.  
 
-   ![Wybierz metrykę opóźnienie po stronie serwera z witryny Azure portal](./media/monitor-server-side-latency/serverside-latency-metric.png)
+   ![Wybierz metrykę opóźnienie po stronie serwera z witryny Azure portal](./media/monitor-server-side-latency/server-side-latency-metric.png)
 
 ## <a name="filters-for-server-side-latency"></a>Filtry dla opóźnienia po stronie serwera
 
@@ -49,7 +49,7 @@ Aby filtrować metryki, wybierz **dodaj filtr** i wybierz wymaganą właściwoś
 
 Metryki **opóźnienia po stronie serwera** dla każdej operacji są wyświetlane w sposób pokazany na poniższej ilustracji:
 
-![Filtry dla metryk opóźnienia po stronie serwera](./media/monitor-server-side-latency/serverside-latency-filters.png)
+![Filtry dla metryk opóźnienia po stronie serwera](./media/monitor-server-side-latency/server-side-latency-filters.png)
 
 Metryki można również grupować za pomocą opcji **Zastosuj podział.**  
 

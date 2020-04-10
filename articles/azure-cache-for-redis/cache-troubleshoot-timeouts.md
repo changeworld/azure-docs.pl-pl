@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 4b8cfed883ffef780de2e82e3f309e97bcb5515c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4301a55e3f5ea5b445ef1540ee59d1b5c28ca0ed
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278248"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010821"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Rozwiązywanie problemów z limitami czasu usługi Azure Cache for Redis
 
@@ -82,7 +82,7 @@ Aby zbadać możliwe przyczyny, można użyć następujących kroków.
    - Sprawdź, czy procesor jest powiązany z procesorem na serwerze, monitorując [metrykę wydajności pamięci podręcznej](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)procesora . Żądania przychodzące, gdy redis jest związany z procesorem CPU może spowodować, że te żądania do przeciągnięcia czasu. Aby rozwiązać ten warunek, można rozdzielić obciążenie na wiele fragmentów w pamięci podręcznej w warstwie premium lub uaktualnić do większego rozmiaru lub warstwy cenowej. Aby uzyskać więcej informacji, zobacz [Ograniczenie przepustowości po stronie serwera](cache-troubleshoot-server.md#server-side-bandwidth-limitation).
 1. Czy na serwerze trwa dużo czasu? Długotrwałe polecenia, które zajmują dużo czasu, aby przetworzyć na serwerze redis może spowodować przesuw czasu. Aby uzyskać więcej informacji na temat długotrwałych poleceń, zobacz [Długotrwałe polecenia](cache-troubleshoot-server.md#long-running-commands). Możesz połączyć się z pamięcią podręczną platformy Azure dla wystąpienia Redis przy użyciu klienta redis-cli lub [konsoli Redis](cache-configure.md#redis-console). Następnie uruchom polecenie [SLOWLOG,](https://redis.io/commands/slowlog) aby sprawdzić, czy istnieją żądania wolniejniż oczekiwano. Redis Server i StackExchange.Redis są zoptymalizowane pod kątem wielu małych żądań, a nie mniej dużych żądań. Dzielenie danych na mniejsze fragmenty może poprawić rzeczy tutaj.
 
-    Aby uzyskać informacje na temat łączenia się z punktem końcowym SSL pamięci podręcznej przy użyciu redis-cli i stunnel, zobacz wpis w blogu [Ogłaszając ASP.NET dostawcy stanu sesji dla wersji Redis Preview](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
+    Aby uzyskać informacje na temat łączenia się z punktem końcowym TLS/SSL pamięci podręcznej przy użyciu redis-cli i stunnel, zobacz wpis w blogu [Zapowiadający ASP.NET dostawcy stanu sesji dla wersji Redis Preview](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
 1. Wysokie obciążenie serwera Redis może spowodować przesuw czasu. Obciążenie serwera można monitorować, `Redis Server Load` monitorując [metrykę wydajności pamięci podręcznej](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Obciążenie serwera 100 (wartość maksymalna) oznacza, że serwer redis był zajęty, bez czasu bezczynności, przetwarzania żądań. Aby sprawdzić, czy niektóre żądania zajmują wszystkie możliwości serwera, uruchom polecenie SlowLog, zgodnie z opisem w poprzednim akapicie. Aby uzyskać więcej informacji, zobacz Wysokie użycie procesora CPU / Obciążenie serwera.
 1. Czy po stronie klienta było jakieś inne zdarzenie, które mogło spowodować blip sieci? Typowe zdarzenia obejmują: skalowanie liczby wystąpień klienta w górę lub w dół, wdrażanie nowej wersji klienta lub skalowanie automatyczne włączone. W naszych testach odkryliśmy, że skalowanie automatyczne lub skalowanie w górę/w dół może spowodować utratę wychodzącej łączności sieciowej na kilka sekund. StackExchange.Redis kod jest odporny na takie zdarzenia i łączy się ponownie. Podczas ponownego łączenia, wszystkie żądania w kolejce może limit czasu.
 1. Czy istnieje duże żądanie poprzedzające kilka małych żądań do pamięci podręcznej, która się skończyła? Parametr `qs` w komunikacie o błędzie informuje, ile żądań zostało wysłanych z klienta do serwera, ale nie przetworzyli odpowiedzi. Ta wartość może rosnąć, ponieważ StackExchange.Redis używa jednego połączenia TCP i może odczytywać tylko jedną odpowiedź naraz. Mimo że przesunął się limit czasu pierwszej operacji, nie zatrzymuje więcej danych przed wysłaniem do lub z serwera. Inne żądania zostaną zablokowane, dopóki duże żądanie nie zostanie zakończone i może spowodować przesuw czasu. Jednym z rozwiązań jest zminimalizowanie szansy na przesuw czasu pracy, zapewniając, że pamięć podręczna jest wystarczająco duża dla obciążenia i dzielenie dużych wartości na mniejsze fragmenty. Innym możliwym rozwiązaniem jest użycie `ConnectionMultiplexer` puli obiektów w kliencie `ConnectionMultiplexer` i wybierz najmniej załadowany podczas wysyłania nowego żądania. Ładowanie przez wiele obiektów połączenia powinno uniemożliwić pojedynczy limit czasu powodując inne żądania również limit czasu.

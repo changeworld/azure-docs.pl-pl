@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: rogarana
-ms.openlocfilehash: 081ee364b3ddee5d1d1be75613309a4ae427066f
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: ae575eebf700f5495ea20d2bd3732ca21ad32315
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666839"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011427"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Włączanie uwierzytelniania usługi Active Directory za pomocą smb dla udziałów plików platformy Azure
 
@@ -36,7 +36,9 @@ Po włączeniu udziałów plików usługi AD for Azure za pośrednictwem przysta
 Tożsamości usługi AD używane do uzyskiwania dostępu do udziałów plików platformy Azure muszą być synchronizowane z usługą Azure AD, aby wymusić uprawnienia do plików na poziomie udziału za pośrednictwem standardowego modelu [kontroli dostępu opartego na rolach (RBAC).](../../role-based-access-control/overview.md) [Dacl w stylu windows](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) na pliki/katalogi przeniesione z istniejących serwerów plików zostaną zachowane i wymuszone. Ta funkcja zapewnia bezproblemową integrację z infrastrukturą domeny ad przedsiębiorstwa. Po zastąpieniu serwerów plików prem udziałami plików platformy Azure, istniejący użytkownicy mogą uzyskiwać dostęp do udziałów plików platformy Azure od swoich bieżących klientów za pomocą środowiska logowania jednokrotnego, bez żadnych zmian w używanych poświadczeniach.  
 
 > [!NOTE]
-> Aby ułatwić konfigurowanie uwierzytelniania usługi Azure Files AD dla typowych przypadków użycia, opublikowaliśmy [dwa klipy wideo](https://docs.microsoft.com/azure/storage/files/storage-files-introduction#videos) ze wskazówkami krok po kroku dotyczącymi zastępowania lokalnych serwerów plików za pomocą plików platformy Azure i używania plików Azure Files jako kontenera profilu dla pulpitu wirtualnego systemu Windows.
+> Aby ułatwić konfigurowanie uwierzytelniania usługi Azure Files AD dla typowych przypadków użycia, opublikowaliśmy [dwa filmy z](https://docs.microsoft.com/azure/storage/files/storage-files-introduction#videos) instrukcjami krok po kroku 
+> * Zastępowanie lokalnych serwerów plików plikami azure (w tym konfiguracja na łączu prywatnym dla plików i uwierzytelniania usługi AD)
+> * Używanie usługi Azure Files jako kontenera profilu dla pulpitu wirtualnego systemu Windows (w tym konfiguracja w zakresie uwierzytelniania usługi AD i konfiguracji FsLogix)
  
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
@@ -111,8 +113,7 @@ Do wykonania rejestracji i włączenia funkcji można użyć następującego skr
 ### <a name="12-domain-join-your-storage-account"></a>1.2 Domena dołącza do twojego konta magazynu
 Pamiętaj, aby zastąpić wartości zastępcze własnymi w poniższych parametrach przed wykonaniem ich w programie PowerShell.
 > [!IMPORTANT]
-> Zalecamy podanie jednostki organizacyjnej usługi AD, która NIE wymusza wygasania haseł. Jeśli używasz skonfigurowanej usługi organizacyjnej z skonfigurowanym wygaśnięciem hasła, należy zaktualizować hasło przed osiągnięciem maksymalnego wieku hasła. Nie można zaktualizować hasła konta usługi AD spowoduje błędy uwierzytelniania podczas uzyskiwania dostępu do udziałów plików platformy Azure. Aby dowiedzieć się, jak zaktualizować hasło, zobacz [Aktualizowanie hasła konta USŁUGI AD](#5-update-ad-account-password).
-
+> Poniżej polecenie cmdlet dołączania do domeny utworzy konto usługi AD reprezentujące konto magazynu (udział plików) w usłudze AD. Można zarejestrować się jako konto komputera lub konto logowania usługi. W przypadku kont komputerów domyślny wiek wygaśnięcia hasła jest ustawiony w u. AD na 30 dni. Podobnie konto logowania usługi może mieć domyślny wiek wygaśnięcia hasła ustawiony w domenie usługi AD lub jednostce organizacyjnej (OU). Zdecydowanie zalecamy sprawdzenie, jaki jest wiek wygaśnięcia hasła skonfigurowany w środowisku usługi AD i zaplanować [aktualizację hasła konta usługi AD](#5-update-ad-account-password) na koncie USŁUGI AD poniżej przed osiągnięciem maksymalnego wieku hasła. Nie można zaktualizować hasła konta usługi AD spowoduje błędy uwierzytelniania podczas uzyskiwania dostępu do udziałów plików platformy Azure. Można rozważyć [utworzenie nowej jednostki organizacyjnej usługi AD (OU) w usłudze AD](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) i odpowiednio wyłączyć zasady wygasania haseł na [kontach komputerów](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN) lub kontach logowania do usługi. 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -138,6 +139,11 @@ Join-AzStorageAccountForAuth `
         -Name "<storage-account-name-here>" `
         -DomainAccountType "ComputerAccount" `
         -OrganizationalUnitName "<ou-name-here>" or -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>"
+
+#If you don't provide the OU name as an input parameter, the AD identity that represents the storage account will be created under the root directory.
+
+#
+
 ```
 
 Poniższy opis podsumowuje wszystkie akcje `Join-AzStorageAccountForAuth` wykonywane podczas wykonywania polecenia cmdlet. Możesz wykonać te kroki ręcznie, jeśli nie chcesz używać polecenia:

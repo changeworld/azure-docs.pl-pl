@@ -2,18 +2,17 @@
 title: Plan bazowy zabezpieczeń platformy Azure dla magazynu kluczy
 description: Plan bazowy zabezpieczeń platformy Azure dla magazynu kluczy
 author: msmbaldwin
-manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cc76f8c87eca059db85a68acbe4c317cf4904d39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2ba16bdc3501059266537db03d38bdda0f1f559
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79457189"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008985"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Plan bazowy zabezpieczeń platformy Azure dla magazynu kluczy
 
@@ -29,10 +28,16 @@ Aby uzyskać więcej informacji, zobacz [omówienie planów bazowych zabezpiecze
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Ochrona zasobów przy użyciu sieciowych grup zabezpieczeń lub zapory platformy Azure w sieci wirtualnej
 
-**Wskazówki:** Integracja usługi Azure Key Vault z łączem prywatnym platformy Azure. Usługa Azure Private Link Service umożliwia dostęp do usług platformy Azure (na przykład usługi Azure Key Vault) i usługi Azure hostowane przez klienta/partnera za pośrednictwem prywatnego punktu końcowego w sieci wirtualnej.
+**Wskazówki:** Integracja usługi Azure Key Vault z łączem prywatnym platformy Azure. 
+
+Usługa Azure Private Link Service umożliwia dostęp do usług platformy Azure (na przykład usługi Azure Key Vault) i usługi Azure hostowane przez klienta/partnera za pośrednictwem prywatnego punktu końcowego w sieci wirtualnej.
+
 Prywatny punkt końcowy platformy Azure to interfejs sieciowy, który łączy Cię prywatnie i bezpiecznie z usługą obsługiwaną przez usługę Azure Private Link. Prywatny punkt końcowy używa prywatnego adresu IP z sieci wirtualnej, skutecznie wprowadzając usługę do sieci wirtualnej. Cały ruch do usługi może być kierowany przez prywatny punkt końcowy, więc nie są potrzebne żadne bramy, urządzenia NAT, połączenia usługi ExpressRoute lub VPN ani publiczne adresy IP. Ruch między siecią wirtualną a usługą odbywa się za pośrednictwem sieci szkieletowej firmy Microsoft, eliminując ekspozycję z publicznego Internetu. Można połączyć się z wystąpieniem zasobu platformy Azure, co zapewnia najwyższy poziom szczegółowości w kontroli dostępu.
 
-Jak zintegrować usługę Key Vault z usługą Azure Private Link:https://docs.microsoft.com/azure/key-vault/private-link-service
+Jak zintegrować usługę Key Vault z usługą Azure Private Link:
+
+https://docs.microsoft.com/azure/key-vault/private-link-service
+
 
 **Monitorowanie usługi Azure Security Center**: Tak
 
@@ -41,7 +46,6 @@ Jak zintegrować usługę Key Vault z usługą Azure Private Link:https://docs.m
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: Monitorowanie i rejestrowanie konfiguracji i ruchu sieci wirtualnych, podsieci i kart sieciowych
 
 **Wskazówki:** Skorzystaj z usługi Azure Security Center i postępuj zgodnie z zaleceniami dotyczącymi ochrony sieci, aby zabezpieczyć zasoby skonfigurowane przez usługę Key Vault na platformie Azure. 
-
 
 Aby uzyskać więcej informacji na temat zabezpieczeń sieciowych dostarczonych przez usługę Azure Security Center: 
 
@@ -55,6 +59,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla aplikacji sieci web działających w usłudze Azure App Service lub zasobów obliczeniowych.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
@@ -64,7 +69,10 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 **Wskazówki:** Włącz standard ochrony przed atakami DDoS w usłudze Azure W sieciach wirtualnych skojarzonych z wystąpieniami usługi Key Vault w celu ochrony przed rozproszonymi atakami typu "odmowa usługi". Usługa Azure Security Center Integrated Threat Intelligence umożliwia odmawianie komunikacji ze znanymi złośliwymi lub nieużywanym internetowymi adresami IP.
 
  
-Zarządzanie standardem ochrony przed atakami DDoS firmy Azure przy użyciu portalu Azure portal: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection wykrywanie zagrożeń dla warstwy usługi Platformy Azure w usłudze Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+Zarządzanie standardem ochrony przed atakami DDoS platformy Azure przy użyciu portalu Azure:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+
+Wykrywanie zagrożeń dla warstwy usługi platformy Azure w usłudze Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+
 
 **Monitorowanie usługi Azure Security Center**: Tak
 
@@ -73,9 +81,13 @@ Zarządzanie standardem ochrony przed atakami DDoS firmy Azure przy użyciu port
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Rejestrowanie pakietów sieciowych i dzienników przepływu
 
 **Wskazówki:** Usługa Azure Key Vault nie używa sieciowych grup zabezpieczeń (NSG) i dzienniki przepływu dla usługi Azure Key Vault nie są przechwytywane. Zamiast tego użyj łącza prywatnego platformy Azure, aby zabezpieczyć wystąpienia usługi Azure Key Vault i włączyć ustawienia diagnostyczne do rejestrowania metryk i zdarzeń inspekcji.
-Zintegruj magazyn kluczy z łączem prywatnym platformy Azure:https://docs.microsoft.com/azure/key-vault/private-link-service
+
+Zintegruj magazyn kluczy z łączem prywatnym platformy Azure:
+
+https://docs.microsoft.com/azure/key-vault/private-link-service
 
 Rejestrowanie usługi Azure Key Vault:https://docs.microsoft.com/azure/key-vault/key-vault-logging
+
 
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
@@ -86,11 +98,12 @@ Rejestrowanie usługi Azure Key Vault:https://docs.microsoft.com/azure/key-vault
 
 **Wskazówki:** To wymaganie można spełnić, konfigurując zaawansowaną ochronę przed zagrożeniami (ATP) dla usługi Azure Key Vault. Atp zapewnia dodatkową warstwę analizy zabezpieczeń. To narzędzie wykrywa potencjalnie szkodliwe próby uzyskania dostępu do kont usługi Azure Key Vault lub ich wykorzystania.
 
-
 Gdy usługa Azure Security Center wykryje nietypową aktywność, wyświetla alerty. Wysyła również wiadomość e-mail do administratora subskrypcji ze szczegółami podejrzanej aktywności i zaleceniami dotyczącymi sposobu badania i korygować zidentyfikowane zagrożenia.
 
+Konfigurowanie zaawansowanej ochrony przed zagrożeniami dla usługi Azure Key Vault:
 
-Konfigurowanie zaawansowanej ochrony przed zagrożeniami dla usługi Azure Key Vault:https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
+https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
+
 
 
 **Monitorowanie usługi Azure Security Center**: Tak
@@ -101,6 +114,7 @@ Konfigurowanie zaawansowanej ochrony przed zagrożeniami dla usługi Azure Key V
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla aplikacji sieci web działających w usłudze Azure App Service lub zasobów obliczeniowych.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
@@ -109,8 +123,8 @@ Konfigurowanie zaawansowanej ochrony przed zagrożeniami dla usługi Azure Key V
 
 **Wskazówki:** W przypadku zasobów, które wymagają dostępu do wystąpień usługi Azure Key Vault, użyj tagów usługi Azure dla usługi Azure Key Vault do definiowania kontroli dostępu do sieci w sieciowych grupach zabezpieczeń lub zaporze platformy Azure. Podczas tworzenia reguł zabezpieczeń można użyć tagów usługi zamiast konkretnych adresów IP. Określając nazwę tagu usługi (np. ApiManagement) w odpowiednim polu źródłowym lub docelowym reguły, można zezwolić lub odmówić ruchu dla odpowiedniej usługi. Firma Microsoft zarządza prefiksami adresów objętymi tagiem usługi i automatycznie aktualizuje tag usługi w miarę zmiany adresów.
 
-
 Omówienie tagów usługi platformy Azure:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -118,21 +132,22 @@ Omówienie tagów usługi platformy Azure:https://docs.microsoft.com/azure/virtu
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Obsługa standardowych konfiguracji zabezpieczeń dla urządzeń sieciowych
 
-**Wskazówki:** Definiowanie i implementowanie standardowych konfiguracji zabezpieczeń dla zasobów sieciowych skojarzonych z wystąpieniami usługi Azure Key Vault za pomocą usługi Azure Policy. Użyj aliasów zasad platformy Azure w obszarach nazw "Microsoft.KeyVault" i "Microsoft.Network", aby utworzyć niestandardowe zasady do inspekcji lub wymuszenia konfiguracji sieciowej wystąpień usługi Azure Key Vault. Można również korzystać z wbudowanych definicji zasad związanych z usługą Azure Key Vault, takich jak: [Usługa Key Vault powinna używać punktu końcowego usługi sieci wirtualnej](key-vault-overview-vnet-service-endpoints.md)
+**Wskazówki:** Definiowanie i implementowanie standardowych konfiguracji zabezpieczeń dla zasobów sieciowych skojarzonych z wystąpieniami usługi Azure Key Vault za pomocą usługi Azure Policy. Użyj aliasów zasad platformy Azure w obszarach nazw "Microsoft.KeyVault" i "Microsoft.Network", aby utworzyć niestandardowe zasady do inspekcji lub wymuszenia konfiguracji sieciowej wystąpień usługi Azure Key Vault. Można również korzystać z wbudowanych definicji zasad związanych z usługą Azure Key Vault, takich jak:
 
+Usługa Key Vault powinna używać punktu końcowego usługi sieci wirtualnej
 
 Samouczek: Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-
 Przykłady zasad platformy Azure:
 
-https://docs.microsoft.com/azure/governance/policy/samples
+https://docs.microsoft.com/azure/governance/policy/samples/#networ
 
 Szybki start: zdefiniuj i przypisz plan w portalu:
 
 https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -142,16 +157,14 @@ https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 **Wskazówki:** Użyj tagów dla zasobów związanych z zabezpieczeniami sieci i przepływem ruchu dla wystąpień usługi Azure Key Vault, aby zapewnić metadane i organizację logiczną.
 
-
 Użyj dowolnej z wbudowanych definicji zasad platformy Azure związanych z tagowaniem, takich jak "Wymagaj tagu i jego wartości", aby upewnić się, że wszystkie zasoby są tworzone za pomocą tagów i powiadamiać o istniejących nieoznakowanych zasobach.
 
-
 Za pomocą narzędzia Azure PowerShell lub interfejsu wiersza polecenia platformy Azure można wyszukać lub wykonać akcje na podstawie ich tagów.
-
 
 Użyj tagów do organizowania zasobów platformy Azure:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -165,10 +178,10 @@ Wyświetlanie i pobieranie zdarzeń dziennika aktywności platformy Azure:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-
 Tworzenie, wyświetlanie i zarządzanie alertami dziennika aktywności przy użyciu usługi Azure Monitor:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -181,6 +194,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Korzystanie z zatwierdzonych źródeł synchronizacji czasu
 
 **Wskazówki**: Nie dotyczy; Firma Microsoft przechowuje źródło czasu używane dla zasobów platformy Azure, takich jak Usługa Azure Key Vault, dla sygnatur czasowych w dziennikach.
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -198,6 +212,7 @@ Szybki start: jak na pokładzie usługi Azure Sentinel:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
+
 **Monitorowanie usługi Azure Security Center**: Tak
 
 **Odpowiedzialność**: Klient
@@ -210,6 +225,7 @@ Rejestrowanie usługi Azure Key Vault:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
+
 **Monitorowanie usługi Azure Security Center**: Tak
 
 **Odpowiedzialność**: Klient
@@ -217,6 +233,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-logging
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Zbieranie dzienników zabezpieczeń z systemów operacyjnych
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla zasobów obliczeniowych.
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -228,6 +245,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 Zmień okres przechowywania danych:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Klient
@@ -236,13 +254,18 @@ Zmień okres przechowywania danych:https://docs.microsoft.com/azure/azure-monito
 
 **Wskazówki:** Analizuj i monitoruj dzienniki pod kątem nietypowego zachowania i regularnie przeglądaj wyniki zasobów chronionych przez usługę Azure Key Vault. Użyj obszaru roboczego usługi Azure Monitor log analytics do przeglądania dzienników i wykonywania zapytań na dane dziennika. Alternatywnie można włączyć i na pokładzie danych do usługi Azure Sentinel lub innej firmy SIEM. 
 
+Szybki start: wbudowany program Azure Sentinel:
 
-Szybki start: wbudowany program Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
+Wprowadzenie do usługi Log Analytics w usłudze Azure Monitor:
 
-Wprowadzenie do usługi Log Analytics w usłudze Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
-Wprowadzenie do zapytań dziennika w usłudze Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+Wprowadzenie do zapytań dziennika w usłudze Azure Monitor:
+
+https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+
 
 **Monitorowanie usługi Azure Security Center**: Tak
 
@@ -260,10 +283,10 @@ Zarządzanie alertami zabezpieczeń i odpowiadanie na nie w usłudze Azure Secur
 
 https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts
 
-
 Odpowiadanie na zdarzenia za pomocą alertów usługi Azure Monitor:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
+
 
 **Monitorowanie usługi Azure Security Center**: Tak
 
@@ -273,6 +296,7 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 **Wskazówki**: Nie dotyczy; Usługa Azure Key Vault nie przetwarza ani nie generuje dzienników związanych ze złośliwym oprogramowaniem.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
@@ -281,6 +305,7 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 **Wskazówki**: Nie dotyczy; Usługa Azure Key Vault nie przetwarza ani nie tworzy dzienników związanych z usługą DNS.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
@@ -288,6 +313,7 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 ### <a name="210-enable-command-line-audit-logging"></a>2.10: Włącz rejestrowanie inspekcji wiersza polecenia
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla zasobów obliczeniowych.
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -301,12 +327,16 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 **Wskazówki:** Obsługa spisu aplikacji zarejestrowanych w usłudze Azure Active Directory, a także wszystkich kont użytkowników, które mają dostęp do kluczy, wpisów tajnych i certyfikatów usługi Azure Key Vault. Możesz użyć witryny Azure portal lub programu PowerShell do wykonywania zapytań i uzgadniania dostępu do usługi Key Vault. Aby wyświetlić dostęp w programie PowerShell, użyj następującego polecenia:
 
-
 (Get-AzResource -ResourceId [KeyVaultResourceID]). Właściwości.AccessPolicies
 
-Rejestrowanie aplikacji w usłudze Azure Active Directory:https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
+Rejestrowanie aplikacji w usłudze Azure Active Directory:
 
-Bezpieczny dostęp do magazynu kluczy:https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
+https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
+
+Bezpieczny dostęp do magazynu kluczy:
+
+https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
+
 
 **Monitorowanie usługi Azure Security Center**: Tak
 
@@ -316,6 +346,7 @@ Bezpieczny dostęp do magazynu kluczy:https://docs.microsoft.com/azure/key-vault
 
 **Wskazówki**: Nie dotyczy; Usługa Azure Key Vault nie ma pojęcia haseł domyślnych, ponieważ uwierzytelnianie jest dostarczane przez usługę Active Directory i zabezpieczone za pomocą kontroli dostępu opartej na rolach.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
@@ -324,10 +355,10 @@ Bezpieczny dostęp do magazynu kluczy:https://docs.microsoft.com/azure/key-vault
 
 **Wskazówki:** Tworzenie standardowych procedur operacyjnych dotyczących korzystania z dedykowanych kont administracyjnych, które mają dostęp do wystąpień usługi Azure Key Vault. Użyj usługi Azure Security Center Identity and Access Management (obecnie w wersji zapoznawczej), aby monitorować liczbę aktywnych kont administracyjnych.
 
-
 Monitorowanie tożsamości i dostępu (wersja zapoznawcza):
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
+
 
 **Monitorowanie usługi Azure Security Center**: Tak
 
@@ -337,10 +368,10 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Wskazówki:** Użyj jednostki usługi platformy Azure w połączeniu z Identyfikatorem AppId, Identyfikatorem Dzierżawy i ClientSecret, aby bezproblemowo uwierzytelnić aplikację i pobrać token, który będzie używany do uzyskiwania dostępu do wpisów tajnych usługi Azure Key Vault.
 
-
 Uwierzytelnianie usługi do usługi w usłudze Azure Key Vault przy użyciu platformy .NET:
 
 https://docs.microsoft.com/azure/key-vault/service-to-service-authentication
+
 
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
@@ -351,15 +382,14 @@ https://docs.microsoft.com/azure/key-vault/service-to-service-authentication
 
 **Wskazówki:** Włącz uwierzytelnianie wieloskładnikowe usługi Azure Active Directory i postępuj zgodnie z zaleceniami dotyczącymi zarządzania tożsamościami i dostępem usługi Azure Security Center (obecnie w wersji zapoznawczej), aby chronić zasoby obsługujące centrum zdarzeń.
 
-
 Planowanie wdrożenia uwierzytelniania wieloskładnikowego platformy Azure w chmurze:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-
 Monitorowanie tożsamości i dostępu (wersja zapoznawcza):
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
+
 
 **Monitorowanie usługi Azure Security Center**: Tak
 
@@ -372,6 +402,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 Stacje robocze dostępu uprzywilejowanego:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
 
 Planowanie wdrożenia uwierzytelniania wieloskładnikowego platformy Azure w chmurze:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+
 
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
@@ -395,6 +426,7 @@ Wykrywanie ryzyka usługi Azure Active Directory:https://docs.microsoft.com/azur
 Tworzenie grup akcji i zarządzanie nimi w witrynie Azure portal:https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 
+
 **Monitorowanie usługi Azure Security Center**: Tak
 
 **Odpowiedzialność**: Klient
@@ -404,6 +436,7 @@ Tworzenie grup akcji i zarządzanie nimi w witrynie Azure portal:https://docs.mi
 **Wskazówki:** Skonfiguruj stan lokalizacji zasad dostępu warunkowego i zarządzaj nazwanymi lokalizacjami. W nazwanych lokalizacjach można tworzyć logiczne grupy zakresów adresów IP lub krajów i regionów. Dostęp do poufnych zasobów, takich jak wpisy tajne usługi Key Vault, można ograniczyć do skonfigurowanych nazwanych lokalizacji.
 
 Jaki jest warunek lokalizacji w usłudze Azure Active Directory Dostęp warunkowy?:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+
 
 
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
@@ -416,7 +449,10 @@ Jaki jest warunek lokalizacji w usłudze Azure Active Directory Dostęp warunkow
 
  
 
-Szybki start: tworzenie nowej dzierżawy w usłudze Azure Active Directory:https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
+Szybki start: tworzenie nowej dzierżawy w usłudze Azure Active Directory:
+
+https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
+
 
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
 
@@ -426,15 +462,14 @@ Szybki start: tworzenie nowej dzierżawy w usłudze Azure Active Directory:https
 
 **Wskazówki:** Przejrzyj dzienniki usługi Azure Active Directory (AAD), aby ułatwić odnajdywanie starych kont za pomocą ról administracyjnych usługi Azure Key Vault. Ponadto użyj przeglądów dostępu AAD, aby skutecznie zarządzać członkostwem w grupach, dostępem do aplikacji dla przedsiębiorstw, które mogą być używane do uzyskiwania dostępu do usługi Azure Key Vault, oraz przydziałami ról. Dostęp użytkowników powinien być regularnie sprawdzany, na przykład co 90 dni, aby upewnić się, że tylko właściwi użytkownicy mają stały dostęp.
 
-
 Raporty usługi Azure Active Directory i dokumentacja monitorowania:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-
 Co to są recenzje dostępu usługi Azure AD?:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+
 
 **Monitorowanie usługi Azure Security Center**: Tak
 
@@ -447,6 +482,8 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 Integruj dzienniki usługi Azure AD z dziennikami usługi Azure Monitor:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
 Migracja ze starego rozwiązania usługi Key Vault:https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
+
+
 
 **Monitorowanie usługi Azure Security Center**: Tak
 
@@ -462,6 +499,7 @@ Jak: Konfigurowanie i włączanie zasad ryzyka:https://docs.microsoft.com/azure/
 
 Jak ować wobec pokład Azure Wartownik:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
+
 **Monitorowanie usługi Azure Security Center**: Tak
 
 **Odpowiedzialność**: Klient
@@ -471,6 +509,7 @@ Jak ować wobec pokład Azure Wartownik:https://docs.microsoft.com/azure/sentine
 **Wskazówki**: Nie dotyczy; Skrytka klienta nie jest obsługiwana w usłudze Azure Key Vault.
 
 Obsługiwane usługi i scenariusze w ogólnej dostępności:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+
 
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
@@ -488,6 +527,7 @@ Obsługiwane usługi i scenariusze w ogólnej dostępności:https://docs.microso
 Użyj tagów do organizowania zasobów platformy Azure:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Klient
@@ -501,6 +541,7 @@ Po wprowadzeniu reguł zapory można wykonywać operacje na płaszczyźnie danyc
 Konfigurowanie zapór usługi Azure Key Vault i sieci wirtualnych:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
 
 Punkty końcowe usługi sieci wirtualnej dla usługi Azure Key Vault:https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
+
 
 
 **Monitorowanie usługi Azure Security Center**: Obecnie niedostępne
@@ -518,6 +559,7 @@ Konfigurowanie zapór usługi Azure Key Vault i sieci wirtualnych:https://docs.m
 Rejestrowanie usługi Azure Key Vault:https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
+
 **Monitorowanie usługi Azure Security Center**: Tak
 
 **Odpowiedzialność**: Klient
@@ -529,6 +571,7 @@ Rejestrowanie usługi Azure Key Vault:https://docs.microsoft.com/azure/key-vault
 Dostęp do usługi Azure Key Vault za zaporą:https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
 
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Microsoft
@@ -537,18 +580,19 @@ Dostęp do usługi Azure Key Vault za zaporą:https://docs.microsoft.com/azure/k
 
 **Wskazówki**: Nie dotyczy; wszystkie dane w usłudze Azure Key Vault (wpisy tajne, klucze i certyfikaty) są uważane za poufne.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
 
-### <a name="46-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.6: Identyfikowanie poufnych danych za pomocą aktywnego narzędzia do wykrywania
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Sterowanie dostępem do zasobów za pomocą narzędzia Azure RBAC
 
 **Wskazówki:** Bezpieczny dostęp do płaszczyzny zarządzania i danych wystąpień usługi Azure Key Vault.
-
 
 Bezpieczny dostęp do magazynu kluczy:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -556,12 +600,16 @@ https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Wymuszanie kontroli dostępu za pomocą funkcji zapobiegania utracie danych opartych na hoście
 
-**Wskazówki:** Firma Microsoft zarządza podstawową infrastrukturą usługi Azure Key Vault i wdrożyła ścisłe kontrole, aby zapobiec utracie lub ekspozycji klienta daUse Azure Security Center do wykonywania skanowania bazowego dla zasobów chronionych przez usługę Azure Key Vault.
+**Wskazówki:** Firma Microsoft zarządza podstawową infrastrukturą usługi Azure Key Vault i wdrożyła ścisłe mechanizmy kontroli, aby zapobiec utracie lub ekspozycji danych klientów.
 
+Co to jest usługa Azure Key Vault?
 
-Co to jest usługa Azure Key Vault?:https://docs.microsoft.com/azure/key-vault/key-vault-overview
+https://docs.microsoft.com/azure/key-vault/key-vault-overview
 
-Ochrona danych klientów platformy Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Ochrona danych klientów platformy Azure:
+
+https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -571,8 +619,9 @@ Ochrona danych klientów platformy Azure:https://docs.microsoft.com/azure/securi
 
 **Wskazówki:** Wszystkie obiekty zarządzane (klucz, certyfikaty i wpisy tajne) są szyfrowane w spoczynku w usłudze Azure Key Vault.
 
+Dokumentacją:
 
-Mechanizmy kontroli zabezpieczeń usługi Azure Key Vault:https://docs.microsoft.com/azure/key-vault/key-vault-security-controls
+- [Tabela zarządzania modelem szyfrowania i kluczami](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#encryption-model-and-key-management-table)
 
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
@@ -583,7 +632,10 @@ Mechanizmy kontroli zabezpieczeń usługi Azure Key Vault:https://docs.microsoft
 
 **Wskazówki:** Użyj rozwiązania usługi Azure Key Vault Analytics w usłudze Azure Monitor, aby przejrzeć dzienniki zdarzeń inspekcji usługi Azure Key Vault.
 
-Rozwiązanie usługi Azure Key Vault Analytics w usłudze Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
+Rozwiązanie usługi Azure Key Vault Analytics w usłudze Azure Monitor:
+
+https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
+
 
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
@@ -597,6 +649,7 @@ Rozwiązanie usługi Azure Key Vault Analytics w usłudze Azure Monitor:https://
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Uruchamianie zautomatyzowanych narzędzi do skanowania luk w zabezpieczeniach
 
 **Wskazówki:** Firma Microsoft wykonuje zarządzanie lukami w zabezpieczeniach w podstawowych systemach obsługujących usługę Azure Key Vault.
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -613,6 +666,7 @@ Rozwiązanie usługi Azure Key Vault Analytics w usłudze Azure Monitor:https://
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Wdrażanie zautomatyzowanego rozwiązania do zarządzania poprawkami oprogramowania innych firm
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla zasobów obliczeniowych.
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -634,6 +688,7 @@ Popraw swój bezpieczny wynik w usłudze Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Klient
@@ -646,11 +701,17 @@ https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
 **Wskazówki:** Użyj usługi Azure Resource Graph do wykonywania zapytań i odnajdywania wszystkich zasobów (w tym wystąpień usługi Azure Key Vault) w ramach subskrypcji. Upewnij się, że masz odpowiednie (odczytu) uprawnienia w dzierżawie i są w stanie wyliczyć wszystkie subskrypcje platformy Azure, a także zasoby w ramach subskrypcji.
 
-Szybki start: uruchom pierwszą kwerendę wykresu zasobów przy użyciu Eksploratora wykresu zasobów platformy Azure:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Szybki start: uruchom pierwszą kwerendę wykresu zasobów przy użyciu Eksploratora wykresu zasobów platformy Azure:
 
-Uzyskaj subskrypcje, do których może uzyskać dostęp bieżące konto.:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Co to jest kontrola dostępu oparta na rolach (RBAC) dla zasobów platformy Azure?https://docs.microsoft.com/azure/role-based-access-control/overview
+Uzyskaj subskrypcje, do których może uzyskać dostęp bieżące konto.:
+
+https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+
+Co to jest kontrola dostępu oparta na rolach (RBAC) dla zasobów platformy Azure?
+
+https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -659,7 +720,6 @@ Co to jest kontrola dostępu oparta na rolach (RBAC) dla zasobów platformy Azur
 ### <a name="62-maintain-asset-metadata"></a>6.2: Obsługa metadanych zasobów
 
 **Wskazówki:** Stosowanie tagów do zasobów usługi Azure Key Vault, podając metadane logicznie zorganizować je w taksonomię.
-
 
 Jak tworzyć i używać tagów:
 
@@ -673,18 +733,16 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Wskazówki:** Użyj tagowania, grup zarządzania i oddzielnych subskrypcji, w stosownych przypadkach, do organizowania i śledzenia wystąpień usługi Azure Key Vault i powiązanych zasobów. Regularnie uzgadniaj zapasy i upewnij się, że nieautoryzowane zasoby są usuwane z subskrypcji w odpowiednim czasie.
 
-
 Utwórz dodatkową subskrypcję platformy Azure:
 
 https://docs.microsoft.com/azure/billing/billing-create-subscription
-
 
 Tworzenie grup zarządzania dla organizacji zasobów i zarządzania zasobami:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
-
 Użyj tagów do organizowania zasobów platformy Azure:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -703,6 +761,7 @@ Użyj tagów do organizowania zasobów platformy Azure:https://docs.microsoft.co
 **Wskazówki:** Użyj zasad platformy Azure, aby wprowadzić ograniczenia dotyczące typu zasobów, które można utworzyć w subskrypcjach klientów przy użyciu następujących wbudowanych definicji zasad:
 
 - Niedozwolone typy zasobów
+
 - Dozwolone typy zasobów
 
 Ponadto użyj programu Azure Resource Graph do wykonywania zapytań/odnajdywanie zasobów w ramach subskrypcji.
@@ -710,6 +769,7 @@ Ponadto użyj programu Azure Resource Graph do wykonywania zapytań/odnajdywanie
 Samouczek: Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Szybki start: uruchom pierwszą kwerendę wykresu zasobów przy użyciu Eksploratora wykresu zasobów platformy Azure:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+
 
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
@@ -720,6 +780,7 @@ Szybki start: uruchom pierwszą kwerendę wykresu zasobów przy użyciu Eksplora
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla zasobów obliczeniowych.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
@@ -728,6 +789,7 @@ Szybki start: uruchom pierwszą kwerendę wykresu zasobów przy użyciu Eksplora
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla platformy Azure jako całości, a także zasobów obliczeniowych.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
@@ -735,6 +797,7 @@ Szybki start: uruchom pierwszą kwerendę wykresu zasobów przy użyciu Eksplora
 ### <a name="68-use-only-approved-applications"></a>6.8: Używaj wyłącznie zatwierdzonych aplikacji
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla zasobów obliczeniowych.
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -745,11 +808,13 @@ Szybki start: uruchom pierwszą kwerendę wykresu zasobów przy użyciu Eksplora
 **Wskazówki:** Użyj zasad platformy Azure, aby wprowadzić ograniczenia dotyczące typu zasobów, które można utworzyć w subskrypcjach klientów przy użyciu następujących wbudowanych definicji zasad:
 
 - Niedozwolone typy zasobów
+
 - Dozwolone typy zasobów
 
 Samouczek: Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Przykłady zasad platformy Azure:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+
 
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
@@ -760,6 +825,7 @@ Przykłady zasad platformy Azure:https://docs.microsoft.com/azure/governance/pol
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla zasobów obliczeniowych.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
@@ -768,8 +834,10 @@ Przykłady zasad platformy Azure:https://docs.microsoft.com/azure/governance/pol
 
 **Wskazówki:** Użyj dostępu warunkowego platformy Azure, aby ograniczyć użytkownikom możliwość interakcji z usługą Azure Resource Manager (ARM) przez skonfigurowanie "Blokuj dostęp" dla aplikacji "Microsoft Azure Management". Może to uniemożliwić tworzenie i zmiany zasobów w środowisku wysokiego bezpieczeństwa, takich jak te z konfiguracją usługi Key Vault.
 
+Zarządzanie dostępem do zarządzania platformą Azure za pomocą dostępu warunkowego:
 
-Zarządzanie dostępem do zarządzania platformą Azure za pomocą dostępu warunkowego:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -779,6 +847,7 @@ Zarządzanie dostępem do zarządzania platformą Azure za pomocą dostępu waru
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla zasobów obliczeniowych.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
@@ -786,6 +855,7 @@ Zarządzanie dostępem do zarządzania platformą Azure za pomocą dostępu waru
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Fizycznie lub logicznie segregować aplikacje wysokiego ryzyka
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla aplikacji sieci web działających w usłudze Azure App Service lub zasobów obliczeniowych.
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -799,7 +869,6 @@ Zarządzanie dostępem do zarządzania platformą Azure za pomocą dostępu waru
 
 **Wskazówki:** Użyj aliasów zasad platformy Azure w obszarze nazw "Microsoft.KeyVault", aby utworzyć niestandardowe zasady do inspekcji lub wymuszenia konfiguracji wystąpień usługi Azure Key Vault. Można również użyć wbudowanych definicji zasad platformy Azure dla usługi Azure Key Vault, takich jak:
 
-
 Obiekty magazynu kluczy powinny być odzyskiwalne
 
 Wdrażanie ustawień diagnostycznych dla obszaru roboczego usługi Log Analytics w usłudze Hostowanie magazynu kluczy
@@ -810,18 +879,16 @@ Usługa Key Vault powinna używać punktu końcowego usługi sieci wirtualnej
 
 Wdrażanie ustawień diagnostycznych dla usługi Key Vault w Centrum zdarzeń
 
-
 Użyj zaleceń z usługi Azure Security Center jako linii bazowej bezpiecznej konfiguracji dla wystąpień usługi Azure Key Vault.
-
 
 Jak wyświetlić dostępne aliasy zasad platformy Azure:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-
 Samouczek: Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 **Monitorowanie usługi Azure Security Center**: Tak
 
@@ -831,6 +898,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla zasobów obliczeniowych.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
@@ -839,16 +907,15 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Wskazówki:** Użyj zasad platformy Azure [odmów] i [wdrożyć, jeśli nie istnieje], aby wymusić bezpieczne ustawienia w zasobach obsługujących usługę Azure Key Vault. 
 
-
 Samouczek: Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage 
-
 
   
 Poznaj efekty zasad platformy Azure: 
 
 https://docs.microsoft.com/azure/governance/policy/concepts/effects
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -858,6 +925,7 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla zasobów obliczeniowych.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
@@ -866,11 +934,9 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Wskazówki:** Jeśli używasz niestandardowych definicji zasad platformy Azure dla zasobów obsługujących usługę Azure Key Vault, użyj aplikacji Repozytorium platformy Azure do bezpiecznego przechowywania kodu i zarządzania nim.
 
-
 Jak przechowywać kod w usłudze Azure DevOps: 
 
 https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops 
-
 
 Dokumentacja repozytorium platformy Azure: 
 
@@ -884,6 +950,7 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla zasobów obliczeniowych.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
@@ -891,8 +958,6 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 ### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Wdrażanie narzędzi do zarządzania konfiguracją systemu
 
 **Wskazówki:** Użyj aliasów zasad platformy Azure w obszarze nazw "Microsoft.KeyVault", aby utworzyć niestandardowe zasady do ostrzegania, inspekcji i wymuszania konfiguracji systemu. Ponadto opracuj proces i potok do zarządzania wyjątkami zasad.
-
-
 
 Jak skonfigurować zasady platformy Azure i zarządzać nimi:
 
@@ -906,13 +971,14 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla zasobów obliczeniowych.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Wdrażanie automatycznego monitorowania konfiguracji usług platformy Azure
 
-**Wskazówki:** Użyj usługi Azure Security Center do wykonywania skanowania linii bazowej dla zasobów chronionych przez usługę Azure Key Vault. 
+**Wskazówki:** Korzystanie z usługi Azure Security Center w celu wykonywania skanowania według planu bazowego zasobów chronionych przez usługę Azure Key Vault 
 
   
 
@@ -928,6 +994,7 @@ https://docs.microsoft.com/azure/security-center/security-center-remediate-recom
 
 **Wskazówki**: Nie dotyczy; ten wskaźnik jest przeznaczony dla zasobów obliczeniowych.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
@@ -936,16 +1003,13 @@ https://docs.microsoft.com/azure/security-center/security-center-remediate-recom
 
 **Wskazówki:** Użyj tożsamości usługi zarządzanej w połączeniu z usługą Azure Key Vault, aby uprościć i zabezpieczyć zarządzanie kluczami tajnymi dla aplikacji w chmurze. Upewnij się, że usługa Azure Key Vault jest włączona.
 
-
 Jak zintegrować się z tożsamościami zarządzanymi platformy Azure:
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-
 Jak utworzyć przechowalnię kluczy:
 
 https://docs.microsoft.com/azure/key-vault/quick-create-portal
-
 
 Jak zapewnić uwierzytelnianie usługi Key Vault z tożsamością zarządzaną: 
 
@@ -964,8 +1028,6 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 Jak zintegrować się z tożsamościami zarządzanymi platformy Azure: 
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity  
-
-
 
 Jak utworzyć przechowalnię kluczy: 
 
@@ -996,6 +1058,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla zasobów obliczeniowych. Firma Microsoft obsługuje oprogramowanie chroniące przed złośliwym oprogramowaniem dla podstawowej platformy.
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Nie dotyczy
@@ -1004,9 +1067,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 **Wskazówki:** Ochrona przed złośliwym oprogramowaniem firmy Microsoft jest włączona na głównym hoście, który obsługuje usługi platformy Azure (na przykład usługa Azure Key Vault), jednak nie działa na zawartości klienta.
 
-
 Wstępnie zeskanuj dowolną zawartość przekazywanych lub wysyłanych do nie obliczających zasobów platformy Azure, takich jak Usługa Azure Key Vault. Firma Microsoft nie może uzyskać dostępu do danych użytkownika w takich przypadkach.
-
 
 Poznaj oprogramowanie antywirusowe firmy Microsoft dla usług w chmurze i maszyn wirtualnych platformy Azure:https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
@@ -1017,6 +1078,7 @@ Poznaj oprogramowanie antywirusowe firmy Microsoft dla usług w chmurze i maszyn
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: Upewnij się, że oprogramowanie i podpisy chroniące przed złośliwym oprogramowaniem są aktualizowane
 
 **Wskazówki**: Nie dotyczy; to zalecenie jest przeznaczone dla zasobów obliczeniowych. Firma Microsoft obsługuje oprogramowanie chroniące przed złośliwym oprogramowaniem dla podstawowej platformy.
+
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
@@ -1031,8 +1093,11 @@ Poznaj oprogramowanie antywirusowe firmy Microsoft dla usług w chmurze i maszyn
 **Wskazówki:** Zapewnij regularne automatyczne tworzenie kopii zapasowych certyfikatów, kluczy, zarządzanych kont magazynu i wpisów tajnych za pomocą następujących poleceń programu PowerShell:
 
 - Kopia zapasowa-Certyfikat AzKeyVaultCertificate
+
 - Kopia zapasowa-AzKeyVaultKey
+
 - Kopia zapasowa —AzKeyVaultManagedStorageKonta
+
 - Kopia zapasowa-AzKeyVaultSecret
 
 Opcjonalnie można przechowywać kopie zapasowe usługi Key Vault w ramach usługi Azure Backup.
@@ -1046,6 +1111,7 @@ Jak wykonać kopię zapasową zarządzanych kont magazynu usługi Key Vault:http
 Jak wykonać kopię zapasową key vault secrets:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 
 Jak włączyć usługę Azure Backup:https://docs.microsoft.com/azure/backup
+
 
 
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
@@ -1057,8 +1123,11 @@ Jak włączyć usługę Azure Backup:https://docs.microsoft.com/azure/backup
 **Wskazówki:** Wykonywanie kopii zapasowych certyfikatów, kluczy, zarządzanych kont magazynu i wpisów tajnych za pomocą następujących poleceń programu PowerShell:
 
 - Kopia zapasowa-Certyfikat AzKeyVaultCertificate
+
 - Kopia zapasowa-AzKeyVaultKey
+
 - Kopia zapasowa —AzKeyVaultManagedStorageKonta
+
 - Kopia zapasowa-AzKeyVaultSecret
 
 Opcjonalnie można przechowywać kopie zapasowe usługi Key Vault w ramach usługi Azure Backup.
@@ -1073,6 +1142,8 @@ Jak wykonać kopię zapasową key vault secrets:https://docs.microsoft.com/power
 
 Jak włączyć usługę Azure Backup:https://docs.microsoft.com/azure/backup
 
+
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Klient
@@ -1082,8 +1153,11 @@ Jak włączyć usługę Azure Backup:https://docs.microsoft.com/azure/backup
 **Wskazówki:** Okresowo przeprowadzaj przywracanie danych certyfikatów, kluczy, zarządzanych kont magazynu i wpisów tajnych za pomocą następujących poleceń programu PowerShell:
 
 - Certyfikat Przywracania-AzKeyVaultCertificate
+
 - Przywracanie-AzKeyVaultKey
+
 - Przywróć konto —AzKeyVaultManagedStorageAccount
+
 - Przywróć—AzKeyVaultSecret
 
 Jak przywrócić certyfikaty magazynu kluczy:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
@@ -1094,6 +1168,7 @@ Jak przywrócić konta magazynu zarządzanego w przechowalni kluczy:https://docs
 
 Jak przywrócić klucze vault secrets:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
 
+
 **Monitorowanie usługi Azure Security Center:** nie dotyczy
 
 **Odpowiedzialność**: Klient
@@ -1101,7 +1176,6 @@ Jak przywrócić klucze vault secrets:https://docs.microsoft.com/powershell/modu
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Zapewnienie ochrony kopii zapasowych i kluczy zarządzanych przez klienta
 
 **Wskazówki:** Upewnij się, że nietrwałe usuwanie jest włączone dla usługi Azure Key Vault. Usuwanie nietrwałe umożliwia odzyskiwanie usuniętych magazynów kluczy i obiektów przechowalni, takich jak klucze, wpisy tajne i certyfikaty. 
-
 
 Jak korzystać z nietrwałego usuwania usługi Azure Key Vault: 
 
@@ -1119,25 +1193,17 @@ https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
 **Wskazówki:** Tworzenie przewodnika po zdarzeniach dla twojej organizacji. Upewnij się, że istnieją pisemne plany reagowania na incydenty, które definiują wszystkie role personelu, a także fazy obsługi incydentów/zarządzania od wykrywania do przeglądu po incydencie. Procesy te powinny koncentrować się na ochronie poufnych systemów, takich jak te przy użyciu wpisów tajnych usługi Key Vault.
 
-
-
 Jak skonfigurować automatyzacje przepływu pracy w usłudze Azure Security Center: 
 
 https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide   
-
-
 
 Wskazówki dotyczące tworzenia własnego procesu reagowania na incydenty bezpieczeństwa:  
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-
-
 Anatomia incydentu w centrum reagowania na zabezpieczenia firmy Microsoft:   
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process   
-
-
 
 Klient może również wykorzystać przewodnik obsługi incydentów związanych z bezpieczeństwem komputerowym NIST, aby pomóc w stworzeniu własnego planu reagowania na incydenty: 
 
@@ -1151,6 +1217,7 @@ https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
 **Wskazówki:** Centrum zabezpieczeń przypisuje ważność do każdego alertu, aby ułatwić ustalanie priorytetów alertów, które powinny być najpierw zbadane. Ważność opiera się na tym, jak pewny jest usługa Security Center w znalezieniu lub analityczna używana do wystawiania alertu, a także poziom zaufania, że za działaniem, które doprowadziło do alertu, było złośliwe intencje. Dodatkowo wyraźnie zaznacz subskrypcje (np. produkcji, non-prod) i utworzyć system nazewnictwa, aby wyraźnie zidentyfikować i kategoryzować zasoby platformy Azure, zwłaszcza tych, które przetwarzają poufne dane, takie jak wpisy tajne usługi Azure Key Vault.
 
+
 **Monitorowanie usługi Azure Security Center**: Tak
 
 **Odpowiedzialność**: Klient
@@ -1158,7 +1225,6 @@ https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 ### <a name="103-test-security-response-procedures"></a>10.3: Testowanie procedur reagowania na zabezpieczenia
 
 **Wskazówki: Przeprowadzaj**ćwiczenia, aby przetestować funkcje reagowania na incydenty w systemach w regularnym rytmie, aby chronić wystąpienia usługi Azure Key Vault i powiązane zasoby. Zidentyfikować słabe punkty i luki oraz w razie potrzeby dokonać przeglądu planu.
-
 
 Zapoznaj się z publikacją NIST: Przewodnik po testach, szkoleniach i programach ćwiczeń dla planów i możliwości IT: 
 
@@ -1171,8 +1237,6 @@ https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Podaj dane kontaktowe zdarzeń bezpieczeństwa i konfiguruj powiadomienia o alertach dla incydentów bezpieczeństwa
 
 **Wskazówki:** Informacje kontaktowe dotyczące zdarzenia zabezpieczeń będą używane przez firmę Microsoft do kontaktu się z Użytkownikiem, jeśli Centrum Microsoft Security Response Center (MSRC) odkryje, że dane użytkownika zostały uzyskiane przez osobę niezgodną z prawem lub nieautoryzowaną.  Przejrzyj incydenty po fakcie, aby upewnić się, że problemy zostały rozwiązane.
-
-
 
 Jak ustawić kontakt zabezpieczeń usługi Azure Security Center:
 
@@ -1224,11 +1288,9 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 **Wskazówki:** Nie należy przeprowadzać testów pióra bezpośrednio w usłudze Azure Key Vault, jednak zaleca się przetestowanie zasobów platformy Azure, które są przy użyciu usługi Key Vault w celu zapewnienia bezpieczeństwa wpisów tajnych.
 
-
 Aby upewnić się, że testy penetracyjne nie naruszają zasad firmy Microsoft, należy przestrzegać zasad zaangażowania firmy Microsoft:
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
-
 
 Więcej informacji na temat strategii firmy Microsoft i wykonywania testów red teaming i testów penetracji witryn na żywo w infrastrukturze, usługach i aplikacjach zarządzanych przez firmę Microsoft można znaleźć tutaj: 
 

@@ -7,12 +7,12 @@ ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: a4c9188c8f1315a3af452cd0c1fb5cf45ab82081
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f02c08e752575dd1f57ce91dfc3145b69e3a2fd2
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77486121"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010498"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Przykłady usługi Azure Storage przy użyciu bibliotek klienckich w wersji 12 .NET
 
@@ -51,18 +51,18 @@ Poniższa tabela zawiera omówienie naszego repozytorium przykładów i scenariu
 
 :::row:::
    :::column span="":::
-      [Usuwanie kilku obiektów blob w jednym żądaniu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L22)
+      [Usuwanie kilku obiektów blob w jednym żądaniu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L22)
    :::column-end:::
    :::column span="":::
-      [Ustawianie kilku warstw dostępu obiektów blob w jednym żądaniu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L56)
+      [Ustawianie kilku warstw dostępu obiektów blob w jednym żądaniu](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L56)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Kontrola drobnoziarnista w żądaniu partii](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L90)
+      [Kontrola drobnoziarnista w żądaniu partii](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L90)
    :::column-end:::
    :::column span="":::
-      [Wychwytywuj błędy z nieudanej operacji podrzędnej](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L136)
+      [Wychwytywuj błędy z nieudanej operacji podrzędnej](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L136)
    :::column-end:::
 :::row-end:::
 

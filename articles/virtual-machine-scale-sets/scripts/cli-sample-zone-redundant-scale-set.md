@@ -1,20 +1,20 @@
 ---
 title: Przykłady interfejsu wiersza polecenia platformy Azure — zestaw skalowania nadmiarowych stref
 description: Ten skrypt tworzy zestaw skalowania maszyny wirtualnej platformy Azure z uruchomionym Ubuntu w wielu strefach dostępności.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: d03eb9ca86472670caf89f8a9f9c4cf861b2eb62
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 80b173daf2101180e5d78de625b914bd8396b7af
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278716"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010362"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>Tworzenie strefowo nadmiarowego zestawu skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 Ten skrypt tworzy zestaw skalowania maszyn wirtualnych z systemem Ubuntu w wielu strefach dostępności. Po uruchomieniu skryptu dostęp do maszyny wirtualnej można uzyskać za pomocą protokołu RDP.

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: df80668f5e4a31d6247e9e9806e3de0667fd9036
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 451e83fa6ab547536a4cfd85304930e749a8247f
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656010"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998391"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracować z wynikami wyszukiwania w usłudze Azure Cognitive Search
 
@@ -94,7 +94,11 @@ Inną opcją jest użycie [niestandardowego profilu oceniania](index-add-scoring
 
 Podświetlanie trafień odnosi się do formatowania tekstu (takiego jak pogrubienie lub żółte podświetlenia) zastosowanego do pasującego terminu w wyniku, co ułatwia wykrycie dopasowania. Instrukcje wyróżniania trafienia znajdują się w [żądaniu kwerendy](https://docs.microsoft.com/rest/api/searchservice/search-documents). Wyszukiwarka zawiera pasujący termin w `highlightPreTag` `highlightPostTag`tagach i , a kod obsługuje odpowiedź (na przykład stosowanie czcionki pogrubionej).
 
-Formatowanie jest stosowane do kwerend cały termin. W poniższym przykładzie terminy "piaszczysty", "piasek", "plaże", "plaża" znajdujące się w polu Opis są oznaczone do podświetlania. Kwerendy na warunkach częściowych, takich jak wyszukiwanie rozmyte lub wieloznaczne wyszukiwania, które powodują rozszerzenie kwerendy w silniku, nie można użyć wyróżniania trafień.
+Formatowanie jest stosowane do kwerend cały termin. W poniższym przykładzie terminy "piaszczysty", "piasek", "plaże", "plaża" znajdujące się w polu Opis są oznaczone do podświetlania. Kwerendy, które wyzwalają rozszerzenie kwerendy w silniku, takie jak wyszukiwanie rozmyte i wieloznaczne, mają ograniczoną obsługę wyróżniania trafień.
+
+```http
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+```
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 1d6fa75beabdc36750525310008add9594562228
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 951f24ad06014f6d95f10c91e1bad8e99bbbc736
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887116"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991777"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostyka usługi Load Balancer w warstwie Standardowa przy użyciu metryk, alertów i kondycji zasobów
 
@@ -86,6 +86,7 @@ Aby skonfigurować alerty:
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Typowe scenariusze diagnostyczne i zalecane widoki
 
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Czy ścieżka danych jest dostępna dla mojego modułu VIP równoważenia obciążenia?
+<details><summary>Rozwiń</summary>
 
 Metryka dostępności programu VIP opisuje kondycję ścieżki danych w regionie do hosta obliczeniowego, na którym znajdują się maszyny wirtualne. Metryka jest odzwierciedleniem kondycji infrastruktury platformy Azure. Metryki można użyć do:
 - Monitorowanie zewnętrznej dostępności usługi
@@ -113,9 +114,11 @@ Dostępność vip nie powiedzie się z następujących powodów:
 Do celów diagnostycznych można użyć [metryki Dostępność ścieżki danych wraz ze stanem sondy kondycji](#vipavailabilityandhealthprobes).
 
 Użyj **średniej** jako agregacji dla większości scenariuszy.
+</details>
 
 #### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>Czy wystąpienia zaplecza dla mojego VIP odpowiada na sondy?
-
+<details>
+  <summary>Rozwiń</summary>
 Metryka stanu sondy kondycji opisuje kondycję wdrożenia aplikacji skonfigurowanej przez użytkownika podczas konfigurowania sondy kondycji modułu równoważenia obciążenia. Moduł równoważenia obciążenia używa stanu sondy kondycji, aby określić, gdzie należy wysyłać nowe przepływy. Sondy kondycji pochodzą z adresu infrastruktury platformy Azure i są widoczne w obszarze operacyjnym gościa maszyny Wirtualnej.
 
 Aby uzyskać stan sondy kondycji dla zasobów standardowego modułu równoważenia obciążenia:
@@ -127,9 +130,11 @@ Sondy kondycji nie powiodą się z następujących powodów:
 - Sonda nie jest dozwolona przez grupę zabezpieczeń sieci, zaporę systemu operacyjnego gościa maszyny Wirtualnej ani filtry warstwy aplikacji.
 
 Użyj **średniej** jako agregacji dla większości scenariuszy.
+</details>
 
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>Jak sprawdzić statystyki połączenia wychodzącego? 
-
+<details>
+  <summary>Rozwiń</summary>
 Metryka połączeń SNAT opisuje wolumin połączeń udanych i nieudanych dla [przepływów wychodzących](https://aka.ms/lboutbound).
 
 Wolumin połączeń nie powiodło się większa niż zero wskazuje wyczerpanie portu SNAT. Należy zbadać dalej, aby ustalić, co może być przyczyną tych błędów. Wyczerpanie portu SNAT objawia się jako brak ustanowienia [przepływu wychodzącego](https://aka.ms/lboutbound). Przejrzyj artykuł o połączeniach wychodzących, aby zrozumieć scenariusze i mechanizmy w pracy i dowiedzieć się, jak ograniczyć i zaprojektować, aby uniknąć wyczerpania portów SNAT. 
@@ -141,10 +146,12 @@ Aby uzyskać statystyki połączeń SNAT:
 ![Połączenie SNAT](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
 *Rysunek: Liczba połączeń SNAT modułu równoważenia obciążenia*
+</details>
 
 
 #### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>Jak sprawdzić użycie i alokację portu SNAT?
-
+<details>
+  <summary>Rozwiń</summary>
 Metryka SNAT Usage wskazuje, ile unikatowych przepływów jest ustanawianych między źródłem internetowym a zestawem skalowania wewnętrznej bazy danych lub maszyny wirtualnej, który znajduje się za modułem równoważenia obciążenia i nie ma publicznego adresu IP. Porównując to z metryki alokacji SNAT, można określić, czy usługa występuje lub na ryzyko wyczerpania SNAT i wynikające z awarii przepływu wychodzącego. 
 
 Jeśli metryki wskazują na ryzyko awarii [przepływu wychodzącego,](https://aka.ms/lboutbound) odwołaj się do tego artykułu i podejmij kroki w celu ograniczenia tego stanu zdrowia usługi.
@@ -166,9 +173,11 @@ Aby wyświetlić użycie i alokację portu SNAT:
 ![Użycie SNAT przez wystąpienie wewnętrznej bazy danych](./media/load-balancer-standard-diagnostics/snat-usage-split.png)
 
 *Rysunek: Użycie portu TCP SNAT na wystąpienie wewnętrznej bazy danych*
+</details>
 
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>Jak sprawdzić próby połączenia przychodzącego/wychodzącego dla mojej usługi?
-
+<details>
+  <summary>Rozwiń</summary>
 Metryka pakietów SYN opisuje ilość pakietów TCP SYN, które dotarły lub zostały wysłane (dla [przepływów wychodzących),](https://aka.ms/lboutbound)które są skojarzone z określonym frontokiem. Za pomocą tej metryki można zrozumieć próby połączenia TCP z usługą.
 
 Użyj **sumy** jako agregacji dla większości scenariuszy.
@@ -176,10 +185,12 @@ Użyj **sumy** jako agregacji dla większości scenariuszy.
 ![Połączenie SYN](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
 *Rysunek: Liczba synów modułu równoważenia obciążenia*
+</details>
 
 
 #### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>Jak sprawdzić zużycie przepustowości sieci? 
-
+<details>
+  <summary>Rozwiń</summary>
 Metryka liczników bajtów i pakietów opisuje liczbę bajtów i pakietów wysyłanych lub odbieranych przez usługę na podstawie typu front-end.
 
 Użyj **sumy** jako agregacji dla większości scenariuszy.
@@ -193,9 +204,11 @@ Aby uzyskać statystyki liczby bajtów lub pakietów:
 ![Liczba bajtów](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
 *Rysunek: Liczba bajtów modułu równoważenia obciążenia*
+</details>
 
 #### <a name="how-do-i-diagnose-my-load-balancer-deployment"></a><a name = "vipavailabilityandhealthprobes"></a>Jak zdiagnozować wdrożenie modułu równoważenia obciążenia?
-
+<details>
+  <summary>Rozwiń</summary>
 Za pomocą kombinacji dostępności VIP i metryki sondy kondycji na jednym wykresie można określić, gdzie szukać problemu i rozwiązać problem. Można uzyskać pewność, że platforma Azure działa poprawnie i użyć tej wiedzy, aby ostatecznie ustalić, że konfiguracja lub aplikacja jest główną przyczyną.
 
 Można użyć metryki sondy kondycji, aby zrozumieć, jak platforma Azure wyświetla kondycję wdrożenia zgodnie z konfiguracją, która została udostępnione. Patrzenie na sondy kondycji jest zawsze doskonałym pierwszym krokiem w monitorowaniu lub określaniu przyczyny.
@@ -211,6 +224,7 @@ Na wykresie wyświetlane są następujące informacje:
 - Stan sondy kondycji (dostępność DIP), wskazywany przez fioletowy ślad, wynosi 0 procent na początku wykresu. Zakreślony obszar w kolorze zielonym podkreśla, gdzie stan sondy kondycji (dostępność DIP) stał się zdrowy i w którym momencie wdrożenie klienta było w stanie zaakceptować nowe przepływy.
 
 Wykres umożliwia klientom samodzielne rozwiązywanie problemów z wdrożeniem bez konieczności odgadywania lub pytania o pomoc techniczną, czy występują inne problemy. Usługa była niedostępna, ponieważ sondy kondycji uległy awarii z powodu błędnej konfiguracji lub nieudanej aplikacji.
+</details>
 
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>Stan kondycji zasobu
 

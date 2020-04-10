@@ -1,19 +1,19 @@
 ---
 title: Automatyczne skalowanie zestawów skalowania maszyny wirtualnej w witrynie Azure portal
 description: Jak tworzyć reguły skalowania automatycznego dla zestawów skalowania maszyny wirtualnej w witrynie Azure portal
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: ecd80f49f0161c8bbc6ab7309f2af89e2ded1fe9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: 1915b144aec5a5447504c70d18dbf420d255a08e
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278195"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010294"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatyczne skalowanie skalowania maszyny wirtualnej w witrynie Azure portal
 Podczas tworzenia zestawu skalowania musisz zdefiniować liczbę wystąpień maszyn wirtualnych, które chcesz uruchamiać. W odpowiedzi na zmieniające się zapotrzebowanie aplikacji możesz automatycznie zwiększać lub zmniejszać liczbę wystąpień maszyn wirtualnych. Skalowanie automatyczne pozwala spełniać potrzeby klientów lub reagować na zmiany wydajności aplikacji w całym cyklu jej życia.
@@ -96,7 +96,7 @@ Aby wyświetlić liczbę i stan wystąpień maszyn wirtualnych, wybierz **wystą
 
 
 ## <a name="autoscale-based-on-a-schedule"></a>Skalowanie automatyczne na podstawie harmonogramu
-Poprzednie przykłady automatycznie skalowane skalę ustawioną w lub na zewnątrz z podstawowych metryk hosta, takich jak użycie procesora CPU. Można również tworzyć reguły skalowania automatycznego na podstawie harmonogramów. Te reguły oparte na harmonogramie umożliwiają automatyczne skalowanie w poziomie liczby wystąpień maszyn wirtualnych przed przewidywanym wzrostem zapotrzebowania na aplikacje, takim jak podstawowe godziny pracy, a następnie automatyczne skalowanie liczby wystąpień w czasie, który przewiduje się mniej popytu, takich jak weekend.
+Poprzednie przykłady automatycznie skalowane skalę ustawioną w lub na zewnątrz z podstawowych metryk hosta, takich jak użycie procesora CPU. Można również tworzyć reguły skalowania automatycznego na podstawie harmonogramów. Te reguły oparte na harmonogramie umożliwiają automatyczne skalowanie w poziomie liczby wystąpień maszyn wirtualnych przed przewidywanym wzrostem zapotrzebowania na aplikacje, takim jak podstawowe godziny pracy, a następnie automatyczne skalowanie liczby wystąpień w czasie, który przewiduje mniejsze zapotrzebowanie, na przykład w weekend.
 
 1. Wybierz **opcję Skalowanie** z menu po lewej stronie okna zestawu skalowania. Aby usunąć istniejące reguły skalowania automatycznego utworzone w poprzednich przykładach, wybierz ikonę kosza.
 

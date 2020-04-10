@@ -3,19 +3,19 @@ title: Publikowanie oferty usługi zarządzanej w portalu Azure Marketplace
 description: Dowiedz się, jak opublikować ofertę usługi zarządzanej, która dołącza klientów do zarządzania zasobami delegowanymi platformy Azure.
 ms.date: 04/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4791b1d2ae233b0cc7aad33dd5b15b6ea94b2018
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 247f711188fa10de19cece27f164fdfa71612d1b
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984558"
+ms.locfileid: "80991913"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Publikowanie oferty usługi zarządzanej w portalu Azure Marketplace
 
 > [!IMPORTANT]
-> Od 14 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami usługi zarządzanej do Centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [aplikacji Tworzenie nowych ofert usług zarządzanych,](../../marketplace/partner-center-portal/create-new-managed-service-offer.md) aby zarządzać zmigrowanymi ofertami.
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami usługi zarządzanej do Centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [aplikacji Utwórz nową ofertę usługi zarządzanej,](../../marketplace/partner-center-portal/create-new-managed-service-offer.md) aby zarządzać zmigrowanymi ofertami.
 
-W tym artykule dowiesz się, jak opublikować publiczną lub prywatną ofertę usług zarządzanych w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) przy użyciu portalu cloud [partner.](https://cloudpartner.azure.com/) Klienci, którzy zakupią ofertę, mogą następnie dołączać subskrypcje i grupy zasobów do [zarządzania zasobami delegowanymi platformy Azure.](../concepts/azure-delegated-resource-management.md)
+W tym artykule dowiesz się, jak opublikować publiczną lub prywatną ofertę usługi zarządzanej w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) przy użyciu portalu cloud [partner.](https://cloudpartner.azure.com/) Klienci, którzy zakupią ofertę, mogą następnie dołączać subskrypcje i grupy zasobów do [zarządzania zasobami delegowanymi platformy Azure.](../concepts/azure-delegated-resource-management.md)
 
 ## <a name="publishing-requirements"></a>Wymagania dotyczące publikowania
 
@@ -28,7 +28,7 @@ Identyfikator sieci Partner Network (MPN) firmy Microsoft zostanie [automatyczni
 > [!NOTE]
 > Jeśli nie chcesz publikować oferty w portalu Azure Marketplace, możesz ręcznie dołączać klientów przy użyciu szablonów usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Dołączanie klienta do zarządzania zasobami delegowanymi platformy Azure](onboard-customer.md).
 
-Publikowanie oferty usług zarządzanych jest podobne do publikowania dowolnego innego typu oferty w portalu Azure Marketplace. Aby dowiedzieć się więcej o ogólnym procesie publikowania, zobacz [Przewodnik publikowania w portalu Azure Marketplace i AppSource](../../marketplace/marketplace-publishers-guide.md). Należy również zapoznać się z [zasadami certyfikacji rynku komercyjnego,](https://docs.microsoft.com/legal/marketplace/certification-policies)w szczególności sekcją [Usługi zarządzane.](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)
+Publikowanie oferty usługi zarządzanej jest podobne do publikowania dowolnego innego typu oferty w portalu Azure Marketplace. Aby dowiedzieć się więcej o ogólnym procesie publikowania, zobacz [Przewodnik publikowania w portalu Azure Marketplace i AppSource](../../marketplace/marketplace-publishers-guide.md). Należy również zapoznać się z [zasadami certyfikacji rynku komercyjnego,](https://docs.microsoft.com/legal/marketplace/certification-policies)w szczególności sekcją [Usługi zarządzane.](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)
 
 Gdy klient doda ofertę, będzie mógł delegować jedną lub więcej subskrypcji lub grup zasobów, które następnie będą [dołączane do zarządzania zasobami delegowanymi platformy Azure.](#the-customer-onboarding-process)
 

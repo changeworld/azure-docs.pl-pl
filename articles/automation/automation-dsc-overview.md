@@ -1,5 +1,5 @@
 ---
-title: Omówienie konfiguracji stanu automatyzacji platformy Azure
+title: Konfiguracja stanu — omówienie
 description: Omówienie konfiguracji stanu automatyzacji platformy Azure (DSC), jej warunków i znanych problemów
 keywords: powershell dsc, konfiguracja żądanego stanu, powershell dsc azure
 services: automation
@@ -10,14 +10,14 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 46cf0d6a12ffbc836db7bd79c0f2738a94e23085
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02e540c9ac2654be97ff247749d1ed18573cfc24
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283195"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010260"
 ---
-# <a name="azure-automation-state-configuration-overview"></a>Omówienie konfiguracji stanu automatyzacji platformy Azure
+# <a name="state-configuration-overview"></a>Konfiguracja stanu — omówienie
 
 Konfiguracja stanu automatyzacji platformy Azure to usługa platformy Azure, która umożliwia [pisanie,](/powershell/scripting/dsc/configurations/configurations)zarządzanie i kompilowanie konfiguracji konfiguracji żądanego stanu programu PowerShell (DSC). Usługa importuje również [zasoby DSC](/powershell/scripting/dsc/resources/resources)i przypisuje konfiguracje do węzłów docelowych, wszystkie w chmurze.
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: ec9c8e29adaa03620cc60d189ff4a830e107e782
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b6961e2e739286fa1f12ba69198b59f5aea106e
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931058"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991726"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Kopiowanie danych z Shopify przy użyciu usługi Azure Data Factory (Wersja zapoznawcza)
 
@@ -52,8 +52,8 @@ W przypadku połączonej usługi Shopify obsługiwane są następujące właści
 | host | Punkt końcowy serwera Shopify. (czyli mystore.myshopify.com)  | Tak |
 | accessToken (dostępToken) | Token dostępu interfejsu API, który może służyć do uzyskiwania dostępu do danych Shopify. Token nie wygasa, jeśli jest w trybie offline. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Tak |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartością domyślną jest true.  | Nie |
-| useHostVerification | Określa, czy nazwa hosta w certyfikacie serwera ma być zgodna z nazwą hosta serwera podczas łączenia się za ok. Wartością domyślną jest true.  | Nie |
-| usePeerVerification | Określa, czy podczas nawiązywania połączenia za łącze SSL należy sprawdzić tożsamość serwera. Wartością domyślną jest true.  | Nie |
+| useHostVerification | Określa, czy nazwa hosta w certyfikacie serwera ma być zgodna z nazwą hosta serwera podczas łączenia się za korzystając z protokołu TLS. Wartością domyślną jest true.  | Nie |
+| usePeerVerification | Określa, czy podczas nawiązywania połączenia zawersyfikowany przez TLS ma być weryfikowany przez tożsamość serwera. Wartością domyślną jest true.  | Nie |
 
 **Przykład:**
 

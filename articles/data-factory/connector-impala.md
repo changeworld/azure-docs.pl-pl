@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f465fe4bb69bc5ae81db6c78df51bf5133de1b60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c7690390936a05dd472796eb6f50f582f652e35
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929304"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990850"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Kopiowanie danych z impala przy użyciu usługi Azure Data Factory
 
@@ -37,7 +37,7 @@ Usługa Data Factory udostępnia wbudowany sterownik umożliwiający łącznoś�
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -55,10 +55,10 @@ Następujące właściwości są obsługiwane dla usługi połączonej Impala.
 | authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to **Anonymous**, **SASLUsername**i **UsernameAndPassword**. | Tak |
 | nazwa użytkownika | Nazwa użytkownika używana do uzyskiwania dostępu do serwera Impala. Wartość domyślna jest anonimowa podczas korzystania z saslUsername.  | Nie |
 | hasło | Hasło, które odpowiada nazwie użytkownika podczas korzystania z UsernameAndPassword. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Nie |
-| Enablessl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu ssl. Wartość domyślna to **fałsz**.  | Nie |
-| trustedCertPath | Pełna ścieżka pliku pem zawierającego zaufane certyfikaty urzędu certyfikacji używane do weryfikacji serwera podczas łączenia się za pomocą ssl. Tę właściwość można ustawić tylko wtedy, gdy używasz SSL w samodzielnym czasie działania integracji. Wartością domyślną jest plik cacerts.pem zainstalowany wraz ze środowiska wykonawczego integracji.  | Nie |
+| Enablessl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu TLS. Wartość domyślna to **fałsz**.  | Nie |
+| trustedCertPath | Pełna ścieżka pliku pem zawierającego zaufane certyfikaty urzędu certyfikacji używane do weryfikacji serwera podczas łączenia się za pomocą protokołu TLS. Tę właściwość można ustawić tylko wtedy, gdy używasz protokołu TLS w samodzielnym czasie działania integracji. Wartością domyślną jest plik cacerts.pem zainstalowany wraz ze środowiska wykonawczego integracji.  | Nie |
 | useSystemTrustStore | Określa, czy certyfikat urzędu certyfikacji ma być używany z magazynu zaufania systemu, czy z określonego pliku PEM. Wartość domyślna to **fałsz**.  | Nie |
-| allowHostNameCNMismatch | Określa, czy nazwa certyfikatu SSL wystawiona przez urząd certyfikacji ma być zgodna z nazwą hosta serwera podczas łączenia się za pomocą protokołu SSL. Wartość domyślna to **fałsz**.  | Nie |
+| allowHostNameCNMismatch | Określa, czy nazwa certyfikatu TLS/SSL wystawiona przez urząd certyfikacji ma być zgodna z nazwą hosta serwera podczas łączenia się za pomocą protokołu TLS. Wartość domyślna to **fałsz**.  | Nie |
 | allowSelfSignedServerCert | Określa, czy zezwolić na certyfikaty z podpisem własnym z serwera. Wartość domyślna to **fałsz**.  | Nie |
 | connectVia | [Środowisko uruchomieniowe integracji,](concepts-integration-runtime.md) które ma być używane do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [Wymagania wstępne.](#prerequisites) Jeśli nie zostanie określony, używa domyślnego środowiska wykonawczego integracji platformy Azure. |Nie |
 

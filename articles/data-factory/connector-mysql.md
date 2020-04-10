@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 0bfae10d3b3b491c3662385055b23cc585a6e24d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcd8e400b978b2139de7a9f53b87cf6ec04e7484
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471163"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991998"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopiowanie danych z mysql przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
@@ -65,7 +65,7 @@ Typowym ciągiem `Server=<server>;Port=<port>;Database=<database>;UID=<username>
 
 | Właściwość | Opis | Opcje | Wymagany |
 |:--- |:--- |:--- |:--- |
-| Tryb SSL | Ta opcja określa, czy sterownik używa szyfrowania SSL i weryfikacji podczas łączenia się z MySQL. Przykład.`SSLMode=<0/1/2/3/4>`| WYŁĄCZONE (0) / PREFEROWANE (1) **(domyślnie)** / WYMAGANE (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nie |
+| Tryb SSL | Ta opcja określa, czy sterownik używa szyfrowania TLS i weryfikacji podczas łączenia się z MySQL. Przykład.`SSLMode=<0/1/2/3/4>`| WYŁĄCZONE (0) / PREFEROWANE (1) **(domyślnie)** / WYMAGANE (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nie |
 | Użyj SystemuTrustStore | Ta opcja określa, czy certyfikat urzędu certyfikacji ma być używany z magazynu zaufania systemu, czy z określonego pliku PEM. Na przykład `UseSystemTrustStore=<0/1>;`| Włączone (1) / Wyłączone (0) **(domyślnie)** | Nie |
 
 **Przykład:**

@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.openlocfilehash: db4173cdaf18d827c6a3c047777f7d5e67d79b84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8cd35131cfa6e919d22033a644a6479af4ee6eb4
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931116"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992032"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Kopiowanie danych z usługi Amazon Marketplace Web Service przy użyciu usługi Azure Data Factory
 
@@ -53,8 +53,8 @@ Następujące właściwości są obsługiwane dla usługi połączonej amazon Ma
 | identyfikator klucza accessKeyId | Identyfikator klucza dostępu używany do uzyskiwania dostępu do danych.  | Tak |
 | klucz tajny | Klucz tajny używany do uzyskiwania dostępu do danych. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Tak |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartością domyślną jest true.  | Nie |
-| useHostVerification | Określa, czy nazwa hosta w certyfikacie serwera ma być zgodna z nazwą hosta serwera podczas łączenia się za ok. Wartością domyślną jest true.  | Nie |
-| usePeerVerification | Określa, czy podczas nawiązywania połączenia za łącze SSL należy sprawdzić tożsamość serwera. Wartością domyślną jest true.  | Nie |
+| useHostVerification | Określa, czy nazwa hosta w certyfikacie serwera ma być zgodna z nazwą hosta serwera podczas łączenia się za korzystając z protokołu TLS. Wartością domyślną jest true.  | Nie |
+| usePeerVerification | Określa, czy podczas nawiązywania połączenia zawersyfikowany przez TLS ma być weryfikowany przez tożsamość serwera. Wartością domyślną jest true.  | Nie |
 
 **Przykład:**
 

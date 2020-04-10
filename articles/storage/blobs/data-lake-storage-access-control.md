@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 192e46fd7f86b6053eaf658fa65e3c6cdfa3a4e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93c21656a768ae458572e0b4917412c8103b2f2d
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528612"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992219"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Kontrola dostępu w usłudze Azure Data Lake Storage Gen2
 
@@ -54,7 +54,7 @@ Tokeny sygnatury dostępu Współdzielonego obejmują dozwolone uprawnienia jako
 Podmiot zabezpieczeń można skojarzyć z poziomem dostępu dla plików i katalogów. Te skojarzenia są przechwytywane *na liście kontroli dostępu (ACL)*. Każdy plik i katalog na koncie magazynu ma listę kontroli dostępu.
 
 > [!NOTE]
-> Listy ACL mają zastosowanie tylko do podmiotów zabezpieczeń w tej samej dzierżawie. Nie można skojarzyć użytkownika gościa z poziomem dostępu.  
+> Listy ACL mają zastosowanie tylko do podmiotów zabezpieczeń w tej samej dzierżawie. 
 
 Jeśli przypisano rolę do podmiotu zabezpieczeń na poziomie konta magazynu, można użyć listy kontroli dostępu, aby udzielić tej jednostki zabezpieczeń podwyższonego dostępu do określonych plików i katalogów.
 

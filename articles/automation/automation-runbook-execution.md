@@ -5,18 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: c8968eb72b29b004d94e25433da65d3262287147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1907eb7cde482927ee8e6b0a2522158f05c1808f
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367146"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010940"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie uruchomieniu w usłudze Azure Automation
 
 Elementy runbook są wykonywane na podstawie logiki zdefiniowanej wewnątrz nich. Jeśli projekt runbook zostanie przerwany, system runbook zostanie ponownie uruchomiony na początku. To zachowanie wymaga zapisu elementów runbook, które obsługują są ponownie uruchamiane, jeśli wystąpią przejściowe problemy.
 
-Uruchamianie uruchomieniu w usłudze Azure Automation tworzy zadanie. Zadanie jest pojedynczym wystąpieniem wykonywania ego księgi runbook. Każde zadanie ma dostęp do zasobów platformy Azure, nawiązując połączenie z subskrypcją platformy Azure. Zadanie ma dostęp do zasobów w centrum danych tylko wtedy, gdy te zasoby są dostępne z chmury publicznej.
+Uruchamianie uruchomieniu w usłudze Azure Automation tworzy zadanie, które jest wystąpieniem pojedynczego wykonywania ego księgi runbook. Każde zadanie ma dostęp do zasobów platformy Azure, nawiązując połączenie z subskrypcją platformy Azure. Zadanie ma dostęp do zasobów w centrum danych tylko wtedy, gdy te zasoby są dostępne z chmury publicznej.
 
 Usługa Azure Automation przypisuje pracownika do uruchamiania każdego zadania podczas wykonywania uruchomieniu. wiązków. Podczas gdy pracownicy są współużytkowane przez wiele kont platformy Azure, zadania z różnych kont automatyzacji są odizolowane od siebie. Nie masz kontroli nad tym, które usługi pracownika żądania zadania.
 

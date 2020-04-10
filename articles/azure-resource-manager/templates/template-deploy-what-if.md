@@ -3,14 +3,14 @@ title: Co-jeśli (Wersja zapoznawcza) wdrożenia szablonu
 description: Określ, jakie zmiany nastąpią w zasobach przed wdrożeniem szablonu usługi Azure Resource Manager.
 author: mumian
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/09/2020
 ms.author: jgao
-ms.openlocfilehash: 9e0d0d572e08961b585a93e66e400b8c2e54bf7f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b8e94d0b4f364e2873dfc21792a67f11c33483bf
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886844"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010192"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Co do jeśli— wdrożenie szablonu ARM (wersja zapoznawcza)
 
@@ -24,6 +24,14 @@ Można użyć operacji co jeśli z poleceniami programu PowerShell lub operacjam
 ## <a name="install-powershell-module"></a>Instalowanie modułu programu PowerShell
 
 Aby użyć co jeśli w programie PowerShell, zainstaluj wersję zapoznawczą modułu Az.Resources z galerii programu PowerShell.
+
+### <a name="install-preview-version"></a>Instalowanie wersji zapoznawczej
+
+Aby zainstalować moduł podglądu, należy użyć:
+
+```powershell
+Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+```
 
 ### <a name="uninstall-alpha-version"></a>Odinstaluj wersję alfa
 
@@ -47,14 +55,6 @@ Jeśli wcześniej zainstalowano wersję alfa modułu co do-jeśli, odinstaluj te
    ```powershell
    Unregister-PSRepository -Name WhatIfRepository
    ```
-
-### <a name="install-preview-version"></a>Instalowanie wersji zapoznawczej
-
-Aby zainstalować moduł podglądu, należy użyć:
-
-```powershell
-Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
-```
 
 Możesz użyć co jeśli.
 

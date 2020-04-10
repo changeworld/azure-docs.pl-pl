@@ -1,19 +1,19 @@
 ---
 title: Samouczek — automatyczne skalowanie zestawu skalowania za pomocą interfejsu wiersza polecenia platformy Azure
 description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure automatycznie skalować zestaw skalowania maszyn wirtualnych w odpowiedzi na wzrosty i spadki zapotrzebowania na procesor CPU
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
 ms.date: 05/18/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 0506c7fcb4e3734414fdc3b868aca84450ad8d07
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 711553fd0a71103f340137755ef51264e3883c25
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067043"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010407"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Samouczek: automatyczne skalowanie zestawu skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 

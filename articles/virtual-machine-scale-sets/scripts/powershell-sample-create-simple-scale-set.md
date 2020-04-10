@@ -1,19 +1,19 @@
 ---
 title: Przykłady programu Azure PowerShell — tworzenie podstawowego zestawu skalowania maszyny wirtualnej
 description: Ten skrypt tworzy zestaw skalowania maszyny wirtualnej platformy Azure z systemem Windows Server 2016, do którego można uzyskać dostęp za pośrednictwem protokołu RDP.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 123ba8ef931113b2c822fb1d02fa51e1d085c90e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 380b3d25bdcd5df5f095b2d87e832bf73422759e
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76276572"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011488"
 ---
 # <a name="create-a-basic-virtual-machine-scale-set-with-powershell"></a>Tworzenie podstawowego zestawu skalowania maszyn wirtualnych przy użyciu programu PowerShell
 Ten skrypt tworzy zestaw skalowania maszyn wirtualnych z systemem Windows Server 2016. Po uruchomieniu skryptu możesz uzyskać dostęp do wystąpień maszyn wirtualnych za pośrednictwem protokołu RDP.

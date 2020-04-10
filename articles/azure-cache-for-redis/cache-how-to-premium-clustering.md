@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a0e5b0c18264e1f7a98e81bcdfd56a7159235da
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278040"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010923"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Jak skonfigurować klastrowanie Redis dla pamięci podręcznej premium Azure dla redis
 Usługa Azure Cache for Redis ma różne oferty pamięci podręcznej, które zapewniają elastyczność w wyborze rozmiaru pamięci podręcznej i funkcji, w tym funkcji warstwy Premium, takich jak klastrowanie, trwałość i obsługa sieci wirtualnej. W tym artykule opisano sposób konfigurowania klastrowania w pamięci podręcznej platformy Azure w warstwie Premium dla wystąpienia Redis.
@@ -125,7 +125,7 @@ Można połączyć się z pamięcią podręczną przy użyciu tych [samych punkt
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Czy mogę bezpośrednio połączyć się z poszczególnymi fragmentami pamięci podręcznej?
 Protokół klastrowania wymaga, aby klient nawiązywania poprawnych połączeń niezależnego fragmentu. Więc klient powinien zrobić to poprawnie dla Ciebie. Z powiedział, że każdy fragment składa się z pary podstawowej/repliki pamięci podręcznej, łącznie znany jako wystąpienie pamięci podręcznej. Można połączyć się z tych wystąpień pamięci podręcznej za pomocą narzędzia redis-cli w [gałęzi niestabilne](https://redis.io/download) repozytorium Redis w GitHub. Ta wersja implementuje podstawową `-c` obsługę po uruchomieniu z przełącznikiem. Aby uzyskać więcej informacji, zobacz [https://redis.io](https://redis.io) [Odtwarzanie z klastrem](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) w [samouczku klastra Redis](https://redis.io/topics/cluster-tutorial).
 
-W przypadku innych niż ssl należy użyć następujących poleceń.
+W przypadku innych niż TLS należy użyć następujących poleceń.
 
     Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
     Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
@@ -133,7 +133,7 @@ W przypadku innych niż ssl należy użyć następujących poleceń.
     ...
     Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
-W przypadku ssl `1500N`wymień na `1300N` .
+W przypadku protokołu `1300N` `1500N`TLS należy zastąpić .
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Czy można skonfigurować klastrowanie dla wcześniej utworzonej pamięci podręcznej?
 Tak. Najpierw upewnij się, że pamięć podręczna jest premium, skalowanie, jeśli nie jest. Następnie powinny być widoczne opcje konfiguracji klastra, w tym opcja włączenia klastra. Rozmiar klastra można zmienić po utworzeniu pamięci podręcznej lub po włączeniu klastrowania po raz pierwszy.

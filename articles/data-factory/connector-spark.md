@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: 63e352ce47c5934171594ae87ee307603fff4c35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb628ec73430d542295a83773401c256421605a0
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931022"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990875"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Kopiowanie danych z platformy Spark przy użyciu usługi Azure Data Factory 
 
@@ -58,10 +58,10 @@ Następujące właściwości są obsługiwane dla usługi połączonej platformy
 | nazwa użytkownika | Nazwa użytkownika używana do uzyskiwania dostępu do serwera Spark Server.  | Nie |
 | hasło | Hasło odpowiadające użytkownikowi. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Nie |
 | httpPath (Ścieżka) | Częściowy adres URL odpowiadający serwerowi Platformy Spark.  | Nie |
-| Enablessl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu ssl. Wartość domyślna to false.  | Nie |
-| trustedCertPath | Pełna ścieżka pliku pem zawierającego zaufane certyfikaty urzędu certyfikacji do weryfikacji serwera podczas łączenia się za ok. Tę właściwość można ustawić tylko podczas korzystania z SSL na samodzielnym IR. Wartością domyślną jest plik cacerts.pem zainstalowany z podczerwień.  | Nie |
+| Enablessl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu TLS. Wartość domyślna to false.  | Nie |
+| trustedCertPath | Pełna ścieżka pliku pem zawierającego zaufane certyfikaty urzędu certyfikacji do sprawdzania serwera podczas łączenia się za ok. Tę właściwość można ustawić tylko podczas korzystania z protokołu TLS na samodzielnym podczerwaniu. Wartością domyślną jest plik cacerts.pem zainstalowany z podczerwień.  | Nie |
 | useSystemTrustStore | Określa, czy certyfikat urzędu certyfikacji ma być używany z magazynu zaufania systemu, czy z określonego pliku PEM. Wartość domyślna to false.  | Nie |
-| allowHostNameCNMismatch | Określa, czy nazwa certyfikatu SSL wystawiona przez urząd certyfikacji ma być zgodna z nazwą hosta serwera podczas łączenia się za ok. Wartość domyślna to false.  | Nie |
+| allowHostNameCNMismatch | Określa, czy nazwa certyfikatu TLS/SSL wystawiona przez urząd certyfikacji ma być zgodna z nazwą hosta serwera podczas łączenia się za korzystając z protokołu TLS. Wartość domyślna to false.  | Nie |
 | allowSelfSignedServerCert | Określa, czy zezwolić na certyfikaty z podpisem własnym z serwera. Wartość domyślna to false.  | Nie |
 | connectVia | [Środowisko wykonawcze integracji,](concepts-integration-runtime.md) które mają być używane do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [Wymagania wstępne.](#prerequisites) Jeśli nie zostanie określony, używa domyślnego środowiska wykonawczego integracji platformy Azure. |Nie |
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f6e7ee1b03dda30bea15a837b6daf6469e00e46d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 205f4a27a7903bc5a1da3fc12e3d4a02b23f58cf
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886402"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990926"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Wywoływanie interfejsu API programu Microsoft Graph z aplikacji XAML (Universal Windows Platform)
 
@@ -435,8 +435,3 @@ Przyczyna: Ten problem jest znanym ograniczeniem brokera uwierzytelniania sieci 
 Obejście: wybierz pozycję **Zaloguj się przy innych opcjach**. Następnie wybierz pozycję **Zaloguj się przy użyciu nazwy użytkownika i hasła**. Wybierz **pozycję Podaj hasło**. Następnie przejdź przez proces uwierzytelniania telefonu.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
-
-Pomóż nam ulepszyć platformę tożsamości firmy Microsoft. Powiedz nam, co myślisz, wypełniając krótką ankietę z dwoma pytaniami:
-
-> [!div class="nextstepaction"]
-> [Ankieta na temat platformy tożsamości firmy Microsoft](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

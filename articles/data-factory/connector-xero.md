@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 1f6404da163e075b63a99a1d8474cdba4e064b06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdb2dc283287bf83410f1846aca11f233e93d01b
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930879"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990856"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopiowanie danych z xero przy użyciu usługi Azure Data Factory
 
@@ -56,7 +56,7 @@ Następujące właściwości są obsługiwane dla usługi połączonej Xero:
 | klucz prywatny | Klucz prywatny z pliku pem wygenerowanego dla aplikacji prywatnej Xero, zobacz [Tworzenie pary kluczy publicznych/prywatnych](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Uwaga, aby **wygenerować privatekey.pem z numbits 512** przy użyciu `openssl genrsa -out privatekey.pem 512`; 1024 nie jest obsługiwany. Dołącz cały tekst z pliku pem, w tym zakończenia wiersza Uniksa(\n), zobacz przykład poniżej.<br/><br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Tak |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartością domyślną jest true.  | Nie |
 | useHostVerification | Określa, czy nazwa hosta jest wymagana w certyfikacie serwera do dopasowania nazwy hosta serwera podczas łączenia się za ok. Wartością domyślną jest true.  | Nie |
-| usePeerVerification | Określa, czy podczas nawiązywania połączenia za łącze SSL należy sprawdzić tożsamość serwera. Wartością domyślną jest true.  | Nie |
+| usePeerVerification | Określa, czy podczas nawiązywania połączenia zawersyfikowany przez TLS ma być weryfikowany przez tożsamość serwera. Wartością domyślną jest true.  | Nie |
 
 **Przykład:**
 

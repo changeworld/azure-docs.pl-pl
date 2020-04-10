@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ba292850c057284fff265c8a77386d21374942a
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278716"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010226"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis — często zadawane pytania
 Poznaj odpowiedzi na typowe pytania, wzorce i najlepsze rozwiązania dotyczące usługi Azure Cache for Redis.
@@ -54,7 +54,7 @@ Poniższe często zadawane pytania obejmują podstawowe pojęcia i pytania dotyc
 * [Co to są bazy danych Redis?](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>Często zadawane pytania dotyczące zabezpieczeń
-* [Kiedy należy włączyć port bez SSL do podłączenia do Redis?](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
+* [Kiedy należy włączyć port nienawiązywania TLS/SSL do podłączenia do redis?](#when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis)
 
 ## <a name="production-faqs"></a>Często zadawane pytania dotyczące produkcji
 * [Jakie są najlepsze praktyki produkcyjne?](#what-are-some-production-best-practices)
@@ -112,7 +112,7 @@ Poniżej przedstawiono zagadnienia dotyczące wyboru oferty pamięci podręcznej
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Usługa Azure Cache dla wydajności Redis
-W poniższej tabeli przedstawiono maksymalne wartości przepustowości obserwowane `redis-benchmark.exe` podczas testowania różnych rozmiarów pamięci podręcznych standard i premium przy użyciu maszyny Wirtualnej IaaS względem pamięci podręcznej Azure Cache dla punktu końcowego Redis. W przypadku przepływności SSL wskaźnik porównawczy redis jest używany z stunnel do łączenia się z punktem końcowym usługi Azure Cache for Redis.
+W poniższej tabeli przedstawiono maksymalne wartości przepustowości obserwowane `redis-benchmark.exe` podczas testowania różnych rozmiarów pamięci podręcznych standard i premium przy użyciu maszyny Wirtualnej IaaS względem pamięci podręcznej Azure Cache dla punktu końcowego Redis. W przypadku przepływności protokołu TLS wskaźnik porównawczy redis jest używany z stunnel, aby połączyć się z punktem końcowym usługi Azure Cache for Redis.
 
 >[!NOTE] 
 >Te wartości nie są gwarantowane i nie ma umowy SLA dla tych liczb, ale powinny być typowe. Należy załadować test własnej aplikacji, aby określić odpowiedni rozmiar pamięci podręcznej dla aplikacji.
@@ -244,7 +244,7 @@ Można użyć dowolnego z poleceń wymienionych w [poleceniach Redis,](https://r
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Narzędzia wiersza polecenia Redis nie działają z portem SSL, ale `stunnel` można użyć narzędzia, takiego jak bezpieczne połączenie narzędzi z portem SSL, postępujące zgodnie ze wskazówkami w artykule [Jak używać narzędzia wiersza polecenia Redis z usługą Azure Cache for Redis.](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool)
+> Narzędzia wiersza polecenia Redis nie działają z portem TLS, ale `stunnel` można użyć narzędzia, takiego jak bezpieczne połączenie narzędzi z portem TLS, postępujących zgodnie ze wskazówkami w artykule [Jak używać narzędzia wiersza polecenia Redis z usługą Azure Cache for Redis.](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool)
 >
 >
 
@@ -281,15 +281,15 @@ Redis Baz danych są tylko logiczne oddzielenie danych w tym samym wystąpieniu 
 
 <a name="cache-ssl"></a>
 
-### <a name="when-should-i-enable-the-non-ssl-port-for-connecting-to-redis"></a>Kiedy należy włączyć port bez SSL do podłączenia do Redis?
-Serwer Redis nie obsługuje natywnie SSL, ale usługa Azure Cache for Redis nie. Jeśli łączysz się z pamięcią podręczną Azure dla programu Redis, a klient obsługuje protokół SSL, taki jak StackExchange.Redis, należy użyć pliku SSL.
+### <a name="when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis"></a>Kiedy należy włączyć port nienawiązywania TLS/SSL do podłączenia do redis?
+Serwer Redis nie obsługuje natywnie protokołu TLS, ale usługa Azure Cache for Redis nie. Jeśli łączysz się z pamięcią podręczną Azure dla programu Redis, a klient obsługuje protokół TLS, taki jak StackExchange.Redis, należy użyć protokołu TLS.
 
 >[!NOTE]
->Port nieobjęty SSL jest domyślnie wyłączony dla nowej pamięci podręcznej platformy Azure dla wystąpień Redis. Jeśli klient nie obsługuje ssl, następnie należy włączyć port nie-SSL, postępowanie zgodnie ze wskazówkami w sekcji [Porty dostępu](cache-configure.md#access-ports) [w konfigurowanie pamięci podręcznej w pamięci podręcznej platformy Azure dla redis](cache-configure.md) artykułu.
+>Port nieobjęty TLS jest domyślnie wyłączony dla nowej pamięci podręcznej platformy Azure dla wystąpień Redis. Jeśli klient nie obsługuje protokołu TLS, należy włączyć port nie-TLS, postępając zgodnie ze wskazówkami w sekcji [Porty dostępu](cache-configure.md#access-ports) [w artykule Konfigurowanie pamięci podręcznej w pamięci podręcznej platformy Azure dla programu Redis.](cache-configure.md)
 >
 >
 
-Narzędzia Redis, `redis-cli` takie jak nie działają z portem SSL, `stunnel` ale można użyć narzędzia, takiego jak bezpieczne połączenie narzędzi z portem SSL, postępując zgodnie ze wskazówkami w blogu [Dostawca stanu sesji ogłaszania ASP.NET dla komunikatu o wersji zapoznawczej Redis.](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)
+Narzędzia Redis, `redis-cli` takie jak nie działają z portem TLS, `stunnel` ale można użyć narzędzia, takiego jak bezpieczne połączenie narzędzi z portem TLS, postępując zgodnie ze wskazówkami w blogu [Dostawca stanu sesji ogłaszania ASP.NET dla komunikatu redis Preview Release.](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)
 
 Aby uzyskać instrukcje dotyczące pobierania narzędzi Redis, zobacz sekcję [Jak uruchomić polecenia Redis?](#cache-commands)
 
@@ -312,7 +312,7 @@ Aby uzyskać instrukcje dotyczące pobierania narzędzi Redis, zobacz sekcję [J
 * Opracowanie systemu w taki sposób, że może obsługiwać blips połączenia [z powodu poprawek i pracy awaryjnej](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
 
 #### <a name="performance-testing"></a>Testowanie wydajności
-* Zacznij od `redis-benchmark.exe` użycia, aby uzyskać odczucie możliwe przepływności przed napisaniem własnych testów perf. Ponieważ `redis-benchmark` nie obsługuje SSL, należy [włączyć port innych niż SSL za pośrednictwem witryny Azure portal](cache-configure.md#access-ports) przed uruchomieniem testu. Aby uzyskać przykłady, zobacz [Jak sprawdzić poziom danych i przetestować wydajność pamięci podręcznej?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* Zacznij od `redis-benchmark.exe` użycia, aby uzyskać odczucie możliwe przepływności przed napisaniem własnych testów perf. Ponieważ `redis-benchmark` nie obsługuje protokołu TLS, przed uruchomieniem testu należy [włączyć port non-TLS za pośrednictwem witryny Azure portal.](cache-configure.md#access-ports) Aby uzyskać przykłady, zobacz [Jak sprawdzić poziom danych i przetestować wydajność pamięci podręcznej?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * Maszyna wirtualna klienta używana do testowania powinna znajdować się w tym samym regionie co pamięć podręczna usługi Azure dla wystąpienia Redis.
 * Zalecamy korzystanie z serii Dv2 VM dla klienta, ponieważ mają one lepszy sprzęt i powinny dać najlepsze wyniki.
 * Upewnij się, że wybrana maszyna wirtualna klienta ma co najmniej tyle możliwości przetwarzania i przepustowości, co testowana pamięć podręczna.
@@ -411,7 +411,7 @@ Włączenie GC serwera można zoptymalizować klienta i zapewnić lepszą wydajn
 
 * [Aby włączyć gc serwera](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
 * [Podstawy dotyczące odzyskiwania pamięci](/dotnet/standard/garbage-collection/fundamentals)
-* [Odzyskiwanie pamięci i wydajność](/dotnet/standard/garbage-collection/performance)
+* [Wyrzucanie elementów bezużytecznych i wydajność](/dotnet/standard/garbage-collection/performance)
 
 
 ### <a name="performance-considerations-around-connections"></a>Zagadnienia dotyczące wydajności wokół połączeń

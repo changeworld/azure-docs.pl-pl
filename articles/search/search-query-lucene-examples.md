@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 745be21c2a7a09a09fdbbfd57a305d09a4fac3ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c54f864b5bd562fdc0a84b2903198704032b360
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72793445"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998497"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Użyj "pełnej" składni wyszukiwania Lucene (zaawansowane zapytania w usłudze Azure Cognitive Search)
 
@@ -86,7 +86,7 @@ Ten pierwszy przykład nie jest specyficzne dla Lucene, ale prowadzimy z nim do 
 
 W przypadku zwięzłości kwerenda jest przeznaczona tylko dla pola *business_title* i określa zwracane są tylko tytuły firm. Parametr **searchFields** ogranicza wykonywanie kwerendy tylko do pola business_title, a **select** określa, które pola są uwzględnione w odpowiedzi.
 
-### <a name="partial-query-string"></a>Częściowy ciąg zapytania
+### <a name="search-expression"></a>Wyrażenie wyszukiwania
 
 ```http
 &search=*&searchFields=business_title&$select=business_title
@@ -119,7 +119,7 @@ Być może wynik wyszukiwania został zauważony w odpowiedzi. Jednolite wyniki 
 
 Pełna składnia lucene obsługuje określanie zakresu poszczególnych wyrażeń wyszukiwania do określonego pola. W tym przykładzie wyszukuje tytuły firm z terminem senior w nich, ale nie junior.
 
-### <a name="partial-query-string"></a>Częściowy ciąg zapytania
+### <a name="search-expression"></a>Wyrażenie wyszukiwania
 
 ```http
 $select=business_title&search=business_title:(senior NOT junior)
@@ -156,7 +156,7 @@ Pole określone w **poluName:searchExpression** musi być polem z wyszukujalnym.
 
 Pełna składnia Lucene obsługuje również wyszukiwanie rozmyte, dopasowując się do warunków o podobnej konstrukcji. Aby wykonać wyszukiwanie rozmyte, należy `~` dołączyć symbol tyldy na końcu pojedynczego wyrazu z opcjonalnym parametrem, wartością od 0 do 2, która określa odległość edycji. Na przykład `blue~` `blue~1` lub zwróci niebieski, niebieski i klej.
 
-### <a name="partial-query-string"></a>Częściowy ciąg zapytania
+### <a name="search-expression"></a>Wyrażenie wyszukiwania
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:asosiate~
@@ -186,7 +186,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="example-4-proximity-search"></a>Przykład 4: Wyszukiwanie zbliżeniowe
 Wyszukiwanie zbliżeniowe służy do znajdowania terminów, które znajdują się blisko siebie w dokumencie. Wstaw symbol tyldy "~" na końcu frazy, po której następuje liczba słów tworzących granicę bliskości. Na przykład "lotnisko hotelowe"~5 znajdzie warunki hotel i lotnisko w ciągu 5 słów od siebie w dokumencie.
 
-### <a name="partial-query-string"></a>Częściowy ciąg zapytania
+### <a name="search-expression"></a>Wyrażenie wyszukiwania
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
@@ -239,7 +239,7 @@ Przy ustalaniu poziomu współczynnika, im wyższy współczynnik wzmocnienia, t
 
 Wyszukiwanie wyrażeń regularnych znajduje dopasowanie na podstawie zawartości między ukośnikami "/", zgodnie z dokumentami w [klasie RegExp](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html).
 
-### <a name="partial-query-string"></a>Częściowy ciąg zapytania
+### <a name="search-expression"></a>Wyrażenie wyszukiwania
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
@@ -262,7 +262,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="example-7-wildcard-search"></a>Przykład 7: Wyszukiwanie symboli wieloznacznych
 Można użyć ogólnie rozpoznaną składni\*dla wielu ( ) lub pojedynczych (?) symboli wieloznacznych. Należy zauważyć, że analizator zapytania Lucene obsługuje użycie tych symboli z jednym terminem, a nie frazą.
 
-### <a name="partial-query-string"></a>Częściowy ciąg zapytania
+### <a name="search-expression"></a>Wyrażenie wyszukiwania
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:prog*

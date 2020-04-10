@@ -12,12 +12,12 @@ ms.date: 08/30/2019
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3569d0404f6c0c7f78344ba53733ba2c0c43d979
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 0c807390f043527aa721e9c1c2a9269ff0dee6b9
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80880809"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990977"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Logowanie użytkowników i wywoływanie programu Microsoft Graph z aplikacji na iOS lub macOS
 
@@ -837,8 +837,3 @@ Po zalogowaniu aplikacja wyświetli dane zwrócone z punktu `/me` końcowego pro
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 
 Jeśli masz problemy z tym samouczkiem lub platformą tożsamości firmy Microsoft, odwiedź [stronę Pomocy i pomocy technicznej.](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options)
-
-Pomóż nam ulepszyć platformę tożsamości firmy Microsoft. Powiedz nam, co myślisz, wypełniając krótką ankietę z dwoma pytaniami.
-
-> [!div class="nextstepaction"]
-> [Ankieta na temat platformy tożsamości firmy Microsoft](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

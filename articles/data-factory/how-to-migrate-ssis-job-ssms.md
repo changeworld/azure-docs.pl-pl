@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: c65fbd9bbd83db9c7c8ec0e9041d08372243b72f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: ee51be1d994c3b81765266e95c48d321a2f43b14
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887647"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80989446"
 ---
-# <a name="migrate-on-premises-ssis-jobs-to-azure-data-factory"></a>Migrowanie lokalnych zadań SSIS do usługi Azure Data Factory
+# <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>Migrowanie zadań programu SQL Server Agent do usługi ADF przy za pomocą usługi SSMS
 
 Podczas [migracji lokalnych obciążeń usług sql server integration services (SSIS) do ssis w usłudze ADF,](scenario-ssis-migration-overview.md)po migracji pakietów SSIS, można przeprowadzić migrację wsadową zadań programu SQL Server Agent z typem kroku zadania pakietu SQL Server Integration Services Package do potoków/uruchomień usługi Azure Data Factory/Schedule za pośrednictwem **Kreatora migracji zadań programu SQL**Server Management Studio (SSMS) SSIS .
 

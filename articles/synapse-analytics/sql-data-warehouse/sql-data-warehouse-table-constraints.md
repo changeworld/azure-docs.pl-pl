@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 881e4f0110e3c0f35301e2ae6be40f2510f42539
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: f97163d02836442430037e18439bcf0724046332
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583492"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990773"
 ---
 # <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>Klucz podstawowy, klucz obcy i unikatowy klucz w puli SQL Synapse
 
@@ -28,7 +28,10 @@ Puli SQL Synapse obsługuje te ograniczenia tabeli:
 - Klucz podstawowy jest obsługiwany tylko wtedy, gdy są używane nieklastrowane i niewymnaczone.    
 - Ograniczenie UNIQUE jest obsługiwane tylko z nieegzekwowane jest używany.
 
+Aby uzyskać składnię, zaznacz pole [wyboru ZMIEŃ TABELĘ](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) i [UTWÓRZ TABELĘ](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse). 
+
 Ograniczenie KLUCZA OBCEGO nie jest obsługiwane w puli języka SQL Synapse.  
+
 
 ## <a name="remarks"></a>Uwagi
 

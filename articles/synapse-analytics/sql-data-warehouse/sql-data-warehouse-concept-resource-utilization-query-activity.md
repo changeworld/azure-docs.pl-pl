@@ -7,16 +7,16 @@ manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 03/11/2020
+ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 85457b62c905cb30ca22264eff1b6c677473f9b9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ce2fe66888893d82debcc412bb16752914d8a190
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745307"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011110"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorowanie wykorzystania zasobów i aktywności zapytań w usłudze Azure Synapse Analytics
 
@@ -33,8 +33,8 @@ Następujące metryki są dostępne w witrynie Azure portal dla usługi SQL Anal
 | Procent pamięci       | Wykorzystanie pamięci (SQL Server) we wszystkich węzłach magazynu danych | Śr.   |
 | Aktywne zapytania          | Liczba aktywnych zapytań wykonywanych w systemie             | Suma              |
 | Kwerendy w kolejce          | Liczba kwerend w kolejce oczekujących na rozpoczęcie wykonywania          | Suma              |
-| Udane połączenia  | Liczba udanych połączeń z danymi                 | Suma, Liczba       |
-| Połączenia zakończone niepowodzeniem      | Liczba nieudanych połączeń z magazynem danych           | Suma, Liczba       |
+| Udane połączenia  | Liczba udanych połączeń (logowania) w bazie danych | Suma, Liczba       |
+| Połączenia zakończone niepowodzeniem      | Liczba nieudanych połączeń (logowania) w bazie danych | Suma, Liczba       |
 | Zablokowane przez zaporę sieciową     | Liczba logowań do magazynu danych, który został zablokowany     | Suma, Liczba       |
 | Limit DWU               | Cel poziomu usług magazynu danych                | Śr.    |
 | Dwu procent          | Maksymalna wartość procentowa procesora a procent we/wy danych        | Śr.    |
@@ -42,7 +42,7 @@ Następujące metryki są dostępne w witrynie Azure portal dla usługi SQL Anal
 | Procent trafienia w pamięci podręcznej    | (trafienia w pamięci podręcznej / cache miss) * 100, gdzie trafienia w pamięci podręcznej to suma wszystkich segmentów magazynu kolumn trafień w lokalnej pamięci podręcznej SSD i braku pamięci podręcznej jest segmentami magazynu kolumn w lokalnej pamięci podręcznej SSD sumowanych we wszystkich węzłach | Śr.    |
 | Wartość procentowa używanej pamięci podręcznej   | (używana pamięć podręczna / pojemność pamięci podręcznej) * 100, gdzie używana pamięć podręczna jest sumą wszystkich bajtów w lokalnej pamięci podręcznej SSD we wszystkich węzłach i pojemności pamięci podręcznej, jest sumą pojemności lokalnej pamięci podręcznej SSD we wszystkich węzłach | Śr.    |
 | Lokalny procent tempdb | Lokalne wykorzystanie bazy danych tempdb we wszystkich węzłach obliczeniowych — wartości są emitowane co pięć minut | Śr.    |
-| Rozmiar magazynu danych (GB) | Całkowity rozmiar danych załadowanych do bazy danych. Obejmuje to dane znajdujące się w tabelach CCI i innych niż CCI, w których rozmiar tabel innych niż CCI jest mierzony przez całkowity rozmiar pliku bazy danych | Suma |
+| Rozmiar magazynu danych (GB) | Całkowity rozmiar bazy danych. Obejmuje to używane, zarezerwowane i nieprzydzielone miejsce. Nieprzydzielone miejsce jest przechowywane dla bazy danych w celu optymalizacji wydajności kwerendy i obciążenia. | Suma |
 | Rozmiar odzyskiwania po awarii (GB) | Całkowity rozmiar kopii zapasowej geograficznej wykonanej co 24 godziny | Suma |
 | Rozmiar magazynu migawek (GB) | Całkowity rozmiar migawek wykonanych w celu zapewnienia punktów przywracania bazy danych. Obejmuje to automatyczne i zdefiniowane przez użytkownika migawki. | Suma |
 

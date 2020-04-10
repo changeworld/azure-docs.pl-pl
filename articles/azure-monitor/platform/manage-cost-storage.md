@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/08/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 5b532908df4b8dd58177b7e128f4e55aa96458e6
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: d03b053f2aa5de4a6f7874dbf4e6ccb3a305a964
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409950"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992083"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Zarządzanie użyciem i kosztami za pomocą dzienników usługi Azure Monitor
 
@@ -88,6 +88,9 @@ Można również [ustawić warstwę cenową za pośrednictwem usługi Azure Reso
 Subskrypcje, które miały w nim zasób usługi Log Analytics lub usługa Application Insights przed 2 kwietnia 2018 r. lub są połączone z umową Enterprise Agreement, która rozpoczęła się przed 1 lutego 2019 r., będą nadal miały dostęp do korzystania ze starszych warstw cenowych: **Bezpłatna**, **Autonomiczna (na GB)** i **Na węzeł (OMS)**.  Obszary robocze w warstwie Bezpłatne ceny będą miały codzienne pozyskiwania danych ograniczone do 500 MB (z wyjątkiem typów danych zabezpieczeń zebranych przez usługę Azure Security Center), a przechowywanie danych jest ograniczone do 7 dni. Bezpłatna warstwa cenowa jest przeznaczona tylko do celów oceny. Obszary robocze w warstwach cenowych Autonomiczne lub Na węzeł mają przechowywanie konfigurowalne przez użytkownika od 30 do 730 dni.
 
 Warstwa cenowa na węzeł pobiera opłaty za monitorowaną maszynę wirtualną (węzeł) na ziarnistość godzinną. Dla każdego monitorowanego węzła obszar roboczy jest przydzielany 500 MB danych dziennie, które nie są rozliczane. Ta alokacja jest agregowana na poziomie obszaru roboczego. Dane pochłonięta powyżej agregacji dziennej alokacji danych są rozliczane za GB jako przeciążenie danych. Należy zauważyć, że na rachunku usługa będzie **usługi Insight i Analytics** dla usługi Log Analytics użycia, jeśli obszar roboczy znajduje się w warstwie cenowej na węzeł. 
+
+> [!TIP]
+> Jeśli obszar roboczy ma dostęp do warstwy cenowej **Na węzeł,** ale zastanawiasz się, czy będzie to kosztować mniej w warstwie Płatności zgodnie z rzeczywistym użyciem, możesz [użyć poniższej kwerendy,](#evaluating-the-legacy-per-node-pricing-tier) aby łatwo uzyskać rekomendację. 
 
 Obszary robocze utworzone przed kwietniem 2016 r. mogą również uzyskać dostęp do oryginalnych warstw cenowych **Standard** i **Premium,** które mają stałe przechowywanie danych odpowiednio na 30 i 365 dni. Nowych obszarów roboczych nie można utworzyć w warstwach cenowych **Standardowa** lub **Premium,** a jeśli obszar roboczy zostanie przeniesiony z tych warstw, nie można go przenieść z powrotem. 
 
@@ -434,6 +437,49 @@ Aby wyświetlić liczbę różnych węzłów automatyzacji, użyj kwerendy:
        | extend lowComputer = tolower(Computer) | summarize by lowComputer, ComputerEnvironment
  ) on lowComputer
  | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc
+```
+
+## <a name="evaluating-the-legacy-per-node-pricing-tier"></a>Ocena starszej warstwy cenowej Na węzeł
+
+Decyzja o tym, czy obszary robocze z dostępem do starszej warstwy cenowej **na węzeł** są lepiej sygnalizowania w tej warstwie lub w bieżącej warstwie **Płatności zgodnie z rzeczywistym użyciem** lub **Rezerwacji pojemności,** jest często trudna do oceny dla klientów.  Obejmuje to zrozumienie kompromisu między kosztem stałym na monitorowany węzeł w warstwie cenowej Na węzeł a jego uwzględniony przydział danych 500 MB/węzeł/dzień i koszt tylko płacenia za pojone dane w warstwie Płatności zgodnie z rzeczywistym użyciem (na GB). 
+
+Aby ułatwić tę ocenę, następujące zapytanie może służyć do zalecenia dla warstwy cen optymalne na podstawie wzorców użycia obszaru roboczego.  Ta kwerenda analizuje monitorowane węzły i dane ponajęte do obszaru roboczego w ciągu ostatnich 7 dni i dla każdego dnia ocenia, która warstwa cenowa byłaby optymalna. Aby użyć kwerendy, należy określić, czy obszar roboczy `workspaceHasSecurityCenter` `true` używa `false`usługi Azure Security Center, ustawiając lub , a następnie (opcjonalnie) aktualizując ceny za węzeł i na GB, które otrzymuje organizacja. 
+
+```kusto
+// Set these paramaters before running query
+let workspaceHasSecurityCenter = true;  // Specify if the workspace has Azure Security Center
+let PerNodePrice = 15.; // Enter your price per node / month 
+let PerGBPrice = 2.30; // Enter your price per GB 
+// ---------------------------------------
+let SecurityDataTypes=dynamic(["SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent", "Update", "UpdateSummary"]);
+union withsource = tt * 
+| where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
+| summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
+| join (
+    Usage 
+    | where TimeGenerated > ago(8d)
+    | where StartTime >= startofday(now(-7d)) and EndTime < startofday(now())
+    | where IsBillable == true
+    | extend NonSecurityData = iff(DataType !in (SecurityDataTypes), Quantity, 0.)
+    | extend SecurityData = iff(DataType in (SecurityDataTypes), Quantity, 0.)
+    | summarize DataGB=sum(Quantity)/1000., NonSecurityDataGB=sum(NonSecurityData)/1000., SecurityDataGB=sum(SecurityData)/1000. by day=bin(StartTime, 1d)  
+) on day
+| extend AvgGbPerNode =  NonSecurityDataGB / nodesPerDay
+| extend PerGBDailyCost = iff(workspaceHasSecurityCenter,
+             (NonSecurityDataGB + max_of(SecurityDataGB - 0.5*nodesPerDay, 0.)) * PerGBPrice,
+             DataGB * PerGBPrice)
+| extend OverageGB = iff(workspaceHasSecurityCenter, 
+             max_of(DataGB - 1.0*nodesPerDay, 0.), 
+             max_of(DataGB - 0.5*nodesPerDay, 0.))
+| extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerGBPrice
+| extend Recommendation = iff(PerNodeDailyCost < PerGBDailyCost, "Per Node tier", 
+             iff(NonSecurityDataGB > 85., "Capacity Reservation tier", "Pay-as-you-go (Per GB) tier"))
+| project day, nodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
+| project day, Recommendation // Comment this line to see details
+| sort by day asc
 ```
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Tworzenie alertu, gdy zbieranie danych jest wysokie

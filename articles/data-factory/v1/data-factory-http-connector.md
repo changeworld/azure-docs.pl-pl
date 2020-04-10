@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36592151385a08d75b9b34e85bfa9d62342fc8cd
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260425"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991573"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Przenoszenie danych ze źródła HTTP przy użyciu usługi Azure Data Factory
 
@@ -38,7 +38,7 @@ Za pomocą tego łącznika HTTP można pobierać dane zarówno z *chmury, jak i 
 
 Podczas kopiowania danych z lokalnego punktu końcowego HTTP należy zainstalować bramę zarządzania danymi w środowisku lokalnym lub na maszynie Wirtualnej platformy Azure. Aby dowiedzieć się więcej o bramie zarządzania danymi i instrukcjach krok po kroku dotyczących konfigurowania bramy, zobacz [Przenoszenie danych między lokalizacjami lokalnymi a chmurą](data-factory-move-data-between-onprem-and-cloud.md).
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 Można utworzyć potok, który ma działanie kopiowania, aby przenieść dane ze źródła HTTP przy użyciu różnych narzędzi lub interfejsów API:
 
@@ -55,7 +55,7 @@ W poniższej tabeli opisano elementy JSON, które są specyficzne dla usługi po
 | type | Właściwość **typu** musi być ustawiona na **Http**. | Tak |
 | url | Podstawowy adres URL serwera sieci web. | Tak |
 | authenticationType | Określa typ uwierzytelniania. Dozwolone wartości to **Anonimowe,** **Podstawowe,** **Skrótowe,** **Windows**i **ClientCertificate**. <br><br> Więcej właściwości i przykładów JSON dla tych typów uwierzytelniania można znaleźć w kolejnych sekcjach tego artykułu. | Tak |
-| enableServerCertificateWwadacja | Określa, czy włączyć sprawdzanie poprawności certyfikatu SSL serwera, jeśli źródłem jest serwer sieci web HTTPS. Gdy serwer HTTPS używa certyfikatu z podpisem własnym, ustaw to na **false**. | Nie<br /> (wartość domyślna jest **prawdziwa)** |
+| enableServerCertificateWwadacja | Określa, czy włączyć sprawdzanie poprawności certyfikatu TLS/SSL serwera, jeśli źródłem jest serwer sieci web HTTPS. Gdy serwer HTTPS używa certyfikatu z podpisem własnym, ustaw to na **false**. | Nie<br /> (wartość domyślna jest **prawdziwa)** |
 | nazwa bramy | Nazwa wystąpienia bramy zarządzania danymi, które ma być używane do łączenia się z lokalnym źródłem HTTP. | Tak, jeśli kopiujesz dane z lokalnego źródła HTTP |
 | encryptedCredential | Zaszyfrowane poświadczenia dostępu do punktu końcowego HTTP. Wartość jest automatycznie generowana podczas konfigurowania informacji uwierzytelniania w kreatorze kopiowania lub przy użyciu okna dialogowego **ClickOnce.** | Nie<br /> (dotyczy tylko kopiowania danych z lokalnego serwera HTTP) |
 

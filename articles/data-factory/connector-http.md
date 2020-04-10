@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ca439d1a82e3cdbe2cc0274cf63653d39048057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a05d955be88f68b3c0db1f4a29b3f6e1155aa0d
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532556"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992185"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego HTTP przy użyciu usługi Azure Data Factory
 
@@ -54,7 +54,7 @@ Za pomocą tego łącznika HTTP można:
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -68,7 +68,7 @@ Dla połączonej usługi HTTP są obsługiwane następujące właściwości:
 |:--- |:--- |:--- |
 | type | Właściwość **typu** musi być ustawiona na **HttpServer**. | Tak |
 | url | Podstawowy adres URL serwera sieci web. | Tak |
-| enableServerCertificateWwadacja | Określ, czy podczas łączenia się z punktem końcowym HTTP ma być włączane sprawdzanie poprawności certyfikatu SSL serwera. Jeśli serwer HTTPS używa certyfikatu z podpisem własnym, ustaw tę właściwość na **false**. | Nie<br /> (wartość domyślna jest **prawdziwa)** |
+| enableServerCertificateWwadacja | Określ, czy podczas łączenia się z punktem końcowym HTTP ma być włączany sprawdzanie poprawności certyfikatu protokołu TLS/SSL serwera. Jeśli serwer HTTPS używa certyfikatu z podpisem własnym, ustaw tę właściwość na **false**. | Nie<br /> (wartość domyślna jest **prawdziwa)** |
 | authenticationType | Określa typ uwierzytelniania. Dozwolone wartości to **Anonimowe,** **Podstawowe,** **Skrótowe,** **Windows**i **ClientCertificate**. <br><br> Zobacz sekcje, które należy wykonać w tej tabeli, aby uzyskać więcej właściwości i przykłady JSON dla tych typów uwierzytelniania. | Tak |
 | connectVia | [Środowisko wykonawcze integracji](concepts-integration-runtime.md) do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [Wymagania wstępne.](#prerequisites) Jeśli nie zostanie określony, używany jest domyślny środowiska wykonawczego integracji platformy Azure. |Nie |
 

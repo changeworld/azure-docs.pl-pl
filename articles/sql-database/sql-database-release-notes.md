@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 04/09/2020
 ms.author: sstein
-ms.openlocfilehash: 9fa93af72c2869efd7b6d2f1e8b96b0e667f8b16
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: b677fd7fe2b14e1c42443478a887ddfa2481dfbf
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607549"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011450"
 ---
 # <a name="sql-database-release-notes"></a>Informacje o wersji bazy danych SQL
 
@@ -27,7 +27,6 @@ W tym artykule wymieniono funkcje bazy danych SQL, które są obecnie w publiczn
 | Funkcja | Szczegóły |
 | ---| --- |
 | Nowe generacje sprzętu serii Fsv2 i M| Aby uzyskać więcej informacji, zobacz [Generacje sprzętu](sql-database-service-tiers-vcore.md#hardware-generations).|
-| [Łącze prywatne platformy Azure](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Private Link upraszcza architekturę sieci i zabezpiecza połączenie między punktami końcowymi na platformie Azure, przechowując dane w sieci platformy Azure, eliminując w ten sposób narażenie na dostęp do Internetu. Private Link umożliwia również tworzenie i renderowanie własnych usług na platformie Azure. |
 | Przyspieszone odzyskiwanie bazy danych z pojedynczymi bazami danych i elastycznymi pulami | Aby uzyskać więcej informacji, zobacz [Przyspieszone odzyskiwanie bazy danych](sql-database-accelerated-database-recovery.md).|
 |Przybliżona liczba odrębna|Aby uzyskać więcej informacji, zobacz [Przybliżona liczba odrębna](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
 |Tryb wsadowy w rowstore (na poziomie zgodności 150)|Aby uzyskać więcej informacji, zobacz [Tryb wsadowy w Rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore).|

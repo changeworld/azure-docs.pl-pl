@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 68e234b9db269c30dc9f24106ae1942c01304da7
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 534e5c913685eeac92022f6694ea31b24816da5d
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422500"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011654"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopiowanie danych z i do oracle przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
@@ -37,6 +37,7 @@ Dane można kopiować z bazy danych Oracle do dowolnego obsługiwanego magazynu 
 W szczególności to złącze Oracle obsługuje:
 
 - Następujące wersje bazy danych Oracle:
+    - Oracle 19c R1 (19.1) i wyższe
     - Oracle 18c R1 (18.1) i wyższe
     - Oracle 12c R1 (12.1) i wyższe
     - Oracle 11g R1 (11.1) i wyższe
@@ -84,9 +85,9 @@ Aby włączyć szyfrowanie połączenia Oracle, dostępne są dwie opcje:
 
 -   Aby użyć **szyfrowania Triple-DES (3DES) i advanced encryption standard (AES)** po stronie serwera Oracle, przejdź do programu Oracle Advanced Security (OAS) i skonfiguruj ustawienia szyfrowania. Szczegółowe informacje można znaleźć w dokumentacji [oracle](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Łącznik Oracle Application Development Framework (ADF) automatycznie negocjuje metodę szyfrowania, aby używać metody skonfigurowanego w USŁUDZE OAS podczas ustanawiania połączenia z oracle.
 
--   Aby użyć **SSL:**
+-   Aby użyć **protokołu TLS:**
 
-    1.  Uzyskaj informacje o certyfikacie SSL. Pobierz informacje o certyfikatach certyfikatu SSL kodowane reguły kodowania (DER) i zapisz dane wyjściowe (----- rozpocznij certyfikat ... Zakończ certyfikat -----) jako plik tekstowy.
+    1.  Uzyskaj informacje o certyfikacie TLS/SSL. Pobierz informacje o certyfikatach certyfikatu TLS/SSL kodowane reguły kodowania (DER) i zapisz dane wyjściowe (----- rozpocznij certyfikat ... Zakończ certyfikat -----) jako plik tekstowy.
 
         ```
         openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text

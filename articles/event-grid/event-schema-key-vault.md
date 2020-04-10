@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 17404388b2b6c3fee1c6ab666f7233a66817f642
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe186e2ba8f3cafeb4d186066ba65ae036302f70
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74082865"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010515"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Schemat zdarzeń usługi Azure Event Grid dla usługi Azure Key Vault (wersja zapoznawcza)
 
@@ -25,13 +25,13 @@ Konto usługi Azure Key Vault generuje następujące typy zdarzeń:
 | Pełna nazwa wydarzenia | Nazwa wyświetlana zdarzenia | Opis |
 | ---------- | ----------- |---|
 | Microsoft.KeyVault.CertificateNewVersionTworzenie | Utworzono nową wersję certyfikatu | Wyzwalane podczas tworzenia nowego certyfikatu lub nowej wersji certyfikatu. |
-| Microsoft.KeyVault.CertificateNearExpiry | Certyfikat bliski wygaśnięcia | Wyzwalane, gdy bieżąca wersja certyfikatu wkrótce wygaśnie. (Wartość domyślna to 30 dni przed datą wygaśnięcia). |
+| Microsoft.KeyVault.CertificateNearExpiry | Certyfikat bliski wygaśnięcia | Wyzwalane, gdy bieżąca wersja certyfikatu wkrótce wygaśnie. (Zdarzenie jest wyzwalane 30 dni przed datą wygaśnięcia). |
 | Microsoft.KeyVault.CertificateExexpired | Certyfikat wygasł | Wyzwalane po wygaśnięciu certyfikatu. |
 | Microsoft.KeyVault.KeyNewVersionTworzenie | Utworzono nową wersję klucza | Wyzwalane podczas tworzenia nowego klucza lub nowej wersji klucza. |
-| Microsoft.KeyVault.KeyNearExpiry | Klucz bliski wygaśnięcia | Wyzwalane, gdy bieżąca wersja klucza wkrótce wygaśnie. (Wartość domyślna to 30 dni przed datą wygaśnięcia). |
+| Microsoft.KeyVault.KeyNearExpiry | Klucz bliski wygaśnięcia | Wyzwalane, gdy bieżąca wersja klucza wkrótce wygaśnie. (Zdarzenie jest wyzwalane 30 dni przed datą wygaśnięcia). |
 | Microsoft.KeyVault.KeyExpired | Klucz wygasł | Wyzwalane po wygaśnięciu klucza. |
 | Microsoft.KeyVault.SecretNewVersionTworzone | Utworzono tajną nową wersję | Wyzwalane po utworzeniu nowej tajnej lub nowej tajnej wersji. |
-| Microsoft.KeyVault.SecretNearExpiry | Sekret bliski wygaśnięcia | Wyzwalane, gdy bieżąca wersja klucza tajnego wkrótce wygaśnie. (Wartość domyślna to 30 dni przed datą wygaśnięcia). |
+| Microsoft.KeyVault.SecretNearExpiry | Sekret bliski wygaśnięcia | Wyzwalane, gdy bieżąca wersja klucza tajnego wkrótce wygaśnie. (Zdarzenie jest wyzwalane 30 dni przed datą wygaśnięcia). |
 | Microsoft.KeyVault.SecretExpired | Tajemnica wygasła | Wyzwalane po wygaśnięciu klucza tajnego. |
 
 ## <a name="event-examples"></a>Przykłady zdarzeń

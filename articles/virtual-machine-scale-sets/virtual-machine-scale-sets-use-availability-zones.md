@@ -1,20 +1,20 @@
 ---
 title: Tworzenie zestawu skalowania platformy Azure, który używa stref dostępności
 description: Dowiedz się, jak utworzyć zestawy skalowania maszyny wirtualnej platformy Azure, które używają stref dostępności w celu zwiększenia nadmiarowości w przypadku awarii
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.author: cynthn
-ms.openlocfilehash: 11695eb889a10dc689b00399a37382a3b9772eae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: c8795f46e47b2ab43898f6f436b9ee6026a22fa7
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76274420"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011569"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Tworzenie zestawu skalowania maszyny wirtualnej, który używa stref dostępności
 
@@ -58,7 +58,7 @@ Podczas tworzenia zestawu skalowania w jednej strefie, można kontrolować, któ
 
 Aby korzystać ze stref dostępności, zestaw skalowania musi zostać utworzony w [obsługiwanym regionie platformy Azure.](../availability-zones/az-overview.md#services-support-by-region) Można utworzyć zestaw skalowania, który używa stref dostępności za pomocą jednej z następujących metod:
 
-- [Portal Azure](#use-the-azure-portal)
+- [Azure Portal](#use-the-azure-portal)
 - Interfejs wiersza polecenia platformy Azure
 - [Azure PowerShell](#use-azure-powershell)
 - [Szablony usługi Azure Resource Manager](#use-azure-resource-manager-templates)

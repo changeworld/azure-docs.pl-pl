@@ -7,19 +7,25 @@ ms.topic: reference
 ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 846e8da889e3913c4a8eaab7808495bbd8afad29
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 80e38893d764f35511793d8b31f596dcbf16dd42
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754665"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991896"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki za pomocą usługi Azure Monitor
 
 > [!NOTE]
 > Ta lista jest w dużej mierze generowane automatycznie z interfejsu API REST metryki usługi Azure Monitor. Wszelkie modyfikacje tej listy za pośrednictwem Github mogą być zapisywane bez ostrzeżenia. Skontaktuj się z autorem tego artykułu, aby uzyskać szczegółowe informacje na temat wprowadzania stałych aktualizacji.
 
-Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym wykresów w portalu, uzyskiwanie do nich dostępu za pośrednictwem interfejsu API REST lub wykonywanie zapytań o nie przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Poniżej znajduje się pełna lista wszystkich metryk obecnie dostępnych w potoku metryki usługi Azure Monitor. Inne metryki mogą być dostępne w portalu lub przy użyciu starszych interfejsów API. Ta lista poniżej zawiera tylko metryki dostępne przy użyciu skonsolidowanego potoku metryk usługi Azure Monitor. Metryki są zorganizowane według obszaru nazw. Aby uzyskać listę usług i obszarów nazw, które do nich należą, zobacz [Dostawcy zasobów dla usług platformy Azure](../../azure-resource-manager/management/azure-services-resource-providers.md). Aby uzyskać zapytania i uzyskać dostęp do tych metryk programowo, użyj [wersji api 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym wykresów w portalu, uzyskiwanie do nich dostępu za pośrednictwem interfejsu API REST lub wykonywanie zapytań o nie przy użyciu programu PowerShell lub interfejsu wiersza polecenia. 
+
+Ten artykuł jest pełną listę wszystkich platform (czyli automatycznie zbierane) metryki obecnie dostępne z potoku skonsolidowanych metryk usługi Azure Monitor. Data ostatniej aktualizacji: 27 marca 2020. Metryki zmienione lub dodane po tej dacie mogą nie pojawić się poniżej. Aby uzyskać zapytania i uzyskać dostęp do listy metryk programowo, użyj [wersji api 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+
+Inne metryki mogą być dostępne w portalu lub przy użyciu starszych interfejsów API. Metryki dla systemu operacyjnego gościa (system gościa), który działa w maszynach wirtualnych platformy Azure, sieci szkieletowej usług i usług w chmurze **NIE** są wymienione w tym miejscu. Te muszą być zbierane za pośrednictwem jednego lub więcej agentów, które działają na lub jako część systemu operacyjnego. Metryki agenta można wysyłać do bazy danych metryk platformy przy użyciu interfejsu API [metryk niestandardowych,](metrics-custom-overview.md) które są obecnie w publicznej wersji zapoznawczej. Następnie można wykres, alerty i w inny sposób używać metryki systemu operacyjnego gościa, takie jak metryki platformy. Aby uzyskać więcej informacji, zobacz [Omówienie agentów monitorowania](agents-overview.md).    
+
+Metryki są zorganizowane według obszaru nazw. Aby uzyskać listę usług i obszarów nazw, które do nich należą, zobacz [Dostawcy zasobów dla usług platformy Azure](../../azure-resource-manager/management/azure-services-resource-providers.md). 
 
 > [!NOTE]
 > Wysyłanie metryk wielowymiarowych za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.

@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/08/2020
 ms.author: juliako
-ms.openlocfilehash: 8a00f7c0ec76510cc521966acf98b7250e723697
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985902"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010583"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Wydarzenia na żywo i wyjścia na żywo w usługach media
 
@@ -111,7 +111,7 @@ Możesz użyć znaczących lub nieznaczących adresów URL.
 
 * Adres URL próżności
 
-    Tryb próżności jest preferowany przez dużych nadawców multimedialnych, którzy używają koderów emisji sprzętowych i nie chcą ponownie konfigurować swoich koderów po uruchomieniu wydarzenia na żywo. Chcą predykcyjnego adresu URL pozyskiwania, który nie zmienia się w czasie.
+    Tryb próżności jest preferowany przez dużych nadawców multimedialnych, którzy używają koderów emisji sprzętowych i nie chcą ponownie konfigurować swoich koderów po uruchomieniu wydarzenia na żywo. Nadawcy ci chcą predykcyjnego adresu URL pozyskiwania, który nie zmienia się w czasie.
     
     > [!NOTE]
     > W witrynie Azure portal adres URL próżności nosi nazwę "*adres URL wprowadzania trwałego*".

@@ -3,12 +3,12 @@ title: Debugowanie aplikacji sieci szkieletowej usług Azure w systemie Linux
 description: Dowiedz się, jak monitorować i diagnozować usługi sieci szkieletowej usług na lokalnym komputerze deweloperskim systemu Linux.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: d8b5ec2f2190586f5eced5eee112b190a82504c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75526298"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991334"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Monitorowanie i diagnozowanie usług w lokalnej konfiguracji tworzenia maszyn systemu Linux
 
@@ -59,7 +59,7 @@ Aby uzyskać więcej informacji, zobacz [przykłady kodu w usłudze GitHub](http
 ## <a name="debugging-service-fabric-c-applications"></a>Aplikacje sieci szkieletowej usługi debugowania W#
 
 
-Wiele struktur są dostępne do śledzenia aplikacji CoreCLR w systemie Linux. Aby uzyskać więcej informacji, zobacz [GitHub: rejestrowanie](http:/github.com/aspnet/logging).  Ponieważ EventSource jest znany deweloperom języka C#,'w tym artykule używa EventSource do śledzenia w przykładach CoreCLR w systemie Linux.
+Wiele struktur są dostępne do śledzenia aplikacji CoreCLR w systemie Linux. Aby uzyskać więcej informacji, zobacz [.NET Extensions for Logging](https://github.com/dotnet/extensions/tree/master/src/Logging).  Ponieważ EventSource jest znany deweloperom języka C#,'w tym artykule używa EventSource do śledzenia w przykładach CoreCLR w systemie Linux.
 
 Pierwszym krokiem jest uwzględnienie System.Diagnostics.Tracing, dzięki czemu można zapisywać dzienniki w pamięci, strumieniach wyjściowych lub plikach konsoli.  W przypadku rejestrowania przy użyciu źródła zdarzeń dodaj do pliku project.json następujący projekt:
 

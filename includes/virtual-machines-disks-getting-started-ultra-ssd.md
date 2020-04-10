@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/14/2019
+ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0d081a8cec088f4743bd0dc7d3cc37a9fade61d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfb094bc9f84e7129a3e1c733a054c5f6cd96372
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80116966"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008647"
 ---
 Ultra dyski platformy Azure oferują wysoką przepływność, wysokie usługi We/Wy i spójne magazyny dysków o małych opóźnieniach dla maszyn wirtualnych usługi Azure IaaS (VM). Ta nowa oferta zapewnia najwyższą wydajność linii na tym samym poziomie dostępności, co nasze istniejące oferty dysków. Jedną z głównych zalet dysków ultra jest możliwość dynamicznej zmiany wydajności dysku SSD wraz z obciążeniami bez konieczności ponownego uruchamiania maszyn wirtualnych. Dyski w warstwie Ultra to rozwiązanie odpowiednie w przypadku obciążeń intensywnie korzystających z danych, takich jak platforma SAP HANA, bazy danych górnej warstwy i obciążenia z dużą liczbą transakcji.
 
@@ -23,9 +23,11 @@ Ultra dyski platformy Azure oferują wysoką przepływność, wysokie usługi We
 
 ## <a name="determine-vm-size-and-region-availability"></a>Określanie rozmiaru maszyny Wirtualnej i dostępności regionu
 
+### <a name="vms-using-availability-zones"></a>Maszyny wirtualne używające stref dostępności
+
 Aby wykorzystać dyski ultra, musisz określić, w której strefie dostępności się znajdujesz. Nie każdy region obsługuje każdy rozmiar maszyny Wirtualnej za pomocą dysków ultra. Aby ustalić, czy rozmiar regionu, strefy i maszyny Wirtualnej obsługuje dyski ultra, uruchom jeden z następujących poleceń, najpierw należy zastąpić wartości **regionu**, **vmSize**i **subskrypcji:**
 
-Cli:
+#### <a name="cli"></a>Interfejs wiersza polecenia
 
 ```azurecli
 $subscription = "<yourSubID>"
@@ -37,7 +39,7 @@ $vmSize = "<yourVMSize>"
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
 ```
 
-Program PowerShell:
+#### <a name="powershell"></a>PowerShell
 
 ```powershell
 $region = "southeastasia"
@@ -58,9 +60,58 @@ Zachowaj **zones** wartość, reprezentuje strefę dostępności i będzie jej p
 
 Teraz, gdy wiesz, w której strefie należy wdrożyć, wykonaj kroki wdrażania opisane w tym artykule, aby wdrożyć maszynę wirtualną z dołączonym dyskiem ultra lub dołączyć dysk ultra do istniejącej maszyny Wirtualnej.
 
+### <a name="vms-with-no-redundancy-options"></a>Maszyny wirtualne bez opcji nadmiarowości
+
+Dyski ultra wdrożone w zachodnie stany USA muszą być na razie wdrażane bez żadnych opcji nadmiarowości. Jednak nie każdy rozmiar dysku, który obsługuje dyski ultra może być w tym regionie. Aby określić, które dyski w zachodnie stany USA obsługują dyski ultra, można użyć jednego z następujących fragmentów kodu. Upewnij się, `vmSize` że `subscription` najpierw wymienić i wartości:
+
+```azurecli
+$subscription = "<yourSubID>"
+$region = "westus"
+# example value is Standard_E64s_v3
+$vmSize = "<yourVMSize>"
+
+az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].capabilities" --subscription $subscription
+```
+
+```azurepowershell
+$region = "westus"
+$vmSize = "Standard_E64s_v3"
+(Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) })[0].Capabilities
+```
+
+Odpowiedź będzie podobna do następującego formularza, wskazuje, `UltraSSDAvailable   True` czy rozmiar maszyny Wirtualnej obsługuje dyski ultra w tym regionie.
+
+```
+Name                                         Value
+----                                         -----
+MaxResourceVolumeMB                          884736
+OSVhdSizeMB                                  1047552
+vCPUs                                        64
+HyperVGenerations                            V1,V2
+MemoryGB                                     432
+MaxDataDiskCount                             32
+LowPriorityCapable                           True
+PremiumIO                                    True
+VMDeploymentTypes                            IaaS
+vCPUsAvailable                               64
+ACUs                                         160
+vCPUsPerCore                                 2
+CombinedTempDiskAndCachedIOPS                128000
+CombinedTempDiskAndCachedReadBytesPerSecond  1073741824
+CombinedTempDiskAndCachedWriteBytesPerSecond 1073741824
+CachedDiskBytes                              1717986918400
+UncachedDiskIOPS                             80000
+UncachedDiskBytesPerSecond                   1258291200
+EphemeralOSDiskSupported                     True
+AcceleratedNetworkingEnabled                 True
+RdmaEnabled                                  False
+MaxNetworkInterfaces                         8
+UltraSSDAvailable                            True
+```
+
 ## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>Wdrażanie ultradysu przy użyciu usługi Azure Resource Manager
 
-Najpierw należy określić rozmiar maszyny Wirtualnej do wdrożenia. Aby uzyskać listę obsługiwanych rozmiarów maszyn wirtualnych, zobacz zakres [ga i ograniczenia](#ga-scope-and-limitations) sekcji.
+Najpierw należy określić rozmiar maszyny Wirtualnej do wdrożenia. Aby uzyskać listę obsługiwanych rozmiarów maszyn wirtualnych, zobacz sekcję [zakres ga i ograniczenia.](#ga-scope-and-limitations)
 
 Jeśli chcesz utworzyć maszynę wirtualną z wieloma dyskami ultra, zapoznaj się [z przykładową próbką Utwórz maszynę wirtualną z wieloma dyskami ultra.](https://aka.ms/ultradiskArmTemplate)
 
@@ -151,6 +202,18 @@ Zastąp lub ustaw **zmienne $vmname**, **$rgname**, **$diskname,** **$location**
 az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location
 ```
 
+### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>Włączanie zgodności dysków ultra na istniejącej maszynie wirtualnej
+
+Jeśli maszyna wirtualna spełnia wymagania opisane w [zakresie ga i ograniczenia i](#ga-scope-and-limitations) znajduje się w odpowiedniej strefie dla [konta,](#determine-vm-size-and-region-availability)następnie można włączyć zgodność ultra dysku na maszynie Wirtualnej.
+
+Aby włączyć zgodność z dyskami ultra, należy zatrzymać maszynę wirtualną. Po zatrzymaniu maszyny Wirtualnej można włączyć zgodność, podłączyć dysk ultra, a następnie ponownie uruchomić maszynę wirtualną:
+
+```azurecli
+az vm deallocate -n $vmName -g $rgName
+az vm update -n $vmName -g $rgName --ultra-ssd-enabled true
+az vm start -n $vmName -g $rgName
+```
+
 ### <a name="create-an-ultra-disk-using-cli"></a>Tworzenie dysku ultra przy użyciu interfejsu wiersza polecenia
 
 Teraz, gdy masz maszynę wirtualną, która jest w stanie dołączyć dyski ultra, można utworzyć i dołączyć do niego ultra dysk.
@@ -214,9 +277,22 @@ New-AzVm `
     -Name $vmName `
     -Location "eastus2" `
     -Image "Win2016Datacenter" `
-    -EnableUltraSSD `
+    -EnableUltraSSD $true `
     -size "Standard_D4s_v3" `
     -zone $zone
+```
+
+### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>Włączanie zgodności dysków ultra na istniejącej maszynie wirtualnej
+
+Jeśli maszyna wirtualna spełnia wymagania opisane w [zakresie ga i ograniczenia i](#ga-scope-and-limitations) znajduje się w odpowiedniej strefie dla [konta,](#determine-vm-size-and-region-availability)następnie można włączyć zgodność ultra dysku na maszynie Wirtualnej.
+
+Aby włączyć zgodność z dyskami ultra, należy zatrzymać maszynę wirtualną. Po zatrzymaniu maszyny Wirtualnej można włączyć zgodność, podłączyć dysk ultra, a następnie ponownie uruchomić maszynę wirtualną:
+
+```azurepowershell
+#stop the VM
+$vm1 = Get-AzureRMVM -name $vmName -ResourceGroupName $rgName
+Update-AzureRmVM -ResourceGroupName $rgName -VM $vm1 -UltraSSDEnabled 1
+#start the VM
 ```
 
 ### <a name="create-an-ultra-disk-using-powershell"></a>Tworzenie dysku ultra przy użyciu programu PowerShell
@@ -265,7 +341,3 @@ Dyski ultra mają unikalną funkcję, która pozwala dostosować ich wydajność
 $diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000
 Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate $diskupdateconfig
 ```
-
-## <a name="next-steps"></a>Następne kroki
-
-Jeśli chcesz wypróbować nowy typ dysku [żądanie dostępu z tej ankiety](https://aka.ms/UltraDiskSignup).

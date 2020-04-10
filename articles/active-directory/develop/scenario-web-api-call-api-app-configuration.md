@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4129f1a89575c9a0e7cd6a0090168df659356c1b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 38e319efb100d326d55f6f821e7c903306a7c7d0
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885110"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991011"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Internetowy interfejs API, który wywołuje internetowe interfejsy API: konfiguracja kodu
 
@@ -214,7 +214,7 @@ class MsalAuthHelper {
 
 Przepływ W imieniu (OBO) służy do uzyskania tokenu do wywołania podrzędnego interfejsu API sieci web. W tym przepływie internetowy interfejs API odbiera token na okaziciela z uprawnieniami delegowanymi użytkownika z aplikacji klienckiej, a następnie wymienia ten token na inny token dostępu, aby wywołać podrzędny interfejs API sieci web.
 
-Interfejs API sieci Web języka Python będzie musiał użyć oprogramowania pośredniczącego, aby sprawdzić poprawność tokenu nośnika odebranego od klienta. Internetowy interfejs API można następnie uzyskać token dostępu dla interfejsu API [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) podrzędnego przy użyciu biblioteki MSAL Python, wywołując metodę. Przykład demonstruujący ten przepływ za pomocą biuletynu MSAL Python nie jest jeszcze dostępny.
+Interfejs API sieci Web języka Python będzie musiał użyć oprogramowania pośredniczącego, aby sprawdzić poprawność tokenu nośnika odebranego od klienta. Internetowy interfejs API można następnie uzyskać token dostępu dla interfejsu API [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) podrzędnego przy użyciu biblioteki MSAL Python, wywołując metodę. Na przykład przy użyciu tego interfejsu API, zobacz [kod testowy dla microsoft-authentication-library-for-python na GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472). Zobacz także omówienie [problemu 53](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53) w tym samym repozytorium dla podejścia, które pomija potrzebę aplikacji warstwy środkowej.
 
 ---
 
