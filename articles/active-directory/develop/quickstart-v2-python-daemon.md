@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 3306fe6265d02fda48e3a75540be42e46e8feb89
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ecbed58eabd2e835d8fa202916829d1da91210e7
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473549"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991062"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Szybki start: uzyskiwanie tokenu i wywoływanie interfejsu API programu Microsoft Graph z aplikacji konsoli Języka Python przy użyciu tożsamości aplikacji
 
@@ -233,14 +233,9 @@ Aby zapoznać się z samouczkiem aplikacji demona, zobacz:
 Dowiedz się więcej na temat uprawnień i wyrażania zgody:
 
 > [!div class="nextstepaction"]
-> [Uprawnienia i wyrażanie zgody](v2-permissions-and-consent.md)
+> [Uprawnienia i zgoda](v2-permissions-and-consent.md)
 
 Aby dowiedzieć się więcej na temat przepływu autoryzacji w tym scenariuszu, zapoznaj się z przepływem poświadczeń klienta OAuth 2.0:
 
 > [!div class="nextstepaction"]
 > [Client credentials Oauth flow (Przepływ OAuth poświadczeń klienta)](v2-oauth2-client-creds-grant-flow.md)
-
-Pomóż nam ulepszyć platformę tożsamości firmy Microsoft. Powiedz nam, co myślisz, wypełniając krótką ankietę z dwoma pytaniami.
-
-> [!div class="nextstepaction"]
-> [Ankieta na temat platformy tożsamości firmy Microsoft](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f1f83fdd73816e6e30c5cac7d193719591bb8dc1
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77022124"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999019"
 ---
 # <a name="in-store-analytics-architecture"></a>Architektura analityczna w sklepie
 
@@ -48,10 +48,10 @@ Aplikacja Azure IoT Central pobuje dane z różnych rodzajów czujników IoT, a 
 Usługa Azure IoT Central zapewnia również dostosowane środowisko operatorowi sklepu, umożliwiając zdalne monitorowanie urządzeń infrastruktury i zarządzanie nimi.
 
 ## <a name="data-transform"></a>Transformacja danych
-Aplikację Azure IoT Central w ramach rozwiązania można skonfigurować do eksportowania surowych lub zagregowanych szczegółowych informacji do zestawu usług Azure PaaS (Platform-as-a Service), które mogą wykonywać manipulowanie danymi i wzbogacać te informacje przed ich lądowaniem w firmie Aplikacji. 
+Aplikacja Azure IoT Central w ramach rozwiązania można skonfigurować do eksportowania szczegółowych lub zagregowanych szczegółowych informacji do zestawu usług Azure PaaS (Platform-as-a Service), które mogą wykonywać manipulowanie danymi i wzbogacać te informacje przed lądowaniem ich w aplikacji biznesowej. 
 
 ## <a name="business-application"></a>Aplikacja biznesowa
-Dane IoT mogą służyć do zasilania różnych rodzajów aplikacji biznesowych wdrożonych w środowisku sieci sprzedaży detalicznej. Kierownik sklepu detalicznego lub pracownik może używać tych aplikacji do wizualizacji informacji biznesowych i podejmowania znaczących działań w czasie rzeczywistym. Aby dowiedzieć się, jak zbudować pulpit nawigacyjny usługi Power BI w czasie rzeczywistym dla zespołu handlu detalicznego, wykonaj [samouczek](./tutorial-in-store-analytics-create-app-pnp.md).
+Dane IoT mogą służyć do zasilania różnych rodzajów aplikacji biznesowych wdrożonych w środowisku sieci sprzedaży detalicznej. Kierownik sklepu detalicznego lub pracownik może używać tych aplikacji do wizualizacji informacji biznesowych i podejmowania znaczących działań w czasie rzeczywistym. Aby dowiedzieć się, jak zbudować pulpit nawigacyjny usługi Power BI w czasie rzeczywistym dla zespołu handlu detalicznego, wykonaj [samouczek](./tutorial-in-store-analytics-create-app.md).
 
 ## <a name="next-steps"></a>Następne kroki
 * Wprowadzenie do szablonów aplikacji [do realizacji transakcji analytics w sklepie](https://aka.ms/checkouttemplate) i monitorowania stanu analizy w [sklepie.](https://aka.ms/conditiontemplate) 

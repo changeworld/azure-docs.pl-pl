@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: dapine
-  ms.openlocfilehash: 0f0b9aa0109b7e63bffcbd330dbef3276821698e
-  ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+  ms.openlocfilehash: 43bd0afd1f3d40c144003b2c2cadfdcb885989a9
+  ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 04/06/2020
-  ms.locfileid: "80743911"
+  ms.lasthandoff: 04/09/2020
+  ms.locfileid: "80991317"
 highlightedContent:
   items:
   - title: Czym jest usługa rozpoznawania mowy?
@@ -52,14 +52,14 @@ conceptualContent:
   - title: Zamiana tekstu na mowę
     links:
     - itemType: quickstart
+      text: Podstawy syntezy mowy
+      url: text-to-speech-basics.md
+    - itemType: quickstart
       text: Syntetyzowanie mowy przy użyciu głośnika
       url: quickstarts/text-to-speech.md
     - itemType: quickstart
       text: Syntetyzowanie mowy do pliku dźwiękowego
       url: quickstarts/text-to-speech-audio-file.md
-    - itemType: quickstart
-      text: Dostosowywanie syntezy mowy na potrzeby aplikacji
-      url: how-to-custom-voice.md
     footerLink:
       text: Zobacz więcej
       url: index-text-to-speech.yml

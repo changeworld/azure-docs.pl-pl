@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 07e2d6f174e5af4af9bdcac73dc74f5cf061ed41
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 88703581c507b79c1b10e0f8741c99e64d204a7e
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78300489"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010872"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Szybki start: używanie pamięci podręcznej Azure dla funkcji Redis z plikem Node.js
 
@@ -41,7 +41,7 @@ set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ## <a name="connect-to-the-cache"></a>Łączenie z pamięcią podręczną
 
-Najnowsze kompilacje klienta [node_redis](https://github.com/mranney/node_redis) umożliwiają łączenie się z usługą Azure Cache for Redis przy użyciu protokołu SSL. Poniższy przykład przedstawia, jak nawiązać połączenie z usługą Azure Cache for Redis przy użyciu punktu końcowego 6380 protokołu SSL. 
+Najnowsze kompilacje [node_redis](https://github.com/mranney/node_redis) zapewniają obsługę łączenia się z usługą Azure Cache for Redis przy użyciu protokołu TLS. W poniższym przykładzie pokazano, jak połączyć się z pamięcią podręczną Azure dla redis przy użyciu punktu końcowego TLS 6380. 
 
 ```js
 var redis = require("redis");
@@ -69,7 +69,7 @@ bluebird.promisifyAll(redis.Multi.prototype);
 
 async function testCache() {
 
-    // Connect to the Azure Cache for Redis over the SSL port using the key.
+    // Connect to the Azure Cache for Redis over the TLS port using the key.
     var cacheConnection = redis.createClient(6380, process.env.REDISCACHEHOSTNAME, 
         {auth_pass: process.env.REDISCACHEKEY, tls: {servername: process.env.REDISCACHEHOSTNAME}});
         

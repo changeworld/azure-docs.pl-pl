@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 66c3bd8650d1194d5d753c1dc967ec8e870c8748
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77169513"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998960"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Szybki start: konfigurowanie reguł i akcji dla urządzenia w usłudze Azure IoT Central
 
@@ -24,7 +24,7 @@ W tym przewodniku Szybki start utworzysz regułę, która wysyła wiadomość e-
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem należy wykonać dwa poprzednie przewodniki Szybki start [Tworzenie aplikacji Azure IoT Central](./quick-deploy-iot-central.md) i dodawanie [symulowanego urządzenia do aplikacji IoT Central](./quick-create-pnp-device.md) w celu utworzenia szablonu urządzenia **MXChip IoT DevKit** do pracy.
+Przed rozpoczęciem należy wykonać dwa poprzednie przewodniki Szybki start [Tworzenie aplikacji Azure IoT Central](./quick-deploy-iot-central.md) i dodawanie [symulowanego urządzenia do aplikacji IoT Central](./quick-create-simulated-device.md) w celu utworzenia szablonu urządzenia **MXChip IoT DevKit** do pracy.
 
 ## <a name="create-a-telemetry-based-rule"></a>Tworzenie reguły opartej na danych telemetrycznych
 

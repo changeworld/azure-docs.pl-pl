@@ -1,19 +1,19 @@
 ---
 title: Szybki start — tworzenie zestawu skalowania maszyny wirtualnej za pomocą programu Azure PowerShell
 description: Rozpocznij wdrażanie, ucząc się szybko utworzyć skalę maszyny wirtualnej za pomocą programu Azure PowerShell.
-author: cynthn
+author: ju-shim
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2018
-ms.author: cynthn
-ms.openlocfilehash: b3454291a40a1d39b281e28b7d1ebdbcac4020b4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.author: jushiman
+ms.openlocfilehash: ab5efc84ed88ef5ef245bfead2cc709405dc79ea
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76270894"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008611"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>Szybki start: tworzenie zestawu skalowania maszyn wirtualnych przy użyciu programu Azure PowerShell
 

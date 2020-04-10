@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 2946551233500a80c6fa7f02ad4c427f2d654b40
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7f927d230efba580cff163d31c6f572a10d0b4aa
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883648"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991147"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Szybki start: dodawanie logowania na platformie tożsamości firmy Microsoft do ASP.NET aplikacji sieci Web
 W tym przewodniku Szybki start można użyć przykładu kodu, aby dowiedzieć się, jak ASP.NET aplikacji sieci web do logowania kont osobistych (hotmail.com, outlook.com, inne) oraz kont służbowych i szkolnych z dowolnego wystąpienia usługi Azure Active Directory (Azure AD).  (Zobacz [Jak działa przykład](#how-the-sample-works) dla ilustracji).
@@ -205,8 +205,3 @@ Wypróbuj samouczek platformy ASP.NET, aby uzyskać instrukcje krok po kroku dot
 > [Samouczek dotyczący logowania](./tutorial-v2-asp-webapp.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
-
-Pomóż nam ulepszyć platformę tożsamości firmy Microsoft. Powiedz nam, co myślisz, wypełniając krótką ankietę z dwoma pytaniami.
-
-> [!div class="nextstepaction"]
-> [Ankieta na temat platformy tożsamości firmy Microsoft](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

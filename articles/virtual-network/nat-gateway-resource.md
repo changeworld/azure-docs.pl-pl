@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/31/2020
+ms.date: 04/09/2020
 ms.author: allensu
-ms.openlocfilehash: 405d9bc09462f2940567080ec86775baf066d70d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 4095b0b48e86b0aafcc86d74ca1fa25bacddf0ec
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584566"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011722"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Projektowanie sieci wirtualnych z zasobami bramy NAT
 
@@ -326,13 +326,13 @@ Chcemy wiedzieć, w jaki sposób możemy ulepszyć usługę. Brakuje możliwośc
 * Dowiedz się więcej o [rozwiązywaniu problemów z zasobami bramy NAT](troubleshoot-nat.md).
 * Samouczek sprawdzania poprawności bramy NAT
   - [Interfejs wiersza polecenia platformy Azure](tutorial-create-validate-nat-gateway-cli.md)
-  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)
-  - [Portal](tutorial-create-validate-nat-gateway-cli.md)
+  - [PowerShell](tutorial-create-validate-nat-gateway-powershell.md)
+  - [Portal](tutorial-create-validate-nat-gateway-portal.md)
 * Szybki start do wdrażania zasobu bramy NAT
   - [Interfejs wiersza polecenia platformy Azure](./quickstart-create-nat-gateway-cli.md)
   - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
   - [Portal](./quickstart-create-nat-gateway-portal.md)
-  - [Szablonu](./quickstart-create-nat-gateway-template.md)
+  - [Szablon](./quickstart-create-nat-gateway-template.md)
 * Dowiedz się więcej o interfejsie API zasobów bramy NAT
   - [Interfejs API REST](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
   - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
