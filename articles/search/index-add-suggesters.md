@@ -1,54 +1,50 @@
 ---
-title: Dodawanie zapytań typu w nagłówku do indeksu
+title: Tworzenie sugestora
 titleSuffix: Azure Cognitive Search
 description: Włącz akcje zapytania z wyprzedzeniem typu w usłudze Azure Cognitive Search, tworząc sugesty i formułując żądania, które wywołują terminy zapytania autouzupełniania lub automatycznego sugerowania.
 manager: nitinme
-author: Brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: a312068d5c8c574e7b069263cf37e3b855810e4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.openlocfilehash: a6c4051a5b3d557f9ac2927a62492425e7636c0d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72790099"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113482"
 ---
-# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-cognitive-search"></a>Dodawanie sugestów do indeksu dla typeahead w usłudze Azure Cognitive Search
+# <a name="create-a-suggester-to-enable-autocomplete-and-suggestions-in-azure-cognitive-search"></a>Tworzenie sugestatora umożliwiającego automatyczne kompletowanie i sugestie w usłudze Azure Cognitive Search
 
-W usłudze Azure Cognitive Search funkcja "wyszukiwanie zgodnie z typem" lub funkcja typeahead jest oparta na konstrukcji **sugestywnej,** którą można dodać do [indeksu wyszukiwania.](search-what-is-an-index.md) Jest to lista jednego lub więcej pól, dla których ma być włączona opcja typeahead.
+W usłudze Azure Cognitive Search funkcja "wyszukiwanie zgodnie z typem" lub funkcja typeahead jest oparta na konstrukcji **sugestywnej,** którą można dodać do [indeksu wyszukiwania.](search-what-is-an-index.md) Sugestant obsługuje dwa warianty wyszukiwania zgodnie z typem: *autouzupełnianie*, które kończy wpisywany termin lub frazę, oraz *sugestie,* które zwracają krótką listę pasujących dokumentów.  
 
-Sugestywny obsługuje dwa warianty typu: *autouzupełnianie*, które kończy wpisywany termin lub frazę, oraz *sugestie,* które zwracają krótką listę pasujących dokumentów.  
-
-Poniższy zrzut ekranu, z [Tworzenie pierwszej aplikacji w c#](tutorial-csharp-type-ahead-and-suggestions.md) przykładu, ilustruje typeahead. Autouzupełnianie przewiduje, co użytkownik może wpisać w polu wyszukiwania. Rzeczywiste dane wejściowe to "tw", które autouzupełnianie kończy się "in", rozwiązując jako "bliźniak" jako potencjalny termin wyszukiwania. Sugestie są wizualizowane na liście rozwijanej. W przypadku sugestii można wyeksliować dowolną część dokumentu, która najlepiej opisuje wynik. W tym przykładzie sugestie są nazwy hoteli. 
+Poniższy zrzut ekranu, z [Tworzenie pierwszej aplikacji w c#](tutorial-csharp-type-ahead-and-suggestions.md) przykładu, ilustruje oba środowiska. Autouzupełnianie przewiduje, co użytkownik może wpisać, kończąc "tw" z "in" jako potencjalny termin wyszukiwania. Sugestie są rzeczywistymi wynikami wyszukiwania, z których każdy reprezentuje pasujący dokument. W przypadku sugestii można wyeksliować dowolną część dokumentu, która najlepiej opisuje wynik. W tym przykładzie sugestie są reprezentowane przez pole nazwy hotelu.
 
 ![Wizualne porównanie autouzupełniania i sugerowanych zapytań](./media/index-add-suggesters/hotel-app-suggestions-autocomplete.png "Wizualne porównanie autouzupełniania i sugerowanych zapytań")
 
 Aby zaimplementować te zachowania w usłudze Azure Cognitive Search, istnieje składnik indeksu i kwerendy. 
 
-+ W indeksie dodaj sugestywny do indeksu. Można użyć portalu, [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index)lub [SDK .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). Dalsza część artykułu koncentruje się na tworzeniu sugesty. 
++ W indeksie dodaj sugestywny do indeksu. Można użyć portalu, [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index)lub [SDK .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). Dalsza część artykułu koncentruje się na tworzeniu sugesty.
 
 + W żądaniu kwerendy należy wywołać jeden z [interfejsów API wymienionych poniżej](#how-to-use-a-suggester).
 
 Obsługa wyszukiwania zgodnie z typem jest włączona dla w zależności od pola. Można zaimplementować zarówno zachowania typuhead w ramach tego samego rozwiązania wyszukiwania, jeśli chcesz doświadczenie podobne do wskazanego na zrzucie ekranu. Oba żądania są przeznaczone dla *kolekcji dokumentów* określonego indeksu i odpowiedzi są zwracane po użytkownik dostarczył co najmniej trzy znakowy ciąg wejściowy.
 
+## <a name="what-is-a-suggester"></a>Co to jest sugest?
+
+Sugestywny jest strukturą danych, która obsługuje zachowania typu wyszukiwania jako typ, przechowując prefiksy do dopasowywania w kwerendach częściowych. Podobnie jak w przypadku terminów tokenizowanych, prefiksy są przechowywane w odwróconych indeksach, po jednym dla każdego pola określonego w kolekcji pól sugestywnych.
+
+Podczas tworzenia prefiksów sugestator ma własny łańcuch analizy, podobny do tego używanego do wyszukiwania pełnotekstowego. Jednak w przeciwieństwie do analizy w wyszukiwaniu pełnotekstowym, sugestator może używać tylko wstępnie zdefiniowanych analizatorów (standardowe lucene, [analizatory języka](index-add-language-analyzers.md)lub inne analizatory na [wstępnie zdefiniowanej liście analizatorów.](index-add-custom-analyzers.md#predefined-analyzers-reference) [Niestandardowe analizatory](index-add-custom-analyzers.md) i konfiguracje są specjalnie niedozwolone, aby uniknąć losowych konfiguracji, które dają słabe wyniki.
+
+> [!NOTE]
+> Jeśli chcesz obejść ograniczenie analizatora, użyj dwóch oddzielnych pól dla tej samej zawartości. Pozwoli to na jedno z pól, aby mieć sugest, podczas gdy inne mogą być skonfigurowane za pomocą konfiguracji analizatora niestandardowego.
+
 ## <a name="create-a-suggester"></a>Tworzenie sugestora
 
 Chociaż sugest ma kilka właściwości, jest to przede wszystkim zbiór pól, dla których są włączanie środowiska typeahead. Na przykład aplikacja turystyczna może chcieć włączyć wyszukiwanie typu w celach docelowych, miastach i atrakcjach. W związku z tym wszystkie trzy pola pójdą w kolekcji pól.
 
-Aby utworzyć sugest, dodaj go do schematu indeksu. Możesz mieć jeden sugest w indeksie (w szczególności jeden sugest w kolekcji sugestów). 
+Aby utworzyć sugest, dodaj go do schematu indeksu. Możesz mieć jeden sugest w indeksie (w szczególności jeden sugest w kolekcji sugestów).
 
 ### <a name="when-to-create-a-suggester"></a>Kiedy utworzyć sugest
 
@@ -78,7 +74,6 @@ W interfejsie API REST dodaj sugestywne za pomocą [programu Create Index](https
     ]
   }
   ```
-
 
 ### <a name="create-using-the-net-sdk"></a>Tworzenie przy użyciu sdk .NET
 
@@ -110,13 +105,6 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 |`name`        |Nazwa sugestatora.|
 |`searchMode`  |Strategia używana do wyszukiwania zwrotów kandydatów. Jedynym trybem obecnie obsługiwanym jest `analyzingInfixMatching`, który wykonuje elastyczne dopasowywanie fraz na początku lub w środku zdań.|
 |`sourceFields`|Lista co najmniej jednego pola, które są źródłem zawartości sugestii. Pola muszą być `Edm.String` `Collection(Edm.String)`typu i . Jeśli analizator jest określony w polu, musi to być nazwany analizator z [tej listy](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) (nie analizatora niestandardowego).<p/>Najlepszym rozwiązaniem jest określenie tylko tych pól, które nadają się do oczekiwanej i odpowiedniej odpowiedzi, niezależnie od tego, czy jest to ukończony ciąg na pasku wyszukiwania, czy na liście rozwijanej.<p/>Nazwa hotelu jest dobrym kandydatem, ponieważ ma precyzję. Pełne pola, takie jak opisy i komentarze, są zbyt gęste. Podobnie powtarzające się pola, takie jak kategorie i tagi, są mniej skuteczne. W przykładach i tak uwzględniamy "kategorię", aby wykazać, że można dołączyć wiele pól. |
-
-### <a name="analyzer-restrictions-for-sourcefields-in-a-suggester"></a>Ograniczenia analizatora dla sourceFields w sugestywnym
-
-Usługa Azure Cognitive Search analizuje zawartość pola, aby umożliwić wykonywanie zapytań na poszczególnych warunkach. Sugestory wymagają prefiksów, które mają być indeksowane oprócz pełnych terminów, co wymaga dodatkowej analizy w polach źródłowych. Niestandardowe konfiguracje analizatora można połączyć dowolny z różnych tokenizatorów i filtrów, często w sposób, który uniemożliwiłby tworzenie prefiksów wymaganych dla sugestii. Z tego powodu usługa Azure Cognitive Search zapobiega uwzględnieniu pól z analizatorami niestandardowymi w sugescie.
-
-> [!NOTE] 
->  Jeśli chcesz obejść powyższe ograniczenie, użyj dwóch oddzielnych pól dla tej samej zawartości. Pozwoli to na jedno z pól, aby mieć sugest, podczas gdy inne mogą być skonfigurowane za pomocą konfiguracji analizatora niestandardowego.
 
 <a name="how-to-use-a-suggester"></a>
 

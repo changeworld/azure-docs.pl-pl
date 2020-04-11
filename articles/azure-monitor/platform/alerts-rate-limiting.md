@@ -1,17 +1,17 @@
 ---
-title: Ograniczenie szybkości dla wiadomości SMS, wiadomości e-mail, powiadomień wypychanych w aplikacji Azure i elementów webhook
+title: Ograniczenie stawek dla wiadomości SMS, e-maili, powiadomień push
 description: Dowiedz się, jak platforma Azure ogranicza liczbę możliwych powiadomień SMS, e-mail, push aplikacji Azure lub webhook z grupy akcji.
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
 ms.subservice: alerts
-ms.openlocfilehash: 066fcac24571c8e982784a3845a010525ff9088a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61e6cc22171815b15b865dd6ed5670bd9c446ead
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665531"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114328"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Ograniczenie szybkości dla poczty głosowej, WIADOMOŚCI SMS, wiadomości e-mail, powiadomień push w aplikacji Azure i postów w interfejsie webhook
 Ograniczenie szybkości to zawieszenie powiadomień, które pojawiają się, gdy zbyt wiele osób jest wysyłanych na określony numer telefonu, adres e-mail lub urządzenie. Ograniczenie szybkości zapewnia, że alerty są łatwe do opanowania i zasysania.

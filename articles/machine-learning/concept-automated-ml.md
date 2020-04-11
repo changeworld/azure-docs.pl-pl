@@ -10,21 +10,18 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 02/28/2020
-ms.openlocfilehash: c8864e00be9f491d87478c253286070b9334a26e
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 095561f02fdeff6688b78d69cc1becc4ee0f8901
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383195"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115208"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest zautomatyzowane uczenie maszynowe?
 
 Zautomatyzowane uczenie maszynowe, zwane również zautomatyzowanym ml, to proces automatyzacji czasochłonnych, iteracyjnych zadań tworzenia modelu uczenia maszynowego. Umożliwia analitykom danych, analitykom i deweloperom tworzenie modeli uczenia maszynowego o wysokiej skali, wydajności i produktywności przy jednoczesnym utrzymaniu jakości modelu. Automated ML opiera się na przełomie z naszego [działu Microsoft Research.](https://arxiv.org/abs/1705.05355)
 
 Tradycyjne opracowywanie modeli uczenia maszynowego wymaga dużej ilości zasobów, co wymaga znacznej wiedzy i czasu na tworzenie i porównywanie dziesiątek modeli. Dzięki zautomatyzowanemu uczeniu maszynowemu przyspieszysz czas potrzebny na uzyskanie gotowych do produkcji modeli uczenia maszynowego z dużą łatwością i wydajnością.
-
- 
-
 
 ## <a name="when-to-use-automated-ml"></a>Kiedy używać automatycznego ML
 
@@ -139,9 +136,13 @@ Automatyczne uczenie maszynowe obsługuje modele zespołu, które są domyślnie
 
 Zobacz [instrukcje dotyczące](how-to-configure-auto-train.md#ensemble) zmiany domyślnych ustawień zespołu w zautomatyzowanym uczeniu maszynowym.
 
-## <a name="use-with-onnx-in-c-apps"></a>Używanie z aplikacjami ONNX w języku C#
+## <a name="use-with-onnx"></a>Używanie z ONNX
 
-Za pomocą usługi Azure Machine Learning można użyć zautomatyzowanego uczenia maszynowego do tworzenia modelu języka Python i konwersji na format ONNX. Środowisko wykonawcze ONNX obsługuje języka C#, dzięki czemu można użyć modelu utworzonego automatycznie w aplikacjach języka C# bez konieczności przekodowywania lub żadnych opóźnień sieciowych, które wprowadzają punkty końcowe REST. Wypróbuj przykład tego przepływu [w tym notatniku Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb).
+Za pomocą usługi Azure Machine Learning można użyć zautomatyzowanego uczenia maszynowego do tworzenia modelu języka Python i konwersji na format ONNX. Gdy modele są w formacie ONNX, mogą być uruchamiane na różnych platformach i urządzeniach. Dowiedz się więcej o [przyspieszaniu modeli ml za pomocą ONNX.](concept-onnx.md)
+
+Zobacz, jak przekonwertować format ONNX [w tym przykładzie notebooka Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb). Dowiedz się, które [algorytmy są obsługiwane w ONNX](how-to-configure-auto-train.md#select-your-experiment-type).
+
+Środowisko wykonawcze ONNX obsługuje również C#, dzięki czemu można użyć modelu utworzonego automatycznie w aplikacjach języka C# bez konieczności przekodowywania lub żadnych opóźnień sieci, które wprowadzają punkty końcowe REST. Dowiedz się więcej o [wnioskowanie modeli ONNX za pomocą interfejsu API środowiska wykonawczego ONNX C#.](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md) 
 
 ## <a name="automated-ml-in-azure-machine-learning"></a>Automatyczne uczenia maszynowe w usłudze Azure Machine Learning
 
@@ -162,7 +163,7 @@ Poniższe ustawienia umożliwiają skonfigurowanie eksperymentu automatycznego u
 | | Zestaw SDK dla języka Python| Studio
 ----|:----:|:----:
 Dzielenie danych na zestawy pociągów/sprawdzania poprawności| ✓|✓
-Obsługuje zadania ml: klasyfikacja, regresja i prognozowanie| ✓| ✓
+Obsługuje zadania uczenia maszynowego: klasyfikacja, regresja i prognozowanie| ✓| ✓
 Optymalizuje na podstawie metryki podstawowej| ✓| ✓
 Obsługa obliczeń AML jako celu obliczeniowego | ✓|✓
 Konfigurowanie horyzontu prognozy, docelowe opóźnienia & oknie kroczącym|✓|✓

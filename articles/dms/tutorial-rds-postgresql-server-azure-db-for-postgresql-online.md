@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 02/17/2020
-ms.openlocfilehash: 12aa11aa5064b3a0a2ff18f88161f44f37208aec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/11/2020
+ms.openlocfilehash: be6f0cd734d31f43557b49f8e9314e925b383899
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240695"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113946"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>Samouczek: Migrowanie usługi RDS PostgreSQL do bazy danych platformy Azure dla postgreSQL w trybie online przy użyciu usługi DMS
 
@@ -49,7 +49,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Pobierz i zainstaluj program [PostgreSQL Community Edition](https://www.postgresql.org/download/) w wersji 9.5, 9.6 lub 10. Źródłowy serwer PostgreSQL Server musi być w wersji 9.5.11, 9.6.7, 10 lub nowszej. Aby uzyskać więcej informacji, zobacz artykuł [Obsługiwane wersje bazy danych PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
 
-    Ponadto wersja RDS PostgreSQL musi być zgodna z usługą Azure Database dla wersji PostgreSQL. Na przykład rds PostgreSQL 9.5.11.5 można migrować tylko do bazy danych platformy Azure dla PostgreSQL 9.5.11, a nie do wersji 9.6.7.
+   Należy również zauważyć, że docelowa usługa Azure Database dla wersji PostgreSQL musi być równa lub późniejsza niż wersja RDS PostgreSQL. Na przykład rds PostgreSQL 9.6 można migrować tylko do usługi Azure Database dla PostgreSQL 9.6, 10 lub 11, ale nie do bazy danych Azure dla PostgreSQL 9.5.
 
 * Tworzenie wystąpienia [usługi Azure Database dla postgreSql](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) lub [usługi Azure Database dla postgreSQL — hiperskala (Citus)](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal). Szczegółowe informacje na temat łączenia się z serwerem PostgreSQL przy użyciu programu pgAdmin można znaleźć w tej [sekcji](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal#connect-to-the-postgresql-server-using-pgadmin) dokumentu.
 * Utwórz usługę migracji bazy danych usługi Azure Database dla platformy Azure przy użyciu modelu wdrażania usługi Azure Resource Manager, który zapewnia łączność między lokacjami lokalnymi serwerami źródłowymi przy użyciu usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej, zobacz [dokumentację sieci wirtualnej,](https://docs.microsoft.com/azure/virtual-network/)a zwłaszcza artykuły przewodnika Szybki start ze szczegółami krok po kroku.

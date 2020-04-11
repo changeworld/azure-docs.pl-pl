@@ -5,12 +5,12 @@ author: harahma
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82bc5068be651b05eb24efa3b05e46c1e7c1e24d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282395"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115040"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Model hostingu sieci szkieletowej usługi Azure
 W tym artykule przedstawiono omówienie modeli hostingu aplikacji dostarczonych przez usługę Azure Service Fabric i opisano różnice między modelami **procesu udostępnionego** i **procesu wyłącznego.** Opisano w nim, jak wdrożona aplikacja wygląda w węźle sieci szkieletowej usług oraz relację między replikami (lub wystąpieniami) usługi a procesem usługi-hosta.
@@ -168,6 +168,10 @@ W aktywacji "MultiTypeServicePackage" dla repliki partycji **P1** **sieci szkiel
 
 
 W poprzednim przykładzie można pomyśleć, że jeśli "MyCodePackageA" rejestruje zarówno "MyServiceTypeA" i "MyServiceTypeB", a nie ma "MyCodePackageB", a następnie nie ma nadmiarowych *CodePackage* uruchomiony. Mimo że jest to poprawne, ten model aplikacji nie jest zgodny z modelu hostingu proces wyłączny. Jeśli celem jest umieszczenie każdej repliki w swoim własnym dedykowanym procesie, nie trzeba rejestrować zarówno *ServiceTypes* z tego samego *CodePackage*. Zamiast tego wystarczy umieścić każdy *ServiceType* we własnym *ServicePackage*.
+
+### <a name="reliable-services-and-actor-forking-subprocesses"></a>Niezawodne usługi i podprocesy rozwidlenia aktora
+
+Sieci szkieletowej usług nie obsługuje niezawodnych usług, a następnie niezawodne podmioty rozwidlenia podprocesów. Przykładem dlaczego jego nie jest obsługiwany jest [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nie może służyć do rejestracji nieobsługiconych podprocesów i tokeny anulowania są wysyłane tylko do zarejestrowanych procesów; powoduje różnego rodzaju problemy, takie jak błędy uaktualniania, gdy podprocesy nie zamykają się po odebraniu tokenu anulowania przez proces nadrzędny.
 
 ## <a name="next-steps"></a>Następne kroki
 [Zapakuj aplikację][a4] i przygotuj ją do wdrożenia.

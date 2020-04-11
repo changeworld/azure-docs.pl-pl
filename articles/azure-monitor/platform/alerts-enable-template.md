@@ -1,17 +1,17 @@
 ---
-title: Tworzenie klasycznego alertu metryki na platformie Azure za pomocą szablonu Usługi Resource Manager
+title: Szablon Menedżera zasobów — tworzenie alertu metryki
 description: Dowiedz się, jak użyć szablonu Menedżera zasobów do utworzenia klasycznego alertu metryki do odbierania powiadomień pocztą e-mail lub elementami webhook.
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4f840d3771c2520e239d8ff3416722429f9502f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a868167f80aaa735e4fbeab32fd1d308dd6da1f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037219"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114431"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Tworzenie klasycznego alertu metryki za pomocą szablonu usługi Resource Manager
 > [!WARNING]

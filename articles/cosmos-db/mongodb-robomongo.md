@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: 68b880957754439b3b88a0cccff2218a5942f967
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 627849acb902a721c80b98adbd16103b4729591b
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548814"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114189"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Używanie programu Robo 3T za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
@@ -31,7 +31,7 @@ Aby dodać konto usługi Cosmos do menedżera połączeń Robo 3T, wykonaj nast�
 1. Pobierz informacje o połączeniu dla konta usługi Cosmos skonfigurowane za pomocą usługi Azure Cosmos DB interfejsu API MongoDB przy użyciu instrukcji [tutaj](connect-mongodb-account.md).
 
     ![Zrzut ekranu przedstawiający blok ciągu połączenia](./media/mongodb-robomongo/connectionstringblade.png)
-2. Uruchom *Robomongo.exe*
+2. Uruchom aplikację *Robomongo.*
 
 3. Kliknij przycisk połączenia w obszarze **Plik,** aby zarządzać połączeniami. Następnie kliknij przycisk **Utwórz** w oknie **Połączenia MongoDB,** które otworzy okno **Ustawienia połączenia.**
 

@@ -7,20 +7,17 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8c76333d5a2be8a2c589dbe54389b023fef34854
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 111e6e2f80c3460f363c496b7b32befdca16250d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252529"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115106"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Nawiązywanie prywatnego połączenia z kontem magazynu za pomocą prywatnego punktu końcowego platformy Azure
 Prywatny punkt końcowy platformy Azure jest podstawowym blokiem konstrukcyjnym dla łącza prywatnego na platformie Azure. Umożliwia zasoby platformy Azure, takie jak maszyny wirtualne (maszyny wirtualne), do komunikowania się prywatnie z zasobami łącza prywatnego.
 
 W tym przewodniku Szybki start dowiesz się, jak utworzyć maszynę wirtualną w sieci wirtualnej platformy Azure, konto magazynu z prywatnym punktem końcowym przy użyciu witryny Azure portal. Następnie można bezpiecznie uzyskać dostęp do konta magazynu z maszyny Wirtualnej.
-
-> [!NOTE]
-> Prywatne punkty końcowe nie są dozwolone w połączeniu z punktami końcowymi usługi w tej samej podsieci!
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 

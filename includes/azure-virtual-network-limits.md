@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 95cb29e871cce2ba600ab654d48c685b90ed027e
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: ee4d629d80ff8265d58a1d05b8dca1652ddac6fb
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80573295"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81112879"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Limity sieci — Usługa Azure Resource Manager
 Następujące limity dotyczą tylko zasobów sieciowych zarządzanych za pośrednictwem **usługi Azure Resource Manager** na region na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
@@ -74,7 +74,7 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Rozmiar puli zaplecza                       | 1000 konfiguracji IP, pojedyncza sieć wirtualna |
 | Zasoby wewnętrznej bazy danych <sup>na moduł równoważenia obciążenia 1<sup> | 150                   |
 | Porty o wysokiej dostępności                 | 1 na wewnętrzną przód       |
-| Reguły ruchu wychodzącego na moduł równoważenia obciążenia        | 20                            |
+| Reguły ruchu wychodzącego na moduł równoważenia obciążenia        | 600                           |
 | [Limit czasu bezczynnego TCP](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 minuty/30 minut          |
 
 <sup>1.</sup> Limit wynosi do 150 zasobów, w dowolnej kombinacji zasobów autonomicznej maszyny wirtualnej, zasobów zestawu dostępności i zasobów zestawu skalowania maszyny wirtualnej.

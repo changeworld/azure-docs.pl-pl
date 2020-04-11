@@ -8,12 +8,12 @@ ms.date: 4/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dd24631f8e6b4f3f87438bf22654016dd7699950
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 6bc74e82dd04e5845e95bdec5c841d0264dd1d3e
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618302"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115100"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Przygotowanie do wdrożenia rozwiązania IoT Edge w produkcji
 
@@ -134,25 +134,28 @@ Podczas przechodzenia ze scenariuszy testowych do scenariuszy produkcyjnych nale
   * Zarządzanie dostępem do rejestru kontenerów
   * Zarządzanie wersjami za pomocą tagów
 
-### <a name="manage-access-to-your-container-registry-with-a-service-principal"></a>Zarządzanie dostępem do rejestru kontenerów za pomocą jednostki usługi
+### <a name="manage-access-to-your-container-registry"></a>Zarządzanie dostępem do rejestru kontenerów
 
 Przed wdrożeniem modułów na urządzeniach produkcyjnych usługi IoT Edge należy kontrolować dostęp do rejestru kontenerów, aby osoby postronne nie mogły uzyskać dostępu do obrazów kontenerów ani ich wprowadzać. Do zarządzania obrazami kontenerów należy używać prywatnego, nie publicznego rejestru kontenerów.
 
-W samouczkach i innej dokumentacji firma Westruujemy użytkownika, aby używać tych samych poświadczeń rejestru kontenerów na urządzeniu usługi IoT Edge, które są używane na komputerze deweloperskim. Te instrukcje są przeznaczone tylko do konfigurowania środowisk testowania i programowania łatwiej i nie powinny być przestrzegane w scenariuszu produkcyjnym. Usługa Azure Container Registry zaleca [uwierzytelnianie z jednostkami usługi,](../container-registry/container-registry-auth-service-principal.md) gdy aplikacje lub usługi ściągają obrazy kontenerów w sposób zautomatyzowany lub w inny sposób nienadzorowany (bezołowy), tak jak robią to urządzenia usługi IoT Edge.
+W samouczkach i innej dokumentacji firma Westruujemy użytkownika, aby używać tych samych poświadczeń rejestru kontenerów na urządzeniu usługi IoT Edge, które są używane na komputerze deweloperskim. Te instrukcje są przeznaczone tylko do konfigurowania środowisk testowania i programowania łatwiej i nie powinny być przestrzegane w scenariuszu produkcyjnym.
 
-Aby utworzyć jednostkę usługi, uruchom dwa skrypty zgodnie z [opisem](../container-registry/container-registry-auth-aci.md#create-a-service-principal)w create a service principal . Te skrypty wykonują następujące zadania:
+Aby uzyskać bardziej bezpieczny dostęp do rejestru, masz do wyboru [opcje uwierzytelniania.](../container-registry/container-registry-authentication.md) Popularnym i zalecanym uwierzytelnianiem jest użycie jednostki usługi Active Directory, która jest dobrze odpowiednia dla aplikacji lub usług do ściągania obrazów kontenerów w sposób zautomatyzowany lub w inny sposób nienadzorowany (bezołowy), tak jak robią to urządzenia usługi IoT Edge.
+
+Aby utworzyć jednostkę usługi, uruchom dwa skrypty zgodnie z [opisem](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)w create a service principal . Te skrypty wykonują następujące zadania:
 
 * Pierwszy skrypt tworzy jednostkę usługi. Jest to identyfikator jednostki usługi i hasło jednostki usługi. Przechowuj te wartości bezpiecznie w rekordach.
 
-* Drugi skrypt tworzy przypisania ról do przyznania podmiotowi usługi, które można uruchomić następnie w razie potrzeby. Zaleca się zastosowanie roli użytkownika **acrPull** dla parametru. `role` Aby uzyskać listę ról, zobacz [Role i uprawnienia rejestru kontenerów platformy Azure](../container-registry/container-registry-roles.md)
+* Drugi skrypt tworzy przypisania ról do przyznania podmiotowi usługi, które można uruchomić następnie w razie potrzeby. Zaleca się zastosowanie roli użytkownika **acrPull** dla parametru. `role` Aby uzyskać listę ról, zobacz [Role i uprawnienia rejestru kontenerów platformy Azure](../container-registry/container-registry-roles.md).
 
-Aby uwierzytelnić się przy użyciu jednostki usługi, podaj identyfikator jednostki usługi i hasło uzyskane z pierwszego skryptu.
+Aby uwierzytelnić się przy użyciu jednostki usługi, podaj identyfikator jednostki usługi i hasło uzyskane z pierwszego skryptu. Określ te poświadczenia w manifeście wdrażania.
 
 * W przypadku nazwy użytkownika lub identyfikatora klienta określ identyfikator jednostki usługi.
 
 * W przypadku hasła lub klucza tajnego klienta określ hasło jednostki usługi.
 
-Na przykład uruchamiania wystąpienia kontenera za pomocą interfejsu wiersza polecenia platformy Azure, zobacz [Uwierzytelniaj przy użyciu jednostki usługi.](../container-registry/container-registry-auth-aci.md#authenticate-using-the-service-principal)
+> [!NOTE]
+> Po zaimplementowanie rozszerzonego uwierzytelniania zabezpieczeń należy wyłączyć ustawienie **Administrator,** aby domyślny dostęp do nazwy użytkownika/hasła nie był już dostępny. W rejestrze kontenerów w witrynie Azure portal z menu lewego okienka w obszarze **Ustawienia**wybierz pozycję **Klawisze dostępu**.
 
 ### <a name="use-tags-to-manage-versions"></a>Zarządzanie wersjami za pomocą tagów
 

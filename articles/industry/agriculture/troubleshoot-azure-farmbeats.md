@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 74522502f5405b56a3a604f20a695de83ef3c3a5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a40c64910260a2d63a529d25e1089fb618fcec1b
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886487"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113486"
 ---
 # <a name="troubleshoot"></a>Rozwiązywanie problemów
 
 Ten artykuł zawiera rozwiązania typowych problemów z usługą Azure FarmBeats. Aby uzyskać dodatkową pomoc, skontaktuj się farmbeatssupport@microsoft.comz naszym Forum Pomocy [technicznej](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) lub napisz do nas na adres .
 
 > [!NOTE]
-  > Jeśli zainstalowano FarmBeats w kwietniu, a zadania nie mają miejsca z pustym komunikatem o błędzie, instalacja może nie zostały przydzielone żadnych przydziału partii ze względu na wszystkie zasoby są kierowane do nagłych wypadków, opieki zdrowotnej i innych krytycznych potrzeb. Należy zażądać, aby maszyny wirtualne zostały przydzielone do konta usługi Batch.
+  > Jeśli zainstalowano FarmBeats w kwietniu, a zadania nie pokonują się z pustym komunikatem o błędzie, instalacja może nie zostać przydzielona żadnego przydziału wsadowego, aby nadać priorytet pomocy technicznej dla krytycznych organizacji zajmujących się bezpieczeństwem i higieną pracy. Zobacz [tutaj,](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) aby uzyskać więcej informacji. Aby pomyślnie uruchomić zadania, należy zażądać, aby maszyny wirtualne zostały przydzielone do konta usługi Batch.
 
 ## <a name="install-issues"></a>Problemy z instalacją
 
@@ -45,7 +45,9 @@ Skontaktuj się z nami, podjąc następujące szczegóły:
 - Wykonaj poniższe kroki, aby dołączyć plik dziennika dla błędu wdrożenia:
 
     1. Przejdź do **grupy zasobów** w witrynie Azure portal.
+
     2. Wybierz **pozycję Wdrożenia** w sekcji **Ustawienia** po lewej stronie.
+
     3. Dla każdego wdrożenia, które pokazuje **failed**, wybierz do szczegółów i pobierz szczegóły wdrożenia. Dołącz ten plik do poczty.
 
 ## <a name="sensor-telemetry"></a>Telemetria czujnika

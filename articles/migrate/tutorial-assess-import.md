@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 23fa1a2a0b035d04334c51c02411de6de70f2cad
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79453650"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115059"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Ocenianie serwerów przy użyciu importowanych danych
 
@@ -126,22 +126,8 @@ W poniższej tabeli podsumowano pola plików do wypełnienia:
 **Przepustowość sieci** | Nie | Dane odebrane przez serwer w MB na sekundę.
 **Przepustowość wyjścia sieci** | Nie | Dane przesyłane przez serwer w MB na sekundę.
 **Typ oprogramowania układowego** | Nie | Oprogramowanie układowe serwera. Wartości mogą być "BIOS" lub "UEFI".
-**Typ serwera** | Nie | Wartości mogą być "Fizyczne" lub "Wirtualne".
-**Funkcja hypervisor** | Nie | Funkcja hypervisor, na której działa komputer. <br/> Wartości mogą być "VMware", "Hyper-V", "Xen", "AWS", "GCP" lub "Inne".
-**Numer wersji funkcji Hypervisor** | Nie | Wersja hypervisor.
-**Identyfikator maszyny wirtualnej** | Nie | Identyfikator maszyny Wirtualnej. Jest to wartość **InstanceUUid** dla maszyny wirtualnej VMware vCenter lub **identyfikator vm funkcji Hyper-V** dla funkcji Hyper-V.
-**Identyfikator menedżera maszyn wirtualnych** | Nie | Jest to wartość **InstanceUUid** dla VMWare vCenter. Nie jest potrzebny dla funkcji Hyper-V.
 **Adres MAC**| Nie | Adres MAC serwera.
-**Identyfikator BIOS** | Nie | Identyfikator systemu BIOS serwera.
-**Niestandardowy identyfikator serwera** | Nie | Lokalny, unikatowy identyfikator serwera w środowisku lokalnym. <br/> Przydatne do śledzenia importowanego serwera według identyfikatora lokalnego.
-**Nazwa aplikacji 1** | Nie | Nazwa obciążenia uruchomionego na serwerze.<br/>Szczegóły można dodać, [dodając kolumny](#add-multiple-applications) w szablonie. Można dodać maksymalnie pięć aplikacji.
-**Aplikacja 1 typ** | Nie | Typ obciążenia uruchomionego na serwerze
-**Aplikacja 1 wersja** | Nie | Wersja obciążenia uruchomionego na serwerze.
-**Wygaśnięcie licencji aplikacji 1** | Nie | Wygaśnięcie licencji obciążenia (jeśli dotyczy).
-**Jednostka biznesowa** | Nie | Jednostka biznesowa, do której należy serwer.
-**Właściciel firmy** | Nie | Właściciel jednostki biznesowej.
-**Nazwa aplikacji biznesowej** | Nie | Nazwa aplikacji, do której należy aplikacja.
-**Lokalizacja** | Nie | Centrum danych, w którym znajduje się serwer.
+
 
 ### <a name="add-operating-systems"></a>Dodawanie systemów operacyjnych
 
@@ -159,19 +145,6 @@ Na przykład, aby określić wszystkie pola dla drugiego dysku, dodaj następuj�
 - Przepustowość odczytu dysku 2
 - Przepływność zapisu dysku 2
 
-### <a name="add-multiple-applications"></a>Dodawanie wielu aplikacji
-
-Szablon zawiera pola dla pojedynczej aplikacji. Możesz dodać podobne kolumny dla maksymalnie pięciu aplikacji.  
-
-Na przykład, aby określić wszystkie pola dla drugiej aplikacji, dodaj następujące kolumny:
-
-- Nazwa aplikacji 2
-- Zastosowanie 2 typ
-- Aplikacja 2 wersja
-- Wygaśnięcie licencji aplikacji 2
-
-> [!NOTE]
-> Informacje o aplikacji jest przydatne w ocenie środowiska lokalnego do migracji. Jednak ocena usługi Azure Migrate Server nie wykonuje obecnie oceny na poziomie aplikacji ani nie bierze pod uwagę aplikacji podczas tworzenia oceny.
 
 ## <a name="import-the-server-information"></a>Importowanie informacji o serwerze
 

@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 3/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 39ff4f42457451dfa4aae90b281d6b163c56b4cd
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 7b839df5940ab26e5c1a99a1bda1fbd2545f8cc4
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80522240"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113117"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>Przewodnik dotyczący kontrolowania zachowania zamknięcia systemu Windows
 
@@ -58,7 +58,7 @@ Aby ustawić limit czasu bezczynności sesji RDP, można połączyć się z szab
 
 ```powershell
 # The MaxIdleTime is in milliseconds; by default, this script sets MaxIdleTime to 15 minutes.
-$maxIdleTime = 15 * 60 * 90
+$maxIdleTime = 15 * 60 * 1000
 
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name "MaxIdleTime" -Value $maxIdleTime -Force
 ```
@@ -79,6 +79,9 @@ Możesz też wykonać następujące ręczne kroki przy użyciu szablonu maszyny 
     ![Limit bezczynności sesji](../media/how-to-windows-shutdown/edit-idle-time-limit.png)
 
 1. Na koniec, aby połączyć to zachowanie z **automatycznym zamknięciem przy rozłączeniu,** należy wykonać kroki opisane w artykule in jak to zrobić: [Włącz automatyczne zamykanie maszyn wirtualnych przy odłączaniu](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect).
+
+> [!WARNING]
+> Po skonfigurowaniu tego ustawienia przy użyciu programu PowerShell w celu bezpośredniego lub ręcznego zmodyfikowania ustawienia rejestru za pomocą edytora zasad grupy należy najpierw ponownie uruchomić maszynę wirtualną, aby ustawienia zostały zastosowane.  Ponadto jeśli skonfigurować ustawienie przy użyciu rejestru, edytor zasad grupy nie zawsze odświeża się, aby odzwierciedlić zmiany w ustawieniu rejestru; jednak ustawienie rejestru nadal działa zgodnie z oczekiwaniami i zobaczysz sesję RDP rozłączony, gdy bezczynny przez czas, który został określony.
 
 ## <a name="remove-windows-shutdown-command-from-start-menu"></a>Polecenie Usuń zamknięcie systemu Windows z menu Start
 

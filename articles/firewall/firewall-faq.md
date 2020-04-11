@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: 5ddbb58837fbda0f14a07186d5a3053055954454
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: af66da115e228efe39e4cd5dda3c494b71428676
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677451"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113558"
 ---
 # <a name="azure-firewall-faq"></a>Zapora platformy Azure – często zadawane pytania
 
@@ -172,17 +172,11 @@ Nie. Zapora platformy Azure nie potrzebuje podsieci większej niż /26.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Jak zwiększyć przepustowość zapory?
 
-Początkowa przepustowość zapory platformy Azure wynosi 2,5 - 3 Gb/s i jest skalowana do 30 Gb/s. Skaluje się w poziomie na podstawie użycia procesora CPU i przepływności. Skontaktuj się z pomocą techniczną, aby zwiększyć przepustowość zapory.
+Początkowa przepustowość zapory platformy Azure wynosi 2,5 - 3 Gb/s i jest skalowana do 30 Gb/s. Automatycznie skaluje się w poziomie na podstawie użycia procesora CPU i przepływności.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Jak długo trwa skalowanie w poziomie zapory platformy Azure?
 
-Skalowanie w poziomie w ciągu pięciu do siedmiu minut w przypadku zapory platformy Azure. Skontaktuj się z pomocą techniczną, aby zwiększyć początkową przepustowość zapory, jeśli masz wybuchy, które wymagają szybszej skali automatycznej.
-
-Podczas testowania automatycznej skali zapory należy wziąć pod uwagę następujące kwestie:
-
-- Wydajność pojedynczego przepływu TCP jest ograniczona do 1,4 Gb/s. Dlatego test wydajności musi ustanowić wiele przepływów TCP.
-- Narzędzia wydajności muszą stale ustanawiać nowe połączenia, aby można je było połączyć ze skalowanymi wystąpieniami zapory wewnętrznej bazy danych. Jeśli test ustanawia połączenia raz na początku, te będą łączyć się tylko z początkowych wystąpień wewnętrznej bazy danych. Mimo że zapora jest skalowana w górę, nie zobaczysz większej wydajności, ponieważ połączenia są skojarzone z początkowymi wystąpieniami.
-
+Zapora azure stopniowo skaluje się, gdy średnia przepustowość lub zużycie procesora cpu wynosi 60%. Skalowanie w poziomie trwa od pięciu do siedmiu minut. Podczas testowania wydajności upewnij się, że testujesz przez co najmniej 10 do 15 minut i inicjuj nowe połączenia, aby korzystać z nowo utworzonych węzłów zapory.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Czy Zapora platformy Azure domyślnie zezwala na dostęp do usługi Active Directory?
 
@@ -212,7 +206,7 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Dlaczego ping TCP i podobne narzędzia mogą pomyślnie połączyć się z docelową siecią FQDN, nawet jeśli żadna reguła w zaporze platformy Azure nie zezwala na ten ruch?
 
-Ping TCP nie łączy się z docelową siecią FQDN. Dzieje się tak, ponieważ przezroczysty serwer proxy usługi Azure Firewall nasłuchuje na porcie 80/443 dla ruchu wychodzącego. Ping TCP ustanawia połączenie z zaporą, która następnie porzuca pakiet i rejestruje połączenie. To zachowanie nie ma żadnego wpływu na bezpieczeństwo. Aby jednak uniknąć nieporozumień, badamy potencjalne zmiany w tym zachowaniu.
+Ping TCP w rzeczywistości nie łączy się z docelową siecią FQDN. Dzieje się tak, ponieważ przezroczysty serwer proxy usługi Azure Firewall nasłuchuje na porcie 80/443 dla ruchu wychodzącego. Ping TCP ustanawia połączenie z zaporą, która następnie porzuca pakiet i rejestruje połączenie. To zachowanie nie ma żadnego wpływu na bezpieczeństwo. Aby jednak uniknąć nieporozumień, badamy potencjalne zmiany w tym zachowaniu.
 
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Czy istnieją limity liczby adresów IP obsługiwanych przez grupy adresów IP?
 

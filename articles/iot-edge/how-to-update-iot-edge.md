@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/07/2020
+ms.date: 04/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4a7c27beeb7208efcf6687e49193c8d3b68f5300
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce69593c1df0039d64f89e79124af1150409eff7
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77186506"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113301"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizowanie demona zabezpieczeń i środowiska uruchomieniowego usługi IoT Edge
 
@@ -120,6 +120,35 @@ Jeśli używasz określonych tagów we wdrożeniu (na przykład mcr.microsoft.co
 
 1. Wybierz **pozycję Przejrzyj + utwórz,** przejrzyj wdrożenie i wybierz pozycję **Utwórz**.
 
+## <a name="update-offline-or-to-a-specific-version"></a>Aktualizowanie w trybie offline lub do określonej wersji
+
+Jeśli chcesz zaktualizować urządzenie w trybie offline lub zaktualizować do określonej wersji usługi IoT Edge, a nie do najnowszej wersji, możesz to zrobić za pomocą parametru. `-OfflineInstallationPath`
+
+Dwa składniki są używane do aktualizacji urządzenia Usługi IoT Edge:
+
+* Skrypt programu PowerShell zawierający instrukcje instalacji
+* Kabina Usługi Microsoft Azure IoT Edge zawierająca demon zabezpieczeń usługi IoT Edge (iotedged), silnik kontenerów Moby i moby CLI
+
+1. Aby zapoznać się z najnowszymi plikami instalacyjnymi usługi IoT Edge wraz z poprzednimi wersjami, zobacz [Wersje usługi Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases).
+
+2. Znajdź wersję, którą chcesz zainstalować, i pobierz następujące pliki z sekcji **Zasoby** informacji o wersji na urządzenie IoT:
+
+   * IoTEdgeSecurityDaemon.ps1
+   * Microsoft-Azure-IoTEdge-amd64.cab z wersji 1.0.9 lub nowszych lub Microsoft-Azure-IoTEdge.cab z wersji 1.0.8 i starszych.
+
+   Microsoft-Azure-IotEdge-arm32.cab jest również dostępny od 1.0.9 tylko do celów testowych. Usługa IoT Edge nie jest obecnie obsługiwana na urządzeniach z systemem Windows ARM32.
+
+   Ważne jest, aby używać skryptu programu PowerShell z tej samej wersji co plik cab, którego używasz, ponieważ funkcje zmieniają się w celu obsługi funkcji w każdej wersji.
+
+3. Jeśli pobrany plik cab zawiera sufiks architektury, zmień nazwę pliku na **tylko Microsoft-Azure-IoTEdge.cab**.
+
+4. Aby zaktualizować ze składnikami w trybie offline, [kropka źródła](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) lokalnej kopii skryptu programu PowerShell. Następnie użyj `-OfflineInstallationPath` parametru jako `Update-IoTEdge` części polecenia i podaj ścieżkę bezwzględną do katalogu plików. Na przykład:
+
+   ```powershell
+   . <path>\IoTEdgeSecurityDaemon.ps1
+   Update-IoTEdge -OfflineInstallationPath <path>
+   ```
+
 ## <a name="update-to-a-release-candidate-version"></a>Aktualizacja do wersji kandydackiej
 
 Usługa Azure IoT Edge regularnie wydaje nowe wersje usługi Usługi IoT Edge. Przed każdym stabilne wydanie, istnieje co najmniej jedna wersja kandydata wydania (RC). Wersje RC zawierają wszystkie planowane funkcje wydania, ale nadal przechodzą testy i walidację. Jeśli chcesz przetestować nową funkcję wcześniej, możesz zainstalować wersję RC i przekazać opinię za pośrednictwem gitHub.
@@ -128,14 +157,7 @@ Wersje kandydujące wersji zgodnie z tą samą konwencją numeracji wydań, ale 
 
 Moduły agenta i koncentratora usługi IoT Edge mają wersje RC, które są oznaczone tą samą konwencją. Na przykład **mcr.microsoft.com/azureiotedge-hub:1.0.7-rc2**.
 
-W wersji zapoznawczej wersje kandydatów do wydania nie są uwzględniane jako najnowsza wersja docelowa dla zwykłych instalatorów. Zamiast tego należy ręcznie kierować zasoby dla wersji RC, które chcesz przetestować. W przeważającej części instalowanie lub aktualizowanie wersji RC jest takie samo jak kierowanie na inną konkretną wersję usługi IoT Edge, z wyjątkiem jednej różnicy dla urządzeń z systemem Windows. 
-
-W programie Release candidate skrypt programu PowerShell, który umożliwia instalowanie demona zabezpieczeń usługi IoT Edge na urządzeniu z systemem Windows i zarządzanie nim, może mieć inną funkcjonalność niż najnowsza ogólnie dostępna wersja. Oprócz pobierania pliku IoT Edge .cab dla RC, pobierz również skrypt **IotEdgeSecurityDaemon.ps1.** Użyj [dot sourcing,](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) aby uruchomić pobrany skrypt w bieżącym źródle. Przykład: 
-
-```powershell
-. <path>\IoTEdgeSecurityDaemon.ps1
-Update-IoTEdge -OfflineInstallationPath <path>
-```
+W wersji zapoznawczej wersje kandydatów do wydania nie są uwzględniane jako najnowsza wersja docelowa dla zwykłych instalatorów. Zamiast tego należy ręcznie kierować zasoby dla wersji RC, które chcesz przetestować. W przeważającej części instalowanie lub aktualizowanie wersji RC jest takie samo jak kierowanie na inną konkretną wersję aplikacji IoT Edge.
 
 Skorzystaj z sekcji w tym artykule, aby dowiedzieć się, jak zaktualizować urządzenie usługi IoT Edge do określonej wersji demona zabezpieczeń lub modułów środowiska uruchomieniowego.
 

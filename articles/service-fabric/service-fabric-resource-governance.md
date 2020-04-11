@@ -3,12 +3,12 @@ title: Nadzór nad zasobami dla kontenerów i usług
 description: Usługa Azure Service Fabric umożliwia określenie limitów zasobów dla usług działających wewnątrz lub na zewnątrz kontenerów.
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772384"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115144"
 ---
 # <a name="resource-governance"></a>Nadzór nad zasobami
 
@@ -31,7 +31,8 @@ W przypadku tych dwóch metryk [Menedżer zasobów klastra](service-fabric-clust
 * Klaster może być [defragmentacji](service-fabric-cluster-resource-manager-defragmentation-metrics.md) zgodnie z tymi dwoma metryki.
 * Opisując [klaster,](service-fabric-cluster-resource-manager-cluster-description.md)buforowane pojemności można ustawić dla tych dwóch metryk.
 
-[Dynamiczne raportowanie obciążenia](service-fabric-cluster-resource-manager-metrics.md) nie jest obsługiwane dla tych metryk, a obciążenia dla tych metryk są definiowane w czasie tworzenia.
+> [!NOTE]
+> [Dynamiczne raportowanie obciążenia](service-fabric-cluster-resource-manager-metrics.md) nie jest obsługiwane dla tych metryk; obciążenia dla tych metryk są definiowane w czasie tworzenia.
 
 ## <a name="resource-governance-mechanism"></a>Mechanizm zarządzania zasobami
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 554508b1bf784e306cd12a4a601f908e06320933
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a644e211cc933ca686f0bd6a13b0d2ba8ae20162
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71154973"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114108"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Typowe problemy, które powodują odtwarzanie ról
 W tym artykule omówiono niektóre z typowych przyczyn problemów z wdrażaniem i zawiera wskazówki dotyczące rozwiązywania problemów, które pomogą Ci rozwiązać te problemy. Wskazanie, że problem istnieje z aplikacją jest, gdy wystąpienie roli nie można uruchomić lub cykli między inicjowania, zajęty i zatrzymania stanów.
@@ -58,7 +58,7 @@ Aby upewnić `DiagnosticsConnectionString` się, że ustawienie jest poprawne pr
   Jeśli tworzysz aplikację przy użyciu narzędzi platformy Azure dla programu Microsoft Visual Studio, można użyć stron właściwości, aby ustawić tę wartość.
 
 ## <a name="exported-certificate-does-not-include-private-key"></a>Wyeksportowany certyfikat nie zawiera klucza prywatnego
-Aby uruchomić rolę sieci Web w obszarze SSL, należy upewnić się, że eksportowany certyfikat zarządzania zawiera klucz prywatny. Jeśli do wyeksportowania certyfikatu jest używany *Menedżer certyfikatów systemu Windows,* wybierz opcję **Tak** dla opcji **Eksportuj klucz prywatny.** Certyfikat musi być eksportowany w formacie PFX, który jest jedynym formatem aktualnie obsługiwanym.
+Aby uruchomić rolę sieci Web w obszarze TLS, należy upewnić się, że eksportowany certyfikat zarządzania zawiera klucz prywatny. Jeśli do wyeksportowania certyfikatu jest używany *Menedżer certyfikatów systemu Windows,* wybierz opcję **Tak** dla opcji **Eksportuj klucz prywatny.** Certyfikat musi być eksportowany w formacie PFX, który jest jedynym formatem aktualnie obsługiwanym.
 
 ## <a name="next-steps"></a>Następne kroki
 Wyświetl więcej [artykułów dotyczących rozwiązywania problemów](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) z usługami w chmurze.

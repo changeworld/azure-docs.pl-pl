@@ -17,12 +17,12 @@ ms.date: 11/04/2019
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6e0c697f9ab9796feade9b4d5c2a64794f3980b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30cc8be6ad9ebffcad58c5b2412ae15ff3f26fa5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73612793"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113376"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Inicjowanie obsługi administracyjnej raportów w portalu usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -90,38 +90,19 @@ Wybierz element w widoku listy, aby uzyskać bardziej szczegółowe informacje.
 
 ## <a name="filter-provisioning-activities"></a>Filtrowanie działań inicjowania obsługi administracyjnej
 
-Aby zawęzić zgłoszone dane do poziomu, który działa dla Ciebie, można filtrować dane inicjowania obsługi administracyjnej przy użyciu następujących pól domyślnych. Należy zauważyć, że wartości w filtrach są dynamicznie wypełniane na podstawie dzierżawy. Jeśli na przykład nie masz żadnych zdarzeń tworzenia w dzierżawie, nie będzie opcji filtrowania do tworzenia.
+Można filtrować dane inicjowania obsługi administracyjnej. Niektóre wartości filtru są dynamicznie wypełniane na podstawie dzierżawy. Jeśli na przykład nie masz żadnych zdarzeń tworzenia w dzierżawie, nie będzie opcji filtrowania do tworzenia.
+W widoku domyślnym można wybrać następujące filtry:
 
 - Tożsamość
-- Akcja
-- System źródłowy
-- System docelowy
+- Date
 - Stan
-- Data
+- Akcja
 
 
-![Filtr](./media/concept-provisioning-logs/filter.png "Filtr")
+![Filtr](./media/concept-provisioning-logs/default-filter.png "Filtr")
 
 **Filtr Tożsamości** umożliwia określenie nazwy lub tożsamości, na której Ci zależy. Ta tożsamość może być użytkownik, grupa, rola lub inny obiekt. Można wyszukiwać według nazwy lub identyfikatora obiektu. Identyfikator różni się w zależności od scenariusza. Na przykład podczas inicjowania obsługi administracyjnej obiektu z usługi Azure AD do SalesForce identyfikator źródła jest identyfikatorem obiektu użytkownika w usłudze Azure AD, podczas gdy identyfikator docelowy jest identyfikatorem użytkownika w salesforce. Podczas inicjowania obsługi administracyjnej z workday do usługi Active Directory identyfikator źródłowy jest identyfikatorem pracownika pracownika workday. Należy zauważyć, że nazwa użytkownika nie zawsze może być obecny w identity kolumny. Zawsze będzie jeden identyfikator. 
 
-**Filtr System źródłowy** umożliwia określenie, gdzie tożsamość jest coraz aprowizowana z. Na przykład podczas inicjowania obsługi administracyjnej obiektu z usługi Azure AD do ServiceNow, system źródłowy jest Azure AD. 
-
-Filtr **systemu docelowego** umożliwia określenie, gdzie tożsamość jest coraz aprowizowana do. Na przykład podczas inicjowania obsługi administracyjnej obiektu z usługi Azure AD do ServiceNow, system docelowy jest ServiceNow. 
-
-Filtr **Stan** umożliwia wybranie:
-
-- Wszystkie
-- Powodzenie
-- Niepowodzenie
-- Pominięto
-
-Filtr **Akcja** umożliwia filtrowanie:
-
-- Utwórz 
-- Aktualizacja
-- Usuń
-- Wyłączanie
-- Inne
 
 Filtr **Data** umożliwia zdefiniowanie przedziału czasu dla zwracanych danych.  
 Możliwe wartości:
@@ -135,7 +116,35 @@ Możliwe wartości:
 Po wybraniu niestandardowego przedziału czasu można skonfigurować datę rozpoczęcia i datę zakończenia.
 
 
-Oprócz pól domyślnych, gdy jest zaznaczona, w filtrze można również uwzględnić następujące pola:
+Filtr **Stan** umożliwia wybranie:
+
+- Wszystkie
+- Powodzenie
+- Niepowodzenie
+- Pominięto
+
+
+
+Filtr **Akcja** umożliwia filtrowanie:
+
+- Utwórz 
+- Aktualizacja
+- Usuń
+- Wyłączanie
+- Inne
+
+Ponadto do filtrów widoku domyślnego można również ustawić następujące filtry:
+
+- Identyfikator zadania
+- Identyfikator cyklu
+- Zmień identyfikator
+- Identyfikator źródła
+- Identyfikator celu
+- Aplikacja
+
+
+![Wybieranie pola](./media/concept-provisioning-logs/add-filter.png "Wybieranie pola")
+
 
 - **Identyfikator zadania** — unikatowy identyfikator zadania jest skojarzony z każdą aplikacją, dla której włączono inicjowanie obsługi administracyjnej.   
 
@@ -144,8 +153,13 @@ Oprócz pól domyślnych, gdy jest zaznaczona, w filtrze można również uwzgl�
 - **Zmień identyfikator** — unikatowy identyfikator zdarzenia inicjowania obsługi administracyjnej. Można udostępnić ten identyfikator do obsługi, aby wyszukać zdarzenie inicjowania obsługi administracyjnej.   
 
 
+- **System źródłowy** — umożliwia określenie, gdzie tożsamość jest coraz aprowizowana z. Na przykład podczas inicjowania obsługi administracyjnej obiektu z usługi Azure AD do ServiceNow, system źródłowy jest Azure AD. 
 
-  
+- **System docelowy** — umożliwia określenie, gdzie tożsamość jest coraz aprowizowana do. Na przykład podczas inicjowania obsługi administracyjnej obiektu z usługi Azure AD do ServiceNow, system docelowy jest ServiceNow. 
+
+- **Aplikacja** — umożliwia wyświetlanie tylko rekordów aplikacji o nazwie wyświetlanej zawierającej określony ciąg.
+
+ 
 
 ## <a name="provisioning-details"></a>Szczegóły inicjowania obsługi administracyjnej 
 

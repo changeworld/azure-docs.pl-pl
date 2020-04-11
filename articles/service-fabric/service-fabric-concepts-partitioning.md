@@ -3,12 +3,12 @@ title: Usługi partycjonowania usługi sieci szkieletowej
 description: W tym artykule opisano, jak partycjonować usługi stanowe sieci szkieletowej usług. Partycje umożliwia przechowywanie danych na komputerach lokalnych, dzięki czemu dane i obliczenia mogą być skalowane razem.
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4edfaa74fe109c688cad733d16031e87fff1e46f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258618"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115161"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partition Service Fabric reliable services (Partycjonowanie usług Reliable Services w ramach usługi Service Fabric)
 Ten artykuł zawiera wprowadzenie do podstawowych pojęć partycjonowania usługi azure service fabric niezawodne. Kod źródłowy użyty w artykule jest również dostępny na [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -25,7 +25,7 @@ Istnieją naprawdę dwa rodzaje rozwiązań serwisowych bezstanowych. Pierwszy z
 
 W obu przypadkach partycjonowanie usługi bezstanowej jest bardzo rzadkim scenariuszem — skalowalność i dostępność są zwykle osiągane przez dodanie większej liczby wystąpień. Tylko wtedy, gdy chcesz wziąć pod uwagę wiele partycji dla wystąpień usługi bezstanowej jest, gdy trzeba spełnić specjalne żądania routingu.
 
-Na przykład należy wziąć pod uwagę przypadek, w którym użytkownicy z identyfikatorami w określonym zakresie powinny być obsługiwane tylko przez wystąpienie określonej usługi. Innym przykładem, kiedy można podzielić usługę bezstanową jest, gdy masz prawdziwie podzielonych na partycje wewnętrznej bazy danych (np. podzielonej bazy danych SQL) i chcesz kontrolować, które wystąpienie usługi należy zapisać do niezależnego fragmentu bazy danych - lub wykonać inne prace przygotowawcze w ramach usługa bezstanowa, która wymaga tych samych informacji partycjonowania, które są używane w wewnętrznej bazy danych. Te typy scenariuszy można również rozwiązać na różne sposoby i niekoniecznie wymagają partycjonowania usługi.
+Na przykład należy wziąć pod uwagę przypadek, w którym użytkownicy z identyfikatorami w określonym zakresie powinny być obsługiwane tylko przez wystąpienie określonej usługi. Innym przykładem, kiedy można podzielić usługi bezstanowej jest, gdy masz prawdziwie partycjonowane wewnętrznej bazy danych (np. podzielonej bazy danych SQL) i chcesz kontrolować, które wystąpienie usługi należy zapisać do niezależnego fragmentu bazy danych - lub wykonać inne prace przygotowawcze w ramach usługi bezstanowej, która wymaga tych samych informacji partycjonowania, jak jest używany w wewnętrznej bazie danych. Te typy scenariuszy można również rozwiązać na różne sposoby i niekoniecznie wymagają partycjonowania usługi.
 
 Pozostała część tego przewodnika koncentruje się na usługi stanowe.
 
@@ -348,9 +348,6 @@ Ponieważ dosłownie chcemy mieć jedną partycję na literę, możemy użyć 0 
     ![Zrzut ekranu przeglądarki](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
 Cały kod źródłowy próbki jest dostępny w [usłudze GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
-
-## <a name="reliable-services-and-actor-forking-subprocesses"></a>Niezawodne usługi i podprocesy rozwidlenia aktora
-Sieci szkieletowej usług nie obsługuje niezawodnych usług, a następnie niezawodne podmioty rozwidlenia podprocesów. Przykładem dlaczego jego nie jest obsługiwany jest [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nie może służyć do rejestracji nieobsługiconych podprocesów i tokeny anulowania są wysyłane tylko do zarejestrowanych procesów; powoduje różnego rodzaju problemy, takie jak błędy uaktualniania, gdy podprocesy nie zamykają się po odebraniu tokenu anulowania przez proces nadrzędny. 
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać informacje na temat koncepcji sieci szkieletowej usług, zobacz następujące elementy:

@@ -4,17 +4,17 @@ description: Usługa Azure Storage chroni dane, automatycznie szyfrując je prze
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f8f6f40f8ce8297b3cbfe6b3afcbf10df4db6572
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f112a4523bc5af9ecae57e93dfb90795d3fe9c50
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409834"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113274"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Szyfrowanie usługi Azure Storage dla danych w stanie spoczynku
 
@@ -34,7 +34,7 @@ Aby uzyskać więcej informacji na temat modułów kryptograficznych leżących 
 
 ## <a name="about-encryption-key-management"></a>Zarządzanie kluczami szyfrowania — informacje
 
-Domyślnie dane na koncie magazynu są szyfrowane za pomocą kluczy zarządzanych przez firmę Microsoft. Szyfrowanie danych można polegać na kluczach zarządzanych przez firmę Microsoft lub zarządzać szyfrowaniem za pomocą własnych kluczy. Jeśli zdecydujesz się zarządzać szyfrowaniem za pomocą własnych kluczy, masz dwie opcje:
+Dane na nowym koncie magazynu są szyfrowane za pomocą kluczy zarządzanych przez firmę Microsoft. Szyfrowanie danych można polegać na kluczach zarządzanych przez firmę Microsoft lub zarządzać szyfrowaniem za pomocą własnych kluczy. Jeśli zdecydujesz się zarządzać szyfrowaniem za pomocą własnych kluczy, masz dwie opcje:
 
 - Klucz zarządzany *przez klienta* za pomocą usługi Azure Key Vault można określić do szyfrowania i odszyfrowywania danych w magazynie obiektów Blob i w usłudze Azure Files. <sup>1,2</sup> Aby uzyskać więcej informacji na temat kluczy zarządzanych przez klienta, zobacz [Zarządzanie szyfrowaniem usługi Azure Storage za pomocą kluczy zarządzanych przez klienta za pomocą usługi Azure Key Vault.](encryption-customer-managed-keys.md)
 - Można określić *klucz dostarczony przez klienta* w operacjach magazynu obiektów Blob. Klient składający żądanie odczytu lub zapisu dla magazynu obiektów Blob może dołączyć klucz szyfrowania na żądanie szczegółowej kontroli nad tym, jak dane obiektu blob są szyfrowane i odszyfrowywane. Aby uzyskać więcej informacji na temat kluczy dostarczonych przez klienta, zobacz [Podaj klucz szyfrowania na żądanie do magazynu obiektów Blob (wersja zapoznawcza)](encryption-customer-provided-keys.md).
@@ -47,8 +47,7 @@ W poniższej tabeli porównano opcje zarządzania kluczami dla szyfrowania usłu
 |    Obsługiwane usługi Usługi Azure Storage    |    Wszystkie                                                |    Magazyn obiektów blob, pliki platformy Azure<sup>1,2</sup>                                                                                                               |    Blob Storage                                                                  |
 |    Przechowywanie kluczy                         |    Magazyn kluczy firmy Microsoft    |    W usłudze Azure Key Vault                                                                                                                              |    Usługa Azure Key Vault lub inny magazyn kluczy                                                                 |
 |    Kluczowa odpowiedzialność za rotację         |    Microsoft                                          |    Klient                                                                                                                                     |    Klient                                                                      |
-|    Użycie klucza                           |    Microsoft                                          |    Portal Azure, interfejs API REST dostawcy zasobów magazynu, biblioteki zarządzania usługą Azure Storage, program PowerShell, interfejs wiersza polecenia        |    Interfejs API REST usługi Azure Storage (magazyn obiektów Blob), biblioteki klientów usługi Azure Storage    |
-|    Dostęp do klucza                          |    Tylko firma Microsoft                                     |    Microsoft, Klient                                                                                                                    |    Tylko klient                                                                 |
+|    Sterowanie kluczem                          |    Microsoft                                     |    Klient                                                                                                                    |    Klient                                                                 |
 
 <sup>1</sup> Aby uzyskać informacje dotyczące tworzenia konta obsługującego przy użyciu kluczy zarządzanych przez klienta z magazynem kolejek, zobacz [Tworzenie konta obsługującego klucze zarządzane przez klienta dla kolejek](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).<br />
 <sup>2</sup> Aby uzyskać informacje dotyczące tworzenia konta obsługującego przy użyciu kluczy zarządzanych przez klienta z magazynem tabel, zobacz [Tworzenie konta obsługującego klucze zarządzane przez klienta dla tabel](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8608aaab7bb8b6d10e67f27678c17f20a6c243da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ce7ef15f0bf13182e4799fb640e83136d0d4695
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370852"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115023"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Usługi Azure Lab — przewodnik dla administratorów
 Administratorzy technologii informatycznych (IT), którzy zarządzają zasobami chmury uniwersytetu, są zazwyczaj odpowiedzialni za skonfigurowanie konta laboratoryjnego dla swojej szkoły. Po skonfigurowaniu konta laboratorium administratorzy lub nauczyciele tworzą laboratoria w klasie, które znajdują się na koncie laboratorium. Ten artykuł zawiera omówienie wysokiego poziomu zaangażowanych zasobów platformy Azure i wskazówki dotyczące ich tworzenia.
@@ -156,6 +156,9 @@ Lokalizacja laboratorium w klasie różni się w zależności od następujących
        
     Gdy **nie ma** sieci wirtualnej w równowadze i [twórcy laboratorium mogą wybrać lokalizację laboratorium,](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)lokalizacje, które mogą być wybrane przez twórcę laboratorium są oparte na dostępnej pojemności.
 
+> [!NOTE]
+> Aby upewnić się, że istnieje wystarczająca pojemność maszyny Wirtualnej dla regionu, ważne jest, aby najpierw zażądać pojemności za pośrednictwem konta laboratorium lub podczas tworzenia laboratorium.
+
 Ogólną regułą jest ustawienie regionu zasobu na taki, który jest najbliżej jego użytkowników. W przypadku laboratoriów szkolnych oznacza to utworzenie laboratorium w klasie najbliżej uczniów. W przypadku kursów online, na których uczniowie znajdują się na całym świecie, musisz użyć najlepszego osądu, aby stworzyć laboratorium w klasie, które znajduje się centralnie. Możesz też podzielić klasę na wiele laboratoriów w klasie na podstawie regionu uczniów.
 
 ### <a name="shared-image-gallery"></a>Galeria zdjęć udostępnionych
@@ -169,7 +172,7 @@ Gdy administratorzy lub twórcy laboratorium tworzą laboratorium w klasie, mog�
 | ---- | ----- | ------ | ------------- |
 | Small| <ul><li>2 rdzenie</li><li>3,5 GB pamięci RAM</li> | [Standardowa_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ten rozmiar najlepiej nadaje się do wiersza polecenia, otwierania przeglądarki internetowej, serwerów internetowych o małym natężeniu ruchu, małych i średnich baz danych. |
 | Medium | <ul><li>4 rdzenie</li><li>7 GB pamięci RAM</li> | [Standardowa_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ten rozmiar najlepiej nadaje się do relacyjnych baz danych, buforowania w pamięci i analizy. |
-| Średni (wirtualizacja zagnieżdżona) | <ul><li>4 rdzenie</li><li>16 GB pamięci RAM</li></ul> | [Standard_DC4s_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ten rozmiar najlepiej nadaje się do relacyjnych baz danych, buforowania w pamięci i analizy.  Ten rozmiar obsługuje również zagnieżdżoną wirtualizację. |
+| Średni (wirtualizacja zagnieżdżona) | <ul><li>4 rdzenie</li><li>16 GB pamięci RAM</li></ul> | [Standardowa_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Ten rozmiar najlepiej nadaje się do relacyjnych baz danych, buforowania w pamięci i analizy.  Ten rozmiar obsługuje również zagnieżdżoną wirtualizację. |
 | Large | <ul><li>8 rdzeni</li><li>32 GB pamięci RAM</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ten rozmiar najlepiej nadaje się do aplikacji, które potrzebują szybszych procesorów, lepszej wydajności dysku lokalnego, dużych baz danych, dużych pamięci podręcznych.  Ten rozmiar obsługuje również zagnieżdżoną wirtualizację. |
 | Mały procesor graficzny (wizualizacja) | <ul><li>6 rdzeni</li><li>56 GB pamięci RAM</li>  | [Standardowa_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Ten rozmiar najlepiej nadaje się do zdalnej wizualizacji, przesyłania strumieniowego, gier, kodowania przy użyciu takich struktur jak OpenGL i DirectX. |
 | Mały procesor graficzny (compute) | <ul><li>6 rdzeni</li><li>56 GB pamięci RAM</li></ul>  | [Standardowa_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Ten rozmiar najlepiej nadaje się do zastosowań intensywnie korzystających z komputera, takich jak sztuczna inteligencja i uczenie głębokie. |

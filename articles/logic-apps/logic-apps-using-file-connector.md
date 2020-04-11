@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 2a00405a2100c3e565ca4f8ea4149540a5199b43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab17137f162b893b54942d870b07a36f87d1b71d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651410"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115069"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Łączenie z lokalnymi systemami plików przy użyciu usługi Azure Logic Apps
 
@@ -69,7 +69,7 @@ W tym artykule pokazano, jak można połączyć się z lokalnym systemem plików
    | -------- | -------- | ----- | ----------- |
    | **Nazwa połączenia** | Tak | <*nazwa połączenia*> | Nazwa połączenia, którą chcesz uzyskać |
    | **Folder główny** | Tak | <*nazwa folderu głównego*> | Na przykład folder główny systemu plików, jeśli zainstalowano lokalną bramę danych, taką jak folder lokalny na komputerze, na którym zainstalowana jest lokalna brama danych, lub folder udziału sieciowego, do którego komputer może uzyskać dostęp. <p>Na przykład: `\\PublicShare\\DropboxFiles` <p>Folder główny jest głównym folderem nadrzędnym, który jest używany dla ścieżek względnych dla wszystkich akcji związanych z plikami. |
-   | **Typ uwierzytelniania** | Nie | <*typ auth*> | Typ uwierzytelniania używanego przez system plików, na przykład **system Windows** |
+   | **Typ uwierzytelniania** | Nie | <*typ auth*> | Typ uwierzytelniania używany przez system plików: **Windows** |
    | **Nazwę użytkownika** | Tak | <*domain*>\\<*nazwa użytkownika* domeny> | Nazwa użytkownika komputera, na którym masz system plików |
    | **Hasło** | Tak | <*twoje hasło*> | Hasło do komputera, na którym masz system plików |
    | **Bramy** | Tak | <*zainstalowana nazwa bramy*> | Nazwa wcześniej zainstalowanej bramy |

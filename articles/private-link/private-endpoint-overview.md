@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: b8f55b0693b7ffdf10516cfb19b67ccc5a94dc5a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d10b6c52310da3d799a7fe78c83284960318f82e
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742896"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115248"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co to jest prywatny punkt końcowy platformy Azure?
 
@@ -73,7 +73,7 @@ Zasób łącza prywatnego jest miejscem docelowym danego prywatnego punktu końc
 |**Azure Event Grid** | Microsoft.EventGrid/tematy  | temat |
 |**Azure Event Grid** | Microsoft.EventGrid/domeny | domena |
 |**Azure WebApps** | Microsoft.Web/witryny    | lokacja |
-|**Uczenie maszynowe platformy Azure** | Microsoft.MachineLearningUsługi/obszary robocze  | obszar roboczy |
+|**Azure Machine Learning** | Microsoft.MachineLearningUsługi/obszary robocze  | obszar roboczy |
   
  
 ## <a name="network-security-of-private-endpoints"></a>Bezpieczeństwo sieci prywatnych punktów końcowych 
@@ -113,7 +113,7 @@ Aby skonfigurować ustawienia DNS dla prywatnych punktów końcowych, można uż
 > [!IMPORTANT]
 > Nie zaleca się zastępowania strefy, która jest aktywnie używana do rozpoznawania publicznych punktów końcowych. Połączenia z zasobami nie będą mogły poprawnie rozwiązać bez przekierowania DNS do publicznego systemu DNS. Aby uniknąć problemów, utwórz inną nazwę domeny lub postępuj zgodnie z sugerowaną nazwą dla każdej usługi poniżej. 
  
-W przypadku usług platformy Azure należy używać zalecanych nazw stref zgodnie z opisem w poniższej tabeli:
+W przypadku usług platformy Azure należy używać nazw stref zgodnie z opisem w poniższej tabeli:
 
 |Typ zasobu Łącza prywatnego   |Podźródło  |Nazwa strefy  |
 |---------|---------|---------|

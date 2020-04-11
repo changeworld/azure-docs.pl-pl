@@ -1,5 +1,5 @@
 ---
-title: Tworzenie zautomatyzowanych eksperymentów ml
+title: Tworzenie zautomatyzowanych eksperymentów uczenia maszynowego
 titleSuffix: Azure Machine Learning
 description: Automatyczne uczenie maszynowe wybiera algorytm dla Ciebie i generuje model gotowy do wdrożenia. Poznaj opcje, za pomocą których można skonfigurować eksperymenty automatycznego uczenia maszynowego.
 author: cartacioS
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 03e1d4aa74d2f71ab2f32ac55f4ad3d46f672f5c
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 18de50473e3dd6ca8ddda9575a247e00530032e8
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618540"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115418"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie eksperymentów zautomatyzowanego uczenia maszynowego w języku Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,24 +43,27 @@ Przed rozpoczęciem eksperymentu należy określić rodzaj rozwiązania problemu
 
 Zautomatyzowane uczenie maszynowe obsługuje następujące algorytmy podczas procesu automatyzacji i dostrajania. Jako użytkownik nie ma potrzeby określania algorytmu.
 
+> [!NOTE]
+> Jeśli planujesz wyeksportować modele utworzone automatycznie ml do [modelu ONNX,](concept-onnx.md)tylko te algorytmy wskazane za pomocą * mogą być konwertowane na format ONNX. Dowiedz się więcej o [konwersji modeli na ONNX](concept-automated-ml.md#use-with-onnx). <br> <br> Należy również zauważyć, ONNX obsługuje tylko klasyfikacji i regresji zadań w tej chwili. 
+
 Klasyfikacja | Regresja | Prognozowanie szeregów czasowych
 |-- |-- |--
-[Regresja logistyczna](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Sieć elastyczna](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Sieć elastyczna](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Lekki GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Lekki GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Lekki GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[Zwiększanie gradientu](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Zwiększanie gradientu](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Zwiększanie gradientu](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[Drzewo decyzyjne](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Drzewo decyzyjne](https://scikit-learn.org/stable/modules/tree.html#regression)|[Drzewo decyzyjne](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K Sąsiedzi](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K Sąsiedzi](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K Sąsiedzi](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[Liniowy SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS/Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS/Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[Obsługuje klasyfikację wektorową (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Stochastyczne zejście gradientu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Stochastyczne zejście gradientu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
-[Las losowy](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Las losowy](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Las losowy](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[Bardzo losowo drzewa](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Bardzo losowo drzewa](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Bardzo losowo drzewa](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[Klasyfikator DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[Klasyfikator liniowy DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Regresor liniowy](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Regresor liniowy](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Prosty algorytm Bayesa](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[Szybki regresor liniowy](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[Stochastyczne zejście gradientu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[Regressor gradientu online](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Proroka](https://facebook.github.io/prophet/docs/quick_start.html)
+[Regresja logistyczna](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Elastyczna siatka](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Sieć elastyczna](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[Lekki GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Lekki GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Lekki GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[Zwiększanie gradientu](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[Zwiększanie gradientu](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[Zwiększanie gradientu](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Drzewo decyzyjne](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[Drzewo decyzyjne](https://scikit-learn.org/stable/modules/tree.html#regression)* |[Drzewo decyzyjne](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K Sąsiedzi](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K Sąsiedzi](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K Sąsiedzi](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Liniowy SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS/Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[Obsługuje klasyfikację wektorową (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[Stochastyczne zejście gradientu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[Stochastyczne zejście gradientu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Losowy las](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Losowy las](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Las losowy](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[Bardzo losowo drzewa](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Bardzo losowo drzewa](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Bardzo losowo drzewa](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Xgboost ( Xgboost )](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost ( Xgboost )](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[Klasyfikator DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[Klasyfikator liniowy DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Regresor liniowy](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[Regresor liniowy](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[Naiwne Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Szybki regresor liniowy](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Stochastyczne zejście gradientu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[Regressor gradientu online](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Proroka](https://facebook.github.io/prophet/docs/quick_start.html)
 |[Średni klasyfikator perceptronu](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN (ForecastTCN)
-|[Klasyfikator liniowy SVM](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
+|[Klasyfikator liniowy SVM](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
 
 Użyj `task` parametru `AutoMLConfig` w konstruktorze, aby określić typ eksperymentu.
 

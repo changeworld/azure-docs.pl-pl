@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 39747ac0a7133562bed526f44e30bf4a656127c0
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 7b3a223ca504bff380afad54afda73880717814f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673607"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115384"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Podręcznik do rozwiązywania typowych wymagań dotyczących zabezpieczeń za pomocą usługi Azure SQL Database
 
@@ -89,14 +89,14 @@ Centralne zarządzanie tożsamością oferuje następujące korzyści:
 
 - Utwórz dzierżawę usługi Azure AD i [utwórz użytkowników](../active-directory/fundamentals/add-users-azure-active-directory.md) do reprezentowania użytkowników [ludzkich](../active-directory/develop/app-objects-and-service-principals.md) i tworzenia podmiotów zabezpieczeń usług do reprezentowania aplikacji, usług i narzędzi automatyzacji. Jednostki usługi są równoważne kont usług w systemach Windows i Linux. 
 
-- Przypisywanie praw dostępu do zasobów do podmiotów zabezpieczeń usługi Azure AD za pomocą przypisania grupy: Tworzenie grup usługi Azure AD, udzielanie dostępu do grup i dodawanie poszczególnych członków do grup. W bazie danych utwórz użytkowników zawartej bazy danych, którzy mapują grupy usługi Azure AD. Aby przypisać uprawnienia wewnątrz bazy danych, umieść użytkowników w rolach bazy danych z odpowiednimi uprawnieniami.
+- Przypisywanie praw dostępu do zasobów do podmiotów zabezpieczeń usługi Azure AD za pomocą przypisania grupy: Tworzenie grup usługi Azure AD, udzielanie dostępu do grup i dodawanie poszczególnych członków do grup. W bazie danych utwórz użytkowników zawartej bazy danych, którzy mapują grupy usługi Azure AD. Aby przypisać uprawnienia wewnątrz bazy danych, umieść użytkowników, którzy są skojarzone z grupami usługi Azure AD w rolach bazy danych z odpowiednimi uprawnieniami.
   - Zobacz artykuły, [Konfigurowanie uwierzytelniania usługi Azure Active Directory i zarządzanie nim za pomocą języka SQL](sql-database-aad-authentication-configure.md) i używanie usługi Azure AD do [uwierzytelniania za pomocą programu SQL.](sql-database-aad-authentication.md)
   > [!NOTE]
   > W wystąpieniu zarządzanym można również utworzyć logowania, które mapują podmioty usługi Azure AD w głównej bazie danych. Zobacz [TWORZENIE LOGOWANIA (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
 
 - Korzystanie z grup usługi Azure AD upraszcza zarządzanie uprawnieniami i zarówno właściciel grupy, jak i właściciel zasobu można dodać/usunąć członków do/z grupy. 
 
-- Utwórz oddzielną grupę dla administratora usługi Azure AD dla serwerów bazy danych SQL.
+- Utwórz oddzielną grupę dla administratorów usługi Azure AD dla każdego serwera bazy danych SQL.
 
   - Zobacz artykuł [Aprowizuj administratora usługi Azure Active Directory dla serwera bazy danych SQL platformy Azure](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server).
 
@@ -213,7 +213,7 @@ Uwierzytelnianie SQL odnosi się do uwierzytelniania użytkownika podczas łącz
 
 ## <a name="access-management"></a>Zarządzanie dostępem
 
-Zarządzanie dostępem to proces kontrolowania dostępu autoryzowanych użytkowników i zarządzania nimi oraz ich uprawnień do bazy danych SQL.
+Zarządzanie dostępem (nazywane również autoryzacją) to proces kontrolowania i zarządzania dostępem autoryzowanych użytkowników i uprawnieniami do bazy danych SQL Azure.
 
 ### <a name="implement-principle-of-least-privilege"></a>Wdrażanie zasady najmniejszych uprawnień
 
@@ -225,7 +225,7 @@ Zasada najmniejszych uprawnień stanowi, że użytkownicy nie powinni mieć wię
 
 Przypisz tylko [uprawnienia](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) niezbędne do wykonania wymaganych zadań:
 
-- W płaszczyźnie danych SQL: 
+- W bazach danych SQL: 
     - Użyj szczegółowych uprawnień i ról bazy danych zdefiniowanych przez użytkownika (lub ról serwera w MI): 
         1. Tworzenie wymaganych ról
             - [TWORZENIE ROLI](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
@@ -294,7 +294,7 @@ Separacja obowiązków, zwana również segregacją obowiązków, opisuje wymóg
   - Tworzenie ról serwera dla zadań całego serwera (tworzenie nowych loginów, baz danych) w wystąpieniu zarządzanym. 
   - Tworzenie ról bazy danych dla zadań na poziomie bazy danych.
 
-- W przypadku niektórych poufnych zadań należy rozważyć utworzenie specjalnych procedur przechowywanych podpisanych certyfikatem w celu wykonania zadań w imieniu użytkowników. 
+- W przypadku niektórych poufnych zadań należy rozważyć utworzenie specjalnych procedur przechowywanych podpisanych certyfikatem w celu wykonania zadań w imieniu użytkowników. Jedną z ważnych zalet procedur składowanych podpisanych cyfrowo jest to, że jeśli procedura zostanie zmieniona, uprawnienia przyznane poprzedniej wersji procedury są natychmiast usuwane.
   - Przykład: [Samouczek: Podpisywanie procedur przechowywanych za pomocą certyfikatu](https://docs.microsoft.com/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate) 
 
 - Zaimplementuj przezroczyste szyfrowanie danych (TDE) z kluczami zarządzanymi przez klienta w usłudze Azure Key Vault, aby włączyć rozdzielenie obowiązków między właścicielem danych a właścicielem zabezpieczeń. 
@@ -303,7 +303,7 @@ Separacja obowiązków, zwana również segregacją obowiązków, opisuje wymóg
 - Aby upewnić się, że DBA nie widzi danych, które są uważane za bardzo wrażliwe i nadal można wykonywać zadania DBA, można użyć zawsze zaszyfrowane z separacji ról. 
   - Zobacz artykuły, [Omówienie zarządzania kluczami dla zawsze zaszyfrowanych,](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted) [Inicjowanie obsługi administracyjnej kluczy z separacją ról](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell#KeyProvisionWithRoles)i [rotacja klucza głównego kolumny z separacją ról](https://docs.microsoft.com/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell#column-master-key-rotation-with-role-separation). 
 
-- W przypadkach, gdy nie jest to możliwe, przynajmniej nie bez większych kosztów i wysiłków, które mogą sprawić, że system stanie się prawie bezużyteczny, można dokonać i złagodzić je poprzez zastosowanie form kompensacyjnych, takich jak: 
+- W przypadkach, gdy użycie Always Encrypted nie jest możliwe, a przynajmniej nie bez większych kosztów i wysiłków, które mogą nawet uniemożliwić systemowi niemal bezużyteczny, można dokonać i złagodzić je za pomocą formantów kompensacyjnych, takich jak: 
   - Interwencja człowieka w procesy. 
   - Ścieżki inspekcji — aby uzyskać więcej informacji na temat inspekcji, zobacz [Inspekcja krytycznych zdarzeń zabezpieczeń](#audit-critical-security-events).
 
@@ -315,11 +315,11 @@ Separacja obowiązków, zwana również segregacją obowiązków, opisuje wymóg
 
 - Użyj wbudowanych ról, gdy uprawnienia są zgodne dokładnie z wymaganymi uprawnieniami — jeśli połączenie wszystkich uprawnień z wielu wbudowanych ról prowadzi do dopasowania 100%, można przypisać wiele ról jednocześnie. 
 
-- Tworzenie i używanie ról niestandardowych, gdy wbudowane role przyznają zbyt wiele uprawnień lub niewystarczające uprawnienia. 
+- Tworzenie i używanie ról zdefiniowanych przez użytkownika, gdy wbudowane role przyznają zbyt wiele uprawnień lub niewystarczające uprawnienia. 
 
 - Przypisania ról można również wykonać tymczasowo, znany również jako dynamiczne rozdzielenie obowiązków (DSD), albo w ramach sql agent zadania kroki w T-SQL lub przy użyciu usługi Azure PIM dla ról RBAC. 
 
-- Upewnij się, że administratorzy dbA nie mają dostępu do kluczy szyfrowania lub magazynów kluczy, a administratorzy zabezpieczeń z dostępem do kluczy nie mają dostępu do bazy danych po kolei. 
+- Upewnij się, że administratorzy dbA nie mają dostępu do kluczy szyfrowania lub magazynów kluczy i że administratorzy zabezpieczeń z dostępem do kluczy nie mają dostępu do bazy danych po kolei. Użycie [ekm (Extensible Key Management)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm) może ułatwić osiągnięcie tej separacji. [Usługa Azure Key Vault](https://azure.microsoft.com/services/key-vault/) może służyć do implementowania EKM. 
 
 - Zawsze upewnij się, że masz dziennik inspekcji dla działań związanych z zabezpieczeniami. 
 
@@ -436,11 +436,11 @@ Zasady, które określają, które dane są poufne i czy poufne dane muszą być
 
 - Użyj szyfrowania deterministycznego, jeśli obliczenia (równość) danych muszą być obsługiwane. W przeciwnym razie należy użyć szyfrowania losowego. Należy unikać szyfrowania deterministycznego dla zestawów danych o niskiej entropii lub zestawów danych z publicznie znaną dystrybucją. 
 
-- Jeśli obawiasz się legalnego uzyskiwania dostępu do danych przez inne firmy bez twojej zgody, upewnij się, że wszystkie aplikacje i narzędzia, które mają dostęp do kluczy i danych w postaci zwykłego tekstu, działają poza usługą Microsoft Azure Cloud. Bez dostępu do kluczy, strona trzecia nie będzie miała możliwości odszyfrowania danych, chyba że ominie szyfrowanie.
+- Jeśli obawiasz się, że osoby trzecie uzyskują dostęp do twoich danych zgodnie z prawem bez Twojej zgody, upewnij się, że wszystkie aplikacje i narzędzia, które mają dostęp do kluczy i danych w postaci zwykłego tekstu, działają poza usługą Microsoft Azure Cloud. Bez dostępu do kluczy, strona trzecia nie będzie miała możliwości odszyfrowania danych, chyba że ominie szyfrowanie.
 
 - Zawsze zaszyfrowane nie obsługuje łatwe udzielanie tymczasowego dostępu do kluczy (i chronionych danych). Na przykład, jeśli trzeba udostępnić klucze z DBA, aby umożliwić DBA zrobić kilka operacji oczyszczania na poufnych i zaszyfrowanych danych. Jedynym sposobem na niezawodność odwołać dostęp do danych z DBA będzie obrócić zarówno klucze szyfrowania kolumny i klucze główne kolumny ochrony danych, co jest kosztowną operacją. 
 
-- Aby uzyskać dostęp do wartości zwykłego tekstu w zaszyfrowanych kolumnach, użytkownik musi mieć dostęp do cmk, który chroni kolumny, który jest skonfigurowany w magazynie kluczy gospodarstwa CMK. Użytkownik musi również mieć **wyświetl dowolną definicję klucza głównego kolumny** i wyświetlić wszystkie uprawnienia do bazy danych **definicji klucza szyfrowania kolumny.**
+- Aby uzyskać dostęp do wartości zwykłego tekstu w zaszyfrowanych kolumnach, użytkownik musi mieć dostęp do klucza głównego kolumny (CMK), który chroni kolumny, który jest skonfigurowany w magazynie kluczy zawierającym cmk. Użytkownik musi również mieć **wyświetl dowolną definicję klucza głównego kolumny** i wyświetlić wszystkie uprawnienia do bazy danych **definicji klucza szyfrowania kolumny.**
 
 ### <a name="control-access-of-application-users-to-sensitive-data-through-encryption"></a>Kontroluj dostęp użytkowników aplikacji do poufnych danych za pomocą szyfrowania
 

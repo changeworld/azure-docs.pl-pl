@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 03/24/2020
-ms.openlocfilehash: 27abdfe28e2594c98778b51532fbd22f95bfa3ac
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b121830192a2b88185bbbbc9a92934e51b32a61c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984712"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114649"
 ---
 # <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>Integracja usługi Azure AD w usłudze Azure Kubernetes (wersja zapoznawcza)
 
@@ -98,12 +98,12 @@ Powyższe polecenie tworzy klaster AKS z trzema węzłami, ale użytkownik, któ
 Po utworzeniu grupy i dodaniu siebie (i innych) jako członka, można zaktualizować klaster za pomocą grupy usługi Azure AD za pomocą następującego polecenia
 
 ```azurecli-interactive
-az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 Alternatywnie, jeśli najpierw utworzysz grupę i dodasz członków, możesz włączyć grupę usługi Azure AD w czasie tworzenia przy użyciu następującego polecenia,
 
 ```azurecli-interactive
-az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 
 Pomyślne utworzenie klastra usługi Azure AD w wersji 2 ma następującą sekcję w treści odpowiedzi

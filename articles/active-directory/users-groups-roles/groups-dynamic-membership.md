@@ -1,5 +1,5 @@
 ---
-title: Reguły członkostwa w grupach dynamicznych — usługa Azure AD | Dokumenty firmy Microsoft
+title: Reguły członkostwa grup dynamicznie zaludnionych — Usługa Azure AD | Dokumenty firmy Microsoft
 description: Jak utworzyć reguły członkostwa, aby automatycznie wypełniać grupy i odwołanie do reguły.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da983f87977de922ec547c3ade2972dfb4d69363
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6f8237ac13744e56baa8551f8cced12b2785a48
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79253080"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114739"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamiczne reguły członkostwa dla grup w usłudze Azure Active Directory
 
@@ -326,7 +326,7 @@ user.objectId -ne null
 Jeśli chcesz, aby grupa wykluczała użytkowników-gości i obejmowała tylko członków dzierżawy, możesz użyć następującej składni:
 
 ```
-(user.objectId -ne null) -and (user.userType -eq “Member”)
+(user.objectId -ne null) -and (user.userType -eq "Member")
 ```
 
 ### <a name="create-an-all-devices-rule"></a>Tworzenie reguły "Wszystkie urządzenia"

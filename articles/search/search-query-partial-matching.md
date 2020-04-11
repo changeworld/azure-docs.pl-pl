@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: faafc1e12f0703c38b4e602700b1e775bf13a061
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.date: 04/09/2020
+ms.openlocfilehash: db60a864ff29ff9eccdcfbdc0bd63587375d4bbd
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998344"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114980"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Częściowe wyszukiwanie terminów i wzory ze znakami specjalnymi (symbol wieloznaczny, wyrażenie regularne, wzory)
 
-*Wyszukiwanie terminów częściowych* odnosi się do zapytań składających się z fragmentów terminów, takich jak pierwsza, ostatnia lub wewnętrzna część ciągu. *Wzorzec* może łączyć fragmenty, czasami ze znakami specjalnymi, takimi jak kreski lub ukośniki, które są częścią kwerendy. Typowe przypadki użycia obejmują wykonywanie zapytań dotyczących fragmentów numeru telefonu, adresu URL, osób lub kodów produktów lub słów złożonych.
+*Wyszukiwanie terminów częściowych* odwołuje się do zapytań składających się z fragmentów terminów, gdzie zamiast całego terminu, może mieć tylko początek, środek lub koniec terminu (czasami określane jako prefiks, infix lub kwerendy sufiksu). *Wzorzec* może łączyć fragmenty, często ze znakami specjalnymi, takimi jak kreski lub ukośniki, które są częścią ciągu zapytania. Typowe przypadki użycia obejmują wykonywanie zapytań dotyczących fragmentów numeru telefonu, adresu URL, osób lub kodów produktów lub słów złożonych.
 
-Wyszukiwanie częściowe może być problematyczne, jeśli indeks nie ma terminów w formacie wymaganym do dopasowywania wzorców. Podczas fazy analizy tekstu indeksowania, przy użyciu domyślnego analizatora standardowego, znaki specjalne są odrzucane, ciągi kompozytowe i złożone są dzielone, co powoduje, że kwerendy wzorca nie powiodą się, gdy nie zostanie znalezione dopasowanie. Na `+1 (425) 703-6214`przykład numer telefonu, taki `"1"`jak `"425"` `"703"`(tokenized as , , , `"6214"`) nie będzie się wyświetlał w `"3-62"` kwerendzie, ponieważ ta zawartość w rzeczywistości nie istnieje w indeksie. 
+Wyszukiwanie częściowe i wzorcowe może być problematyczne, jeśli indeks nie ma terminów w oczekiwanym formacie. Podczas [fazy analizy leksykalne](search-lucene-query-architecture.md#stage-2-lexical-analysis) indeksowania (przy założeniu domyślnego analizatora standardowego), znaki specjalne są odrzucane, ciągi kompozytowe i złożone są dzielone, a odstępy są usuwane; wszystkie z nich może spowodować kwerendy wzorca zakończyć się niepowodzeniem, gdy nie znaleziono dopasowania. Na `+1 (425) 703-6214` przykład numer telefonu, taki `"1"`jak `"425"` `"703"`(tokenized as , , , `"6214"`) nie będzie się wyświetlał w `"3-62"` kwerendzie, ponieważ ta zawartość w rzeczywistości nie istnieje w indeksie. 
 
 Rozwiązaniem jest wywołanie analizatora, który zachowuje pełny ciąg, w tym spacje i znaki specjalne, jeśli to konieczne, dzięki czemu można dopasować na warunkach częściowych i wzorców. Tworzenie dodatkowego pola dla nienaruszonego ciągu, a także przy użyciu analizatora zachowania zawartości, jest podstawą rozwiązania.
 
@@ -27,21 +27,21 @@ Rozwiązaniem jest wywołanie analizatora, który zachowuje pełny ciąg, w tym 
 
 W usłudze Azure Cognitive Search częściowe wyszukiwanie i wzorzec są dostępne w następujących formach:
 
-+ [Wyszukiwanie prefiksów](query-simple-syntax.md#prefix-search), takie jak `search=cap*`, pasujące do "Cap'n Jack's Waterfront Inn" lub "Gacc Capital". Można użyć po prostu składni kwerendy do wyszukiwania prefiksów.
++ [Wyszukiwanie prefiksów](query-simple-syntax.md#prefix-search), takie jak `search=cap*`, pasujące do "Cap'n Jack's Waterfront Inn" lub "Gacc Capital". Można użyć składni kwerendy prostej lub pełnej składni zapytania Lucene do wyszukiwania prefiksów.
 
-+ [Wyszukiwanie symboli wieloznacznych](query-lucene-syntax.md#bkmk_wildcard) lub wyrażenia regularne, które [wyszukują](query-lucene-syntax.md#bkmk_regex) wzorzec lub części osadzonego ciągu, w tym sufiks. Symbol wieloznaczny i wyrażenia regularne wymagają pełnej składni lucene. 
++ [Wyszukiwanie symboli wieloznacznych](query-lucene-syntax.md#bkmk_wildcard) lub wyrażenia regularne, które [wyszukują](query-lucene-syntax.md#bkmk_regex) wzorzec lub części osadzonego ciągu. Symbol wieloznaczny i wyrażenia regularne wymagają pełnej składni lucene. Sufiks i kwerendy indeksu są formułowane jako wyrażenie regularne.
 
-  Niektóre przykłady częściowego wyszukiwania terminów są następujące. W przypadku kwerendy sufiks, biorąc pod uwagę termin "alfanumeryczny", należy użyć wyszukiwania symboli wieloznacznych (`search=/.*numeric.*/`) aby znaleźć dopasowanie. W przypadku terminu częściowego zawierającego znaki, takie jak fragment adresu URL, może być konieczne dodanie znaków ucieczki. W JSON ukośnik do przodu jest wysunął `/` się z ukośnikiem `\`do tyłu . Jako takie, `search=/.*microsoft.com\/azure\/.*/` jest składnia fragmentu adresu URL "microsoft.com/azure/".
+  Niektóre przykłady częściowego wyszukiwania terminów są następujące. W przypadku kwerendy sufiks, biorąc pod uwagę termin "alfanumeryczny", należy użyć wyszukiwania symboli wieloznacznych (`search=/.*numeric.*/`) aby znaleźć dopasowanie. W przypadku terminu częściowego zawierającego znaki wewnętrzne, takie jak fragment adresu URL, może być konieczne dodanie znaków ucieczki. W JSON ukośnik do przodu jest wysunął `/` się z ukośnikiem `\`do tyłu . Jako takie, `search=/.*microsoft.com\/azure\/.*/` jest składnia fragmentu adresu URL "microsoft.com/azure/".
 
 Jak wspomniano, wszystkie powyższe wymagają, aby indeks zawiera ciągi w formacie sprzyjającym dopasowywaniu wzorców, którego standardowy analizator nie zapewnia. Wykonując kroki opisane w tym artykule, można upewnić się, że istnieje zawartość niezbędna do obsługi tych scenariuszy.
 
-## <a name="solving-partial-search-problems"></a>Rozwiązywanie problemów z wyszukiwaniem częściowym
+## <a name="solving-partialpattern-search-problems"></a>Rozwiązywanie problemów z wyszukiwaniem częściowym/wzorcowym
 
-Gdy trzeba wyszukiwać wzorce lub znaki specjalne, można zastąpić analizatora domyślnego z analizatora niestandardowego, który działa w ramach prostszych reguł tokenizacji, zachowując cały ciąg. Robiąc krok wstecz, podejście wygląda następująco:
+Gdy trzeba wyszukać fragmenty lub wzorce lub znaki specjalne, można zastąpić analizatora domyślnego z analizatora niestandardowego, który działa w ramach prostszych reguł tokenizacji, zachowując cały ciąg. Robiąc krok wstecz, podejście wygląda następująco:
 
 + Zdefiniuj pole do przechowywania nienaruszonej wersji ciągu (przy założeniu, że chcesz przeanalizować i nie analizować tekstu)
-+ Wybierz wstępnie zdefiniowany analizator lub zdefiniuj analizator niestandardowy, aby wyprokować nienaruszony ciąg
-+ Przypisywanie analizatora do pola
++ Wybierz wstępnie zdefiniowany analizator lub zdefiniuj analizator niestandardowy, aby wyprowadzić nieprze analizowany nienaruszony ciąg
++ Przypisywanie analizatora niestandardowego do pola
 + Tworzenie i testowanie indeksu
 
 > [!TIP]
@@ -222,6 +222,10 @@ W poprzednich sekcjach wyjaśniono logikę. W tej sekcji kroki za pośrednictwem
 + [Analizator testów](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) został wprowadzony w [Wybierz analizator](#choose-an-analyzer). Przetestuj niektóre ciągi w indeksie przy użyciu różnych analizatorów, aby zrozumieć, jak terminy są tokenizowane.
 
 + [W dokumentach wyszukiwania wyjaśniono,](https://docs.microsoft.com/rest/api/searchservice/search-documents) jak skonstruować żądanie kwerendy przy użyciu [prostej składni](query-simple-syntax.md) lub [pełnej składni lucene](query-lucene-syntax.md) dla symboli wieloznacznych i wyrażeń regularnych.
+
+  W przypadku kwerend terminowych częściowych, takich jak kwerendy "3-6214", aby znaleźć dopasowanie w "+1 (425) 703-6214", można użyć prostej składni: `search=3-6214&queryType=simple`.
+
+  W przypadku kwerend infix i sufiksów, takich jak kwerendy "num" lub "numeric, aby znaleźć dopasowanie w "alfanumerycznej", należy użyć pełnej składni Lucene i wyrażenia regularnego:`search=/.*num.*/&queryType=full`
 
 ## <a name="tips-and-best-practices"></a>Wskazówki i najlepsze rozwiązania
 

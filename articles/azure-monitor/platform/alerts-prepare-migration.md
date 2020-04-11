@@ -1,17 +1,17 @@
 ---
-title: Przygotowanie do migracji alertów klasycznych usługi Azure Monitor przez aktualizowanie aplikacji logiki i śmięty
+title: Aktualizowanie aplikacji logiki & uruchomieniu do migracji alertów
 description: Dowiedz się, jak zmodyfikować elementy webhook, aplikacje logiki i elementy runbook, aby przygotować się do dobrowolnej migracji.
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 9219e105acb98424939030af76b526d475585619
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665596"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114407"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Przygotowywanie aplikacji logiki i elementów Runbook do migracji reguł alertów klasycznych
 
@@ -32,7 +32,7 @@ Poniższa tabela jest odwołaniem do interfejsów programowych dla alertów klas
 |---------|---------|---------|
 |Interfejs API REST     | [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
 |Interfejs wiersza polecenia platformy Azure     | [alert monitora az](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [alert o metrykach monitora az](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [Tematy pomocy](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Tematy pomocy](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+|PowerShell      | [Dokumentacja](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Dokumentacja](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Szablon usługi Azure Resource Manager | [W przypadku klasycznych alertów](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Nowe alerty dotyczące metryk](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
 
 ## <a name="notification-payload-changes"></a>Zmiany ładunku powiadomień

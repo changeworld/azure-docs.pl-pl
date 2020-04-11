@@ -1,22 +1,22 @@
 ---
-title: Tworzenie nowej oferty Dynamics 365 Business Central w komercyjnym rynku
-description: How to create a new Dynamics 365 Business Central offer for listing or selling in the Azure Marketplace, AppSource, or through the Cloud Solution Provider (CSP) program using the Commercial Marketplace portal on Microsoft Partner Center.
+title: Tworzenie nowej oferty Dynamics 365 Business Central w komercyjnym rynku firmy Microsoft
+description: Jak utworzyć nową ofertę Dynamics 365 Business Central do wystawiania lub sprzedawania w portalu Azure Marketplace, Microsoft AppSource lub za pośrednictwem programu Dostawcy rozwiązań w chmurze (CSP) przy użyciu portalu komercyjnego portalu marketplace w Centrum partnerów firmy Microsoft.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 908d0fb9d494ec048e6b254f91ec1faf56b47c90
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.date: 04/09/2020
+ms.openlocfilehash: 9bb1059087bdf8fc4eb852be7a995febc3336713
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529396"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115277"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Tworzenie nowej oferty Dynamics 365 Business Central
 
-W tym temacie wyjaśniono, jak utworzyć nową ofertę Dynamics 365 Business Central. [Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) to system planowania zasobów przedsiębiorstwa (ERP), który obsługuje szeroki zakres procesów biznesowych, w tym finanse, operacje, łańcuch dostaw, CRM oraz zarządzanie projektami i handel elektroniczny. Pakiety premium obsługują również klasyczny model wdrażania i produkcję. Wszystkie oferty dynamics 365 Business Central muszą przejść przez nasz proces certyfikacji.
+W tym artykule wyjaśniono, jak utworzyć nową ofertę Dynamics 365 Business Central. [Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) to system planowania zasobów przedsiębiorstwa (ERP), który obsługuje szeroki zakres procesów biznesowych, w tym finanse, operacje, łańcuch dostaw, CRM oraz zarządzanie projektami i handel elektroniczny. Pakiety premium obsługują również klasyczny model wdrażania i produkcję. Wszystkie oferty dynamics 365 Business Central muszą przejść przez nasz proces certyfikacji.
 
 Aby rozpocząć tworzenie ofert Dynamics 365 Business Central, upewnij się, że najpierw [utwórz konto Centrum partnerów](./create-account.md) i otwórz [pulpit nawigacyjny portalu komercyjnego w portalu Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)z zaznaczoną stroną **Przegląd.**
 
@@ -113,12 +113,10 @@ Podaj własne warunki prawne w polu **Warunki.** Możesz też podać adres URL, 
 
 ## <a name="offer-listing"></a>Oferta aukcji
 
-Na stronie Oferta wyświetlana jest liczba języków, w których oferta będzie wyświetlana. Obecnie jedyną dostępną opcją jest **angielski (Stany Zjednoczone).**
-
-Musisz zdefiniować szczegóły rynku (nazwa oferty, opis, obrazy itp.) dla każdego języka / rynku. Wybierz język/nazwę rynku, aby podać te informacje.
+Strona Oferta aukcji to miejsce, w którym definiujesz szczegóły oferty (takie jak imię i nazwisko, opis, obrazy itp.).
 
 > [!NOTE]
-> Zawartość aukcji oferty (taka jak opis, dokumenty, zrzuty ekranu, warunki użytkowania itp.) nie musi być w języku angielskim, o ile opis oferty zaczyna się od wyrażenia" Ta aplikacja jest dostępna tylko w języku [nieanglojęzycznym]". Dopuszczalne jest również podanie *użytecznego adresu URL linku,* aby oferować treści w języku innym niż ten używany w treści aukcji Oferty.
+> Możesz podać szczegóły oferty tylko w jednym języku. Nie musi być w języku angielskim, o ile opis oferty zaczyna się od wyrażenia" Ta aplikacja jest dostępna tylko w języku [nieanglojęzycznym]". Dopuszczalne jest również podanie *adresu URL łącza Pomocy,* aby oferować treści w języku innym niż ten używany w treści aukcji Oferty.
 
 ### <a name="name"></a>Nazwa
 
@@ -169,23 +167,23 @@ Opcjonalnie możesz wprowadzić maksymalnie trzy słowa kluczowe wyszukiwania, a
 
 Jeśli chcesz poinformować klientów, że aplikacja działa z określonymi produktami, wprowadź w tym miejscu maksymalnie trzy nazwy produktów.
 
-### <a name="support-urls"></a>Obsługa adresów URL
+### <a name="helpprivacy-urls"></a>Adresy URL pomocy/prywatności
 
 W tej sekcji znajdziesz łącza ułatwiające klientom zapoznanie się z ofertą.
 
 #### <a name="help-link"></a>Link pomocy
 
-Wpisz adres URL, pod którym klienci mogą dowiedzieć się więcej o Twojej ofercie.
+Wpisz adres URL, pod którym klienci mogą dowiedzieć się więcej o Twojej ofercie. **Link Pomocy** nie może być taki sam jak adres URL **pomocy technicznej** (wyjaśniono poniżej).
 
-#### <a name="privacy-policy-url"></a>Adres URL polityki prywatności
+#### <a name="privacy-policy-link"></a>Link do polityki prywatności
 
 Wprowadź adres URL do zasad ochrony prywatności organizacji. Użytkownik jest odpowiedzialny za zapewnienie zgodności aplikacji z przepisami i regulacjami dotyczącymi prywatności oraz za zapewnienie ważnej polityki prywatności.
 
-### <a name="contacts"></a>Kontakty
+### <a name="contact-information"></a>Informacje kontaktowe
 
 W tej sekcji należy podać nazwę, adres e-mail i numer telefonu dla **kontaktu pomocy technicznej** i kontaktu **inżyniera.** Te informacje nie są wyświetlane klientom, ale będą dostępne dla firmy Microsoft i mogą być dostarczane partnerom CSP.
 
-W sekcji **Kontakt pomocy technicznej** należy również podać adres URL pomocy **technicznej,** w którym partnerzy CSP mogą znaleźć pomoc techniczną dla Twojej oferty.
+W sekcji **Kontakt pomocy technicznej** należy również podać adres URL pomocy **technicznej,** w którym partnerzy CSP mogą znaleźć pomoc techniczną dla Twojej oferty. Adres URL pomocy technicznej nie może być taki sam jak **link Pomocy**.
 
 ### <a name="supporting-documents"></a>Dokumenty uzupełniające
 
@@ -193,15 +191,7 @@ Podaj tutaj co najmniej jeden (i maksymalnie trzy) powiązane dokumenty marketin
 
 ### <a name="marketplace-images"></a>Obrazy z Marketplace
 
-W tej sekcji możesz podać logo i obrazy, które będą używane podczas wyświetlania oferty klientowi. Wszystkie obrazy muszą być w formacie png.
-
-#### <a name="store-logos"></a>Logo sklepu
-
-Podaj logo swojej oferty w dwóch rozmiarach: **Mały (48 x 48)** i **Duży (216 x 216)**.
-
-#### <a name="hero"></a>Bohater
-
-Obraz bohatera jest opcjonalny. Jeśli go podasz, musi mierzyć 815 x 290 pikseli.
+W tej sekcji możesz podać logo i obrazy, które będą używane podczas wyświetlania oferty klientowi. Wszystkie obrazy muszą być w formacie png. Prześlij logo oferty w dwóch rozmiarach: **Mały (48 x 48)** i **Duży (216 x 216)**.
 
 #### <a name="screenshots"></a>Zrzuty ekranu
 
@@ -350,7 +340,11 @@ Pamiętaj, aby **zapisać** przed przejściem do następnej sekcji!
 
 ### <a name="test-drive-marketplace-listings"></a>Listy z rynku dysku testowego
 
-Opcja **Lista w Marketplace** znajdująca się na karcie Dysk **testowy** wyświetla języki, w których jest dostępna jazda próbna. Obecnie dostępna jest **w języku angielskim (Stany Zjednoczone).** Wybierz nazwę języka, aby wprowadzić informacje opisujące środowisko jazdy próbne.
+Opcja **aukcji w Marketplace** znajdująca się na karcie Dysk **testowy** to miejsce, w którym definiujesz szczegóły dotyczące jazdy próbnej.
+
+> [!NOTE]
+> Szczegóły aukcji na dysku testowym można podać tylko w jednym języku. Nie musi być w języku angielskim, o ile opis oferty zaczyna się od wyrażenia" Ta aplikacja jest dostępna tylko w języku [nieanglojęzycznym]". Dopuszczalne jest również podanie *adresu URL łącza Pomocy,* aby oferować zawartość w języku innym niż ten używany w treści z dysku testowego.
+
 
 - **Opis** (wymagane): Opisz jazdę próbną, co zostanie zademonstrowane, cele, z jakim użytkownik może eksperymentować, funkcje do zbadania i wszelkie istotne informacje, które pomogą użytkownikowi ustalić, czy chcesz uzyskać ofertę. W tym polu można wprowadzić maksymalnie 3000 znaków tekstu. 
 

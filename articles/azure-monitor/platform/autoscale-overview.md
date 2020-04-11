@@ -1,15 +1,15 @@
 ---
-title: Omówienie skalowania automatycznego w maszynach wirtualnych, usługach w chmurze i aplikacjach sieci Web
+title: Automatyczne skalowanie na maszynach wirtualnych, usługach w chmurze i aplikacjach sieci Web
 description: Skalowanie automatyczne na platformie Microsoft Azure. Dotyczy maszyn wirtualnych, zestawów skalowania maszyn wirtualnych, usług w chmurze i aplikacji sieci Web.
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a60c03f1928b38c78a59edca4b5493307d7d19d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eeb8b301bf087efa164a7864cdce3a04952f45ed
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75364377"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114135"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Omówienie funkcji Skalowanie automatyczne na maszynach wirtualnych platformy Microsoft Azure oraz w usługach Cloud Services i Web Apps
 W tym artykule opisano, czym jest skalowanie automatyczne platformy Microsoft Azure, jakie są jego zalety i jak rozpocząć korzystanie z niej.  
@@ -91,8 +91,8 @@ Natomiast skalowanie pionowe jest inne. Zachowuje taką samą liczbę maszyn wir
 ## <a name="methods-of-access"></a>Metody dostępu
 Można skonfigurować skalowanie automatyczne za pomocą
 
-* [Portal Azure](../../azure-monitor/platform/autoscale-get-started.md)
-* [Powershell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+* [Azure Portal](../../azure-monitor/platform/autoscale-get-started.md)
+* [PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [Międzyplatformowy interfejs wiersza polecenia (CLI)](../../azure-monitor/platform/cli-samples.md#autoscale)
 * [Interfejs API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 

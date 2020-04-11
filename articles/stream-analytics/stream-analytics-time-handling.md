@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: 367b7c2e1ce1c8b3c0dbc02003218b76096b409d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55537fb923b26de4e02be35fdb817dee147584d7
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75354643"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115118"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Opis obsługi czasu w usłudze Azure Stream Analytics
 
@@ -96,7 +96,7 @@ Być może zauważyłeś inną koncepcję o nazwie okno wczesnego przyjazdu, kt�
 
 Ponieważ usługa Azure Stream Analytics gwarantuje, że zawsze generuje pełne wyniki, można określić tylko **czas rozpoczęcia zadania** jako pierwszy czas wyjścia zadania, a nie czas wejściowy. Czas rozpoczęcia zadania jest wymagany, aby pełne okno zostało przetworzone, a nie tylko od środka okna.
 
-Usługa Stream Analytics następnie wyprowadza czas rozpoczęcia ze specyfikacji kwerendy. Jednak ponieważ broker zdarzeń wejściowych jest indeksowany tylko według czasu przybycia, system musi przetłumaczyć czas rozpoczęcia zdarzenia na czas przybycia. System może rozpocząć przetwarzanie zdarzeń od tego momentu w brokera zdarzeń wejściowych. Z limitem wczesnego przylatywania, tłumaczenie jest proste. To czas rozpoczęcia imprezy minus 5-minutowe okno wczesnego przybycia. To obliczenie oznacza również, że system porzuca wszystkie zdarzenia, które są widoczne o czas zdarzenia 5 minut większa niż czas przybycia.
+Usługa Stream Analytics następnie wyprowadza czas rozpoczęcia ze specyfikacji kwerendy. Jednak ponieważ broker zdarzeń wejściowych jest indeksowany tylko według czasu przybycia, system musi przetłumaczyć czas rozpoczęcia zdarzenia na czas przybycia. System może rozpocząć przetwarzanie zdarzeń od tego momentu w brokera zdarzeń wejściowych. Z limitem wczesnego przylatywania, tłumaczenie jest proste. Jest to czas rozpoczęcia zdarzenia minus 5-minutowe okno wczesnego przybycia. To obliczenie oznacza również, że system porzuca wszystkie zdarzenia, które są postrzegane jako mające czas zdarzenia 5 minut ealier niż czas przybycia.
 
 Ta koncepcja jest używana w celu zapewnienia, że przetwarzanie jest powtarzalne bez względu na to, od czego zaczniesz wyprowadzać dane wyjściowe. Bez takiego mechanizmu nie byłoby możliwe zagwarantowanie powtarzalności, jak twierdzi wiele innych systemów przesyłania strumieniowego.
 

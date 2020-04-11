@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 765decb8c65254d63ef5267cbc496d2320f58f6e
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: c6455930f88d02e11cb0c45d29594ae40eaad9e3
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991930"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113293"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji agenta usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -25,7 +25,7 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
 | Kamień milowy | Numer wersji agenta | Data wydania | Stan |
 |----|----------------------|--------------|------------------|
-| Wersja V10 - [KB4522359](https://support.microsoft.com/en-us/help/4522409/azure-file-sync-agent-v10-release-march-2020)| 10.0.0.0 | 9 kwietnia 2020 r. | Obsługiwane |
+| Wersja V10 - [KB4522359](https://support.microsoft.com/en-us/help/4522409/azure-file-sync-agent-v10-release-march-2020)| 10.0.0.0 | 9 kwietnia 2020 r. | W locie |
 | Pakiet zbiorczy aktualizacji z grudnia 2019 r. — [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 12 grudnia 2019 r. | Obsługiwane |
 | Wersja V9 - [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2 grudnia 2019 r. | Obsługiwane |
 | Wydanie V8 - [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8 października 2019 r. | Obsługiwane |
@@ -68,7 +68,6 @@ Poniższe informacje o wersji są dla wersji 10.0.0.0 agenta usługi Azure File 
  
 - Różne ulepszenia wydajności i niezawodności
     - Wykrywanie zmian w udziale plików platformy Azure może zakończyć się niepowodzeniem, jeśli reguły sieci wirtualnej (VNET) i zapory są skonfigurowane na koncie magazynu.
-    - Nie ma już limitu deskryptora zabezpieczeń 2 KB do synchronizowania uznaniowych list kontroli dostępu (DACL).  
     - Mniejsze zużycie pamięci związane z wycofaniem. 
     - Zwiększona wydajność podczas korzystania z polecenia cmdlet [Invoke-AzStorageSyncChangeDetection.](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection)
     - Inne różne ulepszenia niezawodności. 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 4b36f456f70eb79cff1f615c7c136b8fe4b1b3d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22826c32dc2aee0e580ec0b2a05c7eb8f08b7570
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78226710"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115313"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych ogólnego przeznaczenia
 
@@ -32,7 +32,7 @@ Rozmiary maszyn wirtualnych ogólnego przeznaczenia zapewniają zrównoważony s
 
 - [Seria B z rozerwana](sizes-b-series-burstable.md) Maszyny wirtualne są idealne dla obciążeń, które nie wymagają pełnej wydajności procesora CPU w sposób ciągły, takich jak serwery sieci web, małe bazy danych oraz środowiska programistyczne i testowe. Te obciążenia zazwyczaj mają wymagania dotyczące wydajności serii. Seria B zapewnia tym klientom możliwość zakupu rozmiaru maszyny Wirtualnej z wydajnością linii bazowej ze względu na cenę, która umożliwia wystąpieniu maszyny Wirtualnej tworzenie kredytów, gdy maszyna wirtualna wykorzystuje mniej niż jego podstawowa wydajność. Gdy maszyna wirtualna zgromadziła środki, maszyna wirtualna może pęknąć powyżej linii bazowej maszyny Wirtualnej przy użyciu do 100% procesora CPU, gdy aplikacja wymaga wyższej wydajności procesora CPU.
 
-- [Dav4 i Dasv4-series](dav4-dasv4-series.md) to nowe rozmiary wykorzystujące procesor AMD 2.35Ghz EPYC<sup>TM</sup> 7452 w konfiguracji wielowątkowej z pamięcią podręczną L3 o mocy do 256 MB, poświęcającą 8 GB tej pamięci podręcznej L3 na każde 8 rdzeni zwiększających opcje klientów do uruchamiania obciążeń ogólnego przeznaczenia. Seria Dav4 i Dasv4 mają taką samą konfigurację pamięci i dysków jak seria D & Dsv3.
+- [Dav4 i Dasv4-series](dav4-dasv4-series.md) to nowe rozmiary wykorzystujące procesor AMD 2.35Ghz EPYC<sup>TM</sup> 7452 w konfiguracji wielowątkowej z pamięcią podręczną L3 o mocy do 256 MB, poświęcającą 8 MB tej pamięci podręcznej L3 na każde 8 rdzeni zwiększających opcje klientów do uruchamiania obciążeń ogólnego przeznaczenia. Seria Dav4 i Dasv4 mają taką samą konfigurację pamięci i dysków jak seria D & Dsv3.
 
 - Seria [DCv2](dcv2-series.md) może pomóc chronić poufność i integralność danych i kodu podczas przetwarzania w chmurze publicznej. Maszyny te są wspierane przez najnowszą generację procesora Intel XEON E-2288G z technologią SGX. Dzięki technologii Intel Turbo Boost maszyny te mogą zwiększyć 5,0 GHz. Wystąpienia serii DCv2 umożliwiają klientom tworzenie bezpiecznych aplikacji opartych na enklawie w celu ochrony ich kodu i danych, gdy są używane.
 

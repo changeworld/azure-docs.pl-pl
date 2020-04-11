@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: tisande
-ms.openlocfilehash: ecfa98241f74aac43a827b645a6ed877624d643d
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 38e262abefe5444c1fe7586810f4b971cc7baf6c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437803"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114163"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Zmienianie strumieni w interfejsie API usługi Azure Cosmos DB dla usługi MongoDB
 
@@ -26,7 +26,8 @@ ms.locfileid: "80437803"
 Następujące ograniczenia mają zastosowanie podczas korzystania ze strumieni zmian:
 
 * Właściwości `operationType` `updateDescription` i właściwości nie są jeszcze obsługiwane w dokumencie wyjściowym.
-* `insert`Typy `update`operacji `replace` i operacje są obecnie obsługiwane. Operacja usuwania lub inne zdarzenia nie są jeszcze obsługiwane.
+* `insert`Typy `update`operacji `replace` i operacje są obecnie obsługiwane. 
+* Operacja usuwania lub inne zdarzenia nie są jeszcze obsługiwane.
 
 Ze względu na te ograniczenia wymagane są opcje $match, $project i fullDocument, jak pokazano w poprzednich przykładach.
 

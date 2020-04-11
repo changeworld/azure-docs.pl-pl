@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f69f17dc9d0cab2491a2c7f37b5bd082cc96b2d6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 204b5dd4661b34aae8b76d65505a65e20f293f0f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985426"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115327"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy z usługą Azure Data Lake Storage Gen2
 
@@ -112,8 +112,8 @@ Aplikacje innych firm, które używają interfejsów API REST do pracy będzie n
 
 Jeśli [anonimowy dostęp do odczytu](storage-manage-access-to-resources.md) został przyznany kontenerowi, listy ACL nie mają wpływu na ten kontener lub pliki w tym kontenerze.
 
-## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-adls-gen2"></a>Sterownik obiektów blob usługi Windows Azure Storage (WASB) (nieobsługiwalony w usłudze ADLS Gen2)
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Sterownik obiektu blob usługi Windows Azure Storage (WASB) (nieobsługiwał w usłudze Data Lake Storage Gen2)
 
-Obecnie sterownik WASB — który został zaprojektowany do pracy tylko z interfejsem API obiektów Blob — napotyka problemy w kilku typowych scenariuszach, czyli gdy jest klientem konta magazynu z włączoną przestrzenią nazw. Należy zauważyć, że dostęp wieloprotokolowy (MPA) nie będzie ograniczać tych problemów, albo. 
+Obecnie sterownik WASB, który został zaprojektowany do pracy tylko z interfejsem API obiektów Blob, napotyka problemy w kilku typowych scenariuszach. W szczególności, gdy jest klientem do hierarchicznego konta magazynu z włączoną przestrzenią nazw. Dostęp do wielu protokołów w magazynie usługi Data Lake nie ograniczy tych problemów. 
 
-Na razie (i najprawdopodobniej w dającej się przewidzieć przyszłości) nie będziemy obsługiwać klientów korzystających ze sterownika WASB jako klienta na koncie magazynu z włączoną przestrzenią nazw. Zamiast tego zaleca się, aby zdecydować się na użycie sterownika [systemu plików obiektów Blob Azure (ABFS)](data-lake-storage-abfs-driver.md) w środowisku Hadoop. Jeśli próbujesz przeprowadzić migrację poza lokalnym środowisku Hadoop z wersją wcześniejszą niż Hadoop branch-3, otwórz bilet pomocy technicznej platformy Azure, abyśmy mogli skontaktować się z Tobą na właściwej drodze do przodu dla Ciebie i Twojej organizacji.
+Na razie (i najprawdopodobniej w dającej się przewidzieć przyszłości) nie będziemy obsługiwać klientów korzystających ze sterownika WASB jako klienta do hierarchicznego konta magazynu z włączoną przestrzenią nazw. Zamiast tego zaleca się, aby zdecydować się na użycie [sterownika systemu plików obiektów Blob Azure (ABFS)](data-lake-storage-abfs-driver.md) w środowisku Hadoop. Jeśli próbujesz przeprowadzić migrację poza lokalnym środowisku Hadoop z wersją wcześniejszą niż Hadoop branch-3, otwórz bilet pomocy technicznej platformy Azure, abyśmy mogli skontaktować się z Tobą na właściwej drodze do przodu dla Ciebie i Twojej organizacji.

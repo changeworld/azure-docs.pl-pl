@@ -1,27 +1,27 @@
 ---
-title: Dodawanie sugestii i autouzupełniania w polu wyszukiwania
+title: Dodawanie autouzupełniania i sugestii w polu wyszukiwania
 titleSuffix: Azure Cognitive Search
-description: Włącz akcje kwerendy typu w usłudze Azure Cognitive Search, tworząc sugesty i formułując żądania, które wypełniają pole wyszukiwania z wypełnionymi terminami lub frazami.
+description: Włącz akcje kwerendy typu search-as-you-type w usłudze Azure Cognitive Search, tworząc sugesty i formułując żądania, które automatycznie zapełniają pole wyszukiwania z gotowymi terminami lub frazami. Możesz również zwrócić sugerowane mecze.
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
-ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 64c4e65ca7b69c7d61c706b48591ac19be3bfcf5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.topic: conceptual
+ms.date: 04/10/2020
+ms.openlocfilehash: d6c1819366fede0b1e81e43bc92ed56af93b39fd
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72792521"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114960"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-cognitive-search-application"></a>Dodawanie sugestii lub autouzupełniania do aplikacji usługi Azure Cognitive Search
 
 W tym artykule dowiesz się, jak używać [sugestii](https://docs.microsoft.com/rest/api/searchservice/suggestions) i [autouzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete) do tworzenia zaawansowanego pola wyszukiwania, które obsługuje zachowania typu wyszukiwania.
 
-+ *Sugestie* są sugerowane wyniki generowane podczas pisania, gdzie każda sugestia jest pojedynczy wynik z indeksu, który pasuje do tego, co wpisano do tej pory. 
++ *Sugestie* generują wyniki wyszukiwania podczas pisania, gdzie każda sugestia jest pojedynczym wynikiem lub dokumentem wyszukiwania z indeksu, który pasuje do tego, co do tej pory wpisałeś. 
 
-+ *Autouzupełnienie* "kończy" słowo lub frazę, którą użytkownik aktualnie wpisuje. Zamiast zwracać wyniki, kończy kwerendę, którą można następnie wykonać, aby zwrócić wyniki. Podobnie jak w sugestiach, ukończone słowo lub fraza w kwerendzie jest uzależniona od dopasowania w indeksie. Usługa nie będzie oferować kwerend, które zwracają zero wyników w indeksie.
++ *Autouzupełnienie* generuje zapytania przez "wykańczanie" wyrazu lub frazy. Zamiast zwracać wyniki, kończy kwerendę, którą można następnie wykonać, aby zwrócić wyniki. Podobnie jak w sugestiach, ukończone słowo lub fraza w kwerendzie jest uzależniona od dopasowania w indeksie. Usługa nie będzie oferować kwerend, które zwracają zero wyników w indeksie.
 
 Można pobrać i uruchomić przykładowy kod w **DotNetHowToAutocomplete** do oceny tych funkcji. Przykładowy kod jest przeznaczony dla wstępnie utworzonego indeksu wypełnionego [danymi demonstracyjnymi NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). Indeks NYCJobs zawiera [konstrukcję suggester](index-add-suggesters.md), która jest wymagana do korzystania z sugestii lub autouzupełniania. Można użyć przygotowanego indeksu hostowanego w usłudze piaskownicy lub [wypełnić własny indeks](#configure-app) przy użyciu modułu ładującego dane w przykładowym rozwiązaniu NYCJobs. 
 

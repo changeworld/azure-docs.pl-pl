@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 03/25/2020
-ms.openlocfilehash: 4985c492c8ca71da87cf1a519ebc658c203d3952
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/11/2020
+ms.openlocfilehash: e01cc1c07d720c4743a03b5001e640f8b851dd5c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246980"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114003"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>Samouczek: Migrowanie postgreSQL do bazy danych usługi Azure dla usługi PostgreSQL w trybie online przy użyciu usługi DMS za pośrednictwem portalu Azure
 
@@ -45,7 +45,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Pobierz i zainstaluj [wersję społeczności PostgreSQL](https://www.postgresql.org/download/) 9.4, 9.5, 9.6 lub 10. Źródło postgreSql wersja serwera musi być 9.4, 9.5, 9.6, 10 lub 11. Aby uzyskać więcej informacji, zobacz artykuł [Obsługiwane wersje bazy danych PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
 
-    Ponadto lokalna wersja programu PostgreSQL musi być zgodna z wersją usługi Azure Database for PostgreSQL. Na przykład PostgreSQL 9.6 można migrować tylko do usługi Azure Database dla PostgreSQL 9.6, 10 lub 11, ale nie do bazy danych Azure dla PostgreSQL 9.5.
+    Należy również zauważyć, że docelowa usługa Azure Database dla wersji PostgreSQL musi być równa lub późniejsza niż lokalna wersja PostgreSQL. Na przykład PostgreSQL 9.6 można migrować do bazy danych platformy Azure dla PostgreSQL 9.6, 10 lub 11, ale nie do usługi Azure Database dla PostgreSQL 9.5.
 
 * [Utwórz usługę Azure Database dla serwera PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) lub [utwórz usługę Azure Database dla serwera PostgreSQL — hiperskali (Citus).](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)
 * Utwórz usługę migracji bazy danych usługi Azure Database dla platformy Azure przy użyciu modelu wdrażania usługi Azure Resource Manager, który zapewnia łączność między lokacjami lokalnymi serwerami źródłowymi przy użyciu usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej, zobacz [dokumentację sieci wirtualnej,](https://docs.microsoft.com/azure/virtual-network/)a zwłaszcza artykuły przewodnika Szybki start ze szczegółami krok po kroku.

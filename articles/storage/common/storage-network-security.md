@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 77ad8579f31ce900a67e2ba3ddc53a5b034b6d42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7120ba2cf71c9af5373b830d04d0b67952922887
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454673"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113506"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 
@@ -60,7 +60,7 @@ Domyślnie konta magazynu akceptują połączenia od klientów w dowolnej sieci.
 
 Domyślne reguły dostępu do sieci dla kont magazynu można zarządzać za pośrednictwem witryny Azure portal, powershell lub CLIv2.
 
-#### <a name="azure-portal"></a>Portal Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Przejdź do konta magazynu, które chcesz zabezpieczyć.
 
@@ -144,7 +144,7 @@ Konto magazynu i sieci wirtualne udzielone dostęp może być w różnych subskr
 
 Reguły sieci wirtualnej dla kont magazynu można zarządzać za pośrednictwem witryny Azure portal, powershell lub CLIv2.
 
-#### <a name="azure-portal"></a>Portal Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Przejdź do konta magazynu, które chcesz zabezpieczyć.
 
@@ -252,7 +252,7 @@ Reguły sieci IP są dozwolone tylko dla **publicznych internetowych** adresów 
    > Reguły sieci IP nie mają wpływu na żądania pochodzące z tego samego regionu platformy Azure co konto magazynu. Użyj [reguł sieci wirtualnej,](#grant-access-from-a-virtual-network) aby zezwolić na żądania tego samego regionu.
 
   > [!NOTE]
-  > Usługi wdrożone w tym samym regionie co konto magazynu używają prywatnych adresów IP platformy Azure do komunikacji. W związku z tym nie można ograniczyć dostęp do określonych usług platformy Azure na podstawie ich zakresu publicznego przychodzącego adresu IP.
+  > Usługi wdrożone w tym samym regionie co konto magazynu używają prywatnych adresów IP platformy Azure do komunikacji. W związku z tym nie można ograniczyć dostęp do określonych usług platformy Azure na podstawie ich zakresu publicznego wychodzącego adresu IP.
 
 Tylko adresy IPV4 są obsługiwane dla konfiguracji reguł zapory magazynu.
 
@@ -268,7 +268,7 @@ jeśli korzystasz z usługi [ExpressRoute](/azure/expressroute/expressroute-intr
 
 Reguły sieci IP dla kont magazynu można zarządzać za pośrednictwem witryny Azure portal, powershell lub CLIv2.
 
-#### <a name="azure-portal"></a>Portal Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Przejdź do konta magazynu, które chcesz zabezpieczyć.
 
@@ -395,7 +395,7 @@ Ustawienie **Zezwalaj na zaufane usługi firmy Microsoft...** umożliwia równie
 | Azure Logic Apps               | Microsoft.Logic/przepływy pracy              | Umożliwia aplikacjom logiki dostęp do kont magazynu. [Dowiedz się więcej](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity). |
 | Usługa Azure Machine Learning | Microsoft.MachineLearningServices      | Autoryzowane obszary robocze usługi Azure Machine Learning zapisują dane wyjściowe eksperymentu, modele i dzienniki do magazynu obiektów Blob i odczytują dane. [Dowiedz się więcej](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Umożliwia importowanie i eksportowanie danych z określonych wystąpień bazy danych SQL przy użyciu polybase. [Dowiedz się więcej](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
-| Azure Stream Analytics         | Microsoft.StreamAnalityka             | Umożliwia zapisywanie danych z zadania przesyłania strumieniowego w magazynie obiektów Blob. Ta funkcja jest obecnie dostępna w wersji zapoznawczej. [Dowiedz się więcej](/azure/stream-analytics/blob-output-managed-identity). |
+| Usługa Azure Stream Analytics         | Microsoft.StreamAnalityka             | Umożliwia zapisywanie danych z zadania przesyłania strumieniowego w magazynie obiektów Blob. Ta funkcja jest obecnie dostępna w wersji zapoznawczej. [Dowiedz się więcej](/azure/stream-analytics/blob-output-managed-identity). |
 | Azure Synapse Analytics        | Microsoft.Synapse/obszary robocze          | Umożliwia dostęp do danych w usłudze Azure Storage z usługi Synapse Analytics. |
 
 
@@ -407,7 +407,7 @@ W niektórych przypadkach wymagany jest dostęp do odczytu dzienników diagnosty
 
 Można zarządzać wyjątkami reguł sieciowych za pośrednictwem witryny Azure portal, powershell lub interfejsu wiersza polecenia platformy Azure w wersji 2.
 
-#### <a name="azure-portal"></a>Portal Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Przejdź do konta magazynu, które chcesz zabezpieczyć.
 

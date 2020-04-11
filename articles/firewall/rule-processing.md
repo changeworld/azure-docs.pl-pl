@@ -5,28 +5,30 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 03/10/2020
+ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264780"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113447"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Logika przetwarzania reguł usługi Azure Firewall
-Reguły translatora i translatora kontaktów z siecią, reguły sieci i reguły aplikacji można skonfigurować w zaporze platformy Azure. Reguły są przetwarzane zgodnie z typem reguły. 
+Reguły translatora i translatora kontaktów z siecią, reguły sieci i reguły aplikacji można skonfigurować w zaporze platformy Azure. Kolekcje reguł są przetwarzane zgodnie z typem reguły w kolejności priorytetu, niższe numery do wyższych liczb od 100 do 65 000. Nazwa kolekcji reguł może zawierać tylko litery, cyfry, podkreślenia, kropki lub łączniki. Musi zaczynać się od litery lub liczby, a kończyć literą, cyfrą lub podkreśleniem. Maksymalna długość nazwy wynosi 80 znaków.
+
+Najlepiej jest początkowo miejsca numerów priorytetu kolekcji reguł w 100 przyrostów (100, 200, 300 i tak dalej), więc masz miejsce, aby dodać więcej kolekcji reguł w razie potrzeby.
 
 > [!NOTE]
 > Jeśli włączysz filtrowanie oparte na analizie zagrożeń, te reguły mają najwyższy priorytet i są zawsze przetwarzane jako pierwsze. Filtrowanie analizy zagrożeń może odmówić ruchu przed przetworzeniem skonfigurowanych reguł. Aby uzyskać więcej informacji, zobacz [filtrowanie oparte na analizie zagrożeń zapory platformy Azure](threat-intel.md).
 
-## <a name="outbound"></a>Wychodzący
+## <a name="outbound-connectivity"></a>Łączność wychodząca
 
 ### <a name="network-rules-and-applications-rules"></a>Reguły sieci i reguły aplikacji
 
 Jeśli skonfigurujesz reguły sieciowe i reguły aplikacji, reguły sieciowe są stosowane w kolejności priorytetów przed regułami aplikacji. Zasady wygasają. Jeśli więc dopasowanie zostanie znalezione w regule sieci, żadne inne reguły nie są przetwarzane.  Jeśli nie ma dopasowania reguły sieciowej i jeśli protokół jest HTTP, HTTPS lub MSSQL, pakiet jest następnie oceniany przez reguły aplikacji w kolejności priorytetu. Jeśli nadal nie zostanie znalezione żadne dopasowanie, pakiet jest oceniany względem [kolekcji reguł infrastruktury](infrastructure-fqdns.md). Jeśli wciąż nie zostanie znalezione dopasowanie, pakiet zostanie domyślnie odrzucony.
 
-## <a name="inbound"></a>Przychodzący
+## <a name="inbound-connectivity"></a>Łączność przychodząca
 
 ### <a name="nat-rules"></a>Reguły translatora i sieci zuchwów
 

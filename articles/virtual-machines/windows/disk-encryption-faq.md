@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: a4ab59ab5b988b54333c419ced7fa852da531eaa
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8ef791759a33d08aaff068b0dd2634e5f21bb1b6
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984337"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114991"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Szyfrowanie dysków platformy Azure dla maszyn wirtualnych z systemem Windows — często zadawane pytania
 
@@ -64,7 +64,7 @@ Usługa Azure Disk Encryption zapewnia szyfrowanie end-to-end dla dysku systemu 
 
 - Jeśli twoje wymagania obejmują szyfrowanie wszystkich powyższych i end-to-end szyfrowania, należy użyć szyfrowania dysków platformy Azure. 
 - Jeśli wymagania obejmują szyfrowanie tylko danych w pozostałej części za pomocą klucza zarządzanego przez klienta, użyj [szyfrowania po stronie serwera z kluczami zarządzanymi przez klienta](disk-encryption.md). Nie można zaszyfrować dysku za pomocą szyfrowania po stronie serwera azure disk i magazynu za pomocą kluczy zarządzanych przez klienta.
-_ Jeśli używasz scenariusza wywoływanego w [nieobsługiwana scenariusze dla systemu Windows,](disk-encryption-windows.md#unsupported-scenarios)należy wziąć pod uwagę [szyfrowanie po stronie serwera z kluczami zarządzanymi przez klienta](disk-encryption.md). 
+- Jeśli używasz scenariusza wywoływanego w [nieobsługiwana scenariusze dla systemu Windows,](disk-encryption-windows.md#unsupported-scenarios)należy wziąć pod uwagę [szyfrowanie po stronie serwera z kluczami zarządzanymi przez klienta](disk-encryption.md). 
 - Jeśli zasady organizacji umożliwiają szyfrowanie zawartości w spoczynku za pomocą klucza zarządzanego przez platformę Azure, nie jest wymagana żadna akcja — zawartość jest domyślnie szyfrowana. W przypadku dysków zarządzanych zawartość wewnątrz magazynu jest domyślnie szyfrowana za pomocą szyfrowania po stronie serwera za pomocą klucza zarządzanego przez platformę. Kluczem jest zarządzana przez usługę Azure Storage. 
 
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Jak obrócić wpisy tajne lub klucze szyfrowania?
