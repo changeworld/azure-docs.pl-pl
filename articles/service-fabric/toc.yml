@@ -145,8 +145,6 @@
               href: service-fabric-containers-overview.md
             - name: Docker Compose (wersja zapoznawcza)
               href: service-fabric-docker-compose.md
-            - name: Nadzór nad zasobami
-              href: service-fabric-resource-governance.md
         - name: Reliable Services
           items:
             - name: Omówienie usług Reliable Services
@@ -193,6 +191,8 @@
               href: service-fabric-reliable-actors-notes-on-actor-type-serialization.md
         - name: Pliki wykonywalne gościa
           href: service-fabric-guest-executables-introduction.md
+        - name: Nadzór nad zasobami
+          href: service-fabric-resource-governance.md
     - name: Aplikacje i usługi
       items:
         - name: Model aplikacji
@@ -408,8 +408,6 @@
           items:
             - name: Docker Compose (wersja zapoznawcza)
               href: service-fabric-docker-compose.md
-            - name: Nadzór nad zasobami dla kontenerów i usług
-              href: service-fabric-resource-governance.md
             - name: Sterowniki woluminów i rejestrowania
               href: service-fabric-containers-volume-logging-drivers.md
             - name: Wyświetlanie dzienników kontenerów
