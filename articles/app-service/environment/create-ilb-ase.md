@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 98345e8585a3f6653659e0d41eb5c3308a0a6634
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b7fa447e8564fcbf77702f1d3d474cceb48705c5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057413"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114638"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Tworzenie i używanie środowiska usługi aplikacji modułu wewnętrznego równoważenia obciążenia 
 
@@ -60,6 +60,9 @@ Aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążeni
 
     ![Tworzenie środowiska ASE](media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase.png)
 
+> [!NOTE]
+> Nazwa środowiska usługi aplikacji nie może być większa niż 37 znaków.
+
 6. Wybierz sieć
 
 7. Wybierz lub utwórz sieć wirtualną. Jeśli utworzysz nową sieć wirtualną w tym miejscu, zostanie ona zdefiniowana z zakresem adresów 192.168.250.0/23. Aby utworzyć sieć wirtualną z innym zakresem adresów lub w innej grupie zasobów niż środowisko ASE, należy użyć portalu tworzenia sieci wirtualnej platformy Azure. 
@@ -69,6 +72,7 @@ Aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążeni
     ![Sieć ASE][1]
 
 7. Wybierz **pozycję Recenzja i utwórz,** a następnie wybierz pozycję **Utwórz**.
+
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>Tworzenie aplikacji w środowisku ASE z wewnętrznym modułem równoważenia obciążenia ##
 
@@ -126,7 +130,7 @@ Aby dowiedzieć się więcej o konfigurowaniu środowiska ASE równoważenia obc
 
 Ases ILB, które zostały wprowadzone przed majem 2019 wymagane do ustawiania sufiksu domeny podczas tworzenia ASE. Wymagali również przesłania domyślnego certyfikatu opartego na tym sufiksie domeny. Ponadto w przypadku starszego programu ILB ASE nie można samodzielnie logować się do konsoli Kudu z aplikacjami w tym ASE ILB. Podczas konfigurowania systemu DNS dla starszego środowiska ASE równoważenia obciążenia sieciowego należy ustawić rekord wieloznaczny A w strefie zgodnej z sufiksem domeny. 
 
-## <a name="get-started"></a>Wprowadzenie ##
+## <a name="get-started"></a>Rozpoczęcie pracy ##
 
 * Aby rozpocząć pracę ze środowiskami ASE, zobacz [Wprowadzenie do środowisk App Service Environment][Intro]. 
 

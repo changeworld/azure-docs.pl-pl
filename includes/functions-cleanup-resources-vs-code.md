@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: fcfc86a3aca4aae042ce3589988aa91d821dce98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d95055e79356b9e0fe9c4c0e64f5935619204b3
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76842211"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81112857"
 ---
 1. W programie Visual Studio Code naciśnij klawisz F1, aby otworzyć paletę poleceń. W palecie poleceń wyszukaj i wybierz opcję `Azure Functions: Open in portal`.
 
-1. Wybierz aplikację funkcji i naciśnij klawisz Enter. Strona aplikacji funkcji jest otwierana w [witrynie Azure portal](https://portal.azure.com).
+1. Wybierz aplikację funkcji i naciśnij klawisz Enter. Strona aplikacji funkcji zostanie otwarta w witrynie Azure portal.
 
 1. Na karcie **Przegląd** wybierz łącze nazwane w obszarze **Grupa zasobów**.
 

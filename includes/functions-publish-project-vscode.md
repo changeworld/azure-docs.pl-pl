@@ -4,16 +4,20 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: 256510f855256e648ae9203f46eb9f66c9ffaed6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8665b4cec3357baee5d6c1b77b5719645575419
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77029288"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81112863"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikowanie projektu na platformie Azure
 
 W tej sekcji utworzysz aplikację funkcji i powiązane zasoby w subskrypcji platformy Azure, a następnie wdrożyć kod. 
+
+> [!IMPORTANT]
+> Publikowanie do istniejącej aplikacji funkcji spowoduje zastąpienie zawartości tej aplikacji na platformie Azure. 
+
 
 1. Wybierz ikonę platformy Azure na pasku aktywności, a następnie w obszarze **Azure: Functions** wybierz przycisk **Wdrażanie do aplikacji funkcji....**
 
@@ -23,11 +27,8 @@ W tej sekcji utworzysz aplikację funkcji i powiązane zasoby w subskrypcji plat
 
     + **Wybierz subskrypcję:** Wybierz subskrypcję do użycia. Nie zobaczysz tego, jeśli masz tylko jedną subskrypcję.
 
-    + **Wybierz aplikację funkcji na platformie Azure:** Wybierz `+ Create new Function App` (nie `Advanced`). Ten artykuł nie obsługuje [zaawansowanego przepływu publikowania](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options). 
-    
-    >[!IMPORTANT]
-    > Publikowanie do istniejącej aplikacji funkcji spowoduje zastąpienie zawartości tej aplikacji na platformie Azure. 
-    
+    + **Wybierz aplikację funkcji na platformie Azure:** Wybierz `+ Create new Function App`. (Nie wybieraj `Advanced` opcji, która nie jest omówiona w tym artykule).
+      
     + **Wprowadź globalnie unikatową nazwę aplikacji funkcji:** Wpisz nazwę prawidłową w ścieżce adresu URL. Wpisywanie nazwy jest sprawdzane, aby upewnić się, że jest unikatowa w usłudze Azure Functions. 
     
     ::: zone pivot="programming-language-python"
@@ -40,13 +41,13 @@ W tej sekcji utworzysz aplikację funkcji i powiązane zasoby w subskrypcji plat
 
     + **Wybierz lokalizację dla nowych zasobów:** Aby uzyskać lepszą wydajność, wybierz [region](https://azure.microsoft.com/regions/) w pobliżu. 
     
-1.  Po zakończeniu w ramach subskrypcji tworzone są następujące zasoby platformy Azure:
-
-    + **[Grupa zasobów:](../articles/azure-resource-manager/management/overview.md)** Zawiera wszystkie utworzone zasoby platformy Azure. Nazwa jest oparta na nazwie aplikacji funkcji.
-    + **[Konto magazynu:](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)** standardowe konto magazynu jest tworzone z unikatową nazwą, która jest oparta na nazwie aplikacji funkcji.
-    + **[Plan hostingu:](../articles/azure-functions/functions-scale.md)** Plan zużycia jest tworzony w regionie Zachodnie stany USA, aby hostować aplikację funkcji bezserwerowych.
-    + **Aplikacja funkcji:** Projekt jest wdrażany i uruchamia się w tej nowej aplikacji funkcji.
-    + **Usługa Application Insights**: Wystąpienie, które jest połączone z aplikacją funkcji, jest tworzone na podstawie nazwy funkcji.
+1.  Po zakończeniu w ramach subskrypcji tworzone są następujące zasoby platformy Azure przy użyciu nazw opartych na nazwie aplikacji funkcji:
+    
+    + Grupa zasobów, która jest logicznym kontenerem dla powiązanych zasobów.
+    + Standardowe konto usługi Azure Storage, które przechowuje stan i inne informacje o projektach.
+    + Plan zużycia, który definiuje bazowy host dla aplikacji funkcji bez użycia serwera. 
+    + Aplikacja funkcji, która zapewnia środowisko do wykonywania kodu funkcji. Aplikacja funkcji umożliwia grupowanie funkcji jako jednostki logicznej w celu łatwiejszego zarządzania, wdrażania i udostępniania zasobów w ramach tego samego planu hostingowego.
+    + Wystąpienie usługi Application Insights połączone z aplikacją funkcji, która śledzi użycie funkcji bezserwerowej.
 
     Po utworzeniu aplikacji funkcji i zastosowaniu pakietu wdrożeniowego zostanie wyświetlone powiadomienie. 
     
