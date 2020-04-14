@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: f9758678708338a284a35b45f7f9dd43b9a9017c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e74d7dcf8764d167e0080c9d7cca5573bd69ef1d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335953"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261010"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Jak zaimplementować odzyskiwanie po awarii przy użyciu funkcji tworzenia i przywracania kopii zapasowych w usłudze Azure API Management
 
@@ -55,7 +55,7 @@ Wszystkie zadania wykonywane w zasobach przy użyciu usługi Azure Resource Mana
 
 ### <a name="create-an-azure-active-directory-application"></a>Tworzenie aplikacji usługi Azure Active Directory
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Korzystając z subskrypcji zawierającej wystąpienie usługi zarządzania interfejsami API, przejdź do karty **Rejestracje aplikacji** w **usłudze Azure Active Directory** (Azure Active Directory > Manage/App registrations).
 
     > [!NOTE]
@@ -131,7 +131,7 @@ namespace GetTokenResourceManagerRequests
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Wywoływanie operacji tworzenia kopii zapasowych i przywracania
 
-Interfejsy API REST to [Usługa zarządzania interfejsami API — usługa tworzenia kopii zapasowych](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup) i [zarządzania interfejsami API — przywracanie](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore).
+Interfejsy API REST to [Usługa zarządzania interfejsami API — usługa tworzenia kopii zapasowych](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup) i [zarządzania interfejsami API — przywracanie](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore).
 
 Przed wywołaniem operacji "kopia zapasowa i przywracanie" opisanych w poniższych sekcjach ustaw nagłówek żądania autoryzacji dla wywołania REST.
 

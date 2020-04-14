@@ -2,17 +2,17 @@
 title: Akcje w silniku reguł standardowych dla usługi Azure CDN | Dokumenty firmy Microsoft
 description: Dokumentacja dotycząca akcji w silniku reguł standardowych dla usługi Azure Content Delivery Network (Azure CDN).
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: magattus
-ms.openlocfilehash: 53280bc90f629d93ff8a045c80f34a73970b43f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 29138b4fc6716ae5361cc4d7f97ceba41b90c2da
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74171630"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259956"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Akcje w silniku reguł standardowych dla usługi Azure CDN
 

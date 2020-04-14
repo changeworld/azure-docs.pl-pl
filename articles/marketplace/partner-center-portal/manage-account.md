@@ -1,22 +1,22 @@
 ---
-title: Jak zarządzać kontem w portalu Marketplace w Centrum partnerskim
-description: Dowiedz się, jak zarządzać kontem w portalu Marketplace w Centrum partnerskim.
+title: Jak zarządzać kontem w portalu marketplace w Centrum partnerskim
+description: Dowiedz się, jak zarządzać kontem w portalu marketplace w Centrum partnerskim.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 6d3952c38703d8102a45c4117e3c59e3fa464957
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50ea56a8c743636f9fdd9105e5b07a868e71d3d0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275819"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262931"
 ---
-# <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak zarządzać kontem komercyjnej witryny Marketplace w Centrum partnerskim
+# <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak zarządzać kontem w portalu marketplace w Centrum partnerskim
 
-Po [utworzeniu konta Centrum partnerów](./create-account.md)możesz zarządzać swoim kontem i ofertami za pomocą [pulpitu nawigacyjnego w portalu Commercial Marketplace.](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)
+Po [utworzeniu konta Centrum partnerów](./create-account.md)możesz zarządzać swoim kontem i ofertami za pomocą [pulpitu nawigacyjnego rynku komercyjnego.](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)
 
 W tym artykule przyjrzymy się, jak zarządzać kontem Centrum partnerów, w tym jak:
 
@@ -40,7 +40,7 @@ Jeśli jeszcze tego nie zrobiłeś, Ty (lub administrator organizacji) powiniene
 
 ### <a name="open-developer-settings"></a>Otwieranie ustawień dewelopera
 
-Ustawienia konta znajdują się w prawym górnym rogu [pulpitu nawigacyjnego portalu Komercyjnego Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace) w Centrum partnerów. Wybierz ikonę koła zębatego (w prawym górnym rogu pulpitu nawigacyjnego), a następnie wybierz **pozycję Ustawienia dewelopera**.
+Ustawienia konta znajdują się w prawym górnym rogu [pulpitu nawigacyjnego rynku komercyjnego](https://partner.microsoft.com/dashboard/commercial-marketplace) w Centrum partnerów. Wybierz ikonę koła zębatego (w prawym górnym rogu pulpitu nawigacyjnego), a następnie wybierz **pozycję Ustawienia dewelopera**.
 
 ![Menu Ustawienia konta w Centrum partnerów](./media/dashboard-developer-settings.png)
 
@@ -67,7 +67,7 @@ W sekcji Informacje kontaktowe możesz wyświetlić **nazwę wyświetlaną wydaw
 Konto wypłat to konto bankowe, na które wysyłane są wpływy ze sprzedaży. To konto bankowe musi znajdować się w tym samym kraju, w którym zarejestrowano konto Centrum partnerów.
 
 Aby skonfigurować konto wypłat, musisz **powiązać konto Microsoft:**
-1. Przejdź do [strony przeglądowej portalu Marketplace komercyjnego](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) w Centrum partnerskim.
+1. Przejdź do [strony przeglądu rynku komercyjnego](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) w Centrum partnerów.
 2. W sekcji Profil wybierz pozycję **Skojarz swoje konto Microsoft**.
 3. Po wyświetleniu monitu zaloguj się za pomocą konta Microsoft (MSA). To konto nie może być już skojarzone z innym kontem Centrum partnerów.
 4. Aby ukończyć konfigurację konta wypłat, wyloguj się całkowicie z Centrum partnerskiego, a następnie zaloguj się z powrotem za pomocą konta Microsoft (a nie konta służbowego).
@@ -126,8 +126,8 @@ Zalecamy utworzenie unikatowego identyfikatora GUID dla każdej oferty i kanału
 
 Jeśli wdrożysz produkt przy użyciu szablonu i jest on dostępny zarówno w portalu Azure Marketplace, jak i w usłudze GitHub, można utworzyć i zarejestrować 2 różne identyfikatory GUIDS:
 
-*   Produkt A w portalu Azure Marketplace
-*   Produkt A w serwisie GitHub
+*    Produkt A w portalu Azure Marketplace
+*    Produkt A w serwisie GitHub
 
 Raportowanie odbywa się za pomocą wartości partnera (Microsoft Partner ID) i identyfikatorów GUID. Można również śledzić identyfikatory GUID na bardziej szczegółowym poziomie, dostosowując się do każdego planu w ramach oferty.
 
@@ -308,7 +308,7 @@ Aby uzyskać więcej informacji na temat zarządzania rolami i uprawnieniami w i
 
 ## <a name="manage-tenants"></a>Zarządzanie dzierżawcami
 
-Dzierżawa usługi Azure Active Directory (AD), zwana również "kontem służbowym" w tej dokumentacji, jest reprezentacją organizacji skonfigurowanej w witrynie Azure portal i pomaga zarządzać określonym wystąpieniem usług w chmurze firmy Microsoft dla twojego wewnętrznego użytkowników zewnętrznych. Jeśli Twoja organizacja zasubskrybowała usługę w chmurze firmy Microsoft, taką jak Azure, Microsoft Intune lub Office 365, ustanowiono dla Ciebie dzierżawę usługi Azure AD.
+Dzierżawy usługi Azure Active Directory (AD), zwany również "konto służbowe" w całej tej dokumentacji, jest reprezentacją organizacji skonfigurowanej w witrynie Azure portal i pomaga zarządzać określonym wystąpieniem usług w chmurze firmy Microsoft dla użytkowników wewnętrznych i zewnętrznych. Jeśli Twoja organizacja zasubskrybowała usługę w chmurze firmy Microsoft, taką jak Azure, Microsoft Intune lub Office 365, ustanowiono dla Ciebie dzierżawę usługi Azure AD.
 
 Można skonfigurować wielu dzierżaw do użycia z Centrum partnerów. Każdy użytkownik z rolą **menedżera** na koncie Centrum partnerów będzie miał możliwość dodania i usunięcia dzierżaw usługi Azure AD z konta.  
 

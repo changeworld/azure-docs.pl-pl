@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 26c309eeebd7226c6777ec41ae674587da796dd4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 52feeb67681bacb64cd20601e00f00109a4b810f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78199669"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257916"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak używać usuwania nietrwałego w usłudze Key Vault z programem PowerShell
 
@@ -202,6 +202,34 @@ Podobnie jak klucze, wpisy tajne są zarządzane za pomocą własnych poleceń:
   Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
 
+#### <a name="certificates"></a>Certyfikaty
+
+Certyfikaty można zarządzać za pomocą poniższych poleceń:
+
+- Usuń certyfikat o nazwie SQLPassword: 
+  ```powershell
+  Remove-AzKeyVaultCertificate -VaultName ContosoVault -Name 'MyCert'
+  ```
+
+- Wyświetl listę wszystkich usuniętych certyfikatów w magazynie kluczy: 
+  ```powershell
+  Get-AzKeyVaultCertificate -VaultName ContosoVault -InRemovedState
+  ```
+
+- Odzyskiwanie certyfikatu w usuniętym stanie: 
+  ```powershell
+  Undo-AzKeyVaultCertificateRemoval -VaultName ContosoVault -Name 'MyCert'
+  ```
+
+- Przeczyść certyfikat w usuniętym stanie: 
+
+  > [!IMPORTANT]
+  > Przeczyszczanie certyfikatu spowoduje trwałe usunięcie go i nie będzie można go odzyskać!
+
+  ```powershell
+  Remove-AzKeyVaultcertificate -VaultName ContosoVault -Name 'MyCert' -InRemovedState 
+  ```
+  
 ## <a name="purging-a-soft-delete-protected-key-vault"></a>Czyszczenie chronionego magazynu kluczy o nieumiejętnym usuwaniu
 
 > [!IMPORTANT]

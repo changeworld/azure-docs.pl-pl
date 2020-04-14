@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31a5195038ef25acadc08e2acbedf8471b25833c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086324"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261418"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Uwierzytelnianie zadania usługi Azure Stream Analytics w usłudze Power BI za pomocą tożsamości zarządzanej
 
@@ -160,7 +160,7 @@ Teraz, gdy zostało utworzone zadanie usługi Stream Analytics, można uzyskać 
 ### <a name="use-the-power-bi-ui"></a>Korzystanie z interfejsu użytkownika usługi Power BI
 
    > [!Note]
-   > Aby dodać zadanie usługi Stream Analytics do obszaru roboczego usługi Power BI przy użyciu interfejsu użytkownika, należy również włączyć dostęp jednostki usługi w **ustawieniach dewelopera** w portalu administracyjnym usługi Power BI. Zobacz [Wprowadzenie do jednostki usługi, aby](https://docs.microsoft.com/power-bi/developer/embed-service-principal#get-started-with-a-service-principal) uzyskać więcej informacji.
+   > Aby dodać zadanie usługi Stream Analytics do obszaru roboczego usługi Power BI przy użyciu interfejsu użytkownika, należy również włączyć dostęp jednostki usługi w **ustawieniach dewelopera** w portalu administracyjnym usługi Power BI. Zobacz [Wprowadzenie do jednostki usługi, aby](https://docs.microsoft.com/power-bi/developer/embed-service-principal) uzyskać więcej informacji.
 
 1. Przejdź do ustawień dostępu obszaru roboczego. Zobacz ten artykuł, aby uzyskać więcej informacji: [Udzielanie dostępu do obszaru roboczego](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace).
 

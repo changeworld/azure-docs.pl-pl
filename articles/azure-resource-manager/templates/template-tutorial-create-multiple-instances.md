@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/08/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70c86c82cb28bf767da50cca20f7c1d052d4bf01
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 83afff3aa15caa1743f66eea9eaee541492b8d1c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982546"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260840"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Samouczek: Tworzenie wielu wystąpień zasobów za pomocą szablonów ARM
 
@@ -124,7 +124,8 @@ Aby wyświetlić wszystkie trzy konta magazynu, pomiń parametr --name:
 echo "Enter a project name that is used to generate resource group name:" &&
 read projectName &&
 resourceGroupName="${projectName}rg" &&
-az storage account list --resource-group $resourceGroupName
+az storage account list --resource-group $resourceGroupName &&
+echo "Press [ENTER] to continue ..."
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -133,6 +134,7 @@ az storage account list --resource-group $resourceGroupName
 $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
 $resourceGroupName = "${projectName}rg"
 Get-AzStorageAccount -ResourceGroupName $resourceGroupName
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 ---
@@ -145,7 +147,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 1. W witrynie Azure portal wybierz **grupę zasobów** z lewego menu.
 2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
-3. Wybierz nazwę grupy zasobów.  W grupie zasobów zostanie wyświetlonych łącznie sześć zasobów.
+3. Wybierz nazwę grupy zasobów.  Zobaczysz w sumie trzy zasoby w grupie zasobów.
 4. Wybierz **pozycję Usuń grupę zasobów** z górnego menu.
 
 ## <a name="next-steps"></a>Następne kroki

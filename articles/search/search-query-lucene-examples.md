@@ -9,21 +9,21 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3c54f864b5bd562fdc0a84b2903198704032b360
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: bc691299f38d562aee5c08a89e10372331663f8e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998497"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262812"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Użyj "pełnej" składni wyszukiwania Lucene (zaawansowane zapytania w usłudze Azure Cognitive Search)
 
 Podczas konstruowania kwerend dla usługi Azure Cognitive Search, można zastąpić [domyślny analizator prostych zapytań](query-simple-syntax.md) z bardziej [ekspansywny Analizator zapytania Lucene w usłudze Azure Cognitive Search](query-lucene-syntax.md) do formułowania definicji kwerend specjalistycznych i zaawansowanych. 
 
-Analizator lucene obsługuje złożone konstrukcje zapytań, takie jak zapytania o zakresie pola, wyszukiwanie rozmyte i prefiksu z symbolami wieloznacznych, wyszukiwanie zbliżeniowe, zwiększanie terminów i wyszukiwanie wyrażeń regularnych. Dodatkowa moc jest wyposażona w dodatkowe wymagania dotyczące przetwarzania, więc należy się spodziewać nieco dłuższego czasu wykonywania. W tym artykule można przejść przez przykłady demonstrowania operacji kwerendy dostępne podczas korzystania z pełnej składni.
+Analizator lucene obsługuje złożone konstrukcje zapytań, takie jak zapytania o zakresie pola, wyszukiwanie rozmyte, wyszukiwanie infix i sufiks wieloznaczne, wyszukiwanie zbliżeniowe, zwiększanie terminów i wyszukiwanie wyrażeń regularnych. Dodatkowa moc jest wyposażona w dodatkowe wymagania dotyczące przetwarzania, więc należy się spodziewać nieco dłuższego czasu wykonywania. W tym artykule można przejść przez przykłady demonstrowania operacji kwerendy dostępne podczas korzystania z pełnej składni.
 
 > [!Note]
-> Wiele konstrukcji specjalistycznych zapytań włączonych za pośrednictwem pełnej składni zapytania Lucene nie jest [analizowanych tekstu,](search-lucene-query-architecture.md#stage-2-lexical-analysis)co może być zaskakujące, jeśli spodziewasz się wynikającej lub lemmatyzacji. Analiza leksykalne jest przeprowadzana tylko na pełnych terminach (kwerenda terminowa lub kwerenda frazowa). Typy zapytań z niekompletnymi terminami (kwerenda prefiksu, kwerenda wieloznaczna, zapytanie regularne, kwerenda rozmyta) są dodawane bezpośrednio do drzewa kwerend, z pominięciem etapu analizy. Jedyną transformacją wykonano na niekompletnych warunkach kwerendy jest małe przysłości. 
+> Wiele konstrukcji specjalistycznych zapytań włączonych za pośrednictwem pełnej składni zapytania Lucene nie jest [analizowanych tekstu,](search-lucene-query-architecture.md#stage-2-lexical-analysis)co może być zaskakujące, jeśli spodziewasz się wynikającej lub lemmatyzacji. Analiza leksykalne jest przeprowadzana tylko na pełnych terminach (kwerenda terminowa lub kwerenda frazowa). Typy zapytań z niekompletnymi terminami (kwerenda prefiksu, kwerenda wieloznaczna, zapytanie regularne, kwerenda rozmyta) są dodawane bezpośrednio do drzewa kwerend, z pominięciem etapu analizy. Jedyną transformacją wykonano na warunkach kwerendy częściowej jest małe przysłowiowe. 
 >
 
 ## <a name="formulate-requests-in-postman"></a>Formułowanie żądań w listonoszu

@@ -1,20 +1,20 @@
 ---
-title: Często zadawane pytania i terminologia dotyczące analityki w portalu Marketplace w Centrum partnerskim
-description: Dowiedz się, jak odpowiedzieć na często zadawane pytania dotyczące analityki w portalu Commercial Marketplace. Zawiera słownik danych dla terminologii analitycznej.
+title: Często zadawane pytania i terminologia dotyczące analityki rynku komercyjnego w Centrum partnerskim
+description: Dowiedz się, jak odpowiedzieć na często zadawane pytania dotyczące analityki w komercyjnych firmach. Zawiera słownik danych dla terminologii analitycznej.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: d53ae01fb302382ca5bc2d31e729e153aea6c838
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7367e58de818c20723c02a6763b1bf1e3b18f24
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286085"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251830"
 ---
-# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Często zadawane pytania i terminologia dla analityki w portalu Commercial Marketplace
+# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Często zadawane pytania i terminologia dla analityki rynku komercyjnego
 
 Ten artykuł dotyczy często zadawanych pytań dotyczących komunikatów analitycznych w Centrum partnerów, a także zawiera słownik terminologii analitycznej.
 
@@ -29,14 +29,14 @@ Ta sekcja zawiera odpowiedzi na często zadawane pytania dotyczące wiadomości 
 Dlaczego może być wyświetlany ten komunikat:
 
 - Obecnie nie istnieją żadne przejęcia opublikowanych ofert na rynku. Może to oznaczać, że Twoje oferty są aktywne w marketplace i zyskują wyświetlenia od klientów na stronach wyświetlania produktu, ale klienci nie podjęli jeszcze działań w celu ich zakupu i wdrożenia.
-- Publikowanie oferty może być w toku i nie jest jeszcze aktywne. Klienci mogą zdobyć tylko oferty na żywo. Aby sprawdzić stan ofert, zobacz Omówienie na [pulpicie nawigacyjnym Analizowanie](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary). Aby uzyskać więcej informacji, zobacz [Pulpit nawigacyjny podsumowania w analizie w portalu Marketplace komercyjnym](./summary-dashboard.md).
+- Publikowanie oferty może być w toku i nie jest jeszcze aktywne. Klienci mogą zdobyć tylko oferty na żywo. Aby sprawdzić stan ofert, zobacz Omówienie na [pulpicie nawigacyjnym Analizowanie](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary). Aby uzyskać więcej informacji, zobacz [Podsumowanie pulpitu nawigacyjnego w analizie rynku komercyjnego](./summary-dashboard.md).
 - Twoje oferty mogą być wymienione jako **Contact Me**, które są ofertami tylko na liście i nie mogą być kupowane przez klientów na rynku. Mimo że te oferty generują potencjalnych klientów i są ci udostępniane, zamówienia nie są tworzone dla tych ofert, ponieważ nie można ich kupić. Aby sprawdzić typ aukcji oferty, przejdź do strony konfiguracji.
 
 **Wiem, że mam dane analityczne, ale pojawia się poniższy komunikat:**
 
 ![Brak danych dla danego zakresu dat](./media/analytics-faq-data-range.png)
 
-Jeśli otrzymujesz ten komunikat, oznacza to, że masz dane analityczne, ale nie ma danych dla wybranego zakresu dat. Wybierz inny zakres dat lub niestandardowy zakres dat, aby wyświetlić wszystkie dane od 2010 roku. Aby uzyskać więcej informacji, zobacz sekcję Zakres dat w [pulpicie podsumowania w analizie w portalu Commercial Marketplace](./summary-dashboard.md).
+Jeśli otrzymujesz ten komunikat, oznacza to, że masz dane analityczne, ale nie ma danych dla wybranego zakresu dat. Wybierz inny zakres dat lub niestandardowy zakres dat, aby wyświetlić wszystkie dane od 2010 roku. Aby uzyskać więcej informacji, zobacz sekcję Zakres dat [w pulpicie podsumowania w analizie rynku komercyjnego](./summary-dashboard.md).
 
 ## <a name="dictionary-of-data-terms"></a>Słownik terminów danych
 
@@ -96,10 +96,10 @@ Jeśli otrzymujesz ten komunikat, oznacza to, że masz dane analityczne, ale nie
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby zapoznać się z omówieniem raportów analitycznych dostępnych w portalu Partner Center Commercial Marketplace, zobacz [Analytics dla portalu Marketplace Commercial Marketplace w Centrum partnerów.](./analytics.md)
-- Aby uzyskać wykresy, trendy i wartości danych zagregowanych, które podsumowują aktywność w portalu marketplace dla Twojej oferty, zobacz [Pulpit nawigacyjny podsumowania w analizie w portalu Marketplace komercyjnym.](./summary-dashboard.md)
-- Aby uzyskać informacje o zamówieniach w formacie graficznym i do pobrania, zobacz [Pulpit nawigacyjny zamówień w analizie w portalu Commercial Marketplace.](./orders-dashboard.md)
-- W przypadku maszyn wirtualnych (VM) oferuje użycie i metryki rozliczeniowe taryfowe, zobacz [Pulpit nawigacyjny użycia w analizie w portalu Commercial Marketplace](./usage-dashboard.md).
-- Aby uzyskać szczegółowe informacje o klientach, w tym trendy wzrostu, zobacz [Pulpit nawigacyjny klientów w analizie portalu komercyjnego marketplace.](./customer-dashboard.md)
-- Aby uzyskać listę żądań pobierania w ciągu ostatnich 30 dni, zobacz [Pulpit nawigacyjny pobierania w analizie w witrynie Commercial Marketplace.](./downloads-dashboard.md)
-- Aby wyświetlić skonsolidowany widok opinii klientów dotyczących ofert w witrynie Azure Marketplace i AppSource, zobacz [Pulpit nawigacyjny ocen i opinii w analizie w portalu Marketplace komercyjnym.](./ratings-reviews.md)
+- Aby uzyskać przegląd raportów analitycznych dostępnych w komercyjnym rynku Centrum partnerów, zobacz [Analytics dla rynku komercyjnego w Centrum partnerów.](./analytics.md)
+- Aby uzyskać wykresy, trendy i wartości danych agregujących, które podsumowują aktywność w portalu marketplace dla Twojej oferty, zobacz [Podsumowanie pulpitu nawigacyjnego w analizie rynku komercyjnego.](./summary-dashboard.md)
+- Aby uzyskać informacje o zamówieniach w formacie graficznym i do pobrania, zobacz [Pulpit nawigacyjny zamówień w analizie rynku komercyjnego](./orders-dashboard.md).
+- W przypadku maszyny wirtualnej (VM) oferuje użycie i metryki rozliczeniowe taryfowe, zobacz [Pulpit nawigacyjny użycia w analizie komercyjnego rynku.](./usage-dashboard.md)
+- Aby uzyskać szczegółowe informacje o klientach, w tym trendy wzrostu, zobacz [Pulpit nawigacyjny klientów w analizie rynku komercyjnego.](./customer-dashboard.md)
+- Aby uzyskać listę żądań pobierania w ciągu ostatnich 30 dni, zobacz [Pulpit nawigacyjny pobierania w analizie rynku komercyjnego](./downloads-dashboard.md).
+- Aby wyświetlić skonsolidowany widok opinii klientów dotyczących ofert w witrynie Azure Marketplace i AppSource, zobacz [Pulpit nawigacyjny ocen i opinii w analizie komercyjnego portalu marketplace.](./ratings-reviews.md)

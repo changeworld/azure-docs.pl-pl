@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 12aeea8393a00d7d2662c826f847265bdbdc0119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48a83fad3395f6ecf06fb1f1ba95aa1b06a53431
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442712"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259140"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Jak zintegrować usługę Azure API Management z usługą Azure Application Insights
 
@@ -51,7 +51,7 @@ Przed użyciem usługi Azure Application Insights należy najpierw utworzyć wys
     ![Rejestrator aplikacji](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> Za sceną [logger](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate) jednostki jest tworzony w wystąpieniu zarządzania interfejsami API, zawierający klucz instrumentacji wystąpienia usługi Application Insights.
+> Za sceną [logger](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate) jednostki jest tworzony w wystąpieniu zarządzania interfejsami API, zawierający klucz instrumentacji wystąpienia usługi Application Insights.
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>Włącz rejestrowanie usługi Application Insights dla interfejsu API
 
@@ -70,7 +70,7 @@ Przed użyciem usługi Azure Application Insights należy najpierw utworzyć wys
 > Zastąpienie wartości domyślnej **0** w polu **Pierwszy bajt treści** może znacznie zmniejszyć wydajność interfejsów API.
 
 > [!NOTE]
-> Za sceną [jednostka diagnostyczna](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/diagnostic/createorupdate) o nazwie "applicationinsights" jest tworzony na poziomie interfejsu API.
+> Za sceną [jednostka diagnostyczna](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) o nazwie "applicationinsights" jest tworzony na poziomie interfejsu API.
 
 | Nazwa ustawienia                        | Typ wartości                        | Opis                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

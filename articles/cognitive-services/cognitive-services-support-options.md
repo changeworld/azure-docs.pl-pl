@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 5f9ad827fa947e645f7eb4850f90a73c61a45cd3
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 00e966dbee6c1993256a94d734bcc6261aea00af
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637106"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258436"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Opcje pomocy technicznej i opinii usługi Azure Cognitive Services
 
@@ -59,10 +59,7 @@ Gdzie `{search keywords}` jest kontekst wyszukiwania. Należy rozważyć użycie
 
 Jeśli nie możesz znaleźć odpowiedzi na problem z polem wyszukiwania w polu Przepełnienie stosu, prześlij nowe pytanie. Przepełnienie stosu jest preferowanym kanałem pytań związanych z rozwojem. To tam członkowie społeczności Stack Overflow i członkowie zespołu firmy Microsoft są bezpośrednio zaangażowani w pomoc w rozwiązywaniu problemów.
 
- Podczas formułowanie pytania należy użyć jednego z następujących tagów:
-
- - [Microsoft Cognitive](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
- - [Azure Cognitive Services](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
+Zamieść pytanie [tutaj](https://go.microsoft.com/fwlink/?linkid=2126464). Użyj odpowiedniego tagu dla swojego pytania, więc na pewno zobaczymy pytanie.
 
 > [!TIP]
 > Poniższe posty z Przepełnienie stosu zawierają wskazówki dotyczące tworzenia pytań i dodawania kodu źródłowego. Przestrzeganie tych wytycznych może zwiększyć szanse, że członkowie społeczności szybko oceniają twoje pytanie i odpowiedzą na nie:

@@ -5,12 +5,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Zawiera opis wymagań dotyczących sieci przy uruchamianiu usługi Azure Dev Spaces w usługach Azure Kubernetes
 keywords: Usługi Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, CNI, kubenet, SDN, network
-ms.openlocfilehash: 82d046aa36fe9caf6337aa7f58ca0db525062283
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e344576caf276ae7cb5fe00395c84810a4e7d32
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240568"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262047"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Konfigurowanie sieci dla usługi Azure Dev Spaces w różnych topologiach sieci
 
@@ -20,9 +20,9 @@ Usługa Azure Dev Spaces jest uruchamiana w klastrach usługi Azure Kubernetes (
 
 ## <a name="virtual-network-or-subnet-configurations"></a>Konfiguracje sieci wirtualnej lub podsieci
 
-Klaster usługi AKS może mieć inną konfigurację sieci wirtualnej lub podsieci w celu ograniczenia ruchu przychodzącego lub wychodzącego dla klastra AKS. Na przykład klaster może znajdować się za zaporą, taką jak Zapora azure, lub można użyć sieciowych grup zabezpieczeń lub ról niestandardowych do ograniczania ruchu sieciowego.
+Klaster usługi AKS może mieć inną konfigurację sieci wirtualnej lub podsieci w celu ograniczenia ruchu przychodzącego lub wychodzącego dla klastra AKS. Na przykład klaster może znajdować się za zaporą, taką jak Zapora azure, lub można użyć sieciowych grup zabezpieczeń lub ról niestandardowych do ograniczania ruchu sieciowego. Przykładową konfigurację sieci można znaleźć w [przykładowym repozytorium usług Azure Dev Spaces w usłudze GitHub.][sample-repo]
 
-Usługa Azure Dev Spaces ma pewne wymagania dotyczące ruchu *sieciowego przychodzącego i wychodzącego,* a także ruchu *tylko przychodzących.* Jeśli usługa Azure Dev Spaces jest korzystać z usługi Azure Dev Spaces w klastrze AKS z konfiguracją sieci wirtualnej lub podsieci, która ogranicza ruch dla klastra AKS, należy przestrzegać następujących wymagań dotyczących ruchu przychodzącego i ruchu wychodzącego, aby usługa Azure Dev Spaces prawidłowo działać.
+Usługa Azure Dev Spaces ma pewne wymagania dotyczące ruchu *sieciowego przychodzącego i wychodzącego,* a także ruchu *tylko przychodzących.* Jeśli używasz usługi Azure Dev Spaces w klastrze AKS z konfiguracją sieci wirtualnej lub podsieci, która ogranicza ruch dla klastra AKS, należy wykonać następujące wymagania dotyczące ruchu przychodzącego i ruchu wychodzącego, aby usługa Azure Dev Spaces działała poprawnie.
 
 ### <a name="ingress-and-egress-network-traffic-requirements"></a>Wymagania dotyczące ruchu sieciowego przychodzącego i wychodzącego
 
@@ -109,4 +109,5 @@ Dowiedz się, jak usługa Azure Dev Spaces pomaga tworzyć bardziej złożone ap
 [endpoint-options]: #using-different-endpoint-options
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md
+[sample-repo]: https://github.com/Azure/dev-spaces/tree/master/advanced%20networking
 [team-quickstart]: quickstart-team-development.md

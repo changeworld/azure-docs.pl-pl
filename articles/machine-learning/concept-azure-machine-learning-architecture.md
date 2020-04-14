@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f779781eee81bf85f6420e5bae6b0feb62680b8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f1d23f11cf73680a8861c9f1ac6cbd40ad497a4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064187"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257338"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: architektura i koncepcje
 
@@ -27,7 +27,7 @@ Dowiedz się więcej o architekturze, koncepcjach i przepływie pracy dla usług
 
 Przepływ pracy modelu uczenia maszynowego zazwyczaj następuje następująca sekwencja:
 
-1. **Pociąg**
+1. **Szkolenie**
     + Tworzenie skryptów szkoleniowych uczenia maszynowego w **pythonie**, **R**lub z projektantem wizualnym.
     + Tworzenie i **konfigurowanie celu obliczeniowego**.
     + **Prześlij skrypty** do skonfigurowanego obiektu docelowego obliczeń, aby działały w tym środowisku. Podczas szkolenia skrypty mogą odczytywać z magazynów danych lub zapisywać je w **magazynach danych.** Dzienniki i dane wyjściowe wyprodukowane podczas szkolenia są zapisywane jako **przebiegi** w **obszarze roboczym** i grupowane w ramach **eksperymentów.**
@@ -187,7 +187,7 @@ Aby uzyskać więcej informacji zobacz następujące artykuły:
 * [Trenuj modele ML z estymatorami](how-to-train-ml-models.md).
 * [Trenuj modele uczenia głębokiego Pytorch na dużą skalę dzięki usłudze Azure Machine Learning.](how-to-train-pytorch.md)
 * [Trenuj i rejestruj modele TensorFlow na dużą skalę za pomocą usługi Azure Machine Learning.](how-to-train-tensorflow.md)
-* [Trenuj i rejestruj modele Chainer na dużą skalę dzięki usłudze Azure Machine Learning.](how-to-train-chainer.md)
+* [Trenuj i rejestruj modele Chainer na dużą skalę dzięki usłudze Azure Machine Learning.](how-to-train-ml-models.md)
 
 ### <a name="endpoints"></a>Punkty końcowe
 

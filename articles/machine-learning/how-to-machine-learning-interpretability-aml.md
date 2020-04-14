@@ -1,5 +1,5 @@
 ---
-title: Możliwość interpretacji modelu dla przebiegów lokalnych i zdalnych
+title: Objaśniaj modele i prognozy uczenia maszynowego
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak uzyskać wyjaśnienia dotyczące sposobu, w jaki model uczenia maszynowego określa ważność funkcji i tworzy prognozy podczas korzystania z sdk usługi Azure Machine Learning.
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/02/2020
-ms.openlocfilehash: 1ff42149ccb629a0a7094e6dfede422d4dd7f61f
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.date: 04/12/2020
+ms.openlocfilehash: c1282ed16c9e3b92e7d5ec3f9969bee6fc3d917f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632022"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257207"
 ---
-# <a name="model-interpretability-for-local-and-remote-runs"></a>Możliwość interpretacji modelu dla przebiegów lokalnych i zdalnych
+# <a name="explain-machine-learning-models-and-predictions"></a>Objaśniaj modele i prognozy uczenia maszynowego
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -30,7 +30,6 @@ W tym przewodniku instrukcja, nauczyć się używać pakietu interpretability pa
 
 * Wyjaśnij zachowanie całego modelu i poszczególnych prognoz na platformie Azure.
 
- 
 * Użyj pulpitu nawigacyjnego wizualizacji, aby wchodzić w interakcje z objaśnieniami modelu.
 
 * Wdrażanie objaśnienia oceniania wraz z modelem, aby obserwować objaśnienia podczas wnioskowania.

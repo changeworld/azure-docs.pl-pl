@@ -1,22 +1,22 @@
 ---
-title: Tworzenie konta w portalu Marketplace w Centrum partnerskim
-description: Dowiedz się, jak utworzyć konto w portalu Marketplace w Centrum partnerskim.
+title: Tworzenie konta w portalu marketplace komercyjnego w Centrum partnerskim
+description: Dowiedz się, jak utworzyć konto w portalu marketplace w Centrum partnerskim.
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 03/10/2020
-ms.openlocfilehash: 82caf46905c0b76deae524d8b172d70b436361d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c635d285f83e8e9c4c5547a9ee983686c507819
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281361"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261741"
 ---
-# <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Tworzenie konta w portalu Marketplace w Centrum partnerskim
+# <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Tworzenie konta w portalu marketplace komercyjnego w Centrum partnerskim
 
-Aby opublikować oferty w [witrynie Azure Marketplace](https://azuremarketplace.microsoft.com/) lub [AppSource,](https://appsource.microsoft.com/)musisz utworzyć konto w programie Portalu Commercial Marketplace w Centrum partnerów. W tym artykule omówimy sposób tworzenia konta Centrum partnerów i dodawanie nowych wydawców do programu Marketplace komercyjnego.
+Aby opublikować oferty w [witrynie Azure Marketplace](https://azuremarketplace.microsoft.com/) lub [Microsoft AppSource,](https://appsource.microsoft.com/)należy utworzyć konto w komercyjnym programie marketplace w Centrum partnerów. W tym artykule omówimy sposób tworzenia konta Centrum partnerów i dodawanie nowych wydawców do programu Marketplace komercyjnego.
 
 >[!IMPORTANT]
 >Jeśli masz konto w [portalu Cloud Partner Portal (CPP),](https://cloudpartner.azure.com) które zostało przeniesione do Centrum partnerów, nie musisz tworzyć nowego konta. Aby uzyskać więcej [informacji, zobacz Wydawcy przechodzący z CPP.](#publishers-moving-from-cpp)
@@ -75,7 +75,7 @@ Po potwierdzeniu informacji o profilu wydawcy zaakceptuj warunki i utwórz konto
 
 Po zarejestrowaniu zostaniesz przesunięty na stronę Przegląd portalu komercyjnego. **Rynek komercyjny** jest wyświetlany na lewym pasku nawigacyjnym. Jeśli wybierzesz **Ustawienia** > **programów ustawień** > **partnerów,** zobaczysz, że rynek komercyjny jest wymieniony jako zarejestrowany.
 
-Dziękujemy za utworzenie konta w portalu Commercial Marketplace w Centrum partnerskim! Aby uzyskać pomoc, zobacz [Przegląd portalu komercyjnego](./commercial-marketplace-overview.md). Aby uzyskać pomoc dotyczącą dodawania wydawców, zobacz [Dodawanie nowych wydawców do programu Commercial Marketplace](#add-new-publishers-to-the-commercial-marketplace-program).
+Dziękujemy za utworzenie konta w portalu Commercial Marketplace w Centrum partnerskim! Aby uzyskać pomoc, zobacz [przegląd rynku komercyjnego](./commercial-marketplace-overview.md). Aby uzyskać pomoc dotyczącą dodawania wydawców, zobacz [Dodawanie nowych wydawców do rynku komercyjnego.](#add-new-publishers-to-the-commercial-marketplace-program)
 
 ## <a name="create-an-account-using-existing-microsoft-partner-center-enrollments"></a>Tworzenie konta przy użyciu istniejących rejestracji w Centrum partnerów firmy Microsoft
 
@@ -119,7 +119,7 @@ Po zalogowaniu się użyj następujących czynności, aby zakończyć konfigurow
 
 Po zarejestrowaniu zostaniesz przesunięty na stronę Przegląd portalu komercyjnego. **Rynek komercyjny** jest wyświetlany na lewym pasku nawigacyjnym. Jeśli wybierzesz **Ustawienia** > **programów ustawień** > **partnerów,** zobaczysz, że rynek komercyjny jest wymieniony jako zarejestrowany.
 
-Dziękujemy za utworzenie konta w Centrum partnerskim! Aby uzyskać pomoc, zobacz [Przegląd portalu komercyjnego](./commercial-marketplace-overview.md). Aby uzyskać pomoc dotyczącą dodawania wydawców, zobacz [Dodawanie nowych wydawców do programu Commercial Marketplace](#add-new-publishers-to-the-commercial-marketplace-program).
+Dziękujemy za utworzenie konta w Centrum partnerskim! Aby uzyskać pomoc, zobacz [przegląd rynku komercyjnego](./commercial-marketplace-overview.md). Aby uzyskać pomoc dotyczącą dodawania wydawców, zobacz [Dodawanie nowych wydawców do rynku komercyjnego.](#add-new-publishers-to-the-commercial-marketplace-program)
 
 ### <a name="enrolled-in-a-developer-program"></a>Zarejestrowane w programie dla deweloperów
 
@@ -143,13 +143,13 @@ Po zalogowaniu się, aby zakończyć konfigurowanie konta, użyj następujących
 
 Po zarejestrowaniu zostaniesz przesunięty na stronę Przegląd portalu komercyjnego. **Rynek komercyjny** jest wyświetlany na lewym pasku nawigacyjnym. Jeśli wybierzesz **Ustawienia** > **programów dla** > **programistów,** zobaczysz, że rynek komercyjny jest wymieniony jako zarejestrowany.
 
-Dziękujemy za utworzenie konta w Centrum partnerskim! Aby uzyskać pomoc, zobacz [Przegląd portalu komercyjnego](./commercial-marketplace-overview.md). Aby uzyskać pomoc dotyczącą dodawania wydawców, zobacz [Dodawanie nowych wydawców do programu Commercial Marketplace](#add-new-publishers-to-the-commercial-marketplace-program).
+Dziękujemy za utworzenie konta w Centrum partnerskim! Aby uzyskać pomoc, zobacz [przegląd rynku komercyjnego](./commercial-marketplace-overview.md). Aby uzyskać pomoc dotyczącą dodawania wydawców, zobacz [dodawanie nowych wydawców do rynku komercyjnego.](#add-new-publishers-to-the-commercial-marketplace-program)
 
 ## <a name="publishers-moving-from-cpp"></a>Wydawcy odchodzący z CPP
 
 Jeśli twoje konto zostało zmigrowane z [portalu Cloud Partner Portal (CPP),](https://cloudpartner.azure.com)nie trzeba tworzyć nowego konta Centrum partnerów. Powinieneś otrzymać niestandardowe łącze do nowego konta Centrum partnerów w wiadomości e-mail i w powiadomieniu o banerze po zalogowaniu się na istniejące konto CPP.
 
-Po włączeniu nowego konta Centrum partnerów, odwiedzając ten niestandardowy link, możesz wrócić do swojego konta, odwiedzając pulpit nawigacyjny portalu handlowego w Centrum [partnerów.](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)
+Po włączeniu nowego konta Centrum partnerów, odwiedzając ten niestandardowy link, możesz wrócić do swojego konta, odwiedzając [pulpit nawigacyjny rynku komercyjnego](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) w Centrum partnerów.
 
 Umowa wydawnicza i informacje o profilu firmy zostaną przeniesione na nowe konto Centrum partnerów wraz z wszelkimi wcześniej skonfigurowanymi informacjami o profilu wypłaty konta, kontami użytkowników i uprawnieniami oraz aktywnymi ofertami powiązanymi z Twoim kontem CPP.
 
@@ -170,7 +170,7 @@ Inny użytkownik z tej samej dzierżawy usługi Azure Active Directory może dod
 4. Wybierz identyfikator MPN, który chcesz skojarzyć z wydawcą.
 5. Zaktualizuj **szczegóły wydawcy** w formularzu.
 
-   1. **Nazwa wydawcy:** Nazwa, która zostanie wyświetlona w portalu Azure Marketplace lub AppSource z ofertą.
+   1. **Nazwa wydawcy**: Nazwa, która zostanie wyświetlona na rynku komercyjnym z ofertą.
    1. **Identyfikator wydawcy:** identyfikator używany przez Centrum partnerów do jednoznacznej identyfikacji wydawcy. Wartość domyślna dla tego pola `PublisherID` jest mapowana na istniejącą i unikatową w systemie, której nie można ponownie używać, w związku z czym to pole musi zostać zaktualizowane.
    1. **Informacje kontaktowe**: W razie potrzeby zaktualizuj informacje kontaktowe.
 
@@ -178,4 +178,4 @@ Po zakończeniu procesu możesz zarządzać nowo utworzonym wydawcą, przechodz�
 
 ## <a name="next-step"></a>Następny krok
 
-- [Zarządzanie kontem w portalu Marketplace w Centrum partnerskim](./manage-account.md)
+- [Zarządzanie kontem w portalu marketplace komercyjnego w Centrum partnerskim](./manage-account.md)

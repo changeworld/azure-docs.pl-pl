@@ -1,20 +1,20 @@
 ---
-title: Przewodnik wydawcy dotyczący witryny Azure Marketplace i usługi AppSource
-description: Omówienie portalu Azure Marketplace i usługi Microsoft AppSource dla wydawców aplikacji i usług.
+title: Przewodnik po publikacjach na rynku komercyjnym
+description: Przegląd komercyjnego rynku dla wydawców aplikacji i usług.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/05/2018
+ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: 368cb4fdce23e695c074b4893dcdc314c974dd54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c41a24ecb3e12618ac8cfcdfb756a33114f0f8a2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288397"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261996"
 ---
-# <a name="azure-marketplace-and-appsource-publishing-guide"></a>Przewodnik wydawcy dotyczący witryny Azure Marketplace i usługi AppSource
+# <a name="commercial-marketplace-publishing-guide"></a>Przewodnik po publikacjach na rynku komercyjnym
 
 Przewodnik publikowania w portalu Marketplace został zaprojektowany, aby pomóc nowym i istniejącym wydawcom dowiedzieć się, jak korzystać z witryn sklepowych w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i microsoft [AppSource](https://appsource.microsoft.com) w celu rozwijania działalności we współpracy z firmą Microsoft, wymieniając aplikacje i usługi.
 
@@ -62,7 +62,7 @@ Nowe aukcje w Marketplace kwalifikują się do korzystania z różnorodnych bezp
 
 *   Współsprzedaży: Rozpocznij lub przyspiesz swoją podróż do sprzedaży z firmą Microsoft za pośrednictwem Marketplace. Uzyskaj dostęp do programów i pomocy technicznej w celu zwiększenia wspólnej sprzedaży z zespołami firmy Microsoft.
 
-Po [przesłaniu rozwiązania](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) do marketplace nasz zespół dołączający skontaktuje się z Tobą, aby wspierać twoje środowisko publikowania.  Aby uzyskać więcej [informacji, zobacz, jak utworzyć konto Centrum partnerów.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)
+Po [przesłaniu rozwiązania](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) do marketplace nasz zespół dołączający skontaktuje się z Tobą, aby wspierać twoje środowisko publikowania.  Aby uzyskać więcej [informacji, zobacz, jak utworzyć konto Centrum partnerów.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)
 
 Dowiedz się więcej o [korzyściach płynących z rynku komercyjnego.](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)
 

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/22/2019
-ms.openlocfilehash: 1e559309b8e8d9768ca2f79dabfb01ec6086a961
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/10/2019
+ms.openlocfilehash: b8d7f995997b828c2323b3e6934b97354c2f8c8b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348722"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255247"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Zarządzanie dostępem do danych dziennika i obszarów roboczych w usłudze Azure Monitor
 
@@ -27,7 +27,7 @@ W tym artykule wyjaśniono, jak zarządzać dostępem do dzienników i administr
 
 Można wyświetlić [tryb kontroli dostępu](design-logs-deployment.md) skonfigurowany w obszarze roboczym z witryny Azure portal lub za pomocą programu Azure PowerShell.  To ustawienie można zmienić za pomocą jednej z następujących obsługiwanych metod:
 
-* Portal Azure
+* Azure Portal
 
 * Azure PowerShell
 
@@ -91,7 +91,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 }
 ```
 
-### <a name="using-a-resource-manager-template"></a>Używanie szablonu Menedżera zasobów
+### <a name="using-a-resource-manager-template"></a>Używanie szablonu usługi Resource Manager
 
 Aby skonfigurować tryb dostępu w szablonie usługi Azure Resource Manager, ustaw flagę funkcji **enableLogAccessUsingOnlyResourcePermissions** w obszarze roboczym na jedną z następujących wartości.
 
@@ -273,7 +273,7 @@ Aby utworzyć rolę z dostępem tylko do tabeli _SecurityBaseline,_ utwórz rol�
 
  Dzienniki niestandardowe są tworzone ze źródeł danych, takich jak dzienniki niestandardowe i interfejs API modułu zbierającego dane HTTP. Najprostszym sposobem zidentyfikowania typu dziennika jest sprawdzenie tabel wymienionych w obszarze [Dzienniki niestandardowe w schemacie dziennika](../log-query/get-started-portal.md#understand-the-schema).
 
- Obecnie nie można udzielić dostępu do poszczególnych dzienników niestandardowych, ale można udzielić dostępu do wszystkich dzienników niestandardowych. Aby utworzyć rolę z dostępem do wszystkich dzienników niestandardowych, utwórz rolę niestandardową przy użyciu następujących akcji:
+ Nie można udzielić dostępu do poszczególnych dzienników niestandardowych, ale można udzielić dostępu do wszystkich dzienników niestandardowych. Aby utworzyć rolę z dostępem do wszystkich dzienników niestandardowych, utwórz rolę niestandardową przy użyciu następujących akcji:
 
 ```
 "Actions":  [
@@ -282,6 +282,9 @@ Aby utworzyć rolę z dostępem tylko do tabeli _SecurityBaseline,_ utwórz rol�
     "Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read"
 ],
 ```
+Alternatywne podejście do zarządzania dostępem do dzienników niestandardowych jest przypisanie ich do zasobu platformy Azure i zarządzanie dostępem przy użyciu paradygmatu kontekstu zasobów. Aby użyć tej metody, należy uwzględnić identyfikator zasobu, określając go w nagłówku [x-ms-AzureResourceId,](data-collector-api.md#request-headers) gdy dane są pochłoane do usługi Log Analytics za pośrednictwem [interfejsu API modułu zbierającego dane HTTP](data-collector-api.md). Identyfikator zasobu musi być prawidłowy i mieć do niego zastosowane reguły dostępu. Po spożyciu dzienników są one dostępne dla osób z dostępem do odczytu do zasobu, jak wyjaśniono w tym miejscu.
+
+Czasami dzienniki niestandardowe pochodzą ze źródeł, które nie są bezpośrednio skojarzone z określonym zasobem. W takim przypadku należy utworzyć grupę zasobów tylko do zarządzania dostępem do tych dzienników. Grupa zasobów nie ponosi żadnych kosztów, ale daje prawidłowy identyfikator zasobu, aby kontrolować dostęp do dzienników niestandardowych. Na przykład, jeśli określona zapora wysyła dzienniki niestandardowe, utwórz grupę zasobów o nazwie "MyFireWallLogs" i upewnij się, że żądania interfejsu API zawierają identyfikator zasobu "MyFireWallLogs". Rekordy dziennika zapory są następnie dostępne tylko dla użytkowników, którym przyznano dostęp do MyFireWallLogs lub osób z pełnym dostępem do obszaru roboczego.          
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 

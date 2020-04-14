@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4362d0875ac2c20fc6963d404f86898a12387dad
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75834296"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260925"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak używać nazwanych wartości w zasadach usługi Azure API Management
 
@@ -59,7 +59,7 @@ Nazwane wartości mogą zawierać ciągi literałów i [wyrażenia zasad](/azure
 
 Po utworzeniu nazwanej wartości można ją edytować, klikając ją, klikając ją. Jeśli zmienisz nazwę nazwanej wartości, wszystkie zasady, które odwołują się do nazwanej wartości są automatycznie aktualizowane w celu użycia nowej nazwy.
 
-Aby uzyskać informacje na temat edytowania nazwanej wartości za pomocą interfejsu API REST, zobacz [Edytowanie nazwanej wartości za pomocą interfejsu API REST](/rest/api/apimanagement/2019-01-01/property?patch).
+Aby uzyskać informacje na temat edytowania nazwanej wartości za pomocą interfejsu API REST, zobacz [Edytowanie nazwanej wartości za pomocą interfejsu API REST](/rest/api/apimanagement/2019-12-01/property?patch).
 
 ## <a name="to-delete-a-named-value"></a>Aby usunąć nazwaną wartość
 
@@ -68,7 +68,7 @@ Aby usunąć nazwaną wartość, kliknij przycisk **Usuń** obok nazwanej warto�
 > [!IMPORTANT]
 > Jeśli nazwana wartość jest odwoływana przez wszystkie zasady, nie będzie można jej pomyślnie usunąć, dopóki nie usuniesz nazwanej wartości ze wszystkich zasad, które jej używają.
 
-Aby uzyskać informacje na temat usuwania nazwanej wartości za pomocą interfejsu API REST, zobacz [Usuwanie nazwanej wartości przy użyciu interfejsu API REST](/rest/api/apimanagement/2019-01-01/property/delete).
+Aby uzyskać informacje na temat usuwania nazwanej wartości za pomocą interfejsu API REST, zobacz [Usuwanie nazwanej wartości przy użyciu interfejsu API REST](/rest/api/apimanagement/2019-12-01/property/delete).
 
 ## <a name="to-search-and-filter-named-values"></a>Aby wyszukać i filtrować nazwane wartości
 

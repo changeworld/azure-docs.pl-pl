@@ -2,17 +2,17 @@
 title: Usługa Azure CDN firmy Verizon Premium określa warunki dopasowania silnika do reguł Verizon Premium | Dokumenty firmy Microsoft
 description: Dokumentacja referencyjna dla usługi Azure Content Delivery Network z reguł Verizon Premium do warunków dopasowania aparatu.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: 1660dca34b2f128ef5889145fcdeed0d2523b9bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: e2361590118668f2cdf22c4a29534b16790b90e4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593197"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253445"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Warunki dopasowania aparatu usługi Azure CDN firmy Verizon Premium
 

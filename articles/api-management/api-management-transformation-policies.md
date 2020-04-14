@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 81b7fb687bb6ef88d1ed436923d0e5ff7561c22b
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 27bb6abb7ae8eae46bc4dea3708270ecb4b731a6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803249"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260908"
 ---
 # <a name="api-management-transformation-policies"></a>Zasady przekształcania w usłudze API Management
 Ten temat zawiera odwołanie do następujących zasad zarządzania interfejsami API. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [Zasady w zarządzania interfejsami API](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -214,7 +214,7 @@ lub
 ```
 
 > [!NOTE]
-> Jednostkami zaplecza można zarządzać za pomocą [interfejsu API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) zarządzania i [programu PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).
+> Jednostkami zaplecza można zarządzać za pomocą [interfejsu API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) zarządzania i [programu PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).
 
 ### <a name="example"></a>Przykład
 
@@ -269,7 +269,7 @@ W tym przykładzie zasady kieruje żądanie do wewnętrznej bazy danych sieci sz
 |Nazwa|Opis|Wymagany|Domyślne|
 |----------|-----------------|--------------|-------------|
 |adres url bazy|Nowy podstawowy adres URL usługi wewnętrznej bazy danych.|Jeden `base-url` z `backend-id` lub musi być obecny.|Nie dotyczy|
-|identyfikator zaplecza|Identyfikator wewnętrznej bazy danych do trasy do. (Encje zaplecza są zarządzane za pośrednictwem [interfejsu API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) i [programu PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Jeden `base-url` z `backend-id` lub musi być obecny.|Nie dotyczy|
+|identyfikator zaplecza|Identyfikator wewnętrznej bazy danych do trasy do. (Encje zaplecza są zarządzane za pośrednictwem [interfejsu API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) i [programu PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Jeden `base-url` z `backend-id` lub musi być obecny.|Nie dotyczy|
 |sf-partition-key|Ma zastosowanie tylko wtedy, gdy zaplecze jest usługą sieci szkieletowej usług i jest określona przy użyciu "backend-id". Służy do rozpoznawania określonej partycji z usługi rozpoznawania nazw.|Nie|Nie dotyczy|
 |sf-replika-typ|Ma zastosowanie tylko wtedy, gdy zaplecze jest usługą sieci szkieletowej usług i jest określona przy użyciu "backend-id". Określa, czy żądanie powinno przejść do repliki podstawowej lub pomocniczej partycji. |Nie|Nie dotyczy|
 |sf-resolve-warunek|Dotyczy tylko wtedy, gdy zaplecze jest usługą sieci szkieletowej usług. Warunek identyfikujący, czy wywołanie wewnętrznej bazy danych sieci szkieletowej usług musi zostać powtórzone z nową rozdzielczością.|Nie|Nie dotyczy|

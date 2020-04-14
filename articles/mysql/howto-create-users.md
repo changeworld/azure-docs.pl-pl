@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/2/2020
-ms.openlocfilehash: 99b614de87c666d1cb1fb8a34eaafadf6fa82849
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f8c020da72e9cdf8777a3eefac266e97e4a312bd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632564"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263475"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>Tworzenie użytkowników w bazie danych platformy Azure dla serwera MySQL
 
@@ -92,4 +92,4 @@ Po utworzeniu serwera usługi Azure Database for MySQL można użyć pierwszego 
 
 Otwórz zaporę dla adresów IP maszyn nowych użytkowników, aby umożliwić im nawiązanie połączenia: [tworzenie reguł zapory usługi Azure Database dla mySQL i zarządzanie nimi przy użyciu witryny Azure portal](howto-manage-firewall-using-portal.md) lub interfejsu [wiersza polecenia platformy Azure.](howto-manage-firewall-using-cli.md)
 
-Aby uzyskać więcej informacji dotyczących zarządzania kontem użytkownika, zobacz Dokumentacja produktu MySQL dotycząca [zarządzania kontem użytkownika,](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html) [składni GRANT](https://dev.mysql.com/doc/refman/5.7/en/grant.html)i [uprawnień](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html).
+Aby uzyskać więcej informacji dotyczących zarządzania kontem użytkownika, zobacz Dokumentacja produktu MySQL dotycząca [zarządzania kontem użytkownika,](https://dev.mysql.com/doc/refman/5.7/en/access-control.html) [składni GRANT](https://dev.mysql.com/doc/refman/5.7/en/grant.html)i [uprawnień](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html).

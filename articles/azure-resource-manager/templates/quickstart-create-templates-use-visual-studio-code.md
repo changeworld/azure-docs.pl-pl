@@ -2,15 +2,15 @@
 title: Tworzenie szablonu — kod programu Visual Studio
 description: Program Visual Studio Code i rozszerzenie Narzędzia usługi Azure Resource Manager służą do pracy z szablonami usługi Resource Manager.
 author: mumian
-ms.date: 03/04/2019
+ms.date: 04/13/2020
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a0c80f18e9cd09b765804aaddbd178b4b3e32a9d
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 96e57146fb6bb17cbb8bb5975371e07b66f3ec8b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984456"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255094"
 ---
 # <a name="quickstart-create-arm-templates-by-using-visual-studio-code"></a>Szybki start: tworzenie szablonów ARM przy użyciu programu Visual Studio Code
 
@@ -18,7 +18,7 @@ Dowiedz się, jak tworzyć i edytować szablony usługi Azure Resource Manager (
 
 W tym przewodniku Szybki start można wdrożyć konto magazynu:
 
-![Diagram kodu programu Visual Studio dla programu Visual Studio dla menedżera zasobów](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
+![Diagram kodu programu Visual Studio przewodnika Visual Studio dla programu Szybki start dla menedżera zasobów](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
 
 Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
@@ -86,21 +86,19 @@ Aby dowiedzieć się, jak edytować szablon za pomocą programu Visual Studio Co
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
-Istnieje wiele metod wdrażania szablonów. Powłoka usługi Azure Cloud jest używana w tym przewodniku Szybki start. Powłoka w chmurze obsługuje zarówno interfejsu wiersza polecenia platformy Azure, jak i programu Azure PowerShell. Użyj selektora kart, aby wybrać między wierszem polecenia i programem PowerShell.
+Istnieje wiele metod wdrażania szablonów. Usługa Azure Cloud Shell jest używana w tym przewodniku Szybki start. Powłoka w chmurze obsługuje zarówno interfejsu wiersza polecenia platformy Azure, jak i usługi Azure PowerShell. Użyj selektora kart, aby wybrać między wierszem polecenia i programem PowerShell.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-1. Zaloguj się do [powłoki usługi Azure Cloud](https://shell.azure.com)
+1. Zaloguj się do [powłoki chmury azure](https://shell.azure.com)
 
 2. Wybierz preferowane środowisko, wybierając program **PowerShell** lub **Bash**(CLI) w lewym górnym rogu.  Po przełączeniu wymagane jest ponowne uruchomienie powłoki.
 
     # <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
-    ![Interfejs wiersza polecenia usługi Cloud Shell w witrynie Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
+    ![Narzędzie cli powłoki chmury usługi Azure portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    ![Powłoka usługi Azure portal w chmurze PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
+    ![Azure portal Cloud Shell PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
 
     ---
 
@@ -108,11 +106,11 @@ Istnieje wiele metod wdrażania szablonów. Powłoka usługi Azure Cloud jest u�
 
     # <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
-    ![Przekazywanie pliku w usłudze Cloud Shell w witrynie Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
+    ![Plik przekazywania usługi Azure portal Cloud Shell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    ![Przekazywanie pliku w usłudze Cloud Shell w witrynie Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
+    ![Plik przekazywania usługi Azure portal Cloud Shell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
 
     ---
 
@@ -122,14 +120,14 @@ Istnieje wiele metod wdrażania szablonów. Powłoka usługi Azure Cloud jest u�
 
     # <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
-    ![Wyświetlanie listy plików w usłudze Cloud Shell w witrynie Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
+    ![Plik listy powłoki w chmurze portalu Azure](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    ![Wyświetlanie listy plików w usłudze Cloud Shell w witrynie Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
+    ![Plik listy powłoki w chmurze portalu Azure](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
 
     ---
-4. W usłudze Cloud Shell uruchom poniższe polecenia. Wybierz kartę, aby wyświetlić kod programu PowerShell lub kod interfejsu wiersza polecenia.
+4. W usłudze Cloud Shell uruchom następujące polecenia. Wybierz kartę, aby wyświetlić kod programu PowerShell lub kod interfejsu wiersza polecenia. Podaj nazwę projektu, która jest używana do generowania nazwy grupy zasobów.  Nazwa grupy zasobów to nazwa projektu z **dołączenym rg.**
 
     # <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
@@ -140,7 +138,8 @@ Istnieje wiele metod wdrażania szablonów. Powłoka usługi Azure Cloud jest u�
     read location &&
     resourceGroupName="${projectName}rg" &&
     az group create --name $resourceGroupName --location "$location" &&
-    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
+    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" &&
+    echo "Press [ENTER] to continue ..."
     ```
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
@@ -152,6 +151,7 @@ Istnieje wiele metod wdrażania szablonów. Powłoka usługi Azure Cloud jest u�
 
     New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
+    Write-Host "Press [ENTER] to continue ..."
     ```
 
     ---
@@ -162,11 +162,11 @@ Istnieje wiele metod wdrażania szablonów. Powłoka usługi Azure Cloud jest u�
 
     # <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
-    ![Wdrażanie szablonu w usłudze Cloud Shell w witrynie Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
+    ![Szablon wdrażania powłoki chmury usługi Azure portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    ![Wdrażanie szablonu w usłudze Cloud Shell w witrynie Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
+    ![Szablon wdrażania powłoki chmury usługi Azure portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
 
     ---
 
@@ -181,7 +181,8 @@ Istnieje wiele metod wdrażania szablonów. Powłoka usługi Azure Cloud jest u�
     read resourceGroupName &&
     echo "Enter the Storage Account name:" &&
     read storageAccountName &&
-    az storage account show --resource-group $resourceGroupName --name $storageAccountName
+    az storage account show --resource-group $resourceGroupName --name $storageAccountName &&
+    echo "Press [ENTER] to continue ..."
     ```
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
@@ -190,6 +191,7 @@ Istnieje wiele metod wdrażania szablonów. Powłoka usługi Azure Cloud jest u�
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
     Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+    Write-Host "Press [ENTER] to continue ..."
     ```
 
     ---
@@ -202,12 +204,12 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 1. W witrynie Azure portal wybierz **grupę zasobów** z lewego menu.
 2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
-3. Wybierz nazwę grupy zasobów.  W grupie zasobów zostanie wyświetlonych łącznie sześć zasobów.
+3. Wybierz nazwę grupy zasobów. Nazwa grupy zasobów to nazwa projektu z **dołączenym rg.** W grupie zasobów zostanie wyświetlony zasób konta magazynu.
 4. Wybierz **pozycję Usuń grupę zasobów** z górnego menu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Ten przewodnik Szybki start koncentruje się głównie na użyciu programu Visual Studio Code do edycji jednego z istniejących szablonów szybkiego startu platformy Azure. Przedstawiono w nim również sposób wdrażania szablonu przy użyciu interfejsu wiersza polecenia lub programu PowerShell z poziomu usługi Azure Cloud Shell. Szablony spośród szablonów szybkiego startu platformy Azure mogą nie zaspokajać wszystkich Twoich potrzeb. Aby dowiedzieć się więcej o tworzeniu szablonów, zobacz naszą nową serię samouczków dla początkujących:
+Ten przewodnik Szybki start koncentruje się głównie na użyciu programu Visual Studio Code do edycji jednego z istniejących szablonów szybkiego startu platformy Azure. Dowiedzialiście się również, jak wdrożyć szablon przy użyciu interfejsu wiersza polecenia lub programu PowerShell z usługi Azure Cloud Shell. Szablony spośród szablonów szybkiego startu platformy Azure mogą nie zaspokajać wszystkich Twoich potrzeb. Aby dowiedzieć się więcej o tworzeniu szablonów, zobacz naszą nową serię samouczków dla początkujących:
 
 > [!div class="nextstepaction"]
 > [Samouczki dla początkujących](./template-tutorial-create-first-template.md)

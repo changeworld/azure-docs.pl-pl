@@ -1,16 +1,16 @@
 ---
 title: 'Szybki start: zarządzanie bazą wiedzy za pomocą cURL & REST'
 description: Ten przewodnik Szybki start pokazuje, jak tworzyć, publikować i wysyłać zapytania do bazy wiedzy przy użyciu interfejsów API REST.
-ms.date: 02/27/2020
+ms.date: 04/13/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: 00ec52fe20fb0e6a976f3e7142386e835713c98c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: facc45ab8f916181f7eeceb65c5102a60ae7d7e9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78851211"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261707"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Szybki start: zarządzanie bazą wiedzy za pomocą cURL i REST
 
@@ -21,9 +21,9 @@ Ten przewodnik Szybki start przeprowadzi Cię przez tworzenie, publikowanie i wy
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Bieżąca wersja [cURL](https://curl.haxx.se/). W przewodnikach Szybki start używanych jest kilka przełączników wiersza polecenia, które są odnotowane w [dokumentacji cURL](https://curl.haxx.se/docs/manpage.html).
-* Musisz mieć [zasób QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać nazwę klucza i zasobu, wybierz **szybki start** dla zasobu w witrynie Azure portal. Nazwa zasobu jest pierwszą częścią adresu URL punktu końcowego:
+* Aby użyć klucza i nazwy zasobu, musisz mieć [zasób QnA Maker.](../How-To/set-up-qnamaker-service-azure.md) Wprowadzono **nazwę** zasobu podczas tworzenia zasobów, a następnie klucz został utworzony dla Ciebie. Nazwa zasobu jest używana jako poddomena punktu końcowego. Aby pobrać nazwę klucza i zasobu, wybierz **szybki start** dla zasobu w witrynie Azure portal. Nazwa zasobu jest pierwszą poddomeną adresu URL punktu końcowego:
 
-    `https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
+    `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
 > [!CAUTION]
 > W poniższych przykładach `\` bash użyto znaku kontynuacji wiersza. Jeśli konsola lub terminal używa innego znaku kontynuacji wiersza, użyj tego znaku.

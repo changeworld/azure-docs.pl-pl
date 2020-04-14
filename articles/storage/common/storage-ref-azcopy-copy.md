@@ -4,16 +4,16 @@ description: Ten artykuł zawiera informacje referencyjne dla polecenia kopiowan
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 431372b930269c3dfa6bdc6e8b2fe4d291a8162e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0325a71fb069f3d96f05d106afac1639fc38fe42
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933790"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253343"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -169,6 +169,8 @@ Skopiuj podzbiór zasobników przy użyciu symbolu wieloznacznego (*) w nazwie z
 
 ## <a name="options"></a>Opcje
 
+**--backup**                               Aktywuje system Windows SeBackupPrivilege do przekazywania lub SeRestorePrivilege do pobrania, aby umożliwić AzCopy zobaczyć wszystkie pliki, niezależnie od ich uprawnień systemu plików, i przywrócić wszystkie uprawnienia. Wymaga, aby konto z uruchomionym programem AzCopy miało już te uprawnienia (np. ma uprawnienia administratora lub jest członkiem grupy "Operatorzy kopii zapasowych"). Wszystko, co robi ta flaga, to aktywowanie uprawnień, które konto już ma.
+
 **Ciąg typu --blob** definiuje typ obiektu blob w miejscu docelowym. Służy do przekazywania obiektów blob i kopiowania między kontami (domyślnie "Detect"). Prawidłowe wartości to "Detect", "BlockBlob", "PageBlob" i "AppendBlob". Podczas kopiowania między kontami wartość "Detect" powoduje, że AzCopy używa typu źródłowego obiektu blob do określenia typu docelowego obiektu blob. Podczas przesyłania pliku "Detect" określa, czy plik jest VHD lub VHDX plik oparty na rozszerzeniu pliku. Jeśli plik jest eterem pliku VHD lub VHDX, AzCopy traktuje plik jako obiekt blob strony. (domyślnie "Detect")
 
 **--block-blob-tier** string Przekaż blokowe obiekty blob bezpośrednio do [wybranej warstwy dostępu.](../blobs/storage-blob-storage-tiers.md) (domyślnie "Brak"). Prawidłowe wartości to "Brak", "Hot", "Cool" i "Archive". Jeśli zostanie przekazana warstwa "Brak" lub nie zostanie przekazana żadna warstwa, obiekt blob odziedziczy warstwę konta magazynu.
@@ -222,6 +224,12 @@ Skopiuj podzbiór zasobników przy użyciu symbolu wieloznacznego (*) w nazwie z
 **Ciąg -page-blob-tier** Przekaż obiekt blob strony do usługi Azure Storage przy użyciu tej warstwy obiektu blob. (domyślnie "Brak")
 
 **--preserve-last-modified-time**          Dostępne tylko wtedy, gdy miejscem docelowym jest system plików.
+
+**--preserve-smb-permissions** string False domyślnie. Zachowuje listy AMB ACL między świadomymi zasobami (Windows i Pliki platformy Azure). W przypadku pobierania należy również użyć `--backup` flagi, aby przywrócić uprawnienia, w których nowy właściciel nie będzie użytkownikiem z uruchomionym programem AzCopy. Ta flaga ma zastosowanie zarówno do plików, jak i folderów, `include-pattern`chyba że określono filtr tylko do plików (np. ).
+
+**--preserve-smb-info** string False domyślnie. Zachowuje informacje o właściwości SMB (ostatni czas zapisu, czas tworzenia, bity atrybutów) między zasobami obsługującymi SMB (Windows i Usługi Azure Files). Zostaną przeniesione tylko bity atrybutów obsługiwane przez usługi Azure Files; wszystkie inne zostaną zignorowane. Ta flaga ma zastosowanie zarówno do plików, jak i folderów, chyba że określono filtr tylko do plików (np. wzór dołączany). Informacje przesyłane dla folderów są takie same jak w przypadku plików, z wyjątkiem czasu ostatniego zapisu, który nigdy nie jest zachowywany dla folderów.
+
+**--preserve-owner**                       Ma wpływ tylko podczas pobierania danych i `--preserve-smb-permissions` tylko wtedy, gdy są używane. Jeśli wartość true (wartość domyślna), plik Właściciel i grupa są zachowywane w plikach do pobrania. Jeśli ta flaga jest `--preserve-smb-permissions` ustawiona na false, nadal będzie zachowywać listy ACL, ale właściciel i grupa będą oparte na użytkowniku, który jest uruchomiony AzCopy.
 
 **--put-md5**                             Utwórz skrót MD5 każdego pliku i zapisz skrót jako właściwość Content-MD5 docelowego obiektu blob lub pliku. (Domyślnie skrót NIE jest tworzony). Dostępne tylko podczas przesyłania.
 

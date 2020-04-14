@@ -5,35 +5,36 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cf6ca27101a08ff58f32dcd31413256762490a2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280511"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255921"
 ---
-<a name="retrieve-offer-status"></a>Pobieranie stanu oferty 
-=====================
+# <a name="retrieve-offer-status"></a>Pobieranie stanu oferty
+
+> [!NOTE]
+> Interfejsy API portalu partnerów w chmurze są zintegrowane z centrum partnerów i będą nadal działać po migracji ofert do Centrum partnerów. Integracja wprowadza niewielkie zmiany. Przejrzyj zmiany wymienione w [aplikacji Cloud Partner Portal API Reference,](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) aby upewnić się, że kod będzie nadal działać po migracji do Centrum partnerów.
 
 Pobiera bieżący stan oferty.
 
   `GET  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/status?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>Parametry identyfikatora URI
---------------
+## <a name="uri-parameters"></a>Parametry identyfikatora URI
 
 |  **Nazwa**       |   **Opis**                            |  **Typ danych** |
 |  -------------  |  ------------------------------------------  |  ------------  |
 |  identyfikator wydawcy    | Identyfikator wydawcy, na przykład`Contoso`  |     Ciąg     |
 |  offerId        | Identyfikator GUID, który jednoznacznie identyfikuje ofertę      |     Ciąg     |
-|  api-version    | Najnowsza wersja interfejsu API                        |     Data       |
+|  api-version    | Najnowsza wersja interfejsu API                        |     Date       |
 |  |  |
 
 
-<a name="header"></a>Nagłówek
-------
+## <a name="header"></a>Nagłówek
+
 
 |  Nazwa           |  Wartość               |
 |  -------------  | -------------------  |
@@ -41,9 +42,8 @@ Pobiera bieżący stan oferty.
 |  Autoryzacja  | `Bearer YOUR_TOKEN`  |
 |  |  |
 
+## <a name="body-example"></a>Przykład ciała
 
-<a name="body-example"></a>Przykład ciała
-------------
 
 ### <a name="response"></a>Odpowiedź
 
@@ -115,8 +115,7 @@ Pobiera bieżący stan oferty.
       ],
       "previewLinks": [],
       liveLinks": [],
-      "notificationEmails": "jdoe@contoso.com"
-  } 
+  }
 ```
 
 
@@ -136,9 +135,8 @@ Pobiera bieżący stan oferty.
 |  procesPercentage    | Procentowe zakończenie kroku                                                              |
 |  previewLinks (linki do podglądu)         | *Obecnie nie wdrożony*                                                                    |
 |  liveLinks (linki na żywo)            | *Obecnie nie wdrożony*                                                                    |
-|  notificationEmails   | Oddzielona przecinkami lista adresów e-mail, które mają być powiadamiane o postępie operacji        |
+|  notificationEmails   | Przestarzałe dla ofert migrowanych do Centrum partnerskiego. Wiadomości e-mail z powiadomieniami o zmigrowanych ofertach będą wysyłane na adres e-mail podany w sekcji Informacje kontaktowe sprzedającego w ustawieniach konta.<br><br>W przypadku ofert niezmigrowanych lista adresów e-mail oddzielonych przecinkami, które mają być powiadamiane o postępie operacji        |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Kody stanu odpowiedzi
 
@@ -148,7 +146,6 @@ Pobiera bieżący stan oferty.
 |  400     | `Bad/Malformed request`- Treść odpowiedzi na błędy może zawierać więcej informacji.                 |
 |  404     | `Not found`- Określona jednostka nie istnieje.                                                |
 |  |  |
-
 
 ### <a name="offer-status"></a>Stan oferty
 
@@ -162,7 +159,6 @@ Pobiera bieżący stan oferty.
 |  Anulowane                    | Składanie ofert zostało anulowane.                           |
 |  Niepowodzenie                      | Składanie ofert nie powiodło się.                                 |
 |  |  |
-
 
 ### <a name="step-status"></a>Stan kroku
 

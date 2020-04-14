@@ -3,12 +3,12 @@ title: Typowe pytania dotyczące odzyskiwania po awarii usługi VMware za pomoc�
 description: Uzyskaj odpowiedzi na typowe pytania dotyczące odzyskiwania po awarii lokalnych maszyn wirtualnych VMware na platformie Azure przy użyciu usługi Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ae16138ae44262f53a8f9948d6287f0acf621244
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240020"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259514"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Typowe pytania dotyczące replikacji z programu VMware do platformy Azure
 
@@ -96,7 +96,7 @@ Instalatory znajdują się w folderze %ProgramData%\ASR\home\svsystems\pushinsta
 Na każdej maszynie wirtualnej, którą chcesz replikować, zainstaluj usługę za pomocą jednej z kilku metod:
 
 - [Instalacja wypychania](vmware-physical-mobility-service-overview.md#push-installation)
-- [Ręczna instalacja](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui) z interfejsu użytkownika lub programu PowerShell
+- [Ręczna instalacja](vmware-physical-mobility-service-overview.md#install-the-mobility-service-using-ui) z interfejsu użytkownika lub programu PowerShell
 - Wdrażanie przy użyciu narzędzia wdrażania, takiego jak [Menedżer konfiguracji](vmware-azure-mobility-install-configuration-mgr.md)
 
 ## <a name="managed-disks"></a>Dyski zarządzane

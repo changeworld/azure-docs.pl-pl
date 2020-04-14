@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d44391624e29d2bdd182bb07452e0e8def2d1407
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c4d0f753e23e42b1064fec3f56957dfe97c30ca4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67656691"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261197"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Samouczek: Integracja usługi Azure Active Directory z usługą ITRP
 
@@ -113,7 +113,7 @@ Aby skonfigurować logowanie jednookrotne usługi Azure AD za pomocą usługi IT
        `https://<tenant-name>.itrp.com`
 
     > [!NOTE]
-    > Te wartości są symbolami zastępczymi. Musisz użyć rzeczywistego adresu URL logowania i identyfikatora. Skontaktuj się z [zespołem pomocy technicznej ITRP,](https://www.itrp.com/support) aby uzyskać wartości. Można również odwołać się do wzorców wyświetlanych w oknie dialogowym **Podstawowa konfiguracja SAML** w witrynie Azure portal.
+    > Te wartości są symbolami zastępczymi. Musisz użyć rzeczywistego adresu URL logowania i identyfikatora. Skontaktuj się z [zespołem pomocy technicznej ITRP,](https://www.4me.com/support/) aby uzyskać wartości. Można również odwołać się do wzorców wyświetlanych w oknie dialogowym **Podstawowa konfiguracja SAML** w witrynie Azure portal.
 
 5. W sekcji **Certyfikat podpisywania SAML** wybierz ikonę **Edytuj,** aby otworzyć okno dialogowe **Saml Podpisywanie certyfikatu:**
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: ed7d62ef5c1c4837b3eb6d02f301085178fe5e0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99abb6cb493cca3aa4e2ac0c42744e1fbaf84f12
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528221"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272988"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Obsługa maszyn wirtualnych generacji 2 na platformie Azure
 
@@ -35,7 +35,9 @@ Maszyny wirtualne generacji 1 są obsługiwane przez wszystkie rozmiary maszyn w
 * [Seria B](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [Seria DC](../dcv2-series.md)
 * [Seria DSv2](../dv2-dsv2-series.md) i [dsv3](../dv3-dsv3-series.md)
+* [Seria Dasv4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
 * [Seria Esv3](../ev3-esv3-series.md)
+* [Seria Easv4](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series)
 * [Seria Fsv2](../fsv2-series.md)
 * [Seria GS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
 * [Seria HB](../hb-series.md)
@@ -59,7 +61,7 @@ Maszyny wirtualne generacji 2 obsługują następujące obrazy z Marketplace:
 * SUSE Linux Enterprise Server 12 zw.
 * Ubuntu Server 16.04, 18.04, 19.04, 19.10 
 * RHEL 8.1, 8.0, 7.7, 7.6, 7.5, 7.4, 7.0
-* Cent OS 8,0, 7,7, 7,6, 7,5, 7,4
+* Cent OS 8.1, 8.0, 7.7, 7.6, 7.5, 7.4
 * Oracle Linux 7.7, 7.7-CI
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Maszyny wirtualne lokalnej a maszyny wirtualne generacji 2 platformy Azure
@@ -102,7 +104,7 @@ Platforma Azure nie obsługuje obecnie niektórych funkcji obsługiwanych przez 
 
 W witrynie Azure portal lub interfejsu wiersza polecenia platformy Azure można utworzyć maszyny wirtualne generacji 2 z obrazu portalu Marketplace, który obsługuje rozruch UEFI.
 
-#### <a name="azure-portal"></a>Portal Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 Poniżej znajdują się kroki, aby utworzyć generacji 2 (Gen2) maszyny Wirtualnej w witrynie Azure portal.
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e888e0606b7a9bcd9a7a94c28455d705c5f1bec
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275830"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255485"
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -22,7 +22,7 @@ Gdy liczby metryki są prezentowane w portalu, są one ponownie znormalizowane, 
 
 * Istnieją trzy różne rodzaje pobierania próbek: adaptacyjne pobieranie próbek, pobieranie próbek o stałej szybkości i pobieranie próbek połkowych.
 * Adaptacyjne próbkowanie jest domyślnie włączone we wszystkich najnowszych wersjach zestawów SDK (Application Insights ASP.NET i ASP.NET Core Software Development Kits). Jest również używany przez [usługę Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview).
-* Próbkowanie o stałej szybkości jest dostępne w najnowszych wersjach sdk usługi Application Insights dla ASP.NET, ASP.NET Core, Java i Python.
+* Próbkowanie o stałej szybkości jest dostępne w najnowszych wersjach SDK usługi Application Insights dla ASP.NET, ASP.NET Core, Java (zarówno agenta, jak i SDK) i Pythona.
 * Próbkowanie pozyskiwania działa w punkcie końcowym usługi application insights. Ma ona zastosowanie tylko wtedy, gdy nie ma innego pobierania próbek. Jeśli zestaw SDK próbki danych telemetrycznych, pobieranie próbkowania jest wyłączona.
 * W przypadku aplikacji sieci web, jeśli rejestrujesz zdarzenia niestandardowe i trzeba upewnić się, że `OperationId` zestaw zdarzeń jest zachowywany lub odrzucany razem, zdarzenia muszą mieć taką samą wartość.
 * Jeśli piszesz zapytania Analytics, należy [wziąć pod uwagę próbkowanie](../../azure-monitor/log-query/aggregations.md). W szczególności, zamiast po prostu zliczać rekordy, należy użyć `summarize sum(itemCount)`.
@@ -306,7 +306,29 @@ W Eksploratorze metryk stawki, takie jak liczba żądań i wyjątków są mnożo
 
 ### <a name="configuring-fixed-rate-sampling-for-java-applications"></a>Konfigurowanie próbkowania o stałej szybkości dla aplikacji Java
 
-Domyślnie w kole java SDK nie jest włączone próbkowanie. Obecnie obsługuje tylko próbkowanie o stałej szybkości. Adaptacyjne próbkowanie nie jest obsługiwane w java SDK.
+Domyślnie w agencie Java i SDK nie jest włączone próbkowanie. Obecnie obsługuje tylko próbkowanie o stałej szybkości. Adaptacyjne próbkowanie nie jest obsługiwane w języku Java.
+
+#### <a name="configuring-java-agent"></a>Konfigurowanie agenta Java
+
+1. Pobierz [aplikacjęinsights-agent-3.0.0-PREVIEW.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.2/applicationinsights-agent-3.0.0-PREVIEW.2.jar)
+
+1. Aby włączyć próbkowanie, `ApplicationInsights.json` dodaj do pliku następujące elementy:
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "sampling": {
+        "fixedRate": {
+          "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
+        }
+      }
+    }
+  }
+}
+```
+
+#### <a name="configuring-java-sdk"></a>Konfigurowanie sdk Java
 
 1. Pobierz i skonfiguruj aplikację internetową za pomocą najnowszego [sdk Java Application Insights](../../azure-monitor/app/java-get-started.md).
 
@@ -534,7 +556,7 @@ Dokładność przybliżenia w dużej mierze zależy od skonfigurowanej wartości
 
 * Pobieranie próbkowania może wystąpić automatycznie dla dowolnej telemetrii powyżej określonego woluminu, jeśli sdk nie wykonuje próbkowania. Ta konfiguracja będzie działać, na przykład, jeśli używasz starszej wersji ASP.NET SDK lub Java SDK.
 * Jeśli używasz bieżącego ASP.NET lub ASP.NET podstawowych zestawów SDK (hostowanych na platformie Azure lub na własnym serwerze), domyślnie otrzymujesz adaptacyjne próbkowanie, ale możesz przełączyć się na stałe, jak opisano powyżej. W przypadku próbkowania o stałej szybkości zestaw SDK przeglądarki automatycznie synchronizuje się z przykładowymi zdarzeniami powiązanymi. 
-* Jeśli używasz bieżącego pliku Java SDK, `ApplicationInsights.xml` możesz skonfigurować włączanie próbkowania o stałej szybkości. Próbkowanie jest domyślnie wyłączone. Dzięki próbkowaniu o stałej szybkości zestaw SDK przeglądarki i serwer automatycznie synchronizują się z przykładowymi zdarzeniami powiązanymi.
+* Jeśli używasz bieżącego agenta Java, `ApplicationInsights.json` możesz skonfigurować (dla java `ApplicationInsights.xml`SDK, configure ) aby włączyć próbkowanie o stałej szybkości. Próbkowanie jest domyślnie wyłączone. Dzięki próbkowaniu o stałej szybkości zestaw SDK przeglądarki i serwer automatycznie synchronizują się z przykładowymi zdarzeniami powiązanymi.
 
 *Są pewne rzadkie wydarzenia, które zawsze chcę zobaczyć. Jak mogę je ominąć moduł pobierania próbek?*
 

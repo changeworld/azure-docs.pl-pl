@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 04/13/2020
 ms.author: dapine
-ms.openlocfilehash: 79562049f48ba90a4f9a123919185521a82d7be6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ea3f63bea0701dcd0f4b38f6584816d9a1bfbc7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80365788"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258440"
 ---
 # <a name="convert-text-to-speech-using-python"></a>Konwertowanie tekstu na mowę przy użyciu języka Python
 
@@ -26,7 +26,7 @@ Ten artykuł wymaga [konta usługi Azure Cognitive Services](https://docs.micros
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Środowisko Python 2.7.x lub 3.x
-* Program [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) lub ulubiony edytor tekstów
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual <span class="docon docon-navigate-external x-hidden-focus"> </span>Studio </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>lub ulubiony edytor tekstu
 * Klucz subskrypcji platformy Azure dla usługi Mowy
 
 ## <a name="create-a-project-and-import-required-modules"></a>Tworzenie projektu i importowanie wymaganych modułów

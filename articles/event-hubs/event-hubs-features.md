@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 76ab92285cace284c187109ca48c6634777ebbc0
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: ea4bfadd55935712a292355dc25fb778b1523c75
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398315"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261911"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkcje i terminologia w usłudze Azure Event Hubs
 
@@ -45,7 +45,7 @@ Każda encja, która wysyła dane do Centrum zdarzeń, jest producentem zdarzeń
 
 Zdarzenie można opublikować za pośrednictwem protokołu AMQP 1.0, kafka 1.0 (i nowszych) lub HTTPS. Usługa Event Hubs udostępnia [biblioteki klienckie i klasy](event-hubs-dotnet-framework-api-overview.md) do publikowania zdarzeń w centrum zdarzeń z klientów platformy .NET. W przypadku innych środowisk uruchomieniowych i platform można używać dowolnego klienta protokołu AMQP 1.0, na przykład [Apache Qpid](https://qpid.apache.org/). Zdarzenia można publikować indywidualnie lub w partiach. Pojedyncza publikacja (wystąpienie danych zdarzeń) ma limit 1 MB, niezależnie od tego, czy jest to pojedyncze zdarzenie, czy partia. Publikowanie zdarzeń większych niż ten próg powoduje błąd. Jest najlepszym rozwiązaniem dla wydawców, aby nie być świadomi partycji w centrum zdarzeń i tylko określić *klucz partycji* (wprowadzony w następnej sekcji) lub ich tożsamości za pośrednictwem tokenu sygnatury dostępu Współdzielonego.
 
-Decyzja o korzystaniu z protokołu AMQP lub HTTPS jest specyficzna dla scenariusza użycia. Protokół AMQP wymaga ustanowienia trwałego gniazda dwukierunkowego oprócz protokołu TLS lub SSL/ TLS. Protokół AMQP zużywa więcej zasobów sieciowych przy inicjowaniu sesji, jednak protokół HTTPS wymaga dla każdego żądania dodatkowego narzutu na protokół SSL. Protokół AMQP charakteryzują się wyższą wydajnością dla częstych wydawców.
+Decyzja o korzystaniu z protokołu AMQP lub HTTPS jest specyficzna dla scenariusza użycia. Protokół AMQP wymaga ustanowienia trwałego gniazda dwukierunkowego oprócz protokołu TLS lub SSL/ TLS. Usługa AMQP ma wyższe koszty sieciowe podczas inicjowania sesji, jednak protokół HTTPS wymaga dodatkowego obciążenia TLS dla każdego żądania. Protokół AMQP charakteryzują się wyższą wydajnością dla częstych wydawców.
 
 ![Event Hubs](./media/event-hubs-features/partition_keys.png)
 

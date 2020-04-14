@@ -4,14 +4,14 @@ description: Dowiedz się, jak działa indeksowanie w usłudze Azure Cosmos DB, 
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 04/13/2020
 ms.author: thweiss
-ms.openlocfilehash: 65186262095560d7ae54d32b218d1c01f1fb921d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 684799ee12715c789910accf80aa5b4afec763d4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873628"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273243"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indeksowanie w usłudze Azure Cosmos DB — omówienie
 
@@ -82,7 +82,7 @@ Usługa Azure Cosmos DB obsługuje obecnie trzy rodzaje indeksów.
 
    Dopasowanie równości w elemencie tablicy
    ```sql
-    SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1”)
+    SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1")
     ```
 
 - Zakres zapytań:
@@ -164,7 +164,7 @@ Indeksy przestrzenne mogą być używane na poprawnie sformatowanych obiektach [
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-Tak długo, jak jeden predykat filtru używa na rodzaju indeksu, aparat zapytań oceni, że najpierw przed skanowaniem reszty. Na przykład, jeśli masz zapytanie SQL, takie jak`SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+Tak długo, jak jeden predykat filtru używa jednego z rodzaju indeksu, aparat zapytań oceni to najpierw przed skanowaniem reszty. Na przykład, jeśli masz zapytanie SQL, takie jak`SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
 * Powyższa kwerenda najpierw filtruje wpisy, w których firstName = "Andrew" przy użyciu indeksu. Następnie przekazuje wszystkie wpisy firstName = "Andrew" za pośrednictwem kolejnego potoku, aby ocenić predykatu filtru CONTAINS.
 

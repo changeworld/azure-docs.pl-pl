@@ -3,7 +3,7 @@ title: Korzystanie z usługi Azure CDN z usługą SAS | Dokumenty firmy Microsof
 description: Usługa Azure CDN obsługuje korzystanie z usługi Shared Access Signature (SAS) w celu przyznania ograniczonego dostępu do kontenerów magazynu prywatnego.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
-ms.author: magattus
-ms.openlocfilehash: e7a170eaf74531cf4bd8c28aafaa5873f2459d0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: c2580aa4ee22996c1bf0fe5c86064a6543450071
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69982411"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260177"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Korzystanie z usługi Azure CDN z usługą SAS
 
@@ -135,7 +135,7 @@ Ponieważ parametry sygnatury dostępu Współdzielonego nie są widoczne dla us
 
 | Nazwa parametru SAS | Opis |
 | --- | --- |
-| Rozpoczęcie | Czas, w której usługa Azure CDN może rozpocząć dostęp do pliku obiektu blob. Ze względu na pochylenie zegara (gdy sygnał zegara dociera w różnym czasie dla różnych składników), wybierz czas 15 minut wcześniej, jeśli chcesz, aby zasób był natychmiast dostępny. |
+| Uruchamianie | Czas, w której usługa Azure CDN może rozpocząć dostęp do pliku obiektu blob. Ze względu na pochylenie zegara (gdy sygnał zegara dociera w różnym czasie dla różnych składników), wybierz czas 15 minut wcześniej, jeśli chcesz, aby zasób był natychmiast dostępny. |
 | End | Czas, po którym usługa Azure CDN nie może już uzyskać dostępu do pliku obiektu blob. Wcześniej buforowane pliki w usłudze Azure CDN są nadal dostępne. Aby kontrolować czas wygaśnięcia pliku, należy ustawić odpowiedni czas wygaśnięcia tokenu zabezpieczającego usługi Azure CDN lub przeczyścić zasób. |
 | Dozwolone adresy IP | Element opcjonalny. Jeśli używasz **usługi Azure CDN firmy Verizon,** możesz ustawić ten parametr na zakresy zdefiniowane w [usłudze Azure CDN z zakresów adresów IP serwera Verizon Edge](/azure/cdn/cdn-pop-list-api). Jeśli używasz **usługi Azure CDN z Akamai**, nie można ustawić parametr zakresów ADRESÓW IP, ponieważ adresy IP nie są statyczne.|
 | Dozwolone protokoły | Protokół(-y) dozwolony dla żądania złożonego za pomocą sygnatury dostępu Współdzielonego konta. Zalecane jest ustawienie HTTPS.|

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: quickstart
-ms.date: 01/22/2018
+ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 7f527d3c57f086e7941505a9ca4396885c746762
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 682c35e1510834d8958b2ed6765d6fe530432ebd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75440081"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262149"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Szybki start: tworzenie fabryki danych platformy Azure przy użyciu programu PowerShell
 
@@ -111,6 +111,10 @@ Pamiętaj o następujących kwestiach:
 ## <a name="create-a-linked-service"></a>Tworzenie usługi połączonej
 
 Utwórz połączone usługi w fabryce danych w celu połączenia swoich magazynów danych i usług obliczeniowych z fabryką danych. W tym samouczku Szybki start utworzysz połączoną usługę Azure Storage, która będzie używana zarówno jako źródło, jak i ujście magazynu. Połączona usługa ma informacje o połączeniu, których usługa Data Factory używa w środowisku uruchomieniowym do nawiązywania z nią połączenia.
+
+>[!TIP]
+>W tym przewodniku Szybki start jako typ uwierzytelniania dla magazynu danych jest używany *klucz konta,* ale w razie potrzeby można wybrać inne obsługiwane metody uwierzytelniania: identyfikator URI sygnatury dostępu*Współdzielonego, podmiot zabezpieczeń usługi* i *tożsamość zarządzana.* *SAS URI* Szczegółowe informacje można znaleźć w odpowiednich sekcjach w [tym artykule.](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)
+>Aby bezpiecznie przechowywać wpisy tajne dla magazynów danych, zaleca się również korzystanie z usługi Azure Key Vault. Szczegółowe ilustracje można znaleźć w [tym artykule.](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
 
 1. Utwórz plik JSON o nazwie **AzureStorageLinkedService.json** w folderze **C:\ADFv2QuiclStartPSH** o następującej zawartości: (Utwórz folder ADFv2QuickStartPSH, jeśli jeszcze nie istnieje).
 

@@ -13,21 +13,20 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 8f3497f113981ae563023750ad8979c88c640f5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 968cc9ed9d938bb04d1243102855c134147ddf3b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80123332"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269877"
 ---
 # <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
 <a name="network-security-groups"></a>
 
-Ruch sieciowy przychodzący do zasobów platformy Azure i wychodzący z nich w sieci wirtualnej platformy Azure można filtrować za pomocą grupy zabezpieczeń sieci. Sieciowa grupa zabezpieczeń zawiera reguły zabezpieczeń, które zezwalają na lub blokują przychodzący ruch sieciowy lub wychodzący ruch sieciowy dla kilku typów zasobów platformy Azure. Aby dowiedzieć się więcej o zasobach platformy Azure, które można wdrożyć w sieci wirtualnej i skojarzyć z nimi grupy zabezpieczeń sieci, zobacz [Integracja z siecią wirtualną dla usług platformy Azure](virtual-network-for-azure-services.md). Dla każdej reguły można określić źródło i obiekt docelowy, port i protokół.
+Za pomocą sieciowej grupy zabezpieczeń platformy Azure można filtrować ruch sieciowy do i z zasobów platformy Azure w sieci wirtualnej platformy Azure. Grupa zabezpieczeń sieci zawiera [reguły zabezpieczeń](#security-rules), które zezwalają na lub blokują przychodzący ruch sieciowy lub wychodzący ruch sieciowy dla kilku typów zasobów platformy Azure. Dla każdej reguły można określić źródło i obiekt docelowy, port i protokół.
+W tym artykule opisano właściwości reguły sieciowej grupy zabezpieczeń, [stosowane domyślne reguły zabezpieczeń](#default-security-rules) oraz właściwości reguły, które można zmodyfikować w celu utworzenia [rozszerzonej reguły zabezpieczeń](#augmented-security-rules).
 
-W tym artykule pojęcia dotyczące grup zabezpieczeń sieci, aby ułatwić efektywne korzystanie z nich. Jeśli nie masz doświadczenia w tworzeniu grup zabezpieczeń sieci, możesz ukończyć szybki [samouczek](tutorial-filter-network-traffic.md), aby zyskać pewne doświadczenie w tym zakresie. Jeśli znasz grupy zabezpieczeń sieci i chcesz nimi zarządzać, zobacz [Manage a network security group](manage-network-security-group.md) (Zarządzanie sieciową grupą zabezpieczeń). Jeśli występują problemy z komunikacją i musisz rozwiązać problemy z grupami zabezpieczeń sieci, zobacz [Diagnozowanie problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej](diagnose-network-traffic-filter-problem.md). Możesz włączyć [dzienniki przepływu grupy zabezpieczeń sieci](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) w celu analizowania ruchu sieciowego do i z zasobów, z którymi skojarzono grupę zabezpieczeń sieci.
-
-## <a name="security-rules"></a>Reguły zabezpieczeń
+## <a name="security-rules"></a><a name="security-rules"></a>Reguły zabezpieczeń
 
 Grupa zabezpieczeń sieci nie zawiera żadnych reguł lub dowolną liczbę reguł zgodnie z potrzebami, w ramach [limitów](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) subskrypcji platformy Azure. Każda reguła określa następujące właściwości:
 
@@ -46,7 +45,7 @@ Istniejące połączenia mogą nie zostać przerwane po usunięciu reguły zabez
 
 Istnieją ograniczenia dotyczące liczby reguł zabezpieczeń, które można utworzyć w grupie zabezpieczeń sieci. Aby uzyskać więcej informacji, zobacz [Azure limits (Ograniczenia platformy Azure)](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-### <a name="default-security-rules"></a>Domyślne reguły zabezpieczeń
+### <a name="default-security-rules"></a><a name="default-security-rules"></a>Domyślne reguły zabezpieczeń
 
 Platforma Azure tworzy następujące reguły domyślne w każdej tworzonej grupie zabezpieczeń sieci:
 
@@ -94,7 +93,7 @@ W kolumnach **Źródło** i **Obiekt docelowy** elementy *VirtualNetwork*, *Azur
  
 Nie można usunąć reguł domyślnych, ale można je przesłonić, tworząc reguły o wyższych priorytetach.
 
-### <a name="augmented-security-rules"></a>Rozszerzone reguły zabezpieczeń
+### <a name="augmented-security-rules"></a><a name="augmented-security-rules"></a>Rozszerzone reguły zabezpieczeń
 
 Rozszerzone reguły zabezpieczeń upraszczają definicję zabezpieczeń dla sieci wirtualnych, umożliwiając definiowanie zasad zabezpieczeń większych i złożonych sieci przy użyciu mniejszej liczby reguł. Można połączyć wiele portów, wiele jawnych adresów IP i zakresów w jedną, łatwo zrozumiałą regułę zabezpieczeń. Rozszerzone reguły stosuje się w polach źródła, obiektu docelowego i portów reguły. Aby uprościć zarządzanie definicją reguły zabezpieczeń, połącz rozszerzone reguły zabezpieczeń z [tagami usług](service-tags-overview.md) lub [grupami zabezpieczeń aplikacji](#application-security-groups). Istnieją ograniczenia liczby adresów, zakresów i portów, które można określić w regule. Aby uzyskać więcej informacji, zobacz [Azure limits (Ograniczenia platformy Azure)](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
@@ -170,4 +169,8 @@ Reguły agregowane stosowane do interfejsu sieciowego można łatwo wyświetlić
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak [utworzyć sieciową grupę zabezpieczeń](tutorial-filter-network-traffic.md).
+* Aby dowiedzieć się, które zasoby platformy Azure można wdrożyć w sieci wirtualnej i mieć skojarzone z nimi sieciowe grupy zabezpieczeń, zobacz [Integracja sieci wirtualnej dla usług platformy Azure](virtual-network-for-azure-services.md)
+* Jeśli nie masz doświadczenia w tworzeniu grup zabezpieczeń sieci, możesz ukończyć szybki [samouczek](tutorial-filter-network-traffic.md), aby zyskać pewne doświadczenie w tym zakresie. 
+* Jeśli znasz grupy zabezpieczeń sieci i chcesz nimi zarządzać, zobacz [Manage a network security group](manage-network-security-group.md) (Zarządzanie sieciową grupą zabezpieczeń). 
+* Jeśli występują problemy z komunikacją i musisz rozwiązać problemy z grupami zabezpieczeń sieci, zobacz [Diagnozowanie problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej](diagnose-network-traffic-filter-problem.md). 
+* Dowiedz się, jak włączyć [dzienniki przepływu sieciowej grupy zabezpieczeń](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) do analizowania ruchu sieciowego do i z zasobów, które mają skojarzoną grupę zabezpieczeń sieci.

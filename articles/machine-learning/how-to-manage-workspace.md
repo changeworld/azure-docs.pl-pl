@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: f38b0895b0d6eddcf63c082d3df205f4d9de9d50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b4b64bcca57e1dc98cdba10626597532ae1461c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297064"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269736"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Tworzenie obszarów roboczych usługi Azure Machine Learning i zarządzanie nimi w witrynie Azure portal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ W tym artykule utworzysz, wyświetlisz i usuniesz [**obszary robocze usługi Azu
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
-Aby utworzyć obszar roboczy, potrzebujesz subskrypcji platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
+Aby utworzyć obszar roboczy, potrzebujesz subskrypcji platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu poświadczeń dla subskrypcji platformy Azure. 
 
@@ -51,7 +51,7 @@ Aby utworzyć obszar roboczy, potrzebujesz subskrypcji platformy Azure. Jeśli n
     ![Konfigurowanie obszaru roboczego](./media/how-to-manage-workspace/select-edition.png)
 
 1. Po zakończeniu konfigurowania obszaru roboczego wybierz pozycję **Recenzja + Utwórz**.
-2. Przejrzyj ustawienia i wkonuj dodatkowe zmiany lub poprawki. Po zasysaniu ustawień wybierz pozycję **Utwórz**.
+2. Przejrzyj ustawienia i wkonuj dodatkowe zmiany lub poprawki. Po spełnieniu ustawień wybierz pozycję **Utwórz**.
 
    > [!Warning] 
    > Utworzenie obszaru roboczego w chmurze może potrwać kilka minut.
@@ -90,6 +90,8 @@ Możesz uaktualnić obszar roboczy z wersji Basic do Enterprise, aby korzystać 
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Znajdowanie obszaru roboczego
 
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+
 1. W górnym polu wyszukiwania wpisz machine **learning**.  
 
 1. Wybierz **opcję Uczenie maszynowe**.
@@ -102,9 +104,9 @@ Możesz uaktualnić obszar roboczy z wersji Basic do Enterprise, aby korzystać 
 
 ## <a name="delete-a-workspace"></a>Usuwanie obszaru roboczego
 
-Użyj przycisku Usuń u góry obszaru roboczego, który chcesz usunąć.
+W [witrynie Azure portal](https://portal.azure.com/)wybierz pozycję **Usuń** u góry obszaru roboczego, który chcesz usunąć.
 
-  ![Przycisk Usuń](./media/how-to-manage-workspace/delete-workspace.png)
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Usuń obszar roboczy":::
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

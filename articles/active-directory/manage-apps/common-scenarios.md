@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21ff820470765b82e397e56a2458603b8e5a7c7
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 21caec50bf9c20ec60194976b1bfbf16e4815914
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657951"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261044"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Scentralizowanie zarządzania aplikacjami za pomocą usługi Azure AD
 
@@ -88,7 +88,7 @@ Tożsamość może być płaszczyzną sterowania tylko wtedy, gdy może łączy�
 
 - [Zarządzanie aplikacjami](https://docs.microsoft.com/azure/active-directory/manage-apps/index)
 - [Aprowizacja aplikacji](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)
-- [Hybrydowy bezpieczny dostęp]()
-- [Nadzór nad tożsamościami](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
+- [Hybrydowy bezpieczny dostęp](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
+- [Zarządzanie tożsamościami](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
 - [Platforma tożsamości firmy Microsoft](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
 - [Bezpieczeństwo tożsamości](https://docs.microsoft.com/azure/active-directory/conditional-access/index)

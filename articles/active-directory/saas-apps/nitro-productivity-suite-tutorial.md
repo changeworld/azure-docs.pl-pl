@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249710aa34ff99e7c4755e7df7228d3006f15e31
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 05aed032eeb3a3cd925a718516ba9c8ffb87f65e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668972"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261107"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>Samouczek: Integracja rejestracji jednokrotnej usługi Azure Active Directory (SSO) z pakietem Nitro Productivity Suite
 
@@ -37,7 +37,7 @@ Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zo
 Aby rozpocząć, potrzebujesz następujących elementów:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto.](https://azure.microsoft.com/free/)
-* Subskrypcja z funkcją logowania jednokrotnego (SSO) nitro Productivity Suite.
+* [Subskrypcja](https://www.gonitro.com/pricing)nitro Productivity Suite Enterprise .
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
@@ -78,40 +78,56 @@ Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azu
 
 1. W [witrynie Azure portal](https://portal.azure.com/)na stronie integracji aplikacji **Nitro Productivity Suite** znajdź sekcję **Zarządzaj** i wybierz **opcję logowanie jednokrotne**.
 1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
-1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** kliknij ikonę edycji/pióra dla **podstawowej konfiguracji SAML,** aby edytować ustawienia.
+1. W sekcji **Certyfikat podpisywania SAML:**
+
+    a. Znajdź **certyfikat (Base64)** i wybierz **pobierz,** aby pobrać certyfikat i zapisać go na komputerze.
+
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+    
+1. W sekcji **Konfigurowanie pakietu Nitro Productivity Suite:**
+
+    a. Kliknij ikonę kopiowania obok **adresu URL logowania**
+    
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+    
+1. W [portalu Nitro Admin](https://admin.gonitro.com/)na stronie **Ustawienia przedsiębiorstwa** znajdź sekcję **Logowanie jednokrotne** i kliknij przycisk **SSO instalatora SAML.**
+
+    a. Wklej **adres URL logowania** z powyższego kroku do pola **Adresu URL logowania.**
+    
+    a. Przekaż **certyfikat (Base64)** z powyższego wcześniejszego kroku w polu **Certyfikat podpisywania X509.**
+    
+    a. Kliknij **przycisk Prześlij**
+    
+    a. Kliknij **pozycję Włącz logowanie jednokrotne**
+
+
+1. Wróć do [witryny Azure portal](https://portal.azure.com/), na stronie **Konfigurowanie logowania jednokrotnego za pomocą SAML** kliknij ikonę edycji/pióra dla **podstawowej konfiguracji SAML,** aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
 1. W sekcji **Podstawowa konfiguracja SAML,** jeśli chcesz skonfigurować aplikację w trybie inicjowanym **przez IDP,** wprowadź wartości dla następujących pól:
 
-    a. W polu tekstowym **Identyfikator** wpisz adres URL przy użyciu następującego wzorca:`urn:auth0:gonitro-prod:<ENVIRONMENT>`
+    a. W polu tekstowym **Identyfikator** skopiuj i wklej pole **Identyfikator jednostki SAML** z [portalu administratora nitro](https://admin.gonitro.com/). Powinien mieć następujący wzór:`urn:auth0:gonitro-prod:<ENVIRONMENT>`
 
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://gonitro-prod.eu.auth0.com/login/callback?connection=<ENVIRONMENT>`
+    b. W polu tekstowym **Odpowiedz na adres URL** skopiuj i wklej pole **ADRESU URL usługi ACS** z [portalu administratora nitro](https://admin.gonitro.com/). Powinien mieć następujący wzór:`https://gonitro-prod.eu.auth0.com/login/callback?connection=<ENVIRONMENT>`
 
 1. Kliknij **pozycję Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowanym w sp: **SP**
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://sso.gonitro.com/login`
 
-    > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej klienta nitro productivity suite,](https://www.gonitro.com/support) aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+1. Kliknij pozycję Zapisz.
 
 1. Aplikacja Nitro Productivity Suite oczekuje potwierdzeń SAML w określonym formacie, który wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
     ![image](common/default-attributes.png)
 
-1. Oprócz powyższej, Nitro Productivity Suite aplikacja oczekuje kilka więcej atrybutów, które mają być przekazywane z powrotem w odpowiedzi SAML, które są pokazane poniżej. Te atrybuty są również wstępnie wypełnione, ale można je przejrzeć zgodnie z wymaganiami.
+1. Ponadto aplikacja Nitro Productivity Suite oczekuje, że kilka więcej atrybutów zostanie przekazanych z powrotem w odpowiedzi SAML, jak pokazano w poniższej tabeli. Te atrybuty są wstępnie wypełniane, ale można je przejrzeć zgodnie z wymaganiami.
     
     | Nazwa  |  Atrybut źródłowy|
-    | ---------------| --------------- | --------- |
+    | ---------------| --------------- |
     | liczba pracowników |  user.objectid |
 
-1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** w sekcji **Saml Podpisywanie certyfikatów** znajdź **certyfikat (Base64)** i wybierz **pozycję Pobierz,** aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificatebase64.png)
-
-1. W sekcji **Konfigurowanie pakietu Nitro Productivity Suite** skopiuj odpowiednie adresy URL na podstawie wymagań.
-
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 W tej sekcji utworzysz użytkownika testowego w witrynie Azure portal o nazwie B.Simon.

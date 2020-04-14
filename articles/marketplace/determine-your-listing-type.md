@@ -1,6 +1,6 @@
 ---
-title: Określanie opcji publikowania w witrynach Microsoft AppSource i Azure Marketplace
-description: W tym artykule opisano kryteria uprawnień i wymagania dotyczące publikowania partnerów próbujących zrozumieć, jak publikować aplikacje w witrynach Microsoft AppSource i Azure Marketplace.
+title: Określanie opcji publikowania w rynku komercyjnym
+description: W tym artykule opisano kryteria kwalifikowalności i wymagania dotyczące publikowania partnerów próbujących zrozumieć, jak publikować aplikacje w komercyjnym portalu.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: dsindona
 ms.service: marketplace
@@ -8,18 +8,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: dsindona
-ms.openlocfilehash: 4c41fcbb8766feb68db7d60d591e914a6ba0aea2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 84d5c351f3997fe5430ea1ce517c2dca13203c03
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349537"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261690"
 ---
 # <a name="determine-your-publishing-option"></a>Określanie opcji publikowania
 
 Opcja publikowania wybrana dla oferty odnosi się bezpośrednio zarówno do wymagań kwalifikacyjnych, jak i korzyści GTM na rynku komercyjnym. Co ważniejsze, wybór opcji publikowania i typu oferty określa, w jaki sposób użytkownicy będą wchodzić w interakcje z ofertą komercyjnego rynku.
 
-Aby skonfigurować ofertę, musisz zrozumieć następujące kluczowe pojęcia rynku komercyjnego: opcje publikowania, typy ofert i konfigurację oraz wezwania do działania, które będą regulować sposób i miejsce prezentowania oferty na rynku komercyjnym Storefronts.
+Aby skonfigurować ofertę, musisz zrozumieć następujące kluczowe pojęcia dotyczące rynku komercyjnego: opcje publikowania, typy ofert i konfigurację oraz wezwania do działania, które będą regulować sposób i miejsce prezentowania oferty w witrynach sklepu na rynku komercyjnym.
 
 ![Witryny sklepu i opcje publikowania w komercyjnych witrynach w witrynach firmy Microsoft](./media/marketplace-publishers-guide/storefronts_options_table.png)
 

@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: c6062ec008a7a12c720cf28c2d79531e805ebba0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9398820c88120400d97fbaf8cb0da100c2bdbf81
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984439"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261758"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego [protokołu Bloku Komunikatów serwera (SMB).](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) Udziały plików platformy Azure można zainstalować jednocześnie w chmurze lub lokalnie we wdrożeniach systemów Windows, Linux i macOS. Można również buforować udziały plików platformy Azure na komputerach z systemem Windows Server przy użyciu usługi Azure File Sync dla szybkiego dostępu w pobliżu miejsca, w którym dane są używane.
@@ -217,7 +217,7 @@ W tym artykule odniewany jest odpowiedzi na często zadawane pytania dotyczące 
 * <a id="ad-aad-smb-files"></a>
 **Jak sprawdzić, czy włączono uwierzytelnianie usługi AD na moim koncie magazynu i informacje o domenie usługi AD?**
 
-    Można zapoznać się z instrukcjami podanymi [w tym miejscu,](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) aby sprawdzić, czy uwierzytelnianie usługi Azure Files AD jest włączone na koncie magazynu i pobrać informacje o domenie usługi AD.
+    Można zapoznać się z instrukcjami podanymi [w tym miejscu,](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account) aby sprawdzić, czy uwierzytelnianie usługi Azure Files AD jest włączone na koncie magazynu i pobrać informacje o domenie usługi AD.
     
 * <a id="encryption-at-rest"></a>
 **Jak mogę się upewnić, że mój udział plików platformy Azure jest szyfrowany w spoczynku?**  

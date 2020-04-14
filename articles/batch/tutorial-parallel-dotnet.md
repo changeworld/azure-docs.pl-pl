@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 9a1a0b37b0fae52677ad989d85e947e0148ac0a5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8734f748da07b36497ce143646e614ef82056d37
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80153220"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254603"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Samouczek: uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API .NET
 
@@ -198,9 +198,10 @@ Następnie w przykładzie tworzona jest pula węzłów obliczeniowych na koncie 
 
 Liczba węzłów i rozmiar maszyny wirtualnej są ustawiane przy użyciu zdefiniowanych stałych. Usługa Batch obsługuje węzły dedykowane oraz [węzły o niskim priorytecie](batch-low-pri-vms.md). W puli możesz użyć dowolnego z tych typów węzłów lub obu. Węzły dedykowane są zarezerwowane dla Twojej puli. Węzły o niskim priorytecie są oferowane w obniżonej cenie i korzystają z nadwyżek pojemności maszyn wirtualnych na platformie Azure. Węzły o niskim priorytecie staną się niedostępne, jeśli pojemność platformy Azure będzie niewystarczająca. Domyślnie przykładowa aplikacja tworzy pulę zawierającą tylko 5 węzłów o niskim priorytecie i rozmiarze *Standardowa_A1_v2*.
 
->[Uwaga] Upewnij się, że sprawdź przydziały węzłów. Zobacz [Przydziały usługi wsadowej i limity,](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0) aby uzyskać instrukcje dotyczące tworzenia żądania przydziału."
+>[!Note]
+>Upewnij się, że sprawdź przydziały węzłów. Zobacz [Przydziały usługi wsadowej i limity,](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0) aby uzyskać instrukcje dotyczące tworzenia żądania przydziału."
 
-Aplikacja ffmpeg jest wdrażana w węzłach obliczeniowych przez dodanie parametru [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) do konfiguracji puli. Aby zapewnić [aktywację aplikacji](https://docs.microsoft.com/cli/azure/batch/application/package?view=azure-cli-latest#az-batch-application-package-activate).
+Aplikacja ffmpeg jest wdrażana w węzłach obliczeniowych przez dodanie parametru [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) do konfiguracji puli.
 
 Metoda [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) przesyła pulę do usługi Batch.
 

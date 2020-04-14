@@ -4,16 +4,16 @@ description: Konfigurowanie, optymalizowanie i rozwiązywanie problemów z progr
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: d2cb40d7510e46539db46bdb61ec2d64c0fd1ec7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87a335f44a31436de735395adbee9035493cbbd2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77526499"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263424"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurowanie, optymalizowanie i rozwiązywanie problemów z programem AzCopy
 
@@ -53,9 +53,6 @@ Ta sekcja ułatwia wykonywanie następujących zadań optymalizacji:
 ### <a name="run-benchmark-tests"></a>Przeprowadzaj testy porównawcze
 
 Można uruchomić test porównawczy wydajności na określonych kontenerów obiektów blob, aby wyświetlić ogólne statystyki wydajności i wąskich gardeł wydajności tożsamości. 
-
-> [!NOTE]
-> W bieżącej wersji ta funkcja jest dostępna tylko dla kontenerów magazynu obiektów Blob.
 
 Użyj następującego polecenia, aby uruchomić test testu porównawczego wydajności.
 

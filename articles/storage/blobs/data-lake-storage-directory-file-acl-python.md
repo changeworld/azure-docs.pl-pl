@@ -3,17 +3,17 @@ title: Zestaw SDK usługi Azure Data Lake Storage Gen2 Python dla plików & list
 description: Użyj python zarządzać katalogami i list kontroli dostępu do plików i katalogów (ACL) na kontach magazynu z hierarchiczną przestrzenią nazw (HNS) włączoną.
 author: normesta
 ms.service: storage
-ms.date: 03/20/2020
+ms.date: 04/10/2020
 ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: a00713df2cdda626a76cc648826f7e56df214232
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: a79f3110206a01b9b974952f0ec0d299644be11f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668724"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262353"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Używanie języka Python do zarządzania katalogami, plikami i listami AL w usłudze Azure Data Lake Storage Gen2
 
@@ -32,7 +32,7 @@ W tym artykule pokazano, jak używać języka Python do tworzenia katalogów, pl
 Zainstaluj bibliotekę klienta usługi Azure Data Lake Storage dla języka Python przy użyciu [pip](https://pypi.org/project/pip/).
 
 ```
-pip install azure-storage-file-datalake --pre
+pip install azure-storage-file-datalake
 ```
 
 Dodaj te instrukcje importu do górnej części pliku kodu.
@@ -334,7 +334,7 @@ def list_directory_contents():
 
 * [Dokumentacja referencyjna interfejsu API](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html)
 * [Pakiet (indeks pakietu Python)](https://pypi.org/project/azure-storage-file-datalake/)
-* [Przykłady](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
+* [Samples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
 * [Mapowanie gen1 do gen2](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 * [Znane problemy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Przekaż opinię](https://github.com/Azure/azure-sdk-for-python/issues)

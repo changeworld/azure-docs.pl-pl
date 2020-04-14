@@ -3,7 +3,7 @@ title: Dodawanie diagnostyki & monitorowania do maszyny wirtualnej platformy Azu
 description: Użyj szablonu Usługi Azure Resource Manager, aby utworzyć nową maszynę wirtualną systemu Windows z rozszerzeniem diagnostyki platformy Azure.
 services: virtual-machines-windows
 documentationcenter: ''
-author: sbtron
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/31/2017
-ms.author: saurabh
+ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2490c3de60e0deac6a1a4ddc5abc95cb46e240b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d100f054da5f82bc4dea51e054a28cca07f5de7b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74073838"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258834"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Używanie monitorowania i diagnostyki za pomocą szablonów maszyny Wirtualnej systemu Windows i usługi Azure Resource Manager
 Rozszerzenie diagnostyki platformy Azure zapewnia funkcje monitorowania i diagnostyki na maszynie wirtualnej platformy Azure opartej na systemie Windows. Można włączyć te możliwości na maszynie wirtualnej, dołączając rozszerzenie jako część szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji na temat dołączania dowolnego rozszerzenia jako części szablonu maszyny wirtualnej, zobacz [Tworzenie szablonów usługi Azure Resource Manager z rozszerzeniami maszyn wirtualnych.](../windows/template-description.md#extensions) W tym artykule opisano, jak można dodać rozszerzenie diagnostyki platformy Azure do szablonu maszyny wirtualnej systemu Windows.  
@@ -84,7 +84,7 @@ Element *ustawień* zawiera właściwości konfiguracji dla rozszerzenia, które
 Właściwości w *protectedSettings* (czasami określane jako konfiguracja prywatna) można ustawić, ale nie można odczytać z powrotem po ustawieniu. Charakter tylko do zapisu *protectedSettings* sprawia, że przydatne do przechowywania wpisów tajnych, takich jak klucz konta magazynu, gdzie są zapisywane dane diagnostyczne.    
 
 ## <a name="specifying-diagnostics-storage-account-as-parameters"></a>Określanie konta magazynu diagnostyki jako parametrów
-Fragment kodu rozszerzenia diagnostyki przyjmuje dwa parametry *existingdiagnosticsStorageAccountName* i *existingdiagnosticsStorageResourceGroup,* aby określić konto magazynu diagnostyki, na którym przechowywane są dane diagnostyczne. Określenie konta magazynu diagnostyki jako parametru ułatwia zmianę konta magazynu diagnostyki w różnych środowiskach, na przykład można użyć innego konta magazynu diagnostyki do testowania i innego dla wdrożenia produkcji.  
+Fragment kodu rozszerzenia diagnostyki przyjmuje dwa parametry *existingdiagnosticsStorageAccountName* i *existingdiagnosticsStorageResourceGroup,* aby określić konto magazynu diagnostyki, na którym przechowywane są dane diagnostyczne. Określenie konta magazynu diagnostyki jako parametru ułatwia zmianę konta magazynu diagnostyki w różnych środowiskach, na przykład można użyć innego konta magazynu diagnostyki do testowania i innego dla wdrożenia produkcyjnego.  
 
 ```json
 "existingdiagnosticsStorageAccountName": {
@@ -101,7 +101,7 @@ Fragment kodu rozszerzenia diagnostyki przyjmuje dwa parametry *existingdiagnost
 }
 ```
 
-Najlepszym rozwiązaniem jest określenie konta magazynu diagnostyki w innej grupie zasobów niż grupa zasobów dla maszyny wirtualnej. Grupę zasobów można uznać za jednostkę wdrożeniową z własnym okresem istnienia, maszynę wirtualną można wdrożyć i ponownie wdrożyć, gdy zostaną wprowadzone do niej nowe aktualizacje konfiguracji, ale można kontynuować przechowywanie danych diagnostycznych na tym samym koncie magazynu w całej tych wdrożeń maszyn wirtualnych. Posiadanie konta magazynu w innym zasobie umożliwia kontu magazynu akceptowanie danych z różnych wdrożeń maszyn wirtualnych, co ułatwia rozwiązywanie problemów w różnych wersjach.
+Najlepszym rozwiązaniem jest określenie konta magazynu diagnostyki w innej grupie zasobów niż grupa zasobów dla maszyny wirtualnej. Grupę zasobów można uznać za jednostkę wdrażania z własnym okresem istnienia, maszynę wirtualną można wdrożyć i ponownie wdrożyć, gdy zostaną wprowadzone do niej nowe aktualizacje konfiguracji, ale można kontynuować przechowywanie danych diagnostycznych na tym samym koncie magazynu w tych wdrożeniach maszyn wirtualnych. Posiadanie konta magazynu w innym zasobie umożliwia kontu magazynu akceptowanie danych z różnych wdrożeń maszyn wirtualnych, co ułatwia rozwiązywanie problemów w różnych wersjach.
 
 > [!NOTE]
 > Jeśli utworzysz szablon maszyny wirtualnej systemu Windows z programu Visual Studio, domyślne konto magazynu może być ustawione na użycie tego samego konta magazynu, na którym jest przekazywana maszyna wirtualna VHD. Ma to na celu uproszczenie początkowej konfiguracji maszyny Wirtualnej. Ponownie współczynnik szablonu, aby użyć innego konta magazynu, które mogą być przekazywane jako parametr. 

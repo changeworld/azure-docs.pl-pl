@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d7d0699718642a7eb9f85b2e8a86623092c34365
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 9ea63192732184ff7a13ff1465a5b393a282f9d2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010566"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262200"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure
 
@@ -88,6 +88,7 @@ Odwrócony DNS jest obsługiwany we wszystkich sieciach wirtualnych opartych na 
 * Wyszukiwanie do przodu na fqdns \[formularza\]vmname .internal.cloudapp.net rozwiąże adres IP przypisany do maszyny wirtualnej.
 * Jeśli sieć wirtualna jest połączona ze [strefami prywatnymi usługi Azure DNS](../dns/private-dns-overview.md) jako sieć wirtualna rejestracji, kwerendy DNS odwrotnej zwracają dwa rekordy. Jeden rekord będzie vmname \[\]formularza . [priatednszonename] i inne będą \[w formie\]vmname .internal.cloudapp.net
 * Wyszukiwanie wstecznego DNS jest ograniczone do danej sieci wirtualnej, nawet jeśli jest równorzędne z innymi sieciami wirtualnymi. Wycofane kwerendy DNS (zapytania PTR) dla adresów IP maszyn wirtualnych znajdujących się w sieciach wirtualnych równorzędnych zwracają NXDOMAIN.
+* Jeśli chcesz wyłączyć funkcję odwrotnego DNS w sieci wirtualnej, możesz to zrobić, tworząc strefę wyszukiwania wstecznego przy użyciu [stref prywatnych usługi Azure DNS](../dns/private-dns-overview.md) i połącz tę strefę z siecią wirtualną. Na przykład, jeśli przestrzeń adresowa IP sieci wirtualnej jest 10.20.0.0/16 następnie można utworzyć pustą prywatną strefę DNS 20.10.in-addr.arpa i połączyć go z siecią wirtualną. Podczas łączenia strefy z siecią wirtualną należy wyłączyć automatyczną rejestrację w łączu. Ta strefa zastąpi domyślne strefy wyszukiwania wstecznego dla sieci wirtualnej, a ponieważ ta strefa jest pusta, otrzymasz NXDOMAIN dla kwerend odwróconego DNS. Szczegółowe informacje na temat tworzenia prywatnej strefy DNS i łączenia jej z siecią wirtualną można znaleźć w naszym [przewodniku szybki](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal) start.
 
 > [!NOTE]
 > Jeśli chcesz, aby wyszukiwanie odwrotnego DNS obejmowało sieć wirtualną, możesz utworzyć strefę wyszukiwania wstecznego (in-addr.arpa) [Platformy Azure DNS](../dns/private-dns-overview.md) i łączy ją z wieloma sieciami wirtualnymi. Musisz jednak ręcznie zarządzać rekordami odwrotnego DNS dla maszyn wirtualnych.

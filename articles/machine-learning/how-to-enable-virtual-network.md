@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: ca4bf1b0043a2c73851eab48ff8b9b6b7a987b72
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ea65956a73874b717ecab25d83ed25b59f2ada55
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115297"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257253"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpieczanie zadań eksperymentowania i wnioskowania usługi Azure w ramach sieci wirtualnej platformy Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -546,7 +546,7 @@ Aby uzyskać więcej informacji na temat konfigurowania reguły sieciowej, zobac
     > [!IMPORTANT]
     > Konto magazynu, klaster obliczeniowy i rejestr kontenerów platformy Azure muszą znajdować się w tej samej podsieci sieci wirtualnej.
     
-    Aby uzyskać więcej informacji, zobacz odwołanie do metody [update().](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none-)
+    Aby uzyskać więcej informacji, zobacz odwołanie do metody [update().](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-)
 
 1. Jeśli używasz łącza prywatnego dla obszaru roboczego usługi Azure Machine Learning i umieścisz rejestr kontenerów platformy Azure dla obszaru roboczego w sieci wirtualnej, należy również zastosować następujący szablon usługi Azure Resource Manager. Ten szablon umożliwia obszarowi roboczemu komunikowanie się z acr za pomocą łącza prywatnego.
 

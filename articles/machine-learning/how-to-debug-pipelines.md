@@ -1,7 +1,7 @@
 ---
-title: Debugowanie i rozwiązywanie problemów z potokami uczenia maszynowego
+title: Debugowanie & rozwiązywania problemów z potokami ml
 titleSuffix: Azure Machine Learning
-description: Debugowanie i rozwiązywanie problemów z potokami uczenia maszynowego w module SDK usługi Azure Machine Learning dla języka Python. Poznaj typowe pułapki dotyczące tworzenia potoków i porady ułatwiające debugowanie skryptów przed i podczas zdalnego wykonywania. Dowiedz się, jak używać programu Visual Studio Code do interaktywnego debugowania potoków uczenia maszynowego.
+description: Debuguj potoki usługi Azure Machine Learning w języku Python. Poznaj typowe pułapki dotyczące tworzenia potoków i porady ułatwiające debugowanie skryptów przed i podczas zdalnego wykonywania. Dowiedz się, jak używać programu Visual Studio Code do interaktywnego debugowania potoków uczenia maszynowego.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80388988"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257219"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Debugowanie i rozwiązywanie problemów z potokami uczenia maszynowego
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Poniższe sekcje zawierają omówienie typowych pułapek podczas tworzenia potok
 
 ### <a name="testing-scripts-locally"></a>Testowanie skryptów lokalnie
 
-Jednym z najczęstszych błędów w potoku jest to, że dołączony skrypt (skrypt oczyszczania danych, skrypt oceniający itp.) nie działa zgodnie z przeznaczeniem lub zawiera błędy środowiska uruchomieniowego w kontekście zdalnego obliczeń, które są trudne do debugowania w obszarze roboczym na komputerze platformy Azure Studio nauki. 
+Jednym z najczęstszych błędów w potoku jest to, że dołączony skrypt (skrypt oczyszczania danych, skrypt oceniający itp.) nie działa zgodnie z przeznaczeniem lub zawiera błędy środowiska uruchomieniowego w kontekście obliczeń zdalnych, które są trudne do debugowania w obszarze roboczym w studio usługi Azure Machine Learning. 
 
 Same potoki nie mogą być uruchamiane lokalnie, ale uruchamianie skryptów w izolacji na komputerze lokalnym umożliwia szybsze debugowanie, ponieważ nie trzeba czekać na proces kompilacji obliczeń i środowiska. Niektóre prace rozwojowe są wymagane, aby to zrobić:
 
@@ -50,7 +50,7 @@ Po skonfigurowaniu skryptu do uruchomienia w środowisku lokalnym znacznie łatw
 
 ### <a name="debugging-scripts-from-remote-context"></a>Debugowanie skryptów z kontekstu zdalnego
 
-Testowanie skryptów lokalnie jest doskonałym sposobem debugowania głównych fragmentów kodu i złożonej logiki przed rozpoczęciem tworzenia potoku, ale w pewnym momencie prawdopodobnie trzeba będzie debugować skrypty podczas rzeczywistego uruchomienia potoku, zwłaszcza podczas diagnozowania zachowania, które występuje podczas interakcji między etapami rurociągu. Zaleca się liberalne użycie `print()` instrukcji w skryptach kroków, dzięki czemu można zobaczyć stan obiektu i oczekiwane wartości podczas zdalnego wykonywania, podobnie jak debugować kod JavaScript.
+Testowanie skryptów lokalnie jest doskonałym sposobem debugowania fragmentów kodu głównych i złożonej logiki przed rozpoczęciem tworzenia potoku, ale w pewnym momencie prawdopodobnie trzeba będzie debugować skrypty podczas rzeczywistego potoku uruchomić się, zwłaszcza podczas diagnozowania zachowanie, które występuje podczas interakcji między krokami potoku. Zaleca się liberalne użycie `print()` instrukcji w skryptach kroków, dzięki czemu można zobaczyć stan obiektu i oczekiwane wartości podczas zdalnego wykonywania, podobnie jak debugować kod JavaScript.
 
 Plik `70_driver_log.txt` dziennika zawiera: 
 
@@ -88,7 +88,7 @@ Poniższa tabela zawiera typowe problemy podczas opracowywania potoku z potencja
 
 Poniższa tabela zawiera informacje dotyczące różnych opcji debugowania dla potoków. Nie jest to wyczerpująca lista, ponieważ istnieją inne opcje oprócz tylko usługi Azure Machine Learning, Python i OpenCensus pokazano tutaj.
 
-| Biblioteka                    | Typ   | Przykład                                                          | Element docelowy                                  | Resources                                                                                                                                                                                                                                                                                                                    |
+| Biblioteka                    | Typ   | Przykład                                                          | Element docelowy                                  | Zasoby                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning SDK | Metryka | `run.log(name, val)`                                             | Interfejs użytkownika portalu usługi Azure Machine Learning             | [Jak śledzić eksperymenty](how-to-track-experiments.md#available-metrics-to-track)<br>[klasa azureml.core.Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
 | Drukowanie/rejestrowanie języka Python    | Log    | `print(val)`<br>`logging.info(message)`                          | Dzienniki sterowników, projektant usługi Azure Machine Learning | [Jak śledzić eksperymenty](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Rejestrowanie języka Python](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |

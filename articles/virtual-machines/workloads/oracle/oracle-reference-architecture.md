@@ -2,7 +2,7 @@
 title: Architektury referencyjne dla baz danych Oracle na platformie Azure | Dokumenty firmy Microsoft
 description: Odwołuje się do architektury uruchamiania baz danych Oracle Database Enterprise Edition na maszynach wirtualnych platformy Microsoft Azure.
 services: virtual-machines-linux
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: ''
 ms.service: virtual-machines
@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2019
-ms.author: rogirdh
+ms.author: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 235482f5d44877e5c4e47aed4d7eaf2baea5c3fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dc677ded1e13a64c082d49140fa0de69c0ed9d4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75560338"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263271"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Architektury referencyjne dla oracle database enterprise edition na platformie Azure
 
@@ -177,7 +177,7 @@ Poniższy diagram jest architekturą referencyjną dla oracle sharding z Oracle 
 
 ![Dzielenia na fragmenty bazy danych Oracle przy użyciu stref dostępności z Data Guard Broker - FSFO](./media/oracle-reference-architecture/oracledb_dg_sh_az.png)
 
-Podczas gdy dzielenie na fragmenty zarządzane przez system jest najłatwiejsze do skonfigurowania i zarządzania, dzielenie na fragmenty zdefiniowane przez użytkownika lub dzielenie na fragmenty kompozytowe jest odpowiednie dla scenariuszy, w których dane i aplikacja są rozproszone geograficznie, lub w scenariuszach, w których musisz mieć kontrolę nad replikacją każdego odłamka. 
+Podczas gdy dzielenie na fragmenty zarządzane przez system jest najłatwiejsze do skonfigurowania i zarządzania, dzielenia na fragmenty zdefiniowane przez użytkownika lub dzielenia na fragmenty kompozytowe jest dobrze nadaje się do scenariuszy, w których dane i aplikacji są rozproszone geograficznie lub w scenariuszach, w których trzeba mieć kontrolę nad replikacją każdego fragmentu. 
 
 W poprzedniej architekturze dzielenia na fragmenty złożone jest używany do geograficznej dystrybucji danych i skalowania w poziomie w poziomie warstw aplikacji. Dzielenia dzielenia na fragmenty złożone jest kombinacją usg zarządzanych przez system i zdefiniowanych przez użytkownika, a tym samym zapewnia korzyści z obu metod. W poprzednim scenariuszu dane są najpierw podzielone na wiele obszarów niezależnego fragmentu oddzielonych regionem. Następnie dane są dalej partycjonowane przez spójne skróty w wielu fragmentów w przestrzeni niezależnej. Każdy shardspace zawiera wiele grup niezależnego fragmentu. Każda grupa niezależnego fragmentu ma wiele fragmentów i jest "jednostką" replikacji, w tym przypadku. Każda grupa niezależnego fragmentu zawiera wszystkie dane w przestrzeni niezależnej. Grupy niezależnego fragmentu A1 i B1 są grupami podstawowych niezależnego fragmentu, podczas gdy grupy niezależnego fragmentu A2 i B2 są rezerwami. Można wybrać, aby poszczególne fragmenty były jednostką replikacji, a nie grupą niezależnego fragmentu.
 

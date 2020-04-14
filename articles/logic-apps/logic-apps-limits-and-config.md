@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 03/12/2020
-ms.openlocfilehash: 418be090e7ff78ec0089c115c9884ffeffdda871
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4359c5581d14f4a918a49cf2b91ac58561ea93d3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284020"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257457"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limits and configuration information for Azure Logic Apps (Limity i informacje o konfiguracji dla usługi Azure Logic Apps)
 
@@ -84,7 +84,7 @@ Oto limity dla pojedynczego uruchomienia aplikacji logiki:
 
 | Nazwa | Limit | Uwagi |
 | ---- | ----- | ----- |
-| Współbieżność wyzwalania | - Nieograniczony, gdy kontrola współbieżności jest wyłączona <p><p>- 25 jest domyślny limit, gdy formant współbieżności jest włączony, którego nie można cofnąć po włączeniu formantu. Wartość domyślną można zmienić na wartość z 1 do 50 włącznie. | Ten limit opisuje największą liczbę wystąpień aplikacji logiki, które można uruchomić w tym samym czasie lub równolegle. <p><p>**Uwaga:** Gdy współbieżność jest włączona, limit SplitOn jest zredukowany do 100 elementów dla [dyskusyjnych tablic](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Aby zmienić domyślny limit na wartość z 1 do 50 włącznie, zobacz [Zmienianie limitu współbieżności wyzwalacza](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) lub [Wyzwalanie wystąpień sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Współbieżność wyzwalania | - Nieograniczony, gdy kontrola współbieżności jest wyłączona <p><p>- 25 jest domyślny limit, gdy włączy się formant współbieżności, którego nie można cofnąć po włączeniu współbieżności. Wartość domyślną można zmienić na wartość z 1 do 50 włącznie. | Ten limit opisuje największą liczbę wystąpień aplikacji logiki, które można uruchomić w tym samym czasie lub równolegle. <p><p>**Uwaga:** Gdy współbieżność jest włączona, limit SplitOn jest zredukowany do 100 elementów dla [dyskusyjnych tablic](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Aby zmienić domyślny limit na wartość z 1 do 50 włącznie, zobacz [Zmienianie limitu współbieżności wyzwalacza](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) lub [Wyzwalanie wystąpień sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Maksymalna liczba oczekujących przebiegów | - Bez współbieżności minimalna liczba oczekujących przebiegów wynosi 1, podczas gdy maksymalna liczba wynosi 50. <p><p>- Przy współbieżności minimalna liczba oczekujących przebiegów wynosi 10 plus liczba równoczesnych przebiegów (współbieżność wyzwalacza). Możesz zmienić maksymalną liczbę do 100 włącznie. | Ten limit opisuje największą liczbę wystąpień aplikacji logiki, które mogą czekać na uruchomienie, gdy aplikacja logiki jest już uruchomiony maksymalną równoczesne wystąpienia. <p><p>Aby zmienić domyślny limit, zobacz [Zmienianie limitu przebiegów oczekiwania](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
 | Elementy tablicy Foreach | 100 000 | Ten limit opisuje największą liczbę elementów tablicy, które "dla każdego" pętli może przetwarzać. <p><p>Aby filtrować większe tablice, można użyć [akcji kwerendy](logic-apps-perform-data-operations.md#filter-array-action). |
 | Współbieżność foreach | 20 jest domyślnym limitem, gdy formant współbieżności jest wyłączony. Wartość domyślną można zmienić na wartość z 1 do 50 włącznie. | Ten limit jest największą liczbą iteracji pętli "dla każdego", które można uruchomić w tym samym czasie lub równolegle. <p><p>Aby zmienić domyślny limit na wartość z 1 do 50 włącznie, zobacz [Zmienianie limitu współbieżności "dla każdego"](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) lub [Uruchom kolejno "dla każdej" pętli](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
@@ -167,6 +167,8 @@ Niektóre operacje łącznika wykonać wywołania asynchroniczne lub nasłuchiwa
 | Żądanie limitu znaków adresu URL | 16 384 znaków |
 |||
 
+<a name="retry-policy-limits"></a>
+
 #### <a name="retry-policy"></a>Zasady ponawiania
 
 | Nazwa | Limit | Uwagi |
@@ -228,7 +230,7 @@ Aby uzyskać informacje o cenach, zobacz [Ceny aplikacji logiki](https://azure.m
 > [!NOTE]
 > Warstwa bezpłatna służy tylko do scenariuszy odkrywczych, a nie scenariuszy produkcyjnych. Ta warstwa ogranicza przepływność i użycie i nie ma umowy dotyczącej poziomu usług (SLA).
 
-| Artefakt | Bezpłatna | Podstawowa (Basic) | Standardowa |
+| Artefakt | Bezpłatna | Podstawowy | Standardowa |
 |----------|------|-------|----------|
 | Umowy handlowe EDI | 10 | 1 | 1000 |
 | Partnerzy handlowi EDI | 25 | 2 | 1000 |
@@ -254,7 +256,7 @@ Aby uzyskać informacje o cenach, zobacz [Ceny aplikacji logiki](https://azure.m
 
 ### <a name="throughput-limits"></a>Limity przepływności
 
-| Punkt końcowy środowiska uruchomieniowego | Bezpłatna | Podstawowa (Basic) | Standardowa | Uwagi |
+| Punkt końcowy środowiska uruchomieniowego | Bezpłatna | Podstawowy | Standardowa | Uwagi |
 |------------------|------|-------|----------|-------|
 | Odczytywanie połączeń przez 5 minut | 3000 | 30,000 | 60 000 | W razie potrzeby można rozdzielić obciążenie na więcej niż jedno konto. |
 | Wywoływanie połączeń na 5 minut | 3000 | 30,000 | 45 000 | W razie potrzeby można rozdzielić obciążenie na więcej niż jedno konto. |

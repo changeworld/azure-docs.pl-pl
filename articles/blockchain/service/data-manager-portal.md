@@ -4,12 +4,12 @@ description: Twórz i zarządzaj Menedżerem danych Blockchain dla usługi Azure
 ms.date: 03/30/2020
 ms.topic: article
 ms.reviewer: ravastra
-ms.openlocfilehash: beacef0660a253c90afb507618e8a1742f0c9d2d
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 08f5a4a807087afce13dd4a6e96c0e9dd0a36103
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529613"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260602"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurowanie menedżera danych łańcucha bloków przy użyciu witryny Azure Portal
 
@@ -28,11 +28,11 @@ Aby skonfigurować wystąpienie menedżera danych blockchain, należy:
 
 ## <a name="create-instance"></a>Utwórz wystąpienie
 
-Wystąpienie menedżera danych blockchain łączy i monitoruje węzeł transakcji usługi Azure Blockchain Service. Tylko użytkownicy z dostępem do węzła transakcji mogą utworzyć połączenie. Wystąpienie przechwytuje wszystkie nieprzetworzone dane transakcji bloku i nieprzetworzonego z węzła transakcji.
+Wystąpienie menedżera danych blockchain łączy i monitoruje węzeł transakcji usługi Azure Blockchain Service. Tylko użytkownicy z dostępem do węzła transakcji mogą utworzyć połączenie. Wystąpienie przechwytuje wszystkie nieprzetworzone dane transakcji bloku i nieprzetworzonego z węzła transakcji. Blockchain Data Manager publikuje komunikat **RawBlockAndTransactionMsg,** który jest nadzbiorem informacji zwróconych z web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) i [zapytań getTransaction.](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction)
 
 Połączenie wychodzące wysyła dane łańcucha bloków do usługi Azure Event Grid. Podczas tworzenia wystąpienia można skonfigurować pojedyncze połączenie wychodzące. Blockchain Data Manager obsługuje wiele połączeń wychodzących w temacie siatki zdarzeń dla danego wystąpienia Menedżera danych Blockchain. Możesz wysyłać dane łańcucha bloków do jednego miejsca docelowego lub wysyłać dane łańcucha bloków do wielu miejsc docelowych. Aby dodać inne miejsce docelowe, wystarczy dodać dodatkowe połączenia wychodzące do wystąpienia.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Przejdź do członka usługi Azure Blockchain, którego chcesz połączyć z Menedżerem danych blockchain. Wybierz **Blockchain Data Manager**.
 1. Wybierz pozycję **Dodaj**.
 

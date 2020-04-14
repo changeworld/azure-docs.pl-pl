@@ -1,5 +1,5 @@
 ---
-title: Często zadawane pytania dotyczące portalu Microsoft Commercial Marketplace
+title: Często zadawane pytania dotyczące rynku komercyjnego firmy Microsoft
 description: Odpowiedzi na często zadawane pytania dotyczące portalu Azure Marketplace i usługi Microsoft AppSource
 author: qianw211
 ms.service: marketplace
@@ -7,20 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/4/2019
 ms.author: dsindona
-ms.openlocfilehash: ae5c691375d52bc7da7a877f5b2e0c2ca52cc87e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a142ce3c082f6f9a53287885ba347fc78f77718
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288465"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262030"
 ---
-# <a name="microsoft-commercial-marketplace-faqs"></a>Często zadawane pytania dotyczące witryny Microsoft Commercial Marketplace
+# <a name="microsoft-commercial-marketplace-faqs"></a>Platforma handlowa firmy Microsoft — często zadawane pytania
 
-Odpowiedzi na często zadawane pytania dotyczące portalu Azure Marketplace i usługi Microsoft AppSource.
+Odpowiedzi na często zadawane pytania dotyczące rynku komercyjnego.
 
 ## <a name="faq-for-customers"></a>Często zadawane pytania dla klientów
 
-### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Co należy wiedzieć o platformie Azure Marketplace i usłudze Microsoft AppSource
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Co musisz wiedzieć o rynku komercyjnym
 
 **Co to jest usługa Azure Marketplace?**
 
@@ -168,11 +168,11 @@ Tak, dla klientów z umową Enterprise Agreement (EA) administrator rejestracji 
 
 **Jakie metody płatności są obsługiwane w przypadku zakupów na rynku komercyjnym?**
 
-Klienci mogą kupować oferty w witrynie Azure Marketplace i microsoft AppSource za pomocą kart kredytowych. Jeśli masz istniejącą subskrypcję platformy Azure, zakupy z portalu Azure Marketplace będą korzystać z metody płatności skonfigurowanej na koncie i są wyświetlane na tej samej fakturze jako oddzielny element zamówienia. Niektóre oferty korzystają z zobowiązania pieniężnego platformy Azure, ale większość zakupów w komercyjnych witrynach marketplace nie ściąga zobowiązań dotyczących umowy Enterprise Agreement, chociaż zużycie infrastruktury platformy Azure będzie.
+Klienci mogą kupować oferty na rynku komercyjnym za pomocą kart kredytowych. Jeśli masz istniejącą subskrypcję platformy Azure, zakupy z portalu Azure Marketplace będą korzystać z metody płatności skonfigurowanej na koncie i są wyświetlane na tej samej fakturze jako oddzielny element zamówienia. Niektóre oferty korzystają z zobowiązania pieniężnego platformy Azure, ale większość zakupów w komercyjnych witrynach marketplace nie ściąga zobowiązań dotyczących umowy Enterprise Agreement, chociaż zużycie infrastruktury platformy Azure będzie.
 
 **Czy mogę zastosować środki subskrypcyjne platformy Azure lub środki pieniężne na moje konto do ofert w portalu Azure Marketplace?**
 
-Konkretne oferty portalu Azure Marketplace mogą korzystać z kredytów subskrypcyjnych platformy Azure lub funduszy zobowiązań pieniężnych. Zobacz [Zobowiązanie pieniężne platformy Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/), aby uzyskać pełną listę produktów biorących udział w tym programie. Oferty te nie obejmują opcji BYOL ani BYOS. Wszystkie inne oferty portalu Azure Marketplace nie mogą korzystać z kredytów subskrypcyjnych platformy Azure ani zobowiązań pieniężnych: takich jak bezpłatny miesięczny kredyt próbny, miesięczne kredyty MSDN, środki z promocji platformy Azure, salda zobowiązań pieniężnych i wszelkie inne bezpłatne kredyty dostarczone z Azure.
+Konkretne oferty portalu Azure Marketplace mogą korzystać z kredytów subskrypcyjnych platformy Azure lub funduszy zobowiązań pieniężnych. Zobacz [Zobowiązanie pieniężne platformy Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/), aby uzyskać pełną listę produktów biorących udział w tym programie. Oferty te nie obejmują opcji BYOL ani BYOS. Wszystkie inne oferty portalu Azure Marketplace nie mogą korzystać z kredytów subskrypcyjnych platformy Azure ani zobowiązań pieniężnych: takich jak bezpłatny miesięczny kredyt próbny, miesięczne środki MSDN, środki z promocji platformy Azure, salda zobowiązań pieniężnych i inne bezpłatne środki przyznane z platformy Azure.
 
 **Czy rabaty licencji zbiorczej dotyczą zakupów w portalu Azure Marketplace?**
 
@@ -258,12 +258,12 @@ Tak, klient może posiadać dwa plany z tej samej oferty jednocześnie.
 
 **Czy zasady zwrotu i zmiany planu różnią się w zależności od witryny sklepowej?**
 
-Nie, zasady biznesowe są spójne w witrynie Azure Marketplace i microsoft appsource. Jeśli odsprzedawane przez partnera w programie Cloud Solution Provide, partner może wymusić inne zasady dla swoich klientów.
+Nie, zasady biznesowe są spójne na rynku komercyjnym. Jeśli odsprzedawane przez partnera w programie Cloud Solution Provide, partner może wymusić inne zasady dla swoich klientów.
 
 
 ## <a name="faq-for-publishers"></a>Często zadawane pytania dla wydawców
 
-### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Co należy wiedzieć o platformie Azure Marketplace i usłudze Microsoft AppSource
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Co musisz wiedzieć o rynku komercyjnym
 
 **Co to jest usługa Azure Marketplace?**
 
@@ -347,7 +347,7 @@ Po wypełnieniu oferty i skonfigurowaniu miejsca docelowego potencjalnego klient
 
 **Z jakich krajów/regionów usługa Azure Marketplace jest dostępna dla wydawców do sprzedaży?**
 
-Wydawcy z następujących krajów/regionów mogą obecnie sprzedawać w portalu Azure Marketplace: Afganistan, Albania, Algieria, Angola, Antigua i Barbuda, Argentyna, Armenia, Australia, Austria, Azerbejdżan, Bahrajn, Bangladesz, Białoruś, Belgia, Benin, Boliwia, Bośnia i Hercegowina, Botswana, Brazylia, Bułgaria, Burkina Faso, Burundi, Kambodża, Kamerun, Kanada, Republika Środkowoafrykańska, Czad, Chile, Kolumbia, Komory, Kongo, Kongo (DRK), Kostaryka, Wybrzeże Kości Słoniowej, Chorwacja, Cypr, Republika Czeska, Dania, Dominika, Dominikana, Ekwador, Egipt, Salwador, Erytrea, Estonia, Etiopia, Wyspy Fidżi, Finlandia, Francja, Gruzja, Niemcy, Ghana, Grecja, Gwatemala, Gwinea, Haiti, Honduras, Hongkong SAR, Węgry, Islandia, Indie, Indonezja, Irak, Irlandia, Izrael, Włochy, Jamajka, Japonia, Jordania, Kazachstan, Kenia, Korea (Południe), Kuwejt, Laos, Łotwa, Liban, Liberia, Liechtenstein, Litwa, Luksemburg, Madagaskar, Malawi, Malezja, Mali, Malta, Mauritius, Meksyk, Monako, Mongolia, Czarnogóra, Maroko, Mozambik, Nepal, Holandia, Nowa Zelandia, Nikaragua, Niger, Nigeria, Norwegia, Oman, Pakistan, Panama, Paragwaj, Peru, Filipiny, Polska, Portugalia, Katar, Rumunia, Rosja, Rwanda, Arabia Saudyjska, Senegal, Serbia, Sierra Leone, Singapur, Słowacja, Słowenia, Somalia, REPUBLIKA POŁUDNIOWEJ AFRYKI, Hiszpania, Sri Lanka, Szwecja, Szwajcaria, Tadżykistan, Tanzania, Tajlandia, Timor Wschodni, Togo, Tonga, Trynidad i Tobago, Tunezja, Turcja, Turkmenistan, Uganda, Ukraina, Zjednoczone Emiraty Arabskie, Zjednoczone Królestwo, Urugwaj, Uzbekistan, Wenezuela, Wietnam, Zambia i Zimbabwe.
+Wydawcy z następujących krajów/regionów mogą obecnie sprzedawać w portalu Azure Marketplace: Afganistan, Albania, Algieria, Angola, Antigua i Barbuda, Argentyna, Armenia, Australia, Austria, Azerbejdżan, Bahrajn, Bangladesz, Białoruś, Belgia, Benin, Boliwia, Bośnia i Hercegowina, Botswana, Brazylia, Bułgaria, Burkina Faso, Burundi, Kambodża, Kamerun, Kanada, Republika Środkowoafrykańska, Czad, Chile, Kolumbia, Komory, Kongo, Kongo (DRK), Kostaryka, Wybrzeże Kości Słoniowej, Chorwacja, Cypr, Czechy, Dania, Dominika, Dominikana, Ekwador, Egipt, Salwador, Erytrea, Estonia, Etiopia, Wyspy Fidżi, Finlandia, Francja, Gruzja, Niemcy, Ghana, Grecja, Gwatemala, Gwinea, Haiti, Honduras, Hongkong SAR, Węgry, Islandia, Indie, Indonezja, Irak, Irlandia, Izrael, Włochy, Jamajka, Japonia, Jordania, Kazachstan, Kenia, Korea (Południe), Kuwejt, Laos, Łotwa, Liban, Liberia, Liechtenstein, Litwa, Luksemburg, Madagaskar, Malawi, Malezja, Mali, Malta, Mauritius, Meksyk, Monako, Mongolia, Czarnogóra , Maroko, Mozambik, Nepal, Holandia, Nowa Zelandia, Nikaragua, Niger, Nigeria, Norwegia, Oman, Pakistan, Panama, Paragwaj, Peru, Filipiny, Polska, Portugalia, Katar, Rumunia, Rosja, Rwanda, Arabia Saudyjska, Senegal, Serbia, Sierra Leone, Singapur, Słowacja, Słowenia, Somalia, REPUBLIKA POŁUDNIOWEJ AFRYKI, Hiszpania, Sri Lanka, Szwecja, Szwajcaria, Tadżykistan, Tanzania, Tajlandia, Timor Wschodni, Togo, Tonga, Trynidad i Tobago, Tunezja, Turcja, Turkmenistan, Uganda, Ukraina, Zjednoczone Emiraty Arabskie, Zjednoczone Królestwo, Stany Zjednoczone, Urugwaj, Uzbekistan, Wenezuela, Wietnam, Zambia i Zimbabwe.
 
 **Jak usunąć aukcję z portalu Azure Marketplace?**
 
@@ -372,8 +372,8 @@ Aby uzyskać więcej informacji, zobacz [Usuwanie oferty](./cloud-partner-portal
 
 *Aplikacje O365:*
 
-1.  Zaloguj się <https://sellerdashboard.microsoft.com> za pomocą konta deweloperów.
-1.  Wycofaj dodatek.
+1.    Zaloguj się <https://sellerdashboard.microsoft.com> za pomocą konta deweloperów.
+1.    Wycofaj dodatek.
 
     > [!NOTE]
     > Aplikacje znikają z istniejącej aukcji po 90 dniach.
@@ -422,7 +422,7 @@ Aby uzyskać informacje o rozliczeniach i problemach z subskrypcją zakupu w por
 
 **Z kim mam się skontaktować z pytaniami dotyczącymi publikowania lub zarządzania ofertami?**
 
-Odwiedź [Przewodnik dla wydawców portalu Azure Marketplace,](marketplace-publishers-guide.md) aby uzyskać aktualne zasoby i dokumentację dotyczące często zadawanych pytań. Ponadto można zarejestrować bilet za pomocą [pomocy technicznej firmy Microsoft w Centrum partnerów](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
+Odwiedź [przewodnik dla wydawców rynku komercyjnego,](marketplace-publishers-guide.md) aby uzyskać aktualne zasoby i dokumentację na często zadawane pytania. Ponadto można zarejestrować bilet za pomocą [pomocy technicznej firmy Microsoft w Centrum partnerów](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
 
 ### <a name="azure-marketplace-for-publishers"></a>Usługa Azure Marketplace dla wydawców
 
@@ -473,7 +473,7 @@ Tak, na żądanie użytkownika za pośrednictwem biletu pomocy technicznej firma
 
 ## <a name="next-steps"></a>Następne kroki
 
-Odwiedź stronę [przewodnika portalu Azure Marketplace i wydawcy usługi AppSource.](/azure/marketplace/marketplace-publishers-guide)
+Odwiedź stronę [przewodnika dla wydawców portalu marketplace.](/azure/marketplace/marketplace-publishers-guide)
 
 
-[Portal Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

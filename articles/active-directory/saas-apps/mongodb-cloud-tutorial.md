@@ -15,18 +15,18 @@ ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7792ab2dc9fe7386accab96b0fb00aa93e6e4196
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: d3d33634a8e6c3f7fd311ab70ab04f2839672191
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668979"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261144"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>Samouczek: Integracja rejestracji jednokrotnej usługi Azure Active Directory (SSO) z usługą MongoDB Cloud
 
 W tym samouczku dowiesz się, jak zintegrować mongodb cloud z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi MongoDB Cloud z usługą Azure AD można:
 
-* Kontrola w usłudze Azure AD, która ma dostęp do usługi MongoDB Cloud.
+* Kontrola w usłudze Azure AD, która ma dostęp do mongodb cloud, MongoDB Atlas, społeczności MongoDB, uniwersytetu i pomocy technicznej.
 * Włącz użytkownikom automatyczne logowanie do usługi MongoDB Cloud za pomocą ich kont usługi Azure AD.
 * Zarządzaj kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
@@ -146,11 +146,11 @@ W tej sekcji włączysz B.Simon do korzystania z logowania jednokrotnego platfor
 
 ## <a name="configure-mongodb-cloud-sso"></a>Konfigurowanie usługi SSO usługi MongoDB Cloud
 
-Aby skonfigurować logowanie jednokrotne po stronie **mongodb cloud,** musisz wysłać pobrany **kod XML metadanych federacji** i odpowiednie skopiowane adresy URL z witryny Azure portal do [zespołu pomocy technicznej mongodb cloud](https://support.mongodb.com/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne po stronie **mongodb cloud,** trzeba będzie odpowiednie adresy URL skopiowane z witryny Azure portal i należy skonfigurować aplikację federacji dla organizacji mongodb cloud. Postępuj zgodnie z instrukcjami zawartymi w [mongodb cloud docs](https://docs.atlas.mongodb.com/security/federated-authentication/index.html). Jeśli napotkasz jakiekolwiek problemy, skontaktuj się z [zespołem pomocy technicznej MongoDB Cloud,](https://support.mongodb.com/) aby uzyskać pomoc.
 
 ### <a name="create-mongodb-cloud-test-user"></a>Tworzenie użytkownika testowego mongodb cloud
 
-W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w MongoDB Cloud. MongoDB Cloud obsługuje just-in-time inicjowania obsługi administracyjnej użytkowników, który jest domyślnie włączony. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w mongodb cloud, nowy jest tworzony po uwierzytelnieniu.
+W tej sekcji użytkownik o nazwie B.Simon jest tworzony w MongoDB Cloud. MongoDB Cloud obsługuje just-in-time inicjowania obsługi administracyjnej użytkowników, który jest domyślnie włączony. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w mongodb cloud, nowy jest tworzony po uwierzytelnieniu.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -165,6 +165,8 @@ Po kliknięciu kafelka MongoDB Cloud w Panelu dostępu należy automatycznie zal
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Zarejestruj się w usłudze MongoDB Atlas na platformie Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/mongodb.mongodb_atlas_azure_08082019?tab=Overview)
 
 - [Wypróbuj mongodb cloud z usługą Azure AD](https://aad.portal.azure.com/)
 

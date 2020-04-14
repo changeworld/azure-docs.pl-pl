@@ -5,34 +5,35 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 4163bf5727c327d559b81db42f99684aa0cc8d5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 960d5facb53f20719045c5fdbe2179f549aca3f2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280528"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255944"
 ---
-<a name="publish-an-offer"></a>Publikowanie oferty
-================
+# <a name="publish-an-offer"></a>Publikowanie oferty
+
+> [!NOTE]
+> Interfejsy API portalu partnerów w chmurze są zintegrowane z centrum partnerów i będą nadal działać po migracji ofert do Centrum partnerów. Integracja wprowadza niewielkie zmiany. Przejrzyj zmiany wymienione w [aplikacji Cloud Partner Portal API Reference,](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) aby upewnić się, że kod będzie nadal działać po migracji do Centrum partnerów.
 
 Rozpoczyna proces publikowania dla określonej oferty. To wywołanie jest długotrwałą operacją.
 
   `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/publish?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>Parametry identyfikatora URI
+## <a name="uri-parameters"></a>Parametry identyfikatora URI
 --------------
 
 |  **Nazwa**      |    **Opis**                               |  **Typ danych** |
 |  ------------- |  ------------------------------------            |   -----------  |
 |  identyfikator wydawcy   | Identyfikator wydawcy, na przykład`contoso`      |   Ciąg       |
 |  offerId       | Identyfikator oferty                                 |   Ciąg       |
-|  api-version   | Najnowsza wersja interfejsu API                        |   Data         |
+|  api-version   | Najnowsza wersja interfejsu API                        |   Date         |
 |  |  |
 
-
-<a name="header"></a>Nagłówek
+## <a name="header"></a>Nagłówek
 ------
 
 |  **Nazwa**        |    **Wartość**          |
@@ -42,7 +43,7 @@ Rozpoczyna proces publikowania dla określonej oferty. To wywołanie jest długo
 |  |  |
 
 
-<a name="body-example"></a>Przykład ciała
+## <a name="body-example"></a>Przykład ciała
 ------------
 
 ### <a name="request"></a>Żądanie
@@ -66,14 +67,20 @@ Rozpoczyna proces publikowania dla określonej oferty. To wywołanie jest długo
 
 ### <a name="response"></a>Odpowiedź
 
-   `Operation-Location: /api/operations/contoso$56615b67-2185-49fe-80d2-c4ddf77bb2e8$2$preview?api-version=2017-10-31`
+#### <a name="migrated-offers"></a>Zmigrowane oferty
+
+`Location: /api/publishers/contoso/offers/contoso-offer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8?api-version=2017-10-31`
+
+#### <a name="non-migrated-offers"></a>Oferty niezmiagrowane
+
+`Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
 
 
 ### <a name="response-header"></a>Nagłówek odpowiedzi
 
 |  **Nazwa**             |    **Wartość**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
-| Operacja-lokalizacja    | Adres URL, który można zbadać, aby określić bieżący stan operacji.    |
+| Lokalizacja    | Ścieżka względna do pobierania stanu tej operacji     |
 |  |  |
 
 

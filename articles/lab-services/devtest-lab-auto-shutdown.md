@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: a2d0b9bdfba1b96ad42e45d54faf106b2361e29d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cdc9f9a4503c786065b6d514f61fe17eae4ce5e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264795"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270914"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Konfigurowanie automatycznego usuwania maszyn wirtualnych w laboratorium i obliczaniu w laboratoriach devtest azure
 
@@ -28,7 +28,7 @@ W tym artykule wyjaśniono, jak skonfigurować ustawienia autoshutdown dla maszy
 ## <a name="configure-autoshutdown-for-lab-vms-devtest-labs"></a>Konfigurowanie automatycznego usuwania maszyn wirtualnych w laboratorium (DevTest Labs)
 Laboratorium devtest platformy Azure umożliwia kontrolowanie kosztów i minimalizowanie odpadów w laboratoriach, zarządzając zasadami (ustawieniami) dla każdego laboratorium. W tym artykule pokazano, jak skonfigurować zasady autoshutdown dla konta laboratorium i skonfigurować ustawienia autoshutdown dla laboratorium na koncie laboratorium. Aby zobaczyć, jak ustawić wszystkie zasady laboratoryjne, zobacz [Definiowanie zasad laboratoryjnych w laboratoriach Azure DevTest Labs.](devtest-lab-set-lab-policy.md)  
 
-### <a name="set-auto-shut-down-policy-for-a-lab"></a>Ustawianie zasad automatycznego zamykania dla laboratorium
+### <a name="set-auto-shutdown-policy-for-a-lab"></a>Ustawianie zasad automatycznego zamykania dla laboratorium
 Jako właściciel laboratorium możesz skonfigurować harmonogram zamykania dla wszystkich maszyn wirtualnych w laboratorium. W ten sposób można zaoszczędzić koszty z uruchomionych maszyn, które nie są używane (bezczynny). Zasady zamykania można wymusić na wszystkich maszynach wirtualnych w laboratorium centralnie, ale także zapisać użytkownikom laboratorium wysiłek z konfigurowania harmonogramu dla ich poszczególnych komputerów. Ta funkcja umożliwia ustawienie zasad w harmonogramie laboratorium, począwszy od oferowania żadnej kontroli do pełnej kontroli, dla użytkowników laboratorium. Jako właściciel laboratorium możesz skonfigurować tę zasadę, wykonując następujące kroki:
 
 1. Na stronie głównej laboratorium wybierz pozycję **Konfiguracja i zasady**.
@@ -42,7 +42,7 @@ Zasady autoshutdown pomaga zminimalizować straty w laboratorium, umożliwiając
 
 Aby wyświetlić (i zmienić) zasady dla laboratorium, wykonaj następujące kroki:
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz **pozycję Wszystkie usługi**, a następnie wybierz z listy pozycję **DevTest Labs.**
 3. Z listy laboratoriów wybierz żądane laboratorium.   
 4. Wybierz **opcję Konfiguracja i zasady**.
@@ -191,13 +191,34 @@ Aby rozpocząć, utwórz aplikację logiki w subskrypcji platformy Azure, wykonu
 
 ## <a name="configure-autoshutdown-for-compute-vms"></a>Konfigurowanie automatycznego usuwania maszyn wirtualnych
 
-1. Na stronie **Maszyna wirtualna** wybierz pozycję **Automatyczne zamykanie** w menu po lewej stronie. 
+1. Na stronie **Maszyna wirtualna** wybierz pozycję **Automatyczne zamykanie** w menu po lewej stronie w sekcji **Operacje.** 
 2. Na stronie **Automatyczne zamykanie** wybierz pozycję **Włącz,** aby włączyć tę zasadę, i **wyłącz** ją, aby ją wyłączyć.
 3. Jeśli ta zasada zostanie włączona, określ **czas** (i **strefę czasową),** w którym maszyna wirtualna powinna zostać zamknięta.
 4. Określ **tak** lub **nie** dla opcji wysyłania powiadomień 30 minut przed określonym czasem automatycznego zasnąć. Jeśli wybierzesz **opcję Tak,** wpisz punkt końcowy adresu URL elementu webhook lub adres e-mail, określając miejsce, w którym ma zostać opublikowane lub wysłane powiadomienie. Użytkownik otrzymuje powiadomienie i ma możliwość opóźnienia zamknięcia systemu. Aby uzyskać więcej informacji, zobacz sekcję [Powiadomienia.](#notifications) 
 9. Wybierz **pozycję Zapisz**.
 
     ![Konfigurowanie automatycznego usuwania dla maszyny Wirtualnej obliczeniowej](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
+
+### <a name="view-activity-logs-for-auto-shutdown-updates"></a>Wyświetlanie dzienników aktywności dla aktualizacji automatycznego zamykania
+Po zaktualizowaniu ustawienia autoshutdown, zobaczysz działania rejestrowane w dzienniku aktywności dla maszyny Wirtualnej. 
+
+1. W [witrynie Azure portal](https://portal.azure.com)przejdź do strony głównej maszyny Wirtualnej.
+2. Z lewego menu wybierz **pozycję Dziennik aktywności.** 
+3. Usuń **zasób: mycomputevm** z filtrów.
+3. Upewnij się, że w dzienniku działań jest widoczna operacja **Dodaj lub modyfikuj harmonogramy.** Jeśli go nie widzisz, poczekaj na jakiś czas i odśwież dziennik aktywności.
+
+    ![Wpis dziennika aktywności](./media/devtest-lab-auto-shutdown/activity-log-entry.png)
+4. Wybierz operację **Dodaj lub modyfikuj harmonogramy,** aby wyświetlić następujące informacje na stronie **Podsumowanie:**
+
+    - Nazwa operacji (Dodawanie lub modyfikowanie harmonogramów)
+    - Data i godzina, o której zostało zaktualizowane ustawienie autoshutdown.
+    - Adres e-mail użytkownika, który zaktualizował to ustawienie. 
+
+        ![Podsumowanie wpisu dziennika aktywności](./media/devtest-lab-auto-shutdown/activity-log-entry-summary.png)
+5. Przełącz się na kartę **Historia zmian** na stronie Dodawanie **lub modyfikowanie harmonogramów,** zobaczysz historię zmian dla tego ustawienia. W poniższym przykładzie czas zamknięcia został zmieniony z 19:00 na 18:00 w dniu 10 kwietnia 2020 r. o 15:18:47 EST. A ustawienie zostało wyłączone o 15:25:09 EST. 
+
+    ![Dziennik aktywności — historia zmian](./media/devtest-lab-auto-shutdown/activity-log-entry-change-history.png)
+6. Aby wyświetlić więcej szczegółów dotyczących operacji, przełącz się na kartę **JSON** na stronie **Dodawanie lub modyfikowanie harmonogramów.**
 
 ## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się, jak ustawić wszystkie zasady, zobacz [Definiowanie zasad laboratoryjnych w laboratoriach Azure DevTest Labs](devtest-lab-set-lab-policy.md).

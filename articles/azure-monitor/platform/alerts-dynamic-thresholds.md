@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 9345138e948d84e0ea3c804dbd7a4b3c21daca2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668149"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261078"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Alerty metryki z dynamicznymi progami w usłudze Azure Monitor
 
@@ -93,7 +93,8 @@ Po utworzeniu reguły alertu progi pojawiające się na wykresie są obliczane n
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Ile danych jest potrzebne do wyzwolenia alertu?
 
-Jeśli masz nowy zasób lub brakujące dane metryki, dynamiczne progi nie będą wyzwalać alertów przed trzy dni lub 30 próbek danych metryk są dostępne w celu zapewnienia dokładnych progów.
+Jeśli masz nowy zasób lub brakujące dane metryki, dynamiczne progi nie będą wyzwalać alertów przed trzema dniami i co najmniej 30 przykładami danych metryk są dostępne, aby zapewnić dokładne progi.
+W przypadku istniejących zasobów z wystarczającą ilością danych metryk dynamiczne progi mogą natychmiast wyzwalać alerty.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Najważniejsze wskazówki dotyczące progów dynamicznych
 

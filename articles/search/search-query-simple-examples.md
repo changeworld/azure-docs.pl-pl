@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 42ace2444c7d8e790c7575a7c1a7b3b1219d090a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 3a801af7b97954510139a009a6d1344b281cf056
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656424"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261809"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Tworzenie prostego zapytania w usłudze Azure Cognitive Search
 
 W usłudze Azure Cognitive Search [składnia kwerendy proste](query-simple-syntax.md) wywołuje domyślny analizator kwerendy do wykonywania kwerend wyszukiwania pełnotekstowego względem indeksu. Ten analizator jest szybki i obsługuje typowe scenariusze, w tym wyszukiwanie pełnotekstowe, wyszukiwanie filtrowane i apektowane oraz wyszukiwanie geograficzne. 
 
-W tym artykule używamy przykładów do zilustrowania prostej składni.
+W tym artykule używamy przykładów do zilustrowania prostej składni, wypełniając `search=` parametr operacji Wyszukiwanie [dokumentów.](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 
 Alternatywną składnią kwerendy jest [Pełna lucen](query-lucene-syntax.md), obsługująca bardziej złożone struktury zapytań, takie jak wyszukiwanie rozmyte i wieloznaczne, co może zająć dodatkowy czas na przetworzenie. Aby uzyskać więcej informacji i przykładów demonstrujących pełną składnię, zobacz [Użyj pełnej składni luceny](search-query-lucene-examples.md).
 

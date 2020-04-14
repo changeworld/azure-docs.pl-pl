@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: erhopf
-ms.openlocfilehash: 818a7abe6799846470ba60871ba01ea0ced80382
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 096e0ec8af3d3802d662a9f7d43dbfbc04a130ad
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671343"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275210"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -121,7 +121,7 @@ Tekst jest konwertowany na mowę i zapisywany w określonych danych audio.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 ## <a name="see-also"></a>Zobacz też
 

@@ -4,12 +4,12 @@ description: Przywracanie maszyny wirtualnej platformy Azure z punktu odzyskiwan
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 3c3c8a7bd47ae03a013ddfadffabaa16fd04412b
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b9cdb187aa3b8750bead8e81ad6d0ee50dcb3d6c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677548"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254924"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Jak przywrócić dane maszyny wirtualnej platformy Azure w witrynie Azure portal
 
@@ -28,8 +28,6 @@ Usługa Azure Backup udostępnia wiele sposobów przywracania maszyny wirtualnej
 
 > [!NOTE]
 > Można również odzyskać określone pliki i foldery na maszynie Wirtualnej platformy Azure. [Dowiedz się więcej](backup-azure-restore-files-from-vm.md).
->
-> Jeśli używasz [najnowszej wersji](backup-instant-restore-capability.md) usługi Azure Backup dla maszyn wirtualnych platformy Azure (znanej jako przywracanie błyskawiczne), migawki są przechowywane przez maksymalnie siedem dni i możesz przywrócić maszynę wirtualną z migawek przed wysłaniem danych kopii zapasowej do magazynu. Jeśli chcesz przywrócić maszynę wirtualną z kopii zapasowej z ostatnich siedmiu dni, szybciej jest przywrócić z migawki, a nie z magazynu.
 
 ## <a name="storage-accounts"></a>Konta magazynu
 

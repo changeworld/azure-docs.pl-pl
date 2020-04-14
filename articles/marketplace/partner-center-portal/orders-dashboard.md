@@ -7,21 +7,21 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d0db6553a774a69bb8a55538cbd2b4a333be9316
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 148b80a6843168b11e4feb3558f6bf08eaeb3ace
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281412"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261265"
 ---
-# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Pulpit nawigacyjny zamówień w analizie w portalu Marketplace komercyjnego
+# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Pulpit nawigacyjny zamówień w analizie rynku komercyjnego
 
 Ten artykuł zawiera informacje na **pulpicie nawigacyjnym zamówień** w Centrum partnerów. Ten pulpit nawigacyjny wyświetla informacje o zamówieniach w formacie graficznym i do pobrania.
 
 Aby uzyskać dostęp do **pulpitu nawigacyjnego Zamówienia** w narzędziach analitycznych Centrum **[partnerów,](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** otwórz pulpit nawigacyjny Analizy w obszarze Rynek komercyjny.
 
 >[!NOTE]
-> Aby uzyskać szczegółowe definicje terminologii analitycznej, zobacz [Często zadawane pytania i terminologia dla analityki w portalu Commercial Marketplace](./faq-terminology.md).
+> Szczegółowe definicje terminologii analitycznej można znaleźć w części [Często zadawane pytania i terminologia dotyczące analizy rynku komercyjnego.](./faq-terminology.md)
 
 ## <a name="orders-dashboard"></a>Pulpit nawigacyjny Zamówienia
 
@@ -36,7 +36,7 @@ Aby uzyskać dostęp do **pulpitu nawigacyjnego Zamówienia** w narzędziach ana
 - [Tabela szczegółów zamówienia](#order-details-table)
 
 > [!NOTE]
-> Istnieją różnice między wyświetlaniem raportów analitycznych w portalu Cloud Partner Portal (CPP) a nowym programem Marketplace komercyjnego w Centrum partnerów. Jednym z konkretnych sposobów jest to, że **Insights sprzedawcy** w CPP ma **zamówienie & użycie** karty, która wyświetla dane dla ofert opartych na użyciu i ofert nieopartych na użyciu. W Centrum **partnerów** strona Zamówienia ma osobną kartę dla ofert SaaS.
+> Istnieją różnice między wyświetlaniem raportów analitycznych w portalu Cloud Partner Portal (CPP) a nowym programem dla rynków komercyjnych w Centrum partnerów. Jednym z konkretnych sposobów jest to, że **Insights sprzedawcy** w CPP ma **zamówienie & użycie** karty, która wyświetla dane dla ofert opartych na użyciu i ofert nieopartych na użyciu. W Centrum **partnerów** strona Zamówienia ma osobną kartę dla ofert SaaS.
 
 ## <a name="order-dashboard-details"></a>Szczegóły pulpitu nawigacyjnego zamówienia
 
@@ -124,10 +124,10 @@ Można wybrać wiele filtrów, aby renderować wykres dla kryteriów, które chc
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby zapoznać się z omówieniem raportów analitycznych dostępnych w portalu Partner Center Commercial Marketplace, zobacz [Analytics dla portalu Marketplace Commercial Marketplace w Centrum partnerów.](./analytics.md)
-- Aby uzyskać wykresy, trendy i wartości danych zagregowanych, które podsumowują aktywność w portalu marketplace dla Twojej oferty, zobacz [Podsumowanie pulpitu nawigacyjnego w analizie w portalu Marketplace komercyjnym.](./summary-dashboard.md)
-- W przypadku maszyny wirtualnej (VM) oferuje użycie i metryki rozliczeniowe taryfowe, zobacz [Pulpit nawigacyjny użycia w analizie w portalu Commercial Marketplace](./usage-dashboard.md).
-- Aby uzyskać szczegółowe informacje o klientach, w tym trendy wzrostu, zobacz [pulpit nawigacyjny klienta w analizie portalu Commercial Marketplace.](./customer-dashboard.md)
-- Aby uzyskać listę żądań pobierania w ciągu ostatnich 30 dni, zobacz [Pulpit nawigacyjny pobierania w analizie w witrynie Commercial Marketplace.](./downloads-dashboard.md)
-- Aby wyświetlić skonsolidowany widok opinii klientów dotyczących ofert w witrynie Azure Marketplace i AppSource, zobacz [Pulpit nawigacyjny ocen i opinii w analizie w portalu Marketplace komercyjnym.](./ratings-reviews.md)
-- Aby uzyskać często zadawane pytania dotyczące analizy w portalu Commercial Marketplace i kompleksowego słownika terminów dotyczących danych, zobacz [Często zadawane pytania i terminologia w zakresie analizy w portalu Commercial Marketplace.](./faq-terminology.md)
+- Aby uzyskać przegląd raportów analitycznych dostępnych w komercyjnym rynku Centrum partnerów, zobacz [Analytics dla rynku komercyjnego w Centrum partnerów.](./analytics.md)
+- Aby uzyskać wykresy, trendy i wartości danych agregujących, które podsumowują aktywność w portalu marketplace dla Twojej oferty, zobacz [Podsumowanie pulpitu nawigacyjnego w analizie rynku komercyjnego.](./summary-dashboard.md)
+- W przypadku maszyny wirtualnej (VM) oferuje użycie i metryki rozliczeniowe taryfowe, zobacz [Pulpit nawigacyjny użycia w analizie komercyjnego portalu marketplace.](./usage-dashboard.md)
+- Aby uzyskać szczegółowe informacje o klientach, w tym trendy wzrostu, zobacz [pulpit nawigacyjny klienta w analizie rynku komercyjnego.](./customer-dashboard.md)
+- Aby uzyskać listę żądań pobierania w ciągu ostatnich 30 dni, zobacz [Pulpit nawigacyjny pobierania w analizie komercyjnego rynku.](./downloads-dashboard.md)
+- Aby wyświetlić skonsolidowany widok opinii klientów dotyczących ofert w witrynie Azure Marketplace i AppSource, zobacz [Pulpit nawigacyjny ocen i opinii w analizie komercyjnego portalu marketplace.](./ratings-reviews.md)
+- W przypadku często zadawanych pytań dotyczących analityki rynku komercyjnego i kompleksowego słownika terminów danych zobacz [Często zadawane pytania i terminologia w celu analizy rynku komercyjnego.](./faq-terminology.md)

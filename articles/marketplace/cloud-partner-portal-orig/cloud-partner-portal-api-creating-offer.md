@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 681e71fae161100c8804f95980b9e9567dcf1863
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66e640ab199a884ebfab69cbe7db7f562d848720
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288618"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256352"
 ---
 <a name="create-or-modify-an-offer"></a>Tworzenie lub modyfikowanie oferty
 =========================
+
+> [!NOTE]
+> Interfejsy API portalu partnerów w chmurze są zintegrowane z centrum partnerów i będą nadal działać po migracji ofert do Centrum partnerów. Integracja wprowadza niewielkie zmiany. Przejrzyj zmiany wymienione w [aplikacji Cloud Partner Portal API Reference,](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) aby upewnić się, że kod będzie nadal działać po migracji do Centrum partnerów.
 
 To wywołanie aktualizuje określoną ofertę w obszarze nazw wydawcy lub tworzy nową ofertę.
 
@@ -29,7 +32,7 @@ To wywołanie aktualizuje określoną ofertę w obszarze nazw wydawcy lub tworzy
 |  --------         |  ----------------                     |  -------------  |
 | identyfikator wydawcy       |  Identyfikator wydawcy, na przykład`contoso` |   Ciąg |
 | offerId           |  Identyfikator oferty                     |   Ciąg        |
-| api-version       |  Najnowsza wersja interfejsu API            |   Data           |
+| api-version       |  Najnowsza wersja interfejsu API            |   Date           |
 |  |  |  |
 
 <a name="header"></a>Nagłówek

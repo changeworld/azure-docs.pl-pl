@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2f07f6a27e78ee4df8c64a09918758d02c28c6d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f67079938ddcf4a65e01ef50ab7e5cdf7078b73
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76898789"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260942"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak rejestrować zdarzenia w centrum zdarzeń platformy Azure w usłudze Azure API Management
 Azure Event Hubs to wysoce skalowalna usługa transferu danych przychodzących, która może obsługiwać miliony zdarzeń na sekundę, dzięki czemu możliwe jest przetwarzanie i analizowanie olbrzymich ilości danych wytworzonych przez podłączone urządzenia i aplikacje. Usługa Event Hubs działa jako "drzwi wejściowe" dla potoku zdarzeń, a gdy dane są zbierane w centrum zdarzeń, mogą być przekształcane i przechowywane przy użyciu dowolnego dostawcy analizy w czasie rzeczywistym lub kart przetwarzania wsadowego/magazynu. Usługa Event Hubs oddziela wytwarzanie strumienia zdarzeń od użycia tych zdarzeń, dzięki czemu odbiorcy zdarzeń mogą uzyskiwać dostęp do zdarzeń zgodnie z własnym harmonogramem.
@@ -30,9 +30,9 @@ Ten artykuł jest towarzyszem [integracji usługi Azure API Management z centrum
 Aby uzyskać szczegółowe instrukcje dotyczące tworzenia centrum zdarzeń i pobierania ciągów połączeń, które należy wysyłać i odbierać zdarzenia do i z Centrum zdarzeń, zobacz [Tworzenie obszaru nazw centrum zdarzeń i centrum zdarzeń za pomocą portalu Azure.](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
 
 ## <a name="create-an-api-management-logger"></a>Tworzenie rejestratora zarządzania interfejsami API
-Teraz, gdy masz Centrum zdarzeń, następnym krokiem jest skonfigurowanie [rejestratora](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger) w usłudze zarządzania interfejsami API, tak aby mógł rejestrować zdarzenia w Centrum zdarzeń.
+Teraz, gdy masz Centrum zdarzeń, następnym krokiem jest skonfigurowanie [rejestratora](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger) w usłudze zarządzania interfejsami API, tak aby mógł rejestrować zdarzenia w Centrum zdarzeń.
 
-Rejestratory zarządzania interfejsami API są konfigurowane przy użyciu [interfejsu API REST zarządzania interfejsem API](https://aka.ms/apimapi). Aby uzyskać szczegółowe przykłady żądań, zobacz [jak utworzyć rejestratory](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate).
+Rejestratory zarządzania interfejsami API są konfigurowane przy użyciu [interfejsu API REST zarządzania interfejsem API](https://aka.ms/apimapi). Aby uzyskać szczegółowe przykłady żądań, zobacz [jak utworzyć rejestratory](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate).
 
 ## <a name="configure-log-to-eventhubs-policies"></a>Konfigurowanie zasad dzienników do zdarzeń
 
@@ -65,7 +65,7 @@ Kliknij **przycisk Zapisz,** aby zapisać zaktualizowaną konfigurację zasad. P
   * [Odbieranie komunikatów za pomocą klasy EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [Przewodnik po programowaniu centrów zdarzeń](../event-hubs/event-hubs-programming-guide.md)
 * Dowiedz się więcej o integracji z centrum zarządzania interfejsami API i centrami zdarzeń
-  * [Odwołanie do encji rejestratora](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger)
+  * [Odwołanie do encji rejestratora](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger)
   * [log-to-eventhub odwołanie do zasad](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
   * [Monitorowanie interfejsów API za pomocą usługi Azure API Management, Event Hubs i Moesif](api-management-log-to-eventhub-sample.md)  
 * Dowiedz się więcej o [integracji z usługą Azure Application Insights](api-management-howto-app-insights.md)

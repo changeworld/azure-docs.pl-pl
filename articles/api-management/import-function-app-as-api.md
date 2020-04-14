@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: cec1d3e07800dd3093ca79a87cafcf5fceafbf2f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c393ba081b480408373ed6867624ac6278c1674e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77209192"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260959"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Importowanie aplikacji funkcji platformy Azure jako interfejsu API w usłudze Azure API Management
 
@@ -118,7 +118,7 @@ Zaimportowanie aplikacji funkcji platformy Azure powoduje automatyczne wygenerow
 * Klucz hosta wewnątrz aplikacji funkcji o nazwie apim-{*nazwa wystąpienia usługi usługi Azure API Management*},
 * Nazwana wartość wewnątrz wystąpienia usługi Azure API Management o nazwie {*nazwa wystąpienia aplikacji funkcji Azure*}-key, która zawiera utworzony klucz hosta.
 
-W przypadku interfejsów API utworzonych po 4 kwietnia 2019 r. klucz hosta jest przekazywany w żądaniach HTTP z zarządzania interfejsami API do aplikacji funkcji w nagłówku. Starsze interfejsy API przekazują klucz hosta jako [parametr kwerendy](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). To zachowanie może ulec `PATCH Backend` zmianie za pomocą [wywołania interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) na encję *wewnętrznej bazy danych* skojarzonej z aplikacją funkcji.
+W przypadku interfejsów API utworzonych po 4 kwietnia 2019 r. klucz hosta jest przekazywany w żądaniach HTTP z zarządzania interfejsami API do aplikacji funkcji w nagłówku. Starsze interfejsy API przekazują klucz hosta jako [parametr kwerendy](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). To zachowanie może ulec `PATCH Backend` zmianie za pomocą [wywołania interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract) na encję *wewnętrznej bazy danych* skojarzonej z aplikacją funkcji.
 
 > [!WARNING]
 > Usunięcie lub zmiana wartości klucza hosta aplikacji funkcji platformy Azure lub nazwanej wartości usługi Azure API Management spowoduje przerwanie komunikacji między usługami. Wartości nie są synchronizowane automatycznie.

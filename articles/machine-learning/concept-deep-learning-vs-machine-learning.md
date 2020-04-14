@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: bcacf4ff66e114f65ac75f0aadd1564875f15f62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a83f47942e986e882d99528be3f03f616c2a7e04
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501370"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257062"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Uczenie głębokie a uczenie maszynowe
 
@@ -52,7 +52,7 @@ W poniższej tabeli porównano te dwie techniki bardziej szczegółowo:
 |  **Proces featurization** | Wymaga, aby funkcje były dokładnie identyfikowane i tworzone przez użytkowników. | Uczy się funkcji wysokiego poziomu z danych i tworzy nowe funkcje samodzielnie. |
 |  **Podejście do uczenia się** | Dzieli proces uczenia się na mniejsze kroki. Następnie łączy wyniki z każdego kroku w jeden wynik. | Przechodzi przez proces uczenia się, rozwiązując problem na zasadzie end-to-end. |
 |  **Czas wykonywania** | Trwa stosunkowo mało czasu na trening, począwszy od kilku sekund do kilku godzin. | Zwykle zajmuje dużo czasu, ponieważ algorytm uczenia głębokiego obejmuje wiele warstw. |
-|  **Wyjście** | Dane wyjściowe są zwykle wartością liczbową, taką jak wynik lub klasyfikacja. | Dane wyjściowe mogą mieć wiele formatów, takich jak tekst, wynik lub dźwięk. |
+|  **Dane wyjściowe** | Dane wyjściowe są zwykle wartością liczbową, taką jak wynik lub klasyfikacja. | Dane wyjściowe mogą mieć wiele formatów, takich jak tekst, wynik lub dźwięk. |
 
 ## <a name="deep-learning-use-cases"></a>Przypadki użycia uczenia głębokiego
 
@@ -118,6 +118,6 @@ Poniższe artykuły pokazują, jak korzystać z technologii uczenia głębokiego
 
 - [Klasyfikowanie obrazów przy użyciu modelu Pytorch](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
 
-- [Klasyfikowanie cyfr odręcznych przy użyciu modelu chainera](https://docs.microsoft.com/azure/machine-learning/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+- [Klasyfikowanie cyfr odręcznych przy użyciu modelu chainera](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
 
 Ponadto użyj [arkusza ściągawki algorytmu uczenia maszynowego,](../synapse-analytics/sql-data-warehouse/cheat-sheet.md) aby wybrać algorytmy dla swojego modelu.

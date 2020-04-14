@@ -1,21 +1,23 @@
 - name: Dokumentacja usługi Azure Arc
   href: index.yml
 - name: Omówienie
-  expanded: true
   items:
     - name: Co to jest usługa Azure Arc dla serwerów?
       href: ./servers/overview.md
-- name: Łączenie z usługą Azure Arc
-  expanded: true
+- name: Przewodniki z instrukcjami
   items:
-    - name: Łączenie maszyn z usługą Azure Arc z poziomu witryny Azure Portal
-      href: ./servers/onboard-portal.md
-    - name: Łączenie maszyn na dużą skalę przy użyciu jednostki usługi
-      href: ./servers/onboard-service-principal.md
-    - name: Łączenie maszyn z usługą Azure Arc przy użyciu rozszerzenia DSC programu PowerShell
-      href: ./servers/onboard-dsc.md
-- name: Zarządzanie agentem
-  href: ./servers/manage-agent.md
+    - name: Łączenie z usługą Azure Arc
+      items:
+        - name: Łączenie maszyn z usługą Azure Arc z poziomu witryny Azure Portal
+          href: ./servers/onboard-portal.md
+        - name: Łączenie maszyn na dużą skalę przy użyciu jednostki usługi
+          href: ./servers/onboard-service-principal.md
+        - name: Łączenie maszyn z usługą Azure Arc przy użyciu rozszerzenia DSC programu PowerShell
+          href: ./servers/onboard-dsc.md
+    - name: Zarządzanie
+      items:
+        - name: Zarządzanie agentem
+          href: ./servers/manage-agent.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia agenta komputera połączonego z platformą Azure

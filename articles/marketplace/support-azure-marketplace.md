@@ -1,5 +1,5 @@
 ---
-title: Obsługa portalu Azure Marketplace i usługi AppSource | Azure
+title: Wsparcie dla rynku komercyjnego | Azure
 description: Informacje dotyczące pomocy technicznej i łącza do portalu Azure Marketplace i usługi AppSource
 author: dsindona
 ms.service: marketplace
@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 3/19/2020
 ms.author: dsindona
-ms.openlocfilehash: 6cb08e11910bc0afdd4b2f454582612395cbd50f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2dba23bdf07233a9945086fba2274602cb2dcf1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284929"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252238"
 ---
 # <a name="support-for-the-marketplace"></a>Obsługa rynku  
 Oto lista opcji pomocy technicznej dla Marketplace.  
@@ -47,7 +47,7 @@ Otwórz bilet z [obsługą wydawcy portalu](https://aka.ms/marketplacepublishers
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Odwiedź [stronę Przewodnik po portalu Azure Marketplace i Przewodnik dla wydawców appsource](https://docs.microsoft.com/azure/marketplace/).
-* Dowiedz się więcej o [pomocy technicznej dla programu Commercial Marketplace w Centrum partnerów](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+* Odwiedź [stronę przewodnika dla wydawców portalu marketplace.](https://docs.microsoft.com/azure/marketplace/)
+* Dowiedz się więcej o [obsłudze programu komercyjnego rynku w Centrum partnerów](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
 
 ---

@@ -3,7 +3,7 @@ title: Projektowanie i wdrażanie bazy danych Oracle na platformie Azure | Dokum
 description: Projektowanie i wdrażanie bazy danych Oracle w środowisku platformy Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: c2c2d1a9affe13d485bfeef52c781ed259b53bc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 41e1720dfeaa98a9d0bc2227c58083ce769b06e0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70100127"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263407"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Projektowanie i wdrażanie bazy danych Oracle na platformie Azure
 
@@ -46,14 +46,14 @@ W poniższej tabeli wymieniono niektóre różnice między implementacją lokaln
 > 
 > |  | **Implementacja lokalna** | **Implementacja platformy Azure** |
 > | --- | --- | --- |
-> | **Obsługa sieci** |SIEĆ LAN/WAN  |SDN (sieć definiowana programowo)|
+> | **Networking** |SIEĆ LAN/WAN  |SDN (sieć definiowana programowo)|
 > | **Grupa zabezpieczeń** |Narzędzia ograniczeń IP/portów |[Grupa zabezpieczeń sieci (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 > | **Odporności** |MTBF (średni czas między awariami) |MTTR (średni czas do odzyskania)|
 > | **Planowana konserwacja** |Łatanie/uaktualnienia|[Zestawy dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (poprawki/uaktualnienia zarządzane przez platformę Azure) |
-> | **Zasobów** |Dedykowane  |Współdzielone z innymi klientami|
+> | **Zasób** |Dedykowane  |Współdzielone z innymi klientami|
 > | **Regiony** |Centra danych |[Pary regionów](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **Magazyn** |SIECI SAN/dyski fizyczne |[Magazyn zarządzany przez platformę Azure](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **Skali** |Skala pionowa |Skalowanie w poziomie|
+> | **Storage** |SIECI SAN/dyski fizyczne |[Magazyn zarządzany przez platformę Azure](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+> | **Skalowanie** |Skala pionowa |Skalowanie w poziomie|
 
 
 ### <a name="requirements"></a>Wymagania
@@ -227,7 +227,7 @@ Po skonfigurowaniu i skonfigurowaniu środowiska platformy Azure następnym krok
 
 ## <a name="additional-reading"></a>Dodatkowa lektura
 
-- [Configure Oracle ASM (Konfigurowanie programu Oracle ASM)](configure-oracle-asm.md)
+- [Konfigurowanie programu Oracle ASM](configure-oracle-asm.md)
 - [Konfigurowanie środowiska Oracle Data Guard](configure-oracle-dataguard.md)
 - [Konfigurowanie Złotej Bramy Oracle](configure-oracle-golden-gate.md)
 - [Tworzenie kopii zapasowych i odzyskiwanie kopii zapasowych i odzyskiwania oracle](oracle-backup-recovery.md)

@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 04/10/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 9b0e0b39b7ac7d7834c9cdcbd79ba45b024c823a
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: b59c68e3f2edc0fbe5eee3c3861a3e5116d4fac6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992015"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262387"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Zarządzanie katalogami, plikami i listami ALs w usłudze Azure Data Lake Storage Gen2 za pomocą programu PowerShell (wersja zapoznawcza)
 
@@ -270,15 +270,14 @@ Za pomocą `-Force` tego parametru można usunąć plik bez monitu.
 
 ## <a name="manage-access-permissions"></a>Zarządzanie uprawnieniami dostępu
 
-Możesz uzyskać, ustawić i zaktualizować uprawnienia dostępu do systemów plików, katalogów i plików.
+Możesz uzyskać, ustawić i zaktualizować uprawnienia dostępu do systemów plików, katalogów i plików. Te uprawnienia są przechwytywane na listach kontroli dostępu (Listy kontroli dostępu).
 
 > [!NOTE]
 > Jeśli do autoryzowania poleceń używasz usługi Azure Active Directory (Azure AD), upewnij się, że podmiot zabezpieczeń został przypisany [do roli Właściciel danych obiektu Blob magazynu.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) Aby dowiedzieć się więcej o sposobie stosowania uprawnień listy ACL i skutkach ich zmiany, zobacz [Kontrola dostępu w usłudze Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
-### <a name="get-permissions"></a>Uzyskaj uprawnienia
+### <a name="get-an-acl"></a>Uzyskaj acl
 
 Pobierz acl katalogu lub pliku za `Get-AzDataLakeGen2Item`pomocą polecenia cmdlet.
-
 
 W tym przykładzie pobiera ACL **systemu plików,** a następnie drukuje ACL do konsoli.
 
@@ -311,7 +310,7 @@ Na poniższej ilustracji przedstawiono dane wyjściowe po uzyskaniu listy ACL ka
 
 W tym przykładzie użytkownik posiadający uprawnienia do odczytu, zapisu i wykonywania. Grupa właścicielka ma tylko uprawnienia do odczytu i wykonywania. Aby uzyskać więcej informacji na temat list kontroli dostępu, zobacz [Kontrola dostępu w usłudze Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
 
-### <a name="set-or-update-permissions"></a>Ustawianie lub aktualizowanie uprawnień
+### <a name="set-an-acl"></a>Ustawianie listy ACL
 
 Polecenie `set-AzDataLakeGen2ItemAclObject` cmdlet służy do tworzenia listy ACL dla użytkownika posiadającego, grupy właścicielki lub innych użytkowników. Następnie użyj `Update-AzDataLakeGen2Item` polecenia cmdlet, aby zatwierdzić listy ACL.
 
@@ -359,7 +358,7 @@ Na poniższej ilustracji przedstawiono dane wyjściowe po ustawieniu listy ACL p
 W tym przykładzie użytkownik-właściciel i grupa posiadająca mają tylko uprawnienia do odczytu i zapisu. Wszyscy inni użytkownicy mają uprawnienia do zapisu i wykonywania. Aby uzyskać więcej informacji na temat list kontroli dostępu, zobacz [Kontrola dostępu w usłudze Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
 
 
-### <a name="set-permissions-on-all-items-in-a-file-system"></a>Ustawianie uprawnień do wszystkich elementów w systemie plików
+### <a name="set-acls-on-all-items-in-a-file-system"></a>Ustawianie list ACL dla wszystkich elementów w systemie plików
 
 Można użyć `Get-AzDataLakeGen2Item` parametru `-Recurse` i parametru wraz z poleceniem `Update-AzDataLakeGen2Item` cmdlet, aby rekursywnie ustawić listy ACL wszystkich katalogów i plików w systemie plików. 
 
@@ -370,6 +369,41 @@ $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
 Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse | Update-AzDataLakeGen2Item -Acl $acl
 ```
+### <a name="add-or-update-an-acl-entry"></a>Dodawanie lub aktualizowanie wpisu listy ACL
+
+Po pierwsze, uzyskać ACL. Następnie użyj `set-AzDataLakeGen2ItemAclObject` polecenia cmdlet, aby dodać lub zaktualizować wpis listy ACL. Użyj `Update-AzDataLakeGen2Item` polecenia cmdlet, aby zatwierdzić listy ACL.
+
+W tym przykładzie tworzy lub aktualizuje listy ACL w **katalogu** dla użytkownika.
+
+```powershell
+$filesystemName = "my-file-system"
+$dirname = "my-directory/"
+$acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname).ACL
+$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -InputObject $acl 
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
+```
+
+### <a name="remove-an-acl-entry"></a>Usuwanie wpisu listy ACL
+
+W tym przykładzie usuwa wpis z istniejącej listy ACL.
+
+```powershell
+$id = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Create the new ACL object.
+[Collections.Generic.List[System.Object]]$aclnew =$acl
+
+foreach ($a in $aclnew)
+{
+    if ($a.AccessControlType -eq "User"-and $a.DefaultScope -eq $false -and $a.EntityId -eq $id)
+    {
+        $aclnew.Remove($a);
+        break;
+    }
+}
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew
+```
+
 <a id="gen1-gen2-map" />
 
 ## <a name="gen1-to-gen2-mapping"></a>Mapowanie gen1 do gen2

@@ -1,5 +1,5 @@
 ---
-title: Możliwości interpretowania modeli w zautomatyzowanym uczeniu maszynowym
+title: Ekspplanalność w zautomatyzowanym uczeniu maszynowym
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak uzyskać wyjaśnienia dotyczące sposobu, w jaki zautomatyzowany model uczenia maszynowego określa ważność funkcji i dokonuje prognoz podczas korzystania z zestawu SDK usługi Azure Machine Learning.
 services: machine-learning
@@ -8,20 +8,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
-ms.reviewer: trbye
 ms.date: 03/11/2020
-ms.openlocfilehash: e2465a2df3fab736c8f118911da14ef23c8aec86
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: ecf7cde1a7f804ef1c43b21ac5c1d2a488660590
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437275"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257168"
 ---
-# <a name="model-interpretability-in-automated-machine-learning"></a>Możliwości interpretowania modeli w zautomatyzowanym uczeniu maszynowym
+# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Możliwość interpretacji: objaśnienia modelu w zautomatyzowanym uczeniu maszynowym
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-W tym artykule dowiesz się, jak włączyć funkcje interpretowania dla automatycznego uczenia maszynowego (ML) w usłudze Azure Machine Learning. Automatyczne ml pomaga zrozumieć znaczenie inżynierii funkcji. 
+W tym artykule dowiesz się, jak uzyskać wyjaśnienia dotyczące automatycznego uczenia maszynowego (ML) w usłudze Azure Machine Learning. Automatyczne ml pomaga zrozumieć znaczenie inżynierii funkcji. 
 
 Wszystkie wersje zestawu SDK po domyślnie ustawionej wersji `model_explainability=True` 1.0.85. W zestawie SDK w wersji 1.0.85 `model_explainability=True` i `AutoMLConfig` wcześniejszych wersjach użytkownicy muszą ustawić w obiekcie, aby użyć możliwości interpretowania modelu. 
 

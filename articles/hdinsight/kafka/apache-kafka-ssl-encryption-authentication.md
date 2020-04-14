@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.openlocfilehash: b0154401a9233a6ea85a8e8c06ee14fcc918b2b6
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 02b64d77a4fb1af25e1022de3ac8e4775f916d9e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657082"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261775"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Konfigurowanie szyfrowania i uwierzytelniania protokołu TLS dla platformy Apache Kafka w usłudze Azure HDInsight
 
@@ -22,8 +22,9 @@ W tym artykule pokazano, jak skonfigurować szyfrowanie TLS (Transport Layer Sec
 > [!Important]
 > Istnieją dwa klienci, których można użyć w aplikacjach platformy Kafka: klient Java i klient konsoli. Tylko klient `ProducerConsumer.java` Java może używać protokołu TLS zarówno do produkcji, jak i korzystania z niego. Klient `console-producer.sh` producenta konsoli nie działa z TLS.
 
-> [!Note] 
+> [!Note]
 > Producent konsoli HDInsight Kafka w wersji 1.1 nie obsługuje ssl.
+
 ## <a name="apache-kafka-broker-setup"></a>Apache Kafka konfiguracji brokera
 
 Konfiguracja brokera Protokołu Kafka TLS będzie używać czterech maszyn wirtualnych klastra HDInsight w następujący sposób:
@@ -136,7 +137,7 @@ Aby ukończyć modyfikację konfiguracji, wykonaj następujące czynności:
 
     ![Edytowanie właściwości konfiguracji kafka ssl w Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. Dodaj nowe właściwości konfiguracji do pliku server.properties.
+1. W przypadku interfejsu HDI w wersji 3.6 przejdź do interfejsu użytkownika Ambari i dodaj następujące konfiguracje w obszarze **Zaawansowane kafka-env** i właściwość **szablonu kafka-env.**
 
     ```bash
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -151,7 +152,7 @@ Aby ukończyć modyfikację konfiguracji, wykonaj następujące czynności:
     echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-1. Przejdź do interfejsu użytkownika konfiguracji Ambari i sprawdź, czy nowe właściwości są wyświetlane w obszarze **Zaawansowane kafka-env** i właściwości **szablonu kafka-env.**
+1. Oto zrzut ekranu, który pokazuje interfejs użytkownika konfiguracji Ambari z tymi zmianami.
 
     Dla HDI w wersji 3.6:
 
@@ -159,10 +160,9 @@ Aby ukończyć modyfikację konfiguracji, wykonaj następujące czynności:
 
     Dla HDI w wersji 4.0:
 
-     ![Edytowanie właściwości szablonu kafka-env w Ambari cztery](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)   
+     ![Edytowanie właściwości szablonu kafka-env w Ambari cztery](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)
 
 1. Uruchom ponownie wszystkich brokerów platformy Kafka.
-1. Uruchom klienta administracyjnego z opcji producenta i konsumenta, aby sprawdzić, czy zarówno producenci, jak i konsumenci pracują nad portem 9093.
 
 ## <a name="client-setup-without-authentication"></a>Konfiguracja klienta (bez uwierzytelniania)
 
@@ -208,13 +208,15 @@ Te kroki są szczegółowo opisane w poniższych fragmentach kodu.
     keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
-1. Utwórz `client-ssl-auth.properties`plik . Powinien mieć następujące wiersze:
+1. Utwórz `client-ssl-auth.properties` plik na komputerze klienckim (hn1) . Powinien mieć następujące wiersze:
 
     ```config
     security.protocol=SSL
     ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
     ssl.truststore.password=MyClientPassword123
     ```
+
+1. Uruchom klienta administracyjnego z opcji producenta i konsumenta, aby sprawdzić, czy zarówno producenci, jak i konsumenci pracują nad portem 9093. Poniżej znajduje się sekcja [Weryfikacja,](apache-kafka-ssl-encryption-authentication.md#verification) aby uzyskać instrukcje niezbędne do weryfikacji konfiguracji przy użyciu producenta/konsumenta konsoli.
 
 ## <a name="client-setup-with-authentication"></a>Konfiguracja klienta (z uwierzytelnianiem)
 
@@ -278,17 +280,24 @@ Szczegóły każdego kroku podano poniżej.
     scp ca-cert sshuser@HeadNode1_Name:~/ssl/ca-cert
     ```
 
-1. Utwórz magazyn klienta z podpisanym certyfikatem i zaimportuj ca cert do magazynu kluczy i magazynu zaufania:
+    1. Zaloguj się do komputera klienckiego (węzeł główny rezerwy) i przejdź do katalogu SSL.
 
     ```bash
-    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
-    
-    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
-    
-    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
+    ssh sshuser@HeadNode1_Name
+    cd ssl
     ```
 
-1. Tworzenie pliku `client-ssl-auth.properties`. Powinien mieć następujące wiersze:
+1. Tworzenie magazynu klienta z podpisanym certyfikatem i importowanie certyfikatu ca do magazynu kluczy i magazynu zaufania na komputerze klienckim (hn1):
+
+    ```bash
+    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    ```
+
+1. Utwórz `client-ssl-auth.properties` plik na komputerze klienckim (hn1) . Powinien mieć następujące wiersze:
 
     ```bash
     security.protocol=SSL
@@ -300,6 +309,8 @@ Szczegóły każdego kroku podano poniżej.
     ```
 
 ## <a name="verification"></a>Weryfikacja
+
+Uruchom te kroki na komputerze klienckim.
 
 > [!Note]
 > Jeśli są zainstalowane standardy HDInsight 4.0 i Kafka 2.1, można użyć producenta/konsumentów konsoli, aby zweryfikować konfigurację. Jeśli nie, uruchom producenta platformy Kafka na porcie 9092 i wysyłaj wiadomości do tematu, a następnie użyj konsumenta platformy Kafka w porcie 9093, który używa protokołu TLS.

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ccfaa57b8e8fdea325bed908ffe8815b09d0d15
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271163"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257797"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikowanie się z koncentratorem IoT za pomocą protokołu MQTT
 
@@ -49,7 +49,7 @@ Poniższa tabela zawiera łącza do przykładów kodu dla każdego obsługiwaneg
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-device-mqtt. Mqtt ( Mqtt ) | azure-iot-device-mqtt. MqttWs (włady mqttws) |
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT ( MQTT ) | IotHubClientProtocol.MQTT_WS |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C #](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). Mqtt ( Mqtt ) | Jeśli mqtt nie powiedzie się, transportType.Mqtt powraca do MQTT za pośrednictwem gniazd sieci Web. Aby określić mqtt tylko za pośrednictwem gniazd sieci Web, należy użyć pliku TransportType.Mqtt_WebSocket_Only |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). Mqtt ( Mqtt ) | Jeśli mqtt nie powiedzie się, transportType.Mqtt powraca do MQTT za pośrednictwem gniazd sieci Web. Aby określić mqtt tylko za pośrednictwem gniazd sieci Web, należy użyć pliku TransportType.Mqtt_WebSocket_Only |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Domyślnie obsługuje MQTT | Dodaj `websockets=True` wywołanie, aby utworzyć klienta |
 
 Poniższy fragment pokazuje, jak określić protokół MQTT za pośrednictwem gniazd sieci Web podczas korzystania z sdk węzła Azure IoT.js:
@@ -118,7 +118,7 @@ Jeśli urządzenie nie może używać sdk urządzeń, nadal może łączyć się
 
   Aby uzyskać więcej informacji na temat generowania tokenów sygnatury dostępu Współdzielonego, zobacz sekcję urządzenia [przy użyciu tokenów zabezpieczających Usługi IoT Hub](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app).
 
-  Podczas testowania można również użyć wieloplatformowych [narzędzi Azure IoT Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) lub narzędzia [Eksploratora urządzeń,](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) aby szybko wygenerować token sygnatury dostępu Współdzielonego, który można skopiować i wkleić do własnego kodu:
+  Podczas testowania można również użyć wieloplatformowych [narzędzi Azure IoT Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) lub polecenia rozszerzenia interfejsu wiersza polecenia [az iot hub generate-sas-token,](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token) aby szybko wygenerować token sygnatury dostępu Współdzielonego, który można skopiować i wkleić do własnego kodu:
 
 ### <a name="for-azure-iot-tools"></a>Dla narzędzi IoT platformy Azure
 
@@ -129,16 +129,6 @@ Jeśli urządzenie nie może używać sdk urządzeń, nadal może łączyć się
 3. Ustaw **czas wygaśnięcia** i naciśnij przycisk "Enter".
   
 4. Token sygnatury dostępu Współdzielonego jest tworzony i kopiowany do schowka.
-
-### <a name="for-device-explorer"></a>Dla Eksploratora urządzeń
-
-1. Przejdź do karty **Zarządzanie** w **Eksploratorze urządzeń**.
-
-2. Kliknij pozycję **Token Sygnatury dostępu** Współdzielonego (w prawym górnym rogu).
-
-3. W **uszłociWUTokenForm**wybierz urządzenie z listy rozwijanej **DeviceID.** Ustaw **czas wygaśnięcia**.
-
-4. Kliknij **przycisk Generuj,** aby utworzyć token.
 
    Wygenerowany token sygnatury dostępu Współdzielonego ma następującą strukturę:
 

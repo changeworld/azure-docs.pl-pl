@@ -1,23 +1,23 @@
 ---
-title: C# samouczek na temat autouzupełniania i sugestie
+title: Autouzupełnienie i sugestie
 titleSuffix: Azure Cognitive Search
 description: W tym samouczku pokazano autouzupełnianie i sugestie jako sposób zbierania danych wejściowych wyszukiwanych haseł od użytkowników korzystających z listy rozwijanej. Opiera się na istniejącym projekcie hoteli.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 8f244d64fe33a1529cf66314515bbe16e05ccffb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/12/2020
+ms.openlocfilehash: 4391b565b684b74258b9c71da88600d4628b5c6f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121537"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259769"
 ---
-# <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>Samouczek C#: Dodawanie autouzupełniania i sugestii — Azure Cognitive Search
+# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>Samouczek C#: Dodawanie autouzupełniania i sugestii — Azure Cognitive Search
 
-Dowiedz się, jak zaimplementować autouzupełnianie (wpisywanie tekstu z wyprzedzeniem i sugestie), gdy użytkownik zacznie wpisywać wpis w polu wyszukiwania. W tym samouczku pokażemy wyniki typu z wyprzedzeniem i wyniki sugestii oddzielnie, a następnie pokażemy metodę łączenia ich, aby utworzyć bogatsze środowisko użytkownika. Użytkownik może mieć tylko wpisać dwa lub trzy klucze, aby zlokalizować wszystkie wyniki, które są dostępne. Ten samouczek tworzy na projekt stronicowania utworzony w [samouczku C#: Wyniki wyszukiwania na podziale na strony — Azure Cognitive Search](tutorial-csharp-paging.md) samouczek.
+Dowiedz się, jak zaimplementować autouzupełnianie (zapytania typu naczołgowe i sugerowane dokumenty), gdy użytkownik zacznie wpisywać wpis w polu wyszukiwania. W tym samouczku pokażemy automatycznie kompletowane zapytania i wyniki sugestii oddzielnie, a następnie pokażemy metodę łączenia ich w celu utworzenia bogatszego środowiska użytkownika. Użytkownik może mieć tylko wpisać dwa lub trzy znaki, aby zlokalizować wszystkie wyniki, które są dostępne.
 
 Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -28,9 +28,9 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia tego samouczka niezbędne są następujące elementy:
+Ten samouczek jest częścią serii i opiera się na projekcie stronicowania utworzonym w [samouczku C#: Podział wyników wyszukiwania — Azure Cognitive Search](tutorial-csharp-paging.md).
 
-Mieć [c# Samouczek: Wyniki wyszukiwania na podziale na strony — Azure Cognitive Search](tutorial-csharp-paging.md) projektu i uruchomione. Ten projekt może być własną wersją, która została ukończona w poprzednim samouczku, lub zainstalować go z GitHub: [Utwórz pierwszą aplikację](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Alternatywnie, można pobrać i uruchomić rozwiązanie dla tego konkretnego [samouczka: 3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead).
 
 ## <a name="add-suggestions"></a>Dodawanie sugestii
 

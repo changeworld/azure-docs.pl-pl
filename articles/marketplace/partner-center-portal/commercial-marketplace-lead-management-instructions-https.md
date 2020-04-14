@@ -5,20 +5,23 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a0131cf94759fc529a52ea33d5392a60c5ef30c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33359883df86091120295b93618a13476e428d2f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281599"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262617"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurowanie zarządzania potencjalnymi klientami przy użyciu punktu końcowego HTTPS
 
-Jeśli system zarządzania relacjami z klientami (CRM) nie jest jawnie obsługiwany w Centrum partnerów do odbierania potencjalnych klientów w portalu Azure Marketplace i AppSource, można użyć punktu końcowego HTTPS w usłudze MS Flow do obsługi tych potencjalnych klientów. W punkcie końcowym HTTPS przewody te mogą być wysyłane jako powiadomienie e-mail lub mogą być zapisywane w systemie zarządzania relacjami z klientami (CRM) obsługiwanym przez MS Flow. Instrukcje w tym artykule poprowadzi Cię przez podstawowy proces tworzenia nowego przepływu przy użyciu usługi Microsoft Flow, który wygeneruje adres URL HTTP POST, który zostanie wprowadzony w portalu publikowania dla pola Adres URL zarządzania potencjalnymi klientami > **https.** Ponadto, zawarte są instrukcje, w jaki sposób można przetestować przepływ za pomocą narzędzia o nazwie [Listonosz,](https://www.getpostman.com/downloads/) które można znaleźć w Internecie.
+>[!Note]
+>Złącze Power Automate używane w tych instrukcjach wymaga płatnej subskrypcji usługi Power Automate. Prosimy o to przed przestrzeganiem instrukcji zawartych w tym dokumencie.
 
-## <a name="create-a-flow-using-microsoft-flow"></a>Tworzenie przepływu przy użyciu usługi Microsoft Flow
+Jeśli system zarządzania relacjami z klientami (CRM) nie jest jawnie obsługiwany w Centrum partnerów do odbierania potencjalnych klientów w portalu Azure Marketplace i AppSource, można użyć punktu końcowego HTTPS w programie Power Automate do obsługi tych potencjalnych klientów. W punkcie końcowym HTTPS przewody te mogą być wysyłane jako powiadomienie e-mail lub mogą być zapisywane w systemie zarządzania relacjami z klientami (CRM) obsługiwanym przez program Power Automate. Instrukcje zawarte w tym artykule poprowadzą Cię przez podstawowy proces tworzenia nowego przepływu przy użyciu programu Power Automate, który wygeneruje adres URL HTTP POST, który zostanie wprowadzony w portalu publikowania dla pola Adres URL zarządzania potencjalnymi klientami > **https endpoint.** Ponadto, zawarte są instrukcje, w jaki sposób można przetestować przepływ za pomocą narzędzia o nazwie [Listonosz,](https://www.getpostman.com/downloads/) które można znaleźć w Internecie.
+
+## <a name="create-a-flow-using-power-automate"></a>Tworzenie przepływu za pomocą automatyzacji zasilania
 
 1. Otwórz stronę internetową [Flow.](https://flow.microsoft.com/) Wybierz **pozycję Zaloguj się**lub jeśli nie masz jeszcze konta, wybierz pozycję Zarejestruj się **bezpłatnie,** aby utworzyć bezpłatne konto Flow.
 
@@ -168,7 +171,7 @@ Możesz sprawdzić, czy wszystko działa zgodnie z oczekiwaniami, wykonując nas
 
    ![Przetestuj mój przepływ](./media/commercial-marketplace-lead-management-instructions-https/test-my-flow.png)
 
-4. Wklej adres URL HTTP POST z przepływu utworzonego w MS Flow, gdzie jest on komunikat *Enter adres URL żądania*.
+4. Wklej adres URL HTTP POST z przepływu utworzonego w umiań funkcji Power Automate, w którym znajduje się *adres URL żądania Enter*.
 
    ![Wklej adres URL WPISu HTTP](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
 
@@ -202,7 +205,10 @@ Gdy będziesz gotowy skonfigurować informacje o zarządzaniu potencjalnymi klie
 1. Przejdź do strony **Ustawienia oferty** dla swojej oferty.
 2. Wybierz **pozycję Połącz** w sekcji Zarządzanie potencjalnymi klientami.
 3. W oknie podręcznym Szczegóły połączenia wybierz **pozycję Punkt końcowy HTTPS** dla **miejsca docelowego potencjalnego klienta** i wklej adres URL HTTP POST z utworzonego przepływu, wykonując wcześniejsze kroki w polu URL punktu **końcowego HTTPS.**
-4. Wybierz **pozycję Zapisz**. 
+4. **Kontaktowy adres e-mail** — udostępniaj wiadomości e-mail osobom w firmie, które powinny otrzymywać powiadomienia e-mail po otrzymaniu nowego potencjalnego klienta. Możesz dostarczyć wiele wiadomości e-mail, oddzielając je średnikiem.
+5. Kliknij przycisk **OK**.
+
+Aby upewnić się, że udało ci się połączyć z miejscem docelowym potencjalnego klienta, kliknij przycisk sprawdź poprawność. Jeśli się powiedzie, będziesz miał potencjalnego klienta testowego w głównym miejscu docelowym.
 
 >[!Note] 
 >Musisz zakończyć konfigurowanie pozostałej części oferty i opublikować ją, zanim będzie można odbierać potencjalnych klientów dla oferty.
@@ -213,5 +219,5 @@ Gdy potencjalni klienci są generowani, firma Microsoft wysyła potencjalnych kl
 
 ![Szczegóły połączenia](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
 
-![Szczegóły połączenia](./media/commercial-marketplace-lead-management-instructions-https/connection-details-1.png)
+![Szczegóły połączenia](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
 

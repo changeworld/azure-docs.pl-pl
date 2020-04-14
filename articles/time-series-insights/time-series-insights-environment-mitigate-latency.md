@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 245a0b18187ff1c1b226e94b03374f2c071e51c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2812b535c7aef7987db7106bfa6b07e15a1b61c7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314831"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263390"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorowanie i ograniczanie ograniczania ograniczania przepustowości w celu zmniejszenia opóźnień w usłudze Azure Time Series Insights
 
@@ -30,7 +30,7 @@ Najprawdopodobniej wystąpi opóźnienie i ograniczanie przepustowości podczas:
 - Dodaj źródło zdarzeń, które zawiera stare dane, które mogą przekraczać przydzieloną szybkość transferu danych przychodzących (usługa Time Series Insights będzie musiała nadrobić zaległości).
 - Dodaj więcej źródeł zdarzeń do środowiska, co powoduje wzrost z dodatkowych zdarzeń (które mogą przekroczyć możliwości środowiska).
 - Wypychaj duże ilości zdarzeń historycznych do źródła zdarzeń, co powoduje opóźnienie (usługa Time Series Insights będzie musiała nadrobić zaległości).
-- Dołącz do danych referencyjnych za pomocą danych telemetrycznych, co powoduje większy rozmiar zdarzenia. Z punktu widzenia ograniczania przepustowości pakiet danych o rozmiarze 32 KB jest traktowany jako 32 zdarzenia o rozmiarze 1 KB. Maksymalny dozwolony rozmiar zdarzenia wynosi 32 KB; pakiety danych większe niż 32 KB są obcinane.
+- Dołącz do danych referencyjnych za pomocą danych telemetrycznych, co powoduje większy rozmiar zdarzenia. Maksymalny dozwolony rozmiar pakietu wynosi 32 KB; pakiety danych większe niż 32 KB są obcinane.
 
 ## <a name="video"></a>Film wideo
 

@@ -1,22 +1,22 @@
 ---
 title: Dostępność geograficzna i wsparcie walutowe | Azure
-description: Dostępność geograficzna w witrynie Azure Marketplace i appsource
+description: Dostępność geograficzna na rynku komercyjnym
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 79965180d897b91afc1fb1a27e777e385108d2c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82c3ed79bbcc566a91f9f249ec2df747bbc01cac
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288431"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262013"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Dostępność geograficzna i wsparcie walutowe
 
-Oferty portalu Azure Marketplace i AppSource można kupić w 141 lokalizacjach geograficznych zdefiniowanych przez adres rozliczeniowy klienta, a transakcje można wykonać w 17 walutach. W poniższej tabeli wymieniono każdą obsługiwaną lokalizację geograficzną, [dwucyfrowy kod alfa ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)oraz przypisaną walutę.
+Oferty komercyjnego rynku można kupić w 141 lokalizacjach geograficznych zgodnie z definicją adresu rozliczeniowego klienta, a transakcje można dokońcać w 17 walutach. W poniższej tabeli wymieniono każdą obsługiwaną lokalizację geograficzną, [dwucyfrowy kod alfa ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)oraz przypisaną walutę.
 
 |   Nazwa kraju/regionu               |   ISO-2   |   Waluta   |
 |-------------------------------------|-----------|--------------|

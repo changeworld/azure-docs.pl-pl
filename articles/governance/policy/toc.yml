@@ -31,9 +31,6 @@
     - name: Zarządzanie ładem tagów
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
-    - name: Warsztaty — poznawanie usługi Azure Policy
-      displayName: 'create, policy, training, learn'
-      href: 'https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy'
 - name: Samples
   items:
     - name: Indeks

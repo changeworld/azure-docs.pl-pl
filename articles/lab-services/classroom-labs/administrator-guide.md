@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 7ce7ef15f0bf13182e4799fb640e83136d0d4695
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 55e319ba8aecb9205c00dda4a400e37f7c010649
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115023"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257780"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Usługi Azure Lab — przewodnik dla administratorów
 Administratorzy technologii informatycznych (IT), którzy zarządzają zasobami chmury uniwersytetu, są zazwyczaj odpowiedzialni za skonfigurowanie konta laboratoryjnego dla swojej szkoły. Po skonfigurowaniu konta laboratorium administratorzy lub nauczyciele tworzą laboratoria w klasie, które znajdują się na koncie laboratorium. Ten artykuł zawiera omówienie wysokiego poziomu zaangażowanych zasobów platformy Azure i wskazówki dotyczące ich tworzenia.
@@ -59,7 +59,7 @@ Poniższa lista zawiera wyróżnienia scenariuszy, w których więcej niż jedno
     
     Podczas konfigurowania konta laboratorium można ustawić zasady, które mają zastosowanie do *wszystkich* laboratoriów w klasie na koncie laboratorium, takich jak:
     - Sieć wirtualna platformy Azure z udostępnionymi zasobami, do których może uzyskać dostęp laboratorium w klasie. Na przykład może mieć zestaw laboratoriów w klasie, które wymagają dostępu do udostępnionego zestawu danych w sieci wirtualnej.
-    - Obrazy maszyny wirtualnej (VM), których laboratoria klasy może używać do tworzenia maszyn wirtualnych. Na przykład może mieć zestaw laboratoriów w klasie, które wymagają dostępu do [maszyny Wirtualnej nauki o danych dla systemu Linux](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) Marketplace obrazu. 
+    - Obrazy maszyny wirtualnej (VM), których laboratoria klasy może używać do tworzenia maszyn wirtualnych. Na przykład może mieć zestaw laboratoriów w klasie, które wymagają dostępu do [maszyny Wirtualnej nauki o danych dla systemu Linux](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) Marketplace obrazu. 
     
     Jeśli masz laboratoria szkolne, które mają unikalne wymagania polityczne od siebie, może być korzystne utworzenie oddzielnych kont laboratoryjnych do zarządzania tymi laboratoriami w klasie oddzielnie.
 

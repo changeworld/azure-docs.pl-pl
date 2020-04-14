@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e14cc00d1bd716b3e4880e585b05447d2e55e2b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270370"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257440"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Przewodnik po schemacie dla typów wyzwalaczy i akcji w usłudze Azure Logic Apps
 
@@ -73,9 +73,9 @@ Każdy typ wyzwalacza ma inny interfejs i dane wejściowe, które definiują zac
 
 | Typ wyzwalacza | Opis | 
 |--------------|-------------| 
-| [**Protokół HTTP**](#http-trigger) | Sprawdza lub *sonduje* dowolny punkt końcowy. Ten punkt końcowy musi być zgodny z określonym kontraktem wyzwalacza przy użyciu wzorca asynchronicznej "202" lub przez zwrócenie tablicy. | 
+| [**HTTP**](#http-trigger) | Sprawdza lub *sonduje* dowolny punkt końcowy. Ten punkt końcowy musi być zgodny z określonym kontraktem wyzwalacza przy użyciu wzorca asynchronicznej "202" lub przez zwrócenie tablicy. | 
 | [**Protokół HTTPWebhook**](#http-webhook-trigger) | Tworzy punkt końcowy wywoływania dla aplikacji logiki, ale wywołuje określony adres URL, aby zarejestrować lub wyrejestrować. |
-| [**Cyklu**](#recurrence-trigger) | Pożary na podstawie określonego harmonogramu. Można ustawić przyszłą datę i godzinę wystrzelenia tego wyzwalacza. Na podstawie częstotliwości można również określić godziny i dni uruchamiania przepływu pracy. | 
+| [**Cykl**](#recurrence-trigger) | Pożary na podstawie określonego harmonogramu. Można ustawić przyszłą datę i godzinę wystrzelenia tego wyzwalacza. Na podstawie częstotliwości można również określić godziny i dni uruchamiania przepływu pracy. | 
 | [**Żądanie**](#request-trigger)  | Tworzy punkt końcowy wywoływania dla aplikacji logiki i jest również znany jako wyzwalacz "ręczny". Na przykład zobacz [Wywołanie, wyzwalanie lub zagnieżdżanie przepływów pracy za pomocą punktów końcowych HTTP](../logic-apps/logic-apps-http-endpoint.md). | 
 ||| 
 
@@ -821,10 +821,10 @@ Oto kilka często używanych typów akcji:
 | [**Komponować**](#compose-action) | Tworzy pojedyncze dane wyjściowe z danych wejściowych, które mogą mieć różne typy. | 
 | [**Wykonywanie kodu JavaScript**](#run-javascript-code) | Uruchom fragmenty kodu JavaScript, które mieszczą się w określonych kryteriach. Aby uzyskać wymagania dotyczące kodu i więcej informacji, zobacz [Dodawanie i uruchamianie fragmentów kodu z kodem wbudowanym](../logic-apps/logic-apps-add-run-inline-code.md). |
 | [**Funkcja**](#function-action) | Wywołuje funkcję platformy Azure. | 
-| [**Protokół HTTP**](#http-action) | Wywołuje punkt końcowy HTTP. | 
+| [**HTTP**](#http-action) | Wywołuje punkt końcowy HTTP. | 
 | [**Dołączyć**](#join-action) | Tworzy ciąg ze wszystkich elementów w tablicy i oddziela te elementy z określonym znakiem ogranicznika. | 
 | [**Analizować JSON**](#parse-json-action) | Tworzy przyjazne dla użytkownika tokeny z właściwości w zawartości JSON. Następnie można odwołać się do tych właściwości, dołączając tokeny w aplikacji logiki. | 
-| [**Kwerendy**](#query-action) | Tworzy tablicę z elementów w innej tablicy na podstawie warunku lub filtru. | 
+| [**Zapytanie**](#query-action) | Tworzy tablicę z elementów w innej tablicy na podstawie warunku lub filtru. | 
 | [**Odpowiedzi**](#response-action) | Tworzy odpowiedź na przychodzące połączenie lub żądanie. | 
 | [**Wybierz**](#select-action) | Tworzy tablicę z obiektami JSON, przekształcając elementy z innej tablicy na podstawie określonej mapy. | 
 | [**Tabeli**](#table-action) | Tworzy tabelę CSV lub HTML z tablicy. | 
@@ -2407,7 +2407,13 @@ Można zmienić domyślne zachowanie wyzwalaczy `operationOptions` i akcji z wł
 
 Domyślnie wystąpienia przepływu pracy aplikacji logiki wszystkie są uruchamiane w tym samym czasie (jednocześnie lub równolegle). To zachowanie oznacza, że każde wystąpienie wyzwalacza jest uruchamiane przed zakończeniem działania wcześniej aktywnego wystąpienia przepływu pracy. Jednak liczba jednocześnie uruchomionych wystąpień ma [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Gdy liczba jednocześnie uruchomionych wystąpień przepływu pracy osiągnie ten limit, wszystkie inne nowe wystąpienia muszą czekać na uruchomienie. Ten limit pomaga kontrolować liczbę żądań odbieranych przez systemy wewnętrznej bazy danych.
 
-Aby zmienić domyślny limit, można użyć edytora widoku kodu lub projektanta aplikacji logiki, ponieważ `runtimeConfiguration.concurrency.runs` zmiana ustawienia współbieżności za pośrednictwem projektanta dodaje lub aktualizuje właściwość w podstawowej definicji wyzwalacza i odwrotnie. Ta właściwość kontroluje maksymalną liczbę wystąpień przepływu pracy, które można uruchomić równolegle. Oto kilka zagadnień dotyczących włączenia kontroli współbieżności:
+Po włączeniu kontroli współbieżności wyzwalacza wystąpienia wyzwalacza są uruchamiane równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten domyślny limit współbieżności, można użyć edytora widoku kodu lub projektanta aplikacji logiki, `runtimeConfiguration.concurrency.runs` ponieważ zmiana ustawienia współbieżności za pośrednictwem projektanta dodaje lub aktualizuje właściwość w podstawowej definicji wyzwalacza i odwrotnie. Ta właściwość kontroluje maksymalną liczbę nowych wystąpień przepływu pracy, które można uruchomić równolegle.
+
+Oto kilka zagadnień dotyczących włączenia współbieżności wyzwalacza:
+
+* Gdy współbieżność jest włączona, [limit SplitOn](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) jest znacznie zmniejszona dla [dyskusyjnych tablic](#split-on-debatch). Jeśli liczba elementów przekracza ten limit, funkcja SplitOn jest wyłączona.
+
+* Nie można wyłączyć współbieżności po włączeniu kontroli współbieżności.
 
 * Gdy współbieżność jest włączona, [limit SplitOn](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) jest znacznie zmniejszona dla [dyskusyjnych tablic](#split-on-debatch). Jeśli liczba elementów przekracza ten limit, funkcja SplitOn jest wyłączona.
 

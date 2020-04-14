@@ -3,19 +3,19 @@ title: Często zadawane pytania
 description: Odpowiedzi na często zadawane pytania związane z usługą Wystąpienia kontenerów platformy Azure
 author: dkkapur
 ms.topic: article
-ms.date: 01/07/2020
-ms.openlocfilehash: 4a3fb4c1818d86f7fe2913790fd9e573c630cbfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.openlocfilehash: 8730dcb24af61730d7f93ea37a53cf87435eb9f9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247178"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261622"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Często zadawane pytania dotyczące wystąpień kontenerów platformy Azure
 
 Ten artykuł dotyczy często zadawanych pytań dotyczących wystąpień kontenera platformy Azure.
 
-## <a name="deployment"></a>wdrażania
+## <a name="deployment"></a>Wdrożenie
 
 ### <a name="how-large-can-my-container-image-be"></a>Jak duży może być mój obraz kontenera?
 
@@ -43,9 +43,9 @@ Zobacz bardziej [szczegółowe wskazówki dotyczące](container-instances-troubl
 
 #### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 i obrazy podstawowe klienta (wersja zapoznawcza)
 
-* [Nano](https://hub.docker.com/_/microsoft-windows-nanoserver)Serwer `1809`: ,`10.0.17763.x`
-* [Rdzeń](https://hub.docker.com/_/microsoft-windows-servercore)systemu `ltsc2019`Windows Server : , `1809``10.0.17763.x`
-* [Okna](https://hub.docker.com/_/microsoft-windows) `1809`: ,`10.0.17763.x` 
+* [Nano](https://hub.docker.com/_/microsoft-windows-nanoserver)Server `1809` `10.0.17763.914` : lub wcześniej
+* [Windows Server](https://hub.docker.com/_/microsoft-windows-servercore) `ltsc2019`Core `1809` `10.0.17763.914` : , lub wcześniej
+* [Windows](https://hub.docker.com/_/microsoft-windows) `1809`: `10.0.17763.914` lub wcześniej
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Jakiej warstwy obrazu .NET lub .NET Core należy użyć w moim kontenerze? 
 

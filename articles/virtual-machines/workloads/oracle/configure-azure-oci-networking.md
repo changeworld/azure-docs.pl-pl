@@ -2,7 +2,7 @@
 title: Łączenie usługi Azure ExpressRoute z infrastrukturą Oracle Cloud | Dokumenty firmy Microsoft
 description: Połączenie usługi Azure ExpressRoute z usługą Oracle Cloud Infrastructure (OCI) FastConnect w celu umożliwienia rozwiązań aplikacji Oracle między chmurami
 documentationcenter: virtual-machines
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/16/2020
-ms.author: rogirdh
-ms.openlocfilehash: cd0b8a50d25cd8d1a66a8eb98e54ec231aa2c62f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.author: mimckitt
+ms.openlocfilehash: d85c0fc8986adfa00559eab1c49a79daacdeb33f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878718"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263186"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Konfigurowanie bezpośrednich połączeń między platformą Azure a infrastrukturą Oracle Cloud Infrastructure  
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 362b35af191c1caebeb30149ce060a5366182ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cffefb294aaeeb4d66358ceae72c98becd04cc58
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289422"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261962"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure Security Baseline for Azure Database for MySQL
 
@@ -134,7 +134,7 @@ Poznaj użycie znacznika usługi dla usługi Azure Database dla mysql:https://do
 
 Jak skonfigurować zasady platformy Azure i zarządzać nimi:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Przykłady zasad platformy Azure dla sieci:https://docs.microsoft.com/azure/governance/policy/samples/#network
+Przykłady zasad platformy Azure dla sieci:https://docs.microsoft.com/azure/governance/policy/samples/
 
 Jak utworzyć plan platformy Azure:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -904,7 +904,7 @@ Jak zapewnić uwierzytelnianie usługi Key Vault z tożsamością zarządzaną:h
 
 **Wskazówki:** Wystąpienie usługi Azure Database for MySQL obsługuje uwierzytelnianie usługi Azure Active Directory (w wersji zapoznawczej) w celu uzyskania dostępu do baz danych.  Podczas tworzenia usługi Azure Database dla mysql wystąpienie, należy podać poświadczenia dla użytkownika administratora. Tego administratora można użyć do tworzenia dodatkowych użytkowników bazy danych.  
 
-W przypadku maszyn wirtualnych platformy Azure lub aplikacji sieci Web uruchomionych w usłudze Azure App Service używanych do uzyskiwania dostępu do bazy danych platformy Azure dla wystąpień MySQL należy używać tożsamości usługi zarządzanej w połączeniu z usługą Azure Key Vault do przechowywania i pobierania poświadczeń dla usługi Azure Database dla mysql Wystąpienie. Upewnij się, że włączona jest funkcja usuwania nietrwałego przechowalni kluczy.
+W przypadku maszyn wirtualnych platformy Azure lub aplikacji sieci web uruchomionych w usłudze Azure App Service używanych do uzyskiwania dostępu do bazy danych platformy Azure dla wystąpień MySQL należy używać tożsamości usługi zarządzanej w połączeniu z usługą Azure Key Vault do przechowywania i pobierania poświadczeń dla usługi Azure Database dla wystąpienia MySQL. Upewnij się, że włączona jest funkcja usuwania nietrwałego przechowalni kluczy.
 
 Użyj tożsamości zarządzanych, aby zapewnić usługi platformy Azure z automatycznie zarządzaną tożsamością w usłudze Azure Active Directory (AD). Tożsamości zarządzane umożliwia uwierzytelnianie do dowolnej usługi, która obsługuje uwierzytelnianie usługi Azure AD, w tym Usługi Key Vault, bez żadnych poświadczeń w kodzie.
 

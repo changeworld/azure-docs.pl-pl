@@ -3,16 +3,16 @@ title: Faktury za rejestracje w usłudze Azure Enterprise
 description: W tym artykule wyjaśniono, jak zarządzać fakturami za usługę Azure Enterprise i wykonywać związane z nimi działania.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9fbc2ffcf1158f436c060817f8f25152f839c3e0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d8d189d2ee67e3f98fec5d7d4cd295879e8689c9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037253"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743892"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za rejestracje w usłudze Azure Enterprise
 
@@ -494,6 +494,12 @@ Następujące usługi są rozliczane oddzielnie:
 - Visual Studio Enterprise (roczny)
 - Visual Studio Professional (miesięczny)
 - Visual Studio Professional (roczny)
+
+## <a name="what-to-expect-after-change-of-channel-partner"></a>Czego można oczekiwać po zmianie partnera kanału
+
+Jeśli zmiana partnera kanału nastąpi w połowie miesiąca, klient otrzyma fakturę za użycie u poprzedniego powiązanego partnera i kolejną fakturę za użycie u nowego partnera.
+
+Faktury zostaną wystawione po miesiącu, w którym kończy się okres rozliczeniowy. Jeśli rozliczenia są miesięczne, faktura za wrzesień zostanie wystawiona dla obu partnerów w październiku. Jeśli cykl rozliczeniowy jest kwartalny lub roczny, klient może oczekiwać faktury dla poprzedniego powiązanego partnera za użycie w okresie współpracy z nim, a reszta zostanie naliczona dla nowego partnera zgodnie z okresem rozliczeniowym.
 
 ## <a name="azure-marketplace-for-ea-customers"></a>Witryna Azure Marketplace dla klientów umowy EA
 

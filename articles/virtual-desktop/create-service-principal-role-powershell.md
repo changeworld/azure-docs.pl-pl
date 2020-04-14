@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61b5017609d99f2f0074c67d3838cf351ea38bea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 322ff2be4b90a945305915432a8191db9f4efee2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79365427"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252561"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Samouczek: Tworzenie podmiotów zabezpieczeń usługi i przypisań ról przy użyciu programu PowerShell
 
@@ -77,7 +77,7 @@ Oto trzy poświadczenia, które należy zapisać i polecenia cmdlet, które musi
     $svcPrincipal.AppId
     ```
 
-## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Tworzenie przypisania roli w wersji Preview pulpitu wirtualnego systemu Windows
+## <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Tworzenie przypisania roli na pulpicie wirtualnym systemu Windows
 
 Następnie należy utworzyć przypisanie roli, aby podmiot zabezpieczeń usługi mógł zalogować się na pulpicie wirtualnym systemu Windows. Pamiętaj, aby zalogować się przy za pomocą konta, które ma uprawnienia do tworzenia przypisań ról.
 

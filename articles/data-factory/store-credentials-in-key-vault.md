@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 1418205843fefc76db4e73832736b308d0cc79a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6720a018cdc3fff95192b0956b3d1040be263ab2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76122614"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261882"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Poświadczenia magazynu w usłudze Azure Key Vault
 
@@ -32,7 +32,7 @@ Ta funkcja opiera się na tożsamości zarządzanej fabrycznie danych. Dowiedz s
 Aby odwołać się do poświadczeń przechowywanych w usłudze Azure Key Vault, należy:
 
 1. **Pobierz dane fabrycznie zarządzane tożsamości,** kopiując wartość "Identyfikator obiektu tożsamości zarządzanej" generowane wraz z fabryki. If you use ADF authoring UI, the managed identity object ID will be shown on the Azure Key Vault linked service creation window; można również pobrać go z witryny Azure Portal, odnoszą się do [pobierania danych fabrycznie tożsamości zarządzanej](data-factory-service-identity.md#retrieve-managed-identity).
-2. **Udziel dostępu do tożsamości zarządzanej do usługi Azure Key Vault.** W magazynie kluczy -> Zasady dostępu -> Dodaj nowe -> przeszukać tę zarządzaną tożsamość, aby udzielić uprawnień **Pobierz** w obszarze listy rozwijanej Uprawnienia tajne. Umożliwia to wyznaczone fabryki dostęp do klucza tajnego w magazynie kluczy.
+2. **Udziel dostępu do tożsamości zarządzanej do usługi Azure Key Vault.** W magazynie kluczy -> Zasady dostępu -> Dodaj zasady dostępu, przeszukaj tę tożsamość zarządzaną, aby udzielić uprawnień **Pobierz** w obszarze listy rozwijanej Uprawnienia tajne. Umożliwia to wyznaczone fabryki dostęp do klucza tajnego w magazynie kluczy.
 3. **Utwórz połączony serwis wskazujący usługę Azure Key Vault.** Zapoznaj się z [usługą połączonyą usługi Azure Key Vault](#azure-key-vault-linked-service).
 4. **Utwórz usługę połączony magazyn danych, wewnątrz którego odwołuje się do odpowiedniego klucza tajnego przechowywanego w magazynie kluczy.** Zapoznaj się [z kluczem tajnym zapisanym w magazynie kluczy](#reference-secret-stored-in-key-vault).
 
@@ -47,13 +47,13 @@ Następujące właściwości są obsługiwane dla usługi połączonej usługi A
 
 **Korzystanie z interfejsu użytkownika tworzenia:**
 
-Kliknij pozycję**Usługi** ->  **połączone** -> połączenia **+Nowy** > wyszukaj "Usługa Azure Key Vault":
+Wybierz **pozycję Połączenia** -> **połączone usługi** -> **Nowe**. W obszarze Nowa usługa połączona wyszukaj i wybierz "Azure Key Vault":
 
-![Szukaj w AKV](media/store-credentials-in-key-vault/search-akv.png)
+![Przeszukanie magazynu kluczy platformy Azure](media/store-credentials-in-key-vault/search-akv.png)
 
 Wybierz aprowizawowaną usługę Azure Key Vault, w której są przechowywane poświadczenia. Można wykonać **test połączenia,** aby upewnić się, że połączenie AKV jest prawidłowe. 
 
-![Konfigurowanie AKV](media/store-credentials-in-key-vault/configure-akv.png)
+![Konfigurowanie usługi Azure Key Vault](media/store-credentials-in-key-vault/configure-akv.png)
 
 **Przykład JSON:**
 
@@ -87,7 +87,7 @@ Wybierz **usługę Azure Key Vault** dla pól tajnych podczas tworzenia połącz
 >[!TIP]
 >W przypadku łączników używających ciągu połączenia w usłudze połączonej, takich jak SQL Server, Magazyn obiektów Blob itp., można wybrać opcję przechowywania tylko pola tajnego, na przykład hasła w programie AKV, lub przechowywania całego ciągu połączenia w programie AKV. Obie opcje można znaleźć w interfejsie użytkownika.
 
-![Konfigurowanie klucza tajnego AKV](media/store-credentials-in-key-vault/configure-akv-secret.png)
+![Konfigurowanie klucza tajnego usługi Azure Key Vault](media/store-credentials-in-key-vault/configure-akv-secret.png)
 
 **Przykład JSON: (patrz sekcja "hasło")**
 

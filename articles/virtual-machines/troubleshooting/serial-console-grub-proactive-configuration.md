@@ -3,8 +3,8 @@ title: Proaktywna konfiguracja GRUB w usłudze Azure Serial Console| Dokumenty f
 description: Skonfiguruj GRUB w różnych dystrybucjach umożliwiając dostęp do trybu pojedynczego użytkownika i trybu odzyskiwania na maszynach wirtualnych platformy Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: vilibert
-manager: spogge
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
-ms.author: vilibert
-ms.openlocfilehash: a154ab4742f0d0d7acae0376bcf894bc2b62b4cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 573bd0797e63fc512e59b0e0882c718e4569111c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74186931"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262897"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proaktywne zapewnienie dostępu do GRUB i sysrq może zaoszczędzić dużo czasu przestoju
 
@@ -98,7 +98,7 @@ W tym artykule przejrzymy różne dystrybucje Linuksa i konfiguracje dokumentów
 Klucz sysrq jest domyślnie włączony w niektórych nowszych dystrybucjach Linuksa, chociaż w innych może być skonfigurowany do akceptowania wartości tylko dla niektórych funkcji SysRq.
 W starszych dystrybucjach może być całkowicie wyłączona.
 
-Funkcja SysRq jest przydatna do ponownego uruchamiania rozbitej lub zawieszonej maszyny Wirtualnej bezpośrednio z konsoli szeregowej platformy Azure, również pomocna w uzyskaniu dostępu do menu GRUB, alternatywnie ponowne uruchomienie maszyny wirtualnej z innego okna portalu lub sesja ssh może spowodować upuszczenie bieżącego połączenia konsoli upływający w ten sposób limity czasu GRUB, do których są używane do wyświetlania menu GRUB.
+Funkcja SysRq jest przydatna do ponownego uruchamiania awarii lub zawiesiny maszyny Wirtualnej bezpośrednio z konsoli szeregowej platformy Azure, również pomocne w uzyskaniu dostępu do menu GRUB, alternatywnie ponowne uruchomienie maszyny Wirtualnej z innego okna portalu lub sesji ssh może upuścić bieżące połączenie konsoli, w ten sposób wygasające limity czasu GRUB, do których są używane do wyświetlania menu GRUB.
 Maszyna wirtualna musi być skonfigurowana tak, aby akceptowała wartość 1 dla parametru jądra, który umożliwia wszystkie funkcje sysrq lub 128, co umożliwia ponowne uruchomienie/wyłączanie
 
 

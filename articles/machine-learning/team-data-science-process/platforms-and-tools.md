@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d26dc55cfd0f2ef0bb78e4153fffe3f1cb910b73
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 3f3f06bd5a9b6a78b45a63de0684b580e662075b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474871"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256522"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy i narzędzia do projektów do nauki o danych
 
@@ -49,7 +49,7 @@ Zawiera również **narzędzia ML i AI,** takie jak xgboost, mxnet i Vowpal Wabb
 
 Obecnie DSVM jest dostępny w systemach operacyjnych **Windows** i **Linux CentOS.** Wybierz rozmiar dsvm (liczba rdzeni procesora CPU i ilość pamięci) w oparciu o potrzeby projektów nauki o danych, które planujesz wykonać na nim. 
 
-Aby uzyskać więcej informacji na temat wersji systemu Windows DSVM, zobacz [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) w portalu Azure Marketplace. Zobacz też: Linux data science [Virtual Machine](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu).
+Aby uzyskać więcej informacji na temat wersji systemu Windows DSVM, zobacz [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) w portalu Azure Marketplace. Zobacz też: Linux data science [Virtual Machine](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804).
 
 Aby dowiedzieć się, jak wydajnie wykonywać niektóre typowe zadania do nauki o danych na maszynie DSVM, zobacz [10 czynności, które można wykonać na maszynie wirtualnej do nauki o danych](../data-science-virtual-machine/vm-do-ten-things.md)
 

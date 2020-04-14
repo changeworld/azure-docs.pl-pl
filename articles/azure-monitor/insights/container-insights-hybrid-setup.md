@@ -3,12 +3,12 @@ title: Konfigurowanie klastrów kubernetów hybrydowych za pomocą usługi Azure
 description: W tym artykule opisano, jak skonfigurować usługę Azure Monitor dla kontenerów do monitorowania klastrów kubernetes hostowanych w usłudze Azure Stack lub innym środowisku.
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 6d03716b988b1139e01d41120f48ea9a9bf34be1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a973e7e500906ebe833ec4cc6fd2fa8ee79c19e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198058"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255434"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurowanie hybrydowych klastrów kubernetes za pomocą usługi Azure Monitor dla kontenerów
 
@@ -228,7 +228,7 @@ Aby najpierw zidentyfikować pełny identyfikator zasobu obszaru roboczego `work
        az login
        az account set --subscription "Subscription Name"
        # execute deployment command to add container insights solution to the specified Log Analytics workspace
-       az group deployment create --resource-group <resource group of log analytics workspace> --template-file ./containerSolution.json --parameters @./containerSolutionParams.json
+       az deployment group create --resource-group <resource group of log analytics workspace> --name <deployment name> --template-file  ./containerSolution.json --parameters @./containerSolutionParams.json
        ```
 
        Zmiana konfiguracji może potrwać kilka minut. Po jego zakończeniu zostanie wyświetlony komunikat podobny do następującego i zawiera wynik:

@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: a83b664bb770a88f3c4c13a672655e736a46ca75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2182ed2377a392f55af2c1f723be325bd518349
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280460"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255922"
 ---
 <a name="retrieve-a-specific-offer"></a>Pobieranie określonej oferty
 =========================
+
+> [!NOTE]
+> Interfejsy API portalu partnerów w chmurze są zintegrowane z centrum partnerów i będą nadal działać po migracji ofert do Centrum partnerów. Integracja wprowadza niewielkie zmiany. Przejrzyj zmiany wymienione w [aplikacji Cloud Partner Portal API Reference,](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) aby upewnić się, że kod będzie nadal działać po migracji do Centrum partnerów.
 
 Pobiera określoną ofertę w obszarze nazw wydawcy.  
 
@@ -44,7 +47,7 @@ Można również pobrać określoną wersję oferty lub pobrać ofertę w wersji
 | offerId     | Guid, który jednoznacznie identyfikuje ofertę.                                                 | Ciąg        |
 | version     | Wersja pobieranej oferty. Domyślnie pobierana jest najnowsza wersja oferty. | Liczba całkowita       |
 | slotId (ida)      | Gniazdo, z którego ma zostać pobrana oferta, może być jednym z:      <br/>  - `Draft`(domyślnie) pobiera wersję oferty aktualnie w wersji roboczej.  <br/>  -  `Preview`pobiera wersję oferty aktualnie w wersji zapoznawczej.     <br/>  -  `Production`pobiera wersję oferty aktualnie w produkcji.          |      enum |
-| api-version | Najnowsza wersja interfejsu API                                                                    | Data          |
+| api-version | Najnowsza wersja interfejsu API                                                                    | Date          |
 |  |  |  |
 
 
