@@ -138,7 +138,7 @@
       items:
         - name: Integracja danych przy użyciu fabryki danych i udziału danych
           href: lab-data-flow-data-share.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu
       href: 'https://azure.microsoft.com/resources/samples/?service=data-factory'
@@ -280,7 +280,7 @@
           href: connector-greenplum.md
         - name: HBase
           href: connector-hbase.md
-        - name: HDFS
+        - name: SYSTEM PLIKÓW HDFS
           href: connector-hdfs.md
         - name: Hive
           href: connector-hive.md
@@ -372,7 +372,7 @@
           href: connector-shopify.md
         - name: platforma Spark
           href: connector-spark.md
-        - name: Oprogramowanie SQL Server
+        - name: SQL Server
           href: connector-sql-server.md
         - name: Square
           href: connector-square.md
@@ -537,7 +537,7 @@
           href: control-flow-system-variables.md
         - name: Parametryzacja przepływów mapowania danych
           href: parameters-data-flow.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Zagadnienia związane z zabezpieczeniami podczas przenoszenia danych
           href: data-movement-security-considerations.md
@@ -607,6 +607,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: Czyszczenie dzienników bazy danych SSISDB za pomocą zadań bazy danych Elastic Database
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: Migrowanie zadań SSIS za pomocą programu SSMS
+          href: how-to-migrate-ssis-job-ssms.md
     - name: Tworzenie wyzwalaczy
       items:
         - name: Tworzenie wyzwalacza opartego na zdarzeniach
@@ -681,7 +683,7 @@
       href: data-flow-script.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.datafactory
-    - name: Program PowerShell
+    - name: PowerShell
       href: /powershell/module/az.datafactory/
     - name: Interfejs API REST
       href: /rest/api/datafactory
@@ -705,7 +707,7 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: Prośba o funkcję
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-    - name: Ceny
+    - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: Dostępność według regionów
       href: 'https://azure.microsoft.com/global-infrastructure/services/'

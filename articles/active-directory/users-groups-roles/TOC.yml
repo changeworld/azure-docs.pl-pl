@@ -124,6 +124,8 @@
               href: groups-create-rule.md
             - name: Składnia reguł grupy dynamicznej
               href: groups-dynamic-membership.md
+            - name: Walidowanie reguły członkowskiej
+              href: groups-dynamic-rule-validation.md
             - name: Zmienianie typu członkostwa grupy
               href: groups-change-type.md
     - name: Przypisywanie licencji
@@ -142,7 +144,7 @@
           href: licensing-ps-examples.md
         - name: Identyfikatory planów usług na potrzeby licencjonowania
           href: licensing-service-plan-reference.md
-    - name: i role administratora usługi Azure AD
+    - name: Role administratora usługi Azure AD
       items:
         - name: Role i uprawnienia
           href: directory-assign-admin-roles.md

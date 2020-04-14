@@ -85,9 +85,9 @@
     - name: Zabezpieczenia bazy danych
       items:
         - name: Omówienie
-          href: database-security-overview.md
+          href: ../../sql-database/sql-database-security-overview.md
         - name: Najlepsze rozwiązania
-          href: database-best-practices.md
+          href: ../../sql-database/sql-database-security-best-practice.md
         - name: Lista kontrolna zabezpieczeń
           href: database-security-checklist.md
     - name: Przewodnik po zabezpieczeniach magazynu
@@ -115,6 +115,8 @@
       href: log-audit.md
     - name: Zarządzanie zabezpieczeniami i monitorowanie ich
       href: management-monitoring-overview.md
+    - name: Ulepszanie zarządzania zdalnego
+      href: management.md
     - name: Bezpieczeństwo działania
       items:
         - name: Omówienie

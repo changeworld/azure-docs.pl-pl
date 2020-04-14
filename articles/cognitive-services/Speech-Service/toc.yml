@@ -214,6 +214,8 @@
       items:
         - name: Co to jest tłumaczenie mowy?
           href: speech-translation.md
+        - name: Podstawy tłumaczenia mowy
+          href: speech-translation-basics.md
     - name: Szybki start
       items:
         - name: Tłumaczenie mowy na tekst

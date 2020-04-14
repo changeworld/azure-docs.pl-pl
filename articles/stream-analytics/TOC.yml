@@ -61,14 +61,18 @@
           href: stream-analytics-sql-output-perf.md
         - name: Wzorce niestandardowych ścieżek obiektów blob
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
-    - name: Funkcje zdefiniowane przez użytkownika
+    - name: Rozszerzanie zapytań przy użyciu funkcji
       items:
-        - name: Funkcja zdefiniowana przez użytkownika dla uczenia maszynowego
-          href: machine-learning-udf.md
-        - name: 'Funkcja zdefiniowana przez użytkownika w języku C#'
-          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: Omówienie funkcji
+          href: functions-overview.md
         - name: Funkcja zdefiniowana przez użytkownika w języku JavaScript
           href: stream-analytics-javascript-user-defined-functions.md
+        - name: JavaScript — UDA
+          href: stream-analytics-javascript-user-defined-aggregates.md
+        - name: 'Funkcja zdefiniowana przez użytkownika w języku C#'
+          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: Funkcja zdefiniowana przez użytkownika dla uczenia maszynowego
+          href: machine-learning-udf.md
     - name: Optymalizowanie zadania usługi Stream Analytics
       items:
         - name: Opis i dostosowywanie jednostek przesyłania strumieniowego
@@ -140,8 +144,6 @@
           href: stream-analytics-edge.md
         - name: Analizowanie danych z czujników punktu poboru opłat
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
-        - name: Uruchamianie agregacji zdefiniowanej przez użytkownika w języku JavaScript
-          href: stream-analytics-javascript-user-defined-aggregates.md
         - name: Transakcje o wysokiej częstotliwości
           href: stream-analytics-high-frequency-trading.md
         - name: Przetwarzanie danych strumienia IoT
