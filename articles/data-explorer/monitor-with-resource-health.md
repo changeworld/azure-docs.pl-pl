@@ -7,12 +7,12 @@ ms.reviewer: prvavill
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 9b8b1b40e972d7719ef2cf495ed12cb4ed3478fd
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ee42f45d8c96e908061142b5a8e6b2e5cee21993
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80479372"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262064"
 ---
 # <a name="monitor-azure-data-explorer-using-resource-health-preview"></a>Monitorowanie Eksploratora danych platformy Azure przy użyciu kondycji zasobów (wersja zapoznawcza)
 
@@ -44,7 +44,7 @@ Stan kondycji **Dostępne** wskazuje, że zasób usługi Azure Data Explorer jes
 
 ### <a name="unavailable"></a>Niedostępny
 
-Stan kondycji **niedostępne** wskazuje, że istnieje ciągły problem z zasobem usługi Azure Data Explorer, który powoduje, że jest niedostępny dla zapytań i pozyskiwania. Na przykład węzły w zasobie Usługi Azure Data Explorer mogły nieoczekiwanie ponownie uruchomić komputer. Jeśli twój zasób Usługi Azure Data Explorer pozostaje w tym stanie przez dłuższy czas, skontaktuj się z [pomocą techniczną]().
+Stan kondycji **niedostępne** wskazuje, że istnieje ciągły problem z zasobem usługi Azure Data Explorer, który powoduje, że jest niedostępny dla zapytań i pozyskiwania. Na przykład węzły w zasobie Usługi Azure Data Explorer mogły nieoczekiwanie ponownie uruchomić komputer. Jeśli twój zasób usługi Azure Data Explorer pozostaje w tym stanie przez dłuższy czas, skontaktuj się z pomocą techniczną.
 
 ![Niedostępny](media/monitor-with-resource-health/unavailable.png)
 

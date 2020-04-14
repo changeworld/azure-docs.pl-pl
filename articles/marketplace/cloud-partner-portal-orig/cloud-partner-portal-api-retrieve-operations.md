@@ -5,17 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/14/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 4fc77407ae1c5854d3fe977da5a81f4226bf5305
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93b2ca700a987b86aedfdae55d58540c8ffe84ed
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280477"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255877"
 ---
-<a name="retrieve-operations"></a>Pobieranie operacji
-===================
+# <a name="retrieve-operations"></a>Pobieranie operacji
+
+> [!NOTE]
+> Interfejsy API portalu partnerów w chmurze są zintegrowane z centrum partnerów i będą nadal działać po migracji ofert do Centrum partnerów. Integracja wprowadza niewielkie zmiany. Przejrzyj zmiany wymienione w [aplikacji Cloud Partner Portal API Reference,](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) aby upewnić się, że kod będzie nadal działać po migracji do Centrum partnerów.
 
 Pobiera wszystkie operacje w ofercie lub uzyskać określoną operację dla określonego identyfikatora operacji. Klient może używać parametrów kwerendy do filtrowania uruchomionych operacji.
 
@@ -28,21 +30,18 @@ Pobiera wszystkie operacje w ofercie lub uzyskać określoną operację dla okre
 ```
 
 
-<a name="uri-parameters"></a>Parametry identyfikatora URI
---------------
+## <a name="uri-parameters"></a>Parametry identyfikatora URI
 
 |  **Nazwa**          |      **Opis**                                                                                           | **Typ danych** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  identyfikator wydawcy       |  Identyfikator wydawcy, na przykład`Contoso`                                                                   |  Ciąg       |
 |  offerId           |  Identyfikator oferty                                                                                              |  Ciąg       |
 |  operationId       |  Identyfikator GUID, który jednoznacznie identyfikuje operację w ofercie. OperationId mogą być pobierane przy użyciu tego interfejsu API i jest również zwracany w nagłówku HTTP odpowiedzi dla każdej długotrwałej operacji, takich jak interfejs API [oferty publikowania.](./cloud-partner-portal-api-publish-offer.md)  |   Guid (identyfikator GUID)   |
-|  filtrowanystatus    | Opcjonalny parametr kwerendy używany do `running`filtrowania według stanu (na przykład) w kolekcji zwracany przez ten interfejs API.  |   Ciąg |
-|  api-version       | Najnowsza wersja interfejsu API                                                                                           |    Data      |
+|  api-version       | Najnowsza wersja interfejsu API |    Date      |
 |  |  |  |
 
+## <a name="header"></a>Nagłówek
 
-<a name="header"></a>Nagłówek
-------
 
 |  **Nazwa**          |  **Wartość**           |
 |  ---------------   | -------------------- |
@@ -51,8 +50,7 @@ Pobiera wszystkie operacje w ofercie lub uzyskać określoną operację dla okre
 |  |  |
 
 
-<a name="body-example"></a>Przykład ciała
-------------
+## <a name="body-example"></a>Przykład ciała
 
 ### <a name="response"></a>Odpowiedź
 
@@ -167,25 +165,35 @@ Pobiera wszystkie operacje w ofercie lub uzyskać określoną operację dla okre
                     ],
                 "previewLinks": [],
                 "liveLinks": [],
-                "notificationEmails": "jondoe@contoso.com"
-            } 
+            }
         }
     ]
 ```
-
 
 ### <a name="response-body-properties"></a>Właściwości treści odpowiedzi
 
 |  **Nazwa**                    |  **Opis**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | Identyfikator GUID, który jednoznacznie identyfikuje operację                                                       |
-|  rodzaj przesyłania              | Określa rodzaj operacji zgłaszanej dla oferty, na przykład`Publish/GGoLive`      |
+|  rodzaj przesyłania              | Określa rodzaj operacji zgłaszanej dla oferty, na przykład`Publish/GoLive`      |
 |  utworzonyDateTime             | Data daty czasu UTC podczas tworzenia operacji                                                       |
 |  lastActionDateTime          | Data daty czasu UTC, gdy ostatnia aktualizacja została wykonana w operacji                                       |
 |  status                      | Stan operacji, `not started` \| `running` \| `failed` \| `completed`albo . Tylko jedna operacja `running` może mieć stan w czasie. |
 |  error                       | Komunikat o błędzie dla operacji nie powiodło się                                                               |
 |  |  |
 
+### <a name="response-step-properties"></a>Właściwości kroku odpowiedzi
+
+|  **Nazwa**                    |  **Opis**                                                                                  |
+|  --------------------        |  ------------------------------------------------------------------------------------------------ |
+| estimatedTimeFrame | Szacowany czas trwania tej operacji |
+| id | Unikatowy identyfikator procesu kroku |
+| description | Opis kroku |
+| nazwa kroku | Przyjazna nazwa kroku |
+| status | Stan kroku, albo `notStarted` \| `running` \| `failed` \|`completed` |
+| z chmury do urządzenia | Wszelkie powiadomienia lub ostrzeżenia napotkane podczas kroku. Tablica ciągów |
+| Progresspercentage | Liczba całkowita od 0 do 100 wskazująca postęp kroku |
+| | |
 
 ### <a name="response-status-codes"></a>Kody stanu odpowiedzi
 

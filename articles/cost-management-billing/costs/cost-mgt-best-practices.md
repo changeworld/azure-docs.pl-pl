@@ -3,17 +3,17 @@ title: Optymalizowanie inwestycji w chmurę za pomocą usługi Azure Cost Manage
 description: Ten artykuł pomaga zmaksymalizować korzyści z inwestycji w chmurę, ograniczyć koszty i ocenić, na co wydawane są pieniądze.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 4941c1be8fd20dfa88e3ac36bfa30af77a2b1be1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8df98514545a2670ea18a2b4b131a097244d7b46
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80157215"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874589"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak zoptymalizować inwestycję w chmurę za pomocą usługi Azure Cost Management
 
@@ -36,6 +36,10 @@ Trzy najważniejsze grupy, wymienione poniżej, muszą być dopasowane w organiz
 ### <a name="key-principles"></a>Najważniejsze zasady
 
 Skorzystaj z zasad przedstawionych poniżej, aby zapewnić swojej organizacji odpowiednie warunki do skutecznego zarządzania kosztami w chmurze.
+
+Aby dowiedzieć się więcej, obejrzyj wideo [Cost Management setting up for success](https://www.youtube.com/watch?v=dVuwITdSAZ4) (Konfigurowanie usługi Cost Management w celu osiągnięcia sukcesu). Aby obejrzeć inne wideo, odwiedź [kanał usługi Cost Management w serwisie YouTube](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/dVuwITdSAZ4]
 
 #### <a name="planning"></a>Planowanie
 
@@ -125,7 +129,7 @@ Aby uzyskać więcej informacji, zobacz [Azure Migrate](https://docs.microsoft.c
 
 Organizuj zasoby z uwzględnieniem kosztów. Podczas tworzenia subskrypcji i grup zasobów weź pod uwagę zespoły odpowiedzialne za powiązane koszty. Upewnij się, że w raportowaniu uwzględniana jest Twoja organizacja. Subskrypcje i grupy zasobów stanowią dobre zasobniki do organizowania wydatków i przyporządkowywania ich w całej organizacji. Tagi stanowią dobrą metodę przyporządkowywania kosztów. Możesz używać tagów jako filtrów. Dodatkowo możesz używać ich jako kryterium grupowania podczas analizowania danych i badania kosztów. Klienci z umową Enterprise Agreement mogą również tworzyć działy i umieszczać w nich subskrypcje. Organizacja oparta na kosztach na platformie Azure pomaga zapewnić odpowiedzialność właściwych osób w organizacji za zmniejszanie wydatków ich zespołów.
 
-Obejrzyj klip wideo [Jak przeglądać zasady tagów za pomocą usługi Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw), aby poznać narzędzia dostępne do wymuszania skalowalnego tagowania zasobów w organizacji.
+Obejrzyj klip wideo [Jak przeglądać zasady tagów za pomocą usługi Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw), aby poznać narzędzia dostępne do wymuszania skalowalnego tagowania zasobów w organizacji. Aby obejrzeć inne wideo, odwiedź [kanał usługi Cost Management w serwisie YouTube](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
 

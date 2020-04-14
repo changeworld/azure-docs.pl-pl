@@ -3,17 +3,17 @@ title: Przypisywanie dostępu do danych usługi Azure Cost Management
 description: W tym artykule omówiono przypisywanie uprawnień do danych usługi Azure Cost Management dla różnych zakresów dostępu.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/19/2020
+ms.date: 04/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 56090798defd9209c3587aa701c88db6958d1b97
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b3ede4dcc4df8bf10ce24b3d74dc5af0424de5a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065838"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879109"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Przypisywanie dostępu do danych usługi Cost Management
 
@@ -21,9 +21,9 @@ W przypadku użytkowników platformy Azure korzystających z umów Enterprise Ag
 
 Wybrany przez użytkownika zakres będzie stosowany w całej usłudze Cost Management w celu zapewnienia konsolidacji danych i kontrolowania dostępu do informacji o kosztach. W przypadku korzystania z zakresów użytkownicy nie dokonują ich wielokrotnego wyboru. Zamiast tego wybierają większy zakres, na który są rzutowane zakresy podrzędne, a następnie filtrują go w dół do elementów, które chcą wyświetlić. Konsolidacja danych jest ważna, ponieważ niektóre osoby nie powinny mieć dostępu do zakresu nadrzędnego, który obejmuje zakresy podrzędne.
 
-Obejrzyj wideo [Jak przypisywać dostęp za pomocą usługi Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8), aby dowiedzieć się więcej o przypisaniu dostępu do wyświetlania kosztów i opłat za pomocą kontroli dostępu opartej na rolach na platformie Azure.
+Obejrzyj wideo [Cost Management controlling access](https://www.youtube.com/watch?v=_uQzQ9puPyM) (Kontrolowanie dostępu w usłudze Cost Management), aby dowiedzieć się więcej o przypisaniu dostępu do wyświetlania kosztów i opłat za pomocą kontroli dostępu opartej na rolach na platformie Azure. Aby obejrzeć inne wideo, odwiedź [kanał usługi Cost Management w serwisie YouTube](https://www.youtube.com/c/AzureCostManagement).
 
->[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
+>[!VIDEO https://www.youtube.com/embed/_uQzQ9puPyM]
 
 ## <a name="cost-management-scopes"></a>Zakresy usługi Cost Management
 

@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 4eef8a3a83456a9f2066311b9339b26b83afa009
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 42f8f51545f643e1ed9e1a23c9445f6e216fdabe
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633802"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273413"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Strojenie wydajności za pomocą buforowania zestawu wyników
 
@@ -71,10 +71,10 @@ Zestaw wyników w pamięci podręcznej jest ponownie odtwarzany dla kwerendy, je
 - Istnieje dokładne dopasowanie między nową kwerendą a poprzednią kwerendą, która wygenerowała pamięć podręczną zestawu wyników.
 - Nie ma żadnych zmian danych lub schematu w tabelach, z których został wygenerowany zestaw wyników w pamięci podręcznej.
 
-Uruchom to polecenie, aby sprawdzić, czy kwerenda została wykonana z trafieniem lub pominięciem pamięci podręcznej wyników. Kolumna result_set_cache zwraca wartość 1 dla trafienia w pamięci podręcznej, 0 dla pominięcia pamięci podręcznej i wartości ujemne z powodów, dla których buforowanie zestawu wyników nie zostało użyte. Sprawdź [szczegóły na dm_pdw_exec_requests.](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+Uruchom to polecenie, aby sprawdzić, czy kwerenda została wykonana z trafieniem lub pominięciem pamięci podręcznej wyników. Kolumna result_cache_hit zwraca wartość 1 dla trafienia w pamięci podręcznej, 0 dla pominięcia pamięci podręcznej i wartości ujemne z powodów, dla których buforowanie zestawu wyników nie zostało użyte. Sprawdź [szczegóły na dm_pdw_exec_requests.](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
-SELECT request_id, command, result_set_cache FROM sys.dm_pdw_exec_requests
+SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests
 WHERE request_id = <'Your_Query_Request_ID'>
 ```
 

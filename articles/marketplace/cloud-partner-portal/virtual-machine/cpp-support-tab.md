@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: e8143f33aacbc68653d19ffb72e88af447f8cc40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2734bc0868584f9d02147abb953458bbcdec205e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288856"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273107"
 ---
 # <a name="virtual-machine-support-tab"></a>Karta Obsługa maszyny wirtualnej
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [tworzenie oferty maszyny wirtualnej platformy Azure,](https://aka.ms/CreateAzureVMoffer) aby zarządzać zmigrowanymi ofertami.
 
 Karta **Pomoc techniczna** na stronie **Nowa oferta** umożliwia zapewnienie zasobów pomocy technicznej i pomocy technicznej dla oferty.  Jest on podzielony na trzy obszary: **Inżynieria,** **Obsługa Klienta**i **Adresy URL pomocy technicznej.**
 

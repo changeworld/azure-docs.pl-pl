@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5f12b77f5baa1a3b06a093aac7267c65a038881e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 95386af4522adca1d65e04b01c2a349a80e9ab8a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061012"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273481"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Konfigurowanie sieci VPN typu "punkt-lokacja) w systemie Windows do użytku z plikami platformy Azure
 Za pomocą połączenia sieci VPN typu punkt-lokacja (P2S) można zainstalować udziały plików platformy Azure za pośrednictwem protokołu SMB spoza platformy Azure bez otwierania portu 445. Połączenie sieci VPN typu punkt-lokacja jest połączeniem sieci VPN między platformą Azure a klientem indywidualnym. Aby korzystać z połączenia sieci VPN P2S z usługą Azure Files, połączenie sieci VPN P2S musi być skonfigurowane dla każdego klienta, który chce się połączyć. Jeśli masz wielu klientów, którzy muszą połączyć się z udziałami plików platformy Azure z sieci lokalnej, możesz użyć połączenia sieci VPN lokacja lokacja (S2S) zamiast połączenia typu punkt-lokacja dla każdego klienta. Aby dowiedzieć się więcej, zobacz [Konfigurowanie sieci VPN między lokacjami do użytku z usługą Azure Files](storage-files-configure-s2s-vpn.md).
@@ -31,7 +31,7 @@ W tym artykule opisano kroki konfigurowania sieci VPN typu punkt-lokacja w syste
 ## <a name="deploy-a-virtual-network"></a>Wdrażanie sieci wirtualnej
 Aby uzyskać dostęp do udziału plików platformy Azure i innych zasobów platformy Azure z lokalnego za pośrednictwem sieci VPN typu punkt lokacja, należy utworzyć sieć wirtualną lub sieć wirtualną. Połączenie sieci VPN P2S, które zostanie utworzone automatycznie, jest pomostem między lokalnym komputerem z systemem Windows a tą siecią wirtualną platformy Azure.
 
-Następujące programu PowerShell utworzy sieć wirtualną platformy Azure z trzema podsieciami: jedną dla punktu końcowego usługi konta magazynu, jedną dla prywatnego punktu końcowego konta magazynu, która jest wymagana do uzyskania dostępu do konta magazynu w środowisku lokalnym bez tworzenia routing niestandardowy dla publicznego adresu IP konta magazynu, które mogą ulec zmianie, i jeden dla bramy sieci wirtualnej, która zapewnia usługę sieci VPN. 
+Następujące programu PowerShell utworzy sieć wirtualną platformy Azure z trzema podsieciami: jedną dla punktu końcowego usługi konta magazynu, jedną dla prywatnego punktu końcowego konta magazynu, która jest wymagana do uzyskania dostępu do konta magazynu lokalnie bez tworzenia niestandardowego routingu dla publicznego adresu IP konta magazynu, które mogą ulec zmianie, i jeden dla bramy sieci wirtualnej, która zapewnia usługę sieci VPN. 
 
 Pamiętaj, `<region>`aby `<resource-group>`zastąpić `<desired-vnet-name>` , i z odpowiednimi wartościami dla środowiska.
 
@@ -79,7 +79,7 @@ $gatewaySubnet = $virtualNetwork.Subnets | `
 ```
 
 ## <a name="create-root-certificate-for-vpn-authentication"></a>Tworzenie certyfikatu głównego dla uwierzytelniania sieci VPN
-Aby połączenia sieci VPN z lokalnych maszyn z systemem Windows były uwierzytelniane w celu uzyskania dostępu do sieci wirtualnej, należy utworzyć dwa certyfikaty: certyfikat główny, który zostanie dostarczony do bramy maszyny wirtualnej, oraz certyfikat klienta, który być podpisane za pomocą certyfikatu głównego. Następujący program PowerShell tworzy certyfikat główny; certyfikat klienta zostanie utworzony po utworzeniu bramy sieci wirtualnej platformy Azure z informacjami z bramy. 
+Aby połączenia sieci VPN z lokalnych maszyn z systemem Windows były uwierzytelniane w celu uzyskania dostępu do sieci wirtualnej, należy utworzyć dwa certyfikaty: certyfikat główny, który zostanie dostarczony do bramy maszyny wirtualnej, oraz certyfikat klienta, który zostanie podpisany za pomocą certyfikatu głównego. Następujący program PowerShell tworzy certyfikat główny; certyfikat klienta zostanie utworzony po utworzeniu bramy sieci wirtualnej platformy Azure z informacjami z bramy. 
 
 ```PowerShell
 $rootcertname = "CN=P2SRootCert"
@@ -138,7 +138,7 @@ $vpnName = "<desired-vpn-name-here>"
 $publicIpAddressName = "$vpnName-PublicIP"
 
 $publicIPAddress = New-AzPublicIpAddress `
-    -ResourceGroupName $resourceGroupName ` 
+    -ResourceGroupName $resourceGroupName `
     -Name $publicIpAddressName `
     -Location $region `
     -Sku Basic `
@@ -242,7 +242,7 @@ foreach ($session in $sessions) {
         -ArgumentList `
             $mypwd, `
             $vpnTemp, `
-            $virtualNetworkName
+            $virtualNetworkName `
         -ScriptBlock { 
             $mypwd = $args[0] 
             $vpnTemp = $args[1]
@@ -267,7 +267,7 @@ foreach ($session in $sessions) {
 
             Add-VpnConnection `
                 -Name $virtualNetworkName `
-                -ServerAddress $vpnProfile.VpnServer ` 
+                -ServerAddress $vpnProfile.VpnServer `
                 -TunnelType Ikev2 `
                 -EncryptionLevel Required `
                 -AuthenticationMethod MachineCertificate `

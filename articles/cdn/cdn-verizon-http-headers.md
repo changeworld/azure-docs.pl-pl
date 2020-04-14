@@ -3,7 +3,7 @@ title: Specyficzne dla Verizon nagłówki HTTP dla aparatu reguł usługi Azure 
 description: W tym artykule opisano sposób używania nagłówków HTTP specyficznych dla verizon z aparatem reguł usługi Azure CDN.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
-ms.author: magattus
-ms.openlocfilehash: a5881bea578f2791f8dc0d6e760fd15c6f47e435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: d2208f6769c8051b38bdafb92d62ec03cb2d668c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593261"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253564"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Specyficzne dla verizon nagłówki HTTP dla aparatu reguł usługi Azure CDN
 

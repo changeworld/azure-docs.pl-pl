@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 373fc2829e599d0989b59c6386757c8f5f3e1d66
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76984604"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251728"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Uwierzytelnianie i autoryzacja na potrzeby interfejsu API usługi Azure Time Series Insights
 
@@ -102,9 +102,9 @@ W tej sekcji opisano typowe nagłówki żądań HTTP i parametry używane do wys
 > [!TIP]
 > Przeczytaj [odwołanie do interfejsu API rest platformy Azure,](https://docs.microsoft.com/rest/api/azure/) aby dowiedzieć się więcej na temat korzystania z interfejsów API REST, żądań HTTP i obsługi odpowiedzi HTTP.
 
-### <a name="authentication"></a>Uwierzytelnianie
+### <a name="authentication"></a>Authentication
 
-Aby wykonać uwierzytelnione zapytania względem [interfejsów API REST usługi Time Series Insights,](https://docs.microsoft.com/rest/api/time-series-insights/)prawidłowy token nośnika OAuth 2.0 musi zostać przekazany w [nagłówku Autoryzacja](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) przy użyciu wybranego klienta REST (Postman, JavaScript, C#). 
+Aby wykonać uwierzytelnione zapytania względem [interfejsów API REST usługi Time Series Insights,](https://docs.microsoft.com/rest/api/time-series-insights/)prawidłowy token nośnika OAuth 2.0 musi zostać przekazany w [nagłówku Autoryzacja](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) przy użyciu wybranego klienta REST (Postman, JavaScript, C#). 
 
 > [!TIP]
 > Przeczytaj hostowany [przykładowy zestaw SDK klienta](https://tsiclientsample.azurewebsites.net/) usługi Azure Time Series Insights, aby dowiedzieć się, jak uwierzytelniać się za pomocą interfejsów API usługi Time Series Insights programowo przy użyciu [zestawu SDK klienta JavaScript](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) wraz z wykresami i wykresami.

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 6fe15fb18d8865911363a4696e44dd7fe1d90c09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fdbc2a11bd963057b465a629757f2be51ae4061
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277807"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273855"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Uzyskiwanie identyfikatora URI podpisu dostępu współdzielonego dla obrazu maszyny Wirtualnej
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [Pobierz identyfikator URI podpisu dostępu współdzielonego dla obrazu maszyny Wirtualnej,](https://aka.ms/GetSASURI) aby zarządzać zmigrowanymi ofertami.
 
 Podczas procesu publikowania należy podać jednolity identyfikator zasobu (URI) dla każdego wirtualnego dysku twardego (VHD) skojarzonego z jednostkami SKU. Firma Microsoft potrzebuje dostępu do tych identyfikatorów VHD podczas procesu certyfikacji. W tym artykule wyjaśniono, jak wygenerować identyfikator URI podpisu dostępu udostępnionego (SAS) dla każdego dysku wirtualnego. Ten identyfikator URI zostanie wprowadzony na karcie **Jednostki SKU** w portalu cloud partnerów.
 

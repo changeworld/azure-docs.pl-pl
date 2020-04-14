@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0994e1af8ca6deccbe6224625a5320fb195a10a1
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 1a026cc241eb372e15f2600e52ec53a46efb1024
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586500"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256012"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Partnerzy analizy biznesowej usługi Azure Synapse Analytics
 
@@ -37,7 +37,7 @@ Aby utworzyć kompletne rozwiązanie magazynu danych przy użyciu puli języka S
 | ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>Korzystaj z aplikacji do wizualizacji danych, z której może korzystać każdy z tych danych. Dzięki Qlik Sense każdy w twojej organizacji może łatwo tworzyć elastyczne, interaktywne wizualizacje i podejmować znaczące decyzje. |[Strona produktu](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/qliktech-international-ab/qlikview/) |
 | ![SiSense (SiSense)](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense (SiSense)**<br>SiSense to pełnowymiarowe oprogramowanie Business Intelligence, które jest wyposażone w narzędzia, które firma potrzebuje do analizowania i wizualizowania danych: wysokowydajna analityczna baza danych, możliwość dołączenia do wielu źródeł, proste wyodrębnianie danych (ETL) i wizualizacja danych internetowych. Zacznij analizować i wizualizować duże zestawy danych dzięki SiSense BI i Analytics już dziś. |[Strona produktu](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Samoobsługowe analizy Tableau pomagają każdemu zobaczyć i zrozumieć ich dane, w wielu rodzajach danych, od plików płaskich po bazy danych. Tableau ma natywne, zoptymalizowane łącznik do puli SQL Synapse, który obsługuje zarówno dane na żywo, jak i analizy w pamięci. |[Strona produktu](https://www.tableau.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/)<br>|
-| ![Targit (targit)](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (Apartament decyzyjny)**<br>Pakiet Targit Decision Suite zapewnia platformę BI i Analytics, która zapewnia pulpity nawigacyjne w czasie rzeczywistym, samoobsługowe analizy, przyjazne dla użytkownika raportowanie, oszałamiające możliwości mobilne i prostą technologię odkrywania danych w jednym, spójnym rozwiązaniu. Targit daje firmom odwagę do działania. |[Strona produktu](https://www.targit.com/en/software/deployment/targitonazure)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
+| ![Targit (targit)](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (Apartament decyzyjny)**<br>Pakiet Targit Decision Suite zapewnia platformę BI i Analytics, która zapewnia pulpity nawigacyjne w czasie rzeczywistym, samoobsługowe analizy, przyjazne dla użytkownika raportowanie, oszałamiające możliwości mobilne i prostą technologię odkrywania danych w jednym, spójnym rozwiązaniu. Targit daje firmom odwagę do działania. |[Strona produktu](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
 | ![Żółto-żółty](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Żółto-żółty**<br>Yellowfin jest najwyżej ocenianym dostawcą analizy biznesowej chmury do ad hoc Reporting i Dashboards by BARC; Badanie BI. Połącz się z pulą SQL Synapse, a następnie twórz i udostępniaj piękne raporty i pulpity nawigacyjne dzięki wielokrotnie nagradzanym funkcjom analizy biznesowej i lokalizacji. |[Strona produktu](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->

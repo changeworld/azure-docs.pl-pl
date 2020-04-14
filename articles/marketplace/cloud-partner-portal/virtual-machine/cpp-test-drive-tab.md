@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: d4fc8762e25825b21637b16b751d57a0dcbf369e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22538047adc17a40438359e11bff7fd20e43bcc6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288805"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273090"
 ---
 # <a name="virtual-machine-test-drive-tab"></a>Karta Dysk testowy maszyny wirtualnej
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [tworzenie oferty maszyny wirtualnej platformy Azure,](https://aka.ms/CreateAzureVMoffer) aby zarządzać zmigrowanymi ofertami.
 
 Karta **Test Drive** na stronie Nowa **oferta** umożliwia zapewnienie potencjalnym klientom praktycznej, samodzielnej demonstracji kluczowych funkcji i zalet produktu, zademonstrowanej w znormalizowanym scenariuszu.  Test Drive jest opcjonalną funkcją dla typów ofert, które obsługują jazdę próbną.  Test drive wymaga prawidłowego wdrożenia zasobów pomocniczych.  Aby uzyskać więcej informacji, zobacz artykuł [Usługa Testowa portalu Azure Marketplace](https://azure.microsoft.com/blog/azure-marketplace-test-drive/).  <!--TD: Replace with migrated version of Test Drive article! -->
 

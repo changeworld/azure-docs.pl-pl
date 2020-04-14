@@ -3,7 +3,7 @@ title: Integracja platformy Microsoft Azure z infrastrukturą Oracle Cloud | Dok
 description: Dowiedz się więcej o rozwiązaniach, które integrują aplikacje Oracle działające na platformie Microsoft Azure z bazami danych w oracle cloud infrastructure (OCI).
 services: virtual-machines-linux
 documentationcenter: ''
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/16/2020
-ms.author: rogirdh
+ms.author: mimckitt
 ms.custom: ''
-ms.openlocfilehash: b5d5ebda850163989e6ef1af94ec623d2d758f07
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 178fb805f4bfc0762ce7e4a320752e5afa00cef5
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878293"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271866"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Rozwiązania oracle z aplikacjami integrujące infrastrukturę Microsoft Azure i Oracle Cloud Infrastructure
 
@@ -55,6 +55,7 @@ Poniższy diagram jest omówienie wysokiego poziomu połączonego rozwiązania. 
 * Azure UK South (uksouth) & OCI London (Wielka Brytania Południowa)
 * Azure Canada Central (canadacentral) & OCI Toronto (Kanada Południowo-Wschodnia)
 * Azure Europa Zachodnia (westeurope) & OCI Amsterdam (Holandia Północno-Zachodnia)
+* Azure Japan East (japaneast) & OCI Tokyo (Japonia Wschodnia)
 
 ## <a name="networking"></a>Networking
 

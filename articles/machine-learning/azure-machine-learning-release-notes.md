@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: b55c351927a56afce697d07f41bfbe668144d68d
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ce9919a0b0f614e427c12ee3e3fbda0be46470ea
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475519"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273311"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -22,6 +22,54 @@ W tym artykule dowiedz się więcej o wersjach usługi Azure Machine Learning.  
 
 Zobacz [listę znanych problemów,](resource-known-issues.md) aby dowiedzieć się więcej o znanych błędach i obejściach.
 
+## <a name="2020-04-13"></a>2020-04-13
+
+### <a name="azure-machine-learning-sdk-for-python-v130"></a>Zestaw SDK usługi Azure Machine Learning dla języka Python w wersji 1.3.0
+
++ **Poprawki i ulepszenia błędów**
+  + **azureml-automl-core**
+    + Dodano dodatkowe dane telemetryczne dotyczące operacji po szkoleniu.
+    + Przyspiesza automatyczne szkolenie ARIMA, korzystając z warunkowej sumy kwadratów (CSS) szkolenia dla serii długości dłuższej niż 100. Należy zauważyć, że używana długość jest przechowywana jako stała ARIMA_TRIGGER_CSS_TRAINING_LENGTH w/w klasie TimeSeriesInternal w /src/azureml-automl-core/azureml/automl/core/shared/constants.py
+    + Poprawiono rejestrowanie przez użytkowników przebiegów prognozowania, teraz więcej informacji o aktualnie uruchomionej fazie zostanie wyświetlonych w dzienniku
+    + Niedozwolone target_rolling_window_size być ustawione na wartości mniejsze niż 2
+  + **azureml-automl-runtime**
+    + Poprawiono komunikat o błędzie wyświetlany po znalezieniu zduplikowanych znaczników czasu.
+    + Niedozwolone target_rolling_window_size być ustawione na wartości mniejsze niż 2.
+    + Naprawiono błąd imputacji opóźnienia. Problem był spowodowany niewystarczającą liczbą obserwacji potrzebnych do sezonowego rozkładu serii. Dane "de-sezonowe" są używane do obliczania funkcji częściowej autokorelacji (PACF) w celu określenia długości opóźnienia.
+    + Włączone dostosowanie celu kolumny featurization do prognozowania zadań przez featurization config. Numeryczne i kategoryczne jako cel kolumny do prognozowania zadań są teraz obsługiwane.
+    + Włączone dostosowanie do dostosowywania featurization kolumny upuszczania do prognozowania zadań przez featurization config.
+    + Włączone dostosowywanie imputacji do prognozowania zadań przez featurization config. Przypisanie stałej wartości dla kolumny docelowej i średniej, mediany, most_frequent i przypisania wartości stałej dla danych szkoleniowych są teraz obsługiwane.
+  + **azureml-contrib-pipeline-steps**
+    + Zaakceptuj nazwy obliczeń ciągów, które mają być przekazywane do ParallelRunConfig
+  + **azureml-core**
+    +  Dodano interfejs API Environment.clone(new_name) w celu utworzenia kopii obiektu Środowisko
+    +  Environment.docker.base_dockerfile akceptuje ścieżkę plików. Jeśli będzie w stanie rozpoznać plik, zawartość zostanie odczytana do base_dockerfile właściwości środowiska
+    + Automatyczne resetowanie wzajemnie wykluczające się wartości dla base_image i base_dockerfile, gdy użytkownik ręcznie ustawia wartość w pliku Environment.docker
+    +  Zestaw danych: naprawiono niepowodzenie pobierania zestawu danych, jeśli ścieżka danych zawierająca znaki unicode
+    +  Zestaw danych: ulepszony mechanizm buforowania instalacji zestawu danych w celu zachowania minimalnego zapotrzebowania na miejsce na dysku w usłudze Azure Machine Learning Compute, co pozwala uniknąć bezużyteczności węzła i spowodować anulowanie zadania
+    + Dodano flagę user_managed w RSection, która wskazuje, czy środowisko jest zarządzane przez użytkownika lub przez usługę AzureML.
+    + Zestaw danych: dodajemy indeks dla kolumny timeseries podczas uzyskiwania dostępu do zestawu danych timeseries jako pandas dataframes, który jest używany do przyspieszenia dostępu do timeseries na podstawie dostępu do danych.  Wcześniej indeks otrzymał taką samą nazwę jak kolumna sygnatury czasowej, myląc użytkowników, o których jest kolumna rzeczywista sygnatura czasowa i który jest indeksem. Teraz nie nadajemy żadnej konkretnej nazwy indeksu, ponieważ nie powinien on być używany jako kolumna. 
+  + **azureml-dataprep**
+    + Naprawiono problem z uwierzytelnianiem zestawu danych w suwerennej chmurze
+    + Naprawiono `Dataset.to_spark_dataframe` błąd dla zestawów danych utworzonych z magazynów danych Usługi Azure PostgreSQL
+  + **azureml-interpret**
+    + Dodano globalne wyniki do wizualizacji, jeśli lokalne wartości ważności są rzadkie
+    + Zaktualizowano interpretację azureml w celu użycia interpret-community 0.9.*
+    + Naprawiono błąd podczas pobierania wyjaśnień, który miał rzadkie dane ewaluacyjne
+    + Dodano obsługę rzadkiego formatu obiektu objaśnienia w AutoML
+  + **azureml-pipeline-core**
+    + Obsługa obliczeń jako celu obliczeniowego w potokach
+  + **azureml-train-automl-client**
+    + Dodano dodatkowe dane telemetryczne dotyczące operacji po szkoleniu.
+    + Naprawiono regresję we wczesnym zatrzymywaniu
+    + Przestarzały azureml.dprep.Dataflow jako prawidłowy typ danych wejściowych.
+    +  Zmiana domyślnego limitu czasu eksperymentu automl na 6 dni.
+  + **azureml-train-automl-runtime**
+    + Dodano dodatkowe dane telemetryczne dotyczące operacji po szkoleniu.
+    + dodano obsługę rozrzedzony automl e2e
+  + **azureml-opendatasets**
+    + Dodano dodatkowe dane telemetryczne dla monitora usługi.
+    + Włącz frontdoor dla obiektu blob, aby zwiększyć stabilność 
 ## <a name="2020-03-23"></a>2020-03-23
 
 ### <a name="azure-machine-learning-sdk-for-python-v120"></a>Zestaw SDK usługi Azure Machine Learning dla języka Python w wersji 1.2.0

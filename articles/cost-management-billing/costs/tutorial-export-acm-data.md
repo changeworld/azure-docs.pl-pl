@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: b950235eccbd41b1dfa46c23985e804212d9e8f2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f0a1515816fe7a9e1d79f69655e6bf21725a0b5d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155906"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877953"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Samouczek: Eksportowanie danych i zarządzanie nimi
 
 Jeśli znasz samouczek Analiza kosztów, już wiesz, jak ręcznie pobierać dane usługi Cost Management. Jednak możesz utworzyć cykliczne zadanie, które będzie automatycznie eksportowało dane usługi Cost Management do magazynu platformy Azure — codziennie, co tydzień lub co miesiąc. Dane są eksportowane w formacie CSV i zawierają wszystkie informacje zebrane przez usługę Cost Management. Wyeksportowanych danych znajdujących się w magazynie platformy Azure możesz następnie używać z systemami zewnętrznymi, łącząc je z własnymi danymi niestandardowymi. Możesz również użyć ich w systemie zewnętrznym, takim jak pulpit nawigacyjny lub inny system finansowy.
 
-Obejrzyj wideo [Jak zaplanować eksporty do magazynu za pomocą usługi Azure Cost Management](https://www.youtube.com/watch?v=rWa_xI1aRzo) z informacjami o tworzeniu zaplanowanego eksportu danych kosztów platformy Azure do usługi Azure Storage.
+Obejrzyj wideo [Jak zaplanować eksporty do magazynu za pomocą usługi Azure Cost Management](https://www.youtube.com/watch?v=rWa_xI1aRzo) z informacjami o tworzeniu zaplanowanego eksportu danych kosztów platformy Azure do usługi Azure Storage. Aby obejrzeć inne wideo, odwiedź [kanał usługi Cost Management w serwisie YouTube](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/rWa_xI1aRzo]
 

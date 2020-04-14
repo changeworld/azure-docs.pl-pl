@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/07/2020
+ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86c5f572ba66845467a7e3f4412b8da8368fe772
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 0866db6b549bc940d2e73bccfc77b8fad19abd51
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811250"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273226"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Używanie platformy Azure do hostowaniu i uruchamianiu scenariuszy obciążenia SAP
 
@@ -110,6 +110,7 @@ Aby uzyskać informacje na temat integracji usług platformy Azure ze składnika
 
 
 ## <a name="change-log"></a>Dziennik zmian
+- 13.04.2020: Popraw do dokładnych numerów wersji SAP ASE we [wdrożeniu DBMS maszyn wirtualnych SAP ASE Azure dla obciążenia SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)
 - 04/07/2020: Zmiana [w konfigurowaniu rozrusznika serca na SLES na platformie Azure w](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) celu wyjaśnienia instrukcji cloud-netconfig-azure
 - 04/06/2020: Zmiany w [skali w poziomie sap HANA z węzłem gotowości na maszynach wirtualnych platformy Azure z usługą Azure NetApp Files na SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) i w skali W skali SAP [HANA z węzłem gotowości na maszynach wirtualnych platformy Azure z plikami NetApp usługi Azure na RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) w celu usunięcia odwołań do systemu NetApp [TR-4435](https://www.netapp.com/us/media/tr-4746.pdf) (zastąpiony przez [TR-4746)](https://www.netapp.com/us/media/tr-4746.pdf)
 - 31.03.2020: Zmiana [wysokiej dostępności sap HANA na maszynach wirtualnych platformy Azure w systemie SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) i wysoka dostępność sap [HANA na maszynach wirtualnych platformy Azure w programie RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) w celu dodania instrukcji określania rozmiaru paska podczas tworzenia woluminów rozłożonych
@@ -173,11 +174,6 @@ Aby uzyskać informacje na temat integracji usług platformy Azure ze składnika
 - 10/11/2019: Zmiany w konfiguracjach magazynu dysków ultra i wprowadzenie anf w [konfiguracjach magazynu maszyn wirtualnych PLATFORMY SAP HANA Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
 - 10/01/2019: Zmiana grafiki [grup miejsc docelowych zbliżeniowych platformy Azure w celu uzyskania optymalnego opóźnienia sieci dzięki aplikacjom SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) w celu uzyskania większej przejrzystości
 - 10/01/2019: Zmiana [konfiguracji infrastruktury i operacji infrastruktury SAP HANA na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) w celu skorygowania instrukcji dotyczących udziału nfs o wysokiej dostępności dla /hana/shared. 
-- 28.09.2019: Zmiana [w konfigurowaniu rozrusznika serca na red hat enterprise linux na platformie Azure w](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) celu wyjaśnienia SBD jako mechanizmu ogrodzenia nie jest obsługiwana w klastrach RHEL  
-- 17.09.2019: Przewodnik po planowaniu i wdrażaniu NetWeaver w celu ujednolicenia warunków dotyczących rozszerzenia maszyny Wirtualnej dla SAP  
-- 22.08.2019: Zmiany w [konfigurowaniu rozrusznika serca na suse Linux Enterprise Server na platformie Azure w](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) celu zaktualizowania adresów URL do tworzenia ról niestandardowych  
-- 16.08.2019: Zmiany w [konfigurowaniu rozrusznika serca na systemie Red Hat Enterprise Linux na platformie Azure,](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) aby przypomnieć klientom o aktualizacji akcji w roli niestandardowej, jeśli zaktualizowano do nowej wersji agenta ogrodzenia platformy Azure  
-- 15.08.2019: Zmiany w [konfiguracjach magazynu maszyn wirtualnych platformy SAP HANA Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) w celu odzwierciedlenia ogólnej dostępności dysku Ultra (dawniej Ultra SSD)
-- 08/01/2019: Zmiany [w konfigurowaniu rozrusznika serca na SUSE Linux Enterprise Server na platformie Azure w](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) celu zintegrowania zmian specjalnie dla SLES 15 
+
 
 

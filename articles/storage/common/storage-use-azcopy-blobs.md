@@ -4,22 +4,25 @@ description: Ten artykuł zawiera kolekcję przykładowych poleceń AzCopy, któ
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73685f124f93bb541f33b3b70727d90ce22b3cdd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933586"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263441"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Przesyłanie danych za pomocą pamięci masowej AzCopy i Blob
 
 AzCopy to narzędzie wiersza polecenia, za pomocą którego można kopiować dane do, z lub między kontami magazynu. Ten artykuł zawiera przykładowe polecenia, które współpracują z magazynem obiektów Blob.
 
-## <a name="get-started"></a>Wprowadzenie
+> [!TIP]
+> Przykłady w tym artykule ująć argumenty ścieżki z pojedynczymi cudzysłowami (''). Użyj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd.exe). Jeśli używasz powłoki poleceń systemu Windows (cmd.exe), należy ująć argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczych cudzysłowów (').
+
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 Zobacz artykuł [Wprowadzenie do azcopy,](storage-use-azcopy-v10.md) aby pobrać azcopy i dowiedzieć się, w jaki sposób można podać poświadczenia autoryzacji do usługi magazynu.
 
@@ -31,9 +34,6 @@ Zobacz artykuł [Wprowadzenie do azcopy,](storage-use-azcopy-v10.md) aby pobrać
 > Na przykład: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="create-a-container"></a>Tworzenie kontenera
-
-> [!TIP]
-> Przykłady w tej sekcji ujęć argumenty ścieżki z pojedynczymi cudzysłowami (''). Użyj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd.exe). Jeśli używasz powłoki poleceń systemu Windows (cmd.exe), należy ująć argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczych cudzysłowów (').
 
 Aby utworzyć kontener, można użyć polecenia [azcopy make.](storage-ref-azcopy-make.md) Przykłady w tej sekcji utworzyć `mycontainer`kontener o nazwie .
 
@@ -57,10 +57,16 @@ Ta sekcja zawiera następujące przykłady:
 > * Przekazywanie zawartości katalogu 
 > * Przekazywanie określonych plików
 
-Szczegółowe dokumenty referencyjne można znaleźć [w kopii azcopy](storage-ref-azcopy-copy.md).
-
 > [!TIP]
-> Przykłady w tej sekcji ujęć argumenty ścieżki z pojedynczymi cudzysłowami (''). Użyj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd.exe). Jeśli używasz powłoki poleceń systemu Windows (cmd.exe), należy ująć argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczych cudzysłowów (').
+> Operację przesyłania można dostosować, korzystając z opcjonalnych flag. Oto kilka przykładów.
+>
+> |Scenariusz|Flaga|
+> |---|---|
+> |Przekaż pliki jako dołączanie obiektów blob lub stronicowych obiektów blob.|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |Przekaż do określonej warstwy dostępu (takiej jak warstwa archiwum).|**--block-blob-tier**=\[\|Brak\|\|Hot Cool Archiwum\]|
+> |Automatyczna dekompresja plików.|**--dekompresja**=\[\|gzip deflate\]|
+> 
+> Aby uzyskać pełną listę, zobacz [opcje](storage-ref-azcopy-copy.md#options).
 
 ### <a name="upload-a-file"></a>Przekazywanie pliku
 
@@ -71,10 +77,6 @@ Szczegółowe dokumenty referencyjne można znaleźć [w kopii azcopy](storage-r
 | **Przykład** (hierarchiczna przestrzeń nazw) | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
 Plik można również przekazać za pomocą symbolu wieloznacznego (*) w dowolnym miejscu ścieżki pliku lub nazwy pliku. Na przykład: `'C:\myDirectory\*.txt'` `C:\my*\*.txt`, lub .
-
-> [!NOTE]
-> AzCopy domyślnie przesyła dane jako blokowe obiekty blob. Aby przekazać pliki jako dołączanie obiektów blob `--blob-type=[BlockBlob|PageBlob|AppendBlob]`lub stronicowych obiektów blob, użyj flagi .
-> AzCopy domyślnie przekazuje dane do dziedziczenia warstwy dostępu do konta. Aby przekazać pliki do określonej [warstwy dostępu,](../blobs/storage-blob-storage-tiers.md)użyj flagi `--block-blob-tier=[Hot|Cool|Archive]`.
 
 ### <a name="upload-a-directory"></a>Przekazywanie katalogu
 
@@ -152,13 +154,19 @@ Ta sekcja zawiera następujące przykłady:
 > * Pobieranie zawartości katalogu
 > * Pobieranie określonych plików
 
+> [!TIP]
+> Możesz dostosować operację pobierania, używając opcjonalnych flag. Oto kilka przykładów.
+>
+> |Scenariusz|Flaga|
+> |---|---|
+> |Automatyczna dekompresja plików.|**--dekompresja**=\[\|gzip deflate\]|
+> |Określ, jak szczegółowe mają być wpisy dziennika związane z kopiowaniem.|**--log-level**=\[\|OSTRZEŻENIE\|\|BŁĄD INFO BRAK\]|
+> |Określ, czy i jak zastąpić pliki i obiekty blob powodujące konflikt w miejscu docelowym.|**--zastąpić**=\[true\|false\|ifSourceNewer\|monit\]|
+> 
+> Aby uzyskać pełną listę, zobacz [opcje](storage-ref-azcopy-copy.md#options).
+
 > [!NOTE]
 > Jeśli `Content-md5` wartość właściwości obiektu blob zawiera skrót, AzCopy oblicza skrót MD5 dla pobranych danych i sprawdza, czy skrót `Content-md5` MD5 przechowywany we właściwości obiektu blob jest zgodny z obliczonym skrótem. Jeśli te wartości nie są zgodne, pobieranie nie powiedzie się, `--check-md5=NoCheck` `--check-md5=LogOnly` chyba że zostanie zastąpione to zachowanie przez dołączenie lub polecenie copy.
-
-Szczegółowe dokumenty referencyjne można znaleźć [w kopii azcopy](storage-ref-azcopy-copy.md).
-
-> [!TIP]
-> Przykłady w tej sekcji ujęć argumenty ścieżki z pojedynczymi cudzysłowami (''). Użyj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd.exe). Jeśli używasz powłoki poleceń systemu Windows (cmd.exe), należy ująć argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczych cudzysłowów (').
 
 ### <a name="download-a-file"></a>Pobieranie pliku
 
@@ -245,12 +253,18 @@ Ta sekcja zawiera następujące przykłady:
 > * Kopiowanie kontenera na inne konto magazynu
 > * Kopiowanie wszystkich kontenerów, katalogów i plików na inne konto magazynu
 
-Szczegółowe dokumenty referencyjne można znaleźć [w kopii azcopy](storage-ref-azcopy-copy.md).
+Te przykłady działają również z kontami, które mają hierarchiczną przestrzeń nazw. [Dostęp do wielu protokołów w magazynie usługi Data Lake](../blobs/data-lake-storage-multi-protocol-access.md) `blob.core.windows.net`umożliwia użycie tej samej składni adresu URL ( ) na tych kontach.
 
 > [!TIP]
-> Przykłady w tej sekcji ujęć argumenty ścieżki z pojedynczymi cudzysłowami (''). Użyj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd.exe). Jeśli używasz powłoki poleceń systemu Windows (cmd.exe), należy ująć argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczych cudzysłowów (').
-
- Te przykłady działają również z kontami, które mają hierarchiczną przestrzeń nazw. [Dostęp do wielu protokołów w magazynie usługi Data Lake](../blobs/data-lake-storage-multi-protocol-access.md) `blob.core.windows.net`umożliwia użycie tej samej składni adresu URL ( ) na tych kontach. 
+> Operację kopiowania można dostosować za pomocą opcjonalnych flag. Oto kilka przykładów.
+>
+> |Scenariusz|Flaga|
+> |---|---|
+> |Kopiowanie plików jako dołączanie obiektów blob lub stronicowych obiektów blob.|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |Kopiowanie do określonej warstwy dostępu (takiej jak warstwa archiwum).|**--block-blob-tier**=\[\|Brak\|\|Hot Cool Archiwum\]|
+> |Automatyczna dekompresja plików.|**--dekompresja**=\[\|gzip deflate\]|
+> 
+> Aby uzyskać pełną listę, zobacz [opcje](storage-ref-azcopy-copy.md#options).
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>Kopiowanie obiektu blob na inne konto magazynu
 
@@ -306,10 +320,16 @@ Jeśli flaga `--delete-destination` zostanie `true` ustawiona na AzCopy, spowodu
 > [!NOTE]
 > Aby zapobiec przypadkowym usunięciu, przed użyciem flagi należy `--delete-destination=prompt|true` włączyć operację [usuwania nietrwałego.](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)
 
-Szczegółowe dokumenty referencyjne można znaleźć [w części Azcopy Sync](storage-ref-azcopy-sync.md).
-
 > [!TIP]
-> Przykłady w tej sekcji ujęć argumenty ścieżki z pojedynczymi cudzysłowami (''). Użyj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd.exe). Jeśli używasz powłoki poleceń systemu Windows (cmd.exe), należy ująć argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczych cudzysłowów (').
+> Operację synchronizacji można dostosować, korzystając z opcjonalnych flag. Oto kilka przykładów.
+>
+> |Scenariusz|Flaga|
+> |---|---|
+> |Określ, jak ściśle skróty MD5 powinny być sprawdzane podczas pobierania.|**--check-md5**=\[NoCheck\|LogOnly\|FailIfPodróżent\|FailIfDifferentOrMissing\]|
+> |Wykluczanie plików na podstawie wzorca.|**--exclude-path**|
+> |Określ, jak szczegółowe mają być wpisy dziennika związane z synchronizacją.|**--log-level**=\[\|OSTRZEŻENIE\|\|BŁĄD INFO BRAK\]|
+> 
+> Aby uzyskać pełną listę, zobacz [opcje](storage-ref-azcopy-sync.md#options).
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Aktualizowanie kontenera ze zmianami w lokalnym systemie plików
 

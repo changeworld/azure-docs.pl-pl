@@ -7,17 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: b0ed430098203c5c1a0d00eb7bf17da1be0000cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f20beced7d977668d12c06375ceb8a2554c6d335
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278096"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273430"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurowanie maszyny wirtualnej hostowanego na platformie Azure
 
-W tym artykule wyjaśniono, jak rozmiar, zaktualizować i uogólniać maszyny wirtualnej (VM) hostowane na platformie Azure.  Te kroki są niezbędne do przygotowania maszyny Wirtualnej do wdrożenia w portalu Azure Marketplace.
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [Tworzenie zasobów technicznych maszyny wirtualnej platformy Azure](https://aka.ms/AzureVMTechAsset) do zarządzania zmigrowanych ofert.
 
+W tym artykule wyjaśniono, jak rozmiar, zaktualizować i uogólniać maszyny wirtualnej (VM) hostowane na platformie Azure.  Te kroki są niezbędne do przygotowania maszyny Wirtualnej do wdrożenia w portalu Azure Marketplace.
 
 ## <a name="sizing-the-vhds"></a>Zmiana rozmiaru VHD
 

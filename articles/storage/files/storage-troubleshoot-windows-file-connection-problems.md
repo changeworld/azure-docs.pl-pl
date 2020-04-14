@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 17ecc80fee3b024c334b8d36533663f1f3cebe4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3237fe7d87ad058f255d1c77cb6d814bcd1c292e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136909"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262251"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z usługą Azure Files w systemie Windows
 
@@ -50,7 +50,7 @@ Jeśli użytkownicy uzyskują dostęp do udziału plików platformy Azure przy u
 
 ### <a name="solution-for-cause-3"></a>Roztwór dla przyczyny 3
 
-Aby zaktualizować uprawnienia na poziomie udziału, zobacz [Przypisywanie uprawnień dostępu do tożsamości](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#assign-access-permissions-to-an-identity).
+Aby zaktualizować uprawnienia na poziomie udziału, zobacz [Przypisywanie uprawnień dostępu do tożsamości](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#2-assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Błąd 53, błąd 67 lub błąd 87 podczas instalowania lub odinstalowyjenia udziału plików platformy Azure

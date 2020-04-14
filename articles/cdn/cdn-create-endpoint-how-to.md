@@ -3,7 +3,7 @@ title: Tworzenie punktu końcowego usługi Azure CDN | Dokumenty firmy Microsoft
 description: W tym artykule pokazano, jak utworzyć nowy punkt końcowy sieci dostarczania zawartości platformy Azure (CDN), w tym ustawienia zaawansowane.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: afd9599dd1e396dea6975c397688e4b97371fd6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a130a433c68d0d5cc8c26eae4b81ff264eb0ca2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593934"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254019"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Tworzenie punktu końcowego usługi Azure CDN
 W tym artykule opisano wszystkie ustawienia tworzenia punktu końcowego [sieci dostarczania zawartości platformy Azure (CDN)](cdn-overview.md) w istniejącym profilu sieci CDN. Po utworzeniu profilu i punktu końcowego można rozpocząć dostarczanie zawartości do klientów. Aby uzyskać przewodnik Szybki start dotyczący tworzenia profilu i punktu końcowego, zobacz [Szybki start: Tworzenie profilu i punktu końcowego usługi Azure CDN.](cdn-create-new-endpoint.md)

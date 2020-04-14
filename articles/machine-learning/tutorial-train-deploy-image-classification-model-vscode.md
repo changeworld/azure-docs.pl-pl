@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 02/24/2020
-ms.openlocfilehash: ba9cd2e7dc0248aa351cb7bc4519689763f1adda
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/13/2020
+ms.openlocfilehash: f793f8c4cb84f821c098cc5ce98e693d272e725f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239882"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272828"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Szkolenie i wdrażanie modelu tensorflow klasyfikacji obrazów przy użyciu rozszerzenia kodu usługi Azure Machine Learning Visual Studio
 
@@ -99,71 +99,33 @@ Aby utworzyć cel obliczeniowy:
 1. Wybierz rozmiar maszyny wirtualnej. Wybierz **Standard_F2s_v2** z listy opcji. Rozmiar maszyny Wirtualnej ma wpływ na czas potrzebny do szkolenia modeli. Aby uzyskać więcej informacji na temat rozmiarów maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych systemu Linux na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
 1. Nazwij swoje obliczenia "TeamWkspc-com" i naciśnij **klawisz Enter,** aby utworzyć swoje obliczenia.
 
-Po kilku minutach nowy obiekt docelowy obliczeń pojawi się w węźle *Obliczeniowe* obszaru roboczego.
-
-## <a name="create-a-run-configuration"></a>Tworzenie konfiguracji uruchamiania
-
-Podczas przesyłania przebiegu szkolenia do obiektu docelowego obliczeń, należy również przesłać konfigurację potrzebną do uruchomienia zadania szkoleniowego. Na przykład skrypt, który zawiera kod szkolenia i zależności Pythona potrzebne do jego uruchomienia.
-
-Aby utworzyć konfigurację uruchamiania:
-
-1. Na pasku aktywności Kod programu Visual Studio wybierz ikonę **platformy Azure.** Pojawi się widok usługi Azure Machine Learning. 
-1. Rozwiń węzeł subskrypcji. 
-1. Rozwiń węzeł **TeamWorkspace.** 
-1. W obszarze węzła obszaru roboczego kliknij prawym przyciskiem myszy węzeł obliczeniowy **TeamWkspc-com** i wybierz polecenie **Utwórz konfigurację uruchamiania**.
-
-    > [!div class="mx-imgBorder"]
-    > ![Tworzenie konfiguracji uruchamiania](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
-
-1. Nazwij konfigurację biegu "MNIST-rc" i naciśnij **klawisz Enter,** aby utworzyć konfigurację uruchamiania.
-1. Następnie wybierz **TensorFlow szkolenia z jednego węzła** jako typ zadania szkolenia.
-1. Naciśnij **klawisz Enter,** aby przeglądać plik skryptu w celu uruchomienia na komputerze. W takim przypadku skrypt do szkolenia `train.py` modelu jest `vscode-tools-for-ai/mnist-vscode-docs-sample` plik wewnątrz katalogu.
-1. Wprowadź następujące elementy w polu wprowadzania, aby określić wymagane pakiety.
-    
-    ```text
-    pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
-    ```
-    
-    Plik o `MNIST-rc.runconfig` nazwie pojawia się w programie VS Code z zawartością podobną do poniższej:
+    Plik pojawia się w programie VS Code z zawartością podobną do poniższej:
 
     ```json
     {
-        "script": "train.py",
-        "framework": "Python",
-        "communicator": "None",
-        "target": "TeamWkspc-com",
-        "environment": {
-            "python": {
-                "userManagedDependencies": false,
-                "condaDependencies": {
-                    "dependencies": [
-                        "python=3.6.2",
-                        "tensorflow=1.15.0",
-                        {
-                            "pip": [
-                                "azureml-defaults"
-                            ]
-                        }
-                    ]
-                }
-            },
-            "docker": {
-                "baseImage": "mcr.microsoft.com/azureml/base:0.2.4",
-                "enabled": true,
-                "baseImageRegistry": {
-                    "address": null,
-                    "username": null,
-                    "password": null
-                }
+        "location": "westus2",
+        "tags": {},
+        "properties": {
+            "computeType": "AmlCompute",
+            "description": "",
+            "properties": {
+                "vmSize": "Standard_F2s_v2",
+                "vmPriority": "dedicated",
+                "scaleSettings": {
+                    "maxNodeCount": 4,
+                    "minNodeCount": 0,
+                    "nodeIdleTimeBeforeScaleDown": 120
+                },
+                "userAccountCredentials": {
+                    "adminUserName": "",
+                    "adminUserPassword": "",
+                    "adminUserSshPublicKey": ""
+                },
+                "subnetName": "",
+                "vnetName": "",
+                "vnetResourceGroupName": "",
+                "remoteLoginPortPublicAccess": ""
             }
-        },
-        "nodeCount": 1,
-        "history": {
-            "outputCollection": true,
-            "snapshotProject": false,
-            "directoriesToWatch": [
-                "logs"
-            ]
         }
     }
     ```
@@ -175,7 +137,152 @@ Aby utworzyć konfigurację uruchamiania:
     Azure ML: Save and Continue
     ```
 
-Konfiguracja uruchamiania `MNIST-rc` jest dodawana w węźle obliczeniowym *TeamWkspc-com.*
+Po kilku minutach nowy obiekt docelowy obliczeń pojawi się w węźle *Obliczeniowe* obszaru roboczego.
+
+## <a name="create-a-run-configuration"></a>Tworzenie konfiguracji uruchamiania
+
+Podczas przesyłania przebiegu szkolenia do obiektu docelowego obliczeń, należy również przesłać konfigurację potrzebną do uruchomienia zadania szkoleniowego. Na przykład skrypt, który zawiera kod szkolenia i zależności Pythona potrzebne do jego uruchomienia.
+
+Aby utworzyć konfigurację uruchamiania:
+
+1. Na pasku aktywności Kod programu Visual Studio wybierz ikonę **platformy Azure.** Pojawi się widok usługi Azure Machine Learning. 
+1. Rozwiń węzeł subskrypcji. 
+1. Rozwiń węzeł **TeamWorkspace > Compute.** 
+1. W obszarze węzła obliczeniowego kliknij prawym przyciskiem myszy węzeł obliczeniowy **TeamWkspc-com** i wybierz polecenie **Utwórz konfigurację uruchamiania**.
+
+    > [!div class="mx-imgBorder"]
+    > ![Tworzenie konfiguracji uruchamiania](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
+
+1. Nazwij konfigurację biegu "MNIST-rc" i naciśnij **klawisz Enter,** aby utworzyć konfigurację uruchamiania.
+1. Następnie wybierz pozycję **Utwórz nowe środowisko usługi Azure ML**. Środowiska definiują zależności wymagane do uruchamiania skryptów.
+1. Nazwij swoje środowisko "MNIST-env" i naciśnij **klawisz Enter**.
+1. Wybierz **plik zależności Conda** z listy.
+1. Naciśnij **klawisz Enter,** aby przeglądać plik zależności Conda. W takim przypadku plik zależności `env.yml` jest plikiem wewnątrz `vscode-tools-for-ai/mnist-vscode-docs-sample` katalogu.
+
+    Plik pojawia się w programie VS Code z zawartością podobną do poniższej:
+
+    ```json
+    {
+        "name": "MNIST-env",
+        "version": "1",
+        "python": {
+            "interpreterPath": "python",
+            "userManagedDependencies": false,
+            "condaDependencies": {
+                "name": "vs-code-azure-ml-tutorial",
+                "channels": [
+                    "defaults"
+                ],
+                "dependencies": [
+                    "python=3.6.2",
+                    "tensorflow=1.15.0",
+                    "pip",
+                    {
+                        "pip": [
+                            "azureml-defaults"
+                        ]
+                    }
+                ]
+            },
+            "baseCondaEnvironment": null
+        },
+        "environmentVariables": {},
+        "docker": {
+            "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+            "baseDockerfile": null,
+            "baseImageRegistry": {
+                "address": null,
+                "username": null,
+                "password": null
+            },
+            "enabled": false,
+            "arguments": []
+        },
+        "spark": {
+            "repositories": [],
+            "packages": [],
+            "precachePackages": true
+        },
+        "inferencingStackVersion": null
+    }
+    ```
+
+1. Po zakończeniu konfiguracji zapisz ją, otwierając paletę poleceń i wprowadzając następujące polecenie:
+
+    ```text
+    Azure ML: Save and Continue
+    ```
+
+1. Naciśnij **klawisz Enter,** aby przeglądać plik skryptu w celu uruchomienia na komputerze. W takim przypadku skrypt do szkolenia `train.py` modelu jest `vscode-tools-for-ai/mnist-vscode-docs-sample` plik wewnątrz katalogu.
+
+    Plik o `MNIST-rc.runconfig` nazwie pojawia się w programie VS Code z zawartością podobną do poniższej:
+
+    ```json
+    {
+        "script": "train.py",
+        "framework": "Python",
+        "communicator": "None",
+        "target": "TeamWkspc-com",
+        "environment": {
+            "name": "MNIST-env",
+            "version": "1",
+            "python": {
+                "interpreterPath": "python",
+                "userManagedDependencies": false,
+                "condaDependencies": {
+                    "name": "vs-code-azure-ml-tutorial",
+                    "channels": [
+                        "defaults"
+                    ],
+                    "dependencies": [
+                        "python=3.6.2",
+                        "tensorflow=1.15.0",
+                        "pip",
+                        {
+                            "pip": [
+                                "azureml-defaults"
+                            ]
+                        }
+                    ]
+                },
+                "baseCondaEnvironment": null
+            },
+            "environmentVariables": {},
+            "docker": {
+                "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+                "baseDockerfile": null,
+                "baseImageRegistry": {
+                    "address": null,
+                    "username": null,
+                    "password": null
+                },
+                "enabled": false,
+                "arguments": []
+            },
+            "spark": {
+                "repositories": [],
+                "packages": [],
+                "precachePackages": true
+            },
+            "inferencingStackVersion": null
+        },
+        "history": {
+            "outputCollection": true,
+            "snapshotProject": false,
+            "directoriesToWatch": [
+                "logs"
+            ]
+        }
+    }
+    ```
+
+1. Po zakończeniu konfiguracji zapisz ją, otwierając paletę poleceń i wprowadzając następujące polecenie:
+
+    ```text
+    Azure ML: Save and Continue
+    ```
+
+Konfiguracja uruchamiania `MNIST-rc` jest dodawana w węźle obliczeniowym *TeamWkspc-com,* a konfiguracja `MNIST-env` środowiska jest dodawana w węźle *Środowiska.*
 
 ## <a name="train-the-model"></a>Uczenie modelu
 
@@ -264,7 +371,7 @@ Aby wdrożyć usługę sieci web jako usługę ACI:
 1. Kliknij prawym przyciskiem myszy **model MNIST-TensorFlow** i wybierz polecenie **Wdrażanie usługi z modelu zarejestrowanego**.
 
     > [!div class="mx-imgBorder"]
-    > ![Wdrażanie modelu](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
+    > ![Wdrażanie modelu](./media/tutorial-train-deploy-image-classification-model-vscode/deploy-model.png)
 
 1. Wybierz **wystąpienie kontenera platformy Azure**.
 1. Nazwij swoją usługę "mnist-tensorflow-svc" i naciśnij **klawisz Enter**.
@@ -300,6 +407,7 @@ Aby wdrożyć usługę sieci web jako usługę ACI:
         ]
     }
     ```
+
 1. Po zakończeniu konfiguracji zapisz ją, otwierając paletę poleceń i wprowadzając następujące polecenie:
 
     ```text

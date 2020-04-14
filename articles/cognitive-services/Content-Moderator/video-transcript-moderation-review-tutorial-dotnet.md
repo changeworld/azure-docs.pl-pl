@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 09569be88daa6295834e58da6b51656d0438bed4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74976982"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270931"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Samouczek: Moderowanie wideo i transkrypcji
 
@@ -82,7 +82,7 @@ Metoda `Main()` obsługuje następujące argumenty wiersza polecenia:
 Jeśli nie argumentów wiersza polecenia, metoda `Main()` wywołuje `GetUserInputs()`. Ta metoda prosi użytkownika o wprowadzenie ścieżki do pojedynczego pliku wideo oraz określenie, czy ma zostać wygenerowana transkrypcja tekstu.
 
 > [!NOTE]
-> Aplikacja konsoli używa [interfejsu API indeksatora multimediów Azure](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) do generowania transkrypcji z ścieżki audio przekazanego wideo. Wyniki są podane w formacie WebVTT. Aby uzyskać więcej informacji na temat tego formatu, zobacz temat [Web Video Text Tracks Format](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) (Format ścieżek tekstowych wideo w sieci Web).
+> Aplikacja konsoli używa [interfejsu API indeksatora multimediów Azure](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) do generowania transkrypcji z ścieżki audio przekazanego wideo. Wyniki są podane w formacie WebVTT. Aby uzyskać więcej informacji na temat tego formatu, zobacz temat [Web Video Text Tracks Format](https://developer.mozilla.org/docs/Web/API/WebVTT_API) (Format ścieżek tekstowych wideo w sieci Web).
 
 ### <a name="initialize-and-processvideo-methods"></a>Inicjowanie metod ProcessVideo
 
@@ -223,7 +223,7 @@ Wynikiem zadania moderowania wideo (zobacz [przewodnik Szybki start dotyczący m
 Transkrypcja dźwięku z wideo jest generowana również wtedy, gdy została ustawiona flaga `GenerateVTT`.
 
 > [!NOTE]
-> Aplikacja konsoli używa [interfejsu API indeksatora multimediów Azure](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) do generowania transkrypcji z ścieżki audio przekazanego wideo. Wyniki są podane w formacie WebVTT. Aby uzyskać więcej informacji na temat tego formatu, zobacz temat [Web Video Text Tracks Format](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) (Format ścieżek tekstowych wideo w sieci Web).
+> Aplikacja konsoli używa [interfejsu API indeksatora multimediów Azure](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) do generowania transkrypcji z ścieżki audio przekazanego wideo. Wyniki są podane w formacie WebVTT. Aby uzyskać więcej informacji na temat tego formatu, zobacz temat [Web Video Text Tracks Format](https://developer.mozilla.org/docs/Web/API/WebVTT_API) (Format ścieżek tekstowych wideo w sieci Web).
 
 ## <a name="create-a-human-review"></a>Tworzenie ludzkiej recenzji
 

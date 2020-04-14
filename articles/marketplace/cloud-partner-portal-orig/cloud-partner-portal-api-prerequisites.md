@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2a1022c6d041bf645b43dfed391a489de30b2fce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df94cba1f77ae3ea8cf595e7c651af7a69108bb6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288567"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255978"
 ---
 <a name="api-prerequisites"></a>Wymagania wstępne interfejsu API
 ================
+
+> [!NOTE]
+> Interfejsy API portalu partnerów w chmurze są zintegrowane z centrum partnerów i będą nadal działać po migracji ofert do Centrum partnerów. Integracja wprowadza niewielkie zmiany. Przejrzyj zmiany wymienione w [aplikacji Cloud Partner Portal API Reference,](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) aby upewnić się, że kod będzie nadal działać po migracji do Centrum partnerów.
 
 Istnieją dwa wymagane zasoby programowe, które należy użyć interfejsów API portalu partnerów w chmurze: podmiot usługi i token dostępu usługi Azure Active Directory (Azure AD).
 
@@ -41,7 +44,7 @@ Aby dodać jednostkę usługi, należy wykonać następujące czynności:
 3. Z **listy** rozwijanej Typ wybierz **pozycję Główny serwis** i dodaj następujące szczegóły:
 
 -   Przyjazna **nazwa** dla jednostki `spAccount`usługi, na przykład .
--   **Identyfikator aplikacji**. Aby znaleźć ten identyfikator, przejdź do [witryny Azure Portal](https://portal.azure.com), kliknij pozycję **Usługa Azure Active Directory**, wybierz pozycję **Rejestracje aplikacji**i kliknij aplikację.
+-   **Identyfikator aplikacji**. Aby znaleźć ten identyfikator, przejdź do [witryny Azure portal](https://portal.azure.com), kliknij pozycję **Azure Active Directory**, wybierz pozycję **Rejestracje aplikacji**i kliknij aplikację.
 -   **Identyfikator dzierżawy**, znany również jako **identyfikator katalogu,** dla dzierżawy usługi Azure AD. Ten identyfikator można znaleźć na stronie Usługi Azure Active Directory w [witrynie Azure portal](https://portal.azure.com)w obszarze **Właściwości**.
 -   **Identyfikator obiektu** dla obiektu jednostkowego usługi. Ten identyfikator można uzyskać z witryny Azure portal. Przejdź do **usługi Azure Active Directory**, wybierz **rejestracje aplikacji**, kliknij aplikację i kliknij nazwę aplikacji w obszarze Aplikacja **zarządzana w katalogu lokalnym**. Następnie przejdź do strony **Właściwości,** aby znaleźć identyfikator obiektu. Upewnij się, że nie są chwytając początkowy identyfikator obiektu, który znajduje się w aplikacji, ale zamiast identyfikator obiektu w aplikacji zarządzanej.
 -   **Rola** skojarzona z kontem, która będzie używana dla RBAC.

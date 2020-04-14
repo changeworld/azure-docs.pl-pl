@@ -5,77 +5,53 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/31/2020
 ms.author: banders
-ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0635c21ee30a40344281f31c8f9aedf9d74a1284
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199249"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633854"
 ---
-# <a name="view-azure-reservations-in-the-azure-portal"></a>Wyświetlanie rezerwacji platformy Azure w witrynie Azure Portal
+# <a name="view-azure-reservations"></a>Wyświetlanie rezerwacji platformy Azure
 
-W zależności od typu subskrypcji i uprawnień istnieje kilka sposobów wyświetlania rezerwacji na platformie Azure.
+Zakupioną rezerwację możesz wyświetlić w witrynie Azure Portal, gdzie możesz też nią zarządzać.   
 
-## <a name="view-purchased-reservations"></a>Wyświetlanie zakupionych rezerwacji
+## <a name="permissions-to-view-a-reservation"></a>Uprawnienia do wyświetlania rezerwacji
 
-Domyślnie rezerwację może wyświetlać użytkownik, który ją zakupił, i administrator konta. Ten użytkownik oraz administrator konta automatycznie otrzymują rolę właściciela rezerwacji oraz zamówienia rezerwacji. Aby umożliwić innej osobie wyświetlanie rezerwacji, należy dodać tę osobę jako **Właściciela** lub **Czytelnika** w rezerwacji lub w zamówieniu rezerwacji.
+Aby wyświetlić rezerwację lub zarządzać nią, musisz mieć do niej uprawnienie czytelnika lub właściciela. Domyślnie przy zakupie rezerwacji osoba dokonująca zakupu oraz administrator konta automatycznie otrzymują rolę właściciela dla rezerwacji oraz zamówienia rezerwacji. Aby umożliwić innej osobie wyświetlanie rezerwacji, należy dodać tę osobę jako **Właściciela** lub **Czytelnika** w rezerwacji lub w zamówieniu rezerwacji. Dodanie osoby do subskrypcji podanej dla rozliczeń rezerwacji nie powoduje automatycznego dodania jej do rezerwacji. 
 
 Aby uzyskać więcej informacji, zobacz [Dodawanie lub zmienianie użytkowników, którzy mogą zarządzać rezerwacją](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 
+## <a name="view-reservation-and-utilization-in-azure-portal"></a>Wyświetlanie rezerwacji i użycia w witrynie Azure Portal
+
 Aby wyświetlić rezerwację jako właściciel lub czytelnik:
 
-1. Zaloguj się do [Azure portal](https://portal.azure.com).
-2. Wyszukaj **Rezerwacje**.
-    ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/view-reservations/portal-reservation-search.png)  
-3. Lista zawiera wszystkie rezerwacje, w których masz rolę właściciela lub czytelnika. Dla każdej rezerwacji pokazany jest ostatni znany procent użycia.  
-    ![Przykład przedstawiający listę rezerwacji](./media/view-reservations/view-reservations.png)
-4. Wybierz rezerwację, aby wyświetlić trend jej użycia w ciągu ostatnich pięciu dni.  
-    ![Przykład pokazujący trend użycia rezerwacji](./media/view-reservations/reservation-utilization.png)
-5. [Użycie rezerwacji](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) możesz też pobrać za pomocą interfejsu API użycia wystąpienia zarezerwowanego oraz [pakietu zawartości Microsoft Azure Consumption Insights dla usługi Power BI](/power-bi/service-connect-to-azure-consumption-insights).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Przejdź do pozycji [Rezerwacje](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
+3. Lista zawiera wszystkie rezerwacje, dla których masz rolę właściciela lub czytelnika. Dla każdej rezerwacji pokazany jest ostatni znany procent użycia.
+4. Kliknij pozycję procentu wykorzystania, aby wyświetlić historię wykorzystania i szczegóły. Wideo poniżej zawiera szczegółowe informacje.
+   > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4sYwk] 
 
-Jeśli chcesz zmienić zakres rezerwacji, podzielić rezerwację lub zmienić osoby uprawnione do zarządzania rezerwacją, zobacz [Zarządzanie rezerwacjami na platformie Azure](manage-reserved-vm-instance.md).
+## <a name="get-reservations-and-utilization-using-apis-powershell-cli"></a>Uzyskiwanie danych rezerwacji i wykorzystania przy użyciu interfejsów API, programu PowerShell, interfejsu wiersza polecenia
 
-## <a name="view-reservation-transactions-for-enterprise-enrollments"></a>Wyświetlanie transakcji rezerwacji w przypadku rejestracji Enterprise
+Pobieranie listy wszystkich rezerwacji przy użyciu następujących zasobów
+- [Interfejs API: zamówienie rezerwacji — lista](/rest/api/reserved-vm-instances/reservationorder/list)
+- [Program PowerShell: zamówienie rezerwacji — lista](/powershell/module/azurerm.reservations/get-azurermreservationorder)
+- [Interfejs wiersza polecenia: zamówienie rezerwacji — lista](/cli/azure/reservations/reservation-order#az-reservations-reservation-order-list)
 
- Jeśli korzystasz z rejestracji Enterprise obsługiwanej przez partnera, możesz wyświetlić rezerwacje w obszarze **Raporty** w witrynie EA Portal. W przypadku pozostałych rejestracji Enterprise możesz wyświetlać rezerwacje w witrynie EA Portal i w witrynie Azure Portal. Aby wyświetlać transakcje rezerwacji, musisz być administratorem umowy EA.
+Dane dotyczące [wykorzystania rezerwacji](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) możesz także uzyskać za pomocą interfejsu API użycia wystąpienie zarezerwowanego. 
 
-Aby wyświetlić transakcje rezerwacji w witrynie Azure Portal:
+## <a name="see-reservations-and-utilization-in-power-bi"></a>Wyświetlanie rezerwacji i wykorzystania w usłudze Power BI
 
-1. Zaloguj się do [Azure portal](https://portal.azure.com).
-1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
-
-    ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/view-reservations/portal-cm-billing-search.png)
-
-1. Wybierz pozycję **Transakcje rezerwacji**.
-1. Aby przefiltrować wyniki, wybierz pozycję **Przedział czasu**, **Typ** lub **Opis**.
-1. Wybierz przycisk **Zastosuj**.
-
-    ![Zrzut ekranu pokazujący wyniki wyszukiwania transakcji rezerwacji](./media/view-reservations/portal-billing-reservation-transaction-results.png)
-
-Jeśli chcesz pobrać dane za pomocą interfejsu API, zobacz [Pobieranie opłat za transakcje wystąpień zarezerwowanych dla klientów Enterprise](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges).
+Dostępne są dwie opcje dla użytkowników usług Power BI
+- Pakiet zawartości: Dane zakupów i wykorzystania rezerwacji są dostępne w [pakiecie zawartości łącznika Consumption Insights usługi Power BI](/power-bi/desktop-connect-azure-cost-management). Twórz potrzebne Ci raporty za pomocą tego pakietu zawartości. 
+- Aplikacja Cost Management: Użyj [aplikacji Cost Management](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp) udostępniającej wstępnie utworzone raporty, które można dostosować.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
-
-- [Co to są rezerwacje platformy Azure?](save-compute-costs-reservations.md)
-- [Zarządzanie rezerwacjami platformy Azure](manage-reserved-vm-instance.md)
-
-Kup plan usługi:
-
-- [Opłacanie z góry pojemności zarezerwowanej usługi Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
-- [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../../sql-database/sql-database-reserved-capacity.md)
-- [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-
-Kup plan oprogramowania:
-
-- [Opłacanie planów oprogramowania Red Hat z góry z poziomu usługi Azure Reservations](../../virtual-machines/linux/prepay-rhel-software-charges.md)
-- [Prepay for SUSE software plans from Azure Reservations (Opłacanie planów oprogramowania SUSE z góry z poziomu usługi Azure Reservations)](../../virtual-machines/linux/prepay-suse-software-charges.md)
-
-Informacje na temat użycia:
-
+- [Zarządzanie rezerwacjami platformy Azure](manage-reserved-vm-instance.md).
 - [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](understand-reserved-instance-usage.md)
 - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](understand-reserved-instance-usage-ea.md)
 - [Understand reservation usage for CSP subscriptions (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

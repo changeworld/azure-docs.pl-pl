@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: c64d87b2430cc1d733a67bbc1e803590a37b1714
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9d25e2e32f09cc681d85d5adffe53f1237d7200c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78190776"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255502"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Samouczek: Stosowanie modeli uczenia maszynowego w usłudze Azure Functions za pomocą języka Python i TensorFlow
 
@@ -79,7 +79,7 @@ Jeśli Python nie zainstalował pakietu venv w dystrybucji systemu Linux, urucho
 sudo apt-get install python3-venv
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 cd start
@@ -153,8 +153,10 @@ W usłudze Azure Functions projekt funkcji jest kontenerem dla co najmniej jedne
 
 Aby zmodyfikować `classify` funkcję, aby sklasyfikować obraz na podstawie jego zawartości, należy użyć wstępnie utworzonego modelu TensorFlow, który został przeszkolony i wyeksportowany z usługi Azure Custom Vision Service. Model, który znajduje się w folderze *zasobów* próbki sklonowane wcześniej, klasyfikuje obraz na podstawie tego, czy zawiera psa lub kota. Następnie należy dodać kod pomocniczy i zależności do projektu.
 
+Aby utworzyć własny model przy użyciu bezpłatnej warstwy usługi Custom Vision Service, postępuj zgodnie z instrukcjami w [przykładowym repozytorium projektu](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md).
+
 > [!TIP]
-> Jeśli chcesz utworzyć własny model przy użyciu bezpłatnej warstwy usługi Custom Vision Service, postępuj zgodnie z instrukcjami w [przykładowym repozytorium projektu](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md).
+> Jeśli chcesz hostować model TensorFlow niezależnie od aplikacji funkcji, możesz zamiast tego zainstalować udział plików zawierający model do aplikacji funkcji systemu Linux. Aby dowiedzieć się więcej, zobacz [Instalowanie udziału plików w aplikacji funkcji Języka Python przy użyciu interfejsu wiersza polecenia platformy Azure](./scripts/functions-cli-mount-files-storage-linux.md).
 
 1. W folderze *start uruchom* następujące polecenie, aby skopiować pliki modelu do folderu *klasyfikacji.* Pamiętaj, aby `\*` uwzględnić w poleceniu. 
 
@@ -164,7 +166,7 @@ Aby zmodyfikować `classify` funkcję, aby sklasyfikować obraz na podstawie jeg
     cp ../resources/model/* classify
     ```
     
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\model\* classify
@@ -188,7 +190,7 @@ Aby zmodyfikować `classify` funkcję, aby sklasyfikować obraz na podstawie jeg
     cp ../resources/predict.py classify
     ```
     
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\predict.py classify
@@ -272,7 +274,7 @@ Aby przetestować wywoływanie punktu końcowego funkcji z innej aplikacji sieci
     python -m http.server
     ```
     
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
     ```powershell
     py -m http.server
@@ -315,3 +317,4 @@ Zobacz też:
 
 - [Wdrażanie funkcji na platformie Azure przy użyciu programu Visual Studio Code](https://code.visualstudio.com/docs/python/tutorial-azure-functions).
 - [Przewodnik dla deweloperów usługi Azure Functions Python](./functions-reference-python.md)
+- [Instalowanie udziału plików w aplikacji funkcji języka Python przy użyciu interfejsu wiersza polecenia platformy Azure](./scripts/functions-cli-mount-files-storage-linux.md)

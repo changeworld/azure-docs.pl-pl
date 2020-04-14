@@ -5,35 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: 9a3a58cab2d9673a4660967e3a11d7f88900e718
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269434"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271985"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Powolne dzienniki kwerend w bazie danych platformy Azure dla mysql
 W usłudze Azure Database for MySQL dziennik wolnych zapytań jest dostępny dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwany. Dziennik wolnych zapytań może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów.
 
 Aby uzyskać więcej informacji na temat dziennika wolnych zapytań MySQL, zobacz [sekcję dziennika powolnych zapytań](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)podręcznika MySQL .
 
-## <a name="access-slow-query-logs"></a>Dostęp do wolnych dzienników kwerend
-Można wyświetlić listę i pobrać usługę Azure Database dla dzienników wolnych zapytań MySQL przy użyciu witryny Azure portal i interfejsu wiersza polecenia platformy Azure.
-
-W witrynie Azure portal wybierz swoją bazę danych platformy Azure dla serwera MySQL. W nagłówku **Monitorowanie** wybierz stronę **Dzienniki serwera.**
-
-Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [Konfigurowanie i uzyskiwanie dostępu do wolnych dzienników kwerend przy użyciu interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-in-cli.md).
-
-Podobnie można potok dzienniki do usługi Azure Monitor przy użyciu dzienników diagnostycznych. Zobacz [poniżej,](concepts-server-logs.md#diagnostic-logs) aby uzyskać więcej informacji.
-
-## <a name="log-retention"></a>Przechowywanie dzienników
-Dzienniki są dostępne przez maksymalnie siedem dni od ich utworzenia. Jeśli całkowity rozmiar dostępnych dzienników przekracza 7 GB, najstarsze pliki są usuwane, dopóki nie będzie dostępne miejsce. 
-
-Dzienniki są obracane co 24 godziny lub 7 GB, w zależności od tego, co nastąpi wcześniej.
-
 ## <a name="configure-slow-query-logging"></a>Konfigurowanie powolnego rejestrowania zapytań 
-Domyślnie powolny dziennik kwerend jest wyłączony. Aby ją włączyć, ustaw slow_query_log na ON.
+Domyślnie powolny dziennik kwerend jest wyłączony. Aby ją włączyć, ustaw na `slow_query_log` ON. Można to włączyć za pomocą witryny Azure portal lub interfejsu wiersza polecenia platformy Azure. 
 
 Inne parametry, które można dostosować, obejmują:
 
@@ -48,6 +34,21 @@ Inne parametry, które można dostosować, obejmują:
 > Jeśli planujesz rejestrowanie powolnych zapytań przez dłuższy okres czasu, `log_output` zaleca się ustawienie "Brak". Jeśli ustawiona na "Plik", te dzienniki są zapisywane w magazynie serwera lokalnego i mogą mieć wpływ na wydajność MySQL. 
 
 Zobacz [dokumentację dziennika powolnych zapytań](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) MySQL, aby uzyskać pełne opisy parametrów dziennika powolnych zapytań.
+
+## <a name="access-slow-query-logs"></a>Dostęp do wolnych dzienników kwerend
+Istnieją dwie opcje uzyskiwania dostępu do dzienników wolnych zapytań w usłudze Azure Database dla mysql: magazyn serwera lokalnego lub dzienniki diagnostyczne usługi Azure Monitor. Jest to ustawiane przy użyciu parametru. `log_output`
+
+W przypadku magazynu serwera lokalnego można wyświetlić listę i pobrać dzienniki wolnych zapytań przy użyciu witryny Azure portal lub interfejsu wiersza polecenia platformy Azure. W witrynie Azure portal przejdź do serwera w witrynie Azure portal. W nagłówku **Monitorowanie** wybierz stronę **Dzienniki serwera.** Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [Konfigurowanie i uzyskiwanie dostępu do wolnych dzienników kwerend przy użyciu interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-in-cli.md). 
+
+Dzienniki diagnostyczne usługi Azure Monitor umożliwiają potok powolne dzienniki zapytań do dzienników usługi Azure Monitor Log Analytics, usługi Azure Storage lub Centrum zdarzeń. Zobacz [poniżej,](concepts-server-logs.md#diagnostic-logs) aby uzyskać więcej informacji.
+
+## <a name="local-server-storage-log-retention"></a>Przechowywanie dziennika magazynu serwera lokalnego
+Podczas rejestrowania do magazynu lokalnego serwera dzienniki są dostępne przez okres do siedmiu dni od ich utworzenia. Jeśli całkowity rozmiar dostępnych dzienników przekracza 7 GB, najstarsze pliki są usuwane, dopóki nie będzie dostępne miejsce.
+
+Dzienniki są obracane co 24 godziny lub 7 GB, w zależności od tego, co nastąpi wcześniej.
+
+> [!Note]
+> Powyższe przechowywanie dziennika nie ma zastosowania do dzienników, które są potokowe przy użyciu dzienników diagnostycznych usługi Azure Monitor. Można zmienić okres przechowywania dla pochłaniaczy danych emitowanych do (np. Azure Storage).
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 Usługa Azure Database for MySQL jest zintegrowana z dziennikami diagnostycznymi usługi Azure Monitor. Po włączeniu powolnych dzienników zapytań na serwerze MySQL można wybrać opcję ich emisji do dzienników usługi Azure Monitor, centrów zdarzeń lub usługi Azure Storage. Aby dowiedzieć się więcej o włączaniu dzienników diagnostycznych, zobacz sekcję [dokumentacji dzienników diagnostycznych](../azure-monitor/platform/platform-logs-overview.md).

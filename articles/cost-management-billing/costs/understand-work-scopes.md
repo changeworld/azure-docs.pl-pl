@@ -3,17 +3,17 @@ title: Opis zakresów usługi Azure Cost Management i praca z nimi
 description: Ten artykuł pomaga zrozumieć zakresy zarządzania rozliczeniami i zasobami dostępne na platformie Azure oraz sposób korzystania z zakresów w usłudze Cost Management i interfejsach API.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: bbed4209d26fe32f95b93b2c7411e1ab74f03ede
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ebae9d1c66a721926ca07b21059ec57b05b99a0f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80131356"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877936"
 ---
 # <a name="understand-and-work-with-scopes"></a>Opis zakresów i praca z nimi
 
@@ -26,6 +26,10 @@ _Zakres_ to węzeł w hierarchii zasobów platformy Azure, w którym użytkownic
 - Usługi w chmurze, takie jak zarządzanie kosztami i zasadami
 
 Zakresy to miejsce, w którym zarządzasz danymi dotyczącymi rozliczeń, masz role specyficzne dla płatności, wyświetlasz faktury i ogólnie zarządzasz kontami. Rolami rozliczeń i kont zarządza się oddzielnie od ról służących do zarządzania zasobami, które używają [funkcji RBAC na platformie Azure](../../role-based-access-control/overview.md). Aby wyraźnie odróżnić przeznaczenie poszczególnych zakresów, w tym różnice w kontroli dostępu, są one określane odpowiednio jako _zakresy rozliczeniowe_ i _zakresy RBAC_.
+
+Aby dowiedzieć się więcej o zakresach, obejrzyj wideo [Cost Management setting up hierarchies](https://www.youtube.com/watch?v=n3TLRaYJ1NY) (Konfigurowanie hierarchii w usłudze Cost Management). Aby obejrzeć inne wideo, odwiedź [kanał usługi Cost Management w serwisie YouTube](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/n3TLRaYJ1NY]
 
 ## <a name="how-cost-management-uses-scopes"></a>Jak usługa Cost Management używa zakresów
 
@@ -71,7 +75,7 @@ Cost Management — współautor jest zalecaną rolą o najniższych uprawnienia
 
 Konta rozliczeniowe umowy Enterprise Agreement (EA), nazywane również rejestracjami, mają następujące zakresy:
 
-- [**Konto rozliczeniowe**](../manage/view-all-accounts.md) — reprezentuje rejestrację umowy EA. W tym zakresie są generowane faktury. Zakupy, które nie są oparte na użyciu, na przykład zakupy w witrynie Marketplace i rezerwacje, są dostępne tylko w tym zakresie. Nie są one reprezentowane w działach ani na kontach rejestracji.
+- [**Konto rozliczeniowe**](../manage/view-all-accounts.md) — reprezentuje rejestrację umowy EA. W tym zakresie są generowane faktury. Zakupy, które nie są oparte na użyciu, na przykład zakupy w witrynie Marketplace i rezerwacje, są dostępne tylko w tym zakresie. Nie są one reprezentowane w działach ani na kontach rejestracji. Użycie rezerwacji, a także całe pozostałe użycie, jest stosowane do poszczególnych zasobów. Użycie jest sumowane dla subskrypcji w ramach konta rozliczeniowego. Aby zobaczyć koszty rezerwacji podzielone na poszczególne zasoby, należy przełączyć się do widoku **Amortyzowany koszt** w analizie kosztów.
 
     Typ zasobu: `Microsoft.Billing/billingAccounts (accountType = Enrollment)`
 - **Dział** — opcjonalne zgrupowanie kont rejestracji.

@@ -1,14 +1,14 @@
 ---
 title: 'Wzorzec: Operatory logiczne w definicji zasad'
 description: Ten wzorzec zasad platformy Azure zawiera przykłady sposobu używania operatorów logicznych w definicji zasad.
-ms.date: 01/31/2020
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 8e57efaea81848c6b2d0188dbf3f91e06ed74c67
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 691383b1f8ae34bbd51ce7f4f9310980e3c66537
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77172849"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272512"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Wzorzec zasad platformy Azure: operatory logiczne
 
@@ -38,6 +38,18 @@ Ta definicja zasad ocenia zasoby dla wzorca nazewnictwa. Jeśli zasób nie jest 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-2.json" range="7-21" highlight="2,3,9":::
 
 Ten **policyRule.if** bloku zawiera również jeden **allOf**, ale każdy warunek jest zawinięty z **nie** logicznego operatora. Warunkowe wewnątrz **operatora nie** logiczne ocenia najpierw, a następnie ocenia **nie,** aby ustalić, czy cała klauzula jest true lub false. Jeśli oba **nie** logiczne operatory ocenić true, wyzwala efekt zasad.
+
+## <a name="sample-3-combining-logical-operators"></a>Przykład 3: Łączenie operatorów logicznych
+
+Ta definicja zasad ocenia konta Java Spring, aby sprawdzić, czy śledzenie nie jest włączone lub jeśli śledzenie nie jest w stanie pomyślnym.
+
+:::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json":::
+
+### <a name="sample-3-explanation"></a>Przykład 3: Wyjaśnienie
+
+:::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json" range="6-28" highlight="3,8":::
+
+Ten **policyRule.if** bloku zawiera zarówno **allOf** i **anyOf** operatorów logicznych. Operator logiczny **anyOf** ocenia wartość true, o ile jeden uwzględniony warunek jest spełniony. Ponieważ _typ_ jest w rdzeniu **allOf**, zawsze musi ocenić true. Jeśli _typ_ i jeden z warunków w **anyOf** są prawdziwe, wyzwala efekt zasad.
 
 ## <a name="next-steps"></a>Następne kroki
 

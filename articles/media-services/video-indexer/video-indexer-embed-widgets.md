@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 6ed5c509cf310b743e4ef52f411dfa34e5db09c1
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 5134a262397676aa9b59de9b0c6de61c26d21523
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411624"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262914"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Osadzanie widżetów indeksatora wideo w aplikacjach
 
@@ -265,7 +265,7 @@ Domyślnie odtwarzacz rozpocznie odtwarzanie wideo. Możesz nie przechodzić `&a
 
 ## <a name="code-samples"></a>Przykłady kodu
 
-Zobacz [przykładowe repozytorium kodu,](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Widgets) które zawiera przykłady interfejsu API i widżetów indeksatora wideo:
+Zobacz [przykładowe repozytorium kodu,](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets) które zawiera przykłady interfejsu API i widżetów indeksatora wideo:
 
 | Plik/folder                       | Opis                                |
 |-----------------------------------|--------------------------------------------|

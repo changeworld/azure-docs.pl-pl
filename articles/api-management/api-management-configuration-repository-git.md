@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b9184808b71cce03882022fd37967fe421e64062
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f948d813ddb4d493b455a4922818e38ac3fd6eaa
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548982"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259174"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Jak konfigurować i zapisywać konfigurację usługi API Management za pomocą narzędzia Git
 
@@ -56,7 +56,7 @@ Aby wyświetlić i skonfigurować ustawienia konfiguracji Git, możesz kliknąć
 >
 >
 
-Aby uzyskać informacje na temat włączania lub wyłączania dostępu Git za pomocą interfejsu API REST, zobacz [Włączanie lub wyłączanie dostępu Git za pomocą interfejsu API REST](/rest/api/apimanagement/2019-01-01/tenantaccess?EnableGit).
+Aby uzyskać informacje na temat włączania lub wyłączania dostępu Git za pomocą interfejsu API REST, zobacz [Włączanie lub wyłączanie dostępu Git za pomocą interfejsu API REST](/rest/api/apimanagement/2019-12-01/tenantaccess?EnableGit).
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>Aby zapisać konfigurację usługi w repozytorium Git
 
@@ -68,7 +68,7 @@ Po kilku chwilach konfiguracja jest zapisywana i wyświetlany jest stan konfigur
 
 Po zapisaniu konfiguracji w repozytorium można ją sklonować.
 
-Aby uzyskać informacje na temat wykonywania tej operacji przy użyciu interfejsu API REST, zobacz [Zatwierdzanie migawki konfiguracji przy użyciu interfejsu API REST](/rest/api/apimanagement/2019-01-01/tenantaccess?CommitSnapshot).
+Aby uzyskać informacje na temat wykonywania tej operacji przy użyciu interfejsu API REST, zobacz [Zatwierdzanie migawki konfiguracji przy użyciu interfejsu API REST](/rest/api/apimanagement/2019-12-01/tenantaccess?CommitSnapshot).
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>Aby sklonować repozytorium na komputerze lokalnym
 
@@ -142,7 +142,7 @@ git push
 
 Po zaajsnięciu i wypchnięciu lokalnych zmian do repozytorium serwera można je wdrożyć w wystąpieniu usługi zarządzania interfejsami API.
 
-Aby uzyskać informacje na temat wykonywania tej operacji przy użyciu interfejsu API REST, zobacz [Wdrażanie zmian git w bazie danych konfiguracji przy użyciu interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/tenantconfiguration).
+Aby uzyskać informacje na temat wykonywania tej operacji przy użyciu interfejsu API REST, zobacz [Wdrażanie zmian git w bazie danych konfiguracji przy użyciu interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/tenantconfiguration).
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Odwołanie do struktury plików i folderów lokalnego repozytorium Git
 
@@ -172,9 +172,9 @@ Pliki te można tworzyć, usuwać, edytować i zarządzać w lokalnym systemie p
 > [!NOTE]
 > Następujące jednostki nie są zawarte w repozytorium Git i nie można skonfigurować przy użyciu git.
 >
-> * [Użytkownicy](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user)
-> * [Subskrypcje](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription)
-> * [Nazwane wartości](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/property)
+> * [Użytkownicy](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
+> * [Subskrypcje](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
+> * [Nazwane wartości](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/property)
 > * Encje portalu deweloperów inne niż style
 >
 
@@ -222,14 +222,14 @@ Ostateczne ustawienie `$ref-policy`, mapuje plik instrukcji zasad globalnych dla
 ### <a name="apis-folder"></a>folder apis
 Folder `apis` zawiera folder dla każdego interfejsu API w wystąpieniu usługi, który zawiera następujące elementy.
 
-* `apis\<api name>\configuration.json`- jest to konfiguracja interfejsu API i zawiera informacje o adresie URL usługi wewnętrznej bazy danych i operacji. Jest to te same informacje, które zostaną zwrócone, `export=true` jeśli `application/json` były do wywołania Pobierz określonego [interfejsu API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) w formacie.
+* `apis\<api name>\configuration.json`- jest to konfiguracja interfejsu API i zawiera informacje o adresie URL usługi wewnętrznej bazy danych i operacji. Jest to te same informacje, które zostaną zwrócone, `export=true` jeśli `application/json` były do wywołania Pobierz określonego [interfejsu API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get) w formacie.
 * `apis\<api name>\api.description.html`- jest to opis API i odpowiada `description` właściwości [jednostki API](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty).
 * `apis\<api name>\operations\`- ten `<operation name>.description.html` folder zawiera pliki, które mapują operacje w interfejsie API. Każdy plik zawiera opis pojedynczej operacji w interfejsie `description` API, który mapuje do właściwości [jednostki operacji](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) w interfejsie API REST.
 
 ### <a name="groups-folder"></a>folder grupy
 Folder `groups` zawiera folder dla każdej grupy zdefiniowanej w wystąpieniu usługi.
 
-* `groups\<group name>\configuration.json`- jest to konfiguracja dla grupy. Jest to te same informacje, które zostaną zwrócone, jeśli były do wywołania [Get operacji określonej grupy.](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/group/get)
+* `groups\<group name>\configuration.json`- jest to konfiguracja dla grupy. Jest to te same informacje, które zostaną zwrócone, jeśli były do wywołania [Get operacji określonej grupy.](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/group/get)
 * `groups\<group name>\description.html`- jest to opis grupy i odpowiada `description` właściwości [jednostki grupy](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
 ### <a name="policies-folder"></a>folder zasad
@@ -249,7 +249,7 @@ Folder `portalStyles` zawiera arkusze konfiguracji i stylów dla dostosowań por
 ### <a name="products-folder"></a>folder produktów
 Folder `products` zawiera folder dla każdego produktu zdefiniowanego w wystąpieniu usługi.
 
-* `products\<product name>\configuration.json`- jest to konfiguracja produktu. Jest to te same informacje, które zostaną zwrócone, jeśli były do wywołania [Get operacji określonego produktu.](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/product/get)
+* `products\<product name>\configuration.json`- jest to konfiguracja produktu. Jest to te same informacje, które zostaną zwrócone, jeśli były do wywołania [Get operacji określonego produktu.](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/product/get)
 * `products\<product name>\product.description.html`- jest to opis produktu i odpowiada `description` właściwości [podmiotu produktu](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) w INTERFEJSIE REST.
 
 ### <a name="templates"></a>szablonów

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 02/24/2020
-ms.openlocfilehash: 583071ee22e4fb9cffc741520b1583790002a5bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/13/2020
+ms.openlocfilehash: 731ab18346ac9f100862174312c2c9950026f1eb
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77604873"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272926"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Konfigurowanie rozszerzenia kodu programu Azure Machine Learning Visual Studio
 
@@ -70,36 +70,36 @@ Teraz, gdy zalogowano się do platformy Azure przy użyciu poświadczeń konta, 
 1. Po rozwinięciu palety poleceń postępuj zgodnie z instrukcjami.
 
     1. Wybierz swoją subskrypcję platformy Azure.
-    1. Wybieranie **opcji Utwórz nowy obszar roboczy usługi Azure ML**
-    1. Wybierz typ zadania **Szkolenia jednowęzłowego TensorFlow.**
-    1. Wprowadź `train.py` jako skrypt do pociągu. Jest to plik, który zawiera kod do modelu uczenia maszynowego, który kategoryzuje obrazy cyfr odręcznych.
-    1. Określ następujące pakiety jako wymagania do uruchomienia.
-
-        ```text
-        pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
-        ```
+    1. Z listy środowisk wybierz **plik zależności Conda**.
+    1. Naciśnij **klawisz Enter,** aby przeglądać plik zależności Conda. Ten plik zawiera zależności wymagane do uruchomienia skryptu. W takim przypadku plik zależności `env.yml` jest plikiem wewnątrz `mnist-vscode-docs-sample` katalogu.
+    1. Naciśnij **klawisz Enter,** aby przeglądać plik skryptu szkoleniowego. Jest to plik, który zawiera kod do modelu uczenia maszynowego, który kategoryzuje obrazy cyfr odręcznych. W takim przypadku skrypt do szkolenia `train.py` modelu jest `mnist-vscode-docs-sample` plik wewnątrz katalogu.
 
 1. W tym momencie w edytorze tekstu pojawia się plik konfiguracyjny podobny do poniższego. Konfiguracja zawiera informacje wymagane do uruchomienia zadania szkoleniowego, takie jak plik, który zawiera kod do szkolenia modelu i wszelkie zależności języka Python określone w poprzednim kroku.
 
     ```json
     {
-        "workspace": "WS01311608",
-        "resourceGroup": "WS01311608-rg1",
+        "workspace": "WS04131142",
+        "resourceGroup": "WS04131142-rg1",
         "location": "South Central US",
-        "experiment": "WS01311608-exp1",
+        "experiment": "WS04131142-exp1",
         "compute": {
-            "name": "WS01311608-com1",
+            "name": "WS04131142-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS01311608-com1-rc1",
-            "condaDependencies": [
-                "python=3.6.2",
-                "tensorflow=1.15.0"
-            ],
-            "pipDependencies": [
-                "azureml-defaults"
-            ]
+            "filename": "WS04131142-com1-rc1",
+            "environment": {
+                "name": "WS04131142-env1",
+                "conda_dependencies": [
+                    "python=3.6.2",
+                    "tensorflow=1.15.0",
+                    "pip"
+                ],
+                "pip_dependencies": [
+                    "azureml-defaults"
+                ],
+                "environment_variables": {}
+            }
         }
     }
     ```

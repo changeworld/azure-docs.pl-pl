@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: d872f6b53d9376a6be962d6f4f13ee1b92b0e0a7
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 2ce40495617ec5a1024fd3b4b9faeec2d1c8ff06
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671027"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275494"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -44,4 +44,4 @@ Utwórz plik źródłowy języka C++ o nazwie *helloworld.cpp*i wklej do niego n
 
 ## <a name="next-steps"></a>Następne kroki
 
-[!INCLUDE [footer](../footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

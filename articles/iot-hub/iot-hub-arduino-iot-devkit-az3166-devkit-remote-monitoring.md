@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 9eab035d494892671a2451866311ca06599ec030
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 598e361949b000724645c841910b1682a7bbb1a3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73953736"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258460"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Podłączanie zestawu MXChip IoT DevKit do akceleratora rozwiązań zdalnego monitorowania usługi Azure IoT
 
@@ -120,7 +120,7 @@ Po uruchomieniu przykładowej aplikacji DevKit wysyła dane czujnika za pomocą 
 
 ## <a name="change-device-id"></a>Zmienianie identyfikatora urządzenia
 
-Jeśli chcesz zmienić kodowany na stałe **AZ3166** na niestandardowy identyfikator urządzenia w kodzie, zmodyfikuj wiersz kodu wyświetlany w [przykładzie zdalnego monitorowania](https://github.com/Microsoft/devkit-sdk/blob/master/AZ3166/src/libraries/AzureIoT/examples/RemoteMonitoring/RemoteMonitoring.ino#L23).
+Jeśli chcesz zmienić kodowany na stałe **AZ3166** na niestandardowy identyfikator urządzenia w kodzie, zmodyfikuj wiersz kodu wyświetlany w [przykładzie zdalnego monitorowania](../iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md).
 
 ## <a name="problems-and-feedback"></a>Problemy i opinie
 

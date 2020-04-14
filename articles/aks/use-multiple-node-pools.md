@@ -4,16 +4,16 @@ description: Dowiedz się, jak tworzyć wiele pul węzłów dla klastra w usłud
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 26fd541552ee203216af5a08d948644d82061191
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984916"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259089"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Tworzenie wielu pul węzłów dla klastra w usłudze Azure Kubernetes (AKS) i zarządzanie nimi
 
-W usłudze Azure Kubernetes (AKS) węzły tej samej konfiguracji są grupowane w *pule węzłów.* Te pule węzłów zawierają podstawowe maszyny wirtualne, które uruchamiają aplikacje. Początkowa liczba węzłów i ich rozmiar (SKU) jest definiowana podczas tworzenia klastra AKS, który tworzy *domyślną pulę węzłów*. Aby obsługiwać aplikacje, które mają różne wymagania obliczeniowe lub magazynowe, można utworzyć dodatkowe pule węzłów. Na przykład użyj tych dodatkowych pul węzłów, aby zapewnić procesory GPU dla aplikacji intensywnie korzystających z obliczeń lub dostęp do magazynu dysków SSD o wysokiej wydajności.
+W usłudze Azure Kubernetes (AKS) węzły tej samej konfiguracji są grupowane w *pule węzłów.* Te pule węzłów zawierają podstawowe maszyny wirtualne, które uruchamiają aplikacje. Początkowa liczba węzłów i ich rozmiar (SKU) jest definiowana podczas tworzenia klastra AKS, który tworzy [pulę węzłów systemowych][use-system-pool]. Aby obsługiwać aplikacje, które mają różne wymagania obliczeniowe lub magazynowe, można utworzyć dodatkowe *pule węzłów użytkownika*. Pule węzłów systemowych służą głównemu celowi hostowania krytycznych zasobników systemu, takich jak CoreDNS i tunnelfront. Pule węzłów użytkownika służą głównym celem hostowania zasobników aplikacji. Jednak zasobników aplikacji można zaplanować w pulach węzłów systemowych, jeśli chcesz mieć tylko jedną pulę w klastrze AKS. Pule węzłów użytkownika są miejscem, w którym umieszczasz zasobników specyficznych dla aplikacji. Na przykład użyj tych dodatkowych pul węzłów użytkownika, aby zapewnić procesory GPU dla aplikacji intensywnie korzystających z obliczeń lub dostęp do magazynu dysków SSD o wysokiej wydajności.
 
 > [!NOTE]
 > Ta funkcja umożliwia większą kontrolę nad tym, jak tworzyć i zarządzać wieloma pulami węzłów. W rezultacie do tworzenia/aktualizowania/usuwania wymagane są oddzielne polecenia. Wcześniej operacje klastra za pośrednictwem `az aks create` zarządzanegogównajadu `az aks update` interfejsu API i były jedyną opcją, aby zmienić płaszczyznę sterowania i puli pojedynczego węzła. Ta funkcja udostępnia oddzielny zestaw operacji dla pul agenta za `az aks nodepool` pośrednictwem interfejsu API agentpool i wymaga użycia zestawu poleceń do wykonywania operacji w puli poszczególnych węzłów.
@@ -29,7 +29,8 @@ Potrzebujesz zainstalowanego i skonfigurowany interfejsu wiersza polecenia platf
 Podczas tworzenia klastrów AKS i zarządzania nimi obowiązują następujące ograniczenia:
 
 * Zobacz [Przydziały, ograniczenia rozmiaru maszyny wirtualnej i dostępność regionu w usłudze Azure Kubernetes Service (AKS)][quotas-skus-regions].
-* Nie można usunąć puli węzłów systemowych, domyślnie pierwszej puli węzłów.
+* Można usunąć pule węzłów systemowych, pod warunkiem, że masz inną pulę węzłów systemowych, aby zająć jego miejsce w klastrze AKS.
+* Pule systemowe muszą zawierać co najmniej jeden węzeł, a pule węzłów użytkownika mogą zawierać zero lub więcej węzłów.
 * Klaster AKS musi używać standardowego modułu równoważenia obciążenia jednostki SKU do używania wielu pul węzłów, funkcja nie jest obsługiwana w przypadku podstawowych modułów równoważenia obciążenia jednostki SKU.
 * Klaster AKS musi używać zestawów skalowania maszyny wirtualnej dla węzłów.
 * Nazwa puli węzłów może zawierać tylko małe litery alfanumeryczne i musi zaczynać się od małych liter. W przypadku pul węzłów systemu Linux długość musi wynosić od 1 do 12 znaków, w przypadku puli węzłów systemu Windows długość musi wynosić od 1 do 6 znaków.
@@ -37,6 +38,9 @@ Podczas tworzenia klastrów AKS i zarządzania nimi obowiązują następujące o
 * Podczas tworzenia wielu pul węzłów w czasie tworzenia klastra wszystkie wersje kubernetes używane przez pule węzłów muszą być zgodne z wersją ustawioną dla płaszczyzny sterowania. Można to zaktualizować po zainicjowaniu obsługi administracyjnej klastra przy użyciu operacji puli na węzeł.
 
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
+
+> [!Important]
+> Jeśli uruchomisz pulę pojedynczego węzła systemowego dla klastra AKS w środowisku produkcyjnym, zaleca się użycie co najmniej trzech węzłów dla puli węzłów.
 
 Aby rozpocząć, należy utworzyć klaster AKS z pulą jednego węzła. W poniższym przykładzie użyto polecenia [create grupy az][az-group-create] do utworzenia grupy zasobów o nazwie *myResourceGroup* w regionie *eastus.* Klaster AKS o nazwie *myAKSCluster* jest następnie tworzony za pomocą polecenia [az aks create.][az-aks-create] *Wersja --kubernetes* *1.15.7* służy do pokazywalenia sposobu aktualizowania puli węzłów w następnym kroku. Można określić dowolną [obsługiwani wersję kubernetes][supported-versions].
 
@@ -753,6 +757,8 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Następne kroki
 
+Dowiedz się więcej o [pulach węzłów systemowych][use-system-pool].
+
 W tym artykule dowiesz się, jak tworzyć i zarządzać wieloma pulami węzłów w klastrze AKS. Aby uzyskać więcej informacji na temat kontrolowania zasobników w pulach węzłów, zobacz [Najważniejsze wskazówki dotyczące zaawansowanych funkcji harmonogramu w ustroju AKS][operator-best-practices-advanced-scheduler].
 
 Aby utworzyć i używać pul węzłów kontenerów systemu Windows Server, zobacz [Tworzenie kontenera systemu Windows Server w programie AKS][aks-windows].
@@ -788,3 +794,4 @@ Aby utworzyć i używać pul węzłów kontenerów systemu Windows Server, zobac
 [tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
+[use-system-pool]: use-system-pools.md

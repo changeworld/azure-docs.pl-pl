@@ -1,18 +1,18 @@
 ---
 title: Używanie rozszerzenia kondycji aplikacji z zestawami skalowania maszyny wirtualnej platformy Azure
 description: Dowiedz się, jak używać rozszerzenia Kondycja aplikacji do monitorowania kondycji aplikacji wdrożonych w zestawach skalowania maszyny wirtualnej.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: 37d93b04e6755512eac6c2a168bd2a04f8ac298f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: cb5f1d48bb1a95db004d9da553e19a35071c73b0
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275872"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273736"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Używanie rozszerzenia kondycji aplikacji z zestawami skalowania maszyn wirtualnych
 Monitorowanie kondycji aplikacji jest ważnym sygnałem do zarządzania i uaktualniania wdrożenia. Zestawy skalowania maszyny wirtualnej platformy Azure zapewniają obsługę [uaktualnień stopniowych,](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) w tym [automatycznych uaktualnień obrazów systemu operacyjnego,](virtual-machine-scale-sets-automatic-upgrade.md)które opierają się na monitorowaniu kondycji poszczególnych wystąpień w celu uaktualnienia wdrożenia.

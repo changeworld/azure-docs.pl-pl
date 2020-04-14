@@ -7,20 +7,23 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: dc106ecf40367172f28c0f339bbcce8bddb50a34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09e82b9905104df9b1902b0f64f6cfdf812aabb8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278079"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274025"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Tworzenie certyfikatów dla usługi Azure Key Vault
 
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [certyfikacji obrazów maszyn wirtualnych platformy Azure,](https://aks.ms/CertifyVMimage) aby zarządzać zmigrowanymi ofertami.
+
 W tym artykule wyjaśniono, jak aprowizować certyfikaty z podpisem własnym wymagane do ustanowienia łączności usługi WinRM (Windows Remote Management) z maszyną wirtualną hostowanego przez platformę Azure(VM). Proces ten składa się z trzech etapów:
 
-1.  Utwórz certyfikat zabezpieczeń. 
-2.  Utwórz usługę Azure Key Vault do przechowywania tego certyfikatu. 
-3.  Przechowuj certyfikaty w tym magazynie kluczy. 
+1.    Utwórz certyfikat zabezpieczeń. 
+2.    Utwórz usługę Azure Key Vault do przechowywania tego certyfikatu. 
+3.    Przechowuj certyfikaty w tym magazynie kluczy. 
 
 Można użyć nowej lub istniejącej grupy zasobów platformy Azure dla tej pracy.  Pierwsze podejście jest używane w poniższym wyjaśnieniu.
 

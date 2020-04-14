@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: 49f1de5128325b2884ea76b010727be45f1b195d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8dbadf959107e733a94216c8a01495e6ebf5039
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288890"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273124"
 ---
 # <a name="virtual-machine-skus-tab"></a>Karta Jednostki SKU maszyny wirtualnej
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [tworzenie oferty maszyny wirtualnej platformy Azure,](https://aka.ms/CreateAzureVMoffer) aby zarządzać zmigrowanymi ofertami.
 
 Karta **Jednostki SKU** na stronie **Nowa oferta** umożliwia utworzenie co najmniej jednej jednostki SKU i skojarzenie ich z nową ofertą.  Różne jednostki SKU mogą rozróżniać rozwiązanie według zestawów funkcji, typów obrazów maszyn wirtualnych, przepływności lub skalowalności, modeli rozliczeń lub innej cechy.
 

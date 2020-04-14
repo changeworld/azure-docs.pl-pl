@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 0261ff7ca8a60dc5fd986a64b9944f9cb9f101e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: 59faf63312bd7cc657f8b96ca3110707ea997c02
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062496"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273612"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Konfigurowanie wolnych dzienników zapytań i uzyskiwanie do nich dostępu z witryny Azure Portal
 
@@ -23,7 +23,7 @@ Kroki opisane w tym artykule wymagają, aby mieć [usługę Azure Database dla s
 ## <a name="configure-logging"></a>Konfigurowanie rejestrowania
 Skonfiguruj dostęp do dziennika wolnych zapytań MySQL. 
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 2. Wybierz swoją usługę Azure Database dla serwera MySQL.
 
@@ -32,11 +32,15 @@ Skonfiguruj dostęp do dziennika wolnych zapytań MySQL.
 
 4. Aby wyświetlić parametry serwera, wybierz pozycję **Kliknij tutaj, aby włączyć dzienniki i skonfigurować parametry dziennika**.
 
-5. Zmień parametry, które należy dostosować. Wszystkie zmiany wprowadzone w tej sesji są wyróżnione kolorem fioletowym. 
+5. Włącz **slow_query_log** na **ON**.
 
-   Po zmianie parametrów wybierz pozycję **Zapisz**. Możesz też odrzucić zmiany.
+6. Wybierz miejsce, w którym należy wyprowadzić dzienniki do **log_output**. Aby wysłać dzienniki zarówno do magazynu lokalnego, jak i do dzienników diagnostycznych monitora Azure Monitor, wybierz opcję **Plik**. 
 
-   ![Zrzut ekranu przedstawiający opcje parametrów serwera](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
+7. Zmień wszystkie inne parametry potrzebne. 
+
+8. Wybierz **pozycję Zapisz**. 
+
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Zrzut ekranu przedstawiający powolne parametry dziennika zapytań i zapisywanie.":::
 
 Na stronie **Parametry serwera** można powrócić do listy dzienników, zamykając stronę.
 

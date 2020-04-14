@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 371c2186d44469a22b138255fb513761a9be4437
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 222f5647248d27c3bdfabd0feaeb66dd9f543652
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478216"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257729"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Skonfiguruj laboratorium do nauczania nauki o danych za pomocą notesów Pythona i Jupytera
 
@@ -37,7 +37,7 @@ Włącz ustawienia opisane w poniższej tabeli dla konta laboratorium. Aby uzysk
 | Obraz portalu Marketplace | Włącz obraz [maszyny wirtualnej do nauki o danych — windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) do użycia na koncie laboratorium. |
 
 >[!TIP]
->W tym artykule skupimy się na konfigurowaniu komputera szablonu korzystającego z systemu operacyjnego Windows Server.  Jest również możliwe skonfigurowanie klasy nauki o danych za pomocą notesów języka Python i Jupyter przy użyciu [obrazów maszyny wirtualnej do nauki o danych dla systemu Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) z portalu Azure Marketplace.
+>W tym artykule skupimy się na konfigurowaniu komputera szablonu korzystającego z systemu operacyjnego Windows Server.  Jest również możliwe skonfigurowanie klasy nauki o danych za pomocą notesów języka Python i Jupyter przy użyciu [obrazów maszyny wirtualnej do nauki o danych dla systemu Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) z portalu Azure Marketplace.
 
 ### <a name="lab-settings"></a>Ustawienia laboratorium
 

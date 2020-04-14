@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: db60a864ff29ff9eccdcfbdc0bd63587375d4bbd
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114980"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262880"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Częściowe wyszukiwanie terminów i wzory ze znakami specjalnymi (symbol wieloznaczny, wyrażenie regularne, wzory)
 
@@ -22,6 +22,9 @@ ms.locfileid: "81114980"
 Wyszukiwanie częściowe i wzorcowe może być problematyczne, jeśli indeks nie ma terminów w oczekiwanym formacie. Podczas [fazy analizy leksykalne](search-lucene-query-architecture.md#stage-2-lexical-analysis) indeksowania (przy założeniu domyślnego analizatora standardowego), znaki specjalne są odrzucane, ciągi kompozytowe i złożone są dzielone, a odstępy są usuwane; wszystkie z nich może spowodować kwerendy wzorca zakończyć się niepowodzeniem, gdy nie znaleziono dopasowania. Na `+1 (425) 703-6214` przykład numer telefonu, taki `"1"`jak `"425"` `"703"`(tokenized as , , , `"6214"`) nie będzie się wyświetlał w `"3-62"` kwerendzie, ponieważ ta zawartość w rzeczywistości nie istnieje w indeksie. 
 
 Rozwiązaniem jest wywołanie analizatora, który zachowuje pełny ciąg, w tym spacje i znaki specjalne, jeśli to konieczne, dzięki czemu można dopasować na warunkach częściowych i wzorców. Tworzenie dodatkowego pola dla nienaruszonego ciągu, a także przy użyciu analizatora zachowania zawartości, jest podstawą rozwiązania.
+
+> [!TIP]
+> Znasz interfejsy API listonosza i REST? [Pobierz kolekcję przykładów kwerend,](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples) aby zbadać częściowe terminy i znaki specjalne opisane w tym artykule.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Co to jest wyszukiwanie częściowe w usłudze Azure Cognitive Search
 
@@ -74,6 +77,7 @@ Wybierając analizator, który produkuje tokeny całego okresu, następujące an
 
 | Analizator | Zachowania |
 |----------|-----------|
+| [analizatory językowe](index-add-language-analyzers.md) | Zachowuje łączniki w złożonych wyrazach lub ciągach, mutacjach samogłosek i formach czasowników. Jeśli wzorce kwerend obejmują myślniki, użycie analizatora języka może być wystarczające. |
 | [Słowa kluczowego](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | Zawartość całego pola jest tokenizowana jako pojedynczy termin. |
 | [Odstępu](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Oddziela tylko na białych przestrzeniach. Terminy, które zawierają kreski lub inne znaki są traktowane jako pojedynczy token. |
 | [analizator niestandardowy](index-add-custom-analyzers.md) | (zalecane) Tworzenie analizatora niestandardowego umożliwia określenie zarówno tokenizatora i filtru tokenów. Poprzednie analizatory muszą być używane w stanie— jest. Analizator niestandardowy umożliwia wybranie tokenizatorów i filtrów tokenów do użycia. <br><br>Zalecaną kombinacją jest [tokenizator słów kluczowych](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) z [filtrem tokenów o mniejszej litery.](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html) Sam [analizator wstępnie zdefiniowanych słów kluczowych](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) nie wykonuje wielkich liter bez żadnych wielkich liter, co może spowodować niepowodzenie kwerend. Analizator niestandardowy zapewnia mechanizm dodawania filtru tokenu dolnoślądkowych. |
@@ -151,7 +155,9 @@ Niezależnie od tego, czy oceniasz analizatory, czy przechodzisz do przodu z okr
 
 ### <a name="use-built-in-analyzers"></a>Używanie wbudowanych analizatorów
 
-Wbudowane lub wstępnie zdefiniowane analizatory mogą być `analyzer` określone przez nazwę na właściwości definicji pola, bez dodatkowej konfiguracji wymagane w indeksie. W poniższym przykładzie pokazano, `whitespace` jak można ustawić analizatora w polu. Aby uzyskać więcej informacji na temat dostępnych wbudowanych analizatorów, zobacz [wstępnie zdefiniowane analizatory listy](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
+Wbudowane lub wstępnie zdefiniowane analizatory mogą być `analyzer` określone przez nazwę na właściwości definicji pola, bez dodatkowej konfiguracji wymagane w indeksie. W poniższym przykładzie pokazano, `whitespace` jak można ustawić analizatora w polu. 
+
+Aby zapoznać się z innymi scenariuszami i dowiedzieć się więcej o innych wbudowanych analizatorach, zobacz [wstępnie zdefiniowaną listę analizatorów](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
 
 ```json
     {

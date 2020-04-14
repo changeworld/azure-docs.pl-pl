@@ -3,8 +3,8 @@ title: Użyj interfejsu API zarządzania usługami (Python) — przewodnik po fu
 description: Dowiedz się, jak programowo wykonywać typowe zadania zarządzania usługami z języka Python.
 services: cloud-services
 documentationcenter: python
-author: lmazuel
-manager: wpickett
+author: tanmaygore
+manager: vashan
 editor: ''
 ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
 ms.service: cloud-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
-ms.author: lmazuel
-ms.openlocfilehash: ae44ce77ce480cc1bc56ead5547e003d7d4bb39c
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.author: tagore
+ms.openlocfilehash: 135dd92f7af4397f2053ea0bdc15d98dfad93914
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547579"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253360"
 ---
 # <a name="use-service-management-from-python"></a>Korzystanie z zarządzania usługami z języka Python
 W tym przewodniku pokazano, jak programowo wykonywać typowe zadania zarządzania usługami z języka Python. **ServiceManagementService** Klasy w [azure SDK dla języka Python](https://github.com/Azure/azure-sdk-for-python) obsługuje dostęp programowy do większości funkcji związanych z zarządzaniem usługami, który jest dostępny w [witrynie Azure portal][management-portal]. Za pomocą tej funkcji można tworzyć, aktualizować i usuwać usługi w chmurze, wdrożenia, usługi zarządzania danymi i maszyny wirtualne. Ta funkcja może być przydatna w tworzeniu aplikacji, które wymagają programowego dostępu do zarządzania usługami.

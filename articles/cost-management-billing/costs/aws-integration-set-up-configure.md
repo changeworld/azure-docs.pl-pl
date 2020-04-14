@@ -3,22 +3,26 @@ title: Konfigurowanie integracji platformy AWS z usługą Azure Cost Management
 description: W tym artykule przedstawiono sposób ustawiania i konfigurowania integracji raportów o kosztach i użyciu platformy AWS z usługą Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3b1efabbf5f05c05ef939ee8713829fbd49f483
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203087"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878990"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Ustawianie i konfigurowanie integracji raportów o kosztach i użyciu platformy AWS
 
 Dzięki integracji raportów o kosztach i użyciu (CUR, Cost and Usage report) platformy Amazon Web Services (AWS) można monitorować i kontrolować wydatki dotyczące platformy AWS w usłudze Azure Cost Management. Dzięki integracji wydatki dotyczące platformy AWS i platformy Azure można monitorować i kontrolować w jednym miejscu w witrynie Azure Portal. W tym artykule wyjaśniono, jak skonfigurować integrację i ustawić ją tak, aby można było używać funkcji usługi Azure Cost Management do analizowania kosztów i przeglądania budżetów.
 
 Usługa Azure Cost Management przetwarza raport o kosztach i użyciu platformy AWS, który jest przechowywany w zasobniku S3 przy użyciu poświadczeń dostępu do platformy AWS w celu pobrania definicji raportu i plików CSV w formacie GZIP.
+
+Obejrzyj wideo [How to set up Connectors for AWS in Cost Management](https://www.youtube.com/watch?v=Jg5KC1cx5cA) (Jak skonfigurować łączniki dla usługi AWS w usłudze Cost Management), aby dowiedzieć się więcej o sposobie konfigurowania integracji raportów usługi AWS. Aby obejrzeć inne wideo, odwiedź [kanał usługi Cost Management w serwisie YouTube](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/Jg5KC1cx5cA]
 
 ## <a name="create-a-cost-and-usage-report-in-aws"></a>Tworzenie raportu o kosztach i użyciu platformy AWS
 

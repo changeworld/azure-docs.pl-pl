@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 47702959474a352a8e13710ec850f789dee4d517
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c575389538230218e1e6e4f172ebcfbee8ee51dc
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278165"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273464"
 ---
 # <a name="common-sas-url-issues-and-fixes"></a>Typowe problemy i poprawki adresów URL sygnatury dostępu Współdzielonego
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami [dotyczącymi typowych problemów z adresami URL sygnatury dostępu Współdzielonego i poprawek,](https://aka.ms/AzureSAS_URL_FAQ) aby zarządzać zmigrowanymi ofertami.
 
 W poniższej tabeli wymieniono niektóre typowe problemy napotkane podczas pracy z podpisami dostępu współdzielonego (które są używane do identyfikowania i udostępniania przesłanych identyfikatorów VHD dla rozwiązania) wraz z sugerowanymi rozwiązaniami.
 

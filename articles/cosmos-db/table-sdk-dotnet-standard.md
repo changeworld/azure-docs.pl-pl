@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 48fd85e27feb3d0c7f7f722dbbd502be55684385
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7c6829d858e36b55f079f8ee03e431f67995e66
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76771588"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272580"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Standardowy interfejs API tabeli usługi Azure Cosmos DB .NET: informacje o pobieraniu i wydawaniu
 > [!div class="op_single_selector"]
@@ -26,9 +26,9 @@ ms.locfileid: "76771588"
 
 |   |   |
 |---|---|
-|**Pobieranie SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
+|**Pobieranie SDK**|[Nuget](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
 |**Przykładowe**|[Przykładowa tabela programu Cosmos DB .NET](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
-|**Quickstart**|[Quickstart](create-table-dotnet.md)|
+|**Szybki start**|[Szybki start](create-table-dotnet.md)|
 |**Samouczek**|[Samouczek](tutorial-develop-table-dotnet.md)|
 |**Obecne obsługiwane ramy**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
 |**Problem z raportem**|[Problem z raportem](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
@@ -41,6 +41,9 @@ Seria 2.0.0 przyjmuje zależność od [microsoft.Azure.Cosmos,](https://www.nuge
 
 ## <a name="release-notes-for-100-series"></a>Informacje o wersji dla serii 1.0.0
 Seria 1.0.0 uwzględnia zależność od [witryny Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
+
+### <a name="107"></a><a name="1.0.7"/>1.0.7
+* Poprawa wydajności przez ustawienie domyślnego poziomu śledzenia tabeli SDK na SourceLevels.Off, który można wywnić za pośrednictwem app.config
 
 ### <a name="105"></a><a name="1.0.5"/>1.0.5
 * Wprowadzenie nowej konfiguracji w obszarze Konfiguracja tableclientconfiguration w celu używania executora odpoczynku do komunikowania się z interfejsem API tabeli usługi Cosmos DB
@@ -108,7 +111,7 @@ Ta wieloplatformowa biblioteka .NET Standard [Microsoft.Azure.Cosmos.Table](http
 | [0.9.1-podgląd](#0.9.1-preview) |18 października 2018 r. |--- |
 
 
-## <a name="faq"></a>Najczęściej zadawane pytania
+## <a name="faq"></a>Często zadawane pytania
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

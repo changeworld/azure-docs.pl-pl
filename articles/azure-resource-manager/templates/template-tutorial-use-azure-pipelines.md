@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e7d6b23aa3f35c99cf03f855152b2b231a60a965
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b117861a528b6983876d28d5b343ea88c2bcadc0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75921617"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260687"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Samouczek: Ciągła integracja szablonów usługi Azure Resource Manager z potokami platformy Azure
 
@@ -46,7 +46,7 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
 ## <a name="prepare-a-github-repository"></a>Przygotowywanie repozytorium GitHub
 
-GitHub służy do przechowywania kodu źródłowego projektu, w tym szablonów Menedżera zasobów. Aby uzyskać inne obsługiwane repozytoria, zobacz [repozytoria obsługiwane przez usługę Azure DevOps](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types).
+GitHub służy do przechowywania kodu źródłowego projektu, w tym szablonów Menedżera zasobów. Aby uzyskać inne obsługiwane repozytoria, zobacz [repozytoria obsługiwane przez usługę Azure DevOps](/azure/devops/pipelines/repos/?view=azure-devops).
 
 ### <a name="create-a-github-repository"></a>Tworzenie repozytorium GitHub
 
@@ -212,7 +212,7 @@ Aby utworzyć potok z krokiem do wdrożenia szablonu:
 
 ## <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Otwórz grupę zasobów. Nazwa jest to, co zostało określone w pliku YAML potoku.  Zobaczysz jedno konto magazynu utworzone.  Nazwa konta magazynu zaczyna się od **magazynu**.
 1. Wybierz nazwę konta magazynu, aby ją otworzyć.
 1. Wybierz **pozycję Właściwości**. Zwróć uwagę, **że replikacja** to **magazyn lokalnie nadmiarowy (LRS).**

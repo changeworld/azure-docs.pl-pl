@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/21/2019
+ms.date: 04/12/2020
 author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: a5540eea91937319a6ac947b50698ccaa8b25847
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 006d4fa9ed09170a423e796e893b817e079e861b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931699"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261939"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Uruchamianie pakietów usług integracji programu SQL Server za pomocą narzędzia dtexec obsługującego platformę Azure
 W tym artykule opisano narzędzie wiersza polecenia dtexec (AzureDTExec) z obsługą platformy Azure. Służy do uruchamiania pakietów usług integracji programu SQL Server (SSIS) w czasie wykonywania integracji platformy Azure-SSIS (IR) w usłudze Azure Data Factory.
@@ -46,19 +46,19 @@ W oknie **AzureDTExecConfig** wprowadź ustawienia konfiguracji w następujący 
 - **ApplicationId**: Wprowadź unikatowy identyfikator aplikacji usługi Azure AD, który tworzysz z odpowiednimi uprawnieniami do generowania potoków w fabryce danych. Aby uzyskać więcej informacji, zobacz [Tworzenie aplikacji i jednostki usługi Azure AD za pośrednictwem witryny Azure portal.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
 - **AuthenticationKey:** Wprowadź klucz uwierzytelniania dla aplikacji usługi Azure AD.
 - **Identyfikator dzierżawy:** Wprowadź unikatowy identyfikator dzierżawy usługi Azure AD, w ramach którego jest tworzona aplikacja usługi Azure AD.
-- **SubscriptionId**: Wprowadź unikatowy identyfikator subskrypcji platformy Azure, w ramach którego utworzono fabrykę danych.
-- **ResourceGroup**: Wprowadź nazwę grupy zasobów platformy Azure, w której utworzono fabrykę danych.
 - **DataFactory:** Wprowadź nazwę fabryki danych, w którym unikatowe potoki z execute SSIS package działania w nich są generowane na podstawie wartości opcji podanych podczas wywoływania Usługi AzureDTExec.
 - **IRName:** Wprowadź nazwę usługi Azure-SSIS IR w fabryce danych, na którym pakiety określone w ich ścieżki universal naming convention (UNC) będą uruchamiane podczas wywoływania usługi AzureDTExec.
-- **PackageAccessDomain:** Wprowadź poświadczenia domeny, aby uzyskać dostęp do pakietów w ich ścieżce UNC, która jest określona podczas wywoływania usługi AzureDTExec.
-- **PackageAccessUserName:** Wprowadź poświadczenia nazwy użytkownika, aby uzyskać dostęp do pakietów w ich ścieżce UNC, która jest określona podczas wywoływania usługi AzureDTExec.
-- **PackageAccessPassword:** Wprowadź poświadczenia hasła, aby uzyskać dostęp do pakietów w ich ścieżce UNC, która jest określona podczas wywoływania usługi AzureDTExec.
-- **LogPath:** Wprowadź ścieżkę UNC folderu dziennika, w którym są zapisywane pliki dziennika z wykonania pakietu na platformie Azure-SSIS IR.
-- **LogLevel:** Wprowadź wybrany zakres rejestrowania ze wstępnie zdefiniowanych **opcji null**, **Basic**, **Verbose**lub **Performance** dla wykonań pakietów na platformie Azure-SSIS IR.
-- **LogAccessDomain**: Wprowadź poświadczenia domeny, aby uzyskać dostęp do folderu dziennika w jego ścieżce UNC podczas pisania plików dziennika, co jest wymagane, gdy **logpath** jest określony i **LogLevel** nie ma **wartości null**.
-- **LogAccessUserName**: Wprowadź poświadczenie nazwy użytkownika, aby uzyskać dostęp do folderu dziennika w jego ścieżce UNC podczas pisania plików dziennika, co jest wymagane, gdy **logpath** jest określony i **LogLevel** nie jest **null**.
-- **LogAccessPassword**: Wprowadź poświadczenie hasła, aby uzyskać dostęp do folderu dziennika w jego ścieżce UNC podczas pisania plików dziennika, co jest wymagane, gdy **logpath** jest określony i **LogLevel** nie jest **null**.
 - **PipelineNameHashStrLen:** Wprowadź długość ciągów mieszania, które mają być generowane na podstawie wartości opcji, które są podane podczas wywoływania usługi AzureDTExec. Ciągi są używane do tworzenia unikatowych nazw potoków fabryki danych, które uruchamiają pakiety na platformie Azure-SSIS IR. Zazwyczaj wystarczy długość 32 znaków.
+- **ResourceGroup**: Wprowadź nazwę grupy zasobów platformy Azure, w której utworzono fabrykę danych.
+- **SubscriptionId**: Wprowadź unikatowy identyfikator subskrypcji platformy Azure, w ramach którego utworzono fabrykę danych.
+- **LogAccessDomain**: Wprowadź poświadczenia domeny, aby uzyskać dostęp do folderu dziennika w jego ścieżce UNC podczas pisania plików dziennika, co jest wymagane, gdy **logpath** jest określony i **LogLevel** nie ma **wartości null**.
+- **LogAccessPassword**: Wprowadź poświadczenie hasła, aby uzyskać dostęp do folderu dziennika w jego ścieżce UNC podczas pisania plików dziennika, co jest wymagane, gdy **logpath** jest określony i **LogLevel** nie jest **null**.
+- **LogAccessUserName**: Wprowadź poświadczenie nazwy użytkownika, aby uzyskać dostęp do folderu dziennika w jego ścieżce UNC podczas pisania plików dziennika, co jest wymagane, gdy **logpath** jest określony i **LogLevel** nie jest **null**.
+- **LogLevel:** Wprowadź wybrany zakres rejestrowania ze wstępnie zdefiniowanych **opcji null**, **Basic**, **Verbose**lub **Performance** dla wykonań pakietów na platformie Azure-SSIS IR.
+- **LogPath:** Wprowadź ścieżkę UNC folderu dziennika, w którym są zapisywane pliki dziennika z wykonania pakietu na platformie Azure-SSIS IR.
+- **PackageAccessDomain:** Wprowadź poświadczenia domeny, aby uzyskać dostęp do pakietów w ich ścieżce UNC, która jest określona podczas wywoływania usługi AzureDTExec.
+- **PackageAccessPassword:** Wprowadź poświadczenia hasła, aby uzyskać dostęp do pakietów w ich ścieżce UNC, która jest określona podczas wywoływania usługi AzureDTExec.
+- **PackageAccessUserName:** Wprowadź poświadczenia nazwy użytkownika, aby uzyskać dostęp do pakietów w ich ścieżce UNC, która jest określona podczas wywoływania usługi AzureDTExec.
 
 Aby przechowywać pakiety i pliki dziennika w systemach plików lub udziałach plików lokalnie, dołącz do usługi Azure-SSIS IR do sieci wirtualnej połączonej z siecią lokalną, aby mogła pobierać pakiety i zapisywać pliki dziennika. Aby uzyskać więcej informacji, zobacz [Dołączanie usługi Azure-SSIS IR do sieci wirtualnej.](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)
 
@@ -92,7 +92,7 @@ Wywoływanie usługi AzureDTExec oferuje podobne opcje, jak wywoływanie dtexec.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po unikatowe potoki z execute SSIS package działania w nich są generowane i uruchamiane po wywołaniu AzureDTExec, mogą być monitorowane w portalu fabryki danych. Aby uzyskać więcej informacji, zobacz [Uruchamianie pakietów SSIS jako działań usługi Data Factory](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Po unikatowe potoki z execute SSIS package działania w nich są generowane i uruchamiane podczas wywoływania AzureDTExec, mogą być monitorowane w portalu fabryki danych. Można również przypisać wyzwalacze fabryki danych do nich, jeśli chcesz zorganizować/zaplanować je przy użyciu fabryki danych. Aby uzyskać więcej informacji, zobacz [Uruchamianie pakietów SSIS jako działań usługi Data Factory](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
 
 > [!WARNING]
 > Oczekuje się, że wygenerowany potok będzie używany tylko przez usługę AzureDTExec. Jego właściwości lub parametry mogą ulec zmianie w przyszłości, więc nie modyfikuj ich ani nie używaj ich ponownie do innych celów. Modyfikacje mogą przerwać azuredtexec. Jeśli tak się stanie, usuń potoku. Usługa AzureDTExec generuje nowy potok przy następnym wywołaniu.

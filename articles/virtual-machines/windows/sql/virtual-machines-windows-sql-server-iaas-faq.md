@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d6d69b82e80ff9bc33e49302cf59766b9c2e8d4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249739"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270829"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące programu SQL Server uruchomionego na maszynach wirtualnych z systemem Windows na platformie Azure
 
@@ -53,9 +53,17 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
 
    Tak, za pomocą programu PowerShell. Aby uzyskać więcej informacji na temat wdrażania maszyn wirtualnych programu SQL Server przy użyciu programu PowerShell, zobacz [Jak aprowizować maszyny wirtualne programu SQL Server za pomocą programu Azure PowerShell](virtual-machines-windows-ps-sql-create.md).
 
-1. **Czy mogę utworzyć uogólniony obraz portalu Azure SQL Server Marketplace mojej maszyny wirtualnej programu SQL Server i używać go do wdrażania maszyn wirtualnych?**
+1. **Jak uogólnić program SQL Server na maszynie Wirtualnej platformy Azure i używać jej do wdrażania nowych maszyn wirtualnych?**
 
-   Tak, ale następnie należy [zarejestrować każdą maszynę wirtualną programu SQL Server u dostawcy zasobów maszyny Wirtualnej programu SQL Server,](virtual-machines-windows-sql-register-with-resource-provider.md) aby zarządzać maszyną wirtualną programu SQL Server w portalu, a także korzystać z funkcji, takich jak automatyczne instalowanie poprawek i automatyczne tworzenie kopii zapasowych. Podczas rejestrowania się u dostawcy zasobów należy również określić typ licencji dla każdej maszyny Wirtualnej programu SQL Server. 
+   Maszynę wirtualną systemu Windows Server (bez zainstalowanego na niej programu SQL Server) można wdrożyć maszynę wirtualną systemu Windows Server (bez zainstalowanego programu SQL Server) i użyć procesu [sysprep SQL](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) do uogólniania programu SQL Server na maszynie Wirtualnej Platformy Azure (Windows) za pomocą nośnika instalacyjnego programu SQL Server. Klienci, którzy mają [pakiet software assurance,](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) mogą uzyskać nośnik instalacyjny z [Centrum licencjonowania zbiorowego.](https://www.microsoft.com/Licensing/servicecenter/default.aspx) Klienci, którzy nie mają certyfikatu oprogramowania, mogą używać nośnika instalacyjnego z obrazu maszyny Wirtualnej programu Marketplace SQL Server, który ma żądaną wersję.
+
+   Alternatywnie należy użyć jednego z obrazów programu SQL Server z witryny Azure marketplace, aby uogólnić program SQL Server na maszynie Wirtualnej platformy Azure. Należy zauważyć, że przed utworzeniem własnego obrazu należy usunąć następujący klucz rejestru w obrazie źródłowym. Niepowodzenie może spowodować wzdęcia folderu bootstrap instalatora programu SQL Server i/lub rozszerzenia SQL IaaS w stanie awarii.
+
+   Ścieżka klucza rejestru:  
+   `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
+
+   > [!NOTE]
+   > Firma Microsoft zaleca, aby wszystkie maszyny wirtualne platformy Azure programu SQL Server, w tym te wdrożone na podstawie niestandardowych obrazów uogólnionych, [były zarejestrowane u dostawcy odwołań maszyn wirtualnych SQL](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash) w celu spełnienia wymagań dotyczących zgodności i korzystania z opcjonalnych funkcji, takich jak automatyczne instalowanie poprawek i automatyczne tworzenie kopii zapasowych. Pozwoli to również [określić typ licencji](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal) dla każdej maszyny Wirtualnej programu SQL Server.
 
 1. **Czy mogę użyć własnego dysku VHD do wdrożenia maszyny Wirtualnej programu SQL Server?**
 
@@ -117,13 +125,13 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
    Pasywne wystąpienie programu SQL Server nie obsługuje danych programu SQL Server klientom ani nie uruchamia aktywnych obciążeń programu SQL Server. Jest on używany tylko do synchronizacji z serwerem podstawowym i w inny sposób obsługiwać pasywną bazę danych w ciepłym stanie gotowości. Jeśli obsługuje dane, takie jak raporty do klientów z aktywnymi obciążeniami programu SQL Server lub wykonywania jakiejkolwiek pracy innej niż określona w warunkach produktu, musi to być płatne licencjonowane wystąpienie programu SQL Server. Następujące działanie jest dozwolone w wystąpieniu pomocniczym: sprawdzanie spójności bazy danych lub CheckDB, pełne kopie zapasowe, kopie zapasowe dziennika transakcji i monitorowanie danych użycia zasobów. Można również uruchomić podstawowe i odpowiadające wystąpienie odzyskiwania po awarii jednocześnie dla krótkich okresów testowania odzyskiwania po awarii co 90 dni.
    
 
-1. **Jakie scenariusze mogą korzystać z korzyści Distaster Recovery (DR)?**
+1. **Jakie scenariusze mogą korzystać z korzyści odzyskiwania po awarii (DR)?**
 
    [Przewodnik licencjonowania](https://aka.ms/sql2019licenseguide) zawiera scenariusze, w których można wykorzystać korzyści odzyskiwania po awarii. Więcej informacji można znaleźć w Warunkach korzystania z produktu i porozmawiać z kontaktami licencyjnymi lub menedżerem konta.
 
 1. **Które subskrypcje obsługują korzyści odzyskiwania po awarii (DR)?**
 
-   Kompleksowe programy, które oferują równoważne prawa subskrypcji pakietu Software Assurance jako świadczenia stałe, obsługują korzyści z odzyskiwania po awarii. Obejmuje to. ale nie jest ograniczona do, Open Value (OV), Open Value Subscription (OVS), Enterprise Agreement (EA), Enterprise Subscription Agreement (EAS) oraz Server and Cloud Enrollment (SCE). Aby uzyskać więcej informacji, zapoznaj się z [warunkami produktu](https://www.microsoft.com/licensing/product-licensing/products) i porozmawiaj z kontaktami licencyjnymi lub menedżerem acocunt. 
+   Kompleksowe programy, które oferują równoważne prawa subskrypcji pakietu Software Assurance jako świadczenia stałe, obsługują korzyści z odzyskiwania po awarii. Obejmuje to. ale nie jest ograniczona do, Open Value (OV), Open Value Subscription (OVS), Enterprise Agreement (EA), Enterprise Subscription Agreement (EAS) oraz Server and Cloud Enrollment (SCE). Aby uzyskać więcej informacji, zapoznaj się z [warunkami produktu](https://www.microsoft.com/licensing/product-licensing/products) i porozmawiaj z kontaktami licencyjnymi lub menedżerem konta. 
 
    
  ## <a name="resource-provider"></a>Dostawca zasobów
@@ -219,7 +227,7 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
    
     Tak. Lokalny kod DTC jest obsługiwany dla dodatku SP2 dla programu SQL Server 2016 i większej. Jednak aplikacje muszą być testowane podczas korzystania z zawsze na grupy dostępności, jak transakcje w locie podczas pracy awaryjnej zakończy się niepowodzeniem i muszą być ponowione. Usługa Clustered DTC jest dostępna począwszy od systemu Windows Server 2019. 
 
-## <a name="resources"></a>Resources
+## <a name="resources"></a>Zasoby
 
 **Maszyny wirtualne z systemem Windows**:
 

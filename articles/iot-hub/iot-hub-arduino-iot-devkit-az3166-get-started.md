@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 326b79e1aca6fa82b3275249401c755428a8b71d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 631a20c7bf73aa2af363fdc0019ef24cccc58f9e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878565"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258613"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Łączenie zestawu IoT DevKit AZ3166 z centrum Usługi Azure IoT Hub
 
@@ -327,6 +327,17 @@ Przykładowa aplikacja działa pomyślnie po wyświetleniu następujących wynik
 * Dioda LED na MXChip IoT DevKit miga.
 
 ![Wyjście monitora szeregowego](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/result-serial-output.png)
+
+> [!NOTE]
+> Podczas testowania może wystąpić błąd, w którym dioda LED nie miga, portal Azure nie wyświetla danych przychodzących z urządzenia, ale ekran OLED urządzenia jest wyświetlany jako **uruchomiony...**. Aby rozwiązać ten problem, w witrynie Azure portal przejdź do urządzenia w centrum IoT i wyślij wiadomość do urządzenia. Jeśli widzisz następującą odpowiedź na monitorze szeregowym w programie VS Code, możliwe, że bezpośrednia komunikacja z urządzenia jest zablokowana na poziomie routera. Sprawdź reguły zapory i routera skonfigurowane dla urządzeń łączących. Upewnij się również, że port wychodzący 1833 jest otwarty.
+> 
+> BŁĄD: mqtt_client.c (ln 454): Błąd: błąd otwierania połączenia z punktem końcowym  
+> INFO: >>>Stan połączenia: odłączony  
+> BŁĄD: tlsio_mbedtls.c (ln 604): Podstawowe otwarcie we/wy nie powiodło się  
+> BŁĄD: mqtt_client.c (ln 1042): Błąd: io_open nie powiodło się  
+> BŁĄD: iothubtransport_mqtt_common.c (ln 2283): awaria połączenia z atcsliothub.azure-devices.net adres.  
+> INFO: >>>Ponownie połączyć.  
+> INFO: Wersja IoThub: 1.3.6  
 
 ### <a name="view-the-telemetry-received-by-azure-iot-hub"></a>Wyświetlanie danych telemetrycznych odebranych przez usługę Azure IoT Hub
 

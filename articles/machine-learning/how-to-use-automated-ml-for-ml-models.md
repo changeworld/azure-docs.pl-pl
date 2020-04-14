@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
-ms.openlocfilehash: aa85e80f1a90191a0a34a6962437c27a9d57ef65
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 0d6fa02578814c4c5d034be05cbc63093d70603b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547551"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257236"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Tworzenie, przeglądanie i wdrażanie zautomatyzowanych modeli uczenia maszynowego za pomocą usługi Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -155,7 +155,6 @@ Wariancja| Miara tego, jak daleko rozmieszcza się dane tej kolumny jest od jej 
 Skośność| Zmierz, jak różne są dane tej kolumny od rozkładu normalnego.
 Kurtoza| Miara tego, jak mocno ogołoconych danych tej kolumny jest porównywana z rozkładem normalnym.
 
-
 <a name="featurization"></a>
 
 ## <a name="advanced-featurization-options"></a>Zaawansowane opcje featurization
@@ -164,12 +163,15 @@ Zautomatyzowane uczenie maszynowe oferuje automatyczne przetwarzanie wstępne i 
 
 ### <a name="preprocessing"></a>Wstępnego przetwarzania
 
+> [!NOTE]
+> Jeśli planujesz wyeksportować modele utworzone automatycznie ml do [modelu ONNX,](concept-onnx.md)tylko opcje featurization wskazane w * są obsługiwane w formacie ONNX. Dowiedz się więcej o [konwersji modeli na ONNX](concept-automated-ml.md#use-with-onnx). 
+
 |Kroki przetwarzania wstępnego&nbsp;| Opis |
 | ------------- | ------------- |
-|Upuść funkcje o wysokiej kardynalności lub bez wariancji|Upuść je z zestawów szkoleniowych i sprawdzania poprawności, w tym funkcji z brakującymi wartościami, tą samą wartością we wszystkich wierszach lub z bardzo wysoką kardynalnością (na przykład skrótami, identyfikatorami lub identyfikatorami GUID).|
-|Przypisywanie brakujących wartości|W przypadku operacji liczbowych należy przypisać średnią wartości w kolumnie.<br/><br/>W przypadku cech kategorii przypisywaj najczęściej spotykaną wartość.|
-|Generowanie dodatkowych funkcji|Dla datetime funkcje: rok, miesiąc, dzień, dzień tygodnia, dzień w roku, kwartał, tydzień roku, godzina, minuta, drugi.<br/><br/>W przypadku funkcji tekstu: Częstotliwość terminów oparta na jednogramach, bi-gramach i trójznakowych gramach.|
-|Przekształcanie i kodowanie |Operacje numeryczne z kilkoma unikatowymi wartościami są przekształcane w funkcje kategoryczne.<br/><br/>Kodowanie na gorąco jest wykonywane dla klasyki niskiej kardynalności; dla wysokiej kardynalności, kodowanie jeden skrót.|
+|Upuść funkcje o wysokiej kardynalności lub bez wariancji* |Upuść je z zestawów szkoleniowych i sprawdzania poprawności, w tym funkcji z brakującymi wartościami, tą samą wartością we wszystkich wierszach lub z bardzo wysoką kardynalnością (na przykład skrótami, identyfikatorami lub identyfikatorami GUID).|
+|Przypisywanie brakujących wartości* |W przypadku operacji liczbowych należy przypisać średnią wartości w kolumnie.<br/><br/>W przypadku cech kategorii przypisywaj najczęściej spotykaną wartość.|
+|Generowanie dodatkowych funkcji* |Dla datetime funkcje: rok, miesiąc, dzień, dzień tygodnia, dzień w roku, kwartał, tydzień roku, godzina, minuta, drugi.<br/><br/>W przypadku funkcji tekstu: Częstotliwość terminów oparta na jednogramach, bi-gramach i trójznakowych gramach.|
+|Przekształcanie i kodowanie *|Operacje numeryczne z kilkoma unikatowymi wartościami są przekształcane w funkcje kategoryczne.<br/><br/>Kodowanie na gorąco jest wykonywane dla klasyki niskiej kardynalności; dla wysokiej kardynalności, kodowanie jeden skrót.|
 |Osadzanie wyrazów|Tekst featurizer, który konwertuje wektory tokenów tekstowych na wektory zdań przy użyciu wstępnie przeszkolonego modelu. Wektor osadzania każdego wyrazu w dokumencie jest agregowany razem w celu uzyskania wektora funkcji dokumentu.|
 |Kodowania docelowe|W przypadku obiektów kategorii mapuje każdą kategorię ze uśrednianą wartością docelową problemów z regresją oraz prawdopodobieństwem klasy dla każdej klasy w przypadku problemów z klasyfikacją. Wagi oparte na częstotliwościach i walidacja krzyżowa k-fold są stosowane w celu zmniejszenia nadmiernego dopasowania mapowania i hałasu spowodowanego przez rzadkie kategorie danych.|
 |Kodowanie docelowe tekstu|W przypadku wprowadzania tekstu skumulowany model liniowy z workiem słów jest używany do generowania prawdopodobieństwa każdej klasy.|
@@ -178,19 +180,13 @@ Zautomatyzowane uczenie maszynowe oferuje automatyczne przetwarzanie wstępne i 
 
 ### <a name="data-guardrails"></a>Barierki ochronne danych
 
-Barierki danych są stosowane, gdy automatyczne featurization jest włączona lub sprawdzanie poprawności jest ustawiona na auto. Barierki danych pomagają identyfikować potencjalne problemy z danymi (np. brakujące wartości, nierównowaga klas) i pomagają w podejmowaniu działań naprawczych w celu poprawy wyników. Istnieje wiele najlepszych rozwiązań, które są dostępne i mogą być stosowane w celu osiągnięcia wiarygodnych wyników. Użytkownicy mogą przeglądać barierki danych w studio w zakładce **Barierki** ```show_output=True``` danych w zautomatyzowanym uruchomieniu ml lub ustawiając podczas przesyłania eksperymentu przy użyciu zestawu SDK języka Python. W poniższej tabeli opisano barierki danych obecnie obsługiwane i skojarzone stany, które użytkownicy mogą natknąć podczas przesyłania eksperymentu.
+Barierki danych są stosowane, gdy automatyczne featurization jest włączona lub sprawdzanie poprawności jest ustawiona na auto. Barierki danych pomagają identyfikować potencjalne problemy z danymi (np. brakujące wartości, nierównowaga klas) i pomagają w podejmowaniu działań naprawczych w celu poprawy wyników. 
 
-Poręczy|Stan|Warunek&nbsp;&nbsp;wyzwalacza
----|---|---
-Brakujące wartości operacji przypisanie |**Przekazywane** <br><br><br> **Gotowe**| W danych szkoleniowych nie wykryto brakujących wartości funkcji. Dowiedz się więcej o [brakuującym imputacji wartości.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Brakujące wartości funkcji zostały wykryte w danych szkoleniowych i przypisane.
-Obsługa funkcji o wysokiej kardynalności |**Przekazywane** <br><br><br> **Gotowe**| Dane wejściowe zostały przeanalizowane i nie wykryto żadnych funkcji wysokiej kardynalności. Dowiedz się więcej o [wykrywaniu funkcji wysokiej kardynalności.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Funkcje wysokiej kardynalności zostały wykryte w danych wejściowych i zostały obsłużone.
-Obsługa podziału sprawdzania poprawności |**Gotowe**| *Konfiguracja sprawdzania poprawności została ustawiona na "auto", a dane szkoleniowe zawierały **mniej** niż 20 000 wierszy.* <br> Każda iteracja uczonego modelu została zweryfikowana za pomocą krzyżowego sprawdzania poprawności. Dowiedz się więcej o [danych sprawdzania poprawności.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *Konfiguracja sprawdzania poprawności została ustawiona na "auto", a dane szkoleniowe zawierały **ponad** 20 000 wierszy.* <br> Dane wejściowe zostały podzielone na zestaw danych szkoleniowych i zestaw danych sprawdzania poprawności do sprawdzania poprawności modelu.
-Wykrywanie równoważenia klas |**Przekazywane** <br><br><br><br> **Pogotowiu** | Dane wejściowe zostały przeanalizowane, a wszystkie klasy są zrównoważone w danych szkoleniowych. Zestaw danych jest uważany za zrównoważony, jeśli każda klasa ma dobrą reprezentację w zestawie danych, mierzoną liczbą i współczynnikiem próbek. <br><br><br> Niezrównoważone klasy zostały wykryte w danych wejściowych. Aby naprawić błąd modelu, rozwiąż problem równoważenia. Dowiedz się więcej o [nieeksołkowych danych.](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml#imbalance)
-Wykrywanie problemów z pamięcią |**Przekazywane** <br><br><br><br> **Gotowe** |<br> Przeanalizowano wybraną wartość {horyzont, opóźnienie, okno toczenia} i nie wykryto żadnych potencjalnych problemów poza pamięcią. Dowiedz się więcej o [konfiguracjach prognozowania szeregów czasowych.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) <br><br><br>Wybrane wartości {horyzont, opóźnienie, okno toczenia} zostały przeanalizowane i potencjalnie spowoduje, że eksperyment zabraknie pamięci. Konfiguracje opóźnień lub okien toczących się zostały wyłączone.
-Wykrywanie częstotliwości |**Przekazywane** <br><br><br><br> **Gotowe** |<br> Seria czasowa została przeanalizowana, a wszystkie punkty danych są wyrównane z wykrytą częstotliwością. <br> <br> Przeanalizowano szeregi czasowe i wykryto punkty danych, które nie są zgodne z wykrytą częstotliwością. Te punkty danych zostały usunięte z zestawu danych. Dowiedz się więcej o [przygotowaniu danych do prognozowania szeregów czasowych.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
+Użytkownicy mogą przeglądać barierki danych w studio w zakładce **Barierki** ```show_output=True``` danych automatycznego uruchamiania ml lub ustawiając podczas przesyłania eksperymentu przy użyciu zestawu SDK języka Python. 
 
 #### <a name="data-guardrail-states"></a>Stany poręczy danych
-Barierki danych będą wyświetlać jeden z trzech stanów: "Przekazany", "Gotowe lub "Alerty".
+
+Barierki danych będą wyświetlać jeden z trzech stanów: **Passed**, **Done**lub **Alerted**.
 
 Stan| Opis
 ----|----
@@ -198,7 +194,19 @@ Przekazywane| Nie wykryto żadnych problemów z danymi i nie jest wymagana żadn
 Gotowe| Zmiany zostały zastosowane do danych. Zachęcamy użytkowników do zapoznania się z działaniami naprawczymi podjętymi przez zautomatyzowane ml, aby upewnić się, że zmiany są zgodne z oczekiwanymi wynikami. 
 Pogotowiu| Wykryto problem z danymi, których nie można było rozwiązać. Zachęcamy użytkowników do zmiany i rozwiązania problemu. 
 
-Poprzednia wersja automatycznego ml wyświetlała czwarty stan: "Naprawiony". Nowsze eksperymenty nie będą wyświetlać tego stanu, a wszystkie barierki, które wyświetlały stan "Stały", będą teraz wyświetlać "Gotowe".   
+>[!NOTE]
+> Poprzednie wersje zautomatyzowanych eksperymentów ml wyświetlały czwarty stan: **Naprawiono**. Nowsze eksperymenty nie będą wyświetlać tego stanu, a wszystkie barierki, które wyświetlały stan **Stały,** będą teraz wyświetlane **gotowe**.   
+
+W poniższej tabeli opisano barierki danych obecnie obsługiwane i skojarzone stany, które użytkownicy mogą natknąć podczas przesyłania eksperymentu.
+
+Poręczy|Stan|Warunek&nbsp;&nbsp;wyzwalacza
+---|---|---
+Brakujące wartości operacji przypisanie |**Przekazywane** <br><br><br> **Gotowe**| W danych szkoleniowych nie wykryto brakujących wartości funkcji. Dowiedz się więcej o [brakuującym imputacji wartości.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Brakujące wartości funkcji zostały wykryte w danych szkoleniowych i przypisane.
+Obsługa funkcji o wysokiej kardynalności |**Przekazywane** <br><br><br> **Gotowe**| Dane wejściowe zostały przeanalizowane i nie wykryto żadnych funkcji wysokiej kardynalności. Dowiedz się więcej o [wykrywaniu funkcji wysokiej kardynalności.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Funkcje wysokiej kardynalności zostały wykryte w danych wejściowych i zostały obsłużone.
+Obsługa podziału sprawdzania poprawności |**Gotowe**| *Konfiguracja sprawdzania poprawności została ustawiona na "auto", a dane szkoleniowe zawierały **mniej** niż 20 000 wierszy.* <br> Każda iteracja uczonego modelu została zweryfikowana za pomocą krzyżowego sprawdzania poprawności. Dowiedz się więcej o [danych sprawdzania poprawności.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *Konfiguracja sprawdzania poprawności została ustawiona na "auto", a dane szkoleniowe zawierały **ponad** 20 000 wierszy.* <br> Dane wejściowe zostały podzielone na zestaw danych szkoleniowych i zestaw danych sprawdzania poprawności do sprawdzania poprawności modelu.
+Wykrywanie równoważenia klas |**Przekazywane** <br><br><br><br> **Pogotowiu** | Dane wejściowe zostały przeanalizowane, a wszystkie klasy są zrównoważone w danych szkoleniowych. Zestaw danych jest uważany za zrównoważony, jeśli każda klasa ma dobrą reprezentację w zestawie danych, mierzoną liczbą i współczynnikiem próbek. <br><br><br> Niezrównoważone klasy zostały wykryte w danych wejściowych. Aby naprawić błąd modelu, rozwiąż problem równoważenia. Dowiedz się więcej o [nieeksołkowych danych.](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)
+Wykrywanie problemów z pamięcią |**Przekazywane** <br><br><br><br> **Gotowe** |<br> Przeanalizowano wybraną wartość {horyzont, opóźnienie, okno toczenia} i nie wykryto żadnych potencjalnych problemów poza pamięcią. Dowiedz się więcej o [konfiguracjach prognozowania szeregów czasowych.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) <br><br><br>Wybrane wartości {horyzont, opóźnienie, okno toczenia} zostały przeanalizowane i potencjalnie spowoduje, że eksperyment zabraknie pamięci. Konfiguracje opóźnień lub okien toczących się zostały wyłączone.
+Wykrywanie częstotliwości |**Przekazywane** <br><br><br><br> **Gotowe** |<br> Seria czasowa została przeanalizowana, a wszystkie punkty danych są wyrównane z wykrytą częstotliwością. <br> <br> Przeanalizowano szeregi czasowe i wykryto punkty danych, które nie są zgodne z wykrytą częstotliwością. Te punkty danych zostały usunięte z zestawu danych. Dowiedz się więcej o [przygotowaniu danych do prognozowania szeregów czasowych.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
 
 ## <a name="run-experiment-and-view-results"></a>Uruchamianie eksperymentu i wyświetlanie wyników
 

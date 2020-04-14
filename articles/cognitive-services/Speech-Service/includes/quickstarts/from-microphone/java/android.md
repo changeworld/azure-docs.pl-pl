@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: c37a52ea2a7d5f1d3e325c2f6d17bc075f50c5e0
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 2641464e52b80c59b6c6b5a123ad1605c1d41495
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671096"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274830"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -78,5 +78,4 @@ Wybierz przycisk w aplikacji, aby rozpocząć sekcję rozpoznawania mowy. Kolejn
 
 ## <a name="next-steps"></a>Następne kroki
 
-[!INCLUDE [footer](./footer.md)]
-
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

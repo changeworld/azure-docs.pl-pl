@@ -4,12 +4,12 @@ description: Dowiedz się, jak używać witryny Azure Portal do tworzenia klastr
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 696821e12e963292107cad5b22f00a9816a94b25
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 7b9127c016fff78a8867dcecbe3260becdf02c65
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616421"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259123"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Tworzenie i konfigurowanie klastra usług Kubernetes platformy Azure (AKS) do używania węzłów wirtualnych w witrynie Azure portal
 
@@ -66,7 +66,7 @@ Funkcja wirtualnych węzłów jest w dużym stopniu zależna od zestawu funkcji 
 * [Aliasy hostów](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * [Argumenty](../container-instances/container-instances-exec.md#restrictions) dla exec w ACI
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nie wdroży zasobników w węźle wirtualnym
-* [Węzły systemu Windows Server (obecnie w wersji zapoznawczej w systemie AKS)](windows-container-cli.md) nie są obsługiwane obok węzłów wirtualnych. Za pomocą węzłów wirtualnych można planować kontenery systemu Windows Server bez konieczności stosowania węzłów systemu Windows Server w klastrze AKS.
+* Węzły wirtualne obsługują planowanie zasobników systemu Linux. Można ręcznie zainstalować dostawcę [ACI Virtual Kubelet](https://github.com/virtual-kubelet/azure-aci) open source, aby zaplanować kontenery systemu Windows Server do usługi ACI. 
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 

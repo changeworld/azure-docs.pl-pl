@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: dsindona
-ms.openlocfilehash: 5263d24c411ef8de4187c2fd750013374d779f04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f13e4066137e0d76612040d9f6e5ff3d0aa399c8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277943"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273906"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Wdrażanie maszyny wirtualnej z wirtualnych sieci wirtualnych
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [Tworzenie zasobów technicznych maszyny wirtualnej platformy Azure](https://aka.ms/AzureVMTechAsset) do zarządzania zmigrowanych ofert.
 
 W tej sekcji wyjaśniono, jak wdrożyć maszynę wirtualną (VM) z wirtualnego dysku twardego (VHD) wdrożonego pod platformą Azure.  Zawiera listę wymaganych narzędzi i jak ich używać do tworzenia obrazu maszyny Wirtualnej użytkownika, a następnie wdrożyć go na platformie Azure przy użyciu skryptów programu PowerShell.
 

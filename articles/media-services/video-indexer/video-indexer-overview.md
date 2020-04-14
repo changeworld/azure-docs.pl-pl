@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/02/2020
+ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: efd8386f464bfdf2ac27d3be07e6572dc27952e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bea9e375e00d6fc0f6c33aa1bcc766773db2059
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78163594"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269945"
 ---
 # <a name="what-is-video-indexer"></a>Co to jest Video Indexer?
 
@@ -70,9 +70,9 @@ Na poniższej liście przedstawiono szczegółowe informacje, które można pobr
 
 ### <a name="audio-insights"></a>Szczegółowe informacje audio
 
-* **Automatyczne wykrywanie języka**: automatycznie rozpoznaje dominujący język mówiony. Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, rosyjski i brazylijski portugalski. Jeśli nie można zidentyfikować języka z ufnością, Indeksator wideo zakłada, że językiem mówionym jest angielski. Aby uzyskać więcej informacji, zobacz [Model identyfikacji języka](language-identification-model.md).
+* **Transkrypcja audio:** Konwertuje mowę na tekst w 12 językach i umożliwia rozszerzenia. Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, mandaryński Chines, japoński, arabski, rosyjski, brazylijski portugalski, hindi i koreański.
+* **Automatyczne wykrywanie języka**: automatycznie rozpoznaje dominujący język mówiony. Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, mandaryński Chines, japoński, rosyjski i brazylijski portugalski. Jeśli nie można zidentyfikować języka z ufnością, Indeksator wideo zakłada, że językiem mówionym jest angielski. Aby uzyskać więcej informacji, zobacz [Model identyfikacji języka](language-identification-model.md).
 * **Wielojęzyczna identyfikacja mowy i transkrypcja** (wersja zapoznawcza): automatycznie identyfikuje język mówiony w różnych segmentach z audio. Wysyła każdy segment pliku multimedialnego do transkrypcji, a następnie łączy transkrypcję z powrotem do jednej ujednoliconej transkrypcji. Aby uzyskać więcej informacji, zobacz [Automatyczne identyfikowanie i transkrybowanie zawartości wielojęzycznej](multi-language-identification-transcription.md).
-* **Transkrypcja audio:** Konwertuje mowę na tekst w 12 językach i umożliwia rozszerzenia. Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, arabski, rosyjski, brazylijski portugalski, hindi i koreański.
 * **Napisy (transkrypcja)**: tworzy napisy w trzech formatach: VTT, TTML i SRT.
 * **Przetwarzanie dwóch kanałów:** Automatycznie wykrywa oddzielne transkrypcje i scala się z pojedynczą osią czasu.
 * **Redukcja szumów:** Usuwa dźwięk telefonii lub hałaśliwe nagrania (na podstawie filtrów Skype).

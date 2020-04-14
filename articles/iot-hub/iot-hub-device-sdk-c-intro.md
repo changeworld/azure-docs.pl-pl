@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: robinsh
-ms.openlocfilehash: dd12f974b9b02d919752dcb932c9ce1709d7315b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71193523a83987de2440d8c70c133c29dde4fe91
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70813792"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257882"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Zestaw SDK urządzenia Usługi Azure IoT dla języka C
 
@@ -41,9 +41,9 @@ Najnowszą wersję bibliotek można znaleźć w **gałęzi głównej** repozytor
 
 * Podstawowa implementacja SDK znajduje się w folderze **klienta\_iothub,** który zawiera implementację najniższej warstwy interfejsu API w SDK: biblioteki **IoTHubClient.** Biblioteka **IoTHubClient** zawiera interfejsy API implementujące nieprzetworzone wiadomości do wysyłania wiadomości do Centrum IoT i odbierania wiadomości z usługi IoT Hub. Podczas korzystania z tej biblioteki, jesteś odpowiedzialny za implementowanie serializacji wiadomości, ale inne szczegóły komunikacji z Usługi IoT Hub są obsługiwane dla Ciebie.
 
-* Folder **serializatora** zawiera funkcje pomocnicze i przykłady, które pokazują, jak serializować dane przed wysłaniem do usługi Azure IoT Hub przy użyciu biblioteki klienta. Korzystanie z serializatora nie jest obowiązkowe i jest zapewnione jako udogodnienie. Aby użyć biblioteki **serializatora,** należy zdefiniować model, który określa dane do wysłania do Usługi IoT Hub i wiadomości, które mają otrzymać od niego. Po zdefiniowaniu modelu, SDK zapewnia powierzchni interfejsu API, który umożliwia łatwą pracę z urządzenia do chmury i chmury do urządzenia wiadomości bez martwienia się o szczegóły serializacji. Biblioteka zależy od innych bibliotek open source, które implementują transport przy użyciu protokołów, takich jak MQTT i AMQP.
+* Folder **serializatora** zawiera funkcje pomocnicze i przykłady, które pokazują, jak serializować dane przed wysłaniem do usługi Azure IoT Hub przy użyciu biblioteki klienta. Korzystanie z serializatora nie jest obowiązkowe i jest zapewnione jako udogodnienie. Aby użyć biblioteki **serializatora,** należy zdefiniować model, który określa dane do wysłania do Usługi IoT Hub i wiadomości, które mają otrzymać od niego. Po zdefiniowaniu modelu, SDK zapewnia powierzchni interfejsu API, który umożliwia łatwą pracę z urządzenia do chmury i chmury do urządzenia wiadomości bez martwienia się o szczegóły serializacji. Biblioteka zależy od innych bibliotek typu open source, które implementują transport przy użyciu protokołów, takich jak MQTT i AMQP.
 
-* Biblioteka **IoTHubClient** zależy od innych bibliotek open source:
+* Biblioteka **IoTHubClient** zależy od innych bibliotek typu open source:
 
   * Biblioteka [narzędzi udostępnionych usługi Azure C,](https://github.com/Azure/azure-c-shared-utility) która zapewnia typowe funkcje dla podstawowych zadań (takich jak ciągi, manipulowanie listami i we/wy) potrzebne w kilku zestawach SDK C związanych z platformą Azure.
 
@@ -71,9 +71,9 @@ Aby uzyskać przykładowy kod aplikacji, pobierz kopię zestawu SDK z usługi Gi
 
 Teraz, gdy masz przykładowy kod źródłowy, następną rzeczą do zrobienia jest uzyskanie zestawu poświadczeń urządzenia. Aby urządzenie mogło uzyskać dostęp do centrum IoT hub, należy najpierw dodać urządzenie do rejestru tożsamości usługi IoT Hub. Po dodaniu urządzenia otrzymasz zestaw poświadczeń urządzenia, które są potrzebne do tego urządzenia, aby móc połączyć się z centrum IoT hub. Przykładowe aplikacje omówione w następnej sekcji oczekują tych poświadczeń w postaci **ciągu połączenia urządzenia**.
 
-Istnieje kilka narzędzi open source ułatwiających zarządzanie centrum IoT Hub.
+Istnieje kilka narzędzi typu open source ułatwiających zarządzanie centrum IoT Hub.
 
-* Aplikacja systemu Windows o nazwie [Eksplorator urządzeń](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
+* Aplikacja systemu Windows o nazwie [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer).
 
 * Wieloplatformowe rozszerzenie kodu programu Visual Studio o nazwie [Narzędzia Azure IoT .](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: b68179caed4df5efd3696d7d6a3739a1e07a3c80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0767d6c003be8f4e0b28c8d8ce1d48b8f578dd86
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79267302"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273532"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Obsługa maszyn wirtualnych generacji 2 na platformie Azure
 
@@ -53,7 +53,7 @@ Maszyny wirtualne generacji 2 obsługują następujące obrazy z Marketplace:
 * SUSE Linux Enterprise Server 12 zw.
 * Ubuntu Server 16.04, 18.04, 19.04, 19.10 
 * RHEL 8.1, 8.0, 7.7, 7.6, 7.5, 7.4, 7.0
-* Cent OS 8,0, 7,7, 7,6, 7,5, 7,4
+* Cent OS 8.1, 8.0, 7.7, 7.6, 7.5, 7.4
 * Oracle Linux 7.7, 7.7-CI
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Maszyny wirtualne lokalnej a maszyny wirtualne generacji 2 platformy Azure
@@ -96,7 +96,7 @@ Platforma Azure nie obsługuje obecnie niektórych funkcji obsługiwanych przez 
 
 W witrynie Azure portal lub interfejsu wiersza polecenia platformy Azure można utworzyć maszyny wirtualne generacji 2 z obrazu portalu Marketplace, który obsługuje rozruch UEFI.
 
-#### <a name="azure-portal"></a>Portal Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 Poniżej znajdują się kroki, aby utworzyć generacji 2 (Gen2) maszyny Wirtualnej w witrynie Azure portal.
 

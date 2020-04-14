@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 673fe1f31f6a8602225e7cde3bf1eb4c3b28b8a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b80325594eedb87293c31de3236bb4690eb89e05
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278148"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273022"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>Konfigurowanie usługi WinRM po utworzeniu maszyny wirtualnej
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [tworzenie oferty maszyny wirtualnej platformy Azure,](https://aka.ms/CreateAzureVMoffer) aby zarządzać zmigrowanymi ofertami.
 
 W tym artykule wyjaśniono, jak skonfigurować istniejącą maszynę wirtualną hostowane na platformie Azure (VM), aby włączyć usługę WinRM za pośrednictwem protokołu HTTPS.  Ta konfiguracja dotyczy tylko maszyn wirtualnych z systemem Windows i wymaga następującego dwuetapowego procesu:
 
@@ -26,8 +29,8 @@ W tym artykule wyjaśniono, jak skonfigurować istniejącą maszynę wirtualną 
 
 Protokół WinRM over HTTPS używa portu 5986, który nie jest domyślnie włączony na wstępnie skonfigurowanych maszynach wirtualnych systemu Windows oferowanych w portalu Azure Marketplace. Aby włączyć ten protokół, należy wykonać następujące czynności, aby dodać nową regułę do sieciowej grupy zabezpieczeń (NSG) za pomocą [witryny Azure portal](https://portal.azure.com).  Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [Grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview).
 
-1.  Przejdź do bloku **Maszyny wirtualne >**   < *nazwa* >   wirtualna>** Ustawienia/Sieć**.
-2.  Kliknij nazwę sieciowej sieciowej sieciowej (w tym przykładzie **testvm11002**), aby wyświetlić jej właściwości:
+1. Przejdź do bloku **Maszyny wirtualne >**   < *nazwa* >   wirtualna>** Ustawienia/Sieć**.
+2. Kliknij nazwę sieciowej sieciowej sieciowej (w tym przykładzie **testvm11002**), aby wyświetlić jej właściwości:
 
     ![Właściwości sieciowej grupy zabezpieczeń](./media/nsg-properties.png)
  

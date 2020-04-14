@@ -3,12 +3,12 @@ title: Obsługa tagów dla zasobów
 description: Pokazuje, które typy zasobów platformy Azure obsługują tagi. Zawiera szczegółowe informacje dotyczące wszystkich usług platformy Azure.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: b8b1c0b738bb8b94ee53433141f1ae3dbbb3f942
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c971d3af102faf99f97aac261882797460d71f37
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982331"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255031"
 ---
 # <a name="tag-support-for-azure-resources"></a>Obsługa tagów dla zasobów platformy Azure
 W tym artykule opisano, czy typ zasobu obsługuje [znaczniki](tag-resources.md). Kolumna oznaczona **tagami Obsługuje** wskazuje, czy typ zasobu ma właściwość dla tagu. Kolumna oznaczona etykietą **Znacznik w raporcie kosztów** wskazuje, czy ten typ zasobu przekazuje znacznik do raportu kosztów. Koszty można wyświetlać według tagów w [analizie kosztów zarządzania kosztami](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) oraz [fakturach rozliczeniowych platformy Azure i danych dotyczących dziennego użycia](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -96,6 +96,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > - [Microsoft.HybridDana](#microsofthybriddata)
 > - [Microsoft.Hydra](#microsofthydra)
 > - [Microsoft.ImportEksport](#microsoftimportexport)
+> - [Microsoft.Insights](#microsoftinsights)
 > - [Microsoft.Intune](#microsoftintune)
 > - [Centrum IoT Firmy Microsoft](#microsoftiotcentral)
 > - [Przestrzenie IoT firmy Microsoft](#microsoftiotspaces)
@@ -1201,6 +1202,33 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | ------------- | ----------- | ----------- |
 > | Zadania | Tak | Tak |
 
+## <a name="microsoftinsights"></a>Microsoft.Insights
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Obsługuje znaczniki | Tag w raporcie kosztów |
+> | ------------- | ----------- | ----------- |
+> | actionGroups (Grupy akcji) | Tak | Tak |
+> | activityLogAlerts (Blogi blogowe) | Tak | Tak |
+> | zasady alertów | Tak | Tak |
+> | automatyczne skalowanie | Tak | Tak |
+> | Składniki | Tak | Tak |
+> | komponenty / linkedStorageKony | Nie | Nie |
+> | składniki / ProactiveDetectionConfigs | Nie | Nie |
+> | diagnostykaStawienie | Nie | Nie |
+> | guestDiagnosticSettings | Tak | Tak |
+> | guestDiagnosticSettingsAssociation | Tak | Tak |
+> | logofile | Tak | Tak |
+> | metryczneAlerts | Tak | Tak |
+> | privateLinkScopes | Tak | Tak |
+> | privateLinkScopes / privateEndpointConnections | Nie | Nie |
+> | privateLinkScopes / scopedResources | Nie | Nie |
+> | pakiety zapytań | Tak | Tak |
+> | queryPacks / zapytania | Nie | Nie |
+> | scheduledQueryRules | Tak | Tak |
+> | testy internetowe | Tak | Tak |
+> | skoroszyty | Tak | Tak |
+> | zeszyty | Tak | Tak |
+
 ## <a name="microsoftintune"></a>Microsoft.Intune
 
 > [!div class="mx-tableFixed"]
@@ -1454,7 +1482,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | applicationSecurityGroups | Tak | Tak |
 > | azureFirewallFqdnTags | Nie | Nie |
 > | azureFirewalls | Tak | Nie |
-> | bastionHosts | Tak | Tak |
+> | bastionHosts | Tak | Nie |
 > | bgpSpołeczności usług | Nie | Nie |
 > | Połączenia | Tak | Tak |
 > | ddosCustomPolicies | Tak | Tak |
@@ -1484,14 +1512,14 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | frontdoorWebApplicationFirewallPolicies | Tak, ale ograniczone (patrz [uwaga poniżej)](#frontdoor) | Tak |
 > | wniosek o źródła getDnsResourceReference | Nie | Nie |
 > | internalNotify | Nie | Nie |
-> | obciążeniaBalancery | Tak | Nie |
+> | obciążeniaBalancery | Tak | Tak |
 > | localNetworkGateways | Tak | Tak |
 > | natGateways ( natGateways ) | Tak | Tak |
 > | siećIntentPolicies | Tak | Tak |
 > | siećPowierzchnie | Tak | Tak |
 > | networkProfiles | Tak | Tak |
 > | networkSecurityGroups | Tak | Tak |
-> | networkWatchers (obserwatorzy sieci) | Tak | Nie |
+> | networkWatchers (obserwatorzy sieci) | Tak | Tak |
 > | networkWatchers / connectionMonitors | Tak | Nie |
 > | networkWatchers / flowLogs | Nie | Nie |
 > | networkWatchers / soczewki | Tak | Nie |
@@ -1524,8 +1552,8 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > | virtualNetworkGateways | Tak | Tak |
 > | wirtualne sieci | Tak | Tak |
 > | virtualNetworkTaps (Wirtualnetapy sieciowe) | Tak | Tak |
-> | wirtualne wich | Tak | Tak |
-> | vpnGateways | Tak | Nie |
+> | wirtualne wich | Tak | Nie |
+> | vpnGateways | Tak | Tak |
 > | vpnWitryny | Tak | Tak |
 > | webApplicationFirewallPolicies | Tak | Tak |
 
@@ -1821,7 +1849,7 @@ Przechodzenie do obszaru nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje znaczniki | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | Obszary nazw | Tak | Nie |
+> | Obszary nazw | Tak | Tak |
 > | przestrzenie nazw / zasady autoryzacji | Nie | Nie |
 > | przestrzenie nazw / disasterrecoveryconfigs | Nie | Nie |
 > | przestrzenie nazw / eventgridfilters | Nie | Nie |

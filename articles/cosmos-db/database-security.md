@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: c92f045f2c8d4443d596697596363bda3d0df975
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8a0ef4c5abcd4c4137a878adf6a7fff9e80c2764
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985290"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273515"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Zabezpieczenia w usłudze Azure Cosmos DB — omówienie
 
@@ -66,8 +66,8 @@ Przyjmijmy się szczegółowo każdego z nich.
 |Replikacja globalna|Usługa Azure Cosmos DB oferuje globalną dystrybucję "pod klucz", która umożliwia replikowanie danych do dowolnego z centrów danych platformy Azure za pomocą kliknięcia przycisku. Replikacja globalna umożliwia skalowanie globalnie i zapewnia dostęp do danych o małym opóźnieniu na całym świecie.<br><br>W kontekście zabezpieczeń globalna replikacja zapewnia ochronę danych przed awariami regionalnymi.<br><br>Dowiedz się więcej z artykułu [Distribute data globally](distribute-data-globally.md) (Globalna dystrybucja danych).|
 |Praca w trybie failover w regionach|Jeśli dane zostały zreplikowane w więcej niż jednym centrum danych, usługa Azure Cosmos DB automatycznie przejedzie operacje, jeśli regionalne centrum danych przejdzie w tryb offline. Można utworzyć priorytetową listę regionów trybu failover przy użyciu regionów, w których dane są replikowane. <br><br>Dowiedz się więcej w [regionalnych trybu failover w usłudze Azure Cosmos DB](high-availability.md).|
 |Replikacja lokalna|Nawet w jednym centrum danych usługa Azure Cosmos DB automatycznie replikuje dane w celu uzyskania wysokiej dostępności, zapewniając wybór [poziomów spójności.](consistency-levels.md) Ta replikacja gwarantuje 99,99% [dostępności umowy SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) dla wszystkich kont w jednym regionie i wszystkich kont wieloregionalnych z luźną spójnością i dostępnością odczytu 99,999% na wszystkich kontach bazy danych w wielu regionach.|
-|Automatyczne tworzenie kopii zapasowych online|Bazy danych usługi Azure Cosmos są regularnie archiwizowane i przechowywane w magazynie geograficznie nadmiarowym. <br><br>Dowiedz się więcej w [automatycznej kopii zapasowej i przywracaniu online za pomocą usługi Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md).|
-|Przywracanie usuniętych danych|Automatyczne kopie zapasowe online mogą być używane do odzyskiwania danych, które mogły zostać przypadkowo usunięte do ~30 dni po zdarzeniu. <br><br>Dowiedz się więcej w [sprawie Automatyczna kopia zapasowa i przywracanie online za pomocą usługi Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)|
+|Automatyczne tworzenie kopii zapasowych online|Bazy danych usługi Azure Cosmos są regularnie archiwizowane i przechowywane w magazynie geograficznie nadmiarowym. <br><br>Dowiedz się więcej w [automatycznej kopii zapasowej i przywracaniu online za pomocą usługi Azure Cosmos DB](online-backup-and-restore.md).|
+|Przywracanie usuniętych danych|Automatyczne kopie zapasowe online mogą być używane do odzyskiwania danych, które mogły zostać przypadkowo usunięte do ~30 dni po zdarzeniu. <br><br>Dowiedz się więcej w [sprawie Automatyczna kopia zapasowa i przywracanie online za pomocą usługi Azure Cosmos DB](online-backup-and-restore.md)|
 |Ochrona i izolowanie poufnych danych|Wszystkie dane w regionach wymienionych w co nowego? jest teraz szyfrowany w spoczynku.<br><br>Dane osobowe i inne poufne dane mogą być izolowane do określonego kontenera i odczytu i zapisu, lub dostęp tylko do odczytu może być ograniczony do określonych użytkowników.|
 |Monitoruj ataki|Korzystając z [rejestrowania inspekcji i dzienników aktywności,](logging.md)możesz monitorować swoje konto pod kątem normalnej i nietypowej aktywności. Można wyświetlić, jakie operacje zostały wykonane na zasoby, kto zainicjował operację, gdy wystąpiła operacja, stan operacji i wiele więcej, jak pokazano na zrzucie ekranu po tej tabeli.|
 |Reagowanie na ataki|Po skontaktowaniu się z pomocą techniczną platformy Azure w celu zgłoszenia potencjalnego ataku zostanie rozpoczęty 5-etapowy proces reagowania na incydenty. Celem 5-etapowego procesu jest przywrócenie normalnego bezpieczeństwa usługi i operacji tak szybko, jak to możliwe po wykryciu problemu i rozpoczęciu dochodzenia.<br><br>Dowiedz się więcej w [programie Microsoft Azure Security Response in the Cloud](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).|

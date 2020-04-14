@@ -1,18 +1,18 @@
 ---
 title: Automatyczne uaktualnianie obrazu systemu operacyjnego za pomocą zestawów skalowania maszyny wirtualnej platformy Azure
 description: Dowiedz się, jak automatycznie uaktualnić obraz systemu operacyjnego w wystąpieniach maszyn wirtualnych w zestawie skalowania
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.author: manayar
-ms.openlocfilehash: 6d550e8e960cb8e212702796467c91d1cd1ebb23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: b1e5ad60041e9d3b902a06a4875206fa061c73e6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235179"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269911"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Skalowanie maszyny wirtualnej platformy Azure ustawia automatyczne uaktualnienia obrazów systemu operacyjnego
 

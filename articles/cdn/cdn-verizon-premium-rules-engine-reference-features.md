@@ -2,17 +2,17 @@
 title: Funkcje aparatu azure CDN firmy Verizon Premium | Dokumenty firmy Microsoft
 description: Dokumentacja referencyjna dla usługi Azure CDN z funkcji aparatu reguł Verizon Premium.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 373e7838327d11b1b54278ee0c16c6e6ae554b0b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247581"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253496"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Funkcje aparatu azure CDN firmy Verizon Premium
 
@@ -846,7 +846,7 @@ Zwykle po upływie maksymalnego czasu zasobu punkt obecności wyśle żądanie p
 
 Jeśli punkt obecności nie może ustanowić połączenia z serwerem pochodzenia podczas próby ponownego zaszerłowania, ta wewnętrzna funkcja Max-Stale określa, czy i jak długo pop może nadal obsługiwać przestarzały zasób.
 
-Należy zauważyć, że ten przedział czasu rozpoczyna się po wygaśnięciu maksymalnego wieku zasobu, a nie po wykonaniu nieudanego ponownego zweryfikowannia. W związku z tym maksymalny okres, w którym środek trwały może być obsługiwany bez pomyślnego ponownego walidacji, jest czasem określonym przez kombinację max-age plus max-starych. Na przykład jeśli zasób został buforowany o godzinie 9:00 z maksymalnym wiekiem 30 minut i maksymalnie nieaktualnym 15 minut, nieudana próba ponownego ukończenia 9:44 spowoduje, że użytkownik końcowy otrzyma przestarzały zasób w pamięci podręcznej, podczas gdy nieudana próba ponownego ukończenia 9:46 spowoduje, że użytkownik końcowy otrzymujący limit czasu bramy 504.
+Należy zauważyć, że ten przedział czasu rozpoczyna się po wygaśnięciu maksymalnego wieku zasobu, a nie po wykonaniu nieudanego ponownego zweryfikowannia. W związku z tym maksymalny okres, w którym środek trwały może być obsługiwany bez pomyślnego ponownego walidacji, jest czasem określonym przez kombinację max-age plus max-starych. Na przykład jeśli zasób został buforowany o godzinie 9:00 z maksymalnym wiekiem 30 minut i maksymalnie nieaktualnym 15 minut, nieudana próba ponownego zweryfikowania w 9:44 spowoduje, że użytkownik końcowy otrzyma przestarzały buforowany zasób, podczas gdy nieudana próba ponownego ukończenia 9:46 spowoduje, że użytkownik końcowy otrzyma limit czasu bramy 504.
 
 Każda wartość skonfigurowana dla tej funkcji `Cache-Control: must-revalidate` jest `Cache-Control: proxy-revalidate` zastępowana przez nagłówki lub nagłówki odebrane z serwera pochodzenia. Jeśli którykolwiek z tych nagłówków zostanie odebrany z serwera pochodzenia, gdy zasób jest początkowo buforowany, punkt obecności nie będzie obsługiwał nieaktualnego zasobu w pamięci podręcznej. W takim przypadku jeśli punkt obecności nie może ponownie ocenić ze źródłem, gdy czas maksymalnego wieku zasobu wygasł, punkt obecności zwraca błąd limitu czasu bramy 504.
 
@@ -1240,7 +1240,7 @@ Przekierowanie adresu URL ma zastosowanie tylko do kodów odpowiedzi 3xx.
 
 Opcja Opcjonalna wartość nagłówka obsługuje znaki alfanumeryczne, cudzysłowy i spacje.
 
-#### <a name="authentication"></a>Uwierzytelnianie
+#### <a name="authentication"></a>Authentication
 
 Ta funkcja obsługuje możliwość dołączania nagłówka WWW-Authenticate podczas odpowiadania na nieautoryzowane żądanie zawartości chronionej przez uwierzytelnianie oparte na tokenie. Jeśli nagłówek WWW-Authenticate został ustawiony na "podstawowy" w konfiguracji, nieautoryzowany użytkownik zostanie poproszony o podanie poświadczeń konta.
 

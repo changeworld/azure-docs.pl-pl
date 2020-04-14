@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 04/10/2020
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 53f1b9a2fde20cacccd0730213695f26c1200fa7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 902486f7e19f2dfd7cc64e27589e192c57ef64e8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80132534"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255519"
 ---
 # <a name="what-is-azure-databricks"></a>Co to jest Azure Databricks?
 
@@ -85,6 +85,11 @@ Usługa Azure Databricks zapewnia zabezpieczenia klasy korporacyjnej platformy A
 * Integracja z usługą Azure Active Directory umożliwia uruchamianie przy użyciu usługi Azure Databricks kompletnych rozwiązań bazujących na platformie Azure.
 * Dostęp oparty na rolach usługi Azure Databricks umożliwia określanie szczegółowych uprawnień do notesów, klastrów, zadań i danych.
 * Umowy SLA klasy korporacyjnej. 
+
+> [!IMPORTANT]
+>
+> Usługa Azure Databricks to usługa firmy Microsoft Azure, która jest wdrażana w infrastrukturze globalnej chmury publicznej platformy Azure. Cała komunikacja między składnikami usługi, w tym między publicznymi usługami IP na płaszczyźnie kontrolnej a płaszczyzną danych klienta, pozostaje w ramach szkieletu sieci Microsoft Azure. Zobacz też [globalna sieć firmy Microsoft](https://docs.microsoft.com/azure/networking/microsoft-global-network).
+
 
 ## <a name="integration-with-azure-services"></a>Integracja z usługami Azure
 

@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b782477fd29b34eda70813fc2aff29157f02acb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ecd0ffd76650efff3a4c9f877522cba6f28d080
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275947"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271118"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami usługi Application Insights
 
@@ -28,6 +28,8 @@ Cennik [usługi Azure Application Insights][start] to model płatności zgodnie 
 
 [Wieloetapowe testy internetowe](../../azure-monitor/app/availability-multistep.md) pobierają dodatkową opłatę. Wieloetapowe testy sieci web są testy sieci web, które wykonują sekwencję akcji. Nie ma osobnej opłaty za *testy pingu* na jednej stronie. Dane telemetryczne z testów ping i testów wieloetapowych są ładowane tak samo jak inne dane telemetryczne z aplikacji.
 
+Usługa Application Insights opcja [Włącz alerty dotyczące niestandardowych wymiarów metryki](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) może również generować dodatkowe koszty, ponieważ może to spowodować utworzenie dodatkowych metryk wstępnej agregacji. [Dowiedz się więcej] o metrykach opartych na dziennikach i wstępnie zagregowanych w usłudze Application Insights oraz o [cenach](https://azure.microsoft.com/pricing/details/monitor/) metryk niestandardowych usługi Azure Monitor.
+
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Szacowanie kosztów zarządzania aplikacją
 
 Jeśli nie używasz jeszcze usługi Application Insights, możesz użyć [kalkulatora cen usługi Azure Monitor,](https://azure.microsoft.com/pricing/calculator/?service=monitor) aby oszacować koszt korzystania z usługi Application Insights. Zacznij od wprowadzenia "Azure Monitor" w polu wyszukiwania i kliknięcia powstałego kafelka usługi Azure Monitor. Przewiń stronę w dół do usługi Azure Monitor i wybierz usługę Application Insights z listy rozwijanej Typ.  W tym miejscu można wprowadzić liczbę GB danych, które mają być zbierane miesięcznie, więc pytanie brzmi, ile danych będzie zbierać usługi Application Insights monitorowania aplikacji.
@@ -42,7 +44,7 @@ W przypadku zestawów SDK, które nie obsługują próbkowania adaptacyjnego, mo
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Dowiedz się, co zbierają podobni klienci
 
-W kalkulatorze cen monitorowania platformy Azure dla usługi Application Insights, jeśli włączysz funkcję "Oszacuj ilość danych na podstawie działania aplikacji", możesz podać dane wejściowe dotyczące aplikacji (żądania miesięcznie i widoki strony miesięcznie, w przypadku, gdy zbierać dane telemetryczne po stronie klienta), a następnie kalkulator poinformuje Cię o medianie i 90 percentylu danych zebranych przez podobne aplikacje. Aplikacje te obejmują zakres konfiguracji usługi Application Insights (np. niektóre mają [domyślne próbkowanie,](../../azure-monitor/app/sampling.md)niektóre nie mają próbkowania itp.), więc nadal masz kontrolę, aby zmniejszyć ilość danych, które połykasz znacznie poniżej poziomu mediany za pomocą próbkowania. Ale jest to punkt wyjścia, aby zrozumieć, co inni, podobni klienci widzą.
+W kalkulatorze cen monitorowania platformy Azure dla usługi Application Insights, jeśli włączysz funkcję "Oszacuj ilość danych na podstawie działania aplikacji", możesz podać dane wejściowe dotyczące aplikacji (żądania miesięczne i widoki strony miesięcznie, w przypadku, gdy będziesz zbierać dane telemetryczne po stronie klienta), a następnie kalkulator poinformuje Cię o medianie i 90 percentylu ilości danych zebranych przez podobne aplikacje. Aplikacje te obejmują zakres konfiguracji usługi Application Insights (np. niektóre mają [domyślne próbkowanie,](../../azure-monitor/app/sampling.md)niektóre nie mają próbkowania itp.), więc nadal masz kontrolę, aby zmniejszyć ilość danych, które połykasz znacznie poniżej poziomu mediany za pomocą próbkowania. Ale jest to punkt wyjścia, aby zrozumieć, co inni, podobni klienci widzą.
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Zrozumienie sposobu użytkowania i szacowania kosztów
 
@@ -176,7 +178,7 @@ Aby [zmienić dzienny limit za pośrednictwem usługi Azure Resource Manager,](.
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Tworzenie alertów dla daily cap
 
-Codzienna kapitalizacja usługi Application Insights tworzy zdarzenie w kog działania platformy Azure, gdy pochłonięte woluminy danych osiągnie poziom ostrzeżenia lub dzienny poziom limitu.  Alert można [utworzyć na podstawie tych zdarzeń dziennika aktywności](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal). Nazwy sygnałów dla tych zdarzeń to:
+Codzienna nakładka usługi Application Insights tworzy zdarzenie w dzienniku aktywności platformy Azure, gdy pochłonięte ilości danych osiągną poziom ostrzeżenia lub dzienny limit.  Alert można [utworzyć na podstawie tych zdarzeń dziennika aktywności](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal). Nazwy sygnałów dla tych zdarzeń to:
 
 * Osiągnięto próg ostrzeżenia o dziennym zaślepce składnika Usługi Application Insights
 
@@ -216,7 +218,7 @@ Aby zmienić przechowywanie, z zasobu usługi Application Insights przejdź do s
 
 ![Dostosowywanie dziennego limitu głośności telemetrii](./media/pricing/pricing-005.png)
 
-Retencji można również [ustawić programowo przy użyciu programu PowerShell](powershell.md#set-the-data-retention) przy użyciu parametru. `retentionInDays` Ponadto jeśli ustawisz przechowywanie danych na 30 dni, można wyzwolić natychmiastowe przeczyszczanie starszych danych przy użyciu parametru, `immediatePurgeDataOn30Days` co może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja przeczyszczanie jest dostępna tylko za pośrednictwem usługi Azure Resource Manager i powinna być używana ze szczególną ostrożnością. Dzienny czas resetowania limitu woluminu danych można skonfigurować przy `dailyQuotaResetTime` użyciu usługi Azure Resource Manager, aby ustawić parametr.
+Retencji można również [ustawić programowo przy użyciu programu PowerShell](powershell.md#set-the-data-retention) przy użyciu parametru. `retentionInDays` Po obniżeniu retencji istnieje kilkudniowy okres prolongaty przed usunięciem najstarszych danych. Jeśli ustawisz przechowywanie danych na 30 dni, można wyzwolić `immediatePurgeDataOn30Days` natychmiastowe przeczyszczanie starszych danych przy użyciu parametru, co może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja przeczyszczanie jest dostępna tylko za pośrednictwem usługi Azure Resource Manager i powinna być używana ze szczególną ostrożnością. Dzienny czas resetowania limitu woluminu danych można skonfigurować przy `dailyQuotaResetTime` użyciu usługi Azure Resource Manager, aby ustawić parametr.
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Opłaty za transfer danych przy użyciu usługi Application Insights
 

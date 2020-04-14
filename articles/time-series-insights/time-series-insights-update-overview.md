@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 02/04/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1e4f72300752c93659db4edd4610464dbebf2503
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 73244a635bbf14efcf33f1b978db14e9e2589581
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77014423"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271067"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Co to jest wersja zapoznawcza usługi Azure Time Series Insights?
 
@@ -49,22 +49,22 @@ Na poniższej ilustracji przedstawiono typowy przepływ danych IoT.
 
 Krajobraz IoT jest zróżnicowany wśród klientów obejmujących różne segmenty przemysłu, w tym produkcję, motoryzację, energię, usługi użyteczności publicznej, inteligentne budynki i doradztwo. W całej tej szerokiej gamie przemysłowego rynku IoT wciąż ewoluują rozwiązania natywne dla chmury, które zapewniają kompleksową analizę ukierunkowaną na dane IoT na dużą skalę. 
 
-Usługa Azure Time Series Insights zaspokaja to potrzeby rynku, udostępniając gotowe, kompleksowe rozwiązanie analityczne IoT z bogatym modelem semantycznym do kontekstualizacji danych szeregów czasowych, wglądu w zasoby i najlepszego w swojej klasie środowiska użytkownika do odnajdowania, trendów, wykrywania anomalii i wywiadu operacyjnego. 
+Usługa Azure Time Series Insights zaspokaja to potrzeby rynku, udostępniając gotowe, kompleksowe rozwiązanie analityczne IoT z bogatym modelowania semantycznym do kontekstualizacji danych szeregów czasowych, szczegółowych informacji opartych na zasobach i najlepszego w swojej klasie środowiska użytkownika do odnajdowania, trendów, wykrywania anomalii i analizy operacyjnej. 
 
 Dzięki bogatej platformie analizy operacyjnej w połączeniu z naszymi interaktywnymi funkcjami eksploracji danych można użyć usługi Time Series Insights, aby uzyskać większą wartość danych zebranych z zasobów IoT. Oferta wersji zapoznawczej zapewnia następujące składniki: 
 
 * Wielowarstwowe rozwiązanie pamięci masowej z obsługą ciepłej i zimnej analizy zapewniając klientom możliwość kierowania danych między ciepłymi i zimnymi do interaktywnej analizy na ciepłych danych, a także analizy operacyjnej na przestrzeni dziesięcioleci danych historycznych. 
 
-    *   Wysoce interaktywne rozwiązanie do analizy ciepłej do wykonywania częstych i dużej liczby zapytań w krótszym czasie pracy danych 
-    *   Skalowalne, wydajne i zoptymalizowane pod względem kosztów usługi usługi Time Series data lake na podstawie usługi Azure Storage, umożliwiające klientom wyznaczanie wartości danych szeregów czasowych w ciągu kilku sekund. 
+    *    Wysoce interaktywne rozwiązanie do analizy ciepłej do wykonywania częstych i dużej liczby zapytań w krótszym czasie pracy danych 
+    *    Skalowalne, wydajne i zoptymalizowane pod względem kosztów usługi usługi Time Series data lake na podstawie usługi Azure Storage, umożliwiające klientom wyznaczanie wartości danych szeregów czasowych w ciągu kilku sekund. 
 
 * Obsługa modelu semantycznego, która opisuje domenę i metadane skojarzone z pochodnymi i nieprzetworzonymi sygnałami z zasobów i urządzeń.
 
-* Elastyczna platforma analityczna do przechowywania historycznych danych szeregów czasowych na koncie usługi Azure Storage należącym do klienta, umożliwiając klientom posiadanie ich danych IoT. Dane są przechowywane w formacie Open Source Apache Parquet, który umożliwia łączność i wzajemne połączenia w różnych scenariuszach danych, w tym analizy predykcyjnej, uczenia maszynowego i innych niestandardowych obliczeń wykonywanych przy użyciu znanych technologii, w tym Spark, Databricks i Jupyter.
+* Elastyczna platforma analityczna do przechowywania historycznych danych szeregów czasowych na koncie usługi Azure Storage należącym do klienta, umożliwiając klientom posiadanie ich danych IoT. Dane są przechowywane w formacie Apache Parquet typu open source, który umożliwia łączność i współdziałać w różnych scenariuszach danych, w tym analizie predykcyjnej, uczeniu maszynowym i innych obliczeniach niestandardowych wykonywanych przy użyciu znanych technologii, takich jak Spark, Databricks i Jupyter.
 
-* Bogata analityka z ulepszonymi interfejsami API zapytań i doświadczeniami użytkownika, łącząca wgląd w dane oparte na zasobach z bogatą, doraźną analizą danych z obsługą funkcji interpolacji, skalarnych i zbiorczych, zmiennych kategorii, wykresów punktowych i czasu zmiany czasu sygnałów serii do dogłębnej analizy.
+* Bogata analiza z ulepszonymi interfejsami API zapytań i środowiskami użytkownika, która łączy szczegółowe informacje o danych opartych na zasobach z bogatą, doraźną analizą danych z obsługą funkcji interpolacji, skalarnych i zbiorczych, zmiennych kategorycznych, wykresów punktowych i sygnałów szeregów czasowych przesunięciem czasu do dogłębnej analizy.
 
-*   Platforma klasy korporacyjnej do obsługi potrzeb w zakresie skali, wydajności, bezpieczeństwa i niezawodności naszych klientów IoT w przedsiębiorstwie.
+*    Platforma klasy korporacyjnej do obsługi potrzeb w zakresie skali, wydajności, bezpieczeństwa i niezawodności naszych klientów IoT w przedsiębiorstwie.
 
 * Obsługa rozszerzalności i integracji w zakresie kompleksowej analizy. Usługa Time Series Insights zapewnia rozszerzalną platformę analityczną dla różnych scenariuszy danych. Łącznik usługi Power BI usługi Time Series Insights umożliwia klientom wykonywanie zapytań, które wykonują w usłudze Time Series Insights bezpośrednio do usługi Power BI, aby uzyskać ujednolicony widok analizy bi i szeregów czasowych w jednym okienku szkła.
 

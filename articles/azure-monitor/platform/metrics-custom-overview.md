@@ -7,34 +7,51 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e104877ef641a87eac4ba19bb3342c6e029bf80c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 099ab150cde763551c2ad10a4e9159909ccff4dd
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294593"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270710"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Niestandardowe metryki w usłudze Azure Monitor
 
-Podczas wdrażania zasobów i aplikacji na platformie Azure należy rozpocząć zbieranie danych telemetrycznych, aby uzyskać wgląd w ich wydajność i kondycję. Platforma Azure udostępnia niektóre metryki po wyjęciu z pudełka. Te metryki są nazywane standardem lub platformą. Mają jednak ograniczony charakter. Możesz zebrać niektóre niestandardowe wskaźniki wydajności lub metryki specyficzne dla firmy, aby zapewnić głębsze informacje.
+Podczas wdrażania zasobów i aplikacji na platformie Azure należy rozpocząć zbieranie danych telemetrycznych, aby uzyskać wgląd w ich wydajność i kondycję. Platforma Azure udostępnia niektóre metryki po wyjęciu z pudełka. Te metryki są nazywane [standardem lub platformą](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported). Mają jednak ograniczony charakter. Możesz zebrać niektóre niestandardowe wskaźniki wydajności lub metryki specyficzne dla firmy, aby zapewnić głębsze informacje.
 Te **niestandardowe** metryki mogą być zbierane za pośrednictwem danych telemetrycznych aplikacji, agenta, który działa na zasoby platformy Azure, a nawet poza systemem monitorowania i przesyłane bezpośrednio do usługi Azure Monitor. Po ich opublikowaniu w usłudze Azure Monitor możesz przeglądać, wysyłać zapytania i alerty dotyczące niestandardowych metryk zasobów i aplikacji platformy Azure obok standardowych metryk emitowanych przez platformę Azure.
 
-## <a name="send-custom-metrics"></a>Wysyłanie niestandardowych danych
+## <a name="methods-to-send-custom-metrics"></a>Metody wysyłania metryk niestandardowych
+
 Metryki niestandardowe mogą być wysyłane do usługi Azure Monitor za pomocą kilku metod:
 - Instrumentacja aplikacji przy użyciu narzędzia Azure Application Insights SDK i wysyłania niestandardowych danych telemetrycznych do usługi Azure Monitor. 
 - Zainstaluj rozszerzenie diagnostyki systemu Windows Azure (WAD) na maszynie [Wirtualnej Platformy Azure](collect-custom-metrics-guestos-resource-manager-vm.md), [zestawie skalowania maszyny wirtualnej,](collect-custom-metrics-guestos-resource-manager-vmss.md) [klasycznej maszynie wirtualnej](collect-custom-metrics-guestos-vm-classic.md)lub [klasycznych usługach w chmurze](collect-custom-metrics-guestos-vm-cloud-service-classic.md) i wysyłaj liczniki wydajności do usługi Azure Monitor. 
 - Zainstaluj [agenta Telegraf InfluxData](collect-custom-metrics-linux-telegraf.md) na maszynie wirtualnej systemu Azure Linux i wyślij metryki przy użyciu wtyczki wyjściowej usługi Azure Monitor.
 - Wysyłaj niestandardowe metryki [bezpośrednio do interfejsu API REST usługi Azure Monitor](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
 
+## <a name="pricing-model"></a>Model cen
+
+Nie ma żadnych kosztów pozyskiwania standardowych metryk (metryki platformy) w magazynie metryk usługi Azure Monitor. Metryki niestandardowe przynajmowane do magazynu metryk usługi Azure Monitor będą rozliczane za jeden bajt z każdym niestandardowym punktem danych metryki zapisanym o rozmiarze 8 bajtów. Wszystkie połkniętych danych są zachowywane przez 90 dni.
+
+Zapytania metryki będą naliczane na podstawie liczby standardowych wywołań interfejsu API. Standardowe wywołanie interfejsu API to wywołanie, które analizuje 1440 punktów danych (1440 to również całkowita liczba punktów danych, które mogą być przechowywane na metrykę dziennie). Jeśli wywołanie interfejsu API analizuje więcej niż 1440 punktów danych, następnie będzie liczony jako wiele standardowych wywołań interfejsu API. Jeśli wywołanie interfejsu API analizuje mniej niż 1440 punktów danych, będzie liczone jako mniej niż jedno wywołanie interfejsu API. Liczba standardowych wywołań interfejsu API jest obliczana każdego dnia jako całkowita liczba analizowanych punktów danych dziennie podzielona przez 1440.
+
+Szczegółowe informacje o cenie dotyczące niestandardowych metryk i zapytań metryk są dostępne na [stronie cennika usługi Azure Monitor.](https://azure.microsoft.com/pricing/details/monitor/)
+
+> [!NOTE]  
+> Metryki wysyłane do usługi Azure Monitor za pośrednictwem zestawie SDK usługi Application Insights będą rozliczane jako pozyskane dane dziennika i będą naliczane dodatkowe opłaty metryki tylko wtedy, gdy wybrano funkcję Usługi Application Insights [Włącz alerty dotyczące niestandardowych wymiarów metryki.](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) Dowiedz się więcej o [modelu cen usługi Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) i cenach w twoim [regionie](https://azure.microsoft.com/pricing/details/monitor/).
+
+> [!NOTE]  
+> Sprawdź [stronę cennika usługi Azure Monitor, aby](https://azure.microsoft.com/pricing/details/monitor/) uzyskać szczegółowe informacje o tym, kiedy rozliczenia będą włączone dla niestandardowych metryk i zapytań metryk. 
+
+## <a name="how-to-send-custom-metrics"></a>Jak wysyłać niestandardowe dane
+
 Podczas wysyłania niestandardowych metryk do usługi Azure Monitor każdy punkt danych lub wartość, zgłoszone muszą zawierać następujące informacje.
 
-### <a name="authentication"></a>Uwierzytelnianie
+### <a name="authentication"></a>Authentication
 Aby przesłać metryki niestandardowe do usługi Azure Monitor, jednostka, która przesyła metrykę, potrzebuje prawidłowego tokenu usługi Azure Active Directory (Azure AD) w nagłówku **elementu nośnego** żądania. Istnieje kilka obsługiwanych sposobów uzyskania prawidłowego tokenu okaziciela:
 1. [Tożsamości zarządzane dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Nadaje tożsamość do samego zasobu platformy Azure, takich jak maszyna wirtualna. Tożsamość usługi zarządzanej (MSI) ma na celu przyznanie uprawnień zasobów do wykonywania niektórych operacji. Przykładem jest umożliwienie zasobu do emitowania metryk o sobie. Zasób lub jego MSI, można przyznać **monitorowania metryki wydawcy** uprawnień do innego zasobu. Z tego uprawnienia MSI można emitować metryki dla innych zasobów, jak również.
 2. [Podmiot zabezpieczeń usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). W tym scenariuszu aplikacji lub usługi Azure AD można przypisać uprawnienia do emitowania metryk dotyczących zasobu platformy Azure.
 Aby uwierzytelnić żądanie, usługa Azure Monitor sprawdza poprawność tokenu aplikacji przy użyciu kluczy publicznych usługi Azure AD. Istniejąca rola **wydawcy monitorowania metryk** ma już to uprawnienie. Jest on dostępny w witrynie Azure portal. Podmiot usługi, w zależności od zasobów, dla jakich emituje metryki niestandardowe, może mieć rolę **wydawcy monitorowania** w wymaganym zakresie. Przykładami są subskrypcja, grupa zasobów lub określony zasób.
 
-> [!NOTE]  
+> [!TIP]  
 > Gdy żądasz tokenu usługi Azure AD do emitowania niestandardowych metryk, `https://monitoring.azure.com/`upewnij się, że odbiorcy lub zasób, dla którego jest wymagany token, to . Pamiętaj, aby dołączyć końcowe "/".
 
 ### <a name="subject"></a>Podmiot
@@ -42,8 +59,7 @@ Ta właściwość przechwytuje identyfikator zasobu platformy Azure, dla któreg
 
 > [!NOTE]  
 > Nie można emitować niestandardowych metryk względem identyfikatora zasobu grupy zasobów lub subskrypcji.
->
->
+
 
 ### <a name="region"></a>Region
 Ta właściwość przechwytuje region platformy Azure, w jakim jest wdrażany zasób emitujący metryki. Metryki muszą być emitowane do tego samego regionalnego punktu końcowego usługi Azure Monitor, w jakim jest wdrażany zasób. Na przykład metryki niestandardowe dla maszyny Wirtualnej wdrożonej w zachodnie stany USA muszą być wysyłane do regionalnego punktu końcowego usługi WestUS usługi Azure Monitor. Informacje o regionie są również kodowane w adresie URL wywołania interfejsu API.
@@ -84,7 +100,7 @@ Usługa Azure Monitor przechowuje wszystkie metryki w odstępach jednominutowych
 * **Suma**: Suma wszystkich obserwowanych wartości ze wszystkich próbek i pomiarów w ciągu minuty.
 * **Liczba**: Liczba próbek i pomiarów wykonanych w ciągu minuty.
 
-Na przykład jeśli były 4 transakcji logowania do aplikacji w ciągu danej minuty, wynikowe zmierzone opóźnienia dla każdego z nich może być następująca:
+Na przykład jeśli w ciągu danej minuty wystąpiły cztery transakcje logowania do aplikacji, wynikowe zmierzone opóźnienia dla każdej z nich mogą być następujące:
 
 |Transakcja 1|Transakcja 2|Transakcja 3|Transakcja 4|
 |---|---|---|---|
@@ -214,6 +230,6 @@ Użyj niestandardowych metryk z różnych usług:
  - [Zestaw skalowania maszyn wirtualnych](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Maszyny wirtualne platformy Azure (klasyczne)](collect-custom-metrics-guestos-vm-classic.md)
  - [Maszyna wirtualna Systemu Linux przy użyciu agenta Telegraf](collect-custom-metrics-linux-telegraf.md)
- - [INTERFEJS API ODPOCZYNKU](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
+ - [Interfejs API REST](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
  - [Klasyczne usługi w chmurze](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  

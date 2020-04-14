@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.author: banders
-ms.openlocfilehash: f31d8638e8672feafc1ab822acecb78ec0a48b11
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 28fff2a24f703e0cff967bdde29a7b1238e197ee
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202777"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586147"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Omówienie ról administracyjnych dla umowy Azure Enterprise Agreement na platformie Azure
 
@@ -46,18 +46,18 @@ W poniższych sekcjach opisano ograniczenia i możliwości poszczególnych ról.
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Struktura i uprawnienia organizacji według roli
 
-|Zadania| Administratora przedsiębiorstwa|Administrator przedsiębiorstwa (tylko odczyt)|Administrator działu|Administrator działu (tylko odczyt)|Właściciel konta|
-|---|---|---|---|---|---|
-|Wyświetlanie administratorów przedsiębiorstwa|✔|✔|✘|✘|✘|
-|Dodawanie lub usuwanie administratorów przedsiębiorstwa|✔|✘|✘|✘|✘|
-|Wyświetlanie kontaktów dla powiadomień<sup>4</sup> |✔|✔|✘|✘|✘|
-|Dodawanie lub usuwanie kontaktów dla powiadomień<sup>4</sup> |✔|✘|✘|✘|✘|
-|Tworzenie działów i zarządzanie nimi |✔|✘|✘|✘|✘|
-|Wyświetlanie administratorów działu|✔|✔|✔|✔|✘|
-|Dodawanie lub usuwanie administratorów działu|✔|✘|✔|✘|✘|
-|Wyświetlanie kont w rejestracji |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|
-|Dodawanie kont do rejestracji i zmienianie właściciela konta|✔|✘|✔<sup>5</sup>|✘|✘|
-|Tworzenie subskrypcji i uprawnień subskrypcji oraz zarządzanie nimi|✘|✘|✘|✘|✔|
+|Zadania| Administratora przedsiębiorstwa|Administrator przedsiębiorstwa (tylko odczyt)|Administrator działu|Administrator działu (tylko odczyt)|Właściciel konta| Partner|
+|---|---|---|---|---|---|---|
+|Wyświetlanie administratorów przedsiębiorstwa|✔|✔|✘|✘|✘|✔|
+|Dodawanie lub usuwanie administratorów przedsiębiorstwa|✔|✘|✘|✘|✘|✘|
+|Wyświetlanie kontaktów dla powiadomień<sup>4</sup> |✔|✔|✘|✘|✘|✔|
+|Dodawanie lub usuwanie kontaktów dla powiadomień<sup>4</sup> |✔|✘|✘|✘|✘|✘|
+|Tworzenie działów i zarządzanie nimi |✔|✘|✘|✘|✘|✘|
+|Wyświetlanie administratorów działu|✔|✔|✔|✔|✘|✔|
+|Dodawanie lub usuwanie administratorów działu|✔|✘|✔|✘|✘|✘|
+|Wyświetlanie kont w rejestracji |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|✔|
+|Dodawanie kont do rejestracji i zmienianie właściciela konta|✔|✘|✔<sup>5</sup>|✘|✘|✘|
+|Tworzenie subskrypcji i uprawnień subskrypcji oraz zarządzanie nimi|✘|✘|✘|✘|✔|✘|
 
 - <sup>4</sup> Kontakty dla powiadomień otrzymują wiadomości e-mail dotyczące umowy Enterprise Agreement platformy Azure.
 - <sup>5</sup> Zadanie jest ograniczone do kont w Twoim dziale.
@@ -65,14 +65,14 @@ W poniższych sekcjach opisano ograniczenia i możliwości poszczególnych ról.
 
 ## <a name="usage-and-costs-access-by-role"></a>Dostęp do danych użycia i kosztów według roli
 
-|Zadania| Administratora przedsiębiorstwa|Administrator przedsiębiorstwa (tylko odczyt)|Administrator działu|Administrator działu (tylko odczyt) |Właściciel konta|
-|---|---|---|---|---|---|
-|Wyświetlanie salda środków, w tym zobowiązania pieniężnego|✔|✔|✘|✘|✘|
-|Wyświetlanie limitów przydziału wydatków dla działu|✔|✔|✘|✘|✘|
-|Ustawianie limitów przydziału wydatków dla działu|✔|✘|✘|✘|✘|
-|Wyświetlanie arkusza cen umów EA organizacji|✔|✔|✘|✘|✘|
-|Wyświetlanie szczegółów użycia i kosztów|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|
-|Zarządzanie zasobami w witrynie Azure Portal|✘|✘|✘|✘|✔|
+|Zadania| Administratora przedsiębiorstwa|Administrator przedsiębiorstwa (tylko odczyt)|Administrator działu|Administrator działu (tylko odczyt) |Właściciel konta| Partner|
+|---|---|---|---|---|---|---|
+|Wyświetlanie salda środków, w tym zobowiązania pieniężnego|✔|✔|✘|✘|✘|✔|
+|Wyświetlanie limitów przydziału wydatków dla działu|✔|✔|✘|✘|✘|✔|
+|Ustawianie limitów przydziału wydatków dla działu|✔|✘|✘|✘|✘|✘|
+|Wyświetlanie arkusza cen umów EA organizacji|✔|✔|✘|✘|✘|✔|
+|Wyświetlanie szczegółów użycia i kosztów|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|✔|
+|Zarządzanie zasobami w witrynie Azure Portal|✘|✘|✘|✘|✔|✘|
 
 - <sup>6</sup> Wymaga, aby administrator przedsiębiorstwa włączył zasady **Administrator przedsiębiorstwa — wyświetlanie opłat** w witrynie Enterprise Portal. Administrator działu będzie następnie widzieć szczegóły kosztów dla działu.
 - <sup>7</sup> Wymaga, aby administrator przedsiębiorstwa włączył zasady **Właściciel konta — wyświetlanie opłat** w witrynie Enterprise Portal. Właściciel konta będzie następnie widzieć szczegóły kosztów dla konta.

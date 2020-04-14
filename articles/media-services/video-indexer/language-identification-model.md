@@ -8,18 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba1521581316d559eb4e67bafba0061c31cc666b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513885"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272954"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatyczne identyfikowanie języka mówionego za pomocą modelu identyfikacji języka
 
-Video Indexer obsługuje automatyczną identyfikację języka (LID), która jest procesem automatycznej identyfikacji treści języka mówionego z audio i wysyłania pliku multimedialnego do transkrypcji w dominującym zidentyfikowanym języku. Obecnie LID obsługuje angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, rosyjski i portugalski (brazylijski). 
+Video Indexer obsługuje automatyczną identyfikację języka (LID), która jest procesem automatycznej identyfikacji treści języka mówionego z audio i wysyłania pliku multimedialnego do transkrypcji w dominującym zidentyfikowanym języku. 
+
+Obecnie LID obsługuje: angielski, hiszpański, francuski, niemiecki, włoski, mandaryński Chines, japoński, rosyjski i portugalski (brazylijski). 
+
+Zapoznaj się z poniższą sekcją [Wytłachnia i ograniczeniami.](#guidelines-and-limitations)
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>Wybieranie automatycznej identyfikacji języka podczas indeksowania
 
@@ -49,7 +53,10 @@ Model dominujący język jest dostępny w `sourceLanguage` insights JSON jako at
 
 ## <a name="guidelines-and-limitations"></a>Wytyczne i ograniczenia
 
-* Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, rosyjski i brazylijski portugalski.
+* Automatyczna identyfikacja języka (LID) obsługuje następujące języki: 
+
+    Angielski, hiszpański, francuski, niemiecki, włoski, mandaryński Chines, japoński, rosyjski i portugalski (brazylijski).
+* Mimo że indeksator wideo obsługuje arabski (Modern Standard i Levantine), hindi i koreański, te języki nie są obsługiwane w LID.
 * Jeśli dźwięk zawiera języki inne niż obsługiwana lista powyżej, wynik jest nieoczekiwany.
 * Jeśli indeksator wideo nie może zidentyfikować języka`>0.6`z wystarczająco wysokim zaufaniem ( ), językiem rezerwowym jest angielski.
 * Nie ma bieżącej obsługi plików z mieszanymi językami audio. Jeśli dźwięk zawiera języki mieszane, wynik jest nieoczekiwany. 
@@ -59,5 +66,5 @@ Model dominujący język jest dostępny w `sourceLanguage` insights JSON jako at
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Przegląd](video-indexer-overview.md)
+* [Omówienie](video-indexer-overview.md)
 * [Automatyczne identyfikowanie i transkrybowanie treści wielojęzycznych](multi-language-identification-transcription.md)

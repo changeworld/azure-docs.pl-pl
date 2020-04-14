@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 2db8c05d086c7b4e8537a1c17b1ca84eedb19857
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 506412c23288d58c2f59b91a300265ddd79428bf
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277875"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273923"
 ---
-# <a name="virtual-hard-disk-deployment-template"></a>Szablon wdrażania wirtualnego dysku twardego 
+# <a name="virtual-hard-disk-deployment-template"></a>Szablon wdrażania wirtualnego dysku twardego
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [certyfikacji obrazów maszyn wirtualnych platformy Azure,](https://aks.ms/CertifyVMimage) aby zarządzać zmigrowanymi ofertami.
 
 Poniższy szablon usługi Azure Resource Manager definiuje nowe wystąpienie maszyny wirtualnej platformy Azure (VM), utworzone na lokalnym wirtualnym dysku twardym (VHD).  Ten szablon jest używany w artykule [Wdrażanie maszyny Wirtualnej platformy Azure z dysku VHD użytkownika](./cpp-deploy-vm-user-image.md). 
 

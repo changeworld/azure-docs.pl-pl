@@ -1,18 +1,18 @@
 ---
 title: Używanie sekwencjonowania rozszerzeń z zestawami skalowania maszyny wirtualnej platformy Azure
 description: Dowiedz się, jak sekwencjonować inicjowanie obsługi administracyjnej rozszerzeń podczas wdrażania wielu rozszerzeń w zestawach skalowania maszyny wirtualnej.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 737040699dd62d722b9a9ad4d8915ccb270c2d06
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278053"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273753"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Inicjowanie obsługi administracyjnej rozszerzenia sekwencji w zestawach skalowania maszyny wirtualnej
 Rozszerzenia maszyn wirtualnych platformy Azure zapewniają funkcje, takie jak konfiguracja i zarządzanie po wdrożeniu, monitorowanie, zabezpieczenia i inne. Wdrożenia produkcyjne zazwyczaj używają kombinacji wielu rozszerzeń skonfigurowanych dla wystąpień maszyn wirtualnych, aby osiągnąć pożądane wyniki.

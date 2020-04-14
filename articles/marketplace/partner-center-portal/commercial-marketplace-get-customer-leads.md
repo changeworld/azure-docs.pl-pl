@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: ce576d9825819770486197a6c39425adf6ac3208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05b166b2ec46900d9e3972025efb581d9619ec6a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275904"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252650"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Potencjalni klienci z oferty w witrynie Marketplace
 
@@ -133,11 +133,11 @@ Miejsce docelowe potencjalnego klienta obiektów Blob platformy Azure nie jest j
 
 ### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>Otrzymałem wiadomość e-mail z Marketplace, dlaczego nie mogę znaleźć potencjalnego klienta w moim programie CRM?
 
-Jest możliwe, że domena poczty e-mail użytkownika końcowego pochodzi z domeny .edu. Ze względu na prywatność nie przekazujemy danych umożliwiających identyfikację użytkowników z domeny .edu. Prześlij zgłoszenie pomocy technicznej za pośrednictwem aka.ms/marketplacepublishersupport.
+Jest możliwe, że domena poczty e-mail użytkownika końcowego pochodzi z domeny .edu. Ze względu na prywatność nie przekazujemy prywatnych informacji umożliwiających identyfikację z domeny .edu. Prześlij zgłoszenie pomocy technicznej za pośrednictwem aka.ms/marketplacepublishersupport.
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Skonfigurowano tabelę platformy Azure jako miejsce docelowe potencjalnego klienta, jak mogę wyświetlić potencjalnych klientów?
 
-Możesz uzyskać dostęp do danych potencjalnych potencjalnych klienta przechowywanych w tabeli platformy Azure z witryny Azure Portal lub pobrać i zainstalować [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) za darmo, aby wyświetlić dane tabel konta magazynu platformy Azure.
+Możesz uzyskać dostęp do danych potencjalnych potencjalnych klienta przechowywanych w tabeli platformy Azure z witryny Azure portal lub pobrać i zainstalować [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) za darmo, aby wyświetlić dane tabel konta magazynu platformy Azure.
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-lead-is-sent-by-marketplace"></a>Skonfigurowano tabelę platformy Azure jako miejsce docelowe potencjalnego klienta, czy mogę otrzymywać powiadomienia za każdym razem, gdy nowy potencjalny klient jest wysyłany przez marketplace?
 
@@ -149,13 +149,17 @@ Sprawdź, czy formularz "web to lead" jest polem obowiązkowym opartym na liści
 
 ### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Nie było problemu z moim głównym przeznaczenia, a ja brakowało niektórych prowadzi. Czy mogę je wysłać do mnie w wiadomości e-mail?
 
-Ze względu na zasady dotyczące informacji umożliwiających identyfikację użytkownika (prywatne informacje umożliwiające identyfikację użytkownika) nie możemy udostępniać informacji o potencjalnych klientach za pośrednictwem niezabezpieczonych wiadomości e-mail.
+Ze względu na prywatne zasady dotyczące informacji umożliwiających identyfikację nie możemy udostępniać informacji kontaktowych za pośrednictwem niezabezpieczonych wiadomości e-mail.
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Skonfigurowano tabelę platformy Azure jako miejsce docelowe potencjalnego klienta, ile będzie kosztować?
 
 Dane o generacji potencjalnych klienta są niskie (<1 GB dla prawie wszystkich wydawców). Koszt będzie zależeć od liczby otrzymanych potencjalnych klientów, jeśli 1000 potencjalnych klientów zostanie odebranych w ciągu miesiąca, kosztuje około 50 centów. Aby uzyskać więcej informacji na temat cen magazynowania, zobacz [ceny magazynowania](https://azure.microsoft.com/pricing/details/storage/).
 
 Jeśli twoje pytanie nadal nie jest na nieodebrane, skontaktuj się z pomocą techniczną za pośrednictwem aka.ms/marketplacepublishersupport, a następnie wybierz **opcję "tworzenie oferty"** → **typ oferty** → **"konfiguracja zarządzania potencjalnymi klientami".** 
+
+### <a name="i-am-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-who-to-receive-these-emails"></a>Otrzymuję powiadomienia e-mail po otrzymaniu nowych potencjalnych klientów. Jak skonfigurować, kto ma otrzymywać te wiadomości e-mail?
+
+Uzyskaj dostęp do oferty w Centrum partnerów i przejdź do strony **Ustawienia oferty** >**edycji** **zarządzania potencjalnymi klientami** -> . Zaktualizuj adresy e-mail w polu **Kontaktowy adres e-mail.**
 
 ## <a name="next-steps"></a>Następne kroki
 

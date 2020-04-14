@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: d4d59642f638e7b1221c35a4bb281923571d5066
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297597"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273294"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Utrwalanie plików w usłudze Azure Cloud Shell
 Usługa Cloud Shell wykorzystuje usługę Azure File Storage do utrwalania plików w sesjach. Po początkowym uruchomieniu usługa Cloud Shell monituje o skojarzenie nowego lub istniejącego udziału plików w celu utrwalenia plików w sesjach.
@@ -50,7 +50,7 @@ Za pomocą opcji zaawansowanej można skojarzyć istniejące zasoby. Wybierając
 Po wyświetleniu monitu o ustawienie magazynu wybierz pozycję **Pokaż ustawienia zaawansowane,** aby wyświetlić dodatkowe opcje. Filtr opcji zapełniania magazynu dla kont magazynu lokalnie nadmiarowego (LRS), magazynu geograficznie nadmiarowego (GRS) i magazynu strefowego (ZRS). 
 
 > [!NOTE]
-> Korzystanie z kont magazynu GRS lub ZRS są zalecane dla dodatkowej odporności dla tworzenia kopii zapasowej udziału plików. Rodzaj redundancji zależy od twoich celów i preferencji cenowych. [Dowiedz się więcej o opcjach replikacji dla kont usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy).
+> Korzystanie z kont magazynu GRS lub ZRS są zalecane dla dodatkowej odporności dla tworzenia kopii zapasowej udziału plików. Rodzaj redundancji zależy od twoich celów i preferencji cenowych. [Dowiedz się więcej o opcjach replikacji dla kont usługi Azure Storage](../storage/common/storage-redundancy.md).
 
 ![Ustawienie Grupa zasobów](media/persisting-shell-storage/advanced-storage.png)
 
@@ -169,5 +169,5 @@ Uwaga: Jeśli chcesz zdefiniować funkcję w pliku i wywołać ją z poleceń cm
 
 ## <a name="next-steps"></a>Następne kroki
 [Szybki start powłoki chmury](quickstart.md) <br>
-[Dowiedz się więcej o magazynie plików platformy Microsoft Azure](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
+[Dowiedz się więcej o magazynie plików platformy Microsoft Azure](../storage/files/storage-files-introduction.md) <br>
 [Dowiedz się więcej o tagach magazynu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: yinhew
-ms.openlocfilehash: fdc8fc929cef9d5b7db6e24364e94fbefbdbb44e
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 458dc6899b0d89fcda2ff989ae95523e12de13c5
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671325"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275556"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -97,7 +97,7 @@ Zanim zaczniesz, upewnij się, że:
 
 ## <a name="next-steps"></a>Następne kroki
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 ## <a name="see-also"></a>Zobacz też
 

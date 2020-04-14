@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: dsindona
-ms.openlocfilehash: 0225069179e0d7d94a983c5161976a5c1933fac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce1e001b9cafff83a3f9bf546d6903cc4a4f450f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278199"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273498"
 ---
 # <a name="certify-your-vm-image"></a>Poświadczanie obrazu maszyny Wirtualnej
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [certyfikacji obrazów maszyn wirtualnych platformy Azure,](https://aks.ms/CertifyVMimage) aby zarządzać zmigrowanymi ofertami.
 
 Po utworzeniu i wdrożeniu maszyny wirtualnej (VM) należy przetestować i przesłać obraz maszyny wirtualnej do certyfikacji usługi Azure Marketplace. W tym artykule wyjaśniono, gdzie można uzyskać *narzędzie testu certyfikacji dla certyfikatu platformy Azure,* jak użyć tego narzędzia do certyfikacji obrazu maszyny Wirtualnej i jak przekazać wyniki weryfikacji do kontenera platformy Azure, w którym znajdują się wirtualne identyfikatory. 
 

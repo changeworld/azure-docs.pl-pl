@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 022780f2b37c8bed49c81774d443b69bae41e5e7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f87625fe4f56b369f2bf4aade3ef5424084b6fe8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73476750"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254890"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Szybki start: Tworzenie pokoju rozmów za pomocą usługi SignalR
 
@@ -95,7 +95,7 @@ W tej sekcji dodasz [narzędzie Secret Manager](https://docs.microsoft.com/aspne
     Ten klucz tajny jest dostępny za pomocą interfejsu API konfiguracji. Dwukropek (:) działa w nazwie konfiguracji z interfejsem API konfiguracji na wszystkich obsługiwanych platformach. Zobacz [Konfiguracja według środowiska](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0). 
 
 
-4. Otwórz *Startup.cs* i zaktualizuj `ConfigureServices` metodę używania usługi `services.AddSignalR().AddAzureSignalR()` Azure SignalR, wywołując metodę tylko dla ASP.NET Core 2:
+4. Otwórz plik *Startup.cs* i zaktualizuj metodę `ConfigureServices` tak, aby używała usługi SignalR Service przez wywołanie metody `services.AddSignalR().AddAzureSignalR()`:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -104,7 +104,6 @@ W tej sekcji dodasz [narzędzie Secret Manager](https://docs.microsoft.com/aspne
         services.AddSignalR().AddAzureSignalR();
     }
     ```
-    W przypadku ASP.NET Core 3+ nie ma `ConfigureServices` potrzeby zmiany metody.
 
     Nie przekazując parametru do `AddAzureSignalR()`programu , ten kod używa domyślnego klucza konfiguracji dla ciągu połączenia zasobu usługi SignalR. Domyślny klucz konfiguracji to *Azure:SignalR:ConnectionString*.
 

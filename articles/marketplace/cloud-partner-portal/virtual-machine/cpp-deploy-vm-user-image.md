@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 957bc187b0123338947f62333c913cf82a6c66a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79754b4ce7c3dfe2a5c549f4a39ef3160be423d8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277960"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273889"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Wdrażanie maszyny Wirtualnej platformy Azure z dysku twardego użytkownika
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [certyfikacji obrazów maszyn wirtualnych platformy Azure,](https://aks.ms/CertifyVMimage) aby zarządzać zmigrowanymi ofertami.
 
 W tym artykule wyjaśniono, jak wdrożyć uogólniony obraz wirtualnej maszyny Wirtualnej w celu utworzenia nowego zasobu maszyny Wirtualnej platformy Azure przy użyciu dostarczonego szablonu usługi Azure Resource Manager i skryptu programu Azure PowerShell.
 

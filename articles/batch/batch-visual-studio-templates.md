@@ -14,19 +14,19 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: a71dbd1b38ff58ccf1eb7a4d50daad5b24922e2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e42917237f3b114881655d88a017c2c4366612b3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022753"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254567"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Szybkie uruchamianie rozwiązań wsadowych za pomocą szablonów projektów programu Visual Studio
 
 **Szablony Programu** Visual Studio Menedżera zadań i **procesor zadań** dla usługi Batch zawierają kod ułatwiający implementowanie i uruchamianie obciążeń intensywnie korzystających z obliczeń w usłudze Batch przy jak najmniejszym wysiłku. W tym dokumencie opisano te szablony i przedstawiono wskazówki dotyczące sposobu ich używania.
 
 > [!IMPORTANT]
-> W tym artykule omówiono tylko informacje mające zastosowanie do tych dwóch szablonów i założono, że użytkownik jest zaznajomiony z usługą wsadowej i kluczowymi pojęciami z nią związanymi: pule, węzły obliczeniowe, zadania i zadania, zadania menedżera zadań, zmienne środowiskowe i inne istotne Informacji. Więcej informacji można znaleźć w [omówienie](batch-technical-overview.md) funkcji Podstawowe usługi Azure Batch i [Batch dla deweloperów](batch-api-basics.md).
+> W tym artykule omówiono tylko informacje mające zastosowanie do tych dwóch szablonów i zakłada, że użytkownik jest zaznajomiony z usługą batch i kluczowymi pojęciami z nią związanymi: pule, węzły obliczeniowe, zadania i zadania, zadania menedżera zadań, zmienne środowiskowe i inne istotne informacje. Więcej informacji można znaleźć w [omówienie](batch-technical-overview.md) funkcji Podstawowe usługi Azure Batch i [Batch dla deweloperów](batch-api-basics.md).
 > 
 > 
 
@@ -215,7 +215,7 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 ```
 **Poświadczenia magazynu**
 
-Zazwyczaj klient nie musi podawać poświadczeń połączonego konta magazynu do zadania menedżera zadań, ponieważ (a) większość menedżerów zadań nie musi jawnie uzyskiwać dostępu do połączonego konta magazynu, a (b) połączone konto magazynu jest często dostarczane do wszystkich zadań jako wspólnego ustawienia środowiska dla zadania. Jeśli nie podajesz połączonego konta magazynu za pośrednictwem typowych ustawień środowiska, a menedżer zadań wymaga dostępu do połączonego magazynu, należy podać połączone poświadczenia magazynu w następujący sposób:
+Zazwyczaj klient nie musi podawać poświadczeń połączonego konta magazynu do zadania menedżera zadań, ponieważ (a) większość menedżerów zadań nie musi jawnie uzyskiwać dostępu do połączonego konta magazynu i (b) połączone konto magazynu jest często dostarczane do wszystkich zadań jako typowe ustawienie środowiska dla zadania. Jeśli nie podajesz połączonego konta magazynu za pośrednictwem typowych ustawień środowiska, a menedżer zadań wymaga dostępu do połączonego magazynu, należy podać połączone poświadczenia magazynu w następujący sposób:
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -361,7 +361,7 @@ Implementacja Run() ma dostęp do:
 
 **Błąd zadania**
 
-W przypadku awarii można zamknąć Run() metody, zgłaszając wyjątek, ale pozostawia to najwyższego poziomu obsługi wyjątków w kontroli kodu zakończenia zadania. Jeśli musisz kontrolować kod zakończenia, aby można było odróżnić różne typy błędów, na przykład do celów diagnostycznych lub ponieważ niektóre tryby awarii powinny zakończyć zadanie, a inne nie, należy zakończyć metodę Run(), zwracając metodę inną niż zero kod zakończenia. Staje się to kod zakończenia zadania.
+W przypadku awarii można zamknąć Run() metody, zgłaszając wyjątek, ale pozostawia to najwyższego poziomu obsługi wyjątków w kontroli kodu zakończenia zadania. Jeśli trzeba kontrolować kod zakończenia, dzięki czemu można odróżnić różne typy błędów, na przykład do celów diagnostycznych lub ponieważ niektóre tryby awarii należy zakończyć zadanie, a inne nie, następnie należy zakończyć Run(), zwracając kod zakończenia niezerowe. Staje się to kod zakończenia zadania.
 
 ### <a name="exit-codes-and-exceptions-in-the-task-processor-template"></a>Kody zakończenia i wyjątki w szablonie Procesor zadań
 Kody zakończenia i wyjątki zapewniają mechanizm do określenia wyniku uruchomienia programu i mogą pomóc zidentyfikować wszelkie problemy z wykonaniem programu. Szablon Procesor zadań implementuje kody zakończenia i wyjątki opisane w tej sekcji.
@@ -444,7 +444,7 @@ Innym pomocnym narzędziem w opracowywaniu rozwiązania wsadowego jest [konwencj
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [process_exitcode]: https://msdn.microsoft.com/library/system.diagnostics.process.exitcode.aspx
 [vs_gallery]: https://visualstudiogallery.msdn.microsoft.com/
-[vs_gallery_templates]: https://go.microsoft.com/fwlink/?linkid=820714
+[vs_gallery_templates]: https://github.com/Azure/batch-extension-templates
 [vs_find_use_ext]: https://msdn.microsoft.com/library/dd293638.aspx
 
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png

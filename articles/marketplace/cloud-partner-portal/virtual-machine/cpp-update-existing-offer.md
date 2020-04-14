@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: fe1397d7ad00a2eb6e9fe04d8bfa50e49839fe34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a15ccb1de2a9ce0072d032e624ead3b4d730763b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288788"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273056"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Aktualizowanie istniejącej oferty maszyn wirtualnych w portalu Azure Marketplace
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [tworzenie oferty maszyny wirtualnej platformy Azure,](https://aka.ms/CreateAzureVMoffer) aby zarządzać zmigrowanymi ofertami.
 
 W tym artykule oproszą Cię o różne aspekty aktualizowania oferty maszyny wirtualnej w portalu partnerów w [chmurze,](https://cloudpartner.azure.com/) a następnie ponowne publikowanie oferty. 
 

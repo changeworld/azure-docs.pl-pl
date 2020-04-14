@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 35d57d117f6308863965ffd789c0e28bedd0f301
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04eae529efcf9509d8cd43a7629bb0b76b593cd0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281514"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252503"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Konfigurowanie zarządzania potencjalnymi klientami w Marketo
 
@@ -76,3 +76,9 @@ Gdy będziesz gotowy skonfigurować informacje o zarządzaniu potencjalnymi klie
     >[!Note]
     >Musisz zakończyć konfigurowanie pozostałej części oferty i opublikować ją, zanim będzie można odbierać potencjalnych klientów dla oferty. 
 
+5. **Kontaktowy adres e-mail** — udostępniaj wiadomości e-mail osobom w firmie, które powinny otrzymywać powiadomienia e-mail po otrzymaniu nowego potencjalnego klienta. Możesz dostarczyć wiele wiadomości e-mail, oddzielając je średnikiem.
+6. Kliknij przycisk **OK**.
+
+Aby upewnić się, że udało ci się połączyć z miejscem docelowym potencjalnego klienta, kliknij przycisk sprawdź poprawność. Jeśli się powiedzie, będziesz miał potencjalnego klienta testowego w głównym miejscu docelowym.
+
+![Szczegóły połączenia](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

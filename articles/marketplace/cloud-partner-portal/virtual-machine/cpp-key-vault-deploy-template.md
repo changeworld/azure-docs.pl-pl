@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 63f49946b14b003348758a5ae7ebadd7a4acf383
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d08caf5444216666e7296b830f0af6af606dd4f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277672"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273838"
 ---
 # <a name="key-vault-deployment-template"></a>Szablon wdrożenia magazynu kluczy
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [certyfikacji obrazów maszyn wirtualnych platformy Azure,](https://aks.ms/CertifyVMimage) aby zarządzać zmigrowanymi ofertami.
 
 Poniższy szablon usługi Azure Resource Manager definiuje nowe wystąpienie usługi Azure Key Vault.  Jest on używany w artykule [Tworzenie certyfikatu magazynu kluczy](cpp-create-key-vault-cert.md). 
 

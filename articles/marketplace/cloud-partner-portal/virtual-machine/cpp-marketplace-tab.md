@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: 567dc83e36020ef9af328f52dae89ef37b6e4908
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 156a405d93aeac27f27fe617e1a5485044309846
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277725"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273821"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Karta Marketplace maszyny wirtualnej
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [tworzenie oferty maszyny wirtualnej platformy Azure,](https://aka.ms/CreateAzureVMoffer) aby zarządzać zmigrowanymi ofertami.
 
 Karta **Marketplace** na stronie **Nowa oferta** umożliwia dostarczanie potencjalnym klientom informacji marketingowych, sprzedażowych i prawnych oraz umów oraz zarządzanie potencjalnymi klientami generowanymi z rynku. Ten długi formularz jest podzielony na cztery sekcje: **Przegląd**, **Artefakty marketingowe,** **Zarządzanie ołowiem**i **Prawne**.
 
@@ -52,13 +55,13 @@ W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola
 |  ---------                |     ---------------                                                          |
 | *Logo*  |  |
 | **Small\***                 | 40x40 pikseli .ico bitmapa                                                      |
-| **Średni\***                | 90x90 pikseli .ico bitmapa                                                      |
+| **Medium\***                | 90x90 pikseli .ico bitmapa                                                      |
 | **Large\***                 | 115x115 pikseli .ico bitmapa                                                   |
 | **Szeroki\***                  | 255x115 pikseli .ico bitmapa                                                    |
 | **Bohater**                  | 815x290 bitmapa.  Opcjonalnie jednak po przesłaniu ikony bohatera nie można usunąć. |
 | *Zrzuty ekranu*  | Opcjonalnie, ale maksymalnie pięć zrzutów ekranu na jednostkę SKU. |
 | **Nazwa**                  | Nazwa lub tytuł <!-- TODO - max char length? none specified in UI -->                               |
-| **Obrazu**                 | Obraz przechwytywania ekranu, 533x324 pikseli                                         |
+| **Image (Obraz)**                 | Obraz przechwytywania ekranu, 533x324 pikseli                                         |
 | *Filmy wideo*  |  |
 | **Nazwa**                  | Nazwa lub tytuł  <!-- TODO - max char length? -->                              |
 | **Link**                  | Adres URL filmu, hostowany w YouTube lub Vimeo                                        |

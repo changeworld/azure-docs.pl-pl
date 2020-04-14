@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 1703853f42b52dccc80fdfadaa09b67e18a19db8
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 3df79fb1e103ddfaafeb348641e675cd250f5858
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632893"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271696"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Typowe problemy z weryfikacją dwuskładnikową i kontem służbowym
 
@@ -65,6 +65,7 @@ Upewnij się, że masz sygnał urządzenia i połączenie z Internetem | Upewnij
 Wyłącz nie przeszkadzać | Upewnij się, że nie włączyłeś funkcji **Nie przeszkadzać** na urządzeniu mobilnym. Gdy ta funkcja jest włączona, powiadomienia nie mogą ostrzegać o tym na urządzeniu mobilnym. Instrukcje dotyczące wyłączania tej funkcji można znaleźć w instrukcji obsługi urządzenia mobilnego.
 Odblokowywanie numerów telefonów | W Stanach Zjednoczonych połączenia głosowe firmy Microsoft pochodzą z następujących numerów: +1 (866) 539 4191, +1 (855) 330 8653 i +1 (877) 668 6536.
 Sprawdzanie ustawień związanych z baterią | Ten wydaje się nieco dziwne na powierzchni, ale jeśli już skonfigurować optymalizację baterii, aby zatrzymać rzadziej używane aplikacje z pozostają aktywne w tle, system powiadomień najprawdopodobniej został naruszony. Aby spróbować rozwiązać ten problem, wyłącz optymalizację baterii aplikacji uwierzytelniania i aplikacji do obsługi wiadomości, a następnie spróbuj ponownie zalogować się na konto.
+Wyłączanie aplikacji zabezpieczających innych firm | Jeśli masz aplikację, która chroni wiadomości tekstowe lub połączenia telefoniczne, aby zminimalizować nieznanych rozmówców, mogą one uniemożliwić odebranie kodu weryfikacyjnego. Spróbuj wyłączyć wszystkie aplikacje zabezpieczające innych firm w telefonie, a następnie poproś o wysłanie innego kodu weryfikacyjnego.
 
 ## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>Nie dostajesz monitu o podanie moich drugich informacji weryfikacyjnych
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e0e98b87cf3612bf01f90f806ea64ef06d08c60a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408488"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255332"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co jest monitorowane przez usługę Azure Monitor?
 W tym artykule opisano różne aplikacje i usługi, które są monitorowane przez usługę Azure Monitor. 
@@ -31,7 +31,7 @@ Szczegółowe informacje zapewniają dostosowane środowisko monitorowania dla o
 | [Usługa Azure Monitor dla sieci (wersja zapoznawcza)](insights/network-insights-overview.md) | Zapewnia kompleksowy widok kondycji i metryki dla wszystkich zasobów sieciowych. Zaawansowane funkcje wyszukiwania ułatwiają identyfikowanie zależności zasobów, umożliwiając scenariusze, takie jak identyfikowanie zasobów hostujących witrynę, po prostu wyszukując nazwę witryny. |
 [Usługa Azure Monitor dla grup zasobów (wersja zapoznawcza)](insights/resource-group-insights.md) |  Klasyfikowanie i diagnozowanie wszelkich problemów napotkanych przez poszczególne zasoby, jednocześnie oferując kontekst kondycji i wydajności grupy zasobów jako całości. |
 | [Usługa Azure Monitor dla magazynu (wersja zapoznawcza)](insights/storage-insights-overview.md) | Zapewnia kompleksowe monitorowanie kont usługi Azure Storage, zapewniając ujednolicony widok wydajności, pojemności i dostępności usług Azure Storage. |
-| [Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)](insights/container-insights-overview.md) | Monitoruje maszyny wirtualne platformy Azure (VM) i zestawy skalowania maszyny wirtualnej na dużą skalę. Analizuje ona wydajność i kondycję Twoich maszyn wirtualnych z systemami Windows i Linux oraz monitoruje ich procesy i zależności od innych zasobów oraz procesów zewnętrznych. |
+| [Usługa Azure Monitor dla maszyn wirtualnych](insights/container-insights-overview.md) | Monitoruje maszyny wirtualne platformy Azure (VM) i zestawy skalowania maszyny wirtualnej na dużą skalę. Analizuje ona wydajność i kondycję Twoich maszyn wirtualnych z systemami Windows i Linux oraz monitoruje ich procesy i zależności od innych zasobów oraz procesów zewnętrznych. |
 
 ### <a name="core-solutions"></a>Podstawowe rozwiązania
 
@@ -174,11 +174,11 @@ Usługi i rozwiązania w poniższej tabeli przechowują swoje dane w obszarze ro
 
 | Produkt/usługa | Opis |
 |:---|:---|
-| [Automatyzacja platformy Azure](/azure/automation/) | Zarządzanie aktualizacjami systemu operacyjnego i śledzenie zmian na komputerach z systemem Windows i Linux. Zobacz [Śledzenie zmian](../automation/change-tracking.md) i zarządzanie [aktualizacjami](../automation/automation-update-management.md). |
+| [Azure Automation](/azure/automation/) | Zarządzanie aktualizacjami systemu operacyjnego i śledzenie zmian na komputerach z systemem Windows i Linux. Zobacz [Śledzenie zmian](../automation/change-tracking.md) i zarządzanie [aktualizacjami](../automation/automation-update-management.md). |
 | [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/) | Klasyfikowanie i opcjonalnie chronić dokumenty i wiadomości e-mail. Zobacz [Centralne raportowanie dla usługi Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
 | [Azure Security Center](/azure/security-center/) | Zbieraj i analizuj zdarzenia zabezpieczeń i przeprowadzaj analizę zagrożeń. Zobacz [Zbieranie danych w usłudze Azure Security Center](/azure/security-center/security-center-enable-data-collection) |
 | [Usługa Azure Sentinel](/azure/sentinel/) | Łączy się z różnymi źródłami, w tym z usługami Office 365 i usługami Amazon Web Cloud Trail. Zobacz [Łączenie źródeł danych](/azure/sentinel/connect-data-sources). |
-| [Analiza usługi Key Vault](insights/azure-key-vault.md) | Analizowanie dzienników zdarzeń inspekcji usługi Azure Key Vault. |
+| [Key Vault Analytics](insights/azure-key-vault.md) | Analizowanie dzienników zdarzeń inspekcji usługi Azure Key Vault. |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Utwórz ustawienie diagnostyczne do wysyłania dzienników do usługi Azure Monitor. Zobacz [Wysyłanie danych dziennika do magazynu, centrów zdarzeń lub analizy dzienników w usłudze Intune (wersja zapoznawcza)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |
 | Sieć  | [Monitor wydajności sieci](insights/network-performance-monitor.md) — monitorowanie łączności sieciowej i wydajności do punktów końcowych usług i aplikacji.<br>[Brama aplikacji platformy Azure](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) — analizowanie dzienników i metryk z usługi Azure Application Gateway.<br>[Analiza ruchu](/azure/network-watcher/traffic-analytics) — analizuje dzienniki przepływu sieciowej grupy zabezpieczeń obserwatora sieci (Network Watcher), aby zapewnić wgląd w przepływ ruchu w chmurze platformy Azure. |
 | [Office 365](insights/solution-office-365.md) | Monitorowanie środowiska usługi Office 365. Zaktualizowana wersja z ulepszonym dołączaniem dostępnym za pośrednictwem usługi Azure Sentinel. |
@@ -201,7 +201,7 @@ Inne rozwiązania są dostępne do monitorowania różnych aplikacji i usług, a
 | [Analiza dziennika aktywności](platform/activity-log-view.md#azure-portal) | Służy do wyświetlania wpisów dziennika aktywności. |
 | [Analiza DNS (wersja zapoznawcza)](insights/dns-analytics.md) | Zbiera, analizuje i koreluje dzienniki analityczne i inspekcji DNS systemu Windows oraz inne powiązane dane z serwerów DNS. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Zbieraj, wyświetlaj i analizuj metryki kondycji i wydajności systemu Cloud Foundry w wielu wdrożeniach. |
-| [Kontenery](insights/containers.md) | Wyświetlanie hostów kontenerów platformy Docker i Windows oraz zarządzanie nimi. |
+| [Containers](insights/containers.md) | Wyświetlanie hostów kontenerów platformy Docker i Windows oraz zarządzanie nimi. |
 | [Oceny na żądanie](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | Oceń i zoptymalizuj dostępność, zabezpieczenia i wydajność lokalnych, hybrydowych i chmurowych środowisk technologicznych firmy Microsoft. |
 | [Sprawdzanie kondycji SQL](insights/sql-assessment.md) | Oceń ryzyko i kondycję środowisk programu SQL Server.  |
 | [Dane o komunikacji sieciowej](insights/wire-data.md) | Skonsolidowane dane dotyczące sieci i wydajności zebrane z komputerów podłączonych do systemu Windows i z systemem Linux za pomocą agenta usługi Log Analytics. |

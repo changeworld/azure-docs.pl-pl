@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 972bb2a804057037deedb448674abafcc175b21f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85910ee5467ecc9f4fe3c1a8bc13110b6f218e5c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314814"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272716"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Planowanie środowiska ga usługi Azure Time Series Insights
 
@@ -79,9 +79,7 @@ Można dostosować przechowywania i przełączać między dwoma trybami na stron
 
 ### <a name="environment-planning"></a>Planowanie środowiska
 
-Drugim obszarem, na którym należy się skupić na planowaniu środowiska usługi Time Series Insights, jest pojemność transferu danych przychodzących. Wydajność transferu przychodzącego jest pochodną alokacji na minutę.
-
-Z punktu widzenia ograniczania przepustowości pakiet danych o rozmiarze 32 KB jest traktowany jako 32 zdarzenia, każdy o rozmiarze 1 KB. Maksymalny dozwolony rozmiar zdarzenia wynosi 32 KB. Pakiety danych większe niż 32 KB są obcinane.
+Drugim obszarem, na którym należy się skupić na planowaniu środowiska usługi Time Series Insights, jest pojemność transferu danych przychodzących. Dzienna wydajność przechowywania danych przychodzących i pojemności zdarzeń jest mierzona na minutę w blokach 1 KB. Maksymalny dozwolony rozmiar pakietu to 32 KB. Pakiety danych większe niż 32 KB są obcinane.
 
 Można zwiększyć pojemność jednostki SKU S1 lub S2 do 10 jednostek w jednym środowisku. Nie można przeprowadzić migracji ze środowiska S1 do S2. Nie można przeprowadzić migracji ze środowiska S2 do S1.
 

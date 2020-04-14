@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fee74cb6ec5acd5fa0f171eab9769a833f04ad66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.openlocfilehash: d7ba62c795e23e41a1947def77300ffe5d2cc010
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792907"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262455"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Usługa Azure Cognitive Search — często zadawane pytania (często zadawane pytania)
 
@@ -24,16 +24,6 @@ ms.locfileid: "72792907"
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Czym różni się usługa Azure Cognitive Search od wyszukiwania pełnotekstowym w moim DBMS?
 
 Usługa Azure Cognitive Search obsługuje wiele źródeł danych, [analizę językową wielu języków,](https://docs.microsoft.com/rest/api/searchservice/language-support) [niestandardową analizę interesujących i nietypowych danych,](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)formanty rankingu wyszukiwania za pomocą [profilów oceniania](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)oraz funkcje środowiska użytkownika, takie jak typo-czoło, wyróżnianie trafień i nawigacja fasetowana. Zawiera również inne funkcje, takie jak synonimy i składnia kwerendy rozszerzonej, ale zazwyczaj nie rozróżniają funkcji.
-
-### <a name="what-is-the-difference-between-azure-cognitive-search-and-elasticsearch"></a>Jaka jest różnica między usługą Azure Cognitive Search a Elasticsearch?
-
-Podczas porównywania technologii wyszukiwania klienci często pytają o szczegółowe dane dotyczące porównywania usługi Azure Cognitive Search z elasticsearch. Klienci, którzy wybierają usługę Azure Cognitive Search za pomocą funkcji Elasticsearch dla swoich projektów aplikacji wyszukiwania, zazwyczaj robią to, ponieważ ułatwiliśmy kluczowe zadanie lub potrzebujemy wbudowanej integracji z innymi technologiami firmy Microsoft:
-
-+ Usługa Azure Cognitive Search to w pełni zarządzana usługa w chmurze z umowami na poziomie usług (SLA) o wartości 99,9% w przypadku obsługi administracyjnej z wystarczającą nadmiarowością (2 repliki dostępu do odczytu, trzy repliki do odczytu i zapisu).
-+ [Procesory języka naturalnego](https://docs.microsoft.com/rest/api/searchservice/language-support) firmy Microsoft oferują wiodącą analizę językową.  
-+ [Indeksatory usługi Azure Cognitive Search](search-indexer-overview.md) mogą indeksować różne źródła danych platformy Azure w celu indeksowania początkowego i przyrostowego.
-+ Jeśli potrzebujesz szybkiej odpowiedzi na wahania w woluminach zapytań lub indeksowania, można użyć [kontrolek suwaka](search-manage.md#scale-up-or-down) w witrynie Azure portal lub uruchomić [skrypt programu PowerShell](search-manage-powershell.md), pomijając zarządzanie niezależnego fragmentu bezpośrednio.  
-+ [Funkcje punktacji i dostrajania](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) zapewniają środki wpływające na wyniki rankingu wyszukiwania wykraczające poza to, co może zapewnić sama wyszukiwarka.
 
 ### <a name="can-i-pause-azure-cognitive-search-service-and-stop-billing"></a>Czy mogę wstrzymać usługę Azure Cognitive Search i zatrzymać rozliczenia?
 

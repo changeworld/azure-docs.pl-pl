@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowych plików i folderów — często zadawane pytan
 description: Rozwiązuje typowe pytania dotyczące tworzenia kopii zapasowych plików i folderów za pomocą usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 55819ce7ec5196812d935a21c096c132144d78af
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421302"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254754"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Typowe pytania dotyczące tworzenia kopii zapasowych plików i folderów
 
@@ -22,7 +22,7 @@ Najnowszy agent MARS używany podczas wykonywania kopii zapasowej komputerów z 
 
 ### <a name="how-long-are-vault-credentials-valid"></a>Jak długo są prawidłowe poświadczenia magazynu?
 
-Poświadczenia magazynu wygasają po upływie 48 godzin. Jeśli plik poświadczeń wygaśnie, pobierz plik ponownie z witryny Azure portal.
+Poświadczenia do skarbca wygasają po 10 dniach. Jeśli plik poświadczeń wygaśnie, pobierz plik ponownie z witryny Azure portal.
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Z jakich dysków mogę na swoim miejscu instalować kopie zapasowe plików i folderów?
 
@@ -185,7 +185,6 @@ Jeśli masz to samo hasło (które podano podczas rejestracji) oryginalnego komp
 | --- | --- | --- |
 | Utracone |Dostępne |Agent MARS można zainstalować i zarejestrować na innym komputerze za pomocą tego samego hasła, który został podany podczas rejestracji oryginalnego komputera. Wybierz **opcję** > odzyskiwania**Inna lokalizacja,** aby wykonać przywracanie. Aby uzyskać więcej informacji, zobacz ten [artykuł](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Utracone |Utracone |Nie można odzyskać danych lub danych nie jest dostępna |
-
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co się stanie, jeśli anuluję trwające zadanie przywracania?
 

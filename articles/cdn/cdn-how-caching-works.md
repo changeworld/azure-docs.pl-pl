@@ -3,7 +3,7 @@ title: Jak działa buforowanie | Dokumenty firmy Microsoft
 description: Buforowanie to proces przechowywania danych lokalnie, dzięki czemu przyszłe żądania dotyczące tych danych są dostępne szybciej.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: magattus
-ms.openlocfilehash: 92d93fbf9fa2f8df15acb62802d7ac53db836dc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593856"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253717"
 ---
 # <a name="how-caching-works"></a>Jak działa buforowanie
 
@@ -46,7 +46,7 @@ Każda pamięć podręczna zazwyczaj zarządza własną świeżością zasobów 
 
 Ponieważ zasób buforowany może być potencjalnie nieaktualny lub przestarzały (w porównaniu z odpowiednim zasobem na serwerze pochodzenia), ważne jest, aby każdy mechanizm buforowania kontrolował, kiedy zawartość jest odświeżana. Aby zaoszczędzić czas i zużycie przepustowości, buforowany zasób nie jest porównywany z wersją na serwerze pochodzenia za każdym razem, gdy jest uzyskiwał dostęp. Zamiast tego tak długo, jak buforowany zasób jest uważany za świeży, zakłada się, że jest najbardziej aktualną wersją i jest wysyłany bezpośrednio do klienta. Zasób buforowany jest uważany za świeży, gdy jego wiek jest mniejszy niż wiek lub okres zdefiniowany przez ustawienie pamięci podręcznej. Na przykład gdy przeglądarka ponownie ładuje stronę sieci web, sprawdza, czy każdy buforowany zasób na dysku twardym jest świeży i ładuje go. Jeśli zasób nie jest świeży (nieaktualny), aktualna kopia jest ładowana z serwera.
 
-### <a name="validation"></a>Sprawdzanie poprawności
+### <a name="validation"></a>Walidacja
 
 Jeśli zasób jest uważany za przestarzały, serwer pochodzenia jest proszony o jego sprawdzenie poprawności, czyli o ustalenie, czy dane w pamięci podręcznej nadal są zgodne z danymi na serwerze pochodzenia. Jeśli plik został zmodyfikowany na serwerze pochodzenia, pamięć podręczna aktualizuje swoją wersję zasobu. W przeciwnym razie jeśli zasób jest świeży, dane są dostarczane bezpośrednio z pamięci podręcznej bez sprawdzania poprawności go najpierw.
 

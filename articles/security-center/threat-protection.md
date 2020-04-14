@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 395f4b5481fcf2028d6bfe736e58c3174a0c80b2
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: fdf22e4d981549b876a14aed2b0a1d7e0c76e40e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435344"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263458"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Ochrona przed zagrożeniami w usłudze Azure Security Center
 
@@ -159,19 +159,20 @@ Aby uzyskać więcej informacji, zobacz:
 
 
 
-
 ## <a name="threat-protection-for-azure-storage"></a>Ochrona przed zagrożeniami dla usługi Azure Storage<a name="azure-storage"></a>
 
-> [!NOTE]
-> Ta usługa jest dostępna w chmurach instytucji rządowych w STANACH Zjednoczonych, ale nie ma innych suwerennych lub chmur rządowych platformy Azure.
+Zaawansowana ochrona przed zagrożeniami dla magazynu wykrywa nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do kont magazynu lub ich wykorzystania. Ta warstwa ochrony umożliwia rozwiązywanie zagrożeń bez konieczności bycia ekspertem w dziedzinie zabezpieczeń i pomaga zarządzać systemami monitorowania zabezpieczeń.
 
-Zaawansowana ochrona przed zagrożeniami dla magazynu (obecnie dostępna tylko dla magazynu obiektów Blob) wykrywa nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do kont magazynu lub ich wykorzystania. Ta warstwa ochrony umożliwia rozwiązywanie zagrożeń bez konieczności bycia ekspertem w dziedzinie zabezpieczeń i pomaga zarządzać systemami monitorowania zabezpieczeń.
+Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage jest obecnie dostępna tylko dla [magazynu obiektów Blob.](https://azure.microsoft.com/services/storage/blobs/) 
+
+Ta usługa jest dostępna we wszystkich chmurach publicznych i chmurach instytucji rządowych usa, ale nie ma innych suwerennych lub chmur rządowych platformy Azure.
+
+Szczegółowe informacje o cenach, w tym bezpłatna 30-dniowa wersja próbna, zobacz [stronę z cennikiem usługi Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 Aby uzyskać więcej informacji, zobacz:
 
 * [Jak włączyć zaawansowaną ochronę przed zagrożeniami dla usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Lista alertów ochrony przed zagrożeniami dla usługi Azure Storage](alerts-reference.md#alerts-azurestorage)
-
 
 > [!TIP]
 > Alerty usługi Azure Storage można symulować, postępując zgodnie z instrukcjami zawartymi w [tym wpisie](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)w blogu.

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 01/07/2020
+ms.date: 04/13/2020
 ms.author: diberry
-ms.openlocfilehash: 30132983f37323e798efd330f5cc8f15c0a9d2b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33f8b787119e1c5d6d1a1bb28c94d9791a1c048e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270732"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272614"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>Wstępnie skompilowana jednostka DatetimeV2 dla aplikacji usługi LUIS
 
@@ -145,7 +145,7 @@ Każdy element `values` tablicy może mieć następujące pola:
 
 |Nazwa właściwości|Opis właściwości|
 |--|--|
-|Timex|zakres czasu, daty lub daty wyrażony w formacie TIMEX zgodnym ze [standardem ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i atrybutami TIMEX3 dla adnotacji przy użyciu języka TimeML. Adnotacja ta jest opisana w [wytycznych TIMEX](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf).|
+|Timex|zakres czasu, daty lub daty wyrażony w formacie TIMEX zgodnym ze [standardem ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i atrybutami TIMEX3 dla adnotacji przy użyciu języka TimeML.|
 |Mod|termin używany do opisywania sposobu `before`używania wartości, takich jak , `after`.|
 |type|Podtyp, który może być jednym `datetime`z `date` `time`następujących `daterange` `timerange`elementów: , , , , , `datetimerange`, , `duration`. `set`|
 |value|**Opcjonalne.** Obiekt datetime w formacie yyyy-MM-dd (data), HH:mm:ss (time) yyyy-MM-dd HH:mm:ss (datetime). Jeśli `type` `duration`tak, wartość jest liczbą sekund (czas trwania) <br/> Używane tylko `type` `datetime` wtedy, gdy jest lub `date`, `time`lub "czas trwania.|

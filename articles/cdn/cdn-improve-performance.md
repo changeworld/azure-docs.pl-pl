@@ -3,7 +3,7 @@ title: Zwiększ wydajność, kompresując pliki w usłudze Azure CDN | Dokumenty
 description: Dowiedz się, jak zwiększyć szybkość transferu plików i zwiększyć wydajność ładowania strony, kompresując pliki w usłudze Azure CDN.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
-ms.author: magattus
-ms.openlocfilehash: 9f185f58e1d33a3985777cb22bc7578f9f2c4541
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 7124dd40d4510674014afe012a8f40dcb5bb6153
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593799"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253768"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Poprawianie wydajności poprzez kompresowanie plików w usłudze Azure CDN
 Kompresja plików jest prostą i skuteczną metodą poprawy szybkości transferu plików i zwiększenia wydajności ładowania strony poprzez zmniejszenie rozmiaru pliku przed wysłaniem go z serwera. Kompresja plików może zmniejszyć koszty przepustowości i zapewnić użytkownikom bardziej responsywne środowisko.
@@ -139,7 +139,7 @@ Profile te obsługują tylko kodowanie kompresji gzip. Gdy punkt końcowy profil
 W poniższych tabelach opisano zachowanie kompresji usługi Azure CDN dla każdego scenariusza:
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>Kompresja jest wyłączona lub plik nie kwalifikuje się do kompresji
-| Format żądany przez klienta (za pośrednictwem nagłówka Akceptowanie kodowania) | Format pliku buforowanego | Odpowiedź sieci CDN na klienta | &nbsp; &nbsp; Uwagi&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| Format żądany przez klienta (za pośrednictwem nagłówka Akceptowanie kodowania) | Format pliku buforowanego | Odpowiedź sieci CDN na klienta | &nbsp; &nbsp; Uwagi&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | Skompresowane |Skompresowane |Skompresowane | |
 | Skompresowane |Nieskompresowane |Nieskompresowane | |

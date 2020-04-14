@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 74f97b082c07e17a59a1615c4b1245434c497ab5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 650ef45e56184b67efba67810580d9d6e763a4d0
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279950"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271271"
 ---
 # <a name="update-an-existing-container-offer"></a>Aktualizowanie istniejącej oferty kontenerów
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami usługi Azure Container do Centrum partnerów. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [tworzenie oferty usługi Azure Container](https://aka.ms/CreateContainerOffer) do zarządzania zmigrowanych ofert.
 
 W tym artykule ostępuje kilka kroków od różnych aspektów aktualizowania oferty kontenerów w [portalu cloud partner.](https://cloudpartner.azure.com/)
 

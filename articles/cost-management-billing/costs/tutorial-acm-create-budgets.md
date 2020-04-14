@@ -3,17 +3,17 @@ title: Samouczek — tworzenie budżetów platformy Azure i zarządzanie nimi
 description: Ten samouczek ułatwia planowanie i uwzględnianie kosztów używanych usług platformy Azure.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f7c1ac65026fd366be1003842ff70a78b9082339
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 82094fadf7b11d97b0e9e74d9ba897baed16ee01
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155940"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874283"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Samouczek: Tworzenie budżetów platformy Azure i zarządzanie nimi
 
@@ -25,7 +25,7 @@ Na koniec okresu (co miesiąc, co kwartał lub co rok), gdy użytkownik wybierze
 
 Przykłady zawarte w tym samouczku przedstawiają procesy tworzenia i edytowania budżetu dla subskrypcji Azure Enterprise Agreement (EA).
 
-Obejrzyj film [Stosowanie budżetów do subskrypcji w witrynie Azure Portal](https://www.youtube.com/watch?v=UrkHiUx19Po), aby dowiedzieć się, jak tworzyć budżety na platformie Azure w celu monitorowania wydatków.
+Obejrzyj film [Stosowanie budżetów do subskrypcji w witrynie Azure Portal](https://www.youtube.com/watch?v=UrkHiUx19Po), aby dowiedzieć się, jak tworzyć budżety na platformie Azure w celu monitorowania wydatków. Aby obejrzeć inne wideo, odwiedź [kanał usługi Cost Management w serwisie YouTube](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/UrkHiUx19Po]
 
@@ -38,11 +38,32 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Budżety są obsługiwane w przypadku różnych typów kont platformy Azure. Aby wyświetlić pełną listę obsługiwanych typów kont, zobacz [Omówienie danych usługi Cost Management](understand-cost-mgt-data.md). Aby wyświetlić budżety, potrzebujesz przynajmniej dostępu do odczytu dla Twojego konta platformy Azure.
+Budżety są obsługiwane dla następujących typów kont i zakresów platformy Azure:
+
+- Zakresy kontroli dostępu opartej na rolach na platformie Azure
+    - Grupy zarządzania
+    - Subskrypcja
+- Zakresy umowy Enterprise Agreement
+    - Konto billingowe
+    - Dział
+    - Konto rejestracji
+- Umowy indywidualne
+    - Konto billingowe
+- Zakresy umowy klienta firmy Microsoft
+    - Konto billingowe
+    - Profil rozliczeniowy
+    - Sekcja faktury
+    - Klient
+- Zakresy platformy AWS
+    - Konto zewnętrzne
+    - Subskrypcja zewnętrzna
+
+
+Aby wyświetlić budżety, potrzebujesz przynajmniej dostępu do odczytu dla Twojego konta platformy Azure.
 
 Jeśli masz nową subskrypcję, nie możesz od razu tworzyć budżetu ani korzystać z innych funkcji usługi Cost Management. Aby można było korzystać ze wszystkich funkcji usługi Cost Management, może upłynąć do 48 godzin.
 
-W przypadku subskrypcji Azure EA wyświetlanie budżetów wymaga dostępu do odczytu. Aby tworzyć budżety i zarządzać nimi, musisz mieć uprawnienie współautora. Możesz tworzyć indywidualne budżety dla subskrypcji EA i grup zasobów. Nie możesz jednak tworzyć budżetów dla kont rozliczeniowych EA.
+W przypadku subskrypcji Azure EA wyświetlanie budżetów wymaga dostępu do odczytu. Aby tworzyć budżety i zarządzać nimi, musisz mieć uprawnienie współautora.
 
 Na potrzeby tworzenia budżetów przez użytkownika i grupę w ramach subskrypcji są obsługiwane następujące uprawnienia, czyli zakresy, platformy Azure. Aby uzyskać więcej informacji na temat zakresów, zobacz [Omówienie zakresów i praca z nimi](understand-work-scopes.md).
 
@@ -58,7 +79,7 @@ Aby uzyskać więcej informacji na temat przypisywania uprawnień do danych usł
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Tworzenie budżetu w witrynie Azure Portal
 
-Możesz utworzyć budżet subskrypcji platformy Azure dla okresu miesięcznego, kwartalnego lub rocznego. Elementy nawigacyjne w witrynie Azure Portal określają, czy tworzony jest budżet dla subskrypcji czy dla grupy zarządzania.
+Możesz utworzyć budżet subskrypcji platformy Azure dla okresu miesięcznego, kwartalnego lub rocznego.
 
 Aby utworzyć lub wyświetlić budżet, otwórz żądany zakres w witrynie Azure Portal i wybierz pozycję **Budżety** w menu. Na przykład przejdź do obszaru **Subskrypcje**, wybierz subskrypcję z listy, a następnie wybierz pozycję **Budżety** w menu. W obszarze budżetów użyj kapsułki **Zakres**, aby przełączyć się na inny zakres, np. grupę zarządzania. Aby uzyskać więcej informacji na temat zakresów, zobacz [Omówienie zakresów i praca z nimi](understand-work-scopes.md).
 
@@ -110,15 +131,11 @@ Oceny kosztów budżetowych bazują na rzeczywistych kosztach. Nie obejmują one
 
 Tworząc lub edytując budżet dla zakresu subskrypcji lub grupy zasobów, można skonfigurować wywoływanie grupy akcji. W ramach grupy akcji można wykonywać różne akcje po osiągnięciu progu budżetu. Grupy akcji są obecnie obsługiwane tylko w przypadku zakresów subskrypcji i grup zasobów. Aby uzyskać więcej informacji na temat grup akcji, zobacz [Tworzenie grup akcji i zarządzanie nimi w witrynie Azure Portal](../../azure-monitor/platform/action-groups.md). Aby uzyskać więcej informacji na temat współdziałania automatyzacji opartej na budżetach z grupami akcji, zobacz [Zarządzanie kosztami przy użyciu budżetów platformy Azure](../manage/cost-management-budget-scenario.md).
 
-
-
 Aby utworzyć lub zaktualizować grupy akcji, wybierz pozycję **Zarządzaj grupami akcji** podczas tworzenia lub edytowania budżetu.
 
 ![Przykład przedstawiający utworzony budżet z wyświetloną opcją Zarządzaj grupami akcji](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
-
 Następnie wybierz pozycję **Dodaj grupę akcji** i utwórz grupę akcji.
-
 
 ![Obraz przedstawiający okno Dodawanie grupy akcji](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b469c098db4f8d90147b491bcb54bd55d326b03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4e8b544ea3daeb23b22f3864beb21ba9d3f342f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080312"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255621"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfiguracje magazynu maszyn wirtualnych platformy Azure SAP HANA
 
@@ -72,7 +72,7 @@ Gromadzenie wielu dysków VHD platformy Azure pod raid, jest akumulacji od stron
 Również zachować ogólną przepływność we/wy maszyny Wirtualnej pamiętać podczas określania rozmiaru lub podejmowania decyzji o maszynie Wirtualnej. Ogólna przepustowość magazynu maszyn wirtualnych jest udokumentowana w artykule [Rozmiary maszyn wirtualnych zoptymalizowane pod kątem pamięci](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory).
 
 ## <a name="linux-io-scheduler-mode"></a>Tryb planowania we/wy systemu Linux
-Linux ma kilka różnych trybów planowania we/wy. Wspólne zalecenie za pośrednictwem dostawców linuksa i SAP jest ponowne skonfigurowanie trybu harmonogramu we/wy dla woluminów dyskowych z trybu **cfq** do **noop** (non-multiqueue) lub **żaden** dla (wieloekonkowy) tryb. Szczegóły są przywoły, do których odwołuje się [#1984787 SAP Note](https://launchpad.support.sap.com/#/notes/1984787). 
+Linux ma kilka różnych trybów planowania we/wy. Typowym zaleceniem za pośrednictwem dostawców linuksa i SAP jest ponowne skonfigurowanie trybu planowania we/wy dla woluminów dyskowych z trybu **mq-deadline** lub **kyber** do **noop** (non-multiqueue) lub **żadnego** dla trybu (wieloequeue). Szczegóły są przywoły, do których odwołuje się [#1984787 SAP Note](https://launchpad.support.sap.com/#/notes/1984787). 
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Rozwiązania z magazynem w wersji Premium i akceleratorem zapisu platformy Azure dla maszyn wirtualnych z serii M platformy Azure

@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f22d5b2140e42f5f4b8ef5787d22b4be399c7e8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280471"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272529"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostyki dla aplikacji w usłudze Azure App Service
 ## <a name="overview"></a>Omówienie
@@ -188,7 +188,7 @@ W poniższej tabeli przedstawiono obsługiwane typy i opisy dzienników:
 | AppServiceHTTPLogs | Tak | Tak | Dzienniki serwera sieci Web |
 | AppServiceEnvironmentPlatformLogs | Tak | Tak | Środowisko usługi aplikacji: skalowanie, zmiany konfiguracji i dzienniki stanu|
 | AppServiceAuditLogs (Usługi w aplikacji) | Tak | Tak | Aktywność logowania za pośrednictwem FTP i Kudu |
-| AppServiceFileAuditLogs | Tba | Tak | Zmiany w plikach za pośrednictwem FTP i Kudu |
+| AppServiceFileAuditLogs | Tak | TBD | Zmiany w plikach za pośrednictwem FTP i Kudu |
 | AppServiceAppLogs (AppServiceAppLogs) | Tba | Java SE & Tomcat | Dzienniki aplikacji |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a>Kolejne kroki

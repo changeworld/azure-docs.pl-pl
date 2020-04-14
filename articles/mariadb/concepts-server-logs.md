@@ -5,35 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 2c07e5eeedd2e4f42ec7b165bf161e142421df58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: ffd4ab463080001dbab5b0ed9ece69c4b5f91382
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527898"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272087"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Powolne dzienniki zapytań w bazie danych platformy Azure dla mariadb
 W usłudze Azure Database for MariaDB dziennik wolnych zapytań jest dostępny dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwany. Dziennik wolnych zapytań może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów.
 
 Aby uzyskać więcej informacji na temat dziennika wolnych zapytań, zobacz dokumentację MariaDB dla [dziennika kwerend powolnych](https://mariadb.com/kb/en/library/slow-query-log-overview/).
 
-## <a name="access-slow-query-logs"></a>Dostęp do wolnych dzienników kwerend
-Można wyświetlić listę i pobrać usługę Azure Database dla dzienników wolnych zapytań MariaDB przy użyciu witryny Azure portal i interfejsu wiersza polecenia platformy Azure.
-
-W witrynie Azure portal wybierz swoją usługę Azure Database dla serwera MariaDB. W nagłówku **Monitorowanie** wybierz stronę **Dzienniki serwera.**
-
-Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [Konfigurowanie i uzyskiwanie dostępu do dzienników serwera przy użyciu interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-cli.md).
-
-Podobnie można potok dzienniki do usługi Azure Monitor przy użyciu dzienników diagnostycznych. Zobacz [poniżej,](concepts-server-logs.md#diagnostic-logs) aby uzyskać więcej informacji.
-
-## <a name="log-retention"></a>Przechowywanie dzienników
-Dzienniki są dostępne przez maksymalnie siedem dni od ich utworzenia. Jeśli całkowity rozmiar dostępnych dzienników przekracza 7 GB, najstarsze pliki są usuwane, dopóki nie będzie dostępne miejsce.
-
-Dzienniki są obracane co 24 godziny lub 7 GB, w zależności od tego, co nastąpi wcześniej.
-
 ## <a name="configure-slow-query-logging"></a>Konfigurowanie powolnego rejestrowania zapytań
-Domyślnie powolny dziennik kwerend jest wyłączony. Aby ją włączyć, ustaw slow_query_log na ON.
+Domyślnie powolny dziennik kwerend jest wyłączony. Aby ją włączyć, ustaw na `slow_query_log` ON. Można to włączyć za pomocą witryny Azure portal lub interfejsu wiersza polecenia platformy Azure. 
 
 Inne parametry, które można dostosować, obejmują:
 
@@ -48,6 +34,21 @@ Inne parametry, które można dostosować, obejmują:
 > Jeśli planujesz rejestrowanie powolnych zapytań przez dłuższy okres czasu, `log_output` zaleca się ustawienie "Brak". Jeśli ustawiona na "Plik", te dzienniki są zapisywane w magazynie serwera lokalnego i mogą mieć wpływ na wydajność MariaDB. 
 
 Zobacz [dokumentację dziennika powolnych zapytań](https://mariadb.com/kb/en/library/slow-query-log-overview/) MariaDB, aby uzyskać pełne opisy parametrów dziennika kwerend powolnych.
+
+## <a name="access-slow-query-logs"></a>Dostęp do wolnych dzienników kwerend
+Istnieją dwie opcje uzyskiwania dostępu do dzienników wolnych zapytań w usłudze Azure Database dla MariaDB: magazyn serwera lokalnego lub dzienniki diagnostyczne usługi Azure Monitor. Jest to ustawiane przy użyciu parametru. `log_output`
+
+W przypadku magazynu serwera lokalnego można wyświetlić listę i pobrać dzienniki wolnych zapytań przy użyciu witryny Azure portal lub interfejsu wiersza polecenia platformy Azure. W witrynie Azure portal przejdź do serwera w witrynie Azure portal. W nagłówku **Monitorowanie** wybierz stronę **Dzienniki serwera.** Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [Konfigurowanie i uzyskiwanie dostępu do dzienników serwera przy użyciu interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-cli.md). 
+
+Dzienniki diagnostyczne usługi Azure Monitor umożliwiają potok powolne dzienniki zapytań do dzienników usługi Azure Monitor Log Analytics, usługi Azure Storage lub Centrum zdarzeń. Zobacz [poniżej,](concepts-server-logs.md#diagnostic-logs) aby uzyskać więcej informacji.
+
+## <a name="local-server-storage-log-retention"></a>Przechowywanie dziennika magazynu serwera lokalnego
+Podczas rejestrowania do magazynu lokalnego serwera dzienniki są dostępne przez okres do siedmiu dni od ich utworzenia. Jeśli całkowity rozmiar dostępnych dzienników przekracza 7 GB, najstarsze pliki są usuwane, dopóki nie będzie dostępne miejsce.
+
+Dzienniki są obracane co 24 godziny lub 7 GB, w zależności od tego, co nastąpi wcześniej.
+
+> [!Note]
+> Powyższe przechowywanie dziennika nie ma zastosowania do dzienników, które są potokowe przy użyciu dzienników diagnostycznych usługi Azure Monitor. Można zmienić okres przechowywania dla pochłaniaczy danych emitowanych do (np. Azure Storage).
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 Usługa Azure Database for MariaDB jest zintegrowana z dziennikami diagnostycznymi usługi Azure Monitor. Po włączeniu powolnych dzienników zapytań na serwerze MariaDB można wybrać opcję ich emisji do dzienników usługi Azure Monitor, centrów zdarzeń lub usługi Azure Storage. Aby dowiedzieć się więcej o włączaniu dzienników diagnostycznych, zobacz sekcję [dokumentacji dzienników diagnostycznych](../azure-monitor/platform/platform-logs-overview.md).
@@ -81,6 +82,9 @@ W poniższej tabeli opisano, co jest w każdym dzienniku. W zależności od meto
 | `server_id_s` | Identyfikator serwera |
 | `thread_id_s` | Identyfikator wątku |
 | `\_ResourceId` | Identyfikator URI zasobu |
+
+> [!Note]
+> Dla `sql_text`, dziennik zostanie obcięty, jeśli przekracza 2048 znaków.
 
 ## <a name="analyze-logs-in-azure-monitor-logs"></a>Analizowanie dzienników w dziennikach monitora platformy Azure
 

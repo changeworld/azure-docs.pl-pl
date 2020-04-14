@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 2b7eb6d321a64835254b684c8faeedc53645dffe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f2652a98aa081b62ba80951212ef3a3de513593
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278062"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272665"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Łączenie się z maszyną wirtualną opartą na platformie Azure
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [Tworzenie zasobów technicznych maszyny wirtualnej platformy Azure](https://aka.ms/AzureVMTechAsset) do zarządzania zmigrowanych ofert.
 
 W tym artykule wyjaśniono, jak połączyć się z maszynami wirtualnymi (VM) utworzonymi na platformie Azure i zalogować się do ich maszyn.  Po pomyślnym nawiązaniu połączenia można pracować z maszyną wirtualną tak, jakby użytkownik był zalogowany lokalnie na serwerze hosta. 
 

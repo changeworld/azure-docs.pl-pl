@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: dsindona
-ms.openlocfilehash: fb568400cb60f108303909353bfa703e98ab6157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af42476f9d04f7f2bfc275c731b02aa5a9b8ecf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286425"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273158"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Tworzenie klienta autotestu w celu wstępnej weryfikacji obrazu maszyny wirtualnej platformy Azure
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [certyfikacji obrazów maszyn wirtualnych platformy Azure,](https://aks.ms/CertifyVMimage) aby zarządzać zmigrowanymi ofertami.
 
 Użyj tego artykułu jako przewodnika do tworzenia usługi klienta, która korzysta z interfejsu API autotestu. Za pomocą interfejsu API autotestu można wstępnie sprawdzić poprawność maszyny wirtualnej (VM), aby upewnić się, że spełnia ona najnowsze wymagania dotyczące publikowania w portalu Azure Marketplace. Ta usługa klienta umożliwia przetestowanie maszyny Wirtualnej przed przesłaniem oferty certyfikacji firmy Microsoft.
 
@@ -219,7 +222,7 @@ Następujące przechwytywanie ekranu pokazuje wyniki JSON z wywołania curl.
 
 Skorzystaj z poniższych kroków, aby wybrać dzierżawę usługi Azure AD, w której chcesz utworzyć aplikację.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Na górnym pasku menu wybierz swoje konto, a na liście Katalog wybierz dzierżawę usługi Active Directory, w której chcesz zarejestrować aplikację. Możesz też wybrać ikonę **Katalog + Subskrypcja,** aby wyświetlić filtr Subskrypcji globalnej. Następujące zrzut ekranu pokazuje przykład tego filtru.
 
    ![Wybierz filtr subskrypcji](./media/stclient-subscription-filter.png)

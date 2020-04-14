@@ -2,19 +2,19 @@
 title: Konwertowanie szablonu zestawu skalowania w celu używania dysku zarządzanego
 description: Konwertuj szablon zestawu skalowania maszyny wirtualnej usługi Azure Resource Manager na szablon zestawu skaly dysku zarządzanego.
 keywords: zestawy skalowania maszyn wirtualnych
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: bc8c377a-8c3f-45b8-8b2d-acc2d6d0b1e8
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 5/18/2017
-ms.author: manayar
-ms.openlocfilehash: 4ab5c48c6673a2353c70fe808d09aa15675e0424
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 79fafa8344312294f6df107b88c9b7c571af1969
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278126"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270659"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Konwertowanie szablonu zestawu skalowania na szablon zestawu skal zarządzanych dysków
 
@@ -119,7 +119,7 @@ Nie ma jawnej właściwości w konfiguracji zestawu skalowania, czy używać dys
 
 ## <a name="data-disks"></a>Dyski z danymi
 
-Po zmianach powyżej zestaw skalowania używa dysków zarządzanych dla dysku systemu operacyjnego, ale co z dyskami z danymi? Aby dodać dyski danych, dodaj właściwość "dataDisks" w obszarze "storageProfile" na tym samym poziomie co "osDisk". Wartość właściwości jest lista JSON obiektów, z których każdy ma właściwości "lun" (które muszą być unikatowe na dysku danych na maszynie wirtualnej), "createOption" ("empty" jest obecnie jedyną obsługiwaną opcją) i "diskSizeGB" (rozmiar dysku w gigabajtach; musi być większa niż 0 i mniej niż 1024), jak w poniższym przykładzie:
+Po zmianach powyżej zestaw skalowania używa dysków zarządzanych dla dysku systemu operacyjnego, ale co z dyskami z danymi? Aby dodać dyski danych, dodaj właściwość "dataDisks" w obszarze "storageProfile" na tym samym poziomie co "osDisk". Wartość właściwości jest json listy obiektów, z których każdy ma właściwości "lun" (które muszą być unikatowe na dysku danych na maszynie wirtualnej), "createOption" ("empty" jest obecnie jedyną obsługiwaną opcją) i "diskSizeGB" (rozmiar dysku w gigabajtach; musi być większa niż 0 i mniej niż 1024), jak w poniższym przykładzie:
 
 ```
 "dataDisks": [

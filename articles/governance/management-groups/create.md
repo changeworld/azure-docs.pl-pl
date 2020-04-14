@@ -3,12 +3,12 @@ title: Tworzenie grup zarządzania w celu organizowania zasobów — Zarządzani
 description: Dowiedz się, jak tworzyć grupy zarządzania platformy Azure do zarządzania wieloma zasobami przy użyciu portalu, usługi Azure PowerShell i interfejsu wiersza polecenia platformy Azure.
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: d9bb2e82404c0188094298f40da3346ee132eec3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a06679432d795b5b7854af8dc66b468841978e9c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75436530"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273192"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Tworzenie grup zarządzania na potrzeby organizowania zasobów i zarządzania nimi
 
@@ -20,7 +20,7 @@ Pierwsza grupa zarządzania utworzona w katalogu może potrwać do 15 minut. Ist
 
 Każdy użytkownik usługi Azure AD w dzierżawie może utworzyć grupę zarządzania bez uprawnienia do zapisu grupy zarządzania przypisane do tego użytkownika.  Ta nowa grupa zarządzania będzie elementem podrzędnym głównej grupy zarządzania, a twórca otrzyma przypisanie roli "Właściciel". Usługa grupy zarządzania umożliwia tę możliwość, dzięki czemu przypisania ról nie są potrzebne na poziomie głównym. Żaden użytkownik nie ma dostępu do głównej grupy zarządzania podczas jej tworzenia.  Aby uniknąć przeszkód związanych ze znalezieniem globalnych administratorów usługi Azure AD, aby rozpocząć korzystanie z grup zarządzania, zezwalamy na tworzenie początkowych grup zarządzania na poziomie głównym.      
 
-Grupę zarządzania można utworzyć przy użyciu portalu, programu PowerShell lub interfejsu wiersza polecenia platformy Azure. Obecnie nie można używać szablonów Menedżera zasobów do tworzenia grup zarządzania.
+Grupę zarządzania można utworzyć przy użyciu portalu, [szablonu Menedżera zasobów,](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group)programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
 ### <a name="create-in-portal"></a>Tworzenie w portalu
 

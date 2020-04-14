@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: ad56041f853d030e3a286610fe4872bffecaee12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a64dee6da521764a38fc60bee06545f6a561c297
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444669"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257706"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>Określanie obrazów w portalu Marketplace dostępnych dla twórców laboratorium
 Jako właściciel konta laboratorium możesz określić obrazy witryny Marketplace, których twórcy laboratorium mogą używać do tworzenia laboratoriów na koncie laboratorium. 
@@ -50,6 +50,19 @@ Aby wyłączyć wiele obrazów jednocześnie, zaznacz pola wyboru przed nazwami 
 Aby włączyć wyłączony obraz, wybierz **... (wielokropek)** w ostatniej kolumnie, a następnie wybierz pozycję **Włącz obraz**. Alternatywnie zaznacz pole wyboru przed nazwą obrazu i wybierz pozycję **Włącz zaznaczone obrazy** na pasku narzędzi. 
 
 Aby wyłączyć wiele obrazów jednocześnie, zaznacz pola wyboru przed nazwami obrazów i wybierz pozycję **Włącz zaznaczone obrazy** na pasku narzędzi. 
+
+## <a name="enable-images-at-the-time-of-lab-creation"></a>Włączanie obrazów w momencie tworzenia laboratorium
+Można włączyć więcej obrazów w czasie tworzenia laboratorium: 
+
+1. Logowanie się do [witryny usługi Azure Lab Services](https://labs.azure.com) przy użyciu poświadczeń właściciela konta **laboratorium**
+2. Wybierz domyślny obraz maszyny wirtualnej lub strzałkę w dół. 
+3. Wybierz **pozycję Włącz więcej opcji obrazu**. 
+
+    ![Włącz więcej opcji obrazu](../media/specify-marketplace-images/enable-more-images-menu.png)
+4. Postępuj zgodnie z instrukcjami z poprzedniej sekcji, aby włączyć wybrane obrazy. 
+5. Może być konieczne zamknięcie okna **Nowe laboratorium** i ponowne otwarcie go, aby wyświetlić obrazy wybrane w poprzednim kroku. 
+
+
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:

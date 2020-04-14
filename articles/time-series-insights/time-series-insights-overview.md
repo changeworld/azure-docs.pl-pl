@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 02/04/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: a938dc69b2b0401a062b1db314d71100b4fbbc4f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 59149b2ca598104d8aca9b4e5e60194a8f6398bf
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77024385"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269962"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co to jest usługa Azure Time Series Insights?
 
@@ -75,7 +75,7 @@ Usługa Azure Time Series Insights przechwytuje i przechowuje każde nowe zdarze
 
 - **Skalowalność:** Usługa Time Series Insights została zaprojektowana do obsługi IoT na dużą skalę. Umożliwia pozyskiwanie od 1 miliona do 100 milionów zdarzeń dziennie, które domyślnie są przechowywane przez 31 dni. Możesz wizualizować i analizować strumienie danych na żywo w czasie zbliżonym do rzeczywistego, obok danych historycznych.
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 Aby rozpocząć, wykonaj następujące kroki.
 

@@ -4,14 +4,14 @@ description: Dowiedz się, jak skonfigurować łącze prywatne platformy Azure w
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 04/13/2020
 ms.author: thweiss
-ms.openlocfilehash: 9a6a1560e169c51256c198868dc7293a020189f4
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4b49d2aa61587d0156755bdd5c47b3eeb90090a5
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421434"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270693"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurowanie łącza prywatnego platformy Azure dla konta usługi Azure Cosmos
 
@@ -624,6 +624,10 @@ Następujące sytuacje i wyniki są możliwe podczas korzystania z łącza prywa
 * Jeśli skonfigurujesz ruch publiczny lub punkt końcowy usługi i utworzysz prywatne punkty końcowe, różne typy ruchu przychodzącego są autoryzowane przez odpowiedni typ reguły zapory.
 
 * Jeśli nie skonfigurujesz żadnego ruchu publicznego lub punktu końcowego usługi i utworzysz prywatne punkty końcowe, konto usługi Azure Cosmos będzie dostępne tylko za pośrednictwem prywatnych punktów końcowych. Jeśli nie skonfigurujesz ruchu publicznego ani punktu końcowego usługi, po odrzuceniu lub usunięciu wszystkich zatwierdzonych prywatnych punktów końcowych konto jest otwarte dla całej sieci.
+
+## <a name="blocking-public-network-access-during-account-creation"></a>Blokowanie dostępu do sieci publicznej podczas tworzenia konta
+
+Zgodnie z opisem w poprzedniej sekcji i chyba że ustawiono określone reguły zapory, dodanie prywatnego punktu końcowego sprawia, że konto usługi Azure Cosmos jest dostępne tylko za pośrednictwem prywatnych punktów końcowych. Oznacza to, że konto usługi Azure Cosmos można uzyskać z ruchu publicznego po jego utworzeniu i przed dodaniem prywatnego punktu końcowego. Aby upewnić się, że dostęp do sieci publicznej jest wyłączony `publicNetworkAccess` jeszcze `Disabled` przed utworzeniem prywatnych punktów końcowych, można ustawić flagę podczas tworzenia konta. Zobacz [ten szablon usługi Azure Resource Manager,](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/) aby zobaczyć, jak używać tej flagi.
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Aktualizowanie prywatnego punktu końcowego podczas dodawania lub usuwania regionu
 

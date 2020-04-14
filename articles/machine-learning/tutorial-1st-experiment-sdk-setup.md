@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: a6f977c0cdca670b40ccdc01db64a493962e3dda
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 820332b0692c0c863ed23912fe9913c419769155
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239889"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273005"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Samouczek: Pierwsze rozpoczęcie tworzenia pierwszego eksperymentu uczenia maszynowego za pomocą zestawu SDK języka Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -86,7 +86,7 @@ Wykonaj następującą konfigurację eksperymentu i uruchom kroki w usłudze Azu
     
 1. Wybierz plik **samouczek-1st-experiment-sdk-train.ipynb** w folderze **tutorials/create-first-ml-experiment.**
 
-1. Na górnym pasku wybierz wystąpienie obliczeniowe, które będzie używane do uruchamiania notesu. Te maszyny wirtualne są wstępnie skonfigurowane ze [wszystkim, czego potrzebujesz do uruchomienia usługi Azure Machine Learning.](concept-compute-instance.md#contents) Można wybrać maszynę wirtualną utworzoną przez dowolnego użytkownika obszaru roboczego. 
+1. Na górnym pasku wybierz wystąpienie obliczeniowe, które będzie używane do uruchamiania notesu. Te maszyny wirtualne są wstępnie skonfigurowane ze [wszystkim, czego potrzebujesz do uruchomienia usługi Azure Machine Learning.](concept-compute-instance.md#contents) 
 
 1. Jeśli nie znaleziono żadnych maszyn wirtualnych, wybierz **+ Dodaj,** aby utworzyć maszynę wirtualną wystąpienia obliczeniowego. 
 

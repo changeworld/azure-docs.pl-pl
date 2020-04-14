@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 951f24ad06014f6d95f10c91e1bad8e99bbbc736
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 9003d35ce2eea18aa912a866802b026bb923aa08
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991777"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272699"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostyka usługi Load Balancer w warstwie Standardowa przy użyciu metryk, alertów i kondycji zasobów
 
@@ -37,8 +37,8 @@ Różne standardowe konfiguracje modułu równoważenia obciążenia zawierają 
 
 | Metryka | Typ zasobu | Opis | Zalecana agregacja |
 | --- | --- | --- | --- |
-| Dostępność ścieżki danych (dostępność usług VIP)| Publiczny i wewnętrzny moduł równoważenia obciążenia | Standardowy moduł równoważenia obciążenia stale wykonuje ścieżkę danych z poziomu regionu do frontonaku modułu równoważenia obciążenia, aż do stosu SDN obsługującego maszynę wirtualną. Tak długo, jak w dobrej kondycji wystąpień pozostają, pomiar podąża tą samą ścieżką, co ruch z równoważenia obciążenia aplikacji. Ścieżka danych, z której korzystają klienci, jest również sprawdzana. Pomiar jest niewidoczny dla aplikacji i nie koliduje z innymi operacjami.| Średnia |
-| Stan sondy kondycji (dostępność DIP) | Publiczny i wewnętrzny moduł równoważenia obciążenia | Standardowy moduł równoważenia obciążenia używa rozproszonej usługi sondowania kondycji, która monitoruje kondycję punktu końcowego aplikacji zgodnie z ustawieniami konfiguracji. Ta metryka zawiera widok zagregowany lub filtrowany dla punktu końcowego każdego punktu końcowego wystąpienia w puli modułu równoważenia obciążenia. Można zobaczyć, jak moduł równoważenia obciążenia wyświetla kondycję aplikacji, zgodnie z wskazaniem w konfiguracji sondy kondycji. |  Średnia |
+| Dostępność ścieżki danych | Publiczny i wewnętrzny moduł równoważenia obciążenia | Standardowy moduł równoważenia obciążenia stale wykonuje ścieżkę danych z poziomu regionu do frontonaku modułu równoważenia obciążenia, aż do stosu SDN obsługującego maszynę wirtualną. Tak długo, jak w dobrej kondycji wystąpień pozostają, pomiar podąża tą samą ścieżką, co ruch z równoważenia obciążenia aplikacji. Ścieżka danych, z której korzystają klienci, jest również sprawdzana. Pomiar jest niewidoczny dla aplikacji i nie koliduje z innymi operacjami.| Średnia |
+| Stan sondy kondycji | Publiczny i wewnętrzny moduł równoważenia obciążenia | Standardowy moduł równoważenia obciążenia używa rozproszonej usługi sondowania kondycji, która monitoruje kondycję punktu końcowego aplikacji zgodnie z ustawieniami konfiguracji. Ta metryka zawiera widok zagregowany lub filtrowany dla punktu końcowego każdego punktu końcowego wystąpienia w puli modułu równoważenia obciążenia. Można zobaczyć, jak moduł równoważenia obciążenia wyświetla kondycję aplikacji, zgodnie z wskazaniem w konfiguracji sondy kondycji. |  Średnia |
 | PAKIETY SYN (synchronizuj) | Publiczny i wewnętrzny moduł równoważenia obciążenia | Standardowy moduł równoważenia obciążenia nie kończy połączeń protokołu TCP (Transmission Control Protocol) ani nie wchodzi w interakcję z przepływami pakietów TCP lub UDP. Przepływy i ich uzgadniania są zawsze między źródłem i wystąpieniem maszyny Wirtualnej. Aby lepiej rozwiązywać scenariusze protokołu TCP, można użyć liczników pakietów SYN, aby dowiedzieć się, ile prób połączenia TCP jest podejmowanych. Metryka raportuje liczbę odebranych pakietów TCP SYN.| Średnia |
 | Połączenia SNAT | Publiczny moduł równoważenia obciążenia |Standardowy moduł równoważenia obciążenia raportuje liczbę przepływów wychodzących, które są maskowane do publicznego adresu IP frontonu. Porty tłumaczenia adresów sieciowych źródłowych (SNAT) są zasobem wyczerpującym. Ta metryka może wskazywać, jak mocno aplikacja polega na SNAT dla wychodzących przepływów pochodzących. Liczniki dla pomyślnych i nieudanych wychodzących przepływów SNAT są zgłaszane i mogą służyć do rozwiązywania problemów i zrozumienia kondycji przepływów wychodzących.| Średnia |
 | Przydzielone porty SNAT | Publiczny moduł równoważenia obciążenia | Standardowy moduł równoważenia obciążenia raportuje liczbę portów SNAT przydzielonych na wystąpienie zaplecza | Średnia. |
@@ -85,13 +85,13 @@ Aby skonfigurować alerty:
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Typowe scenariusze diagnostyczne i zalecane widoki
 
-#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Czy ścieżka danych jest dostępna dla mojego modułu VIP równoważenia obciążenia?
+#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-frontend"></a>Czy ścieżka danych jest dostępna dla mojego frontendu modułu równoważenia obciążenia?
 <details><summary>Rozwiń</summary>
 
-Metryka dostępności programu VIP opisuje kondycję ścieżki danych w regionie do hosta obliczeniowego, na którym znajdują się maszyny wirtualne. Metryka jest odzwierciedleniem kondycji infrastruktury platformy Azure. Metryki można użyć do:
+Metryka dostępności dostępności ścieżki danych opisuje kondycję ścieżki danych w regionie do hosta obliczeniowego, na którym znajdują się maszyny wirtualne. Metryka jest odzwierciedleniem kondycji infrastruktury platformy Azure. Metryki można użyć do:
 - Monitorowanie zewnętrznej dostępności usługi
 - Kopać głębiej i zrozumieć, czy platforma, na której wdrożona usługa jest w dobrej kondycji lub czy twój system operacyjny gościa lub wystąpienie aplikacji jest w dobrej kondycji.
-- Wyizoluj, czy zdarzenie jest związane z usługą lub podstawową płaszczyzną danych. Nie należy mylić tej metryki ze stanem sondy kondycji ("dostępność DIP").
+- Wyizoluj, czy zdarzenie jest związane z usługą lub podstawową płaszczyzną danych. Nie należy mylić tej metryki ze stanem sondy kondycji ("Dostępność wystąpienia wewnętrznej bazy danych").
 
 Aby uzyskać dostępność ścieżki danych dla zasobów standardowego modułu równoważenia obciążenia:
 1. Upewnij się, że wybrano poprawny zasób modułu równoważenia obciążenia. 
@@ -107,7 +107,7 @@ Metryka jest generowana przez aktywny pomiar w paśmie. Usługa sondowania w reg
 
 Pakiet pasujący do frontu i reguły wdrożenia jest generowany okresowo. Przechodzi przez region ze źródła do hosta, w którym znajduje się maszyna wirtualna w puli zaplecza. Infrastruktura modułu równoważenia obciążenia wykonuje te same operacje równoważenia obciążenia i tłumaczenia, jak w przypadku całego innego ruchu. Ta sonda jest w paśmie dla punktu końcowego równoważenia obciążenia. Po nadejdzie sondy na hoście obliczeniowym, gdzie znajduje się w dobrej kondycji maszyny Wirtualnej w puli zaplecza, host obliczeń generuje odpowiedź na usługę sondowania. Maszyna wirtualna nie widzi tego ruchu.
 
-Dostępność vip nie powiedzie się z następujących powodów:
+Dostępność datapath dostępność nie powiedzie się z następujących powodów:
 - Wdrożenie nie ma żadnych zdrowych maszyn wirtualnych pozostałych w puli zaplecza. 
 - Wystąpiła awaria infrastruktury.
 
@@ -116,7 +116,7 @@ Do celów diagnostycznych można użyć [metryki Dostępność ścieżki danych 
 Użyj **średniej** jako agregacji dla większości scenariuszy.
 </details>
 
-#### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>Czy wystąpienia zaplecza dla mojego VIP odpowiada na sondy?
+#### <a name="are-the-backend-instances-for-my-load-balancer-responding-to-probes"></a>Czy wystąpienia wewnętrznej bazy danych dla modułu równoważenia obciążenia reagują na sondy?
 <details>
   <summary>Rozwiń</summary>
 Metryka stanu sondy kondycji opisuje kondycję wdrożenia aplikacji skonfigurowanej przez użytkownika podczas konfigurowania sondy kondycji modułu równoważenia obciążenia. Moduł równoważenia obciążenia używa stanu sondy kondycji, aby określić, gdzie należy wysyłać nowe przepływy. Sondy kondycji pochodzą z adresu infrastruktury platformy Azure i są widoczne w obszarze operacyjnym gościa maszyny Wirtualnej.
@@ -209,19 +209,19 @@ Aby uzyskać statystyki liczby bajtów lub pakietów:
 #### <a name="how-do-i-diagnose-my-load-balancer-deployment"></a><a name = "vipavailabilityandhealthprobes"></a>Jak zdiagnozować wdrożenie modułu równoważenia obciążenia?
 <details>
   <summary>Rozwiń</summary>
-Za pomocą kombinacji dostępności VIP i metryki sondy kondycji na jednym wykresie można określić, gdzie szukać problemu i rozwiązać problem. Można uzyskać pewność, że platforma Azure działa poprawnie i użyć tej wiedzy, aby ostatecznie ustalić, że konfiguracja lub aplikacja jest główną przyczyną.
+Za pomocą kombinacji dostępności ścieżki danych i metryki sondy kondycji na jednym wykresie można określić, gdzie szukać problemu i rozwiązać problem. Można uzyskać pewność, że platforma Azure działa poprawnie i użyć tej wiedzy, aby ostatecznie ustalić, że konfiguracja lub aplikacja jest główną przyczyną.
 
 Można użyć metryki sondy kondycji, aby zrozumieć, jak platforma Azure wyświetla kondycję wdrożenia zgodnie z konfiguracją, która została udostępnione. Patrzenie na sondy kondycji jest zawsze doskonałym pierwszym krokiem w monitorowaniu lub określaniu przyczyny.
 
-Możesz zrobić krok dalej i użyć metryk dostępności programu VIP, aby uzyskać wgląd w sposób, w jaki platforma Azure wyświetla kondycję podstawowej płaszczyzny danych, która jest odpowiedzialna za określone wdrożenie. Po połączeniu obu metryk można wyizolować, gdzie może być błąd, jak pokazano w tym przykładzie:
+Możesz zrobić krok dalej i użyć metryki dostępności ścieżki danych, aby uzyskać wgląd w sposób, w jaki platforma Azure wyświetla kondycję podstawowej płaszczyzny danych, która jest odpowiedzialna za określone wdrożenie. Po połączeniu obu metryk można wyizolować, gdzie może być błąd, jak pokazano w tym przykładzie:
 
 ![Łączenie danych o dostępności ścieżki danych i metrykach stanu sondy kondycji](./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png)
 
 *Rysunek: Łączenie danych dostępności ścieżki danych i metryk stanu sondy kondycji*
 
 Na wykresie wyświetlane są następujące informacje:
-- Infrastruktura obsługująca maszyny wirtualne była niedostępna i na 0 procent na początku wykresu. Później infrastruktura była w dobrej kondycji, a maszyny wirtualne były osiągalne, a więcej niż jedna maszyna wirtualna została umieszczona w zapleczu. Te informacje są wskazywane przez niebieski śledzenia dostępności ścieżki danych (dostępność VIP), który był później na 100 procent. 
-- Stan sondy kondycji (dostępność DIP), wskazywany przez fioletowy ślad, wynosi 0 procent na początku wykresu. Zakreślony obszar w kolorze zielonym podkreśla, gdzie stan sondy kondycji (dostępność DIP) stał się zdrowy i w którym momencie wdrożenie klienta było w stanie zaakceptować nowe przepływy.
+- Infrastruktura obsługująca maszyny wirtualne była niedostępna i na 0 procent na początku wykresu. Później infrastruktura była w dobrej kondycji, a maszyny wirtualne były osiągalne, a więcej niż jedna maszyna wirtualna została umieszczona w zapleczu. Te informacje są wskazywane przez niebieski śledzenia dostępności ścieżki danych, który był później na 100 procent. 
+- Stan sondy kondycji, wskazywany przez fioletowy ślad, wynosi 0 procent na początku wykresu. Zakreślony obszar w kolorze zielonym podkreśla, gdzie stan sondy kondycji stał się zdrowy i w którym momencie wdrożenie klienta było w stanie zaakceptować nowe przepływy.
 
 Wykres umożliwia klientom samodzielne rozwiązywanie problemów z wdrożeniem bez konieczności odgadywania lub pytania o pomoc techniczną, czy występują inne problemy. Usługa była niedostępna, ponieważ sondy kondycji uległy awarii z powodu błędnej konfiguracji lub nieudanej aplikacji.
 </details>

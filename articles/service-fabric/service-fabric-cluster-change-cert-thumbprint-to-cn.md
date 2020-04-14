@@ -3,12 +3,12 @@ title: Aktualizowanie klastra w celu używania nazwy pospolitej certyfikatu
 description: Dowiedz się, jak przełączyć klaster sieci szkieletowej usług z używania odcisków palców certyfikatów na używanie nazwy pospolitej certyfikatu.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 66c49ccb7b7633d0eff392b676bb381118eb64a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610203"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272631"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Change cluster from certificate thumbprint to common name (Zmienianie klastra z odcisku palca certyfikatu na nazwę pospolitą)
 Żadne dwa certyfikaty nie mogą mieć tego samego odcisku palca, co utrudnia najazd lub zarządzanie certyfikatami klastra. Wiele certyfikatów może jednak mieć tę samą nazwę pospolitą lub podmiot.  Przełączenie wdrożonego klastra z używania odcisków palca certyfikatu na używanie nazw pospolitych certyfikatów sprawia, że zarządzanie certyfikatami jest znacznie prostsze. W tym artykule opisano sposób aktualizowania uruchomionego klastra sieci szkieletowej usług, aby używać nazwy pospolitej certyfikatu zamiast odcisku palca certyfikatu.
@@ -20,12 +20,12 @@ ms.locfileid: "75610203"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>Uzyskaj certyfikat
-Najpierw uzyskaj certyfikat od [urzędu certyfikacji](https://wikipedia.org/wiki/Certificate_authority).  Pospolitą nazwą certyfikatu powinna być nazwa hosta klastra.  Na przykład "myclustername.southcentralus.cloudapp.azure.com".  
+Najpierw uzyskaj certyfikat od [urzędu certyfikacji](https://wikipedia.org/wiki/Certificate_authority).  Wspólna nazwa certyfikatu powinna być dla domeny niestandardowej, której jesteś właścicielem, i kupiona od rejestratora domeny. Na przykład "azureservicefabricbestpractices.com"; ci, którzy nie są pracownikami firmy Microsoft, nie mogą aprowizować certyfikatów dla domen MS, więc nie można używać nazw DNS usługi LB lub Traffic Manager jako nazw pospolitych dla certyfikatu i konieczne będzie zainicjowanie obsługi [administracyjnej strefy DNS platformy Azure,](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) jeśli domena niestandardowa ma być rozpoznawana na platformie Azure. Należy również zadeklarować domenę niestandardową, której jesteś właścicielem, jako "managementEndpoint" klastra, jeśli chcesz, aby portal odzwierciedlał niestandardowy alias domeny dla klastra.
 
 Do celów testowych można uzyskać certyfikat podpisany przez urząd certyfikacji z bezpłatnego lub otwartego urzędu certyfikacji.
 
 > [!NOTE]
-> Certyfikaty z podpisem własnym, w tym certyfikaty wygenerowane podczas wdrażania klastra sieci szkieletowej usług w witrynie Azure portal, nie są obsługiwane.
+> Certyfikaty z podpisem własnym, w tym certyfikaty wygenerowane podczas wdrażania klastra sieci szkieletowej usług w witrynie Azure portal, nie są obsługiwane. 
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>Prześlij certyfikat i zainstaluj go w zestawie skalowania
 Na platformie Azure klaster sieci szkieletowej usług jest wdrażany na zestawie skalowania maszyny wirtualnej.  Przekaż certyfikat do magazynu kluczy, a następnie zainstaluj go w zestawie skalowania maszyny wirtualnej, na który jest uruchomiony klaster.

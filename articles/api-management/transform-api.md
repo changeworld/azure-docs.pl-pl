@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70067466"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258749"
 ---
 # <a name="transform-and-protect-your-api"></a>Przekształcanie i ochrona interfejsu API
 
@@ -112,7 +112,7 @@ Aby zobaczyć oryginalną odpowiedź:
 2.  Wybierz opcję **Wszystkie operacje**.
 3.  W górnej części ekranu wybierz kartę **Projektowanie**.
 4.  W sekcji **Przetwarzanie danych wychodzących** kliknij ikonę **</>**.
-5.  Umieść kursor wewnątrz elementu ** &lt;&gt; wychodzącego.**
+5.  Umieść kursor wewnątrz elementu ** &lt;wychodzącego&gt; ** i kliknij przycisk **Wstaw zasady** w prawym górnym rogu.
 6.  W oknie po prawej stronie w obszarze **Zasady przekształcania** kliknij opcję **+ Znajdź i zastąp ciąg w treści**.
 7.  Zmodyfikuj kod **find-and-replace** (w elemencie **\<outbound\>**), aby zastąpić adres URL i dopasować go do bramy APIM. Przykład:
 

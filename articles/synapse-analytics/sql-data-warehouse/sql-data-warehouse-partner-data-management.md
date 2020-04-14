@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3d5076b8ca4e1c79451bfe3bcd1dbe554b17a88
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 1d36da49bfdddaa612a71652504584c32b66490d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586473"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261446"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Partnerzy zarządzania danymi usługi Azure Synapse Analytics
 
@@ -31,6 +31,7 @@ Aby utworzyć rozwiązanie magazynu danych przy użyciu funkcji puli SQL Synapse
 | ![Kyligence](./media/sql-data-warehouse-partner-data-management/kyligence-logo.png) |**Kyligence**<br>Założona przez twórców Apache Kylin, Kyligence ma na celu przyspieszenie produktywności swoich klientów poprzez automatyzację zarządzania danymi, odkrywania, interakcji i generowania wnikliwości - wszystko to bez barier. Kyligence Cloud umożliwia wdrażanie klastrów, zwiększa dostęp do danych i znacznie przyspiesza analizę danych. Platforma do zarządzania analizą Big Data firmy Kyligence, rozszerzana na sztuczną inteligencję, sprawia, że często trudne zadanie tworzenia jezior danych w skali korporacyjnej jest szybkie i łatwe.|[Strona produktu](https://kyligence.io/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence)<br> |
 | ![Redpoint Globalny](./media/sql-data-warehouse-partner-data-management/redpoint-global-logo.png) |**Zarządzanie danymi programu RedPoint**<br>RedPoint Data Management umożliwia marketerom stosowanie wszystkich danych w celu zwiększenia zaangażowania klientów między kanałami podczas wykonywania uporządkowanego i nieustrukturyzowanego zarządzania danymi. Korzystając z platformy Azure Synapse i RedPoint można zmaksymalizować wartość danych strukturalnych i nieustrukturyzowanych, aby zapewnić hiper-spersonalizowane, kontekstowe interakcje potrzebne do zaangażowania dzisiejszego klienta wielokanałowego. Interfejs przeciągania i upuszczania ułatwia projektowanie i wykonywanie procesów zarządzania danymi. |[Strona produktu](http://www.redpoint.net/products/data-management-solutions/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redpoint-global/redpoint-rpdm/)<br> |
 | ![Działko jedno](./media/sql-data-warehouse-partner-data-management/sql-sentry-logo.png) |**SentryOne (DW Działko)**<br>Dzięki inteligentnemu pulpitowi nawigacyjnemu przenoszenia danych i kalendarzowi zdarzeń zawsze wiesz dokładnie, co wpływa na obciążenie pracą. Zaprojektowany, aby zapewnić wgląd w zapytania i zadania uruchomione w celu załadowania, tworzenia kopii zapasowych lub przywracania danych, nigdy nie martw się o jak największe wykorzystanie zasobów platformy Azure. |[Strona produktu](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br>[Azure Marketplace](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br> |
+| ![SqlDBM (sqldbm)](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM (sqldbm)**<br>SqlDBM to oparte na chmurze narzędzie do modelowania danych, które oferuje łatwy i wygodny sposób tworzenia bazy danych w dowolnym miejscu w dowolnej przeglądarce. Wszystko to przy jednoczesnym uwzględnieniu wszelkich potrzebnych reguł bazy danych i obiektów, takich jak klucze bazy danych, schematy, indeksy, ograniczenia kolumn i relacje. |[Strona produktu](http://sqldbm.com/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
 
 ## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej o innych partnerach, zobacz [Partnerzy analizy biznesowej](sql-data-warehouse-partner-business-intelligence.md) i partnerzy [integracji danych.](sql-data-warehouse-partner-data-integration.md)

@@ -1,20 +1,20 @@
 ---
 title: Rozwiązywanie problemów ze skalowaniem automatycznym za pomocą zestawów skalowania maszyny wirtualnej
 description: Rozwiązywanie problemów ze skalowaniem automatycznym za pomocą zestawów skalowania maszyny wirtualnej. Opis typowych napotkanych problemów i sposobu ich rozwiązywania.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
 ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: windows
 ms.topic: conceptual
 ms.date: 11/16/2017
-ms.author: manayar
-ms.openlocfilehash: 923967a902f611ce845fbdc096fd2c02e681bb6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 4bc5e66f5b0759bdb5fe34276369161200bd5442
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76272430"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273379"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Troubleshooting autoscale with Virtual Machine Scale Sets (Rozwiązywanie problemów ze skalowaniem automatycznym przy użyciu zestawów skalowania maszyn wirtualnych)
 **Problem** — utworzono infrastrukturę skalowania automatycznego w usłudze Azure Resource Manager przy użyciu https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale zestawów skalowania maszyny wirtualnej — na przykład przez wdrożenie szablonu takiego jak ten: — masz zdefiniowane reguły skalowania i działa świetnie, z wyjątkiem niezależnie od tego, ile obciążenia można umieścić na maszynach wirtualnych, nie jest skalowana automatycznie.

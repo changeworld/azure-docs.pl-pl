@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 04/10/2020
 ms.author: dsindona
-ms.openlocfilehash: a370b7b21d25f117e44d613d060dd8cdd060c062
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2fdf40dde287a65548f1db04d34ed3cf67d0374
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336261"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262166"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Zasady i warunki rynku komercyjnego
 
@@ -21,9 +21,9 @@ ms.locfileid: "80336261"
 
 Dziękujemy za zainteresowanie ofertami wydawniczym na rynku komercyjnym. Zobowiązujemy się do współpracy z Tobą w celu stworzenia bogatego źródła rozwiązań w chmurze i linii ofert biznesowych, które zachwycają klientów na całym świecie i pomagają budować Twój biznes.
 
-Oferty na rynku muszą być zgodne z naszymi zasadami i warunkami. Aktualizujemy te zasady i warunki od czasu do czasu, aby zapewnić dobre wrażenia klientów i zapewnić partnerom możliwość odniesienia sukcesu. Jeśli masz opinię na temat naszych zasad lub warunków, poinformuj nas o tym, komentując je na [forum portalu Azure Marketplace i AppSource.](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)
+Oferty na rynku muszą być zgodne z naszymi zasadami i warunkami. Aktualizujemy te zasady i warunki od czasu do czasu, aby zapewnić dobre wrażenia klientów i zapewnić partnerom możliwość odniesienia sukcesu. Jeśli masz opinię na temat naszych zasad lub warunków, poinformuj nas o tym, komentując je na [forum portalu Azure Marketplace i Microsoft AppSource.](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)
 
-## <a name="policies-and-terms"></a>Zasady i warunki
+## <a name="policies-and-terms"></a>Zasady i postanowienia
 
 * [Zasady certyfikacji komercyjnej platformy handlowej](https://docs.microsoft.com/legal/marketplace/certification-policies)
 
@@ -35,6 +35,6 @@ Oferty na rynku muszą być zgodne z naszymi zasadami i warunkami. Aktualizujemy
 
 ## <a name="next-steps"></a>Następne kroki
 
-Odwiedź stronę [przewodnika publikowania w portalu Azure Marketplace i AppSource.](./marketplace-publishers-guide.md)
+Odwiedź stronę [przewodnika po publikacjach w portalu marketplace.](./marketplace-publishers-guide.md)
 
 ---

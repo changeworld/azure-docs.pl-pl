@@ -1,19 +1,19 @@
 ---
 title: Dowiedz się więcej o szablonach zestawów skalowania maszyny wirtualnej
 description: Dowiedz się, jak utworzyć szablon zestawu podstawowych skalowania dla zestawów skalowania maszyny wirtualnej platformy Azure w kilku prostych krokach.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 04/26/2019
-ms.author: manayar
-ms.openlocfilehash: 24db9b2d39771c481a8c43e2b55f12cef381b4d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 9c6a30a5f08b33adfa515973962236516f34fbf3
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76271906"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273396"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Dowiedz się więcej o szablonach zestawów skalowania maszyny wirtualnej
 [Szablony usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) to doskonały sposób wdrażania grup powiązanych zasobów. W tej serii samouczków pokazano, jak utworzyć szablon zestawu skalowania podstawowego i jak zmodyfikować ten szablon w zależności od różnych scenariuszy. Wszystkie przykłady pochodzą z tego [repozytorium GitHub](https://github.com/gatneil/mvss).

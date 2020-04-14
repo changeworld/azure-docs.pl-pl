@@ -4,16 +4,19 @@ description: Dowiedz się, jak tworzyć pule węzłów systemu w usłudze Azure 
 services: container-service
 ms.topic: article
 ms.date: 04/06/2020
-ms.openlocfilehash: ef5400f19f68fd2da45776d220e17777f58e46e6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986319"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259072"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Zarządzanie pulami węzłów systemowych w usłudze Azure Kubernetes Service (AKS)
 
-W usłudze Azure Kubernetes (AKS) węzły tej samej konfiguracji są grupowane w *pule węzłów.* Pule węzłów zawierają podstawowe maszyny wirtualne, które uruchamiają aplikacje. Pule węzłów systemowych i pul węzłów użytkownika to dwa różne tryby puli węzłów dla klastrów AKS. Pule węzłów systemowych obsługują podstawowe usługi systemowe, takie jak CoreDNS. Pule węzłów użytkownika są miejscem, w którym umieszczasz zasobników specyficznych dla aplikacji. Każdy klaster usługi AKS musi zawierać co najmniej jedną pulę węzłów systemowych z co najmniej jednym węzłem. Jeśli uruchomisz pulę pojedynczego węzła systemowego dla klastra AKS, zaleca się użycie co najmniej trzech węzłów dla puli węzłów. 
+W usłudze Azure Kubernetes (AKS) węzły tej samej konfiguracji są grupowane w *pule węzłów.* Pule węzłów zawierają podstawowe maszyny wirtualne, które uruchamiają aplikacje. Pule węzłów systemowych i pul węzłów użytkownika to dwa różne tryby puli węzłów dla klastrów AKS. Pule węzłów systemowych służą głównemu celowi hostowania krytycznych zasobników systemu, takich jak CoreDNS i tunnelfront. Pule węzłów użytkownika służą głównym celem hostowania zasobników aplikacji. Jednak zasobników aplikacji można zaplanować w pulach węzłów systemowych, jeśli chcesz mieć tylko jedną pulę w klastrze AKS. Każdy klaster usługi AKS musi zawierać co najmniej jedną pulę węzłów systemowych z co najmniej jednym węzłem. 
+
+> [!Important]
+> Jeśli uruchomisz pulę pojedynczego węzła systemowego dla klastra AKS w środowisku produkcyjnym, zaleca się użycie co najmniej trzech węzłów dla puli węzłów.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: f511a60b533d6d1e0b1ae8847d0ee0fb6be3500c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a36c411b9ababc42adb51d82a316df4252c01e24
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288839"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252012"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Konfigurowanie zarządzania potencjalnymi klientami przy użyciu tabeli platformy Azure
 
@@ -66,12 +66,12 @@ Użyj tego przykładu jako przewodnika, aby utworzyć prosty przepływ, który a
 
    ![Moje przepływy **+ Zaplanowane - z pustego**](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-5.  W oknie *Kompilacja zaplanowanego przepływu* w obszarze *Powtórz co* wybierz "1" dla interwału i "godzina" dla częstotliwości. Ponadto nadaj przepływowi nazwę, jeśli chcesz. Wybierz **pozycję Utwórz**.
+5.    W oknie *Kompilacja zaplanowanego przepływu* w obszarze *Powtórz co* wybierz "1" dla interwału i "godzina" dla częstotliwości. Ponadto nadaj przepływowi nazwę, jeśli chcesz. Wybierz **pozycję Utwórz**.
 
-    >[!Note]
-    >Chociaż w tym przykładzie używa interwału 1 godziny, można wybrać interwał i częstotliwość, która jest najlepsza dla potrzeb biznesowych.
+>[!Note]
+>Chociaż w tym przykładzie używa interwału 1 godziny, można wybrać interwał i częstotliwość, która jest najlepsza dla potrzeb biznesowych.
 
-    ![Tworzenie zaplanowanego przepływu.](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
+![Tworzenie zaplanowanego przepływu.](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
 
 6. Wybierz pozycję **+ Nowy krok**.
 7. W oknie *Wybierz wyszukiwanie akcji* dla "pomiń czas", a następnie wybierz pozycję **Przejmij czas przeszły** w obszarze Akcje.
@@ -92,23 +92,17 @@ W następnym zestawie kroków połączysz się z tabelą platformy Azure i skonf
 
 9. Po kroku "Przejdź za przemijanie czasu" wybierz pozycję **+ Nowy krok**, a następnie wyszukaj hasło "Pobierz encje" w oknie Wybierz *akcję.*
 10. W obszarze **Akcje**wybierz pozycję **Pobierz jednostki (Usługa Azure Table Storage).**
-11. W oknie **Usługi Azure Table Storage** podaj informacje dotyczące następujących pól i wybierz pozycję **Utwórz:**
+11.    W oknie **Usługi Azure Table Storage** podaj informacje dotyczące następujących pól i wybierz pozycję **Utwórz:**
+* *Nazwa połączenia* — podaj znaczącą nazwę połączenia, które ustanawiasz między tym przepływem a tabelą platformy Azure.
+* *Nazwa konta magazynu* — podaj nazwę konta magazynu dla tabeli platformy Azure. Można to znaleźć na stronie **klucze dostępu** konta magazynu.
+* *Udostępniony klucz magazynu* — podaj wartość klucza dla konta sklepu dla tabeli platformy Azure. Można to znaleźć na stronie **klucze dostępu** konta magazynu.
+    ![Magazyn tabel platformy Azure.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
-    * *Nazwa połączenia* — podaj znaczącą nazwę połączenia, które ustanawiasz między tym przepływem a tabelą platformy Azure.
-    * *Nazwa konta magazynu* — podaj nazwę konta magazynu dla tabeli platformy Azure. Można to znaleźć na stronie **klucze dostępu** konta magazynu.
-    * *Udostępniony klucz magazynu* — podaj wartość klucza dla konta sklepu dla tabeli platformy Azure. Można to znaleźć na stronie **klucze dostępu** konta magazynu.
+Po kliknięciu przycisku Utwórz zostanie wyświetlene okno *Pobierz jednostki.* W tym miejscu wybierz pozycję **Pokaż opcje zaawansowane** i podaj informacje dotyczące następujących pól:
+* *Tabela* — wybierz nazwę usługi Azure Table Storage (z kroku 6 instrukcji dotyczących konfigurowania tabeli platformy Azure). Następne przechwytywanie ekranu pokazuje monit, gdy w tym przykładzie wybrano tabelę "marketplaceleads".
+    ![Azure Table pobierz jednostki.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-        ![Magazyn tabel platformy Azure.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
-
-    Po kliknięciu przycisku Utwórz zostanie wyświetlene okno *Pobierz jednostki.* W tym miejscu wybierz pozycję **Pokaż opcje zaawansowane** i podaj informacje dotyczące następujących pól:
-
-       * *Tabela* — wybierz nazwę usługi Azure Table Storage (z kroku 6 instrukcji dotyczących konfigurowania tabeli platformy Azure). Następne przechwytywanie ekranu pokazuje monit, gdy w tym przykładzie wybrano tabelę "marketplaceleads".
-
-            ![Azure Table pobierz jednostki.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
-
-        * *Kwerenda filtrująca* — zaznacz to pole i wklej tę funkcję w polu:`Timestamp gt datetime'@{body('Get_past_time')}'`
-
-            ![Azure Table get jednostek — filtr Querry.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
+* *Kwerenda filtrująca* — wybierz to pole `Timestamp gt datetime'@{body('Get_past_time')}'` ![i wklej tę funkcję w polu: Jednostki otrzymasz tabelę platformy Azure — kwerenda filtrująca.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
 12. Po zakończeniu konfigurowania połączenia z tabelą platformy Azure wybierz pozycję **Nowy krok,** aby dodać warunek do skanowania tabeli platformy Azure w poszukiwaniu nowych potencjalnych klientów. 
 
@@ -178,7 +172,10 @@ Gdy będziesz gotowy skonfigurować informacje o zarządzaniu potencjalnymi klie
 1. Przejdź do strony **Ustawienia oferty** dla swojej oferty.
 2. Wybierz **pozycję Połącz** w sekcji Zarządzanie potencjalnymi klientami.
 3. W oknie podręcznym Szczegóły połączenia wybierz **pozycję Tabela platformy Azure** dla miejsca **docelowego potencjalnego klienta**i wklej ciąg połączenia z konta magazynu platformy Azure utworzonego przez wykonując wcześniejsze kroki w polu ciągu połączenia konta **magazynu.**
-4. Wybierz **pozycję Zapisz**. 
+4. **Kontaktowy adres e-mail** — udostępniaj wiadomości e-mail osobom w firmie, które powinny otrzymywać powiadomienia e-mail po otrzymaniu nowego potencjalnego klienta. Możesz dostarczyć wiele wiadomości e-mail, oddzielając je średnikiem.
+5. Wybierz **ok**.
+
+Aby upewnić się, że udało ci się połączyć z miejscem docelowym potencjalnego klienta, kliknij przycisk sprawdź poprawność. Jeśli się powiedzie, będziesz miał potencjalnego klienta testowego w głównym miejscu docelowym.
 
 >[!Note]
 >Musisz zakończyć konfigurowanie pozostałej części oferty i opublikować ją, zanim będzie można odbierać potencjalnych klientów dla oferty.

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 2014a775edd4e24f5d302d863d0b69d83009b8a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99d2bc95c1dd837bfc3bcabcead28777b7e6f746
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277994"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273940"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Tworzenie dysku VHD zgodnego z platformą Azure
+
+> [!IMPORTANT]
+> Od 13 kwietnia 2020 r. rozpoczniemy przenoszenie zarządzania ofertami maszyny wirtualnej platformy Azure do centrum partnerskiego. Po migracji utworzysz oferty i zarządzasz nimi w Centrum partnerów. Postępuj zgodnie z instrukcjami w [Tworzenie zasobów technicznych maszyny wirtualnej platformy Azure](https://aka.ms/AzureVMTechAsset) do zarządzania zmigrowanych ofert.
 
 W tym artykule opisano kroki wymagane do utworzenia wirtualnego dysku twardego (VHD) dla oferty maszyny wirtualnej (VM) w portalu Azure Marketplace.  Zawiera również najlepsze rozwiązania dotyczące różnych aspektów, takich jak używanie protokołu RDP (Remote Desktop Protocol), wybieranie rozmiaru maszyny Wirtualnej, instalowanie najnowszych aktualizacji systemu Windows i uogólnianie obrazu VHD.  W poniższych sekcjach skupiono się głównie na veds opartych na systemie Windows; Aby uzyskać więcej informacji na temat tworzenia vhd opartych na systemie Linux, zobacz [Linux w sprawie dystrybucji zatwierdzonych przez platformę Azure](../../../virtual-machines/linux/endorsed-distros.md). 
 
@@ -26,9 +29,9 @@ W tym artykule opisano kroki wymagane do utworzenia wirtualnego dysku twardego (
 Dysk VHD systemu operacyjnego dla obrazu maszyny Wirtualnej musi być oparty na obrazie podstawowym zatwierdzonym przez platformę Azure, który zawiera system Windows Server lub SQL Server.
 Aby rozpocząć, utwórz maszynę wirtualną z jednego z następujących obrazów, znajdującego się w witrynie Microsoft Azure portal:
 
--   Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
--   [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
--   [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
+-    Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
+-    [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
+-    [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
 
 > [!TIP]
 > Jeśli używasz bieżącego portalu Azure lub programu PowerShell, obrazy systemu Windows Server opublikowane 8 września 2014 r. i nowsze zostaną zatwierdzone.

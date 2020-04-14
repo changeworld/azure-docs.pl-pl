@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 49ef78ac5a7d58d86583d91bf072f0f3131796fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 889d0d1e98f5c9947588011774d02e54f05edca1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80109396"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257763"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Skonfiguruj laboratorium koncentrujące się na głębokim uczeniu w przetwarzaniu języka naturalnego przy użyciu usług Azure Lab Services
 W tym artykule pokazano, jak skonfigurować laboratorium koncentrujące się na uczeniu głębokim w przetwarzaniu języka naturalnego (NLP) przy użyciu usługi Azure Lab Services. Przetwarzanie języka naturalnego (NLP) jest formą sztucznej inteligencji (AI), która umożliwia komputerom z możliwością tłumaczenia, rozpoznawania mowy i innych funkcji rozumienia języka.  
@@ -39,7 +39,7 @@ Wykonaj [ten samouczek,](tutorial-setup-classroom-lab.md) aby utworzyć nowe lab
 | Ustawienia laboratorium | Wartość/instrukcja | 
 | ------------ | ------------------ |
 | Rozmiar maszyny wirtualnej | Mały procesor graficzny (Compute). Ten rozmiar najlepiej nadaje się do aplikacji intensywnie korzystających z zasobów obliczeniowych i sieciowych, takich jak sztuczna inteligencja i uczenie głębokie. |
-| Obraz maszyny Wirtualnej | [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu). Ten obraz zawiera struktury uczenia głębokiego i narzędzia do uczenia maszynowego i nauki o danych. Aby wyświetlić pełną listę zainstalowanych narzędzi na tym obrazie, zobacz następujący artykuł: [Co znajduje się w systemie DSVM?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
+| Obraz maszyny Wirtualnej | [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Ten obraz zawiera struktury uczenia głębokiego i narzędzia do uczenia maszynowego i nauki o danych. Aby wyświetlić pełną listę zainstalowanych narzędzi na tym obrazie, zobacz następujący artykuł: [Co znajduje się w systemie DSVM?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
 | Włączanie połączenia pulpitu zdalnego | Włącz. <p>Włączenie tego ustawienia umożliwi nauczycielom i uczniom łączenie się z maszynami wirtualnymi za pomocą pulpitu zdalnego (RDP).</p><p>**Ważne:** RDP jest już zainstalowany i skonfigurowany na maszynie wirtualnej do nauki o danych dla obrazu Linuksa. W rezultacie nauczyciele/uczniowie mogą łączyć się z maszynami wirtualnymi za pośrednictwem protokołu RDP bez żadnych dodatkowych kroków. Ponadto, jeśli chcesz połączyć się z pulpitem graficznym, ten obraz ma już zainstalowany [serwer X2Go](https://wiki.x2go.org/doku.php/doc:newtox2go) server na maszynie wirtualnej. Studenci muszą zainstalować klienta X2Go na swoich komputerach lokalnych i musi używać klienta do nawiązania połączenia. Aby uzyskać więcej informacji, zobacz następujące przewodniki: <ul><li>[Jak uzyskać dostęp do maszyny wirtualnej do nauki o danych dla systemu Linux](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[Łączenie się z szablonem maszyny Wirtualnej w celu zainstalowania pakietów RDP i GUI](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
 
 Maszyna wirtualna do nauki o danych dla systemu Linux obraz zawiera niezbędne struktury uczenia głębokiego i narzędzia wymagane dla tego typu klasy. W rezultacie po utworzeniu maszyny szablonu nie trzeba go dalej dostosowywać. Może być opublikowany dla studentów do wykorzystania. Wybierz przycisk **Publikuj** na stronie szablonu, aby opublikować szablon w laboratorium.  

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 95f6befa7e97984ad64a3ffb2a9b91d343945cbb
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81000663"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262438"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Wyszukiwanie rozmyte w celu skorygowania błędów ortograficznych i literówek
 
@@ -71,7 +71,7 @@ W usłudze Azure Cognitive Search, oprócz terminu i odległości (maksymalnie 2
 > [!NOTE]
 > Podczas przetwarzania zapytań rozmyte zapytania nie są poddawane [analizie leksykalne](search-lucene-query-architecture.md#stage-2-lexical-analysis). Dane wejściowe kwerendy są dodawane bezpośrednio do drzewa zapytań i rozwijane w celu utworzenia wykresu terminów. Jedyną wykonawaną transformacją jest niższa obudowa.
 
-## <a name="how-to-test-fuzzy-search"></a>Jak przetestować wyszukiwanie rozmyte
+## <a name="testing-fuzzy-search"></a>Testowanie wyszukiwania rozmytego
 
 W przypadku prostego testowania zalecamy [Eksploratora wyszukiwania](search-explorer.md) lub [postmana](search-get-started-postman.md) do iteracji za pomocą wyrażenia zapytania. Oba narzędzia są interaktywne, co oznacza, że można szybko przejść przez wiele wariantów terminu i ocenić odpowiedzi, które wracają.
 
