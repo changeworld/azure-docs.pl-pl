@@ -1,22 +1,22 @@
 ---
-title: Tworzenie nowej oferty SaaS na rynku komercyjnym
-description: How to create a new Software as a Service (SaaS) offer for listing or selling in the Azure Marketplace, AppSource, or through the Cloud Solution Provider (CSP) program using the Commercial Marketplace portal on Microsoft Partner Center.
+title: Tworzenie nowej oferty SaaS dla komercyjnego rynku firmy Microsoft
+description: Jak utworzyć nową ofertę Oprogramowania jako usługi (SaaS) do wystawiania lub sprzedawania w witrynie Microsoft AppSource, Azure Marketplace lub za pośrednictwem programu Dostawcy rozwiązań w chmurze (CSP) przy użyciu komercyjnego programu marketplace firmy Microsoft w Centrum partnerów firmy Microsoft.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/28/2020
-ms.openlocfilehash: 3f2201db4b78ba61ba15608a676a8b9f8f5e612a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: 45559978f710549088d75d0f0706b798ebad3821
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286204"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314089"
 ---
 # <a name="create-a-new-saas-offer"></a>Tworzenie nowej oferty SaaS
 
-Aby rozpocząć tworzenie ofert oprogramowania jako usługi (SaaS), upewnij się, że najpierw [utwórz konto Centrum partnerów](./create-account.md) i otwórz [pulpit nawigacyjny portalu komercyjnego w portalu Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)z wybraną kartą **Przegląd.**
+Aby rozpocząć tworzenie ofert oprogramowania jako usługi (SaaS), należy najpierw [utworzyć konto Centrum partnerów](./create-account.md) i otworzyć [pulpit nawigacyjny portalu komercyjnego w portalu ,](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)z wybraną kartą **Przegląd.**
 
 ![Pulpit nawigacyjny portalu Marketplace w Centrum partnerów](./media/new-offer-overview.png)
 
@@ -82,6 +82,7 @@ Aby wymienić oferty Oprogramowania jako usługi (SaaS) w Commercial Marketplace
 - Aby uzyskać bardziej rozbudowane wymagania, zobacz [Przewodnik publikowania ofert SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
 #### <a name="saas-pricing-and-billing-options"></a>Opcje cen i rozliczeń SaaS
+
 Dzięki rozwiązaniom SaaS uruchomionym w ramach subskrypcji platformy Azure wydawcy opłaty licencyjne uiszczane przez klientów obejmują koszt infrastruktury, na której oprogramowanie jest wdrażane. Użycie infrastruktury platformy Azure jest zarządzane i rozliczane bezpośrednio z tobą, partnerem. Rzeczywiste opłaty za korzystanie z infrastruktury nie są widoczne dla klienta. Wydawcy powinni łączyć opłaty za korzystanie z infrastruktury platformy Azure z cenami licencji na oprogramowanie. 
 
 SaaS oferuje obsługę techniczną miesięczne lub roczne rozliczenia na podstawie opłaty ryczałtowej, opłaty za użytkownika lub opłaty za zużycie za pomocą usługi rozliczeniowej taryfowej. Komercyjny rynek firmy Microsoft działa w modelu agencji, w którym wydawcy ustalają ceny, Microsoft rozlicza klientów, a microsoft płaci wydawcy przychody, jednocześnie u źródła opłaty agencyjnej.
@@ -109,16 +110,19 @@ Promuj swoją firmę w firmie Microsoft, tworząc listę w portalu marketplace. 
 
 - **Jak chcesz, aby potencjalni klienci wchodzili w interakcje z tą ofertą aukcji?**
 
-##### <a name="get-it-now-free"></a>Pobierz go teraz (za darmo)
+#### <a name="get-it-now-free"></a>Pobierz go teraz (za darmo)
+
 Wystaw swoją ofertę klientom bezpłatnie, podając prawidłowy adres URL (zaczynający się od *http* lub *https),* gdzie mogą uzyskać wersję próbną za pomocą [uwierzytelniania jednym kliknięciem przy użyciu usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials).  Na przykład: `https://contoso.com/saas-app`
 
-##### <a name="free-trial-listing"></a>Bezpłatna wersja próbna (aukcja)
+#### <a name="free-trial-listing"></a>Bezpłatna wersja próbna (aukcja)
+
 Wystaw ofertę klientom z łączem do bezpłatnej wersji próbnej, podając prawidłowy adres URL (zaczynający się od *http* lub *https),* gdzie mogą uzyskać wersję próbną za pomocą [uwierzytelniania jednym kliknięciem przy użyciu usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials).  Na przykład: `https://contoso.com/trial/saas-app`. Oferta bezpłatna wersje próbna są tworzone, zarządzane i konfigurowane przez usługę i nie mają subskrypcji zarządzanych przez firmę Microsoft.
 
 > [!NOTE]
 > Tokeny, które aplikacja otrzyma za pośrednictwem łącza próbnego, mogą służyć tylko do uzyskiwania informacji o użytkowniku za pośrednictwem usługi Azure AD w celu zautomatyzowania tworzenia konta w aplikacji. Konta Microsoft (MSA) nie są obsługiwane do uwierzytelniania przy użyciu tego tokenu.
 
-##### <a name="contact-me"></a>Skontaktuj się ze mną
+#### <a name="contact-me"></a>Skontaktuj się ze mną
+
 Zbieraj informacje kontaktowe klientów, łącząc system CRM (Customer Relationship Management). Klient zostanie poproszony o pozwolenie na udostępnienie swoich informacji. Te dane klienta, wraz z nazwą oferty, identyfikatorem i źródłem witryny, w której znaleźli Twoją ofertę, zostaną wysłane do skonfigurowanym systemu CRM. Aby uzyskać więcej informacji na temat konfigurowania programu CRM, zobacz [Łączenie zarządzania potencjalnymi klientami](#connect-lead-management).
 
 ## <a name="example-marketplace-offer-listing"></a>Przykładowa lista ofert platformy handlowej
@@ -127,16 +131,16 @@ Zbieraj informacje kontaktowe klientów, łącząc system CRM (Customer Relation
 
 ## <a name="enable-a-test-drive"></a>Włączanie dysku testowego
 
-Jazda próbna to świetny sposób na zaprezentowanie oferty potencjalnym klientom, dając im możliwość "wypróbuj przed zakupem", co skutkuje zwiększoną konwersją i generowaniem wysoko wykwalifikowanych potencjalnych klientów. [Dowiedz się więcej o dyskach testowych.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+Jazda próbna to świetny sposób na zaprezentowanie oferty potencjalnym klientom, dając im możliwość "wypróbuj przed zakupem", co skutkuje zwiększoną konwersją i generowaniem wysoko wykwalifikowanych potencjalnych klientów. Aby dowiedzieć się więcej, zobacz [Zezwalaj klientom na testowanie oferty.](./test-drive.md)
 
 - **Włączanie dysku testowego** (pole wyboru)
 
 Włączenie jazdy próbnej zostanie wyświetlony monit o skonfigurowanie środowiska demonstracyjnego dla klientów, aby wypróbować ofertę na określony czas. 
 
-#### <a name="test-drive-resources"></a>Zasoby dysku testowego
-- [Najlepsze praktyki techniczne dotyczące jazdy próbkowej](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Sprawdzone praktyki marketingowe na dysku testowym](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [Przegląd dysku testowego One Pager](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
+### <a name="test-drive-resources"></a>Zasoby dysku testowego
+
+- [Sprawdzone rozwiązania marketingowe](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)- [na dysku testowym Najlepsze rozwiązania techniczne na dysku testowym](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Omówienie dysku testowego (pobieranie w formacie PDF)](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
 
 ## <a name="connect-lead-management"></a>Łączenie zarządzania potencjalnymi klientami
 
@@ -299,7 +303,7 @@ Karta **Podgląd** umożliwia zdefiniowanie ograniczonej **grupy odbiorców w we
 
 - **Zdefiniuj grupę odbiorców w wersji zapoznawczej: dodaj pojedynczą wiadomość e-mail konta AAD/MSA w wierszu wraz z opcjonalnym opisem.**
 
-Dodaj maksymalnie dziesięć (10) adresów e-mail ręcznie lub dwadzieścia (20) w przypadku przekazywania pliku CSV dla istniejących kont Microsoft Account (MSA) lub konta usługi Azure Active Directory, aby ułatwić sprawdzanie poprawności oferty przed opublikowaniem na żywo. Dodając te konta, definiujesz grupę odbiorców, która będzie mogła uzyskać dostęp w wersji zapoznawczej do oferty przed jej opublikowaniem w witrynie marketplace(-ów). Jeśli twoja oferta jest już dostępna, możesz zdefiniować grupę odbiorców w wersji zapoznawczej, aby przetestować wszelkie zmiany lub aktualizacje oferty.
+Dodaj maksymalnie 10 adresów e-mail ręcznie lub 20 w przypadku przekazywania pliku CSV dla istniejących kont Microsoft Account (MSA) lub usługi Azure Active Directory, aby ułatwić sprawdzanie poprawności oferty przed opublikowaniem na żywo. Dodając te konta, definiujesz grupę odbiorców, która będzie mogła uzyskać dostęp w wersji zapoznawczej do oferty przed jej opublikowaniem w witrynie marketplace(-ów). Jeśli twoja oferta jest już dostępna, możesz zdefiniować grupę odbiorców w wersji zapoznawczej, aby przetestować wszelkie zmiany lub aktualizacje oferty.
 
 > [!NOTE]
 > Grupa odbiorców podglądu różni się od grupy prywatnej. Grupa odbiorców w wersji zapoznawczej ma dostęp do twojej oferty _przed_ opublikowaniem na żywo na rynku. Możesz też utworzyć plan i udostępnić go tylko odbiorcom prywatnym. Na karcie **Lista planów** możesz zdefiniować grupę odbiorców prywatnych za pomocą pola wyboru **To jest plan prywatny.** Następnie można zdefiniować prywatną grupę odbiorców do 20 000 klientów przy użyciu identyfikatorów dzierżawy platformy Azure.
@@ -359,7 +363,7 @@ Oferty SaaS za pośrednictwem komercyjnego rynku umożliwiają zapewnienie miesi
 >[!Note]
 >Jeśli klient zdecyduje się na konwersję na plan bez bezpłatnych wersji próbnych, konwersja nastąpi, ale bezpłatna wersja próbna zostanie natychmiast utracona.  Ponadto, gdy klient zaczyna płacić za plan, nie może już uzyskać bezpłatną wersję próbną w tej samej subskrypcji ponownie, nawet jeśli konwertują na jednostkę SKU, która obsługuje bezpłatne wersje próbne.
 
-Możliwość skonfigurowania bezpłatnej wersji próbnej jest dostępna dla każdego planu w ofercie. Wystarczy przejść do ceny i dostępności dla każdej oferty i zaznacz pole wyboru, aby zezwolić na miesięczny okres próbny.
+Możliwość skonfigurowania bezpłatnej wersji próbnej jest dostępna dla każdego planu w ofercie. Przejdź do ceny i dostępności dla każdej oferty i zaznacz pole wyboru, aby zezwolić na miesięczny okres próbny.
 
 ![Jednomiesięczne pole wyboru bezpłatnego okresu próbnego](./media/free-trial-enable.png)
 
@@ -377,7 +381,7 @@ Aby uzyskać informacje na temat subskrypcji klientów, którzy obecnie uczestni
 
 Każdy plan musi być dostępny na co najmniej jednym rynku. Zaznacz pole wyboru dla dowolnej lokalizacji rynku, w której chcesz udostępnić ten plan. Pole wyszukiwania i przycisk wyboru krajów "Umorzenie podatków", w których firma Microsoft przekazuje podatek od sprzedaży i korzystać z niego w twoim imieniu, są dołączone do pomocy.
 
-Jeśli masz już ustawione ceny planu w dolarach amerykańskich (USD) i dodasz inną lokalizację rynkową, cena nowego rynku zostanie obliczona zgodnie z aktualnymi kursami wymiany. Przed opublikowaniem należy zawsze zapoznać się z ceną każdego rynku. Ceny można przeglądać za pomocą linku "Ceny eksportowe (xlsx)" po zapisaniu zmian.
+Jeśli masz już ustawione ceny planu w dolarach amerykańskich (USD) i dodasz inną lokalizację rynkową, cena nowego rynku zostanie obliczona zgodnie z aktualnymi kursami wymiany. Przed opublikowaniem sprawdź cenę dla każdego rynku. Ceny można przeglądać za pomocą linku "Ceny eksportowe (xlsx)" po zapisaniu zmian.
 
 #### <a name="pricing"></a>Cennik
 
@@ -418,7 +422,7 @@ Zaznacz to pole, aby plan był prywatny i widoczny tylko dla wybranych odbiorcó
 
 Przypisz odbiorców, którzy będą mieli dostęp do tego prywatnego planu. Program Access jest przypisywany przy użyciu identyfikatorów dzierżawców z opcją dołączania opisu każdego przypisanego identyfikatora dzierżawy. Podczas importowania pliku arkusza kalkulacyjnego csv można dodać maksymalnie 10 identyfikatorów dzierżawy lub 20 000 identyfikatorów dzierżawców klientów.
 
-Dzierżawca jest reprezentacją organizacji o identyfikatorze reprezentowanym jako identyfikator GUID (Global unique Identifier, 128-bitowy numer całkowity używany do identyfikowania zasobów). Jest to dedykowane wystąpienie usługi Azure AD, którą organizacja lub deweloper aplikacji otrzymuje po utworzeniu relacji z firmą Microsoft, na przykład zarejestrowaniu się na platformie Azure, w usłudze Microsoft Intune lub Microsoft 365. Każda dzierżawa usługi Azure AD jest unikatowa i oddzielona od innych dzierżaw usługi Azure AD. Aby sprawdzić dzierżawę, zaloguj się w witrynie Azure Portal przy użyciu konta, którego chcesz użyć do zarządzania aplikacją. Jeśli masz dzierżawę, nastąpi automatyczne zalogowanie do niej, a nazwa dzierżawy zostanie wyświetlona bezpośrednio pod nazwą Twojego konta. Umieść wskaźnik myszy na nazwie konta w prawym górnym rogu witryny Azure Portal, aby wyświetlić swoją nazwę, adres e-mail, identyfikator katalogu/dzierżawy (GUID) oraz domenę. Jeśli Twoje konto jest skojarzone z wieloma dzierżawami, możesz wybrać nazwę swojego konta, aby otworzyć menu, w którym można przełączać się między dzierżawami. Każda dzierżawa ma własny identyfikator dzierżawy. Możesz również wyszukać identyfikator dzierżawy organizacji przy użyciu [https://www.whatismytenantid.com](https://www.whatismytenantid.com)adresu URL nazwy domeny pod adresem: .
+Dzierżawca jest reprezentacją organizacji o identyfikatorze reprezentowanym jako identyfikator GUID (Global unique Identifier, 128-bitowy numer całkowity używany do identyfikowania zasobów). Jest to dedykowane wystąpienie usługi Azure AD, które organizacja lub deweloper aplikacji otrzymuje, gdy organizacja lub deweloper aplikacji tworzy relację z firmą Microsoft, na przykład podczas rejestracji na platformie Azure, usłudze Microsoft Intune lub usłudze Microsoft 365. Każda dzierżawa usługi Azure AD jest unikatowa i oddzielona od innych dzierżaw usługi Azure AD. Aby sprawdzić dzierżawę, zaloguj się w witrynie Azure Portal przy użyciu konta, którego chcesz użyć do zarządzania aplikacją. Jeśli masz dzierżawę, nastąpi automatyczne zalogowanie do niej, a nazwa dzierżawy zostanie wyświetlona bezpośrednio pod nazwą Twojego konta. Umieść wskaźnik myszy na nazwie konta w prawym górnym rogu witryny Azure Portal, aby wyświetlić swoją nazwę, adres e-mail, identyfikator katalogu/dzierżawy (GUID) oraz domenę. Jeśli Twoje konto jest skojarzone z wieloma dzierżawami, możesz wybrać nazwę swojego konta, aby otworzyć menu, w którym można przełączać się między dzierżawami. Każda dzierżawa ma własny identyfikator dzierżawy. Możesz również wyszukać identyfikator dzierżawy organizacji przy użyciu [https://www.whatismytenantid.com](https://www.whatismytenantid.com)adresu URL nazwy domeny pod adresem: .
 
 Podczas gdy oferty SaaS używają identyfikatorów dzierżawy do definiowania odbiorców prywatnych, inne typy ofert mogą używać identyfikatorów subskrypcji platformy Azure (które są również reprezentowane jako identyfikatory GUID).
 
@@ -429,19 +433,15 @@ Podczas gdy oferty SaaS używają identyfikatorów dzierżawy do definiowania od
 
 ![Przykładowa lista planu marketplace z notatkami](./media/marketplace-plan.svg)
 
-## <a name="test-drive"></a>Jazda próbna
-
-[!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
-
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>Odbiorcy odsprzedawcy dostawcy rozwiązań w chmurze (CSP)
 
 Wybór udostępnienia oferty w programie CSP umożliwia dostawcom rozwiązań w chmurze sprzedawanie produktu w ramach rozwiązania dołączonego do klientów. Aby uzyskać więcej informacji, zobacz [Dostawcy rozwiązań w chmurze](https://go.microsoft.com/fwlink/?linkid=2111109).
 
 ## <a name="publish"></a>Publikowanie
 
-Po wypełnieniu wszystkich wymaganych sekcji oferty wybierz **pozycję publikuj** w prawym górnym rogu portalu. Zostaniesz przekierowany do strony **Recenzja i publikacja.**
+Po wypełnieniu wszystkich wymaganych sekcji oferty wybierz **pozycję publikuj** w prawym górnym rogu portalu. Zostaniesz przekierowany do strony **Recenzja i publikowanie.**
 
-#### <a name="submit-offer-to-preview"></a>Prześlij ofertę do wersji zapoznawczej
+### <a name="submit-offer-to-preview"></a>Prześlij ofertę do wersji zapoznawczej
 
 Jeśli po raz pierwszy publikujesz tę ofertę, możesz:
 

@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 8d43851a6a546bd23881c4d0a72185ca03e63092
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983623"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314357"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Zapora aplikacji sieci Web platformy Azure w bramie aplikacji platformy Azure
 
@@ -28,9 +28,9 @@ Wszystkie funkcje WAF wymienione poniżej istnieją wewnątrz zasad WAF. Można 
 
 ![Diagram WAF bramy aplikacji](../media/ag-overview/waf1.png)
 
-Brama aplikacji działa jako kontroler dostarczania aplikacji (ADC). Oferuje zakończenie ssl (Secure Sockets Layer), koligacja sesji opartą na plikach cookie, dystrybucję obciążenia okrężną, routing oparty na zawartości, możliwość hostowania wielu witryn sieci Web i ulepszenia zabezpieczeń.
+Brama aplikacji działa jako kontroler dostarczania aplikacji (ADC). Oferuje transport layer security (TLS), wcześniej znany jako Secure Sockets Layer (SSL), zakończenie, koligacja sesji oparta na plikach cookie, dystrybucja obciążenia okrężnego, routing oparty na zawartości, możliwość hostowania wielu witryn sieci Web i ulepszenia zabezpieczeń.
 
-Ulepszenia zabezpieczeń bramy aplikacji obejmują zarządzanie zasadami SSL i kompleksową obsługę SSL. Bezpieczeństwo aplikacji jest wzmacniane przez integrację WAF z bramą aplikacji. Połączenie chroni aplikacje internetowe przed typowymi lukami w zabezpieczeniach. Zapewnia łatwą do skonfigurowania centralną lokalizację do zarządzania.
+Ulepszenia zabezpieczeń bramy aplikacji obejmują zarządzanie zasadami TLS i kompleksową obsługę protokołu TLS. Bezpieczeństwo aplikacji jest wzmacniane przez integrację WAF z bramą aplikacji. Połączenie chroni aplikacje internetowe przed typowymi lukami w zabezpieczeniach. Zapewnia łatwą do skonfigurowania centralną lokalizację do zarządzania.
 
 ## <a name="benefits"></a>Zalety
 

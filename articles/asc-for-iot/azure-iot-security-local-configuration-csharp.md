@@ -1,5 +1,5 @@
 ---
-title: Opis lokalnego pliku konfiguracji agenta zabezpieczeń IoT dla usługi Azure Security Center dla języka C# | Dokumenty firmy Microsoft
+title: Konfiguracja lokalna agenta zabezpieczeń (C#)
 description: Dowiedz się więcej o usłudze zabezpieczeń Usługi Zabezpieczeń Azure Security Center dla IoT, lokalnym pliku konfiguracji agenta zabezpieczeń dla języka C#.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74664201"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311676"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Opis lokalnego pliku konfiguracji (agent języka C#)
-
 
 Agent zabezpieczeń Usługi Azure Security Center dla IoT używa konfiguracji z lokalnego pliku konfiguracji.
 
@@ -35,18 +34,21 @@ Agent zabezpieczeń języka C# używa wielu plików konfiguracyjnych:
 - **Authentication.config** — konfiguracja związana z uwierzytelnianiem (w tym szczegóły uwierzytelniania).
 - **SecurityIotInterface.config** — konfiguracje związane z IoT.
 
-Pliki konfiguracyjne zawierają konfigurację domyślną. Konfiguracja uwierzytelniania jest wypełniana podczas instalacji agenta, a zmiany w pliku konfiguracyjny są wprowadzane po ponownym uruchomieniu agenta. 
+Pliki konfiguracyjne zawierają konfigurację domyślną. Konfiguracja uwierzytelniania jest wypełniana podczas instalacji agenta, a zmiany w pliku konfiguracyjny są wprowadzane po ponownym uruchomieniu agenta.
 
 ## <a name="configuration-file-location"></a>Lokalizacja pliku konfiguracyjnego
+
 Dla Linuksa:
+
 - Pliki konfiguracyjne systemu `/var/ASCIoTAgent`operacyjnego znajdują się w programie .
 
 W przypadku systemu Windows:
-- Pliki konfiguracji systemu operacyjnego znajdują się w katalogu agenta zabezpieczeń. 
+
+- Pliki konfiguracji systemu operacyjnego znajdują się w katalogu agenta zabezpieczeń.
 
 ### <a name="generalconfig-configurations"></a>Konfiguracje general.config
 
-| Nazwa konfiguracji | Możliwe wartości | Szczegóły | 
+| Nazwa konfiguracji | Możliwe wartości | Szczegóły |
 |:-----------|:---------------|:--------|
 | agentId | Identyfikator GUID | Unikatowy identyfikator agenta |
 | readRemoteConfigurationTimeout | przedział_czasu | Okres pobierania konfiguracji zdalnej z usługi IoT Hub. Jeśli agent nie może pobrać konfiguracji w określonym czasie, operacja przekroczy limit czasu.|
@@ -61,6 +63,7 @@ W przypadku systemu Windows:
 | defaultEventPriority | "Wysoki", "Niski", "Wyłączony" | Domyślny priorytet zdarzenia. |
 
 ### <a name="generalconfig-example"></a>Przykład pliku General.config
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <General>
@@ -80,7 +83,7 @@ W przypadku systemu Windows:
 
 ### <a name="authenticationconfig"></a>Authentication.config
 
-| Nazwa konfiguracji | Możliwe wartości | Szczegóły | 
+| Nazwa konfiguracji | Możliwe wartości | Szczegóły |
 |:-----------|:---------------|:--------|
 | nazwa modułu | ciąg | Nazwa tożsamości modułu zabezpieczeń. Ta nazwa musi odpowiadać nazwie tożsamości modułu w urządzeniu. |
 | deviceId | ciąg | Identyfikator urządzenia (zarejestrowany w usłudze Azure IoT Hub). || schedulerInterval | Ciąg TimeSpan | Wewnętrzny interwał harmonogramu. |
@@ -94,6 +97,7 @@ W przypadku systemu Windows:
 |
 
 ### <a name="authenticationconfig-example"></a>Przykład authentication.config
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
@@ -108,14 +112,16 @@ W przypadku systemu Windows:
   <add key="registrationId" value="d1"/>
 </Authentication>
 ```
+
 ### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface.config
 
-| Nazwa konfiguracji | Możliwe wartości | Szczegóły | 
+| Nazwa konfiguracji | Możliwe wartości | Szczegóły |
 |:-----------|:---------------|:--------|
 | transportTyp | "Ampq" "Mqtt" | Typ transportu usługi IoT Hub. |
 |
 
 ### <a name="securityiotinterfaceconfig-example"></a>Przykład SecurityIotInterface.config
+
 ```XML
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
@@ -124,6 +130,7 @@ W przypadku systemu Windows:
 ```
 
 ## <a name="next-steps"></a>Następne kroki
+
 - Przeczytaj [omówienie](overview.md) usługi Azure Security Center dla IoT
 - Dowiedz się więcej o usłudze Azure Security Center dla [architektury](architecture.md) IoT
 - Włączanie usługi Azure Security Center dla [usługi](quickstart-onboard-iot-hub.md) IoT

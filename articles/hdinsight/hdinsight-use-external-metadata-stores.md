@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/03/2020
-ms.openlocfilehash: 0cadf3930008868fe223e6e1024a2d14d17d8131
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e53164d1e25f8a8d0a14d21c0544d95cf912fe9f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657121"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313969"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Korzystanie z zewnętrznych magazynów metadanych w usłudze Azure HDInsight
 
@@ -63,7 +63,7 @@ Usługa HDInsight obsługuje również niestandardowe metasklepy, które są zal
 
 Utwórz lub utwórz istniejącą usługę Azure SQL Database przed skonfigurowaniem niestandardowego magazynu mete hive dla klastra HDInsight.  Aby uzyskać więcej informacji, zobacz [Szybki start: Tworzenie pojedynczej bazy danych w bazie danych SQL usługi Azure](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
 
-Skonfiguruj reguły zapory usługi Azure SQL Database, aby umożliwić dostęp do serwera usługom i zasobom platformy Azure. Włącz tę opcję w witrynie Azure portal, wybierając **pozycję Ustaw zaporę serwera**. Następnie wybierz **w obszarze** **Zezwalaj na usługi i zasoby platformy Azure, aby uzyskać dostęp do tego serwera** dla serwera lub bazy danych usługi Azure SQL Database. Aby uzyskać więcej informacji, zobacz [Tworzenie reguł zapory IP i zarządzanie nimi](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+Podczas tworzenia klastra usługa HDInsight musi połączyć się z zewnętrznym magazynem meteoringu i zweryfikować poświadczenia. Skonfiguruj reguły zapory usługi Azure SQL Database, aby umożliwić dostęp do serwera usługom i zasobom platformy Azure. Włącz tę opcję w witrynie Azure portal, wybierając **pozycję Ustaw zaporę serwera**. Następnie wybierz **pozycję Nie** pod **Odmawiaj dostępu do sieci publicznej**i **Tak** pod **poniżej Zezwalaj na usługi i zasoby platformy Azure, aby uzyskać dostęp do tego serwera** dla serwera lub bazy danych usługi Azure SQL Database. Aby uzyskać więcej informacji, zobacz [Tworzenie reguł zapory IP i zarządzanie nimi](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
 ![przycisk zapory serwera](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 

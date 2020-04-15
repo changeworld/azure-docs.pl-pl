@@ -4,12 +4,12 @@ description: Przykłady korzystania z dostawcy usługi Azure Application Insight
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0f40c1c1a8ee7f20c769a62e9746da43face4cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33effe9cfec6d766d573617ff03b58564e5b34d1
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276380"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313655"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider dla dzienników iloggera .NET Core
 
@@ -213,7 +213,7 @@ Nadal można użyć starego dostawcy. (Zostanie on usunięty tylko w głównej z
 - W ASP.NET Core (2.0 i nowsze) zalecanym sposobem [włączenia dostawców rejestrowania](https://github.com/aspnet/Announcements/issues/255) jest użycie metod rozszerzenia na ILoggingBuilder w **Program.cs.**
 
 > [!Note]
-> Nowy dostawca jest dostępny dla aplikacji docelowych NETSTANDARD2.0 lub nowszych. Jeśli aplikacja jest przeznaczona dla starszych wersji .NET Core, takich jak .NET Core 1.1 lub jeśli jest przeznaczona dla programu .NET Framework, nadal używaj starego dostawcy.
+> Nowy dostawca jest dostępny dla aplikacji docelowych NETSTANDARD2.0 lub nowszych. Począwszy od [witryny Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) w wersji 2.14.0 nowy dostawca jest również dostępny dla aplikacji docelowych .NET Framework NET461 lub nowszych. Jeśli aplikacja jest przeznaczona dla starszych wersji .NET Core, takich jak .NET Core 1.1 lub jeśli jest przeznaczona dla programu .NET Framework mniejszej niż NET46, nadal używaj starego dostawcy.
 
 ## <a name="console-application"></a>Aplikacja konsoli
 

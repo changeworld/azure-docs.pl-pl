@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: 1a4ae0701174278203023c156a86aad8feb1ca4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: d68f7dc6368c2b3de7f26f2946c5fb47237a820d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240621"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313933"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Używanie sygnatur dostępu współdzielonego do usługi Azure Storage w celu ograniczenia dostępu do danych w usłudze HDInsight
 
@@ -27,8 +27,6 @@ Usługa HDInsight ma pełny dostęp do danych na kontach usługi Azure Storage s
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure.
-
 * Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Istniejący [kontener magazynu](../storage/blobs/storage-quickstart-blobs-portal.md).  
@@ -41,7 +39,7 @@ Usługa HDInsight ma pełny dostęp do danych na kontach usługi Azure Storage s
 
 * Jeśli używa się języka C#, visual studio musi być w wersji 2013 lub nowszej.
 
-* [Schemat URI](./hdinsight-hadoop-linux-information.md#URI-and-scheme) dla twojego konta magazynu. Dotyczy to `wasb://` usługi Azure `abfs://` Storage, usługi Azure `adl://` Data Lake Storage Gen2 lub usługi Azure Data Lake Storage Gen1. Jeśli bezpieczny transfer jest włączony dla usługi Azure `wasbs://`Storage, identyfikator URI będzie . Zobacz też [bezpieczny transfer](../storage/common/storage-require-secure-transfer.md).
+* [Schemat URI](./hdinsight-hadoop-linux-information.md#URI-and-scheme) dla twojego konta magazynu. Ten schemat `wasb://` będzie dla `abfs://` usługi Azure Storage, dla `adl://` usługi Azure Data Lake Storage Gen2 lub dla usługi Azure Data Lake Storage Gen1. Jeśli bezpieczny transfer jest włączony dla usługi Azure `wasbs://`Storage, identyfikator URI będzie . Zobacz też [bezpieczny transfer](../storage/common/storage-require-secure-transfer.md).
 
 * Istniejący klaster HDInsight, do którym można dodać sygnaturę dostępu współdzielonego. Jeśli nie, można użyć programu Azure PowerShell, aby utworzyć klaster i dodać podpis dostępu współdzielonego podczas tworzenia klastra.
 
@@ -56,11 +54,11 @@ Usługa HDInsight ma pełny dostęp do danych na kontach usługi Azure Storage s
 
 Istnieją dwie formy podpisów dostępu współdzielonego:
 
-* Ad hoc: Czas rozpoczęcia, czas wygaśnięcia i uprawnienia dla sygnatury dostępu Współdzielonego są określone w identyfikatorze URI sygnatury dostępu Współdzielonego.
+* `Ad hoc`: Czas rozpoczęcia, czas wygaśnięcia i uprawnienia do sygnatury dostępu Współdzielonego są określone w identyfikatorze URI sygnatury dostępu Współdzielonego.
 
-* Zasady dostępu przechowywane: zasady dostępu przechowywane jest zdefiniowany w kontenerze zasobów, takich jak kontener obiektów blob. Zasady mogą służyć do zarządzania ograniczeniami dla jednego lub więcej podpisów dostępu współdzielonego. Po skojarzeniu sygnatury dostępu Współdzielonego z zasadami dostępu przechowywanego sygnatura dostępu współdzielonego dziedziczy ograniczenia — czas rozpoczęcia, czas wygaśnięcia i uprawnienia — zdefiniowane dla zasad dostępu przechowywanego.
+* `Stored access policy`: Zasady dostępu przechowywane jest zdefiniowany w kontenerze zasobów, takich jak kontener obiektów blob. Zasady mogą służyć do zarządzania ograniczeniami dla jednego lub więcej podpisów dostępu współdzielonego. Po skojarzeniu sygnatury dostępu Współdzielonego z zasadami dostępu przechowywanego sygnatura dostępu współdzielonego dziedziczy ograniczenia — czas rozpoczęcia, czas wygaśnięcia i uprawnienia — zdefiniowane dla zasad dostępu przechowywanego.
 
-Różnica między tymi dwoma formularzami jest ważna dla jednego kluczowego scenariusza: odwołania. Sygnatury dostępu Współdzielonego jest adresem URL, więc każdy, kto uzyskuje sygnatury dostępu Współdzielonego, może go używać, niezależnie od tego, kto o to poprosi. Jeśli sas jest publikowany publicznie, może być używany przez każdego na świecie. Sydamy współdzielone jest prawidłowe, dopóki nie nastąpi jedna z czterech rzeczy:
+Różnica między tymi dwoma formularzami jest ważna dla jednego kluczowego scenariusza: odwołania. Sygnatury dostępu Współdzielonego jest adresem URL, więc każdy, kto uzyskuje sygnatury dostępu Współdzielonego, może go używać. Nie ma znaczenia, kto o to poprosił na początek. Jeśli sas jest publikowany publicznie, może być używany przez każdego na świecie. Sydamy współdzielone jest prawidłowe, dopóki nie nastąpi jedna z czterech rzeczy:
 
 1. Zostanie osiągnięty czas wygaśnięcia określony w sygnaturze dostępu Współdzielonego.
 
@@ -82,7 +80,7 @@ Aby uzyskać więcej informacji na temat podpisów dostępu współdzielonego, z
 
 ## <a name="create-a-stored-policy-and-sas"></a>Tworzenie przechowywanych zasad i sygnatury dostępu Współdzielonego
 
-Zapisz token sygnatury dostępu Współdzielonego, który jest produkowany na końcu każdej metody. Token będzie wyglądać podobnie do następującego:
+Zapisz token sygnatury dostępu Współdzielonego, który jest produkowany na końcu każdej metody. Token będzie wyglądać podobnie do następujących danych wyjściowych:
 
 ```output
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
@@ -205,7 +203,7 @@ Otwórz `SASToken.py` plik i `storage_account_name` `storage_account_key`zastąp
 
 Może być konieczne `pip install --upgrade azure-storage` wykonanie, jeśli `ImportError: No module named azure.storage`zostanie wyświetlony komunikat o błędzie .
 
-### <a name="using-c"></a>Przy użyciu języka C#
+### <a name="using-c"></a>Korzystanie z C\#
 
 1. Otwórz rozwiązanie w programie Visual Studio.
 
@@ -213,21 +211,20 @@ Może być konieczne `pip install --upgrade azure-storage` wykonanie, jeśli `Im
 
 3. Wybierz **ustawienia** i dodaj wartości dla następujących wpisów:
 
-   * StorageConnectionString: Parametry połączenia dla konta magazynu, dla którego chcesz utworzyć przechowywane zasady i sygnatury dostępu Współdzielonego. Format powinien `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` znajdować `myaccount` się w miejscu, `mykey` w którym znajduje się nazwa konta magazynu i jest kluczem dla konta magazynu.
-
-   * ContainerName: kontener na koncie magazynu, do którego chcesz ograniczyć dostęp.
-
-   * SASPolicyName: Nazwa używana do tworzenia przechowywanych zasad.
-
-   * FileToUpload: ścieżka do pliku, który jest przekazytywał do kontenera.
+    |Element |Opis |
+    |---|---|
+    |StorageConnectionString|Parametry połączenia dla konta magazynu, dla którego chcesz utworzyć przechowywane zasady i sygnatury dostępu Współdzielonego. Format powinien `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` znajdować `myaccount` się w miejscu, `mykey` w którym znajduje się nazwa konta magazynu i jest kluczem dla konta magazynu.|
+    |NazwaKontenera|Kontener na koncie magazynu, do którego chcesz ograniczyć dostęp.|
+    |SASPolicyName|Nazwa używana do tworzenia przechowywanych zasad.|
+    |Transfer pliku|Ścieżka do pliku, który jest przekazyzony do kontenera.|
 
 4. Uruchom projekt. Zapisz token zasad sygnatury dostępu Współdzielonego, nazwę konta magazynu i nazwę kontenera. Te wartości są używane podczas kojarzenia konta magazynu z klastrem HDInsight.
 
 ## <a name="use-the-sas-with-hdinsight"></a>Używanie sygnatury dostępu Współdzielonego z hdinsight
 
-Podczas tworzenia klastra HDInsight należy określić podstawowe konto magazynu i opcjonalnie określić dodatkowe konta magazynu. Obie te metody dodawania magazynu wymagają pełnego dostępu do kont magazynu i kontenerów, które są używane.
+Podczas tworzenia klastra HDInsight należy określić podstawowe konto magazynu. Można również określić dodatkowe konta magazynu. Obie te metody dodawania magazynu wymagają pełnego dostępu do kont magazynu i kontenerów, które są używane.
 
-Aby ograniczyć dostęp do kontenera za pomocą podpisu dostępu współdzielonego, dodaj wpis niestandardowy do konfiguracji **lokacji podstawowej** klastra. Wpis można dodać podczas tworzenia klastra za pomocą programu PowerShell lub po utworzeniu klastra przy użyciu programu Ambari.
+Użyj podpisu dostępu współdzielonego, aby ograniczyć dostęp do kontenera. Dodaj niestandardowy wpis do konfiguracji **lokacji podstawowej** dla klastra. Wpis można dodać podczas tworzenia klastra za pomocą programu PowerShell lub po utworzeniu klastra przy użyciu programu Ambari.
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>Tworzenie klastra korzystającego z sygnatury dostępu Współdzielonego
 

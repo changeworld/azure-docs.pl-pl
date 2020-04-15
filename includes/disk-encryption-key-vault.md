@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: f2133524f57576c4646de9d4bf7f37b573a77e6d
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 6f7f319d2ebb4cd39933addf04f249df02d7819f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80813809"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314113"
 ---
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -40,7 +40,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 Utwórz magazyn kluczy przy użyciu [az keyvault utworzyć](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) polecenie interfejsu wiersza polecenia platformy Azure, [new-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell polecenia, [witryny Azure portal](https://portal.azure.com), lub [szablonu Menedżera zasobów](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
 >[!WARNING]
-> Aby upewnić się, że wpisy tajne szyfrowania nie przekraczają granic regionalnych, szyfrowanie dysków platformy Azure wymaga, aby magazyn kluczy i maszyny wirtualne były zlokalizowane w tym samym regionie i tej samej subskrypcji. Tworzenie i używanie magazynu kluczy, który znajduje się w tym samym regionie co maszyny wirtualne, które mają być szyfrowane. 
+> Magazyn kluczy i maszyny wirtualne muszą być w tej samej subskrypcji. Ponadto, aby upewnić się, że wpisy tajne szyfrowania nie przekraczają granic regionalnych, szyfrowanie dysków platformy Azure wymaga magazynu kluczy i maszyn wirtualnych, które mają być zlokalizowane w tym samym regionie. Tworzenie i używanie magazynu kluczy, który znajduje się w tej samej subskrypcji i regionie co maszyny wirtualne, które mają być szyfrowane. 
 
 Każda przechowalnia kluczy musi mieć unikatową nazwę. W poniższych przykładach <> nazwa <nazwa magazynu kluczy.
 
@@ -120,7 +120,7 @@ Użyj [aktualizacji az keyvault,](/cli/azure/keyvault#az-keyvault-update) aby w�
 1. Wybierz magazyn kluczy, przejdź do **opcji Zasady dostępu**i **Kliknij, aby wyświetlić zaawansowane zasady dostępu.**
 2. Zaznacz pole oznaczone jako **Włącz dostęp do szyfrowania dysków platformy Azure w celu szyfrowania woluminów**.
 3. Wybierz **włącz dostęp do maszyn wirtualnych platformy Azure do wdrożenia** i/lub Włącz dostęp do usługi Azure Resource Manager do wdrożenia **szablonu,** jeśli to konieczne. 
-4. Kliknij przycisk **Zapisz**.
+4. Kliknij pozycję **Zapisz**.
 
     ![Zaawansowane zasady dostępu magazynu kluczy platformy Azure](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)
 

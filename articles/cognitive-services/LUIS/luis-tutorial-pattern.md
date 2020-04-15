@@ -2,13 +2,13 @@
 title: 'Samouczek: Wzorce - LUIS'
 description: Użyj wzorców, aby zwiększyć intencji i przewidywania jednostki, zapewniając mniej wypowiedzi przykład w tym samouczku. Wzorzec jest dostarczany jako przykład wypowiedź szablonu, który zawiera składnię do identyfikowania jednostek i tekstu ignorowanego.
 ms.topic: tutorial
-ms.date: 04/01/2020
-ms.openlocfilehash: 10f0ade45dedb3413887cc4b4dea89e857c1bde7
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/14/2020
+ms.openlocfilehash: 826334fafd04a6357f529b1dc07408ff1c15ce5c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545988"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380768"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Samouczek: Dodawanie typowych formatów wypowiedź szablonu wzorca w celu poprawy prognoz
 
@@ -214,7 +214,7 @@ Przykładowe wypowiedzi szablonu dla tej intencji obejmują:
 |`Who does {Employee} report to[?]`|Wymienne`{Employee}`<br>Ignoruj`[?]`|
 |`Who reports to {Employee}[?]`|Wymienne`{Employee}`<br>Ignoruj`[?]`|
 
-Składnia `{Employee}` oznacza lokalizację jednostki w ramach wypowiedzi szablonu oraz to, która to jednostka. Opcjonalna składnia `[?]`, oznacza wyrazy lub znaki interpunkcyjne, które są opcjonalne. Usługa LUIS dopasowuje wypowiedź, ignorując opcjonalny tekst w nawiasie.
+Składnia `{Employee}` oznacza lokalizację jednostki w ramach wypowiedzi szablonu oraz to, która to jednostka. Opcjonalna składnia `[?]`, oznacza wyrazy lub [znaki interpunkcyjne,](luis-reference-application-settings.md#punctuation-normalization) które są opcjonalne. Usługa LUIS dopasowuje wypowiedź, ignorując opcjonalny tekst w nawiasie.
 
 Chociaż składnia wygląda jak wyrażenie regularne, nie jest wyrażeniem regularnym. Obsługiwana jest tylko składnia w nawiasie klamrowym, `{}`, i nawiasie kwadratowym, `[]`. Mogą być one zagnieżdżone na najwyżej dwóch poziomach.
 

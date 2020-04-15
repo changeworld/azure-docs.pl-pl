@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 6f4efd9a316b92f17f89cea66a7c81e84ac3cf06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 9bdf7360ce00637b0eed3de7a3349da8656a3ed0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72991350"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314175"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Użyj tunelowania SSH, aby uzyskać dostęp do interfejsu użytkownika sieci Web Apache Ambari, JobHistory, NameNode, Apache Oozie i innych interfejsów użytkownika
 
-Klastry HDInsight zapewniają dostęp do interfejsu użytkownika sieci Web Apache Ambari przez Internet, ale niektóre funkcje wymagają tunelu SSH. Na przykład interfejs użytkownika sieci Web dla usługi Apache Oozie nie jest dostępny przez Internet bez tunelu SSh.
+Klastry HDInsight zapewniają dostęp do interfejsu użytkownika sieci Web Apache Ambari przez Internet. Niektóre funkcje wymagają tunelu SSH. Na przykład apache Oozie web UI nie można uzyskać dostępu przez Internet bez tunelu SSH.
 
 ## <a name="why-use-an-ssh-tunnel"></a>Dlaczego warto skorzystać z tunelu SSH
 
@@ -31,7 +31,7 @@ Następujące interfejsy użytkownika sieci Web wymagają tunelu SSH:
 * Interfejs użytkownika sieci Oozie
 * Interfejs użytkownika i interfejs użytkownika wzorca bazy danych i dzienników
 
-Jeśli używasz akcji skryptu, aby dostosować klaster, wszystkie usługi lub narzędzia, które można zainstalować, które udostępniają usługę sieci web wymagają tunelu SSH. Na przykład w przypadku instalacji hue przy użyciu akcji skryptu, należy użyć tunelu SSH, aby uzyskać dostęp do interfejsu użytkownika sieciowego Hue.
+Usługi zainstalowane z akcjami skryptu, które udostępniają usługę sieci web, będą wymagały tunelu SSH. Hue zainstalowany z script action wymaga tunelu SSH, aby uzyskać dostęp do interfejsu użytkownika sieci web.
 
 > [!IMPORTANT]  
 > Jeśli masz bezpośredni dostęp do usługi HDInsight za pośrednictwem sieci wirtualnej, nie trzeba używać tuneli SSH. Na przykład bezpośredniego dostępu do usługi HDInsight za pośrednictwem sieci wirtualnej zobacz [Connect HDInsight do lokalnego dokumentu sieciowego.](connect-on-premises-network.md)
@@ -64,14 +64,16 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 To polecenie tworzy połączenie, które kieruje ruch do portu lokalnego 9876 do klastra za pomocą SSH. Dostępne opcje to:
 
-* **D 9876** - Lokalny port, który kieruje ruch przez tunel.
-* **C** - Kompresuj wszystkie dane, ponieważ ruch internetowy jest głównie tekstem.
-* **2** - Wymuś SSH tylko w wersji 2.
-* **q** - Tryb cichy.
-* **T** - Wyłącz alokację pseudo-tty, ponieważ po prostu przekazujesz port.
-* **n** - Zapobiegaj odczytowi STDIN, ponieważ po prostu przekazujesz port.
-* **N** - Nie należy wykonywać polecenia zdalnego, ponieważ po prostu przekazujesz port.
-* **f** - Uruchom w tle.
+    |Opcja |Opis |
+    |---|---|
+    |D 9876|Port lokalny, który kieruje ruch przez tunel.|
+    |C|Kompresuj wszystkie dane, ponieważ ruch internetowy to głównie tekst.|
+    |2|Wymuś SSH tylko do wypróbowania protokołu w wersji 2.|
+    |q|Tryb cichy.|
+    |T|Wyłącz alokację pseudo-tty, ponieważ po prostu przesyłasz dalej port.|
+    |n|Zapobiegaj odczytowi STDIN, ponieważ po prostu przekazujesz port.|
+    |Nie|Nie należy wykonywać polecenia zdalnego, ponieważ po prostu przekazujesz port.|
+    |k|Uruchom w tle.|
 
 Po zakończeniu polecenia ruch wysyłany do portu 9876 na komputerze lokalnym jest kierowany do węzła głównego klastra.
 
@@ -91,7 +93,7 @@ Po zakończeniu polecenia ruch wysyłany do portu 9876 na komputerze lokalnym je
     |Port|22|
     |Typ połączenia|Protokół SSH|
 
-1. Wybierz pozycję **Zapisz**.
+1. Wybierz **pozycję Zapisz**
 
     ![HDInsight tworzenie sesji kitu](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 

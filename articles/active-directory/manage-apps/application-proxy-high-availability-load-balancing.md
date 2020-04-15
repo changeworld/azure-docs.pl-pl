@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3202c2fbfedfce0b0b52be94b1e0d165a6e72546
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 992075378737552e890bd2d6fed3c519e6c62aa7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481317"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312945"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Wysoka dostępność i równoważenie obciążenia złączy i aplikacji serwera proxy aplikacji
 
@@ -40,16 +40,12 @@ W tym artykule wyjaśniono, jak dystrybucja ruchu działa z wdrożeniem serwera 
 1. Użytkownik na urządzeniu klienckim próbuje uzyskać dostęp do aplikacji lokalnej opublikowanej za pośrednictwem serwera proxy aplikacji.
 2. The request goes through an Azure Load Balancer to determine which Application Proxy service instance should take the request. Na region dostępne są dziesiątki wystąpień do zaakceptowania żądania. Ta metoda pomaga równomiernie rozprowadzać ruch między wystąpieniami usługi.
 3. Żądanie jest wysyłane do [usługi Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/).
-4. Usługa Service Bus sprawdza, czy połączenie wcześniej używało istniejącego łącznika w grupie łączników. Jeśli tak, ponownie używa połączenia. Jeśli żadne złącze nie jest jeszcze sparowane z połączeniem, wybiera ono losowo dostępne złącze do sygnalizowania. Następnie łącznik odbiera żądanie z usługi Service Bus.
-
+4. Usługa Service Bus sygnalizuje do dostępnego złącza. Następnie łącznik odbiera żądanie z usługi Service Bus.
    - W kroku 2 żądania przejść do różnych wystąpień usługi serwera proxy aplikacji, więc połączenia są bardziej prawdopodobne, aby być wykonane z różnych łączników. W rezultacie złącza są prawie równomiernie używane w grupie.
-
-   - Połączenie zostanie przywrócone tylko wtedy, gdy połączenie zostanie przerwane lub wystąpi okres bezczynności wynoszący 10 minut. Na przykład połączenie może zostać przerwane po ponownym uruchomieniu usługi komputera lub łącznika lub wystąpiło zakłócenie sieci.
-
 5. Łącznik przekazuje żądanie do serwera zaplecza aplikacji. Następnie aplikacja wysyła odpowiedź z powrotem do łącznika.
 6. Łącznik kończy odpowiedź, otwierając połączenie wychodzące z wystąpieniem usługi, z którego pochodzi żądanie. Następnie to połączenie jest natychmiast zamknięte. Domyślnie każdy łącznik jest ograniczony do 200 równoczesnych połączeń wychodzących.
 7. Odpowiedź jest następnie przekazywane z powrotem do klienta z wystąpienia usługi.
-8. Kolejne żądania z tego samego połączenia powtarzają powyższe kroki, dopóki to połączenie nie zostanie przerwane lub będzie bezczynne przez 10 minut.
+8. Kolejne żądania z tego samego połączenia powtarzają powyższe kroki.
 
 Aplikacja często ma wiele zasobów i otwiera wiele połączeń po załadowaniu. Każde połączenie przechodzi przez powyższe kroki, aby zostać przydzielonym do wystąpienia usługi, wybierz nowy dostępny łącznik, jeśli połączenie nie zostało jeszcze sparowane ze łącznikiem.
 

@@ -3,16 +3,16 @@ title: Przykłady zapytań zaawansowanych
 description: Użyj usługi Azure Resource Graph do uruchamiania niektórych zaawansowanych zapytań, w tym pracy z kolumnami, wyświetlania tagów używanych i dopasowywania zasobów z wyrażeniami regularnymi.
 ms.date: 03/20/2020
 ms.topic: sample
-ms.openlocfilehash: 98e80d0977ec23cba8b8c497373b6e89b52d430e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3d0e7a9be37f9baf471584ee3fe26c52d13b3084
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80130506"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381501"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Przykłady zapytań zaawansowanego wykresu zasobów
 
-Pierwszym krokiem do zrozumienia zapytań usługi Azure Resource Graph jest podstawowa wiedza na temat [języka zapytań](../concepts/query-language.md). Jeśli nie znasz jeszcze usługi [Azure Data Explorer](../../../data-explorer/data-explorer-overview.md), zalecane jest zapoznanie się z podstawami, aby zrozumieć sposób tworzenia żądań dotyczących zasobów, których szukasz.
+Pierwszym krokiem do zrozumienia zapytań usługi Azure Resource Graph jest podstawowa wiedza na temat [języka zapytań](../concepts/query-language.md). Jeśli nie znasz jeszcze usługi [Azure Data Explorer](/azure/data-explorer/data-explorer-overview), zalecane jest zapoznanie się z podstawami, aby zrozumieć sposób tworzenia żądań dotyczących zasobów, których szukasz.
 
 Omówimy następujące zaawansowane zapytania:
 

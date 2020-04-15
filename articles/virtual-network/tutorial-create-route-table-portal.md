@@ -13,16 +13,16 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: a565aba12f1b10f215d8f6cc7fc0b7247a0441d2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 854bf2d1ed2155290c2ecebd17695049fdd0c8bb
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80066366"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314284"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Samouczek: kierowanie ruchem sieciowym za pomocą tabeli tras z użyciem witryny Azure Portal
 
-Platforma Azure domyślnie kieruje ruchem między wszystkimi podsieciami w sieci wirtualnej. Możesz tworzyć własne trasy zastępujące domyślne trasy platformy Azure. Trasy niestandardowe są przydatne, gdy na przykład chcesz kierować ruch między podsieciami za pośrednictwem sieciowego urządzenia wirtualnego (NVA). Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Platforma Azure domyślnie kieruje ruchem między wszystkimi podsieciami w sieci wirtualnej. Możesz tworzyć własne trasy zastępujące domyślne trasy platformy Azure. Trasy niestandardowe są przydatne, gdy na przykład chcesz kierować ruch między podsieciami za pośrednictwem sieciowego urządzenia wirtualnego (NVA). Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie urządzenia NVA, które kieruje ruchem
@@ -208,8 +208,8 @@ Przed **wybraniem opcji Utwórz,** aby utworzyć publiczną lub prywatną maszyn
 | Podstawy | Grupa zasobów | **myResourceGroup** |
 | | Nazwa maszyny wirtualnej | *myVmPublic* |
 | | Publiczne porty wejściowe | **Zezwalaj na wybrane porty** |
-| | Wybierz porty wejściowe | **HTTP** i **RDP** |
-| Obsługa sieci | Sieć wirtualna | **myVirtualNetwork** |
+| | Wybierz porty wejściowe | **RDP** |
+| Networking | Sieć wirtualna | **myVirtualNetwork** |
 | | Podsieć | **Publiczne (10.0.0.0/24)** |
 | | Publiczny adres IP | Wartość domyślna |
 | Zarządzanie | Konto magazynu diagnostyki | **mynvastoragekont** |
@@ -221,8 +221,8 @@ Przed **wybraniem opcji Utwórz,** aby utworzyć publiczną lub prywatną maszyn
 | Podstawy | Grupa zasobów | **myResourceGroup** |
 | | Nazwa maszyny wirtualnej | *myVmPrivate* |
 | | Publiczne porty wejściowe | **Zezwalaj na wybrane porty** |
-| | Wybierz porty wejściowe | **HTTP** i **RDP** |
-| Obsługa sieci | Sieć wirtualna | **myVirtualNetwork** |
+| | Wybierz porty wejściowe | **RDP** |
+| Networking | Sieć wirtualna | **myVirtualNetwork** |
 | | Podsieć | **Prywatne (10.0.1.0/24)** |
 | | Publiczny adres IP | Wartość domyślna |
 | Zarządzanie | Konto magazynu diagnostyki | **mynvastoragekont** |

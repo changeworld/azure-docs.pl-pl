@@ -1,5 +1,5 @@
 ---
-title: Uwagi do wersji
+title: Informacje o wersji
 description: Informacje o wersji usługi Azure Synapse Analytics.
 services: synapse-analytics
 ms.service: synapse-analytics
@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 7e05458214732a1835dd73b85dad871683ef5bbe
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: acfca3f41cc8bf69572843c3f035a67e8df9e0fe
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743122"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313608"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Informacje o wersji usługi Azure Synapse Analytics
 
@@ -40,18 +40,13 @@ Użyj zidentyfikowanej wersji, aby potwierdzić, która wersja została zastosow
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
-## <a name="march-2020"></a>Marzec 2020 r.
-
-| Ulepszenia usług                                         | Szczegóły                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **[Visual Studio 16.6 Preview 2](/visualstudio/releases/2019/release-notes-preview) — narzędzia danych programu SQL Server (SSDT)** | Ta wersja zawiera następujące ulepszenia i poprawki: </br> </br> - Rozwiązano problem polegający na tym, że zmiana tabeli, do której odwołuje się widok materializowany (MV), powoduje wygenerowanie instrukcji Alter View, która nie jest obsługiwana dla obiektów MV<br/><br/> - Zaimplementowano zmianę, aby upewnić się, że operacja porównywania schematów nie zakończy się niepowodzeniem, gdy obiekty zabezpieczeń na poziomie wiersza są obecne w bazie danych lub projekcie. Obiekty zabezpieczeń na poziomie wiersza nie są obecnie obsługiwane dla SSDT.  <br/><br/> - Próg limitu czasu eksploratora obiektów programu SQL Server został zwiększony, aby uniknąć przekroju czasu podczas wyświetlania dużej liczby obiektów w bazie danych<br/><br/> - Zoptymalizowano sposób, w jaki EKSPlorator obiektów programu SQL Server pobiera listę obiektów bazy danych, aby zmniejszyć niestabilność i zwiększyć wydajność podczas wypełniania eksploratora obiektów |
-
-## <a name="february-2020"></a>Luty 2020 r.
+## <a name="april-2020"></a>Kwiecień 2020 r.
 
 | Ulepszenia usług | Szczegóły |
 | --- | --- |
 |**Poziom zgodności bazy danych (wersja zapoznawcza)**| W tej wersji użytkownicy mogą teraz ustawić poziom zgodności bazy danych, aby uzyskać zachowanie przetwarzania języka Transact-SQL i zapytań określonej wersji aparatu SQL Synapse. Aby uzyskać więcej informacji, zobacz [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) i [Zmień konfigurację zakresu bazy danych](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
 |**Sp_describe_undeclared_parameters**| Zezwalaj użytkownikom na wyświetlanie metadanych dotyczących niezadeklarowanych parametrów w partii Transact-SQL. Aby uzyskać więcej informacji, zobacz [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
+|**[Visual Studio 16.6 Preview 2](/visualstudio/releases/2019/release-notes-preview) — narzędzia danych programu SQL Server (SSDT)** | Ta wersja zawiera następujące ulepszenia i poprawki dla SSDT: </br> </br> - Rozwiązano problem polegający na tym, że zmiana tabeli, do której odwołuje się widok materializowany (MV), powoduje wygenerowanie instrukcji Alter View, która nie jest obsługiwana dla obiektów MV<br/><br/> - Zaimplementowano zmianę, aby upewnić się, że operacja porównywania schematów nie zakończy się niepowodzeniem, gdy obiekty zabezpieczeń na poziomie wiersza są obecne w bazie danych lub projekcie. Obiekty zabezpieczeń na poziomie wiersza nie są obecnie obsługiwane dla SSDT.  <br/><br/> - Próg limitu czasu eksploratora obiektów programu SQL Server został zwiększony, aby uniknąć przekroju czasu podczas wyświetlania dużej liczby obiektów w bazie danych<br/><br/> - Zoptymalizowano sposób, w jaki EKSPlorator obiektów programu SQL Server pobiera listę obiektów bazy danych, aby zmniejszyć niestabilność i zwiększyć wydajność podczas wypełniania eksploratora obiektów |
 
 ## <a name="january-2020"></a>Styczeń 2020 r.
 

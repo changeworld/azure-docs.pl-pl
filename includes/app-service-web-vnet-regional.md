@@ -2,31 +2,31 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 02/27/2020
+ms.date: 04/15/2020
 ms.author: ccompy
-ms.openlocfilehash: e0db3ce7d31b838ca6f7d566083a33ee215d3399
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7f2b011b2de5af0e4ace9cbeb4399911d8e83b7f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419516"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312826"
 ---
 Korzystanie z regionalnej integracji sieci wirtualnej umożliwia dostęp aplikacji:
 
-* Zasoby w sieci wirtualnej w tym samym regionie, z którego można zintegrować.
-* Zasoby w sieciach wirtualnych równorzędne z siecią wirtualną, które znajdują się w tym samym regionie.
+* Zasoby w sieci wirtualnej w tym samym regionie co aplikacja.
+* Zasoby w sieciach wirtualnych równorzędne z siecią wirtualną, z pomocą sieci wirtualnej, z pomocą jest zintegrowana.
 * Usługi zabezpieczone punktu końcowego usługi.
 * Zasoby w połączeniach usługi Azure ExpressRoute.
-* Zasoby w sieci wirtualnej, z którą masz połączenie.
+* Zasoby w sieci wirtualnej, z którą jesteś zintegrowany.
 * Zasoby między połączeniami równorzędnym, które obejmują połączenia Usługi Azure ExpressRoute.
-* Prywatne punkty końcowe.
+* Prywatne punkty końcowe — uwaga: dns musi być zarządzany oddzielnie, a nie przy użyciu stref prywatnych usługi Azure DNS.
 
 Korzystając z integracji sieci wirtualnej z sieciami wirtualnymi w tym samym regionie, można użyć następujących funkcji sieci platformy Azure:
 
 * **Sieciowe grupy zabezpieczeń (NSG)**: Można zablokować ruch wychodzący za pomocą sieciowej grupy zabezpieczeń umieszczonej w podsieci integracji. Reguły ruchu przychodzącego nie mają zastosowania, ponieważ nie można użyć integracji sieci wirtualnej, aby zapewnić dostęp przychodzący do aplikacji.
 * **Tabele tras (UDR)**: Tabelę tras można umieścić w podsieci integracji, aby wysyłać ruch wychodzący w odpowiedni sposób.
 
-Domyślnie aplikacja kieruje tylko ruch RFC1918 do sieci wirtualnej. Jeśli chcesz przekierować cały ruch wychodzący do sieci wirtualnej, zastosuj ustawienie aplikacji WEBSITE_VNET_ROUTE_ALL do aplikacji. Aby skonfigurować ustawienie aplikacji:
+Domyślnie aplikacja kieruje tylko ruch RFC1918 do sieci wirtualnej. Jeśli chcesz rozsyłać cały ruch wychodzący do sieci wirtualnej, zastosuj ustawienie aplikacji WEBSITE_VNET_ROUTE_ALL do aplikacji. Aby skonfigurować ustawienie aplikacji:
 
 1. Przejdź do interfejsu użytkownika **konfiguracji** w portalu aplikacji. Wybierz **pozycję Nowe ustawienie aplikacji**.
 1. Wprowadź **WEBSITE_VNET_ROUTE_ALL** w polu **Nazwa** i wprowadź **1** w polu **Wartość.**
@@ -34,9 +34,9 @@ Domyślnie aplikacja kieruje tylko ruch RFC1918 do sieci wirtualnej. Jeśli chce
    ![Podaj ustawienie aplikacji][4]
 
 1. Kliknij przycisk **OK**.
-1. Wybierz **pozycję Zapisz**.
+1. Wybierz pozycję **Zapisz**.
 
-Jeśli rozsyłasz cały ruch wychodzący do sieci wirtualnej, podlega on grupom zabezpieczeń i udr, które są stosowane do podsieci integracji. Podczas kierowania całego ruchu wychodzącego do sieci wirtualnej adresy wychodzące są nadal adresy wychodzące, które są wymienione we właściwościach aplikacji, chyba że udostępniasz trasy do wysyłania ruchu w innym miejscu.
+Jeśli trasa całego ruchu wychodzącego do sieci wirtualnej, podlega nsgs i UDRs, które są stosowane do podsieci integracji. Podczas kierowania całego ruchu wychodzącego do sieci wirtualnej, adresy wychodzące są nadal adresy wychodzące, które są wymienione we właściwościach aplikacji, chyba że udostępniasz trasy do wysyłania ruchu w innym miejscu.
 
 Istnieją pewne ograniczenia dotyczące korzystania z integracji sieci wirtualnej z sieciami wirtualnymi w tym samym regionie:
 
@@ -44,16 +44,17 @@ Istnieją pewne ograniczenia dotyczące korzystania z integracji sieci wirtualne
 * Ta funkcja jest dostępna tylko z nowszych jednostek skalowania usługi Azure App Service, które obsługują plany usługi aplikacji PremiumV2.
 * Podsieć integracji może być używana tylko przez jeden plan usługi app service.
 * Tej funkcji nie można używać przez aplikacje izolowanego planu, które znajdują się w środowisku usługi aplikacji.
-* Ta funkcja wymaga nieużywanej podsieci,która jest /27 z 32 adresami lub większymi w sieci wirtualnej usługi Azure Resource Manager.
-* Aplikacja i sieć wirtualna muszą znajdować się w tym samym regionie.
+* Ta funkcja wymaga nieużywane podsieci, która jest /27 z 32 adresów lub większe w sieci wirtualnej usługi Azure Resource Manager.
+* Aplikacja i sieci wirtualnej musi znajdować się w tym samym regionie.
 * Nie można usunąć sieci wirtualnej za pomocą zintegrowanej aplikacji. Usuń integrację przed usunięciem sieci wirtualnej.
 * Można zintegrować tylko z sieciami wirtualnymi w tej samej subskrypcji co aplikacja.
-* Możesz mieć tylko jedną regionalną integrację sieci wirtualnej na plan usługi app service. Wiele aplikacji w tym samym planie usługi App Service można użyć tej samej sieci wirtualnej.
+* Możesz mieć tylko jedną regionalną integrację sieci wirtualnej na plan usługi app service. Wiele aplikacji w tym samym planie usługi app service można użyć tej samej sieci wirtualnej.
 * Nie można zmienić subskrypcji aplikacji lub planu, gdy istnieje aplikacja, która korzysta z regionalnej integracji sieci wirtualnej.
+* Aplikacja nie może rozpoznać adresów w strefach prywatnych dns platformy Azure.
 
 Jeden adres jest używany dla każdego wystąpienia planu. Jeśli skalujesz aplikację do pięciu wystąpień, zostanie użytych pięć adresów. Ponieważ rozmiaru podsieci nie można zmienić po przypisaniu, należy użyć podsieci, która jest wystarczająco duża, aby pomieścić dowolną skalę, do której może dotrzeć aplikacja. A /26 z 64 adresami jest zalecanym rozmiarem. /26 z 64 adresami obsługuje plan Premium z 30 wystąpieniami. Podczas skalowania planu w górę lub w dół, trzeba dwa razy więcej adresów na krótki okres czasu.
 
-Jeśli chcesz, aby aplikacje w innym planie osiągnęły sieć wirtualną, z którą są już połączone aplikacje w innym planie, wybierz inną podsieć niż ta używana przez istniejącą wcześniej integrację sieci wirtualnej.
+Jeśli chcesz, aby aplikacje w innym planie osiągnęły sieci wirtualnej, która jest już połączona z aplikacjami w innym planie, wybierz inną podsieć niż ta używana przez istniejącą integrację sieci wirtualnej.
 
 Funkcja jest w wersji zapoznawczej dla Linuksa. Forma linuksa tej funkcji obsługuje tylko wykonywanie połączeń na adresy RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
 
@@ -63,7 +64,10 @@ Jeśli hostujesz aplikację w systemie Linux z wbudowanymi obrazami, regionalna 
 
 ### <a name="service-endpoints"></a>Punkty końcowe usługi
 
-Z regionalnej integracji sieci wirtualnej, można użyć punktów końcowych usługi. Aby użyć punktów końcowych usługi z aplikacją, użyj regionalnej integracji sieci wirtualnej, aby połączyć się z wybraną siecią wirtualną. Następnie skonfiguruj punkty końcowe usługi w podsieci używanej do integracji.
+Regionalna integracja sieci wirtualnej umożliwia korzystanie z punktów końcowych usługi. Aby użyć punktów końcowych usługi z aplikacją, użyj regionalnej integracji sieci wirtualnej, aby połączyć się z wybraną siecią wirtualną, a następnie skonfiguruj punkty końcowe usługi z usługą docelową w podsieci używanej do integracji. Jeśli następnie chcesz uzyskać dostęp do usługi za połacie punktów końcowych usługi:
+
+1. konfigurowanie regionalnej integracji sieci wirtualnej z aplikacją internetową
+1. przejdź do usługi docelowej i skonfiguruj punkty końcowe usługi względem podsieci używanej do integracji
 
 ### <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
 

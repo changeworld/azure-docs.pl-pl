@@ -3,12 +3,12 @@ title: Szczegóły struktury definicji zasad
 description: W tym artykule opisano, jak definicje zasad są używane do ustanawiania konwencji dla zasobów platformy Azure w organizacji.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: e6b1d5c43f290fc2dd953492440670608a15faca
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 017878c4c47a5645ea8815580d2176c7a2ff5d66
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80638074"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314013"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -252,11 +252,13 @@ Warunek ocenia, czy **pole** lub akcesor **wartości** spełnia określone kryte
 - `"notIn": ["stringValue1","stringValue2"]`
 - `"containsKey": "keyName"`
 - `"notContainsKey": "keyName"`
-- `"less": "value"`
-- `"lessOrEquals": "value"`
-- `"greater": "value"`
-- `"greaterOrEquals": "value"`
+- `"less": "dateValue"` | `"less": "stringValue"` | `"less": intValue`
+- `"lessOrEquals": "dateValue"` | `"lessOrEquals": "stringValue"` | `"lessOrEquals": intValue`
+- `"greater": "dateValue"` | `"greater": "stringValue"` | `"greater": intValue`
+- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` | `"greaterOrEquals": intValue`
 - `"exists": "bool"`
+
+Dla **mniej**, **lessOrEquals**, **greater**, i **greaterOrEquals**, jeśli typ właściwości nie pasuje do typu warunku, zgłaszany jest błąd. Porównania ciągów są `InvariantCultureIgnoreCase`dokonywane przy użyciu .
 
 Korzystając z warunków **podobnych** i **nieJak,** `*` należy podać symbol wieloznaczny w wartości.
 Wartość nie powinna mieć więcej niż `*`jednego symbolu wieloznacznego.

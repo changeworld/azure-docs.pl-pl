@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: d80f4cb12c79519818f6eccb2bb565bac472b471
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.custom: hdinsightactive
+ms.date: 04/13/2020
+ms.openlocfilehash: a3884fdfbbc215c305053d8615d690880f4026ea
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397694"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314146"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Tworzenie aplikacji Apache Spark dla klastra HDInsight za pomocą zestawu narzędzi Azure toolkit for IntelliJ
 
-W tym artykule pokazano, jak tworzyć aplikacje Platformy Apache Spark na platformie Azure HDInsight przy użyciu wtyczki **Azure Toolkit** dla intellij IDE. [Usługa Azure HDInsight](../hdinsight-overview.md) to zarządzana usługa analityczna typu open source w chmurze, która umożliwia korzystanie z platform open source, takich jak Hadoop, Apache Spark, Apache Hive i Apache Kafka.
+W tym artykule pokazano, jak tworzyć aplikacje Platformy Apache Spark na platformie Azure HDInsight przy użyciu wtyczki **Azure Toolkit** dla intellij IDE. [Usługa Azure HDInsight](../hdinsight-overview.md) to zarządzana usługa analityczna typu open source w chmurze. Usługa umożliwia korzystanie z platform open source, takich jak Hadoop, Apache Spark, Apache Hive i Apache Kafka.
 
 Wtyczkę **Azure Toolkit** można użyć na kilka sposobów:
 
@@ -43,17 +43,17 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 ## <a name="install-scala-plugin-for-intellij-idea"></a>Instalowanie wtyczki Scala dla środowiska IntelliJ IDEA
 
-Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
+Kroki, aby zainstalować wtyczkę Scala:
 
 1. Otwórz środowisko IntelliJ IDEA.
 
 2. Na ekranie powitalnym przejdź do **pozycji Konfiguruj** > **wtyczki,** aby otworzyć okno **Wtyczki.**
 
-    ![IntelliJ IDEA włącz wtyczkę scala](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin1.png)
+    ![IntelliJ IDEA włącza wtyczkę scala](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin1.png)
 
 3. Wybierz pozycję **Install** (Instaluj) dla wtyczki Scala, która zostanie wyświetlona w nowym oknie.  
 
-    ![IntelliJ IDEA zainstalować wtyczkę scala](./media/apache-spark-intellij-tool-plugin/install-scala-plugin.png)
+    ![IntelliJ IDEA instaluje wtyczkę scala](./media/apache-spark-intellij-tool-plugin/install-scala-plugin.png)
 
 4. Po pomyślnym zainstalowaniu wtyczki musisz ponownie uruchomić środowisko IDE.
 
@@ -65,21 +65,21 @@ Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
 
 3. Wybierz pozycję **Spark Project (Scala)** w głównym oknie.
 
-4. Z listy rozwijanej **Build tool** (Narzędzie kompilacji), wybierz jedną z następujących pozycji:
+4. Z listy rozwijanej **Narzędzia Kompilacja** wybierz jedną z następujących opcji:
    * **Maven** — w celu obsługi kreatora tworzenia projektu Scala.
    * **SBT** — na potrzeby zarządzania zależnościami i kompilacji projektu Scala.
 
      ![IntelliJ IDEA Nowy projekt dialogowy](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
-5. Wybierz **pozycję Dalej**.
+5. Wybierz opcję **Dalej**.
 
 6. W oknie **New Project** (Nowy projekt) podaj następujące informacje:  
 
     |  Właściwość   | Opis   |  
     | ----- | ----- |  
     |Project name (Nazwa projektu)| Wprowadź nazwę.  W tym `myApp`artykule użyto pliku .|  
-    |Lokalizacja&nbsp;projektu| Wprowadź żądaną lokalizację do zapisania projektu.|
-    |Zestaw SDK projektu| Może to być puste przy pierwszym użyciu IDEA.  Wybierz pozycję **New...** (Nowy...) i przejdź do swojego zestawu JDK.|
+    |Lokalizacja&nbsp;projektu| Wprowadź lokalizację, aby zapisać projekt.|
+    |Zestaw SDK projektu| To pole może być puste przy pierwszym użyciu idea.  Wybierz pozycję **New...** (Nowy...) i przejdź do swojego zestawu JDK.|
     |Wersja platformy Spark|Kreator tworzenia integruje poprawną wersję dla zestawów Spark SDK i Scala SDK. Jeśli wersja klastra Spark jest starsza niż 2.0, wybierz wartość **Spark 1.x**. W przeciwnym razie wybierz **Spark2.x**. W tym przykładzie używana jest wersja **Spark 2.3.0 (Scala 2.11.8)**.|
 
     ![Wybieranie sdk Apache Spark](./media/apache-spark-intellij-tool-plugin/intellij-new-project.png)
@@ -110,37 +110,37 @@ Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
 
    d. Następnie w widoku głównym zostanie otwarty plik **myApp.scala.** Zastąp domyślny kod kodem znalezionym poniżej:  
 
-        ```scala
-        import org.apache.spark.SparkConf
-        import org.apache.spark.SparkContext
-    
-        object myApp{
-            def main (arg: Array[String]): Unit = {
-            val conf = new SparkConf().setAppName("myApp")
-            val sc = new SparkContext(conf)
-    
-            val rdd = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
-    
-            //find the rows that have only one digit in the seventh column in the CSV file
-            val rdd1 =  rdd.filter(s => s.split(",")(6).length() == 1)
-    
-            rdd1.saveAsTextFile("wasbs:///HVACOut")
-            }
-    
+    ```scala
+    import org.apache.spark.SparkConf
+    import org.apache.spark.SparkContext
+
+    object myApp{
+        def main (arg: Array[String]): Unit = {
+        val conf = new SparkConf().setAppName("myApp")
+        val sc = new SparkContext(conf)
+
+        val rdd = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+
+        //find the rows that have only one digit in the seventh column in the CSV file
+        val rdd1 =  rdd.filter(s => s.split(",")(6).length() == 1)
+
+        rdd1.saveAsTextFile("wasbs:///HVACOut")
         }
-        ```
+
+    }
+    ```
 
     Kod odczytuje dane z pliku HVAC.csv (dostępne we wszystkich klastrach platformy SPARK usługi HDInsight), pobiera wiersze, które mają `/HVACOut` tylko jedną cyfrę w siódmej kolumnie w pliku CSV, i zapisuje dane wyjściowe w domyślnym kontenerze magazynu dla klastra.
 
 ## <a name="connect-to-your-hdinsight-cluster"></a>Łączenie się z klastrem HDInsight
 
-Użytkownik może [zalogować się do subskrypcji platformy Azure](#sign-in-to-your-azure-subscription)lub [połączyć klaster HDInsight](#link-a-cluster) przy użyciu nazwy użytkownika/hasła Ambari lub poświadczeń przyłączonych do domeny, aby połączyć się z klastrem USŁUGI HDInsight.
+Użytkownik może [zalogować się do subskrypcji platformy Azure](#sign-in-to-your-azure-subscription)lub [połączyć klaster HDInsight](#link-a-cluster). Użyj nazwy użytkownika/hasła ambari lub poświadczeń przyłączonych do domeny, aby połączyć się z klastrem HDInsight.
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Zaloguj się do subskrypcji platformy Azure
 
 1. Na pasku menu przejdź do **pozycji Wyświetl** > narzędzie**Eksploratora****Tool Windows** > Windows Azure .
 
-   ![IntelliJ IDEA pokaż azure explorer](./media/apache-spark-intellij-tool-plugin/show-azure-explorer1.png)
+   ![IntelliJ IDEA pokazuje eksploratora platformy Azure](./media/apache-spark-intellij-tool-plugin/show-azure-explorer1.png)
 
 2. W Eksploratorze platformy Azure kliknij prawym przyciskiem myszy węzeł **platformy Azure,** a następnie wybierz polecenie **Zaloguj się**.
 
@@ -148,19 +148,19 @@ Użytkownik może [zalogować się do subskrypcji platformy Azure](#sign-in-to-y
 
 3. W oknie dialogowym **Logowanie do platformy Azure** wybierz pozycję **Logowanie urządzenia,** a następnie wybierz pozycję **Zaloguj**się .
 
-    ![IntelliJ IDEA azure zaloguj się login urządzenia](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer2.png)
+    !["IntelliJ IDEA azure sign-in device login login"](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer2.png)
 
 4. W oknie dialogowym **Logowanie urządzenia platformy Azure** kliknij pozycję **Kopiuj&Otwórz**.
 
-   ![IntelliJ IDEA azure logowania urządzenia](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer5.png)
+   !["IntelliJ IDEA azure device login"](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer5.png)
 
 5. W interfejsie przeglądarki wklej kod, a następnie kliknij przycisk **Dalej**.
 
-   ![Microsoft wprowadzić okno dialogowe kodu dla HDI](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer6.png)
+   !["Microsoft wprowadzić okno dialogowe kodu dla HDI"](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer6.png)
 
 6. Wprowadź poświadczenia platformy Azure, a następnie zamknij przeglądarkę.
 
-   ![Microsoft wprowadź okno dialogowe poczty e-mail dla hdi](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer7.png)
+   !["Microsoft wprowadź okno dialogowe poczty e-mail dla HDI"](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer7.png)
 
 7. Po zalogowaniu się okno dialogowe **Wybierz subskrypcje** zawiera listę wszystkich subskrypcji platformy Azure, które są skojarzone z poświadczeniami. Wybierz subskrypcję, a następnie wybierz przycisk **Wybierz.**
 
@@ -237,7 +237,7 @@ Po utworzeniu aplikacji Scala można ją przesłać do klastra.
     |Klastry iskrowe (tylko Linux)|Wybierz klaster platformy SPARK usługi HDInsight, na którym chcesz uruchomić aplikację.|
     |Wybierz artefakt do przesłania|Pozostaw ustawienie domyślne.|
     |Nazwa głównej klasy|Wartością domyślną jest klasa główna z wybranego pliku. Klasę można zmienić, wybierając wielokropek(**...**)  i wybierając inną klasę.|
-    |Konfiguracje zadań|Można zmienić domyślne klucze i/lub wartości. Aby uzyskać więcej informacji, zobacz [Apache Livy REST API](https://livy.incubator.apache.org/docs/latest/rest-api.html).|
+    |Konfiguracje zadań|Można zmienić domyślne klucze i lub wartości. Aby uzyskać więcej informacji, zobacz [Apache Livy REST API](https://livy.incubator.apache.org/docs/latest/rest-api.html).|
     |Argumenty wiersza polecenia|W razie potrzeby można wprowadzić argumenty oddzielone spacją dla klasy głównej.|
     |Słoiki odniesienia i pliki odniesienia|Można wprowadzić ścieżki dla smąków i plików, do których istnieją odwołania. Można również przeglądać pliki w wirtualnym systemie plików platformy Azure, który obecnie obsługuje tylko klaster ADLS Gen 2. Aby uzyskać więcej informacji: [Konfiguracja platformy Spark Apache](https://spark.apache.org/docs/latest/configuration.html#runtime-environment).  Zobacz też [Jak przekazywać zasoby do klastra](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer).|
     |Miejsce do przekazywania zadań|Rozwiń, aby wyświetlić dodatkowe opcje.|
@@ -248,17 +248,17 @@ Po utworzeniu aplikacji Scala można ją przesłać do klastra.
 
     ![Okno dialogowe Przesyłanie platformy Spark](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png)
 
-4. Wybierz **Opcję SparkJobRun,** aby przesłać projekt do wybranego klastra. Na karcie **Zdalne zadanie iskrzenie w klastrze** jest wyświetlany postęp wykonywania zadania u dołu. Aplikację można zatrzymać, klikając czerwony przycisk. Aby dowiedzieć się, jak uzyskać dostęp do danych wyjściowych zadania, zobacz sekcję "Dostęp i zarządzanie klastrami platformy Spark usługi HDInsight przy użyciu zestawu narzędzi Azure toolkit for IntelliJ" w dalszej części tego artykułu.  
+4. Wybierz **Opcję SparkJobRun,** aby przesłać projekt do wybranego klastra. Na karcie **Zdalne zadanie iskrzenie w klastrze** jest wyświetlany postęp wykonywania zadania u dołu. Aplikację można zatrzymać, klikając czerwony przycisk.
 
     ![Apache Spark Okno składania](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
 
 ## <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>Debugowanie aplikacji Platformy Spark apache lokalnie lub zdalnie w klastrze HDInsight
 
-Firma Microsoft zaleca również inny sposób przesyłania aplikacji Platformy Spark do klastra. Można to zrobić, ustawiając parametry w **konfiguracji uruchamiania/debugowania** IDE. Aby uzyskać więcej informacji, zobacz [Debug Apache Spark aplikacji lokalnie lub zdalnie w klastrze HDInsight z azure toolkit dla IntelliJ przez SSH](apache-spark-intellij-tool-debug-remotely-through-ssh.md).
+Firma Microsoft zaleca również inny sposób przesyłania aplikacji Platformy Spark do klastra. Można to zrobić, ustawiając parametry w **konfiguracji uruchamiania/debugowania** IDE. Zobacz [Debug Apache Spark aplikacji lokalnie lub zdalnie w klastrze HDInsight z Azure Toolkit dla IntelliJ przez SSH](apache-spark-intellij-tool-debug-remotely-through-ssh.md).
 
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-azure-toolkit-for-intellij"></a>Uzyskiwanie dostępu do klastrów platformy Spark usługi HDInsight i zarządzanie nimi przy użyciu zestawu narzędzi Azure dla technologii IntelliJ
 
-Można wykonywać różne operacje przy użyciu narzędzia Azure Toolkit dla IntelliJ.  Większość operacji jest inicjowana z **usługi Azure Explorer**.  Na pasku menu przejdź do **pozycji Wyświetl** > narzędzie**Eksploratora****Tool Windows** > Windows Azure .
+Można wykonać różne operacje przy użyciu narzędzia Azure Toolkit dla IntelliJ.  Większość operacji jest uruchamiana z **usługi Azure Explorer**.  Na pasku menu przejdź do **pozycji Wyświetl** > narzędzie**Eksploratora****Tool Windows** > Windows Azure .
 
 ### <a name="access-the-job-view"></a>Dostęp do widoku zadania
 
@@ -278,14 +278,14 @@ Można wykonywać różne operacje przy użyciu narzędzia Azure Toolkit dla Int
 
     ![Szczegóły dziennika widoku zadania platformy Spark](./media/apache-spark-intellij-tool-plugin/intellij-job-log-info.png)
 
-5. Można również wyświetlić interfejs użytkownika historii platformy Spark i interfejs użytkownika YARN (na poziomie aplikacji), wybierając łącze w górnej części okna.
+5. Można wyświetlić interfejs użytkownika historii platformy Spark i interfejs użytkownika YARN (na poziomie aplikacji). Wybierz łącze w górnej części okna.
 
 ### <a name="access-the-spark-history-server"></a>Dostęp do serwera historii platformy Spark
 
 1. W eksploratorze platformy Azure rozwiń pozycję **HDInsight**, kliknij prawym przyciskiem myszy nazwę klastra platformy Spark, a następnie wybierz polecenie **Otwórz interfejs użytkownika historii iskier**.  
 2. Po wyświetleniu monitu wprowadź poświadczenia administratora klastra, które zostały określone podczas konfigurowania klastra.
 
-3. Na pulpicie nawigacyjnym serwera historii platformy Spark można użyć nazwy aplikacji, aby wyszukać aplikację, która właśnie została ukończona. W poprzednim kodzie można ustawić nazwę `val conf = new SparkConf().setAppName("myApp")`aplikacji za pomocą programu . Dlatego nazwa aplikacji Spark to **myApp**.
+3. Na pulpicie nawigacyjnym serwera historii platformy Spark można użyć nazwy aplikacji, aby wyszukać aplikację, która właśnie została ukończona. W poprzednim kodzie można ustawić nazwę `val conf = new SparkConf().setAppName("myApp")`aplikacji za pomocą programu . Nazwa aplikacji Spark to **myApp**.
 
 ### <a name="start-the-ambari-portal"></a>Uruchamianie portalu Ambari
 
@@ -313,7 +313,7 @@ Upewnij się, że jesteś zadowolony z WINUTILS. Warunek wstępny EXE.
 
 2. W oknie **Konfiguracje uruchamiania/debugowania** w lewym okienku przejdź do **aplikacji Apache Spark on HDInsight** > **[Spark on HDInsight] myApp**.
 
-3. W oknie głównym wybierz kartę **Uruchom lokalnie.**
+3. W oknie głównym wybierz **`Locally Run`** kartę.
 
 4. Podaj następujące wartości, a następnie wybierz **przycisk OK:**
 
@@ -335,7 +335,7 @@ Upewnij się, że jesteś zadowolony z WINUTILS. Warunek wstępny EXE.
 
     ![IntelliJ IDEA Spark Auto Fix dialog2](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix2.png)
 
-8. Konsola powinna wyglądać podobnie do poniższego zdjęcia. W oknie konsoli `sc.appName`wpisz , a następnie naciśnij klawisze ctrl+Enter.  Wynik zostanie wyświetlony. Konsolę lokalną można zakończyć, klikając czerwony przycisk.
+8. Konsola powinna wyglądać podobnie do poniższego zdjęcia. W oknie konsoli `sc.appName`wpisz , a następnie naciśnij klawisze ctrl+Enter.  Wynik zostanie wyświetlony. Możesz zakończyć konsolę lokalną, klikając czerwony przycisk.
 
     ![Wynik konsoli lokalnej IntelliJ IDEA](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
 
@@ -345,7 +345,7 @@ Upewnij się, że jesteś zadowolony z WINUTILS. Warunek wstępny EXE.
 
 2. W oknie **Konfiguracje uruchamiania/debugowania** w lewym okienku przejdź do **aplikacji Apache Spark on HDInsight** > **[Spark on HDInsight] myApp**.
 
-3. W oknie głównym wybierz pozycję **Remotely Run in Cluster** tab.From the main window, select the Remotely Run in Cluster tab.
+3. W oknie głównym wybierz **`Remotely Run in Cluster`** kartę.
 
 4. Podaj następujące wartości, a następnie wybierz **przycisk OK:**
 
@@ -360,31 +360,31 @@ Upewnij się, że jesteś zadowolony z WINUTILS. Warunek wstępny EXE.
 
 6. Na pasku menu przejdź do pozycji **Narzędzia** > **Spark Console** > **Run Spark Livy Interactive Session Console (Scala).**
 
-7. Konsola powinna wyglądać podobnie do poniższego zdjęcia. W oknie konsoli `sc.appName`wpisz , a następnie naciśnij klawisze ctrl+Enter.  Wynik zostanie wyświetlony. Konsolę lokalną można zakończyć, klikając czerwony przycisk.
+7. Konsola powinna wyglądać podobnie do poniższego zdjęcia. W oknie konsoli `sc.appName`wpisz , a następnie naciśnij klawisze ctrl+Enter.  Wynik zostanie wyświetlony. Możesz zakończyć konsolę lokalną, klikając czerwony przycisk.
 
     ![IntelliJ IDEA Interaktywny wynik konsoli](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
 
 ### <a name="send-selection-to-spark-console"></a>Wyślij zaznaczenie do konsoli platformy Spark
 
-Jest to wygodne, aby przewidzieć wynik skryptu, wysyłając kod do lokalnej konsoli lub Livy Interactive Session Console (Scala). Możesz wyróżnić kod w pliku Scala, a następnie kliknąć prawym przyciskiem myszy **pozycję Wyślij zaznaczenie do konsoli platformy Spark**. Wybrany kod zostanie wysłany do konsoli i zostanie wykonany. Wynik zostanie wyświetlony po kodzie w konsoli. Konsola sprawdzi błędy, jeśli istnieją.  
+Wygodnie jest przewidzieć wynik skryptu, wysyłając kod do konsoli lokalnej lub konsoli sesji interaktywnej Livy (Scala). Możesz wyróżnić kod w pliku Scala, a następnie kliknąć prawym przyciskiem myszy **pozycję Wyślij zaznaczenie do konsoli platformy Spark**. Wybrany kod zostanie wysłany do konsoli. Wynik zostanie wyświetlony po kodzie w konsoli. Konsola sprawdzi błędy, jeśli istnieją.  
 
    ![Wyślij zaznaczenie do konsoli platformy Spark](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
 
-## <a name="integrate-with-hdinsight-identity-broker-hib"></a>Integracja z HDInsight Identity Broker (HIB) 
+## <a name="integrate-with-hdinsight-identity-broker-hib"></a>Integracja z HDInsight Identity Broker (HIB)
 
-### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>Połącz się z klastrem USŁUGI HDInsight ESP za pomocą Id Broker (HIB)
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>Połącz się z klastrem USŁUGI HDInsight ESP za pomocą ID Broker (HIB)
 
-Możesz wykonać normalne kroki, aby zalogować się do subskrypcji platformy Azure, aby połączyć się z klastrem USŁUGI HDInsight ESP za pomocą brokera identyfikatorów (HIB). Po zalogowaniu się zostanie wyświetlona lista klastrów w Eksploratorze platformy Azure. Aby uzyskać więcej instrukcji, zobacz [Łączenie się z klastrem HDInsight](#connect-to-your-hdinsight-cluster).
+Możesz wykonać normalne kroki, aby zalogować się do subskrypcji platformy Azure, aby połączyć się z klastrem USŁUGI HDInsight ESP za pomocą brokera identyfikatorów (HIB). Po zalogowaniu się zobaczysz listę klastrów w Eksploratorze platformy Azure. Aby uzyskać więcej instrukcji, zobacz [Łączenie się z klastrem HDInsight](#connect-to-your-hdinsight-cluster).
 
-### <a name="run-a-spark-scala-application-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Uruchamianie aplikacji Spark Scala w klastrze USŁUGI HDInsight ESP za pomocą brokera Id Broker (HIB)
+### <a name="run-a-spark-scala-application-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Uruchamianie aplikacji Spark Scala w klastrze USŁUGI HDInsight ESP za pomocą brokera identyfikatorów (HIB)
 
-Możesz wykonać normalne kroki, aby przesłać zadanie do klastra ESP usługi HDInsight za pomocą Id Broker (HIB). Aby uzyskać więcej instrukcji, zapoznaj się [z artykułem Uruchom aplikację Spark Scala w klastrze platformy HDInsight Spark.](#run-a-spark-scala-application-on-an-hdinsight-spark-cluster)
+Możesz wykonać normalne kroki, aby przesłać zadanie do klastra ESP usługi HDInsight za pomocą ID Broker (HIB). Aby uzyskać więcej instrukcji, zapoznaj się [z artykułem Uruchom aplikację Spark Scala w klastrze platformy HDInsight Spark.](#run-a-spark-scala-application-on-an-hdinsight-spark-cluster)
 
 Przekazujemy niezbędne pliki do folderu o nazwie z kontem logowania i możesz zobaczyć ścieżkę przekazywania w pliku konfiguracyjnym.
 
    ![ścieżka przekazywania w konfiguracji](./media/apache-spark-intellij-tool-plugin/upload-path-in-the-configuration.png)
 
-### <a name="spark-console-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Konsola Spark w klastrze ESP USŁUGI HDInsight z brokerem Id Broker (HIB)
+### <a name="spark-console-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Konsola Spark w klastrze ESP usługi HDInsight z brokerem identyfikatorów (HIB)
 
 Możesz uruchomić platformę Spark Local Console (Scala) lub uruchomić interaktywną konsolę sesji Spark Livy (Scala) w klastrze ESP USŁUGI HDInsight z brokerem identyfikatorów (HIB). Więcej instrukcji można znaleźć w [konsoli platformy Spark Console.](#spark-console)
 
@@ -401,7 +401,7 @@ Gdy użytkownicy przesyłają zadanie do klastra z uprawnieniami do roli tylko d
 
 2. Z **Usługi Azure Explorer**rozwiń usługę **HDInsight,** aby wyświetlić klastry usługi HDInsight, które znajdują się w ramach subskrypcji. Klastry oznaczone **jako "Rola:Czytnik"** mają tylko uprawnienia roli tylko do czytnika.
 
-    ![Intellij Azure Explorer Rola:Czytnik](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer15.png)
+    !["IntelliJ Azure Explorer Rola:Reader"](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer15.png)
 
 3. Kliknij prawym przyciskiem myszy klaster z uprawnieniem roli tylko do czytnika. Wybierz **pozycję Połącz ten klaster** z menu kontekstowego, aby połączyć klaster. Wprowadź nazwę użytkownika ambari i hasło.
 
@@ -418,7 +418,7 @@ Gdy użytkownicy przesyłają zadanie do klastra z uprawnieniami do roli tylko d
 
 2. Kliknij pozycję **Połącz ten klaster,** aby połączyć klaster.
 
-    ![okno dialogowe dostępu do zadania klastra](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer9.png)
+    ![Okno dialogowe odmowa dostępu do zadania klastra](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer9.png)
 
 ### <a name="link-cluster-from-rundebug-configurations-window"></a>Klaster łączy z okna Konfiguracje uruchamiania/debugowania
 
@@ -432,13 +432,13 @@ Gdy użytkownicy przesyłają zadanie do klastra z uprawnieniami do roli tylko d
 
 * W przypadku klastrów z uprawnieniem roli tylko do czytnika kliknij węzeł **Konta magazynu,** zostanie wyświetlony okno **Odmowa dostępu do magazynu.** Aby otworzyć Eksploratora magazynu, możesz kliknąć pozycję **Otwórz Eksploratora usługi Azure Storage.**
 
-   ![Odmowa dostępu do pamięci masowej IntelliJ IDEA](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer14.png)
+   !["IntelliJ IDEA Odmowa dostępu do pamięci masowej"](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer14.png)
 
    ![Przycisk Odmowa dostępu do pamięci masowej IntelliJ IDEA](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer10.png)
 
 * W przypadku połączonych klastrów kliknij węzeł **Konta magazynu,** zostanie wyświetlony okno **Odmowa dostępu do** magazynu. Możesz kliknąć **otwórz usługę Azure Storage,** aby otworzyć Eksploratora magazynu.
 
-   ![Odmowa dostępu do pamięci masowej IntelliJ IDEA2](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer13.png)
+   !["IntelliJ IDEA Odmowa dostępu do pamięci masowej2"](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer13.png)
 
    ![Przycisk Odmowa dostępu do pamięci intellij IDEA2](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer12.png)
 
@@ -446,15 +446,15 @@ Gdy użytkownicy przesyłają zadanie do klastra z uprawnieniami do roli tylko d
 
 Można przekonwertować istniejące aplikacje Spark Scala utworzone w intellij idea, aby były zgodne z zestawem narzędzi platformy Azure dla technologii IntelliJ. Następnie można użyć wtyczki do przesłania aplikacji do klastra platformy SPARK usługi HDInsight.
 
-1. Dla istniejącej aplikacji Spark Scala, która została utworzona za pośrednictwem intellij idea, otwórz skojarzony plik .iml.
+1. Dla istniejącej aplikacji Spark Scala, która została utworzona za `.iml` pośrednictwem intellij idea, otwórz skojarzony plik.
 
-2. Na poziomie głównym jest **element** modułu, podobnie jak następujące:
+2. Na poziomie głównym jest elementem **modułu,** takim jak następujący tekst:
 
         ```
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
         ```
 
-   Edytuj element, `UniqueKey="HDInsightTool"` aby dodać tak, aby element **modułu** wyglądał następująco:
+   Edytuj element, `UniqueKey="HDInsightTool"` aby dodać tak, aby element **modułu** wyglądał jak następujący tekst:
 
         ```
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
@@ -466,7 +466,7 @@ Można przekonwertować istniejące aplikacje Spark Scala utworzone w intellij i
 
 Jeśli nie zamierzasz nadal korzystać z tej aplikacji, usuń utworzony klaster, wykonując następujące kroki:
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. W polu **Wyszukaj** w górnej części wpisz **HDInsight**.
 
@@ -476,11 +476,11 @@ Jeśli nie zamierzasz nadal korzystać z tej aplikacji, usuń utworzony klaster,
 
 1. Wybierz pozycję **Usuń**. Wybierz **pozycję Tak**.
 
-![Usługa Azure portal usuwa klaster usługi HDInsight](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "Usuwanie klastra usługi HDInsight")
+![Portal Azure usuwa klaster usługi HDInsight](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "Usuwanie klastra usługi HDInsight")
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono, jak używać azure toolkit for IntelliJ plug-in do tworzenia aplikacji Apache Spark napisanych w [Scali](https://www.scala-lang.org/), a następnie przesłane je do klastra platformy SPARK HDInsight bezpośrednio z intellij zintegrowanego środowiska programistycznego (IDE). Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Apache Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI.
+W tym artykule dowiesz się, jak używać zestawu narzędzi Azure dla wtyczki IntelliJ do tworzenia aplikacji Apache Spark napisanych w [aplikacji Scala](https://www.scala-lang.org/). Następnie przesłane je do klastra PLATFORMY SPARK HDInsight bezpośrednio ze zintegrowanego środowiska programistycznego IntelliJ (IDE). Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Apache Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI.
 
 > [!div class="nextstepaction"]
 > [Analizowanie danych platformy Spark apache przy użyciu usługi Power BI](apache-spark-use-bi-tools.md)

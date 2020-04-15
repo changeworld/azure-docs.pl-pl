@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
-ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed7bbbf55956d655115b94c8ac46432b3e36c49b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62095986"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312643"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Tworzenie bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Usługa Azure Application Gateway to moduł równoważenia obciążenia warstwy 7. Udostępnia tryb failover, oparty na wydajności routing żądań HTTP między różnymi serwerami — w chmurze i lokalnymi. Brama aplikacji ma następujące funkcje dostarczania aplikacji: równoważenie obciążenia HTTP, koligacja sesji oparta na plikach cookie i odciążanie warstwy SSL (Secure Sockets Layer), niestandardowe sondy kondycji i obsługa wielu lokacji.
+Usługa Azure Application Gateway to moduł równoważenia obciążenia warstwy 7. Udostępnia tryb failover, oparty na wydajności routing żądań HTTP między różnymi serwerami — w chmurze i lokalnymi. Brama aplikacji ma następujące funkcje dostarczania aplikacji: równoważenie obciążenia HTTP, koligacja sesji oparta na plikach cookie i zabezpieczenia warstwy transportu (TLS), wcześniej znane jako secure sockets layer (SSL), odciążanie, niestandardowe sondy kondycji i obsługa wielu lokacji.
 
 ## <a name="prerequisite-install-the-azure-cli"></a>Warunek wstępny: instalowanie interfejsu wiersza polecenia platformy Azure
 
@@ -135,7 +135,7 @@ Jeśli aplikacja sieci web jest już zdefiniowana z pulą wewnętrznej bazy dany
 
 Dowiedz się, jak utworzyć niestandardowe sondy kondycji, odwiedzając pozycję [Utwórz niestandardową sondę kondycji](application-gateway-create-probe-portal.md)
 
-Dowiedz się, jak skonfigurować odciążanie SSL i odszyfrować kosztowne odszyfrowywanie SSL z serwerów sieci web, odwiedzając [pozycję Konfiguruj odciążanie SSL](application-gateway-ssl-arm.md)
+Dowiedz się, jak skonfigurować odciążanie TLS i odszyfrować kosztowne odszyfrowywanie protokołu TLS z serwerów sieci web, odwiedzając pozycję [Konfiguruj odciążanie TLS](application-gateway-ssl-arm.md)
 
 <!--Image references-->
 

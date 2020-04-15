@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f9e31b8f0fce1af8408b80afb1049dae8c8ecf1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a634c81273c26722d53610a13e362e5e453f7e9
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73673708"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380110"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Tworzenie wyzwalacza uruchamiającego potok w oknie wirowania
 W tym artykule przedstawiono kroki tworzenia, uruchamiania i monitorowania wyzwalacza okna brzusznego. Aby uzyskać ogólne informacje na temat wyzwalaczy i obsługiwanych typów, zobacz [Wykonywanie potoku i wyzwalacze](concepts-pipeline-execution-triggers.md).
@@ -96,8 +96,8 @@ Poniższa tabela zawiera omówienie wysokiego poziomu głównych elementów JSON
 |:--- |:--- |:--- |:--- |:--- |
 | **Typu** | Typ wyzwalacza. Typ jest stałą wartością "TumblingWindowTrigger". | Ciąg | "TumblingWindowTrigger" | Tak |
 | **stan środowiska uruchomieniowego** | Bieżący stan czasu wykonywania wyzwalacza.<br/>**Uwaga:** Ten \<element jest odczytywanytylko>. | Ciąg | "Rozpoczęty", "Zatrzymany", "Wyłączony" | Tak |
-| **frequency** | Ciąg reprezentujący jednostkę częstotliwości (minuty lub godziny), przy której wyzwalacz powtarza się. Jeśli wartości daty **startTime** są bardziej szczegółowe niż wartość **częstotliwości,** **daty startTime** są uwzględniane podczas obliczania granic okna. Na przykład jeśli wartość **częstotliwości** jest co godzinę, a wartość **startTime** to 2017-09-01T10:10:10Z, pierwsze okno jest (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Ciąg | "minuta", "godzina"  | Tak |
-| **Interwał** | Dodatnia liczba całkowita oznaczająca interwał wartości właściwości **frequency**, która określa częstotliwość uruchamiania wyzwalacza. Na przykład jeśli **interwał** wynosi 3, a **częstotliwość** to "godzina", wyzwalacz powtarza się co 3 godziny. <br/>**Uwaga:** Minimalny interwał okna wynosi 15 minut. | Liczba całkowita | Dodatnia wartość całkowita. | Tak |
+| **Częstotliwości** | Ciąg reprezentujący jednostkę częstotliwości (minuty lub godziny), przy której wyzwalacz powtarza się. Jeśli wartości daty **startTime** są bardziej szczegółowe niż wartość **częstotliwości,** **daty startTime** są uwzględniane podczas obliczania granic okna. Na przykład jeśli wartość **częstotliwości** jest co godzinę, a wartość **startTime** to 2017-09-01T10:10:10Z, pierwsze okno jest (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Ciąg | "minuta", "godzina"  | Tak |
+| **Interwał** | Dodatnia liczba całkowita oznaczająca interwał wartości właściwości **frequency**, która określa częstotliwość uruchamiania wyzwalacza. Na przykład jeśli **interwał** wynosi 3, a **częstotliwość** to "godzina", wyzwalacz powtarza się co 3 godziny. <br/>**Uwaga:** Minimalny interwał okna wynosi 5 minut. | Liczba całkowita | Dodatnia wartość całkowita. | Tak |
 | **startTime**| Pierwsze wystąpienie, które może być w przeszłości. Pierwszy interwał wyzwalacza to (**startTime**, **startTime** + **interval**). | DateTime | Wartość DateTime. | Tak |
 | **Endtime**| Ostatnie wystąpienie, które może być w przeszłości. | DateTime | Wartość DateTime. | Tak |
 | **Opóźnienie** | Czas opóźnienia rozpoczęcia przetwarzania danych dla okna. Uruchomienie potoku jest uruchamiane po oczekiwanym czasie wykonania plus ilość **opóźnienia**. **Opóźnienie** określa, jak długo wyzwalacz czeka poza odpowiednim czasie przed wyzwoleniem nowego uruchomienia. **Opóźnienie** nie zmienia okna **startTime**. Na przykład wartość **opóźnienia** 00:10:00 oznacza opóźnienie 10 minut. | Zakres czasu<br/>(hh:mm:ss)  | Wartość timespan, w której wartość domyślna to 00:00:00. | Nie |

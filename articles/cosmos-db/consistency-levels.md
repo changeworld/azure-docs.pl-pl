@@ -5,29 +5,29 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/18/2020
-ms.openlocfilehash: 4e3d29471064616039bf946bb2762c15ce67bf8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: e5966f142ece32f148c56edb5b0ef5dfd88603aa
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530261"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380076"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Poziomy spójności w usłudze Azure Cosmos DB
 
-Rozproszone bazy danych, które opierają się na replikacji dla wysokiej dostępności, małe opóźnienia lub obu, dokonać podstawowych kompromis między spójności odczytu a dostępności, opóźnienia i przepływności. Większość dostępnych na rynku rozproszonych baz danych prosi deweloperów o wybór między dwoma modelami skrajnej spójności: *silną* spójnością i *spójnością ostateczną.* Linearizability lub model silnej spójności jest złotym standardem programowalności danych. Ale dodaje cenę wyższe opóźnienia (w stanie stacjonarnym) i zmniejszenie dostępności (podczas awarii). Z drugiej strony spójność ostateczna oferuje większą dostępność i lepszą wydajność, ale utrudnia programowania aplikacji. 
+Rozproszone bazy danych, które opierają się na replikacji dla wysokiej dostępności, małe opóźnienia lub obu, dokonać podstawowych kompromis między spójności odczytu a dostępności, opóźnienia i przepływności. Większość dostępnych na rynku rozproszonych baz danych prosi deweloperów o wybór między dwoma modelami skrajnej spójności: *silną* spójnością i *spójnością ostateczną.* Linearizability modelu silnej spójności jest złoty standard programowalności danych. Ale dodaje cenę wyższego opóźnienia zapisu (w stanie stacjonarnym) i zmniejszonej dostępności (podczas awarii). Z drugiej strony spójność ostateczna oferuje większą dostępność i lepszą wydajność, ale utrudnia programowania aplikacji.
 
-Usługa Azure Cosmos DB podejścia spójności danych jako spektrum wyborów zamiast dwóch skrajności. Silna spójność i spójność ostateczna znajdują się na końcu spektrum, ale istnieje wiele wyborów spójności wzdłuż spektrum. Deweloperzy mogą korzystać z tych opcji, aby dokonać precyzyjnych wyborów i szczegółowe kompromisy w odniesieniu do wysokiej dostępności i wydajności. 
+Usługa Azure Cosmos DB podejścia spójności danych jako spektrum wyborów zamiast dwóch skrajności. Deweloperzy mogą korzystać z tych opcji, aby dokonać precyzyjnych wyborów i szczegółowe kompromisy w odniesieniu do wysokiej dostępności i wydajności.
 
-Dzięki usłudze Azure Cosmos DB deweloperzy mogą wybierać spośród pięciu dobrze zdefiniowanych modeli spójności w spektrum spójności. Od najsilniejszych do bardziej zrelaksowanych, modele obejmują *silny,* *ograniczony nieaktualność,* *sesję,* *spójny prefiks*i *spójność ostateczną.* Modele są dobrze zdefiniowane i intuicyjne i mogą być używane do konkretnych scenariuszy rzeczywistych. Każdy model zapewnia [dostępność i wydajność kompromisów](consistency-levels-tradeoffs.md) i jest wspierany przez umowy SLA. Na poniższej ilustracji przedstawiono różne poziomy spójności jako widmo.
+Dzięki usłudze Azure Cosmos DB deweloperzy mogą wybierać spośród pięciu dobrze zdefiniowanych poziomów spójności w spektrum spójności. Poziomy te obejmują *silny,* *ograniczony nieaktualność,* *sesję,* *spójny prefiks*i *spójność ostateczną.* Poziomy są dobrze zdefiniowane i intuicyjne i mogą być używane w określonych scenariuszach rzeczywistych. Każdy poziom zapewnia [dostępność i wydajność kompromisy](consistency-levels-tradeoffs.md) i są wspierane przez umowy SLA. Na poniższej ilustracji przedstawiono różne poziomy spójności jako widmo.
 
 ![Spójność jako widmo](./media/consistency-levels/five-consistency-levels.png)
 
-Poziomy spójności są niezależne od regionu i są gwarantowane dla wszystkich operacji, niezależnie od regionu, z którego są obsługiwane odczyty i zapisy, liczby regionów skojarzonych z kontem usługi Azure Cosmos lub tego, czy twoje konto jest skonfigurowane za pomocą jednego lub wiele regionów zapisu.
+Poziomy spójności są niezależne od regionu i są gwarantowane dla wszystkich operacji, niezależnie od regionu, z którego są obsługiwane odczyty i zapisy, liczba regionów skojarzonych z kontem usługi Azure Cosmos lub czy twoje konto jest skonfigurowane z jednym lub wieloma regionami zapisu.
 
 ## <a name="scope-of-the-read-consistency"></a>Zakres spójności odczytu
 
-Spójność odczytu ma zastosowanie do pojedynczej operacji odczytu o zakresie w zakresie klucza partycji lub partycji logicznej. Operacja odczytu może być wystawiona przez klienta zdalnego lub procedury składowanej.
+Spójność odczytu ma zastosowanie do pojedynczej operacji odczytu o zakresie w ramach partycji logicznej. Operacja odczytu może być wystawiona przez klienta zdalnego lub procedury składowanej.
 
 ## <a name="configure-the-default-consistency-level"></a>Konfigurowanie domyślnego poziomu spójności
 
@@ -45,26 +45,49 @@ Semantyka pięciu poziomów spójności są opisane w tym miejscu:
 
   ![wideo](media/consistency-levels/strong-consistency.gif)
 
-- **Ograniczona nieaktualność:** odczyty są gwarantowane do przestrzegania gwarancji spójnego prefiksu. Odczyty mogą pozostawać w tyle za zapisami przez co najwyżej *"K"* wersje (czyli "aktualizacje") elementu lub *przez "T"* przedział czasu. Innymi słowy, po wybraniu ograniczonego nieaktualności "nieaktualność" można skonfigurować na dwa sposoby: 
+- **Ograniczona nieaktualność:** odczyty są gwarantowane do przestrzegania gwarancji spójnego prefiksu. Odczyty mogą pozostawać w tyle za zapisami przez co najwyżej *"K"* wersje (czyli "aktualizacje") elementu lub *przez "T"* przedział czasu. Innymi słowy, po wybraniu ograniczonego nieaktualności "nieaktualność" można skonfigurować na dwa sposoby:
 
-  * Liczba wersji (*K*) pozycji
-  * Przedział czasu (*T*), w którym odczyty mogą pozostawać w tyle za zapisami 
+- Liczba wersji (*K*) pozycji
+- Przedział czasu (*T*), w którym odczyty mogą pozostawać w tyle za zapisami
 
-  Powiązana nieaktualność oferuje całkowitą globalną kolejność poza „oknem nieaktualności”. Monotoniczne gwarancje odczytu istnieją w obrębie regionu zarówno wewnątrz, jak i na zewnątrz okna nieaktualność. Silna spójność ma taką samą semantycę, jak ta oferowana przez ograniczoną nieaktualność. Okno nieaktualność jest równa zero. Ograniczona nieaktualność jest również określana jako czas opóźniona linearizability. Gdy klient wykonuje operacje odczytu w regionie, który akceptuje zapisy, gwarancje dostarczone przez spójność przestarzałości są identyczne z tymi gwarancjami przez silną spójność.
+Ograniczona nieaktualność oferuje całkowite zamówienie globalne poza "oknem nieaktualności". Gdy klient wykonuje operacje odczytu w regionie, który akceptuje zapisy, gwarancje dostarczone przez spójność przestarzałości są identyczne z tymi gwarancjami przez silną spójność.
+
+Wewnątrz okna nieaktualność ograniczona staleness zapewnia następujące gwarancje spójności:
+
+- Spójność dla klientów w tym samym regionie dla konta jedno-wzorcowego = Silna
+- Spójność dla klientów w różnych regionach dla konta jednorodzinnego = spójny prefiks
+- Spójność dla klientów zapisujących do jednego regionu dla konta wieloelmeczowego = Spójny prefiks
+- Spójność dla klientów zapisu w różnych regionach dla konta wielowierszowego =
 
   Ograniczona nieaktualność jest często wybierana przez globalnie rozproszone aplikacje, które oczekują niskich opóźnień zapisu, ale wymagają całkowitej gwarancji zamówienia globalnego. Ograniczona nieaktualność jest świetna dla aplikacji zawierających współpracę grupową i udostępnianie, giełdowy, publikowanie subskrybowane / kolejkowanie itp. Poniższa grafika ilustruje spójność ograniczonego nieaktualności z nutami muzycznymi. Po zapisaniu danych w regionie "Zachodnie stany USA 2" regiony "Wschodnie stany USA 2" i "Australia Wschodnia" odczytywały wartość zapisaną na podstawie skonfigurowanego maksymalnego czasu opóźnienia lub maksymalnych operacji:
 
   ![wideo](media/consistency-levels/bounded-staleness-consistency.gif)
 
-- **Sesja**: W ramach jednej sesji klienta odczyty są gwarantowane do przestrzegania spójnego prefiksu (przy założeniu jednej sesji "modułu zapisującego"), odczytów monotonicznych, zapisów monotonicznych, odczytu i zapisu i zapisu i odczytów. Klienci spoza sesji wykonywania zapisów zobaczą spójność ostateczną.
+- **Sesja**: W ramach jednej sesji klienta odczyty są gwarantowane do przestrzegania spójnego prefiksu, odczyty monotoniczne, zapisy monotoniczne, odczyty i zapisy i zapis-follows-odczyty gwarancji. Zakłada to pojedynczą sesję "writer" lub udostępnianie tokenu sesji dla wielu autorów.
 
-  Spójność sesji jest powszechnie używanym poziomem spójności zarówno dla pojedynczego regionu, jak i aplikacji rozproszonych globalnie. Zapewnia opóźnienia zapisu, dostępność i przepływność odczytu porównywalne do spójności ostatecznej, ale również zapewnia gwarancje spójności, które odpowiadają potrzebom aplikacji napisanych do działania w kontekście użytkownika. Poniższa grafika ilustruje spójność sesji z nutami muzycznymi. Region "Zachodnie stany USA 2" i regiony "Wschodnie stany USA 2" używają tej samej sesji (sesja A), więc obie odczytują dane w tym samym czasie. Podczas gdy region "Australia Wschód" używa "Sesji B", więc odbiera dane później, ale w tej samej kolejności, w jakiej zapisuje.
+Klienci spoza sesji wykonywania zapisów zobaczą następujące gwarancje:
+
+- Spójność dla klientów w tym samym regionie dla konta jednorodzinnego = Spójny prefiks
+- Spójność dla klientów w różnych regionach dla konta jednorodzinnego = spójny prefiks
+- Spójność dla klientów zapisujących do jednego regionu dla konta wieloelmeczowego = Spójny prefiks
+- Spójność dla klientów zapisu do wielu regionów dla konta wielowierszowego = Ostateczny
+
+  Spójność sesji jest powszechnie używanym poziomem spójności zarówno dla pojedynczego regionu, jak i aplikacji rozproszonych globalnie. Zapewnia opóźnienia zapisu, dostępność i przepływność odczytu porównywalne do spójności ostatecznej, ale również zapewnia gwarancje spójności, które odpowiadają potrzebom aplikacji napisanych do działania w kontekście użytkownika. Poniższa grafika ilustruje spójność sesji z nutami muzycznymi. "West US 2 writer" i "West US 2 reader" używają tej samej sesji (Sesja A), więc obaj czytają te same dane w tym samym czasie. Podczas gdy region "Australia Wschód" używa "Sesji B", więc odbiera dane później, ale w tej samej kolejności, w jakiej zapisuje.
 
   ![wideo](media/consistency-levels/session-consistency.gif)
 
 - **Spójny prefiks:** Aktualizacje, które są zwracane zawierają pewne prefiks wszystkich aktualizacji, bez przerw. Spójny poziom spójności prefiksu gwarantuje, że odczyt nigdy nie zobaczy zapisów poza kolejnością.
 
-  Jeśli zapisy zostały wykonane w kolejności `A, B, C`, to klient będzie widział zapis `A`, `A,B` lub `A,B,C`, ale nigdy w innej kolejności, takiej jak `A,C` lub `B,A,C`. Spójny prefiks zapewnia opóźnienia zapisu, dostępność i przepływność odczytu porównywalne do spójności ostatecznej, ale także zapewnia gwarancje zamówienia, które odpowiadają potrzebom scenariuszy, w których kolejność jest ważna. Poniższa grafika ilustruje spójność prefiksu spójności z nutami muzycznymi. We wszystkich regionach odczyty nigdy nie widzą zapisów poza kolejnością:
+Jeśli zapisy zostały wykonane w kolejności `A, B, C`, to klient będzie widział zapis `A`, `A,B` lub `A,B,C`, ale nigdy w innej kolejności, takiej jak `A,C` lub `B,A,C`. Spójny prefiks zapewnia opóźnienia zapisu, dostępność i przepływność odczytu porównywalne do spójności ostatecznej, ale także zapewnia gwarancje zamówienia, które odpowiadają potrzebom scenariuszy, w których kolejność jest ważna. 
+
+Poniżej znajdują się gwarancje spójności dla spójnego prefiksu:
+
+- Spójność dla klientów w tym samym regionie dla konta jednorodzinnego = Spójny prefiks
+- Spójność dla klientów w różnych regionach dla konta jednorodzinnego = spójny prefiks
+- Spójność dla klientów zapisujących do jednego regionu dla konta wieloelmeczowego = Spójny prefiks
+- Spójność dla klientów zapisu do wielu regionów dla konta wielowierszowego = Ostateczny
+
+Poniższa grafika ilustruje spójność prefiksu spójności z nutami muzycznymi. We wszystkich regionach odczyty nigdy nie widzą zapisów poza kolejnością:
 
   ![wideo](media/consistency-levels/consistent-prefix.gif)
 
@@ -79,7 +102,7 @@ Aby dowiedzieć się więcej o pojęciach dotyczących spójności, przeczytaj n
 
 - [Specyfikacje TLA+ wysokiego poziomu dla pięciu poziomów spójności oferowanych przez usługę Azure Cosmos DB](https://github.com/Azure/azure-cosmos-tla)
 - [Powtórzona spójność danych wyjaśniona przez Baseball (wideo) przez Douga Terry'ego](https://www.youtube.com/watch?v=gluIh8zd26I)
-- [Powtórzona spójność danych wyjaśniona przez Baseball (oficjalny dokument) przez Douga Terry'ego](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
+- [Powtórzona spójność danych wyjaśniona przez Baseball (oficjalny dokument) przez Douga Terry'ego](https://www.microsoft.com/research/publication/replicated-data-consistency-explained-through-baseball/)
 - [Gwarancje sesji dla słabo spójnych replikowanych danych](https://dl.acm.org/citation.cfm?id=383631)
 - [Kompromisy spójności w nowoczesnym projektowaniu systemów rozproszonych baz danych: WPR to tylko część historii](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [Probabilistic Ograniczone Staleness (PBS) dla praktycznych częściowych kworów](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
@@ -89,9 +112,8 @@ Aby dowiedzieć się więcej o pojęciach dotyczących spójności, przeczytaj n
 
 Aby dowiedzieć się więcej o poziomach spójności w usłudze Azure Cosmos DB, przeczytaj następujące artykuły:
 
-* [Wybierz odpowiedni poziom spójności dla swojej aplikacji](consistency-levels-choosing.md)
-* [Poziomy spójności w interfejsach API bazy danych usługi Azure Cosmos](consistency-levels-across-apis.md)
-* [Kompromisy w zakresie dostępności i wydajności dla różnych poziomów spójności](consistency-levels-tradeoffs.md)
-* [Konfigurowanie domyślnego poziomu spójności](how-to-manage-consistency.md#configure-the-default-consistency-level)
-* [Zastępowanie domyślnego poziomu spójności](how-to-manage-consistency.md#override-the-default-consistency-level)
-
+- [Wybierz odpowiedni poziom spójności dla swojej aplikacji](consistency-levels-choosing.md)
+- [Poziomy spójności w interfejsach API bazy danych usługi Azure Cosmos](consistency-levels-across-apis.md)
+- [Kompromisy w zakresie dostępności i wydajności dla różnych poziomów spójności](consistency-levels-tradeoffs.md)
+- [Konfigurowanie domyślnego poziomu spójności](how-to-manage-consistency.md#configure-the-default-consistency-level)
+- [Zastępowanie domyślnego poziomu spójności](how-to-manage-consistency.md#override-the-default-consistency-level)

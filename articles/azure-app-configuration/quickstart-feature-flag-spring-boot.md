@@ -4,14 +4,14 @@ description: Dodawanie flag funkcji do aplikacji Spring Boot i zarządzanie nimi
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 01/21/2020
+ms.date: 04/13/2020
 ms.author: lcozzens
-ms.openlocfilehash: 489bc0234580e8df8dcc85c1d3cc0add547818b1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 398005b37660cfa68936a0c8b3a3d90da8160e49
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78944337"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309071"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Szybki start: dodawanie flag funkcji do aplikacji Spring Boot
 
@@ -103,7 +103,7 @@ Użyj [spring initializr,](https://start.spring.io/) aby utworzyć nowy projekt 
 1. Przejdź do `resources` katalogu aplikacji i `bootstrap.properties`otwórz program .  Jeśli plik nie istnieje, utwórz go. Dodaj następujący wiersz do pliku.
 
     ```properties
-    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
 1. W portalu konfiguracji aplikacji dla sklepu `Access keys` konfiguracyjnego wybierz z paska bocznego. Wybierz kartę Klawisze tylko do odczytu. Skopiuj wartość podstawowego ciągu połączenia.
@@ -283,7 +283,7 @@ Użyj [spring initializr,](https://start.spring.io/) aby utworzyć nowy projekt 
     mvn spring-boot:run
     ```
 
-1. Otwórz okno przeglądarki i przejdź do domyślnego adresu URL lokalnie hostowanego aplikacji sieci web: `https://localhost:8080`.
+1. Otwórz okno przeglądarki i przejdź do `http://localhost:8080/welcome`adresu URL: .
 
     ![Lokalne uruchamianie aplikacji z przewodnika Szybki start](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 

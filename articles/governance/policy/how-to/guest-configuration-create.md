@@ -3,12 +3,12 @@ title: Jak utworzyć zasady konfiguracji gościa dla systemu Windows
 description: Dowiedz się, jak utworzyć zasady konfiguracji gościa zasad platformy Azure dla systemu Windows.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 24069ff6518c4244026378e48216d4568fffeb8a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: deb51cf502d26dc994bf74ef3cb0c728f624afde
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365470"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313979"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Jak utworzyć zasady konfiguracji gościa dla systemu Windows
 
@@ -73,7 +73,11 @@ Aby zapoznać się z omówieniem pojęć i terminologii DSC dsc, zobacz [Omówie
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>Czym różnią się moduły konfiguracji gościa od modułów DSC programu Windows PowerShell
 
-Gdy konfiguracja gościa przeprowadza inspekcje komputera, najpierw uruchamia `Test-TargetResource` się w celu ustalenia, czy jest w prawidłowym stanie. Wartość logiczna zwracana przez funkcję określa, czy stan usługi Azure Resource Manager dla przypisania gościa powinien być zgodny/niezgodny. Następnie dostawca `Get-TargetResource` uruchamia się, aby zwrócić bieżący stan każdego ustawienia, więc dostępne są szczegółowe informacje zarówno o tym, dlaczego komputer nie jest zgodny, jak i w celu potwierdzenia, że bieżący stan jest zgodny.
+Gdy konfiguracja gościa przeprowadza inspekcję komputera:
+
+1. Agent uruchamia `Test-TargetResource` się najpierw, aby ustalić, czy konfiguracja jest w prawidłowym stanie.
+1. Wartość logiczna zwracana przez funkcję określa, czy stan usługi Azure Resource Manager dla przypisania gościa powinien być zgodny/niezgodny.
+1. Dostawca uruchamia `Get-TargetResource` się, aby zwrócić bieżący stan każdego ustawienia, więc dostępne są szczegółowe informacje zarówno o tym, dlaczego komputer nie jest zgodny, jak i w celu potwierdzenia, że bieżący stan jest zgodny.
 
 ### <a name="get-targetresource-requirements"></a>Wymagania dotyczące źródła danych typu Get-TargetResource
 
@@ -102,6 +106,25 @@ return @{
     reasons = $reasons
 }
 ```
+
+Właściwość Reasons musi również zostać dodana do schematu MOF dla zasobu jako klasa osadzona.
+
+```mof
+[ClassVersion("1.0.0.0")] 
+class Reason
+{
+    [Read] String Phrase;
+    [Read] String Code;
+};
+
+[ClassVersion("1.0.0.0"), FriendlyName("ResourceName")]
+class ResourceName : OMI_BaseResource
+{
+    [Key, Description("Example description")] String Example;
+    [Read, EmbeddedInstance("Reason")] String Reasons[];
+};
+```
+
 ### <a name="configuration-requirements"></a>Wymagania konfiguracyjne
 
 Nazwa konfiguracji niestandardowej musi być spójna wszędzie. Nazwa pliku zip dla pakietu zawartości, nazwa konfiguracji w pliku MOF i nazwa przypisania gościa w szablonie Menedżera zasobów muszą być takie same.
@@ -134,7 +157,7 @@ Można również zaimplementować [punkt końcowy usługi](../../../storage/comm
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Krok po kroku tworzenie niestandardowych zasad inspekcji konfiguracji gościa dla systemu Windows
 
-Utwórz konfigurację DSC. Poniższy przykład skryptu programu PowerShell tworzy konfigurację o nazwie **AuditBitLocker**, importuje `Service` moduł zasobów **PsDscResources** i używa zasobu do inspekcji uruchomionej usługi. Skrypt konfiguracyjny może być wykonywany z komputera z systemem Windows lub macOS.
+Utwórz konfigurację DSC do inspekcji ustawień. Poniższy przykład skryptu programu PowerShell tworzy konfigurację o nazwie **AuditBitLocker**, importuje `Service` moduł zasobów **PsDscResources** i używa zasobu do inspekcji uruchomionej usługi. Skrypt konfiguracyjny może być wykonywany z komputera z systemem Windows lub macOS.
 
 ```powershell
 # Define the DSC configuration and import GuestConfiguration
@@ -160,7 +183,7 @@ Polecenie `Node AuditBitlocker` nie jest technicznie wymagane, ale tworzy plik `
 
 Po skompilowaniu MOF pliki pomocnicze muszą być spakowane razem. Ukończony pakiet jest używany przez konfigurację gościa do tworzenia definicji zasad platformy Azure.
 
-Polecenie `New-GuestConfigurationPackage` cmdlet tworzy pakiet. Parametry polecenia `New-GuestConfigurationPackage` cmdlet podczas tworzenia zawartości systemu Windows:
+Polecenie `New-GuestConfigurationPackage` cmdlet tworzy pakiet. Moduły, które są potrzebne przez konfigurację, muszą być dostępne w programie `$Env:PSModulePath`. Parametry polecenia `New-GuestConfigurationPackage` cmdlet podczas tworzenia zawartości systemu Windows:
 
 - **Nazwa**: Nazwa pakietu konfiguracji gościa.
 - **Konfiguracja**: Skompilowana ścieżka dokumentu konfiguracyjnego DSC.
@@ -176,7 +199,7 @@ New-GuestConfigurationPackage `
 
 Po utworzeniu pakietu konfiguracji, ale przed opublikowaniem go na platformie Azure, można przetestować pakiet ze stacji roboczej lub środowiska ciągłej integracji/ciągłego wdrażania. Polecenie cmdlet `Test-GuestConfigurationPackage` guestconfiguration zawiera tego samego agenta w środowisku programistycznym, który jest używany na komputerach platformy Azure. Korzystając z tego rozwiązania, można wykonać testowanie integracji lokalnie przed zwolnieniem do środowisk chmury rozliczane.
 
-Ponieważ agent faktycznie ocenia środowisko lokalne, w większości przypadków należy uruchomić polecenie cmdlet testowe na tej samej platformie systemu operacyjnego, co planujesz przeprowadzić inspekcję.
+Ponieważ agent faktycznie ocenia środowisko lokalne, w większości przypadków należy uruchomić polecenie cmdlet testowe na tej samej platformie systemu operacyjnego, co planujesz przeprowadzić inspekcję. Test będzie używać tylko modułów, które są zawarte w pakiecie zawartości.
 
 Parametry polecenia `Test-GuestConfigurationPackage` cmdlet:
 
