@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 1cfa2ab1d8bf096b1821f7473d9808801b47c547
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70014b5ab37a07e01eaa2db3d729b7d8af520842
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371178"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311773"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Co nowego w usłudze Azure Application Gateway?
 
@@ -33,7 +33,7 @@ Usługa Azure Application Gateway jest aktualizowana na bieżąco. Aby być na b
 |Więcej danych |Dodaliśmy następujące nowe metryki ułatwiające monitorowanie jednostki SKU bramy aplikacji w wersji 2: [metryki związane z chronometracie,](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#timing-metrics)stan odpowiedzi wewnętrznej bazy danych, odebrane bajty, wysłane bajty, protokół TLS klienta i bieżące jednostki obliczeniowe. Zobacz [metryki obsługiwane przez jednostkę SKU bramy aplikacji w wersji 2](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-supported-by-application-gateway-v2-sku). |Sierpień 2019 r. |
 |Reguły niestandardowe zapory aplikacji internetowej |Brama aplikacji WAF_v2 obsługuje teraz tworzenie reguł niestandardowych. Zobacz [Reguły niestandardowe bramy aplikacji](custom-waf-rules-overview.md). |Czerwiec 2019 r. |
 |Automatyczne skalowanie, nadmiarowość stref, statyczna obsługa VIP GA |Ogólna dostępność dla jednostki SKU w wersji 2, która obsługuje skalowanie automatyczne, nadmiarowość stref, zwiększa wydajność, statyczne adresy VIP, przechowalnia kluczy, przepisywanie nagłówków. Zobacz [dokumentację skalowania automatycznego bramy aplikacji](application-gateway-autoscaling-zone-redundant.md). |Kwiecień 2019 r. |
-|Integracja z magazynem kluczy |Brama aplikacji obsługuje teraz integrację z usługą Key Vault (w publicznej wersji zapoznawczej) dla certyfikatów serwera dołączonych do odbiorników obsługujących protokół HTTPS. Zobacz [Zakończenie SSL z certyfikatami Usługi Key Vault](key-vault-certs.md). |Kwiecień 2019 r. |
+|Integracja z magazynem kluczy |Brama aplikacji obsługuje teraz integrację z usługą Key Vault (w publicznej wersji zapoznawczej) dla certyfikatów serwera dołączonych do odbiorników obsługujących protokół HTTPS. Zobacz [Zakończenie protokołu TLS z certyfikatami Usługi Key Vault](key-vault-certs.md). |Kwiecień 2019 r. |
 |Nagłówek CRUD/Przepisuje     |Teraz można przepisać nagłówki HTTP. Zobacz [Samouczek: Tworzenie bramy aplikacji i przepisywanie nagłówków HTTP, aby](tutorial-http-header-rewrite-powershell.md) uzyskać więcej informacji.|Grudzień 2018 r.|
 |Lista konfiguracji i wykluczeń WAF     |Dodaliśmy więcej opcji, które pomogą Ci skonfigurować waf i zmniejszyć liczbę fałszywych alarmów. Aby uzyskać więcej informacji, zobacz [Limity rozmiaru zapory żądań aplikacji sieci Web i listy wykluczeń](application-gateway-waf-configuration.md).|Grudzień 2018 r.|
 |Automatyczne skalowanie, nadmiarowość stref, statyczna obsługa VIP      |Dzięki jednostce SKU w wersji 2 istnieje wiele ulepszeń, takich jak skalowanie automatyczne, zwiększona wydajność i inne. Zobacz [Co to jest brama aplikacji platformy Azure?](overview.md)|Wrzesień 2018 r.|

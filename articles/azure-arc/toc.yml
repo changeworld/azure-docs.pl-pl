@@ -18,7 +18,3 @@
       items:
         - name: Zarządzanie agentem
           href: ./servers/manage-agent.md
-- name: Dokumentacja
-  items:
-    - name: Interfejs wiersza polecenia agenta komputera połączonego z platformą Azure
-      href: ./servers/azcmagent-reference.md

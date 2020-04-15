@@ -3,16 +3,16 @@ title: Omówienie usługi Azure Resource Graph
 description: Dowiedz się, jak usługa Azure Resource Graph umożliwia kompleksowe wykonywanie zapytań o zasoby na dużą skalę w ramach subskrypcji i dzierżaw.
 ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: 38ead7be09e038b19c390acd9f10e1c0ccf9d858
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f5c091f60faedb76e3ca6cd68505c06f51be21b6
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240058"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381516"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co to jest usługa Azure Resource Graph?
 
-Azure Resource Graph to usługa na platformie Azure, która ma na celu rozszerzenie usługi Azure Resource Management, zapewniając wydajne i wydajne eksploracji zasobów z możliwością wykonywania zapytań na dużą skalę w danym zestawie subskrypcji, dzięki czemu można skutecznie zarządzać swoimi Środowiska. Te zapytania zapewniają następujące funkcje:
+Usługa Azure Resource Graph to usługa na platformie Azure, która ma na celu rozszerzenie usługi Azure Resource Management, zapewniając wydajne i wydajne eksploracji zasobów z możliwością wykonywania zapytań na dużą skalę w danym zestawie subskrypcji, dzięki czemu można skutecznie zarządzać środowiskiem. Te zapytania zapewniają następujące funkcje:
 
 - Zdolność do wysyłania zapytań do zasobów przy użyciu złożonego filtrowania, grupowania i sortowania według właściwości zasobu.
 - Możliwość iteracyjnego eksplorowania zasobów na podstawie wymagań dotyczących nadzoru.
@@ -50,7 +50,7 @@ Wykres zasobów następnie aktualizuje swoją bazę danych. Wykres zasobów rów
 
 Teraz, gdy masz lepsze zrozumienie, co to jest usługa Azure Resource Graph, przejdźmy do sposobu konstruowania zapytań.
 
-Ważne jest zrozumienie, że język zapytań usługi Azure Resource Graph opiera się na języku zapytań [Kusto Query Language](../../data-explorer/data-explorer-overview.md) używanym przez usługę Azure Data Explorer.
+Ważne jest zrozumienie, że język zapytań usługi Azure Resource Graph opiera się na języku zapytań [Kusto Query Language](/azure/data-explorer/data-explorer-overview) używanym przez usługę Azure Data Explorer.
 
 Po pierwsze, aby poznać szczegółowe informacje dotyczące operacji i funkcji, które mogą być używane z usługą Azure Resource Graph, zobacz [język zapytań usługi Resource Graph](./concepts/query-language.md).
 Aby przejrzeć zasoby, zobacz [badanie zasobów](./concepts/explore-resources.md).

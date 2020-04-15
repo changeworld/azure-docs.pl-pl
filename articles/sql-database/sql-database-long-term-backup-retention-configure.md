@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie długoterminowym przechowywaniem kopii zapasowych
-description: Dowiedz się, jak przechowywać automatyczne kopie zapasowe w magazynie platformy SQL Azure, a następnie je przywracać
+title: 'Pojedyncza baza danych: zarządzanie długoterminową przechowywaniem kopii zapasowych'
+description: Dowiedz się, jak przechowywać i przywracać automatyczne kopie zapasowe dla pojedynczej lub puli bazy danych usługi Azure SQL Database w magazynie platformy Azure (przez okres do 10 lat) przy użyciu usługi Azure Portal i programu PowerShell
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 08/21/2019
-ms.openlocfilehash: a560f4f1399792a7b150b37c3c048ccc0079b98d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 2564fd0ffd980dae4ca1835f4211fee0a0cf040c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74420788"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380932"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Zarządzanie długoterminową przechowywaniem kopii zapasowych usługi Azure SQL Database
 

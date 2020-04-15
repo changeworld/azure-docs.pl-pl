@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cb5aca128679b21072a2a3daa503dc43a8e2885
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26656b6dafd91d47c05c2d1f923e53f4ba790cf8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942890"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309911"
 ---
 # <a name="combined-security-information-registration-preview"></a>Rejestracja informacji o zabezpieczeniach (wersja zapoznawcza)
 
@@ -139,7 +139,7 @@ Użytkownik, który wcześniej skonfigurował co najmniej jedną metodę, która
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Wymuszanie na użytkownikach ponownych rejestracji metod uwierzytelniania](howto-mfa-userdevicesettings.md#manage-authentication-methods)
+[Wymuszanie na użytkownikach ponownych rejestracji metod uwierzytelniania](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
 
 [Włącz rejestrację połączoną w dzierżawie](howto-registration-mfa-sspr-combined.md)
 

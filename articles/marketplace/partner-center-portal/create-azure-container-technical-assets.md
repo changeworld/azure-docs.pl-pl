@@ -1,5 +1,5 @@
 ---
-title: Przygotowywanie zasobów technicznych usługi Azure Container
+title: Tworzenie zasobu technicznego maszyny Wirtualnej platformy Azure
 description: W tym artykule opisano kroki i wymagania dotyczące konfigurowania oferty kontenerów w portalu Azure Marketplace.
 author: anbene
 ms.author: mingshen
@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 62c77681accb19183b5e8aa3ae8d80c225b2d284
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 262129084be5c6a68bfd8d8708c9a10fbb606144
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266021"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383724"
 ---
-# <a name="prepare-your-azure-container-technical-assets"></a>Przygotowywanie zasobów technicznych usługi Azure Container
+# <a name="create-an-azure-vm-technical-asset"></a>Tworzenie zasobu technicznego maszyny Wirtualnej platformy Azure
 
 > [!IMPORTANT]
 > Przenosimy zarządzanie ofertami usługi Azure Container z portalu cloud partnerów do centrum partnerów. Dopóki oferty nie zostaną zmigrowane, postępuj zgodnie z instrukcjami w [aplikacji Przygotowanie zasobów technicznych kontenera](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets) dla portalu Cloud Partner Portal, aby zarządzać ofertami.

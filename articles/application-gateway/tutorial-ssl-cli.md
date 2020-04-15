@@ -1,6 +1,6 @@
 ---
-title: Zakończenie SSL przy użyciu interfejsu WIERSZA POLECENIA — brama aplikacji platformy Azure
-description: Dowiedz się, jak utworzyć bramę aplikacji i dodać certyfikat terminacji SSL przy użyciu interfejsu wiersza polecenia platformy Azure.
+title: Zakończenie protokołu TLS przy użyciu interfejsu wiersza polecenia — brama aplikacji platformy Azure
+description: Dowiedz się, jak utworzyć bramę aplikacji i dodać certyfikat dla zakończenia protokołu TLS przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: c297a7d34e8b85420329abaca0e15029ce207861
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cd8cca65762de3da6a0e69e93c8d79bbe498dde
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246610"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311972"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>tworzenie bramy aplikacji z terminacją SSL przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Tworzenie bramy aplikacji z zakończeniem protokołu TLS przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Za pomocą interfejsu wiersza polecenia platformy Azure można utworzyć [bramę aplikacji](overview.md) z certyfikatem [zakończenia SSL](ssl-overview.md). W przypadku serwerów zaplecza można użyć [zestawu skalowania maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) . W tym przykładzie zestaw skalowania zawiera dwa wystąpienia maszyny wirtualnej, które są dodawane do domyślnej puli zaplecza bramy aplikacji.
+Za pomocą interfejsu wiersza polecenia platformy Azure można utworzyć [bramę aplikacji](overview.md) z certyfikatem zakończenia [protokołu TLS.](ssl-overview.md) W przypadku serwerów zaplecza można użyć [zestawu skalowania maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) . W tym przykładzie zestaw skalowania zawiera dwa wystąpienia maszyny wirtualnej, które są dodawane do domyślnej puli zaplecza bramy aplikacji.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 

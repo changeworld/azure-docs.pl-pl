@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cfec30e56b0fd523896cbc1a7e84e92f639075a8
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 15a4c9b16b102310fd02f8db3a4fb93cff84882b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879058"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314068"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Korzystanie z usługi Microsoft Teams na pulpicie wirtualnym systemu Windows
 
@@ -67,3 +67,7 @@ Aplikację klasyczną Teams można wdrożyć przy użyciu instalacji na komputer
 
       > [!NOTE]
       > Jeśli zainstalujesz teams z ustawieniem MSI ALLUSER=1, automatyczne aktualizacje zostaną wyłączone. Zalecamy, aby aktualizować zespoły co najmniej raz w miesiącu.
+      
+### <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Dostosowywanie właściwości protokołu pulpitu zdalnego dla puli hostów
+Dostosowywanie właściwości protokołu RDP (Remote Desktop Protocol) puli hostów, takich jak obsługa wielu monitorów, włączanie przekierowywania mikrofonu i dźwięku, umożliwia zapewnienie optymalnego środowiska dla użytkowników w zależności od ich potrzeb. Właściwości protokołu RDP można dostosować na pulpicie wirtualnym systemu Windows przy użyciu parametru **-CustomRdpProperty** w pokręcie cmdlet **Set-RdsHostPool.**
+Pełna lista obsługiwanych właściwości i ich wartości domyślnych można znaleźć w [obsługiwanych ustawieniach pliku RDP.](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context)

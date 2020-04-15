@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ad821036047dcf46821b2b2722e3dd17f8e318c2
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: cb2302637efb16fc31bd420bf8c4ead19d7f598d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80386122"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81384964"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Czy użytkownik musi mieć koncentrator i rozmawiać z urządzeniami SD-WAN/VPN, aby korzystać z wirtualnej sieci WAN platformy Azure?
 
@@ -131,6 +131,8 @@ Tak. Zobacz stronę z [cennikiem](https://azure.microsoft.com/pricing/details/vi
 
 * Jeśli brama usługi ExpressRoute została powiązana z układami usługi ExpressRoute łączącymi się z koncentratorem wirtualnym, zapłacisz za cenę jednostkową skali. Każda jednostka skalowania w ER wynosi 2 Gb/s, a każda jednostka połączenia jest naliczana według tej samej stawki co jednostka połączenia sieci VPN.
 
+* Jeśli miałeś spoke VNETs podłączony do koncentratora, opłaty za komunikację równorzędnych w spoke VNETs nadal mają zastosowanie. 
+
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>W jaki sposób partnerzy, którzy nie są wymienieni na liście partnerów uruchomienia, mogą dołączyć do programu?
 
 Wszystkie wirtualne interfejsy API sieci WAN są otwartym interfejsem API. Możesz przejść do dokumentacji, aby ocenić wykonalność techniczną. Jeśli masz jakieś pytania, wyślij azurevirtualwan@microsoft.comwiadomość e-mail na adres . Idealny partner powinien dysponować urządzeniem, które można aprowizować na potrzeby połączeń IKEv1 lub IKEv2 IPSec.
@@ -149,7 +151,7 @@ Sieć wirtualną można połączyć w innym regionie niż wirtualna sieć WAN.
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Czy sieci wirtualne połączone z wirtualnym koncentratorem mogą komunikować się ze sobą (V2V Transit)?
 
-Tak. Standardowa wirtualna sieć WAN obsługuje przejściową łączność sieci wirtualnej z siecią wirtualną za pośrednictwem koncentratora wirtualnej sieci WAN, z którą są połączone sieci wirtualne. W terminologii wirtualnej sieci WAN odnosimy się do tych ścieżek jako "lokalny wirtualny tranzyt sieci wirtualnej WAN" dla sieci wirtualnych połączonych z wirtualnym centrum Wan w jednym regionie oraz "globalny tranzyt wirtualnej sieci wirtualnej sieci wirtualnej" dla sieci wirtualnych połączonych za pośrednictwem wielu wirtualnych koncentratorów sieci WAN w dwóch lub więcej Regionów. Tranzyt sieci wirtualnej obsługuje przepustowość do 3 Gb/s podczas publicznej wersji zapoznawczej. Przepustowość zostanie rozszerzona, gdy globalny tranzyt przejdzie ga.
+Tak. Standardowa wirtualna sieć WAN obsługuje przejściową łączność sieci wirtualnej z siecią wirtualną za pośrednictwem koncentratora wirtualnej sieci WAN, z którą są połączone sieci wirtualne. W terminologii wirtualnej sieci WAN odnosimy się do tych ścieżek jako "lokalny wirtualny tranzyt sieci wirtualnej sieci wirtualnej WAN" dla sieci wirtualnych połączonych z centrum wirtualnego Wan w jednym regionie oraz "globalny tranzyt wirtualnej sieci wirtualnej sieci wirtualnej" dla sieci wirtualnych połączonych za pośrednictwem wielu wirtualnych koncentratorów sieci WAN w dwóch lub więcej regionach. Tranzyt sieci wirtualnej obsługuje przepustowość do 3 Gb/s podczas publicznej wersji zapoznawczej. Przepustowość zostanie rozszerzona, gdy globalny tranzyt przejdzie ga.
 
 UWAGA: Obecnie wersja zapoznawcza przesyłania V2V wymaga wdrożenia GW sieci VPN w centrum wirtualnym w celu wyzwolenia elementów routingu, które mają zostać uruchomione. Ta GW sieci VPN nie jest używana dla ścieżki tranzytowej V2V. Jest to znane ograniczenie i zostaną usunięte w czasie V2V GA. Bramę sieci VPN można usunąć w centrum po jej pełnym uruchomieniu, ponieważ nie jest ona potrzebna dla funkcji przesyłania v2V. 
 

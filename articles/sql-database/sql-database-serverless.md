@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 4/3/2020
-ms.openlocfilehash: 07f29a01ae0128ba0a35504dea54ba1ae2dde944
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 6a1d2f6079280002c868702a6547c8fd359a7c21
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657059"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310118"
 ---
 # <a name="azure-sql-database-serverless"></a>Bezserwerowa baza danych SQL azure
 
@@ -138,6 +138,8 @@ Autoresuming jest wyzwalany, jeśli którykolwiek z następujących warunków s�
 |Synchronizacja danych SQL|Synchronizacja między bazami danych koncentratora i elementów członkowskich, które są uruchamiane zgodnie z konfigurowalnym harmonogramem lub są wykonywane ręcznie|
 |Modyfikowanie niektórych metadanych bazy danych|Dodawanie nowych znaczników bazy danych.<br>Zmiana maksymalnej ilości ładowań wirtualnych, min. rów lub opóźnienia autopause.|
 |SQL Server Management Studio (SSMS)|Przy użyciu wersji SSMS wcześniej niż 18.1 i otwarcie nowego okna kwerendy dla dowolnej bazy danych na serwerze spowoduje wznowienie dowolnej automatycznie wstrzymanej bazy danych na tym samym serwerze. To zachowanie nie występuje, jeśli przy użyciu usługi SSMS w wersji 18.1 lub nowszej.|
+
+Monitorowanie, zarządzanie lub inne rozwiązania wykonujące dowolną z wyżej wymienionych operacji spowoduje automatyczne wznowienie.
 
 Autoresuming jest również wyzwalany podczas wdrażania niektórych aktualizacji usługi, które wymagają bazy danych w trybie online.
 

@@ -1,22 +1,22 @@
 ---
 title: 'Szybki start: tworzenie pierwszej funkcji na platformie Azure przy użyciu programu Visual Studio'
-description: W tym przewodniku Szybki start dowiesz się, jak utworzyć i opublikować funkcję platformy Azure wyzwalacza HTTP przy użyciu programu Visual Studio.
+description: W tym przewodniku Szybki start dowiesz się, jak utworzyć i opublikować funkcję platformy Azure wyzwalaną przez protokół HTTP przy użyciu programu Visual Studio.
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: dadb705e8b756418be40d738aa81b3e77961aead
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e58414fa94a4ef54eb2f288b2cd636c10611460d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657600"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308934"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Szybki start: tworzenie pierwszej funkcji na platformie Azure przy użyciu programu Visual Studio
 
 Usługa Azure Functions umożliwia uruchamianie kodu w środowisku bezserwerowym bez konieczności tworzenia maszyny Wirtualnej lub publikowania aplikacji sieci web.
 
-W tym przewodniku Szybki start dowiesz się, jak używać programu Visual Studio 2019 do lokalnego tworzenia i testowania aplikacji funkcji wyzwalacza HTTP HTTP "hello world", którą następnie publikujesz na platformie Azure. 
+W tym przewodniku Szybki start dowiesz się, jak używać programu Visual Studio 2019 do lokalnego tworzenia i testowania aplikacji funkcji C# wyzwalanych przez "hello world", które następnie publikujesz na platformie Azure. 
 
 ![Odpowiedź hosta localhost funkcji wyświetlona w przeglądarce](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
@@ -28,7 +28,7 @@ Aby ukończyć ten samouczek, najpierw zainstaluj [program Visual Studio 2019](h
 
 ![Instalowanie programu Visual Studio przy za pomocą obciążenia dewelopera platformy Azure](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Jeśli nie masz [subskrypcji platformy Azure](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/dotnet/).
 
 ## <a name="create-a-function-app-project"></a>Tworzenie projektu aplikacji funkcji
 
@@ -38,7 +38,7 @@ Visual Studio tworzy projekt i klasę, która zawiera standardowy kod dla typu f
 
 Rozwiń możliwości funkcji za pomocą powiązań wejściowych i wyjściowych, stosując odpowiednie atrybuty do metody. Aby uzyskać więcej informacji, zobacz sekcję [Triggers and bindings](functions-dotnet-class-library.md#triggers-and-bindings) (Wyzwalacze i powiązania) [dokumentacji usługi Azure Functions dla deweloperów w C#](functions-dotnet-class-library.md).
 
-Po utworzeniu projektu funkcji i funkcji wyzwalacza HTTP można go przetestować na komputerze lokalnym.
+Po utworzeniu projektu funkcji i funkcji wyzwalanej przez protokół HTTP można je przetestować na komputerze lokalnym.
 
 ## <a name="run-the-function-locally"></a>Lokalne uruchamianie funkcji
 
@@ -58,7 +58,7 @@ Aby można było opublikować projekt, musisz mieć aplikację funkcji w subskry
 
 1. Skopiuj podstawowy adres URL aplikacji funkcyjnej ze strony **Publikuj** profil. Zastąp `localhost:port` część adresu URL użytego do lokalnego przetestowania funkcji nowym podstawowym adresem URL. Dołącz ciąg `?name=<YOUR_NAME>` zapytania do tego adresu URL i uruchom żądanie.
 
-    Adres URL wywołujący funkcję wyzwalacza HTTP jest w następującym formacie:
+    Adres URL, który wywołuje funkcję wyzwalania HTTP jest w następującym formacie:
 
     `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
 
@@ -72,7 +72,7 @@ Aby można było opublikować projekt, musisz mieć aplikację funkcji w subskry
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start użyto programu Visual Studio do utworzenia i opublikowania aplikacji funkcji Języka C# na platformie Azure za pomocą prostej funkcji wyzwalacza HTTP. 
+W tym przewodniku Szybki start użyto programu Visual Studio do utworzenia i opublikowania aplikacji funkcji Języka C# na platformie Azure przy użyciu prostej funkcji wyzwalane HTTP. 
 
 Przejdź do następnego artykułu, aby dowiedzieć się, jak dodać powiązanie kolejki usługi Azure Storage do funkcji:
 > [!div class="nextstepaction"]

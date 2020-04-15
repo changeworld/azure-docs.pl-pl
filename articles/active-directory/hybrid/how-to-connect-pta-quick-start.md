@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc45033cdf1bdaa6d4ecd6ab58cc7f90ff9c1ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b84e972584562be741919c7dccb6bdfe1bdea628
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331413"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312856"
 ---
-# <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Uwierzytelnianie przekazywane usługi Azure Active Directory: szybki start
+# <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Uwierzytelnianie przekazywane usługi Azure Active Directory: szybki start
 
 ## <a name="deploy-azure-ad-pass-through-authentication"></a>Wdrażanie uwierzytelniania przekazywania usługi Azure AD
 
@@ -66,9 +66,14 @@ Upewnij się, że istnieją następujące wymagania wstępne.
      | **8080** (opcjonalnie) | Agenci uwierzytelniania zgłaszają swój stan co dziesięć minut za pomocą portu 8080, jeśli port 443 jest niedostępny. Ten stan jest wyświetlany w portalu usługi Azure AD. Port 8080 _nie_ jest używany do logowania użytkowników. |
      
      Jeśli zapora wymusza reguły zgodnie z użytkownikami źródłowymi, otwórz te porty dla ruchu z usług systemu Windows, które działają jako usługa sieciowa.
-   - Jeśli zapora lub serwer proxy zezwala na umieszczanie na białej liście DNS, należy wpisać połączenia do ** \*msappproxy.net** i ** \*.servicebus.windows.net**. Jeśli nie, zezwalaj na dostęp do [zakresów adresów IP centrum danych platformy Azure,](https://www.microsoft.com/download/details.aspx?id=41653)które są aktualizowane co tydzień.
+   - Jeśli zapora lub serwer proxy zezwala na ** \*** umieszczanie na białej liście DNS, dodaj połączenia do msappproxy.net i ** \*.servicebus.windows.net**. Jeśli nie, zezwalaj na dostęp do [zakresów adresów IP centrum danych platformy Azure,](https://www.microsoft.com/download/details.aspx?id=41653)które są aktualizowane co tydzień.
    - Agenci uwierzytelniania potrzebują dostępu do **login.windows.net** i **login.microsoftonline.com** do wstępnej rejestracji. Otwórz również zaporę dla tych adresów URL.
    - Aby potwierdzić certyfikat, odblokuj następujące adresy URL: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**i **www\.microsoft.com:80**. Ponieważ te adresy URL są używane do sprawdzania poprawności certyfikatów w innych produktach firmy Microsoft, te adresy URL mogą być już odblokowane.
+
+### <a name="azure-government-cloud-prerequisite"></a>Warunek wstępny chmury platformy Azure dla instytucji rządowych
+Przed włączeniem uwierzytelniania przekazywania za pośrednictwem usługi Azure AD Connect w kroku 2 pobierz najnowszą wersję agenta PTA z witryny Azure portal.  Należy upewnić się, że agent jest wersje **x.x.xxx.x** lub nowszych.  Aby zweryfikować agenta, zobacz [Uaktualnianie agentów uwierzytelniania](how-to-connect-pta-upgrade-preview-authentication-agents.md)
+
+Po pobraniu najnowszej wersji agenta, należy postępować zgodnie z poniższymi instrukcjami, aby skonfigurować uwierzytelnianie przekazywane za pośrednictwem usługi Azure AD Connect.
 
 ## <a name="step-2-enable-the-feature"></a>Krok 2: Włącz funkcję
 
@@ -114,8 +119,8 @@ Jeśli planujesz wdrożyć uwierzytelnianie przekazywane w środowisku produkcyj
 Instalowanie wielu agentów uwierzytelniania przekazywania zapewnia wysoką dostępność, ale nie deterministyczne równoważenie obciążenia między agentami uwierzytelniania. Aby określić, ile agentów uwierzytelniania jest potrzebnych dla dzierżawy, należy wziąć pod uwagę szczytowe i średnie obciążenie żądań logowania, które mogą być widoczne w dzierżawie. W ramach punktu odniesienia pojedynczy agent uwierzytelniania może obsługiwać uwierzytelnianie od 300 do 400 na sekundę na standardowym 4-rdzeniowym procesorze CPU o pamięci RAM 16 GB.
 
 Aby oszacować ruch sieciowy, użyj następujących wskazówek dotyczących rozmiaru:
-- Każde żądanie ma rozmiar ładunku (0,5 K + 1K * num_of_agents) bajtów; dane z usługi Azure AD do agenta uwierzytelniania. W tym miejscu "num_of_agents" wskazuje liczbę agentów uwierzytelniania zarejestrowanych w dzierżawie.
-- Każda odpowiedź ma rozmiar ładunku 1K bajtów; dane z agenta uwierzytelniania do usługi Azure AD.
+- Każde żądanie ma rozmiar ładunku (0,5 K + 1K * num_of_agents) bajtów, czyli danych z usługi Azure AD do agenta uwierzytelniania. W tym miejscu "num_of_agents" wskazuje liczbę agentów uwierzytelniania zarejestrowanych w dzierżawie.
+- Każda odpowiedź ma rozmiar ładunku 1K bajtów, czyli dane z agenta uwierzytelniania do usługi Azure AD.
 
 Dla większości klientów trzech agentów uwierzytelniania w sumie są wystarczające dla wysokiej dostępności i pojemności. Należy zainstalować agentów uwierzytelniania w pobliżu kontrolerów domeny, aby poprawić opóźnienie logowania.
 

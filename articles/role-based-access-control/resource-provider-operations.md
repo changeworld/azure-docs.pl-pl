@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c56e6729307a1cad998a060202f51cb8f29bf94a
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 16fa33999a38b21fd2016c986dd2db81f7d84051
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548318"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383747"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów usługi Azure Resource Manager
 
@@ -1506,7 +1506,7 @@ Usługa platformy Azure: maszyna wirtualna modelu wdrażania klasycznego
 > | Akcja | Microsoft.ClassicCompute/operations/read | Pobiera listę operacji. |
 > |  | **operationStatuss** |  |
 > | Akcja | Microsoft.ClassicCompute/operationStatuss/read | Odczytuje stan operacji zasobu. |
-> |  | **quotas** |  |
+> |  | **Kontyngentów** |  |
 > | Akcja | Microsoft.ClassicCompute/quotas/read | Pobierz przydział dla subskrypcji. |
 > |  | **zasobyTyty/skus** |  |
 > | Akcja | Microsoft.ClassicCompute/resourceTypes/skus/read | Pobiera listę Sku dla obsługiwanych typów zasobów. |
@@ -1599,7 +1599,7 @@ Usługa platformy Azure: sieć wirtualna modelu wdrażania klasycznego
 > | Akcja | Microsoft.ClassicNetwork/networkSecurityGroups/securityRules/operationStatuses/read | Odczytuje stan operacji dla reguł zabezpieczeń sieciowej grupy zabezpieczeń. |
 > |  | **Operacji** |  |
 > | Akcja | Microsoft.ClassicNetwork/operations/read | Uzyskaj klasyczne operacje sieciowe. |
-> |  | **quotas** |  |
+> |  | **Kontyngentów** |  |
 > | Akcja | Microsoft.ClassicNetwork/quotas/read | Pobierz przydział dla subskrypcji. |
 > |  | **reservedIps** |  |
 > | Akcja | Microsoft.ClassicNetwork/reservedIps/read | Pobiera zastrzeżone identyfikatory |
@@ -1693,7 +1693,7 @@ Usługa platformy Azure: klasyczna pamięć masowa modelu wdrażania
 > | Akcja | Microsoft.ClassicStorage/osPlatformImages/read | Pobiera obraz platformy systemu operacyjnego. |
 > |  | **publiczneMatygi** |  |
 > | Akcja | Microsoft.ClassicStorage/publicImages/read | Pobiera obraz publicznej maszyny wirtualnej. |
-> |  | **quotas** |  |
+> |  | **Kontyngentów** |  |
 > | Akcja | Microsoft.ClassicStorage/quotas/read | Pobierz przydział dla subskrypcji. |
 > |  | **konta przechowywania** |  |
 > | Akcja | Microsoft.ClassicStorage/storageKonta/odczyt | Zwróć konto magazynu przy podanym koncie. |
@@ -2392,7 +2392,7 @@ Usługa platformy Azure: [zarządzanie kosztami](../cost-management-billing/inde
 > | Akcja | Microsoft.Consumption/reservationSummaries/read Microsoft.Consumption/reservationSummaries/read Microsoft.Consumption/reservationSummaries/read Microsoft. | Wyświetl zestawienie wykorzystania dla wystąpień zarezerwowanych według kolejności rezerwacji lub grup zarządzania. Dane podsumowujące są na poziomie miesięcznym lub dziennym. |
 > |  | **rezerwacjaTransakcje** |  |
 > | Akcja | Microsoft.Consumption/reservationTransakcje/odczyt | Wyświetl listę historii transakcji dla wystąpień zarezerwowanych według grup zarządzania. |
-> |  | **tagów** |  |
+> |  | **Tagi** |  |
 > | Akcja | Microsoft.Consumption/tags/read | Lista tagów dla EA i subskrypcji. |
 > |  | **Najemców** |  |
 > | Akcja | Microsoft.Consumption/tenants/register/action Microsoft.Consumption/tenants/register/action Microsoft.Consumption/tenants/register/action | Zarejestruj akcję dla zakresu microsoft.consumption przez dzierżawcę. |
@@ -5180,7 +5180,7 @@ Usługa platformy Azure: [przechowalnia kluczy](../key-vault/index.yml)
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
-Usługa platformy Azure: [Eksplorator danych platformy Azure](../data-explorer/index.yml)
+Usługa platformy Azure: [Eksplorator danych platformy Azure](/azure/data-explorer/)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
@@ -8324,7 +8324,7 @@ Usługa platformy Azure: [Usługa Azure Resource Manager](../azure-resource-mana
 > | Akcja | Zasoby Firmy Microsoft/subskrypcje/tagNames/tagValues/read | Pobiera lub wyświetla wartości tagu subskrypcji. |
 > | Akcja | Zasoby Firmy Microsoft/subskrypcje/tagNames/tagValues/write | Dodaje wartość tagu subskrypcji. |
 > | Akcja | Zasoby Firmy Microsoft/subskrypcje/tagNames/tagValues/delete | Usuwa wartość tagu subskrypcji. |
-> |  | **tagów** |  |
+> |  | **Tagi** |  |
 > | Akcja | Zasoby firmy Microsoft/tagi/odczyt | Pobiera wszystkie tagi na zasób. |
 > | Akcja | Zasoby firmy Microsoft/tagi/zapis | Aktualizuje znaczniki zasobu, zastępując lub scalając istniejące znaczniki z nowym zestawem znaczników lub usuwając istniejące znaczniki. |
 > | Akcja | Zasoby Firmy Microsoft/znaczniki/usuwanie | Usuwa wszystkie znaczniki na zasobie. |

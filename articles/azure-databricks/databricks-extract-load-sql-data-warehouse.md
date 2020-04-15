@@ -1,6 +1,6 @@
 ---
 title: Samouczek — wykonywanie operacji ETL przy użyciu usługi Azure Databricks
-description: W tym samouczku dowiesz się, jak wyodrębnić dane z usługi Data Lake Storage Gen2 do usługi Azure Databricks, przekształcić dane, a następnie załadować dane do usługi Azure SQL Data Warehouse.
+description: W tym samouczku dowiesz się, jak wyodrębnić dane z usługi Data Lake Storage Gen2 do usługi Azure Databricks, przekształcić dane, a następnie załadować dane do usługi Azure Synapse Analytics.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,22 +8,22 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 8819b79a105b7a654a34e47c5ba9b3d351a1d926
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: fa7750a6e7888b6ca13c1ec32cabee9bcf803e65
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239414"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382741"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Samouczek: wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks
 
-W ramach tego samouczka wykonasz operację ETL (wyodrębnianie, przekształcanie i ładowanie danych) przy użyciu usługi Azure Databricks. Wyodrębniasz dane z usługi Azure Data Lake Storage Gen2 do usługi Azure Databricks, uruchamiasz przekształcenia na danych w usłudze Azure Databricks i ładujesz przekształcone dane do usługi Azure SQL Data Warehouse.
+W ramach tego samouczka wykonasz operację ETL (wyodrębnianie, przekształcanie i ładowanie danych) przy użyciu usługi Azure Databricks. Wyodrębniasz dane z usługi Azure Data Lake Storage Gen2 do usługi Azure Databricks, uruchamiasz przekształcenia na danych w usłudze Azure Databricks i ładujesz przekształcone dane do usługi Azure Synapse Analytics.
 
-W procedurach opisanych w tym samouczku do przesyłania danych do usługi Azure Databricks służy łącznik SQL Data Warehouse dla usługi Azure Databricks. Ten łącznik z kolei używa usługi Azure Blob Storage jako magazynu tymczasowego dla danych przesyłanych między klastrem usługi Azure Databricks a usługą Azure SQL Data Warehouse.
+Kroki opisane w tym samouczku używają łącznika Usługi Azure Synapse dla usługi Azure Databricks do przesyłania danych do usługi Azure Databricks. Ten łącznik z kolei używa usługi Azure Blob Storage jako magazynu tymczasowego dla danych przesyłanych między klastrem usługi Azure Databricks i Azure Synapse.
 
 Poniższa ilustracja przedstawia przepływ aplikacji:
 
-![Usługa Azure Databricks z magazynem danych Usługi Data Lake store i magazynem danych SQL](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Usługa Azure Databricks z magazynem danych Usługi Data Lake store i magazynem danych SQL")
+![Usługa Azure Databricks z magazynem usługi Data Lake Store i platformą Azure Synapse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Usługa Azure Databricks z magazynem usługi Data Lake Store i platformą Azure Synapse")
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -35,7 +35,7 @@ Ten samouczek obejmuje następujące zadania:
 > * Tworzenie jednostki usługi.
 > * Wyodrębnianie danych z konta usługi Azure Data Lake Storage Gen2.
 > * Przekształcanie danych w usłudze Azure Databricks.
-> * Ładowanie danych do usługi Azure SQL Data Warehouse.
+> * Ładowanie danych do usługi Azure Synapse.
 
 Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
@@ -47,9 +47,9 @@ Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://
 
 Przed rozpoczęciem tego samouczka wykonaj następujące zadania:
 
-* Utwórz magazyn danych SQL platformy Azure, utwórz regułę zapory na poziomie serwera i połącz się z serwerem jako administrator serwera. Zobacz [Szybki start: Tworzenie i wykonywanie zapytań o magazyn danych SQL platformy Azure w witrynie Azure portal](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
+* Utwórz synapsę platformy Azure, utwórz regułę zapory na poziomie serwera i połącz się z serwerem jako administrator serwera. Zobacz [Szybki start: Tworzenie i wykonywanie zapytań o pulę SQL Synapse przy użyciu portalu Azure](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
 
-* Utwórz klucz główny dla magazynu danych SQL platformy Azure. Zobacz [Tworzenie klucza głównego bazy danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
+* Utwórz klucz główny dla platformy Azure Synapse. Zobacz [Tworzenie klucza głównego bazy danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
 * Utwórz konto usługi Azure Blob Storage i zawarty w nim kontener. Ponadto pobierz klucz dostępu, aby uzyskać dostęp do konta magazynu. Zobacz [Szybki start: przekazywanie, pobieranie i wystawianie obiektów blob za pomocą witryny Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
@@ -63,9 +63,9 @@ Przed rozpoczęciem tego samouczka wykonaj następujące zadania:
 
       Jeśli wolisz użyć listy kontroli dostępu (ACL) do skojarzenia jednostki usługi z określonym plikiem lub katalogiem, odwołaj się [do kontroli dostępu w usłudze Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 
-   * Podczas wykonywania kroków w Pobierz wartości do logowania się w sekcji artykułu, [wklej](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) identyfikator dzierżawy, identyfikator aplikacji i wartości tajne do pliku tekstowego. Wkrótce będą potrzebne.
+   * Podczas wykonywania kroków w Pobierz wartości do logowania się w sekcji artykułu, [wklej](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) identyfikator dzierżawy, identyfikator aplikacji i wartości tajne do pliku tekstowego.
 
-* Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+* Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Zbieranie potrzebnych informacji
 
@@ -73,7 +73,7 @@ Upewnij się, że zostały spełnione wszystkie wymagania wstępne tego samouczk
 
    Przed rozpoczęciem należy zebrać następujące informacje:
 
-   :heavy_check_mark: nazwa bazy danych, nazwa serwera bazy danych, nazwa użytkownika i hasło magazynu sql data usługi Azure.
+   :heavy_check_mark: nazwa bazy danych, nazwa serwera bazy danych, nazwa użytkownika i hasło usługi Azure Synapse.
 
    :heavy_check_mark: klucz dostępu konta magazynu obiektów blob.
 
@@ -316,11 +316,11 @@ Plik przykładowych danych pierwotnych, **small_radio_json.json**, przechwytuje 
    +---------+----------+------+--------------------+-----------------+
    ```
 
-## <a name="load-data-into-azure-sql-data-warehouse"></a>Ładowanie danych do usługi Azure SQL Data Warehouse
+## <a name="load-data-into-azure-synapse"></a>Ładowanie danych do usługi Azure Synapse
 
-W tej sekcji przekażesz przekształcone dane do magazynu danych Azure SQL Data Warehouse. Używając łącznika usługi Azure SQL Data Warehouse dla usługi Azure Databricks, bezpośrednio przekażesz ramkę danych jako tabelę w usłudze SQL Data Warehouse.
+W tej sekcji należy przekazać przekształcone dane do usługi Azure Synapse. Łącznika Usługi Azure Synapse dla usługi Azure Databricks służy do bezpośredniego przekazywania elementu dataframe jako tabeli w puli Platformy Spark synapse.
 
-Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azure Blob Storage jako magazynu tymczasowego do przekazywania danych między usługami Azure Databricks i Azure SQL Data Warehouse. Możesz rozpocząć od podania konfiguracji umożliwiającej nawiązanie połączenia z kontem magazynu. Musisz już mieć utworzone konto w ramach wymagań wstępnych dotyczących tego artykułu.
+Jak wspomniano wcześniej, łącznik Usługi Azure Synapse używa magazynu obiektów Blob platformy Azure jako magazynu tymczasowego do przekazywania danych między usługą Azure Databricks i Azure Synapse. Możesz rozpocząć od podania konfiguracji umożliwiającej nawiązanie połączenia z kontem magazynu. Musisz już mieć utworzone konto w ramach wymagań wstępnych dotyczących tego artykułu.
 
 1. Podaj konfigurację umożliwiającą uzyskanie dostępu do konta usługi Azure Storage z usługi Azure Databricks.
 
@@ -330,7 +330,7 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
    val blobAccessKey =  "<access-key>"
    ```
 
-2. Określ folder tymczasowy do użycia podczas przenoszenia danych między usługami Azure Databricks i Azure SQL Data Warehouse.
+2. Określ folder tymczasowy do użycia podczas przenoszenia danych między usługą Azure Databricks i Azure Synapse.
 
    ```scala
    val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
@@ -343,10 +343,10 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Podaj wartości, aby nawiązać połączenie z wystąpieniem usługi Azure SQL Data Warehouse. Musisz mieć magazyn danych SQL Data Warehouse utworzony w ramach wymagań wstępnych. Użyj w pełni kwalifikowanej nazwy serwera dla **dwServer**. Na przykład `<servername>.database.windows.net`.
+4. Podaj wartości, aby połączyć się z wystąpieniem usługi Azure Synapse. Musisz utworzyć usługę Azure Synapse Analytics jako warunek wstępny. Użyj w pełni kwalifikowanej nazwy serwera dla **dwServer**. Na przykład `<servername>.database.windows.net`.
 
    ```scala
-   //SQL Data Warehouse related settings
+   //Azure Synapse related settings
    val dwDatabase = "<database-name>"
    val dwServer = "<database-server-name>"
    val dwUser = "<user-name>"
@@ -357,7 +357,7 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
    val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ":" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
    ```
 
-5. Uruchom poniższy fragment kodu, aby załadować przekształconą ramkę danych **renamedColumnsDF** jako tabelę w magazynie danych SQL Data Warehouse. Ten fragment kodu tworzy tabelę o nazwie **SampleTable** w bazie danych SQL.
+5. Uruchom następujący fragment kodu, aby załadować przekształcony dataframe, **przemianowanyColumnsDF**, jako tabela w usłudze Azure Synapse. Ten fragment kodu tworzy tabelę o nazwie **SampleTable** w bazie danych SQL.
 
    ```scala
    spark.conf.set(
@@ -368,9 +368,9 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
    ```
 
    > [!NOTE]
-   > W tym przykładzie użyto `forward_spark_azure_storage_credentials` flagi, która powoduje, że usługa SQL Data Warehouse uzyskuje dostęp do danych z magazynu obiektów blob przy użyciu klucza dostępu. Jest to jedyna obsługiwana metoda uwierzytelniania.
+   > W tym przykładzie używa `forward_spark_azure_storage_credentials` flagi, która powoduje, że usługa Azure Synapse uzyskuje dostęp do danych z magazynu obiektów blob przy użyciu klucza dostępu. Jest to jedyna obsługiwana metoda uwierzytelniania.
    >
-   > Jeśli usługa Azure Blob Storage jest ograniczona do wybranych sieci wirtualnych, usługa SQL Data Warehouse wymaga [tożsamości usługi zarządzanej zamiast kluczy dostępu.](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) Spowoduje to błąd "To żądanie nie jest autoryzowane do wykonania tej operacji."
+   > Jeśli usługa Azure Blob Storage jest ograniczona do wybranych sieci wirtualnych, usługa Azure Synapse wymaga [tożsamości usługi zarządzanej zamiast kluczy dostępu.](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) Spowoduje to błąd "To żądanie nie jest autoryzowane do wykonania tej operacji."
 
 6. Połącz się z usługą SQL Database i sprawdź, czy jest widoczna baza danych o nazwie **SampleTable**.
 
@@ -398,7 +398,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Tworzenie notesu w usłudze Azure Databricks
 > * Wyodrębnianie danych z konta usługi Data Lake Storage Gen2
 > * Przekształcanie danych w usłudze Azure Databricks
-> * Ładowanie danych do usługi Azure SQL Data Warehouse
+> * Ładowanie danych do usługi Azure Synapse
 
 Przejdź do następnego samouczka, aby dowiedzieć się więcej na temat przesyłania strumieniowego danych w czasie rzeczywistym do usługi Azure Databricks przy użyciu usługi Azure Event Hubs.
 

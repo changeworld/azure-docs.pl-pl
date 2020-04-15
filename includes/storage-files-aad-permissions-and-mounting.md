@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 12/12/2019
+ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: c88f5a4dd4f2997ce01b1f6a3ae192c62f530e76
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: b6a8bc083b589463b67f2e25e262b15456355d05
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011428"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383834"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. Przypisywanie uprawnień dostępu do tożsamości
 
@@ -98,7 +98,7 @@ Aby uzyskać więcej informacji na temat używania icacls do ustawiania uprawnie
 
 ### <a name="mount-a-file-share-from-the-command-prompt"></a>Instalowanie udziału plików w wierszu polecenia
 
-Użyj polecenia **użyj sieci** systemu Windows, aby zainstalować udział plików platformy Azure. Pamiętaj, aby zastąpić wartości zastępcze w poniższym przykładzie własnymi wartościami. Aby uzyskać więcej informacji na temat [instalowania](../articles/storage/files/storage-how-to-use-files-windows.md)udziałów plików, zobacz Używanie udziału plików platformy Azure w systemie Windows .
+Użyj polecenia **użyj sieci** systemu Windows, aby zainstalować udział plików platformy Azure. Pamiętaj, aby zastąpić wartości zastępcze w poniższym przykładzie własnymi wartościami. Aby uzyskać więcej informacji na temat [instalowania](../articles/storage/files/storage-how-to-use-files-windows.md)udziałów plików, zobacz Używanie udziału plików platformy Azure w systemie Windows . 
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
@@ -123,7 +123,7 @@ Zaloguj się do maszyny Wirtualnej przy użyciu tożsamości usługi Azure AD, d
 
 ![Zrzut ekranu przedstawiający ekran logowania usługi Azure AD do uwierzytelniania użytkowników](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-Użyj następującego polecenia, aby zainstalować udział plików platformy Azure. Pamiętaj, aby zastąpić wartości zastępcze własnymi wartościami. Ponieważ zostałeś uwierzytelniony, nie musisz podawać klucza konta magazynu, poświadczeń usługi AD ani poświadczeń usługi Azure AD. Środowisko logowania jednokrotnego jest obsługiwane w przypadku uwierzytelniania za pomocą usług AD lub usługi Azure AD DS.
+Użyj następującego polecenia, aby zainstalować udział plików platformy Azure. Pamiętaj, aby zastąpić wartości zastępcze własnymi wartościami. Ponieważ zostałeś uwierzytelniony, nie musisz podawać klucza konta magazynu, poświadczeń usługi AD ani poświadczeń usługi Azure AD. Środowisko logowania jednokrotnego jest obsługiwane w przypadku uwierzytelniania za pomocą usług AD lub usługi Azure AD DS. Jeśli napotkasz problemy z montażem z poświadczeniami usługi AD, sprawdź [rozwiązywanie problemów z usługą Azure Files w systemie Windows,](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) aby uzyskać wskazówki dotyczące samodiagnostyki.
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>

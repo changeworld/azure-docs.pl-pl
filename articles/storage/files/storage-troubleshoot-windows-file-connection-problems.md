@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3237fe7d87ad058f255d1c77cb6d814bcd1c292e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b4e1ef4fbc3ade38b55fc06f8e4e9a119938581b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262251"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383903"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z usługą Azure Files w systemie Windows
 
@@ -324,6 +324,30 @@ Wystąpił błąd systemu 1359. Błąd wewnętrzny" występuje podczas próby na
 Obecnie można rozważyć ponowne wdrożenie usługi AAD DS przy użyciu nowej nazwy DNS domeny, która ma zastosowanie zgodnie z poniższymi regułami:
 - Nazwy nie mogą zaczynać się od znaku liczbowego.
 - Nazwy muszą mieć od 3 do 63 znaków.
+
+## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>Nie można zainstalować plików platformy Azure z poświadczeniami usługi AD 
+
+### <a name="self-diagnostics-steps"></a>Kroki autodiagnostyki
+Najpierw upewnij się, że postępujesz przez wszystkie cztery kroki, aby [włączyć uwierzytelnianie usługi Azure Files AD.](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)
+
+Po drugie, spróbuj [złożyć zestaw plików platformy Azure z kluczem konta magazynu](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Jeśli nie udało ci się zainstalować, pobierz [AzFileDiagnostics.ps1,](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) aby pomóc w sprawdzeniu poprawności środowiska uruchomionego klienta, wykryć niezgodną konfigurację klienta, która spowodowałaby błąd dostępu dla usługi Azure Files, daje nakazowe wskazówki dotyczące samodzielnej naprawy i zbieraj ślady diagnostyki.
+
+Po trzecie, można uruchomić polecenie cmdlet Debug-AzStorageAccountAuth, aby przeprowadzić zestaw podstawowych kontroli konfiguracji usługi AD z zalogowanym użytkownikiem usługi AD. To polecenie cmdlet jest obsługiwane w [wersji AzFilesHybrid v0.1.2+](https://github.com/Azure-Samples/azure-files-samples/releases). Musisz uruchomić to polecenie cmdlet z użytkownikiem usługi AD, który ma uprawnienia właściciela na koncie magazynu docelowego.  
+```PowerShell
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
+```
+Polecenie cmdlet wykonuje te kontrole poniżej w sekwencji i zawiera wskazówki dotyczące błędów:
+1. CheckPort445Connectivity: sprawdź, czy port 445 jest otwarty dla połączenia SMB
+2. CheckDomainJoined: sprawdź, czy komputer kliencki jest domeną przyłączony do usługi AD
+3. CheckADObject: upewnij się, że zalogowany użytkownik ma prawidłową reprezentację w domenie USŁUGI AD, z którą jest skojarzone konto magazynu
+4. CheckGetKerberosTicket: próba uzyskania biletu Kerberos, aby połączyć się z kontem magazynu 
+5. CheckADObjectPasswordIsCorrect: upewnij się, że hasło skonfigurowane w tożsamości AD reprezentującej konto magazynu jest zgodne z kluczem krawężnika konta magazynu
+6. CheckSidHasAadUser: sprawdź, czy zalogowany użytkownik usługi AD jest synchronizowany z usługą Azure AD
+
+Aktywnie pracujemy nad rozszerzeniem tego polecenia cmdlet diagnostyki, aby zapewnić lepsze wskazówki dotyczące rozwiązywania problemów.
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 Jeśli nadal potrzebujesz pomocy, [skontaktuj się z pomocą techniczną,](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) aby szybko rozwiązać problem.

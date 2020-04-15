@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 96f3825288846e86771ef3907eb4da4e58630df3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475178"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312046"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrowanie bramy aplikacji platformy Azure i zapory aplikacji sieci Web z wersji 1 do wersji 2
 
@@ -36,7 +36,7 @@ Dostępny jest skrypt programu Azure PowerShell, który wykonuje następujące c
 
 * Nowa brama w wersji 2 ma nowe publiczne i prywatne adresy IP. Nie jest możliwe bezproblemowe przeniesienie adresów IP skojarzonych z istniejącą bramą w wersji 1 do wersji 2. Można jednak przydzielić istniejący (nieprzydzielony) publiczny lub prywatny adres IP do nowej bramy w wersji 2.
 * Należy podać przestrzeń adresową IP dla innej podsieci w sieci wirtualnej, w której znajduje się brama w wersji 1. Skrypt nie może utworzyć bramy w wersji 2 w istniejących podsieciach, które mają już bramę w wersji 1. Jeśli jednak istniejąca podsieć ma już bramę w wersji 2, może ona nadal działać pod warunkiem, że jest wystarczająca ilość miejsca adresu IP.
-* Aby przeprowadzić migrację konfiguracji SSL, należy określić wszystkie certyfikaty SSL używane w bramie w wersji 1.
+* Aby przeprowadzić migrację konfiguracji protokołu TLS/SSL, należy określić wszystkie certyfikaty TLS/SSL używane w bramie w wersji 1.
 * Jeśli dla bramy V1 jest włączony tryb FIPS, nie zostanie ona zmigrowana do nowej bramy w wersji 2. Tryb FIPS nie jest obsługiwany w wersji 2.
 * Wersja 2 nie obsługuje IPv6, więc bramy v1 z włączoną funkcją IPv6 nie są migrowane. Jeśli skrypt zostanie uruchomiony, może on nie zostać ukończony.
 * Jeśli brama w wersji 1 ma tylko prywatny adres IP, skrypt tworzy publiczny adres IP i prywatny adres IP dla nowej bramy w wersji 2. Bramy w wersji 2 obecnie nie obsługują tylko prywatnych adresów IP.
@@ -101,7 +101,7 @@ Aby uruchomić skrypt:
 
    * **subnetAddressRange: [Ciąg]: Wymagane** — jest to przestrzeń adresowa IP, która została przydzielona (lub chcesz przydzielić) dla nowej podsieci, która zawiera nową bramę w wersji 2. Należy to określić w notacji CIDR. Na przykład: 10.0.0.0/24. Nie trzeba tworzyć tej podsieci z wyprzedzeniem. Skrypt tworzy go dla Ciebie, jeśli nie istnieje.
    * **appgwName: [Ciąg]: Opcjonalnie**. Jest to ciąg określony jako nazwa dla nowej bramy Standard_v2 lub WAF_v2. Jeśli ten parametr nie zostanie podany, nazwa istniejącej bramy w wersji 1 będzie używana z sufiksem *_v2* dołączone.
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Opcjonalnie**.  Oddzielona przecinkami lista obiektów PSApplicationGatewaySslCertificate, które tworzysz w celu reprezentowania certyfikatów SSL z bramy w wersji 1, musi zostać przekazana do nowej bramy w wersji 2. Dla każdego certyfikatu SSL skonfigurowanego dla bramy Standard v1 lub WAF v1 można utworzyć nowy obiekt PSApplicationGatewaySslCertificate za pomocą `New-AzApplicationGatewaySslCertificate` polecenia pokazanego tutaj. Potrzebujesz ścieżki do pliku Cert SSL i hasła.
+   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Opcjonalnie**.  Oddzielona przecinkami lista obiektów PSApplicationGatewaySslCertificate, które tworzysz w celu reprezentowania certyfikatów TLS/SSL z bramy w wersji 1, musi zostać przekazana do nowej bramy w wersji 2. Dla każdego certyfikatu TLS/SSL skonfigurowanego dla bramy Standard v1 lub WAF v1 można utworzyć nowy obiekt PSApplicationGatewaySslCertificate za pomocą `New-AzApplicationGatewaySslCertificate` polecenia pokazanego tutaj. Potrzebujesz ścieżki do pliku TLS/SSL Cert i hasła.
 
      Ten parametr jest opcjonalny tylko wtedy, gdy nie masz odbiorników HTTPS skonfigurowanych dla bramy w wersji 1 lub WAF. Jeśli masz co najmniej jedną konfigurację odbiornika HTTPS, należy określić ten parametr.
 

@@ -1,28 +1,20 @@
 ---
 title: Wyniki prognozowania - LUIS
-titleSuffix: Azure Cognitive Services
 description: Wynik przewidywanie wskazuje stopień zaufania usługi interfejsu API usługi LUIS dla wyników przewidywania, na podstawie wypowiedź użytkownika.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: b360bc82b80e834492b524acc5c4535b0409eda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74280820"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382376"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Wyniki prognozowania wskazują dokładność przewidywania intencji i jednostek
 
 Wynik przewidywanie wskazuje stopień zaufania usługi LUIS ma dla przewidywania wyników wypowiedzi użytkownika.
 
-Wynik przewidywania wynosi od zera (0) do jednego (1). Przykładem bardzo pewny wynik usługi LUIS jest 0.99. Przykładem niskiej pewności siebie jest 0,01. 
+Wynik przewidywania wynosi od zera (0) do jednego (1). Przykładem bardzo pewny wynik usługi LUIS jest 0.99. Przykładem niskiej pewności siebie jest 0,01.
 
 |Wartość wyniku|Ufność|
 |--|--|
@@ -33,11 +25,11 @@ Wynik przewidywania wynosi od zera (0) do jednego (1). Przykładem bardzo pewny 
 
 ## <a name="top-scoring-intent"></a>Intencja najwyższej punktacji
 
-Każda przewidywanie wypowiedź zwraca intencji najwyższej punktacji. Ta prognoza jest numeryczne porównanie wyników prognozowania. 
+Każda przewidywanie wypowiedź zwraca intencji najwyższej punktacji. Ta prognoza jest numeryczne porównanie wyników prognozowania.
 
 ## <a name="proximity-of-scores-to-each-other"></a>Bliskość punktów do siebie
 
-Najlepsze wyniki 2 mogą mieć bardzo małą różnicę między nimi. Usługa LUIS nie wskazuje tejblidy innych niż zwracanie najwyższego wyniku.  
+Najlepsze wyniki 2 mogą mieć bardzo małą różnicę między nimi. Usługa LUIS nie wskazuje tejblidy innych niż zwracanie najwyższego wyniku.
 
 ## <a name="return-prediction-score-for-all-intents"></a>Wynik przewidywania zwrotu dla wszystkich intencji
 
@@ -74,9 +66,11 @@ Wyniki prognozowania mogą używać notacji wykładniczej, _wyświetlanej_ powy�
 |--|--|
 |9.910309E-07|.0000009910309|
 
-## <a name="punctuation"></a>Znaki interpunkcyjne
+<a name="punctuation"></a>
 
-[Dowiedz się więcej](luis-concept-utterance.md#punctuation-marks) o używaniu lub ignorowaniu znaków interpunkcyjnych. 
+## <a name="application-settings"></a>Ustawienia aplikacji
+
+[Ustawienia aplikacji](luis-reference-application-settings.md) służą do kontrolowania sposobu przewidywania znaków diakrutycznych i znaków interpunkcyjnych.
 
 ## <a name="next-steps"></a>Następne kroki
 

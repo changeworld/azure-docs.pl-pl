@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 04/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63271567e70955f6dfb0b10a5c882b6dce9545ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55ce0233fdefb8360376e94c0baafabe4c62ced7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74932491"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309212"
 ---
 # <a name="blocking-legacy-authentication"></a>Blokowanie uwierzytelniania starszego
  
@@ -31,11 +31,11 @@ Obecnie większość wszystkich prób logowania kompromitujących pochodzi ze st
 
 Aby zablokować starsze uwierzytelnianie w katalogu, należy najpierw zrozumieć, czy użytkownicy mają aplikacje korzystające ze starszego uwierzytelniania i jak wpływa na ogólny katalog. Dzienniki logowania usługi Azure AD mogą służyć do zrozumienia, jeśli używasz uwierzytelniania starszego.
 
-1. Przejdź do witryny Azure portal > azure active directory > logowania.
-1. Dodaj kolumnę Aplikacja kliencka, jeśli nie jest wyświetlana, klikając kolumna > aplikacji klienta.
-1. Filtruj według aplikacji klienta, > sprawdź wszystkie prezentowane opcje innych klientów i kliknij przycisk Zastosuj.
-1. Filtruj według stanu > sukces i kliknij przycisk Zastosuj. 
-1. W razie potrzeby rozszerz zakres dat za pomocą filtru Data.
+1. Przejdź do witryny **Azure portal** > **Azure Active Directory.** > **Sign-ins**
+1. Dodaj kolumnę **Aplikacja klienta,** jeśli nie jest ona wyświetlana, klikając **aplikację kliencką Kolumny** > **Client App**.
+1. Filtruj według **aplikacji**   klienta> sprawdź wszystkie prezentowane opcje **Starszych Klientów uwierzytelniania.**
+1. **Filtruj** > według**sukcesu**stanu . 
+1. W razie potrzeby rozszerz zakres dat za pomocą filtru **Data.**
 
 Filtrowanie będzie wyświetlać tylko pomyślne próby logowania, które zostały wykonane przez wybrane starsze protokoły uwierzytelniania. Kliknięcie każdej indywidualnej próby logowania spowoduje wyświetlenie dodatkowych informacji. Kolumna Aplikacja kliencka lub pole Aplikacja kliencka na karcie Informacje podstawowe po wybraniu pojedynczego wiersza danych wskaże, który starszy protokół uwierzytelniania został użyty. Te dzienniki wskażą, którzy użytkownicy są nadal zależni od starszego uwierzytelniania i które aplikacje używają starszych protokołów do żądania uwierzytelniania. W przypadku użytkowników, którzy nie są wyświetlane w tych dziennikach i są potwierdzone, że nie używają uwierzytelniania starszego, należy zaimplementować zasady dostępu warunkowego lub włączyć zasady planu bazowego: blokuj starsze uwierzytelnianie tylko dla tych użytkowników.
 
@@ -62,7 +62,7 @@ Jeśli korzystasz z klientów pakietu Office 2013 dla systemu Windows lub starsz
 
 Pakiet Office 2010 nie obsługuje nowoczesnego uwierzytelniania. Należy uaktualnić wszystkich użytkowników korzystających z pakietu Office 2010 do nowszej wersji pakietu Office. Zalecamy uaktualnienie do pakietu Office 2016 lub nowszego, ponieważ domyślnie blokuje on starsze uwierzytelnianie.
 
-Jeśli używasz systemu MacOS, zalecamy uaktualnienie do pakietu Office 2016 lub nowszego. Jeśli korzystasz z natywnego klienta poczty, musisz mieć system MacOS w wersji 10.14 lub nowszej na wszystkich urządzeniach.
+Jeśli używasz systemu macOS, zalecamy uaktualnienie do pakietu Office 2016 lub nowszego. Jeśli używasz natywnego klienta poczty, musisz mieć system macOS w wersji 10.14 lub nowszej na wszystkich urządzeniach.
 
 ### <a name="step-3-exchange-and-sharepoint"></a>Krok 3: Program Exchange i sharepoint
 

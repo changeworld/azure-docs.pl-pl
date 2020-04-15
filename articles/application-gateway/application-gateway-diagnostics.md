@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: c7b38ad40977e1042032210d3a82a73ff6169adc
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: b458537c7cf8a254cd188c565ab1925afa202369
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411057"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312649"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Dzienniki kondycji i diagnostyki zaplecza dla bramy aplikacji
 
@@ -172,7 +172,7 @@ Dziennik dostępu jest generowany tylko wtedy, gdy włączono go w każdym wyst�
 |odebrane Bajty     | Rozmiar odebranego pakietu w bajtach.        |
 |wysłane Bajty| Rozmiar wysyłanego pakietu w bajtach.|
 |czasTaken| Czas (w milisekundach), który zajmuje przetworzenie żądania i wysłanie jego odpowiedzi. Jest to obliczane jako interwał od momentu, gdy brama aplikacji odbiera pierwszy bajt żądania HTTP do czasu zakończenia operacji wysyłania odpowiedzi. Należy pamiętać, że pole Czas—Zrobione zwykle zawiera czas, przez który pakiety żądań i odpowiedzi są przesyłane przez sieć. |
-|sslEnabled| Czy komunikacja z pulami zaplecza używała SSL. Prawidłowe wartości są włączone i wyłączone.|
+|sslEnabled| Czy komunikacja z pulami zaplecza używała protokołu TLS/SSL. Prawidłowe wartości są włączone i wyłączone.|
 |host| Nazwa hosta, za pomocą której żądanie zostało wysłane do serwera wewnętrznej bazy danych. Jeśli nazwa hosta wewnętrznej bazy danych jest zastępowane, ta nazwa będzie odzwierciedlać.|
 |originalHost| Nazwa hosta, za pomocą której żądanie zostało odebrane przez bramę aplikacji od klienta.|
 ```json
@@ -215,9 +215,9 @@ W przypadku bramy aplikacji i WAF v2 dzienniki wyświetlą nieco więcej informa
 |odebrane Bajty     | Rozmiar odebranego pakietu w bajtach.        |
 |wysłane Bajty| Rozmiar wysyłanego pakietu w bajtach.|
 |czasTaken| Czas (w **sekundach),** który zajmuje przetworzenie żądania i wysłanie jego odpowiedzi. Jest to obliczane jako interwał od momentu, gdy brama aplikacji odbiera pierwszy bajt żądania HTTP do czasu zakończenia operacji wysyłania odpowiedzi. Należy pamiętać, że pole Czas—Zrobione zwykle zawiera czas, przez który pakiety żądań i odpowiedzi są przesyłane przez sieć. |
-|sslEnabled| Czy komunikacja z pulami zaplecza używała SSL. Prawidłowe wartości są włączone i wyłączone.|
-|sslCipher (sslCipher)| Pakiet szyfrowania używany do komunikacji SSL (jeśli protokół SSL jest włączony).|
-|sslProtocol| Używany protokół SSL/TLS (jeśli protokół SSL jest włączony).|
+|sslEnabled| Czy komunikacja z pulami zaplecza używane TLS. Prawidłowe wartości są włączone i wyłączone.|
+|sslCipher (sslCipher)| Pakiet szyfrowania używany do komunikacji TLS (jeśli TLS jest włączony).|
+|sslProtocol| Używany jest protokół SSL/TLS (jeśli protokół TLS jest włączony).|
 |serverRouted| Serwer wewnętrznej bazy danych, do których brama aplikacji kieruje żądanie.|
 |status serwera| Kod stanu HTTP serwera wewnętrznej bazy danych.|
 |serverResponseLatency| Opóźnienie odpowiedzi z serwera wewnętrznej bazy danych.|

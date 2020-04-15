@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: c84452ff71fa34a65b2e56ec753b68bf551c7e35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2f8c08176f80436a339924adb4b2a09338a548a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73826277"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313584"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Często zadawane pytania dotyczące akceleratora rozwiązań Connected Factory
 
@@ -125,7 +125,7 @@ Alternatywnie zaloguj się do maszyny Wirtualnej za pośrednictwem protokołu SS
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Jak sprawdzić, czy symulacja wysyła dane do chmury?
 
-Za pomocą [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) lub [usługi Azure IoT CLI Extension monitor-events](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) polecenia, można sprawdzić dane wysyłane do Usługi IoT Hub z niektórych urządzeń. Aby korzystać z tych narzędzi, należy znać parametry połączenia dla centrum IoT hub we wdrożeniu. Zobacz [Jak sprawdzić parametry połączenia koncentratora IoT używanego przez moje rozwiązanie?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Za pomocą [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) lub [usługi Azure IoT CLI Extension monitor-events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) polecenia, można sprawdzić dane wysyłane do Usługi IoT Hub z niektórych urządzeń. Aby korzystać z tych narzędzi, należy znać parametry połączenia dla centrum IoT hub we wdrożeniu. Zobacz [Jak sprawdzić parametry połączenia koncentratora IoT używanego przez moje rozwiązanie?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Sprawdź dane wysyłane przez jedno z urządzeń wydawcy:
 

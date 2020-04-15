@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: tworzenie niestandardowych alertów dla usługi Azure Security Center dla usługi IoT'
+title: 'Szybki start: tworzenie alertów niestandardowych'
 description: Opis, tworzenie i przypisywanie alertów urządzeń niestandardowych dla usługi zabezpieczeń Azure Security Center dla usługi zabezpieczeń IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,19 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2020
 ms.author: mlottner
-ms.openlocfilehash: 063e5c9e7d75fd1c07d148c265b1fe64eee3cbc8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8ba81b669c25d91efa8ad1f07b1a7835b42c5cf4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78303532"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310828"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Szybki start: tworzenie alertów niestandardowych
 
+Korzystając z niestandardowych grup zabezpieczeń i alertów, w pełni wykorzystuje kompleksowe informacje o zabezpieczeniach i wiedzę na temat urządzeń kategorycznych, aby zapewnić lepsze bezpieczeństwo w rozwiązaniu IoT.
 
-Korzystając z niestandardowych grup zabezpieczeń i alertów, w pełni wykorzystuje kompleksowe informacje o zabezpieczeniach i wiedzę na temat urządzeń kategorycznych, aby zapewnić lepsze bezpieczeństwo w rozwiązaniu IoT. 
-
-## <a name="why-use-custom-alerts"></a>Dlaczego warto korzystać z alertów niestandardowych? 
+## <a name="why-use-custom-alerts"></a>Dlaczego warto korzystać z alertów niestandardowych?
 
 Najlepiej znasz swoje urządzenia IoT.
 
@@ -40,7 +39,7 @@ Grupy zabezpieczeń umożliwiają definiowanie grup logicznych urządzeń i zarz
 Te grupy mogą reprezentować urządzenia z określonym sprzętem, urządzeniami wdrożonymi w określonej lokalizacji lub dowolną inną grupą odpowiednią do określonych potrzeb.
 
 Grupy zabezpieczeń są definiowane przez właściwość tagu bliźniaczej reprezentacji urządzenia o nazwie **SecurityGroup**. Domyślnie każde rozwiązanie IoT w Centrum IoT hub ma jedną grupę zabezpieczeń o nazwie **domyślnie**. Zmień wartość właściwości **SecurityGroup,** aby zmienić grupę zabezpieczeń urządzenia.
- 
+
 Przykład:
 
 ```
@@ -61,26 +60,24 @@ Przykład:
   "version": 4,
   "tags": {
     "SecurityGroup": "default"
-  }, 
+  },
 ```
 
-Grupy zabezpieczeń używają do grup dyskusyjnych, aby pogrupować urządzenia w kategorie logiczne. Po utworzeniu grup przypisz je do wybranych alertów niestandardowych, aby uzyskać najskuteczniejsze kompleksowe rozwiązanie zabezpieczające IoT. 
+Grupy zabezpieczeń używają do grup dyskusyjnych, aby pogrupować urządzenia w kategorie logiczne. Po utworzeniu grup przypisz je do wybranych alertów niestandardowych, aby uzyskać najskuteczniejsze kompleksowe rozwiązanie zabezpieczające IoT.
 
 ## <a name="customize-an-alert"></a>Dostosowywanie alertu
 
-1. Otwórz centrum IoT Hub. 
-2. Kliknij **pozycję Alerty niestandardowe** w sekcji **Zabezpieczenia.** 
-3. Wybierz grupę zabezpieczeń, do której chcesz zastosować dostosowanie. 
-4. Kliknij **pozycję Dodaj alert niestandardowy**.
-5. Wybierz niestandardowy alert z listy rozwijanej. 
-6. Edytuj wymagane właściwości, kliknij przycisk **OK**.
-7. Pamiętaj, aby kliknąć przycisk **ZAPISZ**. Bez zapisywania nowego alertu alert zostanie usunięty przy następnym zamknięciu usługi IoT Hub.
+1. Otwórz centrum IoT Hub.
+1. Kliknij **pozycję Alerty niestandardowe** w sekcji **Zabezpieczenia.**
+1. Wybierz grupę zabezpieczeń, do której chcesz zastosować dostosowanie.
+1. Kliknij **pozycję Dodaj alert niestandardowy**.
+1. Wybierz niestandardowy alert z listy rozwijanej.
+1. Edytuj wymagane właściwości, kliknij przycisk **OK**.
+1. Pamiętaj, aby kliknąć przycisk **ZAPISZ**. Bez zapisywania nowego alertu alert zostanie usunięty przy następnym zamknięciu usługi IoT Hub.
 
- 
 ## <a name="alerts-available-for-customization"></a>Alerty dostępne do dostosowywania
 
-Usługa Azure Security Center for IoT oferuje dużą liczbę alertów, które można dostosować do określonych potrzeb. Przejrzyj [dostosowywaną tabelę alertów,](concept-customizable-security-alerts.md) aby uzyskać ważność alertów, źródło danych, opis i sugerowane kroki korygowania, jeśli i kiedy zostanie odebrany każdy alert. 
-
+Usługa Azure Security Center for IoT oferuje dużą liczbę alertów, które można dostosować do określonych potrzeb. Przejrzyj [dostosowywaną tabelę alertów,](concept-customizable-security-alerts.md) aby uzyskać ważność alertów, źródło danych, opis i sugerowane kroki korygowania, jeśli i kiedy zostanie odebrany każdy alert.
 
 ## <a name="next-steps"></a>Następne kroki
 

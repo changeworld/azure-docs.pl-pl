@@ -1,5 +1,5 @@
 ---
-title: Opis architektury agenta zabezpieczeń Usługi Azure Security Center dla usług IoT| Dokumenty firmy Microsoft
+title: Architektura agenta zabezpieczeń
 description: Poznaj architekturę agenta zabezpieczeń dla agentów używanych w usłudze Azure Security Center dla IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 998aeab197931a75579fc39b28e3a248b85fc57b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9029ece923b7cda09c7a57d07736791e241c9e70
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68596911"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310682"
 ---
 # <a name="security-agent-reference-architecture"></a>Architektura referencyjna agenta zabezpieczeń
 
@@ -38,9 +38,9 @@ Agenci zabezpieczeń obsługują następujące funkcje:
 
 - Konfigurować zdalnie za pomocą **azureiotsecurity** moduł bliźniaczej reprezentacji. Aby dowiedzieć się więcej, zobacz [Konfigurowanie usługi Azure Security Center dla agenta IoT](how-to-agent-configuration.md).
 
-Usługa Azure Security Center dla agentów zabezpieczeń IoT są opracowywane jako projekty typu open source i są dostępne w usłudze GitHub: 
+Usługa Azure Security Center dla agentów zabezpieczeń IoT są opracowywane jako projekty typu open source i są dostępne w usłudze GitHub:
 
-- [Usługa Azure Security Center dla agenta opartego na języku IoT C](https://github.com/Azure/Azure-IoT-Security-Agent-C) 
+- [Usługa Azure Security Center dla agenta opartego na języku IoT C](https://github.com/Azure/Azure-IoT-Security-Agent-C)
 - [Usługa Azure Security Center dla agenta opartego na języku IoT C#](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
 ## <a name="agent-supported-platforms"></a>Platformy obsługiwane przez agenta

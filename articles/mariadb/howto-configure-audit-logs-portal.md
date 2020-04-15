@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: d31b7531e00199ea63c7b057dacff1b67d7cedc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: 506bf076c955beb5c5e57811bbdb42bfedb8cbe3
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528935"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382966"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Konfigurowanie dzienników inspekcji i uzyskiwanie do nich dostępu w witrynie Azure portal
 
@@ -30,7 +30,7 @@ Aby przejść przez ten przewodnik, potrzebujesz:
 
 Włączanie i konfigurowanie rejestrowania inspekcji.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. Wybierz swoją usługę Azure Database dla serwera MariaDB.
 
@@ -69,4 +69,5 @@ Włączanie i konfigurowanie rejestrowania inspekcji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [dziennikach inspekcji](concepts-audit-logs.md) w usłudze Azure Database for MariaDB.
+- Dowiedz się więcej o [dziennikach inspekcji](concepts-audit-logs.md) w usłudze Azure Database for MariaDB
+- Dowiedz się, jak skonfigurować dzienniki inspekcji w wierszu [polecenia platformy Azure](howto-configure-audit-logs-cli.md)

@@ -1,5 +1,5 @@
 ---
-title: Zakończenie SSL za pomocą certyfikatów usługi Azure Key Vault
+title: Zakończenie protokołu TLS za pomocą certyfikatów usługi Azure Key Vault
 description: Dowiedz się, jak zintegrować usługę Azure Application Gateway z usługą Key Vault dla certyfikatów serwera dołączonych do odbiorników obsługujących protokół HTTPS.
 services: application-gateway
 author: vhorne
@@ -7,32 +7,32 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 5633dd7b72f4de22cd34b7d093e8ec4d9cb411f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26093d051da8f2182a40f80837acbd9ef7dd008f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77137700"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312073"
 ---
-# <a name="ssl-termination-with-key-vault-certificates"></a>Zakończenie SSL z certyfikatami Usługi Key Vault
+# <a name="tls-termination-with-key-vault-certificates"></a>Zakończenie protokołu TLS z certyfikatami Usługi Key Vault
 
-[Usługa Azure Key Vault](../key-vault/key-vault-overview.md) to tajny magazyn zarządzany przez platformę, którego można używać do ochrony wpisów tajnych, kluczy i certyfikatów SSL. Usługa Azure Application Gateway obsługuje integrację z usługą Key Vault dla certyfikatów serwera dołączonych do odbiorników obsługujących protokół HTTPS. Ta obsługa jest ograniczona do jednostki SKU w wersji 2 bramy aplikacji.
+[Usługa Azure Key Vault](../key-vault/key-vault-overview.md) to tajny magazyn zarządzany przez platformę, którego można używać do ochrony wpisów tajnych, kluczy i certyfikatów TLS/SSL. Usługa Azure Application Gateway obsługuje integrację z usługą Key Vault dla certyfikatów serwera dołączonych do odbiorników obsługujących protokół HTTPS. Ta obsługa jest ograniczona do jednostki SKU w wersji 2 bramy aplikacji.
 
-Integracja z Key Vault oferuje dwa modele zakończenia SSL:
+Integracja z key vault oferuje dwa modele zakończenia protokołu TLS:
 
-- Można jawnie podać certyfikaty SSL dołączone do odbiornika. Ten model jest tradycyjnym sposobem przekazywania certyfikatów SSL do bramy aplikacji w celu zakończenia SSL.
+- Można jawnie podać certyfikaty TLS/SSL dołączone do odbiornika. Ten model jest tradycyjnym sposobem przekazywania certyfikatów TLS/SSL do bramy aplikacji w celu zakończenia protokołu TLS.
 - Opcjonalnie można podać odwołanie do istniejącego certyfikatu usługi Key Vault lub klucza tajnego podczas tworzenia odbiornika obsługującego protokół HTTPS.
 
 Integracja bramy aplikacji z usługą Key Vault oferuje wiele korzyści, w tym:
 
-- Większe bezpieczeństwo, ponieważ certyfikaty SSL nie są bezpośrednio obsługiwane przez zespół deweloperów aplikacji. Integracja umożliwia oddzielne zespołowi zabezpieczeń:
+- Większe bezpieczeństwo, ponieważ certyfikaty TLS/SSL nie są bezpośrednio obsługiwane przez zespół deweloperów aplikacji. Integracja umożliwia oddzielne zespołowi zabezpieczeń:
   * Konfigurowanie bram aplikacji.
   * Sterowanie cyklami życia bramy aplikacji.
   * Udziel uprawnień do wybranych bram aplikacji, aby uzyskać dostęp do certyfikatów przechowywanych w magazynie kluczy.
 - Obsługa importowania istniejących certyfikatów do magazynu kluczy. Możesz też używać interfejsów API usługi Key Vault do tworzenia nowych certyfikatów i zarządzania nimi u zaufanych partnerów usługi Key Vault.
 - Obsługa automatycznego odnawiania certyfikatów przechowywanych w magazynie kluczy.
 
-Brama aplikacji obsługuje obecnie tylko certyfikaty zweryfikowane programowo. Certyfikaty zweryfikowane przez sprzętowy moduł zabezpieczeń (HSM) nie są obsługiwane. Po skonfigurowaniu bramy aplikacji do używania certyfikatów usługi Key Vault jej wystąpienia pobierają certyfikat z usługi Key Vault i instalują je lokalnie w celu zakończenia SSL. Wystąpienia sondują również magazyn kluczy w odstępach 24-godzinnych, aby pobrać odnowioną wersję certyfikatu, jeśli istnieje. Jeśli zostanie znaleziony zaktualizowany certyfikat, certyfikat SSL aktualnie skojarzony z odbiornikiem HTTPS zostanie automatycznie obrócony.
+Brama aplikacji obsługuje obecnie tylko certyfikaty zweryfikowane programowo. Certyfikaty zweryfikowane przez sprzętowy moduł zabezpieczeń (HSM) nie są obsługiwane. Po skonfigurowaniu bramy aplikacji do używania certyfikatów usługi Key Vault jej wystąpienia pobierają certyfikat z usługi Key Vault i instalują je lokalnie w celu zakończenia protokołu TLS. Wystąpienia sondują również magazyn kluczy w odstępach 24-godzinnych, aby pobrać odnowioną wersję certyfikatu, jeśli istnieje. Jeśli zostanie znaleziony zaktualizowany certyfikat, certyfikat TLS/SSL aktualnie skojarzony z odbiornikiem HTTPS zostanie automatycznie obrócony.
 
 > [!NOTE]
 > Portal Azure obsługuje tylko certyfikaty keyvault, a nie wpisy tajne. Brama aplikacji nadal obsługuje odwoływanie się do wpisów tajnych z keyvault, ale tylko za pośrednictwem zasobów innych niż portal, takich jak PowerShell, CLI, API, szablony ARM itp. 
@@ -51,10 +51,10 @@ Integracja bramy aplikacji z usługą Key Vault wymaga trzyetapowego procesu kon
 
 1. **Konfigurowanie bramy aplikacji**
 
-   Po wykonaniu dwóch poprzednich kroków można skonfigurować lub zmodyfikować istniejącą bramę aplikacji, aby używać tożsamości zarządzanej przypisanej przez użytkownika. Można również skonfigurować certyfikat SSL odbiornika HTTP, aby wskazywał pełny identyfikator URI certyfikatu usługi Key Vault lub tajnego identyfikatora.
+   Po wykonaniu dwóch poprzednich kroków można skonfigurować lub zmodyfikować istniejącą bramę aplikacji, aby używać tożsamości zarządzanej przypisanej przez użytkownika. Można również skonfigurować certyfikat TLS/SSL odbiornika HTTP, aby wskazywał pełny identyfikator URI certyfikatu usługi Key Vault lub tajnego identyfikatora.
 
    ![Certyfikaty magazynu kluczy](media/key-vault-certs/ag-kv.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Konfigurowanie zakończenia SSL przy użyciu certyfikatów usługi Key Vault przy użyciu programu Azure PowerShell](configure-keyvault-ps.md)
+[Konfigurowanie zakończenia protokołu TLS przy użyciu certyfikatów usługi Key Vault przy użyciu programu Azure PowerShell](configure-keyvault-ps.md)

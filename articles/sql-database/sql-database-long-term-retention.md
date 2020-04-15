@@ -1,6 +1,6 @@
 ---
-title: Przechowuj kopie zapasowe przez okres do 10 lat
-description: Dowiedz się, jak usługa Azure SQL Database obsługuje przechowywanie pełnych kopii zapasowych bazy danych przez okres do 10 lat.
+title: Długoterminowe przechowywanie kopii zapasowych
+description: Dowiedz się, jak usługa Azure SQL Database obsługuje przechowywanie pełnych kopii zapasowych bazy danych przez okres do 10 lat za pośrednictwem długoterminowych zasad przechowywania.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -11,20 +11,22 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 15a2d58d2fc14c370c41d5454d62c74a5b66ad42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d015eea21bcfa499d6751e024a882a7316b7f1a5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77499978"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380759"
 ---
-# <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Przechowywanie kopii zapasowych bazy danych Azure SQL Database przez maksymalnie 10 lat
+# <a name="azure-sql-database-long-term-retention"></a>Długoterminowa retencja usługi Azure SQL Database
 
-Wiele aplikacji ma cele regulacyjne, zgodne z przepisami lub inne cele biznesowe, które wymagają przechowywania kopii zapasowych bazy danych po 7-35 dniach dostarczonych przez [automatyczne kopie zapasowe](sql-database-automated-backups.md)usługi Azure SQL Database. Korzystając z funkcji długoterminowego przechowywania (LTR), można przechowywać określone bazy danych SQL pełne kopie zapasowe w magazynie obiektów Blob platformy Azure z dostępem do odczytu magazynu geograficznego nadmiarowego przez okres do 10 lat. Następnie można przywrócić dowolną kopię zapasową jako nową bazę danych. Aby uzyskać więcej informacji na temat nadmiarowości usługi Azure Storage, zobacz [Nadmiarowość usługi Azure Storage](../storage/common/storage-redundancy.md).
+Wiele aplikacji ma cele regulacyjne, zgodne z przepisami lub inne cele biznesowe, które wymagają przechowywania kopii zapasowych bazy danych po 7-35 dniach dostarczonych przez [automatyczne kopie zapasowe](sql-database-automated-backups.md)usługi Azure SQL Database. Korzystając z funkcji długoterminowego przechowywania (LTR), można przechowywać określone bazy danych SQL pełne kopie zapasowe w magazynie obiektów Blob platformy Azure z dostępem do odczytu magazynu geograficznego nadmiarowego przez okres do 10 lat. Następnie można przywrócić dowolną kopię zapasową jako nową bazę danych. Aby uzyskać więcej informacji na temat nadmiarowości usługi Azure Storage, zobacz [Nadmiarowość usługi Azure Storage](../storage/common/storage-redundancy.md). 
+
+Przechowywanie przez długi czas można włączyć dla pojedynczych i puli baz danych i jest w ograniczonej publicznej wersji zapoznawczej dla wystąpień zarządzanych usługi Azure SQL Database. 
 
 > [!NOTE]
-> LTR można włączyć dla pojedynczych i pulowych baz danych. Nie jest jeszcze dostępna dla baz danych wystąpień w wystąpieniach zarządzanych. Za pomocą zadań programu SQL Agent można zaplanować [tworzenie kopii zapasowych bazy danych tylko](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) do kopiowania jako alternatywę dla LTR po upływie 35 dni.
-> 
+> Za pomocą zadań programu SQL Agent można zaplanować [tworzenie kopii zapasowych bazy danych tylko](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) do kopiowania jako alternatywę dla LTR po upływie 35 dni.
+
 
 ## <a name="how-sql-database-long-term-retention-works"></a>Jak działa długoterminowe przechowywanie bazy danych SQL Database
 
@@ -74,6 +76,16 @@ Jeśli używasz aktywnej replikacji geograficznej lub grup pracy awaryjnej jako 
 
 > [!NOTE]
 > Gdy oryginalna podstawowa baza danych odzyskuje z awarii, która spowodowała przełącze w błąd, stanie się nowym pomocniczym. W związku z tym tworzenie kopii zapasowej nie zostanie wznowione i istniejące zasady LTR nie zacznie obowiązywać, dopóki nie stanie się podstawowym ponownie. 
+
+## <a name="managed-instance-support"></a>Obsługa wystąpienia zarządzanego
+
+Korzystanie z długoterminowego przechowywania kopii zapasowych za pomocą wystąpień zarządzanych usługi Azure SQL Database ma następujące ograniczenia:
+
+- **Ograniczona publiczna wersja zapoznawcza** — ta wersja zapoznawcza jest dostępna tylko dla subskrypcji EA i CSP i jest zależna od ograniczonej dostępności.  
+- [**Tylko program PowerShell**](sql-database-managed-instance-long-term-backup-retention-configure.md) — obecnie nie ma obsługi portalu Azure. LTR musi być włączony przy użyciu programu PowerShell. 
+
+Aby zażądać rejestracji, utwórz [bilet pomocy technicznej platformy Azure](https://azure.microsoft.com/support/create-ticket/) w temacie pomocy technicznej Kopia **zapasowa, przywracanie i ciągłość działania / Długoterminowe przechowywanie kopii zapasowych**.
+
 
 ## <a name="configure-long-term-backup-retention"></a>Konfigurowanie długoterminowego przechowywania kopii zapasowych
 

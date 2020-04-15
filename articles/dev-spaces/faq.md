@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Znajdź odpowiedzi na niektóre z często zadawanych pytań dotyczących usługi Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Usługa Azure Kubernetes, kontenery, Helm, siatka usług, routing siatki usług, kubectl, k8s '
-ms.openlocfilehash: f3ac6ec3c3ddbe8ff508befba2eb4a8423e66f07
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 1fd176084cd0737a290e037ed19af510fcab3e78
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998729"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381994"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Często zadawane pytania dotyczące usługi Azure Dev Spaces
 
@@ -79,7 +79,7 @@ Podczas korzystania z programu Visual Studio do przygotowania projektu, masz mo�
 
 ## <a name="can-i-use-pod-managed-identities-with-azure-dev-spaces"></a>Czy można używać tożsamości zarządzanych zasobników za pomocą usługi Azure Dev Spaces?
 
-Obecnie usługa Azure Dev Spaces nie obsługuje [używania tożsamości zarządzanych zasobników][aks-pod-managed-id] w klastrach AKS z włączoną usługą Azure Dev Spaces. Jeśli masz zainstalowane tożsamości zarządzane i chcesz je odinstalować, możesz znaleźć więcej szczegółów w [notatkach dezinstalacji][aks-pod-managed-id-uninstall].
+Tak, można używać [tożsamości zarządzanych zasobników][aks-pod-managed-id] w klastrach AKS z włączoną włączoną usługą Azure Dev Spaces, ale istnieją [dodatkowe kroki konfiguracji][dev-spaces-pod-managed-id-steps] po włączeniu usługi Azure Dev Spaces w klastrze z tożsamościami zarządzanymi zasobnika. Jeśli masz zainstalowane tożsamości zarządzane i chcesz je odinstalować, możesz znaleźć więcej szczegółów w [notatkach dezinstalacji][aks-pod-managed-id-uninstall].
 
 ## <a name="can-i-use-azure-dev-spaces-with-multiple-microservices-in-an-application"></a>Czy mogę używać usługi Azure Dev Spaces z wieloma mikrousługami w aplikacji?
 
@@ -98,6 +98,7 @@ W programie Visual Studio można skonfigurować rozwiązania .NET Core do debugo
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
 [bike-sharing]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
+[dev-spaces-pod-managed-id-steps]: troubleshooting.md#error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state
 [dev-spaces-prep]: how-dev-spaces-works-prep.md
 [dev-spaces-routing]: how-dev-spaces-works-routing.md#how-routing-works
 [ingress-nginx]: how-to/ingress-https-nginx.md#configure-a-custom-nginx-ingress-controller

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 706a8c554dafbf792471729929d6e6484dfa35ae
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 12dd17045715a24d1e5151b30a5e7706b0e58717
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266086"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383800"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Tworzenie oferty maszyn wirtualnych platformy Azure
 
@@ -116,9 +116,9 @@ Wybierz **pozycję Zapisz pochyłość** przed kontynuowaniem.
 
 Ta strona umożliwia zdefiniowanie kategorii i branż używanych do grupowanie oferty w portalu Marketplace, wersja aplikacji i umowy prawne, które obsługują twoją ofertę.
 
-### <a name="category"></a>Kategoria
+### <a name="categories"></a>Kategorie
 
-Wybierz co najmniej jedną i maksymalnie trzy kategorie. Te kategorie służą do umieszczania oferty w odpowiednich obszarach wyszukiwania w portalu marketplace. W opisie oferty wyjaśnij, w jaki sposób Twoja oferta obsługuje te kategorie. Oferty maszyn wirtualnych są wyświetlane w kategorii **Obliczeniowa** w portalu Azure Marketplace.
+Wybierz co najmniej jedną i maksymalnie pięć kategorii. Te kategorie służą do umieszczania oferty w odpowiednich obszarach wyszukiwania w portalu marketplace. W opisie oferty wyjaśnij, w jaki sposób Twoja oferta obsługuje te kategorie. Oferty maszyn wirtualnych są wyświetlane w kategorii **Obliczeniowa** w portalu Azure Marketplace.
 
 ### <a name="legal"></a>Informacje prawne
 
@@ -234,7 +234,6 @@ Udostępnij witrynę pomocy technicznej, w której klienci mogą skontaktować s
 
 - Witryna pomocy technicznej platformy Azure Global
 - Witryna pomocy technicznej platformy Azure dla instytucji rządowych
-- i tak dalej
 
 ### <a name="partner-support-contact"></a>Kontakt z pomocą techniczną partnera
 
@@ -389,6 +388,8 @@ Każdy plan musi być dostępny na co najmniej jednym rynku. Zaznacz pole wyboru
 
 Jeśli masz już ustawione ceny planu w dolarach amerykańskich (USD) i dodasz inną lokalizację rynkową, cena nowego rynku zostanie obliczona zgodnie z aktualnymi kursami wymiany. Zawsze sprawdzaj cenę dla każdego rynku przed opublikowaniem. Przejrzyj ceny za pomocą linku **Ceny eksportowe (xlsx)** po zapisaniu zmian.
 
+Po usunięciu rynku klienci z tego rynku przy użyciu aktywnych wdrożeń nie będą mogli tworzyć nowych wdrożeń ani skalować istniejących wdrożeń. Nie będzie to miało wpływu na istniejące wdrożenia.
+
 #### <a name="pricing"></a>Cennik
 
 **Model licencji** — wybierz **miesięczny plan rozliczany oparty na użyciu,** aby skonfigurować ceny dla tego planu lub **Przynieś własną licencję,** aby umożliwić klientom korzystanie z tego planu z istniejącą licencją.
@@ -421,16 +422,16 @@ Możesz zaprojektować każdy plan tak, aby był widoczny dla wszystkich lub tyl
 
 #### <a name="hide-plan"></a>Ukryj plan
 
-Jeśli maszyna wirtualna ma być używana tylko pośrednio, gdy odwołuje się do innego szablonu rozwiązania lub aplikacji zarządzanej, zaznacz to pole, aby opublikować maszynę wirtualną lub ofertę, ale ukryj ją przed klientami wyszukującymi i przeglądającymi ją bezpośrednio.
+Jeśli maszyna wirtualna ma być używana tylko pośrednio, gdy odwołuje się do innego szablonu rozwiązania lub aplikacji zarządzanej, zaznacz to pole, aby opublikować maszynę wirtualną, ale ukryj ją przed klientami wyszukującymi i przeglądającymi ją bezpośrednio.
 
 > [!NOTE]
-> Ukryte plany nie obsługują łączy podglądu.
+> Ukryte plany nie obsługują łączy w wersji zapoznawczej.
 
 Wybierz **pozycję Zapisz pochyłość** przed kontynuowaniem.
 
 ### <a name="technical-configuration"></a>Konfiguracja techniczna
 
-Podaj obrazy i inne właściwości techniczne skojarzone z tym planem.
+Podaj obrazy i inne właściwości techniczne skojarzone z tym planem. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie zasobu technicznego maszyny Wirtualnej platformy Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets).
 
 > [!NOTE]
 > Ta karta nie jest wyświetlana, jeśli ten plan został skonfigurowany do ponownego użycia pakietów z innego planu na karcie **Ustawienia planu.**
@@ -459,7 +460,7 @@ Otwórz porty publiczne lub prywatne na wdrożonej maszynie wirtualnej.
 
 #### <a name="vm-images"></a>Obrazy maszyn wirtualnych
 
-Podaj wersję dysku i identyfikator URI sygnatury dostępu Współdzielonego dla obrazów maszyn wirtualnych. Dodaj do 16 dysków danych dla każdego obrazu maszyny Wirtualnej. Podaj tylko jedną nową wersję obrazu na plan w danym zgłoszeniu. Po opublikowaniu obrazu nie można go edytować, ale można go usunąć. Usunięcie wersji uniemożliwi użytkownikom wdrożenie nowego wystąpienia usuniętej wersji.
+Podaj wersję dysku i identyfikator URI sygnatury dostępu Współdzielonego dla obrazów maszyn wirtualnych. Dodaj do 16 dysków danych dla każdego obrazu maszyny Wirtualnej. Podaj tylko jedną nową wersję obrazu na plan w danym zgłoszeniu. Po opublikowaniu obrazu nie można go edytować, ale można go usunąć. Usunięcie wersji uniemożliwi zarówno nowym, jak i istniejącym użytkownikom wdrożenie nowego wystąpienia usuniętej wersji.
 
 - **Wersja płyty** jest wersją obrazu, który dostarczasz.
 - **Identyfikator URI** sygnatury dostępu Współdzielonego to lokalizacja w usłudze Azure Storage, w której przechowywana jest dysk VHD systemu operacyjnego.

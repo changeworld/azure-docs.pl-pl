@@ -1,26 +1,26 @@
 ---
-title: Konfigurowanie kompleksowego ssl za pomocą bramy aplikacji platformy Azure
-description: W tym artykule opisano sposób konfigurowania kompleksowego ssl z usługą Azure Application Gateway przy użyciu programu PowerShell
+title: Konfigurowanie kompleksowego protokołu TLS za pomocą bramy aplikacji platformy Azure
+description: W tym artykule opisano sposób konfigurowania kompleksowego protokołu TLS z usługą Azure Application Gateway przy użyciu programu PowerShell
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 7ba273cddb6cf41872c4db1c34560c104b992787
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 481cbda1d35f7d630dabca00fd01677f542447c2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72286454"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312495"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Configure end to end SSL by using Application Gateway with PowerShell (Konfigurowanie kompleksowego szyfrowania SSL w usłudze Application Gateway przy użyciu programu PowerShell)
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>Konfigurowanie protokołu TLS końcowego do końcowego przy użyciu bramy aplikacji w programie PowerShell
 
 ## <a name="overview"></a>Omówienie
 
-Usługa Azure Application Gateway obsługuje kompleksowe szyfrowanie ruchu. Brama aplikacji kończy połączenie SSL w bramie aplikacji. Następnie brama stosuje reguły routingu do ruchu, ponownie szyfruje pakiet i przesyła dalej pakiet do odpowiedniego serwera zaplecza na podstawie zdefiniowanych reguł routingu. Każda odpowiedź z serwera sieci Web przechodzi przez ten sam proces z powrotem do użytkownika końcowego.
+Usługa Azure Application Gateway obsługuje kompleksowe szyfrowanie ruchu. Brama aplikacji kończy połączenie TLS/SSL w bramie aplikacji. Następnie brama stosuje reguły routingu do ruchu, ponownie szyfruje pakiet i przesyła dalej pakiet do odpowiedniego serwera zaplecza na podstawie zdefiniowanych reguł routingu. Każda odpowiedź z serwera sieci Web przechodzi przez ten sam proces z powrotem do użytkownika końcowego.
 
-Brama aplikacji obsługuje definiowanie niestandardowych opcji SSL. Obsługuje również wyłączenie następujących wersji protokołu: **TLSv1.0**, **TLSv1.1**i **TLSv1.2**, a także określenie, które mechanizmy szyfrowania do użycia i kolejność preferencji. Aby dowiedzieć się więcej o konfigurowalnych opcjach SSL, zobacz [omówienie zasad SSL](application-gateway-SSL-policy-overview.md).
+Brama aplikacji obsługuje definiowanie niestandardowych opcji TLS. Obsługuje również wyłączenie następujących wersji protokołu: **TLSv1.0**, **TLSv1.1**i **TLSv1.2**, a także określenie, które mechanizmy szyfrowania do użycia i kolejność preferencji. Aby dowiedzieć się więcej o konfigurowalnych opcjach protokołu TLS, zobacz [omówienie zasad TLS](application-gateway-SSL-policy-overview.md).
 
 > [!NOTE]
 > Protokół SSL 2.0 i SSL 3.0 są domyślnie wyłączone i nie można ich włączyć. Są one uważane za niezabezpieczone i nie mogą być używane z bramą aplikacji.
@@ -29,22 +29,22 @@ Brama aplikacji obsługuje definiowanie niestandardowych opcji SSL. Obsługuje r
 
 ## <a name="scenario"></a>Scenariusz
 
-W tym scenariuszu dowiesz się, jak utworzyć bramę aplikacji przy użyciu end-to-end SSL z programem PowerShell.
+W tym scenariuszu dowiesz się, jak utworzyć bramę aplikacji przy użyciu end-to-end TLS z programem PowerShell.
 
 W tym scenariuszu:
 
 * Utwórz grupę zasobów o nazwie **appgw-rg**.
 * Utwórz sieć wirtualną o nazwie **appgwvnet** o powierzchni adresowej **10.0.0.0/16**.
 * Utwórz dwie podsieci o nazwie **appgwsubnet** i **appsubnet**.
-* Utwórz małą bramę aplikacji obsługującą kompleksowe szyfrowanie SSL, która ogranicza wersje protokołów SSL i mechanizmy szyfrowania.
+* Utwórz małą bramę aplikacji obsługującą kompleksowe szyfrowanie TLS, która ogranicza wersje protokołów TLS i pakiety szyfrowania.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Aby skonfigurować kompleksowy ssl z bramą aplikacji, dla bramy wymagany jest certyfikat, a certyfikaty są wymagane dla serwerów zaplecza. Certyfikat bramy jest używany do wyprowadzania klucza symetrycznego zgodnie ze specyfikacją protokołu SSL. Klucz symetryczny jest następnie używany szyfrować i odszyfrowywać ruch wysyłany do bramy. Certyfikat bramy musi być w formacie wymiany informacji osobistych (PFX). Ten format pliku umożliwia eksportowanie klucza prywatnego, który jest wymagany przez bramę aplikacji do wykonywania szyfrowania i odszyfrowywania ruchu.
+Aby skonfigurować kompleksowe tls z bramą aplikacji, certyfikat jest wymagany dla bramy i certyfikaty są wymagane dla serwerów zaplecza. Certyfikat bramy jest używany do wyprowadzania klucza symetrycznego zgodnie ze specyfikacją protokołu TLS. Klucz symetryczny jest następnie używany szyfrować i odszyfrowywać ruch wysyłany do bramy. Certyfikat bramy musi być w formacie wymiany informacji osobistych (PFX). Ten format pliku umożliwia eksportowanie klucza prywatnego, który jest wymagany przez bramę aplikacji do wykonywania szyfrowania i odszyfrowywania ruchu.
 
-W przypadku szyfrowania SSL end-to-end brama aplikacji musi być jawnie dozwolona przez bramę aplikacji. Przekaż publiczny certyfikat serwerów zaplecza do bramy aplikacji. Dodanie certyfikatu gwarantuje, że brama aplikacji komunikuje się tylko ze znanymi wystąpieniami zaplecza. To dodatkowo zabezpiecza komunikację end-to-end.
+W przypadku szyfrowania TLS end-to-end brama aplikacji musi być jawnie dozwolona przez bramę aplikacji. Przekaż publiczny certyfikat serwerów zaplecza do bramy aplikacji. Dodanie certyfikatu gwarantuje, że brama aplikacji komunikuje się tylko ze znanymi wystąpieniami zaplecza. To dodatkowo zabezpiecza komunikację end-to-end.
 
 Proces konfiguracji jest opisany w poniższych sekcjach.
 
@@ -154,20 +154,20 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
    ```
 
    > [!NOTE]
-   > W tym przykładzie konfiguruje certyfikat używany dla połączenia SSL. Certyfikat musi być w formacie .pfx, a hasło musi zawierać od 4 do 12 znaków.
+   > W tym przykładzie konfiguruje certyfikat używany dla połączenia TLS. Certyfikat musi być w formacie .pfx, a hasło musi zawierać od 4 do 12 znaków.
 
-6. Utwórz odbiornik HTTP dla bramy aplikacji. Przypisz konfigurację frontu IP, port i certyfikat SSL do użycia.
+6. Utwórz odbiornik HTTP dla bramy aplikacji. Przypisz konfigurację frontu IP, port i certyfikat TLS/SSL do użycia.
 
    ```powershell
    $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
-7. Przekaż certyfikat, który ma być używany w zasobach puli zaplecza z włączoną funkcją SSL.
+7. Przekaż certyfikat, który ma być używany w zasobach puli zaplecza z obsługą protokołu TLS.
 
    > [!NOTE]
-   > Sonda domyślna pobiera klucz publiczny z *domyślnego* powiązania SSL na adres IP zaplecza i porównuje wartość klucza publicznego, którą otrzymuje z wartością klucza publicznego, którą podasz w tym miejscu. 
+   > Sonda domyślna pobiera klucz publiczny z *domyślnego* powiązania TLS na adres IP zaplecza i porównuje wartość klucza publicznego, którą otrzymuje z wartością klucza publicznego, którą podasz w tym miejscu. 
    > 
-   > Jeśli używasz nagłówków hosta i wskazania nazwy serwera (SNI) na zapleczu, pobrany klucz publiczny może nie być zamierzoną witryną, do której przepływa ruch. W razie wątpliwości odwiedź https://127.0.0.1/ serwery zaplecza, aby potwierdzić, który certyfikat jest używany do *domyślnego* powiązania SSL. Użyj klucza publicznego z tego żądania w tej sekcji. Jeśli używasz nagłówków hosta i SNI na powiązaniach HTTPS i nie otrzymasz https://127.0.0.1/ odpowiedzi i certyfikatu z ręcznego żądania przeglądarki na serwerach zaplecza, musisz skonfigurować domyślne powiązanie SSL na nich. Jeśli tego nie zrobisz, sondy nie powiedzie się, a zaplecze nie jest na białej liście.
+   > Jeśli używasz nagłówków hosta i wskazania nazwy serwera (SNI) na zapleczu, pobrany klucz publiczny może nie być zamierzoną witryną, do której przepływa ruch. W razie wątpliwości odwiedź https://127.0.0.1/ serwery zaplecza, aby potwierdzić, który certyfikat jest używany dla *domyślnego* powiązania TLS. Użyj klucza publicznego z tego żądania w tej sekcji. Jeśli używasz nagłówków hosta i SNI na powiązaniach HTTPS i nie otrzymasz https://127.0.0.1/ odpowiedzi i certyfikatu z ręcznego żądania przeglądarki na serwerach zaplecza, należy skonfigurować domyślne powiązanie TLS na nich. Jeśli tego nie zrobisz, sondy nie powiedzie się, a zaplecze nie jest na białej liście.
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -176,7 +176,7 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
    > [!NOTE]
    > Certyfikat podany w poprzednim kroku powinien być kluczem publicznym certyfikatu .pfx prezentanego na zapleczu. Wyeksportuj certyfikat (a nie certyfikat główny) zainstalowany na serwerze zaplecza w formacie oświadczeń, dowodów i rozumowania (CER) i użyj go w tym kroku. Ten krok umieszcza na białej liście zaplecza z bramą aplikacji.
 
-   Jeśli używasz jednostki SKU bramy aplikacji w wersji 2, utwórz zaufany certyfikat główny zamiast certyfikatu uwierzytelniania. Aby uzyskać więcej informacji, zobacz [Omówienie end-to end SSL z bramą aplikacji:](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)
+   Jeśli używasz jednostki SKU bramy aplikacji w wersji 2, utwórz zaufany certyfikat główny zamiast certyfikatu uwierzytelniania. Aby uzyskać więcej informacji, zobacz [Omówienie end-to end TLS z bramą aplikacji:](ssl-overview.md#end-to-end-tls-with-the-v2-sku)
 
    ```powershell
    $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
@@ -209,7 +209,7 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
     > [!NOTE]
     > Liczbę wystąpień 1 można wybrać do celów testowych. Ważne jest, aby wiedzieć, że liczba wystąpień w ramach dwóch wystąpień nie jest objęty umowy SLA i dlatego nie jest zalecane. Małe bramy mają być używane do testowania deweloperów, a nie do celów produkcyjnych.
 
-11. Skonfiguruj zasady SSL do użycia w bramie aplikacji. Brama aplikacji obsługuje możliwość ustawienia minimalnej wersji dla wersji protokołu SSL.
+11. Skonfiguruj zasady TLS, które mają być używane w bramie aplikacji. Brama aplikacji obsługuje możliwość ustawiania minimalnej wersji dla wersji protokołu TLS.
 
     Następujące wartości to lista wersji protokołu, które można zdefiniować:
 
@@ -247,7 +247,7 @@ Ta procedura służy do stosowania nowego certyfikatu, jeśli certyfikat zaplecz
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. Dodaj nowy zasób certyfikatu z pliku cer, który zawiera klucz publiczny certyfikatu i może być również tym samym certyfikatem dodanym do odbiornika dla zakończenia SSL w bramie aplikacji.
+2. Dodaj nowy zasób certyfikatu z pliku cer, który zawiera klucz publiczny certyfikatu i może być również tym samym certyfikatem dodanym do odbiornika dla zakończenia protokołu TLS w bramie aplikacji.
 
    ```powershell
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
@@ -300,9 +300,9 @@ Ta procedura służy do usuwania nieużytego wygasłego certyfikatu z ustawień 
    ```
 
    
-## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>Ograniczanie wersji protokołu SSL w istniejącej bramie aplikacji
+## <a name="limit-tls-protocol-versions-on-an-existing-application-gateway"></a>Ograniczanie wersji protokołu TLS w istniejącej bramie aplikacji
 
-W poprzednich krokach można było utworzyć aplikację z kompleksowym protokołem SSL i wyłączyć niektóre wersje protokołu SSL. Poniższy przykład wyłącza niektóre zasady SSL na istniejącej bramie aplikacji.
+W poprzednich krokach można było utworzyć aplikację z kompleksowym protokołem TLS i wyłączyć niektóre wersje protokołu TLS. Poniższy przykład wyłącza niektóre zasady TLS w istniejącej bramie aplikacji.
 
 1. Pobierz bramę aplikacji do aktualizacji.
 
@@ -310,14 +310,14 @@ W poprzednich krokach można było utworzyć aplikację z kompleksowym protokoł
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Zdefiniuj zasady SSL. W poniższym przykładzie **TLSv1.0** i **TLSv1.1** są wyłączone, a mechanizmy **\_szyfrowania TLS ECDHE\_ECDSA\_z\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_z\_AES\_256\_GCM\_SHA384**i **TLS\_RSA\_z\_AES\_128\_GCM\_SHA256** są jedynymi dozwolonymi.
+2. Zdefiniuj zasady TLS. W poniższym przykładzie **TLSv1.0** i **TLSv1.1** są wyłączone, a mechanizmy **\_szyfrowania TLS ECDHE\_ECDSA\_z\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_z\_AES\_256\_GCM\_SHA384**i **TLS\_RSA\_z\_AES\_128\_GCM\_SHA256** są jedynymi dozwolonymi.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
-3. Na koniec zaktualizuj bramę. Ten ostatni krok jest długotrwałym zadaniem. Po zakończeniu, end-to-end SSL jest skonfigurowany na bramie aplikacji.
+3. Na koniec zaktualizuj bramę. Ten ostatni krok jest długotrwałym zadaniem. Po zakończeniu, end-to-end TLS jest skonfigurowany na bramie aplikacji.
 
    ```powershell
    $gw | Set-AzApplicationGateway

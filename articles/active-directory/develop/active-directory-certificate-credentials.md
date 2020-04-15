@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.author: ryanwi
+ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5587d0bf2c6cdeb2a6ad5e7dc3a078097c48c7ea
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: d834d37f686279facf0052e3c8f4da3c8d259e0b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80884566"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309678"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Poświadczenia certyfikatu uwierzytelniania aplikacji platformy tożsamości firmy Microsoft
 
@@ -94,7 +94,7 @@ Poświadczenia certyfikatu można skojarzyć z aplikacją kliencką na platformi
 W rejestracji aplikacji platformy Azure dla aplikacji klienckiej:
 1. Wybierz **pozycję Certyfikaty & wpisy tajne**.
 2. Kliknij **przycisk Przekaż certyfikat** i wybierz plik certyfikatu do przekazania.
-3. Kliknij przycisk **Dodaj**.
+3. Kliknij pozycję **Add** (Dodaj).
   Po przekazaniu certyfikatu są wyświetlane odcisk palca, data rozpoczęcia i wartości wygaśnięcia.
 
 ### <a name="updating-the-application-manifest"></a>Aktualizowanie manifestu aplikacji

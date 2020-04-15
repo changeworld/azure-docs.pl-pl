@@ -11,21 +11,21 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a275e5ab394b54960a2340848152741762b28f8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf50a8f58978a010fe3d8228ace8579fcf52eb38
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78269384"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309900"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Kiedy używać dostawcy uwierzytelniania wieloskładnikowego platformy Azure
+
+> [!IMPORTANT]
+> Od 1 września 2018 r. nowi dostawcy er mogą przestać być tworzoni. Istniejących dostawców eru może być nadal używany i aktualizowany, ale migracja nie jest już możliwe. Uwierzytelnianie wieloskładnikowe będzie nadal dostępne jako funkcja w licencjach usługi Azure AD Premium.
 
 Weryfikacja dwuetapowa jest domyślnie dostępna dla administratorów globalnych, którzy zarządzają użytkownikami usług Azure Active Directory i Office 365. Jeśli jednak chcesz korzystać z [funkcji zaawansowanych](howto-mfa-mfasettings.md), musisz kupić pełną wersję usługi Azure Multi-Factor Authentication (MFA).
 
 Dostawca usługi Azure Multi-Factor Auth jest używany do korzystania z funkcji oferowanych przez uwierzytelnianie wieloskładnikowe platformy Azure dla użytkowników, którzy **nie mają licencji.**
-
-> [!NOTE]
-> Od 1 września 2018 r. nowi dostawcy er mogą przestać być tworzoni. Istniejących dostawców eru może być nadal używany i aktualizowany, ale migracja nie jest już możliwe. Uwierzytelnianie wieloskładnikowe będzie nadal dostępne jako funkcja w licencjach usługi Azure AD Premium.
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Zastrzeżenia związane z zestawem SDK usługi Azure MFA
 

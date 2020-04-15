@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: b8c2ba54fcc69ba126bf5f68aed99b25f8156155
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b564373780da5bba71bc46ddbac3dc69a0c94a4a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76046179"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382777"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Eksplorator usługi Azure Time Series Insights
 
@@ -88,7 +88,7 @@ W ciągu kilku minut od połączenia źródła zdarzeń ze środowiskiem usługi
 
 1. Wybierz ikonę **Zapisz,** aby zapisać bieżącą kwerendę i udostępnić ją innym użytkownikom środowiska. Po wybraniu ikony **Otwórz** można przejrzeć wszystkie zapisane zapytania i wszystkie zapytania udostępnione innych użytkowników w środowiskach, do których masz dostęp.
 
-   [![Kwerendy](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png)](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png#lightbox)
+   [![Zapytania](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png)](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png#lightbox)
 
 ## <a name="visualize-data"></a>Wizualizowanie danych
 

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 04/08/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 60d936d9c2785e4723cdc09e55927fe13af8d8a1
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: bb4b654bd0b3591ebaa1bd217020095319a4938c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892312"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381913"
 ---
 # <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
@@ -53,7 +53,7 @@ Usługa Azure Firewall umożliwia skalowanie bez ograniczeń, odpowiednio do zmi
 
 ## <a name="application-fqdn-filtering-rules"></a>Reguły filtrowania w pełni kwalifikowanych nazw domen aplikacji
 
-Ruch HTTP/S wychodzący lub ruch SQL platformy Azure (wersja zapoznawcza) można ograniczyć do określonej listy w pełni kwalifikowanych nazw domen (FQDN), w tym symboli wieloznacznych. Ta funkcja nie wymaga zakończenia protokołu SSL.
+Ruch HTTP/S wychodzący lub ruch SQL platformy Azure (wersja zapoznawcza) można ograniczyć do określonej listy w pełni kwalifikowanych nazw domen (FQDN), w tym symboli wieloznacznych. Ta funkcja nie wymaga zakończenia protokołu TLS.
 
 ## <a name="network-traffic-filtering-rules"></a>Reguły filtrowania ruchu sieciowego
 
@@ -116,7 +116,7 @@ Reguły filtrowania dla protokołów innych niż TCP/UDP (na przykład ICMP) nie
 |Strefy dostępności można skonfigurować tylko podczas wdrażania.|Strefy dostępności można skonfigurować tylko podczas wdrażania. Nie można skonfigurować stref dostępności po wdrożeniu zapory.|Jest to celowe.|
 |SNAT na połączeniach przychodzących|Oprócz DNAT połączenia za pośrednictwem publicznego adresu IP zapory (przychodzącego) są sNATed do jednego z prywatnych adresów IP zapory. To wymaganie dzisiaj (również dla aktywnych/aktywnych wynaużania NVA) w celu zapewnienia routingu symetrycznego.|Aby zachować oryginalne źródło dla protokołu HTTP/S, należy rozważyć użycie nagłówków [XFF.](https://en.wikipedia.org/wiki/X-Forwarded-For) Na przykład należy użyć usługi, takich jak [Usługi Azure Drzwi frontowe](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) lub [usługi Azure Application Gateway](../application-gateway/rewrite-http-headers.md) przed zaporą. Można również dodać WAF jako część usługi Azure Front Door i łańcuch do zapory.
 |Obsługa filtrowania FQDN SQL tylko w trybie proxy (port 1433)|W przypadku usługi Azure SQL Database, usługi Azure SQL Data Warehouse i wystąpienia zarządzanego sql platformy Azure:<br><br>Podczas podglądu filtrowanie FQDN SQL jest obsługiwane tylko w trybie proxy (port 1433).<br><br>W przypadku usługi Azure SQL IaaS:<br><br>Jeśli używasz portów niestandardowych, można określić te porty w regułach aplikacji.|W przypadku języka SQL w trybie przekierowania (domyślne, jeśli łączysz się z poziomu platformy Azure), można zamiast tego filtrować dostęp przy użyciu tagu usługi SQL jako część reguł sieciowych Zapory platformy Azure.
-|Ruch wychodzący na porcie TCP 25 jest niedozwolony| Wychodzące połączenia SMTP korzystające z portu TCP 25 są blokowane. Port 25 jest używany głównie do nieuwierzyleni dostarczania wiadomości e-mail. Jest to domyślne zachowanie platformy dla maszyn wirtualnych. Aby uzyskać więcej informacji, zobacz więcej [Rozwiązywanie problemów z łącznością smtp wychodzących na platformie Azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). Jednak w przeciwieństwie do maszyn wirtualnych obecnie nie jest możliwe włączenie tej funkcji w zaporze platformy Azure.|Postępuj zgodnie z zalecaną metodą wysyłania wiadomości e-mail zgodnie z dokumentami w artykule dotyczącym rozwiązywania problemów z smtp. Możesz też wykluczyć maszynę wirtualną, która potrzebuje wychodzącego dostępu SMTP z domyślnej trasy do zapory. Zamiast tego skonfiguruj dostęp wychodzący bezpośrednio do Internetu.
+|Ruch wychodzący na porcie TCP 25 jest niedozwolony| Wychodzące połączenia SMTP korzystające z portu TCP 25 są blokowane. Port 25 jest używany głównie do nieuwierzyleni dostarczania wiadomości e-mail. Jest to domyślne zachowanie platformy dla maszyn wirtualnych. Aby uzyskać więcej informacji, zobacz więcej [Rozwiązywanie problemów z łącznością smtp wychodzących na platformie Azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). Jednak w przeciwieństwie do maszyn wirtualnych obecnie nie jest możliwe włączenie tej funkcji w zaporze platformy Azure. Uwaga: aby zezwolić na uwierzytelnione smtp (port 587) lub SMTP na porcie innym niż 25, upewnij się, że skonfigurowano regułę sieci, a nie regułę aplikacji, ponieważ inspekcja SMTP nie jest obecnie obsługiwana.|Postępuj zgodnie z zalecaną metodą wysyłania wiadomości e-mail, zgodnie z dokumentami w artykule dotyczącym rozwiązywania problemów z smtp. Możesz też wykluczyć maszynę wirtualną, która potrzebuje wychodzącego dostępu SMTP z domyślnej trasy do zapory. Zamiast tego skonfiguruj dostęp wychodzący bezpośrednio do Internetu.
 |Aktywny ftp nie jest obsługiwany|Aktywny protokół FTP jest wyłączony w zaporze platformy Azure w celu ochrony przed atakami odbijania FTP za pomocą polecenia FTP PORT.|Zamiast tego można użyć pasywnego FTP. Nadal należy jawnie otworzyć porty TCP 20 i 21 na zaporze.
 |Wskaźnik wykorzystania portów SNAT pokazuje 0%|Metryka wykorzystania portu SNAT zapory platformy Azure może wykazywać 0% użycia nawet wtedy, gdy są używane porty SNAT. W takim przypadku przy użyciu metryki jako część metryki kondycji zapory zapewnia niepoprawny wynik.|Ten problem został rozwiązany i wdrożenie do produkcji jest ukierunkowane na maj 2020. W niektórych przypadkach ponowne wdrożenie zapory rozwiązuje problem, ale nie jest spójne. Jako obejście pośrednie należy używać tylko stanu kondycji zapory, aby wyszukać *stan=zdegradowany*, nie dla *stanu=w złej kondycji*. Wyczerpanie portu będzie wyświetlane jako *zdegradowane*. *Nie w dobrej kondycji* jest zarezerwowany do wykorzystania w przyszłości, gdy są bardziej metryki, aby wpłynąć na kondycję zapory.
 |Protokół DNAT nie jest obsługiwany z włączoną obsługą tunelowania wymuszonego|Zapory wdrożone z włączoną obsługą tunelowania wymuszonego nie obsługują dostępu przychodzącego z Internetu z powodu routingu asymetrycznego.|Jest to zgodnie z projektem ze względu na routing asymetryczny. Ścieżka powrotu dla połączeń przychodzących przechodzi przez zaporę lokalną, która nie została nawiązana.

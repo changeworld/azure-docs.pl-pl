@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9f33dc9528d5f7043dda2c6fad207a9a51347a2b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 8e0b874e0ce56d7b4ed9fce15b2d88503d6c49b7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631489"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309143"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Rozwiązywanie problemów z konfiguracją żądanego stanu usługi Azure Automation (DSC)
 
@@ -114,6 +114,8 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 ### <a name="cause"></a>Przyczyna
 
 Ten problem jest spowodowany przez uszkodzony lub wygasły certyfikat.  Aby uzyskać więcej informacji, zobacz [Wygaśnięcie certyfikatu i ponowna rejestracja](../automation-dsc-onboarding.md#re-registering-a-node).
+
+Ten problem może być również spowodowany przez konfigurację serwera proxy nie zezwalającą na dostęp do ***.azure-automation.net**. Aby uzyskać więcej informacji, zobacz [Konfiguracja sieci prywatnych](../automation-dsc-overview.md#network-planning). 
 
 ### <a name="resolution"></a>Rozwiązanie
 

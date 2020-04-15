@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 51c191a7815bb64243e2324e150c00c2dcb7ec4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd33d23a506bd86b9651af3d4c3bbca01673a7a4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705330"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312096"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Tworzenie bramy aplikacji z przekierowaniem HTTP do HTTPS przy użyciu portalu Azure
 
-Za pomocą portalu Azure można utworzyć [bramę aplikacji](overview.md) z certyfikatem zakończenia SSL. Reguła routingu służy do przekierowywania ruchu HTTP do portu HTTPS w bramie aplikacji. W tym przykładzie można również utworzyć [zestaw skalowania maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) dla puli wewnętrznej bazy danych bramy aplikacji, która zawiera dwa wystąpienia maszyny wirtualnej.
+Za pomocą portalu Azure można utworzyć [bramę aplikacji](overview.md) z certyfikatem dla zakończenia protokołu TLS. Reguła routingu służy do przekierowywania ruchu HTTP do portu HTTPS w bramie aplikacji. W tym przykładzie można również utworzyć [zestaw skalowania maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) dla puli wewnętrznej bazy danych bramy aplikacji, która zawiera dwa wystąpienia maszyny wirtualnej.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -67,7 +67,7 @@ Export-PfxCertificate `
 
 Sieć wirtualna jest potrzebna do komunikacji między utworzonymi zasobami. W tym przykładzie są tworzone dwie podsieci: jedna dla bramy aplikacji i druga dla serwerów zaplecza. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji.
 
-1. Zaloguj się do witryny Azure portal w [https://portal.azure.com](https://portal.azure.com).
+1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 2. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
 3. Wybierz pozycję **Sieć**, a następnie z listy Polecane wybierz pozycję **Application Gateway**.
 4. Wprowadź następujące wartości dla bramy aplikacji:
@@ -157,13 +157,13 @@ Interfejs użytkownika portalu zestawu skalowania maszyny wirtualnej tworzy now�
 3. Wybierz **pulę wewnętrznej bazy danych**.
 4. Wybierz **myAppGatewaymyvmss**.
 5. Wybierz **pozycję Usuń wszystkie obiekty docelowe z puli wewnętrznej bazy danych**.
-6. Wybierz **pozycję Zapisz**.
+6. Wybierz pozycję **Zapisz**.
 7. Po zakończeniu tego procesu wybierz pulę zaplecza **myAppGatewaymyvmss,** wybierz pozycję **Usuń,** a następnie **przycisk OK,** aby potwierdzić.
 8. Wybierz pozycję **appGatewayBackendPool**.
 9. W obszarze **Obiekty docelowe**wybierz pozycję **VMSS**.
 10. W obszarze **VMSS**wybierz **myvmss**.
 11. W obszarze **Konfiguracje interfejsu sieciowego**wybierz **myvmssNic**.
-12. Wybierz **pozycję Zapisz**.
+12. Wybierz pozycję **Zapisz**.
 
 ### <a name="upgrade-the-scale-set"></a>Uaktualnianie zestawu skalowania
 

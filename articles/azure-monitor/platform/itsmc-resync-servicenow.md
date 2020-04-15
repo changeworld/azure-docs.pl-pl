@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 9d32b66b7e3ab27012ee671ba8d70735dce73884
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: f09f5010c18f5ea064b02f0fbbae107bf473e1f8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81274278"
+ms.locfileid: "81313682"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>Jak ręcznie rozwiązać problemy z synchronizacją ServiceNow
 
-Usługa Azure Monitor może łączyć się z dostawcami usług IT (ITSM) innych firm. ServiceNow jest jednym z tych dostawców. 
+Usługa Azure Monitor może łączyć się z dostawcami usług IT (ITSM) innych firm. ServiceNow jest jednym z tych dostawców.
 
 Ze względów bezpieczeństwa może być konieczne odświeżenie tokenu uwierzytelniania używanego do połączenia z ServiceNow.
-Użyj następującego procesu synchronizacji, aby ponownie uaktywnić połączenie i odświeżyć token: 
+Użyj następującego procesu synchronizacji, aby ponownie uaktywnić połączenie i odświeżyć token:
 
 
 1. Wyszukaj rozwiązanie w górnym banerze wyszukiwania, a następnie wybierz odpowiednie rozwiązania

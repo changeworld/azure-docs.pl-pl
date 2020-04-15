@@ -1,28 +1,28 @@
 ---
-title: Odciążanie SSL przy użyciu programu PowerShell — brama aplikacji platformy Azure
-description: Ten artykuł zawiera instrukcje dotyczące tworzenia bramy aplikacji z odciążaniem SSL przy użyciu klasycznego modelu wdrażania platformy Azure
+title: Odciążanie protokołu TLS przy użyciu programu PowerShell — brama aplikacji platformy Azure
+description: Ten artykuł zawiera instrukcje dotyczące tworzenia bramy aplikacji z odciążaniem protokołu TLS przy użyciu klasycznego modelu wdrażania platformy Azure
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: c456a0856adb0d36349b5f96ba0ab8bab3eec5c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ead16b61784b8073d50b7e0e6079805a1e48e9b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74047919"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312337"
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Konfigurowanie bramy aplikacji dla odciążania SSL przy użyciu klasycznego modelu wdrażania
+# <a name="configure-an-application-gateway-for-tls-offload-by-using-the-classic-deployment-model"></a>Konfigurowanie bramy aplikacji do odciążania protokołu TLS przy użyciu klasycznego modelu wdrażania
 
 > [!div class="op_single_selector"]
-> * [Portal Azure](application-gateway-ssl-portal.md)
+> * [Azure Portal](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager — program PowerShell](application-gateway-ssl-arm.md)
 > * [Klasyczna usługa Azure PowerShell](application-gateway-ssl.md)
 > * [Interfejs wiersza polecenia platformy Azure](application-gateway-ssl-cli.md)
 
-Usługę Azure Application Gateway można skonfigurować tak, aby przerywała sesję protokołu SSL (Secure Sockets Layer) na poziomie bramy, co pozwoli na uniknięcie wykonywania kosztownych zadań szyfrowania protokołu SSL w kolektywie serwerów sieci Web. Odciążanie protokołu SSL upraszcza również konfigurowanie serwerów frontonu i zarządzanie aplikacją internetową.
+Usługa Azure Application Gateway można skonfigurować tak, aby kończyła sesję security (TLS) (Transport Layer Security), wcześniej znaną jako Secure Sockets Layer (SSL), aby uniknąć kosztownych zadań odszyfrowywania TLS w farmie sieci web. Odciążanie protokołu TLS upraszcza również konfigurację serwera frontonu i zarządzanie aplikacją sieci web.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -30,10 +30,10 @@ Usługę Azure Application Gateway można skonfigurować tak, aby przerywała se
 2. Sprawdź, czy masz działającą sieć wirtualną z prawidłową podsiecią. Upewnij się, że z podsieci nie korzystają żadne maszyny wirtualne ani wdrożenia w chmurze. Brama aplikacji musi znajdować się w podsieci sieci wirtualnej.
 3. Serwery skonfigurowane do używania bramy aplikacji muszą istnieć lub mają przypisane ich punkty końcowe, które są tworzone w sieci wirtualnej lub z publicznym adresem IP lub wirtualnym adresem IP (VIP).
 
-Aby skonfigurować odciążanie SSL na bramie aplikacji, wykonaj następujące kroki w podanej kolejności:
+Aby skonfigurować odciążanie TLS na bramie aplikacji, wykonaj następujące kroki w podanej kolejności:
 
 1. [Tworzenie bramy aplikacji](#create-an-application-gateway)
-2. [Przekazywanie certyfikatów SSL](#upload-ssl-certificates)
+2. [Przekazywanie certyfikatów TLS/SSL](#upload-tlsssl-certificates)
 3. [Konfigurowanie bramy](#configure-the-gateway)
 4. [Ustawianie konfiguracji bramy](#set-the-gateway-configuration)
 5. [Uruchamianie bramy](#start-the-gateway)
@@ -55,7 +55,7 @@ W przykładzie **Description**, **InstanceCount**i **GatewaySize** są parametra
 Get-AzureApplicationGateway AppGwTest
 ```
 
-## <a name="upload-ssl-certificates"></a>Przekazywanie certyfikatów SSL
+## <a name="upload-tlsssl-certificates"></a>Przekazywanie certyfikatów TLS/SSL
 
 Wprowadź, `Add-AzureApplicationGatewaySslCertificate` aby przekazać certyfikat serwera w formacie PFX do bramy aplikacji. Nazwa certyfikatu jest nazwą wybraną przez użytkownika i musi być unikatowa w bramie aplikacji. Ten certyfikat jest określany przez tę nazwę we wszystkich operacjach zarządzania certyfikatami w bramie aplikacji.
 
@@ -95,12 +95,12 @@ Potrzebne wartości:
 * **Pula serwerów zaplecza**: Lista adresów IP serwerów zaplecza. Wymienione adresy IP powinny należeć do podsieci sieci wirtualnej lub powinny być publicznym adresem IP lub ADRESEM VIP.
 * **Ustawienia puli serwerów zaplecza:** Każda pula ma ustawienia, takie jak port, protokół i koligacja oparta na plikach cookie. Te ustawienia są powiązane z pulą i są stosowane do wszystkich serwerów w tej puli.
 * **Port front-end:** Ten port jest portem publicznym otwierany na bramie aplikacji. Ruch trafia do tego portu, a następnie jest przekierowywany do jednego z serwerów zaplecza.
-* **Odbiornik:** Odbiornik ma port front-end, protokół (Http lub Https; te wartości są rozróżniane wielkość liter) i nazwę certyfikatu SSL (jeśli konfiguruje odciążanie SSL).
+* **Odbiornik:** Odbiornik ma port front-end, protokół (Http lub Https; te wartości są rozróżniane wielkość liter) i nazwę certyfikatu TLS/SSL (jeśli konfiguruje odciążanie TLS).
 * **Reguła:** Reguła wiąże odbiornika i puli serwerów zaplecza i definiuje, które back-end puli serwerów, aby skierować ruch do po trafieniu określonego odbiornika. Obecnie jest obsługiwana tylko reguła *podstawowa*. Reguła *podstawowa* to dystrybucja obciążenia z działaniem okrężnym.
 
 **Dodatkowe uwagi dotyczące konfiguracji**
 
-W przypadku konfiguracji certyfikatów SSL protokół w polu **HttpListener** należy zmienić na **Https** (z uwzględnieniem wielkości liter). Dodaj element **SslCert** do **httplistener** z wartością ustawioną na taką samą nazwę, która jest używana w sekcji [Przekaż certyfikaty SSL.](#upload-ssl-certificates) Port front-end powinien zostać zaktualizowany do **443**.
+W przypadku konfiguracji certyfikatów TLS/SSL protokół w **programie HttpListener** powinien zostać zmieniony na **Https** (z uwzględnieniem wielkości liter). Dodaj element **SslCert** do **httplistener** z wartością ustawioną na taką samą nazwę, która została użyta w sekcji [Przekaż certyfikaty TLS/SSL.](#upload-tlsssl-certificates) Port front-end powinien zostać zaktualizowany do **443**.
 
 **Aby włączyć koligacji opartej na plikach cookie:** Można skonfigurować bramę aplikacji, aby upewnić się, że żądanie z sesji klienta jest zawsze kierowane do tej samej maszyny Wirtualnej w farmie sieci web. Aby to osiągnąć, należy wstawić plik cookie sesji, który umożliwia bramie odpowiednio kierować ruchem. Aby włączyć koligację opartą na plikach cookie, ustaw element **CookieBasedAffinity** na wartość **Enabled** w elemencie **BackendHttpSettings**.
 

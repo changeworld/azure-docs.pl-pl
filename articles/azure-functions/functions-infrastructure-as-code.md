@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48d98d6fef896f9288be88824a62fa1c8179217f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276896"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382521"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatyzacja wdrażania zasobów dla aplikacji funkcji w usłudze Azure Functions
 
@@ -33,7 +33,7 @@ Wdrożenie usługi Azure Functions zazwyczaj składa się z tych zasobów:
 | Składnik [Usługi Application Insights](../azure-monitor/app/app-insights-overview.md) | Optional (Opcjonalność)    | [Microsoft.Insights/składniki](/azure/templates/microsoft.insights/components)         |   |
 | [Plan hostingowy](./functions-scale.md)                                             | Opcjonalnie<sup>1</sup>    | [Microsoft.Web/farmy serwerów](/azure/templates/microsoft.web/serverfarms)                 |   |
 
-<sup>1.</sup> Plan hostingowy jest wymagany tylko wtedy, gdy zdecydujesz się uruchomić aplikację funkcyjną w [planie Premium](./functions-premium-plan.md) (w wersji zapoznawczej) lub w planie usługi [app service.](../app-service/overview-hosting-plans.md)
+<sup>1.</sup> Plan hostingowy jest wymagany tylko wtedy, gdy zdecydujesz się uruchomić aplikację funkcyjną w [planie Premium](./functions-premium-plan.md) lub w planie usługi [App Service.](../app-service/overview-hosting-plans.md)
 
 > [!TIP]
 > Chociaż nie jest to wymagane, zdecydowanie zaleca się skonfigurowanie usługi Application Insights dla aplikacji.
@@ -111,7 +111,7 @@ Ponadto klucz instrumentacji musi być dostarczony do aplikacji `APPINSIGHTS_INS
 
 Definicja planu hostingowego jest różna i może być jedną z następujących elementów:
 * [Plan zużycia](#consumption) (domyślnie)
-* [Plan premium](#premium) (w wersji zapoznawczej)
+* [Plan Premium](#premium)
 * [Plan usługi aplikacji](#app-service-plan)
 
 ### <a name="function-app"></a>Aplikacja funkcji
@@ -647,10 +647,10 @@ Aplikacja funkcji ma wiele zasobów podrzędnych, które można użyć w wdroże
 
 Można użyć dowolnego z następujących sposobów wdrożenia szablonu:
 
-* [Powershell](../azure-resource-manager/templates/deploy-powershell.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Interfejs wiersza polecenia platformy Azure](../azure-resource-manager/templates/deploy-cli.md)
-* [Portal Azure](../azure-resource-manager/templates/deploy-portal.md)
-* [INTERFEJS API ODPOCZYNKU](../azure-resource-manager/templates/deploy-rest.md)
+* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
+* [Interfejs API REST](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Przycisk Wdróż na platformie Azure
 

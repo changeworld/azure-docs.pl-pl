@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: a2eade6c5a9c826d28d435a09861ba58463ae8c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280536"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382915"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Integracja usługi Azure Active Directory dla usługi Azure Red Hat OpenShift
 
@@ -25,13 +25,13 @@ W [witrynie Azure portal](https://portal.azure.com)upewnij się, że dzierżawa 
 
 ![Zrzut ekranu przedstawiający portal](./media/howto-create-tenant/tenant-callout.png) z dzierżawą wymienioną w prawym górnym rogu Jeśli jest wyświetlana niewłaściwa dzierżawa, kliknij nazwę użytkownika w prawym górnym rogu, a następnie kliknij pozycję **Przełącz katalog**i wybierz właściwą dzierżawę z listy **Wszystkie katalogi.**
 
-Utwórz nowego globalnego administratora usługi Azure Active Directory, aby zalogować się do klastra Usługi Azure Red Hat OpenShift.
+Utwórz nowego użytkownika "Właściciela" usługi Azure Active Directory, aby zalogować się do klastra Usługi Azure Red Hat OpenShift.
 
 1. Przejdź do [bloku Użytkownicy—Wszyscy użytkownicy.](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)
 2. Kliknij **pozycję +Nowy użytkownik,** aby otworzyć okienko **Użytkownik.**
 3. Wprowadź **nazwę** dla tego użytkownika.
 4. Utwórz **nazwę użytkownika** na podstawie nazwy utworzonej `.onmicrosoft.com` dzierżawy, z dołączeną na końcu. Na przykład `yourUserName@yourTenantName.onmicrosoft.com`. Zapisz tę nazwę użytkownika. Musisz go zalogować, aby zalogować się do klastra.
-5. Kliknij **pozycję Rola katalogu,** aby otworzyć okienko roli katalogu, a następnie wybierz pozycję **Administrator globalny,** a następnie kliknij przycisk **Ok** u dołu okienka.
+5. Kliknij **pozycję Rola katalogu,** aby otworzyć okienko roli katalogu, a następnie wybierz pozycję **Właściciel,** a następnie kliknij przycisk **Ok** u dołu okienka.
 6. W okienku **Użytkownik** kliknij pozycję **Pokaż hasło** i zarejestruj hasło tymczasowe. Po zalogowaniu się po raz pierwszy zostanie wyświetlony monit o jego zresetowanie.
 7. U dołu okienka kliknij przycisk **Utwórz,** aby utworzyć użytkownika.
 
@@ -112,7 +112,7 @@ Aby uzyskać szczegółowe informacje na temat tworzenia nowej aplikacji usługi
 
 Aby uzyskać szczegółowe informacje na temat zarządzania administratorami i innymi rolami, zobacz [Dodawanie lub zmienianie administratorów subskrypcji platformy Azure](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator).
 
-## <a name="resources"></a>Resources
+## <a name="resources"></a>Zasoby
 
 * [Obiekty głównej aplikacji i usługi w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
 * [Szybki start: rejestrowanie aplikacji z punktem końcowym usługi Azure Active Directory w wersji 1.0](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)

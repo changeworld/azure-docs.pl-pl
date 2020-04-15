@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 554a4c64700bb189b4b9f085bd7c259312a36b4b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: c718b9a66b378044618c8c52eec3a1a498ace83c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410934"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383200"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Maszyny dołączające do zarządzania przez konfigurację stanu automatyzacji platformy Azure
 
@@ -39,6 +39,9 @@ Jeśli nie jesteś gotowy do zarządzania konfiguracją komputera z chmury, moż
 > Zarządzanie maszynami wirtualnymi platformy Azure za pomocą konfiguracji stanu automatyzacji platformy Azure jest uwzględniane bez dodatkowych opłat, jeśli zainstalowana wersja rozszerzenia konfiguracji żądanego stanu maszyny Wirtualnej platformy Azure jest większa niż 2,70. Aby uzyskać więcej informacji, zobacz [**strona cennika automatyzacji**](https://azure.microsoft.com/pricing/details/automation/).
 
 W poniższych sekcjach tego artykułu opisano, jak można dołączać maszyny wymienione powyżej do konfiguracji stanu automatyzacji platformy Azure.
+
+>[!NOTE]
+>Ten artykuł został zaktualizowany o korzystanie z nowego modułu Azure PowerShell Az. Nadal możesz używać modułu AzureRM, który będzie nadal otrzymywać poprawki błędów do co najmniej grudnia 2020 r. Aby dowiedzieć się więcej na temat nowego modułu Az i zgodności z modułem AzureRM, zobacz [Wprowadzenie do nowego modułu Az programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Aby uzyskać instrukcje instalacji modułu Az w hybrydowym usłudze Runbook Worker, zobacz [Instalowanie modułu programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Dla konta automatyzacji można zaktualizować moduły do najnowszej wersji przy użyciu [jak zaktualizować moduły programu Azure PowerShell w usłudze Azure Automation.](automation-update-azure-modules.md)
 
 ## <a name="onboarding-azure-vms"></a>Dołączanie maszyn wirtualnych platformy Azure
 
@@ -280,15 +283,15 @@ Obsługa serwera proxy dla metakonfiguracji jest kontrolowana przez LCM, który 
 Jeśli ustawienia domyślne programu PowerShell DSC LCM są zgodne z przypadkiem użycia i chcesz na komputerach wbudowanych zarówno pobierać z i raportować do konfiguracji stanu automatyzacji platformy Azure, można wygenerować potrzebne metakonfiguracje DSC po prostu przy użyciu poleceń cmdlet usługi Azure Automation.
 
 1. Otwórz konsolę programu PowerShell lub vscode jako administrator na komputerze w środowisku lokalnym.
-2. Łączenie się z usługą Azure Resource Manager przy użyciu`Connect-AzAccount`
+2. Połącz się z usługą Azure Resource Manager przy użyciu [connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0).
 3. Pobierz metakonfiguracje DSC programu PowerShell dla maszyn, które chcesz mieć wbudowane, z konta automatyzacji, na którym konfigurujesz węzły.
 
    ```powershell
    # Define the parameters for Get-AzAutomationDscOnboardingMetaconfig using PowerShell Splatting
    $Params = @{
-       ResourceGroupName = 'ContosoResources'; # The name of the Resource Group that contains your Azure Automation Account
-       AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation Account where you want a node on-boarded to
-       ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the meta configuration will be generated for
+       ResourceGroupName = 'ContosoResources'; # The name of the Resource Group that contains your Azure Automation account
+       AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation account where you want a node on-boarded to
+       ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the metaconfiguration will be generated for
        OutputFolder = "$env:UserProfile\Desktop\";
    }
    # Use PowerShell splatting to pass parameters to the Azure Automation cmdlet being invoked
@@ -296,7 +299,7 @@ Jeśli ustawienia domyślne programu PowerShell DSC LCM są zgodne z przypadkiem
    Get-AzAutomationDscOnboardingMetaconfig @Params
    ```
 
-1. Teraz powinien mieć folder o nazwie **DscMetaConfigs**, zawierający metakonfiguracje DSC programu PowerShell dla komputerów do wbudowanego (jako administrator).
+1. Teraz powinien mieć folder **DscMetaConfigs zawierający** metakonfiguracje DSC programu PowerShell dla komputerów do wbudowanego (jako administrator).
 
     ```powershell
     Set-DscLocalConfigurationManager -Path $env:UserProfile\Desktop\DscMetaConfigs
@@ -325,7 +328,7 @@ Po zarejestrowaniu komputera jako węzła DSC w konfiguracji stanu automatyzacji
 
 - **Zmiany wartości DSC LCM.** Może być konieczna zmiana [wartości LCM dsc programu PowerShell](/powershell/scripting/dsc/managing-nodes/metaConfig4) ustawionych podczas początkowej rejestracji węzła, `ConfigurationMode`na przykład . Obecnie można zmienić te wartości agenta DSC tylko poprzez ponowną rejestrację. Jedynym wyjątkiem jest wartość konfiguracji węzła przypisana do węzła. Można to zmienić bezpośrednio w usłudze Azure Automation DSC.
 
-Węzeł można ponownie zarejestrować w taki sam sposób, w jaki węzeł został zarejestrowany, przy użyciu dowolnej metody dołączania opisanej w tym dokumencie. Nie trzeba wyrejestrować węzła z konfiguracji stanu usługi Azure Automation przed ponownym zarejestrowaniem go.
+Węzeł można ponownie zarejestrować, tak jak początkowo zarejestrowano węzeł, korzystając z dowolnej metody dołączania opisanej w tym dokumencie. Nie trzeba wyrejestrować węzła z konfiguracji stanu usługi Azure Automation przed ponownym zarejestrowaniem go.
 
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Rozwiązywanie problemów z dołączaniem maszyny wirtualnej platformy Azure
 
@@ -347,6 +350,7 @@ Aby uzyskać więcej informacji na temat rozwiązywania problemów, zobacz [Rozw
 
 - Aby uzyskać informacje o tym, zobacz [Wprowadzenie do konfiguracji stanu automatyzacji platformy Azure](automation-dsc-getting-started.md).
 - Aby dowiedzieć się więcej o kompilowaniu konfiguracji DSC, aby można je było przypisać do węzłów docelowych, zobacz [Kompilowanie konfiguracji w konfiguracji stanu automatyzacji platformy Azure](automation-dsc-compile.md).
-- Aby uzyskać informacje o poleceniach cmdlet programu PowerShell, zobacz [polecenia cmdlet konfiguracji stanu automatyzacji platformy Azure](/powershell/module/az.automation#automation).
+- Aby uzyskać odwołanie do polecenia polecenia cmdlet programu PowerShell, zobacz [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).
 - Aby uzyskać informacje o cenach, zobacz [Cennik konfiguracji stanu usługi Azure Automation .](https://azure.microsoft.com/pricing/details/automation/)
 - Na przykład przy użyciu konfiguracji stanu automatyzacji platformy Azure w potoku ciągłego wdrażania, zobacz [Przykład użycia: Ciągłe wdrażanie na maszynach wirtualnych przy użyciu konfiguracji stanu automatyzacji platformy Azure i chocolatey](automation-dsc-cd-chocolatey.md).

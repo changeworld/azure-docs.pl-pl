@@ -5,16 +5,19 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: df28116c588ed77f02c78a42a85feb91ca339e7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d5eb330cd6e5d02432298a5b58e84ae7d24ee7e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75366704"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383319"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Wyzwalanie uruchomieniu księgi runbook usługi Azure Automation za pomocą alertu
 
 Usługi [Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) umożliwiają monitorowanie metryk i dzienników na poziomie podstawowym dla większości usług na platformie Azure. Można wywołać elementy runbook usługi Azure Automation przy użyciu [grup akcji](../azure-monitor/platform/action-groups.md?toc=%2fazure%2fautomation%2ftoc.json) lub przy użyciu alertów klasycznych do automatyzacji zadań na podstawie alertów. W tym artykule pokazano, jak skonfigurować i uruchomić system runbook przy użyciu alertów.
+
+>[!NOTE]
+>Ten artykuł został zaktualizowany o korzystanie z nowego modułu Azure PowerShell Az. Nadal możesz używać modułu AzureRM, który będzie nadal otrzymywać poprawki błędów do co najmniej grudnia 2020 r. Aby dowiedzieć się więcej na temat nowego modułu Az i zgodności z modułem AzureRM, zobacz [Wprowadzenie do nowego modułu Az programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Aby uzyskać instrukcje instalacji modułu Az w hybrydowym usłudze Runbook Worker, zobacz [Instalowanie modułu programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Dla konta automatyzacji można zaktualizować moduły do najnowszej wersji przy użyciu [jak zaktualizować moduły programu Azure PowerShell w usłudze Azure Automation.](automation-update-azure-modules.md)
 
 ## <a name="alert-types"></a>Typy alertów
 
@@ -45,7 +48,7 @@ Zgodnie z opisem w poprzedniej sekcji każdy typ alertu ma inny schemat. Skrypt 
 
 W tym przykładzie użyto alertu z maszyny Wirtualnej. Pobiera dane maszyny Wirtualnej z ładunku, a następnie używa tych informacji, aby zatrzymać maszynę wirtualną. Połączenie musi być skonfigurowane na koncie automatyzacji, na którym jest uruchamiany system runbook. Podczas korzystania z alertów do wyzwalania śmięków runbook, ważne jest, aby sprawdzić stan alertu w uruchomieniu. amiń. Projekt runbook zostanie uruchomiony za każdym razem, gdy stan alertu zmieni stan. Alerty mają wiele stanów, dwa `Activated` najczęstsze stany są i `Resolved`. Sprawdź ten stan w logice uruchomieniu, aby upewnić się, że projekt runbook nie jest uruchamiany więcej niż jeden raz. W przykładzie w tym artykule pokazano, jak szukać tylko `Activated` alertów.
 
-Projekt runbook używa **konta AzureRunAsConnection** [Uruchom jako](automation-create-runas-account.md) do uwierzytelniania za pomocą platformy Azure do wykonywania akcji zarządzania względem maszyny Wirtualnej.
+Podręcznik używa `AzureRunAsConnection` [uruchom jako konto](automation-create-runas-account.md) do uwierzytelniania za pomocą platformy Azure do wykonywania akcji zarządzania przeciwko maszynie Wirtualnej.
 
 W tym przykładzie można utworzyć projekt runbook o nazwie **Stop-AzureVmInResponsetoVMAlert**. Można zmodyfikować skrypt programu PowerShell i używać go z wieloma różnymi zasobami.
 
@@ -139,13 +142,13 @@ W tym przykładzie można utworzyć projekt runbook o nazwie **Stop-AzureVmInRes
                     throw "Could not retrieve connection asset: $ConnectionAssetName. Check that this asset exists in the Automation account."
                 }
                 Write-Verbose "Authenticating to Azure with service principal." -Verbose
-                Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
+                Add-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
                 Write-Verbose "Setting subscription to work against: $SubId" -Verbose
-                Set-AzureRmContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
+                Set-AzContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
 
                 # Stop the Resource Manager VM
                 Write-Verbose "Stopping the VM - $ResourceName - in resource group - $ResourceGroupName -" -Verbose
-                Stop-AzureRmVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
+                Stop-AzVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
                 # [OutputType(PSAzureOperationResponse")]
             }
             else {
@@ -195,3 +198,5 @@ Alerty używają grup akcji, które są kolekcjami akcji, które są wyzwalane p
 * Aby uzyskać szczegółowe informacje na temat różnych sposobów uruchamiania śmiętu, zobacz [Uruchamianie ekstysu](automation-starting-a-runbook.md).
 * Aby dowiedzieć się, jak utworzyć alert dziennika aktywności, zobacz [Tworzenie alertów dziennika aktywności](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
 * Aby dowiedzieć się, jak utworzyć alert w czasie zbliżonym do rzeczywistego, zobacz [Tworzenie reguły alertów w witrynie Azure portal](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json).
+* Aby uzyskać odwołanie do polecenia polecenia cmdlet programu PowerShell, zobacz [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

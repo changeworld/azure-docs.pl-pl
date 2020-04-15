@@ -1,21 +1,14 @@
 ---
 title: Wypowiedź przykładowej jednostki etykiety
-titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak oznaczyć jednostkę nauczoną maszyną podskładnością w przykładowym wypowiedź na stronie szczegółów intencji portalu usługi LUIS.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.author: diberry
-ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: ea5fbea902c9694d9a8a6a8a5bffcf5e7234bbbd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898376"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382399"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Etykieta jednostki nauczanej maszynowo w wypowiedź przykład
 
@@ -72,7 +65,7 @@ Paleta jednostek oferuje alternatywę dla poprzedniego środowiska etykietowania
 
 ## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Etykietowanie podskładów jednostki wyuczonej maszyny
 
-Podskładne w jednostkach są oznaczone dokładnie tak samo jak jednostki najwyższego poziomu. Podczas zaznaczania tekstu encje dostępne w wyskakującym oknie są względem kontekstu, w którym pojawia się tekst. Na przykład, jeśli masz 5-poziomową jednostkę nauczaną maszyną i wybierasz tekst, który został oznaczony jako pierwszy i drugi poziom (oznaczony etykietą nazwy jednostki w przykładowym wypowiedź), jednostki dostępne w wyskakującym oknie są ograniczone do w kontekście elementów trzeciego poziomu. Aby oznaczyć tekst innymi elementami, wybierz pozycję Etykieta jako inną opcję **encji.**
+Podskładne w jednostkach są oznaczone dokładnie tak samo jak jednostki najwyższego poziomu. Podczas zaznaczania tekstu encje dostępne w wyskakującym oknie są względem kontekstu, w którym pojawia się tekst. Na przykład jeśli masz jednostkę 5-poziomową jednostki nauczonej maszyn i wybierasz tekst, który został oznaczony jako 1 i 2 poziom (oznaczony przez nazwę jednostki oznaczonej etykietą w przykładowym wypowiedź), jednostki dostępne w wyskakującym oknie są ograniczone do kontekstu składników trzeciego poziomu. Aby oznaczyć tekst innymi elementami, wybierz pozycję Etykieta jako inną opcję **encji.**
 
 > [!div class="mx-imgBorder"]
 > ![Paleta jednostek dla jednostki nauczanych maszynowo](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
@@ -87,6 +80,10 @@ Role encji są oznaczone przy użyciu palety encji.
 1. Po otwarciu palety Encja wybierz encję z listy encji.
 1. Przejdź do **inspektora encji**i wybierz istniejącą rolę lub utwórz nową rolę.
 1. W przykładowym tekście wypowiedź oznaczaj tekst rolą jednostki.
+
+## <a name="labeling-for-punctuation"></a>Etykietowanie znaków interpunkcyjnych
+
+Nie trzeba oznaczać znaków interpunkcyjnych. Użyj [ustawień aplikacji,](luis-reference-application-settings.md) aby kontrolować, czy znaki interpunkcyjne wpływają na prognozy wypowiedzi.
 
 ## <a name="unlabel-entities"></a>Encje bez etykiety
 

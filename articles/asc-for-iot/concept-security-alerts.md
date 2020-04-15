@@ -1,5 +1,5 @@
 ---
-title: Przewodnik po alertach zabezpieczeń dla usługi Azure Security Center dla usługi IoT| Dokumenty firmy Microsoft
+title: Wbudowana & niestandardowa lista alertów
 description: Dowiedz się więcej o alertach zabezpieczeń i zalecanych rozwiązaniach korygacyjnych przy użyciu usługi Azure Security Center dla funkcji i usługi IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 7a319baeba3d34f3d3056ce9b42f2e733b5a874f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74a6adbd2415cfcf7d5d48cff01d189cfd8b73a5
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78296137"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311481"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center for IoT security alerts (Alerty zabezpieczeń usługi Azure Security Center dla IoT)
 
@@ -32,11 +32,9 @@ W tym artykule znajdziesz listę wbudowanych alertów, które mogą być wyzwala
 Oprócz wbudowanych alertów usługa Azure Security Center for IoT umożliwia definiowanie niestandardowych alertów na podstawie oczekiwanego zachowania usługi IoT Hub i/lub urządzenia.
 Aby uzyskać więcej informacji, zobacz [konfigurowalne alerty](concept-customizable-security-alerts.md).
 
-
-
 ## <a name="built-in-alerts-for-iot-devices"></a>Wbudowane alerty dla urządzeń IoT
 
-| Nazwa | Ważność | Źródło danych | Opis | Sugerowane kroki korygowania|                  
+| Nazwa | Ważność | Źródło danych | Opis | Sugerowane kroki korygowania|
 |----------|---------------|-------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |**Wysoka** dotkliwość|  |  |  |
 |   Binarny wiersz polecenia   | Wysoka | Agent | La Linux binary wywoływane / wykonywane z wiersza polecenia został wykryty. Ten proces może być uzasadnioną aktywnością lub wskazaniem, że urządzenie zostało naruszone.|   Przejrzyj polecenie z użytkownikiem, który go uruchomił i sprawdź, czy jest to coś, co zgodnie z prawem oczekuje się uruchomić na urządzeniu. Jeśli nie, eskaluj alert do zespołu zabezpieczeń informacji. |
@@ -52,7 +50,7 @@ Aby uzyskać więcej informacji, zobacz [konfigurowalne alerty](concept-customiz
 |  Zachowanie podobne do wykrytego oprogramowania ransomware Fairware  | Medium | Agent       | Wykonywanie poleceń rm -rf stosowanych do podejrzanych lokalizacji wykrytych przy użyciu analizy danych hosta. Ponieważ rm -rf rekursywnie usuwa pliki, zwykle jest używany tylko w folderach dyskretnych. W takim przypadku jest używany w lokalizacji, która może usunąć dużą ilość danych. Fairware ransomware jest znany do wykonywania rm -rf poleceń w tym folderze. |Przejrzyj z użytkownikiem, który uruchomił polecenie było to uzasadnione działanie, które można oczekiwać, aby zobaczyć na urządzeniu. Jeśli nie, eskaluj alert do zespołu zabezpieczeń informacji.
 |  Zachowanie podobne do wykrytego ransomware  | Medium | Agent       | Wykonanie plików podobnych do znanego oprogramowania ransomware, które może uniemożliwić użytkownikom dostęp do ich systemu lub plików osobistych i może wymagać zapłaty okupu w celu odzyskania dostępu.|Przejrzyj z użytkownikiem, który uruchomił polecenie, jeśli było to uzasadnione działanie, które można oczekiwać, aby zobaczyć na urządzeniu. Jeśli nie, eskaluj alert do zespołu zabezpieczeń informacji.
 |   Wykryto obraz kontenera górnika monet kryptograficznych | Medium                   | Agent       | Kontener wykrywający uruchomione obrazy eksploracji znanej waluty cyfrowej. |  1. Jeśli to zachowanie nie jest zamierzone, usuń odpowiedni obraz kontenera.<br> 2. Upewnij się, że demon platformy Docker nie jest dostępny za pośrednictwem niebezpiecznego gniazda TCP.<br> 3. Eskalować alert do zespołu bezpieczeństwa informacji.|
-|  Crypto moneta górnik obraz  | Medium| Agent       | Wykryto proces zwykle związany z eksploracją waluty cyfrowej.| Sprawdź z użytkownikiem, który uruchomił polecenie, czy była to uzasadniona aktywność na urządzeniu. Jeśli nie, eskaluj alert do zespołu zabezpieczeń informacji.| 
+|  Crypto moneta górnik obraz  | Medium| Agent       | Wykryto proces zwykle związany z eksploracją waluty cyfrowej.| Sprawdź z użytkownikiem, który uruchomił polecenie, czy była to uzasadniona aktywność na urządzeniu. Jeśli nie, eskaluj alert do zespołu zabezpieczeń informacji.|
 |   Wykryto podejrzane użycie polecenia nohup | Medium | Agent       | Wykryto podejrzane użycie polecenia nohup na hoście. Złośliwi aktorzy często uruchamiają polecenie nohup z katalogu tymczasowego, skutecznie umożliwiając ich pliki wykonywalne do uruchamiania w tle. Wyświetlanie tego polecenia uruchamianego na plikach znajdujących się w katalogu tymczasowym nie jest oczekiwane lub zwykłe zachowanie. |Przejrzyj z użytkownikiem, który uruchomił polecenie, jeśli było to uzasadnione działanie, które można oczekiwać, aby zobaczyć na urządzeniu. Jeśli nie, eskaluj alert do zespołu zabezpieczeń informacji.
 |   Wykryto podejrzane użycie polecenia useradd  | Medium      | Agent       | Podejrzane użycie polecenia useradd wykrytego na urządzeniu. |Przejrzyj z użytkownikiem, który uruchomił polecenie, jeśli było to uzasadnione działanie, które można oczekiwać, aby zobaczyć na urządzeniu. Jeśli nie, eskaluj alert do zespołu zabezpieczeń informacji.
 |  Odsłonięty demon platformy Docker przez gniazdo TCP  | Medium | Agent | Dzienniki maszyny wskazują, że demon platformy Docker (dockerd) udostępnia gniazdo TCP. Domyślnie konfiguracja platformy Docker nie używa szyfrowania ani uwierzytelniania, gdy gniazdo TCP jest włączone. Domyślna konfiguracja platformy Docker umożliwia pełny dostęp do demona platformy Docker przez osoby mające dostęp do odpowiedniego portu.|Przejrzyj z użytkownikiem, który uruchomił polecenie, jeśli było to uzasadnione działanie, które można oczekiwać, aby zobaczyć na urządzeniu. Jeśli nie, eskaluj alert do zespołu zabezpieczeń informacji.
@@ -60,7 +58,7 @@ Aby uzyskać więcej informacji, zobacz [konfigurowalne alerty](concept-customiz
 |  Wykryto pobieranie plików ze znanego złośliwego źródła   | Medium  | Agent       |  Pobieranie pliku ze znanego źródła złośliwego oprogramowania wykrytego.|Przejrzyj z użytkownikiem, który uruchomił polecenie, jeśli było to uzasadnione działanie, które można oczekiwać, aby zobaczyć na urządzeniu. Jeśli nie, eskaluj alert do zespołu zabezpieczeń informacji.
 |   Wykryto dostęp do plików htaccess | Medium                       | Agent       | Analiza danych hosta wykryła możliwą manipulację plikiem htaccess. Htaccess to potężny plik konfiguracyjny, który pozwala na wprowadzanie wielu zmian na serwerze internetowym z uruchomionym oprogramowaniem Apache Web, w tym podstawowe funkcje przekierowania i bardziej zaawansowane funkcje, takie jak podstawowa ochrona hasłem. Złośliwi aktorzy często modyfikują pliki htaccess na zainfekowanych komputerach, aby uzyskać trwałość. |Upewnij się, że jest to uzasadnione oczekiwane działanie na hoście. Jeśli nie, eskaluj alert do zespołu zabezpieczeń informacji.|
 |  Znane narzędzie ataku  | Medium                                   | Agent       | Wykryto narzędzie często związane ze złośliwymi użytkownikami atakującymi inne maszyny w jakiś sposób. |Przejrzyj z użytkownikiem, który uruchomił polecenie, jeśli było to uzasadnione działanie, które można oczekiwać, aby zobaczyć na urządzeniu. Jeśli nie, eskaluj alert do zespołu zabezpieczeń informacji.|
-|  Agent IoT podjął próbę przeanalizowania konfiguracji bliźniaczej reprezentacji modułu i nie powiódł się | Medium  | Agent       | Agent zabezpieczeń Usługi Azure Security Center dla IoT nie może przeanalizować konfiguracji bliźniaczej reprezentacji modułu z powodu niezgodności typu w obiekcie konfiguracji|Sprawdź poprawność konfiguracji bliźniaczej reprezentacji modułu względem schematu konfiguracji agenta IoT, napraw wszystkie niezgodności. 
+|  Agent IoT podjął próbę przeanalizowania konfiguracji bliźniaczej reprezentacji modułu i nie powiódł się | Medium  | Agent       | Agent zabezpieczeń Usługi Azure Security Center dla IoT nie może przeanalizować konfiguracji bliźniaczej reprezentacji modułu z powodu niezgodności typu w obiekcie konfiguracji|Sprawdź poprawność konfiguracji bliźniaczej reprezentacji modułu względem schematu konfiguracji agenta IoT, napraw wszystkie niezgodności.
 |  Wykryto rekonesans lokalnego hosta  | Medium | Agent       | Wykryto wykonanie polecenia zwykle związanego ze zwykłym wykrytym rekonesansem bota Linux. |Przejrzyj podejrzany wiersz polecenia, aby potwierdzić, że został on wykonany przez uprawnionego użytkownika. Jeśli nie, eskaluj alert do zespołu zabezpieczeń informacji.
 |  Niezgodność między interpreterem skryptu a rozszerzeniem pliku  | Medium | Agent       | Niezgodność między interpreterem skryptu a rozszerzeniem pliku skryptu dostarczonego jako wykryte dane wejściowe. Ten typ niezgodności jest często skojarzony z wykonaniami skryptów atakujących. |Przejrzyj z użytkownikiem, który uruchomił polecenie, jeśli było to uzasadnione działanie, które można oczekiwać, aby zobaczyć na urządzeniu. Jeśli nie, eskaluj alert do zespołu zabezpieczeń informacji.
 |  Wykryto możliwe tylne drzwi  | Medium | Agent |Podejrzany plik został pobrany, a następnie uruchomiony na hoście w ramach subskrypcji. Ten typ działania jest często skojarzony z instalacją backdoor. |Przejrzyj z użytkownikiem, który uruchomił polecenie, jeśli było to uzasadnione działanie, które można oczekiwać, aby zobaczyć na urządzeniu. Jeśli nie, eskaluj alert do zespołu zabezpieczeń informacji.

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: efa2885ce0534c5d78bb08bbf24da59850f6ea22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a171dc795e685655b5a3c73d088d3963c2aaa4ae
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075189"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312318"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>Obsługa bramy aplikacji dla zaplecza wielu dzierżawców, takich jak usługa aplikacji
 
@@ -30,9 +30,9 @@ Usługa Application Gateway umożliwia użytkownikom zastępowanie nagłówka ho
 
 Możliwość określenia zastąpienia hosta jest zdefiniowana w [ustawieniach HTTP](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) i może być stosowana do dowolnej puli zaplecza podczas tworzenia reguł. Obsługiwane są następujące dwa sposoby zastępowania nagłówka hosta i rozszerzenia SNI dla zaplecza wielu dzierżawców:
 
-- Możliwość ustawienia nazwy hosta na stałą wartość jawnie wprowadzona w ustawieniach HTTP. Ta funkcja zapewnia, że nagłówek hosta jest zastępowany do tej wartości dla całego ruchu do puli zaplecza, gdzie są stosowane określone ustawienia HTTP. W przypadku korzystania z kompleksowej usługi SSL ta zastąpiona nazwa hosta jest używana w rozszerzeniu SNI. Ta funkcja umożliwia scenariusze, w których farma puli zaplecza oczekuje nagłówka hosta, który różni się od nagłówka hosta przychodzącego klienta.
+- Możliwość ustawienia nazwy hosta na stałą wartość jawnie wprowadzona w ustawieniach HTTP. Ta funkcja zapewnia, że nagłówek hosta jest zastępowany do tej wartości dla całego ruchu do puli zaplecza, gdzie są stosowane określone ustawienia HTTP. W przypadku korzystania z end to end TLS, ta zastąpiona nazwa hosta jest używana w rozszerzeniu SNI. Ta funkcja umożliwia scenariusze, w których farma puli zaplecza oczekuje nagłówka hosta, który różni się od nagłówka hosta przychodzącego klienta.
 
-- Możliwość wyprowadzenia nazwy hosta z adresu IP lub nazwy FQDN członków puli zaplecza. Ustawienia HTTP zapewniają również opcję dynamicznego wybierania nazwy hosta z nazwy FQDN członka puli zaplecza, jeśli jest skonfigurowana z opcją wyprowadzania nazwy hosta od pojedynczego członka puli zaplecza. W przypadku korzystania z kompleksowej usługi SSL ta nazwa hosta jest określana na podstawie nazwy FQDN i używana w rozszerzeniu SNI. Ta funkcja umożliwia scenariusze, w których pula zaplecza może mieć dwie lub więcej usług PaaS z wieloma dzierżawcami, takich jak aplikacje sieci Web platformy Azure, a nagłówek hosta żądania dla każdego elementu członkowskiego zawiera nazwę hosta pochodzącą od jego nazwy FQDN. Do implementowania tego scenariusza używamy przełącznika w ustawieniach HTTP o nazwie [Wybierz nazwę hosta z adresu wewnętrznej bazy danych,](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) który dynamicznie zastępuje nagłówek hosta w oryginalnym żądaniu do tego, o którym mowa w puli wewnętrznej bazy danych.  Jeśli na przykład identyfikator FQDN puli wewnętrznej bazy danych zawiera "contoso11.azurewebsites.net" i "contoso22.azurewebsites.net", nagłówek hosta oryginalnego żądania, który jest contoso.com, zostanie zastąpiony contoso11.azurewebsites.net lub contoso22.azurewebsites.net gdy żądanie zostanie wysłane do odpowiedniego serwera wewnętrznej bazy danych. 
+- Możliwość wyprowadzenia nazwy hosta z adresu IP lub nazwy FQDN członków puli zaplecza. Ustawienia HTTP zapewniają również opcję dynamicznego wybierania nazwy hosta z nazwy FQDN członka puli zaplecza, jeśli jest skonfigurowana z opcją wyprowadzania nazwy hosta od pojedynczego członka puli zaplecza. Podczas korzystania z end to end TLS, ta nazwa hosta pochodzi od nazwy FQDN i jest używana w rozszerzeniu SNI. Ta funkcja umożliwia scenariusze, w których pula zaplecza może mieć dwie lub więcej usług PaaS z wieloma dzierżawcami, takich jak aplikacje sieci Web platformy Azure, a nagłówek hosta żądania dla każdego elementu członkowskiego zawiera nazwę hosta pochodzącą od jego nazwy FQDN. Do implementowania tego scenariusza używamy przełącznika w ustawieniach HTTP o nazwie [Wybierz nazwę hosta z adresu wewnętrznej bazy danych,](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) który dynamicznie zastępuje nagłówek hosta w oryginalnym żądaniu do tego, o którym mowa w puli wewnętrznej bazy danych.  Na przykład jeśli nazwa FQDN puli wewnętrznej bazy danych zawiera "contoso11.azurewebsites.net" i "contoso22.azurewebsites.net", nagłówek hosta oryginalnego żądania, który jest contoso.com zostanie zastąpiony contoso11.azurewebsites.net lub contoso22.azurewebsites.net, gdy żądanie zostanie wysłane do odpowiedniego serwera wewnętrznej bazy danych. 
 
   ![Scenariusz aplikacji internetowej](./media/application-gateway-web-app-overview/scenario.png)
 
@@ -40,11 +40,11 @@ Korzystając z tej funkcji, klienci mogą określić opcje w ustawieniach HTTP i
 
 ## <a name="special-considerations"></a>Uwagi szczególne
 
-### <a name="ssl-termination-and-end-to-end-ssl-with-multi-tenant-services"></a>Zakończenie i zakończenie ssl SSL z usługami wielodostępowymi
+### <a name="tls-termination-and-end-to-end-tls-with-multi-tenant-services"></a>Zakończenie protokołu TLS i zakończenie tls z usługami wielodostępczymi
 
-Zarówno szyfrowanie SSL, jak i end-to-end SSL jest obsługiwane przez usługi z wieloma dzierżawami. W przypadku zakończenia SSL w bramie aplikacji certyfikat SSL nadal musi być dodawany do odbiornika bramy aplikacji. Jednak w przypadku ssl od końca do końca zaufane usługi platformy Azure, takie jak aplikacje sieci web usługi Azure App, nie wymagają umieszczania na białej liście zaplecza w bramie aplikacji. W związku z tym nie ma potrzeby dodawania żadnych certyfikatów uwierzytelniania. 
+Zarówno szyfrowanie TLS, jak i end-to-end TLS jest obsługiwane przez usługi z wieloma dzierżawcami. W przypadku zakończenia protokołu TLS w bramie aplikacji certyfikat TLS nadal musi być dodawany do odbiornika bramy aplikacji. Jednak w przypadku TLS od końca do końca zaufane usługi platformy Azure, takie jak aplikacje sieci web usługi Azure App, nie wymagają umieszczania na białej liście zaplecza w bramie aplikacji. W związku z tym nie ma potrzeby dodawania żadnych certyfikatów uwierzytelniania. 
 
-![od końca do końca SSL](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
+![od końca do końca TLS](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 
 Należy zauważyć, że na powyższej ilustracji nie ma wymogu dodawania certyfikatów uwierzytelniania, gdy usługa aplikacji jest zaznaczona jako zaplecze.
 

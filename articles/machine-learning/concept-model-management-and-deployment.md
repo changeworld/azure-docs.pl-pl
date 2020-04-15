@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: f5aaf8adf33d27f8ebb99c8ca3a873d958632a4f
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 7857d11c625911cd1b49dfcf0e0d612fc6a3871e
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616847"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314307"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MlOps: Zarządzanie modelami, wdrażanie i monitorowanie za pomocą usługi Azure Machine Learning
 
@@ -124,6 +124,16 @@ Aby wdrożyć model jako usługę sieci web, należy podać następujące elemen
 
 Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli](how-to-deploy-and-where.md).
 
+#### <a name="controlled-rollout"></a>Kontrolowane wdrażanie
+
+Podczas wdrażania w usłudze Azure Kubernetes można użyć kontrolowanego wdrażania, aby włączyć następujące scenariusze:
+
+* Tworzenie wielu wersji punktu końcowego dla wdrożenia
+* Wykonaj testowanie A/B, kierując ruch do różnych wersji punktu końcowego.
+* Przełączanie między wersjami punktów końcowych przez aktualizowanie procentu ruchu w konfiguracji punktu końcowego.
+
+Aby uzyskać więcej informacji, zobacz [Kontrolowane wdrażanie modeli ml](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview).
+
 #### <a name="iot-edge-devices"></a>Urządzenia IoT Edge
 
 Modele z urządzeniami IoT można używać za pośrednictwem **modułów usługi Azure IoT Edge.** Moduły IoT Edge są wdrażane na urządzeniu sprzętowym, co umożliwia wnioskowanie lub ocenianie modelu na urządzeniu.
@@ -136,12 +146,20 @@ Usługa Microsoft Power BI obsługuje używanie modeli uczenia maszynowego do an
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Przechwytywanie danych nadzoru wymaganych do przechwytywania kompleksowego cyklu życia ml
 
-Usługa Azure ML zapewnia możliwość śledzenia end-to-end ścieżki inspekcji wszystkich zasobów ml. Są to:
+Usługa Azure ML zapewnia możliwość śledzenia end-to-end dziennik inspekcji wszystkich zasobów ml przy użyciu metadanych.
 
 - Usługa Azure ML [integruje się z git,](how-to-set-up-training-targets.md#gitintegration) aby śledzić informacje o tym, z którego repozytorium / oddział / zatwierdzenie / zatwierdzenie kodu pochodzi.
-- [Zestawy danych usługi Azure ML](how-to-create-register-datasets.md) ułatwią śledzenie danych, profilowania i wersji. 
+- [Zestawy danych usługi Azure ML](how-to-create-register-datasets.md) ułatwią śledzenie danych, profilowania i wersji.
+- [Możliwość interpretacji](how-to-machine-learning-interpretability.md) pozwala wyjaśnić modele, spełnić zgodność z przepisami i zrozumieć, jak modele osiągają wynik dla danego wkładu.
 - Historia uruchamiania usługi Azure ML przechowuje migawkę kodu, danych i obliczeń używanych do uczenia modelu.
 - Usługa Azure ML Model Registry przechwytuje wszystkie metadane skojarzone z modelem (który eksperyment uszkolił go, gdzie jest wdrażany, jeśli jego wdrożenia są w dobrej kondycji).
+- [Integracja z usługą Azure Event Grid](concept-event-grid-integration.md) umożliwia działanie na zdarzenia w cyklu życia uczenia się. Na przykład rejestracji modelu, wdrażania, dryfu danych i szkolenia (uruchom) zdarzenia.
+
+> [!TIP]
+> Podczas gdy niektóre informacje o modelach i zestawach danych są przechwytywane automatycznie, można dodać dodatkowe informacje za pomocą __tagów__. Szukając zarejestrowanych modeli i zestawów danych w obszarze roboczym, można używać tagów jako filtru.
+>
+> Skojarzenie zestawu danych z zarejestrowanym modelem jest krokiem opcjonalnym. Aby uzyskać informacje na temat odwoływania się do zestawu danych podczas rejestrowania modelu, zobacz odwołanie do klasy [modelu.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py)
+
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Powiadamianie, automatyzację i ostrzeganie o zdarzeniach w cyklu życia mt
 Usługa Azure ML publikuje kluczowe zdarzenia na platformie Azure EventGrid, która może służyć do powiadamiania i automatyzacji zdarzeń w cyklu życia uczenia się. Aby uzyskać więcej informacji, zobacz [ten dokument](how-to-use-event-grid.md).
@@ -157,7 +175,7 @@ Aby uzyskać więcej informacji, zobacz [Jak włączyć zbieranie danych modelu]
 
 ## <a name="retrain-your-model-on-new-data"></a>Przekwalifikowanie modelu na nowe dane
 
-Często warto zaktualizować model, a nawet przeszkolić go od podstaw, ponieważ otrzymujesz nowe informacje. Czasami odbieranie nowych danych jest oczekiwaną częścią domeny. Innym razem, jak wspomniano w [detect dryf danych (podgląd) na zestawach danych,](how-to-monitor-datasets.md)wydajność modelu może ulec pogorszeniu w obliczu takich rzeczy, jak zmiany w danym czujniku, naturalne zmiany danych, takie jak efekty sezonowe lub funkcje zmieniające się w stosunku do innych funkcji. 
+Często należy sprawdzić poprawność modelu, zaktualizować go, a nawet przeszkolić go od podstaw, ponieważ otrzymujesz nowe informacje. Czasami odbieranie nowych danych jest oczekiwaną częścią domeny. Innym razem, jak wspomniano w [detect dryf danych (podgląd) na zestawach danych,](how-to-monitor-datasets.md)wydajność modelu może ulec pogorszeniu w obliczu takich rzeczy, jak zmiany w danym czujniku, naturalne zmiany danych, takie jak efekty sezonowe lub funkcje zmieniające się w stosunku do innych funkcji. 
 
 Nie ma uniwersalnej odpowiedzi na pytanie "Skąd mam wiedzieć, czy powinienem przekwalifikować się?" ale narzędzia do monitorowania zdarzeń i monitorowania usługi Azure ML zostały omówione wcześniej, są dobrymi punktami wyjścia dla automatyzacji. Po podjęciu decyzji o przekwalifikowaniu należy: 
 

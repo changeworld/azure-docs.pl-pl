@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/10/2020
 ms.author: rogarana
-ms.openlocfilehash: ae575eebf700f5495ea20d2bd3732ca21ad32315
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 172e0944fe117dc78565b10e6c0324737056ddcb
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011427"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383855"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Włączanie uwierzytelniania usługi Active Directory za pomocą smb dla udziałów plików platformy Azure
 
@@ -72,7 +72,7 @@ Uwierzytelnianie usługi Azure Files AD (wersja zapoznawcza) jest dostępne we [
 
 ## <a name="workflow-overview"></a>Omówienie przepływu pracy
 
-Przed włączeniem uwierzytelniania usługi AD za pośrednictwem SMB dla [udziałów](#prerequisites) plików platformy Azure, zaleca się przejść przez wymagania wstępne i upewnij się, że wykonano wszystkie kroki. Wymagania wstępne sprawdź, czy środowiska usługi AD, usługi Azure AD i usługi Azure Storage są poprawnie skonfigurowane. 
+Przed włączeniem uwierzytelniania usługi AD za pośrednictwem SMB dla [udziałów](#prerequisites) plików platformy Azure, zaleca się przejść przez wymagania wstępne i upewnij się, że wykonano wszystkie kroki. Wymagania wstępne sprawdź, czy środowiska usługi AD, usługi Azure AD i usługi Azure Storage są poprawnie skonfigurowane. Jeśli planujesz włączyć konfiguracje sieci w udziale plików, zaleca się, aby ocenić [uwagę sieci](https://docs.microsoft.com/azure/storage/files/storage-files-networking-overview) i zakończyć powiązaną konfigurację najpierw przed włączeniem uwierzytelniania usługi AD. 
 
 Następnie wykonaj poniższe czynności, aby skonfigurować usługi Azure Files for AD Authentication: 
 
@@ -84,7 +84,7 @@ Następnie wykonaj poniższe czynności, aby skonfigurować usługi Azure Files 
 
 4. Instalowanie udziału plików platformy Azure z przyłączanej do domeny usługi AD maszyny Wirtualnej. 
 
-5. Obracanie hasła do konta AD (opcjonalnie)
+5. Aktualizowanie hasła tożsamości konta magazynu w usłudze AD
 
 Na poniższym diagramie przedstawiono kompleksowy przepływ pracy umożliwiający włączenie uwierzytelniania usługi Azure AD za pomocą smb dla udziałów plików platformy Azure. 
 
@@ -100,7 +100,7 @@ Aby włączyć uwierzytelnianie usługi AD za pomocą SMB dla udziałów plików
 > [!IMPORTANT]
 > Polecenie `Join-AzStorageAccountForAuth` cmdlet spowoduje zmiany w środowisku usługi AD. Przeczytaj poniższe wyjaśnienie, aby lepiej zrozumieć, co robi, aby upewnić się, że masz odpowiednie uprawnienia do wykonania polecenia i że zastosowane zmiany są zgodne z zasadami zgodności i zabezpieczeń. 
 
-Polecenie `Join-AzStorageAccountForAuth` cmdlet wykona odpowiednik sprzężenia domeny w trybie offline w imieniu wskazanego konta magazynu. Spowoduje to utworzenie konta w domenie usługi AD, [konta komputera](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (domyślnie) lub konta logowania [do usługi.](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) Utworzone konto usługi AD reprezentuje konto magazynu w domenie usługi AD. Jeśli konto usługi AD jest tworzone w ramach jednostki organizacyjnej usługi AD (OU), która wymusza wygaśnięcie hasła, należy zaktualizować hasło przed maksymalnym wiekiem hasła. Nie można zaktualizować hasła konta usługi AD spowoduje błędy uwierzytelniania podczas uzyskiwania dostępu do udziałów plików platformy Azure. Aby dowiedzieć się, jak zaktualizować hasło, zobacz [Aktualizowanie hasła konta USŁUGI AD](#5-update-ad-account-password).
+Polecenie `Join-AzStorageAccountForAuth` cmdlet wykona odpowiednik sprzężenia domeny w trybie offline w imieniu wskazanego konta magazynu. Spowoduje to utworzenie konta w domenie usługi AD, [konta komputera](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (domyślnie) lub konta logowania [do usługi.](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) Utworzone konto usługi AD reprezentuje konto magazynu w domenie usługi AD. Jeśli konto usługi AD jest tworzone w ramach jednostki organizacyjnej usługi AD (OU), która wymusza wygaśnięcie hasła, należy zaktualizować hasło przed maksymalnym wiekiem hasła. Nie można zaktualizować hasła konta usługi AD spowoduje błędy uwierzytelniania podczas uzyskiwania dostępu do udziałów plików platformy Azure. Aby dowiedzieć się, jak zaktualizować hasło, zobacz [Aktualizowanie hasła tożsamości konta magazynu w usłudze AD](#5-update-the-password-of-your-storage-account-identity-in-ad).
 
 Do wykonania rejestracji i włączenia funkcji można użyć następującego skryptu lub, alternatywnie, można ręcznie wykonać operacje, które skrypt będzie. Te operacje są opisane w sekcji po skrypt. Nie musisz robić obu.
 
@@ -113,7 +113,8 @@ Do wykonania rejestracji i włączenia funkcji można użyć następującego skr
 ### <a name="12-domain-join-your-storage-account"></a>1.2 Domena dołącza do twojego konta magazynu
 Pamiętaj, aby zastąpić wartości zastępcze własnymi w poniższych parametrach przed wykonaniem ich w programie PowerShell.
 > [!IMPORTANT]
-> Poniżej polecenie cmdlet dołączania do domeny utworzy konto usługi AD reprezentujące konto magazynu (udział plików) w usłudze AD. Można zarejestrować się jako konto komputera lub konto logowania usługi. W przypadku kont komputerów domyślny wiek wygaśnięcia hasła jest ustawiony w u. AD na 30 dni. Podobnie konto logowania usługi może mieć domyślny wiek wygaśnięcia hasła ustawiony w domenie usługi AD lub jednostce organizacyjnej (OU). Zdecydowanie zalecamy sprawdzenie, jaki jest wiek wygaśnięcia hasła skonfigurowany w środowisku usługi AD i zaplanować [aktualizację hasła konta usługi AD](#5-update-ad-account-password) na koncie USŁUGI AD poniżej przed osiągnięciem maksymalnego wieku hasła. Nie można zaktualizować hasła konta usługi AD spowoduje błędy uwierzytelniania podczas uzyskiwania dostępu do udziałów plików platformy Azure. Można rozważyć [utworzenie nowej jednostki organizacyjnej usługi AD (OU) w usłudze AD](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) i odpowiednio wyłączyć zasady wygasania haseł na [kontach komputerów](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN) lub kontach logowania do usługi. 
+> Poniżej polecenie cmdlet dołączania do domeny utworzy konto usługi AD reprezentujące konto magazynu (udział plików) w usłudze AD. Możesz zarejestrować się jako konto komputera lub konto logowania usługi, zobacz [często zadawane](https://docs.microsoft.com/azure/storage/files/storage-files-faq#security-authentication-and-access-control) pytania, aby uzyskać szczegółowe informacje. W przypadku kont komputerów domyślny wiek wygaśnięcia hasła jest ustawiony w u. AD na 30 dni. Podobnie konto logowania usługi może mieć domyślny wiek wygaśnięcia hasła ustawiony w domenie usługi AD lub jednostce organizacyjnej (OU).
+> W przypadku obu typów kont zdecydowanie zalecamy sprawdzenie, jaki jest wiek wygaśnięcia hasła skonfigurowany w środowisku usługi AD i plan [zaktualizowania hasła tożsamości konta magazynu w usłudze AD](#5-update-the-password-of-your-storage-account-identity-in-ad) poniżej przed osiągnięciem maksymalnego wieku hasła. Nie można zaktualizować hasła konta usługi AD spowoduje błędy uwierzytelniania podczas uzyskiwania dostępu do udziałów plików platformy Azure. Można rozważyć [utworzenie nowej jednostki organizacyjnej usługi AD (OU) w usłudze AD](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) i odpowiednio wyłączyć zasady wygasania haseł na [kontach komputerów](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN) lub kontach logowania do usługi. 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -128,21 +129,27 @@ Import-Module -Name AzFilesHybrid
 #Login with an Azure AD credential that has either storage account owner or contributer RBAC assignment
 Connect-AzAccount
 
+#Define parameters
+$SubscriptionId = "<your-subscription-id-here>"
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
 #Select the target subscription for the current session
-Select-AzSubscription -SubscriptionId "<your-subscription-id-here>"
+Select-AzSubscription -SubscriptionId $SubscriptionId 
 
 # Register the target storage account with your active directory environment under the target OU (for example: specify the OU with Name as "UserAccounts" or DistinguishedName as "OU=UserAccounts,DC=CONTOSO,DC=COM"). 
 # You can use to this PowerShell cmdlet: Get-ADOrganizationalUnit to find the Name and DistinguishedName of your target OU. If you are using the OU Name, specify it with -OrganizationalUnitName as shown below. If you are using the OU DistinguishedName, you can set it with -OrganizationalUnitDistinguishedName. You can choose to provide one of the two names to specify the target OU.
 # You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account, depends on the AD permission you have and preference. 
+#You can run Get-Help Join-AzStorageAccountForAuth to find more details on this cmdlet.
+
 Join-AzStorageAccountForAuth `
-        -ResourceGroupName "<resource-group-name-here>" `
-        -Name "<storage-account-name-here>" `
-        -DomainAccountType "ComputerAccount" `
-        -OrganizationalUnitName "<ou-name-here>" or -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>"
+        -ResourceGroupName $ResourceGroupName `
+        -Name $StorageAccountName `
+        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" ` #Default set to "ComputerAccount"
+        -OrganizationalUnitName "<ou-name-here>" #You can also use -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>" instead. If you don't provide the OU name as an input parameter, the AD identity that represents the storage account will be created under the root directory.
 
-#If you don't provide the OU name as an input parameter, the AD identity that represents the storage account will be created under the root directory.
-
-#
+#You can run the Debug-AzStorageAccountAuth cmdlet to conduct a set of basic checks on your AD configuration with the logged on AD user. This cmdlet is supported on AzFilesHybrid v0.1.2+ version. For more details on the checks performed in this cmdlet, go to Azure Files FAQ.
+Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 
 ```
 
@@ -161,7 +168,7 @@ Aby utworzyć to konto ręcznie, utwórz nowy klucz `New-AzStorageAccountKey -Ke
 
 Po uzyskaniu tego klucza utwórz konto usługi lub komputera w ramach ou. Użyj następującej specyfikacji: SPN: "cifs/your-storage-account-name-here.file.core.windows.net" Hasło: Klucz Protokołu Kerberos dla twojego konta magazynu.
 
-Jeśli twoja firma organizacyjna wymusza wygaśnięcie hasła, należy zaktualizować hasło przed maksymalnym wiekiem hasła, aby zapobiec błędom uwierzytelniania podczas uzyskiwania dostępu do udziałów plików platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Aktualizowanie hasła konta USŁUGI AD.](#5-update-ad-account-password)
+Jeśli twoja firma organizacyjna wymusza wygaśnięcie hasła, należy zaktualizować hasło przed maksymalnym wiekiem hasła, aby zapobiec błędom uwierzytelniania podczas uzyskiwania dostępu do udziałów plików platformy Azure. Szczegółowe informacje można [znaleźć w części Aktualizowanie hasła tożsamości konta magazynu w usłudze AD.](#5-update-the-password-of-your-storage-account-identity-in-ad)
 
 Zachowaj identyfikator SID nowo utworzonego konta, będziesz go potrzebować do następnego kroku. Tożsamość usługi AD, która została właśnie utworzona, która reprezentuje konto magazynu, nie musi być synchronizowana z usługą Azure AD.
 
@@ -207,7 +214,7 @@ Funkcja została pomyślnie włączona na koncie magazynu. Mimo że funkcja jest
 
 Teraz pomyślnie włączono uwierzytelnianie usługi AD za pomocą SMB i przypisano rolę niestandardową, która zapewnia dostęp do udziału plików platformy Azure z tożsamością usługi AD. Aby udzielić dodatkowym użytkownikom dostępu do udziału plików, postępuj zgodnie z instrukcjami w sekcji [Przypisywanie uprawnień dostępu](#2-assign-access-permissions-to-an-identity) do używania tożsamości i [konfigurowania uprawnień NTFS za pomocą sekcji SMB.](#3-configure-ntfs-permissions-over-smb)
 
-## <a name="5-update-ad-account-password"></a>5. Aktualizacja hasła do konta AD
+## <a name="5-update-the-password-of-your-storage-account-identity-in-ad"></a>5. Zaktualizuj hasło tożsamości konta magazynu w usłudze AD
 
 Jeśli użytkownik zarejestrował tożsamość/konto usługi AD reprezentujące konto magazynu w ramach usługi organizacyjnej wymuszaej czas wygaśnięcia hasła, należy obrócić hasło przed osiągnięciem maksymalnego wieku hasła. Nie można zaktualizować hasła konta usługi AD spowoduje błędy uwierzytelniania dostępu do udziałów plików platformy Azure.  
 

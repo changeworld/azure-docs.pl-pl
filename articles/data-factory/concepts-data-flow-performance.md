@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.date: 04/14/2020
+ms.openlocfilehash: 18f8b0732e4af0229ff225d9c3b423e27bf342a8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409837"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382795"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Przewodnik dotyczący mapowania przepływów danych i dostrajania
 
@@ -37,7 +37,7 @@ Podczas projektowania przepływów danych mapowania można przetestować każdą
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Zwiększanie rozmiaru obliczeń w czasie wykonywania integracji platformy Azure
 
-Środowisko wykonawcze integracji z większą liczbą rdzeni zwiększa liczbę węzłów w środowiskach obliczeniowych Platformy Spark i zapewnia większą moc obliczeniową do odczytu, zapisu i przekształcania danych.
+Środowisko wykonawcze integracji z większą liczbą rdzeni zwiększa liczbę węzłów w środowiskach obliczeniowych Platformy Spark i zapewnia większą moc obliczeniową do odczytu, zapisu i przekształcania danych. Przepływy danych usługi ADF wykorzystują platformę Spark dla aparatu obliczeniowego. Środowisko Platformy Spark działa bardzo dobrze na zasoby zoptymalizowane pod kątem pamięci.
 * Wypróbuj klaster **zoptymalizowany pod kątem obliczeń,** jeśli chcesz, aby szybkość przetwarzania była wyższa niż szybkość wprowadzania.
 * Wypróbuj klaster **zoptymalizowany pod kątem pamięci,** jeśli chcesz buforować więcej danych w pamięci. Zoptymalizowana pamięć ma wyższy punkt cenowy za rdzeń niż zoptymalizowana pod kątem obliczeń, ale prawdopodobnie spowoduje szybsze przekształcenie.
 
@@ -49,7 +49,11 @@ Aby uzyskać więcej informacji na temat tworzenia środowiska wykonawczego inte
 
 Domyślnie włączenie debugowania spowoduje użycie domyślnego środowiska uruchomieniowego integracji platformy Azure, który jest tworzony automatycznie dla każdej fabryki danych. Ta domyślna usługa Azure IR jest ustawiona dla ośmiu rdzeni, czterech dla węzła sterownika i czterech dla węzła procesu roboczego przy użyciu właściwości ogólnych obliczeń. Podczas testowania z większymi danymi można zwiększyć rozmiar klastra debugowania, tworząc usługę Azure IR z większymi konfiguracjami i wybrać tę nową usługę Azure IR po włączeniu debugowania. Spowoduje to poinstruowanie usługi ADF do używania tej usługi Azure IR do podglądu danych i debugowania potoku z przepływami danych.
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Optymalizacja pod kątem bazy danych SQL Azure i usługi Azure SQL Data Warehouse
+### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>Skrócenie czasu uruchamiania obliczeń klastra dzięki czasowi wygaśnięcia
+
+Istnieje właściwość w usłudze Azure IR w obszarze Właściwości przepływu danych, która pozwoli na stand-up puli zasobów obliczeniowych klastra dla fabryki. Z tej puli, można sekwencyjnie przesłać działania przepływu danych do wykonania. Po ustanowieniu puli każde kolejne zadanie zajmie 1-2 minuty, aby klaster platformy Spark na żądanie wykonał zadanie. Początkowa konfiguracja puli zasobów zajmie około 6 minut. Określ czas, przez jaki chcesz zachować pulę zasobów w ustawieniu czas wygaśnięcia (TTL).
+
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Optymalizacja pod kątem bazy danych SQL Azure i synapse usługi Azure SQL Data Warehouse
 
 ### <a name="partitioning-on-source"></a>Partycjonowanie w źródle
 
@@ -73,7 +77,7 @@ W obszarze **Opcje źródła** w transformacji źródła następujące ustawieni
 * Ustawienie kwerendy może umożliwić filtrowanie wierszy u źródła, zanim dotrą one do przepływu danych w celu przetworzenia. Może to przyspieszyć początkowe pozyskiwanie danych. Jeśli używasz kwerendy, można dodać opcjonalne wskazówki kwerendy dla usługi Azure SQL DB, takie jak ODCZYT BEZ ZGODY.
 * Odczyt niezatwierdzonych zapewni szybsze wyniki kwerendy w transformacji źródła
 
-![Źródła](media/data-flow/source4.png "Element źródłowy")
+![Element źródłowy](media/data-flow/source4.png "Element źródłowy")
 
 ### <a name="sink-batch-size"></a>Rozmiar partii zlewu
 

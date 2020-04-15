@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 4df6396d156c3fe1b75e3cac3d3f4aad7f23553a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e22641e9d4f9959c26cd2043ea2acd7e260e0f0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77660669"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314057"
 ---
 # <a name="message-sessions"></a>Sesje komunikatów
 Sesje usługi Microsoft Azure Service Bus umożliwiają wspólne i uporządkowane obsługa niepowiązanych sekwencji powiązanych wiadomości. Sesje mogą być używane w pierwszym w, pierwszy na zewnątrz (FIFO) i wzorce żądania odpowiedzi. W tym artykule pokazano, jak używać sesji do implementowania tych wzorców podczas korzystania z usługi Service Bus. 
@@ -68,7 +68,7 @@ Blokada sesji utrzymywana przez odbiornik sesji jest parasolem dla blokad komuni
 
 ### <a name="message-session-state"></a>Stan sesji wiadomości
 
-Gdy przepływy pracy są przetwarzane w dużych, wysokiej dostępności systemów chmurowych, program obsługi przepływu pracy skojarzony z określoną sesją musi być w stanie odzyskać po nieoczekiwanych błędach i może wznowić częściowo zakończoną pracę na innym procesie lub komputerze z gdzie rozpoczęły się prace.
+Gdy przepływy pracy są przetwarzane w systemach chmury o wysokiej skali i wysokiej dostępności, program obsługi przepływu pracy skojarzony z określoną sesją musi być w stanie odzyskać po nieoczekiwanych błędach i może wznowić częściowo zakończoną pracę nad innym procesem lub komputerem, z którego rozpoczęto pracę.
 
 Funkcja stanu sesji umożliwia zdefiniowaną przez aplikację adnotację sesji wiadomości wewnątrz brokera, dzięki czemu zarejestrowany stan przetwarzania względem tej sesji staje się natychmiast dostępny, gdy sesja zostanie przejęta przez nowy procesor.
 
@@ -78,7 +78,7 @@ Interfejsy API do zarządzania stanem sesji, [SetState](/dotnet/api/microsoft.se
 
 Stan sesji pozostaje tak długo, jak nie jest wyczyszczone **(zwraca**null), nawet jeśli wszystkie wiadomości w sesji są używane.
 
-Wszystkie istniejące sesje w kolejce lub subskrypcji można wyliczyć za pomocą **sessionbrowser** metody w interfejsie API Java i [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) na [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) i [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) w kliencie .NET.
+Wszystkie istniejące sesje w kolejce lub subskrypcji można wyliczyć za pomocą **sessionbrowser** metody w interfejsie API Java i [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) na [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) i [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) w kliencie .NET Framework.
 
 Stan sesji przechowywany w kolejce lub w subskrypcji liczy się do przydziału magazynu tej jednostki. Po zakończeniu aplikacji z sesji, dlatego zaleca się dla aplikacji, aby oczyścić swój stan zatrzymany, aby uniknąć kosztów zarządzania zewnętrznego.
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: e64b0a8602a4a0806ada15546972856743c38161
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544502"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312464"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące bramy aplikacji
 
@@ -28,11 +28,11 @@ Usługa Azure Application Gateway udostępnia kontroler dostarczania aplikacji (
 
 ### <a name="what-features-does-application-gateway-support"></a>Jakie funkcje obsługuje brama aplikacji?
 
-Brama aplikacji obsługuje skalowanie automatyczne, odciążanie SSL i kompleksowy protokół SSL, zaporę aplikacji sieci web (WAF), koligacji sesji opartej na plikach cookie, routing oparty na ścieżce adresów URL, hosting wielolokajny i inne funkcje. Aby uzyskać pełną listę obsługiwanych funkcji, zobacz [Wprowadzenie do bramy aplikacji](application-gateway-introduction.md).
+Brama aplikacji obsługuje skalowanie automatyczne, odciążanie TLS i end-to-end TLS, zaporę aplikacji sieci web (WAF), koligacji sesji opartej na plikach cookie, routing oparty na ścieżce adresów URL, hosting wielolokajny i inne funkcje. Aby uzyskać pełną listę obsługiwanych funkcji, zobacz [Wprowadzenie do bramy aplikacji](application-gateway-introduction.md).
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>Czym różnią się bramy aplikacji i modułu równoważenia obciążenia platformy Azure?
 
-Brama aplikacji jest modułem równoważenia obciążenia warstwy 7, co oznacza, że działa tylko z ruchem internetowym (HTTP, HTTPS, WebSocket i HTTP/2). Obsługuje możliwości, takie jak zakończenie SSL, koligacja sesji oparta na plikach cookie i działanie okrężne dla ruchu równoważenia obciążenia. Moduł równoważe obciążenia równoważe ruch w warstwie 4 (TCP lub UDP).
+Brama aplikacji jest modułem równoważenia obciążenia warstwy 7, co oznacza, że działa tylko z ruchem internetowym (HTTP, HTTPS, WebSocket i HTTP/2). Obsługuje możliwości, takie jak zakończenie TLS, koligacja sesji oparta na plikach cookie i działanie okrężne dla ruchu równoważenia obciążenia. Moduł równoważe obciążenia równoważe ruch w warstwie 4 (TCP lub UDP).
 
 ### <a name="what-protocols-does-application-gateway-support"></a>Jakie protokoły obsługuje brama aplikacji?
 
@@ -216,7 +216,7 @@ Nie.
 
 Brama aplikacji w wersji 2 nie obsługuje obecnie IPv6. Może działać w sieci wirtualnej z dwoma stosami przy użyciu tylko IPv4, ale podsieć bramy musi być tylko IPv4. Brama aplikacji w wersji 1 nie obsługuje sieci wirtualnych z dwoma stosami. 
 
-## <a name="configuration---ssl"></a>Konfiguracja — SSL
+## <a name="configuration---tls"></a>Konfiguracja - TLS
 
 ### <a name="what-certificates-does-application-gateway-support"></a>Jakie certyfikaty obsługuje brama aplikacji?
 
@@ -255,13 +255,13 @@ Brama aplikacji obsługuje następujące mechanizmy szyfrowania.
 - TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
-Aby uzyskać informacje na temat dostosowywania opcji SSL, zobacz [Konfigurowanie wersji zasad SSL i pakietów szyfrowania w bramie aplikacji](application-gateway-configure-ssl-policy-powershell.md).
+Aby uzyskać informacje na temat dostosowywania opcji TLS, zobacz [Konfigurowanie wersji zasad TLS i pakietów szyfrowania w bramie aplikacji](application-gateway-configure-ssl-policy-powershell.md).
 
 ### <a name="does-application-gateway-support-reencryption-of-traffic-to-the-backend"></a>Czy brama aplikacji obsługuje odsyłanie ruchu do wewnętrznej bazy danych?
 
-Tak. Brama aplikacji obsługuje odciążanie SSL i end-to-end SSL, które reencrypt ruchu do wewnętrznej bazy danych.
+Tak. Brama aplikacji obsługuje odciążanie TLS i end-to-end TLS, które reencrypt ruchu do wewnętrznej bazy danych.
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>Czy mogę skonfigurować zasady protokołu SSL do sterowania wersjami protokołu SSL?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>Czy mogę skonfigurować zasady TLS do kontrolowania wersji protokołu TLS?
 
 Tak. Bramę aplikacji można skonfigurować tak, aby odmawiała protokołu TLS1.0, TLS1.1 i TLS1.2. Domyślnie ssl 2.0 i 3.0 są już wyłączone i nie można ich konfigurować.
 
@@ -278,9 +278,9 @@ Tak. W bramie aplikacji można [skonfigurować mechanizmy szyfrowania](applicati
 
 Brama aplikacji używa SHA256 do zarządzania zapleczem.
 
-### <a name="how-many-ssl-certificates-does-application-gateway-support"></a>Ile certyfikatów SSL obsługuje brama aplikacji?
+### <a name="how-many-tlsssl-certificates-does-application-gateway-support"></a>Ile certyfikatów TLS/SSL obsługuje brama aplikacji?
 
-Brama aplikacji obsługuje do 100 certyfikatów SSL.
+Brama aplikacji obsługuje do 100 certyfikatów TLS/SSL.
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>Ile certyfikatów uwierzytelniania do ponownej szyfrowania wewnętrznej obsługuje brama aplikacji?
 
@@ -288,7 +288,7 @@ Brama aplikacji obsługuje maksymalnie 100 certyfikatów uwierzytelniania.
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Czy brama aplikacji natywnie integruje się z usługą Azure Key Vault?
 
-Tak, jednostka SKU bramy aplikacji w wersji 2 obsługuje usługę Key Vault. Aby uzyskać więcej informacji, zobacz [Zakończenie SSL z certyfikatami Usługi Key Vault](key-vault-certs.md).
+Tak, jednostka SKU bramy aplikacji w wersji 2 obsługuje usługę Key Vault. Aby uzyskać więcej informacji, zobacz [Zakończenie protokołu TLS z certyfikatami Usługi Key Vault](key-vault-certs.md).
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>Jak skonfigurować odbiorniki HTTPS dla witryn .com i .net? 
 
@@ -338,7 +338,7 @@ Tak. Ochronę przed atakami DDoS można włączyć w sieci wirtualnej, w której
 
 ### <a name="what-is-an-ingress-controller"></a>Co to jest kontroler transferu danych przychodzących?
 
-Kubernetes umożliwia `deployment` tworzenie `service` i zasobów, aby udostępnić grupę zasobników wewnętrznie w klastrze. Aby udostępnić tę samą [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) usługę zewnętrznie, zdefiniowany jest zasób, który zapewnia równoważenie obciążenia, zakończenie SSL i hosting wirtualny oparty na nazwach.
+Kubernetes umożliwia `deployment` tworzenie `service` i zasobów, aby udostępnić grupę zasobników wewnętrznie w klastrze. Aby udostępnić tę samą [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) usługę zewnętrznie, zdefiniowany jest zasób, który zapewnia równoważenie obciążenia, zakończenie TLS i hosting wirtualny oparty na nazwach.
 Aby zaspokoić ten `Ingress` zasób, kontroler transferu danych przychodzących `Ingress` jest wymagane, który nasłuchuje wszelkich zmian w zasobach i konfiguruje zasady modułu równoważenia obciążenia.
 
 Kontroler transferu danych przychodzących bramy aplikacji umożliwia [bramie aplikacji platformy Azure, która](https://azure.microsoft.com/services/application-gateway/) ma być używana jako ruch przychodzący dla [usługi Azure Kubernetes,](https://azure.microsoft.com/services/kubernetes-service/) znanej również jako klaster AKS.

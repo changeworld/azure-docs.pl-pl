@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 92421125ecb5f4336922c6e6b4508fcdaf92be6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: 251507c5740af69bd0818391dd2e8f857338b6cf
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246402"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313912"
 ---
 # <a name="data-flow-script-dfs"></a>Skrypt przepływu danych (DFS)
 
@@ -139,6 +139,11 @@ derive1 sink(allowSchemaDrift: true,
 ```
 
 ## <a name="script-snippets"></a>Fragmenty kodu skryptu
+
+Fragmenty kodu skryptu to kod współużytkowany skryptu przepływu danych, którego można używać do udostępniania w przepływach danych. W tym klipie wideo poniżej opisano, jak używać fragmentów skryptów i używać skryptu przepływu danych do kopiowania i wklejania fragmentów skryptu za wykresami przepływu danych:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tA9b]
+
 
 ### <a name="aggregated-summary-stats"></a>Statystyki podsumowania zagregowane
 Dodaj transformację agregacji do przepływu danych o nazwie "SummaryStats", a następnie wklej w tym kodzie poniżej dla funkcji agregacji w skrypcie, zastępując istniejące SummaryStats. Zapewni to ogólny wzorzec dla statystyk podsumowania profilu danych.

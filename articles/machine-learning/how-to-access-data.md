@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 97aa446636ea3131246a06f69f74b5868abff608
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: ca892b5f360f523ee2b5ff875dfb0707136a5ab5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668658"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383438"
 ---
 # <a name="connect-to-azure-storage-services"></a>Łączenie się z usługami magazynu platformy Azure
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -73,7 +73,7 @@ Zaleca się utworzenie magazynu danych dla [kontenera obiektów blob platformy A
 Podczas tworzenia obszaru roboczego kontener obiektów blob platformy Azure i udział plików platformy Azure są automatycznie rejestrowane w obszarze roboczym. Są one `workspaceblobstore` nazwane i `workspacefilestore`, odpowiednio. `workspaceblobstore`służy do przechowywania artefaktów obszaru roboczego i dzienników eksperymentów uczenia maszynowego. `workspacefilestore`służy do przechowywania notesów i skryptów języka R autoryzowanych za pośrednictwem [instancji obliczeniowej](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files). Kontener `workspaceblobstore` jest ustawiony jako domyślny magazyn danych.
 
 > [!IMPORTANT]
-> Projektant usługi Azure Machine Learning (wersja zapoznawcza) utworzy magazyn danych o nazwie **azureml_globaldatasets** automatycznie po otwarciu próbki na stronie głównej projektanta. Ten magazyn danych zawiera tylko przykładowe zestawy danych. Prosimy **nie** używać tego magazynu danych do jakiegokolwiek poufnego dostępu do danych!
+> Projektant usługi Azure Machine Learning (wersja zapoznawcza) utworzy magazyn danych o nazwie **azureml_globaldatasets** automatycznie po otwarciu próbki na stronie głównej projektanta. Ten magazyn danych zawiera tylko przykładowe zestawy danych. Prosimy **nie** używać tego magazynu danych do jakiegokolwiek poufnego dostępu do danych.
 > ![Automatycznie utworzony magazyn danych dla przykładowych zestawów danych projektanta](media/how-to-access-data/datastore-designer-sample.png)
 
 <a name="access"></a>
@@ -94,7 +94,7 @@ Wszystkie metody rejestru znajdują [`Datastore`](https://docs.microsoft.com/pyt
 Informacje potrzebne do wypełnienia `register()` metody można znaleźć w [witrynie Azure portal](https://portal.azure.com).
 Wybierz **pozycję Konta magazynu** w lewym okienku i wybierz konto magazynu, które chcesz zarejestrować. Strona **Przegląd** zawiera informacje, takie jak nazwa konta, kontener i nazwa udziału plików. 
 
-* W przypadku elementów uwierzytelniania, takich jak klucz konta lub token sygnatury dostępu Współdzielonego, przejdź do **pozycji Klucze kont** w okienku **Ustawienia.** 
+* W przypadku elementów uwierzytelniania, takich jak klucz konta lub token sygnatury dostępu współdzielonego, przejdź do **klawiszy programu Access** w okienku **Ustawienia.** 
 
 * W przypadku elementów jednostkowych usług, takich jak identyfikator dzierżawy i identyfikator klienta, przejdź do **rejestracji aplikacji** i wybierz aplikację, której chcesz użyć. Jego **odpowiednia** strona Przegląd będzie zawierać te elementy.
 
@@ -107,13 +107,13 @@ Poniższe przykłady pokazują, jak zarejestrować kontener obiektów blob platf
 
 Aby zarejestrować kontener obiektów blob platformy [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)Azure jako magazyn danych, należy użyć programu .
 
-Poniższy kod tworzy i `blob_datastore_name` rejestruje magazyn `ws` danych do obszaru roboczego. Ten magazyn danych `my-container-name` uzyskuje dostęp do `my-account-name` kontenera obiektu blob na koncie magazynu przy użyciu dostarczonego klucza konta.
+Poniższy kod tworzy i `blob_datastore_name` rejestruje magazyn `ws` danych do obszaru roboczego. Ten magazyn danych `my-container-name` uzyskuje dostęp do `my-account-name` kontenera obiektu blob na koncie magazynu przy użyciu klucza dostępu do konta dostarczonego.
 
 ```Python
 blob_datastore_name='azblobsdk' # Name of the datastore to workspace
 container_name=os.getenv("BLOB_CONTAINER", "<my-container-name>") # Name of Azure blob container
 account_name=os.getenv("BLOB_ACCOUNTNAME", "<my-account-name>") # Storage account name
-account_key=os.getenv("BLOB_ACCOUNT_KEY", "<my-account-key>") # Storage account key
+account_key=os.getenv("BLOB_ACCOUNT_KEY", "<my-account-key>") # Storage account access key
 
 blob_datastore = Datastore.register_azure_blob_container(workspace=ws, 
                                                          datastore_name=blob_datastore_name, 
@@ -126,13 +126,13 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 Aby zarejestrować udział plików platformy Azure [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)jako magazyn danych, użyj programu . 
 
-Poniższy kod tworzy i `file_datastore_name` rejestruje magazyn `ws` danych do obszaru roboczego. Ten magazyn danych `my-fileshare-name` uzyskuje dostęp `my-account-name` do udziału plików na koncie magazynu przy użyciu klucza konta dostarczonego.
+Poniższy kod tworzy i `file_datastore_name` rejestruje magazyn `ws` danych do obszaru roboczego. Ten magazyn danych `my-fileshare-name` uzyskuje dostęp `my-account-name` do udziału plików na koncie magazynu przy użyciu klucza dostępu do podanego konta.
 
 ```Python
 file_datastore_name='azfilesharesdk' # Name of the datastore to workspace
 file_share_name=os.getenv("FILE_SHARE_CONTAINER", "<my-fileshare-name>") # Name of Azure file share container
 account_name=os.getenv("FILE_SHARE_ACCOUNTNAME", "<my-account-name>") # Storage account name
-account_key=os.getenv("FILE_SHARE_ACCOUNT_KEY", "<my-account-key>") # Storage account key
+account_key=os.getenv("FILE_SHARE_ACCOUNT_KEY", "<my-account-key>") # Storage account access key
 
 file_datastore = Datastore.register_azure_file_share(workspace=ws,
                                                      datastore_name=file_datastore_name, 
@@ -181,7 +181,7 @@ Utwórz nowy magazyn danych w kilku krokach w usłudze Azure Machine Learning st
   
 Informacje potrzebne do wypełnienia formularza można znaleźć w [witrynie Azure portal](https://portal.azure.com). Wybierz **pozycję Konta magazynu** w lewym okienku i wybierz konto magazynu, które chcesz zarejestrować. Strona **Przegląd** zawiera informacje, takie jak nazwa konta, kontener i nazwa udziału plików. 
 
-* W przypadku elementów uwierzytelniania, takich jak klucz konta lub token sygnatury dostępu Współdzielonego, przejdź do **pozycji Klucze kont** w okienku **Ustawienia.** 
+* W przypadku elementów uwierzytelniania, takich jak klucz konta lub token sygnatury dostępu współdzielonego, przejdź do **klawiszy programu Access** w okienku **Ustawienia.** 
 
 * W przypadku elementów jednostkowych usług, takich jak identyfikator dzierżawy i identyfikator klienta, przejdź do **rejestracji aplikacji** i wybierz aplikację, której chcesz użyć. Jego **odpowiednia** strona Przegląd będzie zawierać te elementy. 
 

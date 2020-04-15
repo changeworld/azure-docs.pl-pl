@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 9398820c88120400d97fbaf8cb0da100c2bdbf81
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 82c516eeac6d3e88ca7b6ac1c97ebb638ba27979
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261758"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383912"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego [protokołu Bloku Komunikatów serwera (SMB).](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) Udziały plików platformy Azure można zainstalować jednocześnie w chmurze lub lokalnie we wdrożeniach systemów Windows, Linux i macOS. Można również buforować udziały plików platformy Azure na komputerach z systemem Windows Server przy użyciu usługi Azure File Sync dla szybkiego dostępu w pobliżu miejsca, w którym dane są używane.
@@ -199,16 +199,6 @@ W tym artykule odniewany jest odpowiedzi na często zadawane pytania dotyczące 
 
     Nie, uwierzytelnianie z maszyn wirtualnych z systemem Linux nie jest obsługiwane.
 
-* <a id="ad-multiple-forest"></a>
-**Czy uwierzytelnianie usługi Azure Files AD obsługuje integrację ze środowiskiem usługi AD przy użyciu wielu lasów?**    
-
-    Uwierzytelnianie usługi Azure Files AD integruje się tylko z lasem usługi domeny usługi AD, do których jest zarejestrowane konto magazynu. Aby obsługa uwierzytelniania z innego lasu usługi AD, środowisko musi mieć poprawnie skonfigurowane zaufanie do lasu. Sposób rejestrowania usług Azure Files w usłudze domeny usługi AD jest w większości taki sam jak zwykły serwer plików, gdzie tworzy tożsamość (konto logowania komputera lub usługi) w usłudze AD do uwierzytelniania. Jedyną różnicą jest to, że zarejestrowana nazwa SPN konta magazynu kończy się na "file.core.windows.net", który nie jest zgodny z sufiksem domeny. Skonsultuj się z administratorem domeny, aby sprawdzić, czy aktualizacja zasad routingu DNS jest wymagana do włączenia wielokrotnego uwierzytelniania lasu z powodu innego sufiksu domeny.
-
-* <a id=""></a>
-**Jakie regiony są dostępne dla uwierzytelniania usługi Azure Files AD (w wersji zapoznawczej)?**
-
-    Szczegółowe informacje można znaleźć w [regionalnej dostępności usługi AD.](storage-files-identity-auth-active-directory-enable.md#regional-availability)
-
 * <a id="ad-aad-smb-afs"></a>
 **Czy mogę korzystać z uwierzytelniania usług Azure AD DS usługi Azure lub uwierzytelniania usługi Active Directory (AD) (w wersji zapoznawczej) w udziałach plików zarządzanych przez usługę Azure File Sync?**
 
@@ -218,7 +208,7 @@ W tym artykule odniewany jest odpowiedzi na często zadawane pytania dotyczące 
 **Jak sprawdzić, czy włączono uwierzytelnianie usługi AD na moim koncie magazynu i informacje o domenie usługi AD?**
 
     Można zapoznać się z instrukcjami podanymi [w tym miejscu,](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account) aby sprawdzić, czy uwierzytelnianie usługi Azure Files AD jest włączone na koncie magazynu i pobrać informacje o domenie usługi AD.
-    
+
 * <a id="encryption-at-rest"></a>
 **Jak mogę się upewnić, że mój udział plików platformy Azure jest szyfrowany w spoczynku?**  
 
@@ -243,6 +233,37 @@ W tym artykule odniewany jest odpowiedzi na często zadawane pytania dotyczące 
 **Jakie zasady zgodności danych obsługuje usługa Azure Files?**  
 
    Usługa Azure Files działa na tej samej architekturze magazynu, która jest używana w innych usługach magazynu w usłudze Azure Storage. Usługa Azure Files stosuje te same zasady zgodności danych, które są używane w innych usługach magazynu platformy Azure. Aby uzyskać więcej informacji na temat zgodności danych usługi Azure Storage, można zapoznać się z [ofertami zgodności usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)i przejść do Centrum zaufania firmy [Microsoft](https://microsoft.com/trustcenter/default.aspx).
+   
+### <a name="ad-authentication"></a>Uwierzytelnianie usługi AD
+* <a id=""></a>
+**Czy uwierzytelnianie usługi Azure Files azure ad obsługuje maszyny wirtualne z systemem Linux?**
+
+    Nie, uwierzytelnianie z maszyn wirtualnych z systemem Linux nie jest obsługiwane.
+
+* <a id="ad-multiple-forest"></a>
+**Czy uwierzytelnianie usługi Azure Files AD obsługuje integrację ze środowiskiem usługi AD przy użyciu wielu lasów?**    
+
+    Uwierzytelnianie usługi Azure Files AD integruje się tylko z lasem usługi domeny usługi AD, do których jest zarejestrowane konto magazynu. Aby obsługa uwierzytelniania z innego lasu usługi AD, środowisko musi mieć poprawnie skonfigurowane zaufanie do lasu. Sposób rejestrowania usług Azure Files w usłudze domeny usługi AD jest w większości taki sam jak zwykły serwer plików, gdzie tworzy tożsamość (konto logowania komputera lub usługi) w usłudze AD do uwierzytelniania. Jedyną różnicą jest to, że zarejestrowana nazwa SPN konta magazynu kończy się na "file.core.windows.net", który nie jest zgodny z sufiksem domeny. Skonsultuj się z administratorem domeny, aby sprawdzić, czy aktualizacja zasad routingu DNS jest wymagana do włączenia wielokrotnego uwierzytelniania lasu z powodu innego sufiksu domeny.
+
+* <a id=""></a>
+**Jakie regiony są dostępne dla uwierzytelniania usługi Azure Files AD (w wersji zapoznawczej)?**
+
+    Szczegółowe informacje można znaleźć w [regionalnej dostępności usługi AD.](storage-files-identity-auth-active-directory-enable.md#regional-availability)
+
+* <a id="ad-aad-smb-afs"></a>
+**Czy mogę korzystać z uwierzytelniania (wersji zapoznawczej) usługi Azure Files Active Directory (preview) w udziałach plików zarządzanych przez usługę Azure File Sync?**
+
+    Tak, można włączyć uwierzytelnianie usługi AD w udziale plików zarządzanym przez synchronizację plików platformy Azure. Zmiany w listach ACL NTFS katalogu/pliku na lokalnych serwerach plików będą warstwowe w warstwie usługi Azure Files i odwrotnie.
+
+* <a id="ad-aad-smb-files"></a>
+**Jak sprawdzić, czy włączono uwierzytelnianie usługi AD na moim koncie magazynu i informacje o domenie usługi AD?**
+
+    Można zapoznać się z instrukcjami podanymi [w tym miejscu,](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) aby sprawdzić, czy uwierzytelnianie usługi Azure Files AD jest włączone na koncie magazynu i pobrać informacje o domenie usługi AD.
+
+* <a id="ad-aad-smb-files"></a>
+**Czy istnieje jakaś różnica w tworzeniu konta logowania komputera lub konta logowania usługi do reprezentowania mojego konta magazynu w usłudze AD?**
+
+    Utworzenie [konta komputera](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (domyślnie) lub konta logowania [do usługi](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) nie ma różnicy w sposobie działania uwierzytelniania z usługą Azure Files. Można dokonać własnego wyboru, jak reprezentować konto magazynu jako tożsamość w środowisku usługi AD. Domyślny zestaw domainaccounttype w połączce cmdlet Join-AzStorageAccountForAuth to konto komputera. Jednak wiek wygaśnięcia hasła skonfigurowany w środowisku usługi AD może być różny dla konta logowania komputera lub usługi i należy wziąć to pod uwagę w [przypadku aktualizacji hasła tożsamości konta magazynu w usłudze AD](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password).
 
 ## <a name="on-premises-access"></a>Dostęp lokalny
 

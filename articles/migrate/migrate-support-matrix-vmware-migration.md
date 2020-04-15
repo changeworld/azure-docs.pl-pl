@@ -3,12 +3,12 @@ title: Obsługa migracji VMware w usłudze Azure Migrate
 description: Dowiedz się więcej o obsłudze migracji maszyn wirtualnych VMware w usłudze Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 9d8dc4dadc975a0fb69ea207f6062b72231460ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf9cc471eef31edd513358a97d2ece17015ba781
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269512"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313994"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Macierz wsparcia dla migracji VMware
 
@@ -47,7 +47,7 @@ Przejrzyj [ten artykuł,](server-migrate-overview.md) aby dowiedzieć się, któ
 **Wymagane zmiany na platformie Azure** | Niektóre maszyny wirtualne mogą wymagać zmian, dzięki czemu można je uruchomić na platformie Azure. Usługa Azure Migrate wprowadza te zmiany automatycznie dla następujących systemów operacyjnych:<br/> - Red Hat Enterprise Linux 6.5+, 7.0+<br/> - CentOS 6.5+, 7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS, 16.04LTS, 18.04LTS<br/> - Debian 7, 8<br/><br/> W przypadku innych systemów operacyjnych należy ręcznie wprowadzić zmiany przed migracją. Odpowiednie artykuły zawierają instrukcje dotyczące tego, jak to zrobić.
 **Rozruch linuksa** | Jeśli /boot znajduje się na partycji dedykowanej, powinien znajdować się na dysku systemu operacyjnego i nie być rozłożony na wiele dysków.<br/> Jeśli /boot jest częścią głównej partycji (/), partycja '/' powinna znajdować się na dysku systemu operacyjnego, a nie obejmować inne dyski.
 **Rozruch UEFI** | Maszyny wirtualne z rozruchem UEFI nie są obsługiwane w przypadku migracji.
-**Rozmiar dysku** | Dysk systemu operacyjnego o pojemności 2 TB; 4 TB dla dysków z danymi.
+**Rozmiar dysku** | Dysk systemu operacyjnego o pojemności 2 TB; 8 TB dla dysków z danymi.
 **Limity dysków** |  Do 60 dysków na maszynę wirtualną.
 **Zaszyfrowane dyski/woluminy** | Maszyny wirtualne z zaszyfrowanymi dyskami/woluminami nie są obsługiwane do migracji.
 **Klaster dysków udostępnionych** | Bez pomocy technicznej.

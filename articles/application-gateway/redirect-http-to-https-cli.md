@@ -1,23 +1,23 @@
 ---
 title: Przekierowanie http do HTTPS przy użyciu interfejsu wiersza polecenia
 titleSuffix: Azure Application Gateway
-description: Dowiedz się, jak utworzyć bramę aplikacji i dodać certyfikat terminacji SSL przy użyciu interfejsu wiersza polecenia platformy Azure.
+description: Dowiedz się, jak utworzyć bramę aplikacji i dodać certyfikat dla zakończenia protokołu TLS przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: 41b2fb754f1d6ead3a7475ca146ab99758aa8134
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bf8f3b7bfb446db78f0c97a246977fec6cd54cb
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246873"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312138"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji z przekierowaniem HTTP do HTTPS przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Za pomocą interfejsu wiersza polecenia platformy Azure można utworzyć [bramę aplikacji](overview.md) z certyfikatem zakończenia SSL. Reguła routingu służy do przekierowywania ruchu HTTP do portu HTTPS w bramie aplikacji. W tym przykładzie można również utworzyć [zestaw skalowania maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) dla puli wewnętrznej bazy danych bramy aplikacji, która zawiera dwa wystąpienia maszyny wirtualnej.
+Za pomocą interfejsu wiersza polecenia platformy Azure można utworzyć [bramę aplikacji](overview.md) z certyfikatem dla zakończenia protokołu TLS/SSL. Reguła routingu służy do przekierowywania ruchu HTTP do portu HTTPS w bramie aplikacji. W tym przykładzie można również utworzyć [zestaw skalowania maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) dla puli wewnętrznej bazy danych bramy aplikacji, która zawiera dwa wystąpienia maszyny wirtualnej.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 

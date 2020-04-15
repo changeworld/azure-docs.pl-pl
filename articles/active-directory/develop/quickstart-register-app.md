@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 1625b48d86eebaf5d8fcd4c100d89b83716ba459
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 79983678d13b810a521a00ba2c1978de92a5029f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79408372"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309506"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Szybki start: rejestrowanie aplikacji na platformie tożsamości firmy Microsoft
 
@@ -28,7 +28,7 @@ Aplikacja jest zintegrowana z platformą tożsamości firmy Microsoft, rejestruj
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Konto platformy Azure z aktywną subskrypcją. [Utwórz konto za darmo](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* [Namiot usługi Azure AD](quickstart-create-new-tenant.md).
+* [Dzierżawa usługi Azure AD](quickstart-create-new-tenant.md).
 
 ## <a name="register-a-new-application-using-the-azure-portal"></a>Rejestrowanie nowej aplikacji w witrynie Azure Portal
 

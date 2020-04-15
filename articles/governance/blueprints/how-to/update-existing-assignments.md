@@ -1,14 +1,14 @@
 ---
 title: Aktualizowanie istniejącego przydziału z portalu
 description: Dowiedz się więcej o mechanizmie aktualizowania istniejącego przypisania planu z portalu w planach platformy Azure.
-ms.date: 11/21/2019
+ms.date: 04/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 2c1a24399d8fa1529665bfa60d1b889a84a29a60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264663"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381789"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak zaktualizować istniejące przypisanie planu
 
@@ -26,18 +26,18 @@ Po przypisaniu planu przypisanie może zostać zaktualizowane. Istnieje kilka pr
 
 1. Na liście planów kliknij lewym przyciskiem myszy przypisanie planu. Następnie kliknij przycisk **Aktualizuj przypisanie** lub kliknij prawym przyciskiem myszy przypisanie planu i wybierz polecenie **Aktualizuj przypisanie**.
 
-   ![Aktualizowanie istniejącego przydziału planu](../media/update-existing-assignments/update-assignment.png)
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Aktualizowanie istniejącego przydziału planu" border="false":::
 
 1. Strona **Przypisz plan** zostanie załadowana wstępnie wypełniona wszystkimi wartościami z oryginalnego przypisania.
    Można zmienić **wersję definicji planu,** stan **Lock Assignment** i dowolny z parametrów dynamicznych, które istnieją w definicji planu. Kliknij **przycisk Przypisz** po wprowadzeniu zmian.
 
 1. Na stronie zaktualizowane szczegóły przydziału zobacz nowy stan. W tym przykładzie dodaliśmy **blokowanie** do przypisania.
 
-   ![Zaktualizowano istniejące przypisanie planu — zmieniono tryb blokady](../media/update-existing-assignments/updated-assignment.png)
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Zaktualizowano istniejące przypisanie planu — zmieniono tryb blokady" border="false":::
 
 1. Zapoznaj się ze szczegółami dotyczącymi innych **operacji przypisywania** przy użyciu listy rozwijanej. Tabela **zarządzanych zasobów** jest aktualizowana przez wybraną operację przydziału.
 
-   ![Operacje przypisania przydziału planu](../media/update-existing-assignments/assignment-operations.png)
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Operacje przypisania przydziału planu" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>Reguły aktualizowania przydziałów
 

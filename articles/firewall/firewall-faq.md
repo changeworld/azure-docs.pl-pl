@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: af66da115e228efe39e4cd5dda3c494b71428676
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113558"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383070"
 ---
 # <a name="azure-firewall-faq"></a>Zapora platformy Azure – często zadawane pytania
 
@@ -72,9 +72,9 @@ Zapora aplikacji sieci Web (WAF) jest funkcją bramy aplikacji, która zapewnia 
 
 Usługa Zapora azure uzupełnia funkcje sieciowej grupy zabezpieczeń. Razem zapewniają one lepsze zabezpieczenia sieci "obrony w głębi". Sieciowe grupy zabezpieczeń zapewniają filtrowanie ruchu rozproszonej warstwy sieciowej w celu ograniczenia ruchu do zasobów w sieciach wirtualnych w każdej subskrypcji. Zapora azure to w pełni stanowa, scentralizowana zapora sieciowa jako usługa, która zapewnia ochronę na poziomie sieci i aplikacji w różnych subskrypcjach i sieciach wirtualnych.
 
-## <a name="are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet"></a>Czy sieciowe grupy zabezpieczeń są obsługiwane w podsieci Zapory platformy Azure?
+## <a name="are-network-security-groups-nsgs-supported-on-the-azurefirewallsubnet"></a>Czy sieciowe grupy zabezpieczeń są obsługiwane w sieci AzureFirewallSubnet?
 
-Zapora azure to usługa zarządzana z wieloma warstwami ochrony, w tym ochroną platformy z sieciami sieciowymi na poziomie sieci nych (nie widocznymi).  Sieciowe sieci zabezpieczeń na poziomie podsieci nie są wymagane w podsieci Zapory platformy Azure i są wyłączone, aby zapewnić brak przerw w świadczeniu usług.
+Zapora azure to usługa zarządzana z wieloma warstwami ochrony, w tym ochroną platformy z sieciami sieciowymi na poziomie sieci nych (nie widocznymi).  Sieci zabezpieczeń na poziomie podsieci nie są wymagane w witrynie AzureFirewallSubnet i są wyłączone, aby zapewnić brak przerw w świadczeniu usług.
 
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Jak skonfigurować zaporę platformy Azure z punktami końcowymi usługi?
 

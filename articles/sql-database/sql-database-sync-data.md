@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: data sync
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 1ee2efbb8aebfc2f1a94c89edef6166898946d8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80afbeb5668d43ac7bb0b12fadb88a93c68e0ddb
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74422525"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383711"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych w wielu chmurach i lokalnych bazach danych za pomocą synchronizacji danych SQL
 
@@ -40,7 +40,7 @@ Synchronizacja danych nie jest preferowanym rozwiązaniem dla następujących sc
 | Odzyskiwanie po awarii | [Geob nadmiarowe kopie zapasowe platformy Azure](sql-database-automated-backups.md) |
 | Skala odczytu | [Używanie replik tylko do odczytu w celu obciążenia obciążeń zapytań tylko do odczytu (wersja zapoznawcza)](sql-database-read-scale-out.md) |
 | ETL (OLTP do OLAP) | [Usługa Azure Data Factory](https://azure.microsoft.com/services/data-factory/) lub [USŁUGI integracji programu SQL Server](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
-| Migracja z lokalnego programu SQL Server do bazy danych SQL usługi Azure | [Usługa migracji bazy danych platformy Azure](https://azure.microsoft.com/services/database-migration/) |
+| Migracja z lokalnego programu SQL Server do bazy danych SQL usługi Azure | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
 
 ## <a name="overview-of-sql-data-sync"></a>Omówienie synchronizacji danych SQL
@@ -84,7 +84,7 @@ Grupa synchronizacji ma następujące właściwości:
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Konfigurowanie synchronizacji danych w witrynie Azure portal
 
-- [Set up Azure SQL Data Sync (Konfigurowanie usługi Azure SQL Data Sync)](sql-database-get-started-sql-data-sync.md)
+- [Konfigurowanie usługi Azure SQL Data Sync](sql-database-get-started-sql-data-sync.md)
 - Agent synchronizacji danych — [Data Sync Agent for Azure SQL Data Sync](sql-database-data-sync-agent.md) (Agent synchronizacji danych dla usługi Azure SQL Data Sync)
 
 ### <a name="set-up-data-sync-with-powershell"></a>Konfigurowanie synchronizacji danych za pomocą programu PowerShell

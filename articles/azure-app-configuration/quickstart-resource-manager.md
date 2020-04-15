@@ -3,18 +3,18 @@ title: Automatyczne wdrażanie maszyn wirtualnych z przewodnikiem szybki start k
 description: Ten przewodnik Szybki start pokazuje, jak wdrożyć sklep konfiguracji aplikacji Azure App Configuration za pomocą modułu Azure PowerShell i szablonów usługi Azure Resource Manager. Następnie użyj wartości w magazynie, aby wdrożyć maszynę wirtualną.
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 03/05/2020
+ms.date: 04/14/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: c45f6855c33dff2790ced306fd7f049b98dd1387
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 02afa2cb36323e0c3c38c2451b1924b636f7faed
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79126386"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309109"
 ---
 # <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Szybki start: automatyczne wdrażanie maszyn wirtualnych z szablonem Konfiguracja aplikacji i Menedżer zasobów
 
@@ -152,6 +152,9 @@ Można utworzyć magazyn konfiguracji aplikacji przy użyciu szablonu usługi Az
 ## <a name="deploy-vm-using-stored-key-values"></a>Wdrażanie maszyny Wirtualnej przy użyciu przechowywanych wartości klucza
 
 Teraz, gdy dodano wartości klucza do magazynu, możesz przystąpić do wdrażania maszyny Wirtualnej przy użyciu szablonu usługi Azure Resource Manager. Szablon odwołuje się do utworzonych kluczy **windowsOsVersion** i **diskSizeGB.**
+
+> [!WARNING]
+> Szablony ARM nie mogą odwoływać się do kluczy w magazynie konfiguracji aplikacji z włączonym łączem prywatnym.
 
 1. Skopiuj i wklej następujący kod json do nowego pliku o nazwie *azuredeploy.json*lub pobierz plik z [szablonów szybki start platformy Azure](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json).
 
@@ -423,13 +426,13 @@ Teraz, gdy dodano wartości klucza do magazynu, możesz przystąpić do wdrażan
    |storageAccountName|Unikatowa nazwa konta magazynu skojarzonego z maszyną wirtualną.|
    |nazwa domenyLabel|Unikatowa nazwa domeny.|
 
-1. W oknie programu PowerShell uruchom następujące polecenie, aby wdrożyć sklep konfiguracji aplikacji platformy Azure. Nie zapomnij zastąpić nazwy grupy zasobów, ścieżki pliku szablonu i ścieżki pliku parametru szablonu.
+1. W oknie programu PowerShell uruchom następujące polecenie, aby wdrożyć maszynę wirtualną. Nie zapomnij zastąpić nazwy grupy zasobów, ścieżki pliku szablonu i ścieżki pliku parametru szablonu.
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" 
-       -TemplateFile "<path to prereq.azuredeploy.json>" `
-       -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
+       -ResourceGroupName "<your resource group>"
+       -TemplateFile "<path to azuredeploy.json>" `
+       -TemplateParameterFile "<path to azuredeploy.parameters.json>"
    ```
 
 Gratulacje! Maszyna wirtualna została wdrożona przy użyciu konfiguracji przechowywanych w konfiguracji aplikacji platformy Azure.

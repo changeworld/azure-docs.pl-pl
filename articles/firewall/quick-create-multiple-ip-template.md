@@ -5,22 +5,24 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
-ms.date: 04/13/2020
+ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: b14ff2e94e9df25186a13ae8fbd63d8d4044b538
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 76211014f96aee864412fd19686d58d0338ec5c2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81274242"
+ms.locfileid: "81310234"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>Szybki start: tworzenie zapory platformy Azure z wieloma publicznymi adresami IP — szablon Menedżera zasobów
 
 W tym przewodniku Szybki start można użyć szablonu Menedżera zasobów do wdrożenia zapory platformy Azure z wieloma publicznymi adresami IP.
 
-Reguły reguł translatora adresów sieciowych zezwalają na połączenia protokołu RDP z dwiema maszynami wirtualnymi systemu Windows Server 2019.
+Wdrożona zapora ma reguły zbierania reguł NAT, które zezwalają na połączenia RDP z dwoma maszynami wirtualnymi systemu Windows Server 2019.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Aby uzyskać więcej informacji na temat Zapory platformy Azure z wieloma publicznymi adresami IP, zobacz [Wdrażanie Zapory platformy Azure z wieloma publicznymi adresami IP przy użyciu programu Azure PowerShell](deploy-multi-public-ip-powershell.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

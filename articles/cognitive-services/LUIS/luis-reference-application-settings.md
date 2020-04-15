@@ -1,26 +1,20 @@
 ---
 title: Ustawienia aplikacji — usługa LUIS
-titleSuffix: Azure Cognitive Services
 description: Ustawienia aplikacji dla aplikacji języka usługi Azure Cognitive Services są przechowywane w aplikacji i portalu.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/12/2019
-ms.author: diberry
-ms.openlocfilehash: d1ead09f6248a6ad14646371aa70b42b57cf8e3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 9e17736cd6ff5074a6eab76a6cf5bdb8acedc185
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270803"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382199"
 ---
 # <a name="application-settings"></a>Ustawienia aplikacji
 
 Te ustawienia aplikacji są przechowywane w [wyeksportowanej](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) aplikacji i [aktualizowane](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) za pomocą interfejsów API REST. Zmiana ustawień wersji aplikacji powoduje zresetowanie stanu szkolenia aplikacji do nieprzeszkolonego.
+
+Poznaj [pojęcia](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) znaków diakrutycznych i znaków interpunkcyjnych.
 
 |Ustawienie|Wartość domyślna|Uwagi|
 |--|--|--|
@@ -183,3 +177,7 @@ Poniższa interpunkcja jest `NormalizePunctuation` usuwana za pomocą jest ustaw
 |`}`|
 |`+`|
 |`¡`|
+
+## <a name="next-steps"></a>Następne kroki
+
+* Poznaj [pojęcia](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) znaków diakrutycznych i znaków interpunkcyjnych.

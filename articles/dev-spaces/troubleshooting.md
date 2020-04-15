@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Dowiedz się, jak rozwiązywać typowe problemy i rozwiązywać je podczas włączania i korzystania z usługi Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Usługa Azure Kubernetes, kontenery, Helm, siatka usług, routing siatki usług, kubectl, k8s '
-ms.openlocfilehash: c12dfd385962d8dd7de8239a0d4ecd46746499c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9fcf14bf42fc843a126fea269038087ee7fb0c6c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239765"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382040"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Rozwiązywanie problemów z usługą Azure Dev Spaces
 
@@ -95,7 +95,7 @@ Aby rozwiązać ten problem, zaktualizuj instalację [interfejsu wiersza polecen
 
 ### <a name="error-unable-to-reach-kube-apiserver"></a>Błąd "Nie można skontaktować się z serwerem kube-apiserver"
 
-Ten błąd może wystąpić, gdy usługa Azure Dev Spaces nie może połączyć się z serwerem interfejsu API klastra AKS. 
+Ten błąd może wystąpić, gdy usługa Azure Dev Spaces nie może połączyć się z serwerem interfejsu API klastra AKS.
 
 Jeśli dostęp do serwera interfejsu API klastra AKS jest zablokowany lub jeśli dla klastra AKS włączono [zakresy autoryzowanych adresów IP serwera interfejsu API,](../aks/api-server-authorized-ip-ranges.md) należy również [utworzyć](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) lub [zaktualizować](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) klaster, aby [zezwolić na dodatkowe zakresy oparte na regionie](https://github.com/Azure/dev-spaces/tree/master/public-ips).
 
@@ -272,6 +272,113 @@ Na przykład, aby zatrzymać i wyłączyć usługę *Windows BranchCache:*
 * Opcjonalnie można go wyłączyć, ustawiając *typ uruchamiania* na *Wyłączone*.
 * Kliknij przycisk *OK*.
 
+### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>Błąd "nie znaleziono nie azureassignedidentity dla zasobnika:azds/azds-webhook-deployment-\<id\> w stanie przypisanym"
+
+Podczas uruchamiania usługi azure dev spaces w klastrze AKS z [tożsamością zarządzaną](../aks/use-managed-identity.md) i [zasobników tożsamości zarządzanych zainstalowanych,](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) proces może zawiesić się po kroku *instalacji wykresu.* Jeśli sprawdzisz *azds-injector-webhook* w przestrzeni nazw *azds,* może zostać wyświetlony ten błąd.
+
+Usługi azure dev spaces uruchamiane w klastrze wykorzystują zarządzana tożsamość klastra do rozmów z usługami zaplecza usługi Azure Dev Spaces poza klastrem. Po zainstalowaniu tożsamości zarządzanej zasobnika reguły sieciowe są konfigurowane w węzłach klastra w celu przekierowania wszystkich wywołań poświadczeń tożsamości zarządzanej do [zestawu demonów tożsamości zarządzanej węzła (NMI) zainstalowanego w klastrze.](https://github.com/Azure/aad-pod-identity#node-managed-identity) Ten demon NMI identyfikuje zasobnik wywołujący i zapewnia, że zasobnik został odpowiednio oznaczony, aby uzyskać dostęp do żądanej tożsamości zarządzanej. Usługa Azure Dev Spaces nie może wykryć, czy klaster ma zainstalowaną tożsamość zarządzaną zasobnika i nie może wykonać niezbędnej konfiguracji, aby umożliwić usługom Azure Dev Spaces dostęp do tożsamości zarządzanej klastra. Ponieważ usługi Azure Dev Spaces nie zostały skonfigurowane do uzyskiwania dostępu do tożsamości zarządzanej klastra, zestaw demonów NMI nie zezwala im na uzyskanie tokenu usługi AAD dla tożsamości zarządzanej i nie może komunikować się z usługami zaplecza usługi Azure Dev Spaces.
+
+Aby rozwiązać ten problem, należy zastosować [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md) dla *azds-injector-webhook* i aktualizacji zasobników instrumentowane przez usługę Azure Dev Spaces, aby uzyskać dostęp do tożsamości zarządzanej.
+
+Utwórz plik o nazwie *webhookException.yaml* i skopiuj następującą definicję YAML:
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzurePodIdentityException
+metadata:
+  name: azds-infrastructure-exception
+  namespace: azds
+spec:
+  PodLabels:
+    azds.io/uses-cluster-identity: "true"
+```
+
+Powyższy plik tworzy *obiekt AzurePodIdentityException* dla *azds-injector-webhook*. Aby wdrożyć ten `kubectl`obiekt, należy użyć:
+
+```cmd
+kubectl apply -f webhookException.yaml
+```
+
+Aby zaktualizować zasobników instrumentowane przez usługi Azure Dev Spaces, aby uzyskać dostęp do `kubectl` tożsamości zarządzanej, zaktualizuj obszar *nazw* w poniższej definicji YAML i użyj go do zastosowania go dla każdego obszaru deweloperskiego.
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzurePodIdentityException
+metadata:
+  name: azds-infrastructure-exception
+  namespace: myNamespace
+spec:
+  PodLabels:
+    azds.io/instrumented: "true"
+```
+
+Alternatywnie można utworzyć *azureidentity* i *AzureIdentityBinding* obiektów i zaktualizować etykiety zasobników dla obciążeń uruchomionych w przestrzeniach instrumentowanych przez usługi Azure Dev Spaces, aby uzyskać dostęp do tożsamości zarządzanej utworzonej przez klaster AKS.
+
+Aby wyświetlić szczegółowe informacje o tożsamości zarządzanej, uruchom następujące polecenie dla klastra AKS:
+
+```azurecli
+az aks show -g <resourcegroup> -n <cluster> -o json --query "{clientId: identityProfile.kubeletidentity.clientId, resourceId: identityProfile.kubeletidentity.resourceId}"
+```
+
+Powyższe polecenie wyprowadza *identyfikator klienta* i identyfikator *zasobu* dla tożsamości zarządzanej. Przykład:
+
+```json
+{
+  "clientId": "<clientId>",
+  "resourceId": "/subscriptions/<subid>/resourcegroups/<resourcegroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<name>"
+}
+```
+
+Aby utworzyć obiekt *AzureIdentity,* utwórz plik o nazwie *clusteridentity.yaml* i użyj następującej definicji YAML zaktualizowanej ze szczegółami tożsamości zarządzanej z poprzedniego polecenia:
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentity
+metadata:
+  name: my-cluster-mi
+spec:
+  type: 0
+  ResourceID: /subscriptions/<subid>/resourcegroups/<resourcegroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<name>
+  ClientID: <clientId>
+```
+
+Aby utworzyć obiekt *AzureIdentityBinding,* utwórz plik o nazwie *clusteridentitybinding.yaml* i użyj następującej definicji YAML:
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentityBinding
+metadata:
+  name: my-cluster-mi-binding
+spec:
+  AzureIdentity: my-cluster-mi
+  Selector: my-label-value
+```
+
+Aby wdrożyć obiekty *AzureIdentity* i *AzureIdentityBinding,* należy użyć: `kubectl`
+
+```cmd
+kubectl apply -f clusteridentity.yaml
+kubectl apply -f clusteridentitybinding.yaml
+```
+
+Po wdrożeniu *azureidentity* i *AzureIdentityBinding* obiektów, każde obciążenie z *aadpodidbinding: etykieta wartości mojej etykiety można* uzyskać dostęp do tożsamości zarządzanej klastra. Dodaj tę etykietę i ponownie rozmieszcz wszystkie obciążenia uruchomione w dowolnym miejscu deweloperskim. Przykład:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample
+        aadpodidbinding: my-label-value
+    spec:
+      [...]
+```
+
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>Typowe problemy przy użyciu programu Visual Studio i kodu programu Visual Studio w miejscach deweloperów platformy Azure
 
 ### <a name="error-required-tools-and-configurations-are-missing"></a>Błąd "Brakuje wymaganych narzędzi i konfiguracji"
@@ -397,7 +504,7 @@ Aby zaktualizować rolę RBAC użytkownika dla kontrolera:
     * W przypadku *opcji Rola*wybierz *opcję Współautor* lub *Właściciel*.
     * Aby *przypisać dostęp do*, wybierz *użytkownika, grupę lub jednostkę usługi Azure AD*.
     * W *polu Wybierz*wyszukaj użytkownika, którego chcesz nadać uprawnienia.
-1. Kliknij przycisk *Zapisz*.
+1. Kliknij pozycję *Zapisz*.
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Rozpoznawanie nazw DNS kończy się niepowodzeniem dla publicznego adresu URL skojarzonego z usługą Miejsca dewelopera
 

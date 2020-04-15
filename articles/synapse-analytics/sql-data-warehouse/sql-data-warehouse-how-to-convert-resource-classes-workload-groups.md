@@ -7,20 +7,23 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 11/4/2019
+ms.date: 04/14/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8cee874106598c7d81b923d7dd32ba91902d9326
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 5d73ba8f21fe7731fb751d42a8497ff8e1ebba7d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745174"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383621"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Konwertuj klasy zasobów na grupy obciążeń
 
 Grupy obciążenia zapewniają mechanizm izolowania i przechowywania zasobów systemowych.  Ponadto grupy obciążenia umożliwiają ustawianie reguł wykonywania dla uruchomionych w nich żądań.  Reguła wykonywania limitu czasu kwerendy umożliwia anulowanie kwerend ucieczki bez interwencji użytkownika.  W tym artykule wyjaśniono, jak wziąć istniejącą klasę zasobów i utworzyć grupę obciążenia o podobnej konfiguracji.  Ponadto zostanie dodana opcjonalna reguła limitu czasu kwerendy.
+
+> [!NOTE]
+> Zobacz [mieszanie przydziałów klasy zasobów z klasyfikatorów](sql-data-warehouse-workload-classification.md#mixing-resource-class-assignments-with-classifiers) sekcji w dokumencie koncepcyjnym [klasyfikacji obciążenia,](sql-data-warehouse-workload-classification.md) aby uzyskać wskazówki dotyczące używania grup obciążenia i klas zasobów w tym samym czasie.
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>Opis istniejącej konfiguracji klasy zasobów
 
@@ -86,4 +89,6 @@ SELECT request_id, [label], classifier_name, group_name, command
 ## <a name="next-steps"></a>Następne kroki
 
 - [Izolacja obciążenia](sql-data-warehouse-workload-isolation.md)
-- [Jak utworzyć łącze do grupy obciążenia](quickstart-configure-workload-isolation-tsql.md)
+- [Jak utworzyć grupę obciążeń](quickstart-configure-workload-isolation-tsql.md)
+- [TWORZENIE KLASYFIKATORA OBCIĄŻENIA (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
+- [TWORZENIE GRUPY OBCIĄŻEŃ (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)

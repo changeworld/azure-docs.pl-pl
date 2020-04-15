@@ -4,12 +4,12 @@ description: Poznaj obsługiwane usługi i schemat zdarzeń dla dzienników zaso
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8abd8767d9bb7e3c4336f6600b94f6b3f4ea48f1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248816"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380517"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Obsługiwane usługi, schematy i kategorie dzienników zasobów platformy Azure
 
@@ -54,7 +54,7 @@ Schemat dzienników diagnostycznych zasobów różni się w zależności od kate
 | Azure Batch |[Rejestrowanie wsadowe platformy Azure](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Dzienniki diagnostyczne usługi Azure Database for MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Usługa Azure Database dla dzienników PostgreSQL](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Data Explorer | [Dzienniki Eksploratora danych platformy Azure](../../data-explorer/using-diagnostic-logs.md) |
+| Azure Data Explorer | [Dzienniki Eksploratora danych platformy Azure](/azure/data-explorer/using-diagnostic-logs) |
 | Cognitive Services | [Rejestrowanie usług Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
 | Container Registry | [Rejestrowanie dla rejestru kontenerów platformy Azure](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | Content Delivery Network | [Dzienniki platformy Azure dla usługi CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
@@ -62,7 +62,7 @@ Schemat dzienników diagnostycznych zasobów różni się w zależności od kate
 | Fabryka danych | [Monitorowanie fabryk danych przy użyciu usługi Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Uzyskiwanie dostępu do dzienników dla usługi Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Uzyskiwanie dostępu do dzienników dla usługi Azure Data Lake Store](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
-| Usługa Event Hubs |[Dzienniki usługi Azure Event Hubs](../../event-hubs/event-hubs-diagnostic-logs.md) |
+| Event Hubs |[Dzienniki usługi Azure Event Hubs](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | Schemat jest niedostępny. |
 | Azure Firewall | Schemat jest niedostępny. |
 | Usługa IoT Hub | [Operacje w centrum IoT](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |

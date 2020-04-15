@@ -1,24 +1,24 @@
 ---
-title: 'Samouczek: Konfigurowanie zakończenia SSL w portalu — brama aplikacji platformy Azure'
-description: W tym samouczku dowiesz się, jak skonfigurować bramę aplikacji i dodać certyfikat dla zakończenia SSL przy użyciu portalu Azure.
+title: 'Samouczek: Konfigurowanie zakończenia protokołu TLS w portalu — brama aplikacji platformy Azure'
+description: W tym samouczku dowiesz się, jak skonfigurować bramę aplikacji i dodać certyfikat dla zakończenia protokołu TLS przy użyciu portalu Azure.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b40eb107fc975d2ef0170944892b936680de3c9f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74012306"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312390"
 ---
-# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Samouczek: Konfigurowanie bramy aplikacji z zakończeniem SSL przy użyciu witryny Azure portal
+# <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>Samouczek: Konfigurowanie bramy aplikacji z zakończeniem protokołu TLS przy użyciu portalu Azure
 
-Za pomocą portalu Azure można skonfigurować [bramę aplikacji](overview.md) z certyfikatem dla zakończenia SSL, który używa maszyn wirtualnych dla serwerów zaplecza.
+Za pomocą portalu Azure można skonfigurować [bramę aplikacji](overview.md) z certyfikatem dla zakończenia protokołu TLS, który używa maszyn wirtualnych dla serwerów zaplecza.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie certyfikatu z podpisem własnym
@@ -242,7 +242,7 @@ W tym przykładzie można zainstalować usługi IIS na maszynach wirtualnych tyl
 
     ![Dodawanie serwerów zaplecza](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-6. Wybierz **pozycję Zapisz**.
+6. Wybierz pozycję **Zapisz**.
 
 7. Poczekaj na zakończenie wdrożenia przed przejściem do następnego kroku.
 
@@ -265,4 +265,4 @@ W tym przykładzie można zainstalować usługi IIS na maszynach wirtualnych tyl
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o obsłudze SSL bramy aplikacji](ssl-overview.md)
+> [Dowiedz się więcej o obsłudze TLS bramy aplikacji](ssl-overview.md)

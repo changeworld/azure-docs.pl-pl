@@ -4,12 +4,12 @@ description: W tym artykule znajdziesz informacje o monitorowaniu ceł ceł usł
 services: automation
 ms.date: 11/01/2018
 ms.topic: article
-ms.openlocfilehash: 9bd028157b33817898ef69f9e47cb8b5d9b8f381
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f288029bb35fe4e3c71db37a1de265edbcd913b1
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75367097"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310552"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>Monitorowanie y eks-ów z alertami metryk
 

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/07/2020
+ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e097173712693754baab99912301c98ee336f64f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: bfe8aa088538663ac3e64f5913ff031e6160b045
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877919"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382636"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia ról administratorów w usłudze Azure Active Directory
 
@@ -228,12 +228,11 @@ Użytkownicy z tą rolą mają dostęp do wszystkich funkcji administracyjnych w
 
 ### <a name="global-reader"></a>[Czytelnik globalny](#global-reader-permissions)
 
-Użytkownicy w tej roli mogą odczytywać ustawienia i informacje administracyjne w usługach Microsoft 365, ale nie mogą podejmować działań zarządzania. Czytnik globalny jest tylko do odczytu odpowiednikiem administratora globalnego. Przypisz czytnik globalny zamiast administratora globalnego do planowania, inspekcji lub dochodzeń. Użyj czytnika globalnego w połączeniu z innymi ograniczonymi rolami administratora, takimi jak Administrator programu Exchange, aby ułatwić pracę bez przypisywania roli administratora globalnego. Czytnik globalny współpracuje z centrum administracyjnym usługi Microsoft 365, centrum administracyjne programu Exchange, centrum administracyjne teams, centrum zabezpieczeń, centrum zgodności, centrum administracyjne usługi Azure AD i centrum administracyjne zarządzania urządzeniami.
+Użytkownicy w tej roli mogą odczytywać ustawienia i informacje administracyjne w usługach Microsoft 365, ale nie mogą podejmować działań zarządzania. Czytnik globalny jest tylko do odczytu odpowiednikiem administratora globalnego. Przypisz czytnik globalny zamiast administratora globalnego do planowania, inspekcji lub dochodzeń. Użyj czytnika globalnego w połączeniu z innymi ograniczonymi rolami administratora, takimi jak Administrator programu Exchange, aby ułatwić pracę bez przypisywania roli administratora globalnego. Czytnik globalny współpracuje z centrum administracyjnym usługi Microsoft 365, centrum administracyjne programu Exchange, centrum administracyjne programu SharePoint, centrum administracyjne teams, centrum zabezpieczeń, centrum zgodności, centrum administracyjne usługi Azure AD i centrum administracyjne zarządzania urządzeniami.
 
 > [!NOTE]
 > Globalna rola czytelnika ma teraz kilka ograniczeń -
 >
->- Centrum administracyjne programu SharePoint — centrum administracyjne programu SharePoint nie obsługuje roli Czytnik globalny. W lewym okienku w obszarze Centra administracyjne w [centrum administracyjnym usługi Microsoft 365](https://admin.microsoft.com/Adminportal/Home#/homepage)nie będzie widoczna "SharePoint".
 >- [Centrum administracyjne usługi OneDrive](https://admin.onedrive.com/) — centrum administracyjne usługi OneDrive nie obsługuje roli Czytnik globalny.
 >- [Portal usługi Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) — czytnik globalny nie może odczytać trybu inicjowania obsługi administracyjnej aplikacji przedsiębiorstwa.
 >- [Centrum administracyjne M365](https://admin.microsoft.com/Adminportal/Home#/homepage) — czytnik globalny nie może odczytać żądań skrytki klienta. Karta **Żądania skrytki klienta** nie zostanie ujęte w obszarze **Obsługa w** lewym okienku Centrum administracyjnego M365.

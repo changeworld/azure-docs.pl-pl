@@ -1,22 +1,14 @@
 ---
 title: Planowanie aplikacji — usługa LUIS
-titleSuffix: Azure Cognitive Services
 description: Określ odpowiednie intencje aplikacji i encje, a następnie utwórz plany aplikacji w usłudze Language Understanding Intelligent Services (LUIS).
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/20/2019
-ms.author: diberry
-ms.openlocfilehash: 6a155f4c43da03ccdc40d289742918973aa6da7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: dfed27a05973a2ea2e9a97eaa1c233b847b33d87
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74326777"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382303"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Planowanie schematu aplikacji usługi LUIS za pomocą domeny podmiotu i wyodrębniania danych
 
@@ -44,7 +36,7 @@ Jeśli nie trzeba identyfikować ogólną intencję użytkownika, dodaj wszystki
 
 ## <a name="create-example-utterances-for-each-intent"></a>Tworzenie przykładowych wypowiedzi dla każdej intencji
 
-Na początek należy unikać tworzenia zbyt wiele wypowiedzi dla każdego zamiaru. Po określeniu intencji, utwórz 15 do 30 wypowiedzi przykład na intencji. Każda wypowiedź powinna się różnić od wcześniej dostarczonych wypowiedzi. Dobra różnorodność w wypowiedziach obejmują ogólną liczbę wyrazów, wybór wyrazów, czas zlecenia i interpunkcję.
+Na początek należy unikać tworzenia zbyt wiele wypowiedzi dla każdego zamiaru. Po określeniu intencji, utwórz 15 do 30 wypowiedzi przykład na intencji. Każda wypowiedź powinna się różnić od wcześniej dostarczonych wypowiedzi. Dobra różnorodność w wypowiedziach obejmuje ogólną liczbę słów, wybór wyrazów, czas czasownika i [interpunkcję](luis-reference-application-settings.md#punctuation-normalization).
 
 Aby uzyskać więcej informacji, zobacz [opis dobrych wypowiedzi dla aplikacji usługi LUIS](luis-concept-utterance.md).
 

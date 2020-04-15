@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
-ms.openlocfilehash: 4c265cb0cdc665ef52f4dc6e69440e83c22db449
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f0eada5184f2c8e36b0deb5a9d27a8a9230776d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77460981"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382764"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Kopiowanie danych do lub z usługi Azure Data Explorer przy użyciu usługi Azure Data Factory
 
-W tym artykule opisano sposób kopiowania danych w usłudze Azure Data Factory do kopiowania danych do lub z [Eksploratora danych platformy Azure.](../data-explorer/data-explorer-overview.md) Opiera się na artykule [omówienie działania kopiowania,](copy-activity-overview.md) który oferuje ogólny przegląd działania kopiowania.
+W tym artykule opisano sposób kopiowania danych w usłudze Azure Data Factory do kopiowania danych do lub z [Eksploratora danych platformy Azure.](/azure/data-explorer/data-explorer-overview) Opiera się na artykule [omówienie działania kopiowania,](copy-activity-overview.md) który oferuje ogólny przegląd działania kopiowania.
 
 >[!TIP]
->W przypadku ogólnie integracji usługi Azure Data Factory i Azure Data Explorer dowiedz się więcej z [integruj Eksploratora danych platformy Azure z usługą Azure Data Factory.](../data-explorer/data-factory-integration.md)
+>W przypadku ogólnie integracji usługi Azure Data Factory i Azure Data Explorer dowiedz się więcej z [integruj Eksploratora danych platformy Azure z usługą Azure Data Factory.](/azure/data-explorer/data-factory-integration)
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
@@ -47,7 +47,7 @@ Za pomocą łącznika usługi Azure Data Explorer można wykonać następujące 
 ## <a name="getting-started"></a>Wprowadzenie
 
 >[!TIP]
->Aby zapoznać się z instruktażem łącznika Usługi Azure Data Explorer, zobacz [Kopiowanie danych do/z Eksploratora danych platformy Azure przy użyciu usługi Azure Data Factory](../data-explorer/data-factory-load-data.md) i [kopiowania zbiorczego z bazy danych do Eksploratora danych platformy Azure.](../data-explorer/data-factory-template.md)
+>Aby zapoznać się z instruktażem łącznika Usługi Azure Data Explorer, zobacz [Kopiowanie danych do/z Eksploratora danych platformy Azure przy użyciu usługi Azure Data Factory](/azure/data-explorer/data-factory-load-data) i [kopiowania zbiorczego z bazy danych do Eksploratora danych platformy Azure.](/azure/data-explorer/data-factory-template)
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -63,7 +63,7 @@ W poniższych sekcjach znajdują się szczegółowe informacje o właściwościa
     - Klucz aplikacji
     - Identyfikator dzierżawy
 
-2. Udziel podmiotowi usługi poprawnych uprawnień w Eksploratorze danych platformy Azure. Zobacz [Zarządzanie uprawnieniami bazy danych Usługi Azure Data Explorer,](../data-explorer/manage-database-permissions.md) aby uzyskać szczegółowe informacje o rolach i uprawnieniach oraz o zarządzaniu uprawnieniami. Ogólnie rzecz biorąc, należy:
+2. Udziel podmiotowi usługi poprawnych uprawnień w Eksploratorze danych platformy Azure. Zobacz [Zarządzanie uprawnieniami bazy danych Usługi Azure Data Explorer,](/azure/data-explorer/manage-database-permissions) aby uzyskać szczegółowe informacje o rolach i uprawnieniach oraz o zarządzaniu uprawnieniami. Ogólnie rzecz biorąc, należy:
 
     - **Jako źródło**, przyznać co najmniej **rolę przeglądarki bazy danych** do bazy danych
     - **Jako zlew**, przyznać co najmniej **rolę ingestor bazy danych** do bazy danych

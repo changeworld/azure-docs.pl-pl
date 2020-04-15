@@ -1,5 +1,5 @@
 ---
-title: Przewodnik po alertach dotyczących zabezpieczeń usługi Azure Security Center dla usługi IoT| Dokumenty firmy Microsoft
+title: Dostosowywalne alerty zabezpieczeń
 description: Dowiedz się więcej o konfigurowalnych alertach zabezpieczeń i zalecanych środkach korygowania przy użyciu usługi Azure Security Center dla funkcji i usługi IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 32d79267559480de8ec91e5e66196bfd57e01cf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b39d70c60a4c9701d0a8bafde17b241fe01cc46
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299577"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311634"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center for IoT security alerts (Alerty zabezpieczeń usługi Azure Security Center dla IoT)
 
 Usługa Azure Security Center for IoT stale analizuje rozwiązanie IoT przy użyciu zaawansowanej analizy i analizy zagrożeń, aby ostrzegać o złośliwej aktywności.
 
-Zachęcamy do tworzenia niestandardowych alertów na podstawie wiedzy o oczekiwanym zachowaniu urządzenia, aby zapewnić, że alerty działają jako najbardziej efektywne wskaźniki potencjalnego naruszenia zabezpieczeń w unikatowym wdrożeniu organizacyjnym i krajobrazie. 
+Zachęcamy do tworzenia niestandardowych alertów na podstawie wiedzy o oczekiwanym zachowaniu urządzenia, aby zapewnić, że alerty działają jako najbardziej efektywne wskaźniki potencjalnego naruszenia zabezpieczeń w unikatowym wdrożeniu organizacyjnym i krajobrazie.
 
 Poniższa lista alertów usługi Azure Security Center dla IoT są definiowane przez Użytkownika na podstawie oczekiwanego zachowania usługi IoT Hub i/lub urządzenia. Aby uzyskać więcej informacji na temat dostosowywania każdego alertu, zobacz [tworzenie alertów niestandardowych](quickstart-create-custom-alerts.md).
 
-## <a name="iot-hub-alerts-available-for-customization"></a>Alerty Usługi IoT Hub dostępne do dostosowywania 
-
-
+## <a name="iot-hub-alerts-available-for-customization"></a>Alerty Usługi IoT Hub dostępne do dostosowywania
 
 | Ważność | Nazwa alertu | Źródło danych | Opis | Sugerowane środki zaradcze|
 |---|---|---|---|---|
@@ -51,7 +49,7 @@ Poniższa lista alertów usługi Azure Security Center dla IoT są definiowane p
 | Małe      | Alert niestandardowy - liczba nieautoryzowanych operacji wykracza poza dozwolony zakres  | Usługa IoT Hub     | Ilość nieautoryzowanych operacji w określonym przedziale czasu wykracza poza aktualnie skonfigurowany i dopuszczalny zakres.|
 |
 
-## <a name="agent-alerts-available-for-customization"></a>Alerty agenta dostępne do dostosowania 
+## <a name="agent-alerts-available-for-customization"></a>Alerty agenta dostępne do dostosowania
 
 | Ważność | Nazwa alertu | Źródło danych | Opis | Sugerowane środki zaradcze|
 |---|---|---|---|---|

@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: f56929e14aef34f675139782328ed5c559df12c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 809274aba35e9607aeacf7c6483ec3d10f899667
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198633"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312367"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurowanie bramy aplikacji przy za pomocą wewnętrznego punktu końcowego równoważenia obciążenia (ILB)
 
 Brama aplikacji platformy Azure można skonfigurować za pomocą adresu VIP z dostępem do Internetu lub z wewnętrznym punktem końcowym, który nie jest narażony na Działanie Internetu. Wewnętrzny punkt końcowy używa prywatnego adresu IP dla frontendu, który jest również znany jako *wewnętrzny punkt końcowy równoważenia obciążenia (ILB).*
 
-Konfigurowanie bramy przy użyciu prywatnego adresu IP wewnętrznej bazy danych jest przydatne w przypadku wewnętrznych aplikacji biznesowych, które nie są udostępniane w Internecie. Jest to również przydatne w przypadku usług i warstw w aplikacji wielowarstwowej, które znajdują się w granicach zabezpieczeń, które nie są narażone na dostęp do Internetu, ale nadal wymagają dystrybucji obciążenia okrężnego, lepkości sesji lub zakończenia warstwy SSL (Secure Sockets Layer).
+Konfigurowanie bramy przy użyciu prywatnego adresu IP wewnętrznej bazy danych jest przydatne w przypadku wewnętrznych aplikacji biznesowych, które nie są udostępniane w Internecie. Jest to również przydatne w przypadku usług i warstw w aplikacji wielowarstwowej, które znajdują się w granicach zabezpieczeń, które nie są narażone na dostęp do Internetu, ale nadal wymagają dystrybucji obciążenia okrężnego, lepkości sesji lub zabezpieczeń warstwy transportu (TLS), wcześniej znanego jako Secure Sockets Layer (SSL), zakończenie.
 
 W tym artykule poprowadzą Cię przez kroki konfigurowania bramy aplikacji z prywatnym adresem IP wewnętrznej bazy przy użyciu portalu Azure.
 

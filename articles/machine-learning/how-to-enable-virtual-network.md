@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: ea65956a73874b717ecab25d83ed25b59f2ada55
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f70c24c91e048270696b244bb9775cb24f0ef30d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257253"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383474"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpieczanie zadań eksperymentowania i wnioskowania usługi Azure w ramach sieci wirtualnej platformy Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -484,6 +484,21 @@ Zawartość pliku, `body.json` do którego odwołuje się polecenie, jest podobn
 > Obecnie nie można skonfigurować modułu równoważenia obciążenia podczas wykonywania operacji __dołączania__ w istniejącym klastrze. Należy najpierw dołączyć klaster, a następnie wykonać operację aktualizacji, aby zmienić moduł równoważenia obciążenia.
 
 Aby uzyskać więcej informacji na temat korzystania z wewnętrznego modułu równoważenia obciążenia za pomocą usługi AKS, zobacz [Używanie wewnętrznego modułu równoważenia obciążenia z usługą Azure Kubernetes .](/azure/aks/internal-lb)
+
+## <a name="use-azure-container-instances-aci"></a>Użyj wystąpień kontenerów platformy Azure (ACI)
+
+Wystąpienia kontenera platformy Azure są tworzone dynamicznie podczas wdrażania modelu. Aby umożliwić usługi Azure Machine Learning tworzenie usługi ACI wewnątrz sieci wirtualnej, należy włączyć __delegowanie podsieci__ dla podsieci używanej przez wdrożenie.
+
+Aby użyć usługi ACI w sieci wirtualnej w obszarze roboczym, należy wykonać następujące czynności:
+
+1. Aby włączyć delegowanie podsieci w sieci wirtualnej, użyj informacji w artykule [Dodaj lub usuń delegowanie podsieci.](../virtual-network/manage-subnet-delegation.md) Delegowanie można włączyć podczas tworzenia sieci wirtualnej lub dodać ją do istniejącej sieci.
+
+    > [!IMPORTANT]
+    > Podczas włączania delegowania należy użyć `Microsoft.ContainerInstance/containerGroups` jako __delegata podsieci do__ wartości usługi.
+
+2. Wdrażanie modelu przy użyciu [pliku AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-), użyj parametrów `vnet_name` i. `subnet_name` Ustaw te parametry na nazwę sieci wirtualnej i podsieć, w której włączono delegowanie.
+
+
 
 ## <a name="use-azure-firewall"></a>Korzystanie z Zapory platformy Azure
 

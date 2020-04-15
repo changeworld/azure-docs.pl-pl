@@ -1,19 +1,19 @@
 ---
-title: Konfigurowanie uwierzytelniania za pomocą usług Amazon Web Services
+title: Uwierzytelnij elementy runbook usługi Azure Automation za pomocą usług Amazon Web Services
 description: W tym artykule opisano sposób tworzenia i sprawdzania poprawności poświadczeń w usłudze AWS dla elementów Runbook w usłudze Azure Automation zarządzającej zasobami usługi AWS.
 keywords: uwierzytelnianie aws, konfigurowanie aws
 services: automation
 ms.subservice: process-automation
 ms.date: 04/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 891db5d17ddde681f75845fdca6c9252c5b32b86
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 02ff9cedfbeaa36b2fafc84637ea3141b223a064
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520832"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310477"
 ---
-# <a name="authenticate-runbooks-with-amazon-web-services"></a>Uwierzytelnianie elementów Runbook w usłudze Amazon Web Services
+# <a name="authenticate-azure-automation-runbooks-with-amazon-web-services"></a>Uwierzytelnij elementy runbook usługi Azure Automation za pomocą usług Amazon Web Services
 
 Typowe zadania dotyczące zasobów w usłudze Amazon Web Services (AWS) można zautomatyzować za pomocą elementów Runbook usługi Azure Automation. Wiele zadań w usłudze AWS można zautomatyzować przy użyciu elementów Runbook usługi Automation, podobnie jak za pomocą zasobów platformy Azure. Wymagane są jedynie dwa elementy:
 

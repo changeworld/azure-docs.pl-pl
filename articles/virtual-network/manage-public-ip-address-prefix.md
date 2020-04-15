@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: anavin
-ms.openlocfilehash: 26d8ee34c735cab8f1033a9aad897ec0b1bed524
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f0c2d9757f3652b0f83b8c36d89c855f7a92fdd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65952683"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383865"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Tworzenie, zmienianie i usuwanie prefiksu publicznego adresu IP
 
@@ -41,7 +41,7 @@ Prefiksy publicznego adresu IP mają opłatę. Aby uzyskać szczegółowe inform
 ## <a name="create-a-public-ip-address-prefix"></a>Tworzenie prefiksu publicznego adresu IP
 
 1. U góry lewego rogu portalu wybierz pozycję **+ Utwórz zasób**.
-2. Wprowadź *prefiks publicznego adresu IP* w polu *Wyszukaj w Portalu Marketplace.* Gdy **prefiks publicznego adresu IP** pojawi się w wynikach wyszukiwania, wybierz go.
+2. Wprowadź *publiczny prefiks ip* w polu *Wyszukaj w Portalu Marketplace.* Gdy **prefiks publicznego adresu IP** pojawi się w wynikach wyszukiwania, wybierz go.
 3. W **obszarze Prefiks publicznego adresu IP**wybierz pozycję **Utwórz**.
 4. Wprowadź lub wybierz wartości dla następujących ustawień w obszarze **Tworzenie prefiksu publicznego adresu IP**, a następnie wybierz pozycję **Utwórz**:
 

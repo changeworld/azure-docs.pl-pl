@@ -1,23 +1,23 @@
 ---
 title: 'Samouczek: Operacje ETL z interacypcyjnym zapytaniem — Usługa Azure HDInsight'
-description: Samouczek — dowiedz się, jak wyodrębnić dane z nieprzetworzonego zestawu danych CSV, przekształcić je za pomocą interaktywnej kwerendy w programie HDInsight, a następnie załadować przekształcone dane do bazy danych SQL platformy Azure przy użyciu apache Sqoop.
+description: Samouczek — dowiedz się, jak wyodrębnić dane z nieprzetworzonego zestawu danych CSV. Przekształć go za pomocą interaktywnej kwerendy w programie HDInsight. Następnie załaduj przekształcone dane do bazy danych SQL platformy Azure przy użyciu Apache Sqoop.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 07/02/2019
-ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/02/2019
+ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494156"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313742"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Samouczek: wyodrębnianie, przekształcanie i ładowanie danych przy użyciu interaktywnej kwerendy w usłudze Azure HDInsight
 
-W tym samouczku należy wziąć plik danych CSV z publicznie dostępnych danych lotu, zaimportować go do magazynu klastra HDInsight, a następnie przekształcić dane przy użyciu zapytania interaktywnego w usłudze Azure HDInsight. Przekształcone dane można załadować do bazy danych Azure SQL Database przy użyciu narzędzia [Apache Sqoop](https://sqoop.apache.org/).
+W tym samouczku można pobrać plik danych CSV nieprzetworzonych publicznie dostępnych danych lotu. Zaimportuj go do magazynu klastra HDInsight, a następnie przekształc dane przy użyciu zapytania interaktywnego w usłudze Azure HDInsight. Przekształcone dane można załadować do bazy danych Azure SQL Database przy użyciu narzędzia [Apache Sqoop](https://sqoop.apache.org/).
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -46,7 +46,7 @@ Ten samouczek obejmuje następujące zadania:
    | --- | --- |
    | Rok filtrowania |2019 |
    | Okres filtrowania |January (Styczeń) |
-   | Pola |Rok, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Pola |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
 
 3. Wybierz przycisk **Download** (Pobierz). Uzyskasz plik zip z wybranymi polami danych.
 
@@ -60,7 +60,7 @@ Istnieje wiele sposobów przekazywania danych do magazynu skojarzonego z klastre
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
 
-    Jeśli zostanie wyświetlony monit o wprowadzenie tak lub nie, aby kontynuować, wpisz tak w wierszu polecenia i naciśnij klawisz Enter. Tekst nie jest widoczny w oknie podczas pisania.
+    Wprowadź tak lub nie, aby kontynuować, jeśli zostanie wyświetlony monit. Tekst nie jest widoczny w oknie podczas pisania.
 
 2. Po zakończeniu przekazywania połącz się z klastrem przy użyciu protokołu SSH. Edytuj poniższe polecenie, zastępując `CLUSTERNAME` nazwą klastra HDInsight. Wprowadź następujące polecenie:
 
@@ -283,13 +283,13 @@ W poprzednich sekcjach skopiowano przekształcone dane w lokalizacji `/tutorials
     GO
     ```
 
-    Powinna zostać wyświetlona lista danych w tabeli. Tabela zawiera nazwę miejscowości i średni czas opóźnienia lotów dla tej miejscowości. 
+    Powinna zostać wyświetlona lista danych w tabeli. Tabela zawiera nazwę miejscowości i średni czas opóźnienia lotów dla tej miejscowości.
 
     Wpisz `exit`, aby zakończyć działanie narzędzia tsql.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po ukończeniu korzystania z samouczka warto usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane.
+Po ukończeniu korzystania z samouczka warto usunąć klaster. Dzięki funkcji HDInsight dane są przechowywane w usłudze Azure Storage, dzięki czemu można bezpiecznie usunąć klaster, gdy nie jest używany. Naliczana jest również opłata za klaster HDInsight, nawet jeśli nie jest używana. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ma ekonomiczny sens usuwanie klastrów, gdy nie są używane.
 
 Aby usunąć klaster, zobacz [Usuwanie klastra HDInsight przy użyciu przeglądarki, programu PowerShell lub interfejsu wiersza polecenia platformy Azure](../hdinsight-delete-cluster.md).
 
@@ -298,4 +298,4 @@ Aby usunąć klaster, zobacz [Usuwanie klastra HDInsight przy użyciu przegląda
 W tym samouczku zajęłeś nieprzetworzony plik danych CSV, zaimportowano go do magazynu klastra HDInsight, a następnie przekształciłeś dane przy użyciu zapytania interaktywnego w usłudze Azure HDInsight.  Przejdź do następnego samouczka, aby dowiedzieć się więcej o łączniku magazynu hive apache.
 
 > [!div class="nextstepaction"]
->[Integracja platformy Apache Spark i ula Apache z łącznikiem magazynu hive](./apache-hive-warehouse-connector.md)
+> [Integracja platformy Apache Spark i ula Apache z łącznikiem magazynu hive](./apache-hive-warehouse-connector.md)

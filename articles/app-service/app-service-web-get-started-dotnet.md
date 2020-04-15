@@ -5,12 +5,12 @@ ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
 ms.date: 03/17/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 7fb76a3189e7650183b3000fe2e1b4e7614312bb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: be7c4a2fb65f913bc97617af1a0f21ee8fcca714
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79532914"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313277"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Szybki start: tworzenie aplikacji sieci Web ASP.NET Core na platformie Azure
 
@@ -20,7 +20,7 @@ Po zakończeniu będziesz mieć grupę zasobów platformy Azure składającą si
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto za darmo](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto za darmo](https://azure.microsoft.com/free/dotnet/).
 - Ten szybki start wdraża aplikację w usłudze App Service w systemie Windows. Aby wdrożyć aplikację w usłudze App Service w systemie _Linux_, zobacz [Tworzenie aplikacji internetowej platformy .NET Core w usłudze App Service w systemie Linux](./containers/quickstart-dotnetcore.md).
 - Zainstaluj <a href="https://www.visualstudio.com/downloads/" target="_blank">program Visual Studio 2019</a> z **obciążeniem ASP.NET i tworzenia sieci Web.**
 

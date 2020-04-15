@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 04/14/2020
 ms.author: sstein
-ms.openlocfilehash: b677fd7fe2b14e1c42443478a887ddfa2481dfbf
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 7d922aa0727ad28054d050a29039951d3f04985f
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011450"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383367"
 ---
 # <a name="sql-database-release-notes"></a>Informacje o wersji bazy danych SQL
 
@@ -49,6 +49,7 @@ W tym artykule wymieniono funkcje bazy danych SQL, które są obecnie w publiczn
 | <a href="https://aka.ms/managed-instance-aadlogins">Podmioty serwera usługi Azure AD na poziomie wystąpienia (loginy)</a> | Tworzenie logowania na poziomie serwera przy użyciu <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">instrukcji CREATE LOGIN from EXTERNAL PROVIDER.</a> |
 | [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) | Replikuj zmiany z tabel do innych baz danych umieszczonych w wystąpieniach zarządzanych, pojedynczych bazach danych lub wystąpieniach programu SQL Server lub aktualizuj tabele, gdy niektóre wiersze zostaną zmienione w innych wystąpieniach zarządzanych lub wystąpieniu programu SQL Server. Aby uzyskać informacje, zobacz [Konfigurowanie replikacji w bazie danych zarządzanych wystąpień usługi Azure SQL Database](replication-with-sql-database-managed-instance.md). |
 | Wykrywanie zagrożeń |Aby uzyskać informacje, zobacz [Konfigurowanie wykrywania zagrożeń w wystąpieniu zarządzanym usługi Azure SQL Database](sql-database-managed-instance-threat-detection.md).|
+| Długoterminowe przechowywanie kopii zapasowych | Aby uzyskać informacje, zobacz [Konfigurowanie długoterminowego przechowywania kopii zapasowych w wystąpieniu zarządzanym usługi Azure SQL Database](sql-database-managed-instance-long-term-backup-retention-configure.md). | 
 
 ---
 
@@ -167,7 +168,7 @@ Między bazami danych Service Broker dialogi zatrzyma dostarczanie wiadomości d
 ### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Bezosobiłwienie typów logowania usługi Azure AD nie jest obsługiwane
 
 Personifikacja przy użyciu `EXECUTE AS USER` lub `EXECUTE AS LOGIN` następujących podmiotów AAD nie jest obsługiwana:
--   Aliased użytkowników AAD. W takim przypadku `15517`zwracany jest następujący błąd.
+-    Aliased użytkowników AAD. W takim przypadku `15517`zwracany jest następujący błąd.
 - Logowania AAD i użytkowników na podstawie aplikacji AAD lub podmiotów świadczących usługi. Następujące błędy są zwracane `15517` w `15406`tym przypadku i .
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryparametr nie jest obsługiwany w sp_send_db_mail

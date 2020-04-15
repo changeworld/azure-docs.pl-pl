@@ -1,5 +1,5 @@
 ---
-title: Poznaj usługę Azure Security Center dla planu bazowego IoT| Dokumenty firmy Microsoft
+title: Kontrole według planu bazowego i niestandardowe
 description: Dowiedz się więcej o koncepcji usługi Azure Security Center dla linii bazowej IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: ce5a0625a16c5a02d03ee74f894c585820414fa4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c52a3e55e3801eaaac885b9a3c364283f74906ba
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72176618"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311655"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>Usługa Azure Security Center dla planu bazowego IoT i kontrole niestandardowe
 
@@ -28,11 +28,11 @@ W tym artykule opisano usługę Azure Security Center for IoT baseline i podsumo
 
 ## <a name="baseline"></a>Punkt odniesienia
 
-Linia bazowa ustanawia standardowe zachowanie dla każdego urządzenia i ułatwia ustanawianie nietypowego zachowania lub odchylenia od oczekiwanych norm.  
+Linia bazowa ustanawia standardowe zachowanie dla każdego urządzenia i ułatwia ustanawianie nietypowego zachowania lub odchylenia od oczekiwanych norm.
 
 ## <a name="baseline-custom-checks"></a>Kontrole niestandardowe według planu bazowego
 
-Kontrole niestandardowe planu bazowego ustanawiają niestandardową listę kontroli dla każdego planu bazowego urządzenia przy użyciu **bliźniaczej reprezentacji tożsamości modułu** urządzenia. 
+Kontrole niestandardowe planu bazowego ustanawiają niestandardową listę kontroli dla każdego planu bazowego urządzenia przy użyciu **bliźniaczej reprezentacji tożsamości modułu** urządzenia.
 
 ## <a name="setting-baseline-properties"></a>Ustawianie właściwości linii bazowej
 

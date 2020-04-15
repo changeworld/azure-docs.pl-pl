@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 49b41715d95a5f210e6e70faf09aa016d1478728
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f75e5a28f7ec56750432e74ee48ba68491a5e481
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158783"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310300"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurowanie pulpitu nawigacyjnego aplikacji
 
@@ -74,7 +74,7 @@ W poniższej tabeli podsumowano użycie kafelków w usłudze Azure IoT Central:
 | Zawartość | Pulpity nawigacyjne zestawów aplikacji i urządzeń |Obsługiwane kafelki z funkcją Markdown to klikalne kafelki, które wyświetlają tekst nagłówka i opisu. Ten kafelek można również użyć jako kafelka łącza, aby umożliwić użytkownikowi przechodzenie do adresu URL związanego z aplikacją.|
 | Image (Obraz) | Pulpity nawigacyjne zestawów aplikacji i urządzeń |Kafelki obrazów wyświetlają obraz niestandardowy i można je kliknąć. Użyj kafelka obrazu, aby dodać grafikę do pulpitu nawigacyjnego i opcjonalnie umożliwić użytkownikowi przejście do adresu URL odpowiedniego dla aplikacji.|
 | Label | Pulpity nawigacyjne aplikacji |Kafelki etykiet wyświetlają niestandardowy tekst na pulpicie nawigacyjnym. Można wybrać rozmiar tekstu. Użyj kafelka etykiety, aby dodać odpowiednie informacje do pulpitu nawigacyjnego, takie jak opisy, dane kontaktowe lub pomoc.|
-| Mapa | Pulpity nawigacyjne zestawów aplikacji i urządzeń |Kafelki mapy wyświetlają lokalizację i stan urządzenia na mapie. Można na przykład wyświetlić, gdzie znajduje się urządzenie i czy jego wentylator jest włączony.|
+| Mapa | Pulpity nawigacyjne aplikacji i urządzeń |Kafelki mapy wyświetlają lokalizację urządzenia na mapie. Można również wyświetlić maksymalnie 100 punktów historii lokalizacji urządzenia. Na przykład można wyświetlić próbkowanie trasy, gdzie urządzenie było w ciągu ostatniego tygodnia.|
 | Wykres liniowy | Pulpity nawigacyjne aplikacji i urządzeń |Kafelki wykresu liniowego wyświetlają wykres pomiaru zagregowanego dla urządzenia przez pewien okres czasu. Można na przykład wyświetlić wykres liniowy przedstawiający średnią temperaturę i ciśnienie urządzenia w ciągu ostatniej godziny.|
 | Wykres słupkowy | Pulpity nawigacyjne aplikacji i urządzeń |Kafelki wykresu słupkowego wyświetlają wykres pomiarów zagregowanych dla urządzenia przez pewien okres czasu. Można na przykład wyświetlić wykres słupkowy przedstawiający średnią temperaturę i ciśnienie urządzenia w ciągu ostatniej godziny.|
 | Wykres kołowy | Pulpity nawigacyjne zestawów aplikacji i urządzeń |Kafelki wykresu kołowego wyświetlają wykres łącznych pomiarów dla urządzenia przez pewien okres czasu.|

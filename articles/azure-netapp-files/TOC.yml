@@ -65,8 +65,6 @@
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
     - name: Programowanie
       items:
-        - name: REST
-          href: azure-netapp-files-develop-with-rest-api.md
         - name: Narzędzia interfejsu wiersza polecenia i zestawy SDK usługi Azure NetApp Files
           href: azure-netapp-files-sdk-cli.md
         - name: Rozwiązywanie problemów związanych z błędami dostawcy zasobów usługi Azure NetApp Files
@@ -79,7 +77,7 @@
       href: /azure/templates/microsoft.netapp/allversions
 - name: Zasoby
   items:
-    - name: Ceny
+    - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/netapp/'
     - name: Dostępność regionalna
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=netapp'

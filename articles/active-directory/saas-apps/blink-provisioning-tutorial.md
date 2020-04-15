@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: b19052b8a71b582b47308c41d170f50352d643e2
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 314445275f99898913bd91eb8abc2a5acdab098a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618355"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381020"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie migania do automatycznego inicjowania obsługi administracyjnej przez użytkowników
 
@@ -89,7 +89,7 @@ W tej sekcji można przejść przez kroki konfigurowania usługi inicjowania obs
 
 ### <a name="to-configure-automatic-user-provisioning-for-blink-in-azure-ad"></a>Aby skonfigurować automatyczne inicjowanie obsługi administracyjnej dla blink w usłudze Azure AD:
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com). Wybierz pozycję **Aplikacje przedsiębiorstwa**, a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz pozycję **Aplikacje przedsiębiorstwa**, a następnie wybierz pozycję **Wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -113,7 +113,7 @@ W tej sekcji można przejść przez kroki konfigurowania usługi inicjowania obs
 
     ![Wiadomość e-mail z powiadomieniem](common/provisioning-notification-email.png)
 
-7. Kliknij przycisk **Zapisz**.
+7. Kliknij pozycję **Zapisz**.
 
 8. W sekcji **Mapowania** wybierz pozycję **Synchronizuj użytkowników usługi Azure Active Directory do migania**.
 
@@ -121,7 +121,7 @@ W tej sekcji można przejść przez kroki konfigurowania usługi inicjowania obs
 
 9. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do Blink w sekcji **Mapowanie atrybutów.** Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania kont użytkowników w Blink dla operacji aktualizacji. Wybierz przycisk **Zapisz,** aby zatwierdzić wszelkie zmiany.
 
-    ![Migaj atrybuty użytkownika](media/blink-provisioning-tutorial/User_attributes.png)
+    ![Migaj atrybuty użytkownika](media/blink-provisioning-tutorial/user-attributes.png)
 
 10. Aby skonfigurować filtry zakresu, zapoznaj się z poniższymi instrukcjami podanymi w [samouczku filtru zakresu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

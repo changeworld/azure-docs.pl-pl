@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2c33fbed6c547897847c79cc1260d2bdc9ec6b17
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: eb285d15814f1105462c414541657d43b5371d98
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010328"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383235"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Wprowadzenie do konfiguracji stanu automatyzacji platformy Azure
 
@@ -59,7 +59,7 @@ Tworzysz prostą [konfigurację DSC,](/powershell/scripting/dsc/configurations/c
         }
     }
     ```
-1. Zapisz plik jako `TestConfig.ps1`.
+1. Zapisz plik jako **TestConfig.ps1**.
 
 Ta konfiguracja wywołuje jeden zasób w każdym bloku [węzła, zasób WindowsFeature](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource), który zapewnia obecność lub brak funkcji **serwera sieci Web.**
 
@@ -123,7 +123,7 @@ Po uruchomieniu kompilacji można ją wyświetlić na kafelku **Zadania kompilac
 
 ## <a name="viewing-node-configurations"></a>Wyświetlanie konfiguracji węzłów
 
-Pomyślne zakończenie zadania kompilacji tworzy jedną lub więcej nowych konfiguracji węzła. Konfiguracja węzła jest dokumentem MOF, który jest wdrażany na serwerze ściągania i gotowy do wyciągnięcia i zastosowania przez jeden lub więcej węzłów. Konfiguracje węzłów można wyświetlić na koncie automatyzacji na stronie **Konfiguracja stanu (DSC).** Konfiguracja węzła ma nazwę z formularzem *ConfigurationName*. *Nazwa węzła*.
+Pomyślne zakończenie zadania kompilacji tworzy jedną lub więcej nowych konfiguracji węzła. Konfiguracja węzła jest dokumentem MOF, który jest wdrażany na serwerze ściągania i gotowy do wyciągnięcia i zastosowania przez jeden lub więcej węzłów. Konfiguracje węzłów można wyświetlić na koncie automatyzacji na stronie **Konfiguracja stanu (DSC).** Konfiguracja węzła ma nazwę `ConfigurationName.NodeName`z formularzem .
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Po lewej stronie kliknij pozycję **Wszystkie zasoby,** a następnie nazwę konta automatyzacji.
@@ -134,7 +134,7 @@ Pomyślne zakończenie zadania kompilacji tworzy jedną lub więcej nowych konfi
 
 ## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration"></a>Dołączanie maszyny Wirtualnej platformy Azure do zarządzania za pomocą konfiguracji stanu automatyzacji usługi Azure
 
-Za pomocą konfiguracji stanu automatyzacji platformy Azure można zarządzać maszynami wirtualnymi platformy Azure (zarówno klasycznymi, jak i Menedżerem zasobów), lokalnymi maszynami wirtualnymi, maszynami z systemem Linux, maszynami wirtualnymi AWS i lokalnymi komputerami fizycznymi. W tym artykule dowiesz się, jak dołączać tylko maszyny wirtualne usługi Azure Resource Manager. Aby uzyskać informacje na temat dołączania innych typów maszyn, zobacz [Maszyny dołączające do zarządzania przez konfigurację stanu automatyzacji platformy Azure.](automation-dsc-onboarding.md)
+Za pomocą usługi Azure Automation State Configuration można zarządzać maszynami wirtualnymi platformy Azure (zarówno klasycznymi, jak i Menedżerem zasobów), lokalnymi maszynami wirtualnymi, maszynami z systemem Linux, maszynami wirtualnymi AWS i lokalnymi komputerami fizycznymi. W tym artykule dowiesz się, jak dołączać tylko maszyny wirtualne usługi Azure Resource Manager. Aby uzyskać informacje na temat dołączania innych typów maszyn, zobacz [Maszyny dołączające do zarządzania przez konfigurację stanu automatyzacji platformy Azure.](automation-dsc-onboarding.md)
 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>Aby dołączać maszynę wirtualną usługi Azure Resource Manager do zarządzania przez konfigurację stanu automatyzacji platformy Azure
 

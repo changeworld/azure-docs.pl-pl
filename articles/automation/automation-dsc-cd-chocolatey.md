@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 79eaac74fd4475a613c0309476a12292e400dbaa
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 706ab128af4379a56223ff65fb12f29d37b524f7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010974"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383275"
 ---
 # <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Zapewnienie ciągłego wdrażania maszyn wirtualnych przy użyciu konfiguracji stanu automatyzacji i chocolatey
 
@@ -39,10 +39,9 @@ Po obu tych podstawowych procesów są w miejscu, jest łatwo automatycznie zakt
 Menedżery pakietów, takie jak [apt-get,](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool) są dobrze znane w świecie Linuksa, ale nie tak bardzo w świecie systemu Windows.
 [Chocolatey](https://chocolatey.org/) jest takie coś, a scott hanselman [blog](https://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) na ten temat jest doskonałym wprowadzeniem. W skrócie, Chocolatey pozwala na użycie wiersza polecenia do instalowania pakietów z centralnego repozytorium na systemie operacyjnym Windows. Możesz tworzyć własne repozytorium i zarządzać nim, a Chocolatey może instalować pakiety z dowolnej liczby wyznaczonych repozytoriów.
 
-[Program PowerShell DSC](/powershell/scripting/dsc/overview/overview)) jest narzędziem programu PowerShell, które umożliwia zadeklarowanie żądanej konfiguracji dla komputera. Na przykład, jeśli chcesz chocolatey zainstalowany, IIS zainstalowany, port 80 otwarty i wersja 1.0.0 witryny zainstalowanej, DSC Local Configuration Manager (LCM) implementuje tę konfigurację. Serwer ściągania DSC przechowuje repozytorium konfiguracji dla komputerów. LCM na każdym komputerze sprawdza się okresowo, aby sprawdzić, czy jego konfiguracja jest zgodna z zapisaną konfiguracją. Można zgłosić stan lub spróbować doprowadzić komputer z powrotem do wyrównania z przechowywanej konfiguracji. Można edytować zapisaną konfigurację na serwerze ściągania, aby spowodować wyrównanie komputera lub zestawu maszyn ze zmienioną konfiguracją.
+[Program PowerShell DSC](/powershell/scripting/dsc/overview/overview) to narzędzie programu PowerShell, które umożliwia zadeklarowanie żądanej konfiguracji dla komputera. Na przykład, jeśli chcesz chocolatey zainstalowany, IIS zainstalowany, port 80 otwarty i wersja 1.0.0 witryny zainstalowanej, DSC Local Configuration Manager (LCM) implementuje tę konfigurację. Serwer ściągania DSC przechowuje repozytorium konfiguracji dla komputerów. LCM na każdym komputerze sprawdza się okresowo, aby sprawdzić, czy jego konfiguracja jest zgodna z zapisaną konfiguracją. Można zgłosić stan lub spróbować doprowadzić komputer z powrotem do wyrównania z przechowywanej konfiguracji. Można edytować zapisaną konfigurację na serwerze ściągania, aby spowodować wyrównanie komputera lub zestawu maszyn ze zmienioną konfiguracją.
 
-Zasób DSC to moduł kodu, który ma określone możliwości, takie jak zarządzanie siecią, usługą Active Directory lub programem SQL Server. Chocolatey DSC Resource wie, jak uzyskać dostęp do serwera NuGet (między innymi), pobrać pakiety, zainstalować pakiety i tak dalej. W [galerii programu PowerShell](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)znajduje się wiele innych zasobów DSC.
-Moduły te są instalowane w serwerze ściągania konfiguracji usługi Azure Automation State (przez Ciebie), dzięki czemu mogą być używane przez konfiguracje.
+Zasób DSC to moduł kodu, który ma określone możliwości, takie jak zarządzanie siecią, usługą Active Directory lub programem SQL Server. Chocolatey DSC Resource wie, jak uzyskać dostęp do serwera NuGet (między innymi), pobrać pakiety, zainstalować pakiety i tak dalej. W [galerii programu PowerShell](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)znajduje się wiele innych zasobów DSC. Te moduły można zainstalować na serwerze ściągania konfiguracji usługi Azure Automation State do użycia przez konfiguracje.
 
 Szablony Menedżera zasobów zapewniają deklaratywny sposób generowania infrastruktury, na przykład sieci, podsieci, zabezpieczeń sieci i routingu, modułów równoważenia obciążenia, kart sieciowych, maszyn wirtualnych itd. Oto [artykuł,](../azure-resource-manager/management/deployment-models.md) który porównuje model wdrażania Menedżera zasobów (deklaratywny) z modelem wdrażania usługi Azure Service Management (ASM lub klasycznym) (imperatywem). Ten artykuł zawiera omówienie dostawców podstawowych zasobów: obliczeń, magazynu i sieci.
 
@@ -50,16 +49,15 @@ Jedną z kluczowych cech szablonu Menedżera zasobów jest jego możliwość zai
 
 ## <a name="quick-trip-around-the-diagram"></a>Szybka podróż po diagramie
 
-Począwszy od góry, można napisać kod, skompilować go, przetestować go, a następnie utworzyć pakiet instalacyjny. Chocolatey może obsługiwać różnego rodzaju pakiety instalacyjne, takie jak MSI, MSU, ZIP. I masz pełną moc PowerShell do rzeczywistej instalacji, jeśli natywne możliwości Chocolatey nie są do niego. Umieść paczkę w jakimś miejscu osiągalnym – repozytorium pakietów. W tym przykładzie użycia użyto folderu publicznego na koncie magazynu obiektów blob platformy Azure, ale może on znajdować się w dowolnym miejscu. Chocolatey działa natywnie z serwerami NuGet i kilka innych do zarządzania metadanych pakietu. [W tym artykule](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) opisano opcje. W tym przykładzie użycia użytek NuGet. Nuspec to metadane dotyczące pakietów. Nuspec są "skompilowane" do NuPkg i przechowywane na serwerze NuGet. Gdy konfiguracja żąda pakietu według nazwy i odwołuje się do serwera NuGet, chocolatey zasobów DSC na maszynie wirtualnej pobiera pakiet i instaluje go dla Ciebie. Można również zażądać określonej wersji pakietu.
+Począwszy od góry, można napisać kod, skompilować go, przetestować go, a następnie utworzyć pakiet instalacyjny. Chocolatey może obsługiwać różnego rodzaju pakiety instalacyjne, takie jak MSI, MSU, ZIP. I masz pełną moc PowerShell do rzeczywistej instalacji, jeśli natywne możliwości Chocolatey nie są do niego. Umieść paczkę w jakimś miejscu osiągalnym – repozytorium pakietów. W tym przykładzie użycia użyto folderu publicznego na koncie magazynu obiektów blob platformy Azure, ale może on znajdować się w dowolnym miejscu. Chocolatey działa natywnie z serwerami NuGet i kilka innych do zarządzania metadanych pakietu. [W tym artykule](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) opisano opcje. W przykładzie użycia użytek NuGet. Nuspec to metadane dotyczące pakietów. Informacje Nuspec są kompilowane do NuPkg i przechowywane na serwerze NuGet. Gdy konfiguracja żąda pakietu według nazwy i odwołuje się do serwera NuGet, chocolatey zasobów DSC na maszynie wirtualnej pobiera pakiet i instaluje go. Można również zażądać określonej wersji pakietu.
 
-W lewym dolnym rogu obrazu znajduje się szablon usługi Azure Resource Manager. W tym przykładzie użycia rozszerzenie maszyny Wirtualnej rejestruje maszynę wirtualną z serwerem ściągania konfiguracji usługi Azure Automation State jako węzeł. Konfiguracja jest przechowywana na serwerze ściągania.
-W rzeczywistości jest przechowywany dwa razy: raz jako zwykły tekst i raz skompilowany jako plik MOF. W witrynie Azure portal MOF jest "konfiguracja węzła" (w przeciwieństwie do po prostu "konfiguracja"). Jest to artefakt, który jest skojarzony z węzłem, więc węzeł będzie znał jego konfiguracji. Szczegóły poniżej pokazują, jak przypisać konfigurację węzła do węzła.
+W lewym dolnym rogu obrazu znajduje się szablon usługi Azure Resource Manager. W tym przykładzie użycia rozszerzenie maszyny Wirtualnej rejestruje maszynę wirtualną z serwerem ściągania konfiguracji usługi Azure Automation State jako węzeł. Konfiguracja jest przechowywana w serwerze ściągania dwa razy: raz jako zwykły tekst i raz skompilowany jako plik MOF. W witrynie Azure portal MOF reprezentuje konfigurację węzła, w przeciwieństwie do prostej konfiguracji. Jest to artefakt, który jest skojarzony z węzłem, więc węzeł będzie znał jego konfiguracji. Szczegóły poniżej pokazują, jak przypisać konfigurację węzła do węzła.
 
-Tworzenie nuspec, kompilowanie go i przechowywanie go na serwerze NuGet jest małą rzeczą. A ty już zarządzasz maszynami wirtualnymi. 
+Tworzenie Nuspec, kompilowanie go i przechowywanie go na serwerze NuGet jest małą rzeczą. A ty już zarządzasz maszynami wirtualnymi. 
 
-Następnym krokiem do ciągłego wdrażania wymaga skonfigurowania serwera ściągania jeden raz, rejestrowania węzłów z nim (raz) i tworzenia i przechowywania konfiguracji początkowej tam. Następnie, jak pakiety są uaktualniane i wdrażane do repozytorium, wystarczy odświeżyć konfigurację konfiguracji i węzła na serwerze ściągania w razie potrzeby. 
+Następnym krokiem do ciągłego wdrażania wymaga skonfigurowania serwera ściągania jeden raz, rejestrowania węzłów z nim jeden raz i tworzenia i przechowywania początkowej konfiguracji na serwerze. Ponieważ pakiety są uaktualniane i wdrażane do repozytorium, wystarczy odświeżyć konfigurację konfiguracji i węzła na serwerze ściągania w razie potrzeby.
 
-Jeśli nie zaczynasz od szablonu Menedżera zasobów, to jest OK. Istnieją programu PowerShell, które ułatwiają rejestrowanie maszyn wirtualnych za pomocą serwera ściągania i całej pozostałej części. Aby uzyskać więcej informacji, zobacz ten artykuł: [Maszyny dołączające do zarządzania przez konfigurację stanu automatyzacji platformy Azure](automation-dsc-onboarding.md).
+Jeśli nie zaczynasz od szablonu Menedżera zasobów, to dobrze. Istnieją polecenia programu PowerShell ułatwiające rejestrowanie maszyn wirtualnych na serwerze ściągania. Aby uzyskać więcej informacji, zobacz [Maszyny dołączania do zarządzania przez konfigurację stanu automatyzacji platformy Azure](automation-dsc-onboarding.md).
 
 ## <a name="about-the-usage-example"></a>Informacje o przykładzie użycia
 
@@ -97,31 +95,40 @@ Przejdź do odpowiedniego zasobu i kliknij przycisk "Wdrażanie w usłudze Azure
 
 Inna technika niedawno dodana do witryny Azure portal umożliwia ściąganie nowych modułów lub aktualizowanie istniejących modułów. Kliknij zasób konta automatyzacji, kafelek Zasoby i na koniec kafelek Moduły. Ikona Galeria przeglądania umożliwia wyświetlenie listy modułów w galerii, przechodzenie do szczegółów i ostateczne importowanie ich do konta automatyzacji. Jest to świetny sposób, aby od czasu do czasu aktualizować moduły. Funkcja importu sprawdza zależności z innymi modułami, aby upewnić się, że nic nie zostanie zsynchronizowane.
 
-Istnieje też podejście ręczne. Struktura folderów modułu integracji programu PowerShell dla komputera z systemem Windows różni się nieco od struktury folderów oczekiwanej przez usługę Azure Automation.
-Wymaga to trochę szczypanie z Twojej strony. Ale to nie jest trudne, i to zrobić tylko raz na zasób (chyba że chcesz uaktualnić go w przyszłości.) Aby uzyskać więcej informacji na temat tworzenia modułów integracji programu PowerShell, zobacz ten artykuł: [Tworzenie modułów integracji dla usługi Azure Automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
+Istnieje też podejście ręczne. Takie podejście jest używane tylko raz na zasób, chyba że chcesz uaktualnić go później. Aby uzyskać więcej informacji na temat tworzenia modułów integracji programu PowerShell, zobacz [Tworzenie modułów integracji dla usługi Azure Automation.](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
 
-- Zainstaluj potrzebny moduł na stacji roboczej w następujący sposób:
-  - Instalowanie [programu Windows Management Framework w wersji 5](https://aka.ms/wmf5latest) (nie jest wymagane dla systemu Windows 10)
-  - `Install-Module –Name MODULE-NAME`< — pobiera moduł z galerii programu PowerShell
-- Kopiowanie folderu `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` modułu z folderu tymczasowego
-- Usuwanie próbek i dokumentacji z folderu głównego
-- Skompresuj folder główny, nazywając plik ZIP dokładnie tak samo jak folder 
-- Umieść plik ZIP w lokalizacji dostępnej HTTP, takiej jak magazyn obiektów blob na koncie usługi Azure Storage.
-- Uruchom ten program PowerShell:
+>[!NOTE]
+>Struktura folderów modułu integracji programu PowerShell dla komputera z systemem Windows różni się nieco od struktury folderów oczekiwanej przez usługę Azure Automation. 
 
-  ```powershell
-  New-AzAutomationModule `
-    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
-    -Name MODULE-NAME –ContentLink 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
-  ```
+1. Zainstaluj [program Windows Management Framework w wersji 5](https://aka.ms/wmf5latest) (nie jest potrzebny dla systemu Windows 10).
+
+2. Zainstaluj moduł integracyjny.
+
+    ```azurepowershell-interactive
+    Install-Module –Name MODULE-NAME`    <—grabs the module from the PowerShell Gallery
+    ```
+
+3. Skopiuj folder modułu z **folderu c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME** do folderu tymczasowego.
+
+4. Usuń próbki i dokumentację z folderu głównego.
+
+5. Siąz folder główny, nazywając plik ZIP nazwą folderu.
+
+6. Umieść plik ZIP w lokalizacji dostępnej HTTP, takiej jak magazyn obiektów blob na koncie usługi Azure Storage.
+
+7. Uruchom następujące polecenie.
+
+    ```azurepowershell-interactive
+    New-AzAutomationModule `
+      -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
+      -Name MODULE-NAME –ContentLink 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
+    ```
 
 W uwzględniony przykład implementuje te kroki dla cChoco i xNetworking. 
 
 ## <a name="step-4-add-the-node-configuration-to-the-pull-server"></a>Krok 4: Dodaj konfigurację węzła do serwera ściągania
 
-Nie ma nic specjalnego w pierwszym zaimportowaniu konfiguracji do serwera ściągania i kompilacji. Wszystkie późniejsze importy lub kompilacje tej samej konfiguracji wyglądają dokładnie tak samo. Za każdym razem, gdy aktualizujesz pakiet i musisz wypchnąć go do produkcji, wykonaj ten krok po upewnieniu się, że plik konfiguracyjny jest poprawny — w tym nowa wersja pakietu. Oto plik konfiguracyjny i program PowerShell:
-
-Plik ISVBoxConfig.ps1:
+Nie ma nic specjalnego w pierwszym zaimportowaniu konfiguracji do serwera ściągania i kompilacji. Wszystkie późniejsze importy lub kompilacje tej samej konfiguracji wyglądają dokładnie tak samo. Za każdym razem, gdy aktualizujesz pakiet i musisz wypchnąć go do produkcji, wykonaj ten krok po upewnieniu się, że plik konfiguracyjny jest poprawny — w tym nowa wersja pakietu. Oto plik konfiguracyjny **ISVBoxConfig.ps1:**
 
 ```powershell
 Configuration ISVBoxConfig
@@ -166,7 +173,7 @@ Configuration ISVBoxConfig
 }
 ```
 
-New-ConfigurationScript.ps1 (zmodyfikowany w celu użycia modułu Az):
+Oto skrypt **New-ConfigurationScript.ps1** (zmodyfikowany w celu użycia modułu Az):
 
 ```powershell
 Import-AzAutomationDscConfiguration `
@@ -185,7 +192,7 @@ Get-AzAutomationDscCompilationJob `
     -Id $compilationJobId
 ```
 
-Te kroki powodują, że nowa konfiguracja węzła o nazwie "ISVBoxConfig.isvbox" jest umieszczana na serwerze ściągania. Nazwa konfiguracji węzła jest zbudowana jako "configurationName.nodeName".
+Te kroki powodują, że nowa konfiguracja węzła o nazwie **ISVBoxConfig.isvbox** jest umieszczana na serwerze ściągania. Nazwa konfiguracji węzła `configurationName.nodeName`jest zbudowana jako .
 
 ## <a name="step-5-create-and-maintain-package-metadata"></a>Krok 5: Tworzenie i obsługa metadanych pakietu
 
@@ -205,9 +212,10 @@ Od tego momentu to do maszyn wirtualnych, które zależą od tej konfiguracji, a
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać omówienie, zobacz [Konfiguracja stanu automatyzacji platformy Azure](automation-dsc-overview.md)
-- Aby uzyskać wprowadzenie, zobacz [Wprowadzenie do konfiguracji stanu automatyzacji usługi Azure](automation-dsc-getting-started.md)
-- Aby dowiedzieć się więcej o kompilowaniu konfiguracji DSC, aby można je było przypisać do węzłów docelowych, zobacz [Kompilowanie konfiguracji w konfiguracji stanu automatyzacji platformy Azure](automation-dsc-compile.md)
-- Aby uzyskać informacje o poleceniach cmdlet programu PowerShell, zobacz [Polecenia cmdlet konfiguracji stanu automatyzacji platformy Azure](/powershell/module/azurerm.automation/#automation)
-- Aby uzyskać informacje o cenach, zobacz [Ceny konfiguracji stanu automatyzacji platformy Azure](https://azure.microsoft.com/pricing/details/automation/)
-- Aby wyświetlić przykład użycia konfiguracji stanu automatyzacji platformy Azure w potoku ciągłego wdrażania, zobacz [Ciągłe wdrażanie przy użyciu konfiguracji stanu automatyzacji platformy Azure i czekoladowe](automation-dsc-cd-chocolatey.md)
+- Aby uzyskać omówienie, zobacz [Konfiguracja stanu automatyzacji platformy Azure](automation-dsc-overview.md).
+- Aby uzyskać informacje o tym, zobacz [Wprowadzenie do konfiguracji stanu automatyzacji platformy Azure](automation-dsc-getting-started.md).
+- Aby dowiedzieć się więcej o kompilowaniu konfiguracji DSC, aby można je było przypisać do węzłów docelowych, zobacz [Kompilowanie konfiguracji w konfiguracji stanu automatyzacji platformy Azure](automation-dsc-compile.md).
+- Aby uzyskać odwołanie do polecenia polecenia cmdlet programu PowerShell, zobacz [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).
+- Aby uzyskać informacje o cenach, zobacz [Cennik konfiguracji stanu usługi Azure Automation .](https://azure.microsoft.com/pricing/details/automation/)
+- Aby zobaczyć przykład użycia konfiguracji stanu automatyzacji platformy Azure w potoku ciągłego wdrażania, zobacz [Ciągłe wdrażanie przy użyciu konfiguracji stanu automatyzacji platformy Azure i czekoladowe](automation-dsc-cd-chocolatey.md).

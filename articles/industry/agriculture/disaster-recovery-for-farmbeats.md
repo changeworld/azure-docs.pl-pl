@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: fbda28ce588aad5f6bc0d89de60069c4220fa523
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: d64735e683ba1133e7d381a68611d204c4068026
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266177"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313114"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>Odzyskiwanie po awarii dla FarmBeats
 
@@ -45,18 +45,18 @@ Można zainicjować pracy awaryjnej i odzyskać dane przechowywane dla których,
 Skopiuj klucz dostępu przywróconego bazy danych Cosmos DB i zaktualizuj nową skarbiec kluczy Danych FarmBeats Datahub.
 
 
-  ![Odzyskiwanie po awarii](./media/disaster-recovery-for-farmbeats/keyvault-secrets.png)
+  ![Odzyskiwanie po awarii](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
 > Skopiuj adres URL przywróconej bazy danych Usługi Cosmos DB i zaktualizuj go w nowej konfiguracji usługi aplikacji Datahub Firmy FarmBeats. Teraz można usunąć konto usługi Cosmos DB w nowym wdrożeniu FarmBeats.
 
-  ![Odzyskiwanie po awarii](./media/disaster-recovery-for-farmbeats/northeu-ehub-api-configuration.png)
+  ![Odzyskiwanie po awarii](./media/disaster-recovery-for-farmbeats/configuration.png)
 
 ### <a name="configure-storage-account"></a>Konfigurowanie konta magazynu
 
 Skopiuj klucz dostępu przywróconego konta magazynu i zaktualizuj go w nowym magazynie kluczy Danych Pola Danych FarmBeats.
 
-![Odzyskiwanie po awarii](./media/disaster-recovery-for-farmbeats/keyvault-7udqm-secrets.png)
+![Odzyskiwanie po awarii](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
 > Upewnij się, że można zaktualizować nazwę konta magazynu w nowym pliku konfiguracyjnym farmbeats batch VM.

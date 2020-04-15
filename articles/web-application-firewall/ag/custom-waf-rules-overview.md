@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 01/30/2020
+ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: 072c7bd5b5b292ca4f0e53c59fcb7e9771331a94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0f802f5113e38e811c110ee913099e76fa7be0b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77031735"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383809"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Niestandardowe reguły zapory aplikacji sieci Web w wersji 2 w bramie aplikacji platformy Azure
 
@@ -125,7 +125,7 @@ Opisuje pole matchVariable kolekcji. Na przykład jeśli matchVariable jest Requ
 Musi być jednym z następujących operatorów:
 
 - IPMatch - używany tylko wtedy, gdy zmienna dopasowania jest *RemoteAddr*
-- Równe — dane wejściowe są takie same jak MatchValue
+- Równe — dane wejściowe są takie same jak matchvalue
 - Contains
 - LessThan
 - GreaterThan

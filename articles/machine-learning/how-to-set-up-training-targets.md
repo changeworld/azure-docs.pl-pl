@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 24c0d9955a857e8bbc1e1c09e600031a7541026c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fcfac923da1c0daee58b10d92cbc6a6ad5e7910
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296960"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383403"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Konfigurowanie i używanie obiektów docelowych obliczeń do szkolenia modelu 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -152,32 +152,19 @@ Użyj maszyny wirtualnej do nauki o danych platformy Azure (DSVM) jako wybranej 
     > [!WARNING]
     > Usługa Azure Machine Learning obsługuje tylko maszyny wirtualne, które uruchamiają Ubuntu. Podczas tworzenia maszyny Wirtualnej lub wybrać istniejącą maszynę wirtualną, należy wybrać maszynę wirtualną, która używa Ubuntu.
 
-1. **Dołącz:** Aby dołączyć istniejącą maszynę wirtualną jako obiekt docelowy obliczeń, należy podać w pełni kwalifikowaną nazwę domeny (FQDN), nazwę użytkownika i hasło dla maszyny wirtualnej. W tym przykładzie zastąp \<> fqdn publicznym numerem FQDN maszyny Wirtualnej lub publicznym adresem IP. Zastąp \<> \<nazwy użytkownika i hasła> nazwą użytkownika i hasłem SSH dla maszyny Wirtualnej.
+1. **Dołącz:** Aby dołączyć istniejącą maszynę wirtualną jako obiekt docelowy obliczeń, należy podać identyfikator zasobu, nazwę użytkownika i hasło dla maszyny wirtualnej. Identyfikator zasobu maszyny Wirtualnej można konstruować przy użyciu identyfikatora subskrypcji, nazwy grupy zasobów i nazwy maszyny Wirtualnej przy użyciu następującego formatu ciągu:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
-    > [!IMPORTANT]
-    > Następujące regiony platformy Azure nie obsługują dołączania maszyny wirtualnej przy użyciu publicznego adresu IP maszyny wirtualnej. Zamiast tego użyj identyfikatora usługi Azure Resource Manager `resource_id` maszyny Wirtualnej z parametrem:
-    >
-    > * Wschodnie stany USA
-    > * Zachodnie stany USA 2
-    > * Południowo-środkowe stany USA
-    >
-    > Identyfikator zasobu maszyny Wirtualnej można konstruować przy użyciu identyfikatora subskrypcji, nazwy grupy zasobów `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`i nazwy maszyny Wirtualnej przy użyciu następującego formatu ciągu: .
-
-
+ 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
 
    # Create the compute config 
    compute_target_name = "attach-dsvm"
-   attach_config = RemoteCompute.attach_configuration(address='<fqdn>',
-                                                    ssh_port=22,
-                                                    username='<username>',
-                                                    password="<password>")
-   # If in US East, US West 2, or US South Central, use the following instead:
-   # attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
-   #                                                 ssh_port=22,
-   #                                                 username='<username>',
-   #                                                 password="<password>")
+   
+   attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
+                                                   ssh_port=22,
+                                                   username='<username>',
+                                                   password="<password>")
 
    # If you authenticate with SSH keys instead, use this code:
    #                                                  ssh_port=22,
@@ -211,16 +198,7 @@ Usługa Azure HDInsight to popularna platforma do analizy dużych zbiorów danyc
     
     Po utworzeniu klastra połącz się z \<nim za pomocą nazwy klastra nazwy \<hosta> ssh.azurehdinsight.net, gdzie nazwa klastra> jest nazwą podaną dla klastra. 
 
-1. **Dołącz:** Aby dołączyć klaster HDInsight jako cel obliczeniowy, należy podać nazwę hosta, nazwę użytkownika i hasło dla klastra HDInsight. W poniższym przykładzie użyto zestawu SDK do dołączenia klastra do obszaru roboczego. W tym przykładzie zastąp \<> nazwa klastra nazwą klastra. Zastąp \<> \<nazwy użytkownika i hasła> nazwą użytkownika i hasłem SSH dla klastra.
-
-    > [!IMPORTANT]
-    > Następujące regiony platformy Azure nie obsługują dołączania klastra USŁUGI HDInsight przy użyciu publicznego adresu IP klastra. Zamiast tego użyj identyfikatora usługi Azure Resource `resource_id` Manager klastra z parametrem:
-    >
-    > * Wschodnie stany USA
-    > * Zachodnie stany USA 2
-    > * Południowo-środkowe stany USA
-    >
-    > Identyfikator zasobu klastra można konstruować przy użyciu identyfikatora subskrypcji, nazwy grupy zasobów `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`i nazwy klastra przy użyciu następującego formatu ciągu: .
+1. **Dołącz:** Aby dołączyć klaster HDInsight jako cel obliczeniowy, należy podać identyfikator zasobu, nazwę użytkownika i hasło dla klastra HDInsight. Identyfikator zasobu klastra HDInsight można konstruować przy użyciu identyfikatora subskrypcji, nazwy grupy zasobów i nazwy klastra HDInsight przy użyciu następującego formatu ciągu:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -228,15 +206,11 @@ Usługa Azure HDInsight to popularna platforma do analizy dużych zbiorów danyc
 
    try:
     # if you want to connect using SSH key instead of username/password you can provide parameters private_key_file and private_key_passphrase
-    attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azurehdinsight.net', 
+
+    attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
                                                           ssh_port=22, 
                                                           username='<ssh-username>', 
                                                           password='<ssh-pwd>')
-    # If you are in US East, US West 2, or US South Central, use the following instead:
-    # attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
-    #                                                      ssh_port=22, 
-    #                                                      username='<ssh-username>', 
-    #                                                      password='<ssh-pwd>')
     hdi_compute = ComputeTarget.attach(workspace=ws, 
                                        name='myhdi', 
                                        attach_configuration=attach_config)

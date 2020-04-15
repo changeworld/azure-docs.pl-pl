@@ -1,22 +1,22 @@
 ---
-title: Praca z jednostkami zdalnymi w unity
+title: Praca z jednostkami zdalnymi w środowisku Unity
 description: Samouczek, który pokazuje, jak pracować z jednostkami ARR.
 author: florianborn71
 ms.author: flborn
 ms.date: 02/01/2020
 ms.topic: tutorial
-ms.openlocfilehash: 97b2a0e48907ebe5b1cafdf92d14e9a4c6a28360
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: db1f6a53121e05b29f7e3441af027985a141bc2e
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679534"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310206"
 ---
 # <a name="tutorial-working-with-remote-entities-in-unity"></a>Samouczek: Praca z jednostkami zdalnymi w unity
 
 [Samouczek: Konfigurowanie projektu Unity od podstaw](project-setup.md) pokazało, jak skonfigurować nowy projekt Unity do pracy z renderowaniem zdalnym platformy Azure. W tym samouczku przyjrzymy się najbardziej typowe funkcje, które każdy użytkownik ARR potrzebuje.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 >
@@ -191,6 +191,8 @@ public class RemoteModelEntity : MonoBehaviour
     }
 }
 ```
+> [!CAUTION]
+> Nie przypisuj tego skryptu do żadnego obiektu gry, ponieważ zostanie on przypisany programowo przez poniższy kod.
 
 Następnie musimy rozszerzyć nasz *RemoteRaycaster,* aby dodać składnik *RemoteModelEntity* do obiektu, który właśnie wybraliśmy.
 

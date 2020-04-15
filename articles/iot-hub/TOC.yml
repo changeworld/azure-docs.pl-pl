@@ -85,8 +85,6 @@
   items:
     - name: Obsługa protokołu TLS
       href: iot-hub-tls-support.md
-    - name: Wycofanie protokołów TLS 1.0 i 1.1
-      href: iot-hub-tls-deprecating-1-0-and-1-1.md
     - name: Obsługa sieci wirtualnych
       href: virtual-network-support.md
     - name: Przegląd wzbogaceń wiadomości
@@ -444,6 +442,8 @@
           href: iot-hub-operations-monitoring.md
         - name: Migrowanie do ustawień diagnostyki
           href: iot-hub-migrate-to-diagnostics-settings.md
+        - name: Wycofanie protokołów TLS 1.0 i 1.1
+          href: iot-hub-tls-deprecating-1-0-and-1-1.md
 - name: Zasoby
   items:
     - name: Opcje wsparcia technicznego i pomocy

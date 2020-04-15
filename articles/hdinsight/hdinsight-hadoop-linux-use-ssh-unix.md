@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: 31e85876d60ae6fcd8f3b29633506d698a323acb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a53037b5f6c43de0e08bb1c5143f27d14600ca62
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272437"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381415"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH
 
@@ -87,7 +87,7 @@ Zostanie wyświetlony monit o podanie informacji podczas procesu tworzenia klucz
 
 | Metoda tworzenia | Sposób użycia klucza publicznego |
 | ------- | ------- |
-| Portal Azure | Wyebranu pola __wyboru Użyj hasła logowania klastra dla SSH,__ a następnie wybierz pozycję Klucz __publiczny__ jako typ uwierzytelniania SSH. Na koniec wybierz plik klucza publicznego lub wklej zawartość tekstową pliku w polu __Klucz publiczny SSH__.</br>![Okno dialogowe dotyczące klucza publicznego SSH w procesie tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
+| Azure Portal | Wyebranu pola __wyboru Użyj hasła logowania klastra dla SSH,__ a następnie wybierz pozycję Klucz __publiczny__ jako typ uwierzytelniania SSH. Na koniec wybierz plik klucza publicznego lub wklej zawartość tekstową pliku w polu __Klucz publiczny SSH__.</br>![Okno dialogowe dotyczące klucza publicznego SSH w procesie tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
 | Azure PowerShell | Użyj `-SshPublicKey` parametru polecenia cmdlet [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) i przekaż zawartość klucza publicznego jako ciąg.|
 | Interfejs wiersza polecenia platformy Azure | Użyj `--sshPublicKey` parametru [az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) polecenia i przekazać zawartość klucza publicznego jako ciąg. |
 | Szablon usługi Resource Manager | Przykład użycia kluczy SSH razem z szablonem można znaleźć w temacie [Deploy HDInsight on Linux with SSH key](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/) (Wdrażanie usługi HDInsight w systemie Linux przy użyciu klucza SSH). Element `publicKeys` w pliku [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) umożliwia przekazanie kluczy do platformy Azure podczas tworzenia klastra. |
@@ -106,9 +106,9 @@ Konta SSH mogą być chronione przy użyciu hasła. Po nawiązaniu połączenia 
 
 | Metoda tworzenia | Sposób określenia hasła |
 | --------------- | ---------------- |
-| Portal Azure | Domyślnie hasło do konta użytkownika SSH jest takie samo jak hasło do konta umożliwiającego logowanie do klastra. Aby użyć innego hasła, wyeznańcz pole __wyboru Użyj hasła logowania klastra dla SSH,__ a następnie wprowadź hasło w polu Hasło __SSH.__</br>![Okno dialogowe dotyczące hasła SSH w procesie tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
+| Azure Portal | Domyślnie hasło do konta użytkownika SSH jest takie samo jak hasło do konta umożliwiającego logowanie do klastra. Aby użyć innego hasła, wyeznańcz pole __wyboru Użyj hasła logowania klastra dla SSH,__ a następnie wprowadź hasło w polu Hasło __SSH.__</br>![Okno dialogowe dotyczące hasła SSH w procesie tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
 | Azure PowerShell | Użyj `--SshCredential` parametru polecenia cmdlet [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) i przekaż obiekt zawierający `PSCredential` nazwę konta użytkownika SSH i hasło. |
-| Interfejs wiersza polecenia platformy Azure | Użyj `--sshPassword` parametru [polecenia az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) i podaj wartość hasła. |
+| Interfejs wiersza polecenia platformy Azure | Użyj `--ssh-password` parametru [polecenia az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) i podaj wartość hasła. |
 | Szablon usługi Resource Manager | Przykład użycia hasła razem z szablonem można znaleźć w temacie [Deploy HDInsight on Linux with SSH password](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/) (Wdrażanie usługi HDInsight w systemie Linux przy użyciu hasła SSH). Element `linuxOperatingSystemProfile` w pliku [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) umożliwia przekazanie nazwy konta SSH i hasła do platformy Azure podczas tworzenia klastra.|
 
 ### <a name="change-the-ssh-password"></a>Zmienianie hasła SSH
@@ -178,7 +178,7 @@ Węzły procesu roboczego i węzły Zookeeper nie są bezpośrednio dostępne z 
     ssh sshuser@wn0-myhdi
     ```
 
-    Aby pobrać listę nazw węzłów, zobacz [Zarządzanie hdinsight za pomocą dokumentu APACHE Ambari REST API.](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)
+    Aby pobrać listę nazw węzłów, zobacz [Zarządzanie hdinsight za pomocą dokumentu APACHE Ambari REST API.](hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes)
 
 Jeśli konto SSH jest zabezpieczone przy użyciu __hasła__, wprowadź hasło podczas nawiązywania połączenia.
 

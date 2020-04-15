@@ -3,12 +3,12 @@ title: 'Szybki start: tworzenie planu w portalu'
 description: W tym przewodniku Szybki start można użyć planów platformy Azure do tworzenia, definiowania i wdrażania artefaktów za pośrednictwem witryny Azure portal.
 ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: 457f4f9c53f45077129b291c904bc1580b6d965e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd50b1833f16d364a4494483fcccfee017bb982b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282056"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381889"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Szybki start: definiowanie i przypisywanie planu w portalu
 
@@ -28,7 +28,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
    Możesz też wybrać **pozycję Utwórz** na stronie **Wprowadzenie,** aby przejść bezpośrednio do utworzenia planu.
 
-   ![Tworzenie planu na stronie Definicje planu](./media/create-blueprint-portal/create-blueprint-button.png)
+   :::image type="content" source="./media/create-blueprint-portal/create-blueprint-button.png" alt-text="Tworzenie planu na stronie Definicje planu" border="false":::
 
 1. Wybierz **rozpocznij od pustego planu** z karty u góry wbudowanej listy planów.
 
@@ -48,10 +48,10 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
    1. Wybierz **dodaj,** aby dodać ten artefakt do planu.
 
-   ![Przypisanie roli artefaktu planu](./media/create-blueprint-portal/add-role-assignment.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="Przypisanie roli artefaktu planu" border="false":::
 
    > [!NOTE]
-   > Większość artefaktów obsługuje parametry. Parametrem, który jest przypisany wartość podczas tworzenia planu jest *parametrstatyczny*. Jeśli parametr jest przypisywany podczas przypisywania planu, jest to *parametr dynamiczny*. Aby uzyskać więcej informacji, zobacz [Parametry planu](./concepts/parameters.md).
+   > Większość artefaktów obsługuje parametry. Parametrem, który jest przypisany wartość podczas tworzenia planu jest _parametrstatyczny_. Jeśli parametr jest przypisywany podczas przypisywania planu, jest to _parametr dynamiczny_. Aby uzyskać więcej informacji, zobacz [Parametry planu](./concepts/parameters.md).
 
 1. Dodaj przypisanie zasad na poziomie subskrypcji:
 
@@ -144,11 +144,11 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
    1. Wybierz **dodaj,** aby dodać ten artefakt do planu.
 
-   ![Szablon Menedżera zasobów dla artefaktu planu](./media/create-blueprint-portal/add-resource-manager-template.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Szablon Menedżera zasobów dla artefaktu planu" border="false":::
 
 1. Ukończona strategia powinna wyglądać podobnie do poniższej. Należy zauważyć, że każdy artefakt ma ** _x_ z _y_ parametry wypełnione** w **parametry** kolumny. Parametry dynamiczne są ustawiane każdorazowo podczas przypisywania strategii.
 
-   ![Ukończona definicja planu](./media/create-blueprint-portal/completed-blueprint.png)
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Ukończona definicja planu" border="false":::
 
 1. Teraz, gdy wszystkie planowane artefakty zostały dodane, wybierz **zapisz pochówek** u dołu strony.
 
@@ -174,13 +174,13 @@ W [polu Utwórz plan](#create-a-blueprint)nie podasz opisu ani nie dodano przypi
 
    1. Wyszukaj i wybierz użytkownika, aplikację lub grupę do dodania. Ten artefakt używa tego samego parametru statycznego ustawionego w każdym przypisaniu tej strategii.
 
-   e. Wybierz **dodaj,** aby dodać ten artefakt do planu.
+   1. Wybierz **dodaj,** aby dodać ten artefakt do planu.
 
-   ![Przypisanie drugiej roli artefaktu planu](./media/create-blueprint-portal/add-role-assignment-2.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="Przypisanie drugiej roli artefaktu planu" border="false":::
 
 1. Ukończona strategia powinna wyglądać podobnie do poniższej. Należy zauważyć, że nowo dodane przypisanie roli pokazuje **1 z 1 parametrów wypełnionych**. Oznacza to, że jest to parametr statyczny.
 
-   ![Druga definicja ukończonego planu](./media/create-blueprint-portal/completed-blueprint-2.png)
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="Druga definicja ukończonego planu" border="false":::
 
 1. Wybierz **pozycję Zapisz pochówek,** teraz, gdy została zaktualizowana.
 
@@ -219,10 +219,10 @@ Po opublikowaniu planu można go przypisać do subskrypcji. Przypisz plan utworz
 
    1. Wybierz pozycję **Utwórz** w dolnej części strony.
 
-   ![Tworzenie subskrypcji subskrypcji przydziału planu](./media/create-blueprint-portal/assignment-create-subscription.png)
+      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="Tworzenie subskrypcji subskrypcji przydziału planu" border="false":::
 
-   > [!IMPORTANT]
-   > Nowa subskrypcja jest tworzona natychmiast po wybraniu opcji **Utwórz**.
+      > [!IMPORTANT]
+      > Nowa subskrypcja jest tworzona natychmiast po wybraniu opcji **Utwórz**.
 
    > [!NOTE]
    > Przypisanie jest tworzone dla każdej wybranej subskrypcji. Możesz wprowadzać zmiany w jednym przypisaniu subskrypcji w późniejszym czasie bez wymuszania zmian w pozostałej części wybranych subskrypcji.
@@ -235,7 +235,7 @@ Po opublikowaniu planu można go przypisać do subskrypcji. Przypisz plan utworz
 
 1. Dla opcji **Blokowanie przypisania** pozostaw wartość domyślną **Nie blokuj**. Aby uzyskać więcej informacji, zobacz [Blokowanie zasobów planów](./concepts/resource-locking.md).
 
-   ![Blokowanie i zarządzanie tożsamościami dla przypisania](./media/create-blueprint-portal/assignment-locking-mi.png)
+   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="Blokowanie i zarządzanie tożsamościami dla przypisania" border="false":::
 
 1. W obszarze **Tożsamość zarządzana**pozostaw domyślną **przypisaną opcję System**.
 
@@ -266,7 +266,7 @@ Teraz, gdy plan został przypisany do subskrypcji, sprawdź postęp wdrożenia:
 
 1. Na liście planów kliknij prawym przyciskiem myszy wcześniej przypisany plan, a następnie wybierz polecenie **Wyświetl szczegóły przydziału**.
 
-   ![Wyświetlanie szczegółów przydziału na stronie Przypisane plany](./media/create-blueprint-portal/view-assignment-details.png)
+   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Wyświetlanie szczegółów przydziału na stronie Przypisane plany" border="false":::
 
 1. Na stronie **przydział planu** sprawdź, czy wszystkie artefakty zostały pomyślnie wdrożone i że podczas wdrażania nie wystąpiły żadne błędy. Jeśli wystąpiły błędy, zobacz [Plany rozwiązywania problemów,](./troubleshoot/general.md) aby uzyskać instrukcje, aby ustalić, co poszło nie tak.
 

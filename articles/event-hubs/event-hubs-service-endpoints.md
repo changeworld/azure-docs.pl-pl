@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 11/26/2019
 ms.author: shvija
-ms.openlocfilehash: 6de51c23bd6358a6f54fe3baf9e9b256047d4ab5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abd7940551f7a8182364475b0cf50b60afb5e1b7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064892"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313793"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Korzystanie z punktów końcowych usługi sieci wirtualnej w centrach zdarzeń platformy Azure
 
@@ -25,6 +25,22 @@ Integracja centrów zdarzeń z [punktami końcowymi usługi sieci wirtualnej (VN
 Po skonfigurowaniu do powiązanych z co najmniej jednym punktem końcowym usługi podsieci sieci wirtualnej odpowiedni obszar nazw Centrum zdarzeń nie akceptuje już ruchu z dowolnego miejsca, ale autoryzowanych podsieci w sieciach wirtualnych. Z punktu widzenia sieci wirtualnej powiązanie obszaru nazw Centrum zdarzeń z punktem końcowym usługi konfiguruje tunel sieci izolowanej z podsieci sieci wirtualnej do usługi obsługi wiadomości. 
 
 Wynikiem jest prywatna i izolowana relacja między obciążeniami powiązanymi z podsiecią i odpowiednim obszarem nazw Centrum zdarzeń, pomimo obserwowalnego adresu sieciowego punktu końcowego usługi obsługi wiadomości w zakresie publicznego adresu IP. Istnieje wyjątek od tego zachowania. Włączenie punktu końcowego usługi domyślnie `denyall` włącza regułę w [zaporze IP](event-hubs-ip-filtering.md) skojarzonej z siecią wirtualną. Można dodać określone adresy IP w zaporze IP, aby włączyć dostęp do publicznego punktu końcowego Centrum zdarzeń. 
+
+>[!WARNING]
+> Implementowanie integracji sieci wirtualnych może uniemożliwić innym usługom platformy Azure interakcję z usługą Event Hubs.
+>
+> Zaufane usługi firmy Microsoft nie są obsługiwane podczas implementacji sieci wirtualnych.
+>
+> Typowe scenariusze platformy Azure, które nie działają z sieciami wirtualnymi (należy pamiętać, że lista **nie** jest wyczerpująca) -
+> - Usługa Azure Stream Analytics
+> - Integracja z usługą Azure Event Grid
+> - Trasy usługi Azure IoT Hub
+> - Eksplorator urządzeń Usługi Azure IoT
+>
+> Następujące usługi firmy Microsoft muszą być w sieci wirtualnej
+> - Azure Web Apps
+> - Azure Functions
+
 
 > [!IMPORTANT]
 > Sieci wirtualne są obsługiwane w warstwach **Standardowa** i **Dedykowana** usługi Event Hubs. Nie jest obsługiwany w warstwie **podstawowej.**
@@ -35,7 +51,7 @@ Rozwiązania, które wymagają ścisłego i podzielonego zabezpieczeń i w któr
 
 Każda bezpośrednia trasa IP między przedziałami, w tym przewożącym HTTPS przez protokół TCP/IP, niesie ze sobą ryzyko wykorzystania luk w zabezpieczeniach z warstwy sieciowej. Usługi obsługi wiadomości zapewniają izolowane ścieżki komunikacji, gdzie wiadomości są nawet zapisywane na dysku podczas przechodzenia między stronami. Obciążenia w dwóch różnych sieciach wirtualnych, które są powiązane z tym samym wystąpieniem centrum zdarzeń, mogą komunikować się wydajnie i niezawodnie za pośrednictwem wiadomości, podczas gdy integralność granicy izolacji sieci jest zachowywana.
  
-Oznacza to, że rozwiązania chmurowe z uwzględnieniem zabezpieczeń nie tylko uzyskują dostęp do wiodących w branży niezawodnych i skalowalnych asynchronicznych funkcji obsługi wiadomości asynchronicznych platformy Azure, ale teraz mogą używać wiadomości do tworzenia ścieżek komunikacji między bezpiecznymi przedziałami rozwiązań, które są z natury bezpieczniejsze niż to, co jest osiągalne w dowolnym trybie komunikacji typu peer-to-peer, w tym HTTPS i innych protokołów gnieździe zabezpieczonych protokołami TLS.
+Oznacza to, że rozwiązania chmury wrażliwe na zabezpieczenia nie tylko uzyskują dostęp do wiodących w branży niezawodnych i skalowalnych asynchronicznych funkcji obsługi wiadomości asynchronicznych platformy Azure, ale mogą teraz używać wiadomości do tworzenia ścieżek komunikacji między bezpiecznymi przedziałami rozwiązań, które są z natury bezpieczniejsze niż to, co jest osiągalne w dowolnym trybie komunikacji typu peer-to-peer, w tym https i innych protokołów gniazd zabezpieczonych protokołami TLS.
 
 ## <a name="bind-event-hubs-to-virtual-networks"></a>Powiąż centra zdarzeń z sieciami wirtualnymi
 

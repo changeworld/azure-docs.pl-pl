@@ -1,5 +1,5 @@
 ---
-title: Konfiguracja stanu — omówienie
+title: Omówienie konfiguracji stanu automatyzacji platformy Azure
 description: Omówienie konfiguracji stanu automatyzacji platformy Azure (DSC), jej warunków i znanych problemów
 keywords: powershell dsc, konfiguracja żądanego stanu, powershell dsc azure
 services: automation
@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 02e540c9ac2654be97ff247749d1ed18573cfc24
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: afceb11180662416aa4953b8b58ef03ffaa70eec
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010260"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383188"
 ---
 # <a name="state-configuration-overview"></a>Konfiguracja stanu — omówienie
 
@@ -123,6 +123,7 @@ Użytkownicy usługi Azure ExpressRoute powinni pamiętać, że ten plik jest u�
 - Aby rozpocząć korzystanie z usługi DSC w konfiguracji stanu automatyzacji platformy Azure, zobacz [Wprowadzenie do konfiguracji stanu automatyzacji platformy Azure.](automation-dsc-getting-started.md)
 - Aby dowiedzieć się, jak dołączać węzły, zobacz [Maszyny dołączające do zarządzania przez konfigurację stanu automatyzacji platformy Azure](automation-dsc-onboarding.md).
 - Aby dowiedzieć się więcej o kompilowaniu konfiguracji DSC, aby można je było przypisać do węzłów docelowych, zobacz [Kompilowanie konfiguracji w konfiguracji stanu automatyzacji platformy Azure](automation-dsc-compile.md).
-- Aby uzyskać informacje o poleceniach cmdlet programu PowerShell, zobacz [polecenia cmdlet konfiguracji stanu automatyzacji platformy Azure](/powershell/module/azurerm.automation/#automation).
+- Aby uzyskać odwołanie do polecenia polecenia cmdlet programu PowerShell, zobacz [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).
 - Aby uzyskać informacje o cenach, zobacz [Cennik konfiguracji stanu usługi Azure Automation .](https://azure.microsoft.com/pricing/details/automation/)
 - Aby zobaczyć przykład użycia konfiguracji stanu automatyzacji platformy Azure w potoku ciągłego wdrażania, zobacz [Ciągłe wdrażanie przy użyciu konfiguracji stanu automatyzacji platformy Azure i chocolatey.](automation-dsc-cd-chocolatey.md)

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/24/2020
-ms.openlocfilehash: 4265f6050b237cb40afeddfc228ade9be06be039
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.date: 04/14/2020
+ms.openlocfilehash: 098aeaa06a26c57744402722aa3eacc51ea85fb7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396782"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382867"
 ---
 # <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>Zbieranie i analizowanie dziennika aktywności platformy Azure w usłudze Azure Monitor
 [Dziennik aktywności platformy Azure](platform-logs-overview.md) to dziennik [platformy,](platform-logs-overview.md) który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. Dziennik aktywności można wyświetlić w portalu Azure portal, ale należy skonfigurować go do wysyłania do obszaru roboczego usługi Log Analytics, aby włączyć dodatkowe funkcje usługi Azure Monitor. W tym artykule opisano sposób wykonywania tej konfiguracji i wysyłanie dziennika aktywności do usługi Azure storage i centrów zdarzeń.
@@ -25,7 +25,8 @@ Zbieranie dziennika aktywności w obszarze roboczym usługi Log Analytics zapewn
 - Zapisy dziennika aktywności sklepu przez okres dłuższy niż 90 dni.
 - Konsolidacja wpisów dziennika z wielu subskrypcji platformy Azure i dzierżaw w jedną lokalizację do analizy razem.
 
-
+> [!IMPORTANT]
+> Zbieranie dzienników między dzierżawami wymaga [latarni morskiej platformy Azure.](/azure/lighthouse)
 
 ## <a name="collecting-activity-log"></a>Zbieranie dziennika aktywności
 Dziennik aktywności jest zbierany automatycznie do [przeglądania w witrynie Azure portal](activity-log-view.md). Aby zebrać go w obszarze roboczym usługi Log Analytics lub wysłać go do magazynu platformy Azure lub centrów zdarzeń, utwórz [ustawienie diagnostyczne](diagnostic-settings.md). Jest to ta sama metoda, która jest używana przez dzienniki zasobów, dzięki czemu jest spójna dla wszystkich [dzienników platformy.](platform-logs-overview.md)  

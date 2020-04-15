@@ -1,5 +1,5 @@
 ---
-title: Poznaj usługę Azure Security Center pod kątem kosztów IoT| Dokumenty firmy Microsoft
+title: Cennik i powiązane koszty
 description: Dowiedz się więcej o kosztach związanych z usługą Azure Security Center dla IoT i o tym, jak nimi kontrolować.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe117cf8d05ba3392b71858acf94d1fc88c1a527
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71348519"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311560"
 ---
 # <a name="pricing-and-associated-costs"></a>Cennik i powiązane koszty
 
@@ -34,13 +34,11 @@ Model cenowy Usługi Azure Security Center for IoT składa się z dwóch częśc
 
 - Koszt według wiadomości — ulepszone funkcje zabezpieczeń oparte na komunikatach zabezpieczających z usługi IoT Edge lub urządzeń typu liść.
 
-
 Aby uzyskać więcej informacji, zobacz [Ustalanie cen w centrum zabezpieczeń](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="associated-costs"></a>Koszty powiązane
 
 Usługa Azure Security Center for IoT ma powiązane koszty, które nie są częścią cen bezpośrednich:
-
 
 - Koszty przechowywania usługi Log Analytics
 
@@ -50,9 +48,9 @@ Aby zmienić ustawienia:
 
 1. Otwórz Centrum IoT.
 
-2. W obszarze **Zabezpieczenia**kliknij pozycję **Przegląd**.
+1. W obszarze **Zabezpieczenia**kliknij pozycję **Przegląd**.
 
-3. Kliknij przycisk **Ustawienia**.
+1. Kliknij przycisk **Ustawienia**.
 
 Poniższa tabela zawiera podsumowanie powiązanych kosztów i implikacji każdej opcji.
 
@@ -64,8 +62,8 @@ Poniższa tabela zawiera podsumowanie powiązanych kosztów i implikacji każdej
 |
 
 >[!Important]
-> Rezygnacja ma poważne konsekwencje dla dostępności funkcji zabezpieczeń Usługi Azure Security Center dla IoT. 
-  
+> Rezygnacja ma poważne konsekwencje dla dostępności funkcji zabezpieczeń Usługi Azure Security Center dla IoT.
+
 | Zrezygnować | Implikacje |
 | --- | --- |
 | _Podwójna kolekcja metadanych_ | Wyłączanie [alertów niestandardowych](quickstart-create-custom-alerts.md) |
@@ -74,7 +72,6 @@ Poniższa tabela zawiera podsumowanie powiązanych kosztów i implikacji każdej
 | _Przechowywanie nieprzetworzonych zdarzeń zabezpieczeń urządzeń_ | Szczegóły dotyczące zaleceń dotyczących planu bazowego systemu operacyjnego urządzenia nie są dostępne |
 | | Szczegóły dotyczące dochodzeń w sprawie [wpisów](concept-security-alerts.md) i [rekomendacji](concept-recommendations.md) nie są dostępne |
 |
-
 
 ## <a name="see-also"></a>Zobacz też
 

@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-ms.date: 03/10/2020
-ms.openlocfilehash: 4c635d285f83e8e9c4c5547a9ee983686c507819
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/14/2020
+ms.openlocfilehash: d62d05cdbda86af3c3a38757877624e87f6d1719
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261741"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383770"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Tworzenie konta w portalu marketplace komercyjnego w Centrum partnerskim
 
@@ -100,7 +100,7 @@ Upewnij się, że informacje o koncie są przydatne.
 
 Jeśli jesteś już zarejestrowany w sieci Partner Network firmy Microsoft, użyj tej sekcji, aby utworzyć konto bezpośrednio z Centrum partnerów.
 
-Zaloguj się do [Centrum partnerów](https://partner.microsoft.com/) za pomocą konta microsoft partner network, aby połączyć domenę służbowego konta e-mail firmy z nowym kontem Centrum partnerów. Kojarząc te konta, pracownicy firmy mogą logować się do Centrum partnerskiego przy użyciu nazw użytkowników i haseł na koncie służbowym.
+Zaloguj się do [Centrum partnerów](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) za pomocą konta microsoft partner network, aby połączyć domenę służbowego konta e-mail firmy z nowym kontem Centrum partnerów. Kojarząc te konta, pracownicy firmy mogą logować się do Centrum partnerskiego przy użyciu nazw użytkowników i haseł na koncie służbowym.
 
 >[!NOTE]
 >Aby sprawdzić, czy Firma ma już konto służbowe Centrum partnerów, jak utworzyć nowe konto służbowe lub jak skonfigurować wiele kont służbowych do użycia w Centrum partnerów, odwiedź [konto służbowe firmy i Centrum partnerów.](./company-work-accounts.md)
@@ -130,7 +130,7 @@ Jeśli jesteś już zarejestrowany w programie dla deweloperów Centrum partner�
 >
 >Indywidualne konta są przeznaczone dla pojedynczych programistów pracujących na własną rękę. Konta firmowe są przeznaczone dla organizacji i firm. Konta firmowe zapewniają dostęp do przesyłania aplikacji z dodatkową funkcjonalnością. Wymagamy większej weryfikacji kont firmowych po zarejestrowaniu się, aby potwierdzić, że masz prawo do skonfigurowania konta dla twojej firmy. Weryfikacja ta może potrwać od kilku dni do kilku tygodni i często obejmuje telefon do firmy. Oba typy kont umożliwiają przesyłanie aplikacji, dodatków i usług. Aby uzyskać więcej informacji, zobacz [Typy kont, lokalizacje i opłaty](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).
 
-Zaloguj się do [Centrum partnerów](https://partner.microsoft.com/) za pomocą konta Centrum partnerów firmy Microsoft, aby zarejestrować się w programie Commercial Marketplace na tym samym koncie. Rejestrując się w witrynie Commercial Marketplace przy użyciu tego samego konta, możesz zobaczyć zarówno istniejące rejestracje programów, jak i witrynę Commercial Marketplace w lewym menu nawigacyjnym Centrum partnerów.
+Zaloguj się do [Centrum partnerów](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) za pomocą konta Centrum partnerów firmy Microsoft, aby zarejestrować się w programie Commercial Marketplace na tym samym koncie. Rejestrując się w witrynie Commercial Marketplace przy użyciu tego samego konta, możesz zobaczyć zarówno istniejące rejestracje programów, jak i witrynę Commercial Marketplace w lewym menu nawigacyjnym Centrum partnerów.
 
 Po zalogowaniu się, aby zakończyć konfigurowanie konta, użyj następujących czynności:
 

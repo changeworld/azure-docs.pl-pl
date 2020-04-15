@@ -1,5 +1,5 @@
 ---
-title: Poznaj zaleceń dotyczące zabezpieczeń usługi Azure Security Center dla usług IoT| Dokumenty firmy Microsoft
+title: Zalecenia dotyczące zabezpieczeń
 description: Dowiedz się więcej o koncepcji zaleceń dotyczących zabezpieczeń i o tym, jak są one używane w usłudze Azure Security Center dla IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,22 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
-ms.openlocfilehash: a8de821abcedf6bb9a331852a2c0af9b6439667a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 213595ac69efc90ec855b2891641e1f00bd1ba92
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78303583"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311542"
 ---
 # <a name="security-recommendations"></a>Zalecenia dotyczące zabezpieczeń
 
-Usługa Azure Security Center for IoT skanuje zasoby platformy Azure i urządzenia IoT i udostępnia zalecenia dotyczące zabezpieczeń w celu zmniejszenia powierzchni ataku. Zalecenia dotyczące zabezpieczeń są wykonalne i mają na celu pomoc klientom w przestrzeganiu najlepszych praktyk w zakresie zabezpieczeń.
+Usługa Azure Security Center for IoT skanuje zasoby platformy Azure i urządzenia IoT i udostępnia zalecenia dotyczące zabezpieczeń w celu zmniejszenia powierzchni ataku.
+Zalecenia dotyczące zabezpieczeń są wykonalne i mają na celu pomoc klientom w przestrzeganiu najlepszych praktyk w zakresie zabezpieczeń.
 
 W tym artykule znajdziesz listę zaleceń, które mogą być wyzwalane na urządzeniach IoT Hub i/lub IoT.
 
 ## <a name="recommendations-for-iot-devices"></a>Zalecenia dla urządzeń IoT
 
-Zalecenia dotyczące urządzeń zawierają szczegółowe informacje i sugestie, aby poprawić stan bezpieczeństwa urządzeń. 
+Zalecenia dotyczące urządzeń zawierają szczegółowe informacje i sugestie, aby poprawić stan bezpieczeństwa urządzeń.
 
 | Ważność | Nazwa                                                      | Źródło danych | Opis                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -53,7 +54,7 @@ Zalecenia operacyjne zawierają szczegółowe informacje i sugestie dotyczące p
 
 ## <a name="recommendations-for-iot-hub"></a>Zalecenia dla Usługi IoT Hub
 
-Alerty rekomendacji zapewniają wgląd i sugestie dotyczące działań mających na celu poprawę postawy zabezpieczeń środowiska.  
+Alerty rekomendacji zapewniają wgląd i sugestie dotyczące działań mających na celu poprawę postawy zabezpieczeń środowiska.
 
 | Ważność | Nazwa                                                     | Źródło danych | Opis                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

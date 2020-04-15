@@ -1,7 +1,7 @@
 ---
 title: Nadmiarowość danych
 titleSuffix: Azure Storage
-description: Dane na koncie usługi Microsoft Azure Storage są replikowane pod kątem trwałości i wysokiej dostępności. Konfiguracje nadmiarowości obejmują magazynowanie lokalne nadmiarowe (LRS), magazyn strefowy (ZRS), magazyn geograficznie nadmiarowy (GRS), magazyn geograficzny dostępu do odczytu (RA-GRS), magazyn geograficzny nadmiarowy (GZRS) (wersja zapoznawcza) i dostęp do odczytu magazynowanie geograficzne-strefowe (RA-GZRS) (wersja zapoznawcza).
+description: Dane na koncie usługi Microsoft Azure Storage są replikowane pod kątem trwałości i wysokiej dostępności. Konfiguracje nadmiarowości obejmują magazynowanie lokalne nadmiarowe (LRS), magazyn strefowy (ZRS), magazyn geograficznie nadmiarowy (GRS), magazyn geograficzny dostępu do odczytu (RA-GRS), magazyn geograficzny nadmiarowy (GZRS) (wersja zapoznawcza) i magazyn geograficzny dostępu do strefy odczytu (RA-GZRS) (wersja zapoznawcza).
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7ae5f59a1bd96362d5466b2f6363185ba168d942
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1961797f37a760fe3a31dc8aa3830889965b69b5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255264"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81379939"
 ---
 # <a name="azure-storage-redundancy"></a>Nadmiarowość usługi Azure Storage
 

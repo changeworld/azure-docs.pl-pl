@@ -9,27 +9,25 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: f4ca76f4be9d00e185f8774fc33296d1af1aeece
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: dfe62c54bfb10d70f1dbf19daec90eec68e66431
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585497"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383151"
 ---
-# <a name="remediate-non-compliant-dsc-servers"></a>Korygowanie niezgodnych serwerów DSC
+# <a name="remediate-noncompliant-dsc-servers"></a>Korygowanie niezgodnych serwerów DSC
 
-Gdy serwery są zarejestrowane w konfiguracji stanu automatyzacji platformy Azure, "Tryb konfiguracji" jest ustawiony na ApplyOnly, ApplyandMonitor lub ApplyAndAutoCorrect.
-Jeśli tryb nie jest ustawiony na Autokorektę, serwery, które z jakiegokolwiek powodu oddalają się od stanu zgodnego, pozostaną niezgodne, dopóki nie zostaną ręcznie poprawione.
+Gdy serwery są zarejestrowane w usłudze Azure `ApplyOnly` `ApplyandMonitor`Automation `ApplyAndAutoCorrect`State Configuration, tryb konfiguracji jest ustawiony na , lub . Jeśli tryb nie jest `ApplyAndAutoCorrect`ustawiony na , serwery, które dryfują ze stanu zgodnego z jakiegokolwiek powodu pozostają niezgodne, dopóki nie są ręcznie poprawione.
 
 Dane obliczeniowe platformy Azure oferuje funkcję o nazwie Uruchom polecenie, która umożliwia klientom uruchamianie skryptów wewnątrz maszyn wirtualnych.
 Ten dokument zawiera przykładowe skrypty dla tej funkcji podczas ręcznego korygowania dryfu konfiguracji.
 
 ## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>Prawidłowe dryfowanie maszyn wirtualnych systemu Windows przy użyciu programu PowerShell
 
-Aby uzyskać instrukcje krok po kroku przy użyciu funkcji Uruchom polecenie na maszynach wirtualnych systemu Windows, zobacz stronę dokumentacji [Uruchamianie skryptów programu PowerShell w maszynie Wirtualnej systemu Windows za pomocą polecenia Uruchom](/azure/virtual-machines/windows/run-command)polecenie .
+Aby uzyskać instrukcje krok po kroku przy użyciu funkcji Uruchom polecenie na maszynach wirtualnych systemu Windows, zobacz stronę dokumentacji [Uruchamianie skryptów programu PowerShell w maszynie Wirtualnej systemu Windows za pomocą polecenia Uruchom polecenie](/azure/virtual-machines/windows/run-command).
 
-Aby wymusić węzeł konfiguracji stanu automatyzacji platformy Azure, `Update-DscConfiguration` aby pobrać najnowszą konfigurację i zastosować ją, użyj polecenia cmdlet.
-Aby uzyskać szczegółowe informacje, zobacz dokumentację polecenia cmdlet [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration).
+Aby wymusić węzeł konfiguracji stanu automatyzacji platformy Azure, aby pobrać najnowszą konfigurację i zastosować ją, użyj polecenia cmdlet [Update-DscConfiguration.](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration)
 
 ```powershell
 Update-DscConfiguration -Wait -Verbose
@@ -39,12 +37,12 @@ Update-DscConfiguration -Wait -Verbose
 
 Podobna funkcjonalność nie jest obecnie dostępna dla serwerów Linuksa.
 Jedyną opcją jest powtórzenie procesu rejestracji.
-W przypadku węzłów platformy Azure korekcja dryfu można wykonać z portalu lub przy użyciu poleceń cmdlet Az Automation.
-Szczegółowe informacje na temat tego procesu są udokumentowane na stronie [Maszyny dołączania do zarządzania przez konfigurację stanu automatyzacji usługi Azure.](/azure/automation/automation-dsc-onboarding#onboard-a-vm-using-azure-portal)
-W przypadku węzłów hybrydowych korekcja dryfu może być wykonywana przy użyciu dołączonych skryptów Języka Python.
-Zobacz dokumentację w [programie PowerShell DSC for Linux repo](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer).
+W przypadku węzłów platformy Azure można poprawić dryf z witryny Azure portal lub przy użyciu poleceń cmdlet modułu Az. Szczegółowe informacje na temat tego procesu są dokumentowane w [komputerach dołączania do zarządzania przez konfigurację stanu automatyzacji platformy Azure](automation-dsc-onboarding.md#onboard-a-vm-using-azure-portal).
+W przypadku węzłów hybrydowych można poprawić dryf przy użyciu dołączonych skryptów Języka Python.
+Zobacz [PowerShell DSC dla repozytorium Linuksa](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać informacje o poleceniach cmdlet programu PowerShell, zobacz [Polecenia cmdlet konfiguracji stanu automatyzacji platformy Azure](/powershell/module/azurerm.automation/#automation)
-- Aby wyświetlić przykład użycia konfiguracji stanu automatyzacji platformy Azure w potoku ciągłego wdrażania, zobacz [Ciągłe wdrażanie przy użyciu konfiguracji stanu automatyzacji platformy Azure i czekoladowe](automation-dsc-cd-chocolatey.md)
+- Aby uzyskać odwołanie do polecenia polecenia cmdlet programu PowerShell, zobacz [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).
+- Aby zobaczyć przykład użycia konfiguracji stanu automatyzacji platformy Azure w potoku ciągłego wdrażania, zobacz [Ciągłe wdrażanie przy użyciu konfiguracji stanu automatyzacji platformy Azure i czekoladowe](automation-dsc-cd-chocolatey.md).

@@ -1,25 +1,19 @@
 ---
 title: Odwołanie do składni wzorca — usługa LUIS
-titleSuffix: Azure Cognitive Services
 description: Tworzenie jednostek w celu wyodrębnienia kluczowych danych z wypowiedzi użytkowników w aplikacjach do zrozumienia języka (LUIS). Wyodrębnione dane są używane przez aplikację kliencką.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/09/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc24667f43dfedc032f52c40fc5f8fe5c80bad70
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219732"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382146"
 ---
 # <a name="pattern-syntax"></a>Składnia wzorca
 
-Składnia wzorca jest szablonem wypowiedź. Szablon powinien zawierać słowa i encje, które chcesz dopasować, a także słowa i znaki interpunkcyjne, które chcesz zignorować. **Nie** jest to wyrażenie regularne.
+Składnia wzorca jest szablonem wypowiedź. Szablon powinien zawierać słowa i encje, które chcesz dopasować, a także słowa i [znaki interpunkcyjne,](luis-reference-application-settings.md#punctuation-normalization) które chcesz zignorować. **Nie** jest to wyrażenie regularne.
 
 > [!CAUTION]
 > Wzorce obejmują tylko jednostki uzownie maszynowe, a nie podskładne.

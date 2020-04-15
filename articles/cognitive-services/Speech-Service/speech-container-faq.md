@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/14/2020
 ms.author: aahi
-ms.openlocfilehash: 4d597b872cf31a823f314d9f3c67c9f45201c542
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 17582244aef173da6ac700c980f7bd7fb0fec307
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258477"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383078"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Kontenery usługi mowy często zadawane pytania (CZĘSTO ZADAWANE PYTANIA)
 
@@ -379,7 +379,7 @@ Doc mówi, aby udostępnić inny port, co robię, ale kontener usługi LUIS nada
 <b>Jak uzyskać interfejsy API nieprzeszkaniczne do obsługi dźwięku &lt;o długości 15 sekund?</b>
 </summary>
 
-**Odpowiedź:** Jest to tryb interaktywny. Jeśli używasz dyktowania lub konwersacji, to nie jest problem.
+**Odpowiedź:** `RecognizeOnce()` w trybie interaktywnym przetwarza tylko do 15 sekund dźwięku, ponieważ tryb jest przeznaczony do polecenia mowy, gdzie wypowiedzi mają być krótkie. Jeśli używasz `StartContinuousRecognition()` do dyktowania lub konwersacji, nie ma limitu 15 sekund.
 
 
 <br>

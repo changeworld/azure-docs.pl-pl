@@ -1,5 +1,5 @@
 ---
-title: Wybierz i wdrażaj usługę Azure Security Center dla agenta IoT| Dokumenty firmy Microsoft
+title: Wybieranie i wdrażanie agentów zabezpieczeń
 description: Dowiedz się, jak wybierać i wdrażać usługi Azure Security Center dla agentów zabezpieczeń IoT na urządzeniach IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: d70f2f3ec87c8673013bcf7b6f70ebcbb8d06f08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3b514c79be87cd136375b4853226426965f4185
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75770020"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311215"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Wybieranie i wdrażanie agenta zabezpieczeń na urządzeniu IoT
 
@@ -29,7 +29,8 @@ Aby dowiedzieć się więcej, zobacz [Architektura referencyjna agenta zabezpiec
 
 Agenci są opracowywane jako projekty open source i są dostępne w dwóch smakach: <br> [C](https://aka.ms/iot-security-github-c)i [C#](https://aka.ms/iot-security-github-cs).
 
-W tym artykule omówiono sposób wykonywania następujących zadań: 
+W tym artykule omówiono sposób wykonywania następujących zadań:
+
 > [!div class="checklist"]
 > * Porównaj smaki agentów zabezpieczeń
 > * Odkryj obsługiwane platformy agentów
@@ -37,9 +38,9 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 ## <a name="understand-security-agent-options"></a>Opis opcji agenta zabezpieczeń
 
-Każdy format agenta zabezpieczeń usługi Azure Security Center for IoT oferuje ten sam zestaw funkcji i obsługuje podobne opcje konfiguracji. 
+Każdy format agenta zabezpieczeń usługi Azure Security Center for IoT oferuje ten sam zestaw funkcji i obsługuje podobne opcje konfiguracji.
 
-Agent zabezpieczeń oparty na języku C ma mniejszą ilość pamięci i jest idealnym wyborem dla urządzeń z mniejszą ilością dostępnych zasobów. 
+Agent zabezpieczeń oparty na języku C ma mniejszą ilość pamięci i jest idealnym wyborem dla urządzeń z mniejszą ilością dostępnych zasobów.
 
 |     | Agent zabezpieczeń oparty na języku C | Agent zabezpieczeń oparty na języku C# |
 | --- | ----------- | --------- |
@@ -59,20 +60,19 @@ Agent zabezpieczeń oparty na języku C ma mniejszą ilość pamięci i jest ide
 
 ## <a name="security-agent-installation-guidelines"></a>Wskazówki dotyczące instalacji agenta zabezpieczeń
 
-W **systemie Windows**: Skrypt Install SecurityAgent.ps1 musi być wykonywany z okna programu PowerShell administratora. 
+W **systemie Windows**: Skrypt Install SecurityAgent.ps1 musi być wykonywany z okna programu PowerShell administratora.
 
 Dla **Linuksa:** InstallSecurityAgent.sh musi być uruchamiany jako superużyt. Zalecamy prefiksowanie polecenia instalacji za pomocą "sudo".
 
-
-## <a name="choose-an-agent-flavor"></a>Wybierz smak środka 
+## <a name="choose-an-agent-flavor"></a>Wybierz smak środka
 
 Odpowiedz na następujące pytania dotyczące urządzeń IoT, aby wybrać odpowiedniego agenta:
 
-- Czy używasz _systemu Windows Server_ lub Windows _IoT Core?_ 
+- Czy używasz _systemu Windows Server_ lub Windows _IoT Core?_
 
     [Wdrażanie agenta zabezpieczeń opartego na języku C#dla systemu Windows](how-to-deploy-windows-cs.md).
 
-- Czy korzystasz z dystrybucji Linuksa z architekturą x86? 
+- Czy korzystasz z dystrybucji Linuksa z architekturą x86?
 
     [Wdrażanie agenta zabezpieczeń opartego na języku C dla systemu Linux](how-to-deploy-linux-c.md).
 
@@ -90,10 +90,10 @@ Poniższa lista zawiera wszystkie aktualnie obsługiwane platformy.
 
 |Usługa Azure Security Center dla agenta IoT |System operacyjny |Architektura |
 |--------------|------------|--------------|
-|C|Ubuntu 16.04 |   x64|
-|C|Ubuntu 18.04 |   x64, ARMv7|
-|C|Debian 9 |   x64, x86|
-|C#|Ubuntu 16.04    |x64|
+|C|Ubuntu 16.04 |    x64|
+|C|Ubuntu 18.04 |    x64, ARMv7|
+|C|Debian 9 |    x64, x86|
+|C#|Ubuntu 16.04     |x64|
 |C#|Ubuntu 18.04    |x64, ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
@@ -102,6 +102,6 @@ Poniższa lista zawiera wszystkie aktualnie obsługiwane platformy.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o opcjach konfiguracji, przejdź do przewodnika infiguracyjnego dla konfiguracji agenta. 
+Aby dowiedzieć się więcej o opcjach konfiguracji, przejdź do przewodnika infiguracyjnego dla konfiguracji agenta.
 > [!div class="nextstepaction"]
 > [Konfiguracja agenta, jak prowadzić](./how-to-agent-configuration.md)

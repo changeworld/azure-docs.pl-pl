@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: azure automation, DSC, powershell, konfiguracja żądanego stanu, zarządzanie aktualizacjami, śledzenie zmian, zapasy, elementy runbook, python, graficzny, hybrydowy
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: a441b80e4d7dd9604aa2ca69da320e462859a486
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 5fa39028f1041a063bab295adabf8145a8b46ae4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261227"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308787"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Co to jest usługa Azure Arc dla serwerów (wersja zapoznawcza)
 
@@ -143,7 +143,7 @@ Pakiet agenta połączonego komputera platformy Azure dla systemów Windows i Li
 >[!NOTE]
 >Podczas tej wersji zapoznawczej został wydany tylko jeden pakiet, który jest odpowiedni dla Ubuntu 16.04 lub 18.04.
 
-Agent połączonego komputera platformy Azure dla systemów Windows i Linux można uaktualnić do najnowszej wersji ręcznie lub automatycznie w zależności od wymagań. Aby uzyskać więcej informacji, zobacz [tutaj](manage-agent.md)
+Agent połączonego komputera platformy Azure dla systemów Windows i Linux można uaktualnić do najnowszej wersji ręcznie lub automatycznie w zależności od wymagań. Aby uzyskać więcej informacji, zobacz [tutaj](manage-agent.md).
 
 ### <a name="agent-status"></a>Stan agenta
 

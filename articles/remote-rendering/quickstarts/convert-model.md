@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b1bf2c365229a418870250a78a733f9870fb5bb0
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 7ba8d201c29b5e3835fec52d8c479a388ca07f71
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892380"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312994"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Szybki start: konwertowanie modelu do renderowania
 
@@ -72,10 +72,10 @@ Wypełnij formularz w następujący sposób:
 * Utwórz nową grupę zasobów z łącza poniżej pola rozwijanego i nazwij tę **ARR_Tutorial**
 * W przypadku **nazwy konta magazynowania**wprowadź tutaj unikatową nazwę. **Ta nazwa musi być unikatowa globalnie**, w przeciwnym razie pojawi się monit informujący, że nazwa jest gotowa. W zakresie tego szybkiego startu, nazywamy go **arrtutorialstorage**. W związku z tym należy zastąpić go nazwą dla każdego wystąpienia w tym przewodniku Szybki start.
 * Wybierz **lokalizację** blisko ciebie. Najlepiej użyć tej samej lokalizacji, co do konfigurowania renderowania w innym przewodniku Szybki start.
-* **Wydajność ustawiona** na standardową
-* **Rodzaj konta** ustawiony na StorageV2 (ogólnego przeznaczenia v2)
-* **Replikacja ustawiona** na magazyn geograficzny dostępu do odczytu (RA-GRS)
-* **Warstwa dostępu** ustawiona na Gorąca
+* **Wydajność** ustawiona na "Standardowa"
+* **Rodzaj konta** ustawiony na "StorageV2 (ogólnego przeznaczenia v2)"
+* **Replikacja ustawiona** na "Magazyn geograficzny dostępu do odczytu (RA-GRS)"
+* **Warstwa dostępu** ustawiona na "Gorąca"
 
 Żadna z właściwości w innych kartach nie musi zostać zmieniona, więc możesz kontynuować **"Przejrzyj + utwórz",** a następnie wykonaj kroki, aby ukończyć konfigurację.
 

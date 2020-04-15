@@ -1,19 +1,19 @@
 ---
 title: Tworzenie klastrów Apache Hadoop przy użyciu przeglądarki sieci Web Azure HDInsight
-description: Dowiedz się, jak utworzyć apache Hadoop, Apache HBase, Apache Storm lub Apache Spark klastrów w systemie Linux dla HDInsight przy użyciu przeglądarki sieci web i witryny Azure portal.
+description: Dowiedz się, jak tworzyć apache Hadoop, Apache HBase, Apache Storm lub Apache Spark klastrów na HDInsight. Użyj przeglądarki sieci Web i witryny Azure portal.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/19/2020
-ms.openlocfilehash: bcc71b7244ba3498b2fcde023d372e67f41d6117
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: a5f6ac76d509a0a63c2d641f91cd91cdb2e0d19d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623293"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313804"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Tworzenie klastrów opartych na systemie Linux w usłudze HDInsight przy użyciu witryny Azure portal
 
@@ -31,7 +31,7 @@ Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. Z górnego menu wybierz pozycję **+ Utwórz zasób**.
 
@@ -51,7 +51,7 @@ Na karcie **Podstawy** podaj następujące informacje:
 |Grupa zasobów|Z listy rozwijanej wybierz istniejącą grupę zasobów lub wybierz pozycję **Utwórz nowy**.|
 |Nazwa klastra|Podaj globalnie unikatową nazwę.|
 |Region|Z listy rozwijanej wybierz region, w którym jest tworzony klaster.|
-|Typ klastra|Wybierz **wybierz wybierz typ klastra,** aby otworzyć listę. Z listy wybierz żądany typ klastra. Klastry HDInsight są dostępne w różnych typach. Odpowiadają one obciążeniu lub technologii, dla których jest dostrojony klaster. Nie ma żadnej obsługiwanej metody tworzenia klastra, który łączy wiele typów.|
+|Typ klastra|Kliknij **pozycję Wybierz typ klastra,** aby otworzyć listę. Z listy wybierz typ klastra poszukiwanego. Klastry HDInsight są dostępne w różnych typach. Odpowiadają one obciążeniu lub technologii, dla których jest dostrojony klaster. Nie ma żadnej obsługiwanej metody tworzenia klastra, który łączy wiele typów.|
 |Wersja|Z listy rozwijanej wybierz **wersję**. Użyj wersji domyślnej, jeśli nie wiesz, co wybrać. Więcej informacji można znaleźć w temacie [HDInsight cluster versions](hdinsight-component-versioning.md) (Wersje klastrów usługi HDInsight).|
 |Nazwa użytkownika logowania klastra|Podaj nazwę użytkownika, domyślnie jest **admin**.|
 |Hasło logowania klastra|Podaj hasło.|
@@ -67,7 +67,7 @@ Wybierz **dalej: >>do przechowywania,** aby przejść do następnej karty.
 
 ### <a name="primary-storage"></a>Magazyn podstawowy
 
-Z listy rozwijanej dla **głównego typu magazynu**wybierz domyślny typ magazynu. Kolejne pola do wykonania będą się różnić w zależności od wyboru. Dla **usługi Azure Storage:**
+Z listy rozwijanej dla **głównego typu magazynu**wybierz domyślny typ magazynu. Późniejsze pola do ukończenia będą się różnić w zależności od wyboru. Dla **usługi Azure Storage:**
 
 1. W obszarze **Wybór metoda**, wybierz opcję Wybierz **z listy**lub **Użyj klawisza dostępu**.
     * W obszarze **Wybierz z listy**wybierz z listy wybierz konto magazynu **podstawowego** z listy rozwijanej lub wybierz pozycję **Utwórz nowe**.
@@ -81,7 +81,7 @@ Opcjonalnie: wybierz **pozycję Dodaj usługę Azure Storage, aby** uzyskać dod
 
 ### <a name="metastore-settings"></a>Ustawienia magazynu metastore
 
-Opcjonalnie: Określ istniejącą bazę danych SQL, aby zapisać metadane Apache Hive, Apache Oozie i/lub Apache Ambari poza klastrem. Usługa Azure SQL Database, która jest używana dla magazynu meta, musi zezwalać na łączność z innymi usługami platformy Azure, w tym usługą Azure HDInsight. Podczas tworzenia magazynu metastore nie należy nazywać bazy danych myślnikami ani myślnikami. Te znaki mogą spowodować niepowodzenie procesu tworzenia klastra.
+Opcjonalnie: Określ istniejącą bazę danych SQL, aby zapisać metadane Apache Hive, Apache Oozie i lub Apache Ambari poza klastrem. Usługa Azure SQL Database, która jest używana dla magazynu meta, musi zezwalać na łączność z innymi usługami platformy Azure, w tym usługą Azure HDInsight. Podczas tworzenia magazynu metastore nie należy nazywać bazy danych myślnikami ani myślnikami. Te znaki mogą spowodować niepowodzenie procesu tworzenia klastra.
 
 Wybierz **dalej: Zabezpieczenia + >>sieci,** aby przejść do następnej karty.
 
@@ -158,25 +158,7 @@ W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z
 
 Pomyślnie utworzono klaster HDInsight. Dowiedz się, jak pracować z klastrem.
 
-### <a name="apache-hadoop-clusters"></a>Apache Hadoop klastrów
-
 * [Korzystanie z programu Apache Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md)
-* [Korzystanie z mapReduce z HDInsight](hadoop/hdinsight-use-mapreduce.md)
-
-### <a name="apache-hbase-clusters"></a>Klastry Apache HBase
-
 * [Wprowadzenie do Apache HBase w programie HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Tworzenie aplikacji Java dla Apache HBase w programie HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
-
-### <a name="apache-storm-clusters"></a>Klastry Burzanych Apache
-
 * [Opracowanie topologii Java dla Apache Storm na HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Używanie składników języka Python w aplikacji Apache Storm w programie HDInsight](storm/apache-storm-develop-python-topology.md)
-* [Wdrażanie i monitorowanie topologii dzięki Apache Storm na hdinsight](storm/apache-storm-deploy-monitor-topology-linux.md)
-
-### <a name="apache-spark-clusters"></a>Klastry Platformy Spark Apache
-
 * [Tworzenie aplikacji autonomicznej przy użyciu scalii](spark/apache-spark-create-standalone-application.md)
-* [Uruchamianie zadań zdalnie w klastrze Apache Spark przy użyciu Apache Livy](spark/apache-spark-livy-rest-interface.md)
-* [Apache Spark z analizą biznesową: wykonywanie interaktywnej analizy danych przy użyciu funkcji Spark in HDInsight za pomocą narzędzi analizy biznesowej](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark z uczeniem maszynowym: użyj iskry w hdinsight, aby przewidzieć wyniki inspekcji żywności](spark/apache-spark-machine-learning-mllib-ipython.md)

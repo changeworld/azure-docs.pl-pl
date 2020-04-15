@@ -3,12 +3,12 @@ title: Konfigurowanie środowiska programistycznego w systemie Linux
 description: Zainstaluj środowisko uruchomieniowe i zestaw SDK oraz utwórz lokalny klaster projektowy w systemie Linux. Po ukończeniu tej konfiguracji wszystko będzie gotowe do kompilowania aplikacji.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 572b1509f45a7f5bf2c63619809f01d17c3493d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1048e1ccf6b9bc921daa3014ab8003fd53473461
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258436"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309116"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Przygotowywanie środowiska projektowego w systemie Linux
 > [!div class="op_single_selector"]
@@ -20,7 +20,7 @@ ms.locfileid: "79258436"
 
 Aby wdrażać i uruchamiać [aplikacje usługi Azure Service Fabric](service-fabric-application-model.md) na maszynie deweloperskiej z systemem Linux, należy zainstalować środowisko uruchomieniowe i wspólny zestaw SDK. Można także zainstalować opcjonalne zestawy SDK na potrzeby programowania na platformach Java i .NET Core. 
 
-Na potrzeby kroków opisanych w tym artykule założono, że instalujesz natywnie w systemie Linux lub korzystasz z obrazu kontenera OneBox usługi Service Fabric, `microsoft/service-fabric-onebox`.
+Na potrzeby kroków opisanych w tym artykule założono, że instalujesz natywnie w systemie Linux lub korzystasz z obrazu kontenera OneBox usługi Service Fabric, `mcr.microsoft.com/service-fabric/onebox:latest`.
 
 Instalowanie środowiska uruchomieniowego usługi Service Fabric i zestawu SDK w podsystemie systemu Windows dla systemu Linux nie jest obsługiwane. Możesz zarządzać jednostkami usługi Service Fabric hostowanymi w dowolnej lokalizacji w chmurze lub środowisku lokalnym dzięki obsługiwanemu interfejsowi wiersza polecenia usługi Azure Service Fabric. Aby uzyskać informacje na temat instalowania interfejsu wiersza polecenia, zobacz [Konfigurowanie interfejsu wiersza polecenia usługi Service Fabric](./service-fabric-cli.md).
 

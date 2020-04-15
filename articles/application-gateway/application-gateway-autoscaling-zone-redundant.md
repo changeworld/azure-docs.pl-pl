@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 4cd2969f9a56c96af2b2c6db216f6829a080260c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7feb0f00c5431048d19d4ad6cb3860f6eb8ed052
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371280"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312702"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Skalowanie automatyczne i strefowo nadmiarowa brama aplikacji (wersja 2) 
 
@@ -26,16 +26,16 @@ Nowa jednostka SKU w wersji 2 zawiera następujące ulepszenia:
   Nadmiarowość stref jest dostępna tylko wtedy, gdy są dostępne strefy platformy Azure. W innych regionach wszystkie inne funkcje są obsługiwane. Aby uzyskać więcej informacji, zobacz [Co to są strefy dostępności na platformie Azure?](../availability-zones/az-overview.md#services-support-by-region)
 - **Statyczne VIP:** SKU bramy aplikacji w wersji 2 obsługuje wyłącznie statyczny typ adresu VIP. Gwarantuje to, że adres VIP skojarzony z bramą aplikacji nie zmienia się w cyklu życia wdrożenia, nawet po ponownym uruchomieniu.  Nie ma statycznego adresu VIP w wersji 1, więc należy użyć adresu URL bramy aplikacji zamiast adresu IP dla routingu nazwy domeny do usług aplikacji za pośrednictwem bramy aplikacji.
 - **Przepisanie nagłówka:** Brama aplikacji umożliwia dodawanie, usuwanie lub aktualizowanie nagłówków żądań i odpowiedzi HTTP za pomocą jednostki SKU w wersji 2. Aby uzyskać więcej informacji, zobacz [Przepisywanie nagłówków HTTP za pomocą bramy aplikacji](rewrite-http-headers.md)
-- **Integracja magazynu kluczy:** Brama aplikacji w wersji 2 obsługuje integrację z magazynem kluczy dla certyfikatów serwera dołączonych do odbiorników obsługujących protokół HTTPS. Aby uzyskać więcej informacji, zobacz [Zakończenie SSL z certyfikatami Usługi Key Vault](key-vault-certs.md).
+- **Integracja magazynu kluczy:** Brama aplikacji w wersji 2 obsługuje integrację z magazynem kluczy dla certyfikatów serwera dołączonych do odbiorników obsługujących protokół HTTPS. Aby uzyskać więcej informacji, zobacz [Zakończenie protokołu TLS z certyfikatami Usługi Key Vault](key-vault-certs.md).
 - **Kontroler transferu danych przychodzących usługi Azure Kubernetes: Kontroler**transferu danych przychodzących bramy aplikacji w wersji 2 umożliwia bramę aplikacji platformy Azure jako ruch przychodzący usługi Azure Kubernetes Service (AKS) znanej jako klaster AKS. Aby uzyskać więcej informacji, zobacz [Co to jest kontroler transferu danych przychodzących bramy aplikacji?](ingress-controller-overview.md).
-- **Ulepszenia wydajności:** Jednostka SKU w wersji 2 oferuje do 5-krotnie lepszą wydajność odciążania SSL w porównaniu z jednostką SKU Standard/WAF.
+- **Ulepszenia wydajności:** Jednostka SKU w wersji 2 oferuje do 5-krotnie lepszą wydajność odciążania TLS w porównaniu z jednostką SKU Standard/WAF.
 - **Szybsze wdrażanie i czas aktualizacji** Jednostka SKU w wersji 2 zapewnia szybsze wdrożenie i czas aktualizacji w porównaniu do jednostki SKU standard/WAF. Obejmuje to również zmiany konfiguracji WAF.
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Jednostka SKU Standard_v2 i WAF_v2 jest dostępna w następujących regionach: Północno-środkowe stany USA, Południowo-środkowe stany USA, Zachodnie stany USA, Zachodnie stany USA 2, Wschodnie stany USA, Wschodnie stany USA 2, Środkowe stany USA, Europa Północna, Europa Zachodnia, Azja Południowo-Wschodnia, Francja Środkowa, Wielka Brytania Zachodnia, Japonia Wschodnia, Japonia Zachodnia, Australia Wschodnia , Australia Południowo-Wschodnia, Brazylia Południowa, Kanada Środkowa, Kanada Wschodnia, Azja Wschodnia, Korea Środkowa, Korea Południowa, Wielka Brytania Południowa, Indie Środkowe, Indie Zachodnie, Indie Południowe.
+SKU Standard_v2 i WAF_v2 jest dostępna w następujących regionach: Północno-środkowe stany USA, Południowo-środkowe stany USA, Zachodnie stany USA, Zachodnie stany USA 2, Wschodnie stany USA, Wschodnie STANY USA 2, Środkowe STANY USA, Europa Północna, Europa Zachodnia, Azja Południowo-Wschodnia, Francja Środkowa, Wielka Brytania Zachodnia, Japonia Wschodnia, Japonia Wschodnia, Japonia Zachodnia, Australia Wschodnia, Brazylia Południowa, Kanada Środkowa, Kanada Wschodnia, Korea Wschodnia, Korea Środkowa, Korea Południowa , Wielka Brytania Południowa, Indie Środkowe, Indie Zachodnie, Indie Południowe.
 
 ## <a name="pricing"></a>Cennik
 
@@ -77,7 +77,7 @@ Całkowita cena = $148.8 + $297.6 = $446.4
 
 **Przykład 2**
 
-Standard_v2 bramy aplikacji jest aprowizowana przez miesiąc, z zerowym minimalnym wystąpieniem i w tym czasie odbiera 25 nowych połączeń SSL/s, średnio 8,88 Mb/s transferu danych. Zakładając, że połączenia są krótkotrwałe, twoja cena będzie:
+Standard_v2 bramy aplikacji jest aprowizowana przez miesiąc, z zerowym minimalnym wystąpieniem i w tym czasie otrzymuje 25 nowych połączeń TLS/s, średnio 8,88 Mb/s transferu danych. Zakładając, że połączenia są krótkotrwałe, twoja cena będzie:
 
 Stała cena = 744(godziny) * $0.20 = $148.8
 
@@ -105,7 +105,7 @@ W takim przypadku są rozliczane za całość z pięciu wystąpień, mimo że ni
 
 **Przykład 4**
 
-Standard_v2 bramy aplikacji jest aprowizowana przez miesiąc, z co najmniej pięcioma wystąpieniami, ale tym razem jest średnio 125 Mbps transferu danych i 25 połączeń SSL na sekundę. Zakładając, że nie ma ruchu i połączenia są krótkotrwałe, cena będzie:
+Standard_v2 bramy aplikacji jest aprowizowana przez miesiąc, z co najmniej pięcioma wystąpieniami, ale tym razem jest średnio 125 Mbps transferu danych i 25 połączeń TLS na sekundę. Zakładając, że nie ma ruchu i połączenia są krótkotrwałe, cena będzie:
 
 Stała cena = 744(godziny) * $0.20 = $148.8
 
@@ -117,7 +117,7 @@ W takim przypadku są rozliczane za pełne pięć wystąpień plus siedem jednos
 
 **Przykład 5**
 
-WAF_v2 bramy aplikacji jest aprowizowana przez miesiąc. W tym czasie otrzymuje 25 nowych połączeń SSL /s, średnio 8,88 Mb/s transferu danych i wykonuje 80 żądań na sekundę. Zakładając, że połączenia są krótkotrwałe, a obliczanie jednostki obliczeniowej dla aplikacji obsługuje 10 RPS na jednostkę obliczeniową, cena będzie wynosić:
+WAF_v2 bramy aplikacji jest aprowizowana przez miesiąc. W tym czasie otrzymuje 25 nowych połączeń TLS/s, średnio 8,88 Mb/s transferu danych i wykonuje 80 żądań na sekundę. Zakładając, że połączenia są krótkotrwałe, a obliczanie jednostki obliczeniowej dla aplikacji obsługuje 10 RPS na jednostkę obliczeniową, cena będzie wynosić:
 
 Stała cena = 744(godziny) * $0.36 = $267.84
 
@@ -152,8 +152,8 @@ W poniższej tabeli porównano funkcje dostępne dla każdej jednostki SKU.
 | Przekierowanie ruchu                               | &#x2713; | &#x2713; |
 | Zapora aplikacji internetowej                    | &#x2713; | &#x2713; |
 | Reguły niestandardowe zapory aplikacji internetowej                                  |          | &#x2713; |
-| Kończenie żądań protokołu Secure Sockets Layer (SSL)            | &#x2713; | &#x2713; |
-| Kompleksowe szyfrowanie SSL                         | &#x2713; | &#x2713; |
+| Zakończenie usługi SSL (Transport Layer Security(TLS)/Secure Sockets Layer (SSL)            | &#x2713; | &#x2713; |
+| Kompleksowe szyfrowanie TLS                         | &#x2713; | &#x2713; |
 | Koligacja sesji                                  | &#x2713; | &#x2713; |
 | Niestandardowe strony błędów                                | &#x2713; | &#x2713; |
 | Obsługa protokołu WebSocket                                 | &#x2713; | &#x2713; |
@@ -167,7 +167,7 @@ W poniższej tabeli porównano funkcje dostępne dla każdej jednostki SKU.
 
 |Różnica|Szczegóły|
 |--|--|
-|Certyfikat uwierzytelniania|Bez pomocy technicznej.<br>Aby uzyskać więcej informacji, zobacz [Omówienie end-to end SSL z bramą aplikacji](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
+|Certyfikat uwierzytelniania|Bez pomocy technicznej.<br>Aby uzyskać więcej informacji, zobacz [Omówienie end-to end TLS z bramą aplikacji](ssl-overview.md#end-to-end-tls-with-the-v2-sku).|
 |Mieszanie Standard_v2 i standardowej bramy aplikacji w tej samej podsieci|Nieobsługiwane|
 |Trasa zdefiniowana przez użytkownika (UDR) w podsieci bramy aplikacji|Obsługiwane (konkretne scenariusze). W wersji zapoznawczej.<br> Aby uzyskać więcej informacji na temat obsługiwanych scenariuszy, zobacz [Omówienie konfiguracji bramy aplikacji](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet).|
 |NSG dla zakresu portów przychodzących| - od 65200 do 65535 dla Standard_v2 SKU<br>- 65503 do 65534 dla standardowej jednostki SKU.<br>Aby uzyskać więcej informacji, zobacz często zadawane [pytania](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 04/14/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 070b7c5e0fef7d50f84271190432a65d29699bdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d59a508d03730a51e793a5e30e2c99a91af77ce8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128621"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380188"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archiwizuj dzienniki i raportowanie dotyczące zarządzania uprawnieniami usługi Azure AD w usłudze Azure Monitor
 
@@ -49,6 +49,38 @@ Archiwizowanie dzienników inspekcji usługi Azure AD wymaga, aby mieć usługę
 1. Wybierz **opcję Użycie i szacowane koszty** oraz kliknij pozycję Przechowywanie **danych**. Zmień suwak na liczbę dni, przez które chcesz zachować dane, aby spełnić wymagania inspekcji.
 
     ![Okienko Obszarów roboczych usługi Log Analytics](./media/entitlement-management-logs-and-reporting/log-analytics-workspaces.png)
+
+1. Później, aby wyświetlić zakres dat przechowywanych w obszarze roboczym, można użyć skoroszytu *Zarchiwizowanego zakresu dat dziennika:*  
+    
+    1. Wybierz **pozycję Usługa Azure Active Directory,** a następnie kliknij pozycję **Skoroszyty**. 
+    
+    1. Rozwiń sekcję **Rozwiązywanie problemów z usługą Azure Active Directory**i kliknij **zarchiwizowane zakres dat dziennika**. 
+
+
+## <a name="view-events-for-an-access-package"></a>Wyświetlanie zdarzeń dla pakietu dostępu  
+
+Aby wyświetlić zdarzenia dla pakietu dostępu, musisz mieć dostęp do obszaru roboczego monitora platformy Azure (zobacz [Zarządzanie dostępem do danych dziennika i obszarów roboczych w usłudze Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) w celu uzyskania informacji) i w jednej z następujących ról: 
+
+- Administrator globalny  
+- Administrator zabezpieczeń  
+- Czytelnik zabezpieczeń  
+- Czytnik raportów  
+- Administrator aplikacji  
+
+Aby wyświetlić zdarzenia, użyj następującej procedury: 
+
+1. W witrynie Azure Portal wybierz pozycję **Azure Active Directory,** a następnie kliknij pozycję **Skoroszyty**. Jeśli masz tylko jedną subskrypcję, przejdź do kroku 3. 
+
+1. Jeśli masz wiele subskrypcji, wybierz subskrypcję, która zawiera obszar roboczy.  
+
+1. Zaznacz skoroszyt o nazwie *Aktywność pakietu programu Access*. 
+
+1. W tym skoroszycie wybierz zakres czasu (zmień na **Wszystkie,** jeśli nie jest pewien) i wybierz identyfikator pakietu dostępu z listy rozwijanej wszystkich pakietów dostępu, które miały działanie w tym zakresie czasu. Zostaną wyświetlone zdarzenia związane z pakietem dostępu, które wystąpiły podczas wybranego zakresu czasu.  
+
+    ![Wyświetlanie zdarzeń pakietu dostępu](./media/entitlement-management-logs-and-reporting/view-events-access-package.png) 
+
+    Każdy wiersz zawiera czas, identyfikator pakietu dostępu, nazwę operacji, identyfikator obiektu, nazwę UPN i nazwę wyświetlaną użytkownika, który rozpoczął operację.  Dodatkowe szczegóły są zawarte w JSON.   
+
 
 ## <a name="create-custom-azure-monitor-queries-using-the-azure-portal"></a>Tworzenie niestandardowych zapytań usługi Azure Monitor przy użyciu portalu Azure
 Można utworzyć własne zapytania dotyczące zdarzeń inspekcji usługi Azure AD, w tym zdarzeń zarządzania uprawnieniami.  
@@ -86,6 +118,7 @@ Możesz uzyskać dostęp do dzienników za pośrednictwem programu PowerShell po
 Upewnij się, że użytkownik lub podmiot usługi, który będzie uwierzytelniać się w usłudze Azure AD, znajdują się w odpowiedniej roli platformy Azure w obszarze roboczym usługi Log Analytics. Opcje roli są albo Log Analytics Reader lub Log Analytics Contributor. Jeśli jesteś już w jednej z tych ról, a następnie przejdź do [pobierania identyfikatora usługi Log Analytics z jedną subskrypcją platformy Azure.](#retrieve-log-analytics-id-with-one-azure-subscription)
 
 Aby ustawić przypisanie roli i utworzyć kwerendę, wykonaj następujące czynności:
+
 1. W witrynie Azure portal znajdź [obszar roboczy usługi Log Analytics](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces
 ).
 
@@ -103,7 +136,7 @@ Po uzyskaniu odpowiedniego przypisania roli uruchom program PowerShell i [zainst
 install-module -Name az -allowClobber -Scope CurrentUser
 ```
     
-Teraz możesz przystąpić do uwierzytelniania w usłudze Azure AD i pobrać identyfikator obszaru roboczego usługi Log Analytics, do którego się pytasz.
+Teraz możesz przystąpić do uwierzytelniania w usłudze Azure AD i pobrać identyfikator przeszukiwanego obszaru roboczego usługi Log Analytics.
 
 ### <a name="retrieve-log-analytics-id-with-one-azure-subscription"></a>Pobieranie identyfikatora usługi Log Analytics za pomocą jednej subskrypcji platformy Azure
 Jeśli masz tylko jedną subskrypcję platformy Azure i jeden obszar roboczy usługi Log Analytics, wpisz następujące elementy, aby uwierzytelnić się w usłudze Azure AD, połącz się z tą subskrypcją i pobierz ten obszar roboczy:
@@ -117,7 +150,7 @@ $wks = Get-AzOperationalInsightsWorkspace
 
  [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) działa w jednej subskrypcji naraz. Tak, jeśli masz wiele subskrypcji platformy Azure, należy upewnić się, że łączysz się z tym, który ma obszar roboczy usługi Log Analytics z dzienników usługi Azure AD. 
  
- Następujące polecenia cmdlet wyświetlają listę subskrypcji i znajdują identyfikator subskrypcji z obszarem roboczym usługi Log Analytics:
+ Następujące polecenia cmdlet wyświetlają listę subskrypcji i znajdują identyfikator subskrypcji, która ma obszar roboczy usługi Log Analytics:
  
 ```azurepowershell
 Connect-AzAccount
@@ -150,7 +183,7 @@ $aResponse.Results |ft
 Zdarzenia zarządzania uprawnieniami można również pobrać przy użyciu kwerendy, takiej jak:
 
 ```azurepowershell
-$bQuery = = 'AuditLogs | where Category == "EntitlementManagement"'
+$bQuery = 'AuditLogs | where Category == "EntitlementManagement"'
 $bResponse = Invoke-AzOperationalInsightsQuery -WorkspaceId $wks[0].CustomerId -Query $Query
 $bResponse.Results |ft 
 ```

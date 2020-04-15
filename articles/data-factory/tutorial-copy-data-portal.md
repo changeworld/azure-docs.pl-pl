@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 0e4214466a2650df833cebd704577114b8818690
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 9e81efd826c78bfa1af5624272ae9b190cb54348
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259693"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313861"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopiowanie danych z usługi Azure Blob Storage do bazy danych SQL za pomocą usługi Azure Data Factory
 W tym samouczku utworzysz fabrykę danych przy użyciu interfejsu użytkownika usługi Azure Data Factory. Potok w tej fabryce danych kopiuje dane z magazynu obiektów Blob platformy Azure do bazy danych SQL platformy Azure. Wzorzec konfiguracji w tym samouczku ma zastosowanie do kopiowania danych z magazynu opartego na plikach do relacyjnego magazynu danych. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz tabelę zawierającą [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -199,11 +199,11 @@ W tym kroku ręcznie wyzwolisz potok, który został opublikowany w poprzednim k
 
 1. Przejdź do karty **Monitorowanie** po lewej stronie. Widoczne jest uruchomienie potoku, które zostało wyzwolone za pomocą wyzwalacza ręcznego. Za pomocą łączy w kolumnie **NAZWA POTOKU** można wyświetlić szczegóły działania i ponownie uruchomić potok.
 
-    ![Monitorowanie uruchomień potoku](./media/tutorial-copy-data-portal/monitor-pipeline.png)
+    [![Monitorowanie uruchomień potoku](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png)](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png#lightbox)
 
 1. Aby wyświetlić uruchomienia działania skojarzone z uruchomieniem potoku, wybierz łącze **CopyPipeline** w kolumnie **NAZWA POTOKU.** W tym przykładzie istnieje tylko jedno działanie, więc widzisz tylko jeden wpis na liście. Aby uzyskać szczegółowe informacje na temat operacji kopiowania, wybierz **łącze Szczegóły** (ikona okularów) w kolumnie **NAZWA DZIAŁANIA.** Wybierz **wszystkie uruchomień potoku** u góry, aby wrócić do widoku Przebiegi potoku. Aby odświeżyć widok, wybierz pozycję **Odśwież**.
 
-    ![Monitorowanie uruchomień działania](./media/tutorial-copy-data-portal/view-activity-runs.png)
+    [![Monitorowanie uruchomień działania](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
 1. Sprawdź, czy dodano jeszcze dwa wiersze do tabeli **emp** w bazie danych SQL.
 
@@ -243,7 +243,7 @@ W tym kroku utworzysz wyzwalacz harmonogramu potoku. Wyzwalacz uruchamia potok z
 
 1. Przejdź do karty **Monitorowanie** po lewej stronie, aby zobaczyć wyzwolone uruchomienia potoku.
 
-    ![Wyzwolone uruchomienia potoku](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)   
+    [![Wyzwolone uruchomienia potoku](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png#lightbox)
 
 1. Aby przełączyć się z widoku **Przebiegi potoku** do widoku **Przebiegi wyzwalacza,** wybierz **wyzwalacz uruchamia** po lewej stronie okna.
 

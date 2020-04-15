@@ -1,7 +1,7 @@
 ---
 title: Tworzenie klienta dla modelu wdrożonego jako usługa sieci Web
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak korzystać z usługi sieci web, która została wygenerowana, gdy model został wdrożony za pomocą modelu usługi Azure Machine Learning. Usługa sieci web udostępnia interfejs API REST. Utwórz klientów dla tego interfejsu API przy użyciu wybranego języka programowania.
+description: Dowiedz się, jak wywołać punkt końcowy usługi sieci web, który został wygenerowany, gdy model został wdrożony z usługi Azure Machine Learning. Punkt końcowy udostępnia interfejs API REST, który można wywołać, aby wykonać wnioskowanie z modelem. Utwórz klientów dla tego interfejsu API przy użyciu wybranego języka programowania.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 01/07/2020
+ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: a86b8ddb59719db9bdaffea44aecd5428ad16834
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0222b63323c4e546628d790fabb881eba006494e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282668"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383393"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu usługi Azure Machine Learning wdrożonego jako usługa sieci web
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Wdrażanie modelu usługi Azure Machine Learning jako usługi sieci web tworzy interfejs API REST. Można wysłać dane do tego interfejsu API i odbierać prognozowania zwrócone przez model. W tym dokumencie dowiedz się, jak utworzyć klientów dla usługi sieci web przy użyciu języka C#, Go, Java i Python.
+Wdrażanie modelu usługi Azure Machine Learning jako usługi sieci web tworzy punkt końcowy interfejsu API REST. Można wysłać dane do tego punktu końcowego i odbierać prognozy zwrócone przez model. W tym dokumencie dowiedz się, jak utworzyć klientów dla usługi sieci web przy użyciu języka C#, Go, Java i Python.
 
-Usługę sieci web można utworzyć podczas wdrażania obrazu w wystąpieniach kontenerów platformy Azure, usłudze Azure Kubernetes lub tablicach bramy programowalnych w terenie (FPGA). Obrazy są tworzę obrazy z zarejestrowanych modeli i pliki oceniania. Pobieranie identyfikatora URI używanego do uzyskiwania dostępu do usługi sieci web przy użyciu [sdk usługi Azure Machine Learning.](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) Jeśli uwierzytelnianie jest włączone, można również użyć SDK, aby uzyskać klucze uwierzytelniania lub tokeny.
+Usługę sieci web można utworzyć podczas wdrażania modelu w środowisku lokalnym, wystąpienia kontenerów platformy Azure, usługi Azure Kubernetes lub tablic y bramy programowalne w terenie (FPGA). Pobieranie identyfikatora URI używanego do uzyskiwania dostępu do usługi sieci web przy użyciu [sdk usługi Azure Machine Learning.](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) Jeśli uwierzytelnianie jest włączone, można również użyć SDK, aby uzyskać klucze uwierzytelniania lub tokeny.
 
 Ogólny przepływ pracy do tworzenia klienta korzystającego z usługi sieci web uczenia maszynowego jest:
 
@@ -174,6 +174,17 @@ Usługa sieci web może akceptować wiele zestawów danych w jednym żądaniu. Z
 ### <a name="binary-data"></a>Dane binarne
 
 Aby uzyskać informacje na temat włączania obsługi danych binarnych w usłudze, zobacz [Dane binarne](how-to-deploy-and-where.md#binary).
+
+> [!TIP]
+> Włączenie obsługi danych binarnych odbywa się w pliku score.py używanym przez wdrożony model. Z klienta użyj funkcji HTTP języka programowania. Na przykład następujący fragment kodu wysyła zawartość pliku JPG do usługi sieci web:
+>
+> ```python
+> import requests
+> # Load image data
+> data = open('example.jpg', 'rb').read()
+> # Post raw data to scoring URI
+> res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/> octet-stream'})
+> ```
 
 ### <a name="cross-origin-resource-sharing-cors"></a>Współużytkowy przydział zasobów między źródłami (CORS)
 

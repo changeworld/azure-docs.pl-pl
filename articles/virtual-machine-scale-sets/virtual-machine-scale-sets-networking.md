@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mimckitt
-ms.openlocfilehash: 7e6b8ea702d28fcd2747115710a8b1a8ec2bb1b2
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9f048c7d89da0ab75c321cd8e3932ea97c7ed09c
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270523"
+ms.locfileid: "81310025"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Obsługa sieci w kontekście zestawów skalowania maszyn wirtualnych platformy Azure
 
@@ -69,6 +69,14 @@ az vmss create \
 
 >[!NOTE]
 > Po utworzeniu zestawu skalowania nie można zmodyfikować portu wewnętrznej bazy danych dla reguły równoważenia obciążenia używanej przez sondę kondycji modułu równoważenia obciążenia. Aby zmienić port, można usunąć sondę kondycji, aktualizując zestaw skalowania maszyny wirtualnej platformy Azure, zaktualizować port, a następnie ponownie skonfigurować sondę kondycji. 
+
+Aby uzyskać więcej informacji na temat zestawów wag balance balancer i virtual machine, zobacz [Sieci wirtualne i maszyny wirtualne](../../articles/virtual-machines/windows/network-overview.md)na platformie Azure .
+
+Następujące metody mogą służyć do wdrażania zestawu skalowania maszyny wirtualnej z istniejącym modułem równoważenia obciążenia platformy Azure.
+
+* [Skonfiguruj zestaw skalowania maszyny wirtualnej przy użyciu istniejącego modułu równoważenia obciążenia platformy Azure przy użyciu portalu Azure.](../../articles/load-balancer/configure-vm-scale-set-portal.md)
+* [Skonfiguruj zestaw skalowania maszyny wirtualnej przy użyciu istniejącego modułu równoważenia obciążenia platformy Azure przy użyciu programu Azure PowerShell](../../articles/load-balancer/configure-vm-scale-set-powershell.md).
+* [Skonfiguruj zestaw skalowania maszyny wirtualnej przy użyciu istniejącego modułu równoważenia obciążenia platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure.](../../articles/load-balancer/configure-vm-scale-set-cli.md)
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Tworzenie zestawu skalowania, który odwołuje się do usługi Application Gateway
 Aby utworzyć zestaw skalowania, który używa bramy aplikacji, należy odwołać się do puli adresów zaplecza bramy aplikacji w sekcji ipConfiguration zestawu skalowania, tak jak w tej konfiguracji szablonu usługi ARM:

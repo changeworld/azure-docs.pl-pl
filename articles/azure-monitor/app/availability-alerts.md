@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: e0c1a93ef663762bec199abc5aa7eabbc821168d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5af6aec2267384c37f664522d075bf26c632e7e9
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654957"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382879"
 ---
 # <a name="availability-alerts"></a>Alerty dostępności
 
@@ -33,6 +33,9 @@ Alerty są teraz domyślnie włączane automatycznie, ale aby w pełni skonfigur
 2. Ustaw żądany poziom ważności, opis reguły i co najważniejsze — grupę akcji, która ma preferencje powiadomień, których chcesz użyć dla tej reguły alertu.
 
    ![Edytuj po zapisaniu](./media/availability-alerts/set-action-group.png)
+
+> [!NOTE]
+> Alerty o dostępności utworzone za pośrednictwem tego środowiska są oparte na stanie. Oznacza to, że po spełnieniu kryteriów alertu generowany jest pojedynczy alert, gdy witryna zostanie wykryta jako niedostępna. Jeśli witryna jest nadal w dół przy następnej oceny kryteriów alertu nie spowoduje to wygenerowania nowego alertu. Jeśli więc witryna była wyłączana przez godzinę i został skonfigurowany alert e-mail, otrzymasz wiadomość e-mail tylko wtedy, gdy witryna ujrzała witrynę, a następnie wiadomość e-mail, gdy witryna została ponownie skonfigurowana. Nie będą otrzymywać ciągłych alertów przypominających, że witryna jest nadal niedostępna.
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Alert w lokalizacjach X poza Y, które zgłaszają błędy
 

@@ -3,12 +3,12 @@ title: Opis blokowania zasobów
 description: Dowiedz się więcej o opcjach blokowania w planach platformy Azure, aby chronić zasoby podczas przypisywania planu.
 ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9c4e2f4c6fd8f5fb574002217ca71d1e7d130ff7
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676747"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383587"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Opis blokowania zasobów w planach platformy Azure
 
@@ -103,7 +103,7 @@ Po usunięciu przypisania blokady utworzone przez plany platformy Azure są usuw
 
 Akcja [odmowy odmowy rbac](../../../role-based-access-control/deny-assignments.md) jest stosowana do zasobów artefaktów podczas przypisywania planu, jeśli w zadaniu wybrano opcję **Tylko do odczytu** lub **Nie usuwaj.** Akcja odmowy jest dodawana przez zarządzaną tożsamość przypisania planu i może zostać usunięta z zasobów artefaktu tylko przez tę samą tożsamość zarządzaną. Ten środek zabezpieczeń wymusza mechanizm blokowania i zapobiega usunięciu blokady planu poza planami platformy Azure.
 
-![Przypisanie odmowy planu w grupie zasobów](../media/resource-locking/blueprint-deny-assignment.png)
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Przypisanie odmowy planu w grupie zasobów" border="false":::
 
 [Właściwości przypisania odmowy](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) każdego trybu są następujące:
 

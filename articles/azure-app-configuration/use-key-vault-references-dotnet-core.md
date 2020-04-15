@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 01/21/2020
+ms.date: 04/08/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: eceb4a9d4e0cc84166280f30b094b82088f53a4a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4641c50f0579e2a8db514df58c0401eb2173d793
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79475310"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309046"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Samouczek: Używanie odwołań do magazynu kluczy w aplikacji ASP.NET Core
 
@@ -35,7 +35,7 @@ W tym samouczku pokazano, jak zaimplementować odwołania do usługi Key Vault w
 
 Aby wykonać czynności opisane w tym samouczku, można użyć dowolnego edytora kodu. Na przykład [Visual Studio Code](https://code.visualstudio.com/) to wieloplatformowy edytor kodu, który jest dostępny dla systemów operacyjnych Windows, macOS i Linux.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Utwórz klucz konfiguracji aplikacji, który odwołuje się do wartości przechowywanej w magazynie kluczy.
@@ -82,7 +82,7 @@ Aby dodać klucz tajny do magazynu, musisz wykonać tylko kilka dodatkowych krok
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Dodawanie odwołania do usługi Key Vault do konfiguracji aplikacji
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com). Wybierz **pozycję Wszystkie zasoby**, a następnie wybierz wystąpienie sklepu konfiguracja aplikacji utworzone w przewodniku Szybki start.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz **pozycję Wszystkie zasoby**, a następnie wybierz wystąpienie sklepu konfiguracja aplikacji utworzone w przewodniku Szybki start.
 
 1. Wybierz **Pozycję Eksplorator konfiguracji**.
 
@@ -160,14 +160,12 @@ Aby dodać klucz tajny do magazynu, musisz wykonać tylko kilka dodatkowych krok
 1. Dodaj odwołanie do wymaganych pakietów NuGet, uruchamiając następujące polecenie:
 
     ```dotnetcli
-    dotnet add package Microsoft.Azure.KeyVault
     dotnet add package Azure.Identity
     ```
 
 1. Otwórz *Program.cs*i dodaj odwołania do następujących wymaganych pakietów:
 
     ```csharp
-    using Microsoft.Azure.KeyVault;
     using Azure.Identity;
     ```
 

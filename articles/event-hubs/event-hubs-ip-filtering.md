@@ -11,17 +11,33 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: fb11d1bdcf8145d4e78285833789b41c92b0ce4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0116c1cfe61b49f2d5aff46fab9cadc0e423ecc
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064877"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310177"
 ---
 # <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>Konfigurowanie reguł zapory IP dla obszaru nazw usługi Azure Event Hubs
 Domyślnie przestrzenie nazw centrum zdarzeń są dostępne z Internetu, o ile żądanie jest zawiera prawidłowe uwierzytelnianie i autoryzację. Zaporą IP można ją ograniczyć do tylko zestawu adresów IPv4 lub zakresów adresów IPv4 w notacji [CIDR (Classless Inter-Domain Routing).](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 
 Ta funkcja jest przydatna w scenariuszach, w których usługi Azure Event Hubs powinny być dostępne tylko z niektórych dobrze znanych witryn. Reguły zapory umożliwiają konfigurowanie reguł do akceptowania ruchu pochodzącego z określonych adresów IPv4. Na przykład jeśli używasz Usługi Event Hubs z [marszrutą Azure Express][express-route], można utworzyć **regułę zapory,** aby zezwolić na ruch tylko z adresów IP infrastruktury lokalnej. 
+
+>[!WARNING]
+> Włączenie filtrowania adresów IP może uniemożliwić innym usługom platformy Azure interakcję z centrum zdarzeń.
+>
+> Zaufane usługi firmy Microsoft nie są obsługiwane podczas implementacji sieci wirtualnych.
+>
+> Typowe scenariusze platformy Azure, które nie działają z sieciami wirtualnymi (należy pamiętać, że lista **nie** jest wyczerpująca) -
+> - Usługa Azure Stream Analytics
+> - Integracja z usługą Azure Event Grid
+> - Trasy usługi Azure IoT Hub
+> - Eksplorator urządzeń Usługi Azure IoT
+>
+> Następujące usługi firmy Microsoft muszą być w sieci wirtualnej
+> - Azure Web Apps
+> - Azure Functions
+
 
 ## <a name="ip-firewall-rules"></a>Reguły zapory IP
 Reguły zapory IP są stosowane na poziomie obszaru nazw Centrum zdarzeń. W związku z tym reguły mają zastosowanie do wszystkich połączeń z klientami przy użyciu dowolnego obsługiwanego protokołu. Każda próba połączenia z adresu IP, która nie jest zgodna z dozwoloną regułą IP w obszarze nazw Centrum zdarzeń, jest odrzucana jako nieautoryzowana. W odpowiedzi nie wspomina się o regule IP. Reguły filtru IP są stosowane w kolejności, a pierwsza reguła zgodna z adresem IP określa akcję akceptowania lub odrzucania.

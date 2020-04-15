@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 085933f9a74ee37779ce63ce499d89ea53a9f7d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 767d87efcf94d720159dcf3b9dc42981ec957ef0
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198943"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381410"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostępność i niezawodność klastrów Apache Hadoop w systemie HDInsight
 
@@ -33,7 +33,7 @@ Węzły w klastrze HDInsight są implementowane przy użyciu maszyn wirtualnych 
 
 Aby zapewnić wysoką dostępność usług Hadoop, hdinsight udostępnia dwa węzły głowy. Oba węzły głównego są aktywne i działają jednocześnie w klastrze HDInsight. Niektóre usługi, takie jak Apache HDFS lub Apache Hadoop YARN, są "aktywne" tylko w jednym węźle głównym w danym momencie. Inne usługi, takie jak HiveServer2 lub Hive MetaStore są aktywne w obu węzłach głównego w tym samym czasie.
 
-Aby uzyskać nazwy hostów dla różnych typów węzłów w klastrze, użyj [interfejsu API Ambari REST](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes).
+Aby uzyskać nazwy hostów dla różnych typów węzłów w klastrze, użyj [interfejsu API Ambari REST](hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes).
 
 > [!IMPORTANT]  
 > Nie należy kojarzyć wartości liczbowej z tym, czy węzeł jest podstawowy czy pomocniczy. Wartość liczbowa jest obecna tylko w celu zapewnienia unikatowej nazwy dla każdego węzła.

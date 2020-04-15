@@ -7,20 +7,20 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: c7c27f00b9f8b4fdcd8f735f842edb8f66803c6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c0c0ab84e60335f58ac075459b95cfabb9135ac
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278001"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311965"
 ---
 # <a name="renew-application-gateway-certificates"></a>Odnawianie certyfikatów bramy aplikacji
 
-W pewnym momencie należy odnowić certyfikaty, jeśli skonfigurowano bramę aplikacji do szyfrowania SSL.
+W pewnym momencie należy odnowić certyfikaty, jeśli skonfigurowano bramę aplikacji do szyfrowania TLS/SSL.
 
 Certyfikat skojarzony z detektorem można odnowić za pomocą witryny Azure Portal, Azure PowerShell lub interfejsu wiersza polecenia platformy Azure:
 
-## <a name="azure-portal"></a>Portal Azure
+## <a name="azure-portal"></a>Azure Portal
 
 Aby odnowić certyfikat odbiornika z portalu, przejdź do detektorów bramy aplikacji. Kliknij odbiornik, który ma certyfikat, który musi zostać odnowiony, a następnie kliknij przycisk **Odnów lub edytuj wybrany certyfikat**.
 
@@ -62,4 +62,4 @@ az network application-gateway ssl-cert update \
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak skonfigurować odciążanie SSL za pomocą bramy aplikacji platformy Azure, zobacz [Konfigurowanie odciążania SSL](application-gateway-ssl-portal.md)
+Aby dowiedzieć się, jak skonfigurować odciążanie TLS za pomocą bramy aplikacji platformy Azure, zobacz [Konfigurowanie odciążania protokołu TLS](application-gateway-ssl-portal.md)

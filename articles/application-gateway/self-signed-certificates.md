@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0547f254a64cecc7072ee9ff79eb50204b34bc17
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548860"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311941"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generowanie certyfikatu z podpisem z podpisem z podpisem bramy aplikacji platformy Azure przy zastosowaniu niestandardowego głównego urzędu certyfikacji
 
-Jednostka SKU bramy aplikacji w wersji 2 wprowadza użycie zaufanych certyfikatów głównych w celu umożliwienia serwerów wewnętrznej bazy danych. Spowoduje to usunięcie certyfikatów uwierzytelniania, które były wymagane w jednostce SKU w wersji 1. *Certyfikat główny* jest zakodowany x.509(Base-64. CER) formatować certyfikat główny z serwera certyfikatów wewnętrznej bazy danych. Identyfikuje główny urząd certyfikacji (CA), który wystawił certyfikat serwera, a certyfikat serwera jest następnie używany do komunikacji SSL.
+Jednostka SKU bramy aplikacji w wersji 2 wprowadza użycie zaufanych certyfikatów głównych w celu umożliwienia serwerów wewnętrznej bazy danych. Spowoduje to usunięcie certyfikatów uwierzytelniania, które były wymagane w jednostce SKU w wersji 1. *Certyfikat główny* jest zakodowany x.509(Base-64. CER) formatować certyfikat główny z serwera certyfikatów wewnętrznej bazy danych. Identyfikuje główny urząd certyfikacji (CA), który wystawił certyfikat serwera, a certyfikat serwera jest następnie używany do komunikacji TLS/SSL.
 
-Usługa Application Gateway domyślnie ufa certyfikatowi witryny sieci Web, jeśli jest podpisany przez dobrze znany urząd certyfikacji (na przykład GoDaddy lub DigiCert). W takim przypadku nie trzeba jawnie przekazywać certyfikatu głównego. Aby uzyskać więcej informacji, zobacz [Omówienie zakończenia ssl i end-to-end SSL z bramą aplikacji](ssl-overview.md). Jeśli jednak masz środowisko deweloper/test i nie chcesz kupować zweryfikowanego certyfikatu podpisanego przez urząd certyfikacji, możesz utworzyć własny niestandardowy urząd certyfikacji i utworzyć z nim certyfikat z podpisem własnym. 
+Usługa Application Gateway domyślnie ufa certyfikatowi witryny sieci Web, jeśli jest podpisany przez dobrze znany urząd certyfikacji (na przykład GoDaddy lub DigiCert). W takim przypadku nie trzeba jawnie przekazywać certyfikatu głównego. Aby uzyskać więcej informacji, zobacz [Omówienie zakończenia protokołu TLS i zakończenia tls z bramą aplikacji](ssl-overview.md). Jeśli jednak masz środowisko deweloper/test i nie chcesz kupować zweryfikowanego certyfikatu podpisanego przez urząd certyfikacji, możesz utworzyć własny niestandardowy urząd certyfikacji i utworzyć z nim certyfikat z podpisem własnym. 
 
 > [!NOTE]
 > Certyfikaty z podpisem własnym nie są domyślnie zaufane i mogą być trudne do utrzymania. Ponadto mogą używać przestarzałych pakietów mieszania i szyfrowania, które mogą nie być silne. Aby uzyskać większe bezpieczeństwo, kup certyfikat podpisany przez dobrze znany urząd certyfikacji.
@@ -125,15 +125,15 @@ Csr jest kluczem publicznym, który jest nadawanie urzędu certyfikacji podczas 
    - fabrikam.crt
    - plik fabrikam.key
 
-## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>Konfigurowanie certyfikatu w ustawieniach SSL serwera sieci Web
+## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>Konfigurowanie certyfikatu w ustawieniach TLS serwera sieci Web
 
-Na serwerze sieci Web skonfiguruj ssl przy użyciu plików fabrikam.crt i fabrikam.key. Jeśli serwer www nie może zabrać dwóch plików, można je połączyć z pojedynczym plikiem pem lub pfx za pomocą poleceń OpenSSL.
+Na serwerze sieci Web skonfiguruj tls przy użyciu plików fabrikam.crt i fabrikam.key. Jeśli serwer www nie może zabrać dwóch plików, można je połączyć z pojedynczym plikiem pem lub pfx za pomocą poleceń OpenSSL.
 
 ### <a name="iis"></a>IIS
 
 Aby uzyskać instrukcje dotyczące importowania certyfikatu i przekazywania ich jako certyfikatu serwera w serwisach IIS, zobacz [JAK: Instalowanie zaimportowanych certyfikatów na serwerze sieci Web w systemie Windows Server 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
 
-Aby zapoznać się z instrukcjami wiązania SSL, zobacz [Jak skonfigurować ssl w serwisie IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
+Aby zapoznać się z instrukcjami wiązania TLS, zobacz [Jak skonfigurować ssl w serwisie IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
 
 ### <a name="apache"></a>Apache
 
@@ -151,9 +151,9 @@ Następująca konfiguracja jest przykładowym [hostem wirtualnym skonfigurowanym
 
 ### <a name="nginx"></a>NGINX
 
-Następująca konfiguracja jest przykładowym [blokiem serwera NGINX](https://nginx.org/docs/http/configuring_https_servers.html) z konfiguracją SSL:
+Następująca konfiguracja jest przykładowym [blokiem serwera NGINX](https://nginx.org/docs/http/configuring_https_servers.html) z konfiguracją TLS:
 
-![NGINX z SSL](media/self-signed-certificates/nginx-ssl.png)
+![NGINX z TLS](media/self-signed-certificates/nginx-ssl.png)
 
 ## <a name="access-the-server-to-verify-the-configuration"></a>Dostęp do serwera w celu weryfikacji konfiguracji
 
@@ -232,7 +232,7 @@ $probe = Get-AzApplicationGatewayProbeConfig `
 
 ## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server's certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that TLS handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -272,5 +272,5 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o SSL\TLS w bramie aplikacji, zobacz [Omówienie zakończenia protokołu SSL i zakończenia ssl z bramą aplikacji](ssl-overview.md).
+Aby dowiedzieć się więcej o SSL\TLS w bramie aplikacji, zobacz [Omówienie zakończenia protokołu TLS i zakończenia tls z bramą aplikacji](ssl-overview.md).
 

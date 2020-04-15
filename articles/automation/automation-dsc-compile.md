@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ce55b83f5547534e44d689adccdd952abc025d5
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 3145c7db064432e443aae5dcd503905b865ffe46
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010957"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383248"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilowanie konfiguracji DSC w konfiguracji stanu automatyzacji platformy Azure
 
@@ -29,6 +29,9 @@ Konfiguracje konfiguracji żądanego stanu (DSC) można skompilować w konfigura
 
 Można również użyć szablonów usługi Azure Resource Manager z rozszerzeniem konfiguracji żądanego stanu platformy Azure (DSC) do wypychania konfiguracji do maszyn wirtualnych platformy Azure. Rozszerzenie usługi Azure DSC używa struktury agenta maszyny wirtualnej platformy Azure do dostarczania, uchwalania i raportowania konfiguracji DSC uruchomionych na maszynach wirtualnych platformy Azure. Aby uzyskać szczegółowe informacje o kompilacji przy użyciu szablonów usługi Azure Resource Manager, zobacz [Rozszerzenie konfiguracji żądanego stanu z szablonami usługi Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details). 
 
+>[!NOTE]
+>Ten artykuł został zaktualizowany o korzystanie z nowego modułu Azure PowerShell Az. Nadal możesz używać modułu AzureRM, który będzie nadal otrzymywać poprawki błędów do co najmniej grudnia 2020 r. Aby dowiedzieć się więcej na temat nowego modułu Az i zgodności z modułem AzureRM, zobacz [Wprowadzenie do nowego modułu Az programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Aby uzyskać instrukcje instalacji modułu Az w hybrydowym usłudze Runbook Worker, zobacz [Instalowanie modułu programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Dla konta automatyzacji można zaktualizować moduły do najnowszej wersji przy użyciu [jak zaktualizować moduły programu Azure PowerShell w usłudze Azure Automation.](automation-update-azure-modules.md)
+
 ## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>Kompilowanie konfiguracji DSC w konfiguracji stanu platformy Azure
 
 ### <a name="portal"></a>Portal
@@ -41,13 +44,13 @@ Można również użyć szablonów usługi Azure Resource Manager z rozszerzenie
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Aby rozpocząć kompilację z programem Windows PowerShell, można użyć [funkcji Start-AzAutomationDscCompilationJob.](/powershell/module/az.automation/start-azautomationdsccompilationjob) Poniższy przykładowy kod rozpoczyna kompilację konfiguracji DSC o nazwie SampleConfig.
+Aby rozpocząć kompilację z programem Windows PowerShell, można użyć [funkcji Start-AzAutomationDscCompilationJob.](/powershell/module/az.automation/start-azautomationdsccompilationjob) Poniższy przykładowy kod rozpoczyna kompilację konfiguracji DSC o nazwie **SampleConfig**.
 
 ```powershell
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-**Start-AzAutomationDscCompilationOb** zwraca obiekt zadania kompilacji, którego można użyć do śledzenia stanu zadania. Następnie można użyć tego obiektu zadania kompilacji z [Get-AzAutomationDscCompilationJob](/powershell/module/az.automation/get-azautomationdsccompilationjob) do określenia stanu zadania kompilacji i [Get-AzAutomationDscCompilationJobOutput,](/powershell/module/az.automation/get-azautomationdscconfiguration) aby wyświetlić jego strumienie (dane wyjściowe). Poniższy przykład rozpoczyna kompilację konfiguracji SampleConfig, czeka, aż zostanie ukończona, a następnie wyświetla jego strumienie.
+`Start-AzAutomationDscCompilationJob`zwraca obiekt zadania kompilacji, którego można użyć do śledzenia stanu zadania. Następnie można użyć tego obiektu zadania kompilacji z [Get-AzAutomationDscCompilationJob](/powershell/module/az.automation/get-azautomationdsccompilationjob) do określenia stanu zadania kompilacji i [Get-AzAutomationDscCompilationJobOutput,](/powershell/module/az.automation/get-azautomationdscconfiguration) aby wyświetlić jego strumienie (dane wyjściowe). Poniższy przykład rozpoczyna kompilację konfiguracji SampleConfig, czeka, aż zostanie ukończona, a następnie wyświetla jego strumienie.
 
 ```powershell
 $CompilationJob = Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
@@ -65,7 +68,7 @@ $CompilationJob | Get-AzAutomationDscCompilationJobOutput –Stream Any
 
 Deklaracja parametrów w konfiguracjach DSC, w tym typy parametrów i właściwości, działa tak samo jak w projektach runbook usługi Azure Automation. Zobacz [Uruchamianie uruchomieniu w usłudze Azure Automation,](automation-starting-a-runbook.md) aby dowiedzieć się więcej o parametrach zestawu.
 
-W poniższym przykładzie użyto dwóch parametrów o nazwie *FeatureName* i *IsPresent*, aby określić wartości właściwości w konfiguracji węzła ParametersExample.sample, wygenerowanych podczas kompilacji.
+Poniższy `FeatureName` przykład używa `IsPresent` i parametrów do określenia wartości właściwości w **parametersexample.sample** konfiguracji węzła, generowane podczas kompilacji.
 
 ```powershell
 Configuration ParametersExample
@@ -116,7 +119,7 @@ $Parameters = @{
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ParametersExample' -Parameters $Parameters
 ```
 
-Aby uzyskać informacje na temat przekazywania PSCredentials jako parametry, zobacz [Zasoby poświadczeń](#credential-assets) poniżej.
+Aby uzyskać `PSCredential` informacje o przekazywaniu obiektów jako parametrów, zobacz [Zasoby poświadczeń](#credential-assets).
 
 ### <a name="compile-configurations-containing-composite-resources-in-azure-automation"></a>Kompilowanie konfiguracji zawierających zasoby złożone w usłudze Azure Automation
 
@@ -132,7 +135,7 @@ Funkcja **Zasoby złożone** umożliwia używanie konfiguracji DSC jako zagnież
 > [!NOTE]
 > Podczas kompilowania w konfiguracji stanu automatyzacji platformy Azure można użyć **ConfigurationData** w programie Azure PowerShell, ale nie w witrynie Azure portal.
 
-Poniższa przykładowa konfiguracja DSC używa **ConfigurationData** za pośrednictwem $ConfigurationData i $AllNodes słów kluczowych. W tym przykładzie potrzebny jest również [moduł administrowa xWebAdministration.](https://www.powershellgallery.com/packages/xWebAdministration/)
+Poniższa przykładowa konfiguracja DSC używa `$ConfigurationData` `$AllNodes` **ConfigurationData** za pośrednictwem i słów kluczowych. W tym przykładzie potrzebny jest również [moduł administrowa xWebAdministration.](https://www.powershellgallery.com/packages/xWebAdministration/)
 
 ```powershell
 Configuration ConfigurationDataSample
@@ -153,7 +156,7 @@ Configuration ConfigurationDataSample
 }
 ```
 
-Poprzednią konfigurację DSC można skompilować za pomocą programu Windows PowerShell. Poniższy skrypt dodaje dwie konfiguracje węzłów do usługi ściągania konfiguracji stanu automatyzacji platformy Azure: ConfigurationDataSample.MyVM1 i ConfigurationDataSample.MyVM3.
+Poprzednią konfigurację DSC można skompilować za pomocą programu Windows PowerShell. Poniższy skrypt dodaje dwie konfiguracje węzłów do usługi ściągania konfiguracji stanu usługi Azure Automation: **ConfigurationDataSample.MyVM1** i **ConfigurationDataSample.MyVM3**.
 
 ```powershell
 $ConfigData = @{
@@ -191,11 +194,11 @@ Odwołania do zasobów są takie same w konfiguracji stanu automatyzacji platfor
 
 #### <a name="credential-assets"></a>Zasoby poświadczeń
 
-Konfiguracje DSC w usłudze Azure Automation mogą odwoływać się do zasobów poświadczeń automatyzacji przy użyciu polecenia cmdlet **Get-AutomationPSCredential.** Jeśli konfiguracja ma parametr, który określa **PSCredential** obiektu, należy użyć **Get-AutomationPSCredential,** przekazując nazwę ciągu zasobu poświadczeń usługi Azure Automation do polecenia cmdlet, aby pobrać poświadczenia. Następnie użyj tego obiektu dla parametru wymagającego **PSCredential** obiektu. W tle zasobów poświadczeń usługi Azure Automation o tej nazwie jest pobierany i przekazywany do konfiguracji. Poniższy przykład przedstawia ten scenariusz w akcji.
+Konfiguracje DSC w usłudze Azure Automation `Get-AutomationPSCredential` mogą odwoływać się do zasobów poświadczeń automatyzacji przy użyciu polecenia cmdlet. Jeśli konfiguracja ma parametr, `PSCredential` który określa `Get-AutomationPSCredential` obiekt, należy użyć przez przekazanie nazwy ciągu zasobu poświadczeń usługi Azure Automation do polecenia cmdlet, aby pobrać poświadczenia. Następnie użyj tego obiektu dla parametru `PSCredential` wymagającego obiektu. W tle zasobów poświadczeń usługi Azure Automation o tej nazwie jest pobierany i przekazywany do konfiguracji. Poniższy przykład przedstawia ten scenariusz w akcji.
 
 Utrzymywanie bezpieczeństwa poświadczeń w konfiguracjach węzłów (dokumenty konfiguracyjne MOF) wymaga szyfrowania poświadczeń w pliku MOF konfiguracji węzła. Obecnie należy przyznać uprawnienie DSC programu PowerShell do danych wyjściowych poświadczeń w postaci zwykłego tekstu podczas generowania MOF konfiguracji węzła. Program PowerShell DSC nie jest świadomy, że usługa Azure Automation szyfruje cały plik MOF po jego generowaniu za pomocą zadania kompilacji.
 
-Można powiedzieć programowi PowerShell DSC, że jest w porządku dla poświadczeń, które mają być wyprowadzane w postaci zwykłego tekstu w konfiguracji generowanego węzła MOF przy użyciu danych konfiguracyjnych. Należy przekazać `PSDscAllowPlainTextPassword = $true` za pośrednictwem ConfigurationData dla każdej nazwy bloku **węzła,** który pojawia się w konfiguracji DSC i używa poświadczeń.
+Można powiedzieć, że program PowerShell DSC, że jest w porządku dla poświadczeń, które mają być wyprowadzane w postaci zwykłego tekstu w konfiguracji generowanego węzła MOF przy użyciu danych konfiguracyjnych. Należy przekazać `PSDscAllowPlainTextPassword = $true` za pośrednictwem ConfigurationData dla każdej nazwy bloku **węzła,** który pojawia się w konfiguracji DSC i używa poświadczeń.
 
 W poniższym przykładzie przedstawiono konfigurację DSC, która używa zasobu poświadczeń automatyzacji.
 
@@ -217,7 +220,7 @@ Configuration CredentialSample
 }
 ```
 
-Poprzednią konfigurację DSC można skompilować za pomocą programu PowerShell. Następujący kod programu PowerShell dodaje dwie konfiguracje węzłów do serwera ściągania konfiguracji stanu automatyzacji platformy Azure: CredentialSample.MyVM1 i CredentialSample.MyVM2.
+Poprzednią konfigurację DSC można skompilować za pomocą programu PowerShell. Następujący kod programu PowerShell dodaje dwie konfiguracje węzłów do serwera ściągania konfiguracji stanu automatyzacji platformy Azure: **CredentialSample.MyVM1** i **CredentialSample.MyVM2**.
 
 ```powershell
 $ConfigData = @{
@@ -239,16 +242,16 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 ```
 
 > [!NOTE]
-> Po zakończeniu kompilacji może pojawić się komunikat o błędzie "Moduł 'Microsoft.PowerShell.Management' nie został zaimportowany, ponieważ przystawka "Microsoft.PowerShell.Management" została już zaimportowana." Możesz bezpiecznie zignorować ten komunikat.
+> Po zakończeniu kompilacji może pojawić się `The 'Microsoft.PowerShell.Management' module was not imported because the 'Microsoft.PowerShell.Management' snap-in was already imported.` komunikat o błędzie Można bezpiecznie zignorować ten komunikat.
 
 ## <a name="compiling-your-dsc-configuration-in-windows-powershell"></a>Kompilowanie konfiguracji DSC w programie Windows PowerShell
 
-Można również importować konfiguracje węzłów (MF), które zostały skompilowane poza platformą Azure. Import obejmuje kompilację ze stacji roboczej dewelopera lub w usłudze, takiej jak [Azure DevOps.](https://dev.azure.com) Takie podejście ma wiele zalet, w tym wydajność i niezawodność.
+Można również importować konfiguracje węzłów (plików MOF), które zostały skompilowane poza platformą Azure. Import obejmuje kompilację ze stacji roboczej dewelopera lub w usłudze, takiej jak [Azure DevOps.](https://dev.azure.com) Takie podejście ma wiele zalet, w tym wydajność i niezawodność.
 
 Kompilacja w programie Windows PowerShell umożliwia również podpisywanie zawartości konfiguracji. Agent DSC weryfikuje konfigurację podpisanego węzła lokalnie w węźle zarządzanym. Weryfikacja zapewnia, że konfiguracja zastosowana do węzła pochodzi z autoryzowanego źródła.
 
 > [!NOTE]
-> Plik konfiguracji węzła nie może być większy niż 1 MB, aby umożliwić jego importowanie do usługi Azure Automation.
+> Plik konfiguracji węzła nie może być większy niż 1 MB, aby umożliwić usługę Azure Automation zaimportowanie go.
 
 Aby uzyskać więcej informacji na temat podpisywania konfiguracji węzłów, zobacz [Ulepszenia w WMF 5.1 - Jak podpisać konfigurację i moduł](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations).
 
@@ -260,7 +263,7 @@ Ten proces można wykonać z dewelopera stacji roboczej lub w ramach usługi kom
 ### <a name="import-a-node-configuration-in-the-azure-portal"></a>Importowanie konfiguracji węzła w witrynie Azure portal
 
 1. Na koncie automatyzacji kliknij pozycję **Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**.
-1. Na stronie Konfiguracja stanu (DSC) kliknij kartę **Konfiguracje,** a następnie kliknij przycisk **+ Dodaj**.
+1. Na stronie Konfiguracja stanu (DSC) kliknij kartę **Konfiguracje,** a następnie kliknij pozycję **Dodaj**.
 1. Na stronie Importowanie kliknij ikonę folderu obok pola tekstowego **Plik konfiguracji węzła,** aby wyszukać plik konfiguracyjny węzła (MOF) na komputerze lokalnym.
 
    ![Przeglądanie pliku lokalnego](./media/automation-dsc-compile/import-browse.png)
@@ -280,6 +283,7 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 
 - Aby uzyskać informacje o tym, zobacz [Wprowadzenie do konfiguracji stanu automatyzacji platformy Azure](automation-dsc-getting-started.md).
 - Aby dowiedzieć się więcej o kompilowaniu konfiguracji DSC, aby można je było przypisać do węzłów docelowych, zobacz [Kompilowanie konfiguracji w konfiguracji stanu automatyzacji platformy Azure](automation-dsc-compile.md).
-- Aby uzyskać informacje o poleceniach cmdlet programu PowerShell, zobacz [polecenia cmdlet konfiguracji stanu automatyzacji platformy Azure](/powershell/module/az.automation).
+- Aby uzyskać odwołanie do polecenia polecenia cmdlet programu PowerShell, zobacz [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).
 - Aby uzyskać informacje o cenach, zobacz [Cennik konfiguracji stanu usługi Azure Automation .](https://azure.microsoft.com/pricing/details/automation/)
 - Aby zobaczyć przykład użycia konfiguracji stanu automatyzacji platformy Azure w potoku ciągłego wdrażania, zobacz [Ciągłe wdrażanie na maszynach wirtualnych przy użyciu konfiguracji stanu automatyzacji platformy Azure i chocolatey.](automation-dsc-cd-chocolatey.md)
